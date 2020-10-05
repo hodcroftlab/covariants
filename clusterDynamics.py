@@ -35,7 +35,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from shutil import copyfile
-import defaultdict
+from collections import defaultdict
 from matplotlib.patches import Rectangle
 
 # Get diagnostics file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
@@ -182,15 +182,69 @@ cluster_data=cluster_data.sort_index()
 
 # Make a plot
 #fig = plt.figure(figsize=(10,5))
-fig, axs=plt.subplots(1,1, figsize=(10,5))
+#fig, axs=plt.subplots(1,1, figsize=(10,5))
+fig, (ax1, ax2, ax3) = plt.subplots(nrows=3, sharex=True,figsize=(10,7), gridspec_kw={'height_ratios':[1,1,3]})
+
+#quarantine free travel to spain:
+q_free_to_spain = { 
+    "United Kingdom": {"start": "2020-07-10", "end": "2020-07-26"},
+    "Norway": {"start": "2020-07-15", "end": "2020-07-25"},
+    "Switzerland": {"start": "2020-06-15", "end": "2020-08-10"},
+    "Latvia": {"start": "2020-07-01", "end": "2020-07-17"},
+    "France": {"start": "2020-06-15", "end": "2020-10-05"}
+}
+
+q_free_to_UK = {
+    "Latvia": {"start": "2020-07-01", "end": "2020-08-14"},
+    "France": {"start": "2020-06-15", "end": "2020-10-05"},
+    "Norway": {"start": "2020-07-15", "end": "2020-08-21"},
+    "Switzerland": {"start": "2020-06-15", "end": "2020-09-28"},
+}
+
+#note scotland was earlier
+q_free_to_swiss = {
+    "United Kingdom": {"start": "2020-07-10", "end": "2020-08-29"}
+}
+
+i=0
+for coun in [x for x in country_list if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
+    if coun in q_free_to_spain:
+        print("plot {}".format(coun))
+        q_times = q_free_to_spain[coun]
+        strt = datetime.datetime.strptime(q_times["start"], "%Y-%m-%d")
+        end = datetime.datetime.strptime(q_times["end"], "%Y-%m-%d")
+        y_start = i*0.02
+        height = 0.02
+        ax1.add_patch(Rectangle((strt,y_start), end-strt, height, ec=palette[i], fc=palette[i]))
+    i=i+1
+ax1.set_ylim([0,y_start+height])
+ax1.text(datetime.datetime.strptime("2020-06-21", "%Y-%m-%d"), 0.08, "Quarantine-free Travel to Spain")
+
+i=0
+for coun in [x for x in country_list if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
+    if coun in q_free_to_UK:
+        print("plot {}".format(coun))
+        q_times = q_free_to_UK[coun]
+        strt = datetime.datetime.strptime(q_times["start"], "%Y-%m-%d")
+        end = datetime.datetime.strptime(q_times["end"], "%Y-%m-%d")
+        y_start = i*0.02
+        height = 0.02
+        ax2.add_patch(Rectangle((strt,y_start), end-strt, height, ec=palette[i], fc=palette[i]))
+    i=i+1
+ax2.set_ylim([0,y_start+height])
+ax2.text(datetime.datetime.strptime("2020-06-21", "%Y-%m-%d"), 0.08, "Quarantine-free Travel to UK")
+
+
 i = 0
 #for a simpler plot of most interesting countries use this:
-for coun in [x for x in country_list if x not in ['Italy', 'Netherlands', 'Belgium', 'France', 'Germany', 'Hong Kong', 'Ireland']]:
+for coun in [x for x in country_list if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
 #for coun in country_list:
     sty="solid"
     #if i > len(country_list)/2:
     if i > 5:
         sty="dashed"
+    if coun in uk_countries:
+        sty=":"
     weeks = pd.concat([cluster_data[coun], other_data[coun]], axis=1).fillna(0)
     total = weeks.sum(axis=1)
     with_data = total>0
@@ -198,7 +252,7 @@ for coun in [x for x in country_list if x not in ['Italy', 'Netherlands', 'Belgi
     #this lets us plot X axis as dates rather than weeks (I struggle with weeks...)
     week_as_date = [ datetime.datetime.strptime("2020-W{}-1".format(x), '%G-W%V-%u') for x in weeks.index[with_data] ]
     #plt.plot(weeks.index[with_data], weeks.loc[with_data].iloc[:,0]/(total[with_data]), 'o', color=palette[i], label=coun, linestyle=sty)
-    plt.plot(week_as_date, weeks.loc[with_data].iloc[:,0]/(total[with_data]), 'o', color=palette[i], label=coun, linestyle=sty)
+    ax3.plot(week_as_date, weeks.loc[with_data].iloc[:,0]/(total[with_data]), 'o', color=palette[i], label=coun, linestyle=sty)
 
     i=i+1
 plt.legend()
@@ -206,28 +260,52 @@ fig.autofmt_xdate(rotation=30)
 plt.show()
 
 #spain opens borders
-plt.text(datetime.datetime.strptime("2020-06-21", "%Y-%m-%d"), 0.05, "Spain opens borders", rotation='vertical')
+ax3.text(datetime.datetime.strptime("2020-06-21", "%Y-%m-%d"), 0.05, "Spain opens borders", rotation='vertical')
 
-#Uk Q-free-travel
+
+### Early plotting trials.
+
+# light blue = lightskyblue
+# light brown = peru
+# light purple = plum
+# light green = lightgreen
+# light red = lightpink
+# light ornage = moccasin
+
+#Uk (england/wales/NI) Q-free-travel to spain
 eng_quarFree_start = datetime.datetime.strptime("2020-07-10", "%Y-%m-%d")
 eng_quarFree_end = datetime.datetime.strptime("2020-07-26", "%Y-%m-%d")
 eng_y_start = 0.02
-eng_y_end = 0.12
-axs.add_patch(Rectangle((eng_quarFree_start,eng_y_start), eng_quarFree_end-eng_quarFree_start, eng_y_end, ec='lightskyblue', fc='lightskyblue'))
+eng_y_end = 0.05
+ax1.add_patch(Rectangle((eng_quarFree_start,eng_y_start), eng_quarFree_end-eng_quarFree_start, eng_y_end, ec='lightskyblue', fc='lightskyblue'))
 
-#swiss q-free-travel
+#swiss q-free-travel to spain
 ch_quarFree_start = datetime.datetime.strptime("2020-06-15", "%Y-%m-%d")
 ch_quarFree_end = datetime.datetime.strptime("2020-08-10", "%Y-%m-%d") 
-ch_y_start = 0.12
-ch_y_end = 0.22
-axs.add_patch(Rectangle((ch_quarFree_start,ch_y_start), ch_quarFree_end-ch_quarFree_start, ch_y_end, ec='plum', fc='plum'))
+ch_y_start = 0.07
+ch_y_end = 0.05
+ax1.add_patch(Rectangle((ch_quarFree_start,ch_y_start), ch_quarFree_end-ch_quarFree_start, ch_y_end, ec='peru', fc='peru'))
 
-#norway q-free-travel
+#norway q-free-travel to spain
 no_quarFree_start = datetime.datetime.strptime("2020-07-15", "%Y-%m-%d")
 no_quarFree_end = datetime.datetime.strptime("2020-07-25", "%Y-%m-%d")
-no_y_start = 0.22
-no_y_end = 0.32
-axs.add_patch(Rectangle((no_quarFree_start,no_y_start), no_quarFree_end-no_quarFree_start, no_y_end, ec='lightgreen', fc='lightgreen'))
+no_y_start = 0.12
+no_y_end = 0.05
+ax1.add_patch(Rectangle((no_quarFree_start,no_y_start), no_quarFree_end-no_quarFree_start, no_y_end, ec='lightpink', fc='lightpink'))
+
+#latvia q-free-travel to spain
+la_quarFree_start = datetime.datetime.strptime("2020-07-01", "%Y-%m-%d")
+la_quarFree_end = datetime.datetime.strptime("2020-07-17", "%Y-%m-%d")
+la_y_start = 0.17
+la_y_end = 0.05
+ax1.add_patch(Rectangle((la_quarFree_start,la_y_start), la_quarFree_end-la_quarFree_start, la_y_end, ec='lightgreen', fc='lightgreen'))
+
+#france Q-free travel to spain
+fr_quarFree_start = datetime.datetime.strptime("2020-06-15", "%Y-%m-%d")
+fr_quarFree_end = datetime.datetime.strptime("2020-10-05", "%Y-%m-%d")
+fr_y_start = 0.22
+fr_y_end = 0.05
+ax1.add_patch(Rectangle((fr_quarFree_start,fr_y_start), fr_quarFree_end-fr_quarFree_start, fr_y_end, ec='moccasin', fc='moccasin'))
 
 
 plt.savefig(figure_path+"overall_trends.png")

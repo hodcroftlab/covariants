@@ -6,7 +6,15 @@ would be good to communicate with spain
 
 uk spain quarantine from 25 July
 
+Look at each genotype, see which are represented in which country
+
 # Quarantine Start
+
+### France
+Opened borders to EU on 15 June (see quarantine section)
+
+Borders remain open as of 5 Oct [French Gov](https://www.gouvernement.fr/en/coronavirus-covid-19)
+[Diplomatic French site](https://www.diplomatie.gouv.fr/en/coming-to-france/coronavirus-advice-for-foreign-nationals-in-france/)
 
 ### Latvia
 May 21st, opened to EU countries - with 14 day quarantine. July 1st, opened to EU countries, some without quarantine. Website says that as of 16 July Spain is on no-quarantine list. [TravelOffPath](https://www.traveloffpath.com/latvia-has-reopened-for-tourism-everything-you-need-to-know/)
@@ -25,18 +33,26 @@ UK was added to quarantine list (14 days) on 14th August [Latvia gov](https://ww
 ### UK
 From midnight 26 July travellers from Spain must quarantine 14 days [BBC](https://www.bbc.com/news/uk-53540691)
 
+From Aug 29, travellers from Spain must quarantine 14 days [Swiss Info](https://www.swissinfo.ch/eng/uk-adds-switzerland-to-quarantine-list/45996348)
+
 #### Northern Ireland
-Same, 26 July [BBC](https://www.bbc.com/news/uk-northern-ireland-53540633)
+Same, 26 July (Spain) [BBC](https://www.bbc.com/news/uk-northern-ireland-53540633)
 
 #### Scotland
-Same, removal on 26 July [Scottish Sun](https://www.thescottishsun.co.uk/news/5852797/coronavirus-scotland-spain-quarantine/)
+Same, removal on 26 July (Spain) [Scottish Sun](https://www.thescottishsun.co.uk/news/5852797/coronavirus-scotland-spain-quarantine/)
 
+From Aug 22, travellers from Spain must quarantine 14 days
+[The Local](https://www.thelocal.ch/20200825/switzerland-to-be-added-to-uk-quarantine-list-reports)
 
 ### Norway
 From 25 July travellers from Spain must quarantine 10 days [SchengenVisaInfo](https://www.schengenvisainfo.com/news/norway-advises-its-citizens-against-non-essential-travel-to-spain-and-andorra/)
 
+From Aug 21 travellers from UK must quarantine 10 days [UK GOV](https://www.gov.uk/foreign-travel-advice/norway) [Reuters](https://www.reuters.com/article/us-health-coronavirus-norway-britain-idUSKCN25F27U)
+
 ### Switzerland
 Spain listed as 'increased risk of infection' from 8 Aug - must quarantine 10 days [Swiss gov site](https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/empfehlungen-fuer-reisende/quarantaene-einreisende.html#accordion1601564486504) -- see 'List valid upon arriving in Switzerland between 8.8.2020'
+
+From 28 Sept travellers have to quarantine 10 days from UK [Swiss Info](https://www.swissinfo.ch/eng/uk-lands-on-swiss-quarantine-list/46058080) [Swiss gov site](https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/empfehlungen-fuer-reisende/quarantaene-einreisende.html#accordion1601564486504) -- see 'List valid upon arriving in Switzerland between 8.8.2020'
 
 ### Netherlands
 Spain in 'orange risk' from 24 Aug [Murcia Today](https://murciatoday.com/the-netherlands-advises-against-traveling-to-spain-including-canary-islands-due-to-increase-in-infections_1496881-a.html)
@@ -56,11 +72,15 @@ Up to date Spain map from Dutch govt [govt site](https://www.nederlandwereldwijd
 
 Spain opened borders to EU countries on 21 June (but not Portugal, until 1 July[AA](https://www.aa.com.tr/en/europe/spain-opens-borders-as-cases-inch-up-again/1896454#:~:text=Total%20COVID%2D19%20infections%20in,requested%20more%20time%20in%20isolation.)
 
+## France 
+Opened borders to EU countries on 15 June [HSE](https://hse.cern/content/travel-restrictions-switzerland-and-france-covid-19)
+[Honolulu Star Advertiser](https://www.staradvertiser.com/2020/06/14/breaking-news/france-to-end-covid-19-border-lockdown-open-up-to-europe/)
+
 ## Norway
 A number of EU countries able to travel to Norway from 15 July, no quarantine (includes UK, Spain, Switzerland) [SchengenVisaInfo](https://www.schengenvisainfo.com/news/norway-opens-up-to-eu-tourists-for-the-summer/)
 
 ## Switzerland
-Opened to EU Schengen states on 15 June [Swiss gov site](https://www.admin.ch/gov/en/start/documentation/media-releases.msg-id-79426.html)
+Opened to EU Schengen states on 15 June (includes UK) [Swiss gov site](https://www.admin.ch/gov/en/start/documentation/media-releases.msg-id-79426.html)
 
 ## UK
 
