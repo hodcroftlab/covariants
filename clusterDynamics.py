@@ -36,6 +36,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from shutil import copyfile
 import defaultdict
+from matplotlib.patches import Rectangle
 
 # Get diagnostics file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
 diag_file = "results/sequence-diagnostics.tsv"
@@ -96,12 +97,20 @@ cluster_meta.to_csv(out_meta_file,sep="\t",index=False)
 country_list = cluster_meta['country'].unique()
 print("The cluster is found in: {}".format([x for x in country_list]))
 
+#separate out Scotland, England, NI, Wales...
+uk_countries = ['Scotland', 'England', 'Wales', 'Northern Ireland']
+country_uk_list = country_list.tolist()
+country_uk_list.extend(uk_countries)
+
 # Let's get some summary stats on number of sequences, first, and last, for each country.
-country_info = pd.DataFrame(index=country_list, columns=['first_seq', 'num_seqs', 'last_seq'])
+country_info = pd.DataFrame(index=country_uk_list, columns=['first_seq', 'num_seqs', 'last_seq'])
 country_dates = {}
 
-for coun in country_list:
-    temp_meta = cluster_meta[cluster_meta['country'].isin([coun])]
+for coun in country_uk_list:
+    if coun in uk_countries:
+        temp_meta = cluster_meta[cluster_meta['division'].isin([coun])]
+    else:
+        temp_meta = cluster_meta[cluster_meta['country'].isin([coun])]
     country_info.loc[coun].first_seq = temp_meta['date'].min()
     country_info.loc[coun].last_seq = temp_meta['date'].max()
     country_info.loc[coun].num_seqs = len(temp_meta)
@@ -134,6 +143,8 @@ plt.show()
 # We want to look at % of samples from a country that are in this cluster
 # To avoid the up-and-down of dates, bin samples into weeks
 
+country_list = country_uk_list
+
 # Get counts per week for sequences in the cluster
 clus_week_counts = {}
 for coun in country_list:
@@ -147,7 +158,10 @@ for coun in country_list:
 other_week_counts = {}
 for coun in country_list:
     counts_by_week = defaultdict(int)
-    temp_meta = meta[meta['country'].isin([coun])]
+    if coun in uk_countries:
+        temp_meta = meta[meta['division'].isin([coun])]
+    else:
+        temp_meta = meta[meta['country'].isin([coun])]
     #week 20
     for dat in temp_meta['date']:
         if len(dat) is 10 and "-XX" not in dat: # only take those that have real dates
@@ -167,11 +181,15 @@ other_data=other_data.sort_index()
 cluster_data=cluster_data.sort_index()
 
 # Make a plot
-plt.figure(figsize=(10,5))
+#fig = plt.figure(figsize=(10,5))
+fig, axs=plt.subplots(1,1, figsize=(10,5))
 i = 0
-for coun in country_list:
+#for a simpler plot of most interesting countries use this:
+for coun in [x for x in country_list if x not in ['Italy', 'Netherlands', 'Belgium', 'France', 'Germany', 'Hong Kong', 'Ireland']]:
+#for coun in country_list:
     sty="solid"
-    if i > len(country_list)/2:
+    #if i > len(country_list)/2:
+    if i > 5:
         sty="dashed"
     weeks = pd.concat([cluster_data[coun], other_data[coun]], axis=1).fillna(0)
     total = weeks.sum(axis=1)
@@ -184,8 +202,36 @@ for coun in country_list:
 
     i=i+1
 plt.legend()
+fig.autofmt_xdate(rotation=30)
 plt.show()
+
+#spain opens borders
+plt.text(datetime.datetime.strptime("2020-06-21", "%Y-%m-%d"), 0.05, "Spain opens borders", rotation='vertical')
+
+#Uk Q-free-travel
+eng_quarFree_start = datetime.datetime.strptime("2020-07-10", "%Y-%m-%d")
+eng_quarFree_end = datetime.datetime.strptime("2020-07-26", "%Y-%m-%d")
+eng_y_start = 0.02
+eng_y_end = 0.12
+axs.add_patch(Rectangle((eng_quarFree_start,eng_y_start), eng_quarFree_end-eng_quarFree_start, eng_y_end, ec='lightskyblue', fc='lightskyblue'))
+
+#swiss q-free-travel
+ch_quarFree_start = datetime.datetime.strptime("2020-06-15", "%Y-%m-%d")
+ch_quarFree_end = datetime.datetime.strptime("2020-08-10", "%Y-%m-%d") 
+ch_y_start = 0.12
+ch_y_end = 0.22
+axs.add_patch(Rectangle((ch_quarFree_start,ch_y_start), ch_quarFree_end-ch_quarFree_start, ch_y_end, ec='plum', fc='plum'))
+
+#norway q-free-travel
+no_quarFree_start = datetime.datetime.strptime("2020-07-15", "%Y-%m-%d")
+no_quarFree_end = datetime.datetime.strptime("2020-07-25", "%Y-%m-%d")
+no_y_start = 0.22
+no_y_end = 0.32
+axs.add_patch(Rectangle((no_quarFree_start,no_y_start), no_quarFree_end-no_quarFree_start, no_y_end, ec='lightgreen', fc='lightgreen'))
+
+
 plt.savefig(figure_path+"overall_trends.png")
+
 
 #############################################
 #############################################
@@ -259,6 +305,7 @@ for coun in ['Switzerland', 'United Kingdom', 'Norway', 'Spain']:
     ax2.tick_params(axis='y', labelcolor=color)
     ax2.set_yscale("log")
 
+    fig.autofmt_xdate(rotation=30)
     fig.tight_layout()
     plt.show()
     plt.savefig(figure_path+"{}-newcases-seqs.png".format(coun))

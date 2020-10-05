@@ -1,0 +1,99 @@
+when did holiday period start, and end
+when did travel restrictions start
+
+this was common in spain, and holidays took it all places
+would be good to communicate with spain
+
+uk spain quarantine from 25 July
+
+# Quarantine Start
+
+### Latvia
+May 21st, opened to EU countries - with 14 day quarantine. July 1st, opened to EU countries, some without quarantine. Website says that as of 16 July Spain is on no-quarantine list. [TravelOffPath](https://www.traveloffpath.com/latvia-has-reopened-for-tourism-everything-you-need-to-know/)
+
+17 July Spain was 'yellow' - must quarantine 14 days [Latvia gov](https://www.spkc.gov.lv/lv/valstu-saslimstibas-raditaji-ar-covid-19-0/17.07.2020_en_1.pdf/17.07.2020_en_1.pdf/17.07.2020_en_1.pdf/17.07.2020_en_1.pdf/17.07.2020_en_1.pdf/17.07.2020_en_1.pdf/17.07.2020_en_1.pdf)
+
+24 July it was moved to 'red' - must quarantine 14 days [Latvia gov](https://www.spkc.gov.lv/lv/valstu-saslimstibas-raditaji-ar-covid-19-0/copy-of-automatisks-excel-fails-valstu-sarakstameng.pdf/copy-of-automatisks-excel-fails-valstu-sarakstameng.pdf/copy-of-automatisks-excel-fails-valstu-sarakstameng.pdf/copy-of-automatisks-excel-fails-valstu-sarakstameng.pdf/copy-of-automatisks-excel-fails-valstu-sarakstameng.pdf/copy-of-automatisks-excel-fails-valstu-sarakstameng.pdf/copy-of-automatisks-excel-fails-valstu-sarakstameng.pdf)
+
+UNITED KINGDOM
+From July 1st, UK was not required to quarantine e. Website says that as of 16 July Spain is on no-quarantine list. [TravelOffPath](https://www.traveloffpath.com/latvia-has-reopened-for-tourism-everything-you-need-to-know/)
+
+UK was added to quarantine list (14 days) on 14th August [Latvia gov](https://www.spkc.gov.lv/lv/valstu-saslimstibas-raditaji-ar-covid-19-0/14.08.2020-valstusaraksts-en.pdf/14.08.2020-valstusaraksts-en.pdf/14.08.2020-valstusaraksts-en.pdf/14.08.2020-valstusaraksts-en.pdf/14.08.2020-valstusaraksts-en.pdf/14.08.2020-valstusaraksts-en.pdf/14.08.2020-valstusaraksts-en.pdf)
+
+[All Latvian gov traveller updates](https://www.spkc.gov.lv/lv/valstu-saslimstibas-raditaji-ar-covid-19-0)
+
+### UK
+From midnight 26 July travellers from Spain must quarantine 14 days [BBC](https://www.bbc.com/news/uk-53540691)
+
+#### Northern Ireland
+Same, 26 July [BBC](https://www.bbc.com/news/uk-northern-ireland-53540633)
+
+#### Scotland
+Same, removal on 26 July [Scottish Sun](https://www.thescottishsun.co.uk/news/5852797/coronavirus-scotland-spain-quarantine/)
+
+
+### Norway
+From 25 July travellers from Spain must quarantine 10 days [SchengenVisaInfo](https://www.schengenvisainfo.com/news/norway-advises-its-citizens-against-non-essential-travel-to-spain-and-andorra/)
+
+### Switzerland
+Spain listed as 'increased risk of infection' from 8 Aug - must quarantine 10 days [Swiss gov site](https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/empfehlungen-fuer-reisende/quarantaene-einreisende.html#accordion1601564486504) -- see 'List valid upon arriving in Switzerland between 8.8.2020'
+
+### Netherlands
+Spain in 'orange risk' from 24 Aug [Murcia Today](https://murciatoday.com/the-netherlands-advises-against-traveling-to-spain-including-canary-islands-due-to-increase-in-infections_1496881-a.html)
+Must Quarantine for 10 days [DutchNews](https://www.dutchnews.nl/news/2020/08/all-of-spain-more-parts-of-france-are-code-orange-as-coronavirus-cases-rise/)
+
+Some regions of Spain were included earlier... from at least 19 Aug...? [SchengenVisaInfo](https://www.schengenvisainfo.com/news/netherlands-lifts-quarantine-requirement-for-sweden/)
+Or before 15 Aug? [NLTimes](https://nltimes.nl/2020/08/15/new-travel-warnings-brussels-ibiza-madrid-paris-report)
+
+Barcelona & Segria region were set to 'orange' from 28 July - 14 day quarantine [DutchNews](https://www.dutchnews.nl/news/2020/07/barcelona-no-go-area-for-dutch-tourists-as-official-risk-rises-to-orange/)
+
+Up to date Spain map from Dutch govt [govt site](https://www.nederlandwereldwijd.nl/landen/spanje/reizen/reisadvies)
+
+# Lockdown
+
+## Spain
+"Spain emerged from lockdown on 21 June" [Guardian](https://www.theguardian.com/world/2020/jul/26/why-are-travellers-to-the-uk-from-spain-being-asked-to-quarantine-coronavirus)
+
+Spain opened borders to EU countries on 21 June (but not Portugal, until 1 July[AA](https://www.aa.com.tr/en/europe/spain-opens-borders-as-cases-inch-up-again/1896454#:~:text=Total%20COVID%2D19%20infections%20in,requested%20more%20time%20in%20isolation.)
+
+## Norway
+A number of EU countries able to travel to Norway from 15 July, no quarantine (includes UK, Spain, Switzerland) [SchengenVisaInfo](https://www.schengenvisainfo.com/news/norway-opens-up-to-eu-tourists-for-the-summer/)
+
+## Switzerland
+Opened to EU Schengen states on 15 June [Swiss gov site](https://www.admin.ch/gov/en/start/documentation/media-releases.msg-id-79426.html)
+
+## UK
+
+### England
+From 10 July no need to quarantine from 59 countries, including Spain, Switzerland, Norway, France [Guardian](https://www.theguardian.com/politics/live/2020/jul/03/uk-coronavirus-live-boris-johnson-warn-public-pubs-reopen-england-saturday?page=with:block-5eff3c7b8f08ff51fe2ac38a#block-5eff3c7b8f08ff51fe2ac38a)
+
+### Scotland
+From 10 July, no need to quarantine from 57 countries, matching England's list - but Spain & Serbia must quarnatine for 14 days [BBC](https://www.bbc.com/news/uk-scotland-53336489)
+
+Spain added to excemption list on 23 July, removed on 26 July (scroll to updates) [Scottish govt website](https://www.gov.scot/publications/coronavirus-covid-19-public-health-checks-at-borders/#history)
+Removal on 26 July [Scottish Sun](https://www.thescottishsun.co.uk/news/5852797/coronavirus-scotland-spain-quarantine/)
+
+### Northern Ireland
+Same list of countries as England from 10 July [Jakarta Post](https://www.thejakartapost.com/travel/2020/07/10/northern-ireland-to-drop-covid-19-quarantine-for-same-countries-as-england.html)
+
+#### Ireland
+July 22, 'green list' countries do not need to quarantine. These 15 are: "Malta, Finland, Norway, Italy, Hungary, Estonia, Latvia, Lithuania, Cyprus, Slovakia, Greece, Greenland, Gibraltar, Monaco and San Marino."  [BBC](https://www.bbc.com/news/world-europe-53493599)
+
+Seems like Spain has never been on Ireland's green list? The original 15 were cut to 10 on Aug 4 [Irish Mirror](https://www.irishmirror.ie/news/irish-news/health-news/green-list-updated-spain-uk-22616758)
+
+From June 15, arrivals from UK must quarantine 14 days [Belfast Telegraph](https://www.belfasttelegraph.co.uk/news/health/coronavirus/cross-border-talks-on-coronavirus-quarantine-rules-in-ireland-still-to-result-in-deal-39273656.html)
+
+Ireland will publish a 'green list' from 9 July [Jakarta Post](https://www.thejakartapost.com/news/2020/06/26/ireland-to-ease-travel-restrictions-with-some-countries-from-july-9.html)
+But it was pushed back to 20th July [The Journal](https://www.thejournal.ie/green-list-ireland-travel-5153179-Jul2020/)
+
+
+# Flights
+
+### UK
+Easyjet grounded flights on 30 March.
+Resumed on 15 June? [source for both](https://www.theguardian.com/business/2020/may/21/easyjet-to-resume-domestic-flights-across-england-and-france).
+
+Easyjet says restarting 15 June [Statement](https://mediacentre.easyjet.com/story/14243/easyjet-announces-restart-of-flying-from-15-june-with-new-bio-security-measures)
+
+Ryanair resumed 1 July [Guardian article](https://www.theguardian.com/business/2020/may/12/ryanair-flights-resume-coronavirus-rules-july)
+
