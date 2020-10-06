@@ -10,6 +10,12 @@ Look at each genotype, see which are represented in which country
 
 # Quarantine Start
 
+### Germany
+
+Since 14 Aug, mainland Spain & Balarics (not Canaries) a risk area - must test negative within 10 days [German Gov](https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Transport/Archiv_Risikogebiete/Risikogebiete_26082020_en.pdf?__blob=publicationFile)
+
+All of Spain is a 'risk area' since 2 Sept, must test within 10 days and be negative, quarntine until then, and quarantine if positive. [German Gov](https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Risikogebiete_neu.html)
+
 ### France
 Opened borders to EU on 15 June (see quarantine section)
 
@@ -92,6 +98,10 @@ From 10 July, no need to quarantine from 57 countries, matching England's list -
 
 Spain added to excemption list on 23 July, removed on 26 July (scroll to updates) [Scottish govt website](https://www.gov.scot/publications/coronavirus-covid-19-public-health-checks-at-borders/#history)
 Removal on 26 July [Scottish Sun](https://www.thescottishsun.co.uk/news/5852797/coronavirus-scotland-spain-quarantine/)
+
+### Wales
+"Wales and Northern Ireland have introduced quarantine exclusions for the same countries as England."[BBC](https://www.bbc.co.uk/newsround/53338933)
+Says from 10th no Quarantine, including Spain [Sur in English](http://www.surinenglish.com/national/202007/10/travellers-from-spain-england-20200710091640-v.html)
 
 ### Northern Ireland
 Same list of countries as England from 10 July [Jakarta Post](https://www.thejakartapost.com/travel/2020/07/10/northern-ireland-to-drop-covid-19-quarantine-for-same-countries-as-england.html)
