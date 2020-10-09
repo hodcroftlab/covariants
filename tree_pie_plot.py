@@ -70,6 +70,9 @@ names = lookup_by_names(T)
 ###############################
 ###############################
 
+# set whether UK run or not
+uk_run = False
+
 #this has to be set manually
 start = names["NODE_0003268"]   #["NODE_0002406"]
 
@@ -79,6 +82,8 @@ T_backup = copy.deepcopy(T)
 #Make a subtree of the cluster so we can just work with that
 cluster = T.from_clade(start)
 
+######## UK RERUN FROM HERE
+
 # Make another name dictionary to locate nodes by name
 clus_names = lookup_by_names(cluster)
 
@@ -87,9 +92,17 @@ for node in cluster.find_clades(order='postorder'):
     node.countries = []
     node.total_countries = []
 
-for node in cluster.find_clades(order='postorder'):
-    if node.is_terminal():
-        node.parent.countries.append(node.country)
+#for node in cluster.find_clades(order='postorder'):
+#    if node.is_terminal():
+#        if not uk_run:
+#            node.parent.countries.append(node.country)
+#        else:
+#            if node.country == "United Kingdom":
+#                node.parent.countries.append(node.division)
+#            elif node.country in also_uk_countries:
+#                node.parent.countries.append(node.country)
+#            else
+#                node.parent.countries.append("Other")
 
 #How many internals do we start with?
 len(cluster.get_nonterminals())
@@ -101,9 +114,21 @@ for node in cluster.get_nonterminals(order='postorder'):
     if node.is_preterminal():
         node.countries = []
         for leaf in node.get_terminals():
-            node.countries.append(leaf.country)
+            if not uk_run:
+                node.countries.append(leaf.country)
+            else:
+                if leaf.country == "United Kingdom":
+                    node.countries.append(leaf.division)
+                elif leaf.country in also_uk_countries:
+                    node.countries.append(leaf.country)
+                else:
+                    node.countries.append("Other")
         if len(set(node.countries)) == 1:
+            #print("collapsing {} with {}".format(node.name, set(node.countries)))
             cluster.collapse(target=node)
+        #else:
+            #print("not collapsing {} with {}".format(node.name, set(node.countries)))
+
 
 #reassign parents since we deleted a bunch:
 for node in cluster.find_clades(order='preorder'):
@@ -118,7 +143,15 @@ len(cluster.get_nonterminals())
 # so recount the countries!
 for node in cluster.find_clades(order='postorder'):
     if node.is_terminal():
-        node.parent.total_countries.append(node.country)
+        if not uk_run:
+            node.parent.countries.append(node.country)
+        else:
+            if node.country == "United Kingdom":
+                node.parent.total_countries.append(node.division)
+            elif node.country in also_uk_countries:
+                node.parent.total_countries.append(node.country)
+            else:
+                node.parent.total_countries.append("Other")
 
 # Gather up the country counts for each node:
 node_attr = {}
@@ -212,22 +245,45 @@ for node in cluster2.find_clades(order="preorder"):
     ch = chr(ord(ch) + 1)
 
 # Actually plot!
-Phylo.draw(cluster2, label_func=lambda x:'')
+
+#fig = plt.figure(figsize=(10,20), dpi=100)
+#axes = fig.add_subplot(1,1,1)
+Phylo.draw(cluster2, label_func=lambda x:'')#, axes=axes)
+
 for node in cluster2.find_clades(order="preorder"):
     counts = node_counts[node.name]
-    draw_pie(ax=plt.gca(), ratios=[x/sum(counts) for x in counts], 
-        colors=colors_only, X=node.x, Y=node.y, size=700)
+    sqrt_counts = [math.sqrt(x) for x in counts]
+    draw_pie(ax=plt.gca(), ratios=[x/sum(sqrt_counts) for x in sqrt_counts], 
+        colors=colors_only[:len(country_colors)], X=node.x, Y=node.y, size=700)
     plt.text(node.x+0.00001, node.y, round(sum(counts)))
     plt.text(node.x-0.000015, node.y, node_names[node.name] )
 plt.axis('off')
 plt.legend(handles=ptchs)
 
-plt.savefig(figure_path+"pie_tree.png")
-trends_path = figure_path+"pie_tree.png"
-copypath = trends_path.replace("tree", "tree-{}".format(datetime.date.today().strftime("%Y-%m-%d")))
-copyfile(trends_path, copypath)
+
+if not uk_run:
+    tree_path = figure_path+"pie_tree.png"
+else:
+    tree_path = figure_path+"uk_pie_tree.png"
+
+plt.savefig(tree_path)
+copypath = tree_path.replace("tree", "tree-{}".format(datetime.date.today().strftime("%Y-%m-%d")))
+copyfile(tree_path, copypath)
 
 
 
 ##############
 # Now repeat for the UK only
+uk_countries = ['Scotland', 'England', 'Wales', 'Northern Ireland']
+
+# go back to original tree and take the cluster again
+T_uk = copy.deepcopy(T_backup)
+
+#Make a subtree of the cluster so we can just work with that
+cluster = T_uk.from_clade(start)
+
+#make it a UK run
+uk_run = True
+
+also_uk_countries = ["Ireland", "Spain"]
+
