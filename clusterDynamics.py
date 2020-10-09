@@ -32,6 +32,28 @@ from shutil import copyfile
 from collections import defaultdict
 from matplotlib.patches import Rectangle
 
+# n is the number of observations
+# x is the number of times you see the mutation
+# Distributions.Beta(a,b) is the Beta distribution
+# cdf is the cumulative distribution function (of the Beta distribution in this case)
+def bernoulli_estimator(x,n, dp=0.10):
+    from scipy.stats import beta
+    naivemean = x/n
+    estmean = (x+0.5)/(n+1)
+    a = x + 0.5
+    b = n - x + 0.5
+    #
+    lowerbound = 0.
+    while beta.cdf(lowerbound, a, b) < dp:
+        lowerbound += 0.01
+    #
+    higherbound = 1.
+    while beta.cdf(higherbound, a, b) > 1-dp:
+        higherbound -= 0.01
+
+    return naivemean, max(0,naivemean-lowerbound), max(0, higherbound-naivemean)
+
+
 # Get diagnostics file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
 diag_file = "results/sequence-diagnostics.tsv"
 diag = pd.read_csv(diag_file, sep='\t', index_col=False)
@@ -64,7 +86,7 @@ for index, row in diag.iterrows():
         if all(x in intsnp for x in snps):
             wanted_seqs.append(row['strain'])
 
-# There's one spanish seq with date of 7 March - we think this is wrong. 
+# There's one spanish seq with date of 7 March - we think this is wrong.
 # If seq there and date bad - exclude!
 bad_seq = meta[meta['strain'].isin(['Spain/VC-IBV-98006466/2020'])]
 if bad_seq.date.values[0] == "2020-03-07" and 'Spain/VC-IBV-98006466/2020' in wanted_seqs:
@@ -88,12 +110,12 @@ cluster_meta = meta[meta['strain'].isin(wanted_seqs)]
 cluster_meta.to_csv(out_meta_file,sep="\t",index=False)
 
 # What countries do sequences in the cluster come from?
-country_list = cluster_meta['country'].unique()
+country_list = sorted(cluster_meta['country'].unique())
 print("The cluster is found in: {}".format([x for x in country_list]))
 
 #separate out Scotland, England, NI, Wales...
 uk_countries = ['Scotland', 'England', 'Wales', 'Northern Ireland']
-country_uk_list = country_list.tolist()
+country_uk_list = list(country_list)
 country_uk_list.extend(uk_countries)
 
 # Let's get some summary stats on number of sequences, first, and last, for each country.
@@ -120,23 +142,31 @@ print(country_info)
 
 # For the main cluster, ran out of colors... try this hack.
 palette = sns.color_palette("tab10", round(len(country_list)/2))
-palette.extend(palette)
+linestyles = ['-', '-.','--', ':']
 
-i = 0
+country_styles = {
+    country: {'c':f"C{i%10}", 'ls':linestyles[i//10]}
+    for i, country in enumerate(country_list)
+ }
+
+country_styles.update({
+ 'Scotland':        {'c':country_styles['United Kingdom']['c'], 'ls':':'},
+ 'England':         {'c':country_styles['United Kingdom']['c'], 'ls':':'},
+ 'Wales':           {'c':country_styles['United Kingdom']['c'], 'ls':':'},
+ 'Northern Ireland':{'c':country_styles['United Kingdom']['c'], 'ls':':'},
+})
+
+
 for coun in country_list:
-    sty="solid"
-    if i > round(len(country_list)/2):
-        sty="dashed"
     X,Y = np.unique(country_dates[coun], return_counts=True)
-    plt.plot(X,Y, color=palette[i], label=coun, linestyle=sty)
-    i=i+1
+    plt.plot(X,Y, color=country_styles[coun]['c'],
+        linestyle=country_styles[coun]['ls'], label=coun)
 plt.legend()
 plt.show()
 
 
 # We want to look at % of samples from a country that are in this cluster
 # To avoid the up-and-down of dates, bin samples into weeks
-
 country_list = country_uk_list
 
 # Get counts per week for sequences in the cluster
@@ -176,7 +206,7 @@ cluster_data=cluster_data.sort_index()
 
 
 #quarantine free travel to spain:
-q_free_to_spain = { 
+q_free_to_spain = {
     "United Kingdom": {"start": "2020-07-10", "end": "2020-07-26"},
     "Norway": {"start": "2020-07-15", "end": "2020-07-25"},
     "Switzerland": {"start": "2020-06-15", "end": "2020-08-10"},
@@ -200,7 +230,9 @@ q_free_to_swiss = {
 # Make a plot
 #fig = plt.figure(figsize=(10,5))
 #fig, axs=plt.subplots(1,1, figsize=(10,5))
-fig, (ax1, ax2, ax3) = plt.subplots(nrows=3, sharex=True,figsize=(10,7), gridspec_kw={'height_ratios':[1,1,3]})
+fs = 10
+fig, (ax1, ax2, ax3) = plt.subplots(nrows=3, sharex=True,figsize=(10,7),
+                                    gridspec_kw={'height_ratios':[1,1,3]})
 
 i=0
 for coun in [x for x in country_list if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
@@ -210,10 +242,14 @@ for coun in [x for x in country_list if x not in ['Italy', 'Netherlands', 'Belgi
         end = datetime.datetime.strptime(q_times["end"], "%Y-%m-%d")
         y_start = i*0.02
         height = 0.02
-        ax1.add_patch(Rectangle((strt,y_start), end-strt, height, ec=palette[i], fc=palette[i]))
+        ax1.add_patch(Rectangle((strt,y_start), end-strt, height,
+                      ec=country_styles[coun]['c'], fc=country_styles[coun]['c']))
     i=i+1
 ax1.set_ylim([0,y_start+height])
-ax1.text(datetime.datetime.strptime("2020-06-21", "%Y-%m-%d"), 0.08, "Quarantine-free Travel to Spain")
+ax1.text(datetime.datetime.strptime("2020-06-21", "%Y-%m-%d"), 0.12,
+         "Quarantine-free Travel to Spain", fontsize=fs*0.8)
+# ax1.set_axis_off()
+
 
 i=0
 for coun in [x for x in country_list if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
@@ -224,43 +260,100 @@ for coun in [x for x in country_list if x not in ['Italy', 'Netherlands', 'Belgi
         end = datetime.datetime.strptime(q_times["end"], "%Y-%m-%d")
         y_start = i*0.02
         height = 0.02
-        ax2.add_patch(Rectangle((strt,y_start), end-strt, height, ec=palette[i], fc=palette[i]))
-        ax2.text(strt, y_start, q_times["msg"])
+        ax2.add_patch(Rectangle((strt,y_start), end-strt, height,
+                      ec=country_styles[coun]['c'], fc=country_styles[coun]['c']))
+        ax2.text(strt, y_start, q_times["msg"], fontsize=fs*0.8)
     i=i+1
 ax2.set_ylim([0,y_start+height])
+# ax2.set_axis_off()
 
-i = 0
 #for a simpler plot of most interesting countries use this:
 for coun in [x for x in country_list if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
-#for coun in country_list:
-    sty="solid"
-    #if i > len(country_list)/2:
-    if i > 5:
-        sty="dashed"
-    if coun in uk_countries:
-        sty=":"
+
     weeks = pd.concat([cluster_data[coun], other_data[coun]], axis=1).fillna(0)
     total = weeks.sum(axis=1)
     with_data = total>0
-    
+
     #this lets us plot X axis as dates rather than weeks (I struggle with weeks...)
     week_as_date = [ datetime.datetime.strptime("2020-W{}-1".format(x), '%G-W%V-%u') for x in weeks.index[with_data] ]
     #plt.plot(weeks.index[with_data], weeks.loc[with_data].iloc[:,0]/(total[with_data]), 'o', color=palette[i], label=coun, linestyle=sty)
-    ax3.plot(week_as_date, weeks.loc[with_data].iloc[:,0]/(total[with_data]), 'o', color=palette[i], label=coun, linestyle=sty)
+    cluster_count = weeks.loc[with_data].iloc[:,0]
+    total_count = total[with_data]
+    mean_upper_lower = []
+    for x, n in zip(cluster_count, total_count):
+        mean_upper_lower.append(bernoulli_estimator(x,n))
+    mean_upper_lower = np.array(mean_upper_lower)
 
-    i=i+1
-plt.legend()
+    ax3.plot(week_as_date, mean_upper_lower[:,0], marker='o',
+             color=country_styles[coun]['c'],
+             linestyle=country_styles[coun]['ls'], label=coun)
+    # ax3.errorbar(week_as_date, mean_upper_lower[:,0], yerr=mean_upper_lower[:,1:].T, marker='o',
+    #          color=country_styles[coun]['c'], linestyle=country_styles[coun]['ls'], label=coun)
+
+
+plt.legend(ncol=1, fontsize=fs*0.8, loc=2)
 fig.autofmt_xdate(rotation=30)
+ax3.tick_params(labelsize=fs*0.8)
+ax3.set_ylabel('frequency')
 plt.show()
 
 #spain opens borders
-ax3.text(datetime.datetime.strptime("2020-06-21", "%Y-%m-%d"), 0.05, "Spain opens borders", rotation='vertical')
+ax3.text(datetime.datetime.strptime("2020-06-21", "%Y-%m-%d"), 0.05,
+         "Spain opens borders", rotation='vertical', fontsize=fs*0.8)
 
 
 plt.savefig(figure_path+"overall_trends.png")
 trends_path = figure_path+"overall_trends.png"
 copypath = trends_path.replace("trends", "trends-{}".format(datetime.date.today().strftime("%Y-%m-%d")))
 copyfile(trends_path, copypath)
+
+#############################################
+#############################################
+# Figure for growth rate estimates
+#
+
+def logistic(x, a, t50):
+    return np.exp((x-t50)*a)/(1+np.exp((x-t50)*a))
+
+def fit_logistic(days, mean_upper_lower):
+    from scipy.optimize import minimize
+
+    def cost(P, x, y):
+        a, t50 = P
+        return np.sum(((y[:,0] - logistic(x, a, t50))/(y[:,1]+y[:,2]+0.05))**2)
+
+    sol = minimize(cost, [0.02, days[-1]], args=(days, mean_upper_lower))
+    return sol
+
+fig = plt.figure()
+#for a simpler plot of most interesting countries use this:
+for coun in ['Switzerland', 'United Kingdom', 'England', 'Scotland', 'Wales']:
+    weeks = pd.concat([cluster_data[coun], other_data[coun]], axis=1).fillna(0)
+    total = weeks.sum(axis=1)
+    with_data = total>0
+
+    #this lets us plot X axis as dates rather than weeks (I struggle with weeks...)
+    week_as_date = [ datetime.datetime.strptime("2020-W{}-1".format(x), '%G-W%V-%u') for x in weeks.index[with_data] ]
+    days = [d.toordinal() for d in week_as_date]
+
+    cluster_count = weeks.loc[with_data].iloc[:,0]
+    total_count = total[with_data]
+    mean_upper_lower = []
+    for x, n in zip(cluster_count, total_count):
+        mean_upper_lower.append(bernoulli_estimator(x,n))
+    mean_upper_lower = np.array(mean_upper_lower)
+
+    # plt.plot(week_as_date, mean_upper_lower[:,0],
+    #              marker='o', color=palette[i], label=coun, linestyle=sty)
+    # plt.errorbar(week_as_date, mean_upper_lower[:,0], yerr=mean_upper_lower[:,1:].T,
+    plt.plot(week_as_date, mean_upper_lower[:,0],
+                 marker='o', label=coun,
+                 color=country_styles[coun]['c'],
+                 linestyle=country_styles[coun]['ls'])
+
+    fit = fit_logistic(days, mean_upper_lower)
+    plt.plot(week_as_date, logistic(days, fit['x'][0], fit['x'][1]))
+    print(f"{coun} growth rate: {fit['x'][0]*700:1.2f}% per week")
 
 #############################################
 #############################################
@@ -335,8 +428,9 @@ for coun in ['Switzerland', 'United Kingdom', 'Norway', 'Spain']:
     color = 'tab:red'
     ax2.set_ylabel('Sequences', color=color)
     #ax2.plot(week_as_date, weeks.loc[with_data].iloc[:,0]/(total[with_data]), 'o', color=color, label=coun, linestyle=sty)
-    ax2.plot(week_as_date, total[with_data], 'o', color=color, label=coun, linestyle=sty)
-    ax2.plot(week_as_date, weeks.loc[with_data].iloc[:,0], 'o', color="purple", label=coun, linestyle=sty)
+    ax2.plot(week_as_date, total[with_data], 'o', label=coun,
+            color=color, linestyle='-')
+    ax2.plot(week_as_date, weeks.loc[with_data].iloc[:,0], 'o', color="purple", label=coun, linestyle='-')
     ax2.tick_params(axis='y', labelcolor=color)
     ax2.set_yscale("log")
 
@@ -370,7 +464,7 @@ ax1.add_patch(Rectangle((eng_quarFree_start,eng_y_start), eng_quarFree_end-eng_q
 
 #swiss q-free-travel to spain
 ch_quarFree_start = datetime.datetime.strptime("2020-06-15", "%Y-%m-%d")
-ch_quarFree_end = datetime.datetime.strptime("2020-08-10", "%Y-%m-%d") 
+ch_quarFree_end = datetime.datetime.strptime("2020-08-10", "%Y-%m-%d")
 ch_y_start = 0.07
 ch_y_end = 0.05
 ax1.add_patch(Rectangle((ch_quarFree_start,ch_y_start), ch_quarFree_end-ch_quarFree_start, ch_y_end, ec='peru', fc='peru'))
