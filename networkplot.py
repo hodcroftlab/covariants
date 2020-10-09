@@ -146,6 +146,7 @@ if start.name not in spanish_attr:
 
 node_counts = pd.DataFrame(data=spanish_attr)
 node_counts = node_counts.fillna(0)
+node_counts=node_counts.sort_index()
 
 #make colors
 #for coun in node_counts.index:
@@ -202,7 +203,7 @@ for node in G.nodes:
 plt.legend(handles=ptchs, loc=(0.8,0.3))
 plt.ylim(-1,1.5)
 plt.xlim(-1,1.5)
-
+plt.tight_layout()
 
 
 plt.legend(handles=ptchs)
