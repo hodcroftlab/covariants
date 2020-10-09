@@ -78,6 +78,11 @@ Up to date Spain map from Dutch govt [govt site](https://www.nederlandwereldwijd
 
 Spain opened borders to EU countries on 21 June (but not Portugal, until 1 July[AA](https://www.aa.com.tr/en/europe/spain-opens-borders-as-cases-inch-up-again/1896454#:~:text=Total%20COVID%2D19%20infections%20in,requested%20more%20time%20in%20isolation.)
 
+## Netherlands
+From June 15, open to EU & Schengen Area where under control. Denmark, UK, Sweden are 'code Orange' (meaning of this can vary...) [NL times](https://nltimes.nl/2020/06/14/dutch-travel-bans-domestic-rules-ease-monday)
+
+From July 1, open to all Schengen Area, except UK and Sweden who are still Code Orange. However some places still restrict travel from NL (list in article) [NL Times](https://nltimes.nl/2020/06/30/eu-let-tourists-dutch-restrictions-ease-us-still-permitted)
+
 ## France 
 Opened borders to EU countries on 15 June [HSE](https://hse.cern/content/travel-restrictions-switzerland-and-france-covid-19)
 [Honolulu Star Advertiser](https://www.staradvertiser.com/2020/06/14/breaking-news/france-to-end-covid-19-border-lockdown-open-up-to-europe/)
