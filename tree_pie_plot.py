@@ -144,7 +144,7 @@ len(cluster.get_nonterminals())
 for node in cluster.find_clades(order='postorder'):
     if node.is_terminal():
         if not uk_run:
-            node.parent.countries.append(node.country)
+            node.parent.total_countries.append(node.country)
         else:
             if node.country == "United Kingdom":
                 node.parent.total_countries.append(node.division)
