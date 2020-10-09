@@ -9,12 +9,6 @@
 # Or by running an ncov build locally/on cluster until sequence-diagnostics.tsv is generated
 # Ensure these two files are in the ncov directory where you're running from.
 
-#For the second part, plotting case data, files are assumed to be in 'sister' repo 'cluster_scripts',
-# with this format:
-case_data_path = "../cluster_scripts/country_case_data/"
-case_files = {'Spain': 'Spain.tsv', 'Norway': 'Norway.tsv', 'Switzerland': 'Switzerland.tsv',
-                'United Kingdom': 'United Kingdom of Great Britain and Northern Ireland.tsv'}
-
 ######### WHERE FILES WRITE OUT
 # If you want to output files to run in `ncov_cluster` to make cluster-focused builds,
 # clone this repo so it sits 'next' to ncov: https://github.com/emmahodcroft/ncov_cluster
@@ -264,7 +258,9 @@ ax3.text(datetime.datetime.strptime("2020-06-21", "%Y-%m-%d"), 0.05, "Spain open
 
 
 plt.savefig(figure_path+"overall_trends.png")
-
+trends_path = figure_path+"overall_trends.png"
+copypath = trends_path.replace("trends", "trends-{}".format(datetime.date.today().strftime("%Y-%m-%d")))
+copyfile(trends_path, copypath)
 
 #############################################
 #############################################
@@ -272,6 +268,12 @@ plt.savefig(figure_path+"overall_trends.png")
 #############################################
 ### Now let's plot overall case trends against number of sequences, & number of sequences in the cluster.
 # Let's do this just for Spain, Switzerland, Norway, UK - as they have most sequences in cluster.
+
+#For the this part, plotting case data, files are assumed to be in 'sister' repo 'cluster_scripts',
+# with this format:
+case_data_path = "../cluster_scripts/country_case_data/"
+case_files = {'Spain': 'Spain.tsv', 'Norway': 'Norway.tsv', 'Switzerland': 'Switzerland.tsv',
+                'United Kingdom': 'United Kingdom of Great Britain and Northern Ireland.tsv'}
 
 seqs_week = {}
 cases_week = {}
