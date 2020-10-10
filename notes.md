@@ -142,5 +142,26 @@ Ryanair resumed 1 July [Guardian article](https://www.theguardian.com/business/2
 
 
 # Swiss Intros
+node    #swiss  node        parent
+B       1       has spain   has spain               I1
+E       10      has spain   has spain   E -> B      I1
+H       43      no spain    has spain               I2
+I       4       has spain   has spain   E -> I      I1 ('norway')
+N       3       no spain    no spain                I3
+P       2       no spain    has spain   I -> P      I1
+U       1       no spain    no spain                I4
+V       57      no spain    no spain    U -> V      I4
+X       23      no spain    has spain   E -> X      I1
+[       2       no spain    no spain    X->Y->[     I5 ? or I1
+\       1       no spain    has spain   E -> \      I1
+^       1       no spain    has spain   E _> ^      I1
+_       4       has spain   has spain   E -> _      I1
+c       3       no spain    has spain   _ -> c      I1 ?
+e       1       has spain   no spain    c -> e      I1
+k       1       no spain    no spain                I6
+m       4       has spain   has spain   _ -> m      I1?
 
-
+Take these as 3 separate introductions
+H
+V
+X + [
