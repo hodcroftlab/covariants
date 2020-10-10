@@ -11,6 +11,7 @@ alignfile = "results/clusone/subsampled_alignment.fasta"
 
 # Path to write figures to
 figure_path = "../cluster_scripts/figures/"
+fmt = 'pdf'
 
 from Bio import Phylo
 from augur.utils import read_metadata, read_node_data
@@ -252,9 +253,9 @@ plt.legend(handles=ptchs, loc=3, fontsize=fs)
 plt.tight_layout()
 
 if not uk_run:
-    tree_path = figure_path+"pie_tree.png"
+    tree_path = figure_path+f"pie_tree.{fmt}"
 else:
-    tree_path = figure_path+"uk_pie_tree.png"
+    tree_path = figure_path+f"uk_pie_tree.{fmt}"
 
 plt.savefig(tree_path)
 copypath = tree_path.replace("tree", "tree-{}".format(datetime.date.today().strftime("%Y-%m-%d")))

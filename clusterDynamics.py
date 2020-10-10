@@ -159,8 +159,8 @@ for coun in all_countries:
         counts_by_week[dat.isocalendar()[1]]+=1  #returns ISO calendar week
     clus_week_counts[coun] = counts_by_week
 
-# Get counts per week for sequences not in the cluster - from week 20 only.
-other_week_counts = {}
+# Get counts per week for sequences regardless of whether in the cluster or not - from week 20 only.
+total_week_counts = {}
 for coun in all_countries:
     counts_by_week = defaultdict(int)
     if coun in uk_countries:
@@ -177,7 +177,7 @@ for coun in all_countries:
             if wk >= 20:
                 counts_by_week[wk]+=1
                 acknowledgement_table.append([row.strain, row.gisaid_epi_isl, row.originating_lab, row.submitting_lab, row.authors])
-    other_week_counts[coun] = counts_by_week
+    total_week_counts[coun] = counts_by_week
 
 with open('../cluster_scripts/acknowledgement_table.tsv', 'w') as fh:
     fh.write('#strain\tEPI_ISOLATE_ID\tOriginating lab\tsubmitting lab\tauthors\n')
@@ -187,10 +187,10 @@ with open('../cluster_scripts/acknowledgement_table.tsv', 'w') as fh:
 
 # Convert into dataframe
 cluster_data = pd.DataFrame(data=clus_week_counts)
-other_data = pd.DataFrame(data=other_week_counts)
+total_data = pd.DataFrame(data=total_week_counts)
 
 # sort
-other_data=other_data.sort_index()
+total_data=total_data.sort_index()
 cluster_data=cluster_data.sort_index()
 
 # Make a plot
@@ -236,24 +236,26 @@ ax2.set_ylim([0,y_start+height])
 ax2.get_yaxis().set_visible(False)
 # ax2.set_axis_off()
 
-#for a simpler plot of most interesting countries use this:
-for coun in [x for x in countries_to_plot if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
+def non_zero_counts(cluster_data, country):
 
-    weeks = pd.concat([cluster_data[coun], other_data[coun]], axis=1).fillna(0)
-    total = weeks.sum(axis=1)
-    with_data = total>0
+    cluster_and_total = pd.concat([cluster_data[country], total_data[country]], axis=1).fillna(0)
+    with_data = cluster_and_total.iloc[:,1]>0
 
     #this lets us plot X axis as dates rather than weeks (I struggle with weeks...)
-    week_as_date = [ datetime.datetime.strptime("2020-W{}-1".format(x), '%G-W%V-%u') for x in weeks.index[with_data] ]
+    week_as_date = [ datetime.datetime.strptime("2020-W{}-1".format(x), '%G-W%V-%u')
+                     for x in cluster_and_total.index[with_data] ]
     #plt.plot(weeks.index[with_data], weeks.loc[with_data].iloc[:,0]/(total[with_data]), 'o', color=palette[i], label=coun, linestyle=sty)
-    cluster_count = weeks.loc[with_data].iloc[:,0]
-    total_count = total[with_data]
-    mean_upper_lower = []
-    for x, n in zip(cluster_count, total_count):
-        mean_upper_lower.append(bernoulli_estimator(x,n))
-    mean_upper_lower = np.array(mean_upper_lower)
+    cluster_count = cluster_and_total[with_data].iloc[:,0]
+    total_count = cluster_and_total[with_data].iloc[:,1]
 
-    ax3.plot(week_as_date, mean_upper_lower[:,0], marker='o',
+    return week_as_date, np.array(cluster_count), np.array(total_count)
+
+
+#for a simpler plot of most interesting countries use this:
+for coun in [x for x in countries_to_plot if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
+    week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, coun)
+
+    ax3.plot(week_as_date, cluster_count/total_count, marker='o',
              color=country_styles[coun]['c'],
              linestyle=country_styles[coun]['ls'], label=coun)
     # ax3.errorbar(week_as_date, mean_upper_lower[:,0], yerr=mean_upper_lower[:,1:].T, marker='o',
@@ -285,29 +287,25 @@ copyfile(trends_path, copypath)
 def logistic(x, a, t50):
     return np.exp((x-t50)*a)/(1+np.exp((x-t50)*a))
 
-def fit_logistic(days, mean_upper_lower):
+def fit_logistic(days, cluster, total):
     from scipy.optimize import minimize
 
-    def cost(P, x, y):
+    def cost(P, t, k, n):
         a, t50 = P
-        return np.sum(((y[:,0] - logistic(x, a, t50))/(y[:,1]+y[:,2]+0.05))**2)
+        prob = np.minimum(0.98,np.maximum(1e-2,logistic(t, a, t50)))
+        return -np.sum(k*np.log(prob) + (n-k)*np.log(1-prob))
 
-    sol = minimize(cost, [0.02, days[-1]], args=(days, mean_upper_lower))
+    sol = minimize(cost, [0.08, np.max(days)], args=(days, cluster, total))
     return sol
 
 fig = plt.figure()
+from scipy.stats import scoreatpercentile
+rates = {}
+n_bootstraps=100
 #for a simpler plot of most interesting countries use this:
 for coun in ['Switzerland', 'England', 'Scotland', 'Wales']:
-    weeks = pd.concat([cluster_data[coun], other_data[coun]], axis=1).fillna(0)
-    total = weeks.sum(axis=1)
-    with_data = total>0
-
-    #this lets us plot X axis as dates rather than weeks (I struggle with weeks...)
-    week_as_date = [ datetime.datetime.strptime("2020-W{}-1".format(x), '%G-W%V-%u') for x in weeks.index[with_data] ]
-    days = [d.toordinal() for d in week_as_date]
-
-    cluster_count = weeks.loc[with_data].iloc[:,0]
-    total_count = total[with_data]
+    week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, coun)
+    days = np.array([x.toordinal() for x in week_as_date])
     mean_upper_lower = []
     for x, n in zip(cluster_count, total_count):
         mean_upper_lower.append(bernoulli_estimator(x,n))
@@ -321,11 +319,22 @@ for coun in ['Switzerland', 'England', 'Scotland', 'Wales']:
                  color=country_styles[coun]['c'],
                  linestyle=country_styles[coun]['ls'])
 
-    fit = fit_logistic(days, mean_upper_lower)
-    plt.plot(week_as_date, logistic(days, fit['x'][0], fit['x'][1]),
+    center_fit = fit_logistic(days, cluster_count, total_count)
+    rates[coun] = {'center':center_fit['x'][0]}
+    bootstraps = []
+    for n in range(n_bootstraps):
+        # NOTE: bootstrap weeks to estimate confidence
+        ind = np.random.randint(len(cluster_count), size=len(cluster_count))
+        fit = fit_logistic(days[ind], cluster_count[ind], total_count[ind])
+        bootstraps.append(fit['x'][0])
+    rates[coun]['bootstraps'] = bootstraps
+    rates[coun]['lower'] = scoreatpercentile(bootstraps, 25)
+    rates[coun]['upper'] = scoreatpercentile(bootstraps, 75)
+
+    plt.plot(week_as_date, logistic(days, center_fit['x'][0], center_fit['x'][1]),
              c=country_styles[coun]['c'], ls=country_styles[coun]['ls'],
-             label = f"{coun}, growth rate: {fit['x'][0]*700:1.1f}%/week")
-    print(f"{coun} growth rate: {fit['x'][0]*700:1.2f}% per week")
+             label = f"{coun}, growth rate: {rates[coun]['center']*700:1.1f}({rates[coun]['lower']*700:1.1f}-{rates[coun]['upper']*700:1.1f})%/week")
+    print(f"{coun} growth rate: {rates[coun]['center']*700:1.2f}% per week")
 
 plt.legend()
 fig.autofmt_xdate(rotation=30)
