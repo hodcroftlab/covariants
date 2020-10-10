@@ -227,7 +227,7 @@ for node in cluster2.find_clades(order="preorder"):
 
 # Actually plot!
 fs = 16
-fig = plt.figure(figsize=(14,12))
+fig = plt.figure(figsize=(12,10))
 ax = fig.add_subplot(1,1,1)
 Phylo.draw(cluster2, label_func=lambda x:'', axes=ax,
            branch_labels=lambda x: ",".join([f"{a}{p+1}{d}" for a,p,d in x.mutations]))
@@ -242,9 +242,14 @@ for node in cluster2.find_clades(order="preorder"):
         size=200*np.sum(total_counts)**0.25)
     # plt.text(node.x+0.00001, node.y, int(sum(list(counts.values()))))
     # plt.text(node.x-0.000015, node.y, node_names[node.name] )
+
+for ni,n in enumerate([1,10,100]):
+    ax.scatter([0.00002*(ni+1)], [2], s=200*np.sum(n)**0.25, edgecolor='k', facecolor='w')
+    ax.text(0.000018*(ni+1), 3, f"n={n}")
+
 plt.axis('off')
 plt.legend(handles=ptchs, loc=3, fontsize=fs)
-
+plt.tight_layout()
 
 if not uk_run:
     tree_path = figure_path+"pie_tree.png"
