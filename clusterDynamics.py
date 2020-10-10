@@ -304,14 +304,14 @@ for coun in ['Switzerland', 'England', 'Scotland', 'Wales']:
     #              marker='o', color=palette[i], label=coun, linestyle=sty)
     # plt.errorbar(week_as_date, mean_upper_lower[:,0], yerr=mean_upper_lower[:,1:].T,
     plt.plot(week_as_date, mean_upper_lower[:,0],
-                 marker='o', label=coun,
+                 marker='o',
                  color=country_styles[coun]['c'],
                  linestyle=country_styles[coun]['ls'])
 
     fit = fit_logistic(days, mean_upper_lower)
     plt.plot(week_as_date, logistic(days, fit['x'][0], fit['x'][1]),
              c=country_styles[coun]['c'], ls=country_styles[coun]['ls'],
-             label = f"{coun}, growth rate: {fit['x'][0]*700:1.2f}%/week")
+             label = f"{coun}, growth rate: {fit['x'][0]*700:1.1f}%/week")
     print(f"{coun} growth rate: {fit['x'][0]*700:1.2f}% per week")
 
 plt.legend()
