@@ -31,6 +31,7 @@ import seaborn as sns
 from shutil import copyfile
 from collections import defaultdict
 from matplotlib.patches import Rectangle
+from colors_and_countries import *
 
 # n is the number of observations
 # x is the number of times you see the mutation
@@ -108,21 +109,17 @@ copyfile(clusterlist_output, copypath)
 # Just so we have the data, write out the metadata for these sequences
 cluster_meta = meta[meta['strain'].isin(wanted_seqs)]
 cluster_meta.to_csv(out_meta_file,sep="\t",index=False)
+observed_countries = [x for x in cluster_meta['country'].unique()]
 
 # What countries do sequences in the cluster come from?
-country_list = sorted(cluster_meta['country'].unique())
-print("The cluster is found in: {}".format([x for x in country_list]))
+print(f"The cluster is found in: {observed_countries}")
 
-#separate out Scotland, England, NI, Wales...
-uk_countries = ['Scotland', 'England', 'Wales', 'Northern Ireland']
-country_uk_list = list(country_list)
-country_uk_list.extend(uk_countries)
 
 # Let's get some summary stats on number of sequences, first, and last, for each country.
-country_info = pd.DataFrame(index=country_uk_list, columns=['first_seq', 'num_seqs', 'last_seq'])
+country_info = pd.DataFrame(index=all_countries, columns=['first_seq', 'num_seqs', 'last_seq'])
 country_dates = {}
 
-for coun in country_uk_list:
+for coun in all_countries:
     if coun in uk_countries:
         temp_meta = cluster_meta[cluster_meta['division'].isin([coun])]
     else:
@@ -138,26 +135,8 @@ print(country_info)
 
 # Plot simple lines over time per country - very basic.
 # (For some other clusters, easier to set color manually)
-    #palette = sns.color_palette("tab10", 5)
 
-# For the main cluster, ran out of colors... try this hack.
-palette = sns.color_palette("tab10", round(len(country_list)/2))
-linestyles = ['-', '-.','--', ':']
-
-country_styles = {
-    country: {'c':f"C{i%10}", 'ls':linestyles[i//10]}
-    for i, country in enumerate(country_list)
- }
-
-country_styles.update({
- 'Scotland':        {'c':country_styles['United Kingdom']['c'], 'ls':':'},
- 'England':         {'c':country_styles['United Kingdom']['c'], 'ls':':'},
- 'Wales':           {'c':country_styles['United Kingdom']['c'], 'ls':':'},
- 'Northern Ireland':{'c':country_styles['United Kingdom']['c'], 'ls':':'},
-})
-
-
-for coun in country_list:
+for coun in all_countries:
     X,Y = np.unique(country_dates[coun], return_counts=True)
     plt.plot(X,Y, color=country_styles[coun]['c'],
         linestyle=country_styles[coun]['ls'], label=coun)
@@ -167,11 +146,11 @@ plt.show()
 
 # We want to look at % of samples from a country that are in this cluster
 # To avoid the up-and-down of dates, bin samples into weeks
-country_list = country_uk_list
+countries_to_plot = countries_and_uk_list
 
 # Get counts per week for sequences in the cluster
 clus_week_counts = {}
-for coun in country_list:
+for coun in countries_to_plot:
     counts_by_week = defaultdict(int)
     for dat in country_dates[coun]:
         #counts_by_week[dat.timetuple().tm_yday//7]+=1 # old method
@@ -180,7 +159,7 @@ for coun in country_list:
 
 # Get counts per week for sequences not in the cluster - from week 20 only.
 other_week_counts = {}
-for coun in country_list:
+for coun in countries_to_plot:
     counts_by_week = defaultdict(int)
     if coun in uk_countries:
         temp_meta = meta[meta['division'].isin([coun])]
@@ -230,12 +209,12 @@ q_free_to_swiss = {
 # Make a plot
 #fig = plt.figure(figsize=(10,5))
 #fig, axs=plt.subplots(1,1, figsize=(10,5))
-fs = 10
+fs = 12
 fig, (ax1, ax2, ax3) = plt.subplots(nrows=3, sharex=True,figsize=(10,7),
                                     gridspec_kw={'height_ratios':[1,1,3]})
 
 i=0
-for coun in [x for x in country_list if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
+for coun in [x for x in countries_to_plot if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
     if coun in q_free_to_spain:
         q_times = q_free_to_spain[coun]
         strt = datetime.datetime.strptime(q_times["start"], "%Y-%m-%d")
@@ -252,7 +231,7 @@ ax1.text(datetime.datetime.strptime("2020-06-21", "%Y-%m-%d"), 0.12,
 
 
 i=0
-for coun in [x for x in country_list if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
+for coun in [x for x in countries_to_plot if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
     if coun in q_free_to_other:
         print("plot {}".format(coun))
         q_times = q_free_to_other[coun]
@@ -268,7 +247,7 @@ ax2.set_ylim([0,y_start+height])
 # ax2.set_axis_off()
 
 #for a simpler plot of most interesting countries use this:
-for coun in [x for x in country_list if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
+for coun in [x for x in countries_to_plot if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
 
     weeks = pd.concat([cluster_data[coun], other_data[coun]], axis=1).fillna(0)
     total = weeks.sum(axis=1)
@@ -327,7 +306,7 @@ def fit_logistic(days, mean_upper_lower):
 
 fig = plt.figure()
 #for a simpler plot of most interesting countries use this:
-for coun in ['Switzerland', 'United Kingdom', 'England', 'Scotland', 'Wales']:
+for coun in ['Switzerland', 'England', 'Scotland', 'Wales']:
     weeks = pd.concat([cluster_data[coun], other_data[coun]], axis=1).fillna(0)
     total = weeks.sum(axis=1)
     with_data = total>0
