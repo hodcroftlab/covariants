@@ -121,6 +121,14 @@ From June 15, arrivals from UK must quarantine 14 days [Belfast Telegraph](https
 Ireland will publish a 'green list' from 9 July [Jakarta Post](https://www.thejakartapost.com/news/2020/06/26/ireland-to-ease-travel-restrictions-with-some-countries-from-july-9.html)
 But it was pushed back to 20th July [The Journal](https://www.thejournal.ie/green-list-ireland-travel-5153179-Jul2020/)
 
+**How did Ireland control crossing border to North Ireland??**
+Hard to say... can't find direct source. But seems border was not closed, but movement restrictions (2km?) may have been in place. Here are some links:
+- "Because of a flaw in the Irish government's emergency legislation, people from Northern Ireland cannot be made to comply with the Republic's Covid-19 travel restrictions" [BBC](https://www.bbc.com/news/world-europe-52777526)
+- "Varadkar said anyone day-tripping from Northern Ireland into the Republic is in breach of local law in Northern Ireland, and vice versa." [The Journal](https://www.thejournal.ie/travel-from-northern-ireland-5088381-Apr2020/)
+- "The regulations state that the restrictions on movement apply to people "whose place of residence is located within a relevant geographical location" and that a place of residence means "a person's home"."[BBC](https://www.bbc.com/news/uk-northern-ireland-52428314)
+- "Even though we’re an island, we have a land border with the United Kingdom, i.e Northern Ireland, we’re not going to close that."[The Journal](https://www.thejournal.ie/leo-varadkar-covid-19-travel-restrictions-5080458-Apr2020/)
+
+2km restrictions were in place until May? [Irish Times](https://www.irishtimes.com/news/health/coronavirus-the-reopening-ireland-plan-in-detail-1.4242985)
 
 # Flights
 
@@ -131,4 +139,8 @@ Resumed on 15 June? [source for both](https://www.theguardian.com/business/2020/
 Easyjet says restarting 15 June [Statement](https://mediacentre.easyjet.com/story/14243/easyjet-announces-restart-of-flying-from-15-june-with-new-bio-security-measures)
 
 Ryanair resumed 1 July [Guardian article](https://www.theguardian.com/business/2020/may/12/ryanair-flights-resume-coronavirus-rules-july)
+
+
+# Swiss Intros
+
 
