@@ -1,18 +1,33 @@
 
 
 country_list =[
-'United Kingdom',
-'Switzerland',
 'France',
-'Spain',
+'United Kingdom',
+'Latvia',
 'Netherlands',
 'Norway',
-'Latvia',
+'Spain',
 'Belgium',
+'Switzerland',
 'Germany',
 'Hong Kong',
 'Ireland',
 'Italy',
+]
+
+colors = [
+"#a6cee3",
+"#1f78b4",
+"#b2df8a",
+"#33a02c",
+"#fb9a99",
+"#e31a1c",
+"#fdbf6f",
+"#ff7f00",
+"#cab2d6",
+"#6a3d9a",
+"#ffff99",
+"#b15928",
 ]
 
 #separate out Scotland, England, NI, Wales...
@@ -25,7 +40,7 @@ all_countries = country_list + uk_countries
 linestyles = ['-', '-.','--', ':']
 
 country_styles = {
-    country: {'c':f"C{i%10}", 'ls':linestyles[i//10]}
+    country: {'c':colors[i], 'ls':linestyles[i//len(colors)]}
     for i, country in enumerate(country_list)
  }
 
