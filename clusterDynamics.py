@@ -251,13 +251,32 @@ def non_zero_counts(cluster_data, country):
     return week_as_date, np.array(cluster_count), np.array(total_count)
 
 
+def marker_size(n):
+    if n>100:
+        return 150
+    elif n>50:
+        return 100
+    elif n>10:
+        return 70
+    elif n>5:
+        return 50
+    elif n>1:
+        return 20
+    else:
+        return 5
+
 #for a simpler plot of most interesting countries use this:
 for coun in [x for x in countries_to_plot if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
     week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, coun)
 
-    ax3.plot(week_as_date, cluster_count/total_count, marker='o',
+    ax3.plot(week_as_date, cluster_count/total_count,
              color=country_styles[coun]['c'],
              linestyle=country_styles[coun]['ls'], label=coun)
+    ax3.scatter(week_as_date, cluster_count/total_count, s=[marker_size(n) for n in total_count],
+             color=country_styles[coun]['c'],
+             linestyle=country_styles[coun]['ls'])
+
+
     # ax3.errorbar(week_as_date, mean_upper_lower[:,0], yerr=mean_upper_lower[:,1:].T, marker='o',
     #          color=country_styles[coun]['c'], linestyle=country_styles[coun]['ls'], label=coun)
 
