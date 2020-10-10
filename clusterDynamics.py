@@ -149,7 +149,7 @@ plt.show()
 # We want to look at % of samples from a country that are in this cluster
 # To avoid the up-and-down of dates, bin samples into weeks
 countries_to_plot = country_list
-
+acknowledgement_table = []
 # Get counts per week for sequences in the cluster
 clus_week_counts = {}
 for coun in all_countries:
@@ -168,14 +168,22 @@ for coun in all_countries:
     else:
         temp_meta = meta[meta['country'].isin([coun])]
     #week 20
-    for dat in temp_meta['date']:
+    for ri, row in temp_meta.iterrows():
+        dat = row.date
         if len(dat) is 10 and "-XX" not in dat: # only take those that have real dates
             dt = datetime.datetime.strptime(dat, '%Y-%m-%d')
             # wk = dt.timetuple().tm_yday//7  # old method
             wk = dt.isocalendar()[1] #returns ISO calendar week
             if wk >= 20:
                 counts_by_week[wk]+=1
+                acknowledgement_table.append([row.strain, row.gisaid_epi_isl, row.originating_lab, row.submitting_lab, row.authors])
     other_week_counts[coun] = counts_by_week
+
+with open('../cluster_scripts/acknowledgement_table.tsv', 'w') as fh:
+    fh.write('#strain\tEPI_ISOLATE_ID\tOriginating lab\tsubmitting lab\tauthors\n')
+    for d in acknowledgement_table:
+        fh.write('\t'.join(d)+'\n')
+
 
 # Convert into dataframe
 cluster_data = pd.DataFrame(data=clus_week_counts)
@@ -406,7 +414,7 @@ for coun in ['Switzerland', 'United Kingdom', 'Norway', 'Spain']:
     fig.autofmt_xdate(rotation=30)
     fig.tight_layout()
     plt.show()
-    plt.savefig(figure_path+f"{fmt}-newcases-seqs.{fmt}")
+    plt.savefig(figure_path+f"{coun}-newcases-seqs.{fmt}")
 
 
 
