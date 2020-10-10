@@ -32,6 +32,7 @@ from shutil import copyfile
 from collections import defaultdict
 from matplotlib.patches import Rectangle
 from colors_and_countries import *
+from travel_data import *
 
 # n is the number of observations
 # x is the number of times you see the mutation
@@ -150,7 +151,7 @@ countries_to_plot = countries_and_uk_list
 
 # Get counts per week for sequences in the cluster
 clus_week_counts = {}
-for coun in countries_to_plot:
+for coun in all_countries:
     counts_by_week = defaultdict(int)
     for dat in country_dates[coun]:
         #counts_by_week[dat.timetuple().tm_yday//7]+=1 # old method
@@ -159,7 +160,7 @@ for coun in countries_to_plot:
 
 # Get counts per week for sequences not in the cluster - from week 20 only.
 other_week_counts = {}
-for coun in countries_to_plot:
+for coun in all_countries:
     counts_by_week = defaultdict(int)
     if coun in uk_countries:
         temp_meta = meta[meta['division'].isin([coun])]
@@ -182,29 +183,6 @@ other_data = pd.DataFrame(data=other_week_counts)
 # sort
 other_data=other_data.sort_index()
 cluster_data=cluster_data.sort_index()
-
-
-#quarantine free travel to spain:
-q_free_to_spain = {
-    "United Kingdom": {"start": "2020-07-10", "end": "2020-07-26"},
-    "Norway": {"start": "2020-07-15", "end": "2020-07-25"},
-    "Switzerland": {"start": "2020-06-15", "end": "2020-08-10"},
-    "Latvia": {"start": "2020-07-01", "end": "2020-07-17"},
-    "France": {"start": "2020-06-15", "end": "2020-10-05"}
-}
-
-q_free_to_other = {
-    "Latvia": {"start": "2020-07-01", "end": "2020-08-14", "msg": "Latvia to UK"},
-    "France": {"start": "2020-06-15", "end": "2020-10-05", "msg": "France to UK"},
-    "Norway": {"start": "2020-07-15", "end": "2020-08-21", "msg": "Norway to UK"},
-    "Switzerland": {"start": "2020-06-15", "end": "2020-09-28", "msg": "Switzerland to UK"},
-    "United Kingdom": {"start": "2020-07-10", "end": "2020-08-29", "msg": "UK to Switzerland"}
-}
-
-#note scotland was earlier
-q_free_to_swiss = {
-    "United Kingdom": {"start": "2020-07-10", "end": "2020-08-29"}
-}
 
 # Make a plot
 #fig = plt.figure(figsize=(10,5))
@@ -331,8 +309,14 @@ for coun in ['Switzerland', 'England', 'Scotland', 'Wales']:
                  linestyle=country_styles[coun]['ls'])
 
     fit = fit_logistic(days, mean_upper_lower)
-    plt.plot(week_as_date, logistic(days, fit['x'][0], fit['x'][1]))
+    plt.plot(week_as_date, logistic(days, fit['x'][0], fit['x'][1]),
+             c=country_styles[coun]['c'], ls=country_styles[coun]['ls'],
+             label = f"{coun}, growth rate: {fit['x'][0]*700:1.2f}%/week")
     print(f"{coun} growth rate: {fit['x'][0]*700:1.2f}% per week")
+
+plt.legend()
+fig.autofmt_xdate(rotation=30)
+plt.ylabel('frequency')
 
 #############################################
 #############################################
