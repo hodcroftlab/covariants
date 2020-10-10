@@ -22,6 +22,7 @@ figure_path = "../cluster_scripts/figures/"
 
 # Otherwise, modify the paths above to put the files wherever you like.
 # (Alternatively just create a folder structure to mirror the above)
+fmt = "pdf"
 
 import pandas as pd
 import datetime
@@ -147,7 +148,7 @@ plt.show()
 
 # We want to look at % of samples from a country that are in this cluster
 # To avoid the up-and-down of dates, bin samples into weeks
-countries_to_plot = countries_and_uk_list
+countries_to_plot = country_list
 
 # Get counts per week for sequences in the cluster
 clus_week_counts = {}
@@ -187,7 +188,7 @@ cluster_data=cluster_data.sort_index()
 # Make a plot
 #fig = plt.figure(figsize=(10,5))
 #fig, axs=plt.subplots(1,1, figsize=(10,5))
-fs = 12
+fs = 14
 fig, (ax1, ax2, ax3) = plt.subplots(nrows=3, sharex=True,figsize=(10,7),
                                     gridspec_kw={'height_ratios':[1,1,3]})
 
@@ -197,16 +198,16 @@ for coun in [x for x in countries_to_plot if x not in ['Italy', 'Netherlands', '
         q_times = q_free_to_spain[coun]
         strt = datetime.datetime.strptime(q_times["start"], "%Y-%m-%d")
         end = datetime.datetime.strptime(q_times["end"], "%Y-%m-%d")
-        y_start = i*0.02
+        y_start = i*0.022
         height = 0.02
         ax1.add_patch(Rectangle((strt,y_start), end-strt, height,
                       ec=country_styles[coun]['c'], fc=country_styles[coun]['c']))
+        ax1.text(strt, y_start+0.002, q_times["msg"], fontsize=fs*0.8)
     i=i+1
 ax1.set_ylim([0,y_start+height])
-ax1.text(datetime.datetime.strptime("2020-06-21", "%Y-%m-%d"), 0.12,
-         "Quarantine-free Travel to Spain", fontsize=fs*0.8)
-# ax1.set_axis_off()
-
+ax1.text(datetime.datetime.strptime("2020-05-10", "%Y-%m-%d"), y_start-height,
+         "Travel to Spain", fontsize=fs)
+ax1.get_yaxis().set_visible(False)
 
 i=0
 for coun in [x for x in countries_to_plot if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
@@ -215,13 +216,16 @@ for coun in [x for x in countries_to_plot if x not in ['Italy', 'Netherlands', '
         q_times = q_free_to_other[coun]
         strt = datetime.datetime.strptime(q_times["start"], "%Y-%m-%d")
         end = datetime.datetime.strptime(q_times["end"], "%Y-%m-%d")
-        y_start = i*0.02
+        y_start = i*0.022
         height = 0.02
         ax2.add_patch(Rectangle((strt,y_start), end-strt, height,
                       ec=country_styles[coun]['c'], fc=country_styles[coun]['c']))
-        ax2.text(strt, y_start, q_times["msg"], fontsize=fs*0.8)
+        ax2.text(strt, y_start+0.002, q_times["msg"], fontsize=fs*0.8)
     i=i+1
+ax2.text(datetime.datetime.strptime("2020-05-10", "%Y-%m-%d"), y_start-height,
+         "Travel to/from the UK", fontsize=fs)
 ax2.set_ylim([0,y_start+height])
+ax2.get_yaxis().set_visible(False)
 # ax2.set_axis_off()
 
 #for a simpler plot of most interesting countries use this:
@@ -253,14 +257,15 @@ fig.autofmt_xdate(rotation=30)
 ax3.tick_params(labelsize=fs*0.8)
 ax3.set_ylabel('frequency')
 plt.show()
+plt.tight_layout()
 
 #spain opens borders
 ax3.text(datetime.datetime.strptime("2020-06-21", "%Y-%m-%d"), 0.05,
          "Spain opens borders", rotation='vertical', fontsize=fs*0.8)
 
 
-plt.savefig(figure_path+"overall_trends.png")
-trends_path = figure_path+"overall_trends.png"
+plt.savefig(figure_path+f"overall_trends.{fmt}")
+trends_path = figure_path+f"overall_trends.{fmt}"
 copypath = trends_path.replace("trends", "trends-{}".format(datetime.date.today().strftime("%Y-%m-%d")))
 copyfile(trends_path, copypath)
 
@@ -317,6 +322,8 @@ for coun in ['Switzerland', 'England', 'Scotland', 'Wales']:
 plt.legend()
 fig.autofmt_xdate(rotation=30)
 plt.ylabel('frequency')
+plt.tight_layout()
+plt.savefig(figure_path+f'logistic_fits.{fmt}')
 
 #############################################
 #############################################
@@ -381,7 +388,6 @@ for coun in ['Switzerland', 'United Kingdom', 'Norway', 'Spain']:
     fig, ax1 = plt.subplots()
     plt.title(coun)
     color='tab:blue'
-    ax1.set_xlabel('Time')
     ax1.set_ylabel('New Cases', color=color)
     ax1.plot(case_week_as_date , case_data[coun], color=color)
     ax1.tick_params(axis='y', labelcolor=color)
@@ -400,7 +406,7 @@ for coun in ['Switzerland', 'United Kingdom', 'Norway', 'Spain']:
     fig.autofmt_xdate(rotation=30)
     fig.tight_layout()
     plt.show()
-    plt.savefig(figure_path+"{}-newcases-seqs.png".format(coun))
+    plt.savefig(figure_path+f"{fmt}-newcases-seqs.{fmt}")
 
 
 

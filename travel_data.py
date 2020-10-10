@@ -2,11 +2,11 @@
 
 #quarantine free travel to spain:
 q_free_to_spain = {
-    "United Kingdom": {"start": "2020-07-10", "end": "2020-07-26"},
-    "Norway": {"start": "2020-07-15", "end": "2020-07-25"},
-    "Switzerland": {"start": "2020-06-15", "end": "2020-08-10"},
-    "Latvia": {"start": "2020-07-01", "end": "2020-07-17"},
-    "France": {"start": "2020-06-15", "end": "2020-10-05"}
+    "United Kingdom": {"start": "2020-07-10", "end": "2020-07-26", "msg": "UK to Spain"},
+    "Norway": {"start": "2020-07-15", "end": "2020-07-25", "msg": "Norway to Spain"},
+    "Switzerland": {"start": "2020-06-15", "end": "2020-08-10", "msg": "Switzerland to Spain"},
+    "Latvia": {"start": "2020-07-01", "end": "2020-07-17", "msg": "Latvia to Spain"},
+    "France": {"start": "2020-06-15", "end": "2020-10-05", "msg": "France to Spain"}
 }
 
 q_free_to_other = {
