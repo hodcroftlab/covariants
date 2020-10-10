@@ -11,6 +11,7 @@ alignfile = "results/clusone/subsampled_alignment.fasta"
 
 # Path to write figures to
 figure_path = "../cluster_scripts/figures/"
+fmt = 'pdf'
 
 from Bio import Phylo
 from augur.utils import read_metadata, read_node_data
@@ -25,8 +26,8 @@ import datetime
 from shutil import copyfile
 from collections import defaultdict
 import copy
-import networkx as nx
 import pandas as pd
+from colors_and_countries import *
 
 # Read in the tree, and add node data
 T = Phylo.read(treefile, 'newick')
@@ -164,32 +165,12 @@ node_counts = pd.DataFrame(data=node_attr)
 node_counts = node_counts.fillna(0)
 node_counts=node_counts.sort_index()
 
-### Set and order the colors we are going to use!
-# Ensure number of countries hasn't changed... or will need more colors!
-colors_only = [
-    "#bfef45",
-    "#3cb44b",
-    "#000075",
-    "#a9a9a9",
-    "#f58231",
-    "#f032e6",
-    "#000000",
-    "#ffe119",
-    "#42d4f4",
-    "#e6194B",
-    "#4363d8",
-    "#911eb4"]
-
-country_colors = {}
-for i in range(len(node_counts.index)):
-    country_colors[node_counts.index[i]] = colors_only[i]
 
 #make color patches for legend
 ptchs = []
-for key in country_colors.keys():
-    patch = mpatches.Patch(color=country_colors[key], label=key)
+for key in node_counts.index:
+    patch = mpatches.Patch(color=country_styles[key]['c'], label=key)
     ptchs.append(patch)
-
 
 
 #Copy our cluster, and then delete/collapse all the tips! (for plotting)
@@ -213,7 +194,7 @@ cluster2.root.x = cluster2.root.branch_length
 for n in cluster2.get_nonterminals(order='preorder'):
     for c in n:
         c.x = n.x + c.branch_length
-    
+
 # Function to draw pie charts
 def draw_pie(ax, ratios=[0.4,0.3,0.3], colors=["red", "blue"], X=0, Y=0, size = 1000):
     N = len(ratios)
@@ -235,6 +216,7 @@ ch = 'A'
 node_names = {}
 node_countries = {}
 for node in cluster2.find_clades(order="preorder"):
+    node.color='grey'
     node_names[node.name] = ch
     node_countries[ch] = {}
     print(ch)
@@ -245,26 +227,35 @@ for node in cluster2.find_clades(order="preorder"):
     ch = chr(ord(ch) + 1)
 
 # Actually plot!
-
-#fig = plt.figure(figsize=(10,20), dpi=100)
-#axes = fig.add_subplot(1,1,1)
-Phylo.draw(cluster2, label_func=lambda x:'')#, axes=axes)
+fs = 16
+fig = plt.figure(figsize=(12,10))
+ax = fig.add_subplot(1,1,1)
+Phylo.draw(cluster2, label_func=lambda x:'', axes=ax,
+           branch_labels=lambda x: ",".join([f"{a}{p+1}{d}" for a,p,d in x.mutations]))
 
 for node in cluster2.find_clades(order="preorder"):
-    counts = node_counts[node.name]
-    sqrt_counts = [math.sqrt(x) for x in counts]
-    draw_pie(ax=plt.gca(), ratios=[x/sum(sqrt_counts) for x in sqrt_counts], 
-        colors=colors_only[:len(country_colors)], X=node.x, Y=node.y, size=700)
-    plt.text(node.x+0.00001, node.y, round(sum(counts)))
-    plt.text(node.x-0.000015, node.y, node_names[node.name] )
-plt.axis('off')
-plt.legend(handles=ptchs)
+    counts = node_counts[node.name].to_dict()
+    sqrt_counts = np.array([x for k,x in counts.items() if x>0])**0.25
+    total_counts = sum(list(counts.values()))
+    nonzero = [k for k,x in counts.items() if x>0]
+    draw_pie(ax=plt.gca(), ratios=[x/sqrt_counts.sum() for x in sqrt_counts],
+        colors=[country_styles[c]['c'] for c in nonzero], X=node.x, Y=node.y,
+        size=200*np.sum(total_counts)**0.25)
+    # plt.text(node.x+0.00001, node.y, int(sum(list(counts.values()))))
+    # plt.text(node.x-0.000015, node.y, node_names[node.name] )
 
+for ni,n in enumerate([1,10,100]):
+    ax.scatter([0.00002*(ni+1)], [2], s=200*np.sum(n)**0.25, edgecolor='k', facecolor='w')
+    ax.text(0.000018*(ni+1), 3, f"n={n}")
+
+plt.axis('off')
+plt.legend(handles=ptchs, loc=3, fontsize=fs)
+plt.tight_layout()
 
 if not uk_run:
-    tree_path = figure_path+"pie_tree.png"
+    tree_path = figure_path+f"pie_tree.{fmt}"
 else:
-    tree_path = figure_path+"uk_pie_tree.png"
+    tree_path = figure_path+f"uk_pie_tree.{fmt}"
 
 plt.savefig(tree_path)
 copypath = tree_path.replace("tree", "tree-{}".format(datetime.date.today().strftime("%Y-%m-%d")))
