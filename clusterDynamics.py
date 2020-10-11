@@ -254,11 +254,11 @@ def non_zero_counts(cluster_data, country):
 def marker_size(n):
     if n>100:
         return 150
-    elif n>50:
+    elif n>30:
         return 100
     elif n>10:
         return 70
-    elif n>5:
+    elif n>3:
         return 50
     elif n>1:
         return 20
@@ -276,8 +276,9 @@ for coun in [x for x in countries_to_plot if x not in ['Italy', 'Netherlands', '
              color=country_styles[coun]['c'],
              linestyle=country_styles[coun]['ls'])
 
-
-    # ax3.errorbar(week_as_date, mean_upper_lower[:,0], yerr=mean_upper_lower[:,1:].T, marker='o',
+for ni,n in enumerate([0,1,3,10,30,100]):
+    ax3.scatter([week_as_date[0]], [0.08+ni*0.07], s=marker_size(n+0.1), edgecolor='k', facecolor='w')
+    ax3.text(week_as_date[1], 0.06+ni*0.07, f"n>{n}" if n else "n=1")
     #          color=country_styles[coun]['c'], linestyle=country_styles[coun]['ls'], label=coun)
 
 
