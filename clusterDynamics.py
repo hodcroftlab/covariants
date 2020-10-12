@@ -344,14 +344,6 @@ for coun in ['Switzerland', 'England', 'Scotland', 'Wales', 'Spain', 'United Kin
         mean_upper_lower.append(bernoulli_estimator(x,n))
     mean_upper_lower = np.array(mean_upper_lower)
 
-    # plt.plot(week_as_date, mean_upper_lower[:,0],
-    #              marker='o', color=palette[i], label=coun, linestyle=sty)
-    # plt.errorbar(week_as_date, mean_upper_lower[:,0], yerr=mean_upper_lower[:,1:].T,
-    plt.plot(week_as_date, mean_upper_lower[:,0],
-                 marker='o',
-                 color=country_styles[coun]['c'],
-                 linestyle=country_styles[coun]['ls'])
-
     center_fit = fit_logistic(days, cluster_count, total_count)
     rates[coun] = {'center':center_fit['x'][0]}
     bootstraps = []
@@ -364,12 +356,22 @@ for coun in ['Switzerland', 'England', 'Scotland', 'Wales', 'Spain', 'United Kin
     rates[coun]['lower'] = scoreatpercentile(bootstraps, 25)
     rates[coun]['upper'] = scoreatpercentile(bootstraps, 75)
     rates[coun]['t50'] = center_fit['x'][1]
-
-    if coun is not 'United Kingdom':
-        plt.plot(week_as_date, logistic(days, center_fit['x'][0], center_fit['x'][1]),
-                 c=country_styles[coun]['c'], ls=country_styles[coun]['ls'],
-                 label = f"{coun}, growth rate: {rates[coun]['center']*700:1.1f}({rates[coun]['lower']*700:1.1f}-{rates[coun]['upper']*700:1.1f})%/week")
     print(f"{coun} growth rate: {rates[coun]['center']*700:1.2f}% per week")
+
+    # plt.plot(week_as_date, mean_upper_lower[:,0],
+    #              marker='o', color=palette[i], label=coun, linestyle=sty)
+    # plt.errorbar(week_as_date, mean_upper_lower[:,0], yerr=mean_upper_lower[:,1:].T,
+    if coun == 'United Kingdom':
+        print('UK')
+        continue
+    plt.plot(week_as_date, mean_upper_lower[:,0],
+             marker='o',
+             color=country_styles[coun]['c'],
+             linestyle=country_styles[coun]['ls'])
+
+    plt.plot(week_as_date, logistic(days, center_fit['x'][0], center_fit['x'][1]),
+             c=country_styles[coun]['c'], ls=country_styles[coun]['ls'],
+             label = f"{coun}, growth rate: {rates[coun]['center']*700:1.1f} (CI: {rates[coun]['lower']*700:1.1f}-{rates[coun]['upper']*700:1.1f})%/week")
 
 plt.legend()
 fig.autofmt_xdate(rotation=30)
