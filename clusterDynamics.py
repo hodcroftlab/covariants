@@ -122,8 +122,9 @@ print(f"The cluster is found in: {observed_countries}")
 
 
 # Let's get some summary stats on number of sequences, first, and last, for each country.
-country_info = pd.DataFrame(index=all_countries, columns=['first_seq', 'num_seqs', 'last_seq'])
+country_info = pd.DataFrame(index=all_countries, columns=['first_seq', 'num_seqs', 'last_seq', "sept_aug_freq"])
 country_dates = {}
+cutoffDate = datetime.datetime.strptime("2020-08-01", '%Y-%m-%d')
 
 for coun in all_countries:
     if coun in uk_countries:
@@ -135,6 +136,14 @@ for coun in all_countries:
     country_info.loc[coun].num_seqs = len(temp_meta)
 
     country_dates[coun] = [datetime.datetime.strptime(dat, '%Y-%m-%d') for dat in temp_meta['date']]
+
+    herbst_dates = [x for x in country_dates[coun] if x >= cutoffDate]
+    if coun in uk_countries:
+        temp_meta = meta[meta['division'].isin([coun])]
+    else:
+        temp_meta = meta[meta['country'].isin([coun])]
+    all_dates = [datetime.datetime.strptime(x, '%Y-%m-%d') for x in temp_meta["date"] if len(x) is 10 and "-XX" not in x and datetime.datetime.strptime(x, '%Y-%m-%d') >= cutoffDate]
+    country_info.loc[coun].sept_aug_freq = round(len(herbst_dates)/len(all_dates),2)
 
 print(country_info)
 
