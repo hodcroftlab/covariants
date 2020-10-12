@@ -336,7 +336,7 @@ from scipy.stats import scoreatpercentile
 rates = {}
 n_bootstraps=100
 #for a simpler plot of most interesting countries use this:
-for coun in ['Switzerland', 'England', 'Scotland', 'Wales', 'Spain']:
+for coun in ['Switzerland', 'England', 'Scotland', 'Wales', 'Spain', 'United Kingdom']:
     week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, coun)
     days = np.array([x.toordinal() for x in week_as_date])
     mean_upper_lower = []
@@ -363,10 +363,12 @@ for coun in ['Switzerland', 'England', 'Scotland', 'Wales', 'Spain']:
     rates[coun]['bootstraps'] = bootstraps
     rates[coun]['lower'] = scoreatpercentile(bootstraps, 25)
     rates[coun]['upper'] = scoreatpercentile(bootstraps, 75)
+    rates[coun]['t50'] = center_fit['x'][1]
 
-    plt.plot(week_as_date, logistic(days, center_fit['x'][0], center_fit['x'][1]),
-             c=country_styles[coun]['c'], ls=country_styles[coun]['ls'],
-             label = f"{coun}, growth rate: {rates[coun]['center']*700:1.1f}({rates[coun]['lower']*700:1.1f}-{rates[coun]['upper']*700:1.1f})%/week")
+    if coun is not 'United Kingdom':
+        plt.plot(week_as_date, logistic(days, center_fit['x'][0], center_fit['x'][1]),
+                 c=country_styles[coun]['c'], ls=country_styles[coun]['ls'],
+                 label = f"{coun}, growth rate: {rates[coun]['center']*700:1.1f}({rates[coun]['lower']*700:1.1f}-{rates[coun]['upper']*700:1.1f})%/week")
     print(f"{coun} growth rate: {rates[coun]['center']*700:1.2f}% per week")
 
 plt.legend()
@@ -391,7 +393,7 @@ case_files = {'Spain': 'Spain.tsv', 'Norway': 'Norway.tsv', 'Switzerland': 'Swit
 seqs_week = {}
 cases_week = {}
 
-for coun in ['Switzerland', 'United Kingdom', 'Norway', 'Spain']:
+for coun in ['Switzerland', 'Spain', 'United Kingdom', 'Norway']:
     #read in case data
     cases = pd.read_csv(case_data_path+case_files[coun], sep='\t', index_col=False, skiprows=3)
 
@@ -427,19 +429,20 @@ for coun in ['Switzerland', 'United Kingdom', 'Norway', 'Spain']:
 
     # Only plot sequence data for weeks were data is available (avoid plotting random 0s bc no seqs)
     weeks = pd.concat([cluster_data[coun], seqs_data[coun]], axis=1).fillna(0)
-    total = weeks.sum(axis=1)
-    with_data = total>0
-
+    week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, coun)
     # convert week numbers back to first day of that week - so that X axis is real time rather than weeks
     case_week_as_date = [ datetime.datetime.strptime("2020-W{}-1".format(x), '%G-W%V-%u') for x in case_data.index ]
-    week_as_date = [ datetime.datetime.strptime("2020-W{}-1".format(x), '%G-W%V-%u') for x in weeks.index[with_data] ]
+    days = np.array([x.toordinal() for x in case_week_as_date])
 
     #PLOT
+    lines = []
     fig, ax1 = plt.subplots()
     plt.title(coun)
     color='tab:blue'
     ax1.set_ylabel('New Cases', color=color)
-    ax1.plot(case_week_as_date , case_data[coun], color=color)
+    lines.append(ax1.plot(case_week_as_date , case_data[coun], color=color, label='cases per week')[0])
+    if coun is not 'Norway':
+        lines.append(ax1.plot(case_week_as_date , case_data[coun]*(1 - logistic(days, rates[coun]['center'], rates[coun]['t50']) ), color=color, ls='--', label='cases per week w/o cluster')[0])
     ax1.tick_params(axis='y', labelcolor=color)
     ax1.set_yscale("log")
 
@@ -447,13 +450,17 @@ for coun in ['Switzerland', 'United Kingdom', 'Norway', 'Spain']:
     color = 'tab:red'
     ax2.set_ylabel('Sequences', color=color)
     #ax2.plot(week_as_date, weeks.loc[with_data].iloc[:,0]/(total[with_data]), 'o', color=color, label=coun, linestyle=sty)
-    ax2.plot(week_as_date, total[with_data], 'o', label=coun,
-            color=color, linestyle='-')
-    ax2.plot(week_as_date, weeks.loc[with_data].iloc[:,0], 'o', color="purple", label=coun, linestyle='-')
+    lines.append(ax2.plot(week_as_date, total_count, 'o', label='total sequences',
+            color=color, linestyle='-')[0])
+    lines.append(ax2.plot(week_as_date, cluster_count, 'o', color="purple", label="sequences in cluster", linestyle='-')[0])
     ax2.tick_params(axis='y', labelcolor=color)
     ax2.set_yscale("log")
 
     fig.autofmt_xdate(rotation=30)
+    if coun is 'Norway':
+        plt.legend(lines, ['cases per week', 'total sequences', 'sequences in cluster'], loc=3)
+    else:
+        plt.legend(lines, ['cases per week', 'cases per week w/o cluster', 'total sequences', 'sequences in cluster'], loc=3)
     fig.tight_layout()
     plt.show()
     plt.savefig(figure_path+f"{coun}-newcases-seqs.{fmt}")
