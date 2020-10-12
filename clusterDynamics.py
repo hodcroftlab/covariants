@@ -72,21 +72,25 @@ meta = pd.read_csv(input_meta, sep='\t', index_col=False)
 #need to subtract 1 for 0-based numbering in diagnositcs script
 # real mutations are : 445, 6286, 22227, 26801, 28932, 29645
 #snps = [444, 6285, 22226, 26800, 28931, 29644]
-snps = [6285, 22226, 28931, 29644]
+snps = [22226, 28931, 29644] #now excludes 6285
 
 # Other clusters I wanted to compare against:
 # snps = [9129, 28867] # another cluster - but mostly swiss, no pattern
 # snps = [3098, 4959] # another cluster = the diverged C->T one, no pattern <- potentially most interesting tho
 # snps = [15971, 28758] # mixed serbian latvian swiss cluster, no pattern
+# snps = [22991] #4542] #26875] #S 477N - filer Europe only, below
+# snps = [22991, 7539] #australia version
 
 # get the sequences that we want - which are 'part of the cluster:
 wanted_seqs = []
 
 for index, row in diag.iterrows():
+    strain = row['strain']
     snplist = row['all_snps']
     if not pd.isna(snplist):
         intsnp = [int(x) for x in snplist.split(',')]
         if all(x in intsnp for x in snps):
+            #if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
             wanted_seqs.append(row['strain'])
 
 # There's one spanish seq with date of 7 March - we think this is wrong.
@@ -323,7 +327,7 @@ from scipy.stats import scoreatpercentile
 rates = {}
 n_bootstraps=100
 #for a simpler plot of most interesting countries use this:
-for coun in ['Switzerland', 'England', 'Scotland', 'Wales']:
+for coun in ['Switzerland', 'England', 'Scotland', 'Wales', 'Spain']:
     week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, coun)
     days = np.array([x.toordinal() for x in week_as_date])
     mean_upper_lower = []
