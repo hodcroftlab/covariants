@@ -278,3 +278,18 @@ uk_run = True
 
 also_uk_countries = ["Ireland", "Spain"]
 
+
+########################################################
+##############
+# If you want to re-run the scripts in clusterDynamics.py
+# but with /real/ number of sequences from the cluster...
+
+#this will replace `wanted_seqs` which is the starting piont for everything.
+# be careful you don't overwrtite any files if you don't mean to!!
+
+real_wanted_seqs = []
+# use cluster as that's *just* the cluster
+for leaf in cluster.get_terminals(order='preorder'):
+    real_wanted_seqs.append(leaf.name)
+    
+wanted_seqs = real_wanted_seqs
