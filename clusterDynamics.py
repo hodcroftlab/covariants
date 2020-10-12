@@ -256,7 +256,7 @@ for coun in [x for x in countries_to_plot if x not in ['Italy', 'Netherlands', '
     i=i+1
 ax1.set_ylim([0,y_start+height])
 ax1.text(datetime.datetime.strptime("2020-05-10", "%Y-%m-%d"), y_start-height,
-         "Travel to Spain", fontsize=fs)
+         "Travel to/from Spain", fontsize=fs)
 ax1.get_yaxis().set_visible(False)
 
 i=0
