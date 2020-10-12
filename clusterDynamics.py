@@ -206,6 +206,35 @@ total_data = pd.DataFrame(data=total_week_counts)
 total_data=total_data.sort_index()
 cluster_data=cluster_data.sort_index()
 
+def non_zero_counts(cluster_data, country):
+
+    cluster_and_total = pd.concat([cluster_data[country], total_data[country]], axis=1).fillna(0)
+    with_data = cluster_and_total.iloc[:,1]>0
+
+    #this lets us plot X axis as dates rather than weeks (I struggle with weeks...)
+    week_as_date = [ datetime.datetime.strptime("2020-W{}-1".format(x), '%G-W%V-%u')
+                     for x in cluster_and_total.index[with_data] ]
+    #plt.plot(weeks.index[with_data], weeks.loc[with_data].iloc[:,0]/(total[with_data]), 'o', color=palette[i], label=coun, linestyle=sty)
+    cluster_count = cluster_and_total[with_data].iloc[:,0]
+    total_count = cluster_and_total[with_data].iloc[:,1]
+
+    return week_as_date, np.array(cluster_count), np.array(total_count)
+
+
+def marker_size(n):
+    if n>100:
+        return 150
+    elif n>30:
+        return 100
+    elif n>10:
+        return 70
+    elif n>3:
+        return 50
+    elif n>1:
+        return 20
+    else:
+        return 5
+
 # Make a plot
 #fig = plt.figure(figsize=(10,5))
 #fig, axs=plt.subplots(1,1, figsize=(10,5))
@@ -248,35 +277,6 @@ ax2.text(datetime.datetime.strptime("2020-05-10", "%Y-%m-%d"), y_start-height,
 ax2.set_ylim([0,y_start+height])
 ax2.get_yaxis().set_visible(False)
 # ax2.set_axis_off()
-
-def non_zero_counts(cluster_data, country):
-
-    cluster_and_total = pd.concat([cluster_data[country], total_data[country]], axis=1).fillna(0)
-    with_data = cluster_and_total.iloc[:,1]>0
-
-    #this lets us plot X axis as dates rather than weeks (I struggle with weeks...)
-    week_as_date = [ datetime.datetime.strptime("2020-W{}-1".format(x), '%G-W%V-%u')
-                     for x in cluster_and_total.index[with_data] ]
-    #plt.plot(weeks.index[with_data], weeks.loc[with_data].iloc[:,0]/(total[with_data]), 'o', color=palette[i], label=coun, linestyle=sty)
-    cluster_count = cluster_and_total[with_data].iloc[:,0]
-    total_count = cluster_and_total[with_data].iloc[:,1]
-
-    return week_as_date, np.array(cluster_count), np.array(total_count)
-
-
-def marker_size(n):
-    if n>100:
-        return 150
-    elif n>30:
-        return 100
-    elif n>10:
-        return 70
-    elif n>3:
-        return 50
-    elif n>1:
-        return 20
-    else:
-        return 5
 
 #for a simpler plot of most interesting countries use this:
 for coun in [x for x in countries_to_plot if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
