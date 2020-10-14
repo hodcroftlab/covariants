@@ -235,6 +235,17 @@ def marker_size(n):
     else:
         return 5
 
+
+countries_to_plot = ['France',
+'United Kingdom',
+'Latvia',
+'Norway',
+'Spain',
+'Switzerland']
+
+#These are the countries we don't plot: 'Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland'
+
+
 # Make a plot
 #fig = plt.figure(figsize=(10,5))
 #fig, axs=plt.subplots(1,1, figsize=(10,5))
@@ -243,7 +254,7 @@ fig, (ax1, ax2, ax3) = plt.subplots(nrows=3, sharex=True,figsize=(10,7),
                                     gridspec_kw={'height_ratios':[1,1,3]})
 
 i=0
-for coun in [x for x in countries_to_plot if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
+for coun in [x for x in countries_to_plot]:
     if coun in q_free_to_spain:
         q_times = q_free_to_spain[coun]
         strt = datetime.datetime.strptime(q_times["start"], "%Y-%m-%d")
@@ -260,7 +271,7 @@ ax1.text(datetime.datetime.strptime("2020-05-10", "%Y-%m-%d"), y_start-height,
 ax1.get_yaxis().set_visible(False)
 
 i=0
-for coun in [x for x in countries_to_plot if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
+for coun in [x for x in countries_to_plot]:
     if coun in q_free_to_other:
         print("plot {}".format(coun))
         q_times = q_free_to_other[coun]
@@ -279,7 +290,7 @@ ax2.get_yaxis().set_visible(False)
 # ax2.set_axis_off()
 
 #for a simpler plot of most interesting countries use this:
-for coun in [x for x in countries_to_plot if x not in ['Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland']]:
+for coun in [x for x in countries_to_plot]:
     week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, coun)
 
     ax3.plot(week_as_date, cluster_count/total_count,
