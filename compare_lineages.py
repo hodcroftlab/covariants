@@ -10,7 +10,6 @@
 treefile = "results/clusone/tree.nwk"
 branchfile = "results/clusone/branch_lengths.json"
 metadatafile = "data/metadata.tsv"
-alignfile = "results/clusone/subsampled_alignment.fasta"
 
 from Bio import Phylo
 from augur.utils import read_metadata, read_node_data
