@@ -34,27 +34,8 @@ from collections import defaultdict
 from matplotlib.patches import Rectangle
 from colors_and_countries import *
 from travel_data import *
-
-# n is the number of observations
-# x is the number of times you see the mutation
-# Distributions.Beta(a,b) is the Beta distribution
-# cdf is the cumulative distribution function (of the Beta distribution in this case)
-def bernoulli_estimator(x,n, dp=0.10):
-    from scipy.stats import beta
-    naivemean = x/n
-    estmean = (x+0.5)/(n+1)
-    a = x + 0.5
-    b = n - x + 0.5
-    #
-    lowerbound = 0.
-    while beta.cdf(lowerbound, a, b) < dp:
-        lowerbound += 0.01
-    #
-    higherbound = 1.
-    while beta.cdf(higherbound, a, b) > 1-dp:
-        higherbound -= 0.01
-
-    return naivemean, max(0,naivemean-lowerbound), max(0, higherbound-naivemean)
+from helpers import *
+from paths import *
 
 
 # Get diagnostics file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
@@ -206,21 +187,6 @@ total_data = pd.DataFrame(data=total_week_counts)
 total_data=total_data.sort_index()
 cluster_data=cluster_data.sort_index()
 
-def non_zero_counts(cluster_data, country):
-
-    cluster_and_total = pd.concat([cluster_data[country], total_data[country]], axis=1).fillna(0)
-    with_data = cluster_and_total.iloc[:,1]>0
-
-    #this lets us plot X axis as dates rather than weeks (I struggle with weeks...)
-    week_as_date = [ datetime.datetime.strptime("2020-W{}-1".format(x), '%G-W%V-%u')
-                     for x in cluster_and_total.index[with_data] ]
-    #plt.plot(weeks.index[with_data], weeks.loc[with_data].iloc[:,0]/(total[with_data]), 'o', color=palette[i], label=coun, linestyle=sty)
-    cluster_count = cluster_and_total[with_data].iloc[:,0]
-    total_count = cluster_and_total[with_data].iloc[:,1]
-
-    return week_as_date, np.array(cluster_count), np.array(total_count)
-
-
 def marker_size(n):
     if n>100:
         return 150
@@ -294,7 +260,7 @@ ax2.get_yaxis().set_visible(False)
 
 #for a simpler plot of most interesting countries use this:
 for coun in [x for x in countries_to_plot]:
-    week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, coun)
+    week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
 
     ax3.plot(week_as_date, cluster_count/total_count,
              color=country_styles[coun]['c'],
@@ -330,28 +296,13 @@ copyfile(trends_path, copypath)
 #############################################
 # Figure for growth rate estimates
 #
-
-def logistic(x, a, t50):
-    return np.exp((x-t50)*a)/(1+np.exp((x-t50)*a))
-
-def fit_logistic(days, cluster, total):
-    from scipy.optimize import minimize
-
-    def cost(P, t, k, n):
-        a, t50 = P
-        prob = np.minimum(0.98,np.maximum(1e-2,logistic(t, a, t50)))
-        return -np.sum(k*np.log(prob) + (n-k)*np.log(1-prob))
-
-    sol = minimize(cost, [0.08, np.max(days)], args=(days, cluster, total))
-    return sol
-
 fig = plt.figure()
 from scipy.stats import scoreatpercentile
 rates = {}
 n_bootstraps=100
 #for a simpler plot of most interesting countries use this:
 for coun in ['Switzerland', 'England', 'Scotland', 'Wales', 'Spain', 'United Kingdom']:
-    week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, coun)
+    week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
     days = np.array([x.toordinal() for x in week_as_date])
     mean_upper_lower = []
     for x, n in zip(cluster_count, total_count):
@@ -407,28 +358,10 @@ case_files = {'Spain': 'Spain.tsv', 'Norway': 'Norway.tsv', 'Switzerland': 'Swit
                 'United Kingdom': 'United Kingdom of Great Britain and Northern Ireland.tsv'}
 
 seqs_week = {}
-cases_week = {}
 
 for coun in ['Switzerland', 'Spain', 'United Kingdom', 'Norway']:
     #read in case data
-    cases = pd.read_csv(case_data_path+case_files[coun], sep='\t', index_col=False, skiprows=3)
-
-    #instead of total case numbers, get new cases per day, with diff
-    new_cases = np.diff(cases.cases)
-    # convert dates to datetime objects
-    case_dates = [datetime.datetime.strptime(dat, '%Y-%m-%d') for dat in cases.time]
-    # remove first date object as the 'np.diff' above shortens the list by 1! now lengths match.
-    case_dates = case_dates[1:]
-
-    #to avoid things like no reporting on weekends, get total # new cases per week.
-    cases_by_week = defaultdict(int)
-    for dat, num_cas in zip(case_dates, new_cases):
-        wk = dat.isocalendar()[1] #returns ISO calendar week
-        cases_by_week[wk]+=num_cas
-    cases_week[coun] = cases_by_week
-
-    case_data = pd.DataFrame(data=cases_week)
-    case_data = case_data.sort_index()
+    case_week_as_date, case_data = read_case_data_by_week(case_data_path+case_files[coun])
 
     # Now get total number of sequence, per week - by using metadata.tsv from ncov
     counts_by_week = defaultdict(int)
@@ -445,9 +378,8 @@ for coun in ['Switzerland', 'Spain', 'United Kingdom', 'Norway']:
 
     # Only plot sequence data for weeks were data is available (avoid plotting random 0s bc no seqs)
     weeks = pd.concat([cluster_data[coun], seqs_data[coun]], axis=1).fillna(0)
-    week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, coun)
+    week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
     # convert week numbers back to first day of that week - so that X axis is real time rather than weeks
-    case_week_as_date = [ datetime.datetime.strptime("2020-W{}-1".format(x), '%G-W%V-%u') for x in case_data.index ]
     days = np.array([x.toordinal() for x in case_week_as_date])
 
     #PLOT
@@ -456,9 +388,9 @@ for coun in ['Switzerland', 'Spain', 'United Kingdom', 'Norway']:
     plt.title(coun)
     color='tab:blue'
     ax1.set_ylabel('New Cases', color=color)
-    lines.append(ax1.plot(case_week_as_date , case_data[coun], color=color, label='cases per week')[0])
+    lines.append(ax1.plot(case_week_as_date , case_data.cases, color=color, label='cases per week')[0])
     if coun is not 'Norway':
-        lines.append(ax1.plot(case_week_as_date , case_data[coun]*(1 - logistic(days, rates[coun]['center'], rates[coun]['t50']) ), color=color, ls='--', label='cases per week w/o cluster')[0])
+        lines.append(ax1.plot(case_week_as_date , case_data.cases*(1 - logistic(days, rates[coun]['center'], rates[coun]['t50']) ), color=color, ls='--', label='cases per week w/o cluster')[0])
     ax1.tick_params(axis='y', labelcolor=color)
     ax1.set_yscale("log")
 
