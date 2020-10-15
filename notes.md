@@ -165,3 +165,38 @@ Take these as 3 separate introductions
 H
 V
 X + [
+
+
+Notes on Switzerland
+G - 9 Sept, 9 Sept, 12 Aug
+Q/R - complicated. est early aug, dates mid-aug - mid-sept
+W - kinda same, 20 aug - 10 sept
+
+Switzerland
+1-3  intros?
+A root
+B norway one - connects to root
+  J - connects to B (spain)
+T - connects to root
+
+below is 1 or 2 intros
+[ - connects to root
+a - connects to ` which is all UK, ` connects to spain
+d - parent has spain
+e - parent has spain
+   g - parent e
+
+below 1 intro?
+G - one away from norway (B), parent E (ireland UK)
+
+beow is 1 intro
+M - direct to spain
+
+below is 1 intro
+Q - parent P - all UK, P connects to spain
+  R - connects to Q
+
+below is 1 intro
+W - parent V which is all UK. V connects to root
+  Y - parent W
+  Z - parent W
