@@ -243,7 +243,8 @@ countries_to_plot = ['France',
 'Spain',
 'Switzerland',
 'Ireland',
-'Netherlands']
+'Netherlands',
+'Belgium']
 
 #These are the countries we don't plot: 'Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland'
 
