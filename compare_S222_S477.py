@@ -7,6 +7,8 @@ import seaborn as sns
 from shutil import copyfile
 from collections import defaultdict
 from matplotlib.patches import Rectangle
+import matplotlib.patches as mpatches
+import copy
 from colors_and_countries import *
 from travel_data import *
 
@@ -136,15 +138,15 @@ print("\n\nYou can check on the country_info with: clusters['S477']['country_inf
 
 #Use the S477 data to decide what to plot.
 countries_to_plot = ["France", "United Kingdom", "Netherlands",
-    "Switzerland"]
+    "Switzerland", "Belgium"]
 #Remember to adjust the number of axes if needed below....
 
 #fig, ax1 = plt.subplots(nrows=1,figsize=(10,7))
-fig, (ax1, ax2, ax3, ax4) = plt.subplots(nrows=4, sharex=True,figsize=(10,7),
-                                    gridspec_kw={'height_ratios':[1,1,1,1]})
+fig, (ax1, ax2, ax3, ax4, ax5) = plt.subplots(nrows=5, sharex=True,figsize=(10,7),
+                                    gridspec_kw={'height_ratios':[1,1,1,1,1]})
 
 #for coun in [x for x in countries_to_plot]:
-for coun, ax in zip(countries_to_plot, [ax1, ax2, ax3, ax4]):
+for coun, ax in zip(countries_to_plot, [ax1, ax2, ax3, ax4, ax5]):
     i=0
     first_clus_count = []
     ptchs = []
