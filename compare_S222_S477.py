@@ -145,9 +145,11 @@ countries_to_plot = ["France", "United Kingdom", "Netherlands",
     "Switzerland", "Belgium", "Spain"]
 #Remember to adjust the number of axes if needed below....
 
-country_week = {}
+
+country_week = {clus: {} for clus in clusters}
 
 #fig, ax1 = plt.subplots(nrows=1,figsize=(10,7))
+fs = 14
 fig, (ax1, ax2, ax3, ax4, ax5, ax6) = plt.subplots(nrows=6, sharex=True,figsize=(9,9),
                                     gridspec_kw={'height_ratios':[1,1,1,1,1,1]})
 
@@ -161,7 +163,7 @@ for coun, ax in zip(countries_to_plot, [ax1, ax2, ax3, ax4, ax5, ax6]):
         cluster_data = clusters[clus]['cluster_data']
         week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
 
-        country_week[coun] = cluster_count/total_count
+        country_week[clus][coun] = cluster_count/total_count
 
         linesty = '-'
         #lab = f"{coun} {clus}"
@@ -207,3 +209,8 @@ plt.savefig(figure_path+f"S222_S477_compare.{fmt}")
 trends_path = figure_path+f"S222_S477_compare.{fmt}"
 copypath = trends_path.replace("compare", "compare-{}".format(datetime.date.today().strftime("%Y-%m-%d")))
 copyfile(trends_path, copypath)
+
+
+for clus in clusters.keys():
+    for coun in countries_to_plot:
+        print(clus, coun, len(country_week[clus][coun]))

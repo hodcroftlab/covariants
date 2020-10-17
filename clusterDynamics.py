@@ -206,15 +206,17 @@ def marker_size(n):
         return 5
 
 
+#only plot those with >=20 seqs
 countries_to_plot = ['France',
 'United Kingdom',
-'Latvia',
+#'Latvia',
 'Norway',
 'Spain',
 'Switzerland',
 'Ireland',
-'Netherlands',
-'Belgium']
+'Netherlands'#,
+#'Belgium'
+]
 
 #These are the countries we don't plot: 'Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland'
 
