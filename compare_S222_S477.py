@@ -20,7 +20,11 @@ fmt = "pdf"
 clusters = {"S477": {'snps': [22991, 4542], 'cluster_data': [],
             'country_info':[], 'col': "#ff8d3d"},
             "S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
-            "country_info":[], 'col': "#65beeb"}
+            "country_info":[], 'col': "#65beeb"},
+            "S98": {'snps': [21854, 25504], 'cluster_data': [],
+            "country_info":[], 'col': "#911eb4"},
+            "S80": {'snps': [21799, 3098], 'cluster_data': [],
+            "country_info":[], 'col': "#3cb44b"}
             }
 
 # Get diagnostics file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
@@ -97,7 +101,7 @@ for clus in clusters.keys():
         counts_by_week = defaultdict(int)
         for dat in country_dates[coun]:
             #counts_by_week[dat.timetuple().tm_yday//7]+=1 # old method
-            counts_by_week[dat.isocalendar()[1]]+=1  #returns ISO calendar week
+            counts_by_week[(dat.isocalendar()[1]//2*2)]+=1  #returns ISO calendar week
         clus_week_counts[coun] = counts_by_week
 
     # Get counts per week for sequences regardless of whether in the cluster or not - from week 20 only.
@@ -114,7 +118,7 @@ for clus in clusters.keys():
             if len(dat) is 10 and "-XX" not in dat: # only take those that have real dates
                 dt = datetime.datetime.strptime(dat, '%Y-%m-%d')
                 # wk = dt.timetuple().tm_yday//7  # old method
-                wk = dt.isocalendar()[1] #returns ISO calendar week
+                wk = dt.isocalendar()[1]//2*2 #returns ISO calendar week
                 if wk >= 20:
                     counts_by_week[wk]+=1
         total_week_counts[coun] = counts_by_week
@@ -138,53 +142,63 @@ print("\n\nYou can check on the country_info with: clusters['S477']['country_inf
 
 #Use the S477 data to decide what to plot.
 countries_to_plot = ["France", "United Kingdom", "Netherlands",
-    "Switzerland", "Belgium"]
+    "Switzerland", "Belgium", "Spain"]
 #Remember to adjust the number of axes if needed below....
 
+country_week = {}
+
 #fig, ax1 = plt.subplots(nrows=1,figsize=(10,7))
-fig, (ax1, ax2, ax3, ax4, ax5) = plt.subplots(nrows=5, sharex=True,figsize=(10,7),
-                                    gridspec_kw={'height_ratios':[1,1,1,1,1]})
+fig, (ax1, ax2, ax3, ax4, ax5, ax6) = plt.subplots(nrows=6, sharex=True,figsize=(9,9),
+                                    gridspec_kw={'height_ratios':[1,1,1,1,1,1]})
 
 #for coun in [x for x in countries_to_plot]:
-for coun, ax in zip(countries_to_plot, [ax1, ax2, ax3, ax4, ax5]):
+for coun, ax in zip(countries_to_plot, [ax1, ax2, ax3, ax4, ax5, ax6]):
     i=0
     first_clus_count = []
     ptchs = []
     #for cluster_data in [cluster_data_S477, cluster_data_S222]:
     for clus in clusters.keys():
         cluster_data = clusters[clus]['cluster_data']
-        week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, coun)
+        week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
+
+        country_week[coun] = cluster_count/total_count
 
         linesty = '-'
-        lab = f"{coun} {clus}"
-        if i == 1:
-            linesty = ':'
-            cluster_count = first_clus_count + cluster_count
+        #lab = f"{coun} {clus}"
+        lab = f"{clus}"
+        if i == 0:
+            first_clus_count = [0] * len(cluster_count)
+        #if i == 1:
+        #    linesty = ':'
+        cluster_count = first_clus_count + cluster_count #unindented
+
         ax.plot(week_as_date, cluster_count/total_count,
                 color=clusters[clus]['col'],#country_styles[coun]['c'],
                 linestyle=linesty)#, label=lab)
         #ax.scatter(week_as_date, cluster_count/total_count, s=[marker_size(n) for n in total_count],
         #        color=country_styles[coun]['c'],
         #        linestyle=linesty)
-        if i==0:
-            ax.fill_between(week_as_date, 0, cluster_count/total_count, facecolor=clusters[clus]['col'])
-            patch = mpatches.Patch(color=clusters[clus]['col'], label=lab)
-            ptchs.append(patch)
-        else:
-            ax.fill_between(week_as_date, first_clus_count/total_count, cluster_count/total_count, facecolor=clusters[clus]['col'])
-            patch = mpatches.Patch(color=clusters[clus]['col'], label=lab)
-            ptchs.append(patch)
+        #if i==0:
+        #    ax.fill_between(week_as_date, 0, cluster_count/total_count, facecolor=clusters[clus]['col'])
+        #    patch = mpatches.Patch(color=clusters[clus]['col'], label=lab)
+        #    ptchs.append(patch)
+        #else:
+        ax.fill_between(week_as_date, first_clus_count/total_count, cluster_count/total_count, facecolor=clusters[clus]['col'])
+        patch = mpatches.Patch(color=clusters[clus]['col'], label=lab)
+        ptchs.append(patch)
+        if i == len(countries_to_plot)-3 :
             ax.fill_between(week_as_date, cluster_count/total_count, 1, facecolor=grey_color)
-            patch = mpatches.Patch(color=grey_color, label=f"{coun} other")
+            patch = mpatches.Patch(color=grey_color, label=f"other")
             ptchs.append(patch)
-        if i == 0:
-            first_clus_count = cluster_count
+        #if i == 0:
+        first_clus_count = cluster_count # unindented
         i+=1
-    ax.legend(handles=ptchs, loc=3, fontsize=fs*0.7)
+    ax.text(datetime.datetime(2020,6,1), 0.8, coun)
     ax.tick_params(labelsize=fs*0.8)
     ax.set_ylabel('frequency')
     #ax.legend(ncol=1, fontsize=fs*0.8, loc=2)
 
+ax1.legend(handles=ptchs, loc=3, fontsize=fs*0.7, ncol=2)
 fig.autofmt_xdate(rotation=30)
 plt.show()
 plt.tight_layout()

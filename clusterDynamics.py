@@ -37,6 +37,10 @@ from travel_data import *
 from helpers import *
 from paths import *
 
+#run ../cluster_scripts/helpers.py
+#run ../cluster_scripts/colors_and_countries.py
+#run ../cluster_scripts/travel_data.py
+#run ../cluster_scripts/paths.py
 
 # Get diagnostics file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
 diag_file = "results/sequence-diagnostics.tsv"
