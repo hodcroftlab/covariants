@@ -1,6 +1,9 @@
 from helpers import *
 from paths import *
 from matplotlib import pyplot as plt
+from colors_and_countries import *
+
+fmt='pdf'
 
 countries = ['Spain', 'France', 'Belgium', 'United Kingdom', 'Switzerland', 'Netherlands', 'Norway',
               'Ireland']
@@ -22,6 +25,20 @@ for c in countries:
     w, cases = read_case_data_by_week(case_data_path+case_files.get(c, f"{c}.tsv"))
     case_data[c] = {k:v for k,v in zip(w, cases.cases)}
 
+fig=plt.figure()
+for c in case_data:
+    incidence = np.array(list(case_data[c].values())[:-1])/popsizes[c]*1e5
+    weeks = list(case_data[c].keys())[:-1]
+    plt.plot(weeks, incidence, lw=2,
+             label=c, c=country_styles[c]['c'])
+    print(c, np.mean([i for w,i in zip(weeks, incidence) if w.month==7]), np.mean([i for w,i in zip(weeks, incidence) if w.month==8]))
+plt.ylabel('weekly incidence per 100000')
+plt.yscale('log')
+plt.ylim([1,1000])
+plt.xlim([datetime.datetime(2020,4,1), datetime.datetime(2020,10,1)])
+plt.legend(ncol=2)
+fig.autofmt_xdate(rotation=30)
+plt.savefig(f'../cluster_scripts/figures/incidence.{fmt}')
 
 fig, axs = plt.subplots(1,4, sharey=True, figsize=(12,3))
 
