@@ -10,6 +10,15 @@ Look at each genotype, see which are represented in which country
 
 # Quarantine Start
 
+### Belgium
+Banned all non-essential travel to Barcelona and Lleida in Spain from 6 August (also some areas of France, Switzerland) [Schengen Visa Info](https://www.schengenvisainfo.com/news/belgium-bans-non-essential-travel-to-parts-of-france-spain-and-switzerland/)
+
+Possibly also to Navarre, ("already includes Barcelona and Aragon") [Forbes](https://www.forbes.com/sites/tamarathiessen/2020/08/05/france-spain-belgium-bans-travel-covid-red-zones-europe/#72b0bf452acb)
+
+Uk added Belgium to quarantine list from 8 Aug [ABTA Mag](https://abtamag.com/2020/08/07/belgium-andorra-and-bahamas-removed-from-safe-list/)
+
+Belgium info page (only current, not past) [Diplomatie](https://diplomatie.belgium.be/en)
+
 ### Germany
 
 Since 14 Aug, mainland Spain & Balarics (not Canaries) a risk area - must test negative within 10 days [German Gov](https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Transport/Archiv_Risikogebiete/Risikogebiete_26082020_en.pdf?__blob=publicationFile)
@@ -72,6 +81,9 @@ Barcelona & Segria region were set to 'orange' from 28 July - 14 day quarantine 
 Up to date Spain map from Dutch govt [govt site](https://www.nederlandwereldwijd.nl/landen/spanje/reizen/reisadvies)
 
 # Lockdown
+
+## Belgium
+June 15 allowed entry for Schengen, EU, United Kingdom [Schengen Visa Info](https://www.schengenvisainfo.com/news/belgium-bans-non-essential-travel-to-parts-of-france-spain-and-switzerland/)
 
 ## Spain
 "Spain emerged from lockdown on 21 June" [Guardian](https://www.theguardian.com/world/2020/jul/26/why-are-travellers-to-the-uk-from-spain-being-asked-to-quarantine-coronavirus)
@@ -165,3 +177,38 @@ Take these as 3 separate introductions
 H
 V
 X + [
+
+
+Notes on Switzerland
+G - 9 Sept, 9 Sept, 12 Aug
+Q/R - complicated. est early aug, dates mid-aug - mid-sept
+W - kinda same, 20 aug - 10 sept
+
+Switzerland
+1-3  intros?
+A root
+B norway one - connects to root
+  J - connects to B (spain)
+T - connects to root
+
+below is 1 or 2 intros
+[ - connects to root
+a - connects to ` which is all UK, ` connects to spain
+d - parent has spain
+e - parent has spain
+   g - parent e
+
+below 1 intro?
+G - one away from norway (B), parent E (ireland UK)
+
+beow is 1 intro
+M - direct to spain
+
+below is 1 intro
+Q - parent P - all UK, P connects to spain
+  R - connects to Q
+
+below is 1 intro
+W - parent V which is all UK. V connects to root
+  Y - parent W
+  Z - parent W
