@@ -75,7 +75,8 @@ names = lookup_by_names(T)
 uk_run = False
 
 #this has to be set manually
-start = names['NODE_0001008'] #["NODE_0000814"]  # ["NODE_0003268"]   #["NODE_0002406"]
+#start = names['NODE_0001008'] #["NODE_0000814"]  # ["NODE_0003268"]   #["NODE_0002406"]
+start = names['NODE_0001979'] #['NODE_0001981']
 
 #back up the original tree so we don't hve to optimize again if we mess up...
 T_backup = copy.deepcopy(T)
@@ -110,6 +111,7 @@ len(cluster.get_nonterminals())
 #481
 #576
 #710
+#715
 
 # for each internal node - if only has leaf children from 1 country
 # then collapse this node - its children go to its parent, it disappears
@@ -143,6 +145,7 @@ len(cluster.get_nonterminals())
 #45
 #60
 #66
+#71
 
 # A lot of nodes will have gained children from collapsed nodes
 # so recount the countries!
