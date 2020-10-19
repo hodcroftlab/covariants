@@ -15,6 +15,10 @@ Banned all non-essential travel to Barcelona and Lleida in Spain from 6 August (
 
 Possibly also to Navarre, ("already includes Barcelona and Aragon") [Forbes](https://www.forbes.com/sites/tamarathiessen/2020/08/05/france-spain-belgium-bans-travel-covid-red-zones-europe/#72b0bf452acb)
 
+Spain moved to 'red zone' on 4th Sept [Brussels Times](https://www.brusselstimes.com/belgium/129682/belgium-in-brief-getting-out-of-spain/)
+
+All Spain was not allowed by 4 October [WaybackMachine](https://web.archive.org/web/20201004003652/https://diplomatie.belgium.be/en/covid_table)
+
 Uk added Belgium to quarantine list from 8 Aug [ABTA Mag](https://abtamag.com/2020/08/07/belgium-andorra-and-bahamas-removed-from-safe-list/)
 
 Belgium info page (only current, not past) [Diplomatie](https://diplomatie.belgium.be/en)
