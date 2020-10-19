@@ -18,6 +18,16 @@
 char_names_wanted = ['H', 'V', 'X', '[']
 
 
+# For 19 Oct - these are the four intros I chose by looking at node_countries
+# for two I combine multiple nodes that chain from each other
+# K
+# \ ` a d
+# F Q T
+# i
+
+char_names_wanted = ['K', '\\', '`', 'a', 'd', 'F', 'Q', 'T', 'i']
+
+
 intro_nodes_map = {}
 intro_nodes = []
 for key in node_names.keys():
@@ -34,6 +44,18 @@ for want_node in intro_nodes:
 #combine X and [
 list_of_seqs["X"].extend(list_of_seqs["["])
 list_of_seqs.pop("[")
+
+list_of_seqs['\\'].extend(list_of_seqs['`'])
+list_of_seqs['\\'].extend(list_of_seqs['a'])
+list_of_seqs['\\'].extend(list_of_seqs['d'])
+list_of_seqs.pop('`')
+list_of_seqs.pop('a')
+list_of_seqs.pop('d')
+
+list_of_seqs['F'].extend(list_of_seqs['Q'])
+list_of_seqs['F'].extend(list_of_seqs['T'])
+list_of_seqs.pop('Q')
+list_of_seqs.pop('T')
 
 
 ################## ################## ################## 
@@ -83,7 +105,7 @@ def non_zero_counts_intros(cluster_data, intro_id, country):
     return week_as_date, np.array(cluster_count), np.array(total_count)
 
 #to let us use the country style stuff
-fake_countries = ["United Kingdom", "Switzerland", "Spain"]
+fake_countries = ["United Kingdom", "Switzerland", "Spain", "Belgium"]
 
 fig = plt.figure()
 from scipy.stats import scoreatpercentile
