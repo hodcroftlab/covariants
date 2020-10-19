@@ -132,6 +132,9 @@ for coun in all_countries:
 
 print(country_info)
 
+country_info_df = pd.DataFrame(data=country_info)
+country_info_df.sort_values(by="first_seq")
+print(country_info_df)
 
 # Plot simple lines over time per country - very basic.
 # (For some other clusters, easier to set color manually)
