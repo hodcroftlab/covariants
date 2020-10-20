@@ -228,11 +228,14 @@ countries_to_plot = ['France',
 #fig = plt.figure(figsize=(10,5))
 #fig, axs=plt.subplots(1,1, figsize=(10,5))
 fs = 14
-fig, (ax1, ax2, ax3) = plt.subplots(nrows=3, sharex=True,figsize=(10,7),
-                                    gridspec_kw={'height_ratios':[1,1,3]})
-
+#fig, (ax1, ax2, ax3) = plt.subplots(nrows=3, sharex=True,figsize=(10,7),
+#                                    gridspec_kw={'height_ratios':[1,1,3]})
+# Change to just show Travel to spain only. see above for old 3 panel version
+fig, (ax1, ax3) = plt.subplots(nrows=2, sharex=True,figsize=(10,6),
+                                    gridspec_kw={'height_ratios':[1,3]})
 i=0
-for coun in [x for x in countries_to_plot]:
+#for coun in [x for x in countries_to_plot]:
+for coun in travel_order:
     if coun in q_free_to_spain:
         q_times = q_free_to_spain[coun]
         strt = datetime.datetime.strptime(q_times["start"], "%Y-%m-%d")
@@ -241,31 +244,32 @@ for coun in [x for x in countries_to_plot]:
         height = 0.02
         ax1.add_patch(Rectangle((strt,y_start), end-strt, height,
                       ec=country_styles[coun]['c'], fc=country_styles[coun]['c']))
-        ax1.text(strt, y_start+0.002, q_times["msg"], fontsize=fs*0.8)
+        #ax1.text(strt, y_start+0.002, q_times["msg"], fontsize=fs*0.8)
+        ax1.text(strt, y_start+0.005, q_times["msg"], fontsize=fs*0.8)
     i=i+1
 ax1.set_ylim([0,y_start+height])
 ax1.text(datetime.datetime.strptime("2020-05-10", "%Y-%m-%d"), y_start-height,
          "Travel to/from Spain", fontsize=fs)
 ax1.get_yaxis().set_visible(False)
 
-i=0
-for coun in [x for x in countries_to_plot]:
-    if coun in q_free_to_other:
-        print("plot {}".format(coun))
-        q_times = q_free_to_other[coun]
-        strt = datetime.datetime.strptime(q_times["start"], "%Y-%m-%d")
-        end = datetime.datetime.strptime(q_times["end"], "%Y-%m-%d")
-        y_start = i*0.022
-        height = 0.02
-        ax2.add_patch(Rectangle((strt,y_start), end-strt, height,
-                      ec=country_styles[coun]['c'], fc=country_styles[coun]['c']))
-        ax2.text(strt, y_start+0.002, q_times["msg"], fontsize=fs*0.8)
-    i=i+1
-ax2.text(datetime.datetime.strptime("2020-05-10", "%Y-%m-%d"), y_start-height,
-         "Travel to/from the UK", fontsize=fs)
-ax2.set_ylim([0,y_start+height])
-ax2.get_yaxis().set_visible(False)
-# ax2.set_axis_off()
+#i=0
+#for coun in [x for x in countries_to_plot]:
+#    if coun in q_free_to_other:
+#        print("plot {}".format(coun))
+#        q_times = q_free_to_other[coun]
+#        strt = datetime.datetime.strptime(q_times["start"], "%Y-%m-%d")
+#        end = datetime.datetime.strptime(q_times["end"], "%Y-%m-%d")
+#        y_start = i*0.022
+#        height = 0.02
+#        ax2.add_patch(Rectangle((strt,y_start), end-strt, height,
+#                      ec=country_styles[coun]['c'], fc=country_styles[coun]['c']))
+#        ax2.text(strt, y_start+0.002, q_times["msg"], fontsize=fs*0.8)
+#    i=i+1
+#ax2.text(datetime.datetime.strptime("2020-05-10", "%Y-%m-%d"), y_start-height,
+#         "Travel to/from the UK", fontsize=fs)
+#ax2.set_ylim([0,y_start+height])
+#ax2.get_yaxis().set_visible(False)
+#
 
 #for a simpler plot of most interesting countries use this:
 for coun in [x for x in countries_to_plot]:
