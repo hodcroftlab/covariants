@@ -21,11 +21,11 @@ char_names_wanted = ['H', 'V', 'X', '[']
 # For 19 Oct - these are the four intros I chose by looking at node_countries
 # for two I combine multiple nodes that chain from each other
 # K
-# \ ` a d
-# F Q T
+# \ ` a  -NO d
+# F Q T - NOT THIS ONE BAD
 # i
 
-char_names_wanted = ['K', '\\', '`', 'a', 'd', 'F', 'Q', 'T', 'i']
+char_names_wanted = ['K', '\\', 'i']
 
 
 intro_nodes_map = {}
@@ -45,17 +45,17 @@ for want_node in intro_nodes:
 list_of_seqs["X"].extend(list_of_seqs["["])
 list_of_seqs.pop("[")
 
-list_of_seqs['\\'].extend(list_of_seqs['`'])
-list_of_seqs['\\'].extend(list_of_seqs['a'])
-list_of_seqs['\\'].extend(list_of_seqs['d'])
-list_of_seqs.pop('`')
-list_of_seqs.pop('a')
-list_of_seqs.pop('d')
-
-list_of_seqs['F'].extend(list_of_seqs['Q'])
-list_of_seqs['F'].extend(list_of_seqs['T'])
-list_of_seqs.pop('Q')
-list_of_seqs.pop('T')
+#list_of_seqs['\\'].extend(list_of_seqs['`'])
+#list_of_seqs['\\'].extend(list_of_seqs['a'])
+#list_of_seqs['\\'].extend(list_of_seqs['d'])
+#list_of_seqs.pop('`')
+#list_of_seqs.pop('a')
+#list_of_seqs.pop('d')
+#
+#list_of_seqs['F'].extend(list_of_seqs['Q'])
+#list_of_seqs['F'].extend(list_of_seqs['T'])
+#list_of_seqs.pop('Q')
+#list_of_seqs.pop('T')
 
 
 ################## ################## ################## 
