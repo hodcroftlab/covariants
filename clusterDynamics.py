@@ -48,6 +48,7 @@ diag = pd.read_csv(diag_file, sep='\t', index_col=False)
 # Read metadata file
 input_meta = "data/metadata.tsv"
 meta = pd.read_csv(input_meta, sep='\t', index_col=False)
+meta = meta.fillna('')
 
 ########
 
