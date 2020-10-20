@@ -97,13 +97,19 @@ with open(clusterlist_output, 'w') as f:
 copypath = clusterlist_output.replace("clusone", "clusone-{}".format(datetime.date.today().strftime("%Y-%m-%d")))
 copyfile(clusterlist_output, copypath)
 
-# Just so we have the data, write out the metadata for these sequences
+# get metadata for these sequences
 cluster_meta = meta[meta['strain'].isin(wanted_seqs)]
-cluster_meta.to_csv(out_meta_file,sep="\t",index=False)
 observed_countries = [x for x in cluster_meta['country'].unique()]
+
+# Just so we have the data, write out the metadata for these sequences
+cluster_meta.to_csv(out_meta_file,sep="\t",index=False)
 
 # What countries do sequences in the cluster come from?
 print(f"The cluster is found in: {observed_countries}")
+
+if len(observed_countries) > len(country_list):
+    print("\nWARNING!! Appears a new country has come into the cluster!")
+    print([x for x in observed_countries if x not in country_list])
 
 
 # Let's get some summary stats on number of sequences, first, and last, for each country.
