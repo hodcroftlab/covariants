@@ -113,9 +113,9 @@ if len(observed_countries) > len(country_list):
 
 
 # Let's get some summary stats on number of sequences, first, and last, for each country.
-country_info = pd.DataFrame(index=all_countries, columns=['first_seq', 'num_seqs', 'last_seq', "sept_aug_freq"])
+country_info = pd.DataFrame(index=all_countries, columns=['first_seq', 'num_seqs', 'last_seq', "sept_oct_freq"])
 country_dates = {}
-cutoffDate = datetime.datetime.strptime("2020-08-01", '%Y-%m-%d')
+cutoffDate = datetime.datetime.strptime("2020-09-01", '%Y-%m-%d')
 
 for coun in all_countries:
     if coun in uk_countries:
@@ -134,13 +134,15 @@ for coun in all_countries:
     else:
         temp_meta = meta[meta['country'].isin([coun])]
     all_dates = [datetime.datetime.strptime(x, '%Y-%m-%d') for x in temp_meta["date"] if len(x) is 10 and "-XX" not in x and datetime.datetime.strptime(x, '%Y-%m-%d') >= cutoffDate]
-    country_info.loc[coun].sept_aug_freq = round(len(herbst_dates)/len(all_dates),2)
+    if len(all_dates) == 0:
+        country_info.loc[coun].sept_oct_freq = 0
+    else:
+        country_info.loc[coun].sept_oct_freq = round(len(herbst_dates)/len(all_dates),2)
 
 print(country_info)
 
 country_info_df = pd.DataFrame(data=country_info)
-country_info_df.sort_values(by="first_seq")
-print(country_info_df)
+print(country_info_df.sort_values(by="first_seq"))
 
 # Plot simple lines over time per country - very basic.
 # (For some other clusters, easier to set color manually)
