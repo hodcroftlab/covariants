@@ -93,3 +93,25 @@ ehthumbs.db
 Thumbs.db
 
 __pycache__
+
+
+#figures with dates
+figures/overall_trends-2020*
+figures/S222_S477_compare-2020*
+figures/logistic_fits-2020*
+figures/pie_tree-2020*
+figures/United Kingdom-newcases-seqs-2020*
+figures/uk_pie_tree-2020*
+
+# Some of emma's rough scripts
+clusterDynamics_weekFreq.py
+clusterManuDraft.docx
+figures/uk_pie_tree.png
+networkTrial2.py
+old_swiss_tree/
+figures/pie_tree-EBH.png
+tree_pie_plot_EBH.py
+
+#back up file
+manu_backup-2020-10-10.txt
+
