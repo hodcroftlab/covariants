@@ -55,3 +55,14 @@ country_styles.update({
  'Northern Ireland':{'c':country_styles['United Kingdom']['c'], 'ls':':'},
 })
 
+popsizes = {
+    'Spain':46723749,
+    'United Kingdom': 66488991,
+    'Switzerland':8516543,
+    'Netherlands':17231017,
+    'Norway':5314336,
+    'Germany':82927922,
+    'France':66987244,
+    'Ireland':4853506,
+    'Belgium':11422068,
+}

@@ -1,3 +1,18 @@
+import pandas as pd
+import glob, datetime
+
+
+travel_volume = {}
+for fname in glob.glob('../cluster_scripts/travel_data/*xls'):
+    country = fname.split('/')[-1][:-4]
+    if country=='UK':
+        country = 'United Kingdom'
+    else:
+        country = country[0].upper() + country[1:]
+
+    d = pd.read_excel(fname, skiprows=2).astype(str)
+    travel_volume[country] = d.iloc[0,3:].apply(lambda x:int(x.replace('.','')))
+    travel_volume[country].index = [datetime.datetime(2020,i,15) for i in range(1,10)]
 
 
 #quarantine free travel to spain:
@@ -25,3 +40,5 @@ q_free_to_other = {
 q_free_to_swiss = {
     "United Kingdom": {"start": "2020-07-10", "end": "2020-08-29"}
 }
+
+
