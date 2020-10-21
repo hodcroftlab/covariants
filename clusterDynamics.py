@@ -240,7 +240,7 @@ fs = 14
 #fig, (ax1, ax2, ax3) = plt.subplots(nrows=3, sharex=True,figsize=(10,7),
 #                                    gridspec_kw={'height_ratios':[1,1,3]})
 # Change to just show Travel to spain only. see above for old 3 panel version
-fig, (ax1, ax3) = plt.subplots(nrows=2, sharex=True,figsize=(10,8),
+fig, (ax1, ax3) = plt.subplots(nrows=2, sharex=True,figsize=(10,6),
                                     gridspec_kw={'height_ratios':[1, 3]})
 i=0
 #for coun in [x for x in countries_to_plot]:
