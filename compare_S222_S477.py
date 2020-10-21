@@ -135,6 +135,14 @@ for clus in clusters.keys():
 
 print("\n\nYou can check on the country_info with: clusters['S477']['country_info'] ")
 
+for clus in clusters.keys():
+    c_i = clusters[clus]['country_info']
+    c_i[c_i['num_seqs'] > 10]
+    print(f"Countries with >10 seqs in cluster {clus}:")
+    print("\t", ", ".join(c_i[c_i['num_seqs'] > 10].index))
+    print("\n")
+
+
 #cluster_data_S477 = copy.deepcopy(cluster_data)
 #cluster_data_S222 = copy.deepcopy(cluster_data)
 
@@ -142,7 +150,7 @@ print("\n\nYou can check on the country_info with: clusters['S477']['country_inf
 
 #Use the S477 data to decide what to plot.
 countries_to_plot = ["France", "United Kingdom", "Netherlands",
-    "Switzerland", "Belgium", "Spain"]
+    "Switzerland", "Belgium", "Spain", "Norway"]
 #Remember to adjust the number of axes if needed below....
 
 
@@ -150,11 +158,11 @@ country_week = {clus: {} for clus in clusters}
 
 #fig, ax1 = plt.subplots(nrows=1,figsize=(10,7))
 fs = 14
-fig, (ax1, ax2, ax3, ax4, ax5, ax6) = plt.subplots(nrows=6, sharex=True,figsize=(9,9),
-                                    gridspec_kw={'height_ratios':[1,1,1,1,1,1]})
+fig, (ax1, ax2, ax3, ax4, ax5, ax6, ax7) = plt.subplots(nrows=7, sharex=True,figsize=(9,9),
+                                    gridspec_kw={'height_ratios':[1,1,1,1,1,1,1]})
 
 #for coun in [x for x in countries_to_plot]:
-for coun, ax in zip(countries_to_plot, [ax1, ax2, ax3, ax4, ax5, ax6]):
+for coun, ax in zip(countries_to_plot, [ax1, ax2, ax3, ax4, ax5, ax6, ax7]):
     i=0
     first_clus_count = []
     ptchs = []
@@ -188,7 +196,7 @@ for coun, ax in zip(countries_to_plot, [ax1, ax2, ax3, ax4, ax5, ax6]):
         ax.fill_between(week_as_date, first_clus_count/total_count, cluster_count/total_count, facecolor=clusters[clus]['col'])
         patch = mpatches.Patch(color=clusters[clus]['col'], label=lab)
         ptchs.append(patch)
-        if i == len(countries_to_plot)-3 :
+        if i == len(countries_to_plot)-4 :
             ax.fill_between(week_as_date, cluster_count/total_count, 1, facecolor=grey_color)
             patch = mpatches.Patch(color=grey_color, label=f"other")
             ptchs.append(patch)
