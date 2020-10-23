@@ -13,8 +13,14 @@ from shutil import copyfile
 from collections import defaultdict
 import copy
 import pandas as pd
-from os import listdir
+from os import listdir, path, mkdir
+from colors_and_countries import *
+from travel_data import *
+from clusters import *
+from helpers import *
 
+# run from inside ncov folder, in ipython call as
+#    run ../cluster_scripts/compare_lineages.py
 
 # This script can be used to compare frequency of lineages in a specified country over time,
 # using a specified tree cutoff date
@@ -24,10 +30,15 @@ from os import listdir
 # Input files TODO: where to put them?
 input_folder = "../cluster_scripts/compare_lineages/input_files/"
 output_folder = "../cluster_scripts/compare_lineages/output_files/"
+ncov_swiss_folder = "../ncov-swiss"
+figure_path = "../cluster_scripts/figures/"
 
-treefile = input_folder + "tree.nwk"
-branchfile = input_folder + "branch_lengths.json"
-metadatafile = "../ncov/data/metadata.tsv"
+treefile = ncov_swiss_folder + "/results/switzerland/tree.nwk"
+branchfile = ncov_swiss_folder + "/results/switzerland/branch_lengths.json"
+metadatafile = ncov_swiss_folder + "/data/metadata.tsv"
+
+if not path.isdir(output_folder):
+    mkdir(output_folder)
 
 # Known clusters we compare against. TODO: File position temporary
 named_clusters_dir = input_folder + "named_clusters/"
@@ -199,7 +210,8 @@ for country, date in countries_dates.items():
     ax1.legend(["Overall total", "Lineages total"], fontsize=fs * 0.6, loc=2)
     ax1.tick_params(labelsize=fs * 0.8)
     ax1.set_ylabel("number of sequences")
-    ax1.set_title("Absolute number of sequences")
+    textDate = cutoffDate.strftime("%A, %d %b %Y")
+    ax1.set_title(f"Absolute number of sequences in {country} (cutoff date {textDate})")
 
     # Manipulate labels and handles to obtain legend only for colored clusters
     # TODO: color schemes won't work with percentage option selected
@@ -215,7 +227,8 @@ for country, date in countries_dates.items():
             lineage_to_cluster[lineage] = s
 
     # Special color scheme for named clusters
-    special_colors = {"S222": "#69BEE9", "S477": "#FD8D47", "S80": "#42B250", "S92": "#9029B1"}
+    special_colors = {clus: clusters[clus]["col"] for clus in clusters.keys()}
+    #special_colors = {"S222": "#69BEE9", "S477": "#FD8D47", "S80": "#42B250", "S92": "#9029B1"}
     color_map = cm.get_cmap('Greys')  # unnamed clusters get shades pf grey
     colors = [color_map(0.2 + 0.4 * i / len(lineages_data_frequencies.index)) for i in range(len(lineages_data_frequencies.index))]  # create gradient of grey shades
     for i, lineage in enumerate(lineages_data_frequencies.index):
@@ -231,7 +244,7 @@ for country, date in countries_dates.items():
 
     for i, label in enumerate(labels):
         if label in lineage_to_cluster:  # only have named clusters in the legend
-            new_labels.append(lineage_to_cluster[label])
+            new_labels.append(clusters[lineage_to_cluster[label]]["display_name"])
             new_handles.append(handles[i])
 
     ax2.legend(reversed(new_handles), reversed(new_labels), ncol=1, fontsize=fs * 0.6, loc=2)
@@ -241,9 +254,14 @@ for country, date in countries_dates.items():
     ax2.set_title("Lineage frequencies")
     ax2.set_ylim(0, 1)
 
-    fig.suptitle(country + " (Tree Cutoff Date: " + cutoffDate.strftime("%A, %d %b %Y") + ")")
+    #fig.suptitle(country + " (Tree Cutoff Date: " + cutoffDate.strftime("%A, %d %b %Y") + ")")
     plt.show()
     plt.tight_layout()
 
     fig.savefig(output_folder + "compare_lineages_" + country + "_" + date + ".png")
 
+    fmt = "pdf"
+    plt.savefig(figure_path+f"compare_lineages_{country}.{fmt}")
+    lineages_path = figure_path+f"compare_lineages_{country}.{fmt}"
+    copypath = lineages_path.replace(country, "{}-{}".format(country, datetime.date.today().strftime("%Y-%m-%d")))
+    copyfile(lineages_path, copypath)
