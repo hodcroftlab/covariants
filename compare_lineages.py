@@ -41,10 +41,13 @@ if not path.isdir(output_folder):
     mkdir(output_folder)
 
 # Known clusters we compare against. TODO: File position temporary
-named_clusters_dir = input_folder + "named_clusters/"
+#   named_clusters_dir = input_folder + "named_clusters/"
+# look in the folder where 'clusterDynamics.py' write out cluster lists!
+named_clusters_dir = "../ncov_cluster/cluster_profile/clusters/"
 known_clusters = {}
-for file in listdir(named_clusters_dir):
-    cluster_name = file.strip(".txt")
+clus_files = [x for x in listdir(named_clusters_dir) if "2020-" not in x and 'clusone' not in x and 'clustwo' not in x]
+for file in clus_files:
+    cluster_name = file.strip("cluster_clus.txt")
     with open(named_clusters_dir + file) as f:
         cluster = f.read().splitlines()
     known_clusters[cluster_name] = cluster
@@ -78,8 +81,8 @@ for node in T.find_clades(order='preorder'):
 
 # Idea: make applicable for other countries and dates TODO: would need other trees as input!
 countries_dates = {
-    "Switzerland": "2020-05-01",
-    "Switzerland": "2020-06-01"
+    "Switzerland": "2020-05-01"#,
+    #"Switzerland": "2020-06-01"
 }
 
 # Minimum of strains of given country to count as a lineage
