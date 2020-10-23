@@ -11,21 +11,23 @@ import matplotlib.patches as mpatches
 import copy
 from colors_and_countries import *
 from travel_data import *
+from clusters import *
+from helpers import *
 
 figure_path = "../cluster_scripts/figures/"
 
 grey_color = "#cccccc"
 fmt = "pdf"
 
-clusters = {"S477": {'snps': [22991, 4542], 'cluster_data': [],
-            'country_info':[], 'col': "#ff8d3d"},
-            "S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
-            "country_info":[], 'col': "#65beeb"},
-            "S98": {'snps': [21854, 25504], 'cluster_data': [],
-            "country_info":[], 'col': "#911eb4"},
-            "S80": {'snps': [21799, 3098], 'cluster_data': [],
-            "country_info":[], 'col': "#3cb44b"}
-            }
+#clusters = {"S477": {'snps': [22991, 4542], 'cluster_data': [],
+#            'country_info':[], 'col': "#ff8d3d"},
+#            "S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
+#            "country_info":[], 'col': "#65beeb"},
+#            "S98": {'snps': [21854, 25504], 'cluster_data': [],
+#            "country_info":[], 'col': "#911eb4"},
+#            "S80": {'snps': [21799, 3098], 'cluster_data': [],
+#            "country_info":[], 'col': "#3cb44b"}
+#            }
 
 # Get diagnostics file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
 diag_file = "results/sequence-diagnostics.tsv"
@@ -142,6 +144,26 @@ for clus in clusters.keys():
     print("\t", ", ".join(c_i[c_i['num_seqs'] > 10].index))
     print("\n")
 
+#fix cluster order in a list so it's reliable
+clus_keys = [x for x in clusters.keys()]
+
+my_df = [clusters[x]["country_info"] for x in clus_keys]
+all_num_seqs = pd.concat([x.loc[:,"num_seqs"] for x in my_df],axis=1)
+all_num_seqs.columns = clus_keys
+
+has10 = []
+has10_countries = []
+for index, row in all_num_seqs.iterrows():
+    if any(row > 10) and index not in uk_countries:
+        has10.append("*")
+        has10_countries.append(index)
+    else:
+        has10.append("")
+
+all_num_seqs["has_10"] = has10
+
+print("Countries who have more than 10 in any cluster:", has10_countries, "\n")
+print(all_num_seqs)
 
 #cluster_data_S477 = copy.deepcopy(cluster_data)
 #cluster_data_S222 = copy.deepcopy(cluster_data)
@@ -150,7 +172,7 @@ for clus in clusters.keys():
 
 #Use the S477 data to decide what to plot.
 countries_to_plot = ["France", "United Kingdom", "Netherlands",
-    "Switzerland", "Belgium", "Spain", "Norway"]
+    "Switzerland", "Belgium", "Spain", "Norway", "Ireland"]
 #Remember to adjust the number of axes if needed below....
 
 
@@ -158,11 +180,12 @@ country_week = {clus: {} for clus in clusters}
 
 #fig, ax1 = plt.subplots(nrows=1,figsize=(10,7))
 fs = 14
-fig, (ax1, ax2, ax3, ax4, ax5, ax6, ax7) = plt.subplots(nrows=7, sharex=True,figsize=(9,9),
-                                    gridspec_kw={'height_ratios':[1,1,1,1,1,1,1]})
+#fig, (ax1, ax2, ax3, ax4, ax5, ax6, ax7) = plt.subplots(nrows=7, sharex=True,figsize=(9,9),
+#                                    gridspec_kw={'height_ratios':[1,1,1,1,1,1,1]})
+fig, axs = plt.subplots(nrows=len(countries_to_plot), sharex=True,figsize=(9,9))
 
 #for coun in [x for x in countries_to_plot]:
-for coun, ax in zip(countries_to_plot, [ax1, ax2, ax3, ax4, ax5, ax6, ax7]):
+for coun, ax in zip(countries_to_plot, axs):
     i=0
     first_clus_count = []
     ptchs = []
@@ -174,8 +197,7 @@ for coun, ax in zip(countries_to_plot, [ax1, ax2, ax3, ax4, ax5, ax6, ax7]):
         country_week[clus][coun] = cluster_count/total_count
 
         linesty = '-'
-        #lab = f"{coun} {clus}"
-        lab = f"{clus}"
+        lab = clusters[clus]["display_name"] #f"{clus}"
         if i == 0:
             first_clus_count = [0] * len(cluster_count)
         #if i == 1:
@@ -196,7 +218,7 @@ for coun, ax in zip(countries_to_plot, [ax1, ax2, ax3, ax4, ax5, ax6, ax7]):
         ax.fill_between(week_as_date, first_clus_count/total_count, cluster_count/total_count, facecolor=clusters[clus]['col'])
         patch = mpatches.Patch(color=clusters[clus]['col'], label=lab)
         ptchs.append(patch)
-        if i == len(countries_to_plot)-4 :
+        if i == len(clusters)-1 :
             ax.fill_between(week_as_date, cluster_count/total_count, 1, facecolor=grey_color)
             patch = mpatches.Patch(color=grey_color, label=f"other")
             ptchs.append(patch)
@@ -208,17 +230,17 @@ for coun, ax in zip(countries_to_plot, [ax1, ax2, ax3, ax4, ax5, ax6, ax7]):
     ax.set_ylabel('frequency')
     #ax.legend(ncol=1, fontsize=fs*0.8, loc=2)
 
-ax1.legend(handles=ptchs, loc=3, fontsize=fs*0.7, ncol=2)
+axs[0].legend(handles=ptchs, loc=3, fontsize=fs*0.7, ncol=2)
 fig.autofmt_xdate(rotation=30)
 plt.show()
 plt.tight_layout()
 
-plt.savefig(figure_path+f"S222_S477_compare.{fmt}")
-trends_path = figure_path+f"S222_S477_compare.{fmt}"
+plt.savefig(figure_path+f"EUClusters_compare.{fmt}")
+trends_path = figure_path+f"EUClusters_compare.{fmt}"
 copypath = trends_path.replace("compare", "compare-{}".format(datetime.date.today().strftime("%Y-%m-%d")))
 copyfile(trends_path, copypath)
 
 
-for clus in clusters.keys():
-    for coun in countries_to_plot:
-        print(clus, coun, len(country_week[clus][coun]))
+#for clus in clusters.keys():
+#    for coun in countries_to_plot:
+#        print(clus, coun, len(country_week[clus][coun]))
