@@ -82,7 +82,8 @@ while reask:
             clus_to_run = [clus_answer]
             reask = False
         elif clus_answer == "all":
-            clus_to_run = [clusters.keys()]
+            clus_to_run = list(clusters.keys())
+            reask = False
         else:
             print(f"Not found. Options are: {clusters.keys()}")
     else:
