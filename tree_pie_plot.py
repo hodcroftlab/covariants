@@ -76,7 +76,7 @@ uk_run = False
 
 #this has to be set manually
 #start = names['NODE_0001008'] #["NODE_0000814"]  # ["NODE_0003268"]   #["NODE_0002406"]
-start = names['NODE_0001979'] #['NODE_0001981']
+start = names['NODE_0002374'] #['NODE_0001979'] #['NODE_0001981']
 
 #back up the original tree so we don't hve to optimize again if we mess up...
 T_backup = copy.deepcopy(T)
@@ -112,6 +112,7 @@ len(cluster.get_nonterminals())
 #576
 #710
 #715
+#1106
 
 # for each internal node - if only has leaf children from 1 country
 # then collapse this node - its children go to its parent, it disappears
@@ -146,6 +147,7 @@ len(cluster.get_nonterminals())
 #60
 #66
 #71
+#79
 
 # A lot of nodes will have gained children from collapsed nodes
 # so recount the countries!
@@ -222,18 +224,24 @@ def draw_pie(ax, ratios=[0.4,0.3,0.3], colors=["red", "blue"], X=0, Y=0, size = 
 # Also store country counts for each node by this name (so can associate
 # the graph and data)
 ch = 'A'
+nextKey=''
 node_names = {}
 node_countries = {}
 for node in cluster2.find_clades(order="preorder"):
     node.color='grey'
-    node_names[node.name] = ch
+    new_name = nextKey+ch
+    node_names[node.name] = new_name
     node_countries[ch] = {}
-    print(ch)
+    print(new_name)
     for i in range(len(node_counts.index)):
         if node_counts[node.name][i] != 0:
             print("\t", node_counts.index[i], node_counts[node.name][i])
             node_countries[ch][node_counts.index[i]] = node_counts[node.name][i]
-    ch = chr(ord(ch) + 1)
+    if ch == "~":
+        nextKey='A'
+        ch='A'
+    else:
+        ch = chr(ord(ch) + 1)
 
 
 
@@ -257,7 +265,7 @@ for node in cluster2.find_clades(order="preorder"):
 
 for ni,n in enumerate([1,10,100]):
     ax.scatter([0.00002*(ni+1)], [2], s=200*np.sum(n)**0.25, edgecolor='k', facecolor='w')
-    ax.text(0.000018*(ni+1), 3, f"n={n}")
+    ax.text(0.000018*(ni+1), 3.5, f"n={n}")
 
 plt.axis('off')
 plt.legend(handles=ptchs, loc=3, fontsize=fs)
