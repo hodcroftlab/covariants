@@ -231,12 +231,12 @@ for node in cluster2.find_clades(order="preorder"):
     node.color='grey'
     new_name = nextKey+ch
     node_names[node.name] = new_name
-    node_countries[ch] = {}
+    node_countries[new_name] = {}
     print(new_name)
     for i in range(len(node_counts.index)):
         if node_counts[node.name][i] != 0:
             print("\t", node_counts.index[i], node_counts[node.name][i])
-            node_countries[ch][node_counts.index[i]] = node_counts[node.name][i]
+            node_countries[new_name][node_counts.index[i]] = node_counts[node.name][i]
     if ch == "~":
         nextKey='A'
         ch='A'
@@ -247,7 +247,7 @@ for node in cluster2.find_clades(order="preorder"):
 
 # Actually plot!
 fs = 16
-fig = plt.figure(figsize=(12,10))
+fig = plt.figure(figsize=(12,14))
 ax = fig.add_subplot(1,1,1)
 Phylo.draw(cluster2, label_func=lambda x:'', axes=ax,
            branch_labels=lambda x: ",".join([f"{a}{p+1}{d}" for a,p,d in x.mutations]))

@@ -98,8 +98,8 @@ for clus in clus_to_run:
 
     snps = clusters[clus]['snps']
 
-    clusterlist_output = cluster_path+f'/clusters/cluster_clus{clus}.txt'
-    out_meta_file = cluster_path+f'/cluster_info/cluster_{clus}_meta.tsv'
+    clusterlist_output = cluster_path+f'/clusters/cluster_clus{clusters[clus]["build_name"]}.txt'
+    out_meta_file = cluster_path+f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
 
 
     # get the sequences that we want - which are 'part of the cluster:

@@ -45,9 +45,9 @@ if not path.isdir(output_folder):
 # look in the folder where 'clusterDynamics.py' write out cluster lists!
 named_clusters_dir = "../ncov_cluster/cluster_profile/clusters/"
 known_clusters = {}
-clus_files = [x for x in listdir(named_clusters_dir) if "2020-" not in x and 'clusone' not in x and 'clustwo' not in x]
+clus_files = [x for x in listdir(named_clusters_dir) if "2020-" not in x and 'clusone' not in x and 'clustwo' not in x and '_clus' not in x]
 for file in clus_files:
-    cluster_name = file.strip("cluster_clus.txt")
+    cluster_name = file.strip("cluster_.txt")
     with open(named_clusters_dir + file) as f:
         cluster = f.read().splitlines()
     known_clusters[cluster_name] = cluster
