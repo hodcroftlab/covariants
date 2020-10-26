@@ -98,7 +98,7 @@ for clus in clus_to_run:
 
     snps = clusters[clus]['snps']
 
-    clusterlist_output = cluster_path+f'/clusters/cluster_clus{clusters[clus]["build_name"]}.txt'
+    clusterlist_output = cluster_path+f'/clusters/cluster_{clusters[clus]["build_name"]}.txt'
     out_meta_file = cluster_path+f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
 
 
@@ -132,7 +132,8 @@ for clus in clus_to_run:
             f.write("%s\n" % item)
 
     # Copy file with date, so we can compare to prev dates if we want...
-    copypath = clusterlist_output.replace(f"clus{clus}", "clus{}-{}".format(clus,datetime.date.today().strftime("%Y-%m-%d")))
+    build_nam = clusters[clus]["build_name"]
+    copypath = clusterlist_output.replace(f"{build_nam}", "{}-{}".format(build_nam, datetime.date.today().strftime("%Y-%m-%d")))
     copyfile(clusterlist_output, copypath)
 
     # get metadata for these sequences
