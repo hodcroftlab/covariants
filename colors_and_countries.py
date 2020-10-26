@@ -14,7 +14,8 @@ country_list =[
 'Ireland',
 'Italy',
 'New Zealand',
-'Sweden'
+'Sweden',
+'Australia'
 ]
 
 colors = [
@@ -31,7 +32,8 @@ colors = [
 "#ffff99",
 "#b15928",
 "#000000",
-"#b3b3b3"
+"#b3b3b3",
+"#ffffff"
 ]
 
 #separate out Scotland, England, NI, Wales...
