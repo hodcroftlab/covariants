@@ -40,6 +40,11 @@ metadatafile = ncov_swiss_folder + "/data/metadata.tsv"
 if not path.isdir(output_folder):
     mkdir(output_folder)
 
+#create reverse look up from build name to cluster key
+build_name_clusters = {}
+for clus in clusters.keys():
+    build_name_clusters[clusters[clus]['build_name']] = clus
+
 # Known clusters we compare against. TODO: File position temporary
 #   named_clusters_dir = input_folder + "named_clusters/"
 # look in the folder where 'clusterDynamics.py' write out cluster lists!
@@ -50,7 +55,12 @@ for file in clus_files:
     cluster_name = file.strip("cluster_.txt")
     with open(named_clusters_dir + file) as f:
         cluster = f.read().splitlines()
-    known_clusters[cluster_name] = cluster
+    if cluster_name in build_name_clusters:
+        actual_clus = build_name_clusters[cluster_name]
+    else:
+        print(f"WARNING! Build name {cluster_name} is not found in clusters!")
+        actual_clus = ""
+    known_clusters[actual_clus] = cluster
 
 
 # Read in the tree and add extra node data
