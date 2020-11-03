@@ -327,7 +327,7 @@ for clus in clus_to_run:
         fig.autofmt_xdate(rotation=30)
         ax3.tick_params(labelsize=fs*0.8)
         ax3.set_ylabel('frequency', fontsize=fs)
-        ax3.set_xlim(datetime.datetime(2020,5,1), datetime.datetime(2020,10,15))
+        ax3.set_xlim(datetime.datetime(2020,5,1), datetime.datetime(2020,11,1))
         plt.show()
         plt.tight_layout()
 
@@ -341,58 +341,62 @@ for clus in clus_to_run:
         copypath = trends_path.replace("trends", "trends-{}".format(datetime.date.today().strftime("%Y-%m-%d")))
         copyfile(trends_path, copypath)
 
+
+        all_plots = input("\nDo you want to plot growth rate + all sequences graphs? (y/n): ")
+
+        if all_plots == "y":
     #############################################
     #############################################
     # Figure for growth rate estimates
-        #
-        print("\n\n\nNow doing growth rate estimates: \n")
-        fig = plt.figure()
-        from scipy.stats import scoreatpercentile
-        rates = {}
-        n_bootstraps=100
-        #for a simpler plot of most interesting countries use this:
-        for coun in ['Switzerland', 'England', 'Scotland', 'Wales', 'Spain', 'United Kingdom']:
-            week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
-            days = np.array([x.toordinal() for x in week_as_date])
-            mean_upper_lower = []
-            for x, n in zip(cluster_count, total_count):
-                mean_upper_lower.append(bernoulli_estimator(x,n))
-            mean_upper_lower = np.array(mean_upper_lower)
+            #
+            print("\n\n\nNow doing growth rate estimates: \n")
+            fig = plt.figure()
+            from scipy.stats import scoreatpercentile
+            rates = {}
+            n_bootstraps=100
+            #for a simpler plot of most interesting countries use this:
+            for coun in ['Switzerland', 'England', 'Scotland', 'Wales', 'Spain', 'United Kingdom']:
+                week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
+                days = np.array([x.toordinal() for x in week_as_date])
+                mean_upper_lower = []
+                for x, n in zip(cluster_count, total_count):
+                    mean_upper_lower.append(bernoulli_estimator(x,n))
+                mean_upper_lower = np.array(mean_upper_lower)
 
-            center_fit = fit_logistic(days, cluster_count, total_count)
-            rates[coun] = {'center':center_fit['x'][0]}
-            bootstraps = []
-            for n in range(n_bootstraps):
-                # NOTE: bootstrap weeks to estimate confidence
-                ind = np.random.randint(len(cluster_count), size=len(cluster_count))
-                fit = fit_logistic(days[ind], cluster_count[ind], total_count[ind])
-                bootstraps.append(fit['x'][0])
-            rates[coun]['bootstraps'] = bootstraps
-            rates[coun]['lower'] = scoreatpercentile(bootstraps, 25)
-            rates[coun]['upper'] = scoreatpercentile(bootstraps, 75)
-            rates[coun]['t50'] = center_fit['x'][1]
-            print(f"{coun} growth rate: {rates[coun]['center']*700:1.2f}% per week")
+                center_fit = fit_logistic(days, cluster_count, total_count)
+                rates[coun] = {'center':center_fit['x'][0]}
+                bootstraps = []
+                for n in range(n_bootstraps):
+                    # NOTE: bootstrap weeks to estimate confidence
+                    ind = np.random.randint(len(cluster_count), size=len(cluster_count))
+                    fit = fit_logistic(days[ind], cluster_count[ind], total_count[ind])
+                    bootstraps.append(fit['x'][0])
+                rates[coun]['bootstraps'] = bootstraps
+                rates[coun]['lower'] = scoreatpercentile(bootstraps, 25)
+                rates[coun]['upper'] = scoreatpercentile(bootstraps, 75)
+                rates[coun]['t50'] = center_fit['x'][1]
+                print(f"{coun} growth rate: {rates[coun]['center']*700:1.2f}% per week")
 
-            # plt.plot(week_as_date, mean_upper_lower[:,0],
-            #              marker='o', color=palette[i], label=coun, linestyle=sty)
-            # plt.errorbar(week_as_date, mean_upper_lower[:,0], yerr=mean_upper_lower[:,1:].T,
-            if coun == 'United Kingdom':
-                print('UK')
-                continue
-            plt.plot(week_as_date, mean_upper_lower[:,0],
-                    marker='o',
-                    color=country_styles[coun]['c'],
-                    linestyle=country_styles[coun]['ls'])
+                # plt.plot(week_as_date, mean_upper_lower[:,0],
+                #              marker='o', color=palette[i], label=coun, linestyle=sty)
+                # plt.errorbar(week_as_date, mean_upper_lower[:,0], yerr=mean_upper_lower[:,1:].T,
+                if coun == 'United Kingdom':
+                    print('UK')
+                    continue
+                plt.plot(week_as_date, mean_upper_lower[:,0],
+                        marker='o',
+                        color=country_styles[coun]['c'],
+                        linestyle=country_styles[coun]['ls'])
 
-            plt.plot(week_as_date, logistic(days, center_fit['x'][0], center_fit['x'][1]),
-                    c=country_styles[coun]['c'], ls=country_styles[coun]['ls'],
-                    label = f"{coun}, growth rate: {rates[coun]['center']*700:1.1f} (CI: {rates[coun]['lower']*700:1.1f}-{rates[coun]['upper']*700:1.1f})%/week")
+                plt.plot(week_as_date, logistic(days, center_fit['x'][0], center_fit['x'][1]),
+                        c=country_styles[coun]['c'], ls=country_styles[coun]['ls'],
+                        label = f"{coun}, growth rate: {rates[coun]['center']*700:1.1f} (CI: {rates[coun]['lower']*700:1.1f}-{rates[coun]['upper']*700:1.1f})%/week")
 
-        plt.legend()
-        fig.autofmt_xdate(rotation=30)
-        plt.ylabel('frequency')
-        plt.tight_layout()
-        plt.savefig(figure_path+f'logistic_fits.{fmt}')
+            plt.legend()
+            fig.autofmt_xdate(rotation=30)
+            plt.ylabel('frequency')
+            plt.tight_layout()
+            plt.savefig(figure_path+f'logistic_fits.{fmt}')
 
     #############################################
     #############################################
@@ -402,66 +406,66 @@ for clus in clus_to_run:
     # Let's do this just for Spain, Switzerland, Norway, UK - as they have most sequences in cluster.
 
         #For the this part, plotting case data, files are assumed to be in 'sister' repo 'cluster_scripts',
-        # with this format:
-        case_data_path = "../cluster_scripts/country_case_data/"
-        case_files = {'Spain': 'Spain.tsv', 'Norway': 'Norway.tsv', 'Switzerland': 'Switzerland.tsv',
-                        'United Kingdom': 'United Kingdom of Great Britain and Northern Ireland.tsv'}
+            # with this format:
+            case_data_path = "../cluster_scripts/country_case_data/"
+            case_files = {'Spain': 'Spain.tsv', 'Norway': 'Norway.tsv', 'Switzerland': 'Switzerland.tsv',
+                            'United Kingdom': 'United Kingdom of Great Britain and Northern Ireland.tsv'}
 
-        seqs_week = {}
+            seqs_week = {}
 
-        for coun in ['Switzerland', 'Spain', 'United Kingdom', 'Norway']:
-            #read in case data
-            case_week_as_date, case_data = read_case_data_by_week(case_data_path+case_files[coun])
+            for coun in ['Switzerland', 'Spain', 'United Kingdom', 'Norway']:
+                #read in case data
+                case_week_as_date, case_data = read_case_data_by_week(case_data_path+case_files[coun])
 
-            # Now get total number of sequence, per week - by using metadata.tsv from ncov
-            counts_by_week = defaultdict(int)
-            temp_meta = meta[meta['country'].isin([coun])]
-            for dat in temp_meta['date']:
-                if len(dat) is 10 and "-XX" not in dat: # only take those that have real dates
-                    dt = datetime.datetime.strptime(dat, '%Y-%m-%d')
-                    wk = dt.isocalendar()[1] #returns ISO calendar week
-                    counts_by_week[wk]+=1
-            seqs_week[coun] = counts_by_week
+                # Now get total number of sequence, per week - by using metadata.tsv from ncov
+                counts_by_week = defaultdict(int)
+                temp_meta = meta[meta['country'].isin([coun])]
+                for dat in temp_meta['date']:
+                    if len(dat) is 10 and "-XX" not in dat: # only take those that have real dates
+                        dt = datetime.datetime.strptime(dat, '%Y-%m-%d')
+                        wk = dt.isocalendar()[1] #returns ISO calendar week
+                        counts_by_week[wk]+=1
+                seqs_week[coun] = counts_by_week
 
-            seqs_data = pd.DataFrame(data=seqs_week)
-            seqs_data=seqs_data.sort_index()
+                seqs_data = pd.DataFrame(data=seqs_week)
+                seqs_data=seqs_data.sort_index()
 
-            # Only plot sequence data for weeks were data is available (avoid plotting random 0s bc no seqs)
-            weeks = pd.concat([cluster_data[coun], seqs_data[coun]], axis=1).fillna(0)
-            week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
-            # convert week numbers back to first day of that week - so that X axis is real time rather than weeks
-            days = np.array([x.toordinal() for x in case_week_as_date])
+                # Only plot sequence data for weeks were data is available (avoid plotting random 0s bc no seqs)
+                weeks = pd.concat([cluster_data[coun], seqs_data[coun]], axis=1).fillna(0)
+                week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
+                # convert week numbers back to first day of that week - so that X axis is real time rather than weeks
+                days = np.array([x.toordinal() for x in case_week_as_date])
 
-            #PLOT
-            lines = []
-            fig, ax1 = plt.subplots()
-            plt.title(coun)
-            color='tab:blue'
-            ax1.set_ylabel('New Cases', color=color)
-            lines.append(ax1.plot(case_week_as_date , case_data.cases, color=color, label='cases per week')[0])
-            #if coun is not 'Norway':
-            #    lines.append(ax1.plot(case_week_as_date , case_data.cases*(1 - logistic(days, rates[coun]['center'], rates[coun]['t50']) ), color=color, ls='--', label='cases per week w/o cluster')[0])
-            ax1.tick_params(axis='y', labelcolor=color)
-            ax1.set_yscale("log")
+                #PLOT
+                lines = []
+                fig, ax1 = plt.subplots()
+                plt.title(coun)
+                color='tab:blue'
+                ax1.set_ylabel('New Cases', color=color)
+                lines.append(ax1.plot(case_week_as_date , case_data.cases, color=color, label='cases per week')[0])
+                #if coun is not 'Norway':
+                #    lines.append(ax1.plot(case_week_as_date , case_data.cases*(1 - logistic(days, rates[coun]['center'], rates[coun]['t50']) ), color=color, ls='--', label='cases per week w/o cluster')[0])
+                ax1.tick_params(axis='y', labelcolor=color)
+                ax1.set_yscale("log")
 
-            ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
-            color = 'tab:red'
-            ax2.set_ylabel('Sequences', color=color)
-            #ax2.plot(week_as_date, weeks.loc[with_data].iloc[:,0]/(total[with_data]), 'o', color=color, label=coun, linestyle=sty)
-            lines.append(ax2.plot(week_as_date, total_count, 'o', label='total sequences',
-                    color=color, linestyle='-')[0])
-            lines.append(ax2.plot(week_as_date, cluster_count, 'o', color="purple", label="sequences in cluster", linestyle='-')[0])
-            ax2.tick_params(axis='y', labelcolor=color)
-            ax2.set_yscale("log")
+                ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+                color = 'tab:red'
+                ax2.set_ylabel('Sequences', color=color)
+                #ax2.plot(week_as_date, weeks.loc[with_data].iloc[:,0]/(total[with_data]), 'o', color=color, label=coun, linestyle=sty)
+                lines.append(ax2.plot(week_as_date, total_count, 'o', label='total sequences',
+                        color=color, linestyle='-')[0])
+                lines.append(ax2.plot(week_as_date, cluster_count, 'o', color="purple", label="sequences in cluster", linestyle='-')[0])
+                ax2.tick_params(axis='y', labelcolor=color)
+                ax2.set_yscale("log")
 
-            fig.autofmt_xdate(rotation=30)
-            if coun is 'Norway':
-                plt.legend(lines, ['cases per week', 'total sequences', 'sequences in cluster'], loc=3)
-            else:
-                plt.legend(lines, ['cases per week', 'cases per week w/o cluster', 'total sequences', 'sequences in cluster'], loc=3)
-            fig.tight_layout()
-            plt.show()
-            plt.savefig(figure_path+f"{coun}-newcases-seqs.{fmt}")
+                fig.autofmt_xdate(rotation=30)
+                if coun is 'Norway':
+                    plt.legend(lines, ['cases per week', 'total sequences', 'sequences in cluster'], loc=3)
+                else:
+                    plt.legend(lines, ['cases per week', 'cases per week w/o cluster', 'total sequences', 'sequences in cluster'], loc=3)
+                fig.tight_layout()
+                plt.show()
+                plt.savefig(figure_path+f"{coun}-newcases-seqs.{fmt}")
 
 
 
