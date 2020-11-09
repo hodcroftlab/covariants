@@ -172,7 +172,7 @@ print(all_num_seqs)
 
 #Use the S477 data to decide what to plot.
 countries_to_plot = ["France", "United Kingdom", "Netherlands",
-    "Switzerland", "Belgium", "Spain", "Norway", "Ireland"]
+    "Switzerland", "Belgium", "Spain", "Norway", "Ireland", "Denmark"]
 #Remember to adjust the number of axes if needed below....
 
 
@@ -211,9 +211,10 @@ for coun, ax in zip(countries_to_plot, axs):
         #    linesty = ':'
         cluster_count = first_clus_count + cluster_count #unindented
 
-        ax.plot(week_as_date, cluster_count/total_count,
-                color=clusters[clus]['col'],#country_styles[coun]['c'],
-                linestyle=linesty)#, label=lab)
+  #      ax.plot(week_as_date, cluster_count/total_count,
+  #              color=clusters[clus]['col'],#country_styles[coun]['c'],
+  #              linestyle=linesty)#, label=lab)
+        
         #ax.scatter(week_as_date, cluster_count/total_count, s=[marker_size(n) for n in total_count],
         #        color=country_styles[coun]['c'],
         #        linestyle=linesty)
