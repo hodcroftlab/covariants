@@ -197,9 +197,9 @@ for coun, ax in zip(countries_to_plot, axs):
         week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
 
         week_as_dates[coun] = week_as_date
-        clusters[clus]['week_as_date'] = week_as_date
-        clusters[clus]['cluster_count'] = cluster_count
-        clusters[clus]['total_count'] = total_count
+        #clusters[clus]['week_as_date'] = week_as_date
+        #clusters[clus]['cluster_count'] = cluster_count
+        #clusters[clus]['total_count'] = total_count
 
         country_week[clus][coun] = cluster_count/total_count
 
