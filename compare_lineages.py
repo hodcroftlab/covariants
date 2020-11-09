@@ -60,7 +60,8 @@ for file in clus_files:
     else:
         print(f"WARNING! Build name {cluster_name} is not found in clusters!")
         actual_clus = ""
-    known_clusters[actual_clus] = cluster
+    if actual_clus != "":
+        known_clusters[actual_clus] = cluster
 
 
 # Read in the tree and add extra node data
