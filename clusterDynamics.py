@@ -270,8 +270,9 @@ for clus in clus_to_run:
     'Spain',
     'Switzerland',
     'Ireland',
-    'Netherlands'#,
+    'Netherlands',
     #'Belgium'
+    'Denmark'
     ]
 
     #These are the countries we don't plot: 'Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland'
@@ -327,7 +328,7 @@ for clus in clus_to_run:
         fig.autofmt_xdate(rotation=30)
         ax3.tick_params(labelsize=fs*0.8)
         ax3.set_ylabel('frequency', fontsize=fs)
-        ax3.set_xlim(datetime.datetime(2020,5,1), datetime.datetime(2020,11,1))
+        ax3.set_xlim(datetime.datetime(2020,5,1), datetime.datetime(2020,11,10))
         plt.show()
         plt.tight_layout()
 
@@ -355,7 +356,7 @@ for clus in clus_to_run:
             rates = {}
             n_bootstraps=100
             #for a simpler plot of most interesting countries use this:
-            for coun in ['Switzerland', 'England', 'Scotland', 'Wales', 'Spain', 'United Kingdom']:
+            for coun in ['Switzerland', 'England', 'Scotland', 'Wales', 'Spain', 'United Kingdom', 'Denmark']:
                 week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
                 days = np.array([x.toordinal() for x in week_as_date])
                 mean_upper_lower = []
@@ -409,11 +410,12 @@ for clus in clus_to_run:
             # with this format:
             case_data_path = "../cluster_scripts/country_case_data/"
             case_files = {'Spain': 'Spain.tsv', 'Norway': 'Norway.tsv', 'Switzerland': 'Switzerland.tsv',
-                            'United Kingdom': 'United Kingdom of Great Britain and Northern Ireland.tsv'}
+                            'United Kingdom': 'United Kingdom of Great Britain and Northern Ireland.tsv',
+                            'Denmark': 'Denmark.tsv'}
 
             seqs_week = {}
 
-            for coun in ['Switzerland', 'Spain', 'United Kingdom', 'Norway']:
+            for coun in ['Switzerland', 'Spain', 'United Kingdom', 'Norway', 'Denmark']:
                 #read in case data
                 case_week_as_date, case_data = read_case_data_by_week(case_data_path+case_files[coun])
 
@@ -462,7 +464,8 @@ for clus in clus_to_run:
                 if coun is 'Norway':
                     plt.legend(lines, ['cases per week', 'total sequences', 'sequences in cluster'], loc=3)
                 else:
-                    plt.legend(lines, ['cases per week', 'cases per week w/o cluster', 'total sequences', 'sequences in cluster'], loc=3)
+                    plt.legend(lines, ['cases per week', #'cases per week w/o cluster', 
+                    'total sequences', 'sequences in cluster'], loc=3)
                 fig.tight_layout()
                 plt.show()
                 plt.savefig(figure_path+f"{coun}-newcases-seqs.{fmt}")
