@@ -184,6 +184,8 @@ fs = 14
 #                                    gridspec_kw={'height_ratios':[1,1,1,1,1,1,1]})
 fig, axs = plt.subplots(nrows=len(countries_to_plot), sharex=True,figsize=(9,9))
 
+week_as_dates = {}
+
 #for coun in [x for x in countries_to_plot]:
 for coun, ax in zip(countries_to_plot, axs):
     i=0
@@ -193,6 +195,11 @@ for coun, ax in zip(countries_to_plot, axs):
     for clus in clusters.keys():
         cluster_data = clusters[clus]['cluster_data']
         week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
+
+        week_as_dates[coun] = week_as_date
+        clusters[clus]['week_as_date'] = week_as_date
+        clusters[clus]['cluster_count'] = cluster_count
+        clusters[clus]['total_count'] = total_count
 
         country_week[clus][coun] = cluster_count/total_count
 
