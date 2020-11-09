@@ -9,7 +9,13 @@ clusters = {"S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
             "S80": {'snps': [21799, 3098], 'cluster_data': [],
             "country_info":[], 'col': "#3cb44b", "display_name": "S:D80Y", "build_name":"S.D80Y"},
             "S439": {'snps': [7766, 22878], 'cluster_data': [],
-            "country_info":[], 'col': "#fb9a99", "display_name": "S:N439K", "build_name":"S.N439K"}
+            "country_info":[], 'col': "#fb9a99", "display_name": "S:N439K", "build_name":"S.N439K"},
+
+            "S453": {'snps': [22919], 'cluster_data': [],
+            "country_info":[], 'col': "#cc0000", "display_name": "S:Y453F", "build_name":"S.Y453F"}
+            
+#            "S501": {'snps': [23063], 'cluster_data': [],
+#            "country_info":[], 'col': "#cc0000", "display_name": "S:N501T", "build_name":"S.N501T"}
             }
 
 
