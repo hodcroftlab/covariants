@@ -97,6 +97,10 @@ for clus in clus_to_run:
     print(f"\nRunning cluster {clus}\n")
 
     snps = clusters[clus]['snps']
+    if 'snps2' in clusters[clus]:
+        snps2 = clusters[clus]['snps2']
+    else:
+        snps2 = []
 
     clusterlist_output = cluster_path+f'/clusters/cluster_{clusters[clus]["build_name"]}.txt'
     out_meta_file = cluster_path+f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
@@ -110,7 +114,7 @@ for clus in clus_to_run:
         snplist = row['all_snps']
         if not pd.isna(snplist):
             intsnp = [int(x) for x in snplist.split(',')]
-            if all(x in intsnp for x in snps):
+            if all(x in intsnp for x in snps) or (all (x in intsnp for x in snps2) and len(snps2)!=0):
                 #if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
                 wanted_seqs.append(row['strain'])
 
