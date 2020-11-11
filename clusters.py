@@ -12,10 +12,14 @@ clusters = {"S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
             "country_info":[], 'col': "#fb9a99", "display_name": "S:N439K", "build_name":"S.N439K"},
 
             "S453": {'snps': [22919], 'cluster_data': [],
-            "country_info":[], 'col': "#cc0000", "display_name": "S:Y453F", "build_name":"S.Y453F"}
+            "country_info":[], 'col': "#cc0000", "display_name": "S:Y453F", "build_name":"S.Y453F"},
             
-#            "S501": {'snps': [23063], 'cluster_data': [],
-#            "country_info":[], 'col': "#cc0000", "display_name": "S:N501T", "build_name":"S.N501T"}
+            "S501": {'snps': [23063], 'cluster_data': [], 'snps2': [23062],
+            "country_info":[], 'col': "#ff99ff", "display_name": "S:N501", "build_name":"S.N501"}
+
+            #"S69": {'snps': [21766], 'cluster_data': [], 'build_name': "S.69"},
+            #"S692": {'snps': [23635], 'cluster_data': [], 'build_name': "S.692"},
+            #"S1229": {'snps': [25248], 'cluster_data': [], 'build_name': "S.1229"}
             }
 
 
