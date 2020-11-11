@@ -444,7 +444,7 @@ for clus in clus_to_run:
                 plt.title(coun)
                 color='tab:blue'
                 ax1.set_ylabel('New Cases', color=color)
-                lines.append(ax1.plot(case_week_as_date , case_data.cases, color=color, label='cases per week')[0])
+                lines.append(ax1.plot(case_week_as_date[:-1] , case_data.cases[:-1], color=color, label='cases per week')[0])
                 #if coun is not 'Norway':
                 #    lines.append(ax1.plot(case_week_as_date , case_data.cases*(1 - logistic(days, rates[coun]['center'], rates[coun]['t50']) ), color=color, ls='--', label='cases per week w/o cluster')[0])
                 ax1.tick_params(axis='y', labelcolor=color)
@@ -454,9 +454,9 @@ for clus in clus_to_run:
                 color = 'tab:red'
                 ax2.set_ylabel('Sequences', color=color)
                 #ax2.plot(week_as_date, weeks.loc[with_data].iloc[:,0]/(total[with_data]), 'o', color=color, label=coun, linestyle=sty)
-                lines.append(ax2.plot(week_as_date, total_count, 'o', label='total sequences',
+                lines.append(ax2.plot(week_as_date[:-1], total_count[:-1], 'o', label='total sequences',
                         color=color, linestyle='-')[0])
-                lines.append(ax2.plot(week_as_date, cluster_count, 'o', color="purple", label="sequences in cluster", linestyle='-')[0])
+                lines.append(ax2.plot(week_as_date[:-1], cluster_count[:-1], 'o', color="purple", label="sequences in cluster", linestyle='-')[0])
                 ax2.tick_params(axis='y', labelcolor=color)
                 ax2.set_yscale("log")
 
@@ -464,7 +464,7 @@ for clus in clus_to_run:
                 if coun is 'Norway':
                     plt.legend(lines, ['cases per week', 'total sequences', 'sequences in cluster'], loc=3)
                 else:
-                    plt.legend(lines, ['cases per week', #'cases per week w/o cluster', 
+                    plt.legend(lines, ['cases per week', #'cases per week w/o cluster',
                     'total sequences', 'sequences in cluster'], loc=3)
                 fig.tight_layout()
                 plt.show()
