@@ -310,6 +310,8 @@ for clus in clus_to_run:
         #for a simpler plot of most interesting countries use this:
         for coun in [x for x in countries_to_plot]:
             week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
+            # remove last data point if that point as less than frac sequences compared to the previous count
+            week_as_date, cluster_count, total_count = trim_last_data_point(week_as_date, cluster_count, total_count, frac=0.1, keep_count=10)
 
             ax3.plot(week_as_date, cluster_count/total_count,
                     color=country_styles[coun]['c'],

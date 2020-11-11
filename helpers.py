@@ -19,6 +19,11 @@ def fit_logistic(days, cluster, total):
     return sol
 
 
+def trim_last_data_point(week_as_date, cluster_count, total_count, frac=0.2, keep_count=10):
+    if total_count[-1]<frac*total_count[-2] and total_count[-1]<keep_count:
+        return week_as_date[:-1], cluster_count[:-1], total_count[:-1]
+
+    return week_as_date, cluster_count, total_count
 
 def non_zero_counts(cluster_data, total_data, country):
 
