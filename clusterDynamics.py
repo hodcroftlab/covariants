@@ -124,6 +124,14 @@ for clus in clus_to_run:
     if bad_seq.date.values[0] == "2020-03-07" and 'Spain/VC-IBV-98006466/2020' in wanted_seqs:
         wanted_seqs.remove('Spain/VC-IBV-98006466/2020')
 
+    # There are two sequences from UK with suspected bad dates: exclude
+    bad_seq = meta[meta['strain'].isin(['England/LIVE-1DD7AC/2020'])]
+    if bad_seq.date.values[0] == "2020-03-10" and 'England/LIVE-1DD7AC/2020' in wanted_seqs:
+        wanted_seqs.remove('England/LIVE-1DD7AC/2020')
+    bad_seq = meta[meta['strain'].isin(['England/PORT-2D2111/2020'])]
+    if bad_seq.date.values[0] == "2020-03-21" and 'England/PORT-2D2111/2020' in wanted_seqs:
+        wanted_seqs.remove('England/PORT-2D2111/2020')
+
     print("Sequences found: ")
     print(len(wanted_seqs)) # how many are there?
     print("\n")
@@ -230,6 +238,10 @@ for clus in clus_to_run:
             dat = row.date
             if len(dat) is 10 and "-XX" not in dat: # only take those that have real dates
                 dt = datetime.datetime.strptime(dat, '%Y-%m-%d')
+                #exclude sequences with identical dates & underdiverged
+                if coun == "Ireland" and dat == "2020-09-22":
+                    continue
+
                 # wk = dt.timetuple().tm_yday//7  # old method
                 wk = dt.isocalendar()[1] #returns ISO calendar week
                 if wk >= 20:
