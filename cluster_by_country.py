@@ -46,6 +46,12 @@ for clus, ax in zip(clusters.keys(), axs):
 
     i+=1
 
+fig.autofmt_xdate(rotation=30)
+plt.show()
+plt.tight_layout()
+
+plt.savefig(figure_path+f"clusters_compare_country.{fmt}")
+
 #    for coun in countries_to_plot:
 #
 #    with_data = percents[clus][coun]>=0
