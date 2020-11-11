@@ -172,7 +172,7 @@ print(all_num_seqs)
 
 #Use the S477 data to decide what to plot.
 countries_to_plot = ["France", "United Kingdom", "Netherlands",
-    "Switzerland", "Belgium", "Spain", "Norway", "Ireland", "Denmark"]
+    "Switzerland", "Belgium", "Spain", "Norway", "Ireland", "Denmark", "Czech Republic"]
 #Remember to adjust the number of axes if needed below....
 
 
