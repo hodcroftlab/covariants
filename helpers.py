@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import datetime
 from collections import defaultdict
+from paths import *
 
 
 def logistic(x, a, t50):
@@ -62,6 +63,16 @@ def read_case_data_by_week(fname):
     case_week_as_date = [ datetime.datetime.strptime("2020-W{}-1".format(x), '%G-W%V-%u') for x in case_data.index ]
 
     return case_week_as_date, case_data
+
+
+
+def load_case_data(countries):
+    case_data = {}
+    for c in countries:
+        w, cases = read_case_data_by_week(case_data_path+case_files.get(c, f"{c}.tsv"))
+        case_data[c] = {k:v for k,v in zip(w, cases.cases)}
+
+    return case_data
 
 
 # n is the number of observations

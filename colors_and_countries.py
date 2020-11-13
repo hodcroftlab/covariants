@@ -73,4 +73,6 @@ popsizes = {
     'France':66987244,
     'Ireland':4853506,
     'Belgium':11422068,
+    'Denmark':5797446,
+    "Scotland": 5469000
 }
