@@ -4,6 +4,7 @@ import glob, datetime
 
 travel_volume = {}
 for fname in glob.glob('../cluster_scripts/travel_data/*xls'):
+    print(f"Loading {fname}")
     country = fname.split('/')[-1][:-4]
     if country=='UK':
         country = 'United Kingdom'
@@ -12,7 +13,7 @@ for fname in glob.glob('../cluster_scripts/travel_data/*xls'):
 
     d = pd.read_excel(fname, skiprows=2).astype(str)
     travel_volume[country] = d.iloc[0,3:].apply(lambda x:int(x.replace('.','')))
-    travel_volume[country].index = [datetime.datetime(2020,i,15) for i in range(1,10)]
+    travel_volume[country].index = [datetime.datetime(2020,i,15) for i in range(1,11)]
 
 
 #quarantine free travel to spain:
