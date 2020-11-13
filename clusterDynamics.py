@@ -364,6 +364,31 @@ for clus in clus_to_run:
         all_plots = input("\nDo you want to plot growth rate + all sequences graphs? (y/n): ")
 
         if all_plots == "y":
+
+    #############################################
+    #############################################
+    # Figure for UK countries only
+            print("\n\n\nNow doing UK Country plot: \n")
+            fig = plt.figure()
+            #for a simpler plot of most interesting countries use this:
+            for coun in [ 'England', 'Scotland', 'Wales', 'Northern Ireland', 'United Kingdom']:
+                week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
+
+                if coun == 'United Kingdom':
+                    print('UK')
+                    continue
+                plt.plot(week_as_date, cluster_count/total_count,#mean_upper_lower[:,0],
+                        marker='o',
+                        color=country_styles[coun]['c'],
+                        linestyle=country_styles[coun]['ls'],
+                        label = f"{coun}")
+                        
+            plt.legend()
+            fig.autofmt_xdate(rotation=30)
+            plt.ylabel('frequency')
+            plt.tight_layout()
+            plt.savefig(figure_path+f'uk_countries.{fmt}')
+
     #############################################
     #############################################
     # Figure for growth rate estimates
