@@ -119,6 +119,9 @@ for clus in clusters.keys():
             dat = row.date
             if len(dat) is 10 and "-XX" not in dat: # only take those that have real dates
                 dt = datetime.datetime.strptime(dat, '%Y-%m-%d')
+                #exclude sequences with identical dates & underdiverged
+                if coun == "Ireland" and dat == "2020-09-22":
+                    continue
                 # wk = dt.timetuple().tm_yday//7  # old method
                 wk = dt.isocalendar()[1]//2*2 #returns ISO calendar week
                 if wk >= 20:
