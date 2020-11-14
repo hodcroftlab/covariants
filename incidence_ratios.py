@@ -6,7 +6,7 @@ from colors_and_countries import *
 fmt='pdf'
 
 countries = ['Spain', 'France', 'Belgium', 'United Kingdom', 'Switzerland', 'Netherlands', 'Norway',
-              'Ireland']
+              'Ireland', "Scotland", "Wales"]
 
 
 if __name__ == '__main__':
@@ -16,8 +16,9 @@ if __name__ == '__main__':
         incidence = np.array(list(case_data[c].values())[:-1])/popsizes[c]*1e5
         weeks = list(case_data[c].keys())[:-1]
         plt.plot(weeks, incidence, lw=2,
-                 label=c, c=country_styles[c]['c'])
-        print(c, np.mean([i for w,i in zip(weeks, incidence) if w.month==7]), np.mean([i for w,i in zip(weeks, incidence) if w.month==8]))
+                 label=c, c=country_styles[c]['c'], ls=country_styles[c]['ls'])
+        print(c, np.mean([i for w,i in zip(weeks, incidence) if w.month==7]),
+                 np.mean([i for w,i in zip(weeks, incidence) if w.month==8]))
     plt.ylabel('weekly incidence per 100000')
     plt.yscale('log')
     plt.ylim([1,1000])

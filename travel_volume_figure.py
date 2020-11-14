@@ -4,6 +4,8 @@ from travel_data import *
 from colors_and_countries import *
 from helpers import *
 
+figure_path = '../cluster_scripts/figures/'
+
 
 def get_import_frequency(country, cases, weeks=None, avg_cases_per_intro=1):
     if weeks is None:
@@ -47,16 +49,16 @@ fmt = 'pdf'
 fig = plt.figure()
 for coun in travel_volume:
    plt.plot(travel_volume[coun].index, travel_volume[coun]/popsizes[coun]*100000, label=coun,
-            c=country_styles[coun]['c'], lw=2)
+            c=country_styles[coun]['c'], lw=2, ls=country_styles[coun].get('ls', '-'))
 
 plt.yscale('log')
 plt.ylabel('passengers/100000', fontsize=fs)
 fig.autofmt_xdate(rotation=30)
 plt.legend()
-plt.savefig(f'figures/travel_volume.{fmt}')
+plt.savefig(figure_path+f'travel_volume.{fmt}')
 
 
-countries = ["Switzerland", "Spain", "United Kingdom", "Netherlands", "France", "Ireland", "Denmark"]
+countries = ["Switzerland", "Spain", "United Kingdom", "Netherlands", "France", "Ireland", "Denmark", "Scotland", "Wales"]
 case_data = load_case_data(countries)
 fig = plt.figure()
 
@@ -65,14 +67,14 @@ for country in case_data:
         continue
 
     res = get_import_frequency(country, case_data)
-    plt.plot(res['dates'], res['frequency'], label=country, c=country_styles[country]['c'])
+    plt.plot(res['dates'], res['frequency'], label=country, c=country_styles[country]['c'], ls=country_styles[country].get('ls', '-'))
 
 plt.legend(fontsize=fs*0.8)
 plt.tick_params(labelsize=fs*0.8)
 plt.ylabel('Cumulative frequency of imports', fontsize=fs)
 fig.autofmt_xdate(rotation=30)
 plt.tight_layout()
-plt.savefig(f'figures/import_model.{fmt}')
+plt.savefig(figure_path+f'import_model.{fmt}')
 
 
 

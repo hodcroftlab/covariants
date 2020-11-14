@@ -43,8 +43,12 @@ def non_zero_counts(cluster_data, total_data, country):
 
 def read_case_data_by_week(fname):
     #read in case data
-    cases = pd.read_csv(fname, sep='\t', index_col=False, skiprows=3)
+    if fname.endswith('tsv'):
+        cases = pd.read_csv(fname, sep='\t', index_col=False, skiprows=3)
+    else:
+        cases = pd.read_csv(fname, index_col=False, skiprows=1)
 
+    print(cases.columns)
     #instead of total case numbers, get new cases per day, with diff
     new_cases = np.diff(cases.cases)
     # convert dates to datetime objects
