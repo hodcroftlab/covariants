@@ -157,6 +157,28 @@ Easyjet says restarting 15 June [Statement](https://mediacentre.easyjet.com/stor
 Ryanair resumed 1 July [Guardian article](https://www.theguardian.com/business/2020/may/12/ryanair-flights-resume-coronavirus-rules-july)
 
 
+# Denmark
+
+Denmark opens borders to majority of EU 27th June (except Portugal and Sweden) [Schengen Visa Info](https://www.schengenvisainfo.com/news/denmark-to-reopen-for-majority-of-european-countries/)
+
+24 July - Govt recommends returning from Aragon are 'encouraged to be tested for COVID-19' [CPH Post Online](https://cphpost.dk/?p=116775)
+
+31 July - Govt recommends returning from Aragon, Cataluna, Navarra are 'encouraged to be tested for COVID-19" [CPH Post Online](https://cphpost.dk/?p=117090)
+
+6 Aug - Spain added to Denmark's 'orange' list - advises against travelling to. Seems to say testing is required on return from Aragon, Catalonia, Navarra? [Murcia Today](https://murciatoday.com/austria-and-denmark-join-switzerland-in-issuing-alerts-for-travellers-from-spain_1486165-a.html)
+
+7 Aug - "Travel to Spain has been closed on Thursday" [The Local DK](https://www.thelocal.dk/20200807/denmark-advises-against-travel-to-spain-and-postpones-part-of-re-opening)
+
+7 Aug - Authorities advise against non-essential travel, although have not imposed any quarantine [Euro weekly News](https://www.euroweeklynews.com/2020/08/07/european-countries-give-spain-the-cold-shoulder-as-they-toughen-up-restrictions/)
+
+12 Aug - Travel entry ban for Denmark?? [Schengen Visa Info](https://www.schengenvisainfo.com/news/majority-of-schengen-countries-urge-their-citizens-to-avoid-travel-to-spain/)
+
+Seems like if orange or 'non-essential' travel there then "you are strongly advised to follow ... self-isolation for 14 days" [Danish Govt](https://um.dk/en/travel-and-residence/coronavirus-covid-19/)
+
+
+
+
+
 # Swiss Intros
 node    #swiss  node        parent
 B       1       has spain   has spain               I1

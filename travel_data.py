@@ -15,19 +15,23 @@ for fname in glob.glob('../cluster_scripts/travel_data/*xls'):
     travel_volume[country] = d.iloc[0,3:].apply(lambda x:int(x.replace('.','')))
     travel_volume[country].index = [datetime.datetime(2020,i,15) for i in range(1,11)]
 
+# fake end date to make it easy to update to 'today'
+fake_end_date = "2020-11-01"
 
 #quarantine free travel to spain:
 q_free_to_spain = {
     "United Kingdom": {"start": "2020-07-10", "end": "2020-07-26", "msg": "UK to Spain"},
-    "Spain": {"start": "2020-06-21", "end": "2020-10-05", "msg": "Spain to Europe"},
+    "Spain": {"start": "2020-06-21", "end": fake_end_date, "msg": "Spain to Europe"},
     "Norway": {"start": "2020-07-15", "end": "2020-07-25", "msg": "Norway to Spain"},
     "Switzerland": {"start": "2020-06-15", "end": "2020-08-10", "msg": "Switzerland to Spain"},
     #"Latvia": {"start": "2020-07-01", "end": "2020-07-17", "msg": "Latvia to Spain"},
-    "France": {"start": "2020-06-15", "end": "2020-10-05", "msg": "France to Spain"},
-    "Netherlands": {"start": "2020-06-15", "end": "2020-08-24", "msg": "Netherlands to Spain"}
+    "France": {"start": "2020-06-15", "end": fake_end_date, "msg": "France to Spain"},
+    "Netherlands": {"start": "2020-06-15", "end": "2020-08-24", "msg": "Netherlands to Spain"},
+    "Denmark": {"start":"2020-06-27", "end":"2020-08-06", "msg": "Denmark to Spain"},
+    "Denmark2": {"start": "2020-08-07", "end": fake_end_date, "msg": "Advised to quarantine, not required"}
 }
 
-travel_order = ["Norway", "United Kingdom", "Switzerland", "Netherlands", "Spain", "France"]
+travel_order = ["Norway", "United Kingdom", "Denmark", "Switzerland", "Netherlands", "Spain", "France"]
 
 q_free_to_other = {
     "Latvia": {"start": "2020-07-01", "end": "2020-08-14", "msg": "Latvia to UK"},

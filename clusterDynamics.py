@@ -316,11 +316,21 @@ for clus in clus_to_run:
                 ax1.add_patch(Rectangle((strt,y_start), end-strt, height,
                             ec=country_styles[coun]['c'], fc=country_styles[coun]['c']))
                 #ax1.text(strt, y_start+0.002, q_times["msg"], fontsize=fs*0.8)
-                ax1.text(strt, y_start+0.005, q_times["msg"], fontsize=fs*0.8)
+                ax1.text(strt, y_start+0.003, q_times["msg"], fontsize=fs*0.8)
+                if coun == "Denmark":
+                    strt = datetime.datetime.strptime(q_free_to_spain["Denmark2"]["start"], "%Y-%m-%d")
+                    end = datetime.datetime.strptime(q_free_to_spain["Denmark2"]["end"], "%Y-%m-%d")
+                    ax1.add_patch(Rectangle((strt,y_start), end-strt, height,
+                            ec=country_styles[coun]['c'], fc="none", hatch="/"))
+                    ax1.text(strt, y_start+0.003, q_free_to_spain["Denmark2"]["msg"], fontsize=fs*0.8)
             i=i+1
         ax1.set_ylim([0,y_start+height])
-        ax1.text(datetime.datetime.strptime("2020-05-10", "%Y-%m-%d"), y_start-height,
+        ax1.text(datetime.datetime.strptime("2020-05-03", "%Y-%m-%d"), y_start,
+                "Quarantine-free", fontsize=fs)
+        ax1.text(datetime.datetime.strptime("2020-05-03", "%Y-%m-%d"), y_start-height-0.005,
                 "Travel to/from Spain", fontsize=fs)
+        ax1.text(datetime.datetime.strptime("2020-05-03", "%Y-%m-%d"), y_start-height-height-0.01,
+                "(on return)", fontsize=fs)
         ax1.get_yaxis().set_visible(False)
 
         #for a simpler plot of most interesting countries use this:
