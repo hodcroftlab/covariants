@@ -43,11 +43,14 @@ def get_import_frequency(country, cases, frequency, weeks=None, avg_cases_per_in
 
     return {"frequency":import_totals/totals, "dates":dates, "Re": Re_traj, "introductions":introductions}
 
+# Need to run `clusterDynamics.py` on 'S222' before doing this
+# (can now run without printing files)
 
 spain_frequency = {k: c/tot for k, c, tot in zip(*non_zero_counts(cluster_data, total_data, "Spain"))}
 
 
-fs=14
+#fs=14
+fs=12
 fmt = 'pdf'
 countries = ["Switzerland", "Spain", "United Kingdom", "Netherlands", "France", "Ireland", "Denmark", "Scotland", "Wales", "Belgium"]
 
@@ -79,6 +82,8 @@ axs[1].tick_params(labelsize=fs*0.8)
 axs[1].set_ylabel('naive frequency of imports', fontsize=fs)
 fig.autofmt_xdate(rotation=30)
 plt.tight_layout()
+axs[0].text(axs[0].get_xlim()[0]-30, axs[0].get_ylim()[1]+2000, "A", size=22, weight="bold")
+axs[1].text(axs[1].get_xlim()[0]-30, axs[1].get_ylim()[1]+0.001, "B", size=22, weight="bold")
 plt.savefig(figure_path+f'import_model.{fmt}')
 
 
