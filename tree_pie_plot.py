@@ -76,7 +76,7 @@ uk_run = False
 
 #this has to be set manually
 #start = names['NODE_0001008'] #["NODE_0000814"]  # ["NODE_0003268"]   #["NODE_0002406"]
-start = names['NODE_0002374'] #['NODE_0001979'] #['NODE_0001981']
+start = names['NODE_0004656']#['NODE_0002374'] #['NODE_0001979'] #['NODE_0001981']
 
 #back up the original tree so we don't hve to optimize again if we mess up...
 T_backup = copy.deepcopy(T)
@@ -113,6 +113,7 @@ len(cluster.get_nonterminals())
 #710
 #715
 #1106
+#836
 
 # for each internal node - if only has leaf children from 1 country
 # then collapse this node - its children go to its parent, it disappears
@@ -148,6 +149,7 @@ len(cluster.get_nonterminals())
 #66
 #71
 #79
+#133
 
 # A lot of nodes will have gained children from collapsed nodes
 # so recount the countries!
@@ -238,18 +240,62 @@ for node in cluster2.find_clades(order="preorder"):
             print("\t", node_counts.index[i], node_counts[node.name][i])
             node_countries[new_name][node_counts.index[i]] = node_counts[node.name][i]
     if ch == "~":
-        nextKey='A'
+        if nextKey != '':
+            nextKey = chr(ord(nextKey) + 1)
+        else:
+            nextKey='A'
         ch='A'
     else:
         ch = chr(ord(ch) + 1)
 
+# Use this function to list all nodes containing that country
+# Or if you give 2 countries, nodes with both
+def list_countries(wanted_country, second_country=None):
+    i=0
+    for no in node_countries.keys():
+        if wanted_country in node_countries[no].keys():
+            if second_country:
+                if second_country in node_countries[no].keys():
+                    print(no,": ",node_countries[no])
+                    i+=1
+            else:
+                print(no,": ",node_countries[no])
+                i+=1
+    print("total: ", i)
 
+#use this to count countries with direct shared diversity (on same node)
+def most_shared_countries(wanted_country):
+    other_country_count = defaultdict(int)
+    for no in node_countries.keys():
+        if wanted_country in node_countries[no].keys():
+            for co in node_countries[no].keys():
+                if co != wanted_country:
+                    other_country_count[co]+=1
+    print({k: v for k, v in sorted(other_country_count.items(), key=lambda item: item[1])})
+
+# Use this to to count up the nodes with wanted_country that have second_country
+# as a parent - but *not* shared diversity on the same node (only parent) (so will not
+# include nodes identified with 'list_countries')
+parent = {}
+for node in cluster2.find_clades(order="preorder"):
+    if node.parent and node.parent.name in node_names:
+        parent[node_names[node.name]] = node_names[node.parent.name]
+    
+def list_parent_countries(wanted_country, second_country):
+    i=0
+    for no in node_countries.keys():
+        if wanted_country in node_countries[no].keys() and second_country not in node_countries[no].keys():
+            par = parent[no]
+            if second_country in node_countries[par].keys():
+                print(no,": ",node_countries[no])
+                i+=1
+    print("total: ",i)
 
 # Actually plot!
 fs = 16
-fig = plt.figure(figsize=(12,14))
+fig = plt.figure(figsize=(12,18))
 ax = fig.add_subplot(1,1,1)
-Phylo.draw(cluster2, label_func=lambda x:'', axes=ax,
+Phylo.draw(cluster2, label_func=lambda x:'', axes=ax),
            branch_labels=lambda x: ",".join([f"{a}{p+1}{d}" for a,p,d in x.mutations]))
 
 for node in cluster2.find_clades(order="preorder"):
