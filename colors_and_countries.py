@@ -24,7 +24,7 @@ country_list =[
 colors = [
 "#a6cee3",
 "#1f78b4",
-"#b2df8a",
+"#ffff99",
 "#33a02c",
 "#fb9a99",
 "#e31a1c",
@@ -32,12 +32,12 @@ colors = [
 "#ff7f00",
 "#cab2d6",
 "#6a3d9a",
-"#ffff99",
+"#b2df8a",
 "#b15928",
 "#000000",
+"#9900cc",
+"#ffcc00",
 "#a6a6a6",
-"#ffffff",
-"#64eb34",
 "#0099ff",
 "#d9d9d9"
 ]
