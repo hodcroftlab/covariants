@@ -69,6 +69,12 @@ meta = meta.fillna('')
 # snps = [22991, 7539] #australia version
 
 
+# ask user if they want to write-out files or not:
+print_files = False
+print_answer = input("\nWrite out files?(y/n) (Enter is no): ")
+if print_answer in ["y", "Y", "yes", "YES", "Yes"]:
+    print_files = True
+
 #default is 222, but ask user what they want - or run all.
 
 clus_to_run = ["S222"]
@@ -139,21 +145,23 @@ for clus in clus_to_run:
 
     # Write out a file of the names of those 'in the cluster' - this is used by ncov_cluster
     # to make a ncov run where the 'focal' set is this cluster.
-    with open(clusterlist_output, 'w') as f:
-        for item in wanted_seqs:
-            f.write("%s\n" % item)
+    if print_files:
+        with open(clusterlist_output, 'w') as f:
+            for item in wanted_seqs:
+                f.write("%s\n" % item)
 
-    # Copy file with date, so we can compare to prev dates if we want...
-    build_nam = clusters[clus]["build_name"]
-    copypath = clusterlist_output.replace(f"{build_nam}", "{}-{}".format(build_nam, datetime.date.today().strftime("%Y-%m-%d")))
-    copyfile(clusterlist_output, copypath)
+        # Copy file with date, so we can compare to prev dates if we want...
+        build_nam = clusters[clus]["build_name"]
+        copypath = clusterlist_output.replace(f"{build_nam}", "{}-{}".format(build_nam, datetime.date.today().strftime("%Y-%m-%d")))
+        copyfile(clusterlist_output, copypath)
 
     # get metadata for these sequences
     cluster_meta = meta[meta['strain'].isin(wanted_seqs)]
     observed_countries = [x for x in cluster_meta['country'].unique()]
 
     # Just so we have the data, write out the metadata for these sequences
-    cluster_meta.to_csv(out_meta_file,sep="\t",index=False)
+    if print_files:
+        cluster_meta.to_csv(out_meta_file,sep="\t",index=False)
 
     # What countries do sequences in the cluster come from?
     print(f"The cluster is found in: {observed_countries}\n")
@@ -249,10 +257,11 @@ for clus in clus_to_run:
                     acknowledgement_table.append([row.strain, row.gisaid_epi_isl, row.originating_lab, row.submitting_lab, row.authors])
         total_week_counts[coun] = counts_by_week
 
-    with open(f'../cluster_scripts/{clus}_acknowledgement_table.tsv', 'w') as fh:
-        fh.write('#strain\tEPI_ISOLATE_ID\tOriginating lab\tsubmitting lab\tauthors\n')
-        for d in acknowledgement_table:
-            fh.write('\t'.join(d)+'\n')
+    if print_files:
+        with open(f'../cluster_scripts/{clus}_acknowledgement_table.tsv', 'w') as fh:
+            fh.write('#strain\tEPI_ISOLATE_ID\tOriginating lab\tsubmitting lab\tauthors\n')
+            for d in acknowledgement_table:
+                fh.write('\t'.join(d)+'\n')
 
 
     # Convert into dataframe
@@ -364,11 +373,11 @@ for clus in clus_to_run:
         ax3.text(datetime.datetime.strptime("2020-06-21", "%Y-%m-%d"), 0.05,
                 "Spain opens borders", rotation='vertical', fontsize=fs*0.8)
 
-
-        plt.savefig(figure_path+f"overall_trends.{fmt}")
-        trends_path = figure_path+f"overall_trends.{fmt}"
-        copypath = trends_path.replace("trends", "trends-{}".format(datetime.date.today().strftime("%Y-%m-%d")))
-        copyfile(trends_path, copypath)
+        if print_files:
+            plt.savefig(figure_path+f"overall_trends.{fmt}")
+            trends_path = figure_path+f"overall_trends.{fmt}"
+            copypath = trends_path.replace("trends", "trends-{}".format(datetime.date.today().strftime("%Y-%m-%d")))
+            copyfile(trends_path, copypath)
 
 
         all_plots = input("\nDo you want to plot growth rate + all sequences graphs? (y/n): ")
@@ -397,7 +406,8 @@ for clus in clus_to_run:
             fig.autofmt_xdate(rotation=30)
             plt.ylabel('frequency')
             plt.tight_layout()
-            plt.savefig(figure_path+f'uk_countries.{fmt}')
+            if print_files:
+                plt.savefig(figure_path+f'uk_countries.{fmt}')
 
     #############################################
     #############################################
@@ -450,7 +460,8 @@ for clus in clus_to_run:
             fig.autofmt_xdate(rotation=30)
             plt.ylabel('frequency')
             plt.tight_layout()
-            plt.savefig(figure_path+f'logistic_fits.{fmt}')
+            if print_files:
+                plt.savefig(figure_path+f'logistic_fits.{fmt}')
 
     #############################################
     #############################################
@@ -521,7 +532,8 @@ for clus in clus_to_run:
                     'total sequences', 'sequences in cluster'], loc=3)
                 fig.tight_layout()
                 plt.show()
-                plt.savefig(figure_path+f"{coun}-newcases-seqs.{fmt}")
+                if print_files:
+                    plt.savefig(figure_path+f"{coun}-newcases-seqs.{fmt}")
 
 
 
