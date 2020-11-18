@@ -6,7 +6,7 @@ from colors_and_countries import *
 fmt='pdf'
 
 countries = ['Spain', 'France', 'Belgium', 'United Kingdom', 'Switzerland', 'Netherlands', 'Norway',
-              'Ireland', "Scotland", "Wales"]
+              'Ireland', "Denmark", "Scotland", "Wales"]
 
 
 if __name__ == '__main__':
