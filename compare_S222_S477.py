@@ -185,12 +185,12 @@ country_week = {clus: {} for clus in clusters}
 fs = 14
 #fig, (ax1, ax2, ax3, ax4, ax5, ax6, ax7) = plt.subplots(nrows=7, sharex=True,figsize=(9,9),
 #                                    gridspec_kw={'height_ratios':[1,1,1,1,1,1,1]})
-fig, axs = plt.subplots(nrows=len(countries_to_plot), sharex=True,figsize=(9,9))
+fig, axs = plt.subplots(nrows=len(countries_to_plot)+1, sharex=True,figsize=(9,11))
 
 week_as_dates = {}
 
 #for coun in [x for x in countries_to_plot]:
-for coun, ax in zip(countries_to_plot, axs):
+for coun, ax in zip(countries_to_plot, axs[1:]):
     i=0
     first_clus_count = []
     ptchs = []
@@ -228,7 +228,10 @@ for coun, ax in zip(countries_to_plot, axs):
         #else:
         ax.fill_between(week_as_date, first_clus_count/total_count, cluster_count/total_count, facecolor=clusters[clus]['col'])
         patch = mpatches.Patch(color=clusters[clus]['col'], label=lab)
-        ptchs.append(patch)
+
+        #exclude 501 for now (not present)
+        if clus is not "S501":
+            ptchs.append(patch)
         if i == len(clusters)-1 :
             ax.fill_between(week_as_date, cluster_count/total_count, 1, facecolor=grey_color)
             patch = mpatches.Patch(color=grey_color, label=f"other")
@@ -236,12 +239,13 @@ for coun, ax in zip(countries_to_plot, axs):
         #if i == 0:
         first_clus_count = cluster_count # unindented
         i+=1
-    ax.text(datetime.datetime(2020,6,1), 0.8, coun)
+    ax.text(datetime.datetime(2020,6,1), 0.7, coun, fontsize=fs)
     ax.tick_params(labelsize=fs*0.8)
-    ax.set_ylabel('frequency')
+    #ax.set_ylabel('frequency')
     #ax.legend(ncol=1, fontsize=fs*0.8, loc=2)
 
-axs[0].legend(handles=ptchs, loc=3, fontsize=fs*0.7, ncol=2)
+axs[0].legend(handles=ptchs, loc=3, fontsize=fs*0.7, ncol=4)
+axs[0].axis('off')
 fig.autofmt_xdate(rotation=30)
 plt.show()
 plt.tight_layout()
