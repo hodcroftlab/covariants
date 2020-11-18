@@ -221,7 +221,7 @@ for country, date in countries_dates.items():
     # First plot: absolute numbers compare total versus lineages
     ax1.stackplot(total_data.columns, total_data.values.tolist(), color="lightgray")
     ax1.stackplot(lineages_data.columns, lineages_data.values.sum(axis = 0).tolist(), color="gray")
-    ax1.legend(["Overall total", "Lineages total"], fontsize=fs * 0.6, loc=2)
+    ax1.legend(["Overall total", "Lineages total"], fontsize=fs * 0.8, loc=2)
     ax1.tick_params(labelsize=fs * 0.8)
     ax1.set_ylabel("number of sequences")
     textDate = cutoffDate.strftime("%A, %d %b %Y")
@@ -261,7 +261,7 @@ for country, date in countries_dates.items():
             new_labels.append(clusters[lineage_to_cluster[label]]["display_name"])
             new_handles.append(handles[i])
 
-    ax2.legend(reversed(new_handles), reversed(new_labels), ncol=1, fontsize=fs * 0.6, loc=2)
+    ax2.legend(reversed(new_handles), reversed(new_labels), ncol=1, loc=2, fontsize=fs * 0.8)
     fig.autofmt_xdate(rotation=30)
     ax2.tick_params(labelsize=fs * 0.8)
     ax2.set_ylabel("frequency")
