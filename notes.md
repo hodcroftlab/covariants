@@ -157,7 +157,7 @@ Easyjet says restarting 15 June [Statement](https://mediacentre.easyjet.com/stor
 Ryanair resumed 1 July [Guardian article](https://www.theguardian.com/business/2020/may/12/ryanair-flights-resume-coronavirus-rules-july)
 
 
-# Denmark
+## Denmark
 
 Denmark opens borders to majority of EU 27th June (except Portugal and Sweden) [Schengen Visa Info](https://www.schengenvisainfo.com/news/denmark-to-reopen-for-majority-of-european-countries/)
 
@@ -176,65 +176,7 @@ Denmark opens borders to majority of EU 27th June (except Portugal and Sweden) [
 Seems like if orange or 'non-essential' travel there then "you are strongly advised to follow ... self-isolation for 14 days" [Danish Govt](https://um.dk/en/travel-and-residence/coronavirus-covid-19/)
 
 
+# Commit ncov_sc
+f3fb5e9a7ab0789048339468a34bc72b02f505d2
+16th Nov Monday
 
-
-
-# Swiss Intros
-node    #swiss  node        parent
-B       1       has spain   has spain               I1
-E       10      has spain   has spain   E -> B      I1
-H       43      no spain    has spain               I2
-I       4       has spain   has spain   E -> I      I1 ('norway')
-N       3       no spain    no spain                I3
-P       2       no spain    has spain   I -> P      I1
-U       1       no spain    no spain                I4
-V       57      no spain    no spain    U -> V      I4
-X       23      no spain    has spain   E -> X      I1
-[       2       no spain    no spain    X->Y->[     I5 ? or I1
-\       1       no spain    has spain   E -> \      I1
-^       1       no spain    has spain   E _> ^      I1
-_       4       has spain   has spain   E -> _      I1
-c       3       no spain    has spain   _ -> c      I1 ?
-e       1       has spain   no spain    c -> e      I1
-k       1       no spain    no spain                I6
-m       4       has spain   has spain   _ -> m      I1?
-
-Take these as 3 separate introductions
-H
-V
-X + [
-
-
-Notes on Switzerland
-G - 9 Sept, 9 Sept, 12 Aug
-Q/R - complicated. est early aug, dates mid-aug - mid-sept
-W - kinda same, 20 aug - 10 sept
-
-Switzerland
-1-3  intros?
-A root
-B norway one - connects to root
-  J - connects to B (spain)
-T - connects to root
-
-below is 1 or 2 intros
-[ - connects to root
-a - connects to ` which is all UK, ` connects to spain
-d - parent has spain
-e - parent has spain
-   g - parent e
-
-below 1 intro?
-G - one away from norway (B), parent E (ireland UK)
-
-beow is 1 intro
-M - direct to spain
-
-below is 1 intro
-Q - parent P - all UK, P connects to spain
-  R - connects to Q
-
-below is 1 intro
-W - parent V which is all UK. V connects to root
-  Y - parent W
-  Z - parent W
