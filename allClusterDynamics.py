@@ -19,6 +19,7 @@ cluster_path = "../ncov_cluster/cluster_profile/"
 figure_path = "../cluster_new_scripts/overall_trends_figures/"
 tables_path = "../cluster_new_scripts/cluster_tables/"
 overall_tables_file = "../cluster_new_scripts/cluster_tables/all_tables.tsv"
+acknowledgement_folder = "../cluster_new_scripts/acknowledgements/"
 # This assumes that `cluster_scripts`` also sites 'next to ' `ncov`
 
 # Otherwise, modify the paths above to put the files wherever you like.
@@ -317,7 +318,7 @@ for clus in clus_to_run:
         total_week_counts[coun] = counts_by_week
 
     if print_files:
-        with open(f'../cluster_new_scripts/{clus}_acknowledgement_table.tsv', 'w') as fh:
+        with open(f'{acknowledgement_folder}{clus}_acknowledgement_table.tsv', 'w') as fh:
             fh.write('#strain\tEPI_ISOLATE_ID\tOriginating lab\tsubmitting lab\tauthors\n')
             for d in acknowledgement_table:
                 fh.write('\t'.join(d)+'\n')
