@@ -219,13 +219,13 @@ for country, date in countries_dates.items():
     fig, (ax1, ax2) = plt.subplots(nrows=2, sharex=True,figsize=(12,6),gridspec_kw={'height_ratios':[1,3]})
 
     # First plot: absolute numbers compare total versus lineages
-    ax1.stackplot(total_data.columns, total_data.values.tolist(), color="lightgray")
-    ax1.stackplot(lineages_data.columns, lineages_data.values.sum(axis = 0).tolist(), color="gray")
-    ax1.legend(["Overall total", "Lineages total"], fontsize=fs * 0.8, loc=2)
+    ax1.stackplot(total_data.columns, total_data.values.tolist(), color="darkblue") #"lightgray")
+    #ax1.stackplot(lineages_data.columns, lineages_data.values.sum(axis = 0).tolist(), color="gray")
+    #ax1.legend(["Overall total", "Lineages total"], fontsize=fs * 0.8, loc=2)
     ax1.tick_params(labelsize=fs * 0.8)
-    ax1.set_ylabel("number of sequences")
+    ax1.set_ylabel("sequences per week")
     textDate = cutoffDate.strftime("%A, %d %b %Y")
-    ax1.set_title(f"Absolute number of sequences in {country} (cutoff date {textDate})")
+    ax1.set_title(f"Number of sequences in {country}")# (cutoff date {textDate})")
 
     # Manipulate labels and handles to obtain legend only for colored clusters
     # TODO: color schemes won't work with percentage option selected
@@ -249,7 +249,10 @@ for country, date in countries_dates.items():
         if lineage in lineage_to_cluster and lineage_to_cluster[lineage] in special_colors:
             colors[i] = special_colors[lineage_to_cluster[lineage]]
 
-    ax2.stackplot(lineages_data_frequencies.columns, lineages_data_frequencies.values.tolist(), labels=lineages_data_frequencies.index, colors=colors)
+    ax2.fill_between(lineages_data_frequencies.columns, np.ones(len(lineages_data_frequencies.columns)), 
+                     hatch='//', fc='#dddddd', ec='#aaaaaa')
+    ax2.stackplot(lineages_data_frequencies.columns, lineages_data_frequencies.values.tolist(),
+                 labels=lineages_data_frequencies.index, colors=colors)
 
     handles, labels = ax2.get_legend_handles_labels() # get the labels and handles
     new_labels = ["other lineages"] # one gray label for all gray lineages
@@ -267,6 +270,7 @@ for country, date in countries_dates.items():
     ax2.set_ylabel("frequency")
     ax2.set_title("Lineage frequencies")
     ax2.set_ylim(0, 1)
+    ax2.set_xlim(lineages_data_frequencies.columns[0], lineages_data_frequencies.columns[-1])
 
     #fig.suptitle(country + " (Tree Cutoff Date: " + cutoffDate.strftime("%A, %d %b %Y") + ")")
     plt.show()
