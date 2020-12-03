@@ -150,36 +150,22 @@ for clus in clus_to_run:
                     #if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
                     wanted_seqs.append(row['strain'])
 
-
-    # There's one spanish seq with date of 7 March - we think this is wrong.
     # If seq there and date bad - exclude!
-    bad_seq = meta[meta['strain'].isin(['Spain/VC-IBV-98006466/2020'])]
-    if bad_seq.date.values[0] == "2020-03-07" and 'Spain/VC-IBV-98006466/2020' in wanted_seqs:
-        wanted_seqs.remove('Spain/VC-IBV-98006466/2020')
+    bad_seqs = {
+        'Spain/VC-IBV-98006466/2020' : "2020-03-07", # There's one spanish seq with date of 7 March - we think this is wrong.
+        # There are five sequences from UK with suspected bad dates: exclude
+        'England/LIVE-1DD7AC/2020' : "2020-03-10",
+        'England/PORT-2D2111/2020' : "2020-03-21",
+        'England/CAMB-1BA110/2020' : "2020-06-11", # suspected that these ones have reversed dd-mm (are actually 5 and 6 Nov)
+        'England/CAMB-1BA0F5/2020' : "2020-05-11", # suspected that these ones have reversed dd-mm (are actually 5 and 6 Nov)
+        'England/CAMB-1BA0B9/2020' : "2020-05-11", # suspected that these ones have reversed dd-mm (are actually 5 and 6 Nov)
+        'Denmark/DCGC-12020/2020'  : "2020-03-30" # this sequence is identical to other Danish seqs with sample date of Oct/Nov..
+    }
 
-    # There are five sequences from UK with suspected bad dates: exclude
-    bad_seq = meta[meta['strain'].isin(['England/LIVE-1DD7AC/2020'])]
-    if bad_seq.date.values[0] == "2020-03-10" and 'England/LIVE-1DD7AC/2020' in wanted_seqs:
-        wanted_seqs.remove('England/LIVE-1DD7AC/2020')
-    bad_seq = meta[meta['strain'].isin(['England/PORT-2D2111/2020'])]
-    if bad_seq.date.values[0] == "2020-03-21" and 'England/PORT-2D2111/2020' in wanted_seqs:
-        wanted_seqs.remove('England/PORT-2D2111/2020')
-
-    # suspected that these ones have reversed dd-mm (are actually 5 and 6 Nov)
-    bad_seq = meta[meta['strain'].isin(['England/CAMB-1BA110/2020'])]
-    if bad_seq.date.values[0] == "2020-06-11" and 'England/CAMB-1BA110/2020' in wanted_seqs:
-        wanted_seqs.remove('England/CAMB-1BA110/2020')
-    bad_seq = meta[meta['strain'].isin(['England/CAMB-1BA0F5/2020'])]
-    if bad_seq.date.values[0] == "2020-05-11" and 'England/CAMB-1BA0F5/2020' in wanted_seqs:
-        wanted_seqs.remove('England/CAMB-1BA0F5/2020')
-    bad_seq = meta[meta['strain'].isin(['England/CAMB-1BA0B9/2020'])]
-    if bad_seq.date.values[0] == "2020-05-11" and 'England/CAMB-1BA0B9/2020' in wanted_seqs:
-        wanted_seqs.remove('England/CAMB-1BA0B9/2020')
-
-    # this sequence is identical to other Danish seqs with sample date of Oct/Nov...
-    bad_seq = meta[meta['strain'].isin(['Denmark/DCGC-12020/2020'])]
-    if bad_seq.date.values[0] == "2020-03-30" and 'Denmark/DCGC-12020/2020' in wanted_seqs:
-        wanted_seqs.remove('Denmark/DCGC-12020/2020')
+    for key, value in bad_seqs.items():
+        bad_seq = meta[meta['strain'].isin([key])]
+        if bad_seq.date.values[0] == value and key in wanted_seqs:
+            wanted_seqs.remove(key)
     
 
     # get metadata for these sequences
