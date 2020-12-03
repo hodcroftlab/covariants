@@ -77,6 +77,14 @@ print_files = False
 print_answer = input("\nWrite out files?(y/n) (Enter is no): ")
 if print_answer in ["y", "Y", "yes", "YES", "Yes"]:
     print_files = True
+print_files2 = True
+
+if print_files:
+    #clean these files so don't append to last run.
+    with open(f"{tables_path}all_tables.md", 'w') as fh:
+        fh.write('\n')
+    with open(overall_tables_file, 'w') as fh:
+        fh.write('\n')
 
 #default is 222, but ask user what they want - or run all.
 
@@ -141,6 +149,7 @@ for clus in clus_to_run:
                 if all(x in intsnp for x in snps) or (all (x in intsnp for x in snps2) and len(snps2)!=0):
                     #if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
                     wanted_seqs.append(row['strain'])
+
 
     # There's one spanish seq with date of 7 March - we think this is wrong.
     # If seq there and date bad - exclude!
@@ -270,12 +279,23 @@ for clus in clus_to_run:
     table_file = f"{tables_path}{clus_display}_table.tsv"
     ordered_country = country_info_df.sort_values(by="first_seq")
     ordered_country = ordered_country.drop('sept_oct_freq', axis=1)
+
     if print_files:
         ordered_country.to_csv(table_file, sep="\t")
         with open(overall_tables_file, 'a') as fh:
             fh.write(f'\n\n## {clus_display}\n')
 
         ordered_country.to_csv(overall_tables_file, sep="\t", mode='a')
+
+        mrk_tbl = ordered_country.to_markdown()
+        with open(f"{tables_path}all_tables.md", 'a') as fh:
+            fh.write(f'\n\n## {clus_display}\n')
+            fh.write(mrk_tbl)
+            fh.write("\n\n")
+            fh.write(f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)")
+
+
+    #ordered_country.to_markdown(f"{tables_path}all_tables.md", mode='a')
 
     #######
     # BEGINNING OF PLOTTING
@@ -381,7 +401,7 @@ for clus in clus_to_run:
             fig, (ax1, ax3) = plt.subplots(nrows=2, sharex=True,figsize=(10,6),
                                                 gridspec_kw={'height_ratios':[1, 3]})
         else:
-            fig, ax3 = plt.subplots(1, 1, figsize=(10,5))
+            fig, ax3 = plt.subplots(1, 1, figsize=(10,5),dpi=72)
 
         if repeat == 2:
             i=0
