@@ -16,7 +16,7 @@
 cluster_path = "../ncov_cluster/cluster_profile/"
 
 # Things that write out to cluster_scripts repo (images mostly), use this path:
-figure_path = "../cluster_scripts/figures/"
+figure_path = "../cluster_new_scripts/figures/"
 # This assumes that `cluster_scripts`` also sites 'next to ' `ncov`
 
 # Otherwise, modify the paths above to put the files wherever you like.
@@ -81,20 +81,25 @@ clus_to_run = ["S222"]
 reask = True
 
 while reask:
-    clus_answer = input("\nWhat cluster to run? (Enter for S222) Type 'all' for all: ")
+    clus_answer = input("\nWhat cluster to run? (Enter for S222) Type 'all' for all, type 'all mink' for all+mink: ")
     if len(clus_answer) != 0:
         if clus_answer in clusters.keys():
             print(f"Using {clus_answer}\n")
             clus_to_run = [clus_answer]
             reask = False
-        elif clus_answer == "all":
+        elif "all" in clus_answer:
             clus_to_run = list(clusters.keys())
+            if "mink" in clus_answer or "Mink" in clus_answer:
+                clus_to_run.append("mink")
             reask = False
+        elif clus_answer == "mink" or clus_answer == "Mink":
+            clus_to_run = ["mink"]
         else:
             print(f"Not found. Options are: {clusters.keys()}")
     else:
         print("Using default of S222\n")
         reask = False
+print("These clusters will be run: ", clus_to_run)
 
 
 #FIGURES ARE ONLY PLOTTED FOR S222 ONLY
@@ -102,27 +107,35 @@ while reask:
 for clus in clus_to_run:
     print(f"\nRunning cluster {clus}\n")
 
-    snps = clusters[clus]['snps']
-    if 'snps2' in clusters[clus]:
-        snps2 = clusters[clus]['snps2']
+    if clus == "mink":
+        mink_meta = meta[meta['host'].apply(lambda x: x == "Mink")]
+        wanted_seqs = list(mink_meta['strain']) 
+
+        clusterlist_output = cluster_path+f'/clusters/cluster_mink.txt'
+        out_meta_file = cluster_path+f'/cluster_info/cluster_mink_meta.tsv'
+
     else:
-        snps2 = []
+        snps = clusters[clus]['snps']
+        if 'snps2' in clusters[clus]:
+            snps2 = clusters[clus]['snps2']
+        else:
+            snps2 = []
 
-    clusterlist_output = cluster_path+f'/clusters/cluster_{clusters[clus]["build_name"]}.txt'
-    out_meta_file = cluster_path+f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
+        clusterlist_output = cluster_path+f'/clusters/cluster_{clusters[clus]["build_name"]}.txt'
+        out_meta_file = cluster_path+f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
 
 
-    # get the sequences that we want - which are 'part of the cluster:
-    wanted_seqs = []
+        # get the sequences that we want - which are 'part of the cluster:
+        wanted_seqs = []
 
-    for index, row in diag.iterrows():
-        strain = row['strain']
-        snplist = row['all_snps']
-        if not pd.isna(snplist):
-            intsnp = [int(x) for x in snplist.split(',')]
-            if all(x in intsnp for x in snps) or (all (x in intsnp for x in snps2) and len(snps2)!=0):
-                #if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
-                wanted_seqs.append(row['strain'])
+        for index, row in diag.iterrows():
+            strain = row['strain']
+            snplist = row['all_snps']
+            if not pd.isna(snplist):
+                intsnp = [int(x) for x in snplist.split(',')]
+                if all(x in intsnp for x in snps) or (all (x in intsnp for x in snps2) and len(snps2)!=0):
+                    #if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
+                    wanted_seqs.append(row['strain'])
 
     # There's one spanish seq with date of 7 March - we think this is wrong.
     # If seq there and date bad - exclude!
@@ -138,9 +151,37 @@ for clus in clus_to_run:
     if bad_seq.date.values[0] == "2020-03-21" and 'England/PORT-2D2111/2020' in wanted_seqs:
         wanted_seqs.remove('England/PORT-2D2111/2020')
 
+    # suspected that these ones have reversed dd-mm (are actually 5 and 6 Nov)
+    bad_seq = meta[meta['strain'].isin(['England/CAMB-1BA110/2020'])]
+    if bad_seq.date.values[0] == "2020-06-11" and 'England/CAMB-1BA110/2020' in wanted_seqs:
+        wanted_seqs.remove('England/CAMB-1BA110/2020')
+    bad_seq = meta[meta['strain'].isin(['England/CAMB-1BA0F5/2020'])]
+    if bad_seq.date.values[0] == "2020-05-11" and 'England/CAMB-1BA0F5/2020' in wanted_seqs:
+        wanted_seqs.remove('England/CAMB-1BA0F5/2020')
+    bad_seq = meta[meta['strain'].isin(['England/CAMB-1BA0B9/2020'])]
+    if bad_seq.date.values[0] == "2020-05-11" and 'England/CAMB-1BA0B9/2020' in wanted_seqs:
+        wanted_seqs.remove('England/CAMB-1BA0B9/2020')
+
+    # get metadata for these sequences
+    cluster_meta = meta[meta['strain'].isin(wanted_seqs)]
+
+    # remove those with bad dates
+    cluster_meta = cluster_meta[cluster_meta['date'].apply(lambda x: len(x) == 10)]
+
+    bad_dates = 0
+    if len(wanted_seqs) != len(cluster_meta):
+        bad_dates = len(wanted_seqs)-len(cluster_meta)
+
+    #re-set wanted_seqs
+    wanted_seqs = list(cluster_meta['strain']) 
+
     print("Sequences found: ")
     print(len(wanted_seqs)) # how many are there?
     print("\n")
+
+    if bad_dates:
+        print("Sequences with bad dates (excluded): ", bad_dates)
+        print("\n")
 
 
     # Write out a file of the names of those 'in the cluster' - this is used by ncov_cluster
@@ -151,18 +192,22 @@ for clus in clus_to_run:
                 f.write("%s\n" % item)
 
         # Copy file with date, so we can compare to prev dates if we want...
-        build_nam = clusters[clus]["build_name"]
+        if clus in clusters:
+            build_nam = clusters[clus]["build_name"]
+        else:
+            build_nam = "mink"
         copypath = clusterlist_output.replace(f"{build_nam}", "{}-{}".format(build_nam, datetime.date.today().strftime("%Y-%m-%d")))
         copyfile(clusterlist_output, copypath)
 
     # get metadata for these sequences
-    cluster_meta = meta[meta['strain'].isin(wanted_seqs)]
-    observed_countries = [x for x in cluster_meta['country'].unique()]
+#    cluster_meta = meta[meta['strain'].isin(wanted_seqs)]
+#    observed_countries = [x for x in cluster_meta['country'].unique()]
 
     # Just so we have the data, write out the metadata for these sequences
     if print_files:
         cluster_meta.to_csv(out_meta_file,sep="\t",index=False)
 
+    observed_countries = [x for x in cluster_meta['country'].unique()]
     # What countries do sequences in the cluster come from?
     print(f"The cluster is found in: {observed_countries}\n")
     if clus != "S222":
@@ -258,7 +303,7 @@ for clus in clus_to_run:
         total_week_counts[coun] = counts_by_week
 
     if print_files:
-        with open(f'../cluster_scripts/{clus}_acknowledgement_table.tsv', 'w') as fh:
+        with open(f'../cluster_new_scripts/{clus}_acknowledgement_table.tsv', 'w') as fh:
             fh.write('#strain\tEPI_ISOLATE_ID\tOriginating lab\tsubmitting lab\tauthors\n')
             for d in acknowledgement_table:
                 fh.write('\t'.join(d)+'\n')
@@ -296,7 +341,7 @@ for clus in clus_to_run:
     'Switzerland',
     'Ireland',
     'Netherlands',
-    #'Belgium'
+    'Belgium',
     'Denmark'
     ]
 
@@ -365,7 +410,7 @@ for clus in clus_to_run:
         fig.autofmt_xdate(rotation=30)
         ax3.tick_params(labelsize=fs*0.8)
         ax3.set_ylabel('frequency', fontsize=fs)
-        ax3.set_xlim(datetime.datetime(2020,5,1), datetime.datetime(2020,11,10))
+        ax3.set_xlim(datetime.datetime(2020,5,1), datetime.datetime(2020,11,15))
         plt.show()
         plt.tight_layout()
 
