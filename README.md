@@ -2,18 +2,19 @@
 
 
 
+
 ## 20A.EU1
-[Focal Build](https://nextstrain.org/groups/neherlab/ncov/20A.EU1?c=country&f_region=Europe)
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/20A.EU1?f_region=Europe)
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
 | Netherlands    | 2020-06-20  |        155 | 2020-10-30 |
-| Spain          | 2020-06-20  |        777 | 2020-10-31 |
-| United Kingdom | 2020-07-18  |      34612 | 2020-11-24 |
+| Spain          | 2020-06-20  |        810 | 2020-11-14 |
+| United Kingdom | 2020-07-18  |      34615 | 2020-11-24 |
 | Switzerland    | 2020-07-22  |        368 | 2020-10-22 |
-| Ireland        | 2020-07-23  |        122 | 2020-10-22 |
+| Ireland        | 2020-07-23  |        168 | 2020-11-17 |
 | Belgium        | 2020-07-29  |         42 | 2020-11-17 |
 | Norway         | 2020-07-29  |         87 | 2020-10-26 |
-| France         | 2020-08-01  |         65 | 2020-11-02 |
+| France         | 2020-08-01  |         66 | 2020-11-02 |
 | Denmark        | 2020-08-03  |       2620 | 2020-11-16 |
 | Sweden         | 2020-08-14  |         43 | 2020-11-13 |
 | Hong Kong      | 2020-08-15  |          2 | 2020-08-17 |
@@ -30,10 +31,10 @@
 ![Overall trends 20A.EU1](/overall_trends_figures/overall_trends_20A.EU1.png)
 
 ## 20A.EU2
-[Focal Build](https://nextstrain.org/groups/neherlab/ncov/20A.EU2?c=country&f_region=Europe)
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/20A.EU2?f_region=Europe)
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
-| France         | 2020-07-10  |        288 | 2020-11-02 |
+| France         | 2020-07-09  |        316 | 2020-11-02 |
 | Denmark        | 2020-07-27  |       1363 | 2020-11-16 |
 | United Kingdom | 2020-08-04  |       1854 | 2020-11-15 |
 | Switzerland    | 2020-08-14  |        223 | 2020-10-22 |
@@ -61,9 +62,9 @@
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.S98F?f_region=Europe)
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
-| United Kingdom | 2020-05-11  |        539 | 2020-11-21 |
 | Belgium        | 2020-07-09  |        238 | 2020-11-18 |
 | Netherlands    | 2020-08-01  |        212 | 2020-10-30 |
+| United Kingdom | 2020-08-03  |        539 | 2020-11-21 |
 | Denmark        | 2020-08-10  |        287 | 2020-11-16 |
 | Switzerland    | 2020-08-16  |         14 | 2020-10-14 |
 | Germany        | 2020-08-17  |         15 | 2020-10-12 |
@@ -88,7 +89,7 @@
 | France         | 2020-07-24  |         61 | 2020-10-29 |
 | Denmark        | 2020-08-03  |         63 | 2020-09-28 |
 | Norway         | 2020-08-04  |         36 | 2020-10-19 |
-| Ireland        | 2020-08-12  |         10 | 2020-10-05 |
+| Ireland        | 2020-08-12  |         12 | 2020-10-07 |
 | Belgium        | 2020-08-18  |          5 | 2020-09-20 |
 | Germany        | 2020-08-18  |          5 | 2020-09-23 |
 | Netherlands    | 2020-08-24  |         22 | 2020-10-14 |
@@ -103,7 +104,7 @@
 | Romania        | 2020-05-13  |          1 | 2020-05-13 |
 | Norway         | 2020-06-23  |         16 | 2020-10-26 |
 | United Kingdom | 2020-07-03  |       2333 | 2020-11-21 |
-| Ireland        | 2020-07-18  |        149 | 2020-10-05 |
+| Ireland        | 2020-07-18  |        164 | 2020-11-01 |
 | Belgium        | 2020-07-24  |          3 | 2020-08-24 |
 | Switzerland    | 2020-08-01  |         39 | 2020-10-22 |
 | France         | 2020-08-09  |         18 | 2020-09-16 |
@@ -140,7 +141,7 @@
 | Italy          | 2020-03-19  |          1 | 2020-03-19 |
 | Brazil         | 2020-04-07  |          1 | 2020-04-07 |
 | United Kingdom | 2020-04-14  |        800 | 2020-11-22 |
-| USA            | 2020-04-21  |         16 | 2020-10-13 |
+| USA            | 2020-04-21  |         18 | 2020-10-22 |
 | Netherlands    | 2020-04-28  |          5 | 2020-06-01 |
 | Australia      | 2020-06-03  |         35 | 2020-08-10 |
 | Côte d'Ivoire  | 2020-07-15  |          4 | 2020-09-09 |
@@ -170,3 +171,26 @@
 | Poland         | 2020-09-05  |          2 | 2020-09-05 |
 
 ![Overall trends S.A626S](/overall_trends_figures/overall_trends_S.A626S.png)
+
+## DanishCluster
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/DanishCluster?f_region=Europe)
+|                                  | first_seq   |   num_seqs | last_seq   |
+|:---------------------------------|:------------|-----------:|:-----------|
+| New Zealand                      | 2020-03-03  |          1 | 2020-03-03 |
+| Curacao                          | 2020-03-10  |          1 | 2020-03-10 |
+| United Kingdom                   | 2020-03-12  |         33 | 2020-11-08 |
+| Australia                        | 2020-03-23  |          5 | 2020-08-09 |
+| United Arab Emirates             | 2020-03-30  |          1 | 2020-03-30 |
+| Spain                            | 2020-04-09  |          1 | 2020-04-09 |
+| Brazil                           | 2020-04-20  |          2 | 2020-04-29 |
+| USA                              | 2020-04-25  |         45 | 2020-10-29 |
+| Democratic Republic of the Congo | 2020-04-30  |          2 | 2020-06-01 |
+| Denmark                          | 2020-06-08  |        779 | 2020-11-16 |
+| Italy                            | 2020-07-07  |          1 | 2020-07-07 |
+| Bangladesh                       | 2020-07-12  |          2 | 2020-07-15 |
+| South Africa                     | 2020-08-04  |          2 | 2020-09-14 |
+| Colombia                         | 2020-09-02  |          1 | 2020-09-02 |
+| France                           | 2020-10-09  |          2 | 2020-11-02 |
+| Switzerland                      | 2020-10-14  |          2 | 2020-10-20 |
+
+![Overall trends DanishCluster](/overall_trends_figures/overall_trends_DanishCluster.png)
