@@ -18,7 +18,7 @@ clusters = {"S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
             "country_info":[], 'col': "#ff99ff", "display_name": "S:N501", "build_name":"S.N501"},
 
             "S626": {'snps': [23437, 771], 'cluster_data': [],
-            "country_info":[], 'col': "#ffffff", "display_name": "S:A626S", "build_name":"S.A626S"},
+            "country_info":[], 'col': "#0000ff", "display_name": "S:A626S", "build_name":"S.A626S"},
 
             "DanishCluster": {'snps': [15655], 'cluster_data': [],
             "country_info":[], 'col': "#ffffff", "display_name": "DanishCluster", "build_name":"DanishCluster"}
