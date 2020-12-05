@@ -172,25 +172,4 @@
 
 ![Overall trends S.A626S](/overall_trends_figures/overall_trends_S.A626S.png)
 
-## DanishCluster
-[Focal Build](https://nextstrain.org/groups/neherlab/ncov/DanishCluster?f_region=Europe)
-|                                  | first_seq   |   num_seqs | last_seq   |
-|:---------------------------------|:------------|-----------:|:-----------|
-| New Zealand                      | 2020-03-03  |          1 | 2020-03-03 |
-| Curacao                          | 2020-03-10  |          1 | 2020-03-10 |
-| United Kingdom                   | 2020-03-12  |         33 | 2020-11-08 |
-| Australia                        | 2020-03-23  |          5 | 2020-08-09 |
-| United Arab Emirates             | 2020-03-30  |          1 | 2020-03-30 |
-| Spain                            | 2020-04-09  |          1 | 2020-04-09 |
-| Brazil                           | 2020-04-20  |          2 | 2020-04-29 |
-| USA                              | 2020-04-25  |         45 | 2020-10-29 |
-| Democratic Republic of the Congo | 2020-04-30  |          2 | 2020-06-01 |
-| Denmark                          | 2020-06-08  |        779 | 2020-11-16 |
-| Italy                            | 2020-07-07  |          1 | 2020-07-07 |
-| Bangladesh                       | 2020-07-12  |          2 | 2020-07-15 |
-| South Africa                     | 2020-08-04  |          2 | 2020-09-14 |
-| Colombia                         | 2020-09-02  |          1 | 2020-09-02 |
-| France                           | 2020-10-09  |          2 | 2020-11-02 |
-| Switzerland                      | 2020-10-14  |          2 | 2020-10-20 |
 
-![Overall trends DanishCluster](/overall_trends_figures/overall_trends_DanishCluster.png)
