@@ -3,6 +3,7 @@
 
 
 ## 20A.EU1
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/20A.EU1?c=country&f_region=Europe)
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
 | Netherlands    | 2020-06-20  |        155 | 2020-10-30 |
@@ -29,6 +30,7 @@
 ![Overall trends 20A.EU1](/overall_trends_figures/overall_trends_20A.EU1.png)
 
 ## 20A.EU2
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/20A.EU2?c=country&f_region=Europe)
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
 | France         | 2020-07-10  |        288 | 2020-11-02 |
@@ -56,6 +58,7 @@
 ![Overall trends 20A.EU2](/overall_trends_figures/overall_trends_20A.EU2.png)
 
 ## S.S98F
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.S98F?f_region=Europe)
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
 | United Kingdom | 2020-05-11  |        539 | 2020-11-21 |
@@ -77,6 +80,7 @@
 ![Overall trends S.S98F](/overall_trends_figures/overall_trends_S.S98F.png)
 
 ## S.D80Y
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.D80Y?f_region=Europe)
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
 | Switzerland    | 2020-07-16  |         57 | 2020-10-22 |
@@ -93,6 +97,7 @@
 ![Overall trends S.D80Y](/overall_trends_figures/overall_trends_S.D80Y.png)
 
 ## S.N439K
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.N439K?f_region=Europe)
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
 | Romania        | 2020-05-13  |          1 | 2020-05-13 |
@@ -115,6 +120,7 @@
 ![Overall trends S.N439K](/overall_trends_figures/overall_trends_S.N439K.png)
 
 ## S.Y453F
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.Y453F?f_region=Europe)
 |              | first_seq   |   num_seqs | last_seq   |
 |:-------------|:------------|-----------:|:-----------|
 | Netherlands  | 2020-04-25  |         40 | 2020-09-28 |
@@ -127,6 +133,7 @@
 ![Overall trends S.Y453F](/overall_trends_figures/overall_trends_S.Y453F.png)
 
 ## S.N501
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.N501?f_region=Europe)
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
 | China          | 2013-07-24  |          2 | 2019-06-25 |
@@ -143,6 +150,7 @@
 ![Overall trends S.N501](/overall_trends_figures/overall_trends_S.N501.png)
 
 ## S.A626S
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.A626S?f_region=Europe)
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
 | Italy          | 2020-04-11  |          6 | 2020-11-03 |
