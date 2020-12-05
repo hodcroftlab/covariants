@@ -276,6 +276,7 @@ for clus in clus_to_run:
         mrk_tbl = ordered_country.to_markdown()
         with open(f"{tables_path}all_tables.md", 'a') as fh:
             fh.write(f'\n\n## {clus_display}\n')
+            fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?f_region=Europe)")
             fh.write(mrk_tbl)
             fh.write("\n\n")
             fh.write(f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)")
