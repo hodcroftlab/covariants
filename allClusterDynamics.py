@@ -159,7 +159,12 @@ for clus in clus_to_run:
         'England/CAMB-1BA110/2020' : "2020-06-11", # suspected that these ones have reversed dd-mm (are actually 5 and 6 Nov)
         'England/CAMB-1BA0F5/2020' : "2020-05-11", # suspected that these ones have reversed dd-mm (are actually 5 and 6 Nov)
         'England/CAMB-1BA0B9/2020' : "2020-05-11", # suspected that these ones have reversed dd-mm (are actually 5 and 6 Nov)
-        'Denmark/DCGC-12020/2020'  : "2020-03-30" # this sequence is identical to other Danish seqs with sample date of Oct/Nov..
+        'Denmark/DCGC-12020/2020'  : "2020-03-30", # this sequence is identical to other Danish seqs with sample date of Oct/Nov..
+        'Netherlands/NB-EMC-279/2020'   : "2020-05-08", # seems to be date reversal of day/month
+        'Italy/APU-IZSPB_321PT/2020'    : "2020-04-11", # seems to be date reversal of day/month
+        'Tunisia/4107/2020' : "2020-03-18" # date seems to be wrong based on divergence
+        #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
+        #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
     }
 
     for key, value in bad_seqs.items():
@@ -277,6 +282,8 @@ for clus in clus_to_run:
         with open(f"{tables_path}all_tables.md", 'a') as fh:
             fh.write(f'\n\n## {clus_display}\n')
             fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?f_region=Europe)\n\n")
+            if clus is "S501":
+                fh.write(f"Note the pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
             fh.write(mrk_tbl)
             fh.write("\n\n")
             fh.write(f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)")

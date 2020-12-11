@@ -58,7 +58,12 @@ for clus in clusters.keys():
         'England/CAMB-1BA110/2020' : "2020-06-11", # suspected that these ones have reversed dd-mm (are actually 5 and 6 Nov)
         'England/CAMB-1BA0F5/2020' : "2020-05-11", # suspected that these ones have reversed dd-mm (are actually 5 and 6 Nov)
         'England/CAMB-1BA0B9/2020' : "2020-05-11", # suspected that these ones have reversed dd-mm (are actually 5 and 6 Nov)
-        'Denmark/DCGC-12020/2020'  : "2020-03-30" # this sequence is identical to other Danish seqs with sample date of Oct/Nov..
+        'Denmark/DCGC-12020/2020'  : "2020-03-30", # this sequence is identical to other Danish seqs with sample date of Oct/Nov..
+        'Netherlands/NB-EMC-279/2020'   : "2020-05-08", # seems to be date reversal of day/month
+        'Italy/APU-IZSPB_321PT/2020'    : "2020-04-11", # seems to be date reversal of day/month
+        'Tunisia/4107/2020' : "2020-03-18" # date seems to be wrong based on divergence
+        #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
+        #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
     }
 
     for key, value in bad_seqs.items():
