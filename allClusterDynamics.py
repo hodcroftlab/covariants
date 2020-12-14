@@ -83,6 +83,17 @@ if print_files:
     #clean these files so don't append to last run.
     with open(f"{tables_path}all_tables.md", 'w') as fh:
         fh.write('\n')
+        fh.write("# Scripts and Data Investigating Lineages in Europe\n"	
+        "[Overview of proportion of clusters in selected countries](country_overview.md)\n\n"
+        "# Mutation Tables and Graphs\n"
+        "- [20A.EU1](#20aeu1) _(S:A222V)_ \n"
+        "- [20A.EU2](#20aeu2) _(S:S477N)_ \n"
+        "- [S:S98F](#ss98f) \n"
+        "- [S:D80Y](#sd80y) \n"
+        "- [S:N439K](#sn439k) \n"
+        "- [S:Y453F](#sy453f) \n"
+        "- [S:N501](#sn501) \n"
+        "- [S:A626S](#sa626s)\n\n")
     with open(overall_tables_file, 'w') as fh:
         fh.write('\n')
 
@@ -162,7 +173,9 @@ for clus in clus_to_run:
         'Denmark/DCGC-12020/2020'  : "2020-03-30", # this sequence is identical to other Danish seqs with sample date of Oct/Nov..
         'Netherlands/NB-EMC-279/2020'   : "2020-05-08", # seems to be date reversal of day/month
         'Italy/APU-IZSPB_321PT/2020'    : "2020-04-11", # seems to be date reversal of day/month
-        'Tunisia/4107/2020' : "2020-03-18" # date seems to be wrong based on divergence
+        'Tunisia/4107/2020' : "2020-03-18", # date seems to be wrong based on divergence
+        'Australia/QLD1278/2020'    : "2020-03-21", #seems to be wrong date - far too diverged
+        'Australia/QLD1276/2020'    : "2020-03-21" # seems to be wrong date - far too diverged
         #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
         #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
     }
