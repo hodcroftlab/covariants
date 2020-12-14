@@ -1,5 +1,7 @@
 # SARS-CoV-2 Mutations of Interest
 
+_*This page is under construction & more on the missing variants will be added soon*_
+
 These collection of Github pages is intended to provide an overview (not neccessarily complete) of a collection of SARS-CoV-2 mutations that are of interest.
 It should be noted that these mutations are primarily of interest due to spread in Europe: this is simply a reflection that the primary maintainer/author (Emma) is based in Europe and works mostly with European data.
 I support and urge others to set up similar sites for non-European clusters/mutations - I will happily link them here if you get in touch.
