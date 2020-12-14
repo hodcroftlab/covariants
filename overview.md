@@ -9,6 +9,16 @@ I will make every effort to try to keep this repository up-to-date, but readers 
 I welcome PR requests to this repository providing new links and information!
 The more detail you can include an PR request the faster I'll be able to review it.
 
+
+_*Where is the 69/70 deletion?*_
+
+This deletion has arisen at least 3 times independently: in the S:Y453F, S:N439K, and S:N501Y clusters.
+There's also a recent preprint which suggests it may impact immunity ([Kemp et al. medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v1)).
+So, there's a lot of interest in this variant.
+
+For boring, technical, code reasons I do not yet have a dedicated 69/70 deletion build, but I'm working on it!
+
+
 ## Mutations
 
 [Overview of all mutation tables & graphs](README.md)
