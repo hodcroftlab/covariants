@@ -14,8 +14,7 @@ _*Where is the 69/70 deletion?*_
 
 This deletion has arisen at least 3 times independently: in the S:Y453F, S:N439K, and S:N501Y clusters.
 There's also a recent preprint which suggests it may impact immunity ([Kemp et al. medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v1)).
-So, there's a lot of interest in this variant.
-
+So, there's a lot of interest in this variant. <br>
 For boring, technical, code reasons I do not yet have a dedicated 69/70 deletion build, but I'm working on it!
 
 
@@ -87,12 +86,33 @@ _(Insert picture)_
   - May confer resistance to antibodies: C135 ([Weisblum et al. eLife](https://elifesciences.org/articles/61312), [Barnes et al. Nature](https://www.nature.com/articles/s41586-020-2852-1)); a panel of antibodies ([Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1))
 
 
-
 ## S:Y453F
+![Figure of S:Y453F](/other_figures/453.gif)
+
+<sub>Figure made via [GISAID](gisaid.org)</sub>
+
+[Dedicated S:Y453F Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.Y453F?c=gt-S_453&f_region=Europe)
+
+[Table and charts of mutation distribution](cluster_tables/S.Y453F_table.md)
+
+- Defining mutations:
+  - Has appeared multiple times independantly: each can be associated with different accompanying mutations
+- `S:Y453F`
+  - Mutation is in the receptor binding domain (RDB), important to ACE2 binding and antibody recognition
+  - Associated with the 'cluster 5' 'mink' variant that led to some alarm in Denmark in autumn 2020
+    - This variant has the following additional spike mutations: 60/70 deletion, `I692V` and `M1229I`
+  - It is has also been seen previously in mink in the Netherlands ([example Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/netherlands?c=gt-S_453&f_country=Netherlands&f_host=Mink))
+  - May be a mink-specific adaptation, increasing binding to mink ACE2: ([Rodrigues et al. PloS Comp Bio](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008449)); and appearing multiple times ([van Dorp et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.16.384743v1))
+  - May also increase ACE2 binding in humans: [Bloom Lab ACE2 binding website](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS/)
+  - May confer resistance to an antibody in the Regeneron cocktail: REGN10933 ([Baum et al. Science](https://science.sciencemag.org/content/369/6506/1014/tab-pdf))
 
 ## S:S98F
 
+_Coming soon_
+
 ## S:D80Y
+
+_Coming soon_
 
 ## S.N501
 ![Figure of S:N501](/other_figures/501.gif)
@@ -118,3 +138,5 @@ _(Insert picture)_
 
 
 ## S.A626S
+
+_Coming soon_
