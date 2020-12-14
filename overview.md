@@ -10,7 +10,7 @@ I welcome PR requests to this repository providing new links and information!
 The more detail you can include an PR request the faster I'll be able to review it.
 
 
-_*Where is the 69/70 deletion?*_
+_*Where is the 69/70 deletion section?*_
 
 This deletion has arisen at least 3 times independently: in the S:Y453F, S:N439K, and S:N501Y clusters.
 There's also a recent preprint which suggests it may impact immunity ([Kemp et al. medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v1)).
@@ -108,13 +108,21 @@ _(Insert picture)_
 
 ## S:S98F
 
-_Coming soon_
+[Dedicated S:S98F Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.S98F?c=gt-S_98&f_region=Europe)
+
+[Table and charts of mutation distribution](cluster_tables/S.S98F_table.md)
+
+_More coming soon_
 
 ## S:D80Y
 
-_Coming soon_
+[Dedicated S:D80Y Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.D80Y?c=gt-S_80&f_region=Europe)
 
-## S.N501
+[Table and charts of mutation distribution](cluster_tables/S.D80Y_table.md)
+
+_More coming soon_
+
+## S:N501
 ![Figure of S:N501](/other_figures/501.gif)
 
 <sub>Figure made via [GISAID](gisaid.org)</sub>
@@ -137,6 +145,10 @@ _Coming soon_
   - `N501Y` was found in logitudinally-collected samples from an immunocompromised patient ([Choi et al. NEJM](https://www.nejm.org/doi/full/10.1056/NEJMc2031364?query=featured_coronavirus))
 
 
-## S.A626S
+## S:A626S
 
-_Coming soon_
+[Dedicated S:A626S Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.A626S?c=gt-S_626&f_region=Europe)
+
+[Table and charts of mutation distribution](cluster_tables/S.A626S_table.md)
+
+_More coming soon_
