@@ -2,7 +2,7 @@
 
 _*This page is under construction & more on the missing variants will be added soon*_
 
-These collection of Github pages is intended to provide an overview (not neccessarily complete) of a collection of SARS-CoV-2 mutations that are of interest.
+These collection of Github pages is intended to provide an overview (not necessarily  complete) of a collection of SARS-CoV-2 mutations that are of interest.
 It should be noted that these mutations are primarily of interest due to spread in Europe: this is simply a reflection that the primary maintainer/author (Emma) is based in Europe and works mostly with European data.
 I support and urge others to set up similar sites for non-European clusters/mutations - I will happily link them here if you get in touch.
 
@@ -67,7 +67,7 @@ For boring, technical, code reasons I do not yet have a dedicated 69/70 deletion
   - Synonymous: `C4543T`, `G5629T`, `C11497T`, `T26876C`
 - `S:S477N`
   - Mutation is in the receptor binding domain (RDB), important to ACE2 binding and antibody recognition
-  - Has arisen independantly in Australia and was responsible for much of the summer 2020 outbreak ([Link to Nextstrain build](https://nextstrain.org/ncov/oceania/2020-11-16?c=gt-S_477))
+  - Has arisen independently in Australia and was responsible for much of the summer 2020 outbreak ([Link to Nextstrain build](https://nextstrain.org/ncov/oceania/2020-11-16?c=gt-S_477))
   - May slightly increase ACE2 binding: [Chen et al. JMB](https://www.sciencedirect.com/science/article/pii/S0022283620304563); see also [Bloom Lab ACE2 binding website](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS/)
   - May confer resistance to antibodies: [Gaebler et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.03.367391v1)
 
@@ -102,7 +102,7 @@ For boring, technical, code reasons I do not yet have a dedicated 69/70 deletion
 [Table and charts of mutation distribution](cluster_tables/S.Y453F_table.md)
 
 - Defining mutations:
-  - Has appeared multiple times independantly: each can be associated with different accompanying mutations
+  - Has appeared multiple times independently: each can be associated with different accompanying mutations
 - `S:Y453F`
   - Mutation is in the receptor binding domain (RDB), important to ACE2 binding and antibody recognition
   - Associated with the 'cluster 5' 'mink' variant that led to some alarm in Denmark in autumn 2020
@@ -138,7 +138,7 @@ _More coming soon_
 [Table and charts of mutation distribution](cluster_tables/S.N501_table.md)
 
 - Defining mutations:
-  - Has appeared multiple times independantly: each can be associated with different accompanying mutations
+  - Has appeared multiple times independently: each can be associated with different accompanying mutations
   - Amino-acid changes are `N501Y` (nucleotide mutation `A23063T`), `N501T` (nucleotide mutation `A23064C`), and `N501S` (nucleotide mutation `A23064G`)
 - `S:N501`
   - Mutation is in the receptor binding domain (RDB), important to ACE2 binding and antibody recognition
@@ -146,9 +146,9 @@ _More coming soon_
     - This particular variant is associated with multiple mutations in Spike, including: `N501Y`, a deletion at 69/70 (as seen in `S:N439K` & `S:Y453F`), and `P681H`
   - Clusters also seen in USA, South Africa, & Australia
   - May be associated with adaptation to rodents and mustelids: `N501T` in ferrets ([Richard et al. Nature Comm.](https://www.nature.com/articles/s41467-020-17367-2)); `N501Y` in mice ([Gu et al. Science](https://science.sciencemag.org/content/369/6511/1603))
-    - Some have speculated of risk of a persistant reservoir in wild rodents/mustelids
+    - Some have speculated of risk of a persistent reservoir in wild rodents/mustelids
   - May increase ACE2 binding: [Bloom Lab ACE2 binding website](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS/)
-  - `N501Y` was found in logitudinally-collected samples from an immunocompromised patient ([Choi et al. NEJM](https://www.nejm.org/doi/full/10.1056/NEJMc2031364?query=featured_coronavirus))
+  - `N501Y` was found in longitudinally-collected samples from an immunocompromised patient ([Choi et al. NEJM](https://www.nejm.org/doi/full/10.1056/NEJMc2031364?query=featured_coronavirus))
 
 
 ## S:A626S
