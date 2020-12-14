@@ -37,6 +37,8 @@ For boring, technical, code reasons I do not yet have a dedicated 69/70 deletion
 ## 20A.EU1  _(S:A222V)_
 ![Figure of S:A222V](/other_figures/222.gif)
 
+<sub>Figure made via [GISAID](gisaid.org)</sub>
+
 [Dedicated 20A.EU1 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/20A.EU1?f_region=Europe)
 
 [Table and charts of mutation distribution](cluster_tables/20A.EU1_table.md)
@@ -50,6 +52,8 @@ For boring, technical, code reasons I do not yet have a dedicated 69/70 deletion
 
 ## 20A.EU2  _(S:S477N)_
 ![Figure of S:S477N](/other_figures/477.gif)
+
+<sub>Figure made via [GISAID](gisaid.org)</sub>
 
 [Dedicated 20A.EU2 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/20A.EU2?f_region=Europe)
 
