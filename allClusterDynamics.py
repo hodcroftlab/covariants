@@ -301,6 +301,16 @@ for clus in clus_to_run:
             fh.write("\n\n")
             fh.write(f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)")
 
+        with open(f"{tables_path}{clus_display}_table.md", 'w') as fh:
+            fh.write(f'\n\n## {clus_display}\n')
+            fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?f_region=Europe)\n\n")
+            if clus is "S501":
+                fh.write(f"Note the pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
+            fh.write(mrk_tbl)
+            fh.write("\n\n")
+            fh.write(f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)")
+
+
 
     #ordered_country.to_markdown(f"{tables_path}all_tables.md", mode='a')
 
