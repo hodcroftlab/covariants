@@ -12,9 +12,10 @@ The more detail you can include an PR request the faster I'll be able to review 
 ## Mutations
 
 [Overview of all mutation tables & graphs](README.md)
+
 [Overview of all mutation country plots](country_overview.md)
 
-
+### Index
 - [20A.EU1](#20aeu1) _(S:A222V)_
 - [20A.EU2](#20aeu2) _(S:S477N)_
 - [S:S98F](#ss98f)
@@ -25,7 +26,9 @@ The more detail you can include an PR request the faster I'll be able to review 
 - [S:A626S](#sa626s)
 
 ## 20A.EU1  _(S:A222V)_
-(Insert picture)
+_(Insert picture)_
+[Dedicated 20A.EU1 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/20A.EU1?f_region=Europe)
+[Table and charts of mutation distribution](cluster_tables/20A.EU1_table.md)
 - Defining mutations:
   - Nonsynonymous: `S:A222V`; `ORF10:V30L`; `N:A220V` or `ORF14:L67F` (overlapping reading frame with `N`)
   - Synonymous: `T445C`, `C6286T`, `C26801G`
@@ -34,27 +37,35 @@ The more detail you can include an PR request the faster I'll be able to review 
   - Associated with a cluster that initially expanded in Spain and spread across Europe via holiday travel ([see Hodcroft et al preprint](https://www.medrxiv.org/content/10.1101/2020.10.25.20219063v2))
 
 ## 20A.EU2  _(S:S477N)_
-(Insert picture)
+_(Insert picture)_
+[Dedicated 20A.EU2 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/20A.EU2?f_region=Europe)
+[Table and charts of mutation distribution](cluster_tables/20A.EU2_table.md)
 - _Note this cluster is only the European appearance of S:477N - see below_
 - Defining mutations:
   - Nonsynonymous: `S:S477N`; `N:M234I`, `A376T`; `ORF1b:A176S`, `V767L`, `K1141R`, `E1184D`
   - Synonymous: `C4543T`, `G5629T`, `C11497T`, `T26876C`
 - `S:S477N`
   - Mutation is in the receptor binding domain (RDB), important to ACE2 binding and antibody recognition
-  - Has arisen independantly in Australia and was responsiblef or much of the summer 2020 outbreak ([Link to Nextstrain build](https://nextstrain.org/ncov/oceania/2020-11-16?c=gt-S_477))
+  - Has arisen independantly in Australia and was responsible for much of the summer 2020 outbreak ([Link to Nextstrain build](https://nextstrain.org/ncov/oceania/2020-11-16?c=gt-S_477))
   - May slightly increase ACE2 binding: [Chen et al. JMB](https://www.sciencedirect.com/science/article/pii/S0022283620304563); see also [Bloom Lab ACE2 binding website](https://jbloomlab.github.io/
   SARS-CoV-2-RBD_DMS/)
-  - May confier resistance to antibodies: [Gaebler et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.03.367391v1)
+  - May confer resistance to antibodies: [Gaebler et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.03.367391v1)
 
 ## S:N439K
 ![Figure of S:N439K](/other_figures/439.gif)
+<sub>Figure made via [GISAID](gisaid.org)</sub>
+
+[Dedicated S:N439K Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_439&f_region=Europe)
+
+[Table and charts of mutation distribution](cluster_tables/S.N439K_table.md)
+
 - Defining mutations:
-  - Nonsynonymous: `S:N439K`; 
-  - Synonymous: 
+  - Nonsynonymous: `S:N439K`; `ORF1a:I2501T`
+  - Synonymous: `C8047T`
 - `S:N439K`
   - Mutation is in the receptor binding domain (RDB), important to ACE2 binding and antibody recognition
-  - About 2/3 of sequences in cluster have deletions at Spike amino-acid positions 69/70 ([Nextstrain build with deletions in cluster highlighted](https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_69&label=clade:S.N439K))
-  - Has emerged twice independantly in Europe, but was exclusive to Scotland in the first wave and went extinct: [Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1)
+  - About 2/3 of the sequences in the cluster have deletions at Spike amino-acid positions 69/70 ([Nextstrain build with deletions in cluster highlighted](https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_69&label=clade:S.N439K))
+  - Has emerged twice independently in Europe, but was exclusive to Scotland in the first wave and went extinct: [Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1)
   - May increase ACE2 binding: [Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1); see also [Bloom Lab ACE2 binding website](https://jbloomlab.github.io/
   SARS-CoV-2-RBD_DMS/)
   - May confer resistance to antibodies: C135 ([Weisblum et al. eLife](https://elifesciences.org/articles/61312), [Barnes et al. Nature](https://www.nature.com/articles/s41586-020-2852-1)); a panel of antibodies ([Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1))
@@ -69,6 +80,12 @@ The more detail you can include an PR request the faster I'll be able to review 
 
 ## S.N501
 ![Figure of S:N501](/other_figures/501.gif)
+<sub>Figure made via [GISAID](gisaid.org)</sub>
+
+[Dedicated S:N501 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501&f_region=Europe)
+
+[Table and charts of mutation distribution](cluster_tables/S.N501_table.md)
+
 - Defining mutations:
   - Has appeared multiple times independantly: each can be associated with different accompanying mutations
   - Amino-acid changes are `N501Y` (nucleotide mutation `A23063T`), `N501T` (nucleotide mutation `A23064C`), and `N501S` (nucleotide mutation `A23064G`)
