@@ -54,10 +54,10 @@ The more detail you can include an PR request the faster I'll be able to review 
 - `S:N439K`
   - Mutation is in the receptor binding domain (RDB), important to ACE2 binding and antibody recognition
   - About 2/3 of sequences in cluster have deletions at Spike amino-acid positions 69/70 ([Nextstrain build with deletions in cluster highlighted](https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_69&label=clade:S.N439K))
-  - Has emerged twice independantly in Europe, but was exclusive to Scotland in the first wave and went extinct [Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1)
+  - Has emerged twice independantly in Europe, but was exclusive to Scotland in the first wave and went extinct: [Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1)
   - May increase ACE2 binding: [Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1); see also [Bloom Lab ACE2 binding website](https://jbloomlab.github.io/
   SARS-CoV-2-RBD_DMS/)
-  - May confer resistance to antibodies: C135 [Weisblum et al. eLife](https://elifesciences.org/articles/61312), [Barnes et al. Nature](https://www.nature.com/articles/s41586-020-2852-1); a panel of antibodies [Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1)
+  - May confer resistance to antibodies: C135 ([Weisblum et al. eLife](https://elifesciences.org/articles/61312), [Barnes et al. Nature](https://www.nature.com/articles/s41586-020-2852-1)); a panel of antibodies ([Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1))
 
 
 
@@ -74,12 +74,12 @@ The more detail you can include an PR request the faster I'll be able to review 
   - Amino-acid changes are `N501Y` (nucleotide mutation `A23063T`), `N501T` (nucleotide mutation `A23064C`), and `N501S` (nucleotide mutation `A23064G`)
 - `S:N501`
   - Mutation is in the receptor binding domain (RDB), important to ACE2 binding and antibody recognition
-  - Associated with a recently reported 'new variant' announced in the South East of England [COG-UK Report](https://www.cogconsortium.uk/news_item/update-on-new-sars-cov-2-variant-and-how-cog-uk-tracks-emerging-mutations/)
+  - Associated with a recently reported 'new variant' announced in the South East of England ([COG-UK Report](https://www.cogconsortium.uk/news_item/update-on-new-sars-cov-2-variant-and-how-cog-uk-tracks-emerging-mutations/))
     - This particular variant is associated with multiple mutations in Spike, including: `N501Y`, a deletion at 69/70 (as seen in `S:N439K` & `S:Y453F`), and `P681H`
-  - May be associated with adaptation to rodents and mustelids: `N501T` in ferrets [Richard et al. Nature Comm.](https://www.nature.com/articles/s41467-020-17367-2);`N501Y` in mice [Gu et al. Science](https://science.sciencemag.org/content/369/6511/1603) 
+  - May be associated with adaptation to rodents and mustelids: `N501T` in ferrets ([Richard et al. Nature Comm.](https://www.nature.com/articles/s41467-020-17367-2)); `N501Y` in mice ([Gu et al. Science](https://science.sciencemag.org/content/369/6511/1603))
     - Some have speculated of risk of a persistant reservoir in wild rodents/mustelids
-  - May increase ACE2 binding: [Bloom Lab ACE2 binding website](https://jbloomlab.github.io/
-  - `N501Y` was found in logitudinally-collected samples from an immunocompromised patient [Choi et al. NEJM](https://www.nejm.org/doi/full/10.1056/NEJMc2031364?query=featured_coronavirus)
+  - May increase ACE2 binding: [Bloom Lab ACE2 binding website](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS/)
+  - `N501Y` was found in logitudinally-collected samples from an immunocompromised patient ([Choi et al. NEJM](https://www.nejm.org/doi/full/10.1056/NEJMc2031364?query=featured_coronavirus))
 
 
 ## S.A626S
