@@ -35,7 +35,7 @@ For boring, technical, code reasons I do not yet have a dedicated 69/70 deletion
 - [S:A626S](#sa626s)
 
 ## 20A.EU1  _(S:A222V)_
-_(Insert picture)_
+![Figure of S:A222V](/other_figures/222.gif)
 
 [Dedicated 20A.EU1 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/20A.EU1?f_region=Europe)
 
@@ -49,7 +49,7 @@ _(Insert picture)_
   - Associated with a cluster that initially expanded in Spain and spread across Europe via holiday travel ([see Hodcroft et al preprint](https://www.medrxiv.org/content/10.1101/2020.10.25.20219063v2))
 
 ## 20A.EU2  _(S:S477N)_
-_(Insert picture)_
+![Figure of S:S477N](/other_figures/477.gif)
 
 [Dedicated 20A.EU2 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/20A.EU2?f_region=Europe)
 
@@ -116,7 +116,7 @@ _More coming soon_
 
 ## S:D80Y
 
-[Dedicated S:D80Y Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.D80Y?c=gt-S_80&f_region=Europe)
+[Dedicated S:D80Y Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.D80Y?f_region=Europe)
 
 [Table and charts of mutation distribution](cluster_tables/S.D80Y_table.md)
 
@@ -127,7 +127,7 @@ _More coming soon_
 
 <sub>Figure made via [GISAID](gisaid.org)</sub>
 
-[Dedicated S:N501 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501&f_region=Europe)
+[Dedicated S:N501 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.N501?f_region=Europe)
 
 [Table and charts of mutation distribution](cluster_tables/S.N501_table.md)
 
@@ -147,7 +147,7 @@ _More coming soon_
 
 ## S:A626S
 
-[Dedicated S:A626S Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.A626S?c=gt-S_626&f_region=Europe)
+[Dedicated S:A626S Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.A626S?f_region=Europe)
 
 [Table and charts of mutation distribution](cluster_tables/S.A626S_table.md)
 
