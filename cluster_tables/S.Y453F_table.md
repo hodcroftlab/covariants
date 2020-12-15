@@ -1,7 +1,7 @@
 
 
 ## S.Y453F
-[Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.Y453F?f_region=Europe)
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.Y453F?c=gt-S_453&f_region=Europe)
 
 |              | first_seq   |   num_seqs | last_seq   |
 |:-------------|:------------|-----------:|:-----------|
