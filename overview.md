@@ -4,12 +4,13 @@ _*This page is under construction & more on the missing variants will be added s
 
 These collection of Github pages is intended to provide an overview (not necessarily  complete) of a collection of SARS-CoV-2 mutations that are of interest.
 It should be noted that these mutations are primarily of interest due to spread in Europe: this is simply a reflection that the primary maintainer/author (Emma) is based in Europe and works mostly with European data.
-I support and urge others to set up similar sites for non-European clusters/mutations - I will happily link them here if you get in touch.
+<!-- I support and urge others to set up similar sites for non-European clusters/mutations - I will happily link them here if you get in touch. -->
 
 **The SARS-CoV-2 pandemic & research surrounding it is ongoing.**
-I will make every effort to try to keep this repository up-to-date, but readers should take care to double-check that the information is the latest available.
-I welcome PR requests to this repository providing new links and information!
+I will make every effort to try to keep this repository up-to-date, but readers should take care to double-check that the information is the latest available. <br>
+**I welcome PR requests to this repository providing new links and information!**
 The more detail you can include an PR request the faster I'll be able to review it.
+If possible, provide a PR adding/editing the appropriate links/etc, and I can merge it faster - if you can't do that, making an [issue](https://github.com/emmahodcroft/cluster_scripts/issues) is fine, but I'll likely be slower incorporating it.
 
 
 _*Where is the 69/70 deletion section?*_
@@ -133,7 +134,7 @@ _More coming soon_
 
 <sub>Figure made via [GISAID](gisaid.org)</sub>
 
-[Dedicated S:N501 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.N501?f_region=Europe)
+[Dedicated S:N501 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501&f_region=Europe)
 
 [Table and charts of mutation distribution](cluster_tables/S.N501_table.md)
 
