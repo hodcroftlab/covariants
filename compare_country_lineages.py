@@ -62,8 +62,10 @@ for clus in clusters.keys():
         'Netherlands/NB-EMC-279/2020'   : "2020-05-08", # seems to be date reversal of day/month
         'Italy/APU-IZSPB_321PT/2020'    : "2020-04-11", # seems to be date reversal of day/month
         'Tunisia/4107/2020' : "2020-03-18", # date seems to be wrong based on divergence
+        'Tunisia/3942/2020' : "2020-03-16", # date seems to be wrong based on divergence
         'Australia/QLD1278/2020'    : "2020-03-21", #seems to be wrong date - far too diverged
-        'Australia/QLD1276/2020'    : "2020-03-21" # seems to be wrong date - far too diverged
+        'Australia/QLD1276/2020'    : "2020-03-21", # seems to be wrong date - far too diverged
+        'Sweden/20-08979/2020'  : "2020-04-06" # too divergent compared to date (seems to be day/month reversed)
         #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
         #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
     }

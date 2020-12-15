@@ -83,7 +83,7 @@ if print_files:
     #clean these files so don't append to last run.
     with open(f"{tables_path}all_tables.md", 'w') as fh:
         fh.write('\n')
-        fh.write("# Scripts and Data Investigating Lineages in Europe\n"	
+        fh.write("# Overview of Clusters/Mutations in Europe\n"	
         "[Overview of proportion of clusters in selected countries](country_overview.md)\n\n"
         "# Mutation Tables and Graphs\n"
         "- [20A.EU1](#20aeu1) _(S:A222V)_ \n"
@@ -174,8 +174,10 @@ for clus in clus_to_run:
         'Netherlands/NB-EMC-279/2020'   : "2020-05-08", # seems to be date reversal of day/month
         'Italy/APU-IZSPB_321PT/2020'    : "2020-04-11", # seems to be date reversal of day/month
         'Tunisia/4107/2020' : "2020-03-18", # date seems to be wrong based on divergence
+        'Tunisia/3942/2020' : "2020-03-16", # date seems to be wrong based on divergence
         'Australia/QLD1278/2020'    : "2020-03-21", #seems to be wrong date - far too diverged
-        'Australia/QLD1276/2020'    : "2020-03-21" # seems to be wrong date - far too diverged
+        'Australia/QLD1276/2020'    : "2020-03-21", # seems to be wrong date - far too diverged
+        'Sweden/20-08979/2020'  : "2020-04-06" # too divergent compared to date (seems to be day/month reversed)
         #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
         #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
     }
@@ -292,9 +294,15 @@ for clus in clus_to_run:
         ordered_country.to_csv(overall_tables_file, sep="\t", mode='a')
 
         mrk_tbl = ordered_country.to_markdown()
+        col = ""
+        if clus is "S501":
+            col = "c=gt-S_501&"
+        if clus is "S453":
+            col = "c=gt-S_453&"
+
         with open(f"{tables_path}all_tables.md", 'a') as fh:
             fh.write(f'\n\n## {clus_display}\n')
-            fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?f_region=Europe)\n\n")
+            fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{col}f_region=Europe)\n\n")
             if clus is "S501":
                 fh.write(f"Note the pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
                 fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
@@ -305,7 +313,7 @@ for clus in clus_to_run:
 
         with open(f"{tables_path}{clus_display}_table.md", 'w') as fh:
             fh.write(f'\n\n## {clus_display}\n')
-            fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?f_region=Europe)\n\n")
+            fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{col}f_region=Europe)\n\n")
             if clus is "S501":
                 fh.write(f"Note the pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
                 fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
