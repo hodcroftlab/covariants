@@ -46,7 +46,7 @@ The mutation is listed in parentheses after the name.
 ## 20A.EU1  _(S:A222V)_
 ![Figure of S:A222V](/other_figures/222.gif)
 
-<sub>Figure made via [GISAID](gisaid.org)</sub>
+<sub>Figure made via [GISAID](https://gisaid.org)</sub>
 
 [Dedicated 20A.EU1 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/20A.EU1?f_region=Europe)
 
@@ -62,7 +62,7 @@ The mutation is listed in parentheses after the name.
 ## 20A.EU2  _(S:S477N)_
 ![Figure of S:S477N](/other_figures/477.gif)
 
-<sub>Figure made via [GISAID](gisaid.org)</sub>
+<sub>Figure made via [GISAID](https://gisaid.org)</sub>
 
 [Dedicated 20A.EU2 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/20A.EU2?f_region=Europe)
 
@@ -81,7 +81,7 @@ The mutation is listed in parentheses after the name.
 ## S:N439K
 ![Figure of S:N439K](/other_figures/439.gif)
 
-<sub>Figure made via [GISAID](gisaid.org)</sub>
+<sub>Figure made via [GISAID](https://gisaid.org)</sub>
 
 [Dedicated S:N439K Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_439&f_region=Europe)
 
@@ -102,7 +102,7 @@ The mutation is listed in parentheses after the name.
 ## S:Y453F
 ![Figure of S:Y453F](/other_figures/453.gif)
 
-<sub>Figure made via [GISAID](gisaid.org)</sub>
+<sub>Figure made via [GISAID](https://gisaid.org)</sub>
 
 [Dedicated S:Y453F Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.Y453F?c=gt-S_453&f_region=Europe)
 
@@ -120,14 +120,26 @@ The mutation is listed in parentheses after the name.
   - May confer resistance to an antibody in the Regeneron cocktail: REGN10933 ([Baum et al. Science](https://science.sciencemag.org/content/369/6506/1014/tab-pdf))
 
 ## S:S98F
+![Figure of S:S98F](/other_figures/98.gif)
+
+<sub>Figure made via [GISAID](https://gisaid.org)</sub>
 
 [Dedicated S:S98F Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.S98F?c=gt-S_98&f_region=Europe)
 
 [Table and charts of mutation distribution](cluster_tables/S.S98F_table.md)
 
+- Defining mutations:
+  - Nonsynonymous: `S:S98F`; `N:P199L` or `ORF14:Q46*` (overlapping reading frames); `ORF3a:Q38R`, `G172R`, `V202L`
+  - Synonymous: C28651T
+- `S:S98F`
+  - Mostly found in Belgium and the Netherlands - predominantly Belgium
+
 _More coming soon_
 
 ## S:D80Y
+![Figure of S:S98F](/other_figures/80.gif)
+
+<sub>Figure made via [GISAID](https://gisaid.org)</sub>
 
 [Dedicated S:D80Y Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.D80Y?f_region=Europe)
 
@@ -138,7 +150,7 @@ _More coming soon_
 ## S:N501
 ![Figure of S:N501](/other_figures/501.gif)
 
-<sub>Figure made via [GISAID](gisaid.org)</sub>
+<sub>Figure made via [GISAID](https://gisaid.org)</sub>
 
 [Dedicated S:N501 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501&f_region=Europe)
 
