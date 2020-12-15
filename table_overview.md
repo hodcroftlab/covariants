@@ -1,4 +1,4 @@
-# Scripts and Data Investigating Lineages in Europe
+# Overview of Lineages in Europe
 [Overview of proportion of clusters in selected countries](country_overview.md)
 
 # Mutation Tables and Graphs
@@ -155,6 +155,8 @@
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.N501?f_region=Europe)
 
 Note the pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).
+Note that this mutation has multiple amino-acid mutants - these numbers refer to _all_ these mutations (Y, S, T).
+
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
 | China          | 2013-07-24  |          2 | 2019-06-25 |

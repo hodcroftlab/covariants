@@ -297,6 +297,8 @@ for clus in clus_to_run:
             fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?f_region=Europe)\n\n")
             if clus is "S501":
                 fh.write(f"Note the pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
+                fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
+                          "refer to _all_ these mutations (Y, S, T).\n")
             fh.write(mrk_tbl)
             fh.write("\n\n")
             fh.write(f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)")
@@ -306,6 +308,8 @@ for clus in clus_to_run:
             fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?f_region=Europe)\n\n")
             if clus is "S501":
                 fh.write(f"Note the pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
+                fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
+                          "refer to _all_ these mutations (Y, S, T).\n")
             fh.write(mrk_tbl)
             fh.write("\n\n")
             fh.write(f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)")
