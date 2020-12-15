@@ -32,6 +32,7 @@ For boring, technical, code reasons I do not yet have a dedicated 69/70 deletion
 Clusters/mutations are listed below by the location of a mutation in the spike protein (`S:`) - the letter after `:` indicates the original amino-acid, the number the position in the spike protein, and the last letter, the 'new' amino-acid.<br>
 As `S:N501` has multiple amino-acid mutations, there is no second letter.<br>
 20A.EU1 and 20A.EU2, because of their prominence, have been given 'subclade' names.
+The mutation is listed in parentheses after the name.
 
 - [20A.EU1](#20aeu1) _(S:A222V)_
 - [20A.EU2](#20aeu2) _(S:S477N)_
