@@ -11,13 +11,13 @@ The code used to generate these tables, graphs, and the sequences related to tha
 **The SARS-CoV-2 pandemic & research surrounding it is ongoing.**
 I will make every effort to try to keep this repository up-to-date, but readers should take care to double-check that the information is the latest available. <br>
 **I welcome PR requests to this repository providing new links and information!**
-The more detail you can include an PR request the faster I'll be able to review it.
-If possible, provide a PR adding/editing the appropriate links/etc, and I can merge it faster - if you can't do that, making an [issue](https://github.com/emmahodcroft/cluster_scripts/issues) is fine, but I'll likely be slower incorporating it.
+The more detail you can include a pull request (PR) the faster I'll be able to review it.
+If possible, provide a PR adding/editing the appropriate links/etc, and I can merge it faster - if you can't do that, making an [issue](https://github.com/emmahodcroft/cluster_scripts/issues) is fine, but I might be slower incorporating it.
 
 
 _*Where is the 69/70 deletion section?*_<br>
 This deletion has arisen at least 3 times independently: in the S:Y453F, S:N439K, and S:N501Y clusters.
-There's also a recent preprint which suggests it may impact immunity ([Kemp et al. medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v1)).
+There's also a recent preprint which suggests it may alter the recognition by antibodies, possibly impacting some antibody-therapy treatments, or immunity ([Kemp et al. medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v1)).
 So, there's a lot of interest in this variant. <br>
 For boring, technical, code reasons I do not yet have a dedicated 69/70 deletion build, but I'm working on it!
 
@@ -29,6 +29,10 @@ For boring, technical, code reasons I do not yet have a dedicated 69/70 deletion
 [Overview of all mutation country plots](country_overview.md)
 
 ### Index
+Clusters/mutations are listed below by the location of a mutation in the spike protein (`S:`) - the letter after `:` indicates the original amino-acid, the number the position in the spike protein, and the last letter, the 'new' amino-acid.<br>
+As `S:N501` has multiple amino-acid mutations, there is no second letter.<br>
+20A.EU1 and 20A.EU2, because of their prominence, have been given 'subclade' names.
+
 - [20A.EU1](#20aeu1) _(S:A222V)_
 - [20A.EU2](#20aeu2) _(S:S477N)_
 - [S:S98F](#ss98f)
