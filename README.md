@@ -1,5 +1,7 @@
 # SARS-CoV-2 Mutations of Interest
 
+<sub>Created and maintained by Dr Emma B Hodcroft, University of Bern. Please credit and link back to this site if you use this resource!</sub>
+
 _*This page is under construction & more on the missing variants will be added soon.*_
 
 These collection of Github pages is intended to provide an overview (not necessarily  complete) of a collection of SARS-CoV-2 mutations that are of interest.
