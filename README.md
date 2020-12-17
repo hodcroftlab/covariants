@@ -44,6 +44,8 @@ The mutation is listed in parentheses after the name.
 - [S:Y453F](#sy453f)
 - [S:N501](#sn501)
 - [S:A626S](#sa626s)
+- [S:V1122L](#sv1122l)
+- [S:H69-](#sh69-)
 
 ## 20A.EU1  _(S:A222V)_
 ![Figure of S:A222V](/other_figures/222.gif)
@@ -180,5 +182,32 @@ _More coming soon_
 [Dedicated S:A626S Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.A626S?f_region=Europe)
 
 [Table and charts of mutation distribution](cluster_tables/S.A626S_table.md)
+
+_More coming soon_
+
+
+## S:V1122L
+<!-- ![Figure of S:V1122L](/other_figures/626.gif)
+
+<sub>Figure made via [GISAID](https://gisaid.org)</sub> -->
+
+[Dedicated S:V1122L Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.V1122L?c=gt-S_1122&f_region=Europe)
+
+[Table and charts of mutation distribution](cluster_tables/S.V1122L_table.md)
+
+_More coming soon_
+
+## S:H69-
+![Figure of S:H69-](/other_figures/6970del.gif)
+
+<sub>Figure made via [GISAID](https://gisaid.org)<br>
+Note this figure shows both the 69 & 70 deletion.</sub>
+
+[Dedicated S:H69- Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.H69-?c=gt-S_69,501,453)
+
+[Table and charts of mutation distribution](cluster_tables/S.H69-_table.md)
+
+**Important**: *Currently this build detects only the deletion at position 69 in spike, as due to alignment/calling differences, detecting the deletion at position 70 is less reliable.*
+*However, they seem to be highly associated.*
 
 _More coming soon_
