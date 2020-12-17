@@ -144,6 +144,10 @@ for clus in clus_to_run:
             snps2 = clusters[clus]['snps2']
         else:
             snps2 = []
+        if 'gaps' in clusters[clus]:
+            gaps = clusters[clus]['gaps']
+        else:
+            gaps = []
 
         clusterlist_output = cluster_path+f'/clusters/cluster_{clusters[clus]["build_name"]}.txt'
         out_meta_file = cluster_path+f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
@@ -155,10 +159,17 @@ for clus in clus_to_run:
         for index, row in diag.iterrows():
             strain = row['strain']
             snplist = row['all_snps']
-            if not pd.isna(snplist):
+            gaplist = row['gap_list']
+            if snps and not pd.isna(snplist):
                 intsnp = [int(x) for x in snplist.split(',')]
+                # this looks for all SNPs in 'snps' OR all in 'snps2' (two nucs that affect same AA, for example)
                 if all(x in intsnp for x in snps) or (all (x in intsnp for x in snps2) and len(snps2)!=0):
                     #if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
+                    wanted_seqs.append(row['strain'])
+            #look for all locations in gap list
+            elif gaps and not pd.isna(gaplist):
+                intgap = [int(x) for x in gaplist.split(',')]
+                if all(x in intgap for x in gaps):
                     wanted_seqs.append(row['strain'])
 
     # If seq there and date bad - exclude!
