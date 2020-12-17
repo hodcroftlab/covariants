@@ -187,9 +187,9 @@ _More coming soon_
 
 
 ## S:V1122L
-<!-- ![Figure of S:V1122L](/other_figures/626.gif)
+![Figure of S:V1122L](/other_figures/1122.gif)
 
-<sub>Figure made via [GISAID](https://gisaid.org)</sub> -->
+<sub>Figure made via [GISAID](https://gisaid.org)</sub> 
 
 [Dedicated S:V1122L Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.V1122L?c=gt-S_1122&f_region=Europe)
 
