@@ -1,3 +1,4 @@
+
 # Overview of Clusters/Mutations in Europe
 [Overview of proportion of clusters in selected countries](country_overview.md)
 
@@ -18,26 +19,28 @@
 
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
-| Spain          | 2020-04-21  |        940 | 2020-11-16 |
+| Spain          | 2020-06-01  |        937 | 2020-11-16 |
 | Netherlands    | 2020-06-20  |        156 | 2020-10-30 |
-| United Kingdom | 2020-07-18  |      42404 | 2020-12-08 |
+| United Kingdom | 2020-07-18  |      42950 | 2020-12-08 |
 | Switzerland    | 2020-07-22  |        419 | 2020-11-19 |
 | Ireland        | 2020-07-23  |        168 | 2020-11-17 |
-| Belgium        | 2020-07-29  |         57 | 2020-11-25 |
-| Norway         | 2020-07-29  |         87 | 2020-10-26 |
+| Belgium        | 2020-07-29  |         63 | 2020-11-25 |
+| Norway         | 2020-07-29  |        109 | 2020-11-19 |
 | France         | 2020-08-01  |         80 | 2020-11-25 |
 | Denmark        | 2020-08-03  |       2838 | 2020-11-23 |
 | Sweden         | 2020-08-14  |         51 | 2020-11-22 |
 | Hong Kong      | 2020-08-15  |          2 | 2020-08-17 |
-| Germany        | 2020-08-17  |         22 | 2020-10-12 |
+| Germany        | 2020-08-17  |         29 | 2020-10-20 |
 | Italy          | 2020-08-18  |         31 | 2020-11-04 |
-| Australia      | 2020-08-20  |          9 | 2020-11-01 |
+| Australia      | 2020-08-20  |         13 | 2020-12-04 |
 | Latvia         | 2020-08-22  |         13 | 2020-10-13 |
 | Taiwan         | 2020-09-06  |          1 | 2020-09-06 |
 | Lithuania      | 2020-09-07  |         11 | 2020-09-12 |
-| New Zealand    | 2020-09-22  |         27 | 2020-11-20 |
+| New Zealand    | 2020-09-22  |         29 | 2020-12-06 |
 | Singapore      | 2020-10-14  |          8 | 2020-11-15 |
+| Thailand       | 2020-10-16  |          2 | 2020-10-20 |
 | Tunisia        | 2020-11-02  |          2 | 2020-11-02 |
+| USA            | 2020-11-04  |          1 | 2020-11-04 |
 
 ![Overall trends 20A.EU1](/overall_trends_figures/overall_trends_20A.EU1.png)
 
@@ -46,25 +49,26 @@
 
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
-| Spain          | 2020-05-29  |         11 | 2020-10-27 |
 | France         | 2020-07-09  |        398 | 2020-11-24 |
 | Denmark        | 2020-07-27  |       1433 | 2020-11-16 |
-| United Kingdom | 2020-08-04  |       2071 | 2020-12-03 |
-| Switzerland    | 2020-08-14  |        315 | 2020-11-19 |
-| Germany        | 2020-08-17  |          5 | 2020-09-23 |
+| United Kingdom | 2020-08-04  |       2088 | 2020-12-06 |
+| Switzerland    | 2020-08-14  |        321 | 2020-11-19 |
 | Sweden         | 2020-08-17  |         10 | 2020-11-04 |
-| Belgium        | 2020-08-24  |        159 | 2020-11-26 |
+| Germany        | 2020-08-17  |          7 | 2020-10-21 |
+| Belgium        | 2020-08-24  |        167 | 2020-11-26 |
 | Netherlands    | 2020-08-25  |         78 | 2020-10-30 |
 | Hungary        | 2020-08-27  |        133 | 2020-10-24 |
 | Canada         | 2020-09-04  |          2 | 2020-09-04 |
 | Australia      | 2020-09-09  |         11 | 2020-11-07 |
 | Slovakia       | 2020-09-10  |          4 | 2020-09-16 |
-| Norway         | 2020-09-17  |         47 | 2020-10-25 |
+| Spain          | 2020-09-14  |          9 | 2020-10-27 |
+| Norway         | 2020-09-17  |         59 | 2020-11-09 |
 | New Zealand    | 2020-09-27  |          4 | 2020-11-26 |
 | Ireland        | 2020-10-01  |          1 | 2020-10-01 |
+| Thailand       | 2020-10-04  |          2 | 2020-11-11 |
 | Hong Kong      | 2020-10-11  |          1 | 2020-10-11 |
 | Czech Republic | 2020-10-22  |          4 | 2020-11-04 |
-| Tunisia        | 2020-10-26  |          5 | 2020-11-02 |
+| Tunisia        | 2020-10-26  |          6 | 2020-11-23 |
 | Singapore      | 2020-10-29  |          2 | 2020-11-02 |
 | Italy          | 2020-11-02  |         13 | 2020-11-06 |
 | USA            | 2020-11-10  |          2 | 2020-11-19 |
@@ -76,18 +80,18 @@
 
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
-| Belgium        | 2020-07-09  |        280 | 2020-11-26 |
+| Germany        | 2020-03-21  |         31 | 2020-10-21 |
+| Belgium        | 2020-07-09  |        308 | 2020-11-26 |
 | Netherlands    | 2020-08-01  |        212 | 2020-10-30 |
-| United Kingdom | 2020-08-03  |        619 | 2020-11-30 |
+| United Kingdom | 2020-08-03  |        624 | 2020-12-05 |
 | Denmark        | 2020-08-10  |        308 | 2020-11-16 |
 | Switzerland    | 2020-08-16  |         26 | 2020-11-19 |
-| Germany        | 2020-08-17  |         15 | 2020-10-12 |
 | France         | 2020-08-18  |         11 | 2020-09-19 |
 | Spain          | 2020-08-25  |          6 | 2020-10-17 |
 | Ireland        | 2020-09-09  |          1 | 2020-09-09 |
 | Sweden         | 2020-09-17  |          5 | 2020-11-04 |
 | Australia      | 2020-09-19  |          6 | 2020-11-02 |
-| Norway         | 2020-09-28  |          4 | 2020-10-23 |
+| Norway         | 2020-09-28  |         13 | 2020-11-10 |
 | Czech Republic | 2020-10-06  |          2 | 2020-10-20 |
 | New Zealand    | 2020-10-22  |          4 | 2020-10-30 |
 | USA            | 2020-10-22  |          1 | 2020-10-22 |
@@ -100,12 +104,12 @@
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
 | Switzerland    | 2020-07-16  |         58 | 2020-10-30 |
-| United Kingdom | 2020-07-22  |        269 | 2020-11-12 |
+| United Kingdom | 2020-07-22  |        270 | 2020-12-04 |
 | France         | 2020-07-24  |         72 | 2020-10-29 |
 | Denmark        | 2020-08-03  |         63 | 2020-09-28 |
-| Norway         | 2020-08-04  |         36 | 2020-10-19 |
+| Norway         | 2020-08-04  |         39 | 2020-10-28 |
 | Ireland        | 2020-08-12  |         12 | 2020-10-07 |
-| Belgium        | 2020-08-18  |          5 | 2020-09-20 |
+| Belgium        | 2020-08-18  |          7 | 2020-09-20 |
 | Germany        | 2020-08-18  |          5 | 2020-09-23 |
 | Netherlands    | 2020-08-24  |         22 | 2020-10-14 |
 | Singapore      | 2020-10-10  |          1 | 2020-10-10 |
@@ -118,8 +122,8 @@
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
 | Romania        | 2020-05-13  |          1 | 2020-05-13 |
-| Norway         | 2020-06-23  |         16 | 2020-10-26 |
-| United Kingdom | 2020-07-03  |       2631 | 2020-11-29 |
+| Norway         | 2020-06-23  |         33 | 2020-11-18 |
+| United Kingdom | 2020-07-03  |       2651 | 2020-12-05 |
 | Ireland        | 2020-07-18  |        164 | 2020-11-01 |
 | Belgium        | 2020-07-24  |          3 | 2020-08-24 |
 | Switzerland    | 2020-08-01  |         45 | 2020-11-19 |
@@ -154,17 +158,17 @@
 ## S.N501
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501&f_region=Europe)
 
-Note the pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).
+Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).
 Note that this mutation has multiple amino-acid mutants - these numbers refer to _all_ these mutations (Y, S, T).
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
 | China          | 2013-07-24  |          2 | 2019-06-25 |
 | Italy          | 2020-03-19  |          1 | 2020-03-19 |
 | Brazil         | 2020-04-07  |          1 | 2020-04-07 |
-| United Kingdom | 2020-04-14  |       1820 | 2020-12-07 |
+| United Kingdom | 2020-04-14  |       2145 | 2020-12-07 |
 | USA            | 2020-04-21  |         31 | 2020-11-30 |
 | Netherlands    | 2020-04-28  |          5 | 2020-06-01 |
-| Australia      | 2020-06-03  |         36 | 2020-11-30 |
+| Australia      | 2020-06-03  |         39 | 2020-12-16 |
 | Côte d'Ivoire  | 2020-07-15  |          4 | 2020-09-09 |
 | South Africa   | 2020-08-21  |        179 | 2020-11-25 |
 | Denmark        | 2020-10-26  |          8 | 2020-11-16 |
@@ -182,7 +186,7 @@ Note that this mutation has multiple amino-acid mutants - these numbers refer to
 | Switzerland    | 2020-07-24  |          8 | 2020-09-08 |
 | Denmark        | 2020-07-27  |        457 | 2020-11-16 |
 | United Kingdom | 2020-07-30  |        164 | 2020-11-27 |
-| Norway         | 2020-08-05  |         58 | 2020-10-27 |
+| Norway         | 2020-08-05  |         76 | 2020-11-18 |
 | France         | 2020-08-11  |          1 | 2020-08-11 |
 | Sweden         | 2020-08-12  |          3 | 2020-10-30 |
 | Germany        | 2020-08-17  |          2 | 2020-08-17 |
@@ -194,3 +198,49 @@ Note that this mutation has multiple amino-acid mutants - these numbers refer to
 | Italy          | 2020-09-22  |          5 | 2020-11-03 |
 
 ![Overall trends S.A626S](/overall_trends_figures/overall_trends_S.A626S.png)
+
+## S.H69-
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.H69-?f_region=Europe)
+
+|                | first_seq   |   num_seqs | last_seq   |
+|:---------------|:------------|-----------:|:-----------|
+| China          | 2019-06-25  |          1 | 2019-06-25 |
+| Thailand       | 2020-01-05  |          1 | 2020-01-05 |
+| Malaysia       | 2020-01-24  |          3 | 2020-04-07 |
+| Germany        | 2020-02-15  |          9 | 2020-10-12 |
+| Slovenia       | 2020-03-07  |          4 | 2020-03-30 |
+| Italy          | 2020-03-15  |          3 | 2020-03-19 |
+| Turkey         | 2020-03-17  |          2 | 2020-03-17 |
+| Taiwan         | 2020-03-18  |          1 | 2020-03-18 |
+| France         | 2020-03-23  |         14 | 2020-10-16 |
+| Sweden         | 2020-03-29  |          4 | 2020-11-22 |
+| United Kingdom | 2020-04-20  |       3829 | 2020-12-08 |
+| Saudi Arabia   | 2020-04-21  |          1 | 2020-04-21 |
+| Denmark        | 2020-04-28  |       2175 | 2020-11-23 |
+| USA            | 2020-04-29  |          5 | 2020-11-25 |
+| Australia      | 2020-05-12  |          7 | 2020-11-30 |
+| Côte d'Ivoire  | 2020-06-10  |          6 | 2020-07-02 |
+| South Africa   | 2020-07-02  |          2 | 2020-08-12 |
+| Switzerland    | 2020-08-01  |          9 | 2020-08-31 |
+| Burkina Faso   | 2020-08-12  |          2 | 2020-09-09 |
+| New Zealand    | 2020-08-24  |          1 | 2020-08-24 |
+| Canada         | 2020-09-01  |          1 | 2020-09-01 |
+| Hungary        | 2020-09-02  |          1 | 2020-09-02 |
+| Norway         | 2020-09-09  |         13 | 2020-11-18 |
+| Czech Republic | 2020-09-14  |         79 | 2020-11-04 |
+| Netherlands    | 2020-10-08  |          9 | 2020-10-27 |
+
+![Overall trends S.H69-](/overall_trends_figures/overall_trends_S.H69-.png)
+
+## S.V1122L
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.V1122L?f_region=Europe)
+
+|                | first_seq   |   num_seqs | last_seq   |
+|:---------------|:------------|-----------:|:-----------|
+| Sweden         | 2020-07-06  |         61 | 2020-11-05 |
+| United Kingdom | 2020-07-16  |         17 | 2020-11-15 |
+| Norway         | 2020-08-03  |         13 | 2020-10-24 |
+| Denmark        | 2020-08-17  |         24 | 2020-11-16 |
+| Latvia         | 2020-08-31  |          3 | 2020-10-07 |
+
+![Overall trends S.V1122L](/overall_trends_figures/overall_trends_S.V1122L.png)
