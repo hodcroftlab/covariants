@@ -188,10 +188,17 @@ for clus in clus_to_run:
         'Tunisia/3942/2020' : "2020-03-16", # date seems to be wrong based on divergence
         'Australia/QLD1278/2020'    : "2020-03-21", #seems to be wrong date - far too diverged
         'Australia/QLD1276/2020'    : "2020-03-21", # seems to be wrong date - far too diverged
-        'Sweden/20-08979/2020'  : "2020-04-06" # too divergent compared to date (seems to be day/month reversed)
+        'Sweden/20-08979/2020'  : "2020-04-06", # too divergent compared to date (seems to be day/month reversed)
+
+        'Spain/IB-IBV-99010753/2020'    : "2020-04-21", # temporarily excluded as early date doesn't match divergence - EU1
+        'Spain/IB-IBV-99010754/2020'    : "2020-04-22", # temporarily excluded as early date doesn't match divergence - EU1
+        'Spain/IB-IBV-99010756/2020'    : "2020-05-11", # temporarily excluded as early date doesn't match divergence - EU1
+        'Spain/IB-IBV-99010769/2020'    : "2020-06-18", # temporarily excluded as early date doesn't match divergence - EU2
+        'Spain/IB-IBV-99010761/2020'    : "2020-05-29" # temporarily excluded as early date doesn't match divergence - EU2
         #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
         #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
     }
+
 
     for key, value in bad_seqs.items():
         bad_seq = meta[meta['strain'].isin([key])]
@@ -315,7 +322,7 @@ for clus in clus_to_run:
             fh.write(f'\n\n## {clus_display}\n')
             fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{col}f_region=Europe)\n\n")
             if clus is "S501":
-                fh.write(f"Note the pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
+                fh.write(f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
                 fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
                           "refer to _all_ these mutations (Y, S, T).\n")
             fh.write(mrk_tbl)
@@ -326,7 +333,7 @@ for clus in clus_to_run:
             fh.write(f'\n\n## {clus_display}\n')
             fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{col}f_region=Europe)\n\n")
             if clus is "S501":
-                fh.write(f"Note the pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
+                fh.write(f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
                 fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
                           "refer to _all_ these mutations (Y, S, T).\n")
             fh.write(mrk_tbl)
