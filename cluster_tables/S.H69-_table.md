@@ -1,7 +1,7 @@
 
 
-## S.69-
-[Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.69-?f_region=Europe)
+## S.H69-
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.H69-?f_region=Europe)
 
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
@@ -30,4 +30,4 @@
 | Czech Republic | 2020-09-14  |         79 | 2020-11-04 |
 | Netherlands    | 2020-10-08  |          9 | 2020-10-27 |
 
-![Overall trends S.69-](/overall_trends_figures/overall_trends_S.69-.png)
+![Overall trends S.H69-](/overall_trends_figures/overall_trends_S.H69-.png)
