@@ -10,13 +10,13 @@ Note that this mutation has multiple amino-acid mutants - these numbers refer to
 | China          | 2013-07-24  |          2 | 2019-06-25 |
 | Italy          | 2020-03-19  |          1 | 2020-03-19 |
 | Brazil         | 2020-04-07  |          1 | 2020-04-07 |
-| United Kingdom | 2020-04-14  |       2145 | 2020-12-07 |
+| United Kingdom | 2020-04-14  |       2156 | 2020-12-07 |
 | USA            | 2020-04-21  |         31 | 2020-11-30 |
 | Netherlands    | 2020-04-28  |          5 | 2020-06-01 |
-| Australia      | 2020-06-03  |         39 | 2020-12-16 |
+| Australia      | 2020-06-03  |         41 | 2020-12-16 |
 | Côte d'Ivoire  | 2020-07-15  |          4 | 2020-09-09 |
-| South Africa   | 2020-08-21  |        179 | 2020-11-25 |
-| Denmark        | 2020-10-26  |          8 | 2020-11-16 |
+| South Africa   | 2020-08-21  |        199 | 2020-11-25 |
+| Denmark        | 2020-10-26  |         17 | 2020-11-30 |
 | Canada         | 2020-11-24  |          1 | 2020-11-24 |
 
 ![Overall trends S.N501](/overall_trends_figures/overall_trends_S.N501.png)
