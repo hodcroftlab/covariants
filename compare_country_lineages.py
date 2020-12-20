@@ -36,6 +36,10 @@ for clus in clusters.keys():
         snps2 = clusters[clus]['snps2']
     else:
         snps2 = []
+    if 'gaps' in clusters[clus]:
+        gaps = clusters[clus]['gaps']
+    else:
+        gaps = []
 
     # get the sequences that we want - which are 'part of the cluster:
     wanted_seqs = []
@@ -43,10 +47,16 @@ for clus in clusters.keys():
     for index, row in diag.iterrows():
         strain = row['strain']
         snplist = row['all_snps']
-        if not pd.isna(snplist):
+        gaplist = row['gap_list']
+        if snps and not pd.isna(snplist):
             intsnp = [int(x) for x in snplist.split(',')]
             if all(x in intsnp for x in snps) or (all (x in intsnp for x in snps2) and len(snps2)!=0):
                 #if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
+                wanted_seqs.append(row['strain'])
+        #look for all locations in gap list
+        elif gaps and not pd.isna(gaplist):
+            intgap = [int(x) for x in gaplist.split(',')]
+            if all(x in intgap for x in gaps):
                 wanted_seqs.append(row['strain'])
 
     # If seq there and date bad - exclude!
@@ -71,7 +81,7 @@ for clus in clusters.keys():
         'Spain/IB-IBV-99010754/2020'    : "2020-04-22", # temporarily excluded as early date doesn't match divergence - EU1
         'Spain/IB-IBV-99010756/2020'    : "2020-05-11", # temporarily excluded as early date doesn't match divergence - EU1
         'Spain/IB-IBV-99010769/2020'    : "2020-06-18", # temporarily excluded as early date doesn't match divergence - EU2
-        'Spain/IB-IBV-99010761/2020'    : "2020-05-29" # temporarily excluded as early date doesn't match divergence - EU2
+        'Spain/IB-IBV-99010761/2020'    : "2020-05-29", # temporarily excluded as early date doesn't match divergence - EU2
 
         'Italy/LAZ-INMI-92/2020' : "2010-10-26", # year given as 2010
         'Italy/LAZ-INMI-93/2020' : "2010-10-26", # year given as 2010
@@ -208,6 +218,13 @@ all_num_seqs["has_20"] = has10
 print("Countries who have more than 20 in any cluster:", has10_countries, "\n")
 print(all_num_seqs)
 
+
+
+
+orig_clus_keys = copy.deepcopy(clus_keys)
+
+# DO NOT PLOT 69 AS IT OVERLAPS WITH 439 AND 501!!!!
+clus_keys = [x for x in clus_keys if x is not "S69"]
 
 ############## Plot
 
