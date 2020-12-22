@@ -76,17 +76,16 @@ for clus in clusters.keys():
         'Australia/QLD1278/2020'    : "2020-03-21", #seems to be wrong date - far too diverged
         'Australia/QLD1276/2020'    : "2020-03-21", # seems to be wrong date - far too diverged
         'Sweden/20-08979/2020'  : "2020-04-06", # too divergent compared to date (seems to be day/month reversed)
-
         'Spain/IB-IBV-99010753/2020'    : "2020-04-21", # temporarily excluded as early date doesn't match divergence - EU1
         'Spain/IB-IBV-99010754/2020'    : "2020-04-22", # temporarily excluded as early date doesn't match divergence - EU1
         'Spain/IB-IBV-99010756/2020'    : "2020-05-11", # temporarily excluded as early date doesn't match divergence - EU1
         'Spain/IB-IBV-99010769/2020'    : "2020-06-18", # temporarily excluded as early date doesn't match divergence - EU2
         'Spain/IB-IBV-99010761/2020'    : "2020-05-29", # temporarily excluded as early date doesn't match divergence - EU2
-
         'Italy/LAZ-INMI-92/2020' : "2010-10-26", # year given as 2010
         'Italy/LAZ-INMI-93/2020' : "2010-10-26", # year given as 2010
         'Italy/LAZ-INMI-94/2020' : "2010-10-27", # year given as 2010
         'Italy/LAZ-INMI-95/2020' : "2010-10-27" # year given as 2010
+        'England/LIVE-DCA612/2020' : "2020-03-07"  # far too diverged compared to sample date
 
         #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
         #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
