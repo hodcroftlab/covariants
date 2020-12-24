@@ -199,7 +199,9 @@ for clus in clus_to_run:
         'Italy/LAZ-INMI-93/2020' : "2010-10-26", # year given as 2010
         'Italy/LAZ-INMI-94/2020' : "2010-10-27", # year given as 2010
         'Italy/LAZ-INMI-95/2020' : "2010-10-27", # year given as 2010
-        'England/LIVE-DCA612/2020' : "2020-03-07"  # far too diverged compared to sample date
+        'England/LIVE-DCA612/2020' : "2020-03-07",  # far too diverged compared to sample date
+        'Netherlands/ZE-EMC-74/2020'    : "2020-06-11", # too diverged compared to date. Suspect is 6 Nov - date reversed
+        'Spain/RI-IBV-99010966/2009'    : "2009-09-30" # date typed wrong
 
         #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
         #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
