@@ -84,7 +84,7 @@ for clus in clusters.keys():
         'Italy/LAZ-INMI-92/2020' : "2010-10-26", # year given as 2010
         'Italy/LAZ-INMI-93/2020' : "2010-10-26", # year given as 2010
         'Italy/LAZ-INMI-94/2020' : "2010-10-27", # year given as 2010
-        'Italy/LAZ-INMI-95/2020' : "2010-10-27" # year given as 2010
+        'Italy/LAZ-INMI-95/2020' : "2010-10-27", # year given as 2010
         'England/LIVE-DCA612/2020' : "2020-03-07"  # far too diverged compared to sample date
 
         #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
