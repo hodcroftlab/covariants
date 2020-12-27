@@ -17,6 +17,7 @@ from helpers import *
 
 figure_path = "../cluster_new_scripts/figures/"
 overall_trends_figs_path = "../cluster_new_scripts/overall_trends_figures/"
+cluster_tables_path = "../cluster_new_scripts/cluster_tables/"
 
 grey_color = "#cccccc"
 fmt = "pdf"
@@ -301,7 +302,7 @@ fig.autofmt_xdate(rotation=30)
 plt.show()
 plt.tight_layout()
 
-with open("cluster_tables/"+f'EUClusters_data.json', 'w') as fh:
+with open(cluster_tables_path+f'EUClusters_data.json', 'w') as fh:
      json.dump(json_output, fh)
 
 plt.savefig(overall_trends_figs_path+f"EUClusters_compare.png")
