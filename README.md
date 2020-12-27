@@ -98,8 +98,8 @@ The mutation is listed in parentheses after the name.
   - Mutation is in the receptor binding domain (RDB), important to ACE2 binding and antibody recognition
   - About 2/3 of the sequences in the cluster have deletions at Spike amino-acid positions 69/70 ([Nextstrain build with deletions in cluster highlighted](https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_69&label=clade:S.N439K))
   - Has emerged twice independently in Europe, but was exclusive to Scotland in the first wave and went extinct: [Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1)
-  - May increase ACE2 binding: [Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1); see also [Bloom Lab ACE2 binding website](https://jbloomlab.github.io/
-  SARS-CoV-2-RBD_DMS/)
+  - May increase ACE2 binding: [Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1); see also [Bloom Lab ACE2 binding website](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS/)
+  - Confers resistance to one of the two antibodies in the Regeneron cocktail (REGN10987); see [Starr et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.30.405472v1.full) and [Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1).
   - May confer resistance to antibodies: C135 ([Weisblum et al. eLife](https://elifesciences.org/articles/61312), [Barnes et al. Nature](https://www.nature.com/articles/s41586-020-2852-1)); a panel of antibodies ([Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1))
 
 
@@ -121,7 +121,7 @@ The mutation is listed in parentheses after the name.
   - It is has also been seen previously in mink in the Netherlands ([example Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/netherlands?c=gt-S_453&f_country=Netherlands&f_host=Mink))
   - May be a mink-specific adaptation, increasing binding to mink ACE2: ([Rodrigues et al. PloS Comp Bio](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008449)); and appearing multiple times ([van Dorp et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.16.384743v1))
   - May also increase ACE2 binding in humans: [Bloom Lab ACE2 binding website](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS/)
-  - May confer resistance to an antibody in the Regeneron cocktail: REGN10933 ([Baum et al. Science](https://science.sciencemag.org/content/369/6506/1014/tab-pdf))
+  - Does confer resistance to an antibody in the Regeneron cocktail: REGN10933 ([Baum et al. Science](https://science.sciencemag.org/content/369/6506/1014/tab-pdf); [Starr et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.30.405472v1.full))
 
 ## S:S98F
 ![Figure of S:S98F](/other_figures/98.gif)
