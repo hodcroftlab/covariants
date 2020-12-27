@@ -151,8 +151,10 @@ The mutation is listed in parentheses after the name.
 - Defining mutations:
   - Nonsynonymous: `S:D80Y`; `N:S186Y` or `ORF14:P33T` (overlapping reading frames), `D377Y`; `ORF1a:T945I`, `T1567I`, `Q3346K`, `V3475F`, `M3862I`; `ORF1b:P255T`; `ORF7a: R80I`
   - Synonymous:  `G4960T`, `C6070T`, `C7303T`, `C7564T`, `C10279T`, `C10525T`, `C10582T`, `C27804T` <!--Full list: C3099T, G4960T, C4965T, C6070T, C7303T, C7564T, C10279T, C10301A, C10525T, C10582T, G10688T, G11851T, C14230A, C21800T, G27632T, C27804T, C28830A, G29402T -->
-- Of full list of 18 nucleotide mutations, 15 are mutations to `T` (possibly related to APOBEC-like editing within host, see [Simmonds, bioRxiv](https://www.biorxiv.org/content/10.1101/2020.05.01.072330v1))
-- At the opposite end of the loop 'tucked in' by the 69/70 deletion (hypothetical association). See [S:H69-](#sh69-) for more detail on the impact of 69/70 deletion.
+  - Of full list of 18 nucleotide mutations, 15 are mutations to `T` (possibly related to APOBEC-like editing within host, see [Simmonds, bioRxiv](https://www.biorxiv.org/content/10.1101/2020.05.01.072330v1))
+- `S:D80Y`
+  - At the opposite end of the loop 'tucked in' by the 69/70 deletion (hypothetical association). See [S:H69-](#sh69-) for more detail on the impact of 69/70 deletion.
+  - Found in at least 10 countries across Europe
 - Little else is known about this mutation. Please let me know if you have more information!
 
 ## S:N501
@@ -196,7 +198,8 @@ The mutation is listed in parentheses after the name.
 - Defining mutations:
   - Nonsynonymous: `S:A626S` (`G23438T`)
   - Synonymous: (none)
-- Found widely across Europe, in at least 15 countries
+- `S:A626S`
+  - Found widely across Europe, in at least 15 countries
 - Little else is known about this mutation. Please let me know if you have more information!
 
 
@@ -212,7 +215,8 @@ The mutation is listed in parentheses after the name.
 - Defining mutations:
   - Nonsynonymous: `S:V1122L` (`G24926T`)
   - Synonymous: (none)
-- Found primarily in Sweden and northern European countries, including Norway and Denmark
+- `S:V1122L`
+  - Found primarily in Sweden and northern European countries, including Norway and Denmark
 - Little else is known about this mutation. Please let me know if you have more information!
 
 ## S:H69-
@@ -227,8 +231,9 @@ Note this figure shows both the 69 & 70 deletion.</sub>
 
 - Defining mutations:
   - Nonsynonymous: `S:H69-` (nucleotides: `C21767-, A21768-, T21769-`)
-- This deletion has arisen at 3 times in 'recognised clusters': in the `S:Y453F`, `S:N439K`, and `S:N501Y` clusters ([Kemp et al. bioRxiv (21 Dec)](https://www.biorxiv.org/content/10.1101/2020.12.14.422555v3)); and has additionally arisen more times outside of recognised clusters.
-- May alter the recognition by antibodies, possibly impacting some antibody-therapy treatments, or immunity ([Kemp et al. medRxiv (19 Dec)](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v2)).
+- `S:H69-`
+  - This deletion has arisen at 3 times in 'recognised clusters': in the `S:Y453F`, `S:N439K`, and `S:N501Y` clusters ([Kemp et al. bioRxiv (21 Dec)](https://www.biorxiv.org/content/10.1101/2020.12.14.422555v3)); and has additionally arisen more times outside of recognised clusters.
+  - May alter the recognition by antibodies, possibly impacting some antibody-therapy treatments, or immunity ([Kemp et al. medRxiv (19 Dec)](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v2)).
   - In particular, the deletion is predicted structurally to 'tuck in' the Spike N-terminal domain ([Kemp et al. bioRxiv (21 Dec)](https://www.biorxiv.org/content/10.1101/2020.12.14.422555v3))
 
 **Important**: *Currently this build detects only the deletion at position 69 in spike, as due to alignment/calling differences, detecting the deletion at position 70 is less reliable.*
