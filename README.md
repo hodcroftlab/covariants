@@ -1,4 +1,4 @@
-# SARS-CoV-2 Mutations and Variants of Interest
+# CoVariants: SARS-CoV-2 Mutations and Variants of Interest
 
 Emma B. Hodcroft<sup>1</sup>
 
