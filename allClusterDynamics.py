@@ -34,6 +34,7 @@ import seaborn as sns
 from shutil import copyfile
 from collections import defaultdict
 from matplotlib.patches import Rectangle
+import json
 from colors_and_countries import *
 from travel_data import *
 from helpers import *
@@ -123,7 +124,7 @@ while reask:
         reask = False
 print("These clusters will be run: ", clus_to_run)
 
-
+json_output = {}
 
 
 for clus in clus_to_run:
@@ -215,6 +216,7 @@ for clus in clus_to_run:
         if not bad_seq.empty and bad_seq.date.values[0] == value and key in wanted_seqs:
             wanted_seqs.remove(key)
     
+    json_output[clus_display] = {}
 
     # get metadata for these sequences
     cluster_meta = meta[meta['strain'].isin(wanted_seqs)]
@@ -496,6 +498,11 @@ for clus in clus_to_run:
             # remove last data point if that point as less than frac sequences compared to the previous count
             week_as_date, cluster_count, total_count = trim_last_data_point(week_as_date, cluster_count, total_count, frac=0.1, keep_count=10)
 
+            json_output[clus_display][coun] = {}
+            json_output[clus_display][coun]["week"] = [datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date]
+            json_output[clus_display][coun]["total_sequences"] = [int(x) for x in total_count]
+            json_output[clus_display][coun]["cluster_sequences"] = [int(x) for x in cluster_count] 
+
             ax3.plot(week_as_date, cluster_count/total_count,
                     color=country_styles_custom[coun]['c'],
                     linestyle=country_styles_custom[coun]['ls'], label=coun)
@@ -535,3 +542,7 @@ for clus in clus_to_run:
             copyfile(trends_path, copypath)
         
         repeat = repeat-1
+
+        if print_files:
+            with open(tables_path+f'{clus_display}_data.json', 'w') as fh:
+                json.dump(json_output[clus_display], fh)
