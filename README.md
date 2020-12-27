@@ -6,7 +6,7 @@ Emma B. Hodcroft<sup>1</sup>
 
 <sub>Please cite and link back to this site if you use this resource - Thank you!</sub>
 
-These collection of Github pages is intended to provide an overview (not necessarily  complete) of SARS-CoV-2 mutations that are of interest.
+This repository is intended to provide an overview (not necessarily  complete) of SARS-CoV-2 mutations that are of interest.
 It should be noted that these mutations are primarily of interest due to spread in Europe: this is simply a reflection that the primary maintainer/author (Emma Hodcroft) works mostly with European data.
 <!-- I support and urge others to set up similar sites for non-European clusters/mutations - I will happily link them here if you get in touch. -->
 
@@ -17,13 +17,6 @@ I will make every effort to try to keep this repository up-to-date, but readers 
 **I welcome PR requests to this repository providing new links and information!**
 The more detail you can include in a pull request (PR) the faster I'll be able to review it.
 If possible, provide a PR that adds/edits the appropriate links/etc, and I can merge it faster - if you can't do that, making an [issue](https://github.com/emmahodcroft/cluster_scripts/issues) is fine, but I might be slower incorporating it.
-
-
-<!-- _*Where is the 69/70 deletion section?*_<br>
-This deletion has arisen at least 3 times independently: in the `S:Y453F`, `S:N439K`, and `S:N501Y` clusters.
-There's also a recent preprint which suggests it may alter the recognition by antibodies, possibly impacting some antibody-therapy treatments, or immunity ([Kemp et al. medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v1)).
-So, there's a lot of interest in this variant. <br>
-For boring, technical, code reasons I do not yet have a dedicated 69/70 deletion build, but I'm working on it! -->
 
 
 ## Mutations
