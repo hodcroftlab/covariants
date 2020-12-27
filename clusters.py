@@ -34,5 +34,6 @@ clusters = {"S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
             #"S1229": {'snps': [25248], 'cluster_data': [], 'build_name': "S.1229"}
             #"S1122": {'snps': [24925,9119], 'build_name': 'S.1122'} #mostly Swedish cluster
             #"S655": {'snps': [23524], 'cluster_data': [], "display_name": "S:H655Y", 'build_name': "S.H655Y"}
+            #"S263": {'snps': [22348], 'cluster_data': [], "build_name": "S.A263S", "display_name": "S:A263S"}
             }
 
