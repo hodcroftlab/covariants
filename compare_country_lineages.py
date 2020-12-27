@@ -9,6 +9,7 @@ from collections import defaultdict
 from matplotlib.patches import Rectangle
 import matplotlib.patches as mpatches
 import copy
+import json
 from colors_and_countries import *
 from travel_data import *
 from clusters import *
@@ -244,13 +245,15 @@ fig, axs = plt.subplots(nrows=rws, #len(countries_to_plot)+1,
     ncols=2, sharex=True,figsize=(9,11))
 
 week_as_dates = {}
-
+json_output = {}
 
 #for coun in [x for x in countries_to_plot]:
 for coun, ax in zip(countries_to_plot, fig.axes[1:]): #axs[1:]):
     i=0
     first_clus_count = []
     ptchs = []
+
+    json_output[coun] = {'week': {}, 'total_sequences': {} }
 
     for clus in clus_keys:#clusters.keys():
         cluster_data = clusters[clus]['cluster_data']
@@ -261,6 +264,7 @@ for coun, ax in zip(countries_to_plot, fig.axes[1:]): #axs[1:]):
 
         week_as_dates[coun] = week_as_date
 
+        json_output[coun][clusters[clus]['display_name']] = list(cluster_count)
 
         country_week[clus][coun] = cluster_count/total_count
 
@@ -283,6 +287,9 @@ for coun, ax in zip(countries_to_plot, fig.axes[1:]): #axs[1:]):
         #if i == 0:
         first_clus_count = cluster_count # unindented
         i+=1
+    json_output[coun]['week'] = [datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date]
+    json_output[coun]['total_sequences'] = [int(x) for x in total_count]
+
     ax.text(datetime.datetime(2020,6,1), 0.7, coun, fontsize=fs)
     ax.tick_params(labelsize=fs*0.8)
     #ax.set_ylabel('frequency')
@@ -293,6 +300,9 @@ fig.axes[0].axis('off')
 fig.autofmt_xdate(rotation=30)
 plt.show()
 plt.tight_layout()
+
+with open("cluster_tables/"+f'EUClusters_data.json', 'w') as fh:
+     json.dump(json_output, fh)
 
 plt.savefig(overall_trends_figs_path+f"EUClusters_compare.png")
 
