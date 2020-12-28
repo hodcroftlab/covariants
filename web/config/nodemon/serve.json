@@ -1,0 +1,17 @@
+{
+  "quiet": true,
+  "legacyWatch": false,
+  "delay": 0.1,
+  "watch": [
+    ".env",
+    "babel.config.js",
+    "infra/lambda-at-edge/modifyOutgoingHeaders.lambda.js",
+    "package.json",
+    "tools/server",
+    "tsconfig.json",
+    "yarn.lock"
+  ],
+  "ext": "js,jsx,ts,tsx,json,flow,css,scss,sass,styl,html,ejs,d,txt,yml,sh",
+  "ignore": ["**/*.test.*s", "**/*.test.*sx", "**/__tests__", ".build", "config/jest", "node_modules"],
+  "exec": "yarn prod:serve:nowatch || cd ."
+}

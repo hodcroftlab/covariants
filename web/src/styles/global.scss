@@ -1,0 +1,147 @@
+@use "sass:map";
+
+@import '~typeface-open-sans/index.css';
+@import './font-family-system';
+
+@import './variables';
+@import './bootstrap';
+@import './theme';
+
+@import './components/NavigationBar';
+
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  overflow-y: auto;
+}
+
+body {
+  background-color: $body-bg;
+}
+
+#__next {
+  height: 100%;
+}
+
+.main-container {
+  height: 100%;
+  background-color: $body-bg;
+  min-width: 320px;
+}
+
+.progress {
+  @include box-shadow(none);
+
+  .progress-bar {
+    font-size: 8px;
+    line-height: 8px;
+  }
+}
+
+code {
+  padding: 1px 5px;
+  margin: 2px 2px;
+  background-color: #eee;
+  //border: 1px solid #aaaa;
+  //border-radius: 2px;
+  font-size: 0.85rem;
+}
+
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.blockquote {
+  display: flex;
+  min-height: 80px;
+  padding: 5px 10px;
+  background-color: $blockquote-bg-color;
+
+  > p {
+    margin: auto;
+  }
+}
+
+// Always show spinbox arrows in Chrome
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+.icon-rotate-0 {
+  transition: transform linear 0.25s;
+}
+
+.icon-rotate-90 {
+  transition: transform linear 0.25s;
+  transform: rotate(-90deg);
+}
+
+.icon-rotate-180 {
+  transition: transform linear 0.25s;
+  transform: rotate(180deg);
+}
+
+.btn.disabled,
+.btn:disabled {
+  cursor: not-allowed;
+}
+
+.truncate-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hide-native-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.body-color {
+  color: $body-color;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
+.table-layout-fixed {
+  table-layout: fixed;
+}
+
+.fixed-bottom {
+  position: fixed;
+  bottom: 30px;
+  z-index: 100;
+}
+
+.btn-shadow {
+  box-shadow: 4px 4px 10px 1px #222;
+}
+
+.icon.fill-red {
+  fill: $red;
+}
+
+.icon.fill-green {
+  fill: $green;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

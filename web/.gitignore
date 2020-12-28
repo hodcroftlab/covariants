@@ -1,0 +1,11 @@
+*.log
+.DS_Store
+\.build
+\.cache
+\.ignore
+\.env
+\.idea
+\.reports
+\.vscode
+node_modules
+dist/

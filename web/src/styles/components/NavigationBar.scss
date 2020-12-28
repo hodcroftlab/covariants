@@ -1,0 +1,23 @@
+@import '../variables';
+
+.navbar {
+  box-shadow: none;
+  border: none;
+  margin: 0;
+  background-color: $body-bg;
+  height: 50px;
+}
+
+.navbar-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.navigation-bar-product-logo {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
