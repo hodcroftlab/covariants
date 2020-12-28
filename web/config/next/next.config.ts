@@ -30,7 +30,6 @@ import withFriendlyChunkNames from './withFriendlyChunkNames'
 import withResolve from './withResolve'
 
 const {
-  ASSET_PREFIX,
   // BABEL_ENV,
   // NODE_ENV,
   // ANALYZE,
@@ -64,9 +63,6 @@ const clientEnv = {
 
 console.info(`Client-side Environment:\n${JSON.stringify(clientEnv, null, 2)}`)
 
-const assetPrefix = `${ASSET_PREFIX}/`
-const basePath = ASSET_PREFIX
-
 let nextConfig: NextConfig = {
   distDir: `.build/${process.env.NODE_ENV}/tmp`,
   onDemandEntries: {
@@ -90,10 +86,6 @@ let nextConfig: NextConfig = {
   },
   env: clientEnv,
 }
-
-// if (basePath) {
-//   nextConfig = { ...nextConfig, assetPrefix, basePath }
-// }
 
 const withMDX = getWithMDX({
   extension: /\.mdx?$/,
