@@ -79,7 +79,7 @@ export interface CountryDistributionDatum {
   week: string
   total_sequences: number
   cluster_counts: {
-    [key: string]: number
+    [key: string]: number | undefined
   }
 }
 
@@ -90,7 +90,9 @@ export interface CountryDistributionPlotProps {
 
 export function CountryDistributionPlot({ cluster_names, distribution }: CountryDistributionPlotProps) {
   const data = distribution.map(({ week, total_sequences, cluster_counts }) => {
-    const total_cluster_sequences = Object.values(cluster_counts).reduce((result, count) => result + count, 0)
+    const total_cluster_sequences = Object.values(cluster_counts) // prettier-ignore
+      .reduce<number>((result, count = 0) => result + (count ?? 0), 0)
+
     const others = total_sequences - total_cluster_sequences
     const weekSec = DateTime.fromFormat(week, 'yyyy-MM-dd').toSeconds()
     return { week: weekSec, ...cluster_counts, others }
@@ -103,10 +105,18 @@ export function CountryDistributionPlot({ cluster_names, distribution }: Country
       <YAxis tickFormatter={toPercent} />
       <Tooltip content={renderTooltipContent} />
       {cluster_names.map((cluster, i) => (
-        <Area key={cluster} type="monotone" dataKey={cluster} stackId="1" stroke="none" fill={getClusterColor(i)} />
+        <Area
+          key={cluster}
+          type="monotone"
+          dataKey={cluster}
+          stackId="1"
+          stroke="none"
+          fill={getClusterColor(i)}
+          isAnimationActive={false}
+        />
       ))}
 
-      <Area type="monotone" dataKey="others" stackId="1" stroke="#fafafa" fill="#fafafa" />
+      <Area type="monotone" dataKey="others" stackId="1" stroke="#fafafa" fill="#fafafa" isAnimationActive={false} />
     </AreaChartStyled>
   )
 }
