@@ -282,6 +282,9 @@ for clus in clus_to_run:
             with open(noUK_clusterlist_output, 'w') as f:
                 for item in extra501_wanted_seqs:
                     f.write("%s\n" % item)
+            build_nam = clusters[clus]["build_name"]
+            copypath = noUK_clusterlist_output.replace(f"{build_nam}-noUK", "{}-noUK-{}".format(build_nam, datetime.date.today().strftime("%Y-%m-%d")))
+            copyfile(noUK_clusterlist_output, copypath)
             nouk_501_meta.to_csv(noUK_out_meta_file,sep="\t",index=False)
 
     # Just so we have the data, write out the metadata for these sequences
