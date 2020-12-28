@@ -94,6 +94,7 @@ if print_files:
         fh.write('\n')
         fh.write("# Overview of Clusters/Mutations in Europe\n"	
         "[Overview of proportion of clusters in selected countries](country_overview.md)\n\n"
+        "In the graphs below, countries are displayed in the chart if the country has at least 20 sequences present in the cluster.\n\n"
         "# Mutation Tables and Graphs\n"
         "- [20A.EU1](#20aeu1) _(S:A222V)_ \n"
         "- [20A.EU2](#20aeu2) _(S:S477N)_ \n"
