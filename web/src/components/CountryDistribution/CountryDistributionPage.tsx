@@ -4,13 +4,13 @@ import React, { useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
 import { Editable } from 'src/components/Common/Editable'
 
-import { DistributionDatum, DistributionPlot } from './DistributionPlot'
+import { CountryDistributionDatum, CountryDistributionPlot } from './CountryDistributionPlot'
 
 import euClusters from '../../../../cluster_tables/EUClusters_data.web.json'
 
 export interface CountryDistributionProps {
   country: string
-  distribution: DistributionDatum[]
+  distribution: CountryDistributionDatum[]
   cluster_names: string[]
 }
 
@@ -25,14 +25,14 @@ export function CountryDistribution({ country, distribution, cluster_names }: Co
 
       <Row noGutters>
         <Col>
-          <DistributionPlot distribution={distribution} cluster_names={cluster_names} />
+          <CountryDistributionPlot distribution={distribution} cluster_names={cluster_names} />
         </Col>
       </Row>
     </Col>
   )
 }
 
-export function DistributionPage() {
+export function CountryDistributionPage() {
   const countryDistributionComponents = useMemo(
     () =>
       euClusters.distributions.map(({ country, distribution }) => (

@@ -75,7 +75,7 @@ const dateFormatter = (date: number) => {
   return DateTime.fromSeconds(date).toISODate()
 }
 
-export interface DistributionDatum {
+export interface CountryDistributionDatum {
   week: string
   total_sequences: number
   cluster_counts: {
@@ -83,12 +83,12 @@ export interface DistributionDatum {
   }
 }
 
-export interface DistributionPlotProps {
+export interface CountryDistributionPlotProps {
   cluster_names: string[]
-  distribution: DistributionDatum[]
+  distribution: CountryDistributionDatum[]
 }
 
-export function DistributionPlot({ cluster_names, distribution }: DistributionPlotProps) {
+export function CountryDistributionPlot({ cluster_names, distribution }: CountryDistributionPlotProps) {
   const data = distribution.map(({ week, total_sequences, cluster_counts }) => {
     const total_cluster_sequences = Object.values(cluster_counts).reduce((result, count) => result + count, 0)
     const others = total_sequences - total_cluster_sequences
