@@ -96,6 +96,7 @@ __pycache__
 
 #folders
 compare_lineages/output_files/
+information_files/
 
 #figures with dates
 figures/overall_trends-2020*
@@ -119,4 +120,7 @@ tree_pie_plot_EBH.py
 #back up file
 manu_backup-2020-10-10.txt
 Swiss_intro_notes_old.md
+
+# work in progress
+plotCountrySequencing.py
 
