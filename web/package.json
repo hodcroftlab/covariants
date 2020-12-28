@@ -4,6 +4,7 @@
   "description": "SARS-CoV-2 Mutations of Interest",
   "license": "MIT",
   "scripts": {
+    "data": "cd .. && python3 scripts/convert_to_web_app_json.py",
     "clear": "node ./lib/clear.js",
     "dev": "nodemon --config config/nodemon/dev.json",
     "dev:start": "yarn install && yarn run monkey-patch && yarn dev:nowatch || cd .",
