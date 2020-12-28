@@ -2,6 +2,8 @@
 # Overview of Clusters/Mutations in Europe
 [Overview of proportion of clusters in selected countries](country_overview.md)
 
+In the graphs below, countries are displayed in the chart if the country has at least 20 sequences present in the cluster.
+
 # Mutation Tables and Graphs
 - [20A.EU1](#20aeu1) _(S:A222V)_ 
 - [20A.EU2](#20aeu2) _(S:S477N)_ 
