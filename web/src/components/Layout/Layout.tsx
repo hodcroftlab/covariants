@@ -3,7 +3,7 @@ import React, { PropsWithChildren, HTMLProps } from 'react'
 import styled from 'styled-components'
 
 import { NavigationBar } from './NavigationBar'
-import FooterContent from './Footer'
+// import FooterContent from './Footer'
 
 export const LayoutContainer = styled.div`
   max-width: 1200px;
@@ -25,9 +25,9 @@ const MainContent = styled.main`
   padding: 0 20px;
 `
 
-const Footer = styled.footer`
-  flex-shrink: 0;
-`
+// const Footer = styled.footer`
+//   flex-shrink: 0;
+// `
 
 export function Layout({ children }: PropsWithChildren<HTMLProps<HTMLDivElement>>) {
   return (
@@ -38,9 +38,9 @@ export function Layout({ children }: PropsWithChildren<HTMLProps<HTMLDivElement>
 
       <MainContent>{children}</MainContent>
 
-      {/*<Footer>*/}
-      {/*  <FooterContent />*/}
-      {/*</Footer>*/}
+      {/* <Footer> */}
+      {/*   <FooterContent /> */}
+      {/* </Footer> */}
     </LayoutContainer>
   )
 }

@@ -10,8 +10,6 @@ import DistributionIntro from '../../../content/DistributionIntro.md'
 
 import euClusters from 'src/../data/EUClusters_data.web.json'
 
-
-
 export interface CountryDistributionProps {
   country: string
   distribution: DistributionDatum[]
