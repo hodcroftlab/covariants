@@ -1,8 +1,8 @@
-/* eslint-disable camelcase */
+/* eslint-disable camelcase,sonarjs/no-identical-functions */
 import React, { useCallback, useMemo, useState } from 'react'
 
 import { pickBy } from 'lodash'
-import { Col, Input, Row } from 'reactstrap'
+import { Card, CardBody, Col, Container, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 import copy from 'fast-copy'
 
 import { Editable } from 'src/components/Common/Editable'
@@ -18,6 +18,24 @@ const COUNTRIES = perCountryData.distributions.map(({ country }) => country).sor
 const COUNTRIES_STATE = COUNTRIES.reduce((result, country) => {
   return { ...result, [country]: { enabled: true } }
 }, {})
+
+export interface ClusterState {
+  [key: string]: { enabled: boolean }
+}
+
+export interface CountryState {
+  [key: string]: { enabled: boolean }
+}
+
+export interface CountryDistribution {
+  country: string
+  distribution: CountryDistributionDatum[]
+}
+
+export interface CountryDistributionJson {
+  cluster_names: string[]
+  distributions: CountryDistribution[]
+}
 
 export interface CountryDistributionProps {
   country: string
@@ -43,22 +61,19 @@ export function CountryDistribution({ country, distribution, cluster_names }: Co
   )
 }
 
-interface ClusterState {
-  [key: string]: { enabled: boolean }
-}
-
-export function CountryDistributionPage() {
-  const [clusters, setClusters] = useState<ClusterState>(CLUSTERS_STATE)
-  const [countries, setCountries] = useState<ClusterState>(COUNTRIES_STATE)
-
+export function filterCountries(countries: CountryState, countryDistrubutions: CountryDistribution[]) {
   const enabledCountries = Object.entries(countries)
     .filter(([_0, { enabled }]) => enabled)
     .map(([country]) => country)
 
-  const withCountriesFiltered = perCountryData.distributions.filter(({ country }) => {
+  const withCountriesFiltered = countryDistrubutions.filter(({ country }) => {
     return enabledCountries.some((candidate) => candidate === country)
   })
 
+  return { enabledCountries, withCountriesFiltered }
+}
+
+export function filterClusters(clusters: ClusterState, withCountriesFiltered: CountryDistribution[]) {
   const enabledClusters = Object.entries(clusters)
     .filter(([_0, { enabled }]) => enabled)
     .map(([cluster]) => cluster)
@@ -73,6 +88,20 @@ export function CountryDistributionPage() {
     })
     return { country, distribution: distributionFiltered }
   })
+
+  return { enabledClusters, withClustersFiltered }
+}
+
+const countryDistrubutions: CountryDistribution[] = perCountryData.distributions
+
+export function CountryDistributionPage() {
+  const [countries, setCountries] = useState<CountryState>(COUNTRIES_STATE)
+  const [clusters, setClusters] = useState<ClusterState>(CLUSTERS_STATE)
+
+  const { withCountriesFiltered } = useMemo(() => filterCountries(countries, countryDistrubutions), [countries])
+  const { enabledClusters, withClustersFiltered } =
+    /* prettier-ignore */
+    useMemo(() => filterClusters(clusters, withCountriesFiltered), [clusters, withCountriesFiltered])
 
   const countryDistributionComponents = useMemo(
     () =>
@@ -106,44 +135,86 @@ export function CountryDistributionPage() {
   )
 
   return (
-    <div>
-      <Editable githubUrl={'TODO'} text={'Add or edit this data'}>
-        <Row noGutters>
-          <Col>
-            {Object.entries(clusters).map(([cluster, { enabled }]) => (
-              <div key={cluster}>
-                <label htmlFor={CSS.escape(cluster)}>
-                  <Input
-                    id={CSS.escape(cluster)}
-                    type="checkbox"
-                    checked={enabled}
-                    onChange={handleClusterCheckedChange(cluster)}
-                  />
-                  {cluster}
-                </label>
-              </div>
-            ))}
-          </Col>
+    <Container fluid>
+      <Row noGutters>
+        <Col>
+          <Editable githubUrl={'TODO'} text={'Add or edit this data'}>
+            <Row noGutters>
+              <Col md={4}>
+                <Card>
+                  <CardBody>
+                    <Form>
+                      {Object.entries(clusters).map(([cluster, { enabled }]) => (
+                        <FormGroup key={cluster} check>
+                          <Label htmlFor={CSS.escape(cluster)} check>
+                            <Input
+                              id={CSS.escape(cluster)}
+                              type="checkbox"
+                              checked={enabled}
+                              onChange={handleClusterCheckedChange(cluster)}
+                            />
+                            {cluster}
+                          </Label>
+                        </FormGroup>
+                      ))}
+                    </Form>
+                  </CardBody>
+                </Card>
+              </Col>
 
-          <Col>
-            {Object.entries(countries).map(([country, { enabled }]) => (
-              <div key={country}>
-                <label htmlFor={CSS.escape(country)}>
-                  <Input
-                    id={CSS.escape(country)}
-                    type="checkbox"
-                    checked={enabled}
-                    onChange={handleCountryCheckedChange(country)}
-                  />
-                  {country}
-                </label>
-              </div>
-            ))}
-          </Col>
-        </Row>
+              <Col md={8}>
+                <Card>
+                  <CardBody>
+                    <Row noGutters>
+                      <Col>
+                        <Form>
+                          {Object.entries(countries)
+                            .slice(0, COUNTRIES.length / 2)
+                            .map(([country, { enabled }]) => (
+                              <FormGroup key={country} check>
+                                <Label htmlFor={CSS.escape(country)} check>
+                                  <Input
+                                    id={CSS.escape(country)}
+                                    type="checkbox"
+                                    checked={enabled}
+                                    onChange={handleCountryCheckedChange(country)}
+                                  />
+                                  {country}
+                                </Label>
+                              </FormGroup>
+                            ))}
+                        </Form>
+                      </Col>
 
-        <Row noGutters>{countryDistributionComponents}</Row>
-      </Editable>
-    </div>
+                      <Col>
+                        <Form>
+                          {Object.entries(countries)
+                            .slice(COUNTRIES.length / 2)
+                            .map(([country, { enabled }]) => (
+                              <FormGroup key={country} check>
+                                <Label htmlFor={CSS.escape(country)} check>
+                                  <Input
+                                    id={CSS.escape(country)}
+                                    type="checkbox"
+                                    checked={enabled}
+                                    onChange={handleCountryCheckedChange(country)}
+                                  />
+                                  {country}
+                                </Label>
+                              </FormGroup>
+                            ))}
+                        </Form>
+                      </Col>
+                    </Row>
+                  </CardBody>
+                </Card>
+              </Col>
+            </Row>
+
+            <Row noGutters>{countryDistributionComponents}</Row>
+          </Editable>
+        </Col>
+      </Row>
+    </Container>
   )
 }
