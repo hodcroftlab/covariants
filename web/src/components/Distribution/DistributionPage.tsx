@@ -6,9 +6,7 @@ import { Editable } from 'src/components/Common/Editable'
 
 import { DistributionDatum, DistributionPlot } from './DistributionPlot'
 
-import DistributionIntro from '../../../content/DistributionIntro.md'
-
-import euClusters from 'src/../data/EUClusters_data.web.json'
+import euClusters from '../../../../cluster_tables/EUClusters_data.web.json'
 
 export interface CountryDistributionProps {
   country: string
@@ -48,20 +46,8 @@ export function DistributionPage() {
     [euClusters],
   )
 
-  // const d = euClusters.distributions[0]
-  //
-  // console.log({ d })
-  //
-  // const countryDistributionComponents = [
-  //   <CountryDistribution key={d.country} country={d.country} distribution={d.distribution}  />,
-  // ]
-
   return (
     <div>
-      <Editable githubUrl={'TODO'}>
-        <DistributionIntro />
-      </Editable>
-
       <Editable githubUrl={'TODO'} text={'Add or edit this data'}>
         <div className="border-secondary">{'TODO: add checkboxes here to toggle countries on and off'}</div>
         <div className="border-secondary">{'TODO: add checkboxes here to toggle clusters on and off'}</div>

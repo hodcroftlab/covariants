@@ -13,7 +13,7 @@ It should be noted that these mutations are primarily of interest due to spread 
 The code used to generate these tables, graphs, and the sequences related to that mutation can be found in this repository.
 
 **The SARS-CoV-2 pandemic & research surrounding it is ongoing.**
-I will make every effort to try to keep this repository up-to-date, but readers should take care to double-check that the information is the latest available. <br>
+I will make every effort to try to keep this repository up-to-date, but readers should take care to double-check that the information is the latest available. <br/>
 **I welcome PR requests to this repository providing new links and information!**
 The more detail you can include in a pull request (PR) the faster I'll be able to review it.
 If possible, provide a PR that adds/edits the appropriate links/etc, and I can merge it faster - if you can't do that, making an [issue](https://github.com/emmahodcroft/cluster_scripts/issues) is fine, but I might be slower incorporating it.
@@ -26,8 +26,8 @@ If possible, provide a PR that adds/edits the appropriate links/etc, and I can m
 [Overview of all mutation country plots](country_overview.md)
 
 ### Index
-Clusters/mutations are listed below by the location of a mutation in the spike protein (`S:`) - the letter after `:` indicates the original amino-acid, the number the position in the spike protein, and the last letter, the 'new' amino-acid.<br>
-As `S:N501` has multiple amino-acid mutations, there is no second letter.<br>
+Clusters/mutations are listed below by the location of a mutation in the spike protein (`S:`) - the letter after `:` indicates the original amino-acid, the number the position in the spike protein, and the last letter, the 'new' amino-acid.<br/>
+As `S:N501` has multiple amino-acid mutations, there is no second letter.<br/>
 20A.EU1 and 20A.EU2, because of their prominence, have been given 'subclade' names.
 The mutation is listed in parentheses after the name.
 
@@ -217,7 +217,7 @@ The mutation is listed in parentheses after the name.
 ## S:H69-
 ![Figure of S:H69-](/other_figures/6970del.gif)
 
-<sub>Figure made via [GISAID](https://gisaid.org)<br>
+<sub>Figure made via [GISAID](https://gisaid.org)<br/>
 Note this figure shows both the 69 & 70 deletion.</sub>
 
 [Dedicated S:H69- Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.H69-?c=gt-S_69,501,453)

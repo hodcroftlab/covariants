@@ -27,6 +27,7 @@ import withImages from './withImages'
 import withIgnore from './withIgnore'
 import withoutMinification from './withoutMinification'
 import withFriendlyChunkNames from './withFriendlyChunkNames'
+import withResolve from './withResolve'
 
 const {
   ASSET_PREFIX,
@@ -124,7 +125,7 @@ const withTypeChecking = getWithTypeChecking({
 
 const transpilationListDev = [
   // prettier-ignore
-  'd3-scale',
+  "d3-scale",
 ]
 
 const transpilationListProd = uniq([
@@ -171,8 +172,9 @@ const config = withPlugins(
     // PRODUCTION && [withStaticComprression],
     PROFILE && [withoutMinification],
     [withFriendlyChunkNames],
+    [withResolve],
   ].filter(Boolean),
   nextConfig,
 )
 
-export default config
+export default config;
