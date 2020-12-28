@@ -6,31 +6,7 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
 import { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 import { DateTime } from 'luxon'
 
-const clusterColors = [
-  '#a6cee3',
-  '#1f78b4',
-  '#ffff99',
-  '#33a02c',
-  '#fb9a99',
-  '#e31a1c',
-  '#fdbf6f',
-  '#ff7f00',
-  '#cab2d6',
-  '#6a3d9a',
-  '#b2df8a',
-  '#b15928',
-  '#000000',
-  '#9900cc',
-  '#ffcc00',
-  '#a6a6a6',
-  '#0099ff',
-  '#d9d9d9',
-  '#990000',
-]
-
-function getClusterColor(i: number) {
-  return clusterColors[i % clusterColors.length]
-}
+import { getClusterColor } from 'src/io/getClusterColors'
 
 const toPercent = (decimal: number, fixed = 0) => `${(decimal * 100).toFixed(fixed)}%`
 
@@ -100,7 +76,6 @@ export function CountryDistributionPlot({ cluster_names, distribution }: Country
 
   return (
     <AreaChartStyled width={500} height={300} data={data} stackOffset="expand">
-      <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="week" scale="time" tickFormatter={dateFormatter} />
       <YAxis tickFormatter={toPercent} />
       <Tooltip content={renderTooltipContent} />
@@ -111,12 +86,21 @@ export function CountryDistributionPlot({ cluster_names, distribution }: Country
           dataKey={cluster}
           stackId="1"
           stroke="none"
-          fill={getClusterColor(i)}
+          fill={getClusterColor(cluster)}
           isAnimationActive={false}
         />
       ))}
 
-      <Area type="monotone" dataKey="others" stackId="1" stroke="#fafafa" fill="#fafafa" isAnimationActive={false} />
+      <Area
+        type="monotone"
+        dataKey="others"
+        stackId="1"
+        stroke="transparent"
+        fill="transparent"
+        isAnimationActive={false}
+      />
+
+      <CartesianGrid strokeDasharray="3 5" stroke="#2225" />
     </AreaChartStyled>
   )
 }

@@ -8,6 +8,9 @@ Converts cluster data to a format suitable for consumption by the web app
 import json
 import os
 
+from clusters import clusters
+from colors_and_countries import country_styles
+
 cluster_tables_path = "cluster_tables"
 output_path = "web/data"
 
@@ -103,6 +106,9 @@ def convert_per_cluster_data(cluster_names):
 
 
 if __name__ == '__main__':
+    # NOTE: we exclude DanishCluster
+    clusters.pop("DanishCluster", None)
+
     per_country_data_output = convert_per_country_data()
 
     os.makedirs(output_path, exist_ok=True)
@@ -114,3 +120,10 @@ if __name__ == '__main__':
 
     with open(os.path.join(output_path, "perClusterData.json"), "w") as fh:
         json.dump(per_cluster_data_output, fh, indent=2, sort_keys=True)
+
+    cluster_colors = {v['display_name']: v['col'] for k, v in clusters.items()}
+    with open(os.path.join(output_path, "clusterColors.json"), "w") as fh:
+        json.dump(cluster_colors, fh, indent=2, sort_keys=True)
+
+    with open(os.path.join(output_path, "countryStyles.json"), "w") as fh:
+        json.dump(country_styles, fh, indent=2, sort_keys=True)

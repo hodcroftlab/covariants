@@ -2,12 +2,16 @@
 import React, { useCallback, useMemo, useState } from 'react'
 
 import { pickBy } from 'lodash'
-import { Card, CardBody, Col, Container, Form, FormGroup, Input, Label, Row } from 'reactstrap'
+import { Card, CardBody, Col, Container, Form, FormGroup, FormText, Input, Label, Row } from 'reactstrap'
 import copy from 'fast-copy'
 
+import { getClusterColor } from 'src/io/getClusterColors'
 import { Editable } from 'src/components/Common/Editable'
+import { ColoredBox } from 'src/components/Common/ColoredBox'
 import perCountryData from 'src/../data/perCountryData.json'
+import { getCountryColor } from 'src/io/getCountryColor'
 import { CountryDistributionDatum, CountryDistributionPlot } from './CountryDistributionPlot'
+import { ColoredCircle } from '../Common/ColoredCircle'
 
 const CLUSTERS = copy(perCountryData.cluster_names).sort()
 const CLUSTERS_STATE = CLUSTERS.reduce((result, cluster) => {
@@ -48,7 +52,10 @@ export function CountryDistribution({ country, distribution, cluster_names }: Co
     <Col>
       <Row noGutters>
         <Col className="d-flex flex-sm-column">
-          <h3 className="mx-auto">{country}</h3>
+          <h3 className="mx-auto">
+            <ColoredCircle $color={getCountryColor(country)} $size={20} />
+            <span>{country}</span>
+          </h3>
         </Col>
       </Row>
 
@@ -153,7 +160,8 @@ export function CountryDistributionPage() {
                               checked={enabled}
                               onChange={handleClusterCheckedChange(cluster)}
                             />
-                            {cluster}
+                            <ColoredBox $color={getClusterColor(cluster)} $size={14} $aspect={16 / 9} />
+                            <span>{cluster}</span>
                           </Label>
                         </FormGroup>
                       ))}
@@ -179,7 +187,8 @@ export function CountryDistributionPage() {
                                     checked={enabled}
                                     onChange={handleCountryCheckedChange(country)}
                                   />
-                                  {country}
+                                  <ColoredCircle $color={getCountryColor(country)} $size={14} />
+                                  <span>{country}</span>
                                 </Label>
                               </FormGroup>
                             ))}
@@ -199,7 +208,8 @@ export function CountryDistributionPage() {
                                     checked={enabled}
                                     onChange={handleCountryCheckedChange(country)}
                                   />
-                                  {country}
+                                  <ColoredCircle $color={getCountryColor(country)} $size={14} />
+                                  <span>{country}</span>
                                 </Label>
                               </FormGroup>
                             ))}
