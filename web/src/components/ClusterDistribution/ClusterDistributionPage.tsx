@@ -5,6 +5,7 @@ import { Col, Row } from 'reactstrap'
 import { Editable } from 'src/components/Common/Editable'
 
 import perClusterData from 'src/../data/perClusterData.json'
+import { Layout } from 'src/components/Layout/Layout'
 
 import { ClusterDistributionDatum, ClusterDistributionPlot } from './ClusterDistributionPlot'
 
@@ -47,13 +48,13 @@ export function ClusterDistributionPage() {
   )
 
   return (
-    <div>
+    <Layout wide>
       <Editable githubUrl={'TODO'} text={'Add or edit this data'}>
         <div className="border-secondary">{'TODO: add checkboxes here to toggle countries on and off'}</div>
         <div className="border-secondary">{'TODO: add checkboxes here to toggle clusters on and off'}</div>
 
         <Row noGutters>{countryDistributionComponents}</Row>
       </Editable>
-    </div>
+    </Layout>
   )
 }

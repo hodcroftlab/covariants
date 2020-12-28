@@ -44,9 +44,7 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
         <ThemeProvider theme={theme}>
           <MDXProvider components={mdxComponents}>
             <SEO />
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
+            <Component {...pageProps} />
           </MDXProvider>
         </ThemeProvider>
       </ConnectedRouter>

@@ -1,19 +1,10 @@
-import React, { PropsWithChildren, HTMLProps } from 'react'
+import React, { PropsWithChildren } from 'react'
+import { Container, Row, Col } from 'reactstrap'
 
 import styled from 'styled-components'
 
 import { NavigationBar } from './NavigationBar'
 // import FooterContent from './Footer'
-
-export const LayoutContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-`
 
 const Header = styled.header`
   flex-shrink: 0;
@@ -29,18 +20,26 @@ const MainContent = styled.main`
 //   flex-shrink: 0;
 // `
 
-export function Layout({ children }: PropsWithChildren<HTMLProps<HTMLDivElement>>) {
+export interface LayoutProps {
+  wide?: boolean
+}
+
+export function Layout({ children, wide = false }: PropsWithChildren<LayoutProps>) {
   return (
-    <LayoutContainer>
-      <Header>
-        <NavigationBar />
-      </Header>
+    <Container fluid={wide}>
+      <Row noGutters>
+        <Col>
+          <Header>
+            <NavigationBar />
+          </Header>
 
-      <MainContent>{children}</MainContent>
+          <MainContent>{children}</MainContent>
 
-      {/* <Footer> */}
-      {/*   <FooterContent /> */}
-      {/* </Footer> */}
-    </LayoutContainer>
+          {/* <Footer> */}
+          {/*   <FooterContent /> */}
+          {/* </Footer> */}
+        </Col>
+      </Row>
+    </Container>
   )
 }

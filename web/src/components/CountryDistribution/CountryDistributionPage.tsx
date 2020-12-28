@@ -4,6 +4,7 @@ import React, { useCallback, useMemo, useState } from 'react'
 import { pickBy } from 'lodash'
 import { Card, CardBody, Col, Container, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 import copy from 'fast-copy'
+import { Layout } from 'src/components/Layout/Layout'
 
 import { getClusterColor } from 'src/io/getClusterColors'
 import { Editable } from 'src/components/Common/Editable'
@@ -150,89 +151,91 @@ export function CountryDistributionPage() {
   )
 
   return (
-    <Container fluid>
+    <Layout wide>
       <Row noGutters>
-        <Col>
+        <Col lg={4}>
+          <Row noGutters>
+            <Col xs={12}>
+              <Card>
+                <CardBody>
+                  <Form>
+                    {Object.entries(clusters).map(([cluster, { enabled }]) => (
+                      <FormGroup key={cluster} check>
+                        <Label htmlFor={CSS.escape(cluster)} check>
+                          <Input
+                            id={CSS.escape(cluster)}
+                            type="checkbox"
+                            checked={enabled}
+                            onChange={handleClusterCheckedChange(cluster)}
+                          />
+                          <ColoredBox $color={getClusterColor(cluster)} $size={14} $aspect={16 / 9} />
+                          <span>{cluster}</span>
+                        </Label>
+                      </FormGroup>
+                    ))}
+                  </Form>
+                </CardBody>
+              </Card>
+            </Col>
+
+            <Col xs={12}>
+              <Card>
+                <CardBody>
+                  <Row noGutters>
+                    <Col xl={6}>
+                      <Form>
+                        {Object.entries(countries)
+                          .slice(0, COUNTRIES.length / 2)
+                          .map(([country, { enabled }]) => (
+                            <FormGroup key={country} check>
+                              <Label htmlFor={CSS.escape(country)} check>
+                                <Input
+                                  id={CSS.escape(country)}
+                                  type="checkbox"
+                                  checked={enabled}
+                                  onChange={handleCountryCheckedChange(country)}
+                                />
+                                <ColoredCircle $color={getCountryColor(country)} $size={14} />
+                                <span>{country}</span>
+                              </Label>
+                            </FormGroup>
+                          ))}
+                      </Form>
+                    </Col>
+
+                    <Col xl={6}>
+                      <Form>
+                        {Object.entries(countries)
+                          .slice(COUNTRIES.length / 2)
+                          .map(([country, { enabled }]) => (
+                            <FormGroup key={country} check>
+                              <Label htmlFor={CSS.escape(country)} check>
+                                <Input
+                                  id={CSS.escape(country)}
+                                  type="checkbox"
+                                  checked={enabled}
+                                  onChange={handleCountryCheckedChange(country)}
+                                />
+                                <ColoredCircle $color={getCountryColor(country)} $size={14} />
+                                <span>{country}</span>
+                              </Label>
+                            </FormGroup>
+                          ))}
+                      </Form>
+                    </Col>
+                  </Row>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        </Col>
+
+        <Col md={9}>
           <Editable githubUrl={'TODO'} text={'Add or edit this data'}>
-            <Row noGutters>
-              <Col md={4}>
-                <Card>
-                  <CardBody>
-                    <Form>
-                      {Object.entries(clusters).map(([cluster, { enabled }]) => (
-                        <FormGroup key={cluster} check>
-                          <Label htmlFor={CSS.escape(cluster)} check>
-                            <Input
-                              id={CSS.escape(cluster)}
-                              type="checkbox"
-                              checked={enabled}
-                              onChange={handleClusterCheckedChange(cluster)}
-                            />
-                            <ColoredBox $color={getClusterColor(cluster)} $size={14} $aspect={16 / 9} />
-                            <span>{cluster}</span>
-                          </Label>
-                        </FormGroup>
-                      ))}
-                    </Form>
-                  </CardBody>
-                </Card>
-              </Col>
-
-              <Col md={8}>
-                <Card>
-                  <CardBody>
-                    <Row noGutters>
-                      <Col>
-                        <Form>
-                          {Object.entries(countries)
-                            .slice(0, COUNTRIES.length / 2)
-                            .map(([country, { enabled }]) => (
-                              <FormGroup key={country} check>
-                                <Label htmlFor={CSS.escape(country)} check>
-                                  <Input
-                                    id={CSS.escape(country)}
-                                    type="checkbox"
-                                    checked={enabled}
-                                    onChange={handleCountryCheckedChange(country)}
-                                  />
-                                  <ColoredCircle $color={getCountryColor(country)} $size={14} />
-                                  <span>{country}</span>
-                                </Label>
-                              </FormGroup>
-                            ))}
-                        </Form>
-                      </Col>
-
-                      <Col>
-                        <Form>
-                          {Object.entries(countries)
-                            .slice(COUNTRIES.length / 2)
-                            .map(([country, { enabled }]) => (
-                              <FormGroup key={country} check>
-                                <Label htmlFor={CSS.escape(country)} check>
-                                  <Input
-                                    id={CSS.escape(country)}
-                                    type="checkbox"
-                                    checked={enabled}
-                                    onChange={handleCountryCheckedChange(country)}
-                                  />
-                                  <ColoredCircle $color={getCountryColor(country)} $size={14} />
-                                  <span>{country}</span>
-                                </Label>
-                              </FormGroup>
-                            ))}
-                        </Form>
-                      </Col>
-                    </Row>
-                  </CardBody>
-                </Card>
-              </Col>
-            </Row>
-
             <Row noGutters>{countryDistributionComponents}</Row>
           </Editable>
         </Col>
       </Row>
-    </Container>
+    </Layout>
   )
 }
