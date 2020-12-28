@@ -1,1 +1,1 @@
-export { default } from '../../content/Faq.md'
+export { FaqPage as default } from 'src/components/Faq/FaqPage'
