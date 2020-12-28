@@ -268,6 +268,21 @@ for clus in clus_to_run:
 #    cluster_meta = meta[meta['strain'].isin(wanted_seqs)]
 #    observed_countries = [x for x in cluster_meta['country'].unique()]
 
+    # Make a version of N501 which does not have as much UK sequences for increased viewability
+    if clus == "S501":
+        nouk_501_meta = cluster_meta[cluster_meta['country'].apply(lambda x: x != "United Kingdom")]
+        #re-set wanted_seqs
+        extra501_wanted_seqs = list(nouk_501_meta['strain']) 
+
+        noUK_clusterlist_output = cluster_path+f'/clusters/cluster_{clusters[clus]["build_name"]}-noUK.txt'
+        noUK_out_meta_file = cluster_path+f'/cluster_info/cluster_{clusters[clus]["build_name"]}-noUK_meta.tsv'
+
+        if print_files:
+            with open(noUK_clusterlist_output, 'w') as f:
+                for item in extra501_wanted_seqs:
+                    f.write("%s\n" % item)
+            nouk_501_meta.to_csv(noUK_out_meta_file,sep="\t",index=False)
+
     # Just so we have the data, write out the metadata for these sequences
     if print_files:
         cluster_meta.to_csv(out_meta_file,sep="\t",index=False)
