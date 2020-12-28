@@ -2,7 +2,7 @@
 import React, { useCallback, useMemo, useState } from 'react'
 
 import { pickBy } from 'lodash'
-import { Card, CardBody, Col, Container, Form, FormGroup, FormText, Input, Label, Row } from 'reactstrap'
+import { Card, CardBody, Col, Container, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 import copy from 'fast-copy'
 
 import { getClusterColor } from 'src/io/getClusterColors'
