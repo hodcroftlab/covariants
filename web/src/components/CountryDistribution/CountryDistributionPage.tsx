@@ -49,22 +49,30 @@ export interface CountryDistributionProps {
 
 export function CountryDistribution({ country, distribution, cluster_names }: CountryDistributionProps) {
   return (
-    <Col>
-      <Row noGutters>
-        <Col className="d-flex flex-sm-column">
-          <h3 className="mx-auto">
-            <ColoredCircle $color={getCountryColor(country)} $size={20} />
-            <span>{country}</span>
-          </h3>
-        </Col>
-      </Row>
+    <Row noGutters>
+      <Col>
+        <Card>
+          <CardBody>
+            <Col>
+              <Row noGutters>
+                <Col className="d-flex flex-sm-column">
+                  <h3 className="mx-auto">
+                    <ColoredCircle $color={getCountryColor(country)} $size={20} />
+                    <span>{country}</span>
+                  </h3>
+                </Col>
+              </Row>
 
-      <Row noGutters>
-        <Col>
-          <CountryDistributionPlot distribution={distribution} cluster_names={cluster_names} />
-        </Col>
-      </Row>
-    </Col>
+              <Row noGutters>
+                <Col>
+                  <CountryDistributionPlot distribution={distribution} cluster_names={cluster_names} />
+                </Col>
+              </Row>
+            </Col>
+          </CardBody>
+        </Card>
+      </Col>
+    </Row>
   )
 }
 

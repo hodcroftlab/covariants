@@ -8,12 +8,7 @@ import { DateTime } from 'luxon'
 
 import { getClusterColor } from 'src/io/getClusterColors'
 
-const toPercent = (decimal: number, fixed = 0) => `${(decimal * 100).toFixed(fixed)}%`
-
-const getPercent = (value: number, total: number) => {
-  const ratio = total > 0 ? value / total : 0
-  return toPercent(ratio, 2)
-}
+const yAxisFormatter = (value: number) => value.toFixed(2)
 
 export interface TooltipPayload {
   payload: { name: string; value: number; color: string }[]
@@ -21,21 +16,13 @@ export interface TooltipPayload {
 }
 
 export function renderTooltipContent({ payload, label }: DefaultTooltipContentProps<number, string>) {
-  const total = payload?.reduce((result, { value }) => result + (value ?? 0), 0) ?? 0
-
-  let labelString = ''
-  if (typeof label === 'string') {
-    labelString = label
-  }
-
   return (
     <div className="bg-white">
-      <p className="total">{`${labelString} (Total: ${total})`}</p>
       <ul className="list">
         {payload?.map(({ color, name, value }, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <li key={`item-${index}`} style={{ color }}>
-            {`${name ?? ''}: ${value ?? 0}(${getPercent(value ?? 0, total)})`}
+            {`${name ?? ''}: ${value ?? 0}`}
           </li>
         ))}
       </ul>
@@ -75,9 +62,15 @@ export function CountryDistributionPlot({ cluster_names, distribution }: Country
   })
 
   return (
-    <AreaChartStyled width={500} height={300} data={data} stackOffset="expand">
-      <XAxis dataKey="week" scale="time" tickFormatter={dateFormatter} />
-      <YAxis tickFormatter={toPercent} />
+    <AreaChartStyled
+      width={460}
+      height={300}
+      margin={{ left: 0, top: 15, bottom: 0, right: 30 }}
+      data={data}
+      stackOffset="expand"
+    >
+      <XAxis dataKey="week" tickFormatter={dateFormatter} allowDataOverflow />
+      <YAxis tickFormatter={yAxisFormatter} domain={[0, 1]} allowDataOverflow />
       <Tooltip content={renderTooltipContent} />
       {cluster_names.map((cluster, i) => (
         <Area
@@ -100,7 +93,7 @@ export function CountryDistributionPlot({ cluster_names, distribution }: Country
         isAnimationActive={false}
       />
 
-      <CartesianGrid strokeDasharray="3 5" stroke="#2225" />
+      <CartesianGrid stroke="#2222" />
     </AreaChartStyled>
   )
 }
