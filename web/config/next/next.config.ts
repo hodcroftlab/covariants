@@ -177,4 +177,4 @@ const config = withPlugins(
   nextConfig,
 )
 
-export default config;
+export default config
