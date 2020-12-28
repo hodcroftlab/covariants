@@ -16,6 +16,7 @@ import { ReactComponent as BrandLogo } from 'src/assets/images/logo.svg'
 const navLinksLeft = {
   '/': 'SARS-CoV-2 Clusters',
   '/country-distribution': 'Country Distribution',
+  '/cluster-distribution': 'Cluster Distribution',
   '/faq': 'FAQ',
   '/team': 'Team',
 }

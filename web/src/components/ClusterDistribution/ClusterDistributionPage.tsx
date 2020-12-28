@@ -4,46 +4,46 @@ import React, { useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
 import { Editable } from 'src/components/Common/Editable'
 
-import { CountryDistributionDatum, CountryDistributionPlot } from './CountryDistributionPlot'
+import perClusterData from 'src/../data/perClusterData.json'
 
-import perCountryData from 'src/../data/perCountryData.json'
+import { ClusterDistributionDatum, ClusterDistributionPlot } from './ClusterDistributionPlot'
 
-export interface CountryDistributionProps {
-  country: string
-  distribution: CountryDistributionDatum[]
-  cluster_names: string[]
+export interface ClusterDistributionProps {
+  cluster: string
+  distribution: ClusterDistributionDatum[]
+  country_names: string[]
 }
 
-export function CountryDistribution({ country, distribution, cluster_names }: CountryDistributionProps) {
+export function ClusterDistribution({ cluster, distribution, country_names }: ClusterDistributionProps) {
   return (
     <Col>
       <Row noGutters>
         <Col className="d-flex flex-sm-column">
-          <h3 className="mx-auto">{country}</h3>
+          <h3 className="mx-auto">{cluster}</h3>
         </Col>
       </Row>
 
       <Row noGutters>
         <Col>
-          <CountryDistributionPlot distribution={distribution} cluster_names={cluster_names} />
+          <ClusterDistributionPlot distribution={distribution} country_names={country_names} />
         </Col>
       </Row>
     </Col>
   )
 }
 
-export function CountryDistributionPage() {
+export function ClusterDistributionPage() {
   const countryDistributionComponents = useMemo(
     () =>
-      perCountryData.distributions.map(({ country, distribution }) => (
-        <CountryDistribution
-          key={country}
-          country={country}
+      perClusterData.distributions.map(({ cluster, distribution }) => (
+        <ClusterDistribution
+          key={cluster}
+          cluster={cluster}
           distribution={distribution}
-          cluster_names={perCountryData.cluster_names}
+          country_names={perClusterData.country_names}
         />
       )),
-    [perCountryData],
+    [],
   )
 
   return (
