@@ -94,6 +94,7 @@ if print_files:
         fh.write('\n')
         fh.write("# Overview of Clusters/Mutations in Europe\n"	
         "[Overview of proportion of clusters in selected countries](country_overview.md)\n\n"
+        "In the graphs below, countries are displayed in the chart if the country has at least 20 sequences present in the cluster.\n\n"
         "# Mutation Tables and Graphs\n"
         "- [20A.EU1](#20aeu1) _(S:A222V)_ \n"
         "- [20A.EU2](#20aeu2) _(S:S477N)_ \n"
@@ -281,6 +282,9 @@ for clus in clus_to_run:
             with open(noUK_clusterlist_output, 'w') as f:
                 for item in extra501_wanted_seqs:
                     f.write("%s\n" % item)
+            build_nam = clusters[clus]["build_name"]
+            copypath = noUK_clusterlist_output.replace(f"{build_nam}-noUK", "{}-noUK-{}".format(build_nam, datetime.date.today().strftime("%Y-%m-%d")))
+            copyfile(noUK_clusterlist_output, copypath)
             nouk_501_meta.to_csv(noUK_out_meta_file,sep="\t",index=False)
 
     # Just so we have the data, write out the metadata for these sequences
