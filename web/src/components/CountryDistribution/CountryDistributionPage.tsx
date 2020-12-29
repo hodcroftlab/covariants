@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import copy from 'fast-copy'
 
-import styled from 'styled-components'
 import { pickBy } from 'lodash'
 import React, { useCallback, useMemo, useState } from 'react'
 import { Col, Row } from 'reactstrap'
@@ -9,11 +8,10 @@ import { Col, Row } from 'reactstrap'
 import perCountryData from 'src/../data/perCountryData.json'
 import { Editable } from 'src/components/Common/Editable'
 import { ColCustom } from 'src/components/Common/ColCustom'
-import { MainFlex, SidebarFlex } from 'src/components/Common/PlotLayout'
-import { WrapperFlex } from 'src/components//Common/PlotLayout'
 
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
+import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
 import { CountryDistributionDatum } from './CountryDistributionPlot'

@@ -1,23 +1,15 @@
 /* eslint-disable camelcase */
 import React from 'react'
 
-import styled from 'styled-components'
+import dynamic from 'next/dynamic'
 import { XAxis, YAxis, CartesianGrid, Tooltip, Line, LineChart, ResponsiveContainer } from 'recharts'
 import { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 import { DateTime } from 'luxon'
 
+import { PLOT_ASPECT_RATIO } from 'src/constants'
 import { getCountryColor } from 'src/io/getCountryColor'
-
-const ChartContainerOuter = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-`
-
-const ChartContainerInner = styled.div`
-  flex: 0 1 100%;
-  width: 0;
-`
+import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
+import { ChartContainerOuter, ChartContainerInner } from 'src/components/Common/PlotLayout'
 
 export interface TooltipPayload {
   payload: { name: string; value: number; color: string }[]
@@ -39,11 +31,7 @@ export function renderTooltipContent({ payload, label }: DefaultTooltipContentPr
   )
 }
 
-export const LineChartStyled = styled(LineChart)`
-  margin: 10px auto;
-`
-
-const margin = { left: -20, top: 0, bottom: 0, right: 10 }
+const margin = { left: -20, top: 5, bottom: 5, right: 10 }
 
 const tickStyle = { fontSize: 12 }
 
@@ -65,7 +53,7 @@ export interface ClusterDistributionPlotProps {
   distribution: ClusterDistributionDatum[]
 }
 
-export function ClusterDistributionPlot({ country_names, distribution }: ClusterDistributionPlotProps) {
+export function ClusterDistributionPlotComponent({ country_names, distribution }: ClusterDistributionPlotProps) {
   const data = distribution.map(({ week, frequencies }) => {
     const weekSec = DateTime.fromFormat(week, 'yyyy-MM-dd').toSeconds()
     return { week: weekSec, ...frequencies }
@@ -74,8 +62,8 @@ export function ClusterDistributionPlot({ country_names, distribution }: Cluster
   return (
     <ChartContainerOuter>
       <ChartContainerInner>
-        <ResponsiveContainer width="99%" aspect={1.5} debounce={0}>
-          <LineChartStyled margin={margin} data={data}>
+        <ResponsiveContainer aspect={PLOT_ASPECT_RATIO}>
+          <LineChart margin={margin} data={data}>
             <XAxis dataKey="week" tickFormatter={dateFormatter} tick={tickStyle} allowDataOverflow />
             <YAxis tickFormatter={yAxisFormatter} domain={[0, 1]} tick={tickStyle} allowDataOverflow />
             <Tooltip content={renderTooltipContent} />
@@ -91,9 +79,14 @@ export function ClusterDistributionPlot({ country_names, distribution }: Cluster
             ))}
 
             <CartesianGrid stroke="#2222" />
-          </LineChartStyled>
+          </LineChart>
         </ResponsiveContainer>
       </ChartContainerInner>
     </ChartContainerOuter>
   )
 }
+
+export const ClusterDistributionPlot = dynamic(() => Promise.resolve(ClusterDistributionPlotComponent), {
+  ssr: false,
+  loading: PlotPlaceholder,
+})

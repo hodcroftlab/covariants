@@ -11,3 +11,14 @@ export const SidebarFlex = styled.aside`
 export const MainFlex = styled.section`
   flex: 1;
 `
+
+export const ChartContainerOuter = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+`
+
+export const ChartContainerInner = styled.div`
+  flex: 0 1 100%;
+  width: 0;
+`

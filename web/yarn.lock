@@ -2209,6 +2209,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-loader-spinner@3.1.3":
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/@types/react-loader-spinner/-/react-loader-spinner-3.1.3.tgz#eb08b0894dae61773df5873e22060c653253e3dc"
+  integrity sha512-sSkLiV2Nas6IZ77sCU6mJXycnTLnnSukE/y8FY5/uTPI90YORYGJOvdfblm3xatT9WSTgvhTEdQAPx3gRF6d3g==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-native@*":
   version "0.63.41"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.63.41.tgz#edbb25d9b5b9f7288b61ef4763f3a11eb658ec24"
@@ -10570,6 +10577,11 @@ re-reselect@4.0.0:
   resolved "https://registry.yarnpkg.com/re-reselect/-/re-reselect-4.0.0.tgz#9ddec4c72c4d952f68caa5aa4b76a9ed38b75cac"
   integrity sha512-wuygyq8TXUlSdVXv2kigXxQNOgdb9m7LbIjwfTNGSpaY1riLd5e+VeQjlQMyUtrk0oiyhi1AqIVynworl3qxHA==
 
+react-aspect-ratio@1.0.46:
+  version "1.0.46"
+  resolved "https://registry.yarnpkg.com/react-aspect-ratio/-/react-aspect-ratio-1.0.46.tgz#9dedbc07ce0b2a8d1b1b69f2302b8f39f6b47aa6"
+  integrity sha512-IEsNJQt8jaroQyw5qQg/6hTroMwtlDdi5sqwXGy0+26/7sJQgQBibAzYeCjzz/So1WsAUI1Nk5P9AvpQuWqQCg==
+
 react-dom@16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.1.tgz#c1bd37331a0486c078ee54c4740720993b2e0e7f"
@@ -10630,6 +10642,14 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-loader-spinner@3.1.14:
+  version "3.1.14"
+  resolved "https://registry.yarnpkg.com/react-loader-spinner/-/react-loader-spinner-3.1.14.tgz#2a201f07379c492766175609903c0f2ced57c720"
+  integrity sha512-7V+upnW+RVA/O94LIB/EQLK2uaz/TpZBHG5uNXlOXgvxvALxlxVYeEDmus5Oex2C58fiwrsRvSyu/4VRmLbZ9Q==
+  dependencies:
+    babel-runtime "^6.26.0"
+    prop-types "^15.7.2"
 
 react-popper@^1.3.6:
   version "1.3.7"

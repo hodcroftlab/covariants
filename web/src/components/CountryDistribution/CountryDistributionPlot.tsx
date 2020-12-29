@@ -1,23 +1,15 @@
 /* eslint-disable camelcase */
 import React from 'react'
 
-import styled from 'styled-components'
+import dynamic from 'next/dynamic'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 import { DateTime } from 'luxon'
 
+import { PLOT_ASPECT_RATIO } from 'src/constants'
 import { getClusterColor } from 'src/io/getClusterColors'
-
-const ChartContainerOuter = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-`
-
-const ChartContainerInner = styled.div`
-  flex: 0 1 100%;
-  width: 0;
-`
+import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
+import { ChartContainerOuter, ChartContainerInner } from 'src/components/Common/PlotLayout'
 
 export interface TooltipPayload {
   payload: { name: string; value: number; color: string }[]
@@ -39,11 +31,7 @@ export function renderTooltipContent({ payload, label }: DefaultTooltipContentPr
   )
 }
 
-export const AreaChartStyled = styled(AreaChart)`
-  margin: 10px auto;
-`
-
-const margin = { left: -20, top: 0, bottom: 0, right: 10 }
+const margin = { left: -20, top: 5, bottom: 5, right: 10 }
 
 const tickStyle = { fontSize: 12 }
 
@@ -66,7 +54,7 @@ export interface CountryDistributionPlotProps {
   distribution: CountryDistributionDatum[]
 }
 
-export function CountryDistributionPlot({ cluster_names, distribution }: CountryDistributionPlotProps) {
+export function CountryDistributionPlotComponent({ cluster_names, distribution }: CountryDistributionPlotProps) {
   const data = distribution.map(({ week, total_sequences, cluster_counts }) => {
     const total_cluster_sequences = Object.values(cluster_counts) // prettier-ignore
       .reduce<number>((result, count = 0) => result + (count ?? 0), 0)
@@ -79,8 +67,8 @@ export function CountryDistributionPlot({ cluster_names, distribution }: Country
   return (
     <ChartContainerOuter>
       <ChartContainerInner>
-        <ResponsiveContainer width="99%" aspect={1.5} debounce={0}>
-          <AreaChartStyled margin={margin} data={data} stackOffset="expand">
+        <ResponsiveContainer width="99%" aspect={PLOT_ASPECT_RATIO} debounce={0}>
+          <AreaChart margin={margin} data={data} stackOffset="expand">
             <XAxis dataKey="week" tickFormatter={dateFormatter} tick={tickStyle} allowDataOverflow />
             <YAxis tickFormatter={yAxisFormatter} domain={[0, 1]} tick={tickStyle} allowDataOverflow />
             <Tooltip content={renderTooltipContent} />
@@ -99,9 +87,14 @@ export function CountryDistributionPlot({ cluster_names, distribution }: Country
             <Area type="monotone" dataKey="others" stackId="1" stroke="none" fill="none" isAnimationActive={false} />
 
             <CartesianGrid stroke="#2222" />
-          </AreaChartStyled>
+          </AreaChart>
         </ResponsiveContainer>
       </ChartContainerInner>
     </ChartContainerOuter>
   )
 }
+
+export const CountryDistributionPlot = dynamic(() => Promise.resolve(CountryDistributionPlotComponent), {
+  ssr: false,
+  loading: PlotPlaceholder,
+})
