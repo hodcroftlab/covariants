@@ -19,8 +19,6 @@ const ChartContainerInner = styled.div`
   width: 0;
 `
 
-const yAxisFormatter = (value: number) => value.toFixed(2)
-
 export interface TooltipPayload {
   payload: { name: string; value: number; color: string }[]
   label: string
@@ -48,6 +46,8 @@ export const AreaChartStyled = styled(AreaChart)`
 const margin = { left: -20, top: 0, bottom: 0, right: 10 }
 
 const tickStyle = { fontSize: 12 }
+
+const yAxisFormatter = (value: number) => value.toFixed(2)
 
 const dateFormatter = (date: number) => {
   return DateTime.fromSeconds(date).toISODate()

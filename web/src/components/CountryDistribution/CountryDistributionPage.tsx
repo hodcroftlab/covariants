@@ -1,14 +1,16 @@
 /* eslint-disable camelcase */
 import copy from 'fast-copy'
 
+import styled from 'styled-components'
 import { pickBy } from 'lodash'
 import React, { useCallback, useMemo, useState } from 'react'
 import { Col, Row } from 'reactstrap'
-import styled from 'styled-components'
 
 import perCountryData from 'src/../data/perCountryData.json'
 import { Editable } from 'src/components/Common/Editable'
 import { ColCustom } from 'src/components/Common/ColCustom'
+import { MainFlex, SidebarFlex } from 'src/components/Common/PlotLayout'
+import { WrapperFlex } from 'src/components//Common/PlotLayout'
 
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
@@ -25,18 +27,6 @@ const COUNTRIES = perCountryData.distributions.map(({ country }) => country).sor
 const COUNTRIES_STATE = COUNTRIES.reduce((result, country) => {
   return { ...result, [country]: { enabled: true } }
 }, {})
-
-const WrapperFlex = styled.section`
-  display: flex;
-`
-
-const SidebarFlex = styled.aside`
-  flex: 0 0 250px;
-`
-
-const MainFlex = styled.section`
-  flex: 1;
-`
 
 export interface ClusterState {
   [key: string]: { enabled: boolean }
