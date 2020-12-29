@@ -35,7 +35,7 @@ export function ClusterFilters({ clusters, onFilterChange }: ClusterFiltersProps
   const filters = useMemo(() => Object.entries(clusters), [clusters])
 
   return (
-    <Card>
+    <Card className="m-2">
       <CardHeader>{'Clusters'}</CardHeader>
       <CardBody>
         <Form>

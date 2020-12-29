@@ -35,7 +35,7 @@ export function CountryFilters({ countries, onFilterChange }: CountryFiltersProp
   const filters = useMemo(() => Object.entries(countries), [countries])
 
   return (
-    <Card>
+    <Card className="m-2">
       <CardHeader>{'Countries'}</CardHeader>
       <CardBody>
         <Form>

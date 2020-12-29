@@ -116,7 +116,7 @@ export function CountryDistributionPage() {
   return (
     <Layout wide>
       <Row noGutters>
-        <Col lg={4}>
+        <Col sm={4} md={3} lg={2} xl={1}>
           <DistributionSidebar
             clusters={clusters}
             countries={countries}
@@ -125,7 +125,7 @@ export function CountryDistributionPage() {
           />
         </Col>
 
-        <Col md={9}>
+        <Col sm={8} md={9} lg={10} xl={11}>
           <Editable githubUrl={'TODO'} text={'Add or edit this data'}>
             <Row noGutters>
               <Col>{countryDistributionComponents}</Col>
