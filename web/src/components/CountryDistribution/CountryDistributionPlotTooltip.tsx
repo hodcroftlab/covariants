@@ -4,9 +4,9 @@ import { sortBy, reverse } from 'lodash'
 import styled from 'styled-components'
 import { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 
-import { formatDate, formatProportion } from 'src/helpers/format'
-import { getCountryColor } from 'src/io/getCountryColor'
-import { ColoredCircle } from 'src/components/Common/ColoredCircle'
+import { formatDate, formatInteger } from 'src/helpers/format'
+import { getClusterColor } from 'src/io/getClusterColors'
+import { ColoredBox } from '../Common/ColoredBox'
 
 const EPSILON = 1e-2
 
@@ -38,7 +38,7 @@ const TooltipTable = styled.table`
   }
 `
 
-export function ClusterDistributionPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
+export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
   const { payload } = props
   if (!payload || payload?.length === 0) {
     return null
@@ -49,7 +49,7 @@ export function ClusterDistributionPlotTooltip(props: DefaultTooltipContentProps
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const week = formatDate(payload[0]?.payload.week)
 
-  const payloadSorted = reverse(sortBy(payload, 'value'))
+  const payloadSorted = reverse(sortBy(payload, 'value')).filter(({ name }) => name !== 'others')
 
   return (
     <Tooltip>
@@ -59,10 +59,10 @@ export function ClusterDistributionPlotTooltip(props: DefaultTooltipContentProps
         {payloadSorted.map(({ color, name, value }, index) => (
           <tr key={name}>
             <td className="px-2">
-              <ColoredCircle $color={getCountryColor(name ?? '')} $size={10} />
+              <ColoredBox $color={getClusterColor(name ?? '')} $size={10} $aspect={1.66} />
               <span>{name}</span>
             </td>
-            <td className="px-2">{value !== undefined && value > EPSILON ? formatProportion(value) : '-'}</td>
+            <td className="px-2">{value !== undefined && value > EPSILON ? formatInteger(value) : '-'}</td>
           </tr>
         ))}
       </TooltipTable>

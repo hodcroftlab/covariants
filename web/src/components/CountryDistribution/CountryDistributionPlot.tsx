@@ -3,43 +3,18 @@ import React from 'react'
 
 import dynamic from 'next/dynamic'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
-import { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 import { DateTime } from 'luxon'
 
 import { PLOT_ASPECT_RATIO } from 'src/constants'
+import { formatDate, formatProportion } from 'src/helpers/format'
 import { getClusterColor } from 'src/io/getClusterColors'
 import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
 import { ChartContainerOuter, ChartContainerInner } from 'src/components/Common/PlotLayout'
-
-export interface TooltipPayload {
-  payload: { name: string; value: number; color: string }[]
-  label: string
-}
-
-export function renderTooltipContent({ payload, label }: DefaultTooltipContentProps<number, string>) {
-  return (
-    <div className="bg-white">
-      <ul className="list">
-        {payload?.map(({ color, name, value }, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <li key={`item-${index}`} style={{ color }}>
-            {`${name ?? ''}: ${value ?? 0}`}
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
+import { CountryDistributionPlotTooltip } from './CountryDistributionPlotTooltip'
 
 const margin = { left: -20, top: 5, bottom: 5, right: 10 }
 
 const tickStyle = { fontSize: 12 }
-
-const yAxisFormatter = (value: number) => value.toFixed(2)
-
-const dateFormatter = (date: number) => {
-  return DateTime.fromSeconds(date).toISODate()
-}
 
 export interface CountryDistributionDatum {
   week: string
@@ -69,9 +44,9 @@ export function CountryDistributionPlotComponent({ cluster_names, distribution }
       <ChartContainerInner>
         <ResponsiveContainer width="99%" aspect={PLOT_ASPECT_RATIO} debounce={0}>
           <AreaChart margin={margin} data={data} stackOffset="expand">
-            <XAxis dataKey="week" tickFormatter={dateFormatter} tick={tickStyle} allowDataOverflow />
-            <YAxis tickFormatter={yAxisFormatter} domain={[0, 1]} tick={tickStyle} allowDataOverflow />
-            <Tooltip content={renderTooltipContent} />
+            <XAxis dataKey="week" tickFormatter={formatDate} tick={tickStyle} allowDataOverflow />
+            <YAxis tickFormatter={formatProportion} domain={[0, 1]} tick={tickStyle} allowDataOverflow />
+            <Tooltip content={CountryDistributionPlotTooltip} isAnimationActive={false} />
             {cluster_names.map((cluster, i) => (
               <Area
                 key={cluster}
