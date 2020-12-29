@@ -19,7 +19,7 @@ import { getEnvVars } from './lib/getEnvVars'
 import getWithExtraWatch from './withExtraWatch'
 import getWithFriendlyConsole from './withFriendlyConsole'
 import getWithLodash from './withLodash'
-import getWithStaticComprression from './webpackCompression'
+// import getWithStaticComprression from './webpackCompression'
 import getWithTypeChecking from './withTypeChecking'
 import withRaw from './withRaw'
 import withSvg from './withSvg'
@@ -63,7 +63,7 @@ const clientEnv = {
 
 console.info(`Client-side Environment:\n${JSON.stringify(clientEnv, null, 2)}`)
 
-let nextConfig: NextConfig = {
+const nextConfig: NextConfig = {
   distDir: `.build/${process.env.NODE_ENV}/tmp`,
   onDemandEntries: {
     maxInactiveAge: 60 * 1000,
@@ -107,7 +107,7 @@ const withExtraWatch = getWithExtraWatch({
 
 const withLodash = getWithLodash({ unicode: false })
 
-const withStaticComprression = getWithStaticComprression({ brotli: false })
+// const withStaticComprression = getWithStaticComprression({ brotli: false })
 
 const withTypeChecking = getWithTypeChecking({
   typeChecking: ENABLE_TYPE_CHECKS,

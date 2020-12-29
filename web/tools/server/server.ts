@@ -10,9 +10,10 @@
  *
  */
 
+import { ServerResponse } from 'http'
 import path from 'path'
 
-import express, { Response } from 'express'
+import express from 'express'
 
 import allowMethods from 'allow-methods'
 import history from 'connect-history-api-fallback'
@@ -40,7 +41,7 @@ function main() {
   const cacheNone = {
     ...expressStaticGzipOptions,
     serveStatic: {
-      setHeaders: (res: Response) => res.set({ 'Cache-Control': 'no-cache' }),
+      setHeaders: (res: ServerResponse) => res.setHeader('Cache-Control', 'no-cache'),
     },
   }
   const cacheOneYear = {

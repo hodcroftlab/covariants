@@ -10,4 +10,3 @@ export const lineStyles: Record<string, string | undefined> = {
 export function lineStyleToStrokeDashArray(ls: string): string | undefined {
   return get<typeof lineStyles, string>(lineStyles, ls) ?? undefined
 }
-
