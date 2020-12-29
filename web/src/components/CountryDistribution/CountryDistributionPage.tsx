@@ -8,6 +8,7 @@ import styled from 'styled-components'
 
 import perCountryData from 'src/../data/perCountryData.json'
 import { Editable } from 'src/components/Common/Editable'
+import { ColCustom } from 'src/components/Common/ColCustom'
 
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
@@ -100,12 +101,9 @@ export function CountryDistributionPage() {
   const countryDistributionComponents = useMemo(
     () =>
       withClustersFiltered.map(({ country, distribution }) => (
-        <CountryDistributionPlotCard
-          key={country}
-          country={country}
-          distribution={distribution}
-          cluster_names={enabledClusters}
-        />
+        <ColCustom key={country} md={12} lg={6} xl={6} xxl={4}>
+          <CountryDistributionPlotCard country={country} distribution={distribution} cluster_names={enabledClusters} />
+        </ColCustom>
       )),
     [enabledClusters, withClustersFiltered],
   )
@@ -143,7 +141,9 @@ export function CountryDistributionPage() {
 
               <MainFlex>
                 <Row noGutters>
-                  <Col>{countryDistributionComponents}</Col>
+                  <Col>
+                    <Row noGutters>{countryDistributionComponents}</Row>
+                  </Col>
                 </Row>
               </MainFlex>
             </WrapperFlex>

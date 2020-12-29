@@ -29,7 +29,7 @@ export function CountryDistributionPlotCard({
         </h3>
       </CardHeader>
 
-      <CardBody>
+      <CardBody className="p-0">
         <Col>
           <Row noGutters>
             <Col>

@@ -11,10 +11,11 @@ import { getClusterColor } from 'src/io/getClusterColors'
 const ChartContainerOuter = styled.div`
   display: flex;
   justify-content: space-evenly;
+  width: 100%;
 `
 
 const ChartContainerInner = styled.div`
-  flex: 0 1 500px;
+  flex: 0 1 100%;
   width: 0;
 `
 
@@ -43,6 +44,10 @@ export function renderTooltipContent({ payload, label }: DefaultTooltipContentPr
 export const AreaChartStyled = styled(AreaChart)`
   margin: 10px auto;
 `
+
+const margin = { left: -20, top: 0, bottom: 0, right: 10 }
+
+const tickStyle = { fontSize: 12 }
 
 const dateFormatter = (date: number) => {
   return DateTime.fromSeconds(date).toISODate()
@@ -74,10 +79,10 @@ export function CountryDistributionPlot({ cluster_names, distribution }: Country
   return (
     <ChartContainerOuter>
       <ChartContainerInner>
-        <ResponsiveContainer width="99%" aspect={2} debounce={1000}>
-          <AreaChartStyled margin={{ left: 0, top: 15, bottom: 0, right: 30 }} data={data} stackOffset="expand">
-            <XAxis dataKey="week" tickFormatter={dateFormatter} allowDataOverflow />
-            <YAxis tickFormatter={yAxisFormatter} domain={[0, 1]} allowDataOverflow />
+        <ResponsiveContainer width="99%" aspect={1.5} debounce={0}>
+          <AreaChartStyled margin={margin} data={data} stackOffset="expand">
+            <XAxis dataKey="week" tickFormatter={dateFormatter} tick={tickStyle} allowDataOverflow />
+            <YAxis tickFormatter={yAxisFormatter} domain={[0, 1]} tick={tickStyle} allowDataOverflow />
             <Tooltip content={renderTooltipContent} />
             {cluster_names.map((cluster, i) => (
               <Area
@@ -91,14 +96,7 @@ export function CountryDistributionPlot({ cluster_names, distribution }: Country
               />
             ))}
 
-            <Area
-              type="monotone"
-              dataKey="others"
-              stackId="1"
-              stroke="transparent"
-              fill="transparent"
-              isAnimationActive={false}
-            />
+            <Area type="monotone" dataKey="others" stackId="1" stroke="none" fill="none" isAnimationActive={false} />
 
             <CartesianGrid stroke="#2222" />
           </AreaChartStyled>
