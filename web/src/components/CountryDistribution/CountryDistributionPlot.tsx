@@ -2,11 +2,21 @@
 import React from 'react'
 
 import styled from 'styled-components'
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 import { DateTime } from 'luxon'
 
 import { getClusterColor } from 'src/io/getClusterColors'
+
+const ChartContainerOuter = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`
+
+const ChartContainerInner = styled.div`
+  flex: 0 1 500px;
+  width: 0;
+`
 
 const yAxisFormatter = (value: number) => value.toFixed(2)
 
@@ -62,38 +72,38 @@ export function CountryDistributionPlot({ cluster_names, distribution }: Country
   })
 
   return (
-    <AreaChartStyled
-      width={460}
-      height={300}
-      margin={{ left: 0, top: 15, bottom: 0, right: 30 }}
-      data={data}
-      stackOffset="expand"
-    >
-      <XAxis dataKey="week" tickFormatter={dateFormatter} allowDataOverflow />
-      <YAxis tickFormatter={yAxisFormatter} domain={[0, 1]} allowDataOverflow />
-      <Tooltip content={renderTooltipContent} />
-      {cluster_names.map((cluster, i) => (
-        <Area
-          key={cluster}
-          type="monotone"
-          dataKey={cluster}
-          stackId="1"
-          stroke="none"
-          fill={getClusterColor(cluster)}
-          isAnimationActive={false}
-        />
-      ))}
+    <ChartContainerOuter>
+      <ChartContainerInner>
+        <ResponsiveContainer width="99%" aspect={2} debounce={1000}>
+          <AreaChartStyled margin={{ left: 0, top: 15, bottom: 0, right: 30 }} data={data} stackOffset="expand">
+            <XAxis dataKey="week" tickFormatter={dateFormatter} allowDataOverflow />
+            <YAxis tickFormatter={yAxisFormatter} domain={[0, 1]} allowDataOverflow />
+            <Tooltip content={renderTooltipContent} />
+            {cluster_names.map((cluster, i) => (
+              <Area
+                key={cluster}
+                type="monotone"
+                dataKey={cluster}
+                stackId="1"
+                stroke="none"
+                fill={getClusterColor(cluster)}
+                isAnimationActive={false}
+              />
+            ))}
 
-      <Area
-        type="monotone"
-        dataKey="others"
-        stackId="1"
-        stroke="transparent"
-        fill="transparent"
-        isAnimationActive={false}
-      />
+            <Area
+              type="monotone"
+              dataKey="others"
+              stackId="1"
+              stroke="transparent"
+              fill="transparent"
+              isAnimationActive={false}
+            />
 
-      <CartesianGrid stroke="#2222" />
-    </AreaChartStyled>
+            <CartesianGrid stroke="#2222" />
+          </AreaChartStyled>
+        </ResponsiveContainer>
+      </ChartContainerInner>
+    </ChartContainerOuter>
   )
 }
