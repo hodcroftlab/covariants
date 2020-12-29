@@ -13,7 +13,6 @@ const Header = styled.header`
 const MainContent = styled.main`
   flex-grow: 1;
   min-height: 2em;
-  padding: 0 20px;
 `
 
 // const Footer = styled.footer`
