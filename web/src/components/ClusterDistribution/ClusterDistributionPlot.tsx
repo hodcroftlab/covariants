@@ -1,45 +1,20 @@
 /* eslint-disable camelcase */
-import React from 'react'
-
-import dynamic from 'next/dynamic'
-import { XAxis, YAxis, CartesianGrid, Tooltip, Line, LineChart, ResponsiveContainer } from 'recharts'
-import { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 import { DateTime } from 'luxon'
 
-import { PLOT_ASPECT_RATIO } from 'src/constants'
-import { getCountryColor } from 'src/io/getCountryColor'
+import dynamic from 'next/dynamic'
+import React from 'react'
+import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import { ClusterDistributionPlotTooltip } from 'src/components/ClusterDistribution/ClusterDistributionPlotTooltip'
+import { ChartContainerInner, ChartContainerOuter } from 'src/components/Common/PlotLayout'
 import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
-import { ChartContainerOuter, ChartContainerInner } from 'src/components/Common/PlotLayout'
 
-export interface TooltipPayload {
-  payload: { name: string; value: number; color: string }[]
-  label: string
-}
-
-export function renderTooltipContent({ payload, label }: DefaultTooltipContentProps<number, string>) {
-  return (
-    <div className="bg-white">
-      <ul className="list">
-        {payload?.map(({ color, name, value }, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <li key={`item-${index}`} style={{ color }}>
-            {`${name ?? ''}: ${value ?? 0}`}
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
+import { PLOT_ASPECT_RATIO } from 'src/constants'
+import { formatDate, formatProportion } from 'src/helpers/format'
+import { getCountryColor } from 'src/io/getCountryColor'
 
 const margin = { left: -20, top: 5, bottom: 5, right: 10 }
 
 const tickStyle = { fontSize: 12 }
-
-const yAxisFormatter = (value: number) => value.toFixed(2)
-
-const dateFormatter = (date: number) => {
-  return DateTime.fromSeconds(date).toISODate()
-}
 
 export interface ClusterDistributionDatum {
   week: string
@@ -64,9 +39,9 @@ export function ClusterDistributionPlotComponent({ country_names, distribution }
       <ChartContainerInner>
         <ResponsiveContainer aspect={PLOT_ASPECT_RATIO}>
           <LineChart margin={margin} data={data}>
-            <XAxis dataKey="week" tickFormatter={dateFormatter} tick={tickStyle} allowDataOverflow />
-            <YAxis tickFormatter={yAxisFormatter} domain={[0, 1]} tick={tickStyle} allowDataOverflow />
-            <Tooltip content={renderTooltipContent} />
+            <XAxis dataKey="week" tickFormatter={formatDate} tick={tickStyle} allowDataOverflow />
+            <YAxis tickFormatter={formatProportion} domain={[0, 1]} tick={tickStyle} allowDataOverflow />
+            <Tooltip content={ClusterDistributionPlotTooltip} isAnimationActive={false} />
             {country_names.map((country, i) => (
               <Line
                 key={country}
