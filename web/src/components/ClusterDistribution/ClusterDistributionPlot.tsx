@@ -10,7 +10,8 @@ import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
 
 import { PLOT_ASPECT_RATIO } from 'src/constants'
 import { formatDate, formatProportion } from 'src/helpers/format'
-import { getCountryColor } from 'src/io/getCountryColor'
+import { lineStyleToStrokeDashArray } from 'src/helpers/lineStyleToStrokeDashArray'
+import { getCountryColor, getCountryStyle } from 'src/io/getCountryColor'
 
 const margin = { left: -20, top: 5, bottom: 5, right: 10 }
 
@@ -48,6 +49,8 @@ export function ClusterDistributionPlotComponent({ country_names, distribution }
                 type="monotone"
                 dataKey={country}
                 stroke={getCountryColor(country)}
+                strokeWidth={1.5}
+                strokeDasharray={lineStyleToStrokeDashArray(getCountryStyle(country).ls)}
                 dot={false}
                 isAnimationActive={false}
               />
