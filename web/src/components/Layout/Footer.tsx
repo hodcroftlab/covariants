@@ -34,13 +34,13 @@ const VersionText = styled.div`
   }
 `
 
-export default function Footer() {
+export function FooterContent() {
   const copyrightYearRange = getCopyrightYearRange()
 
   return (
     <FooterContainer fluid tag="footer">
       <Row noGutters>
-        <Col className="d-flex">
+        <Col className="d-flex p-0">
           <CopyrightText className="mr-auto my-auto">
             {`${PROJECT_NAME} (c) ${copyrightYearRange} ${COMPANY_NAME}`}
           </CopyrightText>

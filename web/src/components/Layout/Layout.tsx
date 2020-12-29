@@ -1,23 +1,54 @@
 import React, { PropsWithChildren } from 'react'
-import { Container, Row, Col } from 'reactstrap'
+import { Container as ContainerBase, Row, Col } from 'reactstrap'
 
 import styled from 'styled-components'
 
 import { NavigationBar } from './NavigationBar'
-// import FooterContent from './Footer'
+import { FooterContent } from './Footer'
 
-const Header = styled.header`
-  flex-shrink: 0;
+const Container = styled(ContainerBase)`
+  display: flex;
 `
 
-const MainContent = styled.main`
+const HeaderRow = styled(Row)`
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding: 0;
+`
+
+const HeaderCol = styled(Col)`
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding: 0;
+`
+
+const MainRow = styled(Row)`
+  display: flex;
   flex-grow: 1;
   min-height: 2em;
+  padding: 0;
 `
 
-// const Footer = styled.footer`
-//   flex-shrink: 0;
-// `
+const MainCol = styled(Col)`
+  display: flex;
+  flex-grow: 1;
+  padding: 0;
+  min-height: 100vh;
+`
+
+const FooterRow = styled(Row)`
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding: 0;
+`
+
+const FooterCol = styled(Col)`
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding: 0;
+`
 
 export interface LayoutProps {
   wide?: boolean
@@ -25,20 +56,28 @@ export interface LayoutProps {
 
 export function Layout({ children, wide = false }: PropsWithChildren<LayoutProps>) {
   return (
-    <Container fluid={wide}>
-      <Row noGutters>
-        <Col>
-          <Header>
+    <>
+      <Container fluid>
+        <HeaderRow noGutter>
+          <HeaderCol>
             <NavigationBar />
-          </Header>
+          </HeaderCol>
+        </HeaderRow>
+      </Container>
 
-          <MainContent>{children}</MainContent>
+      <Container fluid={wide}>
+        <MainRow noGutter>
+          <MainCol>{children}</MainCol>
+        </MainRow>
+      </Container>
 
-          {/* <Footer> */}
-          {/*   <FooterContent /> */}
-          {/* </Footer> */}
-        </Col>
-      </Row>
-    </Container>
+      <Container fluid>
+        <FooterRow noGutter>
+          <FooterCol>
+            <FooterContent />
+          </FooterCol>
+        </FooterRow>
+      </Container>
+    </>
   )
 }
