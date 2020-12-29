@@ -1,21 +1,20 @@
 /* eslint-disable camelcase */
-import copy from 'fast-copy'
-import { pickBy } from 'lodash'
 import React, { useCallback, useMemo, useState } from 'react'
 
+import copy from 'fast-copy'
+import { pickBy } from 'lodash'
 import { Col, Row } from 'reactstrap'
-import { ColCustom } from 'src/components/Common/ColCustom'
-
-import { ClusterState, CountryState } from 'src/components/CountryDistribution/CountryDistributionPage'
-import { Editable } from 'src/components/Common/Editable'
-
-import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
-import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
-import { Layout } from 'src/components/Layout/Layout'
 
 import perClusterData from 'src/../data/perClusterData.json'
+import { ClusterDistributionPlotCard } from 'src/components/ClusterDistribution/ClusterDistributionPlotCard'
+import { ColCustom } from 'src/components/Common/ColCustom'
+import { Editable } from 'src/components/Common/Editable'
+import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
+import { ClusterState, CountryState } from 'src/components/CountryDistribution/CountryDistributionPage'
+import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
+import { Layout } from 'src/components/Layout/Layout'
 
-import { ClusterDistributionDatum, ClusterDistributionPlot } from './ClusterDistributionPlot'
+import { ClusterDistributionDatum } from './ClusterDistributionPlot'
 
 const COUNTRIES = copy(perClusterData.country_names).sort()
 const COUNTRIES_STATE = COUNTRIES.reduce((result, country) => {
@@ -35,30 +34,6 @@ export interface ClusterDistribution {
 export interface ClusterDistributionJson {
   country_names: string[]
   distributions: ClusterDistribution[]
-}
-
-export interface ClusterDistributionProps {
-  cluster: string
-  distribution: ClusterDistributionDatum[]
-  country_names: string[]
-}
-
-export function ClusterDistribution({ cluster, distribution, country_names }: ClusterDistributionProps) {
-  return (
-    <Col>
-      <Row noGutters>
-        <Col className="d-flex flex-sm-column">
-          <h3 className="mx-auto">{cluster}</h3>
-        </Col>
-      </Row>
-
-      <Row noGutters>
-        <Col>
-          <ClusterDistributionPlot distribution={distribution} country_names={country_names} />
-        </Col>
-      </Row>
-    </Col>
-  )
 }
 
 export function filterClusters(clusters: ClusterState, clusterDistrubutions: ClusterDistribution[]) {
@@ -108,7 +83,7 @@ export function ClusterDistributionPage() {
     () =>
       withCountriesFiltered.map(({ cluster, distribution }) => (
         <ColCustom key={cluster} md={12} lg={6} xl={6} xxl={4}>
-          <ClusterDistribution
+          <ClusterDistributionPlotCard
             key={cluster}
             cluster={cluster}
             distribution={distribution}
@@ -116,7 +91,7 @@ export function ClusterDistributionPage() {
           />
         </ColCustom>
       )),
-    [],
+    [enabledCountries, withCountriesFiltered],
   )
 
   const handleClusterCheckedChange = useCallback(
