@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Card, Col, Row } from 'reactstrap'
+import { Col, Row } from 'reactstrap'
 
 import type { ClusterState, CountryState } from 'src/components/CountryDistribution/CountryDistributionPage'
 import { ClusterFilters } from './ClusterFilters'
@@ -21,16 +21,12 @@ export function DistributionSidebar({
 }: DistributionSidebarProps) {
   return (
     <Row noGutters>
-      <Col xs={12}>
-        <Card>
-          <ClusterFilters clusters={clusters} onFilterChange={onClusterFilterChange} />
-        </Card>
+      <Col>
+        <ClusterFilters clusters={clusters} onFilterChange={onClusterFilterChange} />
       </Col>
 
-      <Col xs={12}>
-        <Card>
-          <CountryFilters countries={countries} onFilterChange={onCountryFilterChange} />
-        </Card>
+      <Col>
+        <CountryFilters countries={countries} onFilterChange={onCountryFilterChange} />
       </Col>
     </Row>
   )

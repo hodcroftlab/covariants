@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react'
 
-import { CardBody, Form, FormGroup, Input, Label } from 'reactstrap'
+import { Card, CardBody, CardHeader, Form, FormGroup, Input, Label } from 'reactstrap'
 
 import { getClusterColor } from 'src/io/getClusterColors'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
@@ -35,12 +35,15 @@ export function ClusterFilters({ clusters, onFilterChange }: ClusterFiltersProps
   const filters = useMemo(() => Object.entries(clusters), [clusters])
 
   return (
-    <CardBody>
-      <Form>
-        {filters.map(([cluster, { enabled }]) => (
-          <ClusterFilterCheckbox key={cluster} cluster={cluster} enabled={enabled} onFilterChange={onFilterChange} />
-        ))}
-      </Form>
-    </CardBody>
+    <Card>
+      <CardHeader>{'Clusters'}</CardHeader>
+      <CardBody>
+        <Form>
+          {filters.map(([cluster, { enabled }]) => (
+            <ClusterFilterCheckbox key={cluster} cluster={cluster} enabled={enabled} onFilterChange={onFilterChange} />
+          ))}
+        </Form>
+      </CardBody>
+    </Card>
   )
 }
