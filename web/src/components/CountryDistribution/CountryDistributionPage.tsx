@@ -4,8 +4,9 @@ import copy from 'fast-copy'
 import { pickBy } from 'lodash'
 import React, { useCallback, useMemo, useState } from 'react'
 import { Col, Row } from 'reactstrap'
-import perCountryData from 'src/../data/perCountryData.json'
+import styled from 'styled-components'
 
+import perCountryData from 'src/../data/perCountryData.json'
 import { Editable } from 'src/components/Common/Editable'
 
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
@@ -23,6 +24,18 @@ const COUNTRIES = perCountryData.distributions.map(({ country }) => country).sor
 const COUNTRIES_STATE = COUNTRIES.reduce((result, country) => {
   return { ...result, [country]: { enabled: true } }
 }, {})
+
+const WrapperFlex = styled.section`
+  display: flex;
+`
+
+const SidebarFlex = styled.aside`
+  flex: 0 0 250px;
+`
+
+const MainFlex = styled.section`
+  flex: 1;
+`
 
 export interface ClusterState {
   [key: string]: { enabled: boolean }
@@ -116,20 +129,24 @@ export function CountryDistributionPage() {
   return (
     <Layout wide>
       <Row noGutters>
-        <Col sm={4} md={3} lg={2} xl={1}>
-          <DistributionSidebar
-            clusters={clusters}
-            countries={countries}
-            onClusterFilterChange={handleClusterCheckedChange}
-            onCountryFilterChange={handleCountryCheckedChange}
-          />
-        </Col>
-
-        <Col sm={8} md={9} lg={10} xl={11}>
+        <Col>
           <Editable githubUrl={'TODO'} text={'Add or edit this data'}>
-            <Row noGutters>
-              <Col>{countryDistributionComponents}</Col>
-            </Row>
+            <WrapperFlex>
+              <SidebarFlex>
+                <DistributionSidebar
+                  clusters={clusters}
+                  countries={countries}
+                  onClusterFilterChange={handleClusterCheckedChange}
+                  onCountryFilterChange={handleCountryCheckedChange}
+                />
+              </SidebarFlex>
+
+              <MainFlex>
+                <Row noGutters>
+                  <Col>{countryDistributionComponents}</Col>
+                </Row>
+              </MainFlex>
+            </WrapperFlex>
           </Editable>
         </Col>
       </Row>
