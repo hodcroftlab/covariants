@@ -33,10 +33,12 @@ const TooltipTable = styled.table`
   border: none;
   min-width: 250px;
 
-  & > tr:nth-child(odd) {
+  & > tbody > tr:nth-child(odd) {
     background-color: ${(props) => props.theme.gray200};
   }
 `
+
+const TooltipTableBody = styled.tbody``
 
 export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
   const { payload } = props
@@ -56,15 +58,17 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
       <TooltipTitle>{`Week: ${week}`}</TooltipTitle>
 
       <TooltipTable>
-        {payloadSorted.map(({ color, name, value }, index) => (
-          <tr key={name}>
-            <td className="px-2">
-              <ColoredBox $color={getClusterColor(name ?? '')} $size={10} $aspect={1.66} />
-              <span>{name}</span>
-            </td>
-            <td className="px-2">{value !== undefined && value > EPSILON ? formatInteger(value) : '-'}</td>
-          </tr>
-        ))}
+        <TooltipTableBody>
+          {payloadSorted.map(({ color, name, value }, index) => (
+            <tr key={name}>
+              <td className="px-2">
+                <ColoredBox $color={getClusterColor(name ?? '')} $size={10} $aspect={1.66} />
+                <span>{name}</span>
+              </td>
+              <td className="px-2">{value !== undefined && value > EPSILON ? formatInteger(value) : '-'}</td>
+            </tr>
+          ))}
+        </TooltipTableBody>
       </TooltipTable>
     </Tooltip>
   )
