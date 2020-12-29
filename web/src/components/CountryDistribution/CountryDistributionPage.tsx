@@ -1,18 +1,19 @@
 /* eslint-disable camelcase,sonarjs/no-identical-functions */
-import React, { useCallback, useMemo, useState } from 'react'
+import copy from 'fast-copy'
 
 import { pickBy } from 'lodash'
-import { Card, CardBody, Col, Container, Form, FormGroup, Input, Label, Row } from 'reactstrap'
-import copy from 'fast-copy'
+import React, { useCallback, useMemo, useState } from 'react'
+import { Card, CardBody, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
+import perCountryData from 'src/../data/perCountryData.json'
+import { ColoredBox } from 'src/components/Common/ColoredBox'
+import { Editable } from 'src/components/Common/Editable'
+import { ColoredCircle } from 'src/components/Common/ColoredCircle'
 import { Layout } from 'src/components/Layout/Layout'
 
 import { getClusterColor } from 'src/io/getClusterColors'
-import { Editable } from 'src/components/Common/Editable'
-import { ColoredBox } from 'src/components/Common/ColoredBox'
-import perCountryData from 'src/../data/perCountryData.json'
 import { getCountryColor } from 'src/io/getCountryColor'
-import { CountryDistributionDatum, CountryDistributionPlot } from './CountryDistributionPlot'
-import { ColoredCircle } from '../Common/ColoredCircle'
+import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
+import { CountryDistributionDatum } from './CountryDistributionPlot'
 
 const CLUSTERS = copy(perCountryData.cluster_names).sort()
 const CLUSTERS_STATE = CLUSTERS.reduce((result, cluster) => {
@@ -40,41 +41,6 @@ export interface CountryDistribution {
 export interface CountryDistributionJson {
   cluster_names: string[]
   distributions: CountryDistribution[]
-}
-
-export interface CountryDistributionProps {
-  country: string
-  distribution: CountryDistributionDatum[]
-  cluster_names: string[]
-}
-
-export function CountryDistribution({ country, distribution, cluster_names }: CountryDistributionProps) {
-  return (
-    <Row noGutters>
-      <Col>
-        <Card>
-          <CardBody>
-            <Col>
-              <Row noGutters>
-                <Col className="d-flex flex-sm-column">
-                  <h3 className="mx-auto">
-                    <ColoredCircle $color={getCountryColor(country)} $size={20} />
-                    <span>{country}</span>
-                  </h3>
-                </Col>
-              </Row>
-
-              <Row noGutters>
-                <Col>
-                  <CountryDistributionPlot distribution={distribution} cluster_names={cluster_names} />
-                </Col>
-              </Row>
-            </Col>
-          </CardBody>
-        </Card>
-      </Col>
-    </Row>
-  )
 }
 
 export function filterCountries(countries: CountryState, countryDistrubutions: CountryDistribution[]) {
@@ -122,7 +88,7 @@ export function CountryDistributionPage() {
   const countryDistributionComponents = useMemo(
     () =>
       withClustersFiltered.map(({ country, distribution }) => (
-        <CountryDistribution
+        <CountryDistributionPlotCard
           key={country}
           country={country}
           distribution={distribution}
