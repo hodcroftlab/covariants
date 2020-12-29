@@ -1,17 +1,16 @@
-/* eslint-disable camelcase,sonarjs/no-identical-functions */
+/* eslint-disable camelcase */
 import copy from 'fast-copy'
 
 import { pickBy } from 'lodash'
 import React, { useCallback, useMemo, useState } from 'react'
-import { Card, CardBody, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
+import { Col, Row } from 'reactstrap'
 import perCountryData from 'src/../data/perCountryData.json'
-import { ColoredBox } from 'src/components/Common/ColoredBox'
+
 import { Editable } from 'src/components/Common/Editable'
-import { ColoredCircle } from 'src/components/Common/ColoredCircle'
+
+import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
 
-import { getClusterColor } from 'src/io/getClusterColors'
-import { getCountryColor } from 'src/io/getCountryColor'
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
 import { CountryDistributionDatum } from './CountryDistributionPlot'
 
@@ -99,20 +98,18 @@ export function CountryDistributionPage() {
   )
 
   const handleClusterCheckedChange = useCallback(
-    (cluster: string) => () => {
+    (cluster: string) =>
       setClusters((oldClusters) => {
         return { ...oldClusters, [cluster]: { ...oldClusters[cluster], enabled: !oldClusters[cluster].enabled } }
-      })
-    },
+      }),
     [],
   )
 
   const handleCountryCheckedChange = useCallback(
-    (country: string) => () => {
+    (country: string) =>
       setCountries((oldCountries) => {
         return { ...oldCountries, [country]: { ...oldCountries[country], enabled: !oldCountries[country].enabled } }
-      })
-    },
+      }),
     [],
   )
 
@@ -120,85 +117,19 @@ export function CountryDistributionPage() {
     <Layout wide>
       <Row noGutters>
         <Col lg={4}>
-          <Row noGutters>
-            <Col xs={12}>
-              <Card>
-                <CardBody>
-                  <Form>
-                    {Object.entries(clusters).map(([cluster, { enabled }]) => (
-                      <FormGroup key={cluster} check>
-                        <Label htmlFor={CSS.escape(cluster)} check>
-                          <Input
-                            id={CSS.escape(cluster)}
-                            type="checkbox"
-                            checked={enabled}
-                            onChange={handleClusterCheckedChange(cluster)}
-                          />
-                          <ColoredBox $color={getClusterColor(cluster)} $size={14} $aspect={16 / 9} />
-                          <span>{cluster}</span>
-                        </Label>
-                      </FormGroup>
-                    ))}
-                  </Form>
-                </CardBody>
-              </Card>
-            </Col>
-
-            <Col xs={12}>
-              <Card>
-                <CardBody>
-                  <Row noGutters>
-                    <Col xl={6}>
-                      <Form>
-                        {Object.entries(countries)
-                          .slice(0, COUNTRIES.length / 2)
-                          .map(([country, { enabled }]) => (
-                            <FormGroup key={country} check>
-                              <Label htmlFor={CSS.escape(country)} check>
-                                <Input
-                                  id={CSS.escape(country)}
-                                  type="checkbox"
-                                  checked={enabled}
-                                  onChange={handleCountryCheckedChange(country)}
-                                />
-                                <ColoredCircle $color={getCountryColor(country)} $size={14} />
-                                <span>{country}</span>
-                              </Label>
-                            </FormGroup>
-                          ))}
-                      </Form>
-                    </Col>
-
-                    <Col xl={6}>
-                      <Form>
-                        {Object.entries(countries)
-                          .slice(COUNTRIES.length / 2)
-                          .map(([country, { enabled }]) => (
-                            <FormGroup key={country} check>
-                              <Label htmlFor={CSS.escape(country)} check>
-                                <Input
-                                  id={CSS.escape(country)}
-                                  type="checkbox"
-                                  checked={enabled}
-                                  onChange={handleCountryCheckedChange(country)}
-                                />
-                                <ColoredCircle $color={getCountryColor(country)} $size={14} />
-                                <span>{country}</span>
-                              </Label>
-                            </FormGroup>
-                          ))}
-                      </Form>
-                    </Col>
-                  </Row>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
+          <DistributionSidebar
+            clusters={clusters}
+            countries={countries}
+            onClusterFilterChange={handleClusterCheckedChange}
+            onCountryFilterChange={handleCountryCheckedChange}
+          />
         </Col>
 
         <Col md={9}>
           <Editable githubUrl={'TODO'} text={'Add or edit this data'}>
-            <Row noGutters>{countryDistributionComponents}</Row>
+            <Row noGutters>
+              <Col>{countryDistributionComponents}</Col>
+            </Row>
           </Editable>
         </Col>
       </Row>
