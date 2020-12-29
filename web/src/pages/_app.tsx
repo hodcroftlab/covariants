@@ -23,7 +23,6 @@ import { MDXProvider } from '@mdx-js/react'
 
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { SEO } from 'src/components/Common/SEO'
-import { Layout } from 'src/components/Layout/Layout'
 
 import { theme } from 'src/theme'
 
