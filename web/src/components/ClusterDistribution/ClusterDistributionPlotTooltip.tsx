@@ -18,8 +18,6 @@ const Tooltip = styled.div`
   background-color: ${(props) => props.theme.gray100};
   box-shadow: ${(props) => props.theme.shadows.slight};
   border-radius: 3px;
-
-  z-index: 100000;
 `
 
 const TooltipTitle = styled.h1`
