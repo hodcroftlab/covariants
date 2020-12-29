@@ -14,8 +14,8 @@
 | Ireland        | 2020-08-12  |         13 | 2020-10-18 |
 | Belgium        | 2020-08-18  |          8 | 2020-09-20 |
 | Netherlands    | 2020-08-24  |         22 | 2020-10-14 |
+| Italy          | 2020-08-26  |          2 | 2020-10-26 |
 | Singapore      | 2020-10-10  |          1 | 2020-10-10 |
-| Italy          | 2020-10-26  |          1 | 2020-10-26 |
 | Portugal       | 2020-11-10  |          4 | 2020-11-19 |
 
 ![Overall trends S.D80Y](/overall_trends_figures/overall_trends_S.D80Y.png)
