@@ -109,7 +109,7 @@ for clus in clus_to_run:
 
     if clus == "mink":
         mink_meta = meta[meta['host'].apply(lambda x: x == "Mink")]
-        wanted_seqs = list(mink_meta['strain']) 
+        wanted_seqs = list(mink_meta['strain'])
 
         clusterlist_output = cluster_path+f'/clusters/cluster_mink.txt'
         out_meta_file = cluster_path+f'/cluster_info/cluster_mink_meta.tsv'
@@ -173,7 +173,7 @@ for clus in clus_to_run:
         bad_dates = len(wanted_seqs)-len(cluster_meta)
 
     #re-set wanted_seqs
-    wanted_seqs = list(cluster_meta['strain']) 
+    wanted_seqs = list(cluster_meta['strain'])
 
     print("Sequences found: ")
     print(len(wanted_seqs)) # how many are there?
@@ -446,8 +446,8 @@ for clus in clus_to_run:
                         color=country_styles[coun]['c'],
                         linestyle=country_styles[coun]['ls'],
                         label = f"{coun}")
-                        
-            plt.legend()
+
+            plt.legend(numpoints=2)
             fig.autofmt_xdate(rotation=30)
             plt.ylabel('frequency')
             plt.tight_layout()
