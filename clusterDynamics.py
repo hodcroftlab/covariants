@@ -313,6 +313,10 @@ for clus in clus_to_run:
         # Change to just show Travel to spain only. see above for old 3 panel version
         fig, (ax1, ax3) = plt.subplots(nrows=2, sharex=True,figsize=(10,6),
                                             gridspec_kw={'height_ratios':[1, 3]})
+        ax1.grid(True, axis='x', which='major')
+        ax3.grid(True, axis='x', which='major')
+        ax1.set_axisbelow(True)
+        ax3.set_axisbelow(True)
         i=0
         #for coun in [x for x in countries_to_plot]:
         for coun in travel_order:
