@@ -402,12 +402,12 @@ for clus in clus_to_run:
                         linestyle=country_styles[coun]['ls'],
                         label = f"{coun}")
                         
-            plt.legend()
+            plt.legend(handlelength=5)
             fig.autofmt_xdate(rotation=30)
             plt.ylabel('frequency')
             plt.tight_layout()
-            if print_files:
-                plt.savefig(figure_path+f'uk_countries.{fmt}')
+            #if print_files:
+            plt.savefig(figure_path+f'uk_countries.{fmt}')
 
     #############################################
     #############################################
