@@ -84,6 +84,27 @@ T_backup = copy.deepcopy(T)
 #Make a subtree of the cluster so we can just work with that
 cluster = T.from_clade(start)
 
+
+######################
+######################
+# get number of unique sequences
+
+unique_seqs = 0
+
+for node in cluster.get_nonterminals(order='postorder'):
+    # if node has at least one terminal child
+    has_ident_seq = False
+    # cycle through children
+    for leaf in node.clades:
+        if leaf.is_terminal():
+            mutations = list(filter(lambda x: x[2] != 'N', leaf.mutations))
+            if len(mutations) > 0:
+                unique_seqs+=1
+            elif len(mutations) == 0:
+                has_ident_seq = True
+    if has_ident_seq:
+        unique_seqs+=1
+
 ######## UK RERUN FROM HERE
 
 # Make another name dictionary to locate nodes by name
