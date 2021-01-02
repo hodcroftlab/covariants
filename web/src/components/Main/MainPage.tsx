@@ -1,7 +1,8 @@
 /* eslint-disable camelcase */
 import React, { useMemo, useState, useRef } from 'react'
-import { CardCollapsible } from 'src/components/Common/CardCollapsible'
+
 import { Layout } from 'src/components/Layout/Layout'
+import { NextstrainCard } from 'src/components/Main/NextstrainCard'
 import { ClusterDatum, getClusters } from 'src/io/getClusters'
 
 import styled from 'styled-components'
@@ -12,7 +13,6 @@ import { Link } from 'src/components/Link/Link'
 import { Editable } from 'src/components/Common/Editable'
 
 import Intro from '../../../../content/Intro.md'
-import { LinkExternal } from '../Link/LinkExternal'
 
 const ClustersRow = styled(Row)`
   justify-content: center;
@@ -52,11 +52,6 @@ const ClusterTitle = styled.h1`
 
 const EditableClusterContent = styled(Editable)`
   min-height: 1000px;
-`
-
-const IFrame = styled.iframe`
-  width: 100%;
-  height: 500px;
 `
 
 export interface ClusterButtonProps {
@@ -130,17 +125,7 @@ export function MainPage() {
 
           <EditableClusterContent githubUrl={cluster.display_name}>
             <ClusterContent />
-
-            <LinkExternal href={cluster.build_url}>{`Dedicated Nextstrain build`}</LinkExternal>
-
-            <IFrame
-              src={cluster.build_url}
-              referrerPolicy="no-referrer"
-              loading="lazy"
-              frameBorder={0}
-              allowFullScreen
-              seamless
-            />
+            <NextstrainCard cluster={cluster} />
           </EditableClusterContent>
         </Col>
       </Row>

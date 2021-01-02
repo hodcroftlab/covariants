@@ -7,10 +7,12 @@ import { Card as CardBase, CardHeader as CardHeaderBase, Collapse } from 'reacts
 const Card = styled(CardBase)``
 
 const CardHeader = styled(CardHeaderBase)`
+  display: flex;
   cursor: pointer;
 `
 
 const CollapseIcon = styled(MdArrowDropDown)<{ $rotated?: boolean }>`
+  display: inline;
   fill: ${(props) => props.theme.gray650};
   transition: transform linear 0.25s;
   transform: rotate(${(props) => (props.$rotated ? '-90deg' : '0deg')});
@@ -35,10 +37,8 @@ export function CardCollapsible({
   return (
     <Card className={className}>
       <CardHeader onClick={toggle}>
-        <span>
-          <CollapseIcon size={30} $rotated={collapsed} />
-          {title}
-        </span>
+        <CollapseIcon size={30} $rotated={collapsed} />
+        <span className="d-flex w-100">{title}</span>
       </CardHeader>
 
       <Collapse isOpen={!collapsed}>{children}</Collapse>

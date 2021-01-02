@@ -117,10 +117,18 @@ export const plot = {
   tickStyle: { fontSize: 12 },
 }
 
+export const link = {
+  dim: {
+    color: basicColors.gray650,
+    iconColor: basicColors.gray600,
+  },
+}
+
 export const theme = {
   ...basicColors,
   ...themeColors,
   ...gridBreakpoints,
+  link,
   containerMaxWidths,
   font,
   shadows,

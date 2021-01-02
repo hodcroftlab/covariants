@@ -72,7 +72,7 @@ export function NavigationBarDisconnected({ pathname }: NavigationBarProps) {
       <ul className="navbar-nav ml-auto d-flex">
         {navLinksRight.map(({ title, url, alt, icon }) => (
           <li key={title} className="nav-item mx-2 my-auto">
-            <LinkExternal title={title} url={url} alt={alt}>
+            <LinkExternal title={title} href={url} alt={alt}>
               {icon}
             </LinkExternal>
           </li>
