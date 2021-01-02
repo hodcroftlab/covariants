@@ -93,7 +93,7 @@ export const themeColors = {
 }
 
 export const font = {
-  sansSerif: `'Lato', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'system-ui', 'system-sans', 'sans-serif'`,
+  sansSerif: `'Open Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'system-ui', 'system-sans', 'sans-serif'`,
   monospace: `'Roboto Mono', 'system-mono'`,
   default: 'sans-serif',
 }
