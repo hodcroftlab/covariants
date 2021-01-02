@@ -69,6 +69,7 @@ export function filterCountries(countries: CountryState, withClustersFiltered: C
 
 // eslint-disable-next-line prefer-destructuring
 const distributions: ClusterDistribution[] = perClusterData.distributions
+const enabledFilters = ['countries', 'clusters']
 
 export function ClusterDistributionPage() {
   const [clusters, setClusters] = useState<ClusterState>(CLUSTERS_STATE)
@@ -119,6 +120,9 @@ export function ClusterDistributionPage() {
               <SidebarFlex>
                 <DistributionSidebar
                   countries={countries}
+                  clusters={clusters}
+                  coutriesCollapsedByDefault={false}
+                  enabledFilters={enabledFilters}
                   onClusterFilterChange={handleClusterCheckedChange}
                   onCountryFilterChange={handleCountryCheckedChange}
                 />

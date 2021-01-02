@@ -76,6 +76,7 @@ export function filterClusters(clusters: ClusterState, withCountriesFiltered: Co
 }
 
 const countryDistrubutions: CountryDistribution[] = perCountryData.distributions
+const enabledFilters = ['clusters', 'countries']
 
 export function CountryDistributionPage() {
   const [countries, setCountries] = useState<CountryState>(COUNTRIES_STATE)
@@ -121,6 +122,9 @@ export function CountryDistributionPage() {
               <SidebarFlex>
                 <DistributionSidebar
                   clusters={clusters}
+                  countries={countries}
+                  enabledFilters={enabledFilters}
+                  clustersCollapsedByDefault={false}
                   onClusterFilterChange={handleClusterCheckedChange}
                   onCountryFilterChange={handleCountryCheckedChange}
                 />

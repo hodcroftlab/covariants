@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo } from 'react'
 
-import { Card, CardBody, CardHeader, Form, FormGroup, Input, Label } from 'reactstrap'
+import { CardBody, Form, FormGroup, Input, Label } from 'reactstrap'
+import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 
 import { getCountryColor } from 'src/io/getCountryColor'
 import { ColoredCircle } from 'src/components/Common/ColoredCircle'
@@ -28,15 +29,16 @@ export function CountryFilterCheckbox({ country, enabled, onFilterChange }: Coun
 
 export interface CountryFiltersProps {
   countries: CountryState
+  collapsed: boolean
   onFilterChange(country: string): void
+  setCollapsed(collapsed: boolean): void
 }
 
-export function CountryFilters({ countries, onFilterChange }: CountryFiltersProps) {
+export function CountryFilters({ countries, collapsed, onFilterChange, setCollapsed }: CountryFiltersProps) {
   const filters = useMemo(() => Object.entries(countries), [countries])
 
   return (
-    <Card className="m-2">
-      <CardHeader>{'Countries'}</CardHeader>
+    <CardCollapsible className="m-2" title={'Countries'} collapsed={collapsed} setCollapsed={setCollapsed}>
       <CardBody>
         <Form>
           {filters.map(([country, { enabled }]) => (
@@ -44,6 +46,6 @@ export function CountryFilters({ countries, onFilterChange }: CountryFiltersProp
           ))}
         </Form>
       </CardBody>
-    </Card>
+    </CardCollapsible>
   )
 }

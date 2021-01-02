@@ -1,4 +1,5 @@
-import React from 'react'
+import { get } from 'lodash'
+import React, { useState, useMemo } from 'react'
 
 import { Col, Row } from 'reactstrap'
 
@@ -9,6 +10,9 @@ import { CountryFilters } from './CountryFilters'
 export interface DistributionSidebarProps {
   clusters?: ClusterState
   countries?: CountryState
+  clustersCollapsedByDefault?: boolean
+  coutriesCollapsedByDefault?: boolean
+  enabledFilters: string[]
   onClusterFilterChange(cluster: string): void
   onCountryFilterChange(country: string): void
 }
@@ -16,22 +20,40 @@ export interface DistributionSidebarProps {
 export function DistributionSidebar({
   clusters,
   countries,
+  clustersCollapsedByDefault = true,
+  coutriesCollapsedByDefault = true,
+  enabledFilters,
   onClusterFilterChange,
   onCountryFilterChange,
 }: DistributionSidebarProps) {
+  const [clustersColapsed, setClustersCollapsed] = useState(clustersCollapsedByDefault)
+  const [countriesCollapsed, setCountriesCollapsed] = useState(coutriesCollapsedByDefault)
+
+  const availableFilters: { [key: string]: React.ReactNode } = useMemo(
+    () => ({
+      countries: countries && (
+        <CountryFilters
+          countries={countries}
+          onFilterChange={onCountryFilterChange}
+          collapsed={countriesCollapsed}
+          setCollapsed={setCountriesCollapsed}
+        />
+      ),
+      clusters: clusters && (
+        <ClusterFilters
+          clusters={clusters}
+          onFilterChange={onClusterFilterChange}
+          collapsed={clustersColapsed}
+          setCollapsed={setClustersCollapsed}
+        />
+      ),
+    }),
+    [clusters, clustersColapsed, countries, countriesCollapsed, onClusterFilterChange, onCountryFilterChange],
+  )
+
   return (
     <Row noGutters>
-      {clusters && (
-        <Col>
-          <ClusterFilters clusters={clusters} onFilterChange={onClusterFilterChange} />
-        </Col>
-      )}
-
-      {countries && (
-        <Col>
-          <CountryFilters countries={countries} onFilterChange={onCountryFilterChange} />
-        </Col>
-      )}
+      <Col>{enabledFilters.map((filterName) => get(availableFilters, filterName))}</Col>
     </Row>
   )
 }
