@@ -12,6 +12,8 @@ import dynamic from 'next/dynamic'
 import { Link } from 'src/components/Link/Link'
 import { Editable } from 'src/components/Common/Editable'
 
+import { PlotCard } from './PlotCard'
+
 import Intro from '../../../../content/Intro.md'
 
 const ClustersRow = styled(Row)`
@@ -125,6 +127,7 @@ export function MainPage() {
 
           <EditableClusterContent githubUrl={cluster.display_name}>
             <ClusterContent />
+            <PlotCard cluster={cluster} />
             <NextstrainCard cluster={cluster} />
           </EditableClusterContent>
         </Col>

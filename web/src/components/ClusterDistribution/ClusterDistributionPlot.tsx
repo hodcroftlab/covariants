@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-import { DateTime } from 'luxon'
+import React from 'react'
 
 import dynamic from 'next/dynamic'
-import React from 'react'
+import { DateTime } from 'luxon'
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { ClusterDistributionPlotTooltip } from 'src/components/ClusterDistribution/ClusterDistributionPlotTooltip'
 import { ChartContainerInner, ChartContainerOuter } from 'src/components/Common/PlotLayout'
