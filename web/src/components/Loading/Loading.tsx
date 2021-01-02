@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { ReactComponent as LogoNextstrain } from 'src/assets/images/logo.svg'
 import styled from 'styled-components'
@@ -22,11 +22,23 @@ const SpinningLogo = styled(LogoNextstrain)`
   }
 `
 
+const waitBeforeShow = 1000
+
 function Loading() {
+  const [isShown, setIsShown] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsShown(true)
+    }, waitBeforeShow)
+  }, [])
+
   return (
-    <Container title="Loading...">
-      <SpinningLogo />
-    </Container>
+    isShown && (
+      <Container title="Loading...">
+        <SpinningLogo />
+      </Container>
+    )
   )
 }
 

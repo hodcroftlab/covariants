@@ -7,7 +7,7 @@ import { DateTime } from 'luxon'
 
 import { theme } from 'src/theme'
 import { formatDate, formatProportion } from 'src/helpers/format'
-import { getClusterColor } from 'src/io/getClusterColors'
+import { getClusterColor } from 'src/io/getClusters'
 import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
 import { ChartContainerOuter, ChartContainerInner } from 'src/components/Common/PlotLayout'
 import { CountryDistributionPlotTooltip } from './CountryDistributionPlotTooltip'

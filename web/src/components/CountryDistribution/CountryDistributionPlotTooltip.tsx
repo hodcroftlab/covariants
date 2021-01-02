@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 
 import { formatDate, formatInteger } from 'src/helpers/format'
-import { getClusterColor } from 'src/io/getClusterColors'
+import { getClusterColor } from 'src/io/getClusters'
 import { ColoredBox } from '../Common/ColoredBox'
 
 const EPSILON = 1e-2

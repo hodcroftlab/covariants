@@ -1,16 +1,132 @@
-import React from 'react'
-
-import { Editable } from 'src/components/Common/Editable'
+/* eslint-disable camelcase */
+import React, { useMemo, useState, useRef } from 'react'
 import { Layout } from 'src/components/Layout/Layout'
+import { ClusterDatum, getClusterNames, getClusters } from 'src/io/getClusters'
 
-import Readme from '../../../../README.md'
+import styled from 'styled-components'
+import { Col, Row } from 'reactstrap'
+import dynamic from 'next/dynamic'
+
+import { Link } from 'src/components/Link/Link'
+import { Editable } from 'src/components/Common/Editable'
+
+import Intro from '../../../../content/Intro.md'
+
+const ClustersRow = styled(Row)`
+  justify-content: center;
+`
+
+const ClusterCol = styled(Col)`
+  flex-grow: 0;
+`
+
+const ClusterButtonCol = styled(Col)`
+  height: 50px;
+  justify-content: center;
+`
+
+const ClusterCard = styled.div`
+  min-width: 220px;
+  max-width: 400px;
+  margin: 6px 10px;
+  padding: 0;
+  box-shadow: ${(props) => props.theme.shadows.light};
+  border-radius: 3px;
+  cursor: pointer;
+`
+
+const ColorPill = styled.div<{ $color: string }>`
+  background-color: ${(props) => props.$color};
+  width: 30px;
+  height: 100%;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+`
+
+const ClusterTitle = styled.h1`
+  font-size: 1.5rem;
+  margin: auto;
+`
+
+const EditableClusterContent = styled(Editable)`
+  min-height: 1000px;
+`
+
+export interface ClusterButtonProps {
+  index: number
+  cluster: ClusterDatum
+  onClick(cluster: string): void
+}
+
+export function ClusterButton({ cluster, onClick, index }: ClusterButtonProps) {
+  const { display_name, col } = cluster
+  const handleClick = useMemo(() => () => onClick(display_name), [display_name, onClick])
+
+  return (
+    <ClusterCol>
+      <ClusterCard onClick={handleClick}>
+        <Row noGutters>
+          <ClusterButtonCol className="d-flex">
+            <ColorPill $color={col} />
+            <ClusterTitle>{display_name}</ClusterTitle>
+          </ClusterButtonCol>
+        </Row>
+      </ClusterCard>
+    </ClusterCol>
+  )
+}
+
+const getClusterContent = (cluster: string) =>
+  dynamic(() => import(`../../../../content/clusters/${cluster}.md`), { ssr: true })
+
+const clusterNames = getClusterNames()
+const clusters = getClusters()
 
 export function MainPage() {
+  const [cluster, setCluster] = useState(clusterNames[0])
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const scrollToClusters = () => scrollRef.current?.scrollIntoView()
+
+  const handleClusterButtonClick = (cluster: string) => () => {
+    setCluster(cluster)
+    scrollToClusters()
+  }
+
+  const ClusterContent = getClusterContent(cluster)
+
   return (
     <Layout>
-      <Editable githubUrl={'Index'}>
-        <Readme />
-      </Editable>
+      <Row noGutters>
+        <Col>
+          <Editable githubUrl={'Intro'}>
+            <Intro />
+
+            <p>
+              {'Check out our '}
+              <Link href="/faq">{'"Frequently asked questions"'}</Link>
+              {' section for more details.'}
+            </p>
+          </Editable>
+
+          <div ref={scrollRef} />
+          <Editable githubUrl={'TODO'}>
+            <ClustersRow noGutters>
+              {clusters.map((cluster, index) => (
+                <ClusterButton
+                  key={cluster.display_name}
+                  cluster={cluster}
+                  onClick={handleClusterButtonClick(cluster.display_name)}
+                  index={index}
+                />
+              ))}
+            </ClustersRow>
+          </Editable>
+
+          <EditableClusterContent githubUrl={cluster}>
+            <ClusterContent />
+          </EditableClusterContent>
+        </Col>
+      </Row>
     </Layout>
   )
 }

@@ -125,5 +125,8 @@ if __name__ == '__main__':
     with open(os.path.join(output_path, "clusterColors.json"), "w") as fh:
         json.dump(cluster_colors, fh, indent=2, sort_keys=True)
 
+    with open(os.path.join(output_path, "clusters.json"), "w") as fh:
+        json.dump(clusters, fh, indent=2, sort_keys=True)
+
     with open(os.path.join(output_path, "countryStyles.json"), "w") as fh:
         json.dump(country_styles, fh, indent=2, sort_keys=True)

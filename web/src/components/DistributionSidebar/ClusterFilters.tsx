@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react'
 
 import { CardBody, Form, FormGroup, Input, Label } from 'reactstrap'
 
-import { getClusterColor } from 'src/io/getClusterColors'
+import { getClusterColor } from 'src/io/getClusters'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 import type { ClusterState } from 'src/components/CountryDistribution/CountryDistributionPage'
