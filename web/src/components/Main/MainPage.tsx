@@ -1,7 +1,8 @@
 /* eslint-disable camelcase */
 import React, { useMemo, useState, useRef } from 'react'
+import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 import { Layout } from 'src/components/Layout/Layout'
-import { ClusterDatum, getClusterNames, getClusters } from 'src/io/getClusters'
+import { ClusterDatum, getClusters } from 'src/io/getClusters'
 
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
@@ -11,6 +12,7 @@ import { Link } from 'src/components/Link/Link'
 import { Editable } from 'src/components/Common/Editable'
 
 import Intro from '../../../../content/Intro.md'
+import { LinkExternal } from '../Link/LinkExternal'
 
 const ClustersRow = styled(Row)`
   justify-content: center;
@@ -52,6 +54,11 @@ const EditableClusterContent = styled(Editable)`
   min-height: 1000px;
 `
 
+const IFrame = styled.iframe`
+  width: 100%;
+  height: 500px;
+`
+
 export interface ClusterButtonProps {
   index: number
   cluster: ClusterDatum
@@ -79,20 +86,19 @@ export function ClusterButton({ cluster, onClick, index }: ClusterButtonProps) {
 const getClusterContent = (cluster: string) =>
   dynamic(() => import(`../../../../content/clusters/${cluster}.md`), { ssr: true })
 
-const clusterNames = getClusterNames()
 const clusters = getClusters()
 
 export function MainPage() {
-  const [cluster, setCluster] = useState(clusterNames[0])
+  const [cluster, setCluster] = useState(clusters[0])
   const scrollRef = useRef<HTMLDivElement>(null)
   const scrollToClusters = () => scrollRef.current?.scrollIntoView()
 
-  const handleClusterButtonClick = (cluster: string) => () => {
+  const handleClusterButtonClick = (cluster: ClusterDatum) => () => {
     setCluster(cluster)
     scrollToClusters()
   }
 
-  const ClusterContent = getClusterContent(cluster)
+  const ClusterContent = getClusterContent(cluster.display_name)
 
   return (
     <Layout>
@@ -115,15 +121,26 @@ export function MainPage() {
                 <ClusterButton
                   key={cluster.display_name}
                   cluster={cluster}
-                  onClick={handleClusterButtonClick(cluster.display_name)}
+                  onClick={handleClusterButtonClick(cluster)}
                   index={index}
                 />
               ))}
             </ClustersRow>
           </Editable>
 
-          <EditableClusterContent githubUrl={cluster}>
+          <EditableClusterContent githubUrl={cluster.display_name}>
             <ClusterContent />
+
+            <LinkExternal href={cluster.build_url}>{`Dedicated Nextstrain build`}</LinkExternal>
+
+            <IFrame
+              src={cluster.build_url}
+              referrerPolicy="no-referrer"
+              loading="lazy"
+              frameBorder={0}
+              allowFullScreen
+              seamless
+            />
           </EditableClusterContent>
         </Col>
       </Row>

@@ -105,6 +105,34 @@ def convert_per_cluster_data(cluster_names):
     return per_cluster_data_output
 
 
+# HACK: Copied from `allClusterDynamics.py:355`
+# TODO: deduplicate
+cluster_url_params = {
+    "S:N501": "c=gt-S_501&f_region=Europe",
+    "S:Y453F": "c=gt-S_453&f_region=Europe",
+}
+
+
+def get_build_url(cluster):
+    build_name = cluster['build_name']
+    display_name = cluster['display_name']
+
+    url_params = "f_region=Europe"
+    try:
+        url_params = cluster_url_params[display_name]
+    except KeyError:
+        pass
+
+    return f"https://nextstrain.org/groups/neherlab/ncov/{build_name}?{url_params}"
+
+
+def add_cluster_properties(cluster):
+    result = {}
+    result.update(cluster)
+    result.update({'build_url': get_build_url(cluster)})
+    return result
+
+
 if __name__ == '__main__':
     # NOTE: we exclude DanishCluster
     clusters.pop("DanishCluster", None)
@@ -121,7 +149,7 @@ if __name__ == '__main__':
     with open(os.path.join(output_path, "perClusterData.json"), "w") as fh:
         json.dump(per_cluster_data_output, fh, indent=2, sort_keys=True)
 
-    clusters = [v for _, v in clusters.items()]
+    clusters = [add_cluster_properties(cluster) for _, cluster in clusters.items()]
     with open(os.path.join(output_path, "clusters.json"), "w") as fh:
         json.dump({'clusters': clusters}, fh, indent=2, sort_keys=True)
 

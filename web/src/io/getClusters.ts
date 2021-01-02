@@ -5,6 +5,7 @@ const CLUSTER_COLOR_UNKNOWN = '#555555' as const
 
 export type ClusterDatum = {
   build_name: string
+  build_url: string
   cluster_data: unknown[]
   col: string
   country_info: unknown[]
@@ -12,8 +13,8 @@ export type ClusterDatum = {
   snps: number[]
 }
 
-export function getClusters() {
-  return Object.values(clustersJson)
+export function getClusters(): ClusterDatum[] {
+  return clustersJson.clusters
 }
 
 export function getClusterNames() {
