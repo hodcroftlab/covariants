@@ -8,10 +8,10 @@ import { ClusterDistributionPlotTooltip } from 'src/components/ClusterDistributi
 import { ChartContainerInner, ChartContainerOuter } from 'src/components/Common/PlotLayout'
 import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
 
-import { PLOT_ASPECT_RATIO } from 'src/constants'
 import { formatDate, formatProportion } from 'src/helpers/format'
 import { lineStyleToStrokeDashArray } from 'src/helpers/lineStyleToStrokeDashArray'
 import { getCountryColor, getCountryStyle } from 'src/io/getCountryColor'
+import { theme } from 'src/theme'
 
 const margin = { left: -20, top: 5, bottom: 5, right: 10 }
 
@@ -38,7 +38,7 @@ export function ClusterDistributionPlotComponent({ country_names, distribution }
   return (
     <ChartContainerOuter>
       <ChartContainerInner>
-        <ResponsiveContainer aspect={PLOT_ASPECT_RATIO}>
+        <ResponsiveContainer aspect={theme.plot.aspectRatio}>
           <LineChart margin={margin} data={data}>
             <XAxis dataKey="week" tickFormatter={formatDate} tick={tickStyle} allowDataOverflow />
             <YAxis tickFormatter={formatProportion} domain={[0, 1]} tick={tickStyle} allowDataOverflow />

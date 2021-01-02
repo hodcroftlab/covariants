@@ -139,6 +139,11 @@ export const uploadZone = {
   },
 }
 
+export const plot = {
+  titleFontSize: '1.25rem',
+  aspectRatio: 1.88,
+}
+
 export const theme = {
   ...basicColors,
   ...themeColors,
@@ -147,6 +152,7 @@ export const theme = {
   font,
   shadows,
   uploadZone,
+  plot,
 }
 
 export type Theme = typeof theme

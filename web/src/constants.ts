@@ -15,5 +15,3 @@ export const URL_GITHUB_FRIENDLY = 'TODO' as const
 
 export const TWITTER_USERNAME_RAW = 'TODO' as const
 export const TWITTER_USERNAME_FRIENDLY = `@${TWITTER_USERNAME_RAW}`
-
-export const PLOT_ASPECT_RATIO = 1.5 as const

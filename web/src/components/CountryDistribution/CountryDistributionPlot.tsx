@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { DateTime } from 'luxon'
 
-import { PLOT_ASPECT_RATIO } from 'src/constants'
+import { theme } from 'src/theme'
 import { formatDate, formatProportion } from 'src/helpers/format'
 import { getClusterColor } from 'src/io/getClusterColors'
 import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
@@ -42,7 +42,7 @@ export function CountryDistributionPlotComponent({ cluster_names, distribution }
   return (
     <ChartContainerOuter>
       <ChartContainerInner>
-        <ResponsiveContainer width="99%" aspect={PLOT_ASPECT_RATIO} debounce={0}>
+        <ResponsiveContainer width="99%" aspect={theme.plot.aspectRatio} debounce={0}>
           <AreaChart margin={margin} data={data} stackOffset="expand">
             <XAxis dataKey="week" tickFormatter={formatDate} tick={tickStyle} allowDataOverflow />
             <YAxis tickFormatter={formatProportion} domain={[0, 1]} tick={tickStyle} allowDataOverflow />

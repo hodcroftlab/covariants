@@ -3,6 +3,7 @@ import React from 'react'
 
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
+import { PlotCardTitle } from 'src/components/Common/PlotCardTitle'
 import { getClusterColor } from 'src/io/getClusterColors'
 import {
   ClusterDistributionDatum,
@@ -23,10 +24,10 @@ export function ClusterDistributionPlotCard({
   return (
     <Card className="m-2">
       <CardHeader className="d-flex flex-sm-column">
-        <h3 className="mx-auto">
+        <PlotCardTitle>
           <ColoredBox $color={getClusterColor(cluster)} $size={20} $aspect={1.66} />
           <span>{cluster}</span>
-        </h3>
+        </PlotCardTitle>
       </CardHeader>
 
       <CardBody className="p-0">
