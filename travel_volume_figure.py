@@ -52,7 +52,7 @@ spain_frequency = {k: c/tot for k, c, tot in zip(*non_zero_counts(cluster_data, 
 #fs=14
 fs=12
 fmt = 'pdf'
-countries = ["Switzerland", "Spain", "United Kingdom", "Netherlands", "France", "Ireland", "Denmark", "Scotland", "Wales", "Belgium"]
+countries = ["Switzerland", "Spain", "England", "Netherlands", "France", "Ireland", "Denmark", "Scotland", "Wales", "Belgium"]
 
 fig, axs = plt.subplots(2,1, figsize=(6,7), sharex=True)
 for country in countries:
