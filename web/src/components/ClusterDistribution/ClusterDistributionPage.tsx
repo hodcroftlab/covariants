@@ -118,7 +118,6 @@ export function ClusterDistributionPage() {
             <WrapperFlex>
               <SidebarFlex>
                 <DistributionSidebar
-                  clusters={clusters}
                   countries={countries}
                   onClusterFilterChange={handleClusterCheckedChange}
                   onCountryFilterChange={handleCountryCheckedChange}

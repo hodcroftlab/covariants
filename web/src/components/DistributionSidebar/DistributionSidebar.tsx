@@ -7,8 +7,8 @@ import { ClusterFilters } from './ClusterFilters'
 import { CountryFilters } from './CountryFilters'
 
 export interface DistributionSidebarProps {
-  clusters: ClusterState
-  countries: CountryState
+  clusters?: ClusterState
+  countries?: CountryState
   onClusterFilterChange(cluster: string): void
   onCountryFilterChange(country: string): void
 }
@@ -21,13 +21,17 @@ export function DistributionSidebar({
 }: DistributionSidebarProps) {
   return (
     <Row noGutters>
-      <Col>
-        <ClusterFilters clusters={clusters} onFilterChange={onClusterFilterChange} />
-      </Col>
+      {clusters && (
+        <Col>
+          <ClusterFilters clusters={clusters} onFilterChange={onClusterFilterChange} />
+        </Col>
+      )}
 
-      <Col>
-        <CountryFilters countries={countries} onFilterChange={onCountryFilterChange} />
-      </Col>
+      {countries && (
+        <Col>
+          <CountryFilters countries={countries} onFilterChange={onCountryFilterChange} />
+        </Col>
+      )}
     </Row>
   )
 }

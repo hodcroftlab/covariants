@@ -121,7 +121,6 @@ export function CountryDistributionPage() {
               <SidebarFlex>
                 <DistributionSidebar
                   clusters={clusters}
-                  countries={countries}
                   onClusterFilterChange={handleClusterCheckedChange}
                   onCountryFilterChange={handleCountryCheckedChange}
                 />
