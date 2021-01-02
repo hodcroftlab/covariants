@@ -22,7 +22,7 @@ const SpinningLogo = styled(LogoNextstrain)`
   }
 `
 
-const waitBeforeShow = 1000
+const waitBeforeShow = 500
 
 function Loading() {
   const [isShown, setIsShown] = useState(false)
@@ -33,12 +33,14 @@ function Loading() {
     }, waitBeforeShow)
   }, [])
 
+  if (!isShown) {
+    return null
+  }
+
   return (
-    isShown && (
-      <Container title="Loading...">
-        <SpinningLogo />
-      </Container>
-    )
+    <Container title="Loading...">
+      <SpinningLogo />
+    </Container>
   )
 }
 

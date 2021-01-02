@@ -1,8 +1,11 @@
-import React, { useState, useMemo } from 'react'
+/* eslint-disable camelcase */
+import dynamic from 'next/dynamic'
+import React, { useState, useMemo, useCallback } from 'react'
 import { MdEdit } from 'react-icons/md'
 
 import { CardBody, Col, Row } from 'reactstrap'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
+import Loading from 'src/components/Loading/Loading'
 import styled from 'styled-components'
 
 import { theme } from 'src/theme'
@@ -30,7 +33,8 @@ const IframeCardBody = styled(CardBody)`
 
 const IframeCol = styled(Col)``
 
-const Iframe = styled.iframe`
+const Iframe = styled.iframe<{ $visible: boolean }>`
+  visibility: ${(props) => (props.$visible ? 'visible' : 'hidden')};
   width: 100%;
   height: 500px;
   margin: 0;
@@ -56,30 +60,43 @@ export function NextstrainCardTitle({ cluster }: NextstrainCardProps) {
   )
 }
 
+export interface NextstrainIframeProps {
+  build_url: string
+  hidden: boolean
+}
+
+export function NextstrainIframeImpl({ build_url, hidden }: NextstrainIframeProps) {
+  const [loaded, setLoaded] = useState(false)
+  const handleOnLoad = useCallback(() => setLoaded(true), [setLoaded])
+
+  return (
+    <Iframe
+      $visible={loaded}
+      key={build_url}
+      src={build_url}
+      referrerPolicy="no-referrer"
+      loading="lazy"
+      frameBorder={0}
+      onLoad={handleOnLoad}
+      allowFullScreen
+      seamless
+    />
+  )
+}
+
+const NextstrainIframe = dynamic(() => Promise.resolve(NextstrainIframeImpl), { ssr: false, loading: Loading })
+
 export function NextstrainCard({ cluster }: NextstrainCardProps) {
   const [collapsed, setCollapsed] = useState(true)
   const title = useMemo(() => <NextstrainCardTitle cluster={cluster} />, [cluster])
-
-  const nextstrain = useMemo(
-    () => (
-      <Iframe
-        hidden={collapsed}
-        src={collapsed ? undefined : cluster.build_url}
-        referrerPolicy="no-referrer"
-        loading="lazy"
-        frameBorder={0}
-        allowFullScreen
-        seamless
-      />
-    ),
-    [cluster.build_url, collapsed],
-  )
 
   return (
     <CardCollapsible title={title} collapsed={collapsed} setCollapsed={setCollapsed}>
       <IframeCardBody>
         <Row noGutters>
-          <IframeCol>{nextstrain}</IframeCol>
+          <IframeCol>
+            <NextstrainIframe hidden={collapsed} key={cluster.build_url} build_url={cluster.build_url} />
+          </IframeCol>
         </Row>
       </IframeCardBody>
     </CardCollapsible>
