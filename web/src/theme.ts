@@ -142,6 +142,8 @@ export const uploadZone = {
 export const plot = {
   titleFontSize: '1.25rem',
   aspectRatio: 1.88,
+  margin: { left: -20, top: 5, bottom: 5, right: 10 },
+  tickStyle: { fontSize: 12 },
 }
 
 export const theme = {

@@ -13,10 +13,6 @@ import { lineStyleToStrokeDashArray } from 'src/helpers/lineStyleToStrokeDashArr
 import { getCountryColor, getCountryStyle } from 'src/io/getCountryColor'
 import { theme } from 'src/theme'
 
-const margin = { left: -20, top: 5, bottom: 5, right: 10 }
-
-const tickStyle = { fontSize: 12 }
-
 export interface ClusterDistributionDatum {
   week: string
   frequencies: {
@@ -39,9 +35,9 @@ export function ClusterDistributionPlotComponent({ country_names, distribution }
     <ChartContainerOuter>
       <ChartContainerInner>
         <ResponsiveContainer aspect={theme.plot.aspectRatio}>
-          <LineChart margin={margin} data={data}>
-            <XAxis dataKey="week" tickFormatter={formatDate} tick={tickStyle} allowDataOverflow />
-            <YAxis tickFormatter={formatProportion} domain={[0, 1]} tick={tickStyle} allowDataOverflow />
+          <LineChart margin={theme.plot.margin} data={data}>
+            <XAxis dataKey="week" tickFormatter={formatDate} tick={theme.plot.tickStyle} allowDataOverflow />
+            <YAxis tickFormatter={formatProportion} domain={[0, 1]} tick={theme.plot.tickStyle} allowDataOverflow />
             <Tooltip content={ClusterDistributionPlotTooltip} isAnimationActive={false} />
             {country_names.map((country, i) => (
               <Line

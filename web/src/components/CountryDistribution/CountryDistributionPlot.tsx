@@ -12,10 +12,6 @@ import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
 import { ChartContainerOuter, ChartContainerInner } from 'src/components/Common/PlotLayout'
 import { CountryDistributionPlotTooltip } from './CountryDistributionPlotTooltip'
 
-const margin = { left: -20, top: 5, bottom: 5, right: 10 }
-
-const tickStyle = { fontSize: 12 }
-
 export interface CountryDistributionDatum {
   week: string
   total_sequences: number
@@ -43,9 +39,9 @@ export function CountryDistributionPlotComponent({ cluster_names, distribution }
     <ChartContainerOuter>
       <ChartContainerInner>
         <ResponsiveContainer width="99%" aspect={theme.plot.aspectRatio} debounce={0}>
-          <AreaChart margin={margin} data={data} stackOffset="expand">
-            <XAxis dataKey="week" tickFormatter={formatDate} tick={tickStyle} allowDataOverflow />
-            <YAxis tickFormatter={formatProportion} domain={[0, 1]} tick={tickStyle} allowDataOverflow />
+          <AreaChart margin={theme.plot.margin} data={data} stackOffset="expand">
+            <XAxis dataKey="week" tickFormatter={formatDate} tick={theme.plot.tickStyle} allowDataOverflow />
+            <YAxis tickFormatter={formatProportion} domain={[0, 1]} tick={theme.plot.tickStyle} allowDataOverflow />
             <Tooltip content={CountryDistributionPlotTooltip} isAnimationActive={false} />
             {cluster_names.map((cluster, i) => (
               <Area
