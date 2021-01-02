@@ -124,6 +124,15 @@ export const link = {
   },
 }
 
+export const iframe = {
+  nextstrain: {
+    aspectRatio: {
+      small: 9 / 16,
+      big: 16 / 9,
+    },
+  },
+}
+
 export const theme = {
   ...basicColors,
   ...themeColors,
@@ -133,6 +142,7 @@ export const theme = {
   font,
   shadows,
   plot,
+  iframe,
 }
 
 export type Theme = typeof theme

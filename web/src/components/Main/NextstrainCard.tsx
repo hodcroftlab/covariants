@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import React, { useState, useMemo, useCallback } from 'react'
 import { MdEdit } from 'react-icons/md'
 
+import AspectRatio from 'react-aspect-ratio'
 import { CardBody, Col, Row } from 'reactstrap'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 import Loading from 'src/components/Loading/Loading'
@@ -36,7 +37,7 @@ const IframeCol = styled(Col)``
 const Iframe = styled.iframe<{ $visible: boolean }>`
   visibility: ${(props) => (props.$visible ? 'visible' : 'hidden')};
   width: 100%;
-  height: 500px;
+  height: 100%;
   margin: 0;
   padding: 0;
   border: none;
@@ -95,7 +96,9 @@ export function NextstrainCard({ cluster }: NextstrainCardProps) {
       <IframeCardBody>
         <Row noGutters>
           <IframeCol>
-            <NextstrainIframe hidden={collapsed} key={cluster.build_url} build_url={cluster.build_url} />
+            <AspectRatio ratio={theme.iframe.nextstrain.aspectRatio.big}>
+              <NextstrainIframe hidden={collapsed} key={cluster.build_url} build_url={cluster.build_url} />
+            </AspectRatio>
           </IframeCol>
         </Row>
       </IframeCardBody>
