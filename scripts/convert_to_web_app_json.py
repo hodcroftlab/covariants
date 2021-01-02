@@ -121,8 +121,9 @@ if __name__ == '__main__':
     with open(os.path.join(output_path, "perClusterData.json"), "w") as fh:
         json.dump(per_cluster_data_output, fh, indent=2, sort_keys=True)
 
+    clusters = [v for _, v in clusters.items()]
     with open(os.path.join(output_path, "clusters.json"), "w") as fh:
-        json.dump(clusters, fh, indent=2, sort_keys=True)
+        json.dump({'clusters': clusters}, fh, indent=2, sort_keys=True)
 
     with open(os.path.join(output_path, "countryStyles.json"), "w") as fh:
         json.dump(country_styles, fh, indent=2, sort_keys=True)
