@@ -126,9 +126,23 @@ export function MainPage() {
           </Editable>
 
           <EditableClusterContent githubUrl={cluster.display_name}>
-            <ClusterContent />
-            <PlotCard cluster={cluster} />
-            <NextstrainCard cluster={cluster} />
+            <Row noGutters className="mb-2">
+              <Col>
+                <ClusterContent />
+              </Col>
+            </Row>
+
+            <Row noGutter className="mb-2" s>
+              <Col>
+                <PlotCard cluster={cluster} />
+              </Col>
+            </Row>
+
+            <Row noGutters className="mb-2">
+              <Col>
+                <NextstrainCard cluster={cluster} />
+              </Col>
+            </Row>
           </EditableClusterContent>
         </Col>
       </Row>
