@@ -368,23 +368,26 @@ for clus in clus_to_run:
             ordered_country.to_csv(overall_tables_file, sep="\t", mode='a')
 
         mrk_tbl = ordered_country.to_markdown()
-        col = ""
-        filt = "f_region=Europe"
-        if clus is "S501":
-        #    col = "c=gt-S_501&"
-            filt = ""
-        if clus is "S69":
-            col = "c=gt-S_69,501,453&"
-            filt = ""
-        if clus is "S453":
-            col = "c=gt-S_453&"
+
+        url_options = "f_region=Europe"
+        if 'url_params' in clusters[clus]:
+            url_options = clusters[clus]['url_params']
+
+#        if clus is "S501":
+#        #    col = "c=gt-S_501&"
+#            filt = ""
+#        if clus is "S69":
+#            col = "c=gt-S_69,501,453&"
+#            filt = ""
+#        if clus is "S453":
+#            col = "c=gt-S_453&"
 
         # don't print DanishCluster in 'all tables'
         # only print 'all tables' if running 'all clusters'
         if "all" in clus_answer and clus != "DanishCluster":
             with open(f"{tables_path}all_tables.md", 'a') as fh:
                 fh.write(f'\n\n## {clus_display}\n')
-                fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{col}{filt})\n\n")
+                fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{url_params})\n\n")
                 if clus is "S501":
                     fh.write(f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
                     fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
@@ -395,7 +398,7 @@ for clus in clus_to_run:
 
         with open(f"{tables_path}{clus_display}_table.md", 'w') as fh:
             fh.write(f'\n\n## {clus_display}\n')
-            fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{col}{filt})\n\n")
+            fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{url_params})\n\n")
             if clus is "S501":
                 fh.write(f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
                 fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
