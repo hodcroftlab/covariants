@@ -88,25 +88,6 @@ if print_answer in ["y", "Y", "yes", "YES", "Yes"]:
     print_files = True
 print_files2 = True
 
-if print_files:
-    #clean these files so don't append to last run.
-    with open(f"{tables_path}all_tables.md", 'w') as fh:
-        fh.write('\n')
-        fh.write("# Overview of Clusters/Mutations in Europe\n"	
-        "[Overview of proportion of clusters in selected countries](country_overview.md)\n\n"
-        "In the graphs below, countries are displayed in the chart if the country has at least 20 sequences present in the cluster.\n\n"
-        "# Mutation Tables and Graphs\n"
-        "- [20A.EU1](#20aeu1) _(S:A222V)_ \n"
-        "- [20A.EU2](#20aeu2) _(S:S477N)_ \n"
-        "- [S:S98F](#ss98f) \n"
-        "- [S:D80Y](#sd80y) \n"
-        "- [S:N439K](#sn439k) \n"
-        "- [S:Y453F](#sy453f) \n"
-        "- [S:N501](#sn501) \n"
-        "- [S:A626S](#sa626s)\n\n")
-    with open(overall_tables_file, 'w') as fh:
-        fh.write('\n')
-
 #default is 222, but ask user what they want - or run all.
 
 clus_to_run = ["S222"]
@@ -132,6 +113,28 @@ while reask:
         print("Using default of S222\n")
         reask = False
 print("These clusters will be run: ", clus_to_run)
+
+# if running all clusters, clear file so can write again.
+if print_files and "all" in clus_answer:
+    #clean these files so don't append to last run.
+    with open(f"{tables_path}all_tables.md", 'w') as fh:
+        fh.write('\n')
+        fh.write("# Overview of Clusters/Mutations in Europe\n"	
+        "[Overview of proportion of clusters in selected countries](country_overview.md)\n\n"
+        "In the graphs below, countries are displayed in the chart if the country has at least 20 sequences present in the cluster.\n\n"
+        "# Mutation Tables and Graphs\n"
+        "- [20A.EU1](#20aeu1) _(S:A222V)_ \n"
+        "- [20A.EU2](#20aeu2) _(S:S477N)_ \n"
+        "- [S:N501](#sn501) \n"
+        "- [S:H69-](#sh69-) \n"
+        "- [S:N439K](#sn439k) \n"
+        "- [S:Y453F](#sy453f) \n"
+        "- [S:S98F](#ss98f) \n"
+        "- [S:D80Y](#sd80y) \n"
+        "- [S:A626S](#sa626s) \n"
+        "- [S:V1122L](#sv1122l) \n\n")
+    with open(overall_tables_file, 'w') as fh:
+        fh.write('\n')
 
 json_output = {}
 
@@ -357,32 +360,42 @@ for clus in clus_to_run:
 
     if print_files:
         ordered_country.to_csv(table_file, sep="\t")
-        with open(overall_tables_file, 'a') as fh:
-            fh.write(f'\n\n## {clus_display}\n')
+        #only write if doing all clusters
+        if "all" in clus_answer:
+            with open(overall_tables_file, 'a') as fh:
+                fh.write(f'\n\n## {clus_display}\n')
 
-        ordered_country.to_csv(overall_tables_file, sep="\t", mode='a')
+            ordered_country.to_csv(overall_tables_file, sep="\t", mode='a')
 
         mrk_tbl = ordered_country.to_markdown()
         col = ""
+        filt = "f_region=Europe"
         if clus is "S501":
-            col = "c=gt-S_501&"
+        #    col = "c=gt-S_501&"
+            filt = ""
+        if clus is "S69":
+            col = "c=gt-S_69,501,453&"
+            filt = ""
         if clus is "S453":
             col = "c=gt-S_453&"
 
-        with open(f"{tables_path}all_tables.md", 'a') as fh:
-            fh.write(f'\n\n## {clus_display}\n')
-            fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{col}f_region=Europe)\n\n")
-            if clus is "S501":
-                fh.write(f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
-                fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
-                          "refer to _all_ these mutations (Y, S, T).\n")
-            fh.write(mrk_tbl)
-            fh.write("\n\n")
-            fh.write(f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)")
+        # don't print DanishCluster in 'all tables'
+        # only print 'all tables' if running 'all clusters'
+        if "all" in clus_answer and clus != "DanishCluster":
+            with open(f"{tables_path}all_tables.md", 'a') as fh:
+                fh.write(f'\n\n## {clus_display}\n')
+                fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{col}{filt})\n\n")
+                if clus is "S501":
+                    fh.write(f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
+                    fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
+                            "refer to _all_ these mutations (Y, S, T).\n")
+                fh.write(mrk_tbl)
+                fh.write("\n\n")
+                fh.write(f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)")
 
         with open(f"{tables_path}{clus_display}_table.md", 'w') as fh:
             fh.write(f'\n\n## {clus_display}\n')
-            fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{col}f_region=Europe)\n\n")
+            fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{col}{filt})\n\n")
             if clus is "S501":
                 fh.write(f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
                 fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
@@ -464,8 +477,12 @@ for clus in clus_to_run:
         else:
             return 5
 
-    # Only plot countries with >=20 seqs
-    countries_to_plot = country_info_df[country_info_df.num_seqs > 20].index
+    # Only plot countries with >= X seqs
+    min_to_plot = 20
+    if clus == "S222":
+        min_to_plot = 25
+
+    countries_to_plot = country_info_df[country_info_df.num_seqs > min_to_plot].index
 
     if len(countries_to_plot) > len(colors):
         print("\nWARNING!! NOT ENOUGH COLORS FOR PLOTTING!")
