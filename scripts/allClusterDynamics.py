@@ -369,9 +369,9 @@ for clus in clus_to_run:
 
         mrk_tbl = ordered_country.to_markdown()
 
-        url_options = "f_region=Europe"
+        url_params = "f_region=Europe"
         if 'url_params' in clusters[clus]:
-            url_options = clusters[clus]['url_params']
+            url_params = clusters[clus]['url_params']
 
 #        if clus is "S501":
 #        #    col = "c=gt-S_501&"
