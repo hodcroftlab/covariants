@@ -108,7 +108,8 @@ def convert_per_cluster_data(cluster_names):
 # HACK: Copied from `allClusterDynamics.py:355`
 # TODO: deduplicate
 cluster_url_params = {
-    "S:N501": "c=gt-S_501&f_region=Europe",
+    "S:N501": "", # don't have Europe filter
+    "S:H69-": "c=gt-S_69,501,453", # color by mutations, no Europe filter
     "S:Y453F": "c=gt-S_453&f_region=Europe",
 }
 
