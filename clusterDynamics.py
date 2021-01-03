@@ -280,7 +280,7 @@ for clus in clus_to_run:
     total_data=total_data.sort_index()
     cluster_data=cluster_data.sort_index()
     width = 1
-    smoothing = np.exp(-np.arange(-10,10)**2/2/width**2)
+    smoothing = np.exp(-np.arange(-10,11)**2/2/width**2)
     smoothing /= smoothing.sum()
 
     def marker_size(n):

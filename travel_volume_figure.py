@@ -1,3 +1,4 @@
+from collections import defaultdict
 import numpy as np
 import matplotlib.pyplot as plt
 from travel_data import *
@@ -5,6 +6,23 @@ from colors_and_countries import *
 from helpers import *
 
 figure_path = '../cluster_scripts/figures/'
+
+
+def get_total_cluster(country, cases, frequency, weeks=None):
+    if weeks is None:
+        weeks = list(range(15,52))
+
+    dates = []
+    ncases = []
+    ncases_other = []
+    summer_average = np.mean([x for d,x in frequency.items() if d.month>7])
+    for week in weeks:
+        d = datetime.datetime.strptime(f"2020-W{week}-1", '%G-W%V-%u')
+        ncases.append(cases[country][d]*frequency.get(d, 0 if d.month<7 else summer_average))
+        ncases_other.append(cases[country][d]*(1-frequency.get(d, 0 if d.month<7 else summer_average)))
+        dates.append(d)
+
+    return {"cases":ncases, "cases_other":ncases_other, "dates":dates}
 
 
 def get_import_frequency(country, cases, frequency, weeks=None, avg_cases_per_intro=1):
@@ -45,14 +63,21 @@ def get_import_frequency(country, cases, frequency, weeks=None, avg_cases_per_in
 
 # Need to run `clusterDynamics.py` on 'S222' before doing this
 # (can now run without printing files)
+width = 1
+smoothing = np.exp(-np.arange(-10,11)**2/2/width**2)
+smoothing /= smoothing.sum()
 
-spain_frequency = {k: c/tot for k, c, tot in zip(*non_zero_counts(cluster_data, total_data, "Spain"))}
+spain_frequency = {k: c/tot for k, c, tot in zip(*non_zero_counts(cluster_data, total_data, "Spain", smoothing=smoothing))}
 
 
 #fs=14
 fs=12
 fmt = 'pdf'
-countries = ["Switzerland", "Spain", "England", "Netherlands", "France", "Ireland", "Denmark", "Scotland", "Wales", "Belgium"]
+countries = ["Switzerland", "Spain", "England", "Netherlands", "France",
+             "Ireland", "Denmark", "Scotland", "Wales", "Belgium", "Germany",
+             #"Sweden",
+             # "Italy",
+             ]
 
 fig, axs = plt.subplots(2,1, figsize=(6,7), sharex=True)
 for country in countries:
@@ -93,7 +118,7 @@ fig = plt.figure()
 
 #for a simpler plot of most interesting countries use this:
 for country in countries:
-    week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, country)
+    week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, country,smoothing=smoothing)
     week_as_date, cluster_count, total_count = trim_last_data_point(week_as_date, cluster_count, total_count, frac=0.1, keep_count=10)
     days = np.array([x.toordinal() for x in week_as_date])
     cluster_freq = cluster_count/total_count
@@ -116,3 +141,29 @@ fig.autofmt_xdate(rotation=30)
 plt.ylabel('frequency')
 plt.tight_layout()
 plt.savefig(figure_path+f'travel_scaled.{fmt}')
+
+countries = ["Switzerland", "United Kingdom", "Netherlands", "France",
+             "Ireland", "Denmark", "Belgium", "Germany",
+             "Sweden",
+             "Italy",
+             "Spain",
+             ]
+case_data = load_case_data(countries)
+
+fig=plt.figure()
+total_not_spain = defaultdict(int)
+for country in countries:
+    cluster_freq = {k: c/tot for k, c, tot in zip(*non_zero_counts(cluster_data, total_data, country, smoothing=smoothing))}
+    res = get_total_cluster(country, case_data, cluster_freq)
+    if country!="Spain":
+        for k,v in zip(res["dates"], res["cases"]):
+            total_not_spain[k] += v
+    else:
+        plt.plot(res['dates'], res['cases'], label=country, c=country_styles[country]['c'], ls=country_styles[country].get('ls', '-'), lw=3)
+
+plt.plot([k for k in total_not_spain.keys()], [k for k in total_not_spain.values()],
+         label="Central/Western Europe without Spain", c='k', ls='-', lw=3)
+
+plt.legend(fontsize=fs)
+fig.autofmt_xdate(rotation=30)
+plt.tight_layout()
