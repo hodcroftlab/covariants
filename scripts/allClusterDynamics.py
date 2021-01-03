@@ -479,8 +479,8 @@ for clus in clus_to_run:
 
     # Only plot countries with >= X seqs
     min_to_plot = 20
-    if clus == "S222":
-        min_to_plot = 25
+    #if clus == "S222":
+    #    min_to_plot = 200
 
     countries_to_plot = country_info_df[country_info_df.num_seqs > min_to_plot].index
 
