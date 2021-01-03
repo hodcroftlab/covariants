@@ -110,7 +110,7 @@ def convert_per_cluster_data(cluster_names):
 cluster_url_params = {
     "S:N501": "", # don't have Europe filter
     "S:H69-": "c=gt-S_69,501,453", # color by mutations, no Europe filter
-    "S:Y453F": "c=gt-S_453&f_region=Europe",
+    "S:Y453F": "c=gt-S_453&f_region=Europe" # color by mutations, Europe filter
 }
 
 
