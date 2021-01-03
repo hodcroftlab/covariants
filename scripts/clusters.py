@@ -27,7 +27,7 @@ clusters = {"S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
             "country_info":[], 'col': "#ffcc00", "display_name": "S:H69-", "build_name":"S.H69-"},
 
             "S1122": {'snps': [24925,9119],  'cluster_data': [], #mostly Swedish cluster
-            "country_info":[], 'col': "#660066", "display_name": "S:V1122L", 'build_name': 'S.V1122L'} 
+            "country_info":[], 'col': "#660066", "display_name": "S:V1122L", 'build_name': 'S.V1122L'}
 
             #"S69": {'snps': [21766], 'cluster_data': [], 'build_name': "S.69"},
             #"S692": {'snps': [23635], 'cluster_data': [], 'build_name': "S.692"},
@@ -36,5 +36,11 @@ clusters = {"S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
             #"S655": {'snps': [23524], 'cluster_data': [], "display_name": "S:H655Y", 'build_name': "S.H655Y"}
             #"S263": {'snps': [22348], 'cluster_data': [], "build_name": "S.A263S", "display_name": "S:A263S"}
             #"S484": {'snps': [23011], 'cluster_data': [], "build_name": "S.E484", "display_name": "S:E484"}
+
+
+            #"N220": {'snps': [28931], 'exclude_snps': [22226], 'cluster_data': [], "build_name": "N.A220V", "display_name": "N:A220V"}
+            #"ORFTEN30": {'snps': [29644], 'exclude_snps': [22226], 'cluster_data': [], "build_name": "ORF10.V30", "display_name": "ORF10:V30"}
+
+            #"N220re": {'snps': [28931,29644], 'exclude_snps': [22226], 'cluster_data': [], "build_name": "N.A220Vre", "display_name": "N:A220Vre"}
             }
 
