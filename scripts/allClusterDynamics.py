@@ -158,6 +158,10 @@ for clus in clus_to_run:
             gaps = clusters[clus]['gaps']
         else:
             gaps = []
+        if 'exclude_snps' in clusters[clus]:
+            exclude_snps = clusters[clus]['exclude_snps']
+        else:
+            exclude_snps = []
 
         clusterlist_output = cluster_path+f'/clusters/cluster_{clusters[clus]["build_name"]}.txt'
         out_meta_file = cluster_path+f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
@@ -170,7 +174,14 @@ for clus in clus_to_run:
             strain = row['strain']
             snplist = row['all_snps']
             gaplist = row['gap_list']
-            if snps and not pd.isna(snplist):
+            
+            # look for occurance of snp(s) *without* some other snp(s) (to exclude a certain group)
+            if snps and not pd.isna(snplist) and exclude_snps and not pd.isna(exclude_snps):
+                intsnp = [int(x) for x in snplist.split(',')]
+                if all(x in intsnp for x in snps) and all(x not in intsnp for x in exclude_snps):
+                    wanted_seqs.append(row['strain'])
+
+            elif snps and not pd.isna(snplist):
                 intsnp = [int(x) for x in snplist.split(',')]
                 # this looks for all SNPs in 'snps' OR all in 'snps2' (two nucs that affect same AA, for example)
                 if all(x in intsnp for x in snps) or (all (x in intsnp for x in snps2) and len(snps2)!=0):
