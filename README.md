@@ -83,7 +83,7 @@ The mutation is listed in parentheses after the name.
 
 <sub>Figure made via [GISAID](https://gisaid.org)</sub>
 
-[Dedicated S:N501 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501&f_region=Europe)
+[Dedicated S:N501 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.N501)
 
 [Table and charts of mutation distribution](cluster_tables/S.N501_table.md)
 

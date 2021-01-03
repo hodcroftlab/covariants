@@ -1,7 +1,7 @@
 
 
 ## S.N501
-[Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501&f_region=Europe)
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.N501?)
 
 Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).
 Note that this mutation has multiple amino-acid mutants - these numbers refer to _all_ these mutations (Y, S, T).

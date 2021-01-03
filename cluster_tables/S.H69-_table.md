@@ -1,7 +1,7 @@
 
 
 ## S.H69-
-[Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.H69-?f_region=Europe)
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.H69-?c=gt-S_69,501,453&)
 
 |                        | first_seq   |   num_seqs | last_seq   |
 |:-----------------------|:------------|-----------:|:-----------|
