@@ -75,8 +75,8 @@ fs=12
 fmt = 'pdf'
 countries = ["Switzerland", "Spain", "England", "Netherlands", "France",
              "Ireland", "Denmark", "Scotland", "Wales", "Belgium", "Germany",
-             #"Sweden",
-             # "Italy",
+             "Sweden",
+             "Italy",
              ]
 
 fig, axs = plt.subplots(2,1, figsize=(6,7), sharex=True)
@@ -162,8 +162,11 @@ for country in countries:
         plt.plot(res['dates'], res['cases'], label=country, c=country_styles[country]['c'], ls=country_styles[country].get('ls', '-'), lw=3)
 
 plt.plot([k for k in total_not_spain.keys()], [k for k in total_not_spain.values()],
-         label="Central/Western Europe without Spain", c='k', ls='-', lw=3)
+         label="outside Spain", c='k', ls='-', lw=3)
 
 plt.legend(fontsize=fs)
+plt.ylabel('estimated EU1 cases', fontsize=fs)
+plt.tick_params(labelsize=fs)
 fig.autofmt_xdate(rotation=30)
 plt.tight_layout()
+plt.savefig(figure_path+'total_EU1_cases.png')
