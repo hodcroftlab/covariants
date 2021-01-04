@@ -4,9 +4,9 @@ from matplotlib import pyplot as plt
 from colors_and_countries import *
 
 fmt='pdf'
-
-countries = ['Spain', 'France', 'Belgium', 'United Kingdom', 'Switzerland', 'Netherlands', 'Norway',
-              'Ireland', "Denmark", "Scotland", "Wales"]
+fs = 14
+countries = ['Spain', 'France', 'Belgium', "England",  "Scotland", "Wales", 'Switzerland', 'Netherlands', 'Norway',
+              'Ireland', "Denmark", "Germany", "Italy"]
 
 
 if __name__ == '__main__':
@@ -19,11 +19,13 @@ if __name__ == '__main__':
                  label=c, c=country_styles[c]['c'], ls=country_styles[c]['ls'])
         print(c, np.mean([i for w,i in zip(weeks, incidence) if w.month==7]),
                  np.mean([i for w,i in zip(weeks, incidence) if w.month==8]))
-    plt.ylabel('weekly incidence per 100000')
+    plt.ylabel('weekly incidence per 100000', fontsize=fs)
     plt.yscale('log')
     plt.ylim([1,1000])
+    plt.text(-0.15, 0.97, 'A', fontsize=1.6*fs, transform=plt.gca().transAxes)
     plt.xlim([datetime.datetime(2020,4,1), datetime.datetime(2020,10,1)])
-    plt.legend(ncol=2)
+    plt.legend(ncol=3)
+    plt.tick_params(labelsize=fs)
     fig.autofmt_xdate(rotation=30)
     plt.savefig(f'../cluster_scripts/figures/incidence.{fmt}')
 

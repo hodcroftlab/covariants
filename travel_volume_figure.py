@@ -143,8 +143,7 @@ plt.tight_layout()
 plt.savefig(figure_path+f'travel_scaled.{fmt}')
 
 countries = ["Switzerland", "United Kingdom", "Netherlands", "France",
-             "Ireland", "Denmark", "Belgium", "Germany",
-             "Sweden",
+             "Ireland", "Denmark", "Belgium", "Germany", "Norway",
              "Italy",
              "Spain",
              ]
@@ -152,21 +151,32 @@ case_data = load_case_data(countries)
 
 fig=plt.figure()
 total_not_spain = defaultdict(int)
+total_not_spain_other = defaultdict(int)
 for country in countries:
     cluster_freq = {k: c/tot for k, c, tot in zip(*non_zero_counts(cluster_data, total_data, country, smoothing=smoothing))}
     res = get_total_cluster(country, case_data, cluster_freq)
     if country!="Spain":
         for k,v in zip(res["dates"], res["cases"]):
             total_not_spain[k] += v
+        for k,v in zip(res["dates"], res["cases_other"]):
+            total_not_spain_other[k] += v
     else:
-        plt.plot(res['dates'], res['cases'], label=country, c=country_styles[country]['c'], ls=country_styles[country].get('ls', '-'), lw=3)
+        plt.plot(res['dates'], res['cases'], label=country + " (EU1)", c=country_styles[country]['c'], ls=country_styles[country].get('ls', '-'), lw=3)
+        plt.plot(res['dates'], np.array(res['cases_other'])+np.array(res['cases']), label=country + " (total)", c=country_styles[country]['c'], ls='--', lw=3)
 
 plt.plot([k for k in total_not_spain.keys()], [k for k in total_not_spain.values()],
-         label="outside Spain", c='k', ls='-', lw=3)
+         label="outside Spain (EU1)", c='k', ls='-', lw=3)
+
+plt.plot([k for k in total_not_spain_other.keys()], [total_not_spain[k] + v for k,v in total_not_spain_other.items()],
+         label="outside Spain (total)", c='k', ls='--', lw=3)
 
 plt.legend(fontsize=fs)
-plt.ylabel('estimated EU1 cases', fontsize=fs)
+plt.ylabel('estimated cases', fontsize=fs)
 plt.tick_params(labelsize=fs)
+plt.text(-0.15, 0.97, 'B', fontsize=1.6*fs, transform=plt.gca().transAxes)
 fig.autofmt_xdate(rotation=30)
 plt.tight_layout()
-plt.savefig(figure_path+'total_EU1_cases.png')
+plt.xlim(datetime.datetime(2020,5,15), datetime.datetime(2020,11,30))
+plt.yscale('log')
+plt.ylim(1,1e7)
+plt.savefig(f'{figure_path}total_EU1_cases.{fmt}')
