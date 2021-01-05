@@ -35,7 +35,7 @@ export function LinkExternal({
   as,
   ...restProps
 }: PropsWithChildren<LinkExternalProps>) {
-  const Icon: React.ReactNode = <GoLinkExternal />
+  const Icon: React.ReactNode = icon === undefined ? <GoLinkExternal /> : icon
 
   return (
     <>
