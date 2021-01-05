@@ -26,6 +26,60 @@
       ]
     },
     {
+      "build_name": "S.N501",
+      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.N501?",
+      "cluster_data": [],
+      "col": "#ff99ff",
+      "country_info": [],
+      "display_name": "S:N501",
+      "snps": [
+        23063
+      ],
+      "snps2": [
+        23062
+      ],
+      "url_params": ""
+    },
+    {
+      "build_name": "S.H69-",
+      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.H69-?c=gt-S_69,501,453",
+      "cluster_data": [],
+      "col": "#ffcc00",
+      "country_info": [],
+      "display_name": "S:H69-",
+      "gaps": [
+        21766,
+        21767,
+        21768
+      ],
+      "snps": [],
+      "url_params": "c=gt-S_69,501,453"
+    },
+    {
+      "build_name": "S.N439K",
+      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.N439K?f_region=Europe",
+      "cluster_data": [],
+      "col": "#fb9a99",
+      "country_info": [],
+      "display_name": "S:N439K",
+      "snps": [
+        7766,
+        22878
+      ]
+    },
+    {
+      "build_name": "S.Y453F",
+      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y453F?c=gt-S_453&f_region=Europe",
+      "cluster_data": [],
+      "col": "#cc0000",
+      "country_info": [],
+      "display_name": "S:Y453F",
+      "snps": [
+        22919
+      ],
+      "url_params": "c=gt-S_453&f_region=Europe"
+    },
+    {
       "build_name": "S.S98F",
       "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.S98F?f_region=Europe",
       "cluster_data": [],
@@ -50,43 +104,6 @@
       ]
     },
     {
-      "build_name": "S.N439K",
-      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.N439K?f_region=Europe",
-      "cluster_data": [],
-      "col": "#fb9a99",
-      "country_info": [],
-      "display_name": "S:N439K",
-      "snps": [
-        7766,
-        22878
-      ]
-    },
-    {
-      "build_name": "S.Y453F",
-      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y453F?c=gt-S_453&f_region=Europe",
-      "cluster_data": [],
-      "col": "#cc0000",
-      "country_info": [],
-      "display_name": "S:Y453F",
-      "snps": [
-        22919
-      ]
-    },
-    {
-      "build_name": "S.N501",
-      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501&f_region=Europe",
-      "cluster_data": [],
-      "col": "#ff99ff",
-      "country_info": [],
-      "display_name": "S:N501",
-      "snps": [
-        23063
-      ],
-      "snps2": [
-        23062
-      ]
-    },
-    {
       "build_name": "S.A626S",
       "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.A626S?f_region=Europe",
       "cluster_data": [],
@@ -97,20 +114,6 @@
         23437,
         771
       ]
-    },
-    {
-      "build_name": "S.H69-",
-      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.H69-?f_region=Europe",
-      "cluster_data": [],
-      "col": "#ffcc00",
-      "country_info": [],
-      "display_name": "S:H69-",
-      "gaps": [
-        21766,
-        21767,
-        21768
-      ],
-      "snps": []
     },
     {
       "build_name": "S.V1122L",
