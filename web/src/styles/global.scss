@@ -9,8 +9,18 @@
 @import './theme';
 
 @import 'react-aspect-ratio/aspect-ratio.css';
+@import 'react-gif-player/src/GifPlayer.scss';
 
 @import './components/NavigationBar';
+
+.gif_player {
+  margin: 1rem;
+
+  img {
+    border: 2px solid $gray-500;
+    pointer-events: none;
+  }
+}
 
 html,
 body {

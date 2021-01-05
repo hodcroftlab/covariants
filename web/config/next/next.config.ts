@@ -28,6 +28,7 @@ import withIgnore from './withIgnore'
 import withoutMinification from './withoutMinification'
 import withFriendlyChunkNames from './withFriendlyChunkNames'
 import withResolve from './withResolve'
+import getWithCopy from './withCopy'
 
 const {
   // BABEL_ENV,
@@ -174,8 +175,16 @@ const transpilationListProd = uniq([
 
 const withTranspileModules = getWithTranspileModules(PRODUCTION ? transpilationListProd : transpilationListDev)
 
+const withCopy = getWithCopy({
+  patterns: [
+    { from: path.join(moduleRoot, '..', 'content', 'proteins'), to: 'static/content/proteins' },
+    { from: path.join(moduleRoot, 'content', 'proteins'), to: 'static/content/proteins' },
+  ],
+})
+
 const config = withPlugins(
   [
+    [withCopy],
     [withIgnore],
     [withExtraWatch],
     [withSvg],

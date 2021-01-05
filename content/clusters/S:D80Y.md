@@ -1,7 +1,4 @@
 ## S:D80Y
-![Figure of S:D80Y](/other_figures/80.gif)
-
-<sub>Figure made via [GISAID](https://gisaid.org)</sub>
 
 [Dedicated S:D80Y Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.D80Y?f_region=Europe)
 

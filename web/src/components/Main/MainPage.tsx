@@ -1,17 +1,16 @@
 /* eslint-disable camelcase */
 import React, { useMemo, useState, useRef } from 'react'
 
-import { Layout } from 'src/components/Layout/Layout'
-import { NextstrainCard } from 'src/components/Main/NextstrainCard'
-import { ClusterDatum, getClusters } from 'src/io/getClusters'
-
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import dynamic from 'next/dynamic'
 
+import { Layout } from 'src/components/Layout/Layout'
+import { NextstrainCard } from 'src/components/Main/NextstrainCard'
+import { ClusterDatum, getClusters } from 'src/io/getClusters'
 import { Editable } from 'src/components/Common/Editable'
-
 import { PlotCard } from './PlotCard'
+import { ProteinCard } from './ProteinCard'
 
 const ClustersRow = styled(Row)`
   justify-content: center;
@@ -115,6 +114,12 @@ export function MainPage() {
             <Row noGutters className="mb-2">
               <Col>
                 <ClusterContent />
+              </Col>
+            </Row>
+
+            <Row noGutters className="mb-2">
+              <Col>
+                <ProteinCard cluster={cluster} />
               </Col>
             </Row>
 

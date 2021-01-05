@@ -1,7 +1,4 @@
 ## S:S98F
-![Figure of S:S98F](/other_figures/98.gif)
-
-<sub>Figure made via [GISAID](https://gisaid.org)</sub>
 
 [Dedicated S:S98F Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.S98F?c=gt-S_98&f_region=Europe)
 
