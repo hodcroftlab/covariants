@@ -46,7 +46,7 @@ export function Layout({ children, wide = false }: PropsWithChildren<LayoutProps
   return (
     <>
       <Container fluid>
-        <HeaderRow noGutter>
+        <HeaderRow noGutters>
           <HeaderCol>
             <NavigationBar />
           </HeaderCol>
@@ -54,13 +54,13 @@ export function Layout({ children, wide = false }: PropsWithChildren<LayoutProps
       </Container>
 
       <Container fluid={wide}>
-        <MainRow noGutter>
+        <MainRow noGutters>
           <MainCol>{children}</MainCol>
         </MainRow>
       </Container>
 
       <Container fluid>
-        <FooterRow noGutter>
+        <FooterRow noGutters>
           <FooterCol>
             <FooterContent />
           </FooterCol>

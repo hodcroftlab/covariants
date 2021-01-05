@@ -118,7 +118,7 @@ export function MainPage() {
               </Col>
             </Row>
 
-            <Row noGutter className="mb-2" s>
+            <Row noGutters className="mb-2" s>
               <Col>
                 <PlotCard cluster={cluster} />
               </Col>
