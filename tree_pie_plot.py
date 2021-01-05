@@ -6,7 +6,8 @@
 # You need to have updated the files below - copy into 'ncov'
 treefile = "results/clusone/tree.nwk"
 branchfile = "results/clusone/branch_lengths.json"
-metadatafile = "data/metadata.tsv"
+#metadatafile = "data/metadata.tsv"
+metadatafile = "data/metadata-2020-11-11.tsv"
 alignfile = "results/clusone/subsampled_alignment.fasta"
 
 # Path to write figures to
