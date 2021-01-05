@@ -99,7 +99,8 @@ for clus in clusters.keys():
         'Netherlands/ZE-EMC-74/2020'    : "2020-06-11", # too diverged compared to date. Suspect is 6 Nov - date reversed
         'Spain/RI-IBV-99010966/2009'    : "2009-09-30", # date typed wrong
         'Denmark/DCGC-16747/2020'   : "2020-04-20", #overdiverged compared to date
-        'Tunisia/19695/2020'    : "2020-07-12" #overdivrged compared to date
+        'Tunisia/19695/2020'    : "2020-07-12", #overdivrged compared to date
+        'Canada/ON-S1598/2020'  : "2020-04-09" #confirmed day-month reversal
 
         #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
         #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird

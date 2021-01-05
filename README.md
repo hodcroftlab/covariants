@@ -33,14 +33,15 @@ The mutation is listed in parentheses after the name.
 
 - [20A.EU1](#20aeu1) _(S:A222V)_
 - [20A.EU2](#20aeu2) _(S:S477N)_
-- [S:S98F](#ss98f)
-- [S:D80Y](#sd80y)
+- [S:N501](#sn501)
+- [S:H69-](#sh69-)
 - [S:N439K](#sn439k)
 - [S:Y453F](#sy453f)
-- [S:N501](#sn501)
+- [S:S98F](#ss98f)
+- [S:D80Y](#sd80y)
 - [S:A626S](#sa626s)
 - [S:V1122L](#sv1122l)
-- [S:H69-](#sh69-)
+
 
 ## 20A.EU1  _(S:A222V)_
 ![Figure of S:A222V](/other_figures/222.gif)
@@ -77,6 +78,54 @@ The mutation is listed in parentheses after the name.
   - May slightly increase ACE2 binding: [Chen et al. JMB](https://www.sciencedirect.com/science/article/pii/S0022283620304563); see also [Bloom Lab ACE2 binding website](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS/)
   - May confer resistance to multiple antibodies: ([Gaebler et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.03.367391v1), [Liu et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.06.372037v1))
 
+## S:N501
+![Figure of S:N501](/other_figures/501.gif)
+
+<sub>Figure made via [GISAID](https://gisaid.org)</sub>
+
+[Dedicated S:N501 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.N501)
+
+[Table and charts of mutation distribution](cluster_tables/S.N501_table.md)
+
+- Defining mutations:
+  - Has appeared multiple times independently: each can be associated with different accompanying mutations
+  - Amino-acid changes are `N501Y` (nucleotide mutation `A23063T`), `N501T` (nucleotide mutation `A23064C`), and `N501S` (nucleotide mutation `A23064G`)
+- `S:N501`
+  - Mutation is in the receptor binding domain (RDB), important to ACE2 binding and antibody recognition
+  - N501Y is associated with a recently reported 'new variants' in the UK and South Africa:
+    - '20B/501Y.V1' (B.1.1.7) was announced in the South East of England on 14 Dec 2020 ([COG-UK Report](https://www.cogconsortium.uk/news_item/update-on-new-sars-cov-2-variant-and-how-cog-uk-tracks-emerging-mutations/), [Rambaut et al.](https://virological.org/t/preliminary-genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-the-uk-defined-by-a-novel-set-of-spike-mutations/563), [PHE report](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf), [PHE Technical Report 2](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v3))
+      - This particular variant is associated with multiple mutations in Spike, including: `N501Y`, a deletion at 69/70 (as seen in `S:N439K` & `S:Y453F`) ([Kemp et al. bioRxiv (21 Dec)](https://www.biorxiv.org/content/10.1101/2020.12.14.422555v3)), `Y144` deletion, and `P681H` (adjacent to the furin cleavage site).
+      - There is also a notable truncation of `ORF8`, with `Q27*` (becomes a stop codon) (deletion of `ORF8` was previously associated with reduced clinical severity ([Young et al. Lancet](https://www.thelancet.com/article/S0140-6736(20)31757-8/fulltext))), and mutations in `N`: `N:D3L` and `S235F`.
+    - '20C/501Y.V2' is found in South Africa and was also announced in December 2020 ([Tegally et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.21.20248640v1))
+      - This variant is associated with multiple mutations in Spike, including: `N501Y`, `K417N`, and `D80A`.
+      - There is also an `N` mutation: `T205I`.
+      - It does _not_ have the deletion at 69/70.
+  - Smaller clusters also seen in Wales, USA, & Australia
+  - May be associated with adaptation to rodents and mustelids: `N501T` in ferrets ([Richard et al. Nature Comm.](https://www.nature.com/articles/s41467-020-17367-2)) and mink ([Welkers et al. Virus Evolution](https://academic.oup.com/ve/advance-article/doi/10.1093/ve/veaa094/6025194?searchresult=1)); `N501Y` in mice ([Gu et al. Science](https://science.sciencemag.org/content/369/6511/1603))
+    - Some have speculated of risk of a persistent reservoir in wild rodents/mustelids
+  - May increase ACE2 binding [Bloom Lab ACE2 binding website](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS/) - in particular it is predicted to do this by increasing the time spent in the 'open' conformation ([Teruel et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2020.12.16.423118v2))
+  - `N501Y` was found in longitudinally-collected samples from an immunocompromised patient ([Choi et al. NEJM](https://www.nejm.org/doi/full/10.1056/NEJMc2031364?query=featured_coronavirus))
+
+## S:H69-
+![Figure of S:H69-](/other_figures/6970del.gif)
+
+<sub>Figure made via [GISAID](https://gisaid.org)<br/>
+Note this figure shows both the 69 & 70 deletion.</sub>
+
+[Dedicated S:H69- Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.H69-?c=gt-S_69,501,453)
+
+[Table and charts of mutation distribution](cluster_tables/S.H69-_table.md)
+
+- Defining mutations:
+  - Nonsynonymous: `S:H69-` (nucleotides: `C21767-, A21768-, T21769-`)
+- `S:H69-`
+  - This deletion has arisen at 3 times in 'recognised clusters': in the `S:Y453F`, `S:N439K`, and `S:N501Y` clusters ([Kemp et al. bioRxiv (21 Dec)](https://www.biorxiv.org/content/10.1101/2020.12.14.422555v3)); and has additionally arisen more times outside of recognised clusters.
+  - May alter the recognition by antibodies, possibly impacting some antibody-therapy treatments, or immunity ([Kemp et al. medRxiv (19 Dec)](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v2)).
+  - In particular, the deletion is predicted structurally to 'tuck in' the Spike N-terminal domain ([Kemp et al. bioRxiv (21 Dec)](https://www.biorxiv.org/content/10.1101/2020.12.14.422555v3))
+
+**Important**: *Currently this build detects only the deletion at position 69 in spike, as due to alignment/calling differences, detecting the deletion at position 70 is less reliable.*
+*However, they seem to be highly associated.*
+
 ## S:N439K
 ![Figure of S:N439K](/other_figures/439.gif)
 
@@ -96,7 +145,6 @@ The mutation is listed in parentheses after the name.
   - May increase ACE2 binding: [Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1) & [Chen et al., JMB](https://www.sciencedirect.com/science/article/pii/S0022283620304563); see also [Bloom Lab ACE2 binding website](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS/)
   - Confers resistance to one of the two antibodies in the Regeneron cocktail (REGN10987); see [Starr et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.30.405472v1.full) and [Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1).
   - May confer resistance to antibodies: C135 ([Weisblum et al. eLife](https://elifesciences.org/articles/61312), [Barnes et al. Nature](https://www.nature.com/articles/s41586-020-2852-1)); a panel of antibodies ([Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1))
-
 
 ## S:Y453F
 ![Figure of S:Y453F](/other_figures/453.gif)
@@ -152,35 +200,6 @@ The mutation is listed in parentheses after the name.
   - Found in at least 10 countries across Europe
 - Little else is known about this mutation. Please let me know if you have more information!
 
-## S:N501
-![Figure of S:N501](/other_figures/501.gif)
-
-<sub>Figure made via [GISAID](https://gisaid.org)</sub>
-
-[Dedicated S:N501 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501&f_region=Europe)
-
-[Table and charts of mutation distribution](cluster_tables/S.N501_table.md)
-
-- Defining mutations:
-  - Has appeared multiple times independently: each can be associated with different accompanying mutations
-  - Amino-acid changes are `N501Y` (nucleotide mutation `A23063T`), `N501T` (nucleotide mutation `A23064C`), and `N501S` (nucleotide mutation `A23064G`)
-- `S:N501`
-  - Mutation is in the receptor binding domain (RDB), important to ACE2 binding and antibody recognition
-  - N501Y is associated with a recently reported 'new variants' in the UK and South Africa:
-    - '20B/501Y.V1' (B.1.1.7) was announced in the South East of England on 14 Dec 2020 ([COG-UK Report](https://www.cogconsortium.uk/news_item/update-on-new-sars-cov-2-variant-and-how-cog-uk-tracks-emerging-mutations/), [Rambaut et al.](https://virological.org/t/preliminary-genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-the-uk-defined-by-a-novel-set-of-spike-mutations/563), [PHE report](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf))
-      - This particular variant is associated with multiple mutations in Spike, including: `N501Y`, a deletion at 69/70 (as seen in `S:N439K` & `S:Y453F`) ([Kemp et al. bioRxiv (21 Dec)](https://www.biorxiv.org/content/10.1101/2020.12.14.422555v3)), `Y144` deletion, and `P681H` (adjacent to the furin cleavage site).
-      - There is also a notable truncation of `ORF8`, with `Q27*` (becomes a stop codon), and mutations in `N`: `N:D3L` and `S235F`.
-    - '20C/501Y.V2' is found in South Africa and was also announced in December 2020 ([Tegally et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.21.20248640v1))
-      - This variant is associated with multiple mutations in Spike, including: `N501Y`, `K417N`, and `D80A`.
-      - There is also an `N` mutation: `T205I`.
-      - It does _not_ have the deletion at 69/70.
-  - Smaller clusters also seen in Wales, USA, & Australia
-  - May be associated with adaptation to rodents and mustelids: `N501T` in ferrets ([Richard et al. Nature Comm.](https://www.nature.com/articles/s41467-020-17367-2)) and mink ([Welkers et al. Virus Evolution](https://academic.oup.com/ve/advance-article/doi/10.1093/ve/veaa094/6025194?searchresult=1)); `N501Y` in mice ([Gu et al. Science](https://science.sciencemag.org/content/369/6511/1603))
-    - Some have speculated of risk of a persistent reservoir in wild rodents/mustelids
-  - May increase ACE2 binding [Bloom Lab ACE2 binding website](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS/) - in particular it is predicted to do this by increasing the time spent in the 'open' conformation ([Teruel et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2020.12.16.423118v2))
-  - `N501Y` was found in longitudinally-collected samples from an immunocompromised patient ([Choi et al. NEJM](https://www.nejm.org/doi/full/10.1056/NEJMc2031364?query=featured_coronavirus))
-
-
 ## S:A626S
 ![Figure of S:A626S](/other_figures/626.gif)
 
@@ -196,7 +215,6 @@ The mutation is listed in parentheses after the name.
 - `S:A626S`
   - Found widely across Europe, in at least 15 countries
 - Little else is known about this mutation. Please let me know if you have more information!
-
 
 ## S:V1122L
 ![Figure of S:V1122L](/other_figures/1122.gif)
@@ -214,22 +232,3 @@ The mutation is listed in parentheses after the name.
   - Found primarily in Sweden and northern European countries, including Norway and Denmark
 - Little else is known about this mutation. Please let me know if you have more information!
 
-## S:H69-
-![Figure of S:H69-](/other_figures/6970del.gif)
-
-<sub>Figure made via [GISAID](https://gisaid.org)<br/>
-Note this figure shows both the 69 & 70 deletion.</sub>
-
-[Dedicated S:H69- Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.H69-?c=gt-S_69,501,453)
-
-[Table and charts of mutation distribution](cluster_tables/S.H69-_table.md)
-
-- Defining mutations:
-  - Nonsynonymous: `S:H69-` (nucleotides: `C21767-, A21768-, T21769-`)
-- `S:H69-`
-  - This deletion has arisen at 3 times in 'recognised clusters': in the `S:Y453F`, `S:N439K`, and `S:N501Y` clusters ([Kemp et al. bioRxiv (21 Dec)](https://www.biorxiv.org/content/10.1101/2020.12.14.422555v3)); and has additionally arisen more times outside of recognised clusters.
-  - May alter the recognition by antibodies, possibly impacting some antibody-therapy treatments, or immunity ([Kemp et al. medRxiv (19 Dec)](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v2)).
-  - In particular, the deletion is predicted structurally to 'tuck in' the Spike N-terminal domain ([Kemp et al. bioRxiv (21 Dec)](https://www.biorxiv.org/content/10.1101/2020.12.14.422555v3))
-
-**Important**: *Currently this build detects only the deletion at position 69 in spike, as due to alignment/calling differences, detecting the deletion at position 70 is less reliable.*
-*However, they seem to be highly associated.*

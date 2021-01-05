@@ -88,25 +88,6 @@ if print_answer in ["y", "Y", "yes", "YES", "Yes"]:
     print_files = True
 print_files2 = True
 
-if print_files:
-    #clean these files so don't append to last run.
-    with open(f"{tables_path}all_tables.md", 'w') as fh:
-        fh.write('\n')
-        fh.write("# Overview of Clusters/Mutations in Europe\n"	
-        "[Overview of proportion of clusters in selected countries](country_overview.md)\n\n"
-        "In the graphs below, countries are displayed in the chart if the country has at least 20 sequences present in the cluster.\n\n"
-        "# Mutation Tables and Graphs\n"
-        "- [20A.EU1](#20aeu1) _(S:A222V)_ \n"
-        "- [20A.EU2](#20aeu2) _(S:S477N)_ \n"
-        "- [S:S98F](#ss98f) \n"
-        "- [S:D80Y](#sd80y) \n"
-        "- [S:N439K](#sn439k) \n"
-        "- [S:Y453F](#sy453f) \n"
-        "- [S:N501](#sn501) \n"
-        "- [S:A626S](#sa626s)\n\n")
-    with open(overall_tables_file, 'w') as fh:
-        fh.write('\n')
-
 #default is 222, but ask user what they want - or run all.
 
 clus_to_run = ["S222"]
@@ -133,6 +114,28 @@ while reask:
         reask = False
 print("These clusters will be run: ", clus_to_run)
 
+# if running all clusters, clear file so can write again.
+if print_files and "all" in clus_answer:
+    #clean these files so don't append to last run.
+    with open(f"{tables_path}all_tables.md", 'w') as fh:
+        fh.write('\n')
+        fh.write("# Overview of Clusters/Mutations in Europe\n"	
+        "[Overview of proportion of clusters in selected countries](country_overview.md)\n\n"
+        "In the graphs below, countries are displayed in the chart if the country has at least 20 sequences present in the cluster.\n\n"
+        "# Mutation Tables and Graphs\n"
+        "- [20A.EU1](#20aeu1) _(S:A222V)_ \n"
+        "- [20A.EU2](#20aeu2) _(S:S477N)_ \n"
+        "- [S:N501](#sn501) \n"
+        "- [S:H69-](#sh69-) \n"
+        "- [S:N439K](#sn439k) \n"
+        "- [S:Y453F](#sy453f) \n"
+        "- [S:S98F](#ss98f) \n"
+        "- [S:D80Y](#sd80y) \n"
+        "- [S:A626S](#sa626s) \n"
+        "- [S:V1122L](#sv1122l) \n\n")
+    with open(overall_tables_file, 'w') as fh:
+        fh.write('\n')
+
 json_output = {}
 
 
@@ -158,6 +161,10 @@ for clus in clus_to_run:
             gaps = clusters[clus]['gaps']
         else:
             gaps = []
+        if 'exclude_snps' in clusters[clus]:
+            exclude_snps = clusters[clus]['exclude_snps']
+        else:
+            exclude_snps = []
 
         clusterlist_output = cluster_path+f'/clusters/cluster_{clusters[clus]["build_name"]}.txt'
         out_meta_file = cluster_path+f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
@@ -170,7 +177,14 @@ for clus in clus_to_run:
             strain = row['strain']
             snplist = row['all_snps']
             gaplist = row['gap_list']
-            if snps and not pd.isna(snplist):
+            
+            # look for occurance of snp(s) *without* some other snp(s) (to exclude a certain group)
+            if snps and not pd.isna(snplist) and exclude_snps and not pd.isna(exclude_snps):
+                intsnp = [int(x) for x in snplist.split(',')]
+                if all(x in intsnp for x in snps) and all(x not in intsnp for x in exclude_snps):
+                    wanted_seqs.append(row['strain'])
+
+            elif snps and not pd.isna(snplist):
                 intsnp = [int(x) for x in snplist.split(',')]
                 # this looks for all SNPs in 'snps' OR all in 'snps2' (two nucs that affect same AA, for example)
                 if all(x in intsnp for x in snps) or (all (x in intsnp for x in snps2) and len(snps2)!=0):
@@ -213,7 +227,8 @@ for clus in clus_to_run:
         'Netherlands/ZE-EMC-74/2020'    : "2020-06-11", # too diverged compared to date. Suspect is 6 Nov - date reversed
         'Spain/RI-IBV-99010966/2009'    : "2009-09-30", # date typed wrong
         'Denmark/DCGC-16747/2020'   : "2020-04-20", #overdiverged compared to date
-        'Tunisia/19695/2020'    : "2020-07-12" #overdivrged compared to date
+        'Tunisia/19695/2020'    : "2020-07-12", #overdivrged compared to date
+        'Canada/ON-S1598/2020'  : "2020-04-09" #confirmed day-month reversal
 
         #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
         #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
@@ -346,32 +361,45 @@ for clus in clus_to_run:
 
     if print_files:
         ordered_country.to_csv(table_file, sep="\t")
-        with open(overall_tables_file, 'a') as fh:
-            fh.write(f'\n\n## {clus_display}\n')
+        #only write if doing all clusters
+        if "all" in clus_answer:
+            with open(overall_tables_file, 'a') as fh:
+                fh.write(f'\n\n## {clus_display}\n')
 
-        ordered_country.to_csv(overall_tables_file, sep="\t", mode='a')
+            ordered_country.to_csv(overall_tables_file, sep="\t", mode='a')
 
         mrk_tbl = ordered_country.to_markdown()
-        col = ""
-        if clus is "S501":
-            col = "c=gt-S_501&"
-        if clus is "S453":
-            col = "c=gt-S_453&"
 
-        with open(f"{tables_path}all_tables.md", 'a') as fh:
-            fh.write(f'\n\n## {clus_display}\n')
-            fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{col}f_region=Europe)\n\n")
-            if clus is "S501":
-                fh.write(f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
-                fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
-                          "refer to _all_ these mutations (Y, S, T).\n")
-            fh.write(mrk_tbl)
-            fh.write("\n\n")
-            fh.write(f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)")
+        url_params = "f_region=Europe"
+        if 'url_params' in clusters[clus]:
+            url_params = clusters[clus]['url_params']
+
+#        if clus is "S501":
+#        #    col = "c=gt-S_501&"
+#            filt = ""
+#        if clus is "S69":
+#            col = "c=gt-S_69,501,453&"
+#            filt = ""
+#        if clus is "S453":
+#            col = "c=gt-S_453&"
+
+        # don't print DanishCluster in 'all tables'
+        # only print 'all tables' if running 'all clusters'
+        if "all" in clus_answer and clus != "DanishCluster":
+            with open(f"{tables_path}all_tables.md", 'a') as fh:
+                fh.write(f'\n\n## {clus_display}\n')
+                fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{url_params})\n\n")
+                if clus is "S501":
+                    fh.write(f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
+                    fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
+                            "refer to _all_ these mutations (Y, S, T).\n")
+                fh.write(mrk_tbl)
+                fh.write("\n\n")
+                fh.write(f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)")
 
         with open(f"{tables_path}{clus_display}_table.md", 'w') as fh:
             fh.write(f'\n\n## {clus_display}\n')
-            fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{col}f_region=Europe)\n\n")
+            fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{url_params})\n\n")
             if clus is "S501":
                 fh.write(f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
                 fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
@@ -453,8 +481,12 @@ for clus in clus_to_run:
         else:
             return 5
 
-    # Only plot countries with >=20 seqs
-    countries_to_plot = country_info_df[country_info_df.num_seqs > 20].index
+    # Only plot countries with >= X seqs
+    min_to_plot = 20
+    #if clus == "S222":
+    #    min_to_plot = 200
+
+    countries_to_plot = country_info_df[country_info_df.num_seqs > min_to_plot].index
 
     if len(countries_to_plot) > len(colors):
         print("\nWARNING!! NOT ENOUGH COLORS FOR PLOTTING!")
