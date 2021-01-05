@@ -33,6 +33,7 @@ export function DistributionSidebar({
     () => ({
       countries: countries && (
         <CountryFilters
+          key="country-filters"
           countries={countries}
           onFilterChange={onCountryFilterChange}
           collapsed={countriesCollapsed}
@@ -41,6 +42,7 @@ export function DistributionSidebar({
       ),
       clusters: clusters && (
         <ClusterFilters
+          key="cluster-filters"
           clusters={clusters}
           onFilterChange={onClusterFilterChange}
           collapsed={clustersColapsed}
