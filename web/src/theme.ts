@@ -133,6 +133,12 @@ export const iframe = {
   },
 }
 
+export const code = {
+  pre: {
+    background: gray300,
+  },
+}
+
 export const theme = {
   ...basicColors,
   ...themeColors,
@@ -143,6 +149,7 @@ export const theme = {
   shadows,
   plot,
   iframe,
+  code,
 }
 
 export type Theme = typeof theme

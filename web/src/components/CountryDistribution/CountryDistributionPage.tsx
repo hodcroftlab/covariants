@@ -117,7 +117,7 @@ export function CountryDistributionPage() {
     <Layout wide>
       <Row noGutters>
         <Col>
-          <Editable githubUrl={'TODO'} text={'Add or edit this data'}>
+          <Editable githubUrl="blob/master/scripts" text={'View data generation scripts'}>
             <WrapperFlex>
               <SidebarFlex>
                 <DistributionSidebar

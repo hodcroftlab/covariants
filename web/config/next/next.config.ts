@@ -65,6 +65,7 @@ console.info(`Client-side Environment:\n${JSON.stringify(clientEnv, null, 2)}`)
 
 const nextConfig: NextConfig = {
   distDir: `.build/${process.env.NODE_ENV}/tmp`,
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   onDemandEntries: {
     maxInactiveAge: 60 * 1000,
     pagesBufferLength: 2,
@@ -89,8 +90,33 @@ const nextConfig: NextConfig = {
 
 const withMDX = getWithMDX({
   extension: /\.mdx?$/,
-  remarkPlugins: ['remark-images', 'remark-math'].map(require),
-  rehypePlugins: [].map(require),
+  options: {
+    remarkPlugins: [
+      // prettier-ignore
+      require('remark-breaks'),
+      require('remark-images'),
+      require('remark-math'),
+      require('remark-slug'),
+      [
+        require('remark-toc'),
+        {
+          tight: true,
+        },
+      ],
+      [
+        require('remark-autolink-headings'),
+        {
+          behavior: 'prepend',
+          content: {
+            type: 'element',
+            tagName: 'i',
+            properties: { className: ['bi', 'bi-link-45deg', 'mdx-link-icon'] },
+          },
+        },
+      ],
+    ],
+    rehypePlugins: [],
+  },
 })
 
 const withFriendlyConsole = getWithFriendlyConsole({
@@ -157,7 +183,7 @@ const config = withPlugins(
     [withRaw],
     // ANALYZE && [withBundleAnalyzer],
     [withFriendlyConsole],
-    [withMDX, { pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'] }],
+    [withMDX],
     [withLodash],
     [withTypeChecking],
     [withTranspileModules],

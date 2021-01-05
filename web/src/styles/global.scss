@@ -1,6 +1,7 @@
 @use "sass:map";
 
 @import '~typeface-open-sans/index.css';
+@import '~bootstrap-icons/font/bootstrap-icons.css';
 @import './font-family-system';
 
 @import './variables';
@@ -34,22 +35,8 @@ body {
   min-width: 320px;
 }
 
-.progress {
-  @include box-shadow(none);
-
-  .progress-bar {
-    font-size: 8px;
-    line-height: 8px;
-  }
-}
-
-code {
-  padding: 1px 5px;
-  margin: 2px 2px;
-  background-color: #eee;
-  //border: 1px solid #aaaa;
-  //border-radius: 2px;
-  font-size: 0.85rem;
+.bi.bi-link-45deg.mdx-link-icon {
+  color: $gray-600;
 }
 
 p {

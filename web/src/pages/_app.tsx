@@ -21,7 +21,7 @@ import { Provider } from 'react-redux'
 
 import { MDXProvider } from '@mdx-js/react'
 
-import { LinkExternal } from 'src/components/Link/LinkExternal'
+import { mdxComponents } from 'src/components/Common/MdxComponents'
 import { SEO } from 'src/components/Common/SEO'
 
 import { theme } from 'src/theme'
@@ -30,10 +30,6 @@ import 'src/styles/global.scss'
 
 enableES5()
 
-const mdxComponents = {
-  a: LinkExternal,
-}
-
 export default function MyApp({ Component, pageProps, router }: AppProps) {
   const store = useMemo(() => configureStore({ router }), [router])
 
@@ -41,7 +37,7 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
     <Provider store={store}>
       <ConnectedRouter>
         <ThemeProvider theme={theme}>
-          <MDXProvider components={mdxComponents}>
+          <MDXProvider components={(components) => ({ ...components, ...mdxComponents })}>
             <SEO />
             <Component {...pageProps} />
           </MDXProvider>

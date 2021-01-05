@@ -9,12 +9,9 @@ import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import dynamic from 'next/dynamic'
 
-import { Link } from 'src/components/Link/Link'
 import { Editable } from 'src/components/Common/Editable'
 
 import { PlotCard } from './PlotCard'
-
-import Intro from '../../../../content/Intro.md'
 
 const ClustersRow = styled(Row)`
   justify-content: center;
@@ -101,31 +98,20 @@ export function MainPage() {
     <Layout>
       <Row noGutters>
         <Col>
-          <Editable githubUrl={'Intro'}>
-            <Intro />
-
-            <p>
-              {'Check out our '}
-              <Link href="/faq">{'"Frequently asked questions"'}</Link>
-              {' section for more details.'}
-            </p>
-          </Editable>
-
           <div ref={scrollRef} />
-          <Editable githubUrl={'TODO'}>
-            <ClustersRow noGutters>
-              {clusters.map((cluster, index) => (
-                <ClusterButton
-                  key={cluster.display_name}
-                  cluster={cluster}
-                  onClick={handleClusterButtonClick(cluster)}
-                  index={index}
-                />
-              ))}
-            </ClustersRow>
-          </Editable>
 
-          <EditableClusterContent githubUrl={cluster.display_name}>
+          <ClustersRow noGutters>
+            {clusters.map((cluster, index) => (
+              <ClusterButton
+                key={cluster.display_name}
+                cluster={cluster}
+                onClick={handleClusterButtonClick(cluster)}
+                index={index}
+              />
+            ))}
+          </ClustersRow>
+
+          <EditableClusterContent githubUrl={`blob/master/content/clusters/${cluster.display_name}.md`}>
             <Row noGutters className="mb-2">
               <Col>
                 <ClusterContent />

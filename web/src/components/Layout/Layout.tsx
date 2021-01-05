@@ -6,9 +6,7 @@ import styled from 'styled-components'
 import { NavigationBar } from './NavigationBar'
 import { FooterContent } from './Footer'
 
-const Container = styled(ContainerBase)`
-  display: flex;
-`
+const Container = styled(ContainerBase)``
 
 const HeaderRow = styled(Row)`
   display: flex;
@@ -23,19 +21,9 @@ const HeaderCol = styled(Col)`
   padding: 0;
 `
 
-const MainRow = styled(Row)`
-  display: flex;
-  flex-grow: 1;
-  min-height: 2em;
-  padding: 0;
-`
+const MainRow = styled(Row)``
 
-const MainCol = styled(Col)`
-  display: flex;
-  flex-grow: 1;
-  padding: 0;
-  min-height: 100vh;
-`
+const MainCol = styled(Col)``
 
 const FooterRow = styled(Row)`
   display: flex;

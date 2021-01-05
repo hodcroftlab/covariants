@@ -14,11 +14,11 @@ import { NavigationLink } from 'src/components/Layout/NavigationLink'
 import { ReactComponent as BrandLogo } from 'src/assets/images/logo.svg'
 
 const navLinksLeft = {
-  '/': 'SARS-CoV-2 Clusters',
+  '/': 'Clusters',
+  '/about': `About`,
   '/country-distribution': 'Country Distribution',
   '/cluster-distribution': 'Cluster Distribution',
   '/faq': 'FAQ',
-  '/team': 'Team',
 }
 
 const navLinksRight = [
