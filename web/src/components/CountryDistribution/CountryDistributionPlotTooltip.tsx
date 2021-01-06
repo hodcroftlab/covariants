@@ -40,7 +40,7 @@ const TooltipTableBody = styled.tbody``
 
 export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
   const { payload } = props
-  if (!payload || payload?.length === 0) {
+  if (!payload || payload.length === 0) {
     return null
   }
 

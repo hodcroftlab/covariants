@@ -40,7 +40,7 @@ const TooltipTableBody = styled.tbody``
 
 export function ClusterDistributionPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
   const { payload } = props
-  if (!payload || payload?.length === 0) {
+  if (!payload || payload.length === 0) {
     return null
   }
 
