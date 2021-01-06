@@ -138,6 +138,7 @@ def add_cluster_properties(cluster):
 if __name__ == '__main__':
     # NOTE: we exclude DanishCluster
     clusters.pop("DanishCluster", None)
+    clusters.pop("S484", None)
 
     per_country_data_output = convert_per_country_data()
 
