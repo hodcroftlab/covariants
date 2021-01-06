@@ -10,6 +10,7 @@ export type ClusterDatum = {
   col: string
   country_info: unknown[]
   display_name: string
+  display_name2?: string
   snps: number[]
 }
 

@@ -65,6 +65,14 @@ const EditableClusterContent = styled(Editable)`
   min-height: 1000px;
 `
 
+const ClusterNameTitle = styled.h1`
+  display: inline;
+`
+
+const ClusterNameSubtitle = styled.h2`
+  display: inline;
+`
+
 const NextstrainIcon = styled(NextstrainIconBase)`
   display: inline;
   margin: auto;
@@ -131,17 +139,28 @@ export function MainPage() {
           </ClustersRow>
 
           <EditableClusterContent githubUrl={`blob/master/content/clusters/${currentCluster.display_name}.md`}>
-            <Row noGutters className="mb-2">
+            <Row noGutters className="mb-3">
               <Col>
-                <ClusterContent />
+                <ClusterNameTitle>{`${currentCluster.display_name}`}</ClusterNameTitle>
+                <span className="ml-2">
+                  {currentCluster.display_name2 && (
+                    <ClusterNameSubtitle>{`(${currentCluster.display_name2})`}</ClusterNameSubtitle>
+                  )}
+                </span>
               </Col>
             </Row>
 
-            <Row noGutters className="mb-2">
+            <Row noGutters className="mb-3">
               <Col className="d-flex w-100">
                 <LinkExternal href={currentCluster.build_url} icon={<NextstrainIcon />} color={theme.link.dim.color}>
                   {`Dedicated ${currentCluster.display_name} Nextstrain build`}
                 </LinkExternal>
+              </Col>
+            </Row>
+
+            <Row noGutters className="mb-2">
+              <Col>
+                <ClusterContent />
               </Col>
             </Row>
 
