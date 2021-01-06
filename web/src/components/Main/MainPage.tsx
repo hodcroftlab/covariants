@@ -67,9 +67,9 @@ const EditableClusterContent = styled(Editable)`
 
 const NextstrainIcon = styled(NextstrainIconBase)`
   display: inline;
-  margin: auto 5px;
-  width: 20px;
-  height: 20px;
+  margin: auto;
+  width: 25px;
+  height: 25px;
 `
 
 export interface ClusterButtonProps {
