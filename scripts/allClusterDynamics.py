@@ -228,7 +228,8 @@ for clus in clus_to_run:
         'Spain/RI-IBV-99010966/2009'    : "2009-09-30", # date typed wrong
         'Denmark/DCGC-16747/2020'   : "2020-04-20", #overdiverged compared to date
         'Tunisia/19695/2020'    : "2020-07-12", #overdivrged compared to date
-        'Canada/ON-S1598/2020'  : "2020-04-09" #confirmed day-month reversal
+        'Canada/ON-S1598/2020'  : "2020-04-09", #confirmed day-month reversal
+        'SouthKorea/KDCA0367/2020'  : "2020-04-04" # too divergent given date (11)
 
         #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
         #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
