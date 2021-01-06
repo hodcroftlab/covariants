@@ -61,13 +61,14 @@ def convert_per_country_data():
     return per_country_data_output
 
 
-def convert_per_cluster_data(cluster_names):
+def convert_per_cluster_data(clusters):
     per_cluster_data_output = {"distributions": [], "country_names": []}
-    for cluster_name in cluster_names:
-        cluster_name_safe = cluster_name.replace(":", ".")
+    for _, cluster in clusters.items():
+        display_name = cluster['display_name']
+        build_name = cluster['build_name']
 
         distribution = []
-        with open(os.path.join(cluster_tables_path, f"{cluster_name_safe}_data.json"), "r") as f:
+        with open(os.path.join(cluster_tables_path, f"{build_name}_data.json"), "r") as f:
             json_input = json.load(f)
 
             for (country, cluster_data) in json_input.items():
@@ -100,7 +101,7 @@ def convert_per_cluster_data(cluster_names):
                                     dist['frequencies'][country] = frequency
 
         per_cluster_data_output["distributions"].append(
-            {'cluster': cluster_name, 'distribution': distribution})
+            {'cluster': display_name, 'distribution': distribution})
 
     return per_cluster_data_output
 
@@ -145,7 +146,7 @@ if __name__ == '__main__':
     with open(os.path.join(output_path, "perCountryData.json"), "w") as fh:
         json.dump(per_country_data_output, fh, indent=2, sort_keys=True)
 
-    per_cluster_data_output = convert_per_cluster_data(per_country_data_output['cluster_names'])
+    per_cluster_data_output = convert_per_cluster_data(clusters)
 
     with open(os.path.join(output_path, "perClusterData.json"), "w") as fh:
         json.dump(per_cluster_data_output, fh, indent=2, sort_keys=True)
