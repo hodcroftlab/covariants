@@ -38,6 +38,7 @@ The mutation is listed in parentheses after the name.
 - [S:N439K](#sn439k)
 - [S:Y453F](#sy453f)
 - [S:S98F](#ss98f)
+- [S:E484](#se484)
 - [S:D80Y](#sd80y)
 - [S:A626S](#sa626s)
 - [S:V1122L](#sv1122l)
@@ -181,6 +182,25 @@ Note this figure shows both the 69 & 70 deletion.</sub>
 - `S:S98F`
   - Mostly found in Belgium and the Netherlands - predominantly Belgium
 - Little else is known about this mutation. Please let me know if you have more information!
+
+## S:E484
+<!-- ![Figure of S:E484](/other_figures/98.gif)
+
+<sub>Figure made via [GISAID](https://gisaid.org)</sub> -->
+
+[Dedicated S:E484 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484&f_region=Europe)
+
+[Table and charts of mutation distribution](cluster_tables/S.E484_table.md)
+
+- Defining mutations:
+  - Has appeared multiple times independently: each can be associated with different accompanying mutations
+- `S:E484`
+  - Primarily associated with the 501Y.V2 variant that arose in South Africa in the winter of 2020([Tegally et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.21.20248640v1)), and a variant predominantly found in Brazil ([de Vasconcelos et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.23.20248598v1.article-info)), but has appeared independently numerous times around the world.
+  - Mutations at S:E484 may significantly reduce convalescent serum neutralization ([Greaney et al., medRxiv](https://www.biorxiv.org/content/10.1101/2020.12.31.425021v1))
+
+- Little else is known about this mutation. Please let me know if you have more information!
+
+_More information coming soon!_
 
 ## S:D80Y
 ![Figure of S:D80Y](/other_figures/80.gif)
