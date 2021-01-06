@@ -6,7 +6,6 @@ import { Col, Row } from 'reactstrap'
 import dynamic from 'next/dynamic'
 
 import { Layout } from 'src/components/Layout/Layout'
-import { NextstrainCard } from 'src/components/Main/NextstrainCard'
 import { ClusterDatum, getClusters } from 'src/io/getClusters'
 import { Editable } from 'src/components/Common/Editable'
 import { PlotCard } from './PlotCard'
@@ -126,12 +125,6 @@ export function MainPage() {
             <Row noGutters className="mb-2">
               <Col>
                 <PlotCard cluster={cluster} />
-              </Col>
-            </Row>
-
-            <Row noGutters className="mb-2">
-              <Col>
-                <NextstrainCard cluster={cluster} />
               </Col>
             </Row>
           </EditableClusterContent>
