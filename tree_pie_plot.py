@@ -23,6 +23,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 import math
+import json
 import datetime
 from shutil import copyfile
 from collections import defaultdict
@@ -198,6 +199,24 @@ node_counts = pd.DataFrame(data=node_attr)
 node_counts = node_counts.fillna(0)
 node_counts=node_counts.sort_index()
 
+countries_clusters = {}
+for coun in node_counts.index:
+    countries_clusters[coun] = defaultdict()
+#get lists of sequences per node per 'slice'
+for node in cluster.find_clades(order='postorder'):
+    for child in node:
+        if child.is_terminal():
+            #if node.country not in countries_clusters:
+            #    countries_clusters[child.country] = {}
+            if node.name not in countries_clusters[child.country]:
+                countries_clusters[child.country][node.name] = {}
+                countries_clusters[child.country][node.name]["sequences"] = []
+            countries_clusters[child.country][node.name]["sequences"].append(child.name)
+            if hasattr(node.parent, "total_countries") and child.country in node.parent.total_countries:
+                countries_clusters[child.country][node.name]["parent"] = f"is a child of {node.parent.name}, which also contains nodes from {child.country}"
+        
+with open(figure_path+f'pie_tree_asFigure_data.json', 'w') as fh:
+    json.dump(countries_clusters, fh)
 
 #make color patches for legend
 ptchs = []
