@@ -61,9 +61,7 @@ const ClusterTitle = styled.h1<{ $isCurrent: boolean }>`
   font-weight: ${(props) => props.$isCurrent && 600};
 `
 
-const EditableClusterContent = styled(Editable)`
-  min-height: 1000px;
-`
+const EditableClusterContent = styled(Editable)``
 
 const ClusterNameTitle = styled.h1`
   display: inline;

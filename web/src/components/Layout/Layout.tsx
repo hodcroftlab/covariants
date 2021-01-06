@@ -21,7 +21,13 @@ const HeaderCol = styled(Col)`
   padding: 0;
 `
 
-const MainRow = styled(Row)``
+const MainContainer = styled(Container)`
+  min-height: 100vh;
+`
+
+const MainRow = styled(Row)`
+  //min-height: 100%;
+`
 
 const MainCol = styled(Col)``
 
@@ -45,21 +51,19 @@ export interface LayoutProps {
 export function Layout({ children, wide = false }: PropsWithChildren<LayoutProps>) {
   return (
     <>
-      <Container fluid>
+      <Container fluid="md">
         <HeaderRow noGutters>
           <HeaderCol>
             <NavigationBar />
           </HeaderCol>
         </HeaderRow>
-      </Container>
 
-      <Container fluid={wide}>
-        <MainRow noGutters>
-          <MainCol>{children}</MainCol>
-        </MainRow>
-      </Container>
+        <MainContainer fluid={wide ? true : 'md'}>
+          <MainRow noGutters>
+            <MainCol>{children}</MainCol>
+          </MainRow>
+        </MainContainer>
 
-      <Container fluid>
         <FooterRow noGutters>
           <FooterCol>
             <FooterContent />
