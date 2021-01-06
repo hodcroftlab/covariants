@@ -26,17 +26,21 @@ def trim_last_data_point(week_as_date, cluster_count, total_count, frac=0.2, kee
 
     return week_as_date, cluster_count, total_count
 
-def non_zero_counts(cluster_data, total_data, country):
+def non_zero_counts(cluster_data, total_data, country, smoothing=None):
+
+    if smoothing is None:
+        smoothing = np.array([1])
 
     cluster_and_total = pd.concat([cluster_data[country], total_data[country]], axis=1).fillna(0)
-    with_data = cluster_and_total.iloc[:,1]>0
+    # remove initial time points without data
+    with_data = np.cumsum(cluster_and_total.iloc[:,1])>0
 
     #this lets us plot X axis as dates rather than weeks (I struggle with weeks...)
     week_as_date = [ datetime.datetime.strptime("2020-W{}-1".format(x), '%G-W%V-%u')
-                     for x in cluster_and_total.index[with_data] ]
+                     for x in cluster_and_total[with_data].index ]
     #plt.plot(weeks.index[with_data], weeks.loc[with_data].iloc[:,0]/(total[with_data]), 'o', color=palette[i], label=coun, linestyle=sty)
-    cluster_count = cluster_and_total[with_data].iloc[:,0]
-    total_count = cluster_and_total[with_data].iloc[:,1]
+    cluster_count = np.convolve(cluster_and_total[with_data].iloc[:,0], smoothing, mode='same')
+    total_count   = np.convolve(cluster_and_total[with_data].iloc[:,1], smoothing, mode='same')
 
     return week_as_date, np.array(cluster_count), np.array(total_count)
 

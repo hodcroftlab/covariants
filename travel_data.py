@@ -12,9 +12,14 @@ for fname in glob.glob('../cluster_scripts/travel_data/*xls'):
     else:
         country = country[0].upper() + country[1:]
 
-    d = pd.read_excel(fname, skiprows=2).astype(str)
-    travel_volume[country] = d.iloc[0,3:].apply(lambda x:int(x.replace('.','')))
-    travel_volume[country].index = [datetime.datetime(2020,i,15) for i in range(1,11)]
+    if country in ['Italy', 'Sweden', 'Poland']: # format changed in 2021
+        d = pd.read_excel(fname, skiprows=3).astype(str)
+        travel_volume[country] = d.iloc[:10,1].apply(lambda x:int(x.replace('.','')))[::-1]
+        travel_volume[country].index = [datetime.datetime(2020,i,15) for i in range(1,11)]
+    else:
+        d = pd.read_excel(fname, skiprows=2).astype(str)
+        travel_volume[country] = d.iloc[0,3:].apply(lambda x:int(x.replace('.','')))
+        travel_volume[country].index = [datetime.datetime(2020,i,15) for i in range(1,11)]
 
 d = pd.read_excel('../cluster_scripts/travel_data/UK.xls', skiprows=2).astype(str)
 travel_volume["Wales"] = d.iloc[0,3:].apply(lambda x:int(int(x.replace('.','')) * popsizes['Wales']/popsizes['United Kingdom']))

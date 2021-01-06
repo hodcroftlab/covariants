@@ -50,7 +50,13 @@ diag = pd.read_csv(diag_file, sep='\t', index_col=False)
 input_meta = "data/metadata.tsv"
 meta = pd.read_csv(input_meta, sep='\t', index_col=False)
 meta = meta.fillna('')
-
+has_valid_date = set()
+for ri, row in meta.iterrows():
+    try:
+        datetime.datetime.strptime(row.date, '%Y-%m-%d')
+        has_valid_date.add(row.strain)
+    except:
+        pass
 ########
 
 # Define SNPs that will determine what's in our cluster
@@ -117,6 +123,8 @@ for clus in clus_to_run:
 
     for index, row in diag.iterrows():
         strain = row['strain']
+        if strain not in has_valid_date:
+            continue
         snplist = row['all_snps']
         if not pd.isna(snplist):
             intsnp = [int(x) for x in snplist.split(',')]
@@ -271,6 +279,9 @@ for clus in clus_to_run:
     # sort
     total_data=total_data.sort_index()
     cluster_data=cluster_data.sort_index()
+    width = 1
+    smoothing = np.exp(-np.arange(-10,11)**2/2/width**2)
+    smoothing /= smoothing.sum()
 
     def marker_size(n):
         if n>100:
@@ -296,8 +307,10 @@ for clus in clus_to_run:
     'Switzerland',
     'Ireland',
     'Netherlands',
-    #'Belgium'
-    'Denmark'
+#    'Belgium',
+    'Denmark',
+#    'Germany',
+#    'Italy'
     ]
 
     #These are the countries we don't plot: 'Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland'
@@ -348,7 +361,7 @@ for clus in clus_to_run:
 
         #for a simpler plot of most interesting countries use this:
         for coun in [x for x in countries_to_plot]:
-            week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
+            week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun, smoothing=smoothing)
             # remove last data point if that point as less than frac sequences compared to the previous count
             week_as_date, cluster_count, total_count = trim_last_data_point(week_as_date, cluster_count, total_count, frac=0.1, keep_count=10)
 
@@ -369,7 +382,7 @@ for clus in clus_to_run:
         fig.autofmt_xdate(rotation=30)
         ax3.tick_params(labelsize=fs*0.8)
         ax3.set_ylabel('frequency', fontsize=fs)
-        ax3.set_xlim(datetime.datetime(2020,5,1), datetime.datetime(2020,11,10))
+        ax3.set_xlim(datetime.datetime(2020,5,1), datetime.datetime(2020,11,30))
         plt.show()
         plt.tight_layout()
 
@@ -395,7 +408,7 @@ for clus in clus_to_run:
             fig = plt.figure()
             #for a simpler plot of most interesting countries use this:
             for coun in [ 'England', 'Scotland', 'Wales', 'Northern Ireland', 'United Kingdom']:
-                week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
+                week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun, smoothing=smoothing)
 
                 if coun == 'United Kingdom':
                     print('UK')
@@ -405,7 +418,7 @@ for clus in clus_to_run:
                         color=country_styles[coun]['c'],
                         linestyle=country_styles[coun]['ls'],
                         label = f"{coun}")
-                        
+
             plt.legend(handlelength=5)
             fig.autofmt_xdate(rotation=30)
             plt.ylabel('frequency')
