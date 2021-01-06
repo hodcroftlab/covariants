@@ -130,6 +130,7 @@ if print_files and "all" in clus_answer:
         "- [S:N439K](#sn439k) \n"
         "- [S:Y453F](#sy453f) \n"
         "- [S:S98F](#ss98f) \n"
+        "- [S:E484](#se484) \n"
         "- [S:D80Y](#sd80y) \n"
         "- [S:A626S](#sa626s) \n"
         "- [S:V1122L](#sv1122l) \n\n")
