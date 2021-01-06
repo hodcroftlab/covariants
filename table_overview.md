@@ -12,6 +12,7 @@ In the graphs below, countries are displayed in the chart if the country has at 
 - [S:N439K](#sn439k) 
 - [S:Y453F](#sy453f) 
 - [S:S98F](#ss98f) 
+- [S:E484](#se484)
 - [S:D80Y](#sd80y) 
 - [S:A626S](#sa626s) 
 - [S:V1122L](#sv1122l) 
