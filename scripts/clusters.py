@@ -28,6 +28,10 @@ clusters = {"S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
             "country_info":[], 'col': "#911eb4", "display_name": "S:S98F", 
             "build_name":"S.S98F"},
 
+            "S484": {'snps': [23011], 'cluster_data': [],
+            "country_info":[], 'col': "#006600", "display_name": "S:E484", 
+            "build_name":"S.E484"},
+
             "S80": {'snps': [21799, 3098], 'cluster_data': [],
             "country_info":[], 'col': "#3cb44b", "display_name": "S:D80Y", 
             "build_name":"S.D80Y"},
