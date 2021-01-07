@@ -238,7 +238,8 @@ print(all_num_seqs)
 orig_clus_keys = copy.deepcopy(clus_keys)
 
 # DO NOT PLOT 69 AS IT OVERLAPS WITH 439 AND 501!!!!
-clus_keys = [x for x in clus_keys if x is not "S69"]
+# Do not plot 484 as it overlaps with 501Y.V2, possibly others
+clus_keys = [x for x in clus_keys if x not in ["S69","S484"]]
 
 ############## Plot
 
@@ -256,6 +257,8 @@ rws = int(np.ceil((len(countries_to_plot)+1)/2))
 fig, axs = plt.subplots(nrows=rws, #len(countries_to_plot)+1, 
     ncols=2, sharex=True,figsize=(9,11))
 
+min_week = datetime.datetime(2020,12,31)
+max_week = datetime.datetime(2020,1,1)
 week_as_dates = {}
 json_output = {}
 
@@ -273,6 +276,12 @@ for coun, ax in zip(countries_to_plot, fig.axes[1:]): #axs[1:]):
             i+=1
             continue
         week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
+        mindat = min(week_as_date)
+        if mindat < min_week:
+            min_week = mindat
+        maxdat = max(week_as_date)
+        if mindat > max_week:
+            max_week = maxdat
 
         week_as_dates[coun] = week_as_date
 
@@ -306,6 +315,9 @@ for coun, ax in zip(countries_to_plot, fig.axes[1:]): #axs[1:]):
     ax.tick_params(labelsize=fs*0.8)
     #ax.set_ylabel('frequency')
     #ax.legend(ncol=1, fontsize=fs*0.8, loc=2)
+
+json_output["min_date"] = datetime.datetime.strftime(min_week, "%Y-%m-%d")
+json_output["max_date"] = datetime.datetime.strftime(max_week, "%Y-%m-%d")
 
 fig.axes[0].legend(handles=ptchs, loc=3, fontsize=fs*0.7, ncol=3)
 fig.axes[0].axis('off')
