@@ -1,7 +1,7 @@
 declare module 'react-gif-player' {
-  import React from 'react'
+  import React, { HTMLProps } from 'react'
 
-  export interface GifPlayerProps {
+  export interface GifPlayerProps extends HTMLProps<HTMLImageElement> {
     gif: string
     still: string
   }
