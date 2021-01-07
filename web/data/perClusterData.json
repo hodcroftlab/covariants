@@ -2,6 +2,7 @@
   "country_names": [
     "Australia",
     "Belgium",
+    "Brazil",
     "Czech Republic",
     "Denmark",
     "Finland",
@@ -3481,6 +3482,305 @@
           "frequencies": {
             "Luxembourg": 0.043478260869565216,
             "United Kingdom": 0.0
+          },
+          "week": "2020-12-28"
+        }
+      ]
+    },
+    {
+      "cluster": "S:E484",
+      "distribution": [
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "South Africa": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-05-11"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "South Africa": 0.0,
+            "USA": 0.000691085003455425,
+            "United Kingdom": 0.010726072607260726
+          },
+          "week": "2020-05-18"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "South Africa": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-05-25"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "South Africa": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-06-01"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "South Africa": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.00037979491074819596
+          },
+          "week": "2020-06-08"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "South Africa": 0.0,
+            "USA": 0.0007530120481927711,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-06-15"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "South Africa": 0.0,
+            "USA": 0.0003497726477789437,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-06-22"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "South Africa": 0.0,
+            "USA": 0.0005310674455655868,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-06-29"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "South Africa": 0.0,
+            "USA": 0.0008110300081103001,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-07-06"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "South Africa": 0.0037593984962406013,
+            "USA": 0.0008230452674897119,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-07-13"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "South Africa": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-07-20"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "South Africa": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-07-27"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "South Africa": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-08-03"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "South Africa": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.0014326647564469914
+          },
+          "week": "2020-08-10"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "South Africa": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-08-31"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "South Africa": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.0003045066991473812
+          },
+          "week": "2020-09-07"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "South Africa": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.0009562514941429596
+          },
+          "week": "2020-09-28"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.125,
+            "South Africa": 0.08080808080808081,
+            "USA": 0.0017452006980802793,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-10-05"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.5,
+            "South Africa": 0.265625,
+            "USA": 0.004790419161676647,
+            "United Kingdom": 0.00027862914460852607
+          },
+          "week": "2020-10-26"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.41025641025641024,
+            "South Africa": 0.4157303370786517,
+            "USA": 0.0,
+            "United Kingdom": 0.00010092854259184497
+          },
+          "week": "2020-11-02"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "South Africa": 0.4642857142857143,
+            "USA": 0.0,
+            "United Kingdom": 0.00035568202027387515
+          },
+          "week": "2020-11-16"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.5822784810126582,
+            "South Africa": 0.7808219178082192,
+            "USA": 0.0,
+            "United Kingdom": 0.00027419797093501506
+          },
+          "week": "2020-11-23"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.4,
+            "South Africa": 0.8181818181818182,
+            "USA": 0.0034129692832764505,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-11-30"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.3333333333333333,
+            "South Africa": 0.8409090909090909,
+            "USA": 0.002325581395348837,
+            "United Kingdom": 0.0007047216349541931
+          },
+          "week": "2020-12-07"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.010452961672473868
+          },
+          "week": "2020-12-21"
+        },
+        {
+          "frequencies": {
+            "South Africa": 0.0,
+            "USA": 0.0011890606420927466,
+            "United Kingdom": 0.0005711022272986865
+          },
+          "week": "2020-08-17"
+        },
+        {
+          "frequencies": {
+            "South Africa": 0.0,
+            "USA": 0.0034423407917383822,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-08-24"
+        },
+        {
+          "frequencies": {
+            "South Africa": 0.034482758620689655,
+            "USA": 0.0,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-09-14"
+        },
+        {
+          "frequencies": {
+            "South Africa": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-09-21"
+        },
+        {
+          "frequencies": {
+            "South Africa": 0.058823529411764705,
+            "USA": 0.0051813471502590676,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-10-12"
+        },
+        {
+          "frequencies": {
+            "South Africa": 0.1891891891891892,
+            "USA": 0.0,
+            "United Kingdom": 0.00011793843613633684
+          },
+          "week": "2020-10-19"
+        },
+        {
+          "frequencies": {
+            "South Africa": 0.7435897435897436,
+            "USA": 0.004722550177095631,
+            "United Kingdom": 0.0006012024048096192
+          },
+          "week": "2020-11-09"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0078125,
+            "United Kingdom": 0.0018606224627875508
+          },
+          "week": "2020-12-14"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0,
+            "United Kingdom": 0.6153846153846154
           },
           "week": "2020-12-28"
         }

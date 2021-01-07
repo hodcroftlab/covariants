@@ -145,7 +145,6 @@ def add_cluster_properties(cluster):
 if __name__ == '__main__':
     # NOTE: we exclude DanishCluster
     clusters.pop("DanishCluster", None)
-    clusters.pop("S484", None)
 
     os.makedirs(output_path, exist_ok=True)
 
