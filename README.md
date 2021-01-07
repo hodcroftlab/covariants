@@ -38,6 +38,7 @@ The mutation is listed in parentheses after the name.
 - [S:N439K](#sn439k)
 - [S:Y453F](#sy453f)
 - [S:S98F](#ss98f)
+- [S:E484](#se484)
 - [S:D80Y](#sd80y)
 - [S:A626S](#sa626s)
 - [S:V1122L](#sv1122l)
@@ -92,11 +93,11 @@ The mutation is listed in parentheses after the name.
   - Amino-acid changes are `N501Y` (nucleotide mutation `A23063T`), `N501T` (nucleotide mutation `A23064C`), and `N501S` (nucleotide mutation `A23064G`)
 - `S:N501`
   - Mutation is in the receptor binding domain (RDB), important to ACE2 binding and antibody recognition
-  - N501Y is associated with a recently reported 'new variants' in the UK and South Africa:
+  - N501Y is associated with recently reported 'new variants' in the UK and South Africa:
     - '20B/501Y.V1' (B.1.1.7) was announced in the South East of England on 14 Dec 2020 ([COG-UK Report](https://www.cogconsortium.uk/news_item/update-on-new-sars-cov-2-variant-and-how-cog-uk-tracks-emerging-mutations/), [Rambaut et al.](https://virological.org/t/preliminary-genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-the-uk-defined-by-a-novel-set-of-spike-mutations/563), [PHE report](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf), [PHE Technical Report 2](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v3))
       - This particular variant is associated with multiple mutations in Spike, including: `N501Y`, a deletion at 69/70 (as seen in `S:N439K` & `S:Y453F`) ([Kemp et al. bioRxiv (21 Dec)](https://www.biorxiv.org/content/10.1101/2020.12.14.422555v3)), `Y144` deletion, and `P681H` (adjacent to the furin cleavage site).
       - There is also a notable truncation of `ORF8`, with `Q27*` (becomes a stop codon) (deletion of `ORF8` was previously associated with reduced clinical severity ([Young et al. Lancet](https://www.thelancet.com/article/S0140-6736(20)31757-8/fulltext))), and mutations in `N`: `N:D3L` and `S235F`.
-    - '20C/501Y.V2' is found in South Africa and was also announced in December 2020 ([Tegally et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.21.20248640v1))
+    - '20C/501Y.V2' (B.1.351) is found in South Africa and was also announced in December 2020 ([Tegally et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.21.20248640v1))
       - This variant is associated with multiple mutations in Spike, including: `N501Y`, `K417N`, and `D80A`.
       - There is also an `N` mutation: `T205I`.
       - It does _not_ have the deletion at 69/70.
@@ -181,6 +182,25 @@ Note this figure shows both the 69 & 70 deletion.</sub>
 - `S:S98F`
   - Mostly found in Belgium and the Netherlands - predominantly Belgium
 - Little else is known about this mutation. Please let me know if you have more information!
+
+## S:E484
+<!-- ![Figure of S:E484](/other_figures/98.gif)
+
+<sub>Figure made via [GISAID](https://gisaid.org)</sub> -->
+
+[Dedicated S:E484 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484&f_region=Europe)
+
+[Table and charts of mutation distribution](cluster_tables/S.E484_table.md)
+
+- Defining mutations:
+  - Has appeared multiple times independently: each can be associated with different accompanying mutations
+- `S:E484`
+  - Primarily associated with the 501Y.V2 variant that arose in South Africa in the winter of 2020([Tegally et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.21.20248640v1)), and a variant predominantly found in Brazil ([de Vasconcelos et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.23.20248598v1.article-info)), but has appeared independently numerous times around the world.
+  - Mutations at S:E484 may significantly reduce convalescent serum neutralization ([Greaney et al., medRxiv](https://www.biorxiv.org/content/10.1101/2020.12.31.425021v1))
+
+- Little else is known about this mutation. Please let me know if you have more information!
+
+_More information coming soon!_
 
 ## S:D80Y
 ![Figure of S:D80Y](/other_figures/80.gif)
