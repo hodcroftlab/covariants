@@ -51,6 +51,13 @@ def wrap_cluster_data(country_data_aos):
 
 def convert_per_country_data():
     per_country_data_output = {"distributions": [], 'cluster_names': []}
+
+    min_date = json_input["min_date"]
+    max_date = json_input["max_date"]
+
+    json_input.pop("min_date", None)
+    json_input.pop("max_date", None)
+
     for (country, country_data) in json_input.items():
         country_data_aos = soa_to_aos(country_data)
         country_data_aos_wrapped, cluster_names = wrap_cluster_data(country_data_aos)
@@ -58,7 +65,7 @@ def convert_per_country_data():
         per_country_data_output["cluster_names"] = \
             sorted(list(set(cluster_names + per_country_data_output["cluster_names"])))
 
-    return per_country_data_output
+    return per_country_data_output, min_date, max_date
 
 
 def convert_per_cluster_data(clusters):
@@ -140,15 +147,20 @@ if __name__ == '__main__':
     clusters.pop("DanishCluster", None)
     clusters.pop("S484", None)
 
-    per_country_data_output = convert_per_country_data()
-
     os.makedirs(output_path, exist_ok=True)
 
+    per_country_data_output, min_date, max_date = convert_per_country_data()
     with open(os.path.join(output_path, "perCountryData.json"), "w") as fh:
         json.dump(per_country_data_output, fh, indent=2, sort_keys=True)
 
-    per_cluster_data_output = convert_per_cluster_data(clusters)
+    params = {
+        "min_date": min_date,
+        "max_date": max_date,
+    }
+    with open(os.path.join(output_path, "params.json"), "w") as fh:
+        json.dump(params, fh, indent=2, sort_keys=True)
 
+    per_cluster_data_output = convert_per_cluster_data(clusters)
     with open(os.path.join(output_path, "perClusterData.json"), "w") as fh:
         json.dump(per_cluster_data_output, fh, indent=2, sort_keys=True)
 

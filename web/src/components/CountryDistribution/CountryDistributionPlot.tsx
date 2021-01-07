@@ -6,8 +6,10 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { DateTime } from 'luxon'
 
 import { theme } from 'src/theme'
-import { formatDate, formatProportion } from 'src/helpers/format'
+import { timeDomain } from 'src/io/getParams'
 import { getClusterColor } from 'src/io/getClusters'
+import { formatDate, formatProportion } from 'src/helpers/format'
+
 import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
 import { ChartContainerOuter, ChartContainerInner } from 'src/components/Common/PlotLayout'
 import { CountryDistributionPlotTooltip } from './CountryDistributionPlotTooltip'
@@ -40,7 +42,13 @@ export function CountryDistributionPlotComponent({ cluster_names, distribution }
       <ChartContainerInner>
         <ResponsiveContainer width="99%" aspect={theme.plot.aspectRatio} debounce={0}>
           <AreaChart margin={theme.plot.margin} data={data} stackOffset="expand">
-            <XAxis dataKey="week" tickFormatter={formatDate} tick={theme.plot.tickStyle} allowDataOverflow />
+            <XAxis
+              dataKey="week"
+              tickFormatter={formatDate}
+              domain={timeDomain}
+              tick={theme.plot.tickStyle}
+              allowDataOverflow
+            />
             <YAxis tickFormatter={formatProportion} domain={[0, 1]} tick={theme.plot.tickStyle} allowDataOverflow />
             <Tooltip content={CountryDistributionPlotTooltip} isAnimationActive={false} />
             {cluster_names.map((cluster, i) => (

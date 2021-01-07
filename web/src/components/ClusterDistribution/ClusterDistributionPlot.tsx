@@ -4,14 +4,16 @@ import React from 'react'
 import dynamic from 'next/dynamic'
 import { DateTime } from 'luxon'
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+
+import { theme } from 'src/theme'
+import { timeDomain } from 'src/io/getParams'
+import { getCountryColor, getCountryStyle } from 'src/io/getCountryColor'
+import { formatDate, formatProportion } from 'src/helpers/format'
+import { lineStyleToStrokeDashArray } from 'src/helpers/lineStyleToStrokeDashArray'
+
 import { ClusterDistributionPlotTooltip } from 'src/components/ClusterDistribution/ClusterDistributionPlotTooltip'
 import { ChartContainerInner, ChartContainerOuter } from 'src/components/Common/PlotLayout'
 import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
-
-import { formatDate, formatProportion } from 'src/helpers/format'
-import { lineStyleToStrokeDashArray } from 'src/helpers/lineStyleToStrokeDashArray'
-import { getCountryColor, getCountryStyle } from 'src/io/getCountryColor'
-import { theme } from 'src/theme'
 
 export interface ClusterDistributionDatum {
   week: string
@@ -36,7 +38,13 @@ export function ClusterDistributionPlotComponent({ country_names, distribution }
       <ChartContainerInner>
         <ResponsiveContainer aspect={theme.plot.aspectRatio}>
           <LineChart margin={theme.plot.margin} data={data}>
-            <XAxis dataKey="week" tickFormatter={formatDate} tick={theme.plot.tickStyle} allowDataOverflow />
+            <XAxis
+              dataKey="week"
+              tickFormatter={formatDate}
+              domain={timeDomain}
+              tick={theme.plot.tickStyle}
+              allowDataOverflow
+            />
             <YAxis tickFormatter={formatProportion} domain={[0, 1]} tick={theme.plot.tickStyle} allowDataOverflow />
             <Tooltip content={ClusterDistributionPlotTooltip} isAnimationActive={false} />
             {country_names.map((country, i) => (
