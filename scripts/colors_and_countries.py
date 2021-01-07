@@ -20,7 +20,8 @@ country_list =[
 'Denmark',
 'Hong Kong',
 'Portugal',
-'Luxembourg'
+'Luxembourg',
+'Lithuania'
 ]
 
 colors = [
@@ -43,7 +44,8 @@ colors = [
 "#0099ff",
 "#d9d9d9",
 '#990000',
-'#c2c2a3'
+'#c2c2a3',
+'#ff66ff'
 ]
 
 #separate out Scotland, England, NI, Wales...
