@@ -1,11 +1,11 @@
 
 
 clusters = {"S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
-            "country_info":[], 'col': "#ff8d3d", "display_name": "20A.EU1", 
+            "country_info":[], 'col': "#ff8d3d", "display_name": "20A.EU1", "display_name2": "S:A222V",
             "build_name":"20A.EU1"},
 
             "S477": {'snps': [22991, 4542], 'cluster_data': [],
-            'country_info':[], 'col': "#65beeb", "display_name": "20A.EU2", 
+            'country_info':[], 'col': "#65beeb", "display_name": "20A.EU2", "display_name2": "S:477N",
             "build_name":"20A.EU2"},
 
             "S501": {'snps': [23063], 'cluster_data': [], 'snps2': [23062],
