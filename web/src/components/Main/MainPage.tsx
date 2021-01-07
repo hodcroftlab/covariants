@@ -14,6 +14,7 @@ import { ClusterDatum, getClusters } from 'src/io/getClusters'
 import { Editable } from 'src/components/Common/Editable'
 import { PlotCard } from './PlotCard'
 import { ProteinCard } from './ProteinCard'
+import { ClusterContentLoading } from './ClusterContentLoading'
 
 const ClustersRow = styled(Row)`
   justify-content: center;
@@ -103,7 +104,7 @@ export function ClusterButton({ cluster, onClick, isCurrent }: ClusterButtonProp
 }
 
 const getClusterContent = (cluster: string) =>
-  dynamic(() => import(`../../../../content/clusters/${cluster}.md`), { ssr: true })
+  dynamic(() => import(`../../../../content/clusters/${cluster}.md`), { ssr: true, loading: ClusterContentLoading })
 
 const clusters = getClusters()
 
