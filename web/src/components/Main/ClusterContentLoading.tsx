@@ -6,7 +6,7 @@ import { URL_GITHUB } from 'src/constants'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 
 export type ClusterContentLoadingProps = {
-  error: Error | null
+  error?: Error | null
 }
 
 export function ClusterContentLoading({ error }: ClusterContentLoadingProps) {

@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { URL_GITHUB } from 'src/constants'
-import { success } from 'src/theme'
 
 import styled from 'styled-components'
 import { SiMoleculer } from 'react-icons/si'
