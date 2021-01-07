@@ -9,6 +9,6 @@
 | United Kingdom | 2020-07-16  |         17 | 2020-11-15 |
 | Norway         | 2020-08-03  |         13 | 2020-10-24 |
 | Denmark        | 2020-08-17  |         69 | 2020-12-21 |
-| Latvia         | 2020-08-31  |          3 | 2020-10-07 |
+| Latvia         | 2020-08-31  |          6 | 2020-10-07 |
 
 ![Overall trends S.V1122L](/overall_trends_figures/overall_trends_S.V1122L.png)
