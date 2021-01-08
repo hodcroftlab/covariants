@@ -8,6 +8,9 @@ Converts cluster data to a format suitable for consumption by the web app
 import json
 import os
 
+import numpy as np
+import pandas as pd
+
 from clusters import clusters
 from colors_and_countries import country_styles
 
@@ -66,6 +69,53 @@ def convert_per_country_data():
     return per_country_data_output, min_date, max_date
 
 
+def diff_left_closed(big, small):
+    """
+    Calculates a difference between a larger list and a smaller list.
+    Boundaries are included into the diff. The difference is sorted.
+    """
+    diff = set()
+    N = len(big)
+    for i, curr in enumerate(big):
+        if curr not in small:
+            diff.add(curr)  # Add current
+
+            if i > 0:
+                # Add previous
+                prev = big[i - 1]
+                diff.add(prev)
+            if i < (N - 1):
+                # Add next
+                next_ = big[i + 1]
+                diff.add(next_)
+
+    return sorted(list(diff))
+
+
+def interpolate_per_cluster_data(cluster_data):
+    """
+    Fills data for missing weeks using linear interpolation.
+    Produces only the interpolated chunks (including boundaries for every missing date span), i.e. the original data is not included.
+    """
+    df = pd.DataFrame(cluster_data).set_index("week")
+
+    # Fill gaps in the index (from "weeks" column) with interval of 7 days. Fill values of the added rows wih NaN.
+    old_index = df.index
+    new_index = pd.date_range(old_index[0], old_index[-1], freq='7D').strftime('%Y-%m-%d')
+    df = df.reindex(new_index, fill_value=np.NaN)
+
+    df_interp = df.interpolate(method="linear")
+
+    # Calculate indices to pick from the interpolation results.
+    # We want a closed diff: only rows that are not in the original data, plus boundaries for every span of missing data
+    diff_index = diff_left_closed(new_index.tolist(), old_index.tolist())
+    df_diff = df_interp.loc[diff_index]
+
+    assert not df_diff.isnull().any().any(), 'Detected NaN values in the interpolation results'
+
+    return df_diff.to_dict('list')
+
+
 def convert_per_cluster_data(clusters):
     per_cluster_data_output = {"distributions": [], "country_names": []}
     for _, cluster in clusters.items():
@@ -79,6 +129,9 @@ def convert_per_cluster_data(clusters):
             for (country, cluster_data) in json_input.items():
                 per_cluster_data_output["country_names"] = \
                     sorted(list(set([country] + per_cluster_data_output["country_names"])))
+
+                cluster_data_interp = interpolate_per_cluster_data(cluster_data)
+                print(cluster_data_interp)
 
                 cluster_data_aos = soa_to_aos(cluster_data)
 
@@ -114,9 +167,9 @@ def convert_per_cluster_data(clusters):
 # HACK: Copied from `allClusterDynamics.py:355`
 # TODO: deduplicate
 cluster_url_params = {
-    "S:N501": "", # don't have Europe filter
-    "S:H69-": "c=gt-S_69,501,453", # color by mutations, no Europe filter
-    "S:Y453F": "c=gt-S_453&f_region=Europe" # color by mutations, Europe filter
+    "S:N501": "",  # don't have Europe filter
+    "S:H69-": "c=gt-S_69,501,453",  # color by mutations, no Europe filter
+    "S:Y453F": "c=gt-S_453&f_region=Europe"  # color by mutations, Europe filter
 }
 
 
