@@ -334,6 +334,24 @@ for clus in clus_to_run:
     print(country_info_df.sort_values(by="first_seq"))
     print("\n")
 
+    # Make a version of N501 which does not have as much UK sequences for increased viewability
+    if clus == "S501":
+        nouk_501_meta = cluster_meta[cluster_meta['country'].apply(lambda x: x != "United Kingdom")]
+        #re-set wanted_seqs
+        extra501_wanted_seqs = list(nouk_501_meta['strain']) 
+
+        noUK_clusterlist_output = cluster_path+f'/clusters/cluster_{clusters[clus]["build_name"]}-noUK.txt'
+        noUK_out_meta_file = cluster_path+f'/cluster_info/cluster_{clusters[clus]["build_name"]}-noUK_meta.tsv'
+
+        if print_files:
+            with open(noUK_clusterlist_output, 'w') as f:
+                for item in extra501_wanted_seqs:
+                    f.write("%s\n" % item)
+            build_nam = clusters[clus]["build_name"]
+            copypath = noUK_clusterlist_output.replace(f"{build_nam}-noUK", "{}-noUK-{}".format(build_nam, datetime.date.today().strftime("%Y-%m-%d")))
+            copyfile(noUK_clusterlist_output, copypath)
+            nouk_501_meta.to_csv(noUK_out_meta_file,sep="\t",index=False)
+
     #######
     #print out the table
     table_file = f"{tables_path}{clus_display}_table.tsv"
@@ -364,7 +382,7 @@ for clus in clus_to_run:
             with open(f"{tables_path}all_tables.md", 'a') as fh:
                 fh.write(f'\n\n## {clus_display}\n')
                 fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{url_params})\n\n")
-                if clus is "S501":
+                if clus == "S501":
                     fh.write(f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
                     fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
                             "refer to _all_ these mutations (Y, S, T).\n")
@@ -375,7 +393,7 @@ for clus in clus_to_run:
         with open(f"{tables_path}{clus_display}_table.md", 'w') as fh:
             fh.write(f'\n\n## {clus_display}\n')
             fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{url_params})\n\n")
-            if clus is "S501":
+            if clus == "S501":
                 fh.write(f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
                 fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
                           "refer to _all_ these mutations (Y, S, T).\n")
