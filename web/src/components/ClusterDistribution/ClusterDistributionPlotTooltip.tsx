@@ -1,8 +1,10 @@
 import React from 'react'
 
-import { sortBy, reverse } from 'lodash'
+import { get, sortBy, reverse, uniqBy } from 'lodash'
 import styled from 'styled-components'
-import { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
+
+import type { ClusterDistributionDatum } from 'src/components/ClusterDistribution/ClusterDistributionPlot'
+import type { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 
 import { formatDate, formatProportion } from 'src/helpers/format'
 import { getCountryColor } from 'src/io/getCountryColor'
@@ -36,7 +38,15 @@ const TooltipTable = styled.table`
   }
 `
 
+const TooltipFooter = styled.div`
+  margin: 5px;
+`
+
 const TooltipTableBody = styled.tbody``
+
+export function countryNameInterp() {}
+
+export function countryNameNormal() {}
 
 export function ClusterDistributionPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
   const { payload } = props
@@ -46,10 +56,12 @@ export function ClusterDistributionPlotTooltip(props: DefaultTooltipContentProps
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  const week = formatDate(payload[0]?.payload.week)
+  const data = payload[0]?.payload as ClusterDistributionDatum
+  const week = formatDate(data.week)
 
-  const payloadSorted = reverse(sortBy(payload, 'value'))
+  let payloadSorted = sortBy(payload, 'value')
+  payloadSorted = reverse(payloadSorted)
+  const payloadUnique = uniqBy(payloadSorted, (payload) => payload.name)
 
   return (
     <Tooltip>
@@ -57,17 +69,25 @@ export function ClusterDistributionPlotTooltip(props: DefaultTooltipContentProps
 
       <TooltipTable>
         <TooltipTableBody>
-          {payloadSorted.map(({ color, name, value }, index) => (
-            <tr key={name}>
-              <td className="px-2">
-                <ColoredCircle $color={getCountryColor(name ?? '')} $size={10} />
-                <span>{name}</span>
-              </td>
-              <td className="px-2">{value !== undefined && value > EPSILON ? formatProportion(value) : '-'}</td>
-            </tr>
-          ))}
+          {payloadUnique.map(({ color, name, value, payload }, index) => {
+            const interpolated = !get(payload?.orig, name, false)
+            return (
+              <tr key={name}>
+                <td className="px-2">
+                  <ColoredCircle $color={getCountryColor(name ?? '')} $size={10} />
+                  <span>{name}</span>
+                </td>
+                <td>{interpolated && '*'}</td>
+                <td className="px-2">{value !== undefined && value > EPSILON ? formatProportion(value) : '-'}</td>
+              </tr>
+            )
+          })}
         </TooltipTableBody>
       </TooltipTable>
+
+      <TooltipFooter>
+        <small>{'* Interpolated values'}</small>
+      </TooltipFooter>
     </Tooltip>
   )
 }
