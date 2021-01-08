@@ -261,6 +261,7 @@ min_week = datetime.datetime(2020,12,31)
 max_week = datetime.datetime(2020,1,1)
 week_as_dates = {}
 json_output = {}
+json_output['countries'] = {}
 
 #for coun in [x for x in countries_to_plot]:
 for coun, ax in zip(countries_to_plot, fig.axes[1:]): #axs[1:]):
@@ -268,7 +269,7 @@ for coun, ax in zip(countries_to_plot, fig.axes[1:]): #axs[1:]):
     first_clus_count = []
     ptchs = []
 
-    json_output[coun] = {'week': {}, 'total_sequences': {} }
+    json_output['countries'][coun] = {'week': {}, 'total_sequences': {} }
 
     for clus in clus_keys:#clusters.keys():
         cluster_data = clusters[clus]['cluster_data']
@@ -285,7 +286,7 @@ for coun, ax in zip(countries_to_plot, fig.axes[1:]): #axs[1:]):
 
         week_as_dates[coun] = week_as_date
 
-        json_output[coun][clusters[clus]['display_name']] = list(cluster_count)
+        json_output['countries'][coun][clusters[clus]['display_name']] = list(cluster_count)
 
         country_week[clus][coun] = cluster_count/total_count
 
@@ -308,16 +309,17 @@ for coun, ax in zip(countries_to_plot, fig.axes[1:]): #axs[1:]):
         #if i == 0:
         first_clus_count = cluster_count # unindented
         i+=1
-    json_output[coun]['week'] = [datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date]
-    json_output[coun]['total_sequences'] = [int(x) for x in total_count]
+    json_output['countries'][coun]['week'] = [datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date]
+    json_output['countries'][coun]['total_sequences'] = [int(x) for x in total_count]
 
     ax.text(datetime.datetime(2020,6,1), 0.7, coun, fontsize=fs)
     ax.tick_params(labelsize=fs*0.8)
     #ax.set_ylabel('frequency')
     #ax.legend(ncol=1, fontsize=fs*0.8, loc=2)
 
-json_output["min_date"] = datetime.datetime.strftime(min_week, "%Y-%m-%d")
-json_output["max_date"] = datetime.datetime.strftime(max_week, "%Y-%m-%d")
+json_output['plotting_dates'] = {}
+json_output['plotting_dates']["min_date"] = datetime.datetime.strftime(min_week, "%Y-%m-%d")
+json_output['plotting_dates']["max_date"] = datetime.datetime.strftime(max_week, "%Y-%m-%d")
 
 fig.axes[0].legend(handles=ptchs, loc=3, fontsize=fs*0.7, ncol=3)
 fig.axes[0].axis('off')

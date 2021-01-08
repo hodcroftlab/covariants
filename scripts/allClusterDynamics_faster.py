@@ -50,11 +50,47 @@ from paths import *
 from clusters import *
 from bad_sequences import *
 
-#run ../cluster_scripts/helpers.py
-#run ../cluster_scripts/colors_and_countries.py
-#run ../cluster_scripts/travel_data.py
-#run ../cluster_scripts/paths.py
-#run ../cluster_scripts/paths.py
+
+def get_summary(cluster_meta, observed_countries):
+
+    country_info = pd.DataFrame(index=observed_countries, columns=['first_seq', 'num_seqs', 'last_seq'])
+    country_dates = {}
+
+    for coun in observed_countries:
+        if coun in uk_countries:
+            #temp_meta = cluster_meta[cluster_meta['division'].isin([coun])]
+            temp_meta = cluster_meta[cluster_meta['division'].apply(lambda x: x == coun)]
+        else:
+            #temp_meta = cluster_meta[cluster_meta['country'].isin([coun])]
+            temp_meta = cluster_meta[cluster_meta['country'].apply(lambda x: x == coun)]
+
+        country_info.loc[coun].first_seq = temp_meta['date'].min()
+        country_info.loc[coun].last_seq = temp_meta['date'].max()
+        country_info.loc[coun].num_seqs = len(temp_meta)
+
+        country_dates[coun] = [datetime.datetime.strptime(dat, '%Y-%m-%d') for dat in temp_meta['date']]
+
+    return country_info, country_dates
+
+
+def marker_size(n):
+    if n>100:
+        return 150
+    elif n>30:
+        return 100
+    elif n>10:
+        return 70
+    elif n>3:
+        return 50
+    elif n>1:
+        return 20
+    else:
+        return 5
+
+
+##################################
+##################################
+#### Read in the starting files
 
 # Get diagnostics file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
 diag_file = "results/sequence-diagnostics.tsv"
@@ -64,23 +100,9 @@ input_meta = "data/metadata.tsv"
 meta = pd.read_csv(input_meta, sep='\t', index_col=False)
 meta = meta.fillna('')
 
-########
-
-# Define SNPs that will determine what's in our cluster
-# Originally I used all 6 SNPs to define - but better to use 4 and grab 'nearby' seqs
-
-#need to subtract 1 for 0-based numbering in diagnositcs script
-# real mutations are : 445, 6286, 22227, 26801, 28932, 29645
-# snps = [444, 6285, 22226, 26800, 28931, 29644]
-#snps = [22226, 28931, 29644] #now excludes 6285
-
-# Other clusters I wanted to compare against:
-# snps = [9129, 28867] # another cluster - but mostly swiss, no pattern
-# snps = [3098, 4959] # another cluster = the diverged C->T one, no pattern <- potentially most interesting tho
-# snps = [15971, 28758] # mixed serbian latvian swiss cluster, no pattern
-# snps = [22991] #4542] #26875] #S 477N - filer Europe only, below
-# snps = [22991, 7539] #australia version
-
+##################################
+##################################
+#### Find out what users want
 
 # ask user if they want to write-out files or not:
 print_files = False
@@ -89,8 +111,12 @@ if print_answer in ["y", "Y", "yes", "YES", "Yes"]:
     print_files = True
 print_files2 = True
 
-#default is 222, but ask user what they want - or run all.
+print_acks = False
+print_ack_answer = input("\nWrite out acknowledgements?(y/n) (Enter is no): ")
+if print_ack_answer in ["y", "Y", "yes", "YES", "Yes"]:
+    print_acks = True
 
+#default is 222, but ask user what they want - or run all.
 clus_to_run = ["S222"]
 reask = True
 
@@ -115,6 +141,13 @@ while reask:
         reask = False
 print("These clusters will be run: ", clus_to_run)
 
+
+##################################
+##################################
+#### Prepare output files
+
+json_output = {}
+
 # if running all clusters, clear file so can write again.
 if print_files and "all" in clus_answer:
     #clean these files so don't append to last run.
@@ -138,111 +171,99 @@ if print_files and "all" in clus_answer:
     with open(overall_tables_file, 'w') as fh:
         fh.write('\n')
 
-json_output = {}
 
+######################################################################################################
+##################################
+#### Actually start running things
+
+##################################
+##################################
+#### Ensure we have all the variable we need for each run
 
 for clus in clus_to_run:
-    print(f"\nRunning cluster {clus}\n")
+    print(f"\nGathering cluster {clus}\n")
+    clus_data = clusters[clus]
 
     if clus == "mink":
         clus_display = "mink"
-        mink_meta = meta[meta['host'].apply(lambda x: x == "Mink")]
-        wanted_seqs = list(mink_meta['strain']) 
+        clus_data['mink_meta'] = meta[meta['host'].apply(lambda x: x == "Mink")]
+        clus_data['wanted_seqs'] = list(mink_meta['strain']) 
 
-        clusterlist_output = cluster_path+f'/clusters/cluster_mink.txt'
-        out_meta_file = cluster_path+f'/cluster_info/cluster_mink_meta.tsv'
+        clus_data['clusterlist_output'] = cluster_path+f'/clusters/cluster_mink.txt'
+        clus_data['out_meta_file'] = cluster_path+f'/cluster_info/cluster_mink_meta.tsv'
 
     else:
         clus_display = clusters[clus]['build_name']
         snps = clusters[clus]['snps']
-        if 'snps2' in clusters[clus]:
-            snps2 = clusters[clus]['snps2']
-        else:
-            snps2 = []
-        if 'gaps' in clusters[clus]:
-            gaps = clusters[clus]['gaps']
-        else:
-            gaps = []
-        if 'exclude_snps' in clusters[clus]:
-            exclude_snps = clusters[clus]['exclude_snps']
-        else:
-            exclude_snps = []
+        if 'snps2' not in clusters[clus]:
+            clus_data['snps2'] = []
+        if 'gaps' not in clusters[clus]:
+            clus_data['gaps'] = []
+        if 'exclude_snps' not in clusters[clus]:
+            clus_data['exclude_snps'] = []
 
-        clusterlist_output = cluster_path+f'/clusters/cluster_{clusters[clus]["build_name"]}.txt'
-        out_meta_file = cluster_path+f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
+        clus_data['wanted_seqs'] = []
+
+        clus_data['clusterlist_output'] = cluster_path+f'/clusters/cluster_{clusters[clus]["build_name"]}.txt'
+        clus_data['out_meta_file'] = cluster_path+f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
+        
+
+##################################
+##################################
+#### For all but mink, go through and extract wanted sequences
+
+for index, row in diag.iterrows():
+    strain = row['strain']
+    snplist = row['all_snps']
+    gaplist = row['gap_list']
+
+    for clus in [x for x in clus_to_run if x != "mink"]:
+        clus_data = clusters[clus]
+        snps = clus_data['snps']
+        snps2 = clus_data['snps2']
+        gaps = clus_data['gaps']
+        exclude_snps = clus_data['exclude_snps']
+        wanted_seqs = clus_data['wanted_seqs']
+
+        # look for occurance of snp(s) *without* some other snp(s) (to exclude a certain group)
+        if snps and not pd.isna(snplist) and exclude_snps and not pd.isna(exclude_snps):
+            intsnp = [int(x) for x in snplist.split(',')]
+            if all(x in intsnp for x in snps) and all(x not in intsnp for x in exclude_snps):
+                wanted_seqs.append(row['strain'])
+
+        elif snps and not pd.isna(snplist):
+            intsnp = [int(x) for x in snplist.split(',')]
+            # this looks for all SNPs in 'snps' OR all in 'snps2' (two nucs that affect same AA, for example)
+            if all(x in intsnp for x in snps) or (all (x in intsnp for x in snps2) and len(snps2)!=0):
+                #if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
+                wanted_seqs.append(row['strain'])
+        #look for all locations in gap list
+        elif gaps and not pd.isna(gaplist):
+            intgap = [int(x) for x in gaplist.split(',')]
+            if all(x in intgap for x in gaps):
+                wanted_seqs.append(row['strain'])
 
 
-        # get the sequences that we want - which are 'part of the cluster:
-        wanted_seqs = []
+##################################
+##################################
+#### Remove bad sequences, gather metadata
+for clus in clus_to_run:
+    print(f"\nRunning cluster {clus}\n")
 
-        for index, row in diag.iterrows():
-            strain = row['strain']
-            snplist = row['all_snps']
-            gaplist = row['gap_list']
-            
-            # look for occurance of snp(s) *without* some other snp(s) (to exclude a certain group)
-            if snps and not pd.isna(snplist) and exclude_snps and not pd.isna(exclude_snps):
-                intsnp = [int(x) for x in snplist.split(',')]
-                if all(x in intsnp for x in snps) and all(x not in intsnp for x in exclude_snps):
-                    wanted_seqs.append(row['strain'])
+    clus_data = clusters[clus]
+    wanted_seqs = clus_data['wanted_seqs']
+    clus_display = clus_data['build_name']
+    #cluster_meta = clus_data['cluster_meta']
+    clusterlist_output = clus_data['clusterlist_output'] 
+    out_meta_file = clus_data['out_meta_file']
 
-            elif snps and not pd.isna(snplist):
-                intsnp = [int(x) for x in snplist.split(',')]
-                # this looks for all SNPs in 'snps' OR all in 'snps2' (two nucs that affect same AA, for example)
-                if all(x in intsnp for x in snps) or (all (x in intsnp for x in snps2) and len(snps2)!=0):
-                    #if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
-                    wanted_seqs.append(row['strain'])
-            #look for all locations in gap list
-            elif gaps and not pd.isna(gaplist):
-                intgap = [int(x) for x in gaplist.split(',')]
-                if all(x in intgap for x in gaps):
-                    wanted_seqs.append(row['strain'])
 
     # If seq there and date bad - exclude!
-#    bad_seqs = {
-#        'Spain/VC-IBV-98006466/2020' : "2020-03-07", # There's one spanish seq with date of 7 March - we think this is wrong.
-#        # There are five sequences from UK with suspected bad dates: exclude
-#        'England/LIVE-1DD7AC/2020' : "2020-03-10",
-#        'England/PORT-2D2111/2020' : "2020-03-21",
-#        'England/CAMB-1BA110/2020' : "2020-06-11", # suspected that these ones have reversed dd-mm (are actually 5 and 6 Nov)
-#        'England/CAMB-1BA0F5/2020' : "2020-05-11", # suspected that these ones have reversed dd-mm (are actually 5 and 6 Nov)
-#        'England/CAMB-1BA0B9/2020' : "2020-05-11", # suspected that these ones have reversed dd-mm (are actually 5 and 6 Nov)
-#        'Denmark/DCGC-12020/2020'  : "2020-03-30", # this sequence is identical to other Danish seqs with sample date of Oct/Nov..
-#        'Netherlands/NB-EMC-279/2020'   : "2020-05-08", # seems to be date reversal of day/month
-#        'Italy/APU-IZSPB_321PT/2020'    : "2020-04-11", # seems to be date reversal of day/month
-#        'Tunisia/4107/2020' : "2020-03-18", # date seems to be wrong based on divergence
-#        'Tunisia/3942/2020' : "2020-03-16", # date seems to be wrong based on divergence
-#        'Australia/QLD1278/2020'    : "2020-03-21", #seems to be wrong date - far too diverged
-#        'Australia/QLD1276/2020'    : "2020-03-21", # seems to be wrong date - far too diverged
-#        'Sweden/20-08979/2020'  : "2020-04-06", # too divergent compared to date (seems to be day/month reversed)
-#
-#        'Spain/IB-IBV-99010753/2020'    : "2020-04-21", # temporarily excluded as early date doesn't match divergence - EU1
-#        'Spain/IB-IBV-99010754/2020'    : "2020-04-22", # temporarily excluded as early date doesn't match divergence - EU1
-#        'Spain/IB-IBV-99010756/2020'    : "2020-05-11", # temporarily excluded as early date doesn't match divergence - EU1
-#        'Spain/IB-IBV-99010769/2020'    : "2020-06-18", # temporarily excluded as early date doesn't match divergence - EU2
-#        'Spain/IB-IBV-99010761/2020'    : "2020-05-29", # temporarily excluded as early date doesn't match divergence - EU2
-#        'Italy/LAZ-INMI-92/2020' : "2010-10-26", # year given as 2010
-#        'Italy/LAZ-INMI-93/2020' : "2010-10-26", # year given as 2010
-#        'Italy/LAZ-INMI-94/2020' : "2010-10-27", # year given as 2010
-#        'Italy/LAZ-INMI-95/2020' : "2010-10-27", # year given as 2010
-#        'England/LIVE-DCA612/2020' : "2020-03-07",  # far too diverged compared to sample date
-#        'Netherlands/ZE-EMC-74/2020'    : "2020-06-11", # too diverged compared to date. Suspect is 6 Nov - date reversed
-#        'Spain/RI-IBV-99010966/2009'    : "2009-09-30", # date typed wrong
-#        'Denmark/DCGC-16747/2020'   : "2020-04-20", #overdiverged compared to date
-#        'Tunisia/19695/2020'    : "2020-07-12", #overdivrged compared to date
-#        'Canada/ON-S1598/2020'  : "2020-04-09", #confirmed day-month reversal
-#        'SouthKorea/KDCA0367/2020'  : "2020-04-04" # too divergent given date (11)
-#
-#        #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
-#        #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
-#    }
-
-
     for key, value in bad_seqs.items():
         bad_seq = meta[meta['strain'].isin([key])]
         if not bad_seq.empty and bad_seq.date.values[0] == value and key in wanted_seqs:
             wanted_seqs.remove(key)
-    
+
     json_output[clus_display] = {}
 
     # get metadata for these sequences
@@ -251,6 +272,7 @@ for clus in clus_to_run:
     # remove those with bad dates
     cluster_meta = cluster_meta[cluster_meta['date'].apply(lambda x: len(x) == 10)]
     cluster_meta = cluster_meta[cluster_meta['date'].apply(lambda x: 'XX' not in x)]
+    clus_data['cluster_meta'] = cluster_meta
 
     bad_dates = 0
     if len(wanted_seqs) != len(cluster_meta):
@@ -283,9 +305,34 @@ for clus in clus_to_run:
         copypath = clusterlist_output.replace(f"{build_nam}", "{}-{}".format(build_nam, datetime.date.today().strftime("%Y-%m-%d")))
         copyfile(clusterlist_output, copypath)
 
-    # get metadata for these sequences
-#    cluster_meta = meta[meta['strain'].isin(wanted_seqs)]
-#    observed_countries = [x for x in cluster_meta['country'].unique()]
+        # Just so we have the data, write out the metadata for these sequences
+        cluster_meta.to_csv(out_meta_file,sep="\t",index=False)
+
+    # What countries do sequences in the cluster come from?
+    observed_countries = [x for x in cluster_meta['country'].unique()]
+    clus_data['observed_countries'] = observed_countries
+    print(f"The cluster is found in: {observed_countries}\n")
+    if clus != "S222":
+        print("Remember, countries are not set for clusters other than S222")
+
+    if len(observed_countries) > len(country_list) and clus=="S222":
+        print("\nWARNING!! Appears a new country has come into the cluster!")
+        print([x for x in observed_countries if x not in country_list])
+
+    # Let's get some summary stats on number of sequences, first, and last, for each country.
+    country_info, country_dates = get_summary(cluster_meta, observed_countries)
+    print(country_info)
+    print("\n")
+    clus_data['country_info'] = country_info
+    clus_data['country_dates'] = country_dates
+
+    # make into a dataframe for sorting
+    country_info_df = pd.DataFrame(data=country_info)
+    clus_data['country_info_df'] = country_info_df
+
+    print("\nOrdered list by first_seq date:")
+    print(country_info_df.sort_values(by="first_seq"))
+    print("\n")
 
     # Make a version of N501 which does not have as much UK sequences for increased viewability
     if clus == "S501":
@@ -305,62 +352,11 @@ for clus in clus_to_run:
             copyfile(noUK_clusterlist_output, copypath)
             nouk_501_meta.to_csv(noUK_out_meta_file,sep="\t",index=False)
 
-    # Just so we have the data, write out the metadata for these sequences
-    if print_files:
-        cluster_meta.to_csv(out_meta_file,sep="\t",index=False)
-
-    observed_countries = [x for x in cluster_meta['country'].unique()]
-    # What countries do sequences in the cluster come from?
-    print(f"The cluster is found in: {observed_countries}\n")
-    if clus != "S222":
-        print("Remember, countries are not set for clusters other than S222")
-
-    if len(observed_countries) > len(country_list) and clus=="S222":
-        print("\nWARNING!! Appears a new country has come into the cluster!")
-        print([x for x in observed_countries if x not in country_list])
-
-
-    # Let's get some summary stats on number of sequences, first, and last, for each country.
-    country_info = pd.DataFrame(index=observed_countries, columns=['first_seq', 'num_seqs', 'last_seq', "sept_oct_freq"])
-    country_dates = {}
-    cutoffDate = datetime.datetime.strptime("2020-09-01", '%Y-%m-%d')
-
-    for coun in observed_countries:
-        if coun in uk_countries:
-            temp_meta = cluster_meta[cluster_meta['division'].isin([coun])]
-        else:
-            temp_meta = cluster_meta[cluster_meta['country'].isin([coun])]
-        country_info.loc[coun].first_seq = temp_meta['date'].min()
-        country_info.loc[coun].last_seq = temp_meta['date'].max()
-        country_info.loc[coun].num_seqs = len(temp_meta)
-
-        country_dates[coun] = [datetime.datetime.strptime(dat, '%Y-%m-%d') for dat in temp_meta['date']]
-
-        herbst_dates = [x for x in country_dates[coun] if x >= cutoffDate]
-        if coun in uk_countries:
-            temp_meta = meta[meta['division'].isin([coun])]
-        else:
-            temp_meta = meta[meta['country'].isin([coun])]
-        all_dates = [datetime.datetime.strptime(x, '%Y-%m-%d') for x in temp_meta["date"] if len(x) is 10 and "-XX" not in x and datetime.datetime.strptime(x, '%Y-%m-%d') >= cutoffDate]
-        if len(all_dates) == 0:
-            country_info.loc[coun].sept_oct_freq = 0
-        else:
-            country_info.loc[coun].sept_oct_freq = round(len(herbst_dates)/len(all_dates),2)
-
-    print(country_info)
-    print("\n")
-
-    country_info_df = pd.DataFrame(data=country_info)
-
-    print("\nOrdered list by first_seq date:")
-    print(country_info_df.sort_values(by="first_seq"))
-    print("\n")
-
     #######
     #print out the table
     table_file = f"{tables_path}{clus_display}_table.tsv"
     ordered_country = country_info_df.sort_values(by="first_seq")
-    ordered_country = ordered_country.drop('sept_oct_freq', axis=1)
+    clus_data['country_info_ordered'] = ordered_country
 
     if print_files:
         ordered_country.to_csv(table_file, sep="\t")
@@ -368,23 +364,17 @@ for clus in clus_to_run:
         if "all" in clus_answer:
             with open(overall_tables_file, 'a') as fh:
                 fh.write(f'\n\n## {clus_display}\n')
-
             ordered_country.to_csv(overall_tables_file, sep="\t", mode='a')
-
         mrk_tbl = ordered_country.to_markdown()
 
         url_params = "f_region=Europe"
         if 'url_params' in clusters[clus]:
             url_params = clusters[clus]['url_params']
 
-#        if clus is "S501":
-#        #    col = "c=gt-S_501&"
-#            filt = ""
-#        if clus is "S69":
-#            col = "c=gt-S_69,501,453&"
-#            filt = ""
-#        if clus is "S453":
-#            col = "c=gt-S_453&"
+
+        ##################################
+        ##################################
+        #### Print the data tables in Markdown
 
         # don't print DanishCluster in 'all tables'
         # only print 'all tables' if running 'all clusters'
@@ -392,7 +382,7 @@ for clus in clus_to_run:
             with open(f"{tables_path}all_tables.md", 'a') as fh:
                 fh.write(f'\n\n## {clus_display}\n')
                 fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{url_params})\n\n")
-                if clus is "S501":
+                if clus == "S501":
                     fh.write(f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
                     fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
                             "refer to _all_ these mutations (Y, S, T).\n")
@@ -403,7 +393,7 @@ for clus in clus_to_run:
         with open(f"{tables_path}{clus_display}_table.md", 'w') as fh:
             fh.write(f'\n\n## {clus_display}\n')
             fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{url_params})\n\n")
-            if clus is "S501":
+            if clus == "S501":
                 fh.write(f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
                 fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
                           "refer to _all_ these mutations (Y, S, T).\n")
@@ -413,15 +403,30 @@ for clus in clus_to_run:
 
 
 
-    #ordered_country.to_markdown(f"{tables_path}all_tables.md", mode='a')
+######################################################################################################
+##################################
+#### BEGINNING OF PLOTTING
 
-    #######
-    # BEGINNING OF PLOTTING
+for clus in clus_to_run:
+    print(f"\nPlotting cluster {clus}\n")
+
+    clus_data = clusters[clus]
+    wanted_seqs = clus_data['wanted_seqs']
+    clus_display = clus_data['build_name']
+    cluster_meta = clus_data['cluster_meta']
+    observed_countries = clus_data['observed_countries']
+    country_dates = clus_data['country_dates']
+    country_info_df = clus_data['country_info_ordered']
+
+    clus_data['cluster_data'] = []
+    clus_data['total_data'] = []
 
     # We want to look at % of samples from a country that are in this cluster
     # To avoid the up-and-down of dates, bin samples into weeks
     countries_to_plot = country_list
     acknowledgement_table = []
+    clus_data['acknowledgements'] = acknowledgement_table
+
     # Get counts per week for sequences in the cluster
     clus_week_counts = {}
     for coun in observed_countries:
@@ -436,53 +441,76 @@ for clus in clus_to_run:
     for coun in observed_countries:
         counts_by_week = defaultdict(int)
         if coun in uk_countries:
-            temp_meta = meta[meta['division'].isin([coun])]
+            #temp_meta = meta[meta['division'].isin([coun])]
+            temp_meta = meta[meta['division'].apply(lambda x: x == coun)]
         else:
-            temp_meta = meta[meta['country'].isin([coun])]
-        #week 20
-        for ri, row in temp_meta.iterrows():
-            dat = row.date
-            if len(dat) is 10 and "-XX" not in dat: # only take those that have real dates
-                dt = datetime.datetime.strptime(dat, '%Y-%m-%d')
-                #exclude sequences with identical dates & underdiverged
-                if coun == "Ireland" and dat == "2020-09-22":
-                    continue
+            #temp_meta = meta[meta['country'].isin([coun])]
+            temp_meta = meta[meta['country'].apply(lambda x: x == coun)]
 
-                # wk = dt.timetuple().tm_yday//7  # old method
-                wk = dt.isocalendar()[1] #returns ISO calendar week
-                if wk >= 20:
-                    counts_by_week[wk]+=1
-                    acknowledgement_table.append([row.strain, row.gisaid_epi_isl, row.originating_lab, row.submitting_lab, row.authors])
+        temp_meta = temp_meta[temp_meta['date'].apply(lambda x: len(x) == 10)]
+        temp_meta = temp_meta[temp_meta['date'].apply(lambda x: 'XX' not in x)]
+
+        temp_meta['date_formatted'] = temp_meta['date'].apply(lambda x:datetime.datetime.strptime(x, "%Y-%m-%d"))
+        temp_meta['calendar_week'] = temp_meta['date_formatted'].apply(lambda x: x.isocalendar()[1])
+        temp_meta = temp_meta[temp_meta['calendar_week']>=20]
+
+        #date_list = temp_meta['date'].apply(lambda x:datetime.datetime.strptime(x, "%Y-%m-%d"))
+        #week_list = date_list.apply(lambda x: x.isocalendar()[1])
+        #week_list_20 = week_list[week_list.apply(lambda x: x >=20 )]
+
+        week_counts = temp_meta['calendar_week'].value_counts().sort_index()
+        counts_by_week = week_counts.to_dict()
+
         total_week_counts[coun] = counts_by_week
 
-    if print_files:
-        with open(f'{acknowledgement_folder}{clus}_acknowledgement_table.tsv', 'w') as fh:
-            fh.write('#strain\tEPI_ISOLATE_ID\tOriginating lab\tsubmitting lab\tauthors\n')
-            for d in acknowledgement_table:
-                fh.write('\t'.join(d)+'\n')
+        if print_acks:
+            acknowledgement_table = temp_meta.loc[:,['strain', 'gisaid_epi_isl', 'originating_lab', 'submitting_lab', 'authors']]
+
+
+    #    for ri, row in temp_meta.iterrows():
+    #        dat = row.date
+    #        dt = datetime.datetime.strptime(dat, '%Y-%m-%d')
+    #        wk = dt.isocalendar()[1] #returns ISO calendar week
+    #        if wk >= 20:
+    #            counts_by_week[wk]+=1
+    #            if print_acks:
+    #                acknowledgement_table.append([row.strain, row.gisaid_epi_isl, row.originating_lab, row.submitting_lab, row.authors])
+
+
+        #after week 20
+    #    for ri, row in temp_meta.iterrows():
+    #        dat = row.date
+    #        if len(dat) is 10 and "-XX" not in dat: # only take those that have real dates
+    #            dt = datetime.datetime.strptime(dat, '%Y-%m-%d')
+    #            #exclude sequences with identical dates & underdiverged
+    #            if coun == "Ireland" and dat == "2020-09-22":
+    #                continue
+    #            # wk = dt.timetuple().tm_yday//7  # old method
+    #            wk = dt.isocalendar()[1] #returns ISO calendar week
+    #            if wk >= 20:
+    #                counts_by_week[wk]+=1
+    #                if print_acks:
+    #                    acknowledgement_table.append([row.strain, row.gisaid_epi_isl, row.originating_lab, row.submitting_lab, row.authors])
+
+        
+
+    if print_acks:
+        acknowledgement_table.to_csv(f'{acknowledgement_folder}{clus}_acknowledgement_table.tsv', sep="\t")
+        #with open(f'{acknowledgement_folder}{clus}_acknowledgement_table.tsv', 'w') as fh:
+        #    fh.write('#strain\tEPI_ISOLATE_ID\tOriginating lab\tsubmitting lab\tauthors\n')
+        #    for d in acknowledgement_table:
+        #        fh.write('\t'.join(d)+'\n')
 
 
     # Convert into dataframe
     cluster_data = pd.DataFrame(data=clus_week_counts)
     total_data = pd.DataFrame(data=total_week_counts)
-
+    clus_data['cluster_data'] = cluster_data
+    clus_data['total_data'] = total_data
     # sort
     total_data=total_data.sort_index()
     cluster_data=cluster_data.sort_index()
 
-    def marker_size(n):
-        if n>100:
-            return 150
-        elif n>30:
-            return 100
-        elif n>10:
-            return 70
-        elif n>3:
-            return 50
-        elif n>1:
-            return 20
-        else:
-            return 5
 
     # Only plot countries with >= X seqs
     min_to_plot = 20
@@ -504,7 +532,6 @@ for clus in clus_to_run:
                 country_styles_custom[x] = country_styles[x]
             else:
                 country_styles_custom[x] = country_styles[unused_countries.pop(0)]
-
 
     # Make a plot
     repeat = 1
