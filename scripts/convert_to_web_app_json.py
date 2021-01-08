@@ -52,13 +52,11 @@ def wrap_cluster_data(country_data_aos):
 def convert_per_country_data():
     per_country_data_output = {"distributions": [], 'cluster_names': []}
 
-    min_date = json_input["min_date"]
-    max_date = json_input["max_date"]
+    min_date = json_input["plotting_dates"]["min_date"]
+    max_date = json_input["plotting_dates"]["max_date"]
+    countries = json_input["countries"]
 
-    json_input.pop("min_date", None)
-    json_input.pop("max_date", None)
-
-    for (country, country_data) in json_input.items():
+    for (country, country_data) in countries.items():
         country_data_aos = soa_to_aos(country_data)
         country_data_aos_wrapped, cluster_names = wrap_cluster_data(country_data_aos)
         per_country_data_output["distributions"].append({'country': country, 'distribution': country_data_aos_wrapped})

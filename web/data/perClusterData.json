@@ -10,6 +10,7 @@
     "Germany",
     "Hungary",
     "Ireland",
+    "Israel",
     "Italy",
     "Latvia",
     "Lithuania",
@@ -202,7 +203,7 @@
             "New Zealand": 0.0,
             "Norway": 0.0,
             "Portugal": 0.0,
-            "Spain": 0.5714285714285714,
+            "Spain": 0.5555555555555556,
             "Sweden": 0.0,
             "Switzerland": 0.0,
             "United Kingdom": 0.005405405405405406
@@ -222,7 +223,7 @@
             "Netherlands": 0.0,
             "New Zealand": 0.0,
             "Norway": 0.0,
-            "Spain": 0.6956521739130435,
+            "Spain": 0.6808510638297872,
             "Sweden": 0.0,
             "Switzerland": 0.0,
             "United Kingdom": 0.0011160714285714285
@@ -243,7 +244,7 @@
             "Netherlands": 0.0,
             "New Zealand": 0.0,
             "Norway": 0.0,
-            "Spain": 0.5833333333333334,
+            "Spain": 0.56,
             "Sweden": 0.0,
             "Switzerland": 0.012987012987012988,
             "United Kingdom": 0.01726844583987441
@@ -305,7 +306,7 @@
             "Netherlands": 0.0,
             "New Zealand": 0.0,
             "Norway": 0.18181818181818182,
-            "Spain": 0.9024390243902439,
+            "Spain": 0.8809523809523809,
             "Sweden": 0.08333333333333333,
             "Switzerland": 0.14772727272727273,
             "United Kingdom": 0.09312320916905444
@@ -362,6 +363,7 @@
             "France": 0.11320754716981132,
             "Germany": 0.0,
             "Ireland": 0.4857142857142857,
+            "Italy": 0.2,
             "Latvia": 0.14285714285714285,
             "Lithuania": 0.0,
             "Luxembourg": 0.0,
@@ -383,7 +385,7 @@
             "France": 0.11538461538461539,
             "Germany": 0.058823529411764705,
             "Ireland": 0.4318181818181818,
-            "Italy": 0.0,
+            "Italy": 0.3888888888888889,
             "Latvia": 0.125,
             "Lithuania": 0.5789473684210527,
             "Luxembourg": 0.0,
@@ -404,6 +406,7 @@
             "France": 0.14457831325301204,
             "Germany": 0.3333333333333333,
             "Ireland": 0.59375,
+            "Italy": 0.9411764705882353,
             "Latvia": 0.35294117647058826,
             "Luxembourg": 0.0,
             "Netherlands": 0.2540983606557377,
@@ -422,7 +425,7 @@
             "France": 0.14285714285714285,
             "Germany": 0.16923076923076924,
             "Ireland": 0.8,
-            "Italy": 0.0,
+            "Italy": 0.6666666666666666,
             "Latvia": 0.041666666666666664,
             "Luxembourg": 0.16666666666666666,
             "Netherlands": 0.22580645161290322,
@@ -442,12 +445,12 @@
             "France": 0.14285714285714285,
             "Germany": 0.125,
             "Ireland": 0.1875,
-            "Italy": 0.2,
+            "Italy": 0.6111111111111112,
             "Latvia": 0.0,
             "Luxembourg": 0.5454545454545454,
             "Netherlands": 0.2641509433962264,
             "New Zealand": 0.5,
-            "Norway": 0.05405405405405406,
+            "Norway": 0.057692307692307696,
             "Spain": 0.7931034482758621,
             "Sweden": 0.4,
             "Switzerland": 0.23809523809523808,
@@ -467,7 +470,7 @@
             "Luxembourg": 0.13636363636363635,
             "Netherlands": 0.2153846153846154,
             "New Zealand": 0.6666666666666666,
-            "Norway": 0.043478260869565216,
+            "Norway": 0.07894736842105263,
             "Spain": 0.8333333333333334,
             "Sweden": 0.16666666666666666,
             "Switzerland": 0.38144329896907214,
@@ -487,7 +490,7 @@
             "Luxembourg": 0.3125,
             "Netherlands": 0.2446043165467626,
             "New Zealand": 0.3333333333333333,
-            "Norway": 0.23809523809523808,
+            "Norway": 0.2037037037037037,
             "Spain": 0.7758620689655172,
             "Sweden": 0.3333333333333333,
             "Switzerland": 0.38223938223938225,
@@ -501,12 +504,12 @@
             "Denmark": 0.18686868686868688,
             "France": 0.0784313725490196,
             "Germany": 0.37037037037037035,
-            "Ireland": 0.7,
+            "Ireland": 0.7272727272727273,
             "Italy": 0.7692307692307693,
             "Luxembourg": 0.16897506925207756,
             "Netherlands": 0.33695652173913043,
             "New Zealand": 0.06666666666666667,
-            "Norway": 0.26,
+            "Norway": 0.21875,
             "Spain": 0.8409090909090909,
             "Sweden": 0.4375,
             "Switzerland": 0.24528301886792453,
@@ -521,13 +524,13 @@
             "France": 0.06451612903225806,
             "Germany": 0.1111111111111111,
             "Ireland": 0.3333333333333333,
-            "Italy": 0.5136986301369864,
+            "Italy": 0.5110132158590308,
             "Luxembourg": 0.165625,
             "Netherlands": 0.40594059405940597,
             "New Zealand": 0.2,
-            "Norway": 0.12162162162162163,
+            "Norway": 0.13043478260869565,
             "Spain": 0.9090909090909091,
-            "Sweden": 0.5263157894736842,
+            "Sweden": 0.5384615384615384,
             "Switzerland": 0.3448275862068966,
             "United Kingdom": 0.6900250766230148
           },
@@ -545,7 +548,7 @@
             "Luxembourg": 0.18137254901960784,
             "Netherlands": 0.4230769230769231,
             "New Zealand": 0.23076923076923078,
-            "Norway": 0.125,
+            "Norway": 0.12903225806451613,
             "Portugal": 0.5,
             "Spain": 0.7857142857142857,
             "Sweden": 0.20833333333333334,
@@ -566,7 +569,7 @@
             "Luxembourg": 0.2857142857142857,
             "Netherlands": 0.45323741007194246,
             "New Zealand": 0.2857142857142857,
-            "Norway": 0.16129032258064516,
+            "Norway": 0.2727272727272727,
             "Portugal": 0.7210682492581603,
             "Spain": 0.9444444444444444,
             "Sweden": 0.4,
@@ -581,12 +584,12 @@
             "Denmark": 0.3509649749821301,
             "France": 0.12727272727272726,
             "Germany": 0.34210526315789475,
-            "Ireland": 0.7017543859649122,
+            "Ireland": 0.7068965517241379,
             "Italy": 0.6,
             "Luxembourg": 0.18840579710144928,
             "Netherlands": 0.5955056179775281,
             "New Zealand": 0.38461538461538464,
-            "Norway": 0.14285714285714285,
+            "Norway": 0.28,
             "Portugal": 0.6451612903225806,
             "Spain": 1.0,
             "Sweden": 0.1,
@@ -597,16 +600,36 @@
         },
         {
           "frequencies": {
+            "Denmark": 0.5840049597024178,
+            "France": 0.13333333333333333,
+            "Germany": 0.4,
+            "Ireland": 0.3333333333333333,
+            "Italy": 0.25,
+            "Lithuania": 0.95,
+            "Luxembourg": 0.18269230769230768,
+            "Netherlands": 0.225,
+            "New Zealand": 0.0,
+            "Norway": 0.3333333333333333,
+            "Portugal": 0.125,
+            "Spain": 0.0,
+            "Sweden": 0.13559322033898305,
+            "Switzerland": 0.2018348623853211,
+            "United Kingdom": 0.5085271317829457
+          },
+          "week": "2020-12-21"
+        },
+        {
+          "frequencies": {
             "Belgium": 0.2753623188405797,
             "Denmark": 0.3953795379537954,
             "France": 0.11904761904761904,
             "Germany": 0.29545454545454547,
-            "Ireland": 0.8194444444444444,
+            "Ireland": 0.8243243243243243,
             "Italy": 0.5789473684210527,
             "Luxembourg": 0.22164948453608246,
             "Netherlands": 0.40764331210191085,
             "New Zealand": 0.0,
-            "Norway": 0.3333333333333333,
+            "Norway": 0.16666666666666666,
             "Portugal": 0.7058823529411765,
             "Sweden": 0.5,
             "Switzerland": 0.28773584905660377,
@@ -625,11 +648,11 @@
             "Luxembourg": 0.21014492753623187,
             "Netherlands": 0.3710691823899371,
             "New Zealand": 0.14285714285714285,
-            "Norway": 0.16666666666666666,
+            "Norway": 0.19047619047619047,
             "Portugal": 0.6,
             "Sweden": 0.8333333333333334,
             "Switzerland": 0.23369565217391305,
-            "United Kingdom": 0.6924310455420141
+            "United Kingdom": 0.6922090413594101
           },
           "week": "2020-11-30"
         },
@@ -639,15 +662,16 @@
             "Denmark": 0.5137294058911632,
             "France": 0.15384615384615385,
             "Germany": 0.21568627450980393,
+            "Ireland": 0.8,
             "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.4513888888888889,
             "New Zealand": 0.14285714285714285,
-            "Norway": 0.5,
+            "Norway": 0.17391304347826086,
             "Portugal": 0.0,
-            "Sweden": 0.25,
+            "Sweden": 0.36363636363636365,
             "Switzerland": 0.31196581196581197,
-            "United Kingdom": 0.5395348837209303
+            "United Kingdom": 0.5279520043632397
           },
           "week": "2020-12-07"
         },
@@ -657,45 +681,26 @@
             "Denmark": 0.5620471014492754,
             "France": 0.19230769230769232,
             "Germany": 0.23529411764705882,
-            "Ireland": 0.0,
-            "Italy": 0.25,
+            "Ireland": 0.36363636363636365,
+            "Italy": 0.23333333333333334,
             "Lithuania": 0.9285714285714286,
             "Luxembourg": 0.3050847457627119,
-            "Netherlands": 0.4358974358974359,
+            "Netherlands": 0.43037974683544306,
             "New Zealand": 0.16666666666666666,
+            "Norway": 0.23076923076923078,
             "Portugal": 0.0,
-            "Sweden": 0.4782608695652174,
+            "Sweden": 0.40625,
             "Switzerland": 0.3298097251585624,
-            "United Kingdom": 0.4313261163734777
+            "United Kingdom": 0.3937214769741391
           },
           "week": "2020-12-14"
-        },
-        {
-          "frequencies": {
-            "Denmark": 0.5840049597024178,
-            "France": 0.13333333333333333,
-            "Germany": 0.4,
-            "Ireland": 0.0,
-            "Italy": 0.25,
-            "Lithuania": 0.95,
-            "Luxembourg": 0.18269230769230768,
-            "Netherlands": 0.2727272727272727,
-            "New Zealand": 0.0,
-            "Norway": 0.0,
-            "Portugal": 0.125,
-            "Spain": 0.0,
-            "Sweden": 0.1282051282051282,
-            "Switzerland": 0.2018348623853211,
-            "United Kingdom": 0.49477351916376305
-          },
-          "week": "2020-12-21"
         },
         {
           "frequencies": {
             "France": 0.0,
             "Luxembourg": 0.391304347826087,
             "New Zealand": 0.0,
-            "Sweden": 0.2,
+            "Sweden": 0.0967741935483871,
             "United Kingdom": 0.0
           },
           "week": "2020-12-28"
@@ -989,6 +994,7 @@
             "France": 0.5377358490566038,
             "Germany": 0.0,
             "Hungary": 0.4084507042253521,
+            "Italy": 0.0,
             "Luxembourg": 0.25,
             "Netherlands": 0.023809523809523808,
             "Norway": 0.0,
@@ -1006,7 +1012,7 @@
             "Finland": 0.5333333333333333,
             "France": 0.5769230769230769,
             "Germany": 0.058823529411764705,
-            "Italy": 0.0,
+            "Italy": 0.1111111111111111,
             "Luxembourg": 0.6666666666666666,
             "Netherlands": 0.07272727272727272,
             "Norway": 0.0,
@@ -1023,6 +1029,7 @@
             "Finland": 0.19047619047619047,
             "France": 0.5903614457831325,
             "Germany": 0.0,
+            "Italy": 0.0,
             "Luxembourg": 0.3333333333333333,
             "Netherlands": 0.04918032786885246,
             "Norway": 0.08333333333333333,
@@ -1059,7 +1066,7 @@
             "Italy": 0.0,
             "Luxembourg": 0.18181818181818182,
             "Netherlands": 0.16981132075471697,
-            "Norway": 0.21621621621621623,
+            "Norway": 0.23076923076923078,
             "Sweden": 0.0,
             "Switzerland": 0.20634920634920634,
             "United Kingdom": 0.03322973942146785
@@ -1077,7 +1084,7 @@
             "Italy": 0.0,
             "Luxembourg": 0.45454545454545453,
             "Netherlands": 0.17692307692307693,
-            "Norway": 0.08695652173913043,
+            "Norway": 0.07894736842105263,
             "Sweden": 0.1111111111111111,
             "Switzerland": 0.17010309278350516,
             "United Kingdom": 0.026231017027151405
@@ -1095,7 +1102,7 @@
             "Italy": 0.0,
             "Luxembourg": 0.4375,
             "Netherlands": 0.11510791366906475,
-            "Norway": 0.14285714285714285,
+            "Norway": 0.14814814814814814,
             "Sweden": 0.0,
             "Switzerland": 0.27413127413127414,
             "United Kingdom": 0.02850911356909176
@@ -1113,7 +1120,7 @@
             "Italy": 0.11538461538461539,
             "Luxembourg": 0.34349030470914127,
             "Netherlands": 0.11956521739130435,
-            "Norway": 0.02,
+            "Norway": 0.015625,
             "Sweden": 0.0625,
             "Switzerland": 0.33962264150943394,
             "United Kingdom": 0.029248732161811536
@@ -1127,11 +1134,11 @@
             "Finland": 0.11764705882352941,
             "France": 0.7419354838709677,
             "Germany": 0.08333333333333333,
-            "Italy": 0.13013698630136986,
+            "Italy": 0.13215859030837004,
             "Luxembourg": 0.421875,
             "Netherlands": 0.1485148514851485,
-            "Norway": 0.02702702702702703,
-            "Sweden": 0.05263157894736842,
+            "Norway": 0.06521739130434782,
+            "Sweden": 0.05128205128205128,
             "Switzerland": 0.3793103448275862,
             "United Kingdom": 0.024937308442463082
           },
@@ -1146,7 +1153,7 @@
             "Italy": 0.23636363636363636,
             "Luxembourg": 0.3480392156862745,
             "Netherlands": 0.07692307692307693,
-            "Norway": 0.1875,
+            "Norway": 0.16129032258064516,
             "Portugal": 0.07692307692307693,
             "Sweden": 0.20833333333333334,
             "Switzerland": 0.3760330578512397,
@@ -1164,7 +1171,7 @@
             "Italy": 0.2857142857142857,
             "Luxembourg": 0.3225806451612903,
             "Netherlands": 0.1223021582733813,
-            "Norway": 0.03225806451612903,
+            "Norway": 0.03636363636363636,
             "Portugal": 0.09792284866468842,
             "Sweden": 0.0,
             "Switzerland": 0.37777777777777777,
@@ -1199,7 +1206,7 @@
             "Italy": 0.21052631578947367,
             "Luxembourg": 0.3247422680412371,
             "Netherlands": 0.11464968152866242,
-            "Norway": 0.0,
+            "Norway": 0.05555555555555555,
             "Portugal": 0.0,
             "Sweden": 0.2222222222222222,
             "Switzerland": 0.24528301886792453,
@@ -1221,7 +1228,7 @@
             "Portugal": 0.0,
             "Sweden": 0.0,
             "Switzerland": 0.18478260869565216,
-            "United Kingdom": 0.013149454778704297
+            "United Kingdom": 0.013145238858608528
           },
           "week": "2020-11-30"
         },
@@ -1236,9 +1243,9 @@
             "Netherlands": 0.1388888888888889,
             "Norway": 0.0,
             "Portugal": 0.0,
-            "Sweden": 0.25,
+            "Sweden": 0.18181818181818182,
             "Switzerland": 0.26495726495726496,
-            "United Kingdom": 0.013671599718111346
+            "United Kingdom": 0.013907826561221708
           },
           "week": "2020-12-07"
         },
@@ -1249,13 +1256,14 @@
             "Finland": 0.0,
             "France": 0.34615384615384615,
             "Germany": 0.17647058823529413,
-            "Italy": 0.25,
+            "Italy": 0.23333333333333334,
             "Luxembourg": 0.3050847457627119,
-            "Netherlands": 0.038461538461538464,
+            "Netherlands": 0.0379746835443038,
+            "Norway": 0.0,
             "Portugal": 0.0,
-            "Sweden": 0.2608695652173913,
+            "Sweden": 0.25,
             "Switzerland": 0.2135306553911205,
-            "United Kingdom": 0.008119079837618403
+            "United Kingdom": 0.007744433688286544
           },
           "week": "2020-12-14"
         },
@@ -1270,9 +1278,9 @@
             "Netherlands": 0.0,
             "Norway": 0.0,
             "Portugal": 0.0,
-            "Sweden": 0.02564102564102564,
+            "Sweden": 0.03389830508474576,
             "Switzerland": 0.23394495412844038,
-            "United Kingdom": 0.006968641114982578
+            "United Kingdom": 0.006201550387596899
           },
           "week": "2020-12-21"
         },
@@ -1281,7 +1289,7 @@
             "Finland": 0.0,
             "France": 0.0,
             "Luxembourg": 0.30434782608695654,
-            "Sweden": 0.2,
+            "Sweden": 0.03225806451612903,
             "United Kingdom": 0.0
           },
           "week": "2020-12-28"
@@ -1296,6 +1304,7 @@
             "Australia": 0.0,
             "Denmark": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "Portugal": 0.0,
             "South Africa": 0.0,
             "USA": 0.0,
@@ -1308,6 +1317,7 @@
             "Australia": 0.0,
             "Denmark": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "Portugal": 0.0,
             "South Africa": 0.0,
             "USA": 0.0,
@@ -1320,6 +1330,7 @@
             "Australia": 0.0,
             "Denmark": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.028169014084507043,
             "Portugal": 0.0,
             "South Africa": 0.0,
             "USA": 0.0,
@@ -1331,7 +1342,9 @@
           "frequencies": {
             "Australia": 0.05,
             "Denmark": 0.0,
+            "Israel": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0136986301369863,
             "Portugal": 0.0,
             "South Africa": 0.0,
             "USA": 0.0,
@@ -1343,10 +1356,12 @@
           "frequencies": {
             "Australia": 0.056338028169014086,
             "Denmark": 0.0,
+            "Israel": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "Portugal": 0.0,
             "South Africa": 0.0,
-            "USA": 0.0006406149903907751,
+            "USA": 0.0006397952655150352,
             "United Kingdom": 0.00037979491074819596
           },
           "week": "2020-06-08"
@@ -1355,7 +1370,9 @@
           "frequencies": {
             "Australia": 0.1134020618556701,
             "Denmark": 0.0,
+            "Israel": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "Portugal": 0.0,
             "South Africa": 0.0,
             "USA": 0.0,
@@ -1367,7 +1384,9 @@
           "frequencies": {
             "Australia": 0.05474452554744526,
             "Denmark": 0.0,
+            "Israel": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "Portugal": 0.0,
             "South Africa": 0.0,
             "USA": 0.0,
@@ -1379,7 +1398,9 @@
           "frequencies": {
             "Australia": 0.007633587786259542,
             "Denmark": 0.0,
+            "Israel": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "Portugal": 0.0,
             "South Africa": 0.0,
             "USA": 0.0,
@@ -1392,6 +1413,7 @@
             "Australia": 0.0,
             "Denmark": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "Portugal": 0.0,
             "South Africa": 0.0,
             "USA": 0.0,
@@ -1403,7 +1425,9 @@
           "frequencies": {
             "Australia": 0.0,
             "Denmark": 0.0,
+            "Israel": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "South Africa": 0.0,
             "USA": 0.0,
             "United Kingdom": 0.0011160714285714285
@@ -1414,9 +1438,11 @@
           "frequencies": {
             "Australia": 0.0,
             "Denmark": 0.0,
+            "Israel": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "South Africa": 0.0,
-            "USA": 0.001128668171557562,
+            "USA": 0.0011248593925759281,
             "United Kingdom": 0.0
           },
           "week": "2020-07-20"
@@ -1425,7 +1451,9 @@
           "frequencies": {
             "Australia": 0.0,
             "Denmark": 0.0,
+            "Israel": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "South Africa": 0.0,
             "USA": 0.0,
             "United Kingdom": 0.0
@@ -1437,6 +1465,7 @@
             "Australia": 0.0,
             "Denmark": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "South Africa": 0.0,
             "USA": 0.0,
             "United Kingdom": 0.0
@@ -1448,8 +1477,9 @@
             "Australia": 0.0009569377990430622,
             "Denmark": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "South Africa": 0.0,
-            "USA": 0.000946073793755913,
+            "USA": 0.0009442870632672333,
             "United Kingdom": 0.0
           },
           "week": "2020-08-10"
@@ -1459,9 +1489,10 @@
             "Australia": 0.0,
             "Denmark": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "Portugal": 0.0,
             "South Africa": 0.022222222222222223,
-            "USA": 0.0011890606420927466,
+            "USA": 0.0011876484560570072,
             "United Kingdom": 0.0
           },
           "week": "2020-08-17"
@@ -1471,6 +1502,7 @@
             "Australia": 0.0,
             "Denmark": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "Portugal": 0.0,
             "South Africa": 0.0,
             "USA": 0.0,
@@ -1482,6 +1514,9 @@
           "frequencies": {
             "Australia": 0.0,
             "Denmark": 0.0,
+            "Israel": 0.0,
+            "Italy": 0.0,
+            "Netherlands": 0.0,
             "Portugal": 0.0,
             "South Africa": 0.0,
             "USA": 0.004524886877828055,
@@ -1494,6 +1529,7 @@
             "Australia": 0.0,
             "Denmark": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "South Africa": 0.0,
             "USA": 0.003926701570680628,
             "United Kingdom": 0.0003045066991473812
@@ -1504,6 +1540,8 @@
           "frequencies": {
             "Australia": 0.0,
             "Denmark": 0.0,
+            "Italy": 0.0,
+            "Netherlands": 0.0,
             "South Africa": 0.0,
             "USA": 0.0,
             "United Kingdom": 0.0014168319637291016
@@ -1515,6 +1553,7 @@
             "Australia": 0.0,
             "Denmark": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "South Africa": 0.0,
             "USA": 0.0,
             "United Kingdom": 0.0020938754144128424
@@ -1526,6 +1565,7 @@
             "Australia": 0.0,
             "Denmark": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "South Africa": 0.0,
             "USA": 0.004594180704441042,
             "United Kingdom": 0.004064068850107579
@@ -1537,8 +1577,9 @@
             "Australia": 0.0,
             "Denmark": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "South Africa": 0.030303030303030304,
-            "USA": 0.005235602094240838,
+            "USA": 0.005226480836236934,
             "United Kingdom": 0.0041417395306028535
           },
           "week": "2020-10-05"
@@ -1548,8 +1589,9 @@
             "Australia": 0.0,
             "Denmark": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "South Africa": 0.058823529411764705,
-            "USA": 0.0012953367875647669,
+            "USA": 0.00129366106080207,
             "United Kingdom": 0.0054525627044711015
           },
           "week": "2020-10-12"
@@ -1559,6 +1601,7 @@
             "Australia": 0.0,
             "Denmark": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "South Africa": 0.1891891891891892,
             "USA": 0.004645760743321719,
             "United Kingdom": 0.010496520816133979
@@ -1570,6 +1613,7 @@
             "Australia": 0.0,
             "Denmark": 0.0006882312456985547,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "South Africa": 0.265625,
             "USA": 0.0011976047904191617,
             "United Kingdom": 0.021036500417943717
@@ -1581,6 +1625,7 @@
             "Australia": 0.0,
             "Denmark": 0.002008032128514056,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "Portugal": 0.0,
             "South Africa": 0.4157303370786517,
             "USA": 0.0026857654431512983,
@@ -1593,9 +1638,10 @@
             "Australia": 0.0,
             "Denmark": 0.002938295788442703,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "Portugal": 0.002967359050445104,
             "South Africa": 0.6923076923076923,
-            "USA": 0.009445100354191263,
+            "USA": 0.009345794392523364,
             "United Kingdom": 0.06422845691382766
           },
           "week": "2020-11-09"
@@ -1605,6 +1651,7 @@
             "Australia": 0.0,
             "Denmark": 0.0014295925661186562,
             "Italy": 0.0,
+            "Netherlands": 0.0,
             "Portugal": 0.0,
             "South Africa": 0.4642857142857143,
             "USA": 0.008839779005524863,
@@ -1617,9 +1664,10 @@
             "Australia": 0.0,
             "Denmark": 0.0033003300330033004,
             "Italy": 0.0,
+            "Netherlands": 0.006369426751592357,
             "Portugal": 0.0,
             "South Africa": 0.7534246575342466,
-            "USA": 0.010471204188481676,
+            "USA": 0.01038961038961039,
             "United Kingdom": 0.11653413764738141
           },
           "week": "2020-11-23"
@@ -1628,11 +1676,13 @@
           "frequencies": {
             "Australia": 0.13333333333333333,
             "Denmark": 0.001768867924528302,
+            "Israel": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.006289308176100629,
             "Portugal": 0.0,
             "South Africa": 0.8181818181818182,
-            "USA": 0.011092150170648464,
-            "United Kingdom": 0.14977549711353433
+            "USA": 0.01053484602917342,
+            "United Kingdom": 0.14972747675537032
           },
           "week": "2020-11-30"
         },
@@ -1640,11 +1690,13 @@
           "frequencies": {
             "Australia": 0.11764705882352941,
             "Denmark": 0.004992511233150275,
+            "Israel": 0.0,
             "Italy": 0.0,
+            "Netherlands": 0.013888888888888888,
             "Portugal": 0.5,
             "South Africa": 0.8409090909090909,
-            "USA": 0.004651162790697674,
-            "United Kingdom": 0.33840732910500354
+            "USA": 0.008305647840531562,
+            "United Kingdom": 0.34633215162257974
           },
           "week": "2020-12-07"
         },
@@ -1652,10 +1704,12 @@
           "frequencies": {
             "Australia": 0.7638888888888888,
             "Denmark": 0.009963768115942028,
-            "Italy": 0.35714285714285715,
+            "Israel": 0.2,
+            "Italy": 0.4,
+            "Netherlands": 0.05063291139240506,
             "Portugal": 0.9,
-            "USA": 0.02734375,
-            "United Kingdom": 0.472936400541272
+            "USA": 0.026362038664323375,
+            "United Kingdom": 0.5138984926012999
           },
           "week": "2020-12-14"
         },
@@ -1663,17 +1717,19 @@
           "frequencies": {
             "Australia": 0.8064516129032258,
             "Denmark": 0.022938623682579044,
+            "Israel": 0.13186813186813187,
             "Italy": 0.5833333333333334,
+            "Netherlands": 0.325,
             "Portugal": 0.5,
-            "USA": 0.0234375,
-            "United Kingdom": 0.36585365853658536
+            "USA": 0.022900763358778626,
+            "United Kingdom": 0.35968992248062015
           },
           "week": "2020-12-21"
         },
         {
           "frequencies": {
             "Australia": 0.6444444444444445,
-            "USA": 0.012345679012345678,
+            "USA": 0.02040816326530612,
             "United Kingdom": 0.5384615384615384
           },
           "week": "2020-12-28"
@@ -1692,6 +1748,7 @@
             "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Portugal": 0.0,
             "Sweden": 0.0,
             "Switzerland": 0.0,
@@ -1709,6 +1766,7 @@
             "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Portugal": 0.0,
             "Sweden": 0.0,
             "Switzerland": 0.0,
@@ -1725,6 +1783,7 @@
             "Germany": 0.0,
             "Italy": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Portugal": 0.0,
             "Sweden": 0.0,
             "Switzerland": 0.0,
@@ -1735,13 +1794,31 @@
         },
         {
           "frequencies": {
+            "Denmark": 0.0,
+            "France": 0.0,
+            "Germany": 0.0,
+            "Israel": 0.0,
+            "Italy": 0.0,
+            "Netherlands": 0.0,
+            "Portugal": 0.0,
+            "Sweden": 0.0,
+            "Switzerland": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-06-01"
+        },
+        {
+          "frequencies": {
             "Czech Republic": 0.0,
             "Denmark": 0.0,
             "France": 0.0,
             "Germany": 0.0,
+            "Israel": 0.0,
             "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Portugal": 0.0,
             "Sweden": 0.0,
             "Switzerland": 0.0,
@@ -1756,9 +1833,11 @@
             "Denmark": 0.0,
             "France": 0.0,
             "Germany": 0.0,
+            "Israel": 0.0,
             "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Portugal": 0.0,
             "Sweden": 0.0,
             "Switzerland": 0.0,
@@ -1769,13 +1848,85 @@
         },
         {
           "frequencies": {
-            "Czech Republic": 0.0,
+            "Denmark": 0.0,
+            "France": 0.0,
+            "Germany": 0.0,
+            "Israel": 0.0,
+            "Italy": 0.0,
+            "Luxembourg": 0.0,
+            "Netherlands": 0.0,
+            "Norway": 0.0,
+            "Portugal": 0.0,
+            "Sweden": 0.0,
+            "Switzerland": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-06-22"
+        },
+        {
+          "frequencies": {
+            "Denmark": 0.0,
+            "France": 0.0,
+            "Germany": 0.0,
+            "Israel": 0.0,
+            "Italy": 0.0,
+            "Luxembourg": 0.0,
+            "Netherlands": 0.0,
+            "Norway": 0.0,
+            "Portugal": 0.0,
+            "Sweden": 0.0,
+            "Switzerland": 0.0,
+            "USA": 0.0005305039787798408,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-06-29"
+        },
+        {
+          "frequencies": {
             "Denmark": 0.0,
             "France": 0.0,
             "Germany": 0.0,
             "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
+            "Portugal": 0.0,
+            "Sweden": 0.0,
+            "Switzerland": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-07-06"
+        },
+        {
+          "frequencies": {
+            "Denmark": 0.0,
+            "France": 0.0,
+            "Germany": 0.0,
+            "Israel": 0.0,
+            "Italy": 0.0,
+            "Luxembourg": 0.0,
+            "Netherlands": 0.0,
+            "Norway": 0.0,
+            "Sweden": 0.0,
+            "Switzerland": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-07-13"
+        },
+        {
+          "frequencies": {
+            "Czech Republic": 0.0,
+            "Denmark": 0.0,
+            "France": 0.0,
+            "Germany": 0.0,
+            "Israel": 0.0,
+            "Italy": 0.0,
+            "Luxembourg": 0.0,
+            "Netherlands": 0.0,
+            "Norway": 0.0,
             "Sweden": 0.0,
             "Switzerland": 0.0,
             "USA": 0.0,
@@ -1789,9 +1940,11 @@
             "Denmark": 0.0,
             "France": 0.0,
             "Germany": 0.0,
+            "Israel": 0.0,
             "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Sweden": 0.0,
             "Switzerland": 0.017857142857142856,
             "USA": 0.0,
@@ -1808,12 +1961,46 @@
             "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Sweden": 0.0,
             "Switzerland": 0.013513513513513514,
             "USA": 0.0,
             "United Kingdom": 0.0
           },
           "week": "2020-08-03"
+        },
+        {
+          "frequencies": {
+            "Denmark": 0.02806122448979592,
+            "France": 0.011235955056179775,
+            "Germany": 0.0,
+            "Italy": 0.2,
+            "Luxembourg": 0.0,
+            "Netherlands": 0.0,
+            "Norway": 0.0,
+            "Sweden": 0.0,
+            "Switzerland": 0.03409090909090909,
+            "USA": 0.0,
+            "United Kingdom": 0.008595988538681949
+          },
+          "week": "2020-08-10"
+        },
+        {
+          "frequencies": {
+            "Denmark": 0.013157894736842105,
+            "France": 0.0,
+            "Germany": 0.030303030303030304,
+            "Italy": 0.07142857142857142,
+            "Luxembourg": 0.0,
+            "Netherlands": 0.0,
+            "Norway": 0.0,
+            "Portugal": 0.0,
+            "Sweden": 0.0,
+            "Switzerland": 0.009174311926605505,
+            "USA": 0.0,
+            "United Kingdom": 0.05139920045688178
+          },
+          "week": "2020-08-17"
         },
         {
           "frequencies": {
@@ -1824,6 +2011,7 @@
             "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Portugal": 0.0,
             "Sweden": 0.0,
             "Switzerland": 0.012121212121212121,
@@ -1838,8 +2026,11 @@
             "Denmark": 0.05374823196605375,
             "France": 0.04716981132075472,
             "Germany": 0.0,
+            "Israel": 0.0,
+            "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Portugal": 0.0,
             "Sweden": 0.0,
             "Switzerland": 0.010309278350515464,
@@ -1857,6 +2048,7 @@
             "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.04,
             "Sweden": 0.0,
             "Switzerland": 0.0,
             "USA": 0.0,
@@ -1870,8 +2062,10 @@
             "Denmark": 0.16709844559585493,
             "France": 0.024096385542168676,
             "Germany": 0.08333333333333333,
+            "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Sweden": 0.034482758620689655,
             "USA": 0.0,
             "United Kingdom": 0.027769906489090394
@@ -1887,6 +2081,7 @@
             "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Sweden": 0.0,
             "Switzerland": 0.0,
             "USA": 0.005822416302765648,
@@ -1903,6 +2098,7 @@
             "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.019230769230769232,
             "Sweden": 0.0,
             "Switzerland": 0.0,
             "USA": 0.0,
@@ -1919,6 +2115,7 @@
             "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.038461538461538464,
+            "Norway": 0.07894736842105263,
             "Sweden": 0.0,
             "Switzerland": 0.005154639175257732,
             "USA": 0.0,
@@ -1935,9 +2132,10 @@
             "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.06474820143884892,
+            "Norway": 0.018518518518518517,
             "Sweden": 0.0,
             "Switzerland": 0.0,
-            "USA": 0.0012953367875647669,
+            "USA": 0.00129366106080207,
             "United Kingdom": 0.023523913382146752
           },
           "week": "2020-10-12"
@@ -1951,6 +2149,7 @@
             "Italy": 0.0,
             "Luxembourg": 0.01662049861495845,
             "Netherlands": 0.010869565217391304,
+            "Norway": 0.015625,
             "Sweden": 0.0,
             "Switzerland": 0.0,
             "USA": 0.0011614401858304297,
@@ -1967,7 +2166,8 @@
             "Italy": 0.0,
             "Luxembourg": 0.015625,
             "Netherlands": 0.009900990099009901,
-            "Sweden": 0.02631578947368421,
+            "Norway": 0.05434782608695652,
+            "Sweden": 0.02564102564102564,
             "Switzerland": 0.006896551724137931,
             "USA": 0.0011976047904191617,
             "United Kingdom": 0.03872945110058512
@@ -1983,6 +2183,7 @@
             "Italy": 0.0,
             "Luxembourg": 0.00980392156862745,
             "Netherlands": 0.009615384615384616,
+            "Norway": 0.14516129032258066,
             "Portugal": 0.0,
             "Sweden": 0.0,
             "Switzerland": 0.008264462809917356,
@@ -2000,122 +2201,14 @@
             "Italy": 0.0,
             "Luxembourg": 0.009216589861751152,
             "Netherlands": 0.014388489208633094,
+            "Norway": 0.14545454545454545,
             "Portugal": 0.002967359050445104,
             "Sweden": 0.0,
             "Switzerland": 0.011111111111111112,
-            "USA": 0.0023612750885478157,
+            "USA": 0.002336448598130841,
             "United Kingdom": 0.07735470941883768
           },
           "week": "2020-11-09"
-        },
-        {
-          "frequencies": {
-            "Denmark": 0.0,
-            "France": 0.0,
-            "Germany": 0.0,
-            "Italy": 0.0,
-            "Netherlands": 0.0,
-            "Portugal": 0.0,
-            "Sweden": 0.0,
-            "Switzerland": 0.0,
-            "USA": 0.0,
-            "United Kingdom": 0.0
-          },
-          "week": "2020-06-01"
-        },
-        {
-          "frequencies": {
-            "Denmark": 0.0,
-            "France": 0.0,
-            "Germany": 0.0,
-            "Italy": 0.0,
-            "Luxembourg": 0.0,
-            "Netherlands": 0.0,
-            "Portugal": 0.0,
-            "Sweden": 0.0,
-            "Switzerland": 0.0,
-            "USA": 0.0,
-            "United Kingdom": 0.0
-          },
-          "week": "2020-06-22"
-        },
-        {
-          "frequencies": {
-            "Denmark": 0.0,
-            "France": 0.0,
-            "Germany": 0.0,
-            "Italy": 0.0,
-            "Luxembourg": 0.0,
-            "Netherlands": 0.0,
-            "Portugal": 0.0,
-            "Sweden": 0.0,
-            "Switzerland": 0.0,
-            "USA": 0.0005310674455655868,
-            "United Kingdom": 0.0
-          },
-          "week": "2020-06-29"
-        },
-        {
-          "frequencies": {
-            "Denmark": 0.0,
-            "France": 0.0,
-            "Germany": 0.0,
-            "Italy": 0.0,
-            "Luxembourg": 0.0,
-            "Netherlands": 0.0,
-            "Portugal": 0.0,
-            "Sweden": 0.0,
-            "Switzerland": 0.0,
-            "USA": 0.0,
-            "United Kingdom": 0.0
-          },
-          "week": "2020-07-06"
-        },
-        {
-          "frequencies": {
-            "Denmark": 0.0,
-            "France": 0.0,
-            "Germany": 0.0,
-            "Italy": 0.0,
-            "Luxembourg": 0.0,
-            "Netherlands": 0.0,
-            "Sweden": 0.0,
-            "Switzerland": 0.0,
-            "USA": 0.0,
-            "United Kingdom": 0.0
-          },
-          "week": "2020-07-13"
-        },
-        {
-          "frequencies": {
-            "Denmark": 0.02806122448979592,
-            "France": 0.011235955056179775,
-            "Germany": 0.0,
-            "Italy": 0.2,
-            "Luxembourg": 0.0,
-            "Netherlands": 0.0,
-            "Sweden": 0.0,
-            "Switzerland": 0.03409090909090909,
-            "USA": 0.0,
-            "United Kingdom": 0.008595988538681949
-          },
-          "week": "2020-08-10"
-        },
-        {
-          "frequencies": {
-            "Denmark": 0.013157894736842105,
-            "France": 0.0,
-            "Germany": 0.030303030303030304,
-            "Italy": 0.07142857142857142,
-            "Luxembourg": 0.0,
-            "Netherlands": 0.0,
-            "Portugal": 0.0,
-            "Sweden": 0.0,
-            "Switzerland": 0.009174311926605505,
-            "USA": 0.0,
-            "United Kingdom": 0.05139920045688178
-          },
-          "week": "2020-08-17"
         },
         {
           "frequencies": {
@@ -2125,6 +2218,7 @@
             "Italy": 0.1,
             "Luxembourg": 0.014492753623188406,
             "Netherlands": 0.011235955056179775,
+            "Norway": 0.1,
             "Portugal": 0.0,
             "Sweden": 0.1,
             "Switzerland": 0.00819672131147541,
@@ -2141,10 +2235,11 @@
             "Italy": 0.0,
             "Luxembourg": 0.02577319587628866,
             "Netherlands": 0.044585987261146494,
+            "Norway": 0.16666666666666666,
             "Portugal": 0.0,
             "Sweden": 0.0,
             "Switzerland": 0.018867924528301886,
-            "USA": 0.006544502617801047,
+            "USA": 0.006493506493506494,
             "United Kingdom": 0.12311488894982177
           },
           "week": "2020-11-23"
@@ -2154,14 +2249,16 @@
             "Denmark": 0.11497641509433962,
             "France": 0.0,
             "Germany": 0.16831683168316833,
+            "Israel": 0.0,
             "Italy": 0.0,
             "Luxembourg": 0.028985507246376812,
             "Netherlands": 0.1761006289308176,
+            "Norway": 0.07142857142857142,
             "Portugal": 0.2,
             "Sweden": 0.0,
             "Switzerland": 0.02717391304347826,
-            "USA": 0.0008532423208191126,
-            "United Kingdom": 0.1565105837075048
+            "USA": 0.0008103727714748784,
+            "United Kingdom": 0.1564604039756332
           },
           "week": "2020-11-30"
         },
@@ -2170,14 +2267,16 @@
             "Denmark": 0.10434348477284074,
             "France": 0.0,
             "Germany": 0.09803921568627451,
+            "Israel": 0.0,
             "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.034722222222222224,
+            "Norway": 0.08695652173913043,
             "Portugal": 1.0,
-            "Sweden": 0.25,
+            "Sweden": 0.2727272727272727,
             "Switzerland": 0.029914529914529916,
-            "USA": 0.002325581395348837,
-            "United Kingdom": 0.3484143763213531
+            "USA": 0.0016611295681063123,
+            "United Kingdom": 0.35587673847832013
           },
           "week": "2020-12-07"
         },
@@ -2186,14 +2285,16 @@
             "Denmark": 0.11684782608695653,
             "France": 0.0,
             "Germany": 0.23529411764705882,
-            "Italy": 0.42857142857142855,
+            "Israel": 0.2,
+            "Italy": 0.4666666666666667,
             "Luxembourg": 0.03389830508474576,
-            "Netherlands": 0.1282051282051282,
+            "Netherlands": 0.13924050632911392,
+            "Norway": 0.07692307692307693,
             "Portugal": 0.95,
-            "Sweden": 0.17391304347826086,
+            "Sweden": 0.15625,
             "Switzerland": 0.0507399577167019,
-            "USA": 0.072265625,
-            "United Kingdom": 0.4824086603518268
+            "USA": 0.06502636203866433,
+            "United Kingdom": 0.5219195132070253
           },
           "week": "2020-12-14"
         },
@@ -2202,14 +2303,16 @@
             "Denmark": 0.10353378797272164,
             "France": 0.7333333333333333,
             "Germany": 0.2,
+            "Israel": 0.22527472527472528,
             "Italy": 0.5416666666666666,
             "Luxembourg": 0.009615384615384616,
-            "Netherlands": 0.24242424242424243,
+            "Netherlands": 0.375,
+            "Norway": 0.16666666666666666,
             "Portugal": 0.5625,
-            "Sweden": 0.717948717948718,
+            "Sweden": 0.6271186440677966,
             "Switzerland": 0.11926605504587157,
-            "USA": 0.01953125,
-            "United Kingdom": 0.3693379790940767
+            "USA": 0.026717557251908396,
+            "United Kingdom": 0.3627906976744186
           },
           "week": "2020-12-21"
         },
@@ -2217,8 +2320,8 @@
           "frequencies": {
             "France": 1.0,
             "Luxembourg": 0.043478260869565216,
-            "Sweden": 0.6,
-            "USA": 0.012345679012345678,
+            "Sweden": 0.7741935483870968,
+            "USA": 0.16326530612244897,
             "United Kingdom": 0.07692307692307693
           },
           "week": "2020-12-28"
@@ -2280,21 +2383,6 @@
             "United Kingdom": 0.0
           },
           "week": "2020-05-25"
-        },
-        {
-          "frequencies": {
-            "Belgium": 0.0,
-            "Denmark": 0.0,
-            "France": 0.0,
-            "Germany": 0.0,
-            "Ireland": 0.0,
-            "Italy": 0.0,
-            "Netherlands": 0.0,
-            "Sweden": 0.0,
-            "Switzerland": 0.0,
-            "United Kingdom": 0.0
-          },
-          "week": "2020-06-01"
         },
         {
           "frequencies": {
@@ -2511,6 +2599,7 @@
             "France": 0.009433962264150943,
             "Germany": 0.0,
             "Ireland": 0.34285714285714286,
+            "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
             "Norway": 0.0,
@@ -2546,6 +2635,7 @@
             "France": 0.024096385542168676,
             "Germany": 0.0625,
             "Ireland": 0.15625,
+            "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
             "Norway": 0.0,
@@ -2580,10 +2670,10 @@
             "France": 0.0,
             "Germany": 0.0,
             "Ireland": 0.125,
-            "Italy": 0.6,
+            "Italy": 0.16666666666666666,
             "Luxembourg": 0.0,
             "Netherlands": 0.009433962264150943,
-            "Norway": 0.05405405405405406,
+            "Norway": 0.057692307692307696,
             "Sweden": 0.0,
             "Switzerland": 0.03968253968253968,
             "United Kingdom": 0.03585943103036098
@@ -2601,7 +2691,7 @@
             "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.038461538461538464,
-            "Norway": 0.21739130434782608,
+            "Norway": 0.13157894736842105,
             "Sweden": 0.0,
             "Switzerland": 0.010309278350515464,
             "United Kingdom": 0.039269826660530756
@@ -2619,7 +2709,7 @@
             "Italy": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.06474820143884892,
-            "Norway": 0.07142857142857142,
+            "Norway": 0.1111111111111111,
             "Sweden": 0.0,
             "Switzerland": 0.011583011583011582,
             "United Kingdom": 0.030066988627512073
@@ -2633,11 +2723,11 @@
             "Denmark": 0.11363636363636363,
             "France": 0.0196078431372549,
             "Germany": 0.07407407407407407,
-            "Ireland": 0.1,
+            "Ireland": 0.09090909090909091,
             "Italy": 0.0,
             "Luxembourg": 0.01662049861495845,
             "Netherlands": 0.010869565217391304,
-            "Norway": 0.06,
+            "Norway": 0.078125,
             "Sweden": 0.0,
             "Switzerland": 0.09433962264150944,
             "United Kingdom": 0.03868380705271848
@@ -2652,11 +2742,11 @@
             "France": 0.0,
             "Germany": 0.1388888888888889,
             "Ireland": 0.16666666666666666,
-            "Italy": 0.0821917808219178,
+            "Italy": 0.11013215859030837,
             "Luxembourg": 0.015625,
             "Netherlands": 0.009900990099009901,
-            "Norway": 0.0945945945945946,
-            "Sweden": 0.02631578947368421,
+            "Norway": 0.07608695652173914,
+            "Sweden": 0.02564102564102564,
             "Switzerland": 0.006896551724137931,
             "United Kingdom": 0.034689328503761496
           },
@@ -2673,7 +2763,7 @@
             "Italy": 0.03636363636363636,
             "Luxembourg": 0.00980392156862745,
             "Netherlands": 0.009615384615384616,
-            "Norway": 0.14583333333333334,
+            "Norway": 0.25806451612903225,
             "Sweden": 0.0,
             "Switzerland": 0.01652892561983471,
             "United Kingdom": 0.027250706499798143
@@ -2691,7 +2781,7 @@
             "Italy": 0.0,
             "Luxembourg": 0.009216589861751152,
             "Netherlands": 0.014388489208633094,
-            "Norway": 0.06451612903225806,
+            "Norway": 0.16363636363636364,
             "Sweden": 0.0,
             "Switzerland": 0.022222222222222223,
             "United Kingdom": 0.02414829659318637
@@ -2704,11 +2794,11 @@
             "Denmark": 0.0943531093638313,
             "France": 0.0,
             "Germany": 0.10526315789473684,
-            "Ireland": 0.15789473684210525,
+            "Ireland": 0.15517241379310345,
             "Italy": 0.1,
             "Luxembourg": 0.014492753623188406,
             "Netherlands": 0.011235955056179775,
-            "Norway": 0.14285714285714285,
+            "Norway": 0.1,
             "Sweden": 0.1,
             "Switzerland": 0.03278688524590164,
             "United Kingdom": 0.02418637737862351
@@ -2721,11 +2811,11 @@
             "Denmark": 0.10165016501650165,
             "France": 0.023809523809523808,
             "Germany": 0.20454545454545456,
-            "Ireland": 0.041666666666666664,
+            "Ireland": 0.04054054054054054,
             "Italy": 0.0,
             "Luxembourg": 0.03608247422680412,
             "Netherlands": 0.03821656050955414,
-            "Norway": 0.0,
+            "Norway": 0.2222222222222222,
             "Sweden": 0.0,
             "Switzerland": 0.02830188679245283,
             "United Kingdom": 0.020290649849191118
@@ -2742,10 +2832,10 @@
             "Italy": 0.14285714285714285,
             "Luxembourg": 0.028985507246376812,
             "Netherlands": 0.16981132075471697,
-            "Norway": 0.0,
+            "Norway": 0.16666666666666666,
             "Sweden": 0.0,
             "Switzerland": 0.010869565217391304,
-            "United Kingdom": 0.0163566388710712
+            "United Kingdom": 0.01635139467778134
           },
           "week": "2020-11-30"
         },
@@ -2755,13 +2845,14 @@
             "Denmark": 0.11582626060908637,
             "France": 0.0,
             "Germany": 0.09803921568627451,
+            "Ireland": 0.0,
             "Italy": 0.25,
             "Luxembourg": 0.0,
             "Netherlands": 0.020833333333333332,
-            "Norway": 0.0,
-            "Sweden": 0.25,
+            "Norway": 0.043478260869565216,
+            "Sweden": 0.2727272727272727,
             "Switzerland": 0.021367521367521368,
-            "United Kingdom": 0.018322762508809022
+            "United Kingdom": 0.018952822470684482
           },
           "week": "2020-12-07"
         },
@@ -2772,12 +2863,13 @@
             "France": 0.0,
             "Germany": 0.17647058823529413,
             "Ireland": 0.0,
-            "Italy": 0.10714285714285714,
+            "Italy": 0.1,
             "Luxembourg": 0.06779661016949153,
-            "Netherlands": 0.10256410256410256,
-            "Sweden": 0.13043478260869565,
+            "Netherlands": 0.10126582278481013,
+            "Norway": 0.0,
+            "Sweden": 0.125,
             "Switzerland": 0.040169133192389,
-            "United Kingdom": 0.012686062246278756
+            "United Kingdom": 0.01134006361499101
           },
           "week": "2020-12-14"
         },
@@ -2789,19 +2881,34 @@
             "Ireland": 0.0,
             "Italy": 0.08333333333333333,
             "Luxembourg": 0.04807692307692308,
-            "Netherlands": 0.06060606060606061,
+            "Netherlands": 0.05,
             "Norway": 0.0,
-            "Sweden": 0.5897435897435898,
+            "Sweden": 0.5423728813559322,
             "Switzerland": 0.0871559633027523,
-            "United Kingdom": 0.010452961672473868
+            "United Kingdom": 0.009302325581395349
           },
           "week": "2020-12-21"
         },
         {
           "frequencies": {
+            "Belgium": 0.0,
+            "Denmark": 0.0,
+            "France": 0.0,
+            "Germany": 0.0,
+            "Ireland": 0.0,
+            "Italy": 0.0,
+            "Netherlands": 0.0,
+            "Sweden": 0.0,
+            "Switzerland": 0.0,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-06-01"
+        },
+        {
+          "frequencies": {
             "France": 0.0,
             "Luxembourg": 0.0,
-            "Sweden": 0.0,
+            "Sweden": 0.6451612903225806,
             "United Kingdom": 0.0
           },
           "week": "2020-12-28"
@@ -2911,7 +3018,7 @@
           "frequencies": {
             "Denmark": 0.0,
             "Netherlands": 0.19230769230769232,
-            "USA": 0.016498625114573784
+            "USA": 0.016483516483516484
           },
           "week": "2020-08-03"
         },
@@ -2919,7 +3026,7 @@
           "frequencies": {
             "Denmark": 0.02806122448979592,
             "Netherlands": 0.0,
-            "USA": 0.004730368968779565
+            "USA": 0.004721435316336166
           },
           "week": "2020-08-10"
         },
@@ -2927,7 +3034,7 @@
           "frequencies": {
             "Denmark": 0.003289473684210526,
             "Netherlands": 0.0,
-            "USA": 0.0011890606420927466
+            "USA": 0.0011876484560570072
           },
           "week": "2020-08-17"
         },
@@ -3093,6 +3200,7 @@
             "Germany": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Switzerland": 0.0,
             "United Kingdom": 0.0
           },
@@ -3105,6 +3213,7 @@
             "Germany": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Switzerland": 0.0,
             "United Kingdom": 0.0
           },
@@ -3116,6 +3225,7 @@
             "Denmark": 0.0,
             "Germany": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Switzerland": 0.0,
             "United Kingdom": 0.0
           },
@@ -3139,6 +3249,7 @@
             "Germany": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Switzerland": 0.0,
             "United Kingdom": 0.0
           },
@@ -3151,6 +3262,7 @@
             "Germany": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Switzerland": 0.0,
             "United Kingdom": 0.0
           },
@@ -3163,6 +3275,7 @@
             "Germany": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Switzerland": 0.0,
             "United Kingdom": 0.0
           },
@@ -3175,6 +3288,7 @@
             "Germany": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Switzerland": 0.0,
             "United Kingdom": 0.0
           },
@@ -3187,6 +3301,7 @@
             "Germany": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Switzerland": 0.0,
             "United Kingdom": 0.0
           },
@@ -3199,6 +3314,7 @@
             "Germany": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Switzerland": 0.0,
             "United Kingdom": 0.0
           },
@@ -3211,6 +3327,7 @@
             "Germany": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.038461538461538464,
+            "Norway": 0.0,
             "Switzerland": 0.0,
             "United Kingdom": 0.0
           },
@@ -3223,6 +3340,7 @@
             "Germany": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.03333333333333333,
+            "Norway": 0.0,
             "Switzerland": 0.0,
             "United Kingdom": 0.0
           },
@@ -3235,6 +3353,7 @@
             "Germany": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Switzerland": 0.0,
             "United Kingdom": 0.0032292787944025836
           },
@@ -3247,6 +3366,7 @@
             "Germany": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.07317073170731707,
+            "Norway": 0.0,
             "Switzerland": 0.011363636363636364,
             "United Kingdom": 0.008595988538681949
           },
@@ -3259,6 +3379,7 @@
             "Germany": 0.15151515151515152,
             "Luxembourg": 0.0,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Switzerland": 0.045871559633027525,
             "United Kingdom": 0.03026841804683038
           },
@@ -3271,6 +3392,7 @@
             "Germany": 0.047619047619047616,
             "Luxembourg": 0.0,
             "Netherlands": 0.041666666666666664,
+            "Norway": 0.0,
             "Switzerland": 0.0,
             "United Kingdom": 0.020163020163020164
           },
@@ -3283,6 +3405,7 @@
             "Germany": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.047619047619047616,
+            "Norway": 0.0,
             "Switzerland": 0.020618556701030927,
             "United Kingdom": 0.016498625114573784
           },
@@ -3295,6 +3418,7 @@
             "Germany": 0.11764705882352941,
             "Luxembourg": 0.0,
             "Netherlands": 0.14545454545454545,
+            "Norway": 0.0,
             "Switzerland": 0.0,
             "United Kingdom": 0.016138855054811205
           },
@@ -3307,6 +3431,7 @@
             "Germany": 0.125,
             "Luxembourg": 0.0,
             "Netherlands": 0.3770491803278688,
+            "Norway": 0.0,
             "United Kingdom": 0.006800793425899688
           },
           "week": "2020-09-14"
@@ -3318,6 +3443,7 @@
             "Germany": 0.0,
             "Luxembourg": 0.0,
             "Netherlands": 0.3763440860215054,
+            "Norway": 0.0,
             "Switzerland": 0.0,
             "United Kingdom": 0.009422439364857791
           },
@@ -3330,6 +3456,7 @@
             "Germany": 0.08928571428571429,
             "Luxembourg": 0.09090909090909091,
             "Netherlands": 0.3490566037735849,
+            "Norway": 0.019230769230769232,
             "Switzerland": 0.023809523809523808,
             "United Kingdom": 0.008367200573750896
           },
@@ -3342,6 +3469,7 @@
             "Germany": 0.03529411764705882,
             "Luxembourg": 0.045454545454545456,
             "Netherlands": 0.26153846153846155,
+            "Norway": 0.0,
             "Switzerland": 0.005154639175257732,
             "United Kingdom": 0.009357263383954595
           },
@@ -3354,6 +3482,7 @@
             "Germany": 0.1978021978021978,
             "Luxembourg": 0.09375,
             "Netherlands": 0.34532374100719426,
+            "Norway": 0.018518518518518517,
             "Switzerland": 0.011583011583011582,
             "United Kingdom": 0.006854650257049385
           },
@@ -3366,6 +3495,7 @@
             "Germany": 0.07407407407407407,
             "Luxembourg": 0.3047091412742382,
             "Netherlands": 0.391304347826087,
+            "Norway": 0.125,
             "Switzerland": 0.0,
             "United Kingdom": 0.004599599009317137
           },
@@ -3378,6 +3508,7 @@
             "Germany": 0.1388888888888889,
             "Luxembourg": 0.23125,
             "Netherlands": 0.27722772277227725,
+            "Norway": 0.05434782608695652,
             "Switzerland": 0.041379310344827586,
             "United Kingdom": 0.004040122596823628
           },
@@ -3390,6 +3521,7 @@
             "Germany": 0.03278688524590164,
             "Luxembourg": 0.2647058823529412,
             "Netherlands": 0.27884615384615385,
+            "Norway": 0.04838709677419355,
             "Switzerland": 0.049586776859504134,
             "United Kingdom": 0.005349212757367784
           },
@@ -3402,6 +3534,7 @@
             "Germany": 0.0,
             "Luxembourg": 0.24423963133640553,
             "Netherlands": 0.2302158273381295,
+            "Norway": 0.01818181818181818,
             "Switzerland": 0.022222222222222223,
             "United Kingdom": 0.00501002004008016
           },
@@ -3414,6 +3547,7 @@
             "Germany": 0.15789473684210525,
             "Luxembourg": 0.2560386473429952,
             "Netherlands": 0.25280898876404495,
+            "Norway": 0.0,
             "Switzerland": 0.07377049180327869,
             "United Kingdom": 0.00586875333451894
           },
@@ -3426,6 +3560,7 @@
             "Germany": 0.1590909090909091,
             "Luxembourg": 0.27319587628865977,
             "Netherlands": 0.33121019108280253,
+            "Norway": 0.027777777777777776,
             "Switzerland": 0.0660377358490566,
             "United Kingdom": 0.005758157389635317
           },
@@ -3438,8 +3573,9 @@
             "Germany": 0.04950495049504951,
             "Luxembourg": 0.2391304347826087,
             "Netherlands": 0.23270440251572327,
+            "Norway": 0.023809523809523808,
             "Switzerland": 0.06521739130434782,
-            "United Kingdom": 0.0028864656831302116
+            "United Kingdom": 0.0028855402372555306
           },
           "week": "2020-11-30"
         },
@@ -3450,8 +3586,9 @@
             "Germany": 0.21568627450980393,
             "Luxembourg": 0.0,
             "Netherlands": 0.3263888888888889,
+            "Norway": 0.0,
             "Switzerland": 0.038461538461538464,
-            "United Kingdom": 0.0021141649048625794
+            "United Kingdom": 0.0024543223343332426
           },
           "week": "2020-12-07"
         },
@@ -3461,9 +3598,10 @@
             "Denmark": 0.06657608695652174,
             "Germany": 0.0,
             "Luxembourg": 0.2033898305084746,
-            "Netherlands": 0.28205128205128205,
+            "Netherlands": 0.27848101265822783,
+            "Norway": 0.0,
             "Switzerland": 0.05919661733615222,
-            "United Kingdom": 0.0010148849797023004
+            "United Kingdom": 0.0013829345871940258
           },
           "week": "2020-12-14"
         },
@@ -3472,7 +3610,8 @@
             "Denmark": 0.07439553626782393,
             "Germany": 0.4,
             "Luxembourg": 0.23076923076923078,
-            "Netherlands": 0.3333333333333333,
+            "Netherlands": 0.275,
+            "Norway": 0.0,
             "Switzerland": 0.045871559633027525,
             "United Kingdom": 0.0
           },
@@ -3503,7 +3642,7 @@
           "frequencies": {
             "Brazil": 0.0,
             "South Africa": 0.0,
-            "USA": 0.000691085003455425,
+            "USA": 0.0006906077348066298,
             "United Kingdom": 0.010726072607260726
           },
           "week": "2020-05-18"
@@ -3548,7 +3687,7 @@
           "frequencies": {
             "Brazil": 0.0,
             "South Africa": 0.0,
-            "USA": 0.0003497726477789437,
+            "USA": 0.00034965034965034965,
             "United Kingdom": 0.0
           },
           "week": "2020-06-22"
@@ -3557,7 +3696,7 @@
           "frequencies": {
             "Brazil": 0.0,
             "South Africa": 0.0,
-            "USA": 0.0005310674455655868,
+            "USA": 0.0005305039787798408,
             "United Kingdom": 0.0
           },
           "week": "2020-06-29"
@@ -3566,7 +3705,7 @@
           "frequencies": {
             "Brazil": 0.0,
             "South Africa": 0.0,
-            "USA": 0.0008110300081103001,
+            "USA": 0.0008051529790660225,
             "United Kingdom": 0.0
           },
           "week": "2020-07-06"
@@ -3575,7 +3714,7 @@
           "frequencies": {
             "Brazil": 0.0,
             "South Africa": 0.0037593984962406013,
-            "USA": 0.0008230452674897119,
+            "USA": 0.0008216926869350862,
             "United Kingdom": 0.0
           },
           "week": "2020-07-13"
@@ -3618,6 +3757,22 @@
         },
         {
           "frequencies": {
+            "South Africa": 0.0,
+            "USA": 0.0011876484560570072,
+            "United Kingdom": 0.0005711022272986865
+          },
+          "week": "2020-08-17"
+        },
+        {
+          "frequencies": {
+            "South Africa": 0.0,
+            "USA": 0.003424657534246575,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-08-24"
+        },
+        {
+          "frequencies": {
             "Brazil": 0.0,
             "South Africa": 0.0,
             "USA": 0.0,
@@ -3636,6 +3791,22 @@
         },
         {
           "frequencies": {
+            "South Africa": 0.034482758620689655,
+            "USA": 0.0,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-09-14"
+        },
+        {
+          "frequencies": {
+            "South Africa": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-09-21"
+        },
+        {
+          "frequencies": {
             "Brazil": 0.0,
             "South Africa": 0.0,
             "USA": 0.0,
@@ -3647,10 +3818,26 @@
           "frequencies": {
             "Brazil": 0.125,
             "South Africa": 0.08080808080808081,
-            "USA": 0.0017452006980802793,
+            "USA": 0.0017421602787456446,
             "United Kingdom": 0.0
           },
           "week": "2020-10-05"
+        },
+        {
+          "frequencies": {
+            "South Africa": 0.058823529411764705,
+            "USA": 0.00517464424320828,
+            "United Kingdom": 0.0
+          },
+          "week": "2020-10-12"
+        },
+        {
+          "frequencies": {
+            "South Africa": 0.1891891891891892,
+            "USA": 0.0,
+            "United Kingdom": 0.00011793843613633684
+          },
+          "week": "2020-10-19"
         },
         {
           "frequencies": {
@@ -3672,6 +3859,14 @@
         },
         {
           "frequencies": {
+            "South Africa": 0.7435897435897436,
+            "USA": 0.004672897196261682,
+            "United Kingdom": 0.0006012024048096192
+          },
+          "week": "2020-11-09"
+        },
+        {
+          "frequencies": {
             "Brazil": 0.0,
             "South Africa": 0.4642857142857143,
             "USA": 0.0,
@@ -3681,7 +3876,7 @@
         },
         {
           "frequencies": {
-            "Brazil": 0.5822784810126582,
+            "Brazil": 0.5052631578947369,
             "South Africa": 0.7808219178082192,
             "USA": 0.0,
             "United Kingdom": 0.00027419797093501506
@@ -3690,9 +3885,9 @@
         },
         {
           "frequencies": {
-            "Brazil": 0.4,
+            "Brazil": 0.2857142857142857,
             "South Africa": 0.8181818181818182,
-            "USA": 0.0034129692832764505,
+            "USA": 0.004051863857374392,
             "United Kingdom": 0.0
           },
           "week": "2020-11-30"
@@ -3701,81 +3896,25 @@
           "frequencies": {
             "Brazil": 0.3333333333333333,
             "South Africa": 0.8409090909090909,
-            "USA": 0.002325581395348837,
-            "United Kingdom": 0.0007047216349541931
+            "USA": 0.0016611295681063123,
+            "United Kingdom": 0.0009544586855740388
           },
           "week": "2020-12-07"
         },
         {
           "frequencies": {
-            "Brazil": 0.0,
-            "USA": 0.0,
-            "United Kingdom": 0.010452961672473868
-          },
-          "week": "2020-12-21"
-        },
-        {
-          "frequencies": {
-            "South Africa": 0.0,
-            "USA": 0.0011890606420927466,
-            "United Kingdom": 0.0005711022272986865
-          },
-          "week": "2020-08-17"
-        },
-        {
-          "frequencies": {
-            "South Africa": 0.0,
-            "USA": 0.0034423407917383822,
-            "United Kingdom": 0.0
-          },
-          "week": "2020-08-24"
-        },
-        {
-          "frequencies": {
-            "South Africa": 0.034482758620689655,
-            "USA": 0.0,
-            "United Kingdom": 0.0
-          },
-          "week": "2020-09-14"
-        },
-        {
-          "frequencies": {
-            "South Africa": 0.0,
-            "USA": 0.0,
-            "United Kingdom": 0.0
-          },
-          "week": "2020-09-21"
-        },
-        {
-          "frequencies": {
-            "South Africa": 0.058823529411764705,
-            "USA": 0.0051813471502590676,
-            "United Kingdom": 0.0
-          },
-          "week": "2020-10-12"
-        },
-        {
-          "frequencies": {
-            "South Africa": 0.1891891891891892,
-            "USA": 0.0,
-            "United Kingdom": 0.00011793843613633684
-          },
-          "week": "2020-10-19"
-        },
-        {
-          "frequencies": {
-            "South Africa": 0.7435897435897436,
-            "USA": 0.004722550177095631,
-            "United Kingdom": 0.0006012024048096192
-          },
-          "week": "2020-11-09"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0078125,
-            "United Kingdom": 0.0018606224627875508
+            "USA": 0.007029876977152899,
+            "United Kingdom": 0.001936108422071636
           },
           "week": "2020-12-14"
+        },
+        {
+          "frequencies": {
+            "Brazil": 0.0,
+            "USA": 0.0,
+            "United Kingdom": 0.009302325581395349
+          },
+          "week": "2020-12-21"
         },
         {
           "frequencies": {
@@ -3988,16 +4127,6 @@
         },
         {
           "frequencies": {
-            "Denmark": 0.006476683937823834,
-            "France": 0.060240963855421686,
-            "Netherlands": 0.01639344262295082,
-            "Norway": 0.3333333333333333,
-            "United Kingdom": 0.0031170303202040237
-          },
-          "week": "2020-09-14"
-        },
-        {
-          "frequencies": {
             "Denmark": 0.002304147465437788,
             "France": 0.10204081632653061,
             "Netherlands": 0.0,
@@ -4012,7 +4141,7 @@
             "Denmark": 0.004576659038901602,
             "France": 0.0,
             "Netherlands": 0.0,
-            "Norway": 0.05405405405405406,
+            "Norway": 0.038461538461538464,
             "Switzerland": 0.0,
             "United Kingdom": 0.0038250059765718384
           },
@@ -4023,7 +4152,7 @@
             "Denmark": 0.0,
             "France": 0.0,
             "Netherlands": 0.0,
-            "Norway": 0.043478260869565216,
+            "Norway": 0.05263157894736842,
             "Switzerland": 0.020618556701030927,
             "United Kingdom": 0.0018407731247123793
           },
@@ -4034,7 +4163,7 @@
             "Denmark": 0.0,
             "France": 0.08333333333333333,
             "Netherlands": 0.007194244604316547,
-            "Norway": 0.09523809523809523,
+            "Norway": 0.07407407407407407,
             "Switzerland": 0.015444015444015444,
             "United Kingdom": 0.0010905125408942203
           },
@@ -4045,7 +4174,7 @@
             "Denmark": 0.0,
             "France": 0.0,
             "Netherlands": 0.0,
-            "Norway": 0.02,
+            "Norway": 0.03125,
             "Switzerland": 0.018867924528301886,
             "United Kingdom": 0.00047175374454534735
           },
@@ -4056,7 +4185,7 @@
             "Denmark": 0.0,
             "France": 0.03225806451612903,
             "Netherlands": 0.0,
-            "Norway": 0.013513513513513514,
+            "Norway": 0.03260869565217391,
             "Switzerland": 0.006896551724137931,
             "United Kingdom": 0.00041794371691278906
           },
@@ -4113,7 +4242,7 @@
             "Netherlands": 0.0,
             "Norway": 0.0,
             "Switzerland": 0.0,
-            "United Kingdom": 0.00032071840923669016
+            "United Kingdom": 0.0003206155819172812
           },
           "week": "2020-11-30"
         },
@@ -4133,6 +4262,7 @@
             "Denmark": 0.0,
             "France": 0.11538461538461539,
             "Netherlands": 0.0,
+            "Norway": 0.0,
             "Switzerland": 0.0021141649048625794,
             "United Kingdom": 0.0
           },
@@ -4148,6 +4278,16 @@
             "United Kingdom": 0.0
           },
           "week": "2020-12-21"
+        },
+        {
+          "frequencies": {
+            "Denmark": 0.006476683937823834,
+            "France": 0.060240963855421686,
+            "Netherlands": 0.01639344262295082,
+            "Norway": 0.3333333333333333,
+            "United Kingdom": 0.0031170303202040237
+          },
+          "week": "2020-09-14"
         },
         {
           "frequencies": {
@@ -4323,7 +4463,7 @@
         {
           "frequencies": {
             "Denmark": 0.041189931350114416,
-            "Norway": 0.2972972972972973,
+            "Norway": 0.36538461538461536,
             "United Kingdom": 0.0019125029882859192
           },
           "week": "2020-09-28"
@@ -4331,7 +4471,7 @@
         {
           "frequencies": {
             "Denmark": 0.04292929292929293,
-            "Norway": 0.2608695652173913,
+            "Norway": 0.34210526315789475,
             "United Kingdom": 0.0004601932811780948
           },
           "week": "2020-10-05"
@@ -4339,7 +4479,7 @@
         {
           "frequencies": {
             "Denmark": 0.035211267605633804,
-            "Norway": 0.2619047619047619,
+            "Norway": 0.2962962962962963,
             "United Kingdom": 0.0034273251285246924
           },
           "week": "2020-10-12"
@@ -4347,7 +4487,7 @@
         {
           "frequencies": {
             "Denmark": 0.047979797979797977,
-            "Norway": 0.2,
+            "Norway": 0.15625,
             "United Kingdom": 0.0005896921806816842
           },
           "week": "2020-10-19"
@@ -4355,7 +4495,7 @@
         {
           "frequencies": {
             "Denmark": 0.035788024776324846,
-            "Norway": 0.10810810810810811,
+            "Norway": 0.13043478260869565,
             "United Kingdom": 0.0006965728615213151
           },
           "week": "2020-10-26"
@@ -4363,7 +4503,7 @@
         {
           "frequencies": {
             "Denmark": 0.040829986613119144,
-            "Norway": 0.08333333333333333,
+            "Norway": 0.06451612903225806,
             "United Kingdom": 0.0007064997981429148
           },
           "week": "2020-11-02"
@@ -4371,7 +4511,7 @@
         {
           "frequencies": {
             "Denmark": 0.011753183153770812,
-            "Norway": 0.16129032258064516,
+            "Norway": 0.09090909090909091,
             "United Kingdom": 0.000501002004008016
           },
           "week": "2020-11-09"
@@ -4379,7 +4519,7 @@
         {
           "frequencies": {
             "Denmark": 0.009292351679771264,
-            "Norway": 0.047619047619047616,
+            "Norway": 0.02,
             "United Kingdom": 0.001244887070958563
           },
           "week": "2020-11-16"
@@ -4387,7 +4527,7 @@
         {
           "frequencies": {
             "Denmark": 0.005940594059405941,
-            "Norway": 0.0,
+            "Norway": 0.027777777777777776,
             "United Kingdom": 0.00027419797093501506
           },
           "week": "2020-11-23"
@@ -4404,13 +4544,14 @@
           "frequencies": {
             "Denmark": 0.0,
             "Norway": 0.0,
-            "United Kingdom": 0.00014094432699083862
+            "United Kingdom": 0.00013635124079629124
           },
           "week": "2020-12-07"
         },
         {
           "frequencies": {
             "Denmark": 0.001358695652173913,
+            "Norway": 0.0,
             "United Kingdom": 0.0
           },
           "week": "2020-12-14"
@@ -4647,27 +4788,27 @@
         {
           "frequencies": {
             "Denmark": 0.004992511233150275,
-            "Sweden": 0.25
+            "Sweden": 0.09090909090909091
           },
           "week": "2020-12-07"
         },
         {
           "frequencies": {
             "Denmark": 0.0022644927536231885,
-            "Sweden": 0.043478260869565216
+            "Sweden": 0.03125
           },
           "week": "2020-12-14"
         },
         {
           "frequencies": {
             "Denmark": 0.0006199628022318661,
-            "Sweden": 0.02564102564102564
+            "Sweden": 0.03389830508474576
           },
           "week": "2020-12-21"
         },
         {
           "frequencies": {
-            "Sweden": 0.0
+            "Sweden": 0.03225806451612903
           },
           "week": "2020-12-28"
         }
