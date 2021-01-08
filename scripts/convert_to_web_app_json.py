@@ -95,11 +95,14 @@ def diff_left_closed(big, small):
 def interpolate_per_cluster_data(cluster_data):
     """
     Fills data for missing weeks using linear interpolation.
-    Produces only the interpolated chunks (including boundaries for every missing date span), i.e. the original data is not included.
+    Produces only the interpolated chunks (including boundaries for every missing date span),
+     i.e. the original data is not included.
     """
+
+    # NOTE: using "week" column as index
     df = pd.DataFrame(cluster_data).set_index("week")
 
-    # Fill gaps in the index (from "weeks" column) with interval of 7 days. Fill values of the added rows wih NaN.
+    # Add rows for missing weeks. Fill values of the new rows wih NaN.
     old_index = df.index
     new_index = pd.date_range(old_index[0], old_index[-1], freq='7D').strftime('%Y-%m-%d')
     df = df.reindex(new_index, fill_value=np.NaN)
@@ -110,58 +113,73 @@ def interpolate_per_cluster_data(cluster_data):
     # We want a closed diff: only rows that are not in the original data, plus boundaries for every span of missing data
     diff_index = diff_left_closed(new_index.tolist(), old_index.tolist())
     df_diff = df_interp.loc[diff_index]
+    if len(df_diff) == 0:
+        return {}
 
     assert not df_diff.isnull().any().any(), 'Detected NaN values in the interpolation results'
+
+    # Make a "week" column from index
+    df_diff["week"] = df_diff.index
 
     return df_diff.to_dict('list')
 
 
+def update_per_cluster_distribution(cluster_data, country, distribution):
+    cluster_data_aos = soa_to_aos(cluster_data)
+    for cluster_datum in cluster_data_aos:
+        week = cluster_datum['week']
+        cluster_sequences = cluster_datum['cluster_sequences']
+        total_sequences = cluster_datum['total_sequences']
+        frequency = cluster_sequences / total_sequences
+
+        if len(distribution) == 0:
+            distribution.append({'week': week, 'frequencies': {country: frequency}})
+        else:
+            has_this_week = False
+            for dist in distribution:
+                if week == dist['week']:
+                    has_this_week = True
+
+            if not has_this_week:
+                distribution.append({'week': week, 'frequencies': {country: frequency}})
+            else:
+                for dist in distribution:
+                    if week == dist['week']:
+                        assert country not in dist['frequencies'] \
+                               or frequency == dist['frequencies'][country]  # should not overwrite
+                        dist['frequencies'][country] = frequency
+
+
 def convert_per_cluster_data(clusters):
     per_cluster_data_output = {"distributions": [], "country_names": []}
+    per_cluster_data_output_interp = {"distributions": [], "country_names": []}
+
     for _, cluster in clusters.items():
         display_name = cluster['display_name']
         build_name = cluster['build_name']
 
         distribution = []
+        distribution_interp = []
         with open(os.path.join(cluster_tables_path, f"{build_name}_data.json"), "r") as f:
             json_input = json.load(f)
 
             for (country, cluster_data) in json_input.items():
                 per_cluster_data_output["country_names"] = \
                     sorted(list(set([country] + per_cluster_data_output["country_names"])))
+                update_per_cluster_distribution(cluster_data, country, distribution)
 
+                per_cluster_data_output_interp["country_names"] = \
+                    sorted(list(set([country] + per_cluster_data_output_interp["country_names"])))
                 cluster_data_interp = interpolate_per_cluster_data(cluster_data)
-                print(cluster_data_interp)
-
-                cluster_data_aos = soa_to_aos(cluster_data)
-
-                for cluster_datum in cluster_data_aos:
-                    week = cluster_datum['week']
-                    cluster_sequences = cluster_datum['cluster_sequences']
-                    total_sequences = cluster_datum['total_sequences']
-                    frequency = cluster_sequences / total_sequences
-
-                    if len(distribution) == 0:
-                        distribution.append({'week': week, 'frequencies': {country: frequency}})
-                    else:
-                        has_this_week = False
-                        for dist in distribution:
-                            if week == dist['week']:
-                                has_this_week = True
-
-                        if not has_this_week:
-                            distribution.append({'week': week, 'frequencies': {country: frequency}})
-                        else:
-                            for dist in distribution:
-                                if week == dist['week']:
-                                    assert country not in dist['frequencies'] \
-                                           or frequency == dist['frequencies'][country]  # should not overwrite
-                                    dist['frequencies'][country] = frequency
+                update_per_cluster_distribution(cluster_data_interp, country, distribution_interp)
 
         per_cluster_data_output["distributions"].append(
             {'cluster': display_name, 'distribution': distribution})
 
-    return per_cluster_data_output
+        per_cluster_data_output_interp["distributions"].append(
+            {'cluster': display_name, 'distribution': distribution_interp})
+
+    return per_cluster_data_output, per_cluster_data_output_interp
 
 
 # HACK: Copied from `allClusterDynamics.py:355`
@@ -210,9 +228,11 @@ if __name__ == '__main__':
     with open(os.path.join(output_path, "params.json"), "w") as fh:
         json.dump(params, fh, indent=2, sort_keys=True)
 
-    per_cluster_data_output = convert_per_cluster_data(clusters)
+    per_cluster_data_output, per_cluster_data_output_interp = convert_per_cluster_data(clusters)
     with open(os.path.join(output_path, "perClusterData.json"), "w") as fh:
         json.dump(per_cluster_data_output, fh, indent=2, sort_keys=True)
+    with open(os.path.join(output_path, "perClusterDataInterp.json"), "w") as fh:
+        json.dump(per_cluster_data_output_interp, fh, indent=2, sort_keys=True)
 
     clusters = [add_cluster_properties(cluster) for _, cluster in clusters.items()]
     with open(os.path.join(output_path, "clusters.json"), "w") as fh:
