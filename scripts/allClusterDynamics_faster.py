@@ -181,16 +181,16 @@ if print_files and "all" in clus_answer:
 #### Ensure we have all the variable we need for each run
 
 for clus in clus_to_run:
-    print(f"\nRunning cluster {clus}\n")
+    print(f"\nGathering cluster {clus}\n")
     clus_data = clusters[clus]
 
     if clus == "mink":
         clus_display = "mink"
-        clus_data[mink_meta] = meta[meta['host'].apply(lambda x: x == "Mink")]
-        clus_data[wanted_seqs] = list(mink_meta['strain']) 
+        clus_data['mink_meta'] = meta[meta['host'].apply(lambda x: x == "Mink")]
+        clus_data['wanted_seqs'] = list(mink_meta['strain']) 
 
-        clus_data[clusterlist_output] = cluster_path+f'/clusters/cluster_mink.txt'
-        clus_data[out_meta_file] = cluster_path+f'/cluster_info/cluster_mink_meta.tsv'
+        clus_data['clusterlist_output'] = cluster_path+f'/clusters/cluster_mink.txt'
+        clus_data['out_meta_file'] = cluster_path+f'/cluster_info/cluster_mink_meta.tsv'
 
     else:
         clus_display = clusters[clus]['build_name']
@@ -204,8 +204,8 @@ for clus in clus_to_run:
 
         clus_data['wanted_seqs'] = []
 
-        clus_data[clusterlist_output] = cluster_path+f'/clusters/cluster_{clusters[clus]["build_name"]}.txt'
-        clus_data[out_meta_file] = cluster_path+f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
+        clus_data['clusterlist_output'] = cluster_path+f'/clusters/cluster_{clusters[clus]["build_name"]}.txt'
+        clus_data['out_meta_file'] = cluster_path+f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
         
 
 ##################################
@@ -216,8 +216,8 @@ for index, row in diag.iterrows():
     strain = row['strain']
     snplist = row['all_snps']
     gaplist = row['gap_list']
-    
-    for clus in [x in clus_to_run if x != "mink"]:
+
+    for clus in [x for x in clus_to_run if x != "mink"]:
         clus_data = clusters[clus]
         snps = clus_data['snps']
         snps2 = clus_data['snps2']
