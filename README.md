@@ -94,7 +94,7 @@ The mutation is listed in parentheses after the name.
 - `S:N501`
   - Mutation is in the receptor binding domain (RDB), important to ACE2 binding and antibody recognition
   - N501Y is associated with recently reported 'new variants' in the UK and South Africa:
-    - '20B/501Y.V1' (B.1.1.7) was announced in the South East of England on 14 Dec 2020 ([COG-UK Report](https://www.cogconsortium.uk/news_item/update-on-new-sars-cov-2-variant-and-how-cog-uk-tracks-emerging-mutations/), [Rambaut et al.](https://virological.org/t/preliminary-genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-the-uk-defined-by-a-novel-set-of-spike-mutations/563), [PHE report](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf), [PHE Technical Report 2](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v3))
+    - '20B/501Y.V1' (B.1.1.7) was announced in the South East of England on 14 Dec 2020 ([COG-UK Report](https://www.cogconsortium.uk/news_item/update-on-new-sars-cov-2-variant-and-how-cog-uk-tracks-emerging-mutations/), [Rambaut et al.](https://virological.org/t/preliminary-genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-the-uk-defined-by-a-novel-set-of-spike-mutations/563), [PHE report](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf), [PHE Technical Report 2](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/949639/Technical_Briefing_VOC202012-2_Briefing_2_FINAL.pdf), [PHE Technical Report 3](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/950823/Variant_of_Concern_VOC_202012_01_Technical_Briefing_3_-_England.pdf))
       - This particular variant is associated with multiple mutations in Spike, including: `N501Y`, a deletion at 69/70 (as seen in `S:N439K` & `S:Y453F`) ([Kemp et al. bioRxiv (21 Dec)](https://www.biorxiv.org/content/10.1101/2020.12.14.422555v3)), `Y144` deletion, and `P681H` (adjacent to the furin cleavage site).
       - There is also a notable truncation of `ORF8`, with `Q27*` (becomes a stop codon) (deletion of `ORF8` was previously associated with reduced clinical severity ([Young et al. Lancet](https://www.thelancet.com/article/S0140-6736(20)31757-8/fulltext))), and mutations in `N`: `N:D3L` and `S235F`.
     - '20C/501Y.V2' (B.1.351) is found in South Africa and was also announced in December 2020 ([Tegally et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.21.20248640v1))
@@ -106,6 +106,7 @@ The mutation is listed in parentheses after the name.
     - Some have speculated of risk of a persistent reservoir in wild rodents/mustelids
   - May increase ACE2 binding [Bloom Lab ACE2 binding website](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS/) - in particular it is predicted to do this by increasing the time spent in the 'open' conformation ([Teruel et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2020.12.16.423118v2))
   - `N501Y` was found in longitudinally-collected samples from an immunocompromised patient ([Choi et al. NEJM](https://www.nejm.org/doi/full/10.1056/NEJMc2031364?query=featured_coronavirus))
+  - In one study, sera from previously infected patients neutralised patients with `S:501N` and `S:501Y` equally ([Xie et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.07.425740v1))
 
 ## S:H69-
 ![Figure of S:H69-](/other_figures/6970del.gif)
@@ -197,6 +198,8 @@ Note this figure shows both the 69 & 70 deletion.</sub>
 - `S:E484`
   - Primarily associated with the 501Y.V2 variant that arose in South Africa in the winter of 2020([Tegally et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.21.20248640v1)), and a variant predominantly found in Brazil ([de Vasconcelos et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.23.20248598v1.article-info)), but has appeared independently numerous times around the world.
   - Mutations at S:E484 may significantly reduce convalescent serum neutralization ([Greaney et al., medRxiv](https://www.biorxiv.org/content/10.1101/2020.12.31.425021v1))
+  - There has been a case of reinfection associated with `S:E484K`: a woman previously infected with a non-`S:E484K` variant of SARS-CoV-2 was later reinfected with a virus carrying the `S:E484K` mutation ([Nonaka et al., PrePrints](https://www.preprints.org/manuscript/202101.0132/v1))
+  - In one study co-incubating SARS-CoV-2 with convalescent plasma, neutralization was completely escaped at day 73 due to an `S:E484K` mutation ([Andreano et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2020.12.28.424451v1))
 
 - Little else is known about this mutation. Please let me know if you have more information!
 
