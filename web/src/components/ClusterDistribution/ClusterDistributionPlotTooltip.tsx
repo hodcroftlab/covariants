@@ -57,7 +57,10 @@ export function ClusterDistributionPlotTooltip(props: DefaultTooltipContentProps
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const data = payload[0]?.payload as ClusterDistributionDatum
-  const week = formatDate(data.week)
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const week = formatDate(data?.week)
 
   let payloadSorted = sortBy(payload, 'value')
   payloadSorted = reverse(payloadSorted)
@@ -69,8 +72,11 @@ export function ClusterDistributionPlotTooltip(props: DefaultTooltipContentProps
 
       <TooltipTable>
         <TooltipTableBody>
+          {/* @ts-ignore */}
           {payloadUnique.map(({ color, name, value, payload }, index) => {
-            const interpolated = !get(payload?.orig, name, false)
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            const interpolated = !get(payload?.orig, name, false) // eslint-disable-line @typescript-eslint/no-unsafe-member-access
             return (
               <tr key={name}>
                 <td className="px-2">

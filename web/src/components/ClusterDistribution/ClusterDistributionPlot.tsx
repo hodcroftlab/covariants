@@ -1,4 +1,4 @@
-/* eslint-disable camelcase */
+/* eslint-disable camelcase,unicorn/consistent-function-scoping */
 import React from 'react'
 
 import dynamic from 'next/dynamic'

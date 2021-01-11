@@ -31,8 +31,6 @@ export function LinkExternal({
   $iconColor,
   icon,
   children,
-  ref,
-  as,
   ...restProps
 }: PropsWithChildren<LinkExternalProps>) {
   const Icon: React.ReactNode = icon === undefined ? <GoLinkExternal /> : icon
@@ -40,7 +38,7 @@ export function LinkExternal({
   return (
     <>
       <LinkExternalIconWrapper $color={$iconColor}>{Icon}</LinkExternalIconWrapper>
-      <A target="_blank" rel="noopener noreferrer" href={href} $color={$color} {...restProps}>
+      <A target="_blank" rel="noopener noreferrer" href={href} $color={$color}>
         {children}
       </A>
     </>
