@@ -36,5 +36,6 @@
 | Finland        | 2020-12-19  |          1 | 2020-12-19 |
 | Bangladesh     | 2020-12-19  |          1 | 2020-12-19 |
 | South Korea    | 2020-12-26  |          1 | 2020-12-26 |
+| Japan          | 2021-01-02  |          4 | 2021-01-02 |
 
 ![Overall trends S.E484](/overall_trends_figures/overall_trends_S.E484.png)

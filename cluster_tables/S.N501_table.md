@@ -28,14 +28,14 @@ Note that this mutation has multiple amino-acid mutants - these numbers refer to
 | Norway         | 2020-12-13  |          5 | 2020-12-22 |
 | Switzerland    | 2020-12-14  |          8 | 2020-12-24 |
 | Israel         | 2020-12-16  |         28 | 2020-12-27 |
-| Botswana       | 2020-12-17  |          6 | 2020-12-24 |
 | Ireland        | 2020-12-17  |         47 | 2021-01-01 |
+| Botswana       | 2020-12-17  |          6 | 2020-12-24 |
 | Finland        | 2020-12-18  |         15 | 2020-12-28 |
 | New Zealand    | 2020-12-19  |          5 | 2020-12-27 |
 | Sweden         | 2020-12-20  |         13 | 2020-12-30 |
-| Jamaica        | 2020-12-21  |          4 | 2020-12-21 |
 | France         | 2020-12-21  |         16 | 2020-12-28 |
 | Spain          | 2020-12-21  |          6 | 2020-12-23 |
+| Jamaica        | 2020-12-21  |          4 | 2020-12-21 |
 | Oman           | 2020-12-22  |          1 | 2020-12-22 |
 | South Korea    | 2020-12-22  |          4 | 2020-12-26 |
 | India          | 2020-12-22  |          3 | 2020-12-25 |
@@ -43,5 +43,6 @@ Note that this mutation has multiple amino-acid mutants - these numbers refer to
 | Pakistan       | 2020-12-25  |          2 | 2020-12-28 |
 | Slovakia       | 2020-12-28  |         10 | 2020-12-28 |
 | Mexico         | 2020-12-31  |          1 | 2020-12-31 |
+| Japan          | 2021-01-02  |          4 | 2021-01-02 |
 
 ![Overall trends S.N501](/overall_trends_figures/overall_trends_S.N501.png)
