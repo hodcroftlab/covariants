@@ -50,7 +50,12 @@ export function CountryDistributionPlotComponent({ cluster_names, distribution }
               allowDataOverflow
             />
             <YAxis tickFormatter={formatProportion} domain={[0, 1]} tick={theme.plot.tickStyle} allowDataOverflow />
-            <Tooltip content={CountryDistributionPlotTooltip} isAnimationActive={false} />
+            <Tooltip
+              content={CountryDistributionPlotTooltip}
+              isAnimationActive={false}
+              allowEscapeViewBox={{ x: false, y: true }}
+              offset={50}
+            />
             {cluster_names.map((cluster, i) => (
               <Area
                 key={cluster}
