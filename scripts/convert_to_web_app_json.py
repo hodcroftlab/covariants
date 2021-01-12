@@ -139,7 +139,9 @@ def update_per_cluster_distribution(cluster_data, country, distribution):
         interp = cluster_datum['interp']
         orig = cluster_datum['orig']
 
-        frequency = cluster_sequences / total_sequences
+        frequency = 0
+        if total_sequences != 0:
+          frequency = cluster_sequences / total_sequences
 
         if len(distribution) == 0:
             distribution.append({'week': week, 'frequencies': {country: frequency}, 'interp': {country: interp},
