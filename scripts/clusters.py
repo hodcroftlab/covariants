@@ -1,6 +1,7 @@
 
 
-clusters = {"S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
+clusters = {
+            "S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
             "country_info":[], 'col': "#ff8d3d", "display_name": "20A.EU1", "display_name2": "S:A222V",
             "build_name":"20A.EU1"},
 
@@ -47,6 +48,16 @@ clusters = {"S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
             "DanishCluster": {'snps': [15655], 'cluster_data': [],
             "country_info":[], 'col': "#ffffff", "display_name": "DanishCluster", 
             "build_name":"DanishCluster"}
+
+#            "S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
+#            "country_info":[], 'col': "#8a8a8a", "display_name": "20A.EU1", 
+#            "display_name2": "B.1.177 (20E(EU1))",
+#            "build_name":"20A.EU1"},
+
+#            "S501uk": {'snps': [23062,14675], 'cluster_data': [], 'snps2': [],
+#            "country_info":[], 'col': "#db4439", "display_name": "B.1.1.7 (501Y.V1)", 
+#            "build_name":"S.N501uk", 'url_params': ""},  #no europe filter
+
 
 
             #"S69": {'snps': [21766], 'cluster_data': [], 'build_name': "S.69"},
