@@ -187,7 +187,7 @@ for clus in clus_to_run:
     if clus == "mink":
         clus_display = "mink"
         clus_data['mink_meta'] = meta[meta['host'].apply(lambda x: x == "Mink")]
-        clus_data['wanted_seqs'] = list(mink_meta['strain']) 
+        clus_data['wanted_seqs'] = list(clus_data['mink_meta']['strain']) 
 
         clus_data['clusterlist_output'] = cluster_path+f'/clusters/cluster_mink.txt'
         clus_data['out_meta_file'] = cluster_path+f'/cluster_info/cluster_mink_meta.tsv'

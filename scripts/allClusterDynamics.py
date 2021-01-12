@@ -242,6 +242,15 @@ for clus in clus_to_run:
         bad_seq = meta[meta['strain'].isin([key])]
         if not bad_seq.empty and bad_seq.date.values[0] == value and key in wanted_seqs:
             wanted_seqs.remove(key)
+
+    #JAPAN
+    # hacky fix to include japan sequences which don't have days
+    #manually add in sequences from Japan - just to write out.
+    if clus == "S484":
+        wanted_seqs.add("Japan/IC-0561/2021")
+        wanted_seqs.add("Japan/IC-0562/2021")
+        wanted_seqs.add("Japan/IC-0563/2021")
+        wanted_seqs.add("Japan/IC-0564/2021")
     
     json_output[clus_display] = {}
 
@@ -318,6 +327,17 @@ for clus in clus_to_run:
     if len(observed_countries) > len(country_list) and clus=="S222":
         print("\nWARNING!! Appears a new country has come into the cluster!")
         print([x for x in observed_countries if x not in country_list])
+
+    #JAPAN
+    # must exclude again or graphing & etc will break
+    #manually add in sequences from Japan - just to write out.
+    if clus == "S484":
+        wanted_seqs.remove("Japan/IC-0561/2021")
+        wanted_seqs.remove("Japan/IC-0562/2021")
+        wanted_seqs.remove("Japan/IC-0563/2021")
+        wanted_seqs.remove("Japan/IC-0564/2021")
+        #reset metadata
+        cluster_meta = cluster_meta[cluster_meta['strain'].isin(wanted_seqs)]
 
 
     # Let's get some summary stats on number of sequences, first, and last, for each country.
