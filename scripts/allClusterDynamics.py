@@ -242,15 +242,6 @@ for clus in clus_to_run:
         bad_seq = meta[meta['strain'].isin([key])]
         if not bad_seq.empty and bad_seq.date.values[0] == value and key in wanted_seqs:
             wanted_seqs.remove(key)
-
-    #JAPAN
-    # hacky fix to include japan sequences which don't have days
-    #manually add in sequences from Japan - just to write out.
-    if clus == "S484":
-        wanted_seqs.add("Japan/IC-0561/2021")
-        wanted_seqs.add("Japan/IC-0562/2021")
-        wanted_seqs.add("Japan/IC-0563/2021")
-        wanted_seqs.add("Japan/IC-0564/2021")
     
     json_output[clus_display] = {}
 
@@ -267,6 +258,18 @@ for clus in clus_to_run:
 
     #re-set wanted_seqs
     wanted_seqs = list(cluster_meta['strain']) 
+
+    #JAPAN
+    # hacky fix to include japan sequences which don't have days
+    #manually add in sequences from Japan - just to write out.
+    if clus == "S484":
+        wanted_seqs.append("Japan/IC-0561/2021")
+        wanted_seqs.append("Japan/IC-0562/2021")
+        wanted_seqs.append("Japan/IC-0563/2021")
+        wanted_seqs.append("Japan/IC-0564/2021")
+        #reset metadata
+        cluster_meta = cluster_meta[cluster_meta['strain'].isin(wanted_seqs)]
+
 
     print("Sequences found: ")
     print(len(wanted_seqs)) # how many are there?
