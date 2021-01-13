@@ -56,14 +56,20 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
       <TooltipTitle>{`Week: ${week}`}</TooltipTitle>
 
       <TooltipTable>
+        <thead>
+          <tr className="w-100">
+            <th className="px-2 text-left">{'Cluster'}</th>
+            <th className="px-2 text-right">{'Num seq'}</th>
+          </tr>
+        </thead>
         <TooltipTableBody>
           {payloadSorted.map(({ color, name, value }, index) => (
             <tr key={name}>
-              <td className="px-2">
+              <td className="px-2 text-left">
                 <ColoredBox $color={getClusterColor(name ?? '')} $size={10} $aspect={1.66} />
                 <span>{name}</span>
               </td>
-              <td className="px-2">{value !== undefined && value > EPSILON ? formatInteger(value) : '-'}</td>
+              <td className="px-2 text-right">{value !== undefined && value > EPSILON ? formatInteger(value) : '-'}</td>
             </tr>
           ))}
         </TooltipTableBody>

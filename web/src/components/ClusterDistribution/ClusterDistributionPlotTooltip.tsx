@@ -71,6 +71,13 @@ export function ClusterDistributionPlotTooltip(props: DefaultTooltipContentProps
       <TooltipTitle>{`Week: ${week}`}</TooltipTitle>
 
       <TooltipTable>
+        <thead>
+          <tr className="w-100">
+            <th className="px-2 text-left">{'Country'}</th>
+            <th />
+            <th className="px-2 text-right">{'Frequency'}</th>
+          </tr>
+        </thead>
         <TooltipTableBody>
           {/* @ts-ignore */}
           {payloadUnique.map(({ color, name, value, payload }, index) => {
@@ -79,12 +86,14 @@ export function ClusterDistributionPlotTooltip(props: DefaultTooltipContentProps
             const interpolated = !get(payload?.orig, name, false) // eslint-disable-line @typescript-eslint/no-unsafe-member-access
             return (
               <tr key={name}>
-                <td className="px-2">
+                <td className="px-2 text-left">
                   <ColoredCircle $color={getCountryColor(name ?? '')} $size={10} />
                   <span>{name}</span>
                 </td>
                 <td>{interpolated && '*'}</td>
-                <td className="px-2">{value !== undefined && value > EPSILON ? formatProportion(value) : '-'}</td>
+                <td className="px-2 text-right">
+                  {value !== undefined && value > EPSILON ? formatProportion(value) : '-'}
+                </td>
               </tr>
             )
           })}
