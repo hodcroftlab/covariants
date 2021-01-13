@@ -14,6 +14,7 @@ import { ClusterState, CountryState } from 'src/components/CountryDistribution/C
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
 
+import PerClusterIntro from 'src/../../content/PerClusterIntro.md'
 import { ClusterDistributionDatum } from './ClusterDistributionPlot'
 
 const COUNTRIES = copy(perClusterData.country_names).sort()
@@ -113,6 +114,14 @@ export function ClusterDistributionPage() {
 
   return (
     <Layout wide>
+      <Row noGutters>
+        <Col>
+          <Editable githubUrl="blob/master/content/PerClusterIntro.md">
+            <PerClusterIntro />
+          </Editable>
+        </Col>
+      </Row>
+
       <Row noGutters>
         <Col>
           <Editable githubUrl="blob/master/scripts" text={'View data generation scripts'}>

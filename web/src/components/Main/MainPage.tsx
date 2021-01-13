@@ -110,12 +110,9 @@ const clusters = getClusters()
 
 export function MainPage() {
   const [currentCluster, setCurrentCluster] = useState(clusters[0])
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const scrollToClusters = () => scrollRef.current?.scrollIntoView()
 
   const handleClusterButtonClick = (cluster: ClusterDatum) => () => {
     setCurrentCluster(cluster)
-    scrollToClusters()
   }
 
   const ClusterContent = getClusterContent(currentCluster.display_name)
@@ -124,8 +121,6 @@ export function MainPage() {
     <Layout>
       <Row noGutters>
         <Col>
-          <div ref={scrollRef} />
-
           <ClustersRow noGutters>
             {clusters.map((cluster, index) => (
               <ClusterButton
