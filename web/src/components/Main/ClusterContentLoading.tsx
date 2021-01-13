@@ -18,7 +18,7 @@ export function ClusterContentLoading({ error }: ClusterContentLoadingProps) {
     <Container fluid>
       <Row noGutters>
         <Col>
-          <p>{'Details are not yet available for this cluster'}</p>
+          <p>{'Details are not yet available for this variant'}</p>
         </Col>
       </Row>
 

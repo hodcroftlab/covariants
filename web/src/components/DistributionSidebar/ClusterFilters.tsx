@@ -38,7 +38,7 @@ export function ClusterFilters({ clusters, collapsed, onFilterChange, setCollaps
   const filters = useMemo(() => Object.entries(clusters), [clusters])
 
   return (
-    <CardCollapsible className="m-2" title={'Clusters'} collapsed={collapsed} setCollapsed={setCollapsed}>
+    <CardCollapsible className="m-2" title={'Variants'} collapsed={collapsed} setCollapsed={setCollapsed}>
       <CardBody>
         <Form>
           {filters.map(([cluster, { enabled }]) => (

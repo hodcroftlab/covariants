@@ -58,7 +58,7 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
       <TooltipTable>
         <thead>
           <tr className="w-100">
-            <th className="px-2 text-left">{'Cluster'}</th>
+            <th className="px-2 text-left">{'Variant'}</th>
             <th className="px-2 text-right">{'Num seq'}</th>
           </tr>
         </thead>

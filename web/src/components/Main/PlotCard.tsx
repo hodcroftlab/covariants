@@ -49,7 +49,7 @@ export function PlotCardTitle({ cluster }: PlotCardProps) {
       <PlotCardTitleIcon />
       <PlotCardHeading>{`Distribution of ${cluster.display_name} per country`}</PlotCardHeading>
       <span className="ml-auto">
-        <Link href="/cluster-distribution" color={theme.link.dim.color}>
+        <Link href="/per-variant" color={theme.link.dim.color}>
           {'Compare'}
         </Link>
       </span>

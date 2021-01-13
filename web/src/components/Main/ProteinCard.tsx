@@ -61,7 +61,7 @@ export function Placeholder() {
     <Container fluid className="">
       <Row noGutters>
         <Col>
-          <p>{'Protein model is not yet available for this cluster'}</p>
+          <p>{'Protein model is not yet available for this variant'}</p>
         </Col>
       </Row>
 
