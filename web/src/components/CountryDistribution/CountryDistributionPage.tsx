@@ -14,7 +14,6 @@ import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 
 import PerCountryIntro from 'src/../../content/PerCountryIntro.md'
-import PerClusterIntro from '../../../../content/PerClusterIntro.md'
 
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
 import { CountryDistributionDatum } from './CountryDistributionPlot'

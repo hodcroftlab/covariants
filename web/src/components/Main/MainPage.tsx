@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useMemo, useState, useRef } from 'react'
+import React, { useMemo, useState } from 'react'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { theme } from 'src/theme'
 
