@@ -1,5 +1,10 @@
-# TODO: overview of countries
+# Overview of Clusters in Countries with >20 Sequences in any Cluster
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget tempus dui. Integer malesuada est at nulla feugiat, et auctor turpis lacinia. Ut iaculis tincidunt turpis sed rhoncus. Proin vulputate neque eget posuere aliquet. Nulla facilisi. Mauris posuere turpis sit amet erat pulvinar, sit amet imperdiet enim varius. Nulla mauris est, dignissim sed lacus et, malesuada malesuada turpis. Sed elementum luctus mauris, a sodales mi cursus sed. Aliquam lectus risus, aliquet sed massa vel, auctor maximus urna. Quisque dapibus eget augue ac ullamcorper. In tempus euismod neque nec iaculis. Mauris ornare pellentesque odio vitae sodales. Aliquam convallis tristique sem, nec tempus libero hendrerit ut.
+Graphs show for each country, the proportion of total number of sequences, over time, that fall into defined variant groups. Countries are pre-selected to be displayed if they have at least 20 sequences in any variant being tracked (see [colors_and_countries.py](https://github.com/hodcroftlab/covariants/blob/master/scripts/colors_and_countries.pyy)).
 
-Mauris gravida vitae lacus ut suscipit. Vivamus ac lobortis nibh, lacinia ullamcorper diam. Donec aliquam in erat viverra varius. Nunc feugiat varius risus, eget tempor libero suscipit vel. Suspendisse ligula metus, scelerisque in fringilla sit amet, tristique ut nulla. Donec nisl augue, sodales eu dui ac, varius rutrum ex. Fusce hendrerit blandit leo, ac luctus metus tincidunt non. Curabitur ornare urna quis nibh sollicitudin, sed venenatis dui maximus. Curabitur mattis facilisis quam eu posuere. Aliquam eros lorem, efficitur ac ultricies convallis, volutpat ac enim. Sed ac eros lacus. Pellentesque sed tincidunt libero. Nulla a ligula dapibus, cursus lacus vitae, commodo velit.
+Note that sequences with the 69 deletion or mutation at S:E484 in Spike are not shown on these plots as they commonly are found in other varaints (S:N439K, S:Y453F, and S:N501 for 69 deletion; S:N501 for S:E484), so they would be 'double-plotted'.
+
+It is worth interpreting with caution:
+- The last data point - this often has incomplete data and may change as more sequences come in
+- Frequencies that are very 'jagged' - this often indicates low sequencing numbers and so may not be truly representative of the country
+

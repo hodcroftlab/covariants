@@ -1,10 +1,5 @@
-# Overview of Clusters in Countries with >20 Sequences in any Cluster
+# Overview of Variants/Mutations
 
-Graphs show the proportion of total number of sequences, over time, that fall into defined clusters/mutation groups.
-From a pre-selected list of countries (see [scripts/colors_and_countries.py](https://github.com/hodcroftlab/covariants/blob/master/scripts/colors_and_countries.py)), countries are displayed if they have at least 20 sequences in any cluster being tracked.
+In the graphs below, the proportion of sequences from each country that are designated as being that cluster, are plotted.
 
-Note that sequences with the 69 deletion in Spike are not shown on these plots as they commonly are found in the clusters of S:N439K, S:Y453F, and S:N501, so they would be 'double-plotted'.
-
-It is worth interpreting with caution:
-- The last data point - this often has incomplete data and may change as more sequences come in
-- Frequencies that are very 'jagged' - this often indicates low sequencing numbers and so may not be truly representative of the country
+Countries are displayed in the chart if the country has at least 20 sequences present in that cluster.
