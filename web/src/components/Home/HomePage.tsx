@@ -3,24 +3,23 @@ import React from 'react'
 import { Col, Row } from 'reactstrap'
 
 import { Editable } from 'src/components/Common/Editable'
-import { PROJECT_NAME } from 'src/constants'
 import { Layout } from 'src/components/Layout/Layout'
 
-import About from '../../../../content/About.md'
+import HomeContent from '../../../../content/Home.md'
 
-export function AboutPage() {
+export function HomePage() {
   return (
     <Layout>
       <Row noGutters>
         <Col>
-          <h1>{`About ${PROJECT_NAME}`}</h1>
+          <h1>{'Covariants'}</h1>
         </Col>
       </Row>
 
       <Row noGutters>
         <Col>
-          <Editable githubUrl="blob/master/content/About.md">
-            <About />
+          <Editable githubUrl="blob/master/content/Home.md">
+            <HomeContent />
           </Editable>
         </Col>
       </Row>

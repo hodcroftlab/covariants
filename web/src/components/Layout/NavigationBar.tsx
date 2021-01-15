@@ -14,11 +14,11 @@ import { NavigationLink } from 'src/components/Layout/NavigationLink'
 import { ReactComponent as BrandLogo } from 'src/assets/images/logo.svg'
 
 const navLinksLeft = {
-  '/': 'Variants',
+  '/': 'Home',
+  '/faq': 'FAQ',
+  '/variants': 'Variants',
   '/per-country': 'Per country',
   '/per-variant': 'Per variant',
-  '/about': 'About',
-  '/faq': 'FAQ',
 }
 
 const navLinksRight = [

@@ -108,7 +108,7 @@ const getClusterContent = (cluster: string) =>
 
 const clusters = getClusters()
 
-export function MainPage() {
+export function VariantsPage() {
   const [currentCluster, setCurrentCluster] = useState(clusters[0])
 
   const handleClusterButtonClick = (cluster: ClusterDatum) => () => {

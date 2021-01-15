@@ -94,5 +94,5 @@ Check out the links below:
 
 ## What's next?
 
-- See ["About" page](/about)
-- View [clusters](/)
+- Go to [home page](/)
+- View [variants](/variants)
