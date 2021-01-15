@@ -110,11 +110,13 @@ print_answer = input("\nWrite out files?(y/n) (Enter is no): ")
 if print_answer in ["y", "Y", "yes", "YES", "Yes"]:
     print_files = True
 print_files2 = True
+print(f"Writing out files? {print_files}")
 
 print_acks = False
 print_ack_answer = input("\nWrite out acknowledgements?(y/n) (Enter is no): ")
 if print_ack_answer in ["y", "Y", "yes", "YES", "Yes"]:
     print_acks = True
+print(f"Writing out acknowledgements? {print_acks}")
 
 #default is 222, but ask user what they want - or run all.
 clus_to_run = ["S222"]
@@ -586,19 +588,21 @@ for clus in clus_to_run:
 
         #for a simpler plot of most interesting countries use this:
         for coun in [x for x in countries_to_plot]:
-            week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun, smoothing=smoothing)
+            week_as_date, cluster_count, total_count, unsmoothed_cluster_count, unsmoothed_total_count = non_zero_counts(cluster_data, total_data, coun, smoothing=smoothing)
             # remove last data point if that point as less than frac sequences compared to the previous count
-            week_as_date, cluster_count, total_count = trim_last_data_point(week_as_date, cluster_count, total_count, frac=0.1, keep_count=10)
+            week_as_date, cluster_count, total_count  = trim_last_data_point(week_as_date, cluster_count, total_count, frac=0.1, keep_count=10)
 
             json_output[clus_display][coun] = {}
             json_output[clus_display][coun]["week"] = [datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date]
             json_output[clus_display][coun]["total_sequences"] = [int(x) for x in total_count]
             json_output[clus_display][coun]["cluster_sequences"] = [int(x) for x in cluster_count] 
+            json_output[clus_display][coun]["unsmoothed_cluster_sequences"] = [int(x) for x in unsmoothed_cluster_count]
+            json_output[clus_display][coun]["unsmoothed_total_sequences"] = [int(x) for x in unsmoothed_total_count]
 
             ax3.plot(week_as_date, cluster_count/total_count,
                     color=country_styles_custom[coun]['c'],
                     linestyle=country_styles_custom[coun]['ls'], label=coun)
-            ax3.scatter(week_as_date, cluster_count/total_count, s=[marker_size(n) for n in total_count],
+            ax3.scatter(week_as_date, cluster_count/total_count, s=[marker_size(n) for n in unsmoothed_total_count],
                     color=country_styles_custom[coun]['c'],
                     linestyle=country_styles_custom[coun]['ls'])
 

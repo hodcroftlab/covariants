@@ -33,16 +33,25 @@ def non_zero_counts(cluster_data, total_data, country, smoothing=None):
 
     cluster_and_total = pd.concat([cluster_data[country], total_data[country]], axis=1).fillna(0)
     # remove initial time points without data
-    with_data = np.cumsum(cluster_and_total.iloc[:,1])>0
-
+    data_range = np.cumsum(cluster_and_total.iloc[:,1])>0
+    with_data = cluster_and_total.iloc[:,1]>0
+    with_data_inrange = with_data[data_range]
     #this lets us plot X axis as dates rather than weeks (I struggle with weeks...)
     week_as_date = [ datetime.datetime.strptime("2020-W{}-1".format(x), '%G-W%V-%u')
-                     for x in cluster_and_total[with_data].index ]
-    #plt.plot(weeks.index[with_data], weeks.loc[with_data].iloc[:,0]/(total[with_data]), 'o', color=palette[i], label=coun, linestyle=sty)
-    cluster_count = np.convolve(cluster_and_total[with_data].iloc[:,0], smoothing, mode='same')
-    total_count   = np.convolve(cluster_and_total[with_data].iloc[:,1], smoothing, mode='same')
+                     for x in cluster_and_total[data_range].index ]
+    #plt.plot(weeks.index[with_data_inrange], weeks.loc[with_data_inrange].iloc[:,0]/(total[with_data_inrange]), 'o', color=palette[i], label=coun, linestyle=sty)
+    if len(week_as_date) >= len(smoothing):
+        chop = (len(week_as_date) - len(smoothing))//2
+        smoothing = smoothing[chop:-chop] 
+    mode = 'same' #RICHARD
+    cluster_count = np.convolve(cluster_and_total[data_range].iloc[:,0], smoothing, mode=mode)#'same')
+    # cluster_count = cluster_count[0:len(week_as_date)]
+    total_count   = np.convolve(cluster_and_total[data_range].iloc[:,1], smoothing, mode=mode)#'same')
+    # if mode == 'valid':
+    #     total_count = total_count[0:len(week_as_date)]
 
-    return week_as_date, np.array(cluster_count), np.array(total_count)
+    return [x for x,wd in zip(week_as_date, with_data_inrange) if wd], np.array(cluster_count)[with_data_inrange],\
+        np.array(total_count)[with_data_inrange], cluster_and_total[with_data].iloc[:,0], cluster_and_total[with_data].iloc[:,1]
 
 
 def read_case_data_by_week(fname):
