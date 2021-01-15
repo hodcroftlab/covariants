@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { connect } from 'react-redux'
 import { replace } from 'connected-next-router'
@@ -130,10 +130,17 @@ export interface VariantsPageProps extends VariantsPageBaseProps {
 export function VariantsPageDisconnected({ defaultCluster, routerReplace }: VariantsPageProps) {
   const [currentCluster, setCurrentCluster] = useState(defaultCluster)
 
-  const handleClusterButtonClick = (cluster: ClusterDatum) => () => {
-    routerReplace(`/variants/${cluster.build_name}`)
-    setCurrentCluster(cluster)
-  }
+  const switchCluster = useCallback(
+    (cluster: ClusterDatum) => () => {
+      routerReplace(`/variants/${cluster.build_name}`)
+      setCurrentCluster(cluster)
+    },
+    [routerReplace],
+  )
+
+  useEffect(() => {
+    routerReplace(`/variants/${defaultCluster.build_name}`)
+  }, [defaultCluster.build_name, routerReplace])
 
   const ClusterContent = getClusterContent(currentCluster.display_name)
 
@@ -146,7 +153,7 @@ export function VariantsPageDisconnected({ defaultCluster, routerReplace }: Vari
               <ClusterButton
                 key={cluster.display_name}
                 cluster={cluster}
-                onClick={handleClusterButtonClick(cluster)}
+                onClick={switchCluster(cluster)}
                 isCurrent={cluster.display_name === currentCluster.display_name}
               />
             ))}

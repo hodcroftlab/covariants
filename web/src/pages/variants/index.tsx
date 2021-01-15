@@ -1,19 +1,11 @@
-import type { GetStaticPropsContext, GetStaticPropsResult } from 'next'
+import React from 'react'
 
-import type { VariantsPageBaseProps } from 'src/components/Variants/VariantsPage'
-import { getClusterBuildNames } from 'src/io/getClusters'
+import { getClusters } from 'src/io/getClusters'
+import { VariantsPage } from 'src/components/Variants/VariantsPage'
 
-const clusterBuildNames = getClusterBuildNames()
+const clusters = getClusters()
+const defaultCluster = clusters[0]
 
-export async function getStaticProps(
-  context: GetStaticPropsContext,
-): Promise<GetStaticPropsResult<VariantsPageBaseProps>> {
-  return {
-    redirect: {
-      destination: `/variants/${clusterBuildNames[0]}`,
-      permanent: false,
-    },
-  }
+export default function Impl() {
+  return <VariantsPage defaultCluster={defaultCluster} />
 }
-
-export { VariantsPage as default } from 'src/components/Variants/VariantsPage'
