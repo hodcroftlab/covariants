@@ -3,17 +3,18 @@ import type { GetStaticPathsContext, GetStaticPropsContext, GetStaticPathsResult
 import { get } from 'lodash'
 
 import type { VariantsPageBaseProps } from 'src/components/Variants/VariantsPage'
-import { getClusterBuildNames, getClusters } from 'src/io/getClusters'
+import { getClusterBuildNames, getClusters, getDefaultCluster } from 'src/io/getClusters'
 import { takeFirstMaybe } from 'src/helpers/takeFirstMaybe'
 
 const clusters = getClusters()
+const DEFAULT_CLUSTER = getDefaultCluster()
 const clusterBuildNames = getClusterBuildNames()
 
 export async function getStaticProps(
   context: GetStaticPropsContext,
 ): Promise<GetStaticPropsResult<VariantsPageBaseProps>> {
   const clusterName = takeFirstMaybe(get(context?.params, 'clusterName'))
-  const defaultCluster = clusters.find(({ build_name }) => clusterName === build_name) ?? clusters[0]
+  const defaultCluster = clusters.find(({ build_name }) => clusterName === build_name) ?? DEFAULT_CLUSTER
 
   return {
     props: {
