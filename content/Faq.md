@@ -18,6 +18,8 @@ Emma B. Hodcroft. 2021. "CoVariants: SARS-CoV-2 Mutations and Variants of Intere
 
 Emma Hodcroft, PhD, is a researcher at the Institute of Social and Preventive Medicine, University of Bern in Bern, Switzerland.
 
+Ivan Aksamentov is a major contributor to this project and is based in the [Neher Lab](https://neherlab.org/) at the University of Basel.
+
 <!-- TODO:
 
 - add citation
@@ -34,9 +36,9 @@ This work is enabled by data made available on [GISIAD](https://www.gisaid.org/)
 
 ### How can I contribute to this work (add a paper, fix an error, or make a suggestion)?
 
-**I welcome PR requests to this repository providing new links and information!** The more detail you can include in a [pull request (PR)](https://github.com/hodcroftlab/covariants/pulls) the faster I'll be able to review it!
+**PR requests to this repository providing new links and information are very welcome!** The more detail you can include in a [pull request (PR)](https://github.com/hodcroftlab/covariants/pulls) the faster we will be able to review it!
 
-If possible, provide a PR that adds/edits the appropriate links/etc, and I can merge it faster - if you can't or don't know how to do that, making an [issue](https://github.com/hodcroftlab/covariants/issues) is fine! (But I might be a little slower incorporating it!)
+If possible, provide a PR that adds/edits the appropriate links/etc, and it can be merged faster - if you can't or don't know how to do that, making an [issue](https://github.com/hodcroftlab/covariants/issues) is fine! (But might be incorporated a little slower!)
 
 You can also use the "Propose changes to this section" links that you will often see in the top-right of sections across the website.
 
