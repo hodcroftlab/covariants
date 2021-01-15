@@ -18,6 +18,10 @@ export function getClusters(): ClusterDatum[] {
   return clustersJson.clusters
 }
 
+export function getDefaultCluster(): ClusterDatum {
+  return getClusters()[0]
+}
+
 export function getClusterNames() {
   return getClusters().map((cluster) => cluster.display_name)
 }
