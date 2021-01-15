@@ -8,13 +8,7 @@
 
 Please do cite and link back to CoVariants.org if you use this resource! 
 
-If you use screenshots from CoVariants.org, please do ensure a you credit the website and provide a link back to CoVariants.org.
-
-TODO:
-
-- add citation
-- add linking info
-- add social media sharing info and links
+If you use screenshots from CoVariants.org, please do ensure you credit the website and provide a link back to CoVariants.org.
 
 Citation:
 
@@ -24,17 +18,19 @@ Emma B. Hodcroft. 2021. "CoVariants: SARS-CoV-2 Mutations and Variants of Intere
 
 Emma Hodcroft, PhD, is a researcher at the Institute of Social and Preventive Medicine, University of Bern in Bern, Switzerland.
 
+<!-- TODO:
+
+- add citation
+- add linking info
+- add social media sharing info and links -->
+
 ### How can I use this work?
 
-TODO:
+CoVariants is Copyright 2020-2021 Emma Hodcroft.
 
-- Describe permitted usage, content, data and software licensing
+This CoVariants code and work is licensed under a [GNU Affero General Public License (AGPL)](https://www.gnu.org/licenses/agpl-3.0.en.html). You can view this license [here](https://github.com/hodcroftlab/covariants/blob/master/LICENSE.md). CoVariants is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget facilisis ipsum. Praesent lobortis et quam ac tempor. Nam elementum nulla eleifend auctor feugiat. Morbi nisl purus, congue nec sapien quis, rhoncus elementum felis. Duis volutpat, velit sed scelerisque accumsan, sem sapien auctor erat, non faucibus ligula lectus nec eros. Curabitur sed elementum nisl. Vestibulum venenatis in justo at rutrum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi rhoncus, mauris vel egestas dapibus, diam lectus vulputate purus, vitae dictum erat leo eu lectus. Ut id dapibus augue, eget hendrerit felis. Etiam vitae feugiat tellus. Vestibulum a tincidunt libero, dictum facilisis purus.
-
-Vivamus nec enim turpis. Praesent semper nibh non varius malesuada. Quisque at elementum arcu, sed maximus erat. Etiam facilisis ipsum non imperdiet pretium. Pellentesque sed nisl non enim dictum tempus. Duis pharetra massa sed lorem dapibus fringilla. Pellentesque dignissim, dui et mollis laoreet, orci neque malesuada ante, ac lacinia eros ex lobortis libero. Duis lobortis purus eget leo faucibus ullamcorper. Etiam at euismod enim. Ut vitae ullamcorper leo, id fermentum odio.
-
-Proin arcu ex, tincidunt eu condimentum ac, dignissim et elit. Suspendisse potenti. In varius auctor augue, non convallis risus vehicula vitae. Fusce in blandit diam. Fusce at tortor felis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed molestie in risus nec condimentum. Ut nisl dui, consectetur sit amet magna et, elementum sagittis leo. Fusce ipsum eros, fermentum non eleifend non, commodo sit amet ante.
+This work is enabled by data made available on [GISIAD](https://www.gisaid.org/). See the [GISAID Terms of Use](https://www.gisaid.org/registration/terms-of-use/) for more information about how this data can be used. Note that under the terms of use, data on GISAID cannot be redistributed.
 
 ### How can I contribute to this work (add a paper, fix an error, or make a suggestion)?
 
@@ -44,7 +40,7 @@ If possible, provide a PR that adds/edits the appropriate links/etc, and I can m
 
 You can also use the "Propose changes to this section" links that you will often see in the top-right of sections across the website.
 
-TODO:
+<!-- TODO:
 
 - TODO: Add link to discussion and twitter.
 
@@ -52,15 +48,15 @@ TODO:
 
 - TODO: Add content contributors guide. Where, how, what. How to add new content and data.
 
-- TODO: Add software developers guide.
+- TODO: Add software developers guide. -->
 
 
 ### I want to stay up-to-date on the topic. What you suggest?
 
 To stay up-to-date on SARS-CoV-2 variants, you can follow Emma Hodcroft on Twitter ([@firefoxx66](https://twitter.com/firefoxx66)) - she often tweets about updates and changes to the website.
 
-- TODO: suggest following on Twitter
-- TODO: suggest additional sources
+You can also check out the [CoV-Lineages Global Report](https://cov-lineages.org/global_report.html) to read more information on some of the variants.
+
 
 ## Questions about the Variants
 
