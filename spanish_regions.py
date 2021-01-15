@@ -53,11 +53,25 @@ def get_roamers_time_series_total(roaming, country):
             res[ii[0]] += roaming.loc[ii].num_roamers
     return res
 
+def get_roamers_time_series_total_province(roaming, province):
+    res = defaultdict(int)
+    for ii in roaming.index:
+        if ii[1]==province:
+            res[ii[0]] += roaming.loc[ii].num_roamers
+    return res
+
 def get_roamerDis_by_province(roaming, CW, country):
     res = get_roamers_by_province(roaming,CW,country)
     total = np.sum(list(res.values()))
     return {k:v/total for k,v in res.items()}
 
+def get_roamerDis_by_province_CWrange(roaming, CWrange, country):
+    res = defaultdict(int)
+    for CW in CWrange:
+        res.update(get_roamers_by_province(roaming,CW,country))
+
+    total = np.sum(list(res.values()))
+    return {k:v/total for k,v in res.items()}
 
 def get_roamer_province_average(data, roaming, CW, country):
     res = get_roamerDis_by_province(roaming,CW,country)

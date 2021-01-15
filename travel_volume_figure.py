@@ -2,12 +2,30 @@ from collections import defaultdict
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 from travel_data import *
 from colors_and_countries import *
 from helpers import *
 from spanish_regions import *
 
 figure_path = '../cluster_scripts/figures/'
+
+def CW_to_date(cw):
+    return datetime.strptime(f"2020-W{cw}-1", '%G-W%V-%u')
+
+def date_to_CW(d):
+    return d.isocalendar()[1]
+
+def country_correlation(roamers, countries, country_to_iso, weeks, province_codes):
+    res = defaultdict(list)
+    for c in countries:
+        if c=='Spain':
+            continue
+        tmp = get_roamerDis_by_province_CWrange(roamers, weeks, country_to_iso[c])
+        for p in province_codes:
+            res[c].append(tmp.get(p,0))
+
+    return pd.DataFrame(res)
 
 def get_total_cluster(country, cases, frequency, weeks=None):
     if weeks is None:
@@ -38,9 +56,9 @@ def get_import_frequency(country, cases, frequency, weeks=None, avg_cases_per_in
     dates = []
     Re_traj = [1]
     for week in weeks:
-        d = datetime.datetime.strptime(f"2020-W{week}-1", '%G-W%V-%u')
-        prev_week = datetime.datetime.strptime(f"2020-W{week-1}-1", '%G-W%V-%u')
-        mid_month = datetime.datetime.strptime(f"2020-{d.month:02d}-15", "%Y-%m-%d")
+        d = CW_to_date(week)
+        prev_week = CW_to_date(week-1)
+        mid_month = datetime.strptime(f"2020-{d.month:02d}-15", "%Y-%m-%d")
         dates.append(d)
 
         # numbers are per month. Hence divide by 30 and multiply by 7 to obtain rates per week\.
@@ -62,6 +80,52 @@ def get_import_frequency(country, cases, frequency, weeks=None, avg_cases_per_in
 
     return {"frequency":import_totals/totals, "dates":dates, "Re": Re_traj, "introductions":introductions}
 
+def get_import_frequency_province(cases, travel_volume, traveler_incidence, popsize, weeks=None, avg_cases_per_intro=1):
+    if weeks is None:
+        weeks = list(range(15,44))
+
+    imported_incidence = []
+    import_totals = [0]
+    totals = [0]
+    introductions = []
+    dates = []
+    Re_traj = [1]
+    for week in weeks:
+        d = CW_to_date(week)
+        prev_week = CW_to_date(week-1)
+        dates.append(d)
+
+        # here, travel volume is per week
+        travel_rate = travel_volume[cw]/popsize
+
+        imported_incidence.append(avg_cases_per_intro*travel_rate*traveler_incidence[week])
+
+        # rate of change not due to imports
+        Re = (cases[d]/popsize - imported_incidence[-1])/(cases[prev_week]/popsize)
+
+        Re_traj.append(Re)
+
+        introductions.append(imported_incidence[-1]*popsize/avg_cases_per_intro)
+        import_totals.append(import_totals[-1]*Re + imported_incidence[-1])
+        totals.append(cases[d]/popsize)
+
+    import_totals = np.array(import_totals)[1:]
+    totals = np.array(totals)[1:]
+
+    return {"frequency":import_totals/totals, "dates":dates, "Re": Re_traj, "introductions":introductions}
+
+
+def get_country_imports(roamers, case_data, travel_volume, country_code, spain_frequency, cases_by_cw_per_captia, weeks, popsize):
+    roam_time_series = get_roamers_time_series_total(roamers, country_code)
+    roaming_date_points = [datetime.strptime(f"2020-W{week}-1", '%G-W%V-%u') for week in roam_time_series.keys()]
+    roam_scale_factor = 1.0 #get_roaming_scale_factor(roamers, travel_volume, country_code)
+    travel = {k:v*roam_scale_factor for k,v in roam_time_series.items()}
+    traveler_incidence = {cw: spain_frequency_by_week.get(cw, 0)*get_roamer_province_average(cases_by_cw_per_captia[cw], roamers, cw, country_code)
+                          for cw in weeks}
+
+    return get_import_frequency_province(case_data, travel, traveler_incidence, popsize, weeks=weeks)
+
+
 def get_roaming_scale_factor(roamers, travel_volume, country):
     roam_time_series = get_roamers_time_series_total(roamers, country)
     total = []
@@ -74,33 +138,10 @@ def get_roaming_scale_factor(roamers, travel_volume, country):
 
     total = np.array(total)
     roam = np.array(roam)
-    return np.sum(total*roam)/np.sum(roam**2)
+    return np.sum(total*roam)/np.sum(roam**2)/30*7  # convert to per week
 
-if __name__ == '__main__':
-    cluster_data = pd.read_csv('../ncov_cluster/2021-01-14_cluster_data.tsv', index_col=0)
-    total_data =   pd.read_csv('../ncov_cluster/2021-01-14_total_data.tsv', index_col=0)
 
-    # Need to run `clusterDynamics.py` on 'S222' before doing this
-    # (can now run without printing files)
-    width = 1
-    smoothing = np.exp(-np.arange(-10,11)**2/2/width**2)
-    smoothing /= smoothing.sum()
-    spain_frequency = {k: c/tot for k, c, tot in zip(*non_zero_counts(cluster_data, total_data, "Spain", smoothing=smoothing))}
-
-    cases_by_cw, provinces = read_province_data()
-    roamers = read_roaming_data()
-
-    iso_to_country, country_to_iso = read_country_codes()
-
-    #fs=14
-    fs=12
-    fmt = 'pdf'
-    countries = ["Switzerland", "Spain", "United Kingdom", "Netherlands", "France",
-                 "Ireland", "Denmark", "Belgium", "Germany",
-                 "Sweden",
-                 "Italy",
-                 ]
-
+def import_figure(countries, roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita):
     fig, axs = plt.subplots(2,1, figsize=(6,7), sharex=True)
     for country in countries:
         if country=='Spain':
@@ -109,8 +150,9 @@ if __name__ == '__main__':
         roam_time_series = get_roamers_time_series_total(roamers, country_to_iso[country])
         roaming_date_points = [datetime.strptime(f"2020-W{week}-1", '%G-W%V-%u') for week in roam_time_series.keys()]
         roam_scale_factor = get_roaming_scale_factor(roamers, travel_volume[country], country_to_iso[country])
-        axs[0].plot(travel_volume[country].index, travel_volume[country]/popsizes[country]*100000, label=country,
-                c=country_styles[country]['c'], lw=2, ls=country_styles[country].get('ls', '-'))
+        print(country, roam_scale_factor)
+        # axs[0].plot(travel_volume[country].index, travel_volume[country]/popsizes[country]*100000, label=country,
+        #         c=country_styles[country]['c'], lw=2, ls=country_styles[country].get('ls', '-'))
         axs[0].plot(roaming_date_points, np.array(list(roam_time_series.values()))*roam_scale_factor/popsizes[country]*100000, label=country,
                 c=country_styles[country]['c'], lw=2, ls=country_styles[country].get('ls', '-'))
 
@@ -123,11 +165,14 @@ if __name__ == '__main__':
 
     case_data = load_case_data(countries)
     # fig = plt.figure()
-
+    weeks = range(15,50)
     for country in case_data:
         if country=='Spain':
             continue
-        res = get_import_frequency(country, case_data, spain_frequency)
+        res = get_country_imports(roamers, case_data[country], travel_volume[country], country_to_iso[country], spain_frequency,
+                                  cases_by_cw_per_capita, weeks, popsizes[country])
+
+        # res = get_import_frequency(country, case_data, spain_frequency)
         print(f"{country} -- total imports: {np.sum(res['introductions'])}")
         axs[1].plot(res['dates'], res['frequency'], label=country, c=country_styles[country]['c'], ls=country_styles[country].get('ls', '-'))
 
@@ -140,36 +185,86 @@ if __name__ == '__main__':
     axs[1].text(axs[1].get_xlim()[0]-30, axs[1].get_ylim()[1]+0.001, "B", size=22, weight="bold")
     plt.savefig(figure_path+f'import_model.{fmt}')
 
+def import_scaled(countries, roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita, cluster_data, total_data):
+    fig = plt.figure()
+    case_data = load_case_data(countries)
 
+    #for a simpler plot of most interesting countries use this:
+    for country in countries:
+        week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, country,smoothing=smoothing)
+        week_as_date, cluster_count, total_count = trim_last_data_point(week_as_date, cluster_count, total_count, frac=0.1, keep_count=10)
+        days = np.array([x.toordinal() for x in week_as_date])
+        cluster_freq = cluster_count/total_count
 
+        weeks = range(15,50)
+        plt.plot(week_as_date, cluster_freq,
+                marker='o',
+                color=country_styles[country]['c'],
+                linestyle=country_styles[country]['ls'])
+        if country=="Spain":
+            continue
 
-# fig = plt.figure()
+        res = get_country_imports(roamers, case_data[country], travel_volume[country], country_to_iso[country], spain_frequency,
+                                  cases_by_cw_per_capita, weeks, popsizes[country])
+        # res = get_import_frequency(country, case_data,spain_frequency)
+        obs = []
+        pred = []
+        for week in weeks:
+            d = CW_to_date(week)
+            if d in week_as_date and d in res['dates']:
+                obs.append(cluster_freq[week_as_date.index(d)])
+                pred.append(res["frequency"][res["dates"].index(d)])
+        obs = np.array(obs)
+        pred = np.array(pred)
+        scale_factor = np.sum(obs*pred)/np.sum(pred**2)
+        plt.plot(res["dates"], res["frequency"]*scale_factor,
+                c=country_styles[country]['c'], ls=country_styles[country]['ls'],
+                label = f"{country}, scale: {scale_factor:1.2f}")
 
-# #for a simpler plot of most interesting countries use this:
-# for country in countries:
-#     week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, country,smoothing=smoothing)
-#     week_as_date, cluster_count, total_count = trim_last_data_point(week_as_date, cluster_count, total_count, frac=0.1, keep_count=10)
-#     days = np.array([x.toordinal() for x in week_as_date])
-#     cluster_freq = cluster_count/total_count
+    plt.legend()
+    fig.autofmt_xdate(rotation=30)
+    plt.ylabel('frequency')
+    plt.tight_layout()
+    plt.savefig(figure_path+f'travel_scaled.{fmt}')
 
-#     plt.plot(week_as_date, cluster_freq,
-#             marker='o',
-#             color=country_styles[country]['c'],
-#             linestyle=country_styles[country]['ls'])
-#     if country=="Spain":
-#         continue
+if __name__ == '__main__':
+    cluster_data = pd.read_csv('../ncov_cluster/2021-01-14_cluster_data.tsv', index_col=0)
+    total_data =   pd.read_csv('../ncov_cluster/2021-01-14_total_data.tsv', index_col=0)
 
-#     res = get_import_frequency(country, case_data,spain_frequency)
-#     scale_factor = np.mean([cluster_freq[i] for i,d in enumerate(week_as_date) if d in res['dates']])/np.mean(res["frequency"])
-#     plt.plot(res["dates"], res["frequency"]*scale_factor,
-#             c=country_styles[country]['c'], ls=country_styles[country]['ls'],
-#             label = f"{country}, scale: {scale_factor:1.2f}")
+    # Need to run `clusterDynamics.py` on 'S222' before doing this
+    # (can now run without printing files)
+    width = 1
+    smoothing = np.exp(-np.arange(-10,11)**2/2/width**2)
+    smoothing /= smoothing.sum()
+    spain_frequency = {k: c/tot for k, c, tot in zip(*non_zero_counts(cluster_data, total_data, "Spain", smoothing=smoothing))}
+    spain_frequency_by_week = {k.isocalendar()[1]: v for k, v in spain_frequency.items()}
 
-# plt.legend()
-# fig.autofmt_xdate(rotation=30)
-# plt.ylabel('frequency')
-# plt.tight_layout()
-# plt.savefig(figure_path+f'travel_scaled.{fmt}')
+    cases_by_cw, province_codes = read_province_data()
+    provinces = get_province_population()
+    cases_by_cw_per_capita = {}
+    for cw in cases_by_cw:
+        cases_by_cw_per_capita[cw] = {}
+        for p in cases_by_cw[cw]:
+            cases_by_cw_per_capita[cw][p] = cases_by_cw[cw][p]/provinces[p]["population"]
+
+    fs=12
+    fmt = 'pdf'
+
+    roamers = read_roaming_data()
+
+    iso_to_country, country_to_iso = read_country_codes()
+
+    countries = ["Spain", "Switzerland", "France", "Germany", "Belgium", "Netherlands",
+                 "Ireland", "United Kingdom", "Denmark",  "Sweden"
+                 ]
+
+    import_figure(countries, roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita)
+
+    import_scaled(countries, roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita, cluster_data, total_data)
+
+    country_distribution = country_correlation(roamers, countries, country_to_iso, range(29,36), province_codes)
+    sns.clustermap(country_distribution.corr())
+
 
 # countries = ["Switzerland", "United Kingdom", "Netherlands", "France",
 #              "Ireland", "Denmark", "Belgium", "Germany", "Norway",
