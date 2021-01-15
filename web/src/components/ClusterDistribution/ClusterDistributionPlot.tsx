@@ -65,12 +65,19 @@ export function ClusterDistributionPlotComponent({ country_names, distribution }
           <LineChart margin={theme.plot.margin} data={data}>
             <XAxis
               dataKey="week"
+              type="number"
               tickFormatter={formatDate}
               domain={timeDomain}
               tick={theme.plot.tickStyle}
               allowDataOverflow
             />
-            <YAxis tickFormatter={formatProportion} domain={[0, 1]} tick={theme.plot.tickStyle} allowDataOverflow />
+            <YAxis
+              type="number"
+              tickFormatter={formatProportion}
+              domain={[0, 1]}
+              tick={theme.plot.tickStyle}
+              allowDataOverflow
+            />
             <Tooltip
               content={ClusterDistributionPlotTooltip}
               isAnimationActive={false}

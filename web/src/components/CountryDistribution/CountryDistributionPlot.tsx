@@ -44,12 +44,19 @@ export function CountryDistributionPlotComponent({ cluster_names, distribution }
           <AreaChart margin={theme.plot.margin} data={data} stackOffset="expand">
             <XAxis
               dataKey="week"
+              type="number"
               tickFormatter={formatDate}
               domain={timeDomain}
               tick={theme.plot.tickStyle}
               allowDataOverflow
             />
-            <YAxis tickFormatter={formatProportion} domain={[0, 1]} tick={theme.plot.tickStyle} allowDataOverflow />
+            <YAxis
+              type="number"
+              tickFormatter={formatProportion}
+              domain={[0, 1]}
+              tick={theme.plot.tickStyle}
+              allowDataOverflow
+            />
             <Tooltip
               content={CountryDistributionPlotTooltip}
               isAnimationActive={false}
