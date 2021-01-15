@@ -22,6 +22,10 @@ export function getClusterNames() {
   return getClusters().map((cluster) => cluster.display_name)
 }
 
+export function getClusterBuildNames() {
+  return getClusters().map((cluster) => cluster.build_name)
+}
+
 export function getClusterColor(clusterName: string) {
   const clusters = getClusters()
   const found = clusters.find(({ display_name }) => display_name === clusterName)

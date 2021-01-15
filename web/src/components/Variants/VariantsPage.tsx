@@ -1,17 +1,20 @@
 /* eslint-disable camelcase */
 import React, { useMemo, useState } from 'react'
-import { LinkExternal } from 'src/components/Link/LinkExternal'
-import { theme } from 'src/theme'
 
+import { connect } from 'react-redux'
+import { replace } from 'connected-next-router'
 import styled from 'styled-components'
 import { Col, Row, Button } from 'reactstrap'
 import dynamic from 'next/dynamic'
 
+import { theme } from 'src/theme'
+import { ClusterDatum, getClusters } from 'src/io/getClusters'
+import { LinkExternal } from 'src/components/Link/LinkExternal'
+import { Layout } from 'src/components/Layout/Layout'
+import { Editable } from 'src/components/Common/Editable'
+
 import { ReactComponent as NextstrainIconBase } from 'src/assets/images/nextstrain_logo.svg'
 
-import { Layout } from 'src/components/Layout/Layout'
-import { ClusterDatum, getClusters } from 'src/io/getClusters'
-import { Editable } from 'src/components/Common/Editable'
 import { PlotCard } from './PlotCard'
 import { ProteinCard } from './ProteinCard'
 import { ClusterContentLoading } from './ClusterContentLoading'
@@ -108,10 +111,27 @@ const getClusterContent = (cluster: string) =>
 
 const clusters = getClusters()
 
-export function VariantsPage() {
-  const [currentCluster, setCurrentCluster] = useState(clusters[0])
+const mapStateToProps = null
+
+const mapDispatchToProps = {
+  routerReplace: replace,
+}
+
+export const VariantsPage = connect(mapStateToProps, mapDispatchToProps)(VariantsPageDisconnected)
+
+export interface VariantsPageBaseProps {
+  defaultCluster: ClusterDatum
+}
+
+export interface VariantsPageProps extends VariantsPageBaseProps {
+  routerReplace(url: string): void
+}
+
+export function VariantsPageDisconnected({ defaultCluster, routerReplace }: VariantsPageProps) {
+  const [currentCluster, setCurrentCluster] = useState(defaultCluster)
 
   const handleClusterButtonClick = (cluster: ClusterDatum) => () => {
+    routerReplace(`/variants/${cluster.build_name}`)
     setCurrentCluster(cluster)
   }
 
