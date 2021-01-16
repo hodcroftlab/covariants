@@ -97,6 +97,21 @@ def read_province_data():
 
     return cases_by_cw, provinces
 
+def get_Spain_shapes(province_size):
+    spain = geopandas.read_file('../geo/SECC_CPV_E_20111101_01_R_INE.shp')
+    provinces_geo = spain.NPRO.unique()
+
+    shapes = []
+    codes = []
+    for pr in provinces_geo:
+        codes.append(province_size[pr]["code"])
+        if province_size[pr]["code"] in ['TF', 'GC']:
+            tmp_shape = spain[spain.NPRO==pr].translate(xoff=17e5,yoff=8e5).unary_union
+        else:
+            tmp_shape = spain[spain.NPRO==pr].unary_union
+        shapes.append(tmp_shape)
+
+    return {"shapes":shapes, "names":provinces_geo, "codes":codes}
 
 if __name__=="__main__":
 
@@ -106,21 +121,9 @@ if __name__=="__main__":
     roaming_totals = roamers.groupby(level=[0]).sum()
     plt.plot(roaming_totals.index,roaming_totals.num_roamers)
 
-    spain = geopandas.read_file('../geo/SECC_CPV_E_20111101_01_R_INE.shp')
-    provinces_geo = spain.NPRO.unique()
+    geo = get_Spain_shapes()
 
-    shapes = []
-    codes = []
-    for pr in provinces_geo:
-        codes.append(province_size[pr]["code"])
-        if province_size[pr]["code"] in ['TF', 'GC']:
-            tmp_shape = spain[spain.NPRO==pr].translate(xoff=19e5,yoff=8e5).unary_union
-        else:
-            tmp_shape = spain[spain.NPRO==pr].unary_union
-        shapes.append(tmp_shape)
-
-
-    spain_provinces = geopandas.GeoDataFrame({"geometry": shapes, "name":provinces_geo,
+    spain_provinces = geopandas.GeoDataFrame({"geometry": geo["shapes"], "name": geo["provinces_geo"],
                                               "cases":[cases_by_cw[cw].get(c,0) for c in codes],
                                               "cases_per_capita":[cases_by_cw[cw].get(c,0)/province_size[c]["population"] for c in codes]
                                              }, index=codes)
