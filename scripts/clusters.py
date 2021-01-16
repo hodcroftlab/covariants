@@ -117,7 +117,7 @@ clusters = {
 #            "country_info":[], 'col': "#db4439", "display_name": "B.1.1.7 (501Y.V1)", 
 #            "build_name":"S.N501uk", 'url_params': ""},  #no europe filter
 
-
+            #"S677": {'snps': [23592,26774,29401], 'cluster_data': [], 'build_name': "S.677"},
 
             #"S69": {'snps': [21766], 'cluster_data': [], 'build_name': "S.69"},
             #"S692": {'snps': [23635], 'cluster_data': [], 'build_name': "S.692"},
