@@ -1,76 +1,12 @@
+import { get } from 'lodash'
 import React from 'react'
 
-import { get } from 'lodash'
+import type { Mutation, MutationColors } from 'src/types'
+import { theme } from 'src/theme'
+import { AMINOACID_COLORS, GENE_COLORS, NUCLEOTIDE_COLORS } from 'src/colors'
 import styled from 'styled-components'
 
-import type { MutationColors, Mutation } from 'src/types'
-import { theme } from 'src/theme'
-
 const DEFAULT_COLOR = theme.gray700
-
-export const GENE_COLORS: Record<string, string> = {
-  E: '#60AA9E',
-  M: '#D9AD3D',
-  N: '#5097BA',
-  ORF10: '#E67030',
-  ORF14: '#8EBC66',
-  ORF1a: '#E59637',
-  ORF1b: '#AABD52',
-  ORF3a: '#FF9B80',
-  ORF6: '#5097BA',
-  ORF7a: '#C4B945',
-  ORF7b: '#75B681',
-  ORF8: '#60AA9E',
-  ORF9b: '#D9AD3D',
-  S: '#DF4327',
-}
-
-export const NUCLEOTIDE_COLORS: Record<string, string> = {
-  'A': '#47FF19',
-  'T': '#61A3F3',
-  'G': '#FFD63F',
-  'C': '#F68272',
-  'U': '#8A89FF',
-  'R': '#FFFE80',
-  'Y': '#E180FF',
-  'S': '#FF9B80',
-  'W': '#80FFF2',
-  'M': '#CE8834',
-  'K': '#90B82C',
-  'D': '#C7FFB9',
-  'B': '#F8C1C0',
-  'V': '#FFE3B9',
-  'H': '#BFD8F9',
-  'N': '#222222',
-  'X': '#222222',
-  '-': '#222222',
-}
-
-export const AMINOACID_COLORS: Record<string, string> = {
-  A: '#80A0F0',
-  R: '#F01505',
-  N: '#00FF00',
-  D: '#C048C0',
-  C: '#F08080',
-  Q: '#00FF00',
-  E: '#C048C0',
-  G: '#F09048',
-  H: '#15A4A4',
-  I: '#80A0F0',
-  L: '#80A0F0',
-  K: '#F01505',
-  M: '#80A0F0',
-  F: '#80A0F0',
-  P: '#FFFF00',
-  S: '#00FF00',
-  T: '#00FF00',
-  W: '#80A0F0',
-  Y: '#15A4A4',
-  V: '#80A0F0',
-  B: '#222222',
-  X: '#222222',
-  Z: '#222222',
-}
 
 export const MutationBadgeBox = styled.div`
   display: inline-block;
