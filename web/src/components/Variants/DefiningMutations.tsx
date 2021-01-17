@@ -20,47 +20,51 @@ const H3 = styled.h3`
   font-size: 1.33rem;
 `
 
+export function NoMutations() {
+  return <p>{'None. See notes below'}</p>
+}
+
 export interface DefiningMutationsProps {
   cluster: ClusterDatum
 }
 
 export function DefiningMutations({ cluster }: DefiningMutationsProps) {
   if (!cluster?.mutations) {
-    return <p>{'None. See notes below'}</p>
+    return <NoMutations />
   }
 
-  const hasNonsynomous = cluster.mutations?.nonsynonymous?.length && cluster.mutations?.nonsynonymous?.length > 0
-  const hasSynomous = cluster.mutations?.synonymous?.length && cluster.mutations?.synonymous?.length > 0
+  const hasNonsynonymous = cluster.mutations?.nonsynonymous?.length && cluster.mutations?.nonsynonymous?.length > 0
+  const hasSynonymous = cluster.mutations?.synonymous?.length && cluster.mutations?.synonymous?.length > 0
 
   return (
     <Row noGutters>
       <Col className="mx-2">
         <H3>{'Nonsynonymous:'}</H3>
-        {hasNonsynomous ? (
+        {hasNonsynonymous ? (
           <Ul>
             {cluster.mutations?.nonsynonymous?.map((mutation) => (
-              <Li>
+              <Li key={`${mutation?.gene ?? ''}:${mutation.left}${mutation.pos}${mutation.right}`}>
                 <AminoacidMutationBadge mutation={mutation} />
               </Li>
             ))}
           </Ul>
         ) : (
-          <p>{'None. See notes below'}</p>
+          <NoMutations />
         )}
       </Col>
 
       <Col className="mx-2">
         <H3>{'Synonymous:'}</H3>
-        {hasSynomous ? (
+        {hasSynonymous ? (
           <Ul>
             {cluster.mutations?.synonymous?.map((mutation) => (
-              <Li>
+              <Li key={`${mutation.left}${mutation.pos}${mutation.right}`}>
                 <NucleotideMutationBadge mutation={mutation} />
               </Li>
             ))}
           </Ul>
         ) : (
-          <p>{'None. See notes below'}</p>
+          <NoMutations />
         )}
       </Col>
     </Row>

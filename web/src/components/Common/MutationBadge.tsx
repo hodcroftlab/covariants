@@ -8,7 +8,7 @@ import { theme } from 'src/theme'
 
 const DEFAULT_COLOR = theme.gray700
 
-export const GENE_COLORS = {
+export const GENE_COLORS: Record<string, string> = {
   E: '#60AA9E',
   M: '#D9AD3D',
   N: '#5097BA',
@@ -25,7 +25,7 @@ export const GENE_COLORS = {
   S: '#DF4327',
 }
 
-export const NUCLEOTIDE_COLORS = {
+export const NUCLEOTIDE_COLORS: Record<string, string> = {
   'A': '#47FF19',
   'T': '#61A3F3',
   'G': '#FFD63F',
@@ -46,7 +46,7 @@ export const NUCLEOTIDE_COLORS = {
   '-': '#222222',
 }
 
-export const AMINOACID_COLORS = {
+export const AMINOACID_COLORS: Record<string, string> = {
   A: '#80A0F0',
   R: '#F01505',
   N: '#00FF00',
