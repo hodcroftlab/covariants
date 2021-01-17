@@ -116,6 +116,12 @@ export function ClusterDistributionPage() {
     <Layout wide>
       <Row noGutters>
         <Col>
+          <h1 className="text-center">{'Overview of Variants/Mutations'}</h1>
+        </Col>
+      </Row>
+
+      <Row noGutters>
+        <Col>
           <Editable githubUrl="blob/master/content/PerClusterIntro.md">
             <PerClusterIntro />
           </Editable>

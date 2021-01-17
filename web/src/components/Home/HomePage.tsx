@@ -39,6 +39,12 @@ export function HomePageDisconnected({ routerReplace }: HomePagePageProps) {
     <Layout>
       <VariantsPageContainer fluid>
         <Row noGutters>
+          <Col>
+            <h1 className="text-center">{'CoVariants'}</h1>
+          </Col>
+        </Row>
+
+        <Row noGutters>
           <Col lg={3} xl={2}>
             <ClusterButtonPanel clusters={clusters} switchCluster={switchCluster} />
           </Col>

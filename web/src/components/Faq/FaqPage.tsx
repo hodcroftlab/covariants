@@ -13,7 +13,7 @@ export function FaqPage() {
       <Container>
         <Row noGutters>
           <Col>
-            <h1>{'Frequently asked questions'}</h1>
+            <h1 className="text-center">{'Frequently asked questions'}</h1>
           </Col>
         </Row>
 

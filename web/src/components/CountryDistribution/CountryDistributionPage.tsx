@@ -119,6 +119,12 @@ export function CountryDistributionPage() {
     <Layout wide>
       <Row noGutters>
         <Col>
+          <h1 className="text-center">{'Overview of Variants in Countries'}</h1>
+        </Col>
+      </Row>
+
+      <Row noGutters>
+        <Col>
           <Editable githubUrl="blob/master/content/PerCountryIntro.md">
             <PerCountryIntro />
           </Editable>

@@ -79,23 +79,25 @@ export function VariantsPageDisconnected({ defaultCluster, routerReplace }: Vari
     <Layout>
       <VariantsPageContainer fluid>
         <Row noGutters>
+          <Col>
+            <h1 className="text-center">
+              <ClusterNameTitle>{`Variant: ${currentCluster.display_name}`}</ClusterNameTitle>
+              <span className="ml-2">
+                {currentCluster.display_name2 && (
+                  <ClusterNameSubtitle>{`(${currentCluster.display_name2})`}</ClusterNameSubtitle>
+                )}
+              </span>
+            </h1>
+          </Col>
+        </Row>
+
+        <Row noGutters>
           <Col lg={3} xl={2}>
             <ClusterButtonPanel clusters={clusters} currentCluster={currentCluster} switchCluster={switchCluster} />
           </Col>
 
           <Col lg={9} xl={10}>
             <EditableClusterContent githubUrl={`blob/master/content/clusters/${currentCluster.display_name}.md`}>
-              <Row noGutters className="mb-3">
-                <Col>
-                  <ClusterNameTitle>{`${currentCluster.display_name}`}</ClusterNameTitle>
-                  <span className="ml-2">
-                    {currentCluster.display_name2 && (
-                      <ClusterNameSubtitle>{`(${currentCluster.display_name2})`}</ClusterNameSubtitle>
-                    )}
-                  </span>
-                </Col>
-              </Row>
-
               <Row noGutters className="mb-3">
                 <Col className="d-flex w-100">
                   <LinkExternal href={currentCluster.build_url} icon={<NextstrainIcon />} color={theme.link.dim.color}>
