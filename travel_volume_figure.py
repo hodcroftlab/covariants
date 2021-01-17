@@ -150,7 +150,7 @@ def import_figure(countries, roamers, country_to_iso, spain_frequency, cases_by_
         roam_time_series = get_roamers_time_series_total(roamers, country_to_iso[country])
         roaming_date_points = [datetime.strptime(f"2020-W{week}-1", '%G-W%V-%u') for week in roam_time_series.keys()]
         roam_scale_factor = get_roaming_scale_factor(roamers, travel_volume[country], country_to_iso[country])
-        print(country, roam_scale_factor)
+        print(f"roaming scale factor {country}: {roam_scale_factor}")
         # axs[0].plot(travel_volume[country].index, travel_volume[country]/popsizes[country]*100000, label=country,
         #         c=country_styles[country]['c'], lw=2, ls=country_styles[country].get('ls', '-'))
         axs[0].plot(roaming_date_points, np.array(list(roam_time_series.values()))*roam_scale_factor/popsizes[country]*100000, label=country,

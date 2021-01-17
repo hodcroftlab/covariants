@@ -93,7 +93,7 @@ def read_province_data():
                 province_data = case_data[case_data.provincia_iso==province].sort_values(by='date')
                 cases_by_cw[cw][province_size[province]["code"]] = np.sum(province_data[province_data.CW==cw].num_casos)
             except:
-                print("province", province)
+                print("province error:", province)
 
     return cases_by_cw, provinces
 
