@@ -687,10 +687,7 @@ for clus in clus_to_run:
                 json.dump(json_output[clus_display], fh)
 
 
-## Write out plotting information
-#write out instructions
-
-
-if print_files:
+## Write out plotting information - only if all clusters have run
+if print_files and "all" in clus_answer:
     with open(tables_path+f'perVariant_countries_toPlot.json', 'w') as fh:
         json.dump(countries_plotted, fh)
