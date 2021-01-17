@@ -51,14 +51,14 @@ export interface LayoutProps {
 export function Layout({ children, wide = false }: PropsWithChildren<LayoutProps>) {
   return (
     <>
-      <Container fluid="md">
+      <Container fluid>
         <HeaderRow noGutters>
           <HeaderCol>
             <NavigationBar />
           </HeaderCol>
         </HeaderRow>
 
-        <MainContainer fluid={wide ? true : 'md'}>
+        <MainContainer fluid>
           <MainRow noGutters>
             <MainCol>{children}</MainCol>
           </MainRow>

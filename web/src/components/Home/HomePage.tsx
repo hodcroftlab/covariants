@@ -3,6 +3,7 @@ import React, { useCallback } from 'react'
 import { replace } from 'connected-next-router'
 import { connect } from 'react-redux'
 import { Col, Row } from 'reactstrap'
+import { VariantsPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 
 import { ClusterDatum, getClusters } from 'src/io/getClusters'
 
@@ -36,19 +37,19 @@ export function HomePageDisconnected({ routerReplace }: HomePagePageProps) {
 
   return (
     <Layout>
-      <Row noGutters>
-        <Col>
-          <ClusterButtonPanel clusters={clusters} switchCluster={switchCluster} />
-        </Col>
-      </Row>
+      <VariantsPageContainer fluid>
+        <Row noGutters>
+          <Col lg={3} xl={2}>
+            <ClusterButtonPanel clusters={clusters} switchCluster={switchCluster} />
+          </Col>
 
-      <Row noGutters>
-        <Col>
-          <Editable githubUrl="blob/master/content/Home.md">
-            <HomeContent />
-          </Editable>
-        </Col>
-      </Row>
+          <Col lg={9} xl={10}>
+            <Editable githubUrl="blob/master/content/Home.md">
+              <HomeContent />
+            </Editable>
+          </Col>
+        </Row>
+      </VariantsPageContainer>
     </Layout>
   )
 }

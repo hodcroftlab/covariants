@@ -40,6 +40,11 @@ body {
   height: 100%;
 }
 
+.container,
+.container-fluid {
+  padding: 0;
+}
+
 .main-container {
   height: 100%;
   background-color: $body-bg;

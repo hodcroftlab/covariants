@@ -13,14 +13,15 @@ const ClustersRow = styled(Row)`
 export interface ClusterPanelProps {
   clusters: ClusterDatum[]
   currentCluster?: ClusterDatum
+  className?: string
   switchCluster?(cluster: ClusterDatum): void
 }
 
-export function ClusterButtonPanel({ clusters, currentCluster, switchCluster }: ClusterPanelProps) {
+export function ClusterButtonPanel({ clusters, currentCluster, switchCluster, className }: ClusterPanelProps) {
   const handleSwitchCluster = useCallback((cluster: ClusterDatum) => () => switchCluster?.(cluster), [switchCluster])
 
   return (
-    <ClustersRow noGutters>
+    <ClustersRow noGutters className={className}>
       {clusters.map((cluster, index) => (
         <ClusterButton
           key={cluster.display_name}

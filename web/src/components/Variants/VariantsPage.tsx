@@ -12,6 +12,7 @@ import { ClusterDatum, getClusters } from 'src/io/getClusters'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { Layout } from 'src/components/Layout/Layout'
 import { Editable } from 'src/components/Common/Editable'
+import { VariantsPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 
 import { ReactComponent as NextstrainIconBase } from 'src/assets/images/nextstrain_logo.svg'
 
@@ -76,50 +77,54 @@ export function VariantsPageDisconnected({ defaultCluster, routerReplace }: Vari
 
   return (
     <Layout>
-      <Row noGutters>
-        <Col>
-          <ClusterButtonPanel clusters={clusters} currentCluster={currentCluster} switchCluster={switchCluster} />
+      <VariantsPageContainer fluid>
+        <Row noGutters>
+          <Col lg={3} xl={2}>
+            <ClusterButtonPanel clusters={clusters} currentCluster={currentCluster} switchCluster={switchCluster} />
+          </Col>
 
-          <EditableClusterContent githubUrl={`blob/master/content/clusters/${currentCluster.display_name}.md`}>
-            <Row noGutters className="mb-3">
-              <Col>
-                <ClusterNameTitle>{`${currentCluster.display_name}`}</ClusterNameTitle>
-                <span className="ml-2">
-                  {currentCluster.display_name2 && (
-                    <ClusterNameSubtitle>{`(${currentCluster.display_name2})`}</ClusterNameSubtitle>
-                  )}
-                </span>
-              </Col>
-            </Row>
+          <Col lg={9} xl={10}>
+            <EditableClusterContent githubUrl={`blob/master/content/clusters/${currentCluster.display_name}.md`}>
+              <Row noGutters className="mb-3">
+                <Col>
+                  <ClusterNameTitle>{`${currentCluster.display_name}`}</ClusterNameTitle>
+                  <span className="ml-2">
+                    {currentCluster.display_name2 && (
+                      <ClusterNameSubtitle>{`(${currentCluster.display_name2})`}</ClusterNameSubtitle>
+                    )}
+                  </span>
+                </Col>
+              </Row>
 
-            <Row noGutters className="mb-3">
-              <Col className="d-flex w-100">
-                <LinkExternal href={currentCluster.build_url} icon={<NextstrainIcon />} color={theme.link.dim.color}>
-                  {`Dedicated ${currentCluster.display_name} Nextstrain build`}
-                </LinkExternal>
-              </Col>
-            </Row>
+              <Row noGutters className="mb-3">
+                <Col className="d-flex w-100">
+                  <LinkExternal href={currentCluster.build_url} icon={<NextstrainIcon />} color={theme.link.dim.color}>
+                    {`Dedicated ${currentCluster.display_name} Nextstrain build`}
+                  </LinkExternal>
+                </Col>
+              </Row>
 
-            <Row noGutters className="mb-2">
-              <Col>
-                <ClusterContent />
-              </Col>
-            </Row>
+              <Row noGutters className="mb-2">
+                <Col>
+                  <ClusterContent />
+                </Col>
+              </Row>
 
-            <Row noGutters className="mb-2">
-              <Col>
-                <ProteinCard cluster={currentCluster} />
-              </Col>
-            </Row>
+              <Row noGutters className="mb-2">
+                <Col>
+                  <ProteinCard cluster={currentCluster} />
+                </Col>
+              </Row>
 
-            <Row noGutters className="mb-2">
-              <Col>
-                <PlotCard cluster={currentCluster} />
-              </Col>
-            </Row>
-          </EditableClusterContent>
-        </Col>
-      </Row>
+              <Row noGutters className="mb-2">
+                <Col>
+                  <PlotCard cluster={currentCluster} />
+                </Col>
+              </Row>
+            </EditableClusterContent>
+          </Col>
+        </Row>
+      </VariantsPageContainer>
     </Layout>
   )
 }
