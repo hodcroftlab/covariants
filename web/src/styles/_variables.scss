@@ -1,0 +1,118 @@
+@use "sass:map";
+
+// Some of the things are borrowed from bootswatch Materia theme
+// https://github.com/thomaspark/bootswatch
+
+/* stylelint-disable primer/no-unused-vars */
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 2000px,
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1950px,
+);
+
+$width-xs: map.get($grid-breakpoints, 'xs');
+$width-sm: map.get($grid-breakpoints, 'sm');
+$width-md: map.get($grid-breakpoints, 'md');
+$width-lg: map.get($grid-breakpoints, 'lg');
+$width-xl: map.get($grid-breakpoints, 'xl');
+$width-xxl: map.get($grid-breakpoints, 'xxl');
+
+$font-family-sans-serif: 'Open Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial',
+  'system-ui', 'system-sans', 'sans-serif';
+$font-family-monospace: 'Roboto Mono', 'system-mono';
+$font-family-default: $font-family-sans-serif;
+$font-family-base: $font-family-default;
+$font-size-base: 1rem;
+
+$white: #ffffff;
+$gray-100: #f8f9fa; // stylelint-disable-line plugin/stylelint-no-indistinguishable-colors
+$gray-150: #eff1f3;
+$gray-200: #e9ecef;
+$gray-250: #e5e8ea;
+$gray-300: #dee2e6; // stylelint-disable-line plugin/stylelint-no-indistinguishable-colors
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #7b838a;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000;
+
+$blue: #2196f3;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #e83e8c;
+$red: #e51c23;
+$orange: #fd7e14;
+$yellow: #ff9800;
+$green: #4caf50;
+$teal: #20c997;
+$cyan: #9c27b0;
+
+$primary: $blue;
+$secondary: $gray-100;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$light: $white; // stylelint-disable-line plugin/stylelint-no-indistinguishable-colors
+$dark: $gray-700;
+
+$yiq-contrasted-threshold: 170;
+
+$enable-gradients: true;
+$enable-print-styles: true;
+$enable-rounded: true;
+$enable-shadows: true;
+
+$body-color: $gray-700;
+$body-bg: $white;
+$code-color: $body-color;
+$code-font-size: $font-size-base * 0.9;
+$blockquote-font-size: $font-size-base * 0.9;
+$blockquote-bg-color: #fff7df;
+
+$navbar-dark-color: rgba($white, 0.75); // stylelint-disable-line plugin/stylelint-no-indistinguishable-colors
+$navbar-dark-hover-color: rgba($white, 1); // stylelint-disable-line plugin/stylelint-no-indistinguishable-colors
+
+$navbar-light-hover-color: rgba($black, 0.9); // stylelint-disable-line plugin/stylelint-no-indistinguishable-colors
+
+$alert-border-width: 0;
+$progress-height: 0.5rem;
+
+$link-color: $blue;
+$link-decoration: none;
+
+$navbar-padding-y: unset;
+
+$input-padding-y: 0.5rem;
+$input-placeholder-color: $gray-500;
+
+$nav-link-disabled-color: $gray-500;
+
+$nav-tabs-border-color: transparent;
+
+$card-border-width: 0;
+$card-border-color: transparent;
+
+$tooltip-bg: $gray-700;
+
+$modal-content-border-color: transparent;
+
+$progress-height: 0.375rem;
+$progress-border-radius: 0;
+
+$close-font-size: 2.125rem;
+$close-font-weight: 300;

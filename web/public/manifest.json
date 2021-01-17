@@ -1,0 +1,22 @@
+{
+  "short_name": "CoVariants",
+  "name": "CoVariants",
+  "description": "SARS-CoV-2 Mutations and Variants of Interest",
+  "theme_color": "#603cba",
+  "background_color": "#603cba",
+  "start_url": "/?source=pwa",
+  "display": "standalone",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

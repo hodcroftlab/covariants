@@ -1,0 +1,16 @@
+.build
+.cache
+.github
+.ignore
+.reports
+/acknowledgements
+/cluster_tables
+/compare_lineages
+/country_case_data
+/figures
+/other_figures
+/overall_trends_figures
+/plasmid_data
+/travel_data
+docs
+node_modules

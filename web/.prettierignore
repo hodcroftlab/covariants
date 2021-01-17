@@ -1,0 +1,17 @@
+*.lock
+*.log
+\.build
+\.cache
+\.editorconfig
+\.env
+\.git
+\.gitignore
+\.idea
+\.ignore
+\.prettierignore
+\.reports
+\.vscode
+node_modules
+src/assets/data
+tools/augur_profile
+/data
