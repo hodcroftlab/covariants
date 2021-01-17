@@ -1,4 +1,6 @@
 /* eslint-disable camelcase */
+import type { Mutation } from 'src/types'
+
 import clustersJson from 'src/../data/clusters.json'
 
 const CLUSTER_COLOR_UNKNOWN = '#555555' as const
@@ -12,6 +14,10 @@ export type ClusterDatum = {
   display_name: string
   display_name2?: string
   snps: number[]
+  mutations?: {
+    nonsynonymous?: Mutation[]
+    synonymous?: Mutation[]
+  }
 }
 
 export function getClusters(): ClusterDatum[] {

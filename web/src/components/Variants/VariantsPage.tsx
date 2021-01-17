@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { replace } from 'connected-next-router'
 import { ClusterButtonPanel } from 'src/components/ClusterButtonPanel/ClusterButtonPanel'
+import { DefiningMutations } from 'src/components/Variants/DefiningMutations'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import dynamic from 'next/dynamic'
@@ -103,6 +104,21 @@ export function VariantsPageDisconnected({ defaultCluster, routerReplace }: Vari
                   <LinkExternal href={currentCluster.build_url} icon={<NextstrainIcon />} color={theme.link.dim.color}>
                     {`Dedicated ${currentCluster.display_name} Nextstrain build`}
                   </LinkExternal>
+                </Col>
+              </Row>
+
+              <Row noGutters>
+                <Col>
+                  <Row noGutters>
+                    <Col>
+                      <h2>{'Defining mutations'}</h2>
+                    </Col>
+                  </Row>
+                  <Row noGutters>
+                    <Col>
+                      <DefiningMutations cluster={currentCluster} />
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
 
