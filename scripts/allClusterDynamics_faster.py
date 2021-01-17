@@ -405,12 +405,13 @@ for clus in clus_to_run:
 
 
 
+
 ######################################################################################################
 ##################################
-#### BEGINNING OF PLOTTING
+#### PREPARING FOR OF PLOTTING
 
 for clus in clus_to_run:
-    print(f"\nPlotting cluster {clus}\n")
+    print(f"\nPreparing to plot cluster {clus}\n")
 
     clus_data = clusters[clus]
     wanted_seqs = clus_data['wanted_seqs']
@@ -468,40 +469,9 @@ for clus in clus_to_run:
         if print_acks:
             acknowledgement_table = temp_meta.loc[:,['strain', 'gisaid_epi_isl', 'originating_lab', 'submitting_lab', 'authors']]
 
-
-    #    for ri, row in temp_meta.iterrows():
-    #        dat = row.date
-    #        dt = datetime.datetime.strptime(dat, '%Y-%m-%d')
-    #        wk = dt.isocalendar()[1] #returns ISO calendar week
-    #        if wk >= 20:
-    #            counts_by_week[wk]+=1
-    #            if print_acks:
-    #                acknowledgement_table.append([row.strain, row.gisaid_epi_isl, row.originating_lab, row.submitting_lab, row.authors])
-
-
-        #after week 20
-    #    for ri, row in temp_meta.iterrows():
-    #        dat = row.date
-    #        if len(dat) is 10 and "-XX" not in dat: # only take those that have real dates
-    #            dt = datetime.datetime.strptime(dat, '%Y-%m-%d')
-    #            #exclude sequences with identical dates & underdiverged
-    #            if coun == "Ireland" and dat == "2020-09-22":
-    #                continue
-    #            # wk = dt.timetuple().tm_yday//7  # old method
-    #            wk = dt.isocalendar()[1] #returns ISO calendar week
-    #            if wk >= 20:
-    #                counts_by_week[wk]+=1
-    #                if print_acks:
-    #                    acknowledgement_table.append([row.strain, row.gisaid_epi_isl, row.originating_lab, row.submitting_lab, row.authors])
-
         
-
     if print_acks:
         acknowledgement_table.to_csv(f'{acknowledgement_folder}{clus}_acknowledgement_table.tsv', sep="\t")
-        #with open(f'{acknowledgement_folder}{clus}_acknowledgement_table.tsv', 'w') as fh:
-        #    fh.write('#strain\tEPI_ISOLATE_ID\tOriginating lab\tsubmitting lab\tauthors\n')
-        #    for d in acknowledgement_table:
-        #        fh.write('\t'.join(d)+'\n')
 
 
     # Convert into dataframe
@@ -512,6 +482,72 @@ for clus in clus_to_run:
     # sort
     total_data=total_data.sort_index()
     cluster_data=cluster_data.sort_index()
+
+
+######################################################################################################
+##################################
+#### FIGURE OUT WHAT TO PLOT
+
+cutoff_num_seqs = 100
+
+
+clusters_tww = []
+for clus in clus_to_run:
+    c_i = clusters[clus]['country_info']
+    c_i[c_i['num_seqs'] > cutoff_num_seqs]
+    print(f"Countries with >20 seqs in cluster {clus}:")
+    print("\t", ", ".join(c_i[c_i['num_seqs'] > 10].index))
+    if len(c_i[c_i['num_seqs'] > 10]) > 0 and clus != "DanishCluster":
+        clusters_tww.append(clus)
+    print("")
+
+
+#fix cluster order in a list so it's reliable
+clus_keys = [x for x in clus_to_run if x in clusters_tww]
+
+my_df = [clusters[x]["country_info"] for x in clus_keys]
+all_num_seqs = pd.concat([x.loc[:,"num_seqs"] for x in my_df],axis=1)
+all_num_seqs.columns = clus_keys
+
+has10 = []
+has10_countries = []
+for index, row in all_num_seqs.iterrows():
+    if any(row > cutoff_num_seqs) and index not in uk_countries:
+        has10.append("*")
+        has10_countries.append(index)
+    else:
+        has10.append("")
+
+all_num_seqs["has_20"] = has10
+
+print("Countries who have more than 20 in any cluster:", has10_countries, "\n")
+print(all_num_seqs)
+
+countries_to_plot_final = all_num_seqs[all_num_seqs.has_20 == "*"].index
+
+
+
+######################################################################################################
+##################################
+#### BEGINNING OF PLOTTING
+
+
+countries_plotted = {}
+
+for clus in clus_to_run:
+
+    print(f"\nPlotting cluster {clus}\n")
+
+    clus_data = clusters[clus]
+    wanted_seqs = clus_data['wanted_seqs']
+    clus_display = clus_data['build_name']
+    cluster_meta = clus_data['cluster_meta']
+    observed_countries = clus_data['observed_countries']
+    country_dates = clus_data['country_dates']
+    country_info_df = clus_data['country_info_ordered']
+    cluster_data =  clus_data['cluster_data']
+    total_data = clus_data['total_data'] 
+
     width = 1
     smoothing = np.exp(-np.arange(-10,10)**2/2/width**2)
     smoothing /= smoothing.sum()
@@ -522,17 +558,20 @@ for clus in clus_to_run:
     #if clus == "S222":
     #    min_to_plot = 200
 
-    countries_to_plot = country_info_df[country_info_df.num_seqs > min_to_plot].index
+    countries_to_plot_min = country_info_df[country_info_df.num_seqs > min_to_plot].index
+    
+    countries_to_plot = [x for x in country_info_df[country_info_df.num_seqs > min_to_plot].index if x in countries_to_plot_final]
 
-    if len(countries_to_plot) > len(colors):
+
+    if len(countries_to_plot_min) > len(colors):
         print("\nWARNING!! NOT ENOUGH COLORS FOR PLOTTING!")
 
     if clus=="S222":
         country_styles_custom = country_styles
     else:
-        unused_countries = [x for x in country_list if x not in countries_to_plot]
+        unused_countries = [x for x in country_list if x not in countries_to_plot_min]
         country_styles_custom = {}
-        for x in countries_to_plot:
+        for x in countries_to_plot_min:
             if x in country_styles.keys():
                 country_styles_custom[x] = country_styles[x]
             else:
@@ -587,7 +626,7 @@ for clus in clus_to_run:
             ax1.get_yaxis().set_visible(False)
 
         #for a simpler plot of most interesting countries use this:
-        for coun in [x for x in countries_to_plot]:
+        for coun in [x for x in countries_to_plot_min]:
             week_as_date, cluster_count, total_count, unsmoothed_cluster_count, unsmoothed_total_count = non_zero_counts(cluster_data, total_data, coun, smoothing=smoothing)
             # remove last data point if that point as less than frac sequences compared to the previous count
             week_as_date, cluster_count, total_count  = trim_last_data_point(week_as_date, cluster_count, total_count, frac=0.1, keep_count=10)
@@ -599,12 +638,16 @@ for clus in clus_to_run:
             json_output[clus_display][coun]["unsmoothed_cluster_sequences"] = [int(x) for x in unsmoothed_cluster_count]
             json_output[clus_display][coun]["unsmoothed_total_sequences"] = [int(x) for x in unsmoothed_total_count]
 
-            ax3.plot(week_as_date, cluster_count/total_count,
-                    color=country_styles_custom[coun]['c'],
-                    linestyle=country_styles_custom[coun]['ls'], label=coun)
-            ax3.scatter(week_as_date, cluster_count/total_count, s=[marker_size(n) for n in unsmoothed_total_count],
-                    color=country_styles_custom[coun]['c'],
-                    linestyle=country_styles_custom[coun]['ls'])
+            countries_plotted[coun] = "False"
+
+            if coun in countries_to_plot:
+                ax3.plot(week_as_date, cluster_count/total_count,
+                        color=country_styles_custom[coun]['c'],
+                        linestyle=country_styles_custom[coun]['ls'], label=coun)
+                ax3.scatter(week_as_date, cluster_count/total_count, s=[marker_size(n) for n in unsmoothed_total_count],
+                        color=country_styles_custom[coun]['c'],
+                        linestyle=country_styles_custom[coun]['ls'])#
+                countries_plotted[coun] = "True"
 
         for ni,n in enumerate([0,1,3,10,30,100]):
             ax3.scatter([week_as_date[0]], [0.08+ni*0.07], s=marker_size(n+0.1), edgecolor='k', facecolor='w')
@@ -642,3 +685,12 @@ for clus in clus_to_run:
         if print_files:
             with open(tables_path+f'{clus_display}_data.json', 'w') as fh:
                 json.dump(json_output[clus_display], fh)
+
+
+## Write out plotting information
+#write out instructions
+
+
+if print_files:
+    with open(tables_path+f'perVariant_countries_toPlot.json', 'w') as fh:
+        json.dump(countries_plotted, fh)
