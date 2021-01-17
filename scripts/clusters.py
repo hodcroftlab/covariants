@@ -1,5 +1,3 @@
-
-
 clusters = {
             "S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
             "country_info":[], 'col': "#ff8d3d", "display_name": "20A.EU1", "display_name2": "S:A222V",
