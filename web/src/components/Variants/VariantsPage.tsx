@@ -23,11 +23,11 @@ import { ClusterContentLoading } from './ClusterContentLoading'
 
 const EditableClusterContent = styled(Editable)``
 
-const ClusterNameTitle = styled.h1`
+const ClusterNameTitle = styled.span`
   display: inline;
 `
 
-const ClusterNameSubtitle = styled.h2`
+const ClusterNameSubtitle = styled.span`
   display: inline;
 `
 
