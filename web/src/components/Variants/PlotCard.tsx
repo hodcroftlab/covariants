@@ -1,5 +1,5 @@
 /* eslint-disable prefer-destructuring,camelcase */
-import React, { useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 
 import styled from 'styled-components'
 import { ClusterDistribution } from 'src/components/ClusterDistribution/ClusterDistributionPage'
@@ -11,7 +11,6 @@ import {
   ClusterDistributionDatum,
   ClusterDistributionPlot,
 } from 'src/components/ClusterDistribution/ClusterDistributionPlot'
-import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 import { ClusterDatum } from 'src/io/getClusters'
 import perClusterData from '../../../data/perClusterData.json'
 import { Link } from '../Link/Link'

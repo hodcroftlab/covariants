@@ -1,5 +1,4 @@
 import React from 'react'
-import { SiNextDotJs } from 'react-icons/all'
 
 import { Col, Row } from 'reactstrap'
 import gisaidLogoUrl from 'src/assets/images/gisaid_logo.png'

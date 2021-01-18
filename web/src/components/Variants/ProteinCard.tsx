@@ -87,7 +87,6 @@ enum GifPlayerCondition {
 
 export function ProteinCard({ cluster }: ProteinCardProps) {
   const [condition, setCondition] = useState(GifPlayerCondition.loading)
-  const [collapsed, setCollapsed] = useState(true)
 
   useEffect(() => {
     setCondition(GifPlayerCondition.loading)
