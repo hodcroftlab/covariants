@@ -74,7 +74,7 @@ export function VariantsPageDisconnected({ defaultCluster, routerReplace }: Vari
     routerReplace(`/variants/${defaultCluster.build_name}`)
   }, [defaultCluster.build_name, routerReplace])
 
-  const ClusterContent = getClusterContent(currentCluster.display_name)
+  const ClusterContent = getClusterContent(currentCluster.build_name)
 
   return (
     <Layout>
