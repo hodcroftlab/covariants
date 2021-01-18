@@ -5,7 +5,6 @@ import copy from 'fast-copy'
 import { pickBy } from 'lodash'
 import { Col, Row } from 'reactstrap'
 
-import perClusterData from 'src/../data/perClusterData.json'
 import { ClusterDistributionPlotCard } from 'src/components/ClusterDistribution/ClusterDistributionPlotCard'
 import { ColCustom } from 'src/components/Common/ColCustom'
 import { Editable } from 'src/components/Common/Editable'
@@ -13,13 +12,15 @@ import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLa
 import { ClusterState, CountryState } from 'src/components/CountryDistribution/CountryDistributionPage'
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
+import { shouldPlotCountry } from 'src/io/getCountryColor'
 
+import perClusterData from 'src/../data/perClusterData.json'
 import PerClusterIntro from 'src/../../content/PerClusterIntro.md'
 import { ClusterDistributionDatum } from './ClusterDistributionPlot'
 
 const COUNTRIES = copy(perClusterData.country_names).sort()
 const COUNTRIES_STATE = COUNTRIES.reduce((result, country) => {
-  return { ...result, [country]: { enabled: true } }
+  return { ...result, [country]: { enabled: shouldPlotCountry(country) } }
 }, {})
 
 const CLUSTERS = perClusterData.distributions.map(({ cluster }) => cluster).sort()
