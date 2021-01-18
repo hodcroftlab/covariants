@@ -32,7 +32,6 @@ script:
 
 before_deploy:
   - yarn prod:build:ci
-  - tools/rename-html.sh
 
 deploy:
   - provider: s3
@@ -49,6 +48,7 @@ deploy:
       condition: $TRAVIS_BRANCH =~ ^(master|staging|release)$
 
 after_deploy:
+  - tools/upload-html.sh
   - yarn global add travis-ci-cloudfront-invalidation@1.1.0
   - >
     travis-ci-cloudfront-invalidation \
