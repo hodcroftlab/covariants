@@ -8,6 +8,7 @@ import 'src/helpers/errorPrototypeTojson' // to visualize Error in Redux Dev Too
 import 'src/helpers/functionPrototypeTojson' // to visualize Function in Redux Dev Tools
 
 import { enableES5 } from 'immer'
+import dynamic from 'next/dynamic'
 
 import React, { useMemo } from 'react'
 
@@ -30,7 +31,7 @@ import 'src/styles/global.scss'
 
 enableES5()
 
-export default function MyApp({ Component, pageProps, router }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
   const store = useMemo(() => configureStore({ router }), [router])
 
   return (
@@ -46,3 +47,5 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
     </Provider>
   )
 }
+
+export default dynamic(() => Promise.resolve(MyApp), { ssr: false })
