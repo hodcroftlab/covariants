@@ -104,17 +104,17 @@ const withMDX = getWithMDX({
           tight: true,
         },
       ],
-      [
-        require('remark-autolink-headings'),
-        {
-          behavior: 'prepend',
-          content: {
-            type: 'element',
-            tagName: 'i',
-            properties: { className: ['bi', 'bi-link-45deg', 'mdx-link-icon'] },
-          },
-        },
-      ],
+      // [
+      //   require('remark-autolink-headings'),
+      //   {
+      //     behavior: 'prepend',
+      //     content: {
+      //       type: 'element',
+      //       tagName: 'i',
+      //       properties: { className: ['bi', 'bi-link-45deg', 'mdx-link-icon'] },
+      //     },
+      //   },
+      // ],
     ],
     rehypePlugins: [],
   },
