@@ -1,4 +1,3 @@
-## Mutation Information:
 Of full list of 18 nucleotide mutations, 15 are mutations to `T` (possibly related to APOBEC-like editing within host, see [Simmonds, bioRxiv](https://www.biorxiv.org/content/10.1101/2020.05.01.072330v1))
 
 ## `S:D80Y`

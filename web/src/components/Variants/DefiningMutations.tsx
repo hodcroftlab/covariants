@@ -30,7 +30,7 @@ export interface DefiningMutationsProps {
 
 export function DefiningMutations({ cluster }: DefiningMutationsProps) {
   if (!cluster?.mutations) {
-    return <NoMutations />
+    return null
   }
 
   const hasNonsynonymous = cluster.mutations?.nonsynonymous?.length && cluster.mutations?.nonsynonymous?.length > 0
