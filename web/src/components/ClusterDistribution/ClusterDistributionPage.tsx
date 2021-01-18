@@ -4,6 +4,7 @@ import React, { useCallback, useMemo, useState } from 'react'
 import copy from 'fast-copy'
 import { pickBy } from 'lodash'
 import { Col, Row } from 'reactstrap'
+import styled from 'styled-components'
 
 import perClusterData from 'src/../data/perClusterData.json'
 import { ClusterDistributionPlotCard } from 'src/components/ClusterDistribution/ClusterDistributionPlotCard'
@@ -129,7 +130,7 @@ export function ClusterDistributionPage() {
       </Row>
 
       <Row noGutters>
-        <Col>
+        <Col className="pb-10">
           <Editable githubUrl="blob/master/scripts" text={'View data generation scripts'}>
             <WrapperFlex>
               <SidebarFlex>

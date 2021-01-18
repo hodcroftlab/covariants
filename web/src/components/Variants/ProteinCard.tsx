@@ -2,12 +2,11 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
 import styled from 'styled-components'
 import { SiMoleculer } from 'react-icons/si'
-import { CardBody, Col, Container, Row } from 'reactstrap'
+import { Card, CardBody, CardHeader, Col, Container, Row } from 'reactstrap'
 
 import { URL_GITHUB } from 'src/constants'
 import type { ClusterDatum } from 'src/io/getClusters'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
-import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 import GifPlayer from 'src/components/Common/GifPlayer'
 
 import gisaidLogoUrl from 'src/assets/images/gisaid_logo.png'
@@ -125,24 +124,23 @@ export function ProteinCard({ cluster }: ProteinCardProps) {
   }, [cluster.display_name, condition, handleError, handleLoad, style])
 
   return (
-    <CardCollapsible title={title} collapsed={collapsed} setCollapsed={setCollapsed}>
-      {!collapsed && (
-        <ProteinCardBody>
-          <Row noGutters>
-            <Col tag="figure">
-              <GifPlayerWrapper>{Player}</GifPlayerWrapper>
-              <figcaption className="d-flex">
-                <small className="mx-auto">
-                  {`Protein model for ${cluster.display_name}. Figure made via `}
-                  <LinkExternal href="https://www.gisaid.org/" icon={null}>
-                    <img className="my-auto" src={gisaidLogoUrl} alt="GISAID logo" height={18} />
-                  </LinkExternal>
-                </small>
-              </figcaption>
-            </Col>
-          </Row>
-        </ProteinCardBody>
-      )}
-    </CardCollapsible>
+    <Card>
+      <CardHeader>{title}</CardHeader>
+      <ProteinCardBody>
+        <Row noGutters>
+          <Col tag="figure">
+            <GifPlayerWrapper>{Player}</GifPlayerWrapper>
+            <figcaption className="d-flex">
+              <small className="mx-auto">
+                {`Protein model for ${cluster.display_name}. Figure made via `}
+                <LinkExternal href="https://www.gisaid.org/" icon={null}>
+                  <img className="my-auto" src={gisaidLogoUrl} alt="GISAID logo" height={18} />
+                </LinkExternal>
+              </small>
+            </figcaption>
+          </Col>
+        </Row>
+      </ProteinCardBody>
+    </Card>
   )
 }
