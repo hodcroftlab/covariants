@@ -1,10 +1,13 @@
-import { get } from 'lodash'
 import React from 'react'
+
+import { get } from 'lodash'
+import styled from 'styled-components'
 
 import type { Mutation, MutationColors } from 'src/types'
 import { theme } from 'src/theme'
 import { AMINOACID_COLORS, GENE_COLORS, NUCLEOTIDE_COLORS } from 'src/colors'
-import styled from 'styled-components'
+import { parseAminoacidMutation } from 'src/components/Common/parseAminoacidMutation'
+import { parseNucleotideMutation } from 'src/components/Common/parseNucleotideMutation'
 
 const DEFAULT_COLOR = theme.gray700
 
@@ -54,6 +57,20 @@ export const PositionText = styled.span`
   color: ${(props) => props.theme.gray800};
 `
 
+export function nucleotideMutationFromStringMaybe(mutation: Mutation | string): Mutation | undefined {
+  if (typeof mutation === 'string') {
+    return parseNucleotideMutation(mutation)
+  }
+  return mutation
+}
+
+export function aminoacidMutationFromStringMaybe(mutation: Mutation | string): Mutation | undefined {
+  if (typeof mutation === 'string') {
+    return parseAminoacidMutation(mutation)
+  }
+  return mutation
+}
+
 export interface MutationBadgeProps {
   mutation: Mutation
   colors: MutationColors
@@ -87,17 +104,27 @@ export function MutationBadge({ mutation, colors }: MutationBadgeProps) {
 }
 
 export interface NucleotideMutationBadgeProps {
-  mutation: Mutation
+  mutation: Mutation | string
 }
 
 export function NucleotideMutationBadge({ mutation }: NucleotideMutationBadgeProps) {
-  return <MutationBadge mutation={mutation} colors={NUCLEOTIDE_COLORS} />
+  const mutationObj = nucleotideMutationFromStringMaybe(mutation)
+  if (!mutationObj) {
+    return <span>{`Invalid mutation: '${JSON.stringify(mutation)}'`}</span>
+  }
+
+  return <MutationBadge mutation={mutationObj} colors={NUCLEOTIDE_COLORS} />
 }
 
 export interface AminoacidMutationBadgeProps {
-  mutation: Mutation
+  mutation: Mutation | string
 }
 
 export function AminoacidMutationBadge({ mutation }: AminoacidMutationBadgeProps) {
-  return <MutationBadge mutation={mutation} colors={AMINOACID_COLORS} />
+  const mutationObj = aminoacidMutationFromStringMaybe(mutation)
+  if (!mutationObj) {
+    return <span>{`Invalid mutation: '${JSON.stringify(mutation)}'`}</span>
+  }
+
+  return <MutationBadge mutation={mutationObj} colors={AMINOACID_COLORS} />
 }
