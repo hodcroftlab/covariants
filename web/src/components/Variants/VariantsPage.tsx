@@ -130,13 +130,13 @@ export function VariantsPageDisconnected({ defaultCluster, routerReplace }: Vari
 
               <Row noGutters className="mb-2">
                 <Col>
-                  <ProteinCard cluster={currentCluster} />
+                  <PlotCard cluster={currentCluster} />
                 </Col>
               </Row>
 
               <Row noGutters className="mb-2">
                 <Col>
-                  <PlotCard cluster={currentCluster} />
+                  <ProteinCard cluster={currentCluster} />
                 </Col>
               </Row>
             </EditableClusterContent>

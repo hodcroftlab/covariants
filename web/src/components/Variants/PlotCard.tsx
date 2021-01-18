@@ -4,7 +4,7 @@ import React, { useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { ClusterDistribution } from 'src/components/ClusterDistribution/ClusterDistributionPage'
 import { GoGraph } from 'react-icons/go'
-import { CardBody, Col, Row } from 'reactstrap'
+import { Card, CardBody, Col, Row } from 'reactstrap'
 
 import { theme } from 'src/theme'
 import {
@@ -58,21 +58,19 @@ export function PlotCardTitle({ cluster }: PlotCardProps) {
 }
 
 export function PlotCard({ cluster }: PlotCardProps) {
-  const [collapsed, setCollapsed] = useState(true)
   const title = useMemo(() => <PlotCardTitle cluster={cluster} />, [cluster])
   const distribution = getDistribution(cluster.display_name)
 
   return (
-    <CardCollapsible title={title} collapsed={collapsed} setCollapsed={setCollapsed}>
-      {!collapsed && (
-        <PlotCardBody>
-          <Row noGutters>
-            <Col>
-              <ClusterDistributionPlot distribution={distribution} country_names={country_names} />
-            </Col>
-          </Row>
-        </PlotCardBody>
-      )}
-    </CardCollapsible>
+    <Card>
+      <CardBody>{title}</CardBody>
+      <PlotCardBody>
+        <Row noGutters>
+          <Col>
+            <ClusterDistributionPlot distribution={distribution} country_names={country_names} />
+          </Col>
+        </Row>
+      </PlotCardBody>
+    </Card>
   )
 }
