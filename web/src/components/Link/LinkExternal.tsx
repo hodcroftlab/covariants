@@ -8,7 +8,7 @@ const LinkExternalIconWrapper = styled.span<{ $color?: string }>`
   color: ${(props) => props.$color ?? props.theme.link.dim.iconColor};
 `
 
-export interface LinkExternalProps extends HTMLProps<HTMLAnchorElement> {
+export interface LinkExternalProps extends Omit<HTMLProps<HTMLAnchorElement>, 'as' | 'ref'> {
   href?: string
   $color?: string
   $iconColor?: string
@@ -23,6 +23,12 @@ const A = styled.a<{ $color?: string } & LinkExternalProps>`
     color: ${(props) => props.$color ?? undefined};
     text-decoration: none;
   }
+
+  white-space: nowrap;
+`
+
+export const ContentWrapper = styled.span`
+  white-space: normal;
 `
 
 export function LinkExternal({
@@ -37,9 +43,9 @@ export function LinkExternal({
 
   return (
     <>
-      <LinkExternalIconWrapper $color={$iconColor}>{Icon}</LinkExternalIconWrapper>
-      <A target="_blank" rel="noopener noreferrer" href={href} $color={$color}>
-        {children}
+      <A target="_blank" rel="noopener noreferrer" href={href} $color={$color} {...restProps}>
+        {Icon && <LinkExternalIconWrapper $color={$iconColor}>{Icon}</LinkExternalIconWrapper>}
+        <ContentWrapper>{children}</ContentWrapper>
       </A>
     </>
   )

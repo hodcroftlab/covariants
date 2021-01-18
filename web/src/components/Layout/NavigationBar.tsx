@@ -1,17 +1,17 @@
 import React from 'react'
+import { FaGithub, FaTwitter } from 'react-icons/fa'
 
 import { connect } from 'react-redux'
-import { FaGithub, FaTwitter } from 'react-icons/fa'
+
+import { ReactComponent as BrandLogo } from 'src/assets/images/logo.svg'
+import { NavigationLink } from 'src/components/Layout/NavigationLink'
+
+import { Link } from 'src/components/Link/Link'
+import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { TWITTER_USERNAME_RAW, URL_GITHUB } from 'src/constants'
 
 import { State } from 'src/state/reducer'
 import { selectPathname } from 'src/state/router/router.selectors'
-
-import { Link } from 'src/components/Link/Link'
-import { LinkExternal } from 'src/components/Link/LinkExternal'
-import { NavigationLink } from 'src/components/Layout/NavigationLink'
-
-import { ReactComponent as BrandLogo } from 'src/assets/images/logo.svg'
 
 const navLinksLeft = {
   '/': 'Home',
@@ -19,6 +19,14 @@ const navLinksLeft = {
   '/variants': 'Variants',
   '/per-country': 'Per country',
   '/per-variant': 'Per variant',
+}
+
+export function matchingUrl(url: string, pathname: string): boolean {
+  if (pathname.startsWith('/variants')) {
+    return url === '/variants'
+  }
+
+  return url === pathname
 }
 
 const navLinksRight = [
@@ -62,7 +70,7 @@ export function NavigationBarDisconnected({ pathname }: NavigationBarProps) {
       <ul className="navbar-nav">
         {Object.entries(navLinksLeft).map(([url, text]) => {
           return (
-            <NavigationLink key={url} url={url} active={pathname.startsWith(url)}>
+            <NavigationLink key={url} url={url} active={matchingUrl(url, pathname)}>
               {text}
             </NavigationLink>
           )

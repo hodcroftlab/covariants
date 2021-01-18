@@ -5,31 +5,39 @@ import gisaidLogoUrl from 'src/assets/images/gisaid_logo.png'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import styled from 'styled-components'
 
-import { ReactComponent as NextstrainLogo } from 'src/assets/images/nextstrain_logo.svg'
 import { ReactComponent as VercelLogo } from 'src/assets/images/vercel_logo.svg'
 import { ReactComponent as NextJsLogo } from 'src/assets/images/nextjs_logo.svg'
+import { NextstrainLogo } from './NextstrainLogo'
 
 const Flex = styled.section`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin: 10px auto;
+  max-width: 700px;
+  //width: 100%;
 `
 
 const PoweredByH1 = styled.h1`
-  font-size: 1.5rem;
-  margin: 15px auto;
+  font-size: 1.33rem;
+  margin: 10px auto;
 `
 
 const Ul = styled.ul`
-  margin: 0 auto;
   list-style: none;
   padding: 0;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
 `
 
 const Li = styled.li`
-  display: inline-block;
-  margin: 0 10px;
+  flex: 1 0 150px;
+  display: flex;
+  width: 200px;
+  height: 50px;
+`
+
+const Wrapper = styled.div`
+  margin: auto;
 `
 
 const mainLinks = [
@@ -40,10 +48,10 @@ const mainLinks = [
     icon: <img className="my-auto" src={gisaidLogoUrl} alt="GISAID logo" height={30} />,
   },
   {
-    title: 'Nexstrain',
+    title: 'Nextstrain',
     url: 'https://nextstrain.org',
     alt: 'Link to Nextstrain.org with colorful Nextstrain logo',
-    icon: <NextstrainLogo width={30} height={30} />,
+    icon: <NextstrainLogo />,
   },
   {
     title: 'Next.js',
@@ -70,14 +78,16 @@ export function PoweredBy() {
         </Row>
 
         <Row noGutters>
-          <Col>
-            <Flex>
+          <Col className="d-flex">
+            <Flex className="mx-auto">
               <Ul>
                 {mainLinks.map(({ title, url, alt, icon }) => (
                   <Li key={title}>
-                    <LinkExternal title={title} href={url} alt={alt} icon={null}>
-                      {icon}
-                    </LinkExternal>
+                    <Wrapper>
+                      <LinkExternal title={title} href={url} alt={alt} icon={null}>
+                        {icon}
+                      </LinkExternal>
+                    </Wrapper>
                   </Li>
                 ))}
               </Ul>
