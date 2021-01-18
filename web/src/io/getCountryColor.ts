@@ -2,7 +2,7 @@ import { get } from 'lodash'
 
 import countryStyles from 'src/../data/countryStyles.json'
 
-import countriesToPlot from 'src/../../cluster_tables/perVariant_countries_toPlot.json'
+import countriesToPlot from '../../../cluster_tables/perVariant_countries_toPlot.json'
 
 export function getCountryStyle(country: string) {
   return get<Record<string, { c: string; ls: string }>, string>(countryStyles, country) ?? { c: '#555555', ls: '-' }
