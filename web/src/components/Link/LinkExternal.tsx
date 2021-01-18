@@ -23,6 +23,12 @@ const A = styled.a<{ $color?: string } & LinkExternalProps>`
     color: ${(props) => props.$color ?? undefined};
     text-decoration: none;
   }
+
+  white-space: nowrap;
+`
+
+export const ContentWrapper = styled.span`
+  white-space: normal;
 `
 
 export function LinkExternal({
@@ -37,9 +43,9 @@ export function LinkExternal({
 
   return (
     <>
-      {Icon && <LinkExternalIconWrapper $color={$iconColor}>{Icon}</LinkExternalIconWrapper>}
       <A target="_blank" rel="noopener noreferrer" href={href} $color={$color} {...restProps}>
-        {children}
+        {Icon && <LinkExternalIconWrapper $color={$iconColor}>{Icon}</LinkExternalIconWrapper>}
+        <ContentWrapper>{children}</ContentWrapper>
       </A>
     </>
   )
