@@ -34,13 +34,13 @@ const navLinksRight = [
     title: 'Follow me on Twitter',
     url: `https://twitter.com/${TWITTER_USERNAME_RAW}`,
     alt: 'Link to Twitter, with blue Twitter bird logo',
-    icon: <FaTwitter size={28} color='#08a0e9' />,
+    icon: <FaTwitter size={28} color="#08a0e9" />,
   },
   {
-    title: 'Let\'s collaborate on GitHub',
+    title: "Let's collaborate on GitHub",
     url: URL_GITHUB,
     alt: 'Link to Github page, with grey Github Octocat logo',
-    icon: <FaGithub size={28} color='#24292E' />,
+    icon: <FaGithub size={28} color="#24292E" />,
   },
 ]
 
@@ -59,15 +59,15 @@ export const NavigationBar = connect(mapStateToProps, mapDispatchToProps)(Naviga
 export function NavigationBarDisconnected({ pathname }: NavigationBarProps) {
   return (
     <nav
-      className='navbar navbar-expand navbar-light navbar-scroll hide-native-scrollbar'
-      role='navigation'
-      data-testid='NavigationBar'
+      className="navbar navbar-expand navbar-light navbar-scroll hide-native-scrollbar"
+      role="navigation"
+      data-testid="NavigationBar"
     >
-      <Link className='navbar-brand d-flex' href='/' role='button'>
-        <BrandLogo className='navigation-bar-product-logo' />
+      <Link className="navbar-brand d-flex" href="/" role="button">
+        <BrandLogo className="navigation-bar-product-logo" />
       </Link>
 
-      <ul className='navbar-nav'>
+      <ul className="navbar-nav">
         {Object.entries(navLinksLeft).map(([url, text]) => {
           return (
             <NavigationLink key={url} url={url} active={matchingUrl(url, pathname)}>
@@ -77,9 +77,9 @@ export function NavigationBarDisconnected({ pathname }: NavigationBarProps) {
         })}
       </ul>
 
-      <ul className='navbar-nav ml-auto d-flex'>
+      <ul className="navbar-nav ml-auto d-flex">
         {navLinksRight.map(({ title, url, alt, icon }) => (
-          <li key={title} className='nav-item mx-2 my-auto'>
+          <li key={title} className="nav-item mx-2 my-auto">
             <LinkExternal title={title} href={url} alt={alt} icon={null}>
               {icon}
             </LinkExternal>
