@@ -55,7 +55,8 @@
     "test:coverage": "yarn test:nowatch --coverage",
     "run:node": "cross-env NODE_ENV=development BABEL_ENV=development babel-node --extensions '.ts'",
     "run:node:prod": "cross-env NODE_ENV=production BABEL_ENV=production babel-node --extensions '.ts'",
-    "monkey-patch": "bash tools/patch-next.sh"
+    "monkey-patch": "bash tools/patch-next.sh",
+    "stills": "yarn run:node tools/generateStillImages.ts"
   },
   "dependencies": {
     "animate.css": "4.1.0",
