@@ -14,17 +14,21 @@ const Flex = styled.section`
 `
 
 const TeamCreditsH1 = styled.h1`
-  font-size: 1.5rem;
+  font-size: 1.33rem;
   margin: 15px auto;
 `
 
 const Ul = styled.ul`
   list-style: none;
   padding: 0;
+
+  margin-top: 0.5rem;
 `
 
 const Li = styled.li`
   display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
 `
 
 const NameText = styled.h2`
@@ -46,13 +50,13 @@ const mainLinks = [
     title: 'Twitter',
     url: `https://twitter.com/firefoxx66`,
     alt: 'Link to Twitter, with blue Twitter bird logo',
-    icon: <FaTwitter size={20} color="#08a0e9" />,
+    icon: <FaTwitter size={25} color="#08a0e9" />,
   },
   {
     title: 'GitHub',
     url: 'https://github.com/emmahodcroft',
     alt: 'Link to Github page, with grey Github Octocat logo',
-    icon: <FaGithub size={20} color="#24292E" />,
+    icon: <FaGithub size={25} color="#24292E" />,
   },
 ]
 
