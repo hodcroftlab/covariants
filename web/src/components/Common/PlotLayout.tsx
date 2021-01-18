@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const WrapperFlex = styled.section`
   display: flex;
+  flex-wrap: wrap;
 `
 
 export const SidebarFlex = styled.aside`
@@ -9,7 +10,7 @@ export const SidebarFlex = styled.aside`
 `
 
 export const MainFlex = styled.section`
-  flex: 1;
+  flex: 1 0 350px;
   margin-bottom: 300px;
 `
 

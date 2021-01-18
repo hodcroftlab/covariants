@@ -7,6 +7,7 @@ Converts cluster data to a format suitable for consumption by the web app
 
 import json
 import os
+from shutil import copyfile
 
 import numpy as np
 import pandas as pd
@@ -141,7 +142,7 @@ def update_per_cluster_distribution(cluster_data, country, distribution):
 
         frequency = 0
         if total_sequences != 0:
-          frequency = cluster_sequences / total_sequences
+            frequency = cluster_sequences / total_sequences
 
         if len(distribution) == 0:
             distribution.append({'week': week, 'frequencies': {country: frequency}, 'interp': {country: interp},
@@ -243,3 +244,6 @@ if __name__ == '__main__':
 
     with open(os.path.join(output_path, "countryStyles.json"), "w") as fh:
         json.dump(country_styles, fh, indent=2, sort_keys=True)
+
+    copyfile(os.path.join(cluster_tables_path, 'perVariant_countries_toPlot.json'),
+             os.path.join(output_path, "countriesToPlot.json"))
