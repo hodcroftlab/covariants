@@ -18,6 +18,7 @@ cache:
   - "./web/.cache"
 
 before_install:
+  - pip install awscli
   - cd web
 
 install:
