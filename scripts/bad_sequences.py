@@ -31,7 +31,12 @@ bad_seqs = {
     'Tunisia/19695/2020'    : "2020-07-12", #overdivrged compared to date
     'Canada/ON-S1598/2020'  : "2020-04-09", #confirmed day-month reversal
     'SouthKorea/KDCA0367/2020'  : "2020-04-04", # too divergent given date (11)
-    'Tunisia/4874/2020'     :	"2020-03-24" #overdivrged compared to date
+    'Tunisia/4874/2020'     :	"2020-03-24", #overdivrged compared to date
+    'Germany/SL-SU-10428507/2020'   :   "2020-03-21", #overdiverged compared to date (S98F)
+    'USA/CA-CZB-13378/2020' :   "2020-05-11", #overdiverged compared to date
+    'USA/CA-LACPHL-AE00055/2020'    :   "2020-07-07", #overdiverged compared to date
+    'USA/CA-LACPHL-AE00059/2020'    :   "2020-07-14", #overdiverged compared to date
+    'USA/CA-LACPHL-AE00058/2020'    :   "2020-07-13" #overdiverged compared to date
     #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
     #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
 }
