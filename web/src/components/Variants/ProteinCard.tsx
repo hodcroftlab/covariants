@@ -1,14 +1,16 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { LinkExternal } from 'src/components/Link/LinkExternal'
-import { URL_GITHUB } from 'src/constants'
 
 import styled from 'styled-components'
 import { SiMoleculer } from 'react-icons/si'
 import { CardBody, Col, Container, Row } from 'reactstrap'
 
+import { URL_GITHUB } from 'src/constants'
 import type { ClusterDatum } from 'src/io/getClusters'
+import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 import GifPlayer from 'src/components/Common/GifPlayer'
+
+import gisaidLogoUrl from 'src/assets/images/gisaid_logo.png'
 
 const ProteinCardTitleIcon = styled(SiMoleculer)`
   margin: auto 5px;
@@ -31,7 +33,6 @@ const GifPlayerWrapper = styled.div`
 
   margin: auto;
   min-height: 200px;
-  height: 100%;
 
   .gif_player {
     margin: auto;
@@ -128,8 +129,16 @@ export function ProteinCard({ cluster }: ProteinCardProps) {
       {!collapsed && (
         <ProteinCardBody>
           <Row noGutters>
-            <Col className="d-flex">
+            <Col tag="figure">
               <GifPlayerWrapper>{Player}</GifPlayerWrapper>
+              <figcaption className="d-flex">
+                <small className="mx-auto">
+                  {`Protein model for ${cluster.display_name}. Figure made via `}
+                  <LinkExternal href="https://www.gisaid.org/" icon={null}>
+                    <img className="my-auto" src={gisaidLogoUrl} alt="GISAID logo" height={18} />
+                  </LinkExternal>
+                </small>
+              </figcaption>
             </Col>
           </Row>
         </ProteinCardBody>

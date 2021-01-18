@@ -1,1 +1,4 @@
-declare module '*.png'
+declare module '*.png' {
+  const url: string
+  export default url
+}
