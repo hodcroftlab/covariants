@@ -89,7 +89,6 @@ export const BrandLogo = styled(BrandLogoBase)`
   margin-right: 10px;
 `
 
-
 export interface NavigationBarProps {
   pathname: string
 }
