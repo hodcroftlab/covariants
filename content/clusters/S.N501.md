@@ -1,7 +1,10 @@
+import { AminoacidMutationBadge, NucleotideMutationBadge } from 'src/components/Common/MutationBadge'
+import { Link } from 'src/components/Link/Link'
+
 - `S:N501` has appeared multiple times independently: each can be associated with different accompanying mutations
 - Amino-acid changes are `N501Y` (nucleotide mutation `A23063T`), `N501T` (nucleotide mutation `A23064C`), and `N501S` (nucleotide mutation `A23064G`)
 
-## `S:N501`
+### S:N501
 This mutation is in the receptor binding domain (RDB), important to ACE2 binding and antibody recognition.
 
 - May be associated with adaptation to rodents and mustelids: `N501T` in ferrets ([Richard et al. Nature Comm.](https://www.nature.com/articles/s41467-020-17367-2)) and mink ([Welkers et al. Virus Evolution](https://academic.oup.com/ve/advance-article/doi/10.1093/ve/veaa094/6025194?searchresult=1)); `N501Y` in mice ([Gu et al. Science](https://science.sciencemag.org/content/369/6511/1603)). 
@@ -17,6 +20,7 @@ The specific mutation `S:N501Y` is found in 3 variants reported at the end of 20
 
 More information on each of these variants can be found below. Smaller clusters of sequences with `S:N501` mutations are also found in Wales, the USA, & Australia.
 
+---
 
 ### 20I/501Y.V1
 Also known as B.1.1.7
@@ -29,15 +33,20 @@ Links to reports on 501Y.V1:
 
 See a [focal `S.N501` build filtered & zoomed to 501Y.V1](https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501&f_clade_membership=20I/501Y.V1&label=clade:20I/501Y.V1&p=grid&r=country)
 
+---
+
 ### 20H/501Y.V2
 Also known as B.1.351
 Announced in December 2020, 501Y.V2 originated and/or initially expanded in South Africa ([Tegally et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.21.20248640v1)).
 
-501Y.V2 is associated with multiple mutations in Spike, including: `N501Y`, `E484K` ([see `S:E484` page](http://covariants.org/variants/S.E484)), `K417N`, and `D80A`. Additionally, a deletion at 242-245.
+501Y.V2 is associated with multiple mutations in Spike, including: <AminoacidMutationBadge mutation={'S:N501Y'}/>, <AminoacidMutationBadge mutation={'S:E484K'}/> (<Link href="/variants/S.E484"> see S:E484 page </Link>), <AminoacidMutationBadge mutation={'S:K417N'}/>, and <AminoacidMutationBadge mutation={'S:D80A'}/> . 
+Additionally, there is a deletion at 242-245.
 There is also an `N` mutation: `T205I`.
 It does _not_ have the deletion at 69/70.
 
 See a [focal `S.N501` build filtered & zoomed to 501Y.V2](https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501&f_clade_membership=20H/501Y.V2&label=mlabel:20C/C23664T&p=grid&r=country)
+
+---
 
 ### 20J/501Y.V3
 Also known as P.1
