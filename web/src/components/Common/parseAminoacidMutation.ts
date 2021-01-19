@@ -17,7 +17,7 @@ export function parseGene(raw: string | undefined | null) {
 }
 
 export function parseAminoacidMutation(formatted: string): Mutation | undefined {
-  const match = /^(?<gene>.*):(?<left>[.a-z-]{0,1})(?<pos>(\d)*)(?<right>[.a-z-]{0,1})$/i.exec(formatted)
+  const match = /^(?<gene>.*):(?<left>[*.a-z-]{0,1})(?<pos>(\d)*)(?<right>[*.a-z-]{0,1})$/i.exec(formatted)
 
   if (!match?.groups) {
     return undefined
