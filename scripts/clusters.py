@@ -2,6 +2,7 @@ clusters = {
             "S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
             "country_info":[], 'col': "#ff8d3d", "display_name": "20A.EU1", "display_name2": "S:A222V",
             "build_name":"20A.EU1",
+            "cluster_type": "Nextstrain Clades",
             "mutations":{
                 "nonsynonymous": [
                     {'gene': 'S', 'left': 'A', 'pos': 222, 'right': 'V'},
@@ -19,6 +20,7 @@ clusters = {
             "S477": {'snps': [22991, 4542], 'cluster_data': [],
             'country_info':[], 'col': "#65beeb", "display_name": "20A.EU2", "display_name2": "S:477N",
             "build_name":"20A.EU2",
+            "cluster_type": "Nextstrain Clades",
             "mutations":{
                 "nonsynonymous": [
                     {'gene': 'S', 'left': 'S', 'pos': 477, 'right': 'N'},
@@ -39,18 +41,21 @@ clusters = {
             },
 
             "S501": {'snps': [23063], 'cluster_data': [], 'snps2': [23062],
+            "cluster_type": "Spike Mutations",
             "country_info":[], 'col': "#ff99ff", "display_name": "S:N501",
             "build_name":"S.N501", 'url_params': ""  #no europe filter
             # no mutations because has appeared many times independently
             },
 
             "S69": {'snps': [], 'cluster_data': [], 'gaps': [21766,21767,21768],
+            "cluster_type": "Spike Mutations",
             "country_info":[], 'col': "#ffcc00", "display_name": "S:H69-",
             "build_name":"S.H69-", 'url_params': "c=gt-S_69,501,453" # color, no europe filter
             # no mutations because has appeared many times independently
             },
 
             "S439": {'snps': [7766, 22878], 'cluster_data': [],
+            "cluster_type": "Spike Mutations",
             "country_info":[], 'col': "#fb9a99", "display_name": "S:N439K",
             "build_name":"S.N439K",
             "mutations":{
@@ -65,12 +70,14 @@ clusters = {
             },
 
             "S453": {'snps': [22919], 'cluster_data': [],
+            "cluster_type": "Spike Mutations",
             "country_info":[], 'col': "#cc0000", "display_name": "S:Y453F",
             "build_name":"S.Y453F", 'url_params': "c=gt-S_453&f_region=Europe" # color, europe filter
             # no mutations because has appeared many times independently
             },
 
             "S98": {'snps': [21854, 25504], 'cluster_data': [],
+            "cluster_type": "Spike Mutations",
             "country_info":[], 'col': "#911eb4", "display_name": "S:S98F",
             "build_name":"S.S98F",
             "mutations":{
@@ -88,12 +95,14 @@ clusters = {
             },
 
             "S484": {'snps': [23011], 'cluster_data': [],
+            "cluster_type": "Spike Mutations",
             "country_info":[], 'col': "#006600", "display_name": "S:E484",
             "build_name":"S.E484"
             # no mutations because has appeared many times independently
             },
 
             "S80": {'snps': [21799, 3098], 'cluster_data': [],
+            "cluster_type": "Spike Mutations",
             "country_info":[], 'col': "#3cb44b", "display_name": "S:D80Y",
             "build_name":"S.D80Y",
             "mutations":{
@@ -123,6 +132,7 @@ clusters = {
             },
 
             "S626": {'snps': [23437, 771], 'cluster_data': [],
+            "cluster_type": "Spike Mutations",
             "country_info":[], 'col': "#0000ff", "display_name": "S:A626S",
             "build_name":"S.A626S",
             "mutations":{
@@ -133,6 +143,7 @@ clusters = {
             },
 
             "S1122": {'snps': [24925,9119],  'cluster_data': [], #mostly Swedish cluster
+            "cluster_type": "Spike Mutations",
             "country_info":[], 'col': "#660066", "display_name": "S:V1122L",
             'build_name': 'S.V1122L',
             "mutations":{

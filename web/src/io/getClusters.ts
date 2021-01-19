@@ -9,6 +9,7 @@ export type ClusterDatum = {
   build_name: string
   build_url: string
   cluster_data: unknown[]
+  cluster_type: string
   col: string
   country_info: unknown[]
   display_name: string
