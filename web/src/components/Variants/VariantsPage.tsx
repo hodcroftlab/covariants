@@ -20,6 +20,7 @@ import { ReactComponent as NextstrainIconBase } from 'src/assets/images/nextstra
 import { PlotCard } from './PlotCard'
 import { ProteinCard } from './ProteinCard'
 import { ClusterContentLoading } from './ClusterContentLoading'
+import { Link } from '../Link/Link'
 
 const EditableClusterContent = styled(Editable)``
 
@@ -52,28 +53,14 @@ const mapDispatchToProps = {
 export const VariantsPage = connect(mapStateToProps, mapDispatchToProps)(VariantsPageDisconnected)
 
 export interface VariantsPageBaseProps {
-  defaultCluster: ClusterDatum
+  currentCluster: ClusterDatum
 }
 
 export interface VariantsPageProps extends VariantsPageBaseProps {
   routerReplace(url: string): void
 }
 
-export function VariantsPageDisconnected({ defaultCluster, routerReplace }: VariantsPageProps) {
-  const [currentCluster, setCurrentCluster] = useState(defaultCluster)
-
-  const switchCluster = useCallback(
-    (cluster: ClusterDatum) => {
-      routerReplace(`/variants/${cluster.build_name}`)
-      setCurrentCluster(cluster)
-    },
-    [routerReplace],
-  )
-
-  useEffect(() => {
-    routerReplace(`/variants/${defaultCluster.build_name}`)
-  }, [defaultCluster.build_name, routerReplace])
-
+export function VariantsPageDisconnected({ currentCluster }: VariantsPageProps) {
   const ClusterContent = getClusterContent(currentCluster.build_name)
 
   return (
@@ -94,7 +81,7 @@ export function VariantsPageDisconnected({ defaultCluster, routerReplace }: Vari
 
         <Row noGutters>
           <Col lg={3} xl={2}>
-            <ClusterButtonPanel clusters={clusters} currentCluster={currentCluster} switchCluster={switchCluster} />
+            <ClusterButtonPanel clusters={clusters} currentCluster={currentCluster} />
           </Col>
 
           <Col lg={9} xl={10}>

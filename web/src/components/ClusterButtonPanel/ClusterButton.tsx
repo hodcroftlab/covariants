@@ -1,9 +1,10 @@
 /* eslint-disable camelcase */
-import React, { useMemo } from 'react'
+import React from 'react'
 
-import { Button, Col } from 'reactstrap'
+import { Col } from 'reactstrap'
 import { ClusterDatum } from 'src/io/getClusters'
 import styled from 'styled-components'
+import { Link } from '../Link/Link'
 
 const ClusterCol = styled(Col)`
   display: flex;
@@ -30,7 +31,7 @@ const ClusterCol = styled(Col)`
   }
 `
 
-const ClusterButtonComponent = styled(Button)<{ $isCurrent: boolean; $color: string }>`
+const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: string }>`
   width: 100%;
 
   display: flex;
@@ -57,10 +58,12 @@ const ClusterButtonComponent = styled(Button)<{ $isCurrent: boolean; $color: str
 
   background-color: ${({ $isCurrent, theme }) => ($isCurrent ? theme.white : theme.gray100)};
 
+  text-decoration: none;
+
   &:active,
   &:focus,
   &:hover {
-    background-color: ${({ $isCurrent, theme }) => ($isCurrent ? theme.white : theme.gray100)};
+    text-decoration: none;
   }
 `
 
@@ -87,17 +90,15 @@ const ClusterTitle = styled.h1<{ $isCurrent: boolean }>`
 
 export interface ClusterButtonProps {
   cluster: ClusterDatum
-  onClick(cluster: string): void
   isCurrent: boolean
 }
 
-export function ClusterButton({ cluster, onClick, isCurrent }: ClusterButtonProps) {
+export function ClusterButton({ cluster, isCurrent }: ClusterButtonProps) {
   const { display_name, col } = cluster
-  const handleClick = useMemo(() => () => onClick(display_name), [display_name, onClick])
 
   return (
-    <ClusterCol>
-      <ClusterButtonComponent color="transparent" onClick={handleClick} $isCurrent={isCurrent} $color={col}>
+    <ClusterCol tag="span">
+      <ClusterButtonComponent href={`/variants/${cluster.build_name}`} $isCurrent={isCurrent} $color={col}>
         <ClusterTitle $isCurrent={isCurrent}>{display_name}</ClusterTitle>
       </ClusterButtonComponent>
     </ClusterCol>
