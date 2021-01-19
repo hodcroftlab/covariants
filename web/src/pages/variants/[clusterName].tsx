@@ -15,10 +15,9 @@ export async function getStaticProps(
 ): Promise<GetStaticPropsResult<VariantsPageBaseProps>> {
   const clusterName = takeFirstMaybe(get(context?.params, 'clusterName'))
   const defaultCluster = clusters.find(({ build_name }) => clusterName === build_name) ?? DEFAULT_CLUSTER
-
   return {
     props: {
-      defaultCluster,
+      currentCluster: defaultCluster,
     },
   }
 }

@@ -6,5 +6,5 @@ import { VariantsPage } from 'src/components/Variants/VariantsPage'
 const defaultCluster = getDefaultCluster()
 
 export default function Impl() {
-  return <VariantsPage defaultCluster={defaultCluster} />
+  return <VariantsPage currentCluster={defaultCluster} />
 }
