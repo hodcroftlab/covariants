@@ -1,5 +1,16 @@
-CoVariants is intended to provide an overview (not necessarily complete) of SARS-CoV-2 mutations that are of interest. It should be noted that these mutations are primarily of interest due to spread in Europe: this is simply a reflection that the primary maintainer/author (Emma Hodcroft) works mostly with European data.
-CoVariants hopes to add more variants from other regions soon!
+Click on a variant button to start exploring!
+
+CoVariants is provides overview of SARS-CoV-2 variants and mutations of interest that are of interest. Here, you can find out what mutations define a variant, what impact they might have (with links to papers and resources), where variants are found, and see the variants in Nextstrain builds!
+
+To look at one particular variant, use the buttons to read information, see graphs and the protein structure, and link out to focused Nextstrain builds.
+To look at many variants at once, check out the [Per Variant](/per-variant) and [Per Country](/per-country) pages, where you can view a lot of data in the same place, and compare variants and countries!
+
+<!-- ![mini-per-country](static/content/proteins/mini-countries.png)-->
+
+---
+
+The variants featured are currently slightly biased towards circulation in Europe: this is simply a reflection that the primary maintainer (Emma Hodcroft) works mostly with European data.
+We hope to add more variants from other regions soon!
 
 The code used to generate these tables, graphs, and the sequences related to that mutation can be found in [this Github repository](https://github.com/hodcroftlab/covariants/).
 
