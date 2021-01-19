@@ -1,11 +1,9 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 
-import { replace } from 'connected-next-router'
-import { connect } from 'react-redux'
 import { Col, Row } from 'reactstrap'
 import { VariantsPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 
-import { ClusterDatum, getClusters } from 'src/io/getClusters'
+import { getClusters } from 'src/io/getClusters'
 
 import { ClusterButtonPanel } from 'src/components/ClusterButtonPanel/ClusterButtonPanel'
 import { Editable } from 'src/components/Common/Editable'
@@ -15,26 +13,7 @@ import HomeContent from '../../../../content/Home.md'
 
 const clusters = getClusters()
 
-const mapStateToProps = null
-
-const mapDispatchToProps = {
-  routerReplace: replace,
-}
-
-export const HomePage = connect(mapStateToProps, mapDispatchToProps)(HomePageDisconnected)
-
-export interface HomePagePageProps {
-  routerReplace(url: string): void
-}
-
-export function HomePageDisconnected({ routerReplace }: HomePagePageProps) {
-  const switchCluster = useCallback(
-    (cluster: ClusterDatum) => {
-      routerReplace(`/variants/${cluster.build_name}`)
-    },
-    [routerReplace],
-  )
-
+export function HomePage() {
   return (
     <Layout>
       <VariantsPageContainer fluid>
@@ -46,7 +25,7 @@ export function HomePageDisconnected({ routerReplace }: HomePagePageProps) {
 
         <Row noGutters>
           <Col lg={3} xl={2}>
-            <ClusterButtonPanel clusters={clusters} switchCluster={switchCluster} />
+            <ClusterButtonPanel clusters={clusters} />
           </Col>
 
           <Col lg={9} xl={10}>

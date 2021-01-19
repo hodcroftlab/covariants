@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React from 'react'
 
 import { connect } from 'react-redux'
 import { replace } from 'connected-next-router'
@@ -20,7 +20,6 @@ import { ReactComponent as NextstrainIconBase } from 'src/assets/images/nextstra
 import { PlotCard } from './PlotCard'
 import { ProteinCard } from './ProteinCard'
 import { ClusterContentLoading } from './ClusterContentLoading'
-import { Link } from '../Link/Link'
 
 const EditableClusterContent = styled(Editable)``
 
