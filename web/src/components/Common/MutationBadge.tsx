@@ -11,48 +11,44 @@ import { parseNucleotideMutation } from 'src/components/Common/parseNucleotideMu
 
 const DEFAULT_COLOR = theme.gray700
 
-export const MutationBadgeBox = styled.div`
+export const MutationBadgeBox = styled.span`
   display: inline-block;
-  padding: 2px 0;
-  margin: 5px 5px;
+  font-size: 0.75rem;
 `
 
 export const MutationWrapper = styled.span`
-  height: 1.8rem;
+  border-radius: 2px;
+  box-shadow: ${(props) => props.theme.shadows.lighter};
 
-  border-radius: 3px;
-  box-shadow: ${(props) => props.theme.shadows.slight};
-
-  font-size: 0.85rem;
   font-family: ${(props) => props.theme.font.monospace};
 
   & > span:first-child {
-    padding-left: 8px;
+    padding-left: 4px;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
   }
 
   & > span:last-child {
-    padding-right: 6px;
+    padding-right: 4px;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
   }
 `
 
 export const GeneText = styled.span<{ $color: string }>`
-  padding: 2px 5px;
+  padding: 1px 2px;
   background-color: ${(props) => props.$color};
   color: ${(props) => props.theme.gray100};
   font-weight: 700;
 `
 
 export const ColoredText = styled.span<{ $color: string }>`
-  padding: 2px 5px;
+  padding: 1px 2px;
   background-color: ${(props) => props.$color};
 `
 
 export const PositionText = styled.span`
-  padding: 2px 2px;
+  padding: 1px 2px;
   background-color: ${(props) => props.theme.gray300};
   color: ${(props) => props.theme.gray800};
 `
