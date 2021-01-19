@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { replace } from 'connected-next-router'
 import { ClusterButtonPanel } from 'src/components/ClusterButtonPanel/ClusterButtonPanel'
-import { DefiningMutations } from 'src/components/Variants/DefiningMutations'
+import { DefiningMutations, hasDefiningMutations } from 'src/components/Variants/DefiningMutations'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import dynamic from 'next/dynamic'
@@ -107,20 +107,22 @@ export function VariantsPageDisconnected({ defaultCluster, routerReplace }: Vari
                 </Col>
               </Row>
 
-              <Row noGutters>
-                <Col>
-                  <Row noGutters>
-                    <Col>
-                      <h2>{'Defining mutations'}</h2>
-                    </Col>
-                  </Row>
-                  <Row noGutters>
-                    <Col>
-                      <DefiningMutations cluster={currentCluster} />
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
+              {hasDefiningMutations(currentCluster) && (
+                <Row noGutters>
+                  <Col>
+                    <Row noGutters>
+                      <Col>
+                        <h2>{'Defining mutations'}</h2>
+                      </Col>
+                    </Row>
+                    <Row noGutters>
+                      <Col>
+                        <DefiningMutations cluster={currentCluster} />
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              )}
 
               <Row noGutters className="mb-2">
                 <Col>

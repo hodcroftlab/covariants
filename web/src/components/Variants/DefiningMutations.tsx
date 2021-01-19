@@ -28,6 +28,15 @@ export interface DefiningMutationsProps {
   cluster: ClusterDatum
 }
 
+export function hasDefiningMutations(cluster: ClusterDatum) {
+  return (
+    cluster.mutations?.nonsynonymous?.length &&
+    cluster.mutations?.nonsynonymous?.length > 0 &&
+    cluster.mutations?.synonymous?.length &&
+    cluster.mutations?.synonymous?.length > 0
+  )
+}
+
 export function DefiningMutations({ cluster }: DefiningMutationsProps) {
   if (!cluster?.mutations) {
     return null
