@@ -3,15 +3,7 @@ import React from 'react'
 import NextDocument, { Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
-import {
-  PROJECT_NAME,
-  PROJECT_DESCRIPTION,
-  URL_SOCIAL_IMAGE,
-  DOMAIN,
-  TWITTER_USERNAME_FRIENDLY,
-  URL_MANIFEST_JSON,
-  URL_FAVICON,
-} from 'src/constants'
+import { PROJECT_NAME, DOMAIN, URL_MANIFEST_JSON, URL_FAVICON } from 'src/constants'
 
 export const GenericIcons = [16, 32, 96, 128, 196].map((size) => {
   const sizes = `${size}x${size}`
@@ -70,17 +62,13 @@ export default class Document extends NextDocument {
   }
 
   render() {
-    const localeFull = 'en_US'
-
     return (
       <Html lang="en">
         <Head>
           <meta charSet="UTF-8" />
           <title>{PROJECT_NAME}</title>
-          <meta name="description" content={PROJECT_DESCRIPTION} />
-          <meta name="application-name" content={PROJECT_NAME} />
-          <meta name="theme-color" content="#ffffff" />
 
+          <meta name="theme-color" content="#ffffff" />
           <link rel="manifest" href={URL_MANIFEST_JSON} />
           <link rel="shortcut icon" href={URL_FAVICON} />
 
@@ -90,28 +78,6 @@ export default class Document extends NextDocument {
           <link rel="mask-icon" href={`${DOMAIN}/icons/safari-pinned-tab.svg" color="#555555`} />
 
           {MicrosoftIcons}
-
-          <meta itemProp="description" content={PROJECT_DESCRIPTION} />
-          <meta itemProp="image" content={URL_SOCIAL_IMAGE} />
-          <meta itemProp="name" content={PROJECT_NAME} />
-          <meta property="og:description" content={PROJECT_DESCRIPTION} />
-          <meta property="og:image" content={URL_SOCIAL_IMAGE} />
-          <meta property="og:image:secure_url" content={URL_SOCIAL_IMAGE} />
-          <meta property="og:image:type" content="image/png" />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="600" />
-          <meta property="og:locale" content={localeFull} />
-          <meta property="og:title" content={PROJECT_NAME} />
-          <meta property="og:type" content="website" />
-          <meta property="og:url" content={DOMAIN} />
-
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:description" content={PROJECT_DESCRIPTION} />
-          <meta name="twitter:image" content={URL_SOCIAL_IMAGE} />
-          <meta name="twitter:image:alt" content={PROJECT_DESCRIPTION} />
-          <meta name="twitter:title" content={PROJECT_NAME} />
-          <meta name="twitter:url" content={DOMAIN} />
-          <meta name="twitter:site" content={TWITTER_USERNAME_FRIENDLY} />
         </Head>
 
         <body>
