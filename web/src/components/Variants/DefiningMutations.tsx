@@ -12,7 +12,7 @@ const Ul = styled.ul`
 `
 
 const Li = styled.li`
-  line-height: 1rem;
+  line-height: 1.33rem;
   padding: 0;
 `
 
