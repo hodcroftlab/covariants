@@ -6,8 +6,80 @@
   ],
   "imageSize": 100,
   "contributorsSortAlphabetically": true,
-  "skipCi": true,
-  "contributors": [],
+  "skipCi": false,
+  "contributors": [
+    {
+      "login": "ivan-aksamentov",
+      "name": "Ivan Aksamentov",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/9403403?v=4",
+      "profile": "https://github.com/ivan-aksamentov",
+      "contributions": [
+        "code",
+        "infra",
+        "doc",
+        "design"
+      ]
+    },
+    {
+      "login": "rneher",
+      "name": "Richard Neher",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/8379168?v=4",
+      "profile": "https://github.com/rneher",
+      "contributions": [
+        "code",
+        "data",
+        "content"
+      ]
+    },
+    {
+      "login": "jameshadfield",
+      "name": "james hadfield",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/8350992?v=4",
+      "profile": "https://twitter.com/hamesjadfield",
+      "contributions": [
+        "code",
+        "design",
+        "doc"
+      ]
+    },
+    {
+      "login": "moirazuber",
+      "name": "Moira Zuber",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/48066606?v=4",
+      "profile": "https://github.com/MoiraZuber",
+      "contributions": [
+        "code",
+        "data"
+      ]
+    },
+    {
+      "login": "jbloom",
+      "name": "Jesse Bloom",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1906801?v=4",
+      "profile": "https://research.fhcrc.org/bloom/en.html",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "corneliusroemer",
+      "name": "Cornelius Roemer",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/25161793?v=4",
+      "profile": "https://github.com/corneliusroemer",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "theosanderson",
+      "name": "Theo Sanderson",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/19732295?v=4",
+      "profile": "http://theo.io/",
+      "contributions": [
+        "content"
+      ]
+    }
+  ],
   "repoType": "github",
   "contributorsPerLine": 4,
   "repoHost": "https://github.com",
