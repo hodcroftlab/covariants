@@ -28,6 +28,20 @@ export interface DefiningMutationsProps {
   cluster: ClusterDatum
 }
 
+export function hasDefiningMutations(cluster: ClusterDatum) {
+  // prettier-ignore
+  const hasNonsynonymous =
+    cluster.mutations?.nonsynonymous?.length !== undefined &&
+    cluster.mutations?.nonsynonymous?.length > 0
+
+  // prettier-ignore
+  const hasSynonymous =
+    cluster.mutations?.synonymous?.length !== undefined &&
+    cluster.mutations?.synonymous?.length > 0
+
+  return hasNonsynonymous || hasSynonymous
+}
+
 export function DefiningMutations({ cluster }: DefiningMutationsProps) {
   if (!cluster?.mutations) {
     return null
