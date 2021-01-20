@@ -15,9 +15,11 @@ export function SeoApp() {
   const pathname = router.asPath
   const url = urljoin(DOMAIN, pathname)
 
-  const { name, description, image } = {
-    ...SEO_DEFAULT,
-    ...get(SEO_OVERRIDES, pathname, SEO_DEFAULT),
+  // eslint-disable-next-line prefer-const
+  let { name, description, image } = { ...SEO_DEFAULT, ...get(SEO_OVERRIDES, pathname, SEO_DEFAULT) }
+
+  if (image) {
+    image = urljoin(DOMAIN, image)
   }
 
   return (
