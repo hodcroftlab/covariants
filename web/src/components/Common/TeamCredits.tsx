@@ -2,9 +2,13 @@ import React from 'react'
 
 import { Col, Row } from 'reactstrap'
 import styled from 'styled-components'
+import { FaGithub, FaTwitter } from 'react-icons/fa'
 
 import { LinkExternal } from 'src/components/Link/LinkExternal'
-import { FaGithub, FaTwitter } from 'react-icons/fa'
+import { TeamCreditsContributor } from 'src/components/Common/TeamCreditsContributor'
+import { getContributors } from 'src/io/getContributors'
+
+const contributors = getContributors()
 
 const Flex = styled.section`
   display: flex;
@@ -35,7 +39,7 @@ const NameText = styled.h2`
   font-size: 1.1rem;
 `
 
-const AfilliationText = styled.small`
+const AffiliationText = styled.small`
   font-size: 0.8rem;
 `
 
@@ -43,6 +47,16 @@ const Portrait = styled.img`
   margin: 0 auto;
   width: 100px;
   border-radius: 100px;
+`
+
+const FlexContributors = styled.section`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  width: 100%;
+  margin: 10px auto;
 `
 
 const mainLinks = [
@@ -75,8 +89,8 @@ export function TeamCredits() {
             <Flex>
               <Portrait src="https://avatars3.githubusercontent.com/u/14290674?s=400&u=e074280fd3dd9a9b0e583af5f17d3a69f3068f8b&v=4" />
               <NameText>{'Emma Hodcroft, PhD'}</NameText>
-              <AfilliationText>{'Institute of Social and Preventive Medicine'}</AfilliationText>
-              <AfilliationText>{'University of Bern, Bern, Switzerland'}</AfilliationText>
+              <AffiliationText>{'Institute of Social and Preventive Medicine'}</AffiliationText>
+              <AffiliationText>{'University of Bern, Bern, Switzerland'}</AffiliationText>
 
               <Ul>
                 {mainLinks.map(({ title, url, alt, icon }) => (
@@ -88,6 +102,16 @@ export function TeamCredits() {
                 ))}
               </Ul>
             </Flex>
+          </Col>
+        </Row>
+
+        <Row noGutters>
+          <Col>
+            <FlexContributors>
+              {contributors.map((contributor) => (
+                <TeamCreditsContributor key={contributor.login} contributor={contributor} />
+              ))}
+            </FlexContributors>
           </Col>
         </Row>
       </Col>
