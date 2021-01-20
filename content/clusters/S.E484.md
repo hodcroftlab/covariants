@@ -8,6 +8,7 @@ This mutation is in the receptor binding domain (RBD), important to ACE2 binding
 - Mutations at S:E484 may significantly reduce convalescent serum neutralization ([Greaney et al., medRxiv](https://www.biorxiv.org/content/10.1101/2020.12.31.425021v1))
 - There has been a case of reinfection associated with `S:E484K`: a woman previously infected with a non-`S:E484K` variant of SARS-CoV-2 was later reinfected with a virus carrying the `S:E484K` mutation ([Nonaka et al., PrePrints](https://www.preprints.org/manuscript/202101.0132/v1))
 - In one study co-incubating SARS-CoV-2 with convalescent plasma, neutralization was completely escaped at day 73 due to an `S:E484K` mutation ([Andreano et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2020.12.28.424451v1))
+- In another study co-incubating psueotyped virus with SARS-CoV-2 spike proteins and monocolonal antibodies, neutralization both by monoclonal antibodies and to convalescent sera was significantly reduced in viruses with `S:E484` mutations ([Liu et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.06.372037v1))
 
 The specific mutation `S:E484K` is found in 3 variants reported at the end of 2020/beginning of 2021, in:
 - South Africa (20H/501Y.V2)
