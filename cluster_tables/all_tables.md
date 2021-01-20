@@ -8,11 +8,12 @@ In the graphs below, countries are displayed in the chart if the country has at 
 - [20A.EU1](#20aeu1) _(S:A222V)_ 
 - [20A.EU2](#20aeu2) _(S:S477N)_ 
 - [S:N501](#sn501) 
+- [S:E484](#se484) 
 - [S:H69-](#sh69-) 
 - [S:N439K](#sn439k) 
 - [S:Y453F](#sy453f) 
 - [S:S98F](#ss98f) 
-- [S:E484](#se484) 
+- [S:L452R](#sl452r)
 - [S:D80Y](#sd80y) 
 - [S:A626S](#sa626s) 
 - [S:V1122L](#sv1122l) 
