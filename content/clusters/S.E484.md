@@ -1,6 +1,8 @@
-`S:E484` has appeared multiple times independently around the world: each can be associated with different accompanying mutations
+## Mutation Information
 
-## `S:E484`
+- `S:E484` has appeared multiple times independently around the world: each can be associated with different accompanying mutations
+
+### S:E484
 This mutation is in the receptor binding domain (RBD), important to ACE2 binding and antibody recognition.
 
 - Mutations at S:E484 may significantly reduce convalescent serum neutralization ([Greaney et al., medRxiv](https://www.biorxiv.org/content/10.1101/2020.12.31.425021v1))
