@@ -1,6 +1,6 @@
 import { PROJECT_DESCRIPTION, PROJECT_NAME, URL_SOCIAL_IMAGE } from 'src/constants'
 
-import faqImage from 'src/assets/social/social-1200x600-faq.png'
+import faqImage from 'src/assets/social/social-1200x630-faq.png'
 
 export interface PageMetadata {
   name?: string

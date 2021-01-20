@@ -5,7 +5,14 @@ import urljoin from 'url-join'
 import { ServerStyleSheet } from 'styled-components'
 import NextDocument, { Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps } from 'next/document'
 
-import { DOMAIN, URL_MANIFEST_JSON, URL_FAVICON, TWITTER_USERNAME_FRIENDLY, SOCIAL_IMAGE_WIDTH, SOCIAL_IMAGE_HEIGHT } from 'src/constants'
+import {
+  DOMAIN,
+  URL_MANIFEST_JSON,
+  URL_FAVICON,
+  TWITTER_USERNAME_FRIENDLY,
+  SOCIAL_IMAGE_WIDTH,
+  SOCIAL_IMAGE_HEIGHT,
+} from 'src/constants'
 import { SEO_DEFAULT, SEO_OVERRIDES } from 'src/seo/seoMetadata'
 
 const lang = 'en'
