@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import urljoin from 'url-join'
 import { get } from 'lodash'
 
-import { DOMAIN, TWITTER_USERNAME_FRIENDLY } from 'src/constants'
+import { DOMAIN, SOCIAL_IMAGE_HEIGHT, SOCIAL_IMAGE_WIDTH, TWITTER_USERNAME_FRIENDLY } from 'src/constants'
 import { SEO_DEFAULT, SEO_OVERRIDES } from 'src/seo/seoMetadata'
 
 const localeFull = 'en-US'
@@ -36,8 +36,8 @@ export function SeoApp() {
       <meta key="og:image" property="og:image" content={image} />
       <meta key="og:image:secure_url" property="og:image:secure_url" content={image} />
       <meta key="og:image:type" property="og:image:type" content="image/png" />
-      <meta key="og:image:width" property="og:image:width" content="1200" />
-      <meta key="og:image:height" property="og:image:height" content="600" />
+      <meta key="og:image:width" property="og:image:width" content={SOCIAL_IMAGE_WIDTH} />
+      <meta key="og:image:height" property="og:image:height" content={SOCIAL_IMAGE_HEIGHT} />
       <meta key="og:locale" property="og:locale" content={localeFull} />
       <meta key="og:title" property="og:title" content={name} />
       <meta key="og:type" property="og:type" content="website" />

@@ -5,7 +5,7 @@ import urljoin from 'url-join'
 import { ServerStyleSheet } from 'styled-components'
 import NextDocument, { Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps } from 'next/document'
 
-import { DOMAIN, URL_MANIFEST_JSON, URL_FAVICON, TWITTER_USERNAME_FRIENDLY } from 'src/constants'
+import { DOMAIN, URL_MANIFEST_JSON, URL_FAVICON, TWITTER_USERNAME_FRIENDLY, SOCIAL_IMAGE_WIDTH, SOCIAL_IMAGE_HEIGHT } from 'src/constants'
 import { SEO_DEFAULT, SEO_OVERRIDES } from 'src/seo/seoMetadata'
 
 const lang = 'en'
@@ -106,8 +106,8 @@ export default class Document extends NextDocument {
           <meta key="og:image" property="og:image" content={image} />
           <meta key="og:image:secure_url" property="og:image:secure_url" content={image} />
           <meta key="og:image:type" property="og:image:type" content="image/png" />
-          <meta key="og:image:width" property="og:image:width" content="1200" />
-          <meta key="og:image:height" property="og:image:height" content="600" />
+          <meta key="og:image:width" property="og:image:width" content={SOCIAL_IMAGE_WIDTH} />
+          <meta key="og:image:height" property="og:image:height" content={SOCIAL_IMAGE_HEIGHT} />
           <meta key="og:locale" property="og:locale" content={localeFull} />
           <meta key="og:title" property="og:title" content={name} />
           <meta key="og:type" property="og:type" content="website" />
