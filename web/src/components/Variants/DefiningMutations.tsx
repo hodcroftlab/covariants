@@ -29,12 +29,17 @@ export interface DefiningMutationsProps {
 }
 
 export function hasDefiningMutations(cluster: ClusterDatum) {
-  return (
-    cluster.mutations?.nonsynonymous?.length &&
-    cluster.mutations?.nonsynonymous?.length > 0 &&
-    cluster.mutations?.synonymous?.length &&
+  // prettier-ignore
+  const hasNonsynonymous =
+    cluster.mutations?.nonsynonymous?.length !== undefined &&
+    cluster.mutations?.nonsynonymous?.length > 0
+
+  // prettier-ignore
+  const hasSynonymous =
+    cluster.mutations?.synonymous?.length !== undefined &&
     cluster.mutations?.synonymous?.length > 0
-  )
+
+  return hasNonsynonymous || hasSynonymous
 }
 
 export function DefiningMutations({ cluster }: DefiningMutationsProps) {
