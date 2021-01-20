@@ -5,10 +5,10 @@ export const COMPANY_NAME = 'Emma Hodcroft' as const
 
 export const DOMAIN = process.env.DOMAIN ?? ''
 export const URL_FAVICON = `${DOMAIN}/favicon.ico`
-export const URL_SOCIAL_IMAGE = `${DOMAIN}/social-1200x600.png`
+export const URL_SOCIAL_IMAGE = 'social-1200x630.png'
+export const SOCIAL_IMAGE_WIDTH = '1200'
+export const SOCIAL_IMAGE_HEIGHT = '630'
 export const URL_MANIFEST_JSON = `${DOMAIN}/manifest.json`
-export const SAFARI_PINNED_TAB_COLOR = '#555555' as const
-export const MS_TILE_COLOR = '#2b5797' as const
 
 export const URL_GITHUB = 'https://github.com/hodcroftlab/covariants' as const
 export const URL_GITHUB_FRIENDLY = 'github.com/hodcroftlab/covariants' as const
