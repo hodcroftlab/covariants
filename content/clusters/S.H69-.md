@@ -1,6 +1,8 @@
+## Mutation Information
+
 - Nonsynonymous: `S:H69-` (nucleotides: `C21767-, A21768-, T21769-`)
 
-## `S:H69-`
+### S:H69-
 `S:H69-` has arisen at 3 times in 'recognised clusters': in the `S:Y453F`, `S:N439K`, and `S:N501Y` clusters ([Kemp et al. bioRxiv (21 Dec)](https://www.biorxiv.org/content/10.1101/2020.12.14.422555v3)); and has additionally arisen multiple times outside of recognised clusters.
 
 - May alter the recognition by antibodies, possibly impacting some antibody-therapy treatments, or immunity ([Kemp et al. - medRxiv (19 Dec)](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v2)).
