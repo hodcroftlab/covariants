@@ -15,15 +15,14 @@ CoVariants
 
 ---
 
-<h3 id="citation" align="center">
-📜️ Citation
-</h3>
-
-```
-Emma B. Hodcroft. 2021. "CoVariants: SARS-CoV-2 Mutations and Variants of Interest." https://covariants.org/
-```
-
----
+<p align="center">
+  <a target="_blank" href="https://covariants.org">
+    <img height="50px"
+      src="https://img.shields.io/badge/%F0%9F%8C%8D%20Visit%20covariants.org-%23aaaaaa.svg"
+      alt="Visit covariants.org"
+    />
+  </a>
+</p>
 
 <p align="center">
   <a target="_blank" href="https://covariants.org">
@@ -36,15 +35,15 @@ Emma B. Hodcroft. 2021. "CoVariants: SARS-CoV-2 Mutations and Variants of Intere
   </a>
 </p>
 
-<p align="center">
-  <a target="_blank" href="https://covariants.org">
-    <img height="50px"
-      src="https://img.shields.io/badge/%F0%9F%8C%8D%20Visit%20covariants.org-%23aaaaaa.svg"
-      alt="Visit covariants.org"
-    />
-  </a>
-</p>
+---
 
+<h3 id="citation" align="center">
+📜️ Citation
+</h3>
+
+```
+Emma B. Hodcroft. 2021. "CoVariants: SARS-CoV-2 Mutations and Variants of Interest." https://covariants.org/
+```
 
 <p align="center">
   <a target="_blank" href="https://twitter.com/firefoxx66">
