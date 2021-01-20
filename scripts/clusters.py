@@ -44,6 +44,12 @@ clusters = {
             # no mutations because has appeared many times independently
             },
 
+            "S484": {'snps': [23011], 'cluster_data': [],
+            "country_info":[], 'col': "#006600", "display_name": "S:E484",
+            "build_name":"S.E484"
+            # no mutations because has appeared many times independently
+            },
+
             "S69": {'snps': [], 'cluster_data': [], 'gaps': [21766,21767,21768],
             "country_info":[], 'col': "#ffcc00", "display_name": "S:H69-",
             "build_name":"S.H69-", 'url_params': "c=gt-S_69,501,453" # color, no europe filter
@@ -65,7 +71,7 @@ clusters = {
             },
 
             "S453": {'snps': [22919], 'cluster_data': [],
-            "country_info":[], 'col': "#cc0000", "display_name": "S:Y453F",
+            "country_info":[], 'col': "#ff1a1a", "display_name": "S:Y453F",
             "build_name":"S.Y453F", 'url_params': "c=gt-S_453&f_region=Europe" # color, europe filter
             # no mutations because has appeared many times independently
             },
@@ -87,10 +93,28 @@ clusters = {
                 }
             },
 
-            "S484": {'snps': [23011], 'cluster_data': [],
-            "country_info":[], 'col': "#006600", "display_name": "S:E484",
-            "build_name":"S.E484"
-            # no mutations because has appeared many times independently
+            "S452": {'snps': [21599,22017,22916], 'cluster_data': [], #'CA' variant
+            "country_info": [], 'build_name': "S.L452R", "display_name": "S:L452R",
+            'col': "#b30000", 'url_params': "c=gt-S_13,152,452", # color, no europe filter
+            "mutations":{
+                "nonsynonymous": [
+                    {'gene': 'S', 'left': 'S', 'pos': 13, 'right': 'I'},
+                    {'gene': 'S', 'left': 'W', 'pos': 152, 'right': 'C'},
+                    {'gene': 'S', 'left': 'L', 'pos': 452, 'right': 'R'},
+                    {'gene': 'ORF1a', 'left': 'I', 'pos': 4205, 'right': 'V'},
+                    {'gene': 'ORF1b', 'left': 'D', 'pos': 1183, 'right': 'Y'}
+                ],
+                "synonymous": [
+                    {'left': 'C', 'pos': 2395, 'right': 'T'},
+                    {'left': 'T', 'pos': 2597, 'right': 'C'},
+                    {'left': 'T', 'pos': 24349, 'right': 'C'},
+                    {'left': 'G', 'pos': 27890, 'right': 'T'},
+                    {'left': 'A', 'pos': 28272, 'right': 'T'}
+                ]
+                }
+#S:W152C S:S13I, S:L452R, ORF1a: I4205V, ORF1b:D1183Y
+
+
             },
 
             "S80": {'snps': [21799, 3098], 'cluster_data': [],
@@ -147,6 +171,8 @@ clusters = {
             "build_name":"DanishCluster"
             # no mutations because is not displayed
             }
+
+
 
 #            "S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
 #            "country_info":[], 'col': "#8a8a8a", "display_name": "20A.EU1",
