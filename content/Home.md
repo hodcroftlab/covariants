@@ -1,3 +1,5 @@
+import imageUrl from 'src/assets/images/gisaid_logo.png'
+
 Click on a variant button to start exploring!
 
 CoVariants is provides overview of SARS-CoV-2 variants and mutations of interest that are of interest. Here, you can find out what mutations define a variant, what impact they might have (with links to papers and resources), where variants are found, and see the variants in Nextstrain builds!
@@ -5,7 +7,9 @@ CoVariants is provides overview of SARS-CoV-2 variants and mutations of interest
 To look at one particular variant, use the buttons to read information, see graphs and the protein structure, and link out to focused Nextstrain builds.
 To look at many variants at once, check out the [Per Variant](/per-variant) and [Per Country](/per-country) pages, where you can view a lot of data in the same place, and compare variants and countries!
 
-<!-- ![mini-per-country](static/content/proteins/mini-countries.png)-->
+<figure className="text-center">
+  <img src={imageUrl} alt="Mini per counry"/>
+</figure>
 
 ---
 
