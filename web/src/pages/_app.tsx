@@ -14,6 +14,7 @@ import React, { useMemo } from 'react'
 
 import { AppProps } from 'next/app'
 import { ConnectedRouter } from 'connected-next-router'
+import { SeoApp } from 'src/components/Common/SeoApp'
 
 import { configureStore } from 'src/state/store'
 import { ThemeProvider } from 'styled-components'
@@ -23,7 +24,6 @@ import { Provider } from 'react-redux'
 import { MDXProvider } from '@mdx-js/react'
 
 import { mdxComponents } from 'src/components/Common/MdxComponents'
-import { SEO } from 'src/components/Common/SEO'
 
 import { theme } from 'src/theme'
 
@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       <ConnectedRouter>
         <ThemeProvider theme={theme}>
           <MDXProvider components={(components) => ({ ...components, ...mdxComponents })}>
-            <SEO />
+            <SeoApp />
             <Component {...pageProps} />
           </MDXProvider>
         </ThemeProvider>
