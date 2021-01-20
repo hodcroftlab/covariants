@@ -23,6 +23,8 @@ CoVariants
 Emma B. Hodcroft. 2021. "CoVariants: SARS-CoV-2 Mutations and Variants of Interest." https://covariants.org/
 ```
 
+---
+
 <p align="center">
   <a target="_blank" href="https://covariants.org">
     <img
