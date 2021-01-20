@@ -1,17 +1,22 @@
 import React from 'react'
 
-import NextDocument, { Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps } from 'next/document'
+import { get } from 'lodash'
+import urljoin from 'url-join'
 import { ServerStyleSheet } from 'styled-components'
+import NextDocument, { Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps } from 'next/document'
 
 import {
-  PROJECT_NAME,
-  PROJECT_DESCRIPTION,
-  URL_SOCIAL_IMAGE,
   DOMAIN,
-  TWITTER_USERNAME_FRIENDLY,
   URL_MANIFEST_JSON,
   URL_FAVICON,
+  TWITTER_USERNAME_FRIENDLY,
+  SOCIAL_IMAGE_WIDTH,
+  SOCIAL_IMAGE_HEIGHT,
 } from 'src/constants'
+import { SEO_DEFAULT, SEO_OVERRIDES } from 'src/seo/seoMetadata'
+
+const lang = 'en'
+const localeFull = 'en-US'
 
 export const GenericIcons = [16, 32, 96, 128, 196].map((size) => {
   const sizes = `${size}x${size}`
@@ -70,17 +75,22 @@ export default class Document extends NextDocument {
   }
 
   render() {
-    const localeFull = 'en_US'
+    const pathname = this.props.dangerousAsPath
+    const url = urljoin(DOMAIN, pathname)
+
+    // eslint-disable-next-line prefer-const
+    let { name, description, image } = { ...SEO_DEFAULT, ...get(SEO_OVERRIDES, pathname, SEO_DEFAULT) }
+
+    if (image) {
+      image = urljoin(DOMAIN, image)
+    }
 
     return (
-      <Html lang="en">
+      <Html lang={lang}>
         <Head>
           <meta charSet="UTF-8" />
-          <title>{PROJECT_NAME}</title>
-          <meta name="description" content={PROJECT_DESCRIPTION} />
-          <meta name="application-name" content={PROJECT_NAME} />
-          <meta name="theme-color" content="#ffffff" />
 
+          <meta name="theme-color" content="#ffffff" />
           <link rel="manifest" href={URL_MANIFEST_JSON} />
           <link rel="shortcut icon" href={URL_FAVICON} />
 
@@ -91,26 +101,30 @@ export default class Document extends NextDocument {
 
           {MicrosoftIcons}
 
-          <meta itemProp="description" content={PROJECT_DESCRIPTION} />
-          <meta itemProp="image" content={URL_SOCIAL_IMAGE} />
-          <meta itemProp="name" content={PROJECT_NAME} />
-          <meta property="og:description" content={PROJECT_DESCRIPTION} />
-          <meta property="og:image" content={URL_SOCIAL_IMAGE} />
-          <meta property="og:image:secure_url" content={URL_SOCIAL_IMAGE} />
-          <meta property="og:image:type" content="image/png" />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="600" />
-          <meta property="og:locale" content={localeFull} />
-          <meta property="og:title" content={PROJECT_NAME} />
-          <meta property="og:type" content="website" />
-          <meta property="og:url" content={DOMAIN} />
+          <title>{name}</title>
 
+          <meta name="description" content={description} />
+          <meta name="application-name" content={name} />
+
+          <meta key="description" itemProp="description" content={description} />
+          <meta key="image" itemProp="image" content={image} />
+          <meta key="name" itemProp="name" content={name} />
+          <meta key="og:description" property="og:description" content={description} />
+          <meta key="og:image" property="og:image" content={image} />
+          <meta key="og:image:secure_url" property="og:image:secure_url" content={image} />
+          <meta key="og:image:type" property="og:image:type" content="image/png" />
+          <meta key="og:image:width" property="og:image:width" content={SOCIAL_IMAGE_WIDTH} />
+          <meta key="og:image:height" property="og:image:height" content={SOCIAL_IMAGE_HEIGHT} />
+          <meta key="og:locale" property="og:locale" content={localeFull} />
+          <meta key="og:title" property="og:title" content={name} />
+          <meta key="og:type" property="og:type" content="website" />
+          <meta key="og:url" property="og:url" content={url} />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:description" content={PROJECT_DESCRIPTION} />
-          <meta name="twitter:image" content={URL_SOCIAL_IMAGE} />
-          <meta name="twitter:image:alt" content={PROJECT_DESCRIPTION} />
-          <meta name="twitter:title" content={PROJECT_NAME} />
-          <meta name="twitter:url" content={DOMAIN} />
+          <meta name="twitter:description" content={description} />
+          <meta name="twitter:image" content={image} />
+          <meta name="twitter:image:alt" content={description} />
+          <meta name="twitter:title" content={name} />
+          <meta name="twitter:url" content={url} />
           <meta name="twitter:site" content={TWITTER_USERNAME_FRIENDLY} />
         </Head>
 
