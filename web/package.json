@@ -91,6 +91,7 @@
     "react-icons": "3.11.0",
     "react-loader-spinner": "3.1.14",
     "react-redux": "7.2.1",
+    "react-share": "4.3.1",
     "reactstrap": "8.5.1",
     "recharts": "2.0.0-beta.8",
     "redux": "4.0.5",
@@ -103,7 +104,8 @@
     "reselect": "4.0.0",
     "serialize-javascript": "5.0.1",
     "styled-components": "5.1.1",
-    "typeface-open-sans": "0.0.75"
+    "typeface-open-sans": "0.0.75",
+    "url-join": "4.0.1"
   },
   "devDependencies": {
     "@babel/core": "7.11.5",
@@ -164,6 +166,7 @@
     "@types/serialize-javascript": "5.0.0",
     "@types/styled-components": "5.1.2",
     "@types/terser-webpack-plugin": "4.1.0",
+    "@types/url-join": "4.0.0",
     "@types/webpack": "4.41.22",
     "@types/webpackbar": "4.0.0",
     "@typescript-eslint/eslint-plugin": "4.0.1",
