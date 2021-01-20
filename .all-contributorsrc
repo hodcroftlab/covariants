@@ -1,0 +1,15 @@
+{
+  "projectName": "covariants",
+  "projectOwner": "hodcroftlab",
+  "files": [
+    "new-readme.md"
+  ],
+  "imageSize": 100,
+  "contributorsSortAlphabetically": true,
+  "skipCi": true,
+  "contributors": [],
+  "repoType": "github",
+  "contributorsPerLine": 4,
+  "repoHost": "https://github.com",
+  "commitConvention": "angular"
+}
