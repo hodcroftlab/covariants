@@ -4,6 +4,7 @@ import { Col, Container, Row } from 'reactstrap'
 import styled from 'styled-components'
 
 import { PROJECT_NAME, COMPANY_NAME } from 'src/constants'
+import { SharingPanel } from 'src/components/Common/SharingPanel'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { TeamCredits } from 'src/components/Common/TeamCredits'
 import { PoweredBy } from 'src/components/Common/PoweredBy'
@@ -43,6 +44,12 @@ export function FooterContent() {
 
   return (
     <FooterContainer fluid tag="footer">
+      <Row noGutters>
+        <Col>
+          <SharingPanel />
+        </Col>
+      </Row>
+
       <Row noGutters>
         <Col>
           <TeamCredits />

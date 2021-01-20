@@ -15,3 +15,7 @@ export const URL_GITHUB_FRIENDLY = 'github.com/hodcroftlab/covariants' as const
 
 export const TWITTER_USERNAME_RAW = 'firefoxx66' as const
 export const TWITTER_USERNAME_FRIENDLY = `@${TWITTER_USERNAME_RAW}`
+export const TWITTER_HASHTAGS = [PROJECT_NAME]
+export const TWITTER_RELATED = [TWITTER_USERNAME_RAW]
+
+export const FACEBOOK_HASHTAG = PROJECT_NAME
