@@ -94,7 +94,7 @@ clusters = {
             "country_info":[], 'col': "#911eb4", 
             "display_name": "S:S98F",
             "build_name":"S.S98F",
-            "nextstrain_url", "https://nextstrain.org/groups/neherlab/ncov/S.S98F?c=gt-S_98&f_region=Europe", # color, europe Filter
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.S98F?c=gt-S_98&f_region=Europe", # color, europe Filter
             "mutations":{
                 "nonsynonymous": [
                     {'gene': 'S', 'left': 'S', 'pos': 98, 'right': 'F'},

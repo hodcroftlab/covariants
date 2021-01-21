@@ -12,7 +12,7 @@ from shutil import copyfile
 import numpy as np
 import pandas as pd
 
-from clusters import clusters, get_build_url
+from clusters import clusters
 from colors_and_countries import country_styles
 
 cluster_tables_path = "cluster_tables"
@@ -188,13 +188,6 @@ def convert_per_cluster_data(clusters):
     return per_cluster_data_output, per_cluster_data_output_interp
 
 
-def add_cluster_properties(cluster):
-    result = {}
-    result.update(cluster)
-    result.update({'build_url': get_build_url(cluster)})
-    return result
-
-
 if __name__ == '__main__':
     # NOTE: we exclude DanishCluster
     clusters.pop("DanishCluster", None)
@@ -216,7 +209,7 @@ if __name__ == '__main__':
     with open(os.path.join(output_path, "perClusterData.json"), "w") as fh:
         json.dump(per_cluster_data_output, fh, indent=2, sort_keys=True)
 
-    clusters = [add_cluster_properties(cluster) for _, cluster in clusters.items()]
+    clusters = [cluster for _, cluster in clusters.items()]
     with open(os.path.join(output_path, "clusters.json"), "w") as fh:
         json.dump({'clusters': clusters}, fh, indent=2, sort_keys=True)
 
