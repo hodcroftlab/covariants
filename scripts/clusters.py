@@ -221,15 +221,3 @@ clusters = {
             #"ORFTEN30": {'snps': [29644], 'exclude_snps': [22226], 'cluster_data': [], "build_name": "ORF10.V30", "display_name": "ORF10:V30"}
             #"N220re": {'snps': [28931,29644], 'exclude_snps': [22226], 'cluster_data': [], "build_name": "N.A220Vre", "display_name": "N:A220Vre"}
             }
-
-
-def get_build_url(cluster):
-    build_name = cluster['build_name']
-
-    url_params = "f_region=Europe"
-    try:
-        url_params = cluster['url_params']
-    except KeyError:
-        pass
-
-    return f"https://nextstrain.org/groups/neherlab/ncov/{build_name}?{url_params}"
