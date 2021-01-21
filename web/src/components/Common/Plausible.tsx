@@ -20,11 +20,17 @@ export function PlausibleProvider({
 }) {
   const domainStripped = domain.replace(/https?:\/\//, '')
 
+  // <script async defer data-domain={domainStripped} src={`${customDomain}/js/plausible.js`} />
   return (
     <>
       <Head>
         {process.env.NODE_ENV === 'production' && (
-          <script async defer data-domain={domainStripped} src={`${customDomain}/js/plausible.js`} />
+          <script
+            async
+            defer
+            data-domain="covariants-git-feat-plausible.hodcroftlab.vercel.app"
+            src="https://plausible.io/js/plausible.js"
+          />
         )}
       </Head>
       {children}
