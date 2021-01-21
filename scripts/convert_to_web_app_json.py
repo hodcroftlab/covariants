@@ -12,7 +12,7 @@ from shutil import copyfile
 import numpy as np
 import pandas as pd
 
-from clusters import clusters
+from clusters import clusters, get_build_url
 from colors_and_countries import country_styles
 
 cluster_tables_path = "cluster_tables"
@@ -186,28 +186,6 @@ def convert_per_cluster_data(clusters):
             {'cluster': display_name, 'distribution': distribution})
 
     return per_cluster_data_output, per_cluster_data_output_interp
-
-
-# HACK: Copied from `allClusterDynamics.py:355`
-# TODO: deduplicate
-cluster_url_params = {
-    "S:N501": "",  # don't have Europe filter
-    "S:H69-": "c=gt-S_69,501,453",  # color by mutations, no Europe filter
-    "S:Y453F": "c=gt-S_453&f_region=Europe"  # color by mutations, Europe filter
-}
-
-
-def get_build_url(cluster):
-    build_name = cluster['build_name']
-    display_name = cluster['display_name']
-
-    url_params = "f_region=Europe"
-    try:
-        url_params = cluster_url_params[display_name]
-    except KeyError:
-        pass
-
-    return f"https://nextstrain.org/groups/neherlab/ncov/{build_name}?{url_params}"
 
 
 def add_cluster_properties(cluster):
