@@ -1,5 +1,4 @@
-import React, { PropsWithChildren, HTMLProps, useCallback } from 'react'
-import { usePlausible } from 'src/components/Common/Plausible'
+import React, { PropsWithChildren, HTMLProps } from 'react'
 
 import styled from 'styled-components'
 import { GoLinkExternal } from 'react-icons/go'
@@ -40,14 +39,11 @@ export function LinkExternal({
   children,
   ...restProps
 }: PropsWithChildren<LinkExternalProps>) {
-  const plausible = usePlausible()
-  const handleClick = useCallback(() => plausible('LinkExternal', { props: { href } }), [href, plausible])
-
   const Icon: React.ReactNode = icon === undefined ? <GoLinkExternal /> : icon
 
   return (
     <>
-      <A target="_blank" rel="noopener noreferrer" href={href} $color={$color} {...restProps} onClick={handleClick}>
+      <A target="_blank" rel="noopener noreferrer" href={href} $color={$color} {...restProps}>
         {Icon && <LinkExternalIconWrapper $color={$iconColor}>{Icon}</LinkExternalIconWrapper>}
         <ContentWrapper>{children}</ContentWrapper>
       </A>
