@@ -96,7 +96,7 @@ def get_import_frequency_province(cases, travel_volume, traveler_incidence, pops
         dates.append(d)
 
         # here, travel volume is per week
-        travel_rate = travel_volume[cw]/popsize
+        travel_rate = travel_volume[week]/popsize
 
         imported_incidence.append(avg_cases_per_intro*travel_rate*traveler_incidence[week])
 
@@ -279,6 +279,26 @@ def case_and_travel_figure(countries, roamers, cases_by_cw, province_size, count
     return fig, axs
 
 
+def confirmed_vs_estimated_imports(country, roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita, scale_factor):
+
+    weeks = range(15,50)
+    case_data = load_case_data(countries)
+
+    fig = plt.figure()
+    case_data = load_case_data(countries)
+    de_imports = pd.read_csv(f'../cluster_scripts/travel_data/{country.lower()}_imports_from_spain.tsv', sep='\t')
+    res = get_country_imports(roamers, case_data[country], travel_volume[country], country_to_iso[country], spain_frequency,
+                              cases_by_cw_per_capita, weeks, popsizes[country])
+
+    plt.plot(res['dates'], res['introductions'], 'o-', label="estimated introductions", lw=2)
+
+    plt.plot(res['dates'], np.array(res['introductions'])*scale_factor, 'o-', label="estimated introductions rescaled", lw=2)
+
+    plot([CW_to_date(x) for x in de_imports.CW], de_imports.cases, 'o-', label="reported cases originating from Spain", lw=2)
+    plt.legend()
+    fig.autofmt_xdate()
+
+
 if __name__ == '__main__':
     cluster_data = pd.read_csv('../ncov_cluster/2021-01-14_cluster_data.tsv', index_col=0)
     total_data =   pd.read_csv('../ncov_cluster/2021-01-14_total_data.tsv', index_col=0)
@@ -313,8 +333,12 @@ if __name__ == '__main__':
     import_figure(countries, roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita)
 
     import_scaled(countries, roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita, cluster_data, total_data)
+    confirmed_vs_estimated_imports("Germany", roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita, 6)
+    plt.fill_between([datetime(2020,6,22),datetime(2020,9,12)], [300,300], alpha=0.3)
+    confirmed_vs_estimated_imports("Switzerland", roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita, 4)
+    plt.fill_between([datetime(2020,6,20),datetime(2020,8,26)], [50,50], alpha=0.3)
 
-    case_and_travel_figure(countries, roamers, cases_by_cw, provinces, country_to_iso, province_codes)
+    # case_and_travel_figure(countries, roamers, cases_by_cw, provinces, country_to_iso, province_codes)
 
     weeks = range(28,36)
     country_distribution = country_correlation(roamers, countries, country_to_iso, weeks, province_codes)
