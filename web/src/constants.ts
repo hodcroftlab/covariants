@@ -4,6 +4,7 @@ export const COPYRIGHT_YEAR_START = 2020 as const
 export const COMPANY_NAME = 'Emma Hodcroft' as const
 
 export const DOMAIN = process.env.DOMAIN ?? ''
+export const DOMAIN_STRIPPED = process.env.DOMAIN_STRIPPED ?? ''
 export const URL_FAVICON = `${DOMAIN}/favicon.ico`
 export const URL_SOCIAL_IMAGE = 'social-1200x630.png'
 export const SOCIAL_IMAGE_WIDTH = '1200'

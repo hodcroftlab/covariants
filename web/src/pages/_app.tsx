@@ -12,20 +12,19 @@ import dynamic from 'next/dynamic'
 
 import React, { useMemo } from 'react'
 
-import { AppProps } from 'next/app'
+import type { AppProps } from 'next/app'
+import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-next-router'
+import { ThemeProvider } from 'styled-components'
+import { MDXProvider } from '@mdx-js/react'
+
+import { theme } from 'src/theme'
+import { DOMAIN_STRIPPED } from 'src/constants'
+import { Plausible } from 'src/components/Common/Plausible'
 import { SeoApp } from 'src/components/Common/SeoApp'
 
 import { configureStore } from 'src/state/store'
-import { ThemeProvider } from 'styled-components'
-
-import { Provider } from 'react-redux'
-
-import { MDXProvider } from '@mdx-js/react'
-
 import { mdxComponents } from 'src/components/Common/MdxComponents'
-
-import { theme } from 'src/theme'
 
 import 'src/styles/global.scss'
 
@@ -39,6 +38,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       <ConnectedRouter>
         <ThemeProvider theme={theme}>
           <MDXProvider components={(components) => ({ ...components, ...mdxComponents })}>
+            <Plausible domain={DOMAIN_STRIPPED} />
             <SeoApp />
             <Component {...pageProps} />
           </MDXProvider>

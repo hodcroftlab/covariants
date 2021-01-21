@@ -22,6 +22,7 @@ import getWithLodash from './withLodash'
 // import getWithStaticComprression from './webpackCompression'
 import getWithTypeChecking from './withTypeChecking'
 import withRaw from './withRaw'
+import withJson from './withJson'
 import withSvg from './withSvg'
 import withImages from './withImages'
 import withIgnore from './withIgnore'
@@ -45,6 +46,7 @@ const {
   ENABLE_REDUX_LOGGER,
   DEBUG_SET_INITIAL_DATA,
   DOMAIN,
+  DOMAIN_STRIPPED,
 } = getEnvVars()
 
 const { pkg, moduleRoot } = findModuleRoot()
@@ -60,13 +62,14 @@ const clientEnv = {
   TRAVIS_BUILD_WEB_URL: getBuildUrl(),
   COMMIT_HASH: getGitCommitHash(),
   DOMAIN,
+  DOMAIN_STRIPPED,
 }
 
 console.info(`Client-side Environment:\n${JSON.stringify(clientEnv, null, 2)}`)
 
 const nextConfig: NextConfig = {
   distDir: `.build/${process.env.NODE_ENV}/tmp`,
-  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx', 'all-contributorsrc'],
   onDemandEntries: {
     maxInactiveAge: 60 * 1000,
     pagesBufferLength: 2,
@@ -190,6 +193,7 @@ const config = withPlugins(
     [withSvg],
     [withImages],
     [withRaw],
+    [withJson],
     // ANALYZE && [withBundleAnalyzer],
     [withFriendlyConsole],
     [withMDX],

@@ -3,13 +3,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { replace } from 'connected-next-router'
 import { ClusterButtonPanel } from 'src/components/ClusterButtonPanel/ClusterButtonPanel'
-import { DefiningMutations } from 'src/components/Variants/DefiningMutations'
+import { DefiningMutations, hasDefiningMutations } from 'src/components/Variants/DefiningMutations'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
-import dynamic from 'next/dynamic'
 
 import { theme } from 'src/theme'
 import { ClusterDatum, getClusters } from 'src/io/getClusters'
+import { getClusterContent } from 'src/io/getClusterContent'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { Layout } from 'src/components/Layout/Layout'
 import { Editable } from 'src/components/Common/Editable'
@@ -19,7 +19,6 @@ import { ReactComponent as NextstrainIconBase } from 'src/assets/images/nextstra
 
 import { PlotCard } from './PlotCard'
 import { ProteinCard } from './ProteinCard'
-import { ClusterContentLoading } from './ClusterContentLoading'
 
 const EditableClusterContent = styled(Editable)``
 
@@ -37,9 +36,6 @@ const NextstrainIcon = styled(NextstrainIconBase)`
   width: 25px;
   height: 25px;
 `
-
-const getClusterContent = (cluster: string) =>
-  dynamic(() => import(`../../../../content/clusters/${cluster}.md`), { ssr: true, loading: ClusterContentLoading })
 
 const clusters = getClusters()
 
@@ -93,20 +89,22 @@ export function VariantsPageDisconnected({ currentCluster }: VariantsPageProps) 
                 </Col>
               </Row>
 
-              <Row noGutters>
-                <Col>
-                  <Row noGutters>
-                    <Col>
-                      <h2>{'Defining mutations'}</h2>
-                    </Col>
-                  </Row>
-                  <Row noGutters>
-                    <Col>
-                      <DefiningMutations cluster={currentCluster} />
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
+              {hasDefiningMutations(currentCluster) && (
+                <Row noGutters>
+                  <Col>
+                    <Row noGutters>
+                      <Col>
+                        <h2>{'Defining mutations'}</h2>
+                      </Col>
+                    </Row>
+                    <Row noGutters>
+                      <Col>
+                        <DefiningMutations cluster={currentCluster} />
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              )}
 
               <Row noGutters className="mb-2">
                 <Col>

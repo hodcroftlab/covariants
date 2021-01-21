@@ -3,14 +3,14 @@
 country_list =[
 'France',
 'United Kingdom',
-'Latvia',
+'Czech Republic',
 'Netherlands',
 'Norway',
 'Spain',
 'Belgium',
 'Switzerland',
 'Germany',
-'Czech Republic',
+'USA',
 'Ireland',
 'Italy',
 'New Zealand',
@@ -21,7 +21,8 @@ country_list =[
 'Hong Kong',
 'Portugal',
 'Luxembourg',
-'Lithuania'
+'Lithuania',
+'Iceland'
 ]
 
 colors = [
@@ -45,7 +46,8 @@ colors = [
 "#d9d9d9",
 '#990000',
 '#c2c2a3',
-'#ff66ff'
+'#ff66ff',
+'#0000ff'
 ]
 
 #separate out Scotland, England, NI, Wales...

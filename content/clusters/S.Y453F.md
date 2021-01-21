@@ -1,6 +1,8 @@
-`S:Y453F` has appeared multiple times independently: each can be associated with different accompanying mutations
+## Mutation Information
 
-## `S:Y453F`
+- `S:Y453F` has appeared multiple times independently: each can be associated with different accompanying mutations
+
+## S:Y453F
 This mutation is in the receptor binding domain (RDB), important to ACE2 binding and antibody recognition
 
 

@@ -9,6 +9,7 @@ export function getEnvVars() {
   const PRODUCTION = NODE_ENV === 'production'
   const DEBUG_SET_INITIAL_DATA = !PRODUCTION && getbool('DEV_DEBUG_SET_INITIAL_DATA')
   const DOMAIN = getDomain()
+  const DOMAIN_STRIPPED = DOMAIN.replace('https://', '').replace('http://', '')
 
   const common = {
     BABEL_ENV,
@@ -18,6 +19,7 @@ export function getEnvVars() {
     PRODUCTION,
     DEBUG_SET_INITIAL_DATA,
     DOMAIN,
+    DOMAIN_STRIPPED,
   }
 
   if (PRODUCTION) {

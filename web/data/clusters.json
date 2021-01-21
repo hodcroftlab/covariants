@@ -150,6 +150,17 @@
       "url_params": ""
     },
     {
+      "build_name": "S.E484",
+      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.E484?f_region=Europe",
+      "cluster_data": [],
+      "col": "#006600",
+      "country_info": [],
+      "display_name": "S:E484",
+      "snps": [
+        23011
+      ]
+    },
+    {
       "build_name": "S.H69-",
       "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.H69-?c=gt-S_69,501,453",
       "cluster_data": [],
@@ -203,7 +214,7 @@
       "build_name": "S.Y453F",
       "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y453F?c=gt-S_453&f_region=Europe",
       "cluster_data": [],
-      "col": "#cc0000",
+      "col": "#ff1a1a",
       "country_info": [],
       "display_name": "S:Y453F",
       "snps": [
@@ -265,15 +276,79 @@
       ]
     },
     {
-      "build_name": "S.E484",
-      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.E484?f_region=Europe",
+      "build_name": "S.L452R",
+      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.L452R?f_region=Europe",
       "cluster_data": [],
-      "col": "#006600",
+      "col": "#b30000",
       "country_info": [],
-      "display_name": "S:E484",
+      "display_name": "S:L452R",
+      "mutations": {
+        "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 13,
+            "right": "I"
+          },
+          {
+            "gene": "S",
+            "left": "W",
+            "pos": 152,
+            "right": "C"
+          },
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 452,
+            "right": "R"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "I",
+            "pos": 4205,
+            "right": "V"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "D",
+            "pos": 1183,
+            "right": "Y"
+          }
+        ],
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 2395,
+            "right": "T"
+          },
+          {
+            "left": "T",
+            "pos": 2597,
+            "right": "C"
+          },
+          {
+            "left": "T",
+            "pos": 24349,
+            "right": "C"
+          },
+          {
+            "left": "G",
+            "pos": 27890,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 28272,
+            "right": "T"
+          }
+        ]
+      },
       "snps": [
-        23011
-      ]
+        21599,
+        22017,
+        22916
+      ],
+      "url_params": "c=gt-S_13,152,452"
     },
     {
       "build_name": "S.D80Y",

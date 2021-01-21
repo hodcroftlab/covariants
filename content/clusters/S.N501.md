@@ -2,6 +2,8 @@ import { AminoacidMutationBadge, NucleotideMutationBadge } from 'src/components/
 import { Link } from 'src/components/Link/Link'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 
+## Mutation Information
+
 - `S:N501` has appeared multiple times independently: each can be associated with different accompanying mutations
 - Amino-acid changes are <AminoacidMutationBadge mutation={'S:N501Y'}/> (nucleotide mutation <NucleotideMutationBadge mutation={'A23063T'}/>), <AminoacidMutationBadge mutation={'S:N501T'}/> (nucleotide mutation <NucleotideMutationBadge mutation={'A23064C'}/>), and <AminoacidMutationBadge mutation={'S:N501S'}/> (nucleotide mutation <NucleotideMutationBadge mutation={'A23064G'}/>)
 

@@ -162,11 +162,12 @@ if print_files and "all" in clus_answer:
         "- [20A.EU1](#20aeu1) _(S:A222V)_ \n"
         "- [20A.EU2](#20aeu2) _(S:S477N)_ \n"
         "- [S:N501](#sn501) \n"
+        "- [S:E484](#se484) \n"
         "- [S:H69-](#sh69-) \n"
         "- [S:N439K](#sn439k) \n"
         "- [S:Y453F](#sy453f) \n"
         "- [S:S98F](#ss98f) \n"
-        "- [S:E484](#se484) \n"
+        "- [S:L452R](#sl452r) \n"
         "- [S:D80Y](#sd80y) \n"
         "- [S:A626S](#sa626s) \n"
         "- [S:V1122L](#sv1122l) \n\n")
