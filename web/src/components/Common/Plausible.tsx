@@ -18,13 +18,13 @@ export function PlausibleProvider({
   customDomain?: string
   children: ReactNode | ReactNode[]
 }) {
-  console.log({ domain })
+  const domainStripped = domain.replace(/https?:\/\//, '')
 
   return (
     <>
       <Head>
         {process.env.NODE_ENV === 'production' && (
-          <script async defer data-domain={domain} src={`${customDomain}/js/plausible.js`} />
+          <script async defer data-domain={domainStripped} src={`${customDomain}/js/plausible.js`} />
         )}
       </Head>
       {children}
