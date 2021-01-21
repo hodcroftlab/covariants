@@ -19,8 +19,8 @@ import { ThemeProvider } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
 
 import { theme } from 'src/theme'
-import { DOMAIN } from 'src/constants'
-import { PlausibleProvider } from 'src/components/Common/Plausible'
+import { DOMAIN_STRIPPED } from 'src/constants'
+import { Plausible } from 'src/components/Common/Plausible'
 import { SeoApp } from 'src/components/Common/SeoApp'
 
 import { configureStore } from 'src/state/store'
@@ -38,10 +38,9 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       <ConnectedRouter>
         <ThemeProvider theme={theme}>
           <MDXProvider components={(components) => ({ ...components, ...mdxComponents })}>
-            <PlausibleProvider domain={DOMAIN}>
-              <SeoApp />
-              <Component {...pageProps} />
-            </PlausibleProvider>
+            <Plausible domain={DOMAIN_STRIPPED} />
+            <SeoApp />
+            <Component {...pageProps} />
           </MDXProvider>
         </ThemeProvider>
       </ConnectedRouter>

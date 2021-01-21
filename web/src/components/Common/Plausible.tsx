@@ -5,36 +5,28 @@
  * By 4lejandrito
  */
 
-import React, { ReactNode } from 'react'
+import React from 'react'
 import Head from 'next/head'
 import { get, noop } from 'lodash'
 
-export function PlausibleProvider({
-  domain,
-  children,
-  customDomain = 'https://plausible.io',
-}: {
+export interface PlausibleProps {
   domain: string
-  customDomain?: string
-  children: ReactNode | ReactNode[]
-}) {
-  const domainStripped = domain.replace(/https?:\/\//, '')
+  plausibleDomain?: string
+}
 
-  // <script async defer data-domain={domainStripped} src={`${customDomain}/js/plausible.js`} />
+export const PLAUSIBLE_DOMAIN_DEFAULT = 'https://plausible.io'
+
+export function Plausible({ domain, plausibleDomain = PLAUSIBLE_DOMAIN_DEFAULT }: PlausibleProps) {
+  if (process.env.NODE_ENV !== 'production') {
+    return null
+  }
+
+  const plausibleJs = `${plausibleDomain}/js/plausible.js`
+
   return (
-    <>
-      <Head>
-        {process.env.NODE_ENV === 'production' && (
-          <script
-            async
-            defer
-            data-domain="covariants-git-feat-plausible.hodcroftlab.vercel.app"
-            src="https://plausible.io/js/plausible.js"
-          />
-        )}
-      </Head>
-      {children}
-    </>
+    <Head>
+      <script async defer data-domain={domain} src={plausibleJs} />
+    </Head>
   )
 }
 
