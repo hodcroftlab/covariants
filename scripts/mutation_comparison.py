@@ -40,7 +40,7 @@ mutation_comparison = {
             "S:N501Y",
             "S:D614G",
             "S:H655Y",
-            "T:1027I"
+            "S:T1027I"
         ]
     },
 
