@@ -14,9 +14,9 @@ export const SharedMutationsPageContainer = styled(Container)`
 `
 
 export const SharedMutationsWrapper = styled.div`
-  display: flex;
-  margin: 0 auto;
-  align-content: center;
+  display: block;
+  flex: 0;
+  overflow-x: auto;
 `
 
 export const SharedMutationsWrapperInner = styled.div`
@@ -44,7 +44,9 @@ export function SharedMutationsPage() {
         <Row noGutters>
           <Col className="pb-10">
             <Editable githubUrl="blob/master/scripts" text={'View data generation scripts'}>
-              <SharedMutations />
+              <SharedMutationsWrapper>
+                <SharedMutations />
+              </SharedMutationsWrapper>
             </Editable>
           </Col>
         </Row>
