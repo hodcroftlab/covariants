@@ -2,7 +2,6 @@
   "clusters": [
     {
       "build_name": "20A.EU1",
-      "build_url": "https://nextstrain.org/groups/neherlab/ncov/20A.EU1?f_region=Europe",
       "cluster_data": [],
       "col": "#ff8d3d",
       "country_info": [],
@@ -47,6 +46,7 @@
           }
         ]
       },
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.EU1?f_region=Europe",
       "snps": [
         22226,
         28931,
@@ -55,7 +55,6 @@
     },
     {
       "build_name": "20A.EU2",
-      "build_url": "https://nextstrain.org/groups/neherlab/ncov/20A.EU2?f_region=Europe",
       "cluster_data": [],
       "col": "#65beeb",
       "country_info": [],
@@ -129,6 +128,7 @@
           }
         ]
       },
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.EU2?f_region=Europe",
       "snps": [
         22991,
         4542
@@ -136,33 +136,31 @@
     },
     {
       "build_name": "S.N501",
-      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.N501?",
       "cluster_data": [],
       "col": "#ff99ff",
       "country_info": [],
       "display_name": "S:N501",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.N501",
       "snps": [
         23063
       ],
       "snps2": [
         23062
-      ],
-      "url_params": ""
+      ]
     },
     {
       "build_name": "S.E484",
-      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.E484?f_region=Europe",
       "cluster_data": [],
       "col": "#006600",
       "country_info": [],
       "display_name": "S:E484",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484",
       "snps": [
         23011
       ]
     },
     {
       "build_name": "S.H69-",
-      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.H69-?c=gt-S_69,501,453",
       "cluster_data": [],
       "col": "#ffcc00",
       "country_info": [],
@@ -172,12 +170,11 @@
         21767,
         21768
       ],
-      "snps": [],
-      "url_params": "c=gt-S_69,501,453"
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.H69-?c=gt-S_69,501,453",
+      "snps": []
     },
     {
       "build_name": "S.N439K",
-      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.N439K?f_region=Europe",
       "cluster_data": [],
       "col": "#fb9a99",
       "country_info": [],
@@ -205,6 +202,7 @@
           }
         ]
       },
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_439&f_region=Europe",
       "snps": [
         7766,
         22878
@@ -212,19 +210,17 @@
     },
     {
       "build_name": "S.Y453F",
-      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y453F?c=gt-S_453&f_region=Europe",
       "cluster_data": [],
       "col": "#ff1a1a",
       "country_info": [],
       "display_name": "S:Y453F",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y453F?c=gt-S_453&f_region=Europe",
       "snps": [
         22919
-      ],
-      "url_params": "c=gt-S_453&f_region=Europe"
+      ]
     },
     {
       "build_name": "S.S98F",
-      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.S98F?f_region=Europe",
       "cluster_data": [],
       "col": "#911eb4",
       "country_info": [],
@@ -270,6 +266,7 @@
           }
         ]
       },
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.S98F?c=gt-S_98&f_region=Europe",
       "snps": [
         21854,
         25504
@@ -277,7 +274,6 @@
     },
     {
       "build_name": "S.L452R",
-      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.L452R?f_region=Europe",
       "cluster_data": [],
       "col": "#b30000",
       "country_info": [],
@@ -343,16 +339,15 @@
           }
         ]
       },
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.L452R?c=gt-S_13,152,452",
       "snps": [
         21599,
         22017,
         22916
-      ],
-      "url_params": "c=gt-S_13,152,452"
+      ]
     },
     {
       "build_name": "S.D80Y",
-      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.D80Y?f_region=Europe",
       "cluster_data": [],
       "col": "#3cb44b",
       "country_info": [],
@@ -463,6 +458,7 @@
           }
         ]
       },
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.D80Y?f_region=Europe",
       "snps": [
         21799,
         3098
@@ -470,7 +466,6 @@
     },
     {
       "build_name": "S.A626S",
-      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.A626S?f_region=Europe",
       "cluster_data": [],
       "col": "#0000ff",
       "country_info": [],
@@ -485,6 +480,7 @@
           }
         ]
       },
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.A626S?f_region=Europe",
       "snps": [
         23437,
         771
@@ -492,7 +488,6 @@
     },
     {
       "build_name": "S.V1122L",
-      "build_url": "https://nextstrain.org/groups/neherlab/ncov/S.V1122L?f_region=Europe",
       "cluster_data": [],
       "col": "#660066",
       "country_info": [],
@@ -507,6 +502,7 @@
           }
         ]
       },
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.V1122L?c=gt-S_1122&f_region=Europe",
       "snps": [
         24925,
         9119
