@@ -92,13 +92,13 @@ export function MutationComparison() {
               <TdTitle colSpan={nCols}>
                 {'Shared mutations'}
                 <AdvancedToggleWrapper>
-                  {'Sort: '}
+                  {'Sort by: '}
                   <ToggleTwoLabels
                     identifier="toggle-advanced-controls"
                     checked={byPos}
                     onCheckedChanged={setByPos}
-                    labelLeft="By position"
-                    labelRight="By commonness"
+                    labelLeft="Position"
+                    labelRight="Commonness"
                   />
                 </AdvancedToggleWrapper>
               </TdTitle>
