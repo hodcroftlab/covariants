@@ -255,7 +255,7 @@ def convert_mutation_comparison(mutation_comparison):
             all_mutations.add(mut)
     all_mutations = list(all_mutations)
     all_mutations_obj = [mutation_string_to_object(mut) for mut in all_mutations]
-    all_mutations_pos = [mut["pos"] for mut in all_mutations_obj]
+    all_mutations_pos = list(set([mut["pos"] for mut in all_mutations_obj]))
 
     # print(all_mutations_pos)
 
@@ -266,7 +266,7 @@ def convert_mutation_comparison(mutation_comparison):
         for mut in variant_data["nonsynonymous"]:
             mut_obj = mutation_string_to_object(mut)
             pos = mut_obj["pos"]
-            mutation_presence.loc[pos][variant] = mut
+            mutation_presence.loc[pos, variant] = mut
 
     mutation_presence = mutation_presence.sort_index(ascending=True)
 
