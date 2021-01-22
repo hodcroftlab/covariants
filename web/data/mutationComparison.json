@@ -1,245 +1,245 @@
 {
   "mutations": [
-    "S:P26S",
-    "T:1027I",
-    "S:H655Y",
-    "S:D138Y",
-    "S:S982A",
-    "S:A701V",
-    "S:R246I",
-    "S:L18F",
-    "S:T716I",
-    "S:N501Y",
-    "S:D80A",
-    "S:A570D",
-    "S:V1176F",
-    "S:T20N",
-    "S:R190S",
-    "S:D215G",
     "S:Y144-",
     "S:D614G",
+    "S:T20N",
+    "T:1027I",
+    "S:H655Y",
     "S:V70-",
+    "S:S982A",
+    "S:A701V",
+    "S:N501Y",
+    "S:D138Y",
+    "S:A570D",
     "S:K417N",
-    "S:D1118H",
+    "S:D80A",
+    "S:V1176F",
+    "S:E484K",
     "S:P681H",
+    "S:T716I",
+    "S:R246I",
+    "S:D215G",
+    "S:P26S",
+    "S:R190S",
     "S:H69-",
-    "S:E484K"
+    "S:L18F",
+    "S:D1118H"
   ],
   "presence": [
     {
-      "mutation": "S:D614G",
+      "pos": 614,
       "presence": [
-        true,
-        true,
-        true,
-        true
+        "S:D614G",
+        "S:D614G",
+        "S:D614G",
+        "S:D614G"
       ]
     },
     {
-      "mutation": "S:E484K",
+      "pos": 484,
       "presence": [
-        false,
-        true,
-        true,
-        true
+        null,
+        "S:E484K",
+        "S:E484K",
+        "S:E484K"
       ]
     },
     {
-      "mutation": "S:N501Y",
+      "pos": 501,
       "presence": [
-        true,
-        true,
-        true,
-        false
+        "S:N501Y",
+        "S:N501Y",
+        "S:N501Y",
+        null
       ]
     },
     {
-      "mutation": "S:K417N",
+      "pos": 417,
       "presence": [
-        false,
-        true,
-        true,
-        false
+        null,
+        "S:K417N",
+        "S:K417N",
+        null
       ]
     },
     {
-      "mutation": "S:L18F",
+      "pos": 18,
       "presence": [
-        false,
-        true,
-        true,
-        false
+        null,
+        "S:L18F",
+        "S:L18F",
+        null
       ]
     },
     {
-      "mutation": "S:T20N",
+      "pos": 80,
       "presence": [
-        false,
-        false,
-        true,
-        false
+        null,
+        "S:D80A",
+        null,
+        null
       ]
     },
     {
-      "mutation": "S:H69-",
+      "pos": 26,
       "presence": [
-        true,
-        false,
-        false,
-        false
+        null,
+        null,
+        "S:P26S",
+        null
       ]
     },
     {
-      "mutation": "S:P681H",
+      "pos": 1118,
       "presence": [
-        true,
-        false,
-        false,
-        false
+        "S:D1118H",
+        null,
+        null,
+        null
       ]
     },
     {
-      "mutation": "S:D1118H",
+      "pos": 1027,
       "presence": [
-        true,
-        false,
-        false,
-        false
+        null,
+        null,
+        "T:1027I",
+        null
       ]
     },
     {
-      "mutation": "S:V70-",
+      "pos": 982,
       "presence": [
-        true,
-        false,
-        false,
-        false
+        "S:S982A",
+        null,
+        null,
+        null
       ]
     },
     {
-      "mutation": "S:Y144-",
+      "pos": 716,
       "presence": [
-        true,
-        false,
-        false,
-        false
+        "S:T716I",
+        null,
+        null,
+        null
       ]
     },
     {
-      "mutation": "S:D215G",
+      "pos": 701,
       "presence": [
-        false,
-        true,
-        false,
-        false
+        null,
+        "S:A701V",
+        null,
+        null
       ]
     },
     {
-      "mutation": "S:R190S",
+      "pos": 681,
       "presence": [
-        false,
-        false,
-        true,
-        false
+        "S:P681H",
+        null,
+        null,
+        null
       ]
     },
     {
-      "mutation": "S:P26S",
+      "pos": 655,
       "presence": [
-        false,
-        false,
-        true,
-        false
+        null,
+        null,
+        "S:H655Y",
+        null
       ]
     },
     {
-      "mutation": "T:1027I",
+      "pos": 570,
       "presence": [
-        false,
-        false,
-        true,
-        false
+        "S:A570D",
+        null,
+        null,
+        null
       ]
     },
     {
-      "mutation": "S:A570D",
+      "pos": 138,
       "presence": [
-        true,
-        false,
-        false,
-        false
+        null,
+        null,
+        "S:D138Y",
+        null
       ]
     },
     {
-      "mutation": "S:D80A",
+      "pos": 69,
       "presence": [
-        false,
-        true,
-        false,
-        false
+        "S:H69-",
+        null,
+        null,
+        null
       ]
     },
     {
-      "mutation": "S:T716I",
+      "pos": 20,
       "presence": [
-        true,
-        false,
-        false,
-        false
+        null,
+        null,
+        "S:T20N",
+        null
       ]
     },
     {
-      "mutation": "S:R246I",
+      "pos": 70,
       "presence": [
-        false,
-        true,
-        false,
-        false
+        "S:V70-",
+        null,
+        null,
+        null
       ]
     },
     {
-      "mutation": "S:A701V",
+      "pos": 246,
       "presence": [
-        false,
-        true,
-        false,
-        false
+        null,
+        "S:R246I",
+        null,
+        null
       ]
     },
     {
-      "mutation": "S:S982A",
+      "pos": 215,
       "presence": [
-        true,
-        false,
-        false,
-        false
+        null,
+        "S:D215G",
+        null,
+        null
       ]
     },
     {
-      "mutation": "S:D138Y",
+      "pos": 190,
       "presence": [
-        false,
-        false,
-        true,
-        false
+        null,
+        null,
+        "S:R190S",
+        null
       ]
     },
     {
-      "mutation": "S:H655Y",
+      "pos": 144,
       "presence": [
-        false,
-        false,
-        true,
-        false
+        "S:Y144-",
+        null,
+        null,
+        null
       ]
     },
     {
-      "mutation": "S:V1176F",
+      "pos": 1176,
       "presence": [
-        false,
-        false,
-        false,
-        true
+        null,
+        null,
+        null,
+        "S:V1176F"
       ]
     }
   ],

@@ -46,8 +46,8 @@ export interface VariantProps {
 export function Variant({ variants, presence }: VariantProps) {
   return (
     <Tr>
-      {presence.presence.map((isPresent, i) => (
-        <Td key={variants[i]}>{isPresent && <AminoacidMutationBadge mutation={presence.mutation} />}</Td>
+      {presence.presence.map((mutation, i) => (
+        <Td key={`${variants[i]} ${mutation ?? ''}`}>{mutation && <AminoacidMutationBadge mutation={mutation} />}</Td>
       ))}
     </Tr>
   )
@@ -68,7 +68,7 @@ export function MutationComparison() {
 
           <TableBody>
             {presences.map((presence) => (
-              <Variant key={presence.mutation} variants={variants} presence={presence} />
+              <Variant key={presence.pos} variants={variants} presence={presence} />
             ))}
           </TableBody>
         </Table>

@@ -7,6 +7,7 @@ Converts cluster data to a format suitable for consumption by the web app
 
 import json
 import os
+import re
 from shutil import copyfile
 
 import numpy as np
@@ -218,6 +219,33 @@ def add_cluster_properties(cluster):
     return result
 
 
+def mutation_string_to_object(mutation):
+    match = re.search('^(?P<gene>.*:)?(?P<left>[*.A-Z-]{0,1})(?P<pos>(\d)*)(?P<right>[*.A-Z-]{0,1})$', mutation)
+
+    def none_if_empty(x):
+        return None if len(x) == 0 else x
+
+    gene = none_if_empty(match.group('gene')).replace(":", "")
+    left = none_if_empty(match.group('left'))
+    pos = int(match.group('pos'))
+    right = none_if_empty(match.group('right'))
+
+    return {
+        "gene": gene,
+        "left": left,
+        "pos": pos,
+        "right": right,
+    }
+
+
+def mutation_object_to_string(mut):
+    gene = f'{mut["gene"]}:' or ""
+    left = mut["left"] or ""
+    pos = mut["pos"]
+    right = mut["right"] or ""
+    return f"{gene}{left}{pos}{right}"
+
+
 def convert_mutation_comparison(mutation_comparison):
     all_variants = list(mutation_comparison.keys())
 
@@ -226,30 +254,38 @@ def convert_mutation_comparison(mutation_comparison):
         for mut in variant_data["nonsynonymous"]:
             all_mutations.add(mut)
     all_mutations = list(all_mutations)
+    all_mutations_obj = [mutation_string_to_object(mut) for mut in all_mutations]
+    all_mutations_pos = [mut["pos"] for mut in all_mutations_obj]
 
-    # Matrix [ mutations x variants ] containing 1 if a given mutation is present in a given variant
-    mutation_presence = pd.DataFrame(0, index=all_mutations, columns=all_variants)
+    # print(all_mutations_pos)
+
+    # Matrix [ variants x mutation_positions ],
+    # containing mutation string if there is a mutation at a given position in a given variant, and NaN otherwise
+    mutation_presence = pd.DataFrame(None, index=all_mutations_pos, columns=all_variants)
     for variant, variant_data in mutation_comparison.items():
         for mut in variant_data["nonsynonymous"]:
-            mutation_presence.loc[mut][variant] = 1
+            mut_obj = mutation_string_to_object(mut)
+            pos = mut_obj["pos"]
+            mutation_presence.loc[pos][variant] = mut
+
+    mutation_presence = mutation_presence.sort_index(ascending=True)
 
     def by_presence(mutations):
-        # for each mutation, how many variants contain it
-        return [np.sum(mutation_presence.loc[mut]) for mut in mutations]
+        # for each of all mutation positions, how many variants have a mutation there (non-NaN value)
+        return [mutation_presence.loc[mut].count() for mut in mutations]
 
     # Sort rows (mutations) by number of occurrences in variants, from most common, to least common
     mutation_presence = mutation_presence.sort_index(key=by_presence, ascending=False)
 
-    def insert_mut_names(mut, pres):
-        pres = [True if p > 0 else False for p in pres]
-        return {"mutation": mut, "presence": pres}
-
-    presence_with_mut_names = [insert_mut_names(mut, list(pres)) for mut, pres in mutation_presence.iterrows()]
+    presence = [
+        {"pos": pos, "presence": pres.replace({np.nan: None}).tolist()}
+        for pos, pres in mutation_presence.iterrows()
+    ]
 
     mutation_comparison_output = {
         "variants": all_variants,
         "mutations": all_mutations,
-        "presence": presence_with_mut_names
+        "presence": presence
     }
 
     return mutation_comparison_output

@@ -1,8 +1,8 @@
 import { variants, presence } from 'src/../data/mutationComparison.json'
 
 export interface MutationComparisonPresence {
-  mutation: string
-  presence: boolean[]
+  pos: number
+  presence: (string | null)[]
 }
 
 export function getMutationComparisonVariants(): string[] {
