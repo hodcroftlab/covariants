@@ -114,7 +114,7 @@ export function SharedMutations() {
         </>
 
         <Tr>
-          <TdTitle colSpan={nCols}>{'Individual mutations'}</TdTitle>
+          <TdTitle colSpan={nCols}>{'Other mutations'}</TdTitle>
         </Tr>
 
         <>
