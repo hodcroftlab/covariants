@@ -76,8 +76,8 @@ export function MutationBadge({ mutation, colors }: MutationBadgeProps) {
   const { gene, left, pos, right, note } = mutation
 
   const geneColor = get(GENE_COLORS, gene ?? '', DEFAULT_COLOR)
-  const leftColor = get(colors, left, DEFAULT_COLOR)
-  const rightColor = get(colors, right, DEFAULT_COLOR)
+  const leftColor = get(colors, left ?? '', DEFAULT_COLOR)
+  const rightColor = get(colors, right ?? '', DEFAULT_COLOR)
 
   return (
     <MutationBadgeBox>
