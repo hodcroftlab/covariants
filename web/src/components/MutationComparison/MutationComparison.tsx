@@ -21,8 +21,8 @@ const TableHeader = styled.thead`
 const TableBody = styled.tbody``
 
 const Th = styled.th`
-  width: 60px;
-  height: 2rem;
+  width: 120px;
+  height: 2.5rem;
   border: #7b838a solid 1px;
 `
 
@@ -32,6 +32,10 @@ const Td = styled.td`
 
 const Tr = styled.tr`
   text-align: center;
+
+  &:nth-child(odd) {
+    background-color: ${(props) => props.theme.gray200};
+  }
 `
 
 export interface VariantProps {
