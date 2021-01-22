@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from 'react'
 
-import { Col, Row } from 'reactstrap'
 import styled from 'styled-components'
 
 import type { MutationShared } from 'src/io/getMutationComparison'
@@ -18,7 +17,9 @@ const sharedByPos = getMutationComparisonSharedByPos()
 const sharedByCommonness = getMutationComparisonSharedByCommonness()
 const individual = getMutationComparisonIndividual()
 
-const Table = styled.table``
+const Table = styled.table`
+  margin: 0 auto;
+`
 
 const TableHeader = styled.thead`
   border: #7b838a solid 1px;
@@ -69,65 +70,61 @@ export function Variant({ variants, shared }: VariantProps) {
   )
 }
 
-export function MutationComparison() {
+export function SharedMutations() {
   const [byPos, setByPos] = useState(true)
   const shared = useMemo(() => (byPos ? sharedByPos : sharedByCommonness), [byPos])
 
   const nCols = variants.length
 
   return (
-    <Row noGutters>
-      <Col>
-        <Table>
-          <TableHeader>
-            <Tr>
-              {variants.map((variant) => (
-                <Th key={variant}>{variant}</Th>
+    <Table>
+      <TableHeader>
+        <Tr>
+          {variants.map((variant) => (
+            <Th key={variant}>{variant}</Th>
+          ))}
+        </Tr>
+      </TableHeader>
+
+      <TableBody>
+        <Tr>
+          <TdTitle colSpan={nCols}>
+            {'Shared mutations'}
+            <AdvancedToggleWrapper>
+              {'Sort by: '}
+              <ToggleTwoLabels
+                identifier="toggle-advanced-controls"
+                checked={byPos}
+                onCheckedChanged={setByPos}
+                labelLeft="Position"
+                labelRight="Commonness"
+              />
+            </AdvancedToggleWrapper>
+          </TdTitle>
+        </Tr>
+
+        <>
+          {shared.map((shared) => (
+            <Variant key={shared.pos} variants={variants} shared={shared} />
+          ))}
+        </>
+
+        <Tr>
+          <TdTitle colSpan={nCols}>{'Individual mutations'}</TdTitle>
+        </Tr>
+
+        <>
+          {individual.map(({ index, mutations }) => (
+            <Tr key={index}>
+              {mutations.map((mutation, i) => (
+                <Td key={`${variants[i]} ${mutation ?? ''}`}>
+                  {mutation && <AminoacidMutationBadge mutation={mutation} />}
+                </Td>
               ))}
             </Tr>
-          </TableHeader>
-
-          <TableBody>
-            <Tr>
-              <TdTitle colSpan={nCols}>
-                {'Shared mutations'}
-                <AdvancedToggleWrapper>
-                  {'Sort by: '}
-                  <ToggleTwoLabels
-                    identifier="toggle-advanced-controls"
-                    checked={byPos}
-                    onCheckedChanged={setByPos}
-                    labelLeft="Position"
-                    labelRight="Commonness"
-                  />
-                </AdvancedToggleWrapper>
-              </TdTitle>
-            </Tr>
-
-            <>
-              {shared.map((shared) => (
-                <Variant key={shared.pos} variants={variants} shared={shared} />
-              ))}
-            </>
-
-            <Tr>
-              <TdTitle colSpan={nCols}>{'Individual mutations'}</TdTitle>
-            </Tr>
-
-            <>
-              {individual.map(({ index, mutations }) => (
-                <Tr key={index}>
-                  {mutations.map((mutation, i) => (
-                    <Td key={`${variants[i]} ${mutation ?? ''}`}>
-                      {mutation && <AminoacidMutationBadge mutation={mutation} />}
-                    </Td>
-                  ))}
-                </Tr>
-              ))}
-            </>
-          </TableBody>
-        </Table>
-      </Col>
-    </Row>
+          ))}
+        </>
+      </TableBody>
+    </Table>
   )
 }
