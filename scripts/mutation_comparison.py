@@ -35,7 +35,7 @@ mutation_comparison = {
             "S:P26S",
             "S:D138Y",
             "S:R190S",
-            "S:K417N",
+            "S:K417T",
             "S:E484K",
             "S:N501Y",
             "S:D614G",
