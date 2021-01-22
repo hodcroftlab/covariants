@@ -1,11 +1,12 @@
 import React from 'react'
 
 import { Col, Row } from 'reactstrap'
-import { VariantsPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 
 import { getClusters } from 'src/io/getClusters'
 
 import { ClusterButtonPanel } from 'src/components/ClusterButtonPanel/ClusterButtonPanel'
+import { VariantsPageContainer } from 'src/components/Common/ClusterSidebarLayout'
+import { MutationComparison } from 'src/components/MutationComparison/MutationComparison'
 import { Editable } from 'src/components/Common/Editable'
 import { Layout } from 'src/components/Layout/Layout'
 
@@ -17,6 +18,12 @@ export function HomePage() {
   return (
     <Layout>
       <VariantsPageContainer fluid>
+        <Row noGutters>
+          <Col>
+            <MutationComparison />
+          </Col>
+        </Row>
+
         <Row noGutters>
           <Col>
             <h1 className="text-center">{'CoVariants'}</h1>
