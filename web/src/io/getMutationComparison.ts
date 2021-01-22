@@ -1,14 +1,23 @@
-import { variants, presence } from 'src/../data/mutationComparison.json'
+import { variants, shared, individual } from 'src/../data/mutationComparison.json'
 
-export interface MutationComparisonPresence {
+export interface MutationShared {
   pos: number
   presence: (string | null)[]
+}
+
+export interface MutationIndividualRow {
+  index: number
+  mutations: (string | null)[]
 }
 
 export function getMutationComparisonVariants(): string[] {
   return variants
 }
 
-export function getMutationComparisonPresence(): MutationComparisonPresence[] {
-  return presence
+export function getMutationComparisonShared(): MutationShared[] {
+  return shared
+}
+
+export function getMutationComparisonIndividual(): MutationIndividualRow[] {
+  return individual
 }

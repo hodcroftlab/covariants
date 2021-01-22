@@ -277,18 +277,29 @@ def convert_mutation_comparison(mutation_comparison):
     # Sort rows (mutations) by number of occurrences in variants, from most common, to least common
     mutation_presence = mutation_presence.sort_index(key=by_presence, ascending=False)
 
-    presence = [
+    # Split mutations into shared (occurring in more than one variant) and individual
+    mask = mutation_presence.count(axis=1) > 1
+    shared = mutation_presence[mask]
+    individual = mutation_presence[~mask]
+
+    # Convert shared mutations into a format convenient for web app
+    shared = [
         {"pos": pos, "presence": pres.replace({np.nan: None}).tolist()}
-        for pos, pres in mutation_presence.iterrows()
+        for pos, pres in shared.iterrows()
     ]
 
-    mutation_comparison_output = {
+    # Convert individual mutations into a format convenient for web app
+    individual = individual.sort_index(ascending=True)
+    individual = {k: v.dropna().tolist() for k, v in individual.T.iterrows()}
+    individual = pd.DataFrame.from_dict(individual, orient='index').T
+    individual = [{"index": k, "mutations": v.tolist()} for k, v in individual.iterrows()]
+
+    return {
         "variants": all_variants,
         "mutations": all_mutations,
-        "presence": presence
+        "shared": shared,
+        "individual": individual
     }
-
-    return mutation_comparison_output
 
 
 if __name__ == '__main__':
