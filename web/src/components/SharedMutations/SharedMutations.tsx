@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react'
-import { getClusterColor } from 'src/io/getClusters'
 
 import styled from 'styled-components'
 
