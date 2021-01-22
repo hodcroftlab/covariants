@@ -14,6 +14,7 @@ import pandas as pd
 
 from clusters import clusters
 from colors_and_countries import country_styles
+from mutation_comparison import mutation_comparison
 
 cluster_tables_path = "cluster_tables"
 output_path = "web/data"
@@ -241,6 +242,9 @@ if __name__ == '__main__':
     clusters = [add_cluster_properties(cluster) for _, cluster in clusters.items()]
     with open(os.path.join(output_path, "clusters.json"), "w") as fh:
         json.dump({'clusters': clusters}, fh, indent=2, sort_keys=True)
+
+    with open(os.path.join(output_path, "mutationComparison.json"), "w") as fh:
+        json.dump(mutation_comparison, fh, indent=2, sort_keys=True)
 
     with open(os.path.join(output_path, "countryStyles.json"), "w") as fh:
         json.dump(country_styles, fh, indent=2, sort_keys=True)
