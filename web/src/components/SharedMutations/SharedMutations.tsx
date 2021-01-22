@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react'
+import { getClusterColor } from 'src/io/getClusters'
 
 import styled from 'styled-components'
 
@@ -31,13 +32,17 @@ const Th = styled.th`
   width: 120px;
   height: 2.5rem;
   border: ${(props) => props.theme.gray500} solid 1px;
+  color: ${(props) => props.theme.gray100};
+  background-color: ${(props) => props.theme.gray650};
 `
 
 const Td = styled.td`
-  border: ${(props) => props.theme.gray500} solid 1px;
+  border: ${(props) => props.theme.gray300} solid 1px;
 `
 
 const TdTitle = styled(Td)`
+  color: ${(props) => props.theme.gray100};
+  background-color: ${(props) => props.theme.gray650};
   height: 2.5rem;
 `
 
@@ -45,7 +50,7 @@ const Tr = styled.tr`
   text-align: center;
 
   &:nth-child(odd) {
-    background-color: ${(props) => props.theme.gray200};
+    background-color: ${(props) => props.theme.gray150};
   }
 `
 
