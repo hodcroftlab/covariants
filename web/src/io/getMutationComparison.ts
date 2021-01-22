@@ -1,10 +1,14 @@
-import mutationComparison from 'src/../data/mutationComparison.json'
+import { variants, presence } from 'src/../data/mutationComparison.json'
 
-export interface MutationComparisonVariant {
-  variant: string
-  nonsynonymous: string[]
+export interface MutationComparisonPresence {
+  mutation: string
+  presence: boolean[]
 }
 
-export function getMutationComparison(): MutationComparisonVariant[] {
-  return mutationComparison.variants
+export function getMutationComparisonVariants(): string[] {
+  return variants
+}
+
+export function getMutationComparisonPresence(): MutationComparisonPresence[] {
+  return presence
 }

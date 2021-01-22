@@ -1,57 +1,252 @@
 {
-  "variants": [
+  "mutations": [
+    "S:P26S",
+    "T:1027I",
+    "S:H655Y",
+    "S:D138Y",
+    "S:S982A",
+    "S:A701V",
+    "S:R246I",
+    "S:L18F",
+    "S:T716I",
+    "S:N501Y",
+    "S:D80A",
+    "S:A570D",
+    "S:V1176F",
+    "S:T20N",
+    "S:R190S",
+    "S:D215G",
+    "S:Y144-",
+    "S:D614G",
+    "S:V70-",
+    "S:K417N",
+    "S:D1118H",
+    "S:P681H",
+    "S:H69-",
+    "S:E484K"
+  ],
+  "presence": [
     {
-      "nonsynonymous": [
-        "S:H69-",
-        "S:V70-",
-        "S:Y144-",
-        "S:N501Y",
-        "S:A570D",
-        "S:D614G",
-        "S:P681H",
-        "S:T716I",
-        "S:S982A",
-        "S:D1118H"
-      ],
-      "variant": "20I/501Y.V1"
+      "mutation": "S:D614G",
+      "presence": [
+        true,
+        true,
+        true,
+        true
+      ]
     },
     {
-      "nonsynonymous": [
-        "S:L18F",
-        "S:D80A",
-        "S:D215G",
-        "S:R246I",
-        "S:K417N",
-        "S:E484K",
-        "S:N501Y",
-        "S:D614G",
-        "S:A701V"
-      ],
-      "variant": "20H/501Y.V2"
+      "mutation": "S:E484K",
+      "presence": [
+        false,
+        true,
+        true,
+        true
+      ]
     },
     {
-      "nonsynonymous": [
-        "S:L18F",
-        "S:T20N",
-        "S:P26S",
-        "S:D138Y",
-        "S:R190S",
-        "S:K417N",
-        "S:E484K",
-        "S:N501Y",
-        "S:D614G",
-        "S:H655Y",
-        "T:1027I"
-      ],
-      "variant": "20J/501Y.V3"
+      "mutation": "S:N501Y",
+      "presence": [
+        true,
+        true,
+        true,
+        false
+      ]
     },
     {
-      "nonsynonymous": [
-        "S:E484K",
-        "S:D614G",
-        "S:V1176F"
-      ],
-      "variant": "20B/S.484K"
+      "mutation": "S:K417N",
+      "presence": [
+        false,
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "mutation": "S:L18F",
+      "presence": [
+        false,
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "mutation": "S:T20N",
+      "presence": [
+        false,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "mutation": "S:H69-",
+      "presence": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "mutation": "S:P681H",
+      "presence": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "mutation": "S:D1118H",
+      "presence": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "mutation": "S:V70-",
+      "presence": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "mutation": "S:Y144-",
+      "presence": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "mutation": "S:D215G",
+      "presence": [
+        false,
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "mutation": "S:R190S",
+      "presence": [
+        false,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "mutation": "S:P26S",
+      "presence": [
+        false,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "mutation": "T:1027I",
+      "presence": [
+        false,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "mutation": "S:A570D",
+      "presence": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "mutation": "S:D80A",
+      "presence": [
+        false,
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "mutation": "S:T716I",
+      "presence": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "mutation": "S:R246I",
+      "presence": [
+        false,
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "mutation": "S:A701V",
+      "presence": [
+        false,
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "mutation": "S:S982A",
+      "presence": [
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "mutation": "S:D138Y",
+      "presence": [
+        false,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "mutation": "S:H655Y",
+      "presence": [
+        false,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "mutation": "S:V1176F",
+      "presence": [
+        false,
+        false,
+        false,
+        true
+      ]
     }
+  ],
+  "variants": [
+    "20I/501Y.V1",
+    "20H/501Y.V2",
+    "20J/501Y.V3",
+    "20B/S.484K"
   ]
 }

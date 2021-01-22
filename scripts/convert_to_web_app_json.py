@@ -218,6 +218,43 @@ def add_cluster_properties(cluster):
     return result
 
 
+def convert_mutation_comparison(mutation_comparison):
+    all_variants = list(mutation_comparison.keys())
+
+    all_mutations = set()
+    for variant, variant_data in mutation_comparison.items():
+        for mut in variant_data["nonsynonymous"]:
+            all_mutations.add(mut)
+    all_mutations = list(all_mutations)
+
+    # Matrix [ mutations x variants ] containing 1 if a given mutation is present in a given variant
+    mutation_presence = pd.DataFrame(0, index=all_mutations, columns=all_variants)
+    for variant, variant_data in mutation_comparison.items():
+        for mut in variant_data["nonsynonymous"]:
+            mutation_presence.loc[mut][variant] = 1
+
+    def by_presence(mutations):
+        # for each mutation, how many variants contain it
+        return [np.sum(mutation_presence.loc[mut]) for mut in mutations]
+
+    # Sort rows (mutations) by number of occurrences in variants, from most common, to least common
+    mutation_presence = mutation_presence.sort_index(key=by_presence, ascending=False)
+
+    def insert_mut_names(mut, pres):
+        pres = [True if p > 0 else False for p in pres]
+        return {"mutation": mut, "presence": pres}
+
+    presence_with_mut_names = [insert_mut_names(mut, list(pres)) for mut, pres in mutation_presence.iterrows()]
+
+    mutation_comparison_output = {
+        "variants": all_variants,
+        "mutations": all_mutations,
+        "presence": presence_with_mut_names
+    }
+
+    return mutation_comparison_output
+
+
 if __name__ == '__main__':
     # NOTE: we exclude DanishCluster
     clusters.pop("DanishCluster", None)
@@ -243,8 +280,9 @@ if __name__ == '__main__':
     with open(os.path.join(output_path, "clusters.json"), "w") as fh:
         json.dump({'clusters': clusters}, fh, indent=2, sort_keys=True)
 
+    mutation_comparison_output = convert_mutation_comparison(mutation_comparison)
     with open(os.path.join(output_path, "mutationComparison.json"), "w") as fh:
-        json.dump(mutation_comparison, fh, indent=2, sort_keys=True)
+        json.dump(mutation_comparison_output, fh, indent=2, sort_keys=True)
 
     with open(os.path.join(output_path, "countryStyles.json"), "w") as fh:
         json.dump(country_styles, fh, indent=2, sort_keys=True)
