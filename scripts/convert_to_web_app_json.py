@@ -330,7 +330,7 @@ if __name__ == '__main__':
     with open(os.path.join(output_path, "perClusterData.json"), "w") as fh:
         json.dump(per_cluster_data_output, fh, indent=2, sort_keys=True)
 
-    clusters = [add_cluster_properties(cluster) for _, cluster in clusters.items()]
+    clusters = [cluster for _, cluster in clusters.items()]
     with open(os.path.join(output_path, "clusters.json"), "w") as fh:
         json.dump({'clusters': clusters}, fh, indent=2, sort_keys=True)
 

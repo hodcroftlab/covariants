@@ -7,7 +7,7 @@ const CLUSTER_COLOR_UNKNOWN = '#555555' as const
 
 export type ClusterDatum = {
   build_name: string
-  build_url: string
+  nextstrain_url: string
   cluster_data: unknown[]
   col: string
   country_info: unknown[]
