@@ -274,19 +274,25 @@ def convert_mutation_comparison(mutation_comparison):
         # for each of all mutation positions, how many variants have a mutation there (non-NaN value)
         return [mutation_presence.loc[mut].count() for mut in mutations]
 
-    # Sort rows (mutations) by number of occurrences in variants, from most common, to least common
-    mutation_presence = mutation_presence.sort_index(key=by_presence, ascending=False)
-
     # Split mutations into shared (occurring in more than one variant) and individual
     mask = mutation_presence.count(axis=1) > 1
+
     shared = mutation_presence[mask]
+
+    # Sort by position
+    shared_by_pos = shared.sort_index(ascending=True)
+
+    # Sort by number of occurrences in variants, from most common, to least common
+    shared_by_commonness = shared.sort_index(key=by_presence, ascending=False)
+
     individual = mutation_presence[~mask]
 
-    # Convert shared mutations into a format convenient for web app
-    shared = [
-        {"pos": pos, "presence": pres.replace({np.nan: None}).tolist()}
-        for pos, pres in shared.iterrows()
-    ]
+    def shared_to_json(shared):
+        # Convert shared mutations into a format convenient for web app
+        return [
+            {"pos": pos, "presence": pres.replace({np.nan: None}).tolist()}
+            for pos, pres in shared.iterrows()
+        ]
 
     # Convert individual mutations into a format convenient for web app
     individual = individual.sort_index(ascending=True)
@@ -297,7 +303,8 @@ def convert_mutation_comparison(mutation_comparison):
     return {
         "variants": all_variants,
         "mutations": all_mutations,
-        "shared": shared,
+        "shared_by_pos": shared_to_json(shared_by_pos),
+        "shared_by_commonness": shared_to_json(shared_by_commonness),
         "individual": individual
     }
 

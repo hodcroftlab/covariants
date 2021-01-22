@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 
 import { Col, Row } from 'reactstrap'
 import styled from 'styled-components'
@@ -6,13 +6,16 @@ import styled from 'styled-components'
 import type { MutationShared } from 'src/io/getMutationComparison'
 import {
   getMutationComparisonVariants,
-  getMutationComparisonShared,
+  getMutationComparisonSharedByPos,
+  getMutationComparisonSharedByCommonness,
   getMutationComparisonIndividual,
 } from 'src/io/getMutationComparison'
 import { AminoacidMutationBadge } from 'src/components/Common/MutationBadge'
+import { ToggleTwoLabels } from 'src/components/Common/ToggleTwoLabels'
 
 const variants = getMutationComparisonVariants()
-const shared = getMutationComparisonShared()
+const sharedByPos = getMutationComparisonSharedByPos()
+const sharedByCommonness = getMutationComparisonSharedByCommonness()
 const individual = getMutationComparisonIndividual()
 
 const Table = styled.table``
@@ -45,6 +48,12 @@ const Tr = styled.tr`
   }
 `
 
+const AdvancedToggleWrapper = styled.div`
+  flex: 0 0 100%;
+  display: flex;
+  transform: scale(0.8);
+`
+
 export interface VariantProps {
   variants: string[]
   shared: MutationShared
@@ -61,6 +70,9 @@ export function Variant({ variants, shared }: VariantProps) {
 }
 
 export function MutationComparison() {
+  const [byPos, setByPos] = useState(true)
+  const shared = useMemo(() => (byPos ? sharedByPos : sharedByCommonness), [byPos])
+
   const nCols = variants.length
 
   return (
@@ -77,7 +89,19 @@ export function MutationComparison() {
 
           <TableBody>
             <Tr>
-              <TdTitle colSpan={nCols}>{'Shared mutations'}</TdTitle>
+              <TdTitle colSpan={nCols}>
+                {'Shared mutations'}
+                <AdvancedToggleWrapper>
+                  {'Sort: '}
+                  <ToggleTwoLabels
+                    identifier="toggle-advanced-controls"
+                    checked={byPos}
+                    onCheckedChanged={setByPos}
+                    labelLeft="By position"
+                    labelRight="By commonness"
+                  />
+                </AdvancedToggleWrapper>
+              </TdTitle>
             </Tr>
 
             <>

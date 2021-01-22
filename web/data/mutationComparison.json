@@ -74,33 +74,33 @@
     }
   ],
   "mutations": [
-    "S:A570D",
-    "S:K417T",
-    "S:V1176F",
-    "S:P26S",
-    "S:E484K",
-    "S:R246I",
-    "S:K417N",
-    "S:R190S",
-    "S:D1118H",
-    "S:A701V",
-    "S:T1027I",
-    "S:D80A",
-    "S:L18F",
     "S:N501Y",
+    "S:T716I",
+    "S:D1118H",
+    "S:D138Y",
+    "S:D80A",
+    "S:H69-",
     "S:Y144-",
     "S:S982A",
-    "S:D614G",
-    "S:V70-",
-    "S:H655Y",
-    "S:H69-",
-    "S:T20N",
-    "S:D138Y",
-    "S:P681H",
     "S:D215G",
-    "S:T716I"
+    "S:D614G",
+    "S:E484K",
+    "S:P26S",
+    "S:R246I",
+    "S:A570D",
+    "S:V1176F",
+    "S:R190S",
+    "S:K417T",
+    "S:A701V",
+    "S:V70-",
+    "S:K417N",
+    "S:T20N",
+    "S:H655Y",
+    "S:L18F",
+    "S:T1027I",
+    "S:P681H"
   ],
-  "shared": [
+  "shared_by_commonness": [
     {
       "pos": 614,
       "presence": [
@@ -129,6 +129,35 @@
       ]
     },
     {
+      "pos": 18,
+      "presence": [
+        null,
+        "S:L18F",
+        "S:L18F",
+        null
+      ]
+    },
+    {
+      "pos": 417,
+      "presence": [
+        null,
+        "S:K417N",
+        "S:K417T",
+        null
+      ]
+    }
+  ],
+  "shared_by_pos": [
+    {
+      "pos": 18,
+      "presence": [
+        null,
+        "S:L18F",
+        "S:L18F",
+        null
+      ]
+    },
+    {
       "pos": 417,
       "presence": [
         null,
@@ -138,12 +167,30 @@
       ]
     },
     {
-      "pos": 18,
+      "pos": 484,
       "presence": [
         null,
-        "S:L18F",
-        "S:L18F",
+        "S:E484K",
+        "S:E484K",
+        "S:E484K"
+      ]
+    },
+    {
+      "pos": 501,
+      "presence": [
+        "S:N501Y",
+        "S:N501Y",
+        "S:N501Y",
         null
+      ]
+    },
+    {
+      "pos": 614,
+      "presence": [
+        "S:D614G",
+        "S:D614G",
+        "S:D614G",
+        "S:D614G"
       ]
     }
   ],

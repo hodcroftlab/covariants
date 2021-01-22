@@ -1,4 +1,5 @@
-import { variants, shared, individual } from 'src/../data/mutationComparison.json'
+/* eslint-disable camelcase */
+import { variants, shared_by_commonness, shared_by_pos, individual } from 'src/../data/mutationComparison.json'
 
 export interface MutationShared {
   pos: number
@@ -14,8 +15,12 @@ export function getMutationComparisonVariants(): string[] {
   return variants
 }
 
-export function getMutationComparisonShared(): MutationShared[] {
-  return shared
+export function getMutationComparisonSharedByPos(): MutationShared[] {
+  return shared_by_pos
+}
+
+export function getMutationComparisonSharedByCommonness(): MutationShared[] {
+  return shared_by_commonness
 }
 
 export function getMutationComparisonIndividual(): MutationIndividualRow[] {
