@@ -83,7 +83,11 @@ export function VariantsPageDisconnected({ currentCluster }: VariantsPageProps) 
             <EditableClusterContent githubUrl={`blob/master/content/clusters/${currentCluster.display_name}.md`}>
               <Row noGutters className="mb-3">
                 <Col className="d-flex w-100">
-                  <LinkExternal href={currentCluster.build_url} icon={<NextstrainIcon />} color={theme.link.dim.color}>
+                  <LinkExternal
+                    href={currentCluster.nextstrain_url}
+                    icon={<NextstrainIcon />}
+                    color={theme.link.dim.color}
+                  >
                     {`Dedicated ${currentCluster.display_name} Nextstrain build`}
                   </LinkExternal>
                 </Col>
