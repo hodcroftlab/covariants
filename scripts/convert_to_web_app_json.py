@@ -302,7 +302,6 @@ def convert_mutation_comparison(mutation_comparison):
 
     return {
         "variants": all_variants,
-        "mutations": all_mutations,
         "shared_by_pos": shared_to_json(shared_by_pos),
         "shared_by_commonness": shared_to_json(shared_by_commonness),
         "individual": individual
