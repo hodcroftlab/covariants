@@ -90,9 +90,9 @@ export function MutationBadge({ mutation, colors }: MutationBadgeProps) {
             </GeneText>
           </>
         )}
-        <ColoredText $color={leftColor}>{left}</ColoredText>
+        {left && <ColoredText $color={leftColor}>{left}</ColoredText>}
         <PositionText>{pos}</PositionText>
-        <ColoredText $color={rightColor}>{right}</ColoredText>
+        {right && <ColoredText $color={rightColor}>{right}</ColoredText>}
       </MutationWrapper>
       {note && <span>{note}</span>}
     </MutationBadgeBox>
