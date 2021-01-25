@@ -114,7 +114,7 @@ The mutation is listed in parentheses after the name.
 
 <sub>Figure made via [GISAID](https://gisaid.org)</sub> 
 
-[Dedicated S:E484 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484&f_region=Europe)
+[Dedicated S:E484 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484)
 
 [Table and charts of mutation distribution](cluster_tables/S.E484_table.md)
 
