@@ -31,11 +31,11 @@ As `S:N501` has multiple amino-acid mutations, there is no second letter.<br/>
 20A.EU1 and 20A.EU2, because of their prominence, have been given 'subclade' names.
 The mutation is listed in parentheses after the name.
 
-- [20A.EU1](#20aeu1) _(S:A222V)_
-- [20A.EU2](#20aeu2) _(S:S477N)_
+- [20A.EU1](#20aeu1--sa222v) _(S:A222V)_
+- [20A.EU2](#20aeu2--ss477n) _(S:S477N)_
 - [S:N501](#sn501)
 - [S:E484](#se484)
-- [S:L452R](#sl432r)
+- [S:L452R](#sl452r)
 - [S:H69-](#sh69-)
 - [S:N439K](#sn439k)
 - [S:Y453F](#sy453f)
@@ -132,7 +132,7 @@ The mutation is listed in parentheses after the name.
 
 _More information coming soon!_
 
-## S:SL452R
+## S:L452R
 ![Figure of S:L452R](/other_figures/452.gif)
 
 <sub>Figure made via [GISAID](https://gisaid.org)</sub> 
