@@ -275,3 +275,16 @@ Note this figure shows both the 69 & 70 deletion.</sub>
   - Found primarily in Sweden and northern European countries, including Norway and Denmark
 - Little else is known about this mutation. Please let me know if you have more information!
 
+
+## Sponsors
+
+We are grateful to Vercel for sponsoring our web application builds
+
+<p align="center">
+  <a target="_blank" href="https://vercel.com/?utm_source=hodcroftlab&utm_campaign=oss">
+    <img
+      src="https://user-images.githubusercontent.com/9403403/105740694-b9358880-5f39-11eb-95ff-3ea98e4fa43a.png"
+      alt="Vercel logo"
+    />
+  </a>
+</p>

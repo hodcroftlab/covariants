@@ -144,3 +144,20 @@ This works is closely related to the [Nextstrain project](https://nextstrain.org
 
 > CoVariants</br>
 > Copyright 2020-2021 Emma Hodcroft</br>
+
+---
+
+<h3 id="sponsors" align="center">
+🎁 Sponsors
+</h3>
+
+We are grateful to Vercel for sponsoring our web application builds
+
+<p align="center">
+  <a target="_blank" href="https://vercel.com/?utm_source=hodcroftlab&utm_campaign=oss">
+    <img
+      src="https://user-images.githubusercontent.com/9403403/105740694-b9358880-5f39-11eb-95ff-3ea98e4fa43a.png"
+      alt="Vercel logo"
+    />
+  </a>
+</p>
