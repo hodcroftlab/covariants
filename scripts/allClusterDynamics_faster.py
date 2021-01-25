@@ -370,9 +370,10 @@ for clus in clus_to_run:
             ordered_country.to_csv(overall_tables_file, sep="\t", mode='a')
         mrk_tbl = ordered_country.to_markdown()
 
-        url_params = "f_region=Europe"
-        if 'url_params' in clusters[clus]:
-            url_params = clusters[clus]['url_params']
+        #url_params = "f_region=Europe"
+        #if 'url_params' in clusters[clus]:
+        #    url_params = clusters[clus]['url_params']
+        nextstrain_url = clusters["nextstrain_url"]
 
 
         ##################################
@@ -384,7 +385,7 @@ for clus in clus_to_run:
         if "all" in clus_answer and clus != "DanishCluster":
             with open(f"{tables_path}all_tables.md", 'a') as fh:
                 fh.write(f'\n\n## {clus_display}\n')
-                fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{url_params})\n\n")
+                fh.write(f"[Focal Build]({nextstrain_url})\n\n")
                 if clus == "S501":
                     fh.write(f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
                     fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
@@ -395,7 +396,7 @@ for clus in clus_to_run:
 
         with open(f"{tables_path}{clus_display}_table.md", 'w') as fh:
             fh.write(f'\n\n## {clus_display}\n')
-            fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{url_params})\n\n")
+            fh.write(f"[Focal Build]({nextstrain_url})\n\n")
             if clus == "S501":
                 fh.write(f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
                 fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
