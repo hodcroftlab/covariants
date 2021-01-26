@@ -202,7 +202,7 @@ export function VariantLinkBadge({ name, href }: VariantLinkBadgeProps) {
   }
 
   return (
-    <LinkUnstyled href={url ?? ''} icon={null}>
+    <LinkUnstyled href={url} icon={null}>
       <MutationBadge mutation={mutationObj} colors={AMINOACID_COLORS} />
     </LinkUnstyled>
   )
