@@ -24,7 +24,7 @@ export function parseNucleotideMutation(formatted: string): Mutation | undefined
   const pos = parsePosition(match.groups?.pos)
   const right = parseNucleotide(match.groups?.right)
 
-  if (!left || !right || !pos) {
+  if (!pos) {
     return undefined
   }
 

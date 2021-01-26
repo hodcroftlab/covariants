@@ -1,8 +1,8 @@
 export interface Mutation {
   gene?: string
-  left: string
+  left?: string
   pos: number
-  right: string
+  right?: string
   note?: string
 }
 

@@ -57,7 +57,7 @@ export function DefiningMutations({ cluster }: DefiningMutationsProps) {
         {hasNonsynonymous ? (
           <Ul>
             {cluster.mutations?.nonsynonymous?.map((mutation) => (
-              <Li key={`${mutation?.gene ?? ''}:${mutation.left}${mutation.pos}${mutation.right}`}>
+              <Li key={`${mutation?.gene ?? ''}:${mutation.left ?? ''}${mutation.pos}${mutation.right ?? ''}`}>
                 <AminoacidMutationBadge mutation={mutation} />
               </Li>
             ))}
@@ -72,7 +72,7 @@ export function DefiningMutations({ cluster }: DefiningMutationsProps) {
         {hasSynonymous ? (
           <Ul>
             {cluster.mutations?.synonymous?.map((mutation) => (
-              <Li key={`${mutation.left}${mutation.pos}${mutation.right}`}>
+              <Li key={`${mutation.left ?? ''}${mutation.pos}${mutation.right ?? ''}`}>
                 <NucleotideMutationBadge mutation={mutation} />
               </Li>
             ))}
