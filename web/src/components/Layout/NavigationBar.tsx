@@ -88,12 +88,12 @@ export const BrandLogo = styled(BrandLogoBase)`
   height: 40px;
   margin-left: 10px;
   margin-right: 10px;
+  margin-top: 4px;
 `
 
 export const BrandLogoLarge = styled(BrandLogoLargeBase)`
   height: 40px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 7px 10px 10px;
 `
 
 export interface NavigationBarProps {
@@ -113,7 +113,7 @@ export function NavigationBarDisconnected({ pathname }: NavigationBarProps) {
   const toggle = () => setIsOpen(!isOpen)
 
   return (
-    <Navbar expand="sm" color="light" light role="navigation">
+    <Navbar expand="md" color="light" light role="navigation">
       <Link href="/">
         <BrandLogoLarge className="d-none d-lg-block" />
         <BrandLogo className="d-block d-lg-none" />
