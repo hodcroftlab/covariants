@@ -9,21 +9,28 @@ import { Link } from '../Link/Link'
 const ClusterCol = styled(Col)`
   display: flex;
 
-  @media only screen and (min-width: 992px) {
-    flex: 1 1 200px;
+  @media (min-width: 992px) {
+    flex: 1 0 100%;
     flex-grow: 1;
     height: 50px;
     margin: 6px 10px;
   }
 
-  @media only screen and (max-width: 992px) and (min-width: 500px) {
+  @media (max-width: 991.98px) {
+    flex: 1 0 200px;
+    flex-grow: 0;
+    height: 40px;
+    margin: 3px 5px;
+  }
+
+  @media (max-width: 767.98px) {
     flex: 1 0 150px;
     flex-grow: 0;
     height: 40px;
     margin: 3px 5px;
   }
 
-  @media only screen and (max-width: 500px) {
+  @media (max-width: 575.98px) {
     flex: 1 0 150px;
     flex-grow: 0;
     height: 32px;
@@ -36,16 +43,12 @@ const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: strin
 
   display: flex;
 
-  @media only screen and (min-width: 992px) {
+  @media (min-width: 992px) {
     justify-content: left;
     padding: 0 3rem;
   }
 
-  @media only screen and (max-width: 992px) and (min-width: 500px) {
-    justify-content: center;
-  }
-
-  @media only screen and (max-width: 500px) {
+  @media (max-width: 991.98px) {
     justify-content: center;
   }
 
@@ -68,7 +71,7 @@ const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: strin
 `
 
 const ClusterTitle = styled.h1<{ $isCurrent: boolean }>`
-  @media only screen and (max-width: 992px) {
+  @media (max-width: 991.98px) {
     font-size: 1rem;
     margin: auto 3px;
   }

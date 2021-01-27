@@ -7,17 +7,18 @@ import styled from 'styled-components'
 
 const FlexOuter = styled.section`
   display: flex;
+  flex: 0 0 150px;
+
   flex-direction: column;
-  padding: 10px;
+  padding: 15px;
 `
 
 const FlexInner = styled.section`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  height: 130px;
 
-  flex: 1 0 60px;
-  padding: 10px;
+  flex-direction: column;
+  justify-content: flex-start;
 `
 
 const LinkExternal = styled(LinkExternalBase)`
@@ -34,12 +35,14 @@ const LinkExternal = styled(LinkExternalBase)`
 
 const Portrait = styled.img`
   margin: auto;
-  width: 50px;
+  width: 66px;
   border-radius: 50px;
 `
 
 const NameText = styled.h2`
-  font-size: 0.8rem;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  max-width: 130px;
 `
 
 export interface ContributorProps {

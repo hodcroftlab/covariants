@@ -6,7 +6,13 @@ export const WrapperFlex = styled.section`
 `
 
 export const SidebarFlex = styled.aside`
-  flex: 0 0 250px;
+  @media only screen and (max-width: 768px) {
+    flex: 1 0 100%;
+  }
+
+  @media only screen and (min-width: 768px) {
+    flex: 0 0 265px;
+  }
 `
 
 export const MainFlex = styled.section`

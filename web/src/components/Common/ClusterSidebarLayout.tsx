@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 export const VariantsPageContainer = styled(Container)`
   max-width: 1500px;
+  margin-bottom: 50px;
 `
 
 export const WrapperFlex = styled.section`
@@ -11,11 +12,11 @@ export const WrapperFlex = styled.section`
 `
 
 export const SidebarFlex = styled.aside`
-  @media only screen and (max-width: 992px) {
+  @media (max-width: 991.98px) {
     flex: 1;
   }
 
-  @media only screen and (min-width: 992px) {
+  @media (min-width: 992px) {
     flex: 0 0 150px;
   }
 `

@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react'
 
 import styled from 'styled-components'
-import { MdEdit } from 'react-icons/md'
+import { FaGithub } from 'react-icons/fa'
 
 import { URL_GITHUB } from 'src/constants'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
@@ -36,7 +36,7 @@ export function Editable({ githubUrl, text, children, ...restProps }: PropsWithC
     <Container {...restProps}>
       <Flex>
         <FlexRight>
-          <LinkExternal href={`${URL_GITHUB}/${githubUrl}`} icon={<MdEdit />} color={theme.link.dim.color}>
+          <LinkExternal href={`${URL_GITHUB}/${githubUrl}`} icon={<FaGithub />} $color={theme.link.dim.color}>
             <ProposeChangesText>{text ?? 'Propose changes to this section'}</ProposeChangesText>
           </LinkExternal>
         </FlexRight>
