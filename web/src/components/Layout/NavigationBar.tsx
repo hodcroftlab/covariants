@@ -1,10 +1,19 @@
-import React from 'react'
-import { FaGithub, FaTwitter } from 'react-icons/fa'
+import React, { useState } from 'react'
 
 import { connect } from 'react-redux'
+import styled from 'styled-components'
+import {
+  Collapse,
+  Nav as NavBase,
+  Navbar as NavbarBase,
+  NavbarToggler as NavbarTogglerBase,
+  NavItem as NavItemBase,
+  NavLink as NavLinkBase,
+} from 'reactstrap'
+import classNames from 'classnames'
+import { FaGithub, FaTwitter } from 'react-icons/fa'
 
-import { ReactComponent as BrandLogo } from 'src/assets/images/logo.svg'
-import { NavigationLink } from 'src/components/Layout/NavigationLink'
+import { ReactComponent as BrandLogoBase } from 'src/assets/images/logo.svg'
 
 import { Link } from 'src/components/Link/Link'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
@@ -31,18 +40,54 @@ export function matchingUrl(url: string, pathname: string): boolean {
 
 const navLinksRight = [
   {
-    title: 'Follow me on Twitter',
+    text: 'Follow',
+    title: `Follow @${TWITTER_USERNAME_RAW} me on Twitter`,
     url: `https://twitter.com/${TWITTER_USERNAME_RAW}`,
     alt: 'Link to Twitter, with blue Twitter bird logo',
-    icon: <FaTwitter size={28} color="#08a0e9" />,
+    icon: <FaTwitter size={22} color="#08a0e9" />,
+    color: '#08a0e9',
   },
   {
+    text: 'Fork',
     title: "Let's collaborate on GitHub",
     url: URL_GITHUB,
     alt: 'Link to Github page, with grey Github Octocat logo',
-    icon: <FaGithub size={28} color="#24292E" />,
+    icon: <FaGithub size={22} color="#24292E" />,
+    color: '#24292E',
   },
 ]
+
+export const Navbar = styled(NavbarBase)`
+  box-shadow: none;
+`
+
+export const Nav = styled(NavBase)`
+  & .nav-link {
+    padding: 5px;
+  }
+`
+
+export const NavItem = styled(NavItemBase)`
+  margin: 3px auto;
+  padding: 0;
+`
+
+export const NavLink = styled(NavLinkBase)`
+  margin: 0 auto;
+`
+
+export const LinkRight = styled(LinkExternal)``
+
+export const NavbarToggler = styled(NavbarTogglerBase)`
+  border: none;
+`
+
+export const BrandLogo = styled(BrandLogoBase)`
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+`
 
 export interface NavigationBarProps {
   pathname: string
@@ -57,35 +102,43 @@ const mapDispatchToProps = {}
 export const NavigationBar = connect(mapStateToProps, mapDispatchToProps)(NavigationBarDisconnected)
 
 export function NavigationBarDisconnected({ pathname }: NavigationBarProps) {
+  const [isOpen, setIsOpen] = useState(false)
+  const toggle = () => setIsOpen(!isOpen)
+
   return (
-    <nav
-      className="navbar navbar-expand navbar-light navbar-scroll hide-native-scrollbar"
-      role="navigation"
-      data-testid="NavigationBar"
-    >
-      <Link className="navbar-brand d-flex" href="/" role="button">
+    <Navbar expand="sm" color="light" light role="navigation">
+      <Link href="/">
         <BrandLogo className="navigation-bar-product-logo" />
       </Link>
 
-      <ul className="navbar-nav">
-        {Object.entries(navLinksLeft).map(([url, text]) => {
-          return (
-            <NavigationLink key={url} url={url} active={matchingUrl(url, pathname)}>
-              {text}
-            </NavigationLink>
-          )
-        })}
-      </ul>
+      <NavbarToggler onClick={toggle} />
 
-      <ul className="navbar-nav ml-auto d-flex">
-        {navLinksRight.map(({ title, url, alt, icon }) => (
-          <li key={title} className="nav-item mx-2 my-auto">
-            <LinkExternal title={title} href={url} alt={alt} icon={null}>
-              {icon}
-            </LinkExternal>
-          </li>
-        ))}
-      </ul>
-    </nav>
+      <Collapse isOpen={isOpen} navbar>
+        <Nav navbar>
+          {Object.entries(navLinksLeft).map(([url, text]) => {
+            return (
+              <NavItem key={url} className={classNames(matchingUrl(url, pathname) && 'active')}>
+                <NavLink tag={Link} href={url}>
+                  {text}
+                </NavLink>
+              </NavItem>
+            )
+          })}
+        </Nav>
+
+        <Nav className="ml-auto" navbar>
+          {navLinksRight.map(({ text, title, url, alt, icon }) => (
+            <NavItem key={title}>
+              <NavLink tag={LinkRight} title={title} href={url} alt={alt} icon={null}>
+                <span>
+                  <span className="mr-2">{icon}</span>
+                  <span className="d-inline d-sm-none">{text}</span>
+                </span>
+              </NavLink>
+            </NavItem>
+          ))}
+        </Nav>
+      </Collapse>
+    </Navbar>
   )
 }
