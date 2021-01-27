@@ -1,11 +1,23 @@
 import React, { useCallback, useMemo } from 'react'
 
-import { CardBody, Form, FormGroup, Input, Label } from 'reactstrap'
-import { CardCollapsible } from 'src/components/Common/CardCollapsible'
+import { CardBody as CardBodyBase, Form as FormBase, FormGroup as FormGroupBase, Input, Label } from 'reactstrap'
+import styled from 'styled-components'
 
+import type { CountryState } from 'src/components/CountryDistribution/CountryDistributionPage'
 import { getCountryColor } from 'src/io/getCountryColor'
 import { ColoredCircle } from 'src/components/Common/ColoredCircle'
-import type { CountryState } from 'src/components/CountryDistribution/CountryDistributionPage'
+import { CardCollapsible } from 'src/components/Common/CardCollapsible'
+
+export const CardBody = styled(CardBodyBase)``
+
+export const FormGroup = styled(FormGroupBase)`
+  flex: 1 0 265px;
+`
+
+export const Form = styled(FormBase)`
+  display: flex;
+  flex-wrap: wrap;
+`
 
 export interface CountryFilterCheckboxProps {
   country: string
