@@ -20,7 +20,7 @@ The specific mutation <AaMut mut="S:N501Y"/> is found in 3 variants reported at 
 - South Africa (20H/501Y.V2)
 - Brazil (20J/501Y.V3) 
 
-See a <Link href="/shared-mutations">list of shared mutations</Link> for these variants
+See a <Link href="/shared-mutations">list of shared mutations</Link> for these variants.
 
 More information on each of these variants can be found below. Smaller clusters of sequences with <AaMut mut="S:N501"/> mutations are also found in Wales, the USA, & Australia.
 

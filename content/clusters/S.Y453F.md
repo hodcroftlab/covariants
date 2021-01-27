@@ -9,7 +9,7 @@ This mutation is in the receptor binding domain (RDB), important to ACE2 binding
 
 
 It is associated with the 'cluster 5' "mink" variant that led to some alarm in Denmark in autumn 2020.
-This variant has the following additional spike mutations: a deletion at positions 69 and 70 (<AaMut mut="S:H69-"/>, <AaMut mut="S:V70-"/>), <AaMut mut="S:I692V"/> and <AaMut mut="S:M1229I"/>
+This variant has the following additional spike mutations: a deletion at positions 69 and 70 (<AaMut mut="S:H69-"/>, <AaMut mut="S:V70-"/>), as well as <AaMut mut="S:I692V"/> and <AaMut mut="S:M1229I"/>
 
 <AaMut mut="S:Y453F"/> has also been seen previously in mink in the Netherlands (<LinkExternal href="https://nextstrain.org/groups/neherlab/ncov/netherlands?c=gt-S_453&f_country=Netherlands&f_host=Mink">example Nextstrain build</LinkExternal>). <br/><br/>
 
