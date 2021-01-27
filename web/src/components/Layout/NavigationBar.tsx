@@ -14,6 +14,7 @@ import classNames from 'classnames'
 import { FaGithub, FaTwitter } from 'react-icons/fa'
 
 import { ReactComponent as BrandLogoBase } from 'src/assets/images/logo.svg'
+import { ReactComponent as BrandLogoLargeBase } from 'src/assets/images/logo_text_right.svg'
 
 import { Link } from 'src/components/Link/Link'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
@@ -84,10 +85,15 @@ export const NavbarToggler = styled(NavbarTogglerBase)`
 `
 
 export const BrandLogo = styled(BrandLogoBase)`
-  width: 40px;
   height: 40px;
   margin-left: 10px;
   margin-right: 10px;
+  margin-top: 4px;
+`
+
+export const BrandLogoLarge = styled(BrandLogoLargeBase)`
+  height: 40px;
+  margin: 7px 10px 10px;
 `
 
 export interface NavigationBarProps {
@@ -107,9 +113,10 @@ export function NavigationBarDisconnected({ pathname }: NavigationBarProps) {
   const toggle = () => setIsOpen(!isOpen)
 
   return (
-    <Navbar expand="sm" color="light" light role="navigation">
+    <Navbar expand="md" color="light" light role="navigation">
       <Link href="/">
-        <BrandLogo className="navigation-bar-product-logo" />
+        <BrandLogoLarge className="d-none d-lg-block" />
+        <BrandLogo className="d-block d-lg-none" />
       </Link>
 
       <NavbarToggler onClick={toggle} />
