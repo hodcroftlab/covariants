@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 export const VariantsPageContainer = styled(Container)`
   max-width: 1500px;
+  margin-bottom: 50px;
 `
 
 export const WrapperFlex = styled.section`
