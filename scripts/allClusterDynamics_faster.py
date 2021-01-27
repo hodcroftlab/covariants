@@ -373,7 +373,7 @@ for clus in clus_to_run:
         #url_params = "f_region=Europe"
         #if 'url_params' in clusters[clus]:
         #    url_params = clusters[clus]['url_params']
-        nextstrain_url = clusters["nextstrain_url"]
+        nextstrain_url = clusters[clus]["nextstrain_url"]
 
 
         ##################################
@@ -386,6 +386,8 @@ for clus in clus_to_run:
             with open(f"{tables_path}all_tables.md", 'a') as fh:
                 fh.write(f'\n\n## {clus_display}\n')
                 fh.write(f"[Focal Build]({nextstrain_url})\n\n")
+                if clus == "S477":
+                    fh.write(f"Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
                 if clus == "S501":
                     fh.write(f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
                     fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
@@ -397,6 +399,8 @@ for clus in clus_to_run:
         with open(f"{tables_path}{clus_display}_table.md", 'w') as fh:
             fh.write(f'\n\n## {clus_display}\n')
             fh.write(f"[Focal Build]({nextstrain_url})\n\n")
+            if clus == "S477":
+                fh.write(f"Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
             if clus == "S501":
                 fh.write(f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
                 fh.write(f"Note that this mutation has multiple amino-acid mutants - these numbers "
@@ -556,7 +560,7 @@ for clus in clus_to_run:
 
 
     # Only plot countries with >= X seqs
-    min_to_plot = 20
+    min_to_plot = 25
     #if clus == "S222":
     #    min_to_plot = 200
 
