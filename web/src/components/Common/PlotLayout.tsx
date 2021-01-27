@@ -6,7 +6,7 @@ export const WrapperFlex = styled.section`
 `
 
 export const SidebarFlex = styled.aside`
-  flex: 0 0 250px;
+  flex: 0 0 265px;
 `
 
 export const MainFlex = styled.section`
