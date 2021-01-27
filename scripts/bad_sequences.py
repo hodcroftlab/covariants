@@ -36,7 +36,12 @@ bad_seqs = {
     'USA/CA-CZB-13378/2020' :   "2020-05-11", #overdiverged compared to date
     'USA/CA-LACPHL-AE00055/2020'    :   "2020-07-07", #overdiverged compared to date
     'USA/CA-LACPHL-AE00059/2020'    :   "2020-07-14", #overdiverged compared to date
-    'USA/CA-LACPHL-AE00058/2020'    :   "2020-07-13" #overdiverged compared to date
+    'USA/CA-LACPHL-AE00058/2020'    :   "2020-07-13", #overdiverged compared to date
+    'Spain/MD-IBV-99007119/2020'    :   "2020-07-28", #overdiverged compared to date
+    'Spain/RI-IBV-99010963/2020'    :   "2020-11-01", #super diverged - over 40 muts
+    'Spain/IB-IBV-99010765/2020'  : "2020-06-18", # overdiverged, known sequencing problem with this batch
+    'Spain/IB-IBV-99010766/2020'  : "2020-06-18", # overdiverged, known sequencing problem with this batch
+    'Spain/IB-IBV-99010764/2020'  : "2020-06-16" # overdiverged, known sequencing problem with this batch
     #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
     #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
 }

@@ -2,6 +2,7 @@ export const PROJECT_NAME = 'CoVariants' as const
 export const PROJECT_DESCRIPTION = 'SARS-CoV-2 Mutations and Variants of Interest' as const
 export const COPYRIGHT_YEAR_START = 2020 as const
 export const COMPANY_NAME = 'Emma Hodcroft' as const
+export const TEAM_NAME = 'hodcroftlab' as const
 
 export const DOMAIN = process.env.DOMAIN ?? ''
 export const DOMAIN_STRIPPED = process.env.DOMAIN_STRIPPED ?? ''

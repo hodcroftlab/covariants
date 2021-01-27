@@ -31,14 +31,15 @@ As `S:N501` has multiple amino-acid mutations, there is no second letter.<br/>
 20A.EU1 and 20A.EU2, because of their prominence, have been given 'subclade' names.
 The mutation is listed in parentheses after the name.
 
-- [20A.EU1](#20aeu1) _(S:A222V)_
-- [20A.EU2](#20aeu2) _(S:S477N)_
+- [20A.EU1](#20aeu1--sa222v) _(S:A222V)_
+- [20A.EU2](#20aeu2--ss477n) _(S:S477N)_
 - [S:N501](#sn501)
+- [S:E484](#se484)
+- [S:L452R](#sl452r)
 - [S:H69-](#sh69-)
 - [S:N439K](#sn439k)
 - [S:Y453F](#sy453f)
 - [S:S98F](#ss98f)
-- [S:E484](#se484)
 - [S:D80Y](#sd80y)
 - [S:A626S](#sa626s)
 - [S:V1122L](#sv1122l)
@@ -107,6 +108,45 @@ The mutation is listed in parentheses after the name.
   - May increase ACE2 binding [Bloom Lab ACE2 binding website](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS/) - in particular it is predicted to do this by increasing the time spent in the 'open' conformation ([Teruel et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2020.12.16.423118v2))
   - `N501Y` was found in longitudinally-collected samples from an immunocompromised patient ([Choi et al. NEJM](https://www.nejm.org/doi/full/10.1056/NEJMc2031364?query=featured_coronavirus))
   - In one study, sera from previously infected patients neutralised patients with `S:501N` and `S:501Y` equally ([Xie et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.07.425740v1))
+
+## S:E484
+![Figure of S:E484](/other_figures/484.gif)
+
+<sub>Figure made via [GISAID](https://gisaid.org)</sub> 
+
+[Dedicated S:E484 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484)
+
+[Table and charts of mutation distribution](cluster_tables/S.E484_table.md)
+
+- Defining mutations:
+  - Has appeared multiple times independently: each can be associated with different accompanying mutations
+- `S:E484`
+  - Associated with the 501Y.V2 variant that arose in South Africa in the winter of 2020([Tegally et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.21.20248640v1)) -- [Focal `S.E484` build filtered & zoomed to 501Y.V2](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484&f_clade_membership=20H/501Y.V2&label=clade:20H/501Y.V2&p=grid&r=country)
+  - Associated with the 501Y.V3 variant identified originally in Manaus, Amazonas, Brazil, which also carries `S:N501Y` (like 501Y.V2) ([Naveca et al., Virological](https://virological.org/t/phylogenetic-relationship-of-sars-cov-2-sequences-from-amazonas-with-emerging-brazilian-variants-harboring-mutations-e484k-and-n501y-in-the-spike-protein/585), [Faria et al., Virological](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)) -- [Focal `S.E484` build filtered & zoomed to 501Y.V3](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484&f_clade_membership=20J/501Y.V3&label=clade:20J/501Y.V3&p=grid&r=country)
+  - Also found in another variant originating in Brazil, but which does not carry `S:N501Y` ([de Vasconcelos et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.23.20248598v1.article-info)) -- [Focal `S.E484` build filtered & zoomed to 20B/S.484K](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484&f_clade_membership=20B/S.484K&label=clade:20B/S.484K&p=grid&r=country)
+  - Mutations at S:E484 may significantly reduce convalescent serum neutralization ([Greaney et al., medRxiv](https://www.biorxiv.org/content/10.1101/2020.12.31.425021v1))
+  - There has been a case of reinfection associated with `S:E484K`: a woman previously infected with a non-`S:E484K` variant of SARS-CoV-2 was later reinfected with a virus carrying the `S:E484K` mutation ([Nonaka et al., PrePrints](https://www.preprints.org/manuscript/202101.0132/v1))
+  - In one study co-incubating SARS-CoV-2 with convalescent plasma, neutralization was completely escaped at day 73 due to an `S:E484K` mutation ([Andreano et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2020.12.28.424451v1))
+
+- Little else is known about this mutation. Please let me know if you have more information!
+
+_More information coming soon!_
+
+## S:L452R
+![Figure of S:L452R](/other_figures/452.gif)
+
+<sub>Figure made via [GISAID](https://gisaid.org)</sub> 
+
+[Dedicated S:L452R Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.L452R?c=gt-S_452)
+
+[Table and charts of mutation distribution](cluster_tables/S.L452R_table.md)
+
+- Defining mutations:
+  - Nonsynonymous: `S:S13I`, `W152C`, `L452R`; `ORF1a:I4205V`; `ORF1b:D1183Y`
+  - Synonymous: `C2395T`, `T2597C`, `T24349C`, `G27890T`, `A28272T`
+- `S:L452R`
+  - `S:L452R` was first identified in California ([California Dept of Public Health](https://www.cdph.ca.gov/Programs/OPA/Pages/NR21-020.aspx)) and appears to have increased in frequency ([Chiu C, Twitter](https://twitter.com/cychiu98/status/1350985418628587520)). _If these links can be replaced with more formal analyses, please submit a PR doing so!_
+  - In a study co-incubating psueotyped virus with SARS-CoV-2 spike proteins and monocolonal antibodies, viruses with `S:L452R` mutations escaped neutralization by monoclonal antibodies SARS2-01, SARS-02, and SARS2-32 and some convalescent sera. Additionally, this study found modest increase in infectivity as measured by soluble mACE2 ([Liu et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.06.372037v1)) 
 
 ## S:H69-
 ![Figure of S:H69-](/other_figures/6970del.gif)
@@ -185,29 +225,6 @@ Note this figure shows both the 69 & 70 deletion.</sub>
   - Mostly found in Belgium and the Netherlands - predominantly Belgium
 - Little else is known about this mutation. Please let me know if you have more information!
 
-## S:E484
-![Figure of S:E484](/other_figures/484.gif)
-
-<sub>Figure made via [GISAID](https://gisaid.org)</sub> 
-
-[Dedicated S:E484 Nextstrain build](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484&f_region=Europe)
-
-[Table and charts of mutation distribution](cluster_tables/S.E484_table.md)
-
-- Defining mutations:
-  - Has appeared multiple times independently: each can be associated with different accompanying mutations
-- `S:E484`
-  - Associated with the 501Y.V2 variant that arose in South Africa in the winter of 2020([Tegally et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.21.20248640v1)) -- [Focal `S.E484` build filtered & zoomed to 501Y.V2](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484&f_clade_membership=20H/501Y.V2&label=clade:20H/501Y.V2&p=grid&r=country)
-  - Associated with the 501Y.V3 variant identified originally in Manaus, Amazonas, Brazil, which also carries `S:N501Y` (like 501Y.V2) ([Naveca et al., Virological](https://virological.org/t/phylogenetic-relationship-of-sars-cov-2-sequences-from-amazonas-with-emerging-brazilian-variants-harboring-mutations-e484k-and-n501y-in-the-spike-protein/585), [Faria et al., Virological](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)) -- [Focal `S.E484` build filtered & zoomed to 501Y.V3](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484&f_clade_membership=20J/501Y.V3&label=clade:20J/501Y.V3&p=grid&r=country)
-  - Also found in another variant originating in Brazil, but which does not carry `S:N501Y` ([de Vasconcelos et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.23.20248598v1.article-info)) -- [Focal `S.E484` build filtered & zoomed to 20B/S.484K](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484&f_clade_membership=20B/S.484K&label=clade:20B/S.484K&p=grid&r=country)
-  - Mutations at S:E484 may significantly reduce convalescent serum neutralization ([Greaney et al., medRxiv](https://www.biorxiv.org/content/10.1101/2020.12.31.425021v1))
-  - There has been a case of reinfection associated with `S:E484K`: a woman previously infected with a non-`S:E484K` variant of SARS-CoV-2 was later reinfected with a virus carrying the `S:E484K` mutation ([Nonaka et al., PrePrints](https://www.preprints.org/manuscript/202101.0132/v1))
-  - In one study co-incubating SARS-CoV-2 with convalescent plasma, neutralization was completely escaped at day 73 due to an `S:E484K` mutation ([Andreano et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2020.12.28.424451v1))
-
-- Little else is known about this mutation. Please let me know if you have more information!
-
-_More information coming soon!_
-
 ## S:D80Y
 ![Figure of S:D80Y](/other_figures/80.gif)
 
@@ -258,3 +275,16 @@ _More information coming soon!_
   - Found primarily in Sweden and northern European countries, including Norway and Denmark
 - Little else is known about this mutation. Please let me know if you have more information!
 
+
+## Sponsors
+
+We are grateful to Vercel for sponsoring our web application builds
+
+<p align="center">
+  <a target="_blank" href="https://vercel.com/?utm_source=hodcroftlab&utm_campaign=oss">
+    <img
+      src="https://user-images.githubusercontent.com/9403403/105740694-b9358880-5f39-11eb-95ff-3ea98e4fa43a.png"
+      alt="Vercel logo"
+    />
+  </a>
+</p>

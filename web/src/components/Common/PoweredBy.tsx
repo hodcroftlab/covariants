@@ -5,6 +5,7 @@ import gisaidLogoUrl from 'src/assets/images/gisaid_logo.png'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import styled from 'styled-components'
 
+import { PROJECT_NAME, TEAM_NAME } from 'src/constants'
 import { ReactComponent as VercelLogo } from 'src/assets/images/vercel_logo.svg'
 import { ReactComponent as NextJsLogo } from 'src/assets/images/nextjs_logo.svg'
 import { NextstrainLogo } from './NextstrainLogo'
@@ -49,19 +50,19 @@ const mainLinks = [
   },
   {
     title: 'Nextstrain',
-    url: 'https://nextstrain.org',
+    url: `https://nextstrain.org?utm_source=${PROJECT_NAME}`,
     alt: 'Link to Nextstrain.org with colorful Nextstrain logo',
     icon: <NextstrainLogo />,
   },
   {
     title: 'Next.js',
-    url: 'https://nextjs.com',
+    url: `https://nextjs.com?utm_source=${TEAM_NAME}&utm_campaign=oss`,
     alt: '',
     icon: <NextJsLogo height={30} />,
   },
   {
     title: 'Vercel',
-    url: 'https://vercel.com',
+    url: `https://vercel.com?utm_source=${TEAM_NAME}&utm_campaign=oss`,
     alt: '',
     icon: <VercelLogo width={100} />,
   },
