@@ -1,8 +1,10 @@
 from collections import defaultdict
+from datetime import datetime
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from scipy.interpolate import interp1d
 from travel_data import *
 from colors_and_countries import *
 from helpers import *
@@ -27,7 +29,7 @@ def country_correlation(roamers, countries, country_to_iso, weeks, province_code
 
     return pd.DataFrame(res)
 
-def get_total_cluster(country, cases, frequency, weeks=None):
+def get_total_cluster(cases, frequency, weeks=None):
     if weeks is None:
         weeks = list(range(15,52))
 
@@ -36,9 +38,9 @@ def get_total_cluster(country, cases, frequency, weeks=None):
     ncases_other = []
     summer_average = np.mean([x for d,x in frequency.items() if d.month>7])
     for week in weeks:
-        d = datetime.datetime.strptime(f"2020-W{week}-1", '%G-W%V-%u')
-        ncases.append(cases[country][d]*frequency.get(d, 0 if d.month<7 else summer_average))
-        ncases_other.append(cases[country][d]*(1-frequency.get(d, 0 if d.month<7 else summer_average)))
+        d = CW_to_date(week)
+        ncases.append(cases[d]*frequency.get(d, np.nan))
+        ncases_other.append(cases[d]*(1-frequency.get(d, np.nan)))
         dates.append(d)
 
     return {"cases":ncases, "cases_other":ncases_other, "dates":dates}
@@ -183,6 +185,7 @@ def import_figure(countries, roamers, country_to_iso, spain_frequency, cases_by_
     plt.tight_layout()
     axs[0].text(axs[0].get_xlim()[0]-30, axs[0].get_ylim()[1], "A", size=22, weight="bold")
     axs[1].text(axs[1].get_xlim()[0]-30, axs[1].get_ylim()[1]+0.001, "B", size=22, weight="bold")
+    axs[1].set_xlim(datetime(2020,4,1),datetime(2020,11,30))
     plt.savefig(figure_path+f'import_model.{fmt}')
 
 
@@ -195,7 +198,7 @@ def import_scaled(countries, roamers, country_to_iso, spain_frequency, cases_by_
     ncols=3
     nrows = len(countries_no_spain)//ncols + (1 if len(countries_no_spain)%ncols else 0)
 
-    fig, axs = plt.subplots(ncols, nrows, figsize=(12,12))
+    fig, axs = plt.subplots(ncols, nrows, figsize=(12,12), sharex=True, sharey=True)
     #for a simpler plot of most interesting countries use this:
     for ci,c in enumerate(countries_no_spain):
         ax = axs[ci//3, ci%3]
@@ -231,9 +234,10 @@ def import_scaled(countries, roamers, country_to_iso, spain_frequency, cases_by_
 
         ax.legend()
         ax.set_ylim([0,1])
-        ax.set_xlim([datetime(2020,5,1), datetime(2020,11,30)])
+        ax.set_xlim([datetime(2020,6,1), datetime(2020,11,30)])
+        if ci%3==0:
+            ax.set_ylabel('frequency')
     fig.autofmt_xdate(rotation=30)
-    plt.ylabel('frequency')
     plt.tight_layout()
     plt.savefig(figure_path+f'travel_scaled.{fmt}')
     imports_file.close()
@@ -286,17 +290,107 @@ def confirmed_vs_estimated_imports(country, roamers, country_to_iso, spain_frequ
 
     fig = plt.figure()
     case_data = load_case_data(countries)
-    de_imports = pd.read_csv(f'../cluster_scripts/travel_data/{country.lower()}_imports_from_spain.tsv', sep='\t')
+    reported_imports = pd.read_csv(f'../cluster_scripts/travel_data/{country.lower()}_imports_from_spain.tsv', sep='\t')
     res = get_country_imports(roamers, case_data[country], travel_volume[country], country_to_iso[country], spain_frequency,
                               cases_by_cw_per_capita, weeks, popsizes[country])
 
-    plt.plot(res['dates'], res['introductions'], 'o-', label="estimated introductions", lw=2)
+    plt.plot(res['dates'], res['introductions'], 'o-', label="travel estimate", lw=2)
 
-    plt.plot(res['dates'], np.array(res['introductions'])*scale_factor, 'o-', label="estimated introductions rescaled", lw=2)
+    plt.plot(res['dates'], np.array(res['introductions'])*scale_factor, 'o-', label=f"rescaled estimate ({scale_factor}x)", lw=2)
 
-    plot([CW_to_date(x) for x in de_imports.CW], de_imports.cases, 'o-', label="reported cases originating from Spain", lw=2)
-    plt.legend()
+    plt.plot([CW_to_date(x) for x in reported_imports.CW], reported_imports.cases, 'o-', label="reported cases", lw=2)
+    plt.legend(loc=2)
+    plt.ylabel('introductions')
     fig.autofmt_xdate()
+
+
+def total_EU1_cases(roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita):
+    countries = ["Switzerland", "United Kingdom", "Netherlands", "France",
+                 "Ireland", "Denmark", "Belgium", "Germany", "Norway",
+                 "Italy",
+                 "Spain",
+                 ]
+    case_data = load_case_data(countries)
+    weeks = range(15,50)
+
+    fig=plt.figure()
+    total_not_spain = defaultdict(int)
+    total_not_spain_other = defaultdict(int)
+    total_estimated_exports = defaultdict(float)
+    total_pop = 0
+    Re = defaultdict(float)
+    for country in countries:
+        cluster_freq = {k: c/tot for k, c, tot in zip(*non_zero_counts(cluster_data, total_data, country, smoothing=smoothing))}
+        res = get_total_cluster(case_data[country], cluster_freq)
+        if country!="Spain":
+            imports = get_country_imports(roamers, case_data[country], travel_volume[country], country_to_iso[country],
+                                          spain_frequency, cases_by_cw_per_capita, weeks, popsizes[country])
+            for k,v in zip(res["dates"], res["cases"]):
+                total_not_spain[k] += v
+            for k,v in zip(res["dates"], res["cases_other"]):
+                total_not_spain_other[k] += v
+            for k,v in zip(imports["dates"], imports["introductions"]):
+                total_estimated_exports[k] += v
+            for k,v in zip(imports["dates"], imports["Re"]):
+                Re[k] += v*popsizes[country]
+            total_pop+=popsizes[country]
+        else:
+            plt.plot(res['dates'], res['cases'], label=country + " (EU1)", c=country_styles[country]['c'], ls=country_styles[country].get('ls', '-'), lw=3)
+            plt.plot(res['dates'], np.array(res['cases_other'])+np.array(res['cases']), label=country + " (total)", c=country_styles[country]['c'], ls='--', lw=3)
+
+    plt.plot([k for k in total_not_spain.keys()], [k for k in total_not_spain.values()],
+             label="outside Spain (EU1)", c='k', ls='-', lw=3)
+
+    plt.plot([k for k in total_not_spain_other.keys()], [total_not_spain[k] + v for k,v in total_not_spain_other.items()],
+             label="outside Spain (total)", c='k', ls='--', lw=3)
+
+    for k in Re:
+        Re[k] /= total_pop
+
+
+    plt.legend(fontsize=fs)
+    plt.ylabel('estimated cases', fontsize=fs)
+    plt.tick_params(labelsize=fs)
+    plt.text(-0.15, 0.97, 'B', fontsize=1.6*fs, transform=plt.gca().transAxes)
+    fig.autofmt_xdate(rotation=30)
+    plt.tight_layout()
+    plt.xlim(datetime(2020,5,15), datetime(2020,11,30))
+    plt.yscale('log')
+    plt.ylim(1,1e7)
+    plt.savefig(f'{figure_path}total_EU1_cases.{fmt}')
+
+    # make secondary figure with Re estimate.
+    fig, axs = plt.subplots(1,3, sharey=True, figsize=(12,5))
+    pc = 5
+    t0 = 12
+    for ax, mult in zip(axs, [1,2,4]):
+        dates = list(total_estimated_exports.keys())
+        exports_from_spain = interp1d([d.toordinal() for d in dates], list(total_estimated_exports.values()))
+        Re_eu1 = np.array([(pc+total_not_spain[dates[i]]) for i in range(t0,len(dates))]), np.array([(pc+total_not_spain[dates[i-1]]) for i in range(t0,len(dates))])
+        Re_non_eu1 = np.array([(pc+total_not_spain_other[dates[i]]) for i in range(1,len(dates))]), np.array([(pc+total_not_spain_other[dates[i-1]]) for i in range(1,len(dates))])
+
+        Re_eu1_subtracted = {}
+        for delay in [7,10,14]:
+            Re_eu1_subtracted[delay] = np.array([(pc + total_not_spain[dates[i]] - mult*exports_from_spain(dates[i].toordinal()-delay)) for i in range(t0,len(dates))]), \
+                                       np.array([(pc+total_not_spain[dates[i-1]]) for i in range(t0,len(dates))])
+
+        plot_ratio(dates[t0:], Re_eu1[0], Re_eu1[1], pc**0.5*Re_eu1[0]**0.5, pc**0.5*Re_eu1[1]**0.5, ax, label='Growth EU1 (uncorrected)')
+        plot_ratio(dates[1:], Re_non_eu1[0], Re_non_eu1[1], pc**0.5*Re_non_eu1[0]**0.5, pc**0.5*Re_non_eu1[1]**0.5, ax, label='Growth non EU1')
+        for delay in Re_eu1_subtracted:
+            plot_ratio(dates[t0:], Re_eu1_subtracted[delay][0], Re_eu1_subtracted[delay][1], pc**0.5*Re_eu1_subtracted[delay][0]**0.5, pc**0.5*Re_eu1_subtracted[delay][1]**0.5, ax, label=f'Growth EU1 -- travel {delay}d')
+
+        ax.plot(dates, np.ones_like(dates), 'k')
+        ax.set_ylim([0,4])
+        ax.set_title(f"exports multiplied by {mult}")
+    fig.autofmt_xdate(rotation=30)
+    plt.legend()
+
+def plot_ratio(x, num, denom, dnum, ddenom, ax, nstd = 2, label=''):
+    center = num/denom
+    dlog_center = (dnum**2/num**2 + ddenom**2/denom**2)**0.5
+    ax.plot(x, center, label=label)
+    ax.fill_between(x, center*np.exp(nstd*dlog_center), center*np.exp(-nstd*dlog_center), alpha=0.3)
+
 
 
 if __name__ == '__main__':
@@ -333,10 +427,16 @@ if __name__ == '__main__':
     import_figure(countries, roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita)
 
     import_scaled(countries, roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita, cluster_data, total_data)
-    confirmed_vs_estimated_imports("Germany", roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita, 6)
+    confirmed_vs_estimated_imports("Germany", roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita, 3.7)
     plt.fill_between([datetime(2020,6,22),datetime(2020,9,12)], [300,300], alpha=0.3)
-    confirmed_vs_estimated_imports("Switzerland", roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita, 4)
-    plt.fill_between([datetime(2020,6,20),datetime(2020,8,26)], [50,50], alpha=0.3)
+    plt.text(datetime(2020,9,2), -10, "Quarantine requirement")
+    plt.text(datetime(2020,6,22), 20, "main holiday period", rotation=90)
+    plt.fill_between([datetime(2020,9,2),datetime(2020,12,31)], [60,60], alpha=0.3)
+    plt.savefig(figure_path+f'confirmed_vs_estimated_DE.png')
+    confirmed_vs_estimated_imports("Switzerland", roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita, 3.8)
+    plt.fill_between([datetime(2020,6,20),datetime(2020,8,26)], [100,100], alpha=0.3)
+    plt.fill_between([datetime(2020,8,10),datetime(2020,12,31)], [20,20], alpha=0.3)
+    plt.savefig(figure_path+f'confirmed_vs_estimated_CH.png')
 
     # case_and_travel_figure(countries, roamers, cases_by_cw, provinces, country_to_iso, province_codes)
 
@@ -348,41 +448,4 @@ if __name__ == '__main__':
     plt.tight_layout()
     plt.savefig(figure_path + f"country_clustering.{fmt}")
 
-# countries = ["Switzerland", "United Kingdom", "Netherlands", "France",
-#              "Ireland", "Denmark", "Belgium", "Germany", "Norway",
-#              "Italy",
-#              "Spain",
-#              ]
-# case_data = load_case_data(countries)
-
-# fig=plt.figure()
-# total_not_spain = defaultdict(int)
-# total_not_spain_other = defaultdict(int)
-# for country in countries:
-#     cluster_freq = {k: c/tot for k, c, tot in zip(*non_zero_counts(cluster_data, total_data, country, smoothing=smoothing))}
-#     res = get_total_cluster(country, case_data, cluster_freq)
-#     if country!="Spain":
-#         for k,v in zip(res["dates"], res["cases"]):
-#             total_not_spain[k] += v
-#         for k,v in zip(res["dates"], res["cases_other"]):
-#             total_not_spain_other[k] += v
-#     else:
-#         plt.plot(res['dates'], res['cases'], label=country + " (EU1)", c=country_styles[country]['c'], ls=country_styles[country].get('ls', '-'), lw=3)
-#         plt.plot(res['dates'], np.array(res['cases_other'])+np.array(res['cases']), label=country + " (total)", c=country_styles[country]['c'], ls='--', lw=3)
-
-# plt.plot([k for k in total_not_spain.keys()], [k for k in total_not_spain.values()],
-#          label="outside Spain (EU1)", c='k', ls='-', lw=3)
-
-# plt.plot([k for k in total_not_spain_other.keys()], [total_not_spain[k] + v for k,v in total_not_spain_other.items()],
-#          label="outside Spain (total)", c='k', ls='--', lw=3)
-
-# plt.legend(fontsize=fs)
-# plt.ylabel('estimated cases', fontsize=fs)
-# plt.tick_params(labelsize=fs)
-# plt.text(-0.15, 0.97, 'B', fontsize=1.6*fs, transform=plt.gca().transAxes)
-# fig.autofmt_xdate(rotation=30)
-# plt.tight_layout()
-# plt.xlim(datetime.datetime(2020,5,15), datetime.datetime(2020,11,30))
-# plt.yscale('log')
-# plt.ylim(1,1e7)
-# plt.savefig(f'{figure_path}total_EU1_cases.{fmt}')
+    total_EU1_cases(roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita)
