@@ -24,7 +24,7 @@ const CopyrightText = styled.div`
   font-size: 0.75rem;
   flex-grow: 1;
 
-  @media (max-width: 576px) {
+  @media (max-width: 575.98px) {
     font-size: 0.5rem;
   }
 `
@@ -34,7 +34,7 @@ const VersionText = styled.div`
   font-size: 0.75rem;
   text-align: right;
 
-  @media (max-width: 992px) {
+  @media (max-width: 991.98px) {
     display: none;
   }
 `

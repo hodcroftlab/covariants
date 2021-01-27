@@ -72,6 +72,15 @@ export const Nav = styled(NavBase)`
 export const NavItem = styled(NavItemBase)`
   margin: 3px auto;
   padding: 0;
+
+  &.active {
+    background-color: #6bb24e;
+    border-radius: 10px;
+  }
+
+  &.active > .nav-link {
+    color: white !important;
+  }
 `
 
 export const NavLink = styled(NavLinkBase)`

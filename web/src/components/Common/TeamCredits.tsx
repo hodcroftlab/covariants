@@ -53,9 +53,10 @@ const FlexContributors = styled.section`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 
   width: 100%;
+  max-width: 1500px;
   margin: 10px auto;
 `
 
