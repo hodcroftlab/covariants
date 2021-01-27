@@ -7,6 +7,7 @@ Converts cluster data to a format suitable for consumption by the web app
 
 import json
 import os
+import re
 from shutil import copyfile
 
 import numpy as np
@@ -14,6 +15,7 @@ import pandas as pd
 
 from clusters import clusters
 from colors_and_countries import country_styles
+from mutation_comparison import mutation_comparison
 
 cluster_tables_path = "cluster_tables"
 output_path = "web/data"
@@ -188,6 +190,124 @@ def convert_per_cluster_data(clusters):
     return per_cluster_data_output, per_cluster_data_output_interp
 
 
+# HACK: Copied from `allClusterDynamics.py:355`
+# TODO: deduplicate
+cluster_url_params = {
+    "S:N501": "",  # don't have Europe filter
+    "S:H69-": "c=gt-S_69,501,453",  # color by mutations, no Europe filter
+    "S:Y453F": "c=gt-S_453&f_region=Europe"  # color by mutations, Europe filter
+}
+
+
+def get_build_url(cluster):
+    build_name = cluster['build_name']
+    display_name = cluster['display_name']
+
+    url_params = "f_region=Europe"
+    try:
+        url_params = cluster_url_params[display_name]
+    except KeyError:
+        pass
+
+    return f"https://nextstrain.org/groups/neherlab/ncov/{build_name}?{url_params}"
+
+
+def add_cluster_properties(cluster):
+    result = {}
+    result.update(cluster)
+    result.update({'build_url': get_build_url(cluster)})
+    return result
+
+
+def mutation_string_to_object(mutation):
+    match = re.search('^(?P<gene>.*:)?(?P<left>[*.A-Z-]{0,1})(?P<pos>(\d)*)(?P<right>[*.A-Z-]{0,1})$', mutation)
+
+    def none_if_empty(x):
+        return None if len(x) == 0 else x
+
+    gene = none_if_empty(match.group('gene')).replace(":", "")
+    left = none_if_empty(match.group('left'))
+    pos = int(match.group('pos'))
+    right = none_if_empty(match.group('right'))
+
+    return {
+        "gene": gene,
+        "left": left,
+        "pos": pos,
+        "right": right,
+    }
+
+
+def mutation_object_to_string(mut):
+    gene = f'{mut["gene"]}:' or ""
+    left = mut["left"] or ""
+    pos = mut["pos"]
+    right = mut["right"] or ""
+    return f"{gene}{left}{pos}{right}"
+
+
+def convert_mutation_comparison(mutation_comparison):
+    all_variants = list(mutation_comparison.keys())
+
+    all_mutations = set()
+    for variant, variant_data in mutation_comparison.items():
+        for mut in variant_data["nonsynonymous"]:
+            all_mutations.add(mut)
+    all_mutations = list(all_mutations)
+    all_mutations_obj = [mutation_string_to_object(mut) for mut in all_mutations]
+    all_mutations_pos = list(set([mut["pos"] for mut in all_mutations_obj]))
+
+    # print(all_mutations_pos)
+
+    # Matrix [ variants x mutation_positions ],
+    # containing mutation string if there is a mutation at a given position in a given variant, and NaN otherwise
+    mutation_presence = pd.DataFrame(None, index=all_mutations_pos, columns=all_variants)
+    for variant, variant_data in mutation_comparison.items():
+        for mut in variant_data["nonsynonymous"]:
+            mut_obj = mutation_string_to_object(mut)
+            pos = mut_obj["pos"]
+            mutation_presence.loc[pos, variant] = mut
+
+    mutation_presence = mutation_presence.sort_index(ascending=True)
+
+    def by_presence(mutations):
+        # for each of all mutation positions, how many variants have a mutation there (non-NaN value)
+        return [mutation_presence.loc[mut].count() for mut in mutations]
+
+    # Split mutations into shared (occurring in more than one variant) and individual
+    mask = mutation_presence.count(axis=1) > 1
+
+    shared = mutation_presence[mask]
+
+    # Sort by position
+    shared_by_pos = shared.sort_index(ascending=True)
+
+    # Sort by number of occurrences in variants, from most common, to least common
+    shared_by_commonness = shared.sort_index(key=by_presence, ascending=False)
+
+    individual = mutation_presence[~mask]
+
+    def shared_to_json(shared):
+        # Convert shared mutations into a format convenient for web app
+        return [
+            {"pos": pos, "presence": pres.replace({np.nan: None}).tolist()}
+            for pos, pres in shared.iterrows()
+        ]
+
+    # Convert individual mutations into a format convenient for web app
+    individual = individual.sort_index(ascending=True)
+    individual = {k: v.dropna().tolist() for k, v in individual.T.iterrows()}
+    individual = pd.DataFrame.from_dict(individual, orient='index').T
+    individual = [{"index": k, "mutations": v.tolist()} for k, v in individual.iterrows()]
+
+    return {
+        "variants": all_variants,
+        "shared_by_pos": shared_to_json(shared_by_pos),
+        "shared_by_commonness": shared_to_json(shared_by_commonness),
+        "individual": individual
+    }
+
+
 if __name__ == '__main__':
     # NOTE: we exclude DanishCluster
     clusters.pop("DanishCluster", None)
@@ -212,6 +332,10 @@ if __name__ == '__main__':
     clusters = [cluster for _, cluster in clusters.items()]
     with open(os.path.join(output_path, "clusters.json"), "w") as fh:
         json.dump({'clusters': clusters}, fh, indent=2, sort_keys=True)
+
+    mutation_comparison_output = convert_mutation_comparison(mutation_comparison)
+    with open(os.path.join(output_path, "mutationComparison.json"), "w") as fh:
+        json.dump(mutation_comparison_output, fh, indent=2, sort_keys=True)
 
     with open(os.path.join(output_path, "countryStyles.json"), "w") as fh:
         json.dump(country_styles, fh, indent=2, sort_keys=True)

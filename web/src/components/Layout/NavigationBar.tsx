@@ -28,6 +28,7 @@ const navLinksLeft = {
   '/variants': 'Variants',
   '/per-country': 'Per country',
   '/per-variant': 'Per variant',
+  '/shared-mutations': 'Shared Mutations',
 }
 
 export function matchingUrl(url: string, pathname: string): boolean {

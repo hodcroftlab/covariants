@@ -21,4 +21,5 @@ This project is free and open source. The content, derived data, code used to ge
 - Browse [Variants](/variants)
 - Explore [Per-country distribution](/per-country)
 - Explore [Per-variant distribution](/per-variant)
+- View [Shared mutations](/shared-mutations)
 - See [Frequently asked questions](/faq)

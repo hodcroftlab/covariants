@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { Col, Row } from 'reactstrap'
-import { VariantsPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 
 import { getClusters } from 'src/io/getClusters'
 
 import { ClusterButtonPanel } from 'src/components/ClusterButtonPanel/ClusterButtonPanel'
+import { VariantsPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 import { Editable } from 'src/components/Common/Editable'
 import { Layout } from 'src/components/Layout/Layout'
 
