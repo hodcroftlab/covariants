@@ -23,11 +23,13 @@ export const MutationBadgeBox = styled.span`
   font-size: 0.75rem;
 `
 
-export const MutationWrapper = styled.span`
-  border-radius: 2px;
+export const MutationWrapper = styled.span<{ $withBorder?: boolean }>`
+  border-radius: 3px;
   box-shadow: ${(props) => props.theme.shadows.lighter};
 
   font-family: ${(props) => props.theme.font.monospace};
+
+  ${({ $withBorder, theme }) => $withBorder && `border: ${theme.blue} solid 3px`};
 
   & > span:first-child {
     padding-left: 4px;
@@ -116,9 +118,10 @@ export interface MutationBadgeProps {
   prefix?: string
   mutation: Mutation
   colors: MutationColors
+  $withBorder?: boolean
 }
 
-export function MutationBadge({ prefix, mutation, colors }: MutationBadgeProps) {
+export function MutationBadge({ prefix, mutation, colors, $withBorder }: MutationBadgeProps) {
   const { gene, left, pos, right, note } = mutation
 
   const geneColor = get(GENE_COLORS, gene ?? '', DEFAULT_COLOR)
@@ -127,7 +130,7 @@ export function MutationBadge({ prefix, mutation, colors }: MutationBadgeProps) 
 
   return (
     <MutationBadgeBox>
-      <MutationWrapper>
+      <MutationWrapper $withBorder={$withBorder}>
         {prefix && <PrefixText>{prefix}</PrefixText>}
         {gene && (
           <>
@@ -203,7 +206,7 @@ export function VariantLinkBadge({ name, href }: VariantLinkBadgeProps) {
         {
           // prettier-ignore
           `VariantLinkBadge: Variant not recognized: ${JSON.stringify(name)}.` +
-        `Known variants: ${clusterNames.join(', ')}`
+          `Known variants: ${clusterNames.join(', ')}`
         }
       </span>
     )
@@ -211,7 +214,7 @@ export function VariantLinkBadge({ name, href }: VariantLinkBadgeProps) {
 
   return (
     <LinkUnstyled href={url} icon={null}>
-      <MutationBadge prefix="Variant" mutation={mutationObj} colors={AMINOACID_COLORS} />
+      <MutationBadge prefix="Variant" $withBorder mutation={mutationObj} colors={AMINOACID_COLORS} />
     </LinkUnstyled>
   )
 }
