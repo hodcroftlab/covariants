@@ -19,6 +19,10 @@ cluster_path = "../ncov_cluster/cluster_profile/"
 figure_path = "../cluster_scripts/figures/"
 # This assumes that `cluster_scripts`` also sites 'next to ' `ncov`
 
+#For purposes of resubmission I've modified these to go where they can be committed
+cluster_path = "../covariants/through_Nov_data/"
+figure_path = "../covariants/through_Nov_data/"
+
 # Otherwise, modify the paths above to put the files wherever you like.
 # (Alternatively just create a folder structure to mirror the above)
 fmt = "pdf"
@@ -28,6 +32,7 @@ import datetime
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import json
 from shutil import copyfile
 from collections import defaultdict
 from matplotlib.patches import Rectangle
@@ -43,18 +48,25 @@ from clusters import *
 #run ../cluster_scripts/paths.py
 #run ../cluster_scripts/paths.py
 
+#read in bad sequences to be excluded
+from bad_sequences import *
+
+# Give a cutoff date to allow back-fill of metadata but no sequences past end Nov
+max_cutoff_date = "2020-11-30"
+
 # Get diagnostics file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
-diag_file = "results/sequence-diagnostics.tsv"
+diag_file = "results/sequence-diagnostics_2021-01-20.tsv"
 diag = pd.read_csv(diag_file, sep='\t', index_col=False)
 # Read metadata file
-input_meta = "data/metadata.tsv"
+input_meta = "data/metadata_2021-01-20.tsv"
 meta = pd.read_csv(input_meta, sep='\t', index_col=False)
 meta = meta.fillna('')
 has_valid_date = set()
 for ri, row in meta.iterrows():
     try:
-        datetime.datetime.strptime(row.date, '%Y-%m-%d')
-        has_valid_date.add(row.strain)
+        date = datetime.datetime.strptime(row.date, '%Y-%m-%d')
+        if date <= datetime.datetime.strptime(max_cutoff_date, "%Y-%m-%d"):
+            has_valid_date.add(row.strain)
     except:
         pass
 ########
@@ -105,6 +117,8 @@ while reask:
 
 #FIGURES ARE ONLY PLOTTED FOR S222 ONLY
 
+json_output = {}
+
 for clus in clus_to_run:
     print(f"\nRunning cluster {clus}\n")
 
@@ -132,19 +146,25 @@ for clus in clus_to_run:
                 #if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
                 wanted_seqs.append(row['strain'])
 
-    # There's one spanish seq with date of 7 March - we think this is wrong.
-    # If seq there and date bad - exclude!
-    bad_seq = meta[meta['strain'].isin(['Spain/VC-IBV-98006466/2020'])]
-    if bad_seq.date.values[0] == "2020-03-07" and 'Spain/VC-IBV-98006466/2020' in wanted_seqs:
-        wanted_seqs.remove('Spain/VC-IBV-98006466/2020')
+    # Exclude sequences that seem to have bad dates or are overdiverged compared to date
+    for key, value in bad_seqs.items():
+        bad_seq = meta[meta['strain'].isin([key])]
+        if not bad_seq.empty and bad_seq.date.values[0] == value and key in wanted_seqs:
+            wanted_seqs.remove(key)
 
-    # There are two sequences from UK with suspected bad dates: exclude
-    bad_seq = meta[meta['strain'].isin(['England/LIVE-1DD7AC/2020'])]
-    if bad_seq.date.values[0] == "2020-03-10" and 'England/LIVE-1DD7AC/2020' in wanted_seqs:
-        wanted_seqs.remove('England/LIVE-1DD7AC/2020')
-    bad_seq = meta[meta['strain'].isin(['England/PORT-2D2111/2020'])]
-    if bad_seq.date.values[0] == "2020-03-21" and 'England/PORT-2D2111/2020' in wanted_seqs:
-        wanted_seqs.remove('England/PORT-2D2111/2020')
+#    # There's one spanish seq with date of 7 March - we think this is wrong.
+#    # If seq there and date bad - exclude!
+#    bad_seq = meta[meta['strain'].isin(['Spain/VC-IBV-98006466/2020'])]
+#    if bad_seq.date.values[0] == "2020-03-07" and 'Spain/VC-IBV-98006466/2020' in wanted_seqs:
+#        wanted_seqs.remove('Spain/VC-IBV-98006466/2020')
+#
+#    # There are two sequences from UK with suspected bad dates: exclude
+#    bad_seq = meta[meta['strain'].isin(['England/LIVE-1DD7AC/2020'])]
+#    if bad_seq.date.values[0] == "2020-03-10" and 'England/LIVE-1DD7AC/2020' in wanted_seqs:
+#        wanted_seqs.remove('England/LIVE-1DD7AC/2020')
+#    bad_seq = meta[meta['strain'].isin(['England/PORT-2D2111/2020'])]
+#    if bad_seq.date.values[0] == "2020-03-21" and 'England/PORT-2D2111/2020' in wanted_seqs:
+#        wanted_seqs.remove('England/PORT-2D2111/2020')
 
     print("Sequences found: ")
     print(len(wanted_seqs)) # how many are there?
@@ -182,7 +202,7 @@ for clus in clus_to_run:
 
 
     # Let's get some summary stats on number of sequences, first, and last, for each country.
-    country_info = pd.DataFrame(index=all_countries, columns=['first_seq', 'num_seqs', 'last_seq', "sept_oct_freq"])
+    country_info = pd.DataFrame(index=all_countries, columns=['first_seq', 'num_seqs', 'last_seq', "sept_to_nov_freq"])
     country_dates = {}
     cutoffDate = datetime.datetime.strptime("2020-09-01", '%Y-%m-%d')
 
@@ -204,9 +224,9 @@ for clus in clus_to_run:
             temp_meta = meta[meta['country'].isin([coun])]
         all_dates = [datetime.datetime.strptime(x, '%Y-%m-%d') for x in temp_meta["date"] if len(x) is 10 and "-XX" not in x and datetime.datetime.strptime(x, '%Y-%m-%d') >= cutoffDate]
         if len(all_dates) == 0:
-            country_info.loc[coun].sept_oct_freq = 0
+            country_info.loc[coun].sept_to_nov_freq = 0
         else:
-            country_info.loc[coun].sept_oct_freq = round(len(herbst_dates)/len(all_dates),2)
+            country_info.loc[coun].sept_to_nov_freq = round(len(herbst_dates)/len(all_dates),2)
 
     print(country_info)
     print("\n")
@@ -251,6 +271,9 @@ for clus in clus_to_run:
             temp_meta = meta[meta['country'].isin([coun])]
         #week 20
         for ri, row in temp_meta.iterrows():
+            strain = row['strain']
+            if strain not in has_valid_date:
+                continue
             dat = row.date
             if len(dat) is 10 and "-XX" not in dat: # only take those that have real dates
                 dt = datetime.datetime.strptime(dat, '%Y-%m-%d')
@@ -298,24 +321,59 @@ for clus in clus_to_run:
             return 5
 
 
-    #only plot those with >=20 seqs
+
+    cutoff_num_seqs = 200
+    hasMinNumber = []
+    hasMinNumber_countries = []
+    for index, row in country_info_df.iterrows():
+        if row.num_seqs > cutoff_num_seqs and index not in uk_countries:
+            hasMinNumber.append("*")
+            hasMinNumber_countries.append(index)
+        else:
+            hasMinNumber.append("")
+
+    country_info_df["has_min"] = hasMinNumber
+
+    print(f"{len(hasMinNumber_countries)} countries have more than {cutoff_num_seqs} in the cluster.")
+    print(f"Countries who have more than {cutoff_num_seqs} in the cluster:", hasMinNumber_countries, "\n")
+    print(country_info_df)
+
+    #plot those with >=200 seqs, plus a few extra to try:
     countries_to_plot = ['France',
-    'United Kingdom',
-    #'Latvia',
     'Norway',
+
+    'United Kingdom',
+    'Netherlands',
     'Spain',
+    'Belgium',
     'Switzerland',
     'Ireland',
-    'Netherlands',
-#    'Belgium',
-    'Denmark',
-#    'Germany',
-#    'Italy'
+    'Italy',
+    'Denmark'
     ]
+
+    #OLD CODE
+    #only plot those with >=20 seqs
+ #   countries_to_plot = ['France',
+ #   'United Kingdom',
+ #   #'Latvia',
+ #   'Norway',
+ #   'Spain',
+ #   'Switzerland',
+ #   'Ireland',
+ #   'Netherlands',
+ #   #'Belgium',
+ #   'Denmark',
+ #   #'Germany',
+ #   #'Italy'
+ #   ]
 
     #These are the countries we don't plot: 'Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland'
 
     if clus == "S222":
+        
+        clus_display = clusters[clus]["display_name"]
+        json_output[clus_display] = {}
 
         # Make a plot
         #fig = plt.figure(figsize=(10,5))
@@ -372,17 +430,23 @@ for clus in clus_to_run:
                     color=country_styles[coun]['c'],
                     linestyle=country_styles[coun]['ls'])
 
+            json_output[clus_display][coun] = {}
+            json_output[clus_display][coun]["week"] = [datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date]
+            json_output[clus_display][coun]["smoothed_total_sequences"] = [int(x) for x in total_count]
+            json_output[clus_display][coun]["smoothed_cluster_sequences"] = [int(x) for x in cluster_count] 
+
         for ni,n in enumerate([0,1,3,10,30,100]):
             ax3.scatter([week_as_date[0]], [0.08+ni*0.07], s=marker_size(n+0.1), edgecolor='k', facecolor='w')
             ax3.text(week_as_date[1], 0.06+ni*0.07, f"n>{n}" if n else "n=1")
             #          color=country_styles[coun]['c'], linestyle=country_styles[coun]['ls'], label=coun)
 
 
-        plt.legend(ncol=1, fontsize=fs*0.8, loc=2)
+        plt.legend(ncol=2, fontsize=fs*0.8, loc=2)
         fig.autofmt_xdate(rotation=30)
         ax3.tick_params(labelsize=fs*0.8)
+        ax3.set_ylim(0,1)
         ax3.set_ylabel('frequency', fontsize=fs)
-        ax3.set_xlim(datetime.datetime(2020,5,1), datetime.datetime(2020,11,30))
+        ax3.set_xlim(datetime.datetime(2020,5,1), datetime.datetime(2020,12,1))
         plt.show()
         plt.tight_layout()
 
@@ -396,6 +460,9 @@ for clus in clus_to_run:
             copypath = trends_path.replace("trends", "trends-{}".format(datetime.date.today().strftime("%Y-%m-%d")))
             copyfile(trends_path, copypath)
 
+        if print_files:
+            with open(figure_path+f'{clus_display}_data.json', 'w') as fh:
+                json.dump(json_output[clus_display], fh)
 
         all_plots = input("\nDo you want to plot growth rate + all sequences graphs? (y/n): ")
 
@@ -409,6 +476,8 @@ for clus in clus_to_run:
             #for a simpler plot of most interesting countries use this:
             for coun in [ 'England', 'Scotland', 'Wales', 'Northern Ireland', 'United Kingdom']:
                 week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun, smoothing=smoothing)
+                # remove last data point if that point as less than frac sequences compared to the previous count
+                week_as_date, cluster_count, total_count = trim_last_data_point(week_as_date, cluster_count, total_count, frac=0.2, keep_count=10)
 
                 if coun == 'United Kingdom':
                     print('UK')
