@@ -12,7 +12,7 @@ export const GENE_COLORS: Record<string, string> = {
   ORF7b: '#75B681',
   ORF8: '#55AA81',
   ORF9b: '#D9AD3D',
-  S: '#5097BA',
+  S: '#75B681',
 }
 export const NUCLEOTIDE_COLORS: Record<string, string> = {
   'A': '#B6EE92',
