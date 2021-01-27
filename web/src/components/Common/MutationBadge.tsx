@@ -42,6 +42,12 @@ export const MutationWrapper = styled.span`
   }
 `
 
+export const PrefixText = styled.span`
+  padding: 1px 5px;
+  color: ${(props) => props.theme.white};
+  background-color: ${(props) => props.theme.gray700};
+`
+
 export const GeneText = styled.span<{ $color: string }>`
   padding: 1px 2px;
   background-color: ${(props) => props.$color};
@@ -107,11 +113,12 @@ export function formatVariantUrl(mutation: string) {
 }
 
 export interface MutationBadgeProps {
+  prefix?: string
   mutation: Mutation
   colors: MutationColors
 }
 
-export function MutationBadge({ mutation, colors }: MutationBadgeProps) {
+export function MutationBadge({ prefix, mutation, colors }: MutationBadgeProps) {
   const { gene, left, pos, right, note } = mutation
 
   const geneColor = get(GENE_COLORS, gene ?? '', DEFAULT_COLOR)
@@ -121,6 +128,7 @@ export function MutationBadge({ mutation, colors }: MutationBadgeProps) {
   return (
     <MutationBadgeBox>
       <MutationWrapper>
+        {prefix && <PrefixText>{prefix}</PrefixText>}
         {gene && (
           <>
             <GeneText $color={geneColor}>
@@ -203,7 +211,7 @@ export function VariantLinkBadge({ name, href }: VariantLinkBadgeProps) {
 
   return (
     <LinkUnstyled href={url} icon={null}>
-      <MutationBadge mutation={mutationObj} colors={AMINOACID_COLORS} />
+      <MutationBadge prefix="Variant" mutation={mutationObj} colors={AMINOACID_COLORS} />
     </LinkUnstyled>
   )
 }
