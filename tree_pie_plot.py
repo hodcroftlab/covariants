@@ -4,11 +4,14 @@
 # in Figtree and figuring out node name from this.
 
 # You need to have updated the files below - copy into 'ncov'
-treefile = "results/clusone/tree.nwk"
-branchfile = "results/clusone/branch_lengths.json"
+#treefile = "results/clusone/tree.nwk"
+treefile = "results/clusone/tree_treetime-2020-11-30.nwk"
+#branchfile = "results/clusone/branch_lengths.json"
 #metadatafile = "data/metadata.tsv"
 metadatafile = "data/metadata-2020-11-11.tsv"
-alignfile = "results/clusone/subsampled_alignment.fasta"
+#alignfile = "results/clusone/subsampled_alignment.fasta"
+alignfile = "results/clusone/subsampled_alignment-2020-11-30.fasta"
+nt_muts = "results/clusone/nt_muts.json"
 
 # Path to write figures to
 figure_path = "../cluster_scripts/figures/"
@@ -33,14 +36,15 @@ from colors_and_countries import *
 
 # Read in the tree, and add node data
 T = Phylo.read(treefile, 'newick')
-node_data = read_node_data([branchfile])
+#node_data = read_node_data([branchfile])
 
 # make tree 'divergence' tree (collapse tiny polytomies)
 tt = treetime.TreeAnc(tree = T, aln =alignfile)
 tt.optimize_tree()
 
 # read in extra node data and put it on the tree
-node_data, node_attrs, node_data_names, metadata_names = parse_node_data_and_metadata(T, [branchfile], metadatafile)
+node_data, node_attrs, node_data_names, metadata_names = parse_node_data_and_metadata(T, [nt_muts], metadatafile)
+#node_data, node_attrs, node_data_names, metadata_names = parse_node_data_and_metadata(T, [branchfile], metadatafile)
 rate = node_data['clock']['rate']
 
 for node in T.find_clades(order='postorder'):
@@ -55,11 +59,6 @@ for node in T.find_clades(order='postorder'):
 #set parents to avoid excess tree-traversal
 for node in T.find_clades(order='preorder'):
     for child in node:
-        child.parent = node
-
-# Create a dictionary to find nodes by name
-def lookup_by_names(tree):
-    names = {}
     for clade in tree.find_clades():
         if clade.name:
             if clade.name in names:
@@ -70,6 +69,11 @@ def lookup_by_names(tree):
 names = lookup_by_names(T)
 
 
+        child.parent = node
+
+# Create a dictionary to find nodes by name
+def lookup_by_names(tree):
+    names = {}
 ###############################
 ###############################
 
