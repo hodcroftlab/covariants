@@ -120,7 +120,7 @@ export function ProteinCard({ cluster }: ProteinCardProps) {
         still={`/_next/static/content/proteins/${cluster.build_name}.jpg`}
       />
     )
-  }, [cluster.display_name, condition, handleError, handleLoad, style])
+  }, [cluster.build_name, condition, handleError, handleLoad, style])
 
   return (
     <Card>
