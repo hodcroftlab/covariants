@@ -32,11 +32,11 @@ CoVariants is Copyright 2020-2021 Emma Hodcroft.
 
 This CoVariants code and work is licensed under a [GNU Affero General Public License (AGPL)](https://www.gnu.org/licenses/agpl-3.0.en.html). You can view this license [here](https://github.com/hodcroftlab/covariants/blob/master/LICENSE.md). CoVariants is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 
-This work is enabled by data made available on [GISIAD](https://www.gisaid.org/). See the [GISAID Terms of Use](https://www.gisaid.org/registration/terms-of-use/) for more information about how this data can be used. Note that under the terms of use, data on GISAID cannot be redistributed.
+This work is enabled by data made available on [GISAID](https://www.gisaid.org/). See the [GISAID Terms of Use](https://www.gisaid.org/registration/terms-of-use/) for more information about how this data can be used. Note that under the terms of use, data on GISAID cannot be redistributed.
 
 ### Where can I get the data?
 
-The raw data behind these charts comes from [GISIAD](https://www.gisaid.org/). See the [GISAID Terms of Use](https://www.gisaid.org/registration/terms-of-use/) for more information about how this data can be used. Note that under the terms of use, data on GISAID cannot be redistributed.
+The raw data behind these charts comes from [GISAID](https://www.gisaid.org/). See the [GISAID Terms of Use](https://www.gisaid.org/registration/terms-of-use/) for more information about how this data can be used. Note that under the terms of use, data on GISAID cannot be redistributed.
 
 The derived sequence counts used to generate the plots seen here are available. You can find them 'per variant' as JSON or TSV files [in this Github folder](https://github.com/hodcroftlab/covariants/tree/master/cluster_tables), or 'per country' as a JSON file [here](https://github.com/hodcroftlab/covariants/blob/master/cluster_tables/EUClusters_data.json). 
 
