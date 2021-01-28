@@ -1,3 +1,8 @@
+// Adds some of the security headers to requests using AWS Lambda@Edge
+// See https://securityheaders.com/
+//
+// Usage: Create an AWS Lambda function and attach this to "Viewer Response" event of a Cloudfront distribution
+
 const FEATURE_POLICY = {
   'accelerometer': `'none'`,
   'autoplay': `'none'`,
