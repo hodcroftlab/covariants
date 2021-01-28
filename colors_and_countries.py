@@ -3,14 +3,14 @@
 country_list =[
 'France',
 'United Kingdom',
-'Latvia',
+'Austria',
 'Netherlands',
 'Norway',
 'Spain',
 'Belgium',
 'Switzerland',
 'Germany',
-'Czech Republic',
+'USA',
 'Ireland',
 'Italy',
 'New Zealand',
@@ -18,13 +18,18 @@ country_list =[
 'Australia',
 'Singapore',
 'Denmark',
-'Hong Kong'
+'Hong Kong',
+'Portugal',
+'Luxembourg',
+'Lithuania',
+'Iceland',
+'Czech Republic'
 ]
 
 colors = [
 "#a6cee3",
 "#1f78b4",
-"#ffff99",
+"#ffff00",
 "#33a02c",
 "#fb9a99",
 "#e31a1c",
@@ -39,7 +44,12 @@ colors = [
 "#ffcc00",
 "#a6a6a6",
 "#0099ff",
-"#d9d9d9"
+"#d9d9d9",
+'#990000',
+'#c2c2a3',
+'#ff66ff',
+'#0000ff',
+'#006600'
 ]
 
 #separate out Scotland, England, NI, Wales...

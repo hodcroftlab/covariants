@@ -5,16 +5,27 @@
 
 # You need to have updated the files below - copy into 'ncov'
 #treefile = "results/clusone/tree.nwk"
-treefile = "results/clusone/tree_treetime-2020-11-30.nwk"
+
 #branchfile = "results/clusone/branch_lengths.json"
-#metadatafile = "data/metadata.tsv"
-metadatafile = "data/metadata-2020-11-11.tsv"
+metadatafile = "data/metadata.tsv"
+#metadatafile = "data/metadata-2020-11-11.tsv"
 #alignfile = "results/clusone/subsampled_alignment.fasta"
+
+#For November 30 data
 alignfile = "results/clusone/subsampled_alignment-2020-11-30.fasta"
-nt_muts = "results/clusone/nt_muts.json"
+nt_muts = "results/clusone/nt_muts-2020-11-30.json"
+treefile = "results/clusone/tree_treetime-2020-11-30.nwk"
+figure_path = "../covariants/through_Nov_data/figures/"
+
+# For Sept 30 data
+alignfile = "results/clusone/subsampled_alignment-2020-09-30.fasta"
+nt_muts = "results/clusone/branch_lengths-2020-09-30.json"
+treefile = "results/clusone/tree-2020-09-30.nwk"
+figure_path = "../covariants/through_Sept_data/figures/"
 
 # Path to write figures to
-figure_path = "../cluster_scripts/figures/"
+#figure_path = "../cluster_scripts/figures/"
+
 fmt = 'pdf'
 
 from Bio import Phylo
@@ -45,13 +56,14 @@ tt.optimize_tree()
 # read in extra node data and put it on the tree
 node_data, node_attrs, node_data_names, metadata_names = parse_node_data_and_metadata(T, [nt_muts], metadatafile)
 #node_data, node_attrs, node_data_names, metadata_names = parse_node_data_and_metadata(T, [branchfile], metadatafile)
-rate = node_data['clock']['rate']
+#rate = node_data['clock']['rate']
 
 for node in T.find_clades(order='postorder'):
     data = node_data['nodes'][node.name]
-    node.date = data['date']
-    node.num_date = data['numdate']
-    node.mut_length = round(data['mutation_length'])
+    #node.date = data['date']
+    #node.num_date = data['numdate']
+    #node.mut_length = round(data['mutation_length'])
+    node.mut_length = node.mutation_length
     raw_data = node_attrs[node.name]
     node.country = raw_data["country"] if 'country' in raw_data else ''
     node.division = raw_data["division"] if 'division' in raw_data else ''
@@ -59,6 +71,11 @@ for node in T.find_clades(order='postorder'):
 #set parents to avoid excess tree-traversal
 for node in T.find_clades(order='preorder'):
     for child in node:
+        child.parent = node
+
+# Create a dictionary to find nodes by name
+def lookup_by_names(tree):
+    names = {}
     for clade in tree.find_clades():
         if clade.name:
             if clade.name in names:
@@ -68,12 +85,14 @@ for node in T.find_clades(order='preorder'):
 
 names = lookup_by_names(T)
 
+def find_EU1_root(T):
+    potential_roots = []
+    for n in T.find_clades():
+        if ('C',22226,'T') in n.mutations:
+            potential_roots.append(n)
+    potential_roots.sort(key=lambda x:x.count_terminals())
+    return potential_roots[-1]
 
-        child.parent = node
-
-# Create a dictionary to find nodes by name
-def lookup_by_names(tree):
-    names = {}
 ###############################
 ###############################
 
@@ -82,7 +101,10 @@ uk_run = False
 
 #this has to be set manually
 #start = names['NODE_0001008'] #["NODE_0000814"]  # ["NODE_0003268"]   #["NODE_0002406"]
-start = names['NODE_0004656']#['NODE_0002374'] #['NODE_0001979'] #['NODE_0001981']
+#start = names['NODE_0004656']#['NODE_0002374'] #['NODE_0001979'] #['NODE_0001981']
+
+# find the EU 1 root 
+start = find_EU1_root(T)
 
 #back up the original tree so we don't hve to optimize again if we mess up...
 T_backup = copy.deepcopy(T)
@@ -141,6 +163,7 @@ len(cluster.get_nonterminals())
 #715
 #1106
 #836
+#1140
 
 # for each internal node - if only has leaf children from 1 country
 # then collapse this node - its children go to its parent, it disappears
@@ -177,6 +200,7 @@ len(cluster.get_nonterminals())
 #71
 #79
 #133
+#384
 
 # A lot of nodes will have gained children from collapsed nodes
 # so recount the countries!
@@ -225,7 +249,7 @@ with open(figure_path+f'pie_tree_asFigure_data.json', 'w') as fh:
 #make color patches for legend
 ptchs = []
 for key in node_counts.index:
-    patch = mpatches.Patch(color=country_styles[key]['c'], label=key)
+    patch = mpatches.Patch(color=country_styles[key]['c'] if key in country_styles else '#BBBBBB', label=key)
     ptchs.append(patch)
 
 
