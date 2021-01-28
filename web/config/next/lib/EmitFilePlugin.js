@@ -5,8 +5,6 @@
  * See LICENSE.md file in root directory for full license.
  */
 
-'use strict'
-
 const { Buffer } = require('buffer')
 const path = require('path')
 const webpack = require('webpack')
@@ -76,7 +74,7 @@ function EmitFilePlugin(options) {
 EmitFilePlugin.prototype.apply = function (compiler) {
   if (version < 4) {
     compiler.plugin('emit', (compilation, callback) => emitFile(this.options, compilation, callback, callback))
-  } else if (version == 4) {
+  } else if (version === 4) {
     compiler.hooks.emit.tapAsync(EmitFilePlugin.name, (compilation, callback) =>
       emitFile(this.options, compilation, callback, callback),
     )
