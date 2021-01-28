@@ -34,6 +34,14 @@ This CoVariants code and work is licensed under a [GNU Affero General Public Lic
 
 This work is enabled by data made available on [GISIAD](https://www.gisaid.org/). See the [GISAID Terms of Use](https://www.gisaid.org/registration/terms-of-use/) for more information about how this data can be used. Note that under the terms of use, data on GISAID cannot be redistributed.
 
+### Where can I get the data?
+
+The raw data behind these charts comes from [GISIAD](https://www.gisaid.org/). See the [GISAID Terms of Use](https://www.gisaid.org/registration/terms-of-use/) for more information about how this data can be used. Note that under the terms of use, data on GISAID cannot be redistributed.
+
+The derived sequence counts used to generate the plots seen here are available. You can find them 'per variant' as JSON or TSV files [in this Github folder](https://github.com/hodcroftlab/covariants/tree/master/cluster_tables), or 'per country' as a JSON file [here](https://github.com/hodcroftlab/covariants/blob/master/cluster_tables/EUClusters_data.json). 
+
+**If you use this data please [credit this resource](#how-should-i-cite-or-acknowledge-this-work) appropriately, including linking back to this website.**
+
 ### How can I contribute to this work (add a paper, fix an error, or make a suggestion)?
 
 **PR requests to this repository providing new links and information are very welcome!** The more detail you can include in a [pull request (PR)](https://github.com/hodcroftlab/covariants/pulls) the faster we will be able to review it!
@@ -56,6 +64,8 @@ You can also use the "Propose changes to this section" links that you will often
 ### I want to stay up-to-date on the topic. What you suggest?
 
 To stay up-to-date on SARS-CoV-2 variants, you can follow Emma Hodcroft on Twitter ([@firefoxx66](https://twitter.com/firefoxx66)) - she often tweets about updates and changes to the website.
+
+You should also follow Nextstrain ([@nextstrain](https://twitter.com/nextstrain)) - there is an update every weekday on the latest sequences available from around the world.
 
 You can also check out the [CoV-Lineages Global Report](https://cov-lineages.org/global_report.html) to read more information on some of the variants.
 
@@ -84,9 +94,9 @@ So far, the focus of this website has primarily been on variants found in Europe
 
 Check out the links below:
 
-[Overview of all mutation tables & graphs](table_overview.md)
+[Overview of all mutation tables & graphs](/per-variant)
 
-[Overview of all mutation country plots](country_overview.md)
+[Overview of all mutation country plots](/per-country)
 
 ---
 
@@ -94,3 +104,4 @@ Check out the links below:
 
 - Go to [home page](/)
 - View [variants](/variants)
+- See [shared mutations](/shared-mutations)
