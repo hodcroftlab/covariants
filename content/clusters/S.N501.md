@@ -31,7 +31,7 @@ Also known as `B.1.1.7`
 Announced on the 14 Dec 2020, appears to have arisen and/or initially expanded in the South East of England.
 
 501Y.V1 is associated with multiple mutations in Spike, including: <AaMut mut={'S:N501Y'}/>, a deletion at 69/70 (as seen in variants <code>S:N439K</code> & <code>S:Y453F</code> (<LinkExternal href="https://www.biorxiv.org/content/10.1101/2020.12.14.422555v3">Kemp et al., bioRxiv</LinkExternal>) (<Link href="/variants/S.H69-">see <Var name="S:H69-"/> page</Link>), <AaMut mut={'S:Y144-'}/> (deletion), and <AaMut mut={'S:P681H'}/> (adjacent to the furin cleavage site).
-There is also a notable truncation of <code>ORF8</code>, with <AaMut mut={'ORF8:Q27*'}/> (becomes a stop codon) (deletion of <code>ORF8</code> was previously associated with reduced clinical severity (<LinkExternal href="https://www.thelancet.com/article/S0140-6736(20)31757-8/fulltext">Young et al., Lancet</LinkExternal>), and mutations in Nucleocapsid: <AaMut mut={'N:D3L'}/> and <AaMut mut={'N:S235F'}/>.
+There is also a notable truncation of <code>ORF8</code>, with <AaMut mut={'ORF8:Q27*'}/> (becomes a stop codon) (deletion of <code>ORF8</code> was previously associated with reduced clinical severity (<LinkExternal href="https://www.thelancet.com/article/S0140-6736(20)31757-8/fulltext">Young et al., Lancet</LinkExternal>), and mutations in Nucleocapsid: <AaMut mut={'N:D3L'}/> and <AaMut mut={'N:S235F'}/>, as well as a deletion in ORF1a(Nsp6) 3675-3677.
 
 Links to reports on 501Y.V1:
 - [COG-UK Report](https://www.cogconsortium.uk/news_item/update-on-new-sars-cov-2-variant-and-how-cog-uk-tracks-emerging-mutations/), [Rambaut et al.](https://virological.org/t/preliminary-genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-the-uk-defined-by-a-novel-set-of-spike-mutations/563), [PHE report](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf), [PHE Technical Report 2](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/949639/Technical_Briefing_VOC202012-2_Briefing_2_FINAL.pdf), [PHE Technical Report 3](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/950823/Variant_of_Concern_VOC_202012_01_Technical_Briefing_3_-_England.pdf)
@@ -46,7 +46,7 @@ Announced in December 2020, 501Y.V2 originated and/or initially expanded in Sout
 
 501Y.V2 is associated with multiple mutations in Spike, including: <AaMut mut={'S:N501Y'}/>, <Link href="/variants/S.E484"> <AaMut mut={'S:E484K'}/></Link> (<Link href="/variants/S.E484">see <Var name="S:E484"/> page</Link>), <AaMut mut={'S:K417N'}/>, and <AaMut mut={'S:D80A'}/>.
 Additionally, there is a deletion at 242-245.<br/>
-There is also a mutation in Nucleocapsid: <AaMut mut={'N:T205I'}/>.
+There is also a mutation in Nucleocapsid: <AaMut mut={'N:T205I'}/> and the deletion in ORF1a(Nsp6) 3675-3677 is eventually fixed in the lineage.
 It does _not_ have the deletion at 69/70.
 
 See a [focal `S.N501` build filtered & zoomed to 501Y.V2](https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501&f_clade_membership=20H/501Y.V2&label=mlabel:20C/C23664T&p=grid&r=country)
@@ -59,7 +59,7 @@ Announced in January 2021, 501Y.V3 originated and/or initially expanded in Brazi
 It has also been identified in travellers arriving in Japan from Brazil ([English Translation of Japanese NIID report](https://translate.google.com/translate?sl=ja&tl=en&u=https://www.niid.go.jp/niid/ja/diseases/ka/corona-virus/2019-ncov/10107-covid19-33.html)).
 
 501Y.V3 is associated with multiple mutations in Spike, including: <AaMut mut={'S:N501Y'}/>, <AaMut mut={'S:E484K'}/> (<Link href="/variants/S.E484">see <Var name="S:E484"/> page</Link>), <AaMut mut={'S:K417N'}/>  and <AaMut mut={'S:H655Y'}/>. <br/>
-There is also a mutation in Nucleocapsid: <AaMut mut={'N:P80R'}/>.
+There is also a mutation in Nucleocapsid: <AaMut mut={'N:P80R'}/> and the deletion in ORF1a(Nsp6) 3675-3677.
 It does _not_ have the deletion at 69/70.
 
 See a [focal `S.N501` build filtered & zoomed to 501Y.V3](https://nextstrain.org/groups/neherlab/ncov/S.N501?f_subclade_membership=20J/501Y.V3&label=clade:20J/501Y.V3&p=grid&r=country)
