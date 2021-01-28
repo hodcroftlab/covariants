@@ -692,6 +692,11 @@ for clus in clus_to_run:
             with open(tables_path+f'{clus_display}_data.json', 'w') as fh:
                 json.dump(json_output[clus_display], fh)
 
+if "all" in clus_answer:
+    for coun in countries_plotted.keys():
+        if coun not in country_styles_all:
+            print(f"WARNING!: {coun} has no color! Please add it to country_list_2 in colors_and_countries.py and re-run make web-data")
+
 
 ## Write out plotting information - only if all clusters have run
 if print_files and "all" in clus_answer:

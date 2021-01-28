@@ -14,7 +14,7 @@ import numpy as np
 import pandas as pd
 
 from clusters import clusters
-from colors_and_countries import country_styles
+from colors_and_countries import country_styles_all
 from mutation_comparison import mutation_comparison
 
 cluster_tables_path = "cluster_tables"
@@ -338,7 +338,7 @@ if __name__ == '__main__':
         json.dump(mutation_comparison_output, fh, indent=2, sort_keys=True)
 
     with open(os.path.join(output_path, "countryStyles.json"), "w") as fh:
-        json.dump(country_styles, fh, indent=2, sort_keys=True)
+        json.dump(country_styles_all, fh, indent=2, sort_keys=True)
 
     copyfile(os.path.join(cluster_tables_path, 'perVariant_countries_toPlot.json'),
              os.path.join(output_path, "countriesToPlot.json"))
