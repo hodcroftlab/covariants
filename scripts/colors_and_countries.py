@@ -96,7 +96,8 @@ country_list_2 = [
     "Turkey",
     "South Africa",
     "United Arab Emirates",
-    "Finland"
+    "Finland",
+    "Jordan"
 ]
 
 country_styles_2 = {

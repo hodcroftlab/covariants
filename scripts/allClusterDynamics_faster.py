@@ -442,7 +442,11 @@ for clus in clus_to_run:
         counts_by_week = defaultdict(int)
         for dat in country_dates[coun]:
             #counts_by_week[dat.timetuple().tm_yday//7]+=1 # old method
-            counts_by_week[dat.isocalendar()[1]]+=1  #returns ISO calendar week
+            #counts_by_week[dat.isocalendar()[1]]+=1  #returns ISO calendar week
+            wk = dat.isocalendar()[1]#returns ISO calendar week
+            yr = dat.isocalendar()[0]
+            yr_wk = (yr, wk)
+            counts_by_week[yr_wk]+=1
         clus_week_counts[coun] = counts_by_week
 
     # Get counts per week for sequences regardless of whether in the cluster or not - from week 20 only.
@@ -460,8 +464,9 @@ for clus in clus_to_run:
         temp_meta = temp_meta[temp_meta['date'].apply(lambda x: 'XX' not in x)]
 
         temp_meta['date_formatted'] = temp_meta['date'].apply(lambda x:datetime.datetime.strptime(x, "%Y-%m-%d"))
-        temp_meta['calendar_week'] = temp_meta['date_formatted'].apply(lambda x: x.isocalendar()[1])
-        temp_meta = temp_meta[temp_meta['calendar_week']>=20]
+        #temp_meta['calendar_week'] = temp_meta['date_formatted'].apply(lambda x: x.isocalendar()[1])
+        temp_meta['calendar_week'] = temp_meta['date_formatted'].apply(lambda x: (x.isocalendar()[0], x.isocalendar()[1]))
+        temp_meta = temp_meta[temp_meta['calendar_week']>=(2020,20)]
 
         #date_list = temp_meta['date'].apply(lambda x:datetime.datetime.strptime(x, "%Y-%m-%d"))
         #week_list = date_list.apply(lambda x: x.isocalendar()[1])
@@ -560,7 +565,7 @@ for clus in clus_to_run:
 
 
     # Only plot countries with >= X seqs
-    min_to_plot = 25
+    min_to_plot = 30
     #if clus == "S222":
     #    min_to_plot = 200
 

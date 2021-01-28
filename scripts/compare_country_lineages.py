@@ -145,7 +145,10 @@ for clus in clusters:
         for dat in country_dates[coun]:
             #   counts_by_week[dat.isocalendar()[1]]+=1  #FOR ONE WEEK
             #for TWO WEEKS 2 weeks
-            counts_by_week[(dat.isocalendar()[1]//2*2)]+=1  #returns ISO calendar week
+            wk = (dat.isocalendar()[1]//2*2) #returns ISO calendar week -every 2 weeks
+            yr = (dat.isocalendar()[0])
+            yr_wk = (yr, wk)
+            counts_by_week[yr_wk]+=1  
         clus_week_counts[coun] = counts_by_week
 
     # Get counts per week for sequences regardless of whether in the cluster or not - from week 20 only.
@@ -167,8 +170,10 @@ for clus in clusters:
                 #      wk = dt.isocalendar()[1] #for ONE WEEK
                 #for TWO WEEKS 2 weeks
                 wk = dt.isocalendar()[1]//2*2 #returns ISO calendar week
-                if wk >= 20:
-                    counts_by_week[wk]+=1
+                yr = (dt.isocalendar()[0])
+                yr_wk = (yr, wk)
+                if dt >= datetime.datetime.strptime("2020-W20-1", '%G-W%V-%u'):
+                    counts_by_week[yr_wk]+=1
         total_week_counts[coun] = counts_by_week
 
     # Convert into dataframe
@@ -260,11 +265,13 @@ for coun, ax in zip(countries_to_plot, fig.axes[1:]): #axs[1:]):
             continue
         week_as_date, cluster_count, total_count,\
              unsmoothed_cluster_count, unsmoothed_total_count = non_zero_counts(cluster_data, total_data, coun)
+        #print(f"week as date for {clus} {coun}:\n")
+        #print(week_as_date)
         mindat = min(week_as_date)
         if mindat < min_week:
             min_week = mindat
         maxdat = max(week_as_date)
-        if mindat > max_week:
+        if maxdat > max_week:
             max_week = maxdat
 
         week_as_dates[coun] = week_as_date
