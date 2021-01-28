@@ -15,7 +15,7 @@
     "prod:build:vercel": "cp .env.vercel .env && yarn install && yarn prod:build && cp .build/production/tmp/routes-manifest.json .build/production/web/",
     "prod:_build": "yarn run next:build && yarn run next:export",
     "next:build": "cross-env NODE_ENV=production BABEL_ENV=production NODE_OPTIONS=--max_old_space_size=8192 babel-node --extensions \".js,.ts\" -- node_modules/.bin/next build",
-    "next:export": "cross-env NODE_ENV=production BABEL_ENV=production NODE_OPTIONS=--max_old_space_size=8192 babel-node --extensions \".js,.ts\" -- node_modules/.bin/next export -o \".build/production/web\"",
+    "next:export": "cross-env NODE_ENV=production BABEL_ENV=production NODE_OPTIONS=--max_old_space_size=8192 babel-node --extensions \".js,.ts\" -- node_modules/.bin/next export -o \".build/production/web\" && cp .build/production/tmp/robots.txt .build/production/web/robots.txt",
     "next:build:profile": "PROFILE=1 yarn next:build --profile",
     "prod:clean": "rimraf '.build/production/{*,.*}' 'node_modules/.cache'",
     "prod:serve:nowatch": "babel-node --extensions \".ts\" ./tools/server/server.ts",
