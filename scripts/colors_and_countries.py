@@ -3,7 +3,7 @@
 country_list =[
 'France',
 'United Kingdom',
-'Czech Republic',
+'Austria',
 'Netherlands',
 'Norway',
 'Spain',
@@ -23,13 +23,13 @@ country_list =[
 'Luxembourg',
 'Lithuania',
 'Iceland',
-'Austria'
+'Czech Republic'
 ]
 
 colors = [
 "#a6cee3",
 "#1f78b4",
-"#ffff99",
+"#ffff00",
 "#33a02c",
 "#fb9a99",
 "#e31a1c",
@@ -87,3 +87,22 @@ popsizes = {
     "Scotland": 5469000,
     "Wales":3136000
 }
+
+country_list_2 = [
+    "Israel",
+    "Brazil",
+    "Slovakia",
+    "Hungary",
+    "Turkey",
+    "South Africa",
+    "United Arab Emirates",
+    "Finland",
+    "Jordan"
+]
+
+country_styles_2 = {
+    country: {'c':colors[i], 'ls':":"}#linestyles[i//len(colors)]}
+    for i, country in enumerate(country_list_2)
+ }
+
+country_styles_all = {**country_styles, **country_styles_2}
