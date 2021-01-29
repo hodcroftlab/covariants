@@ -9,7 +9,7 @@ pushd .build/production/web >/dev/null
 
 S3_BUCKET="covariants.org"
 
-if [ "${TRAVIS_BRANCH}" = "master" ];
+if [ "${TRAVIS_BRANCH}" = "master" ]; then
   S3_BUCKET="${S3_BUCKET}-master"
 fi
 
