@@ -132,7 +132,7 @@ See [Contributors Guide](docs/Contributing.md) for more details.
 
 If you use this resource, or its derivatives, including data, code, screenshots an other, please do ensure you add credit in form of [citation](#citation) and/or link back to `https://covariants.org`
 
-This work is enabled by data made available on [GISIAD](https://www.gisaid.org/). See the [GISAID Terms of Use](https://www.gisaid.org/registration/terms-of-use/) for more information about how this data can be used. Note that under the terms of use, data on GISAID cannot be redistributed.
+This work is enabled by data made available on [GISAID](https://www.gisaid.org/). See the [GISAID Terms of Use](https://www.gisaid.org/registration/terms-of-use/) for more information about how this data can be used. Note that under the terms of use, data on GISAID cannot be redistributed.
 
 This works is closely related to the [Nextstrain project](https://nextstrain.org) and uses Nexstrain builds and resulting data.
 
