@@ -143,6 +143,11 @@ for node in cluster.find_clades(order='postorder'):
     node.countries = []
     node.total_countries = []
 
+#find out how many seqs from each country
+#for node in cluster.get_nonterminals(order='postorder'):
+#    if node.is_preterminal():
+#        node
+
 #for node in cluster.find_clades(order='postorder'):
 #    if node.is_terminal():
 #        if not uk_run:
@@ -164,6 +169,10 @@ len(cluster.get_nonterminals())
 #1106
 #836
 #1140
+#851
+
+select_run = True
+selected_countries = ["Spain", "Switzerland"]#, "United Kingdom", "Denmark"]
 
 # for each internal node - if only has leaf children from 1 country
 # then collapse this node - its children go to its parent, it disappears
@@ -171,8 +180,13 @@ for node in cluster.get_nonterminals(order='postorder'):
     if node.is_preterminal():
         node.countries = []
         for leaf in node.get_terminals():
-            if not uk_run:
+            if not uk_run and not select_run:
                 node.countries.append(leaf.country)
+            elif select_run:
+                if leaf.country in selected_countries:
+                    node.countries.append(leaf.country)
+                else:
+                    node.countries.append("Other")
             else:
                 if leaf.country == "United Kingdom":
                     node.countries.append(leaf.division)
@@ -201,6 +215,8 @@ len(cluster.get_nonterminals())
 #79
 #133
 #384
+#226
+#207 - with selected_countries
 
 # A lot of nodes will have gained children from collapsed nodes
 # so recount the countries!
@@ -245,13 +261,6 @@ for node in cluster.find_clades(order='postorder'):
         
 with open(figure_path+f'pie_tree_asFigure_data.json', 'w') as fh:
     json.dump(countries_clusters, fh)
-
-#make color patches for legend
-ptchs = []
-for key in node_counts.index:
-    patch = mpatches.Patch(color=country_styles[key]['c'] if key in country_styles else '#BBBBBB', label=key)
-    ptchs.append(patch)
-
 
 #Copy our cluster, and then delete/collapse all the tips! (for plotting)
 cluster2 = copy.deepcopy(cluster)
@@ -367,13 +376,34 @@ ax = fig.add_subplot(1,1,1)
 Phylo.draw(cluster2, label_func=lambda x:'', axes=ax,
            branch_labels=lambda x: ",".join([f"{a}{p+1}{d}" for a,p,d in x.mutations]))
 
+country_colors = {}
+if select_run:
+    for coun in country_styles_all:
+        if coun in selected_countries:
+            country_colors[coun] = country_styles_all[coun]
+        else:
+            country_colors[coun] = {'c': "#BBBBBB" }
+else:
+    country_colors = country_styles_all
+
+
+#make color patches for legend
+ptchs = []
+for key in node_counts.index:
+    patch = mpatches.Patch(color=country_colors[key]['c'] if key in country_colors else '#BBBBBB', label=key)
+    if key not in country_colors:
+        print(f"color needed: {key}")
+    ptchs.append(patch)
+
+
+
 for node in cluster2.find_clades(order="preorder"):
     counts = node_counts[node.name].to_dict()
     sqrt_counts = np.array([x for k,x in counts.items() if x>0])**0.25
     total_counts = sum(list(counts.values()))
     nonzero = [k for k,x in counts.items() if x>0]
     draw_pie(ax=plt.gca(), ratios=[x/sqrt_counts.sum() for x in sqrt_counts],
-        colors=[country_styles[c]['c'] for c in nonzero], X=node.x, Y=node.y,
+        colors=[country_colors[c]['c'] for c in nonzero], X=node.x, Y=node.y,
         size=200*np.sum(total_counts)**0.25)
     # plt.text(node.x+0.00001, node.y, int(sum(list(counts.values()))))
     # plt.text(node.x-0.000015, node.y, node_names[node.name] )

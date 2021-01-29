@@ -92,3 +92,34 @@ popsizes = {
     "Croatia": 4076000,
     "Finland":5518000
 }
+
+
+country_list_2 = [
+    "Israel",
+    "Brazil",
+    "Slovakia",
+    "Hungary",
+    "Turkey",
+    "South Africa",
+    "United Arab Emirates",
+    "Finland",
+    "Jordan",
+    "Morocco",
+    "Cameroon",
+    "Canada",
+    "India",
+    "Latvia",
+    "Malaysia",
+    "Peru",
+    "South Korea",
+    "Taiwan",
+    "Thailand",
+    "Tunisia"
+]
+
+country_styles_2 = {
+    country: {'c':colors[i], 'ls':":"}#linestyles[i//len(colors)]}
+    for i, country in enumerate(country_list_2)
+ }
+
+country_styles_all = {**country_styles, **country_styles_2}
