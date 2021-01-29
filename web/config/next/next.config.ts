@@ -2,9 +2,7 @@ import path from 'path'
 
 import { uniq } from 'lodash'
 
-import type { NextConfig } from 'next'
 import getWithMDX from '@next/mdx'
-// import withBundleAnalyzer from '@zeit/next-bundle-analyzer'
 import withPlugins from 'next-compose-plugins'
 import getWithTranspileModules from 'next-transpile-modules'
 
@@ -13,13 +11,12 @@ import { getGitBranch } from '../../lib/getGitBranch'
 import { getBuildNumber } from '../../lib/getBuildNumber'
 import { getBuildUrl } from '../../lib/getBuildUrl'
 import { getGitCommitHash } from '../../lib/getGitCommitHash'
-
 import { getEnvVars } from './lib/getEnvVars'
 
 import getWithExtraWatch from './withExtraWatch'
 import getWithFriendlyConsole from './withFriendlyConsole'
 import getWithLodash from './withLodash'
-// import getWithStaticComprression from './webpackCompression'
+import { getWithRobotsTxt } from './withRobotsTxt'
 import getWithTypeChecking from './withTypeChecking'
 import withRaw from './withRaw'
 import withJson from './withJson'
@@ -49,6 +46,8 @@ const {
   DOMAIN_STRIPPED,
 } = getEnvVars()
 
+const BRANCH_NAME = getGitBranch()
+
 const { pkg, moduleRoot } = findModuleRoot()
 
 const clientEnv = {
@@ -56,7 +55,7 @@ const clientEnv = {
   ENABLE_REDUX_LOGGER: ENABLE_REDUX_LOGGER.toString(),
   ENABLE_REDUX_IMMUTABLE_STATE_INVARIANT: ENABLE_REDUX_IMMUTABLE_STATE_INVARIANT.toString(),
   DEBUG_SET_INITIAL_DATA: DEBUG_SET_INITIAL_DATA.toString(),
-  BRANCH_NAME: getGitBranch(),
+  BRANCH_NAME,
   PACKAGE_VERSION: pkg.version ?? '',
   BUILD_NUMBER: getBuildNumber(),
   TRAVIS_BUILD_WEB_URL: getBuildUrl(),
@@ -67,7 +66,7 @@ const clientEnv = {
 
 console.info(`Client-side Environment:\n${JSON.stringify(clientEnv, null, 2)}`)
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   distDir: `.build/${process.env.NODE_ENV}/tmp`,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx', 'all-contributorsrc'],
   onDemandEntries: {
@@ -185,6 +184,8 @@ const withCopy = getWithCopy({
   ],
 })
 
+const withRobotsTxt = getWithRobotsTxt(`User-agent: *\nDisallow:${BRANCH_NAME === 'release' ? '' : ' *'}\n`)
+
 const config = withPlugins(
   [
     [withCopy],
@@ -194,16 +195,15 @@ const config = withPlugins(
     [withImages],
     [withRaw],
     [withJson],
-    // ANALYZE && [withBundleAnalyzer],
     [withFriendlyConsole],
     [withMDX],
     [withLodash],
     [withTypeChecking],
     [withTranspileModules],
-    // PRODUCTION && [withStaticComprression],
     PROFILE && [withoutMinification],
     [withFriendlyChunkNames],
     [withResolve],
+    [withRobotsTxt],
   ].filter(Boolean),
   nextConfig,
 )

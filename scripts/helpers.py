@@ -39,7 +39,7 @@ def non_zero_counts(cluster_data, total_data, country, smoothing=None):
     with_data = cluster_and_total.iloc[:,1]>0
     with_data_inrange = with_data[data_range]
     #this lets us plot X axis as dates rather than weeks (I struggle with weeks...)
-    week_as_date = [ datetime.datetime.strptime("2020-W{}-1".format(x), '%G-W%V-%u')
+    week_as_date = [ datetime.datetime.strptime("{}-W{}-1".format(*x), '%G-W%V-%u')
                      for x in cluster_and_total[data_range].index ]
     #plt.plot(weeks.index[with_data_inrange], weeks.loc[with_data_inrange].iloc[:,0]/(total[with_data_inrange]), 'o', color=palette[i], label=coun, linestyle=sty)
     if len(week_as_date) >= len(smoothing) and smooth:

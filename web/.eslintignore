@@ -7,6 +7,8 @@
 \.ignore
 \.reports
 \.vscode
+config/next/lib/EmitFilePlugin.js
+infra/lambda-at-edge/basicAuth.js
 node_modules
 public
 styles

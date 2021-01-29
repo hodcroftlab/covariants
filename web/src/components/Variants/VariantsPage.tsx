@@ -80,7 +80,7 @@ export function VariantsPageDisconnected({ currentCluster }: VariantsPageProps) 
           </Col>
 
           <Col lg={9} xl={10}>
-            <EditableClusterContent githubUrl={`blob/master/content/clusters/${currentCluster.display_name}.md`}>
+            <EditableClusterContent githubUrl={`blob/master/content/clusters/${currentCluster.build_name}.md`}>
               <Row noGutters className="mb-3">
                 <Col className="d-flex w-100">
                   <LinkExternal
