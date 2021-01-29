@@ -2,10 +2,10 @@
   "projectName": "covariants",
   "projectOwner": "hodcroftlab",
   "files": [
-    "new-readme.md"
+    "README.md"
   ],
-  "imageSize": 100,
-  "contributorsSortAlphabetically": true,
+  "imageSize": 50,
+  "contributorsSortAlphabetically": false,
   "skipCi": false,
   "contributors": [
     {
@@ -28,7 +28,17 @@
       "contributions": [
         "code",
         "data",
-        "content"
+        "content",
+        "ideas"
+      ]
+    },
+    {
+      "login": "trvrb",
+      "name": "Trevor Bedford",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1176109?v=4",
+      "profile": "https://github.com/trvrb",
+      "contributions": [
+        "ideas"
       ]
     },
     {
@@ -39,17 +49,29 @@
       "contributions": [
         "code",
         "design",
-        "doc"
+        "doc",
+        "ideas"
       ]
     },
     {
-      "login": "moirazuber",
+      "login": "MoiraZuber",
       "name": "Moira Zuber",
       "avatar_url": "https://avatars1.githubusercontent.com/u/48066606?v=4",
       "profile": "https://github.com/MoiraZuber",
       "contributions": [
         "code",
         "data"
+      ]
+    },
+    {
+      "login": "theosanderson",
+      "name": "Theo Sanderson",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/19732295?v=4",
+      "profile": "http://theo.io/",
+      "contributions": [
+        "content",
+        "code",
+        "doc"
       ]
     },
     {
@@ -71,17 +93,26 @@
       ]
     },
     {
-      "login": "theosanderson",
-      "name": "Theo Sanderson",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/19732295?v=4",
-      "profile": "http://theo.io/",
+      "login": "acx01b",
+      "name": "acx01b",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6537565?v=4",
+      "profile": "https://github.com/acx01b",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "rasenschachmatt",
+      "name": "rasenschachmatt",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19908919?v=4",
+      "profile": "https://github.com/rasenschachmatt",
       "contributions": [
         "content"
       ]
     }
   ],
   "repoType": "github",
-  "contributorsPerLine": 4,
+  "contributorsPerLine": 10,
   "repoHost": "https://github.com",
   "commitConvention": "angular"
 }
