@@ -397,7 +397,7 @@ def list_parent_countries(wanted_country, second_country):
 
 # Actually plot!
 fs = 16
-fig = plt.figure(figsize=(12,14))
+fig = plt.figure(figsize=(12,10))
 ax = fig.add_subplot(1,1,1)
 Phylo.draw(cluster2, label_func=lambda x:'', axes=ax) #,
 #           branch_labels=lambda x: ",".join([f"{a}{p+1}{d}" for a,p,d in x.mutations]))
@@ -436,8 +436,8 @@ for node in cluster2.find_clades(order="preorder"):
     # plt.text(node.x-0.000015, node.y, node_names[node.name] )
 
 for ni,n in enumerate([1,10,100, 1000]):
-    ax.scatter([0.00002], [70 + ni*5], s=marker_size(n), edgecolor='k', facecolor='w')
-    ax.text(0.000029, 70.8 + ni*5, f"n={n}")
+    ax.scatter([0.00000], [70 + ni*5], s=marker_size(n), edgecolor='k', facecolor='w')
+    ax.text(0.000010, 70.8 + ni*5, f"n={n}")
 
 plt.axis('off')
 plt.legend(handles=ptchs, loc=3, fontsize=fs)
@@ -461,7 +461,7 @@ for country in selected_countries:
 
 plt.ylabel('unique genotypes')
 plt.xlabel('number of sequences')
-plt.xscale('log')
+plt.yscale('log')
 plt.legend()
 
 ##############
