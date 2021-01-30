@@ -125,9 +125,6 @@ def resample_country(node_countries, country):
 ###############################
 ###############################
 
-# set whether UK run or not
-uk_run = False
-
 #this has to be set manually
 #start = names['NODE_0001008'] #["NODE_0000814"]  # ["NODE_0003268"]   #["NODE_0002406"]
 #start = names['NODE_0004656']#['NODE_0002374'] #['NODE_0001979'] #['NODE_0001981']
@@ -136,6 +133,9 @@ T_backup = read_tree(treefile, alignfile)
 
 # find the EU 1 root
 start = find_EU1_root(T_backup)
+
+
+######## RERUN FROM HERE
 
 #back up the original tree so we don't hve to optimize again if we mess up...
 T = copy.deepcopy(T_backup)
@@ -150,8 +150,6 @@ cluster = T.from_clade(names[start.name])
 # get number of unique sequences
 unique_seqs = count_unique_sequences(cluster)
 
-
-######## UK RERUN FROM HERE
 
 # Make another name dictionary to locate nodes by name
 clus_names = lookup_by_names(cluster)
@@ -192,7 +190,7 @@ print(f"number of terminals pre collapsing: {len(cluster.get_nonterminals())}")
 select_run = True
 uk_run = False
 if select_run:
-    selected_countries = ["Spain", "Switzerland", "United Kingdom", "Ireland", "Denmark", "Norway", "Iceland", "Germany"]
+    selected_countries = ["Spain", "Switzerland", "United Kingdom", "Ireland", "Denmark", "Norway", "Iceland"]
 else:
     selected_countries = list({n.country for n in cluster.get_terminals()})
 
@@ -456,14 +454,15 @@ copyfile(tree_path, copypath)
 
 plt.figure()
 for country in selected_countries:
-    if country=="Spain":
-        continue
     res = resample_country(node_countries, country)
-    plt.plot(res['n_seqs'], res['expected_intros'], label=f"{country} (n={int(res['total_sequences']):d})")
+    plt.plot(res['n_seqs'], res['expected_intros'], label=f"{country} (n={int(res['total_sequences']):d})", lw=2,
+        ls=country_colors[country]['ls'] if country in country_colors else "-",
+        c=country_colors[country]['c'] if country in country_colors else "#CCCCCC")
 
-plt.ylabel('expected introductions')
+plt.ylabel('unique genotypes')
 plt.xlabel('number of sequences')
 plt.xscale('log')
+plt.legend()
 
 ##############
 # Now repeat for the UK only
