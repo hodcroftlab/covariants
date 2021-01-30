@@ -190,7 +190,7 @@ print(f"number of terminals pre collapsing: {len(cluster.get_nonterminals())}")
 select_run = True
 uk_run = False
 if select_run:
-    selected_countries = ["Spain", "Switzerland", "United Kingdom", "Ireland", "Denmark", "Norway", "Iceland"]
+    selected_countries = ["Spain", "Switzerland", "United Kingdom", "Ireland", "Denmark", "Norway", "Iceland", "Netherlands"]
 else:
     selected_countries = list({n.country for n in cluster.get_terminals()})
 
@@ -459,10 +459,27 @@ for country in selected_countries:
         ls=country_colors[country]['ls'] if country in country_colors else "-",
         c=country_colors[country]['c'] if country in country_colors else "#CCCCCC")
 
-plt.ylabel('unique genotypes')
+plt.ylabel('within country clusters')
 plt.xlabel('number of sequences')
 plt.yscale('log')
+plt.xscale('log')
 plt.legend()
+plt.savefig(figure_path + f"resampling_introductions.{fmt}")
+
+plt.figure()
+for country in selected_countries:
+    counts = sorted([node_countries[n].get(country, 0) for n in node_countries if node_countries[n].get(country, 0)], reverse=True)
+
+    plt.plot(np.arange(1, len(counts)+1), counts, label=f"{country} (s={int(sum(counts)):d}, c={len(counts)})", lw=2,
+        ls=country_colors[country]['ls'] if country in country_colors else "-",
+        c=country_colors[country]['c'] if country in country_colors else "#CCCCCC")
+
+plt.xlabel('cluster rank')
+plt.ylabel('cluster size')
+plt.yscale('log')
+plt.xscale('log')
+plt.legend()
+plt.savefig(figure_path + f"cluster_sizes.{fmt}")
 
 ##############
 # Now repeat for the UK only
