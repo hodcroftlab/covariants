@@ -21,7 +21,7 @@ figure_path = "../covariants/through_Nov_data/figures/"
 alignfile = "results/clusone/subsampled_alignment-2020-09-30.fasta"
 nt_muts = "results/clusone/branch_lengths-2020-09-30.json"
 treefile = "results/clusone/tree-2020-09-30.nwk"
-figure_path = "../covariants/through_Sept_data/figures/"
+figure_path = "../cluster_scripts/through_Sept_data/figures/"
 
 # Path to write figures to
 #figure_path = "../cluster_scripts/figures/"
@@ -45,33 +45,35 @@ import copy
 import pandas as pd
 from colors_and_countries import *
 
-# Read in the tree, and add node data
-T = Phylo.read(treefile, 'newick')
-#node_data = read_node_data([branchfile])
+def read_tree(treefile, alignfile):
+    # Read in the tree, and add node data
+    # make tree 'divergence' tree (collapse tiny polytomies)
+    tt = treetime.TreeAnc(tree = treefile, aln =alignfile)
+    tt.optimize_tree()
+    T=tt.tree
 
-# make tree 'divergence' tree (collapse tiny polytomies)
-tt = treetime.TreeAnc(tree = T, aln =alignfile)
-tt.optimize_tree()
+    # read in extra node data and put it on the tree
+    node_data, node_attrs, node_data_names, metadata_names = parse_node_data_and_metadata(T, [nt_muts], metadatafile)
+    #node_data, node_attrs, node_data_names, metadata_names = parse_node_data_and_metadata(T, [branchfile], metadatafile)
+    #rate = node_data['clock']['rate']
 
-# read in extra node data and put it on the tree
-node_data, node_attrs, node_data_names, metadata_names = parse_node_data_and_metadata(T, [nt_muts], metadatafile)
-#node_data, node_attrs, node_data_names, metadata_names = parse_node_data_and_metadata(T, [branchfile], metadatafile)
-#rate = node_data['clock']['rate']
+    for node in T.find_clades(order='postorder'):
+        data = node_data['nodes'][node.name]
+        #node.date = data['date']
+        #node.num_date = data['numdate']
+        #node.mut_length = round(data['mutation_length'])
+        node.mut_length = node.mutation_length
+        raw_data = node_attrs[node.name]
+        node.country = raw_data["country"] if 'country' in raw_data else ''
+        node.division = raw_data["division"] if 'division' in raw_data else ''
 
-for node in T.find_clades(order='postorder'):
-    data = node_data['nodes'][node.name]
-    #node.date = data['date']
-    #node.num_date = data['numdate']
-    #node.mut_length = round(data['mutation_length'])
-    node.mut_length = node.mutation_length
-    raw_data = node_attrs[node.name]
-    node.country = raw_data["country"] if 'country' in raw_data else ''
-    node.division = raw_data["division"] if 'division' in raw_data else ''
+    #set parents to avoid excess tree-traversal
+    for node in T.find_clades(order='preorder'):
+        for child in node:
+            child.parent = node
 
-#set parents to avoid excess tree-traversal
-for node in T.find_clades(order='preorder'):
-    for child in node:
-        child.parent = node
+    return T
+
 
 # Create a dictionary to find nodes by name
 def lookup_by_names(tree):
@@ -83,8 +85,6 @@ def lookup_by_names(tree):
             names[clade.name] = clade
     return names
 
-names = lookup_by_names(T)
-
 def find_EU1_root(T):
     potential_roots = []
     for n in T.find_clades():
@@ -92,6 +92,35 @@ def find_EU1_root(T):
             potential_roots.append(n)
     potential_roots.sort(key=lambda x:x.count_terminals())
     return potential_roots[-1]
+
+def count_unique_sequences(tree):
+    unique_seqs = 0
+    for node in tree.get_nonterminals(order='postorder'):
+        # if node has at least one terminal child
+        has_ident_seq = False
+        # cycle through children
+        for leaf in node.clades:
+            if leaf.is_terminal():
+                mutations = list(filter(lambda x: x[2] != 'N', leaf.mutations))
+                if len(mutations) > 0:
+                    unique_seqs+=1
+                elif len(mutations) == 0:
+                    has_ident_seq = True
+        if has_ident_seq:
+            unique_seqs+=1
+
+    return unique_seqs
+
+
+def resample_country(node_countries, country):
+    total_sequences = np.sum([x.get(country, 0) for x in node_countries.values()])
+
+    fractions = np.linspace(0.01,1.0, 30)
+    expected_intros = []
+    for frac in fractions:
+        expected_intros.append(np.sum([1-np.exp(-frac*x.get(country, 0)) for x in node_countries.values()]))
+
+    return {"n_seqs":fractions*total_sequences, "expected_intros":expected_intros, "total_sequences":total_sequences}
 
 ###############################
 ###############################
@@ -103,35 +132,24 @@ uk_run = False
 #start = names['NODE_0001008'] #["NODE_0000814"]  # ["NODE_0003268"]   #["NODE_0002406"]
 #start = names['NODE_0004656']#['NODE_0002374'] #['NODE_0001979'] #['NODE_0001981']
 
-# find the EU 1 root 
-start = find_EU1_root(T)
+T_backup = read_tree(treefile, alignfile)
+
+# find the EU 1 root
+start = find_EU1_root(T_backup)
 
 #back up the original tree so we don't hve to optimize again if we mess up...
-T_backup = copy.deepcopy(T)
+T = copy.deepcopy(T_backup)
+names = lookup_by_names(T)
 
 #Make a subtree of the cluster so we can just work with that
-cluster = T.from_clade(start)
+cluster = T.from_clade(names[start.name])
 
 
 ######################
 ######################
 # get number of unique sequences
+unique_seqs = count_unique_sequences(cluster)
 
-unique_seqs = 0
-
-for node in cluster.get_nonterminals(order='postorder'):
-    # if node has at least one terminal child
-    has_ident_seq = False
-    # cycle through children
-    for leaf in node.clades:
-        if leaf.is_terminal():
-            mutations = list(filter(lambda x: x[2] != 'N', leaf.mutations))
-            if len(mutations) > 0:
-                unique_seqs+=1
-            elif len(mutations) == 0:
-                has_ident_seq = True
-    if has_ident_seq:
-        unique_seqs+=1
 
 ######## UK RERUN FROM HERE
 
@@ -161,7 +179,7 @@ for node in cluster.find_clades(order='postorder'):
 #                node.parent.countries.append("Other")
 
 #How many internals do we start with?
-len(cluster.get_nonterminals())
+print(f"number of terminals pre collapsing: {len(cluster.get_nonterminals())}")
 #481
 #576
 #710
@@ -172,7 +190,23 @@ len(cluster.get_nonterminals())
 #851
 
 select_run = True
-selected_countries = ["Spain", "Switzerland"]#, "United Kingdom", "Denmark"]
+uk_run = False
+if select_run:
+    selected_countries = ["Spain", "Switzerland", "United Kingdom", "Ireland", "Denmark", "Norway", "Iceland", "Germany"]
+else:
+    selected_countries = list({n.country for n in cluster.get_terminals()})
+
+if uk_run:
+    selected_countries.extend(['Scotland', 'England', 'Wales', 'Northern Ireland'])
+
+for leaf in cluster.get_terminals():
+    if uk_run and leaf.country == "United Kingdom":
+        leaf.cluster_country = leaf.division
+    elif leaf.country in selected_countries:
+        leaf.cluster_country = leaf.country
+    else:
+        leaf.cluster_country = "Other"
+
 
 # for each internal node - if only has leaf children from 1 country
 # then collapse this node - its children go to its parent, it disappears
@@ -180,20 +214,8 @@ for node in cluster.get_nonterminals(order='postorder'):
     if node.is_preterminal():
         node.countries = []
         for leaf in node.get_terminals():
-            if not uk_run and not select_run:
-                node.countries.append(leaf.country)
-            elif select_run:
-                if leaf.country in selected_countries:
-                    node.countries.append(leaf.country)
-                else:
-                    node.countries.append("Other")
-            else:
-                if leaf.country == "United Kingdom":
-                    node.countries.append(leaf.division)
-                elif leaf.country in also_uk_countries:
-                    node.countries.append(leaf.country)
-                else:
-                    node.countries.append("Other")
+            node.countries.append(leaf.cluster_country)
+
         if len(set(node.countries)) == 1:
             #print("collapsing {} with {}".format(node.name, set(node.countries)))
             cluster.collapse(target=node)
@@ -207,7 +229,7 @@ for node in cluster.find_clades(order='preorder'):
         child.parent = node
 
 #how many internals are left?
-len(cluster.get_nonterminals())
+print(f"number of terminals after collapsing: {len(cluster.get_nonterminals())}")
 #45
 #60
 #66
@@ -223,7 +245,7 @@ len(cluster.get_nonterminals())
 for node in cluster.find_clades(order='postorder'):
     if node.is_terminal():
         if not uk_run:
-            node.parent.total_countries.append(node.country)
+            node.parent.total_countries.append(node.cluster_country)
         else:
             if node.country == "United Kingdom":
                 node.parent.total_countries.append(node.division)
@@ -233,15 +255,15 @@ for node in cluster.find_clades(order='postorder'):
                 node.parent.total_countries.append("Other")
 
 # Gather up the country counts for each node:
-node_attr = {}
+country_count_by_node = {}
 for node in cluster.get_nonterminals(order='postorder'):
-    node_attr[node.name] = Counter(node.total_countries)
+    country_count_by_node[node.name] = Counter(node.total_countries)
 
 
 # make dataframe out of the counts
-node_counts = pd.DataFrame(data=node_attr)
+node_counts = pd.DataFrame(data=country_count_by_node)
 node_counts = node_counts.fillna(0)
-node_counts=node_counts.sort_index()
+node_counts = node_counts.sort_index()
 
 countries_clusters = {}
 for coun in node_counts.index:
@@ -252,13 +274,13 @@ for node in cluster.find_clades(order='postorder'):
         if child.is_terminal():
             #if node.country not in countries_clusters:
             #    countries_clusters[child.country] = {}
-            if node.name not in countries_clusters[child.country]:
-                countries_clusters[child.country][node.name] = {}
-                countries_clusters[child.country][node.name]["sequences"] = []
-            countries_clusters[child.country][node.name]["sequences"].append(child.name)
-            if hasattr(node.parent, "total_countries") and child.country in node.parent.total_countries:
-                countries_clusters[child.country][node.name]["parent"] = f"is a child of {node.parent.name}, which also contains nodes from {child.country}"
-        
+            if node.name not in countries_clusters[child.cluster_country]:
+                countries_clusters[child.cluster_country][node.name] = {}
+                countries_clusters[child.cluster_country][node.name]["sequences"] = []
+            countries_clusters[child.cluster_country][node.name]["sequences"].append(child.name)
+            if hasattr(node.parent, "total_countries") and child.cluster_country in node.parent.total_countries:
+                countries_clusters[child.cluster_country][node.name]["parent"] = f"is a child of {node.parent.name}, which also contains nodes from {child.cluster_country}"
+
 with open(figure_path+f'pie_tree_asFigure_data.json', 'w') as fh:
     json.dump(countries_clusters, fh)
 
@@ -283,11 +305,17 @@ for n in cluster2.find_clades(order='postorder'):
 # Calculate the X plotting values for each node
 cluster2.root.x = cluster2.root.branch_length
 for n in cluster2.get_nonterminals(order='preorder'):
-    for c in n:
+    for ci,c in enumerate(n):
+        if (c.branch_length - 1.0/29900) < 1e-6:
+            c.branch_length *= 0.6 + 0.8*np.random.random()
+            # if (len(c)>2):
+            #     c.branch_length *= 0.75 + 0.25*(ci%3)
+            # else:
+            #     c.branch_length *= 0.75 + 0.5*(ci%2)
         c.x = n.x + c.branch_length
 
 # Function to draw pie charts
-def draw_pie(ax, ratios=[0.4,0.3,0.3], colors=["red", "blue"], X=0, Y=0, size = 1000):
+def draw_pie(ax, ratios=[0.4,0.3,0.3], colors=["red", "blue"], X=0, Y=0, size = 1000, zorder=10):
     N = len(ratios)
     xy = []
     start = 0.
@@ -298,7 +326,7 @@ def draw_pie(ax, ratios=[0.4,0.3,0.3], colors=["red", "blue"], X=0, Y=0, size = 
         xy.append(xy1)
         start += ratio
     for i, xyi in enumerate(xy):
-        ax.scatter([X],[Y] , marker=xyi, s=size, facecolor=colors[i] )
+        ax.scatter([X],[Y] , marker=xyi, s=size, facecolor=colors[i], zorder=zorder)
 
 # Give each node a character name to make the easier to discuss/identify
 # Also store country counts for each node by this name (so can associate
@@ -358,7 +386,7 @@ parent = {}
 for node in cluster2.find_clades(order="preorder"):
     if node.parent and node.parent.name in node_names:
         parent[node_names[node.name]] = node_names[node.parent.name]
-    
+
 def list_parent_countries(wanted_country, second_country):
     i=0
     for no in node_countries.keys():
@@ -371,10 +399,10 @@ def list_parent_countries(wanted_country, second_country):
 
 # Actually plot!
 fs = 16
-fig = plt.figure(figsize=(12,18))
+fig = plt.figure(figsize=(12,14))
 ax = fig.add_subplot(1,1,1)
-Phylo.draw(cluster2, label_func=lambda x:'', axes=ax,
-           branch_labels=lambda x: ",".join([f"{a}{p+1}{d}" for a,p,d in x.mutations]))
+Phylo.draw(cluster2, label_func=lambda x:'', axes=ax) #,
+#           branch_labels=lambda x: ",".join([f"{a}{p+1}{d}" for a,p,d in x.mutations]))
 
 country_colors = {}
 if select_run:
@@ -389,13 +417,14 @@ else:
 
 #make color patches for legend
 ptchs = []
-for key in node_counts.index:
+for key in selected_countries + ["Other"]:
     patch = mpatches.Patch(color=country_colors[key]['c'] if key in country_colors else '#BBBBBB', label=key)
     if key not in country_colors:
         print(f"color needed: {key}")
     ptchs.append(patch)
 
-
+def marker_size(n):
+    return 30*np.sum(n)**0.5
 
 for node in cluster2.find_clades(order="preorder"):
     counts = node_counts[node.name].to_dict()
@@ -403,14 +432,14 @@ for node in cluster2.find_clades(order="preorder"):
     total_counts = sum(list(counts.values()))
     nonzero = [k for k,x in counts.items() if x>0]
     draw_pie(ax=plt.gca(), ratios=[x/sqrt_counts.sum() for x in sqrt_counts],
-        colors=[country_colors[c]['c'] for c in nonzero], X=node.x, Y=node.y,
-        size=200*np.sum(total_counts)**0.25)
+        colors=[country_colors[c]['c'] if c in country_colors else "#CCCCCC" for c in nonzero], X=node.x, Y=node.y,
+        size=marker_size(total_counts))
     # plt.text(node.x+0.00001, node.y, int(sum(list(counts.values()))))
     # plt.text(node.x-0.000015, node.y, node_names[node.name] )
 
-for ni,n in enumerate([1,10,100]):
-    ax.scatter([0.00002*(ni+1)], [2], s=200*np.sum(n)**0.25, edgecolor='k', facecolor='w')
-    ax.text(0.000018*(ni+1), 3.5, f"n={n}")
+for ni,n in enumerate([1,10,100, 1000]):
+    ax.scatter([0.00002], [70 + ni*5], s=marker_size(n), edgecolor='k', facecolor='w')
+    ax.text(0.000029, 70.8 + ni*5, f"n={n}")
 
 plt.axis('off')
 plt.legend(handles=ptchs, loc=3, fontsize=fs)
@@ -425,11 +454,19 @@ plt.savefig(tree_path)
 copypath = tree_path.replace("tree", "tree-{}".format(datetime.date.today().strftime("%Y-%m-%d")))
 copyfile(tree_path, copypath)
 
+plt.figure()
+for country in selected_countries:
+    if country=="Spain":
+        continue
+    res = resample_country(node_countries, country)
+    plt.plot(res['n_seqs'], res['expected_intros'], label=f"{country} (n={int(res['total_sequences']):d})")
 
+plt.ylabel('expected introductions')
+plt.xlabel('number of sequences')
+plt.xscale('log')
 
 ##############
 # Now repeat for the UK only
-uk_countries = ['Scotland', 'England', 'Wales', 'Northern Ireland']
 
 # go back to original tree and take the cluster again
 T_uk = copy.deepcopy(T_backup)
@@ -437,23 +474,23 @@ T_uk = copy.deepcopy(T_backup)
 #Make a subtree of the cluster so we can just work with that
 cluster = T_uk.from_clade(start)
 
-#make it a UK run
-uk_run = True
+# #make it a UK run
+# uk_run = True
 
-also_uk_countries = ["Ireland", "Spain"]
+# also_uk_countries = ["Ireland", "Spain"]
 
 
-########################################################
-##############
-# If you want to re-run the scripts in clusterDynamics.py
-# but with /real/ number of sequences from the cluster...
+# ########################################################
+# ##############
+# # If you want to re-run the scripts in clusterDynamics.py
+# # but with /real/ number of sequences from the cluster...
 
-#this will replace `wanted_seqs` which is the starting piont for everything.
-# be careful you don't overwrtite any files if you don't mean to!!
+# #this will replace `wanted_seqs` which is the starting piont for everything.
+# # be careful you don't overwrtite any files if you don't mean to!!
 
-real_wanted_seqs = []
-# use cluster as that's *just* the cluster
-for leaf in cluster.get_terminals(order='preorder'):
-    real_wanted_seqs.append(leaf.name)
-    
-wanted_seqs = real_wanted_seqs
+# real_wanted_seqs = []
+# # use cluster as that's *just* the cluster
+# for leaf in cluster.get_terminals(order='preorder'):
+#     real_wanted_seqs.append(leaf.name)
+
+# wanted_seqs = real_wanted_seqs
