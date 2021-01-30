@@ -52,7 +52,6 @@ def read_case_data_by_week(fname):
     else:
         cases = pd.read_csv(fname, index_col=False, skiprows=1)
 
-    print(cases.columns)
     #instead of total case numbers, get new cases per day, with diff
     new_cases = np.diff(cases.cases)
     # convert dates to datetime objects
