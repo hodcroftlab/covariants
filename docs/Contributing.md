@@ -13,6 +13,7 @@ If you can't build the repository - that's ok. By creating a PR an automatic bui
 To build locally:
 Navigate to `covariants/web` and type the folowing commands:
 ```
+cp .env.example .env
 nvm use
 yarn dev
 ```
