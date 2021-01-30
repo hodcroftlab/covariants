@@ -50,6 +50,27 @@ from paths import *
 from clusters import *
 from bad_sequences import *
 
+def get_division_summary(cluster_meta, chosen_country):
+
+    country_meta = cluster_meta[cluster_meta['country'].apply(lambda x: x == chosen_country)]
+    observed_divisions = [x for x in country_meta['division'].unique()]
+
+    division_info = pd.DataFrame(index=observed_divisions, columns=['first_seq', 'num_seqs', 'last_seq'])
+    division_dates = {}
+    
+    for div in observed_divisions:
+        temp_meta = cluster_meta[cluster_meta['division'].apply(lambda x: x == div)]
+        division_info.loc[div].first_seq = temp_meta['date'].min()
+        division_info.loc[div].last_seq = temp_meta['date'].max()
+        division_info.loc[div].num_seqs = len(temp_meta)
+        division_dates[div] = [datetime.datetime.strptime(dat, '%Y-%m-%d') for dat in temp_meta['date']]
+
+    division_info_df = pd.DataFrame(data=division_info)
+
+    print("\nOrdered list by first_seq date:")
+    print(division_info_df.sort_values(by="first_seq"))
+
+
 
 def get_summary(cluster_meta, observed_countries):
 
