@@ -195,6 +195,22 @@ clusters = {
             # no mutations because is not displayed
             }
 
+        #The two clusters in 20G, Kamil lab asked
+            #"S677P": {'snps': [23591, 21810, 29193], 'cluster_data': [],
+            #"country_info": [], 'col': "#8a8a8a", "display_name": "20G/S:677P",
+            #"build_name": "S.Q677P"
+            #}
+
+            #"S677H": {'snps': [23592,29401], 'cluster_data': [],
+            #"country_info": [], 'col': "#db4439", "display_name": "20G/S:677H",
+            #"build_name": "S.Q677H"
+            #}
+            #here one to generate for the nextstrain build
+            #"S677": {'snps': [23592], 'cluster_data': [], 'snps2': [23591],
+            #"country_info": [], 'col': "#db4439", "display_name": "20G/S:Q677",
+            #"build_name": "S.Q677",
+            #"nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677?c=gt-S_677" #no filter, color by mut
+            #}
 
 
 #            "S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
