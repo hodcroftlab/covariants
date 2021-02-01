@@ -50,6 +50,27 @@ from paths import *
 from clusters import *
 from bad_sequences import *
 
+def get_division_summary(cluster_meta, chosen_country):
+
+    country_meta = cluster_meta[cluster_meta['country'].apply(lambda x: x == chosen_country)]
+    observed_divisions = [x for x in country_meta['division'].unique()]
+
+    division_info = pd.DataFrame(index=observed_divisions, columns=['first_seq', 'num_seqs', 'last_seq'])
+    division_dates = {}
+    
+    for div in observed_divisions:
+        temp_meta = cluster_meta[cluster_meta['division'].apply(lambda x: x == div)]
+        division_info.loc[div].first_seq = temp_meta['date'].min()
+        division_info.loc[div].last_seq = temp_meta['date'].max()
+        division_info.loc[div].num_seqs = len(temp_meta)
+        division_dates[div] = [datetime.datetime.strptime(dat, '%Y-%m-%d') for dat in temp_meta['date']]
+
+    division_info_df = pd.DataFrame(data=division_info)
+
+    print("\nOrdered list by first_seq date:")
+    print(division_info_df.sort_values(by="first_seq"))
+
+
 
 def get_summary(cluster_meta, observed_countries):
 
@@ -99,6 +120,12 @@ diag = pd.read_csv(diag_file, sep='\t', index_col=False)
 input_meta = "data/metadata.tsv"
 meta = pd.read_csv(input_meta, sep='\t', index_col=False)
 meta = meta.fillna('')
+
+# If seq there and date bad - exclude!
+for key, value in bad_seqs.items():
+    bad_seq = meta[meta['strain'].isin([key])]
+    if not bad_seq.empty and bad_seq.date.values[0] == value:
+        meta.drop(bad_seq.index, inplace=True)
 
 ##################################
 ##################################
@@ -641,6 +668,9 @@ for clus in clus_to_run:
             week_as_date, cluster_count, total_count, unsmoothed_cluster_count, unsmoothed_total_count = non_zero_counts(cluster_data, total_data, coun, smoothing=smoothing)
             # remove last data point if that point as less than frac sequences compared to the previous count
             week_as_date, cluster_count, total_count  = trim_last_data_point(week_as_date, cluster_count, total_count, frac=0.1, keep_count=10)
+            if len(cluster_count) < len(unsmoothed_cluster_count): #if the trim_last_data_point came true, match trimming
+                unsmoothed_cluster_count = unsmoothed_cluster_count[:-1]
+                unsmoothed_total_count = unsmoothed_total_count[:-1]
 
             json_output[clus_display][coun] = {}
             json_output[clus_display][coun]["week"] = [datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date]
