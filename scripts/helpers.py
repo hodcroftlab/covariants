@@ -53,7 +53,8 @@ def non_zero_counts(cluster_data, total_data, country, smoothing=None):
     #     total_count = total_count[0:len(week_as_date)]
 
     return [x for x,wd in zip(week_as_date, with_data_inrange) if wd], np.array(cluster_count)[with_data_inrange],\
-        np.array(total_count)[with_data_inrange], cluster_and_total[with_data].iloc[:,0], cluster_and_total[with_data].iloc[:,1]
+        np.array(total_count)[with_data_inrange], cluster_and_total[data_range].loc[with_data_inrange].iloc[:,0],\
+        cluster_and_total[data_range].loc[with_data_inrange].iloc[:,1]
 
 
 def read_case_data_by_week(fname):

@@ -43,6 +43,11 @@ diag = pd.read_csv(diag_file, sep='\t', index_col=False)
 input_meta = "data/metadata.tsv"
 meta = pd.read_csv(input_meta, sep='\t', index_col=False)
 
+# If seq there and date bad - exclude!
+for key, value in bad_seqs.items():
+    bad_seq = meta[meta['strain'].isin([key])]
+    if not bad_seq.empty and bad_seq.date.values[0] == value:
+        meta.drop(bad_seq.index, inplace=True)
 
 ##################################
 ##################################
