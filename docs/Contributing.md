@@ -15,8 +15,18 @@ Navigate to `covariants/web` and type the folowing commands:
 ```
 cp .env.example .env
 nvm use
-yarn dev
 ```
+
+then start the development server with:
+```
+yarn dev
+``
+
+for Windows, (without Linux Subsystem), try:
+```
+yarn dev:start_win
+```
+
 This may take a while to build. Once finished, open a browser and navigate to `localhost:3000`. Note that navigating between pages may be slow: your computer is building each page as it needs them.
 
 ## To add links, information, and resources:
