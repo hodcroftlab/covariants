@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React, { useCallback, useMemo, useState } from 'react'
 
 import copy from 'fast-copy'
