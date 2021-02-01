@@ -49,7 +49,12 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const week = formatDate(payload[0]?.payload.week)
 
-  const payloadSorted = reverse(sortBy(payload, 'value')).filter(({ name }) => name !== 'others')
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  const total: number = formatInteger(payload[0]?.payload.total)
+
+  const payloadSorted = reverse(sortBy(payload, 'value'))
 
   return (
     <Tooltip>
@@ -63,7 +68,7 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
           </tr>
         </thead>
         <TooltipTableBody>
-          {payloadSorted.map(({ color, name, value }, index) => (
+          {payloadSorted.map(({ name, value }) => (
             <tr key={name}>
               <td className="px-2 text-left">
                 <ColoredBox $color={getClusterColor(name ?? '')} $size={10} $aspect={1.66} />
@@ -72,6 +77,15 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
               <td className="px-2 text-right">{value !== undefined && value > EPSILON ? formatInteger(value) : '-'}</td>
             </tr>
           ))}
+
+          <tr>
+            <td className="px-2 text-left">
+              <span>
+                <b>{'Total'}</b>
+              </span>
+            </td>
+            <td className="px-2 text-right">{total}</td>
+          </tr>
         </TooltipTableBody>
       </TooltipTable>
     </Tooltip>

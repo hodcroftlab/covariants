@@ -34,7 +34,7 @@ export function CountryDistributionPlotComponent({ cluster_names, distribution }
 
     const others = total_sequences - total_cluster_sequences
     const weekSec = DateTime.fromFormat(week, 'yyyy-MM-dd').toSeconds()
-    return { week: weekSec, ...cluster_counts, others }
+    return { week: weekSec, ...cluster_counts, others, total: total_sequences }
   })
 
   return (
