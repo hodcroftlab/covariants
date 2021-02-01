@@ -52,7 +52,7 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  const total: number = formatInteger(payload[0]?.payload.total)
+  const total: number = formatInteger(payload[0]?.payload.total ?? 0)
 
   const payloadSorted = reverse(sortBy(payload, 'value'))
 
