@@ -40,9 +40,8 @@ export function Dropdown({
       isMulti={false}
       onChange={(option: ValueType<DropdownOption<string>, false>) => {
         if (option) {
-          const optionCasted = option as DropdownOption<string>
-          onValueChange?.(optionCasted.value)
-          onOptionChange?.(optionCasted)
+          onValueChange?.(option.value)
+          onOptionChange?.(option)
         }
       }}
       onBlur={onBlur}

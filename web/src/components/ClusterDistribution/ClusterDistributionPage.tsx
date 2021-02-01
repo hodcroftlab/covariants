@@ -21,7 +21,7 @@ import { shouldPlotCountry } from 'src/io/getCountryColor'
 import perClusterData from 'src/../data/perClusterData.json'
 import PerClusterIntro from 'src/../../content/PerClusterIntro.md'
 import { setPerCountryTooltipSortBy, setPerCountryTooltipSortReversed } from 'src/state/ui/ui.actions'
-import { PerCountryTooltipSortBy, perCountryTooltipSortByDefault } from 'src/state/ui/ui.reducer'
+import { PerCountryTooltipSortBy } from 'src/state/ui/ui.reducer'
 import { selectPerCountryTooltipSortBy, selectPerCountryTooltipSortReversed } from 'src/state/ui/ui.selectors'
 import { ClusterDistributionDatum } from './ClusterDistributionPlot'
 
@@ -42,11 +42,6 @@ const CLUSTERS_STATE = CLUSTERS.reduce((result, cluster) => {
 export interface ClusterDistribution {
   cluster: string
   distribution: ClusterDistributionDatum[]
-}
-
-export interface ClusterDistributionJson {
-  country_names: string[]
-  distributions: ClusterDistribution[]
 }
 
 export function filterClusters(clusters: ClusterState, clusterDistrubutions: ClusterDistribution[]) {
