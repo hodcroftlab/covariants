@@ -4,7 +4,7 @@ import { sortBy, reverse } from 'lodash'
 import styled from 'styled-components'
 import { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 
-import { formatDate, formatInteger } from 'src/helpers/format'
+import { formatDate, formatInteger, formatProportion } from 'src/helpers/format'
 import { getClusterColor } from 'src/io/getClusters'
 import { ColoredBox } from '../Common/ColoredBox'
 
@@ -65,6 +65,7 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
           <tr className="w-100">
             <th className="px-2 text-left">{'Variant'}</th>
             <th className="px-2 text-right">{'Num seq'}</th>
+            <th className="px-2 text-right">{'Freq'}</th>
           </tr>
         </thead>
         <TooltipTableBody>
@@ -75,6 +76,9 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
                 <span>{name}</span>
               </td>
               <td className="px-2 text-right">{value !== undefined && value > EPSILON ? formatInteger(value) : '-'}</td>
+              <td className="px-2 text-right">
+                {value !== undefined && value > EPSILON ? formatProportion(value / total) : '-'}
+              </td>
             </tr>
           ))}
 
@@ -85,6 +89,7 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
               </span>
             </td>
             <td className="px-2 text-right">{total}</td>
+            <td className="px-2 text-right">{'1.00'}</td>
           </tr>
         </TooltipTableBody>
       </TooltipTable>
