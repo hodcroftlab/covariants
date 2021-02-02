@@ -43,7 +43,9 @@ bad_seqs = {
     'Spain/IB-IBV-99010766/2020'  : "2020-06-18", # overdiverged, known sequencing problem with this batch
     'Spain/IB-IBV-99010764/2020'  : "2020-06-16", # overdiverged, known sequencing problem with this batch
     'USA/MI-MDHHS-SC23078/2021'   : "2021-02-15", #future date
-    'USA/MI-MDHHS-SC23104/2021'   : "2021-12-02" #future date
+    'USA/MI-MDHHS-SC23104/2021'   : "2021-12-02", #future date
+    'Poland/Pomorskie_MWB_51/2021'   : "2022-01-24", # future date
+    'Romania/Bucuresti408383/2021'  : "2021-12-31" # future date
     #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
     #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
 }

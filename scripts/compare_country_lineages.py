@@ -270,6 +270,7 @@ for coun, ax in zip(countries_to_plot, fig.axes[1:]): #axs[1:]):
             continue
         week_as_date, cluster_count, total_count,\
              unsmoothed_cluster_count, unsmoothed_total_count = non_zero_counts(cluster_data, total_data, coun)
+        week_as_date, cluster_count, total_count  = trim_last_data_point(week_as_date, cluster_count, total_count, frac=0.1, keep_count=10)
         #print(f"week as date for {clus} {coun}:\n")
         #print(week_as_date)
         mindat = min(week_as_date)

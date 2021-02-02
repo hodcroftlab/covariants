@@ -17,9 +17,11 @@ The specific mutation <AaMut mut={'S:E484K'}/> is found in 3 variants reported a
 - Brazil (20J/501Y.V3) 
 - Brazil (20B/S.484K)
 
-See a <Link href="/shared-mutations">list of shared mutations</Link> for these variants.
+See a <Link href="/shared-mutations">list of shared mutations</Link> for these variants. More information on each of these variants can be found below.
 
-More information on each of these variants can be found below.
+<AaMut mut={'S:E484K'}/> has also been found in a small number of 20I/501Y.V1 sequences. Read more about this in the '20I/501Y.V1' section of the <Link href="/variants/S.N501"><Var name="S:N501"/> page</Link>.
+
+<br/><br/>
 
 ### 20H/501Y.V2
 Also known as `B.1.351`

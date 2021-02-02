@@ -4,7 +4,7 @@ import { sortBy, reverse } from 'lodash'
 import styled from 'styled-components'
 import { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 
-import { formatDate, formatInteger } from 'src/helpers/format'
+import { formatDate, formatInteger, formatProportion } from 'src/helpers/format'
 import { getClusterColor } from 'src/io/getClusters'
 import { ColoredBox } from '../Common/ColoredBox'
 
@@ -49,7 +49,12 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const week = formatDate(payload[0]?.payload.week)
 
-  const payloadSorted = reverse(sortBy(payload, 'value')).filter(({ name }) => name !== 'others')
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  const total: number = formatInteger(payload[0]?.payload.total ?? 0)
+
+  const payloadSorted = reverse(sortBy(payload, 'value'))
 
   return (
     <Tooltip>
@@ -60,18 +65,32 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
           <tr className="w-100">
             <th className="px-2 text-left">{'Variant'}</th>
             <th className="px-2 text-right">{'Num seq'}</th>
+            <th className="px-2 text-right">{'Freq'}</th>
           </tr>
         </thead>
         <TooltipTableBody>
-          {payloadSorted.map(({ color, name, value }, index) => (
+          {payloadSorted.map(({ name, value }) => (
             <tr key={name}>
               <td className="px-2 text-left">
                 <ColoredBox $color={getClusterColor(name ?? '')} $size={10} $aspect={1.66} />
                 <span>{name}</span>
               </td>
               <td className="px-2 text-right">{value !== undefined && value > EPSILON ? formatInteger(value) : '-'}</td>
+              <td className="px-2 text-right">
+                {value !== undefined && value > EPSILON ? formatProportion(value / total) : '-'}
+              </td>
             </tr>
           ))}
+
+          <tr>
+            <td className="px-2 text-left">
+              <span>
+                <b>{'Total'}</b>
+              </span>
+            </td>
+            <td className="px-2 text-right">{total}</td>
+            <td className="px-2 text-right">{'1.00'}</td>
+          </tr>
         </TooltipTableBody>
       </TooltipTable>
     </Tooltip>

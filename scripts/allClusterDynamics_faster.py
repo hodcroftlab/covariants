@@ -121,11 +121,27 @@ input_meta = "data/metadata.tsv"
 meta = pd.read_csv(input_meta, sep='\t', index_col=False)
 meta = meta.fillna('')
 
-# If seq there and date bad - exclude!
+
+print("\nCleaning up the metadata...\n")
+# If bad seq there  - exclude!
 for key, value in bad_seqs.items():
     bad_seq = meta[meta['strain'].isin([key])]
     if not bad_seq.empty and bad_seq.date.values[0] == value:
         meta.drop(bad_seq.index, inplace=True)
+
+# do some modifications to metadata once, here - to exclude bad dates
+meta = meta[meta['date'].apply(lambda x: len(x) == 10)]
+meta = meta[meta['date'].apply(lambda x: 'XX' not in x)]
+
+meta['date_formatted'] = meta['date'].apply(lambda x:datetime.datetime.strptime(x, "%Y-%m-%d"))
+#warn of any in the future
+future_meta = meta[meta['date_formatted'].apply(lambda x: x > datetime.date.today())]
+if not future_meta.empty:
+    print("WARNING! Data from the future!")
+    print(future_meta)
+#get rid of any with dates in the future.....
+meta = meta[meta['date_formatted'].apply(lambda x: x <= datetime.date.today())]
+
 
 ##################################
 ##################################
@@ -242,6 +258,7 @@ for clus in clus_to_run:
 ##################################
 #### For all but mink, go through and extract wanted sequences
 
+print("\nLooking for the wanted sequences in the file...\n")
 for index, row in diag.iterrows():
     strain = row['strain']
     snplist = row['all_snps']
@@ -487,10 +504,18 @@ for clus in clus_to_run:
             #temp_meta = meta[meta['country'].isin([coun])]
             temp_meta = meta[meta['country'].apply(lambda x: x == coun)]
 
-        temp_meta = temp_meta[temp_meta['date'].apply(lambda x: len(x) == 10)]
-        temp_meta = temp_meta[temp_meta['date'].apply(lambda x: 'XX' not in x)]
+#        temp_meta = temp_meta[temp_meta['date'].apply(lambda x: len(x) == 10)]
+#        temp_meta = temp_meta[temp_meta['date'].apply(lambda x: 'XX' not in x)]
+#
+#        temp_meta['date_formatted'] = temp_meta['date'].apply(lambda x:datetime.datetime.strptime(x, "%Y-%m-%d"))
+#        #warn of any in the future
+#        future_meta = temp_meta[temp_meta['date_formatted'].apply(lambda x: x > datetime.date.today())]
+#        if not future_meta.empty:
+#            print("WARNING! Data from the future!")
+#            print(future_meta)
+#        #get rid of any with dates in the future.....
+#        temp_meta = temp_meta[temp_meta['date_formatted'].apply(lambda x: x <= datetime.date.today())]
 
-        temp_meta['date_formatted'] = temp_meta['date'].apply(lambda x:datetime.datetime.strptime(x, "%Y-%m-%d"))
         #temp_meta['calendar_week'] = temp_meta['date_formatted'].apply(lambda x: x.isocalendar()[1])
         temp_meta['calendar_week'] = temp_meta['date_formatted'].apply(lambda x: (x.isocalendar()[0], x.isocalendar()[1]))
         temp_meta = temp_meta[temp_meta['calendar_week']>=(2020,20)]
@@ -515,12 +540,12 @@ for clus in clus_to_run:
     # Convert into dataframe
     cluster_data = pd.DataFrame(data=clus_week_counts)
     total_data = pd.DataFrame(data=total_week_counts)
-    clus_data['cluster_data'] = cluster_data
-    clus_data['total_data'] = total_data
     # sort
     total_data=total_data.sort_index()
     cluster_data=cluster_data.sort_index()
-
+    #store
+    clus_data['cluster_data'] = cluster_data
+    clus_data['total_data'] = total_data
 
 ######################################################################################################
 ##################################
@@ -558,7 +583,7 @@ for index, row in all_num_seqs.iterrows():
 
 all_num_seqs["has_20"] = has10
 
-print("Countries who have more than 20 in any cluster:", has10_countries, "\n")
+print(f"Countries who have more than {cutoff_num_seqs} in any cluster:", has10_countries, "\n")
 print(all_num_seqs)
 
 countries_to_plot_final = all_num_seqs[all_num_seqs.has_20 == "*"].index
@@ -601,7 +626,7 @@ for clus in clus_to_run:
     countries_to_plot = [x for x in country_info_df[country_info_df.num_seqs > min_to_plot].index if x in countries_to_plot_final]
 
 
-    if len(countries_to_plot_min) > len(colors):
+    if len(countries_to_plot) > len(colors):
         print("\nWARNING!! NOT ENOUGH COLORS FOR PLOTTING!")
 
     if clus=="S222":
@@ -609,7 +634,7 @@ for clus in clus_to_run:
     else:
         unused_countries = [x for x in country_list if x not in countries_to_plot_min]
         country_styles_custom = {}
-        for x in countries_to_plot_min:
+        for x in countries_to_plot:
             if x in country_styles.keys():
                 country_styles_custom[x] = country_styles[x]
             else:
