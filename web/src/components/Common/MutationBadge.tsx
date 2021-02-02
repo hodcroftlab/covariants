@@ -45,7 +45,7 @@ export const MutationWrapper = styled.span`
 export const PrefixText = styled.span`
   padding: 1px 5px;
   color: ${(props) => props.theme.white};
-  background-color: ${(props) => props.theme.gray700};
+  background-color: ${(props) => props.theme.gray550};
 `
 
 export const GeneText = styled.span<{ $color: string }>`
