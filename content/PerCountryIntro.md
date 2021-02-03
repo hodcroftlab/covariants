@@ -1,7 +1,7 @@
 Graphs show for each country, the proportion of total number of **sequences** (*not cases*), over time, that fall into defined variant groups. Countries are pre-selected to be displayed if they have at least 20 sequences in any variant being tracked (see [colors_and_countries.py](https://github.com/hodcroftlab/covariants/blob/master/scripts/colors_and_countries.py)).
 
 
-Sequences with the 69 deletion or a mutation at <AaMut mut={'S:E484'}/> in Spike are not shown on these plots as they commonly are found in other varaints (Variants <Var name="S:N439K"/>, <Var name="S:Y453F"/>, and <Var name="S:N501"/> for <AaMut mut={'S:H69-'}/>; Variant <Var name="S:N501"/> for <AaMut mut={'S:E484'}/>), so they would be 'double-plotted'.
+Sequences with the 69 deletion or a mutation at <AaMut mut={'S:E484'}/> in Spike are not shown on these plots as they commonly are found in other varaints (<Var name="S:N439K"/>, <Var name="S:Y453F"/>, and <Var name="S:N501"/> for <AaMut mut={'S:H69-'}/>; <Var name="S:N501"/> for <AaMut mut={'S:E484'}/>), so they would be 'double-plotted'.
 
 **Particularly from early 2021** many countries have started preferentially sequencing samples to detect the main variants of concern (see <Var name="S:N501"/>). Often this is through sequencing samples that have an 'S-drop-out,' which in particular biases the frequencies of <Var name="S:N439K"/> and 501Y.V1 (shown here as a bias in <Var name="S:N501"/>). Alternatively, this can be through preferentially sequencing cases with particular travel histories, or connections to known cases of the variants of concern.
 
