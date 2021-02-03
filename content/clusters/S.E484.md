@@ -11,6 +11,7 @@ This mutation is in the receptor binding domain (RBD), important to ACE2 binding
 - There has been a case of reinfection associated with <AaMut mut={'S:E484K'}/>: a woman previously infected with a non-<AaMut mut={'S:E484K'}/> variant of SARS-CoV-2 was later reinfected with a virus carrying the <AaMut mut={'S:E484K'}/> mutation ([Nonaka et al., PrePrints](https://www.preprints.org/manuscript/202101.0132/v1))
 - In one study co-incubating SARS-CoV-2 with convalescent plasma, neutralization was completely escaped at day 73 due to an <AaMut mut={'S:E484K'}/> mutation ([Andreano et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2020.12.28.424451v1))
 - In another study co-incubating psueotyped virus with SARS-CoV-2 spike proteins and monocolonal antibodies, neutralization both by monoclonal antibodies and to convalescent sera was significantly reduced in viruses with `S:E484` mutations ([Liu et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.06.372037v1))
+- May increase ACE2 binding, which may be further increased by the presence of <AaMut mut="S:N501Y"/>, and stabilized by the presence of <AaMut mut="S:K417N"/> ([Nelson et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.13.426558v1))
 
 The specific mutation <AaMut mut={'S:E484K'}/> is found in 3 variants reported at the end of 2020/beginning of 2021, in:
 - South Africa (20H/501Y.V2)
