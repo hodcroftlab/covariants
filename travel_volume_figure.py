@@ -198,7 +198,7 @@ def import_scaled(countries, roamers, country_to_iso, spain_frequency, cases_by_
     ncols=3
     nrows = len(countries_no_spain)//ncols + (1 if len(countries_no_spain)%ncols else 0)
 
-    fig, axs = plt.subplots(ncols, nrows, figsize=(12,12), sharex=True, sharey=True)
+    fig, axs = plt.subplots(ncols, nrows, figsize=(10,10), sharex=True, sharey=True)
     #for a simpler plot of most interesting countries use this:
     for ci,c in enumerate(countries_no_spain):
         ax = axs[ci//3, ci%3]
@@ -212,7 +212,7 @@ def import_scaled(countries, roamers, country_to_iso, spain_frequency, cases_by_
             ax.plot(week_as_date, cluster_freq,
                     marker='o',
                     color=country_styles[country]['c'],
-                    linestyle=country_styles[country]['ls'])
+                    linestyle=country_styles[country]['ls'], label=f"EU1 frequency in {country}")
 
             res = get_country_imports(roamers, case_data[country], travel_volume[country], country_to_iso[country], spain_frequency,
                                       cases_by_cw_per_capita, weeks, popsizes[country])
@@ -229,14 +229,15 @@ def import_scaled(countries, roamers, country_to_iso, spain_frequency, cases_by_
             scale_factor = np.sum(obs*pred)/np.sum(pred**2)
             ax.plot(res["dates"], res["frequency"]*scale_factor,
                     c=country_styles[country]['c'], ls=country_styles[country]['ls'],
-                    label = f"{country}, {scale_factor:1.1f}x")
+                    label = f"Model for {country}, {scale_factor:1.1f}x")
             imports_file.write(f"{country}\t{np.sum(res['introductions']):1.2f}\t{scale_factor:1.2f}\n")
 
-        ax.legend()
+        ax.legend(fontsize=0.8*fs)
         ax.set_ylim([0,1])
         ax.set_xlim([datetime(2020,6,1), datetime(2020,11,30)])
+        ax.tick_params(labelsize=fs*0.8)
         if ci%3==0:
-            ax.set_ylabel('frequency')
+            ax.set_ylabel('frequency', fontsize=fs)
     fig.autofmt_xdate(rotation=30)
     plt.tight_layout()
     plt.savefig(figure_path+f'travel_scaled.{fmt}')
@@ -248,7 +249,7 @@ def case_and_travel_figure(countries, roamers, cases_by_cw, province_size, count
     weeks2 = range(32,36)
 
     geo = get_Spain_shapes(province_size)
-    fig, axs = plt.subplots(2,2, figsize=(12,12))
+    fig, axs = plt.subplots(2,2, figsize=(10,10))
     spain_provinces = geopandas.GeoDataFrame({"geometry": geo["shapes"], "name": geo["names"],
                                           "cases":[cases_by_cw[cw].get(c,0) for c in geo["codes"]],
                                           "cases_per_capita":[np.sum([cases_by_cw[cw].get(c,0) for cw in weeks1])/province_size[c]["population"]
@@ -256,7 +257,7 @@ def case_and_travel_figure(countries, roamers, cases_by_cw, province_size, count
                                          }, index=geo["codes"])
     spain_provinces.plot(column='cases_per_capita', ax=axs[0,0])
     axs[0,0].set_axis_off()
-    axs[0,0].set_title(f"cases in CW {weeks1[0]} — {weeks1[-1]}", fontsize=fs)
+    axs[0,0].set_title(f"cases in CW {weeks1[0]} — {weeks1[-1]}", fontsize=1.7*fs)
 
 
     spain_provinces = geopandas.GeoDataFrame({"geometry": geo["shapes"], "name": geo["names"],
@@ -266,7 +267,7 @@ def case_and_travel_figure(countries, roamers, cases_by_cw, province_size, count
                                          }, index=geo["codes"])
     spain_provinces.plot(column='cases_per_capita', ax=axs[0,1])
     axs[0,1].set_axis_off()
-    axs[0,1].set_title(f"cases in CW {weeks2[0]}--{weeks2[-1]}")
+    axs[0,1].set_title(f"cases in CW {weeks2[0]} — {weeks2[-1]}", fontsize=1.7*fs)
 
     cname = {'ch':"Switzerland", "gb":"UK", 'fr':"France"}
     for ci, country in enumerate(['fr', 'gb']):
@@ -275,7 +276,7 @@ def case_and_travel_figure(countries, roamers, cases_by_cw, province_size, count
                                                    "roamers":[r.get(c,0) for c in geo["codes"]],
                                          }, index=geo["codes"])
         spain_provinces.plot(column='roamers', ax=axs[1,ci])
-        axs[1,ci].set_title(f'Visitors from {cname[country]}', fontsize=fs)
+        axs[1,ci].set_title(f'Visitors from {cname[country]}', fontsize=1.7*fs)
         axs[1,ci].set_axis_off()
 
     plt.savefig(figure_path+f'cases_and_travelers.png')
@@ -438,13 +439,13 @@ if __name__ == '__main__':
     plt.fill_between([datetime(2020,8,10),datetime(2020,12,31)], [20,20], alpha=0.3)
     plt.savefig(figure_path+f'confirmed_vs_estimated_CH.png')
 
-    # case_and_travel_figure(countries, roamers, cases_by_cw, provinces, country_to_iso, province_codes)
+    case_and_travel_figure(countries, roamers, cases_by_cw, provinces, country_to_iso, province_codes)
 
     weeks = range(28,36)
     country_distribution = country_correlation(roamers, countries, country_to_iso, weeks, province_codes)
     fig = sns.clustermap(country_distribution.corr(), cmap='viridis')
-    fig.ax_heatmap.tick_params(labelsize=fs)
-    plt.tick_params(labelsize=fs)
+    fig.ax_heatmap.tick_params(labelsize=1.7*fs)
+    plt.tick_params(labelsize=1.7*fs)
     plt.tight_layout()
     plt.savefig(figure_path + f"country_clustering.{fmt}")
 
