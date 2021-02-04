@@ -205,6 +205,7 @@ clusters = {
             #"country_info": [], 'col': "#db4439", "display_name": "20G/S:677H",
             #"build_name": "S.Q677H"
             #}
+
             #here one to generate for the nextstrain build
             #"S677": {'snps': [23592], 'cluster_data': [], 'snps2': [23591],
             #"country_info": [], 'col': "#db4439", "display_name": "20G/S:Q677",
