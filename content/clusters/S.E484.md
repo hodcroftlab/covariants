@@ -3,6 +3,8 @@ import { Link } from 'src/components/Link/Link'
 ## Mutation Information
 
 <AaMut mut="S:E484"/> has appeared multiple times independently around the world: each can be associated with different accompanying mutations
+<br/>
+<br/>
 
 ### S:E484
 This mutation is in the receptor binding domain (RBD), important to ACE2 binding and antibody recognition.
@@ -12,6 +14,8 @@ This mutation is in the receptor binding domain (RBD), important to ACE2 binding
 - In one study co-incubating SARS-CoV-2 with convalescent plasma, neutralization was completely escaped at day 73 due to an <AaMut mut={'S:E484K'}/> mutation ([Andreano et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2020.12.28.424451v1))
 - In another study co-incubating psueotyped virus with SARS-CoV-2 spike proteins and monocolonal antibodies, neutralization both by monoclonal antibodies and to convalescent sera was significantly reduced in viruses with `S:E484` mutations ([Liu et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.06.372037v1))
 - May increase ACE2 binding, which may be further increased by the presence of <AaMut mut="S:N501Y"/>, and stabilized by the presence of <AaMut mut="S:K417N"/> ([Nelson et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.13.426558v1))
+- Tests in people vaccinated with the Moderna and Pfizer-BioNTech vaccines suggest <AaMut mut={'S:E484K'}/> and <AaMut mut={'S:N501Y'}/> individually, and both together in combination with <AaMut mut={'S:K417N'}/>, cause a small but significant reduction in neutralization ([Wang et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.15.426911v2))
+- _In vitro_ evolution to select for greater ACE2 binding resulted in mutations <AaMut mut={'S:E484K'}/>, <AaMut mut={'S:N501Y'}/>, and <AaMut mut={'S:S477N'}/> to be among the first selected ([Zahradnik et al., bioRxiv](https://doi.org/10.1101/2021.01.06.425392)).
 
 The specific mutation <AaMut mut={'S:E484K'}/> is found in 3 variants reported at the end of 2020/beginning of 2021, in:
 - South Africa (20H/501Y.V2)
@@ -33,6 +37,9 @@ There is also a mutation in Nucleocapsid: <AaMut mut={'N:T205I'}/> and a deletio
 
 See a [focal `S.E484` build filtered & zoomed to 501Y.V2](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484&f_clade_membership=20H/501Y.V2&label=clade:20H/501Y.V2&p=grid&r=country)
 
+- Sera from individuals vaccined with the Moderna vaccine showed no significant reduction of neutralization against 501Y.V1 and a 6-fold reduction in 501Y.V2, but titers remained above levels expected to be protective [Moderna website](https://investors.modernatx.com/news-releases/news-release-details/moderna-covid-19-vaccine-retains-neutralizing-activity-against)
+- 20H/501Y.V2 is reported to have resistance to monoclonal antibodies and convalescent plasma, with one study finding 93% of 44 plasma samples showed a reduction in titer and 48% had no detectable neutralization activity ([Wibmer et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.18.427166v1)). A further study also detected reduction in neutralization by convalescent plasma ([Cele et al., medRxiv](https://www.medrxiv.org/content/10.1101/2021.01.26.21250224v1)).
+- 501Y.V2 has larger reduction to both mAbs and convalescent sera than 501Y.V1 ([Wang et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.25.428137v2))
 
 ### 20J/501Y.V3
 Also known as `P.1`
@@ -45,6 +52,7 @@ There is also a mutation in Nucleocapsid: <AaMut mut={'N:P80R'}/> and the deleti
 See a [focal `S.E484` build filtered & zoomed to 501Y.V3](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484&f_clade_membership=20J/501Y.V3&label=clade:20J/501Y.V3&p=grid&r=country)
 
 ### 20B/S.484K
+Also known as `P.2`
 Announced in January 2021, emerging clade 20B/S.484K, is also thought to have originated and/or initially expanded in Brazil ([de Vasconcelos et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.23.20248598v1.article-info)).
 
 Unlike the two variants above, it does *not* carry <AaMut mut={'S:N501Y'}/> in Spike.<br/>

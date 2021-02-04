@@ -15,6 +15,8 @@ This mutation is in the receptor binding domain (RDB), important to ACE2 binding
 - ACE2 binding may be further increased by the presence of <AaMut mut="S:E484K"/>, and stabilized by the presence of <AaMut mut="S:K417N"/> ([Nelson et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.13.426558v1))
 - <AaMut mut={'S:N501Y'}/> was found in longitudinally-collected samples from an immunocompromised patient (<LinkExternal href="https://www.nejm.org/doi/full/10.1056/NEJMc2031364?query=featured_coronavirus">Choi et al., NEJM</LinkExternal>)
 - In one study, sera from previously infected patients neutralised viruses with <AaMut mut="S:501N"/> and <AaMut mut="S:501Y"/> equally ([Xie et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.07.425740v1))
+- Tests in people vaccinated with the Moderna and Pfizer-BioNTech vaccines suggest <AaMut mut={'S:N501Y'}/> and <AaMut mut={'S:E484K'}/> individually, and both together in combination with <AaMut mut={'S:K417N'}/>, cause a small but significant reduction in neutralization ([Wang et al., bioRxiv])(https://www.biorxiv.org/content/10.1101/2021.01.15.426911v2)
+- _In vitro_ evolution to select for greater ACE2 binding resulted in mutations <AaMut mut={'S:N501Y'}/>, <AaMut mut={'S:E484K'}/> and <AaMut mut={'S:S477N'}/> to be among the first selected ([Zahradnik et al., bioRxiv](https://doi.org/10.1101/2021.01.06.425392)).
 
 The specific mutation <AaMut mut="S:N501Y"/> is found in 3 variants reported at the end of 2020/beginning of 2021, in:
 - the UK (20I/501Y.V1)
@@ -38,8 +40,12 @@ The 69/70 deletion in this variant causes the S-assay within TaqPath tests to gi
 
 A [small number](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/957504/Variant_of_Concern_VOC_202012_01_Technical_Briefing_5_England.pdf) of 501Y.V1 genomes have been observed in the UK featuring the <AaMut mut={'S:E484K'}/> mutation (see these on the focal <Var name="S:E484"/> Nextstrain build [here](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484&gt=S.484K&label=clade:20I/501Y.V1)). 
 
-Links to reports on 501Y.V1:
+Links to papers and reports on 501Y.V1:
+- Sera from individuals vaccined with the Moderna vaccine showed no significant reduction of neutralization against 501Y.V1 and a 6-fold reduction in 501Y.V2, but titers remained above levels expected to be protective [Moderna website](https://investors.modernatx.com/news-releases/news-release-details/moderna-covid-19-vaccine-retains-neutralizing-activity-against)
+- 40 participants vaccinated with the mRNA BTN162b2 vaccine had "slightly reduced but overall largely preserved neutralizing titers" against 501Y.V1 ([Muik et al., Science](https://science.sciencemag.org/content/early/2021/01/28/science.abg6105.full))
+- 501Y.V1 has little reduced neutralization by mAbs and a small reduction to convalescent sera ([Wang et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.25.428137v2))
 - [COG-UK Report](https://www.cogconsortium.uk/news_item/update-on-new-sars-cov-2-variant-and-how-cog-uk-tracks-emerging-mutations/), [Rambaut et al.](https://virological.org/t/preliminary-genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-the-uk-defined-by-a-novel-set-of-spike-mutations/563), [PHE Technical Briefings 1-5](https://www.gov.uk/government/publications/investigation-of-novel-sars-cov-2-variant-variant-of-concern-20201201)
+- Early work suggests a possible increase risk of death with the 501Y.V1 variant ([SAGE Meeting paper 2021/01/21](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/955239/NERVTAG_paper_on_variant_of_concern__VOC__B.1.1.7.pdf))
 
 See a [focal `S.N501` build filtered & zoomed to 501Y.V1](https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501&f_clade_membership=20I/501Y.V1&label=clade:20I/501Y.V1&p=grid&r=country)
 
@@ -55,6 +61,10 @@ There is also a mutation in Nucleocapsid: <AaMut mut={'N:T205I'}/> and a deletio
 It does _not_ have the deletion at 69/70.
 
 See a [focal `S.N501` build filtered & zoomed to 501Y.V2](https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501&f_clade_membership=20H/501Y.V2&label=mlabel:20C/C23664T&p=grid&r=country)
+
+- Sera from individuals vaccined with the Moderna vaccine showed no significant reduction of neutralization against 501Y.V1 and a 6-fold reduction in 501Y.V2, but titers remained above levels expected to be protective [Moderna website](https://investors.modernatx.com/news-releases/news-release-details/moderna-covid-19-vaccine-retains-neutralizing-activity-against)
+- 20H/501Y.V2 is reported to have resistance to monoclonal antibodies and convalescent plasma, with one study finding 93% of 44 plasma samples showed a reduction in titer and 48% had no detectable neutralization activity ([Wibmer et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.18.427166v1)). A further study also detected reduction in neutralization by convalescent plasma ([Cele et al., medRxiv](https://www.medrxiv.org/content/10.1101/2021.01.26.21250224v1)).
+- 501Y.V2 has larger reduction to both mAbs and convalescent sera than 501Y.V1 ([Wang et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.25.428137v2))
 
 ---
 
