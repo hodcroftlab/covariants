@@ -98,7 +98,11 @@ country_list_2 = [
     "United Arab Emirates",
     "Finland",
     "Jordan",
-    "Poland"
+    "Poland",
+    "Romania",
+    "Canada",
+    "India",
+    "Egypt"
 ]
 
 country_styles_2 = {
