@@ -848,9 +848,9 @@ def get_ordered_clusters_to_plot(clusters):
     sorted_country_tups = sorted(total_coun_counts.items(), key=lambda x: x[1], reverse=True)
     proposed_coun_to_plot = [x[0] for x in sorted_country_tups]
 
-    return proposed_coun_to_plot
+    return proposed_coun_to_plot, clus_keys
 
-def plot_country_data(clusters, proposed_coun_to_plot, print_files):
+def plot_country_data(clusters, proposed_coun_to_plot, print_files, clus_keys):
     country_week = {clus: {} for clus in clusters}
 
     fs = 14
@@ -943,7 +943,7 @@ def plot_country_data(clusters, proposed_coun_to_plot, print_files):
         with open(tables_path+f'EUClusters_data.json', 'w') as fh:
             json.dump(json_output, fh)
         
-        plt.savefig(overall_trends_figs_path+f"EUClusters_compare.png")
+        plt.savefig(figure_path+f"EUClusters_compare.png")
 
         plt.savefig(figure_only_path+f"EUClusters_compare.{fmt}")
         trends_path = figure_only_path+f"EUClusters_compare.{fmt}"
@@ -952,5 +952,5 @@ def plot_country_data(clusters, proposed_coun_to_plot, print_files):
 
 
 if do_country:
-    proposed_coun_to_plot = get_ordered_clusters_to_plot(clusters)
-    plot_country_data(clusters, proposed_coun_to_plot, print_files)
+    proposed_coun_to_plot, clus_keys = get_ordered_clusters_to_plot(clusters)
+    plot_country_data(clusters, proposed_coun_to_plot, print_files, clus_keys)
