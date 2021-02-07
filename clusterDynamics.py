@@ -30,7 +30,7 @@ fmt = "pdf"
 import pandas as pd
 import datetime
 import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as 
 import seaborn as sns
 import json
 from shutil import copyfile
@@ -302,6 +302,7 @@ for clus in clus_to_run:
     # sort
     total_data=total_data.sort_index()
     cluster_data=cluster_data.sort_index()
+    clusters[clus]["cluster_data"] = cluster_data
     width = 1
     smoothing = np.exp(-np.arange(-10,11)**2/2/width**2)
     smoothing /= smoothing.sum()
@@ -622,7 +623,11 @@ for clus in clus_to_run:
                     plt.savefig(figure_path+f"{coun}-newcases-seqs.{fmt}")
 
 
+for clus in clusters:
+    if "cluster_data" in clusters[clus] and len(clusters[clus]["cluster_data"]):
+        clusters[clus]["cluster_data"].to_csv(cluster_path+f"{clusters[clus]['build_name']}-{datetime.datetime.today().strftime('%Y-%m-%d')}.tsv",sep="\t")
 
+total_data.to_csv(cluster_path+f"total_data-{datetime.datetime.today().strftime('%Y-%m-%d')}.tsv",sep="\t")
 
 ##############################
 ##############################

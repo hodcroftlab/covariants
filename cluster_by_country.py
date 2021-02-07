@@ -1,9 +1,24 @@
+import pandas as pd
+from clusters import *
+
 # Run first part of compare_S222_S477.py
 # when this script is complete, can copy this part into the bottom of that script
 
+date = "2021-02-07"
+cluster_path = '../covariants/through_Nov_data/'
+
+total_data = pd.read_csv(cluster_path+f"total_data-{date}.tsv",sep="\t", index_col=0)
+
+for clus in clusters:
+    try:
+        clusters[clus]["cluster_data"] = pd.read_csv(cluster_path+f"{clusters[clus]['build_name']}-{date}.tsv",sep="\t", index_col=0)
+    except:
+        print(f"No file for cluster {clus}")
 
 percents = {}
-trim_tot_data = total_data[3:12].fillna(0)
+#trim_tot_data = total_data[3:12].fillna(0)
+
+trim_tota_data = total_data.fillna(0)
 
 for clus in clusters.keys():
 
