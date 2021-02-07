@@ -145,6 +145,7 @@ def get_roaming_scale_factor(roamers, travel_volume, country):
 
 def import_figure(countries, roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita):
     fig, axs = plt.subplots(2,1, figsize=(6,7), sharex=True)
+    summer = range(28,38)
     for country in countries:
         if country=='Spain':
             continue
@@ -176,11 +177,12 @@ def import_figure(countries, roamers, country_to_iso, spain_frequency, cases_by_
 
         # res = get_import_frequency(country, case_data, spain_frequency)
         print(f"{country} -- total imports: {np.sum(res['introductions'])}")
+        print(f"{country} -- summer imports: {np.sum([i for i,d in zip(res['introductions'], res['dates']) if date_to_CW(d) in summer])}")
         axs[1].plot(res['dates'], res['frequency'], label=country, c=country_styles[country]['c'], ls=country_styles[country].get('ls', '-'), lw=2)
 
     axs[1].legend(fontsize=fs*0.9)
     axs[1].tick_params(labelsize=fs*0.8)
-    axs[1].set_ylabel('naive frequency of imports', fontsize=fs)
+    axs[1].set_ylabel('predicted frequency of EU1', fontsize=fs)
     fig.autofmt_xdate(rotation=30)
     plt.tight_layout()
     axs[0].text(axs[0].get_xlim()[0]-30, axs[0].get_ylim()[1], "A", size=22, weight="bold")
@@ -284,9 +286,10 @@ def case_and_travel_figure(countries, roamers, cases_by_cw, province_size, count
     return fig, axs
 
 
-def confirmed_vs_estimated_imports(country, roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita, scale_factor):
+def confirmed_vs_estimated_imports(country, roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita, scale_factor, scale_factor_reported=None):
 
     weeks = range(15,50)
+    summer = range(28,38)
     case_data = load_case_data(countries)
 
     fig = plt.figure()
@@ -297,9 +300,15 @@ def confirmed_vs_estimated_imports(country, roamers, country_to_iso, spain_frequ
 
     plt.plot(res['dates'], res['introductions'], 'o-', label="travel estimate", lw=2)
 
-    plt.plot(res['dates'], np.array(res['introductions'])*scale_factor, 'o-', label=f"rescaled estimate ({scale_factor}x)", lw=2)
+    # plt.plot(res['dates'], np.array(res['introductions'])*scale_factor, 'o-', label=f"rescaled estimate ({scale_factor}x)", lw=2)
 
     plt.plot([CW_to_date(x) for x in reported_imports.CW], reported_imports.cases, 'o-', label="reported cases", lw=2)
+    if scale_factor_reported:
+        plt.plot([CW_to_date(x) for x in reported_imports.CW], reported_imports.cases*scale_factor_reported, 'o-', label="adjusted rep. cases", lw=2)
+
+    print("Summer imports:", np.sum([x.cases for i,x in reported_imports.iterrows() if x.CW in summer]))
+    print("Summer estimate:", np.sum([i for d,i in zip(res['dates'], res['introductions']) if date_to_CW(d) in summer]))
+
     plt.legend(loc=2)
     plt.ylabel('introductions')
     fig.autofmt_xdate()
@@ -422,22 +431,26 @@ if __name__ == '__main__':
     iso_to_country, country_to_iso = read_country_codes()
 
     countries = ["Spain", "Switzerland", "France", "Germany", "Belgium", "Netherlands",
-                 "Ireland", "United Kingdom", "Denmark",  "Sweden"
+                 "Ireland", "United Kingdom", "Denmark", "Sweden"
                  ]
 
     import_figure(countries, roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita)
 
     import_scaled(countries, roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita, cluster_data, total_data)
+
     confirmed_vs_estimated_imports("Germany", roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita, 3.7)
     plt.fill_between([datetime(2020,6,22),datetime(2020,9,12)], [300,300], alpha=0.3)
     plt.text(datetime(2020,9,2), -10, "Quarantine requirement")
     plt.text(datetime(2020,6,22), 20, "main holiday period", rotation=90)
     plt.fill_between([datetime(2020,9,2),datetime(2020,12,31)], [60,60], alpha=0.3)
-    plt.savefig(figure_path+f'confirmed_vs_estimated_DE.png')
-    confirmed_vs_estimated_imports("Switzerland", roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita, 3.8)
-    plt.fill_between([datetime(2020,6,20),datetime(2020,8,26)], [100,100], alpha=0.3)
+    plt.savefig(figure_path+f'confirmed_vs_estimated_DE.{fmt}')
+
+    confirmed_vs_estimated_imports("Switzerland", roamers, country_to_iso, spain_frequency, cases_by_cw_per_capita, 3.8, scale_factor_reported=1/0.62)
+    plt.fill_between([datetime(2020,6,20),datetime(2020,8,26)], [70,70], alpha=0.3)
     plt.fill_between([datetime(2020,8,10),datetime(2020,12,31)], [20,20], alpha=0.3)
-    plt.savefig(figure_path+f'confirmed_vs_estimated_CH.png')
+    plt.text(datetime(2020,9,2), 15, "Quarantine requirement")
+    plt.text(datetime(2020,6,22), 20, "main holiday period", rotation=90)
+    plt.savefig(figure_path+f'confirmed_vs_estimated_CH.{fmt}')
 
     case_and_travel_figure(countries, roamers, cases_by_cw, provinces, country_to_iso, province_codes)
 
