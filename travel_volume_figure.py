@@ -404,11 +404,13 @@ def plot_ratio(x, num, denom, dnum, ddenom, ax, nstd = 2, label=''):
 
 
 if __name__ == '__main__':
-    cluster_data = pd.read_csv('../ncov_cluster/2021-01-14_cluster_data.tsv', index_col=0)
-    total_data =   pd.read_csv('../ncov_cluster/2021-01-14_total_data.tsv', index_col=0)
+    date = "2021-02-07"
+    cluster_path = './through_Nov_data/'
+    total_data = pd.read_csv(cluster_path+f"total_data-{date}.tsv", sep="\t", index_col=0)
+    cluster_data = pd.read_csv(cluster_path+f"20A.EU1-{date}.tsv", sep="\t", index_col=0)
+    # cluster_data = pd.read_csv('../ncov_cluster/2021-01-14_cluster_data.tsv', index_col=0)
+    # total_data =   pd.read_csv('../ncov_cluster/2021-01-14_total_data.tsv', index_col=0)
 
-    # Need to run `clusterDynamics.py` on 'S222' before doing this
-    # (can now run without printing files)
     width = 1
     smoothing = np.exp(-np.arange(-10,11)**2/2/width**2)
     smoothing /= smoothing.sum()
