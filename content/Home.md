@@ -2,6 +2,8 @@ import { HomeImages } from 'src/components/Home/HomeImages'
 
 Click on a variant button to start exploring!
 
+The most frequently searched for variants are [B.1.1.7](https://covariants.org/variants/S.N501#20I/501Y.V1) (first found in GB), [B.1.351](https://covariants.org/variants/S.N501#20H/501Y.V2) (first found in SA).
+
 CoVariants provides an overview of SARS-CoV-2 variants and mutations that are of interest. Here, you can find out what mutations define a variant, what impact they might have (with links to papers and resources), where variants are found, and see the variants in Nextstrain builds!
 
 Click one of the colored buttons to look at a particular [Variant](/variants) - to read information, see graphs and the protein structure, and link out to focused Nextstrain builds.
