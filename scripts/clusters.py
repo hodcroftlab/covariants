@@ -197,12 +197,12 @@ clusters = {
 
         #The two clusters in 20G, Kamil lab asked
             #"S677P": {'snps': [23591, 21810, 29193], 'cluster_data': [],
-            #"country_info": [], 'col': "#8a8a8a", "display_name": "20G/S:677P",
+            #"country_info": [], 'col': "#8a8a8a", "display_name": "20G/S:677P-Pelican",
             #"build_name": "S.Q677P"
             #}
 
-            #"S677H": {'snps': [23592,29401], 'cluster_data': [],
-            #"country_info": [], 'col': "#db4439", "display_name": "20G/S:677H",
+            #"S677HRobin": {'snps': [23592,8082], 'cluster_data': [],
+            #"country_info": [], 'col': "#db4439", "display_name": "20G/S:677H-Robin",
             #"build_name": "S.Q677H"
             #}
 
