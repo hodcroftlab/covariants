@@ -308,7 +308,7 @@ def confirmed_vs_estimated_imports(country, roamers, country_to_iso, spain_frequ
     res = get_country_imports(roamers, case_data[country], travel_volume[country], country_to_iso[country], spain_frequency,
                               cases_by_cw_per_capita, weeks, popsizes[country])
 
-    plt.plot(res['dates'], res['introductions'], 'o-', label="travel estimate", lw=2)
+    plt.plot(res['dates'], res['introductions_total'], 'o-', label="travel estimate", lw=2)
 
     # plt.plot(res['dates'], np.array(res['introductions'])*scale_factor, 'o-', label=f"rescaled estimate ({scale_factor}x)", lw=2)
 
