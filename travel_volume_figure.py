@@ -52,9 +52,11 @@ def get_import_frequency(country, cases, frequency, weeks=None, avg_cases_per_in
 
     summer_average = np.mean([x for d,x in frequency.items() if d.month>7])
     imported_incidence = []
+    imported_incidence_total = []
     import_totals = [0]
     totals = [0]
     introductions = []
+    introductions_total = []
     dates = []
     Re_traj = [1]
     for week in weeks:
@@ -67,6 +69,7 @@ def get_import_frequency(country, cases, frequency, weeks=None, avg_cases_per_in
         travel_rate = travel_volume[country][mid_month]/popsizes[country]/30*7
 
         imported_incidence.append(avg_cases_per_intro*cases["Spain"][d]/popsizes["Spain"]*travel_rate*frequency.get(d, 0 if d.month<7 else summer_average))
+        imported_incidence_total.append(avg_cases_per_intro*cases["Spain"][d]/popsizes["Spain"]*travel_rate)
 
         # rate of change not due to imports
         Re = (cases[country][d]/popsizes[country] - imported_incidence[-1])/(cases[country][prev_week]/popsizes[country])
@@ -74,33 +77,39 @@ def get_import_frequency(country, cases, frequency, weeks=None, avg_cases_per_in
         Re_traj.append(Re)
 
         introductions.append(imported_incidence[-1]*popsizes[country]/avg_cases_per_intro)
+        introductions.append(imported_incidence_total[-1]*popsizes[country]/avg_cases_per_intro)
         import_totals.append(import_totals[-1]*Re + imported_incidence[-1])
         totals.append(cases[country][d]/popsizes[country])
 
     import_totals = np.array(import_totals)[1:]
     totals = np.array(totals)[1:]
 
-    return {"frequency":import_totals/totals, "dates":dates, "Re": Re_traj, "introductions":introductions}
+    return {"frequency":import_totals/totals, "dates":dates, "Re": Re_traj, "introductions":introductions, "introductions_total":introductions_total}
 
-def get_import_frequency_province(cases, travel_volume, traveler_incidence, popsize, weeks=None, avg_cases_per_intro=1):
+def get_import_frequency_province(cases, travel_volume, traveler_incidence, popsize, frequency, weeks=None, avg_cases_per_intro=1):
     if weeks is None:
         weeks = list(range(15,44))
 
     imported_incidence = []
+    imported_incidence_total = []
     import_totals = [0]
     totals = [0]
     introductions = []
+    introductions_total = []
     dates = []
     Re_traj = [1]
+    summer_average = np.mean([x for d,x in frequency.items() if d.month>7])
     for week in weeks:
         d = CW_to_date(week)
         prev_week = CW_to_date(week-1)
         dates.append(d)
+        EU1_freq = frequency.get(d, 0 if d.month<7 else summer_average)
 
         # here, travel volume is per week
         travel_rate = travel_volume[week]/popsize
 
-        imported_incidence.append(avg_cases_per_intro*travel_rate*traveler_incidence[week])
+        imported_incidence.append(avg_cases_per_intro*travel_rate*traveler_incidence[week]*EU1_freq)
+        imported_incidence_total.append(avg_cases_per_intro*travel_rate*traveler_incidence[week])
 
         # rate of change not due to imports
         Re = (cases[d]/popsize - imported_incidence[-1])/(cases[prev_week]/popsize)
@@ -108,13 +117,14 @@ def get_import_frequency_province(cases, travel_volume, traveler_incidence, pops
         Re_traj.append(Re)
 
         introductions.append(imported_incidence[-1]*popsize/avg_cases_per_intro)
+        introductions_total.append(imported_incidence_total[-1]*popsize/avg_cases_per_intro)
         import_totals.append(import_totals[-1]*Re + imported_incidence[-1])
         totals.append(cases[d]/popsize)
 
     import_totals = np.array(import_totals)[1:]
     totals = np.array(totals)[1:]
 
-    return {"frequency":import_totals/totals, "dates":dates, "Re": Re_traj, "introductions":introductions}
+    return {"frequency":import_totals/totals, "dates":dates, "Re": Re_traj, "introductions":introductions, "introductions_total":introductions_total}
 
 
 def get_country_imports(roamers, case_data, travel_volume, country_code, spain_frequency, cases_by_cw_per_captia, weeks, popsize):
@@ -122,10 +132,10 @@ def get_country_imports(roamers, case_data, travel_volume, country_code, spain_f
     roaming_date_points = [datetime.strptime(f"2020-W{week}-1", '%G-W%V-%u') for week in roam_time_series.keys()]
     roam_scale_factor = 1.0 #get_roaming_scale_factor(roamers, travel_volume, country_code)
     travel = {k:v*roam_scale_factor for k,v in roam_time_series.items()}
-    traveler_incidence = {cw: spain_frequency_by_week.get(cw, 0)*get_roamer_province_average(cases_by_cw_per_captia[cw], roamers, cw, country_code)
+    traveler_incidence = {cw: get_roamer_province_average(cases_by_cw_per_captia[cw], roamers, cw, country_code)
                           for cw in weeks}
 
-    return get_import_frequency_province(case_data, travel, traveler_incidence, popsize, weeks=weeks)
+    return get_import_frequency_province(case_data, travel, traveler_incidence, popsize, spain_frequency, weeks=weeks)
 
 
 def get_roaming_scale_factor(roamers, travel_volume, country):
@@ -307,7 +317,8 @@ def confirmed_vs_estimated_imports(country, roamers, country_to_iso, spain_frequ
         plt.plot([CW_to_date(x) for x in reported_imports.CW], reported_imports.cases*scale_factor_reported, 'o-', label="adjusted rep. cases", lw=2)
 
     print("Summer imports:", np.sum([x.cases for i,x in reported_imports.iterrows() if x.CW in summer]))
-    print("Summer estimate:", np.sum([i for d,i in zip(res['dates'], res['introductions']) if date_to_CW(d) in summer]))
+    print("Summer estimate EU1:", np.sum([i for d,i in zip(res['dates'], res['introductions']) if date_to_CW(d) in summer]))
+    print("Summer estimate total:", np.sum([i for d,i in zip(res['dates'], res['introductions_total']) if date_to_CW(d) in summer]))
 
     plt.legend(loc=2)
     plt.ylabel('introductions')
