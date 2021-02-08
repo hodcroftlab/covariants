@@ -201,8 +201,19 @@ clusters = {
             #"build_name": "S.Q677P"
             #}
 
+            #THIS IS TWO LINEAGES SEE BELOW
             #"S677HRobin": {'snps': [23592,8082], 'cluster_data': [],
             #"country_info": [], 'col': "#db4439", "display_name": "20G/S:677H-Robin",
+            #"build_name": "S.Q677H"
+            #}
+
+            #"S677HRobin1": {'snps': [23592,29401], 'cluster_data': [],
+            #"country_info": [], 'col': "#db4439", "display_name": "20G/S:677H-Robin1",
+            #"build_name": "S.Q677H"
+            #}
+
+            #"S677HRobin2": {'snps': [23592,7347], 'cluster_data': [],
+            #"country_info": [], 'col': "#db4439", "display_name": "20G/S:677H-Robin2",
             #"build_name": "S.Q677H"
             #}
 
