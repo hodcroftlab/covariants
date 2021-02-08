@@ -197,14 +197,26 @@ clusters = {
 
         #The two clusters in 20G, Kamil lab asked
             #"S677P": {'snps': [23591, 21810, 29193], 'cluster_data': [],
-            #"country_info": [], 'col': "#8a8a8a", "display_name": "20G/S:677P",
+            #"country_info": [], 'col': "#8a8a8a", "display_name": "20G/S:677P-Pelican",
             #"build_name": "S.Q677P"
             #}
 
-            #"S677H": {'snps': [23592,29401], 'cluster_data': [],
-            #"country_info": [], 'col': "#db4439", "display_name": "20G/S:677H",
+            #THIS IS TWO LINEAGES SEE BELOW
+            #"S677HRobin": {'snps': [23592,8082], 'cluster_data': [],
+            #"country_info": [], 'col': "#db4439", "display_name": "20G/S:677H-Robin",
             #"build_name": "S.Q677H"
             #}
+
+            #"S677HRobin1": {'snps': [23592,29401], 'cluster_data': [],
+            #"country_info": [], 'col': "#db4439", "display_name": "20G/S:677H-Robin1",
+            #"build_name": "S.Q677H"
+            #}
+
+            #"S677HRobin2": {'snps': [23592,7347], 'cluster_data': [],
+            #"country_info": [], 'col': "#db4439", "display_name": "20G/S:677H-Robin2",
+            #"build_name": "S.Q677H"
+            #}
+
             #here one to generate for the nextstrain build
             #"S677": {'snps': [23592], 'cluster_data': [], 'snps2': [23591],
             #"country_info": [], 'col': "#db4439", "display_name": "20G/S:Q677",
@@ -232,6 +244,7 @@ clusters = {
             #"S263": {'snps': [22348], 'cluster_data': [], "build_name": "S.A263S", "display_name": "S:A263S"}
             #"S484": {'snps': [23011], 'cluster_data': [], "build_name": "S.E484", "display_name": "S:E484"}
 
+            #"20D-S452": {'snps': [22916,3301,9692], 'cluster_data': [], "build_name": "20D.S.452", "display_name": "20D/S:L452R"}
 
             #"N220": {'snps': [28931], 'exclude_snps': [22226], 'cluster_data': [], "build_name": "N.A220V", "display_name": "N:A220V"}
             #"ORFTEN30": {'snps': [29644], 'exclude_snps': [22226], 'cluster_data': [], "build_name": "ORF10.V30", "display_name": "ORF10:V30"}

@@ -23,7 +23,8 @@ country_list =[
 'Luxembourg',
 'Lithuania',
 'Iceland',
-'Czech Republic'
+'Czech Republic',
+'Israel'
 ]
 
 colors = [
@@ -49,7 +50,8 @@ colors = [
 '#c2c2a3',
 '#ff66ff',
 '#0000ff',
-'#006600'
+'#006600',
+'#cc00cc'
 ]
 
 #separate out Scotland, England, NI, Wales...
@@ -89,7 +91,6 @@ popsizes = {
 }
 
 country_list_2 = [
-    "Israel",
     "Brazil",
     "Slovakia",
     "Hungary",
@@ -98,7 +99,11 @@ country_list_2 = [
     "United Arab Emirates",
     "Finland",
     "Jordan",
-    "Poland"
+    "Poland",
+    "Romania",
+    "Canada",
+    "India",
+    "Egypt"
 ]
 
 country_styles_2 = {

@@ -45,7 +45,9 @@ bad_seqs = {
     'USA/MI-MDHHS-SC23078/2021'   : "2021-02-15", #future date
     'USA/MI-MDHHS-SC23104/2021'   : "2021-12-02", #future date
     'Poland/Pomorskie_MWB_51/2021'   : "2022-01-24", # future date
-    'Romania/Bucuresti408383/2021'  : "2021-12-31" # future date
+    'Romania/Bucuresti408383/2021'  : "2021-12-31", # future date
+    'Germany/SL-SU-10429159/2020'   :   "2020-03-04", # divergence 30+, date March! Overdiverged
+    'USA/CA-LACPHL-AF00294/2020'    :   "2020-01-18" #suspect should be 2021 instead - overdiverged
     #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
     #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
 }
