@@ -244,6 +244,7 @@ clusters = {
             #"S263": {'snps': [22348], 'cluster_data': [], "build_name": "S.A263S", "display_name": "S:A263S"}
             #"S484": {'snps': [23011], 'cluster_data': [], "build_name": "S.E484", "display_name": "S:E484"}
 
+            #"20D-S452": {'snps': [22916,3301], 'cluster_data': [], "build_name": "20D.S.452", "display_name": "20D/S:L452R"}
 
             #"N220": {'snps': [28931], 'exclude_snps': [22226], 'cluster_data': [], "build_name": "N.A220V", "display_name": "N:A220V"}
             #"ORFTEN30": {'snps': [29644], 'exclude_snps': [22226], 'cluster_data': [], "build_name": "ORF10.V30", "display_name": "ORF10:V30"}
