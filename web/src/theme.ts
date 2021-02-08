@@ -146,7 +146,7 @@ export const code = {
 export const clusters = {
   color: {
     unknown: '#aaaaaa',
-    others: '#aaaaaa',
+    others: '#cccccc',
   },
 }
 
