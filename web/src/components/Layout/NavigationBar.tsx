@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 
 import { connect } from 'react-redux'
+import gisaidLogoUrl from 'src/assets/images/gisaid_logo.png'
 import styled from 'styled-components'
 import {
+  Col,
   Collapse,
   Nav as NavBase,
   Navbar as NavbarBase,
   NavbarToggler as NavbarTogglerBase,
   NavItem as NavItemBase,
   NavLink as NavLinkBase,
+  Row,
 } from 'reactstrap'
 import classNames from 'classnames'
 import { FaGithub, FaTwitter } from 'react-icons/fa'
