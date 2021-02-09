@@ -30,7 +30,7 @@ fmt = "pdf"
 import pandas as pd
 import datetime
 import numpy as np
-import matplotlib.pyplot as 
+import matplotlib.pyplot as
 import seaborn as sns
 import json
 from shutil import copyfile
@@ -308,20 +308,16 @@ for clus in clus_to_run:
     smoothing /= smoothing.sum()
 
     def marker_size(n):
-        if n>100:
+        if n>200:
             return 150
-        elif n>30:
-            return 100
+        elif n>100:
+            return 75
+        elif n>50:
+            return 35
         elif n>10:
-            return 70
-        elif n>3:
-            return 50
-        elif n>1:
-            return 20
+            return 15
         else:
             return 5
-
-
 
     cutoff_num_seqs = 200
     hasMinNumber = []
@@ -372,7 +368,7 @@ for clus in clus_to_run:
     #These are the countries we don't plot: 'Italy', 'Netherlands', 'Belgium', 'Germany', 'Hong Kong', 'Ireland'
 
     if clus == "S222":
-        
+
         clus_display = clusters[clus]["display_name"]
         json_output[clus_display] = {}
 
@@ -434,11 +430,11 @@ for clus in clus_to_run:
             json_output[clus_display][coun] = {}
             json_output[clus_display][coun]["week"] = [datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date]
             json_output[clus_display][coun]["smoothed_total_sequences"] = [int(x) for x in total_count]
-            json_output[clus_display][coun]["smoothed_cluster_sequences"] = [int(x) for x in cluster_count] 
+            json_output[clus_display][coun]["smoothed_cluster_sequences"] = [int(x) for x in cluster_count]
 
-        for ni,n in enumerate([0,1,3,10,30,100]):
+        for ni,n in enumerate([0,10,50,100,200]):
             ax3.scatter([week_as_date[0]], [0.08+ni*0.07], s=marker_size(n+0.1), edgecolor='k', facecolor='w')
-            ax3.text(week_as_date[1], 0.06+ni*0.07, f"n>{n}" if n else "n=1")
+            ax3.text(week_as_date[1], 0.06+ni*0.07, f"n>{n}" if n else "n<=10")
             #          color=country_styles[coun]['c'], linestyle=country_styles[coun]['ls'], label=coun)
 
 
