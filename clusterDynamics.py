@@ -30,7 +30,7 @@ fmt = "pdf"
 import pandas as pd
 import datetime
 import numpy as np
-import matplotlib.pyplot as
+import matplotlib.pyplot as plt
 import seaborn as sns
 import json
 from shutil import copyfile
