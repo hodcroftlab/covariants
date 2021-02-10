@@ -827,13 +827,14 @@ def get_ordered_clusters_to_plot(clusters):
             countries_all[coun][clus] = clus_dat[coun]
 
     # how to decide what to plot?
-    min_to_plot = 40
+    min_to_plot = 50
     proposed_coun_to_plot = []
     for clus in clus_keys:
         country_inf = clusters[clus]["country_info_df"]
         proposed_coun_to_plot.extend(country_inf[country_inf.num_seqs > min_to_plot].index)
     proposed_coun_to_plot = set(proposed_coun_to_plot)
-    print(f"At min plot {min_to_plot}, there are {len(proposed_coun_to_plot)} sequences")
+    print(f"At min plot {min_to_plot}, there are {len(proposed_coun_to_plot)} countries")
+    print("EMMA REMEMBER TO CHANGE PAGE TO 50 ON NEXT RUN")
 
     total_coun_counts = {}
     #decide order
