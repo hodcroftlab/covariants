@@ -47,7 +47,8 @@ bad_seqs = {
     'Poland/Pomorskie_MWB_51/2021'   : "2022-01-24", # future date
     'Romania/Bucuresti408383/2021'  : "2021-12-31", # future date
     'Germany/SL-SU-10429159/2020'   :   "2020-03-04", # divergence 30+, date March! Overdiverged
-    'USA/CA-LACPHL-AF00294/2020'    :   "2020-01-18" #suspect should be 2021 instead - overdiverged
+    'USA/CA-LACPHL-AF00294/2020'    :   "2020-01-18", #suspect should be 2021 instead - overdiverged
+    'Mexico/ROO-InDRE_243/2020' : "2020-07-06" # very overdiverged compared to date - fits in diversity of 452 cluster!
     #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
     #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
 }
