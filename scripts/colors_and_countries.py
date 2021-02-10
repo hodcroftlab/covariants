@@ -103,7 +103,9 @@ country_list_2 = [
     "Romania",
     "Canada",
     "India",
-    "Egypt"
+    "Egypt",
+    "Ghana",
+    "Slovenia"
 ]
 
 country_styles_2 = {
