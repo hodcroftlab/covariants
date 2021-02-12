@@ -15,7 +15,7 @@ export const AMINOACID_NAMES: Record<string, string> = {
   'N': 'Asparagine',
   'P': 'Proline',
   'Q': 'Glutamine',
-  'R': '#Arginine',
+  'R': 'Arginine',
   'S': 'Serine',
   'T': 'Threonine',
   'W': 'Tryptophan',
