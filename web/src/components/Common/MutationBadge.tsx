@@ -178,7 +178,7 @@ export function AminoacidMutationBadge({ mutation }: AminoacidMutationBadgeProps
 
   const { gene, left, pos, right } = mutationObj
   const wt_aa = left ? AMINOACID_NAMES[left] : ''
-  const variant_aa = right ? AMINOACID_NAMES[right] : ''
+  const variant_aa = right ? AMINOACID_NAMES[right] : 'one of several alternatives'
 
   let gene_name: string
   if (!gene) {
