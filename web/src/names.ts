@@ -26,12 +26,14 @@ export const AMINOACID_NAMES: Record<string, string> = {
   '-': 'deleted',
 }
 export const NUCELOTIDE_NAMES: Record<string, string> = {
-  A: 'Adenine',
-  C: 'Cytosine',
-  G: 'Guanine',
-  T: 'Thymine',
-  U: 'Uracil',
+  'A': 'Adenine',
+  'C': 'Cytosine',
+  'G': 'Guanine',
+  'T': 'Thymine',
+  'U': 'Uracil',
+  '-': 'Deleted',
 }
+
 export const GENE_NAMES: Record<string, string> = {
   E: 'Envelope protein',
   M: 'Membrane protein',
