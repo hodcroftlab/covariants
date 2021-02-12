@@ -2,6 +2,7 @@
 import React from 'react'
 
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
+import { Link } from 'src/components/Link/Link'
 import { PlotCardTitle } from 'src/components/Common/PlotCardTitle'
 import {
   ClusterDistributionDatum,
@@ -19,11 +20,13 @@ export function ClusterDistributionPlotCard({
   distribution,
   country_names,
 }: ClusterDistributionPlotCardProps) {
+  const url = `/variants/${cluster.replace(':', '.')}`
+
   return (
     <Card className="m-2">
       <CardHeader className="d-flex flex-sm-column">
         <PlotCardTitle>
-          <span>{cluster}</span>
+          <Link href={url}>{cluster}</Link>
         </PlotCardTitle>
       </CardHeader>
 
