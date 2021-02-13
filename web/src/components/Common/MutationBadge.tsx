@@ -159,9 +159,9 @@ export function NucleotideMutationBadge({ mutation }: NucleotideMutationBadgePro
   }
 
   const { left, right, pos } = mutationObj
-  const wt_base = left ? NUCELOTIDE_NAMES[left] : ''
-  const variant_base = right ? NUCELOTIDE_NAMES[right] : ''
-  const tooltip = `Mutation of nucleotide ${pos} from ${wt_base} to ${variant_base}`
+  const wtBase = get(NUCELOTIDE_NAMES, left ?? '', '')
+  const variantBase = get(NUCELOTIDE_NAMES, right ?? '', '')
+  const tooltip = `Mutation of nucleotide ${pos} from ${wtBase} to ${variantBase}`
 
   return <MutationBadge mutation={mutationObj} colors={NUCLEOTIDE_COLORS} tooltip={tooltip} />
 }
@@ -177,19 +177,12 @@ export function AminoacidMutationBadge({ mutation }: AminoacidMutationBadgeProps
   }
 
   const { gene, left, pos, right } = mutationObj
-  const wt_aa = left ? AMINOACID_NAMES[left] : ''
-  const variant_aa = right ? AMINOACID_NAMES[right] : 'one of several alternatives'
+  const wtAA = get(AMINOACID_NAMES, left ?? '', '')
+  const variantAA = right ? get(AMINOACID_NAMES, right, '') : 'one of several alternatives'
 
-  let gene_name: string
-  if (!gene) {
-    gene_name = ''
-  } else if (Object.keys(GENE_NAMES).includes(gene)) {
-    gene_name = GENE_NAMES[gene]
-  } else {
-    gene_name = gene
-  }
+  const geneName = gene ? get(GENE_NAMES, gene, gene) : ''
 
-  const tooltip = `Mutation of amino acid ${pos} in ${gene_name} from ${wt_aa} to ${variant_aa}`
+  const tooltip = `Mutation of amino acid ${pos} in ${geneName} from ${wtAA} to ${variantAA}`
 
   return <MutationBadge mutation={mutationObj} colors={AMINOACID_COLORS} tooltip={tooltip} />
 }
