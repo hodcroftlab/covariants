@@ -10,23 +10,25 @@ import {
 } from 'src/components/ClusterDistribution/ClusterDistributionPlot'
 
 export interface ClusterDistributionPlotCardProps {
-  cluster: string
+  clusterBuildName: string
+  clusterDisplayName: string
   distribution: ClusterDistributionDatum[]
   country_names: string[]
 }
 
 export function ClusterDistributionPlotCard({
-  cluster,
+  clusterBuildName,
+  clusterDisplayName,
   distribution,
   country_names,
 }: ClusterDistributionPlotCardProps) {
-  const url = `/variants/${cluster.replace(':', '.')}`
+  const url = `/variants/${clusterBuildName}`
 
   return (
     <Card className="m-2">
       <CardHeader className="d-flex flex-sm-column">
         <PlotCardTitle>
-          <Link href={url}>{cluster}</Link>
+          <Link href={url}>{clusterDisplayName}</Link>
         </PlotCardTitle>
       </CardHeader>
 

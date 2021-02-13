@@ -16,6 +16,7 @@ import { shouldPlotCountry } from 'src/io/getCountryColor'
 
 import perClusterData from 'src/../data/perClusterData.json'
 import PerClusterIntro from 'src/../../content/PerClusterIntro.md'
+import { getClusters } from 'src/io/getClusters'
 import { ClusterDistributionDatum } from './ClusterDistributionPlot'
 
 const COUNTRIES = copy(perClusterData.country_names).sort()
@@ -27,6 +28,8 @@ const CLUSTERS = perClusterData.distributions.map(({ cluster }) => cluster).sort
 const CLUSTERS_STATE = CLUSTERS.reduce((result, cluster) => {
   return { ...result, [cluster]: { enabled: true } }
 }, {})
+
+const CLUSTER_BUILD_NAMES: Map<string, string> = new Map(getClusters().map((c) => [c.display_name, c.build_name]))
 
 export interface ClusterDistribution {
   cluster: string
@@ -88,7 +91,8 @@ export function ClusterDistributionPage() {
         <ColCustom key={cluster} md={12} lg={6} xl={6} xxl={4}>
           <ClusterDistributionPlotCard
             key={cluster}
-            cluster={cluster}
+            clusterBuildName={CLUSTER_BUILD_NAMES.get(cluster) || ''}
+            clusterDisplayName={cluster}
             distribution={distribution}
             country_names={enabledCountries}
           />
