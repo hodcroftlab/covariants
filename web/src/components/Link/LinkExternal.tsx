@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { GoLinkExternal } from 'react-icons/go'
 
 const LinkExternalIconWrapper = styled.span<{ $color?: string }>`
-  margin-right: 0.25rem;
   color: ${(props) => props.$color ?? props.theme.link.dim.iconColor};
 `
 
