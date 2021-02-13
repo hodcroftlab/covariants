@@ -2,12 +2,14 @@
 import React from 'react'
 
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
+import styled from 'styled-components'
 import { Link } from 'src/components/Link/Link'
 import { PlotCardTitle } from 'src/components/Common/PlotCardTitle'
 import {
   ClusterDistributionDatum,
   ClusterDistributionPlot,
 } from 'src/components/ClusterDistribution/ClusterDistributionPlot'
+import { gray700 } from '../../theme'
 
 export interface ClusterDistributionPlotCardProps {
   clusterBuildName: string
@@ -15,6 +17,10 @@ export interface ClusterDistributionPlotCardProps {
   distribution: ClusterDistributionDatum[]
   country_names: string[]
 }
+
+const GreyLink = styled.a`
+  color: ${gray700};
+`
 
 export function ClusterDistributionPlotCard({
   clusterBuildName,
@@ -28,7 +34,9 @@ export function ClusterDistributionPlotCard({
     <Card className="m-2">
       <CardHeader className="d-flex flex-sm-column">
         <PlotCardTitle>
-          <Link href={url}>{clusterDisplayName}</Link>
+          <Link href={url}>
+            <GreyLink>{clusterDisplayName}</GreyLink>
+          </Link>
         </PlotCardTitle>
       </CardHeader>
 
