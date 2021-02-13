@@ -44,8 +44,8 @@ export function LinkExternal({
   return (
     <>
       <A target="_blank" rel="noopener noreferrer" href={href} $color={$color} {...restProps}>
+        <ContentWrapper>{children}</ContentWrapper>{' '}
         {Icon && <LinkExternalIconWrapper $color={$iconColor}>{Icon}</LinkExternalIconWrapper>}
-        <ContentWrapper>{children}</ContentWrapper>
       </A>
     </>
   )
