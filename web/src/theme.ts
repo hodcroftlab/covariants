@@ -116,6 +116,9 @@ export const plot = {
   aspectRatio: 1.88,
   margin: { left: -20, top: 5, bottom: 5, right: 10 },
   tickStyle: { fontSize: 12 },
+  cartesianGrid: {
+    stroke: '#2222',
+  },
 }
 
 export const link = {
@@ -140,6 +143,13 @@ export const code = {
   },
 }
 
+export const clusters = {
+  color: {
+    unknown: '#aaaaaa',
+    others: '#cccccc',
+  },
+}
+
 export const theme = {
   ...basicColors,
   ...themeColors,
@@ -151,6 +161,7 @@ export const theme = {
   plot,
   iframe,
   code,
+  clusters,
 }
 
 export type Theme = typeof theme
