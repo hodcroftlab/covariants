@@ -116,6 +116,22 @@ export const plot = {
   aspectRatio: 1.88,
   margin: { left: -20, top: 5, bottom: 5, right: 10 },
   tickStyle: { fontSize: 12 },
+  tooltip: {
+    background: white,
+    table: {
+      backgroundEven: gray100,
+      backgroundOdd: gray200,
+    },
+  },
+  country: {
+    legend: {
+      lineIcon: {
+        thickness: 2,
+        width: 20,
+        height: 20,
+      },
+    },
+  },
   cartesianGrid: {
     stroke: '#2222',
   },
