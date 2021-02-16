@@ -7,7 +7,7 @@ import { DateTime } from 'luxon'
 
 import { theme } from 'src/theme'
 import { timeDomain } from 'src/io/getParams'
-import { getClusterColor } from 'src/io/getClusters'
+import { CLUSTER_NAME_OTHERS, getClusterColor } from 'src/io/getClusters'
 import { formatDate, formatProportion } from 'src/helpers/format'
 
 import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
@@ -63,7 +63,7 @@ export function CountryDistributionPlotComponent({ cluster_names, distribution }
               allowEscapeViewBox={{ x: false, y: true }}
               offset={50}
             />
-            {cluster_names.map((cluster, i) => (
+            {cluster_names.map((cluster) => (
               <Area
                 key={cluster}
                 type="monotone"
@@ -75,9 +75,16 @@ export function CountryDistributionPlotComponent({ cluster_names, distribution }
               />
             ))}
 
-            <Area type="monotone" dataKey="others" stackId="1" stroke="none" fill="none" isAnimationActive={false} />
+            <Area
+              type="monotone"
+              dataKey={CLUSTER_NAME_OTHERS}
+              stackId="1"
+              stroke="none"
+              fill={theme.clusters.color.others}
+              isAnimationActive={false}
+            />
 
-            <CartesianGrid stroke="#2222" />
+            <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
           </AreaChart>
         </ResponsiveContainer>
       </ChartContainerInner>

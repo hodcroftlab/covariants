@@ -132,6 +132,9 @@ export const plot = {
       },
     },
   },
+  cartesianGrid: {
+    stroke: '#2222',
+  },
 }
 
 export const link = {
@@ -156,6 +159,13 @@ export const code = {
   },
 }
 
+export const clusters = {
+  color: {
+    unknown: '#aaaaaa',
+    others: '#cccccc',
+  },
+}
+
 export const theme = {
   ...basicColors,
   ...themeColors,
@@ -167,6 +177,7 @@ export const theme = {
   plot,
   iframe,
   code,
+  clusters,
 }
 
 export type Theme = typeof theme
