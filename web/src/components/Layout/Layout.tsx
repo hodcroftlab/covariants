@@ -72,7 +72,7 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
 
         <Row noGutters className="ml-3 mt-n1 d-none d-md-block">
           <Col className="d-flex">
-            <GisaidText className="d-flex mr-auto">
+            <GisaidText className="d-flex ml-auto">
               <span className="my-1 mr-1">{'Enabled by data from '}</span>
               <LinkExternal href="https://www.gisaid.org/" icon={null}>
                 <img className="my-1" src={gisaidLogoUrl} alt="GISAID logo" height={18} />
