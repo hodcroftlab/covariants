@@ -15,5 +15,6 @@
 | Belarus      | 2020-10-11  |          2 | 2020-10-21 |
 | Slovenia     | 2020-10-26  |          1 | 2020-10-26 |
 | Egypt        | 2021-01-09  |          1 | 2021-01-09 |
+| Poland       | 2021-01-27  |          2 | 2021-01-27 |
 
 ![Overall trends S.Y453F](/overall_trends_figures/overall_trends_S.Y453F.png)
