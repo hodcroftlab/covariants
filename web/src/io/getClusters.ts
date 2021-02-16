@@ -1,9 +1,10 @@
 /* eslint-disable camelcase */
 import type { Mutation } from 'src/types'
+import { theme } from 'src/theme'
 
 import clustersJson from 'src/../data/clusters.json'
 
-const CLUSTER_COLOR_UNKNOWN = '#555555' as const
+export const CLUSTER_NAME_OTHERS = 'others' as const
 
 export type ClusterDatum = {
   build_name: string
@@ -37,7 +38,11 @@ export function getClusterBuildNames() {
 }
 
 export function getClusterColor(clusterName: string) {
+  if (clusterName === CLUSTER_NAME_OTHERS) {
+    return theme.clusters.color.others
+  }
+
   const clusters = getClusters()
   const found = clusters.find(({ display_name }) => display_name === clusterName)
-  return found ? found.col : CLUSTER_COLOR_UNKNOWN
+  return found ? found.col : theme.clusters.color.unknown
 }
