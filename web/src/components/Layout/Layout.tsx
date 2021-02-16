@@ -1,10 +1,11 @@
 import React, { PropsWithChildren } from 'react'
-import { Container as ContainerBase, Row, Col } from 'reactstrap'
-import gisaidLogoUrl from 'src/assets/images/gisaid_logo.png'
-import { LinkExternal } from 'src/components/Link/LinkExternal'
 
 import styled from 'styled-components'
+import { Container as ContainerBase, Row, Col } from 'reactstrap'
 
+import { ReactComponent as GisaidLogoBase } from 'src/assets/images/GISAID_logo.svg'
+
+import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { NavigationBar } from './NavigationBar'
 import { FooterContent } from './Footer'
 
@@ -53,7 +54,11 @@ const FooterCol = styled(Col)`
 `
 
 const GisaidText = styled.small`
-  font-size: 0.75rem;
+  font-size: 0.9rem;
+`
+
+const GisaidLogo = styled(GisaidLogoBase)`
+  margin-bottom: 4px;
 `
 
 export interface LayoutProps {
@@ -73,9 +78,9 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
         <Row noGutters className="ml-3 mt-n1 d-none d-md-block">
           <Col className="d-flex">
             <GisaidText className="d-flex ml-auto">
-              <span className="my-1 mr-1">{'Enabled by data from '}</span>
+              <span className="mr-1">{'Enabled by data from '}</span>
               <LinkExternal href="https://www.gisaid.org/" icon={null}>
-                <img className="my-1" src={gisaidLogoUrl} alt="GISAID logo" height={18} />
+                <GisaidLogo height={20} />
               </LinkExternal>
             </GisaidText>
           </Col>
