@@ -40,6 +40,16 @@ export function DistributionSidebar({
           setCollapsed={setCountriesCollapsed}
         />
       ),
+      countriesWithIcons: countries && (
+        <CountryFilters
+          key="country-filters"
+          withIcons
+          countries={countries}
+          onFilterChange={onCountryFilterChange}
+          collapsed={countriesCollapsed}
+          setCollapsed={setCountriesCollapsed}
+        />
+      ),
       clusters: clusters && (
         <ClusterFilters
           key="cluster-filters"
