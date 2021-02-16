@@ -456,12 +456,17 @@ for clus in clus_to_run:
             fh.write("\n\n")
             fh.write(f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)")
 
+    if print_acks:
+        acknowledgement_table = cluster_meta.loc[:,['strain', 'gisaid_epi_isl', 'originating_lab', 'submitting_lab', 'authors']]
+        acknowledgement_table.to_csv(f'{acknowledgement_folder}{clus}_acknowledgement_table.tsv', sep="\t")
 
 
 
 ######################################################################################################
 ##################################
 #### PREPARING FOR OF PLOTTING
+
+min_data_week = (2020,18) #20)
 
 for clus in clus_to_run:
     print(f"\nPreparing to plot cluster {clus}\n")
@@ -529,7 +534,10 @@ for clus in clus_to_run:
 
         #temp_meta['calendar_week'] = temp_meta['date_formatted'].apply(lambda x: x.isocalendar()[1])
         temp_meta['calendar_week'] = temp_meta['date_formatted'].apply(lambda x: (x.isocalendar()[0], x.isocalendar()[1]))
-        temp_meta = temp_meta[temp_meta['calendar_week']>=(2020,20)]
+        temp_meta = temp_meta[temp_meta['calendar_week']>=min_data_week]
+
+        #if print_acks:
+        #    acknowledgement_table = temp_meta.loc[:,['strain', 'gisaid_epi_isl', 'originating_lab', 'submitting_lab', 'authors']]
 
         #date_list = temp_meta['date'].apply(lambda x:datetime.datetime.strptime(x, "%Y-%m-%d"))
         #week_list = date_list.apply(lambda x: x.isocalendar()[1])
@@ -542,17 +550,14 @@ for clus in clus_to_run:
 
         # TWO WEEKS
         temp_meta['calendar_2week'] = temp_meta['date_formatted'].apply(lambda x: (x.isocalendar()[0], x.isocalendar()[1]//2*2))
-        temp_meta = temp_meta[temp_meta['calendar_2week']>=(2020,20)]
+        temp_meta = temp_meta[temp_meta['calendar_2week']>=min_data_week]
         week2_counts = temp_meta['calendar_2week'].value_counts().sort_index()
         counts_by_2week = week2_counts.to_dict()
         total_2week_counts[coun] = counts_by_2week
 
-        if print_acks:
-            acknowledgement_table = temp_meta.loc[:,['strain', 'gisaid_epi_isl', 'originating_lab', 'submitting_lab', 'authors']]
-
         
-    if print_acks:
-        acknowledgement_table.to_csv(f'{acknowledgement_folder}{clus}_acknowledgement_table.tsv', sep="\t")
+#    if print_acks:
+#        acknowledgement_table.to_csv(f'{acknowledgement_folder}{clus}_acknowledgement_table.tsv', sep="\t")
 
 
     # Convert into dataframe
