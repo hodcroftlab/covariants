@@ -105,7 +105,11 @@ country_list_2 = [
     "India",
     "Egypt",
     "Ghana",
-    "Slovenia"
+    "Slovenia",
+    "Latvia",
+    "Zambia",
+    "Mozambique",
+    "Nigeria"
 ]
 
 country_styles_2 = {
