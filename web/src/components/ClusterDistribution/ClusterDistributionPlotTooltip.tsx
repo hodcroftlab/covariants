@@ -1,13 +1,14 @@
 import React from 'react'
 
 import { get, sortBy, reverse, uniqBy } from 'lodash'
+import { useSelector } from 'react-redux'
 import { ColoredHorizontalLineIcon } from 'src/components/Common/ColoredHorizontalLineIcon'
 import { theme } from 'src/theme'
 import styled from 'styled-components'
 
 import type { ClusterDistributionDatum } from 'src/components/ClusterDistribution/ClusterDistributionPlot'
 import type { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
-
+import { selectPerCountryTooltipSortBy, selectPerCountryTooltipSortReversed } from 'src/state/ui/ui.selectors'
 import { formatDate, formatProportion } from 'src/helpers/format'
 import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
 
@@ -47,11 +48,12 @@ const TooltipFooter = styled.div`
 
 const TooltipTableBody = styled.tbody``
 
-export function countryNameInterp() {}
+export type ClusterDistributionPlotTooltipProps = DefaultTooltipContentProps<number, string>
 
-export function countryNameNormal() {}
+export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotTooltipProps) {
+  const perCountryTooltipSortBy = useSelector(selectPerCountryTooltipSortBy)
+  const perCountryTooltipSortReversed = useSelector(selectPerCountryTooltipSortReversed)
 
-export function ClusterDistributionPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
   const { payload } = props
   if (!payload || payload.length === 0) {
     return null
@@ -65,8 +67,12 @@ export function ClusterDistributionPlotTooltip(props: DefaultTooltipContentProps
   // @ts-ignore
   const week = formatDate(data?.week)
 
-  let payloadSorted = sortBy(payload, 'value')
-  payloadSorted = reverse(payloadSorted)
+  let payloadSorted = sortBy(payload, perCountryTooltipSortBy === 'country' ? 'name' : 'value')
+
+  if (perCountryTooltipSortReversed) {
+    payloadSorted = reverse(payloadSorted)
+  }
+
   const payloadUnique = uniqBy(payloadSorted, (payload) => payload.name)
 
   return (
