@@ -20,7 +20,7 @@ nvm use
 then start the development server with:
 ```
 yarn dev
-``
+```
 
 for Windows, (without Linux Subsystem), try:
 ```

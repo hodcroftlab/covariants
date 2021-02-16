@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { GoLinkExternal } from 'react-icons/go'
 
 const LinkExternalIconWrapper = styled.span<{ $color?: string }>`
-  margin-right: 0.25rem;
   color: ${(props) => props.$color ?? props.theme.link.dim.iconColor};
 `
 
@@ -44,8 +43,8 @@ export function LinkExternal({
   return (
     <>
       <A target="_blank" rel="noopener noreferrer" href={href} $color={$color} {...restProps}>
+        <ContentWrapper>{children}</ContentWrapper>{' '}
         {Icon && <LinkExternalIconWrapper $color={$iconColor}>{Icon}</LinkExternalIconWrapper>}
-        <ContentWrapper>{children}</ContentWrapper>
       </A>
     </>
   )

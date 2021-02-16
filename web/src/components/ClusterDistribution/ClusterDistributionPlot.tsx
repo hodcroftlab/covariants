@@ -7,9 +7,8 @@ import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YA
 
 import { theme } from 'src/theme'
 import { timeDomain } from 'src/io/getParams'
-import { getCountryColor, getCountryStyle } from 'src/io/getCountryColor'
+import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
 import { formatDate, formatProportion } from 'src/helpers/format'
-import { lineStyleToStrokeDashArray } from 'src/helpers/lineStyleToStrokeDashArray'
 
 import { ClusterDistributionPlotTooltip } from 'src/components/ClusterDistribution/ClusterDistributionPlotTooltip'
 import { ChartContainerInner, ChartContainerOuter } from 'src/components/Common/PlotLayout'
@@ -92,7 +91,7 @@ export function ClusterDistributionPlotComponent({ country_names, distribution }
                 dataKey={getValueOrig(country)}
                 stroke={getCountryColor(country)}
                 strokeWidth={1.5}
-                strokeDasharray={lineStyleToStrokeDashArray(getCountryStyle(country).ls)}
+                strokeDasharray={getCountryStrokeDashArray(country)}
                 dot={false}
                 isAnimationActive={false}
               />
