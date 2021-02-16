@@ -9,7 +9,7 @@ import type { ClusterDatum } from 'src/io/getClusters'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import GifPlayer from 'src/components/Common/GifPlayer'
 
-import gisaidLogoUrl from 'src/assets/images/gisaid_logo.png'
+import { ReactComponent as GisaidLogo } from 'src/assets/images/GISAID_logo.svg'
 
 const ProteinCardTitleIcon = styled(SiMoleculer)`
   margin: auto 5px;
@@ -133,7 +133,7 @@ export function ProteinCard({ cluster }: ProteinCardProps) {
               <small className="mx-auto">
                 {`Protein model for ${cluster.display_name}. Figure made via `}
                 <LinkExternal href="https://www.gisaid.org/" icon={null}>
-                  <img className="my-auto" src={gisaidLogoUrl} alt="GISAID logo" height={18} />
+                  <GisaidLogo className="my-auto" height={18} />
                 </LinkExternal>
               </small>
             </figcaption>
