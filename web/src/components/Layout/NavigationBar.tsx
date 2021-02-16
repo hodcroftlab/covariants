@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { AcknowledgementsButton } from 'src/components/Layout/AcknowledgementsButton'
 import styled from 'styled-components'
 import {
-  Button,
   Collapse,
   Nav as NavBase,
   Navbar as NavbarBase,
