@@ -1,12 +1,15 @@
-/* eslint-disable camelcase */
 import React, { useCallback, useMemo, useState } from 'react'
 
 import copy from 'fast-copy'
 import { pickBy } from 'lodash'
-import { Col, Row } from 'reactstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { Card, CardBody, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
+import styled from 'styled-components'
 
 import { ClusterDistributionPlotCard } from 'src/components/ClusterDistribution/ClusterDistributionPlotCard'
 import { ColCustom } from 'src/components/Common/ColCustom'
+import { Dropdown as DropdownBase } from 'src/components/Common/Dropdown'
+import { stringToOption } from 'src/components/Common/DropdownOption'
 import { Editable } from 'src/components/Common/Editable'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 import { ClusterState, CountryState } from 'src/components/CountryDistribution/CountryDistributionPage'
@@ -16,7 +19,14 @@ import { shouldPlotCountry } from 'src/io/getCountryColor'
 
 import perClusterData from 'src/../data/perClusterData.json'
 import PerClusterIntro from 'src/../../content/PerClusterIntro.md'
+import { setPerCountryTooltipSortBy, setPerCountryTooltipSortReversed } from 'src/state/ui/ui.actions'
+import { PerCountryTooltipSortBy } from 'src/state/ui/ui.reducer'
+import { selectPerCountryTooltipSortBy, selectPerCountryTooltipSortReversed } from 'src/state/ui/ui.selectors'
 import { ClusterDistributionDatum } from './ClusterDistributionPlot'
+
+const Dropdown = styled(DropdownBase)`
+  min-width: 130px;
+`
 
 const COUNTRIES = copy(perClusterData.country_names).sort()
 const COUNTRIES_STATE = COUNTRIES.reduce((result, country) => {
@@ -31,11 +41,6 @@ const CLUSTERS_STATE = CLUSTERS.reduce((result, cluster) => {
 export interface ClusterDistribution {
   cluster: string
   distribution: ClusterDistributionDatum[]
-}
-
-export interface ClusterDistributionJson {
-  country_names: string[]
-  distributions: ClusterDistribution[]
 }
 
 export function filterClusters(clusters: ClusterState, clusterDistrubutions: ClusterDistribution[]) {
@@ -73,7 +78,70 @@ export function filterCountries(countries: CountryState, withClustersFiltered: C
 const distributions: ClusterDistribution[] = perClusterData.distributions
 const enabledFilters = ['countries', 'clusters']
 
+export interface SortByDropdownProps {
+  perCountryTooltipSortBy: PerCountryTooltipSortBy
+  onSortByChange(perCountryTooltipSortBy: PerCountryTooltipSortBy): void
+}
+
+const sortByOptions = Object.entries(PerCountryTooltipSortBy).map(([key, value]) => ({ value, label: key }))
+
+export function SortByDropdown({ perCountryTooltipSortBy, onSortByChange }: SortByDropdownProps) {
+  const handleSortByChange = useCallback(
+    ({ value }) => onSortByChange(PerCountryTooltipSortBy[value as keyof typeof PerCountryTooltipSortBy]),
+    [onSortByChange],
+  )
+
+  return (
+    <FormGroup check inline>
+      <Label htmlFor="per-variant-sort-by">
+        <span className="mr-2">{'Tooltip sort by:'}</span>
+        <Dropdown
+          identifier="per-variant-sort-by"
+          options={sortByOptions}
+          value={stringToOption(perCountryTooltipSortBy)}
+          onChange={handleSortByChange}
+          isSearchable={false}
+        />
+      </Label>
+    </FormGroup>
+  )
+}
+
+export interface SortReverseCheckboxProps {
+  reverse: boolean
+  setReverse(reverse: boolean): void
+}
+
+export function SortReverseCheckbox({ reverse, setReverse }: SortReverseCheckboxProps) {
+  const onChange = useCallback(() => setReverse(!reverse), [setReverse, reverse])
+
+  return (
+    <FormGroup check inline>
+      <Label htmlFor="per-variant-sort-reverse" check>
+        <Input id="per-variant-sort-reverse" type="checkbox" checked={reverse} onChange={onChange} />
+        <span>{'Reversed'}</span>
+      </Label>
+    </FormGroup>
+  )
+}
+
 export function ClusterDistributionPage() {
+  const perCountryTooltipSortBy = useSelector(selectPerCountryTooltipSortBy)
+  const perCountryTooltipSortReversed = useSelector(selectPerCountryTooltipSortReversed)
+
+  const dispatch = useDispatch()
+  const setSortBy = useCallback(
+    (perCountryTooltipSortBy: PerCountryTooltipSortBy) =>
+      dispatch(setPerCountryTooltipSortBy({ perCountryTooltipSortBy })),
+    [dispatch],
+  )
+
+  const setSortReversed = useCallback(
+    (perCountryTooltipSortReversed: boolean) =>
+      dispatch(setPerCountryTooltipSortReversed({ perCountryTooltipSortReversed })),
+    [dispatch],
+  )
+
   const [clusters, setClusters] = useState<ClusterState>(CLUSTERS_STATE)
   const [countries, setCountries] = useState<CountryState>(COUNTRIES_STATE)
 
@@ -145,6 +213,22 @@ export function ClusterDistributionPage() {
               </SidebarFlex>
 
               <MainFlex>
+                <Row noGutters>
+                  <Col>
+                    <Card className="m-2">
+                      <CardBody className="px-3 py-2">
+                        <Form inline>
+                          <SortByDropdown
+                            perCountryTooltipSortBy={perCountryTooltipSortBy}
+                            onSortByChange={setSortBy}
+                          />
+                          <SortReverseCheckbox reverse={perCountryTooltipSortReversed} setReverse={setSortReversed} />
+                        </Form>
+                      </CardBody>
+                    </Card>
+                  </Col>
+                </Row>
+
                 <Row noGutters>
                   <Col>
                     <Row noGutters>{clusterDistributionComponents}</Row>
