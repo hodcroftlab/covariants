@@ -69,7 +69,12 @@ export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotToo
 
   let payloadSorted = sortBy(payload, perCountryTooltipSortBy === 'country' ? 'name' : 'value')
 
-  if (perCountryTooltipSortReversed) {
+  // sortBy sorts in ascending order, but if sorting by frequency the natural/non-reversed order is descending
+
+  if (
+    (perCountryTooltipSortBy !== 'frequency' && perCountryTooltipSortReversed) ||
+    (perCountryTooltipSortBy === 'frequency' && !perCountryTooltipSortReversed)
+  ) {
     payloadSorted = reverse(payloadSorted)
   }
 
