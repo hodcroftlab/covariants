@@ -31,7 +31,7 @@ export interface ClusterDistributionDatum {
 export interface ClusterDistributionPlotProps {
   country_names: string[]
   distribution: ClusterDistributionDatum[]
-  selectedCountry: string
+  selectedCountry?: string
 }
 
 export function ClusterDistributionPlotComponent({
