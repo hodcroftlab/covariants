@@ -9,7 +9,6 @@ import {
   ClusterDistributionDatum,
   ClusterDistributionPlot,
 } from 'src/components/ClusterDistribution/ClusterDistributionPlot'
-import { gray700 } from '../../theme'
 
 export interface ClusterDistributionPlotCardProps {
   clusterBuildName: string
@@ -18,8 +17,8 @@ export interface ClusterDistributionPlotCardProps {
   country_names: string[]
 }
 
-const GreyLink = styled.a`
-  color: ${gray700};
+const GreyLink = styled(Link)`
+  color: ${(props) => props.theme.gray700};
 `
 
 export function ClusterDistributionPlotCard({
@@ -34,9 +33,7 @@ export function ClusterDistributionPlotCard({
     <Card className="m-2">
       <CardHeader className="d-flex flex-sm-column">
         <PlotCardTitle>
-          <Link href={url}>
-            <GreyLink>{clusterDisplayName}</GreyLink>
-          </Link>
+          <GreyLink href={url}>{clusterDisplayName}</GreyLink>
         </PlotCardTitle>
       </CardHeader>
 
