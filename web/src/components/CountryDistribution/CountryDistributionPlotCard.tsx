@@ -14,12 +14,14 @@ export interface CountryDistributionPlotCardProps {
   country: string
   distribution: CountryDistributionDatum[]
   cluster_names: string[]
+  selectedVariant: string
 }
 
 export function CountryDistributionPlotCard({
   country,
   distribution,
   cluster_names,
+  selectedVariant,
 }: CountryDistributionPlotCardProps) {
   return (
     <Card className="m-2">
@@ -34,7 +36,11 @@ export function CountryDistributionPlotCard({
         <Col>
           <Row noGutters>
             <Col>
-              <CountryDistributionPlot distribution={distribution} cluster_names={cluster_names} />
+              <CountryDistributionPlot
+                distribution={distribution}
+                cluster_names={cluster_names}
+                selectedVariant={selectedVariant}
+              />
             </Col>
           </Row>
         </Col>

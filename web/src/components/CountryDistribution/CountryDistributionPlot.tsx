@@ -25,9 +25,14 @@ export interface CountryDistributionDatum {
 export interface CountryDistributionPlotProps {
   cluster_names: string[]
   distribution: CountryDistributionDatum[]
+  selectedVariant: string
 }
 
-export function CountryDistributionPlotComponent({ cluster_names, distribution }: CountryDistributionPlotProps) {
+export function CountryDistributionPlotComponent({
+  cluster_names,
+  distribution,
+  selectedVariant,
+}: CountryDistributionPlotProps) {
   const data = distribution.map(({ week, total_sequences, cluster_counts }) => {
     const total_cluster_sequences = Object.values(cluster_counts) // prettier-ignore
       .reduce<number>((result, count = 0) => result + (count ?? 0), 0)
@@ -72,6 +77,7 @@ export function CountryDistributionPlotComponent({ cluster_names, distribution }
                 stroke="none"
                 fill={getClusterColor(cluster)}
                 isAnimationActive={false}
+                opacity={!selectedVariant || selectedVariant === cluster ? 1.0 : 0.3}
               />
             ))}
 

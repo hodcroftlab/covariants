@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { Dispatch, SetStateAction, useCallback, useMemo } from 'react'
 
 import { CardBody as CardBodyBase, Form as FormBase, FormGroup as FormGroupBase, Input, Label } from 'reactstrap'
 import { ColoredCircle } from 'src/components/Common/ColoredCircle'
@@ -26,15 +26,42 @@ export interface CountryFilterCheckboxProps {
   enabled: boolean
   withIcons?: boolean
   onFilterChange(country: string): void
+  selectedCountry: string
+  setSelectedCountry: Dispatch<SetStateAction<string>>
 }
 
-export function CountryFilterCheckbox({ country, enabled, withIcons, onFilterChange }: CountryFilterCheckboxProps) {
+export function CountryFilterCheckbox({
+  country,
+  enabled,
+  withIcons,
+  onFilterChange,
+  selectedCountry,
+  setSelectedCountry,
+}: CountryFilterCheckboxProps) {
   const onChange = useCallback(() => onFilterChange(country), [country, onFilterChange])
 
   return (
     <FormGroup check>
-      <Label htmlFor={CSS.escape(country)} check>
-        <Input id={CSS.escape(country)} type="checkbox" checked={enabled} onChange={onChange} />
+      <Label
+        htmlFor={CSS.escape(country)}
+        check
+        onMouseOver={() => setSelectedCountry(country)}
+        onFocus={() => setSelectedCountry(country)}
+        onMouseEnter={() => setSelectedCountry(country)}
+        onMouseOut={() => setSelectedCountry('')}
+        onBlur={() => setSelectedCountry('')}
+      >
+        <Input
+          id={CSS.escape(country)}
+          type="checkbox"
+          checked={enabled}
+          onChange={onChange}
+          onMouseOver={() => setSelectedCountry(country)}
+          onFocus={() => setSelectedCountry(country)}
+          onMouseEnter={() => setSelectedCountry(country)}
+          onMouseOut={() => setSelectedCountry('')}
+          onBlur={() => setSelectedCountry('')}
+        />
         {withIcons ? (
           <ColoredCircle $color={getCountryColor(country)} $size={14} />
         ) : (
@@ -46,7 +73,9 @@ export function CountryFilterCheckbox({ country, enabled, withIcons, onFilterCha
             strokeDasharray={getCountryStrokeDashArray(country)}
           />
         )}
-        <span className="ml-2">{country}</span>
+        <span className="ml-2" style={{ fontWeight: country === selectedCountry ? 'bold' : 'normal' }}>
+          {country}
+        </span>
       </Label>
     </FormGroup>
   )
@@ -58,9 +87,19 @@ export interface CountryFiltersProps {
   withIcons?: boolean
   onFilterChange(country: string): void
   setCollapsed(collapsed: boolean): void
+  selectedCountry: string
+  setSelectedCountry: Dispatch<SetStateAction<string>>
 }
 
-export function CountryFilters({ countries, collapsed, withIcons, onFilterChange, setCollapsed }: CountryFiltersProps) {
+export function CountryFilters({
+  countries,
+  collapsed,
+  withIcons,
+  onFilterChange,
+  setCollapsed,
+  selectedCountry,
+  setSelectedCountry,
+}: CountryFiltersProps) {
   const filters = useMemo(() => Object.entries(countries), [countries])
 
   return (
@@ -74,6 +113,8 @@ export function CountryFilters({ countries, collapsed, withIcons, onFilterChange
               enabled={enabled}
               withIcons={withIcons}
               onFilterChange={onFilterChange}
+              selectedCountry={selectedCountry}
+              setSelectedCountry={setSelectedCountry}
             />
           ))}
         </Form>

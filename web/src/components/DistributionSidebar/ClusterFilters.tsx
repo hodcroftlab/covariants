@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { Dispatch, SetStateAction, useCallback, useMemo } from 'react'
 
 import { CardBody, Form, FormGroup, Input, Label } from 'reactstrap'
 
@@ -11,17 +11,30 @@ export interface ClusterFilterCheckboxProps {
   cluster: string
   enabled: boolean
   onFilterChange(cluster: string): void
+  selectedVariant?: string
+  setSelectedVariant: Dispatch<SetStateAction<string>>
 }
 
-export function ClusterFilterCheckbox({ cluster, enabled, onFilterChange }: ClusterFilterCheckboxProps) {
+export function ClusterFilterCheckbox({
+  cluster,
+  enabled,
+  onFilterChange,
+  selectedVariant,
+  setSelectedVariant,
+}: ClusterFilterCheckboxProps) {
   const onChange = useCallback(() => onFilterChange(cluster), [onFilterChange, cluster])
 
   return (
     <FormGroup key={cluster} check>
-      <Label htmlFor={CSS.escape(cluster)} check>
+      <Label
+        htmlFor={CSS.escape(cluster)}
+        onMouseOver={() => setSelectedVariant(cluster)}
+        onMouseOut={() => setSelectedVariant('')}
+        check
+      >
         <Input id={CSS.escape(cluster)} type="checkbox" checked={enabled} onChange={onChange} />
         <ColoredBox $color={getClusterColor(cluster)} $size={14} $aspect={16 / 9} />
-        <span>{cluster}</span>
+        <span style={{ fontWeight: cluster === selectedVariant ? 'bold' : 'normal' }}>{cluster}</span>
       </Label>
     </FormGroup>
   )
@@ -32,9 +45,18 @@ export interface ClusterFiltersProps {
   collapsed: boolean
   onFilterChange(cluster: string): void
   setCollapsed(collapsed: boolean): void
+  selectedVariant?: string
+  setSelectedVariant: Dispatch<SetStateAction<string>>
 }
 
-export function ClusterFilters({ clusters, collapsed, onFilterChange, setCollapsed }: ClusterFiltersProps) {
+export function ClusterFilters({
+  clusters,
+  collapsed,
+  onFilterChange,
+  setCollapsed,
+  selectedVariant,
+  setSelectedVariant,
+}: ClusterFiltersProps) {
   const filters = useMemo(() => Object.entries(clusters), [clusters])
 
   return (
@@ -42,7 +64,14 @@ export function ClusterFilters({ clusters, collapsed, onFilterChange, setCollaps
       <CardBody>
         <Form>
           {filters.map(([cluster, { enabled }]) => (
-            <ClusterFilterCheckbox key={cluster} cluster={cluster} enabled={enabled} onFilterChange={onFilterChange} />
+            <ClusterFilterCheckbox
+              key={cluster}
+              cluster={cluster}
+              enabled={enabled}
+              onFilterChange={onFilterChange}
+              selectedVariant={selectedVariant}
+              setSelectedVariant={setSelectedVariant}
+            />
           ))}
         </Form>
       </CardBody>

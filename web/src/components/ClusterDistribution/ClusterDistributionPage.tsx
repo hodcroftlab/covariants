@@ -131,6 +131,8 @@ export function SortReverseCheckbox({ reverse, setReverse }: SortReverseCheckbox
 export function ClusterDistributionPage() {
   const perCountryTooltipSortBy = useSelector(selectPerCountryTooltipSortBy)
   const perCountryTooltipSortReversed = useSelector(selectPerCountryTooltipSortReversed)
+  const [selectedCountry, setSelectedCountry] = useState<string>('')
+  const [selectedVariant, setSelectedVariant] = useState<string>('')
 
   const dispatch = useDispatch()
   const setSortBy = useCallback(
@@ -163,10 +165,11 @@ export function ClusterDistributionPage() {
             clusterDisplayName={cluster}
             distribution={distribution}
             country_names={enabledCountries}
+            selectedCountry={selectedCountry}
           />
         </ColCustom>
       )),
-    [enabledCountries, withCountriesFiltered],
+    [enabledCountries, withCountriesFiltered, selectedCountry],
   )
 
   const handleClusterCheckedChange = useCallback(
@@ -213,6 +216,10 @@ export function ClusterDistributionPage() {
                   enabledFilters={enabledFilters}
                   onClusterFilterChange={handleClusterCheckedChange}
                   onCountryFilterChange={handleCountryCheckedChange}
+                  selectedCountry={selectedCountry}
+                  setSelectedCountry={setSelectedCountry}
+                  selectedVariant={selectedVariant}
+                  setSelectedVariant={setSelectedVariant}
                 />
               </SidebarFlex>
 

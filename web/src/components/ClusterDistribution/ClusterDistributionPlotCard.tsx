@@ -15,6 +15,7 @@ export interface ClusterDistributionPlotCardProps {
   clusterDisplayName: string
   distribution: ClusterDistributionDatum[]
   country_names: string[]
+  selectedCountry: string
 }
 
 const GreyLink = styled(Link)`
@@ -26,6 +27,7 @@ export function ClusterDistributionPlotCard({
   clusterDisplayName,
   distribution,
   country_names,
+  selectedCountry,
 }: ClusterDistributionPlotCardProps) {
   const url = `/variants/${clusterBuildName}`
 
@@ -41,7 +43,11 @@ export function ClusterDistributionPlotCard({
         <Col className="p-0">
           <Row noGutters>
             <Col className="p-0">
-              <ClusterDistributionPlot distribution={distribution} country_names={country_names} />
+              <ClusterDistributionPlot
+                distribution={distribution}
+                country_names={country_names}
+                selectedCountry={selectedCountry}
+              />
             </Col>
           </Row>
         </Col>

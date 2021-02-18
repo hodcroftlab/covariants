@@ -31,9 +31,14 @@ export interface ClusterDistributionDatum {
 export interface ClusterDistributionPlotProps {
   country_names: string[]
   distribution: ClusterDistributionDatum[]
+  selectedCountry?: string
 }
 
-export function ClusterDistributionPlotComponent({ country_names, distribution }: ClusterDistributionPlotProps) {
+export function ClusterDistributionPlotComponent({
+  country_names,
+  distribution,
+  selectedCountry,
+}: ClusterDistributionPlotProps) {
   const data = distribution.map(({ week, ...rest }) => {
     const weekSec = DateTime.fromFormat(week, 'yyyy-MM-dd').toSeconds()
     return { week: weekSec, ...rest }
@@ -90,7 +95,7 @@ export function ClusterDistributionPlotComponent({ country_names, distribution }
                 name={country}
                 dataKey={getValueOrig(country)}
                 stroke={getCountryColor(country)}
-                strokeWidth={1.5}
+                strokeWidth={country === selectedCountry ? 4 : 1.5}
                 strokeDasharray={getCountryStrokeDashArray(country)}
                 dot={false}
                 isAnimationActive={false}
