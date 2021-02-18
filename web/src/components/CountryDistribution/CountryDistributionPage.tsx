@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import copy from 'fast-copy'
 
 import { pickBy } from 'lodash'
@@ -41,11 +40,6 @@ export interface CountryDistribution {
   distribution: CountryDistributionDatum[]
 }
 
-export interface CountryDistributionJson {
-  cluster_names: string[]
-  distributions: CountryDistribution[]
-}
-
 export function filterCountries(countries: CountryState, countryDistrubutions: CountryDistribution[]) {
   const enabledCountries = Object.entries(countries)
     .filter(([_0, { enabled }]) => enabled)
@@ -78,7 +72,7 @@ export function filterClusters(clusters: ClusterState, withCountriesFiltered: Co
 }
 
 const countryDistrubutions: CountryDistribution[] = perCountryData.distributions
-const enabledFilters = ['clusters', 'countries']
+const enabledFilters = ['clusters', 'countriesWithIcons']
 
 export function CountryDistributionPage() {
   const [countries, setCountries] = useState<CountryState>(COUNTRIES_STATE)
