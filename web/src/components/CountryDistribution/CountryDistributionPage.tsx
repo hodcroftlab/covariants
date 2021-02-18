@@ -78,6 +78,7 @@ export function CountryDistributionPage() {
   const [countries, setCountries] = useState<CountryState>(COUNTRIES_STATE)
   const [clusters, setClusters] = useState<ClusterState>(CLUSTERS_STATE)
   const [selectedCountry, setSelectedCountry] = useState<string>('')
+  const [selectedVariant, setSelectedVariant] = useState<string>('')
 
   const { withCountriesFiltered } = useMemo(() => filterCountries(countries, countryDistrubutions), [countries])
   const { enabledClusters, withClustersFiltered } =
@@ -92,11 +93,11 @@ export function CountryDistributionPage() {
             country={country}
             distribution={distribution}
             cluster_names={enabledClusters}
-            selectedCountry={selectedCountry}
+            selectedVariant={selectedVariant}
           />
         </ColCustom>
       )),
-    [enabledClusters, withClustersFiltered, selectedCountry],
+    [enabledClusters, withClustersFiltered, selectedVariant],
   )
 
   const handleClusterCheckedChange = useCallback(
@@ -145,6 +146,8 @@ export function CountryDistributionPage() {
                   onCountryFilterChange={handleCountryCheckedChange}
                   selectedCountry={selectedCountry}
                   setSelectedCountry={setSelectedCountry}
+                  selectedVariant={selectedVariant}
+                  setSelectedVariant={setSelectedVariant}
                 />
               </SidebarFlex>
 

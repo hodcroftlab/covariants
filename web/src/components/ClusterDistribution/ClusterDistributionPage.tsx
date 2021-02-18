@@ -129,6 +129,7 @@ export function ClusterDistributionPage() {
   const perCountryTooltipSortBy = useSelector(selectPerCountryTooltipSortBy)
   const perCountryTooltipSortReversed = useSelector(selectPerCountryTooltipSortReversed)
   const [selectedCountry, setSelectedCountry] = useState<string>('')
+  const [selectedVariant, setSelectedVariant] = useState<string>('')
 
   const dispatch = useDispatch()
   const setSortBy = useCallback(
@@ -213,6 +214,8 @@ export function ClusterDistributionPage() {
                   onCountryFilterChange={handleCountryCheckedChange}
                   selectedCountry={selectedCountry}
                   setSelectedCountry={setSelectedCountry}
+                  selectedVariant={selectedVariant}
+                  setSelectedVariant={setSelectedVariant}
                 />
               </SidebarFlex>
 

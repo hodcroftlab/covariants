@@ -17,6 +17,8 @@ export interface DistributionSidebarProps {
   onCountryFilterChange(country: string): void
   selectedCountry: string
   setSelectedCountry: Dispatch<SetStateAction<string>>
+  selectedVariant?: string
+  setSelectedVariant: Dispatch<SetStateAction<string>>
 }
 
 export function DistributionSidebar({
@@ -29,6 +31,8 @@ export function DistributionSidebar({
   onCountryFilterChange,
   selectedCountry,
   setSelectedCountry,
+  selectedVariant,
+  setSelectedVariant,
 }: DistributionSidebarProps) {
   const [clustersColapsed, setClustersCollapsed] = useState(clustersCollapsedByDefault)
   const [countriesCollapsed, setCountriesCollapsed] = useState(coutriesCollapsedByDefault)
@@ -65,6 +69,8 @@ export function DistributionSidebar({
           onFilterChange={onClusterFilterChange}
           collapsed={clustersColapsed}
           setCollapsed={setClustersCollapsed}
+          selectedVariant={selectedVariant}
+          setSelectedVariant={setSelectedVariant}
         />
       ),
     }),
@@ -77,6 +83,8 @@ export function DistributionSidebar({
       onCountryFilterChange,
       selectedCountry,
       setSelectedCountry,
+      selectedVariant,
+      setSelectedVariant,
     ],
   )
 
