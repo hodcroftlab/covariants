@@ -1,5 +1,5 @@
 import { get } from 'lodash'
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, SetStateAction, Dispatch } from 'react'
 
 import { Col, Row } from 'reactstrap'
 
@@ -15,6 +15,8 @@ export interface DistributionSidebarProps {
   enabledFilters: string[]
   onClusterFilterChange(cluster: string): void
   onCountryFilterChange(country: string): void
+  selectedCountry: string
+  setSelectedCountry: Dispatch<SetStateAction<string>>
 }
 
 export function DistributionSidebar({
@@ -25,6 +27,8 @@ export function DistributionSidebar({
   enabledFilters,
   onClusterFilterChange,
   onCountryFilterChange,
+  selectedCountry,
+  setSelectedCountry,
 }: DistributionSidebarProps) {
   const [clustersColapsed, setClustersCollapsed] = useState(clustersCollapsedByDefault)
   const [countriesCollapsed, setCountriesCollapsed] = useState(coutriesCollapsedByDefault)
@@ -38,6 +42,8 @@ export function DistributionSidebar({
           onFilterChange={onCountryFilterChange}
           collapsed={countriesCollapsed}
           setCollapsed={setCountriesCollapsed}
+          selectedCountry={selectedCountry}
+          setSelectedCountry={setSelectedCountry}
         />
       ),
       countriesWithIcons: countries && (
@@ -48,6 +54,8 @@ export function DistributionSidebar({
           onFilterChange={onCountryFilterChange}
           collapsed={countriesCollapsed}
           setCollapsed={setCountriesCollapsed}
+          selectedCountry={selectedCountry}
+          setSelectedCountry={setSelectedCountry}
         />
       ),
       clusters: clusters && (
@@ -60,7 +68,16 @@ export function DistributionSidebar({
         />
       ),
     }),
-    [clusters, clustersColapsed, countries, countriesCollapsed, onClusterFilterChange, onCountryFilterChange],
+    [
+      clusters,
+      clustersColapsed,
+      countries,
+      countriesCollapsed,
+      onClusterFilterChange,
+      onCountryFilterChange,
+      selectedCountry,
+      setSelectedCountry,
+    ],
   )
 
   return (

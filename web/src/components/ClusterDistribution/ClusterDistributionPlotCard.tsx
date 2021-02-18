@@ -12,12 +12,14 @@ export interface ClusterDistributionPlotCardProps {
   cluster: string
   distribution: ClusterDistributionDatum[]
   country_names: string[]
+  selectedCountry: string
 }
 
 export function ClusterDistributionPlotCard({
   cluster,
   distribution,
   country_names,
+  selectedCountry,
 }: ClusterDistributionPlotCardProps) {
   return (
     <Card className="m-2">
@@ -31,7 +33,11 @@ export function ClusterDistributionPlotCard({
         <Col className="p-0">
           <Row noGutters>
             <Col className="p-0">
-              <ClusterDistributionPlot distribution={distribution} country_names={country_names} />
+              <ClusterDistributionPlot
+                distribution={distribution}
+                country_names={country_names}
+                selectedCountry={selectedCountry}
+              />
             </Col>
           </Row>
         </Col>

@@ -14,6 +14,7 @@ export interface CountryDistributionPlotCardProps {
   country: string
   distribution: CountryDistributionDatum[]
   cluster_names: string[]
+  selectedCountry: string
 }
 
 export function CountryDistributionPlotCard({
