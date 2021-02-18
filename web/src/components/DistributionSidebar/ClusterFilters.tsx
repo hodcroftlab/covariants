@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react'
 
-import { CardBody, Form, FormGroup, Input, Label } from 'reactstrap'
+import { Button, CardBody, Col, Container, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 
 import { getClusterColor } from 'src/io/getClusters'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
@@ -31,20 +31,53 @@ export interface ClusterFiltersProps {
   clusters: ClusterState
   collapsed: boolean
   onFilterChange(cluster: string): void
+  onFilterSelectAll(): void
+  onFilterDeselectAll(): void
   setCollapsed(collapsed: boolean): void
 }
 
-export function ClusterFilters({ clusters, collapsed, onFilterChange, setCollapsed }: ClusterFiltersProps) {
+export function ClusterFilters({
+  clusters,
+  collapsed,
+  onFilterSelectAll,
+  onFilterDeselectAll,
+  onFilterChange,
+  setCollapsed,
+}: ClusterFiltersProps) {
   const filters = useMemo(() => Object.entries(clusters), [clusters])
 
   return (
     <CardCollapsible className="m-2" title={'Variants'} collapsed={collapsed} setCollapsed={setCollapsed}>
       <CardBody>
-        <Form>
-          {filters.map(([cluster, { enabled }]) => (
-            <ClusterFilterCheckbox key={cluster} cluster={cluster} enabled={enabled} onFilterChange={onFilterChange} />
-          ))}
-        </Form>
+        <Container fluid>
+          <Row noGutters>
+            <Col className="d-flex">
+              <FormGroup className="flex-grow-0 mx-auto">
+                <Button type="button" color="link" onClick={onFilterSelectAll}>
+                  {'Select all'}
+                </Button>
+                <Button type="button" color="link" onClick={onFilterDeselectAll}>
+                  {'Deselect all'}
+                </Button>
+              </FormGroup>
+            </Col>
+          </Row>
+
+          <Row noGutters>
+            <Col>
+              <Form>
+                {filters.map(([cluster, { enabled }]) => (
+                  <ClusterFilterCheckbox
+                    key={cluster}
+                    cluster={cluster}
+                    enabled={enabled}
+                    onFilterChange={onFilterChange}
+                  />
+                ))}
+              </Form>
+            </Col>
+          </Row>
+        </Container>
       </CardBody>
     </CardCollapsible>
   )

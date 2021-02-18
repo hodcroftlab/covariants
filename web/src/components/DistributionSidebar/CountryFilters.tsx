@@ -1,6 +1,16 @@
 import React, { useCallback, useMemo } from 'react'
 
-import { CardBody as CardBodyBase, Form as FormBase, FormGroup as FormGroupBase, Input, Label } from 'reactstrap'
+import {
+  Button,
+  CardBody as CardBodyBase,
+  Col,
+  Container,
+  Form as FormBase,
+  FormGroup as FormGroupBase,
+  Input,
+  Label,
+  Row,
+} from 'reactstrap'
 import { ColoredCircle } from 'src/components/Common/ColoredCircle'
 import styled from 'styled-components'
 
@@ -57,26 +67,55 @@ export interface CountryFiltersProps {
   collapsed: boolean
   withIcons?: boolean
   onFilterChange(country: string): void
+  onFilterSelectAll(): void
+  onFilterDeselectAll(): void
   setCollapsed(collapsed: boolean): void
 }
 
-export function CountryFilters({ countries, collapsed, withIcons, onFilterChange, setCollapsed }: CountryFiltersProps) {
+export function CountryFilters({
+  countries,
+  collapsed,
+  withIcons,
+  onFilterSelectAll,
+  onFilterDeselectAll,
+  onFilterChange,
+  setCollapsed,
+}: CountryFiltersProps) {
   const filters = useMemo(() => Object.entries(countries), [countries])
 
   return (
     <CardCollapsible className="m-2" title={'Countries'} collapsed={collapsed} setCollapsed={setCollapsed}>
       <CardBody>
-        <Form>
-          {filters.map(([country, { enabled }]) => (
-            <CountryFilterCheckbox
-              key={country}
-              country={country}
-              enabled={enabled}
-              withIcons={withIcons}
-              onFilterChange={onFilterChange}
-            />
-          ))}
-        </Form>
+        <Container fluid>
+          <Row noGutters>
+            <Col className="d-flex">
+              <FormGroup className="flex-grow-0 mx-auto">
+                <Button type="button" color="link" onClick={onFilterSelectAll}>
+                  {'Select all'}
+                </Button>
+                <Button type="button" color="link" onClick={onFilterDeselectAll}>
+                  {'Deselect all'}
+                </Button>
+              </FormGroup>
+            </Col>
+          </Row>
+
+          <Row noGutters>
+            <Col>
+              <Form>
+                {filters.map(([country, { enabled }]) => (
+                  <CountryFilterCheckbox
+                    key={country}
+                    country={country}
+                    enabled={enabled}
+                    withIcons={withIcons}
+                    onFilterChange={onFilterChange}
+                  />
+                ))}
+              </Form>
+            </Col>
+          </Row>
+        </Container>
       </CardBody>
     </CardCollapsible>
   )
