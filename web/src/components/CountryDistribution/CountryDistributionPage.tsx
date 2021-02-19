@@ -1,6 +1,6 @@
 import copy from 'fast-copy'
 
-import { pickBy } from 'lodash'
+import { mapValues, pickBy } from 'lodash'
 import React, { useCallback, useMemo, useState } from 'react'
 import { Col, Row } from 'reactstrap'
 
@@ -101,11 +101,37 @@ export function CountryDistributionPage() {
     [],
   )
 
+  const handleClusterSelectAll = useCallback(
+    () => setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: true }))),
+    [],
+  )
+
+  const handleClusterDeselectAll = useCallback(
+    () => setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: false }))),
+    [],
+  )
+
   const handleCountryCheckedChange = useCallback(
     (country: string) =>
       setCountries((oldCountries) => {
         return { ...oldCountries, [country]: { ...oldCountries[country], enabled: !oldCountries[country].enabled } }
       }),
+    [],
+  )
+
+  const handleCountrySelectAll = useCallback(
+    () =>
+      setCountries((oldCountries: CountryState) =>
+        mapValues(oldCountries, (country) => ({ ...country, enabled: true })),
+      ),
+    [],
+  )
+
+  const handleCountryDeselectAll = useCallback(
+    () =>
+      setCountries((oldCountries: CountryState) =>
+        mapValues(oldCountries, (country) => ({ ...country, enabled: false })),
+      ),
     [],
   )
 
@@ -136,7 +162,11 @@ export function CountryDistributionPage() {
                   enabledFilters={enabledFilters}
                   clustersCollapsedByDefault={false}
                   onClusterFilterChange={handleClusterCheckedChange}
+                  onClusterFilterSelectAll={handleClusterSelectAll}
+                  onClusterFilterDeselectAll={handleClusterDeselectAll}
                   onCountryFilterChange={handleCountryCheckedChange}
+                  onCountryFilterSelectAll={handleCountrySelectAll}
+                  onCountryFilterDeselectAll={handleCountryDeselectAll}
                 />
               </SidebarFlex>
 
