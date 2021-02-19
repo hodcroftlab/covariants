@@ -50,7 +50,9 @@ bad_seqs = {
     'USA/CA-LACPHL-AF00294/2020'    :   "2020-01-18", #suspect should be 2021 instead - overdiverged
     'Mexico/ROO-InDRE_243/2020' : "2020-07-06", # very overdiverged compared to date - fits in diversity of 452 cluster!
     'Spain/MD-IBV-97010024/2020' : "2020-03-19", # overdiveged compared to date - 19 muts, given date March
-    'England/NOTT-246E8A/2020'   : "2020-06-01" # over diverged compared to date - 1 June but nested deep in EU1 diversity
+    'England/NOTT-246E8A/2020'   : "2020-06-01", # over diverged compared to date - 1 June but nested deep in EU1 diversity
+    'France/IDF_HB_112003050333/2020'   : "2020-03-13", # over diverged compared to date - 20 muts, but 13 March
+    'Spain/MD-IBV-99018532/2020' : "2020-02-14" # overdiverged compared to date - 19 muts but 14 Feb
     #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
     #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
 }
