@@ -111,41 +111,6 @@ def marker_size(n):
     else:
         return 5
 
-
-##################################
-##################################
-#### Read in the starting files
-
-# Get diagnostics file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
-diag_file = "results/sequence-diagnostics.tsv"
-diag = pd.read_csv(diag_file, sep='\t', index_col=False)
-# Read metadata file
-input_meta = "data/metadata.tsv"
-meta = pd.read_csv(input_meta, sep='\t', index_col=False)
-meta = meta.fillna('')
-
-
-print("\nCleaning up the metadata...\n")
-# If bad seq there  - exclude!
-for key, value in bad_seqs.items():
-    bad_seq = meta[meta['strain'].isin([key])]
-    if not bad_seq.empty and bad_seq.date.values[0] == value:
-        meta.drop(bad_seq.index, inplace=True)
-
-# do some modifications to metadata once, here - to exclude bad dates
-meta = meta[meta['date'].apply(lambda x: len(x) == 10)]
-meta = meta[meta['date'].apply(lambda x: 'XX' not in x)]
-
-meta['date_formatted'] = meta['date'].apply(lambda x:datetime.datetime.strptime(x, "%Y-%m-%d"))
-#warn of any in the future
-future_meta = meta[meta['date_formatted'].apply(lambda x: x > datetime.date.today())]
-if not future_meta.empty:
-    print("WARNING! Data from the future!")
-    print(future_meta)
-#get rid of any with dates in the future.....
-meta = meta[meta['date_formatted'].apply(lambda x: x <= datetime.date.today())]
-
-
 ##################################
 ##################################
 #### Find out what users want
@@ -192,6 +157,41 @@ print("These clusters will be run: ", clus_to_run)
 
 ##################################
 ##################################
+#### Read in the starting files
+
+# Get diagnostics file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
+diag_file = "results/sequence-diagnostics.tsv"
+diag = pd.read_csv(diag_file, sep='\t', index_col=False)
+# Read metadata file
+input_meta = "data/metadata.tsv"
+meta = pd.read_csv(input_meta, sep='\t', index_col=False)
+meta = meta.fillna('')
+
+
+print("\nCleaning up the metadata...\n")
+# If bad seq there  - exclude!
+for key, value in bad_seqs.items():
+    bad_seq = meta[meta['strain'].isin([key])]
+    if not bad_seq.empty and bad_seq.date.values[0] == value:
+        meta.drop(bad_seq.index, inplace=True)
+
+# do some modifications to metadata once, here - to exclude bad dates
+meta = meta[meta['date'].apply(lambda x: len(x) == 10)]
+meta = meta[meta['date'].apply(lambda x: 'XX' not in x)]
+
+meta['date_formatted'] = meta['date'].apply(lambda x:datetime.datetime.strptime(x, "%Y-%m-%d"))
+#warn of any in the future
+future_meta = meta[meta['date_formatted'].apply(lambda x: x > datetime.date.today())]
+if not future_meta.empty:
+    print("WARNING! Data from the future!")
+    print(future_meta)
+#get rid of any with dates in the future.....
+meta = meta[meta['date_formatted'].apply(lambda x: x <= datetime.date.today())]
+
+
+
+##################################
+##################################
 #### Prepare output files
 
 json_output = {}
@@ -214,6 +214,7 @@ if print_files and "all" in clus_answer:
         "- [S:Y453F](#sy453f) \n"
         "- [S:S98F](#ss98f) \n"
         "- [S:L452R](#sl452r) \n"
+        "- [S:Q677](#sq677) \n"
         "- [S:D80Y](#sd80y) \n"
         "- [S:A626S](#sa626s) \n"
         "- [S:V1122L](#sv1122l) \n\n")
@@ -650,7 +651,7 @@ for clus in clus_to_run:
 
 
     # Only plot countries with >= X seqs
-    min_to_plot = 30
+    min_to_plot = 40
     #if clus == "S222":
     #    min_to_plot = 200
 
@@ -823,7 +824,7 @@ def get_ordered_clusters_to_plot(clusters):
     # DO NOT PLOT 69 AS IT OVERLAPS WITH 439 AND 501!!!!
     # Do not plot 484 as it overlaps with 501Y.V2, possibly others
     # Do not plot DanishCluster as also overlaps
-    clus_keys = [x for x in clus_keys if x not in ["S69","S484", "DanishCluster", "S677"]]
+    clus_keys = [x for x in clus_keys if x not in ["S69","S484", "DanishCluster"]]
 
     countries_all = defaultdict(dict)
     for clus in clus_keys:
@@ -839,7 +840,6 @@ def get_ordered_clusters_to_plot(clusters):
         proposed_coun_to_plot.extend(country_inf[country_inf.num_seqs > min_to_plot].index)
     proposed_coun_to_plot = set(proposed_coun_to_plot)
     print(f"At min plot {min_to_plot}, there are {len(proposed_coun_to_plot)} countries")
-    print("EMMA REMEMBER TO CHANGE PAGE TO 50 ON NEXT RUN")
 
     total_coun_counts = {}
     #decide order
