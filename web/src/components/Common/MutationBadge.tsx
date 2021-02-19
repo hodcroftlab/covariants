@@ -12,6 +12,7 @@ import { LinkSmart } from 'src/components/Link/LinkSmart'
 import { parseAminoacidMutation } from 'src/components/Common/parseAminoacidMutation'
 import { parseNucleotideMutation } from 'src/components/Common/parseNucleotideMutation'
 import { formatMutation } from 'src/components/Common/formatMutation'
+import { AMINOACID_NAMES, GENE_NAMES, NUCELOTIDE_NAMES } from 'src/names'
 
 const clusters = getClusters()
 const clusterNames = getClusterNames()
@@ -116,9 +117,10 @@ export interface MutationBadgeProps {
   prefix?: string
   mutation: Mutation
   colors: MutationColors
+  tooltip?: string
 }
 
-export function MutationBadge({ prefix, mutation, colors }: MutationBadgeProps) {
+export function MutationBadge({ prefix, mutation, colors, tooltip }: MutationBadgeProps) {
   const { gene, left, pos, right, note } = mutation
 
   const geneColor = get(GENE_COLORS, gene ?? '', DEFAULT_COLOR)
@@ -126,7 +128,7 @@ export function MutationBadge({ prefix, mutation, colors }: MutationBadgeProps) 
   const rightColor = get(colors, right ?? '', DEFAULT_COLOR)
 
   return (
-    <MutationBadgeBox>
+    <MutationBadgeBox title={tooltip}>
       <MutationWrapper>
         {prefix && <PrefixText>{prefix}</PrefixText>}
         {gene && (
@@ -156,7 +158,12 @@ export function NucleotideMutationBadge({ mutation }: NucleotideMutationBadgePro
     return <span>{`Invalid mutation: '${JSON.stringify(mutation)}'`}</span>
   }
 
-  return <MutationBadge mutation={mutationObj} colors={NUCLEOTIDE_COLORS} />
+  const { left, right, pos } = mutationObj
+  const wildTypeBase = get(NUCELOTIDE_NAMES, left ?? '', '')
+  const variantBase = get(NUCELOTIDE_NAMES, right ?? '', '')
+  const tooltip = `Mutation of nucleotide ${pos} from ${wildTypeBase} to ${variantBase}`
+
+  return <MutationBadge mutation={mutationObj} colors={NUCLEOTIDE_COLORS} tooltip={tooltip} />
 }
 
 export interface AminoacidMutationBadgeProps {
@@ -169,7 +176,15 @@ export function AminoacidMutationBadge({ mutation }: AminoacidMutationBadgeProps
     return <span>{`Invalid mutation: '${JSON.stringify(mutation)}'`}</span>
   }
 
-  return <MutationBadge mutation={mutationObj} colors={AMINOACID_COLORS} />
+  const { gene, left, pos, right } = mutationObj
+  const wildTypeAA = get(AMINOACID_NAMES, left ?? '', '')
+  const variantAA = right ? get(AMINOACID_NAMES, right, '') : 'one of several alternatives'
+
+  const geneName = gene ? get(GENE_NAMES, gene, gene) : ''
+
+  const tooltip = `Mutation of amino acid ${pos} in ${geneName} from ${wildTypeAA} to ${variantAA}`
+
+  return <MutationBadge mutation={mutationObj} colors={AMINOACID_COLORS} tooltip={tooltip} />
 }
 
 export const LinkUnstyled = styled(LinkSmart)`
