@@ -3,6 +3,7 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 ## Mutation Information
 
 <AaMut mut={'S:Q677'}/> has appeared multiple times independently in the SARS-CoV-2 phylogeny; each can be associated with different accompanying mutations.
+<br/><br/>
 
 ### S:Q677
 - <AaMut mut={'S:Q677'}/> mutants were identified as being present in the USA in the 20G ("20C-US") clade (<LinkExternal href="https://www.biorxiv.org/content/10.1101/2021.01.11.426287v2">Pater et al., bioRxiv</LinkExternal>)
