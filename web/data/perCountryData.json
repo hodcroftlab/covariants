@@ -61,7 +61,7 @@
             "S:S98F": 0.0,
             "S:V1122L": 0.0
           },
-          "total_sequences": 1764,
+          "total_sequences": 1765,
           "week": "2020-05-25"
         },
         {
@@ -269,7 +269,7 @@
             "S:S98F": 41.0,
             "S:V1122L": 0.0
           },
-          "total_sequences": 8188,
+          "total_sequences": 8190,
           "week": "2020-11-23"
         },
         {
@@ -301,7 +301,7 @@
             "S:S98F": 18.0,
             "S:V1122L": 0.0
           },
-          "total_sequences": 17154,
+          "total_sequences": 17157,
           "week": "2020-12-21"
         },
         {
@@ -333,7 +333,7 @@
             "S:S98F": 13.0,
             "S:V1122L": 0.0
           },
-          "total_sequences": 26800,
+          "total_sequences": 26801,
           "week": "2021-01-11"
         },
         {
@@ -349,7 +349,7 @@
             "S:S98F": 1.0,
             "S:V1122L": 0.0
           },
-          "total_sequences": 21870,
+          "total_sequences": 22424,
           "week": "2021-01-25"
         },
         {
@@ -365,7 +365,7 @@
             "S:S98F": 1.0,
             "S:V1122L": 0.0
           },
-          "total_sequences": 2082,
+          "total_sequences": 2509,
           "week": "2021-02-08"
         }
       ]
@@ -608,7 +608,7 @@
             "S:V1122L": 8.0,
             "S:Y453F": 311.0
           },
-          "total_sequences": 2982,
+          "total_sequences": 2983,
           "week": "2020-10-26"
         },
         {
@@ -625,7 +625,7 @@
             "S:V1122L": 21.0,
             "S:Y453F": 405.0
           },
-          "total_sequences": 2572,
+          "total_sequences": 2579,
           "week": "2020-11-09"
         },
         {
@@ -642,7 +642,7 @@
             "S:V1122L": 23.0,
             "S:Y453F": 139.0
           },
-          "total_sequences": 3518,
+          "total_sequences": 3565,
           "week": "2020-11-23"
         },
         {
@@ -659,7 +659,7 @@
             "S:V1122L": 18.0,
             "S:Y453F": 41.0
           },
-          "total_sequences": 5839,
+          "total_sequences": 5904,
           "week": "2020-12-07"
         },
         {
@@ -676,7 +676,7 @@
             "S:V1122L": 9.0,
             "S:Y453F": 8.0
           },
-          "total_sequences": 6050,
+          "total_sequences": 6418,
           "week": "2020-12-21"
         },
         {
@@ -693,7 +693,7 @@
             "S:V1122L": 5.0,
             "S:Y453F": 1.0
           },
-          "total_sequences": 3359,
+          "total_sequences": 3489,
           "week": "2020-12-28"
         },
         {
@@ -710,7 +710,7 @@
             "S:V1122L": 6.0,
             "S:Y453F": 5.0
           },
-          "total_sequences": 6493,
+          "total_sequences": 6774,
           "week": "2021-01-11"
         },
         {
@@ -727,8 +727,25 @@
             "S:V1122L": 0.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 2905,
+          "total_sequences": 4284,
           "week": "2021-01-25"
+        },
+        {
+          "cluster_counts": {
+            "20A.EU1": 0.0,
+            "20A.EU2": 0.0,
+            "S:A626S": 0.0,
+            "S:D80Y": 0.0,
+            "S:L452R": 0.0,
+            "S:N439K": 0.0,
+            "S:N501": 0.0,
+            "S:Q677": 0.0,
+            "S:S98F": 0.0,
+            "S:V1122L": 0.0,
+            "S:Y453F": 0.0
+          },
+          "total_sequences": 1165,
+          "week": "2021-02-08"
         }
       ]
     },
@@ -788,7 +805,7 @@
             "S:S98F": 0.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 4790,
+          "total_sequences": 4812,
           "week": "2020-06-08"
         },
         {
@@ -802,7 +819,7 @@
             "S:S98F": 0.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 6194,
+          "total_sequences": 6231,
           "week": "2020-06-22"
         },
         {
@@ -816,7 +833,7 @@
             "S:S98F": 0.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 3968,
+          "total_sequences": 4073,
           "week": "2020-07-06"
         },
         {
@@ -830,7 +847,7 @@
             "S:S98F": 0.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 2135,
+          "total_sequences": 2188,
           "week": "2020-07-20"
         },
         {
@@ -844,7 +861,7 @@
             "S:S98F": 0.0,
             "S:Y453F": 23.0
           },
-          "total_sequences": 2562,
+          "total_sequences": 2569,
           "week": "2020-08-03"
         },
         {
@@ -858,7 +875,7 @@
             "S:S98F": 0.0,
             "S:Y453F": 1.0
           },
-          "total_sequences": 2964,
+          "total_sequences": 2968,
           "week": "2020-08-17"
         },
         {
@@ -886,7 +903,7 @@
             "S:S98F": 0.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 2241,
+          "total_sequences": 2252,
           "week": "2020-09-14"
         },
         {
@@ -900,7 +917,7 @@
             "S:S98F": 0.0,
             "S:Y453F": 3.0
           },
-          "total_sequences": 2715,
+          "total_sequences": 2720,
           "week": "2020-09-28"
         },
         {
@@ -914,7 +931,7 @@
             "S:S98F": 1.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 3326,
+          "total_sequences": 3348,
           "week": "2020-10-12"
         },
         {
@@ -928,7 +945,7 @@
             "S:S98F": 0.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 3450,
+          "total_sequences": 3519,
           "week": "2020-10-26"
         },
         {
@@ -942,7 +959,7 @@
             "S:S98F": 0.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 4695,
+          "total_sequences": 4818,
           "week": "2020-11-09"
         },
         {
@@ -956,7 +973,7 @@
             "S:S98F": 0.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 5710,
+          "total_sequences": 5804,
           "week": "2020-11-23"
         },
         {
@@ -970,7 +987,7 @@
             "S:S98F": 0.0,
             "S:Y453F": 1.0
           },
-          "total_sequences": 4643,
+          "total_sequences": 4806,
           "week": "2020-12-07"
         },
         {
@@ -984,7 +1001,7 @@
             "S:S98F": 1.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 7910,
+          "total_sequences": 10274,
           "week": "2020-12-21"
         },
         {
@@ -998,7 +1015,7 @@
             "S:S98F": 0.0,
             "S:Y453F": 1.0
           },
-          "total_sequences": 7449,
+          "total_sequences": 7892,
           "week": "2020-12-28"
         },
         {
@@ -1012,7 +1029,7 @@
             "S:S98F": 2.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 9588,
+          "total_sequences": 11078,
           "week": "2021-01-11"
         },
         {
@@ -1026,7 +1043,7 @@
             "S:S98F": 0.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 5287,
+          "total_sequences": 8782,
           "week": "2021-01-25"
         },
         {
@@ -1040,7 +1057,7 @@
             "S:S98F": 0.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 266,
+          "total_sequences": 359,
           "week": "2021-02-08"
         }
       ]
@@ -1242,8 +1259,8 @@
         },
         {
           "cluster_counts": {
-            "20A.EU1": 282.0,
-            "20A.EU2": 162.0,
+            "20A.EU1": 278.0,
+            "20A.EU2": 158.0,
             "S:A626S": 0.0,
             "S:D80Y": 5.0,
             "S:L452R": 0.0,
@@ -1258,8 +1275,8 @@
         },
         {
           "cluster_counts": {
-            "20A.EU1": 187.0,
-            "20A.EU2": 227.0,
+            "20A.EU1": 186.0,
+            "20A.EU2": 223.0,
             "S:A626S": 0.0,
             "S:D80Y": 5.0,
             "S:L452R": 0.0,
@@ -1269,12 +1286,12 @@
             "S:S98F": 27.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 662,
+          "total_sequences": 663,
           "week": "2020-10-26"
         },
         {
           "cluster_counts": {
-            "20A.EU1": 112.0,
+            "20A.EU1": 111.0,
             "20A.EU2": 147.0,
             "S:A626S": 0.0,
             "S:D80Y": 2.0,
@@ -1285,7 +1302,7 @@
             "S:S98F": 23.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 479,
+          "total_sequences": 480,
           "week": "2020-11-09"
         },
         {
@@ -1301,13 +1318,13 @@
             "S:S98F": 27.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 432,
+          "total_sequences": 436,
           "week": "2020-11-23"
         },
         {
           "cluster_counts": {
             "20A.EU1": 228.0,
-            "20A.EU2": 176.0,
+            "20A.EU2": 175.0,
             "S:A626S": 0.0,
             "S:D80Y": 1.0,
             "S:L452R": 0.0,
@@ -1317,7 +1334,7 @@
             "S:S98F": 44.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 748,
+          "total_sequences": 813,
           "week": "2020-12-07"
         },
         {
@@ -1365,7 +1382,7 @@
             "S:S98F": 90.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 2555,
+          "total_sequences": 2599,
           "week": "2021-01-11"
         },
         {
@@ -1381,8 +1398,24 @@
             "S:S98F": 36.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 1371,
+          "total_sequences": 1495,
           "week": "2021-01-25"
+        },
+        {
+          "cluster_counts": {
+            "20A.EU1": 0.0,
+            "20A.EU2": 0.0,
+            "S:A626S": 0.0,
+            "S:D80Y": 0.0,
+            "S:L452R": 0.0,
+            "S:N439K": 0.0,
+            "S:N501": 0.0,
+            "S:Q677": 0.0,
+            "S:S98F": 0.0,
+            "S:Y453F": 0.0
+          },
+          "total_sequences": 124,
+          "week": "2021-02-08"
         }
       ]
     },
@@ -1401,7 +1434,7 @@
             "S:S98F": 0.0,
             "S:Y453F": 12.0
           },
-          "total_sequences": 208,
+          "total_sequences": 209,
           "week": "2020-04-27"
         },
         {
@@ -1566,7 +1599,7 @@
             "S:S98F": 75.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 255,
+          "total_sequences": 257,
           "week": "2020-09-28"
         },
         {
@@ -1596,7 +1629,7 @@
             "S:S98F": 73.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 261,
+          "total_sequences": 266,
           "week": "2020-10-26"
         },
         {
@@ -1626,7 +1659,7 @@
             "S:S98F": 135.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 466,
+          "total_sequences": 467,
           "week": "2020-11-23"
         },
         {
@@ -1641,7 +1674,7 @@
             "S:S98F": 214.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 713,
+          "total_sequences": 715,
           "week": "2020-12-07"
         },
         {
@@ -1656,7 +1689,7 @@
             "S:S98F": 207.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 1000,
+          "total_sequences": 1002,
           "week": "2020-12-21"
         },
         {
@@ -1671,7 +1704,7 @@
             "S:S98F": 118.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 583,
+          "total_sequences": 585,
           "week": "2020-12-28"
         },
         {
@@ -1686,7 +1719,7 @@
             "S:S98F": 204.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 933,
+          "total_sequences": 983,
           "week": "2021-01-11"
         },
         {
@@ -1701,8 +1734,23 @@
             "S:S98F": 138.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 806,
+          "total_sequences": 1389,
           "week": "2021-01-25"
+        },
+        {
+          "cluster_counts": {
+            "20A.EU1": 0.0,
+            "20A.EU2": 0.0,
+            "S:A626S": 0.0,
+            "S:D80Y": 0.0,
+            "S:N439K": 0.0,
+            "S:N501": 0.0,
+            "S:Q677": 0.0,
+            "S:S98F": 0.0,
+            "S:Y453F": 0.0
+          },
+          "total_sequences": 171,
+          "week": "2021-02-08"
         }
       ]
     },
@@ -1891,8 +1939,8 @@
         },
         {
           "cluster_counts": {
-            "20A.EU1": 32.0,
-            "20A.EU2": 137.0,
+            "20A.EU1": 30.0,
+            "20A.EU2": 138.0,
             "S:A626S": 0.0,
             "S:D80Y": 5.0,
             "S:L452R": 0.0,
@@ -1901,13 +1949,13 @@
             "S:Q677": 0.0,
             "S:S98F": 0.0
           },
-          "total_sequences": 234,
+          "total_sequences": 235,
           "week": "2020-10-12"
         },
         {
           "cluster_counts": {
-            "20A.EU1": 25.0,
-            "20A.EU2": 104.0,
+            "20A.EU1": 24.0,
+            "20A.EU2": 105.0,
             "S:A626S": 0.0,
             "S:D80Y": 2.0,
             "S:L452R": 0.0,
@@ -1916,13 +1964,13 @@
             "S:Q677": 0.0,
             "S:S98F": 0.0
           },
-          "total_sequences": 166,
+          "total_sequences": 167,
           "week": "2020-10-26"
         },
         {
           "cluster_counts": {
             "20A.EU1": 25.0,
-            "20A.EU2": 125.0,
+            "20A.EU2": 124.0,
             "S:A626S": 0.0,
             "S:D80Y": 1.0,
             "S:L452R": 0.0,
@@ -1931,7 +1979,7 @@
             "S:Q677": 0.0,
             "S:S98F": 0.0
           },
-          "total_sequences": 180,
+          "total_sequences": 178,
           "week": "2020-11-09"
         },
         {
@@ -1952,7 +2000,7 @@
         {
           "cluster_counts": {
             "20A.EU1": 43.0,
-            "20A.EU2": 113.0,
+            "20A.EU2": 114.0,
             "S:A626S": 0.0,
             "S:D80Y": 10.0,
             "S:L452R": 0.0,
@@ -1961,7 +2009,7 @@
             "S:Q677": 1.0,
             "S:S98F": 2.0
           },
-          "total_sequences": 218,
+          "total_sequences": 219,
           "week": "2020-12-07"
         },
         {
@@ -2021,8 +2069,23 @@
             "S:Q677": 5.0,
             "S:S98F": 5.0
           },
-          "total_sequences": 913,
+          "total_sequences": 1017,
           "week": "2021-01-25"
+        },
+        {
+          "cluster_counts": {
+            "20A.EU1": 0.0,
+            "20A.EU2": 0.0,
+            "S:A626S": 0.0,
+            "S:D80Y": 0.0,
+            "S:L452R": 0.0,
+            "S:N439K": 0.0,
+            "S:N501": 0.0,
+            "S:Q677": 0.0,
+            "S:S98F": 0.0
+          },
+          "total_sequences": 24,
+          "week": "2021-02-08"
         }
       ]
     },
@@ -2326,7 +2389,7 @@
             "S:Q677": 5.0,
             "S:S98F": 19.0
           },
-          "total_sequences": 823,
+          "total_sequences": 855,
           "week": "2021-01-11"
         },
         {
@@ -2341,7 +2404,7 @@
             "S:Q677": 3.0,
             "S:S98F": 9.0
           },
-          "total_sequences": 381,
+          "total_sequences": 464,
           "week": "2021-01-25"
         }
       ]
@@ -2486,7 +2549,7 @@
             "S:Q677": 0.0,
             "S:S98F": 30.0
           },
-          "total_sequences": 84,
+          "total_sequences": 85,
           "week": "2020-08-31"
         },
         {
@@ -2626,7 +2689,7 @@
             "S:Q677": 4.0,
             "S:S98F": 195.0
           },
-          "total_sequences": 920,
+          "total_sequences": 924,
           "week": "2021-01-11"
         },
         {
@@ -2640,7 +2703,7 @@
             "S:Q677": 3.0,
             "S:S98F": 118.0
           },
-          "total_sequences": 703,
+          "total_sequences": 759,
           "week": "2021-01-25"
         },
         {
@@ -2654,7 +2717,7 @@
             "S:Q677": 0.0,
             "S:S98F": 6.0
           },
-          "total_sequences": 71,
+          "total_sequences": 73,
           "week": "2021-02-08"
         }
       ]
@@ -3289,7 +3352,7 @@
             "S:Q677": 1.0,
             "S:S98F": 2.0
           },
-          "total_sequences": 327,
+          "total_sequences": 328,
           "week": "2020-10-26"
         },
         {
@@ -3304,7 +3367,7 @@
             "S:Q677": 0.0,
             "S:S98F": 0.0
           },
-          "total_sequences": 88,
+          "total_sequences": 89,
           "week": "2020-11-09"
         },
         {
@@ -3334,7 +3397,7 @@
             "S:Q677": 3.0,
             "S:S98F": 22.0
           },
-          "total_sequences": 521,
+          "total_sequences": 522,
           "week": "2020-12-07"
         },
         {
@@ -3349,7 +3412,7 @@
             "S:Q677": 2.0,
             "S:S98F": 3.0
           },
-          "total_sequences": 506,
+          "total_sequences": 509,
           "week": "2020-12-21"
         },
         {
@@ -3364,7 +3427,7 @@
             "S:Q677": 0.0,
             "S:S98F": 0.0
           },
-          "total_sequences": 93,
+          "total_sequences": 100,
           "week": "2020-12-28"
         },
         {
@@ -3379,7 +3442,7 @@
             "S:Q677": 1.0,
             "S:S98F": 1.0
           },
-          "total_sequences": 203,
+          "total_sequences": 204,
           "week": "2021-01-11"
         },
         {
@@ -3394,8 +3457,23 @@
             "S:Q677": 2.0,
             "S:S98F": 0.0
           },
-          "total_sequences": 359,
+          "total_sequences": 381,
           "week": "2021-01-25"
+        },
+        {
+          "cluster_counts": {
+            "20A.EU1": 0.0,
+            "20A.EU2": 0.0,
+            "S:A626S": 0.0,
+            "S:D80Y": 0.0,
+            "S:L452R": 0.0,
+            "S:N439K": 0.0,
+            "S:N501": 0.0,
+            "S:Q677": 0.0,
+            "S:S98F": 0.0
+          },
+          "total_sequences": 83,
+          "week": "2021-02-08"
         }
       ]
     },
@@ -3829,35 +3907,35 @@
         },
         {
           "cluster_counts": {
-            "20A.EU1": 37.0,
+            "20A.EU1": 39.0,
             "20A.EU2": 8.0,
             "S:A626S": 1.0,
             "S:D80Y": 0.0,
-            "S:N439K": 18.0,
+            "S:N439K": 17.0,
             "S:N501": 0.0,
             "S:Q677": 0.0,
             "S:S98F": 20.0
           },
-          "total_sequences": 141,
+          "total_sequences": 142,
           "week": "2020-10-12"
         },
         {
           "cluster_counts": {
-            "20A.EU1": 24.0,
-            "20A.EU2": 5.0,
+            "20A.EU1": 21.0,
+            "20A.EU2": 7.0,
             "S:A626S": 1.0,
             "S:D80Y": 0.0,
-            "S:N439K": 19.0,
+            "S:N439K": 18.0,
             "S:N501": 0.0,
             "S:Q677": 1.0,
-            "S:S98F": 12.0
+            "S:S98F": 11.0
           },
-          "total_sequences": 114,
+          "total_sequences": 112,
           "week": "2020-10-26"
         },
         {
           "cluster_counts": {
-            "20A.EU1": 28.0,
+            "20A.EU1": 29.0,
             "20A.EU2": 6.0,
             "S:A626S": 0.0,
             "S:D80Y": 0.0,
@@ -3866,7 +3944,7 @@
             "S:Q677": 2.0,
             "S:S98F": 11.0
           },
-          "total_sequences": 84,
+          "total_sequences": 85,
           "week": "2020-11-09"
         },
         {
@@ -3936,7 +4014,7 @@
             "S:Q677": 0.0,
             "S:S98F": 21.0
           },
-          "total_sequences": 206,
+          "total_sequences": 208,
           "week": "2021-01-11"
         },
         {
@@ -3950,8 +4028,22 @@
             "S:Q677": 0.0,
             "S:S98F": 8.0
           },
-          "total_sequences": 128,
+          "total_sequences": 180,
           "week": "2021-01-25"
+        },
+        {
+          "cluster_counts": {
+            "20A.EU1": 0.0,
+            "20A.EU2": 0.0,
+            "S:A626S": 0.0,
+            "S:D80Y": 0.0,
+            "S:N439K": 0.0,
+            "S:N501": 0.0,
+            "S:Q677": 0.0,
+            "S:S98F": 0.0
+          },
+          "total_sequences": 63,
+          "week": "2021-02-08"
         }
       ]
     },
@@ -4717,7 +4809,7 @@
             "S:Q677": 0.0,
             "S:S98F": 6.0
           },
-          "total_sequences": 99,
+          "total_sequences": 100,
           "week": "2020-11-23"
         },
         {
@@ -4731,7 +4823,7 @@
             "S:Q677": 0.0,
             "S:S98F": 0.0
           },
-          "total_sequences": 39,
+          "total_sequences": 40,
           "week": "2020-12-07"
         },
         {
@@ -5048,7 +5140,7 @@
             "S:S98F": 2.0,
             "S:V1122L": 0.0
           },
-          "total_sequences": 79,
+          "total_sequences": 82,
           "week": "2020-11-23"
         },
         {
@@ -5064,7 +5156,7 @@
             "S:S98F": 1.0,
             "S:V1122L": 0.0
           },
-          "total_sequences": 121,
+          "total_sequences": 129,
           "week": "2020-12-07"
         },
         {
@@ -5080,7 +5172,7 @@
             "S:S98F": 0.0,
             "S:V1122L": 0.0
           },
-          "total_sequences": 71,
+          "total_sequences": 81,
           "week": "2020-12-21"
         },
         {
@@ -5096,7 +5188,7 @@
             "S:S98F": 1.0,
             "S:V1122L": 0.0
           },
-          "total_sequences": 62,
+          "total_sequences": 81,
           "week": "2020-12-28"
         },
         {
@@ -5112,7 +5204,7 @@
             "S:S98F": 6.0,
             "S:V1122L": 0.0
           },
-          "total_sequences": 105,
+          "total_sequences": 134,
           "week": "2021-01-11"
         },
         {
@@ -5128,7 +5220,7 @@
             "S:S98F": 3.0,
             "S:V1122L": 0.0
           },
-          "total_sequences": 74,
+          "total_sequences": 86,
           "week": "2021-01-25"
         }
       ]
@@ -5577,7 +5669,7 @@
             "S:Q677": 0.0,
             "S:S98F": 0.0
           },
-          "total_sequences": 2629,
+          "total_sequences": 2632,
           "week": "2020-07-06"
         },
         {
@@ -5590,7 +5682,7 @@
             "S:Q677": 2.0,
             "S:S98F": 0.0
           },
-          "total_sequences": 3881,
+          "total_sequences": 3883,
           "week": "2020-07-20"
         },
         {
@@ -5603,7 +5695,7 @@
             "S:Q677": 0.0,
             "S:S98F": 0.0
           },
-          "total_sequences": 2537,
+          "total_sequences": 2541,
           "week": "2020-08-03"
         },
         {
@@ -5616,7 +5708,7 @@
             "S:Q677": 0.0,
             "S:S98F": 0.0
           },
-          "total_sequences": 1629,
+          "total_sequences": 1638,
           "week": "2020-08-17"
         },
         {
@@ -5759,7 +5851,7 @@
             "S:Q677": 3.0,
             "S:S98F": 0.0
           },
-          "total_sequences": 86,
+          "total_sequences": 88,
           "week": "2021-01-11"
         },
         {
@@ -5772,7 +5864,7 @@
             "S:Q677": 1.0,
             "S:S98F": 0.0
           },
-          "total_sequences": 33,
+          "total_sequences": 34,
           "week": "2021-01-25"
         },
         {
@@ -5785,7 +5877,7 @@
             "S:Q677": 0.0,
             "S:S98F": 0.0
           },
-          "total_sequences": 10,
+          "total_sequences": 24,
           "week": "2021-02-08"
         }
       ]
@@ -6398,7 +6490,7 @@
             "S:Q677": 0.0,
             "S:S98F": 2.0
           },
-          "total_sequences": 34,
+          "total_sequences": 35,
           "week": "2020-12-28"
         },
         {
@@ -6881,7 +6973,7 @@
             "S:N501": 207.0,
             "S:Q677": 2.0
           },
-          "total_sequences": 213,
+          "total_sequences": 214,
           "week": "2021-01-11"
         },
         {
@@ -6892,7 +6984,7 @@
             "S:N501": 2.0,
             "S:Q677": 0.0
           },
-          "total_sequences": 77,
+          "total_sequences": 105,
           "week": "2021-01-25"
         }
       ]
@@ -7093,7 +7185,7 @@
             "S:S98F": 18.0,
             "S:Y453F": 2.0
           },
-          "total_sequences": 100,
+          "total_sequences": 101,
           "week": "2021-01-25"
         }
       ]
@@ -7128,8 +7220,28 @@
             "S:N439K": 0.0,
             "S:N501": 0.0
           },
-          "total_sequences": 2,
+          "total_sequences": 10,
           "week": "2020-05-25"
+        },
+        {
+          "cluster_counts": {
+            "20A.EU2": 0.0,
+            "S:A626S": 0.0,
+            "S:N439K": 0.0,
+            "S:N501": 0.0
+          },
+          "total_sequences": 4,
+          "week": "2020-06-08"
+        },
+        {
+          "cluster_counts": {
+            "20A.EU2": 0.0,
+            "S:A626S": 0.0,
+            "S:N439K": 0.0,
+            "S:N501": 0.0
+          },
+          "total_sequences": 3,
+          "week": "2020-06-22"
         },
         {
           "cluster_counts": {
@@ -7178,8 +7290,18 @@
             "S:N439K": 0.0,
             "S:N501": 0.0
           },
-          "total_sequences": 4,
+          "total_sequences": 6,
           "week": "2020-10-12"
+        },
+        {
+          "cluster_counts": {
+            "20A.EU2": 0.0,
+            "S:A626S": 0.0,
+            "S:N439K": 0.0,
+            "S:N501": 0.0
+          },
+          "total_sequences": 37,
+          "week": "2020-10-26"
         },
         {
           "cluster_counts": {
@@ -7363,7 +7485,7 @@
             "S:N501": 0.0,
             "S:Q677": 0.0
           },
-          "total_sequences": 12,
+          "total_sequences": 13,
           "week": "2020-12-07"
         },
         {
@@ -7373,7 +7495,7 @@
             "S:N501": 22.0,
             "S:Q677": 4.0
           },
-          "total_sequences": 109,
+          "total_sequences": 138,
           "week": "2020-12-21"
         },
         {
@@ -7496,7 +7618,7 @@
             "S:Q677": 1.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 91,
+          "total_sequences": 92,
           "week": "2020-08-03"
         },
         {
@@ -7507,7 +7629,7 @@
             "S:Q677": 0.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 29,
+          "total_sequences": 30,
           "week": "2020-08-17"
         },
         {
@@ -7529,7 +7651,7 @@
             "S:Q677": 0.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 15,
+          "total_sequences": 17,
           "week": "2020-09-14"
         },
         {
@@ -7540,7 +7662,7 @@
             "S:Q677": 0.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 22,
+          "total_sequences": 28,
           "week": "2020-09-28"
         },
         {
@@ -7551,7 +7673,7 @@
             "S:Q677": 0.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 24,
+          "total_sequences": 25,
           "week": "2020-10-12"
         },
         {
@@ -7562,7 +7684,7 @@
             "S:Q677": 0.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 99,
+          "total_sequences": 103,
           "week": "2020-10-26"
         },
         {
@@ -7628,7 +7750,7 @@
             "S:Q677": 0.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 80,
+          "total_sequences": 86,
           "week": "2021-01-11"
         },
         {
@@ -7639,7 +7761,7 @@
             "S:Q677": 0.0,
             "S:Y453F": 0.0
           },
-          "total_sequences": 23,
+          "total_sequences": 24,
           "week": "2021-01-25"
         },
         {
@@ -8070,7 +8192,7 @@
             "S:N501": 0.0,
             "S:Q677": 1.0
           },
-          "total_sequences": 28,
+          "total_sequences": 31,
           "week": "2020-11-23"
         },
         {
@@ -8079,7 +8201,7 @@
             "S:N501": 1.0,
             "S:Q677": 0.0
           },
-          "total_sequences": 20,
+          "total_sequences": 28,
           "week": "2020-12-07"
         },
         {
@@ -8088,7 +8210,7 @@
             "S:N501": 5.0,
             "S:Q677": 4.0
           },
-          "total_sequences": 20,
+          "total_sequences": 27,
           "week": "2020-12-21"
         },
         {
@@ -8630,7 +8752,7 @@
             "S:N501": 2.0,
             "S:Q677": 0.0
           },
-          "total_sequences": 11,
+          "total_sequences": 25,
           "week": "2021-02-08"
         }
       ]
@@ -8835,6 +8957,16 @@
           },
           "total_sequences": 114,
           "week": "2021-01-25"
+        },
+        {
+          "cluster_counts": {
+            "20A.EU1": 0.0,
+            "S:L452R": 0.0,
+            "S:N501": 0.0,
+            "S:Q677": 0.0
+          },
+          "total_sequences": 44,
+          "week": "2021-02-08"
         }
       ]
     }
