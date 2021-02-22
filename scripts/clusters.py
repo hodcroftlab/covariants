@@ -50,7 +50,7 @@ clusters = {
                 }
             },
 
-            "501YV1": {'snps': [], 'cluster_data': [], 
+            "501YV1": {'snps': [23062,23603,24913], 'cluster_data': [], # 501, 681, 1118
             "nextstrain_build": True,
             "graphing": True,
             "type": "variant",
@@ -68,7 +68,7 @@ clusters = {
                 }
             },
 
-            "501YV2": {'snps': [], 'cluster_data': [], 
+            "501YV2": {'snps': [21800,23062,23663], 'cluster_data': [],  #80,501,701
             "nextstrain_build": True,
             "graphing": True,
             "type": "variant",
@@ -86,7 +86,7 @@ clusters = {
                 }
             },
 
-            "501YV3": {'snps': [], 'cluster_data': [], 
+            "501YV3": {'snps': [21620,23062,23524], 'cluster_data': [], #20,501,655
             "nextstrain_build": True,
             "graphing": True,
             "type": "variant",
