@@ -458,7 +458,9 @@ for clus in clus_to_run:
             fh.write(f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)")
 
     if print_acks:
-        acknowledgement_table = cluster_meta.loc[:,['strain', 'gisaid_epi_isl', 'originating_lab', 'submitting_lab', 'authors']]
+        # remove all but EPI_ISL on request from GISAID
+        #acknowledgement_table = cluster_meta.loc[:,['strain', 'gisaid_epi_isl', 'originating_lab', 'submitting_lab', 'authors']]
+        acknowledgement_table = cluster_meta.loc[:,['gisaid_epi_isl']]
         acknowledgement_table.to_csv(f'{acknowledgement_folder}{clus}_acknowledgement_table.tsv', sep="\t")
 
 
