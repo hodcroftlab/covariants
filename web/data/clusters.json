@@ -5,8 +5,9 @@
       "cluster_data": [],
       "col": "#ff8d3d",
       "country_info": [],
-      "display_name": "20A.EU1",
+      "display_name": "20E (EU1)",
       "display_name2": "S:A222V",
+      "graphing": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -46,12 +47,14 @@
           }
         ]
       },
+      "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.EU1?f_region=Europe",
       "snps": [
         22226,
         28931,
         29644
-      ]
+      ],
+      "type": "variant"
     },
     {
       "build_name": "20A.EU2",
@@ -60,6 +63,7 @@
       "country_info": [],
       "display_name": "20A.EU2",
       "display_name2": "S:477N",
+      "graphing": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -128,156 +132,120 @@
           }
         ]
       },
+      "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.EU2?f_region=Europe",
       "snps": [
         22991,
         4542
-      ]
-    },
-    {
-      "build_name": "S.N501",
-      "cluster_data": [],
-      "col": "#ff99ff",
-      "country_info": [],
-      "display_name": "S:N501",
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.N501",
-      "snps": [
-        23063
       ],
-      "snps2": [
-        23062
-      ]
+      "type": "variant"
     },
     {
-      "build_name": "S.E484",
+      "build_name": "S.501Y.V1",
       "cluster_data": [],
-      "col": "#006600",
+      "col": "#b30000",
       "country_info": [],
-      "display_name": "S:E484",
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484",
-      "snps": [
-        23011
-      ]
-    },
-    {
-      "build_name": "S.H69-",
-      "cluster_data": [],
-      "col": "#ffcc00",
-      "country_info": [],
-      "display_name": "S:H69-",
-      "gaps": [
-        21766,
-        21767,
-        21768
-      ],
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.H69-?c=gt-S_69,501,453",
-      "snps": []
-    },
-    {
-      "build_name": "S.N439K",
-      "cluster_data": [],
-      "col": "#fb9a99",
-      "country_info": [],
-      "display_name": "S:N439K",
+      "display_name": "20I/501Y.V1",
+      "graphing": true,
       "mutations": {
         "nonsynonymous": [
           {
             "gene": "S",
-            "left": "S",
-            "pos": 439,
-            "right": "K"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "I",
-            "pos": 2501,
-            "right": "T"
+            "left": "N",
+            "pos": 501,
+            "right": "Y"
           }
         ],
         "synonymous": [
           {
             "left": "C",
-            "pos": 8047,
+            "pos": 1,
             "right": "T"
           }
         ]
       },
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_439&f_region=Europe",
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.501Y.V1?c=gt-S_501",
       "snps": [
-        7766,
-        22878
-      ]
+        23062,
+        23603,
+        24913
+      ],
+      "type": "variant"
     },
     {
-      "build_name": "S.Y453F",
+      "build_name": "S.501Y.V2",
       "cluster_data": [],
-      "col": "#ff1a1a",
+      "col": "#ff0000",
       "country_info": [],
-      "display_name": "S:Y453F",
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y453F?c=gt-S_453&f_region=Europe",
-      "snps": [
-        22919
-      ]
-    },
-    {
-      "build_name": "S.S98F",
-      "cluster_data": [],
-      "col": "#911eb4",
-      "country_info": [],
-      "display_name": "S:S98F",
+      "display_name": "20I/501Y.V2",
+      "graphing": true,
       "mutations": {
         "nonsynonymous": [
           {
             "gene": "S",
-            "left": "S",
-            "pos": 98,
-            "right": "F"
-          },
-          {
-            "gene": "N",
-            "left": "P",
-            "pos": 199,
-            "right": "L"
-          },
-          {
-            "gene": "ORF3a",
-            "left": "Q",
-            "pos": 38,
-            "right": "R"
-          },
-          {
-            "gene": "ORF3a",
-            "left": "G",
-            "pos": 172,
-            "right": "R"
-          },
-          {
-            "gene": "ORF3a",
-            "left": "V",
-            "pos": 202,
-            "right": "L"
+            "left": "N",
+            "pos": 501,
+            "right": "Y"
           }
         ],
         "synonymous": [
           {
             "left": "C",
-            "pos": 28651,
+            "pos": 1,
             "right": "T"
           }
         ]
       },
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.S98F?c=gt-S_98&f_region=Europe",
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.501Y.V2?c=gt-S_501",
       "snps": [
-        21854,
-        25504
-      ]
+        21800,
+        23062,
+        23663
+      ],
+      "type": "variant"
+    },
+    {
+      "build_name": "S.501Y.V3",
+      "cluster_data": [],
+      "col": "#ff8080",
+      "country_info": [],
+      "display_name": "20I/501Y.V3",
+      "graphing": true,
+      "mutations": {
+        "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "N",
+            "pos": 501,
+            "right": "Y"
+          }
+        ],
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 1,
+            "right": "T"
+          }
+        ]
+      },
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.501Y.V3?c=gt-S_501",
+      "snps": [
+        21620,
+        23062,
+        23524
+      ],
+      "type": "variant"
     },
     {
       "build_name": "S.L452R",
       "cluster_data": [],
-      "col": "#b30000",
+      "col": "#660066",
       "country_info": [],
-      "display_name": "S:L452R",
+      "display_name": "20C/S:452R",
+      "graphing": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -339,33 +307,116 @@
           }
         ]
       },
+      "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.L452R?c=gt-S_13,152,452",
       "snps": [
         21599,
         22017,
         22916
-      ]
+      ],
+      "type": "variant"
     },
     {
-      "build_name": "S.Q677",
+      "build_name": "S.N439K",
       "cluster_data": [],
-      "col": "#000099",
+      "col": "#0000ff",
       "country_info": [],
-      "display_name": "S:Q677",
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677?c=gt-S_677",
+      "display_name": "20A/S:439K",
+      "graphing": true,
+      "mutations": {
+        "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 439,
+            "right": "K"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "I",
+            "pos": 2501,
+            "right": "T"
+          }
+        ],
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 8047,
+            "right": "T"
+          }
+        ]
+      },
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_439&f_region=Europe",
       "snps": [
-        23592
+        7766,
+        22878
       ],
-      "snps2": [
-        23591
-      ]
+      "type": "variant"
+    },
+    {
+      "build_name": "S.S98F",
+      "cluster_data": [],
+      "col": "#006600",
+      "country_info": [],
+      "display_name": "20A/S:98F",
+      "graphing": true,
+      "mutations": {
+        "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 98,
+            "right": "F"
+          },
+          {
+            "gene": "N",
+            "left": "P",
+            "pos": 199,
+            "right": "L"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "Q",
+            "pos": 38,
+            "right": "R"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "G",
+            "pos": 172,
+            "right": "R"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "V",
+            "pos": 202,
+            "right": "L"
+          }
+        ],
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 28651,
+            "right": "T"
+          }
+        ]
+      },
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.S98F?c=gt-S_98&f_region=Europe",
+      "snps": [
+        21854,
+        25504
+      ],
+      "type": "variant"
     },
     {
       "build_name": "S.D80Y",
       "cluster_data": [],
-      "col": "#3cb44b",
+      "col": "#b3d9ff",
       "country_info": [],
-      "display_name": "S:D80Y",
+      "display_name": "20C/S:80Y",
+      "graphing": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -472,18 +523,21 @@
           }
         ]
       },
+      "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.D80Y?f_region=Europe",
       "snps": [
         21799,
         3098
-      ]
+      ],
+      "type": "variant"
     },
     {
       "build_name": "S.A626S",
       "cluster_data": [],
-      "col": "#0000ff",
+      "col": "#66ffb3",
       "country_info": [],
-      "display_name": "S:A626S",
+      "display_name": "20B/S:626S",
+      "graphing": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -494,18 +548,21 @@
           }
         ]
       },
+      "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.A626S?f_region=Europe",
       "snps": [
         23437,
         771
-      ]
+      ],
+      "type": "variant"
     },
     {
       "build_name": "S.V1122L",
       "cluster_data": [],
-      "col": "#660066",
+      "col": "#666699",
       "country_info": [],
-      "display_name": "S:V1122L",
+      "display_name": "20B/S:1122L",
+      "graphing": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -516,11 +573,92 @@
           }
         ]
       },
+      "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.V1122L?c=gt-S_1122&f_region=Europe",
       "snps": [
         24925,
         9119
-      ]
+      ],
+      "type": "variant"
+    },
+    {
+      "build_name": "S.N501",
+      "cluster_data": [],
+      "col": "#ff99ff",
+      "country_info": [],
+      "display_name": "S:N501",
+      "graphing": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.N501",
+      "snps": [
+        23063
+      ],
+      "snps2": [
+        23062
+      ],
+      "type": "mutation"
+    },
+    {
+      "build_name": "S.E484",
+      "cluster_data": [],
+      "col": "#006600",
+      "country_info": [],
+      "display_name": "S:E484",
+      "graphing": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484",
+      "snps": [
+        23011
+      ],
+      "type": "mutation"
+    },
+    {
+      "build_name": "S.H69-",
+      "cluster_data": [],
+      "col": "#ffcc00",
+      "country_info": [],
+      "display_name": "S:H69-",
+      "gaps": [
+        21766,
+        21767,
+        21768
+      ],
+      "graphing": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.H69-?c=gt-S_69,501,453",
+      "snps": [],
+      "type": "mutation"
+    },
+    {
+      "build_name": "S.Q677",
+      "cluster_data": [],
+      "col": "#000099",
+      "country_info": [],
+      "display_name": "S:Q677",
+      "graphing": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677?c=gt-S_677",
+      "snps": [
+        23592
+      ],
+      "snps2": [
+        23591
+      ],
+      "type": "mutation"
+    },
+    {
+      "build_name": "S.Y453F",
+      "cluster_data": [],
+      "col": "#ff1a1a",
+      "country_info": [],
+      "display_name": "S:Y453F",
+      "graphing": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y453F?c=gt-S_453&f_region=Europe",
+      "snps": [
+        22919
+      ],
+      "type": "mutation"
     }
   ]
 }
