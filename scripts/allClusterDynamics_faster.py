@@ -52,6 +52,7 @@ from helpers import *
 from paths import *
 from clusters import *
 from bad_sequences import *
+from approx_first_dates import *
 
 def get_division_summary(cluster_meta, chosen_country):
 
@@ -110,6 +111,9 @@ def marker_size(n):
         return 20
     else:
         return 5
+
+# Store first date alarms
+alert_first_date = {}
 
 ##################################
 ##################################
@@ -385,6 +389,20 @@ for clus in clus_to_run:
     print(country_info_df.sort_values(by="first_seq"))
     print("\n")
 
+    ii = 0
+    firstseqdate = country_info_df['first_seq'][ii]
+    while firstseqdate < "2019-12-01":
+        ii+=1
+        firstseqdate = country_info_df['first_seq'][ii]
+
+    if clus in cluster_first_dates:
+        #datetime.datetime.strptime(cluster_first_dates[clus]["first_date"],"%Y-%m-%d")
+        alert = "OK"
+        if firstseqdate < cluster_first_dates[clus]["first_date"]:
+            alert = f"ALERT: sequence date of {firstseqdate}"
+
+        alert_first_date[clus] = alert
+
     # Make a version of N501 which does not have as much UK sequences for increased viewability
     if clus == "S501":
         nouk_501_meta = cluster_meta[cluster_meta['country'].apply(lambda x: x != "United Kingdom")]
@@ -458,8 +476,11 @@ for clus in clus_to_run:
             fh.write(f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)")
 
     if print_acks:
-        acknowledgement_table = cluster_meta.loc[:,['strain', 'gisaid_epi_isl', 'originating_lab', 'submitting_lab', 'authors']]
+        # remove all but EPI_ISL on request from GISAID
+        #acknowledgement_table = cluster_meta.loc[:,['strain', 'gisaid_epi_isl', 'originating_lab', 'submitting_lab', 'authors']]
+        acknowledgement_table = cluster_meta.loc[:,['gisaid_epi_isl']]
         acknowledgement_table.to_csv(f'{acknowledgement_folder}{clus}_acknowledgement_table.tsv', sep="\t")
+
 
 
 
@@ -796,6 +817,9 @@ if "all" in clus_answer:
 if print_files and "all" in clus_answer:
     with open(tables_path+f'perVariant_countries_toPlot.json', 'w') as fh:
         json.dump(countries_plotted, fh)
+
+print("Date alerts:")
+print(alert_first_date)
 
 
 #####################################################################
