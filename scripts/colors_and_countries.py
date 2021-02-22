@@ -24,7 +24,8 @@ country_list =[
 'Lithuania',
 'Iceland',
 'Czech Republic',
-'Israel'
+'Israel',
+'Finland'
 ]
 
 colors = [
@@ -51,7 +52,8 @@ colors = [
 '#ff66ff',
 '#0000ff',
 '#006600',
-'#cc00cc'
+'#cc00cc',
+'#993300'
 ]
 
 #separate out Scotland, England, NI, Wales...
@@ -97,7 +99,6 @@ country_list_2 = [
     "Turkey",
     "South Africa",
     "United Arab Emirates",
-    "Finland",
     "Jordan",
     "Poland",
     "Romania",
@@ -109,7 +110,9 @@ country_list_2 = [
     "Latvia",
     "Zambia",
     "Mozambique",
-    "Nigeria"
+    "Nigeria",
+    "Aruba",
+    "North Macedonia"
 ]
 
 country_styles_2 = {

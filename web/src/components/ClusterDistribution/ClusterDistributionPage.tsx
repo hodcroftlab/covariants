@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react'
 
 import copy from 'fast-copy'
-import { pickBy } from 'lodash'
+import { mapValues, pickBy } from 'lodash'
 import { useDispatch, useSelector } from 'react-redux'
 import { Card, CardBody, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 import styled from 'styled-components'
@@ -177,11 +177,31 @@ export function ClusterDistributionPage() {
     [],
   )
 
+  const handleClusterSelectAll = useCallback(
+    () => setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: true }))),
+    [],
+  )
+
+  const handleClusterDeselectAll = useCallback(
+    () => setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: false }))),
+    [],
+  )
+
   const handleCountryCheckedChange = useCallback(
     (country: string) =>
       setCountries((oldCountries) => {
         return { ...oldCountries, [country]: { ...oldCountries[country], enabled: !oldCountries[country].enabled } }
       }),
+    [],
+  )
+
+  const handleCountrySelectAll = useCallback(
+    () => setCountries((oldCountries) => mapValues(oldCountries, (country) => ({ ...country, enabled: true }))),
+    [],
+  )
+
+  const handleCountryDeselectAll = useCallback(
+    () => setCountries((oldCountries) => mapValues(oldCountries, (country) => ({ ...country, enabled: false }))),
     [],
   )
 
@@ -212,7 +232,11 @@ export function ClusterDistributionPage() {
                   coutriesCollapsedByDefault={false}
                   enabledFilters={enabledFilters}
                   onClusterFilterChange={handleClusterCheckedChange}
+                  onClusterFilterSelectAll={handleClusterSelectAll}
+                  onClusterFilterDeselectAll={handleClusterDeselectAll}
                   onCountryFilterChange={handleCountryCheckedChange}
+                  onCountryFilterSelectAll={handleCountrySelectAll}
+                  onCountryFilterDeselectAll={handleCountryDeselectAll}
                 />
               </SidebarFlex>
 

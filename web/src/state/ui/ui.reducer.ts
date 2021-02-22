@@ -8,7 +8,7 @@ export enum PerCountryTooltipSortBy {
 }
 
 export const perCountryTooltipSortByDefault = PerCountryTooltipSortBy.frequency
-export const perCountryTooltipSortReversedDefault = true
+export const perCountryTooltipSortReversedDefault = false
 
 export interface UiState {
   perCountryTooltipSortBy: PerCountryTooltipSortBy

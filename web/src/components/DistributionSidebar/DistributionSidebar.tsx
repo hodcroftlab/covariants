@@ -14,7 +14,11 @@ export interface DistributionSidebarProps {
   coutriesCollapsedByDefault?: boolean
   enabledFilters: string[]
   onClusterFilterChange(cluster: string): void
+  onClusterFilterSelectAll(): void
+  onClusterFilterDeselectAll(): void
   onCountryFilterChange(country: string): void
+  onCountryFilterSelectAll(): void
+  onCountryFilterDeselectAll(): void
 }
 
 export function DistributionSidebar({
@@ -24,7 +28,11 @@ export function DistributionSidebar({
   coutriesCollapsedByDefault = true,
   enabledFilters,
   onClusterFilterChange,
+  onClusterFilterSelectAll,
+  onClusterFilterDeselectAll,
   onCountryFilterChange,
+  onCountryFilterSelectAll,
+  onCountryFilterDeselectAll,
 }: DistributionSidebarProps) {
   const [clustersColapsed, setClustersCollapsed] = useState(clustersCollapsedByDefault)
   const [countriesCollapsed, setCountriesCollapsed] = useState(coutriesCollapsedByDefault)
@@ -36,6 +44,8 @@ export function DistributionSidebar({
           key="country-filters"
           countries={countries}
           onFilterChange={onCountryFilterChange}
+          onFilterSelectAll={onCountryFilterSelectAll}
+          onFilterDeselectAll={onCountryFilterDeselectAll}
           collapsed={countriesCollapsed}
           setCollapsed={setCountriesCollapsed}
         />
@@ -46,6 +56,8 @@ export function DistributionSidebar({
           withIcons
           countries={countries}
           onFilterChange={onCountryFilterChange}
+          onFilterSelectAll={onCountryFilterSelectAll}
+          onFilterDeselectAll={onCountryFilterDeselectAll}
           collapsed={countriesCollapsed}
           setCollapsed={setCountriesCollapsed}
         />
@@ -55,12 +67,25 @@ export function DistributionSidebar({
           key="cluster-filters"
           clusters={clusters}
           onFilterChange={onClusterFilterChange}
+          onFilterSelectAll={onClusterFilterSelectAll}
+          onFilterDeselectAll={onClusterFilterDeselectAll}
           collapsed={clustersColapsed}
           setCollapsed={setClustersCollapsed}
         />
       ),
     }),
-    [clusters, clustersColapsed, countries, countriesCollapsed, onClusterFilterChange, onCountryFilterChange],
+    [
+      clusters,
+      clustersColapsed,
+      countries,
+      countriesCollapsed,
+      onClusterFilterChange,
+      onClusterFilterDeselectAll,
+      onClusterFilterSelectAll,
+      onCountryFilterChange,
+      onCountryFilterDeselectAll,
+      onCountryFilterSelectAll,
+    ],
   )
 
   return (
