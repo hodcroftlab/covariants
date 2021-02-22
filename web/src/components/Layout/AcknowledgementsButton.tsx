@@ -62,6 +62,10 @@ export const AcknowledgementsButtonStyled = styled.button`
   box-shadow: none;
   outline: none;
   background: transparent;
+
+  &:focus {
+    outline: none;
+  }
 `
 
 export function AcknowledgementsButton({ className }: { className?: string }) {
