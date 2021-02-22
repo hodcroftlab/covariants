@@ -2,11 +2,12 @@
 import React, { useMemo } from 'react'
 
 import { get } from 'lodash'
+import { parseVariant } from 'src/components/Common/parseVariant'
 import styled from 'styled-components'
 
 import type { Mutation, MutationColors } from 'src/types'
 import { theme } from 'src/theme'
-import { AMINOACID_COLORS, GENE_COLORS, NUCLEOTIDE_COLORS } from 'src/colors'
+import { AMINOACID_COLORS, CLADE_COLORS, GENE_COLORS, NUCLEOTIDE_COLORS } from 'src/colors'
 import { getClusterNames, getClusters } from 'src/io/getClusters'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
 import { parseAminoacidMutation } from 'src/components/Common/parseAminoacidMutation'
@@ -49,6 +50,15 @@ export const PrefixText = styled.span`
   background-color: ${(props) => props.theme.gray550};
 `
 
+export const ParentText = styled.span<{ $color: string }>`
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 1px;
+  color: ${(props) => props.theme.white};
+  background-color: ${(props) => props.$color};
+`
+
 export const GeneText = styled.span<{ $color: string }>`
   padding: 1px 2px;
   background-color: ${(props) => props.$color};
@@ -64,6 +74,12 @@ export const ColoredText = styled.span<{ $color: string }>`
 export const PositionText = styled.span`
   padding: 1px 2px;
   background-color: ${(props) => props.theme.gray300};
+  color: ${(props) => props.theme.gray800};
+`
+
+export const VersionText = styled.span`
+  padding: 1px 2px;
+  background-color: ${(props) => props.theme.gray400};
   color: ${(props) => props.theme.gray800};
 `
 
@@ -88,21 +104,6 @@ export function formatMutationMaybe(mutation: Mutation | string) {
   return formatMutation(mutation)
 }
 
-export function aminoacidMutationToObjectAndString(mutation: Mutation | string) {
-  let mutationObj: Mutation | undefined
-  let mutationStr: string | undefined
-
-  if (typeof mutation === 'string') {
-    mutationObj = aminoacidMutationFromStringMaybe(mutation)
-    mutationStr = mutation
-  } else {
-    mutationObj = mutation
-    mutationStr = formatMutation(mutation)
-  }
-
-  return { mutationObj, mutationStr }
-}
-
 export function formatVariantUrl(mutation: string) {
   const cluster = clusters.find(({ display_name }) => display_name === mutation)
   if (!cluster) {
@@ -121,8 +122,9 @@ export interface MutationBadgeProps {
 }
 
 export function MutationBadge({ prefix, mutation, colors, tooltip }: MutationBadgeProps) {
-  const { gene, left, pos, right, note } = mutation
+  const { parent, gene, left, pos, right, version, note } = mutation
 
+  const parentColor = get(CLADE_COLORS, parent ?? '', DEFAULT_COLOR)
   const geneColor = get(GENE_COLORS, gene ?? '', DEFAULT_COLOR)
   const leftColor = get(colors, left ?? '', DEFAULT_COLOR)
   const rightColor = get(colors, right ?? '', DEFAULT_COLOR)
@@ -131,6 +133,7 @@ export function MutationBadge({ prefix, mutation, colors, tooltip }: MutationBad
     <MutationBadgeBox title={tooltip}>
       <MutationWrapper>
         {prefix && <PrefixText>{prefix}</PrefixText>}
+        {parent && <ParentText $color={parentColor}>{`${parent}/`}</ParentText>}
         {gene && (
           <>
             <GeneText $color={geneColor}>
@@ -142,6 +145,7 @@ export function MutationBadge({ prefix, mutation, colors, tooltip }: MutationBad
         {left && <ColoredText $color={leftColor}>{left}</ColoredText>}
         <PositionText>{pos}</PositionText>
         {right && <ColoredText $color={rightColor}>{right}</ColoredText>}
+        {version && <VersionText>{`${version}/`}</VersionText>}
       </MutationWrapper>
       {note && <span>{note}</span>}
     </MutationBadgeBox>
@@ -199,13 +203,28 @@ export const LinkUnstyled = styled(LinkSmart)`
   }
 `
 
+export function variantToObjectAndString(mutation: Mutation | string) {
+  let mutationObj: Mutation | undefined
+  let mutationStr: string | undefined
+
+  if (typeof mutation === 'string') {
+    mutationObj = parseVariant(mutation)
+    mutationStr = mutation
+  } else {
+    mutationObj = mutation
+    mutationStr = formatMutation(mutation)
+  }
+
+  return { mutationObj, mutationStr }
+}
+
 export interface VariantLinkBadgeProps {
   name: Mutation | string
   href?: string
 }
 
 export function VariantLinkBadge({ name, href }: VariantLinkBadgeProps) {
-  const { mutationObj, mutationStr } = useMemo(() => aminoacidMutationToObjectAndString(name), [name])
+  const { mutationObj, mutationStr } = useMemo(() => variantToObjectAndString(name), [name])
   const url = useMemo(() => href ?? formatVariantUrl(mutationStr), [href, mutationStr])
 
   if (!mutationObj) {
