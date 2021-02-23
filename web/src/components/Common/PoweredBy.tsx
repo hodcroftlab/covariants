@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { Col, Row } from 'reactstrap'
-import gisaidLogoUrl from 'src/assets/images/gisaid_logo.png'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import styled from 'styled-components'
 
@@ -42,12 +41,6 @@ const Wrapper = styled.div`
 `
 
 const mainLinks = [
-  {
-    title: 'GISAID',
-    url: `https://gisaid.org`,
-    alt: 'Link to Gisaid.org, GISAID logo',
-    icon: <img className="my-auto" src={gisaidLogoUrl} alt="GISAID logo" height={30} />,
-  },
   {
     title: 'Nextstrain',
     url: `https://nextstrain.org?utm_source=${PROJECT_NAME}`,

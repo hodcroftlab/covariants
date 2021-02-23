@@ -12,8 +12,6 @@ import { PoweredBy } from 'src/components/Common/PoweredBy'
 import { getCopyrightYearRange } from 'src/helpers/getCopyrightYearRange'
 import { getVersionString } from 'src/helpers/getVersionString'
 
-import gisaidLogoUrl from 'src/assets/images/gisaid_logo.png'
-
 const FooterContainer = styled(Container)`
   padding: 7px 10px;
   border-top-left-radius: 3px;
@@ -22,20 +20,28 @@ const FooterContainer = styled(Container)`
 
 const CopyrightText = styled.div`
   font-size: 0.75rem;
-  flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  @media (max-width: 767.98px) {
+    font-size: 0.5rem;
+  }
+`
 
-  @media (max-width: 575.98px) {
+const GisaidTacText = styled.div`
+  width: 100%;
+  font-size: 0.75rem;
+  text-align: center;
+  @media (max-width: 767.98px) {
     font-size: 0.5rem;
   }
 `
 
 const VersionText = styled.div`
-  flex-grow: 1;
+  width: 100%;
   font-size: 0.75rem;
-  text-align: right;
-
-  @media (max-width: 991.98px) {
-    display: none;
+  text-align: center;
+  @media (max-width: 767.98px) {
+    font-size: 0.5rem;
   }
 `
 
@@ -62,24 +68,20 @@ export function FooterContent() {
         </Col>
       </Row>
 
-      <Row noGutters className="my-1">
-        <Col className="d-flex">
-          <small className="ml-auto">
-            {'Enabled by data from '}
-            <LinkExternal href="https://www.gisaid.org/" icon={null}>
-              <img className="my-auto" src={gisaidLogoUrl} alt="GISAID logo" height={18} />
-            </LinkExternal>
-          </small>
-        </Col>
-      </Row>
-
       <Row noGutters>
-        <Col className="d-flex p-0">
-          <CopyrightText className="mr-auto my-auto">
-            {`${PROJECT_NAME} (c) ${copyrightYearRange} ${COMPANY_NAME}`}
-          </CopyrightText>
+        <Col className="d-flex p-0 flex-wrap">
+          <CopyrightText>{`${PROJECT_NAME} (c) ${copyrightYearRange} ${COMPANY_NAME}`}</CopyrightText>
 
-          <VersionText className="ml-auto my-auto">{getVersionString()}</VersionText>
+          <GisaidTacText>
+            <span>{'GISAID data provided on this website are a subject to '}</span>
+            <LinkExternal href="https://www.gisaid.org/registration/terms-of-use/" icon={null}>
+              {'GISAID Terms and Conditions'}
+            </LinkExternal>
+          </GisaidTacText>
+
+          <VersionText>
+            <span>{getVersionString()}</span>
+          </VersionText>
         </Col>
       </Row>
     </FooterContainer>
