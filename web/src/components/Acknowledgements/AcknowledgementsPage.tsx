@@ -11,6 +11,7 @@ import AcknowledgementsContent from './AcknowledgementsContent.md'
 
 export const AcknowledgementsPageContainer = styled(Container)`
   max-width: 1200px;
+  padding: 0 0.5rem;
 `
 
 const clusters = getClusters()
@@ -19,19 +20,19 @@ export function AcknowledgementsPage() {
   return (
     <Layout>
       <AcknowledgementsPageContainer>
-        <Row noGutters>
+        <Row>
           <Col>
             <h1 className="text-center">{'Acknowledgements'}</h1>
           </Col>
         </Row>
 
-        <Row noGutters>
+        <Row>
           <Col>
             <AcknowledgementsContent />
           </Col>
         </Row>
 
-        <Row noGutters>
+        <Row>
           <Col>
             {clusters.map((cluster) => (
               <AcknowledgementsCard key={cluster.build_name} cluster={cluster} />

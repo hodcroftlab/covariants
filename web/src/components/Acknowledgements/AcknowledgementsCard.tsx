@@ -12,6 +12,15 @@ import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 import { fetchEpiIsls } from 'src/state/data/data.actions'
 import { selectEpiIsls, selectEpiIslsError, selectEpiIslsLoading } from 'src/state/data/data.selectors'
 import PaginationComponent from 'react-reactstrap-pagination'
+import styled from 'styled-components'
+
+export const PaginationContainer = styled.div`
+  display: flex;
+`
+
+export const Pagination = styled(PaginationComponent)`
+  margin: 0 auto;
+`
 
 export function AcknowledgementsCardError({ error }: { error: string }) {
   return (
@@ -66,18 +75,24 @@ export function AcknowledgementsCard({ cluster }: AcknowledgementsCardProps) {
   const handlePagination = useCallback((page: number) => setPage(page - 1) /* one-based to zero-based */, [])
 
   return (
-    <CardCollapsible title={cluster.display_name} collapsed={collapsed} setCollapsed={setCollapsed}>
+    <CardCollapsible className="my-2" title={cluster.display_name} collapsed={collapsed} setCollapsed={setCollapsed}>
       {!collapsed && (
         <CardBody>
-          <AcknowledgementEpiIslPage cluster={cluster} page={page} />
+          <PaginationContainer>
+            <Pagination
+              totalItems={numPages}
+              pageSize={1}
+              onSelect={handlePagination}
+              maxPaginationNumbers={5}
+              defaultActivePage={1}
+              firstPageText="<<"
+              previousPageText="<"
+              nextPageText=">"
+              lastPageText=">>"
+            />
+          </PaginationContainer>
 
-          <PaginationComponent
-            totalItems={numPages}
-            pageSize={1}
-            onSelect={handlePagination}
-            maxPaginationNumbers={9}
-            defaultActivePage={1}
-          />
+          <AcknowledgementEpiIslPage cluster={cluster} page={page} />
         </CardBody>
       )}
     </CardCollapsible>
