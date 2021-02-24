@@ -44,7 +44,7 @@ export function matchingUrl(url: string, pathname: string): boolean {
 const navLinksRight = [
   {
     text: 'Follow',
-    title: `Follow @${TWITTER_USERNAME_RAW} me on Twitter`,
+    title: `Follow @${TWITTER_USERNAME_RAW} on Twitter`,
     url: `https://twitter.com/${TWITTER_USERNAME_RAW}`,
     alt: 'Link to Twitter, with blue Twitter bird logo',
     icon: <FaTwitter size={22} color="#08a0e9" />,
