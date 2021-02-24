@@ -28,7 +28,7 @@ figure_path = "../covariants/overall_trends_figures/"
 tables_path = "../covariants/cluster_tables/"
 overall_tables_file = "../covariants/cluster_tables/all_tables.tsv"
 acknowledgement_folder = "../covariants/acknowledgements/"
-acknowledgement_folder_new = "../covariants/web/data/"
+acknowledgement_folder_new = "../covariants/web/data/acknowledgements/"
 figure_only_path = "../covariants/figures/"
 # This assumes that `covariants` sites next to `ncov`
 # Otherwise, modify the paths above to put the files wherever you like.
@@ -508,15 +508,14 @@ for clus in clus_to_run:
             acknowledgement_keys['acknowledgements'][clus_display]['numChunks'] = len(chunks)
 
             for ch, fn in zip(chunks, ack_file_names):
-                #ch.to_csv(ack_out_folder+"", sep="")
                 with open(ack_out_folder+fn+".json", 'w') as fh:
                     json.dump(ch, fh, indent=2, sort_keys=True)
 
 
 #only print if doing 'all' or it'll overwrite a multi-variant file with just one var.
-if print_acks and "all" in clus_answer:
-    with open(acknowledgement_folder_new+'acknowledgements_all.json', 'w') as fh:
-        json.dump(acknowledgement_by_variant, fh, indent=2, sort_keys=True)
+#if print_acks and "all" in clus_answer:
+#    with open(acknowledgement_folder_new+'acknowledgements_all.json', 'w') as fh:
+#        json.dump(acknowledgement_by_variant, fh, indent=2, sort_keys=True)
 
 if print_acks and "all" in clus_answer:
     with open(acknowledgement_folder_new+'acknowledgements_keys.json', 'w') as fh:
