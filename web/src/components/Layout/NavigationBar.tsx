@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 import { connect } from 'react-redux'
-import { AcknowledgementsButton } from 'src/components/Layout/AcknowledgementsButton'
 import styled from 'styled-components'
 import {
   Collapse,
@@ -31,6 +30,7 @@ const navLinksLeft = {
   '/per-country': 'Per country',
   '/per-variant': 'Per variant',
   '/shared-mutations': 'Shared Mutations',
+  '/acknowledgements': 'Acknowledgements',
 }
 
 export function matchingUrl(url: string, pathname: string): boolean {
@@ -173,9 +173,6 @@ export function NavigationBarDisconnected({ pathname }: NavigationBarProps) {
               </NavItem>
             )
           })}
-          <NavItem>
-            <NavLink tag={AcknowledgementsButton} />
-          </NavItem>
         </NavWrappable>
 
         <Nav className="ml-auto" navbar>
