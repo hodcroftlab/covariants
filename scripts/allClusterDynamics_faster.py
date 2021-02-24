@@ -28,6 +28,7 @@ figure_path = "../covariants/overall_trends_figures/"
 tables_path = "../covariants/cluster_tables/"
 overall_tables_file = "../covariants/cluster_tables/all_tables.tsv"
 acknowledgement_folder = "../covariants/acknowledgements/"
+acknowledgement_folder_new = "../covariants/web/data/"
 figure_only_path = "../covariants/figures/"
 # This assumes that `covariants` sites next to `ncov`
 # Otherwise, modify the paths above to put the files wherever you like.
@@ -114,6 +115,10 @@ def marker_size(n):
 
 # Store first date alarms
 alert_first_date = {}
+
+#store acknoweledgements
+acknowledgement_by_variant = {}
+acknowledgement_by_variant['acknowledgements'] = {}
 
 ##################################
 ##################################
@@ -476,12 +481,18 @@ for clus in clus_to_run:
             fh.write(f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)")
 
     if print_acks:
-        # remove all but EPI_ISL on request from GISAID
+        # remove all but EPI_ISL, on request from GISAID
         #acknowledgement_table = cluster_meta.loc[:,['strain', 'gisaid_epi_isl', 'originating_lab', 'submitting_lab', 'authors']]
         acknowledgement_table = cluster_meta.loc[:,['gisaid_epi_isl']]
-        acknowledgement_table.to_csv(f'{acknowledgement_folder}{clus}_acknowledgement_table.tsv', sep="\t")
+        # do not put in acknowledgement folder, on request from GISAID
+        #acknowledgement_table.to_csv(f'{acknowledgement_folder}{clus}_acknowledgement_table.tsv', sep="\t")
+        if clus is not 'DanishCluster':
+            acknowledgement_by_variant['acknowledgements'][clus_display] = cluster_meta.loc[:,['gisaid_epi_isl']]["gisaid_epi_isl"].tolist()
 
-
+#only print if doing 'all' or it'll overwrite a multi-variant file with just one var.
+if print_acks and "all" in clus_answer:
+    with open(acknowledgement_folder_new+'acknowledgements_all.json', 'w') as fh:
+        json.dump(acknowledgement_by_variant, fh, indent=2, sort_keys=True)
 
 
 ######################################################################################################
