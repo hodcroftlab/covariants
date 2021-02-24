@@ -1,20 +1,23 @@
-import { combineReducers } from 'redux'
+import type { RouterState } from 'connected-next-router/types'
 import { routerReducer } from 'connected-next-router'
-import { RouterState } from 'connected-next-router/types'
+import { combineReducers } from 'redux'
 
+import { dataReducer, DataState } from './data/data.reducer'
 import { errorReducer, ErrorState } from './error/error.reducer'
 import { uiReducer, UiState } from './ui/ui.reducer'
 
 export interface State {
-  router: RouterState
+  data: DataState
   error: ErrorState
+  router: RouterState
   ui: UiState
 }
 
 const rootReducer = () =>
   combineReducers({
-    router: routerReducer,
+    data: dataReducer,
     error: errorReducer,
+    router: routerReducer,
     ui: uiReducer,
   })
 
