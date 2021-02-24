@@ -16,11 +16,12 @@ import styled from 'styled-components'
 
 export const PaginationContainer = styled.div`
   display: flex;
+  & > * {
+    margin: 0 auto;
+  }
 `
 
-export const Pagination = styled(PaginationComponent)`
-  margin: 0 auto;
-`
+export const Pagination = styled(PaginationComponent)``
 
 export function AcknowledgementsCardError({ error }: { error: string }) {
   return (
