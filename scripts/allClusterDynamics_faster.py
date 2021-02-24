@@ -54,6 +54,7 @@ from paths import *
 from clusters import *
 from bad_sequences import *
 from approx_first_dates import *
+import os
 
 def get_division_summary(cluster_meta, chosen_country):
 
@@ -119,6 +120,9 @@ alert_first_date = {}
 #store acknoweledgements
 acknowledgement_by_variant = {}
 acknowledgement_by_variant['acknowledgements'] = {}
+
+acknowledgement_keys = {}
+acknowledgement_keys['acknowledgements'] = {}
 
 ##################################
 ##################################
@@ -489,11 +493,34 @@ for clus in clus_to_run:
         if clus is not 'DanishCluster':
             acknowledgement_by_variant['acknowledgements'][clus_display] = cluster_meta.loc[:,['gisaid_epi_isl']]["gisaid_epi_isl"].tolist()
 
+        #only do this for 'all' runs as otherwise the main file won't be updated.
+        if clus is not 'DanishCluster' and 'all' in clus_answer:
+            ack_out_folder = acknowledgement_folder_new+f'{clus_display}/'
+            if not os.path.exists(ack_out_folder):
+                os.mkdir(ack_out_folder)
+            ack_list = acknowledgement_by_variant['acknowledgements'][clus_display]
+            chunk_size = 1000
+            chunks = [ack_list[i:i + chunk_size] for i in range(0, len(ack_list), chunk_size)]
+
+            #get number & file names
+            ack_file_names = ["{0:03}".format(i) for i in range(len(chunks))]
+            acknowledgement_keys['acknowledgements'][clus_display] = {}
+            acknowledgement_keys['acknowledgements'][clus_display]['numChunks'] = len(chunks)
+
+            for ch, fn in zip(chunks, ack_file_names):
+                #ch.to_csv(ack_out_folder+"", sep="")
+                with open(ack_out_folder+fn+".json", 'w') as fh:
+                    json.dump(ch, fh, indent=2, sort_keys=True)
+
+
 #only print if doing 'all' or it'll overwrite a multi-variant file with just one var.
 if print_acks and "all" in clus_answer:
     with open(acknowledgement_folder_new+'acknowledgements_all.json', 'w') as fh:
         json.dump(acknowledgement_by_variant, fh, indent=2, sort_keys=True)
 
+if print_acks and "all" in clus_answer:
+    with open(acknowledgement_folder_new+'acknowledgements_keys.json', 'w') as fh:
+        json.dump(acknowledgement_keys, fh, indent=2, sort_keys=True)
 
 ######################################################################################################
 ##################################
