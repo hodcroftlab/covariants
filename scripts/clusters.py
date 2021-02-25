@@ -73,7 +73,7 @@ clusters = {
             "graphing": True,
             "type": "variant",
             "country_info": [], 'col': "#ff0000",
-            "display_name": "20I/501Y.V2",
+            "display_name": "20H/501Y.V2",
             'build_name': "S.501Y.V2", 
             'nextstrain_url': "https://nextstrain.org/groups/neherlab/ncov/S.501Y.V2?c=gt-S_501", # color, no europe filter
             "mutations":{
@@ -91,7 +91,7 @@ clusters = {
             "graphing": True,
             "type": "variant",
             "country_info": [], 'col': "#ff8080",
-            "display_name": "20I/501Y.V3",
+            "display_name": "20J/501Y.V3",
             'build_name': "S.501Y.V3", 
             'nextstrain_url': "https://nextstrain.org/groups/neherlab/ncov/S.501Y.V3?c=gt-S_501", # color, no europe filter
             "mutations":{
