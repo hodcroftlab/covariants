@@ -8,6 +8,15 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 
 ---
 
+This variant is one of three 3 "Variants of Concern" reported at the end of 2020/beginning of 2021, in:
+- the UK (20I/501Y.V1) <Var name="20I/501Y.V1"/>
+- South Africa (20H/501Y.V2)  <Var name="20H/501Y.V2"/>
+- Brazil (20J/501Y.V3)   <Var name="20J/501Y.V3"/>
+
+See a <Link href="/shared-mutations">list of shared mutations</Link> for these variants. More information on each of these variants can be found by visiting the links above.
+
+---
+
 ### 20J/501Y.V3
 Also known as `P.1`
 Announced in January 2021, 501Y.V3 originated and/or initially expanded in Brazil ([Faria et al., Virological](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)), and was particularly associated with Manaus, Amazonas.
@@ -18,4 +27,6 @@ There is also a mutation in Nucleocapsid: <AaMut mut={'N:P80R'}/> and the deleti
 It does _not_ have the deletion at 69/70.
 
 See a [focal `S.N501` build filtered & zoomed to 501Y.V3](https://nextstrain.org/groups/neherlab/ncov/S.N501?f_subclade_membership=20J/501Y.V3&label=clade:20J/501Y.V3&p=grid&r=country)
+
+See a [focal `S.E484` build filtered & zoomed to 501Y.V3](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484&f_clade_membership=20J/501Y.V3&label=clade:20J/501Y.V3&p=grid&r=country)
 

@@ -8,6 +8,15 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 
 ---
 
+This variant is one of three 3 "Variants of Concern" reported at the end of 2020/beginning of 2021, in:
+- the UK (20I/501Y.V1) <Var name="20I/501Y.V1"/>
+- South Africa (20H/501Y.V2)  <Var name="20H/501Y.V2"/>
+- Brazil (20J/501Y.V3)   <Var name="20J/501Y.V3"/>
+
+See a <Link href="/shared-mutations">list of shared mutations</Link> for these variants. More information on each of these variants can be found by visiting the links above.
+
+---
+
 ### 20H/501Y.V2
 Also known as `B.1.351`
 Announced in December 2020, 501Y.V2 originated and/or initially expanded in South Africa ([Tegally et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.21.20248640v1)).
@@ -18,6 +27,8 @@ There is also a mutation in Nucleocapsid: <AaMut mut={'N:T205I'}/> and a deletio
 It does _not_ have the deletion at 69/70.
 
 See a [focal `S.N501` build filtered & zoomed to 501Y.V2](https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501&f_clade_membership=20H/501Y.V2&label=mlabel:20C/C23664T&p=grid&r=country)
+
+See a [focal `S.E484` build filtered & zoomed to 501Y.V2](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484&f_clade_membership=20H/501Y.V2&label=clade:20H/501Y.V2&p=grid&r=country)
 
 - Sera from individuals vaccined with the Moderna vaccine showed no significant reduction of neutralization against 501Y.V1 and a 6-fold reduction in 501Y.V2, but titers remained above levels expected to be protective [Moderna website](https://investors.modernatx.com/news-releases/news-release-details/moderna-covid-19-vaccine-retains-neutralizing-activity-against)
 - 20H/501Y.V2 is reported to have resistance to monoclonal antibodies and convalescent plasma, with one study finding 93% of 44 plasma samples showed a reduction in titer and 48% had no detectable neutralization activity ([Wibmer et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.18.427166v1)). A further study also detected reduction in neutralization by convalescent plasma ([Cele et al., medRxiv](https://www.medrxiv.org/content/10.1101/2021.01.26.21250224v1)).

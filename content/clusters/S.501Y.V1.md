@@ -8,11 +8,20 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 
 ---
 
+This variant is one of three 3 "Variants of Concern" reported at the end of 2020/beginning of 2021, in:
+- the UK (20I/501Y.V1) <Var name="20I/501Y.V1"/>
+- South Africa (20H/501Y.V2)  <Var name="20H/501Y.V2"/>
+- Brazil (20J/501Y.V3)   <Var name="20J/501Y.V3"/>
+
+See a <Link href="/shared-mutations">list of shared mutations</Link> for these variants. More information on each of these variants can be found by visiting the links above.
+
+---
+
 ### 20I/501Y.V1
 Also known as `B.1.1.7`
 Announced on the 14 Dec 2020, appears to have arisen and/or initially expanded in the South East of England.
 
-501Y.V1 is associated with multiple mutations in Spike, including: <AaMut mut={'S:N501Y'}/>, a deletion at 69/70 (as seen in <Var name="S:N439K"/> and <Var name="S:Y453F"/> (<LinkExternal href="https://www.biorxiv.org/content/10.1101/2020.12.14.422555v3">Kemp et al., bioRxiv</LinkExternal>) (<Link href="/variants/S.H69-">see <Var name="S:H69-"/> page</Link>)), as well as <AaMut mut={'S:Y144-'}/> (deletion), and <AaMut mut={'S:P681H'}/> (adjacent to the furin cleavage site).
+501Y.V1 is associated with multiple mutations in Spike, including: <AaMut mut={'S:N501Y'}/>, a deletion at 69/70 (as seen in <Var name="20A/S:439K"/> and <Var name="S:Y453F"/> (<LinkExternal href="https://www.biorxiv.org/content/10.1101/2020.12.14.422555v3">Kemp et al., bioRxiv</LinkExternal>) (<Link href="/variants/S.H69-">see <Var name="S:H69-"/> page</Link>)), as well as <AaMut mut={'S:Y144-'}/> (deletion), and <AaMut mut={'S:P681H'}/> (adjacent to the furin cleavage site).
 There is also a notable truncation of <code>ORF8</code>, with <AaMut mut={'ORF8:Q27*'}/> (becomes a stop codon) (deletion of <code>ORF8</code> was previously associated with reduced clinical severity (<LinkExternal href="https://www.thelancet.com/article/S0140-6736(20)31757-8/fulltext">Young et al., Lancet</LinkExternal>)), and mutations in Nucleocapsid: <AaMut mut={'N:D3L'}/> and <AaMut mut={'N:S235F'}/>, as well as a deletion in <code>ORF1a</code>(<code>Nsp6</code>) 3675-3677  (also seen in 501Y.V2 and 501Y.V3).
 
 The 69/70 deletion in this variant causes the S-assay within TaqPath tests to give a negative result, which can provide a useful proxy for prevalence of this variant (a phenomenon referred to as S-gene target failure or SGTF). 
