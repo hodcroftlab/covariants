@@ -1,23 +1,23 @@
 /* eslint-disable camelcase */
 import React from 'react'
 
-import { Col } from 'reactstrap'
 import { ClusterDatum } from 'src/io/getClusters'
 import styled from 'styled-components'
 import { Link } from '../Link/Link'
 
-const ClusterCol = styled(Col)`
+const ClusterButtonRow = styled.span`
+  flex: 1 0 150px;
   display: flex;
 
   @media (min-width: 992px) {
-    flex: 1 0 100%;
+    flex: 1 0 150px;
     flex-grow: 1;
     height: 50px;
-    margin: 6px 10px;
+    margin: 3px auto;
   }
 
   @media (max-width: 991.98px) {
-    flex: 1 0 200px;
+    flex: 1 0 150px;
     flex-grow: 0;
     height: 40px;
     margin: 3px 5px;
@@ -39,13 +39,12 @@ const ClusterCol = styled(Col)`
 `
 
 const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: string }>`
-  width: 100%;
-
   display: flex;
+  flex: 1 0 150px;
 
   @media (min-width: 992px) {
     justify-content: left;
-    padding: 0 3rem;
+    margin: 0 5px;
   }
 
   @media (max-width: 991.98px) {
@@ -71,6 +70,10 @@ const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: strin
 `
 
 const ClusterTitle = styled.h1<{ $isCurrent: boolean }>`
+  @media (min-width: 992px) {
+    margin-left: 1rem;
+  }
+
   @media (max-width: 991.98px) {
     font-size: 1rem;
     margin: auto 3px;
@@ -100,10 +103,10 @@ export function ClusterButton({ cluster, isCurrent }: ClusterButtonProps) {
   const { display_name, col } = cluster
 
   return (
-    <ClusterCol tag="span">
+    <ClusterButtonRow>
       <ClusterButtonComponent href={`/variants/${cluster.build_name}`} $isCurrent={isCurrent} $color={col}>
         <ClusterTitle $isCurrent={isCurrent}>{display_name}</ClusterTitle>
       </ClusterButtonComponent>
-    </ClusterCol>
+    </ClusterButtonRow>
   )
 }

@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
-import { Row } from 'reactstrap'
+import { Card, CardBody, CardHeader, Row } from 'reactstrap'
 import { ClusterDatum, getClustersGrouped } from 'src/io/getClusters'
 import styled from 'styled-components'
 
@@ -9,14 +9,40 @@ import { ClusterButton } from './ClusterButton'
 const clustersGrouped = getClustersGrouped()
 
 const ClustersRow = styled(Row)`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
 `
 
-const ClustersSubheading = styled.div`
-  text-align: left;
+const ClusterGroupCard = styled(Card)`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+
+  margin-bottom: 0.5rem;
+`
+
+const ClusterGroupHeader = styled(CardHeader)`
+  text-align: center;
   width: 100%;
-  padding-left: 5px;
-  color: var(--gray);
+  background: none;
+  color: ${(props) => props.theme.gray700};
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: capitalize;
+`
+
+const ClusterGroupBody = styled(CardBody)`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
 `
 
 export interface ClusterPanelProps {
@@ -28,16 +54,18 @@ export function ClusterButtonPanel({ currentCluster, className }: ClusterPanelPr
   return (
     <ClustersRow noGutters className={className}>
       {Object.entries(clustersGrouped).map(([clusterType, clusterGroup]) => (
-        <Fragment key={clusterType}>
-          <ClustersSubheading>{clusterType}</ClustersSubheading>
-          {clusterGroup.map((cluster) => (
-            <ClusterButton
-              key={cluster.display_name}
-              cluster={cluster}
-              isCurrent={cluster.display_name === currentCluster?.display_name}
-            />
-          ))}
-        </Fragment>
+        <ClusterGroupCard key={clusterType}>
+          <ClusterGroupHeader>{clusterType}</ClusterGroupHeader>
+          <ClusterGroupBody>
+            {clusterGroup.map((cluster) => (
+              <ClusterButton
+                key={cluster.display_name}
+                cluster={cluster}
+                isCurrent={cluster.display_name === currentCluster?.display_name}
+              />
+            ))}
+          </ClusterGroupBody>
+        </ClusterGroupCard>
       ))}
     </ClustersRow>
   )
