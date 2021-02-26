@@ -30,6 +30,7 @@ const navLinksLeft = {
   '/per-country': 'Per country',
   '/per-variant': 'Per variant',
   '/shared-mutations': 'Shared Mutations',
+  '/acknowledgements': 'Acknowledgements',
 }
 
 export function matchingUrl(url: string, pathname: string): boolean {
@@ -43,7 +44,7 @@ export function matchingUrl(url: string, pathname: string): boolean {
 const navLinksRight = [
   {
     text: 'Follow',
-    title: `Follow @${TWITTER_USERNAME_RAW} me on Twitter`,
+    title: `Follow @${TWITTER_USERNAME_RAW} on Twitter`,
     url: `https://twitter.com/${TWITTER_USERNAME_RAW}`,
     alt: 'Link to Twitter, with blue Twitter bird logo',
     icon: <FaTwitter size={22} color="#08a0e9" />,
@@ -69,17 +70,48 @@ export const Nav = styled(NavBase)`
   }
 `
 
+export const NavWrappable = styled(NavBase)`
+  overflow-y: scroll;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  width: 100%;
+
+  background-image: linear-gradient(to right, white, white), linear-gradient(to right, white, white),
+    linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)),
+    linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+  background-position: left center, right center, left center, right center;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-size: 20px 100%, 20px 100%, 10px 100%, 10px 100%;
+  background-attachment: local, local, scroll, scroll;
+
+  & .nav-link {
+    padding: 5px;
+  }
+`
+
 export const NavItem = styled(NavItemBase)`
-  margin: 3px auto;
   padding: 0;
+
+  flex-grow: 0;
+  flex-shrink: 0;
 
   &.active {
     background-color: #6bb24e;
-    border-radius: 10px;
+    border-radius: 5px;
   }
 
   &.active > .nav-link {
     color: white !important;
+  }
+
+  @media (max-width: 991.98px) {
+    margin: 0 auto;
   }
 `
 
@@ -131,7 +163,7 @@ export function NavigationBarDisconnected({ pathname }: NavigationBarProps) {
       <NavbarToggler onClick={toggle} />
 
       <Collapse isOpen={isOpen} navbar>
-        <Nav navbar>
+        <NavWrappable navbar>
           {Object.entries(navLinksLeft).map(([url, text]) => {
             return (
               <NavItem key={url} className={classNames(matchingUrl(url, pathname) && 'active')}>
@@ -141,7 +173,7 @@ export function NavigationBarDisconnected({ pathname }: NavigationBarProps) {
               </NavItem>
             )
           })}
-        </Nav>
+        </NavWrappable>
 
         <Nav className="ml-auto" navbar>
           {navLinksRight.map(({ text, title, url, alt, icon }) => (
