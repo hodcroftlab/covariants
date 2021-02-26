@@ -227,7 +227,10 @@ clusters = {
             #"build_name": "S.Q677H"
             #}
 
-
+# NY stuff
+            #"ORF811": {  'snps': [9866, 25516, 27924], 'cluster_data': [],
+            #'build_name': "ORF8.T11I"
+            #}
 
 #            "S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
 #            "country_info":[], 'col': "#8a8a8a", "display_name": "20A.EU1",
