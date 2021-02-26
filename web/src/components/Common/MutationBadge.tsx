@@ -221,9 +221,10 @@ export function variantToObjectAndString(mutation: Mutation | string) {
 export interface VariantLinkBadgeProps {
   name: Mutation | string
   href?: string
+  prefix?: string
 }
 
-export function VariantLinkBadge({ name, href }: VariantLinkBadgeProps) {
+export function VariantLinkBadge({ name, href, prefix }: VariantLinkBadgeProps) {
   const { mutationObj, mutationStr } = useMemo(() => variantToObjectAndString(name), [name])
   const url = useMemo(() => href ?? formatVariantUrl(mutationStr), [href, mutationStr])
 
@@ -245,7 +246,7 @@ export function VariantLinkBadge({ name, href }: VariantLinkBadgeProps) {
 
   return (
     <LinkUnstyled href={url} icon={null}>
-      <MutationBadge prefix="Variant" mutation={mutationObj} colors={AMINOACID_COLORS} />
+      <MutationBadge prefix={prefix} mutation={mutationObj} colors={AMINOACID_COLORS} />
     </LinkUnstyled>
   )
 }
@@ -261,6 +262,6 @@ export function AaMut({ mut }: { mut: string }) {
 }
 
 /** Shorter convenience alias for VariantLinkBadge */
-export function Var({ name, href }: { name: string; href?: string }) {
-  return <VariantLinkBadge name={name} href={href} />
+export function Var({ name, href, prefix = 'Variant' }: { name: string; href?: string; prefix?: string }) {
+  return <VariantLinkBadge name={name} href={href} prefix={prefix} />
 }
