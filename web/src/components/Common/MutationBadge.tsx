@@ -145,7 +145,7 @@ export function MutationBadge({ prefix, mutation, colors, tooltip }: MutationBad
         {left && <ColoredText $color={leftColor}>{left}</ColoredText>}
         <PositionText>{pos}</PositionText>
         {right && <ColoredText $color={rightColor}>{right}</ColoredText>}
-        {version && <VersionText>{`${version}/`}</VersionText>}
+        {version && <VersionText>{`.${version}`}</VersionText>}
       </MutationWrapper>
       {note && <span>{note}</span>}
     </MutationBadgeBox>

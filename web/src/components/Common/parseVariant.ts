@@ -25,7 +25,7 @@ export function parseVariant(formatted: string): Mutation | undefined {
   const left = parseNonEmpty(match.groups?.left)?.toUpperCase()
   const pos = parsePosition(match.groups?.pos)
   const right = parseNonEmpty(match.groups?.right)?.toUpperCase()
-  const version = parseNonEmpty(match.groups?.gene)?.replace('.', '')
+  const version = parseNonEmpty(match.groups?.version)?.replace('.', '')
 
   if (!pos) {
     return undefined
