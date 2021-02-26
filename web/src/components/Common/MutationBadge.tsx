@@ -265,3 +265,8 @@ export function AaMut({ mut }: { mut: string }) {
 export function Var({ name, href, prefix = 'Variant' }: { name: string; href?: string; prefix?: string }) {
   return <VariantLinkBadge name={name} href={href} prefix={prefix} />
 }
+
+/** Shorter convenience alias for VariantLinkBadge */
+export function Mut({ name, href, prefix = 'Mutation' }: { name: string; href?: string; prefix?: string }) {
+  return <VariantLinkBadge name={name} href={href} prefix={prefix} />
+}
