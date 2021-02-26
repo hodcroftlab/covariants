@@ -8,6 +8,7 @@
       "display_name": "20E (EU1)",
       "display_name2": "S:A222V",
       "graphing": true,
+      "important": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -64,6 +65,7 @@
       "display_name": "20A.EU2",
       "display_name2": "S:477N",
       "graphing": true,
+      "important": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -147,6 +149,7 @@
       "country_info": [],
       "display_name": "20I/501Y.V1",
       "graphing": true,
+      "important": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -180,6 +183,7 @@
       "country_info": [],
       "display_name": "20H/501Y.V2",
       "graphing": true,
+      "important": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -213,6 +217,7 @@
       "country_info": [],
       "display_name": "20J/501Y.V3",
       "graphing": true,
+      "important": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -246,6 +251,7 @@
       "country_info": [],
       "display_name": "20C/S:452R",
       "graphing": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -323,6 +329,7 @@
       "country_info": [],
       "display_name": "20A/S:439K",
       "graphing": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -361,6 +368,7 @@
       "country_info": [],
       "display_name": "20A/S:98F",
       "graphing": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -417,6 +425,7 @@
       "country_info": [],
       "display_name": "20C/S:80Y",
       "graphing": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -538,6 +547,7 @@
       "country_info": [],
       "display_name": "20B/S:626S",
       "graphing": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -563,6 +573,7 @@
       "country_info": [],
       "display_name": "20B/S:1122L",
       "graphing": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -588,6 +599,7 @@
       "country_info": [],
       "display_name": "S:N501",
       "graphing": false,
+      "important": true,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.N501",
       "snps": [
@@ -605,6 +617,7 @@
       "country_info": [],
       "display_name": "S:E484",
       "graphing": false,
+      "important": false,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484",
       "snps": [
@@ -624,6 +637,7 @@
         21768
       ],
       "graphing": false,
+      "important": true,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.H69-?c=gt-S_69,501,453",
       "snps": [],
@@ -636,6 +650,7 @@
       "country_info": [],
       "display_name": "S:Q677",
       "graphing": false,
+      "important": false,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677?c=gt-S_677",
       "snps": [
@@ -653,6 +668,7 @@
       "country_info": [],
       "display_name": "S:Y453F",
       "graphing": false,
+      "important": false,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y453F?c=gt-S_453&f_region=Europe",
       "snps": [

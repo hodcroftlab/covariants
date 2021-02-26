@@ -22,6 +22,7 @@ export type ClusterDatum = {
     synonymous?: Mutation[]
   }
   type: string
+  important: boolean
 }
 
 export function getClusters(): ClusterDatum[] {

@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { Card, CardBody, CardHeader, Row } from 'reactstrap'
+import { ClusterButtonGroup } from 'src/components/ClusterButtonPanel/ClusterButtonGroup'
+
 import { ClusterDatum, getClustersGrouped } from 'src/io/getClusters'
 import styled from 'styled-components'
-
-import { ClusterButton } from './ClusterButton'
 
 const clustersGrouped = getClustersGrouped()
 
@@ -12,23 +12,19 @@ const ClustersRow = styled(Row)`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: center;
 `
 
 const ClusterGroupCard = styled(Card)`
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-
   border: 0;
   box-shadow: none;
   background: transparent;
-
   margin-bottom: 0.5rem;
 `
 
 const ClusterGroupHeader = styled(CardHeader)`
+  flex: 0 0 100%;
   text-align: center;
   width: 100%;
   background: none;
@@ -41,7 +37,6 @@ const ClusterGroupHeader = styled(CardHeader)`
 const ClusterGroupBody = styled(CardBody)`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   padding: 0;
 `
 
@@ -57,13 +52,7 @@ export function ClusterButtonPanel({ currentCluster, className }: ClusterPanelPr
         <ClusterGroupCard key={clusterType}>
           <ClusterGroupHeader>{clusterType}</ClusterGroupHeader>
           <ClusterGroupBody>
-            {clusterGroup.map((cluster) => (
-              <ClusterButton
-                key={cluster.display_name}
-                cluster={cluster}
-                isCurrent={cluster.display_name === currentCluster?.display_name}
-              />
-            ))}
+            <ClusterButtonGroup clusterGroup={clusterGroup} currentCluster={currentCluster} />
           </ClusterGroupBody>
         </ClusterGroupCard>
       ))}
