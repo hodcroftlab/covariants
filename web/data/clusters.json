@@ -251,7 +251,7 @@
       "country_info": [],
       "display_name": "20C/S:452R",
       "graphing": true,
-      "important": false,
+      "important": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -617,7 +617,7 @@
       "country_info": [],
       "display_name": "S:E484",
       "graphing": false,
-      "important": false,
+      "important": true,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484",
       "snps": [
