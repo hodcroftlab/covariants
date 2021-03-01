@@ -490,11 +490,11 @@ for clus in clus_to_run:
         acknowledgement_table = cluster_meta.loc[:,['gisaid_epi_isl']]
         # do not put in acknowledgement folder, on request from GISAID
         #acknowledgement_table.to_csv(f'{acknowledgement_folder}{clus}_acknowledgement_table.tsv', sep="\t")
-        if clus is not 'DanishCluster':
+        if clus != 'DanishCluster':
             acknowledgement_by_variant['acknowledgements'][clus_display] = cluster_meta.loc[:,['gisaid_epi_isl']]["gisaid_epi_isl"].tolist()
 
         #only do this for 'all' runs as otherwise the main file won't be updated.
-        if clus is not 'DanishCluster' and 'all' in clus_answer:
+        if clus != 'DanishCluster' and 'all' in clus_answer:
             ack_out_folder = acknowledgement_folder_new+f'{clus_display}/'
             if not os.path.exists(ack_out_folder):
                 os.mkdir(ack_out_folder)
@@ -885,7 +885,8 @@ def get_ordered_clusters_to_plot(clusters):
     # DO NOT PLOT 69 AS IT OVERLAPS WITH 439 AND 501!!!!
     # Do not plot 484 as it overlaps with 501Y.V2, possibly others
     # Do not plot DanishCluster as also overlaps
-    clus_keys = [x for x in clus_keys if x not in ["S69","S484", "DanishCluster"]]
+    #clus_keys = [x for x in clus_keys if x not in ["S69","S484", "DanishCluster"]]
+    clus_keys = [x for x in clus_keys if clusters[x]["graphing"] is True]
 
     countries_all = defaultdict(dict)
     for clus in clus_keys:
