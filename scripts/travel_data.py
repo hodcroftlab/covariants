@@ -4,7 +4,7 @@ from colors_and_countries import *
 
 
 travel_volume = {}
-for fname in glob.glob('../cluster_scripts/travel_data/*xls'):
+for fname in glob.glob('../covariants/travel_data/*xls'):
     print(f"Loading {fname}")
     country = fname.split('/')[-1][:-4]
     if country=='UK':
@@ -16,7 +16,7 @@ for fname in glob.glob('../cluster_scripts/travel_data/*xls'):
     travel_volume[country] = d.iloc[0,3:].apply(lambda x:int(x.replace('.','')))
     travel_volume[country].index = [datetime.datetime(2020,i,15) for i in range(1,11)]
 
-d = pd.read_excel('../cluster_scripts/travel_data/UK.xls', skiprows=2).astype(str)
+d = pd.read_excel('../covariants/travel_data/UK.xls', skiprows=2).astype(str)
 travel_volume["Wales"] = d.iloc[0,3:].apply(lambda x:int(int(x.replace('.','')) * popsizes['Wales']/popsizes['United Kingdom']))
 travel_volume["Wales"].index = [datetime.datetime(2020,i,15) for i in range(1,11)]
 # fake end date to make it easy to update to 'today'
