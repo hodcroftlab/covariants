@@ -1,12 +1,10 @@
 import { Link } from 'src/components/Link/Link'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 
-## Mutation Information
+<!-- ## Mutation Information
 
 - <AaMut mut="S:N501"/> has appeared multiple times independently: each can be associated with different accompanying mutations
-- Amino-acid changes are <AaMut mut={'S:N501Y'}/> (nucleotide mutation <NucMut mut={'A23063T'}/>), <AaMut mut={'S:N501T'}/> (nucleotide mutation <NucMut mut={'A23064C'}/>), and <AaMut mut={'S:N501S'}/> (nucleotide mutation <NucMut mut={'A23064G'}/>)
-
----
+- Amino-acid changes are <AaMut mut={'S:N501Y'}/> (nucleotide mutation <NucMut mut={'A23063T'}/>), <AaMut mut={'S:N501T'}/> (nucleotide mutation <NucMut mut={'A23064C'}/>), and <AaMut mut={'S:N501S'}/> (nucleotide mutation <NucMut mut={'A23064G'}/>) -->
 
 This variant is one of three 3 "Variants of Concern" reported at the end of 2020/beginning of 2021, in:
 - the UK (20I/501Y.V1) <Var name="20I/501Y.V1"/>

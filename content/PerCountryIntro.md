@@ -2,9 +2,11 @@ Graphs show for each country, the proportion of total number of **sequences** (*
 
 The grey colour between the top of the coloured curve and '1' on the Y-axis is composed of variants, lineages, and mutations that we don't currently track.
 
-Sequences with the 69 deletion or a mutation at <AaMut mut={'S:E484'}/> in Spike are not shown on these plots as they commonly are found in other varaints (<Var name="S:N439K"/>, <Var name="S:Y453F"/>, and <Var name="S:N501"/> for <AaMut mut={'S:H69-'}/>; <Var name="S:N501"/> for <AaMut mut={'S:E484'}/>), so they would be 'double-plotted'.
+Since mutations could appear in multiple variant, only variants are plotted below.
 
-**Particularly from early 2021** many countries have started preferentially sequencing samples to detect the main variants of concern (see <Var name="S:N501"/>). Often this is through sequencing samples that have an 'S-drop-out,' which in particular biases the frequencies of <Var name="S:N439K"/> and 501Y.V1 (shown here as a bias in <Var name="S:N501"/>). Alternatively, this can be through preferentially sequencing cases with particular travel histories, or connections to known cases of the variants of concern.
+<!-- Sequences with the 69 deletion or a mutation at <AaMut mut={'S:E484'}/> in Spike are not shown on these plots as they commonly are found in other varaints (<Var name="20A/S:439K"/>, <Var name="S:Y453F"/>, and <Var name="S:N501"/> for <AaMut mut={'S:H69-'}/>; <Var name="S:N501"/> for <AaMut mut={'S:E484'}/>), so they would be 'double-plotted'. -->
+
+**Particularly from early 2021** many countries have started preferentially sequencing samples to detect the main variants of concern (see <Var name="20I/501Y.V1" prefix=""/>, <Var name="20H/501Y.V2" prefix=""/>, <Var name="20J/501Y.V3" prefix=""/>). Often this is through sequencing samples that have an 'S-drop-out,' which in particular biases the frequencies of <Var name="20A/S:439K"/> and 501Y.V1 (shown here as a bias in the 3 variants of concern). Alternatively, this can be through preferentially sequencing cases with particular travel histories, or connections to known cases of the variants of concern.
 
 It is worth interpreting with caution:
 - The last data point - this often has incomplete data and may change as more sequences come in

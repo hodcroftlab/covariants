@@ -650,7 +650,7 @@
       "country_info": [],
       "display_name": "S:Q677",
       "graphing": false,
-      "important": false,
+      "important": true,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677?c=gt-S_677",
       "snps": [
@@ -673,6 +673,22 @@
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y453F?c=gt-S_453&f_region=Europe",
       "snps": [
         22919
+      ],
+      "type": "mutation"
+    },
+    {
+      "build_name": "S.S477",
+      "cluster_data": [],
+      "col": "#ffffff",
+      "country_info": [],
+      "display_name": "S:S477",
+      "display_name2": "S:S477",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.S477?f_region=Europe",
+      "snps": [
+        22991
       ],
       "type": "mutation"
     }
