@@ -218,19 +218,23 @@ if print_files and "all" in clus_answer:
         "[Overview of proportion of clusters in selected countries](country_overview.md)\n\n"
         "In the graphs below, countries are displayed in the chart if the country has at least 20 sequences present in the cluster.\n\n"
         "# Mutation Tables and Graphs\n"
-        "- [20A.EU1](#20aeu1) _(S:A222V)_ \n"
+        "- [20E (EU1)](#20e-eu1) _(S:A222V)_ \n"
         "- [20A.EU2](#20aeu2) _(S:S477N)_ \n"
+        "- [20I/501Y.V1](#20i501yv1) \n"
+        "- [20H/501Y.V2](#20h501yv2) \n"
+        "- [20J/501Y.V3](#20j501yv3) \n"
+        "- [20C/S:452R](#20cs452r) \n"
+        "- [20A/S:439K](#20as439k) \n"
+        "- [20A/S:98F](#20as98f) \n"
+        "- [20C/S:80Y](#20cs80y) \n"
+        "- [20B/S:626S](#20bs626s) \n"
+        "- [20B/S:1122L](#20bs1122l) \n"
         "- [S:N501](#sn501) \n"
         "- [S:E484](#se484) \n"
         "- [S:H69-](#sh69-) \n"
-        "- [S:N439K](#sn439k) \n"
-        "- [S:Y453F](#sy453f) \n"
-        "- [S:S98F](#ss98f) \n"
-        "- [S:L452R](#sl452r) \n"
         "- [S:Q677](#sq677) \n"
-        "- [S:D80Y](#sd80y) \n"
-        "- [S:A626S](#sa626s) \n"
-        "- [S:V1122L](#sv1122l) \n\n")
+        "- [S:Y453F](#sy453f) \n"
+        "- [S:S477](#ss477) \n\n")
     with open(overall_tables_file, 'w') as fh:
         fh.write('\n')
 
@@ -317,6 +321,7 @@ for clus in clus_to_run:
     clus_data = clusters[clus]
     wanted_seqs = clus_data['wanted_seqs']
     clus_display = clus_data['build_name']
+    display_cluster = clus_data['display_name']
     #cluster_meta = clus_data['cluster_meta']
     clusterlist_output = clus_data['clusterlist_output']
     out_meta_file = clus_data['out_meta_file']
@@ -441,7 +446,7 @@ for clus in clus_to_run:
         #only write if doing all clusters
         if "all" in clus_answer:
             with open(overall_tables_file, 'a') as fh:
-                fh.write(f'\n\n## {clus_display}\n')
+                fh.write(f'\n\n## {display_cluster}\n')
             ordered_country.to_csv(overall_tables_file, sep="\t", mode='a')
         mrk_tbl = ordered_country.to_markdown()
 
@@ -459,7 +464,7 @@ for clus in clus_to_run:
         # only print 'all tables' if running 'all clusters'
         if "all" in clus_answer and clus != "DanishCluster":
             with open(f"{tables_path}all_tables.md", 'a') as fh:
-                fh.write(f'\n\n## {clus_display}\n')
+                fh.write(f'\n\n## {display_cluster}\n')
                 fh.write(f"[Focal Build]({nextstrain_url})\n\n")
                 if clus == "S477":
                     fh.write(f"Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
@@ -472,7 +477,7 @@ for clus in clus_to_run:
                 fh.write(f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)")
 
         with open(f"{tables_path}{clus_display}_table.md", 'w') as fh:
-            fh.write(f'\n\n## {clus_display}\n')
+            fh.write(f'\n\n## {display_cluster}\n')
             fh.write(f"[Focal Build]({nextstrain_url})\n\n")
             if clus == "S477":
                 fh.write(f"Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
