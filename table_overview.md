@@ -5,7 +5,7 @@
 In the graphs below, countries are displayed in the chart if the country has at least 20 sequences present in the cluster.
 
 # Mutation Tables and Graphs
- - [20E (EU1)](#20e_eu1) _(S:A222V)_
+ - [20E (EU1)](#20e-eu1) _(S:A222V)_
  - [20A.EU2](#20aeu2) _(S:S477N)_
  - [20I/501Y.V1](#20i501yv1)
  - [20H/501Y.V2](#20h501yv2)
