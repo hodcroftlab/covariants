@@ -3,10 +3,11 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 
 Of full list of 18 nucleotide mutations, 15 are mutations to `T` (possibly related to APOBEC-like editing within host, see <LinkExternal href="https://www.biorxiv.org/content/10.1101/2020.05.01.072330v1">Simmonds, bioRxiv</LinkExternal>
 
-### S:D80Y
-<AaMut mut="S:D80Y"/> is the opposite end of the loop 'tucked in' by the 69/70 deletion (hypothetical association). See the <Link href="/variants/S.H69-"> <Var name="S:H69-"/> page</Link> for more detail on the impact of 69/70 deletion.
 
-Found in at least 10 countries across Europe.
+This variant is found in at least 10 countries across Europe.
+
+### S:D80Y
+<AaMut mut="S:D80Y"/> is the opposite end of the loop 'tucked in' by the 69/70 deletion (hypothetical association). See <Mut name="S:H69-"/> for more detail on the impact of 69/70 deletion.
 
 _Little else is known about this mutation. Please let me know if you have more information!_
 

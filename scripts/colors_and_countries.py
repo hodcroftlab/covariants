@@ -114,7 +114,8 @@ country_list_2 = [
     "Mozambique",
     "Nigeria",
     "Aruba",
-    "North Macedonia"
+    "North Macedonia",
+    "Croatia"
 ]
 
 country_styles_2 = {

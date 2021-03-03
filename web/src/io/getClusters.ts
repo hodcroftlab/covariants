@@ -1,4 +1,6 @@
 /* eslint-disable camelcase */
+import { groupBy } from 'lodash'
+
 import type { Mutation } from 'src/types'
 import { theme } from 'src/theme'
 
@@ -19,6 +21,8 @@ export type ClusterDatum = {
     nonsynonymous?: Mutation[]
     synonymous?: Mutation[]
   }
+  type: string
+  important: boolean
 }
 
 export function getClusters(): ClusterDatum[] {
@@ -45,4 +49,11 @@ export function getClusterColor(clusterName: string) {
   const clusters = getClusters()
   const found = clusters.find(({ display_name }) => display_name === clusterName)
   return found ? found.col : theme.clusters.color.unknown
+}
+
+export type ClusterDataGrouped = Record<string, ClusterDatum[]>
+
+export function getClustersGrouped(): ClusterDataGrouped {
+  const clusters = getClusters()
+  return groupBy(clusters, 'type')
 }
