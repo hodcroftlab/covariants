@@ -15,14 +15,16 @@ This mutation is in the receptor binding domain (RDB), important to ACE2 binding
 - ACE2 binding may be further increased by the presence of <AaMut mut="S:E484K"/>, and stabilized by the presence of <AaMut mut="S:K417N"/> ([Nelson et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.13.426558v1))
 - <AaMut mut={'S:N501Y'}/> was found in longitudinally-collected samples from an immunocompromised patient (<LinkExternal href="https://www.nejm.org/doi/full/10.1056/NEJMc2031364?query=featured_coronavirus">Choi et al., NEJM</LinkExternal>)
 - In one study, sera from previously infected patients neutralised viruses with <AaMut mut="S:501N"/> and <AaMut mut="S:501Y"/> equally ([Xie et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.07.425740v1))
-- Tests in people vaccinated with the Moderna and Pfizer-BioNTech vaccines suggest <AaMut mut={'S:N501Y'}/> and <AaMut mut={'S:E484K'}/> individually, and both together in combination with <AaMut mut={'S:K417N'}/>, cause a small but significant reduction in neutralization ([Wang et al., bioRxiv])(https://www.biorxiv.org/content/10.1101/2021.01.15.426911v2)
+- Tests in people vaccinated with the Moderna and Pfizer-BioNTech vaccines suggest <AaMut mut={'S:N501Y'}/> and <AaMut mut={'S:E484K'}/> individually, and both together in combination with <AaMut mut={'S:K417N'}/>, cause a small but significant reduction in neutralization (<LinkExternal href="https://www.biorxiv.org/content/10.1101/2021.01.15.426911v2">Wang et al., bioRxiv</LinkExternal>)
 - _In vitro_ evolution to select for greater ACE2 binding resulted in mutations <AaMut mut={'S:N501Y'}/>, <AaMut mut={'S:E484K'}/> and <AaMut mut={'S:S477N'}/> to be among the first selected ([Zahradnik et al., bioRxiv](https://doi.org/10.1101/2021.01.06.425392)).
 
-The specific mutation <AaMut mut="S:N501Y"/> is found in 3 variants reported at the end of 2020/beginning of 2021, in:
-- the UK (20I/501Y.V1) <Var name="20I/501Y.V1"/>
-- South Africa (20H/501Y.V2)  <Var name="20H/501Y.V2"/>
-- Brazil (20J/501Y.V3)   <Var name="20J/501Y.V3"/>
+---
 
-See a <Link href="/shared-mutations">list of shared mutations</Link> for these variants.
+The specific mutation <AaMut mut="S:N501Y"/> is found in 3 "Variants of Concern" reported at the end of 2020/beginning of 2021, in:
+- the UK (<Var name="20I/501Y.V1" prefix=""/> or `B.1.1.7`)
+- South Africa (<Var name="20H/501Y.V2" prefix=""/> or `B.1.351`)
+- Brazil ( <Var name="20J/501Y.V3" prefix=""/> or `P.1`)
 
-More information on each of these variants can be found by visiting the links above. Smaller clusters of sequences with <AaMut mut="S:N501"/> mutations are also found in Wales, the USA, & Australia.
+See a <Link href="/shared-mutations">list of shared mutations</Link> for these variants. More information on each of these variants can be found by visiting the links above. 
+
+Smaller clusters of sequences with <AaMut mut="S:N501"/> mutations are also found in Wales, the USA, & Australia.

@@ -17,16 +17,20 @@ This mutation is in the receptor binding domain (RBD), important to ACE2 binding
 - Tests in people vaccinated with the Moderna and Pfizer-BioNTech vaccines suggest <AaMut mut={'S:E484K'}/> and <AaMut mut={'S:N501Y'}/> individually, and both together in combination with <AaMut mut={'S:K417N'}/>, cause a small but significant reduction in neutralization ([Wang et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.15.426911v2))
 - _In vitro_ evolution to select for greater ACE2 binding resulted in mutations <AaMut mut={'S:E484K'}/>, <AaMut mut={'S:N501Y'}/>, and <AaMut mut={'S:S477N'}/> to be among the first selected ([Zahradnik et al., bioRxiv](https://doi.org/10.1101/2021.01.06.425392)).
 
-The specific mutation <AaMut mut={'S:E484K'}/> is found in 3 variants reported at the end of 2020/beginning of 2021, in:
-- South Africa (20H/501Y.V2)<Var name="20H/501Y.V2"/>
-- Brazil (20J/501Y.V3) <Var name="20J/501Y.V3"/>
-- Brazil (20B/S.484K) (see below)
+---
 
-See a <Link href="/shared-mutations">list of shared mutations</Link> for these variants. More information on each of these variants can be found below.
+The specific mutation <AaMut mut={'S:E484K'}/> is found in 3 variants (2 of them "Variants of Concern") reported at the end of 2020/beginning of 2021, in:
+- South Africa (<Var name="20H/501Y.V2" prefix=""/> or `B.1.351`)
+- Brazil ( <Var name="20J/501Y.V3" prefix=""/> or `P.1`)
+- Brazil (20B/S.484K or `P.2`) (see below)
 
-<AaMut mut={'S:E484K'}/> has also been found in a small number of 20I/501Y.V1 sequences. Read more about this at <Link href="/variants/S.501Y.V1"><Var name="20I/501Y.V1"/></Link>.
+See a <Link href="/shared-mutations">list of shared mutations</Link> for these variants. More information on each of these variants can be found by clicking the links above, or below, for 20B/S.484K.
+
+<AaMut mut={'S:E484K'}/> has also been found in a small number of 20I/501Y.V1 sequences. Read more about this at <Var name="20I/501Y.V1"/>.
 
 <br/><br/>
+
+---
 
 ### 20B/S.484K
 Also known as `P.2`

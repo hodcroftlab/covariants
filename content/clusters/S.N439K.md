@@ -1,12 +1,13 @@
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 
-### S:N439K
-This mutation is in the receptor binding domain (RDB), important to ACE2 binding and antibody recognition
+### 20A/S:439K
 
-About 2/3 of the sequences in the cluster have deletions at Spike amino-acid positions 69 and 70 ([Nextstrain build with deletions in cluster highlighted](https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_69&label=clade:S.N439K); [see <Var name="S:H69-"/> page](http://covariants.org/variants/S.H69-))
+About 2/3 of the sequences in this variant have deletions at Spike amino-acid positions 69 and 70 ([Nextstrain build with S:69- deletion in the variant highlighted](https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_69&label=clade:S.N439K); see <Mut name="S:H69-"/> page)
 
 Clusters defined by <AaMut mut={'S:N439K'}/> have emerged twice independently in Europe. However, the first was exclusive to Scotland in the first wave and went extinct ([Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1))
 
+### S:N439K
+This mutation is in the receptor binding domain (RDB), important to ACE2 binding and antibody recognition
 
 - <AaMut mut={'S:N439K'}/> may increase ACE2 binding (<LinkExternal href="https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1">Thompson et al., bioRxiv</LinkExternal> & <LinkExternal href="https://www.sciencedirect.com/science/article/pii/S0022283620304563">Chen - et al., JMB</LinkExternal>; see also <LinkExternal href="https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS/">Bloom Lab ACE2 binding - website</LinkExternal>).
 - Confers resistance to one of the two antibodies in the Regeneron cocktail (REGN10987) (<LinkExternal href="https://www.biorxiv.org/content/10.1101/2020.11.30.405472v1.full">Starr et al. bioRxiv</LinkExternal> and <LinkExternal href="https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1">Thompson et al. bioRxiv</LinkExternal>).
