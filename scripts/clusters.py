@@ -63,10 +63,39 @@ clusters = {
             'nextstrain_url': "https://nextstrain.org/groups/neherlab/ncov/S.501Y.V1?c=gt-S_501", # color, no europe filter
             "mutations":{
                 "nonsynonymous": [
-                    {'gene': 'S', 'left': 'N', 'pos': 501, 'right': 'Y'}
+                    {'gene': 'S', 'left': 'H', 'pos': 69, 'right': '-'},
+                    {'gene': 'S', 'left': 'V', 'pos': 70, 'right': '-'},
+                    {'gene': 'S', 'left': 'Y', 'pos': 144, 'right': '-'},
+                    {'gene': 'S', 'left': 'N', 'pos': 501, 'right': 'Y'},
+                    {'gene': 'S', 'left': 'A', 'pos': 570, 'right': 'D'},
+                    {'gene': 'S', 'left': 'D', 'pos': 614, 'right': 'G'},
+                    {'gene': 'S', 'left': 'P', 'pos': 681, 'right': 'H'},
+                    {'gene': 'S', 'left': 'T', 'pos': 716, 'right': 'I'},
+                    {'gene': 'S', 'left': 'S', 'pos': 982, 'right': 'A'},
+                    {'gene': 'S', 'left': 'D', 'pos': 1118, 'right': 'H'},
+                    {'gene': 'ORF1a', 'left': 'T', 'pos': 1001, 'right': 'I'},
+                    {'gene': 'ORF1a', 'left': 'A', 'pos': 1708, 'right': 'D'},
+                    {'gene': 'ORF1a', 'left': 'I', 'pos': 2230, 'right': 'T'},
+                    {'gene': 'ORF1a', 'left': 'S', 'pos': 3675, 'right': '-'},
+                    {'gene': 'ORF1a', 'left': 'G', 'pos': 3676, 'right': '-'},
+                    {'gene': 'ORF1a', 'left': 'F', 'pos': 3677, 'right': '-'},
+                    {'gene': 'N', 'left': 'D', 'pos': 3, 'right': 'L'},
+                    {'gene': 'N', 'left': 'R', 'pos': 203, 'right': 'K'},
+                    {'gene': 'N', 'left': 'G', 'pos': 204, 'right': 'R'},
+                    {'gene': 'N', 'left': 'S', 'pos': 235, 'right': 'F'},
+                    {'gene': 'ORF1b', 'left': 'P', 'pos': 314, 'right': 'L'},
+                    {'gene': 'ORF8', 'left': 'Q', 'pos': 27, 'right': '*'},
+                    {'gene': 'ORF8', 'left': 'R', 'pos': 52, 'right': 'I'},
+                    {'gene': 'ORF8', 'left': 'Y', 'pos': 73, 'right': 'C'}
                 ],
                 "synonymous": [
-                    {'left': 'C', 'pos': 1, 'right': 'T'}
+                    {'left': 'C', 'pos': 241, 'right': 'T'},
+                    {'left': 'C', 'pos': 913, 'right': 'T'},
+                    {'left': 'C', 'pos': 3037, 'right': 'T'},
+                    {'left': 'C', 'pos': 5986, 'right': 'T'},
+                    {'left': 'C', 'pos': 14676, 'right': 'T'},
+                    {'left': 'C', 'pos': 15279, 'right': 'T'},
+                    {'left': 'T', 'pos': 16176, 'right': 'C'}
                 ]
                 }
             },
@@ -82,10 +111,32 @@ clusters = {
             'nextstrain_url': "https://nextstrain.org/groups/neherlab/ncov/S.501Y.V2?c=gt-S_501", # color, no europe filter
             "mutations":{
                 "nonsynonymous": [
-                    {'gene': 'S', 'left': 'N', 'pos': 501, 'right': 'Y'}
+                    {'gene': 'S', 'left': 'D', 'pos': 80, 'right': 'A'},
+                    {'gene': 'S', 'left': 'D', 'pos': 215, 'right': 'G'},
+                    {'gene': 'S', 'left': 'L', 'pos': 241, 'right': '-'},
+                    {'gene': 'S', 'left': 'L', 'pos': 242, 'right': '-'},
+                    {'gene': 'S', 'left': 'A', 'pos': 243, 'right': '-'},
+                    {'gene': 'S', 'left': 'K', 'pos': 417, 'right': 'N'},
+                    {'gene': 'S', 'left': 'E', 'pos': 484, 'right': 'K'},
+                    {'gene': 'S', 'left': 'N', 'pos': 501, 'right': 'Y'},
+                    {'gene': 'S', 'left': 'D', 'pos': 614, 'right': 'G'},
+                    {'gene': 'S', 'left': 'A', 'pos': 701, 'right': 'V'},
+                    {'gene': 'ORF3a', 'left': 'Q', 'pos': 57, 'right': 'H'},
+                    {'gene': 'ORF1a', 'left': 'T', 'pos': 265, 'right': 'I'},
+                    {'gene': 'ORF1a', 'left': 'K', 'pos': 2655, 'right': 'N'},
+                    {'gene': 'ORF1a', 'left': 'K', 'pos': 3353, 'right': 'R'},
+                    {'gene': 'ORF1a', 'left': 'S', 'pos': 3675, 'right': '-'},
+                    {'gene': 'ORF1a', 'left': 'G', 'pos': 3676, 'right': '-'},
+                    {'gene': 'ORF1a', 'left': 'F', 'pos': 3677, 'right': '-'},
+                    {'gene': 'N', 'left': 'T', 'pos': 205, 'right': 'I'},
+                    {'gene': 'ORF1b', 'left': 'P', 'pos': 314, 'right': 'L'},
+                    {'gene': 'E', 'left': 'P', 'pos': 71, 'right': 'L'}
                 ],
                 "synonymous": [
-                    {'left': 'C', 'pos': 1, 'right': 'T'}
+                    {'left': 'G', 'pos': 174, 'right': 'T'},
+                    {'left': 'C', 'pos': 241, 'right': 'T'},
+                    {'left': 'C', 'pos': 3037, 'right': 'T'},
+                    {'left': 'C', 'pos': 28253, 'right': 'T'}
                 ]
                 }
             },
@@ -101,10 +152,42 @@ clusters = {
             'nextstrain_url': "https://nextstrain.org/groups/neherlab/ncov/S.501Y.V3?c=gt-S_501", # color, no europe filter
             "mutations":{
                 "nonsynonymous": [
-                    {'gene': 'S', 'left': 'N', 'pos': 501, 'right': 'Y'}
+                    {'gene': 'S', 'left': 'L', 'pos': 18, 'right': 'F'},
+                    {'gene': 'S', 'left': 'T', 'pos': 20, 'right': 'N'},
+                    {'gene': 'S', 'left': 'P', 'pos': 26, 'right': 'S'},
+                    {'gene': 'S', 'left': 'D', 'pos': 138, 'right': 'Y'},
+                    {'gene': 'S', 'left': 'R', 'pos': 190, 'right': 'S'},
+                    {'gene': 'S', 'left': 'K', 'pos': 417, 'right': 'T'},
+                    {'gene': 'S', 'left': 'E', 'pos': 484, 'right': 'K'},
+                    {'gene': 'S', 'left': 'N', 'pos': 501, 'right': 'Y'},
+                    {'gene': 'S', 'left': 'D', 'pos': 614, 'right': 'G'},
+                    {'gene': 'S', 'left': 'H', 'pos': 655, 'right': 'Y'},
+                    {'gene': 'S', 'left': 'T', 'pos': 1027, 'right': 'I'},
+                    {'gene': 'S', 'left': 'V', 'pos': 1176, 'right': 'F'},
+                    {'gene': 'ORF3a', 'left': 'S', 'pos': 253, 'right': 'P'},
+                    {'gene': 'ORF1a', 'left': 'S', 'pos': 1188, 'right': 'L'},
+                    {'gene': 'ORF1a', 'left': 'K', 'pos': 1795, 'right': 'Q'},
+                    {'gene': 'ORF1a', 'left': 'S', 'pos': 3675, 'right': '-'},
+                    {'gene': 'ORF1a', 'left': 'G', 'pos': 3676, 'right': '-'},
+                    {'gene': 'ORF1a', 'left': 'F', 'pos': 3677, 'right': '-'},
+                    {'gene': 'N', 'left': 'P', 'pos': 80, 'right': 'R'},
+                    {'gene': 'N', 'left': 'R', 'pos': 203, 'right': 'K'},
+                    {'gene': 'N', 'left': 'G', 'pos': 204, 'right': 'R'},
+                    {'gene': 'ORF1b', 'left': 'P', 'pos': 314, 'right': 'L'},
+                    {'gene': 'ORF1b', 'left': 'E', 'pos': 1264, 'right': 'D'},
+                    {'gene': 'ORF8', 'left': 'E', 'pos': 92, 'right': 'K'}
                 ],
                 "synonymous": [
-                    {'left': 'C', 'pos': 1, 'right': 'T'}
+                    {'left': 'C', 'pos': 241, 'right': 'T'},
+                    {'left': 'T', 'pos': 733, 'right': 'C'},
+                    {'left': 'C', 'pos': 2749, 'right': 'T'},
+                    {'left': 'C', 'pos': 3037, 'right': 'T'},
+                    {'left': 'A', 'pos': 6319, 'right': 'G'},
+                    {'left': 'A', 'pos': 6613, 'right': 'G'},
+                    {'left': 'C', 'pos': 12778, 'right': 'T'},
+                    {'left': 'C', 'pos': 13860, 'right': 'T'},
+                    {'left': 'A', 'pos': 28877, 'right': 'T'},
+                    {'left': 'G', 'pos': 28878, 'right': 'C'}
                 ]
                 }
             },
@@ -312,7 +395,7 @@ clusters = {
             "graphing": False,
             "type": "mutation",
             "important": False,
-            'country_info':[], 'col': "#ffffff",
+            'country_info':[], 'col': "#0000ff",
             "display_name": "S:S477", "display_name2": "S:S477",
             "build_name":"S.S477",
             "nextstrain_url":"https://nextstrain.org/groups/neherlab/ncov/S.S477?f_region=Europe",
