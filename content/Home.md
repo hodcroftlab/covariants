@@ -1,4 +1,7 @@
 import { HomeImages } from 'src/components/Home/HomeImages'
+import { Link } from 'src/components/Link/Link'
+import { LinkExternal } from 'src/components/Link/LinkExternal'
+
 
 Click on a variant button to start exploring!
 
@@ -9,8 +12,30 @@ To look at many variants at once, check out the [Per Variant](/per-variant) and 
 
 <HomeImages/>
 
+**What do the names mean?** 
+CoVariants uses the Nextstrain naming system for variants ([read more here](https://nextstrain.org/blog/2021-01-06-updated-SARS-CoV-2-clade-naming/)). However, the fact that there's multiple naming systems is confusing! See the table below to help find the variant you're interested in.
 
-The variants featured are currently slightly biased towards circulation in Europe: this is simply a reflection that the primary maintainer (Emma Hodcroft) works mostly with European data. We hope to add more variants from other regions soon!
+<div align="center">
+
+| Nextstrain Clade      |&#124; Pango Lineage | &#124;Other Name(s) |
+| ----------- | ----------- |--------|
+| <Link href="/variants/20A.EU1">20E (EU1)</Link> | &#124; B.1.177 | &#124; 20A.EU1 |
+| <Var name="20A.EU2" prefix=""/>       | &#124; B.1.160           | &#124;  |
+| <Var name="20I/501Y.V1" prefix=""/>   | &#124; <LinkExternal href="https://cov-lineages.org/global_report_B.1.1.7.html">B.1.1.7</LinkExternal>           | &#124; VOC 202012/01 |
+| <Var name="20H/501Y.V2" prefix=""/>   | &#124; <LinkExternal href="https://cov-lineages.org/global_report_B.1.351.html">B.1.351</LinkExternal>           | &#124; 501Y.V2 |
+| <Var name="20J/501Y.V3" prefix=""/>   | &#124; <LinkExternal href="https://cov-lineages.org/global_report_P.1.html">P.1</LinkExternal>               | &#124; |
+| <Var name="20C/S:452R" prefix=""/>    | &#124; B.1.427/B.1.429   | &#124; CAL.20C |
+| <Var name="20A/S:439K" prefix=""/>    | &#124; B.1.258           | &#124; |
+| <Var name="20A/S:98F" prefix=""/>     | &#124; B.1.221           | &#124; |
+| <Var name="20C/S:80Y" prefix=""/>     | &#124; B.1.367           | &#124; |
+| <Var name="20B/S:626S" prefix=""/>    | &#124; B.1.1.277         | &#124; |
+| <Var name="20B/S:1122L" prefix=""/>   | &#124; B.1.1.302         | &#124; |
+
+</div>
+
+<br/> 
+
+<!-- The variants featured are currently slightly biased towards circulation in Europe: this is simply a reflection that the primary maintainer (Emma Hodcroft) works mostly with European data. We hope to add more variants from other regions soon! -->
 
 This project is free and open source. The content, derived data, code used to generate the data, and code that implements this web application can be found on GitHub: [github.com/hodcroftlab/covariants](https://github.com/hodcroftlab/covariants/).
 
