@@ -396,7 +396,7 @@ clusters = {
             "type": "mutation",
             "important": False,
             'country_info':[], 'col': "#0000ff",
-            "display_name": "S:S477", "display_name2": "S:S477",
+            "display_name": "S:S477",
             "build_name":"S.S477",
             "nextstrain_url":"https://nextstrain.org/groups/neherlab/ncov/S.S477?f_region=Europe",
             },
