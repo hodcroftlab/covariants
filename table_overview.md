@@ -5,7 +5,7 @@
 In the graphs below, countries are displayed in the chart if the country has at least 20 sequences present in the cluster.
 
 # Mutation Tables and Graphs
- - [20E (EU1)](#20eeu1) _(S:A222V)_
+ - [20E (EU1)](#20e_eu1) _(S:A222V)_
  - [20A.EU2](#20aeu2) _(S:S477N)_
  - [20I/501Y.V1](#20i501yv1)
  - [20H/501Y.V2](#20h501yv2)
@@ -25,7 +25,7 @@ In the graphs below, countries are displayed in the chart if the country has at 
 
 
 
-## 20A.EU1
+## 20E (EU1)
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/20A.EU1?f_region=Europe)
 
 |                      | first_seq   |   num_seqs | last_seq   |
@@ -149,7 +149,7 @@ Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SA
 
 ![Overall trends 20A.EU2](/overall_trends_figures/overall_trends_20A.EU2.png)
 
-## S.501Y.V1
+## 20I/501Y.V1
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.501Y.V1?c=gt-S_501)
 
 |                                  | first_seq   |   num_seqs | last_seq   |
@@ -234,7 +234,7 @@ Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SA
 
 ![Overall trends S.501Y.V1](/overall_trends_figures/overall_trends_S.501Y.V1.png)
 
-## S.501Y.V2
+## 20H/501Y.V2
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.501Y.V2?c=gt-S_501)
 
 |                                  | first_seq   |   num_seqs | last_seq   |
@@ -282,7 +282,7 @@ Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SA
 
 ![Overall trends S.501Y.V2](/overall_trends_figures/overall_trends_S.501Y.V2.png)
 
-## S.501Y.V3
+## 20J/501Y.V3
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.501Y.V3?c=gt-S_501)
 
 |                | first_seq   |   num_seqs | last_seq   |
@@ -308,7 +308,7 @@ Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SA
 
 ![Overall trends S.501Y.V3](/overall_trends_figures/overall_trends_S.501Y.V3.png)
 
-## S.L452R
+## 20C/S:452R
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.L452R?c=gt-S_13,152,452)
 
 |                | first_seq   |   num_seqs | last_seq   |
@@ -338,7 +338,7 @@ Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SA
 
 ![Overall trends S.L452R](/overall_trends_figures/overall_trends_S.L452R.png)
 
-## S.N439K
+## 20A/S:439K
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_439&f_region=Europe)
 
 |                        | first_seq   |   num_seqs | last_seq   |
@@ -388,7 +388,7 @@ Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SA
 
 ![Overall trends S.N439K](/overall_trends_figures/overall_trends_S.N439K.png)
 
-## S.S98F
+## 20A/S:98F
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.S98F?c=gt-S_98&f_region=Europe)
 
 |                       | first_seq   |   num_seqs | last_seq   |
@@ -433,7 +433,7 @@ Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SA
 
 ![Overall trends S.S98F](/overall_trends_figures/overall_trends_S.S98F.png)
 
-## S.D80Y
+## 20C/S:80Y
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.D80Y?f_region=Europe)
 
 |                | first_seq   |   num_seqs | last_seq   |
@@ -458,7 +458,7 @@ Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SA
 
 ![Overall trends S.D80Y](/overall_trends_figures/overall_trends_S.D80Y.png)
 
-## S.A626S
+## 20B/S:626S
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.A626S?f_region=Europe)
 
 |                | first_seq   |   num_seqs | last_seq   |
@@ -487,7 +487,7 @@ Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SA
 
 ![Overall trends S.A626S](/overall_trends_figures/overall_trends_S.A626S.png)
 
-## S.V1122L
+## 20B/S:1122L
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.V1122L?c=gt-S_1122&f_region=Europe)
 
 |                | first_seq   |   num_seqs | last_seq   |
