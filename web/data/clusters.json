@@ -184,12 +184,6 @@
           },
           {
             "gene": "S",
-            "left": "D",
-            "pos": 614,
-            "right": "G"
-          },
-          {
-            "gene": "S",
             "left": "P",
             "pos": 681,
             "right": "H"
@@ -338,12 +332,6 @@
           },
           {
             "gene": "S",
-            "left": "D",
-            "pos": 614,
-            "right": "G"
-          },
-          {
-            "gene": "S",
             "left": "A",
             "pos": 701,
             "right": "V"
@@ -444,12 +432,6 @@
             "left": "N",
             "pos": 501,
             "right": "Y"
-          },
-          {
-            "gene": "S",
-            "left": "D",
-            "pos": 614,
-            "right": "G"
           },
           {
             "gene": "S",
@@ -994,7 +976,6 @@
       "col": "#0000ff",
       "country_info": [],
       "display_name": "S:S477",
-      "display_name2": "S:S477",
       "graphing": false,
       "important": false,
       "nextstrain_build": true,
