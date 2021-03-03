@@ -14,6 +14,7 @@
 | Russia       | 2020-08-11  |          3 | 2020-08-20 |
 | Belarus      | 2020-10-11  |          2 | 2020-10-21 |
 | Egypt        | 2021-01-09  |          1 | 2021-01-09 |
+| Belgium      | 2021-01-21  |          2 | 2021-01-22 |
 | Poland       | 2021-01-27  |          3 | 2021-02-02 |
 
 ![Overall trends S.Y453F](/overall_trends_figures/overall_trends_S.Y453F.png)
