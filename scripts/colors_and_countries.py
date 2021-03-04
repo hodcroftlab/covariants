@@ -168,10 +168,10 @@ country_list_3 = [
     'Hong Kong',     #2
     'Luxembourg',    #3
     'Israel',        #4
-    'Finland'        #5
-            #6
-            #7
-            #8
+    'Finland',        #5
+    'Japan',        #6
+    'Croatia',        #7
+    'Philippines'        #8
             #9
             #10
             #11
