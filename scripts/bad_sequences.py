@@ -53,7 +53,9 @@ bad_seqs = {
     'England/NOTT-246E8A/2020'   : "2020-06-01", # over diverged compared to date - 1 June but nested deep in EU1 diversity
     'France/IDF_HB_112003050333/2020'   : "2020-03-13", # over diverged compared to date - 20 muts, but 13 March
     'Spain/MD-IBV-99018532/2020' : "2020-02-14", # overdiverged compared to date - 19 muts but 14 Feb
-    'Germany/SL-SU-10429159/2020' : "2020-03-24" # overdiverged: 33 muts, march 2020 date. EU2
+    'Germany/SL-SU-10429159/2020' : "2020-03-24", # overdiverged: 33 muts, march 2020 date. EU2
+    'Germany/BAV-PL-virotum_6ZA86/2020' : "2020-05-22", #very poor quality
+    'Germany/BAV-PL-virotum_DN6S6/2020' : "2020-05-20" #very poor quality
     #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
     #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
 }

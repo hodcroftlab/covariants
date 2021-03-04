@@ -1,6 +1,6 @@
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 
-<AaMut mut={'S:L452R'}/> was first identified in California (<LinkExternal href="https://www.cdph.ca.gov/Programs/OPA/Pages/NR21-020.aspx">California Dept of Public Health</LinkExternal>) and appears to have increased in frequency (<LinkExternal href="https://twitter.com/cychiu98/status/1350985418628587520">Chiu C, Twitter</LinkExternal>). <br/>
+<Var name={'20C/S:452R'}/> was first identified in California (<LinkExternal href="https://www.cdph.ca.gov/Programs/OPA/Pages/NR21-020.aspx">California Dept of Public Health</LinkExternal>) and appears to have increased in frequency (<LinkExternal href="https://twitter.com/cychiu98/status/1350985418628587520">Chiu C, Twitter</LinkExternal>). <br/>
 
 _If these links can be replaced with more formal analyses, please submit a PR doing so!_
 
