@@ -450,6 +450,8 @@ clusters = {
 #            "country_info":[], 'col': "#db4439", "display_name": "B.1.1.7 (501Y.V1)",
 #            "build_name":"S.N501uk", 'url_params': ""},  #no europe filter
 
+            #S246: {'snps': [21800,23062,23663,22298], 'cluster_data': [], 'build_name': "S.R246", 'display_name': "S:R246"}
+
             #"S677": {'snps': [23592,26774,29401], 'cluster_data': [], 'build_name': "S.677"},
             #"S452": {'snps': [21599,22017,22916], 'cluster_data': [], 'build_name': "S.L452R", "display_name": "S:L452R"},
 
