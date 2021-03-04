@@ -1,6 +1,6 @@
 
 
-## S.V1122L
+## 20B/S:1122L
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.V1122L?c=gt-S_1122&f_region=Europe)
 
 |                | first_seq   |   num_seqs | last_seq   |
@@ -10,5 +10,6 @@
 | Norway         | 2020-08-03  |         15 | 2020-11-10 |
 | Denmark        | 2020-08-17  |         98 | 2021-01-18 |
 | Latvia         | 2020-08-31  |          6 | 2020-10-07 |
+| Japan          | 2020-09-21  |          1 | 2020-09-21 |
 
 ![Overall trends S.V1122L](/overall_trends_figures/overall_trends_S.V1122L.png)
