@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 
 import { theme } from 'src/theme'
-import { ClusterDatum, getClusters } from 'src/io/getClusters'
+import { ClusterDatum } from 'src/io/getClusters'
 import { getClusterContent } from 'src/io/getClusterContent'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { Layout } from 'src/components/Layout/Layout'
@@ -36,8 +36,6 @@ const NextstrainIcon = styled(NextstrainIconBase)`
   width: 25px;
   height: 25px;
 `
-
-const clusters = getClusters()
 
 const mapStateToProps = null
 
@@ -76,7 +74,7 @@ export function VariantsPageDisconnected({ currentCluster }: VariantsPageProps) 
 
         <Row noGutters>
           <Col lg={3} xl={2}>
-            <ClusterButtonPanel clusters={clusters} currentCluster={currentCluster} />
+            <ClusterButtonPanel currentCluster={currentCluster} />
           </Col>
 
           <Col lg={9} xl={10}>

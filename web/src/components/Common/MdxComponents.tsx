@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { AaMut, NucMut, Var } from 'src/components/Common/MutationBadge'
+import { AaMut, Mut, NucMut, Var } from 'src/components/Common/MutationBadge'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
 
 export const Pre = styled.pre`
@@ -23,4 +23,5 @@ export const mdxComponents = {
   AaMut,
   NucMut,
   Var,
+  Mut,
 }

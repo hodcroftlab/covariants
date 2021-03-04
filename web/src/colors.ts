@@ -1,3 +1,17 @@
+export const CLADE_COLORS: Record<string, string> = {
+  '19A': '#4137C2',
+  '19B': '#4066CF',
+  '20A': '#4B8DC2',
+  '20B': '#5DA8A3',
+  '20C': '#77B67F',
+  '20D': '#96BD60',
+  '20E': '#B8BC4B',
+  '20F': '#D4B13F',
+  '20G': '#E59638',
+  '20H': '#E4672F',
+  '20I': '#DC2F24',
+}
+
 export const GENE_COLORS: Record<string, string> = {
   E: '#60AA9E',
   M: '#D9A456',
