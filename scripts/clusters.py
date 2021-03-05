@@ -267,8 +267,8 @@ clusters = {
             "type": "variant",
             "important": True,
             "country_info": [], 'col': "#000066",
-            "display_name": "20C/S:484K",
-            'build_name': "20C.S.484K",
+            "display_name": "20A/S:484K",
+            'build_name': "20A.S.484K",
 
             },
 
