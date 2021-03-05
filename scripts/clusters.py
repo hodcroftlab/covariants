@@ -226,7 +226,7 @@ clusters = {
             "graphing": True,
             "type": "variant",
             "important": True,
-            "country_info": [], 'col': "#660066",
+            "country_info": [], 'col': "#ff99ff ",
             "display_name": "20C/S:484K",
             'build_name': "20C.S.484K",
             'nextstrain_url': "https://nextstrain.org/groups/neherlab/ncov/20C.S.484K?c=gt-S_484", # color, no europe filter
@@ -262,7 +262,13 @@ clusters = {
 
             # 'not-called-nigerian variant' B.1.525
             "20AS484": {'snps': [21574,9866,1058], 'cluster_data': [], #S 69, 484, 888   21767 23012 24224
-
+            "nextstrain_build": True,
+            "graphing": True,
+            "type": "variant",
+            "important": True,
+            "country_info": [], 'col': "#000066",
+            "display_name": "20C/S:484K",
+            'build_name': "20C.S.484K",
 
             },
 
