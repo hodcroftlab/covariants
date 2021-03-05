@@ -1,6 +1,6 @@
 
 
-## S.Y453F
+## S:Y453F
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.Y453F?c=gt-S_453&f_region=Europe)
 
 |              | first_seq   |   num_seqs | last_seq   |
@@ -10,7 +10,7 @@
 | South Africa | 2020-06-17  |          2 | 2020-06-25 |
 | Brazil       | 2020-06-18  |          1 | 2020-06-18 |
 | Switzerland  | 2020-07-07  |          3 | 2020-08-24 |
-| USA          | 2020-08-04  |         29 | 2021-01-07 |
+| USA          | 2020-08-04  |         30 | 2021-02-17 |
 | Russia       | 2020-08-11  |          3 | 2020-08-20 |
 | Belarus      | 2020-10-11  |          2 | 2020-10-21 |
 | Egypt        | 2021-01-09  |          1 | 2021-01-09 |

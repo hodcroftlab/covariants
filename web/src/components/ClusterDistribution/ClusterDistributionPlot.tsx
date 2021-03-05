@@ -90,9 +90,10 @@ export function ClusterDistributionPlotComponent({ country_names, distribution }
                 name={country}
                 dataKey={getValueOrig(country)}
                 stroke={getCountryColor(country)}
-                strokeWidth={1.5}
+                strokeWidth={2}
                 strokeDasharray={getCountryStrokeDashArray(country)}
                 dot={false}
+                // dot={{ stroke: getCountryColor(country), fill: getCountryColor(country), strokeWidth: 1, r: 3.5 }}
                 isAnimationActive={false}
               />
             ))}
@@ -104,9 +105,10 @@ export function ClusterDistributionPlotComponent({ country_names, distribution }
                 name={country}
                 dataKey={getValueInterp(country)}
                 stroke={getCountryColor(country)}
-                strokeWidth={1.5}
-                strokeDasharray="3 3"
+                strokeWidth={1.2}
+                strokeDasharray="1 2"
                 dot={false}
+                // dot={{ strokeDashArray: undefined, stroke: getCountryColor(country), strokeWidth: 1, r: 3.5 }}
                 isAnimationActive={false}
               />
             ))}

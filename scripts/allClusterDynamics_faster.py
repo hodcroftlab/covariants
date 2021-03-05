@@ -729,7 +729,7 @@ for clus in clus_to_run:
     if clus=="S222":
         country_styles_custom = country_styles
     else:
-        unused_countries = [x for x in country_list_2 if x not in countries_to_plot_min]
+        unused_countries = [x for x in country_styles_all if x not in countries_to_plot_min]
         country_styles_custom = {}
         for x in countries_to_plot:
             if x in country_styles.keys():

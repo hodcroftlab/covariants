@@ -1,14 +1,14 @@
 
 
-## S.D80Y
+## 20C/S:80Y
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.D80Y?f_region=Europe)
 
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
-| Switzerland    | 2020-07-16  |         68 | 2020-12-20 |
+| Switzerland    | 2020-07-16  |         75 | 2020-12-20 |
 | Austria        | 2020-07-22  |          1 | 2020-07-22 |
 | United Kingdom | 2020-07-22  |        277 | 2020-12-29 |
-| France         | 2020-07-24  |        134 | 2021-02-17 |
+| France         | 2020-07-24  |        143 | 2021-02-26 |
 | Denmark        | 2020-08-03  |         63 | 2020-09-28 |
 | Norway         | 2020-08-04  |         43 | 2020-10-30 |
 | Ireland        | 2020-08-12  |         13 | 2020-10-18 |

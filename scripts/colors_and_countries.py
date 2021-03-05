@@ -94,33 +94,111 @@ popsizes = {
     "Wales":3136000
 }
 
-country_list_2 = [
-    "Brazil",
-    "Slovakia",
-    "Hungary",
-    "Turkey",
-    "South Africa",
-    "United Arab Emirates",
-    "Jordan",
-    "Poland",
-    "Romania",
-    "Canada",
-    "India",
-    "Egypt",
-    "Ghana",
-    "Slovenia",
-    "Latvia",
-    "Zambia",
-    "Mozambique",
-    "Nigeria",
-    "Aruba",
-    "North Macedonia",
-    "Croatia"
+colors_2 = [
+    "#a6cee3",
+    "#1f78b4",
+    "#33a02c",
+    "#fb9a99",
+    "#e31a1c",
+    "#ff7f00",
+    "#cab2d6",
+    "#6a3d9a",
+    "#b2df8a",
+    "#b15928",
+    "#9900cc",
+    '#990000',
+    '#ff66ff',
+    '#0000ff',
+    "#a6a6a6",
+    "#000000",
+    '#004d00',
+    "#ffcc00",
+    "#fdbf6f",
+    "#0099ff",
 ]
 
+country_list_1 = [
+    'France',        #1
+    'United Kingdom',#2
+    'Netherlands',   #3
+    'Norway',        #4
+    'Spain',         #5
+    'Switzerland',   #6
+    'Germany',       #7
+    'USA',           #8
+    'Ireland',       #9
+    'Italy',         #10
+    'Sweden',        #11
+    'Portugal',      #12
+    'Lithuania',     #13
+    'Iceland',       #14
+    'Singapore',     #15
+    'New Zealand',   #16
+    'Czech Republic',#17
+    'Australia',     #18
+    'Belgium',       #19
+    'Denmark',       #20
+]
+
+country_list_2 = [
+    "Brazil",               #1
+    "Slovakia",             #2
+    "Hungary",              #3
+    "Turkey",               #4
+    "South Africa",         #5
+    "United Arab Emirates", #6
+    "Jordan",               #7
+    "Poland",               #8
+    "Romania",              #9
+    "Canada",               #10
+    "India",                #11
+    "Egypt",                #12
+    "Ghana",                #13
+    "Slovenia",             #14
+    "Latvia",               #15
+    "Zambia",               #16
+    "Mozambique",           #17
+    "Nigeria",              #18
+    "Aruba",                #19
+    "North Macedonia"       #20
+]
+
+country_list_3 = [
+    'Austria',       #1
+    'Hong Kong',     #2
+    'Luxembourg',    #3
+    'Israel',        #4
+    'Finland',        #5
+    'Japan',        #6
+    'Croatia',        #7
+    'Philippines'        #8
+            #9
+            #10
+            #11
+            #12
+            #13
+            #14
+            #15
+            #16
+            #17
+            #18
+            #19
+            #20
+]
+
+country_styles_1 = {
+    country: {'c':colors_2[i], 'ls':"-"}#linestyles[i//len(colors)]}
+    for i, country in enumerate(country_list_1)
+ }
+
 country_styles_2 = {
-    country: {'c':colors[i], 'ls':":"}#linestyles[i//len(colors)]}
+    country: {'c':colors_2[i], 'ls':"--"}#linestyles[i//len(colors)]}
     for i, country in enumerate(country_list_2)
  }
 
-country_styles_all = {**country_styles, **country_styles_2}
+country_styles_3 = {
+    country: {'c':colors_2[i], 'ls':"-."}#linestyles[i//len(colors)]}
+    for i, country in enumerate(country_list_3)
+ }
+
+country_styles_all = {**country_styles_1, **country_styles_2, **country_styles_3}

@@ -1,15 +1,15 @@
 {
   "Aruba": {
-    "c": "#990000",
-    "ls": ":"
+    "c": "#fdbf6f",
+    "ls": "--"
   },
   "Australia": {
     "c": "#ffcc00",
     "ls": "-"
   },
   "Austria": {
-    "c": "#ffff00",
-    "ls": "-"
+    "c": "#a6cee3",
+    "ls": "-."
   },
   "Belgium": {
     "c": "#fdbf6f",
@@ -17,18 +17,18 @@
   },
   "Brazil": {
     "c": "#a6cee3",
-    "ls": ":"
+    "ls": "--"
   },
   "Canada": {
-    "c": "#6a3d9a",
-    "ls": ":"
+    "c": "#b15928",
+    "ls": "--"
   },
   "Croatia": {
-    "c": "#ff66ff",
-    "ls": ":"
+    "c": "#cab2d6",
+    "ls": "-."
   },
   "Czech Republic": {
-    "c": "#006600",
+    "c": "#004d00",
     "ls": "-"
   },
   "Denmark": {
@@ -36,16 +36,12 @@
     "ls": "-"
   },
   "Egypt": {
-    "c": "#b15928",
-    "ls": ":"
-  },
-  "England": {
-    "c": "#1f78b4",
-    "ls": "-"
+    "c": "#990000",
+    "ls": "--"
   },
   "Finland": {
-    "c": "#993300",
-    "ls": "-"
+    "c": "#e31a1c",
+    "ls": "-."
   },
   "France": {
     "c": "#a6cee3",
@@ -56,56 +52,60 @@
     "ls": "-"
   },
   "Ghana": {
-    "c": "#000000",
-    "ls": ":"
+    "c": "#ff66ff",
+    "ls": "--"
   },
   "Hong Kong": {
-    "c": "#d9d9d9",
-    "ls": "-"
+    "c": "#1f78b4",
+    "ls": "-."
   },
   "Hungary": {
-    "c": "#ffff00",
-    "ls": ":"
+    "c": "#33a02c",
+    "ls": "--"
   },
   "Iceland": {
     "c": "#0000ff",
     "ls": "-"
   },
   "India": {
-    "c": "#b2df8a",
-    "ls": ":"
+    "c": "#9900cc",
+    "ls": "--"
   },
   "Ireland": {
     "c": "#b2df8a",
     "ls": "-"
   },
   "Israel": {
-    "c": "#cc00cc",
-    "ls": "-"
+    "c": "#fb9a99",
+    "ls": "-."
   },
   "Italy": {
     "c": "#b15928",
     "ls": "-"
   },
+  "Japan": {
+    "c": "#ff7f00",
+    "ls": "-."
+  },
   "Jordan": {
-    "c": "#fdbf6f",
-    "ls": ":"
+    "c": "#cab2d6",
+    "ls": "--"
   },
   "Latvia": {
-    "c": "#ffcc00",
-    "ls": ":"
+    "c": "#a6a6a6",
+    "ls": "--"
   },
   "Lithuania": {
     "c": "#ff66ff",
     "ls": "-"
   },
   "Luxembourg": {
-    "c": "#c2c2a3",
-    "ls": "-"
+    "c": "#33a02c",
+    "ls": "-."
   },
   "Mozambique": {
-    "c": "#0099ff",
-    "ls": ":"
+    "c": "#004d00",
+    "ls": "--"
   },
   "Netherlands": {
     "c": "#33a02c",
@@ -116,35 +116,31 @@
     "ls": "-"
   },
   "Nigeria": {
-    "c": "#d9d9d9",
-    "ls": ":"
+    "c": "#ffcc00",
+    "ls": "--"
   },
   "North Macedonia": {
-    "c": "#c2c2a3",
-    "ls": ":"
-  },
-  "Northern Ireland": {
-    "c": "#1f78b4",
-    "ls": ":"
+    "c": "#0099ff",
+    "ls": "--"
   },
   "Norway": {
     "c": "#fb9a99",
     "ls": "-"
   },
+  "Philippines": {
+    "c": "#6a3d9a",
+    "ls": "-."
+  },
   "Poland": {
-    "c": "#ff7f00",
-    "ls": ":"
+    "c": "#6a3d9a",
+    "ls": "--"
   },
   "Portugal": {
     "c": "#990000",
     "ls": "-"
   },
   "Romania": {
-    "c": "#cab2d6",
-    "ls": ":"
-  },
-  "Scotland": {
-    "c": "#1f78b4",
+    "c": "#b2df8a",
     "ls": "--"
   },
   "Singapore": {
@@ -153,15 +149,15 @@
   },
   "Slovakia": {
     "c": "#1f78b4",
-    "ls": ":"
+    "ls": "--"
   },
   "Slovenia": {
-    "c": "#9900cc",
-    "ls": ":"
+    "c": "#0000ff",
+    "ls": "--"
   },
   "South Africa": {
-    "c": "#fb9a99",
-    "ls": ":"
+    "c": "#e31a1c",
+    "ls": "--"
   },
   "Spain": {
     "c": "#e31a1c",
@@ -176,27 +172,23 @@
     "ls": "-"
   },
   "Turkey": {
-    "c": "#33a02c",
-    "ls": ":"
+    "c": "#fb9a99",
+    "ls": "--"
   },
   "USA": {
     "c": "#6a3d9a",
     "ls": "-"
   },
   "United Arab Emirates": {
-    "c": "#e31a1c",
-    "ls": ":"
+    "c": "#ff7f00",
+    "ls": "--"
   },
   "United Kingdom": {
     "c": "#1f78b4",
     "ls": "-"
   },
-  "Wales": {
-    "c": "#1f78b4",
-    "ls": "-."
-  },
   "Zambia": {
-    "c": "#a6a6a6",
-    "ls": ":"
+    "c": "#000000",
+    "ls": "--"
   }
 }
