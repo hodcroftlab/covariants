@@ -192,6 +192,7 @@ clusters = {
                 }
             },
 
+            # 'CA variant'
             "S452": {'snps': [21599,22017,22916], 'cluster_data': [], #'CA' variant
             "nextstrain_build": True,
             "graphing": True,
@@ -217,6 +218,52 @@ clusters = {
                     {'left': 'A', 'pos': 28272, 'right': 'T'}
                 ]
                 }
+            },
+
+            # "new york variant"
+            "20CS484": {'snps': [21574,9866,1058], 'cluster_data': [], # S5, ORF1a 3201, 265 -- 484 is 23012 (1-based)
+            "nextstrain_build": True,
+            "graphing": True,
+            "type": "variant",
+            "important": True,
+            "country_info": [], 'col': "#660066",
+            "display_name": "20C/S:484K",
+            'build_name': "20C.S.484K",
+            'nextstrain_url': "https://nextstrain.org/groups/neherlab/ncov/20C.S.484K?c=gt-S_484", # color, no europe filter
+            "mutations":{
+                "nonsynonymous": [
+                    {'gene': 'S', 'left': 'L', 'pos': 5, 'right': 'F'},
+                    {'gene': 'S', 'left': 'T', 'pos': 95, 'right': 'I'},
+                    {'gene': 'S', 'left': 'D', 'pos': 253, 'right': 'G'},
+                    {'gene': 'S', 'left': 'E', 'pos': 484, 'right': 'K'},
+                    #{'gene': 'S', 'left': 'D', 'pos': 614, 'right': 'G'},
+                    {'gene': 'S', 'left': 'A', 'pos': 701, 'right': 'V'},
+                    #{'gene': 'ORF1b', 'left': 'P', 'pos': 314, 'right': 'L'},
+                    {'gene': 'ORF1b', 'left': 'Q', 'pos': 1011, 'right': 'H'},
+                    {'gene': 'ORF3a', 'left': 'P', 'pos': 42, 'right': 'L'},
+                    #{'gene': 'ORF3a', 'left': 'Q', 'pos': 57, 'right': 'H'},
+                    #{'gene': 'ORF1a', 'left': 'T', 'pos': 265, 'right': 'I'},
+                    #{'gene': 'ORF1a', 'left': 'L', 'pos': 3201, 'right': 'P'},
+                    {'gene': 'ORF1a', 'left': 'S', 'pos': 3675, 'right': '-'},
+                    {'gene': 'ORF1a', 'left': 'G', 'pos': 3676, 'right': '-'},
+                    {'gene': 'ORF1a', 'left': 'F', 'pos': 3677, 'right': '-'},
+                    {'gene': 'N', 'left': 'P', 'pos': 199, 'right': 'L'},
+                    {'gene': 'N', 'left': 'M', 'pos': 234, 'right': 'I'},
+                    {'gene': 'ORF8', 'left': 'T', 'pos': 11, 'right': 'I'}
+                ],
+                "synonymous": [
+                    {'left': 'C', 'pos': 241, 'right': 'T'},
+                    {'left': 'C', 'pos': 3037, 'right': 'T'},
+                    {'left': 'A', 'pos': 20262, 'right': 'G'},
+                    {'left': 'A', 'pos': 28271, 'right': '-'}
+                ]
+                }
+            },
+
+            # 'not-called-nigerian variant' B.1.525
+            "20AS484": {'snps': [21574,9866,1058], 'cluster_data': [], #S 69, 484, 888   21767 23012 24224
+
+
             },
 
             "S439": {'snps': [7766, 22878], 'cluster_data': [],
