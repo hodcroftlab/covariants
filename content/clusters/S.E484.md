@@ -39,5 +39,5 @@ Announced in January 2021, emerging clade 20B/S.484K, is also thought to have or
 Unlike the two variants above, it does *not* carry <AaMut mut={'S:N501Y'}/> in Spike.<br/>
 It does have mutations in Nucleocapsid: <AaMut mut={'N:A119S'}/> and <AaMut mut={'N:M234I'}/> and in <code>ORF1a</code>: <AaMut mut={'ORF1a:L3458V'}/> and <AaMut mut={'ORF1a:L3930F'}/>.
 
-See a [focal `S.E484` build filtered & zoomed to 20B/S.484K](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484&f_clade_membership=20B/S.484K&label=clade:20B/S.484K&p=grid&r=country)
+See a [focal `S.E484` build filtered & zoomed to 20B/S.484K](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484&f_subclade_membership=20B/S.484K&label=clade:20B/S.484K&p=grid&r=country)
 
