@@ -137,3 +137,10 @@ p {
 .recharts-tooltip-wrapper {
   z-index: 1000 !important;
 }
+
+/* bootstrap/scss/code sets "color: inherit" for only *direct( descendants of an anchor element */
+code {
+  a & {
+    color: inherit;
+  }
+}
