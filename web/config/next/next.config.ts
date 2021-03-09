@@ -26,6 +26,7 @@ import withIgnore from './withIgnore'
 import withoutMinification from './withoutMinification'
 import withFriendlyChunkNames from './withFriendlyChunkNames'
 import withResolve from './withResolve'
+import withWebpackWatchPoll from './withWebpackWatchPoll'
 import getWithCopy from './withCopy'
 
 const {
@@ -44,6 +45,7 @@ const {
   DEBUG_SET_INITIAL_DATA,
   DOMAIN,
   DOMAIN_STRIPPED,
+  WATCH_POLL,
 } = getEnvVars()
 
 const BRANCH_NAME = getGitBranch()
@@ -201,6 +203,7 @@ const config = withPlugins(
     [withTypeChecking],
     [withTranspileModules],
     PROFILE && [withoutMinification],
+    WATCH_POLL && [withWebpackWatchPoll],
     [withFriendlyChunkNames],
     [withResolve],
     [withRobotsTxt],
