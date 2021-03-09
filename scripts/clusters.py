@@ -226,7 +226,7 @@ clusters = {
             "graphing": True,
             "type": "variant",
             "important": True,
-            "country_info": [], 'col': "#ff99ff ",
+            "country_info": [], 'col': "#ff99ff",
             "display_name": "20C/S:484K",
             'build_name': "20C.S.484K",
             'nextstrain_url': "https://nextstrain.org/groups/neherlab/ncov/20C.S.484K?c=gt-S_484", # color, no europe filter
@@ -512,6 +512,7 @@ clusters = {
             "graphing": False,
             "type": "mutation",
             "important": False,
+            "country_info":[], 'col': "#000066",
             "display_name": "S:L18",
             "build_name":"S.L18",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.L18?c=gt-S_18" #color
@@ -522,9 +523,10 @@ clusters = {
             "graphing": False,
             "type": "mutation",
             "important": False,
-            "display_name": "S:Y144",
-            "build_name":"S.Y144",
-            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y144?c=gt-S_144" #color
+            "country_info":[], 'col': "#b3d9ff",
+            "display_name": "S:Y144-",
+            "build_name":"S.Y144-",
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y144-?c=gt-S_144" #color
             },
             
             "S417": {'snps': [22812], 'cluster_data': [],
@@ -532,6 +534,7 @@ clusters = {
             "graphing": False,
             "type": "mutation",
             "important": False,
+            "country_info":[], 'col': "#ff8d3d",
             "display_name": "S:K417",
             "build_name":"S.K417",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.K417?c=gt-S_417" #color
@@ -542,6 +545,7 @@ clusters = {
             "graphing": False,
             "type": "mutation",
             "important": False,
+            "country_info":[], 'col': "#b30000",
             "display_name": "S:H655",
             "build_name":"S.H655",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.H655?c=gt-S_655" #color
@@ -552,6 +556,7 @@ clusters = {
             "graphing": False,
             "type": "mutation",
             "important": False,
+            "country_info":[], 'col': "#ff8080",
             "display_name": "S:P681",
             "build_name":"S.P681",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.P681?c=gt-S_681" #color
@@ -562,6 +567,7 @@ clusters = {
             "graphing": False,
             "type": "mutation",
             "important": False,
+            "country_info":[], 'col': "#65beeb",
             "display_name": "ORF1a:S3675",
             "build_name":"ORF1a.S3675",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/ORF1a.S3675?c=gt-ORF1a_3675" #color
@@ -582,15 +588,51 @@ clusters = {
             #"build_name": "S.Q677H"
             #}
 
-            #"S677HRobin1": {'snps': [23592,29401], 'cluster_data': [],
-            #"country_info": [], 'col': "#db4439", "display_name": "20G/S:677H-Robin1",
-            #"build_name": "S.Q677H"
-            #}
-
-            #"S677HRobin2": {'snps': [23592,7347], 'cluster_data': [],
-            #"country_info": [], 'col': "#db4439", "display_name": "20G/S:677H-Robin2",
-            #"build_name": "S.Q677H"
-            #}
+#######
+#            "S677HRobin1": {'snps': [23592,29401], 'cluster_data': [],
+#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Robin1",
+#            "build_name": "S.Q677H.Robin1"
+#            },
+#
+#            "S677HRobin2": {'snps': [23592,7347], 'cluster_data': [],
+#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Robin2",
+#            "build_name": "S.Q677H.Robin2"
+#            },
+#
+#            "S677PPelican": {'snps': [23591,11450,21810], 'cluster_data': [],
+#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677P.Pelican",
+#            "build_name": "S.Q677P.Pelican"
+#            },
+#
+#            "S677HYellowhammer": {'snps': [23592,9927], 'cluster_data': [],
+#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Yellowhammer",
+#            "build_name": "S.Q677H.Yellowhammer"
+#            },
+#
+#            "S677RRoadrunner": {'snps': [23591,3449,6381], 'cluster_data': [],
+#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677R.Roadrunner",
+#            "build_name": "S.Q677R.Roadrunner"
+#            },
+#
+#            "S677HHeron": {'snps': [23592,28832,1591], 'cluster_data': [],
+#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Heron",
+#            "build_name": "S.Q677H.Heron"
+#            },
+#
+#            "S677HBluebird": {'snps': [23592,21647], 'cluster_data': [],
+#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Bluebird",
+#            "build_name": "S.Q677H.Bluebird"
+#            },
+#
+#            "S677HQuail": {'snps': [23592,23755,21756], 'cluster_data': [],
+#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Quail",
+#            "build_name": "S.Q677H.Quail"
+#            },
+#
+#            "S677HMockingbird": {'snps': [23592,21985], 'cluster_data': [],
+#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Mockingbird",
+#            "build_name": "S.Q677H.Mockingbird"
+#            }
 
 # NY stuff
             #"ORF811": {  'snps': [9866, 25516, 27924], 'cluster_data': [],
