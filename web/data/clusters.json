@@ -617,6 +617,288 @@
       "type": "variant"
     },
     {
+      "build_name": "20C.S.484K",
+      "cluster_data": [],
+      "col": "#ff99ff",
+      "country_info": [],
+      "display_name": "20C/S:484K",
+      "graphing": true,
+      "important": true,
+      "mutations": {
+        "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 5,
+            "right": "F"
+          },
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 95,
+            "right": "I"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 253,
+            "right": "G"
+          },
+          {
+            "gene": "S",
+            "left": "E",
+            "pos": 484,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "A",
+            "pos": 701,
+            "right": "V"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "Q",
+            "pos": 1011,
+            "right": "H"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "P",
+            "pos": 42,
+            "right": "L"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 3675,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 3676,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 3677,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "P",
+            "pos": 199,
+            "right": "L"
+          },
+          {
+            "gene": "N",
+            "left": "M",
+            "pos": 234,
+            "right": "I"
+          },
+          {
+            "gene": "ORF8",
+            "left": "T",
+            "pos": 11,
+            "right": "I"
+          }
+        ],
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 241,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 3037,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 20262,
+            "right": "G"
+          },
+          {
+            "left": "A",
+            "pos": 28271,
+            "right": "-"
+          }
+        ]
+      },
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20C.S.484K?c=gt-S_484",
+      "snps": [
+        21574,
+        9866,
+        1058
+      ],
+      "type": "variant"
+    },
+    {
+      "build_name": "20A.S.484K",
+      "cluster_data": [],
+      "col": "#000066",
+      "country_info": [],
+      "display_name": "20A/S:484K",
+      "graphing": true,
+      "important": true,
+      "mutations": {
+        "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "A",
+            "pos": 67,
+            "right": "V"
+          },
+          {
+            "gene": "S",
+            "left": "H",
+            "pos": 69,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "V",
+            "pos": 70,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "Y",
+            "pos": 144,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "E",
+            "pos": 484,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "Q",
+            "pos": 677,
+            "right": "H"
+          },
+          {
+            "gene": "S",
+            "left": "F",
+            "pos": 888,
+            "right": "L"
+          },
+          {
+            "gene": "N",
+            "left": "S",
+            "pos": 2,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "D",
+            "pos": 3,
+            "right": "Y"
+          },
+          {
+            "gene": "N",
+            "left": "A",
+            "pos": 12,
+            "right": "G"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 3675,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 3676,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 3677,
+            "right": "-"
+          }
+        ],
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 241,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 1498,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 1807,
+            "right": "G"
+          },
+          {
+            "left": "G",
+            "pos": 2659,
+            "right": "A"
+          },
+          {
+            "left": "C",
+            "pos": 3037,
+            "right": "T"
+          },
+          {
+            "left": "T",
+            "pos": 8593,
+            "right": "C"
+          },
+          {
+            "left": "C",
+            "pos": 9593,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 18171,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 20724,
+            "right": "G"
+          },
+          {
+            "left": "C",
+            "pos": 24748,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 28699,
+            "right": "G"
+          },
+          {
+            "left": "G",
+            "pos": 29543,
+            "right": "T"
+          }
+        ]
+      },
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.484K",
+      "snps": [
+        8592,
+        23011,
+        24223
+      ],
+      "type": "variant"
+    },
+    {
       "build_name": "S.N439K",
       "cluster_data": [],
       "col": "#0000ff",
@@ -983,6 +1265,100 @@
       "snps": [
         22991
       ],
+      "type": "mutation"
+    },
+    {
+      "build_name": "S.L18",
+      "cluster_data": [],
+      "col": "#000066",
+      "country_info": [],
+      "display_name": "S:L18",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.L18?c=gt-S_18",
+      "snps": [
+        21613
+      ],
+      "type": "mutation"
+    },
+    {
+      "build_name": "S.Y144-",
+      "cluster_data": [],
+      "col": "#b3d9ff",
+      "country_info": [],
+      "display_name": "S:Y144-",
+      "gaps": [
+        21992
+      ],
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y144-?c=gt-S_144",
+      "snps": [],
+      "type": "mutation"
+    },
+    {
+      "build_name": "S.K417",
+      "cluster_data": [],
+      "col": "#ff8d3d",
+      "country_info": [],
+      "display_name": "S:K417",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.K417?c=gt-S_417",
+      "snps": [
+        22812
+      ],
+      "type": "mutation"
+    },
+    {
+      "build_name": "S.H655",
+      "cluster_data": [],
+      "col": "#b30000",
+      "country_info": [],
+      "display_name": "S:H655",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.H655?c=gt-S_655",
+      "snps": [
+        23524
+      ],
+      "type": "mutation"
+    },
+    {
+      "build_name": "S.P681",
+      "cluster_data": [],
+      "col": "#ff8080",
+      "country_info": [],
+      "display_name": "S:P681",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.P681?c=gt-S_681",
+      "snps": [
+        23603
+      ],
+      "type": "mutation"
+    },
+    {
+      "build_name": "ORF1a.S3675",
+      "cluster_data": [],
+      "col": "#65beeb",
+      "country_info": [],
+      "display_name": "ORF1a:S3675",
+      "gaps": [
+        11287,
+        11288,
+        11289
+      ],
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/ORF1a.S3675?c=gt-ORF1a_3675",
+      "snps": [],
       "type": "mutation"
     }
   ]

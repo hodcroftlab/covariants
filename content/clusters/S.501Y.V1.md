@@ -20,7 +20,7 @@ Also known as `B.1.1.7`
 Announced on the 14 Dec 2020, this variant appears to have arisen and/or initially expanded in the South East of England.
 
 501Y.V1 is associated with multiple mutations in Spike. Most notably: <AaMut mut={'S:N501Y'}/> (see <Mut name="S:N501"/>), and a deletion at 69/70 (see <Mut name="S:H69-"/>)). <br/>
-But also <AaMut mut={'S:Y144-'}/> (deletion) and <AaMut mut={'S:P681H'}/> (adjacent to the furin cleavage site).
+But also <Mut name="S:Y144-"/> (deletion) and <AaMut mut={'S:P681H'}/> (adjacent to the furin cleavage site).
 
 There is also a notable truncation of <code>ORF8</code>, with <AaMut mut={'ORF8:Q27*'}/> (becomes a stop codon) (deletion of <code>ORF8</code> was previously associated with reduced clinical severity (<LinkExternal href="https://www.thelancet.com/article/S0140-6736(20)31757-8/fulltext">Young et al., Lancet</LinkExternal>)), and mutations in Nucleocapsid: <AaMut mut={'N:D3L'}/> and <AaMut mut={'N:S235F'}/>, as well as a deletion in <code>ORF1a</code>(<code>Nsp6</code>) 3675-3677  (also seen in <Var name="20H/501Y.V2" prefix=""/> and <Var name="20J/501Y.V3" prefix=""/>).
 

@@ -10,6 +10,7 @@ export function getEnvVars() {
   const DEBUG_SET_INITIAL_DATA = !PRODUCTION && getbool('DEV_DEBUG_SET_INITIAL_DATA')
   const DOMAIN = getDomain()
   const DOMAIN_STRIPPED = DOMAIN.replace('https://', '').replace('http://', '')
+  const WATCH_POLL = getbool('WATCH_POLL', false)
 
   const common = {
     BABEL_ENV,
@@ -20,6 +21,7 @@ export function getEnvVars() {
     DEBUG_SET_INITIAL_DATA,
     DOMAIN,
     DOMAIN_STRIPPED,
+    WATCH_POLL,
   }
 
   if (PRODUCTION) {

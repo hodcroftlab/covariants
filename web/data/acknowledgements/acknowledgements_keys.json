@@ -1,13 +1,22 @@
 {
   "acknowledgements": {
     "20A.EU1": {
-      "numChunks": 119
+      "numChunks": 123
     },
     "20A.EU2": {
-      "numChunks": 18
+      "numChunks": 19
+    },
+    "20A.S.484K": {
+      "numChunks": 1
+    },
+    "20C.S.484K": {
+      "numChunks": 2
+    },
+    "ORF1a.S3675": {
+      "numChunks": 137
     },
     "S.501Y.V1": {
-      "numChunks": 122
+      "numChunks": 131
     },
     "S.501Y.V2": {
       "numChunks": 3
@@ -22,31 +31,46 @@
       "numChunks": 1
     },
     "S.E484": {
-      "numChunks": 6
+      "numChunks": 7
+    },
+    "S.H655": {
+      "numChunks": 3
     },
     "S.H69-": {
-      "numChunks": 134
+      "numChunks": 144
+    },
+    "S.K417": {
+      "numChunks": 4
+    },
+    "S.L18": {
+      "numChunks": 59
     },
     "S.L452R": {
-      "numChunks": 9
-    },
-    "S.N439K": {
-      "numChunks": 13
-    },
-    "S.N501": {
-      "numChunks": 128
-    },
-    "S.Q677": {
       "numChunks": 10
     },
+    "S.N439K": {
+      "numChunks": 14
+    },
+    "S.N501": {
+      "numChunks": 138
+    },
+    "S.P681": {
+      "numChunks": 143
+    },
+    "S.Q677": {
+      "numChunks": 11
+    },
     "S.S477": {
-      "numChunks": 31
+      "numChunks": 33
     },
     "S.S98F": {
-      "numChunks": 9
+      "numChunks": 10
     },
     "S.V1122L": {
       "numChunks": 1
+    },
+    "S.Y144": {
+      "numChunks": 132
     },
     "S.Y453F": {
       "numChunks": 2

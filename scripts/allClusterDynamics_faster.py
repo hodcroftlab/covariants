@@ -124,6 +124,9 @@ acknowledgement_by_variant['acknowledgements'] = {}
 acknowledgement_keys = {}
 acknowledgement_keys['acknowledgements'] = {}
 
+#set min data week to consider
+min_data_week = (2020,18) #20)
+
 ##################################
 ##################################
 #### Find out what users want
@@ -173,10 +176,10 @@ print("These clusters will be run: ", clus_to_run)
 #### Read in the starting files
 
 # Get diagnostics file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
-diag_file = "results/sequence-diagnostics.tsv"
+diag_file = "results/sequence-diagnostics_gisaid.tsv" #"results/sequence-diagnostics.tsv"
 diag = pd.read_csv(diag_file, sep='\t', index_col=False)
 # Read metadata file
-input_meta = "data/metadata.tsv"
+input_meta = "data/downloaded_gisaid.tsv" #"data/metadata.tsv"
 meta = pd.read_csv(input_meta, sep='\t', index_col=False)
 meta = meta.fillna('')
 
@@ -530,7 +533,7 @@ if print_acks and "all" in clus_answer:
 ##################################
 #### PREPARING FOR OF PLOTTING
 
-min_data_week = (2020,18) #20)
+
 
 for clus in clus_to_run:
     print(f"\nPreparing to plot cluster {clus}\n")
@@ -599,6 +602,9 @@ for clus in clus_to_run:
         #temp_meta['calendar_week'] = temp_meta['date_formatted'].apply(lambda x: x.isocalendar()[1])
         temp_meta['calendar_week'] = temp_meta['date_formatted'].apply(lambda x: (x.isocalendar()[0], x.isocalendar()[1]))
         temp_meta = temp_meta[temp_meta['calendar_week']>=min_data_week]
+        #If no samples are after min_data_week, will be empty!!
+        if temp_meta.empty:
+            continue
 
         #if print_acks:
         #    acknowledgement_table = temp_meta.loc[:,['strain', 'gisaid_epi_isl', 'originating_lab', 'submitting_lab', 'authors']]
@@ -714,7 +720,7 @@ for clus in clus_to_run:
 
 
     # Only plot countries with >= X seqs
-    min_to_plot = 40
+    min_to_plot = 60
     #if clus == "S222":
     #    min_to_plot = 200
 
