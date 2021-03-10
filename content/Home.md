@@ -30,6 +30,8 @@ CoVariants uses the Nextstrain naming system for variants ([read more here](http
 | <Var name="20C/S:80Y" prefix=""/>     | &#124; B.1.367           | &#124; |
 | <Var name="20B/S:626S" prefix=""/>    | &#124; B.1.1.277         | &#124; |
 | <Var name="20B/S:1122L" prefix=""/>   | &#124; B.1.1.302         | &#124; |
+| <Var name="20A/S:484K" prefix=""/>    | &#124; <LinkExternal href="https://cov-lineages.org/global_report_B.1.525.html">B.1.525</LinkExternal>           | &#124; |
+| <Var name="20C/S:484K" prefix=""/>    | &#124; B.1.526           | &#124; |
 
 </div>
 

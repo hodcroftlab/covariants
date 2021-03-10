@@ -192,6 +192,7 @@ clusters = {
                 }
             },
 
+            # 'CA variant'
             "S452": {'snps': [21599,22017,22916], 'cluster_data': [], #'CA' variant
             "nextstrain_build": True,
             "graphing": True,
@@ -215,6 +216,97 @@ clusters = {
                     {'left': 'T', 'pos': 24349, 'right': 'C'},
                     {'left': 'G', 'pos': 27890, 'right': 'T'},
                     {'left': 'A', 'pos': 28272, 'right': 'T'}
+                ]
+                }
+            },
+
+            # "new york variant"
+            "20CS484": {'snps': [21574,9866,1058], 'cluster_data': [], # S5, ORF1a 3201, 265 -- 484 is 23012 (1-based)
+            "nextstrain_build": True,
+            "graphing": True,
+            "type": "variant",
+            "important": True,
+            "country_info": [], 'col': "#ff99ff",
+            "display_name": "20C/S:484K",
+            'build_name': "20C.S.484K",
+            'nextstrain_url': "https://nextstrain.org/groups/neherlab/ncov/20C.S.484K?c=gt-S_484", # color, no europe filter
+            "mutations":{
+                "nonsynonymous": [
+                    {'gene': 'S', 'left': 'L', 'pos': 5, 'right': 'F'},
+                    {'gene': 'S', 'left': 'T', 'pos': 95, 'right': 'I'},
+                    {'gene': 'S', 'left': 'D', 'pos': 253, 'right': 'G'},
+                    {'gene': 'S', 'left': 'E', 'pos': 484, 'right': 'K'},
+                    #{'gene': 'S', 'left': 'D', 'pos': 614, 'right': 'G'},
+                    {'gene': 'S', 'left': 'A', 'pos': 701, 'right': 'V'},
+                    #{'gene': 'ORF1b', 'left': 'P', 'pos': 314, 'right': 'L'},
+                    {'gene': 'ORF1b', 'left': 'Q', 'pos': 1011, 'right': 'H'},
+                    {'gene': 'ORF3a', 'left': 'P', 'pos': 42, 'right': 'L'},
+                    #{'gene': 'ORF3a', 'left': 'Q', 'pos': 57, 'right': 'H'},
+                    #{'gene': 'ORF1a', 'left': 'T', 'pos': 265, 'right': 'I'},
+                    #{'gene': 'ORF1a', 'left': 'L', 'pos': 3201, 'right': 'P'},
+                    {'gene': 'ORF1a', 'left': 'S', 'pos': 3675, 'right': '-'},
+                    {'gene': 'ORF1a', 'left': 'G', 'pos': 3676, 'right': '-'},
+                    {'gene': 'ORF1a', 'left': 'F', 'pos': 3677, 'right': '-'},
+                    {'gene': 'N', 'left': 'P', 'pos': 199, 'right': 'L'},
+                    {'gene': 'N', 'left': 'M', 'pos': 234, 'right': 'I'},
+                    {'gene': 'ORF8', 'left': 'T', 'pos': 11, 'right': 'I'}
+                ],
+                "synonymous": [
+                    {'left': 'C', 'pos': 241, 'right': 'T'},
+                    {'left': 'C', 'pos': 3037, 'right': 'T'},
+                    {'left': 'A', 'pos': 20262, 'right': 'G'},
+                    {'left': 'A', 'pos': 28271, 'right': '-'}
+                ]
+                }
+            },
+
+            # 'not-called-nigerian variant' B.1.525
+            "20AS484": {'snps': [8592,23011,24223], 'cluster_data': [], # nuc 8593 S 484, 888    
+            "nextstrain_build": True,
+            "graphing": True,
+            "type": "variant",
+            "important": True,
+            "country_info": [], 'col': "#000066",
+            "display_name": "20A/S:484K",
+            'build_name': "20A.S.484K",
+            'nextstrain_url': "https://nextstrain.org/groups/neherlab/ncov/20A.S.484K", # color, no europe filter
+            "mutations":{
+                "nonsynonymous": [
+                    #{'gene': 'S', 'left': 'Q', 'pos': 52, 'right': 'R'},
+                    {'gene': 'S', 'left': 'A', 'pos': 67, 'right': 'V'},
+                    {'gene': 'S', 'left': 'H', 'pos': 69, 'right': '-'},
+                    {'gene': 'S', 'left': 'V', 'pos': 70, 'right': '-'},
+                    {'gene': 'S', 'left': 'Y', 'pos': 144, 'right': '-'},
+                    {'gene': 'S', 'left': 'E', 'pos': 484, 'right': 'K'},
+                    #{'gene': 'S', 'left': 'D', 'pos': 614, 'right': 'G'},
+                    {'gene': 'S', 'left': 'Q', 'pos': 677, 'right': 'H'},
+                    {'gene': 'S', 'left': 'F', 'pos': 888, 'right': 'L'},
+                    #{'gene': 'ORF1b', 'left': 'P', 'pos': 314, 'right': 'F'},
+                    {'gene': 'N', 'left': 'S', 'pos': 2, 'right': '-'},
+                    {'gene': 'N', 'left': 'D', 'pos': 3, 'right': 'Y'},
+                    {'gene': 'N', 'left': 'A', 'pos': 12, 'right': 'G'},
+                    #{'gene': 'N', 'left': 'T', 'pos': 205, 'right': 'I'},
+                    #{'gene': 'M', 'left': 'I', 'pos': 82, 'right': 'T'},
+                    #{'gene': 'ORF1a', 'left': 'T', 'pos': 2007, 'right': 'I'},
+                    {'gene': 'ORF1a', 'left': 'S', 'pos': 3675, 'right': '-'},
+                    {'gene': 'ORF1a', 'left': 'G', 'pos': 3676, 'right': '-'},
+                    {'gene': 'ORF1a', 'left': 'F', 'pos': 3677, 'right': '-'}
+                    #{'gene': 'E', 'left': 'L', 'pos': 21, 'right': 'F'},
+                    #{'gene': 'ORF6', 'left': 'F', 'pos': 2, 'right': '-'}
+                ],
+                "synonymous": [
+                    {'left': 'C', 'pos': 241, 'right': 'T'},
+                    {'left': 'C', 'pos': 1498, 'right': 'T'},
+                    {'left': 'A', 'pos': 1807, 'right': 'G'},
+                    {'left': 'G', 'pos': 2659, 'right': 'A'},
+                    {'left': 'C', 'pos': 3037, 'right': 'T'},
+                    {'left': 'T', 'pos': 8593, 'right': 'C'},
+                    {'left': 'C', 'pos': 9593, 'right': 'T'},
+                    {'left': 'C', 'pos': 18171, 'right': 'T'},
+                    {'left': 'A', 'pos': 20724, 'right': 'G'},
+                    {'left': 'C', 'pos': 24748, 'right': 'T'},
+                    {'left': 'A', 'pos': 28699, 'right': 'G'},
+                    {'left': 'G', 'pos': 29543, 'right': 'T'}
                 ]
                 }
             },
@@ -399,6 +491,7 @@ clusters = {
             "display_name": "S:S477",
             "build_name":"S.S477",
             "nextstrain_url":"https://nextstrain.org/groups/neherlab/ncov/S.S477?f_region=Europe",
+            # no mutations because has appeared many times independently
             },
 
             "DanishCluster": {'snps': [15655], 'cluster_data': [],
@@ -412,6 +505,75 @@ clusters = {
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/DanishCluster?f_country=Denmark" #filter to denmark
             # no mutations because is not displayed
             }
+            ,
+
+            "S18": {'snps': [21613], 'cluster_data': [],
+            "nextstrain_build": True,
+            "graphing": False,
+            "type": "mutation",
+            "important": False,
+            "country_info":[], 'col': "#000066",
+            "display_name": "S:L18",
+            "build_name":"S.L18",
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.L18?c=gt-S_18" #color
+            },
+
+            "S144": {'snps': [], 'cluster_data': [], 'gaps': [21992],
+            "nextstrain_build": True,
+            "graphing": False,
+            "type": "mutation",
+            "important": False,
+            "country_info":[], 'col': "#b3d9ff",
+            "display_name": "S:Y144-",
+            "build_name":"S.Y144-",
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y144-?c=gt-S_144" #color
+            },
+            
+            "S417": {'snps': [22812], 'cluster_data': [],
+            "nextstrain_build": True,
+            "graphing": False,
+            "type": "mutation",
+            "important": False,
+            "country_info":[], 'col': "#ff8d3d",
+            "display_name": "S:K417",
+            "build_name":"S.K417",
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.K417?c=gt-S_417" #color
+            },
+
+            "S655": {'snps': [23524], 'cluster_data': [],
+            "nextstrain_build": True,
+            "graphing": False,
+            "type": "mutation",
+            "important": False,
+            "country_info":[], 'col': "#b30000",
+            "display_name": "S:H655",
+            "build_name":"S.H655",
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.H655?c=gt-S_655" #color
+            },
+
+            "S681": {'snps': [23603], 'cluster_data': [],
+            "nextstrain_build": True,
+            "graphing": False,
+            "type": "mutation",
+            "important": False,
+            "country_info":[], 'col': "#ff8080",
+            "display_name": "S:P681",
+            "build_name":"S.P681",
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.P681?c=gt-S_681" #color
+            },
+
+            "ORF1aS3675": {'snps': [], 'cluster_data': [], 'gaps': [11287,11288,11289],
+            "nextstrain_build": True,
+            "graphing": False,
+            "type": "mutation",
+            "important": False,
+            "country_info":[], 'col': "#65beeb",
+            "display_name": "ORF1a:S3675",
+            "build_name":"ORF1a.S3675",
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/ORF1a.S3675?c=gt-ORF1a_3675" #color
+            }
+
+
 
 
         #The two clusters in 20G, Kamil lab asked
@@ -426,15 +588,51 @@ clusters = {
             #"build_name": "S.Q677H"
             #}
 
-            #"S677HRobin1": {'snps': [23592,29401], 'cluster_data': [],
-            #"country_info": [], 'col': "#db4439", "display_name": "20G/S:677H-Robin1",
-            #"build_name": "S.Q677H"
-            #}
-
-            #"S677HRobin2": {'snps': [23592,7347], 'cluster_data': [],
-            #"country_info": [], 'col': "#db4439", "display_name": "20G/S:677H-Robin2",
-            #"build_name": "S.Q677H"
-            #}
+#######
+#            "S677HRobin1": {'snps': [23592,29401], 'cluster_data': [],
+#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Robin1",
+#            "build_name": "S.Q677H.Robin1"
+#            },
+#
+#            "S677HRobin2": {'snps': [23592,7347], 'cluster_data': [],
+#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Robin2",
+#            "build_name": "S.Q677H.Robin2"
+#            },
+#
+#            "S677PPelican": {'snps': [23591,11450,21810], 'cluster_data': [],
+#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677P.Pelican",
+#            "build_name": "S.Q677P.Pelican"
+#            },
+#
+#            "S677HYellowhammer": {'snps': [23592,9927], 'cluster_data': [],
+#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Yellowhammer",
+#            "build_name": "S.Q677H.Yellowhammer"
+#            },
+#
+#            "S677RRoadrunner": {'snps': [23591,3449,6381], 'cluster_data': [],
+#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677R.Roadrunner",
+#            "build_name": "S.Q677R.Roadrunner"
+#            },
+#
+#            "S677HHeron": {'snps': [23592,28832,1591], 'cluster_data': [],
+#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Heron",
+#            "build_name": "S.Q677H.Heron"
+#            },
+#
+#            "S677HBluebird": {'snps': [23592,21647], 'cluster_data': [],
+#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Bluebird",
+#            "build_name": "S.Q677H.Bluebird"
+#            },
+#
+#            "S677HQuail": {'snps': [23592,23755,21756], 'cluster_data': [],
+#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Quail",
+#            "build_name": "S.Q677H.Quail"
+#            },
+#
+#            "S677HMockingbird": {'snps': [23592,21985], 'cluster_data': [],
+#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Mockingbird",
+#            "build_name": "S.Q677H.Mockingbird"
+#            }
 
 # NY stuff
             #"ORF811": {  'snps': [9866, 25516, 27924], 'cluster_data': [],
