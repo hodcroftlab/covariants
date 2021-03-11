@@ -331,6 +331,77 @@ clusters = {
                 }
             },
 
+            "S677HRobin1": {'snps': [23592,29401], 'cluster_data': [],
+            "nextstrain_build": True,
+            "graphing": True,
+            "type": "variant",
+            "important": False,
+            "country_info": [], 'col': "#cc6600", 
+            "display_name": "20G/S:677H.Robin1",
+            "build_name": "S.Q677H.Robin1",
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Robin1?f_country=USA",
+            "mutations":{
+                "nonsynonymous": [
+                    #{'gene': 'S', 'left': 'D', 'pos': 614, 'right': 'G'},
+                    {'gene': 'S', 'left': 'Q', 'pos': 677, 'right': 'H'},
+                    {'gene': 'N', 'left': 'P', 'pos': 67, 'right': 'S'},
+                    {'gene': 'N', 'left': 'P', 'pos': 199, 'right': 'L'},
+                    {'gene': 'N', 'left': 'D', 'pos': 377, 'right': 'Y'},
+                    {'gene': 'ORF1a', 'left': 'T', 'pos': 265, 'right': 'I'},
+                    #{'gene': 'ORF1a', 'left': 'M', 'pos': 2606, 'right': 'I'},
+                    {'gene': 'ORF1a', 'left': 'L', 'pos': 3352, 'right': 'F'},
+                    #{'gene': 'ORF1b', 'left': 'P', 'pos': 314, 'right': 'L'},
+                    {'gene': 'ORF1b', 'left': 'N', 'pos': 1653, 'right': 'D'},
+                    {'gene': 'ORF1b', 'left': 'R', 'pos': 2613, 'right': 'C'},
+                    #{'gene': 'ORF3a', 'left': 'Q', 'pos': 57, 'right': 'H'},
+                    #{'gene': 'ORF3a', 'left': 'G', 'pos': 172, 'right': 'V'},
+                    #{'gene': 'ORF8', 'left': 'S', 'pos': 24, 'right': 'L'}
+                ],
+                "synonymous": [
+                    {'left': 'C', 'pos': 241, 'right': 'T'},
+                    {'left': 'G', 'pos': 1942, 'right': 'T'},
+                    {'left': 'C', 'pos': 3037, 'right': 'T'},
+                    {'left': 'A', 'pos': 9085, 'right': 'G'},
+                    {'left': 'C', 'pos': 14805, 'right': 'T'}
+                ]
+                }
+            },
+
+            "S677PPelican": {'snps': [23591,11450,21810], 'cluster_data': [],
+            "nextstrain_build": True,
+            "graphing": True,
+            "type": "variant",
+            "important": False,
+            "country_info": [], 'col': "#cc33ff", 
+            "display_name": "20G/S:677P.Pelican",
+            "build_name": "S.Q677P.Pelican",
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677P.Pelican?f_country=USA",
+            "mutations":{
+                "nonsynonymous": [
+                    #{'gene': 'S', 'left': 'D', 'pos': 614, 'right': 'G'},
+                    {'gene': 'S', 'left': 'Q', 'pos': 677, 'right': 'P'},
+                    {'gene': 'N', 'left': 'P', 'pos': 67, 'right': 'S'},
+                    {'gene': 'N', 'left': 'P', 'pos': 199, 'right': 'L'},
+                    {'gene': 'ORF1a', 'left': 'T', 'pos': 265, 'right': 'I'},
+                    {'gene': 'ORF1a', 'left': 'L', 'pos': 3352, 'right': 'F'},
+                    #{'gene': 'ORF1a', 'left': 'Q', 'pos': 3729, 'right': 'R'},
+                    #{'gene': 'ORF1b', 'left': 'P', 'pos': 314, 'right': 'L'},
+                    {'gene': 'ORF1b', 'left': 'N', 'pos': 1653, 'right': 'D'},
+                    {'gene': 'ORF1b', 'left': 'R', 'pos': 2613, 'right': 'C'},
+                    #{'gene': 'ORF3a', 'left': 'Q', 'pos': 57, 'right': 'H'},
+                    #{'gene': 'ORF3a', 'left': 'G', 'pos': 172, 'right': 'V'},
+                    #{'gene': 'ORF8', 'left': 'S', 'pos': 24, 'right': 'L'}
+                ],
+                "synonymous": [
+                    {'left': 'C', 'pos': 241, 'right': 'T'},
+                    {'left': 'C', 'pos': 3037, 'right': 'T'},
+                    {'left': 'C', 'pos': 21811, 'right': 'A'},
+                    {'left': 'T', 'pos': 29194, 'right': 'C'},
+                    {'left': 'T', 'pos': 29377, 'right': 'A'}
+                ]
+                }
+            },
+
             "S98": {'snps': [21854, 25504], 'cluster_data': [],
             "nextstrain_build": True,
             "graphing": True,
@@ -571,10 +642,50 @@ clusters = {
             "display_name": "ORF1a:S3675",
             "build_name":"ORF1a.S3675",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/ORF1a.S3675?c=gt-ORF1a_3675" #color
+            },
+
+            #The rest of the birds
+            "S677HRobin2": {'snps': [23592,7347], 'cluster_data': [],
+            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Robin2",
+            "type": "do_not_display",
+            "build_name": "S.Q677H.Robin2"
+            },
+
+            "S677HYellowhammer": {'snps': [23592,9927], 'cluster_data': [],
+            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Yellowhammer",
+            "type": "do_not_display",
+            "build_name": "S.Q677H.Yellowhammer"
+            },
+
+            "S677RRoadrunner": {'snps': [23591,3449,6381], 'cluster_data': [],
+            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677R.Roadrunner",
+            "type": "do_not_display",
+            "build_name": "S.Q677R.Roadrunner"
+            },
+
+            "S677HHeron": {'snps': [23592,28832,1591], 'cluster_data': [],
+            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Heron",
+            "type": "do_not_display",
+            "build_name": "S.Q677H.Heron"
+            },
+
+            "S677HBluebird": {'snps': [23592,21647], 'cluster_data': [],
+            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Bluebird",
+            "type": "do_not_display",
+            "build_name": "S.Q677H.Bluebird"
+            },
+
+            "S677HQuail": {'snps': [23592,23755,21756], 'cluster_data': [],
+            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Quail",
+            "type": "do_not_display",
+            "build_name": "S.Q677H.Quail"
+            },
+
+            "S677HMockingbird": {'snps': [23592,21985], 'cluster_data': [],
+            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Mockingbird",
+            "type": "do_not_display",
+            "build_name": "S.Q677H.Mockingbird"
             }
-
-
-
 
         #The two clusters in 20G, Kamil lab asked
             #"S677P": {'snps': [23591, 21810, 29193], 'cluster_data': [],
@@ -588,51 +699,6 @@ clusters = {
             #"build_name": "S.Q677H"
             #}
 
-#######
-#            "S677HRobin1": {'snps': [23592,29401], 'cluster_data': [],
-#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Robin1",
-#            "build_name": "S.Q677H.Robin1"
-#            },
-#
-#            "S677HRobin2": {'snps': [23592,7347], 'cluster_data': [],
-#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Robin2",
-#            "build_name": "S.Q677H.Robin2"
-#            },
-#
-#            "S677PPelican": {'snps': [23591,11450,21810], 'cluster_data': [],
-#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677P.Pelican",
-#            "build_name": "S.Q677P.Pelican"
-#            },
-#
-#            "S677HYellowhammer": {'snps': [23592,9927], 'cluster_data': [],
-#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Yellowhammer",
-#            "build_name": "S.Q677H.Yellowhammer"
-#            },
-#
-#            "S677RRoadrunner": {'snps': [23591,3449,6381], 'cluster_data': [],
-#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677R.Roadrunner",
-#            "build_name": "S.Q677R.Roadrunner"
-#            },
-#
-#            "S677HHeron": {'snps': [23592,28832,1591], 'cluster_data': [],
-#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Heron",
-#            "build_name": "S.Q677H.Heron"
-#            },
-#
-#            "S677HBluebird": {'snps': [23592,21647], 'cluster_data': [],
-#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Bluebird",
-#            "build_name": "S.Q677H.Bluebird"
-#            },
-#
-#            "S677HQuail": {'snps': [23592,23755,21756], 'cluster_data': [],
-#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Quail",
-#            "build_name": "S.Q677H.Quail"
-#            },
-#
-#            "S677HMockingbird": {'snps': [23592,21985], 'cluster_data': [],
-#            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Mockingbird",
-#            "build_name": "S.Q677H.Mockingbird"
-#            }
 
 # NY stuff
             #"ORF811": {  'snps': [9866, 25516, 27924], 'cluster_data': [],
