@@ -2,7 +2,7 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 
 <Var name={'20C/S:452R'}/> was first identified in California and appears to have increased in frequency (<LinkExternal href="https://jamanetwork.com/journals/jama/fullarticle/2776543">Zhang et al., JAMA</LinkExternal>). <br/>
 
-
+<br/><br/>
 
 ### S:L452R
 - In a study co-incubating psueotyped virus with SARS-CoV-2 spike proteins and monocolonal antibodies, viruses with `S:L452R` mutations escaped neutralization by monoclonal antibodies SARS2-01, SARS-02, and SARS2-32 and some convalescent sera. Additionally, this study found modest increase in infectivity as measured by soluble mACE2 ([Liu et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.06.372037v1))
