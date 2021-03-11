@@ -308,9 +308,19 @@ def convert_mutation_comparison(mutation_comparison):
     }
 
 
+def should_include(cluster):
+    try:
+        return cluster["type"] != "do_not_display"  # Exclude if type is "do_not_display"
+    except KeyError:
+        return True  # Include by default
+
+
+def filter_clusters(clusters):
+    return {k: cluster for k, cluster in clusters.items() if should_include(cluster)}
+
+
 if __name__ == '__main__':
-    # NOTE: we exclude DanishCluster
-    clusters.pop("DanishCluster", None)
+    clusters = filter_clusters(clusters)
 
     os.makedirs(output_path, exist_ok=True)
 
