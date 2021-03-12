@@ -275,7 +275,7 @@ export function LineageLinkBadge({ name, href, prefix, report }: LineageLinkBadg
   const components = useMemo(() => name.split('.'), [name])
 
   return (
-    <LinkUnstyled href={url} icon={null}>
+    <LinkUnstyled href={url}>
       <MutationBadgeBox title={tooltip}>
         <MutationWrapper>
           {prefix && <PrefixText>{prefix}</PrefixText>}
