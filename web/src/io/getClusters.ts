@@ -10,7 +10,7 @@ export const CLUSTER_NAME_OTHERS = 'others' as const
 
 export type ClusterDatum = {
   build_name: string
-  nextstrain_url: string
+  nextstrain_url?: string
   cluster_data: unknown[]
   col: string
   country_info: unknown[]
