@@ -207,6 +207,7 @@ clusters = {
                     {'gene': 'S', 'left': 'S', 'pos': 13, 'right': 'I'},
                     {'gene': 'S', 'left': 'W', 'pos': 152, 'right': 'C'},
                     {'gene': 'S', 'left': 'L', 'pos': 452, 'right': 'R'},
+                    #{'gene': 'S', 'left': 'D', 'pos': 614, 'right': 'G'},
                     {'gene': 'ORF1a', 'left': 'I', 'pos': 4205, 'right': 'V'},
                     {'gene': 'ORF1b', 'left': 'D', 'pos': 1183, 'right': 'Y'}
                 ],
