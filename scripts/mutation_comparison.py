@@ -1,5 +1,5 @@
 mutation_comparison = {
-    "20I/501Y.V1": {
+    "20I/501Y.V1\n(B.1.1.7)": {
         "nonsynonymous": [
             "S:H69-",
             "S:V70-",
@@ -14,7 +14,7 @@ mutation_comparison = {
         ]
     },
 
-    "20H/501Y.V2": {
+    "20H/501Y.V2\n(B.1.351)": {
         "nonsynonymous": [
             "S:L18F",
             "S:D80A",
@@ -30,7 +30,7 @@ mutation_comparison = {
         ]
     },
 
-    "20J/501Y.V3": {
+    "20J/501Y.V3\n(P.1)": {
         "nonsynonymous": [
             "S:L18F",
             "S:T20N",
@@ -47,7 +47,7 @@ mutation_comparison = {
         ]
     },
 
-    "20B/S.484K": {
+    "20B/S.484K\n(P.2)": {
         "nonsynonymous": [
             "S:E484K",
             "S:D614G",
@@ -55,7 +55,7 @@ mutation_comparison = {
         ]
     },
 
-    "20C/S.452R": {
+    "20C/S.452R\n(B.1.427/9)": {
         "nonsynonymous": [
             "S:S13I",
             "S:W152C",
@@ -64,7 +64,7 @@ mutation_comparison = {
         ]
     },
 
-    "20C/S.484K": {
+    "20C/S.484K\n(B.1.526)": {
         "nonsynonymous": [
             "S:L5F",
             "S:T95I",
@@ -75,7 +75,7 @@ mutation_comparison = {
         ]
     },
 
-    "20A/S.484K": {
+    "20A/S.484K\n(B.1.525)": {
         "nonsynonymous": [
             "S:Q52R",
             "S:A67V",

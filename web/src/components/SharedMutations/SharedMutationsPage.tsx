@@ -7,7 +7,6 @@ import { Editable } from 'src/components/Common/Editable'
 import { Layout } from 'src/components/Layout/Layout'
 
 import SharedMutationsIntro from '../../../../content/SharedMutations.md'
-import NameTable from '../../../../content/NameTable.md'
 import { SharedMutations } from './SharedMutations'
 
 export const SharedMutationsPageContainer = styled(Container)`
@@ -48,14 +47,6 @@ export function SharedMutationsPage() {
               <SharedMutationsWrapper>
                 <SharedMutations />
               </SharedMutationsWrapper>
-            </Editable>
-          </Col>
-        </Row>
-
-        <Row noGutters>
-          <Col>
-            <Editable githubUrl="blob/master/content/NameTable.md">
-              <NameTable />
             </Editable>
           </Col>
         </Row>
