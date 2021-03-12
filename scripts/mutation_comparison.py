@@ -19,7 +19,9 @@ mutation_comparison = {
             "S:L18F",
             "S:D80A",
             "S:D215G",
-            "S:R246I",
+            "S:L241-",
+            "S:L242-",
+            "S:A243-",
             "S:K417N",
             "S:E484K",
             "S:N501Y",
@@ -40,7 +42,8 @@ mutation_comparison = {
             "S:N501Y",
             "S:D614G",
             "S:H655Y",
-            "S:T1027I"
+            "S:T1027I",
+            "S:V1176F"
         ]
     },
 
@@ -49,6 +52,40 @@ mutation_comparison = {
             "S:E484K",
             "S:D614G",
             "S:V1176F"
+        ]
+    },
+
+    "20C/S.452R": {
+        "nonsynonymous": [
+            "S:S13I",
+            "S:W152C",
+            "S:L452R",
+            "S:D614G"
+        ]
+    },
+
+    "20C/S.484K": {
+        "nonsynonymous": [
+            "S:L5F",
+            "S:T95I",
+            "S:D253G",
+            "S:E484K",
+            "S:D614G",
+            "S:A701V"
+        ]
+    },
+
+    "20A/S.484K": {
+        "nonsynonymous": [
+            "S:Q52R",
+            "S:A67V",
+            "S:H69-",
+            "S:V70-",
+            "S:Y144-",
+            "S:E484K",
+            "S:D614G",
+            "S:Q677H",
+            "S:F888L"
         ]
     }
 

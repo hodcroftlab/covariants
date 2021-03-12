@@ -3,70 +3,70 @@
     {
       "index": 0,
       "mutations": [
-        "S:H69-",
+        "S:A570D",
         "S:D80A",
         "S:T20N",
-        "S:V1176F"
+        null,
+        "S:S13I",
+        "S:L5F",
+        "S:Q52R"
       ]
     },
     {
       "index": 1,
       "mutations": [
-        "S:V70-",
+        "S:P681H",
         "S:D215G",
         "S:P26S",
-        null
+        null,
+        "S:W152C",
+        "S:T95I",
+        "S:A67V"
       ]
     },
     {
       "index": 2,
       "mutations": [
-        "S:Y144-",
-        "S:R246I",
+        "S:T716I",
+        "S:L241-",
         "S:D138Y",
-        null
+        null,
+        "S:L452R",
+        "S:D253G",
+        "S:Q677H"
       ]
     },
     {
       "index": 3,
       "mutations": [
-        "S:A570D",
-        "S:A701V",
+        "S:S982A",
+        "S:L242-",
         "S:R190S",
-        null
+        null,
+        null,
+        null,
+        "S:F888L"
       ]
     },
     {
       "index": 4,
       "mutations": [
-        "S:P681H",
-        null,
+        "S:D1118H",
+        "S:A243-",
         "S:H655Y",
+        null,
+        null,
+        null,
         null
       ]
     },
     {
       "index": 5,
       "mutations": [
-        "S:T716I",
+        null,
         null,
         "S:T1027I",
-        null
-      ]
-    },
-    {
-      "index": 6,
-      "mutations": [
-        "S:S982A",
         null,
-        null,
-        null
-      ]
-    },
-    {
-      "index": 7,
-      "mutations": [
-        "S:D1118H",
         null,
         null,
         null
@@ -80,6 +80,9 @@
         "S:D614G",
         "S:D614G",
         "S:D614G",
+        "S:D614G",
+        "S:D614G",
+        "S:D614G",
         "S:D614G"
       ]
     },
@@ -88,6 +91,9 @@
       "presence": [
         null,
         "S:E484K",
+        "S:E484K",
+        "S:E484K",
+        null,
         "S:E484K",
         "S:E484K"
       ]
@@ -98,6 +104,9 @@
         "S:N501Y",
         "S:N501Y",
         "S:N501Y",
+        null,
+        null,
+        null,
         null
       ]
     },
@@ -107,7 +116,46 @@
         null,
         "S:L18F",
         "S:L18F",
+        null,
+        null,
+        null,
         null
+      ]
+    },
+    {
+      "pos": 69,
+      "presence": [
+        "S:H69-",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:H69-"
+      ]
+    },
+    {
+      "pos": 70,
+      "presence": [
+        "S:V70-",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:V70-"
+      ]
+    },
+    {
+      "pos": 144,
+      "presence": [
+        "S:Y144-",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:Y144-"
       ]
     },
     {
@@ -116,6 +164,33 @@
         null,
         "S:K417N",
         "S:K417T",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "pos": 701,
+      "presence": [
+        null,
+        "S:A701V",
+        null,
+        null,
+        null,
+        "S:A701V",
+        null
+      ]
+    },
+    {
+      "pos": 1176,
+      "presence": [
+        null,
+        null,
+        "S:V1176F",
+        "S:V1176F",
+        null,
+        null,
         null
       ]
     }
@@ -127,7 +202,46 @@
         null,
         "S:L18F",
         "S:L18F",
+        null,
+        null,
+        null,
         null
+      ]
+    },
+    {
+      "pos": 69,
+      "presence": [
+        "S:H69-",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:H69-"
+      ]
+    },
+    {
+      "pos": 70,
+      "presence": [
+        "S:V70-",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:V70-"
+      ]
+    },
+    {
+      "pos": 144,
+      "presence": [
+        "S:Y144-",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:Y144-"
       ]
     },
     {
@@ -136,6 +250,9 @@
         null,
         "S:K417N",
         "S:K417T",
+        null,
+        null,
+        null,
         null
       ]
     },
@@ -144,6 +261,9 @@
       "presence": [
         null,
         "S:E484K",
+        "S:E484K",
+        "S:E484K",
+        null,
         "S:E484K",
         "S:E484K"
       ]
@@ -154,6 +274,9 @@
         "S:N501Y",
         "S:N501Y",
         "S:N501Y",
+        null,
+        null,
+        null,
         null
       ]
     },
@@ -163,7 +286,34 @@
         "S:D614G",
         "S:D614G",
         "S:D614G",
+        "S:D614G",
+        "S:D614G",
+        "S:D614G",
         "S:D614G"
+      ]
+    },
+    {
+      "pos": 701,
+      "presence": [
+        null,
+        "S:A701V",
+        null,
+        null,
+        null,
+        "S:A701V",
+        null
+      ]
+    },
+    {
+      "pos": 1176,
+      "presence": [
+        null,
+        null,
+        "S:V1176F",
+        "S:V1176F",
+        null,
+        null,
+        null
       ]
     }
   ],
@@ -171,6 +321,9 @@
     "20I/501Y.V1",
     "20H/501Y.V2",
     "20J/501Y.V3",
-    "20B/S.484K"
+    "20B/S.484K",
+    "20C/S.452R",
+    "20C/S.484K",
+    "20A/S.484K"
   ]
 }
