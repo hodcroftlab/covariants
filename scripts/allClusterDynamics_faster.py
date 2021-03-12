@@ -163,6 +163,14 @@ while reask:
             reask = False
         elif clus_answer == "mink" or clus_answer == "Mink":
             clus_to_run = ["mink"]
+        elif ',' in clus_answer:
+            answer_array = clus_answer.split(",")
+            if all([x in clusters.keys() for x in answer_array]):
+                print(f"Using {clus_answer}\n")
+                clus_to_run = answer_array
+                reask = False
+            else:
+                print(f"Not found. Options are: {clusters.keys()}")
         else:
             print(f"Not found. Options are: {clusters.keys()}")
     else:
