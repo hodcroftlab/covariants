@@ -19,7 +19,7 @@ CoVariants uses the Nextstrain naming system for variants ([read more here](http
 
 | Nextstrain Clade      |&#124; Pango Lineage | &#124;Other Name(s) |
 | ----------- | ----------- |--------|
-| <Link href="/variants/20A.EU1">20E (EU1)</Link> | &#124; <Lin name="B.1.177"/> | &#124; 20A.EU1 |
+| <Var name="20E (EU1)" prefix=""/>     | &#124; <Lin name="B.1.177"/> | &#124; 20A.EU1 |
 | <Var name="20A.EU2" prefix=""/>       | &#124; <Lin name="B.1.160"/>           | &#124;  |
 | <Var name="20I/501Y.V1" prefix=""/>   | &#124; <Lin name="B.1.1.7" report />   | &#124; VOC 202012/01 |
 | <Var name="20H/501Y.V2" prefix=""/>   | &#124; <Lin name="B.1.351" report />   | &#124; 501Y.V2 |
@@ -32,6 +32,7 @@ CoVariants uses the Nextstrain naming system for variants ([read more here](http
 | <Var name="20B/S:1122L" prefix=""/>   | &#124; <Lin name="B.1.1.302"       />  | &#124; |
 | <Var name="20A/S:484K" prefix=""/>    | &#124; <Lin name="B.1.525" report />   | &#124; |
 | <Var name="20C/S:484K" prefix=""/>    | &#124; <Lin name="B.1.526" />          | &#124; |
+
 
 </div>
 

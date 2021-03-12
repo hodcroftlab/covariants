@@ -10,6 +10,14 @@ export function parseNonEmpty(raw: string | undefined | null) {
 }
 
 export function parseVariant(formatted: string): Mutation | undefined {
+  if (formatted === '20A.EU2') {
+    return { parent: '20A', version: '.EU2' }
+  }
+
+  if (formatted === '20E (EU1)') {
+    return { parent: '20E', version: ' (EU1)' }
+  }
+
   const match = /^(?<parent>.*\/)?(?<gene>.*:)?(?<left>[*.a-z-]{0,1})(?<pos>(\d)*)(?<right>[*.a-z-]{0,1})(?<version>\..*)?$/i.exec(formatted) // prettier-ignore
 
   if (!match?.groups) {
@@ -20,16 +28,21 @@ export function parseVariant(formatted: string): Mutation | undefined {
     return undefined
   }
 
-  const parent = parseNonEmpty(match.groups?.parent)?.replace('/', '')
+  let parent = parseNonEmpty(match.groups?.parent)
+  let parentDelimiter: string | undefined
+  if (parent?.endsWith('/')) {
+    parent = parent.replace('/', '')
+    parentDelimiter = '/'
+  }
   const gene = parseNonEmpty(match.groups?.gene)?.replace(':', '')
   const left = parseNonEmpty(match.groups?.left)?.toUpperCase()
   const pos = parsePosition(match.groups?.pos)
   const right = parseNonEmpty(match.groups?.right)?.toUpperCase()
-  const version = parseNonEmpty(match.groups?.version)?.replace('.', '')
+  const version = parseNonEmpty(match.groups?.version)
 
   if (!pos) {
     return undefined
   }
 
-  return { parent, gene, left, pos, right, version }
+  return { parent, parentDelimiter, gene, left, pos, right, version }
 }

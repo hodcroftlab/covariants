@@ -123,18 +123,20 @@ export interface MutationBadgeProps {
 }
 
 export function MutationBadge({ prefix, mutation, colors, tooltip }: MutationBadgeProps) {
-  const { parent, gene, left, pos, right, version, note } = mutation
+  const { parent, parentDelimiter, gene, left, pos, right, version, note } = mutation
 
   const parentColor = get(CLADE_COLORS, parent ?? '', DEFAULT_COLOR)
   const geneColor = get(GENE_COLORS, gene ?? '', DEFAULT_COLOR)
   const leftColor = get(colors, left ?? '', DEFAULT_COLOR)
   const rightColor = get(colors, right ?? '', DEFAULT_COLOR)
 
+  const parentDelimiterStr = parentDelimiter ?? ''
+
   return (
     <MutationBadgeBox title={tooltip}>
       <MutationWrapper>
         {prefix && <PrefixText>{prefix}</PrefixText>}
-        {parent && <ParentText $color={parentColor}>{`${parent}/`}</ParentText>}
+        {parent && <ParentText $color={parentColor}>{`${parent}${parentDelimiterStr}`}</ParentText>}
         {gene && (
           <>
             <GeneText $color={geneColor}>
@@ -144,9 +146,9 @@ export function MutationBadge({ prefix, mutation, colors, tooltip }: MutationBad
           </>
         )}
         {left && <ColoredText $color={leftColor}>{left}</ColoredText>}
-        <PositionText>{pos}</PositionText>
+        {pos && <PositionText>{pos}</PositionText>}
         {right && <ColoredText $color={rightColor}>{right}</ColoredText>}
-        {version && <VersionText>{`.${version}`}</VersionText>}
+        {version && <VersionText>{version}</VersionText>}
       </MutationWrapper>
       {note && <span>{note}</span>}
     </MutationBadgeBox>
@@ -166,7 +168,8 @@ export function NucleotideMutationBadge({ mutation }: NucleotideMutationBadgePro
   const { left, right, pos } = mutationObj
   const wildTypeBase = get(NUCELOTIDE_NAMES, left ?? '', '')
   const variantBase = get(NUCELOTIDE_NAMES, right ?? '', '')
-  const tooltip = `Mutation of nucleotide ${pos} from ${wildTypeBase} to ${variantBase}`
+  const posStr = pos ?? ''
+  const tooltip = `Mutation of nucleotide ${posStr} from ${wildTypeBase} to ${variantBase}`
 
   return <MutationBadge mutation={mutationObj} colors={NUCLEOTIDE_COLORS} tooltip={tooltip} />
 }
@@ -184,10 +187,9 @@ export function AminoacidMutationBadge({ mutation }: AminoacidMutationBadgeProps
   const { gene, left, pos, right } = mutationObj
   const wildTypeAA = get(AMINOACID_NAMES, left ?? '', '')
   const variantAA = right ? get(AMINOACID_NAMES, right, '') : 'one of several alternatives'
-
   const geneName = gene ? get(GENE_NAMES, gene, gene) : ''
-
-  const tooltip = `Mutation of amino acid ${pos} in ${geneName} from ${wildTypeAA} to ${variantAA}`
+  const posStr = pos ?? ''
+  const tooltip = `Mutation of amino acid ${posStr} in ${geneName} from ${wildTypeAA} to ${variantAA}`
 
   return <MutationBadge mutation={mutationObj} colors={AMINOACID_COLORS} tooltip={tooltip} />
 }

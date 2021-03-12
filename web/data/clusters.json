@@ -938,6 +938,191 @@
       "type": "variant"
     },
     {
+      "build_name": "S.Q677H.Robin1",
+      "cluster_data": [],
+      "col": "#cc6600",
+      "country_info": [],
+      "display_name": "S:677H.Robin1",
+      "graphing": true,
+      "important": false,
+      "mutations": {
+        "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "Q",
+            "pos": 677,
+            "right": "H"
+          },
+          {
+            "gene": "N",
+            "left": "P",
+            "pos": 67,
+            "right": "S"
+          },
+          {
+            "gene": "N",
+            "left": "P",
+            "pos": 199,
+            "right": "L"
+          },
+          {
+            "gene": "N",
+            "left": "D",
+            "pos": 377,
+            "right": "Y"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 265,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "L",
+            "pos": 3352,
+            "right": "F"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "N",
+            "pos": 1653,
+            "right": "D"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "R",
+            "pos": 2613,
+            "right": "C"
+          }
+        ],
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 241,
+            "right": "T"
+          },
+          {
+            "left": "G",
+            "pos": 1942,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 3037,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 9085,
+            "right": "G"
+          },
+          {
+            "left": "C",
+            "pos": 14805,
+            "right": "T"
+          }
+        ]
+      },
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Robin1?f_country=USA",
+      "snps": [
+        23592,
+        29401
+      ],
+      "type": "variant"
+    },
+    {
+      "build_name": "S.Q677P.Pelican",
+      "cluster_data": [],
+      "col": "#cc33ff",
+      "country_info": [],
+      "display_name": "S:677P.Pelican",
+      "graphing": true,
+      "important": false,
+      "mutations": {
+        "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "Q",
+            "pos": 677,
+            "right": "P"
+          },
+          {
+            "gene": "N",
+            "left": "P",
+            "pos": 67,
+            "right": "S"
+          },
+          {
+            "gene": "N",
+            "left": "P",
+            "pos": 199,
+            "right": "L"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 265,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "L",
+            "pos": 3352,
+            "right": "F"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "N",
+            "pos": 1653,
+            "right": "D"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "R",
+            "pos": 2613,
+            "right": "C"
+          }
+        ],
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 241,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 3037,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 21811,
+            "right": "A"
+          },
+          {
+            "left": "T",
+            "pos": 29194,
+            "right": "C"
+          },
+          {
+            "left": "T",
+            "pos": 29377,
+            "right": "A"
+          }
+        ]
+      },
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677P.Pelican?f_country=USA",
+      "snps": [
+        23591,
+        11450,
+        21810
+      ],
+      "type": "variant"
+    },
+    {
       "build_name": "S.S98F",
       "cluster_data": [],
       "col": "#006600",

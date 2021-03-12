@@ -1,8 +1,9 @@
 export interface Mutation {
   parent?: string
+  parentDelimiter?: string
   gene?: string
   left?: string
-  pos: number
+  pos?: number
   right?: string
   version?: string
   note?: string
