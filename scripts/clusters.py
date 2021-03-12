@@ -337,7 +337,7 @@ clusters = {
             "type": "variant",
             "important": False,
             "country_info": [], 'col': "#cc6600", 
-            "display_name": "20G/S:677H.Robin1",
+            "display_name": "S:677H.Robin1",
             "build_name": "S.Q677H.Robin1",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Robin1?f_country=USA",
             "mutations":{
@@ -373,7 +373,7 @@ clusters = {
             "type": "variant",
             "important": False,
             "country_info": [], 'col': "#cc33ff", 
-            "display_name": "20G/S:677P.Pelican",
+            "display_name": "S:677P.Pelican",
             "build_name": "S.Q677P.Pelican",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677P.Pelican?f_country=USA",
             "mutations":{
