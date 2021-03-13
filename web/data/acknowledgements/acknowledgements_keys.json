@@ -1,10 +1,10 @@
 {
   "acknowledgements": {
     "20A.EU1": {
-      "numChunks": 123
+      "numChunks": 126
     },
     "20A.EU2": {
-      "numChunks": 19
+      "numChunks": 20
     },
     "20A.S.484K": {
       "numChunks": 1
@@ -13,13 +13,13 @@
       "numChunks": 2
     },
     "ORF1a.S3675": {
-      "numChunks": 137
+      "numChunks": 152
     },
     "S.501Y.V1": {
-      "numChunks": 131
+      "numChunks": 144
     },
     "S.501Y.V2": {
-      "numChunks": 3
+      "numChunks": 4
     },
     "S.501Y.V3": {
       "numChunks": 1
@@ -31,46 +31,73 @@
       "numChunks": 1
     },
     "S.E484": {
-      "numChunks": 7
+      "numChunks": 8
     },
     "S.H655": {
       "numChunks": 3
     },
     "S.H69-": {
-      "numChunks": 144
+      "numChunks": 158
     },
     "S.K417": {
       "numChunks": 4
     },
     "S.L18": {
-      "numChunks": 59
+      "numChunks": 60
     },
     "S.L452R": {
-      "numChunks": 10
+      "numChunks": 11
     },
     "S.N439K": {
-      "numChunks": 14
+      "numChunks": 15
     },
     "S.N501": {
-      "numChunks": 138
+      "numChunks": 152
     },
     "S.P681": {
-      "numChunks": 143
+      "numChunks": 158
     },
     "S.Q677": {
-      "numChunks": 11
+      "numChunks": 12
+    },
+    "S.Q677H.Bluebird": {
+      "numChunks": 1
+    },
+    "S.Q677H.Heron": {
+      "numChunks": 1
+    },
+    "S.Q677H.Mockingbird": {
+      "numChunks": 1
+    },
+    "S.Q677H.Quail": {
+      "numChunks": 1
+    },
+    "S.Q677H.Robin1": {
+      "numChunks": 3
+    },
+    "S.Q677H.Robin2": {
+      "numChunks": 1
+    },
+    "S.Q677H.Yellowhammer": {
+      "numChunks": 1
+    },
+    "S.Q677P.Pelican": {
+      "numChunks": 2
+    },
+    "S.Q677R.Roadrunner": {
+      "numChunks": 1
     },
     "S.S477": {
       "numChunks": 33
     },
     "S.S98F": {
-      "numChunks": 10
+      "numChunks": 11
     },
     "S.V1122L": {
       "numChunks": 1
     },
-    "S.Y144": {
-      "numChunks": 132
+    "S.Y144-": {
+      "numChunks": 146
     },
     "S.Y453F": {
       "numChunks": 2

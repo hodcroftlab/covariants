@@ -172,12 +172,12 @@ country_list_3 = [
     'Japan',        #6
     'Croatia',        #7
     'Philippines',        #8
-    'Bangaldesh',        #9
+    'Bangladesh',        #9
     'Mexico',        #10
     'Cyprus',        #11
     'South Korea',        #12
     'Zimbabwe',        #13
-    'Bangaldesh'        #14
+            #14
             #15
             #16
             #17
