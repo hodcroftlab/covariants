@@ -230,7 +230,7 @@ for coun, ax in zip(countries_to_plot, axs[1:]):
         patch = mpatches.Patch(color=clusters[clus]['col'], label=lab)
 
         #exclude 501 for now (not present)
-        if clus == not "S501":
+        if clus != "S501":
             ptchs.append(patch)
         if i == len(clusters)-1 :
             ax.fill_between(week_as_date, cluster_count/total_count, 1, facecolor=grey_color)
