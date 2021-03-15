@@ -1,13 +1,13 @@
 
 
-## 20G/S:677H.Robin1
+## S:677H.Robin1
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Robin1?f_country=USA)
 
 |                      | first_seq   |   num_seqs | last_seq   |
 |:---------------------|:------------|-----------:|:-----------|
 | India                | 2020-08-13  |          7 | 2020-09-28 |
-| Netherlands          | 2020-08-16  |          3 | 2021-02-10 |
-| USA                  | 2020-08-17  |       2348 | 2021-03-01 |
+| Netherlands          | 2020-08-16  |          4 | 2021-02-17 |
+| USA                  | 2020-08-17  |       2568 | 2021-03-06 |
 | United Arab Emirates | 2020-08-28  |          2 | 2020-09-15 |
 | United Kingdom       | 2020-10-26  |          1 | 2020-10-26 |
 | Egypt                | 2020-11-01  |          1 | 2020-11-01 |
@@ -22,8 +22,8 @@
 | Sweden               | 2021-01-18  |          1 | 2021-01-18 |
 | Sint Maarten         | 2021-01-21  |         16 | 2021-02-16 |
 | Guadeloupe           | 2021-01-27  |         10 | 2021-02-01 |
-| Germany              | 2021-01-28  |          5 | 2021-02-05 |
-| Aruba                | 2021-02-12  |          1 | 2021-02-12 |
+| Germany              | 2021-01-28  |          6 | 2021-02-08 |
+| Aruba                | 2021-02-12  |          2 | 2021-02-21 |
 | Belgium              | 2021-02-15  |          1 | 2021-02-15 |
 
 ![Overall trends S.Q677H.Robin1](/overall_trends_figures/overall_trends_S.Q677H.Robin1.png)
