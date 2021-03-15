@@ -647,45 +647,80 @@ clusters = {
 
             #The rest of the birds
             "S677HRobin2": {'snps': [23592,7347], 'cluster_data': [],
+            "nextstrain_build": True,
+            "graphing": False,
+            "type": "variant",
+            "important": False,
             "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Robin2",
             "type": "do_not_display",
-            "build_name": "S.Q677H.Robin2"
+            "build_name": "S.Q677H.Robin2",
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Robin2?c=gt-S_677&f_country=USA"
             },
 
             "S677HYellowhammer": {'snps': [23592,9927], 'cluster_data': [],
+            "nextstrain_build": True,
+            "graphing": False,
+            "type": "variant",
+            "important": False,
             "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Yellowhammer",
             "type": "do_not_display",
-            "build_name": "S.Q677H.Yellowhammer"
+            "build_name": "S.Q677H.Yellowhammer",
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Yellowhammer?c=gt-S_677&f_country=USA"
             },
 
             "S677RRoadrunner": {'snps': [23591,3449,6381], 'cluster_data': [],
+            "nextstrain_build": True,
+            "graphing": False,
+            "type": "variant",
+            "important": False,
             "country_info": [], 'col': "#db4439", "display_name": "20G/S:677R.Roadrunner",
             "type": "do_not_display",
-            "build_name": "S.Q677R.Roadrunner"
+            "build_name": "S.Q677R.Roadrunner",
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677R.Roadrunner?c=gt-S_677&f_country=USA"
             },
 
             "S677HHeron": {'snps': [23592,28832,1591], 'cluster_data': [],
+            "nextstrain_build": True,
+            "graphing": False,
+            "type": "mutation",
+            "important": False,
             "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Heron",
             "type": "do_not_display",
-            "build_name": "S.Q677H.Heron"
+            "build_name": "S.Q677H.Heron",
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Heron?c=gt-S_677&f_country=USA"
             },
 
             "S677HBluebird": {'snps': [23592,21647], 'cluster_data': [],
+            "nextstrain_build": True,
+            "graphing": False,
+            "type": "variant",
+            "important": False,
             "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Bluebird",
             "type": "do_not_display",
-            "build_name": "S.Q677H.Bluebird"
+            "build_name": "S.Q677H.Bluebird",
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Bluebird?c=gt-S_677&f_country=USA"
             },
 
             "S677HQuail": {'snps': [23592,23755,21756], 'cluster_data': [],
+            "nextstrain_build": True,
+            "graphing": False,
+            "type": "variant",
+            "important": False,
             "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Quail",
             "type": "do_not_display",
-            "build_name": "S.Q677H.Quail"
+            "build_name": "S.Q677H.Quail",
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Quail?c=gt-S_677&f_country=USA"
             },
 
             "S677HMockingbird": {'snps': [23592,21985], 'cluster_data': [],
+            "nextstrain_build": True,
+            "graphing": False,
+            "type": "variant",
+            "important": False,
             "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Mockingbird",
             "type": "do_not_display",
-            "build_name": "S.Q677H.Mockingbird"
+            "build_name": "S.Q677H.Mockingbird",
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Mockingbird?c=gt-S_677&f_country=USA"
             }
 
         #The two clusters in 20G, Kamil lab asked
