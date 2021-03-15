@@ -728,7 +728,7 @@ for clus in clus_to_run:
 
 
     # Only plot countries with >= X seqs
-    min_to_plot = 60
+    min_to_plot = 80
     #if clus == "S222":
     #    min_to_plot = 200
 
@@ -740,7 +740,7 @@ for clus in clus_to_run:
     if len(countries_to_plot) > len(colors):
         print("\nWARNING!! NOT ENOUGH COLORS FOR PLOTTING!")
 
-    if clus=="S222":
+    if clus=="S222a":
         country_styles_custom = country_styles
     else:
         unused_countries = [x for x in country_styles_all if x not in countries_to_plot_min]
