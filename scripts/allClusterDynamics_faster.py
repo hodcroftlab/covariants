@@ -728,7 +728,7 @@ for clus in clus_to_run:
 
 
     # Only plot countries with >= X seqs
-    min_to_plot = 80
+    min_to_plot = 100
     #if clus == "S222":
     #    min_to_plot = 200
 
