@@ -177,8 +177,8 @@ country_list_3 = [
     'Cyprus',        #11
     'South Korea',        #12
     'Zimbabwe',        #13
-            #14
-            #15
+    'Bulgaria',        #14
+    'Indonesia'        #15
             #16
             #17
             #18
