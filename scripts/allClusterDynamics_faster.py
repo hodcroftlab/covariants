@@ -29,6 +29,7 @@ tables_path = "../covariants/cluster_tables/"
 overall_tables_file = "../covariants/cluster_tables/all_tables.tsv"
 acknowledgement_folder = "../covariants/acknowledgements/"
 acknowledgement_folder_new = "../covariants/web/data/acknowledgements/"
+web_data_folder = "../covariants/web/data/"
 figure_only_path = "../covariants/figures/"
 # This assumes that `covariants` sites next to `ncov`
 # Otherwise, modify the paths above to put the files wherever you like.
@@ -1059,3 +1060,14 @@ def plot_country_data(clusters, proposed_coun_to_plot, print_files, clus_keys):
 if do_country:
     proposed_coun_to_plot, clus_keys = get_ordered_clusters_to_plot(clusters)
     plot_country_data(clusters, proposed_coun_to_plot, print_files, clus_keys)
+
+#if all went well (script got to this point), and did an 'all' run, then print out an update!
+from datetime import datetime
+update_json = { "lastUpdated" : str(datetime.utcnow()) }
+
+if print_files and "all" in clus_answer:
+    with open(web_data_folder+f'update.json', 'w') as fh:
+        json.dump(update_json, fh)
+
+
+
