@@ -446,6 +446,24 @@ for clus in clus_to_run:
             copyfile(noUK_clusterlist_output, copypath)
             nouk_501_meta.to_csv(noUK_out_meta_file,sep="\t",index=False)
 
+    # Make a version of V1-V3 which only have Swiss sequences for increased focus
+    if clus in ["501YV1", "501YV2", "501YV3"]:
+        swiss_voc_meta = cluster_meta[cluster_meta['country'].apply(lambda x: x == "Switzerland")]
+        #re-set wanted_seqs
+        extravoc_wanted_seqs = list(swiss_voc_meta['strain'])
+
+        swissvoc_clusterlist_output = cluster_path+f'/clusters/cluster_{clusters[clus]["build_name"]}-swiss{clus}.txt'
+        swissvoc_out_meta_file = cluster_path+f'/cluster_info/cluster_{clusters[clus]["build_name"]}-swiss{clus}_meta.tsv'
+
+        if print_files:
+            with open(swissvoc_clusterlist_output, 'w') as f:
+                for item in extravoc_wanted_seqs:
+                    f.write("%s\n" % item)
+            build_nam = clusters[clus]["build_name"]
+            copypath = swissvoc_clusterlist_output.replace(f"{build_nam}-swiss{clus}", "{}-swiss{}-{}".format(build_nam, clus, datetime.date.today().strftime("%Y-%m-%d")))
+            copyfile(swissvoc_clusterlist_output, copypath)
+            swiss_voc_meta.to_csv(swissvoc_out_meta_file,sep="\t",index=False)
+
     #######
     #print out the table
     table_file = f"{tables_path}{clus_display}_table.tsv"
