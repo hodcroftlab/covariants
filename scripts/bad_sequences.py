@@ -57,7 +57,35 @@ bad_seqs = {
     'Germany/BAV-PL-virotum_6ZA86/2020' : "2020-05-22", #very poor quality
     'Germany/BAV-PL-virotum_DN6S6/2020' : "2020-05-20", #very poor quality
     'Germany/BB-RKI-I-017293/2001'  : "2001-02-05", # 2001 date impossible
-    'Senegal/SN_MBO_201677/2021'    :   "2012-01-02" # 2012 date impossible (S69)
+    'Senegal/SN_MBO_201677/2021'    :   "2012-01-02", # 2012 date impossible (S69)
+    'Netherlands/NB-EMC-748/2020'   :   "2020-01-09", # too divergenced to be from 9 Jan 2020...
+    'SouthAfrica/KRISP-K010011/2020' : "1905-07-12", #impossible date
+    
+    # These sequences are from EU1 - early dated but the divergence doesn't match the dates...
+    'England/NOTT-246E3F/2020'  :   "2020-06-02",
+    'England/NOTT-246E11/2020'  :   "2020-06-03",
+    'England/NOTT-246E20/2020'  :   "2020-06-03",
+    'England/NOTT-246F3C/2020'  :   "2020-06-03",
+    'England/NOTT-246F4B/2020'  :   "2020-06-03",
+    'England/NOTT-246F96/2020'  :   "2020-06-02",
+    'England/NOTT-246E4E/2020'  :   "2020-06-02",
+    'England/NOTT-246EF3/2020'  :   "2020-06-03",
+    'England/NOTT-246FD2/2020'  :   "2020-06-03",
+    'England/NOTT-246E99/2020'  :   "2020-06-02",
+    'Germany/BAV-PL-virotum_DZBZW/2020' :   "2020-06-19",
+    'Wales/PHWC-4BD059/2020'    :  '2020-06-17',
+    'Wales/PHWC-49C25A/2020'    :  '2020-07-07',
+    'Netherlands/NB-EMC-855/2020'   :   "2020-01-11",
+    'Netherlands/ZH-EMC-1916/2020'  :   "2020-01-10",
+    'Netherlands/ZH-EMC-1917/2020'  :   "2020-01-10",
+    'Netherlands/ZH-EMC-1918/2020'  :   "2020-01-10",
+    'Netherlands/ZH-EMC-1919/2020'  :   "2020-03-10",
+    'Netherlands/ZH-EMC-1925/2020'  :   "2020-01-10",
+    'Netherlands/ZH-EMC-2079/2020'  :   "2020-02-15",
+    'Netherlands/ZH-EMC-2080/2020'  :   "2020-02-15",
+    'Netherlands/NB-EMC-751/2020'   :   "2020-04-09",
+    'Netherlands/ZH-EMC-1816/2020'  :   "2020-04-12"
+
     #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
     #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
 }
