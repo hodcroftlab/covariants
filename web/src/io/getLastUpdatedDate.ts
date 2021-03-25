@@ -1,4 +1,4 @@
-import { lastUpdated } from 'src/../data/time.json'
+import { lastUpdated } from 'src/../data/update.json'
 
 import { DateTime } from 'luxon'
 
