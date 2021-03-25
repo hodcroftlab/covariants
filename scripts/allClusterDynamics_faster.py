@@ -1063,7 +1063,7 @@ if do_country:
 
 #if all went well (script got to this point), and did an 'all' run, then print out an update!
 from datetime import datetime
-update_json = { "lastUpdated" : str(datetime.utcnow()) }
+update_json = { "lastUpdated" : str(datetime.now().isoformat()) }
 
 if print_files and "all" in clus_answer:
     with open(web_data_folder+f'update.json', 'w') as fh:
