@@ -11,7 +11,6 @@ import {
   Label,
   Row,
 } from 'reactstrap'
-import { ColoredCircle } from 'src/components/Common/ColoredCircle'
 import styled from 'styled-components'
 
 import type { CountryState } from 'src/components/CountryDistribution/CountryDistributionPage'

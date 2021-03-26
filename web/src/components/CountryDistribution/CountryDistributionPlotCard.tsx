@@ -24,7 +24,9 @@ export function CountryDistributionPlotCard({
     <Card className="m-2">
       <CardHeader className="d-flex flex-sm-column">
         <PlotCardTitle>
-          <span>{getCountryFlag(country)} {country}</span>
+          <span>
+            {getCountryFlag(country)} {country}
+          </span>
         </PlotCardTitle>
       </CardHeader>
 
