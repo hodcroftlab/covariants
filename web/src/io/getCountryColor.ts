@@ -5,14 +5,11 @@ import countryStyles from 'src/../data/countryStyles.json'
 
 import { lineStyleToStrokeDashArray } from 'src/helpers/lineStyleToStrokeDashArray'
 
-// eslint-disable-next-line only-ascii/only-ascii
-const fallbackCountry = '🌐'
-
 export function getCountryStyle(country: string) {
   return (
     get<Record<string, { c: string; f: string; ls: string }>, string>(countryStyles, country) ?? {
       c: '#555555',
-      f: fallbackCountry,
+      f: '\ud83c\udf10',
       ls: '-',
     }
   )
