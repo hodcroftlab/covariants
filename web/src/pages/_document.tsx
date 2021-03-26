@@ -126,7 +126,6 @@ export default class Document extends NextDocument {
           <meta name="twitter:title" content={name} />
           <meta name="twitter:url" content={url} />
           <meta name="twitter:site" content={TWITTER_USERNAME_FRIENDLY} />
-          <!-- Twemoji Flag emoji's-->
           <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script> 
         </Head>
 
