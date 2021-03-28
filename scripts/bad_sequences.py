@@ -60,7 +60,8 @@ bad_seqs = {
     'Senegal/SN_MBO_201677/2021'    :   "2012-01-02", # 2012 date impossible (S69)
     'Netherlands/NB-EMC-748/2020'   :   "2020-01-09", # too divergenced to be from 9 Jan 2020...
     'SouthAfrica/KRISP-K010011/2020' : "1905-07-12", #impossible date
-    
+    'USA/CA-LACPHL-AF00662/2020'    : "2020-03-10", #divergence of 20 with date March 2020 highly unlikely - prob year mixup
+
     # These sequences are from EU1 - early dated but the divergence doesn't match the dates...
     'England/NOTT-246E3F/2020'  :   "2020-06-02",
     'England/NOTT-246E11/2020'  :   "2020-06-03",
