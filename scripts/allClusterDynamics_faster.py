@@ -746,7 +746,7 @@ for clus in clus_to_run:
 
 
     # Only plot countries with >= X seqs
-    min_to_plot = 100
+    min_to_plot = 130
     #if clus == "S222":
     #    min_to_plot = 200
 
@@ -755,7 +755,7 @@ for clus in clus_to_run:
     countries_to_plot = [x for x in country_info_df[country_info_df.num_seqs > min_to_plot].index if x in countries_to_plot_final]
 
 
-    if len(countries_to_plot) > len(colors):
+    if len(countries_to_plot) > len(country_styles_all):
         print("\nWARNING!! NOT ENOUGH COLORS FOR PLOTTING!")
 
     if clus=="S222a":
