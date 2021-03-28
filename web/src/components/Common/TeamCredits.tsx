@@ -91,8 +91,8 @@ export function TeamCredits() {
               <Portrait src="https://avatars3.githubusercontent.com/u/14290674?s=400&u=e074280fd3dd9a9b0e583af5f17d3a69f3068f8b&v=4" />
               <NameText>{'Emma Hodcroft, PhD'}</NameText>
               <AffiliationText>{'Institute of Social and Preventive Medicine'}</AffiliationText>
-              <AffiliationText>{'University of Bern, Bern, Switzerland'}</AffiliationText>
-
+              <AffiliationText>{'University of Bern, Switzerland'}</AffiliationText>
+              <AffiliationText>{'& SIB Swiss Insitute of Bioinformatics, Switzerland'}</AffiliationText>
               <Ul>
                 {mainLinks.map(({ title, url, alt, icon }) => (
                   <Li key={title}>

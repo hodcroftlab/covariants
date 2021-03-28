@@ -11,6 +11,7 @@ CoVariants
 > <p align="center">
 > <small>Institute of Social and Preventive Medicine</small>
 > <small>University of Bern, Bern, Switzerland</small>
+> <small>& SIB Swiss Insitute of Bioinformatics, Switzerland</small></br>
 > </p>
 
 ---
@@ -168,6 +169,7 @@ CoVariants is maintained by
     <p align="center">
       <small>Institute of Social and Preventive Medicine</small></br>
       <small>University of Bern, Bern, Switzerland</small></br>
+      <small>& SIB Swiss Insitute of Bioinformatics, Switzerland</small></br>
     </p>         
   </p>
 </p>
