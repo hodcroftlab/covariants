@@ -16,7 +16,7 @@ Citation:
 Emma B. Hodcroft. 2021. "CoVariants: SARS-CoV-2 Mutations and Variants of Interest." https://covariants.org/
 ```
 
-Emma Hodcroft, PhD, is a researcher at the Institute of Social and Preventive Medicine, University of Bern in Bern, Switzerland.
+Emma Hodcroft, PhD, is a researcher at the Institute of Social and Preventive Medicine, University of Bern in Bern, Switzerland and member of SIB Swiss Insitute of Bioinformatics, Switzerland.
 
 Ivan Aksamentov is a major contributor to this project and is based in the [Neher Lab](https://neherlab.org/) at the University of Basel.
 
