@@ -55,7 +55,7 @@ def wrap_cluster_data(country_data_aos):
     return country_data_aos_wrapped, list(cluster_names)
 
 
-def convert_per_country_data():
+def convert_per_country_data(json_input):
     per_country_data_output = {"distributions": [], 'cluster_names': []}
 
     min_date = json_input["plotting_dates"]["min_date"]
@@ -324,9 +324,16 @@ if __name__ == '__main__':
 
     os.makedirs(output_path, exist_ok=True)
 
-    per_country_data_output, min_date, max_date = convert_per_country_data()
+    per_country_data_output, min_date, max_date = convert_per_country_data(json_input)
     with open(os.path.join(output_path, "perCountryData.json"), "w") as fh:
         json.dump(per_country_data_output, fh, indent=2, sort_keys=True)
+
+    with open(os.path.join(cluster_tables_path, "USAClusters_data.json"), "r") as f:
+        json_input2 = json.load(f)
+
+    per_state_data_output, min_date, max_date = convert_per_country_data(json_input2)
+    with open(os.path.join(output_path, "perStateData.json"), "w") as fh:
+        json.dump(per_state_data_output, fh, indent=2, sort_keys=True)
 
     params = {
         "min_date": min_date,
