@@ -650,8 +650,9 @@ clusters = {
             "nextstrain_build": True,
             "graphing": False,
             "type": "variant",
+            "usa_graph": True,
             "important": False,
-            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Robin2",
+            "country_info": [], 'col': "#804000", "display_name": "20G/S:677H.Robin2",
             "type": "do_not_display",
             "build_name": "S.Q677H.Robin2",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Robin2?c=gt-S_677&f_country=USA"
@@ -661,8 +662,9 @@ clusters = {
             "nextstrain_build": True,
             "graphing": False,
             "type": "variant",
+            "usa_graph": True,
             "important": False,
-            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Yellowhammer",
+            "country_info": [], 'col': "#ffcc00", "display_name": "20G/S:677H.Yellowhammer",
             "type": "do_not_display",
             "build_name": "S.Q677H.Yellowhammer",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Yellowhammer?c=gt-S_677&f_country=USA"
@@ -672,8 +674,9 @@ clusters = {
             "nextstrain_build": True,
             "graphing": False,
             "type": "variant",
+            "usa_graph": True,
             "important": False,
-            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677R.Roadrunner",
+            "country_info": [], 'col': "#ff8d3d", "display_name": "20G/S:677R.Roadrunner",
             "type": "do_not_display",
             "build_name": "S.Q677R.Roadrunner",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677R.Roadrunner?c=gt-S_677&f_country=USA"
@@ -682,9 +685,10 @@ clusters = {
             "S677HHeron": {'snps': [23592,28832,1591], 'cluster_data': [],
             "nextstrain_build": True,
             "graphing": False,
-            "type": "mutation",
+            "type": "variant",
+            "usa_graph": True,
             "important": False,
-            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Heron",
+            "country_info": [], 'col': "#65beeb", "display_name": "20G/S:677H.Heron",
             "type": "do_not_display",
             "build_name": "S.Q677H.Heron",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Heron?c=gt-S_677&f_country=USA"
@@ -694,8 +698,9 @@ clusters = {
             "nextstrain_build": True,
             "graphing": False,
             "type": "variant",
+            "usa_graph": True,
             "important": False,
-            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Bluebird",
+            "country_info": [], 'col': "#003366", "display_name": "20G/S:677H.Bluebird",
             "type": "do_not_display",
             "build_name": "S.Q677H.Bluebird",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Bluebird?c=gt-S_677&f_country=USA"
@@ -705,8 +710,9 @@ clusters = {
             "nextstrain_build": True,
             "graphing": False,
             "type": "variant",
+            "usa_graph": True,
             "important": False,
-            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Quail",
+            "country_info": [], 'col': "#a3a3c2", "display_name": "20G/S:677H.Quail",
             "type": "do_not_display",
             "build_name": "S.Q677H.Quail",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Quail?c=gt-S_677&f_country=USA"
@@ -716,12 +722,61 @@ clusters = {
             "nextstrain_build": True,
             "graphing": False,
             "type": "variant",
+            "usa_graph": True,
             "important": False,
-            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Mockingbird",
+            "country_info": [], 'col': "#b3d9ff", "display_name": "20G/S:677H.Mockingbird",
             "type": "do_not_display",
             "build_name": "S.Q677H.Mockingbird",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Mockingbird?c=gt-S_677&f_country=USA"
             }
+
+            #"19B501T": {'snps': [520,23063], 'cluster_data': [],
+            #"nextstrain_build": True,
+            #"graphing": False,
+            #"type": "variant",
+            #"important": False,
+            #"country_info": [], 'col': "#db4439", "display_name": "19B/S:501T",
+            #"type": "do_not_display",
+            #"build_name": "19B.S.501T",
+            #"nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/19B.S.501T?c=gt-S_501"
+            #}
+            #23063,521
+
+            #"19B501Y": {'snps': [1121,23062], 'cluster_data': [],
+            #"nextstrain_build": True,
+            #"graphing": False,
+            #"type": "variant",
+            #"important": False,
+            #"country_info": [], 'col': "#db4439", "display_name": "19B/S:501Y",
+            #"type": "do_not_display",
+            #"build_name": "19B.S.501Y",
+            #"nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/19B.S.501Y?c=gt-S_501"
+            #}
+
+            #"19B681R": {'snps': [23603,23400], 'cluster_data': [],
+            #"nextstrain_build": True,
+            #"graphing": False,
+            #"type": "variant",
+            #"important": False,
+            #"country_info": [], 'col': "#db4439", "display_name": "19B/S:681R",
+            #"type": "do_not_display",
+            #"build_name": "19B.S.681R",
+            #"nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/19B.S.681R?c=gt-S_681"
+            #}
+            #23604  (S:681), 23401 (S:613)
+
+            #"20B769V": {'snps': [23011,23867], 'cluster_data': [], #'second NY 484'
+            #"nextstrain_build": True,
+            #"graphing": False,
+            #"type": "variant",
+            #"important": False,
+            #"country_info": [], 'col': "#db4439", "display_name": "20B/S:769V",
+            #"type": "do_not_display",
+            #"build_name": "20B.S.769V",
+            #"nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20B.S.769V?c=gt-S_769"
+            #}
+            #23012  (S:484), 23868 (S:769)
+
 
         #The two clusters in 20G, Kamil lab asked
             #"S677P": {'snps': [23591, 21810, 29193], 'cluster_data': [],

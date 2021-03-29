@@ -78,13 +78,13 @@ def get_division_summary(cluster_meta, chosen_country):
 
 
 
-def get_summary(cluster_meta, observed_countries):
+def get_summary(cluster_meta, observed_countries, division=False):
 
     country_info = pd.DataFrame(index=observed_countries, columns=['first_seq', 'num_seqs', 'last_seq'])
     country_dates = {}
 
     for coun in observed_countries:
-        if coun in uk_countries:
+        if coun in uk_countries or division:
             #temp_meta = cluster_meta[cluster_meta['division'].isin([coun])]
             temp_meta = cluster_meta[cluster_meta['division'].apply(lambda x: x == coun)]
         else:
