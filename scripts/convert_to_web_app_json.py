@@ -20,9 +20,6 @@ from mutation_comparison import mutation_comparison
 cluster_tables_path = "cluster_tables"
 output_path = "web/data"
 
-with open(os.path.join(cluster_tables_path, "EUClusters_data.json"), "r") as f:
-    json_input = json.load(f)
-
 
 def soa_to_aos(soa):
     """
@@ -56,20 +53,19 @@ def wrap_cluster_data(country_data_aos):
 
 
 def convert_per_country_data(json_input):
-    per_country_data_output = {"distributions": [], 'cluster_names': []}
-
     min_date = json_input["plotting_dates"]["min_date"]
     max_date = json_input["plotting_dates"]["max_date"]
     countries = json_input["countries"]
 
+    cluster_names = []
+    distributions = []
     for (country, country_data) in countries.items():
         country_data_aos = soa_to_aos(country_data)
-        country_data_aos_wrapped, cluster_names = wrap_cluster_data(country_data_aos)
-        per_country_data_output["distributions"].append({'country': country, 'distribution': country_data_aos_wrapped})
-        per_country_data_output["cluster_names"] = \
-            sorted(list(set(cluster_names + per_country_data_output["cluster_names"])))
+        country_data_aos_wrapped, cluster_names_new = wrap_cluster_data(country_data_aos)
+        distributions.append({'country': country, 'distribution': country_data_aos_wrapped})
+        cluster_names = sorted(list(set(cluster_names_new + cluster_names)))
 
-    return per_country_data_output, min_date, max_date
+    return cluster_names, distributions, min_date, max_date
 
 
 def diff_left_closed(big, small, closed=False):
@@ -319,28 +315,47 @@ def filter_clusters(clusters):
     return {k: cluster for k, cluster in clusters.items() if should_include(cluster)}
 
 
+def convert_region_data(region_name, region_input_file):
+    if region_input_file is None:
+        return {
+            "region": region_name,
+            "cluster_names": [],
+            "distributions": [],
+            "min_date": None,
+            "max_date": None
+        }
+
+    with open(os.path.join(cluster_tables_path, region_input_file), "r") as f:
+        json_input = json.load(f)
+
+    cluster_names, distributions, min_date, max_date = convert_per_country_data(json_input)
+
+    return {
+        "region": region_name,
+        "cluster_names": cluster_names,
+        "distributions": distributions,
+        "min_date": min_date,
+        "max_date": max_date
+    }
+
+
+REGIONS = {
+    "World": "EUClusters_data.json",
+    "United States": "USAClusters_data.json",
+    "Switzerland": None  # Will be shown as a disabled "teaser" / "Coming soon!" button in the UI
+}
+
 if __name__ == '__main__':
     clusters = filter_clusters(clusters)
 
     os.makedirs(output_path, exist_ok=True)
 
-    per_country_data_output, min_date, max_date = convert_per_country_data(json_input)
+    regions_data = {"regions": []}
+    for region_name, region_input_file in REGIONS.items():
+        regions_data["regions"].append(convert_region_data(region_name, region_input_file))
+
     with open(os.path.join(output_path, "perCountryData.json"), "w") as fh:
-        json.dump(per_country_data_output, fh, indent=2, sort_keys=True)
-
-    with open(os.path.join(cluster_tables_path, "USAClusters_data.json"), "r") as f:
-        json_input2 = json.load(f)
-
-    per_state_data_output, min_date, max_date = convert_per_country_data(json_input2)
-    with open(os.path.join(output_path, "perStateData.json"), "w") as fh:
-        json.dump(per_state_data_output, fh, indent=2, sort_keys=True)
-
-    params = {
-        "min_date": min_date,
-        "max_date": max_date,
-    }
-    with open(os.path.join(output_path, "params.json"), "w") as fh:
-        json.dump(params, fh, indent=2, sort_keys=True)
+        json.dump(regions_data, fh, indent=2, sort_keys=True)
 
     per_cluster_data_output, per_cluster_data_output_interp = convert_per_cluster_data(clusters)
     with open(os.path.join(output_path, "perClusterData.json"), "w") as fh:
