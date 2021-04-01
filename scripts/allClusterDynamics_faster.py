@@ -933,7 +933,7 @@ def get_ordered_clusters_to_plot(clusters):
             countries_all[coun][clus] = clus_dat[coun]
 
     # how to decide what to plot?
-    min_to_plot = 50
+    min_to_plot = 70
     proposed_coun_to_plot = []
     for clus in clus_keys:
         country_inf = clusters[clus]["country_info_df"]
