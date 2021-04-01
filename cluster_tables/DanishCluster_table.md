@@ -9,9 +9,9 @@
 | Curacao                          | 2020-03-10  |          1 | 2020-03-10 |
 | United Kingdom                   | 2020-03-12  |        199 | 2021-03-19 |
 | Australia                        | 2020-03-23  |          7 | 2021-01-11 |
+| Spain                            | 2020-03-25  |          8 | 2021-03-13 |
 | United Arab Emirates             | 2020-03-30  |          3 | 2020-05-19 |
-| Spain                            | 2020-04-09  |          5 | 2021-02-17 |
-| USA                              | 2020-04-14  |        343 | 2021-03-12 |
+| USA                              | 2020-04-14  |        346 | 2021-03-12 |
 | Brazil                           | 2020-04-20  |          2 | 2020-04-29 |
 | Democratic Republic of the Congo | 2020-04-30  |          2 | 2020-06-01 |
 | Denmark                          | 2020-06-08  |       1488 | 2021-01-18 |
@@ -46,6 +46,6 @@
 | Slovenia                         | 2021-01-27  |          3 | 2021-03-08 |
 | Cameroon                         | 2021-01-27  |          1 | 2021-01-27 |
 | Angola                           | 2021-02-13  |          3 | 2021-02-13 |
-| Ireland                          | 2021-02-16  |          1 | 2021-02-16 |
+| Ireland                          | 2021-02-16  |          4 | 2021-03-09 |
 
 ![Overall trends DanishCluster](/overall_trends_figures/overall_trends_DanishCluster.png)
