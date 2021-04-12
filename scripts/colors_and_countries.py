@@ -180,9 +180,9 @@ country_list_3 = [
     'Bulgaria',        #14
     'Indonesia',        #15
     'Estonia',        #16
-    'Malawi'        #17
-            #18
-            #19
+    'Malawi',        #17
+    'Greece',        #18
+    'Chile'        #19
             #20
 ]
 
