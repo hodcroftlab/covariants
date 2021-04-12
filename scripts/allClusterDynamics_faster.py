@@ -250,6 +250,11 @@ if print_files and "all" in clus_answer:
     with open(overall_tables_file, 'w') as fh:
         fh.write('\n')
 
+    curPath = cluster_path+"clusters/current/"
+    for f in os.listdir(curPath):
+        if os.path.isfile(curPath+f):
+            os.remove(curPath+f)
+
 
 ######################################################################################################
 ##################################
@@ -385,6 +390,8 @@ for clus in clus_to_run:
             build_nam = "mink"
         copypath = clusterlist_output.replace(f"{build_nam}", "{}-{}".format(build_nam, datetime.date.today().strftime("%Y-%m-%d")))
         copyfile(clusterlist_output, copypath)
+        copypath2 = clusterlist_output.replace("clusters/cluster_", "clusters/current/cluster_")
+        copyfile(clusterlist_output, copypath2)
 
         # Just so we have the data, write out the metadata for these sequences
         cluster_meta.to_csv(out_meta_file,sep="\t",index=False)
@@ -446,6 +453,8 @@ for clus in clus_to_run:
             copypath = noUK_clusterlist_output.replace(f"{build_nam}-noUK", "{}-noUK-{}".format(build_nam, datetime.date.today().strftime("%Y-%m-%d")))
             copyfile(noUK_clusterlist_output, copypath)
             nouk_501_meta.to_csv(noUK_out_meta_file,sep="\t",index=False)
+            copypath2 = noUK_clusterlist_output.replace("clusters/cluster_", "clusters/current/cluster_")
+            copyfile(noUK_clusterlist_output, copypath2)
 
     # Make a version of V1-V3 which only have Swiss sequences for increased focus
     if clus in ["501YV1", "501YV2", "501YV3"]:
@@ -464,6 +473,8 @@ for clus in clus_to_run:
             copypath = swissvoc_clusterlist_output.replace(f"{build_nam}-swiss{clus}", "{}-swiss{}-{}".format(build_nam, clus, datetime.date.today().strftime("%Y-%m-%d")))
             copyfile(swissvoc_clusterlist_output, copypath)
             swiss_voc_meta.to_csv(swissvoc_out_meta_file,sep="\t",index=False)
+            copypath2 = swissvoc_clusterlist_output.replace("clusters/cluster_", "clusters/current/cluster_")
+            copyfile(swissvoc_clusterlist_output, copypath2)
 
     #######
     #print out the table
@@ -765,7 +776,7 @@ for clus in clus_to_run:
         unused_countries = [x for x in country_styles_all if x not in countries_to_plot_min]
         country_styles_custom = {}
         for x in countries_to_plot:
-            if x in country_styles.keys():
+            if x in country_styles_all.keys():
                 country_styles_custom[x] = country_styles_all[x]
             else:
                 country_styles_custom[x] = country_styles_all[unused_countries.pop(0)]
