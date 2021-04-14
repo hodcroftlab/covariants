@@ -559,7 +559,8 @@ if print_acks and "all" in clus_answer:
 ##################################
 #### PREPARING FOR OF PLOTTING
 
-
+selected_country = "USA"
+division = True
 
 for clus in clus_to_run:
     print(f"\nPreparing to plot cluster {clus}\n")
@@ -574,6 +575,16 @@ for clus in clus_to_run:
 
     clus_data['cluster_data'] = []
     clus_data['total_data'] = []
+    clus_data[selected_country]['cluster_data_div'] = []
+    clus_data[selected_country]['total_data_div'] = []
+
+    #divide out data for divisions
+    cluster_meta_div = cluster_meta[cluster_meta['country'].apply(lambda x: x == selected_country)]
+    observed_divisions = [x for x in cluster_meta_div['division'].unique()]
+
+    division_info, division_dates = get_summary(cluster_meta_div, observed_divisions, division=True)
+    clus_data[selected_country]['division_info'] = division_info
+    clus_data[selected_country]['division_dates'] = division_dates
 
     # We want to look at % of samples from a country that are in this cluster
     # To avoid the up-and-down of dates, bin samples into weeks
@@ -581,6 +592,7 @@ for clus in clus_to_run:
     acknowledgement_table = []
     clus_data['acknowledgements'] = acknowledgement_table
 
+    #COUNTRY LEVEL
     # Get counts per week for sequences in the cluster
     clus_week_counts = {}
     clus_2week_counts = {}
@@ -613,18 +625,6 @@ for clus in clus_to_run:
             #temp_meta = meta[meta['country'].isin([coun])]
             temp_meta = meta[meta['country'].apply(lambda x: x == coun)]
 
-#        temp_meta = temp_meta[temp_meta['date'].apply(lambda x: len(x) == 10)]
-#        temp_meta = temp_meta[temp_meta['date'].apply(lambda x: 'XX' not in x)]
-#
-#        temp_meta['date_formatted'] = temp_meta['date'].apply(lambda x:datetime.datetime.strptime(x, "%Y-%m-%d"))
-#        #warn of any in the future
-#        future_meta = temp_meta[temp_meta['date_formatted'].apply(lambda x: x > datetime.date.today())]
-#        if not future_meta.empty:
-#            print("WARNING! Data from the future!")
-#            print(future_meta)
-#        #get rid of any with dates in the future.....
-#        temp_meta = temp_meta[temp_meta['date_formatted'].apply(lambda x: x <= datetime.date.today())]
-
         #temp_meta['calendar_week'] = temp_meta['date_formatted'].apply(lambda x: x.isocalendar()[1])
         temp_meta['calendar_week'] = temp_meta['date_formatted'].apply(lambda x: (x.isocalendar()[0], x.isocalendar()[1]))
         temp_meta = temp_meta[temp_meta['calendar_week']>=min_data_week]
@@ -652,10 +652,62 @@ for clus in clus_to_run:
         total_2week_counts[coun] = counts_by_2week
 
 
+    # DIVISION LEVEL
+    # Get counts per week for sequences in the cluster
+    clus_week_counts_div = {}
+    clus_2week_counts_div = {}
+    for div in observed_divisions:
+        counts_by_week = defaultdict(int)
+        counts_by_2week = defaultdict(int)
+        for dat in division_dates[div]:
+            #counts_by_week[dat.timetuple().tm_yday//7]+=1 # old method
+            #counts_by_week[dat.isocalendar()[1]]+=1  #returns ISO calendar week
+            wk = dat.isocalendar()[1]#returns ISO calendar week
+            wk2 = (dat.isocalendar()[1]//2*2) #returns ISO calendar week -every 2 weeks
+            yr = dat.isocalendar()[0]
+            yr_wk = (yr, wk)
+            yr_2wk = (yr, wk2)
+            counts_by_week[yr_wk]+=1
+            counts_by_2week[yr_2wk]+=1
+        clus_week_counts_div[div] = counts_by_week
+        clus_2week_counts_div[div] = counts_by_2week
+
+    # Get counts per week for sequences regardless of whether in the cluster or not - from week 20 only.
+    total_week_counts_div = {}
+    total_2week_counts_div = {}
+    for div in observed_divisions:
+        counts_by_week = defaultdict(int)
+        counts_by_2week = defaultdict(int)
+        if div in uk_countries or division:
+            #temp_meta = meta[meta['division'].isin([coun])]
+            temp_meta = meta[meta['division'].apply(lambda x: x == div)]
+        else:
+            #temp_meta = meta[meta['country'].isin([coun])]
+            temp_meta = meta[meta['country'].apply(lambda x: x == div)]
+
+        #temp_meta['calendar_week'] = temp_meta['date_formatted'].apply(lambda x: x.isocalendar()[1])
+        temp_meta['calendar_week'] = temp_meta['date_formatted'].apply(lambda x: (x.isocalendar()[0], x.isocalendar()[1]))
+        temp_meta = temp_meta[temp_meta['calendar_week']>=min_data_week]
+        #If no samples are after min_data_week, will be empty!!
+        if temp_meta.empty:
+            continue
+
+        week_counts = temp_meta['calendar_week'].value_counts().sort_index()
+        counts_by_week = week_counts.to_dict()
+        total_week_counts_div[div] = counts_by_week
+
+        # TWO WEEKS
+        temp_meta['calendar_2week'] = temp_meta['date_formatted'].apply(lambda x: (x.isocalendar()[0], x.isocalendar()[1]//2*2))
+        temp_meta = temp_meta[temp_meta['calendar_2week']>=min_data_week]
+        week2_counts = temp_meta['calendar_2week'].value_counts().sort_index()
+        counts_by_2week = week2_counts.to_dict()
+        total_2week_counts_div[div] = counts_by_2week
+
+
 #    if print_acks:
 #        acknowledgement_table.to_csv(f'{acknowledgement_folder}{clus}_acknowledgement_table.tsv', sep="\t")
 
-
+    #COUNTRY LEVEL
     # Convert into dataframe
     cluster_data = pd.DataFrame(data=clus_week_counts)
     total_data = pd.DataFrame(data=total_week_counts)
@@ -675,6 +727,27 @@ for clus in clus_to_run:
     #store
     clus_data['cluster_data_2wk'] = cluster_data_2wk
     clus_data['total_data_2wk'] = total_data_2wk
+
+    #DIVISION LEVEL
+    # Convert into dataframe
+    cluster_data_div = pd.DataFrame(data=clus_week_counts_div)
+    total_data_div = pd.DataFrame(data=total_week_counts_div)
+    # sort
+    total_data_div=total_data_div.sort_index()
+    cluster_data_div=cluster_data_div.sort_index()
+    #store
+    clus_data[selected_country]['cluster_data_div'] = cluster_data_div
+    clus_data[selected_country]['total_data_div'] = total_data_div
+
+    # Convert into dataframe -- 2 weeks
+    cluster_data_2wk_div = pd.DataFrame(data=clus_2week_counts_div)
+    total_data_2wk_div = pd.DataFrame(data=total_2week_counts_div)
+    # sort
+    total_data_2wk_div=total_data_2wk_div.sort_index()
+    cluster_data_2wk_div=cluster_data_2wk_div.sort_index()
+    #store
+    clus_data[selected_country]['cluster_data_2wk_div'] = cluster_data_2wk_div
+    clus_data[selected_country]['total_data_2wk_div'] = total_data_2wk_div
 
 ######################################################################################################
 ##################################
@@ -915,7 +988,7 @@ else:
 if do_country == False:
     print("You can alway run this step by calling `plot_country_data(clusters, proposed_coun_to_plot, print_files)`")
 
-def get_ordered_clusters_to_plot(clusters):
+def get_ordered_clusters_to_plot(clusters, division=False, selected_country=None):
     #fix cluster order in a list so it's reliable
     clus_keys = [x for x in clusters.keys()] #if x in clusters_tww]
 
@@ -923,27 +996,42 @@ def get_ordered_clusters_to_plot(clusters):
     # Do not plot 484 as it overlaps with 501Y.V2, possibly others
     # Do not plot DanishCluster as also overlaps
     #clus_keys = [x for x in clus_keys if x not in ["S69","S484", "DanishCluster"]]
-    clus_keys = [x for x in clus_keys if clusters[x]["graphing"] is True]
+    if division: 
+        clus_keys = [x for x in clus_keys if clusters[x]["type"] == "variant" or clusters[x]["usa_graph"] is True]
+        cluster_data_key = "cluster_data_2wk_div"
+        min_to_plot = 20
+    else:
+        clus_keys = [x for x in clus_keys if clusters[x]["graphing"] is True]
+        cluster_data_key = "cluster_data_2wk"
+        min_to_plot = 50
 
     countries_all = defaultdict(dict)
     for clus in clus_keys:
-        clus_dat = clusters[clus]["cluster_data_2wk"]
+        if division:
+            clus_dat = clusters[clus][selected_country][cluster_data_key]
+        else:
+            clus_dat = clusters[clus][cluster_data_key]
         for coun in clus_dat.columns:
             countries_all[coun][clus] = clus_dat[coun]
 
     # how to decide what to plot?
-    min_to_plot = 50
     proposed_coun_to_plot = []
     for clus in clus_keys:
-        country_inf = clusters[clus]["country_info_df"]
+        if division:
+            country_inf = clusters[clus][selected_country]["division_info_df"]
+        else:
+            country_inf = clusters[clus]["country_info_df"]
         proposed_coun_to_plot.extend(country_inf[country_inf.num_seqs > min_to_plot].index)
     proposed_coun_to_plot = set(proposed_coun_to_plot)
-    print(f"At min plot {min_to_plot}, there are {len(proposed_coun_to_plot)} countries")
+    print(f"At min plot {min_to_plot}, there are {len(proposed_coun_to_plot)} entries")
 
     total_coun_counts = {}
     #decide order
     for clus in clus_keys:
-        country_inf = clusters[clus]["country_info_df"]
+        if division:
+            country_inf = clusters[clus][selected_country]["division_info_df"]
+        else:
+            country_inf = clusters[clus]["country_info_df"]
         for coun in proposed_coun_to_plot:
             if coun not in total_coun_counts:
                 total_coun_counts[coun] = 0
