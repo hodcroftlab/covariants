@@ -78,13 +78,13 @@ def get_division_summary(cluster_meta, chosen_country):
 
 
 
-def get_summary(cluster_meta, observed_countries):
+def get_summary(cluster_meta, observed_countries, division=False):
 
     country_info = pd.DataFrame(index=observed_countries, columns=['first_seq', 'num_seqs', 'last_seq'])
     country_dates = {}
 
     for coun in observed_countries:
-        if coun in uk_countries:
+        if coun in uk_countries or division:
             #temp_meta = cluster_meta[cluster_meta['division'].isin([coun])]
             temp_meta = cluster_meta[cluster_meta['division'].apply(lambda x: x == coun)]
         else:
@@ -178,6 +178,13 @@ while reask:
         reask = False
 print("These clusters will be run: ", clus_to_run)
 
+
+
+division = False
+division_answer = input("\nDo division for USA?(y/n) (Enter is no): ")
+if division_answer in ["y", "Y", "yes", "YES", "Yes"]:
+    division = True
+    selected_country = "USA"
 
 ##################################
 ##################################
@@ -559,8 +566,6 @@ if print_acks and "all" in clus_answer:
 ##################################
 #### PREPARING FOR OF PLOTTING
 
-selected_country = "USA"
-division = True
 
 for clus in clus_to_run:
     print(f"\nPreparing to plot cluster {clus}\n")
@@ -575,6 +580,7 @@ for clus in clus_to_run:
 
     clus_data['cluster_data'] = []
     clus_data['total_data'] = []
+    clus_data[selected_country] = {}
     clus_data[selected_country]['cluster_data_div'] = []
     clus_data[selected_country]['total_data_div'] = []
 
@@ -753,7 +759,7 @@ for clus in clus_to_run:
 ##################################
 #### FIGURE OUT WHAT TO PLOT
 
-cutoff_num_seqs = 100
+cutoff_num_seqs = 130
 
 
 clusters_tww = []
@@ -837,7 +843,7 @@ for clus in clus_to_run:
         unused_countries = [x for x in country_styles_all if x not in countries_to_plot_min]
         country_styles_custom = {}
         for x in countries_to_plot:
-            if x in country_styles.keys():
+            if x in country_styles_all.keys():
                 country_styles_custom[x] = country_styles_all[x]
             else:
                 country_styles_custom[x] = country_styles_all[unused_countries.pop(0)]
@@ -997,13 +1003,13 @@ def get_ordered_clusters_to_plot(clusters, division=False, selected_country=None
     # Do not plot DanishCluster as also overlaps
     #clus_keys = [x for x in clus_keys if x not in ["S69","S484", "DanishCluster"]]
     if division: 
-        clus_keys = [x for x in clus_keys if clusters[x]["type"] == "variant" or clusters[x]["usa_graph"] is True]
+        clus_keys = [x for x in clus_keys if clusters[x]["type"] == "variant" or ("usa_graph" in clusters[x] and clusters[x]["usa_graph"] is True)]
         cluster_data_key = "cluster_data_2wk_div"
         min_to_plot = 20
     else:
         clus_keys = [x for x in clus_keys if clusters[x]["graphing"] is True]
         cluster_data_key = "cluster_data_2wk"
-        min_to_plot = 50
+        min_to_plot = 70
 
     countries_all = defaultdict(dict)
     for clus in clus_keys:
@@ -1018,7 +1024,7 @@ def get_ordered_clusters_to_plot(clusters, division=False, selected_country=None
     proposed_coun_to_plot = []
     for clus in clus_keys:
         if division:
-            country_inf = clusters[clus][selected_country]["division_info_df"]
+            country_inf = clusters[clus][selected_country]["division_info"]
         else:
             country_inf = clusters[clus]["country_info_df"]
         proposed_coun_to_plot.extend(country_inf[country_inf.num_seqs > min_to_plot].index)
@@ -1029,7 +1035,7 @@ def get_ordered_clusters_to_plot(clusters, division=False, selected_country=None
     #decide order
     for clus in clus_keys:
         if division:
-            country_inf = clusters[clus][selected_country]["division_info_df"]
+            country_inf = clusters[clus][selected_country]["division_info"]
         else:
             country_inf = clusters[clus]["country_info_df"]
         for coun in proposed_coun_to_plot:
@@ -1043,7 +1049,7 @@ def get_ordered_clusters_to_plot(clusters, division=False, selected_country=None
 
     return proposed_coun_to_plot, clus_keys
 
-def plot_country_data(clusters, proposed_coun_to_plot, print_files, clus_keys):
+def plot_country_data(clusters, proposed_coun_to_plot, print_files, clus_keys, file_prefix, division=False, selected_country=None):
     country_week = {clus: {} for clus in clusters}
 
     fs = 14
@@ -1065,9 +1071,15 @@ def plot_country_data(clusters, proposed_coun_to_plot, print_files, clus_keys):
         json_output['countries'][coun] = {'week': {}, 'total_sequences': {} }
 
         for clus in clus_keys:
-            cluster_data = clusters[clus]['cluster_data_2wk']
+            if division:
+                cluster_data = clusters[clus][selected_country]['cluster_data_2wk_div']
+            else:
+                cluster_data = clusters[clus]['cluster_data_2wk']
             cluster_data=cluster_data.sort_index()
-            total_data = clusters[clus]['total_data_2wk']
+            if division:
+                total_data = clusters[clus][selected_country]['total_data_2wk_div']
+            else:
+                total_data = clusters[clus]['total_data_2wk']
             if coun not in cluster_data:
                 if clus == clus_keys[-1]:
                     ax.fill_between(week_as_date, cluster_count/total_count, 1, facecolor=grey_color)
@@ -1133,17 +1145,27 @@ def plot_country_data(clusters, proposed_coun_to_plot, print_files, clus_keys):
 
     if print_files:
         fmt = "pdf"
-        with open(tables_path+f'EUClusters_data.json', 'w') as fh:
+        with open(tables_path+f'{file_prefix}_data.json', 'w') as fh:
             json.dump(json_output, fh)
 
-        plt.savefig(figure_path+f"EUClusters_compare.png")
+        plt.savefig(figure_path+f"{file_prefix}_compare.png")
 
-        plt.savefig(figure_only_path+f"EUClusters_compare.{fmt}")
-        trends_path = figure_only_path+f"EUClusters_compare.{fmt}"
+        plt.savefig(figure_only_path+f"{file_prefix}_compare.{fmt}")
+        trends_path = figure_only_path+f"{file_prefix}_compare.{fmt}"
         copypath = trends_path.replace("compare", "compare-{}".format(datetime.date.today().strftime("%Y-%m-%d")))
         copyfile(trends_path, copypath)
 
 
 if do_country:
     proposed_coun_to_plot, clus_keys = get_ordered_clusters_to_plot(clusters)
-    plot_country_data(clusters, proposed_coun_to_plot, print_files, clus_keys)
+    plot_country_data(clusters, proposed_coun_to_plot, print_files, clus_keys, "EUClusters")
+
+do_usa_country = False
+if "all" in clus_answer:
+    print_answer = input("\nContinue to USA-specific country plotting? (y/n) (Enter is no): ")
+    if print_answer in ["y", "Y", "yes", "YES", "Yes"]:
+        do_usa_country = True
+
+if do_usa_country:
+    proposed_coun_to_plot, clus_keys = get_ordered_clusters_to_plot(clusters, True, "USA")
+    plot_country_data(clusters, proposed_coun_to_plot, print_files, clus_keys, "USAClusters", True, "USA")
