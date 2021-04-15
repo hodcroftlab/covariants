@@ -1,31 +1,20 @@
-import copy from 'fast-copy'
-
 import { mapValues, pickBy } from 'lodash'
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Col, Row } from 'reactstrap'
 
-import perCountryData from 'src/../data/perCountryData.json'
 import { Editable } from 'src/components/Common/Editable'
 import { ColCustom } from 'src/components/Common/ColCustom'
+import { RegionSwitcher } from 'src/components/CountryDistribution/RegionSwitcher'
 
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 
 import PerCountryIntro from 'src/../../content/PerCountryIntro.md'
+import { DEFAULT_REGION, getClusterData, REGIONS, REGIONS_HAVE_DATA } from 'src/io/getClusterData'
 
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
 import { CountryDistributionDatum } from './CountryDistributionPlot'
-
-const CLUSTERS = copy(perCountryData.cluster_names).sort()
-const CLUSTERS_STATE = CLUSTERS.reduce((result, cluster) => {
-  return { ...result, [cluster]: { enabled: true } }
-}, {})
-
-const COUNTRIES = perCountryData.distributions.map(({ country }) => country).sort()
-const COUNTRIES_STATE = COUNTRIES.reduce((result, country) => {
-  return { ...result, [country]: { enabled: true } }
-}, {})
 
 export interface ClusterState {
   [key: string]: { enabled: boolean }
@@ -40,12 +29,12 @@ export interface CountryDistribution {
   distribution: CountryDistributionDatum[]
 }
 
-export function filterCountries(countries: CountryState, countryDistrubutions: CountryDistribution[]) {
+export function filterCountries(countries: CountryState, countryDistributions: CountryDistribution[]) {
   const enabledCountries = Object.entries(countries)
     .filter(([_0, { enabled }]) => enabled)
     .map(([country]) => country)
 
-  const withCountriesFiltered = countryDistrubutions.filter(({ country }) => {
+  const withCountriesFiltered = countryDistributions.filter(({ country }) => {
     return enabledCountries.some((candidate) => candidate === country)
   })
 
@@ -71,14 +60,26 @@ export function filterClusters(clusters: ClusterState, withCountriesFiltered: Co
   return { enabledClusters, withClustersFiltered }
 }
 
-const countryDistrubutions: CountryDistribution[] = perCountryData.distributions
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
 export function CountryDistributionPage() {
-  const [countries, setCountries] = useState<CountryState>(COUNTRIES_STATE)
-  const [clusters, setClusters] = useState<ClusterState>(CLUSTERS_STATE)
+  const [currentRegion, setCurrentRegion] = useState(DEFAULT_REGION)
+  const { clustersState, countriesState, countryDistributions } =
+    /* prettier-ignore */
+    useMemo(() => getClusterData(currentRegion), [currentRegion])
 
-  const { withCountriesFiltered } = useMemo(() => filterCountries(countries, countryDistrubutions), [countries])
+  const [countries, setCountries] = useState<CountryState>(countriesState)
+  const [clusters, setClusters] = useState<ClusterState>(clustersState)
+
+  useEffect(() => {
+    setCountries(countriesState)
+    setClusters(clustersState)
+  }, [clustersState, countriesState])
+
+  const { withCountriesFiltered } =
+    /* prettier-ignore */
+    useMemo(() => filterCountries(countries, countryDistributions), [countries, countryDistributions])
+
   const { enabledClusters, withClustersFiltered } =
     /* prettier-ignore */
     useMemo(() => filterClusters(clusters, withCountriesFiltered), [clusters, withCountriesFiltered])
@@ -140,6 +141,17 @@ export function CountryDistributionPage() {
       <Row noGutters>
         <Col>
           <h1 className="text-center">{'Overview of Variants in Countries'}</h1>
+        </Col>
+      </Row>
+
+      <Row noGutters>
+        <Col>
+          <RegionSwitcher
+            regions={REGIONS}
+            regionsHaveData={REGIONS_HAVE_DATA}
+            currentRegion={currentRegion}
+            setCurrentRegion={setCurrentRegion}
+          />
         </Col>
       </Row>
 
