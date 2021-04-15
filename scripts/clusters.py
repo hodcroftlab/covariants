@@ -652,7 +652,7 @@ clusters = {
             "type": "variant",
             "usa_graph": True,
             "important": False,
-            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Robin2",
+            "country_info": [], 'col': "#804000", "display_name": "20G/S:677H.Robin2",
             "type": "do_not_display",
             "build_name": "S.Q677H.Robin2",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Robin2?c=gt-S_677&f_country=USA"
@@ -664,7 +664,7 @@ clusters = {
             "type": "variant",
             "usa_graph": True,
             "important": False,
-            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Yellowhammer",
+            "country_info": [], 'col': "#ffcc00", "display_name": "20G/S:677H.Yellowhammer",
             "type": "do_not_display",
             "build_name": "S.Q677H.Yellowhammer",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Yellowhammer?c=gt-S_677&f_country=USA"
@@ -676,7 +676,7 @@ clusters = {
             "type": "variant",
             "usa_graph": True,
             "important": False,
-            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677R.Roadrunner",
+            "country_info": [], 'col': "#ff8d3d", "display_name": "20G/S:677R.Roadrunner",
             "type": "do_not_display",
             "build_name": "S.Q677R.Roadrunner",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677R.Roadrunner?c=gt-S_677&f_country=USA"
@@ -688,7 +688,7 @@ clusters = {
             "type": "variant",
             "usa_graph": True,
             "important": False,
-            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Heron",
+            "country_info": [], 'col': "#65beeb", "display_name": "20G/S:677H.Heron",
             "type": "do_not_display",
             "build_name": "S.Q677H.Heron",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Heron?c=gt-S_677&f_country=USA"
@@ -700,7 +700,7 @@ clusters = {
             "type": "variant",
             "usa_graph": True,
             "important": False,
-            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Bluebird",
+            "country_info": [], 'col': "#003366", "display_name": "20G/S:677H.Bluebird",
             "type": "do_not_display",
             "build_name": "S.Q677H.Bluebird",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Bluebird?c=gt-S_677&f_country=USA"
@@ -712,7 +712,7 @@ clusters = {
             "type": "variant",
             "usa_graph": True,
             "important": False,
-            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Quail",
+            "country_info": [], 'col': "#a3a3c2", "display_name": "20G/S:677H.Quail",
             "type": "do_not_display",
             "build_name": "S.Q677H.Quail",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Quail?c=gt-S_677&f_country=USA"
@@ -724,7 +724,7 @@ clusters = {
             "type": "variant",
             "usa_graph": True,
             "important": False,
-            "country_info": [], 'col': "#db4439", "display_name": "20G/S:677H.Mockingbird",
+            "country_info": [], 'col': "#b3d9ff", "display_name": "20G/S:677H.Mockingbird",
             "type": "do_not_display",
             "build_name": "S.Q677H.Mockingbird",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Mockingbird?c=gt-S_677&f_country=USA"
