@@ -898,6 +898,9 @@ if "all" in clus_answer:
         if coun not in country_styles_all:
             print(f"WARNING!: {coun} has no color! Please add it to country_list_2 in colors_and_countries.py and re-run make web-data")
 
+for coun in country_styles_all:
+    if coun not in countries_plotted.keys():
+        print(f"Not plotted anymore: {coun}")
 
 ## Write out plotting information - only if all clusters have run
 if print_files and "all" in clus_answer:
@@ -1073,8 +1076,8 @@ if do_country:
     plot_country_data(clusters, proposed_coun_to_plot, print_files, clus_keys)
 
 #if all went well (script got to this point), and did an 'all' run, then print out an update!
-from datetime import datetime
-update_json = { "lastUpdated" : str(datetime.now().isoformat()) }
+#from datetime import datetime
+update_json = { "lastUpdated" : str(datetime.datetime.now().isoformat()) }
 
 if print_files and "all" in clus_answer:
     with open(web_data_folder+f'update.json', 'w') as fh:
