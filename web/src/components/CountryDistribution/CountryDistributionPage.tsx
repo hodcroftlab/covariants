@@ -11,6 +11,7 @@ import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 
 import PerCountryIntro from 'src/../../content/PerCountryIntro.md'
+import PerAreaIntro from 'src/../../content/PerAreaIntro.md'
 import { DEFAULT_REGION, getClusterData, REGIONS, REGIONS_HAVE_DATA } from 'src/io/getClusterData'
 
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
@@ -158,7 +159,7 @@ export function CountryDistributionPage() {
       <Row noGutters>
         <Col>
           <Editable githubUrl="blob/master/content/PerCountryIntro.md">
-            <PerCountryIntro />
+            {currentRegion === 'World' ? <PerCountryIntro /> : <PerAreaIntro />}
           </Editable>
         </Col>
       </Row>
