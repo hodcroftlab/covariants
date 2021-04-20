@@ -10,6 +10,7 @@ import { CountryFilters } from './CountryFilters'
 export interface DistributionSidebarProps {
   clusters?: ClusterState
   countries?: CountryState
+  regionsTitle: string
   clustersCollapsedByDefault?: boolean
   coutriesCollapsedByDefault?: boolean
   enabledFilters: string[]
@@ -24,6 +25,7 @@ export interface DistributionSidebarProps {
 export function DistributionSidebar({
   clusters,
   countries,
+  regionsTitle,
   clustersCollapsedByDefault = true,
   coutriesCollapsedByDefault = true,
   enabledFilters,
@@ -42,6 +44,7 @@ export function DistributionSidebar({
       countries: countries && (
         <CountryFilters
           key="country-filters"
+          regionsTitle={regionsTitle}
           countries={countries}
           onFilterChange={onCountryFilterChange}
           onFilterSelectAll={onCountryFilterSelectAll}
@@ -53,6 +56,7 @@ export function DistributionSidebar({
       countriesWithIcons: countries && (
         <CountryFilters
           key="country-filters"
+          regionsTitle={regionsTitle}
           withIcons
           countries={countries}
           onFilterChange={onCountryFilterChange}

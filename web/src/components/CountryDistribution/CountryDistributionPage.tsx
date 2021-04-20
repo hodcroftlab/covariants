@@ -77,6 +77,8 @@ export function CountryDistributionPage() {
     setClusters(clustersState)
   }, [clustersState, countriesState])
 
+  const regionsTitle = useMemo(() => (currentRegion === 'World' ? 'Countries' : 'Regions'), [currentRegion])
+
   const { withCountriesFiltered } =
     /* prettier-ignore */
     useMemo(() => filterCountries(countries, countryDistributions), [countries, countryDistributions])
@@ -172,6 +174,7 @@ export function CountryDistributionPage() {
                 <DistributionSidebar
                   clusters={clusters}
                   countries={countries}
+                  regionsTitle={regionsTitle}
                   enabledFilters={enabledFilters}
                   clustersCollapsedByDefault={false}
                   onClusterFilterChange={handleClusterCheckedChange}

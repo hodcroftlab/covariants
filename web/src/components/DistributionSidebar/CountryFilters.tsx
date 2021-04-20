@@ -64,6 +64,7 @@ export function CountryFilterCheckbox({ country, enabled, withIcons, onFilterCha
 
 export interface CountryFiltersProps {
   countries: CountryState
+  regionsTitle: string
   collapsed: boolean
   withIcons?: boolean
   onFilterChange(country: string): void
@@ -74,6 +75,7 @@ export interface CountryFiltersProps {
 
 export function CountryFilters({
   countries,
+  regionsTitle,
   collapsed,
   withIcons,
   onFilterSelectAll,
@@ -84,7 +86,7 @@ export function CountryFilters({
   const filters = useMemo(() => Object.entries(countries), [countries])
 
   return (
-    <CardCollapsible className="m-2" title={'Countries'} collapsed={collapsed} setCollapsed={setCollapsed}>
+    <CardCollapsible className="m-2" title={regionsTitle} collapsed={collapsed} setCollapsed={setCollapsed}>
       <CardBody>
         <Container fluid>
           <Row noGutters>
