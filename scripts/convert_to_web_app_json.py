@@ -167,6 +167,9 @@ def convert_per_cluster_data(clusters):
     per_cluster_data_output_interp = {"distributions": [], "country_names": []}
 
     for _, cluster in clusters.items():
+        if cluster["type"] == "do_not_display":
+            continue
+
         display_name = cluster['display_name']
         build_name = cluster['build_name']
 
@@ -303,18 +306,6 @@ def convert_mutation_comparison(mutation_comparison):
         "individual": individual
     }
 
-
-def should_include(cluster):
-    try:
-        return cluster["type"] != "do_not_display"  # Exclude if type is "do_not_display"
-    except KeyError:
-        return True  # Include by default
-
-
-def filter_clusters(clusters):
-    return {k: cluster for k, cluster in clusters.items() if should_include(cluster)}
-
-
 def convert_region_data(region_name, region_input_file):
     if region_input_file is None:
         return {
@@ -346,8 +337,6 @@ REGIONS = {
 }
 
 if __name__ == '__main__':
-    clusters = filter_clusters(clusters)
-
     os.makedirs(output_path, exist_ok=True)
 
     regions_data = {"regions": []}

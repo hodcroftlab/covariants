@@ -25,8 +25,12 @@ export type ClusterDatum = {
   important: boolean
 }
 
-export function getClusters(): ClusterDatum[] {
+export function getClustersIncludingHidden(): ClusterDatum[] {
   return clustersJson.clusters
+}
+
+export function getClusters(): ClusterDatum[] {
+  return clustersJson.clusters.filter(({ type }) => type !== 'do_not_display')
 }
 
 export function getDefaultCluster(): ClusterDatum {
@@ -46,7 +50,7 @@ export function getClusterColor(clusterName: string) {
     return theme.clusters.color.others
   }
 
-  const clusters = getClusters()
+  const clusters = getClustersIncludingHidden()
   const found = clusters.find(({ display_name }) => display_name === clusterName)
   return found ? found.col : theme.clusters.color.unknown
 }
