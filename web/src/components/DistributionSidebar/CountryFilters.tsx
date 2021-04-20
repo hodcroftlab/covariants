@@ -23,7 +23,7 @@ import { ColoredHorizontalLineIcon } from '../Common/ColoredHorizontalLineIcon'
 export const CardBody = styled(CardBodyBase)``
 
 export const FormGroup = styled(FormGroupBase)`
-  flex: 1 0 265px;
+  flex: 1 0 320px;
 `
 
 export const Form = styled(FormBase)`
