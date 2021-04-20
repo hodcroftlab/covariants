@@ -730,6 +730,20 @@ clusters = {
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Mockingbird?c=gt-S_677&f_country=USA"
             }
 
+            #B.1.617
+            # 20A/681
+            #"20AS681": { 'snps': [23011, 23603, 22916], 'cluster_data': [], # S:484, 681, 452
+            #"nextstrain_build": True,
+            #"graphing": False,
+            #"type": "variant",
+            #"usa_graph": False,
+            #"important": False,
+            #"country_info": [], 'col': "#b3d9ff", "display_name": "20A/S:681R",
+            #"type": "do_not_display",
+            #"build_name": "20A.S.681R",
+            #"nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.681R?c=gt-S_681"
+            #}
+
             #trying out 675
            # "S675": {'snps': [23586], 'cluster_data': [],
            # "nextstrain_build": True,
