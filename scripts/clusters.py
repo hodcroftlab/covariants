@@ -730,18 +730,17 @@ clusters = {
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Mockingbird?c=gt-S_677&f_country=USA"
             }
 
-            #B.1.617
-            # 20A/681
-            #"20AS681": { 'snps': [23011, 23603, 22916], 'cluster_data': [], # S:484, 681, 452
+            #B.1.617 - "Indian" in media
+            #"20AS154": { 'snps': [23011, 23603, 22916], 'cluster_data': [], # S:484, 681, 452
             #"nextstrain_build": True,
             #"graphing": False,
             #"type": "variant",
             #"usa_graph": False,
             #"important": False,
-            #"country_info": [], 'col': "#b3d9ff", "display_name": "20A/S:681R",
+            #"country_info": [], 'col': "#b3d9ff", "display_name": "20A/S:154K",
             #"type": "do_not_display",
-            #"build_name": "20A.S.681R",
-            #"nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.681R?c=gt-S_681"
+            #"build_name": "20A.S.154K",
+            #"nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.154K?c=gt-S_681,484,452"
             #}
 
             #trying out 675
