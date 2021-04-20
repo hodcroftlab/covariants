@@ -89,6 +89,7 @@ export function DistributionSidebar({
       onCountryFilterChange,
       onCountryFilterDeselectAll,
       onCountryFilterSelectAll,
+      regionsTitle,
     ],
   )
 

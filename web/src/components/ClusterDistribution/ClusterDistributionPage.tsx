@@ -229,6 +229,7 @@ export function ClusterDistributionPage() {
                 <DistributionSidebar
                   countries={countries}
                   clusters={clusters}
+                  regionsTitle="Countries"
                   coutriesCollapsedByDefault={false}
                   enabledFilters={enabledFilters}
                   onClusterFilterChange={handleClusterCheckedChange}
