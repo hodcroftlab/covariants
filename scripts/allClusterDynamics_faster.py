@@ -898,9 +898,10 @@ if "all" in clus_answer:
         if coun not in country_styles_all:
             print(f"WARNING!: {coun} has no color! Please add it to country_list_2 in colors_and_countries.py and re-run make web-data")
 
-for coun in country_styles_all:
-    if coun not in countries_plotted.keys():
-        print(f"Not plotted anymore: {coun}")
+if "all" in clus_answer:
+    for coun in country_styles_all:
+        if coun not in countries_plotted.keys():
+            print(f"Not plotted anymore: {coun}")
 
 ## Write out plotting information - only if all clusters have run
 if print_files and "all" in clus_answer:
