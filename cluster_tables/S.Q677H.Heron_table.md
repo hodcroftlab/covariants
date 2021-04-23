@@ -5,6 +5,6 @@
 
 |     | first_seq   |   num_seqs | last_seq   |
 |:----|:------------|-----------:|:-----------|
-| USA | 2020-11-19  |         77 | 2021-03-22 |
+| USA | 2020-11-19  |         78 | 2021-03-25 |
 
 ![Overall trends S.Q677H.Heron](/overall_trends_figures/overall_trends_S.Q677H.Heron.png)
