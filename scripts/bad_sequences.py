@@ -61,7 +61,9 @@ bad_seqs = {
     'Netherlands/NB-EMC-748/2020'   :   "2020-01-09", # too divergenced to be from 9 Jan 2020...
     'SouthAfrica/KRISP-K010011/2020' : "1905-07-12", #impossible date
     'USA/CA-LACPHL-AF00662/2020'    : "2020-03-10", #divergence of 20 with date March 2020 highly unlikely - prob year mixup
-
+    'Netherlands/ZH-EMC-1944/2020'  : "2020-03-10", #EU2 - too diverged for date
+    'Italy/LAZ-TIGEM-6927/2021'     : "2017-11-21", #impossible year of 2017
+    
     # These sequences are from EU1 - early dated but the divergence doesn't match the dates...
     'England/NOTT-246E3F/2020'  :   "2020-06-02",
     'England/NOTT-246E11/2020'  :   "2020-06-03",
@@ -85,7 +87,9 @@ bad_seqs = {
     'Netherlands/ZH-EMC-2079/2020'  :   "2020-02-15",
     'Netherlands/ZH-EMC-2080/2020'  :   "2020-02-15",
     'Netherlands/NB-EMC-751/2020'   :   "2020-04-09",
-    'Netherlands/ZH-EMC-1816/2020'  :   "2020-04-12"
+    'Netherlands/ZH-EMC-1816/2020'  :   "2020-04-12",
+    'Italy/CAM-CRGS-544/2020'       :   "2020-03-14"
+
 
     #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
     #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird

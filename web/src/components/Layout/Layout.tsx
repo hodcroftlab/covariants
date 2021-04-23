@@ -8,6 +8,7 @@ import { ReactComponent as GisaidLogoBase } from 'src/assets/images/GISAID_logo.
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { NavigationBar } from './NavigationBar'
 import { FooterContent } from './Footer'
+import { LastUpdated } from '../Common/LastUpdated'
 
 const Container = styled(ContainerBase)`
   min-height: 100%;
@@ -83,6 +84,8 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
                 <GisaidLogo height={20} />
               </LinkExternal>
             </GisaidText>
+
+            <LastUpdated className="d-flex ml-auto" />
           </Col>
         </Row>
 

@@ -29,6 +29,7 @@ tables_path = "../covariants/cluster_tables/"
 overall_tables_file = "../covariants/cluster_tables/all_tables.tsv"
 acknowledgement_folder = "../covariants/acknowledgements/"
 acknowledgement_folder_new = "../covariants/web/data/acknowledgements/"
+web_data_folder = "../covariants/web/data/"
 figure_only_path = "../covariants/figures/"
 # This assumes that `covariants` sites next to `ncov`
 # Otherwise, modify the paths above to put the files wherever you like.
@@ -256,6 +257,11 @@ if print_files and "all" in clus_answer:
     with open(overall_tables_file, 'w') as fh:
         fh.write('\n')
 
+    curPath = cluster_path+"clusters/current/"
+    for f in os.listdir(curPath):
+        if os.path.isfile(curPath+f):
+            os.remove(curPath+f)
+
 
 ######################################################################################################
 ##################################
@@ -391,6 +397,8 @@ for clus in clus_to_run:
             build_nam = "mink"
         copypath = clusterlist_output.replace(f"{build_nam}", "{}-{}".format(build_nam, datetime.date.today().strftime("%Y-%m-%d")))
         copyfile(clusterlist_output, copypath)
+        copypath2 = clusterlist_output.replace("clusters/cluster_", "clusters/current/cluster_")
+        copyfile(clusterlist_output, copypath2)
 
         # Just so we have the data, write out the metadata for these sequences
         cluster_meta.to_csv(out_meta_file,sep="\t",index=False)
@@ -452,6 +460,8 @@ for clus in clus_to_run:
             copypath = noUK_clusterlist_output.replace(f"{build_nam}-noUK", "{}-noUK-{}".format(build_nam, datetime.date.today().strftime("%Y-%m-%d")))
             copyfile(noUK_clusterlist_output, copypath)
             nouk_501_meta.to_csv(noUK_out_meta_file,sep="\t",index=False)
+            copypath2 = noUK_clusterlist_output.replace("clusters/cluster_", "clusters/current/cluster_")
+            copyfile(noUK_clusterlist_output, copypath2)
 
     # Make a version of V1-V3 which only have Swiss sequences for increased focus
     if clus in ["501YV1", "501YV2", "501YV3"]:
@@ -470,6 +480,8 @@ for clus in clus_to_run:
             copypath = swissvoc_clusterlist_output.replace(f"{build_nam}-swiss{clus}", "{}-swiss{}-{}".format(build_nam, clus, datetime.date.today().strftime("%Y-%m-%d")))
             copyfile(swissvoc_clusterlist_output, copypath)
             swiss_voc_meta.to_csv(swissvoc_out_meta_file,sep="\t",index=False)
+            copypath2 = swissvoc_clusterlist_output.replace("clusters/cluster_", "clusters/current/cluster_")
+            copyfile(swissvoc_clusterlist_output, copypath2)
 
     #######
     #print out the table
@@ -965,6 +977,10 @@ if "all" in clus_answer:
         if coun not in country_styles_all:
             print(f"WARNING!: {coun} has no color! Please add it to country_list_2 in colors_and_countries.py and re-run make web-data")
 
+if "all" in clus_answer:
+    for coun in country_styles_all:
+        if coun not in countries_plotted.keys():
+            print(f"Not plotted anymore: {coun}")
 
 ## Write out plotting information - only if all clusters have run
 if print_files and "all" in clus_answer:
@@ -1169,3 +1185,15 @@ if "all" in clus_answer:
 if do_usa_country:
     proposed_coun_to_plot, clus_keys = get_ordered_clusters_to_plot(clusters, True, "USA")
     plot_country_data(clusters, proposed_coun_to_plot, print_files, clus_keys, "USAClusters", True, "USA")
+    plot_country_data(clusters, proposed_coun_to_plot, print_files, clus_keys)
+
+#if all went well (script got to this point), and did an 'all' run, then print out an update!
+#from datetime import datetime
+update_json = { "lastUpdated" : str(datetime.datetime.now().isoformat()) }
+
+if print_files and "all" in clus_answer:
+    with open(web_data_folder+f'update.json', 'w') as fh:
+        json.dump(update_json, fh)
+
+
+

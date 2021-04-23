@@ -146,40 +146,40 @@ country_list_2 = [
     "Hungary",              #3
     "Turkey",               #4
     "South Africa",         #5
-    "United Arab Emirates", #6
-    "Jordan",               #7
+    "Curacao",              #6
+    "Kenya",                #7
     "Poland",               #8
     "Romania",              #9
     "Canada",               #10
     "India",                #11
-    "Egypt",                #12
+    "Bonaire",              #12
     "Ghana",                #13
     "Slovenia",             #14
     "Latvia",               #15
-    "Zambia",               #16
-    "Mozambique",           #17
-    "Nigeria",              #18
-    "Aruba",                #19
-    "North Macedonia"       #20
+    "Nigeria",              #16
+    "Aruba",                #17
+    "Austria",               #18
+    "Luxembourg",           #19
+    "Israel"                #20
 ]
 
 country_list_3 = [
-    'Austria',       #1
-    'Hong Kong',     #2
-    'Luxembourg',    #3
-    'Israel',        #4
-    'Finland',        #5
-    'Japan',        #6
-    'Croatia',        #7
-    'Philippines',        #8
-    'Bangladesh',        #9
-    'Mexico',        #10
-    'Cyprus',        #11
-    'South Korea',        #12
-    'Zimbabwe',        #13
-    'Bulgaria',        #14
-    'Indonesia'        #15
-    'Estonia'        #16
+    'Israel',   #1
+    'Finland',  #2
+    'Japan',    #3
+    'Croatia',  #4
+    'Bangladesh',  #5 
+    'Mexico',   #6
+    'South Korea',  #7
+    'Zimbabwe',     #8
+    'Bulgaria',     #9
+    'Indonesia',    #10
+    'Estonia',      #11
+    'Malawi',       #12
+    'Greece',       #13
+    'Chile',         #14
+    'Uganda',        #15
+    'Russia'        #16
             #17
             #18
             #19
