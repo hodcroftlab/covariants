@@ -177,9 +177,9 @@ country_list_3 = [
     'Estonia',      #11
     'Malawi',       #12
     'Greece',       #13
-    'Chile'         #14
-            #15
-            #16
+    'Chile',         #14
+    'Uganda',        #15
+    'Russia'        #16
             #17
             #18
             #19
