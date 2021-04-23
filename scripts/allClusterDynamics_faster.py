@@ -1185,7 +1185,6 @@ if "all" in clus_answer:
 if do_usa_country:
     proposed_coun_to_plot, clus_keys = get_ordered_clusters_to_plot(clusters, True, "USA")
     plot_country_data(clusters, proposed_coun_to_plot, print_files, clus_keys, "USAClusters", True, "USA")
-    plot_country_data(clusters, proposed_coun_to_plot, print_files, clus_keys)
 
 #if all went well (script got to this point), and did an 'all' run, then print out an update!
 #from datetime import datetime
