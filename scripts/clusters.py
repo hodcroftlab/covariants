@@ -646,10 +646,10 @@ clusters = {
             },
 
             #The rest of the birds
+            #variant
             "S677HRobin2": {'snps': [23592,7347], 'cluster_data': [],
             "nextstrain_build": True,
             "graphing": False,
-            "type": "variant",
             "usa_graph": True,
             "important": False,
             "country_info": [], 'col': "#804000", "display_name": "20G/S:677H.Robin2",
@@ -658,10 +658,10 @@ clusters = {
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Robin2?c=gt-S_677&f_country=USA"
             },
 
+            #variant
             "S677HYellowhammer": {'snps': [23592,9927], 'cluster_data': [],
             "nextstrain_build": True,
             "graphing": False,
-            "type": "variant",
             "usa_graph": True,
             "important": False,
             "country_info": [], 'col': "#ffcc00", "display_name": "20G/S:677H.Yellowhammer",
@@ -670,10 +670,10 @@ clusters = {
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Yellowhammer?c=gt-S_677&f_country=USA"
             },
 
+            #variant
             "S677RRoadrunner": {'snps': [23591,3449,6381], 'cluster_data': [],
             "nextstrain_build": True,
             "graphing": False,
-            "type": "variant",
             "usa_graph": True,
             "important": False,
             "country_info": [], 'col': "#ff8d3d", "display_name": "20G/S:677R.Roadrunner",
@@ -682,10 +682,10 @@ clusters = {
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677R.Roadrunner?c=gt-S_677&f_country=USA"
             },
 
+            #variant
             "S677HHeron": {'snps': [23592,28832,1591], 'cluster_data': [],
             "nextstrain_build": True,
             "graphing": False,
-            "type": "variant",
             "usa_graph": True,
             "important": False,
             "country_info": [], 'col': "#65beeb", "display_name": "20G/S:677H.Heron",
@@ -694,10 +694,10 @@ clusters = {
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Heron?c=gt-S_677&f_country=USA"
             },
 
+            #variant
             "S677HBluebird": {'snps': [23592,21647], 'cluster_data': [],
             "nextstrain_build": True,
             "graphing": False,
-            "type": "variant",
             "usa_graph": True,
             "important": False,
             "country_info": [], 'col': "#003366", "display_name": "20G/S:677H.Bluebird",
@@ -706,10 +706,10 @@ clusters = {
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Bluebird?c=gt-S_677&f_country=USA"
             },
 
+            #variant
             "S677HQuail": {'snps': [23592,23755,21756], 'cluster_data': [],
             "nextstrain_build": True,
             "graphing": False,
-            "type": "variant",
             "usa_graph": True,
             "important": False,
             "country_info": [], 'col': "#a3a3c2", "display_name": "20G/S:677H.Quail",
@@ -718,10 +718,10 @@ clusters = {
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Quail?c=gt-S_677&f_country=USA"
             },
 
+            #variant
             "S677HMockingbird": {'snps': [23592,21985], 'cluster_data': [],
             "nextstrain_build": True,
             "graphing": False,
-            "type": "variant",
             "usa_graph": True,
             "important": False,
             "country_info": [], 'col': "#b3d9ff", "display_name": "20G/S:677H.Mockingbird",
@@ -731,13 +731,13 @@ clusters = {
             }
 
             #B.1.617 - "Indian" in media
+            #variant
             #"20AS154": { 'snps': [23011, 23603, 22916], 'cluster_data': [], # S:484, 681, 452
             #"nextstrain_build": True,
             #"graphing": False,
-            #"type": "variant",
             #"usa_graph": False,
             #"important": False,
-            #"country_info": [], 'col': "#b3d9ff", "display_name": "20A/S:154K",
+            #"country_info": [], 'col': "#a3a3c2", "display_name": "20A/S:154K",
             #"type": "do_not_display",
             #"build_name": "20A.S.154K",
             #"nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.154K?c=gt-S_681,484,452"
