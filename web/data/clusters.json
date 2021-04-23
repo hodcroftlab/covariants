@@ -1453,6 +1453,21 @@
       "type": "mutation"
     },
     {
+      "build_name": "DanishCluster",
+      "cluster_data": [],
+      "col": "#ffffff",
+      "country_info": [],
+      "display_name": "DanishCluster",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/DanishCluster?f_country=Denmark",
+      "snps": [
+        15655
+      ],
+      "type": "do_not_display"
+    },
+    {
       "build_name": "S.L18",
       "cluster_data": [],
       "col": "#000066",
@@ -1545,6 +1560,128 @@
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/ORF1a.S3675?c=gt-ORF1a_3675",
       "snps": [],
       "type": "mutation"
+    },
+    {
+      "build_name": "S.Q677H.Robin2",
+      "cluster_data": [],
+      "col": "#804000",
+      "country_info": [],
+      "display_name": "20G/S:677H.Robin2",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Robin2?c=gt-S_677&f_country=USA",
+      "snps": [
+        23592,
+        7347
+      ],
+      "type": "do_not_display",
+      "usa_graph": true
+    },
+    {
+      "build_name": "S.Q677H.Yellowhammer",
+      "cluster_data": [],
+      "col": "#ffcc00",
+      "country_info": [],
+      "display_name": "20G/S:677H.Yellowhammer",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Yellowhammer?c=gt-S_677&f_country=USA",
+      "snps": [
+        23592,
+        9927
+      ],
+      "type": "do_not_display",
+      "usa_graph": true
+    },
+    {
+      "build_name": "S.Q677R.Roadrunner",
+      "cluster_data": [],
+      "col": "#ff8d3d",
+      "country_info": [],
+      "display_name": "20G/S:677R.Roadrunner",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677R.Roadrunner?c=gt-S_677&f_country=USA",
+      "snps": [
+        23591,
+        3449,
+        6381
+      ],
+      "type": "do_not_display",
+      "usa_graph": true
+    },
+    {
+      "build_name": "S.Q677H.Heron",
+      "cluster_data": [],
+      "col": "#65beeb",
+      "country_info": [],
+      "display_name": "20G/S:677H.Heron",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Heron?c=gt-S_677&f_country=USA",
+      "snps": [
+        23592,
+        28832,
+        1591
+      ],
+      "type": "do_not_display",
+      "usa_graph": true
+    },
+    {
+      "build_name": "S.Q677H.Bluebird",
+      "cluster_data": [],
+      "col": "#003366",
+      "country_info": [],
+      "display_name": "20G/S:677H.Bluebird",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Bluebird?c=gt-S_677&f_country=USA",
+      "snps": [
+        23592,
+        21647
+      ],
+      "type": "do_not_display",
+      "usa_graph": true
+    },
+    {
+      "build_name": "S.Q677H.Quail",
+      "cluster_data": [],
+      "col": "#a3a3c2",
+      "country_info": [],
+      "display_name": "20G/S:677H.Quail",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Quail?c=gt-S_677&f_country=USA",
+      "snps": [
+        23592,
+        23755,
+        21756
+      ],
+      "type": "do_not_display",
+      "usa_graph": true
+    },
+    {
+      "build_name": "S.Q677H.Mockingbird",
+      "cluster_data": [],
+      "col": "#b3d9ff",
+      "country_info": [],
+      "display_name": "20G/S:677H.Mockingbird",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Mockingbird?c=gt-S_677&f_country=USA",
+      "snps": [
+        23592,
+        21985
+      ],
+      "type": "do_not_display",
+      "usa_graph": true
     }
   ]
 }
