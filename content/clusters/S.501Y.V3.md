@@ -21,7 +21,7 @@ Announced in January 2021, 501Y.V3 originated and/or initially expanded in Brazi
 It has also been identified in travellers arriving in Japan from Brazil ([English Translation of Japanese NIID report](https://translate.google.com/translate?sl=ja&tl=en&u=https://www.niid.go.jp/niid/ja/diseases/ka/corona-virus/2019-ncov/10107-covid19-33.html), [Naveca et al., Virological](https://virological.org/t/phylogenetic-relationship-of-sars-cov-2-sequences-from-amazonas-with-emerging-brazilian-variants-harboring-mutations-e484k-and-n501y-in-the-spike-protein/585)).
 
 501Y.V3 is associated with multiple mutations in Spike. Notably: <AaMut mut={'S:N501Y'}/> (see <Mut name="S:N501"/>), <AaMut mut={'S:E484K'}/> (see <Var name="S:E484"/>).<br/>
-But also <AaMut mut={'S:L18F'}/>, <AaMut mut={'S:K417N'}/> and <AaMut mut={'S:H655Y'}/>. <br/>
+But also <AaMut mut={'S:L18F'}/>, <AaMut mut={'S:K417T'}/> and <AaMut mut={'S:H655Y'}/>. <br/>
 
 There is also a mutation in Nucleocapsid: <AaMut mut={'N:P80R'}/> and the deletion in <code>ORF1a</code>(<code>Nsp6</code>) at positions 3675-3677 (also seen in <Var name="20I/501Y.V1"/> and <Var name="20H/501Y.V2"/>).
 It does _not_ have the deletion at 69/70.
