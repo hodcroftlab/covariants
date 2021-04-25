@@ -9,12 +9,12 @@ import { Link } from 'src/components/Link/Link'
 ### S:E484
 This mutation is in the receptor binding domain (RBD), important to ACE2 binding and antibody recognition.
 
-- Mutations at <AaMut mut="S:E484"/> may significantly reduce convalescent serum neutralization ([Greaney et al., medRxiv](https://www.biorxiv.org/content/10.1101/2020.12.31.425021v1))
+- Mutations at <AaMut mut="S:E484"/> may significantly reduce convalescent serum neutralization ([Greaney et al., Cell Host & Microbe](https://pubmed.ncbi.nlm.nih.gov/33592168/))
 - There has been a case of reinfection associated with <AaMut mut={'S:E484K'}/>: a woman previously infected with a non-<AaMut mut={'S:E484K'}/> variant of SARS-CoV-2 was later reinfected with a virus carrying the <AaMut mut={'S:E484K'}/> mutation ([Nonaka et al., EID](https://wwwnc.cdc.gov/eid/article/27/5/21-0191_article))
 - In one study co-incubating SARS-CoV-2 with convalescent plasma, neutralization was completely escaped at day 73 due to an <AaMut mut={'S:E484K'}/> mutation ([Andreano et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2020.12.28.424451v1))
-- In another study co-incubating psueotyped virus with SARS-CoV-2 spike proteins and monocolonal antibodies, neutralization both by monoclonal antibodies and to convalescent sera was significantly reduced in viruses with `S:E484` mutations ([Liu et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.06.372037v1))
+- In another study co-incubating pseudotyped virus with SARS-CoV-2 spike proteins and monocolonal antibodies, neutralization both by monoclonal antibodies and to convalescent sera was significantly reduced in viruses with `S:E484` mutations ([Liu et al., Cell Host & Microbe](https://www.sciencedirect.com/science/article/pii/S1931312821000445))
 - May increase ACE2 binding, which may be further increased by the presence of <AaMut mut="S:N501Y"/>, and stabilized by the presence of <AaMut mut="S:K417N"/> ([Nelson et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.13.426558v1))
-- Tests in people vaccinated with the Moderna and Pfizer-BioNTech vaccines suggest <AaMut mut={'S:E484K'}/> and <AaMut mut={'S:N501Y'}/> individually, and both together in combination with <AaMut mut={'S:K417N'}/>, cause a small but significant reduction in neutralization ([Wang et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.15.426911v2))
+- Tests in people vaccinated with the Moderna and Pfizer-BioNTech vaccines suggest <AaMut mut={'S:E484K'}/> and <AaMut mut={'S:N501Y'}/> individually, and both together in combination with <AaMut mut={'S:K417N'}/>, cause a small but significant reduction in neutralization ([Wang et al., Nature](https://www.nature.com/articles/s41586-021-03324-6))
 - _In vitro_ evolution to select for greater ACE2 binding resulted in mutations <AaMut mut={'S:E484K'}/>, <AaMut mut={'S:N501Y'}/>, and <AaMut mut={'S:S477N'}/> to be among the first selected ([Zahradnik et al., bioRxiv](https://doi.org/10.1101/2021.01.06.425392)).
 
 ---
@@ -34,7 +34,7 @@ See a <Link href="/shared-mutations">list of shared mutations</Link> for these v
 
 ### 20B/S.484K
 Also known as `P.2`
-Announced in January 2021, emerging clade 20B/S.484K, is also thought to have originated and/or initially expanded in Brazil ([de Vasconcelos et al., medRxiv](https://www.medrxiv.org/content/10.1101/2020.12.23.20248598v1.article-info)).
+Announced in January 2021, emerging clade 20B/S.484K, is also thought to have originated and/or initially expanded in Brazil ([Voloch et al., medRxiv](https://jvi.asm.org/content/early/2021/02/25/JVI.00119-21)).
 
 Unlike the two variants above, it does *not* carry <AaMut mut={'S:N501Y'}/> in Spike.<br/>
 It does have mutations in Nucleocapsid: <AaMut mut={'N:A119S'}/> and <AaMut mut={'N:M234I'}/> and in <code>ORF1a</code>: <AaMut mut={'ORF1a:L3458V'}/> and <AaMut mut={'ORF1a:L3930F'}/>.
