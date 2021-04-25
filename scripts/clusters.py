@@ -848,4 +848,6 @@ clusters = {
             #"N220": {'snps': [28931], 'exclude_snps': [22226], 'cluster_data': [], "build_name": "N.A220V", "display_name": "N:A220V"}
             #"ORFTEN30": {'snps': [29644], 'exclude_snps': [22226], 'cluster_data': [], "build_name": "ORF10.V30", "display_name": "ORF10:V30"}
             #"N220re": {'snps': [28931,29644], 'exclude_snps': [22226], 'cluster_data': [], "build_name": "N.A220Vre", "display_name": "N:A220Vre"}
+
+            #"B1139" {'snps': [28486,28867], 'exclude_snps': [], 'cluster_data': [], "build_name": "B1139", "display_name": "B1139"}
             }
