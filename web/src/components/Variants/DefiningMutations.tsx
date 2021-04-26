@@ -6,6 +6,13 @@ import type { ClusterDatum } from 'src/io/getClusters'
 import { AminoacidMutationBadge, NucleotideMutationBadge } from 'src/components/Common/MutationBadge'
 import { Row, Col } from 'reactstrap'
 
+const Container = styled.div`
+  margin: 10px 5px;
+  padding: 0.65rem 1rem;
+  box-shadow: ${(props) => props.theme.shadows.light};
+  border-radius: 3px;
+`
+
 const Ul = styled.ul`
   list-style: none;
   padding: 0;
@@ -17,7 +24,11 @@ const Li = styled.li`
 `
 
 const H3 = styled.h3`
-  font-size: 1.33rem;
+  font-size: 1.2rem;
+`
+
+const H4 = styled.h4`
+  font-size: 1rem;
 `
 
 export function NoMutations() {
@@ -51,36 +62,44 @@ export function DefiningMutations({ cluster }: DefiningMutationsProps) {
   const hasSynonymous = cluster.mutations?.synonymous?.length && cluster.mutations?.synonymous?.length > 0
 
   return (
-    <Row noGutters>
-      <Col className="mx-2">
-        <H3>{'Nonsynonymous:'}</H3>
-        {hasNonsynonymous ? (
-          <Ul>
-            {cluster.mutations?.nonsynonymous?.map((mutation) => (
-              <Li key={`${mutation?.gene ?? ''}:${mutation.left ?? ''}${mutation.pos ?? ''}${mutation.right ?? ''}`}>
-                <AminoacidMutationBadge mutation={mutation} />
-              </Li>
-            ))}
-          </Ul>
-        ) : (
-          <NoMutations />
-        )}
-      </Col>
+    <Container>
+      <Row noGutters>
+        <Col>
+          <H3>{'Defining mutations'}</H3>
+        </Col>
+      </Row>
 
-      <Col className="mx-2">
-        <H3>{'Synonymous:'}</H3>
-        {hasSynonymous ? (
-          <Ul>
-            {cluster.mutations?.synonymous?.map((mutation) => (
-              <Li key={`${mutation.left ?? ''}${mutation.pos ?? ''}${mutation.right ?? ''}`}>
-                <NucleotideMutationBadge mutation={mutation} />
-              </Li>
-            ))}
-          </Ul>
-        ) : (
-          <NoMutations />
-        )}
-      </Col>
-    </Row>
+      <Row noGutters>
+        <Col className="my-2">
+          <H4>{'Nonsynonymous'}</H4>
+          {hasNonsynonymous ? (
+            <Ul>
+              {cluster.mutations?.nonsynonymous?.map((mutation) => (
+                <Li key={`${mutation?.gene ?? ''}:${mutation.left ?? ''}${mutation.pos ?? ''}${mutation.right ?? ''}`}>
+                  <AminoacidMutationBadge mutation={mutation} />
+                </Li>
+              ))}
+            </Ul>
+          ) : (
+            <NoMutations />
+          )}
+        </Col>
+
+        <Col className="my-2">
+          <H4>{'Synonymous'}</H4>
+          {hasSynonymous ? (
+            <Ul>
+              {cluster.mutations?.synonymous?.map((mutation) => (
+                <Li key={`${mutation.left ?? ''}${mutation.pos ?? ''}${mutation.right ?? ''}`}>
+                  <NucleotideMutationBadge mutation={mutation} />
+                </Li>
+              ))}
+            </Ul>
+          ) : (
+            <NoMutations />
+          )}
+        </Col>
+      </Row>
+    </Container>
   )
 }
