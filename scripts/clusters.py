@@ -312,6 +312,50 @@ clusters = {
                 }
             },
 
+            #variant  -- 'Indian' in media - B.1.617 (but narrower)
+            "20AS154": { 'snps': [23011, 23603, 22916], 'cluster_data': [], # S:484, 681, 452
+            "nextstrain_build": True,
+            "type": "do_not_display",
+            "graphing": False,
+            "important": True,
+            "country_info": [], 'col': "#a3a3c2", "display_name": "20A/S:154K",
+            "build_name": "20A.S.154K",
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.154K?c=gt-S_681,484,154",
+            "mutations":{
+                "nonsynonymous": [
+                    {'gene': 'S', 'left': 'E', 'pos': 154, 'right': 'K'},
+                    {'gene': 'S', 'left': 'L', 'pos': 452, 'right': 'R'},
+                    {'gene': 'S', 'left': 'E', 'pos': 484, 'right': 'Q'},
+                    {'gene': 'S', 'left': 'D', 'pos': 614, 'right': 'G'},
+                    {'gene': 'S', 'left': 'P', 'pos': 681, 'right': 'R'},
+                    {'gene': 'S', 'left': 'Q', 'pos': 1071, 'right': 'H'},
+                    {'gene': 'ORF1b', 'left': 'P', 'pos': 314, 'right': 'L'},
+                    {'gene': 'ORF1b', 'left': 'M', 'pos': 1352, 'right': 'I'},
+                    {'gene': 'ORF1b', 'left': 'K', 'pos': 2310, 'right': 'R'},
+                    {'gene': 'N', 'left': 'R', 'pos': 203, 'right': 'M'},
+                    {'gene': 'N', 'left': 'D', 'pos': 377, 'right': 'Y'},
+                    {'gene': 'ORF3a', 'left': 'S', 'pos': 26, 'right': 'L'},
+                    {'gene': 'ORF1a', 'left': 'T', 'pos': 1567, 'right': 'I'},
+                    {'gene': 'ORF1a', 'left': 'T', 'pos': 3646, 'right': 'A'},
+                    {'gene': 'ORF7a', 'left': 'V', 'pos': 82, 'right': 'A'}
+                ],
+                "synonymous": [
+                    {'left': 'C', 'pos': 241, 'right': 'T'},
+                    {'left': 'C', 'pos': 1498, 'right': 'T'},
+                    {'left': 'A', 'pos': 1807, 'right': 'G'},
+                    {'left': 'G', 'pos': 2659, 'right': 'A'},
+                    {'left': 'C', 'pos': 3037, 'right': 'T'},
+                    {'left': 'T', 'pos': 8593, 'right': 'C'},
+                    {'left': 'C', 'pos': 9593, 'right': 'T'},
+                    {'left': 'C', 'pos': 18171, 'right': 'T'},
+                    {'left': 'A', 'pos': 20724, 'right': 'G'},
+                    {'left': 'C', 'pos': 24748, 'right': 'T'},
+                    {'left': 'A', 'pos': 28699, 'right': 'G'},
+                    {'left': 'G', 'pos': 29543, 'right': 'T'}
+                ]
+                }
+            },
+
             "S439": {'snps': [7766, 22878], 'cluster_data': [],
             "nextstrain_build": True,
             "graphing": True,
@@ -729,19 +773,6 @@ clusters = {
             "build_name": "S.Q677H.Mockingbird",
             "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Mockingbird?c=gt-S_677&f_country=USA"
             }
-
-            #B.1.617 - "Indian" in media
-            #variant
-            #"20AS154": { 'snps': [23011, 23603, 22916], 'cluster_data': [], # S:484, 681, 452
-            #"nextstrain_build": True,
-            #"graphing": False,
-            #"usa_graph": False,
-            #"important": False,
-            #"country_info": [], 'col': "#a3a3c2", "display_name": "20A/S:154K",
-            #"type": "do_not_display",
-            #"build_name": "20A.S.154K",
-            #"nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.154K?c=gt-S_681,484,452"
-            #}
 
             #trying out 675
            # "S675": {'snps': [23586], 'cluster_data': [],
