@@ -38,14 +38,14 @@ fmt = "pdf"
 
 # Get diagnostics file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
 diag_file = "results/sequence-diagnostics.tsv"
-diag = pd.read_csv(diag_file, sep='\t', index_col=False)
+diag = pd.read_csv(diag_file, sep="\t", index_col=False)
 # Read metadata file
 input_meta = "data/metadata.tsv"
-meta = pd.read_csv(input_meta, sep='\t', index_col=False)
+meta = pd.read_csv(input_meta, sep="\t", index_col=False)
 
 # If seq there and date bad - exclude!
 for key, value in bad_seqs.items():
-    bad_seq = meta[meta['strain'].isin([key])]
+    bad_seq = meta[meta["strain"].isin([key])]
     if not bad_seq.empty and bad_seq.date.values[0] == value:
         meta.drop(bad_seq.index, inplace=True)
 
@@ -55,93 +55,104 @@ for key, value in bad_seqs.items():
 
 for clus in clusters:
     print(f"Preparing cluster {clus}")
-    snps = clusters[clus]['snps']
-    if 'snps2'  in clusters[clus]:
-        snps2 = clusters[clus]['snps2']
+    snps = clusters[clus]["snps"]
+    if "snps2" in clusters[clus]:
+        snps2 = clusters[clus]["snps2"]
     else:
         snps2 = []
-        clusters[clus]['snps2'] = snps2
-    if 'gaps'  in clusters[clus]:
-        gaps = clusters[clus]['gaps']
+        clusters[clus]["snps2"] = snps2
+    if "gaps" in clusters[clus]:
+        gaps = clusters[clus]["gaps"]
     else:
         gaps = []
-        clusters[clus]['gaps'] = gaps
-    if 'wanted_seqs' not in clusters[clus]:
-        clusters[clus]['wanted_seqs'] = []
+        clusters[clus]["gaps"] = gaps
+    if "wanted_seqs" not in clusters[clus]:
+        clusters[clus]["wanted_seqs"] = []
 
-#    if all([len(clusters[clus]['wanted_seqs'])>0 for clus in clusters if clus != "DanishCluster"]):
-#        print("wanted_seqs already present! Skipping getting them again!")
-#
-#    else:
+    #    if all([len(clusters[clus]['wanted_seqs'])>0 for clus in clusters if clus != "DanishCluster"]):
+    #        print("wanted_seqs already present! Skipping getting them again!")
+    #
+    #    else:
 
     # get the sequences that we want - which are 'part of the cluster:
     wanted_seqs = []
 
     for index, row in diag.iterrows():
-        strain = row['strain']
-        snplist = row['all_snps']
-        gaplist = row['gap_list']
+        strain = row["strain"]
+        snplist = row["all_snps"]
+        gaplist = row["gap_list"]
         if snps and not pd.isna(snplist):
-            intsnp = [int(x) for x in snplist.split(',')]
-            if all(x in intsnp for x in snps) or (all (x in intsnp for x in snps2) and len(snps2)!=0):
-                #if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
-                wanted_seqs.append(row['strain'])
-        #look for all locations in gap list
+            intsnp = [int(x) for x in snplist.split(",")]
+            if all(x in intsnp for x in snps) or (
+                all(x in intsnp for x in snps2) and len(snps2) != 0
+            ):
+                # if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
+                wanted_seqs.append(row["strain"])
+        # look for all locations in gap list
         elif gaps and not pd.isna(gaplist):
-            intgap = [int(x) for x in gaplist.split(',')]
+            intgap = [int(x) for x in gaplist.split(",")]
             if all(x in intgap for x in gaps):
-                wanted_seqs.append(row['strain'])
+                wanted_seqs.append(row["strain"])
 
     # If seq there and date bad - exclude!
     for key, value in bad_seqs.items():
-        bad_seq = meta[meta['strain'].isin([key])]
+        bad_seq = meta[meta["strain"].isin([key])]
         if not bad_seq.empty and bad_seq.date.values[0] == value and key in wanted_seqs:
             wanted_seqs.remove(key)
 
-
-    cluster_meta = meta[meta['strain'].isin(wanted_seqs)]
+    cluster_meta = meta[meta["strain"].isin(wanted_seqs)]
     # remove those with bad dates
-    cluster_meta = cluster_meta[cluster_meta['date'].apply(lambda x: len(x) == 10)]
-    cluster_meta = cluster_meta[cluster_meta['date'].apply(lambda x: 'XX' not in x)]
+    cluster_meta = cluster_meta[cluster_meta["date"].apply(lambda x: len(x) == 10)]
+    cluster_meta = cluster_meta[cluster_meta["date"].apply(lambda x: "XX" not in x)]
 
-    #re-set wanted_seqs
-    wanted_seqs = list(cluster_meta['strain']) 
-    observed_countries = [x for x in cluster_meta['country'].unique()]
+    # re-set wanted_seqs
+    wanted_seqs = list(cluster_meta["strain"])
+    observed_countries = [x for x in cluster_meta["country"].unique()]
 
-    print(len(wanted_seqs)) # how many are there?
+    print(len(wanted_seqs))  # how many are there?
 
     # What countries do sequences in the cluster come from?
     print(f"The cluster is found in: {observed_countries}")
 
-
     # Let's get some summary stats on number of sequences, first, and last, for each country.
-    country_info = pd.DataFrame(index=all_countries, columns=['first_seq', 'num_seqs', 'last_seq', "sept_aug_freq"])
+    country_info = pd.DataFrame(
+        index=all_countries,
+        columns=["first_seq", "num_seqs", "last_seq", "sept_aug_freq"],
+    )
     country_dates = {}
-    cutoffDate = datetime.datetime.strptime("2020-08-01", '%Y-%m-%d')
+    cutoffDate = datetime.datetime.strptime("2020-08-01", "%Y-%m-%d")
 
     for coun in all_countries:
         if coun in uk_countries:
-            temp_meta = cluster_meta[cluster_meta['division'].isin([coun])]
+            temp_meta = cluster_meta[cluster_meta["division"].isin([coun])]
         else:
-            temp_meta = cluster_meta[cluster_meta['country'].isin([coun])]
-        country_info.loc[coun].first_seq = temp_meta['date'].min()
-        country_info.loc[coun].last_seq = temp_meta['date'].max()
+            temp_meta = cluster_meta[cluster_meta["country"].isin([coun])]
+        country_info.loc[coun].first_seq = temp_meta["date"].min()
+        country_info.loc[coun].last_seq = temp_meta["date"].max()
         country_info.loc[coun].num_seqs = len(temp_meta)
 
-        country_dates[coun] = [datetime.datetime.strptime(dat, '%Y-%m-%d') for dat in temp_meta['date']]
+        country_dates[coun] = [
+            datetime.datetime.strptime(dat, "%Y-%m-%d") for dat in temp_meta["date"]
+        ]
 
         herbst_dates = [x for x in country_dates[coun] if x >= cutoffDate]
         if coun in uk_countries:
-            temp_meta = meta[meta['division'].isin([coun])]
+            temp_meta = meta[meta["division"].isin([coun])]
         else:
-            temp_meta = meta[meta['country'].isin([coun])]
-        all_dates = [datetime.datetime.strptime(x, '%Y-%m-%d') for x in temp_meta["date"] if len(x) is 10 and "-XX" not in x and datetime.datetime.strptime(x, '%Y-%m-%d') >= cutoffDate]
-        #country_info.loc[coun].sept_aug_freq = round(len(herbst_dates)/len(all_dates),2)
+            temp_meta = meta[meta["country"].isin([coun])]
+        all_dates = [
+            datetime.datetime.strptime(x, "%Y-%m-%d")
+            for x in temp_meta["date"]
+            if len(x) is 10
+            and "-XX" not in x
+            and datetime.datetime.strptime(x, "%Y-%m-%d") >= cutoffDate
+        ]
+        # country_info.loc[coun].sept_aug_freq = round(len(herbst_dates)/len(all_dates),2)
 
     print(f"\nCluster {clus}")
     print(country_info)
     print("\n\n")
-    clusters[clus]['country_info'] = copy.deepcopy(country_info)
+    clusters[clus]["country_info"] = copy.deepcopy(country_info)
 
     # Get counts per week for sequences in the cluster
     clus_week_counts = {}
@@ -149,11 +160,13 @@ for clus in clusters:
         counts_by_week = defaultdict(int)
         for dat in country_dates[coun]:
             #   counts_by_week[dat.isocalendar()[1]]+=1  #FOR ONE WEEK
-            #for TWO WEEKS 2 weeks
-            wk = (dat.isocalendar()[1]//2*2) #returns ISO calendar week -every 2 weeks
-            yr = (dat.isocalendar()[0])
+            # for TWO WEEKS 2 weeks
+            wk = (
+                dat.isocalendar()[1] // 2 * 2
+            )  # returns ISO calendar week -every 2 weeks
+            yr = dat.isocalendar()[0]
             yr_wk = (yr, wk)
-            counts_by_week[yr_wk]+=1  
+            counts_by_week[yr_wk] += 1
         clus_week_counts[coun] = counts_by_week
 
     # Get counts per week for sequences regardless of whether in the cluster or not - from week 20 only.
@@ -161,24 +174,26 @@ for clus in clusters:
     for coun in all_countries:
         counts_by_week = defaultdict(int)
         if coun in uk_countries:
-            temp_meta = meta[meta['division'].isin([coun])]
+            temp_meta = meta[meta["division"].isin([coun])]
         else:
-            temp_meta = meta[meta['country'].isin([coun])]
-        #week 20
+            temp_meta = meta[meta["country"].isin([coun])]
+        # week 20
         for ri, row in temp_meta.iterrows():
             dat = row.date
-            if len(dat) is 10 and "-XX" not in dat: # only take those that have real dates
-                dt = datetime.datetime.strptime(dat, '%Y-%m-%d')
-                #exclude sequences with identical dates & underdiverged
+            if (
+                len(dat) is 10 and "-XX" not in dat
+            ):  # only take those that have real dates
+                dt = datetime.datetime.strptime(dat, "%Y-%m-%d")
+                # exclude sequences with identical dates & underdiverged
                 if coun == "Ireland" and dat == "2020-09-22":
                     continue
                 #      wk = dt.isocalendar()[1] #for ONE WEEK
-                #for TWO WEEKS 2 weeks
-                wk = dt.isocalendar()[1]//2*2 #returns ISO calendar week
-                yr = (dt.isocalendar()[0])
+                # for TWO WEEKS 2 weeks
+                wk = dt.isocalendar()[1] // 2 * 2  # returns ISO calendar week
+                yr = dt.isocalendar()[0]
                 yr_wk = (yr, wk)
-                if dt >= datetime.datetime.strptime("2020-W20-1", '%G-W%V-%u'):
-                    counts_by_week[yr_wk]+=1
+                if dt >= datetime.datetime.strptime("2020-W20-1", "%G-W%V-%u"):
+                    counts_by_week[yr_wk] += 1
         total_week_counts[coun] = counts_by_week
 
     # Convert into dataframe
@@ -186,28 +201,28 @@ for clus in clusters:
     total_data = pd.DataFrame(data=total_week_counts)
 
     # sort
-    total_data=total_data.sort_index()
-    cluster_data=cluster_data.sort_index()
+    total_data = total_data.sort_index()
+    cluster_data = cluster_data.sort_index()
 
-    clusters[clus]['cluster_data'] = copy.deepcopy(cluster_data)
+    clusters[clus]["cluster_data"] = copy.deepcopy(cluster_data)
 
 print("\n\nYou can check on the country_info with: clusters['S477']['country_info'] ")
 
 clusters_tww = []
 for clus in clusters.keys():
-    c_i = clusters[clus]['country_info']
-    c_i[c_i['num_seqs'] > 10]
+    c_i = clusters[clus]["country_info"]
+    c_i[c_i["num_seqs"] > 10]
     print(f"Countries with >10 seqs in cluster {clus}:")
-    print("\t", ", ".join(c_i[c_i['num_seqs'] > 10].index))
-    if len(c_i[c_i['num_seqs'] > 10]) > 0 and clus != "DanishCluster":
+    print("\t", ", ".join(c_i[c_i["num_seqs"] > 10].index))
+    if len(c_i[c_i["num_seqs"] > 10]) > 0 and clus != "DanishCluster":
         clusters_tww.append(clus)
     print("")
 
-#fix cluster order in a list so it's reliable
+# fix cluster order in a list so it's reliable
 clus_keys = [x for x in clusters.keys() if x in clusters_tww]
 
 my_df = [clusters[x]["country_info"] for x in clus_keys]
-all_num_seqs = pd.concat([x.loc[:,"num_seqs"] for x in my_df],axis=1)
+all_num_seqs = pd.concat([x.loc[:, "num_seqs"] for x in my_df], axis=1)
 all_num_seqs.columns = clus_keys
 
 has10 = []
@@ -225,54 +240,60 @@ print("Countries who have more than 20 in any cluster:", has10_countries, "\n")
 print(all_num_seqs)
 
 
-
-
 orig_clus_keys = copy.deepcopy(clus_keys)
 
 # DO NOT PLOT 69 AS IT OVERLAPS WITH 439 AND 501!!!!
 # Do not plot 484 as it overlaps with 501Y.V2, possibly others
-clus_keys = [x for x in clus_keys if x not in ["S69","S484"]]
+clus_keys = [x for x in clus_keys if x not in ["S69", "S484"]]
 
 ############## Plot
 
 countries_to_plot = all_num_seqs[all_num_seqs.has_20 == "*"].index
-#countries_to_plot = ["France", "United Kingdom", "Netherlands",
+# countries_to_plot = ["France", "United Kingdom", "Netherlands",
 #    "Switzerland", "Belgium", "Spain", "Norway", "Ireland", "Denmark", "Czech Republic"]
-#Remember to adjust the number of axes if needed below....
+# Remember to adjust the number of axes if needed below....
 
 
 country_week = {clus: {} for clus in clusters}
 
-#fig, ax1 = plt.subplots(nrows=1,figsize=(10,7))
+# fig, ax1 = plt.subplots(nrows=1,figsize=(10,7))
 fs = 14
-rws = int(np.ceil((len(countries_to_plot)+1)/2))
-fig, axs = plt.subplots(nrows=rws, #len(countries_to_plot)+1, 
-    ncols=2, sharex=True,figsize=(9,11))
+rws = int(np.ceil((len(countries_to_plot) + 1) / 2))
+fig, axs = plt.subplots(
+    nrows=rws, ncols=2, sharex=True, figsize=(9, 11)  # len(countries_to_plot)+1,
+)
 
-min_week = datetime.datetime(2020,12,31)
-max_week = datetime.datetime(2020,1,1)
+min_week = datetime.datetime(2020, 12, 31)
+max_week = datetime.datetime(2020, 1, 1)
 week_as_dates = {}
 json_output = {}
-json_output['countries'] = {}
+json_output["countries"] = {}
 
-#for coun in [x for x in countries_to_plot]:
-for coun, ax in zip(countries_to_plot, fig.axes[1:]): #axs[1:]):
-    i=0
+# for coun in [x for x in countries_to_plot]:
+for coun, ax in zip(countries_to_plot, fig.axes[1:]):  # axs[1:]):
+    i = 0
     first_clus_count = []
     ptchs = []
 
-    json_output['countries'][coun] = {'week': {}, 'total_sequences': {} }
+    json_output["countries"][coun] = {"week": {}, "total_sequences": {}}
 
-    for clus in clus_keys:#clusters.keys():
-        cluster_data = clusters[clus]['cluster_data']
+    for clus in clus_keys:  # clusters.keys():
+        cluster_data = clusters[clus]["cluster_data"]
         if coun not in cluster_data:
-            i+=1
+            i += 1
             continue
-        week_as_date, cluster_count, total_count,\
-             unsmoothed_cluster_count, unsmoothed_total_count = non_zero_counts(cluster_data, total_data, coun)
-        week_as_date, cluster_count, total_count  = trim_last_data_point(week_as_date, cluster_count, total_count, frac=0.1, keep_count=10)
-        #print(f"week as date for {clus} {coun}:\n")
-        #print(week_as_date)
+        (
+            week_as_date,
+            cluster_count,
+            total_count,
+            unsmoothed_cluster_count,
+            unsmoothed_total_count,
+        ) = non_zero_counts(cluster_data, total_data, coun)
+        week_as_date, cluster_count, total_count = trim_last_data_point(
+            week_as_date, cluster_count, total_count, frac=0.1, keep_count=10
+        )
+        # print(f"week as date for {clus} {coun}:\n")
+        # print(week_as_date)
         mindat = min(week_as_date)
         if mindat < min_week:
             min_week = mindat
@@ -282,60 +303,75 @@ for coun, ax in zip(countries_to_plot, fig.axes[1:]): #axs[1:]):
 
         week_as_dates[coun] = week_as_date
 
-        json_output['countries'][coun][clusters[clus]['display_name']] = list(cluster_count)
+        json_output["countries"][coun][clusters[clus]["display_name"]] = list(
+            cluster_count
+        )
 
-        country_week[clus][coun] = cluster_count/total_count
+        country_week[clus][coun] = cluster_count / total_count
 
-        linesty = '-'
-        lab = clusters[clus]["display_name"] #f"{clus}"
+        linesty = "-"
+        lab = clusters[clus]["display_name"]  # f"{clus}"
         if i == 0:
             first_clus_count = [0] * len(cluster_count)
-        #if i == 1:
+        # if i == 1:
         #    linesty = ':'
-        cluster_count = first_clus_count + cluster_count #unindented
+        cluster_count = first_clus_count + cluster_count  # unindented
 
-        ax.fill_between(week_as_date, first_clus_count/total_count, cluster_count/total_count, facecolor=clusters[clus]['col'])
-        patch = mpatches.Patch(color=clusters[clus]['col'], label=lab)
+        ax.fill_between(
+            week_as_date,
+            first_clus_count / total_count,
+            cluster_count / total_count,
+            facecolor=clusters[clus]["col"],
+        )
+        patch = mpatches.Patch(color=clusters[clus]["col"], label=lab)
 
         ptchs.append(patch)
-        if i == len(clus_keys)-1: # len(clusters)-1 :
-            ax.fill_between(week_as_date, cluster_count/total_count, 1, facecolor=grey_color)
+        if i == len(clus_keys) - 1:  # len(clusters)-1 :
+            ax.fill_between(
+                week_as_date, cluster_count / total_count, 1, facecolor=grey_color
+            )
             patch = mpatches.Patch(color=grey_color, label=f"other")
             ptchs.append(patch)
-        #if i == 0:
-        first_clus_count = cluster_count # unindented
-        i+=1
-    json_output['countries'][coun]['week'] = [datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date]
-    json_output['countries'][coun]['total_sequences'] = [int(x) for x in total_count]
+        # if i == 0:
+        first_clus_count = cluster_count  # unindented
+        i += 1
+    json_output["countries"][coun]["week"] = [
+        datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date
+    ]
+    json_output["countries"][coun]["total_sequences"] = [int(x) for x in total_count]
 
-    ax.text(datetime.datetime(2020,6,1), 0.7, coun, fontsize=fs)
-    ax.tick_params(labelsize=fs*0.8)
-    #ax.set_ylabel('frequency')
-    #ax.legend(ncol=1, fontsize=fs*0.8, loc=2)
+    ax.text(datetime.datetime(2020, 6, 1), 0.7, coun, fontsize=fs)
+    ax.tick_params(labelsize=fs * 0.8)
+    # ax.set_ylabel('frequency')
+    # ax.legend(ncol=1, fontsize=fs*0.8, loc=2)
 
-json_output['plotting_dates'] = {}
-json_output['plotting_dates']["min_date"] = datetime.datetime.strftime(min_week, "%Y-%m-%d")
-json_output['plotting_dates']["max_date"] = datetime.datetime.strftime(max_week, "%Y-%m-%d")
+json_output["plotting_dates"] = {}
+json_output["plotting_dates"]["min_date"] = datetime.datetime.strftime(
+    min_week, "%Y-%m-%d"
+)
+json_output["plotting_dates"]["max_date"] = datetime.datetime.strftime(
+    max_week, "%Y-%m-%d"
+)
 
-fig.axes[0].legend(handles=ptchs, loc=3, fontsize=fs*0.7, ncol=3)
-fig.axes[0].axis('off')
+fig.axes[0].legend(handles=ptchs, loc=3, fontsize=fs * 0.7, ncol=3)
+fig.axes[0].axis("off")
 fig.autofmt_xdate(rotation=30)
 plt.show()
 plt.tight_layout()
 
-with open(cluster_tables_path+f'EUClusters_data.json', 'w') as fh:
-     json.dump(json_output, fh)
+with open(cluster_tables_path + f"EUClusters_data.json", "w") as fh:
+    json.dump(json_output, fh)
 
-plt.savefig(overall_trends_figs_path+f"EUClusters_compare.png")
+plt.savefig(overall_trends_figs_path + f"EUClusters_compare.png")
 
-plt.savefig(figure_path+f"EUClusters_compare.{fmt}")
-trends_path = figure_path+f"EUClusters_compare.{fmt}"
-copypath = trends_path.replace("compare", "compare-{}".format(datetime.date.today().strftime("%Y-%m-%d")))
+plt.savefig(figure_path + f"EUClusters_compare.{fmt}")
+trends_path = figure_path + f"EUClusters_compare.{fmt}"
+copypath = trends_path.replace(
+    "compare", "compare-{}".format(datetime.date.today().strftime("%Y-%m-%d"))
+)
 copyfile(trends_path, copypath)
 
 
-#for clus in clusters.keys():
+# for clus in clusters.keys():
 #    for coun in countries_to_plot:
 #        print(clus, coun, len(country_week[clus][coun]))
-
-

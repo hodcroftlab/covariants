@@ -11,20 +11,20 @@ for clus in clusters.keys():
 
     trim_cluster_data = cluster_data.fillna(0)
 
-    #percents[clus] = {}
+    # percents[clus] = {}
     prc = {}
 
     # this standaraizes so each value is the percent of sequences from that country
     # that are part of that cluster, that week.
     # This tries to adjust for major sample number differences bween countries
     for coun in countries_to_plot:
-        prc[coun] = trim_cluster_data[coun]/trim_tot_data[coun]
+        prc[coun] = trim_cluster_data[coun] / trim_tot_data[coun]
 
     percents[clus] = pd.DataFrame(data=prc)
 
 
 fs = 14
-fig, axs = plt.subplots(nrows=len(clusters), sharex=True,figsize=(12,10))
+fig, axs = plt.subplots(nrows=len(clusters), sharex=True, figsize=(12, 10))
 
 i = 0
 for clus, ax in zip(clusters.keys(), axs):
@@ -33,24 +33,32 @@ for clus, ax in zip(clusters.keys(), axs):
     percents_t = percents[clus].div(percents[clus].sum(axis=1), axis=0)
     percents_t = percents_t.transpose()
     percents_t = percents_t.fillna(0)
-    week_as_date = [ datetime.datetime.strptime("2020-W{}-1".format(x), '%G-W%V-%u')
-                     for x in percents[clus].index ]
+    week_as_date = [
+        datetime.datetime.strptime("2020-W{}-1".format(x), "%G-W%V-%u")
+        for x in percents[clus].index
+    ]
 
-    colors = [country_styles[co]['c'] for co in percents_t.index]
+    colors = [country_styles[co]["c"] for co in percents_t.index]
 
-    ax.stackplot(week_as_date, percents_t.values.tolist(), labels=percents_t.index, colors=colors)
-    ax.text(datetime.datetime(2020,5,25), sum(list(ax.get_ylim()))/2, clusters[clus]['display_name'])
+    ax.stackplot(
+        week_as_date, percents_t.values.tolist(), labels=percents_t.index, colors=colors
+    )
+    ax.text(
+        datetime.datetime(2020, 5, 25),
+        sum(list(ax.get_ylim())) / 2,
+        clusters[clus]["display_name"],
+    )
     if i == 0:
         handles, labels = ax.get_legend_handles_labels()
-        ax.legend(handles = handles, ncol=2, loc=2)
+        ax.legend(handles=handles, ncol=2, loc=2)
 
-    i+=1
+    i += 1
 
 fig.autofmt_xdate(rotation=30)
 plt.show()
 plt.tight_layout()
 
-plt.savefig(figure_path+f"clusters_compare_country.{fmt}")
+plt.savefig(figure_path + f"clusters_compare_country.{fmt}")
 
 #    for coun in countries_to_plot:
 #
@@ -59,7 +67,5 @@ plt.savefig(figure_path+f"clusters_compare_country.{fmt}")
 #                     for x in percents[clus].index[with_data] ]
 #    clus_cnt = percents[clus][coun][with_data] * 100
 
-    #percents[clus].index
-    #percents[clus]
-
-
+# percents[clus].index
+# percents[clus]

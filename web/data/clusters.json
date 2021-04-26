@@ -899,6 +899,179 @@
       "type": "variant"
     },
     {
+      "build_name": "20A.S.154K",
+      "cluster_data": [],
+      "col": "#a3a3c2",
+      "country_info": [],
+      "display_name": "20A/S:154K",
+      "graphing": false,
+      "important": true,
+      "mutations": {
+        "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "E",
+            "pos": 154,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 452,
+            "right": "R"
+          },
+          {
+            "gene": "S",
+            "left": "E",
+            "pos": 484,
+            "right": "Q"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 681,
+            "right": "R"
+          },
+          {
+            "gene": "S",
+            "left": "Q",
+            "pos": 1071,
+            "right": "H"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "P",
+            "pos": 314,
+            "right": "L"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "M",
+            "pos": 1352,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "K",
+            "pos": 2310,
+            "right": "R"
+          },
+          {
+            "gene": "N",
+            "left": "R",
+            "pos": 203,
+            "right": "M"
+          },
+          {
+            "gene": "N",
+            "left": "D",
+            "pos": 377,
+            "right": "Y"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "S",
+            "pos": 26,
+            "right": "L"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 1567,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 3646,
+            "right": "A"
+          },
+          {
+            "gene": "ORF7a",
+            "left": "V",
+            "pos": 82,
+            "right": "A"
+          }
+        ],
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 241,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 1498,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 1807,
+            "right": "G"
+          },
+          {
+            "left": "G",
+            "pos": 2659,
+            "right": "A"
+          },
+          {
+            "left": "C",
+            "pos": 3037,
+            "right": "T"
+          },
+          {
+            "left": "T",
+            "pos": 8593,
+            "right": "C"
+          },
+          {
+            "left": "C",
+            "pos": 9593,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 18171,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 20724,
+            "right": "G"
+          },
+          {
+            "left": "C",
+            "pos": 24748,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 28699,
+            "right": "G"
+          },
+          {
+            "left": "G",
+            "pos": 29543,
+            "right": "T"
+          }
+        ]
+      },
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.154K?c=gt-S_681,484,154",
+      "snps": [
+        23011,
+        23603,
+        22916
+      ],
+      "type": "do_not_display"
+    },
+    {
       "build_name": "S.N439K",
       "cluster_data": [],
       "col": "#0000ff",

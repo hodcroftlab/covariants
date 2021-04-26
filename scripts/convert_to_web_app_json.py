@@ -37,18 +37,23 @@ def wrap_cluster_data(country_data_aos):
     country_data_aos_wrapped = []
     cluster_names = set()
     for country_data in country_data_aos:
-        week = country_data['week']
-        total_sequences = country_data['total_sequences']
+        week = country_data["week"]
+        total_sequences = country_data["total_sequences"]
 
         cluster_counts = country_data
-        cluster_counts.pop('week')
-        cluster_counts.pop('total_sequences')
+        cluster_counts.pop("week")
+        cluster_counts.pop("total_sequences")
 
         for cluster_name in cluster_counts:
             cluster_names.add(cluster_name)
 
         country_data_aos_wrapped.append(
-            {'week': week, 'total_sequences': total_sequences, 'cluster_counts': cluster_counts})
+            {
+                "week": week,
+                "total_sequences": total_sequences,
+                "cluster_counts": cluster_counts,
+            }
+        )
     return country_data_aos_wrapped, list(cluster_names)
 
 
@@ -61,8 +66,12 @@ def convert_per_country_data(json_input):
     distributions = []
     for (country, country_data) in countries.items():
         country_data_aos = soa_to_aos(country_data)
-        country_data_aos_wrapped, cluster_names_new = wrap_cluster_data(country_data_aos)
-        distributions.append({'country': country, 'distribution': country_data_aos_wrapped})
+        country_data_aos_wrapped, cluster_names_new = wrap_cluster_data(
+            country_data_aos
+        )
+        distributions.append(
+            {"country": country, "distribution": country_data_aos_wrapped}
+        )
         cluster_names = sorted(list(set(cluster_names_new + cluster_names)))
 
     return cluster_names, distributions, min_date, max_date
@@ -104,7 +113,9 @@ def interpolate_per_cluster_data(cluster_data):
 
     # Add rows for missing weeks. Fill values of the new rows wih NaN.
     old_index = df.index
-    new_index = pd.date_range(old_index[0], old_index[-1], freq='7D').strftime('%Y-%m-%d')
+    new_index = pd.date_range(old_index[0], old_index[-1], freq="7D").strftime(
+        "%Y-%m-%d"
+    )
     df_reindexed = df.reindex(new_index, fill_value=np.NaN)
 
     df_interp = df_reindexed.interpolate(method="linear")
@@ -113,7 +124,9 @@ def interpolate_per_cluster_data(cluster_data):
     # We want a closed diff: only rows that are not in the original data, plus boundaries for every span of missing data
     index_interp = diff_left_closed(new_index.tolist(), old_index.tolist(), closed=True)
 
-    index_interp_open = diff_left_closed(new_index.tolist(), old_index.tolist(), closed=False)
+    index_interp_open = diff_left_closed(
+        new_index.tolist(), old_index.tolist(), closed=False
+    )
 
     df_result = df_interp
     df_result["interp"] = False
@@ -125,41 +138,53 @@ def interpolate_per_cluster_data(cluster_data):
     # Make a "week" column from index
     df_result["week"] = df_result.index
 
-    return df_result.replace({np.nan: None}).to_dict('list')
+    return df_result.replace({np.nan: None}).to_dict("list")
 
 
 def update_per_cluster_distribution(cluster_data, country, distribution):
     cluster_data_aos = soa_to_aos(cluster_data)
 
     for cluster_datum in cluster_data_aos:
-        week = cluster_datum['week']
-        cluster_sequences = cluster_datum['cluster_sequences']
-        total_sequences = cluster_datum['total_sequences']
-        interp = cluster_datum['interp']
-        orig = cluster_datum['orig']
+        week = cluster_datum["week"]
+        cluster_sequences = cluster_datum["cluster_sequences"]
+        total_sequences = cluster_datum["total_sequences"]
+        interp = cluster_datum["interp"]
+        orig = cluster_datum["orig"]
 
         frequency = 0
         if total_sequences != 0:
             frequency = cluster_sequences / total_sequences
 
         if len(distribution) == 0:
-            distribution.append({'week': week, 'frequencies': {country: frequency}, 'interp': {country: interp},
-                                 'orig': {country: orig}})
+            distribution.append(
+                {
+                    "week": week,
+                    "frequencies": {country: frequency},
+                    "interp": {country: interp},
+                    "orig": {country: orig},
+                }
+            )
         else:
             has_this_week = False
             for dist in distribution:
-                if week == dist['week']:
+                if week == dist["week"]:
                     has_this_week = True
 
             if not has_this_week:
-                distribution.append({'week': week, 'frequencies': {country: frequency}, 'interp': {country: interp},
-                                     'orig': {country: orig}})
+                distribution.append(
+                    {
+                        "week": week,
+                        "frequencies": {country: frequency},
+                        "interp": {country: interp},
+                        "orig": {country: orig},
+                    }
+                )
             else:
                 for dist in distribution:
-                    if week == dist['week']:
-                        dist['frequencies'][country] = frequency
-                        dist['interp'][country] = interp
-                        dist['orig'][country] = orig
+                    if week == dist["week"]:
+                        dist["frequencies"][country] = frequency
+                        dist["interp"][country] = interp
+                        dist["orig"][country] = orig
 
 
 def convert_per_cluster_data(clusters):
@@ -170,21 +195,27 @@ def convert_per_cluster_data(clusters):
         if cluster["type"] == "do_not_display":
             continue
 
-        display_name = cluster['display_name']
-        build_name = cluster['build_name']
+        display_name = cluster["display_name"]
+        build_name = cluster["build_name"]
 
         distribution = []
-        with open(os.path.join(cluster_tables_path, f"{build_name}_data.json"), "r") as f:
+        with open(
+            os.path.join(cluster_tables_path, f"{build_name}_data.json"), "r"
+        ) as f:
             json_input = json.load(f)
 
             for (country, cluster_data) in json_input.items():
-                per_cluster_data_output["country_names"] = \
-                    sorted(list(set([country] + per_cluster_data_output["country_names"])))
+                per_cluster_data_output["country_names"] = sorted(
+                    list(set([country] + per_cluster_data_output["country_names"]))
+                )
                 cluster_data_interp = interpolate_per_cluster_data(cluster_data)
-                update_per_cluster_distribution(cluster_data_interp, country, distribution)
+                update_per_cluster_distribution(
+                    cluster_data_interp, country, distribution
+                )
 
         per_cluster_data_output["distributions"].append(
-            {'cluster': display_name, 'distribution': distribution})
+            {"cluster": display_name, "distribution": distribution}
+        )
 
     return per_cluster_data_output, per_cluster_data_output_interp
 
@@ -194,13 +225,13 @@ def convert_per_cluster_data(clusters):
 cluster_url_params = {
     "S:N501": "",  # don't have Europe filter
     "S:H69-": "c=gt-S_69,501,453",  # color by mutations, no Europe filter
-    "S:Y453F": "c=gt-S_453&f_region=Europe"  # color by mutations, Europe filter
+    "S:Y453F": "c=gt-S_453&f_region=Europe",  # color by mutations, Europe filter
 }
 
 
 def get_build_url(cluster):
-    build_name = cluster['build_name']
-    display_name = cluster['display_name']
+    build_name = cluster["build_name"]
+    display_name = cluster["display_name"]
 
     url_params = "f_region=Europe"
     try:
@@ -214,20 +245,23 @@ def get_build_url(cluster):
 def add_cluster_properties(cluster):
     result = {}
     result.update(cluster)
-    result.update({'build_url': get_build_url(cluster)})
+    result.update({"build_url": get_build_url(cluster)})
     return result
 
 
 def mutation_string_to_object(mutation):
-    match = re.search('^(?P<gene>.*:)?(?P<left>[*.A-Z-]{0,1})(?P<pos>(\d)*)(?P<right>[*.A-Z-]{0,1})$', mutation)
+    match = re.search(
+        "^(?P<gene>.*:)?(?P<left>[*.A-Z-]{0,1})(?P<pos>(\d)*)(?P<right>[*.A-Z-]{0,1})$",
+        mutation,
+    )
 
     def none_if_empty(x):
         return None if len(x) == 0 else x
 
-    gene = none_if_empty(match.group('gene')).replace(":", "")
-    left = none_if_empty(match.group('left'))
-    pos = int(match.group('pos'))
-    right = none_if_empty(match.group('right'))
+    gene = none_if_empty(match.group("gene")).replace(":", "")
+    left = none_if_empty(match.group("left"))
+    pos = int(match.group("pos"))
+    right = none_if_empty(match.group("right"))
 
     return {
         "gene": gene,
@@ -260,7 +294,9 @@ def convert_mutation_comparison(mutation_comparison):
 
     # Matrix [ variants x mutation_positions ],
     # containing mutation string if there is a mutation at a given position in a given variant, and NaN otherwise
-    mutation_presence = pd.DataFrame(None, index=all_mutations_pos, columns=all_variants)
+    mutation_presence = pd.DataFrame(
+        None, index=all_mutations_pos, columns=all_variants
+    )
     for variant, variant_data in mutation_comparison.items():
         for mut in variant_data["nonsynonymous"]:
             mut_obj = mutation_string_to_object(mut)
@@ -296,15 +332,18 @@ def convert_mutation_comparison(mutation_comparison):
     # Convert individual mutations into a format convenient for web app
     individual = individual.sort_index(ascending=True)
     individual = {k: v.dropna().tolist() for k, v in individual.T.iterrows()}
-    individual = pd.DataFrame.from_dict(individual, orient='index').T
-    individual = [{"index": k, "mutations": v.tolist()} for k, v in individual.iterrows()]
+    individual = pd.DataFrame.from_dict(individual, orient="index").T
+    individual = [
+        {"index": k, "mutations": v.tolist()} for k, v in individual.iterrows()
+    ]
 
     return {
         "variants": all_variants,
         "shared_by_pos": shared_to_json(shared_by_pos),
         "shared_by_commonness": shared_to_json(shared_by_commonness),
-        "individual": individual
+        "individual": individual,
     }
+
 
 def convert_region_data(region_name, region_input_file):
     if region_input_file is None:
@@ -313,46 +352,52 @@ def convert_region_data(region_name, region_input_file):
             "cluster_names": [],
             "distributions": [],
             "min_date": None,
-            "max_date": None
+            "max_date": None,
         }
 
     with open(os.path.join(cluster_tables_path, region_input_file), "r") as f:
         json_input = json.load(f)
 
-    cluster_names, distributions, min_date, max_date = convert_per_country_data(json_input)
+    cluster_names, distributions, min_date, max_date = convert_per_country_data(
+        json_input
+    )
 
     return {
         "region": region_name,
         "cluster_names": cluster_names,
         "distributions": distributions,
         "min_date": min_date,
-        "max_date": max_date
+        "max_date": max_date,
     }
 
 
 REGIONS = {
     "World": "EUClusters_data.json",
     "United States": "USAClusters_data.json",
-    "Switzerland": None  # Will be shown as a disabled "teaser" / "Coming soon!" button in the UI
+    "Switzerland": None,  # Will be shown as a disabled "teaser" / "Coming soon!" button in the UI
 }
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     os.makedirs(output_path, exist_ok=True)
 
     regions_data = {"regions": []}
     for region_name, region_input_file in REGIONS.items():
-        regions_data["regions"].append(convert_region_data(region_name, region_input_file))
+        regions_data["regions"].append(
+            convert_region_data(region_name, region_input_file)
+        )
 
     with open(os.path.join(output_path, "perCountryData.json"), "w") as fh:
         json.dump(regions_data, fh, indent=2, sort_keys=True)
 
-    per_cluster_data_output, per_cluster_data_output_interp = convert_per_cluster_data(clusters)
+    per_cluster_data_output, per_cluster_data_output_interp = convert_per_cluster_data(
+        clusters
+    )
     with open(os.path.join(output_path, "perClusterData.json"), "w") as fh:
         json.dump(per_cluster_data_output, fh, indent=2, sort_keys=True)
 
     clusters = [cluster for _, cluster in clusters.items()]
     with open(os.path.join(output_path, "clusters.json"), "w") as fh:
-        json.dump({'clusters': clusters}, fh, indent=2, sort_keys=True)
+        json.dump({"clusters": clusters}, fh, indent=2, sort_keys=True)
 
     mutation_comparison_output = convert_mutation_comparison(mutation_comparison)
     with open(os.path.join(output_path, "mutationComparison.json"), "w") as fh:
@@ -361,5 +406,7 @@ if __name__ == '__main__':
     with open(os.path.join(output_path, "countryStyles.json"), "w") as fh:
         json.dump(country_styles_all, fh, indent=2, sort_keys=True)
 
-    copyfile(os.path.join(cluster_tables_path, 'perVariant_countries_toPlot.json'),
-             os.path.join(output_path, "countriesToPlot.json"))
+    copyfile(
+        os.path.join(cluster_tables_path, "perVariant_countries_toPlot.json"),
+        os.path.join(output_path, "countriesToPlot.json"),
+    )
