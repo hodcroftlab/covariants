@@ -328,7 +328,7 @@ clusters = {
             ],
         },
     },
-    # variant  -- 'Indian' in media - B.1.617 (but narrower)
+    # variant  -- part of 'Indian' in media - B.1.617.1 
     "20AS154": {
         "snps": [23011, 23603, 22916],
         "cluster_data": [],  # S:484, 681, 452

@@ -182,8 +182,8 @@ country_list_3 = [
     "Chile",  # 14
     "Uganda",  # 15
     "Russia"  # 16
-    # 17
-    # 18
+    "Qatar",    # 17
+    "North Macdeonia"   # 18
     # 19
     # 20
 ]
