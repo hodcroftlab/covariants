@@ -8,7 +8,9 @@ Converts cluster data to a format suitable for consumption by the web app
 import json
 import os
 import re
+from datetime import datetime
 from shutil import copyfile
+from time import strptime, strftime
 
 import numpy as np
 import pandas as pd
@@ -377,17 +379,47 @@ REGIONS = {
     "Switzerland": None,  # Will be shown as a disabled "teaser" / "Coming soon!" button in the UI
 }
 
+
+def parse_date(s: str) -> datetime:
+    return datetime.strptime(s, "%Y-%m-%d")
+
+
+def format_date(dt: datetime) -> str:
+    return datetime.strftime(dt, "%Y-%m-%d")
+
+
+def compare_dates(left_date: str, right_date: str, comp):
+    left_date = parse_date(left_date)
+    right_date = parse_date(right_date)
+    dt = comp(left_date, right_date)
+    return format_date(dt)
+
+
 if __name__ == "__main__":
     os.makedirs(output_path, exist_ok=True)
 
     regions_data = {"regions": []}
+    min_date = format_date(datetime(3000, 1, 1))
+    max_date = format_date(datetime(1000, 1, 1))
     for region_name, region_input_file in REGIONS.items():
-        regions_data["regions"].append(
-            convert_region_data(region_name, region_input_file)
-        )
+        region_data = convert_region_data(region_name, region_input_file)
+        if region_data['min_date'] is not None and region_data['max_date'] is not None:
+            min_date = compare_dates(min_date, region_data['min_date'], min)
+            max_date = compare_dates(max_date, region_data['max_date'], max)
+        regions_data["regions"].append(region_data)
 
     with open(os.path.join(output_path, "perCountryData.json"), "w") as fh:
         json.dump(regions_data, fh, indent=2, sort_keys=True)
+
+    r = pd.date_range(start=min_date, end=max_date, freq='M')
+    print(r)
+    
+    params = {
+        "min_date": min_date,
+        "max_date": max_date,
+    }
+    with open(os.path.join(output_path, "params.json"), "w") as fh:
+        json.dump(params, fh, indent=2, sort_keys=True)
 
     per_cluster_data_output, per_cluster_data_output_interp = convert_per_cluster_data(
         clusters
