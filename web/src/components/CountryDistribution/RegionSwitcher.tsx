@@ -17,13 +17,17 @@ export const RegionSwitcherHeading = styled.h4`
 
 export const RegionButtonsContainer = styled.span`
   display: flex;
+  flex-wrap: wrap;
 `
 
 export const RegionButtonWrapper = styled.span`
+  display: flex;
   flex-direction: column;
+  margin: auto;
 `
 
 export const RegionButton = styled(Button)`
+  flex-wrap: wrap;
   flex: 0;
   width: 175px;
   margin: 5px 5px;
