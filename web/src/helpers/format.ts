@@ -6,6 +6,12 @@ export const formatInteger = (value: number) => value.toFixed(0)
 
 export const formatDate = (date: number) => DateTime.fromSeconds(date).toISODate()
 
+export const formatDateBiweekly = (weekTimestamp: number) => {
+  const end = DateTime.fromSeconds(weekTimestamp)
+  const begin = end.minus({ weeks: 2 })
+  return `${begin.toFormat('dd MMM yyyy')} - ${end.toFormat('dd MMM yyyy')}`
+}
+
 export const formatDateHumanely = (date: number) => DateTime.fromSeconds(date).toFormat('MMM yyyy').replace(' ', '\n')
 
 export function dateStringToSeconds(date: string): number {
