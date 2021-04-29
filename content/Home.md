@@ -1,7 +1,7 @@
 import { HomeImages } from 'src/components/Home/HomeImages'
 import { Link } from 'src/components/Link/Link'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
-import NameTable from 'content/NameTable.md'
+import { NameTable } from 'src/components/Common/NameTable'
 
 
 Click on a variant button to start exploring!
