@@ -184,9 +184,51 @@
           },
           {
             "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
+          {
+            "gene": "S",
             "left": "P",
             "pos": 681,
             "right": "H"
+          },
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 716,
+            "right": "I"
+          },
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 982,
+            "right": "A"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 1118,
+            "right": "H"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 1001,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "A",
+            "pos": 1708,
+            "right": "D"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "I",
+            "pos": 2230,
+            "right": "T"
           },
           {
             "gene": "ORF1a",
@@ -208,6 +250,12 @@
           },
           {
             "gene": "N",
+            "left": "D",
+            "pos": 3,
+            "right": "L"
+          },
+          {
+            "gene": "N",
             "left": "R",
             "pos": 203,
             "right": "K"
@@ -219,10 +267,34 @@
             "right": "R"
           },
           {
+            "gene": "N",
+            "left": "S",
+            "pos": 235,
+            "right": "F"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "P",
+            "pos": 314,
+            "right": "L"
+          },
+          {
             "gene": "ORF8",
             "left": "Q",
             "pos": 27,
             "right": "*"
+          },
+          {
+            "gene": "ORF8",
+            "left": "R",
+            "pos": 52,
+            "right": "I"
+          },
+          {
+            "gene": "ORF8",
+            "left": "Y",
+            "pos": 73,
+            "right": "C"
           }
         ],
         "synonymous": [
@@ -332,9 +404,39 @@
           },
           {
             "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
+          {
+            "gene": "S",
             "left": "A",
             "pos": 701,
             "right": "V"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "Q",
+            "pos": 57,
+            "right": "H"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 265,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "K",
+            "pos": 2655,
+            "right": "N"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "K",
+            "pos": 3353,
+            "right": "R"
           },
           {
             "gene": "ORF1a",
@@ -359,6 +461,12 @@
             "left": "T",
             "pos": 205,
             "right": "I"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "P",
+            "pos": 314,
+            "right": "L"
           },
           {
             "gene": "E",
@@ -417,6 +525,30 @@
           },
           {
             "gene": "S",
+            "left": "T",
+            "pos": 20,
+            "right": "N"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 26,
+            "right": "S"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 138,
+            "right": "Y"
+          },
+          {
+            "gene": "S",
+            "left": "R",
+            "pos": 190,
+            "right": "S"
+          },
+          {
+            "gene": "S",
             "left": "K",
             "pos": 417,
             "right": "T"
@@ -435,9 +567,45 @@
           },
           {
             "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
+          {
+            "gene": "S",
             "left": "H",
             "pos": 655,
             "right": "Y"
+          },
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 1027,
+            "right": "I"
+          },
+          {
+            "gene": "S",
+            "left": "V",
+            "pos": 1176,
+            "right": "F"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "S",
+            "pos": 253,
+            "right": "P"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 1188,
+            "right": "L"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "K",
+            "pos": 1795,
+            "right": "Q"
           },
           {
             "gene": "ORF1a",
@@ -474,6 +642,24 @@
             "left": "G",
             "pos": 204,
             "right": "R"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "P",
+            "pos": 314,
+            "right": "L"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "E",
+            "pos": 1264,
+            "right": "D"
+          },
+          {
+            "gene": "ORF8",
+            "left": "E",
+            "pos": 92,
+            "right": "K"
           }
         ],
         "synonymous": [
@@ -567,6 +753,12 @@
             "right": "R"
           },
           {
+            "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
+          {
             "gene": "ORF1a",
             "left": "I",
             "pos": 4205,
@@ -652,9 +844,21 @@
           },
           {
             "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
+          {
+            "gene": "S",
             "left": "A",
             "pos": 701,
             "right": "V"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "P",
+            "pos": 314,
+            "right": "L"
           },
           {
             "gene": "ORF1b",
@@ -667,6 +871,24 @@
             "left": "P",
             "pos": 42,
             "right": "L"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "Q",
+            "pos": 57,
+            "right": "H"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 265,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "L",
+            "pos": 3201,
+            "right": "P"
           },
           {
             "gene": "ORF1a",
@@ -749,6 +971,12 @@
         "nonsynonymous": [
           {
             "gene": "S",
+            "left": "Q",
+            "pos": 52,
+            "right": "R"
+          },
+          {
+            "gene": "S",
             "left": "A",
             "pos": 67,
             "right": "V"
@@ -779,6 +1007,12 @@
           },
           {
             "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
+          {
+            "gene": "S",
             "left": "Q",
             "pos": 677,
             "right": "H"
@@ -788,6 +1022,12 @@
             "left": "F",
             "pos": 888,
             "right": "L"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "P",
+            "pos": 314,
+            "right": "F"
           },
           {
             "gene": "N",
@@ -808,6 +1048,24 @@
             "right": "G"
           },
           {
+            "gene": "N",
+            "left": "T",
+            "pos": 205,
+            "right": "I"
+          },
+          {
+            "gene": "M",
+            "left": "I",
+            "pos": 82,
+            "right": "T"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 2007,
+            "right": "I"
+          },
+          {
             "gene": "ORF1a",
             "left": "S",
             "pos": 3675,
@@ -823,6 +1081,18 @@
             "gene": "ORF1a",
             "left": "F",
             "pos": 3677,
+            "right": "-"
+          },
+          {
+            "gene": "E",
+            "left": "L",
+            "pos": 21,
+            "right": "F"
+          },
+          {
+            "gene": "ORF6",
+            "left": "F",
+            "pos": 2,
             "right": "-"
           }
         ],
@@ -1288,6 +1558,12 @@
         "nonsynonymous": [
           {
             "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
+          {
+            "gene": "S",
             "left": "Q",
             "pos": 677,
             "right": "H"
@@ -1318,9 +1594,21 @@
           },
           {
             "gene": "ORF1a",
+            "left": "M",
+            "pos": 2606,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
             "left": "L",
             "pos": 3352,
             "right": "F"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "P",
+            "pos": 314,
+            "right": "L"
           },
           {
             "gene": "ORF1b",
@@ -1333,6 +1621,24 @@
             "left": "R",
             "pos": 2613,
             "right": "C"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "Q",
+            "pos": 57,
+            "right": "H"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "G",
+            "pos": 172,
+            "right": "V"
+          },
+          {
+            "gene": "ORF8",
+            "left": "S",
+            "pos": 24,
+            "right": "L"
           }
         ],
         "synonymous": [
@@ -1383,6 +1689,12 @@
         "nonsynonymous": [
           {
             "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
+          {
+            "gene": "S",
             "left": "Q",
             "pos": 677,
             "right": "P"
@@ -1412,6 +1724,18 @@
             "right": "F"
           },
           {
+            "gene": "ORF1a",
+            "left": "Q",
+            "pos": 3729,
+            "right": "R"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "P",
+            "pos": 314,
+            "right": "L"
+          },
+          {
             "gene": "ORF1b",
             "left": "N",
             "pos": 1653,
@@ -1422,6 +1746,24 @@
             "left": "R",
             "pos": 2613,
             "right": "C"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "Q",
+            "pos": 57,
+            "right": "H"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "G",
+            "pos": 172,
+            "right": "V"
+          },
+          {
+            "gene": "ORF8",
+            "left": "S",
+            "pos": 24,
+            "right": "L"
           }
         ],
         "synonymous": [
