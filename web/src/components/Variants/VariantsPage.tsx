@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import { connect } from 'react-redux'
 import { replace } from 'connected-next-router'
@@ -55,6 +55,7 @@ export interface VariantsPageProps extends VariantsPageBaseProps {
 
 export function VariantsPageDisconnected({ currentCluster }: VariantsPageProps) {
   const ClusterContent = getClusterContent(currentCluster.build_name)
+  const showDefiningMutations = useMemo(() => hasDefiningMutations(currentCluster), [currentCluster])
 
   return (
     <Layout>
@@ -77,7 +78,7 @@ export function VariantsPageDisconnected({ currentCluster }: VariantsPageProps) 
             <ClusterButtonPanel currentCluster={currentCluster} />
           </Col>
 
-          <Col lg={9} xl={10}>
+          <Col lg={showDefiningMutations ? 7 : 9} xl={showDefiningMutations ? 8 : 10}>
             <EditableClusterContent githubUrl={`blob/master/content/clusters/${currentCluster.build_name}.md`}>
               <Row noGutters className="mb-3">
                 <Col className="d-flex w-100">
@@ -94,23 +95,6 @@ export function VariantsPageDisconnected({ currentCluster }: VariantsPageProps) 
                   )}
                 </Col>
               </Row>
-
-              {hasDefiningMutations(currentCluster) && (
-                <Row noGutters>
-                  <Col>
-                    <Row noGutters>
-                      <Col>
-                        <h2>{'Defining mutations'}</h2>
-                      </Col>
-                    </Row>
-                    <Row noGutters>
-                      <Col>
-                        <DefiningMutations cluster={currentCluster} />
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              )}
 
               <Row noGutters className="mb-2">
                 <Col>
@@ -131,6 +115,12 @@ export function VariantsPageDisconnected({ currentCluster }: VariantsPageProps) 
               </Row>
             </EditableClusterContent>
           </Col>
+
+          {showDefiningMutations && (
+            <Col lg={2} xl={2}>
+              <DefiningMutations cluster={currentCluster} />
+            </Col>
+          )}
         </Row>
       </VariantsPageContainer>
     </Layout>

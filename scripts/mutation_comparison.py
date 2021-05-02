@@ -64,4 +64,27 @@ mutation_comparison = {
             "S:F888L",
         ]
     },
+    "20A/S.154K\n(B.1.617.1)": {
+        "nonsynonymous": [
+            "S:E154K",
+            "S:L452R",
+            "S:E484Q",
+            "S:D614G",
+            "S:P681R",
+            "S:Q1071H"
+        ]
+    },
+    "20A/S.478K\n(B.1.617.2)": {
+        "nonsynonymous": [
+            "S:T19R",
+            "S:E156-",
+            "S:F157-",
+            "S:R158G",
+            "S:L452R",
+            "S:T478K",
+            "S:D614G",
+            "S:P681R",
+            "S:D950N"
+        ]
+    },
 }
