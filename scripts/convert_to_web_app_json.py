@@ -4,7 +4,7 @@
 """
 Converts cluster data to a format suitable for consumption by the web app
 """
-
+import glob
 import json
 import os
 import re
@@ -396,6 +396,36 @@ def compare_dates(left_date: str, right_date: str, comp):
     return format_date(dt)
 
 
+def check_acknowledgements(output_path: str):
+    with open(os.path.join(output_path, "acknowledgements", "acknowledgements_keys.json"), "r") as f:
+        acknowledgements_keys = json.load(f)
+
+        for cluster in clusters:
+            build_name = cluster["build_name"]
+            ack_dir = os.path.join(output_path, 'acknowledgements', build_name)
+
+            warnings = []
+
+            if not os.path.isdir(ack_dir):
+                warnings.append(f" * does not have acknowledgements directory ('{ack_dir}')")
+
+            if build_name not in acknowledgements_keys['acknowledgements']:
+                warnings.append(f" * not in 'acknowledgements_keys.json'")
+            else:
+                num_chunks = acknowledgements_keys['acknowledgements'][build_name]["numChunks"]
+                chunks = set(glob.glob(os.path.join(ack_dir, "*.json")))
+                for i in range(num_chunks):
+                    filename = "{0:03}.json".format(i)
+                    chunk = os.path.join(ack_dir, filename)
+                    if not chunk in chunks:
+                        warnings.append(f" * 'acknowledgements_keys.json' has 'numChunks' "
+                                        f"set to {num_chunks}, but chunk '{filename}' was not found")
+
+            if len(warnings) > 0:
+                warnings_str = '\n    '.join(warnings)
+                print(f"\nWarning: cluster {build_name}:\n    {warnings_str}")
+
+
 if __name__ == "__main__":
     os.makedirs(output_path, exist_ok=True)
 
@@ -444,3 +474,5 @@ if __name__ == "__main__":
     name_table_data = {"nameTable": name_table}
     with open(os.path.join(output_path, "nameTable.json"), "w") as fh:
         json.dump(name_table_data, fh, indent=2, sort_keys=True)
+
+    check_acknowledgements(output_path)
