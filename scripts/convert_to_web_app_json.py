@@ -412,9 +412,6 @@ if __name__ == "__main__":
     with open(os.path.join(output_path, "perCountryData.json"), "w") as fh:
         json.dump(regions_data, fh, indent=2, sort_keys=True)
 
-    r = pd.date_range(start=min_date, end=max_date, freq='M')
-    print(r)
-    
     params = {
         "min_date": min_date,
         "max_date": max_date,
