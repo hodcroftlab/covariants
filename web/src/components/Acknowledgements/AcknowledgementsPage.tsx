@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Col, Container, Row } from 'reactstrap'
 
 import { getClusters } from 'src/io/getClusters'
+import { getAcknowledgementsKeys } from 'src/io/getClusterEpiIslsNumChunks'
 import { Layout } from 'src/components/Layout/Layout'
 import { AcknowledgementsCard } from 'src/components/Acknowledgements/AcknowledgementsCard'
 
@@ -16,7 +17,11 @@ export const AcknowledgementsPageContainer = styled(Container)`
 
 const clusters = getClusters()
 
+const acknowledgementsKeys = getAcknowledgementsKeys()
+
 export function AcknowledgementsPage() {
+  const clustersWithAcks = clusters.filter((cluster) => acknowledgementsKeys.has(cluster.build_name))
+
   return (
     <Layout>
       <AcknowledgementsPageContainer>
@@ -34,7 +39,7 @@ export function AcknowledgementsPage() {
 
         <Row>
           <Col>
-            {clusters.map((cluster) => (
+            {clustersWithAcks.map((cluster) => (
               <AcknowledgementsCard key={cluster.build_name} cluster={cluster} />
             ))}
           </Col>
