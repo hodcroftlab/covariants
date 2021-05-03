@@ -183,8 +183,8 @@ country_list_3 = [
     "Uganda",  # 15
     "Russia"  # 16
     "Qatar",    # 17
-    "North Macdeonia"   # 18
-    # 19
+    "North Macedonia",   # 18
+    "Russia"     # 19
     # 20
 ]
 

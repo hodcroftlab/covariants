@@ -12,6 +12,8 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 | <Var name="20C/S:452R" prefix=""/>    | &#124; B.1.427/B.1.429   | &#124; CAL.20C |
 | <Var name="20A/S:484K" prefix=""/>    | &#124; <LinkExternal href="https://cov-lineages.org/global_report_B.1.525.html">B.1.525</LinkExternal>           | &#124; |
 | <Var name="20C/S:484K" prefix=""/>    | &#124; B.1.526           | &#124; |
+| <Var name="20A/S:154K" prefix=""/>    | &#124; <LinkExternal href="https://cov-lineages.org/lineages/lineage_B.1.617.1.html">B.1.617.1</LinkExternal>         | &#124; |
+| <Var name="20A/S:478K" prefix=""/>    | &#124; <LinkExternal href="https://cov-lineages.org/lineages/lineage_B.1.617.2.html">B.1.617.2</LinkExternal>         | &#124; |
 | <Var name="20A/S:439K" prefix=""/>    | &#124; B.1.258           | &#124; |
 | <Var name="20A/S:98F" prefix=""/>     | &#124; B.1.221           | &#124; |
 | <Var name="20C/S:80Y" prefix=""/>     | &#124; B.1.367           | &#124; |

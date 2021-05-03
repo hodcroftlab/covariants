@@ -18,6 +18,7 @@ import pandas as pd
 from clusters import clusters
 from colors_and_countries import country_styles_all
 from mutation_comparison import mutation_comparison
+from name_table import name_table
 
 cluster_tables_path = "cluster_tables"
 output_path = "web/data"
@@ -442,3 +443,7 @@ if __name__ == "__main__":
         os.path.join(cluster_tables_path, "perVariant_countries_toPlot.json"),
         os.path.join(output_path, "countriesToPlot.json"),
     )
+
+    name_table_data = {"nameTable": name_table}
+    with open(os.path.join(output_path, "nameTable.json"), "w") as fh:
+        json.dump(name_table_data, fh, indent=2, sort_keys=True)
