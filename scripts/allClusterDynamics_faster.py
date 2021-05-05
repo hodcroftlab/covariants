@@ -411,9 +411,12 @@ for clus in clus_to_run:
         print("Sequences with bad dates (excluded): ", bad_dates)
         print("\n")
 
+    #Do we want to write out cluster for Nextstrain?
+    nextstrain_run = clusters[clus]['nextstrain_build']
+
     # Write out a file of the names of those 'in the cluster' - this is used by ncov_cluster
     # to make a ncov run where the 'focal' set is this cluster.
-    if print_files:
+    if print_files and nextstrain_run:
         with open(clusterlist_output, "w") as f:
             for item in wanted_seqs:
                 f.write("%s\n" % item)
