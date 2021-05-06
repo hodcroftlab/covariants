@@ -181,11 +181,11 @@ country_list_3 = [
     "Greece",  # 13
     "Chile",  # 14
     "Uganda",  # 15
-    "Russia"  # 16
+    "Russia",  # 16
     "Qatar",    # 17
     "North Macedonia",   # 18
-    "Russia"     # 19
-    # 20
+    "Russia",     # 19
+    "Colombia" # 20
 ]
 
 country_styles_1 = {
