@@ -1458,3 +1458,14 @@ update_json = {"lastUpdated": str(datetime.datetime.now().isoformat())}
 if print_files and "all" in clus_answer:
     with open(web_data_folder + f"update.json", "w") as fh:
         json.dump(update_json, fh)
+
+if "all" in clus_answer:
+    ccounts = []
+    for clus in clusters:
+        if clusters[clus]['type'] == "variant":
+            displayn = clusters[clus]["display_name"]
+            ccounts.append([displayn, len(clusters[clus]['cluster_meta'])])
+
+    count_df = pd.DataFrame(ccounts, columns=['cluster', 'counts'])
+    print("Showing cluster counts")
+    print(count_df.sort_values(by="counts"))
