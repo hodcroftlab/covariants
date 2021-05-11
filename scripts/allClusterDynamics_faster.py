@@ -209,10 +209,10 @@ if division_answer in ["y", "Y", "yes", "YES", "Yes"]:
 diag_file = (
     "results/sequence-diagnostics_gisaid.tsv"  # "results/sequence-diagnostics.tsv"
 )
-diag = pd.read_csv(diag_file, sep="\t", index_col=False)
+diag = pd.read_csv(diag_file, sep="\t", dtype={'clusters': str, 'all_snps':str}, index_col=False)
 # Read metadata file
 input_meta = "data/downloaded_gisaid.tsv"  # "data/metadata.tsv"
-meta = pd.read_csv(input_meta, sep="\t", index_col=False)
+meta = pd.read_csv(input_meta, sep="\t", dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str}, index_col=False)
 meta = meta.fillna("")
 
 
