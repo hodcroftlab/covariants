@@ -913,16 +913,16 @@ clusters = {
     }
 
     # B.1.1.519  23756, 22995, 12789
-    "S732": {'snps': [23755, 22994, 12788], 'cluster_data': [], #S732, S478, ORF1a 4175
-    "nextstrain_build": True,
-    "graphing": False,
-    "usa_graph": False,
-    "important": False,
-    "country_info": [], 'col': "#b3d9ff", "display_name": "S:732A",
-    "type": "do_not_display",
-    "build_name": "S.Q675",
-    "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.732A?c=gt-S_732"
-    }
+    #"S732": {'snps': [23755, 22994, 12788], 'cluster_data': [], #S732, S478, ORF1a 4175
+    #"nextstrain_build": True,
+    #"graphing": False,
+    #"usa_graph": False,
+    #"important": False,
+    #"country_info": [], 'col': "#b3d9ff", "display_name": "S:732A",
+    #"type": "do_not_display",
+    #"build_name": "S.732A",
+    #"nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.732A?c=gt-S_732"
+    #}
 
     # trying out 675
     # "S675": {'snps': [23586], 'cluster_data': [],

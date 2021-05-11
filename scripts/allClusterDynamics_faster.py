@@ -1228,11 +1228,11 @@ def get_ordered_clusters_to_plot(clusters, division=False, selected_country=None
             if clusters[x]["type"] == "variant"
             or ("usa_graph" in clusters[x] and clusters[x]["usa_graph"] is True)
         ]
-        cluster_data_key = "cluster_data_2wk_div"
+        cluster_data_key = "cluster_data_div"
         min_to_plot = 20
     else:
         clus_keys = [x for x in clus_keys if clusters[x]["graphing"] is True]
-        cluster_data_key = "cluster_data_2wk"
+        cluster_data_key = "cluster_data"
         min_to_plot = 70
 
     countries_all = defaultdict(dict)
@@ -1310,14 +1310,14 @@ def plot_country_data(
 
         for clus in clus_keys:
             if division:
-                cluster_data = clusters[clus][selected_country]["cluster_data_2wk_div"]
+                cluster_data = clusters[clus][selected_country]["cluster_data_div"]
             else:
-                cluster_data = clusters[clus]["cluster_data_2wk"]
+                cluster_data = clusters[clus]["cluster_data"]
             cluster_data = cluster_data.sort_index()
             if division:
-                total_data = clusters[clus][selected_country]["total_data_2wk_div"]
+                total_data = clusters[clus][selected_country]["total_data_div"]
             else:
-                total_data = clusters[clus]["total_data_2wk"]
+                total_data = clusters[clus]["total_data"]
             if coun not in cluster_data:
                 if clus == clus_keys[-1]:
                     ax.fill_between(
