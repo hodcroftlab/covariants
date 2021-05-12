@@ -377,7 +377,7 @@ def convert_region_data(region_name, region_input_file):
 REGIONS = {
     "World": "EUClusters_data.json",
     "United States": "USAClusters_data.json",
-    "Switzerland": None,  # Will be shown as a disabled "teaser" / "Coming soon!" button in the UI
+    "Switzerland": "SwissClusters_data.json",  # Will be shown as a disabled "teaser" / "Coming soon!" button in the UI
 }
 
 
