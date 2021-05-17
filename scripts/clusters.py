@@ -329,7 +329,7 @@ clusters = {
         },
     },
     # build for 20AS154 and 20AS478
-    "20AS154S478":{
+    "21AS154S478":{
         "snps": [29401, 22916, 14407], # N377, S452. ORF1b 314
         "cluster_data": [],  
         "nextstrain_build": True,
@@ -338,12 +338,12 @@ clusters = {
         "important": False,
         "country_info": [],
         "col": "#009900",
-        "display_name": "20A/S:154K.S:478K",
-        "build_name": "20A.S.154K.S.478K",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.154K.S.478K",
+        "display_name": "21A/S:154K.S:478K",
+        "build_name": "21A.S.154K.S.478K",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.S.154K.S.478K",
     },
     # variant  -- part of 'Indian' in media - B.1.617.1 
-    "20AS154": {
+    "21AS154": {
         "snps": [17522, 23603, 22916], #ORF1b:1352, S:681, 452 
         "cluster_data": [],  
         "nextstrain_build": False,
@@ -352,9 +352,9 @@ clusters = {
         "important": True,
         "country_info": [],
         "col": "#009900",
-        "display_name": "20A/S:154K",
-        "build_name": "20A.S.154K",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.154K.S.478K",
+        "display_name": "21A/S:154K",
+        "build_name": "21A.S.154K",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.S.154K.S.478K",
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "E", "pos": 154, "right": "K"},
@@ -389,7 +389,7 @@ clusters = {
     },
 
     # variant  -- part of 'Indian' in media - B.1.617.2
-    "20AS478": {
+    "21AS478": {
         "snps": [22994, 23603, 22916], # S:478, 681, 452
         "cluster_data": [],  
         "nextstrain_build": False,
@@ -398,9 +398,9 @@ clusters = {
         "important": True,
         "country_info": [],
         "col": "#006600",
-        "display_name": "20A/S:478K",
-        "build_name": "20A.S.478K",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.154K.S.478K",
+        "display_name": "21A/S:478K",
+        "build_name": "21A.S.478K",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.S.154K.S.478K",
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "T", "pos": 19, "right": "R"},
