@@ -876,14 +876,14 @@ for clus in clus_to_run:
 ##################################
 #### FIGURE OUT WHAT TO PLOT
 
-cutoff_num_seqs = 130
+cutoff_num_seqs = 160
 
 
 clusters_tww = []
 for clus in clus_to_run:
     c_i = clusters[clus]["country_info"]
     c_i[c_i["num_seqs"] > cutoff_num_seqs]
-    print(f"Countries with >20 seqs in cluster {clus}:")
+    print(f"Countries with >{cutoff_num_seqs} seqs in cluster {clus}:")
     print("\t", ", ".join(c_i[c_i["num_seqs"] > 10].index))
     if len(c_i[c_i["num_seqs"] > 10]) > 0 and clus != "DanishCluster":
         clusters_tww.append(clus)
@@ -911,6 +911,8 @@ all_num_seqs["has_20"] = has10
 print(
     f"Countries who have more than {cutoff_num_seqs} in any cluster:",
     has10_countries,
+    "\n",
+    f"There are {len(has10_countries)}",
     "\n",
 )
 print(all_num_seqs)
@@ -944,7 +946,7 @@ for clus in clus_to_run:
     smoothing /= smoothing.sum()
 
     # Only plot countries with >= X seqs
-    min_to_plot = 130
+    min_to_plot = 160
     # if clus == "S222":
     #    min_to_plot = 200
 
