@@ -23,7 +23,7 @@ The specific mutation <AaMut mut={'S:E484K'}/> is found in 4 variants (2 of them
 - South Africa (<Var name="20H/501Y.V2" prefix=""/> or `B.1.351`)
 - Brazil ( <Var name="20J/501Y.V3" prefix=""/> or `P.1`)
 - Brazil (20B/S:484K or `P.2`) (see below)
-- India (<Var name="20A/S:154K" prefix=""/> or `B.1.617.1`)
+- India (<Var name="21A/S:154K" prefix=""/> or `B.1.617.1`)
 
 See a <Link href="/shared-mutations">list of shared mutations</Link> for these variants. More information on each of these variants can be found by clicking the links above, or below, for 20B/S.484K.
 
