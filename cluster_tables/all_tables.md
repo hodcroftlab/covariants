@@ -580,8 +580,8 @@ Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SA
 
 ![Overall trends 20A.S.484K](/overall_trends_figures/overall_trends_20A.S.484K.png)
 
-## 20A/S:154K.S:478K
-[Focal Build](https://nextstrain.org/groups/neherlab/ncov/20A.S.154K.S.478K)
+## 21A/S:154K.S:478K
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/21A.S.154K.S.478K)
 
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
@@ -633,10 +633,10 @@ Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SA
 | Bangladesh     | 2021-04-27  |          8 | 2021-05-06 |
 | Botswana       | 2021-04-28  |          1 | 2021-04-28 |
 
-![Overall trends 20A.S.154K.S.478K](/overall_trends_figures/overall_trends_20A.S.154K.S.478K.png)
+![Overall trends 21A.S.154K.S.478K](/overall_trends_figures/overall_trends_21A.S.154K.S.478K.png)
 
-## 20A/S:154K
-[Focal Build](https://nextstrain.org/groups/neherlab/ncov/20A.S.154K.S.478K)
+## 21A/S:154K
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/21A.S.154K.S.478K)
 
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
@@ -674,10 +674,10 @@ Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SA
 | Curacao        | 2021-04-23  |          1 | 2021-04-23 |
 | Thailand       | 2021-04-26  |          1 | 2021-04-26 |
 
-![Overall trends 20A.S.154K](/overall_trends_figures/overall_trends_20A.S.154K.png)
+![Overall trends 21A.S.154K](/overall_trends_figures/overall_trends_21A.S.154K.png)
 
-## 20A/S:478K
-[Focal Build](https://nextstrain.org/groups/neherlab/ncov/20A.S.154K.S.478K)
+## 21A/S:478K
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/21A.S.154K.S.478K)
 
 |                | first_seq   |   num_seqs | last_seq   |
 |:---------------|:------------|-----------:|:-----------|
@@ -721,7 +721,7 @@ Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SA
 | Botswana       | 2021-04-28  |          1 | 2021-04-28 |
 | Thailand       | 2021-05-02  |          1 | 2021-05-02 |
 
-![Overall trends 20A.S.478K](/overall_trends_figures/overall_trends_20A.S.478K.png)
+![Overall trends 21A.S.478K](/overall_trends_figures/overall_trends_21A.S.478K.png)
 
 ## 20A/S:439K
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_439&f_region=Europe)
