@@ -166,25 +166,26 @@ country_list_2 = [
 ]
 
 country_list_3 = [
-    "Israel",  # 1
-    "Finland",  # 2
-    "Japan",  # 3
-    "Croatia",  # 4
-    "Bangladesh",  # 5
-    "Mexico",  # 6
-    "South Korea",  # 7
-    "Zimbabwe",  # 8
-    "Bulgaria",  # 9
-    "Indonesia",  # 10
-    "Estonia",  # 11
-    "Greece",  # 12
-    "Chile",  # 13
-    "Russia",  # 14
-    "Qatar",    # 15
-    "North Macedonia",   # 17
-    "Egypt"    # 18
-         # 19
-     # 20
+    "Finland",  # 1
+    "Japan",  # 2
+    "Croatia",  # 3
+    "Bangladesh",  # 4
+    "Mexico",  # 5
+    "South Korea",  # 6
+    "Zimbabwe",  # 7
+    "Bulgaria",  # 8
+    "Indonesia",  # 9
+    "Estonia",  # 10
+    "Greece",  # 11
+    "Chile",  # 12
+    "Qatar",    # 13
+    "North Macedonia",   # 14
+    "Egypt",    # 15
+    "Philippines",     # 16
+    "Argentina", # 17
+    "Cambodia",       # 18  
+        #19
+        #20
 ]
 
 country_styles_1 = {
