@@ -1,6 +1,6 @@
 clusters = {
     "S222": {
-        "snps": [22226, 28931, 29644],
+        "snps": [22227, 28932, 29645],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": True,
@@ -26,7 +26,7 @@ clusters = {
         },
     },
     "S477": {
-        "snps": [22991, 4542],
+        "snps": [22992, 4543],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": True,
@@ -57,7 +57,7 @@ clusters = {
         },
     },
     "501YV1": {
-        "snps": [23062, 23603, 24913],
+        "snps": [23063, 23604, 24914],
         "cluster_data": [],  # 501, 681, 1118
         "nextstrain_build": True,
         "graphing": True,
@@ -107,7 +107,7 @@ clusters = {
         },
     },
     "501YV2": {
-        "snps": [21800, 23062, 23663],
+        "snps": [21801, 23063, 23664],
         "cluster_data": [],  # 80,501,701
         "nextstrain_build": True,
         "graphing": True,
@@ -150,7 +150,7 @@ clusters = {
         },
     },
     "501YV3": {
-        "snps": [21620, 23062, 23524],
+        "snps": [21621, 23063, 23525],
         "cluster_data": [],  # 20,501,655
         "nextstrain_build": True,
         "graphing": True,
@@ -204,7 +204,7 @@ clusters = {
     },
     # 'CA variant'
     "S452": {
-        "snps": [21599, 22017, 22916],
+        "snps": [21600, 22018, 22917],
         "cluster_data": [],  #'CA' variant
         "nextstrain_build": True,
         "graphing": True,
@@ -235,7 +235,7 @@ clusters = {
     },
     # "new york variant"
     "20CS484": {
-        "snps": [21574, 9866, 1058],
+        "snps": [21575, 9867, 1059],
         "cluster_data": [],  # S5, ORF1a 3201, 265 -- 484 is 23012 (1-based)
         "nextstrain_build": True,
         "graphing": True,
@@ -277,7 +277,7 @@ clusters = {
     },
     # 'not-called-nigerian variant' B.1.525
     "20AS484": {
-        "snps": [8592, 23011, 24223],
+        "snps": [8593, 23012, 24224],
         "cluster_data": [],  # nuc 8593 S 484, 888
         "nextstrain_build": True,
         "graphing": True,
@@ -330,7 +330,7 @@ clusters = {
     },
     # build for 20AS154 and 20AS478
     "21AS154S478":{
-        "snps": [29401, 22916, 14407], # N377, S452. ORF1b 314
+        "snps": [29402, 22917, 14408], # N377, S452. ORF1b 314
         "cluster_data": [],  
         "nextstrain_build": True,
         "type": "do_not_display",
@@ -344,7 +344,7 @@ clusters = {
     },
     # variant  -- part of 'Indian' in media - B.1.617.1 
     "21AS154": {
-        "snps": [17522, 23603, 22916], #ORF1b:1352, S:681, 452 
+        "snps": [17523, 23604, 22917], #ORF1b:1352, S:681, 452 
         "cluster_data": [],  
         "nextstrain_build": False,
         "type": "variant",
@@ -390,7 +390,7 @@ clusters = {
 
     # variant  -- part of 'Indian' in media - B.1.617.2
     "21AS478": {
-        "snps": [22994, 23603, 22916], # S:478, 681, 452
+        "snps": [22995, 23604, 22917], # S:478, 681, 452
         "cluster_data": [],  
         "nextstrain_build": False,
         "type": "variant",
@@ -433,7 +433,7 @@ clusters = {
     },
 
     "S439": {
-        "snps": [7766, 22878],
+        "snps": [7767, 22879],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": True,
@@ -455,7 +455,7 @@ clusters = {
         },
     },
     "S677HRobin1": {
-        "snps": [23592, 29401],
+        "snps": [23593, 29402],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": True,
@@ -493,7 +493,7 @@ clusters = {
         },
     },
     "S677PPelican": {
-        "snps": [23591, 11450, 21810],
+        "snps": [23592, 11451, 21811],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": True,
@@ -530,7 +530,7 @@ clusters = {
         },
     },
     "S98": {
-        "snps": [21854, 25504],
+        "snps": [21855, 25505],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": True,
@@ -553,7 +553,7 @@ clusters = {
         },
     },
     "S80": {
-        "snps": [21799, 3098],
+        "snps": [21800, 3099],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": True,
@@ -590,7 +590,7 @@ clusters = {
         },
     },
     "S626": {
-        "snps": [23437, 771],
+        "snps": [23438, 772],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": True,
@@ -606,7 +606,7 @@ clusters = {
         },
     },
     "S1122": {
-        "snps": [24925, 9119],
+        "snps": [24926, 9120],
         "cluster_data": [],  # mostly Swedish cluster
         "nextstrain_build": True,
         "graphing": True,
@@ -624,9 +624,9 @@ clusters = {
         },
     },
     "S501": {
-        "snps": [23063],
+        "snps": [23064],
         "cluster_data": [],
-        "snps2": [23062],
+        "snps2": [23063],
         "nextstrain_build": True,
         "graphing": False,
         "type": "mutation",
@@ -639,7 +639,7 @@ clusters = {
         # no mutations because has appeared many times independently
     },
     "S484": {
-        "snps": [23011],
+        "snps": [23012],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
@@ -655,7 +655,7 @@ clusters = {
     "S69": {
         "snps": [],
         "cluster_data": [],
-        "gaps": [21766, 21767, 21768],
+        "gaps": [21767, 21768, 21769],
         "nextstrain_build": True,
         "graphing": False,
         "type": "mutation",
@@ -669,9 +669,9 @@ clusters = {
     },
     # here's 677 to generate for the nextstrain build
     "S677": {
-        "snps": [23592],
+        "snps": [23593],
         "cluster_data": [],
-        "snps2": [23591],
+        "snps2": [23592],
         "nextstrain_build": True,
         "graphing": False,
         "type": "mutation",
@@ -684,7 +684,7 @@ clusters = {
         # no mutations because has appeared many times independently
     },
     "S453": {
-        "snps": [22919],
+        "snps": [22920],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
@@ -698,7 +698,7 @@ clusters = {
         # no mutations because has appeared many times independently
     },
     "S477mut": {
-        "snps": [22991],
+        "snps": [22992],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
@@ -712,7 +712,7 @@ clusters = {
         # no mutations because has appeared many times independently
     },
     "DanishCluster": {
-        "snps": [15655],
+        "snps": [15656],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
@@ -726,7 +726,7 @@ clusters = {
         # no mutations because is not displayed
     },
     "S18": {
-        "snps": [21613],
+        "snps": [21614],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
@@ -741,7 +741,7 @@ clusters = {
     "S144": {
         "snps": [],
         "cluster_data": [],
-        "gaps": [21992],
+        "gaps": [21993],
         "nextstrain_build": True,
         "graphing": False,
         "type": "mutation",
@@ -753,7 +753,7 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y144-?c=gt-S_144",  # color
     },
     "S417": {
-        "snps": [22812],
+        "snps": [22813],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
@@ -766,7 +766,7 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.K417?c=gt-S_417",  # color
     },
     "S655": {
-        "snps": [23524],
+        "snps": [23525],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
@@ -779,7 +779,7 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.H655?c=gt-S_655",  # color
     },
     "S681": {
-        "snps": [23603],
+        "snps": [23604],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
@@ -794,7 +794,7 @@ clusters = {
     "ORF1aS3675": {
         "snps": [],
         "cluster_data": [],
-        "gaps": [11287, 11288, 11289],
+        "gaps": [11288, 11289, 11290],
         "nextstrain_build": True,
         "graphing": False,
         "type": "mutation",
@@ -808,7 +808,7 @@ clusters = {
     # The rest of the birds
     # variant
     "S677HRobin2": {
-        "snps": [23592, 7347],
+        "snps": [23593, 7348],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
@@ -823,7 +823,7 @@ clusters = {
     },
     # variant
     "S677HYellowhammer": {
-        "snps": [23592, 9927],
+        "snps": [23593, 9928],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
@@ -838,7 +838,7 @@ clusters = {
     },
     # variant
     "S677RRoadrunner": {
-        "snps": [23591, 3449, 6381],
+        "snps": [23592, 3450, 6382],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
@@ -853,7 +853,7 @@ clusters = {
     },
     # variant
     "S677HHeron": {
-        "snps": [23592, 28832, 1591],
+        "snps": [23593, 28833, 1592],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
@@ -868,7 +868,7 @@ clusters = {
     },
     # variant
     "S677HBluebird": {
-        "snps": [23592, 21647],
+        "snps": [23593, 21648],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
@@ -883,7 +883,7 @@ clusters = {
     },
     # variant
     "S677HQuail": {
-        "snps": [23592, 23755, 21756],
+        "snps": [23593, 23756, 21757],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
@@ -898,7 +898,7 @@ clusters = {
     },
     # variant
     "S677HMockingbird": {
-        "snps": [23592, 21985],
+        "snps": [23593, 21986],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
