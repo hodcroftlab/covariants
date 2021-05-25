@@ -56,6 +56,7 @@ from clusters import *
 from bad_sequences import *
 from approx_first_dates import *
 import os
+import re
 
 
 def get_division_summary(cluster_meta, chosen_country):
@@ -159,6 +160,12 @@ if print_ack_answer in ["y", "Y", "yes", "YES", "Yes"]:
     print_acks = True
 print(f"Writing out acknowledgements? {print_acks}")
 
+division = False
+division_answer = input("\nDo division for USA?(y/n) (Enter is no): ")
+if division_answer in ["y", "Y", "yes", "YES", "Yes"]:
+    division = True
+    selected_country = "USA"
+
 # default is 222, but ask user what they want - or run all.
 clus_to_run = ["S222"]
 reask = True
@@ -195,21 +202,15 @@ while reask:
 print("These clusters will be run: ", clus_to_run)
 
 
-division = False
-division_answer = input("\nDo division for USA?(y/n) (Enter is no): ")
-if division_answer in ["y", "Y", "yes", "YES", "Yes"]:
-    division = True
-    selected_country = "USA"
-
 ##################################
 ##################################
 #### Read in the starting files
 
 # Get diagnostics file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
-diag_file = (
-    "results/sequence-diagnostics_gisaid.tsv"  # "results/sequence-diagnostics.tsv"
+muts_file = (
+    "results/mutation_summary_gisaid.tsv"  # "results/sequence-diagnostics.tsv"
 )
-diag = pd.read_csv(diag_file, sep="\t", dtype={'clusters': str, 'all_snps':str}, index_col=False)
+muts = pd.read_csv(muts_file, sep="\t", index_col=False)
 # Read metadata file
 input_meta = "data/downloaded_gisaid.tsv"  # "data/metadata.tsv"
 meta = pd.read_csv(input_meta, sep="\t", dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str}, index_col=False)
@@ -330,40 +331,56 @@ for clus in clus_to_run:
 #### For all but mink, go through and extract wanted sequences
 
 print("\nLooking for the wanted sequences in the file...\n")
-for index, row in diag.iterrows():
-    strain = row["strain"]
-    snplist = row["all_snps"]
-    gaplist = row["gap_list"]
+for index, row in muts.iterrows():
+    ambig_bases = ['Y', 'R', 'W', 'S', 'K', 'M', 'D', 'V', 'H', 'B', 'X', 'N']
+    ambig_bases_and_gap = ['Y', 'R', 'W', 'S', 'K', 'M', 'D', 'V', 'H', 'B', 'X', 'N', '-']
+    strain = row[0]
+    snplist = row["nucleotide"]
+    gaplist = []
+    if not pd.isna(snplist):
+        all_muts = [x for x in snplist.split(",")]
 
-    for clus in [x for x in clus_to_run if x != "mink"]:
-        clus_data = clusters[clus]
-        snps = clus_data["snps"]
-        snps2 = clus_data["snps2"]
-        gaps = clus_data["gaps"]
-        exclude_snps = clus_data["exclude_snps"]
-        wanted_seqs = clus_data["wanted_seqs"]
+        #convert gaplist
+        gaplist = [x for x in all_muts if '-' in x]
+        gaplist = [int(re.sub('[A-Z-]+', '', x)) for x in gaplist]
+        if not gaplist:
+            gaplist = []
+        
+        #convert snplist
+        snplist = [x for x in all_muts  if not any(j in x for j in ambig_bases_and_gap)]
+        snplist = [int(re.sub('[A-Z]+', '', x)) for x in snplist]
 
-        # look for occurance of snp(s) *without* some other snp(s) (to exclude a certain group)
-        if snps and not pd.isna(snplist) and exclude_snps and not pd.isna(exclude_snps):
-            intsnp = [int(x) for x in snplist.split(",")]
-            if all(x in intsnp for x in snps) and all(
-                x not in intsnp for x in exclude_snps
-            ):
-                wanted_seqs.append(row["strain"])
+        for clus in [x for x in clus_to_run if x != "mink"]:
+            clus_data = clusters[clus]
+            snps = clus_data["snps"]
+            snps2 = clus_data["snps2"]
+            gaps = clus_data["gaps"]
+            exclude_snps = clus_data["exclude_snps"]
+            wanted_seqs = clus_data["wanted_seqs"]
 
-        elif snps and not pd.isna(snplist):
-            intsnp = [int(x) for x in snplist.split(",")]
-            # this looks for all SNPs in 'snps' OR all in 'snps2' (two nucs that affect same AA, for example)
-            if all(x in intsnp for x in snps) or (
-                all(x in intsnp for x in snps2) and len(snps2) != 0
-            ):
-                # if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
-                wanted_seqs.append(row["strain"])
-        # look for all locations in gap list
-        elif gaps and not pd.isna(gaplist):
-            intgap = [int(x) for x in gaplist.split(",")]
-            if all(x in intgap for x in gaps):
-                wanted_seqs.append(row["strain"])
+            # look for occurance of snp(s) *without* some other snp(s) (to exclude a certain group)
+            #if snps and not pd.isna(snplist) and exclude_snps and not pd.isna(exclude_snps):
+            if snps and snplist and exclude_snps and not pd.isna(exclude_snps):
+                intsnp = snplist #[int(x) for x in snplist.split(",")]
+                if all(x in intsnp for x in snps) and all(
+                    x not in intsnp for x in exclude_snps
+                ):
+                    wanted_seqs.append(row[0])
+
+            #elif snps and not pd.isna(snplist):
+            elif snps and snplist:
+                intsnp = snplist #[int(x) for x in snplist.split(",")]
+                # this looks for all SNPs in 'snps' OR all in 'snps2' (two nucs that affect same AA, for example)
+                if all(x in intsnp for x in snps) or (
+                    all(x in intsnp for x in snps2) and len(snps2) != 0
+                ):
+                    # if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
+                    wanted_seqs.append(row[0])
+            # look for all locations in gap list
+            elif gaps and not all(pd.isna(gaplist)):
+                intgap = gaplist #[int(x) for x in gaplist.split(",")]
+                if all(x in intgap for x in gaps):
+                    wanted_seqs.append(row[0])
 
 
 ##################################
