@@ -55,6 +55,7 @@ from paths import *
 from clusters import *
 from bad_sequences import *
 from approx_first_dates import *
+from swiss_regions import *
 import os
 import re
 
@@ -64,7 +65,8 @@ def get_division_summary(cluster_meta, chosen_country):
     country_meta = cluster_meta[
         cluster_meta["country"].apply(lambda x: x == chosen_country)
     ]
-    observed_divisions = [x for x in country_meta["division"].unique()]
+    #remove any 'empty' divisions as we don't want these.
+    observed_divisions = [x for x in country_meta["division"].unique() if x]
 
     division_info = pd.DataFrame(
         index=observed_divisions, columns=["first_seq", "num_seqs", "last_seq"]
@@ -206,6 +208,8 @@ print("These clusters will be run: ", clus_to_run)
 ##################################
 #### Read in the starting files
 
+print("\nReading in files...\n")
+
 # Get diagnostics file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
 muts_file = (
     "results/mutation_summary_gisaid.tsv"  # "results/sequence-diagnostics.tsv"
@@ -238,6 +242,12 @@ if not future_meta.empty:
     print(future_meta)
 # get rid of any with dates in the future.....
 meta = meta[meta["date_formatted"].apply(lambda x: x <= datetime.date.today())]
+
+# Replace Swiss divisions with swiss-region, but store original division
+
+meta['orig_division'] = meta['division']
+meta['division'] = meta['division'].replace(swiss_regions)
+# meta[meta["country"].apply(lambda x: x == "Switzerland")]  #can check
 
 
 ##################################
@@ -457,7 +467,7 @@ for clus in clus_to_run:
         cluster_meta.to_csv(out_meta_file, sep="\t", index=False)
 
     # What countries do sequences in the cluster come from?
-    observed_countries = [x for x in cluster_meta["country"].unique()]
+    observed_countries = [x for x in cluster_meta["country"].unique() if x]
     clus_data["observed_countries"] = observed_countries
     print(f"The cluster is found in: {observed_countries}\n")
     if clus != "S222":
@@ -1451,7 +1461,7 @@ if do_country:
         clusters, proposed_coun_to_plot, print_files, clus_keys, "EUClusters"
     )
 
-do_usa_country = False
+do_divisions_country = False
 if "all" in clus_answer:
     print_answer = input(
         "\nContinue to USA- & Swiss-specific country plotting? (y/n) (Enter is no): "
