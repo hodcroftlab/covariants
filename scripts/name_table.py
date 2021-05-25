@@ -70,14 +70,14 @@ name_table = [
         ]
     },
     {
-        "clade": "20A/S:154K",
+        "clade": "21A/S:154K",
         "lineages": [
             {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
         ],
         "others": []
     },
     {
-        "clade": "20A/S:478K",
+        "clade": "21A/S:478K",
         "lineages": [
             {"name": "B.1.617.2", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.2.html"}
         ],

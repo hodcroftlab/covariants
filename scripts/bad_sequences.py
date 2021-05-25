@@ -62,6 +62,10 @@ bad_seqs = {
     "USA/CA-LACPHL-AF00662/2020": "2020-03-10",  # divergence of 20 with date March 2020 highly unlikely - prob year mixup
     "Netherlands/ZH-EMC-1944/2020": "2020-03-10",  # EU2 - too diverged for date
     "Italy/LAZ-TIGEM-6927/2021": "2017-11-21",  # impossible year of 2017
+    "USA/TN-UT2050/2020" : "2020-06-04", #pelican - too diverged
+    "USA/TN-UT2063/2020" : "2020-06-03", #pelican - too diverged
+    "USA/NMDOH-2021083688/2020" : "2020-03-02", #S:452R - too diverged
+    "Spain/VC-IBV-99028305/2020": "2020-03-15", #V1 - impossible given date
     # These sequences are from EU1 - early dated but the divergence doesn't match the dates...
     "England/NOTT-246E3F/2020": "2020-06-02",
     "England/NOTT-246E11/2020": "2020-06-03",
@@ -87,8 +91,8 @@ bad_seqs = {
     "Netherlands/NB-EMC-751/2020": "2020-04-09",
     "Netherlands/ZH-EMC-1816/2020": "2020-04-12",
     "Italy/CAM-CRGS-544/2020": "2020-03-14",
-    "USA/TN-UT2050/2020" : "2020-06-04", 
-    "USA/TN-UT2063/2020" : "2020-06-03"
+    "Spain/IB-HUSE-00001/2020": "2020-03-02",
+    "Spain/VC-IBV-99028301/2020": "2020-03-17"
     #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
     #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
 }

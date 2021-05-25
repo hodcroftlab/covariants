@@ -1169,15 +1169,15 @@
       "type": "variant"
     },
     {
-      "build_name": "20A.S.154K.S.478K",
+      "build_name": "21A.S.154K.S.478K",
       "cluster_data": [],
       "col": "#009900",
       "country_info": [],
-      "display_name": "20A/S:154K.S:478K",
+      "display_name": "21A/S:154K.S:478K",
       "graphing": false,
       "important": false,
       "nextstrain_build": true,
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.154K.S.478K",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.S.154K.S.478K",
       "snps": [
         29401,
         22916,
@@ -1186,11 +1186,11 @@
       "type": "do_not_display"
     },
     {
-      "build_name": "20A.S.154K",
+      "build_name": "21A.S.154K",
       "cluster_data": [],
       "col": "#009900",
       "country_info": [],
-      "display_name": "20A/S:154K",
+      "display_name": "21A/S:154K",
       "graphing": true,
       "important": true,
       "mutations": {
@@ -1343,7 +1343,7 @@
         ]
       },
       "nextstrain_build": false,
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.154K.S.478K",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.S.154K.S.478K",
       "snps": [
         17522,
         23603,
@@ -1352,11 +1352,11 @@
       "type": "variant"
     },
     {
-      "build_name": "20A.S.478K",
+      "build_name": "21A.S.478K",
       "cluster_data": [],
       "col": "#006600",
       "country_info": [],
-      "display_name": "20A/S:478K",
+      "display_name": "21A/S:478K",
       "graphing": true,
       "important": true,
       "mutations": {
@@ -1499,7 +1499,7 @@
         ]
       },
       "nextstrain_build": false,
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.154K.S.478K",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.S.154K.S.478K",
       "snps": [
         22994,
         23603,
