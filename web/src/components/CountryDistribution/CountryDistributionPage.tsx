@@ -9,10 +9,15 @@ import { RegionSwitcher } from 'src/components/CountryDistribution/RegionSwitche
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
+import { getRegionPerCountryContent } from 'src/io/getRegionContent'
 
-import PerCountryIntro from 'src/../../content/PerCountryIntro.md'
-import PerAreaIntro from 'src/../../content/PerAreaIntro.md'
-import { DEFAULT_REGION, getClusterData, REGIONS, REGIONS_HAVE_DATA } from 'src/io/getClusterData'
+import {
+  DEFAULT_REGION,
+  getClusterData,
+  getPerCountryIntroContentFilename,
+  REGIONS,
+  REGIONS_HAVE_DATA,
+} from 'src/io/getClusterData'
 
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
 import { CountryDistributionDatum } from './CountryDistributionPlot'
@@ -139,6 +144,11 @@ export function CountryDistributionPage() {
     [],
   )
 
+  const IntroContent = useMemo(() => {
+    const contentFilename = getPerCountryIntroContentFilename(currentRegion)
+    return getRegionPerCountryContent(contentFilename)
+  }, [currentRegion])
+
   return (
     <Layout wide>
       <Row noGutters>
@@ -160,8 +170,8 @@ export function CountryDistributionPage() {
 
       <Row noGutters>
         <Col>
-          <Editable githubUrl="blob/master/content/PerCountryIntro.md">
-            {currentRegion === 'World' ? <PerCountryIntro /> : <PerAreaIntro />}
+          <Editable githubUrl="tree/master/content/PerCountryIntro/">
+            <IntroContent />
           </Editable>
         </Col>
       </Row>

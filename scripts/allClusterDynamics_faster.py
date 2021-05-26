@@ -55,6 +55,7 @@ from paths import *
 from clusters import *
 from bad_sequences import *
 from approx_first_dates import *
+from swiss_regions import *
 import os
 import re
 
@@ -64,7 +65,8 @@ def get_division_summary(cluster_meta, chosen_country):
     country_meta = cluster_meta[
         cluster_meta["country"].apply(lambda x: x == chosen_country)
     ]
-    observed_divisions = [x for x in country_meta["division"].unique()]
+    #remove any 'empty' divisions as we don't want these.
+    observed_divisions = [x for x in country_meta["division"].unique() if x]
 
     division_info = pd.DataFrame(
         index=observed_divisions, columns=["first_seq", "num_seqs", "last_seq"]
@@ -161,10 +163,10 @@ if print_ack_answer in ["y", "Y", "yes", "YES", "Yes"]:
 print(f"Writing out acknowledgements? {print_acks}")
 
 division = False
-division_answer = input("\nDo division for USA?(y/n) (Enter is no): ")
+division_answer = input("\nDo division for USA & Switzerland?(y/n) (Enter is no): ")
 if division_answer in ["y", "Y", "yes", "YES", "Yes"]:
     division = True
-    selected_country = "USA"
+    selected_country = ["USA", "Switzerland"]
 
 # default is 222, but ask user what they want - or run all.
 clus_to_run = ["S222"]
@@ -206,6 +208,8 @@ print("These clusters will be run: ", clus_to_run)
 ##################################
 #### Read in the starting files
 
+print("\nReading in files...\n")
+
 # Get diagnostics file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
 muts_file = (
     "results/mutation_summary_gisaid.tsv"  # "results/sequence-diagnostics.tsv"
@@ -238,6 +242,12 @@ if not future_meta.empty:
     print(future_meta)
 # get rid of any with dates in the future.....
 meta = meta[meta["date_formatted"].apply(lambda x: x <= datetime.date.today())]
+
+# Replace Swiss divisions with swiss-region, but store original division
+
+meta['orig_division'] = meta['division']
+meta['division'] = meta['division'].replace(swiss_regions)
+# meta[meta["country"].apply(lambda x: x == "Switzerland")]  #can check
 
 
 ##################################
@@ -457,7 +467,7 @@ for clus in clus_to_run:
         cluster_meta.to_csv(out_meta_file, sep="\t", index=False)
 
     # What countries do sequences in the cluster come from?
-    observed_countries = [x for x in cluster_meta["country"].unique()]
+    observed_countries = [x for x in cluster_meta["country"].unique() if x]
     clus_data["observed_countries"] = observed_countries
     print(f"The cluster is found in: {observed_countries}\n")
     if clus != "S222":
@@ -697,22 +707,24 @@ for clus in clus_to_run:
     clus_data["cluster_data"] = []
     clus_data["total_data"] = []
     if division:
-        clus_data[selected_country] = {}
-        clus_data[selected_country]["cluster_data_div"] = []
-        clus_data[selected_country]["total_data_div"] = []
+        for sel_coun in selected_country:
+            clus_data[sel_coun] = {}
+            clus_data[sel_coun]["cluster_data_div"] = []
+            clus_data[sel_coun]["total_data_div"] = []
 
-        # divide out data for divisions
-        cluster_meta_div = cluster_meta[
-            cluster_meta["country"].apply(lambda x: x == selected_country)
-        ]
-        observed_divisions = [x for x in cluster_meta_div["division"].unique()]
+            # divide out data for divisions
+            cluster_meta_div = cluster_meta[
+                cluster_meta["country"].apply(lambda x: x == sel_coun)
+            ]
+            observed_divisions = [x for x in cluster_meta_div["division"].unique() if x]
 
-        division_info, division_dates = get_summary(
-            cluster_meta_div, observed_divisions, division=True
-        )
+            division_info, division_dates = get_summary(
+                cluster_meta_div, observed_divisions, division=True
+            )
 
-        clus_data[selected_country]["division_info"] = division_info
-        clus_data[selected_country]["division_dates"] = division_dates
+            clus_data[sel_coun]["observed_divisions"] = observed_divisions
+            clus_data[sel_coun]["division_info"] = division_info
+            clus_data[sel_coun]["division_dates"] = division_dates
 
     # We want to look at % of samples from a country that are in this cluster
     # To avoid the up-and-down of dates, bin samples into weeks
@@ -785,67 +797,6 @@ for clus in clus_to_run:
         counts_by_2week = week2_counts.to_dict()
         total_2week_counts[coun] = counts_by_2week
 
-    # DIVISION LEVEL
-    # Get counts per week for sequences in the cluster
-    if division:
-        clus_week_counts_div = {}
-        clus_2week_counts_div = {}
-        for div in observed_divisions:
-            counts_by_week = defaultdict(int)
-            counts_by_2week = defaultdict(int)
-            for dat in division_dates[div]:
-                # counts_by_week[dat.timetuple().tm_yday//7]+=1 # old method
-                # counts_by_week[dat.isocalendar()[1]]+=1  #returns ISO calendar week
-                wk = dat.isocalendar()[1]  # returns ISO calendar week
-                wk2 = (
-                    dat.isocalendar()[1] // 2 * 2
-                )  # returns ISO calendar week -every 2 weeks
-                yr = dat.isocalendar()[0]
-                yr_wk = (yr, wk)
-                yr_2wk = (yr, wk2)
-                counts_by_week[yr_wk] += 1
-                counts_by_2week[yr_2wk] += 1
-            clus_week_counts_div[div] = counts_by_week
-            clus_2week_counts_div[div] = counts_by_2week
-
-        # Get counts per week for sequences regardless of whether in the cluster or not - from week 20 only.
-        total_week_counts_div = {}
-        total_2week_counts_div = {}
-        for div in observed_divisions:
-            counts_by_week = defaultdict(int)
-            counts_by_2week = defaultdict(int)
-            if div in uk_countries or division:
-                # temp_meta = meta[meta['division'].isin([coun])]
-                temp_meta = meta[meta["division"].apply(lambda x: x == div)]
-            else:
-                # temp_meta = meta[meta['country'].isin([coun])]
-                temp_meta = meta[meta["country"].apply(lambda x: x == div)]
-
-            # temp_meta['calendar_week'] = temp_meta['date_formatted'].apply(lambda x: x.isocalendar()[1])
-            temp_meta["calendar_week"] = temp_meta["date_formatted"].apply(
-                lambda x: (x.isocalendar()[0], x.isocalendar()[1])
-            )
-            temp_meta = temp_meta[temp_meta["calendar_week"] >= min_data_week]
-            # If no samples are after min_data_week, will be empty!!
-            if temp_meta.empty:
-                continue
-
-            week_counts = temp_meta["calendar_week"].value_counts().sort_index()
-            counts_by_week = week_counts.to_dict()
-            total_week_counts_div[div] = counts_by_week
-
-            # TWO WEEKS
-            temp_meta["calendar_2week"] = temp_meta["date_formatted"].apply(
-                lambda x: (x.isocalendar()[0], x.isocalendar()[1] // 2 * 2)
-            )
-            temp_meta = temp_meta[temp_meta["calendar_2week"] >= min_data_week]
-            week2_counts = temp_meta["calendar_2week"].value_counts().sort_index()
-            counts_by_2week = week2_counts.to_dict()
-            total_2week_counts_div[div] = counts_by_2week
-
-    #    if print_acks:
-    #        acknowledgement_table.to_csv(f'{acknowledgement_folder}{clus}_acknowledgement_table.tsv', sep="\t")
-
     # COUNTRY LEVEL
     # Convert into dataframe
     cluster_data = pd.DataFrame(data=clus_week_counts)
@@ -867,27 +818,89 @@ for clus in clus_to_run:
     clus_data["cluster_data_2wk"] = cluster_data_2wk
     clus_data["total_data_2wk"] = total_data_2wk
 
+    ###########################################
     # DIVISION LEVEL
+    # Get counts per week for sequences in the cluster
     if division:
-        # Convert into dataframe
-        cluster_data_div = pd.DataFrame(data=clus_week_counts_div)
-        total_data_div = pd.DataFrame(data=total_week_counts_div)
-        # sort
-        total_data_div = total_data_div.sort_index()
-        cluster_data_div = cluster_data_div.sort_index()
-        # store
-        clus_data[selected_country]["cluster_data_div"] = cluster_data_div
-        clus_data[selected_country]["total_data_div"] = total_data_div
+        for sel_coun in selected_country:
+            clus_week_counts_div = {}
+            clus_2week_counts_div = {}
+            observed_divisions = clus_data[sel_coun]["observed_divisions"] 
+            division_info = clus_data[sel_coun]["division_info"]
+            division_dates = clus_data[sel_coun]["division_dates"]
+            for div in observed_divisions:
+                counts_by_week = defaultdict(int)
+                counts_by_2week = defaultdict(int)
+                for dat in division_dates[div]:
+                    # counts_by_week[dat.timetuple().tm_yday//7]+=1 # old method
+                    # counts_by_week[dat.isocalendar()[1]]+=1  #returns ISO calendar week
+                    wk = dat.isocalendar()[1]  # returns ISO calendar week
+                    wk2 = (
+                        dat.isocalendar()[1] // 2 * 2
+                    )  # returns ISO calendar week -every 2 weeks
+                    yr = dat.isocalendar()[0]
+                    yr_wk = (yr, wk)
+                    yr_2wk = (yr, wk2)
+                    counts_by_week[yr_wk] += 1
+                    counts_by_2week[yr_2wk] += 1
+                clus_week_counts_div[div] = counts_by_week
+                clus_2week_counts_div[div] = counts_by_2week
 
-        # Convert into dataframe -- 2 weeks
-        cluster_data_2wk_div = pd.DataFrame(data=clus_2week_counts_div)
-        total_data_2wk_div = pd.DataFrame(data=total_2week_counts_div)
-        # sort
-        total_data_2wk_div = total_data_2wk_div.sort_index()
-        cluster_data_2wk_div = cluster_data_2wk_div.sort_index()
-        # store
-        clus_data[selected_country]["cluster_data_2wk_div"] = cluster_data_2wk_div
-        clus_data[selected_country]["total_data_2wk_div"] = total_data_2wk_div
+            # Get counts per week for sequences regardless of whether in the cluster or not - from week 20 only.
+            total_week_counts_div = {}
+            total_2week_counts_div = {}
+            for div in observed_divisions:
+                counts_by_week = defaultdict(int)
+                counts_by_2week = defaultdict(int)
+                if div in uk_countries or division:
+                    # temp_meta = meta[meta['division'].isin([coun])]
+                    temp_meta = meta[meta["division"].apply(lambda x: x == div)]
+                else:
+                    # temp_meta = meta[meta['country'].isin([coun])]
+                    temp_meta = meta[meta["country"].apply(lambda x: x == div)]
+
+                # temp_meta['calendar_week'] = temp_meta['date_formatted'].apply(lambda x: x.isocalendar()[1])
+                temp_meta["calendar_week"] = temp_meta["date_formatted"].apply(
+                    lambda x: (x.isocalendar()[0], x.isocalendar()[1])
+                )
+                temp_meta = temp_meta[temp_meta["calendar_week"] >= min_data_week]
+                # If no samples are after min_data_week, will be empty!!
+                if temp_meta.empty:
+                    continue
+
+                week_counts = temp_meta["calendar_week"].value_counts().sort_index()
+                counts_by_week = week_counts.to_dict()
+                total_week_counts_div[div] = counts_by_week
+
+                # TWO WEEKS
+                temp_meta["calendar_2week"] = temp_meta["date_formatted"].apply(
+                    lambda x: (x.isocalendar()[0], x.isocalendar()[1] // 2 * 2)
+                )
+                temp_meta = temp_meta[temp_meta["calendar_2week"] >= min_data_week]
+                week2_counts = temp_meta["calendar_2week"].value_counts().sort_index()
+                counts_by_2week = week2_counts.to_dict()
+                total_2week_counts_div[div] = counts_by_2week
+
+            # DIVISION LEVEL
+            # Convert into dataframe
+            cluster_data_div = pd.DataFrame(data=clus_week_counts_div)
+            total_data_div = pd.DataFrame(data=total_week_counts_div)
+            # sort
+            total_data_div = total_data_div.sort_index()
+            cluster_data_div = cluster_data_div.sort_index()
+            # store
+            clus_data[sel_coun]["cluster_data_div"] = cluster_data_div
+            clus_data[sel_coun]["total_data_div"] = total_data_div
+
+            # Convert into dataframe -- 2 weeks
+            cluster_data_2wk_div = pd.DataFrame(data=clus_2week_counts_div)
+            total_data_2wk_div = pd.DataFrame(data=total_2week_counts_div)
+            # sort
+            total_data_2wk_div = total_data_2wk_div.sort_index()
+            cluster_data_2wk_div = cluster_data_2wk_div.sort_index()
+            # store
+            clus_data[sel_coun]["cluster_data_2wk_div"] = cluster_data_2wk_div
+            clus_data[sel_coun]["total_data_2wk_div"] = total_data_2wk_div
 
 ######################################################################################################
 ##################################
@@ -1448,15 +1461,15 @@ if do_country:
         clusters, proposed_coun_to_plot, print_files, clus_keys, "EUClusters"
     )
 
-do_usa_country = False
+do_divisions_country = False
 if "all" in clus_answer:
     print_answer = input(
-        "\nContinue to USA-specific country plotting? (y/n) (Enter is no): "
+        "\nContinue to USA- & Swiss-specific country plotting? (y/n) (Enter is no): "
     )
     if print_answer in ["y", "Y", "yes", "YES", "Yes"]:
-        do_usa_country = True
+        do_divisions_country = True
 
-if do_usa_country:
+if do_divisions_country:
     proposed_coun_to_plot, clus_keys = get_ordered_clusters_to_plot(
         clusters, True, "USA"
     )
@@ -1468,6 +1481,19 @@ if do_usa_country:
         "USAClusters",
         True,
         "USA",
+    )
+
+    proposed_coun_to_plot, clus_keys = get_ordered_clusters_to_plot(
+        clusters, True, "Switzerland"
+    )
+    plot_country_data(
+        clusters,
+        proposed_coun_to_plot,
+        print_files,
+        clus_keys,
+        "SwissClusters",
+        True,
+        "Switzerland",
     )
 
 # if all went well (script got to this point), and did an 'all' run, then print out an update!

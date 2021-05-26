@@ -28,6 +28,7 @@ It does _not_ have the deletion at 69/70.
 
 - Convalescent plasma from individuals infected with non-501Y.V3 variants had 6-fold reduced neutralization of 501Y.V3 compared to non-501Y.V3 isolates. Additionally, plasma from CoronaVac (an inactivated vaccine) vaccinated patients appears to neutralise 501Y.V3 isolates less effectively than non-501Y.V3 (though sample size was small) ([de Souza et al., Lancet Preprints](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3793486))
 - Modelling work estimates that 501Y.V3 may be 1.7-2.4 times more transmissible ([Faria et al., Science](https://science.sciencemag.org/content/early/2021/04/13/science.abh2644))
+- The <AaMut mut={'S:N501Y'}/> mutation may help recover the decreased ACE2 binding observed with the <AaMut mut={'S:E484K'}/> mutation, though this may also be overcome by other mutations (<LinkExternal href="https://www.medrxiv.org/content/10.1101/2021.03.07.21253098v2.full-text">Amanat et al., medRxiv</LinkExternal>)
 
 See a [focal `S.N501` build filtered & zoomed to 501Y.V3](https://nextstrain.org/groups/neherlab/ncov/S.N501?f_subclade_membership=20J/501Y.V3&label=clade:20J/501Y.V3&p=grid&r=country)
 

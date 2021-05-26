@@ -348,7 +348,10 @@ def convert_mutation_comparison(mutation_comparison):
     }
 
 
-def convert_region_data(region_name, region_input_file):
+def convert_region_data(region_name, region_input):
+    region_input_file = region_input['data']
+    per_country_intro_content = region_input['per_country_intro_content']
+
     if region_input_file is None:
         return {
             "region": region_name,
@@ -367,6 +370,7 @@ def convert_region_data(region_name, region_input_file):
 
     return {
         "region": region_name,
+        "per_country_intro_content": per_country_intro_content,
         "cluster_names": cluster_names,
         "distributions": distributions,
         "min_date": min_date,
@@ -374,10 +378,20 @@ def convert_region_data(region_name, region_input_file):
     }
 
 
-REGIONS = {
-    "World": "EUClusters_data.json",
-    "United States": "USAClusters_data.json",
-    "Switzerland": None,  # Will be shown as a disabled "teaser" / "Coming soon!" button in the UI
+# `per_country_intro_content` is a file name relative to `content/PerCountryIntro`
+REGIONS_INPUTS = {
+    "World": {
+        "data": "EUClusters_data.json",
+        "per_country_intro_content": "World.md"
+    },
+    "United States": {
+        "data": "USAClusters_data.json",
+        "per_country_intro_content": "UnitedStates.md"
+    },
+    "Switzerland": {
+        "data": "SwissClusters_data.json",
+        "per_country_intro_content": "Switzerland.md"
+    }
 }
 
 
@@ -432,8 +446,8 @@ if __name__ == "__main__":
     regions_data = {"regions": []}
     min_date = format_date(datetime(3000, 1, 1))
     max_date = format_date(datetime(1000, 1, 1))
-    for region_name, region_input_file in REGIONS.items():
-        region_data = convert_region_data(region_name, region_input_file)
+    for region_name, region_input in REGIONS_INPUTS.items():
+        region_data = convert_region_data(region_name, region_input)
         if region_data['min_date'] is not None and region_data['max_date'] is not None:
             min_date = compare_dates(min_date, region_data['min_date'], min)
             max_date = compare_dates(max_date, region_data['max_date'], max)

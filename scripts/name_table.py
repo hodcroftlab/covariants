@@ -128,6 +128,8 @@ def does_url_respond(url: str):
         urllib.request.urlopen(req)
     except urllib.error.HTTPError:
         return False
+    except urllib.error.URLError:
+        return False
 
     return True
 
