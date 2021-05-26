@@ -17,6 +17,18 @@ export interface CountryDataRaw {
   max_date: string
   min_date: string
   region: string
+  per_country_intro_content: string
+}
+
+export function getPerCountryIntroContentFilename(region: string): string {
+  const perCountryData: CountryDataRaw | undefined = allData.regions.find(
+    (candidate) => candidate.region === region,
+  ) as CountryDataRaw | undefined
+  if (!perCountryData) {
+    throw new Error(`Region data not found for region: ${region}`)
+  }
+
+  return perCountryData.per_country_intro_content
 }
 
 export function getClusterData(region: string) {
@@ -39,11 +51,14 @@ export function getClusterData(region: string) {
 
   const countryDistributions = perCountryData.distributions
 
+  const perCountryIntroContent = perCountryData.per_country_intro_content
+
   return {
     clusters,
     clustersState,
     countries,
     countriesState,
     countryDistributions,
+    perCountryIntroContent,
   }
 }
