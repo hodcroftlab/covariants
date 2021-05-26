@@ -716,7 +716,7 @@ for clus in clus_to_run:
             cluster_meta_div = cluster_meta[
                 cluster_meta["country"].apply(lambda x: x == sel_coun)
             ]
-            observed_divisions = [x for x in cluster_meta_div["division"].unique()]
+            observed_divisions = [x for x in cluster_meta_div["division"].unique() if x]
 
             division_info, division_dates = get_summary(
                 cluster_meta_div, observed_divisions, division=True
