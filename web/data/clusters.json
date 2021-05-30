@@ -429,7 +429,7 @@
           {
             "gene": "ORF1a",
             "left": "K",
-            "pos": 2655,
+            "pos": 1655,
             "right": "N"
           },
           {
@@ -1342,8 +1342,8 @@
           }
         ]
       },
-      "nextstrain_build": false,
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.S.154K.S.478K",
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.S.154K",
       "snps": [
         17523,
         23604,
@@ -1498,8 +1498,8 @@
           }
         ]
       },
-      "nextstrain_build": false,
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.S.154K.S.478K",
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.S.478K",
       "snps": [
         22995,
         23604,

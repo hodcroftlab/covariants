@@ -23898,7 +23898,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 321,
+              "total_sequences": 325,
               "week": "2020-09-28"
             },
             {
@@ -23924,7 +23924,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 326,
+              "total_sequences": 330,
               "week": "2020-10-12"
             },
             {
@@ -23950,7 +23950,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 544,
+              "total_sequences": 560,
               "week": "2020-10-26"
             },
             {
@@ -23976,7 +23976,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 6.0
               },
-              "total_sequences": 1152,
+              "total_sequences": 1190,
               "week": "2020-11-09"
             },
             {
@@ -24002,7 +24002,7 @@
                 "S:677H.Robin1": 14.0,
                 "S:677P.Pelican": 4.0
               },
-              "total_sequences": 1864,
+              "total_sequences": 1885,
               "week": "2020-11-23"
             },
             {
@@ -24028,7 +24028,7 @@
                 "S:677H.Robin1": 42.0,
                 "S:677P.Pelican": 16.0
               },
-              "total_sequences": 2453,
+              "total_sequences": 2507,
               "week": "2020-12-07"
             },
             {
@@ -24054,7 +24054,7 @@
                 "S:677H.Robin1": 30.0,
                 "S:677P.Pelican": 13.0
               },
-              "total_sequences": 2741,
+              "total_sequences": 2754,
               "week": "2020-12-21"
             },
             {
@@ -24080,7 +24080,7 @@
                 "S:677H.Robin1": 18.0,
                 "S:677P.Pelican": 14.0
               },
-              "total_sequences": 2058,
+              "total_sequences": 2061,
               "week": "2020-12-28"
             },
             {
@@ -24106,7 +24106,7 @@
                 "S:677H.Robin1": 37.0,
                 "S:677P.Pelican": 20.0
               },
-              "total_sequences": 4955,
+              "total_sequences": 4974,
               "week": "2021-01-11"
             },
             {
@@ -24132,7 +24132,7 @@
                 "S:677H.Robin1": 37.0,
                 "S:677P.Pelican": 37.0
               },
-              "total_sequences": 6890,
+              "total_sequences": 6914,
               "week": "2021-01-25"
             },
             {
@@ -24158,7 +24158,7 @@
                 "S:677H.Robin1": 27.0,
                 "S:677P.Pelican": 30.0
               },
-              "total_sequences": 4482,
+              "total_sequences": 4492,
               "week": "2021-02-08"
             },
             {
@@ -24184,7 +24184,7 @@
                 "S:677H.Robin1": 14.0,
                 "S:677P.Pelican": 25.0
               },
-              "total_sequences": 4460,
+              "total_sequences": 4468,
               "week": "2021-02-22"
             },
             {
@@ -24210,7 +24210,7 @@
                 "S:677H.Robin1": 19.0,
                 "S:677P.Pelican": 25.0
               },
-              "total_sequences": 4818,
+              "total_sequences": 4833,
               "week": "2021-03-08"
             },
             {
@@ -24236,7 +24236,7 @@
                 "S:677H.Robin1": 21.0,
                 "S:677P.Pelican": 22.0
               },
-              "total_sequences": 4074,
+              "total_sequences": 4092,
               "week": "2021-03-22"
             },
             {
@@ -24262,7 +24262,7 @@
                 "S:677H.Robin1": 15.0,
                 "S:677P.Pelican": 12.0
               },
-              "total_sequences": 3648,
+              "total_sequences": 3693,
               "week": "2021-04-05"
             },
             {
@@ -24288,7 +24288,7 @@
                 "S:677H.Robin1": 3.0,
                 "S:677P.Pelican": 3.0
               },
-              "total_sequences": 2474,
+              "total_sequences": 2540,
               "week": "2021-04-19"
             },
             {
@@ -24314,8 +24314,34 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 983,
+              "total_sequences": 1571,
               "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20A.EU2": 0.0,
+                "20A/S:439K": 0.0,
+                "20A/S:484K": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20E (EU1)": 0.0,
+                "20G/S:677H.Bluebird": 0.0,
+                "20G/S:677H.Heron": 0.0,
+                "20G/S:677H.Mockingbird": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20G/S:677R.Roadrunner": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:154K": 0.0,
+                "21A/S:478K": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 105,
+              "week": "2021-05-17"
             }
           ]
         },
@@ -24805,7 +24831,7 @@
                 "S:677H.Robin1": 13.0,
                 "S:677P.Pelican": 3.0
               },
-              "total_sequences": 2050,
+              "total_sequences": 2053,
               "week": "2020-12-21"
             },
             {
@@ -24832,7 +24858,7 @@
                 "S:677H.Robin1": 26.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 1413,
+              "total_sequences": 1417,
               "week": "2020-12-28"
             },
             {
@@ -24859,7 +24885,7 @@
                 "S:677H.Robin1": 31.0,
                 "S:677P.Pelican": 6.0
               },
-              "total_sequences": 2491,
+              "total_sequences": 2579,
               "week": "2021-01-11"
             },
             {
@@ -24886,7 +24912,7 @@
                 "S:677H.Robin1": 30.0,
                 "S:677P.Pelican": 9.0
               },
-              "total_sequences": 2475,
+              "total_sequences": 2560,
               "week": "2021-01-25"
             },
             {
@@ -24913,7 +24939,7 @@
                 "S:677H.Robin1": 42.0,
                 "S:677P.Pelican": 9.0
               },
-              "total_sequences": 3313,
+              "total_sequences": 3353,
               "week": "2021-02-08"
             },
             {
@@ -24940,7 +24966,7 @@
                 "S:677H.Robin1": 42.0,
                 "S:677P.Pelican": 9.0
               },
-              "total_sequences": 3781,
+              "total_sequences": 3790,
               "week": "2021-02-22"
             },
             {
@@ -24967,7 +24993,7 @@
                 "S:677H.Robin1": 15.0,
                 "S:677P.Pelican": 3.0
               },
-              "total_sequences": 4522,
+              "total_sequences": 4523,
               "week": "2021-03-08"
             },
             {
@@ -24994,7 +25020,7 @@
                 "S:677H.Robin1": 16.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 5407,
+              "total_sequences": 5453,
               "week": "2021-03-22"
             },
             {
@@ -25021,7 +25047,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 5330,
+              "total_sequences": 5404,
               "week": "2021-04-05"
             },
             {
@@ -25048,7 +25074,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 2593,
+              "total_sequences": 2786,
               "week": "2021-04-19"
             },
             {
@@ -25075,7 +25101,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 977,
+              "total_sequences": 1252,
               "week": "2021-05-03"
             },
             {
@@ -25102,7 +25128,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 65,
+              "total_sequences": 78,
               "week": "2021-05-17"
             }
           ]
@@ -25657,7 +25683,7 @@
                 "S:677H.Robin1": 64.0,
                 "S:677P.Pelican": 37.0
               },
-              "total_sequences": 2415,
+              "total_sequences": 2416,
               "week": "2021-02-08"
             },
             {
@@ -25682,7 +25708,7 @@
                 "S:677H.Robin1": 32.0,
                 "S:677P.Pelican": 31.0
               },
-              "total_sequences": 2279,
+              "total_sequences": 2280,
               "week": "2021-02-22"
             },
             {
@@ -25732,7 +25758,7 @@
                 "S:677H.Robin1": 10.0,
                 "S:677P.Pelican": 15.0
               },
-              "total_sequences": 4531,
+              "total_sequences": 4532,
               "week": "2021-03-22"
             },
             {
@@ -25757,7 +25783,7 @@
                 "S:677H.Robin1": 7.0,
                 "S:677P.Pelican": 12.0
               },
-              "total_sequences": 5537,
+              "total_sequences": 5560,
               "week": "2021-04-05"
             },
             {
@@ -25782,7 +25808,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 3890,
+              "total_sequences": 4260,
               "week": "2021-04-19"
             },
             {
@@ -25807,8 +25833,33 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 717,
+              "total_sequences": 1722,
               "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20A.EU2": 0.0,
+                "20A/S:439K": 0.0,
+                "20A/S:484K": 0.0,
+                "20A/S:98F": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20E (EU1)": 0.0,
+                "20G/S:677H.Bluebird": 0.0,
+                "20G/S:677H.Mockingbird": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 1.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:154K": 0.0,
+                "21A/S:478K": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 33,
+              "week": "2021-05-17"
             }
           ]
         },
@@ -25836,7 +25887,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 252,
+              "total_sequences": 276,
               "week": "2020-04-27"
             },
             {
@@ -25860,7 +25911,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 110,
+              "total_sequences": 129,
               "week": "2020-05-11"
             },
             {
@@ -25884,7 +25935,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 29,
+              "total_sequences": 37,
               "week": "2020-05-25"
             },
             {
@@ -25908,7 +25959,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 19,
+              "total_sequences": 21,
               "week": "2020-06-08"
             },
             {
@@ -26076,7 +26127,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 143,
+              "total_sequences": 144,
               "week": "2020-09-14"
             },
             {
@@ -26172,7 +26223,7 @@
                 "S:677H.Robin1": 34.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 894,
+              "total_sequences": 896,
               "week": "2020-11-09"
             },
             {
@@ -26364,7 +26415,7 @@
                 "S:677H.Robin1": 50.0,
                 "S:677P.Pelican": 3.0
               },
-              "total_sequences": 1157,
+              "total_sequences": 1161,
               "week": "2021-02-22"
             },
             {
@@ -26388,7 +26439,7 @@
                 "S:677H.Robin1": 51.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 2545,
+              "total_sequences": 2546,
               "week": "2021-03-08"
             },
             {
@@ -26412,7 +26463,7 @@
                 "S:677H.Robin1": 50.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 5210,
+              "total_sequences": 5350,
               "week": "2021-03-22"
             },
             {
@@ -26436,7 +26487,7 @@
                 "S:677H.Robin1": 4.0,
                 "S:677P.Pelican": 3.0
               },
-              "total_sequences": 4479,
+              "total_sequences": 4681,
               "week": "2021-04-05"
             },
             {
@@ -26460,7 +26511,7 @@
                 "S:677H.Robin1": 2.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 2072,
+              "total_sequences": 2166,
               "week": "2021-04-19"
             },
             {
@@ -26484,8 +26535,32 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 333,
+              "total_sequences": 673,
               "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20A.EU2": 0.0,
+                "20A/S:484K": 0.0,
+                "20A/S:98F": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20E (EU1)": 0.0,
+                "20G/S:677H.Bluebird": 0.0,
+                "20G/S:677H.Mockingbird": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:154K": 0.0,
+                "21A/S:478K": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 18,
+              "week": "2021-05-17"
             }
           ]
         },
@@ -27061,7 +27136,7 @@
                 "S:677H.Robin1": 26.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 5654,
+              "total_sequences": 6133,
               "week": "2021-04-05"
             },
             {
@@ -27083,7 +27158,7 @@
                 "S:677H.Robin1": 2.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 3942,
+              "total_sequences": 4475,
               "week": "2021-04-19"
             },
             {
@@ -27105,8 +27180,30 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 588,
+              "total_sequences": 1357,
               "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20A.EU2": 0.0,
+                "20A/S:484K": 0.0,
+                "20A/S:98F": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20G/S:677H.Mockingbird": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:154K": 0.0,
+                "21A/S:478K": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 28,
+              "week": "2021-05-17"
             }
           ]
         },
@@ -27566,7 +27663,7 @@
                 "S:677H.Robin1": 32.0,
                 "S:677P.Pelican": 114.0
               },
-              "total_sequences": 2104,
+              "total_sequences": 2105,
               "week": "2020-12-28"
             },
             {
@@ -27590,7 +27687,7 @@
                 "S:677H.Robin1": 51.0,
                 "S:677P.Pelican": 181.0
               },
-              "total_sequences": 3622,
+              "total_sequences": 3631,
               "week": "2021-01-11"
             },
             {
@@ -27614,7 +27711,7 @@
                 "S:677H.Robin1": 28.0,
                 "S:677P.Pelican": 117.0
               },
-              "total_sequences": 2377,
+              "total_sequences": 2391,
               "week": "2021-01-25"
             },
             {
@@ -27638,7 +27735,7 @@
                 "S:677H.Robin1": 21.0,
                 "S:677P.Pelican": 164.0
               },
-              "total_sequences": 2521,
+              "total_sequences": 2522,
               "week": "2021-02-08"
             },
             {
@@ -27662,7 +27759,7 @@
                 "S:677H.Robin1": 32.0,
                 "S:677P.Pelican": 245.0
               },
-              "total_sequences": 4034,
+              "total_sequences": 4039,
               "week": "2021-02-22"
             },
             {
@@ -27686,7 +27783,7 @@
                 "S:677H.Robin1": 7.0,
                 "S:677P.Pelican": 78.0
               },
-              "total_sequences": 2834,
+              "total_sequences": 2836,
               "week": "2021-03-08"
             },
             {
@@ -27710,7 +27807,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 25.0
               },
-              "total_sequences": 2388,
+              "total_sequences": 2389,
               "week": "2021-03-22"
             },
             {
@@ -27734,7 +27831,7 @@
                 "S:677H.Robin1": 2.0,
                 "S:677P.Pelican": 12.0
               },
-              "total_sequences": 3260,
+              "total_sequences": 3270,
               "week": "2021-04-05"
             },
             {
@@ -27758,7 +27855,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 3.0
               },
-              "total_sequences": 2676,
+              "total_sequences": 2797,
               "week": "2021-04-19"
             },
             {
@@ -27782,7 +27879,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 623,
+              "total_sequences": 1331,
               "week": "2021-05-03"
             },
             {
@@ -27806,7 +27903,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 17,
+              "total_sequences": 33,
               "week": "2021-05-17"
             }
           ]
@@ -28211,7 +28308,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 127,
+              "total_sequences": 157,
               "week": "2020-11-23"
             },
             {
@@ -28236,7 +28333,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 95,
+              "total_sequences": 131,
               "week": "2020-12-07"
             },
             {
@@ -28261,7 +28358,7 @@
                 "S:677H.Robin1": 3.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 346,
+              "total_sequences": 368,
               "week": "2020-12-21"
             },
             {
@@ -28286,7 +28383,7 @@
                 "S:677H.Robin1": 7.0,
                 "S:677P.Pelican": 9.0
               },
-              "total_sequences": 444,
+              "total_sequences": 459,
               "week": "2020-12-28"
             },
             {
@@ -28311,7 +28408,7 @@
                 "S:677H.Robin1": 11.0,
                 "S:677P.Pelican": 5.0
               },
-              "total_sequences": 391,
+              "total_sequences": 434,
               "week": "2021-01-11"
             },
             {
@@ -28336,7 +28433,7 @@
                 "S:677H.Robin1": 15.0,
                 "S:677P.Pelican": 15.0
               },
-              "total_sequences": 432,
+              "total_sequences": 450,
               "week": "2021-01-25"
             },
             {
@@ -28361,7 +28458,7 @@
                 "S:677H.Robin1": 33.0,
                 "S:677P.Pelican": 38.0
               },
-              "total_sequences": 887,
+              "total_sequences": 897,
               "week": "2021-02-08"
             },
             {
@@ -28411,7 +28508,7 @@
                 "S:677H.Robin1": 31.0,
                 "S:677P.Pelican": 45.0
               },
-              "total_sequences": 1606,
+              "total_sequences": 1611,
               "week": "2021-03-08"
             },
             {
@@ -28436,7 +28533,7 @@
                 "S:677H.Robin1": 27.0,
                 "S:677P.Pelican": 20.0
               },
-              "total_sequences": 1979,
+              "total_sequences": 1989,
               "week": "2021-03-22"
             },
             {
@@ -28461,7 +28558,7 @@
                 "S:677H.Robin1": 15.0,
                 "S:677P.Pelican": 12.0
               },
-              "total_sequences": 2749,
+              "total_sequences": 2767,
               "week": "2021-04-05"
             },
             {
@@ -28486,7 +28583,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 9.0
               },
-              "total_sequences": 3326,
+              "total_sequences": 3382,
               "week": "2021-04-19"
             },
             {
@@ -28511,7 +28608,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 1494,
+              "total_sequences": 1747,
               "week": "2021-05-03"
             }
           ]
@@ -29088,7 +29185,7 @@
                 "S:677H.Robin1": 11.0,
                 "S:677P.Pelican": 31.0
               },
-              "total_sequences": 3542,
+              "total_sequences": 3543,
               "week": "2021-04-05"
             },
             {
@@ -29110,7 +29207,7 @@
                 "S:677H.Robin1": 4.0,
                 "S:677P.Pelican": 10.0
               },
-              "total_sequences": 2378,
+              "total_sequences": 2386,
               "week": "2021-04-19"
             },
             {
@@ -29132,8 +29229,30 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 691,
+              "total_sequences": 1148,
               "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20A/S:439K": 0.0,
+                "20A/S:484K": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20E (EU1)": 0.0,
+                "20G/S:677H.Mockingbird": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:154K": 0.0,
+                "21A/S:478K": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 21,
+              "week": "2021-05-17"
             }
           ]
         },
@@ -29262,7 +29381,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 151,
+              "total_sequences": 155,
               "week": "2020-06-22"
             },
             {
@@ -29312,7 +29431,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 247,
+              "total_sequences": 261,
               "week": "2020-07-20"
             },
             {
@@ -29537,7 +29656,7 @@
                 "S:677H.Robin1": 4.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 108,
+              "total_sequences": 109,
               "week": "2020-11-23"
             },
             {
@@ -29687,7 +29806,7 @@
                 "S:677H.Robin1": 33.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 519,
+              "total_sequences": 521,
               "week": "2021-02-08"
             },
             {
@@ -29762,7 +29881,7 @@
                 "S:677H.Robin1": 38.0,
                 "S:677P.Pelican": 18.0
               },
-              "total_sequences": 2488,
+              "total_sequences": 2581,
               "week": "2021-03-22"
             },
             {
@@ -29787,7 +29906,7 @@
                 "S:677H.Robin1": 12.0,
                 "S:677P.Pelican": 12.0
               },
-              "total_sequences": 2852,
+              "total_sequences": 3229,
               "week": "2021-04-05"
             },
             {
@@ -29812,7 +29931,7 @@
                 "S:677H.Robin1": 5.0,
                 "S:677P.Pelican": 6.0
               },
-              "total_sequences": 2267,
+              "total_sequences": 2432,
               "week": "2021-04-19"
             },
             {
@@ -29837,8 +29956,33 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 729,
+              "total_sequences": 1239,
               "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20A.EU2": 0.0,
+                "20A/S:484K": 0.0,
+                "20A/S:98F": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20E (EU1)": 0.0,
+                "20G/S:677H.Bluebird": 0.0,
+                "20G/S:677H.Mockingbird": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20G/S:677R.Roadrunner": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:154K": 0.0,
+                "21A/S:478K": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 27,
+              "week": "2021-05-17"
             }
           ]
         },
@@ -30370,7 +30514,7 @@
                 "S:677H.Robin1": 51.0,
                 "S:677P.Pelican": 13.0
               },
-              "total_sequences": 968,
+              "total_sequences": 969,
               "week": "2021-02-08"
             },
             {
@@ -30466,7 +30610,7 @@
                 "S:677H.Robin1": 19.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 2654,
+              "total_sequences": 2677,
               "week": "2021-04-05"
             },
             {
@@ -30490,7 +30634,7 @@
                 "S:677H.Robin1": 3.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 1956,
+              "total_sequences": 2069,
               "week": "2021-04-19"
             },
             {
@@ -30514,8 +30658,32 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 229,
+              "total_sequences": 741,
               "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20A.EU2": 0.0,
+                "20A/S:484K": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20E (EU1)": 0.0,
+                "20G/S:677H.Bluebird": 0.0,
+                "20G/S:677H.Heron": 0.0,
+                "20G/S:677H.Mockingbird": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:154K": 0.0,
+                "21A/S:478K": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 20,
+              "week": "2021-05-17"
             }
           ]
         },
@@ -31144,7 +31312,7 @@
                 "S:677H.Robin1": 2.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 3350,
+              "total_sequences": 3364,
               "week": "2021-03-22"
             },
             {
@@ -31169,7 +31337,7 @@
                 "S:677H.Robin1": 2.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 2304,
+              "total_sequences": 2467,
               "week": "2021-04-05"
             },
             {
@@ -31194,7 +31362,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 1256,
+              "total_sequences": 1286,
               "week": "2021-04-19"
             },
             {
@@ -31219,7 +31387,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 290,
+              "total_sequences": 520,
               "week": "2021-05-03"
             }
           ]
@@ -31704,7 +31872,7 @@
                 "S:677H.Robin1": 4.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 656,
+              "total_sequences": 681,
               "week": "2021-01-11"
             },
             {
@@ -31728,7 +31896,7 @@
                 "S:677H.Robin1": 4.0,
                 "S:677P.Pelican": 7.0
               },
-              "total_sequences": 666,
+              "total_sequences": 667,
               "week": "2021-01-25"
             },
             {
@@ -31752,7 +31920,7 @@
                 "S:677H.Robin1": 7.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 884,
+              "total_sequences": 885,
               "week": "2021-02-08"
             },
             {
@@ -31848,7 +32016,7 @@
                 "S:677H.Robin1": 4.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 2069,
+              "total_sequences": 2085,
               "week": "2021-04-05"
             },
             {
@@ -31872,7 +32040,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 976,
+              "total_sequences": 1043,
               "week": "2021-04-19"
             },
             {
@@ -31896,7 +32064,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 286,
+              "total_sequences": 425,
               "week": "2021-05-03"
             }
           ]
@@ -32231,7 +32399,7 @@
                 "S:677H.Robin1": 18.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 219,
+              "total_sequences": 224,
               "week": "2020-11-09"
             },
             {
@@ -32275,7 +32443,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 60,
+              "total_sequences": 61,
               "week": "2020-12-07"
             },
             {
@@ -32341,7 +32509,7 @@
                 "S:677H.Robin1": 15.0,
                 "S:677P.Pelican": 28.0
               },
-              "total_sequences": 394,
+              "total_sequences": 395,
               "week": "2021-01-11"
             },
             {
@@ -32429,7 +32597,7 @@
                 "S:677H.Robin1": 5.0,
                 "S:677P.Pelican": 27.0
               },
-              "total_sequences": 1611,
+              "total_sequences": 1612,
               "week": "2021-03-08"
             },
             {
@@ -32451,7 +32619,7 @@
                 "S:677H.Robin1": 2.0,
                 "S:677P.Pelican": 12.0
               },
-              "total_sequences": 2305,
+              "total_sequences": 2350,
               "week": "2021-03-22"
             },
             {
@@ -32473,7 +32641,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 1503,
+              "total_sequences": 2649,
               "week": "2021-04-05"
             },
             {
@@ -32495,7 +32663,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 1146,
+              "total_sequences": 1464,
               "week": "2021-04-19"
             },
             {
@@ -32517,8 +32685,30 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 349,
+              "total_sequences": 690,
               "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20A.EU2": 0.0,
+                "20A/S:484K": 0.0,
+                "20A/S:98F": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20G/S:677H.Bluebird": 0.0,
+                "20G/S:677H.Mockingbird": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:478K": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 37,
+              "week": "2021-05-17"
             }
           ]
         },
@@ -32879,7 +33069,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 46,
+              "total_sequences": 47,
               "week": "2020-12-07"
             },
             {
@@ -32942,7 +33132,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 178,
+              "total_sequences": 179,
               "week": "2021-01-11"
             },
             {
@@ -32963,7 +33153,7 @@
                 "S:677H.Robin1": 3.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 184,
+              "total_sequences": 193,
               "week": "2021-01-25"
             },
             {
@@ -32984,7 +33174,7 @@
                 "S:677H.Robin1": 6.0,
                 "S:677P.Pelican": 5.0
               },
-              "total_sequences": 428,
+              "total_sequences": 437,
               "week": "2021-02-08"
             },
             {
@@ -33005,7 +33195,7 @@
                 "S:677H.Robin1": 9.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 490,
+              "total_sequences": 491,
               "week": "2021-02-22"
             },
             {
@@ -33026,7 +33216,7 @@
                 "S:677H.Robin1": 10.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 973,
+              "total_sequences": 978,
               "week": "2021-03-08"
             },
             {
@@ -33047,7 +33237,7 @@
                 "S:677H.Robin1": 3.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 990,
+              "total_sequences": 1001,
               "week": "2021-03-22"
             },
             {
@@ -33068,7 +33258,7 @@
                 "S:677H.Robin1": 2.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 1613,
+              "total_sequences": 1628,
               "week": "2021-04-05"
             },
             {
@@ -33089,7 +33279,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 980,
+              "total_sequences": 1024,
               "week": "2021-04-19"
             },
             {
@@ -33110,7 +33300,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 136,
+              "total_sequences": 342,
               "week": "2021-05-03"
             }
           ]
@@ -33322,7 +33512,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 107,
+              "total_sequences": 108,
               "week": "2020-08-17"
             },
             {
@@ -33437,7 +33627,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 45,
+              "total_sequences": 47,
               "week": "2020-10-26"
             },
             {
@@ -33460,7 +33650,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 105,
+              "total_sequences": 107,
               "week": "2020-11-09"
             },
             {
@@ -33483,7 +33673,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 62,
+              "total_sequences": 63,
               "week": "2020-11-23"
             },
             {
@@ -33506,7 +33696,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 95,
+              "total_sequences": 97,
               "week": "2020-12-07"
             },
             {
@@ -33552,7 +33742,7 @@
                 "S:677H.Robin1": 8.0,
                 "S:677P.Pelican": 3.0
               },
-              "total_sequences": 154,
+              "total_sequences": 155,
               "week": "2020-12-28"
             },
             {
@@ -33575,7 +33765,7 @@
                 "S:677H.Robin1": 14.0,
                 "S:677P.Pelican": 6.0
               },
-              "total_sequences": 483,
+              "total_sequences": 489,
               "week": "2021-01-11"
             },
             {
@@ -33598,7 +33788,7 @@
                 "S:677H.Robin1": 21.0,
                 "S:677P.Pelican": 6.0
               },
-              "total_sequences": 586,
+              "total_sequences": 620,
               "week": "2021-01-25"
             },
             {
@@ -33621,7 +33811,7 @@
                 "S:677H.Robin1": 42.0,
                 "S:677P.Pelican": 12.0
               },
-              "total_sequences": 984,
+              "total_sequences": 991,
               "week": "2021-02-08"
             },
             {
@@ -33644,7 +33834,7 @@
                 "S:677H.Robin1": 26.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 771,
+              "total_sequences": 818,
               "week": "2021-02-22"
             },
             {
@@ -33667,7 +33857,7 @@
                 "S:677H.Robin1": 31.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 906,
+              "total_sequences": 995,
               "week": "2021-03-08"
             },
             {
@@ -33690,7 +33880,7 @@
                 "S:677H.Robin1": 8.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 915,
+              "total_sequences": 939,
               "week": "2021-03-22"
             },
             {
@@ -33713,7 +33903,7 @@
                 "S:677H.Robin1": 3.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 1150,
+              "total_sequences": 1156,
               "week": "2021-04-05"
             },
             {
@@ -33736,7 +33926,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 1127,
+              "total_sequences": 1163,
               "week": "2021-04-19"
             },
             {
@@ -33759,8 +33949,31 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 386,
+              "total_sequences": 701,
               "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20A/S:439K": 0.0,
+                "20A/S:484K": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20E (EU1)": 0.0,
+                "20G/S:677H.Bluebird": 0.0,
+                "20G/S:677H.Heron": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:154K": 0.0,
+                "21A/S:478K": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 30,
+              "week": "2021-05-17"
             }
           ]
         },
@@ -33984,7 +34197,7 @@
                 "S:677H.Robin1": 10.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 488,
+              "total_sequences": 752,
               "week": "2020-08-31"
             },
             {
@@ -34006,7 +34219,7 @@
                 "S:677H.Robin1": 32.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 567,
+              "total_sequences": 847,
               "week": "2020-09-14"
             },
             {
@@ -34028,7 +34241,7 @@
                 "S:677H.Robin1": 30.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 382,
+              "total_sequences": 391,
               "week": "2020-09-28"
             },
             {
@@ -34050,7 +34263,7 @@
                 "S:677H.Robin1": 37.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 492,
+              "total_sequences": 493,
               "week": "2020-10-12"
             },
             {
@@ -34072,7 +34285,7 @@
                 "S:677H.Robin1": 29.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 417,
+              "total_sequences": 512,
               "week": "2020-10-26"
             },
             {
@@ -34094,7 +34307,7 @@
                 "S:677H.Robin1": 30.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 378,
+              "total_sequences": 418,
               "week": "2020-11-09"
             },
             {
@@ -34314,7 +34527,7 @@
                 "S:677H.Robin1": 22.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 1398,
+              "total_sequences": 1401,
               "week": "2021-03-22"
             },
             {
@@ -34336,7 +34549,7 @@
                 "S:677H.Robin1": 8.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 1136,
+              "total_sequences": 1169,
               "week": "2021-04-05"
             },
             {
@@ -34358,7 +34571,7 @@
                 "S:677H.Robin1": 3.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 613,
+              "total_sequences": 1054,
               "week": "2021-04-19"
             },
             {
@@ -34380,8 +34593,30 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 200,
+              "total_sequences": 434,
               "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20A/S:484K": 0.0,
+                "20A/S:98F": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 2.0,
+                "20E (EU1)": 0.0,
+                "20G/S:677H.Bluebird": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 3.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:154K": 0.0,
+                "21A/S:478K": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 11,
+              "week": "2021-05-17"
             }
           ]
         },
@@ -34406,7 +34641,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 634,
+              "total_sequences": 643,
               "week": "2020-04-27"
             },
             {
@@ -34490,7 +34725,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 424,
+              "total_sequences": 423,
               "week": "2020-06-22"
             },
             {
@@ -34511,7 +34746,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 365,
+              "total_sequences": 364,
               "week": "2020-07-06"
             },
             {
@@ -34532,7 +34767,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 146,
+              "total_sequences": 145,
               "week": "2020-07-20"
             },
             {
@@ -34574,7 +34809,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 125,
+              "total_sequences": 109,
               "week": "2020-08-17"
             },
             {
@@ -34595,7 +34830,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 14,
+              "total_sequences": 13,
               "week": "2020-08-31"
             },
             {
@@ -34637,7 +34872,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 158,
+              "total_sequences": 161,
               "week": "2020-09-28"
             },
             {
@@ -34658,7 +34893,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 545,
+              "total_sequences": 546,
               "week": "2020-10-12"
             },
             {
@@ -34668,7 +34903,7 @@
                 "20C/S:484K": 0.0,
                 "20G/S:677H.Bluebird": 0.0,
                 "20G/S:677H.Mockingbird": 0.0,
-                "20G/S:677H.Quail": 37.0,
+                "20G/S:677H.Quail": 34.0,
                 "20G/S:677H.Robin2": 0.0,
                 "20G/S:677H.Yellowhammer": 1.0,
                 "20G/S:677R.Roadrunner": 2.0,
@@ -34676,10 +34911,10 @@
                 "20I/501Y.V1": 1.0,
                 "20J/501Y.V3": 0.0,
                 "21A/S:478K": 0.0,
-                "S:677H.Robin1": 33.0,
+                "S:677H.Robin1": 32.0,
                 "S:677P.Pelican": 13.0
               },
-              "total_sequences": 2345,
+              "total_sequences": 2281,
               "week": "2020-10-26"
             },
             {
@@ -34698,9 +34933,9 @@
                 "20J/501Y.V3": 0.0,
                 "21A/S:478K": 0.0,
                 "S:677H.Robin1": 5.0,
-                "S:677P.Pelican": 9.0
+                "S:677P.Pelican": 4.0
               },
-              "total_sequences": 681,
+              "total_sequences": 613,
               "week": "2020-11-09"
             },
             {
@@ -34721,7 +34956,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 6.0
               },
-              "total_sequences": 193,
+              "total_sequences": 192,
               "week": "2020-11-23"
             },
             {
@@ -34826,7 +35061,7 @@
                 "S:677H.Robin1": 12.0,
                 "S:677P.Pelican": 28.0
               },
-              "total_sequences": 951,
+              "total_sequences": 960,
               "week": "2021-01-25"
             },
             {
@@ -34847,7 +35082,7 @@
                 "S:677H.Robin1": 11.0,
                 "S:677P.Pelican": 34.0
               },
-              "total_sequences": 908,
+              "total_sequences": 919,
               "week": "2021-02-08"
             },
             {
@@ -34868,7 +35103,7 @@
                 "S:677H.Robin1": 17.0,
                 "S:677P.Pelican": 35.0
               },
-              "total_sequences": 931,
+              "total_sequences": 939,
               "week": "2021-02-22"
             },
             {
@@ -34889,13 +35124,13 @@
                 "S:677H.Robin1": 10.0,
                 "S:677P.Pelican": 34.0
               },
-              "total_sequences": 781,
+              "total_sequences": 791,
               "week": "2021-03-08"
             },
             {
               "cluster_counts": {
                 "20A/S:439K": 0.0,
-                "20C/S:452R": 133.0,
+                "20C/S:452R": 131.0,
                 "20C/S:484K": 35.0,
                 "20G/S:677H.Bluebird": 0.0,
                 "20G/S:677H.Mockingbird": 0.0,
@@ -34904,13 +35139,13 @@
                 "20G/S:677H.Yellowhammer": 3.0,
                 "20G/S:677R.Roadrunner": 0.0,
                 "20H/501Y.V2": 4.0,
-                "20I/501Y.V1": 219.0,
+                "20I/501Y.V1": 214.0,
                 "20J/501Y.V3": 16.0,
                 "21A/S:478K": 0.0,
                 "S:677H.Robin1": 2.0,
                 "S:677P.Pelican": 18.0
               },
-              "total_sequences": 850,
+              "total_sequences": 846,
               "week": "2021-03-22"
             },
             {
@@ -34931,7 +35166,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 3.0
               },
-              "total_sequences": 1035,
+              "total_sequences": 1069,
               "week": "2021-04-05"
             },
             {
@@ -34952,7 +35187,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 619,
+              "total_sequences": 804,
               "week": "2021-04-19"
             },
             {
@@ -34973,8 +35208,29 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 128,
+              "total_sequences": 337,
               "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20A/S:439K": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20G/S:677H.Bluebird": 0.0,
+                "20G/S:677H.Mockingbird": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20G/S:677R.Roadrunner": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:478K": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 11,
+              "week": "2021-05-17"
             }
           ]
         },
@@ -35503,7 +35759,7 @@
                 "S:677H.Robin1": 20.0,
                 "S:677P.Pelican": 10.0
               },
-              "total_sequences": 832,
+              "total_sequences": 834,
               "week": "2021-02-08"
             },
             {
@@ -35553,7 +35809,7 @@
                 "S:677H.Robin1": 17.0,
                 "S:677P.Pelican": 5.0
               },
-              "total_sequences": 831,
+              "total_sequences": 848,
               "week": "2021-03-08"
             },
             {
@@ -35578,7 +35834,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 751,
+              "total_sequences": 755,
               "week": "2021-03-22"
             },
             {
@@ -35603,7 +35859,7 @@
                 "S:677H.Robin1": 2.0,
                 "S:677P.Pelican": 4.0
               },
-              "total_sequences": 774,
+              "total_sequences": 783,
               "week": "2021-04-05"
             },
             {
@@ -35628,7 +35884,7 @@
                 "S:677H.Robin1": 3.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 573,
+              "total_sequences": 615,
               "week": "2021-04-19"
             },
             {
@@ -35653,7 +35909,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 122,
+              "total_sequences": 310,
               "week": "2021-05-03"
             }
           ]
@@ -35798,7 +36054,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 10,
+              "total_sequences": 11,
               "week": "2020-11-23"
             },
             {
@@ -35998,7 +36254,7 @@
                 "S:677H.Robin1": 4.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 908,
+              "total_sequences": 962,
               "week": "2021-04-05"
             },
             {
@@ -36018,7 +36274,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 864,
+              "total_sequences": 962,
               "week": "2021-04-19"
             },
             {
@@ -36038,7 +36294,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 214,
+              "total_sequences": 543,
               "week": "2021-05-03"
             }
           ]
@@ -36526,7 +36782,7 @@
                 "S:677H.Robin1": 11.0,
                 "S:677P.Pelican": 7.0
               },
-              "total_sequences": 565,
+              "total_sequences": 566,
               "week": "2021-01-25"
             },
             {
@@ -36549,7 +36805,7 @@
                 "S:677H.Robin1": 27.0,
                 "S:677P.Pelican": 11.0
               },
-              "total_sequences": 616,
+              "total_sequences": 619,
               "week": "2021-02-08"
             },
             {
@@ -36641,7 +36897,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 754,
+              "total_sequences": 755,
               "week": "2021-04-05"
             },
             {
@@ -36664,7 +36920,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 541,
+              "total_sequences": 551,
               "week": "2021-04-19"
             },
             {
@@ -36687,7 +36943,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 186,
+              "total_sequences": 307,
               "week": "2021-05-03"
             }
           ]
@@ -36732,7 +36988,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 3,
+              "total_sequences": 11,
               "week": "2020-05-11"
             },
             {
@@ -37192,7 +37448,7 @@
                 "S:677H.Robin1": 3.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 858,
+              "total_sequences": 860,
               "week": "2021-04-05"
             },
             {
@@ -37212,7 +37468,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 546,
+              "total_sequences": 549,
               "week": "2021-04-19"
             },
             {
@@ -37232,8 +37488,28 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 223,
+              "total_sequences": 423,
               "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20A/S:484K": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20G/S:677H.Mockingbird": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:154K": 0.0,
+                "21A/S:478K": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 13,
+              "week": "2021-05-17"
             }
           ]
         },
@@ -37678,7 +37954,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 5.0
               },
-              "total_sequences": 119,
+              "total_sequences": 120,
               "week": "2021-01-25"
             },
             {
@@ -37699,7 +37975,7 @@
                 "S:677H.Robin1": 3.0,
                 "S:677P.Pelican": 6.0
               },
-              "total_sequences": 147,
+              "total_sequences": 155,
               "week": "2021-02-08"
             },
             {
@@ -37720,7 +37996,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 153,
+              "total_sequences": 171,
               "week": "2021-02-22"
             },
             {
@@ -37741,7 +38017,7 @@
                 "S:677H.Robin1": 6.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 657,
+              "total_sequences": 668,
               "week": "2021-03-08"
             },
             {
@@ -37762,7 +38038,7 @@
                 "S:677H.Robin1": 5.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 664,
+              "total_sequences": 675,
               "week": "2021-03-22"
             },
             {
@@ -37783,7 +38059,7 @@
                 "S:677H.Robin1": 2.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 756,
+              "total_sequences": 762,
               "week": "2021-04-05"
             },
             {
@@ -37804,7 +38080,7 @@
                 "S:677H.Robin1": 3.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 535,
+              "total_sequences": 548,
               "week": "2021-04-19"
             },
             {
@@ -37825,8 +38101,29 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 274,
+              "total_sequences": 356,
               "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20A/S:484K": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20E (EU1)": 0.0,
+                "20G/S:677H.Heron": 0.0,
+                "20G/S:677H.Mockingbird": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:154K": 0.0,
+                "21A/S:478K": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 25,
+              "week": "2021-05-17"
             }
           ]
         },
@@ -38182,7 +38479,7 @@
                 "S:677H.Robin1": 12.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 785,
+              "total_sequences": 787,
               "week": "2021-04-05"
             },
             {
@@ -38204,7 +38501,7 @@
                 "S:677H.Robin1": 11.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 718,
+              "total_sequences": 720,
               "week": "2021-04-19"
             },
             {
@@ -38226,8 +38523,30 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 326,
+              "total_sequences": 469,
               "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20A/S:484K": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20E (EU1)": 0.0,
+                "20G/S:677H.Bluebird": 0.0,
+                "20G/S:677H.Heron": 0.0,
+                "20G/S:677H.Mockingbird": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:478K": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 18,
+              "week": "2021-05-17"
             }
           ]
         },
@@ -38691,7 +39010,7 @@
                 "S:677H.Robin1": 13.0,
                 "S:677P.Pelican": 4.0
               },
-              "total_sequences": 529,
+              "total_sequences": 569,
               "week": "2021-01-11"
             },
             {
@@ -38829,7 +39148,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 6.0
               },
-              "total_sequences": 721,
+              "total_sequences": 726,
               "week": "2021-04-05"
             },
             {
@@ -38852,7 +39171,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 5.0
               },
-              "total_sequences": 626,
+              "total_sequences": 672,
               "week": "2021-04-19"
             },
             {
@@ -38875,8 +39194,31 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 211,
+              "total_sequences": 336,
               "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20A.EU2": 0.0,
+                "20A/S:439K": 0.0,
+                "20A/S:484K": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20E (EU1)": 0.0,
+                "20G/S:677H.Mockingbird": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20G/S:677R.Roadrunner": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:478K": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 11,
+              "week": "2021-05-17"
             }
           ]
         },
@@ -39298,7 +39640,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 610,
+              "total_sequences": 611,
               "week": "2021-04-05"
             },
             {
@@ -39317,7 +39659,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 4.0
               },
-              "total_sequences": 582,
+              "total_sequences": 587,
               "week": "2021-04-19"
             },
             {
@@ -39336,7 +39678,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 212,
+              "total_sequences": 245,
               "week": "2021-05-03"
             }
           ]
@@ -39782,7 +40124,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 29.0
               },
-              "total_sequences": 282,
+              "total_sequences": 289,
               "week": "2021-02-08"
             },
             {
@@ -39803,7 +40145,7 @@
                 "S:677H.Robin1": 2.0,
                 "S:677P.Pelican": 34.0
               },
-              "total_sequences": 492,
+              "total_sequences": 516,
               "week": "2021-02-22"
             },
             {
@@ -39824,7 +40166,7 @@
                 "S:677H.Robin1": 3.0,
                 "S:677P.Pelican": 18.0
               },
-              "total_sequences": 306,
+              "total_sequences": 323,
               "week": "2021-03-08"
             },
             {
@@ -39845,7 +40187,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 3.0
               },
-              "total_sequences": 215,
+              "total_sequences": 240,
               "week": "2021-03-22"
             },
             {
@@ -39866,7 +40208,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 313,
+              "total_sequences": 319,
               "week": "2021-04-05"
             },
             {
@@ -39887,7 +40229,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 274,
+              "total_sequences": 276,
               "week": "2021-04-19"
             },
             {
@@ -39908,7 +40250,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 96,
+              "total_sequences": 205,
               "week": "2021-05-03"
             }
           ]
@@ -40173,7 +40515,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 63,
+              "total_sequences": 64,
               "week": "2020-11-23"
             },
             {
@@ -40193,7 +40535,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 71,
+              "total_sequences": 72,
               "week": "2020-12-07"
             },
             {
@@ -40393,7 +40735,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 178,
+              "total_sequences": 181,
               "week": "2021-04-19"
             },
             {
@@ -40413,8 +40755,28 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 70,
+              "total_sequences": 115,
               "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20G/S:677H.Heron": 0.0,
+                "20G/S:677H.Mockingbird": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20G/S:677R.Roadrunner": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:478K": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 13,
+              "week": "2021-05-17"
             }
           ]
         },
@@ -40931,7 +41293,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 196,
+              "total_sequences": 199,
               "week": "2021-04-19"
             },
             {
@@ -40950,7 +41312,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 104,
+              "total_sequences": 133,
               "week": "2021-05-03"
             }
           ]
@@ -41475,7 +41837,7 @@
                 "S:677H.Robin1": 2.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 332,
+              "total_sequences": 339,
               "week": "2021-04-05"
             },
             {
@@ -41495,7 +41857,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 319,
+              "total_sequences": 342,
               "week": "2021-04-19"
             },
             {
@@ -41515,7 +41877,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 60,
+              "total_sequences": 183,
               "week": "2021-05-03"
             }
           ]
@@ -41538,7 +41900,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 16,
+              "total_sequences": 17,
               "week": "2020-05-11"
             },
             {
@@ -41592,7 +41954,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 40,
+              "total_sequences": 56,
               "week": "2020-07-06"
             },
             {
@@ -41934,7 +42296,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 185,
+              "total_sequences": 186,
               "week": "2021-03-22"
             },
             {
@@ -41970,7 +42332,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 460,
+              "total_sequences": 467,
               "week": "2021-04-19"
             },
             {
@@ -41988,7 +42350,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 337,
+              "total_sequences": 367,
               "week": "2021-05-03"
             },
             {
@@ -42006,7 +42368,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 42,
+              "total_sequences": 149,
               "week": "2021-05-17"
             }
           ]
@@ -42427,8 +42789,24 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 147,
+              "total_sequences": 148,
               "week": "2021-04-19"
+            },
+            {
+              "cluster_counts": {
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 1.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 4.0,
+                "20J/501Y.V3": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 11,
+              "week": "2021-05-03"
             }
           ]
         },
@@ -43004,7 +43382,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 434,
+              "total_sequences": 449,
               "week": "2021-04-05"
             },
             {
@@ -43026,7 +43404,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 116,
+              "total_sequences": 204,
               "week": "2021-04-19"
             },
             {
@@ -43048,7 +43426,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 50,
+              "total_sequences": 71,
               "week": "2021-05-03"
             }
           ]
@@ -43180,6 +43558,24 @@
                 "S:677P.Pelican": 0.0
               },
               "total_sequences": 6,
+              "week": "2020-11-23"
+            },
+            {
+              "cluster_counts": {
+                "20A/S:484K": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20G/S:677H.Bluebird": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:478K": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 20,
               "week": "2020-12-07"
             },
             {
@@ -43197,7 +43593,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 43,
+              "total_sequences": 47,
               "week": "2020-12-21"
             },
             {
@@ -43215,7 +43611,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 25,
+              "total_sequences": 29,
               "week": "2020-12-28"
             },
             {
@@ -43233,7 +43629,7 @@
                 "S:677H.Robin1": 3.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 72,
+              "total_sequences": 77,
               "week": "2021-01-11"
             },
             {
@@ -43251,7 +43647,7 @@
                 "S:677H.Robin1": 7.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 78,
+              "total_sequences": 81,
               "week": "2021-01-25"
             },
             {
@@ -43305,7 +43701,7 @@
                 "S:677H.Robin1": 3.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 296,
+              "total_sequences": 297,
               "week": "2021-03-08"
             },
             {
@@ -43341,7 +43737,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 378,
+              "total_sequences": 380,
               "week": "2021-04-05"
             },
             {
@@ -43359,7 +43755,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 300,
+              "total_sequences": 315,
               "week": "2021-04-19"
             },
             {
@@ -43377,7 +43773,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 147,
+              "total_sequences": 205,
               "week": "2021-05-03"
             }
           ]
@@ -43822,7 +44218,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 104,
+              "total_sequences": 105,
               "week": "2021-04-05"
             },
             {
@@ -43842,7 +44238,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 80,
+              "total_sequences": 82,
               "week": "2021-04-19"
             },
             {
@@ -43862,7 +44258,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 46,
+              "total_sequences": 64,
               "week": "2021-05-03"
             }
           ]
@@ -44147,7 +44543,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 306,
+              "total_sequences": 310,
               "week": "2020-10-26"
             },
             {
@@ -44167,7 +44563,7 @@
                 "S:677H.Robin1": 8.0,
                 "S:677P.Pelican": 4.0
               },
-              "total_sequences": 1429,
+              "total_sequences": 1615,
               "week": "2020-11-09"
             },
             {
@@ -44187,7 +44583,7 @@
                 "S:677H.Robin1": 7.0,
                 "S:677P.Pelican": 4.0
               },
-              "total_sequences": 1127,
+              "total_sequences": 1149,
               "week": "2020-11-23"
             },
             {
@@ -44207,7 +44603,7 @@
                 "S:677H.Robin1": 5.0,
                 "S:677P.Pelican": 8.0
               },
-              "total_sequences": 848,
+              "total_sequences": 852,
               "week": "2020-12-07"
             },
             {
@@ -44387,7 +44783,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 197,
+              "total_sequences": 205,
               "week": "2021-04-05"
             },
             {
@@ -44407,7 +44803,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 118,
+              "total_sequences": 125,
               "week": "2021-04-19"
             },
             {
@@ -44427,7 +44823,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 97,
+              "total_sequences": 114,
               "week": "2021-05-03"
             }
           ]
@@ -44674,7 +45070,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 103,
+              "total_sequences": 105,
               "week": "2020-12-07"
             },
             {
@@ -44740,7 +45136,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 297,
+              "total_sequences": 298,
               "week": "2021-01-11"
             },
             {
@@ -44762,7 +45158,7 @@
                 "S:677H.Robin1": 2.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 255,
+              "total_sequences": 260,
               "week": "2021-01-25"
             },
             {
@@ -44784,7 +45180,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 185,
+              "total_sequences": 190,
               "week": "2021-02-08"
             },
             {
@@ -44850,7 +45246,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 285,
+              "total_sequences": 286,
               "week": "2021-03-22"
             },
             {
@@ -44872,7 +45268,7 @@
                 "S:677H.Robin1": 9.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 327,
+              "total_sequences": 329,
               "week": "2021-04-05"
             },
             {
@@ -44894,7 +45290,7 @@
                 "S:677H.Robin1": 2.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 323,
+              "total_sequences": 397,
               "week": "2021-04-19"
             },
             {
@@ -44916,7 +45312,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 41,
+              "total_sequences": 175,
               "week": "2021-05-03"
             }
           ]
@@ -45013,7 +45409,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 303,
+              "total_sequences": 306,
               "week": "2020-06-08"
             },
             {
@@ -45105,7 +45501,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 530,
+              "total_sequences": 562,
               "week": "2020-08-03"
             },
             {
@@ -45128,7 +45524,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 129,
+              "total_sequences": 194,
               "week": "2020-08-17"
             },
             {
@@ -45151,7 +45547,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 28,
+              "total_sequences": 33,
               "week": "2020-08-31"
             },
             {
@@ -45174,7 +45570,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 28,
+              "total_sequences": 38,
               "week": "2020-09-14"
             },
             {
@@ -45220,7 +45616,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 78,
+              "total_sequences": 83,
               "week": "2020-10-12"
             },
             {
@@ -45243,7 +45639,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 69,
+              "total_sequences": 96,
               "week": "2020-10-26"
             },
             {
@@ -45266,7 +45662,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 55,
+              "total_sequences": 99,
               "week": "2020-11-09"
             },
             {
@@ -45289,7 +45685,7 @@
                 "S:677H.Robin1": 2.0,
                 "S:677P.Pelican": 3.0
               },
-              "total_sequences": 383,
+              "total_sequences": 433,
               "week": "2020-11-23"
             },
             {
@@ -45312,7 +45708,7 @@
                 "S:677H.Robin1": 6.0,
                 "S:677P.Pelican": 7.0
               },
-              "total_sequences": 475,
+              "total_sequences": 557,
               "week": "2020-12-07"
             },
             {
@@ -45335,7 +45731,7 @@
                 "S:677H.Robin1": 3.0,
                 "S:677P.Pelican": 3.0
               },
-              "total_sequences": 344,
+              "total_sequences": 370,
               "week": "2020-12-21"
             },
             {
@@ -45358,7 +45754,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 186,
+              "total_sequences": 188,
               "week": "2020-12-28"
             },
             {
@@ -45381,7 +45777,7 @@
                 "S:677H.Robin1": 8.0,
                 "S:677P.Pelican": 14.0
               },
-              "total_sequences": 1084,
+              "total_sequences": 2581,
               "week": "2021-01-11"
             },
             {
@@ -45404,7 +45800,7 @@
                 "S:677H.Robin1": 6.0,
                 "S:677P.Pelican": 4.0
               },
-              "total_sequences": 236,
+              "total_sequences": 338,
               "week": "2021-01-25"
             },
             {
@@ -45427,7 +45823,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 6.0
               },
-              "total_sequences": 247,
+              "total_sequences": 264,
               "week": "2021-02-08"
             },
             {
@@ -45450,7 +45846,7 @@
                 "S:677H.Robin1": 2.0,
                 "S:677P.Pelican": 3.0
               },
-              "total_sequences": 203,
+              "total_sequences": 259,
               "week": "2021-02-22"
             },
             {
@@ -45473,7 +45869,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 231,
+              "total_sequences": 354,
               "week": "2021-03-08"
             },
             {
@@ -45496,7 +45892,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 135,
+              "total_sequences": 892,
               "week": "2021-03-22"
             },
             {
@@ -45519,7 +45915,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 150,
+              "total_sequences": 273,
               "week": "2021-04-05"
             },
             {
@@ -45542,7 +45938,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 106,
+              "total_sequences": 418,
               "week": "2021-04-19"
             },
             {
@@ -45565,7 +45961,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 58,
+              "total_sequences": 210,
               "week": "2021-05-03"
             }
           ]
@@ -45894,7 +46290,7 @@
                 "S:677H.Robin1": 5.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 90,
+              "total_sequences": 91,
               "week": "2021-02-08"
             },
             {
@@ -45930,7 +46326,7 @@
                 "S:677H.Robin1": 4.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 178,
+              "total_sequences": 181,
               "week": "2021-03-08"
             },
             {
@@ -45966,7 +46362,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 381,
+              "total_sequences": 411,
               "week": "2021-04-05"
             },
             {
@@ -45984,7 +46380,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 141,
+              "total_sequences": 144,
               "week": "2021-04-19"
             },
             {
@@ -46002,7 +46398,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 85,
+              "total_sequences": 90,
               "week": "2021-05-03"
             },
             {
@@ -46020,7 +46416,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 23,
+              "total_sequences": 47,
               "week": "2021-05-17"
             }
           ]
@@ -46493,7 +46889,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 373,
+              "total_sequences": 379,
               "week": "2021-04-05"
             },
             {
@@ -46529,7 +46925,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 33,
+              "total_sequences": 44,
               "week": "2021-05-03"
             }
           ]
@@ -46891,7 +47287,7 @@
                 "S:677H.Robin1": 2.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 321,
+              "total_sequences": 322,
               "week": "2021-04-05"
             },
             {
@@ -46910,6 +47306,23 @@
               },
               "total_sequences": 233,
               "week": "2021-04-19"
+            },
+            {
+              "cluster_counts": {
+                "20A.EU2": 0.0,
+                "20A/S:484K": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 3.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677R.Roadrunner": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 5.0,
+                "20J/501Y.V3": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 10,
+              "week": "2021-05-03"
             }
           ]
         },
@@ -47333,7 +47746,7 @@
                 "S:677H.Robin1": 3.0,
                 "S:677P.Pelican": 4.0
               },
-              "total_sequences": 278,
+              "total_sequences": 281,
               "week": "2021-03-08"
             },
             {
@@ -47353,7 +47766,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 275,
+              "total_sequences": 291,
               "week": "2021-03-22"
             },
             {
@@ -47373,7 +47786,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 208,
+              "total_sequences": 237,
               "week": "2021-04-05"
             },
             {
@@ -47393,7 +47806,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 172,
+              "total_sequences": 173,
               "week": "2021-04-19"
             },
             {
@@ -47413,7 +47826,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 76,
+              "total_sequences": 142,
               "week": "2021-05-03"
             }
           ]
@@ -47639,7 +48052,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 219,
+              "total_sequences": 224,
               "week": "2021-04-19"
             },
             {
@@ -47656,7 +48069,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 162,
+              "total_sequences": 172,
               "week": "2021-05-03"
             }
           ]
@@ -48075,7 +48488,7 @@
                 "21A/S:154K": 1.0,
                 "S:677H.Robin1": 0.0
               },
-              "total_sequences": 301,
+              "total_sequences": 303,
               "week": "2021-04-05"
             },
             {
@@ -48093,7 +48506,7 @@
                 "21A/S:154K": 0.0,
                 "S:677H.Robin1": 0.0
               },
-              "total_sequences": 147,
+              "total_sequences": 151,
               "week": "2021-04-19"
             },
             {
@@ -48111,8 +48524,26 @@
                 "21A/S:154K": 0.0,
                 "S:677H.Robin1": 0.0
               },
-              "total_sequences": 43,
+              "total_sequences": 46,
               "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20A/S:484K": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20G/S:677H.Bluebird": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:154K": 0.0,
+                "S:677H.Robin1": 0.0
+              },
+              "total_sequences": 5,
+              "week": "2021-05-17"
             }
           ]
         },
@@ -48446,7 +48877,7 @@
                 "21A/S:478K": 0.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 72,
+              "total_sequences": 73,
               "week": "2021-02-22"
             },
             {
@@ -48461,7 +48892,7 @@
                 "21A/S:478K": 0.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 177,
+              "total_sequences": 178,
               "week": "2021-03-08"
             },
             {
@@ -48491,7 +48922,7 @@
                 "21A/S:478K": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 111,
+              "total_sequences": 115,
               "week": "2021-04-05"
             },
             {
@@ -48506,7 +48937,7 @@
                 "21A/S:478K": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 93,
+              "total_sequences": 94,
               "week": "2021-04-19"
             },
             {
@@ -48521,7 +48952,7 @@
                 "21A/S:478K": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 31,
+              "total_sequences": 44,
               "week": "2021-05-03"
             }
           ]
@@ -48894,7 +49325,7 @@
                 "S:677H.Robin1": 6.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 79,
+              "total_sequences": 81,
               "week": "2021-02-22"
             },
             {
@@ -48926,7 +49357,7 @@
                 "S:677H.Robin1": 6.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 142,
+              "total_sequences": 143,
               "week": "2021-03-22"
             },
             {
@@ -48958,7 +49389,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 75,
+              "total_sequences": 77,
               "week": "2021-04-19"
             },
             {
@@ -48974,7 +49405,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 43,
+              "total_sequences": 49,
               "week": "2021-05-03"
             }
           ]
@@ -49375,7 +49806,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 67,
+              "total_sequences": 68,
               "week": "2021-04-05"
             },
             {
@@ -49411,7 +49842,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 74,
+              "total_sequences": 80,
               "week": "2021-05-03"
             }
           ]
@@ -49731,7 +50162,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 92,
+              "total_sequences": 93,
               "week": "2020-12-21"
             },
             {
@@ -49794,7 +50225,7 @@
                 "S:677H.Robin1": 1.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 122,
+              "total_sequences": 123,
               "week": "2021-01-25"
             },
             {
@@ -49920,7 +50351,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 71,
+              "total_sequences": 72,
               "week": "2021-04-19"
             },
             {
@@ -49941,7 +50372,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 19,
+              "total_sequences": 32,
               "week": "2021-05-03"
             }
           ]
@@ -50269,7 +50700,7 @@
                 "20J/501Y.V3": 0.0,
                 "S:677H.Robin1": 1.0
               },
-              "total_sequences": 221,
+              "total_sequences": 222,
               "week": "2021-04-05"
             },
             {
@@ -50303,7 +50734,7 @@
                 "20J/501Y.V3": 7.0,
                 "S:677H.Robin1": 0.0
               },
-              "total_sequences": 177,
+              "total_sequences": 213,
               "week": "2021-05-03"
             }
           ]
@@ -50722,7 +51153,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 88,
+              "total_sequences": 97,
               "week": "2021-04-19"
             },
             {
@@ -50740,7 +51171,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 18,
+              "total_sequences": 35,
               "week": "2021-05-03"
             }
           ]
@@ -51057,7 +51488,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 60,
+              "total_sequences": 64,
               "week": "2021-04-05"
             },
             {
@@ -51083,7 +51514,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 8,
+              "total_sequences": 10,
               "week": "2021-05-03"
             }
           ]
@@ -51544,7 +51975,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 41,
+              "total_sequences": 43,
               "week": "2021-04-19"
             },
             {
@@ -51563,8 +51994,27 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 26,
+              "total_sequences": 29,
               "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20A/S:484K": 0.0,
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20G/S:677H.Mockingbird": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20G/S:677H.Yellowhammer": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "20J/501Y.V3": 0.0,
+                "21A/S:154K": 0.0,
+                "21A/S:478K": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 4,
+              "week": "2021-05-17"
             }
           ]
         },
@@ -51948,7 +52398,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 65,
+              "total_sequences": 67,
               "week": "2021-04-19"
             },
             {
@@ -51967,7 +52417,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 10,
+              "total_sequences": 25,
               "week": "2021-05-03"
             }
           ]
@@ -52212,7 +52662,22 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 3,
+              "total_sequences": 7,
+              "week": "2021-01-25"
+            },
+            {
+              "cluster_counts": {
+                "20C/S:452R": 0.0,
+                "20C/S:484K": 0.0,
+                "20G/S:677H.Bluebird": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20G/S:677H.Robin2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "20J/501Y.V3": 0.0,
+                "S:677H.Robin1": 0.0,
+                "S:677P.Pelican": 0.0
+              },
+              "total_sequences": 8,
               "week": "2021-02-08"
             },
             {
@@ -52227,7 +52692,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 2,
+              "total_sequences": 19,
               "week": "2021-02-22"
             },
             {
@@ -52242,7 +52707,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 2.0
               },
-              "total_sequences": 15,
+              "total_sequences": 35,
               "week": "2021-03-08"
             },
             {
@@ -52257,7 +52722,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 13,
+              "total_sequences": 30,
               "week": "2021-03-22"
             },
             {
@@ -52272,7 +52737,7 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 1.0
               },
-              "total_sequences": 36,
+              "total_sequences": 50,
               "week": "2021-04-05"
             },
             {
@@ -52287,7 +52752,144 @@
                 "S:677H.Robin1": 0.0,
                 "S:677P.Pelican": 0.0
               },
+              "total_sequences": 10,
+              "week": "2021-04-19"
+            }
+          ]
+        },
+        {
+          "country": "Guam",
+          "distribution": [
+            {
+              "cluster_counts": {
+                "20C/S:452R": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "21A/S:478K": 0.0
+              },
+              "total_sequences": 3,
+              "week": "2020-11-23"
+            },
+            {
+              "cluster_counts": {
+                "20C/S:452R": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "21A/S:478K": 0.0
+              },
               "total_sequences": 6,
+              "week": "2020-12-07"
+            },
+            {
+              "cluster_counts": {
+                "20C/S:452R": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "21A/S:478K": 0.0
+              },
+              "total_sequences": 1,
+              "week": "2020-12-21"
+            },
+            {
+              "cluster_counts": {
+                "20C/S:452R": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "21A/S:478K": 0.0
+              },
+              "total_sequences": 3,
+              "week": "2020-12-28"
+            },
+            {
+              "cluster_counts": {
+                "20C/S:452R": 4.0,
+                "20G/S:677H.Quail": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "21A/S:478K": 0.0
+              },
+              "total_sequences": 8,
+              "week": "2021-01-11"
+            },
+            {
+              "cluster_counts": {
+                "20C/S:452R": 3.0,
+                "20G/S:677H.Quail": 1.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "21A/S:478K": 0.0
+              },
+              "total_sequences": 5,
+              "week": "2021-01-25"
+            },
+            {
+              "cluster_counts": {
+                "20C/S:452R": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 1.0,
+                "21A/S:478K": 0.0
+              },
+              "total_sequences": 1,
+              "week": "2021-02-08"
+            },
+            {
+              "cluster_counts": {
+                "20C/S:452R": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 0.0,
+                "21A/S:478K": 0.0
+              },
+              "total_sequences": 1,
+              "week": "2021-02-22"
+            },
+            {
+              "cluster_counts": {
+                "20C/S:452R": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 2.0,
+                "21A/S:478K": 0.0
+              },
+              "total_sequences": 2,
+              "week": "2021-03-08"
+            },
+            {
+              "cluster_counts": {
+                "20C/S:452R": 1.0,
+                "20G/S:677H.Quail": 0.0,
+                "20H/501Y.V2": 0.0,
+                "20I/501Y.V1": 1.0,
+                "21A/S:478K": 0.0
+              },
+              "total_sequences": 3,
+              "week": "2021-03-22"
+            },
+            {
+              "cluster_counts": {
+                "20C/S:452R": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20H/501Y.V2": 1.0,
+                "20I/501Y.V1": 6.0,
+                "21A/S:478K": 0.0
+              },
+              "total_sequences": 7,
+              "week": "2021-04-05"
+            },
+            {
+              "cluster_counts": {
+                "20C/S:452R": 0.0,
+                "20G/S:677H.Quail": 0.0,
+                "20H/501Y.V2": 1.0,
+                "20I/501Y.V1": 13.0,
+                "21A/S:478K": 1.0
+              },
+              "total_sequences": 16,
               "week": "2021-04-19"
             }
           ]
@@ -52360,7 +52962,7 @@
                 "21A/S:154K": 0.0,
                 "21A/S:478K": 0.0
               },
-              "total_sequences": 7,
+              "total_sequences": 8,
               "week": "2020-05-11"
             },
             {
@@ -52680,7 +53282,7 @@
                 "21A/S:154K": 0.0,
                 "21A/S:478K": 0.0
               },
-              "total_sequences": 1238,
+              "total_sequences": 1239,
               "week": "2020-12-21"
             },
             {
@@ -52700,7 +53302,7 @@
                 "21A/S:154K": 0.0,
                 "21A/S:478K": 0.0
               },
-              "total_sequences": 669,
+              "total_sequences": 670,
               "week": "2020-12-28"
             },
             {
@@ -52720,7 +53322,7 @@
                 "21A/S:154K": 0.0,
                 "21A/S:478K": 0.0
               },
-              "total_sequences": 1019,
+              "total_sequences": 1025,
               "week": "2021-01-11"
             },
             {
@@ -52760,7 +53362,7 @@
                 "21A/S:154K": 0.0,
                 "21A/S:478K": 0.0
               },
-              "total_sequences": 556,
+              "total_sequences": 559,
               "week": "2021-02-08"
             },
             {
@@ -52780,7 +53382,7 @@
                 "21A/S:154K": 0.0,
                 "21A/S:478K": 0.0
               },
-              "total_sequences": 688,
+              "total_sequences": 689,
               "week": "2021-02-22"
             },
             {
@@ -52800,7 +53402,7 @@
                 "21A/S:154K": 0.0,
                 "21A/S:478K": 0.0
               },
-              "total_sequences": 1027,
+              "total_sequences": 1031,
               "week": "2021-03-08"
             },
             {
@@ -52820,7 +53422,7 @@
                 "21A/S:154K": 1.0,
                 "21A/S:478K": 0.0
               },
-              "total_sequences": 984,
+              "total_sequences": 993,
               "week": "2021-03-22"
             },
             {
@@ -52860,7 +53462,7 @@
                 "21A/S:154K": 0.0,
                 "21A/S:478K": 14.0
               },
-              "total_sequences": 1297,
+              "total_sequences": 1302,
               "week": "2021-04-19"
             },
             {
@@ -52880,7 +53482,7 @@
                 "21A/S:154K": 0.0,
                 "21A/S:478K": 1.0
               },
-              "total_sequences": 425,
+              "total_sequences": 470,
               "week": "2021-05-03"
             }
           ]
@@ -54017,7 +54619,7 @@
                 "21A/S:478K": 3.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 967,
+              "total_sequences": 969,
               "week": "2021-04-19"
             },
             {
@@ -54038,7 +54640,7 @@
                 "21A/S:478K": 0.0,
                 "S:677P.Pelican": 0.0
               },
-              "total_sequences": 307,
+              "total_sequences": 308,
               "week": "2021-05-03"
             }
           ]
@@ -54423,7 +55025,7 @@
                 "21A/S:478K": 0.0,
                 "S:677H.Robin1": 1.0
               },
-              "total_sequences": 297,
+              "total_sequences": 325,
               "week": "2020-12-28"
             },
             {
@@ -54443,7 +55045,7 @@
                 "21A/S:478K": 0.0,
                 "S:677H.Robin1": 0.0
               },
-              "total_sequences": 431,
+              "total_sequences": 436,
               "week": "2021-01-11"
             },
             {
@@ -54583,7 +55185,7 @@
                 "21A/S:478K": 3.0,
                 "S:677H.Robin1": 0.0
               },
-              "total_sequences": 265,
+              "total_sequences": 268,
               "week": "2021-04-19"
             },
             {
@@ -54603,7 +55205,7 @@
                 "21A/S:478K": 0.0,
                 "S:677H.Robin1": 0.0
               },
-              "total_sequences": 165,
+              "total_sequences": 174,
               "week": "2021-05-03"
             },
             {
@@ -54623,7 +55225,7 @@
                 "21A/S:478K": 0.0,
                 "S:677H.Robin1": 0.0
               },
-              "total_sequences": 10,
+              "total_sequences": 40,
               "week": "2021-05-17"
             }
           ]
@@ -55044,7 +55646,7 @@
                 "20I/501Y.V1": 171.0,
                 "20J/501Y.V3": 0.0
               },
-              "total_sequences": 193,
+              "total_sequences": 195,
               "week": "2021-05-03"
             }
           ]
@@ -55491,7 +56093,7 @@
                 "20J/501Y.V3": 0.0,
                 "21A/S:478K": 1.0
               },
-              "total_sequences": 40,
+              "total_sequences": 43,
               "week": "2021-05-03"
             }
           ]
