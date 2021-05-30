@@ -132,7 +132,7 @@ clusters = {
                 {"gene": "S", "left": "A", "pos": 701, "right": "V"},
                 {'gene': 'ORF3a', 'left': 'Q', 'pos': 57, 'right': 'H'},
                 {'gene': 'ORF1a', 'left': 'T', 'pos': 265, 'right': 'I'},
-                {'gene': 'ORF1a', 'left': 'K', 'pos': 2655, 'right': 'N'},
+                {'gene': 'ORF1a', 'left': 'K', 'pos': 1655, 'right': 'N'},
                 {'gene': 'ORF1a', 'left': 'K', 'pos': 3353, 'right': 'R'},
                 {"gene": "ORF1a", "left": "S", "pos": 3675, "right": "-"},
                 {"gene": "ORF1a", "left": "G", "pos": 3676, "right": "-"},
@@ -346,7 +346,7 @@ clusters = {
     "21AS154": {
         "snps": [17523, 23604, 22917], #ORF1b:1352, S:681, 452 
         "cluster_data": [],  
-        "nextstrain_build": False,
+        "nextstrain_build": True,
         "type": "variant",
         "graphing": True,
         "important": True,
@@ -354,7 +354,7 @@ clusters = {
         "col": "#009900",
         "display_name": "21A/S:154K",
         "build_name": "21A.S.154K",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.S.154K.S.478K",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.S.154K",
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "E", "pos": 154, "right": "K"},
@@ -392,7 +392,7 @@ clusters = {
     "21AS478": {
         "snps": [22995, 23604, 22917], # S:478, 681, 452
         "cluster_data": [],  
-        "nextstrain_build": False,
+        "nextstrain_build": True,
         "type": "variant",
         "graphing": True,
         "important": True,
@@ -400,7 +400,7 @@ clusters = {
         "col": "#006600",
         "display_name": "21A/S:478K",
         "build_name": "21A.S.478K",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.S.154K.S.478K",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.S.478K",
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "T", "pos": 19, "right": "R"},
