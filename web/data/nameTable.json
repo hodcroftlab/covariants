@@ -2,6 +2,7 @@
   "nameTable": [
     {
       "clade": "20E (EU1)",
+      "who": null,
       "lineages": [
         {
           "name": "B.1.177",
@@ -17,6 +18,7 @@
     },
     {
       "clade": "20A.EU2",
+      "who": null,
       "lineages": [
         {
           "name": "B.1.160",
@@ -27,6 +29,7 @@
     },
     {
       "clade": "20I/501Y.V1",
+      "who": "Alpha",
       "lineages": [
         {
           "name": "B.1.1.7",
@@ -42,6 +45,7 @@
     },
     {
       "clade": "20H/501Y.V2",
+      "who": "Beta",
       "lineages": [
         {
           "name": "B.1.351",
@@ -57,6 +61,7 @@
     },
     {
       "clade": "20J/501Y.V3",
+      "who": "Gamma",
       "lineages": [
         {
           "name": "P.1",
@@ -67,6 +72,7 @@
     },
     {
       "clade": "20C/S:452R",
+      "who": "Epsilon",
       "lineages": [
         {
           "name": "B.1.427",
@@ -86,6 +92,7 @@
     },
     {
       "clade": "20A/S:484K",
+      "who": "Eta",
       "lineages": [
         {
           "name": "B.1.525",
@@ -96,6 +103,7 @@
     },
     {
       "clade": "20C/S:484K",
+      "who": "Iota",
       "lineages": [
         {
           "name": "B.1.526",
@@ -111,6 +119,7 @@
     },
     {
       "clade": "21A/S:154K",
+      "who": "Kappa",
       "lineages": [
         {
           "name": "B.1.617.1",
@@ -121,6 +130,7 @@
     },
     {
       "clade": "21A/S:478K",
+      "who": "Delta",
       "lineages": [
         {
           "name": "B.1.617.2",
@@ -131,6 +141,7 @@
     },
     {
       "clade": "20A/S:439K",
+      "who": null,
       "lineages": [
         {
           "name": "B.1.258",
@@ -141,6 +152,7 @@
     },
     {
       "clade": "20A/S:98F",
+      "who": null,
       "lineages": [
         {
           "name": "B.1.221",
@@ -151,6 +163,7 @@
     },
     {
       "clade": "20C/S:80Y",
+      "who": null,
       "lineages": [
         {
           "name": "B.1.367",
@@ -161,6 +174,7 @@
     },
     {
       "clade": "20B/S:626S",
+      "who": null,
       "lineages": [
         {
           "name": "B.1.1.277",
@@ -171,6 +185,7 @@
     },
     {
       "clade": "20B/S:1122L",
+      "who": null,
       "lineages": [
         {
           "name": "B.1.1.302",
