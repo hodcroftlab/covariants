@@ -23,6 +23,10 @@
     "c": "#fdbf6f",
     "ls": "-"
   },
+  "Botswana": {
+    "c": "#33a02c",
+    "ls": "--"
+  },
   "Brazil": {
     "c": "#a6cee3",
     "ls": "--"
@@ -91,10 +95,6 @@
     "c": "#9900cc",
     "ls": "-."
   },
-  "Hungary": {
-    "c": "#33a02c",
-    "ls": "--"
-  },
   "Iceland": {
     "c": "#0000ff",
     "ls": "-"
@@ -135,16 +135,16 @@
     "c": "#fdbf6f",
     "ls": "--"
   },
+  "Malaysia": {
+    "c": "#cab2d6",
+    "ls": "-."
+  },
   "Mexico": {
     "c": "#e31a1c",
     "ls": "-."
   },
   "Netherlands": {
     "c": "#33a02c",
-    "ls": "-"
-  },
-  "New Zealand": {
-    "c": "#000000",
     "ls": "-"
   },
   "Nigeria": {
@@ -215,6 +215,10 @@
     "c": "#ff7f00",
     "ls": "-"
   },
+  "Thailand": {
+    "c": "#000000",
+    "ls": "-"
+  },
   "Turkey": {
     "c": "#fb9a99",
     "ls": "--"
@@ -226,9 +230,5 @@
   "United Kingdom": {
     "c": "#1f78b4",
     "ls": "-"
-  },
-  "Zimbabwe": {
-    "c": "#cab2d6",
-    "ls": "-."
   }
 }
