@@ -7,6 +7,7 @@ export interface NameTableEntry {
 
 export interface NameTableDatum {
   clade: string
+  who: string | null
   lineages: NameTableEntry[]
   others: NameTableEntry[]
 }

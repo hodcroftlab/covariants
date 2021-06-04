@@ -65,7 +65,7 @@ export interface NameTableRowProps {
 }
 
 export function NameTableRow({ datum }: NameTableRowProps) {
-  const { clade, lineages, others } = datum
+  const { clade, lineages, who, others } = datum
 
   const lineageEntries = useMemo(
     () =>
@@ -89,6 +89,7 @@ export function NameTableRow({ datum }: NameTableRowProps) {
         <Var name={clade} prefix="" />
       </Td>
       <Td>{lineageEntries}</Td>
+      <Td>{who}</Td>
       <Td>{otherEntries}</Td>
     </Tr>
   )
@@ -101,6 +102,11 @@ export function NameTable() {
         <Tr>
           <Th>{'Nextstrain Clade'}</Th>
           <Th>{'Pango Lineage'}</Th>
+          <Th>
+            <LinkExternal href="https://www.who.int/en/activities/tracking-SARS-CoV-2-variants/">
+              {'WHO Label'}
+            </LinkExternal>
+          </Th>
           <Th>{'Other Names'}</Th>
         </Tr>
       </Thead>

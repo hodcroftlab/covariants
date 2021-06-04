@@ -4,6 +4,7 @@ import urllib.error
 name_table = [
     {
         "clade": "20E (EU1)",
+        "who": None,
         "lineages": [
             {"name": "B.1.177", "url": None},
         ],
@@ -13,6 +14,7 @@ name_table = [
     },
     {
         "clade": "20A.EU2",
+        "who": None,
         "lineages": [
             {"name": "B.1.160", "url": None}
         ],
@@ -20,6 +22,7 @@ name_table = [
     },
     {
         "clade": "20I/501Y.V1",
+        "who": "Alpha",
         "lineages": [
             {"name": "B.1.1.7", "url": None}
         ],
@@ -29,6 +32,7 @@ name_table = [
     },
     {
         "clade": "20H/501Y.V2",
+        "who": "Beta",
         "lineages": [
             {"name": "B.1.351", "url": None}
         ],
@@ -38,6 +42,7 @@ name_table = [
     },
     {
         "clade": "20J/501Y.V3",
+        "who": "Gamma",
         "lineages": [
             {"name": "P.1", "url": None}
         ],
@@ -45,6 +50,7 @@ name_table = [
     },
     {
         "clade": "20C/S:452R",
+        "who": "Epsilon",
         "lineages": [
             {"name": "B.1.427", "url": None},
             {"name": "B.1.429", "url": None}
@@ -55,6 +61,7 @@ name_table = [
     },
     {
         "clade": "20A/S:484K",
+        "who": "Eta",
         "lineages": [
             {"name": "B.1.525", "url": None}
         ],
@@ -62,6 +69,7 @@ name_table = [
     },
     {
         "clade": "20C/S:484K",
+        "who": "Iota",
         "lineages": [
             {"name": "B.1.526", "url": None}
         ],
@@ -71,6 +79,7 @@ name_table = [
     },
     {
         "clade": "21A/S:154K",
+        "who": "Kappa",
         "lineages": [
             {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
         ],
@@ -78,6 +87,7 @@ name_table = [
     },
     {
         "clade": "21A/S:478K",
+        "who": "Delta",
         "lineages": [
             {"name": "B.1.617.2", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.2.html"}
         ],
@@ -85,6 +95,7 @@ name_table = [
     },
     {
         "clade": "20A/S:439K",
+        "who": None,
         "lineages": [
             {"name": "B.1.258", "url": None}
         ],
@@ -92,6 +103,7 @@ name_table = [
     },
     {
         "clade": "20A/S:98F",
+        "who": None,
         "lineages": [
             {"name": "B.1.221", "url": None}
         ],
@@ -99,6 +111,7 @@ name_table = [
     },
     {
         "clade": "20C/S:80Y",
+        "who": None,
         "lineages": [
             {"name": "B.1.367", "url": None}
         ],
@@ -106,6 +119,7 @@ name_table = [
     },
     {
         "clade": "20B/S:626S",
+        "who": None,
         "lineages": [
             {"name": "B.1.1.277", "url": None}
         ],
@@ -113,6 +127,7 @@ name_table = [
     },
     {
         "clade": "20B/S:1122L",
+        "who": None,
         "lineages": [
             {"name": "B.1.1.302", "url": None}
         ],
