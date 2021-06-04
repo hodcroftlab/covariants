@@ -5,8 +5,8 @@
 
 |                      | first_seq   |   num_seqs | last_seq   |
 |:---------------------|:------------|-----------:|:-----------|
-| USA                  | 2020-02-08  |       5380 | 2021-05-11 |
-| India                | 2020-08-13  |         36 | 2021-05-02 |
+| USA                  | 2020-02-08  |       5447 | 2021-05-19 |
+| India                | 2020-08-13  |         44 | 2021-05-03 |
 | Netherlands          | 2020-08-16  |          5 | 2021-02-17 |
 | United Arab Emirates | 2020-08-28  |          2 | 2020-09-15 |
 | Switzerland          | 2020-10-16  |          2 | 2021-01-09 |
@@ -30,5 +30,6 @@
 | Turkey               | 2021-03-09  |          2 | 2021-03-09 |
 | Singapore            | 2021-04-12  |          3 | 2021-04-24 |
 | Luxembourg           | 2021-04-21  |          1 | 2021-04-21 |
+| Czech Republic       | 2021-05-09  |          1 | 2021-05-09 |
 
 ![Overall trends S.Q677H.Robin1](/overall_trends_figures/overall_trends_S.Q677H.Robin1.png)
