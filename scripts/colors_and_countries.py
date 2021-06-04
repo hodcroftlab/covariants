@@ -135,7 +135,7 @@ country_list_1 = [
     "Lithuania",  # 13
     "Iceland",  # 14
     "Singapore",  # 15
-    "New Zealand",  # 16
+    "Thailand",  # 16
     "Czech Republic",  # 17
     "Australia",  # 18
     "Belgium",  # 19
@@ -145,7 +145,7 @@ country_list_1 = [
 country_list_2 = [
     "Brazil",  # 1
     "Slovakia",  # 2
-    "Hungary",  # 3
+    "Botswana",  # 3
     "Turkey",  # 4
     "South Africa",  # 5
     "Curacao",  # 6
@@ -172,7 +172,7 @@ country_list_3 = [
     "Bangladesh",  # 4
     "Mexico",  # 5
     "South Korea",  # 6
-    "Zimbabwe",  # 7
+    "Malaysia",  # 7
     "Bulgaria",  # 8
     "Indonesia",  # 9
     "Estonia",  # 10

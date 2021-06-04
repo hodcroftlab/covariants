@@ -906,7 +906,7 @@ for clus in clus_to_run:
 ##################################
 #### FIGURE OUT WHAT TO PLOT
 
-cutoff_num_seqs = 160
+cutoff_num_seqs = 210
 
 
 clusters_tww = []
@@ -976,7 +976,7 @@ for clus in clus_to_run:
     smoothing /= smoothing.sum()
 
     # Only plot countries with >= X seqs
-    min_to_plot = 160
+    min_to_plot = 210
     # if clus == "S222":
     #    min_to_plot = 200
 
