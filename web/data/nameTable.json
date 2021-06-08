@@ -2,7 +2,6 @@
   "nameTable": [
     {
       "clade": "20E (EU1)",
-      "who": null,
       "lineages": [
         {
           "name": "B.1.177",
@@ -14,22 +13,22 @@
           "name": "20A.EU1",
           "url": null
         }
-      ]
+      ],
+      "who": null
     },
     {
       "clade": "20A.EU2",
-      "who": null,
       "lineages": [
         {
           "name": "B.1.160",
           "url": null
         }
       ],
-      "others": []
+      "others": [],
+      "who": null
     },
     {
       "clade": "20I/501Y.V1",
-      "who": "Alpha",
       "lineages": [
         {
           "name": "B.1.1.7",
@@ -41,11 +40,11 @@
           "name": "VOC 202012/01",
           "url": null
         }
-      ]
+      ],
+      "who": "Alpha"
     },
     {
       "clade": "20H/501Y.V2",
-      "who": "Beta",
       "lineages": [
         {
           "name": "B.1.351",
@@ -57,22 +56,22 @@
           "name": "501Y.V2",
           "url": null
         }
-      ]
+      ],
+      "who": "Beta"
     },
     {
       "clade": "20J/501Y.V3",
-      "who": "Gamma",
       "lineages": [
         {
           "name": "P.1",
           "url": "https://cov-lineages.org/global_report_P.1.html"
         }
       ],
-      "others": []
+      "others": [],
+      "who": "Gamma"
     },
     {
       "clade": "20C/S:452R",
-      "who": "Epsilon",
       "lineages": [
         {
           "name": "B.1.427",
@@ -88,22 +87,22 @@
           "name": "CAL.20C",
           "url": null
         }
-      ]
+      ],
+      "who": "Epsilon"
     },
     {
       "clade": "20A/S:484K",
-      "who": "Eta",
       "lineages": [
         {
           "name": "B.1.525",
           "url": "https://cov-lineages.org/global_report_B.1.525.html"
         }
       ],
-      "others": []
+      "others": [],
+      "who": "Eta"
     },
     {
       "clade": "20C/S:484K",
-      "who": "Iota",
       "lineages": [
         {
           "name": "B.1.526",
@@ -115,84 +114,85 @@
           "name": "(Part of Pango lineage)",
           "url": null
         }
-      ]
+      ],
+      "who": "Iota"
     },
     {
       "clade": "21A/S:154K",
-      "who": "Kappa",
       "lineages": [
         {
           "name": "B.1.617.1",
           "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"
         }
       ],
-      "others": []
+      "others": [],
+      "who": "Kappa"
     },
     {
       "clade": "21A/S:478K",
-      "who": "Delta",
       "lineages": [
         {
           "name": "B.1.617.2",
           "url": "https://cov-lineages.org/lineages/lineage_B.1.617.2.html"
         }
       ],
-      "others": []
+      "others": [],
+      "who": "Delta"
     },
     {
       "clade": "20A/S:439K",
-      "who": null,
       "lineages": [
         {
           "name": "B.1.258",
           "url": null
         }
       ],
-      "others": []
+      "others": [],
+      "who": null
     },
     {
       "clade": "20A/S:98F",
-      "who": null,
       "lineages": [
         {
           "name": "B.1.221",
           "url": null
         }
       ],
-      "others": []
+      "others": [],
+      "who": null
     },
     {
       "clade": "20C/S:80Y",
-      "who": null,
       "lineages": [
         {
           "name": "B.1.367",
           "url": null
         }
       ],
-      "others": []
+      "others": [],
+      "who": null
     },
     {
       "clade": "20B/S:626S",
-      "who": null,
       "lineages": [
         {
           "name": "B.1.1.277",
           "url": null
         }
       ],
-      "others": []
+      "others": [],
+      "who": null
     },
     {
       "clade": "20B/S:1122L",
-      "who": null,
       "lineages": [
         {
           "name": "B.1.1.302",
           "url": null
         }
       ],
-      "others": []
+      "others": [],
+      "who": null
     }
   ]
 }
