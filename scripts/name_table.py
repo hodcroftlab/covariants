@@ -21,7 +21,7 @@ name_table = [
         "others": []
     },
     {
-        "clade": "20I/501Y.V1",
+        "clade": "20I (Alpha, V1)",
         "who": "Alpha",
         "lineages": [
             {"name": "B.1.1.7", "url": None}
@@ -31,7 +31,7 @@ name_table = [
         ]
     },
     {
-        "clade": "20H/501Y.V2",
+        "clade": "20H (Beta, V2)",
         "who": "Beta",
         "lineages": [
             {"name": "B.1.351", "url": None}
@@ -41,7 +41,7 @@ name_table = [
         ]
     },
     {
-        "clade": "20J/501Y.V3",
+        "clade": "20J (Gamma, V3)",
         "who": "Gamma",
         "lineages": [
             {"name": "P.1", "url": None}
@@ -49,7 +49,7 @@ name_table = [
         "others": []
     },
     {
-        "clade": "20C/S:452R",
+        "clade": "21C (Epsilon)",
         "who": "Epsilon",
         "lineages": [
             {"name": "B.1.427", "url": None},
@@ -57,41 +57,49 @@ name_table = [
         ],
         "others": [
             {"name": "CAL.20C", "url": None},
+            {"name": "20C/S:452R", "url": None}
         ],
     },
     {
-        "clade": "20A/S:484K",
+        "clade": "21D (Eta)",
         "who": "Eta",
         "lineages": [
             {"name": "B.1.525", "url": None}
         ],
-        "others": []
+        "others": [
+            {"name": "20A/S:484K", "url": None},
+        ]
     },
     {
-        "clade": "20C/S:484K",
+        "clade": "21F (Iota)",
         "who": "Iota",
         "lineages": [
             {"name": "B.1.526", "url": None}
         ],
         "others": [
             {"name": "(Part of Pango lineage)", "url": None},
+            {"name": "20C/S:484K", "url": None},
         ]
     },
     {
-        "clade": "21A/S:154K",
-        "who": "Kappa",
-        "lineages": [
-            {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
-        ],
-        "others": []
-    },
-    {
-        "clade": "21A/S:478K",
+        "clade": "21A (Delta)",
         "who": "Delta",
         "lineages": [
             {"name": "B.1.617.2", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.2.html"}
         ],
-        "others": []
+        "others": [
+            {"name": "21A/S:478K", "url": None}
+        ]
+    },
+    {
+        "clade": "21B (Kappa)",
+        "who": "Kappa",
+        "lineages": [
+            {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
+        ],
+        "others": [
+            {"name": "21A/S:154K", "url": None}
+        ]
     },
     {
         "clade": "20A/S:439K",
