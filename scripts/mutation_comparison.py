@@ -1,5 +1,5 @@
 mutation_comparison = {
-    "20I/501Y.V1\n(B.1.1.7)": {
+    "20I (Alpha, V1)\n(B.1.1.7)": {
         "nonsynonymous": [
             "S:H69-",
             "S:V70-",
@@ -13,7 +13,7 @@ mutation_comparison = {
             "S:D1118H",
         ]
     },
-    "20H/501Y.V2\n(B.1.351)": {
+    "20H (Beta, V2)\n(B.1.351)": {
         "nonsynonymous": [
             "S:L18F",
             "S:D80A",
@@ -28,7 +28,7 @@ mutation_comparison = {
             "S:A701V",
         ]
     },
-    "20J/501Y.V3\n(P.1)": {
+    "20J (Gamma, V3)\n(P.1)": {
         "nonsynonymous": [
             "S:L18F",
             "S:T20N",
@@ -44,14 +44,34 @@ mutation_comparison = {
             "S:V1176F",
         ]
     },
+    "21A (Delta)\n(B.1.617.2)": {
+        "nonsynonymous": [
+            "S:T19R",
+            "S:E156-",
+            "S:F157-",
+            "S:R158G",
+            "S:L452R",
+            "S:T478K",
+            "S:D614G",
+            "S:P681R",
+            "S:D950N"
+        ]
+    },
+    "21B (Kappa)\n(B.1.617.1)": {
+        "nonsynonymous": [
+            "S:E154K",
+            "S:L452R",
+            "S:E484Q",
+            "S:D614G",
+            "S:P681R",
+            "S:Q1071H"
+        ]
+    },
     "20B/S.484K\n(P.2)": {"nonsynonymous": ["S:E484K", "S:D614G", "S:V1176F"]},
-    "20C/S.452R\n(B.1.427/9)": {
+    "21C (Epsilon)\n(B.1.427/9)": {
         "nonsynonymous": ["S:S13I", "S:W152C", "S:L452R", "S:D614G"]
     },
-    "20C/S.484K\n(B.1.526)": {
-        "nonsynonymous": ["S:L5F", "S:T95I", "S:D253G", "S:E484K", "S:D614G", "S:A701V"]
-    },
-    "20A/S.484K\n(B.1.525)": {
+    "21D (Eta)\n(B.1.525)": {
         "nonsynonymous": [
             "S:Q52R",
             "S:A67V",
@@ -64,27 +84,7 @@ mutation_comparison = {
             "S:F888L",
         ]
     },
-    "20A/S.154K\n(B.1.617.1)": {
-        "nonsynonymous": [
-            "S:E154K",
-            "S:L452R",
-            "S:E484Q",
-            "S:D614G",
-            "S:P681R",
-            "S:Q1071H"
-        ]
-    },
-    "20A/S.478K\n(B.1.617.2)": {
-        "nonsynonymous": [
-            "S:T19R",
-            "S:E156-",
-            "S:F157-",
-            "S:R158G",
-            "S:L452R",
-            "S:T478K",
-            "S:D614G",
-            "S:P681R",
-            "S:D950N"
-        ]
+    "21F (Iota)\n(B.1.526)": {
+        "nonsynonymous": ["S:L5F", "S:T95I", "S:D253G", "S:E484K", "S:D614G", "S:A701V"]
     },
 }
