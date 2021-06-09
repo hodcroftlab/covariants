@@ -9,8 +9,13 @@ clusters = {
         "country_info": [],
         "col": "#ff8d3d",
         "display_name": "20E (EU1)",
-        "display_name2": "S:A222V",
+        "alt_display_name": ["20A.EU1"],
         "build_name": "20A.EU1",
+        "nextstrain_name": "20E (EU1)",
+        "pango_lineages": [
+            {"name": "B.1.177", "url": None},
+        ],
+        "alternative_names": ["20A.EU1"],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.EU1?f_region=Europe",
         "mutations": {
             "nonsynonymous": [
@@ -35,8 +40,11 @@ clusters = {
         "country_info": [],
         "col": "#65beeb",
         "display_name": "20A.EU2",
-        "display_name2": "S:477N",
+        #"alt_display_name": "S:477N",
         "build_name": "20A.EU2",
+        "pango_lineages": [
+            {"name": "B.1.160", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.EU2?f_region=Europe",
         "mutations": {
             "nonsynonymous": [
@@ -65,9 +73,16 @@ clusters = {
         "important": True,
         "country_info": [],
         "col": "#b30000",
-        "display_name": "20I/501Y.V1",
-        "build_name": "S.501Y.V1",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.501Y.V1?c=gt-S_501",  # color, no europe filter
+        "display_name": "20I (Alpha, V1)",
+        "build_name": "20I.Alpha.V1",
+        "old_build_names": ["S.501Y.V1"],
+        "who_name": ["Alpha"],
+        "nextstrain_name": "20I (Alpha, V1)",
+        "pango_lineage": [
+            {"name": "B.1.1.7", "url": None}
+        ],
+        "alternative_names": ["VOC 202012/01"],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20I.Alpha.V1",  # color, no europe filter
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "H", "pos": 69, "right": "-"},
@@ -115,9 +130,16 @@ clusters = {
         "important": True,
         "country_info": [],
         "col": "#ff0000",
-        "display_name": "20H/501Y.V2",
-        "build_name": "S.501Y.V2",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.501Y.V2?c=gt-S_501",  # color, no europe filter
+        "display_name": "20H (Beta, V2)",
+        "build_name": "20H.Beta.V2",
+        "old_build_names": ["S.501Y.V2"],
+        "who_name": ["Beta"],
+        "nextstrain_name": "20H (Beta, V2)",
+        "pango_lineages": [
+            {"name": "B.1.351", "url": None}
+        ],
+        "alternative_names": ["501Y.V2"],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20H.Beta.V2",  # color, no europe filter
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "D", "pos": 80, "right": "A"},
@@ -158,9 +180,15 @@ clusters = {
         "important": True,
         "country_info": [],
         "col": "#ff8080",
-        "display_name": "20J/501Y.V3",
-        "build_name": "S.501Y.V3",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.501Y.V3?c=gt-S_501",  # color, no europe filter
+        "display_name": "20J (Gamma, V3)",
+        "build_name": "20J.Gamma.V3",
+        "old_build_names": ["S.501Y.V3"],
+        "who_name": ["Gamma"],
+        "nextstrain_name": "20J (Gamma, V3)",
+        "pango_lineages": [
+            {"name": "P.1", "url": None}
+        ],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20J.Gamma.V3",  # color, no europe filter
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "L", "pos": 18, "right": "F"},
@@ -209,12 +237,21 @@ clusters = {
         "nextstrain_build": True,
         "graphing": True,
         "type": "variant",
-        "important": True,
+        "important": False,
         "country_info": [],
         "col": "#660066",
-        "display_name": "20C/S:452R",
-        "build_name": "S.L452R",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.L452R?c=gt-S_13,152,452",  # color, no europe filter
+        "display_name": "21C (Epsilon)",
+        "alt_display_name": "20C/S:452R",
+        "build_name": "21C.Epsilon",
+        "old_build_names": ["S.L452R"],
+        "who_name": ["Epsilon"],
+        "nextstrain_name": "21C (Epsilon)",
+        "pango_lineages": [
+            {"name": "B.1.427", "url": None},
+            {"name": "B.1.429", "url": None}
+        ],
+        "alternative_names": ["CAL.20C"],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21C.Epsilon",  # color, no europe filter
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "S", "pos": 13, "right": "I"},
@@ -243,9 +280,17 @@ clusters = {
         "important": True,
         "country_info": [],
         "col": "#ff99ff",
-        "display_name": "20C/S:484K",
-        "build_name": "20C.S.484K",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20C.S.484K?c=gt-S_484",  # color, no europe filter
+        "display_name": "21F (Iota)",
+        "alt_display_name": "20C/S:484K",
+        "build_name": "21F.Iota",
+        "old_build_names": ["20C.S.484K"],
+        "who_name": ["Iota"],
+        "nextstrain_name": "21F (Iota)",
+        "pango_lineages": [
+            {"name": "B.1.526", "url": None}
+        ],
+        "alternative_names": ["B.1.526 (partial)"],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21F.Iota?c=gt-S_484",  # color, no europe filter
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "L", "pos": 5, "right": "F"},
@@ -285,9 +330,16 @@ clusters = {
         "important": True,
         "country_info": [],
         "col": "#000066",
-        "display_name": "20A/S:484K",
-        "build_name": "20A.S.484K",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.484K",  # color, no europe filter
+        "display_name": "21D (Eta)",
+        "alt_display_name": "20A/S:484K",
+        "build_name": "21D.Eta",
+        "old_build_names": ["20A.S.484K"],
+        "who_name": ["Eta"],
+        "nextstrain_name": "21D (Eta)",
+        "pango_lineages": [
+            {"name": "B.1.525", "url": None}
+        ],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21D.Eta",  # color, no europe filter
         "mutations": {
             "nonsynonymous": [
                 {'gene': 'S', 'left': 'Q', 'pos': 52, 'right': 'R'},
@@ -338,9 +390,9 @@ clusters = {
         "important": False,
         "country_info": [],
         "col": "#009900",
-        "display_name": "21A/S:154K.S:478K",
-        "build_name": "21A.S.154K.S.478K",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.S.154K.S.478K",
+        "display_name": "21A/21B",
+        "build_name": "21A.21B",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.21B",
     },
     # variant  -- part of 'Indian' in media - B.1.617.1 
     "21AS154": {
@@ -352,9 +404,16 @@ clusters = {
         "important": True,
         "country_info": [],
         "col": "#009900",
-        "display_name": "21A/S:154K",
-        "build_name": "21A.S.154K",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.S.154K",
+        "display_name": "21B (Kappa)",
+        "alt_display_name": "21A/S:154K",
+        "build_name": "21B.Kappa",
+        "old_build_names": ["21A.S.154K"],
+        "who_name": ["Kappa"],
+        "nextstrain_name": "21B (Kappa)",
+        "pango_lineages": [
+            {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
+        ],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21B.Kappa",
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "E", "pos": 154, "right": "K"},
@@ -398,9 +457,16 @@ clusters = {
         "important": True,
         "country_info": [],
         "col": "#006600",
-        "display_name": "21A/S:478K",
-        "build_name": "21A.S.478K",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.S.478K",
+        "display_name": "21A (Delta)",
+        "alt_display_name": "21A/S:478K",
+        "build_name": "21A.Delta",
+        "old_build_names": ["21A.S.478K"],
+        "who_name": ["Delta"],
+        "nextstrain_name": "21A (Delta)",
+        "pango_lineages": [
+            {"name": "B.1.617.2", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.2.html"}
+        ],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.Delta",
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "T", "pos": 19, "right": "R"},
@@ -443,6 +509,9 @@ clusters = {
         "col": "#0000ff",
         "display_name": "20A/S:439K",
         "build_name": "S.N439K",
+        "pango_lineages": [
+            {"name": "B.1.258", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_439&f_region=Europe",
         "mutations": {
             "nonsynonymous": [
@@ -540,6 +609,9 @@ clusters = {
         "col": "#a3a3c2",
         "display_name": "20A/S:98F",
         "build_name": "S.S98F",
+        "pango_lineages": [
+            {"name": "B.1.221", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.S98F?c=gt-S_98&f_region=Europe",  # color, europe Filter
         "mutations": {
             "nonsynonymous": [
@@ -563,6 +635,9 @@ clusters = {
         "col": "#b3d9ff",
         "display_name": "20C/S:80Y",
         "build_name": "S.D80Y",
+        "pango_lineages": [
+            {"name": "B.1.367", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.D80Y?f_region=Europe",
         "mutations": {
             "nonsynonymous": [
@@ -600,6 +675,9 @@ clusters = {
         "col": "#66ffb3",
         "display_name": "20B/S:626S",
         "build_name": "S.A626S",
+        "pango_lineages": [
+            {"name": "B.1.1.277", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.A626S?f_region=Europe",
         "mutations": {
             "nonsynonymous": [{"gene": "S", "left": "A", "pos": 626, "right": "S"}]
@@ -616,6 +694,9 @@ clusters = {
         "col": "#666699",
         "display_name": "20B/S:1122L",
         "build_name": "S.V1122L",
+        "pango_lineages": [
+            {"name": "B.1.1.302", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.V1122L?c=gt-S_1122&f_region=Europe",  # color, europe Filter
         "mutations": {
             "nonsynonymous": [
