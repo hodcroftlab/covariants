@@ -18,6 +18,16 @@ export function parseVariant(formatted: string): Mutation | undefined {
     return { parent: '20E', version: ' (EU1)' }
   }
 
+  if (formatted.includes("(")) {
+    const match2  = /(?<parent>)?(?<version>)/i.exec(formatted)
+    if (!match2?.groups) {
+      return undefined
+    }
+    const parent = parseNonEmpty(match2.groups?.parent)
+    const version = parseNonEmpty(match2.groups?.version)
+    return { parent , version }
+  }
+
   const match = /^(?<parent>.*\/)?(?<gene>.*:)?(?<left>[*.a-z-]{0,1})(?<pos>(\d)*)(?<right>[*.a-z-]{0,1})(?<version>\..*)?$/i.exec(formatted) // prettier-ignore
 
   if (!match?.groups) {
