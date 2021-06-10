@@ -93,7 +93,10 @@ bad_seqs = {
     "Italy/CAM-CRGS-544/2020": "2020-03-14",
     "Spain/IB-HUSE-00001/2020": "2020-03-02",
     "Spain/VC-IBV-99028301/2020": "2020-03-17",
-    "Belgium/MBLGc7385/2020":   "2020-05-20"
+    "Belgium/MBLGc7385/2020":   "2020-05-20",
+    "Italy/MAR-UnivPM30_45476/2020":  "2002-10-04", #impossible date
+    "Italy/MAR-UnivPM31_45989/2020":  "2002-10-05", #impossible date
+    "Italy/MAR-UnivPM32_47190/2020":  "2002-10-05" #impossible date
     #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
     #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
 }
