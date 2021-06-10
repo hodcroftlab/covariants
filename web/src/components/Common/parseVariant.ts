@@ -19,7 +19,7 @@ export function parseVariant(formatted: string): Mutation | undefined {
   }
 
   if (formatted.includes("(")) {
-    const match2  = /(?<parent>)?(?<version>)/i.exec(formatted)
+    const match2  = /(?<parent>.*)?(?<version>.*)/i.exec(formatted)
     if (!match2?.groups) {
       return undefined
     }
