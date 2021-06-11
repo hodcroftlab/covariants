@@ -62,7 +62,7 @@ jobs:
           name: "Deploy web root to AWS S3 (branch << pipeline.git.branch >>)"
           command: |
             cd web/.build/production/web
-            aws s3 cp --recursive --exclude "_next" --exclude "*.html" "./" "s3://${AWS_S3_BUCKET}/"
+            aws s3 cp --recursive --exclude "_next/*" --exclude "*.html" "./" "s3://${AWS_S3_BUCKET}/"
 
       - run:
           name: "Deploy html files to AWS S3 (branch << pipeline.git.branch >>)"
