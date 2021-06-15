@@ -14,6 +14,10 @@ jobs:
     docker:
       - image: cimg/python:3.8.10-node
 
+    environment:
+      PROD_ENABLE_TYPE_CHECKS: 0
+      PROD_ENABLE_REDUX_DEV_TOOLS: 0
+
     steps:
       - checkout
 
