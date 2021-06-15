@@ -8,9 +8,15 @@
           "url": null
         }
       ],
-      "others": [
+      "oldnames": [
         {
           "name": "20A.EU1",
+          "url": null
+        }
+      ],
+      "others": [
+        {
+          "name": "EU1",
           "url": null
         }
       ],
@@ -24,6 +30,7 @@
           "url": null
         }
       ],
+      "oldnames": [],
       "others": [],
       "who": null
     },
@@ -33,6 +40,12 @@
         {
           "name": "B.1.1.7",
           "url": "https://cov-lineages.org/global_report_B.1.1.7.html"
+        }
+      ],
+      "oldnames": [
+        {
+          "name": "20I/501Y.V1",
+          "url": null
         }
       ],
       "others": [
@@ -51,6 +64,12 @@
           "url": "https://cov-lineages.org/global_report_B.1.351.html"
         }
       ],
+      "oldnames": [
+        {
+          "name": "20H/501Y.V2",
+          "url": null
+        }
+      ],
       "others": [
         {
           "name": "501Y.V2",
@@ -65,6 +84,12 @@
         {
           "name": "P.1",
           "url": "https://cov-lineages.org/global_report_P.1.html"
+        }
+      ],
+      "oldnames": [
+        {
+          "name": "20J/501Y.V3",
+          "url": null
         }
       ],
       "others": [],
@@ -82,13 +107,15 @@
           "url": null
         }
       ],
+      "oldnames": [
+        {
+          "name": "20C/S:452R",
+          "url": null
+        }
+      ],
       "others": [
         {
           "name": "CAL.20C",
-          "url": null
-        },
-        {
-          "name": "20C/S:452R",
           "url": null
         }
       ],
@@ -102,12 +129,13 @@
           "url": "https://cov-lineages.org/global_report_B.1.525.html"
         }
       ],
-      "others": [
+      "oldnames": [
         {
           "name": "20A/S:484K",
           "url": null
         }
       ],
+      "others": [],
       "who": "Eta"
     },
     {
@@ -118,13 +146,15 @@
           "url": null
         }
       ],
+      "oldnames": [
+        {
+          "name": "20C/S:484K",
+          "url": null
+        }
+      ],
       "others": [
         {
           "name": "(Part of Pango lineage)",
-          "url": null
-        },
-        {
-          "name": "20C/S:484K",
           "url": null
         }
       ],
@@ -138,12 +168,13 @@
           "url": "https://cov-lineages.org/lineages/lineage_B.1.617.2.html"
         }
       ],
-      "others": [
+      "oldnames": [
         {
           "name": "21A/S:478K",
           "url": null
         }
       ],
+      "others": [],
       "who": "Delta"
     },
     {
@@ -154,12 +185,13 @@
           "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"
         }
       ],
-      "others": [
+      "oldnames": [
         {
           "name": "21A/S:154K",
           "url": null
         }
       ],
+      "others": [],
       "who": "Kappa"
     },
     {
@@ -170,6 +202,7 @@
           "url": null
         }
       ],
+      "oldnames": [],
       "others": [],
       "who": null
     },
@@ -181,6 +214,7 @@
           "url": null
         }
       ],
+      "oldnames": [],
       "others": [],
       "who": null
     },
@@ -192,6 +226,7 @@
           "url": null
         }
       ],
+      "oldnames": [],
       "others": [],
       "who": null
     },
@@ -203,6 +238,7 @@
           "url": null
         }
       ],
+      "oldnames": [],
       "others": [],
       "who": null
     },
@@ -214,6 +250,7 @@
           "url": null
         }
       ],
+      "oldnames": [],
       "others": [],
       "who": null
     }
