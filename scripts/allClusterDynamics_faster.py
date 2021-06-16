@@ -494,14 +494,14 @@ for clus in clus_to_run:
 
     ii = 0
     firstseqdate = country_info_df["first_seq"][ii]
-    while firstseqdate < "2019-12-01":
+    while datetime.datetime.strptime(firstseqdate, "%Y-%m-%d") < datetime.datetime.strptime("2019-12-01", "%Y-%m-%d"):
         ii += 1
         firstseqdate = country_info_df["first_seq"][ii]
 
     if clus in cluster_first_dates:
         # datetime.datetime.strptime(cluster_first_dates[clus]["first_date"],"%Y-%m-%d")
         alert = "OK"
-        if firstseqdate < cluster_first_dates[clus]["first_date"]:
+        if datetime.datetime.strptime(firstseqdate, "%Y-%m-%d") < datetime.datetime.strptime(cluster_first_dates[clus]["first_date"], "%Y-%m-%d"):
             alert = f"ALERT: sequence date of {firstseqdate}"
 
         alert_first_date[clus] = alert
