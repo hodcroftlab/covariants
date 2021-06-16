@@ -8,9 +8,15 @@
           "url": null
         }
       ],
-      "others": [
+      "oldnames": [
         {
           "name": "20A.EU1",
+          "url": null
+        }
+      ],
+      "others": [
+        {
+          "name": "EU1",
           "url": null
         }
       ],
@@ -24,15 +30,22 @@
           "url": null
         }
       ],
+      "oldnames": [],
       "others": [],
       "who": null
     },
     {
-      "clade": "20I/501Y.V1",
+      "clade": "20I (Alpha, V1)",
       "lineages": [
         {
           "name": "B.1.1.7",
           "url": "https://cov-lineages.org/global_report_B.1.1.7.html"
+        }
+      ],
+      "oldnames": [
+        {
+          "name": "20I/501Y.V1",
+          "url": null
         }
       ],
       "others": [
@@ -44,11 +57,17 @@
       "who": "Alpha"
     },
     {
-      "clade": "20H/501Y.V2",
+      "clade": "20H (Beta, V2)",
       "lineages": [
         {
           "name": "B.1.351",
           "url": "https://cov-lineages.org/global_report_B.1.351.html"
+        }
+      ],
+      "oldnames": [
+        {
+          "name": "20H/501Y.V2",
+          "url": null
         }
       ],
       "others": [
@@ -60,18 +79,24 @@
       "who": "Beta"
     },
     {
-      "clade": "20J/501Y.V3",
+      "clade": "20J (Gamma, V3)",
       "lineages": [
         {
           "name": "P.1",
           "url": "https://cov-lineages.org/global_report_P.1.html"
         }
       ],
+      "oldnames": [
+        {
+          "name": "20J/501Y.V3",
+          "url": null
+        }
+      ],
       "others": [],
       "who": "Gamma"
     },
     {
-      "clade": "20C/S:452R",
+      "clade": "21C (Epsilon)",
       "lineages": [
         {
           "name": "B.1.427",
@@ -79,6 +104,12 @@
         },
         {
           "name": "B.1.429",
+          "url": null
+        }
+      ],
+      "oldnames": [
+        {
+          "name": "20C/S:452R",
           "url": null
         }
       ],
@@ -91,21 +122,33 @@
       "who": "Epsilon"
     },
     {
-      "clade": "20A/S:484K",
+      "clade": "21D (Eta)",
       "lineages": [
         {
           "name": "B.1.525",
           "url": "https://cov-lineages.org/global_report_B.1.525.html"
         }
       ],
+      "oldnames": [
+        {
+          "name": "20A/S:484K",
+          "url": null
+        }
+      ],
       "others": [],
       "who": "Eta"
     },
     {
-      "clade": "20C/S:484K",
+      "clade": "21F (Iota)",
       "lineages": [
         {
           "name": "B.1.526",
+          "url": null
+        }
+      ],
+      "oldnames": [
+        {
+          "name": "20C/S:484K",
           "url": null
         }
       ],
@@ -118,26 +161,38 @@
       "who": "Iota"
     },
     {
-      "clade": "21A/S:154K",
-      "lineages": [
-        {
-          "name": "B.1.617.1",
-          "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"
-        }
-      ],
-      "others": [],
-      "who": "Kappa"
-    },
-    {
-      "clade": "21A/S:478K",
+      "clade": "21A (Delta)",
       "lineages": [
         {
           "name": "B.1.617.2",
           "url": "https://cov-lineages.org/lineages/lineage_B.1.617.2.html"
         }
       ],
+      "oldnames": [
+        {
+          "name": "21A/S:478K",
+          "url": null
+        }
+      ],
       "others": [],
       "who": "Delta"
+    },
+    {
+      "clade": "21B (Kappa)",
+      "lineages": [
+        {
+          "name": "B.1.617.1",
+          "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"
+        }
+      ],
+      "oldnames": [
+        {
+          "name": "21A/S:154K",
+          "url": null
+        }
+      ],
+      "others": [],
+      "who": "Kappa"
     },
     {
       "clade": "20A/S:439K",
@@ -147,6 +202,7 @@
           "url": null
         }
       ],
+      "oldnames": [],
       "others": [],
       "who": null
     },
@@ -158,6 +214,7 @@
           "url": null
         }
       ],
+      "oldnames": [],
       "others": [],
       "who": null
     },
@@ -169,6 +226,7 @@
           "url": null
         }
       ],
+      "oldnames": [],
       "others": [],
       "who": null
     },
@@ -180,6 +238,7 @@
           "url": null
         }
       ],
+      "oldnames": [],
       "others": [],
       "who": null
     },
@@ -191,6 +250,7 @@
           "url": null
         }
       ],
+      "oldnames": [],
       "others": [],
       "who": null
     }
