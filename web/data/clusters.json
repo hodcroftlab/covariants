@@ -645,7 +645,9 @@
       "type": "do_not_display"
     },
     {
-      "alt_display_name": "21A/S:478K",
+      "alt_display_name": [
+        "21A/S:478K"
+      ],
       "build_name": "21A.Delta",
       "cluster_data": [],
       "col": "#006600",
@@ -815,7 +817,9 @@
       ]
     },
     {
-      "alt_display_name": "21A/S:154K",
+      "alt_display_name": [
+        "21A/S:154K"
+      ],
       "build_name": "21B.Kappa",
       "cluster_data": [],
       "col": "#009900",
@@ -995,7 +999,9 @@
       ]
     },
     {
-      "alt_display_name": "20C/S:484K",
+      "alt_display_name": [
+        "20C/S:484K"
+      ],
       "alternative_names": [
         "B.1.526 (partial)"
       ],
@@ -1163,7 +1169,9 @@
       ]
     },
     {
-      "alt_display_name": "20A/S:484K",
+      "alt_display_name": [
+        "20A/S:484K"
+      ],
       "build_name": "21D.Eta",
       "cluster_data": [],
       "col": "#000066",
@@ -1455,7 +1463,9 @@
       "type": "variant"
     },
     {
-      "alt_display_name": "20C/S:452R",
+      "alt_display_name": [
+        "20C/S:452R"
+      ],
       "alternative_names": [
         "CAL.20C"
       ],

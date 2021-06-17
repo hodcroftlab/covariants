@@ -1,9 +1,6 @@
 import React, { useMemo } from 'react'
 
 import { connect } from 'react-redux'
-import { replace } from 'connected-next-router'
-import { ClusterButtonPanel } from 'src/components/ClusterButtonPanel/ClusterButtonPanel'
-import { DefiningMutations, hasDefiningMutations } from 'src/components/Variants/DefiningMutations'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 
@@ -14,6 +11,9 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { Layout } from 'src/components/Layout/Layout'
 import { Editable } from 'src/components/Common/Editable'
 import { VariantsPageContainer } from 'src/components/Common/ClusterSidebarLayout'
+import { ClusterButtonPanel } from 'src/components/ClusterButtonPanel/ClusterButtonPanel'
+import { DefiningMutations, hasDefiningMutations } from 'src/components/Variants/DefiningMutations'
+import { VariantTitle } from 'src/components/Variants/VariantTitle'
 
 import { ReactComponent as NextstrainIconBase } from 'src/assets/images/nextstrain_logo.svg'
 
@@ -21,14 +21,6 @@ import { PlotCard } from './PlotCard'
 import { ProteinCard } from './ProteinCard'
 
 const EditableClusterContent = styled(Editable)``
-
-const ClusterNameTitle = styled.span`
-  display: inline;
-`
-
-const ClusterNameSubtitle = styled.span`
-  display: inline;
-`
 
 const NextstrainIcon = styled(NextstrainIconBase)`
   display: inline;
@@ -39,21 +31,18 @@ const NextstrainIcon = styled(NextstrainIconBase)`
 
 const mapStateToProps = null
 
-const mapDispatchToProps = {
-  routerReplace: replace,
-}
+const mapDispatchToProps = {}
 
 export const VariantsPage = connect(mapStateToProps, mapDispatchToProps)(VariantsPageDisconnected)
 
 export interface VariantsPageBaseProps {
   currentCluster: ClusterDatum
+  redirectedFromClusterName?: string
 }
 
-export interface VariantsPageProps extends VariantsPageBaseProps {
-  routerReplace(url: string): void
-}
+export function VariantsPageDisconnected(props: VariantsPageBaseProps) {
+  const { currentCluster } = props
 
-export function VariantsPageDisconnected({ currentCluster }: VariantsPageProps) {
   const ClusterContent = getClusterContent(currentCluster.build_name)
   const showDefiningMutations = useMemo(() => hasDefiningMutations(currentCluster), [currentCluster])
 
@@ -62,14 +51,7 @@ export function VariantsPageDisconnected({ currentCluster }: VariantsPageProps) 
       <VariantsPageContainer fluid>
         <Row noGutters>
           <Col>
-            <h1 className="text-center">
-              <ClusterNameTitle>{`Variant: ${currentCluster.display_name}`}</ClusterNameTitle>
-              <span className="ml-2">
-                {currentCluster.display_name2 && (
-                  <ClusterNameSubtitle>{`(${currentCluster.display_name2})`}</ClusterNameSubtitle>
-                )}
-              </span>
-            </h1>
+            <VariantTitle cluster={currentCluster} />
           </Col>
         </Row>
 

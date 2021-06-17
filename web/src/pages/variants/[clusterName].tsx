@@ -3,18 +3,40 @@ import type { GetStaticPathsContext, GetStaticPropsContext, GetStaticPathsResult
 import { get } from 'lodash'
 
 import type { VariantsPageBaseProps } from 'src/components/Variants/VariantsPage'
-import { getClusterBuildNames, getClusters, getDefaultCluster } from 'src/io/getClusters'
+import {
+  getClusterBuildNames,
+  getClusterOldBuildNames,
+  getClusterRedirects,
+  getClusters,
+  getDefaultCluster,
+} from 'src/io/getClusters'
 import { takeFirstMaybe } from 'src/helpers/takeFirstMaybe'
 
 const clusters = getClusters()
 const DEFAULT_CLUSTER = getDefaultCluster()
 const clusterBuildNames = getClusterBuildNames()
+const clusterOldBuildNames = getClusterOldBuildNames()
+const clusterRedirects = getClusterRedirects()
 
 export async function getStaticProps(
   context: GetStaticPropsContext,
 ): Promise<GetStaticPropsResult<VariantsPageBaseProps>> {
   const clusterName = takeFirstMaybe(get(context?.params, 'clusterName'))
+
+  if (clusterName) {
+    const clusterNewName = clusterRedirects.get(clusterName)
+    if (clusterNewName) {
+      return {
+        redirect: {
+          destination: `/variants/${clusterNewName}`,
+          permanent: true,
+        },
+      }
+    }
+  }
+
   const defaultCluster = clusters.find(({ build_name }) => clusterName === build_name) ?? DEFAULT_CLUSTER
+
   return {
     props: {
       currentCluster: defaultCluster,
@@ -22,9 +44,9 @@ export async function getStaticProps(
   }
 }
 
-export async function getStaticPaths(context: GetStaticPathsContext): Promise<GetStaticPathsResult> {
+export async function getStaticPaths(_0: GetStaticPathsContext): Promise<GetStaticPathsResult> {
   return {
-    paths: clusterBuildNames.map((clusterName) => `/variants/${clusterName}`),
+    paths: [...clusterBuildNames, ...clusterOldBuildNames].map((clusterName) => `/variants/${clusterName}`),
     fallback: false,
   }
 }
