@@ -1,12 +1,15 @@
 import React, { useMemo } from 'react'
 
-import { connect } from 'react-redux'
+import { useRouter } from 'next/router'
+import { get } from 'lodash'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 
 import { theme } from 'src/theme'
-import { ClusterDatum } from 'src/io/getClusters'
+import type { ClusterDatum } from 'src/io/getClusters'
 import { getClusterContent } from 'src/io/getClusterContent'
+import { getClusterRedirects, getClusters } from 'src/io/getClusters'
+import { takeFirstMaybe } from 'src/helpers/takeFirstMaybe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { Layout } from 'src/components/Layout/Layout'
 import { Editable } from 'src/components/Common/Editable'
@@ -20,6 +23,9 @@ import { ReactComponent as NextstrainIconBase } from 'src/assets/images/nextstra
 import { PlotCard } from './PlotCard'
 import { ProteinCard } from './ProteinCard'
 
+const clusters = getClusters()
+const clusterRedirects = getClusterRedirects()
+
 const EditableClusterContent = styled(Editable)``
 
 const NextstrainIcon = styled(NextstrainIconBase)`
@@ -29,22 +35,25 @@ const NextstrainIcon = styled(NextstrainIconBase)`
   height: 25px;
 `
 
-const mapStateToProps = null
+export function useCurrentClusterName() {
+  const router = useRouter()
 
-const mapDispatchToProps = {}
+  const clusterName = takeFirstMaybe<string>(get(router, 'query.clusterName'))
 
-export const VariantsPage = connect(mapStateToProps, mapDispatchToProps)(VariantsPageDisconnected)
+  if (clusterName) {
+    const clusterNewName = clusterRedirects.get(clusterName)
+    if (clusterNewName) {
+      void router.replace(`/variants/${clusterNewName}`) // eslint-disable-line no-void
+      return clusterNewName
+    }
+  }
 
-export interface VariantsPageBaseProps {
-  currentCluster: ClusterDatum
-  redirectedFromClusterName?: string
+  return clusterName
 }
 
-export function VariantsPageDisconnected(props: VariantsPageBaseProps) {
-  const { currentCluster } = props
-
-  const ClusterContent = getClusterContent(currentCluster.build_name)
-  const showDefiningMutations = useMemo(() => hasDefiningMutations(currentCluster), [currentCluster])
+export function VariantsPage() {
+  const clusterName = useCurrentClusterName()
+  const currentCluster = useMemo(() => clusters.find((cluster) => cluster.build_name === clusterName), [clusterName])
 
   return (
     <Layout>
@@ -60,51 +69,62 @@ export function VariantsPageDisconnected(props: VariantsPageBaseProps) {
             <ClusterButtonPanel currentCluster={currentCluster} />
           </Col>
 
-          <Col lg={showDefiningMutations ? 7 : 9} xl={showDefiningMutations ? 8 : 10}>
-            <EditableClusterContent githubUrl={`blob/master/content/clusters/${currentCluster.build_name}.md`}>
-              <Row noGutters className="mb-3">
-                <Col className="d-flex w-100">
-                  {currentCluster.nextstrain_url ? (
-                    <LinkExternal
-                      href={currentCluster.nextstrain_url}
-                      icon={<NextstrainIcon />}
-                      color={theme.link.dim.color}
-                    >
-                      {`Dedicated ${currentCluster.display_name} Nextstrain build`}
-                    </LinkExternal>
-                  ) : (
-                    <span>{'No dedicated Nextstrain build is available'}</span>
-                  )}
-                </Col>
-              </Row>
-
-              <Row noGutters className="mb-2">
-                <Col>
-                  <ClusterContent />
-                </Col>
-              </Row>
-
-              <Row noGutters className="mb-2">
-                <Col>
-                  <PlotCard cluster={currentCluster} />
-                </Col>
-              </Row>
-
-              <Row noGutters className="mb-2">
-                <Col>
-                  <ProteinCard cluster={currentCluster} />
-                </Col>
-              </Row>
-            </EditableClusterContent>
-          </Col>
-
-          {showDefiningMutations && (
-            <Col lg={2} xl={2}>
-              <DefiningMutations cluster={currentCluster} />
-            </Col>
-          )}
+          {currentCluster && <VariantsPageContent currentCluster={currentCluster} />}
         </Row>
       </VariantsPageContainer>
     </Layout>
+  )
+}
+
+export function VariantsPageContent({ currentCluster }: { currentCluster: ClusterDatum }) {
+  const ClusterContent = getClusterContent(currentCluster.build_name)
+  const showDefiningMutations = useMemo(() => hasDefiningMutations(currentCluster), [currentCluster])
+
+  return (
+    <>
+      <Col lg={showDefiningMutations ? 7 : 9} xl={showDefiningMutations ? 8 : 10}>
+        <EditableClusterContent githubUrl={`blob/master/content/clusters/${currentCluster.build_name}.md`}>
+          <Row noGutters className="mb-3">
+            <Col className="d-flex w-100">
+              {currentCluster.nextstrain_url ? (
+                <LinkExternal
+                  href={currentCluster.nextstrain_url}
+                  icon={<NextstrainIcon />}
+                  color={theme.link.dim.color}
+                >
+                  {`Dedicated ${currentCluster.display_name} Nextstrain build`}
+                </LinkExternal>
+              ) : (
+                <span>{'No dedicated Nextstrain build is available'}</span>
+              )}
+            </Col>
+          </Row>
+
+          <Row noGutters className="mb-2">
+            <Col>
+              <ClusterContent />
+            </Col>
+          </Row>
+
+          <Row noGutters className="mb-2">
+            <Col>
+              <PlotCard cluster={currentCluster} />
+            </Col>
+          </Row>
+
+          <Row noGutters className="mb-2">
+            <Col>
+              <ProteinCard cluster={currentCluster} />
+            </Col>
+          </Row>
+        </EditableClusterContent>
+      </Col>
+
+      {showDefiningMutations && (
+        <Col lg={2} xl={2}>
+          <DefiningMutations cluster={currentCluster} />
+        </Col>
+      )}
+    </>
   )
 }
