@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react'
 
 import { useRouter } from 'next/router'
-import { get } from 'lodash'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 
@@ -9,7 +8,6 @@ import { theme } from 'src/theme'
 import type { ClusterDatum } from 'src/io/getClusters'
 import { getClusterContent } from 'src/io/getClusterContent'
 import { getClusterRedirects, getClusters } from 'src/io/getClusters'
-import { takeFirstMaybe } from 'src/helpers/takeFirstMaybe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { Layout } from 'src/components/Layout/Layout'
 import { Editable } from 'src/components/Common/Editable'
@@ -35,10 +33,8 @@ const NextstrainIcon = styled(NextstrainIconBase)`
   height: 25px;
 `
 
-export function useCurrentClusterName() {
+export function useCurrentClusterName(clusterName?: string) {
   const router = useRouter()
-
-  const clusterName = takeFirstMaybe<string>(get(router, 'query.clusterName'))
 
   if (clusterName) {
     const clusterNewName = clusterRedirects.get(clusterName)
@@ -51,8 +47,12 @@ export function useCurrentClusterName() {
   return clusterName
 }
 
-export function VariantsPage() {
-  const clusterName = useCurrentClusterName()
+export interface VariantsPageProps {
+  clusterName?: string
+}
+
+export function VariantsPage({ clusterName: clusterNameUnsafe }: VariantsPageProps) {
+  const clusterName = useCurrentClusterName(clusterNameUnsafe)
   const currentCluster = useMemo(() => clusters.find((cluster) => cluster.build_name === clusterName), [clusterName])
 
   return (
