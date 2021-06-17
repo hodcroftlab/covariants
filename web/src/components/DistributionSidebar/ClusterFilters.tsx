@@ -27,6 +27,10 @@ export const Form = styled(FormBase)`
   flex-wrap: wrap;
 `
 
+export const ClusterNameText = styled.span`
+  font-family: ${(props) => props.theme.font.monospace};
+`
+
 export interface ClusterFilterCheckboxProps {
   cluster: string
   enabled: boolean
@@ -41,7 +45,7 @@ export function ClusterFilterCheckbox({ cluster, enabled, onFilterChange }: Clus
       <Label htmlFor={CSS.escape(cluster)} check>
         <Input id={CSS.escape(cluster)} type="checkbox" checked={enabled} onChange={onChange} />
         <ColoredBox $color={getClusterColor(cluster)} $size={14} $aspect={16 / 9} />
-        <span>{cluster}</span>
+        <ClusterNameText>{cluster}</ClusterNameText>
       </Label>
     </FormGroup>
   )
