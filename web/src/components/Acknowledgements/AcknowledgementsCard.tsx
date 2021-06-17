@@ -1,18 +1,26 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import axios from 'axios'
+import React, { useCallback, useMemo, useState } from 'react'
+import Loader from 'react-loader-spinner'
 
-import { CardBody, UncontrolledAlert } from 'reactstrap'
-import { useDispatch, useSelector } from 'react-redux'
-import { LinkExternal } from 'src/components/Link/LinkExternal'
-import { URL_GITHUB } from 'src/constants'
-import { getClusterEpiIslsNumChunks } from 'src/io/getClusterEpiIslsNumChunks'
+import { useQuery } from 'react-query'
+import PaginationComponent from 'react-reactstrap-pagination'
+import { CardBody } from 'reactstrap'
+import { AcknowledgementEpiIsl } from 'src/components/Acknowledgements/AcknowledgementEpiIsl'
+import { AcknowledgementsError } from 'src/components/Acknowledgements/AcknowledgementsError'
+import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 
 import type { ClusterDatum } from 'src/io/getClusters'
-import { AcknowledgementEpiIsl } from 'src/components/Acknowledgements/AcknowledgementEpiIsl'
-import { CardCollapsible } from 'src/components/Common/CardCollapsible'
-import { fetchEpiIsls } from 'src/state/data/data.actions'
-import { selectEpiIsls, selectEpiIslsError, selectEpiIslsLoading } from 'src/state/data/data.selectors'
-import PaginationComponent from 'react-reactstrap-pagination'
 import styled from 'styled-components'
+
+export interface AcknowledgementsKeysDatum {
+  numChunks: number
+}
+
+export type AcknowledgementsKeysData = Record<string, AcknowledgementsKeysDatum | undefined>
+
+export interface AcknowledgementsKeysJson {
+  acknowledgements: AcknowledgementsKeysData
+}
 
 export const PaginationContainer = styled.div`
   display: flex;
@@ -23,35 +31,67 @@ export const PaginationContainer = styled.div`
 
 export const Pagination = styled(PaginationComponent)``
 
-export function AcknowledgementsCardError({ error }: { error: string }) {
-  return (
-    <UncontrolledAlert color="danger">
-      <p className="text-danger">{`Error: ${error}`}</p>
-      <p>
-        {'This is probably a bug. Please report it to developers on '}
-        <LinkExternal href={`${URL_GITHUB}/issues`}>{'GitHub'}</LinkExternal>
-      </p>
-    </UncontrolledAlert>
+export function useQueryAcknowledgements(cluster: string, page: number) {
+  const url = useMemo(() => {
+    const pageString = page.toString().padStart(3, '0')
+    return `acknowledgements/${cluster}/${pageString}.json`
+  }, [cluster, page])
+
+  return useQuery(
+    ['acknowledgements_page', cluster, page],
+    async () => {
+      const res = await axios.get(url)
+      if (!res.data) {
+        throw new Error(`Unable to fetch acknowledgements data: request to URL "${url}" resulted in no data`)
+      }
+      return res.data as string[]
+    },
+    {
+      staleTime: Number.POSITIVE_INFINITY,
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: true,
+      refetchInterval: Number.POSITIVE_INFINITY,
+    },
   )
 }
 
-export interface AcknowledgementEpiIslPageProps {
+export interface AcknowledgementsCardBodyProps {
   cluster: ClusterDatum
-  page: number
+  numPages: number
 }
 
-export function AcknowledgementEpiIslPage({ cluster, page }: AcknowledgementEpiIslPageProps) {
-  const epiIsls = useSelector(selectEpiIsls(cluster.build_name, page))
-  const loading = useSelector(selectEpiIslsLoading(cluster.build_name, page))
-  const error = useSelector(selectEpiIslsError(cluster.build_name, page))
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(fetchEpiIsls.trigger({ cluster: cluster.build_name, page }))
-  }, [cluster.build_name, dispatch, page])
+export function AcknowledgementsCardBody({ cluster, numPages }: AcknowledgementsCardBodyProps) {
+  const [page, setPage] = useState(0)
+  const handlePagination = useCallback((page: number) => setPage(page - 1) /* one-based to zero-based */, [])
+  const { isLoading, isFetching, isError, data: epiIsls, error } = useQueryAcknowledgements(cluster.build_name, page)
 
   return (
-    <div>
+    <CardBody>
+      <PaginationContainer>
+        <Pagination
+          totalItems={numPages}
+          pageSize={1}
+          onSelect={handlePagination}
+          maxPaginationNumbers={5}
+          defaultActivePage={1}
+          firstPageText="<<"
+          previousPageText="<"
+          nextPageText=">"
+          lastPageText=">>"
+        />
+      </PaginationContainer>
+
+      <div>
+        {(isLoading || isFetching) && (
+          <div className="d-flex">
+            <div className="mx-auto">
+              <Loader type="Oval" color="#777" height={100} width={50} timeout={3000} />
+            </div>
+          </div>
+        )}
+        {isError && error && <AcknowledgementsError error={error} />}
+      </div>
       {epiIsls &&
         epiIsls.map((epiIsl) => (
           <span key={`$${cluster.display_name}-${epiIsl}`}>
@@ -59,43 +99,20 @@ export function AcknowledgementEpiIslPage({ cluster, page }: AcknowledgementEpiI
             {', '}
           </span>
         ))}
-      {loading && 'Loading...'}
-      {error && <AcknowledgementsCardError error={error} />}
-    </div>
+    </CardBody>
   )
 }
 
 export interface AcknowledgementsCardProps {
   cluster: ClusterDatum
+  numPages: number
 }
 
-export function AcknowledgementsCard({ cluster }: AcknowledgementsCardProps) {
+export function AcknowledgementsCard({ cluster, numPages }: AcknowledgementsCardProps) {
   const [collapsed, setCollapsed] = useState(true)
-  const [page, setPage] = useState(0)
-  const numPages = useMemo(() => getClusterEpiIslsNumChunks(cluster.build_name), [cluster.build_name])
-  const handlePagination = useCallback((page: number) => setPage(page - 1) /* one-based to zero-based */, [])
-
   return (
     <CardCollapsible className="my-2" title={cluster.display_name} collapsed={collapsed} setCollapsed={setCollapsed}>
-      {!collapsed && (
-        <CardBody>
-          <PaginationContainer>
-            <Pagination
-              totalItems={numPages}
-              pageSize={1}
-              onSelect={handlePagination}
-              maxPaginationNumbers={5}
-              defaultActivePage={1}
-              firstPageText="<<"
-              previousPageText="<"
-              nextPageText=">"
-              lastPageText=">>"
-            />
-          </PaginationContainer>
-
-          <AcknowledgementEpiIslPage cluster={cluster} page={page} />
-        </CardBody>
-      )}
+      {!collapsed && <AcknowledgementsCardBody cluster={cluster} numPages={numPages} />}
     </CardCollapsible>
   )
 }
