@@ -5,10 +5,10 @@ import { concurrent } from 'fasy'
 
 import { findModuleRoot } from '../lib/findModuleRoot'
 
-const { moduleRoot } = findModuleRoot()
+const { moduleRoot: web } = findModuleRoot()
 
-const GIF_DIR = path.join(moduleRoot, '..', 'content', 'proteins')
-const OUT_DIR = path.join(moduleRoot, 'content', 'proteins')
+const GIF_DIR = path.join(web, 'public', 'proteins', 'gif')
+const OUT_DIR = path.join(web, 'public', 'proteins', 'jpg')
 
 export const generateStillImage = (inputDir: string, outputDir: string) => async (filename: string) => {
   const url = path.join(inputDir, filename)
