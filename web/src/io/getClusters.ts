@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import { groupBy } from 'lodash'
+import { notUndefinedOrNull } from 'src/helpers/notUndefined'
 
 import type { Mutation } from 'src/types'
 import { theme } from 'src/theme'
@@ -10,12 +11,13 @@ export const CLUSTER_NAME_OTHERS = 'others' as const
 
 export type ClusterDatum = {
   build_name: string
+  old_build_names?: string[]
   nextstrain_url?: string
   cluster_data: unknown[]
   col: string
   country_info: unknown[]
   display_name: string
-  display_name2?: string
+  alt_display_name?: string[]
   snps: number[]
   mutations?: {
     nonsynonymous?: Mutation[]
@@ -41,8 +43,23 @@ export function getClusterNames() {
   return getClusters().map((cluster) => cluster.display_name)
 }
 
+export function getClusterRedirects(): Map<string, string> {
+  return getClusters().reduce((result, cluster) => {
+    if (cluster.old_build_names) {
+      cluster.old_build_names.forEach((oldName) => result.set(oldName, cluster.build_name))
+    }
+    return result
+  }, new Map<string, string>())
+}
+
 export function getClusterBuildNames() {
   return getClusters().map((cluster) => cluster.build_name)
+}
+
+export function getClusterOldBuildNames() {
+  return getClusters()
+    .flatMap((cluster) => cluster.old_build_names)
+    .filter(notUndefinedOrNull)
 }
 
 export function getClusterColor(clusterName: string) {

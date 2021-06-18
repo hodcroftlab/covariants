@@ -10,6 +10,7 @@ export interface NameTableDatum {
   who: string | null
   lineages: NameTableEntry[]
   others: NameTableEntry[]
+  oldnames: NameTableEntry[]
 }
 
 export function getNameTable(): NameTableDatum[] {

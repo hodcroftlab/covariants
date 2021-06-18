@@ -19,6 +19,7 @@ const clusters = getClusters()
 const clusterNames = getClusterNames()
 
 const DEFAULT_COLOR = theme.gray700
+const DEFAULT_TEXT_COLOR = theme.gray100
 
 export const MutationBadgeBox = styled.span`
   display: inline-block;
@@ -50,13 +51,13 @@ export const PrefixText = styled.span`
   background-color: ${(props) => props.theme.gray550};
 `
 
-export const ParentText = styled.span<{ $color: string }>`
+export const ParentText = styled.span<{ $backgroundColor: string; $color: string }>`
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 1px;
-  color: ${(props) => props.theme.white};
-  background-color: ${(props) => props.$color};
+  color: ${(props) => props.$color};
+  background-color: ${(props) => props.$backgroundColor};
 `
 
 export const GeneText = styled.span<{ $color: string }>`
@@ -124,7 +125,7 @@ export interface MutationBadgeProps {
 export function MutationBadge({ prefix, mutation, colors, tooltip }: MutationBadgeProps) {
   const { parent, parentDelimiter, gene, left, pos, right, version, note } = mutation
 
-  const parentColor = get(CLADE_COLORS, parent ?? '', DEFAULT_COLOR)
+  const parentColors = get(CLADE_COLORS, parent ?? '', { bg: DEFAULT_COLOR, fg: DEFAULT_TEXT_COLOR })
   const geneColor = get(GENE_COLORS, gene ?? '', DEFAULT_COLOR)
   const leftColor = get(colors, left ?? '', DEFAULT_COLOR)
   const rightColor = get(colors, right ?? '', DEFAULT_COLOR)
@@ -135,7 +136,12 @@ export function MutationBadge({ prefix, mutation, colors, tooltip }: MutationBad
     <MutationBadgeBox title={tooltip}>
       <MutationWrapper>
         {prefix && <PrefixText>{prefix}</PrefixText>}
-        {parent && <ParentText $color={parentColor}>{`${parent}${parentDelimiterStr}`}</ParentText>}
+        {parent && (
+          <ParentText
+            $backgroundColor={parentColors.bg}
+            $color={parentColors.fg}
+          >{`${parent}${parentDelimiterStr}`}</ParentText>
+        )}
         {gene && (
           <>
             <GeneText $color={geneColor}>

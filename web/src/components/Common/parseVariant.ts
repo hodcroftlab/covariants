@@ -9,16 +9,8 @@ export function parseNonEmpty(raw: string | undefined | null) {
   return raw
 }
 
-export function parseVariant(formatted: string): Mutation | undefined {
-  if (formatted === '20A.EU2') {
-    return { parent: '20A', version: '.EU2' }
-  }
-
-  if (formatted === '20E (EU1)') {
-    return { parent: '20E', version: ' (EU1)' }
-  }
-
-  const match = /^(?<parent>.*\/)?(?<gene>.*:)?(?<left>[*.a-z-]{0,1})(?<pos>(\d)*)(?<right>[*.a-z-]{0,1})(?<version>\..*)?$/i.exec(formatted) // prettier-ignore
+export function parseSlashBasedVariant(variantString: string): Mutation | undefined {
+  const match = /^(?<parent>.*\/)?(?<gene>.*:)?(?<left>[*.a-z-]{0,1})(?<pos>(\d)*)(?<right>[*.a-z-]{0,1})(?<version>\..*)?$/i.exec(variantString) // prettier-ignore
 
   if (!match?.groups) {
     return undefined
@@ -45,4 +37,39 @@ export function parseVariant(formatted: string): Mutation | undefined {
   }
 
   return { parent, parentDelimiter, gene, left, pos, right, version }
+}
+
+export function parseWhoBasedVariant(variantString: string): Mutation | undefined {
+  const match = /^(?<parent>.*)\s(?<version>\(.*\))$/i.exec(variantString)
+
+  if (!match?.groups) {
+    return undefined
+  }
+
+  const parent = parseNonEmpty(match.groups?.parent)
+  const version = parseNonEmpty(match.groups?.version)
+
+  return { parent, version }
+}
+
+export function parseVariant(variantString: string): Mutation | undefined {
+  if (variantString === '20A.EU2') {
+    return { parent: '20A', version: '.EU2' }
+  }
+
+  if (variantString === '20E (EU1)') {
+    return { parent: '20E', version: ' (EU1)' }
+  }
+
+  let parsed = parseWhoBasedVariant(variantString)
+  if (parsed) {
+    return parsed
+  }
+
+  parsed = parseSlashBasedVariant(variantString)
+  if (parsed) {
+    return parsed
+  }
+
+  return undefined
 }

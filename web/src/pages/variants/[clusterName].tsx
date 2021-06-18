@@ -1,30 +1,26 @@
-/* eslint-disable camelcase */
 import type { GetStaticPathsContext, GetStaticPropsContext, GetStaticPathsResult, GetStaticPropsResult } from 'next'
 import { get } from 'lodash'
 
-import type { VariantsPageBaseProps } from 'src/components/Variants/VariantsPage'
-import { getClusterBuildNames, getClusters, getDefaultCluster } from 'src/io/getClusters'
+import type { VariantsPageProps } from 'src/components/Variants/VariantsPage'
+import { getClusterBuildNames, getClusterOldBuildNames } from 'src/io/getClusters'
 import { takeFirstMaybe } from 'src/helpers/takeFirstMaybe'
 
-const clusters = getClusters()
-const DEFAULT_CLUSTER = getDefaultCluster()
 const clusterBuildNames = getClusterBuildNames()
+const clusterOldBuildNames = getClusterOldBuildNames()
 
-export async function getStaticProps(
-  context: GetStaticPropsContext,
-): Promise<GetStaticPropsResult<VariantsPageBaseProps>> {
+export async function getStaticProps(context: GetStaticPropsContext): Promise<GetStaticPropsResult<VariantsPageProps>> {
   const clusterName = takeFirstMaybe(get(context?.params, 'clusterName'))
-  const defaultCluster = clusters.find(({ build_name }) => clusterName === build_name) ?? DEFAULT_CLUSTER
+
   return {
     props: {
-      currentCluster: defaultCluster,
+      clusterName,
     },
   }
 }
 
-export async function getStaticPaths(context: GetStaticPathsContext): Promise<GetStaticPathsResult> {
+export async function getStaticPaths(_0: GetStaticPathsContext): Promise<GetStaticPathsResult> {
   return {
-    paths: clusterBuildNames.map((clusterName) => `/variants/${clusterName}`),
+    paths: [...clusterBuildNames, ...clusterOldBuildNames].map((clusterName) => `/variants/${clusterName}`),
     fallback: false,
   }
 }
