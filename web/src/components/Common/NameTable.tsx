@@ -40,7 +40,7 @@ const Table = styled(TableBase)`
     font-size: 0.8rem;
     text-align: left;
     border: #aaa solid 1px;
-    min-width: 120px;
+    min-width: 100px;
     padding: 2px;
   }
 `

@@ -12,6 +12,7 @@ import { LastUpdated } from '../Common/LastUpdated'
 
 const Container = styled(ContainerBase)`
   min-height: 100%;
+  width: 100%;
 `
 
 const HeaderRow = styled(Row)`
@@ -68,39 +69,37 @@ export interface LayoutProps {
 
 export function Layout({ children }: PropsWithChildren<LayoutProps>) {
   return (
-    <>
-      <Container fluid>
-        <HeaderRow noGutters>
-          <HeaderCol>
-            <NavigationBar />
-          </HeaderCol>
-        </HeaderRow>
+    <Container fluid>
+      <HeaderRow noGutters>
+        <HeaderCol>
+          <NavigationBar />
+        </HeaderCol>
+      </HeaderRow>
 
-        <Row noGutters className="ml-3 mt-n1 d-none d-md-block">
-          <Col className="d-flex">
-            <GisaidText className="d-flex mr-auto">
-              <span className="mr-1">{'Enabled by data from '}</span>
-              <LinkExternal href="https://www.gisaid.org/" icon={null}>
-                <GisaidLogo height={20} />
-              </LinkExternal>
-            </GisaidText>
+      <Row noGutters className="ml-3 mt-n1 d-none d-md-block">
+        <Col className="d-flex">
+          <GisaidText className="d-flex mr-auto">
+            <span className="mr-1">{'Enabled by data from '}</span>
+            <LinkExternal href="https://www.gisaid.org/" icon={null}>
+              <GisaidLogo height={20} />
+            </LinkExternal>
+          </GisaidText>
 
-            <LastUpdated className="d-flex ml-auto" />
-          </Col>
-        </Row>
+          <LastUpdated className="d-flex ml-auto" />
+        </Col>
+      </Row>
 
-        <MainContainer fluid>
-          <MainRow noGutters>
-            <MainCol>{children}</MainCol>
-          </MainRow>
-        </MainContainer>
+      <MainContainer fluid>
+        <MainRow noGutters>
+          <MainCol>{children}</MainCol>
+        </MainRow>
+      </MainContainer>
 
-        <FooterRow noGutters>
-          <FooterCol>
-            <FooterContent />
-          </FooterCol>
-        </FooterRow>
-      </Container>
-    </>
+      <FooterRow noGutters>
+        <FooterCol>
+          <FooterContent />
+        </FooterCol>
+      </FooterRow>
+    </Container>
   )
 }

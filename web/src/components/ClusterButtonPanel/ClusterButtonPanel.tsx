@@ -19,7 +19,6 @@ const ClusterGroupCard = styled(Card)`
   flex-wrap: wrap;
   border: 0;
   box-shadow: none;
-  background: transparent;
   margin-bottom: 0.5rem;
 `
 
@@ -36,8 +35,8 @@ const ClusterGroupHeader = styled(CardHeader)`
 
 const ClusterGroupBody = styled(CardBody)`
   display: flex;
-  flex-wrap: wrap;
   padding: 0;
+  margin: auto;
 `
 
 export interface ClusterPanelProps {

@@ -5,53 +5,11 @@ import { ClusterDatum } from 'src/io/getClusters'
 import styled from 'styled-components'
 import { Link } from '../Link/Link'
 
-const ClusterButtonRow = styled.span`
-  flex: 1 0 150px;
-  display: flex;
-
-  @media (min-width: 992px) {
-    flex: 1 0 170px;
-    flex-grow: 1;
-    height: 50px;
-    margin: 3px auto;
-  }
-
-  @media (max-width: 991.98px) {
-    flex: 1 0 170px;
-    flex-grow: 0;
-    height: 50px;
-    margin: 3px 5px;
-  }
-
-  @media (max-width: 767.98px) {
-    flex: 1 0 170px;
-    flex-grow: 0;
-    height: 50px;
-    margin: 3px 5px;
-  }
-
-  @media (max-width: 575.98px) {
-    flex: 1 0 170px;
-    flex-grow: 0;
-    height: 42px;
-    margin: 3px 3px;
-  }
-`
-
 const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: string }>`
   display: flex;
-  flex: 1 0 170px;
-
-  @media (min-width: 992px) {
-    justify-content: left;
-    margin: 0 5px;
-  }
-
-  @media (max-width: 991.98px) {
-    justify-content: left;
-    padding: 0 5px;
-    //justify-content: center;
-  }
+  width: 200px;
+  height: 55px;
+  margin: 3px;
 
   border: none;
   border-left: 30px solid ${(props) => props.$color};
@@ -59,9 +17,7 @@ const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: strin
   cursor: pointer;
 
   box-shadow: ${({ $isCurrent, theme }) => ($isCurrent ? theme.shadows.normal : theme.shadows.light)};
-
   background-color: ${({ $isCurrent, theme }) => ($isCurrent ? theme.white : theme.gray100)};
-
   text-decoration: none;
 
   &:active,
@@ -69,25 +25,43 @@ const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: strin
   &:hover {
     text-decoration: none;
   }
+
+  @media (min-width: 992px) {
+  }
+
+  @media (max-width: 991.98px) {
+    width: 180px;
+    height: 45px;
+  }
+
+  @media (max-width: 767.98px) {
+    width: 160px;
+    height: 40px;
+  }
+
+  @media (max-width: 575.98px) {
+    width: 150px;
+    height: 32px;
+  }
 `
 
 const ClusterTitle = styled.h2<{ $isCurrent: boolean }>`
   font-family: ${(props) => props.theme.font.monospace};
   font-size: 1rem;
 
-  @media (min-width: 992px) {
-    font-size: 0.9rem;
-    margin-left: 1rem;
-  }
-
-  @media (min-width: 768px) {
+  @media (max-width: 991.98px) {
     font-size: 0.8rem;
-    margin: auto 5px;
+    margin: auto 7px;
   }
 
   @media (max-width: 767.98px) {
-    font-size: 0.8rem;
-    margin: auto 3px;
+    font-size: 0.75rem;
+    margin: auto 5px;
+  }
+
+  @media (max-width: 575.98px) {
+    font-size: 0.7rem;
+    margin: auto 4px;
   }
 
   margin: auto 5px;
@@ -112,10 +86,8 @@ export function ClusterButton({ cluster, isCurrent }: ClusterButtonProps) {
   const { display_name, col } = cluster
 
   return (
-    <ClusterButtonRow>
-      <ClusterButtonComponent href={`/variants/${cluster.build_name}`} $isCurrent={isCurrent} $color={col}>
-        <ClusterTitle $isCurrent={isCurrent}>{display_name}</ClusterTitle>
-      </ClusterButtonComponent>
-    </ClusterButtonRow>
+    <ClusterButtonComponent href={`/variants/${cluster.build_name}`} $isCurrent={isCurrent} $color={col}>
+      <ClusterTitle $isCurrent={isCurrent}>{display_name}</ClusterTitle>
+    </ClusterButtonComponent>
   )
 }

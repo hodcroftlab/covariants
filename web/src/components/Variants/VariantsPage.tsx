@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 
 import { useRouter } from 'next/router'
+import { ClusterButtonPanelLayout } from 'src/components/ClusterButtonPanel/ClusterButtonPanelLayout'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 
@@ -11,8 +12,7 @@ import { getClusterRedirects, getClusters } from 'src/io/getClusters'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { Layout } from 'src/components/Layout/Layout'
 import { Editable } from 'src/components/Common/Editable'
-import { VariantsPageContainer } from 'src/components/Common/ClusterSidebarLayout'
-import { ClusterButtonPanel } from 'src/components/ClusterButtonPanel/ClusterButtonPanel'
+import { NarrowPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 import { DefiningMutations, hasDefiningMutations } from 'src/components/Variants/DefiningMutations'
 import { VariantTitle } from 'src/components/Variants/VariantTitle'
 
@@ -23,6 +23,29 @@ import { ProteinCard } from './ProteinCard'
 
 const clusters = getClusters()
 const clusterRedirects = getClusterRedirects()
+
+const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 991.98px) {
+    flex-direction: column;
+  }
+`
+
+const FlexFixed = styled.div`
+  flex: 0 0 180px;
+  display: flex;
+
+  @media (max-width: 991.98px) {
+    flex: 1 0;
+  }
+`
+
+const FlexGrowing = styled.div`
+  display: flex;
+  flex: 1 0;
+`
 
 const EditableClusterContent = styled(Editable)``
 
@@ -57,21 +80,13 @@ export function VariantsPage({ clusterName: clusterNameUnsafe }: VariantsPagePro
 
   return (
     <Layout>
-      <VariantsPageContainer fluid>
-        <Row noGutters>
-          <Col>
-            <VariantTitle cluster={currentCluster} />
-          </Col>
-        </Row>
+      <NarrowPageContainer>
+        <VariantTitle cluster={currentCluster} />
 
-        <Row noGutters>
-          <Col lg={3} xl={2}>
-            <ClusterButtonPanel currentCluster={currentCluster} />
-          </Col>
-
+        <ClusterButtonPanelLayout currentCluster={currentCluster}>
           {currentCluster && <VariantsPageContent currentCluster={currentCluster} />}
-        </Row>
-      </VariantsPageContainer>
+        </ClusterButtonPanelLayout>
+      </NarrowPageContainer>
     </Layout>
   )
 }
@@ -81,8 +96,8 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
   const showDefiningMutations = useMemo(() => hasDefiningMutations(currentCluster), [currentCluster])
 
   return (
-    <>
-      <Col lg={showDefiningMutations ? 7 : 9} xl={showDefiningMutations ? 8 : 10}>
+    <FlexContainer>
+      <FlexGrowing>
         <EditableClusterContent githubUrl={`blob/master/content/clusters/${currentCluster.build_name}.md`}>
           <Row noGutters className="mb-3">
             <Col className="d-flex w-100">
@@ -118,13 +133,13 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
             </Col>
           </Row>
         </EditableClusterContent>
-      </Col>
+      </FlexGrowing>
 
       {showDefiningMutations && (
-        <Col lg={2} xl={2}>
+        <FlexFixed>
           <DefiningMutations cluster={currentCluster} />
-        </Col>
+        </FlexFixed>
       )}
-    </>
+    </FlexContainer>
   )
 }
