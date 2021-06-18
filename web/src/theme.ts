@@ -94,7 +94,7 @@ export const themeColors = {
 
 export const font = {
   sansSerif: `'Open Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'system-ui', 'system-sans', 'sans-serif'`,
-  monospace: `'Source Code Pro', 'Roboto Mono', 'system-mono'`,
+  monospace: `'Droid Sans Mono', 'system-mono'`,
   default: 'sans-serif',
 }
 

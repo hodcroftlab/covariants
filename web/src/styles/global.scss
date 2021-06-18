@@ -1,7 +1,7 @@
 @use "sass:map";
 
 @import '~typeface-open-sans/index.css';
-@import '~typeface-source-code-pro/index.css';
+@import '~typeface-droid-sans-mono/index.css';
 @import '~bootstrap-icons/font/bootstrap-icons.css';
 @import './font-family-system';
 
@@ -9,8 +9,8 @@
 @import './bootstrap';
 @import './theme';
 
-@import 'react-aspect-ratio/aspect-ratio.css';
-@import 'react-gif-player/src/GifPlayer.scss';
+@import '~react-aspect-ratio/aspect-ratio.css';
+@import '~react-gif-player/src/GifPlayer.scss';
 @import '~react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
 .gif_player {
