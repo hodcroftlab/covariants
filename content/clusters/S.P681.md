@@ -1,6 +1,6 @@
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 
-<AaMut mut={"S:P681H"}/> is present in <Var name="20I/501Y.V1"/>, <Var name="21A/S:154K"/>, and <Var name="21A/S:478K"/> as well as some other circulating variants.
+<AaMut mut={"S:P681H"}/> is present in <Var name="20I (Alpha, V1)"/>, <Var name="21B (Kappa)"/>, and <Var name="21A (Delta)"/> as well as some other circulating variants.
 
 - <AaMut mut={"S:P681H"}/> may reduce class 3 antibody recognition (<LinkExternal href="https://www.medrxiv.org/content/10.1101/2021.01.06.20248960v1">Haynes et al., medRxiv</LinkExternal>)
 - This mutation is near the furin cleavage site, which may be important for immune recognition ([Johnson et al., bioRxiv](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7457603/))

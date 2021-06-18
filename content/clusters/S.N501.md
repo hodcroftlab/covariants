@@ -21,9 +21,9 @@ This mutation is in the receptor binding domain (RDB), important to ACE2 binding
 ---
 
 The specific mutation <AaMut mut="S:N501Y"/> is found in 3 "Variants of Concern" reported at the end of 2020/beginning of 2021, in:
-- the UK (<Var name="20I/501Y.V1" prefix=""/> or `B.1.1.7`)
-- South Africa (<Var name="20H/501Y.V2" prefix=""/> or `B.1.351`)
-- Brazil ( <Var name="20J/501Y.V3" prefix=""/> or `P.1`)
+- the UK (<Var name="20I (Alpha, V1)" prefix=""/> or `B.1.1.7`)
+- South Africa (<Var name="20H (Beta, V2)" prefix=""/> or `B.1.351`)
+- Brazil ( <Var name="20J (Gamma, V3)" prefix=""/> or `P.1`)
 
 See a <Link href="/shared-mutations">list of shared mutations</Link> for these variants. More information on each of these variants can be found by visiting the links above. 
 

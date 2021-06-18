@@ -23,7 +23,7 @@ import { TWITTER_USERNAME_RAW, URL_GITHUB } from 'src/constants'
 import { State } from 'src/state/reducer'
 import { selectPathname } from 'src/state/router/router.selectors'
 
-const navLinksLeft = {
+let navLinksLeft: Record<string, string> = {
   '/': 'Home',
   '/faq': 'FAQ',
   '/variants': 'Variants',
@@ -59,6 +59,10 @@ const navLinksRight = [
     color: '#24292E',
   },
 ]
+
+if (process.env.NODE_ENV === 'development' || process.env.DOMAIN?.includes('vercel')) {
+  navLinksLeft = { ...navLinksLeft, '/debug-badges': 'Debug badges' }
+}
 
 export const Navbar = styled(NavbarBase)`
   box-shadow: none;

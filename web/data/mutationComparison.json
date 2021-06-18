@@ -6,12 +6,12 @@
         "S:A570D",
         "S:D80A",
         "S:T20N",
+        "S:T19R",
+        "S:E154K",
         null,
         "S:S13I",
-        "S:L5F",
         "S:Q52R",
-        "S:E154K",
-        "S:T19R"
+        "S:L5F"
       ]
     },
     {
@@ -20,12 +20,12 @@
         "S:T716I",
         "S:D215G",
         "S:P26S",
+        "S:E156-",
+        "S:Q1071H",
         null,
         "S:W152C",
-        "S:T95I",
         "S:A67V",
-        "S:Q1071H",
-        "S:E156-"
+        "S:T95I"
       ]
     },
     {
@@ -34,12 +34,12 @@
         "S:S982A",
         "S:L241-",
         "S:D138Y",
+        "S:F157-",
         null,
         null,
-        "S:D253G",
+        null,
         "S:Q677H",
-        null,
-        "S:F157-"
+        "S:D253G"
       ]
     },
     {
@@ -48,12 +48,12 @@
         "S:D1118H",
         "S:L242-",
         "S:R190S",
+        "S:R158G",
         null,
         null,
         null,
         "S:F888L",
-        null,
-        "S:R158G"
+        null
       ]
     },
     {
@@ -62,12 +62,12 @@
         null,
         "S:A243-",
         "S:H655Y",
+        "S:T478K",
         null,
         null,
         null,
         null,
-        null,
-        "S:T478K"
+        null
       ]
     },
     {
@@ -76,12 +76,12 @@
         null,
         null,
         "S:T1027I",
+        "S:D950N",
         null,
         null,
         null,
         null,
-        null,
-        "S:D950N"
+        null
       ]
     }
   ],
@@ -106,12 +106,12 @@
         null,
         "S:E484K",
         "S:E484K",
+        null,
+        "S:E484Q",
         "S:E484K",
         null,
         "S:E484K",
-        "S:E484K",
-        "S:E484Q",
-        null
+        "S:E484K"
       ]
     },
     {
@@ -120,12 +120,12 @@
         null,
         null,
         null,
+        "S:L452R",
+        "S:L452R",
         null,
         "S:L452R",
         null,
-        null,
-        "S:L452R",
-        "S:L452R"
+        null
       ]
     },
     {
@@ -148,12 +148,12 @@
         "S:P681H",
         null,
         null,
-        null,
-        null,
-        null,
-        null,
         "S:P681R",
-        "S:P681R"
+        "S:P681R",
+        null,
+        null,
+        null,
+        null
       ]
     },
     {
@@ -179,8 +179,8 @@
         null,
         null,
         null,
-        "S:H69-",
         null,
+        "S:H69-",
         null
       ]
     },
@@ -193,8 +193,8 @@
         null,
         null,
         null,
-        "S:V70-",
         null,
+        "S:V70-",
         null
       ]
     },
@@ -207,8 +207,8 @@
         null,
         null,
         null,
-        "S:Y144-",
         null,
+        "S:Y144-",
         null
       ]
     },
@@ -234,10 +234,10 @@
         null,
         null,
         null,
-        "S:A701V",
         null,
         null,
-        null
+        null,
+        "S:A701V"
       ]
     },
     {
@@ -246,9 +246,9 @@
         null,
         null,
         "S:V1176F",
+        null,
+        null,
         "S:V1176F",
-        null,
-        null,
         null,
         null,
         null
@@ -279,8 +279,8 @@
         null,
         null,
         null,
-        "S:H69-",
         null,
+        "S:H69-",
         null
       ]
     },
@@ -293,8 +293,8 @@
         null,
         null,
         null,
-        "S:V70-",
         null,
+        "S:V70-",
         null
       ]
     },
@@ -307,8 +307,8 @@
         null,
         null,
         null,
-        "S:Y144-",
         null,
+        "S:Y144-",
         null
       ]
     },
@@ -332,12 +332,12 @@
         null,
         null,
         null,
+        "S:L452R",
+        "S:L452R",
         null,
         "S:L452R",
         null,
-        null,
-        "S:L452R",
-        "S:L452R"
+        null
       ]
     },
     {
@@ -346,12 +346,12 @@
         null,
         "S:E484K",
         "S:E484K",
+        null,
+        "S:E484Q",
         "S:E484K",
         null,
         "S:E484K",
-        "S:E484K",
-        "S:E484Q",
-        null
+        "S:E484K"
       ]
     },
     {
@@ -388,12 +388,12 @@
         "S:P681H",
         null,
         null,
-        null,
-        null,
-        null,
-        null,
         "S:P681R",
-        "S:P681R"
+        "S:P681R",
+        null,
+        null,
+        null,
+        null
       ]
     },
     {
@@ -404,10 +404,10 @@
         null,
         null,
         null,
-        "S:A701V",
         null,
         null,
-        null
+        null,
+        "S:A701V"
       ]
     },
     {
@@ -416,9 +416,9 @@
         null,
         null,
         "S:V1176F",
+        null,
+        null,
         "S:V1176F",
-        null,
-        null,
         null,
         null,
         null
@@ -426,14 +426,14 @@
     }
   ],
   "variants": [
-    "20I/501Y.V1\n(B.1.1.7)",
-    "20H/501Y.V2\n(B.1.351)",
-    "20J/501Y.V3\n(P.1)",
+    "20I (Alpha, V1)\n(B.1.1.7)",
+    "20H (Beta, V2)\n(B.1.351)",
+    "20J (Gamma, V3)\n(P.1)",
+    "21A (Delta)\n(B.1.617.2)",
+    "21B (Kappa)\n(B.1.617.1)",
     "20B/S.484K\n(P.2)",
-    "20C/S.452R\n(B.1.427/9)",
-    "20C/S.484K\n(B.1.526)",
-    "20A/S.484K\n(B.1.525)",
-    "20A/S.154K\n(B.1.617.1)",
-    "20A/S.478K\n(B.1.617.2)"
+    "21C (Epsilon)\n(B.1.427/9)",
+    "21D (Eta)\n(B.1.525)",
+    "21F (Iota)\n(B.1.526)"
   ]
 }
