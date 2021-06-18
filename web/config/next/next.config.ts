@@ -27,7 +27,6 @@ import withoutMinification from './withoutMinification'
 import withFriendlyChunkNames from './withFriendlyChunkNames'
 import withResolve from './withResolve'
 import withWebpackWatchPoll from './withWebpackWatchPoll'
-import getWithCopy from './withCopy'
 
 const {
   // BABEL_ENV,
@@ -179,18 +178,10 @@ const transpilationListProd = uniq([
 
 const withTranspileModules = getWithTranspileModules(PRODUCTION ? transpilationListProd : transpilationListDev)
 
-const withCopy = getWithCopy({
-  patterns: [
-    { from: path.join(moduleRoot, '..', 'content', 'proteins'), to: 'static/content/proteins' },
-    { from: path.join(moduleRoot, 'content', 'proteins'), to: 'static/content/proteins' },
-  ],
-})
-
 const withRobotsTxt = getWithRobotsTxt(`User-agent: *\nDisallow:${BRANCH_NAME === 'release' ? '' : ' *'}\n`)
 
 const config = withPlugins(
   [
-    [withCopy],
     [withIgnore],
     [withExtraWatch],
     [withSvg],

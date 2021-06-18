@@ -28,7 +28,7 @@ figure_path = "../covariants/overall_trends_figures/"
 tables_path = "../covariants/cluster_tables/"
 overall_tables_file = "../covariants/cluster_tables/all_tables.tsv"
 acknowledgement_folder = "../covariants/acknowledgements/"
-acknowledgement_folder_new = "../covariants/web/data/acknowledgements/"
+acknowledgement_folder_new = "../covariants/web/public/acknowledgements/"
 web_data_folder = "../covariants/web/data/"
 figure_only_path = "../covariants/figures/"
 # This assumes that `covariants` sites next to `ncov`

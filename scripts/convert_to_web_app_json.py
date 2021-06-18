@@ -10,7 +10,6 @@ import os
 import re
 from datetime import datetime
 from shutil import copyfile
-from time import strptime, strftime
 
 import numpy as np
 import pandas as pd
@@ -22,6 +21,7 @@ from name_table import name_table
 
 cluster_tables_path = "cluster_tables"
 output_path = "web/data"
+ack_output_path = "web/public/acknowledgements"
 
 
 def soa_to_aos(soa):
@@ -410,13 +410,15 @@ def compare_dates(left_date: str, right_date: str, comp):
     return format_date(dt)
 
 
-def check_acknowledgements(output_path: str):
-    with open(os.path.join(output_path, "acknowledgements", "acknowledgements_keys.json"), "r") as f:
+def check_acknowledgements(ack_output_path: str):
+    os.makedirs(ack_output_path, exist_ok=True)
+
+    with open(os.path.join(ack_output_path, "acknowledgements_keys.json"), "r") as f:
         acknowledgements_keys = json.load(f)
 
         for cluster in clusters:
             build_name = cluster["build_name"]
-            ack_dir = os.path.join(output_path, 'acknowledgements', build_name)
+            ack_dir = os.path.join(ack_output_path, build_name)
 
             warnings = []
 
@@ -489,4 +491,4 @@ if __name__ == "__main__":
     with open(os.path.join(output_path, "nameTable.json"), "w") as fh:
         json.dump(name_table_data, fh, indent=2, sort_keys=True)
 
-    check_acknowledgements(output_path)
+    check_acknowledgements(ack_output_path)

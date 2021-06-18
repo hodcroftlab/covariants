@@ -9,8 +9,9 @@ import 'src/helpers/functionPrototypeTojson' // to visualize Function in Redux D
 
 import { enableES5 } from 'immer'
 import dynamic from 'next/dynamic'
-
 import React, { useMemo } from 'react'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
@@ -32,6 +33,7 @@ enableES5()
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   const store = useMemo(() => configureStore({ router }), [router])
+  const queryClient = useMemo(() => new QueryClient(), [])
 
   return (
     <Provider store={store}>
@@ -40,7 +42,10 @@ function MyApp({ Component, pageProps, router }: AppProps) {
           <MDXProvider components={(components) => ({ ...components, ...mdxComponents })}>
             <Plausible domain={DOMAIN_STRIPPED} />
             <SeoApp />
-            <Component {...pageProps} />
+            <QueryClientProvider client={queryClient}>
+              <Component {...pageProps} />
+              <ReactQueryDevtools initialIsOpen={false} />
+            </QueryClientProvider>
           </MDXProvider>
         </ThemeProvider>
       </ConnectedRouter>
