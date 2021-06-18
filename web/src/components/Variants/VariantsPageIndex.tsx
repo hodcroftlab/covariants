@@ -1,10 +1,9 @@
 import React from 'react'
 
-import { Col, Container, Row } from 'reactstrap'
+import { Col, Row } from 'reactstrap'
 
 import { NarrowPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 import { Editable } from 'src/components/Common/Editable'
-import { NameTable } from 'src/components/Common/NameTable'
 import { Layout } from 'src/components/Layout/Layout'
 
 import VariantsPageIntro from '../../../../content/VariantsPageIntro.md'
