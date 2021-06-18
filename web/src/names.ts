@@ -50,3 +50,32 @@ export const GENE_NAMES: Record<string, string> = {
   ORF9b: 'ORF9b',
   S: 'Spike protein',
 }
+
+/* eslint-disable only-ascii/only-ascii */
+export const GREEK_ALPHABET: Record<string, string> = {
+  alpha: 'α',
+  beta: 'β',
+  gamma: 'γ',
+  delta: 'δ',
+  epsilon: 'ε',
+  zeta: 'ζ',
+  eta: 'η',
+  theta: 'θ',
+  iota: 'ι',
+  kappa: 'κ',
+  lambda: 'λ',
+  mu: 'μ',
+  nu: 'ν',
+  xi: 'ξ',
+  omicron: 'ο',
+  pi: 'π',
+  rho: 'ρ',
+  sigma: 'σ',
+  tau: 'τ',
+  upsilon: 'υ',
+  phi: 'φ',
+  chi: 'χ',
+  psi: 'ψ',
+  omega: 'ω',
+}
+/* eslint-enable only-ascii/only-ascii */

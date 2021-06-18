@@ -13,8 +13,9 @@ import { LinkSmart } from 'src/components/Link/LinkSmart'
 import { parseAminoacidMutation } from 'src/components/Common/parseAminoacidMutation'
 import { parseNucleotideMutation } from 'src/components/Common/parseNucleotideMutation'
 import { formatMutation } from 'src/components/Common/formatMutation'
-import { AMINOACID_NAMES, GENE_NAMES, NUCELOTIDE_NAMES } from 'src/names'
+import { AMINOACID_NAMES, GENE_NAMES, GREEK_ALPHABET, NUCELOTIDE_NAMES } from 'src/names'
 import { colorHash } from 'src/helpers/colorHash'
+import { rainbow } from 'src/helpers/colorRainbow'
 
 const clusters = getClusters()
 const clusterNames = getClusterNames()
@@ -50,6 +51,16 @@ export const PrefixText = styled.span`
   padding: 1px 5px;
   color: ${(props) => props.theme.white};
   background-color: ${(props) => props.theme.gray550};
+`
+
+export const LetterText = styled.span`
+  padding: 1px 5px;
+  color: ${(props) => props.theme.white};
+  background-color: ${(props) => props.theme.gray700};
+`
+
+export const ColoredComponent = styled.span<{ $color: string }>`
+  background-color: ${(props) => props.$color};
 `
 
 export const ParentText = styled.span<{ $backgroundColor: string; $color: string }>`
@@ -260,10 +271,6 @@ export function VariantLinkBadge({ name, href, prefix }: VariantLinkBadgeProps) 
   )
 }
 
-export const ColoredComponent = styled.span<{ $color: string }>`
-  background-color: ${(props) => props.$color};
-`
-
 export interface LineageLinkBadgeProps {
   name: string
   href?: string
@@ -278,14 +285,13 @@ export function LineageLinkBadge({ name, href, prefix, report }: LineageLinkBadg
     [href, report, name],
   )
   const tooltip = useMemo(() => `Pango Lineage ${name}`, [name])
-  const components = useMemo(() => name.split('.'), [name])
 
   return (
     <LinkUnstyled href={url}>
       <MutationBadgeBox title={tooltip}>
         <MutationWrapper>
           {prefix && <PrefixText>{prefix}</PrefixText>}
-          <ColoredComponent
+          <ColoredText
             $color={colorHash(name, {
               reverse: false,
               prefix: '',
@@ -295,6 +301,44 @@ export function LineageLinkBadge({ name, href, prefix, report }: LineageLinkBadg
               saturation: undefined,
             })}
           >
+            {name}
+          </ColoredText>
+        </MutationWrapper>
+      </MutationBadgeBox>
+    </LinkUnstyled>
+  )
+}
+
+export interface WhoBadgeProps {
+  name: string
+  href?: string
+  prefix?: string
+}
+
+const whoRainbow = rainbow(Object.keys(GREEK_ALPHABET).length, { rgb: true, lum: 75, sat: 75 })
+
+export function getWhoBadgeColor(name: string): string {
+  const i = Object.keys(GREEK_ALPHABET).indexOf(name.toLowerCase().trim())
+
+  if (i < 0 || i > whoRainbow.length) {
+    return theme.gray500
+  }
+  return whoRainbow[i]
+}
+
+export function WhoBadge({ name, href, prefix }: WhoBadgeProps) {
+  const letter = get(GREEK_ALPHABET, name.toLowerCase().trim(), '')
+  const tooltip = useMemo(() => `WHO Label: ${letter} (${name})`, [letter, name])
+
+  const color = getWhoBadgeColor(name)
+
+  return (
+    <LinkUnstyled href={href}>
+      <MutationBadgeBox title={tooltip}>
+        <MutationWrapper>
+          {prefix && <PrefixText>{prefix}</PrefixText>}
+          {letter && <LetterText>{letter}</LetterText>}
+          <ColoredComponent className="pl-1" $color={color}>
             {name}
           </ColoredComponent>
         </MutationWrapper>

@@ -1,12 +1,13 @@
 import React from 'react'
 
 import { Col, Row } from 'reactstrap'
-import { Var } from 'src/components/Common/MutationBadge'
+import { Var, WhoBadge } from 'src/components/Common/MutationBadge'
 
 import { Layout } from 'src/components/Layout/Layout'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
 
 import { getClusterNames, getClusterBuildNames, getClusterOldBuildNames } from 'src/io/getClusters'
+import { GREEK_ALPHABET } from 'src/names'
 
 const clusterNames = getClusterNames()
 const clusterBuildNames = getClusterBuildNames()
@@ -54,6 +55,21 @@ export default function DebugBadges() {
                 </li>
               )
             })}
+          </ul>
+        </Col>
+      </Row>
+      <Row noGutters>
+        <Col>
+          <ul>
+            {Object.keys(GREEK_ALPHABET)
+              .map((name) => name[0].toUpperCase() + name.slice(1))
+              .map((name) => {
+                return (
+                  <li key={name}>
+                    <WhoBadge name={name} />
+                  </li>
+                )
+              })}
           </ul>
         </Col>
       </Row>
