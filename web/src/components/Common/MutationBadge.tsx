@@ -59,6 +59,11 @@ export const LetterText = styled.span`
   background-color: ${(props) => props.theme.gray700};
 `
 
+export const WhoText = styled.span<{ $color: string }>`
+  padding: 1px 5px;
+  background-color: ${(props) => props.$color};
+`
+
 export const ColoredComponent = styled.span<{ $color: string }>`
   background-color: ${(props) => props.$color};
 `
@@ -338,9 +343,9 @@ export function WhoBadge({ name, href, prefix }: WhoBadgeProps) {
         <MutationWrapper>
           {prefix && <PrefixText>{prefix}</PrefixText>}
           {letter && <LetterText>{letter}</LetterText>}
-          <ColoredComponent className="pl-1" $color={color}>
+          <WhoText className="pl-1" $color={color}>
             {name}
-          </ColoredComponent>
+          </WhoText>
         </MutationWrapper>
       </MutationBadgeBox>
     </LinkUnstyled>
