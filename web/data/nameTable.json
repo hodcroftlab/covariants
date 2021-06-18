@@ -1,40 +1,6 @@
 {
   "nameTable": [
     {
-      "clade": "20E (EU1)",
-      "lineages": [
-        {
-          "name": "B.1.177",
-          "url": null
-        }
-      ],
-      "oldnames": [
-        {
-          "name": "20A.EU1",
-          "url": null
-        }
-      ],
-      "others": [
-        {
-          "name": "EU1",
-          "url": null
-        }
-      ],
-      "who": null
-    },
-    {
-      "clade": "20A.EU2",
-      "lineages": [
-        {
-          "name": "B.1.160",
-          "url": null
-        }
-      ],
-      "oldnames": [],
-      "others": [],
-      "who": null
-    },
-    {
       "clade": "20I (Alpha, V1)",
       "lineages": [
         {
@@ -96,6 +62,40 @@
       "who": "Gamma"
     },
     {
+      "clade": "21A (Delta)",
+      "lineages": [
+        {
+          "name": "B.1.617.2",
+          "url": "https://cov-lineages.org/lineages/lineage_B.1.617.2.html"
+        }
+      ],
+      "oldnames": [
+        {
+          "name": "21A/S:478K",
+          "url": null
+        }
+      ],
+      "others": [],
+      "who": "Delta"
+    },
+    {
+      "clade": "21B (Kappa)",
+      "lineages": [
+        {
+          "name": "B.1.617.1",
+          "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"
+        }
+      ],
+      "oldnames": [
+        {
+          "name": "21A/S:154K",
+          "url": null
+        }
+      ],
+      "others": [],
+      "who": "Kappa"
+    },
+    {
       "clade": "21C (Epsilon)",
       "lineages": [
         {
@@ -139,6 +139,28 @@
       "who": "Eta"
     },
     {
+      "clade": "20E (EU1)",
+      "lineages": [
+        {
+          "name": "B.1.177",
+          "url": null
+        }
+      ],
+      "oldnames": [
+        {
+          "name": "20A.EU1",
+          "url": null
+        }
+      ],
+      "others": [
+        {
+          "name": "EU1",
+          "url": null
+        }
+      ],
+      "who": null
+    },
+    {
       "clade": "21F (Iota)",
       "lineages": [
         {
@@ -161,38 +183,16 @@
       "who": "Iota"
     },
     {
-      "clade": "21A (Delta)",
+      "clade": "20A.EU2",
       "lineages": [
         {
-          "name": "B.1.617.2",
-          "url": "https://cov-lineages.org/lineages/lineage_B.1.617.2.html"
-        }
-      ],
-      "oldnames": [
-        {
-          "name": "21A/S:478K",
+          "name": "B.1.160",
           "url": null
         }
       ],
+      "oldnames": [],
       "others": [],
-      "who": "Delta"
-    },
-    {
-      "clade": "21B (Kappa)",
-      "lineages": [
-        {
-          "name": "B.1.617.1",
-          "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"
-        }
-      ],
-      "oldnames": [
-        {
-          "name": "21A/S:154K",
-          "url": null
-        }
-      ],
-      "others": [],
-      "who": "Kappa"
+      "who": null
     },
     {
       "clade": "20A/S:439K",
