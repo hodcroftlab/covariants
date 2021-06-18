@@ -1,5 +1,6 @@
-import { PROJECT_DESCRIPTION, PROJECT_NAME, URL_SOCIAL_IMAGE } from 'src/constants'
+import { PROJECT_DESCRIPTION, PROJECT_NAME } from 'src/constants'
 
+import defaultImage from 'src/assets/social/social-1200x630.png'
 import faqImage from 'src/assets/social/social-1200x630-faq.png'
 
 export interface PageMetadata {
@@ -11,7 +12,7 @@ export interface PageMetadata {
 export const SEO_DEFAULT: PageMetadata = {
   name: PROJECT_NAME,
   description: PROJECT_DESCRIPTION,
-  image: URL_SOCIAL_IMAGE,
+  image: defaultImage,
 }
 
 export const SEO_OVERRIDES: Record<string, PageMetadata> = {
