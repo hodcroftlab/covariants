@@ -38,8 +38,8 @@ export function rainbow(num: number, config?: RainbowOptions) {
     lum: 50,
     sat: 50,
   }
-  const _lum = (Number.isNaN(_config?.lum) ? 50 : _config.lum) ?? 50
-  const _sat = (Number.isNaN(_config?.sat) ? 50 : _config.sat) ?? 50
+  const _lum = (Number.isNaN(_config.lum) ? 50 : _config.lum) ?? 50
+  const _sat = (Number.isNaN(_config.sat) ? 50 : _config.sat) ?? 50
   const _num = Number.isNaN(num) ? 3 : num
   const retarr = []
   for (let i = 0; i < _num; ++i) {
