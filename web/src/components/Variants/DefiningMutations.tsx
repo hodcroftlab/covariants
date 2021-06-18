@@ -7,6 +7,7 @@ import { AminoacidMutationBadge, NucleotideMutationBadge } from 'src/components/
 import { Row, Col } from 'reactstrap'
 
 const Container = styled.div`
+  width: 100%;
   margin: 10px 5px;
   padding: 0.65rem 1rem;
   box-shadow: ${(props) => props.theme.shadows.light};

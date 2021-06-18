@@ -1,16 +1,28 @@
 import React, { useMemo, useState } from 'react'
 
 import styled from 'styled-components'
-import { Button, Col, Container, Row } from 'reactstrap'
+import { Button } from 'reactstrap'
 
 import type { ClusterDatum } from 'src/io/getClusters'
 import { ClusterButton } from 'src/components/ClusterButtonPanel/ClusterButton'
 
 const ClusterGroupContainer = styled.div`
   display: flex;
+  flex-direction: column;
+`
+
+const ClusterGroupWrapper = styled.div`
+  display: flex;
   flex-wrap: wrap;
+  flex: 1 1;
+`
+
+const ClusterGroup = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 0;
+  margin: auto;
   justify-content: center;
-  padding: 0;
 `
 
 const ShowMoreButton = styled(Button)`
@@ -47,29 +59,23 @@ export function ClusterButtonGroup({ clusterGroup, currentCluster }: ClusterButt
   const toggleShowNonImportant = useMemo(() => (_: unknown) => setShowNonImportant(!showNonImportant), [showNonImportant]) // prettier-ignore
 
   return (
-    <Container>
-      <Row noGutters>
-        <Col>
-          <ClusterGroupContainer>
-            {clusterGroup.map((cluster) => (
-              <ClusterButtonOptional
-                key={cluster.build_name}
-                cluster={cluster}
-                isCurrent={cluster.display_name === currentCluster?.display_name}
-                showNonImportant={showNonImportant}
-              />
-            ))}
-          </ClusterGroupContainer>
-        </Col>
-      </Row>
+    <ClusterGroupContainer>
+      <ClusterGroupWrapper>
+        <ClusterGroup>
+          {clusterGroup.map((cluster) => (
+            <ClusterButtonOptional
+              key={cluster.build_name}
+              cluster={cluster}
+              isCurrent={cluster.display_name === currentCluster?.display_name}
+              showNonImportant={showNonImportant}
+            />
+          ))}
+        </ClusterGroup>
+      </ClusterGroupWrapper>
 
-      <Row noGutters>
-        <Col className="d-flex">
-          <ShowMoreButton type="button" color="link" onClick={toggleShowNonImportant}>
-            {showNonImportant ? 'Show less' : 'Show more'}
-          </ShowMoreButton>
-        </Col>
-      </Row>
-    </Container>
+      <ShowMoreButton type="button" color="link" onClick={toggleShowNonImportant}>
+        {showNonImportant ? 'Show less' : 'Show more'}
+      </ShowMoreButton>
+    </ClusterGroupContainer>
   )
 }
