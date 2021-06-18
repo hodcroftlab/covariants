@@ -9,7 +9,7 @@ import { NAME_TABLE } from 'src/io/getNameTable'
 import { Var } from './MutationBadge'
 
 const Table = styled(TableBase)`
-  max-width: 700px;
+  max-width: 800px;
   margin: auto;
   border-collapse: collapse;
 
@@ -40,7 +40,7 @@ const Table = styled(TableBase)`
     font-size: 0.8rem;
     text-align: left;
     border: #aaa solid 1px;
-    min-width: 150px;
+    min-width: 120px;
     padding: 2px;
   }
 `
