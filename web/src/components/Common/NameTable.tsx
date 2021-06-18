@@ -29,12 +29,19 @@ const Table = styled(TableBase)`
   }
 
   & > thead > tr > th {
+    font-size: 0.9rem;
     text-align: center;
     height: 3rem;
+    border: #aaa solid 1px;
   }
 
   & > tbody > tr > td {
-    text-align: center;
+    font-family: ${(props) => props.theme.font.monospace};
+    font-size: 0.8rem;
+    text-align: left;
+    border: #aaa solid 1px;
+    min-width: 150px;
+    padding: 2px;
   }
 `
 

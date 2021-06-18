@@ -69,18 +69,19 @@ const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: strin
   }
 `
 
-const ClusterTitle = styled.h1<{ $isCurrent: boolean }>`
+const ClusterTitle = styled.h2<{ $isCurrent: boolean }>`
+  font-family: ${(props) => props.theme.font.monospace};
+  font-size: 1.2rem;
+
   @media (min-width: 992px) {
     margin-left: 1rem;
   }
 
   @media (max-width: 991.98px) {
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin: auto 3px;
   }
 
-  font-weight: ${(props) => props.$isCurrent && 600};
-  font-size: ${(props) => (props.$isCurrent ? '1.5rem' : '1.33rem')};
   margin: auto 5px;
 
   color: ${({ $isCurrent, theme }) => ($isCurrent ? theme.gray700 : theme.gray600)};
