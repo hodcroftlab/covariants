@@ -1,34 +1,30 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
-import { connect } from 'react-redux'
-import { replace } from 'connected-next-router'
-import { ClusterButtonPanel } from 'src/components/ClusterButtonPanel/ClusterButtonPanel'
-import { DefiningMutations, hasDefiningMutations } from 'src/components/Variants/DefiningMutations'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 
 import { theme } from 'src/theme'
-import { ClusterDatum } from 'src/io/getClusters'
+import type { ClusterDatum } from 'src/io/getClusters'
 import { getClusterContent } from 'src/io/getClusterContent'
+import { getClusterRedirects, getClusters } from 'src/io/getClusters'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { Layout } from 'src/components/Layout/Layout'
 import { Editable } from 'src/components/Common/Editable'
 import { VariantsPageContainer } from 'src/components/Common/ClusterSidebarLayout'
+import { ClusterButtonPanel } from 'src/components/ClusterButtonPanel/ClusterButtonPanel'
+import { DefiningMutations, hasDefiningMutations } from 'src/components/Variants/DefiningMutations'
+import { VariantTitle } from 'src/components/Variants/VariantTitle'
 
 import { ReactComponent as NextstrainIconBase } from 'src/assets/images/nextstrain_logo.svg'
 
 import { PlotCard } from './PlotCard'
 import { ProteinCard } from './ProteinCard'
 
+const clusters = getClusters()
+const clusterRedirects = getClusterRedirects()
+
 const EditableClusterContent = styled(Editable)``
-
-const ClusterNameTitle = styled.span`
-  display: inline;
-`
-
-const ClusterNameSubtitle = styled.span`
-  display: inline;
-`
 
 const NextstrainIcon = styled(NextstrainIconBase)`
   display: inline;
@@ -37,38 +33,34 @@ const NextstrainIcon = styled(NextstrainIconBase)`
   height: 25px;
 `
 
-const mapStateToProps = null
+export function useCurrentClusterName(clusterName?: string) {
+  const router = useRouter()
 
-const mapDispatchToProps = {
-  routerReplace: replace,
+  if (clusterName) {
+    const clusterNewName = clusterRedirects.get(clusterName)
+    if (clusterNewName) {
+      void router.replace(`/variants/${clusterNewName}`) // eslint-disable-line no-void
+      return clusterNewName
+    }
+  }
+
+  return clusterName
 }
 
-export const VariantsPage = connect(mapStateToProps, mapDispatchToProps)(VariantsPageDisconnected)
-
-export interface VariantsPageBaseProps {
-  currentCluster: ClusterDatum
+export interface VariantsPageProps {
+  clusterName?: string
 }
 
-export interface VariantsPageProps extends VariantsPageBaseProps {
-  routerReplace(url: string): void
-}
-
-export function VariantsPageDisconnected({ currentCluster }: VariantsPageProps) {
-  const ClusterContent = getClusterContent(currentCluster.build_name)
+export function VariantsPage({ clusterName: clusterNameUnsafe }: VariantsPageProps) {
+  const clusterName = useCurrentClusterName(clusterNameUnsafe)
+  const currentCluster = useMemo(() => clusters.find((cluster) => cluster.build_name === clusterName), [clusterName])
 
   return (
     <Layout>
       <VariantsPageContainer fluid>
         <Row noGutters>
           <Col>
-            <h1 className="text-center">
-              <ClusterNameTitle>{`Variant: ${currentCluster.display_name}`}</ClusterNameTitle>
-              <span className="ml-2">
-                {currentCluster.display_name2 && (
-                  <ClusterNameSubtitle>{`(${currentCluster.display_name2})`}</ClusterNameSubtitle>
-                )}
-              </span>
-            </h1>
+            <VariantTitle cluster={currentCluster} />
           </Col>
         </Row>
 
@@ -77,62 +69,62 @@ export function VariantsPageDisconnected({ currentCluster }: VariantsPageProps) 
             <ClusterButtonPanel currentCluster={currentCluster} />
           </Col>
 
-          <Col lg={9} xl={10}>
-            <EditableClusterContent githubUrl={`blob/master/content/clusters/${currentCluster.build_name}.md`}>
-              <Row noGutters className="mb-3">
-                <Col className="d-flex w-100">
-                  {currentCluster.nextstrain_url ? (
-                    <LinkExternal
-                      href={currentCluster.nextstrain_url}
-                      icon={<NextstrainIcon />}
-                      color={theme.link.dim.color}
-                    >
-                      {`Dedicated ${currentCluster.display_name} Nextstrain build`}
-                    </LinkExternal>
-                  ) : (
-                    <span>{'No dedicated Nextstrain build is available'}</span>
-                  )}
-                </Col>
-              </Row>
-
-              {hasDefiningMutations(currentCluster) && (
-                <Row noGutters>
-                  <Col>
-                    <Row noGutters>
-                      <Col>
-                        <h2>{'Defining mutations'}</h2>
-                      </Col>
-                    </Row>
-                    <Row noGutters>
-                      <Col>
-                        <DefiningMutations cluster={currentCluster} />
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              )}
-
-              <Row noGutters className="mb-2">
-                <Col>
-                  <ClusterContent />
-                </Col>
-              </Row>
-
-              <Row noGutters className="mb-2">
-                <Col>
-                  <PlotCard cluster={currentCluster} />
-                </Col>
-              </Row>
-
-              <Row noGutters className="mb-2">
-                <Col>
-                  <ProteinCard cluster={currentCluster} />
-                </Col>
-              </Row>
-            </EditableClusterContent>
-          </Col>
+          {currentCluster && <VariantsPageContent currentCluster={currentCluster} />}
         </Row>
       </VariantsPageContainer>
     </Layout>
+  )
+}
+
+export function VariantsPageContent({ currentCluster }: { currentCluster: ClusterDatum }) {
+  const ClusterContent = getClusterContent(currentCluster.build_name)
+  const showDefiningMutations = useMemo(() => hasDefiningMutations(currentCluster), [currentCluster])
+
+  return (
+    <>
+      <Col lg={showDefiningMutations ? 7 : 9} xl={showDefiningMutations ? 8 : 10}>
+        <EditableClusterContent githubUrl={`blob/master/content/clusters/${currentCluster.build_name}.md`}>
+          <Row noGutters className="mb-3">
+            <Col className="d-flex w-100">
+              {currentCluster.nextstrain_url ? (
+                <LinkExternal
+                  href={currentCluster.nextstrain_url}
+                  icon={<NextstrainIcon />}
+                  color={theme.link.dim.color}
+                >
+                  {`Dedicated ${currentCluster.display_name} Nextstrain build`}
+                </LinkExternal>
+              ) : (
+                <span>{'No dedicated Nextstrain build is available'}</span>
+              )}
+            </Col>
+          </Row>
+
+          <Row noGutters className="mb-2">
+            <Col>
+              <ClusterContent />
+            </Col>
+          </Row>
+
+          <Row noGutters className="mb-2">
+            <Col>
+              <PlotCard cluster={currentCluster} />
+            </Col>
+          </Row>
+
+          <Row noGutters className="mb-2">
+            <Col>
+              <ProteinCard cluster={currentCluster} />
+            </Col>
+          </Row>
+        </EditableClusterContent>
+      </Col>
+
+      {showDefiningMutations && (
+        <Col lg={2} xl={2}>
+          <DefiningMutations cluster={currentCluster} />
+        </Col>
+      )}
+    </>
   )
 }

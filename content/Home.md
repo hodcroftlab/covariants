@@ -1,6 +1,7 @@
 import { HomeImages } from 'src/components/Home/HomeImages'
 import { Link } from 'src/components/Link/Link'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
+import { NameTable } from 'src/components/Common/NameTable'
 
 
 Click on a variant button to start exploring!
@@ -15,26 +16,8 @@ To look at many variants at once, check out the [Per Variant](/per-variant) and 
 **What do the names mean?** 
 CoVariants uses the Nextstrain naming system for variants ([read more here](https://nextstrain.org/blog/2021-01-06-updated-SARS-CoV-2-clade-naming/)). However, the fact that there's multiple naming systems is confusing! See the table below to help find the variant you're interested in.
 
-<div align="center">
+<NameTable/>
 
-| Nextstrain Clade      |&#124; Pango Lineage | &#124;Other Name(s) |
-| ----------- | ----------- |--------|
-| <Var name="20E (EU1)" prefix=""/>     | &#124; <Lin name="B.1.177"/> | &#124; 20A.EU1 |
-| <Var name="20A.EU2" prefix=""/>       | &#124; <Lin name="B.1.160"/>           | &#124;  |
-| <Var name="20I/501Y.V1" prefix=""/>   | &#124; <Lin name="B.1.1.7" report />   | &#124; VOC 202012/01 |
-| <Var name="20H/501Y.V2" prefix=""/>   | &#124; <Lin name="B.1.351" report />   | &#124; 501Y.V2 |
-| <Var name="20J/501Y.V3" prefix=""/>   | &#124; <Lin name="P.1" report />       | &#124; |
-| <Var name="20C/S:452R" prefix=""/>    | &#124; <Lin name="B.1.427" />/<Lin name="B.1.429" />  | &#124; CAL.20C |
-| <Var name="20A/S:439K" prefix=""/>    | &#124; <Lin name="B.1.258"         />  | &#124; |
-| <Var name="20A/S:98F" prefix=""/>     | &#124; <Lin name="B.1.221"         />  | &#124; |
-| <Var name="20C/S:80Y" prefix=""/>     | &#124; <Lin name="B.1.367"         />  | &#124; |
-| <Var name="20B/S:626S" prefix=""/>    | &#124; <Lin name="B.1.1.277"       />  | &#124; |
-| <Var name="20B/S:1122L" prefix=""/>   | &#124; <Lin name="B.1.1.302"       />  | &#124; |
-| <Var name="20A/S:484K" prefix=""/>    | &#124; <Lin name="B.1.525" report />   | &#124; |
-| <Var name="20C/S:484K" prefix=""/>    | &#124; <Lin name="B.1.526" />          | &#124; |
-
-
-</div>
 
 <br/> 
 

@@ -1,11 +1,35 @@
 import React, { useCallback, useMemo } from 'react'
 
-import { Button, CardBody, Col, Container, Form, FormGroup, Input, Label, Row } from 'reactstrap'
+import {
+  Button,
+  CardBody,
+  Col,
+  Container,
+  Form as FormBase,
+  FormGroup as FormGroupBase,
+  Input,
+  Label,
+  Row,
+} from 'reactstrap'
 
 import { getClusterColor } from 'src/io/getClusters'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 import type { ClusterState } from 'src/components/CountryDistribution/CountryDistributionPage'
+import styled from 'styled-components'
+
+export const FormGroup = styled(FormGroupBase)`
+  flex: 1 0 320px;
+`
+
+export const Form = styled(FormBase)`
+  display: flex;
+  flex-wrap: wrap;
+`
+
+export const ClusterNameText = styled.span`
+  font-family: ${(props) => props.theme.font.monospace};
+`
 
 export interface ClusterFilterCheckboxProps {
   cluster: string
@@ -21,7 +45,7 @@ export function ClusterFilterCheckbox({ cluster, enabled, onFilterChange }: Clus
       <Label htmlFor={CSS.escape(cluster)} check>
         <Input id={CSS.escape(cluster)} type="checkbox" checked={enabled} onChange={onChange} />
         <ColoredBox $color={getClusterColor(cluster)} $size={14} $aspect={16 / 9} />
-        <span>{cluster}</span>
+        <ClusterNameText>{cluster}</ClusterNameText>
       </Label>
     </FormGroup>
   )

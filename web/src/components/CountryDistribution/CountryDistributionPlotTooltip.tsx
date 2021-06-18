@@ -4,7 +4,7 @@ import { sortBy, reverse } from 'lodash'
 import styled from 'styled-components'
 import { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 
-import { formatDate, formatInteger, formatProportion } from 'src/helpers/format'
+import { formatDateBiweekly, formatInteger, formatProportion } from 'src/helpers/format'
 import { getClusterColor } from 'src/io/getClusters'
 import { ColoredBox } from '../Common/ColoredBox'
 
@@ -38,6 +38,10 @@ const TooltipTable = styled.table`
 
 const TooltipTableBody = styled.tbody``
 
+export const ClusterNameText = styled.span`
+  font-family: ${(props) => props.theme.font.monospace};
+`
+
 export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
   const { payload } = props
   if (!payload || payload.length === 0) {
@@ -47,7 +51,7 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  const week = formatDate(payload[0]?.payload.week)
+  const week = formatDateBiweekly(payload[0]?.payload.week)
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
@@ -58,7 +62,7 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
 
   return (
     <Tooltip>
-      <TooltipTitle>{`Week: ${week}`}</TooltipTitle>
+      <TooltipTitle>{week}</TooltipTitle>
 
       <TooltipTable>
         <thead>
@@ -73,7 +77,7 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
             <tr key={name}>
               <td className="px-2 text-left">
                 <ColoredBox $color={getClusterColor(name ?? '')} $size={10} $aspect={1.66} />
-                <span>{name}</span>
+                <ClusterNameText>{name}</ClusterNameText>
               </td>
               <td className="px-2 text-right">{value !== undefined && value > EPSILON ? formatInteger(value) : '-'}</td>
               <td className="px-2 text-right">

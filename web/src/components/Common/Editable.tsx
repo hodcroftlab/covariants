@@ -27,20 +27,22 @@ const ProposeChangesText = styled.span`
 `
 
 export interface EditableProps {
-  githubUrl: string
+  githubUrl?: string
   text?: string
 }
 
 export function Editable({ githubUrl, text, children, ...restProps }: PropsWithChildren<EditableProps>) {
   return (
     <Container {...restProps}>
-      <Flex>
-        <FlexRight>
-          <LinkExternal href={`${URL_GITHUB}/${githubUrl}`} icon={<FaGithub />} $color={theme.link.dim.color}>
-            <ProposeChangesText>{text ?? 'Propose changes to this section'}</ProposeChangesText>
-          </LinkExternal>
-        </FlexRight>
-      </Flex>
+      {githubUrl && (
+        <Flex>
+          <FlexRight>
+            <LinkExternal href={`${URL_GITHUB}/${githubUrl}`} icon={<FaGithub />} $color={theme.link.dim.color}>
+              <ProposeChangesText>{text ?? 'Propose changes to this section'}</ProposeChangesText>
+            </LinkExternal>
+          </FlexRight>
+        </Flex>
+      )}
       {children}
     </Container>
   )

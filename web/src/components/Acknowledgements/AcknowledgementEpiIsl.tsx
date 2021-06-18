@@ -1,7 +1,9 @@
-import React, { useEffect, useReducer, useMemo, useState, useCallback } from 'react'
+import React, { useMemo, useState, useCallback } from 'react'
 
 import Axios from 'axios'
 import { get } from 'lodash'
+import { useQuery } from 'react-query'
+import { AcknowledgementsError } from 'src/components/Acknowledgements/AcknowledgementsError'
 import styled from 'styled-components'
 import { Popover as PopoverBase, PopoverBody as PopoverBodyBase, PopoverHeader as PopoverHeaderBase } from 'reactstrap'
 import Loader from 'react-loader-spinner'
@@ -72,80 +74,33 @@ export function validateEpiIslData(data: unknown): AcknowledgementEpiIslDatum {
   return { origLab, submLab, authors }
 }
 
-export interface FetchEpiIslState {
-  status: 'idle' | 'fetching' | 'fetched' | 'error'
-  error?: string
-  data?: AcknowledgementEpiIslDatum
-}
-
-export type FetchEpiIslAction =
-  | { type: 'FETCHING' }
-  | { type: 'FETCHED'; data: AcknowledgementEpiIslDatum }
-  | { type: 'FETCH_ERROR'; error: string }
-  | { type: 'FETCH_CANCEL' }
-
-export const useFetchEpiIsl = (epiIsl: string) => {
+export function useQueryAcknowledgementData(epiIsl: string) {
   const url: string | undefined = useMemo(() => getEpiIslUrl(epiIsl), [epiIsl])
 
-  const initialState: FetchEpiIslState = {
-    status: 'idle',
-    error: undefined,
-    data: undefined,
-  }
-
-  const [state, dispatch] = useReducer((state: FetchEpiIslState, action: FetchEpiIslAction): FetchEpiIslState => {
-    switch (action.type) {
-      case 'FETCHING':
-        return { ...initialState, status: 'fetching' }
-      case 'FETCHED':
-        return { ...initialState, status: 'fetched', data: action.data }
-      case 'FETCH_ERROR':
-        return { ...initialState, status: 'error', error: action.error }
-      case 'FETCH_CANCEL':
-        return { ...initialState, status: 'error', error: 'Request cancelled' }
-      default:
-        return state
-    }
-  }, initialState)
-
-  useEffect(() => {
-    let cancelRequest = false
-
-    function cleanup() {
-      cancelRequest = true
-    }
-
-    if (!url) {
-      dispatch({ type: 'FETCH_ERROR', error: `EPI_ISL is not recognized ${epiIsl}` })
-      return cleanup
-    }
-
-    const fetchData = async () => {
-      dispatch({ type: 'FETCHING' })
-      try {
-        const response = await Axios.get(url)
-        const data = validateEpiIslData(await response.data)
-        if (cancelRequest) {
-          return
-        }
-        dispatch({ type: 'FETCHED', data })
-      } catch (error: unknown) {
-        if (cancelRequest) {
-          return
-        }
-        if (error instanceof Error) {
-          dispatch({ type: 'FETCH_ERROR', error: error.message })
-        } else {
-          dispatch({ type: 'FETCH_ERROR', error: `Unknown error: Details: ${JSON.stringify(error)}` })
-        }
+  return useQuery(
+    ['acknowledgement_data', epiIsl],
+    async () => {
+      if (!url) {
+        throw new Error(
+          `Unable to fetch acknowledgements data from GISAID: Unable to construct request URL: EPI ISL is incorrect: "${epiIsl}"`,
+        )
       }
-    }
-
-    void fetchData() // eslint-disable-line no-void
-    return cleanup
-  }, [epiIsl, url])
-
-  return state
+      const res = await Axios.get(url)
+      if (!res.data) {
+        throw new Error(
+          `Unable to fetch acknowledgements data from GISAID: request to URL "${url}" resulted in no data`,
+        )
+      }
+      return validateEpiIslData(res.data)
+    },
+    {
+      staleTime: Number.POSITIVE_INFINITY,
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: true,
+      refetchInterval: Number.POSITIVE_INFINITY,
+    },
+  )
 }
 
 export interface AcknowledgementEpiIslPopupProps {
@@ -155,7 +110,7 @@ export interface AcknowledgementEpiIslPopupProps {
 }
 
 export function AcknowledgementEpiIslPopup({ target, isOpen, epiIsl }: AcknowledgementEpiIslPopupProps) {
-  const { status, data, error } = useFetchEpiIsl(epiIsl)
+  const { isLoading, isFetching, isError, data, error } = useQueryAcknowledgementData(epiIsl)
 
   return (
     <Popover isOpen={isOpen} target={target} placement="auto">
@@ -163,15 +118,15 @@ export function AcknowledgementEpiIslPopup({ target, isOpen, epiIsl }: Acknowled
         <PopoverHeaderText>{`GISAID.org/${epiIsl}`}</PopoverHeaderText>
       </PopoverHeader>
       <PopoverBody>
-        {status === 'error' && error && <p className="text-danger">{`Error: ${error}`}</p>}
-        {status === 'fetching' && (
+        {(isLoading || isFetching) && (
           <div className="d-flex">
             <div className="mx-auto">
               <Loader type="ThreeDots" color="#777" height={100} width={50} timeout={3000} />
             </div>
           </div>
         )}
-        {status === 'fetched' && data && (
+        {isError && error && <AcknowledgementsError error={error} />}
+        {data && (
           <section>
             <p>
               <b>{'Originating lab: '}</b>

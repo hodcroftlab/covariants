@@ -116,8 +116,8 @@ export function ProteinCard({ cluster }: ProteinCardProps) {
         style={style}
         onError={handleError}
         onLoad={handleLoad}
-        gif={`/_next/static/content/proteins/${cluster.build_name}.gif`}
-        still={`/_next/static/content/proteins/${cluster.build_name}.jpg`}
+        gif={`/proteins/gif/${cluster.build_name}.gif`}
+        still={`/proteins/jpg/${cluster.build_name}.jpg`}
       />
     )
   }, [cluster.build_name, condition, handleError, handleLoad, style])

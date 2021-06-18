@@ -11,7 +11,7 @@ export const SidebarFlex = styled.aside`
   }
 
   @media only screen and (min-width: 768px) {
-    flex: 0 0 265px;
+    flex: 0 0 320px;
   }
 `
 

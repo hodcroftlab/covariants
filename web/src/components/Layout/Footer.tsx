@@ -73,7 +73,7 @@ export function FooterContent() {
           <CopyrightText>{`${PROJECT_NAME} (c) ${copyrightYearRange} ${COMPANY_NAME}`}</CopyrightText>
 
           <GisaidTacText>
-            <span>{'GISAID data provided on this website are a subject to '}</span>
+            <span>{'GISAID data provided on this website are subject to '}</span>
             <LinkExternal href="https://www.gisaid.org/registration/terms-of-use/" icon={null}>
               {'GISAID Terms and Conditions'}
             </LinkExternal>

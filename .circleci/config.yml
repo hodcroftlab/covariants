@@ -1,0 +1,96 @@
+version: 2.1
+
+major_branches_only: &major_branches_only
+  filters:
+    branches:
+      only:
+        - master
+        - release
+
+jobs:
+  Build-And-Deploy:
+    resource_class: medium
+
+    docker:
+      - image: cimg/python:3.8.10-node
+
+    environment:
+      PROD_ENABLE_TYPE_CHECKS: 0
+      PROD_ENABLE_REDUX_DEV_TOOLS: 0
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          name: "Restore web application build cache"
+          keys:
+            - cache-web-v2-{{ arch }}-{{ checksum "web/yarn.lock" }}
+
+      - run:
+          name: "Install AWS CLI"
+          command: |
+            curl -fsS "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+            unzip -oqq awscliv2.zip
+            sudo ./aws/install --update
+
+      - run:
+          name: "Build web application"
+          command: |
+            set -x
+            cd web
+            yarn install --frozen-lockfile
+            cp .env.example .env
+            yarn lint:ci
+            yarn prod:build:ci
+
+      - save_cache:
+          name: "Save web application build cache"
+          key: cache-web-v2-{{ arch }}-{{ checksum "web/yarn.lock" }}
+          paths:
+            - web/.cache
+            - web/.build/production/tmp/cache
+
+      - run:
+          name: "Clear AWS S3 bucket (branch << pipeline.git.branch >>)"
+          command: |
+            aws s3 rm s3://${AWS_S3_BUCKET} --recursive
+
+      - run:
+          name: "Deploy web bundle to AWS S3 (branch << pipeline.git.branch >>)"
+          command: |
+            cd web/.build/production/web
+            aws s3 cp --recursive --cache-control "max-age=2592000, public" "_next/" "s3://${AWS_S3_BUCKET}/_next/"
+
+      - run:
+          name: "Deploy web root to AWS S3 (branch << pipeline.git.branch >>)"
+          command: |
+            cd web/.build/production/web
+            aws s3 cp --recursive --exclude "_next/*" --exclude "*.html" "./" "s3://${AWS_S3_BUCKET}/"
+
+      - run:
+          name: "Deploy html files to AWS S3 (branch << pipeline.git.branch >>)"
+          command: |
+            cd web/.build/production/web
+            find * -type f -name "*.html" -exec bash -c '\
+            aws s3 cp \
+              --content-type "text/html" \
+              --cache-control "no-cache" \
+              --metadata-directive REPLACE \
+                $1 \
+                s3://${AWS_S3_BUCKET}/${1%.html}' \
+            - "{}" \;
+
+      - run:
+          name: "Invalidate AWS Cloudfront cache"
+          command: |
+            aws cloudfront create-invalidation \
+              --distribution-id ${AWS_CLOUDFRONT_DISTRIBUTION_ID} \
+              --paths "/*"
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - Build-And-Deploy:
+          context: covariants_<< pipeline.git.branch >>
+          <<: *major_branches_only
