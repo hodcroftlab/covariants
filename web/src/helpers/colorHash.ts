@@ -88,7 +88,7 @@ function HSL2RGB(H: number, S: number, L: number): [number, number, number] {
 
 export { HSL2RGB as testFroHSL2RGB }
 
-export type options = {
+export type Options = {
   lightness?: number | number[]
   saturation?: number | number[]
   hue?: number | { min: number; max: number } | { min: number; max: number }[]
@@ -106,7 +106,7 @@ class ColorHash {
   private hueRanges: { min: number; max: number }[]
   private hash: (str: string) => number
 
-  constructor(options: options = {}) {
+  constructor(options: Options = {}) {
     const LS = [options.lightness ?? [0.35, 0.5, 0.65], options.saturation ?? [0.35, 0.5, 0.65]].map((param) => {
       return Array.isArray(param) ? param.concat() : [param]
     })
@@ -190,6 +190,26 @@ class ColorHash {
   }
 }
 
-export function colorHash(content: string) {
-  return new ColorHash({ lightness: 0.78 }).hex(content)
+export interface ColorHashOptions extends Options {
+  reverse?: boolean
+  prefix?: string
+  suffix?: string
+}
+
+export function colorHash(content: string, options?: ColorHashOptions) {
+  let contentModified = content
+
+  if (options?.reverse) {
+    contentModified = contentModified.split('').reverse().join('')
+  }
+
+  if (options?.prefix) {
+    contentModified = `${options.prefix}${contentModified}`
+  }
+
+  if (options?.suffix) {
+    contentModified = `${contentModified}${options.suffix}`
+  }
+
+  return new ColorHash(options).hex(contentModified)
 }

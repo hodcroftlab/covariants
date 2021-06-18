@@ -286,8 +286,18 @@ export function LineageLinkBadge({ name, href, prefix, report }: LineageLinkBadg
         <MutationWrapper>
           {prefix && <PrefixText>{prefix}</PrefixText>}
           {components.map((component, i) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <ColoredComponent $color={colorHash(component)} key={`${component}-${i}`}>
+            <ColoredComponent
+              $color={colorHash(component, {
+                reverse: false,
+                prefix: '',
+                suffix: '',
+                lightness: 0.78,
+                hue: undefined,
+                saturation: undefined,
+              })}
+              // eslint-disable-next-line react/no-array-index-key
+              key={`${component}-${i}`}
+            >
               {component}
               {i < components.length - 1 && <span>{'.'}</span>}
             </ColoredComponent>

@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import type { NameTableDatum, NameTableEntry } from 'src/io/getNameTable'
 import { NAME_TABLE } from 'src/io/getNameTable'
-import { Var } from './MutationBadge'
+import { LineageLinkBadge, Var } from './MutationBadge'
 
 const Table = styled(TableBase)`
   max-width: 800px;
@@ -77,7 +77,9 @@ export function NameTableRow({ datum }: NameTableRowProps) {
   const lineageEntries = useMemo(
     () =>
       joinWithCommas(
-        lineages.map<ReactNode>((entry) => <NameTableEntryComponent key={entry.name} entry={entry} />),
+        lineages.map<ReactNode>((entry) => (
+          <LineageLinkBadge key={entry.name} name={entry.name} href={entry.url ?? undefined} prefix="" />
+        )),
       ),
     [lineages],
   )
