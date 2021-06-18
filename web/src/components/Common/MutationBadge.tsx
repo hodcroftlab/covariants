@@ -376,3 +376,8 @@ export function Mut({ name, href, prefix = 'Mutation' }: { name: string; href?: 
 export function Lin({ name, href, prefix = '', report }: LineageLinkBadgeProps) {
   return <LineageLinkBadge name={name} href={href} prefix={prefix} report={report} />
 }
+
+/** Shorter convenience alias for WhoBadge */
+export function Who({ name, href, prefix = '' }: WhoBadgeProps) {
+  return <WhoBadge name={name} href={href} prefix={prefix} />
+}
