@@ -10,37 +10,37 @@ const ClusterButtonRow = styled.span`
   display: flex;
 
   @media (min-width: 992px) {
-    flex: 1 0 150px;
+    flex: 1 0 170px;
     flex-grow: 1;
     height: 50px;
     margin: 3px auto;
   }
 
   @media (max-width: 991.98px) {
-    flex: 1 0 150px;
+    flex: 1 0 170px;
     flex-grow: 0;
-    height: 40px;
+    height: 50px;
     margin: 3px 5px;
   }
 
   @media (max-width: 767.98px) {
-    flex: 1 0 150px;
+    flex: 1 0 170px;
     flex-grow: 0;
-    height: 40px;
+    height: 50px;
     margin: 3px 5px;
   }
 
   @media (max-width: 575.98px) {
-    flex: 1 0 150px;
+    flex: 1 0 170px;
     flex-grow: 0;
-    height: 32px;
+    height: 42px;
     margin: 3px 3px;
   }
 `
 
 const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: string }>`
   display: flex;
-  flex: 1 0 150px;
+  flex: 1 0 170px;
 
   @media (min-width: 992px) {
     justify-content: left;
@@ -48,7 +48,9 @@ const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: strin
   }
 
   @media (max-width: 991.98px) {
-    justify-content: center;
+    justify-content: left;
+    padding: 0 5px;
+    //justify-content: center;
   }
 
   border: none;
@@ -71,13 +73,19 @@ const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: strin
 
 const ClusterTitle = styled.h2<{ $isCurrent: boolean }>`
   font-family: ${(props) => props.theme.font.monospace};
-  font-size: 1.2rem;
+  font-size: 1rem;
 
   @media (min-width: 992px) {
+    font-size: 0.9rem;
     margin-left: 1rem;
   }
 
-  @media (max-width: 991.98px) {
+  @media (min-width: 768px) {
+    font-size: 0.8rem;
+    margin: auto 5px;
+  }
+
+  @media (max-width: 767.98px) {
     font-size: 0.8rem;
     margin: auto 3px;
   }
