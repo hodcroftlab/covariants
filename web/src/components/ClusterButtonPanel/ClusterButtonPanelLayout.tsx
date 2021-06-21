@@ -15,8 +15,9 @@ const FlexContainer = styled.div`
 `
 
 const FlexFixed = styled.div`
-  flex: 0 0 180px;
-  display: flex;
+  flex: 0 0;
+  flex-basis: 180px;
+
   flex-wrap: wrap;
 `
 
