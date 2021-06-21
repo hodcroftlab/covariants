@@ -72,13 +72,27 @@ You can also check out the [CoV-Lineages Global Report](https://cov-lineages.org
 
 ## Questions about the Variants
 
+### When do you update CoVariants?
+
+I try to update CoVariants about twice a week. However, updating CoVariants is essentially a one-woman project, so if things get busy or technical issues arise, updates can sometimes be less frequent. I really appreciate your patience when this happens - I know it can be frustrating!
+
+### The data has just been updated -- why don't the graphs go up to 'today'?
+
+In general, it takes at least 2 weeks to go from 'sample taken' to 'sequenced and publicly available' which is necessary for CoVariants to pull the data in. For many places, or at certain times, it can take even longer to get sequences generated and online. Thus, even when CoVariants has just been updated with the latest data, the 'newest' data points are usually at least 2 weeks prior to the current date!
+
+### What date is used on the graphs?
+
+The dates used are always the dates a sample was taken. Only samples with a sampling day, month, and year are included in CoVariants, to ensure accuracy. 
+
 ### What do the names you use mean?
 
-Variants/mutations are listed by the location of a mutation in the spike protein (`S:`). The letter after `:` indicates the original amino-acid, the number is the position of the amino-acid in the spike protein, and the last letter is the 'new' amino-acid.
+Variants that are recognised as clades in the [Nextstrain nomenclature](https://nextstrain.org/blog/2021-01-06-updated-SARS-CoV-2-clade-naming) are shown with this name (ex: '21A'). This is often accompanied by an official [WHO designation](https://www.who.int/en/activities/tracking-SARS-CoV-2-variants/) (ex: 'Alpha', 'Beta').
 
-For some builds, like `S:N501` and `S:E484`, there is no last letter. This is because the builds track multiple amino-acid changes.
+Variants/mutations without official names are listed by the location of a mutation in the spike protein (`S:`). The letter after `:` indicates the original amino-acid, the number is the position of the amino-acid in the spike protein, and the last letter is the 'new' amino-acid. For Variants named like this, they are often preceeded by the 'parent' clade name (ex: 20A/S:439K).
 
-Some variants have different names, like `20A.EU1` and `20A.EU2`. This is because of their prominence - they've been given 'clade' and 'subclade' names. A defining mutation is often listed in parentheses after the name.
+For many nutation builds, like `S:N501` and `S:E484`, there is no last letter. This is because the builds track multiple amino-acid changes.
+
+Some variants have different names, like `20A.EU2`. This is because of their prominence - they've been given 'clade' and 'subclade' names. A defining mutation is often listed in parentheses after the name.
 
 ### How do you choose what variants to track?
 
