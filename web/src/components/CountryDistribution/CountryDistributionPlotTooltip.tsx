@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback } from 'react'
 
 import { sortBy, reverse } from 'lodash'
 import styled, { useTheme } from 'styled-components'
@@ -45,11 +45,9 @@ export const ClusterNameText = styled.span`
 export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
   const theme = useTheme()
 
-  const getColor = useCallback(
-    (name?: string) =>
-      getClusterPlotColor(name ?? '', theme.clusters.color.others, theme.plot.country.area.transparency),
-    [theme.clusters.color.others, theme.plot.country.area.transparency],
-  )
+  const getColor = useCallback((name?: string) => getClusterPlotColor(name ?? '', theme.plot.country.area.opacity), [
+    theme.plot.country.area.opacity,
+  ])
 
   const { payload } = props
   if (!payload || payload.length === 0) {

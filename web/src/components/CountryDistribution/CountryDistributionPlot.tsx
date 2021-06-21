@@ -79,7 +79,7 @@ export function CountryDistributionPlotComponent({ cluster_names, distribution }
                       stackId="1"
                       stroke="none"
                       fill={getClusterColor(cluster)}
-                      fillOpacity={1 - theme.plot.country.area.transparency}
+                      fillOpacity={theme.plot.country.area.opacity}
                       isAnimationActive={false}
                     />
                   ))}

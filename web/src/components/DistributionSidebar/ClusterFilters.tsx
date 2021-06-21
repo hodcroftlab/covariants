@@ -40,10 +40,10 @@ export interface ClusterFilterCheckboxProps {
 export function ClusterFilterCheckbox({ cluster, enabled, onFilterChange }: ClusterFilterCheckboxProps) {
   const onChange = useCallback(() => onFilterChange(cluster), [onFilterChange, cluster])
   const theme = useTheme()
-  const color = useMemo(
-    () => getClusterPlotColor(cluster, theme.clusters.color.others, theme.plot.country.area.transparency),
-    [cluster, theme.clusters.color.others, theme.plot.country.area.transparency],
-  )
+  const color = useMemo(() => getClusterPlotColor(cluster, theme.plot.country.area.opacity), [
+    cluster,
+    theme.plot.country.area.opacity,
+  ])
 
   return (
     <FormGroup key={cluster} check>

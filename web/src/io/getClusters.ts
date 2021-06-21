@@ -1,10 +1,10 @@
 /* eslint-disable camelcase */
 import { groupBy } from 'lodash'
-import { mix, transparentize } from 'polished'
-import { notUndefinedOrNull } from 'src/helpers/notUndefined'
+import Color from 'color'
 
 import type { Mutation } from 'src/types'
 import { theme } from 'src/theme'
+import { notUndefinedOrNull } from 'src/helpers/notUndefined'
 
 import clustersJson from 'src/../data/clusters.json'
 
@@ -73,14 +73,25 @@ export function getClusterColor(clusterName: string) {
   return found ? found.col : theme.clusters.color.unknown
 }
 
-export function getClusterPlotColor(clusterName: string, othersColor: string, transparency: number) {
+/**
+ * Finds an opaque color equivalent to a transparent color (with given hex RGB color and  given opacity)
+ * added on top of white background
+ */
+export function opaqueAlpha(color: string, opacity: number) {
+  let clr = new Color(color)
+
+  const rgb = clr
+    .rgb()
+    .array()
+    .map((c) => 255 - opacity * (255 - c))
+
+  clr = new Color(rgb)
+  return clr.hex()
+}
+
+export function getClusterPlotColor(clusterName: string, opacity: number) {
   const color = getClusterColor(clusterName)
-
-  // const fg = transparentize(transparency, color)
-  // const bg = transparentize(transparency, othersColor)
-
-  const bg = mix(transparency, '#ffffff', othersColor)
-  return mix(transparency, color, bg)
+  return opaqueAlpha(color, opacity)
 }
 
 export type ClusterDataGrouped = Record<string, ClusterDatum[]>
