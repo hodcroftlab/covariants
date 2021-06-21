@@ -83,7 +83,7 @@ export function opaqueAlpha(color: string, opacity: number) {
   const rgb = clr
     .rgb()
     .array()
-    .map((c) => 255 - opacity * (255 - c))
+    .map((c) => (1 - (1 - opacity) * (1 - c / 255)) * 255)
 
   clr = new Color(rgb)
   return clr.hex()
