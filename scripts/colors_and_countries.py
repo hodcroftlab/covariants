@@ -184,8 +184,8 @@ country_list_3 = [
     "Philippines",     # 16
     "Argentina", # 17
     "Cambodia",       # 18  
-        #19
-        #20
+    "Peru",    #19
+    "Zimbabwe",    #20
 ]
 
 country_styles_1 = {
