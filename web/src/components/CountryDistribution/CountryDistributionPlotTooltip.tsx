@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useCallback, useMemo } from 'react'
 
 import { sortBy, reverse } from 'lodash'
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 
 import { formatDateBiweekly, formatInteger, formatProportion } from 'src/helpers/format'
-import { getClusterColor } from 'src/io/getClusters'
+import { getClusterPlotColor } from 'src/io/getClusters'
 import { ColoredBox } from '../Common/ColoredBox'
 
 const EPSILON = 1e-2
@@ -43,6 +43,14 @@ export const ClusterNameText = styled.span`
 `
 
 export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
+  const theme = useTheme()
+
+  const getColor = useCallback(
+    (name?: string) =>
+      getClusterPlotColor(name ?? '', theme.clusters.color.others, theme.plot.country.area.transparency),
+    [theme.clusters.color.others, theme.plot.country.area.transparency],
+  )
+
   const { payload } = props
   if (!payload || payload.length === 0) {
     return null
@@ -76,7 +84,7 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
           {payloadSorted.map(({ name, value }) => (
             <tr key={name}>
               <td className="px-2 text-left">
-                <ColoredBox $color={getClusterColor(name ?? '')} $size={10} $aspect={1.66} />
+                <ColoredBox $color={getColor(name)} $size={10} $aspect={1.66} />
                 <ClusterNameText>{name}</ClusterNameText>
               </td>
               <td className="px-2 text-right">{value !== undefined && value > EPSILON ? formatInteger(value) : '-'}</td>

@@ -125,6 +125,9 @@ export const plot = {
     },
   },
   country: {
+    area: {
+      transparency: 0.4,
+    },
     legend: {
       lineIcon: {
         thickness: 2,

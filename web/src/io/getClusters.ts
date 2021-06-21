@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import { groupBy } from 'lodash'
+import { mix, transparentize } from 'polished'
 import { notUndefinedOrNull } from 'src/helpers/notUndefined'
 
 import type { Mutation } from 'src/types'
@@ -70,6 +71,16 @@ export function getClusterColor(clusterName: string) {
   const clusters = getClustersIncludingHidden()
   const found = clusters.find(({ display_name }) => display_name === clusterName)
   return found ? found.col : theme.clusters.color.unknown
+}
+
+export function getClusterPlotColor(clusterName: string, othersColor: string, transparency: number) {
+  const color = getClusterColor(clusterName)
+
+  // const fg = transparentize(transparency, color)
+  // const bg = transparentize(transparency, othersColor)
+
+  const bg = mix(transparency, '#ffffff', othersColor)
+  return mix(transparency, color, bg)
 }
 
 export type ClusterDataGrouped = Record<string, ClusterDatum[]>

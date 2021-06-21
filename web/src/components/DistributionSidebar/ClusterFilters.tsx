@@ -12,11 +12,11 @@ import {
   Row,
 } from 'reactstrap'
 
-import { getClusterColor } from 'src/io/getClusters'
+import { getClusterPlotColor } from 'src/io/getClusters'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 import type { ClusterState } from 'src/components/CountryDistribution/CountryDistributionPage'
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 
 export const FormGroup = styled(FormGroupBase)`
   flex: 1 0 320px;
@@ -39,12 +39,17 @@ export interface ClusterFilterCheckboxProps {
 
 export function ClusterFilterCheckbox({ cluster, enabled, onFilterChange }: ClusterFilterCheckboxProps) {
   const onChange = useCallback(() => onFilterChange(cluster), [onFilterChange, cluster])
+  const theme = useTheme()
+  const color = useMemo(
+    () => getClusterPlotColor(cluster, theme.clusters.color.others, theme.plot.country.area.transparency),
+    [cluster, theme.clusters.color.others, theme.plot.country.area.transparency],
+  )
 
   return (
     <FormGroup key={cluster} check>
       <Label htmlFor={CSS.escape(cluster)} check>
         <Input id={CSS.escape(cluster)} type="checkbox" checked={enabled} onChange={onChange} />
-        <ColoredBox $color={getClusterColor(cluster)} $size={14} $aspect={16 / 9} />
+        <ColoredBox $color={color} $size={14} $aspect={16 / 9} />
         <ClusterNameText>{cluster}</ClusterNameText>
       </Label>
     </FormGroup>
