@@ -74,7 +74,7 @@ jobs:
             find * -type f -name "*.html" -exec bash -c '\
             aws s3 cp \
               --content-type "text/html" \
-              --cache-control "no-cache" \
+              --cache-control "no-cache, s-maxage=3600" \
               --metadata-directive REPLACE \
                 $1 \
                 s3://${AWS_S3_BUCKET}/${1%.html}' \
