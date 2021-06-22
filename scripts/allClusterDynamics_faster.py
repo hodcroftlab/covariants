@@ -210,23 +210,32 @@ print("These clusters will be run: ", clus_to_run)
 
 print("\nReading in files...\n")
 
-# Get diagnostics file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
+
+# Get mutation summary file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
 muts_file = (
     "results/mutation_summary_gisaid.tsv"  # "results/sequence-diagnostics.tsv"
 )
 muts = pd.read_csv(muts_file, sep="\t", index_col=False)
+
+import time
+t0 = time.time()
+
 # Read metadata file
 input_meta = "data/downloaded_gisaid.tsv"  # "data/metadata.tsv"
 meta = pd.read_csv(input_meta, sep="\t", dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str}, index_col=False)
 meta = meta.fillna("")
 
+# Clean up metadata
 
 print("\nCleaning up the metadata...\n")
+
 # If bad seq there  - exclude!
-for key, value in bad_seqs.items():
-    bad_seq = meta[meta["strain"].isin([key])]
-    if not bad_seq.empty and bad_seq.date.values[0] == value:
-        meta.drop(bad_seq.index, inplace=True)
+maybe_bad = meta.loc[meta['strain'].isin(bad_seqs.keys())]
+really_bad = [s.date==bad_seqs[s.strain] for ri,s in maybe_bad.iterrows()]
+bad_indices =  maybe_bad.loc[really_bad].index
+meta.drop(bad_indices, inplace=True)
+
+bads = meta[meta['strain'].isin(bad_seqs.keys())]
 
 # do some modifications to metadata once, here - to exclude bad dates
 meta = meta[meta["date"].apply(lambda x: len(x) == 10)]
@@ -235,6 +244,7 @@ meta = meta[meta["date"].apply(lambda x: "XX" not in x)]
 meta["date_formatted"] = meta["date"].apply(
     lambda x: datetime.datetime.strptime(x, "%Y-%m-%d")
 )
+
 # warn of any in the future
 future_meta = meta[meta["date_formatted"].apply(lambda x: x > datetime.date.today())]
 if not future_meta.empty:
@@ -244,10 +254,17 @@ if not future_meta.empty:
 meta = meta[meta["date_formatted"].apply(lambda x: x <= datetime.date.today())]
 
 # Replace Swiss divisions with swiss-region, but store original division
-
 meta['orig_division'] = meta['division']
 meta['division'] = meta['division'].replace(swiss_regions)
 # meta[meta["country"].apply(lambda x: x == "Switzerland")]  #can check
+
+# Filter mutations to match Metadata - to exclude sequences with bad dates
+muts = muts[muts['Unnamed: 0'].isin(meta['strain'])]
+
+t1 = time.time()
+print(f"Reading & cleaning meta run took {t1-t0} to run")
+
+print("\nMetadata is ready to go...\n")
 
 
 ##################################
@@ -340,62 +357,45 @@ for clus in clus_to_run:
 ##################################
 #### For all but mink, go through and extract wanted sequences
 
+import time
+t0 = time.time()
+
 print("\nLooking for the wanted sequences in the file...\n")
-for index, row in muts.iterrows():
-    ambig_bases = ['Y', 'R', 'W', 'S', 'K', 'M', 'D', 'V', 'H', 'B', 'X', 'N']
-    ambig_bases_and_gap = ['Y', 'R', 'W', 'S', 'K', 'M', 'D', 'V', 'H', 'B', 'X', 'N', '-']
-    strain = row[0]
-    snplist = row["nucleotide"]
-    gaplist = []
-    if not pd.isna(snplist):
-        all_muts = [x for x in snplist.split(",")]
 
-        #convert gaplist
-        gaplist = [x for x in all_muts if '-' in x]
-        gaplist = [int(re.sub('[A-Z-]+', '', x)) for x in gaplist]
-        if not gaplist:
-            gaplist = []
-        
-        #convert snplist
-        snplist = [x for x in all_muts  if not any(j in x for j in ambig_bases_and_gap)]
-        snplist = [int(re.sub('[A-Z]+', '', x)) for x in snplist]
+muts["snp_pos"] = muts.nucleotide.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y and y[-1] in 'ACGT'])
+muts["gap_pos"] = muts.nucleotide.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y and y[-1] in '-'])
 
-        for clus in [x for x in clus_to_run if x != "mink"]:
-            clus_data = clusters[clus]
-            snps = clus_data["snps"]
-            snps2 = clus_data["snps2"]
-            gaps = clus_data["gaps"]
-            exclude_snps = clus_data["exclude_snps"]
-            wanted_seqs = clus_data["wanted_seqs"]
+for clus in [x for x in clus_to_run if x != "mink"]:
+    clus_data = clusters[clus]
+    snps = clus_data["snps"]
+    snps2 = clus_data["snps2"]
+    gaps = clus_data["gaps"]
+    exclude_snps = clus_data["exclude_snps"]
+    wanted_seqs = clus_data["wanted_seqs"]
 
-            # look for occurance of snp(s) *without* some other snp(s) (to exclude a certain group)
-            #if snps and not pd.isna(snplist) and exclude_snps and not pd.isna(exclude_snps):
-            if snps and snplist and exclude_snps and not pd.isna(exclude_snps):
-                intsnp = snplist #[int(x) for x in snplist.split(",")]
-                if all(x in intsnp for x in snps) and all(
-                    x not in intsnp for x in exclude_snps
-                ):
-                    wanted_seqs.append(row[0])
+    # look for occurance of snp(s) *without* some other snp(s) (to exclude a certain group)
+    if snps:
+        founds = muts.loc[muts.snp_pos.apply(lambda x: all((p in x) for p in snps) & all((p not in x) for p in exclude_snps)),'Unnamed: 0']
+        wanted_seqs.extend(founds)
 
-            #elif snps and not pd.isna(snplist):
-            elif snps and snplist:
-                intsnp = snplist #[int(x) for x in snplist.split(",")]
-                # this looks for all SNPs in 'snps' OR all in 'snps2' (two nucs that affect same AA, for example)
-                if all(x in intsnp for x in snps) or (
-                    all(x in intsnp for x in snps2) and len(snps2) != 0
-                ):
-                    # if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
-                    wanted_seqs.append(row[0])
-            # look for all locations in gap list
-            elif gaps and not all(pd.isna(gaplist)):
-                intgap = gaplist #[int(x) for x in gaplist.split(",")]
-                if all(x in intgap for x in gaps):
-                    wanted_seqs.append(row[0])
+    # look for additional occurances which have snps2
+    # (to look for 2 muts that affect same AA, for example)
+    if snps2:
+        founds = muts.loc[muts.snp_pos.apply(lambda x: all((p in x) for p in snps2) & all((p not in x) for p in exclude_snps)),'Unnamed: 0']
+        wanted_seqs.extend(founds)
 
+    #look for sequences by gaps
+    if gaps:
+        founds = muts.loc[muts.gap_pos.apply(lambda x: all((p in x) for p in gaps) & all((p not in x) for p in exclude_snps)),'Unnamed: 0']
+        wanted_seqs.extend(founds)
+
+
+t1 = time.time()
+print(f"Finding sequences took {t1-t0} to run")
 
 ##################################
 ##################################
-#### Remove bad sequences, gather metadata
+#### Gather metadata
 for clus in clus_to_run:
     print(f"\nRunning cluster {clus}\n")
 
@@ -403,29 +403,13 @@ for clus in clus_to_run:
     wanted_seqs = clus_data["wanted_seqs"]
     clus_display = clus_data["build_name"]
     display_cluster = clus_data["display_name"]
-    # cluster_meta = clus_data['cluster_meta']
     clusterlist_output = clus_data["clusterlist_output"]
     out_meta_file = clus_data["out_meta_file"]
-
-    # If seq there and date bad - exclude!
-    for key, value in bad_seqs.items():
-        bad_seq = meta[meta["strain"].isin([key])]
-        if not bad_seq.empty and bad_seq.date.values[0] == value and key in wanted_seqs:
-            wanted_seqs.remove(key)
 
     json_output[clus_display] = {}
 
     # get metadata for these sequences
     cluster_meta = meta[meta["strain"].isin(wanted_seqs)]
-
-    # remove those with bad dates
-    cluster_meta = cluster_meta[cluster_meta["date"].apply(lambda x: len(x) == 10)]
-    cluster_meta = cluster_meta[cluster_meta["date"].apply(lambda x: "XX" not in x)]
-    clus_data["cluster_meta"] = cluster_meta
-
-    bad_dates = 0
-    if len(wanted_seqs) != len(cluster_meta):
-        bad_dates = len(wanted_seqs) - len(cluster_meta)
 
     # re-set wanted_seqs
     wanted_seqs = list(cluster_meta["strain"])
@@ -433,10 +417,6 @@ for clus in clus_to_run:
     print("Sequences found: ")
     print(len(wanted_seqs))  # how many are there?
     print("\n")
-
-    if bad_dates:
-        print("Sequences with bad dates (excluded): ", bad_dates)
-        print("\n")
 
     #Do we want to write out cluster for Nextstrain?
     nextstrain_run = clusters[clus]['nextstrain_build']
@@ -762,10 +742,10 @@ for clus in clus_to_run:
         counts_by_2week = defaultdict(int)
         if coun in uk_countries:
             # temp_meta = meta[meta['division'].isin([coun])]
-            temp_meta = meta[meta["division"].apply(lambda x: x == coun)]
+            temp_meta = meta[meta["division"].apply(lambda x: x == coun)].copy()
         else:
             # temp_meta = meta[meta['country'].isin([coun])]
-            temp_meta = meta[meta["country"].apply(lambda x: x == coun)]
+            temp_meta = meta[meta["country"].apply(lambda x: x == coun)].copy()
 
         # temp_meta['calendar_week'] = temp_meta['date_formatted'].apply(lambda x: x.isocalendar()[1])
         temp_meta["calendar_week"] = temp_meta["date_formatted"].apply(
@@ -854,10 +834,10 @@ for clus in clus_to_run:
                 counts_by_2week = defaultdict(int)
                 if div in uk_countries or division:
                     # temp_meta = meta[meta['division'].isin([coun])]
-                    temp_meta = meta[meta["division"].apply(lambda x: x == div)]
+                    temp_meta = meta[meta["division"].apply(lambda x: x == div)].copy()
                 else:
                     # temp_meta = meta[meta['country'].isin([coun])]
-                    temp_meta = meta[meta["country"].apply(lambda x: x == div)]
+                    temp_meta = meta[meta["country"].apply(lambda x: x == div)].copy()
 
                 # temp_meta['calendar_week'] = temp_meta['date_formatted'].apply(lambda x: x.isocalendar()[1])
                 temp_meta["calendar_week"] = temp_meta["date_formatted"].apply(
