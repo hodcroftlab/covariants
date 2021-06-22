@@ -410,6 +410,7 @@ for clus in clus_to_run:
 
     # get metadata for these sequences
     cluster_meta = meta[meta["strain"].isin(wanted_seqs)]
+    clus_data["cluster_meta"] = cluster_meta
 
     # re-set wanted_seqs
     wanted_seqs = list(cluster_meta["strain"])
