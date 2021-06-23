@@ -260,6 +260,8 @@ meta['division'] = meta['division'].replace(swiss_regions)
 
 # Filter mutations to match Metadata - to exclude sequences with bad dates
 muts = muts[muts['Unnamed: 0'].isin(meta['strain'])]
+# Filter Metadata to only have those we have mutations for! Allows 'out of sync' files.
+meta = meta[meta["strain"].isin(muts["Unnamed: 0"])]
 
 t1 = time.time()
 print(f"Reading & cleaning meta run took {t1-t0} to run")
