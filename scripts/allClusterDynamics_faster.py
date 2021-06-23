@@ -394,6 +394,7 @@ for clus in [x for x in clus_to_run if x != "mink"]:
 t1 = time.time()
 print(f"Finding sequences took {round((t1-t0)/60,1)} min to run")
 
+
 ##################################
 ##################################
 #### Gather metadata
@@ -487,42 +488,42 @@ for clus in clus_to_run:
 
         alert_first_date[clus] = alert
 
-    # Make a version of N501 which does not have as much UK sequences for increased viewability
-    if clus == "S501":
-        nouk_501_meta = cluster_meta[
-            cluster_meta["country"].apply(lambda x: x != "United Kingdom")
+    # Make a version of Delta which does not have as much UK/India sequences for increased viewability
+    if clus == "21AS478":
+        nouk_delta_meta = cluster_meta[
+            cluster_meta["country"].apply(lambda x: x != "United Kingdom" and x != "India")
         ]
         # re-set wanted_seqs
-        extra501_wanted_seqs = list(nouk_501_meta["strain"])
+        extraDelta_wanted_seqs = list(nouk_delta_meta["strain"])
 
         noUK_clusterlist_output = (
-            cluster_path + f'/clusters/cluster_{clusters[clus]["build_name"]}-noUK.txt'
+            cluster_path + f'/clusters/cluster_{clusters[clus]["build_name"]}-noUKIndia.txt'
         )
         noUK_out_meta_file = (
             cluster_path
-            + f'/cluster_info/cluster_{clusters[clus]["build_name"]}-noUK_meta.tsv'
+            + f'/cluster_info/cluster_{clusters[clus]["build_name"]}-noUKIndia_meta.tsv'
         )
 
         if print_files:
             with open(noUK_clusterlist_output, "w") as f:
-                for item in extra501_wanted_seqs:
+                for item in extraDelta_wanted_seqs:
                     f.write("%s\n" % item)
             build_nam = clusters[clus]["build_name"]
             copypath = noUK_clusterlist_output.replace(
-                f"{build_nam}-noUK",
-                "{}-noUK-{}".format(
+                f"{build_nam}-noUKIndia",
+                "{}-noUKIndia-{}".format(
                     build_nam, datetime.date.today().strftime("%Y-%m-%d")
                 ),
             )
             copyfile(noUK_clusterlist_output, copypath)
-            nouk_501_meta.to_csv(noUK_out_meta_file, sep="\t", index=False)
+            nouk_delta_meta.to_csv(noUK_out_meta_file, sep="\t", index=False)
             copypath2 = noUK_clusterlist_output.replace(
                 "clusters/cluster_", "clusters/current/cluster_"
             )
             copyfile(noUK_clusterlist_output, copypath2)
 
-    # Make a version of V1-V3 which only have Swiss sequences for increased focus
-    if clus in ["501YV1", "501YV2", "501YV3"]:
+    # Make a version of  Alpha-Delta which only have Swiss sequences for increased focus
+    if clus in ["501YV1", "501YV2", "501YV3", "21AS478"]:
         swiss_voc_meta = cluster_meta[
             cluster_meta["country"].apply(lambda x: x == "Switzerland")
         ]
@@ -531,11 +532,11 @@ for clus in clus_to_run:
 
         swissvoc_clusterlist_output = (
             cluster_path
-            + f'/clusters/cluster_{clusters[clus]["build_name"]}-swiss{clus}.txt'
+            + f'/clusters/cluster_{clusters[clus]["build_name"]}-swiss.txt'
         )
         swissvoc_out_meta_file = (
             cluster_path
-            + f'/cluster_info/cluster_{clusters[clus]["build_name"]}-swiss{clus}_meta.tsv'
+            + f'/cluster_info/cluster_{clusters[clus]["build_name"]}-swiss_meta.tsv'
         )
 
         if print_files:
@@ -544,9 +545,9 @@ for clus in clus_to_run:
                     f.write("%s\n" % item)
             build_nam = clusters[clus]["build_name"]
             copypath = swissvoc_clusterlist_output.replace(
-                f"{build_nam}-swiss{clus}",
-                "{}-swiss{}-{}".format(
-                    build_nam, clus, datetime.date.today().strftime("%Y-%m-%d")
+                f"{build_nam}-swiss",
+                "{}-swiss-{}".format(
+                    build_nam, datetime.date.today().strftime("%Y-%m-%d")
                 ),
             )
             copyfile(swissvoc_clusterlist_output, copypath)
