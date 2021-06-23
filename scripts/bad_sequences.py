@@ -66,6 +66,27 @@ bad_seqs = {
     "USA/TN-UT2063/2020" : "2020-06-03", #pelican - too diverged
     "USA/NMDOH-2021083688/2020" : "2020-03-02", #S:452R - too diverged
     "Spain/VC-IBV-99028305/2020": "2020-03-15", #V1 - impossible given date
+    "Italy/MAR-UnivPM30_45476/2020":  "2002-10-04", #impossible date
+    "Italy/MAR-UnivPM31_45989/2020":  "2002-10-05", #impossible date
+    "Italy/MAR-UnivPM32_47190/2020":  "2002-10-05", #impossible date
+    # All these are European sequences, borderline, but divergence does not suggest they are real
+    "England/NOTT-246E4E/2020":  "2020-06-02",
+    "England/NOTT-246EF3/2020":  "2020-06-03",
+    "England/NOTT-246FD2/2020":  "2020-06-03",
+    "Wales/PHWC-49C25A/2020":  "2020-07-07",
+    "Wales/PHWC-4BD059/2020":  "2020-06-17",
+    "England/NOTT-246E11/2020":  "2020-06-03",
+    "England/MILK-69DECC/2020":  "2020-07-02",
+    "Netherlands/ZH-EMC-1863/2020":  "2020-07-12",
+    "Germany/BAV-PL-virotum_DZBZW/2020":  "2020-06-19",
+    "England/NOTT-246E3F/2020":  "2020-06-02",
+    "England/NOTT-246F96/2020":  "2020-06-02",
+    "England/NOTT-246F4B/2020":  "2020-06-03",
+    "England/NOTT-246F3C/2020":  "2020-06-03",
+    "England/NOTT-246E20/2020":  "2020-06-03",
+    "Netherlands/ZH-EMC-1818/2020":  "2020-06-12",
+    "Netherlands/ZH-EMC-1819/2020":  "2020-06-12",
+    "France/IDF_HB_112007052326/2020":  "2020-07-15",
     # These sequences are from EU1 - early dated but the divergence doesn't match the dates...
     "England/NOTT-246E3F/2020": "2020-06-02",
     "England/NOTT-246E11/2020": "2020-06-03",
@@ -94,9 +115,6 @@ bad_seqs = {
     "Spain/IB-HUSE-00001/2020": "2020-03-02",
     "Spain/VC-IBV-99028301/2020": "2020-03-17",
     "Belgium/MBLGc7385/2020":   "2020-05-20",
-    "Italy/MAR-UnivPM30_45476/2020":  "2002-10-04", #impossible date
-    "Italy/MAR-UnivPM31_45989/2020":  "2002-10-05", #impossible date
-    "Italy/MAR-UnivPM32_47190/2020":  "2002-10-05" #impossible date
     #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
     #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
 }
