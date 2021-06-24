@@ -115,6 +115,7 @@ bad_seqs = {
     "Spain/IB-HUSE-00001/2020": "2020-03-02",
     "Spain/VC-IBV-99028301/2020": "2020-03-17",
     "Belgium/MBLGc7385/2020":   "2020-05-20",
+    "England/NOTT-246D8D/2020": "2020-06-02",
     #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
     #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
 }
