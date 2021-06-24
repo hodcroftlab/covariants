@@ -289,6 +289,21 @@ clusters = {
         },
     },
 
+    # "delta plus" - build only - Delta + 417
+    "Delta417": {
+        "snps": [22995, 23604, 22917, 22813], # S:478, 681, 452, 417
+        "cluster_data": [],  
+        "nextstrain_build": True,
+        "type": "do_not_display",
+        "graphing": False,
+        "important": False,
+        "country_info": [],
+        "col": "#006600",
+        "display_name": "Delta + S:K417",
+        "build_name": "21A.Delta.S.K417",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.Delta.S.K417",
+    },
+
     # "new york variant"
     "20CS484": {
         "snps": [21575, 9867, 1059],
