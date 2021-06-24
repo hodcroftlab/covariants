@@ -366,29 +366,44 @@ print("\nLooking for the wanted sequences in the file...\n")
 muts["snp_pos"] = muts.nucleotide.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y and y[-1] in 'ACGT'])
 muts["gap_pos"] = muts.nucleotide.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y and y[-1] in '-'])
 
+# If an official Nextstrain clade, then use Nextclade designation to find them.
+# If not an official Nextstrain clade, use our SNP method
+
+# Figure out what clades are really recognised
+official_clades = list(meta["Nextstrain_clade"].unique())
+
 for clus in [x for x in clus_to_run if x != "mink"]:
     clus_data = clusters[clus]
     snps = clus_data["snps"]
     snps2 = clus_data["snps2"]
     gaps = clus_data["gaps"]
+    display_name = clus_data['display_name']
     exclude_snps = clus_data["exclude_snps"]
     wanted_seqs = clus_data["wanted_seqs"]
 
-    # look for occurance of snp(s) *without* some other snp(s) (to exclude a certain group)
-    if snps:
-        founds = muts.loc[muts.snp_pos.apply(lambda x: all((p in x) for p in snps) & all((p not in x) for p in exclude_snps)),'Unnamed: 0']
-        wanted_seqs.extend(founds)
+    # Use Nextclade
+    if display_name in official_clades:
+        next_assign = meta[meta["Nextstrain_clade"].apply(lambda x: x == display_name)]
+        wanted_seqs.extend(list(next_assign.strain))
 
-    # look for additional occurances which have snps2
-    # (to look for 2 muts that affect same AA, for example)
-    if snps2:
-        founds = muts.loc[muts.snp_pos.apply(lambda x: all((p in x) for p in snps2) & all((p not in x) for p in exclude_snps)),'Unnamed: 0']
-        wanted_seqs.extend(founds)
+    else:
+    #Use SNPS
 
-    #look for sequences by gaps
-    if gaps:
-        founds = muts.loc[muts.gap_pos.apply(lambda x: all((p in x) for p in gaps) & all((p not in x) for p in exclude_snps)),'Unnamed: 0']
-        wanted_seqs.extend(founds)
+        # look for occurance of snp(s) *without* some other snp(s) (to exclude a certain group)
+        if snps:
+            founds = muts.loc[muts.snp_pos.apply(lambda x: all((p in x) for p in snps) & all((p not in x) for p in exclude_snps)),'Unnamed: 0']
+            wanted_seqs.extend(founds)
+
+        # look for additional occurances which have snps2
+        # (to look for 2 muts that affect same AA, for example)
+        if snps2:
+            founds = muts.loc[muts.snp_pos.apply(lambda x: all((p in x) for p in snps2) & all((p not in x) for p in exclude_snps)),'Unnamed: 0']
+            wanted_seqs.extend(founds)
+
+        #look for sequences by gaps
+        if gaps:
+            founds = muts.loc[muts.gap_pos.apply(lambda x: all((p in x) for p in gaps) & all((p not in x) for p in exclude_snps)),'Unnamed: 0']
+            wanted_seqs.extend(founds)
 
 
 t1 = time.time()
@@ -1236,6 +1251,14 @@ if do_country == False:
         "You can alway run this step by calling `plot_country_data(clusters, proposed_coun_to_plot, print_files)`"
     )
 
+do_divisions_country = False
+if "all" in clus_answer:
+    print_answer = input(
+        "\nContinue to USA- & Swiss-specific country plotting? (y/n) (Enter is no): "
+    )
+    if print_answer in ["y", "Y", "yes", "YES", "Yes"]:
+        do_divisions_country = True
+        
 
 def get_ordered_clusters_to_plot(clusters, division=False, selected_country=None):
     # fix cluster order in a list so it's reliable
@@ -1453,13 +1476,6 @@ if do_country:
         clusters, proposed_coun_to_plot, print_files, clus_keys, "EUClusters"
     )
 
-do_divisions_country = False
-if "all" in clus_answer:
-    print_answer = input(
-        "\nContinue to USA- & Swiss-specific country plotting? (y/n) (Enter is no): "
-    )
-    if print_answer in ["y", "Y", "yes", "YES", "Yes"]:
-        do_divisions_country = True
 
 if do_divisions_country:
     proposed_coun_to_plot, clus_keys = get_ordered_clusters_to_plot(
