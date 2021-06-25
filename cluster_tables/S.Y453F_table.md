@@ -20,5 +20,6 @@
 | United Kingdom | 2021-03-11  |          1 | 2021-03-11 |
 | India          | 2021-03-11  |          2 | 2021-04-02 |
 | Canada         | 2021-03-12  |          1 | 2021-03-12 |
+| Germany        | 2021-06-07  |          2 | 2021-06-10 |
 
 ![Overall trends S.Y453F](/overall_trends_figures/overall_trends_S.Y453F.png)
