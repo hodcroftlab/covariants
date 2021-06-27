@@ -11,7 +11,7 @@ import {
   Label,
   Row,
 } from 'reactstrap'
-import { ColoredCircle } from 'src/components/Common/ColoredCircle'
+import { CountryFlag } from 'src/components/Common/CountryFlag'
 import styled from 'styled-components'
 
 import type { CountryState } from 'src/components/CountryDistribution/CountryDistributionPage'
@@ -40,13 +40,12 @@ export interface CountryFilterCheckboxProps {
 
 export function CountryFilterCheckbox({ country, enabled, withIcons, onFilterChange }: CountryFilterCheckboxProps) {
   const onChange = useCallback(() => onFilterChange(country), [country, onFilterChange])
-
   return (
     <FormGroup check>
       <Label htmlFor={CSS.escape(country)} check>
         <Input id={CSS.escape(country)} type="checkbox" checked={enabled} onChange={onChange} />
         {withIcons ? (
-          <ColoredCircle $color={getCountryColor(country)} $size={14} />
+          <CountryFlag country={country} />
         ) : (
           <ColoredHorizontalLineIcon
             width={theme.plot.country.legend.lineIcon.width}

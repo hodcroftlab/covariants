@@ -1,10 +1,9 @@
 /* eslint-disable camelcase */
 import React from 'react'
-
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
-import { ColoredCircle } from 'src/components/Common/ColoredCircle'
+
 import { PlotCardTitle } from 'src/components/Common/PlotCardTitle'
-import { getCountryColor } from 'src/io/getCountryColor'
+import { CountryFlag } from 'src/components/Common/CountryFlag'
 import {
   CountryDistributionDatum,
   CountryDistributionPlot,
@@ -24,8 +23,8 @@ export function CountryDistributionPlotCard({
   return (
     <Card className="m-2">
       <CardHeader className="d-flex flex-sm-column">
-        <PlotCardTitle>
-          <ColoredCircle $color={getCountryColor(country)} $size={20} />
+        <PlotCardTitle className="d-flex align-items-center">
+          <CountryFlag country={country} style={{ marginRight: '0.5em' }} />
           <span>{country}</span>
         </PlotCardTitle>
       </CardHeader>
