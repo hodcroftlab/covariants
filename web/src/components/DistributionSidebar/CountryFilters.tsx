@@ -31,6 +31,15 @@ export const Form = styled(FormBase)`
   flex-wrap: wrap;
 `
 
+const FlagAlignment = styled.span`
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.25em;
+  > * + * {
+    margin-left: 0.5em;
+  }
+`
+
 export interface CountryFilterCheckboxProps {
   country: string
   enabled: boolean
@@ -45,17 +54,22 @@ export function CountryFilterCheckbox({ country, enabled, withIcons, onFilterCha
       <Label htmlFor={CSS.escape(country)} check>
         <Input id={CSS.escape(country)} type="checkbox" checked={enabled} onChange={onChange} />
         {withIcons ? (
-          <CountryFlag country={country} />
+          <FlagAlignment>
+            <CountryFlag country={country} />
+            <span>{country}</span>
+          </FlagAlignment>
         ) : (
-          <ColoredHorizontalLineIcon
-            width={theme.plot.country.legend.lineIcon.width}
-            height={theme.plot.country.legend.lineIcon.height}
-            stroke={getCountryColor(country)}
-            strokeWidth={theme.plot.country.legend.lineIcon.thickness}
-            strokeDasharray={getCountryStrokeDashArray(country)}
-          />
+          <>
+            <ColoredHorizontalLineIcon
+              width={theme.plot.country.legend.lineIcon.width}
+              height={theme.plot.country.legend.lineIcon.height}
+              stroke={getCountryColor(country)}
+              strokeWidth={theme.plot.country.legend.lineIcon.thickness}
+              strokeDasharray={getCountryStrokeDashArray(country)}
+            />
+            <span className="ml-2">{country}</span>
+          </>
         )}
-        <span className="ml-2">{country}</span>
       </Label>
     </FormGroup>
   )
