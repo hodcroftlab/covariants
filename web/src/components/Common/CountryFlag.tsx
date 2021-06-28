@@ -1,3 +1,5 @@
+import type { SVGProps } from 'react'
+
 import iso3311a2 from 'iso-3166-1-alpha-2'
 import Flags from 'country-flag-icons/react/3x2'
 
@@ -7,9 +9,8 @@ const missingCountryCodes: Record<string, string> = {
   'South Korea': 'KR',
 }
 
-export interface CountryFlagProps {
+export interface CountryFlagProps extends SVGProps<SVGSVGElement> {
   country: string
-  style?: object
 }
 
 export function CountryFlag({ country, style }: CountryFlagProps) {
