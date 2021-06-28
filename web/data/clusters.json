@@ -1421,6 +1421,62 @@
       ]
     },
     {
+      "alt_display_name": [],
+      "build_name": "21G.Lambda",
+      "cluster_data": [],
+      "col": "#000066",
+      "country_info": [],
+      "display_name": "21G (Lambda)",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_name": "21G (Lambda)",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21G.Lambda",
+      "old_build_names": [],
+      "pango_lineages": [
+        {
+          "name": "C.37",
+          "url": null
+        }
+      ],
+      "snps": [
+        7424,
+        23031,
+        24138
+      ],
+      "type": "do_not_display",
+      "who_name": [
+        "Lambda"
+      ]
+    },
+    {
+      "alt_display_name": [],
+      "build_name": "21H",
+      "cluster_data": [],
+      "col": "#000066",
+      "country_info": [],
+      "display_name": "21H",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_name": "21H",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21H",
+      "old_build_names": [],
+      "pango_lineages": [
+        {
+          "name": "B.1.1.519",
+          "url": null
+        }
+      ],
+      "snps": [
+        10029,
+        23756,
+        21306
+      ],
+      "type": "do_not_display",
+      "who_name": []
+    },
+    {
       "alt_display_name": [
         "20A.EU1"
       ],

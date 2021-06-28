@@ -5,6 +5,6 @@
 
 |     | first_seq   |   num_seqs | last_seq   |
 |:----|:------------|-----------:|:-----------|
-| USA | 2020-11-04  |         74 | 2021-03-22 |
+| USA | 2020-11-04  |         78 | 2021-03-22 |
 
 ![Overall trends S.Q677R.Roadrunner](/overall_trends_figures/overall_trends_S.Q677R.Roadrunner.png)

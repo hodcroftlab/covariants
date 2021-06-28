@@ -289,6 +289,21 @@ clusters = {
         },
     },
 
+    # "delta plus" - build only - Delta + 417
+    "Delta417": {
+        "snps": [22995, 23604, 22917, 22813], # S:478, 681, 452, 417
+        "cluster_data": [],  
+        "nextstrain_build": True,
+        "type": "do_not_display",
+        "graphing": False,
+        "important": False,
+        "country_info": [],
+        "col": "#006600",
+        "display_name": "Delta + S:K417",
+        "build_name": "21A.Delta.S.K417",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.Delta.S.K417",
+    },
+
     # "new york variant"
     "20CS484": {
         "snps": [21575, 9867, 1059],
@@ -400,6 +415,52 @@ clusters = {
             ],
         },
     },
+
+    # C.37 - build only
+    "20GLambda": {
+        "snps": [7424, 23031, 24138], #ORF1a 2387 (7424G)  #S 490 (23031C) 859 (24138A)
+        "cluster_data": [],  
+        "nextstrain_build": True,
+        "graphing": False,
+        "type": "do_not_display",
+        "important": False,
+        "country_info": [],
+        "col": "#000066",
+        "display_name": "21G (Lambda)",
+        "alt_display_name": [],
+        "build_name": "21G.Lambda",
+        "old_build_names": [],
+        "who_name": ["Lambda"],
+        "nextstrain_name": "21G (Lambda)",
+        "pango_lineages": [
+            {"name": "C.37", "url": None}
+        ],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21G.Lambda",
+    },
+
+    # B.1.1.519 - build only
+    "21H": {
+        "snps": [10029, 23756, 21306], #ORF1a  3255 (10029T)   S: 732 (23756G) nuc 21306T
+        "cluster_data": [],  
+        "nextstrain_build": True,
+        "graphing": False,
+        "type": "do_not_display",
+        "important": False,
+        "country_info": [],
+        "col": "#000066",
+        "display_name": "21H",
+        "alt_display_name": [],
+        "build_name": "21H",
+        "old_build_names": [],
+        "who_name": [],
+        "nextstrain_name": "21H",
+        "pango_lineages": [
+            {"name": "B.1.1.519", "url": None}
+        ],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21H",
+    },
+
+
 
     "S222": {
         "snps": [22227, 28932, 29645],
