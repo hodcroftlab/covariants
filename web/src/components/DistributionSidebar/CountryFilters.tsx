@@ -55,7 +55,7 @@ export function CountryFilterCheckbox({ country, enabled, withIcons, onFilterCha
         <Input id={CSS.escape(country)} type="checkbox" checked={enabled} onChange={onChange} />
         {withIcons ? (
           <FlagAlignment>
-            <CountryFlag country={country} />
+            <CountryFlag country={country} withFallback />
             <span>{country}</span>
           </FlagAlignment>
         ) : (

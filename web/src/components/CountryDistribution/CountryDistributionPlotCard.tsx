@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react'
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
+import styled from 'styled-components'
 
 import { PlotCardTitle } from 'src/components/Common/PlotCardTitle'
 import { CountryFlag } from 'src/components/Common/CountryFlag'
@@ -9,6 +10,13 @@ import {
   CountryDistributionPlot,
 } from 'src/components/CountryDistribution/CountryDistributionPlot'
 
+const FlagAlignment = styled.span`
+  display: flex;
+  align-items: center;
+  > * + * {
+    margin-left: 0.5em;
+  }
+`
 export interface CountryDistributionPlotCardProps {
   country: string
   distribution: CountryDistributionDatum[]
@@ -23,9 +31,11 @@ export function CountryDistributionPlotCard({
   return (
     <Card className="m-2">
       <CardHeader className="d-flex flex-sm-column">
-        <PlotCardTitle className="d-flex align-items-center">
-          <CountryFlag country={country} style={{ marginRight: '0.5em' }} />
-          <span>{country}</span>
+        <PlotCardTitle>
+          <FlagAlignment>
+            <CountryFlag country={country} />
+            <span>{country}</span>
+          </FlagAlignment>
         </PlotCardTitle>
       </CardHeader>
 
