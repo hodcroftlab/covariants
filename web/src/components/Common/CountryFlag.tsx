@@ -4,7 +4,7 @@ import Flags from 'country-flag-icons/react/3x2'
 const missingCountryCodes: Record<string, string> = {
   'USA': 'US',
   'Russia': 'RU',
-  'South Korea': 'KR'
+  'South Korea': 'KR',
 }
 
 export interface CountryFlagProps {
