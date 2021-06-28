@@ -11,7 +11,7 @@ import {
   Label,
   Row,
 } from 'reactstrap'
-import { CountryFlag } from 'src/components/Common/CountryFlag'
+import { CountryFlagProps } from 'src/components/Common/CountryFlag'
 import styled from 'styled-components'
 
 import type { CountryState } from 'src/components/CountryDistribution/CountryDistributionPage'
@@ -44,10 +44,17 @@ export interface CountryFilterCheckboxProps {
   country: string
   enabled: boolean
   withIcons?: boolean
+  Icon?: React.ComponentType<CountryFlagProps>
   onFilterChange(country: string): void
 }
 
-export function CountryFilterCheckbox({ country, enabled, withIcons, onFilterChange }: CountryFilterCheckboxProps) {
+export function CountryFilterCheckbox({
+  country,
+  enabled,
+  withIcons,
+  Icon,
+  onFilterChange,
+}: CountryFilterCheckboxProps) {
   const onChange = useCallback(() => onFilterChange(country), [country, onFilterChange])
   return (
     <FormGroup check>
@@ -55,7 +62,7 @@ export function CountryFilterCheckbox({ country, enabled, withIcons, onFilterCha
         <Input id={CSS.escape(country)} type="checkbox" checked={enabled} onChange={onChange} />
         {withIcons ? (
           <FlagAlignment>
-            <CountryFlag country={country} withFallback />
+            {Icon && <Icon country={country} withFallback />}
             <span>{country}</span>
           </FlagAlignment>
         ) : (
@@ -80,6 +87,7 @@ export interface CountryFiltersProps {
   regionsTitle: string
   collapsed: boolean
   withIcons?: boolean
+  Icon?: React.ComponentType<CountryFlagProps>
   onFilterChange(country: string): void
   onFilterSelectAll(): void
   onFilterDeselectAll(): void
@@ -91,6 +99,7 @@ export function CountryFilters({
   regionsTitle,
   collapsed,
   withIcons,
+  Icon,
   onFilterSelectAll,
   onFilterDeselectAll,
   onFilterChange,
@@ -124,6 +133,7 @@ export function CountryFilters({
                     country={country}
                     enabled={enabled}
                     withIcons={withIcons}
+                    Icon={Icon}
                     onFilterChange={onFilterChange}
                   />
                 ))}

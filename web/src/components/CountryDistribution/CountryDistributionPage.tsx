@@ -21,6 +21,7 @@ import {
 
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
 import { CountryDistributionDatum } from './CountryDistributionPlot'
+import { CountryFlag } from '../Common/CountryFlag'
 
 export interface ClusterState {
   [key: string]: { enabled: boolean }
@@ -83,6 +84,7 @@ export function CountryDistributionPage() {
   }, [clustersState, countriesState])
 
   const regionsTitle = useMemo(() => (currentRegion === 'World' ? 'Countries' : 'Regions'), [currentRegion])
+  const iconComponent = useMemo(() => (currentRegion === 'World' ? CountryFlag : undefined), [currentRegion])
 
   const { withCountriesFiltered } =
     /* prettier-ignore */
@@ -96,10 +98,15 @@ export function CountryDistributionPage() {
     () =>
       withClustersFiltered.map(({ country, distribution }) => (
         <ColCustom key={country} md={12} lg={6} xl={6} xxl={4}>
-          <CountryDistributionPlotCard country={country} distribution={distribution} cluster_names={enabledClusters} />
+          <CountryDistributionPlotCard
+            country={country}
+            distribution={distribution}
+            cluster_names={enabledClusters}
+            Icon={iconComponent}
+          />
         </ColCustom>
       )),
-    [enabledClusters, withClustersFiltered],
+    [enabledClusters, withClustersFiltered, iconComponent],
   )
 
   const handleClusterCheckedChange = useCallback(
@@ -187,6 +194,7 @@ export function CountryDistributionPage() {
                   regionsTitle={regionsTitle}
                   enabledFilters={enabledFilters}
                   clustersCollapsedByDefault={false}
+                  Icon={iconComponent}
                   onClusterFilterChange={handleClusterCheckedChange}
                   onClusterFilterSelectAll={handleClusterSelectAll}
                   onClusterFilterDeselectAll={handleClusterDeselectAll}

@@ -4,7 +4,7 @@ import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
 import styled from 'styled-components'
 
 import { PlotCardTitle } from 'src/components/Common/PlotCardTitle'
-import { CountryFlag } from 'src/components/Common/CountryFlag'
+import { CountryFlagProps } from 'src/components/Common/CountryFlag'
 import {
   CountryDistributionDatum,
   CountryDistributionPlot,
@@ -21,19 +21,21 @@ export interface CountryDistributionPlotCardProps {
   country: string
   distribution: CountryDistributionDatum[]
   cluster_names: string[]
+  Icon?: React.ComponentType<CountryFlagProps>
 }
 
 export function CountryDistributionPlotCard({
   country,
   distribution,
   cluster_names,
+  Icon,
 }: CountryDistributionPlotCardProps) {
   return (
     <Card className="m-2">
       <CardHeader className="d-flex flex-sm-column">
         <PlotCardTitle>
           <FlagAlignment>
-            <CountryFlag country={country} />
+            {Icon && <Icon country={country} />}
             <span>{country}</span>
           </FlagAlignment>
         </PlotCardTitle>
