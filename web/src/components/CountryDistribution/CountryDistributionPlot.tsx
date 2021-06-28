@@ -79,6 +79,7 @@ export function CountryDistributionPlotComponent({ cluster_names, distribution }
                       stackId="1"
                       stroke="none"
                       fill={getClusterColor(cluster)}
+                      fillOpacity={1}
                       isAnimationActive={false}
                     />
                   ))}
@@ -89,6 +90,7 @@ export function CountryDistributionPlotComponent({ cluster_names, distribution }
                     stackId="1"
                     stroke="none"
                     fill={theme.clusters.color.others}
+                    fillOpacity={1}
                     isAnimationActive={false}
                   />
 
