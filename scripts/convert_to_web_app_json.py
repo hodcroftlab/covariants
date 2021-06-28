@@ -57,6 +57,7 @@ def wrap_cluster_data(country_data_aos):
                 "cluster_counts": cluster_counts,
             }
         )
+    country_data_aos_wrapped.sort(key=lambda d: d['week'])
     return country_data_aos_wrapped, list(cluster_names)
 
 
@@ -216,6 +217,7 @@ def convert_per_cluster_data(clusters):
                     cluster_data_interp, country, distribution
                 )
 
+        distribution.sort(key=lambda d: d['week'])
         per_cluster_data_output["distributions"].append(
             {"cluster": display_name, "distribution": distribution}
         )
