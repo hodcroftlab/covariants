@@ -1,4 +1,4 @@
-import type { SVGProps } from 'react'
+import React, { SVGProps } from 'react'
 
 import iso3311a2 from 'iso-3166-1-alpha-2'
 import Flags from 'country-flag-icons/react/3x2'
