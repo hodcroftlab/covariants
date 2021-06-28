@@ -14,7 +14,7 @@ export interface CountryFlagProps extends SVGProps<SVGSVGElement> {
 }
 
 export function CountryFlag({ country, style }: CountryFlagProps) {
-  const countryCode = missingCountryCodes[country] || iso3311a2.getCode(country)
+  const countryCode = missingCountryCodes[country] ?? iso3311a2.getCode(country) ?? '?'
   const Flag = Flags[countryCode]
   return Flag ? <Flag style={{ height: '1em', ...style }} /> : null
 }

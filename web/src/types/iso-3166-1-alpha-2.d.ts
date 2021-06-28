@@ -1,11 +1,11 @@
 export declare class Iso31661a2 {
-  getCountry(code: string): string
+  getCountry(code: string): string | undefined
 
-  getCode(country: string): string
+  getCode(country: string): string | undefined
 
-  getCountries(): string
+  getCountries(): string[]
 
-  getCodes(): string
+  getCodes(): string[]
 
   getData(): Record<string, string>
 }
