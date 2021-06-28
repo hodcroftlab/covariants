@@ -65,12 +65,7 @@ export function CountryDistributionPlotComponent({ cluster_names, distribution }
                     tick={theme.plot.tickStyle}
                     allowDataOverflow
                   />
-                  <Tooltip
-                    content={CountryDistributionPlotTooltip}
-                    isAnimationActive={false}
-                    allowEscapeViewBox={{ x: false, y: true }}
-                    offset={50}
-                  />
+
                   {cluster_names.map((cluster) => (
                     <Area
                       key={cluster}
@@ -95,6 +90,13 @@ export function CountryDistributionPlotComponent({ cluster_names, distribution }
                   />
 
                   <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
+
+                  <Tooltip
+                    content={CountryDistributionPlotTooltip}
+                    isAnimationActive={false}
+                    allowEscapeViewBox={{ x: false, y: true }}
+                    offset={50}
+                  />
                 </AreaChart>
               </ResponsiveContainer>
             )
