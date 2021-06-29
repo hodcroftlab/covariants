@@ -1,4 +1,5 @@
 import 'reflect-metadata'
+import 'resize-observer-polyfill/dist/ResizeObserver.global'
 
 import 'css.escape'
 
