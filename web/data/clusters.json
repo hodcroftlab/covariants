@@ -1464,6 +1464,33 @@
       "old_build_names": [],
       "pango_lineages": [
         {
+          "name": "B.1.621",
+          "url": null
+        }
+      ],
+      "snps": [
+        22599,
+        4878,
+        17491
+      ],
+      "type": "do_not_display",
+      "who_name": []
+    },
+    {
+      "alt_display_name": [],
+      "build_name": "20B.S.732A",
+      "cluster_data": [],
+      "col": "#000066",
+      "country_info": [],
+      "display_name": "20B/S:732A",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_name": "",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20B.S.732A",
+      "old_build_names": [],
+      "pango_lineages": [
+        {
           "name": "B.1.1.519",
           "url": null
         }
@@ -1472,6 +1499,33 @@
         10029,
         23756,
         21306
+      ],
+      "type": "do_not_display",
+      "who_name": []
+    },
+    {
+      "alt_display_name": [],
+      "build_name": "20A.S.126A",
+      "cluster_data": [],
+      "col": "#000066",
+      "country_info": [],
+      "display_name": "20A/S:126A",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_name": "",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.126A",
+      "old_build_names": [],
+      "pango_lineages": [
+        {
+          "name": "B.1.620",
+          "url": null
+        }
+      ],
+      "snps": [
+        21939,
+        1473,
+        6236
       ],
       "type": "do_not_display",
       "who_name": []
