@@ -438,9 +438,9 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21G.Lambda",
     },
 
-    # B.1.1.519 - build only
-    "21H": {
-        "snps": [10029, 23756, 21306], #ORF1a  3255 (10029T)   S: 732 (23756G) nuc 21306T
+    # B.1.621 - build only
+    "21H:" {
+        "snps": [22599, 4878, 17491], #S 346 (22599A)  ORF1a: 1538 (4878T) nuc: 17491T
         "cluster_data": [],  
         "nextstrain_build": True,
         "graphing": False,
@@ -455,11 +455,53 @@ clusters = {
         "who_name": [],
         "nextstrain_name": "21H",
         "pango_lineages": [
-            {"name": "B.1.1.519", "url": None}
+            {"name": "B.1.621", "url": None}
         ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21H",
     },
 
+    # B.1.1.519 - build only
+    "20BS732": {
+        "snps": [10029, 23756, 21306], #ORF1a  3255 (10029T)   S: 732 (23756G) nuc 21306T
+        "cluster_data": [],  
+        "nextstrain_build": True,
+        "graphing": False,
+        "type": "do_not_display",
+        "important": False,
+        "country_info": [],
+        "col": "#000066",
+        "display_name": "20B/S:732A",
+        "alt_display_name": [],
+        "build_name": "20B.S.732A",
+        "old_build_names": [],
+        "who_name": [],
+        "nextstrain_name": "",
+        "pango_lineages": [
+            {"name": "B.1.1.519", "url": None}
+        ],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20B.S.732A",
+    },
+
+    #B.1.620 20A/S:126A
+    "20AS126": {
+        "snps": [21939, 1473, 6236], #S: 126 (21939C)  #ORF1a: 403 (1473T), 1991 (6236A)
+        "nextstrain_build": True,
+        "graphing": False,
+        "type": "do_not_display",
+        "important": False,
+        "country_info": [],
+        "col": "#000066",
+        "display_name": "20A/S:126A",
+        "alt_display_name": [],
+        "build_name": "20A.S.126A",
+        "old_build_names": [],
+        "who_name": [],
+        "nextstrain_name": "",
+        "pango_lineages": [
+            {"name": "B.1.620", "url": None}
+        ],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.126A",
+    },
 
 
     "S222": {
