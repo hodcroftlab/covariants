@@ -87,6 +87,28 @@ name_table = [
         ]
     },
     {
+        "clade": "21F (Iota)",
+        "who": "Iota",
+        "lineages": [
+            {"name": "B.1.526", "url": None}
+        ],
+        "others": [
+            {"name": "(Part of Pango lineage)", "url": None},
+        ],
+        "oldnames": [
+            {"name": "20C/S:484K", "url": None},
+        ]
+    },
+    {
+        "clade": "21G (Lambda)",
+        "who": "Lambda",
+        "lineages": [
+            {"name": "C.37", "url": None}
+        ],
+        "others": [],
+        "oldnames": []
+    },
+    {
         "clade": "20E (EU1)",
         "who": None,
         "lineages": [
@@ -100,17 +122,31 @@ name_table = [
         ],
     },
     {
-        "clade": "21F (Iota)",
-        "who": "Iota",
+        "clade": "21H",
+        "who": "",
         "lineages": [
-            {"name": "B.1.526", "url": None}
+            {"name": "B.1.621", "url": None}
         ],
-        "others": [
-            {"name": "(Part of Pango lineage)", "url": None},
+        "others": [],
+        "oldnames": []
+    },
+    {
+        "clade": "20B/S:732A",
+        "who": "",
+        "lineages": [
+            {"name": "B.1.1.519", "url": None}
         ],
-        "oldnames": [
-            {"name": "20C/S:484K", "url": None},
-        ]
+        "others": [],
+        "oldnames": []
+    },
+    {
+        "clade": "20A/S:126A",
+        "who": "",
+        "lineages": [
+            {"name": "B.1.620", "url": None}
+        ],
+        "others": [],
+        "oldnames": []
     },
     {
         "clade": "20A.EU2",
