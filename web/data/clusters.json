@@ -1421,7 +1421,6 @@
       ]
     },
     {
-      "alt_display_name": [],
       "build_name": "21G.Lambda",
       "cluster_data": [],
       "col": "#000066",
@@ -1429,6 +1428,215 @@
       "display_name": "21G (Lambda)",
       "graphing": false,
       "important": false,
+      "mutations": {
+        "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "G",
+            "pos": 75,
+            "right": "V"
+          },
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 76,
+            "right": "I"
+          },
+          {
+            "gene": "S",
+            "left": "R",
+            "pos": 246,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 247,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "Y",
+            "pos": 248,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 249,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 250,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 251,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "G",
+            "pos": 252,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 253,
+            "right": "N"
+          },
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 452,
+            "right": "Q"
+          },
+          {
+            "gene": "S",
+            "left": "F",
+            "pos": 490,
+            "right": "S"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 859,
+            "right": "N"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 1246,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "P",
+            "pos": 2287,
+            "right": "S"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 2387,
+            "right": "V"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "L",
+            "pos": 3201,
+            "right": "P"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 3255,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 3278,
+            "right": "S"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 3675,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 3676,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 3677,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "P",
+            "pos": 314,
+            "right": "L"
+          },
+          {
+            "gene": "N",
+            "left": "P",
+            "pos": 13,
+            "right": "L"
+          },
+          {
+            "gene": "N",
+            "left": "R",
+            "pos": 203,
+            "right": "K"
+          },
+          {
+            "gene": "N",
+            "left": "G",
+            "pos": 204,
+            "right": "R"
+          },
+          {
+            "gene": "N",
+            "left": "G",
+            "pos": 214,
+            "right": "C"
+          }
+        ],
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 241,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 3037,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 9857,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 13536,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 23731,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 28253,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 28271,
+            "right": "T"
+          }
+        ]
+      },
       "nextstrain_build": true,
       "nextstrain_name": "21G (Lambda)",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21G.Lambda",
@@ -1444,13 +1652,12 @@
         23031,
         24138
       ],
-      "type": "do_not_display",
+      "type": "variant",
       "who_name": [
         "Lambda"
       ]
     },
     {
-      "alt_display_name": [],
       "build_name": "21H",
       "cluster_data": [],
       "col": "#000066",
@@ -1458,6 +1665,190 @@
       "display_name": "21H",
       "graphing": false,
       "important": false,
+      "mutations": {
+        "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 95,
+            "right": "I"
+          },
+          {
+            "gene": "S",
+            "left": "Y",
+            "pos": 144,
+            "right": "S"
+          },
+          {
+            "gene": "S",
+            "left": "Y",
+            "pos": 145,
+            "right": "N"
+          },
+          {
+            "gene": "S",
+            "left": "R",
+            "pos": 346,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "E",
+            "pos": 484,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "N",
+            "pos": 501,
+            "right": "Y"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 681,
+            "right": "H"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 950,
+            "right": "N"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 1055,
+            "right": "A"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 1538,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 3255,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "Q",
+            "pos": 3729,
+            "right": "R"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "P",
+            "pos": 314,
+            "right": "L"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "P",
+            "pos": 1342,
+            "right": "S"
+          },
+          {
+            "gene": "N",
+            "left": "T",
+            "pos": 205,
+            "right": "I"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "Q",
+            "pos": 57,
+            "right": "H"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "V",
+            "pos": 256,
+            "right": "I"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "N",
+            "pos": 257,
+            "right": "Q"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "P",
+            "pos": 258,
+            "right": "*"
+          },
+          {
+            "gene": "ORF8",
+            "left": "T",
+            "pos": 11,
+            "right": "K"
+          },
+          {
+            "gene": "ORF8",
+            "left": "P",
+            "pos": 38,
+            "right": "S"
+          },
+          {
+            "gene": "ORF8",
+            "left": "S",
+            "pos": 67,
+            "right": "F"
+          }
+        ],
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 241,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 3037,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 6037,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 13057,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 18877,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 20148,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 26492,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 28272,
+            "right": "T"
+          }
+        ]
+      },
       "nextstrain_build": true,
       "nextstrain_name": "21H",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21H",
@@ -1473,7 +1864,7 @@
         4878,
         17491
       ],
-      "type": "do_not_display",
+      "type": "variant",
       "who_name": []
     },
     {
@@ -1485,6 +1876,118 @@
       "display_name": "20B/S:732A",
       "graphing": false,
       "important": false,
+      "mutations": {
+        "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 478,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 681,
+            "right": "H"
+          },
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 732,
+            "right": "A"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "P",
+            "pos": 959,
+            "right": "S"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 3255,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "I",
+            "pos": 3618,
+            "right": "V"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 4175,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "P",
+            "pos": 314,
+            "right": "L"
+          },
+          {
+            "gene": "N",
+            "left": "R",
+            "pos": 203,
+            "right": "K"
+          },
+          {
+            "gene": "N",
+            "left": "G",
+            "pos": 204,
+            "right": "R"
+          }
+        ],
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 203,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 222,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 241,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 3037,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 10954,
+            "right": "T"
+          },
+          {
+            "left": "T",
+            "pos": 19839,
+            "right": "C"
+          },
+          {
+            "left": "C",
+            "pos": 21306,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 29197,
+            "right": "T"
+          }
+        ]
+      },
       "nextstrain_build": true,
       "nextstrain_name": "",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20B.S.732A",
@@ -1512,6 +2015,201 @@
       "display_name": "20A/S:126A",
       "graphing": false,
       "important": false,
+      "mutations": {
+        "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 26,
+            "right": "S"
+          },
+          {
+            "gene": "S",
+            "left": "H",
+            "pos": 69,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "V",
+            "pos": 70,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "V",
+            "pos": 126,
+            "right": "A"
+          },
+          {
+            "gene": "S",
+            "left": "Y",
+            "pos": 144,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 241,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 242,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "A",
+            "pos": 243,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "H",
+            "pos": 245,
+            "right": "Y"
+          },
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 477,
+            "right": "N"
+          },
+          {
+            "gene": "S",
+            "left": "E",
+            "pos": 484,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 681,
+            "right": "H"
+          },
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 1027,
+            "right": "I"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 1118,
+            "right": "H"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 403,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "V",
+            "pos": 1991,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 3675,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 3676,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 3677,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "P",
+            "pos": 314,
+            "right": "L"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "A",
+            "pos": 1215,
+            "right": "S"
+          },
+          {
+            "gene": "N",
+            "left": "A",
+            "pos": 220,
+            "right": "V"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "I",
+            "pos": 5,
+            "right": "T"
+          }
+        ],
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 241,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 3037,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 15324,
+            "right": "T"
+          },
+          {
+            "left": "T",
+            "pos": 20049,
+            "right": "C"
+          },
+          {
+            "left": "A",
+            "pos": 23416,
+            "right": "T"
+          },
+          {
+            "left": "T",
+            "pos": 27795,
+            "right": "-"
+          },
+          {
+            "left": "T",
+            "pos": 27796,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 27797,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 28271,
+            "right": "T"
+          }
+        ]
+      },
       "nextstrain_build": true,
       "nextstrain_name": "",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.126A",
