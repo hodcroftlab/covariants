@@ -304,57 +304,6 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.Delta.S.K417",
     },
 
-    # "new york variant"
-    "20CS484": {
-        "snps": [21575, 9867, 1059],
-        "cluster_data": [],  # S5, ORF1a 3201, 265 -- 484 is 23012 (1-based)
-        "nextstrain_build": True,
-        "graphing": True,
-        "type": "variant",
-        "important": True,
-        "country_info": [],
-        "col": "#FFC2FF",
-        "display_name": "21F (Iota)",
-        "alt_display_name": ["20C/S:484K"],
-        "build_name": "21F.Iota",
-        "old_build_names": ["20C.S.484K"],
-        "who_name": ["Iota"],
-        "nextstrain_name": "21F (Iota)",
-        "pango_lineages": [
-            {"name": "B.1.526", "url": None}
-        ],
-        "alternative_names": ["B.1.526 (partial)"],
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21F.Iota?c=gt-S_484",  # color, no europe filter
-        "mutations": {
-            "nonsynonymous": [
-                {"gene": "S", "left": "L", "pos": 5, "right": "F"},
-                {"gene": "S", "left": "T", "pos": 95, "right": "I"},
-                {"gene": "S", "left": "D", "pos": 253, "right": "G"},
-                {"gene": "S", "left": "E", "pos": 484, "right": "K"},
-                {'gene': 'S', 'left': 'D', 'pos': 614, 'right': 'G'},
-                {"gene": "S", "left": "A", "pos": 701, "right": "V"},
-                {'gene': 'ORF1b', 'left': 'P', 'pos': 314, 'right': 'L'},
-                {"gene": "ORF1b", "left": "Q", "pos": 1011, "right": "H"},
-                {"gene": "ORF3a", "left": "P", "pos": 42, "right": "L"},
-                {'gene': 'ORF3a', 'left': 'Q', 'pos': 57, 'right': 'H'},
-                {'gene': 'ORF1a', 'left': 'T', 'pos': 265, 'right': 'I'},
-                {'gene': 'ORF1a', 'left': 'L', 'pos': 3201, 'right': 'P'},
-                {"gene": "ORF1a", "left": "S", "pos": 3675, "right": "-"},
-                {"gene": "ORF1a", "left": "G", "pos": 3676, "right": "-"},
-                {"gene": "ORF1a", "left": "F", "pos": 3677, "right": "-"},
-                {"gene": "N", "left": "P", "pos": 199, "right": "L"},
-                {"gene": "N", "left": "M", "pos": 234, "right": "I"},
-                {"gene": "ORF8", "left": "T", "pos": 11, "right": "I"},
-            ],
-            "synonymous": [
-                {"left": "C", "pos": 241, "right": "T"},
-                {"left": "C", "pos": 3037, "right": "T"},
-                {"left": "A", "pos": 20262, "right": "G"},
-                {"left": "A", "pos": 28271, "right": "-"},
-            ],
-        },
-    },
-
     # 'not-called-nigerian variant' B.1.525
     "20AS484": {
         "snps": [8593, 23012, 24224],
@@ -362,7 +311,7 @@ clusters = {
         "nextstrain_build": True,
         "graphing": True,
         "type": "variant",
-        "important": True,
+        "important": False,
         "country_info": [],
         "col": "#6666A3",
         "display_name": "21D (Eta)",
@@ -416,14 +365,65 @@ clusters = {
         },
     },
 
+    # "new york variant"
+    "20CS484": {
+        "snps": [21575, 9867, 1059],
+        "cluster_data": [],  # S5, ORF1a 3201, 265 -- 484 is 23012 (1-based)
+        "nextstrain_build": True,
+        "graphing": True,
+        "type": "variant",
+        "important": True,
+        "country_info": [],
+        "col": "#FFC2FF",
+        "display_name": "21F (Iota)",
+        "alt_display_name": ["20C/S:484K"],
+        "build_name": "21F.Iota",
+        "old_build_names": ["20C.S.484K"],
+        "who_name": ["Iota"],
+        "nextstrain_name": "21F (Iota)",
+        "pango_lineages": [
+            {"name": "B.1.526", "url": None}
+        ],
+        "alternative_names": ["B.1.526 (partial)"],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21F.Iota?c=gt-S_484",  # color, no europe filter
+        "mutations": {
+            "nonsynonymous": [
+                {"gene": "S", "left": "L", "pos": 5, "right": "F"},
+                {"gene": "S", "left": "T", "pos": 95, "right": "I"},
+                {"gene": "S", "left": "D", "pos": 253, "right": "G"},
+                {"gene": "S", "left": "E", "pos": 484, "right": "K"},
+                {'gene': 'S', 'left': 'D', 'pos': 614, 'right': 'G'},
+                {"gene": "S", "left": "A", "pos": 701, "right": "V"},
+                {'gene': 'ORF1b', 'left': 'P', 'pos': 314, 'right': 'L'},
+                {"gene": "ORF1b", "left": "Q", "pos": 1011, "right": "H"},
+                {"gene": "ORF3a", "left": "P", "pos": 42, "right": "L"},
+                {'gene': 'ORF3a', 'left': 'Q', 'pos': 57, 'right': 'H'},
+                {'gene': 'ORF1a', 'left': 'T', 'pos': 265, 'right': 'I'},
+                {'gene': 'ORF1a', 'left': 'L', 'pos': 3201, 'right': 'P'},
+                {"gene": "ORF1a", "left": "S", "pos": 3675, "right": "-"},
+                {"gene": "ORF1a", "left": "G", "pos": 3676, "right": "-"},
+                {"gene": "ORF1a", "left": "F", "pos": 3677, "right": "-"},
+                {"gene": "N", "left": "P", "pos": 199, "right": "L"},
+                {"gene": "N", "left": "M", "pos": 234, "right": "I"},
+                {"gene": "ORF8", "left": "T", "pos": 11, "right": "I"},
+            ],
+            "synonymous": [
+                {"left": "C", "pos": 241, "right": "T"},
+                {"left": "C", "pos": 3037, "right": "T"},
+                {"left": "A", "pos": 20262, "right": "G"},
+                {"left": "A", "pos": 28271, "right": "-"},
+            ],
+        },
+    },
+
     # C.37 - build only
     "21GLambda": {
         "snps": [7424, 23031, 24138], #ORF1a 2387 (7424G)  #S 490 (23031C) 859 (24138A)
         "cluster_data": [],  
         "nextstrain_build": True,
-        "graphing": False,
+        "graphing": True,
         "type": "variant",
-        "important": False,
+        "important": True,
         "country_info": [],
         "col": "#cc6699",
         "display_name": "21G (Lambda)",
@@ -483,7 +483,7 @@ clusters = {
         "snps": [22599, 4878, 17491], #S 346 (22599A)  ORF1a: 1538 (4878T) nuc: 17491T
         "cluster_data": [],  
         "nextstrain_build": True,
-        "graphing": False,
+        "graphing": True,
         "type": "variant",
         "important": False,
         "country_info": [],
@@ -541,7 +541,7 @@ clusters = {
         "snps": [10029, 23756, 21306], #ORF1a  3255 (10029T)   S: 732 (23756G) nuc 21306T
         "cluster_data": [],  
         "nextstrain_build": True,
-        "graphing": False,
+        "graphing": True,
         "type": "variant",
         "important": False,
         "country_info": [],
@@ -587,7 +587,7 @@ clusters = {
         "snps": [21939, 1473, 6236], #S: 126 (21939C)  #ORF1a: 403 (1473T), 1991 (6236A)
         "cluster_data": [],  
         "nextstrain_build": True,
-        "graphing": False,
+        "graphing": True,
         "type": "variant",
         "important": False,
         "country_info": [],
