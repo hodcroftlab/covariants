@@ -1652,7 +1652,7 @@
         23031,
         24138
       ],
-      "type": "variant",
+      "type": "do_not_display",
       "who_name": [
         "Lambda"
       ]
@@ -1864,11 +1864,10 @@
         4878,
         17491
       ],
-      "type": "variant",
+      "type": "do_not_display",
       "who_name": []
     },
     {
-      "alt_display_name": [],
       "build_name": "20B.S.732A",
       "cluster_data": [],
       "col": "#000066",
@@ -2007,7 +2006,6 @@
       "who_name": []
     },
     {
-      "alt_display_name": [],
       "build_name": "20A.S.126A",
       "cluster_data": [],
       "col": "#000066",
