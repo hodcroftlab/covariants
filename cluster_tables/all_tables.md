@@ -598,52 +598,6 @@ In the graphs below, countries are displayed in the chart if the country has at 
 
 ![Overall trends 21A.Delta.S.K417](/overall_trends_figures/overall_trends_21A.Delta.S.K417.png)
 
-## 21F (Iota)
-[Focal Build](https://nextstrain.org/groups/neherlab/ncov/21F.Iota?c=gt-S_484)
-
-|                     | first_seq   |   num_seqs | last_seq   |
-|:--------------------|:------------|-----------:|:-----------|
-| USA                 | 1972-06-09  |      35271 | 2021-06-24 |
-| Ecuador             | 2021-01-04  |        139 | 2021-06-09 |
-| Grenada             | 2021-01-06  |          1 | 2021-01-06 |
-| United Kingdom      | 2021-01-21  |         21 | 2021-05-01 |
-| Singapore           | 2021-01-26  |          6 | 2021-04-04 |
-| Ireland             | 2021-02-01  |         12 | 2021-05-07 |
-| Croatia             | 2021-02-03  |          4 | 2021-02-09 |
-| Japan               | 2021-02-08  |          4 | 2021-05-07 |
-| Dominican Republic  | 2021-02-09  |         14 | 2021-06-10 |
-| South Korea         | 2021-02-11  |          4 | 2021-04-14 |
-| Sint Maarten        | 2021-02-16  |         17 | 2021-05-27 |
-| Israel              | 2021-02-17  |          9 | 2021-04-26 |
-| Chile               | 2021-02-19  |          6 | 2021-04-24 |
-| Finland             | 2021-02-19  |          1 | 2021-02-19 |
-| Germany             | 2021-02-19  |         37 | 2021-06-22 |
-| Costa Rica          | 2021-02-22  |          3 | 2021-05-21 |
-| Australia           | 2021-02-24  |          5 | 2021-05-21 |
-| Aruba               | 2021-02-28  |         98 | 2021-06-18 |
-| Portugal            | 2021-03-03  |          2 | 2021-03-04 |
-| Mexico              | 2021-03-06  |         45 | 2021-06-11 |
-| Spain               | 2021-03-09  |        108 | 2021-06-17 |
-| Argentina           | 2021-03-11  |          8 | 2021-04-26 |
-| Switzerland         | 2021-03-15  |          6 | 2021-05-17 |
-| France              | 2021-03-16  |          6 | 2021-05-25 |
-| New Zealand         | 2021-03-16  |          1 | 2021-03-16 |
-| Ghana               | 2021-03-18  |          2 | 2021-03-20 |
-| Denmark             | 2021-03-22  |          8 | 2021-04-26 |
-| India               | 2021-03-24  |          1 | 2021-03-24 |
-| Colombia            | 2021-03-24  |          2 | 2021-05-07 |
-| Sweden              | 2021-03-30  |          4 | 2021-05-14 |
-| Italy               | 2021-04-11  |          4 | 2021-05-04 |
-| Romania             | 2021-04-17  |          2 | 2021-04-17 |
-| Austria             | 2021-04-18  |          2 | 2021-04-22 |
-| Netherlands         | 2021-04-19  |          2 | 2021-04-19 |
-| Canada              | 2021-04-19  |         55 | 2021-05-23 |
-| Lithuania           | 2021-04-22  |          7 | 2021-05-28 |
-| Antigua and Barbuda | 2021-05-03  |          1 | 2021-05-03 |
-| Slovenia            | 2021-05-13  |          4 | 2021-05-27 |
-
-![Overall trends 21F.Iota](/overall_trends_figures/overall_trends_21F.Iota.png)
-
 ## 21D (Eta)
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/21D.Eta)
 
@@ -714,6 +668,52 @@ In the graphs below, countries are displayed in the chart if the country has at 
 | Kuwait         | 2021-05-30  |          5 | 2021-06-05 |
 
 ![Overall trends 21D.Eta](/overall_trends_figures/overall_trends_21D.Eta.png)
+
+## 21F (Iota)
+[Focal Build](https://nextstrain.org/groups/neherlab/ncov/21F.Iota?c=gt-S_484)
+
+|                     | first_seq   |   num_seqs | last_seq   |
+|:--------------------|:------------|-----------:|:-----------|
+| USA                 | 1972-06-09  |      35271 | 2021-06-24 |
+| Ecuador             | 2021-01-04  |        139 | 2021-06-09 |
+| Grenada             | 2021-01-06  |          1 | 2021-01-06 |
+| United Kingdom      | 2021-01-21  |         21 | 2021-05-01 |
+| Singapore           | 2021-01-26  |          6 | 2021-04-04 |
+| Ireland             | 2021-02-01  |         12 | 2021-05-07 |
+| Croatia             | 2021-02-03  |          4 | 2021-02-09 |
+| Japan               | 2021-02-08  |          4 | 2021-05-07 |
+| Dominican Republic  | 2021-02-09  |         14 | 2021-06-10 |
+| South Korea         | 2021-02-11  |          4 | 2021-04-14 |
+| Sint Maarten        | 2021-02-16  |         17 | 2021-05-27 |
+| Israel              | 2021-02-17  |          9 | 2021-04-26 |
+| Chile               | 2021-02-19  |          6 | 2021-04-24 |
+| Finland             | 2021-02-19  |          1 | 2021-02-19 |
+| Germany             | 2021-02-19  |         37 | 2021-06-22 |
+| Costa Rica          | 2021-02-22  |          3 | 2021-05-21 |
+| Australia           | 2021-02-24  |          5 | 2021-05-21 |
+| Aruba               | 2021-02-28  |         98 | 2021-06-18 |
+| Portugal            | 2021-03-03  |          2 | 2021-03-04 |
+| Mexico              | 2021-03-06  |         45 | 2021-06-11 |
+| Spain               | 2021-03-09  |        108 | 2021-06-17 |
+| Argentina           | 2021-03-11  |          8 | 2021-04-26 |
+| Switzerland         | 2021-03-15  |          6 | 2021-05-17 |
+| France              | 2021-03-16  |          6 | 2021-05-25 |
+| New Zealand         | 2021-03-16  |          1 | 2021-03-16 |
+| Ghana               | 2021-03-18  |          2 | 2021-03-20 |
+| Denmark             | 2021-03-22  |          8 | 2021-04-26 |
+| India               | 2021-03-24  |          1 | 2021-03-24 |
+| Colombia            | 2021-03-24  |          2 | 2021-05-07 |
+| Sweden              | 2021-03-30  |          4 | 2021-05-14 |
+| Italy               | 2021-04-11  |          4 | 2021-05-04 |
+| Romania             | 2021-04-17  |          2 | 2021-04-17 |
+| Austria             | 2021-04-18  |          2 | 2021-04-22 |
+| Netherlands         | 2021-04-19  |          2 | 2021-04-19 |
+| Canada              | 2021-04-19  |         55 | 2021-05-23 |
+| Lithuania           | 2021-04-22  |          7 | 2021-05-28 |
+| Antigua and Barbuda | 2021-05-03  |          1 | 2021-05-03 |
+| Slovenia            | 2021-05-13  |          4 | 2021-05-27 |
+
+![Overall trends 21F.Iota](/overall_trends_figures/overall_trends_21F.Iota.png)
 
 ## 21G (Lambda)
 [Focal Build](https://nextstrain.org/groups/neherlab/ncov/21G.Lambda)
