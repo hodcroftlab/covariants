@@ -87,4 +87,55 @@ mutation_comparison = {
     "21F (Iota)\n(B.1.526)": {
         "nonsynonymous": ["S:L5F", "S:T95I", "S:D253G", "S:E484K", "S:D614G", "S:A701V"]
     },
+    "21G (Lambda)\n(C.37)": {
+        "nonsynonymous": [
+            "S:G75V",
+            "S:T76I",
+            "S:R246-",
+            "S:R247-",
+            "S:R248-",
+            "S:R249-",
+            "S:R250-",
+            "S:R251-",
+            "S:R252-",
+            "S:D253N",
+            "S:L452Q",
+            "S:F490S",
+            "S:D614G",
+            "S:T859N",
+        ]
+    },
+    "21H\n(B.1.621)": {
+        "nonsynonymous": [
+            "S:T95I",
+            "S:Y144S",
+            "S:Y145N",
+            "S:R346K",
+            "S:E484K",
+            "S:N501Y",
+            "S:D614G",
+            "S:P681H",
+            "S:D950N",
+        ]
+    },
+    "20A/S:126A\n(B.1.620)": {
+        "nonsynonymous": [
+            "S:P26S",
+            "S:H69-",
+            "S:V70-",
+            "S:V126A",
+            "S:Y144-",
+            "S:L241-",
+            "S:L242-",
+            "S:A243-",
+            "S:H245Y",
+            "S:S477N",
+            "S:E484K",
+            "S:D614G",
+            "S:P681H",
+            "S:T1027I",
+            "S:D1118H",
+        ]
+    },
+
 }

@@ -52,6 +52,18 @@ export function parseWhoBasedVariant(variantString: string): Mutation | undefine
   return { parent, version }
 }
 
+export function parseSimpleNextstrainClade(variantString: string): Mutation | undefined {
+  const match = /^(?<parent>\d\d[A-Z])$/.exec(variantString)
+
+  if (!match?.groups) {
+    return undefined
+  }
+
+  const parent = parseNonEmpty(match.groups?.parent)
+
+  return { parent }
+}
+
 export function parseVariant(variantString: string): Mutation | undefined {
   if (variantString === '20A.EU2') {
     return { parent: '20A', version: '.EU2' }
@@ -61,7 +73,12 @@ export function parseVariant(variantString: string): Mutation | undefined {
     return { parent: '20E', version: ' (EU1)' }
   }
 
-  let parsed = parseWhoBasedVariant(variantString)
+  let parsed = parseSimpleNextstrainClade(variantString)
+  if (parsed) {
+    return parsed
+  }
+
+  parsed = parseWhoBasedVariant(variantString)
   if (parsed) {
     return parsed
   }
