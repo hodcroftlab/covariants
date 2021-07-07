@@ -53,7 +53,7 @@ export function parseWhoBasedVariant(variantString: string): Mutation | undefine
 }
 
 export function parseSimpleNextstrainClade(variantString: string): Mutation | undefined {
-  const match = /^(?<parent>\d\d[A-Z])$/i.exec(variantString)
+  const match = /^(?<parent>\d\d[A-Z])$/.exec(variantString)
 
   if (!match?.groups) {
     return undefined
