@@ -1,12 +1,13 @@
 import { get } from 'lodash'
 import React, { useState, useMemo } from 'react'
-
 import { Col, Row } from 'reactstrap'
 
 import type { ClusterState, CountryState } from 'src/components/CountryDistribution/CountryDistributionPage'
 import { getClusterNames } from 'src/io/getClusters'
 import { ClusterFilters } from './ClusterFilters'
 import { CountryFilters } from './CountryFilters'
+
+import { CountryFlagProps } from '../Common/CountryFlag'
 
 const clusterNames = getClusterNames()
 
@@ -32,6 +33,7 @@ export interface DistributionSidebarProps {
   clustersCollapsedByDefault?: boolean
   coutriesCollapsedByDefault?: boolean
   enabledFilters: string[]
+  Icon?: React.ComponentType<CountryFlagProps>
   onClusterFilterChange(cluster: string): void
   onClusterFilterSelectAll(): void
   onClusterFilterDeselectAll(): void
@@ -47,6 +49,7 @@ export function DistributionSidebar({
   clustersCollapsedByDefault = true,
   coutriesCollapsedByDefault = true,
   enabledFilters,
+  Icon,
   onClusterFilterChange,
   onClusterFilterSelectAll,
   onClusterFilterDeselectAll,
@@ -78,6 +81,7 @@ export function DistributionSidebar({
           key="country-filters"
           regionsTitle={regionsTitle}
           withIcons
+          Icon={Icon}
           countries={countries}
           onFilterChange={onCountryFilterChange}
           onFilterSelectAll={onCountryFilterSelectAll}
@@ -110,6 +114,7 @@ export function DistributionSidebar({
       onCountryFilterDeselectAll,
       onCountryFilterSelectAll,
       regionsTitle,
+      Icon,
     ],
   )
 

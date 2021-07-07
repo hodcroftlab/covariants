@@ -1,32 +1,43 @@
 /* eslint-disable camelcase */
 import React from 'react'
-
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
-import { ColoredCircle } from 'src/components/Common/ColoredCircle'
+import styled from 'styled-components'
+
 import { PlotCardTitle } from 'src/components/Common/PlotCardTitle'
-import { getCountryColor } from 'src/io/getCountryColor'
+import { CountryFlagProps } from 'src/components/Common/CountryFlag'
 import {
   CountryDistributionDatum,
   CountryDistributionPlot,
 } from 'src/components/CountryDistribution/CountryDistributionPlot'
 
+const FlagAlignment = styled.span`
+  display: flex;
+  align-items: center;
+  > * + * {
+    margin-left: 0.5em;
+  }
+`
 export interface CountryDistributionPlotCardProps {
   country: string
   distribution: CountryDistributionDatum[]
   cluster_names: string[]
+  Icon?: React.ComponentType<CountryFlagProps>
 }
 
 export function CountryDistributionPlotCard({
   country,
   distribution,
   cluster_names,
+  Icon,
 }: CountryDistributionPlotCardProps) {
   return (
     <Card className="m-2">
       <CardHeader className="d-flex flex-sm-column">
         <PlotCardTitle>
-          <ColoredCircle $color={getCountryColor(country)} $size={20} />
-          <span>{country}</span>
+          <FlagAlignment>
+            {Icon && <Icon country={country} />}
+            <span>{country}</span>
+          </FlagAlignment>
         </PlotCardTitle>
       </CardHeader>
 
