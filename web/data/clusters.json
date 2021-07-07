@@ -1027,176 +1027,6 @@
     },
     {
       "alt_display_name": [
-        "20C/S:484K"
-      ],
-      "alternative_names": [
-        "B.1.526 (partial)"
-      ],
-      "build_name": "21F.Iota",
-      "cluster_data": [],
-      "col": "#FFC2FF",
-      "country_info": [],
-      "display_name": "21F (Iota)",
-      "graphing": true,
-      "important": true,
-      "mutations": {
-        "nonsynonymous": [
-          {
-            "gene": "S",
-            "left": "L",
-            "pos": 5,
-            "right": "F"
-          },
-          {
-            "gene": "S",
-            "left": "T",
-            "pos": 95,
-            "right": "I"
-          },
-          {
-            "gene": "S",
-            "left": "D",
-            "pos": 253,
-            "right": "G"
-          },
-          {
-            "gene": "S",
-            "left": "E",
-            "pos": 484,
-            "right": "K"
-          },
-          {
-            "gene": "S",
-            "left": "D",
-            "pos": 614,
-            "right": "G"
-          },
-          {
-            "gene": "S",
-            "left": "A",
-            "pos": 701,
-            "right": "V"
-          },
-          {
-            "gene": "ORF1b",
-            "left": "P",
-            "pos": 314,
-            "right": "L"
-          },
-          {
-            "gene": "ORF1b",
-            "left": "Q",
-            "pos": 1011,
-            "right": "H"
-          },
-          {
-            "gene": "ORF3a",
-            "left": "P",
-            "pos": 42,
-            "right": "L"
-          },
-          {
-            "gene": "ORF3a",
-            "left": "Q",
-            "pos": 57,
-            "right": "H"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "T",
-            "pos": 265,
-            "right": "I"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "L",
-            "pos": 3201,
-            "right": "P"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "S",
-            "pos": 3675,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "G",
-            "pos": 3676,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "F",
-            "pos": 3677,
-            "right": "-"
-          },
-          {
-            "gene": "N",
-            "left": "P",
-            "pos": 199,
-            "right": "L"
-          },
-          {
-            "gene": "N",
-            "left": "M",
-            "pos": 234,
-            "right": "I"
-          },
-          {
-            "gene": "ORF8",
-            "left": "T",
-            "pos": 11,
-            "right": "I"
-          }
-        ],
-        "synonymous": [
-          {
-            "left": "C",
-            "pos": 241,
-            "right": "T"
-          },
-          {
-            "left": "C",
-            "pos": 3037,
-            "right": "T"
-          },
-          {
-            "left": "A",
-            "pos": 20262,
-            "right": "G"
-          },
-          {
-            "left": "A",
-            "pos": 28271,
-            "right": "-"
-          }
-        ]
-      },
-      "nextstrain_build": true,
-      "nextstrain_name": "21F (Iota)",
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21F.Iota?c=gt-S_484",
-      "old_build_names": [
-        "20C.S.484K"
-      ],
-      "pango_lineages": [
-        {
-          "name": "B.1.526",
-          "url": null
-        }
-      ],
-      "snps": [
-        21575,
-        9867,
-        1059
-      ],
-      "type": "variant",
-      "who_name": [
-        "Iota"
-      ]
-    },
-    {
-      "alt_display_name": [
         "20A/S:484K"
       ],
       "build_name": "21D.Eta",
@@ -1205,7 +1035,7 @@
       "country_info": [],
       "display_name": "21D (Eta)",
       "graphing": true,
-      "important": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -1421,13 +1251,183 @@
       ]
     },
     {
+      "alt_display_name": [
+        "20C/S:484K"
+      ],
+      "alternative_names": [
+        "B.1.526 (partial)"
+      ],
+      "build_name": "21F.Iota",
+      "cluster_data": [],
+      "col": "#FFC2FF",
+      "country_info": [],
+      "display_name": "21F (Iota)",
+      "graphing": true,
+      "important": true,
+      "mutations": {
+        "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 5,
+            "right": "F"
+          },
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 95,
+            "right": "I"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 253,
+            "right": "G"
+          },
+          {
+            "gene": "S",
+            "left": "E",
+            "pos": 484,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
+          {
+            "gene": "S",
+            "left": "A",
+            "pos": 701,
+            "right": "V"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "P",
+            "pos": 314,
+            "right": "L"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "Q",
+            "pos": 1011,
+            "right": "H"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "P",
+            "pos": 42,
+            "right": "L"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "Q",
+            "pos": 57,
+            "right": "H"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 265,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "L",
+            "pos": 3201,
+            "right": "P"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 3675,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 3676,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 3677,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "P",
+            "pos": 199,
+            "right": "L"
+          },
+          {
+            "gene": "N",
+            "left": "M",
+            "pos": 234,
+            "right": "I"
+          },
+          {
+            "gene": "ORF8",
+            "left": "T",
+            "pos": 11,
+            "right": "I"
+          }
+        ],
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 241,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 3037,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 20262,
+            "right": "G"
+          },
+          {
+            "left": "A",
+            "pos": 28271,
+            "right": "-"
+          }
+        ]
+      },
+      "nextstrain_build": true,
+      "nextstrain_name": "21F (Iota)",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21F.Iota?c=gt-S_484",
+      "old_build_names": [
+        "20C.S.484K"
+      ],
+      "pango_lineages": [
+        {
+          "name": "B.1.526",
+          "url": null
+        }
+      ],
+      "snps": [
+        21575,
+        9867,
+        1059
+      ],
+      "type": "variant",
+      "who_name": [
+        "Iota"
+      ]
+    },
+    {
       "build_name": "21G.Lambda",
       "cluster_data": [],
-      "col": "#000066",
+      "col": "#cc6699",
       "country_info": [],
       "display_name": "21G (Lambda)",
-      "graphing": false,
-      "important": false,
+      "graphing": true,
+      "important": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -1652,7 +1652,7 @@
         23031,
         24138
       ],
-      "type": "do_not_display",
+      "type": "variant",
       "who_name": [
         "Lambda"
       ]
@@ -1660,10 +1660,10 @@
     {
       "build_name": "21H",
       "cluster_data": [],
-      "col": "#000066",
+      "col": "#f4dc81",
       "country_info": [],
       "display_name": "21H",
-      "graphing": false,
+      "graphing": true,
       "important": false,
       "mutations": {
         "nonsynonymous": [
@@ -1864,16 +1864,16 @@
         4878,
         17491
       ],
-      "type": "do_not_display",
+      "type": "variant",
       "who_name": []
     },
     {
       "build_name": "20B.S.732A",
       "cluster_data": [],
-      "col": "#000066",
+      "col": "#a3e3f8",
       "country_info": [],
       "display_name": "20B/S:732A",
-      "graphing": false,
+      "graphing": true,
       "important": false,
       "mutations": {
         "nonsynonymous": [
@@ -2002,16 +2002,16 @@
         23756,
         21306
       ],
-      "type": "do_not_display",
+      "type": "variant",
       "who_name": []
     },
     {
       "build_name": "20A.S.126A",
       "cluster_data": [],
-      "col": "#000066",
+      "col": "#d5f6d5",
       "country_info": [],
       "display_name": "20A/S:126A",
-      "graphing": false,
+      "graphing": true,
       "important": false,
       "mutations": {
         "nonsynonymous": [
@@ -2223,7 +2223,7 @@
         1473,
         6236
       ],
-      "type": "do_not_display",
+      "type": "variant",
       "who_name": []
     },
     {

@@ -22075,755 +22075,6 @@
       ]
     },
     {
-      "cluster": "21F (Iota)",
-      "distribution": [
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-04-27"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-05-04"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-05-11"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-05-18"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-05-25"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-06-01"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-06-08"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-06-15"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-06-22"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-06-29"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-07-06"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-07-13"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-07-20"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-07-27"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-08-03"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-08-10"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-08-17"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-08-24"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-08-31"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-09-07"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-09-14"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-09-21"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-09-28"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-10-05"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-10-12"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-10-19"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-10-26"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-11-02"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-11-09"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-11-16"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0001876172607879925
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-11-23"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0003894080996884735
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-11-30"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0008873114463176575
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-12-07"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0011443518064410659
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-12-14"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0017543859649122807
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-12-21"
-        },
-        {
-          "frequencies": {
-            "USA": 0.0029698265621287715
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2020-12-28"
-        },
-        {
-          "frequencies": {
-            "USA": 0.00434621786572961
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-01-04"
-        },
-        {
-          "frequencies": {
-            "USA": 0.005439298934803959
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-01-11"
-        },
-        {
-          "frequencies": {
-            "USA": 0.007147814018043026
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-01-18"
-        },
-        {
-          "frequencies": {
-            "USA": 0.011218384552624422
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-01-25"
-        },
-        {
-          "frequencies": {
-            "USA": 0.018319394663480686
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-02-01"
-        },
-        {
-          "frequencies": {
-            "USA": 0.026682285565534297
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-02-08"
-        },
-        {
-          "frequencies": {
-            "USA": 0.03466475532677396
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-02-15"
-        },
-        {
-          "frequencies": {
-            "USA": 0.04291957471789185
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-02-22"
-        },
-        {
-          "frequencies": {
-            "USA": 0.05185589519650655
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-03-01"
-        },
-        {
-          "frequencies": {
-            "USA": 0.06282750507967062
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-03-08"
-        },
-        {
-          "frequencies": {
-            "USA": 0.07876903082064612
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-03-15"
-        },
-        {
-          "frequencies": {
-            "USA": 0.09708582194251814
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-03-22"
-        },
-        {
-          "frequencies": {
-            "USA": 0.11075407774789564
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-03-29"
-        },
-        {
-          "frequencies": {
-            "USA": 0.11479544180833177
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-04-05"
-        },
-        {
-          "frequencies": {
-            "USA": 0.11472804332469978
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-04-12"
-        },
-        {
-          "frequencies": {
-            "USA": 0.11399010892320763
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-04-19"
-        },
-        {
-          "frequencies": {
-            "USA": 0.10872213624839486
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-04-26"
-        },
-        {
-          "frequencies": {
-            "USA": 0.09963715529753266
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-05-03"
-        },
-        {
-          "frequencies": {
-            "USA": 0.09214161247821837
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-05-10"
-        },
-        {
-          "frequencies": {
-            "USA": 0.08787365429804907
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-05-17"
-        },
-        {
-          "frequencies": {
-            "USA": 0.08295981159310188
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-05-24"
-        },
-        {
-          "frequencies": {
-            "USA": 0.07525064774135407
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-05-31"
-        },
-        {
-          "frequencies": {
-            "USA": 0.06606554534419976
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-06-07"
-        },
-        {
-          "frequencies": {
-            "USA": 0.05313351498637602
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-06-14"
-        },
-        {
-          "frequencies": {
-            "USA": 0.03794539565016196
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-06-21"
-        },
-        {
-          "frequencies": {
-            "USA": 0.025341130604288498
-          },
-          "interp": {
-            "USA": false
-          },
-          "orig": {
-            "USA": true
-          },
-          "week": "2021-06-28"
-        }
-      ]
-    },
-    {
       "cluster": "21D (Eta)",
       "distribution": [
         {
@@ -24849,6 +24100,3486 @@
           "week": "2021-06-28"
         }
       ]
+    },
+    {
+      "cluster": "21F (Iota)",
+      "distribution": [
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-04-27"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-05-04"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-05-11"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-05-18"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-05-25"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-06-01"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-06-08"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-06-15"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-06-22"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-06-29"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-07-06"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-07-13"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-07-20"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-07-27"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-08-03"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-08-10"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-08-17"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-08-24"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-08-31"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-09-07"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-09-14"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-09-21"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-09-28"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-10-05"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-10-12"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-10-19"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-10-26"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-11-02"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-11-09"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-11-16"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0001876172607879925
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-11-23"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0003894080996884735
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-11-30"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0008873114463176575
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-12-07"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0011443518064410659
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-12-14"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0017543859649122807
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-12-21"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0029698265621287715
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2020-12-28"
+        },
+        {
+          "frequencies": {
+            "USA": 0.00434621786572961
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-01-04"
+        },
+        {
+          "frequencies": {
+            "USA": 0.005439298934803959
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-01-11"
+        },
+        {
+          "frequencies": {
+            "USA": 0.007147814018043026
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-01-18"
+        },
+        {
+          "frequencies": {
+            "USA": 0.011218384552624422
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-01-25"
+        },
+        {
+          "frequencies": {
+            "USA": 0.018319394663480686
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-02-01"
+        },
+        {
+          "frequencies": {
+            "USA": 0.026682285565534297
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-02-08"
+        },
+        {
+          "frequencies": {
+            "USA": 0.03466475532677396
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-02-15"
+        },
+        {
+          "frequencies": {
+            "USA": 0.04291957471789185
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-02-22"
+        },
+        {
+          "frequencies": {
+            "USA": 0.05185589519650655
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-03-01"
+        },
+        {
+          "frequencies": {
+            "USA": 0.06282750507967062
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-03-08"
+        },
+        {
+          "frequencies": {
+            "USA": 0.07876903082064612
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-03-15"
+        },
+        {
+          "frequencies": {
+            "USA": 0.09708582194251814
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-03-22"
+        },
+        {
+          "frequencies": {
+            "USA": 0.11075407774789564
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-03-29"
+        },
+        {
+          "frequencies": {
+            "USA": 0.11479544180833177
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-04-05"
+        },
+        {
+          "frequencies": {
+            "USA": 0.11472804332469978
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-04-12"
+        },
+        {
+          "frequencies": {
+            "USA": 0.11399010892320763
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-04-19"
+        },
+        {
+          "frequencies": {
+            "USA": 0.10872213624839486
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-04-26"
+        },
+        {
+          "frequencies": {
+            "USA": 0.09963715529753266
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-05-03"
+        },
+        {
+          "frequencies": {
+            "USA": 0.09214161247821837
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-05-10"
+        },
+        {
+          "frequencies": {
+            "USA": 0.08787365429804907
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-05-17"
+        },
+        {
+          "frequencies": {
+            "USA": 0.08295981159310188
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-05-24"
+        },
+        {
+          "frequencies": {
+            "USA": 0.07525064774135407
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-05-31"
+        },
+        {
+          "frequencies": {
+            "USA": 0.06606554534419976
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-06-07"
+        },
+        {
+          "frequencies": {
+            "USA": 0.05313351498637602
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-06-14"
+        },
+        {
+          "frequencies": {
+            "USA": 0.03794539565016196
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-06-21"
+        },
+        {
+          "frequencies": {
+            "USA": 0.025341130604288498
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-06-28"
+        }
+      ]
+    },
+    {
+      "cluster": "21G (Lambda)",
+      "distribution": [
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-04-27"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-05-04"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-05-11"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-05-18"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-05-25"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-06-01"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-06-08"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-06-15"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-06-22"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-06-29"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-07-06"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-07-13"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-07-20"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-07-27"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-08-03"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-08-10"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-08-17"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-08-24"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-08-31"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-09-07"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-09-14"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-09-21"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-09-28"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-10-05"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-10-12"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-10-19"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": true,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-10-26"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": true,
+            "USA": false
+          },
+          "orig": {
+            "Chile": false,
+            "USA": true
+          },
+          "week": "2020-11-02"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": true,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-11-09"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-11-16"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-11-23"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-11-30"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-12-07"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-12-14"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-12-21"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2020-12-28"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-01-04"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-01-11"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-01-18"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.047619047619047616,
+            "USA": 6.799020940984498e-05
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-01-25"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.045454545454545456,
+            "USA": 0.00013274923669188903
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-02-01"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.037037037037037035,
+            "USA": 0.0001952362358453729
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-02-08"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.058823529411764705,
+            "USA": 0.000325796572620056
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-02-15"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.07894736842105263,
+            "USA": 0.0005218185376035483
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-02-22"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.1282051282051282,
+            "USA": 0.0006065016982047549
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-03-01"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.21428571428571427,
+            "USA": 0.0008020532563362208
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-03-08"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.27586206896551724,
+            "USA": 0.0009747493501670999
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-03-15"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.3253012048192771,
+            "USA": 0.0010822944642642403
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-03-22"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.35135135135135137,
+            "USA": 0.0012573783661066675
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-03-29"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.35766423357664234,
+            "USA": 0.0015567594495298587
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-04-05"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.36809815950920244,
+            "USA": 0.001707087355780551
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-04-12"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.36082474226804123,
+            "USA": 0.0018507843077763281
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-04-19"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.32751091703056767,
+            "USA": 0.0020084949458364885
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-04-26"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.31620553359683795,
+            "USA": 0.0021407837445573293
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-05-03"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.3371647509578544,
+            "USA": 0.0022100386756768245
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-05-10"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.34439834024896265,
+            "USA": 0.0023498551833433523
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-05-17"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.3113207547169811,
+            "USA": 0.0025829977968548205
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-05-24"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.27692307692307694,
+            "USA": 0.0025909654162442268
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-05-31"
+        },
+        {
+          "frequencies": {
+            "Chile": 0.25,
+            "USA": 0.0026010057222125888
+          },
+          "interp": {
+            "Chile": false,
+            "USA": false
+          },
+          "orig": {
+            "Chile": true,
+            "USA": true
+          },
+          "week": "2021-06-07"
+        },
+        {
+          "frequencies": {
+            "USA": 0.002452316076294278
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-06-14"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0023137436372049976
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-06-21"
+        },
+        {
+          "frequencies": {
+            "USA": 0.001949317738791423
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-06-28"
+        }
+      ]
+    },
+    {
+      "cluster": "21H",
+      "distribution": [
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-04-27"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-05-04"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-05-11"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-05-18"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-05-25"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-06-01"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-06-08"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-06-15"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-06-22"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-06-29"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-07-06"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-07-13"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-07-20"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-07-27"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-08-03"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-08-10"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-08-17"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-08-24"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-08-31"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": true
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-09-07"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": true
+          },
+          "orig": {
+            "Colombia": false
+          },
+          "week": "2020-09-14"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": true
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-09-21"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-09-28"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-10-05"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-10-12"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-10-19"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-10-26"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-11-02"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-11-09"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-11-16"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-11-23"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-11-30"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-12-07"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-12-14"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-12-21"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2020-12-28"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-01-04"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-01-11"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-01-18"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-01-25"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-02-01"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-02-08"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.0
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-02-15"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.18181818181818182
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-02-22"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.22727272727272727
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-03-01"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.2571428571428571
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-03-08"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.25
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-03-15"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.25
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-03-22"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.22
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-03-29"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.2127659574468085
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-04-05"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.22580645161290322
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-04-12"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.2662337662337662
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-04-19"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.35454545454545455
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-04-26"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.43010752688172044
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-05-03"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.45652173913043476
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-05-10"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.4805194805194805
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-05-17"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.5192307692307693
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-05-24"
+        },
+        {
+          "frequencies": {
+            "Colombia": 0.52
+          },
+          "interp": {
+            "Colombia": false
+          },
+          "orig": {
+            "Colombia": true
+          },
+          "week": "2021-05-31"
+        }
+      ]
+    },
+    {
+      "cluster": "20B/S:732A",
+      "distribution": [
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-04-27"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-05-04"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-05-11"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-05-18"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-05-25"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-06-01"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-06-08"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-06-15"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-06-22"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-06-29"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-07-06"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-07-13"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-07-20"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-07-27"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-08-03"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-08-10"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-08-17"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-08-24"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-08-31"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-09-07"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-09-14"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-09-21"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-09-28"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-10-05"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-10-12"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-10-19"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-10-26"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.0
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-11-02"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.0,
+            "USA": 0.00019179133103183735
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-11-09"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.06451612903225806,
+            "USA": 0.00017543859649122806
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-11-16"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.07272727272727272,
+            "USA": 0.000375234521575985
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-11-23"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.06578947368421052,
+            "USA": 0.0003894080996884735
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-11-30"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.07865168539325842,
+            "USA": 0.000709849157054126
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-12-07"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.002911208151382824,
+            "Mexico": 0.09090909090909091,
+            "USA": 0.0011443518064410659
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-12-14"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.00430416068866571,
+            "Mexico": 0.11538461538461539,
+            "USA": 0.0017543859649122807
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-12-21"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.004043126684636119,
+            "Mexico": 0.15254237288135594,
+            "USA": 0.0032074126870990736
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2020-12-28"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0045351473922902496,
+            "Mexico": 0.2441860465116279,
+            "USA": 0.005733308673941187
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-01-04"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.005628517823639775,
+            "Mexico": 0.3488372093023256,
+            "USA": 0.009820956410062703
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-01-11"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.005942275042444821,
+            "Mexico": 0.39669421487603307,
+            "USA": 0.01436502428868841
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-01-18"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.006183745583038869,
+            "Mexico": 0.41216216216216217,
+            "USA": 0.018085395703018765
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-01-25"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0062047569803516025,
+            "Mexico": 0.49404761904761907,
+            "USA": 0.021837249435815744
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-02-01"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.015135135135135135,
+            "Mexico": 0.6203007518796992,
+            "USA": 0.025771183131589222
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-02-08"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.026556776556776556,
+            "Mexico": 0.6666666666666666,
+            "USA": 0.0296474881084251
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-02-15"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.030254777070063694,
+            "Mexico": 0.6797520661157025,
+            "USA": 0.03450525079903464
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-02-22"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.025748086290883786,
+            "Mexico": 0.7175141242937854,
+            "USA": 0.038816108685104316
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-03-01"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.021606648199445983,
+            "Mexico": 0.7411167512690355,
+            "USA": 0.041118596941503584
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-03-08"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.017498932991890738,
+            "Mexico": 0.7165492957746479,
+            "USA": 0.04084663943557371
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-03-15"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.013942140118508192,
+            "Mexico": 0.7025440313111546,
+            "USA": 0.03920311059446026
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-03-22"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.010258107213765718,
+            "Mexico": 0.7236286919831224,
+            "USA": 0.036987880269637806
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-03-29"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.007050092764378479,
+            "Mexico": 0.7458677685950413,
+            "USA": 0.033408057786910764
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-04-05"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.004469727752945957,
+            "Mexico": 0.75,
+            "USA": 0.028902754885801744
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-04-12"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0036779730281977932,
+            "Mexico": 0.7234401349072512,
+            "USA": 0.02457598834916108
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-04-19"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.004317789291882556,
+            "Mexico": 0.660828025477707,
+            "USA": 0.02041421092489546
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-04-26"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0048205677557579,
+            "Mexico": 0.5928057553956835,
+            "USA": 0.01683599419448476
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-05-03"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0033927056827820186,
+            "Mexico": 0.5232876712328767,
+            "USA": 0.01466275659824047
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-05-10"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.4401650618982118,
+            "USA": 0.013170118585715066
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-05-17"
+        },
+        {
+          "frequencies": {
+            "Canada": 0.0,
+            "Mexico": 0.35325365205843295,
+            "USA": 0.011623490085846691
+          },
+          "interp": {
+            "Canada": false,
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Canada": true,
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-05-24"
+        },
+        {
+          "frequencies": {
+            "Mexico": 0.26248399487836105,
+            "USA": 0.010025909654162442
+          },
+          "interp": {
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-05-31"
+        },
+        {
+          "frequencies": {
+            "Mexico": 0.19594594594594594,
+            "USA": 0.008843419455522802
+          },
+          "interp": {
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-06-07"
+        },
+        {
+          "frequencies": {
+            "Mexico": 0.17533718689788053,
+            "USA": 0.006811989100817439
+          },
+          "interp": {
+            "Mexico": false,
+            "USA": false
+          },
+          "orig": {
+            "Mexico": true,
+            "USA": true
+          },
+          "week": "2021-06-14"
+        },
+        {
+          "frequencies": {
+            "USA": 0.004627487274409995
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-06-21"
+        },
+        {
+          "frequencies": {
+            "USA": 0.0029239766081871343
+          },
+          "interp": {
+            "USA": false
+          },
+          "orig": {
+            "USA": true
+          },
+          "week": "2021-06-28"
+        }
+      ]
+    },
+    {
+      "cluster": "20A/S:126A",
+      "distribution": []
     },
     {
       "cluster": "20E (EU1)",
