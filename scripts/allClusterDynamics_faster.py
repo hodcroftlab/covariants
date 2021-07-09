@@ -901,7 +901,7 @@ print(f"Date-binning data took {round((t1-t0)/60,1)} min to run\n\n")
 
 t0 = time.time()
 
-cutoff_num_seqs = 250
+cutoff_num_seqs = 300
 
 # This prints countries with more than cutoff_num_seqs PER CLUSTER - messy output.
 clusters_tww = []
@@ -975,7 +975,7 @@ for clus in clus_to_run:
     smoothing /= smoothing.sum()
 
     # Only plot countries with >= X seqs
-    min_to_plot = 250
+    min_to_plot = 300
     # if clus == "S222":
     #    min_to_plot = 200
 
