@@ -7,6 +7,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": True,
+        "default_shared_muts": True,
         "country_info": [],
         "col": "#D16666",
         "display_name": "20I (Alpha, V1)",
@@ -65,6 +66,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": True,
+        "default_shared_muts": True,
         "country_info": [],
         "col": "#FF6666",
         "display_name": "20H (Beta, V2)",
@@ -116,6 +118,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": True,
+        "default_shared_muts": True,
         "country_info": [],
         "col": "#FFB3B3",
         "display_name": "20J (Gamma, V3)",
@@ -185,7 +188,7 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.21B",
     },
 
-    # variant  -- part of 'Indian' in media - B.1.617.2
+    # variant Delta -- part of 'Indian' in media - B.1.617.2
     "21AS478": {
         "snps": [22995, 23604, 22917], # S:478, 681, 452
         "cluster_data": [],  
@@ -193,6 +196,7 @@ clusters = {
         "type": "variant",
         "graphing": True,
         "important": True,
+        "default_shared_muts": True,
         "country_info": [],
         "col": "#66A366",
         "display_name": "21A (Delta)",
@@ -236,7 +240,7 @@ clusters = {
         },
     },
 
-    # variant  -- part of 'Indian' in media - B.1.617.1 
+    # variant Kappa -- part of 'Indian' in media - B.1.617.1 
     "21AS154": {
         "snps": [17523, 23604, 22917], #ORF1b:1352, S:681, 452 
         "cluster_data": [],  
@@ -244,6 +248,7 @@ clusters = {
         "type": "variant",
         "graphing": True,
         "important": True,
+        "default_shared_muts": True,
         "country_info": [],
         "col": "#66C266",
         "display_name": "21B (Kappa)",
@@ -304,7 +309,7 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.Delta.S.K417",
     },
 
-    # 'not-called-nigerian variant' B.1.525
+    # Eta 'not-called-nigerian variant' B.1.525
     "20AS484": {
         "snps": [8593, 23012, 24224],
         "cluster_data": [],  # nuc 8593 S 484, 888
@@ -312,6 +317,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": False,
+        "default_shared_muts": True,
         "country_info": [],
         "col": "#6666A3",
         "display_name": "21D (Eta)",
@@ -365,7 +371,7 @@ clusters = {
         },
     },
 
-    # "new york variant"
+    # Iota "new york variant"
     "20CS484": {
         "snps": [21575, 9867, 1059],
         "cluster_data": [],  # S5, ORF1a 3201, 265 -- 484 is 23012 (1-based)
@@ -373,6 +379,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": True,
+        "default_shared_muts": True,
         "country_info": [],
         "col": "#FFC2FF",
         "display_name": "21F (Iota)",
@@ -416,7 +423,7 @@ clusters = {
         },
     },
 
-    # C.37 - build only
+    # Lambda C.37 - build only
     "21GLambda": {
         "snps": [7424, 23031, 24138], #ORF1a 2387 (7424G)  #S 490 (23031C) 859 (24138A)
         "cluster_data": [],  
@@ -424,6 +431,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": True,
+        "default_shared_muts": True,
         "country_info": [],
         "col": "#cc6699",
         "display_name": "21G (Lambda)",
@@ -486,6 +494,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": False,
+        "default_shared_muts": True,
         "country_info": [],
         "col": "#f4dc81",
         "display_name": "21H",
@@ -544,6 +553,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#a3e3f8",
         "display_name": "20B/S:732A",
@@ -590,6 +600,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": False,
+        "default_shared_muts": True,
         "country_info": [],
         "col": "#d5f6d5",
         "display_name": "20A/S:126A",
@@ -650,6 +661,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": True,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#FFBB8B",
         "display_name": "20E (EU1)",
@@ -675,7 +687,7 @@ clusters = {
         },
     },
 
-    # 'CA variant'
+    # Epsilon 'CA variant'
     "S452": {
         "snps": [21600, 22018, 22917],
         "cluster_data": [],  #'CA' variant
@@ -683,6 +695,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": False,
+        "default_shared_muts": True,
         "country_info": [],
         "col": "#A366A3",
         "display_name": "21C (Epsilon)",
@@ -723,6 +736,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#6666FF",
         "display_name": "20A/S:439K",
@@ -748,6 +762,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#E0A366",
         "display_name": "S:677H.Robin1",
@@ -786,6 +801,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#E085FF",
         "display_name": "S:677P.Pelican",
@@ -824,6 +840,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#A3D8F3",
         "display_name": "20A.EU2",
@@ -859,6 +876,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#C8C8DA",
         "display_name": "20A/S:98F",
@@ -885,6 +903,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#D1E8FF",
         "display_name": "20C/S:80Y",
@@ -925,6 +944,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#A3FFD1",
         "display_name": "20B/S:626S",
@@ -944,6 +964,7 @@ clusters = {
         "graphing": True,
         "type": "variant",
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#A3A3C2",
         "display_name": "20B/S:1122L",
@@ -964,6 +985,7 @@ clusters = {
         "snps2": [23063],
         "nextstrain_build": True,
         "graphing": False,
+        "default_shared_muts": False,
         "type": "mutation",
         "important": True,
         "country_info": [],
@@ -980,6 +1002,7 @@ clusters = {
         "graphing": False,
         "type": "mutation",
         "important": True,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#006600",
         "display_name": "S:E484",
@@ -995,6 +1018,7 @@ clusters = {
         "graphing": False,
         "type": "mutation",
         "important": True,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#ffcc00",
         "display_name": "S:H69-",
@@ -1011,6 +1035,7 @@ clusters = {
         "graphing": False,
         "type": "mutation",
         "important": True,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#000099",
         "display_name": "S:Q677",
@@ -1025,6 +1050,7 @@ clusters = {
         "graphing": False,
         "type": "mutation",
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#ff1a1a",
         "display_name": "S:Y453F",
@@ -1039,6 +1065,7 @@ clusters = {
         "graphing": False,
         "type": "mutation",
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#0000ff",
         "display_name": "S:S477",
@@ -1053,6 +1080,7 @@ clusters = {
         "graphing": False,
         "type": "do_not_display",
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#ffffff",
         "display_name": "DanishCluster",
@@ -1066,6 +1094,7 @@ clusters = {
         "nextstrain_build": True,
         "graphing": False,
         "type": "mutation",
+        "default_shared_muts": False,
         "important": False,
         "country_info": [],
         "col": "#000066",
@@ -1079,6 +1108,7 @@ clusters = {
         "gaps": [21993],
         "nextstrain_build": True,
         "graphing": False,
+        "default_shared_muts": False,
         "type": "mutation",
         "important": False,
         "country_info": [],
@@ -1094,6 +1124,7 @@ clusters = {
         "graphing": False,
         "type": "mutation",
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#ff8d3d",
         "display_name": "S:K417",
@@ -1107,6 +1138,7 @@ clusters = {
         "graphing": False,
         "type": "mutation",
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#b30000",
         "display_name": "S:H655",
@@ -1120,6 +1152,7 @@ clusters = {
         "graphing": False,
         "type": "mutation",
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#ff8080",
         "display_name": "S:P681",
@@ -1133,6 +1166,7 @@ clusters = {
         "nextstrain_build": True,
         "graphing": False,
         "type": "mutation",
+        "default_shared_muts": False,
         "important": False,
         "country_info": [],
         "col": "#65beeb",
@@ -1148,6 +1182,7 @@ clusters = {
         "nextstrain_build": True,
         "graphing": False,
         "usa_graph": True,
+        "default_shared_muts": False,
         "important": False,
         "country_info": [],
         "col": "#804000",
@@ -1164,6 +1199,7 @@ clusters = {
         "graphing": False,
         "usa_graph": True,
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#ffcc00",
         "display_name": "20G/S:677H.Yellowhammer",
@@ -1179,6 +1215,7 @@ clusters = {
         "graphing": False,
         "usa_graph": True,
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#ff8d3d",
         "display_name": "20G/S:677R.Roadrunner",
@@ -1194,6 +1231,7 @@ clusters = {
         "graphing": False,
         "usa_graph": True,
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#65beeb",
         "display_name": "20G/S:677H.Heron",
@@ -1209,6 +1247,7 @@ clusters = {
         "graphing": False,
         "usa_graph": True,
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#003366",
         "display_name": "20G/S:677H.Bluebird",
@@ -1224,6 +1263,7 @@ clusters = {
         "graphing": False,
         "usa_graph": True,
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#a3a3c2",
         "display_name": "20G/S:677H.Quail",
@@ -1239,6 +1279,7 @@ clusters = {
         "graphing": False,
         "usa_graph": True,
         "important": False,
+        "default_shared_muts": False,
         "country_info": [],
         "col": "#b3d9ff",
         "display_name": "20G/S:677H.Mockingbird",
