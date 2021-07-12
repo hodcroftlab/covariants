@@ -537,6 +537,40 @@ for clus in clus_to_run:
             )
             copyfile(noUK_clusterlist_output, copypath2)
 
+    # Make a version of Delta for Europe
+    if clus == "21AS478":
+        eu_delta_meta = cluster_meta[
+            cluster_meta["region"].apply(lambda x: x == "Europe")
+        ]
+        # re-set wanted_seqs
+        extraDelta_wanted_seqs = list(eu_delta_meta["strain"])
+
+        eu_clusterlist_output = (
+            cluster_path + f'/clusters/cluster_{clusters[clus]["build_name"]}-europe.txt'
+        )
+        eu_out_meta_file = (
+            cluster_path
+            + f'/cluster_info/cluster_{clusters[clus]["build_name"]}-europe_meta.tsv'
+        )
+
+        if print_files:
+            with open(eu_clusterlist_output, "w") as f:
+                for item in extraDelta_wanted_seqs:
+                    f.write("%s\n" % item)
+            build_nam = clusters[clus]["build_name"]
+            copypath = eu_clusterlist_output.replace(
+                f"{build_nam}-europe",
+                "{}-europe-{}".format(
+                    build_nam, datetime.date.today().strftime("%Y-%m-%d")
+                ),
+            )
+            copyfile(eu_clusterlist_output, copypath)
+            eu_delta_meta.to_csv(eu_out_meta_file, sep="\t", index=False)
+            copypath2 = eu_clusterlist_output.replace(
+                "clusters/cluster_", "clusters/current/cluster_"
+            )
+            copyfile(eu_clusterlist_output, copypath2)
+
     # Make a version of  Alpha-Delta which only have Swiss sequences for increased focus
     if clus in ["501YV1", "501YV2", "501YV3", "21AS478"]:
         swiss_voc_meta = cluster_meta[
