@@ -1017,6 +1017,9 @@ for clus in clus_to_run:
         country_info_df.num_seqs > min_to_plot
     ].index
 
+    #only plot those over >=X seqs - or if already going to plot elsewhere!
+    countries_to_plot_min = [x for x in country_info_df.index if (x in countries_to_plot_final or country_info_df.num_seqs[x] > min_to_plot)]
+
     countries_to_plot = [
         x
         for x in country_info_df[country_info_df.num_seqs > min_to_plot].index
