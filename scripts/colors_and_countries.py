@@ -179,13 +179,22 @@ country_list_3 = [
     "Greece",  # 11
     "Chile",  # 12
     "Qatar",    # 13
-    "North Macedonia",   # 14
+    "Sri Lanka",   # 14
     "Egypt",    # 15
     "Philippines",     # 16
     "Argentina", # 17
     "Cambodia",       # 18  
-    "Peru",    #19
+    "Mozambique",    #19
     "Zimbabwe",    #20
+]
+
+country_list_4 = [
+    "Kenya",                #1
+    "Ecuador",              #2
+    "Malawi",               #3
+    "Sint Maarten",         #4
+    "Angola",               #5
+    "Trinidad and Tobago",  #6
 ]
 
 country_styles_1 = {
@@ -203,4 +212,9 @@ country_styles_3 = {
     for i, country in enumerate(country_list_3)
 }
 
-country_styles_all = {**country_styles_1, **country_styles_2, **country_styles_3}
+country_styles_4 = {
+    country: {"c": colors_2[i], "ls": "---"}  # linestyles[i//len(colors)]}
+    for i, country in enumerate(country_list_4)
+}
+
+country_styles_all = {**country_styles_1, **country_styles_2, **country_styles_3, **country_styles_4}

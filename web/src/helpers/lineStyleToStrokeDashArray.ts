@@ -4,6 +4,7 @@ export const lineStyles: Record<string, string | undefined> = {
   ':': '3 3',
   '-.': '5 3 2 3 2 3',
   '--': '8 6',
+  '---': '16 2 2 3',
   '-': undefined,
 }
 
