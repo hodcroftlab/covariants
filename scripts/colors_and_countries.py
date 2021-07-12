@@ -213,7 +213,7 @@ country_styles_3 = {
 }
 
 country_styles_4 = {
-    country: {"c": colors_2[i], "ls": "---"}  # linestyles[i//len(colors)]}
+    country: {"c": colors_2[i], "ls": "dotted"}  # linestyles[i//len(colors)]}
     for i, country in enumerate(country_list_4)
 }
 
