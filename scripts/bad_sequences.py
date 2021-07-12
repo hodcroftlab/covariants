@@ -87,6 +87,7 @@ bad_seqs = {
     "Netherlands/ZH-EMC-1818/2020":  "2020-06-12",
     "Netherlands/ZH-EMC-1819/2020":  "2020-06-12",
     "France/IDF_HB_112007052326/2020":  "2020-07-15",
+    "USA/ND-NDDH-02591/2021": "2021-09-28", #from the future
     # These sequences are from EU1 - early dated but the divergence doesn't match the dates...
     "England/NOTT-246E3F/2020": "2020-06-02",
     "England/NOTT-246E11/2020": "2020-06-03",
