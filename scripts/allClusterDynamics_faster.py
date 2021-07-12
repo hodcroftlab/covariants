@@ -1166,7 +1166,10 @@ for clus in clus_to_run:
                 int(x) for x in unsmoothed_total_count
             ]
 
-            countries_plotted[coun] = "False"
+            # This used to only plot a subset (those in 'countries to plot' below.)
+            # However for a long time (as of Jul 21) all have been selected,
+            # And I think this is most intuitive - so setting all to 'True'
+            countries_plotted[coun] = "True" #"False"
 
             if coun in countries_to_plot:
                 ax3.plot(
