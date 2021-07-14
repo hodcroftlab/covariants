@@ -9,7 +9,7 @@ import styled from 'styled-components'
 import type { ClusterDistributionDatum } from 'src/components/ClusterDistribution/ClusterDistributionPlot'
 import type { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 import { selectPerCountryTooltipSortBy, selectPerCountryTooltipSortReversed } from 'src/state/ui/ui.selectors'
-import { formatDateBiweekly, formatProportion } from 'src/helpers/format'
+import { formatDateWeekly, formatProportion } from 'src/helpers/format'
 import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
 
 const EPSILON = 1e-2
@@ -66,7 +66,7 @@ export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotToo
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const week = formatDateBiweekly(data?.week)
+  const week = formatDateWeekly(data?.week)
 
   let payloadSorted = sortBy(payload, perCountryTooltipSortBy === 'country' ? 'name' : 'value')
 
