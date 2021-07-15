@@ -197,6 +197,9 @@ otherwise. Thanks goes to these wonderful people ([emoji key](https://allcontrib
     <td align="center"><a href="https://github.com/acx01b"><img src="https://avatars.githubusercontent.com/u/6537565?v=4?s=75" width="75px;" alt=""/><br /><sub><b>acx01b</b></sub></a><br /><a href="#content-acx01b" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/rasenschachmatt"><img src="https://avatars.githubusercontent.com/u/19908919?v=4?s=75" width="75px;" alt=""/><br /><sub><b>rasenschachmatt</b></sub></a><br /><a href="#content-rasenschachmatt" title="Content">🖋</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/richardgoater"><img src="https://avatars.githubusercontent.com/u/1429721?v=4?s=75" width="75px;" alt=""/><br /><sub><b>Richard Goater</b></sub></a><br /><a href="https://github.com/hodcroftlab/covariants/commits?author=richardgoater" title="Code">💻</a> <a href="#design-richardgoater" title="Design">🎨</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
