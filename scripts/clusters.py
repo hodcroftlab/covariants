@@ -185,7 +185,7 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.21B",
     },
 
-    # variant  -- part of 'Indian' in media - B.1.617.2
+    # Delta variant  -- part of 'Indian' in media - B.1.617.2
     "21AS478": {
         "snps": [22995, 23604, 22917], # S:478, 681, 452
         "cluster_data": [],  
@@ -1245,7 +1245,34 @@ clusters = {
         "type": "do_not_display",
         "build_name": "S.Q677H.Mockingbird",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Mockingbird?c=gt-S_677&f_country=USA",
-    }
+    },
+
+    #B.1.1.318 - prominent in Greece
+    "S796": {'snps': [23604,23948,9072], #A/C/T
+    "cluster_data": [], 
+    "build_name": "20B.S.796H", 
+    "display_name": "20B/S:796H",
+    "nextstrain_build": True, 
+    "graphing": False, 
+    "important": False,
+    "type": "do_not_display",
+    "nextstrain_url": ""},
+
+    #B.1.619 - recent expansion in S Korea
+    "S210": {'snps': [8311,9319], #T/T
+    "cluster_data": [], 
+    "build_name": "20A.S.210T", 
+    "display_name": "20A/S:210T",
+    "nextstrain_build": True, 
+    "graphing": False, 
+    "important": False,
+    "type": "do_not_display",
+    "nextstrain_url": ""}
+
+    #uk delta?
+    #"Ukdelt": {"snps": [22995,23604,22917,7851], # S:478, 681, 452, ??
+    #"cluster_data": [], "build_name": "ukdelt", "display_name": "ukdelt",
+    #"nextstrain_build": True, "graphing": False, "nextstrain_url": ""}
 
     # B.1.1.519  23756, 22995, 12789
     #"S732": {'snps': [23755, 22994, 12788], 'cluster_data': [], #S732, S478, ORF1a 4175
