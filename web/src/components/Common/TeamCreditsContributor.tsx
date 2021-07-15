@@ -54,7 +54,7 @@ export function TeamCreditsContributor({ contributor }: ContributorProps) {
     <FlexOuter>
       <FlexInner>
         <LinkExternal title={contributor.name} href={contributor.profile} alt={contributor.profile} icon={null}>
-          <Portrait src={contributor.avatar_url} />
+          <Portrait src={`${contributor.avatar_url}&s=100`} />
           <NameText>{contributor.name}</NameText>
         </LinkExternal>
       </FlexInner>
