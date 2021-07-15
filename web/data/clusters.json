@@ -3378,6 +3378,39 @@
       ],
       "type": "do_not_display",
       "usa_graph": true
+    },
+    {
+      "build_name": "20B.S.796H",
+      "cluster_data": [],
+      "col": "#b3d9ff",
+      "country_info": [],
+      "display_name": "20B/S:796H",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "",
+      "snps": [
+        23604,
+        23948,
+        9072
+      ],
+      "type": "do_not_display"
+    },
+    {
+      "build_name": "20A.S.210T",
+      "cluster_data": [],
+      "col": "#b3d9ff",
+      "country_info": [],
+      "display_name": "20A/S:210T",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "",
+      "snps": [
+        8311,
+        9319
+      ],
+      "type": "do_not_display"
     }
   ]
 }
