@@ -438,7 +438,10 @@ for clus in clus_to_run:
     print("\n")
 
     #Do we want to write out cluster for Nextstrain?
-    nextstrain_run = clusters[clus]['nextstrain_build']
+    if print_files:
+        nextstrain_run = clusters[clus]['nextstrain_build']
+    else:
+        nextstrain_run = False
 
     # Write out a file of the names of those 'in the cluster' - this is used by ncov_cluster
     # to make a ncov run where the 'focal' set is this cluster.
