@@ -1256,6 +1256,8 @@ clusters = {
     "graphing": False, 
     "important": False,
     "type": "do_not_display",
+    "country_info": [],
+    "col": "#b3d9ff",
     "nextstrain_url": ""},
 
     #B.1.619 - recent expansion in S Korea
@@ -1267,6 +1269,8 @@ clusters = {
     "graphing": False, 
     "important": False,
     "type": "do_not_display",
+    "country_info": [],
+    "col": "#b3d9ff",
     "nextstrain_url": ""}
 
     #uk delta?
