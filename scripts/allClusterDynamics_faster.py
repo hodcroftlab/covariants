@@ -1036,7 +1036,7 @@ for clus in clus_to_run:
         country_styles_custom = country_styles
     else:
         unused_countries = [
-            x for x in country_styles_all if x not in countries_to_plot_min
+            x for x in country_styles_all if x not in countries_to_plot
         ]
         country_styles_custom = {}
         for x in countries_to_plot:
