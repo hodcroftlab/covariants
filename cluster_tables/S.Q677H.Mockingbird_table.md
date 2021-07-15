@@ -6,8 +6,9 @@
 |        | first_seq   |   num_seqs | last_seq   |
 |:-------|:------------|-----------:|:-----------|
 | China  | 2019-10-22  |          2 | 2020-05-25 |
-| USA    | 2020-11-07  |        892 | 2021-04-30 |
+| USA    | 2020-11-07  |        898 | 2021-04-30 |
 | Chile  | 2020-12-23  |          2 | 2020-12-26 |
 | Brazil | 2021-01-03  |          1 | 2021-01-03 |
+| India  | 2021-02-13  |          1 | 2021-02-13 |
 
 ![Overall trends S.Q677H.Mockingbird](/overall_trends_figures/overall_trends_S.Q677H.Mockingbird.png)
