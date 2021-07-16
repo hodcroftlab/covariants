@@ -17,6 +17,11 @@ cp .env.example .env
 nvm use
 ```
 
+install node modules:
+```
+yarn install
+```
+
 then start the development server with:
 ```
 yarn dev
