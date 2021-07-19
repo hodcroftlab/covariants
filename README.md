@@ -141,10 +141,14 @@ This works is closely related to the [Nextstrain project](https://nextstrain.org
 ⚖️ License
 </h3>
 
+Code and work:
 <a target="_blank" rel="noopener noreferrer" href="LICENSE.md" alt="License file">GNU AFFERO GENERAL PUBLIC LICENSE</a>
 
 > CoVariants</br>
 > Copyright 2020-2021 Emma Hodcroft</br>
+
+Screenshots:
+<a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a>
 
 ---
 

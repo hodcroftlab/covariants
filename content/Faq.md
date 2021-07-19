@@ -9,6 +9,9 @@
 Please do cite and link back to CoVariants.org if you use this resource! 
 
 If you use screenshots from CoVariants.org, please do ensure you credit the website and provide a link back to CoVariants.org.
+Screenshots are provided under a [CC-BY-4.0 license](https://creativecommons.org/licenses/by/4.0/).
+
+If you use data from CoVariants.org, please check the "How can I use this work?" question below for information on licensing, and cite and link back to both CoVariants.org and GISAID.
 
 Citation:
 
