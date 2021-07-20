@@ -196,6 +196,7 @@ country_list_4 = [
     "Angola",               #5
     "Trinidad and Tobago",  #6
     "Peru",                 #7
+    "North Macedonia",      #8
 ]
 
 country_styles_1 = {
