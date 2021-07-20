@@ -1,6 +1,8 @@
 import { Link } from 'src/components/Link/Link'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 
+_Note that as of 20 July 2021, the Nextstrain build is no longer being regularly updated, as there have been no new sequences seen in this cluster for many months._
+
 Of full list of 18 nucleotide mutations, 15 are mutations to `T` (possibly related to APOBEC-like editing within host, see <LinkExternal href="https://www.biorxiv.org/content/10.1101/2020.05.01.072330v1">Simmonds, bioRxiv</LinkExternal>
 
 

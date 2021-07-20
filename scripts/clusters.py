@@ -881,7 +881,7 @@ clusters = {
     "S80": {
         "snps": [21800, 3099],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -921,7 +921,7 @@ clusters = {
     "S626": {
         "snps": [23438, 772],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -940,7 +940,7 @@ clusters = {
     "S1122": {
         "snps": [24926, 9120],
         "cluster_data": [],  # mostly Swedish cluster
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": False,
