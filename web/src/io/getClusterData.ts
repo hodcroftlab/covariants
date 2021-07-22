@@ -4,6 +4,7 @@ import copy from 'fast-copy'
 import type { CountryDistribution } from 'src/components/CountryDistribution/CountryDistributionPage'
 
 import allData from 'src/../data/perCountryData.json'
+import allDataGeneva from 'src/../data/perCountryDataGeneva.json'
 
 export const REGIONS = allData.regions.map(({ region }) => region)
 export const REGIONS_HAVE_DATA = allData.regions.map(
@@ -52,6 +53,39 @@ export function getClusterData(region: string) {
   const countryDistributions = perCountryData.distributions
 
   const perCountryIntroContent = perCountryData.per_country_intro_content
+
+  return {
+    clusters,
+    clustersState,
+    countries,
+    countriesState,
+    countryDistributions,
+    perCountryIntroContent,
+  }
+}
+
+export function getGenevaClusterData() {
+  const region = 'Geneva'
+  const perCountryDataGeneva: CountryDataRaw | undefined = allDataGeneva.regions.find(
+    (candidate) => candidate.region === region,
+  ) as CountryDataRaw | undefined
+  if (!perCountryDataGeneva) {
+    throw new Error(`Region data not found for region: ${region}`)
+  }
+
+  const clusters = copy(perCountryDataGeneva.cluster_names).sort()
+  const clustersState = clusters.reduce((result, cluster) => {
+    return { ...result, [cluster]: { enabled: true } }
+  }, {})
+
+  const countries = perCountryDataGeneva.distributions.map(({ country }) => country).sort()
+  const countriesState = countries.reduce((result, country) => {
+    return { ...result, [country]: { enabled: true } }
+  }, {})
+
+  const countryDistributions = perCountryDataGeneva.distributions
+
+  const perCountryIntroContent = perCountryDataGeneva.per_country_intro_content
 
   return {
     clusters,
