@@ -115,6 +115,15 @@ def get_summary(cluster_meta, observed_countries, division=False):
 
     return country_info, country_dates
 
+def print_date_alerts(clus):
+    print(clus)
+    print(f"Expected date: {cluster_first_dates[clus]['first_date']}")
+    print(alert_first_date[clus][['strain','date']])
+
+def print_all_date_alerts():
+    for clus in alert_first_date.keys():
+        print_date_alerts(clus)
+        print("\n")
 
 def marker_size(n):
     if n > 100:
@@ -490,6 +499,7 @@ for clus in clus_to_run:
 
     print("\nOrdered list by first_seq date:")
     print(country_info_df.sort_values(by="first_seq"))
+    country_info_df = country_info_df.sort_values(by="first_seq")
     print("\n")
 
     ii = 0
@@ -500,11 +510,15 @@ for clus in clus_to_run:
 
     if clus in cluster_first_dates:
         # datetime.datetime.strptime(cluster_first_dates[clus]["first_date"],"%Y-%m-%d")
-        alert = "OK"
-        if datetime.datetime.strptime(firstseqdate, "%Y-%m-%d") < datetime.datetime.strptime(cluster_first_dates[clus]["first_date"], "%Y-%m-%d"):
+        alert = None
+        clus_start = datetime.datetime.strptime(cluster_first_dates[clus]["first_date"], "%Y-%m-%d")
+        if datetime.datetime.strptime(firstseqdate, "%Y-%m-%d") < clus_start:
             alert = f"ALERT: sequence date of {firstseqdate}"
 
-        alert_first_date[clus] = alert
+            before_date = cluster_meta[cluster_meta["date_formatted"].apply(lambda x: x < clus_start)]
+
+        if alert:
+            alert_first_date[clus] = before_date
 
     # Make a version of Delta which does not have as much UK/India sequences for increased viewability
     if clus == "21AS478":
@@ -1262,7 +1276,8 @@ if print_files and "all" in clus_answer:
         json.dump(countries_plotted, fh)
 
 print("Date alerts:")
-print(alert_first_date)
+print([f"{x}: {len(alert_first_date[x])}" for x in alert_first_date.keys()])
+print("To view, use 'alert_first_date[clus][['strain','date']]'")
 
 t1 = time.time()
 print(f"Plotting & writing out cluster took {round((t1-t0)/60,1)} min to run\n\n")
@@ -1565,3 +1580,9 @@ if "all" in clus_answer:
     count_df = pd.DataFrame(ccounts, columns=['cluster', 'counts'])
     print("Showing cluster counts")
     print(count_df.sort_values(by="counts"))
+
+#repeat to be sure they are seen
+print("\nDate alerts:")
+print([f"{x}: {len(alert_first_date[x])}" for x in alert_first_date.keys()])
+print("To view, use 'print_date_alerts(clus)' or 'print_all_date_alerts()'")
+
