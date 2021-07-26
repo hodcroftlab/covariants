@@ -305,6 +305,7 @@ clusters = {
     },
 
     # 'not-called-nigerian variant' B.1.525
+    # 21D Eta
     "20AS484": {
         "snps": [8593, 23012, 24224],
         "cluster_data": [],  # nuc 8593 S 484, 888
@@ -366,6 +367,7 @@ clusters = {
     },
 
     # "new york variant"
+    # 21F Iota
     "20CS484": {
         "snps": [21575, 9867, 1059],
         "cluster_data": [],  # S5, ORF1a 3201, 265 -- 484 is 23012 (1-based)
@@ -742,7 +744,7 @@ clusters = {
         },
     },
     "S677HRobin1": {
-        "snps": [23593, 29402],
+        "snps": [23593, 29402, 8083], #T, T, A
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": True,
