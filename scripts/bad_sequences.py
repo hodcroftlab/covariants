@@ -224,7 +224,10 @@ bad_seqs = {
     "Netherlands/ZH-EMC-2849/2020" : "2020-04-12",
     "Poland/KCZ_1.73/2020" : "2020-01-14",
     "Sweden/01_SE100_21CS101869/2020" : "2020-05-12",
-
+    "Canada/QC-1nKGZ-Q8090981/2020" : "2020-04-09",
+    "USA/MD-HP07440-PIDRGJGOUB/2020" : "2020-07-15",
+    "USA/MD-HP07441-PIDNJPIZZN/2020" : "2020-07-22",
+    
     #These are sequences submitted where collection date seems incorrect:
     #https://twitter.com/flodebarre/status/1414868236823318530
     # 2021-07-01 635
