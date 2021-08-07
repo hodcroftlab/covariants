@@ -231,7 +231,8 @@ bad_seqs = {
     "Belgium/MR81DY0537/2020" : "2020-05-01", #S98
     "Senegal/SC20-504/2020" : "2020-08-28", #Alpha, V1
     "Senegal/SC20-507/2020" : "2020-08-02", #Alpha, V1
-
+    "Canada/QC-1nMCY-S1190638/2020" : "2020-05-19", #Alpha V1
+    "Canada/QC-1nMCY-S1190677/2020" : "2020-05-19", #Alpha V1
 
     #These are sequences submitted where collection date seems incorrect:
     #https://twitter.com/flodebarre/status/1414868236823318530
