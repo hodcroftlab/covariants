@@ -103,6 +103,7 @@ bad_seqs = {
     "Canada/QC-1nJWFTV-3641914/2020" : "2020-07-01",
     "Canada/QC-1nJWFTV-3642019/2020" : "2020-07-24",
     "Canada/QC-1nJWFTV-3643537/2020" : "2020-09-25",
+    "USA/TX-HMH-MCoV-35256/2020" : "2020-08-10",
     # These sequences are from EU1 - early dated but the divergence doesn't match the dates...
     "England/NOTT-246E3F/2020": "2020-06-02",
     "England/NOTT-246E11/2020": "2020-06-03",
@@ -133,6 +134,7 @@ bad_seqs = {
     "Belgium/MBLGc7385/2020":   "2020-05-20",
     "England/NOTT-246D8D/2020": "2020-06-02",
     "France/IDF-HB_112010014593/2020": "2020-03-10",
+    "England/SHEF-10B2F49/2020" : "2020-05-21", 
     #'bat/Yunnan/RaTG13/2013'    : "2013-07-24" #this is RatG13 - legit, but looks weird in table
     #'bat/Yunnan/RmYN02/2019'    : "2019-06-25" # bat sequence - legit but looks weird
 
