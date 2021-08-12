@@ -91,6 +91,7 @@ bad_seqs = {
     "Mexico/AGU-InDRE_FB18599_S4467/2020": "2020-09-22", #delta
     "USA/MI-MDHHS-SC30215/2020" : "2020-04-19", # alpha
     "USA/MI-MDHHS-SC25865/2020" : "2020-04-15", # robin 1
+    "Colombia/ANT-CWOHC-VG-SEC01275A/2020" : "2020-09-21", # bad quality
     #alpha, all below
     "USA/CA-SEARCH-101999/2020" : "2020-07-08",
     "USA/CA-SEARCH-101987/2020" : "2020-07-08",
@@ -104,6 +105,9 @@ bad_seqs = {
     "Canada/QC-1nJWFTV-3642019/2020" : "2020-07-24",
     "Canada/QC-1nJWFTV-3643537/2020" : "2020-09-25",
     "USA/TX-HMH-MCoV-35256/2020" : "2020-08-10",
+    "Slovenia/08-039382-MB/2020" : "2020-09-14",
+    "Spain/MD-HRYC-71299296/2020" : "2020-08-26",
+    "USA/AZ-TG808802/2020" : "2020-08-24",
     # These sequences are from EU1 - early dated but the divergence doesn't match the dates...
     "England/NOTT-246E3F/2020": "2020-06-02",
     "England/NOTT-246E11/2020": "2020-06-03",
@@ -235,6 +239,8 @@ bad_seqs = {
     "Senegal/SC20-507/2020" : "2020-08-02", #Alpha, V1
     "Canada/QC-1nMCY-S1190638/2020" : "2020-05-19", #Alpha V1
     "Canada/QC-1nMCY-S1190677/2020" : "2020-05-19", #Alpha V1
+    "India/DL-ILBS-17395/2020" : "2020-06-04", #delta
+
 
     #These are sequences submitted where collection date seems incorrect:
     #https://twitter.com/flodebarre/status/1414868236823318530
