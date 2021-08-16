@@ -9,7 +9,7 @@ cluster_first_dates = {
     "S1122": {"first_date": "2020-03-15"},
     "501YV1": {"first_date": "2020-09-20"}, #Alpha
     "501YV2": {"first_date": "2020-08-10"}, #Beta
-    "501YV3": {"first_date": "2020-10-25"}, #Gamma
+    "501YV3": {"first_date": "2020-10-19"}, #Gamma
     "21AS478": {"first_date": "2020-10-30"}, #Delta
     "21AS154": {"first_date": "2020-10-30"}, #Kappa
     "Delta417": {"first_date": "2020-10-30"}, #Delta plus (same as delta)
