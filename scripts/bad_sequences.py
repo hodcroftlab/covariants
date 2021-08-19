@@ -246,6 +246,7 @@ bad_seqs = {
     "Brazil/PA-ITV-65/2020" : "2020-05-06", #gamma
     "Brazil/PA-ITV-69/2020" : "2020-05-06", #gamma
     "USA/NY-GEO-0231/2020" : "2020-01-28", # 20c/484K
+    "USA/MA-UMASSMED-P006D11/2020" : "2020-04-30", #epsilon S452
 
     #These are sequences submitted where collection date seems incorrect:
     #https://twitter.com/flodebarre/status/1414868236823318530
