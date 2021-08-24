@@ -247,6 +247,24 @@ bad_seqs = {
     "Brazil/PA-ITV-69/2020" : "2020-05-06", #gamma
     "USA/NY-GEO-0231/2020" : "2020-01-28", # 20c/484K
     "USA/MA-UMASSMED-P006D11/2020" : "2020-04-30", #epsilon S452
+    "Canada/QC-1nMCY-S1110667/2020" : "2020-05-11", #alpha
+    "Indonesia/JK-FKUI-MKIM21/2020" : "2020-08-25", #delta
+    "Indonesia/JK-FKUI-MKIM24/2020" : "2020-10-15", #delta
+    "Indonesia/JK-FKUI-MKIM26/2020" : "2020-10-12", #delta
+    "Indonesia/JK-FKUI-MKIM27/2020" : "2020-10-12", #delta
+    "Indonesia/JK-FKUI-MKIM33/2020" : "2020-09-28", #delta
+    "Indonesia/JK-FKUI-MKIM35/2020" : "2020-10-07", #delta
+    "USA/AZ-TG968438/2020" : "2020-10-22", #delta
+    "USA/AZ-TG968448/2020" : "2020-10-23", #delta
+    "USA/AZ-TG968459/2020" : "2020-10-02", #delta
+    "USA/AZ-TG968474/2020" : "2020-10-29", #delta
+    "USA/AZ-TG968478/2020" : "2020-10-29", #delta
+    "USA/AZ-TG968492/2020" : "2020-10-03", #delta
+    "USA/AZ-TG968499/2020" : "2020-09-17", #delta
+    "USA/AZ-TG968502/2020" : "2020-09-21", #delta
+    "USA/AZ-TG968441/2020" : "2020-10-22", #iota
+    "USA/CA-CDPH1224/2020" : "2020-03-11", #epsilon
+    "Canada/QC-L00333784001/2020" : "2020-03-12", #477
 
     #These are sequences submitted where collection date seems incorrect:
     #https://twitter.com/flodebarre/status/1414868236823318530
