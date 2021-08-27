@@ -17,6 +17,6 @@
 | India       | 2021-02-13  |          2 | 2021-02-19 |
 | Spain       | 2021-03-01  |          1 | 2021-03-01 |
 | France      | 2021-03-16  |          2 | 2021-05-26 |
-| Switzerland | 2021-04-17  |          7 | 2021-05-17 |
+| Switzerland | 2021-04-17  |          8 | 2021-05-17 |
 
 ![Overall trends S.Q677H.Yellowhammer](/overall_trends_figures/overall_trends_S.Q677H.Yellowhammer.png)
