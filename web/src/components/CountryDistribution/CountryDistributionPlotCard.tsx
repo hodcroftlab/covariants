@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import { PlotCardTitle } from 'src/components/Common/PlotCardTitle'
 import { CountryFlagProps } from 'src/components/Common/CountryFlag'
+import { USStateCodeProps } from 'src/components/Common/USStateCode'
 import {
   CountryDistributionDatum,
   CountryDistributionPlot,
@@ -21,7 +22,7 @@ export interface CountryDistributionPlotCardProps {
   country: string
   distribution: CountryDistributionDatum[]
   cluster_names: string[]
-  Icon?: React.ComponentType<CountryFlagProps>
+  Icon?: React.ComponentType<CountryFlagProps | USStateCodeProps>
 }
 
 export function CountryDistributionPlotCard({
