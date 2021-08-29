@@ -1275,6 +1275,18 @@ clusters = {
     "col": "#b3d9ff",
     "nextstrain_url": ""}
 
+    #"21H.417": { #21H + 417
+    #    "snps": [22599, 4878, 17491, 22813], #S 346 (22599A)  ORF1a: 1538 (4878T) nuc: 17491T, S:417
+    #    "nextstrain_build": True,
+    #    "graphing": False,
+    #    "usa_graph": False,
+    #    "important": False,
+    #    "country_info": [], 'col': "#b3d9ff", "display_name": "21H+417N",
+    #    "type": "do_not_display",
+    #    "build_name": "21H.417N",
+    #    "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21H.417N?c=gt-S_417"
+    #}
+
     #uk delta?
     #"Ukdelt": {"snps": [22995,23604,22917,7851], # S:478, 681, 452, ??
     #"cluster_data": [], "build_name": "ukdelt", "display_name": "ukdelt",

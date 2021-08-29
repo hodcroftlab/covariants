@@ -199,6 +199,9 @@ country_list_4 = [
     "North Macedonia",      #8
     "Uruguay",              #9
     "Uganda",               #10
+    "Lebanon",              #11
+    "New Zealand",          #12
+    "Suriname",             #13
 ]
 
 country_styles_1 = {
