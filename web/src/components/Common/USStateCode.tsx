@@ -1,30 +1,78 @@
 import React, { SVGProps } from 'react'
 import styled from 'styled-components'
-import States from 'us-state-codes'
 
 import { FlagOutline } from './FlagOutline'
 
 const FlagText = styled.span`
-  align-items: center;
   background: #fff;
-  display: flex;
   font-size: 0.75em;
   font-weight: bold;
-  justify-content: center;
-
-  & > :last-child {
-    color: #2e52b2;
-  }
+  letter-spacing: 0.05em;
+  text-align: center;
   & > :first-child {
     color: #d80027;
   }
+  & > :last-child {
+    color: #2e52b2;
+  }
 `
 
-export const missingCodes: Record<string, string> = {
-  'USA': 'US',
-  'Washington DC': 'DC',
+export const nameToCode: Record<string, string> = {
+  'Alabama': 'AL',
+  'Alaska': 'AK',
+  'Arizona': 'AZ',
+  'Arkansas': 'AR',
+  'California': 'CA',
+  'Colorado': 'CO',
+  'Connecticut': 'CT',
+  'Delaware': 'DE',
+  'Florida': 'FL',
+  'Georgia': 'GA',
   'Guam': 'GU',
+  'Hawaii': 'HI',
+  'Idaho': 'ID',
+  'Illinois': 'IL',
+  'Indiana': 'IN',
+  'Iowa': 'IA',
+  'Kansas': 'KS',
+  'Kentucky': 'KY',
+  'Louisiana': 'LA',
+  'Maine': 'ME',
+  'Maryland': 'MD',
+  'Massachusetts': 'MA',
+  'Michigan': 'MI',
+  'Minnesota': 'MN',
+  'Mississippi': 'MS',
+  'Missouri': 'MO',
+  'Montana': 'MT',
+  'Nebraska': 'NE',
+  'Nevada': 'NV',
+  'New Hampshire': 'NH',
+  'New Jersey': 'NJ',
+  'New Mexico': 'NM',
+  'New York': 'NY',
+  'North Carolina': 'NC',
+  'North Dakota': 'ND',
+  'Ohio': 'OH',
+  'Oklahoma': 'OK',
+  'Oregon': 'OR',
+  'Pennsylvania': 'PA',
+  'Puerto Rico': 'PR',
+  'Rhode Island': 'RI',
+  'South Carolina': 'SC',
+  'South Dakota': 'SD',
+  'Tennessee': 'TN',
+  'Texas': 'TX',
+  'USA': 'US',
+  'Utah': 'UT',
+  'Vermont': 'VT',
   'Virgin Islands': 'VI',
+  'Virginia': 'VA',
+  'Washington': 'WA',
+  'Washington DC': 'DC',
+  'West Virginia': 'WV',
+  'Wisconsin': 'WI',
+  'Wyoming': 'WY',
 }
 
 export interface USStateCodeProps extends SVGProps<SVGSVGElement> {
@@ -34,8 +82,7 @@ export interface USStateCodeProps extends SVGProps<SVGSVGElement> {
 }
 
 export function USStateCode({ country, state = country, withFallback = false }: USStateCodeProps) {
-  const stateCode = missingCodes[state] ?? States.getStateCodeByStateName(state)
-
+  const stateCode = nameToCode[state]
   const fallback = withFallback ? <FlagOutline $missingCode={stateCode} /> : null
   return stateCode ? (
     <FlagOutline>
