@@ -15,7 +15,7 @@ export function HomePage() {
       <NarrowPageContainer>
         <Row noGutters>
           <Col>
-            <h1 className="text-center">{'CoVariants'}</h1>
+            <h1 className="display-4 mb-4 text-center">CoVariants</h1>
           </Col>
         </Row>
 

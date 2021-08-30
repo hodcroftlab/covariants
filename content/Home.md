@@ -4,7 +4,7 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { NameTable } from 'src/components/Common/NameTable'
 
 
-Click on a variant button to start exploring!
+**Click on a variant button to start exploring!**
 
 CoVariants provides an overview of SARS-CoV-2 variants and mutations that are of interest. Here, you can find out what mutations define a variant, what impact they might have (with links to papers and resources), where variants are found, and see the variants in Nextstrain builds!
 
@@ -17,9 +17,6 @@ To look at many variants at once, check out the [Per Variant](/per-variant) and 
 CoVariants uses the Nextstrain naming system for variants ([read more here](https://nextstrain.org/blog/2021-01-06-updated-SARS-CoV-2-clade-naming/)). However, the fact that there's multiple naming systems is confusing! See the table below to help find the variant you're interested in.
 
 <NameTable/>
-
-
-<br/> 
 
 <!-- The variants featured are currently slightly biased towards circulation in Europe: this is simply a reflection that the primary maintainer (Emma Hodcroft) works mostly with European data. We hope to add more variants from other regions soon! -->
 

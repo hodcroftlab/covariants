@@ -3,11 +3,12 @@ import React from 'react'
 import { Col, Container, Row } from 'reactstrap'
 import styled from 'styled-components'
 
-import { Editable } from 'src/components/Common/Editable'
+import { Editable, CenteredEditable } from 'src/components/Common/Editable'
 import { Layout } from 'src/components/Layout/Layout'
 
 import SharedMutationsIntro from '../../../../content/SharedMutations.md'
 import { SharedMutations } from './SharedMutations'
+import { PageHeading } from '../Common/PageHeading'
 
 export const SharedMutationsPageContainer = styled(Container)`
   max-width: 1200px;
@@ -29,15 +30,15 @@ export function SharedMutationsPage() {
       <SharedMutationsPageContainer>
         <Row noGutters>
           <Col>
-            <h1 className="text-center">{'Shared mutations'}</h1>
+            <PageHeading>{'Shared mutations'}</PageHeading>
           </Col>
         </Row>
 
         <Row noGutters>
           <Col>
-            <Editable githubUrl="blob/master/content/SharedMutations.md">
+            <CenteredEditable githubUrl="blob/master/content/SharedMutations.md">
               <SharedMutationsIntro />
-            </Editable>
+            </CenteredEditable>
           </Col>
         </Row>
 

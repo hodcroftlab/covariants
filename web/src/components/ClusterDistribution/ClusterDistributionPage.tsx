@@ -10,12 +10,13 @@ import { ClusterDistributionPlotCard } from 'src/components/ClusterDistribution/
 import { ColCustom } from 'src/components/Common/ColCustom'
 import { Dropdown as DropdownBase } from 'src/components/Common/Dropdown'
 import { stringToOption } from 'src/components/Common/DropdownOption'
-import { Editable } from 'src/components/Common/Editable'
+import { Editable, CenteredEditable } from 'src/components/Common/Editable'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 import { ClusterState, CountryState } from 'src/components/CountryDistribution/CountryDistributionPage'
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
 import { shouldPlotCountry } from 'src/io/getCountryColor'
+import { PageHeading } from 'src/components/Common/PageHeading'
 
 import perClusterData from 'src/../data/perClusterData.json'
 import PerClusterIntro from 'src/../../content/PerClusterIntro.md'
@@ -209,15 +210,15 @@ export function ClusterDistributionPage() {
     <Layout wide>
       <Row noGutters>
         <Col>
-          <h1 className="text-center">{'Overview of Variants/Mutations'}</h1>
+          <PageHeading>{'Overview of Variants/Mutations'}</PageHeading>
         </Col>
       </Row>
 
       <Row noGutters>
         <Col>
-          <Editable githubUrl="blob/master/content/PerClusterIntro.md">
+          <CenteredEditable githubUrl="blob/master/content/PerClusterIntro.md">
             <PerClusterIntro />
-          </Editable>
+          </CenteredEditable>
         </Col>
       </Row>
 

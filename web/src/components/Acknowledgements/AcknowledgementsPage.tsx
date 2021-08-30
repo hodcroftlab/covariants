@@ -13,6 +13,7 @@ import { Layout } from 'src/components/Layout/Layout'
 import { AcknowledgementsCard, AcknowledgementsKeysJson } from 'src/components/Acknowledgements/AcknowledgementsCard'
 
 import AcknowledgementsContent from './AcknowledgementsContent.md'
+import { PageHeading } from '../Common/PageHeading'
 
 export const AcknowledgementsPageContainer = styled(Container)`
   max-width: 1200px;
@@ -54,7 +55,7 @@ export function AcknowledgementsPage() {
       <AcknowledgementsPageContainer>
         <Row>
           <Col>
-            <h1 className="text-center">{'Acknowledgements'}</h1>
+            <PageHeading>{'Acknowledgements'}</PageHeading>
           </Col>
         </Row>
 
