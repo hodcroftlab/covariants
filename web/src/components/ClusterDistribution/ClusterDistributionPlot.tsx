@@ -74,6 +74,7 @@ export function ClusterDistributionPlotComponent({ country_names, distribution }
                     domain={timeDomain}
                     ticks={adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin)}
                     tick={theme.plot.tickStyle}
+                    tickMargin={theme.plot.tickMargin?.x}
                     allowDataOverflow
                   />
                   <YAxis
@@ -81,6 +82,7 @@ export function ClusterDistributionPlotComponent({ country_names, distribution }
                     tickFormatter={formatProportion}
                     domain={[0, 1]}
                     tick={theme.plot.tickStyle}
+                    tickMargin={theme.plot.tickMargin?.y}
                     allowDataOverflow
                   />
                   <Tooltip
