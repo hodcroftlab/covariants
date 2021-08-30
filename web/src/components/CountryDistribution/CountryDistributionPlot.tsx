@@ -46,15 +46,16 @@ export function CountryDistributionPlotComponent({ cluster_names, distribution }
       <ChartContainerInner>
         <ReactResizeDetector handleWidth refreshRate={300} refreshMode="debounce">
           {({ width }: { width?: number }) => {
+            const adjustedTicks = adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin)
             return (
-              <ResponsiveContainer width="99%" aspect={theme.plot.aspectRatio} debounce={0}>
+              <ResponsiveContainer aspect={theme.plot.aspectRatio} debounce={0}>
                 <AreaChart margin={theme.plot.margin} data={data} stackOffset="expand" ref={chartRef}>
                   <XAxis
                     dataKey="week"
                     type="number"
                     tickFormatter={formatDateHumanely}
-                    domain={timeDomain}
-                    ticks={adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin)}
+                    domain={[adjustedTicks[0], timeDomain[1]]}
+                    ticks={adjustedTicks}
                     tick={theme.plot.tickStyle}
                     tickMargin={theme.plot.tickMargin?.x}
                     allowDataOverflow

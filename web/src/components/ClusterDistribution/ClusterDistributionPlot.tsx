@@ -64,6 +64,7 @@ export function ClusterDistributionPlotComponent({ country_names, distribution }
       <ChartContainerInner>
         <ReactResizeDetector handleWidth refreshRate={300} refreshMode="debounce">
           {({ width }: { width?: number }) => {
+            const adjustedTicks = adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin)
             return (
               <ResponsiveContainer aspect={theme.plot.aspectRatio}>
                 <LineChart margin={theme.plot.margin} data={data}>
@@ -71,8 +72,8 @@ export function ClusterDistributionPlotComponent({ country_names, distribution }
                     dataKey="week"
                     type="number"
                     tickFormatter={formatDateHumanely}
-                    domain={timeDomain}
-                    ticks={adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin)}
+                    domain={[adjustedTicks[0], timeDomain[1]]}
+                    ticks={adjustedTicks}
                     tick={theme.plot.tickStyle}
                     tickMargin={theme.plot.tickMargin?.x}
                     allowDataOverflow
