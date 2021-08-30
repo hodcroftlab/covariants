@@ -45,11 +45,6 @@ const ContentWrapper = styled.div`
     margin-top: 1.5rem;
   }
 
-  h3,
-  .h3 {
-    font-size: 1.5rem;
-  }
-
   & > p + h2,
   & > p + h3 {
     margin-top: 3rem;

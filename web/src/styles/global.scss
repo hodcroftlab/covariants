@@ -55,6 +55,12 @@ body {
   color: $gray-600;
 }
 
+/* Override bootstrap for better contrast */
+h3,
+.h3 {
+  font-size: 1.5rem;
+}
+
 p {
   text-align: justify;
   text-justify: inter-word;

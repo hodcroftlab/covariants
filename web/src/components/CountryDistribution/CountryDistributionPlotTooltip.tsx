@@ -23,6 +23,7 @@ const Tooltip = styled.div`
 const TooltipTitle = styled.h1`
   font-size: 1rem;
   margin: 5px auto;
+  font-weight: 600;
 `
 
 const TooltipTable = styled.table`

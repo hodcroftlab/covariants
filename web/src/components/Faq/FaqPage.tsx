@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import { Col, Container, Row } from 'reactstrap'
 import { CenteredEditable } from 'src/components/Common/Editable'
