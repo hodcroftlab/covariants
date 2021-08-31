@@ -264,7 +264,10 @@ bad_seqs = {
     "USA/AZ-TG968502/2020" : "2020-09-21", #delta
     "USA/AZ-TG968441/2020" : "2020-10-22", #iota
     "USA/CA-CDPH1224/2020" : "2020-03-11", #epsilon
-    "Canada/QC-L00333784001/2020" : "2020-03-12", #477
+    "Canada/QC-L00333784001/2020" : "2020-03-12", # 477
+    "India/GJ-INSACOG-GBRC1538/2020" : "2020-03-19", #kappa
+    "India/GJ-INSACOG-GBRC1539/2020" : "2020-03-17", #kappa
+    "Brazil/PE-FIOCRUZ-IAM3285/2020" : "2020-09-22", # gamma - too divergent - not near base
 
     #These are sequences submitted where collection date seems incorrect:
     #https://twitter.com/flodebarre/status/1414868236823318530
