@@ -19,6 +19,10 @@
     "c": "#ffcc00",
     "ls": "--"
   },
+  "Bahrain": {
+    "c": "#a6a6a6",
+    "ls": "dotted"
+  },
   "Bangladesh": {
     "c": "#fb9a99",
     "ls": "-."
@@ -54,6 +58,10 @@
   "Colombia": {
     "c": "#990000",
     "ls": "--"
+  },
+  "Costa Rica": {
+    "c": "#0000ff",
+    "ls": "dotted"
   },
   "Croatia": {
     "c": "#33a02c",
