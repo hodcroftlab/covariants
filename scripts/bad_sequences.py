@@ -92,6 +92,21 @@ bad_seqs = {
     "USA/MI-MDHHS-SC30215/2020" : "2020-04-19", # alpha
     "USA/MI-MDHHS-SC25865/2020" : "2020-04-15", # robin 1
     "Colombia/ANT-CWOHC-VG-SEC01275A/2020" : "2020-09-21", # bad quality
+    "Ecuador/USFQ-1969/2021" : "2021-08-13", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1977/2021" : "2021-08-13", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1981/2021" : "2021-08-16", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1983/2021" : "2021-08-17", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1986/2021" : "2021-08-16", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1987/2021" : "2021-08-16", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1988/2021" : "2021-08-16", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1989/2021" : "2021-08-16", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1990/2021" : "2021-08-16", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1996/2021" : "2021-08-16", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1997/2021" : "2021-08-16", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1999/2021" : "2021-08-18", # divergence is 0-10 muts!
+    "Ecuador/USFQ-2005/2021" : "2021-08-19", # divergence is 0-10 muts!
+    "Ecuador/USFQ-2007/2021" : "2021-08-19", # divergence is 0-10 muts!
+    "Ecuador/USFQ-2009/2021" : "2021-08-19", # divergence is 0-10 muts!
     #alpha, all below
     "USA/CA-SEARCH-101999/2020" : "2020-07-08",
     "USA/CA-SEARCH-101987/2020" : "2020-07-08",

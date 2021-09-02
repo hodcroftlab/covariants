@@ -204,6 +204,7 @@ country_list_4 = [
     "Suriname",             #13
     "Costa Rica",           #14
     "Bahrain",              #15
+    "Pakistan",             #16
 ]
 
 country_styles_1 = {
