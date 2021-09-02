@@ -109,6 +109,15 @@ name_table = [
         "oldnames": []
     },
     {
+        "clade": "21H (Mu)",
+        "who": "Mu",
+        "lineages": [
+            {"name": "B.1.621", "url": None}
+        ],
+        "others": [],
+        "oldnames": []
+    },
+    {
         "clade": "20E (EU1)",
         "who": None,
         "lineages": [
@@ -120,15 +129,6 @@ name_table = [
         "oldnames": [
             {"name": "20A.EU1", "url": None}
         ],
-    },
-    {
-        "clade": "21H",
-        "who": "Mu",
-        "lineages": [
-            {"name": "B.1.621", "url": None}
-        ],
-        "others": [],
-        "oldnames": []
     },
     {
         "clade": "20B/S:732A",

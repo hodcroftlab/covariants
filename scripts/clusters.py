@@ -243,7 +243,7 @@ clusters = {
         "nextstrain_build": True,
         "type": "variant",
         "graphing": True,
-        "important": True,
+        "important": False,
         "country_info": [],
         "col": "#66C266",
         "display_name": "21B (Kappa)",
@@ -480,25 +480,25 @@ clusters = {
         },
     },
 
-    # B.1.621 - build only
+    # B.1.621 - Mu
     "21H": {
         "snps": [22599, 4878, 17491], #S 346 (22599A)  ORF1a: 1538 (4878T) nuc: 17491T
         "cluster_data": [],  
         "nextstrain_build": True,
         "graphing": True,
         "type": "variant",
-        "important": False,
+        "important": True,
         "country_info": [],
         "col": "#f4dc81",
-        "display_name": "21H",
-        "build_name": "21H",
-        "old_build_names": [],
-        "who_name": [],
-        "nextstrain_name": "21H",
+        "display_name": "21H (Mu)",
+        "build_name": "21H.Mu",
+        "old_build_names": ["21H"],
+        "who_name": ["Mu"],
+        "nextstrain_name": "21H (Mu)",
         "pango_lineages": [
             {"name": "B.1.621", "url": None}
         ],
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21H",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21H.Mu",
         "mutations": {
             "nonsynonymous": [
                 {'gene': 'S', 'left': 'T', 'pos': 95, 'right': 'I'},

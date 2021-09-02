@@ -105,7 +105,7 @@ mutation_comparison = {
             "S:T859N",
         ]
     },
-    "21H\n(B.1.621)": {
+    "21H (Mu)\n(B.1.621)": {
         "nonsynonymous": [
             "S:T95I",
             "S:Y144S",

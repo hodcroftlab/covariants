@@ -173,6 +173,23 @@
       "who": "Lambda"
     },
     {
+      "clade": "21H (Mu)",
+      "lineages": [
+        {
+          "name": "B.1.621",
+          "url": null
+        }
+      ],
+      "oldnames": [
+        {
+          "name": "21H",
+          "url": null
+        }
+      ],
+      "others": [],
+      "who": "Mu"
+    },
+    {
       "clade": "20E (EU1)",
       "lineages": [
         {
@@ -193,18 +210,6 @@
         }
       ],
       "who": null
-    },
-    {
-      "clade": "21H",
-      "lineages": [
-        {
-          "name": "B.1.621",
-          "url": null
-        }
-      ],
-      "oldnames": [],
-      "others": [],
-      "who": "Mu"
     },
     {
       "clade": "20B/S:732A",
