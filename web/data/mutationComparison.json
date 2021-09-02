@@ -8,7 +8,6 @@
         "S:T20N",
         "S:T19R",
         "S:E154K",
-        null,
         "S:S13I",
         "S:Q52R",
         "S:L5F",
@@ -25,7 +24,6 @@
         "S:D138Y",
         "S:E156-",
         "S:Q1071H",
-        null,
         "S:W152C",
         "S:A67V",
         null,
@@ -41,7 +39,6 @@
         null,
         "S:R190S",
         "S:F157-",
-        null,
         null,
         null,
         "S:Q677H",
@@ -60,7 +57,6 @@
         "S:R158G",
         null,
         null,
-        null,
         "S:F888L",
         null,
         "S:R247-",
@@ -73,9 +69,8 @@
       "mutations": [
         null,
         null,
-        null,
+        "S:V1176F",
         "S:T478K",
-        null,
         null,
         null,
         null,
@@ -88,7 +83,6 @@
     {
       "index": 5,
       "mutations": [
-        null,
         null,
         null,
         null,
@@ -113,7 +107,6 @@
         null,
         null,
         null,
-        null,
         "S:R250-",
         null,
         null
@@ -122,7 +115,6 @@
     {
       "index": 7,
       "mutations": [
-        null,
         null,
         null,
         null,
@@ -147,7 +139,6 @@
         null,
         null,
         null,
-        null,
         "S:R252-",
         null,
         null
@@ -164,7 +155,6 @@
         null,
         null,
         null,
-        null,
         "S:F490S",
         null,
         null
@@ -173,7 +163,6 @@
     {
       "index": 10,
       "mutations": [
-        null,
         null,
         null,
         null,
@@ -202,7 +191,6 @@
         "S:D614G",
         "S:D614G",
         "S:D614G",
-        "S:D614G",
         "S:D614G"
       ]
     },
@@ -214,7 +202,6 @@
         "S:E484K",
         null,
         "S:E484Q",
-        "S:E484K",
         null,
         "S:E484K",
         "S:E484K",
@@ -235,9 +222,24 @@
         null,
         null,
         null,
-        null,
         "S:P681H",
         "S:P681H"
+      ]
+    },
+    {
+      "pos": 144,
+      "presence": [
+        "S:Y144-",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:Y144-",
+        null,
+        null,
+        "S:Y144S",
+        "S:Y144-"
       ]
     },
     {
@@ -252,26 +254,8 @@
         null,
         null,
         null,
-        null,
         "S:N501Y",
         null
-      ]
-    },
-    {
-      "pos": 144,
-      "presence": [
-        "S:Y144-",
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        "S:Y144-",
-        null,
-        null,
-        "S:Y144S",
-        "S:Y144-"
       ]
     },
     {
@@ -282,7 +266,6 @@
         null,
         "S:L452R",
         "S:L452R",
-        null,
         "S:L452R",
         null,
         null,
@@ -300,7 +283,6 @@
         null,
         null,
         null,
-        null,
         "S:H69-",
         null,
         null,
@@ -312,7 +294,6 @@
       "pos": 70,
       "presence": [
         "S:V70-",
-        null,
         null,
         null,
         null,
@@ -338,25 +319,7 @@
         null,
         null,
         null,
-        null,
         null
-      ]
-    },
-    {
-      "pos": 1118,
-      "presence": [
-        "S:D1118H",
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        "S:D1118H"
       ]
     },
     {
@@ -365,7 +328,6 @@
         null,
         null,
         "S:T1027I",
-        null,
         null,
         null,
         null,
@@ -388,7 +350,6 @@
         null,
         null,
         null,
-        null,
         "S:D950N",
         null
       ]
@@ -398,7 +359,6 @@
       "presence": [
         null,
         "S:A701V",
-        null,
         null,
         null,
         null,
@@ -423,7 +383,6 @@
         null,
         null,
         null,
-        null,
         null
       ]
     },
@@ -440,14 +399,12 @@
         null,
         null,
         null,
-        null,
         "S:P26S"
       ]
     },
     {
       "pos": 253,
       "presence": [
-        null,
         null,
         null,
         null,
@@ -474,7 +431,6 @@
         null,
         null,
         null,
-        null,
         "S:A243-"
       ]
     },
@@ -483,7 +439,6 @@
       "presence": [
         null,
         "S:L242-",
-        null,
         null,
         null,
         null,
@@ -508,7 +463,6 @@
         null,
         null,
         null,
-        null,
         "S:L241-"
       ]
     },
@@ -522,7 +476,6 @@
         null,
         null,
         null,
-        null,
         "S:T95I",
         null,
         "S:T95I",
@@ -530,20 +483,19 @@
       ]
     },
     {
-      "pos": 1176,
+      "pos": 1118,
       "presence": [
-        null,
-        null,
-        "S:V1176F",
-        null,
-        null,
-        "S:V1176F",
+        "S:D1118H",
         null,
         null,
         null,
         null,
         null,
-        null
+        null,
+        null,
+        null,
+        null,
+        "S:D1118H"
       ]
     }
   ],
@@ -554,7 +506,6 @@
         null,
         "S:L18F",
         "S:L18F",
-        null,
         null,
         null,
         null,
@@ -578,7 +529,6 @@
         null,
         null,
         null,
-        null,
         "S:P26S"
       ]
     },
@@ -586,7 +536,6 @@
       "pos": 69,
       "presence": [
         "S:H69-",
-        null,
         null,
         null,
         null,
@@ -603,7 +552,6 @@
       "pos": 70,
       "presence": [
         "S:V70-",
-        null,
         null,
         null,
         null,
@@ -626,7 +574,6 @@
         null,
         null,
         null,
-        null,
         "S:T95I",
         null,
         "S:T95I",
@@ -637,7 +584,6 @@
       "pos": 144,
       "presence": [
         "S:Y144-",
-        null,
         null,
         null,
         null,
@@ -663,7 +609,6 @@
         null,
         null,
         null,
-        null,
         "S:L241-"
       ]
     },
@@ -672,7 +617,6 @@
       "presence": [
         null,
         "S:L242-",
-        null,
         null,
         null,
         null,
@@ -697,14 +641,12 @@
         null,
         null,
         null,
-        null,
         "S:A243-"
       ]
     },
     {
       "pos": 253,
       "presence": [
-        null,
         null,
         null,
         null,
@@ -731,7 +673,6 @@
         null,
         null,
         null,
-        null,
         null
       ]
     },
@@ -743,7 +684,6 @@
         null,
         "S:L452R",
         "S:L452R",
-        null,
         "S:L452R",
         null,
         null,
@@ -760,7 +700,6 @@
         "S:E484K",
         null,
         "S:E484Q",
-        "S:E484K",
         null,
         "S:E484K",
         "S:E484K",
@@ -775,7 +714,6 @@
         "S:N501Y",
         "S:N501Y",
         "S:N501Y",
-        null,
         null,
         null,
         null,
@@ -799,7 +737,6 @@
         "S:D614G",
         "S:D614G",
         "S:D614G",
-        "S:D614G",
         "S:D614G"
       ]
     },
@@ -815,7 +752,6 @@
         null,
         null,
         null,
-        null,
         "S:P681H",
         "S:P681H"
       ]
@@ -825,7 +761,6 @@
       "presence": [
         null,
         "S:A701V",
-        null,
         null,
         null,
         null,
@@ -849,7 +784,6 @@
         null,
         null,
         null,
-        null,
         "S:D950N",
         null
       ]
@@ -860,7 +794,6 @@
         null,
         null,
         "S:T1027I",
-        null,
         null,
         null,
         null,
@@ -884,25 +817,7 @@
         null,
         null,
         null,
-        null,
         "S:D1118H"
-      ]
-    },
-    {
-      "pos": 1176,
-      "presence": [
-        null,
-        null,
-        "S:V1176F",
-        null,
-        null,
-        "S:V1176F",
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
       ]
     }
   ],
@@ -912,12 +827,11 @@
     "20J (Gamma, V3)\n(P.1)",
     "21A (Delta)\n(B.1.617.2)",
     "21B (Kappa)\n(B.1.617.1)",
-    "20B/S.484K\n(P.2)",
     "21C (Epsilon)\n(B.1.427/9)",
     "21D (Eta)\n(B.1.525)",
     "21F (Iota)\n(B.1.526)",
     "21G (Lambda)\n(C.37)",
-    "21H\n(B.1.621)",
+    "21H (Mu)\n(B.1.621)",
     "20A/S:126A\n(B.1.620)"
   ]
 }

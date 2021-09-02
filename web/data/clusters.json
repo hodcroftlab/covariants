@@ -835,7 +835,7 @@
       "country_info": [],
       "display_name": "21B (Kappa)",
       "graphing": true,
-      "important": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -1658,13 +1658,13 @@
       ]
     },
     {
-      "build_name": "21H",
+      "build_name": "21H.Mu",
       "cluster_data": [],
       "col": "#f4dc81",
       "country_info": [],
-      "display_name": "21H",
+      "display_name": "21H (Mu)",
       "graphing": true,
-      "important": false,
+      "important": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -1850,9 +1850,11 @@
         ]
       },
       "nextstrain_build": true,
-      "nextstrain_name": "21H",
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21H",
-      "old_build_names": [],
+      "nextstrain_name": "21H (Mu)",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21H.Mu",
+      "old_build_names": [
+        "21H"
+      ],
       "pango_lineages": [
         {
           "name": "B.1.621",
@@ -2281,7 +2283,7 @@
           }
         ]
       },
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_name": "20E (EU1)",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.EU1?f_region=Europe",
       "pango_lineages": [
@@ -2378,7 +2380,7 @@
           }
         ]
       },
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_name": "21C (Epsilon)",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21C.Epsilon",
       "old_build_names": [
@@ -2435,7 +2437,7 @@
           }
         ]
       },
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_439&f_region=Europe",
       "pango_lineages": [
         {
@@ -2846,7 +2848,7 @@
           }
         ]
       },
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.S98F?c=gt-S_98&f_region=Europe",
       "pango_lineages": [
         {

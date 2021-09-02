@@ -67,7 +67,6 @@ mutation_comparison = {
             "S:Q1071H"
         ]
     },
-    "20B/S.484K\n(P.2)": {"nonsynonymous": ["S:E484K", "S:D614G", "S:V1176F"]},
     "21C (Epsilon)\n(B.1.427/9)": {
         "nonsynonymous": ["S:S13I", "S:W152C", "S:L452R", "S:D614G"]
     },

@@ -648,7 +648,7 @@ clusters = {
     "S222": {
         "snps": [22227, 28932, 29645],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": True,
@@ -681,7 +681,7 @@ clusters = {
     "S452": {
         "snps": [21600, 22018, 22917],
         "cluster_data": [],  #'CA' variant
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -721,7 +721,7 @@ clusters = {
     "S439": {
         "snps": [7767, 22879],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -857,7 +857,7 @@ clusters = {
     "S98": {
         "snps": [21855, 25505],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": False,
