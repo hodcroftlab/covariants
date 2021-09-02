@@ -123,7 +123,7 @@ name_table = [
     },
     {
         "clade": "21H",
-        "who": "",
+        "who": "Mu",
         "lineages": [
             {"name": "B.1.621", "url": None}
         ],
