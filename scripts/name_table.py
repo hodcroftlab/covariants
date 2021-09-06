@@ -11,9 +11,6 @@ name_table = [
         "others": [
             {"name": "VOC 202012/01", "url": None}
         ],
-        "oldnames": [
-            {"name": "20I/501Y.V1", "url": None}
-        ],
     },
     {
         "clade": "20H (Beta, V2)",
@@ -24,9 +21,6 @@ name_table = [
         "others": [
             {"name": "501Y.V2", "url": None}
         ],
-        "oldnames": [
-            {"name": "20H/501Y.V2", "url": None}
-        ],
     },
     {
         "clade": "20J (Gamma, V3)",
@@ -35,9 +29,6 @@ name_table = [
             {"name": "P.1", "url": None}
         ],
         "others": [],
-        "oldnames": [
-            {"name": "20J/501Y.V3", "url": None}
-        ],
     },
     {
         "clade": "21A (Delta)",
@@ -46,9 +37,6 @@ name_table = [
             {"name": "B.1.617.2", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.2.html"}
         ],
         "others": [],
-        "oldnames": [
-            {"name": "21A/S:478K", "url": None}
-        ]
     },
     {
         "clade": "21B (Kappa)",
@@ -56,10 +44,7 @@ name_table = [
         "lineages": [
             {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
         ],
-        "others": [],
-        "oldnames": [
-            {"name": "21A/S:154K", "url": None}
-        ]
+        "others": []
     },
     {
         "clade": "21C (Epsilon)",
@@ -71,9 +56,6 @@ name_table = [
         "others": [
             {"name": "CAL.20C", "url": None}
         ],
-        "oldnames": [
-            {"name": "20C/S:452R", "url": None}
-        ],
     },
     {
         "clade": "21D (Eta)",
@@ -82,9 +64,6 @@ name_table = [
             {"name": "B.1.525", "url": None}
         ],
         "others": [],
-        "oldnames": [
-            {"name": "20A/S:484K", "url": None},
-        ]
     },
     {
         "clade": "21F (Iota)",
@@ -94,9 +73,6 @@ name_table = [
         ],
         "others": [
             {"name": "(Part of Pango lineage)", "url": None},
-        ],
-        "oldnames": [
-            {"name": "20C/S:484K", "url": None},
         ]
     },
     {
@@ -106,7 +82,6 @@ name_table = [
             {"name": "C.37", "url": None}
         ],
         "others": [],
-        "oldnames": []
     },
     {
         "clade": "21H (Mu)",
@@ -115,7 +90,6 @@ name_table = [
             {"name": "B.1.621", "url": None}
         ],
         "others": [],
-        "oldnames": []
     },
     {
         "clade": "20E (EU1)",
@@ -126,9 +100,6 @@ name_table = [
         "others": [
             {"name": "EU1", "url": None}
         ],
-        "oldnames": [
-            {"name": "20A.EU1", "url": None}
-        ],
     },
     {
         "clade": "20B/S:732A",
@@ -137,7 +108,6 @@ name_table = [
             {"name": "B.1.1.519", "url": None}
         ],
         "others": [],
-        "oldnames": []
     },
     {
         "clade": "20A/S:126A",
@@ -146,7 +116,6 @@ name_table = [
             {"name": "B.1.620", "url": None}
         ],
         "others": [],
-        "oldnames": []
     },
     {
         "clade": "20A.EU2",
@@ -155,7 +124,6 @@ name_table = [
             {"name": "B.1.160", "url": None}
         ],
         "others": [],
-        "oldnames": [],
     },
     {
         "clade": "20A/S:439K",
@@ -164,7 +132,6 @@ name_table = [
             {"name": "B.1.258", "url": None}
         ],
         "others": [],
-        "oldnames": []
     },
     {
         "clade": "20A/S:98F",
@@ -173,7 +140,6 @@ name_table = [
             {"name": "B.1.221", "url": None}
         ],
         "others": [],
-        "oldnames": []
     },
     {
         "clade": "20C/S:80Y",
@@ -182,7 +148,6 @@ name_table = [
             {"name": "B.1.367", "url": None}
         ],
         "others": [],
-        "oldnames": []
     },
     {
         "clade": "20B/S:626S",
@@ -191,7 +156,6 @@ name_table = [
             {"name": "B.1.1.277", "url": None}
         ],
         "others": [],
-        "oldnames": []
     },
     {
         "clade": "20B/S:1122L",
@@ -200,7 +164,6 @@ name_table = [
             {"name": "B.1.1.302", "url": None}
         ],
         "others": [],
-        "oldnames": []
     }
 ]
 
