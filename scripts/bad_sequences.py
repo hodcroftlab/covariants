@@ -283,6 +283,13 @@ bad_seqs = {
     "India/GJ-INSACOG-GBRC1538/2020" : "2020-03-19", #kappa
     "India/GJ-INSACOG-GBRC1539/2020" : "2020-03-17", #kappa
     "Brazil/PE-FIOCRUZ-IAM3285/2020" : "2020-09-22", # gamma - too divergent - not near base
+    "France/PAC-IHU-3957-Nano1/2020" : "2020-09-03", #alpha
+    "France/PAC-IHU-3957_Nano1/2020" : "2020-09-03", #alpha
+    "France/PAC-IHU-5143-N1/2021" : "2020-05-24", #alpha
+    "France/PAC-IHU-5148-N1/2021" : "2020-08-26", #alpha
+    "Germany/SN-RKI-I-213505/2020" : "2020-08-21", #delta
+
+
 
     #These are sequences submitted where collection date seems incorrect:
     #https://twitter.com/flodebarre/status/1414868236823318530
