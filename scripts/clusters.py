@@ -822,7 +822,7 @@ clusters = {
     "S477": {
         "snps": [22992, 4543],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": False,
