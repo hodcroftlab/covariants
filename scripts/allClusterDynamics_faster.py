@@ -38,6 +38,9 @@ figure_only_path = "../covariants/figures/"
 fmt = "png"  # "pdf"
 grey_color = "#cccccc"  # for "other clusters" of country plots
 
+dated_limit = "2021-03-31" #only works for Q677 currently
+dated_limit = ""
+
 import pandas as pd
 import datetime
 import numpy as np
@@ -476,6 +479,25 @@ for clus in clus_to_run:
 
         # Just so we have the data, write out the metadata for these sequences
         cluster_meta.to_csv(out_meta_file, sep="\t", index=False)
+
+    # If specified wanted dated Q677, do this
+    if print_files and dated_limit and "Q677" in display_cluster:
+    #if dated_limit and "Q677" in clus_display:
+        build_nam = clusters[clus]["build_name"]
+        dated_clus_met = cluster_meta[cluster_meta["date_formatted"].apply(lambda x: x < datetime.datetime.strptime(dated_limit, "%Y-%m-%d"))]
+        dated_want_seqs = list(dated_clus_met["strain"])
+
+        datedpath = clusterlist_output.replace(
+            f"{build_nam}",
+            "{}-{}".format(build_nam, dated_limit),
+        )
+        curr_datedpath = datedpath.replace(
+            "clusters/cluster_", "clusters/current/cluster_"
+        )
+        with open(curr_datedpath, "w") as f:
+            for item in dated_want_seqs:
+                f.write("%s\n" % item)
+
 
     # What countries do sequences in the cluster come from?
     #observed_countries = [x for x in cluster_meta["country"].unique() if x]
@@ -1411,7 +1433,8 @@ def plot_country_data(
         i = 0
         first_clus_count = []
 
-        json_output["countries"][coun] = {"week": {}, "total_sequences": {}}
+        # json_output["countries"][coun] = {"week": {}, "total_sequences": {}}
+        country_data = {"week": {}, "total_sequences": {}}
 
         for clus in clus_keys:
             if division:
@@ -1423,6 +1446,7 @@ def plot_country_data(
                 total_data = clusters[clus][selected_country]["total_data_2wk_div"]
             else:
                 total_data = clusters[clus]["total_data_2wk"]
+
             if coun not in cluster_data:
                 if clus == clus_keys[-1]:
                     ax.fill_between(
@@ -1442,6 +1466,10 @@ def plot_country_data(
                 unsmoothed_cluster_count,
                 unsmoothed_total_count,
             ) = non_zero_counts(cluster_data, total_data, coun)
+            
+            if len(total_count)<2:
+                continue
+
             # trim away any last data points that only have 1 or 2 seqs
             week_as_date, cluster_count, total_count = trim_last_data_point(
                 week_as_date, cluster_count, total_count, frac=0.1, keep_count=10
@@ -1456,7 +1484,7 @@ def plot_country_data(
 
             week_as_dates[coun] = week_as_date
 
-            json_output["countries"][coun][clusters[clus]["display_name"]] = list(
+            country_data[clusters[clus]["display_name"]] = list(
                 cluster_count
             )
 
@@ -1489,12 +1517,14 @@ def plot_country_data(
 
             first_clus_count = cluster_count  # unindented
             i += 1
-        json_output["countries"][coun]["week"] = [
+        country_data["week"] = [
             datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date
         ]
-        json_output["countries"][coun]["total_sequences"] = [
+        country_data["total_sequences"] = [
             int(x) for x in total_count
         ]
+        if len(total_count)>=2:
+            json_output["countries"][coun] = country_data
 
         ax.text(datetime.datetime(2020, 6, 1), 0.7, coun, fontsize=fs)
         ax.tick_params(labelsize=fs * 0.8)
