@@ -21,6 +21,6 @@
 | United Kingdom | 2021-03-11  |          5 | 2021-08-16 |
 | India          | 2021-03-11  |          2 | 2021-04-02 |
 | Canada         | 2021-03-12  |          1 | 2021-03-12 |
-| Sweden         | 2021-04-15  |         47 | 2021-04-28 |
+| Sweden         | 2021-04-15  |         35 | 2021-04-28 |
 
 ![Overall trends S.Y453F](/overall_trends_figures/overall_trends_S.Y453F.png)
