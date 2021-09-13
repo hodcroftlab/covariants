@@ -24,6 +24,5 @@
 | Spain          | 2020-11-06  |          3 | 2021-02-15 |
 | Portugal       | 2020-11-10  |          9 | 2021-02-09 |
 | Egypt          | 2020-11-17  |          1 | 2020-11-17 |
-| Sweden         | 2021-04-15  |          2 | 2021-04-15 |
 
 ![Overall trends S.D80Y](/overall_trends_figures/overall_trends_S.D80Y.png)
