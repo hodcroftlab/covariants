@@ -291,6 +291,7 @@ bad_seqs = {
     "England/PHEC-U303UC24/2021"  : "2020-03-20", #alpha
     "England/PHEC-U303UC33/2021"  : "2020-03-20", #alpha
     "Italy/VEN-IZSVe-21RS8085-7_TV/2020" : "2020-08-13", #delta
+    "USA/DC-DFS-PHL-01331/2020" : "2020-08-10", #delta
 
 
     #These are sequences submitted where collection date seems incorrect:
