@@ -3416,23 +3416,6 @@
         9319
       ],
       "type": "do_not_display"
-    },
-    {
-      "build_name": "Delta.299I",
-      "col": "#b3d9ff",
-      "country_info": [],
-      "display_name": "Delta+299I",
-      "graphing": false,
-      "important": false,
-      "nextstrain_build": true,
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.299I?c=gt-S_299",
-      "snps": [
-        4181,
-        21647,
-        22311
-      ],
-      "type": "do_not_display",
-      "usa_graph": false
     }
   ]
 }
