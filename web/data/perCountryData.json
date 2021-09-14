@@ -42701,6 +42701,154 @@
           ]
         },
         {
+          "country": "Sultanate of Oman",
+          "distribution": [
+            {
+              "cluster_counts": {
+                "20H (Beta, V2)": 0.0,
+                "20I (Alpha, V1)": 1.0,
+                "21A (Delta)": 3.0,
+                "21B (Kappa)": 0.0,
+                "21D (Eta)": 0.0
+              },
+              "total_sequences": 4,
+              "week": "2020-12-28"
+            },
+            {
+              "cluster_counts": {
+                "20H (Beta, V2)": 1.0,
+                "20I (Alpha, V1)": 2.0,
+                "21A (Delta)": 1.0,
+                "21B (Kappa)": 0.0,
+                "21D (Eta)": 0.0
+              },
+              "total_sequences": 4,
+              "week": "2021-01-25"
+            },
+            {
+              "cluster_counts": {
+                "20H (Beta, V2)": 0.0,
+                "20I (Alpha, V1)": 3.0,
+                "21A (Delta)": 1.0,
+                "21B (Kappa)": 0.0,
+                "21D (Eta)": 0.0
+              },
+              "total_sequences": 4,
+              "week": "2021-02-22"
+            },
+            {
+              "cluster_counts": {
+                "20H (Beta, V2)": 0.0,
+                "20I (Alpha, V1)": 7.0,
+                "21A (Delta)": 0.0,
+                "21B (Kappa)": 0.0,
+                "21D (Eta)": 0.0
+              },
+              "total_sequences": 7,
+              "week": "2021-03-08"
+            },
+            {
+              "cluster_counts": {
+                "20H (Beta, V2)": 0.0,
+                "20I (Alpha, V1)": 3.0,
+                "21A (Delta)": 0.0,
+                "21B (Kappa)": 0.0,
+                "21D (Eta)": 0.0
+              },
+              "total_sequences": 4,
+              "week": "2021-03-22"
+            },
+            {
+              "cluster_counts": {
+                "20H (Beta, V2)": 0.0,
+                "20I (Alpha, V1)": 8.0,
+                "21A (Delta)": 2.0,
+                "21B (Kappa)": 0.0,
+                "21D (Eta)": 0.0
+              },
+              "total_sequences": 10,
+              "week": "2021-04-05"
+            },
+            {
+              "cluster_counts": {
+                "20H (Beta, V2)": 2.0,
+                "20I (Alpha, V1)": 43.0,
+                "21A (Delta)": 0.0,
+                "21B (Kappa)": 1.0,
+                "21D (Eta)": 0.0
+              },
+              "total_sequences": 46,
+              "week": "2021-04-19"
+            },
+            {
+              "cluster_counts": {
+                "20H (Beta, V2)": 0.0,
+                "20I (Alpha, V1)": 11.0,
+                "21A (Delta)": 7.0,
+                "21B (Kappa)": 1.0,
+                "21D (Eta)": 0.0
+              },
+              "total_sequences": 20,
+              "week": "2021-05-03"
+            },
+            {
+              "cluster_counts": {
+                "20H (Beta, V2)": 0.0,
+                "20I (Alpha, V1)": 6.0,
+                "21A (Delta)": 3.0,
+                "21B (Kappa)": 0.0,
+                "21D (Eta)": 1.0
+              },
+              "total_sequences": 11,
+              "week": "2021-05-17"
+            },
+            {
+              "cluster_counts": {
+                "20H (Beta, V2)": 0.0,
+                "20I (Alpha, V1)": 12.0,
+                "21A (Delta)": 31.0,
+                "21B (Kappa)": 0.0,
+                "21D (Eta)": 0.0
+              },
+              "total_sequences": 43,
+              "week": "2021-05-31"
+            },
+            {
+              "cluster_counts": {
+                "20H (Beta, V2)": 0.0,
+                "20I (Alpha, V1)": 8.0,
+                "21A (Delta)": 63.0,
+                "21B (Kappa)": 0.0,
+                "21D (Eta)": 0.0
+              },
+              "total_sequences": 71,
+              "week": "2021-06-14"
+            },
+            {
+              "cluster_counts": {
+                "20H (Beta, V2)": 0.0,
+                "20I (Alpha, V1)": 5.0,
+                "21A (Delta)": 1.0,
+                "21B (Kappa)": 0.0,
+                "21D (Eta)": 1.0
+              },
+              "total_sequences": 7,
+              "week": "2021-06-28"
+            },
+            {
+              "cluster_counts": {
+                "20H (Beta, V2)": 0.0,
+                "20I (Alpha, V1)": 0.0,
+                "21A (Delta)": 1.0,
+                "21B (Kappa)": 0.0,
+                "21D (Eta)": 0.0
+              },
+              "total_sequences": 1,
+              "week": "2021-08-23"
+            }
+          ]
+        },
+        {
           "country": "Togo",
           "distribution": [
             {
@@ -42933,154 +43081,6 @@
               },
               "total_sequences": 44,
               "week": "2021-07-26"
-            }
-          ]
-        },
-        {
-          "country": "Sultanate of Oman",
-          "distribution": [
-            {
-              "cluster_counts": {
-                "20H (Beta, V2)": 0.0,
-                "20I (Alpha, V1)": 1.0,
-                "21A (Delta)": 3.0,
-                "21B (Kappa)": 0.0,
-                "21D (Eta)": 0.0
-              },
-              "total_sequences": 4,
-              "week": "2020-12-28"
-            },
-            {
-              "cluster_counts": {
-                "20H (Beta, V2)": 1.0,
-                "20I (Alpha, V1)": 2.0,
-                "21A (Delta)": 1.0,
-                "21B (Kappa)": 0.0,
-                "21D (Eta)": 0.0
-              },
-              "total_sequences": 4,
-              "week": "2021-01-25"
-            },
-            {
-              "cluster_counts": {
-                "20H (Beta, V2)": 0.0,
-                "20I (Alpha, V1)": 3.0,
-                "21A (Delta)": 1.0,
-                "21B (Kappa)": 0.0,
-                "21D (Eta)": 0.0
-              },
-              "total_sequences": 4,
-              "week": "2021-02-22"
-            },
-            {
-              "cluster_counts": {
-                "20H (Beta, V2)": 0.0,
-                "20I (Alpha, V1)": 7.0,
-                "21A (Delta)": 0.0,
-                "21B (Kappa)": 0.0,
-                "21D (Eta)": 0.0
-              },
-              "total_sequences": 7,
-              "week": "2021-03-08"
-            },
-            {
-              "cluster_counts": {
-                "20H (Beta, V2)": 0.0,
-                "20I (Alpha, V1)": 3.0,
-                "21A (Delta)": 0.0,
-                "21B (Kappa)": 0.0,
-                "21D (Eta)": 0.0
-              },
-              "total_sequences": 4,
-              "week": "2021-03-22"
-            },
-            {
-              "cluster_counts": {
-                "20H (Beta, V2)": 0.0,
-                "20I (Alpha, V1)": 8.0,
-                "21A (Delta)": 2.0,
-                "21B (Kappa)": 0.0,
-                "21D (Eta)": 0.0
-              },
-              "total_sequences": 10,
-              "week": "2021-04-05"
-            },
-            {
-              "cluster_counts": {
-                "20H (Beta, V2)": 2.0,
-                "20I (Alpha, V1)": 43.0,
-                "21A (Delta)": 0.0,
-                "21B (Kappa)": 1.0,
-                "21D (Eta)": 0.0
-              },
-              "total_sequences": 46,
-              "week": "2021-04-19"
-            },
-            {
-              "cluster_counts": {
-                "20H (Beta, V2)": 0.0,
-                "20I (Alpha, V1)": 11.0,
-                "21A (Delta)": 7.0,
-                "21B (Kappa)": 1.0,
-                "21D (Eta)": 0.0
-              },
-              "total_sequences": 20,
-              "week": "2021-05-03"
-            },
-            {
-              "cluster_counts": {
-                "20H (Beta, V2)": 0.0,
-                "20I (Alpha, V1)": 6.0,
-                "21A (Delta)": 3.0,
-                "21B (Kappa)": 0.0,
-                "21D (Eta)": 1.0
-              },
-              "total_sequences": 11,
-              "week": "2021-05-17"
-            },
-            {
-              "cluster_counts": {
-                "20H (Beta, V2)": 0.0,
-                "20I (Alpha, V1)": 12.0,
-                "21A (Delta)": 31.0,
-                "21B (Kappa)": 0.0,
-                "21D (Eta)": 0.0
-              },
-              "total_sequences": 43,
-              "week": "2021-05-31"
-            },
-            {
-              "cluster_counts": {
-                "20H (Beta, V2)": 0.0,
-                "20I (Alpha, V1)": 8.0,
-                "21A (Delta)": 63.0,
-                "21B (Kappa)": 0.0,
-                "21D (Eta)": 0.0
-              },
-              "total_sequences": 71,
-              "week": "2021-06-14"
-            },
-            {
-              "cluster_counts": {
-                "20H (Beta, V2)": 0.0,
-                "20I (Alpha, V1)": 5.0,
-                "21A (Delta)": 1.0,
-                "21B (Kappa)": 0.0,
-                "21D (Eta)": 1.0
-              },
-              "total_sequences": 7,
-              "week": "2021-06-28"
-            },
-            {
-              "cluster_counts": {
-                "20H (Beta, V2)": 0.0,
-                "20I (Alpha, V1)": 0.0,
-                "21A (Delta)": 1.0,
-                "21B (Kappa)": 0.0,
-                "21D (Eta)": 0.0
-              },
-              "total_sequences": 1,
-              "week": "2021-08-23"
             }
           ]
         },
