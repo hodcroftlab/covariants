@@ -1273,19 +1273,31 @@ clusters = {
     "type": "do_not_display",
     "country_info": [],
     "col": "#b3d9ff",
-    "nextstrain_url": ""}
+    "nextstrain_url": ""},
 
-#    "Delta.299I": { # cornelius' larger cluster - key one has Spike T29A, T250I, T299I and then Q613H
-#        "snps": [4181,21647,22311], #ORF1a: 1306S (4181T), S: 29A (21647G), 250I (22311T) 
-#        "cluster_data": [],
-#        "nextstrain_build": True,
-#        "graphing": False,
-#        "important": False,
-#        "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+299I",
-#        "type": "do_not_display",
-#        "build_name": "Delta.299I",
-#        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.299I?c=gt-S_299"
-#    }
+    "Delta.299I": { # "AY.33" - has Spike T29A, T250I, T299I and Q613H
+        "snps": [4181,21647,22311,22458,23401], #ORF1a: 1306S (4181T), S: 29A (21647G), 250I (22311T), 299I (22458T), 613H (23401T)
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "important": False,
+        "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+299I",
+        "type": "do_not_display",
+        "build_name": "Delta.299I",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.299I?c=gt-S_299"
+    },
+
+    "Delta.250I": { # cornelius' larger cluster - key one has Spike T29A, T250I, T299I and then Q613H
+        "snps": [4181,21647,22311], #ORF1a: 1306S (4181T), S: 29A (21647G), 250I (22311T) 
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "important": False,
+        "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+250I",
+        "type": "do_not_display",
+        "build_name": "Delta.250I",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.250I?c=gt-S_250"
+    }
 
     #"21H.417": { #21H + 417
     #    "snps": [22599, 4878, 17491, 22813], #S 346 (22599A)  ORF1a: 1538 (4878T) nuc: 17491T, S:417
