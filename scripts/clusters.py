@@ -1275,6 +1275,18 @@ clusters = {
     "col": "#b3d9ff",
     "nextstrain_url": ""},
 
+    "Delta.N.412R": { # 613 cluster expanding in canada?
+        "snps": [2401,23401,26763,29507], #ORF1a: 712Q (2401A), S: 613H (23401T), M: 81S (26763T), N: 412R (29507C)
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "important": False,
+        "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+N:412R",
+        "type": "do_not_display",
+        "build_name": "Delta.N.412R",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.N.412R?c=gt-S_613"
+    },
+
     "Delta.299I": { # "AY.33" - has Spike T29A, T250I, T299I and Q613H
         "snps": [4181,21647,22311,22458,23401], #ORF1a: 1306S (4181T), S: 29A (21647G), 250I (22311T), 299I (22458T), 613H (23401T)
         "cluster_data": [],
