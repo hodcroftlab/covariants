@@ -294,6 +294,17 @@ bad_seqs = {
     "USA/DC-DFS-PHL-01331/2020" : "2020-08-10", #delta
     "India/GJ-INSACOG-GBRC2186/2020" : "2020-03-19", #delta
     "India/GJ-INSACOG-GBRC2187/2020" : "2020-03-17", #delta
+    "Italy/CAM-TIGEM-IZSM-COLLI-14397/2020" : "2020-03-16", #alpha
+    "Kenya/ICGEB-KEMRI-7_S23_S7_S21_S25/2020" : "2020-09-09", #alpha
+    "Poland/NIPH-NIH_ECDC-4488/2020" : "2020-04-22", #alpha
+    "Switzerland/SO-UHB-42850063/2020" : "2020-05-11", #alpha
+    "USA/IL-RIPHL_30044_G/2020" : "2020-04-17", #alpha
+    "USA/MI-MDHHS-SC28884/2020" : "2020-04-07", #alpha
+    "USA/MI-MDHHS-SC28909/2020" : "2020-04-12", #alpha
+    "BurkinaFaso/CV1920/2020" : "2020-09-16", #delta
+    "BurkinaFaso/CV1921/2020" : "2020-09-18", #delta
+    "BurkinaFaso/CV1728/2020" : "2020-03-28", # 20A.484
+    "USA/MS-USAFSAM-S3006/2020" : "2020-10-05", #21H
 
     #These are sequences submitted where collection date seems incorrect:
     #https://twitter.com/flodebarre/status/1414868236823318530
