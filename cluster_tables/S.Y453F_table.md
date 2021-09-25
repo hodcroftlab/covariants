@@ -18,8 +18,9 @@
 | Greece         | 2020-11-26  |          6 | 2020-12-14 |
 | Egypt          | 2021-01-09  |          1 | 2021-01-09 |
 | Poland         | 2021-01-27  |          6 | 2021-06-23 |
-| United Kingdom | 2021-03-11  |          6 | 2021-09-01 |
+| United Kingdom | 2021-03-11  |          7 | 2021-09-13 |
 | India          | 2021-03-11  |          2 | 2021-04-02 |
 | Canada         | 2021-03-12  |          1 | 2021-03-12 |
+| France         | 2021-08-31  |          1 | 2021-08-31 |
 
 ![Overall trends S.Y453F](/overall_trends_figures/overall_trends_S.Y453F.png)
