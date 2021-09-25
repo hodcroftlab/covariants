@@ -305,6 +305,8 @@ bad_seqs = {
     "BurkinaFaso/CV1921/2020" : "2020-09-18", #delta
     "BurkinaFaso/CV1728/2020" : "2020-03-28", # 20A.484
     "USA/MS-USAFSAM-S3006/2020" : "2020-10-05", #21H
+    "Argentina/PAIS-A0964/2020" : "2020-07-22", #gamma
+    "Argentina/PAIS-A0965/2020" : "2020-08-01", #gamma
 
     #These are sequences submitted where collection date seems incorrect:
     #https://twitter.com/flodebarre/status/1414868236823318530
