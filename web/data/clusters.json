@@ -3418,6 +3418,24 @@
       "type": "do_not_display"
     },
     {
+      "build_name": "Delta.N.412R",
+      "cluster_data": [],
+      "col": "#b3d9ff",
+      "country_info": [],
+      "display_name": "Delta+N:412R",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.N.412R?c=gt-S_613",
+      "snps": [
+        2401,
+        23401,
+        26763,
+        29507
+      ],
+      "type": "do_not_display"
+    },
+    {
       "build_name": "Delta.299I",
       "cluster_data": [],
       "col": "#b3d9ff",
