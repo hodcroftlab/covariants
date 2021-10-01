@@ -307,6 +307,18 @@ bad_seqs = {
     "USA/MS-USAFSAM-S3006/2020" : "2020-10-05", #21H
     "Argentina/PAIS-A0964/2020" : "2020-07-22", #gamma
     "Argentina/PAIS-A0965/2020" : "2020-08-01", #gamma
+    "Spain/UN-ORC01380/2020" : "2020-03-26", #alpha
+    "USA/CA-ALSR-101973/2020" : "2020-07-11", #alpha
+    "USA/CA-ALSR-101984/2020" : "2020-07-11", #alpha
+    "USA/CA-ALSR-101987/2020" : "2020-07-08", #alpha
+    "USA/CA-ALSR-101991/2020" : "2020-07-08", #alpha
+    "USA/CA-ALSR-101999/2020" : "2020-07-08", #alpha
+    "USA/CA-ALSR-102007/2020" : "2020-07-08", #alpha
+    "USA/CA-ALSR-102015/2020" : "2020-07-09", #alpha
+    "USA/MN-MDH-13426/2020" : "2020-08-07", #delta
+    "USA/WI-WSLH-219155/2020" : "2020-08-12", #delta
+    "USA/WY-WYPHL-21070660/2020" : "2020-09-02", #delta
+
 
     #These are sequences submitted where collection date seems incorrect:
     #https://twitter.com/flodebarre/status/1414868236823318530
