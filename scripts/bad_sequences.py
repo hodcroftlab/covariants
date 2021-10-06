@@ -318,7 +318,8 @@ bad_seqs = {
     "USA/MN-MDH-13426/2020" : "2020-08-07", #delta
     "USA/WI-WSLH-219155/2020" : "2020-08-12", #delta
     "USA/WY-WYPHL-21070660/2020" : "2020-09-02", #delta
-
+    "USA/VI-Yale-10210/2020" : "2020-08-21", #delta
+    "USA/VI-Yale-10211/2020" : "2020-08-21", #delta
 
     #These are sequences submitted where collection date seems incorrect:
     #https://twitter.com/flodebarre/status/1414868236823318530
