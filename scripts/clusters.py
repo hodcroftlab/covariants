@@ -1285,6 +1285,44 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.250I?c=gt-S_250"
     },
 
+    "Delta.145H": { # OF1a:2529v + S:222V + S:145H (in some)
+        "snps": [22227, 17040, 7851], # 22227T (S:222V), 17040C (syn), 7851T (ORF1a:2529V)
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "important": False,
+        "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+145H",
+        "type": "do_not_display",
+        "build_name": "Delta.145H",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.145H?c=gt-S_145,222"
+    },
+
+    #AY.4.2 - up to 10% in UK - cornelius
+    "Delta.145H": { # OF1a:2529v + S:222V + S:145H (in some)
+        "snps": [22227, 17040, 7851], # 22227T (S:222V), 17040C (syn), 7851T (ORF1a:2529V)
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "important": False,
+        "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+145H",
+        "type": "do_not_display",
+        "build_name": "Delta.145H",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.145H?c=gt-S_145,222"
+    },
+
+    #AY.34 - possible rise Italy? - cornelius
+    "Delta.ORF1a3059F": { # 
+        "snps": [23593, 9441, 22498], # S:677H (23593C), ORF1a:3059F (9441T) nuc: C22498T , ####26109A, 26681T, 27014T
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "important": False,
+        "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+ORF1a3059F",
+        "type": "do_not_display",
+        "build_name": "Delta.ORF1a3059F",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.ORF1a3059F?c=gt-ORF1a_3059"
+    },
+
     #additional mutation builds with no pages (yet?)
 
     "S613": { #613H - 23401T
