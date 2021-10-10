@@ -2,24 +2,31 @@ These are the recent updates on CoVariants in reverse chronological order. For l
 
 ## 2021-10-11
 
+### Update of 'Per Variant' cluster threshold
+
+- Countries now have to have at least 400 sequences to appear in Per Variant plots
+
 ### Removed
 
-- 20A/S.126A (B.1.620). There is very little showing up anymore, though a couple in Switzerland end of Aug.
-- 20B/S.732A (B.1.1.519). A little bit of this continues in Mexico but I expect it will fade away.
-- B.1.1.318 (Prominent in Greece, small cluster in BL/BS 2 months ago)
-- B.1.619 (had resurgence in S Korea for a few months ago)
+- 20A/S.126A (B.1.620) builds. There is very little showing up anymore, though a couple in Switzerland end of Aug. (Graphing will continue)
+- 20B/S.732A (B.1.1.519) builds. A little bit of this continues in Mexico but it is expected to fade away. (Graphing will continue)
+
 
 ## 2021-09-16
 
 ### Added
 
-- New data in from Brazil, Chile, Peru - all seeming to jive with continuing expansion of Delta
+- New data in from Brazil, Chile, Peru - all seem to match with continuing expansion of Delta
 
 ## 2021-09-02
 
 ### Removed
 
 - P.2 from the mutation comparison
+- Epsilon builds - no samples since end of July (Graphing will continue)
+- 20A.EU2 builds - no samples since July (Graphing will continue)
+- 20A/S:439K - no samples since June (Graphing will continue)
+- 20A/S:98F - no samples since July (Graphing will continue)
 
 ## 2021-01-28
 
