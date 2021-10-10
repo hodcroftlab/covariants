@@ -1,6 +1,6 @@
 {
   "Angola": {
-    "c": "#fb9a99",
+    "c": "#1f78b4",
     "ls": "dotted"
   },
   "Argentina": {
@@ -20,7 +20,7 @@
     "ls": "--"
   },
   "Bahrain": {
-    "c": "#ff66ff",
+    "c": "#b15928",
     "ls": "dotted"
   },
   "Bangladesh": {
@@ -32,7 +32,7 @@
     "ls": "-"
   },
   "Bonaire": {
-    "c": "#000000",
+    "c": "#ff66ff",
     "ls": "dotted"
   },
   "Botswana": {
@@ -64,7 +64,7 @@
     "ls": "--"
   },
   "Costa Rica": {
-    "c": "#990000",
+    "c": "#b2df8a",
     "ls": "dotted"
   },
   "Croatia": {
@@ -84,15 +84,15 @@
     "ls": "-"
   },
   "Ecuador": {
-    "c": "#1f78b4",
-    "ls": "dotted"
-  },
-  "Egypt": {
-    "c": "#a6a6a6",
+    "c": "#fdbf6f",
     "ls": "-."
   },
   "Estonia": {
     "c": "#b15928",
+    "ls": "-."
+  },
+  "Fiji": {
+    "c": "#0099ff",
     "ls": "-."
   },
   "Finland": {
@@ -144,11 +144,11 @@
     "ls": "-."
   },
   "Kenya": {
-    "c": "#a6cee3",
-    "ls": "dotted"
+    "c": "#a6a6a6",
+    "ls": "-."
   },
   "Kosovo": {
-    "c": "#a6a6a6",
+    "c": "#990000",
     "ls": "dotted"
   },
   "Latvia": {
@@ -156,7 +156,7 @@
     "ls": "--"
   },
   "Lebanon": {
-    "c": "#b2df8a",
+    "c": "#ff7f00",
     "ls": "dotted"
   },
   "Lithuania": {
@@ -175,36 +175,28 @@
     "c": "#e31a1c",
     "ls": "-."
   },
-  "Mozambique": {
-    "c": "#fdbf6f",
-    "ls": "-."
-  },
   "Netherlands": {
     "c": "#33a02c",
     "ls": "-"
   },
   "New Zealand": {
-    "c": "#b15928",
+    "c": "#cab2d6",
     "ls": "dotted"
   },
   "Nigeria": {
     "c": "#000000",
     "ls": "--"
   },
-  "North Macedonia": {
-    "c": "#cab2d6",
-    "ls": "dotted"
-  },
   "Norway": {
     "c": "#fb9a99",
     "ls": "-"
   },
   "Pakistan": {
-    "c": "#0000ff",
+    "c": "#9900cc",
     "ls": "dotted"
   },
   "Peru": {
-    "c": "#ff7f00",
+    "c": "#fb9a99",
     "ls": "dotted"
   },
   "Philippines": {
@@ -236,7 +228,7 @@
     "ls": "-"
   },
   "Sint Maarten": {
-    "c": "#33a02c",
+    "c": "#a6cee3",
     "ls": "dotted"
   },
   "Slovakia": {
@@ -264,7 +256,7 @@
     "ls": "-."
   },
   "Suriname": {
-    "c": "#9900cc",
+    "c": "#6a3d9a",
     "ls": "dotted"
   },
   "Sweden": {
@@ -280,7 +272,7 @@
     "ls": "-"
   },
   "Trinidad and Tobago": {
-    "c": "#e31a1c",
+    "c": "#33a02c",
     "ls": "dotted"
   },
   "Turkey": {
@@ -292,15 +284,11 @@
     "ls": "-"
   },
   "Uganda": {
-    "c": "#6a3d9a",
+    "c": "#e31a1c",
     "ls": "dotted"
   },
   "United Kingdom": {
     "c": "#1f78b4",
     "ls": "-"
-  },
-  "Zimbabwe": {
-    "c": "#0099ff",
-    "ls": "-."
   }
 }
