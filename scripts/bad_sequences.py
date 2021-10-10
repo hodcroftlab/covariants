@@ -157,6 +157,10 @@ bad_seqs = {
     "Belgium/LHUB11590048/2020" : "2020-03-31",
     'bat/Yunnan/RaTG13/2013'    : "2013-07-24", #this is RatG13 - legit, but looks weird in table
     'bat/Yunnan/RmYN02/2019'    : "2019-06-25", # bat sequence - legit but looks weird
+    "Morocco/INH-107/2020" : "2020-02-02", 
+    "Morocco/INH-108/2020" : "2020-02-02", 
+    "Morocco/INH-109/2020" : "2020-02-02", 
+    "bat/Yunnan/RmYN01/2019" : "2019-06-25", 
 
     # these are all before expected cluster start date:
     "Canada/NS-NML-2284/2020" : "2020-05-14",
@@ -320,6 +324,58 @@ bad_seqs = {
     "USA/WY-WYPHL-21070660/2020" : "2020-09-02", #delta
     "USA/VI-Yale-10210/2020" : "2020-08-21", #delta
     "USA/VI-Yale-10211/2020" : "2020-08-21", #delta
+    "USA/TX-HMH-MCoV-40926/2020" : "2020-07-22", #alpha
+    "USA/TX-HMH-MCoV-40929/2020" : "2020-07-22", #alpha
+    "Vanuatu/VAN003/2020" : "2020-04-17", #alpha
+    "Rwanda/CV2217/2020" : "2020-06-04", #beta
+    "England/MILK-1FF99A3/2020" : "2020-04-16", #delta
+    "England/MILK-1FF99C1/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9A19/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9A37/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9A46/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9A64/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9A82/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9ABF/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9ADD/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9B43/2020" : "2020-04-19", #delta
+    "England/MILK-1FF9B8F/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9BE9/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9D6B/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9DA7/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9DC5/2020" : "2020-04-18", #delta
+    "England/MILK-1FF9DD4/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9DF2/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9FB0/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9FDE/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9FFC/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA034/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA061/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA0BC/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA131/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA17D/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA19B/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA1B9/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA1D7/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA25C/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA2A7/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA30E/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA359/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA438/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA492/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA4B0/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA4ED/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA4FC/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA508/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA526/2020" : "2020-04-16", #delta
+    "Fiji/FJ493/2020" : "2020-08-25", #delta
+    "Rwanda/CV2197/2020" : "2020-09-10", #delta
+    "USA/ND-NDDH-4397/2020" : "2020-09-09", #delta
+    "USA/WV-WVU-WV121217/2020" : "2020-07-21", #delta
+    "Sudan/N6667/2020" : "2020-10-04", #eta
+    "Colombia/DC-Mx263_sarscov2/2020" : "2020-09-19", #21H
+    "Colombia/DC-Mx318_sarscov2/2020" : "2020-10-06", #21H
+    "Morocco/INH-101/2020" : "2020-02-02", #S98
+    "Morocco/INH-105/2020" : "2020-02-02", #S98
 
     #These are sequences submitted where collection date seems incorrect:
     #https://twitter.com/flodebarre/status/1414868236823318530
