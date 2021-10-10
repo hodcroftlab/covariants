@@ -538,11 +538,11 @@ clusters = {
         },
     },
 
-    # B.1.1.519 - build only
+    # B.1.1.519 - builds turned of 11 Oct, graphing continues
     "20BS732": {
         "snps": [10029, 23756, 21306], #ORF1a  3255 (10029T)   S: 732 (23756G) nuc 21306T
         "cluster_data": [],  
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -584,11 +584,11 @@ clusters = {
         },
     },
 
-    #B.1.620 20A/S:126A
+    #B.1.620 20A/S:126A - builds turned off 11 Oct, graphing continues
     "20AS126": {
         "snps": [21939, 1473, 6236], #S: 126 (21939C)  #ORF1a: 403 (1473T), 1991 (6236A)
         "cluster_data": [],  
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -1249,43 +1249,17 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Mockingbird?c=gt-S_677&f_country=USA",
     },
 
-    #B.1.1.318 - prominent in Greece
-    "S796": {'snps': [23604,23948,9072], #A/C/T
-    "cluster_data": [], 
-    "build_name": "20B.S.796H", 
-    "display_name": "20B/S:796H",
-    "nextstrain_build": True, 
-    "graphing": False, 
-    "important": False,
-    "type": "do_not_display",
-    "country_info": [],
-    "col": "#b3d9ff",
-    "nextstrain_url": ""},
-
-    #B.1.619 - recent expansion in S Korea
-    "S210": {'snps': [8311,9319], #T/T
-    "cluster_data": [], 
-    "build_name": "20A.S.210T", 
-    "display_name": "20A/S:210T",
-    "nextstrain_build": True, 
-    "graphing": False, 
-    "important": False,
-    "type": "do_not_display",
-    "country_info": [],
-    "col": "#b3d9ff",
-    "nextstrain_url": ""},
-
-    "Delta.N.412R": { # 613 cluster expanding in canada?
-        "snps": [2401,23401,26763,29507], #ORF1a: 712Q (2401A), S: 613H (23401T), M: 81S (26763T), N: 412R (29507C)
-        "cluster_data": [],
-        "nextstrain_build": True,
-        "graphing": False,
-        "important": False,
-        "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+N:412R",
-        "type": "do_not_display",
-        "build_name": "Delta.N.412R",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.N.412R?c=gt-S_613"
-    },
+#    "Delta.N.412R": { # 613 cluster expanding in canada? #stopped 11 Oct 21
+#        "snps": [2401,23401,26763,29507], #ORF1a: 712Q (2401A), S: 613H (23401T), M: 81S (26763T), N: 412R (29507C)
+#        "cluster_data": [],
+#        "nextstrain_build": True,
+#        "graphing": False,
+#        "important": False,
+#        "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+N:412R",
+#        "type": "do_not_display",
+#        "build_name": "Delta.N.412R",
+#        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.N.412R?c=gt-S_613"
+#    },
 
     "Delta.299I": { # "AY.33" - has Spike T29A, T250I, T299I and Q613H
         "snps": [4181,21647,22311,22458,23401], #ORF1a: 1306S (4181T), S: 29A (21647G), 250I (22311T), 299I (22458T), 613H (23401T)
@@ -1309,7 +1283,91 @@ clusters = {
         "type": "do_not_display",
         "build_name": "Delta.250I",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.250I?c=gt-S_250"
-    }
+    },
+
+    #additional mutation builds with no pages (yet?)
+
+    "S613": { #613H - 23401T
+        "snps": [23401],
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "type": "mutation",
+        "important": False,
+        "country_info": [],
+        "col": "#ff8080",
+        "display_name": "S:Q613",
+        "build_name": "S.Q613",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q613?c=gt-S_613",  # color
+    },
+    "S_222": { #S.A222V - 22227T
+        "snps": [22227],
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "type": "mutation",
+        "important": False,
+        "country_info": [],
+        "col": "#ff8080",
+        "display_name": "S:A222",
+        "build_name": "S.A222",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.A222?c=gt-S_222",  # color
+    },
+    "S145": { #S.Y145H - 21995C
+        "snps": [21995],
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "type": "mutation",
+        "important": False,
+        "country_info": [],
+        "col": "#ff8080",
+        "display_name": "S:Y145",
+        "build_name": "S.Y145",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y145?c=gt-S_145",  # color
+    },
+    "S572": { #S.T572I - 23277T
+        "snps": [23277],
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "type": "mutation",
+        "important": False,
+        "country_info": [],
+        "col": "#ff8080",
+        "display_name": "S:T572",
+        "build_name": "S.T572",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.T572?c=gt-S_572",  # color
+    },
+    
+    #B.1.1.318 - prominent in Greece
+    # Turned off 11 Oct 2021 as few recent sequences
+#    "S796": {'snps': [23604,23948,9072], #A/C/T
+#    "cluster_data": [], 
+#    "build_name": "20B.S.796H", 
+#    "display_name": "20B/S:796H",
+#    "nextstrain_build": True, 
+#    "graphing": False, 
+#    "important": False,
+#    "type": "do_not_display",
+#    "country_info": [],
+#    "col": "#b3d9ff",
+#    "nextstrain_url": ""},
+
+    #B.1.619 - recent expansion in S Korea
+    # Turned off 11 Oct 2021 as few recent sequences
+#    "S210": {'snps': [8311,9319], #T/T
+#    "cluster_data": [], 
+#    "build_name": "20A.S.210T", 
+#    "display_name": "20A/S:210T",
+#    "nextstrain_build": False, 
+#    "graphing": False, 
+#    "important": False,
+#    "type": "do_not_display",
+#    "country_info": [],
+#    "col": "#b3d9ff",
+#    "nextstrain_url": ""},
+
 
     #"21H.417": { #21H + 417
     #    "snps": [22599, 4878, 17491, 22813], #S 346 (22599A)  ORF1a: 1538 (4878T) nuc: 17491T, S:417
