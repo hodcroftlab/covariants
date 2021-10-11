@@ -196,7 +196,7 @@ const components = {
   wrapper: MarkdownWrapper,
 }
 
-export function ChangelogButton({ children, ...props }: PropsWithChildren<unknown>) {
+export function ChangelogButton({ children, ...props }: PropsWithChildren<ButtonProps>) {
   const [showChangelog, setShowChangelog] = useState(false)
 
   function toggleOpen() {
