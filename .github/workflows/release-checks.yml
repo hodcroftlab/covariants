@@ -1,0 +1,29 @@
+name: Release checks
+
+on:
+  push:
+    branches:
+      - release-checks
+  pull_request:
+    branches:
+      - release-checks
+
+jobs:
+  Release-Checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: "Get changed files"
+        id: changed-files
+        uses: tj-actions/changed-files@v10
+
+      - name: "If CHANGELOG.md is not changed, send a Slack notification"
+        if: "!contains(steps.changed-files.outputs.modified_files , 'CHANGELOG.md')"
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_TITLE: "Changelog"
+          SLACK_MESSAGE: "Hi @Emma, this is your CoVariants bot 🤖. It looks like you've pushed another release, but did not update the CHANGELOG.md. I thought I'd mention that. Apologies if you did already. In any case, not a big deal! Also, here is an image of a dog: https://dog.ceo/api/breeds/image/random. Bip-bop!"
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
