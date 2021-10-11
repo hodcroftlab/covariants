@@ -3,10 +3,10 @@ name: Release checks
 on:
   push:
     branches:
-      - release-checks
+      - release
   pull_request:
     branches:
-      - release-checks
+      - release
 
 jobs:
   Release-Checks:
