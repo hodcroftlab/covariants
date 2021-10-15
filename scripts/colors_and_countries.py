@@ -202,6 +202,8 @@ country_list_4 = [
     "Pakistan",             #11
     "Kosovo",               #12
     "Bonaire",              #13
+    "Guadeloupe",           #14
+    "Papua New Guinea",     #15
 ]
 
 country_styles_1 = {
