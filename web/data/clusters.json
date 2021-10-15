@@ -3421,6 +3421,40 @@
       "type": "do_not_display"
     },
     {
+      "build_name": "Delta.145H",
+      "cluster_data": [],
+      "col": "#b3d9ff",
+      "country_info": [],
+      "display_name": "Delta+145H",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.145H?c=gt-S_145,222",
+      "snps": [
+        22227,
+        17040,
+        7851
+      ],
+      "type": "do_not_display"
+    },
+    {
+      "build_name": "Delta.ORF1a3059F",
+      "cluster_data": [],
+      "col": "#b3d9ff",
+      "country_info": [],
+      "display_name": "Delta+ORF1a3059F",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.ORF1a3059F?c=gt-ORF1a_3059",
+      "snps": [
+        23593,
+        9441,
+        22498
+      ],
+      "type": "do_not_display"
+    },
+    {
       "build_name": "S.Q613",
       "cluster_data": [],
       "col": "#ff8080",
