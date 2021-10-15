@@ -1285,18 +1285,6 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.250I?c=gt-S_250"
     },
 
-    "Delta.145H": { # OF1a:2529v + S:222V + S:145H (in some)
-        "snps": [22227, 17040, 7851], # 22227T (S:222V), 17040C (syn), 7851T (ORF1a:2529V)
-        "cluster_data": [],
-        "nextstrain_build": True,
-        "graphing": False,
-        "important": False,
-        "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+145H",
-        "type": "do_not_display",
-        "build_name": "Delta.145H",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.145H?c=gt-S_145,222"
-    },
-
     #AY.4.2 - up to 10% in UK - cornelius
     "Delta.145H": { # OF1a:2529v + S:222V + S:145H (in some)
         "snps": [22227, 17040, 7851], # 22227T (S:222V), 17040C (syn), 7851T (ORF1a:2529V)
