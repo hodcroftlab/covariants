@@ -376,10 +376,100 @@ bad_seqs = {
     "Colombia/DC-Mx318_sarscov2/2020" : "2020-10-06", #21H
     "Morocco/INH-101/2020" : "2020-02-02", #S98
     "Morocco/INH-105/2020" : "2020-02-02", #S98
-
+    "USA/IN-ISDHQ397/2020" : "2020-04-23", #alpha
+    "USA/TX-HMH-MCoV-44272/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45474/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45482/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45578/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45753/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-47089/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-47116/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-47370/2020" : "2020-07-30", #alpha
+    "USA/TX-HMH-MCoV-39835/2020" : "2020-08-06", #alpha
+    "USA/TX-HMH-MCoV-44274/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45478/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45481/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45754/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45758/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45768/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-47118/2020" : "2020-07-31", #alpha
+    "USA/NY-MSHSPSP-PV21126/2020" : "2020-10-11", # 20C/S484
+    "USA/NY-MSHSPSP-PV21129/2020" : "2020-10-10", # 20C/S484
+    "USA/NY-MSHSPSP-PV21166/2020" : "2020-10-09", # 20C/S484
+    "USA/NY-MSHSPSP-PV21203/2020" : "2020-10-13", # 20C/S484
 
     #bunch of bad sequences from the UK which are supposedly Delta,
     #from April 2020...
+    "USA/CA-LACPHL-AF03229/2020" : "2020-08-12",
+    "USA/ID-IBL-638513/2020" : "2020-08-03",
+    "England/MILK-202F06F/2020" : "2020-04-17",
+    "England/MILK-2018157/2020" : "2020-04-17",
+    "England/MILK-2018193/2020" : "2020-04-17",
+    "England/MILK-20182CD/2020" : "2020-04-17",
+    "England/MILK-2018333/2020" : "2020-04-18",
+    "England/MILK-2018351/2020" : "2020-04-17",
+    "England/MILK-20183AC/2020" : "2020-04-19",
+    "England/MILK-20183D9/2020" : "2020-04-17",
+    "England/MILK-2018412/2020" : "2020-04-17",
+    "England/MILK-20184D6/2020" : "2020-04-18",
+    "England/MILK-2018500/2020" : "2020-04-18",
+    "England/MILK-20185D3/2020" : "2020-04-18",
+    "England/MILK-20186A3/2020" : "2020-04-18",
+    "England/MILK-202E7A7/2020" : "2020-04-17",
+    "England/MILK-202E877/2020" : "2020-04-17",
+    "England/MILK-202E8E0/2020" : "2020-04-17",
+    "England/MILK-202E91A/2020" : "2020-04-17",
+    "England/MILK-202E956/2020" : "2020-04-17",
+    "England/MILK-202E992/2020" : "2020-04-17",
+    "England/MILK-202E9ED/2020" : "2020-04-17",
+    "England/MILK-202EA17/2020" : "2020-04-17",
+    "England/MILK-202EA53/2020" : "2020-04-17",
+    "England/MILK-202EA62/2020" : "2020-04-17",
+    "England/MILK-202EABD/2020" : "2020-04-17",
+    "England/MILK-202EB05/2020" : "2020-04-17",
+    "England/MILK-202EB41/2020" : "2020-04-17",
+    "England/MILK-202EB8D/2020" : "2020-04-17",
+    "England/MILK-202EC3F/2020" : "2020-04-17",
+    "England/MILK-202EC5D/2020" : "2020-04-17",
+    "England/MILK-202EC6C/2020" : "2020-04-17",
+    "England/MILK-202EC7B/2020" : "2020-04-17",
+    "England/MILK-202EC99/2020" : "2020-04-17",
+    "England/MILK-202ED0F/2020" : "2020-04-17",
+    "England/MILK-202ED96/2020" : "2020-04-17",
+    "England/MILK-202EDB4/2020" : "2020-04-17",
+    "England/MILK-202EDF0/2020" : "2020-04-17",
+    "England/MILK-202EE75/2020" : "2020-04-17",
+    "England/MILK-202EE84/2020" : "2020-04-17",
+    "England/MILK-202EEA2/2020" : "2020-04-17",
+    "England/MILK-202EEEE/2020" : "2020-04-17",
+    "England/MILK-202EF09/2020" : "2020-04-17",
+    "England/MILK-202EF18/2020" : "2020-04-17",
+    "England/MILK-202EF45/2020" : "2020-04-19",
+    "England/MILK-202EF54/2020" : "2020-04-17",
+    "England/MILK-202EF90/2020" : "2020-04-17",
+    "England/MILK-202EFAF/2020" : "2020-04-17",
+    "England/MILK-202F014/2020" : "2020-04-17",
+    "England/MILK-202F023/2020" : "2020-04-17",
+    "England/MILK-202F032/2020" : "2020-04-17",
+    "England/MILK-202F041/2020" : "2020-04-17",
+    "England/MILK-202F050/2020" : "2020-04-17",
+    "England/MILK-202F0C9/2020" : "2020-04-17",
+    "England/MILK-202F0D8/2020" : "2020-04-17",
+    "England/MILK-202F0E7/2020" : "2020-04-17",
+    "England/MILK-202F14E/2020" : "2020-04-17",
+    "England/MILK-202F15D/2020" : "2020-04-17",
+    "England/MILK-202F16C/2020" : "2020-04-17",
+    "England/MILK-202F17B/2020" : "2020-04-17",
+    "England/MILK-202F1D5/2020" : "2020-04-17",
+    "England/MILK-202F1F3/2020" : "2020-04-17",
+    "England/MILK-202F23C/2020" : "2020-04-17",
+    "England/MILK-202F24B/2020" : "2020-04-17",
+    "England/MILK-202F278/2020" : "2020-04-17",
+    "England/MILK-202F287/2020" : "2020-04-17",
+    "England/MILK-202F296/2020" : "2020-04-17",
+    "England/MILK-202F30C/2020" : "2020-04-17",
+    "England/MILK-202F32A/2020" : "2020-04-17",
+    "England/MILK-20181C0/2020" : "2020-04-17",
     "England/MILK-1FFA395/2020" : "2020-04-16",
     "England/MILK-1FFBC5D/2020" : "2020-04-20",
     "England/MILK-1FFC8FE/2020" : "2020-04-17",
