@@ -197,6 +197,7 @@ clusters = {
         "col": "#66A366",
         "display_name": "21A (Delta)",
         "alt_display_name": ["21A/S:478K"],
+        "other_nextstrain_names": ["21A (Delta)","21J (Delta)","21I (Delta)"],
         "build_name": "21A.Delta",
         "old_build_names": ["21A.S.478K"],
         "who_name": ["Delta"],

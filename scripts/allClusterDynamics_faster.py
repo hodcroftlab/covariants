@@ -394,7 +394,13 @@ for clus in [x for x in clus_to_run if x != "mink"]:
     wanted_seqs = clus_data["wanted_seqs"]
 
     # Use Nextclade
-    if display_name in official_clades:
+    if "other_nextstrain_names" in clus_data:
+        next_names = clus_data["other_nextstrain_names"]
+        for next_na in next_names:
+            next_assign = meta[meta["Nextstrain_clade"].apply(lambda x: x == next_na)]
+            wanted_seqs.extend(list(next_assign.strain))
+
+    elif display_name in official_clades:
         next_assign = meta[meta["Nextstrain_clade"].apply(lambda x: x == display_name)]
         wanted_seqs.extend(list(next_assign.strain))
 
@@ -416,6 +422,9 @@ for clus in [x for x in clus_to_run if x != "mink"]:
         if gaps:
             founds = muts.loc[muts.gap_pos.apply(lambda x: all((p in x) for p in gaps) & all((p not in x) for p in exclude_snps)),'Unnamed: 0']
             wanted_seqs.extend(founds)
+
+    #dedup
+    wanted_seqs = list(set(wanted_seqs))
 
 
 t1 = time.time()
