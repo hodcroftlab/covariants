@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 
 import { useRouter } from 'next/router'
 import { ClusterButtonPanelLayout } from 'src/components/ClusterButtonPanel/ClusterButtonPanelLayout'
+import { MutationCountsSummary } from 'src/components/MutationCounts/MutationCountsSummary'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 
@@ -99,6 +100,12 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
     <FlexContainer>
       <FlexGrowing>
         <EditableClusterContent githubUrl={`blob/master/content/clusters/${currentCluster.build_name}.md`}>
+          <Row noGutters>
+            <Col>
+              <MutationCountsSummary currentCluster={currentCluster} />
+            </Col>
+          </Row>
+
           <Row noGutters className="mb-3">
             <Col className="d-flex w-100">
               {currentCluster.nextstrain_url ? (
