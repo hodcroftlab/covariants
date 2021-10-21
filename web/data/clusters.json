@@ -3472,7 +3472,7 @@
       "snps": [
         23401
       ],
-      "type": "mutation"
+      "type": "do_not_display"
     },
     {
       "build_name": "S.A222",
@@ -3487,7 +3487,7 @@
       "snps": [
         22227
       ],
-      "type": "mutation"
+      "type": "do_not_display"
     },
     {
       "build_name": "S.Y145",
@@ -3502,7 +3502,7 @@
       "snps": [
         21995
       ],
-      "type": "mutation"
+      "type": "do_not_display"
     },
     {
       "build_name": "S.T572",
@@ -3517,7 +3517,7 @@
       "snps": [
         23277
       ],
-      "type": "mutation"
+      "type": "do_not_display"
     }
   ]
 }
