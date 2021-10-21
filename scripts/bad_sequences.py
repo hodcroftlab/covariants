@@ -397,6 +397,17 @@ bad_seqs = {
     "USA/NY-MSHSPSP-PV21129/2020" : "2020-10-10", # 20C/S484
     "USA/NY-MSHSPSP-PV21166/2020" : "2020-10-09", # 20C/S484
     "USA/NY-MSHSPSP-PV21203/2020" : "2020-10-13", # 20C/S484
+    "Pakistan/UOL-IMBB-KKU-25/2021" : "2021-10-22", #future date
+    "Pakistan/UOL-IMBB-KKU-26/2021" : "2021-10-23", #future date
+    "England/PHEP-YYBYUTJ/2020" : "2020-08-03", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0168/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0169/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0170/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0172/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0200/2020" : "2020-07-29", #delta
+    "USA/CA-SEARCH-109796/2020" : "2020-08-31", #delta
+    "USA/TX-HMH-MCoV-48794/2020" : "2020-07-15", #delta
+    "USA/TX-HMH-MCoV-49501/2020" : "2020-07-13", #delta
 
     #bunch of bad sequences from the UK which are supposedly Delta,
     #from April 2020...
