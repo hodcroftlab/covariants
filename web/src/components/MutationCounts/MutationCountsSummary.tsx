@@ -14,7 +14,8 @@ import styled from 'styled-components'
 const NUM_ROWS_IN_MUTATION_COUNTS_SUMMARY = 20
 
 export const Table = styled(TableSlim)`
-  max-width: 500px;
+  max-width: 350px;
+  margin: auto;
 `
 
 export function formatError(error: unknown) {
@@ -37,8 +38,8 @@ export function MutationCountsSummaryRow({ total, counts }: MutationCountsSummar
       <td>
         <AminoacidMutationBadge mutation={counts.mut} />
       </td>
-      <td>{counts.count}</td>
-      <td>{freq}</td>
+      <td className="text-right">{counts.count}</td>
+      <td className="text-right">{freq}</td>
     </tr>
   )
 }
@@ -75,38 +76,48 @@ export function MutationCountsSummary({ currentCluster }: MutationCountsSummaryP
   return (
     <Row noGutters>
       <Col>
-        <div>
-          <h5 className="d-inline">{'Mutation counts summary '}</h5>
-          <span>{'('}</span>
-          <span>
-            <Link href="/">{'Details'}</Link>
-          </span>
-          <span>{')'}</span>
-        </div>
+        <Row noGutters>
+          <Col>
+            <h5 className="text-center mb-2">
+              <span className="d-inline">{'Mutation counts summary '}</span>
+              <span className="small">
+                <span>{'('}</span>
+                <span>
+                  <Link href="/">{'Details'}</Link>
+                </span>
+                <span>{')'}</span>
+              </span>
+            </h5>
+          </Col>
+        </Row>
 
-        {data && (
-          <Table>
-            <thead>
-              <tr>
-                <th>{'Mutation'}</th>
-                <th>{'Count'}</th>
-                <th>{'Frequency'}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.counts.map((counts) => (
-                <MutationCountsSummaryRow key={counts.key} counts={counts} total={data.total} />
-              ))}
-            </tbody>
-          </Table>
-        )}
-        {isLoading && <div>{'Loading...'}</div>}
-        {isError && (
-          <div>
-            <div>{`Mutation counts are not yet available`}</div>
-            <div className="text-danger">{process.env.NODE_ENV === 'development' && formatError(error)}</div>
-          </div>
-        )}
+        <Row noGutters>
+          <Col className="d-flex">
+            {data && (
+              <Table striped>
+                <thead>
+                  <tr>
+                    <th className="text-center">{'Mutation'}</th>
+                    <th className="text-center">{'Count'}</th>
+                    <th className="text-center">{'Frequency'}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.counts.map((counts) => (
+                    <MutationCountsSummaryRow key={counts.key} counts={counts} total={data.total} />
+                  ))}
+                </tbody>
+              </Table>
+            )}
+            {isLoading && <div className="mx-auto">{'Loading...'}</div>}
+            {isError && (
+              <div className="mx-auto">
+                <div>{`Mutation counts are not yet available`}</div>
+                <div className="text-danger">{process.env.NODE_ENV === 'development' && formatError(error)}</div>
+              </div>
+            )}
+          </Col>
+        </Row>
       </Col>
     </Row>
   )
