@@ -76,14 +76,14 @@ jobs:
           name: "Deploy html files to AWS S3 (branch << pipeline.git.branch >>)"
           command: |
             cd web/.build/production/web
-            find * -type f -name "*.html" -exec bash -c '\
-            aws s3 cp \
-              --content-type "text/html" \
-              --cache-control "no-cache" \
-              --metadata-directive REPLACE \
-                $1 \
-                s3://${AWS_S3_BUCKET}/${1%.html}' \
-            - "{}" \;
+            find * -type f -name "*.html" -print0 | xargs -0 -P4 -n1 -I '{}' -- bash -c '\
+              file={}; \
+              aws s3 cp \
+                --content-type "text/html" \
+                --cache-control "no-cache" \
+                --metadata-directive REPLACE \
+                  $file \
+                  s3://${AWS_S3_BUCKET}/${file%.html}'
 
       - run:
           name: "Invalidate AWS Cloudfront cache for the app"
