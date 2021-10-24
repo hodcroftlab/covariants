@@ -22,7 +22,9 @@ jobs:
       PROD_ENABLE_REDUX_DEV_TOOLS: 0
 
     steps:
-      - git-shallow-clone/checkout
+      - git-shallow-clone/checkout:
+          depth: 1
+          fetch_depth: 1
 
       - restore_cache:
           name: "Restore web application build cache"
@@ -56,7 +58,7 @@ jobs:
       - run:
           name: "Clear AWS S3 bucket (branch << pipeline.git.branch >>): html files, web root, app bundle"
           command: |
-            aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "proteins/" --exclude "acknowledgements/"
+            aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "proteins/*" --exclude "acknowledgements/*"
 
       - run:
           name: "Deploy to AWS S3 (branch << pipeline.git.branch >>): app bundle"
