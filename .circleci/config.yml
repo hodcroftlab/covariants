@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  git-shallow-clone: guitarrapc/git-shallow-clone@2.3.0
+
 major_branches_only: &major_branches_only
   filters:
     branches:
@@ -19,10 +22,7 @@ jobs:
       PROD_ENABLE_REDUX_DEV_TOOLS: 0
 
     steps:
-      - run:
-          name: "Checkout code (depth 1, branch << pipeline.git.branch >>)"
-          command: |
-            ./web/tools/circleci-git-clone-shallow.sh
+      - git-shallow-clone/checkout
 
       - restore_cache:
           name: "Restore web application build cache"
