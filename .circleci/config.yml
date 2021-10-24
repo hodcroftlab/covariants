@@ -65,7 +65,12 @@ jobs:
           name: "Deploy web root to AWS S3 (branch << pipeline.git.branch >>)"
           command: |
             cd web/.build/production/web
-            aws s3 cp --recursive --exclude "_next/*" --exclude "*.html" "./" "s3://${AWS_S3_BUCKET}/"
+            aws s3 cp --recursive \
+              --exclude "_next/*" \
+              --exclude "*.html" \
+              --exclude "acknowledgements/*" \
+              --exclude "proteins/*" \
+            "./" "s3://${AWS_S3_BUCKET}/"
 
       - run:
           name: "Deploy html files to AWS S3 (branch << pipeline.git.branch >>)"
@@ -81,11 +86,27 @@ jobs:
             - "{}" \;
 
       - run:
-          name: "Invalidate AWS Cloudfront cache"
+          name: "Invalidate AWS Cloudfront cache for the app"
           command: |
             aws cloudfront create-invalidation \
               --distribution-id ${AWS_CLOUDFRONT_DISTRIBUTION_ID} \
               --paths "/*"
+
+      - run:
+          name: "Deploy large files to AWS S3 (branch << pipeline.git.branch >>)"
+          command: |
+            cd web/.build/production/web
+            aws s3 cp --recursive --cache-control "max-age=7200, public" --metadata-directive REPLACE \
+              "acknowledgements/" \
+              "proteins/" \
+              "s3://${AWS_S3_BUCKET}/"
+
+      - run:
+          name: "Invalidate AWS Cloudfront cache for large static files"
+          command: |
+            aws cloudfront create-invalidation \
+              --distribution-id ${AWS_CLOUDFRONT_DISTRIBUTION_ID} \
+              --paths "/acknowledgements/*" "/proteins/*"
 
 workflows:
   version: 2
