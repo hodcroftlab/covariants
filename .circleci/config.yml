@@ -53,7 +53,7 @@ jobs:
       - run:
           name: "Clear AWS S3 bucket (branch << pipeline.git.branch >>)"
           command: |
-            aws s3 rm s3://${AWS_S3_BUCKET} --recursive
+            aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "proteins/" "acknowledgements/"
 
       - run:
           name: "Deploy web bundle to AWS S3 (branch << pipeline.git.branch >>)"
@@ -91,6 +91,11 @@ jobs:
             aws cloudfront create-invalidation \
               --distribution-id ${AWS_CLOUDFRONT_DISTRIBUTION_ID} \
               --paths "/*"
+
+      - run:
+          name: "Clear AWS S3 bucket (branch << pipeline.git.branch >>)"
+          command: |
+            aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "*" --include "proteins/" --include "acknowledgements/"
 
       - run:
           name: "Deploy large files to AWS S3 (branch << pipeline.git.branch >>)"
