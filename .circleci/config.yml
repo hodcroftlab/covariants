@@ -96,10 +96,8 @@ jobs:
           name: "Deploy large files to AWS S3 (branch << pipeline.git.branch >>)"
           command: |
             cd web/.build/production/web
-            aws s3 cp --recursive --cache-control "max-age=7200, public" --metadata-directive REPLACE \
-              "acknowledgements/" \
-              "proteins/" \
-              "s3://${AWS_S3_BUCKET}/"
+            aws s3 cp --recursive --cache-control "max-age=7200, public" --metadata-directive REPLACE "proteins/" "s3://${AWS_S3_BUCKET}/proteins/"
+            aws s3 cp --recursive --cache-control "max-age=7200, public" --metadata-directive REPLACE "acknowledgements/" "s3://${AWS_S3_BUCKET}/acknowledgements/"
 
       - run:
           name: "Invalidate AWS Cloudfront cache for large static files"
