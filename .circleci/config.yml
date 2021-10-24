@@ -22,7 +22,7 @@ jobs:
       - run:
           name: "Checkout code (depth 1, branch << pipeline.git.branch >>)"
           command: |
-            git clone --depth 1 --branch "${CIRCLE_BRANCH}" "${CIRCLE_REPOSITORY_URL}"
+            ./web/tools/circleci-git-clone-shallow.sh
 
       - restore_cache:
           name: "Restore web application build cache"
