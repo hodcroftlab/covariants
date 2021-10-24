@@ -53,7 +53,7 @@ jobs:
       - run:
           name: "Clear AWS S3 bucket (branch << pipeline.git.branch >>)"
           command: |
-            aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "proteins/" "acknowledgements/"
+            aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "proteins/" --exclude "acknowledgements/"
 
       - run:
           name: "Deploy web bundle to AWS S3 (branch << pipeline.git.branch >>)"
