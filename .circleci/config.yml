@@ -19,7 +19,10 @@ jobs:
       PROD_ENABLE_REDUX_DEV_TOOLS: 0
 
     steps:
-      - checkout
+      - run:
+          name: "Checkout code (depth=1)"
+          command: |
+            git clone --depth 1 --branch "${CIRCLE_BRANCH}" "${CIRCLE_REPOSITORY_URL}"
 
       - restore_cache:
           name: "Restore web application build cache"
