@@ -38,7 +38,11 @@ figure_only_path = "../covariants/figures/"
 fmt = "png"  # "pdf"
 grey_color = "#cccccc"  # for "other clusters" of country plots
 
-dated_limit = "2021-03-31" #only works for Q677 currently
+#dated_limit = "2021-03-31" #only works for Q677 currently
+#dated_limit = "2021-06-30"
+#dated_cluster = "21A (Delta)"
+#dated_cluster = "20I (Alpha, V1)"
+dated_cluster = "Q677"
 dated_limit = ""
 
 import pandas as pd
@@ -490,8 +494,10 @@ for clus in clus_to_run:
         cluster_meta.to_csv(out_meta_file, sep="\t", index=False)
 
     # If specified wanted dated Q677, do this
-    if print_files and dated_limit and "Q677" in display_cluster:
-    #if dated_limit and "Q677" in clus_display:
+    #if print_files and dated_limit and "Q677" in display_cluster:
+    # if want a dated limit, specify cluster and limit at top
+    if print_files and dated_limit and dated_cluster in display_cluster:
+    ####### if dated_limit and "Q677" in clus_display: # (old)
         build_nam = clusters[clus]["build_name"]
         dated_clus_met = cluster_meta[cluster_meta["date_formatted"].apply(lambda x: x < datetime.datetime.strptime(dated_limit, "%Y-%m-%d"))]
         dated_want_seqs = list(dated_clus_met["strain"])
