@@ -1366,6 +1366,20 @@ clusters = {
         "build_name": "S.T572",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.T572?c=gt-S_572",  # color
     },
+
+ #  "Orf1b813": { #S.T572I - 23277T
+ #      "snps": [15904, 18904], #813H, 1813H
+ #      "cluster_data": [],
+ #      "nextstrain_build": True,
+ #      "graphing": False,
+ #      "type": "do_not_display",
+ #      "important": False,
+ #      "country_info": [],
+ #      "col": "#ff8080",
+ #      "display_name": "Orf1b:Q813H",
+ #      "build_name": "Orf1b.Q813H",
+ #      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Orf1b.Q813H?c=gt-ORF1b_813,1813",  # color
+ #  },
     
     #B.1.1.318 - prominent in Greece
     # Turned off 11 Oct 2021 as few recent sequences
