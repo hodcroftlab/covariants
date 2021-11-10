@@ -55,7 +55,6 @@ import json
 import matplotlib.patches as mpatches
 from colors_and_countries import *
 from helpers import *
-from paths import *
 from clusters import *
 from bad_sequences import *
 from approx_first_dates import *
