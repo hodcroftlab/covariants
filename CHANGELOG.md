@@ -1,5 +1,13 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2021-11-10
+
+### PDF plots removed
+
+- Less well-done PDF plots of the same information as is on the website are no longer generated, and removed from the github
+- Markdown versions of tables are also no longer generated, and removed from the github
+- Many old files have been deleted from the github in a cleanup
+
 ## 2021-10-11
 
 ### Update of 'Per Variant' cluster threshold
