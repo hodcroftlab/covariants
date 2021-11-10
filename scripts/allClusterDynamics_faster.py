@@ -1026,53 +1026,46 @@ for clus in clus_to_run:
         if x in countries_to_plot_final
     ]
 
-    repeat = 1
-    if clus == "S222":
-        repeat = 2
+    for coun in [x for x in countries_to_plot_min]:
+        (
+            week_as_date,
+            cluster_count,
+            total_count,
+            unsmoothed_cluster_count,
+            unsmoothed_total_count,
+        ) = non_zero_counts(cluster_data, total_data, coun, smoothing=smoothing)
+        # remove last data point if that point as less than frac sequences compared to the previous count
+        week_as_date, cluster_count, total_count = trim_last_data_point(
+            week_as_date, cluster_count, total_count, frac=0.1, keep_count=10
+        )
+        if len(cluster_count) < len(
+            unsmoothed_cluster_count
+        ):  # if the trim_last_data_point came true, match trimming
+            unsmoothed_cluster_count = unsmoothed_cluster_count[:-1]
+            unsmoothed_total_count = unsmoothed_total_count[:-1]
 
-    while repeat > 0:
+        json_output[clus_display][coun] = {}
+        json_output[clus_display][coun]["week"] = [
+            datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date
+        ]
+        json_output[clus_display][coun]["total_sequences"] = [
+            int(x) for x in total_count
+        ]
+        json_output[clus_display][coun]["cluster_sequences"] = [
+            int(x) for x in cluster_count
+        ]
+        json_output[clus_display][coun]["unsmoothed_cluster_sequences"] = [
+            int(x) for x in unsmoothed_cluster_count
+        ]
+        json_output[clus_display][coun]["unsmoothed_total_sequences"] = [
+            int(x) for x in unsmoothed_total_count
+        ]
 
-        for coun in [x for x in countries_to_plot_min]:
-            (
-                week_as_date,
-                cluster_count,
-                total_count,
-                unsmoothed_cluster_count,
-                unsmoothed_total_count,
-            ) = non_zero_counts(cluster_data, total_data, coun, smoothing=smoothing)
-            # remove last data point if that point as less than frac sequences compared to the previous count
-            week_as_date, cluster_count, total_count = trim_last_data_point(
-                week_as_date, cluster_count, total_count, frac=0.1, keep_count=10
-            )
-            if len(cluster_count) < len(
-                unsmoothed_cluster_count
-            ):  # if the trim_last_data_point came true, match trimming
-                unsmoothed_cluster_count = unsmoothed_cluster_count[:-1]
-                unsmoothed_total_count = unsmoothed_total_count[:-1]
+        # This used to only plot a subset (those in 'countries to plot' below.)
+        # However for a long time (as of Jul 21) all have been selected,
+        # And I think this is most intuitive - so setting all to 'True'
+        countries_plotted[coun] = "True" #"False"
 
-            json_output[clus_display][coun] = {}
-            json_output[clus_display][coun]["week"] = [
-                datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date
-            ]
-            json_output[clus_display][coun]["total_sequences"] = [
-                int(x) for x in total_count
-            ]
-            json_output[clus_display][coun]["cluster_sequences"] = [
-                int(x) for x in cluster_count
-            ]
-            json_output[clus_display][coun]["unsmoothed_cluster_sequences"] = [
-                int(x) for x in unsmoothed_cluster_count
-            ]
-            json_output[clus_display][coun]["unsmoothed_total_sequences"] = [
-                int(x) for x in unsmoothed_total_count
-            ]
-
-            # This used to only plot a subset (those in 'countries to plot' below.)
-            # However for a long time (as of Jul 21) all have been selected,
-            # And I think this is most intuitive - so setting all to 'True'
-            countries_plotted[coun] = "True" #"False"
-
-        repeat = repeat - 1
         ndone += 1
 
         if print_files:
