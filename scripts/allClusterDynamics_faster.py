@@ -24,13 +24,11 @@
 cluster_path = "../ncov_cluster/cluster_profile/"
 
 # Things that write out to cluster_scripts repo (images mostly), use this path:
-#figure_path = "../covariants/overall_trends_figures/"
 tables_path = "../covariants/cluster_tables/"
 overall_tables_file = "../covariants/cluster_tables/all_tables.tsv"
 acknowledgement_folder = "../covariants/acknowledgements/"
 acknowledgement_folder_new = "../covariants/web/public/acknowledgements/"
 web_data_folder = "../covariants/web/data/"
-#figure_only_path = "../covariants/figures/"
 # This assumes that `covariants` sites next to `ncov`
 # Otherwise, modify the paths above to put the files wherever you like.
 # (Alternatively just create a folder structure to mirror the above)
@@ -315,34 +313,9 @@ json_output = {}
 
 # if running all clusters, clear file so can write again.
 if print_files and "all" in clus_answer:
-    # clean these files so don't append to last run.
-    #with open(f"{tables_path}all_tables.md", "w") as fh:
-    #    fh.write("\n")
-    #    fh.write(
-    #        "# Overview of Clusters/Mutations in Europe\n"
-    #        "[Overview of proportion of clusters in selected countries](country_overview.md)\n\n"
-    #        "In the graphs below, countries are displayed in the chart if the country has at least 20 sequences present in the cluster.\n\n"
-    #        "# Mutation Tables and Graphs\n"
-    #        "- [20E (EU1)](#20e-eu1) _(S:A222V)_ \n"
-    #        "- [20A.EU2](#20aeu2) _(S:S477N)_ \n"
-    #        "- [20I/501Y.V1](#20i501yv1) \n"
-    #        "- [20H/501Y.V2](#20h501yv2) \n"
-    #        "- [20J/501Y.V3](#20j501yv3) \n"
-    #        "- [20C/S:452R](#20cs452r) \n"
-    #        "- [20A/S:439K](#20as439k) \n"
-    #        "- [20A/S:98F](#20as98f) \n"
-    #        "- [20C/S:80Y](#20cs80y) \n"
-    #        "- [20B/S:626S](#20bs626s) \n"
-    #        "- [20B/S:1122L](#20bs1122l) \n"
-    #        "- [S:N501](#sn501) \n"
-    #        "- [S:E484](#se484) \n"
-    #        "- [S:H69-](#sh69-) \n"
-    #        "- [S:Q677](#sq677) \n"
-    #        "- [S:Y453F](#sy453f) \n"
-    #        "- [S:S477](#ss477) \n\n"
-    #    )
-    #with open(overall_tables_file, "w") as fh:
-    #    fh.write("\n")
+    #empty file to write clean
+    with open(overall_tables_file, "w") as fh:
+        fh.write("\n")
 
     curPath = cluster_path + "clusters/current/"
     for f in os.listdir(curPath):
@@ -547,8 +520,6 @@ for clus in clus_to_run:
     clus_data["observed_countries"] = observed_countries
     # Use below to print observed countries, if interested
     #print(f"The cluster is found in: {observed_countries}\n")
-    #if clus != "S222":
-    #    print("Remember, countries are not set for clusters other than S222")
 
     # Let's get some summary stats on number of sequences, first, and last, for each country.
     country_info, country_dates = get_summary(cluster_meta, observed_countries)
@@ -702,60 +673,8 @@ for clus in clus_to_run:
             ordered_country.to_csv(overall_tables_file, sep="\t", mode="a")
         mrk_tbl = ordered_country.to_markdown()
 
-        # url_params = "f_region=Europe"
-        # if 'url_params' in clusters[clus]:
-        #    url_params = clusters[clus]['url_params']
         nextstrain_url = clusters[clus]["nextstrain_url"]
         n_done += 1
-
-        ##################################
-        ##################################
-        #### Print the data tables in Markdown
-
-        # don't print DanishCluster in 'all tables'
-        # only print 'all tables' if running 'all clusters'
-#        if "all" in clus_answer and clus != "DanishCluster":
-#            with open(f"{tables_path}all_tables.md", "a") as fh:
-#                fh.write(f"\n\n## {display_cluster}\n")
-#                fh.write(f"[Focal Build]({nextstrain_url})\n\n")
-#                if clus == "S477":
-#                    fh.write(
-#                        f"Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n"
-#                    )
-#                if clus == "S501":
-#                    fh.write(
-#                        f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n"
-#                    )
-#                    fh.write(
-#                        f"Note that this mutation has multiple amino-acid mutants - these numbers "
-#                        "refer to _all_ these mutations (Y, S, T).\n"
-#                    )
-#                fh.write(mrk_tbl)
-#                fh.write("\n\n")
-#                fh.write(
-#                    f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)"
-#                )
-#
-#        with open(f"{tables_path}{clus_display}_table.md", "w") as fh:
-#            fh.write(f"\n\n## {display_cluster}\n")
-#            fh.write(f"[Focal Build]({nextstrain_url})\n\n")
-#            if clus == "S477":
-#                fh.write(
-#                    f"Note any pre-2020 Cambodian sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n"
-#                )
-#            if clus == "S501":
-#                fh.write(
-#                    f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n"
-#                )
-#                fh.write(
-#                    f"Note that this mutation has multiple amino-acid mutants - these numbers "
-#                    "refer to _all_ these mutations (Y, S, T).\n"
-#                )
-#            fh.write(mrk_tbl)
-#            fh.write("\n\n")
-#            fh.write(
-#                f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)"
-#            )
 
     if print_acks:
         # remove all but EPI_ISL, on request from GISAID
@@ -1092,10 +1011,7 @@ for clus in clus_to_run:
     smoothing /= smoothing.sum()
 
     # Only plot countries with >= X seqs
-    #min_to_plot = 400
     min_to_plot = cutoff_num_seqs
-    # if clus == "S222":
-    #    min_to_plot = 200
 
     countries_to_plot_min = country_info_df[
         country_info_df.num_seqs > min_to_plot
@@ -1110,111 +1026,12 @@ for clus in clus_to_run:
         if x in countries_to_plot_final
     ]
 
-#    if len(countries_to_plot) > len(country_styles_all):
-#        print("\nWARNING!! NOT ENOUGH COLORS FOR PLOTTING!")
-
-#    if clus == "S222a":
-#        country_styles_custom = country_styles
-#    else:
-#        unused_countries = [
-#            x for x in country_styles_all if x not in countries_to_plot
-#        ]
-#        country_styles_custom = {}
-#        for x in countries_to_plot:
-#            if x in country_styles_all.keys():
-#                country_styles_custom[x] = country_styles_all[x]
-#            else:
-#                country_styles_custom[x] = country_styles_all[unused_countries.pop(0)]
-
-    # Make a plot
     repeat = 1
     if clus == "S222":
         repeat = 2
 
     while repeat > 0:
 
-        # fig = plt.figure(figsize=(10,5))
-        # fig, axs=plt.subplots(1,1, figsize=(10,5))
-#        fs = 14
-        # fig, (ax1, ax2, ax3) = plt.subplots(nrows=3, sharex=True,figsize=(10,7),
-        #                                    gridspec_kw={'height_ratios':[1,1,3]})
-        # Change to just show Travel to spain only. see above for old 3 panel version
-#        if repeat == 2:
-#            fig, (ax1, ax3) = plt.subplots(
-#                nrows=2,
-#                sharex=True,
-#                figsize=(10, 6),
-#                gridspec_kw={"height_ratios": [1, 3]},
-#            )
-#        else:
-#            fig, ax3 = plt.subplots(1, 1, figsize=(10, 5), dpi=72)
-#
-#        if repeat == 2:
-#            i = 0
-#            for coun in travel_order:
-#                if coun in q_free_to_spain:
-#                    q_times = q_free_to_spain[coun]
-#                    strt = datetime.datetime.strptime(q_times["start"], "%Y-%m-%d")
-#                    end = datetime.datetime.strptime(q_times["end"], "%Y-%m-%d")
-#                    y_start = i * 0.022
-#                    height = 0.02
-#                    ax1.add_patch(
-#                        Rectangle(
-#                            (strt, y_start),
-#                            end - strt,
-#                            height,
-#                            ec=country_styles_custom[coun]["c"],
-#                            fc=country_styles_custom[coun]["c"],
-#                        )
-#                    )
-#
-#                    ax1.text(strt, y_start + 0.003, q_times["msg"], fontsize=fs * 0.8)
-#                    if coun == "Denmark":
-#                        strt = datetime.datetime.strptime(
-#                            q_free_to_spain["Denmark2"]["start"], "%Y-%m-%d"
-#                        )
-#                        end = datetime.datetime.strptime(
-#                            q_free_to_spain["Denmark2"]["end"], "%Y-%m-%d"
-#                        )
-#                        ax1.add_patch(
-#                            Rectangle(
-#                                (strt, y_start),
-#                                end - strt,
-#                                height,
-#                                ec=country_styles_custom[coun]["c"],
-#                                fc="none",
-#                                hatch="/",
-#                            )
-#                        )
-#                        ax1.text(
-#                            strt,
-#                            y_start + 0.003,
-#                            q_free_to_spain["Denmark2"]["msg"],
-#                            fontsize=fs * 0.8,
-#                        )
-#                i = i + 1
-#            ax1.set_ylim([0, y_start + height])
-#            ax1.text(
-#                datetime.datetime.strptime("2020-05-03", "%Y-%m-%d"),
-#                y_start,
-#                "Quarantine-free",
-#                fontsize=fs,
-#            )
-#            ax1.text(
-#                datetime.datetime.strptime("2020-05-03", "%Y-%m-%d"),
-#                y_start - height - 0.005,
-#                "Travel to/from Spain",
-#                fontsize=fs,
-#            )
-#            ax1.text(
-#                datetime.datetime.strptime("2020-05-03", "%Y-%m-%d"),
-#                y_start - height - height - 0.01,
-#                "(on return)",
-#                fontsize=fs,
-#            )
-#            ax1.get_yaxis().set_visible(False)
-
-        # for a simpler plot of most interesting countries use this:
         for coun in [x for x in countries_to_plot_min]:
             (
                 week_as_date,
@@ -1254,70 +1071,6 @@ for clus in clus_to_run:
             # However for a long time (as of Jul 21) all have been selected,
             # And I think this is most intuitive - so setting all to 'True'
             countries_plotted[coun] = "True" #"False"
-
-#            if coun in countries_to_plot:
-#                ax3.plot(
-#                    week_as_date,
-#                    cluster_count / total_count,
-#                    color=country_styles_custom[coun]["c"],
-#                    linestyle=country_styles_custom[coun]["ls"],
-#                    label=coun,
-#                )
-#                ax3.scatter(
-#                    week_as_date,
-#                    cluster_count / total_count,
-#                    s=[marker_size(n) for n in unsmoothed_total_count],
-#                    color=country_styles_custom[coun]["c"],
-#                    linestyle=country_styles_custom[coun]["ls"],
-#                )  #
-#                countries_plotted[coun] = "True"
-#
-#        for ni, n in enumerate([0, 1, 3, 10, 30, 100]):
-#            ax3.scatter(
-#                [week_as_date[0]],
-#                [0.08 + ni * 0.07],
-#                s=marker_size(n + 0.1),
-#                edgecolor="k",
-#                facecolor="w",
-#            )
-#            ax3.text(week_as_date[1], 0.06 + ni * 0.07, f"n>{n}" if n else "n=1")
-#            #          color=country_styles[coun]['c'], linestyle=country_styles[coun]['ls'], label=coun)
-#
-#        ax3.text(datetime.datetime(2020, 10, 1), 0.9, f"{clus_display}", fontsize=fs)
-#        plt.legend(ncol=1, fontsize=fs * 0.8, loc=2)
-#        fig.autofmt_xdate(rotation=30)
-#        ax3.tick_params(labelsize=fs * 0.8)
-#        ax3.set_ylabel("frequency", fontsize=fs)
-#        max_date = country_info_df["last_seq"].max()
-#        ax3.set_ylim(0, 1)
-#        ax3.set_xlim(
-#            datetime.datetime(2020, 5, 1),
-#            datetime.datetime.strptime(max_date, "%Y-%m-%d"),
-#        )
-#        plt.show()
-#        plt.tight_layout()
-#
-#        # spain opens borders
-#        if clus == "S222":
-#            ax3.text(
-#                datetime.datetime.strptime("2020-06-21", "%Y-%m-%d"),
-#                0.05,
-#                "Spain opens borders",
-#                rotation="vertical",
-#                fontsize=fs * 0.8,
-#            )
-
-#        travel = ""
-#        if repeat == 2:
-#            travel = "Travel"
-        #if print_files:
-        #    plt.savefig(figure_path + f"overall_trends_{clus_display}{travel}.{fmt}")
-        #    trends_path = figure_path + f"overall_trends_{clus_display}{travel}.{fmt}"
-        #    copypath = trends_path.replace(
-        #        f"trends_{clus_display}{travel}",
-        #        "trends-{}".format(datetime.date.today().strftime("%Y-%m-%d")),
-        #    )
-        #    copyfile(trends_path, copypath)
 
         repeat = repeat - 1
         ndone += 1
@@ -1442,24 +1195,17 @@ def plot_country_data(
 ):
     country_week = {clus: {} for clus in clusters}
 
-    fs = 14
-    rws = int(np.ceil((len(proposed_coun_to_plot) + 1) / 2))
-    fig, axs = plt.subplots(
-        nrows=rws, ncols=2, sharex=True, figsize=(9, 11)  # len(countries_to_plot)+1,
-    )
 
     min_week = datetime.datetime(2020, 12, 31)
     max_week = datetime.datetime(2020, 1, 1)
     week_as_dates = {}
     json_output = {}
     json_output["countries"] = {}
-    ptchs = {}
 
-    for coun, ax in zip(proposed_coun_to_plot, fig.axes[1:]):  # axs[1:]):
+    for coun in proposed_coun_to_plot:
         i = 0
         first_clus_count = []
 
-        # json_output["countries"][coun] = {"week": {}, "total_sequences": {}}
         country_data = {"week": {}, "total_sequences": {}}
 
         for clus in clus_keys:
@@ -1474,15 +1220,6 @@ def plot_country_data(
                 total_data = clusters[clus]["total_data_2wk"]
 
             if coun not in cluster_data:
-                if clus == clus_keys[-1]:
-                    ax.fill_between(
-                        week_as_date,
-                        cluster_count / total_count,
-                        1,
-                        facecolor=grey_color,
-                    )
-                    patch = mpatches.Patch(color=grey_color, label=f"other")
-                    ptchs["other"] = patch
                 i += 1
                 continue
             (
@@ -1524,23 +1261,6 @@ def plot_country_data(
                 first_clus_count = [0] * len(total_count)
             cluster_count = first_clus_count + cluster_count  # unindented
 
-            ax.fill_between(
-                week_as_date,
-                first_clus_count / total_count,
-                cluster_count / total_count,
-                facecolor=clusters[clus]["col"],
-            )
-            patch = mpatches.Patch(color=clusters[clus]["col"], label=lab)
-
-            if clus not in ptchs:
-                ptchs[clus] = patch
-
-            if clus == clus_keys[-1]:
-                ax.fill_between(
-                    week_as_date, cluster_count / total_count, 1, facecolor=grey_color
-                )
-                patch = mpatches.Patch(color=grey_color, label=f"other")
-
             first_clus_count = cluster_count  # unindented
             i += 1
         country_data["week"] = [
@@ -1552,9 +1272,6 @@ def plot_country_data(
         if len(total_count)>=2:
             json_output["countries"][coun] = country_data
 
-        ax.text(datetime.datetime(2020, 6, 1), 0.7, coun, fontsize=fs)
-        ax.tick_params(labelsize=fs * 0.8)
-
     json_output["plotting_dates"] = {}
     json_output["plotting_dates"]["min_date"] = datetime.datetime.strftime(
         min_week, "%Y-%m-%d"
@@ -1563,24 +1280,9 @@ def plot_country_data(
         max_week, "%Y-%m-%d"
     )
 
-    fig.axes[0].legend(handles=ptchs.values(), loc=3, fontsize=fs * 0.7, ncol=3)
-    fig.axes[0].axis("off")
-    fig.autofmt_xdate(rotation=30)
-#    plt.show()
-#    plt.tight_layout()
-
     if print_files:
         with open(tables_path + f"{file_prefix}_data.json", "w") as fh:
             json.dump(json_output, fh)
-#        fmt = "pdf"
-#        plt.savefig(figure_path + f"{file_prefix}_compare.png")
-#
-#        plt.savefig(figure_only_path + f"{file_prefix}_compare.{fmt}")
-#        trends_path = figure_only_path + f"{file_prefix}_compare.{fmt}"
-#        copypath = trends_path.replace(
-#            "compare", "compare-{}".format(datetime.date.today().strftime("%Y-%m-%d"))
-#        )
-#        copyfile(trends_path, copypath)
 
 
 if do_country:
