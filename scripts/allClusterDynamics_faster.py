@@ -54,7 +54,6 @@ from matplotlib.patches import Rectangle
 import json
 import matplotlib.patches as mpatches
 from colors_and_countries import *
-from travel_data import *
 from helpers import *
 from paths import *
 from clusters import *
