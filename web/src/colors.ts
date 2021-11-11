@@ -23,7 +23,6 @@ export const CLADE_COLORS: Record<string, { bg: string; fg: string }> = {
   '21H': { bg: '#DC2F24', fg: '#000000' },
 }
 
-
 export const GENE_COLORS: Record<string, string> = {
   E: '#60AA9E',
   M: '#D9A456',
