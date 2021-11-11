@@ -1,6 +1,6 @@
 clusters = {
 
-    "501YV1": {
+    "Alpha": {
         "snps": [23063, 23604, 24914],
         "cluster_data": [],  # 501, 681, 1118
         "nextstrain_build": True,
@@ -58,7 +58,7 @@ clusters = {
             ],
         },
     },
-    "501YV2": {
+    "Beta": {
         "snps": [21801, 23063, 23664],
         "cluster_data": [],  # 80,501,701
         "nextstrain_build": True,
@@ -109,7 +109,7 @@ clusters = {
             ],
         },
     },
-    "501YV3": {
+    "Gamma": {
         "snps": [21621, 23063, 23525],
         "cluster_data": [],  # 20,501,655
         "nextstrain_build": True,
@@ -170,23 +170,10 @@ clusters = {
         },
     },
 
-    # build for 20AS154 and 20AS478
-    "21AS154S478":{
-        "snps": [29402, 22917, 14408], # N377, S452. ORF1b 314
-        "cluster_data": [],  
-        "nextstrain_build": True,
-        "type": "do_not_display",
-        "graphing": False,
-        "important": False,
-        "country_info": [],
-        "col": "#009900",
-        "display_name": "21A/21B",
-        "build_name": "21A.21B",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.21B",
-    },
+
 
     # Delta variant  -- part of 'Indian' in media - B.1.617.2
-    "21AS478": {
+    "Delta": {
         "snps": [22995, 23604, 22917], # S:478, 681, 452
         "cluster_data": [],  
         "nextstrain_build": True,
@@ -238,7 +225,7 @@ clusters = {
     },
 
     # variant  -- part of 'Indian' in media - B.1.617.1 
-    "21AS154": {
+    "Kappa": {
         "snps": [17523, 23604, 22917], #ORF1b:1352, S:681, 452 
         "cluster_data": [],  
         "nextstrain_build": True,
@@ -246,7 +233,7 @@ clusters = {
         "graphing": True,
         "important": False,
         "country_info": [],
-        "col": "#66C266",
+        "col": "#A3FFD1",
         "display_name": "21B (Kappa)",
         "alt_display_name": ["21A/S:154K"],
         "build_name": "21B.Kappa",
@@ -307,7 +294,7 @@ clusters = {
 
     # 'not-called-nigerian variant' B.1.525
     # 21D Eta
-    "20AS484": {
+    "Eta": {
         "snps": [8593, 23012, 24224],
         "cluster_data": [],  # nuc 8593 S 484, 888
         "nextstrain_build": True,
@@ -369,7 +356,7 @@ clusters = {
 
     # "new york variant"
     # 21F Iota
-    "20CS484": {
+    "Iota": {
         "snps": [21575, 9867, 1059],
         "cluster_data": [],  # S5, ORF1a 3201, 265 -- 484 is 23012 (1-based)
         "nextstrain_build": True,
@@ -646,7 +633,7 @@ clusters = {
     },
 
 
-    "S222": {
+    "EU1": {
         "snps": [22227, 28932, 29645],
         "cluster_data": [],
         "nextstrain_build": False,
@@ -679,7 +666,7 @@ clusters = {
     },
 
     # 'CA variant'
-    "S452": {
+    "Epsilon": {
         "snps": [21600, 22018, 22917],
         "cluster_data": [],  #'CA' variant
         "nextstrain_build": False,
@@ -820,7 +807,7 @@ clusters = {
         },
     },
 
-    "S477": {
+    "EU2": {
         "snps": [22992, 4543],
         "cluster_data": [],
         "nextstrain_build": False,
@@ -929,7 +916,7 @@ clusters = {
         "type": "variant",
         "important": False,
         "country_info": [],
-        "col": "#A3FFD1",
+        "col": "#b3e6ff",
         "display_name": "20B/S:626S",
         "build_name": "S.A626S",
         "pango_lineages": [
@@ -1381,6 +1368,22 @@ clusters = {
  #      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Orf1b.Q813H?c=gt-ORF1b_813,1813",  # color
  #  },
     
+
+    # build for Delta and Kappa -- retired 11/11/21
+#    "21AS154S478":{
+#        "snps": [29402, 22917, 14408], # N377, S452. ORF1b 314
+#        "cluster_data": [],  
+#        "nextstrain_build": True,
+#        "type": "do_not_display",
+#        "graphing": False,
+#        "important": False,
+#        "country_info": [],
+#        "col": "#009900",
+#        "display_name": "21A/21B",
+#        "build_name": "21A.21B",
+#        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.21B",
+#    },
+
     #B.1.1.318 - prominent in Greece
     # Turned off 11 Oct 2021 as few recent sequences
 #    "S796": {'snps': [23604,23948,9072], #A/C/T
