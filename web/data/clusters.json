@@ -637,23 +637,6 @@
       ]
     },
     {
-      "build_name": "21A.21B",
-      "cluster_data": [],
-      "col": "#009900",
-      "country_info": [],
-      "display_name": "21A/21B",
-      "graphing": false,
-      "important": false,
-      "nextstrain_build": true,
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.21B",
-      "snps": [
-        29402,
-        22917,
-        14408
-      ],
-      "type": "do_not_display"
-    },
-    {
       "alt_display_name": [
         "21A/S:478K"
       ],
@@ -836,7 +819,7 @@
       ],
       "build_name": "21B.Kappa",
       "cluster_data": [],
-      "col": "#66C266",
+      "col": "#A3FFD1",
       "country_info": [],
       "display_name": "21B (Kappa)",
       "graphing": true,
@@ -2998,7 +2981,7 @@
     {
       "build_name": "S.A626S",
       "cluster_data": [],
-      "col": "#A3FFD1",
+      "col": "#b3e6ff",
       "country_info": [],
       "display_name": "20B/S:626S",
       "graphing": true,
