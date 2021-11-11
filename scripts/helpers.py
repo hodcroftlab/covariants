@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import datetime
 from collections import defaultdict
-from paths import *
 
 
 def logistic(x, a, t50):
@@ -72,47 +71,6 @@ def non_zero_counts(cluster_data, total_data, country, smoothing=None):
         cluster_and_total[data_range].loc[with_data_inrange].iloc[:, 1],
     )
 
-
-def read_case_data_by_week(fname):
-    # read in case data
-    if fname.endswith("tsv"):
-        cases = pd.read_csv(fname, sep="\t", index_col=False, skiprows=3)
-    else:
-        cases = pd.read_csv(fname, index_col=False, skiprows=1)
-
-    print(cases.columns)
-    # instead of total case numbers, get new cases per day, with diff
-    new_cases = np.diff(cases.cases)
-    # convert dates to datetime objects
-    case_dates = [datetime.datetime.strptime(dat, "%Y-%m-%d") for dat in cases.time]
-    # remove first date object as the 'np.diff' above shortens the list by 1! now lengths match.
-    case_dates = case_dates[1:]
-
-    # to avoid things like no reporting on weekends, get total # new cases per week.
-    cases_by_week = defaultdict(int)
-    for dat, num_cas in zip(case_dates, new_cases):
-        wk = dat.isocalendar()[1]  # returns ISO calendar week
-        cases_by_week[wk] += num_cas
-
-    case_data = pd.DataFrame(data={"cases": cases_by_week})
-    case_data = case_data.sort_index()
-    case_week_as_date = [
-        datetime.datetime.strptime("2020-W{}-1".format(x), "%G-W%V-%u")
-        for x in case_data.index
-    ]
-
-    return case_week_as_date, case_data
-
-
-def load_case_data(countries):
-    case_data = {}
-    for c in countries:
-        w, cases = read_case_data_by_week(
-            case_data_path + case_files.get(c, f"{c}.tsv")
-        )
-        case_data[c] = {k: v for k, v in zip(w, cases.cases)}
-
-    return case_data
 
 
 # n is the number of observations
