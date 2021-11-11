@@ -19,10 +19,10 @@ for (reg in unique(regions$region)) {
     regs <- c(regs, quotreg)
     lst <- paste("\"",paste(regions[which(regions$region == reg), "country"], collapse="\",\""),"\"",collapse="",sep="")
     cuns <- c(cuns, lst)
-    entry <- paste("\t",quotreg," : [",lst,"],", sep="", collapse="")
+    entry <- paste("\t",quotreg," : [",lst,"]", sep="", collapse="")
     tog <- c(tog, entry)
 }
 
-final <- paste("{", paste(tog,collapse="\n"), "}", sep="\n")
+final <- paste("{", paste(tog,collapse=",\n"), "}", sep="\n")
 
 write.table(final, "../../covariants/web/data/region_country.json", quote=F, row.names=F, col.names=F)
