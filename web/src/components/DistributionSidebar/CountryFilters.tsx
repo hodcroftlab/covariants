@@ -11,10 +11,11 @@ import {
   Label,
   Row,
 } from 'reactstrap'
-import { CountryFlagProps } from 'src/components/Common/CountryFlag'
 import styled from 'styled-components'
 
 import type { CountryState } from 'src/components/CountryDistribution/CountryDistributionPage'
+import type { RegionState } from 'src/io/getRegions'
+import type { CountryFlagProps } from 'src/components/Common/CountryFlag'
 import { theme } from 'src/theme'
 import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
@@ -84,11 +85,13 @@ export function CountryFilterCheckbox({
 
 export interface CountryFiltersProps {
   countries: CountryState
+  regions: RegionState[]
   regionsTitle: string
   collapsed: boolean
   withIcons?: boolean
   Icon?: React.ComponentType<CountryFlagProps>
   onFilterChange(country: string): void
+  onFilterSelectRegion(regionName: string): void
   onFilterSelectAll(): void
   onFilterDeselectAll(): void
   setCollapsed(collapsed: boolean): void
@@ -96,10 +99,12 @@ export interface CountryFiltersProps {
 
 export function CountryFilters({
   countries,
+  regions,
   regionsTitle,
   collapsed,
   withIcons,
   Icon,
+  onFilterSelectRegion,
   onFilterSelectAll,
   onFilterDeselectAll,
   onFilterChange,
@@ -125,6 +130,24 @@ export function CountryFilters({
           </Row>
 
           <Row noGutters>
+            <Col className="d-flex">
+              <Form className="flex-grow-0 mx-auto">
+                {regions.map((region) => {
+                  return (
+                    <CountryFilterCheckbox
+                      key={region.regionName}
+                      country={region.regionName}
+                      enabled={region.enabled}
+                      withIcons={false}
+                      onFilterChange={() => onFilterSelectRegion(region.regionName)}
+                    />
+                  )
+                })}
+              </Form>
+            </Col>
+          </Row>
+
+          <Row noGutters className="mt-3">
             <Col>
               <Form>
                 {filters.map(([country, { enabled }]) => (

@@ -4,6 +4,7 @@ import { Col, Row } from 'reactstrap'
 
 import type { ClusterState, CountryState } from 'src/components/CountryDistribution/CountryDistributionPage'
 import { getClusterNames } from 'src/io/getClusters'
+import { RegionState } from 'src/io/getRegions'
 import { ClusterFilters } from './ClusterFilters'
 import { CountryFilters } from './CountryFilters'
 
@@ -29,6 +30,7 @@ export function sortClusters(clusters?: ClusterState): ClusterState | undefined 
 export interface DistributionSidebarProps {
   clusters?: ClusterState
   countries?: CountryState
+  regions: RegionState[]
   regionsTitle: string
   clustersCollapsedByDefault?: boolean
   coutriesCollapsedByDefault?: boolean
@@ -38,6 +40,7 @@ export interface DistributionSidebarProps {
   onClusterFilterSelectAll(): void
   onClusterFilterDeselectAll(): void
   onCountryFilterChange(country: string): void
+  onRegionFilterChange(regionName: string): void
   onCountryFilterSelectAll(): void
   onCountryFilterDeselectAll(): void
 }
@@ -45,6 +48,7 @@ export interface DistributionSidebarProps {
 export function DistributionSidebar({
   clusters,
   countries,
+  regions,
   regionsTitle,
   clustersCollapsedByDefault = true,
   coutriesCollapsedByDefault = true,
@@ -53,11 +57,12 @@ export function DistributionSidebar({
   onClusterFilterChange,
   onClusterFilterSelectAll,
   onClusterFilterDeselectAll,
+  onRegionFilterChange,
   onCountryFilterChange,
   onCountryFilterSelectAll,
   onCountryFilterDeselectAll,
 }: DistributionSidebarProps) {
-  const [clustersColapsed, setClustersCollapsed] = useState(clustersCollapsedByDefault)
+  const [clustersCollapsed, setClustersCollapsed] = useState(clustersCollapsedByDefault)
   const [countriesCollapsed, setCountriesCollapsed] = useState(coutriesCollapsedByDefault)
 
   const clustersSorted = useMemo(() => sortClusters(clusters), [clusters])
@@ -69,6 +74,8 @@ export function DistributionSidebar({
           key="country-filters"
           regionsTitle={regionsTitle}
           countries={countries}
+          regions={regions}
+          onFilterSelectRegion={onRegionFilterChange}
           onFilterChange={onCountryFilterChange}
           onFilterSelectAll={onCountryFilterSelectAll}
           onFilterDeselectAll={onCountryFilterDeselectAll}
@@ -83,7 +90,9 @@ export function DistributionSidebar({
           withIcons
           Icon={Icon}
           countries={countries}
+          regions={regions}
           onFilterChange={onCountryFilterChange}
+          onFilterSelectRegion={onRegionFilterChange}
           onFilterSelectAll={onCountryFilterSelectAll}
           onFilterDeselectAll={onCountryFilterDeselectAll}
           collapsed={countriesCollapsed}
@@ -97,24 +106,26 @@ export function DistributionSidebar({
           onFilterChange={onClusterFilterChange}
           onFilterSelectAll={onClusterFilterSelectAll}
           onFilterDeselectAll={onClusterFilterDeselectAll}
-          collapsed={clustersColapsed}
+          collapsed={clustersCollapsed}
           setCollapsed={setClustersCollapsed}
         />
       ),
     }),
     [
-      clustersColapsed,
-      clustersSorted,
       countries,
-      countriesCollapsed,
-      onClusterFilterChange,
-      onClusterFilterDeselectAll,
-      onClusterFilterSelectAll,
-      onCountryFilterChange,
-      onCountryFilterDeselectAll,
-      onCountryFilterSelectAll,
       regionsTitle,
+      regions,
+      onRegionFilterChange,
+      onCountryFilterChange,
+      onCountryFilterSelectAll,
+      onCountryFilterDeselectAll,
+      countriesCollapsed,
       Icon,
+      clustersSorted,
+      onClusterFilterChange,
+      onClusterFilterSelectAll,
+      onClusterFilterDeselectAll,
+      clustersCollapsed,
     ],
   )
 

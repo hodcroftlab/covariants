@@ -18,6 +18,7 @@ import {
   REGIONS,
   REGIONS_HAVE_DATA,
 } from 'src/io/getClusterData'
+import { getRegions, RegionState } from 'src/io/getRegions'
 
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
 import { CountryDistributionDatum } from './CountryDistributionPlot'
@@ -76,6 +77,7 @@ export function CountryDistributionPage() {
     useMemo(() => getClusterData(currentRegion), [currentRegion])
 
   const [countries, setCountries] = useState<CountryState>(countriesState)
+  const [regions, setRegions] = useState<RegionState[]>(getRegions())
   const [clusters, setClusters] = useState<ClusterState>(clustersState)
 
   useEffect(() => {
@@ -135,6 +137,36 @@ export function CountryDistributionPage() {
     [],
   )
 
+  function isCountryRegionEnabled(country: string, regions: RegionState[]) {
+    return regions.some((region) => region.enabled && region.countries.includes(country))
+  }
+
+  const handleRegionCheckedChange = useCallback((regionName: string) => {
+    setRegions((oldRegions) =>
+      oldRegions.map((region) => {
+        if (region.regionName === regionName) {
+          region.enabled = !region.enabled
+        }
+        return region
+      }),
+    )
+  }, [])
+
+  useEffect(() => {
+    setCountries((oldCountries) => {
+      return Object.entries(oldCountries).reduce(
+        (result, [country, value]) => ({
+          ...result,
+          [country]: {
+            ...value,
+            enabled: isCountryRegionEnabled(country, regions),
+          },
+        }),
+        {},
+      )
+    })
+  }, [regions])
+
   const handleCountrySelectAll = useCallback(
     () =>
       setCountries((oldCountries: CountryState) =>
@@ -191,6 +223,7 @@ export function CountryDistributionPage() {
                 <DistributionSidebar
                   clusters={clusters}
                   countries={countries}
+                  regions={regions}
                   regionsTitle={regionsTitle}
                   enabledFilters={enabledFilters}
                   clustersCollapsedByDefault={false}
@@ -199,6 +232,7 @@ export function CountryDistributionPage() {
                   onClusterFilterSelectAll={handleClusterSelectAll}
                   onClusterFilterDeselectAll={handleClusterDeselectAll}
                   onCountryFilterChange={handleCountryCheckedChange}
+                  onRegionFilterChange={handleRegionCheckedChange}
                   onCountryFilterSelectAll={handleCountrySelectAll}
                   onCountryFilterDeselectAll={handleCountryDeselectAll}
                 />
