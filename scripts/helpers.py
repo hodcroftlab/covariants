@@ -3,7 +3,6 @@ import numpy as np
 import datetime
 from collections import defaultdict
 
-
 def logistic(x, a, t50):
     return np.exp((x - t50) * a) / (1 + np.exp((x - t50) * a))
 
@@ -70,7 +69,6 @@ def non_zero_counts(cluster_data, total_data, country, smoothing=None):
         cluster_and_total[data_range].loc[with_data_inrange].iloc[:, 0],
         cluster_and_total[data_range].loc[with_data_inrange].iloc[:, 1],
     )
-
 
 
 # n is the number of observations
