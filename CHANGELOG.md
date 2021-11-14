@@ -1,5 +1,11 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2021-11-15
+
+- Added new Nextstrain Delta clades 21I (Delta) & 21J (Delta). Both are part of the WHO Delta VoC
+- Update pages for Delta, Kappa, and references to the four WHO VoC
+- Update colors on the Per Country page
+
 ## 2021-11-10
 
 ### PDF plots removed
