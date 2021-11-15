@@ -129,7 +129,7 @@ export function CountryFilters({
 
           <Row noGutters>
             <Col className="d-flex">
-              <Form className="flex-grow-0 mx-auto">
+              <Form>
                 {continents.map(({ continentName, enabled }) => {
                   return (
                     <CountryFilterCheckbox
