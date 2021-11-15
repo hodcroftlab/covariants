@@ -13,3 +13,7 @@ export interface RegionState {
 export function getRegions(): RegionState[] {
   return Object.entries(regionCountryJson).map(([regionName, countries]) => ({ regionName, countries, enabled: true }))
 }
+
+export function isCountryRegionEnabled(country: string, regions: RegionState[]) {
+  return regions.some((region) => region.enabled && region.countries.includes(country))
+}

@@ -18,8 +18,8 @@ import {
   REGIONS,
   REGIONS_HAVE_DATA,
 } from 'src/io/getClusterData'
-import { getRegions, RegionState } from 'src/io/getRegions'
 
+import { isCountryRegionEnabled, getRegions, RegionState } from 'src/io/getRegions'
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
 import { CountryDistributionDatum } from './CountryDistributionPlot'
 import { CountryFlag } from '../Common/CountryFlag'
@@ -136,10 +136,6 @@ export function CountryDistributionPage() {
       }),
     [],
   )
-
-  function isCountryRegionEnabled(country: string, regions: RegionState[]) {
-    return regions.some((region) => region.enabled && region.countries.includes(country))
-  }
 
   const handleRegionCheckedChange = useCallback((regionName: string) => {
     setRegions((oldRegions) =>

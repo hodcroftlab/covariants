@@ -20,7 +20,7 @@ import { shouldPlotCountry } from 'src/io/getCountryColor'
 import perClusterData from 'src/../data/perClusterData.json'
 import PerClusterIntro from 'src/../../content/PerClusterIntro.md'
 import { getClusters } from 'src/io/getClusters'
-import { getRegions, RegionState } from 'src/io/getRegions'
+import { isCountryRegionEnabled, getRegions, RegionState } from 'src/io/getRegions'
 import { setPerCountryTooltipSortBy, setPerCountryTooltipSortReversed } from 'src/state/ui/ui.actions'
 import { PerCountryTooltipSortBy } from 'src/state/ui/ui.reducer'
 import { selectPerCountryTooltipSortBy, selectPerCountryTooltipSortReversed } from 'src/state/ui/ui.selectors'
@@ -196,10 +196,6 @@ export function ClusterDistributionPage() {
       }),
     [],
   )
-
-  function isCountryRegionEnabled(country: string, regions: RegionState[]) {
-    return regions.some((region) => region.enabled && region.countries.includes(country))
-  }
 
   const handleRegionCheckedChange = useCallback((regionName: string) => {
     setRegions((oldRegions) =>
