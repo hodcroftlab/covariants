@@ -11,10 +11,9 @@ import {
   Label,
   Row,
 } from 'reactstrap'
+import { getContinents, getCountries, Places } from 'src/io/getPlaces'
 import styled from 'styled-components'
 
-import type { CountryState } from 'src/components/CountryDistribution/CountryDistributionPage'
-import type { RegionState } from 'src/io/getRegions'
 import type { CountryFlagProps } from 'src/components/Common/CountryFlag'
 import { theme } from 'src/theme'
 import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
@@ -84,8 +83,7 @@ export function CountryFilterCheckbox({
 }
 
 export interface CountryFiltersProps {
-  countries: CountryState
-  regions: RegionState[]
+  places: Places
   regionsTitle: string
   collapsed: boolean
   withIcons?: boolean
@@ -98,8 +96,7 @@ export interface CountryFiltersProps {
 }
 
 export function CountryFilters({
-  countries,
-  regions,
+  places,
   regionsTitle,
   collapsed,
   withIcons,
@@ -110,7 +107,8 @@ export function CountryFilters({
   onFilterChange,
   setCollapsed,
 }: CountryFiltersProps) {
-  const filters = useMemo(() => Object.entries(countries), [countries])
+  const countries = useMemo(() => getCountries(places), [places])
+  const continents = useMemo(() => getContinents(places), [places])
 
   return (
     <CardCollapsible className="m-2" title={regionsTitle} collapsed={collapsed} setCollapsed={setCollapsed}>
@@ -132,14 +130,14 @@ export function CountryFilters({
           <Row noGutters>
             <Col className="d-flex">
               <Form className="flex-grow-0 mx-auto">
-                {regions.map((region) => {
+                {continents.map(({ continentName, enabled }) => {
                   return (
                     <CountryFilterCheckbox
-                      key={region.regionName}
-                      country={region.regionName}
-                      enabled={region.enabled}
+                      key={continentName}
+                      country={continentName}
+                      enabled={enabled}
                       withIcons={false}
-                      onFilterChange={() => onFilterSelectRegion(region.regionName)}
+                      onFilterChange={() => onFilterSelectRegion(continentName)}
                     />
                   )
                 })}
@@ -150,10 +148,10 @@ export function CountryFilters({
           <Row noGutters className="mt-3">
             <Col>
               <Form>
-                {filters.map(([country, { enabled }]) => (
+                {countries.map(({ countryName, enabled }) => (
                   <CountryFilterCheckbox
-                    key={country}
-                    country={country}
+                    key={countryName}
+                    country={countryName}
                     enabled={enabled}
                     withIcons={withIcons}
                     Icon={Icon}

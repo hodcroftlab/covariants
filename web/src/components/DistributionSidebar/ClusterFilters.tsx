@@ -12,10 +12,10 @@ import {
   Row,
 } from 'reactstrap'
 
+import type { ClusterState } from 'src/io/getPerCountryData'
 import { getClusterColor } from 'src/io/getClusters'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
-import type { ClusterState } from 'src/components/CountryDistribution/CountryDistributionPage'
 import styled from 'styled-components'
 
 export const FormGroup = styled(FormGroupBase)`

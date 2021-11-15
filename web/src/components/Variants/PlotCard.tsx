@@ -1,26 +1,15 @@
-/* eslint-disable prefer-destructuring,camelcase */
 import React, { useMemo } from 'react'
+import { getClusterDistribution, getCountryNames } from 'src/io/getPerClusterData'
 
 import styled from 'styled-components'
-import { ClusterDistribution } from 'src/components/ClusterDistribution/ClusterDistributionPage'
 import { GoGraph } from 'react-icons/go'
 import { Card, CardBody, Col, Row } from 'reactstrap'
 
 import { theme } from 'src/theme'
-import {
-  ClusterDistributionDatum,
-  ClusterDistributionPlot,
-} from 'src/components/ClusterDistribution/ClusterDistributionPlot'
+import { ClusterDistributionPlot } from 'src/components/ClusterDistribution/ClusterDistributionPlot'
 import { ClusterDatum } from 'src/io/getClusters'
-import perClusterData from '../../../data/perClusterData.json'
+
 import { Link } from '../Link/Link'
-
-const distributions: ClusterDistribution[] = perClusterData.distributions
-const country_names = perClusterData.country_names
-
-function getDistribution(cluster: string): ClusterDistributionDatum[] {
-  return distributions.find((dist) => dist.cluster === cluster)?.distribution ?? []
-}
 
 const PlotCardTitleIcon = styled(GoGraph)`
   margin: auto 5px;
@@ -58,7 +47,10 @@ export function PlotCardTitle({ cluster }: PlotCardProps) {
 
 export function PlotCard({ cluster }: PlotCardProps) {
   const title = useMemo(() => <PlotCardTitle cluster={cluster} />, [cluster])
-  const distribution = getDistribution(cluster.display_name)
+  const clusterDistribution = useMemo(() => getClusterDistribution(cluster.display_name).distribution, [
+    cluster.display_name,
+  ])
+  const countryNames = useMemo(() => getCountryNames(), [])
 
   return (
     <Card>
@@ -66,7 +58,7 @@ export function PlotCard({ cluster }: PlotCardProps) {
       <PlotCardBody>
         <Row noGutters>
           <Col>
-            <ClusterDistributionPlot distribution={distribution} country_names={country_names} />
+            <ClusterDistributionPlot distribution={clusterDistribution} country_names={countryNames} />
           </Col>
         </Row>
       </PlotCardBody>
