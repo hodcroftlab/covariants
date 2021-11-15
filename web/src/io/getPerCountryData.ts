@@ -47,12 +47,14 @@ export function getPerCountryDataRaw(): PerCountryDataRaw {
   return perCountryDataJson as PerCountryDataRaw
 }
 
-export function getPerCountryData(region: string): PerCountryData {
+export function getPerCountryData(regionName: string): PerCountryData {
   const allData = getPerCountryDataRaw()
 
-  const perCountryData: PerCountryDatum | undefined = allData.regions.find((candidate) => candidate.region === region)
+  const perCountryData: PerCountryDatum | undefined = allData.regions.find(
+    (candidate) => candidate.region === regionName,
+  )
   if (!perCountryData) {
-    throw new Error(`Region data not found for region: ${region}`)
+    throw new Error(`Region data not found for region: ${regionName}`)
   }
 
   const clusterNames = copy(perCountryData.cluster_names).sort()
@@ -61,7 +63,7 @@ export function getPerCountryData(region: string): PerCountryData {
   }, {})
 
   const countriesListRaw = perCountryData.distributions.map(({ country }) => ({ countryName: country, enabled: true }))
-  const places = getPlaces(countriesListRaw)
+  const places = getPlaces(countriesListRaw, regionName)
 
   const countryDistributions = perCountryData.distributions
 

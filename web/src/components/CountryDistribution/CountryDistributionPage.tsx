@@ -1,5 +1,5 @@
 import { mapValues } from 'lodash'
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Col, Row } from 'reactstrap'
 
 import { Editable } from 'src/components/Common/Editable'
@@ -36,6 +36,10 @@ export function CountryDistributionPage() {
 
   const [places, setPlaces] = useState<Places>(initialPlaces)
   const [clusters, setClusters] = useState<ClusterState>(initialClusters)
+
+  useEffect(() => {
+    setPlaces(initialPlaces)
+  }, [initialPlaces])
 
   const regionsTitle = useMemo(() => (currentRegion === 'World' ? 'Countries' : 'Regions'), [currentRegion])
   const iconComponent = useMemo(() => (currentRegion === 'World' ? CountryFlag : undefined), [currentRegion])

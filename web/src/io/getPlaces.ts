@@ -23,21 +23,28 @@ export interface Places {
 }
 
 /** Constructs `Places` object from raw data  */
-export function getPlaces(countriesListRaw: { countryName: string; enabled: boolean }[]): Places {
+export function getPlaces(countriesListRaw: { countryName: string; enabled: boolean }[], regionName = 'World'): Places {
   const allCountries: CountriesMap = countriesListRaw.reduce((result, { countryName, enabled }) => {
     return { ...result, [countryName]: { countryName, enabled } }
   }, {})
 
-  const continents: ContinentsMap = Object.fromEntries(
-    Object.entries(regionCountryJson).map(([continentName, countryNames]) => {
+  let entries: [string, Continent][] = []
+  if (regionName === 'World') {
+    // "World" region has countries grouped into continents
+    entries = Object.entries(regionCountryJson).map(([continentName, countryNames]) => {
       const countries = pickBy(allCountries, (country) => countryNames.includes(country.countryName))
       return [continentName, { continentName, countries, enabled: true }]
-    }),
-  )
-
-  return {
-    continents,
+    })
+  } else {
+    entries = [
+      // Regions other than "World" have 1 "continent" and all "countries" are included into it
+      [regionName, { continentName: regionName, countries: allCountries, enabled: true }],
+    ]
   }
+
+  const continents: ContinentsMap = Object.fromEntries(entries)
+
+  return { continents }
 }
 
 export function getEnabledCountriesNames(places: Places): Set<string> {
