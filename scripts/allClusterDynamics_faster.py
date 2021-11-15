@@ -334,7 +334,7 @@ for clus in clus_to_run:
     clus_data = clusters[clus]
 
     if clus == "mink":
-        clus_display = "mink"
+        clus_build_name = "mink"
         clus_data["mink_meta"] = meta[meta["host"].apply(lambda x: x == "Mink")]
         clus_data["wanted_seqs"] = list(clus_data["mink_meta"]["strain"])
 
@@ -344,7 +344,7 @@ for clus in clus_to_run:
         )
 
     else:
-        clus_display = clusters[clus]["build_name"]
+        clus_build_name = clusters[clus]["build_name"]
         snps = clusters[clus]["snps"]
         if "snps2" not in clusters[clus]:
             clus_data["snps2"] = []
@@ -442,12 +442,12 @@ for clus in clus_to_run:
 
     clus_data = clusters[clus]
     wanted_seqs = clus_data["wanted_seqs"]
-    clus_display = clus_data["build_name"]
+    clus_build_name = clus_data["build_name"]
     display_cluster = clus_data["display_name"]
     clusterlist_output = clus_data["clusterlist_output"]
     out_meta_file = clus_data["out_meta_file"]
 
-    json_output[clus_display] = {}
+    json_output[clus_build_name] = {}
 
     # get metadata for these sequences
     cluster_meta = meta[meta["strain"].isin(wanted_seqs)].copy()
@@ -495,7 +495,7 @@ for clus in clus_to_run:
     #if print_files and dated_limit and "Q677" in display_cluster:
     # if want a dated limit, specify cluster and limit at top
     if print_files and dated_limit and dated_cluster in display_cluster:
-    ####### if dated_limit and "Q677" in clus_display: # (old)
+    ####### if dated_limit and "Q677" in clus_build_name: # (old)
         build_nam = clusters[clus]["build_name"]
         dated_clus_met = cluster_meta[cluster_meta["date_formatted"].apply(lambda x: x < datetime.datetime.strptime(dated_limit, "%Y-%m-%d"))]
         dated_want_seqs = list(dated_clus_met["strain"])
@@ -554,7 +554,8 @@ for clus in clus_to_run:
             alert_first_date[clus] = before_date
 
     # Make a version of Delta which does not have as much UK/India sequences for increased viewability
-    if clus == "21AS478":
+    #if clus == "21AS478":
+    if clus_build_name == "21A.Delta":
         nouk_delta_meta = cluster_meta[
             cluster_meta["country"].apply(lambda x: x != "United Kingdom" and x != "India")
         ]
@@ -588,7 +589,8 @@ for clus in clus_to_run:
             copyfile(noUK_clusterlist_output, copypath2)
 
     # Make a version of Delta for Europe
-    if clus == "21AS478":
+    #if clus == "21AS478":
+    if clus_build_name == "21A.Delta":
         eu_delta_meta = cluster_meta[
             cluster_meta["region"].apply(lambda x: x == "Europe")
         ]
@@ -622,7 +624,8 @@ for clus in clus_to_run:
             copyfile(eu_clusterlist_output, copypath2)
 
     # Make a version of  Alpha-Delta which only have Swiss sequences for increased focus
-    if clus in ["501YV1", "501YV2", "501YV3", "21AS478"]:
+    #if clus in ["501YV1", "501YV2", "501YV3", "21AS478"]:
+    if clus_build_name in ["20I.Alpha.V1", "20H.Beta.V2", "20J.Gamma.V3", "21A.Delta"]:
         swiss_voc_meta = cluster_meta[
             cluster_meta["country"].apply(lambda x: x == "Switzerland")
         ]
@@ -658,7 +661,7 @@ for clus in clus_to_run:
 
     #######
     # print out the table
-    table_file = f"{tables_path}{clus_display}_table.tsv"
+    table_file = f"{tables_path}{clus_build_name}_table.tsv"
     ordered_country = country_info_df.sort_values(by="first_seq")
     clus_data["country_info_ordered"] = ordered_country
 
@@ -680,17 +683,17 @@ for clus in clus_to_run:
         acknowledgement_table = cluster_meta.loc[:, ["gisaid_epi_isl"]]
         # do not put in acknowledgement folder, on request from GISAID
         # acknowledgement_table.to_csv(f'{acknowledgement_folder}{clus}_acknowledgement_table.tsv', sep="\t")
-        if clus != "DanishCluster":
+        if clus_build_name != "DanishCluster":
             acknowledgement_by_variant["acknowledgements"][
-                clus_display
+                clus_build_name
             ] = cluster_meta.loc[:, ["gisaid_epi_isl"]]["gisaid_epi_isl"].tolist()
 
         # only do this for 'all' runs as otherwise the main file won't be updated.
-        if clus != "DanishCluster" and "all" in clus_answer:
-            ack_out_folder = acknowledgement_folder_new + f"{clus_display}/"
+        if clus_build_name != "DanishCluster" and "all" in clus_answer:
+            ack_out_folder = acknowledgement_folder_new + f"{clus_build_name}/"
             if not os.path.exists(ack_out_folder):
                 os.mkdir(ack_out_folder)
-            ack_list = acknowledgement_by_variant["acknowledgements"][clus_display]
+            ack_list = acknowledgement_by_variant["acknowledgements"][clus_build_name]
             chunk_size = 1000
             chunks = [
                 ack_list[i : i + chunk_size]
@@ -699,8 +702,8 @@ for clus in clus_to_run:
 
             # get number & file names
             ack_file_names = ["{0:03}".format(i) for i in range(len(chunks))]
-            acknowledgement_keys["acknowledgements"][clus_display] = {}
-            acknowledgement_keys["acknowledgements"][clus_display]["numChunks"] = len(
+            acknowledgement_keys["acknowledgements"][clus_build_name] = {}
+            acknowledgement_keys["acknowledgements"][clus_build_name]["numChunks"] = len(
                 chunks
             )
 
@@ -807,7 +810,7 @@ for clus in clus_to_run:
 
     clus_data = clusters[clus]
     wanted_seqs = clus_data["wanted_seqs"]
-    clus_display = clus_data["build_name"]
+    clus_build_name = clus_data["build_name"]
     cluster_meta = clus_data["cluster_meta"]
     observed_countries = clus_data["observed_countries"]
     country_dates = clus_data["country_dates"]
@@ -943,7 +946,7 @@ for clus in clus_to_run:
     c_i[c_i["num_seqs"] > cutoff_num_seqs]
     #print(f"Countries with >{cutoff_num_seqs} seqs in cluster {clus}:")
     #print("\t", ", ".join(c_i[c_i["num_seqs"] > 10].index))
-    if len(c_i[c_i["num_seqs"] > 10]) > 0 and clus != "DanishCluster":
+    if len(c_i[c_i["num_seqs"] > 10]) > 0 and clus_build_name != "DanishCluster":
         clusters_tww.append(clus)
     print("")
 
@@ -996,7 +999,7 @@ for clus in clus_to_run:
 
     clus_data = clusters[clus]
     wanted_seqs = clus_data["wanted_seqs"]
-    clus_display = clus_data["build_name"]
+    clus_build_name = clus_data["build_name"]
     cluster_meta = clus_data["cluster_meta"]
     observed_countries = clus_data["observed_countries"]
     country_dates = clus_data["country_dates"]
@@ -1042,20 +1045,20 @@ for clus in clus_to_run:
             unsmoothed_cluster_count = unsmoothed_cluster_count[:-1]
             unsmoothed_total_count = unsmoothed_total_count[:-1]
 
-        json_output[clus_display][coun] = {}
-        json_output[clus_display][coun]["week"] = [
+        json_output[clus_build_name][coun] = {}
+        json_output[clus_build_name][coun]["week"] = [
             datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date
         ]
-        json_output[clus_display][coun]["total_sequences"] = [
+        json_output[clus_build_name][coun]["total_sequences"] = [
             int(x) for x in total_count
         ]
-        json_output[clus_display][coun]["cluster_sequences"] = [
+        json_output[clus_build_name][coun]["cluster_sequences"] = [
             int(x) for x in cluster_count
         ]
-        json_output[clus_display][coun]["unsmoothed_cluster_sequences"] = [
+        json_output[clus_build_name][coun]["unsmoothed_cluster_sequences"] = [
             int(x) for x in unsmoothed_cluster_count
         ]
-        json_output[clus_display][coun]["unsmoothed_total_sequences"] = [
+        json_output[clus_build_name][coun]["unsmoothed_total_sequences"] = [
             int(x) for x in unsmoothed_total_count
         ]
 
@@ -1067,8 +1070,8 @@ for clus in clus_to_run:
         ndone += 1
 
         if print_files:
-            with open(tables_path + f"{clus_display}_data.json", "w") as fh:
-                json.dump(json_output[clus_display], fh)
+            with open(tables_path + f"{clus_build_name}_data.json", "w") as fh:
+                json.dump(json_output[clus_build_name], fh)
 
 if "all" in clus_answer:
     for coun in countries_plotted.keys():
