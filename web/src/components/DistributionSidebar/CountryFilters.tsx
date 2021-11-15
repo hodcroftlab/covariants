@@ -136,7 +136,8 @@ export function CountryFilters({
                       key={continentName}
                       country={continentName}
                       enabled={enabled}
-                      withIcons={false}
+                      withIcons={withIcons}
+                      Icon={Icon}
                       onFilterChange={() => onFilterSelectRegion(continentName)}
                     />
                   )
