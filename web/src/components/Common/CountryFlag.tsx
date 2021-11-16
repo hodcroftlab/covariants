@@ -5,6 +5,7 @@ import iso3311a2 from 'iso-3166-1-alpha-2'
 import Flags from 'country-flag-icons/react/3x2'
 
 export const missingCountryCodes: Record<string, string> = {
+  'Kosovo': 'XK',
   'Bonaire': 'BQ',
   'Curacao': 'CW',
   'North Macedonia': 'MK',
@@ -12,6 +13,7 @@ export const missingCountryCodes: Record<string, string> = {
   'Sint Maarten': 'SX',
   'South Korea': 'KR',
   'USA': 'US',
+  'Vietnam': 'VN',
 }
 
 export const FlagWrapper = styled.div<{ $countryCode?: string }>`
