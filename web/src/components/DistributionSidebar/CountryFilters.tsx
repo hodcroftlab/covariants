@@ -12,10 +12,9 @@ import {
   Row,
 } from 'reactstrap'
 import { getContinents, getCountries, Places } from 'src/io/getPlaces'
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 
 import type { CountryFlagProps } from 'src/components/Common/CountryFlag'
-import { theme } from 'src/theme'
 import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 import { ColoredHorizontalLineIcon } from '../Common/ColoredHorizontalLineIcon'
@@ -40,6 +39,42 @@ const FlagAlignment = styled.span`
   }
 `
 
+export interface IconOrLineComponentProps {
+  country: string
+  Icon?: React.ComponentType<CountryFlagProps>
+}
+
+export function IconComponent({ country, Icon }: IconOrLineComponentProps) {
+  return (
+    <FlagAlignment>
+      {Icon && <Icon country={country} withFallback />}
+      <span>{country}</span>
+    </FlagAlignment>
+  )
+}
+export function LineComponent({ country }: IconOrLineComponentProps) {
+  const theme = useTheme()
+  const { stroke, strokeDasharray } = useMemo(() => {
+    return {
+      stroke: getCountryColor(country),
+      strokeDasharray: getCountryStrokeDashArray(country),
+    }
+  }, [country])
+
+  return (
+    <>
+      <ColoredHorizontalLineIcon
+        width={theme.plot.country.legend.lineIcon.width}
+        height={theme.plot.country.legend.lineIcon.height}
+        stroke={stroke}
+        strokeWidth={theme.plot.country.legend.lineIcon.thickness}
+        strokeDasharray={strokeDasharray}
+      />
+      <span className="ml-2">{country}</span>
+    </>
+  )
+}
+
 export interface CountryFilterCheckboxProps {
   country: string
   enabled: boolean
@@ -56,27 +91,13 @@ export function CountryFilterCheckbox({
   onFilterChange,
 }: CountryFilterCheckboxProps) {
   const onChange = useCallback(() => onFilterChange(country), [country, onFilterChange])
+  const IconOrLine = useMemo(() => (withIcons ? IconComponent : LineComponent), [withIcons])
+
   return (
     <FormGroup check>
       <Label htmlFor={CSS.escape(country)} check>
         <Input id={CSS.escape(country)} type="checkbox" checked={enabled} onChange={onChange} />
-        {withIcons ? (
-          <FlagAlignment>
-            {Icon && <Icon country={country} withFallback />}
-            <span>{country}</span>
-          </FlagAlignment>
-        ) : (
-          <>
-            <ColoredHorizontalLineIcon
-              width={theme.plot.country.legend.lineIcon.width}
-              height={theme.plot.country.legend.lineIcon.height}
-              stroke={getCountryColor(country)}
-              strokeWidth={theme.plot.country.legend.lineIcon.thickness}
-              strokeDasharray={getCountryStrokeDashArray(country)}
-            />
-            <span className="ml-2">{country}</span>
-          </>
-        )}
+        <IconOrLine Icon={Icon} country={country} />
       </Label>
     </FormGroup>
   )
@@ -136,7 +157,7 @@ export function CountryFilters({
                       key={continentName}
                       country={continentName}
                       enabled={enabled}
-                      withIcons={withIcons}
+                      withIcons
                       Icon={Icon}
                       onFilterChange={() => onFilterSelectRegion(continentName)}
                     />
