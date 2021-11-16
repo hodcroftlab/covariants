@@ -1,4 +1,4 @@
-import React, { FC, PureComponent, ReactElement, SVGProps, useMemo } from 'react'
+import React, { FC, ReactElement, SVGProps, useMemo } from 'react'
 
 import styled from 'styled-components'
 import iso3311a2 from 'iso-3166-1-alpha-2'
