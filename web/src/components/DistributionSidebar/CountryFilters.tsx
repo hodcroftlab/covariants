@@ -127,7 +127,7 @@ export function CountryFilters({
             </Col>
           </Row>
 
-          <Row noGutters>
+          <Row noGutters className="pb-3 pt-3 border-bottom border-top">
             <Col className="d-flex">
               <Form>
                 {continents.map(({ continentName, enabled }) => {
