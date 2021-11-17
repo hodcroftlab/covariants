@@ -460,6 +460,13 @@ if __name__ == "__main__":
     with open(os.path.join(output_path, "perCountryData.json"), "w") as fh:
         json.dump(regions_data, fh, indent=2, sort_keys=True)
 
+    geneva_data = convert_region_data("Geneva", "GenevaClusters_data.json")
+    geneva_regions_data = {"regions": []}
+    geneva_regions_data["regions"].append(geneva_data)
+
+    with open(os.path.join(output_path, "perCountryDataGeneva.json"), "w") as fh:
+        json.dump(geneva_regions_data, fh, indent=2, sort_keys=True)
+
     params = {
         "min_date": min_date,
         "max_date": max_date,
