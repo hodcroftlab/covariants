@@ -3,12 +3,11 @@ import React from 'react'
 
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
 import styled from 'styled-components'
+
+import type { ClusterDistributionDatum } from 'src/io/getPerClusterData'
 import { Link } from 'src/components/Link/Link'
 import { PlotCardTitle } from 'src/components/Common/PlotCardTitle'
-import {
-  ClusterDistributionDatum,
-  ClusterDistributionPlot,
-} from 'src/components/ClusterDistribution/ClusterDistributionPlot'
+import { ClusterDistributionPlot } from 'src/components/ClusterDistribution/ClusterDistributionPlot'
 
 export interface ClusterDistributionPlotCardProps {
   clusterBuildName: string
