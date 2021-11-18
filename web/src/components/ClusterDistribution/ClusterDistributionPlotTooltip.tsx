@@ -6,7 +6,6 @@ import { ColoredHorizontalLineIcon } from 'src/components/Common/ColoredHorizont
 import { theme } from 'src/theme'
 import styled from 'styled-components'
 
-import type { ClusterDistributionDatum } from 'src/components/ClusterDistribution/ClusterDistributionPlot'
 import type { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 import { selectPerCountryTooltipSortBy, selectPerCountryTooltipSortReversed } from 'src/state/ui/ui.selectors'
 import { formatDateWeekly, formatProportion } from 'src/helpers/format'
@@ -62,10 +61,12 @@ export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotToo
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const data = payload[0]?.payload as ClusterDistributionDatum
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const week = formatDateWeekly(data?.week)
 
   let payloadSorted = sortBy(payload, perCountryTooltipSortBy === 'country' ? 'name' : 'value')

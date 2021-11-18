@@ -39,6 +39,18 @@ name_table = [
         "others": [],
     },
     {
+        "clade": "21I (Delta)",
+        "who": "Delta",
+        "lineages": [],
+        "others": [],
+    },
+    {
+        "clade": "21J (Delta)",
+        "who": "Delta",
+        "lineages": [],
+        "others": [],
+    },
+    {
         "clade": "21B (Kappa)",
         "who": "Kappa",
         "lineages": [

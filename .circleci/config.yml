@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  git-shallow-clone: guitarrapc/git-shallow-clone@2.3.0
+
 major_branches_only: &major_branches_only
   filters:
     branches:
@@ -19,7 +22,9 @@ jobs:
       PROD_ENABLE_REDUX_DEV_TOOLS: 0
 
     steps:
-      - checkout
+      - git-shallow-clone/checkout:
+          depth: 1
+          fetch_depth: 1
 
       - restore_cache:
           name: "Restore web application build cache"
@@ -34,7 +39,7 @@ jobs:
             sudo ./aws/install --update
 
       - run:
-          name: "Build web application"
+          name: "Build web application (branch << pipeline.git.branch >>)"
           command: |
             set -x
             cd web
@@ -51,41 +56,65 @@ jobs:
             - web/.build/production/tmp/cache
 
       - run:
-          name: "Clear AWS S3 bucket (branch << pipeline.git.branch >>)"
+          name: "Clear AWS S3 bucket (branch << pipeline.git.branch >>): html files, web root, app bundle"
           command: |
-            aws s3 rm s3://${AWS_S3_BUCKET} --recursive
+            aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "proteins/*" --exclude "acknowledgements/*"
 
       - run:
-          name: "Deploy web bundle to AWS S3 (branch << pipeline.git.branch >>)"
+          name: "Deploy to AWS S3 (branch << pipeline.git.branch >>): app bundle"
           command: |
             cd web/.build/production/web
             aws s3 cp --recursive --cache-control "max-age=2592000, public" "_next/" "s3://${AWS_S3_BUCKET}/_next/"
 
       - run:
-          name: "Deploy web root to AWS S3 (branch << pipeline.git.branch >>)"
+          name: "Deploy to AWS S3 (branch << pipeline.git.branch >>): web root"
           command: |
             cd web/.build/production/web
-            aws s3 cp --recursive --exclude "_next/*" --exclude "*.html" "./" "s3://${AWS_S3_BUCKET}/"
+            aws s3 cp --recursive \
+              --exclude "_next/*" \
+              --exclude "*.html" \
+              --exclude "acknowledgements/*" \
+              --exclude "proteins/*" \
+            "./" "s3://${AWS_S3_BUCKET}/"
 
       - run:
-          name: "Deploy html files to AWS S3 (branch << pipeline.git.branch >>)"
+          name: "Deploy to AWS S3 (branch << pipeline.git.branch >>): html files"
           command: |
             cd web/.build/production/web
-            find * -type f -name "*.html" -exec bash -c '\
-            aws s3 cp \
-              --content-type "text/html" \
-              --cache-control "no-cache" \
-              --metadata-directive REPLACE \
-                $1 \
-                s3://${AWS_S3_BUCKET}/${1%.html}' \
-            - "{}" \;
+            find * -type f -name "*.html" -print0 | xargs -0 -P4 -n1 -I '{}' -- bash -c '\
+              file={}; \
+              aws s3 cp \
+                --content-type "text/html" \
+                --cache-control "no-cache" \
+                --metadata-directive REPLACE \
+                  $file \
+                  s3://${AWS_S3_BUCKET}/${file%.html}'
 
       - run:
-          name: "Invalidate AWS Cloudfront cache"
+          name: "Invalidate AWS Cloudfront cache (branch << pipeline.git.branch >>): html files, web root, app bundle"
           command: |
             aws cloudfront create-invalidation \
               --distribution-id ${AWS_CLOUDFRONT_DISTRIBUTION_ID} \
               --paths "/*"
+
+      - run:
+          name: "Clear AWS S3 bucket (branch << pipeline.git.branch >>): large static files"
+          command: |
+            aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "*" --include "proteins/" --include "acknowledgements/"
+
+      - run:
+          name: "Deploy to AWS S3 (branch << pipeline.git.branch >>): large static files "
+          command: |
+            cd web/.build/production/web
+            aws s3 cp --recursive --cache-control "max-age=7200, public" --metadata-directive REPLACE "proteins/" "s3://${AWS_S3_BUCKET}/proteins/"
+            aws s3 cp --recursive --cache-control "max-age=7200, public" --metadata-directive REPLACE "acknowledgements/" "s3://${AWS_S3_BUCKET}/acknowledgements/"
+
+      - run:
+          name: "Invalidate AWS Cloudfront cache (branch << pipeline.git.branch >>): large static files"
+          command: |
+            aws cloudfront create-invalidation \
+              --distribution-id ${AWS_CLOUDFRONT_DISTRIBUTION_ID} \
+              --paths "/acknowledgements/*" "/proteins/*"
 
 workflows:
   version: 2

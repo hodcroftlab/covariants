@@ -397,6 +397,69 @@ bad_seqs = {
     "USA/NY-MSHSPSP-PV21129/2020" : "2020-10-10", # 20C/S484
     "USA/NY-MSHSPSP-PV21166/2020" : "2020-10-09", # 20C/S484
     "USA/NY-MSHSPSP-PV21203/2020" : "2020-10-13", # 20C/S484
+    "Pakistan/UOL-IMBB-KKU-25/2021" : "2021-10-22", #future date
+    "Pakistan/UOL-IMBB-KKU-26/2021" : "2021-10-23", #future date
+    "England/PHEP-YYBYUTJ/2020" : "2020-08-03", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0168/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0169/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0170/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0172/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0200/2020" : "2020-07-29", #delta
+    "USA/CA-SEARCH-109796/2020" : "2020-08-31", #delta
+    "USA/TX-HMH-MCoV-48794/2020" : "2020-07-15", #delta
+    "USA/TX-HMH-MCoV-49501/2020" : "2020-07-13", #delta
+    "Italy/VEN-UA-ORC00183/2020" : "2020-03-14", #alpha
+    "Brazil/SP-IB_112782/2020" : "2020-08-07", #gamma
+    "Japan/PG-149116/2020" : "2020-08-30", #Delta
+    "Germany/NW-RKI-I-291769/2020" : "2020-10-13", #delta
+    "Germany/NW-RKI-I-291770/2020" : "2020-10-13", #delta
+    "Germany/NW-RKI-I-291771/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291772/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291773/2020" : "2020-10-17", #delta
+    "Germany/NW-RKI-I-291774/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291775/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291776/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291777/2020" : "2020-10-17", #delta
+    "Germany/NW-RKI-I-291778/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291779/2020" : "2020-10-17", #delta
+    "Germany/NW-RKI-I-291780/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291781/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291782/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291783/2020" : "2020-10-13", #delta
+    "Germany/NW-RKI-I-291784/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291786/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291788/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291789/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291790/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291791/2020" : "2020-10-16", #delta
+    "Germany/NW-RKI-I-291792/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291793/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291794/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291795/2020" : "2020-10-17", #delta
+    "Germany/NW-RKI-I-291796/2020" : "2020-10-13", #delta
+    "Germany/NW-RKI-I-291797/2020" : "2020-10-16", #delta
+    "Germany/NW-RKI-I-291798/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291799/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291800/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291801/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291802/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291803/2020" : "2020-10-17", #delta
+    "Germany/NW-RKI-I-291804/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291805/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291806/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291808/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291809/2020" : "2020-10-16", #delta
+    "Germany/NW-RKI-I-291810/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291811/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291812/2020" : "2020-10-16", #delta
+    "Germany/SL-RKI-I-297962/2020" : "2020-10-17", #delta
+    "USA/NY-COV-900/2020" : "2020-06-06", #Alpha
+    "Peru/LIM-INS-8425/2020" : "2020-07-21", # lambda
+    "Netherlands/ZH-EMC-3837/2020" : "2020-05-10", #S98
+    "Netherlands/ZH-EMC-3838/2020" : "2020-03-12", #S98
+    "Netherlands/ZH-EMC-3839/2020" : "2020-04-12", #S98
+    "England/NORT-YYNW7P/2020" : "2020-10-27", #delta
+    "USA/TX-HMH-MCoV-34911/2020" : "2020-08-13", #Alpha
 
     #bunch of bad sequences from the UK which are supposedly Delta,
     #from April 2020...

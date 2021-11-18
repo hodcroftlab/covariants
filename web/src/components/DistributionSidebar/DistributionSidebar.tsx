@@ -2,7 +2,8 @@ import { get } from 'lodash'
 import React, { useState, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
 
-import type { ClusterState, CountryState } from 'src/components/CountryDistribution/CountryDistributionPage'
+import type { ClusterState } from 'src/io/getPerCountryData'
+import type { Places } from 'src/io/getPlaces'
 import { getClusterNames } from 'src/io/getClusters'
 import { ClusterFilters } from './ClusterFilters'
 import { CountryFilters } from './CountryFilters'
@@ -28,47 +29,50 @@ export function sortClusters(clusters?: ClusterState): ClusterState | undefined 
 
 export interface DistributionSidebarProps {
   clusters?: ClusterState
-  countries?: CountryState
+  places: Places
   regionsTitle: string
   clustersCollapsedByDefault?: boolean
-  coutriesCollapsedByDefault?: boolean
+  countriesCollapsedByDefault?: boolean
   enabledFilters: string[]
   Icon?: React.ComponentType<CountryFlagProps>
   onClusterFilterChange(cluster: string): void
   onClusterFilterSelectAll(): void
   onClusterFilterDeselectAll(): void
   onCountryFilterChange(country: string): void
+  onRegionFilterChange(regionName: string): void
   onCountryFilterSelectAll(): void
   onCountryFilterDeselectAll(): void
 }
 
 export function DistributionSidebar({
   clusters,
-  countries,
+  places,
   regionsTitle,
   clustersCollapsedByDefault = true,
-  coutriesCollapsedByDefault = true,
+  countriesCollapsedByDefault = true,
   enabledFilters,
   Icon,
   onClusterFilterChange,
   onClusterFilterSelectAll,
   onClusterFilterDeselectAll,
+  onRegionFilterChange,
   onCountryFilterChange,
   onCountryFilterSelectAll,
   onCountryFilterDeselectAll,
 }: DistributionSidebarProps) {
-  const [clustersColapsed, setClustersCollapsed] = useState(clustersCollapsedByDefault)
-  const [countriesCollapsed, setCountriesCollapsed] = useState(coutriesCollapsedByDefault)
+  const [clustersCollapsed, setClustersCollapsed] = useState(clustersCollapsedByDefault)
+  const [countriesCollapsed, setCountriesCollapsed] = useState(countriesCollapsedByDefault)
 
   const clustersSorted = useMemo(() => sortClusters(clusters), [clusters])
 
   const availableFilters: { [key: string]: React.ReactNode } = useMemo(
     () => ({
-      countries: countries && (
+      countries: (
         <CountryFilters
           key="country-filters"
           regionsTitle={regionsTitle}
-          countries={countries}
+          places={places}
+          onFilterSelectRegion={onRegionFilterChange}
           onFilterChange={onCountryFilterChange}
           onFilterSelectAll={onCountryFilterSelectAll}
           onFilterDeselectAll={onCountryFilterDeselectAll}
@@ -76,14 +80,15 @@ export function DistributionSidebar({
           setCollapsed={setCountriesCollapsed}
         />
       ),
-      countriesWithIcons: countries && (
+      countriesWithIcons: (
         <CountryFilters
           key="country-filters"
           regionsTitle={regionsTitle}
           withIcons
           Icon={Icon}
-          countries={countries}
+          places={places}
           onFilterChange={onCountryFilterChange}
+          onFilterSelectRegion={onRegionFilterChange}
           onFilterSelectAll={onCountryFilterSelectAll}
           onFilterDeselectAll={onCountryFilterDeselectAll}
           collapsed={countriesCollapsed}
@@ -97,15 +102,15 @@ export function DistributionSidebar({
           onFilterChange={onClusterFilterChange}
           onFilterSelectAll={onClusterFilterSelectAll}
           onFilterDeselectAll={onClusterFilterDeselectAll}
-          collapsed={clustersColapsed}
+          collapsed={clustersCollapsed}
           setCollapsed={setClustersCollapsed}
         />
       ),
     }),
     [
-      clustersColapsed,
+      Icon,
+      clustersCollapsed,
       clustersSorted,
-      countries,
       countriesCollapsed,
       onClusterFilterChange,
       onClusterFilterDeselectAll,
@@ -113,8 +118,9 @@ export function DistributionSidebar({
       onCountryFilterChange,
       onCountryFilterDeselectAll,
       onCountryFilterSelectAll,
+      onRegionFilterChange,
+      places,
       regionsTitle,
-      Icon,
     ],
   )
 

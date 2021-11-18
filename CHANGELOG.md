@@ -1,5 +1,25 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2021-11-18
+
+### Region Selection on Per Country page
+
+- In the 'countries' menu on the left, one can now select a whole region (Europe, Asia) and just countries from selected regions will be displayed
+
+## 2021-11-15
+
+- Added new Nextstrain Delta clades 21I (Delta) & 21J (Delta). Both are part of the WHO Delta VoC
+- Update pages for Delta, Kappa, and references to the four WHO VoC
+- Update colors on the Per Country page
+
+## 2021-11-10
+
+### PDF plots removed
+
+- Less well-done PDF plots of the same information as is on the website are no longer generated, and removed from the github
+- Markdown versions of tables are also no longer generated, and removed from the github
+- Many old files have been deleted from the github in a cleanup
+
 ## 2021-10-11
 
 ### Update of 'Per Variant' cluster threshold
