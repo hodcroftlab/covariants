@@ -937,7 +937,7 @@ print(f"Date-binning data took {round((t1-t0)/60,1)} min to run\n\n")
 
 t0 = time.time()
 
-cutoff_num_seqs = 400
+cutoff_num_seqs = 500
 
 # This prints countries with more than cutoff_num_seqs PER CLUSTER - messy output.
 clusters_tww = []
@@ -1067,11 +1067,10 @@ for clus in clus_to_run:
         # And I think this is most intuitive - so setting all to 'True'
         countries_plotted[coun] = "True" #"False"
 
-        ndone += 1
-
         if print_files:
             with open(tables_path + f"{clus_build_name}_data.json", "w") as fh:
                 json.dump(json_output[clus_build_name], fh)
+    ndone += 1
 
 if "all" in clus_answer:
     for coun in countries_plotted.keys():

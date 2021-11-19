@@ -193,17 +193,16 @@ country_list_4 = [
     "Angola",               #2
     "Trinidad and Tobago",  #3
     "Peru",                 #4
-    "Uganda",               #5
+    "Maldives",               #5
     "Lebanon",              #6
     "New Zealand",          #7
-    "Suriname",             #8
+    "Vietnam",             #8
     "Costa Rica",           #9
     "Bahrain",              #10
     "Pakistan",             #11
     "Kosovo",               #12
     "Bonaire",              #13
-    "Guadeloupe",           #14
-    "Papua New Guinea",     #15
+    "Papua New Guinea",     #14
 ]
 
 country_styles_1 = {
