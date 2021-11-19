@@ -115,10 +115,6 @@
     "c": "#9900cc",
     "ls": "-."
   },
-  "Guadeloupe": {
-    "c": "#0000ff",
-    "ls": "dotted"
-  },
   "Iceland": {
     "c": "#0000ff",
     "ls": "-"
@@ -175,6 +171,10 @@
     "c": "#cab2d6",
     "ls": "-."
   },
+  "Maldives": {
+    "c": "#e31a1c",
+    "ls": "dotted"
+  },
   "Mexico": {
     "c": "#e31a1c",
     "ls": "-."
@@ -200,7 +200,7 @@
     "ls": "dotted"
   },
   "Papua New Guinea": {
-    "c": "#a6a6a6",
+    "c": "#0000ff",
     "ls": "dotted"
   },
   "Peru": {
@@ -263,10 +263,6 @@
     "c": "#0000ff",
     "ls": "-."
   },
-  "Suriname": {
-    "c": "#6a3d9a",
-    "ls": "dotted"
-  },
   "Sweden": {
     "c": "#9900cc",
     "ls": "-"
@@ -291,12 +287,12 @@
     "c": "#6a3d9a",
     "ls": "-"
   },
-  "Uganda": {
-    "c": "#e31a1c",
-    "ls": "dotted"
-  },
   "United Kingdom": {
     "c": "#1f78b4",
     "ls": "-"
+  },
+  "Vietnam": {
+    "c": "#6a3d9a",
+    "ls": "dotted"
   }
 }
