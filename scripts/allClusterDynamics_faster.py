@@ -255,7 +255,8 @@ muts = pd.read_csv(muts_file, sep="\t", index_col=False)
 t0 = time.time()
 
 # Read metadata file
-input_meta = "data/downloaded_gisaid.tsv"  # "data/metadata.tsv"
+#input_meta = "data/downloaded_gisaid.tsv"  
+input_meta = "data/metadata.tsv"
 meta = pd.read_csv(input_meta, sep="\t", dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str}, index_col=False)
 meta = meta.fillna("")
 

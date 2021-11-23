@@ -460,6 +460,7 @@ bad_seqs = {
     "Netherlands/ZH-EMC-3839/2020" : "2020-04-12", #S98
     "England/NORT-YYNW7P/2020" : "2020-10-27", #delta
     "USA/TX-HMH-MCoV-34911/2020" : "2020-08-13", #Alpha
+    "Colombia/ANT-LDSP461/2020" : "2020-10-14", #Mu
 
     #Bad sequences from Germany - supposedly Delta in Oct 2020 - unlikely
     "Germany/NW-RKI-I-291769/2020" : "2020-10-13", #delta
