@@ -457,7 +457,7 @@ for clus in clus_to_run:
 
     # if wanted seqs are part of a Nextclade designated variant, remove from that count & use this one.
     # ONLY IF PLOTTING and if this run ISN'T an official run
-    if clus_data["graphing"] & "nextstrain_name" not in clus_data:
+    if clus_data["graphing"] and "nextstrain_name" not in clus_data:
         print(f"Removing {clus} samples from other Nextstrain builds")
         clades_double = cluster_meta["Nextstrain_clade"].unique()
         clades_to_remove = [x for x in clades_double if x in nextstrain_name_to_clus]
