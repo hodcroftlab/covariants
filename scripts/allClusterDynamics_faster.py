@@ -181,7 +181,7 @@ if division_answer in ["y", "Y", "yes", "YES", "Yes"]:
     selected_country = ["USA", "Switzerland"]
 
 # default is 222, but ask user what they want - or run all.
-clus_to_run = ["S222"]
+clus_to_run = ["EU1"]
 reask = True
 
 while reask:
@@ -432,6 +432,7 @@ for clus in [x for x in clus_to_run if x != "mink"]:
 t1 = time.time()
 print(f"Finding sequences took {round((t1-t0)/60,1)} min to run")
 
+nextstrain_name_to_clus = {clusters[clus]["nextstrain_name"]: clus for clus in clus_to_run if "nextstrain_name" in clusters[clus]}
 
 ##################################
 ##################################
@@ -453,6 +454,29 @@ for clus in clus_to_run:
     # get metadata for these sequences
     cluster_meta = meta[meta["strain"].isin(wanted_seqs)].copy()
     clus_data["cluster_meta"] = cluster_meta
+
+    # if wanted seqs are part of a Nextclade designated variant, remove from that count & use this one.
+    # ONLY IF PLOTTING and if this run ISN'T an official run
+    if clus_data["graphing"] and "nextstrain_name" not in clus_data:
+        print(f"Removing {clus} samples from other Nextstrain builds")
+        clades_double = cluster_meta["Nextstrain_clade"].unique()
+        clades_to_remove = [x for x in clades_double if x in nextstrain_name_to_clus]
+
+        for cla in clades_to_remove:
+            print(f"Removing {clus} samples from {cla}")
+            other_meta = clusters[nextstrain_name_to_clus[cla]]["cluster_meta"]
+            other_wanted = clusters[nextstrain_name_to_clus[cla]]["wanted_seqs"]
+            #get the ones to remove from the other cluster 'record'
+            to_remove = cluster_meta[cluster_meta["Nextstrain_clade"] == cla].strain
+            #remove from meta
+            bad_seqs = other_meta.loc[other_meta['strain'].isin(to_remove)]
+            bad_indices = bad_seqs.index
+            other_meta.drop(bad_indices, inplace=True)
+            #remove from wanted list
+            new_wanted = list(set(other_wanted) - set(to_remove))
+            #copy back
+            clusters[nextstrain_name_to_clus[cla]]["wanted_seqs"] = new_wanted
+
 
     # re-set wanted_seqs
     wanted_seqs = list(cluster_meta["strain"])
