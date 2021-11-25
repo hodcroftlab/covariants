@@ -8,11 +8,11 @@
         "S:T20N",
         "S:T19R",
         "S:E154K",
-        "S:S13I",
+        "S:G142-",
         "S:Q52R",
         "S:L5F",
         "S:G75V",
-        "S:Y145N",
+        "S:R346K",
         "S:V126A"
       ]
     },
@@ -24,11 +24,11 @@
         "S:D138Y",
         "S:E156-",
         "S:Q1071H",
-        "S:W152C",
-        "S:A67V",
+        "S:V143-",
+        "S:Q677H",
         null,
         "S:T76I",
-        "S:R346K",
+        null,
         "S:H245Y"
       ]
     },
@@ -40,8 +40,8 @@
         "S:R190S",
         "S:F157-",
         null,
-        null,
-        "S:Q677H",
+        "S:N211-",
+        "S:F888L",
         null,
         "S:R246-",
         null,
@@ -53,11 +53,11 @@
       "mutations": [
         null,
         null,
-        "S:H655Y",
+        "S:V1176F",
         "S:R158G",
         null,
+        "S:L212I",
         null,
-        "S:F888L",
         null,
         "S:S247-",
         null,
@@ -69,10 +69,10 @@
       "mutations": [
         null,
         null,
-        "S:V1176F",
+        null,
         "S:T478K",
         null,
-        null,
+        "S:G339D",
         null,
         null,
         "S:Y248-",
@@ -88,7 +88,7 @@
         null,
         null,
         null,
-        null,
+        "S:S371L",
         null,
         null,
         "S:L249-",
@@ -104,7 +104,7 @@
         null,
         null,
         null,
-        null,
+        "S:S373P",
         null,
         null,
         "S:T250-",
@@ -120,7 +120,7 @@
         null,
         null,
         null,
-        null,
+        "S:N440K",
         null,
         null,
         "S:P251-",
@@ -136,7 +136,7 @@
         null,
         null,
         null,
-        null,
+        "S:G446S",
         null,
         null,
         "S:G252-",
@@ -152,7 +152,7 @@
         null,
         null,
         null,
-        null,
+        "S:T547K",
         null,
         null,
         "S:F490S",
@@ -168,10 +168,106 @@
         null,
         null,
         null,
-        null,
+        "S:N679K",
         null,
         null,
         "S:T859N",
+        null,
+        null
+      ]
+    },
+    {
+      "index": 11,
+      "mutations": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:N764K",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "index": 12,
+      "mutations": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:D796Y",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "index": 13,
+      "mutations": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:N856K",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "index": 14,
+      "mutations": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:Q954H",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "index": 15,
+      "mutations": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:N969K",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "index": 16,
+      "mutations": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:L981F",
+        null,
+        null,
+        null,
         null,
         null
       ]
@@ -218,7 +314,7 @@
         null,
         "S:P681R",
         "S:P681R",
-        null,
+        "S:P681H",
         null,
         null,
         null,
@@ -234,7 +330,7 @@
         null,
         null,
         null,
-        null,
+        "S:Y144-",
         "S:Y144-",
         null,
         null,
@@ -259,22 +355,6 @@
       ]
     },
     {
-      "pos": 452,
-      "presence": [
-        null,
-        null,
-        null,
-        "S:L452R",
-        "S:L452R",
-        "S:L452R",
-        null,
-        null,
-        "S:L452Q",
-        null,
-        null
-      ]
-    },
-    {
       "pos": 69,
       "presence": [
         "S:H69-",
@@ -282,7 +362,7 @@
         null,
         null,
         null,
-        null,
+        "S:H69-",
         "S:H69-",
         null,
         null,
@@ -298,12 +378,60 @@
         null,
         null,
         null,
-        null,
+        "S:V70-",
         "S:V70-",
         null,
         null,
         null,
         "S:V70-"
+      ]
+    },
+    {
+      "pos": 95,
+      "presence": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:T95I",
+        null,
+        "S:T95I",
+        null,
+        "S:T95I",
+        null
+      ]
+    },
+    {
+      "pos": 417,
+      "presence": [
+        null,
+        "S:K417N",
+        "S:K417T",
+        null,
+        null,
+        "S:K417N",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "pos": 452,
+      "presence": [
+        null,
+        null,
+        null,
+        "S:L452R",
+        "S:L452R",
+        null,
+        null,
+        null,
+        "S:L452Q",
+        null,
+        null
       ]
     },
     {
@@ -371,17 +499,33 @@
       ]
     },
     {
-      "pos": 417,
+      "pos": 655,
       "presence": [
         null,
-        "S:K417N",
-        "S:K417T",
+        null,
+        "S:H655Y",
+        null,
+        null,
+        "S:H655Y",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "pos": 253,
+      "presence": [
         null,
         null,
         null,
         null,
         null,
         null,
+        null,
+        "S:D253G",
+        "S:D253N",
         null,
         null
       ]
@@ -400,22 +544,6 @@
         null,
         null,
         "S:P26S"
-      ]
-    },
-    {
-      "pos": 253,
-      "presence": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        "S:D253G",
-        "S:D253N",
-        null,
-        null
       ]
     },
     {
@@ -467,18 +595,34 @@
       ]
     },
     {
-      "pos": 95,
+      "pos": 145,
       "presence": [
         null,
         null,
         null,
         null,
         null,
+        "S:Y145D",
         null,
         null,
-        "S:T95I",
         null,
-        "S:T95I",
+        "S:Y145N",
+        null
+      ]
+    },
+    {
+      "pos": 67,
+      "presence": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:A67V",
+        "S:A67V",
+        null,
+        null,
+        null,
         null
       ]
     },
@@ -533,6 +677,22 @@
       ]
     },
     {
+      "pos": 67,
+      "presence": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:A67V",
+        "S:A67V",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
       "pos": 69,
       "presence": [
         "S:H69-",
@@ -540,7 +700,7 @@
         null,
         null,
         null,
-        null,
+        "S:H69-",
         "S:H69-",
         null,
         null,
@@ -556,7 +716,7 @@
         null,
         null,
         null,
-        null,
+        "S:V70-",
         "S:V70-",
         null,
         null,
@@ -572,7 +732,7 @@
         null,
         null,
         null,
-        null,
+        "S:T95I",
         null,
         "S:T95I",
         null,
@@ -588,12 +748,28 @@
         null,
         null,
         null,
-        null,
+        "S:Y144-",
         "S:Y144-",
         null,
         null,
         "S:Y144S",
         "S:Y144-"
+      ]
+    },
+    {
+      "pos": 145,
+      "presence": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:Y145D",
+        null,
+        null,
+        null,
+        "S:Y145N",
+        null
       ]
     },
     {
@@ -668,7 +844,7 @@
         "S:K417T",
         null,
         null,
-        null,
+        "S:K417N",
         null,
         null,
         null,
@@ -684,7 +860,7 @@
         null,
         "S:L452R",
         "S:L452R",
-        "S:L452R",
+        null,
         null,
         null,
         "S:L452Q",
@@ -741,6 +917,22 @@
       ]
     },
     {
+      "pos": 655,
+      "presence": [
+        null,
+        null,
+        "S:H655Y",
+        null,
+        null,
+        "S:H655Y",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
       "pos": 681,
       "presence": [
         "S:P681H",
@@ -748,7 +940,7 @@
         null,
         "S:P681R",
         "S:P681R",
-        null,
+        "S:P681H",
         null,
         null,
         null,
@@ -827,7 +1019,7 @@
     "20J (Gamma, V3)\n(P.1)",
     "21A (Delta)\n(B.1.617.2)",
     "21B (Kappa)\n(B.1.617.1)",
-    "21C (Epsilon)\n(B.1.427/9)",
+    "21K\n(B.1.1.529)",
     "21D (Eta)\n(B.1.525)",
     "21F (Iota)\n(B.1.526)",
     "21G (Lambda)\n(C.37)",
