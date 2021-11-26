@@ -51,14 +51,6 @@ name_table = [
         "others": [],
     },
     {
-        "clade": "21K",
-        "who": None,
-        "lineages": [
-            {"name": "B.1.1.529", "url": "https://cov-lineages.org/lineages/lineage_B.1.1.529.html"}
-        ],
-        "others": [],
-    },
-    {
         "clade": "21B (Kappa)",
         "who": "Kappa",
         "lineages": [
@@ -108,6 +100,14 @@ name_table = [
         "who": "Mu",
         "lineages": [
             {"name": "B.1.621", "url": None}
+        ],
+        "others": [],
+    },
+    {
+        "clade": "21K",
+        "who": None,
+        "lineages": [
+            {"name": "B.1.1.529", "url": "https://cov-lineages.org/lineages/lineage_B.1.1.529.html"}
         ],
         "others": [],
     },
