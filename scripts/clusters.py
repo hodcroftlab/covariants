@@ -356,7 +356,7 @@ clusters = {
         "snps": [25000,25584,8393], #25000T,25584T,8393A
         "cluster_data": [],
         "nextstrain_build": True,
-        "graphing": False,
+        "graphing": True,
         "type": "variant",
         "important": True,
         "country_info": [],
@@ -424,10 +424,17 @@ clusters = {
                 {"gene": "ORF1a", "left": "I", "pos": 3758, "right": "V"},
                 {"gene": "ORF1b", "left": "P", "pos": 314, "right": "L"},
                 {"gene": "ORF1b", "left": "I", "pos": 1566, "right": "V"},
+<<<<<<< HEAD
                 {"gene": "ORF9b", "left": "P", "pos": 10, "right": "S"},
                 {"gene": "ORF9b", "left": "E", "pos": 27, "right": "-"},
                 {"gene": "ORF9b", "left": "N", "pos": 28, "right": "-"},
                 {"gene": "ORF9b", "left": "A", "pos": 29, "right": "-"},
+=======
+                {"gene": "ORF9b", "left": "E", "pos": 27, "right": "-"},
+                {"gene": "ORF9b", "left": "N", "pos": 28, "right": "-"},
+                {"gene": "ORF9b", "left": "A", "pos": 29, "right": "-"},
+                {"gene": "ORF9b", "left": "P", "pos": 10, "right": "S"},
+>>>>>>> 82461ff60ad19fd2b486819eebca5d069063ba61
                 {"gene": "E", "left": "T", "pos": 9, "right": "I"},
                 {"gene": "M", "left": "D", "pos": 3, "right": "G"},
                 {"gene": "M", "left": "Q", "pos": 19, "right": "E"},
@@ -800,7 +807,6 @@ clusters = {
         "build_name": "20A.S.126A",
         "old_build_names": [],
         "who_name": [],
-        "nextstrain_name": "",
         "pango_lineages": [
             {"name": "B.1.620", "url": None}
         ],
@@ -888,7 +894,7 @@ clusters = {
         "type": "variant",
         "important": False,
         "country_info": [],
-        "col": "#A366A3",
+        "col": "#e2cfe2",
         "display_name": "21C (Epsilon)",
         "alt_display_name": ["20C/S:452R"],
         "build_name": "21C.Epsilon",
@@ -1567,6 +1573,8 @@ clusters = {
         "build_name": "S.T572",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.T572?c=gt-S_572",  # color
     },
+
+
 
  #  "Orf1b813": { #S.T572I - 23277T
  #      "snps": [15904, 18904], #813H, 1813H
