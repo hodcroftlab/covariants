@@ -67,8 +67,44 @@ mutation_comparison = {
             "S:Q1071H"
         ]
     },
-    "21C (Epsilon)\n(B.1.427/9)": {
-        "nonsynonymous": ["S:S13I", "S:W152C", "S:L452R", "S:D614G"]
+    "21K\n(B.1.1.529)": {
+        "nonsynonymous": [
+            "S:A67V",
+            "S:H69-",
+            "S:V70-",
+            "S:T95I",
+            "S:G142-",
+            "S:V143-",
+            "S:Y144-",
+            "S:Y145D",
+            "S:N211-",
+            "S:G339D",
+            "S:S371L",
+            "S:S373P",
+            "S:S375F",
+            "S:K417N",
+            "S:N440K",
+            "S:G446S",
+            "S:S477N",
+            "S:T478K",
+            "S:E484A",
+            "S:Q493R",
+            "S:G496S",
+            "S:Q498R",
+            "S:N501Y",
+            "S:Y505H",
+            "S:T547K",
+            "S:D614G",
+            "S:H655Y",
+            "S:N679K",
+            "S:P681H",
+            "S:N764K",
+            "S:D796Y",
+            "S:N856K",
+            "S:Q954H",
+            "S:N969K",
+            "S:L981F"
+        ]
     },
     "21D (Eta)\n(B.1.525)": {
         "nonsynonymous": [
