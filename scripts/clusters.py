@@ -1,7 +1,7 @@
 clusters = {
 
     "Alpha": {
-        "snps": [23063, 23604, 24914],
+        "snps": [23063, 23604, 24914], #23063T, 23604A, 24914C
         "cluster_data": [],  # 501, 681, 1118
         "nextstrain_build": True,
         "graphing": True,
