@@ -368,7 +368,7 @@ clusters = {
         "pango_lineages": [
             {"name": "B.1.1.529", "url": "https://cov-lineages.org/lineages/lineage_B.1.1.529.html"},
         ],
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K?c=gt-S_440",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K",
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "A", "pos": 67, "right": "V"},
