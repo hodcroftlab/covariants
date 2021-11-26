@@ -352,6 +352,84 @@ clusters = {
         },
     },
 
+    "21K": { #S.T572I - 23277T
+        "snps": [25000,25584,8393], #25000T,25584T,8393A
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "type": "variant",
+        "important": True,
+        "country_info": [],
+        "col": "#A366A3",
+        "display_name": "21K",
+        "build_name": "21K",
+        "alt_display_name": ["B.1.1.529"],
+        "nextstrain_name": "21K",
+        "pango_lineages": [
+            {"name": "B.1.1.529", "url": "https://cov-lineages.org/lineages/lineage_B.1.1.529.html"},
+        ],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K?c=gt-S_440",
+        "mutations": {
+            "nonsynonymous": [
+                {"gene": "S", "left": "A", "pos": 67, "right": "V"},
+                {"gene": "S", "left": "H", "pos": 69, "right": "-"},
+                {"gene": "S", "left": "V", "pos": 70, "right": "-"},
+                {"gene": "S", "left": "T", "pos": 95, "right": "I"},
+                {"gene": "S", "left": "G", "pos": 142, "right": "-"},
+                {"gene": "S", "left": "V", "pos": 143, "right": "-"},
+                {"gene": "S", "left": "Y", "pos": 144, "right": "-"},
+                {"gene": "S", "left": "Y", "pos": 145, "right": "D"},
+                {"gene": "S", "left": "N", "pos": 211, "right": "-"},
+                {"gene": "S", "left": "L", "pos": 212, "right": "I"},
+                {"gene": "S", "left": "G", "pos": 339, "right": "D"},
+                {"gene": "S", "left": "S", "pos": 371, "right": "L"},
+                {"gene": "S", "left": "S", "pos": 373, "right": "P"},
+                {"gene": "S", "left": "K", "pos": 417, "right": "N"},
+                {"gene": "S", "left": "N", "pos": 440, "right": "K"},
+                {"gene": "S", "left": "G", "pos": 446, "right": "S"},
+                {"gene": "S", "left": "T", "pos": 547, "right": "K"},
+                {"gene": "S", "left": "D", "pos": 614, "right": "G"},
+                {"gene": "S", "left": "H", "pos": 655, "right": "Y"},
+                {"gene": "S", "left": "N", "pos": 679, "right": "K"},
+                {"gene": "S", "left": "P", "pos": 681, "right": "H"},
+                {"gene": "S", "left": "N", "pos": 764, "right": "K"},
+                {"gene": "S", "left": "D", "pos": 796, "right": "Y"},
+                {"gene": "S", "left": "N", "pos": 856, "right": "K"},
+                {"gene": "S", "left": "Q", "pos": 954, "right": "H"},
+                {"gene": "S", "left": "N", "pos": 969, "right": "K"},
+                {"gene": "S", "left": "L", "pos": 981, "right": "F"},
+                {"gene": "N", "left": "P", "pos": 13, "right": "L"},
+                {"gene": "N", "left": "E", "pos": 31, "right": "-"},
+                {"gene": "N", "left": "R", "pos": 32, "right": "-"},
+                {"gene": "N", "left": "S", "pos": 33, "right": "-"},
+                {"gene": "N", "left": "R", "pos": 203, "right": "K"},
+                {"gene": "N", "left": "G", "pos": 204, "right": "R"},
+                {"gene": "ORF1a", "left": "K", "pos": 856, "right": "R"},
+                {"gene": "ORF1a", "left": "S", "pos": 2083, "right": "-"},
+                {"gene": "ORF1a", "left": "L", "pos": 2084, "right": "I"},
+                {"gene": "ORF1a", "left": "A", "pos": 2710, "right": "T"},
+                {"gene": "ORF1a", "left": "T", "pos": 3255, "right": "I"},
+                {"gene": "ORF1a", "left": "P", "pos": 3395, "right": "H"},
+                {"gene": "ORF1a", "left": "L", "pos": 3674, "right": "-"},
+                {"gene": "ORF1a", "left": "S", "pos": 3675, "right": "-"},
+                {"gene": "ORF1a", "left": "G", "pos": 3676, "right": "-"},
+                {"gene": "ORF1a", "left": "I", "pos": 3758, "right": "V"},
+                {"gene": "ORF1b", "left": "P", "pos": 314, "right": "L"},
+                {"gene": "ORF1b", "left": "I", "pos": 1566, "right": "V"},
+                {"gene": "ORF9b", "left": "E", "pos": 27, "right": "-"},
+                {"gene": "ORF9b", "left": "N", "pos": 28, "right": "-"},
+                {"gene": "ORF9b", "left": "A", "pos": 29, "right": "-"},
+                {"gene": "ORF9b", "left": "P", "pos": 10, "right": "S"},
+                {"gene": "E", "left": "T", "pos": 9, "right": "I"},
+                {"gene": "M", "left": "D", "pos": 3, "right": "G"},
+                {"gene": "M", "left": "Q", "pos": 19, "right": "E"},
+                {"gene": "M", "left": "A", "pos": 63, "right": "T"},
+            ],
+            "synonymous": [
+            ],
+        },
+     },
+
     # variant  -- part of 'Indian' in media - B.1.617.1 
     "Kappa": {
         "snps": [17523, 23604, 22917], #ORF1b:1352, S:681, 452 
@@ -714,7 +792,6 @@ clusters = {
         "build_name": "20A.S.126A",
         "old_build_names": [],
         "who_name": [],
-        "nextstrain_name": "",
         "pango_lineages": [
             {"name": "B.1.620", "url": None}
         ],
@@ -802,7 +879,7 @@ clusters = {
         "type": "variant",
         "important": False,
         "country_info": [],
-        "col": "#A366A3",
+        "col": "#e2cfe2",
         "display_name": "21C (Epsilon)",
         "alt_display_name": ["20C/S:452R"],
         "build_name": "21C.Epsilon",
@@ -1481,6 +1558,8 @@ clusters = {
         "build_name": "S.T572",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.T572?c=gt-S_572",  # color
     },
+
+
 
  #  "Orf1b813": { #S.T572I - 23277T
  #      "snps": [15904, 18904], #813H, 1813H
