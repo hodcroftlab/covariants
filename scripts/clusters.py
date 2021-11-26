@@ -424,17 +424,10 @@ clusters = {
                 {"gene": "ORF1a", "left": "I", "pos": 3758, "right": "V"},
                 {"gene": "ORF1b", "left": "P", "pos": 314, "right": "L"},
                 {"gene": "ORF1b", "left": "I", "pos": 1566, "right": "V"},
-<<<<<<< HEAD
                 {"gene": "ORF9b", "left": "P", "pos": 10, "right": "S"},
                 {"gene": "ORF9b", "left": "E", "pos": 27, "right": "-"},
                 {"gene": "ORF9b", "left": "N", "pos": 28, "right": "-"},
                 {"gene": "ORF9b", "left": "A", "pos": 29, "right": "-"},
-=======
-                {"gene": "ORF9b", "left": "E", "pos": 27, "right": "-"},
-                {"gene": "ORF9b", "left": "N", "pos": 28, "right": "-"},
-                {"gene": "ORF9b", "left": "A", "pos": 29, "right": "-"},
-                {"gene": "ORF9b", "left": "P", "pos": 10, "right": "S"},
->>>>>>> 82461ff60ad19fd2b486819eebca5d069063ba61
                 {"gene": "E", "left": "T", "pos": 9, "right": "I"},
                 {"gene": "M", "left": "D", "pos": 3, "right": "G"},
                 {"gene": "M", "left": "Q", "pos": 19, "right": "E"},
