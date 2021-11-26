@@ -1377,12 +1377,6 @@
           },
           {
             "gene": "S",
-            "left": "L",
-            "pos": 212,
-            "right": "I"
-          },
-          {
-            "gene": "S",
             "left": "G",
             "pos": 339,
             "right": "D"
@@ -1401,6 +1395,12 @@
           },
           {
             "gene": "S",
+            "left": "S",
+            "pos": 375,
+            "right": "F"
+          },
+          {
+            "gene": "S",
             "left": "K",
             "pos": 417,
             "right": "N"
@@ -1416,6 +1416,54 @@
             "left": "G",
             "pos": 446,
             "right": "S"
+          },
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 477,
+            "right": "N"
+          },
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 478,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "E",
+            "pos": 484,
+            "right": "A"
+          },
+          {
+            "gene": "S",
+            "left": "Q",
+            "pos": 493,
+            "right": "R"
+          },
+          {
+            "gene": "S",
+            "left": "G",
+            "pos": 496,
+            "right": "S"
+          },
+          {
+            "gene": "S",
+            "left": "Q",
+            "pos": 498,
+            "right": "R"
+          },
+          {
+            "gene": "S",
+            "left": "N",
+            "pos": 501,
+            "right": "Y"
+          },
+          {
+            "gene": "S",
+            "left": "Y",
+            "pos": 505,
+            "right": "H"
           },
           {
             "gene": "S",
@@ -1593,6 +1641,12 @@
           },
           {
             "gene": "ORF9b",
+            "left": "P",
+            "pos": 10,
+            "right": "S"
+          },
+          {
+            "gene": "ORF9b",
             "left": "E",
             "pos": 27,
             "right": "-"
@@ -1608,12 +1662,6 @@
             "left": "A",
             "pos": 29,
             "right": "-"
-          },
-          {
-            "gene": "ORF9b",
-            "left": "P",
-            "pos": 10,
-            "right": "S"
           },
           {
             "gene": "E",
