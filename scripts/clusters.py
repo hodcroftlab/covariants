@@ -352,7 +352,7 @@ clusters = {
         },
     },
 
-    "21K": { #S.T572I - 23277T
+    "Omicron": { #S.T572I - 23277T
         "snps": [25000,25584,8393], #25000T,25584T,8393A
         "cluster_data": [],
         "nextstrain_build": True,
@@ -361,8 +361,9 @@ clusters = {
         "important": True,
         "country_info": [],
         "col": "#A366A3",
-        "display_name": "21K",
+        "display_name": "21K (Omicron)",
         "build_name": "21K",
+        "who_name": ["Omicron"],
         "alt_display_name": ["B.1.1.529"],
         "nextstrain_name": "21K",
         "pango_lineages": [

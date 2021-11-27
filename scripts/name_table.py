@@ -104,8 +104,8 @@ name_table = [
         "others": [],
     },
     {
-        "clade": "21K",
-        "who": None,
+        "clade": "21K (Omicron)",
+        "who": "Omicron",
         "lineages": [
             {"name": "B.1.1.529", "url": "https://cov-lineages.org/lineages/lineage_B.1.1.529.html"}
         ],
