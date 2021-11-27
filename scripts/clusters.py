@@ -352,7 +352,7 @@ clusters = {
         },
     },
 
-    "21K": { #S.T572I - 23277T
+    "21K.Omicron": { #S.T572I - 23277T
         "snps": [25000,25584,8393], #25000T,25584T,8393A
         "cluster_data": [],
         "nextstrain_build": True,
@@ -361,14 +361,15 @@ clusters = {
         "important": True,
         "country_info": [],
         "col": "#A366A3",
-        "display_name": "21K",
-        "build_name": "21K",
+        "display_name": "21K (Omicron)",
+        "build_name": "21K.Omicron",
+        "who_name": ["Omicron"],
         "alt_display_name": ["B.1.1.529"],
         "nextstrain_name": "21K",
         "pango_lineages": [
             {"name": "B.1.1.529", "url": "https://cov-lineages.org/lineages/lineage_B.1.1.529.html"},
         ],
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K.Omicron",
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "A", "pos": 67, "right": "V"},
