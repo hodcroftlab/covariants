@@ -67,7 +67,7 @@ mutation_comparison = {
             "S:Q1071H"
         ]
     },
-    "21K\n(B.1.1.529)": {
+    "21K (Omicron)\n(B.1.1.529)": {
         "nonsynonymous": [
             "S:A67V",
             "S:H69-",

@@ -1312,11 +1312,11 @@
       "alt_display_name": [
         "B.1.1.529"
       ],
-      "build_name": "21K",
+      "build_name": "21K.Omicron",
       "cluster_data": [],
       "col": "#A366A3",
       "country_info": [],
-      "display_name": "21K",
+      "display_name": "21K (Omicron)",
       "graphing": true,
       "important": true,
       "mutations": {
@@ -1692,7 +1692,7 @@
       },
       "nextstrain_build": true,
       "nextstrain_name": "21K",
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K?c=gt-S_440",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K",
       "pango_lineages": [
         {
           "name": "B.1.1.529",
@@ -1704,7 +1704,10 @@
         25584,
         8393
       ],
-      "type": "variant"
+      "type": "variant",
+      "who_name": [
+        "Omicron"
+      ]
     },
     {
       "alt_display_name": [
