@@ -362,7 +362,7 @@ clusters = {
         "country_info": [],
         "col": "#A366A3",
         "display_name": "21K (Omicron)",
-        "build_name": "21K",
+        "build_name": "21K.Omicron",
         "who_name": ["Omicron"],
         "alt_display_name": ["B.1.1.529"],
         "nextstrain_name": "21K",
