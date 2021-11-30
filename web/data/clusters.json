@@ -1691,7 +1691,7 @@
         "synonymous": []
       },
       "nextstrain_build": true,
-      "nextstrain_name": "21K (Omicron)",
+      "nextstrain_name": "21K",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K.Omicron",
       "pango_lineages": [
         {
@@ -1708,6 +1708,25 @@
       "who_name": [
         "Omicron"
       ]
+    },
+    {
+      "build_name": "Omicron.Similar",
+      "cluster_data": [],
+      "col": "#b3d9ff",
+      "country_info": [],
+      "display_name": "Omicron.Similar",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Omicron.Similar",
+      "snps": [
+        22882,
+        22995,
+        23063,
+        28881,
+        28883
+      ],
+      "type": "do_not_display"
     },
     {
       "alt_display_name": [
