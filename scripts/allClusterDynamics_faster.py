@@ -256,8 +256,52 @@ t0 = time.time()
 
 # Read metadata file
 #input_meta = "data/downloaded_gisaid.tsv"  
+
+#dtype = {
+#    "strain": "str",
+#    "virus": "category",
+#    "gisaid_epi_isl": "str",
+#    "genbank_accession": "str",
+#    "sra_run_accession": "str",
+#    "date": "category",
+#    "region": "category",
+#    "country": "category",
+#    "division": "category",
+#    "location": "category",
+#    "region_exposure": "category",
+#    "country_exposure": "category",
+#    "division_exposure": "category",
+#    "segment": "category",
+#    "length": "int32",
+#    "host": "category",
+#    "age": "category",
+#    "sex": "category",
+#    "Nextstrain_clade": "category",
+#    "pango_lineage": "category",
+#    "GISAID_clade": "category",
+#    "originating_lab": "category",
+#    "submitting_lab": "category",
+#    "submitting_lab": "category",
+#    "authors": "category",
+#    "url": "str",
+#    "title": "str",
+#    "paper_url": "str",
+#    "date_submitted": "category",
+#    "sampling_strategy": "category",
+#    "missing_data": np.float32,
+#    "divergence": np.float32,
+#    "nonACGTN": np.float32,
+#    "rare_mutations": np.float32,
+#    "snp_clusters": np.float32,
+#    "QC_missing_data": "category",
+#    "QC_mixed_sites": "category",
+#    "QC_rare_mutations": "category",
+#    "QC_snp_clusters": "category",
+#    "clock_deviation": "category"
+#}
 input_meta = "data/metadata.tsv"
-meta = pd.read_csv(input_meta, sep="\t", dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str}, index_col=False)
+dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str, 'age': str, 'QC_frame_shifts': str, 'frame_shifts': str}
+meta = pd.read_csv(input_meta, sep="\t", dtype=dtype, index_col=False) #dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str}, index_col=False)
 meta = meta.fillna("")
 
 # Clean up metadata
