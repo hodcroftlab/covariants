@@ -439,6 +439,20 @@ clusters = {
         },
      },
 
+    #neighbourhood search around Omicron - trial
+    "Omicron.Similar": { # S:N440K, S:T478K, S:N501Y -- N:R203K, N:G204R
+        "snps": [22882, 22995, 23063, 28881, 28883], # 22882G, 22995A, 23063T - 28881T, 28883C
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "important": False,
+        "country_info": [], 'col': "#b3d9ff", 
+        "display_name": "Omicron.Similar",
+        "type": "do_not_display",
+        "build_name": "Omicron.Similar",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Omicron.Similar"
+    },
+
     # variant  -- part of 'Indian' in media - B.1.617.1 
     "Kappa": {
         "snps": [17523, 23604, 22917], #ORF1b:1352, S:681, 452 
