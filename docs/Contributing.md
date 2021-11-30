@@ -63,7 +63,7 @@ To add a new variant, you'll need to generate the neccessary files to plot the g
 5. Copy the amino-acid sequence from the 'S' or 'Structural protein' (spike) sequence from [the reference genome of SARS-CoV-2](https://www.ncbi.nlm.nih.gov/nuccore/MN908947.3/).
 6. In your favourite alignment editor, replace the amino acid which reflects the change you wish to show in the protein structure.
 7. Navigate to [CoVsurver](https://corona.bii.a-star.edu.sg/) and paste in the modified AA sequence, and press 'submit'.
-8. Use your favourite GIF tool to make a GIF of the picture. Try to adjust it to match the ones already on CoVariants. Copy this file into `covariants/web/public/proteins/` and ensure the file name matches the 'display name' in `clusters.py`.
+8. Use your favourite GIF tool to make a GIF of the picture. Try to adjust it to match the ones already on CoVariants. Copy this file into `covariants/web/public/proteins/gif` and ensure the file name matches the 'display name' in `clusters.py`.
 
 ### Convert the data
 
