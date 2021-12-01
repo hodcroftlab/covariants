@@ -658,43 +658,45 @@ for clus in clus_to_run:
             copyfile(noUK_clusterlist_output, copypath2)
 
     # Make a version of Delta for Europe
+    ### DISABLED because there are now 3 delta categories -no way to pull Europe seqs from each.
     #if clus == "21AS478":
-    if clus_build_name == "21A.Delta":
-        eu_delta_meta = cluster_meta[
-            cluster_meta["region"].apply(lambda x: x == "Europe")
-        ]
-        # re-set wanted_seqs
-        extraDelta_wanted_seqs = list(eu_delta_meta["strain"])
-
-        eu_clusterlist_output = (
-            cluster_path + f'/clusters/cluster_{clusters[clus]["build_name"]}-europe.txt'
-        )
-        eu_out_meta_file = (
-            cluster_path
-            + f'/cluster_info/cluster_{clusters[clus]["build_name"]}-europe_meta.tsv'
-        )
-
-        if print_files:
-            with open(eu_clusterlist_output, "w") as f:
-                for item in extraDelta_wanted_seqs:
-                    f.write("%s\n" % item)
-            build_nam = clusters[clus]["build_name"]
-            copypath = eu_clusterlist_output.replace(
-                f"{build_nam}-europe",
-                "{}-europe-{}".format(
-                    build_nam, datetime.date.today().strftime("%Y-%m-%d")
-                ),
-            )
-            copyfile(eu_clusterlist_output, copypath)
-            eu_delta_meta.to_csv(eu_out_meta_file, sep="\t", index=False)
-            copypath2 = eu_clusterlist_output.replace(
-                "clusters/cluster_", "clusters/current/cluster_"
-            )
-            copyfile(eu_clusterlist_output, copypath2)
+#    if clus_build_name == "21A.Delta":
+#        eu_delta_meta = cluster_meta[
+#            cluster_meta["region"].apply(lambda x: x == "Europe")
+#        ]
+#        # re-set wanted_seqs
+#        extraDelta_wanted_seqs = list(eu_delta_meta["strain"])
+#
+#        eu_clusterlist_output = (
+#            cluster_path + f'/clusters/cluster_{clusters[clus]["build_name"]}-europe.txt'
+#        )
+#        eu_out_meta_file = (
+#            cluster_path
+#            + f'/cluster_info/cluster_{clusters[clus]["build_name"]}-europe_meta.tsv'
+#        )
+#
+#        if print_files:
+#            with open(eu_clusterlist_output, "w") as f:
+#                for item in extraDelta_wanted_seqs:
+#                    f.write("%s\n" % item)
+#            build_nam = clusters[clus]["build_name"]
+#            copypath = eu_clusterlist_output.replace(
+#                f"{build_nam}-europe",
+#                "{}-europe-{}".format(
+#                    build_nam, datetime.date.today().strftime("%Y-%m-%d")
+#                ),
+#            )
+#            copyfile(eu_clusterlist_output, copypath)
+#            eu_delta_meta.to_csv(eu_out_meta_file, sep="\t", index=False)
+#            copypath2 = eu_clusterlist_output.replace(
+#                "clusters/cluster_", "clusters/current/cluster_"
+#            )
+#            copyfile(eu_clusterlist_output, copypath2)
 
     # Make a version of  Alpha-Delta which only have Swiss sequences for increased focus
     #if clus in ["501YV1", "501YV2", "501YV3", "21AS478"]:
-    if clus_build_name in ["20I.Alpha.V1", "20H.Beta.V2", "20J.Gamma.V3", "21A.Delta"]:
+    ## DISABLED for DELTA because now 3 categories of Delta - no way to pull seqs from all of them...
+    if clus_build_name in ["20I.Alpha.V1", "20H.Beta.V2", "20J.Gamma.V3" ]: #, "21A.Delta"]:
         swiss_voc_meta = cluster_meta[
             cluster_meta["country"].apply(lambda x: x == "Switzerland")
         ]
