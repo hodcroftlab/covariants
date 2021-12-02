@@ -382,6 +382,7 @@ clusters = {
                 {"gene": "S", "left": "Y", "pos": 144, "right": "-"},
                 {"gene": "S", "left": "Y", "pos": 145, "right": "D"},
                 {"gene": "S", "left": "N", "pos": 211, "right": "-"},
+                {"gene": "S", "left": "L", "pos": 212, "right": "I"},
                 {"gene": "S", "left": "G", "pos": 339, "right": "D"},
                 {"gene": "S", "left": "S", "pos": 371, "right": "L"},
                 {"gene": "S", "left": "S", "pos": 373, "right": "P"},
