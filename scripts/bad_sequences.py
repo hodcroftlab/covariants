@@ -491,6 +491,7 @@ bad_seqs = {
     "USA/NY-WMC2021-152/2020" : "2020-03-12", #delta
     "USA/CA-CZB-13785/2020" : "2020-09-22", #iota
     "USA/NY-MSHSPSP-PV22505/2020" : "2020-11-03", #iota
+    "England/PHEP-YYBYUTJ/2020" : "2020-08-03", #delta
 
     #Bad sequences from Germany - supposedly Delta in Oct 2020 - unlikely
     "Germany/NW-RKI-I-291769/2020" : "2020-10-13", #delta
