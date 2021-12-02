@@ -364,6 +364,7 @@ clusters = {
         "display_name": "21K (Omicron)",
         "build_name": "21K.Omicron",
         "who_name": ["Omicron"],
+        "old_build_names": ["21K"],
         "alt_display_name": ["B.1.1.529"],
         "nextstrain_name": "21K",
         "pango_lineages": [
