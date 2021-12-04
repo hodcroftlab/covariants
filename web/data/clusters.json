@@ -1694,7 +1694,58 @@
             "right": "T"
           }
         ],
-        "synonymous": []
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 241,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 3037,
+            "right": "T"
+          },
+          {
+            "left": "T",
+            "pos": 5386,
+            "right": "G"
+          },
+          {
+            "left": "T",
+            "pos": 13195,
+            "right": "C"
+          },
+          {
+            "left": "C",
+            "pos": 15240,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 25000,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 25584,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 27259,
+            "right": "C"
+          },
+          {
+            "left": "C",
+            "pos": 27807,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 28271,
+            "right": "T"
+          }
+        ]
       },
       "nextstrain_build": true,
       "nextstrain_name": "21K",
