@@ -204,9 +204,6 @@ def does_url_respond(url: str):
 def update_name_table(name_table):
     for datum in name_table:
         for lineage in datum["lineages"]:
-            if lineage["url"] is not None:
-                continue
-
             name = lineage["name"]
 
             # Make a request to a hypothetical URL where global report might reside.
