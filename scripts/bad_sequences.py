@@ -1096,8 +1096,14 @@ bad_seqs = {
     "USA/TX-HMH-MCoV-50519/2020" : "2020-07-17", #delta
     "USA/TX-HMH-MCoV-50545/2020" : "2020-07-17", #delta
     "USA/TX-HMH-MCoV-50566/2020" : "2020-07-17", #delta
+    "USA/TX-HMH-MCoV-49945/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49931/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49934/2020" : "2020-07-16", #delta
     "USA/TX-Noblis-S709B19/2020" : "2020-12-03", #delta
     "USA/TX-Noblis-S710B20/2020" : "2020-12-03", #delta
+    "USA/TX-HMH-MCoV-48613/2020" : "2020-07-14", #delta
+    "USA/NM-UNM-TC222973/2020" : "2020-08-20", #delta
+    "Slovenia/147626/2020" : "2020-10-21", #delta
     "USA/UT-UPHL-210729652440/2020" : "2020-12-16", #delta
     "USA/VI-Yale-10210/2020" : "2020-08-21", #delta
     "USA/VI-Yale-10211/2020" : "2020-08-21", #delta
