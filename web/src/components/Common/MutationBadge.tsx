@@ -286,7 +286,7 @@ export interface LineageLinkBadgeProps {
 export function LineageLinkBadge({ name, href, prefix, report }: LineageLinkBadgeProps) {
   const url = useMemo(
     // prettier-ignore
-    () => (href ?? report ? `https://cov-lineages.org/global_report_${name}.html` : ''),
+    () => (href ?? (report ? `https://cov-lineages.org/global_report_${name}.html` : '')),
     [href, report, name],
   )
   const tooltip = useMemo(() => `Pango Lineage ${name}`, [name])
