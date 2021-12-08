@@ -4,6 +4,7 @@ import { pickBy } from 'lodash'
 
 import { getEnabledCountriesNames, getPlaces, Places } from 'src/io/getPlaces'
 import perCountryDataJson from 'src/../data/perCountryData.json'
+import { loadAll } from 'js-yaml'
 
 export interface PerCountryDatum {
   cluster_names: string[]
@@ -41,20 +42,69 @@ export interface PerCountryData {
   places: Places
   countryDistributions: CountryDistribution[]
   perCountryIntroContent: string
+  regionName: string
 }
 
 export function getPerCountryDataRaw(): PerCountryDataRaw {
   return perCountryDataJson as PerCountryDataRaw
 }
 
-export function getPerCountryData(regionName: string): PerCountryData {
-  const allData = getPerCountryDataRaw()
+// export function getPerCountryData(regionName: string): PerCountryData {
+//   const allData = getPerCountryDataRaw()
 
-  const perCountryData: PerCountryDatum | undefined = allData.regions.find(
-    (candidate) => candidate.region === regionName,
+//   const perCountryData: PerCountryDatum | undefined = allData.regions.find(
+//     (candidate) => candidate.region === regionName,
+//   )
+//   if (!perCountryData) {
+//     throw new Error(`Region data not found for region: ${regionName}`)
+//   }
+
+//   const clusterNames = copy(perCountryData.cluster_names).sort()
+//   const clusters = clusterNames.reduce((result, cluster) => {
+//     return { ...result, [cluster]: { enabled: true } }
+//   }, {})
+
+//   const countriesListRaw = perCountryData.distributions.map(({ country }) => ({ countryName: country, enabled: true }))
+//   const places = getPlaces(countriesListRaw, regionName)
+
+//   const countryDistributions = perCountryData.distributions
+
+//   const perCountryIntroContent = perCountryData.per_country_intro_content
+
+//   return {
+//     clusterNames,
+//     clusters,
+//     places,
+//     countryDistributions,
+//     perCountryIntroContent,
+//   }
+// }
+
+export function getPerCountryDataExtended(regionName: string, countries: string[]): PerCountryData {
+
+  let loadAllCountries = (countries[0].toUpperCase()==='all'.toUpperCase()) ? true : false
+  const allData = getPerCountryDataRaw()
+  
+  let perCountryData = allData.regions.find(
+    (candidate) => (candidate.region === regionName) && 
+      (countries.every(country => candidate.distributions
+        .filter(e => e.country === country).length > 0) || loadAllCountries),
   )
-  if (!perCountryData) {
-    throw new Error(`Region data not found for region: ${regionName}`)
+
+  if(!perCountryData)
+  {
+    regionName='World'
+    loadAllCountries=true
+
+    perCountryData = allData.regions.find(
+      (candidate) => candidate.region === regionName && 
+        (countries.every(country => candidate.distributions
+          .filter(e => e.country === country).length > 0) || loadAllCountries),
+    )
+
+    if (!perCountryData) {
+      throw new Error(`Region data not found for the region ${regionName}, or the requested countries do not correspond with the region.`)
+    }
   }
 
   const clusterNames = copy(perCountryData.cluster_names).sort()
@@ -62,7 +112,13 @@ export function getPerCountryData(regionName: string): PerCountryData {
     return { ...result, [cluster]: { enabled: true } }
   }, {})
 
-  const countriesListRaw = perCountryData.distributions.map(({ country }) => ({ countryName: country, enabled: true }))
+  const countriesListRaw = perCountryData.distributions
+    .map(({ country }) => (
+      countries.includes(country) || loadAllCountries 
+        ? { countryName: country, enabled: true } 
+        : { countryName: country, enabled: false }
+    ))
+
   const places = getPlaces(countriesListRaw, regionName)
 
   const countryDistributions = perCountryData.distributions
@@ -75,6 +131,7 @@ export function getPerCountryData(regionName: string): PerCountryData {
     places,
     countryDistributions,
     perCountryIntroContent,
+    regionName
   }
 }
 

@@ -33,7 +33,15 @@ export function getPlaces(countriesListRaw: { countryName: string; enabled: bool
     // "World" region has countries grouped into continents
     entries = Object.entries(regionCountryJson).map(([continentName, countryNames]) => {
       const countries = pickBy(allCountries, (country) => countryNames.includes(country.countryName))
-      return [continentName, { continentName, countries, enabled: true }]
+      
+      let isContinentEnabled=false;
+      for (const [key, country] of Object.entries(countries)) {
+        if(countriesListRaw.some(
+          e => e.enabled === true && e.countryName===country.countryName)) 
+            isContinentEnabled=true
+      }
+
+      return [continentName, { continentName, countries, enabled: isContinentEnabled }]
     })
   } else {
     entries = [

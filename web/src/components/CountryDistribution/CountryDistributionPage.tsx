@@ -16,7 +16,7 @@ import {
   ClusterState,
   filterClusters,
   filterCountries,
-  getPerCountryData,
+  getPerCountryDataExtended,
   getPerCountryIntroContentFilename,
   getRegions,
   toggleCluster,
@@ -29,10 +29,18 @@ const { defaultRegionName, regionNames, regionsHaveData } = getRegions()
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
 export function CountryDistributionPage() {
-  const [currentRegion, setCurrentRegion] = useState(defaultRegionName)
-  const { clusters: initialClusters, places: initialPlaces, countryDistributions } =
+
+  const URLparameters = new URL(window.location.href).searchParams
+  const regionParameter = URLparameters.get('region')?.replace('_',' ') ?? 'World'
+  const countriesParameter = URLparameters.get('countries')?.replace('_',' ').split('~') ?? ['all']
+
+  
+  const { clusters: initialClusters, places: initialPlaces, countryDistributions, regionName : correctedRegion } =
     /* prettier-ignore */
-    useMemo(() => getPerCountryData(currentRegion), [currentRegion])
+    // useMemo(() => getPerCountryData(currentRegion), [currentRegion])
+    useMemo(() => getPerCountryDataExtended(regionParameter,countriesParameter), [regionParameter, countriesParameter])
+
+  const [currentRegion, setCurrentRegion] = useState(correctedRegion)
 
   const [places, setPlaces] = useState<Places>(initialPlaces)
   const [clusters, setClusters] = useState<ClusterState>(initialClusters)
@@ -41,8 +49,8 @@ export function CountryDistributionPage() {
     setPlaces(initialPlaces)
   }, [initialPlaces])
 
-  const regionsTitle = useMemo(() => (currentRegion === 'World' ? 'Countries' : 'Regions'), [currentRegion])
-  const iconComponent = useMemo(() => (currentRegion === 'World' ? CountryFlag : undefined), [currentRegion])
+  const regionsTitle = useMemo(() => (currentRegion === regionParameter ? 'Countries' : 'Regions'), [currentRegion])
+  const iconComponent = useMemo(() => (currentRegion === regionParameter ? CountryFlag : undefined), [currentRegion])
 
   const { withCountriesFiltered } =
     /* prettier-ignore */
