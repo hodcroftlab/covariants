@@ -26,12 +26,12 @@ import {
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
 import { CountryFlag } from '../Common/CountryFlag'
 
-const router = useRouter()
-
 const { defaultRegionName, regionNames, regionsHaveData } = getRegions()
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
 export function CountryDistributionPage() {
+
+  const router = useRouter()
 
   const URLparameters = new URL(window.location.href).searchParams
   const regionParameter = URLparameters.get('region')?.replace('_',' ') ?? defaultRegionName
@@ -49,12 +49,12 @@ export function CountryDistributionPage() {
 
   useEffect(() => {
     if(resetParameters)
-    router.push('?'+currentRegion, undefined, { shallow: true })
+    router.push('/per-country?'+currentRegion, undefined, { shallow: true })
   }, [])
 
   useEffect(() => {
     if(!resetParameters && countriesParameter!==correctedCountries)
-      router.push('?region='+currentRegion+'&countries='+correctedCountries.join('~'), undefined, { shallow: true })
+      router.push('/per-country?region='+currentRegion+'&countries='+correctedCountries.join('~'), undefined, { shallow: true })
   }, [])
 
   useEffect(() => {
