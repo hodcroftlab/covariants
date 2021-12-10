@@ -53,14 +53,14 @@ export function getPerCountryDataRaw(): PerCountryDataRaw {
 export function getPerCountryDataExtended(regionName: string, countries: string[]): PerCountryData {
 
   let resetParameters=false
-  let loadAllCountries = (countries[0].toUpperCase()==='all'.toUpperCase()) ? true : false
+  let loadAllCountries = !countries ? true : false
   const allData = getPerCountryDataRaw()
   
   let perCountryData : PerCountryDatum | undefined = allData.regions.find(
     (candidate) => (candidate.region === regionName),
   )
 
-  const correctedCountries = loadAllCountries ? ['all'] :
+  const correctedCountries : string[] = loadAllCountries ? [] :
    countries.reduce(
     (corrected, country) => {
       if( perCountryData?.distributions.some(e => e.country===country) )
