@@ -34,6 +34,8 @@ export function CountryDistributionPage() {
   const regionParameter = URLparameters.get('region')?.replace('_',' ') ?? defaultRegionName
   const countriesParameter = URLparameters.get('countries')?.replace('_',' ').split('~') ?? []
 
+  console.log(defaultRegionName, countriesParameter)
+
   const { clusters: initialClusters, places: initialPlaces, countryDistributions, 
     correctedRegionName : correctedRegionName, resetParameters : resetParameters, correctedCountries : correctedCountries } =
     /* prettier-ignore */
@@ -53,7 +55,7 @@ export function CountryDistributionPage() {
     {
       window.history.replaceState( {} , 'redirect', '/per-country?region='+currentRegion );
     }
-    else if( !countriesParameter.every(country => correctedCountries.includes(country) ))
+    else if( !countriesParameter.every(country => correctedCountries.includes(country)) )
     {
       window.history.replaceState( {} , 'redirect', 
         '/per-country?region='+correctedRegionName+'&countries='+correctedCountries.join('~') );
