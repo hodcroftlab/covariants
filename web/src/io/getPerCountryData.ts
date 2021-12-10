@@ -60,6 +60,17 @@ export function getPerCountryDataExtended(regionName: string, countries: string[
     (candidate) => (candidate.region === regionName),
   )
 
+  const correctedCountries = loadAllCountries ? ['all'] :
+   countries.reduce(
+    (corrected, country) => {
+      if( perCountryData?.distributions.some(e => e.country===country) )
+      {
+        let correctedCountry = country.replace(' ','_')
+        corrected.push(correctedCountry)
+      }
+      return corrected;
+  }, [] as any )
+
   if(!perCountryData)
   {
     resetParameters=true
@@ -69,10 +80,14 @@ export function getPerCountryDataExtended(regionName: string, countries: string[
     perCountryData = allData.regions.find(
       (candidate) => (candidate.region === regionName),
     )
+  }
+  else if(!correctedCountries)
+  {
+    loadAllCountries=true
+  }
 
-    if (!perCountryData) {
-      throw new Error(`Region data not found for the region ${regionName}, or the requested countries do not correspond with the region.`)
-    }
+  if (!perCountryData) {
+    throw new Error(`Region data not found for the region ${regionName}, or the requested countries do not correspond with the region.`)
   }
 
   const clusterNames = copy(perCountryData.cluster_names).sort()
@@ -86,17 +101,6 @@ export function getPerCountryDataExtended(regionName: string, countries: string[
         ? { countryName: country, enabled: true } 
         : { countryName: country, enabled: false }
     ))
-
-  const correctedCountries = loadAllCountries ? ['all'] :
-   countries.reduce(
-    (corrected, country) => {
-      if( perCountryData?.distributions.some(e => e.country===country) )
-      {
-        let correctedCountry = country.replace(' ','_')
-        corrected.push(correctedCountry)
-      }
-      return corrected;
-  }, [] as any )
 
   const places = getPlaces(countriesListRaw, regionName)
 

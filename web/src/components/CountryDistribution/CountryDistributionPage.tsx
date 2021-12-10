@@ -47,15 +47,15 @@ export function CountryDistributionPage() {
   const [places, setPlaces] = useState<Places>(initialPlaces)
   const [clusters, setClusters] = useState<ClusterState>(initialClusters)
 
-  // useEffect(() => {
-  //   if(resetParameters)
-  //     router.push('/per-country?'+currentRegion, undefined, { shallow: true })
-  // }, [])
+  useEffect(() => {
+    if(resetParameters)
+      router.push('/per-country?'+currentRegion, undefined, { shallow: true })
+  }, [])
 
-  // useEffect(() => {
-  //   if(!resetParameters && countriesParameter!=correctedCountries)
-  //     router.push('/per-country?region='+currentRegion+'&countries='+correctedCountries.join('~'), undefined, { shallow: true })
-  // }, [])
+  useEffect(() => {
+    if(!resetParameters && countriesParameter!=correctedCountries)
+      router.push('/per-country?region='+currentRegion+'&countries='+correctedCountries.join('~'), undefined, { shallow: true })
+  }, [])
 
   useEffect(() => {
     setPlaces(initialPlaces)
