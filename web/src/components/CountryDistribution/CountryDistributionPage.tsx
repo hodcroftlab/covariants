@@ -34,8 +34,9 @@ export function CountryDistributionPage() {
   const router = useRouter()
 
   const URLparameters = new URL(window.location.href).searchParams
-  const regionParameter = URLparameters.get('region')?.replace('_',' ') ?? defaultRegionName
+  const regionParameter = URLparameters.get('region')?.replace('_',' ') ?? 'World'
   const countriesParameter = URLparameters.get('countries')?.replace('_',' ').split('~') ?? ['all']
+  console.log(defaultRegionName)
 
   const { clusters: initialClusters, places: initialPlaces, countryDistributions, 
     correctedRegionName : correctedRegionName, resetParameters : resetParameters, correctedCountries : correctedCountries } =
@@ -53,7 +54,8 @@ export function CountryDistributionPage() {
   }, [])
 
   useEffect(() => {
-    if(!resetParameters && countriesParameter!==correctedCountries)
+    if(!resetParameters && countriesParameter!=correctedCountries)
+      console.log(countriesParameter, correctedCountries)
       router.push('/per-country?region='+currentRegion+'&countries='+correctedCountries.join('~'), undefined, { shallow: true })
   }, [])
 
