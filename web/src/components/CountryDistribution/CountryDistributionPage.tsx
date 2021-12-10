@@ -31,7 +31,7 @@ const enabledFilters = ['clusters', 'countriesWithIcons']
 export function CountryDistributionPage() {
 
   const URLparameters = new URL(window.location.href).searchParams
-  const regionParameter = URLparameters.get('region')?.replace('_',' ') ?? 'World'
+  const regionParameter = URLparameters.get('region')?.replace('_',' ') ?? defaultRegionName
   const countriesParameter = URLparameters.get('countries')?.replace('_',' ').split('~') ?? []
 
   const { clusters: initialClusters, places: initialPlaces, countryDistributions, 
@@ -49,13 +49,14 @@ export function CountryDistributionPage() {
     {
       window.history.replaceState( {} , 'redirect', '/per-country' );
     }
-    else if(!correctedCountries)
+    else if(!correctedCountries.length)
     {
       window.history.replaceState( {} , 'redirect', '/per-country?region='+currentRegion );
     }
-    else if(countriesParameter!=correctedCountries)
+    else if( !countriesParameter.every(country => correctedCountries.includes(country) ))
     {
-      window.history.replaceState( {} , 'redirect', '/per-country?region='+currentRegion+'&countries='+correctedCountries.join('~') );
+      window.history.replaceState( {} , 'redirect', 
+        '/per-country?region='+correctedRegionName+'&countries='+correctedCountries.join('~') );
     }
   }, [])
 
@@ -63,9 +64,8 @@ export function CountryDistributionPage() {
     setPlaces(initialPlaces)
   }, [initialPlaces])
 
-  //regionParameter instead of currentRegion?
-  const regionsTitle = useMemo(() => (currentRegion === regionParameter ? 'Countries' : 'Regions'), [currentRegion])
-  const iconComponent = useMemo(() => (currentRegion === regionParameter ? CountryFlag : undefined), [currentRegion])
+  const regionsTitle = useMemo(() => (currentRegion === defaultRegionName ? 'Countries' : 'Regions'), [currentRegion])
+  const iconComponent = useMemo(() => (currentRegion === defaultRegionName ? CountryFlag : undefined), [currentRegion])
 
   const { withCountriesFiltered } =
     /* prettier-ignore */
