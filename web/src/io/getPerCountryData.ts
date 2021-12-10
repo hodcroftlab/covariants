@@ -88,10 +88,8 @@ export function getPerCountryDataExtended(regionName: string, countries: string[
         : { countryName: country, enabled: false }
     ))
 
-  // let correctedCountries = countries.filter(country => perCountryData?.
-  //   distributions.some(e => e.country===country));
-
-  const correctedCountries = countries.reduce(
+  const correctedCountries = loadAllCountries ? ['all'] :
+   countries.reduce(
     (corrected, country) => {
       if( perCountryData?.distributions.some(e => e.country===country) )
       {

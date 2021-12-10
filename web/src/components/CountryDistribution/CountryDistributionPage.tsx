@@ -54,7 +54,7 @@ export function CountryDistributionPage() {
 
   useEffect(() => {
     if(!resetParameters && countriesParameter!==correctedCountries)
-    router.push('?region='+currentRegion+'&countries='+correctedCountries.join('~'), undefined, { shallow: true })
+      router.push('?region='+currentRegion+'&countries='+correctedCountries.join('~'), undefined, { shallow: true })
   }, [])
 
   useEffect(() => {
