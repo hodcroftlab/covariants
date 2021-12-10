@@ -66,13 +66,13 @@ export function getPerCountryDataExtended(regionName: string, countries: string[
     regionName='World'
     loadAllCountries=true
 
-    let perCountryData : PerCountryDatum | undefined = allData.regions.find(
+    perCountryData = allData.regions.find(
       (candidate) => (candidate.region === regionName),
     )
-  }
 
-  if (!perCountryData) {
-    throw new Error(`Region data not found for the region ${regionName}, or the requested countries do not correspond with the region.`)
+    if (!perCountryData) {
+      throw new Error(`Region data not found for the region ${regionName}, or the requested countries do not correspond with the region.`)
+    }
   }
 
   const clusterNames = copy(perCountryData.cluster_names).sort()

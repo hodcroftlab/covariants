@@ -42,10 +42,4 @@ plotCountrySequencing.py
 scripts/allClusterDynamics_faster-pre3Nov21.py
 web/insecure
 .gitignore
-*.json
-*.tsv
-*.gif
-*.jpg
-*.py
-*.txt
-*.md
+!web/
