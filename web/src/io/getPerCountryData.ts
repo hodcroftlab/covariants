@@ -60,8 +60,6 @@ export function getPerCountryDataExtended(regionName: string, countries: string[
     (candidate) => (candidate.region === regionName),
   )
 
-  console.log(perCountryData, 'out of if')
-
   const correctedCountries = loadAllCountries ? ['all'] :
    countries.reduce(
     (corrected, country) => {
@@ -82,8 +80,6 @@ export function getPerCountryDataExtended(regionName: string, countries: string[
     perCountryData = allData.regions.find(
       (candidate) => (candidate.region === regionName),
     )
-
-    console.log(perCountryData, 'in if')
   }
   else if(!correctedCountries)
   {

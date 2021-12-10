@@ -1,7 +1,7 @@
 import { mapValues } from 'lodash'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Col, Row } from 'reactstrap'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 
 import { Editable } from 'src/components/Common/Editable'
 import { ColCustom } from 'src/components/Common/ColCustom'
@@ -31,7 +31,7 @@ const enabledFilters = ['clusters', 'countriesWithIcons']
 
 export function CountryDistributionPage() {
 
-  const router = useRouter()
+  // const router = useRouter()
 
   const URLparameters = new URL(window.location.href).searchParams
   const regionParameter = URLparameters.get('region')?.replace('_',' ') ?? 'World'
@@ -49,14 +49,18 @@ export function CountryDistributionPage() {
 
   useEffect(() => {
     if(resetParameters)
-      router.push('/per-country?'+currentRegion, undefined, { shallow: true })
+    {
+      window.history.replaceState( {} , 'redirect', '/per-country?'+currentRegion );
+    }
+      //router.push('/per-country?'+currentRegion, undefined, { shallow: true })
   }, [])
 
-  console.log(resetParameters, countriesParameter, correctedCountries, countriesParameter!=correctedCountries)
-
   useEffect(() => {
-    if(!resetParameters && countriesParameter!=correctedCountries)
-      router.push('/per-country?region='+currentRegion+'&countries='+correctedCountries.join('~'), undefined, { shallow: true })
+    if(!resetParameters && countriesParameter[0]!=correctedCountries[0])
+    {
+      window.history.replaceState( {} , 'redirect', '/per-country?region='+currentRegion+'&countries='+correctedCountries.join('~') );
+    }
+      // router.push('/per-country?region='+currentRegion+'&countries='+correctedCountries.join('~'), undefined, { shallow: true })
   }, [])
 
   useEffect(() => {
