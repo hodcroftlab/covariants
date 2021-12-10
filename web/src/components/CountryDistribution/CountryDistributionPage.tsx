@@ -52,6 +52,8 @@ export function CountryDistributionPage() {
       router.push('/per-country?'+currentRegion, undefined, { shallow: true })
   }, [])
 
+  console.log(resetParameters, countriesParameter, correctedCountries, countriesParameter!=correctedCountries)
+
   useEffect(() => {
     if(!resetParameters && countriesParameter!=correctedCountries)
       router.push('/per-country?region='+currentRegion+'&countries='+correctedCountries.join('~'), undefined, { shallow: true })
