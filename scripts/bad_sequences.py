@@ -1342,6 +1342,10 @@ bad_seqs = {
     "USA/UT-UPHL-210723256386/2021" : "2021-01-05", #delta
     "env/Austria/CeMM18535/2021" : "2021-01-17", #delta
 
+
+    # Omicron with bad date:
+    "SouthAfrica/NICD-N01333/2021" : "2021-01-05", #omicron
+
     # Bad sequences from Germany - supposedly Delta in Oct 2020 - unlikely
     "Germany/NW-RKI-I-291769/2020" : "2020-10-13", #delta
     "Germany/NW-RKI-I-291770/2020" : "2020-10-13", #delta
