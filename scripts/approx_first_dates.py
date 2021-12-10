@@ -1,20 +1,23 @@
 cluster_first_dates = {
-    "S222": {"first_date": "2020-04-01"}, #EU1
-    "S477": {"first_date": "2020-07-01"},
+    "EU1": {"first_date": "2020-04-01"}, #EU1
+    "EU2": {"first_date": "2020-07-01"},
     "S439": {"first_date": "2020-04-02"},
     "S98": {"first_date": "2020-06-01"},
-    "S452": {"first_date": "2020-07-20"}, #Epsilon
+    "Epsilon": {"first_date": "2020-07-20"}, #Epsilon
     "S80": {"first_date": "2020-07-01"},
     "S626": {"first_date": "2020-07-01"},
     "S1122": {"first_date": "2020-03-15"},
-    "501YV1": {"first_date": "2020-09-20"}, #Alpha
-    "501YV2": {"first_date": "2020-08-10"}, #Beta
-    "501YV3": {"first_date": "2020-10-19"}, #Gamma
-    "21AS478": {"first_date": "2020-10-22"}, #Delta
-    "21AS154": {"first_date": "2020-10-30"}, #Kappa
+    "Alpha": {"first_date": "2020-09-20"}, #Alpha
+    "Beta": {"first_date": "2020-08-10"}, #Beta
+    "Gamma": {"first_date": "2020-10-19"}, #Gamma
+    "Delta": {"first_date": "2020-10-22"}, #Delta
+    "21I.Delta": {"first_date": "2020-10-22"}, #21I Delta
+    "21J.Delta": {"first_date": "2020-10-22"}, #21J Delta
+    "21K.Omicron": {"first_date": "2021-10-31"}, #omicron
+    "Kappa": {"first_date": "2020-10-30"}, #Kappa
     "Delta417": {"first_date": "2020-10-30"}, #Delta plus (same as delta)
-    "20AS484": {"first_date": "2020-11-21"}, #Eta
-    "20CS484": {"first_date": "2020-11-17"}, #Iota
+    "Eta": {"first_date": "2020-11-21"}, #Eta
+    "Iota": {"first_date": "2020-11-17"}, #Iota
     "21GLambda": {"first_date": "2020-11-05"}, # Lambda
     "21H": {"first_date": "2021-01-05"}, # B.1.621
     "20BS732": {"first_date": "2020-10-01"}, #B.1.1.519

@@ -1,6 +1,7 @@
 import { mapValues } from 'lodash'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Col, Row } from 'reactstrap'
+import { useRouter } from 'next/router'
 
 import { Editable } from 'src/components/Common/Editable'
 import { ColCustom } from 'src/components/Common/ColCustom'
@@ -25,32 +26,44 @@ import {
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
 import { CountryFlag } from '../Common/CountryFlag'
 
+const router = useRouter()
+
 const { defaultRegionName, regionNames, regionsHaveData } = getRegions()
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
 export function CountryDistributionPage() {
 
   const URLparameters = new URL(window.location.href).searchParams
-  const regionParameter = URLparameters.get('region')?.replace('_',' ') ?? 'World'
+  const regionParameter = URLparameters.get('region')?.replace('_',' ') ?? defaultRegionName
   const countriesParameter = URLparameters.get('countries')?.replace('_',' ').split('~') ?? ['all']
 
-  
-  const { clusters: initialClusters, places: initialPlaces, countryDistributions, regionName : correctedRegion } =
+  const { clusters: initialClusters, places: initialPlaces, countryDistributions, 
+    correctedRegionName : correctedRegionName, resetParameters : resetParameters, correctedCountries : correctedCountries } =
     /* prettier-ignore */
-    // useMemo(() => getPerCountryData(currentRegion), [currentRegion])
     useMemo(() => getPerCountryDataExtended(regionParameter,countriesParameter), [regionParameter, countriesParameter])
 
-  const [currentRegion, setCurrentRegion] = useState(correctedRegion)
+  const [currentRegion, setCurrentRegion] = useState(correctedRegionName)
 
   const [places, setPlaces] = useState<Places>(initialPlaces)
   const [clusters, setClusters] = useState<ClusterState>(initialClusters)
 
   useEffect(() => {
+    if(resetParameters)
+    router.push('?'+currentRegion, undefined, { shallow: true })
+  }, [])
+
+  useEffect(() => {
+    if(!resetParameters && countriesParameter!==correctedCountries)
+    router.push('?region='+currentRegion+'&countries='+correctedCountries.join('~'), undefined, { shallow: true })
+  }, [])
+
+  useEffect(() => {
     setPlaces(initialPlaces)
   }, [initialPlaces])
 
-  const regionsTitle = useMemo(() => (currentRegion === regionParameter ? 'Countries' : 'Regions'), [currentRegion])
-  const iconComponent = useMemo(() => (currentRegion === regionParameter ? CountryFlag : undefined), [currentRegion])
+  //regionParameter instead of currentRegion?
+  const regionsTitle = useMemo(() => (currentRegion === currentRegion ? 'Countries' : 'Regions'), [currentRegion])
+  const iconComponent = useMemo(() => (currentRegion === currentRegion ? CountryFlag : undefined), [currentRegion])
 
   const { withCountriesFiltered } =
     /* prettier-ignore */

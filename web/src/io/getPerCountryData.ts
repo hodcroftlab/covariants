@@ -4,7 +4,6 @@ import { pickBy } from 'lodash'
 
 import { getEnabledCountriesNames, getPlaces, Places } from 'src/io/getPlaces'
 import perCountryDataJson from 'src/../data/perCountryData.json'
-import { loadAll } from 'js-yaml'
 
 export interface PerCountryDatum {
   cluster_names: string[]
@@ -42,69 +41,38 @@ export interface PerCountryData {
   places: Places
   countryDistributions: CountryDistribution[]
   perCountryIntroContent: string
-  regionName: string
+  correctedRegionName: string
+  resetParameters: boolean
+  correctedCountries: string[]
 }
 
 export function getPerCountryDataRaw(): PerCountryDataRaw {
   return perCountryDataJson as PerCountryDataRaw
 }
 
-// export function getPerCountryData(regionName: string): PerCountryData {
-//   const allData = getPerCountryDataRaw()
-
-//   const perCountryData: PerCountryDatum | undefined = allData.regions.find(
-//     (candidate) => candidate.region === regionName,
-//   )
-//   if (!perCountryData) {
-//     throw new Error(`Region data not found for region: ${regionName}`)
-//   }
-
-//   const clusterNames = copy(perCountryData.cluster_names).sort()
-//   const clusters = clusterNames.reduce((result, cluster) => {
-//     return { ...result, [cluster]: { enabled: true } }
-//   }, {})
-
-//   const countriesListRaw = perCountryData.distributions.map(({ country }) => ({ countryName: country, enabled: true }))
-//   const places = getPlaces(countriesListRaw, regionName)
-
-//   const countryDistributions = perCountryData.distributions
-
-//   const perCountryIntroContent = perCountryData.per_country_intro_content
-
-//   return {
-//     clusterNames,
-//     clusters,
-//     places,
-//     countryDistributions,
-//     perCountryIntroContent,
-//   }
-// }
-
 export function getPerCountryDataExtended(regionName: string, countries: string[]): PerCountryData {
 
+  let resetParameters=false
   let loadAllCountries = (countries[0].toUpperCase()==='all'.toUpperCase()) ? true : false
   const allData = getPerCountryDataRaw()
   
-  let perCountryData = allData.regions.find(
-    (candidate) => (candidate.region === regionName) && 
-      (countries.every(country => candidate.distributions
-        .filter(e => e.country === country).length > 0) || loadAllCountries),
+  let perCountryData : PerCountryDatum | undefined = allData.regions.find(
+    (candidate) => (candidate.region === regionName),
   )
 
   if(!perCountryData)
   {
+    resetParameters=true
     regionName='World'
     loadAllCountries=true
 
-    perCountryData = allData.regions.find(
-      (candidate) => candidate.region === regionName && 
-        (countries.every(country => candidate.distributions
-          .filter(e => e.country === country).length > 0) || loadAllCountries),
+    let perCountryData : PerCountryDatum | undefined = allData.regions.find(
+      (candidate) => (candidate.region === regionName),
     )
+  }
 
-    if (!perCountryData) {
-      throw new Error(`Region data not found for the region ${regionName}, or the requested countries do not correspond with the region.`)
-    }
+  if (!perCountryData) {
+    throw new Error(`Region data not found for the region ${regionName}, or the requested countries do not correspond with the region.`)
   }
 
   const clusterNames = copy(perCountryData.cluster_names).sort()
@@ -119,11 +87,26 @@ export function getPerCountryDataExtended(regionName: string, countries: string[
         : { countryName: country, enabled: false }
     ))
 
+  // let correctedCountries = countries.filter(country => perCountryData?.
+  //   distributions.some(e => e.country===country));
+
+  const correctedCountries = countries.reduce(
+    (corrected, country) => {
+      if( perCountryData?.distributions.some(e => e.country===country) )
+      {
+        let correctedCountry = country.replace(' ','_')
+        corrected.push(correctedCountry)
+      }
+      return corrected;
+  }, [] as any )
+
   const places = getPlaces(countriesListRaw, regionName)
 
   const countryDistributions = perCountryData.distributions
 
   const perCountryIntroContent = perCountryData.per_country_intro_content
+
+  const correctedRegionName = regionName
 
   return {
     clusterNames,
@@ -131,7 +114,9 @@ export function getPerCountryDataExtended(regionName: string, countries: string[
     places,
     countryDistributions,
     perCountryIntroContent,
-    regionName
+    correctedRegionName,
+    resetParameters,
+    correctedCountries
   }
 }
 

@@ -1377,6 +1377,12 @@
           },
           {
             "gene": "S",
+            "left": "L",
+            "pos": 212,
+            "right": "I"
+          },
+          {
+            "gene": "S",
             "left": "G",
             "pos": 339,
             "right": "D"
@@ -1688,11 +1694,65 @@
             "right": "T"
           }
         ],
-        "synonymous": []
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 241,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 3037,
+            "right": "T"
+          },
+          {
+            "left": "T",
+            "pos": 5386,
+            "right": "G"
+          },
+          {
+            "left": "T",
+            "pos": 13195,
+            "right": "C"
+          },
+          {
+            "left": "C",
+            "pos": 15240,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 25000,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 25584,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 27259,
+            "right": "C"
+          },
+          {
+            "left": "C",
+            "pos": 27807,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 28271,
+            "right": "T"
+          }
+        ]
       },
       "nextstrain_build": true,
       "nextstrain_name": "21K",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K.Omicron",
+      "old_build_names": [
+        "21K"
+      ],
       "pango_lineages": [
         {
           "name": "B.1.1.529",

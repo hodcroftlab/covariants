@@ -78,6 +78,7 @@ mutation_comparison = {
             "S:Y144-",
             "S:Y145D",
             "S:N211-",
+            "S:L212I",
             "S:G339D",
             "S:S371L",
             "S:S373P",
