@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import copy from 'fast-copy'
 import { pickBy } from 'lodash'
-import { loadAll } from 'js-yaml'
 
 import { getEnabledCountriesNames, getPlaces, Places } from 'src/io/getPlaces'
 import perCountryDataJson from 'src/../data/perCountryData.json'

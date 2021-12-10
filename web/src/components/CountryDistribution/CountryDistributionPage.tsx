@@ -36,7 +36,6 @@ export function CountryDistributionPage() {
   const URLparameters = new URL(window.location.href).searchParams
   const regionParameter = URLparameters.get('region')?.replace('_',' ') ?? 'World'
   const countriesParameter = URLparameters.get('countries')?.replace('_',' ').split('~') ?? ['all']
-  console.log(defaultRegionName)
 
   const { clusters: initialClusters, places: initialPlaces, countryDistributions, 
     correctedRegionName : correctedRegionName, resetParameters : resetParameters, correctedCountries : correctedCountries } =
@@ -48,24 +47,23 @@ export function CountryDistributionPage() {
   const [places, setPlaces] = useState<Places>(initialPlaces)
   const [clusters, setClusters] = useState<ClusterState>(initialClusters)
 
-  useEffect(() => {
-    if(resetParameters)
-    router.push('/per-country?'+currentRegion, undefined, { shallow: true })
-  }, [])
+  // useEffect(() => {
+  //   if(resetParameters)
+  //     router.push('/per-country?'+currentRegion, undefined, { shallow: true })
+  // }, [])
 
-  useEffect(() => {
-    if(!resetParameters && countriesParameter!=correctedCountries)
-      console.log(countriesParameter, correctedCountries)
-      router.push('/per-country?region='+currentRegion+'&countries='+correctedCountries.join('~'), undefined, { shallow: true })
-  }, [])
+  // useEffect(() => {
+  //   if(!resetParameters && countriesParameter!=correctedCountries)
+  //     router.push('/per-country?region='+currentRegion+'&countries='+correctedCountries.join('~'), undefined, { shallow: true })
+  // }, [])
 
   useEffect(() => {
     setPlaces(initialPlaces)
   }, [initialPlaces])
 
   //regionParameter instead of currentRegion?
-  const regionsTitle = useMemo(() => (currentRegion === currentRegion ? 'Countries' : 'Regions'), [currentRegion])
-  const iconComponent = useMemo(() => (currentRegion === currentRegion ? CountryFlag : undefined), [currentRegion])
+  const regionsTitle = useMemo(() => (currentRegion === regionParameter ? 'Countries' : 'Regions'), [currentRegion])
+  const iconComponent = useMemo(() => (currentRegion === regionParameter ? CountryFlag : undefined), [currentRegion])
 
   const { withCountriesFiltered } =
     /* prettier-ignore */
