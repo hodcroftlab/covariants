@@ -365,10 +365,10 @@ clusters = {
         "build_name": "21K.Omicron",
         "who_name": ["Omicron"],
         "old_build_names": ["21K"],
-        "alt_display_name": ["B.1.1.529"],
+        "alt_display_name": ["BA.1"],
         "nextstrain_name": "21K",
         "pango_lineages": [
-            {"name": "B.1.1.529", "url": "https://cov-lineages.org/lineages/lineage_B.1.1.529.html"},
+            {"name": "BA.1", "url": "https://cov-lineages.org/lineages/lineage_BA.1.html"},
         ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K.Omicron",
         "mutations": {
