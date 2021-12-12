@@ -1,5 +1,10 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2021-12-13
+
+- Add 21L section to the 21K page
+- Add 21L to the shared mutations table
+
 ## 2021-11-19
 
 - Update the Per Cluster plotting threshold to 500 sequences to reduce number of countries being plotted (we run out of colours)
