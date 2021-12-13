@@ -59,7 +59,7 @@ export function CountryDistributionPage() {
     else if( !countriesParameter.every(country => correctedCountries.includes(country)) )
     {
       window.history.replaceState( {} , 'redirect', 
-        '/per-country?region='+correctedRegionName.replace('','_')+'&countries='+correctedCountries.join('~') );
+        '/per-country?region='+correctedRegionName.replace(' ','_')+'&countries='+correctedCountries.join('~') );
     }
   }, [])
 
