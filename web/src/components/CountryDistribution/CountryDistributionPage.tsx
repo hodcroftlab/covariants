@@ -66,7 +66,7 @@ export function CountryDistributionPage() {
   useEffect(() => {
     console.log('CountryDistributionPage #3')
     setPlaces(initialPlaces)
-  }, [initialPlaces])
+  }, [])
 
   const regionsTitle = useMemo(() => (currentRegion === defaultRegionName ? 'Countries' : 'Regions'), [currentRegion])
   const iconComponent = useMemo(() => (currentRegion === defaultRegionName ? CountryFlag : undefined), [currentRegion])
