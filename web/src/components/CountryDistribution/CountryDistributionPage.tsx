@@ -30,6 +30,8 @@ const enabledFilters = ['clusters', 'countriesWithIcons']
 
 export function CountryDistributionPage() {
 
+  console.log('CountryDistributionPage #1')
+
   const URLparameters = new URL(window.location.href).searchParams
   const regionParameter = URLparameters.get('region')?.replace('_',' ') ?? defaultRegionName
   const countriesParameter = URLparameters.get('countries')?.replace('_',' ').split('~') ?? []
@@ -39,12 +41,13 @@ export function CountryDistributionPage() {
     /* prettier-ignore */
     useMemo(() => getPerCountryDataExtended(regionParameter,countriesParameter), [regionParameter, countriesParameter])
 
-  const [currentRegion, setCurrentRegion] = useState(defaultRegionName)
+  const [currentRegion, setCurrentRegion] = useState(correctedRegionName)
 
   const [places, setPlaces] = useState<Places>(initialPlaces)
   const [clusters, setClusters] = useState<ClusterState>(initialClusters)
 
   useEffect(() => {
+    console.log('CountryDistributionPage #2')
     if(resetParameters)
     {
       window.history.replaceState( {} , 'redirect', '/per-country' );
@@ -58,9 +61,10 @@ export function CountryDistributionPage() {
       window.history.replaceState( {} , 'redirect', 
         '/per-country?region='+correctedRegionName.replace('','_')+'&countries='+correctedCountries.join('~') );
     }
-  }, [resetParameters])
+  }, [])
 
   useEffect(() => {
+    console.log('CountryDistributionPage #3')
     setPlaces(initialPlaces)
   }, [initialPlaces])
 
