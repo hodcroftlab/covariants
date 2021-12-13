@@ -55,8 +55,6 @@ export function getPerCountryDataExtended(regionName: string, countries: string[
   let resetParameters=false
   let loadAllCountries = !countries.length ? true : false
 
-  console.log(countries.length, loadAllCountries)
-
   const allData = getPerCountryDataRaw()
   let perCountryData : PerCountryDatum | undefined = allData.regions.find(
     (candidate) => (candidate.region === regionName),
