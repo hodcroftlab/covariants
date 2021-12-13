@@ -28,18 +28,18 @@ import { CountryFlag } from '../Common/CountryFlag'
 const { defaultRegionName, regionNames, regionsHaveData } = getRegions()
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
-const URLparameters = new URL(window.location.href).searchParams
-const regionParameter = URLparameters.get('region')?.replace('_',' ') ?? defaultRegionName
-const countriesParameter = URLparameters.get('countries')?.replace('_',' ').split('~') ?? []
-
 export function CountryDistributionPage() {
+
+  const URLparameters = new URL(window.location.href).searchParams
+  const regionParameter = URLparameters.get('region')?.replace('_',' ') ?? defaultRegionName
+  const countriesParameter = URLparameters.get('countries')?.replace('_',' ').split('~') ?? []
 
   const { clusters: initialClusters, places: initialPlaces, countryDistributions, 
     correctedRegionName : correctedRegionName, resetParameters : resetParameters, correctedCountries : correctedCountries } =
     /* prettier-ignore */
     useMemo(() => getPerCountryDataExtended(regionParameter,countriesParameter), [regionParameter, countriesParameter])
 
-  const [currentRegion, setCurrentRegion] = useState(correctedRegionName)
+  const [currentRegion, setCurrentRegion] = useState(defaultRegionName)
 
   const [places, setPlaces] = useState<Places>(initialPlaces)
   const [clusters, setClusters] = useState<ClusterState>(initialClusters)
