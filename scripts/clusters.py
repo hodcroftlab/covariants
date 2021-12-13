@@ -451,18 +451,42 @@ clusters = {
         },
      },
 
-    #neighbourhood search around Omicron - trial
-    "Omicron.Similar": { # S:N440K, S:T478K, S:N501Y -- N:R203K, N:G204R
-        "snps": [22882, 22995, 23063, 28881, 28883], # 22882G, 22995A, 23063T - 28881T, 28883C
+    #21K.21L together
+    "21K.21L": { 
+        "snps": [22679, 23040, 23604], # 22679C, 23040G, 23604A
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
         "important": False,
+        "other_nextstrain_names": ["21K (Omicron)", "21L"],
         "country_info": [], 'col': "#b3d9ff", 
-        "display_name": "Omicron.Similar",
+        "display_name": "21K.21L",
         "type": "do_not_display",
-        "build_name": "Omicron.Similar",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Omicron.Similar"
+        "build_name": "21K.21L",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K.21L"
+    },
+
+    # Sister clade to 21K - TBD if Omicron
+    "21L": {
+        "snps": [21618,22775,23525], # S21618T, 22775A, 23525T
+        "cluster_data": [],  
+        "nextstrain_build": True,
+        "type": "do_not_display",
+        "graphing": False,
+        "important": False,
+        "country_info": [],
+        "col": "#cfafcf",
+        "display_name": "21L",
+        "alt_display_name": ["21L"],
+        #"other_nextstrain_names": ["21A (Delta)","21J (Delta)","21I (Delta)"],
+        "build_name": "21L",
+        "old_build_names": ["21L"],
+        "nextstrain_name": "21L",
+        "pango_lineages": [
+            {"name": "BA.2", "url": "https://cov-lineages.org/lineage.html?lineage=BA.2"}
+        ],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21L",
+        "mutations": {}
     },
 
     # variant  -- part of 'Indian' in media - B.1.617.1 
