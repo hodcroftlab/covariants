@@ -1341,7 +1341,13 @@ bad_seqs = {
     "USA/UT-UPHL-210624490751/2021" : "2021-01-04", #delta
     "USA/UT-UPHL-210723256386/2021" : "2021-01-05", #delta
     "env/Austria/CeMM18535/2021" : "2021-01-17", #delta
-
+    "USA/TX-HMH-MCoV-40891/2020" : "2020-07-22", #alpha
+    "USA/TX-HMH-MCoV-40953/2020" : "2020-07-22", #alpha
+    "USA/TX-HMH-MCoV-50516/2020" : "2020-07-18", #delta
+    "USA/TX-HMH-MCoV-49926/2020" : "2020-07-16", #delta
+    "SouthAfrica/NHLS-UCT-GP-M115/2021" : "2021-06-17", #omicron
+    "SouthAfrica/NHLS-UCT-GP-M140/2021" : "2021-06-18", #omicron
+    "Kenya/K15865/2020" : "2020-06-23", #kappa
 
     # Omicron with bad date:
     "SouthAfrica/NICD-N01333/2021" : "2021-01-05", #omicron
