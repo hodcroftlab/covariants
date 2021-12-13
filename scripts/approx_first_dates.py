@@ -17,7 +17,7 @@ cluster_first_dates = {
     "Kappa": {"first_date": "2020-10-30"}, #Kappa
     "Delta417": {"first_date": "2020-10-30"}, #Delta plus (same as delta)
     "Eta": {"first_date": "2020-11-21"}, #Eta
-    "Iota": {"first_date": "2020-11-17"}, #Iota
+    "Iota": {"first_date": "2020-11-10"}, #Iota
     "21GLambda": {"first_date": "2020-11-05"}, # Lambda
     "21H": {"first_date": "2021-01-05"}, # B.1.621
     "20BS732": {"first_date": "2020-10-01"}, #B.1.1.519
