@@ -15,9 +15,7 @@ import { Editable, CenteredEditable } from 'src/components/Common/Editable'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
-import { shouldPlotCountry } from 'src/io/getCountryColor'
 import { PageHeading } from 'src/components/Common/PageHeading'
-import perClusterData from 'src/../data/perClusterData.json'
 import {
   disableAllPlaces,
   enableAllPlaces,
