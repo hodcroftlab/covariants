@@ -30,6 +30,7 @@ export function getTicks() {
     DateTime.fromSeconds(end).endOf('month'),
   )
     .splitBy({ months: 1 })
+    .slice(1) // ensure first tick is after time domain start
     .map((d) => d.start.toSeconds())
 }
 
