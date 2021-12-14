@@ -1,6 +1,7 @@
 /* eslint-disable camelcase,unicorn/consistent-function-scoping */
 import React from 'react'
 
+import { get } from 'lodash'
 import dynamic from 'next/dynamic'
 import { DateTime } from 'luxon'
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
@@ -11,24 +12,10 @@ import { ticks, timeDomain } from 'src/io/getParams'
 import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
 import { formatDateHumanely, formatProportion } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
-
+import type { ClusterDistributionDatum } from 'src/io/getPerClusterData'
 import { ClusterDistributionPlotTooltip } from 'src/components/ClusterDistribution/ClusterDistributionPlotTooltip'
 import { ChartContainerInner, ChartContainerOuter } from 'src/components/Common/PlotLayout'
 import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
-import { get } from 'lodash'
-
-export interface ClusterDistributionDatum {
-  week: string
-  frequencies: {
-    [country: string]: number | undefined
-  }
-  interp: {
-    [country: string]: boolean | undefined
-  }
-  orig: {
-    [country: string]: boolean | undefined
-  }
-}
 
 export interface ClusterDistributionPlotProps {
   country_names: string[]
@@ -92,7 +79,7 @@ export function ClusterDistributionPlotComponent({ country_names, distribution }
                     allowEscapeViewBox={{ x: false, y: true }}
                     offset={50}
                   />
-                  {country_names.map((country, i) => (
+                  {country_names.map((country) => (
                     <Line
                       key={country}
                       type="monotone"
@@ -107,7 +94,7 @@ export function ClusterDistributionPlotComponent({ country_names, distribution }
                     />
                   ))}
 
-                  {country_names.map((country, i) => (
+                  {country_names.map((country) => (
                     <Line
                       key={`${country}_interp`}
                       type="monotone"

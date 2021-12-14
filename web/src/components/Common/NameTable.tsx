@@ -73,7 +73,7 @@ export interface NameTableRowProps {
 }
 
 export function NameTableRow({ datum }: NameTableRowProps) {
-  const { clade, lineages, who, others, oldnames } = datum
+  const { clade, lineages, who, others } = datum
 
   const lineageEntries = useMemo(
     () =>
@@ -93,14 +93,6 @@ export function NameTableRow({ datum }: NameTableRowProps) {
     [others],
   )
 
-  const oldNames = useMemo(
-    () =>
-      joinWithCommas(
-        oldnames.map<ReactNode>((entry) => <NameTableEntryComponent key={entry.name} entry={entry} />),
-      ),
-    [oldnames],
-  )
-
   return (
     <Tr>
       <Td>
@@ -109,7 +101,6 @@ export function NameTableRow({ datum }: NameTableRowProps) {
       <Td>{lineageEntries}</Td>
       <Td>{who && <WhoBadge name={who} />}</Td>
       <Td>{otherEntries}</Td>
-      <Td>{oldNames}</Td>
     </Tr>
   )
 }
@@ -126,8 +117,7 @@ export function NameTable() {
               {'WHO Label'}
             </LinkExternal>
           </Th>
-          <Th>{'Other Names'}</Th>
-          <Th>{'Old CoVariants Names'}</Th>
+          <Th>{'Other'}</Th>
         </Tr>
       </Thead>
       <Tbody>
