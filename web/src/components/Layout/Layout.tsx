@@ -30,7 +30,6 @@ const HeaderCol = styled(Col)`
 `
 
 const MainContainer = styled(ContainerBase)`
-  overflow: hidden;
   padding-bottom: 100px;
 `
 
