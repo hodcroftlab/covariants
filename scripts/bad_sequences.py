@@ -1348,6 +1348,8 @@ bad_seqs = {
     "SouthAfrica/NHLS-UCT-GP-M115/2021" : "2021-06-17", #omicron
     "SouthAfrica/NHLS-UCT-GP-M140/2021" : "2021-06-18", #omicron
     "Kenya/K15865/2020" : "2020-06-23", #kappa
+    "USA/WY-WYPHL-20125142/2020" : "2020-11-07", #delta
+    "USA/WY-WYPHL-20133773/2020" : "2020-11-12", #delta
 
     # Omicron with bad date:
     "SouthAfrica/NICD-N01333/2021" : "2021-01-05", #omicron

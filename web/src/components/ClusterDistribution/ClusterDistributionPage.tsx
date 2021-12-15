@@ -111,6 +111,13 @@ export function SortReverseCheckbox({ reverse, setReverse }: SortReverseCheckbox
   )
 }
 
+const StickyRow = styled(Row)`
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  align-self: flex-start;
+`
+
 export function ClusterDistributionPage() {
   const perCountryTooltipSortBy = useSelector(selectPerCountryTooltipSortBy)
   const perCountryTooltipSortReversed = useSelector(selectPerCountryTooltipSortReversed)
@@ -235,7 +242,7 @@ export function ClusterDistributionPage() {
               </SidebarFlex>
 
               <MainFlex>
-                <Row noGutters>
+                <StickyRow noGutters>
                   <Col>
                     <Card className="m-2">
                       <CardBody className="px-3 py-2">
@@ -249,7 +256,7 @@ export function ClusterDistributionPage() {
                       </CardBody>
                     </Card>
                   </Col>
-                </Row>
+                </StickyRow>
 
                 <Row noGutters>
                   <Col>
