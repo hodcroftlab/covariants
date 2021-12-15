@@ -12,10 +12,13 @@ import { ReactComponent as Oceania } from 'src/assets/images/continents/Oceania.
 import { ReactComponent as SouthAmerica } from 'src/assets/images/continents/South America.svg'
 
 export const missingCountryCodes: Record<string, string> = {
-  'Kosovo': 'XK',
   'Bonaire': 'BQ',
+  'Brunei': 'BN',
   'Curacao': 'CW',
+  'Iran': 'IR',
+  'Kosovo': 'XK',
   'North Macedonia': 'MK',
+  'Republic of the Congo': 'CD',
   'Russia': 'RU',
   'Sint Maarten': 'SX',
   'South Korea': 'KR',
