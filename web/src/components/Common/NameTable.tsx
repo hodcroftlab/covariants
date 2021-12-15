@@ -10,7 +10,8 @@ import { LineageLinkBadge, Var, WhoBadge } from './MutationBadge'
 
 const Table = styled(TableBase)`
   max-width: 800px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   border-collapse: collapse;
 
   & > thead > tr,

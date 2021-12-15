@@ -18,7 +18,7 @@ export const Figure = styled.figure`
   max-width: 400px;
   margin: 10px auto;
 
-  font-size: 1.2rem;
+  font-weight: 600;
   color: ${(props) => props.theme.gray700};
 `
 

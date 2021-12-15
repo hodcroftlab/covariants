@@ -1,35 +1,30 @@
 import React from 'react'
 
 import { Col, Container, Row } from 'reactstrap'
-import { Editable } from 'src/components/Common/Editable'
-
+import { CenteredEditable } from 'src/components/Common/Editable'
+import { PageHeading } from 'src/components/Common/PageHeading'
 import { Layout } from 'src/components/Layout/Layout'
-import styled from 'styled-components'
 
 import Faq from '../../../../content/Faq.md'
-
-export const FaqPageContainer = styled(Container)`
-  max-width: 1200px;
-`
 
 export function FaqPage() {
   return (
     <Layout>
-      <FaqPageContainer>
+      <Container>
         <Row noGutters>
           <Col>
-            <h1 className="text-center">{'Frequently asked questions'}</h1>
+            <PageHeading>{'Frequently asked questions'}</PageHeading>
           </Col>
         </Row>
 
         <Row noGutters>
           <Col>
-            <Editable githubUrl="blob/master/content/Faq.md">
+            <CenteredEditable githubUrl="blob/master/content/Faq.md">
               <Faq />
-            </Editable>
+            </CenteredEditable>
           </Col>
         </Row>
-      </FaqPageContainer>
+      </Container>
     </Layout>
   )
 }

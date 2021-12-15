@@ -2,7 +2,7 @@ import { mapValues } from 'lodash'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Col, Row } from 'reactstrap'
 
-import { Editable } from 'src/components/Common/Editable'
+import { CenteredEditable, Editable } from 'src/components/Common/Editable'
 import { ColCustom } from 'src/components/Common/ColCustom'
 import { RegionSwitcher } from 'src/components/CountryDistribution/RegionSwitcher'
 
@@ -25,6 +25,7 @@ import {
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
 import { CountryFlag } from '../Common/CountryFlag'
 import { USStateCode } from '../Common/USStateCode'
+import { PageHeading } from '../Common/PageHeading'
 
 const { defaultRegionName, regionNames, regionsHaveData } = getRegions()
 const enabledFilters = ['clusters', 'countriesWithIcons']
@@ -117,7 +118,7 @@ export function CountryDistributionPage() {
     <Layout wide>
       <Row noGutters>
         <Col>
-          <h1 className="text-center">{'Overview of Variants in Countries'}</h1>
+          <PageHeading>{'Overview of Variants in Countries'}</PageHeading>
         </Col>
       </Row>
 
@@ -134,9 +135,9 @@ export function CountryDistributionPage() {
 
       <Row noGutters>
         <Col>
-          <Editable githubUrl="tree/master/content/PerCountryIntro/">
+          <CenteredEditable githubUrl="tree/master/content/PerCountryIntro/">
             <IntroContent />
-          </Editable>
+          </CenteredEditable>
         </Col>
       </Row>
 

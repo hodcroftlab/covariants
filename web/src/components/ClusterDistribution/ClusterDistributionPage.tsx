@@ -11,10 +11,11 @@ import { ClusterDistributionPlotCard } from 'src/components/ClusterDistribution/
 import { ColCustom } from 'src/components/Common/ColCustom'
 import { Dropdown as DropdownBase } from 'src/components/Common/Dropdown'
 import { stringToOption } from 'src/components/Common/DropdownOption'
-import { Editable } from 'src/components/Common/Editable'
+import { Editable, CenteredEditable } from 'src/components/Common/Editable'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
+import { PageHeading } from 'src/components/Common/PageHeading'
 import {
   disableAllPlaces,
   enableAllPlaces,
@@ -207,15 +208,15 @@ export function ClusterDistributionPage() {
     <Layout wide>
       <Row noGutters>
         <Col>
-          <h1 className="text-center">{'Overview of Variants/Mutations'}</h1>
+          <PageHeading>{'Overview of Variants/Mutations'}</PageHeading>
         </Col>
       </Row>
 
       <Row noGutters>
         <Col>
-          <Editable githubUrl="blob/master/content/PerClusterIntro.md">
+          <CenteredEditable githubUrl="blob/master/content/PerClusterIntro.md">
             <PerClusterIntro />
-          </Editable>
+          </CenteredEditable>
         </Col>
       </Row>
 

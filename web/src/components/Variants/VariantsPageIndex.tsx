@@ -5,6 +5,7 @@ import { Col, Row } from 'reactstrap'
 import { NarrowPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 import { Editable } from 'src/components/Common/Editable'
 import { Layout } from 'src/components/Layout/Layout'
+import { PageHeading } from 'src/components/Common/PageHeading'
 
 import VariantsPageIntro from '../../../../content/VariantsPageIntro.md'
 import { ClusterButtonPanelLayout } from '../ClusterButtonPanel/ClusterButtonPanelLayout'
@@ -15,7 +16,7 @@ export function VariantsPageIndex() {
       <NarrowPageContainer>
         <Row noGutters>
           <Col>
-            <h1 className="text-center">{'Overview of Variants/Mutations'}</h1>
+            <PageHeading>{'Overview of Variants/Mutations'}</PageHeading>
           </Col>
         </Row>
 

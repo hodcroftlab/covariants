@@ -7,7 +7,6 @@ import styled from 'styled-components'
 export const RegionSwitcherContainer = styled.div`
   margin: 5px 5px;
   padding: 0.65rem 1rem;
-  box-shadow: ${(props) => props.theme.shadows.light};
   border-radius: 3px;
 `
 
