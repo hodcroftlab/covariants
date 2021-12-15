@@ -24,6 +24,7 @@ import {
 
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
 import { CountryFlag } from '../Common/CountryFlag'
+import { USStateCode } from '../Common/USStateCode'
 import { PageHeading } from '../Common/PageHeading'
 
 const { defaultRegionName, regionNames, regionsHaveData } = getRegions()
@@ -43,7 +44,11 @@ export function CountryDistributionPage() {
   }, [initialPlaces])
 
   const regionsTitle = useMemo(() => (currentRegion === 'World' ? 'Countries' : 'Regions'), [currentRegion])
-  const iconComponent = useMemo(() => (currentRegion === 'World' ? CountryFlag : undefined), [currentRegion])
+  const iconComponent = useMemo(() => {
+    if (currentRegion === 'World') return CountryFlag
+    if (currentRegion === 'United States') return USStateCode
+    return undefined
+  }, [currentRegion])
 
   const { withCountriesFiltered } =
     /* prettier-ignore */

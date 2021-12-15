@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import type { CountryDistributionDatum } from 'src/io/getPerCountryData'
 import { PlotCardTitle } from 'src/components/Common/PlotCardTitle'
 import { CountryFlagProps } from 'src/components/Common/CountryFlag'
+import { USStateCodeProps } from 'src/components/Common/USStateCode'
 import { CountryDistributionPlot } from 'src/components/CountryDistribution/CountryDistributionPlot'
 
 const FlagAlignment = styled.span`
@@ -19,7 +20,7 @@ export interface CountryDistributionPlotCardProps {
   country: string
   distribution: CountryDistributionDatum[]
   cluster_names: string[]
-  Icon?: React.ComponentType<CountryFlagProps>
+  Icon?: React.ComponentType<CountryFlagProps | USStateCodeProps>
 }
 
 export function CountryDistributionPlotCard({

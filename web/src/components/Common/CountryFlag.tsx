@@ -1,6 +1,5 @@
 import React, { FC, ReactElement, SVGProps, useMemo } from 'react'
 
-import styled from 'styled-components'
 import iso3311a2 from 'iso-3166-1-alpha-2'
 import Flags from 'country-flag-icons/react/3x2'
 
@@ -11,28 +10,22 @@ import { ReactComponent as NorthAmerica } from 'src/assets/images/continents/Nor
 import { ReactComponent as Oceania } from 'src/assets/images/continents/Oceania.svg'
 import { ReactComponent as SouthAmerica } from 'src/assets/images/continents/South America.svg'
 
+import { FlagWrapper } from './FlagWrapper'
+
 export const missingCountryCodes: Record<string, string> = {
-  'Kosovo': 'XK',
   'Bonaire': 'BQ',
+  'Brunei': 'BN',
   'Curacao': 'CW',
+  'Iran': 'IR',
+  'Kosovo': 'XK',
   'North Macedonia': 'MK',
+  'Republic of the Congo': 'CD',
   'Russia': 'RU',
   'Sint Maarten': 'SX',
   'South Korea': 'KR',
   'USA': 'US',
   'Vietnam': 'VN',
 }
-
-export const FlagWrapper = styled.div<{ $countryCode?: string }>`
-  height: calc(1em + 2px);
-  width: calc(1.5em + 2px);
-  border: 1px solid #ced4da;
-  display: flex;
-  > * {
-    width: 100%;
-    height: 100%;
-  }
-`
 
 export const ContinentIcons: Record<string, FC<SVGProps<SVGElement>>> = {
   'Africa': Africa,
@@ -64,7 +57,7 @@ export function getFlagComponent(country: string, withFallback?: boolean): React
     )
   }
 
-  return withFallback ? <FlagWrapper $countryCode={countryCode} /> : null
+  return withFallback ? <FlagWrapper /> : null
 }
 
 export interface CountryFlagProps extends SVGProps<SVGSVGElement> {
