@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const FlagOutline = styled.div<{ $missingCode?: string }>`
+export const FlagWrapper = styled.div`
   height: calc(1em + 2px);
   width: calc(1.5em + 2px);
   border: 1px solid #ced4da;

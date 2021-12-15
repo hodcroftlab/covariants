@@ -1,7 +1,7 @@
 import React, { SVGProps } from 'react'
 import styled from 'styled-components'
 
-import { FlagOutline } from './FlagOutline'
+import { FlagWrapper } from './FlagWrapper'
 
 const FlagText = styled.span`
   background: #fff;
@@ -83,14 +83,14 @@ export interface USStateCodeProps extends SVGProps<SVGSVGElement> {
 
 export function USStateCode({ country, state = country, withFallback = false }: USStateCodeProps) {
   const stateCode = nameToCode[state]
-  const fallback = withFallback ? <FlagOutline $missingCode={stateCode} /> : null
+  const fallback = withFallback ? <FlagWrapper /> : null
   return stateCode ? (
-    <FlagOutline>
+    <FlagWrapper>
       <FlagText>
         <span>{stateCode[0]}</span>
         <span>{stateCode[1]}</span>
       </FlagText>
-    </FlagOutline>
+    </FlagWrapper>
   ) : (
     fallback
   )
