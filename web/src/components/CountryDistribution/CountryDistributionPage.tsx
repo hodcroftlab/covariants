@@ -1,4 +1,4 @@
-import { mapValues, pickBy } from 'lodash'
+import { mapValues } from 'lodash'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Col, Row } from 'reactstrap'
 
@@ -10,79 +10,37 @@ import { DistributionSidebar } from 'src/components/DistributionSidebar/Distribu
 import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 import { getRegionPerCountryContent } from 'src/io/getRegionContent'
+import { disableAllPlaces, enableAllPlaces, Places, toggleContinent, toggleCountry } from 'src/io/getPlaces'
 
 import {
-  DEFAULT_REGION,
-  getClusterData,
+  ClusterState,
+  filterClusters,
+  filterCountries,
+  getPerCountryData,
   getPerCountryIntroContentFilename,
-  REGIONS,
-  REGIONS_HAVE_DATA,
-} from 'src/io/getClusterData'
+  getRegions,
+  toggleCluster,
+} from 'src/io/getPerCountryData'
 
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
-import { CountryDistributionDatum } from './CountryDistributionPlot'
 import { CountryFlag } from '../Common/CountryFlag'
 import { USStateCode } from '../Common/USStateCode'
 
-export interface ClusterState {
-  [key: string]: { enabled: boolean }
-}
-
-export interface CountryState {
-  [key: string]: { enabled: boolean }
-}
-
-export interface CountryDistribution {
-  country: string
-  distribution: CountryDistributionDatum[]
-}
-
-export function filterCountries(countries: CountryState, countryDistributions: CountryDistribution[]) {
-  const enabledCountries = Object.entries(countries)
-    .filter(([_0, { enabled }]) => enabled)
-    .map(([country]) => country)
-
-  const withCountriesFiltered = countryDistributions.filter(({ country }) => {
-    return enabledCountries.some((candidate) => candidate === country)
-  })
-
-  return { enabledCountries, withCountriesFiltered }
-}
-
-export function filterClusters(clusters: ClusterState, withCountriesFiltered: CountryDistribution[]) {
-  const enabledClusters = Object.entries(clusters)
-    .filter(([_0, { enabled }]) => enabled)
-    .map(([cluster]) => cluster)
-
-  const withClustersFiltered = withCountriesFiltered.map(({ country, distribution }) => {
-    const distributionFiltered = distribution.map((dist) => {
-      const countsFiltered = pickBy(dist.cluster_counts, (_0, cluster) => {
-        return enabledClusters.some((candidate) => candidate === cluster)
-      })
-
-      return { ...dist, cluster_counts: countsFiltered }
-    })
-    return { country, distribution: distributionFiltered }
-  })
-
-  return { enabledClusters, withClustersFiltered }
-}
-
+const { defaultRegionName, regionNames, regionsHaveData } = getRegions()
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
 export function CountryDistributionPage() {
-  const [currentRegion, setCurrentRegion] = useState(DEFAULT_REGION)
-  const { clustersState, countriesState, countryDistributions } =
+  const [currentRegion, setCurrentRegion] = useState(defaultRegionName)
+  const { clusters: initialClusters, places: initialPlaces, countryDistributions } =
     /* prettier-ignore */
-    useMemo(() => getClusterData(currentRegion), [currentRegion])
+    useMemo(() => getPerCountryData(currentRegion), [currentRegion])
 
-  const [countries, setCountries] = useState<CountryState>(countriesState)
-  const [clusters, setClusters] = useState<ClusterState>(clustersState)
+  const [places, setPlaces] = useState<Places>(initialPlaces)
+  const [clusters, setClusters] = useState<ClusterState>(initialClusters)
 
   useEffect(() => {
-    setCountries(countriesState)
-    setClusters(clustersState)
-  }, [clustersState, countriesState])
+    setPlaces(initialPlaces)
+  }, [initialPlaces])
 
   const regionsTitle = useMemo(() => (currentRegion === 'World' ? 'Countries' : 'Regions'), [currentRegion])
   const iconComponent = useMemo(() => {
@@ -93,7 +51,7 @@ export function CountryDistributionPage() {
 
   const { withCountriesFiltered } =
     /* prettier-ignore */
-    useMemo(() => filterCountries(countries, countryDistributions), [countries, countryDistributions])
+    useMemo(() => filterCountries(places, countryDistributions), [countryDistributions, places])
 
   const { enabledClusters, withClustersFiltered } =
     /* prettier-ignore */
@@ -114,13 +72,9 @@ export function CountryDistributionPage() {
     [enabledClusters, withClustersFiltered, iconComponent],
   )
 
-  const handleClusterCheckedChange = useCallback(
-    (cluster: string) =>
-      setClusters((oldClusters) => {
-        return { ...oldClusters, [cluster]: { ...oldClusters[cluster], enabled: !oldClusters[cluster].enabled } }
-      }),
-    [],
-  )
+  const handleClusterCheckedChange = useCallback((clusterName: string) => {
+    setClusters((oldClusters) => toggleCluster(oldClusters, clusterName))
+  }, [])
 
   const handleClusterSelectAll = useCallback(
     () => setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: true }))),
@@ -133,28 +87,26 @@ export function CountryDistributionPage() {
   )
 
   const handleCountryCheckedChange = useCallback(
-    (country: string) =>
-      setCountries((oldCountries) => {
-        return { ...oldCountries, [country]: { ...oldCountries[country], enabled: !oldCountries[country].enabled } }
-      }),
-    [],
+    (countryName: string) => {
+      setPlaces((oldPlaces) => toggleCountry(oldPlaces, countryName))
+    },
+    [setPlaces],
   )
 
-  const handleCountrySelectAll = useCallback(
-    () =>
-      setCountries((oldCountries: CountryState) =>
-        mapValues(oldCountries, (country) => ({ ...country, enabled: true })),
-      ),
-    [],
+  const handleRegionCheckedChange = useCallback(
+    (continentName: string) => {
+      setPlaces((oldPlaces) => toggleContinent(oldPlaces, continentName))
+    },
+    [setPlaces],
   )
 
-  const handleCountryDeselectAll = useCallback(
-    () =>
-      setCountries((oldCountries: CountryState) =>
-        mapValues(oldCountries, (country) => ({ ...country, enabled: false })),
-      ),
-    [],
-  )
+  const handleCountrySelectAll = useCallback(() => {
+    setPlaces(enableAllPlaces)
+  }, [setPlaces])
+
+  const handleCountryDeselectAll = useCallback(() => {
+    setPlaces(disableAllPlaces)
+  }, [setPlaces])
 
   const IntroContent = useMemo(() => {
     const contentFilename = getPerCountryIntroContentFilename(currentRegion)
@@ -172,8 +124,8 @@ export function CountryDistributionPage() {
       <Row noGutters>
         <Col>
           <RegionSwitcher
-            regions={REGIONS}
-            regionsHaveData={REGIONS_HAVE_DATA}
+            regions={regionNames}
+            regionsHaveData={regionsHaveData}
             currentRegion={currentRegion}
             setCurrentRegion={setCurrentRegion}
           />
@@ -195,7 +147,7 @@ export function CountryDistributionPage() {
               <SidebarFlex>
                 <DistributionSidebar
                   clusters={clusters}
-                  countries={countries}
+                  places={places}
                   regionsTitle={regionsTitle}
                   enabledFilters={enabledFilters}
                   clustersCollapsedByDefault={false}
@@ -204,6 +156,7 @@ export function CountryDistributionPage() {
                   onClusterFilterSelectAll={handleClusterSelectAll}
                   onClusterFilterDeselectAll={handleClusterDeselectAll}
                   onCountryFilterChange={handleCountryCheckedChange}
+                  onRegionFilterChange={handleRegionCheckedChange}
                   onCountryFilterSelectAll={handleCountrySelectAll}
                   onCountryFilterDeselectAll={handleCountryDeselectAll}
                 />

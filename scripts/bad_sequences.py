@@ -92,6 +92,21 @@ bad_seqs = {
     "USA/MI-MDHHS-SC30215/2020" : "2020-04-19", # alpha
     "USA/MI-MDHHS-SC25865/2020" : "2020-04-15", # robin 1
     "Colombia/ANT-CWOHC-VG-SEC01275A/2020" : "2020-09-21", # bad quality
+    "Ecuador/USFQ-1969/2021" : "2021-08-13", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1977/2021" : "2021-08-13", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1981/2021" : "2021-08-16", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1983/2021" : "2021-08-17", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1986/2021" : "2021-08-16", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1987/2021" : "2021-08-16", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1988/2021" : "2021-08-16", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1989/2021" : "2021-08-16", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1990/2021" : "2021-08-16", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1996/2021" : "2021-08-16", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1997/2021" : "2021-08-16", # divergence is 0-10 muts!
+    "Ecuador/USFQ-1999/2021" : "2021-08-18", # divergence is 0-10 muts!
+    "Ecuador/USFQ-2005/2021" : "2021-08-19", # divergence is 0-10 muts!
+    "Ecuador/USFQ-2007/2021" : "2021-08-19", # divergence is 0-10 muts!
+    "Ecuador/USFQ-2009/2021" : "2021-08-19", # divergence is 0-10 muts!
     #alpha, all below
     "USA/CA-SEARCH-101999/2020" : "2020-07-08",
     "USA/CA-SEARCH-101987/2020" : "2020-07-08",
@@ -142,6 +157,10 @@ bad_seqs = {
     "Belgium/LHUB11590048/2020" : "2020-03-31",
     'bat/Yunnan/RaTG13/2013'    : "2013-07-24", #this is RatG13 - legit, but looks weird in table
     'bat/Yunnan/RmYN02/2019'    : "2019-06-25", # bat sequence - legit but looks weird
+    "Morocco/INH-107/2020" : "2020-02-02", 
+    "Morocco/INH-108/2020" : "2020-02-02", 
+    "Morocco/INH-109/2020" : "2020-02-02", 
+    "bat/Yunnan/RmYN01/2019" : "2019-06-25", 
 
     # these are all before expected cluster start date:
     "Canada/NS-NML-2284/2020" : "2020-05-14",
@@ -264,7 +283,1740 @@ bad_seqs = {
     "USA/AZ-TG968502/2020" : "2020-09-21", #delta
     "USA/AZ-TG968441/2020" : "2020-10-22", #iota
     "USA/CA-CDPH1224/2020" : "2020-03-11", #epsilon
-    "Canada/QC-L00333784001/2020" : "2020-03-12", #477
+    "Canada/QC-L00333784001/2020" : "2020-03-12", # 477
+    "India/GJ-INSACOG-GBRC1538/2020" : "2020-03-19", #kappa
+    "India/GJ-INSACOG-GBRC1539/2020" : "2020-03-17", #kappa
+    "Brazil/PE-FIOCRUZ-IAM3285/2020" : "2020-09-22", # gamma - too divergent - not near base
+    "France/PAC-IHU-3957-Nano1/2020" : "2020-09-03", #alpha
+    "France/PAC-IHU-3957_Nano1/2020" : "2020-09-03", #alpha
+    "France/PAC-IHU-5143-N1/2021" : "2020-05-24", #alpha
+    "France/PAC-IHU-5148-N1/2021" : "2020-08-26", #alpha
+    "Germany/SN-RKI-I-213505/2020" : "2020-08-21", #delta
+    "England/PHEC-U303UC24/2021"  : "2020-03-20", #alpha
+    "England/PHEC-U303UC33/2021"  : "2020-03-20", #alpha
+    "Italy/VEN-IZSVe-21RS8085-7_TV/2020" : "2020-08-13", #delta
+    "USA/DC-DFS-PHL-01331/2020" : "2020-08-10", #delta
+    "India/GJ-INSACOG-GBRC2186/2020" : "2020-03-19", #delta
+    "India/GJ-INSACOG-GBRC2187/2020" : "2020-03-17", #delta
+    "Italy/CAM-TIGEM-IZSM-COLLI-14397/2020" : "2020-03-16", #alpha
+    "Kenya/ICGEB-KEMRI-7_S23_S7_S21_S25/2020" : "2020-09-09", #alpha
+    "Poland/NIPH-NIH_ECDC-4488/2020" : "2020-04-22", #alpha
+    "Switzerland/SO-UHB-42850063/2020" : "2020-05-11", #alpha
+    "USA/IL-RIPHL_30044_G/2020" : "2020-04-17", #alpha
+    "USA/MI-MDHHS-SC28884/2020" : "2020-04-07", #alpha
+    "USA/MI-MDHHS-SC28909/2020" : "2020-04-12", #alpha
+    "BurkinaFaso/CV1920/2020" : "2020-09-16", #delta
+    "BurkinaFaso/CV1921/2020" : "2020-09-18", #delta
+    "BurkinaFaso/CV1728/2020" : "2020-03-28", # 20A.484
+    "USA/MS-USAFSAM-S3006/2020" : "2020-10-05", #21H
+    "Argentina/PAIS-A0964/2020" : "2020-07-22", #gamma
+    "Argentina/PAIS-A0965/2020" : "2020-08-01", #gamma
+    "Spain/UN-ORC01380/2020" : "2020-03-26", #alpha
+    "USA/CA-ALSR-101973/2020" : "2020-07-11", #alpha
+    "USA/CA-ALSR-101984/2020" : "2020-07-11", #alpha
+    "USA/CA-ALSR-101987/2020" : "2020-07-08", #alpha
+    "USA/CA-ALSR-101991/2020" : "2020-07-08", #alpha
+    "USA/CA-ALSR-101999/2020" : "2020-07-08", #alpha
+    "USA/CA-ALSR-102007/2020" : "2020-07-08", #alpha
+    "USA/CA-ALSR-102015/2020" : "2020-07-09", #alpha
+    "USA/MN-MDH-13426/2020" : "2020-08-07", #delta
+    "USA/WI-WSLH-219155/2020" : "2020-08-12", #delta
+    "USA/WY-WYPHL-21070660/2020" : "2020-09-02", #delta
+    "USA/VI-Yale-10210/2020" : "2020-08-21", #delta
+    "USA/VI-Yale-10211/2020" : "2020-08-21", #delta
+    "USA/TX-HMH-MCoV-40926/2020" : "2020-07-22", #alpha
+    "USA/TX-HMH-MCoV-40929/2020" : "2020-07-22", #alpha
+    "Vanuatu/VAN003/2020" : "2020-04-17", #alpha
+    "Rwanda/CV2217/2020" : "2020-06-04", #beta
+    "England/MILK-1FF99A3/2020" : "2020-04-16", #delta
+    "England/MILK-1FF99C1/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9A19/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9A37/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9A46/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9A64/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9A82/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9ABF/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9ADD/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9B43/2020" : "2020-04-19", #delta
+    "England/MILK-1FF9B8F/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9BE9/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9D6B/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9DA7/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9DC5/2020" : "2020-04-18", #delta
+    "England/MILK-1FF9DD4/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9DF2/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9FB0/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9FDE/2020" : "2020-04-16", #delta
+    "England/MILK-1FF9FFC/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA034/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA061/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA0BC/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA131/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA17D/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA19B/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA1B9/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA1D7/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA25C/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA2A7/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA30E/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA359/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA438/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA492/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA4B0/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA4ED/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA4FC/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA508/2020" : "2020-04-16", #delta
+    "England/MILK-1FFA526/2020" : "2020-04-16", #delta
+    "Fiji/FJ493/2020" : "2020-08-25", #delta
+    "Rwanda/CV2197/2020" : "2020-09-10", #delta
+    "USA/ND-NDDH-4397/2020" : "2020-09-09", #delta
+    "USA/WV-WVU-WV121217/2020" : "2020-07-21", #delta
+    "Sudan/N6667/2020" : "2020-10-04", #eta
+    "Colombia/DC-Mx263_sarscov2/2020" : "2020-09-19", #21H
+    "Colombia/DC-Mx318_sarscov2/2020" : "2020-10-06", #21H
+    "Morocco/INH-101/2020" : "2020-02-02", #S98
+    "Morocco/INH-105/2020" : "2020-02-02", #S98
+    "USA/IN-ISDHQ397/2020" : "2020-04-23", #alpha
+    "USA/TX-HMH-MCoV-44272/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45474/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45482/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45578/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45753/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-47089/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-47116/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-47370/2020" : "2020-07-30", #alpha
+    "USA/TX-HMH-MCoV-39835/2020" : "2020-08-06", #alpha
+    "USA/TX-HMH-MCoV-44274/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45478/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45481/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45754/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45758/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45768/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-47118/2020" : "2020-07-31", #alpha
+    "USA/NY-MSHSPSP-PV21126/2020" : "2020-10-11", # 20C/S484
+    "USA/NY-MSHSPSP-PV21129/2020" : "2020-10-10", # 20C/S484
+    "USA/NY-MSHSPSP-PV21166/2020" : "2020-10-09", # 20C/S484
+    "USA/NY-MSHSPSP-PV21203/2020" : "2020-10-13", # 20C/S484
+    "Pakistan/UOL-IMBB-KKU-25/2021" : "2021-10-22", #future date
+    "Pakistan/UOL-IMBB-KKU-26/2021" : "2021-10-23", #future date
+    "England/PHEP-YYBYUTJ/2020" : "2020-08-03", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0168/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0169/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0170/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0172/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0200/2020" : "2020-07-29", #delta
+    "USA/CA-SEARCH-109796/2020" : "2020-08-31", #delta
+    "USA/TX-HMH-MCoV-48794/2020" : "2020-07-15", #delta
+    "USA/TX-HMH-MCoV-49501/2020" : "2020-07-13", #delta
+    "Italy/VEN-UA-ORC00183/2020" : "2020-03-14", #alpha
+    "Brazil/SP-IB_112782/2020" : "2020-08-07", #gamma
+    "Japan/PG-149116/2020" : "2020-08-30", #Delta
+    "Germany/NW-RKI-I-291769/2020" : "2020-10-13", #delta
+    "Germany/NW-RKI-I-291770/2020" : "2020-10-13", #delta
+    "Germany/NW-RKI-I-291771/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291772/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291773/2020" : "2020-10-17", #delta
+    "Germany/NW-RKI-I-291774/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291775/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291776/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291777/2020" : "2020-10-17", #delta
+    "Germany/NW-RKI-I-291778/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291779/2020" : "2020-10-17", #delta
+    "Germany/NW-RKI-I-291780/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291781/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291782/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291783/2020" : "2020-10-13", #delta
+    "Germany/NW-RKI-I-291784/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291786/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291788/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291789/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291790/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291791/2020" : "2020-10-16", #delta
+    "Germany/NW-RKI-I-291792/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291793/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291794/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291795/2020" : "2020-10-17", #delta
+    "Germany/NW-RKI-I-291796/2020" : "2020-10-13", #delta
+    "Germany/NW-RKI-I-291797/2020" : "2020-10-16", #delta
+    "Germany/NW-RKI-I-291798/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291799/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291800/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291801/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291802/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291803/2020" : "2020-10-17", #delta
+    "Germany/NW-RKI-I-291804/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291805/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291806/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291808/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291809/2020" : "2020-10-16", #delta
+    "Germany/NW-RKI-I-291810/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291811/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291812/2020" : "2020-10-16", #delta
+    "Germany/SL-RKI-I-297962/2020" : "2020-10-17", #delta
+    "USA/NY-COV-900/2020" : "2020-06-06", #Alpha
+    "Peru/LIM-INS-8425/2020" : "2020-07-21", # lambda
+    "Netherlands/ZH-EMC-3837/2020" : "2020-05-10", #S98
+    "Netherlands/ZH-EMC-3838/2020" : "2020-03-12", #S98
+    "Netherlands/ZH-EMC-3839/2020" : "2020-04-12", #S98
+    "England/NORT-YYNW7P/2020" : "2020-10-27", #delta
+    "USA/TX-HMH-MCoV-34911/2020" : "2020-08-13", #Alpha
+    "Colombia/ANT-LDSP461/2020" : "2020-10-14", #Mu
+    "India/DL-ILBS-22053/2020" : "2020-06-13", #21A Delta
+    "Italy/LOM-TIGEM-IZSM-COLLI-14397/2020" : "2020-03-16", #alpha
+    "Italy/SIC_ISS_7543/2020" : "2020-03-02", #alpha
+    "Romania/SV_SJU_17854/2020" : "2020-08-16", #alpha
+    "Romania/SV_SJU_18749/2020" : "2020-08-26", #alpha
+    "Romania/SV_SJU_19042/2020" : "2020-08-28", #alpha
+    "USA/TX-HMH-MCoV-40893/2020" : "2020-07-22", #alpha
+    "USA/TX-HMH-MCoV-45566/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45752/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-45766/2020" : "2020-07-31", #alpha
+    "SouthAfrica/NICD-N19828/2020" : "2020-06-26", #beta
+    "SouthAfrica/NICD-N19829/2020" : "2020-06-26", #beta
+    "Brazil/MS-HRMS_1490/2020" : "2020-08-24", #gamma
+    "India/TG-CCMB-CIB1089/2020" : "2020-10-04", #delta
+    "India/TG-CCMB-CIB1094/2020" : "2020-10-20", #delta
+    "India/TG-CCMB-CIB1117/2020" : "2020-08-26", #delta
+    "India/TG-CCMB-CIB1118/2020" : "2020-08-26", #delta
+    "India/TG-CCMB-CIB1124/2020" : "2020-08-29", #delta
+    "India/TG-CCMB-CIB1125/2020" : "2020-08-29", #delta
+    "India/TG-CCMB-CIB1133/2020" : "2020-09-12", #delta
+    "India/TG-CCMB-CIB1134/2020" : "2020-09-22", #delta
+    "India/TG-RFCH00157_CIB1134/2020" : "2020-09-22", #delta
+    "SouthAfrica/NICD-N19863/2020" : "2020-06-26", #delta
+    "India/TG-CCMB-CIB1077/2020" : "2020-10-02", #delta
+    "PapuaNewGuinea/PNG4040/2020" : "2020-08-01", #delta
+    "SouthAfrica/NICD-N19840/2020" : "2020-07-07", #delta
+    "USA/CA-CDPH-MC2409222/2020" : "2020-10-10", #delta
+    "USA/NY-WMC2021-152/2020" : "2020-03-12", #delta
+    "USA/CA-CZB-13785/2020" : "2020-09-22", #iota
+    "USA/NY-MSHSPSP-PV22505/2020" : "2020-11-03", #iota
+    "England/PHEP-YYBYUTJ/2020" : "2020-08-03", #delta
+    "USA/TX-HMH-MCoV-49453/2020": "2020-07-12", #delta
+    "USA/TX-HMH-MCoV-49803/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49806/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49808/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49809/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49814/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49815/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49816/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49817/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49827/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49831/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49836/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49838/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49840/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49851/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49852/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49854/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49855/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49859/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49862/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49866/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49873/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49874/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49876/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49878/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49880/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49881/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49883/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49888/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49889/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49892/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49894/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49896/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49898/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49899/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49901/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49905/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49911/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49913/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49915/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49917/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49919/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49920/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49922/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49923/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49924/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49925/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49928/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49930/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49933/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49935/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49937/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49938/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49939/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49946/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49948/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49951/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49953/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49958/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49959/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49963/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49966/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49969/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49973/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49975/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49976/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49978/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49982/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49984/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49985/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49988/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49989/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49994/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50010/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50013/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50024/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50028/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50034/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50045/2020" : "2020-07-15", #delta
+    "USA/TX-HMH-MCoV-50046/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50067/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50486/2020" : "2020-07-17", #delta
+    "USA/TX-HMH-MCoV-50501/2020" : "2020-07-17", #delta
+    "USA/TX-HMH-MCoV-50545/2020" : "2020-07-17", #delta
+    "USA/TX-HMH-MCoV-50566/2020" : "2020-07-17", #delta
+    "USA/TX-HMH-MCoV-50048/2020" : "2020-07-20", #delta
+    "USA/TX-HMH-MCoV-50050/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50068/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50082/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50084/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50493/2020" : "2020-07-17", #delta
+    "USA/TX-HMH-MCoV-50519/2020" : "2020-07-17", #delta
+    "USA/TX-HMH-MCoV-49841/2020" : "2020-07-16", #delta
+
+    # these are suspicious dates - seem unlikely when checked in Nextclade
+    "England/PHEP-YYBYUTJ/2020" : "2020-08-03", #delta
+    "Fiji/FJ493/2020" : "2020-08-25", #delta
+    "BurkinaFaso/CV1920/2020" : "2020-09-16", #delta
+    "BurkinaFaso/CV1921/2020" : "2020-09-18", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0168/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0169/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0170/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0172/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0200/2020" : "2020-07-29", #delta
+    "Mexico/AGU-InDRE_FB18599_S4467/2020" : "2020-09-22", #delta
+    "PapuaNewGuinea/PNG4040/2020" : "2020-08-01", #delta
+    "Rwanda/CV2197/2020" : "2020-09-10", #delta
+    "SouthAfrica/NICD-N19840/2020" : "2020-07-07", #delta
+    "SouthAfrica/NICD-N19863/2020" : "2020-06-26", #delta
+    "USA/CA-LACPHL-AF03229/2020" : "2020-08-12", #delta
+    "USA/CA-SEARCH-109796/2020" : "2020-08-31", #delta
+    "USA/ND-NDDH-4397/2020" : "2020-09-09", #delta
+    "USA/NY-WMC2021-152/2020" : "2020-03-12", #delta
+    "USA/TX-HMH-MCoV-48794/2020" : "2020-07-15", #delta
+    "USA/TX-HMH-MCoV-49501/2020" : "2020-07-13", #delta
+    "USA/VI-Yale-10210/2020" : "2020-08-21", #delta
+    "USA/VI-Yale-10211/2020" : "2020-08-21", #delta
+    "USA/WV-WVU-WV121217/2020" : "2020-07-21", #delta
+    "USA/WY-WYPHL-21070660/2020" : "2020-09-02", #delta
+    "Rwanda/CV2223/2020" : "2020-12-21", #delta
+    "Scotland/CVR8617/2020" : "2020-12-27", #delta
+    "Slovenia/17-047667-CE/2020" : "2020-11-13", #delta
+    "Slovenia/17-073336-CE/2020" : "2020-12-31", #delta
+    "Slovenia/251283/2020" : "2020-12-04", #delta
+    "Spain/CT-HUGTiPM043JX9G11/2020" : "2020-11-03", #delta
+    "Spain/MD-HRYC-1052050/2020" : "2020-11-18", #delta
+    "Sweden/10097141/2020" : "2020-11-19", #delta
+    "USA/CA-CDPH-MC2409222/2020" : "2020-10-10", #delta
+    "USA/MD-HP20064-PIDZAEYGDO/2020" : "2020-11-03", #delta
+    "USA/NY-NYCPHL-005674/2020" : "2020-11-20", #delta
+    "USA/TX-HHD-210729KVI6183/2020" : "2020-12-26", #delta
+    "USA/TX-Noblis-S709B19/2020" : "2020-12-03", #delta
+    "USA/TX-Noblis-S710B20/2020" : "2020-12-03", #delta
+    "USA/UT-UPHL-210729652440/2020" : "2020-12-16", #delta
+    "USA/WY-WYPHL-20167074/2020" : "2020-12-16", #delta
+    "BurkinaFaso/CV1847/2020" : "2020-12-18", #delta
+    "BurkinaFaso/CV1908/2020" : "2020-12-07", #delta
+    "BurkinaFaso/CV1909/2020" : "2020-12-03", #delta
+    "BurkinaFaso/CV1910/2020" : "2020-12-03", #delta
+    "BurkinaFaso/CV1911/2020" : "2020-12-03", #delta
+    "BurkinaFaso/CV1922/2020" : "2020-12-21", #delta
+    "BurkinaFaso/CV1923/2020" : "2020-12-21", #delta
+    "BurkinaFaso/CV1943/2020" : "2020-12-08", #delta
+    "BurkinaFaso/CV1944/2020" : "2020-12-18", #delta
+    "BurkinaFaso/CV1945/2020" : "2020-12-18", #delta
+    "BurkinaFaso/CV1946/2020" : "2020-12-18", #delta
+    "BurkinaFaso/CV1947/2020" : "2020-12-18", #delta
+    "BurkinaFaso/CV1955/2020" : "2020-12-27", #delta
+    "BurkinaFaso/CV1956/2020" : "2020-12-27", #delta
+    "BurkinaFaso/CV1957/2020" : "2020-12-17", #delta
+    "England/MILK-18DD450/2020" : "2020-11-04", #delta
+    "England/NORT-YYNW7P/2020" : "2020-10-27", #delta
+    "England/NORW-30146BA/2020" : "2020-11-15", #delta
+
+    #unlikely for beta from SA
+    "SouthAfrica/CERI-KRISP-K026612/2021" : "2021-10-06", #deta
+    "SouthAfrica/CERI-KRISP-K026946/2021" : "2021-10-15", #deta
+    "SouthAfrica/CERI-KRISP-K027301/2021" : "2021-10-20", #deta
+    "SouthAfrica/NICD-N18899/2021" : "2021-10-10", #deta
+    "SouthAfrica/NICD-N18921/2021" : "2021-10-12", #deta
+    "SouthAfrica/NICD-N20404/2021" : "2021-10-15", #deta
+    "SouthAfrica/NICD-N20493/2021" : "2021-10-20", #deta
+    "SouthAfrica/NICD-N20495/2021" : "2021-10-20", #deta
+    "SouthAfrica/NICD-N20496/2021" : "2021-10-18", #deta
+    "SouthAfrica/NICD-N20498/2021" : "2021-10-22", #deta
+    "SouthAfrica/NICD-N20507/2021" : "2021-10-02", #deta
+    "SouthAfrica/NICD-N20510/2021" : "2021-10-03", #deta
+    "SouthAfrica/NICD-N20511/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20512/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20514/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20515/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20516/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20517/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20519/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20520/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20522/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20523/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20525/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20527/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20530/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20532/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20533/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20534/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20535/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20536/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20538/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20539/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20542/2021" : "2021-10-04", #deta
+    "SouthAfrica/NICD-N20543/2021" : "2021-10-05", #deta
+    "SouthAfrica/NICD-N20544/2021" : "2021-10-05", #deta
+    "SouthAfrica/NICD-N20548/2021" : "2021-10-05", #deta
+    "SouthAfrica/NICD-N20549/2021" : "2021-10-05", #deta
+    "SouthAfrica/NICD-N20550/2021" : "2021-10-05", #deta
+    "SouthAfrica/NICD-N20552/2021" : "2021-10-05", #deta
+    "SouthAfrica/NICD-N20553/2021" : "2021-10-05", #deta
+    "SouthAfrica/NICD-N20554/2021" : "2021-10-07", #deta
+    "SouthAfrica/NICD-N20555/2021" : "2021-10-07", #deta
+    "SouthAfrica/NICD-N20558/2021" : "2021-10-06", #deta
+    "SouthAfrica/NICD-N20559/2021" : "2021-10-06", #deta
+    "SouthAfrica/NICD-N20560/2021" : "2021-10-06", #deta
+    "SouthAfrica/NICD-N20561/2021" : "2021-10-06", #deta
+    "SouthAfrica/NICD-N20562/2021" : "2021-10-06", #deta
+    "SouthAfrica/NICD-N20563/2021" : "2021-10-06", #deta
+    "SouthAfrica/NICD-N20564/2021" : "2021-10-06", #deta
+    "SouthAfrica/NICD-N20565/2021" : "2021-10-06", #deta
+    "SouthAfrica/NICD-N20567/2021" : "2021-10-06", #deta
+    "SouthAfrica/NICD-N20568/2021" : "2021-10-06", #deta
+    "SouthAfrica/NICD-N20569/2021" : "2021-10-07", #deta
+    "SouthAfrica/NICD-N20570/2021" : "2021-10-09", #deta
+    "SouthAfrica/NICD-N20571/2021" : "2021-10-09", #deta
+    "SouthAfrica/NICD-N20572/2021" : "2021-10-09", #deta
+    "SouthAfrica/NICD-N20576/2021" : "2021-10-09", #deta
+    "SouthAfrica/NICD-N20577/2021" : "2021-10-09", #deta
+    "SouthAfrica/NICD-N20578/2021" : "2021-10-08", #deta
+    "SouthAfrica/NICD-N20580/2021" : "2021-10-08", #deta
+    "SouthAfrica/NICD-N20581/2021" : "2021-10-08", #deta
+    "SouthAfrica/NICD-N20582/2021" : "2021-10-08", #deta
+    "SouthAfrica/Tygerberg_2967/2021" : "2021-10-26", #deta
+
+    # these have very unlikely dates for Delta
+    "Australia/VIC18503/2021" : "2021-02-08", #delta
+    "Belize/CML-101/2021" : "2021-01-07", #delta
+    "Belize/CML-102/2021" : "2021-01-07", #delta
+    "Belize/CML-92/2021" : "2021-02-07", #delta
+    "Canada/QC-1nEAQ-0667616/2021" : "2021-01-26", #delta
+    "CzechRepublic/CSQ1259/2021" : "2021-01-28", #delta
+    "CzechRepublic/NRL_10092/2021" : "2021-02-12", #delta
+    "CzechRepublic/NRL_13299/2021" : "2021-02-08", #delta
+    "CzechRepublic/NRL_13887/2021" : "2021-02-24", #delta
+    "CzechRepublic/NRL_9986/2021" : "2021-02-11", #delta
+    "England/LOND-13670C5/2021" : "2021-02-17", #delta
+    "England/LOND-13679CA/2021" : "2021-02-19", #delta
+    "England/NEWC-2729532/2021" : "2021-01-09", #delta
+    "England/NORT-1BF0F53/2021" : "2021-01-21", #delta
+    "England/NORT-1BF4BE2/2021" : "2021-01-24", #delta
+    "England/NORT-1BF6E50/2021" : "2021-01-27", #delta
+    "England/NORT-1BF71A1/2021" : "2021-01-29", #delta
+    "England/NORT-YYBGBS/2021" : "2021-01-26", #delta
+    "England/NORT-YYBI4W/2021" : "2021-02-27", #delta
+    "England/NORT-YYWTNN/2021" : "2021-01-01", #delta
+    "England/NORW-13F3969/2021" : "2021-02-20", #delta
+    "England/NORW-13F67E4/2021" : "2021-01-22", #delta
+    "England/NORW-13F8560/2021" : "2021-02-27", #delta
+    "England/NORW-306189D/2021" : "2021-02-09", #delta
+    "England/NORW-3079BFC/2021" : "2021-01-14", #delta
+    "England/NORW-30902CC/2021" : "2021-01-21", #delta
+    "England/NORW-309F9F0/2021" : "2021-02-04", #delta
+    "England/NORW-30A0375/2021" : "2021-02-04", #delta
+    "England/PHEC-3504B7/2021" : "2021-01-27", #delta
+    "England/PHEP-006474/2021" : "2021-02-06", #delta
+    "England/PHEP-262264/2021" : "2021-01-11", #delta
+    "Ethiopia/CERI-KRISP-K025808/2021" : "2021-02-11", #delta
+    "France/BFC-HMN-21082040163/2021" : "2021-02-27", #delta
+    "France/GES-HCL0211536735/2021" : "2021-01-16", #delta
+    "Gambia/PF0203/2021" : "2021-02-08", #delta
+    "Gambia/PF6266/2021" : "2021-02-08", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0203/2021" : "2021-02-01", #delta
+    "Indonesia/JK-NIHRD-WGS00007/2021" : "2021-01-07", #delta
+    "Indonesia/KS-NIHRD-WGS12290/2021" : "2021-01-09", #delta
+    "Indonesia/KS-NIHRD-WGS12291/2021" : "2021-01-09", #delta
+    "Indonesia/KS-NIHRD-WGS12292/2021" : "2021-02-09", #delta
+    "Indonesia/SS-NIHRD-WGS002218/2021" : "2021-01-15", #delta
+    "Indonesia/SS-NIHRD-WGS00441/2021" : "2021-01-08", #delta
+    "Indonesia/SS-NIHRD-WGS00445/2021" : "2021-01-12", #delta
+    "Israel/CVL-22307/2021" : "2021-01-30", #delta
+    "Israel/CVL-22309/2021" : "2021-01-02", #delta
+    "Israel/CVL-22311/2021" : "2021-01-07", #delta
+    "Israel/CVL-22314/2021" : "2021-01-09", #delta
+    "Israel/CVL-22316/2021" : "2021-01-08", #delta
+    "Israel/CVL-22319/2021" : "2021-01-03", #delta
+    "Italy/SIC_CQRC_2726144/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2726239/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2726263/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2727245/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2727475/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2727482/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2727983/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2728951/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2729676/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2731727/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2736383/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2737746/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2737781/2021" : "2021-01-11", #delta
+    "Italy/TUS-AOUC-40/2021" : "2021-01-24", #delta
+    "Kenya/ILRI_COVM01044/2021" : "2021-01-07", #delta
+    "Kenya/ILRI_COVM01048/2021" : "2021-01-07", #delta
+    "Kenya/ILRI_COVM01050/2021" : "2021-01-07", #delta
+    "Kenya/ILRI_COVM01069/2021" : "2021-01-07", #delta
+    "Kenya/ILRI_COVM01233/2021" : "2021-01-21", #delta
+    "Kenya/ILRI_COVM01347/2021" : "2021-01-09", #delta
+    "Kenya/SS1398/2021" : "2021-02-08", #delta
+    "Kenya/SS1399/2021" : "2021-02-08", #delta
+    "Malaysia/UNIMAS-GHML323/2021" : "2021-02-09", #delta
+    "Malaysia/UNIMAS-GHML324/2021" : "2021-02-09", #delta
+    "Malaysia/UNIMAS-GHML325/2021" : "2021-02-09", #delta
+    "Malaysia/UNIMAS-GHML326/2021" : "2021-02-09", #delta
+    "Malaysia/UNIMAS-GHML327/2021" : "2021-02-09", #delta
+    "Malaysia/UNIMAS-GHML328/2021" : "2021-02-09", #delta
+    "Mexico/AGU_InDRE_FB29455_S6243/2021" : "2021-01-27", #delta
+    "Mexico/BCN-SEARCH-104131/2021" : "2021-02-04", #delta
+    "Mexico/CMX-InDRE_FD78180_S4428/2021" : "2021-02-26", #delta
+    "Mexico/MOR_IBT_SSMor_11/2021" : "2021-01-21", #delta
+    "Mexico/MOR_IBT_SSMor_12/2021" : "2021-01-21", #delta
+    "Monaco/IPP14905/2021" : "2021-02-22", #delta
+    "Norway/24584/2021" : "2021-01-21", #delta
+    "Norway/26496/2021" : "2021-01-11", #delta
+    "Oman/rega-OM-232/2021" : "2021-02-06", #delta
+    "Oman/rega-OM-89/2021" : "2021-01-06", #delta
+    "Oman/rega-OM-90/2021" : "2021-01-06", #delta
+    "Oman/rega-OM-91/2021" : "2021-01-06", #delta
+    "Poland/WSSEGorzow-21S0298/2021" : "2021-01-09", #delta
+    "Russia/MOS-CRIE-L106A0093ubh/2021" : "2021-02-28", #delta
+    "Rwanda/CV2199/2021" : "2021-02-24", #delta
+    "Rwanda/CV2200/2021" : "2021-01-29", #delta
+    "Rwanda/CV2226/2021" : "2021-01-27", #delta
+    "Scotland/CVR7911/2021" : "2021-02-18", #delta
+    "Singapore/1444nan/2021" : "2021-02-06", #delta
+    "Slovakia/UVZ_PL36_A4_17796/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_A5_17804/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_A6_17812/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_B10_17961/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_B11_17969/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_B3_17789/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_B4_17797/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_B6_17813/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_B7_17907/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_C3_17790/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_C5_17806/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_C6_17814/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_C7_17910/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_D11_17986/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_D3_17791/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_D4_17799/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_D5_17807/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_D6_17815/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_D7_17911/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_D9_17955/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_E11_17987/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_E2_17784/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_E3_17792/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_E4_17800/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_E5_17808/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_E7_17913/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_E9_17956/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_F11_17988/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_F2_17785/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_F3_17793/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_F4_17801/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_F5_17809/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_F6_17903/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_F7_17921/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_F9_17957/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_G10_17966/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_G11_17989/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_G2_17786/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_G3_17794/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_G4_17802/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_G5_17810/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_G6_17904/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_G9_17958/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_H2_17787/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_H3_17795/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_H4_17803/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_H5_17811/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_H6_17905/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_H9_17959/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL37_A2_18007/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL37_A8_18061/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_B8_18062/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_C8_18063/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_D8_18064/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_E1_18003/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL37_E8_18065/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_F1_18004/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL37_F7_18058/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_F8_18066/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_G1_18005/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL37_G7_18059/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_G8_18067/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_H7_18060/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_H8_18068/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL40_A3_19181/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL40_B3_19182/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL40_C4_18365/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL40_E11_18455/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL40_F11_18456/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL40_F8_18400/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL40_F9_18440/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL40_G2_19179/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL40_G4_18369/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL40_H2_19180/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL46_A11_19348/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL46_C11_19350/2021" : "2021-01-09", #delta
+    "Slovenia/08-006923-MB/2021" : "2021-01-07", #delta
+    "SouthAfrica/NICD-N15251/2021" : "2021-01-19", #delta
+    "SouthAfrica/NICD-N16641/2021" : "2021-02-26", #delta
+    "SouthAfrica/NICD-N9212/2021" : "2021-01-12", #delta
+    "SouthAfrica/NICD-R11251/2021" : "2021-01-28", #delta
+    "Spain/CT-LabRefCat-751420/2021" : "2021-01-29", #delta
+    "Spain/MD-HGUGM-5702992/2021" : "2021-02-09", #delta
+    "Switzerland/AG-UHB-43144757/2021" : "2021-01-02", #delta
+    "Switzerland/BE-IFIK-210906_os-89/2021" : "2021-01-08", #delta
+    "Switzerland/BE-UHB-43000628/2021" : "2021-02-13", #delta
+    "Switzerland/GE-HUG-35467598/2021" : "2021-02-11", #delta
+    "Switzerland/LU-UHB-43144767/2021" : "2021-01-02", #delta
+    "Thailand/DMSc-02063/2021" : "2021-01-09", #delta
+    "Thailand/DMSc-02065/2021" : "2021-01-09", #delta
+    "Thailand/DMSc-02067/2021" : "2021-01-09", #delta
+    "Timor-Leste/TL1011/2021" : "2021-01-08", #delta
+    "Timor-Leste/TL1013/2021" : "2021-02-08", #delta
+    "Timor-Leste/TL1015/2021" : "2021-02-08", #delta
+    "Timor-Leste/TL1017/2021" : "2021-02-08", #delta
+    "Timor-Leste/TL979/2021" : "2021-01-08", #delta
+    "Timor-Leste/TL981/2021" : "2021-01-08", #delta
+    "Timor-Leste/TL983/2021" : "2021-01-08", #delta
+    "Timor-Leste/TL985/2021" : "2021-01-08", #delta
+    "Timor-Leste/TL987/2021" : "2021-01-08", #delta
+    "USA/AZ-ASU10204/2021" : "2021-01-30", #delta
+    "USA/AZ-ASU19232/2021" : "2021-02-01", #delta
+    "USA/AZ-ASU7883/2021" : "2021-02-09", #delta
+    "USA/AZ-ASU7899/2021" : "2021-02-10", #delta
+    "USA/CA-ACPHD-00570/2021" : "2021-01-24", #delta
+    "USA/CA-CDPH-UCSF-CC100/2021" : "2021-02-04", #delta
+    "USA/FL-BPHL-8934/2021" : "2021-01-14", #delta
+    "USA/IA-SHL-1780926/2021" : "2021-02-08", #delta
+    "USA/ID-IBL-759328/2021" : "2021-01-02", #delta
+    "USA/ID-IBL-760105/2021" : "2021-02-23", #delta
+    "USA/ID-IBL-760128/2021" : "2021-01-02", #delta
+    "USA/ID-IBL-771950/2021" : "2021-01-10", #delta
+    "USA/IL-S21WGS5409/2021" : "2021-01-10", #delta
+    "USA/KS-KHEL-6411/2021" : "2021-01-15", #delta
+    "USA/NV-NSPHL-392347/2021" : "2021-02-03", #delta
+    "USA/TN-SPHL-0094/2021" : "2021-01-19", #delta
+    "USA/TN-SPHL-0261/2021" : "2021-02-24", #delta
+    "USA/TN-SPHL-0517/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0539/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0587/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0588/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0606/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0610/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0617/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0622/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0749/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0750/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0788/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0800/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0805/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0861/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0953/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0961/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0964/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0967/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0979/2021" : "2021-01-14", #delta
+    "USA/UT-UPHL-210624251315/2021" : "2021-01-04", #delta
+    "USA/UT-UPHL-210624490751/2021" : "2021-01-04", #delta
+    "USA/UT-UPHL-210723256386/2021" : "2021-01-05", #delta
+    "USA/WA-PHL-006485/2021" : "2021-01-06", #delta
+    "env/Austria/CeMM18535/2021" : "2021-01-17", #delta
+    "BurkinaFaso/CV1847/2020" : "2020-12-18", #delta
+    "BurkinaFaso/CV1908/2020" : "2020-12-07", #delta
+    "BurkinaFaso/CV1909/2020" : "2020-12-03", #delta
+    "BurkinaFaso/CV1910/2020" : "2020-12-03", #delta
+    "BurkinaFaso/CV1911/2020" : "2020-12-03", #delta
+    "BurkinaFaso/CV1920/2020" : "2020-09-16", #delta
+    "BurkinaFaso/CV1921/2020" : "2020-09-18", #delta
+    "BurkinaFaso/CV1922/2020" : "2020-12-21", #delta
+    "BurkinaFaso/CV1923/2020" : "2020-12-21", #delta
+    "BurkinaFaso/CV1943/2020" : "2020-12-08", #delta
+    "BurkinaFaso/CV1944/2020" : "2020-12-18", #delta
+    "BurkinaFaso/CV1945/2020" : "2020-12-18", #delta
+    "BurkinaFaso/CV1946/2020" : "2020-12-18", #delta
+    "BurkinaFaso/CV1947/2020" : "2020-12-18", #delta
+    "BurkinaFaso/CV1955/2020" : "2020-12-27", #delta
+    "BurkinaFaso/CV1956/2020" : "2020-12-27", #delta
+    "BurkinaFaso/CV1957/2020" : "2020-12-17", #delta
+    "Canada/QC-1nMCY-S6293264/2020" : "2020-10-29", #delta
+    "England/MILK-18DD450/2020" : "2020-11-04", #delta
+    "England/NORT-YYNW7P/2020" : "2020-10-27", #delta
+    "England/NORW-30146BA/2020" : "2020-11-15", #delta
+    "England/PHEP-YYBYUTJ/2020" : "2020-08-03", #delta
+    "Fiji/FJ493/2020" : "2020-08-25", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0168/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0169/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0170/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0172/2020" : "2020-07-29", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0200/2020" : "2020-07-29", #delta
+    "Mexico/AGU-InDRE_FB18599_S4467/2020" : "2020-09-22", #delta
+    "PapuaNewGuinea/PNG4040/2020" : "2020-08-01", #delta
+    "Rwanda/CV2197/2020" : "2020-09-10", #delta
+    "Rwanda/CV2223/2020" : "2020-12-21", #delta
+    "Scotland/CVR8617/2020" : "2020-12-27", #delta
+    "Slovenia/08-082640-MB/2020" : "2020-11-02", #delta
+    "Slovenia/08-113788-MB/2020" : "2020-11-23", #delta
+    "Slovenia/08-134502-MB/2020" : "2020-12-04", #delta
+    "Slovenia/17-047667-CE/2020" : "2020-11-13", #delta
+    "Slovenia/17-073336-CE/2020" : "2020-12-31", #delta
+    "Slovenia/251283/2020" : "2020-12-04", #delta
+    "SouthAfrica/NICD-N19840/2020" : "2020-07-07", #delta
+    "SouthAfrica/NICD-N19863/2020" : "2020-06-26", #delta
+    "Spain/CT-HUGTiPM043JX9G11/2020" : "2020-11-03", #delta
+    "Spain/MD-HRYC-1052050/2020" : "2020-11-18", #delta
+    "Sweden/10097141/2020" : "2020-11-19", #delta
+    "USA/CA-CDPH-MC2409222/2020" : "2020-10-10", #delta
+    "USA/CA-LACPHL-AF03229/2020" : "2020-08-12", #delta
+    "USA/CA-SEARCH-109796/2020" : "2020-08-31", #delta
+    "USA/MD-HP20064-PIDZAEYGDO/2020" : "2020-11-03", #delta
+    "USA/ND-NDDH-4397/2020" : "2020-09-09", #delta
+    "USA/NY-NYCPHL-005674/2020" : "2020-11-20", #delta
+    "USA/NY-WMC2021-152/2020" : "2020-03-12", #delta
+    "USA/TX-HHD-210729KVI6183/2020" : "2020-12-26", #delta
+    "USA/TX-HMH-MCoV-48794/2020" : "2020-07-15", #delta
+    "USA/TX-HMH-MCoV-49501/2020" : "2020-07-13", #delta
+    "USA/TX-HMH-MCoV-49803/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49806/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49808/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49809/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49814/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49815/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49816/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49817/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49827/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49831/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49836/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49838/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49840/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49841/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49851/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49852/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49854/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49855/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49859/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49862/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49866/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49873/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49874/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49876/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49878/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49880/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49881/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49883/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49888/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49889/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49892/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49894/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49896/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49898/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49899/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49901/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49905/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49911/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49913/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49915/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49917/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49919/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49920/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49922/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49923/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49924/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49925/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49928/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49930/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49933/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49935/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49937/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49938/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49939/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49946/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49948/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49951/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49953/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49958/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49959/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49963/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49966/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49969/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49973/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49975/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49976/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49978/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49982/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49984/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49985/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49988/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49989/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49994/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50010/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50013/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50024/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50028/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50034/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50045/2020" : "2020-07-15", #delta
+    "USA/TX-HMH-MCoV-50046/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50048/2020" : "2020-07-20", #delta
+    "USA/TX-HMH-MCoV-50050/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50067/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50068/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50082/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50084/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50486/2020" : "2020-07-17", #delta
+    "USA/TX-HMH-MCoV-50493/2020" : "2020-07-17", #delta
+    "USA/TX-HMH-MCoV-50501/2020" : "2020-07-17", #delta
+    "USA/TX-HMH-MCoV-50519/2020" : "2020-07-17", #delta
+    "USA/TX-HMH-MCoV-50545/2020" : "2020-07-17", #delta
+    "USA/TX-HMH-MCoV-50566/2020" : "2020-07-17", #delta
+    "USA/TX-HMH-MCoV-49945/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49931/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49934/2020" : "2020-07-16", #delta
+    "USA/TX-Noblis-S709B19/2020" : "2020-12-03", #delta
+    "USA/TX-Noblis-S710B20/2020" : "2020-12-03", #delta
+    "USA/TX-HMH-MCoV-48613/2020" : "2020-07-14", #delta
+    "USA/NM-UNM-TC222973/2020" : "2020-08-20", #delta
+    "Slovenia/147626/2020" : "2020-10-21", #delta
+    "USA/UT-UPHL-210729652440/2020" : "2020-12-16", #delta
+    "USA/VI-Yale-10210/2020" : "2020-08-21", #delta
+    "USA/VI-Yale-10211/2020" : "2020-08-21", #delta
+    "USA/WV-WVU-WV121217/2020" : "2020-07-21", #delta
+    "USA/WY-WYPHL-20167074/2020" : "2020-12-16", #delta
+    "USA/WY-WYPHL-21070660/2020" : "2020-09-02", #delta
+    "Australia/NSW-R0499/2021" : "2021-02-07", #delta
+    "Australia/NSW-R0501/2021" : "2021-02-07", #delta
+    "Australia/NSW-R0503/2021" : "2021-02-07", #delta
+    "Australia/NSW-R0504/2021" : "2021-02-07", #delta
+    "Australia/NSW-R0509/2021" : "2021-02-07", #delta
+    "Australia/VIC18503/2021" : "2021-02-08", #delta
+    "Belize/CML-101/2021" : "2021-01-07", #delta
+    "Belize/CML-102/2021" : "2021-01-07", #delta
+    "Belize/CML-92/2021" : "2021-02-07", #delta
+    "Canada/QC-1nEAQ-0667616/2021" : "2021-01-26", #delta
+    "CzechRepublic/CSQ1259/2021" : "2021-01-28", #delta
+    "CzechRepublic/NRL_10092/2021" : "2021-02-12", #delta
+    "CzechRepublic/NRL_13299/2021" : "2021-02-08", #delta
+    "CzechRepublic/NRL_13887/2021" : "2021-02-24", #delta
+    "CzechRepublic/NRL_9986/2021" : "2021-02-11", #delta
+    "England/LOND-13670C5/2021" : "2021-02-17", #delta
+    "England/LOND-13679CA/2021" : "2021-02-19", #delta
+    "England/NEWC-2729532/2021" : "2021-01-09", #delta
+    "England/NORT-1BF0F53/2021" : "2021-01-21", #delta
+    "England/NORT-1BF4BE2/2021" : "2021-01-24", #delta
+    "England/NORT-1BF6E50/2021" : "2021-01-27", #delta
+    "England/NORT-1BF71A1/2021" : "2021-01-29", #delta
+    "England/NORT-YYBGBS/2021" : "2021-01-26", #delta
+    "England/NORT-YYBI4W/2021" : "2021-02-27", #delta
+    "England/NORW-13F3969/2021" : "2021-02-20", #delta
+    "England/NORW-13F67E4/2021" : "2021-01-22", #delta
+    "England/NORW-13F8560/2021" : "2021-02-27", #delta
+    "England/NORW-306189D/2021" : "2021-02-09", #delta
+    "England/NORW-3079BFC/2021" : "2021-01-14", #delta
+    "England/NORW-30902CC/2021" : "2021-01-21", #delta
+    "England/NORW-309F9F0/2021" : "2021-02-04", #delta
+    "England/NORW-30A0375/2021" : "2021-02-04", #delta
+    "England/PHEC-3504B7/2021" : "2021-01-27", #delta
+    "England/PHEP-006474/2021" : "2021-02-06", #delta
+    "England/PHEP-262264/2021" : "2021-01-11", #delta
+    "Ethiopia/CERI-KRISP-K025808/2021" : "2021-02-11", #delta
+    "France/BFC-HMN-21082040163/2021" : "2021-02-27", #delta
+    "France/GES-HCL0211536735/2021" : "2021-01-16", #delta
+    "Gambia/PF0203/2021" : "2021-02-08", #delta
+    "Gambia/PF6266/2021" : "2021-02-08", #delta
+    "Germany/BW-RKI-I-184553/2021" : "2021-02-07", #delta
+    "Germany/BW-RKI-I-268125/2021" : "2021-02-21", #delta
+    "Germany/BY-MVP-000008310/2021" : "2021-01-16", #delta
+    "Germany/BY-MVP-000008357/2021" : "2021-01-18", #delta
+    "Germany/BY-MVP-000008382/2021" : "2021-01-24", #delta
+    "Germany/BY-MVP-000008450/2021" : "2021-01-24", #delta
+    "Germany/BY-MVP-000008452/2021" : "2021-01-23", #delta
+    "Indonesia/JA-GS-EIJK-RSRM-0203/2021" : "2021-02-01", #delta
+    "Indonesia/JK-NIHRD-WGS00007/2021" : "2021-01-07", #delta
+    "Indonesia/SS-NIHRD-WGS002218/2021" : "2021-01-15", #delta
+    "Indonesia/SS-NIHRD-WGS00441/2021" : "2021-01-08", #delta
+    "Indonesia/SS-NIHRD-WGS00445/2021" : "2021-01-12", #delta
+    "Israel/CVL-22307/2021" : "2021-01-30", #delta
+    "Israel/CVL-22309/2021" : "2021-01-02", #delta
+    "Israel/CVL-22311/2021" : "2021-01-07", #delta
+    "Israel/CVL-22314/2021" : "2021-01-09", #delta
+    "Israel/CVL-22316/2021" : "2021-01-08", #delta
+    "Israel/CVL-22319/2021" : "2021-01-03", #delta
+    "Italy/SIC_CQRC_2726144/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2726239/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2726263/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2727245/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2727475/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2727482/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2727983/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2728951/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2729676/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2731727/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2736383/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2737746/2021" : "2021-01-11", #delta
+    "Italy/SIC_CQRC_2737781/2021" : "2021-01-11", #delta
+    "Italy/TUS-AOUC-40/2021" : "2021-01-24", #delta
+    "Kenya/ILRI_COVM01044/2021" : "2021-01-07", #delta
+    "Kenya/ILRI_COVM01048/2021" : "2021-01-07", #delta
+    "Kenya/ILRI_COVM01050/2021" : "2021-01-07", #delta
+    "Kenya/ILRI_COVM01069/2021" : "2021-01-07", #delta
+    "Kenya/ILRI_COVM01233/2021" : "2021-01-21", #delta
+    "Kenya/ILRI_COVM01347/2021" : "2021-01-09", #delta
+    "Kenya/SS1398/2021" : "2021-02-08", #delta
+    "Kenya/SS1399/2021" : "2021-02-08", #delta
+    "Malaysia/UNIMAS-GHML323/2021" : "2021-02-09", #delta
+    "Malaysia/UNIMAS-GHML325/2021" : "2021-02-09", #delta
+    "Mexico/AGU_InDRE_FB29455_S6243/2021" : "2021-01-27", #delta
+    "Mexico/BCN-SEARCH-104131/2021" : "2021-02-04", #delta
+    "Mexico/CMX-InDRE_FD78180_S4428/2021" : "2021-02-26", #delta
+    "Mexico/MOR_IBT_SSMor_11/2021" : "2021-01-21", #delta
+    "Mexico/MOR_IBT_SSMor_12/2021" : "2021-01-21", #delta
+    "Monaco/IPP14905/2021" : "2021-02-22", #delta
+    "Norway/24584/2021" : "2021-01-21", #delta
+    "Poland/WSSEGorzow-21S0298/2021" : "2021-01-09", #delta
+    "Russia/MOS-CRIE-L106A0093ubh/2021" : "2021-02-28", #delta
+    "Rwanda/CV2199/2021" : "2021-02-24", #delta
+    "Rwanda/CV2200/2021" : "2021-01-29", #delta
+    "Rwanda/CV2226/2021" : "2021-01-27", #delta
+    "Scotland/CVR7911/2021" : "2021-02-18", #delta
+    "Singapore/1444nan/2021" : "2021-02-06", #delta
+    "Slovakia/UVZ_PL36_A4_17796/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_A5_17804/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_A6_17812/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_B10_17961/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_B11_17969/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_B3_17789/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_B4_17797/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_B6_17813/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_B7_17907/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_C3_17790/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_C5_17806/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_C6_17814/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_C7_17910/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_D11_17986/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_D3_17791/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_D4_17799/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_D5_17807/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_D6_17815/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_D7_17911/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_D9_17955/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_E11_17987/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_E2_17784/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_E3_17792/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_E4_17800/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_E5_17808/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_E7_17913/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_E9_17956/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_F11_17988/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_F2_17785/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_F3_17793/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_F4_17801/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_F5_17809/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_F6_17903/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_F7_17921/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_F9_17957/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_G10_17966/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_G11_17989/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_G2_17786/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_G3_17794/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_G4_17802/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_G5_17810/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_G6_17904/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_G9_17958/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_H2_17787/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_H3_17795/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_H4_17803/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL36_H5_17811/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_H6_17905/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL36_H9_17959/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL37_A2_18007/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL37_A8_18061/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_B8_18062/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_C8_18063/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_D8_18064/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_E1_18003/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL37_E8_18065/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_F1_18004/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL37_F7_18058/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_F8_18066/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_G1_18005/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL37_G7_18059/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_G8_18067/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_H7_18060/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL37_H8_18068/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL40_A3_19181/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL40_B3_19182/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL40_C4_18365/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL40_E11_18455/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL40_F11_18456/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL40_F8_18400/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL40_F9_18440/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL40_G2_19179/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL40_G4_18369/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL40_H2_19180/2021" : "2021-02-09", #delta
+    "Slovakia/UVZ_PL46_A11_19348/2021" : "2021-01-09", #delta
+    "Slovakia/UVZ_PL46_C11_19350/2021" : "2021-01-09", #delta
+    "Spain/CT-LabRefCat-751420/2021" : "2021-01-29", #delta
+    "Spain/MD-HGUGM-5702992/2021" : "2021-02-09", #delta
+    "Switzerland/AG-UHB-43144757/2021" : "2021-01-02", #delta
+    "Switzerland/BE-IFIK-210906_os-89/2021" : "2021-01-08", #delta
+    "Switzerland/BE-UHB-43000628/2021" : "2021-02-13", #delta
+    "Switzerland/GE-HUG-35467598/2021" : "2021-02-11", #delta
+    "Switzerland/LU-UHB-43144767/2021" : "2021-01-02", #delta
+    "Thailand/DMSc-02063/2021" : "2021-01-09", #delta
+    "Thailand/DMSc-02065/2021" : "2021-01-09", #delta
+    "Thailand/DMSc-02067/2021" : "2021-01-09", #delta
+    "Timor-Leste/TL1011/2021" : "2021-01-08", #delta
+    "Timor-Leste/TL1013/2021" : "2021-02-08", #delta
+    "Timor-Leste/TL1015/2021" : "2021-02-08", #delta
+    "Timor-Leste/TL1017/2021" : "2021-02-08", #delta
+    "Timor-Leste/TL979/2021" : "2021-01-08", #delta
+    "Timor-Leste/TL981/2021" : "2021-01-08", #delta
+    "Timor-Leste/TL983/2021" : "2021-01-08", #delta
+    "Timor-Leste/TL985/2021" : "2021-01-08", #delta
+    "Timor-Leste/TL987/2021" : "2021-01-08", #delta
+    "USA/AZ-ASU10204/2021" : "2021-01-30", #delta
+    "USA/AZ-ASU19232/2021" : "2021-02-01", #delta
+    "USA/AZ-ASU7883/2021" : "2021-02-09", #delta
+    "USA/AZ-ASU7899/2021" : "2021-02-10", #delta
+    "USA/CA-ACPHD-00570/2021" : "2021-01-24", #delta
+    "USA/CA-CDPH-UCSF-CC100/2021" : "2021-02-04", #delta
+    "USA/FL-BPHL-8934/2021" : "2021-01-14", #delta
+    "USA/IA-SHL-1780926/2021" : "2021-02-08", #delta
+    "USA/ID-IBL-759328/2021" : "2021-01-02", #delta
+    "USA/ID-IBL-760105/2021" : "2021-02-23", #delta
+    "USA/ID-IBL-760128/2021" : "2021-01-02", #delta
+    "USA/ID-IBL-771950/2021" : "2021-01-10", #delta
+    "USA/IL-S21WGS5409/2021" : "2021-01-10", #delta
+    "USA/KS-KHEL-6411/2021" : "2021-01-15", #delta
+    "USA/NV-NSPHL-392347/2021" : "2021-02-03", #delta
+    "USA/TN-SPHL-0094/2021" : "2021-01-19", #delta
+    "USA/TN-SPHL-0261/2021" : "2021-02-24", #delta
+    "USA/TN-SPHL-0517/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0539/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0587/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0588/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0606/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0610/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0617/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0622/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0749/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0750/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0788/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0800/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0805/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0861/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0953/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0961/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0964/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0967/2021" : "2021-01-14", #delta
+    "USA/TN-SPHL-0979/2021" : "2021-01-14", #delta
+    "USA/UT-UPHL-210624251315/2021" : "2021-01-04", #delta
+    "USA/UT-UPHL-210624490751/2021" : "2021-01-04", #delta
+    "USA/UT-UPHL-210723256386/2021" : "2021-01-05", #delta
+    "env/Austria/CeMM18535/2021" : "2021-01-17", #delta
+    "USA/TX-HMH-MCoV-40891/2020" : "2020-07-22", #alpha
+    "USA/TX-HMH-MCoV-40953/2020" : "2020-07-22", #alpha
+    "USA/TX-HMH-MCoV-50516/2020" : "2020-07-18", #delta
+    "USA/TX-HMH-MCoV-49926/2020" : "2020-07-16", #delta
+    "SouthAfrica/NHLS-UCT-GP-M115/2021" : "2021-06-17", #omicron
+    "SouthAfrica/NHLS-UCT-GP-M140/2021" : "2021-06-18", #omicron
+    "Kenya/K15865/2020" : "2020-06-23", #kappa
+    "USA/WY-WYPHL-20125142/2020" : "2020-11-07", #delta
+    "USA/WY-WYPHL-20133773/2020" : "2020-11-12", #delta
+
+    # Omicron with bad date:
+    "SouthAfrica/NICD-N01333/2021" : "2021-01-05", #omicron
+
+    # Bad sequences from Germany - supposedly Delta in Oct 2020 - unlikely
+    "Germany/NW-RKI-I-291769/2020" : "2020-10-13", #delta
+    "Germany/NW-RKI-I-291770/2020" : "2020-10-13", #delta
+    "Germany/NW-RKI-I-291771/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291772/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291773/2020" : "2020-10-17", #delta
+    "Germany/NW-RKI-I-291774/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291775/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291776/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291777/2020" : "2020-10-17", #delta
+    "Germany/NW-RKI-I-291778/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291779/2020" : "2020-10-17", #delta
+    "Germany/NW-RKI-I-291780/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291781/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291782/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291783/2020" : "2020-10-13", #delta
+    "Germany/NW-RKI-I-291784/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291786/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291788/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291789/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291790/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291791/2020" : "2020-10-16", #delta
+    "Germany/NW-RKI-I-291792/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291793/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291794/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291795/2020" : "2020-10-17", #delta
+    "Germany/NW-RKI-I-291796/2020" : "2020-10-13", #delta
+    "Germany/NW-RKI-I-291797/2020" : "2020-10-16", #delta
+    "Germany/NW-RKI-I-291798/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291799/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291800/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291801/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291802/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291803/2020" : "2020-10-17", #delta
+    "Germany/NW-RKI-I-291804/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291805/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291806/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291808/2020" : "2020-10-14", #delta
+    "Germany/NW-RKI-I-291809/2020" : "2020-10-16", #delta
+    "Germany/NW-RKI-I-291810/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291811/2020" : "2020-10-15", #delta
+    "Germany/NW-RKI-I-291812/2020" : "2020-10-16", #delta
+    "Germany/NW-RKI-I-307383/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307384/2020" : "2020-10-28", #delta
+    "Germany/NW-RKI-I-307386/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307387/2020" : "2020-10-28", #delta
+    "Germany/NW-RKI-I-307388/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307389/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307391/2020" : "2020-10-27", #delta
+    "Germany/NW-RKI-I-307392/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307393/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307394/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307395/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307396/2020" : "2020-10-27", #delta
+    "Germany/NW-RKI-I-307397/2020" : "2020-10-28", #delta
+    "Germany/NW-RKI-I-307398/2020" : "2020-10-27", #delta
+    "Germany/NW-RKI-I-307399/2020" : "2020-10-27", #delta
+    "Germany/NW-RKI-I-307400/2020" : "2020-10-28", #delta
+    "Germany/NW-RKI-I-307401/2020" : "2020-10-28", #delta
+    "Germany/NW-RKI-I-307402/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307403/2020" : "2020-10-28", #delta
+    "Germany/NW-RKI-I-307404/2020" : "2020-10-27", #delta
+    "Germany/NW-RKI-I-307405/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307407/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307408/2020" : "2020-10-27", #delta
+    "Germany/NW-RKI-I-307409/2020" : "2020-10-28", #delta
+    "Germany/NW-RKI-I-307410/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307411/2020" : "2020-10-25", #delta
+    "Germany/NW-RKI-I-307412/2020" : "2020-10-25", #delta
+    "Germany/NW-RKI-I-307413/2020" : "2020-10-28", #delta
+    "Germany/NW-RKI-I-307414/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307415/2020" : "2020-10-27", #delta
+    "Germany/NW-RKI-I-307416/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307417/2020" : "2020-10-28", #delta
+    "Germany/NW-RKI-I-307418/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307419/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307420/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307421/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307422/2020" : "2020-10-28", #delta
+    "Germany/NW-RKI-I-307423/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307424/2020" : "2020-10-28", #delta
+    "Germany/NW-RKI-I-307425/2020" : "2020-10-27", #delta
+    "Germany/NW-RKI-I-307426/2020" : "2020-10-26", #delta
+    "Germany/NW-RKI-I-307427/2020" : "2020-10-28", #delta
+    "Germany/SL-RKI-I-297962/2020" : "2020-10-17", #delta
+    "Germany/SN-RKI-I-213505/2020" : "2020-08-21", #delta
+    #and german seqs from even earlier.
+    "Germany/NW-RKI-I-323116/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323117/2020" : "2020-05-11", #delta
+    "Germany/NW-RKI-I-323118/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323119/2020" : "2020-05-11", #delta
+    "Germany/NW-RKI-I-323120/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323121/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323122/2020" : "2020-05-11", #delta
+    "Germany/NW-RKI-I-323123/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323124/2020" : "2020-06-11", #delta
+    "Germany/NW-RKI-I-323125/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323126/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323127/2020" : "2020-05-11", #delta
+    "Germany/NW-RKI-I-323128/2020" : "2020-06-11", #delta
+    "Germany/NW-RKI-I-323129/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323130/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323131/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323132/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323133/2020" : "2020-07-11", #delta
+    "Germany/NW-RKI-I-323134/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323135/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323136/2020" : "2020-07-11", #delta
+    "Germany/NW-RKI-I-323137/2020" : "2020-10-11", #delta
+    "Germany/NW-RKI-I-323138/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323139/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323140/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323141/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323142/2020" : "2020-05-11", #delta
+    "Germany/NW-RKI-I-323143/2020" : "2020-05-11", #delta
+    "Germany/NW-RKI-I-323144/2020" : "2020-05-11", #delta
+    "Germany/NW-RKI-I-323145/2020" : "2020-05-11", #delta
+    "Germany/NW-RKI-I-323146/2020" : "2020-05-11", #delta
+    "Germany/NW-RKI-I-323147/2020" : "2020-05-11", #delta
+    "Germany/NW-RKI-I-323148/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323149/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323150/2020" : "2020-05-11", #delta
+    "Germany/NW-RKI-I-323151/2020" : "2020-05-11", #delta
+    "Germany/NW-RKI-I-323152/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323153/2020" : "2020-05-11", #delta
+    "Germany/NW-RKI-I-323154/2020" : "2020-05-11", #delta
+    "Germany/NW-RKI-I-323155/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323156/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323157/2020" : "2020-06-11", #delta
+    "Germany/NW-RKI-I-323158/2020" : "2020-05-11", #delta
+    "Germany/NW-RKI-I-323159/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323160/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323161/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323162/2020" : "2020-05-11", #delta
+    "Germany/NW-RKI-I-323163/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323164/2020" : "2020-07-11", #delta
+    "Germany/NW-RKI-I-323165/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323166/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323167/2020" : "2020-10-11", #delta
+    "Germany/NW-RKI-I-323168/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323169/2020" : "2020-10-11", #delta
+    "Germany/NW-RKI-I-323170/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323171/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323172/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323173/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323174/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323175/2020" : "2020-10-11", #delta
+    "Germany/NW-RKI-I-323176/2020" : "2020-10-11", #delta
+    "Germany/NW-RKI-I-323177/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323178/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323179/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323180/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323181/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323182/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323183/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323184/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323185/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323186/2020" : "2020-10-11", #delta
+    "Germany/NW-RKI-I-323187/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323189/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323190/2020" : "2020-05-11", #delta
+    "Germany/NW-RKI-I-323191/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323192/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323193/2020" : "2020-10-11", #delta
+    "Germany/NW-RKI-I-323194/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323195/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323196/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323197/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323198/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323199/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323200/2020" : "2020-08-11", #delta
+    "Germany/NW-RKI-I-323201/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323202/2020" : "2020-05-11", #delta
+    "Germany/NW-RKI-I-323203/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323204/2020" : "2020-06-11", #delta
+    "Germany/NW-RKI-I-323205/2020" : "2020-09-11", #delta
+    "Germany/NW-RKI-I-323206/2020" : "2020-06-11", #delta
+    "Germany/SL-RKI-I-297962/2020" : "2020-10-17", #delta
+    "Germany/SN-RKI-I-213505/2020" : "2020-08-21", #delta
+
+    #bunch of bad sequences from the UK which are supposedly Delta,
+    #from April 2020...
+    "USA/CA-LACPHL-AF03229/2020" : "2020-08-12",
+    "USA/ID-IBL-638513/2020" : "2020-08-03",
+    "England/MILK-202F06F/2020" : "2020-04-17",
+    "England/MILK-2018157/2020" : "2020-04-17",
+    "England/MILK-2018193/2020" : "2020-04-17",
+    "England/MILK-20182CD/2020" : "2020-04-17",
+    "England/MILK-2018333/2020" : "2020-04-18",
+    "England/MILK-2018351/2020" : "2020-04-17",
+    "England/MILK-20183AC/2020" : "2020-04-19",
+    "England/MILK-20183D9/2020" : "2020-04-17",
+    "England/MILK-2018412/2020" : "2020-04-17",
+    "England/MILK-20184D6/2020" : "2020-04-18",
+    "England/MILK-2018500/2020" : "2020-04-18",
+    "England/MILK-20185D3/2020" : "2020-04-18",
+    "England/MILK-20186A3/2020" : "2020-04-18",
+    "England/MILK-202E7A7/2020" : "2020-04-17",
+    "England/MILK-202E877/2020" : "2020-04-17",
+    "England/MILK-202E8E0/2020" : "2020-04-17",
+    "England/MILK-202E91A/2020" : "2020-04-17",
+    "England/MILK-202E956/2020" : "2020-04-17",
+    "England/MILK-202E992/2020" : "2020-04-17",
+    "England/MILK-202E9ED/2020" : "2020-04-17",
+    "England/MILK-202EA17/2020" : "2020-04-17",
+    "England/MILK-202EA53/2020" : "2020-04-17",
+    "England/MILK-202EA62/2020" : "2020-04-17",
+    "England/MILK-202EABD/2020" : "2020-04-17",
+    "England/MILK-202EB05/2020" : "2020-04-17",
+    "England/MILK-202EB41/2020" : "2020-04-17",
+    "England/MILK-202EB8D/2020" : "2020-04-17",
+    "England/MILK-202EC3F/2020" : "2020-04-17",
+    "England/MILK-202EC5D/2020" : "2020-04-17",
+    "England/MILK-202EC6C/2020" : "2020-04-17",
+    "England/MILK-202EC7B/2020" : "2020-04-17",
+    "England/MILK-202EC99/2020" : "2020-04-17",
+    "England/MILK-202ED0F/2020" : "2020-04-17",
+    "England/MILK-202ED96/2020" : "2020-04-17",
+    "England/MILK-202EDB4/2020" : "2020-04-17",
+    "England/MILK-202EDF0/2020" : "2020-04-17",
+    "England/MILK-202EE75/2020" : "2020-04-17",
+    "England/MILK-202EE84/2020" : "2020-04-17",
+    "England/MILK-202EEA2/2020" : "2020-04-17",
+    "England/MILK-202EEEE/2020" : "2020-04-17",
+    "England/MILK-202EF09/2020" : "2020-04-17",
+    "England/MILK-202EF18/2020" : "2020-04-17",
+    "England/MILK-202EF45/2020" : "2020-04-19",
+    "England/MILK-202EF54/2020" : "2020-04-17",
+    "England/MILK-202EF90/2020" : "2020-04-17",
+    "England/MILK-202EFAF/2020" : "2020-04-17",
+    "England/MILK-202F014/2020" : "2020-04-17",
+    "England/MILK-202F023/2020" : "2020-04-17",
+    "England/MILK-202F032/2020" : "2020-04-17",
+    "England/MILK-202F041/2020" : "2020-04-17",
+    "England/MILK-202F050/2020" : "2020-04-17",
+    "England/MILK-202F0C9/2020" : "2020-04-17",
+    "England/MILK-202F0D8/2020" : "2020-04-17",
+    "England/MILK-202F0E7/2020" : "2020-04-17",
+    "England/MILK-202F14E/2020" : "2020-04-17",
+    "England/MILK-202F15D/2020" : "2020-04-17",
+    "England/MILK-202F16C/2020" : "2020-04-17",
+    "England/MILK-202F17B/2020" : "2020-04-17",
+    "England/MILK-202F1D5/2020" : "2020-04-17",
+    "England/MILK-202F1F3/2020" : "2020-04-17",
+    "England/MILK-202F23C/2020" : "2020-04-17",
+    "England/MILK-202F24B/2020" : "2020-04-17",
+    "England/MILK-202F278/2020" : "2020-04-17",
+    "England/MILK-202F287/2020" : "2020-04-17",
+    "England/MILK-202F296/2020" : "2020-04-17",
+    "England/MILK-202F30C/2020" : "2020-04-17",
+    "England/MILK-202F32A/2020" : "2020-04-17",
+    "England/MILK-20181C0/2020" : "2020-04-17",
+    "England/MILK-1FFA395/2020" : "2020-04-16",
+    "England/MILK-1FFBC5D/2020" : "2020-04-20",
+    "England/MILK-1FFC8FE/2020" : "2020-04-17",
+    "England/MILK-1FFC9A0/2020" : "2020-04-17",
+    "England/MILK-1FFCA25/2020" : "2020-04-17",
+    "England/MILK-1FFCAF8/2020" : "2020-04-17",
+    "England/MILK-1FFCB40/2020" : "2020-04-17",
+    "England/MILK-1FFCB8C/2020" : "2020-04-17",
+    "England/MILK-1FFCB9B/2020" : "2020-04-17",
+    "England/MILK-1FFCC01/2020" : "2020-04-17",
+    "England/MILK-1FFCC2F/2020" : "2020-04-17",
+    "England/MILK-1FFCCD4/2020" : "2020-04-17",
+    "England/MILK-1FFCCE3/2020" : "2020-04-17",
+    "England/MILK-1FFCD59/2020" : "2020-04-17",
+    "England/MILK-1FFCD68/2020" : "2020-04-17",
+    "England/MILK-1FFCD77/2020" : "2020-04-17",
+    "England/MILK-1FFCDC2/2020" : "2020-04-17",
+    "England/MILK-1FFCE0B/2020" : "2020-04-17",
+    "England/MILK-1FFCE1A/2020" : "2020-04-17",
+    "England/MILK-1FFD462/2020" : "2020-04-17",
+    "England/MILK-1FFD4BD/2020" : "2020-04-17",
+    "England/MILK-1FFD58D/2020" : "2020-04-17",
+    "England/MILK-1FFD72D/2020" : "2020-04-17",
+    "England/MILK-1FFD778/2020" : "2020-04-17",
+    "England/MILK-1FFD796/2020" : "2020-04-17",
+    "England/MILK-1FFD7D2/2020" : "2020-04-18",
+    "England/MILK-1FFD7E1/2020" : "2020-04-17",
+    "England/MILK-1FFD80C/2020" : "2020-04-17",
+    "England/MILK-1FFD848/2020" : "2020-04-17",
+    "England/MILK-1FFD857/2020" : "2020-04-17",
+    "England/MILK-1FFD884/2020" : "2020-04-17",
+    "England/MILK-1FFD8FD/2020" : "2020-04-17",
+    "England/MILK-1FFD945/2020" : "2020-04-17",
+    "England/MILK-1FFD9FA/2020" : "2020-04-17",
+    "England/MILK-1FFDA15/2020" : "2020-04-19",
+    "England/MILK-2001801/2020" : "2020-04-14",
+    "England/MILK-20018F2/2020" : "2020-04-14",
+    "England/MILK-2001A92/2020" : "2020-04-14",
+    "England/MILK-2003D00/2020" : "2020-04-19",
+    "England/MILK-2003D2E/2020" : "2020-04-19",
+    "England/MILK-2003D4C/2020" : "2020-04-15",
+    "England/MILK-2003DC4/2020" : "2020-04-15",
+    "England/MILK-2003E49/2020" : "2020-04-15",
+    "England/MILK-2003E94/2020" : "2020-04-19",
+    "England/MILK-2003EC1/2020" : "2020-04-15",
+    "England/MILK-2003EEF/2020" : "2020-04-15",
+    "England/MILK-2003EFE/2020" : "2020-04-15",
+    "England/MILK-2003F28/2020" : "2020-04-15",
+    "England/MILK-2003F82/2020" : "2020-04-15",
+    "England/MILK-2003FBF/2020" : "2020-04-15",
+    "England/MILK-2004015/2020" : "2020-04-15",
+    "England/MILK-2004103/2020" : "2020-04-15",
+    "England/MILK-200415E/2020" : "2020-04-15",
+    "England/MILK-2005D86/2020" : "2020-04-15",
+    "England/MILK-2005E47/2020" : "2020-04-15",
+    "England/MILK-2005EB0/2020" : "2020-04-15",
+    "England/MILK-2005F71/2020" : "2020-04-15",
+    "England/MILK-2005F9F/2020" : "2020-04-15",
+    "England/MILK-2005FBD/2020" : "2020-04-15",
+    "England/MILK-2005FDB/2020" : "2020-04-15",
+    "England/MILK-2005FF9/2020" : "2020-04-15",
+    "England/MILK-2006022/2020" : "2020-04-16",
+    "England/MILK-2006101/2020" : "2020-04-15",
+    "England/MILK-2017589/2020" : "2020-04-18",
+    "England/MILK-2017598/2020" : "2020-04-18",
+    "England/MILK-201763B/2020" : "2020-04-18",
+    "England/MILK-20176C2/2020" : "2020-04-18",
+    "England/MILK-201771A/2020" : "2020-04-18",
+    "England/MILK-2017738/2020" : "2020-04-18",
+    "England/MILK-2017756/2020" : "2020-04-18",
+    "England/MILK-20177B0/2020" : "2020-04-18",
+    "England/MILK-20177CF/2020" : "2020-04-18",
+    "England/MILK-20177FC/2020" : "2020-04-18",
+    "England/MILK-2017808/2020" : "2020-04-18",
+    "England/MILK-2017817/2020" : "2020-04-18",
+    "England/MILK-2017844/2020" : "2020-04-18",
+    "England/MILK-2017853/2020" : "2020-04-18",
+    "England/MILK-20178AE/2020" : "2020-04-18",
+    "England/MILK-2018D53/2020" : "2020-04-19",
+    "England/MILK-2018DF9/2020" : "2020-04-18",
+    "England/MILK-2019332/2020" : "2020-04-18",
+    "England/MILK-20195B4/2020" : "2020-04-22",
+    "England/MILK-2019790/2020" : "2020-04-18",
+    "England/MILK-20197FA/2020" : "2020-04-18",
+    "England/MILK-2019EC8/2020" : "2020-04-18",
+    "England/MILK-2019ED7/2020" : "2020-04-18",
+    "England/MILK-2019F2F/2020" : "2020-04-18",
+    "England/MILK-2019F6B/2020" : "2020-04-18",
+    "England/MILK-201A058/2020" : "2020-04-18",
+    "England/MILK-201A155/2020" : "2020-04-20",
+    "England/MILK-201A164/2020" : "2020-04-18",
+    "England/MILK-201A207/2020" : "2020-04-18",
+    "England/MILK-201A261/2020" : "2020-04-18",
+    "England/MILK-201A2CB/2020" : "2020-04-18",
+    "England/MILK-201A44D/2020" : "2020-04-18",
+    "England/MILK-201A45C/2020" : "2020-04-18",
+    "England/MILK-201A46B/2020" : "2020-04-18",
+    "England/MILK-201A47A/2020" : "2020-04-18",
+    "England/MILK-201C311/2020" : "2020-04-18",
+    "England/MILK-201C38A/2020" : "2020-04-18",
+    "England/MILK-201C3B7/2020" : "2020-04-18",
+    "England/MILK-201C3D5/2020" : "2020-04-18",
+    "England/MILK-201C43C/2020" : "2020-04-18",
+    "England/MILK-201C44B/2020" : "2020-04-18",
+    "England/MILK-201C627/2020" : "2020-04-19",
+    "England/MILK-201C645/2020" : "2020-04-18",
+    "England/MILK-201C724/2020" : "2020-04-18",
+    "England/MILK-201C733/2020" : "2020-04-18",
+    "England/MILK-201D40E/2020" : "2020-04-19",
+    "England/MILK-201D4D1/2020" : "2020-04-19",
+    "England/MILK-201D4FF/2020" : "2020-04-19",
+    "England/MILK-201D50B/2020" : "2020-04-19",
+    "England/MILK-201D565/2020" : "2020-04-19",
+    "England/MILK-201D5A1/2020" : "2020-04-19",
+    "England/MILK-201D617/2020" : "2020-04-19",
+    "England/MILK-201D6BD/2020" : "2020-04-19",
+    "England/MILK-201D6EA/2020" : "2020-04-19",
+    "England/MILK-201D750/2020" : "2020-04-19",
+    "England/MILK-201D76F/2020" : "2020-04-19",
+    "England/MILK-201D78D/2020" : "2020-04-19",
+    "England/MILK-201D7C9/2020" : "2020-04-19",
+    "England/MILK-201D802/2020" : "2020-04-19",
+    "England/MILK-201D811/2020" : "2020-04-19",
+    "England/MILK-201D820/2020" : "2020-04-19",
+    "England/MILK-201D83F/2020" : "2020-04-19",
+    "England/MILK-201D8B7/2020" : "2020-04-19",
+    "England/MILK-201FDB6/2020" : "2020-04-19",
+    "England/MILK-201FDC5/2020" : "2020-04-19",
+    "England/MILK-201FDE3/2020" : "2020-04-19",
+    "England/MILK-201FE68/2020" : "2020-04-19",
+    "England/MILK-201FE77/2020" : "2020-04-19",
+    "England/MILK-201FE95/2020" : "2020-04-19",
+    "England/MILK-201FED1/2020" : "2020-04-19",
+    "England/MILK-201FEFF/2020" : "2020-04-19",
+    "England/MILK-201FF0B/2020" : "2020-04-19",
+    "England/MILK-201FF56/2020" : "2020-04-19",
+    "England/MILK-201FF65/2020" : "2020-04-19",
+    "England/MILK-201FFA1/2020" : "2020-04-19",
+    "England/MILK-2020022/2020" : "2020-04-19",
+    "England/MILK-202007D/2020" : "2020-04-19",
+    "England/MILK-202009B/2020" : "2020-04-19",
+    "England/MILK-202012F/2020" : "2020-04-19",
+    "England/MILK-202016B/2020" : "2020-04-19",
+    "England/MILK-2022002/2020" : "2020-04-19",
+    "England/MILK-20220C6/2020" : "2020-04-19",
+    "England/MILK-20220D5/2020" : "2020-04-19",
+    "England/MILK-20221A5/2020" : "2020-04-19",
+    "England/MILK-20221B4/2020" : "2020-04-19",
+    "England/MILK-20222B1/2020" : "2020-04-19",
+    "England/MILK-20222C0/2020" : "2020-04-19",
+    "England/MILK-2022318/2020" : "2020-04-19",
+    "England/MILK-2022336/2020" : "2020-04-19",
+    "England/MILK-2022390/2020" : "2020-04-19",
+    "England/MILK-2023195/2020" : "2020-04-19",
+    "England/MILK-20231A4/2020" : "2020-04-19",
+    "England/MILK-202321A/2020" : "2020-04-19",
+    "England/MILK-20232A1/2020" : "2020-04-20",
+    "England/MILK-20232B0/2020" : "2020-04-20",
+    "England/MILK-20233AE/2020" : "2020-04-20",
+    "England/MILK-20233BD/2020" : "2020-04-20",
+    "England/MILK-2023423/2020" : "2020-04-19",
+    "England/MILK-2023432/2020" : "2020-04-20",
+    "England/MILK-2023441/2020" : "2020-04-20",
+    "England/MILK-202349C/2020" : "2020-04-20",
+    "England/MILK-20234C9/2020" : "2020-04-20",
+    "England/MILK-2023511/2020" : "2020-04-20",
+    "England/MILK-202365A/2020" : "2020-04-20",
+    "England/MILK-20236D2/2020" : "2020-04-20",
+    "England/MILK-20254E5/2020" : "2020-04-19",
+    "England/MILK-20255B5/2020" : "2020-04-19",
+    "England/MILK-20255C4/2020" : "2020-04-19",
+    "England/MILK-2027902/2020" : "2020-04-20",
+    "England/MILK-202793F/2020" : "2020-04-20",
+    "England/MILK-2027AF0/2020" : "2020-04-20",
+    "England/MILK-2027B2A/2020" : "2020-04-20",
+    "England/MILK-2027B93/2020" : "2020-04-20",
+    "England/MILK-2027C72/2020" : "2020-04-20",
+    "England/MILK-2027D60/2020" : "2020-04-20",
+    "England/MILK-2027D7F/2020" : "2020-04-20",
+    "England/MILK-2027DAC/2020" : "2020-04-20",
+    "England/MILK-203004D/2020" : "2020-04-19",
+    "England/MILK-203005C/2020" : "2020-04-19",
+    "England/MILK-2030159/2020" : "2020-04-18",
+    "England/MILK-203020B/2020" : "2020-04-18",
+    "England/MILK-2030247/2020" : "2020-04-18",
+    "England/MILK-2030256/2020" : "2020-04-18",
+    "England/MILK-20302CF/2020" : "2020-04-18",
+    "England/MILK-20302DE/2020" : "2020-04-18",
+    "England/MILK-2030326/2020" : "2020-04-18",
+    "England/MILK-2030362/2020" : "2020-04-18",
+    "England/MILK-20303AE/2020" : "2020-04-18",
+    "England/MILK-20303BD/2020" : "2020-04-18",
+    "England/MILK-20303CC/2020" : "2020-04-18",
+    "England/MILK-2030423/2020" : "2020-04-18",
+    "England/MILK-203046F/2020" : "2020-04-18",
+    "England/MILK-20304C9/2020" : "2020-04-18",
+    "England/MILK-2030CB2/2020" : "2020-04-19",
+    "England/MILK-2030D0A/2020" : "2020-04-19",
+    "England/MILK-2030D19/2020" : "2020-04-19",
+    "England/MILK-2030D46/2020" : "2020-04-19",
+    "England/MILK-2030D82/2020" : "2020-04-19",
+    "England/MILK-2030E34/2020" : "2020-04-19",
+    "England/MILK-2030E8F/2020" : "2020-04-20",
+    "England/MILK-2030F31/2020" : "2020-04-19",
+    "England/MILK-2030FD7/2020" : "2020-04-19",
+    "England/MILK-2032861/2020" : "2020-04-19",
+    "England/MILK-20328AD/2020" : "2020-04-19",
+    "England/MILK-203297D/2020" : "2020-04-19",
+    "England/MILK-203299B/2020" : "2020-04-19",
+    "England/MILK-20329F5/2020" : "2020-04-19",
+    "England/MILK-2032A4D/2020" : "2020-04-19",
+    "England/MILK-2032AA7/2020" : "2020-04-19",
+    "England/MILK-2032BB3/2020" : "2020-04-19",
+    "England/MILK-2032BC2/2020" : "2020-04-19",
+    "England/MILK-2032BFF/2020" : "2020-04-19",
+    "England/MILK-2032C38/2020" : "2020-04-19",
+    "England/MILK-2032C47/2020" : "2020-04-19",
+    "England/MILK-2032CB0/2020" : "2020-04-19",
+    "England/MILK-2032D17/2020" : "2020-04-19",
+    "England/MILK-2032D44/2020" : "2020-04-19",
+    "England/MILK-2032D71/2020" : "2020-04-19",
+    "England/MILK-2032DAE/2020" : "2020-04-19",
+    "England/MILK-2032DEA/2020" : "2020-04-18",
+    "England/MILK-2032DF9/2020" : "2020-04-18",
+    "England/MILK-2032E32/2020" : "2020-04-18",
+    "England/MILK-2032EAB/2020" : "2020-04-18",
+    "England/MILK-2032EBA/2020" : "2020-04-18",
+    "England/MILK-2032F20/2020" : "2020-04-18",
+    "England/MILK-2032FE4/2020" : "2020-04-18",
+    "England/MILK-203301D/2020" : "2020-04-18",
+    "England/MILK-203302C/2020" : "2020-04-18",
+    "England/MILK-203304A/2020" : "2020-04-18",
+    "England/MILK-2033129/2020" : "2020-04-18",
+    "England/MILK-20331FC/2020" : "2020-04-18",
+    "England/MILK-2033217/2020" : "2020-04-18",
+    "England/MILK-2033226/2020" : "2020-04-18",
+    "England/MILK-20332BD/2020" : "2020-04-18",
+    "England/MILK-20332F9/2020" : "2020-04-18",
+    "England/MILK-2033305/2020" : "2020-04-18",
+    "England/MILK-2033921/2020" : "2020-04-18",
+    "England/MILK-2033930/2020" : "2020-04-18",
+    "England/MILK-203395E/2020" : "2020-04-18",
+    "England/MILK-20339A9/2020" : "2020-04-18",
+    "England/MILK-20339B8/2020" : "2020-04-18",
+    "England/MILK-20339D6/2020" : "2020-04-18",
+    "England/MILK-2034270/2020" : "2020-04-19",
+    "England/MILK-20342BC/2020" : "2020-04-19",
+    "England/MILK-2034410/2020" : "2020-04-19",
+    "England/MILK-2034498/2020" : "2020-04-19",
+    "England/MILK-20344B6/2020" : "2020-04-19",
+    "England/MILK-20344C5/2020" : "2020-04-19",
+    "England/MILK-203451D/2020" : "2020-04-19",
+    "England/MILK-203452C/2020" : "2020-04-19",
+    "England/MILK-203588C/2020" : "2020-04-20",
+    "England/MILK-20358C8/2020" : "2020-04-19",
+    "England/MILK-203593E/2020" : "2020-04-19",
+    "England/MILK-203596B/2020" : "2020-04-19",
+    "England/MILK-20359E3/2020" : "2020-04-19",
+    "England/MILK-2035AA4/2020" : "2020-04-19",
+    "England/MILK-2035B65/2020" : "2020-04-19",
+    "England/MILK-2035C71/2020" : "2020-04-19",
+    "England/MILK-2035C9F/2020" : "2020-04-19",
+    "England/MILK-2036302/2020" : "2020-04-19",
+    "England/MILK-203636C/2020" : "2020-04-19",
+    "England/MILK-2036399/2020" : "2020-04-19",
+    "England/MILK-203641E/2020" : "2020-04-19",
+    "England/MILK-203644B/2020" : "2020-04-19",
+    "England/MILK-203645A/2020" : "2020-04-19",
+    "England/MILK-2036469/2020" : "2020-04-19",
+    "England/MILK-2036487/2020" : "2020-04-19",
+    "England/MILK-20364F0/2020" : "2020-04-19",
+    "England/MILK-203652A/2020" : "2020-04-19",
+    "England/MILK-2036548/2020" : "2020-04-19",
+    "England/MILK-20365C0/2020" : "2020-04-19",
+    "England/MILK-20365FD/2020" : "2020-04-19",
+    "England/MILK-2036609/2020" : "2020-04-19",
+    "England/MILK-2036672/2020" : "2020-04-19",
+    "England/MILK-2036681/2020" : "2020-04-19",
+    "England/MILK-20368B8/2020" : "2020-04-19",
+    "England/MILK-20368C7/2020" : "2020-04-20",
+    "England/MILK-2036F77/2020" : "2020-04-19",
+    "England/MILK-2036F86/2020" : "2020-04-19",
+    "England/MILK-2036FC2/2020" : "2020-04-19",
+    "England/MILK-2037055/2020" : "2020-04-19",
+    "England/MILK-2037125/2020" : "2020-04-19",
+    "England/MILK-2037161/2020" : "2020-04-20",
+    "England/MILK-20371AD/2020" : "2020-04-19",
+    "England/MILK-20372B9/2020" : "2020-04-19",
+    "England/MILK-20372C8/2020" : "2020-04-19",
+    "England/MILK-20372D7/2020" : "2020-04-19",
+    "England/MILK-2037301/2020" : "2020-04-19",
+    "England/MILK-203733E/2020" : "2020-04-19",
+    "England/MILK-2037477/2020" : "2020-04-19",
+    "England/MILK-2038C32/2020" : "2020-04-19",
+    "England/MILK-2038C50/2020" : "2020-04-19",
+    "England/MILK-2038C9C/2020" : "2020-04-19",
+    "England/MILK-2038D4E/2020" : "2020-04-19",
+    "England/MILK-2038D6C/2020" : "2020-04-19",
+    "England/MILK-2038D8A/2020" : "2020-04-19",
+    "England/MILK-2038DA8/2020" : "2020-04-19",
+    "England/MILK-2038DC6/2020" : "2020-04-19",
+    "England/MILK-2038E1E/2020" : "2020-04-19",
+    "England/MILK-2038E4B/2020" : "2020-04-19",
+    "England/MILK-2038EF0/2020" : "2020-04-21",
+    "England/MILK-2038F1B/2020" : "2020-04-21",
+    "England/MILK-2038F48/2020" : "2020-04-21",
+    "England/MILK-2038F84/2020" : "2020-04-21",
+    "England/MILK-2038F93/2020" : "2020-04-21",
+    "England/MILK-2038FB1/2020" : "2020-04-21",
+    "England/MILK-2039062/2020" : "2020-04-21",
+    "England/MILK-2039071/2020" : "2020-04-21",
+    "England/MILK-20390AE/2020" : "2020-04-21",
+    "England/MILK-20390CC/2020" : "2020-04-21",
+    "England/MILK-203917E/2020" : "2020-04-21",
+    "England/MILK-203919C/2020" : "2020-04-21",
+    "England/MILK-20391BA/2020" : "2020-04-21",
+    "England/MILK-20391D8/2020" : "2020-04-21",
+    "England/MILK-203A3C2/2020" : "2020-04-22",
+    "England/MILK-203A483/2020" : "2020-04-22",
+    "England/MILK-203A492/2020" : "2020-04-22",
+    "England/MILK-203A4B0/2020" : "2020-04-22",
+    "England/MILK-203A4ED/2020" : "2020-04-22",
+    "England/MILK-203A571/2020" : "2020-04-22",
+    "England/MILK-203A5BD/2020" : "2020-04-22",
+    "England/MILK-203A623/2020" : "2020-04-22",
+    "England/MILK-203A650/2020" : "2020-04-22",
+    "England/MILK-203A66F/2020" : "2020-04-22",
+    "England/MILK-203A6AB/2020" : "2020-04-22",
+    "England/MILK-203A6BA/2020" : "2020-04-22",
+    "England/MILK-203A6C9/2020" : "2020-04-22",
+    "England/MILK-203A7A8/2020" : "2020-04-22",
+    "England/MILK-203A7F3/2020" : "2020-04-22",
+    "England/MILK-203A81E/2020" : "2020-04-22",
+    "England/MILK-203A887/2020" : "2020-04-22",
+    "England/MILK-203A8C3/2020" : "2020-04-22",
+    "England/MILK-203A8D2/2020" : "2020-04-22",
+    "England/MILK-203A90C/2020" : "2020-04-22",
+    "England/MILK-203A9EE/2020" : "2020-04-22",
+    "England/MILK-203AA72/2020" : "2020-04-22",
+    "England/MILK-203AA81/2020" : "2020-04-22",
+    "England/MILK-203AA90/2020" : "2020-04-22",
+    "England/MILK-203AACD/2020" : "2020-04-22",
+    "England/MILK-203AADC/2020" : "2020-04-22",
+    "England/MILK-203AB15/2020" : "2020-04-22",
+    "England/MILK-203AB42/2020" : "2020-04-22",
+    "England/MILK-203AB8E/2020" : "2020-04-22",
+    "England/MILK-203ABAC/2020" : "2020-04-22",
+    "England/MILK-203ABF7/2020" : "2020-04-22",
+    "England/MILK-203AC7C/2020" : "2020-04-22",
+    "England/MILK-203ACE5/2020" : "2020-04-22",
+    "England/MILK-203AD00/2020" : "2020-04-22",
+    "England/MILK-203AD2E/2020" : "2020-04-22",
+    "England/MILK-203AD5B/2020" : "2020-04-22",
+    "England/MILK-203AD79/2020" : "2020-04-22",
+    "England/MILK-203AE1C/2020" : "2020-04-22",
+    "England/MILK-203AE49/2020" : "2020-04-22",
+    "England/MILK-203AEFE/2020" : "2020-04-22",
+    "England/MILK-203AF46/2020" : "2020-04-22",
+    "England/MILK-203B552/2020" : "2020-04-22",
+    "England/MILK-203B59E/2020" : "2020-04-22",
+    "England/MILK-203B5AD/2020" : "2020-04-22",
+    "England/MILK-203B5F8/2020" : "2020-04-22",
+    "England/MILK-203B613/2020" : "2020-04-22",
+    "England/MILK-203B640/2020" : "2020-04-21",
+    "England/MILK-203B67D/2020" : "2020-04-22",
+    "England/MILK-203B68C/2020" : "2020-04-22",
+    "England/MILK-203B73E/2020" : "2020-04-22",
+    "England/MILK-203B75C/2020" : "2020-04-22",
+    "England/MILK-203B7B6/2020" : "2020-04-22",
+    "England/MILK-203B7D4/2020" : "2020-04-22",
+    "England/MILK-203B877/2020" : "2020-04-22",
+    "England/MILK-203B886/2020" : "2020-04-22",
+    "England/MILK-203B90B/2020" : "2020-04-22",
+    "England/MILK-203BA35/2020" : "2020-04-22",
+    "England/MILK-203BAF9/2020" : "2020-04-22",
+    "England/MILK-203CCF2/2020" : "2020-04-21",
+    "England/MILK-203CD0E/2020" : "2020-04-21",
+    "England/MILK-203CD4A/2020" : "2020-04-21",
+    "England/MILK-203CD68/2020" : "2020-04-21",
+    "England/MILK-203CD77/2020" : "2020-04-21",
+    "England/MILK-203CDB3/2020" : "2020-04-22",
+    "England/MILK-203CDD1/2020" : "2020-04-21",
+    "England/MILK-203CE0B/2020" : "2020-04-21",
+    "England/MILK-203CE38/2020" : "2020-04-21",
+    "England/MILK-203CE47/2020" : "2020-04-21",
+    "England/MILK-203CEA1/2020" : "2020-04-21",
+    "England/MILK-203CEFC/2020" : "2020-04-21",
+    "England/MILK-203CF08/2020" : "2020-04-21",
+    "England/MILK-203CF62/2020" : "2020-04-21",
+    "England/MILK-203CF71/2020" : "2020-04-21",
+    "England/MILK-203D013/2020" : "2020-04-21",
+    "England/MILK-203D12F/2020" : "2020-04-21",
+    "England/MILK-203D1A7/2020" : "2020-04-21",
+    "England/MILK-203D2B3/2020" : "2020-04-21",
+    "England/MILK-203D338/2020" : "2020-04-21",
+    "England/MILK-203D3CF/2020" : "2020-04-21",
+    "England/MILK-203D444/2020" : "2020-04-21",
+    "England/MILK-203D462/2020" : "2020-04-21",
+    "England/MILK-203D49F/2020" : "2020-04-21",
+    "England/MILK-203D4EA/2020" : "2020-04-21",
+    "England/MILK-203D541/2020" : "2020-04-22",
+    "England/MILK-203D550/2020" : "2020-04-22",
+    "England/MILK-203D5BA/2020" : "2020-04-22",
+    "England/MILK-203D620/2020" : "2020-04-22",
+    "England/MILK-203D82A/2020" : "2020-04-22",
+    "England/MILK-203D848/2020" : "2020-04-22",
+    "England/MILK-203F002/2020" : "2020-04-21",
+    "England/MILK-203F04E/2020" : "2020-04-21",
+    "England/MILK-203F0E4/2020" : "2020-04-21",
+    "England/MILK-203F503/2020" : "2020-04-21",
+    "England/MILK-203F521/2020" : "2020-04-21",
 
     #These are sequences submitted where collection date seems incorrect:
     #https://twitter.com/flodebarre/status/1414868236823318530

@@ -1,7 +1,7 @@
 clusters = {
 
-    "501YV1": {
-        "snps": [23063, 23604, 24914],
+    "Alpha": {
+        "snps": [23063, 23604, 24914], #23063T, 23604A, 24914C
         "cluster_data": [],  # 501, 681, 1118
         "nextstrain_build": True,
         "graphing": True,
@@ -58,7 +58,7 @@ clusters = {
             ],
         },
     },
-    "501YV2": {
+    "Beta": {
         "snps": [21801, 23063, 23664],
         "cluster_data": [],  # 80,501,701
         "nextstrain_build": True,
@@ -109,7 +109,7 @@ clusters = {
             ],
         },
     },
-    "501YV3": {
+    "Gamma": {
         "snps": [21621, 23063, 23525],
         "cluster_data": [],  # 20,501,655
         "nextstrain_build": True,
@@ -170,23 +170,10 @@ clusters = {
         },
     },
 
-    # build for 20AS154 and 20AS478
-    "21AS154S478":{
-        "snps": [29402, 22917, 14408], # N377, S452. ORF1b 314
-        "cluster_data": [],  
-        "nextstrain_build": True,
-        "type": "do_not_display",
-        "graphing": False,
-        "important": False,
-        "country_info": [],
-        "col": "#009900",
-        "display_name": "21A/21B",
-        "build_name": "21A.21B",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.21B",
-    },
+
 
     # Delta variant  -- part of 'Indian' in media - B.1.617.2
-    "21AS478": {
+    "Delta": {
         "snps": [22995, 23604, 22917], # S:478, 681, 452
         "cluster_data": [],  
         "nextstrain_build": True,
@@ -194,9 +181,10 @@ clusters = {
         "graphing": True,
         "important": True,
         "country_info": [],
-        "col": "#66A366",
+        "col": "#66C266",
         "display_name": "21A (Delta)",
         "alt_display_name": ["21A/S:478K"],
+        #"other_nextstrain_names": ["21A (Delta)","21J (Delta)","21I (Delta)"],
         "build_name": "21A.Delta",
         "old_build_names": ["21A.S.478K"],
         "who_name": ["Delta"],
@@ -217,6 +205,7 @@ clusters = {
                 {"gene": "S", "left": "P", "pos": 681, "right": "R"},
                 {"gene": "S", "left": "D", "pos": 950, "right": "N"},
                 {"gene": "ORF1b", "left": "P", "pos": 314, "right": "L"},
+                {"gene": "ORF1b", "left": "G", "pos": 662, "right": "S"},
                 {"gene": "ORF1b", "left": "P", "pos": 1000, "right": "L"},
                 {"gene": "M", "left": "I", "pos": 82, "right": "T"},
                 {"gene": "N", "left": "D", "pos": 63, "right": "G"},
@@ -224,7 +213,10 @@ clusters = {
                 {"gene": "N", "left": "D", "pos": 377, "right": "Y"},
                 {"gene": "ORF3a", "left": "S", "pos": 26, "right": "L"},
                 {"gene": "ORF7a", "left": "V", "pos": 82, "right": "A"},
-                {"gene": "ORF7a", "left": "T", "pos": 120, "right": "I"}
+                {"gene": "ORF7a", "left": "T", "pos": 120, "right": "I"},
+                {"gene": "ORF8", "left": "D", "pos": 119, "right": "-"},
+                {"gene": "ORF8", "left": "F", "pos": 120, "right": "-"},
+                {"gene": "ORF9b", "left": "T", "pos": 60, "right": "A"}
             ],
             "synonymous": [
                 {"left": "G", "pos": 210, "right": "T"},
@@ -236,16 +228,277 @@ clusters = {
         },
     },
 
-    # variant  -- part of 'Indian' in media - B.1.617.1 
-    "21AS154": {
-        "snps": [17523, 23604, 22917], #ORF1b:1352, S:681, 452 
+    "21I.Delta": {
+        "snps": [5184, 11514, 22227], # 5184T, 11514T, 22227T : ORF1a:1640, ORF1a:3750, S:222
         "cluster_data": [],  
         "nextstrain_build": True,
         "type": "variant",
         "graphing": True,
         "important": True,
         "country_info": [],
-        "col": "#66C266",
+        "col": "#aaff80",
+        "display_name": "21I (Delta)",
+        "alt_display_name": [],
+        "build_name": "21I.Delta",
+        "old_build_names": [],
+        "who_name": ["Delta"],
+        "nextstrain_name": "21I (Delta)",
+        "pango_lineages": [
+            {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
+        ],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21I.Delta",
+        "mutations": {
+            "nonsynonymous": [
+                {"gene": "S", "left": "T", "pos": 19, "right": "R"},
+                {"gene": "S", "left": "E", "pos": 156, "right": "-"},
+                {"gene": "S", "left": "F", "pos": 157, "right": "-"},
+                {"gene": "S", "left": "R", "pos": 158, "right": "G"},
+                {"gene": "S", "left": "A", "pos": 222, "right": "V"},
+                {"gene": "S", "left": "L", "pos": 452, "right": "R"},
+                {"gene": "S", "left": "T", "pos": 478, "right": "K"},
+                {"gene": "S", "left": "D", "pos": 614, "right": "G"},
+                {"gene": "S", "left": "P", "pos": 681, "right": "R"},
+                {"gene": "S", "left": "D", "pos": 950, "right": "N"},
+                {"gene": "ORF1a", "left": "P", "pos": 1640, "right": "L"},
+                {"gene": "ORF1a", "left": "A", "pos": 3209, "right": "V"},
+                {"gene": "ORF1a", "left": "V", "pos": 3718, "right": "A"},
+                {"gene": "ORF1a", "left": "T", "pos": 3750, "right": "I"},
+                {"gene": "ORF1b", "left": "P", "pos": 314, "right": "L"},
+                {"gene": "ORF1b", "left": "G", "pos": 662, "right": "S"},
+                {"gene": "ORF1b", "left": "P", "pos": 1000, "right": "L"},
+                {"gene": "M", "left": "I", "pos": 82, "right": "T"},
+                {"gene": "N", "left": "D", "pos": 63, "right": "G"},
+                {"gene": "N", "left": "R", "pos": 203, "right": "M"},
+                {"gene": "N", "left": "D", "pos": 377, "right": "Y"},
+                {"gene": "ORF3a", "left": "S", "pos": 26, "right": "L"},
+                {"gene": "ORF7a", "left": "V", "pos": 82, "right": "A"},
+                {"gene": "ORF7a", "left": "T", "pos": 120, "right": "I"},
+                {"gene": "ORF8", "left": "D", "pos": 119, "right": "-"},
+                {"gene": "ORF8", "left": "F", "pos": 120, "right": "-"},
+                {"gene": "ORF9b", "left": "T", "pos": 60, "right": "A"}
+            ],
+            "synonymous": [
+                {"left": "G", "pos": 210, "right": "T"},
+                {"left": "C", "pos": 241, "right": "T"},
+                {"left": "C", "pos": 3037, "right": "T"},
+                {"left": "A", "pos": 5584, "right": "G"},
+                {"left": "C", "pos": 13019, "right": "T"},
+                {"left": "A", "pos": 28271, "right": "-"},
+                {"left": "G", "pos": 29742, "right": "T"}
+            ],
+        },
+    },
+
+    "21J.Delta": {
+        "snps": [4181,8986,11201], # 4181T,8986T,11201G - ORF1a: 1306, 2907, 3646
+        "cluster_data": [],  
+        "nextstrain_build": True,
+        "type": "variant",
+        "graphing": True,
+        "important": True,
+        "country_info": [],
+        "col": "#66A366",
+        "display_name": "21J (Delta)",
+        "alt_display_name": [],
+        "build_name": "21J.Delta",
+        "old_build_names": [],
+        "who_name": ["Delta"],
+        "nextstrain_name": "21J (Delta)",
+        "pango_lineages": [
+            {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
+        ],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21J.Delta",
+        "mutations": {
+            "nonsynonymous": [
+                {"gene": "S", "left": "T", "pos": 19, "right": "R"},
+                {"gene": "S", "left": "E", "pos": 156, "right": "-"},
+                {"gene": "S", "left": "F", "pos": 157, "right": "-"},
+                {"gene": "S", "left": "R", "pos": 158, "right": "G"},
+                {"gene": "S", "left": "L", "pos": 452, "right": "R"},
+                {"gene": "S", "left": "T", "pos": 478, "right": "K"},
+                {"gene": "S", "left": "D", "pos": 614, "right": "G"},
+                {"gene": "S", "left": "P", "pos": 681, "right": "R"},
+                {"gene": "S", "left": "D", "pos": 950, "right": "N"},
+                {"gene": "ORF1a", "left": "A", "pos": 1306, "right": "S"},
+                {"gene": "ORF1a", "left": "V", "pos": 2930, "right": "L"},
+                {"gene": "ORF1a", "left": "T", "pos": 3255, "right": "I"},
+                {"gene": "ORF1a", "left": "T", "pos": 3646, "right": "A"},
+                {"gene": "ORF1b", "left": "P", "pos": 314, "right": "L"},
+                {"gene": "ORF1b", "left": "G", "pos": 662, "right": "S"},
+                {"gene": "ORF1b", "left": "P", "pos": 1000, "right": "L"},
+                {"gene": "ORF1b", "left": "A", "pos": 1918, "right": "V"},
+                {"gene": "M", "left": "I", "pos": 82, "right": "T"},
+                {"gene": "N", "left": "D", "pos": 63, "right": "G"},
+                {"gene": "N", "left": "R", "pos": 203, "right": "M"},
+                {"gene": "N", "left": "G", "pos": 215, "right": "C"},
+                {"gene": "N", "left": "D", "pos": 377, "right": "Y"},
+                {"gene": "ORF3a", "left": "S", "pos": 26, "right": "L"},
+                {"gene": "ORF7a", "left": "V", "pos": 82, "right": "A"},
+                {"gene": "ORF7a", "left": "T", "pos": 120, "right": "I"},
+                {"gene": "ORF7b", "left": "T", "pos": 40, "right": "I"},
+                {"gene": "ORF8", "left": "D", "pos": 119, "right": "-"},
+                {"gene": "ORF8", "left": "F", "pos": 120, "right": "-"},
+                {"gene": "ORF9b", "left": "T", "pos": 60, "right": "A"}
+            ],
+            "synonymous": [
+                {"left": "G", "pos": 210, "right": "T"},
+                {"left": "C", "pos": 241, "right": "T"},
+                {"left": "C", "pos": 3037, "right": "T"},
+                {"left": "C", "pos": 8986, "right": "T"},
+                {"left": "A", "pos": 11332, "right": "G"},
+                {"left": "A", "pos": 28271, "right": "-"},
+                {"left": "G", "pos": 29742, "right": "T"}
+            ],
+        },
+    },
+
+    "21K.Omicron": { #S.T572I - 23277T
+        "snps": [25000,25584,8393], #25000T,25584T,8393A
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": True,
+        "type": "variant",
+        "important": True,
+        "country_info": [],
+        "col": "#A366A3",
+        "display_name": "21K (Omicron)",
+        "build_name": "21K.Omicron",
+        "who_name": ["Omicron"],
+        "old_build_names": ["21K"],
+        "alt_display_name": ["BA.1"],
+        "nextstrain_name": "21K",
+        "pango_lineages": [
+            {"name": "BA.1", "url": "https://cov-lineages.org/lineages/lineage_BA.1.html"},
+        ],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K.Omicron",
+        "mutations": {
+            "nonsynonymous": [
+                {"gene": "S", "left": "A", "pos": 67, "right": "V"},
+                {"gene": "S", "left": "H", "pos": 69, "right": "-"},
+                {"gene": "S", "left": "V", "pos": 70, "right": "-"},
+                {"gene": "S", "left": "T", "pos": 95, "right": "I"},
+                {"gene": "S", "left": "G", "pos": 142, "right": "-"},
+                {"gene": "S", "left": "V", "pos": 143, "right": "-"},
+                {"gene": "S", "left": "Y", "pos": 144, "right": "-"},
+                {"gene": "S", "left": "Y", "pos": 145, "right": "D"},
+                {"gene": "S", "left": "N", "pos": 211, "right": "-"},
+                {"gene": "S", "left": "L", "pos": 212, "right": "I"},
+                {"gene": "S", "left": "G", "pos": 339, "right": "D"},
+                {"gene": "S", "left": "S", "pos": 371, "right": "L"},
+                {"gene": "S", "left": "S", "pos": 373, "right": "P"},
+                {"gene": "S", "left": "S", "pos": 375, "right": "F"},
+                {"gene": "S", "left": "K", "pos": 417, "right": "N"},
+                {"gene": "S", "left": "N", "pos": 440, "right": "K"},
+                {"gene": "S", "left": "G", "pos": 446, "right": "S"},
+                {"gene": "S", "left": "S", "pos": 477, "right": "N"},
+                {"gene": "S", "left": "T", "pos": 478, "right": "K"},
+                {"gene": "S", "left": "E", "pos": 484, "right": "A"},
+                {"gene": "S", "left": "Q", "pos": 493, "right": "R"},
+                {"gene": "S", "left": "G", "pos": 496, "right": "S"},
+                {"gene": "S", "left": "Q", "pos": 498, "right": "R"},
+                {"gene": "S", "left": "N", "pos": 501, "right": "Y"},
+                {"gene": "S", "left": "Y", "pos": 505, "right": "H"},
+                {"gene": "S", "left": "T", "pos": 547, "right": "K"},
+                {"gene": "S", "left": "D", "pos": 614, "right": "G"},
+                {"gene": "S", "left": "H", "pos": 655, "right": "Y"},
+                {"gene": "S", "left": "N", "pos": 679, "right": "K"},
+                {"gene": "S", "left": "P", "pos": 681, "right": "H"},
+                {"gene": "S", "left": "N", "pos": 764, "right": "K"},
+                {"gene": "S", "left": "D", "pos": 796, "right": "Y"},
+                {"gene": "S", "left": "N", "pos": 856, "right": "K"},
+                {"gene": "S", "left": "Q", "pos": 954, "right": "H"},
+                {"gene": "S", "left": "N", "pos": 969, "right": "K"},
+                {"gene": "S", "left": "L", "pos": 981, "right": "F"},
+                {"gene": "N", "left": "P", "pos": 13, "right": "L"},
+                {"gene": "N", "left": "E", "pos": 31, "right": "-"},
+                {"gene": "N", "left": "R", "pos": 32, "right": "-"},
+                {"gene": "N", "left": "S", "pos": 33, "right": "-"},
+                {"gene": "N", "left": "R", "pos": 203, "right": "K"},
+                {"gene": "N", "left": "G", "pos": 204, "right": "R"},
+                {"gene": "ORF1a", "left": "K", "pos": 856, "right": "R"},
+                {"gene": "ORF1a", "left": "S", "pos": 2083, "right": "-"},
+                {"gene": "ORF1a", "left": "L", "pos": 2084, "right": "I"},
+                {"gene": "ORF1a", "left": "A", "pos": 2710, "right": "T"},
+                {"gene": "ORF1a", "left": "T", "pos": 3255, "right": "I"},
+                {"gene": "ORF1a", "left": "P", "pos": 3395, "right": "H"},
+                {"gene": "ORF1a", "left": "L", "pos": 3674, "right": "-"},
+                {"gene": "ORF1a", "left": "S", "pos": 3675, "right": "-"},
+                {"gene": "ORF1a", "left": "G", "pos": 3676, "right": "-"},
+                {"gene": "ORF1a", "left": "I", "pos": 3758, "right": "V"},
+                {"gene": "ORF1b", "left": "P", "pos": 314, "right": "L"},
+                {"gene": "ORF1b", "left": "I", "pos": 1566, "right": "V"},
+                {"gene": "ORF9b", "left": "P", "pos": 10, "right": "S"},
+                {"gene": "ORF9b", "left": "E", "pos": 27, "right": "-"},
+                {"gene": "ORF9b", "left": "N", "pos": 28, "right": "-"},
+                {"gene": "ORF9b", "left": "A", "pos": 29, "right": "-"},
+                {"gene": "E", "left": "T", "pos": 9, "right": "I"},
+                {"gene": "M", "left": "D", "pos": 3, "right": "G"},
+                {"gene": "M", "left": "Q", "pos": 19, "right": "E"},
+                {"gene": "M", "left": "A", "pos": 63, "right": "T"},
+            ],
+            "synonymous": [
+                {"left": "C", "pos": 241, "right": "T"},
+                {"left": "C", "pos": 3037, "right": "T"},
+                {"left": "T", "pos": 5386, "right": "G"},
+                {"left": "T", "pos": 13195, "right": "C"},
+                {"left": "C", "pos": 15240, "right": "T"},
+                {"left": "C", "pos": 25000, "right": "T"},
+                {"left": "C", "pos": 25584, "right": "T"},
+                {"left": "A", "pos": 27259, "right": "C"},
+                {"left": "C", "pos": 27807, "right": "T"},
+                {"left": "A", "pos": 28271, "right": "T"},
+            ],
+        },
+     },
+
+    #21K.21L together
+    "21K.21L": { 
+        "snps": [22679, 23040, 23604], # 22679C, 23040G, 23604A
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "important": False,
+        "other_nextstrain_names": ["21K (Omicron)", "21L"],
+        "country_info": [], 'col': "#b3d9ff", 
+        "display_name": "21K.21L",
+        "type": "do_not_display",
+        "build_name": "21K.21L",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K.21L"
+    },
+
+    # Sister clade to 21K - TBD if Omicron
+    "21L": {
+        "snps": [21618,22775,23525], # S21618T, 22775A, 23525T
+        "cluster_data": [],  
+        "nextstrain_build": True,
+        "type": "do_not_display",
+        "graphing": False,
+        "important": False,
+        "country_info": [],
+        "col": "#cfafcf",
+        "display_name": "21L",
+        "alt_display_name": ["21L"],
+        #"other_nextstrain_names": ["21A (Delta)","21J (Delta)","21I (Delta)"],
+        "build_name": "21L",
+        "old_build_names": ["21L"],
+        "nextstrain_name": "21L",
+        "pango_lineages": [
+            {"name": "BA.2", "url": "https://cov-lineages.org/lineage.html?lineage=BA.2"}
+        ],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21L",
+        "mutations": {}
+    },
+
+    # variant  -- part of 'Indian' in media - B.1.617.1 
+    "Kappa": {
+        "snps": [17523, 23604, 22917], #ORF1b:1352, S:681, 452 
+        "cluster_data": [],  
+        "nextstrain_build": True,
+        "type": "variant",
+        "graphing": True,
+        "important": False,
+        "country_info": [],
+        "col": "#A3FFD1",
         "display_name": "21B (Kappa)",
         "alt_display_name": ["21A/S:154K"],
         "build_name": "21B.Kappa",
@@ -306,7 +559,7 @@ clusters = {
 
     # 'not-called-nigerian variant' B.1.525
     # 21D Eta
-    "20AS484": {
+    "Eta": {
         "snps": [8593, 23012, 24224],
         "cluster_data": [],  # nuc 8593 S 484, 888
         "nextstrain_build": True,
@@ -368,13 +621,13 @@ clusters = {
 
     # "new york variant"
     # 21F Iota
-    "20CS484": {
+    "Iota": {
         "snps": [21575, 9867, 1059],
         "cluster_data": [],  # S5, ORF1a 3201, 265 -- 484 is 23012 (1-based)
         "nextstrain_build": True,
         "graphing": True,
         "type": "variant",
-        "important": True,
+        "important": False,
         "country_info": [],
         "col": "#FFC2FF",
         "display_name": "21F (Iota)",
@@ -480,25 +733,25 @@ clusters = {
         },
     },
 
-    # B.1.621 - build only
+    # B.1.621 - Mu
     "21H": {
         "snps": [22599, 4878, 17491], #S 346 (22599A)  ORF1a: 1538 (4878T) nuc: 17491T
         "cluster_data": [],  
         "nextstrain_build": True,
         "graphing": True,
         "type": "variant",
-        "important": False,
+        "important": True,
         "country_info": [],
         "col": "#f4dc81",
-        "display_name": "21H",
-        "build_name": "21H",
-        "old_build_names": [],
-        "who_name": [],
-        "nextstrain_name": "21H",
+        "display_name": "21H (Mu)",
+        "build_name": "21H.Mu",
+        "old_build_names": ["21H"],
+        "who_name": ["Mu"],
+        "nextstrain_name": "21H (Mu)",
         "pango_lineages": [
             {"name": "B.1.621", "url": None}
         ],
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21H",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21H.Mu",
         "mutations": {
             "nonsynonymous": [
                 {'gene': 'S', 'left': 'T', 'pos': 95, 'right': 'I'},
@@ -538,11 +791,11 @@ clusters = {
         },
     },
 
-    # B.1.1.519 - build only
+    # B.1.1.519 - builds turned of 11 Oct, graphing continues
     "20BS732": {
         "snps": [10029, 23756, 21306], #ORF1a  3255 (10029T)   S: 732 (23756G) nuc 21306T
         "cluster_data": [],  
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -584,11 +837,11 @@ clusters = {
         },
     },
 
-    #B.1.620 20A/S:126A
+    #B.1.620 20A/S:126A - builds turned off 11 Oct, graphing continues
     "20AS126": {
         "snps": [21939, 1473, 6236], #S: 126 (21939C)  #ORF1a: 403 (1473T), 1991 (6236A)
         "cluster_data": [],  
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -598,7 +851,6 @@ clusters = {
         "build_name": "20A.S.126A",
         "old_build_names": [],
         "who_name": [],
-        "nextstrain_name": "",
         "pango_lineages": [
             {"name": "B.1.620", "url": None}
         ],
@@ -645,13 +897,13 @@ clusters = {
     },
 
 
-    "S222": {
+    "EU1": {
         "snps": [22227, 28932, 29645],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
-        "important": True,
+        "important": False,
         "country_info": [],
         "col": "#FFBB8B",
         "display_name": "20E (EU1)",
@@ -678,15 +930,15 @@ clusters = {
     },
 
     # 'CA variant'
-    "S452": {
+    "Epsilon": {
         "snps": [21600, 22018, 22917],
         "cluster_data": [],  #'CA' variant
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": False,
         "country_info": [],
-        "col": "#A366A3",
+        "col": "#e2cfe2",
         "display_name": "21C (Epsilon)",
         "alt_display_name": ["20C/S:452R"],
         "build_name": "21C.Epsilon",
@@ -721,7 +973,7 @@ clusters = {
     "S439": {
         "snps": [7767, 22879],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -819,10 +1071,10 @@ clusters = {
         },
     },
 
-    "S477": {
+    "EU2": {
         "snps": [22992, 4543],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -857,7 +1109,7 @@ clusters = {
     "S98": {
         "snps": [21855, 25505],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -928,7 +1180,7 @@ clusters = {
         "type": "variant",
         "important": False,
         "country_info": [],
-        "col": "#A3FFD1",
+        "col": "#b3e6ff",
         "display_name": "20B/S:626S",
         "build_name": "S.A626S",
         "pango_lineages": [
@@ -1249,31 +1501,183 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Mockingbird?c=gt-S_677&f_country=USA",
     },
 
+#    "Delta.N.412R": { # 613 cluster expanding in canada? #stopped 11 Oct 21
+#        "snps": [2401,23401,26763,29507], #ORF1a: 712Q (2401A), S: 613H (23401T), M: 81S (26763T), N: 412R (29507C)
+#        "cluster_data": [],
+#        "nextstrain_build": True,
+#        "graphing": False,
+#        "important": False,
+#        "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+N:412R",
+#        "type": "do_not_display",
+#        "build_name": "Delta.N.412R",
+#        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.N.412R?c=gt-S_613"
+#    },
+
+    "Delta.299I": { # "AY.33" - has Spike T29A, T250I, T299I and Q613H
+        "snps": [4181,21647,22311,22458,23401], #ORF1a: 1306S (4181T), S: 29A (21647G), 250I (22311T), 299I (22458T), 613H (23401T)
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "important": False,
+        "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+299I",
+        "type": "do_not_display",
+        "build_name": "Delta.299I",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.299I?c=gt-S_299"
+    },
+
+    "Delta.250I": { # cornelius' larger cluster - key one has Spike T29A, T250I, T299I and then Q613H
+        "snps": [4181,21647,22311], #ORF1a: 1306S (4181T), S: 29A (21647G), 250I (22311T) 
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "important": False,
+        "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+250I",
+        "type": "do_not_display",
+        "build_name": "Delta.250I",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.250I?c=gt-S_250"
+    },
+
+    #AY.4.2 - up to 10% in UK - cornelius
+    "Delta.145H": { # OF1a:2529v + S:222V + S:145H (in some)
+        "snps": [22227, 17040, 7851], # 22227T (S:222V), 17040C (syn), 7851T (ORF1a:2529V)
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "important": False,
+        "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+145H",
+        "type": "do_not_display",
+        "build_name": "Delta.145H",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.145H?c=gt-S_145,222"
+    },
+
+    #AY.34 - possible rise Italy? - cornelius
+    "Delta.ORF1a3059F": { # 
+        "snps": [23593, 9441, 22498], # S:677H (23593C), ORF1a:3059F (9441T) nuc: C22498T , ####26109A, 26681T, 27014T
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "important": False,
+        "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+ORF1a3059F",
+        "type": "do_not_display",
+        "build_name": "Delta.ORF1a3059F",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.ORF1a3059F?c=gt-ORF1a_3059"
+    },
+
+    #additional mutation builds with no pages (yet?)
+
+    "S613": { #613H - 23401T
+        "snps": [23401],
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "type": "do_not_display",
+        "important": False,
+        "country_info": [],
+        "col": "#ff8080",
+        "display_name": "S:Q613",
+        "build_name": "S.Q613",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q613?c=gt-S_613",  # color
+    },
+    "S_222": { #S.A222V - 22227T
+        "snps": [22227],
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "type": "do_not_display",
+        "important": False,
+        "country_info": [],
+        "col": "#ff8080",
+        "display_name": "S:A222",
+        "build_name": "S.A222",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.A222?c=gt-S_222",  # color
+    },
+    "S145": { #S.Y145H - 21995C
+        "snps": [21995],
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "type": "do_not_display",
+        "important": False,
+        "country_info": [],
+        "col": "#ff8080",
+        "display_name": "S:Y145",
+        "build_name": "S.Y145",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y145?c=gt-S_145",  # color
+    },
+    "S572": { #S.T572I - 23277T
+        "snps": [23277],
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "type": "do_not_display",
+        "important": False,
+        "country_info": [],
+        "col": "#ff8080",
+        "display_name": "S:T572",
+        "build_name": "S.T572",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.T572?c=gt-S_572",  # color
+    },
+
+
+
+ #  "Orf1b813": { #S.T572I - 23277T
+ #      "snps": [15904, 18904], #813H, 1813H
+ #      "cluster_data": [],
+ #      "nextstrain_build": True,
+ #      "graphing": False,
+ #      "type": "do_not_display",
+ #      "important": False,
+ #      "country_info": [],
+ #      "col": "#ff8080",
+ #      "display_name": "Orf1b:Q813H",
+ #      "build_name": "Orf1b.Q813H",
+ #      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Orf1b.Q813H?c=gt-ORF1b_813,1813",  # color
+ #  },
+    
+
+    # build for Delta and Kappa -- retired 11/11/21
+#    "21AS154S478":{
+#        "snps": [29402, 22917, 14408], # N377, S452. ORF1b 314
+#        "cluster_data": [],  
+#        "nextstrain_build": True,
+#        "type": "do_not_display",
+#        "graphing": False,
+#        "important": False,
+#        "country_info": [],
+#        "col": "#009900",
+#        "display_name": "21A/21B",
+#        "build_name": "21A.21B",
+#        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.21B",
+#    },
+
     #B.1.1.318 - prominent in Greece
-    "S796": {'snps': [23604,23948,9072], #A/C/T
-    "cluster_data": [], 
-    "build_name": "20B.S.796H", 
-    "display_name": "20B/S:796H",
-    "nextstrain_build": True, 
-    "graphing": False, 
-    "important": False,
-    "type": "do_not_display",
-    "country_info": [],
-    "col": "#b3d9ff",
-    "nextstrain_url": ""},
+    # Turned off 11 Oct 2021 as few recent sequences
+#    "S796": {'snps': [23604,23948,9072], #A/C/T
+#    "cluster_data": [], 
+#    "build_name": "20B.S.796H", 
+#    "display_name": "20B/S:796H",
+#    "nextstrain_build": True, 
+#    "graphing": False, 
+#    "important": False,
+#    "type": "do_not_display",
+#    "country_info": [],
+#    "col": "#b3d9ff",
+#    "nextstrain_url": ""},
 
     #B.1.619 - recent expansion in S Korea
-    "S210": {'snps': [8311,9319], #T/T
-    "cluster_data": [], 
-    "build_name": "20A.S.210T", 
-    "display_name": "20A/S:210T",
-    "nextstrain_build": True, 
-    "graphing": False, 
-    "important": False,
-    "type": "do_not_display",
-    "country_info": [],
-    "col": "#b3d9ff",
-    "nextstrain_url": ""}
+    # Turned off 11 Oct 2021 as few recent sequences
+#    "S210": {'snps': [8311,9319], #T/T
+#    "cluster_data": [], 
+#    "build_name": "20A.S.210T", 
+#    "display_name": "20A/S:210T",
+#    "nextstrain_build": False, 
+#    "graphing": False, 
+#    "important": False,
+#    "type": "do_not_display",
+#    "country_info": [],
+#    "col": "#b3d9ff",
+#    "nextstrain_url": ""},
+
 
     #"21H.417": { #21H + 417
     #    "snps": [22599, 4878, 17491, 22813], #S 346 (22599A)  ORF1a: 1538 (4878T) nuc: 17491T, S:417

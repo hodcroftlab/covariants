@@ -1,5 +1,7 @@
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 
+_Note that as of 2 Sept 2021, the Nextstrain build is no longer being regularly updated, as there is little ongoing circulation. It will continue to be tracked in the graphs._
+
 ### 20A/S:439K
 
 About 2/3 of the sequences in this variant have deletions at Spike amino-acid positions 69 and 70 ([Nextstrain build with S:69- deletion in the variant highlighted](https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_69&label=clade:S.N439K); see <Mut name="S:H69-"/> page)

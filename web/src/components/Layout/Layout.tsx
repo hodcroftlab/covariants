@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from 'react'
+import { ChangelogButton } from 'src/components/Common/ChangelogButton'
 
 import styled from 'styled-components'
 import { Container as ContainerBase, Row, Col } from 'reactstrap'
@@ -29,7 +30,6 @@ const HeaderCol = styled(Col)`
 `
 
 const MainContainer = styled(ContainerBase)`
-  overflow: hidden;
   padding-bottom: 100px;
 `
 
@@ -85,7 +85,9 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
             </LinkExternal>
           </GisaidText>
 
-          <LastUpdated className="d-flex ml-auto" />
+          <ChangelogButton className="d-flex ml-auto">
+            <LastUpdated className="d-flex ml-auto" />
+          </ChangelogButton>
         </Col>
       </Row>
 

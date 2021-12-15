@@ -203,6 +203,7 @@ otherwise. Thanks goes to these wonderful people ([emoji key](https://allcontrib
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/richardgoater"><img src="https://avatars.githubusercontent.com/u/1429721?v=4?s=75" width="75px;" alt=""/><br /><sub><b>Richard Goater</b></sub></a><br /><a href="https://github.com/hodcroftlab/covariants/commits?author=richardgoater" title="Code">💻</a> <a href="#design-richardgoater" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/rajivshah3"><img src="https://avatars.githubusercontent.com/u/19519564?v=4?s=75" width="75px;" alt=""/><br /><sub><b>Rajiv Shah</b></sub></a><br /><a href="#content-rajivshah3" title="Content">🖋</a></td>
   </tr>
 </table>
 

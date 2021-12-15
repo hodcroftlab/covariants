@@ -69,7 +69,7 @@ export function Placeholder() {
         <Col>
           <p>
             {'Consider '}
-            <LinkExternal href={`${URL_GITHUB}/tree/master/content/clusters/proteins`}>
+            <LinkExternal href={`${URL_GITHUB}/tree/master/web/public/proteins/gif`}>
               {'contributing on Github'}
             </LinkExternal>
           </p>

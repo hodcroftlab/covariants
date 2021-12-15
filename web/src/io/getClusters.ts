@@ -13,9 +13,7 @@ export type ClusterDatum = {
   build_name: string
   old_build_names?: string[]
   nextstrain_url?: string
-  cluster_data: unknown[]
   col: string
-  country_info: unknown[]
   display_name: string
   alt_display_name?: string[]
   snps: number[]

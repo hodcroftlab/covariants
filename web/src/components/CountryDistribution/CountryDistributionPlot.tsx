@@ -6,23 +6,15 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { DateTime } from 'luxon'
 import ReactResizeDetector from 'react-resize-detector'
 
+import type { CountryDistributionDatum } from 'src/io/getPerCountryData'
 import { theme } from 'src/theme'
 import { ticks, timeDomain } from 'src/io/getParams'
 import { CLUSTER_NAME_OTHERS, getClusterColor } from 'src/io/getClusters'
 import { formatDateHumanely, formatProportion } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
-
 import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
 import { ChartContainerOuter, ChartContainerInner } from 'src/components/Common/PlotLayout'
 import { CountryDistributionPlotTooltip } from './CountryDistributionPlotTooltip'
-
-export interface CountryDistributionDatum {
-  week: string
-  total_sequences: number
-  cluster_counts: {
-    [key: string]: number | undefined
-  }
-}
 
 export interface CountryDistributionPlotProps {
   cluster_names: string[]
