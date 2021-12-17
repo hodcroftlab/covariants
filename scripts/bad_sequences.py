@@ -1350,6 +1350,13 @@ bad_seqs = {
     "Kenya/K15865/2020" : "2020-06-23", #kappa
     "USA/WY-WYPHL-20125142/2020" : "2020-11-07", #delta
     "USA/WY-WYPHL-20133773/2020" : "2020-11-12", #delta
+    "USA/TX-HMH-MCoV-50548/2020" : "2020-07-17", #delta
+    "Canada/QC-1nIEOQ-15782162/2020" : "2020-06-02", #alpha
+    "Canada/QC-1nIUM-T5101165/2020" : "2020-07-10", #alpha
+    "Canada/QC-1nMCY-S1130690/2020" : "2020-05-13", #alpha
+    "Canada/QC-1nMCY-S1142592/2020" : "2020-05-14", #alpha
+    "Canada/QC-1nMCY-S1180495/2020" : "2020-05-18", #alpha
+    "Canada/QC-1nIOU-98053431/2020" : "2020-06-05", #EU2
 
     # Omicron with bad date:
     "SouthAfrica/NICD-N01333/2021" : "2021-01-05", #omicron
