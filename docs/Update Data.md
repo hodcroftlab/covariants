@@ -6,7 +6,7 @@ These files are automatically generated using [`scripts/convert_to_web_app_json.
 
 In turn, files in `cluster_tables/` are generated (incrementally) using the remaining scripts in the [`scripts/`](/scripts) directory. See data curator guide for more details.
 
-In order to modify the data in the web application, one should modify and run the necessary scripts and then the conversion script. The produced files will them be available to the web application.
+In order to modify the data in the web application, one should modify and run the necessary scripts and then the conversion script. The produced files will then be available to the web application.
 
 See also:
 
