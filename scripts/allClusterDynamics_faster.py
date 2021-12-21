@@ -121,7 +121,7 @@ def get_summary(cluster_meta, observed_countries, division=False):
 def print_date_alerts(clus):
     print(clus)
     print(f"Expected date: {cluster_first_dates[clus]['first_date']}")
-    print(alert_first_date[clus][['strain','date']])
+    print(alert_first_date[clus][['strain','date','gisaid_epi_isl']])
 
 def print_all_date_alerts():
     for clus in alert_first_date.keys():
