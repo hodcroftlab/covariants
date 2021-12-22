@@ -1357,12 +1357,21 @@ bad_seqs = {
     "Canada/QC-1nMCY-S1142592/2020" : "2020-05-14", #alpha
     "Canada/QC-1nMCY-S1180495/2020" : "2020-05-18", #alpha
     "Canada/QC-1nIOU-98053431/2020" : "2020-06-05", #EU2
+    "USA/TX-HMH-MCoV-44786/2020" : "2020-07-27", #alpha
+    "USA/TX-HMH-MCoV-45577/2020" : "2020-07-30", #alpha
+    "USA/TX-HMH-MCoV-50489/2020" : "2020-07-18", #delta
+    "USA/TX-HMH-MCoV-49627/2020" : "2020-07-13", #delta
+    "USA/TX-HMH-MCoV-50577/2020" : "2020-07-17", #delta
+    "Belgium/rega-0912938/2020" : "2020-09-12", #delta
+    "USA/LA-FUS0021A33/2020" : "2020-05-12", #delta
 
     # Omicron with bad date:
     "SouthAfrica/NICD-N01333/2021" : "2021-01-05", #omicron
     "SouthAfrica/NICD-N22599/2021" : "2021-09-04", #omicron
     "SouthAfrica/NICD-N22601/2021" : "2021-08-16", #omicron
     "SouthAfrica/NICD-N22603/2021" : "2021-08-16", #omicron
+    "Italy/LOM_Policlinico_Milano_18972196/2021" : "2021-10-13", #omicron
+    "Italy/LOM_Policlinico_Milano_18972245/2021" : "2021-10-13", #omicron
 
     # Bad sequences from Germany - supposedly Delta in Oct 2020 - unlikely
     "Germany/NW-RKI-I-291769/2020" : "2020-10-13", #delta
