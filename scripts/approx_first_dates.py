@@ -19,7 +19,7 @@ cluster_first_dates = {
     "Eta": {"first_date": "2020-11-21"}, #Eta
     "Iota": {"first_date": "2020-11-10"}, #Iota
     "21GLambda": {"first_date": "2020-11-05"}, # Lambda
-    "21H": {"first_date": "2021-01-05"}, # B.1.621
+    "21H": {"first_date": "2020-12-10"}, # B.1.621
     "20BS732": {"first_date": "2020-10-01"}, #B.1.1.519
     "20AS126": {"first_date": "2021-01-15"}, #B.1.620
     "S677HRobin1": {"first_date": "2020-06-01"},
