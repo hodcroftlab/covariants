@@ -1368,6 +1368,9 @@ bad_seqs = {
     "USA/CA-SEARCH-58338/2020" : "2020-01-26", #epsilon
     "USA/TX-HMH-MCoV-50023/2020" : "2020-07-16", #delta
 
+    #Omicron with bad dates
+    "Italy/LOM_Policlinico_Milano_18972196/2021" : "2021-10-13", #omicron
+    "Italy/LOM_Policlinico_Milano_18972245/2021" : "2021-10-13", #omicron
     # Omicron with maybe? bad date:
     "SouthAfrica/NICD-N01333/2021" : "2021-01-05", #omicron
     "SouthAfrica/NICD-N22599/2021" : "2021-09-04", #omicron
@@ -1375,9 +1378,40 @@ bad_seqs = {
     "SouthAfrica/NICD-N22603/2021" : "2021-08-16", #omicron
     "SouthAfrica/NICD-N22621/2021" : "2021-09-30", #omicron
     "SouthAfrica/NICD-N22894/2021" : "2021-10-12", #omicron
-    #Omicron with bad dates
-    "Italy/LOM_Policlinico_Milano_18972196/2021" : "2021-10-13", #omicron
-    "Italy/LOM_Policlinico_Milano_18972245/2021" : "2021-10-13", #omicron
+    #Omicron with very suspicous dates - month-day mixup?
+    "Brazil/SP-IAL-7587/2021" : "2021-10-12", #omicron
+    "Portugal/PT23485/2021" : "2021-02-13", #omicron
+    "Portugal/PT23486/2021" : "2021-02-13", #omicron
+    "Portugal/PT23487/2021" : "2021-02-13", #omicron
+    "Zambia/ZMB-128118/2021" : "2021-02-12", #omicron
+    "Zambia/ZMB-128132/2021" : "2021-02-12", #omicron
+    "Zambia/ZMB-128338/2021" : "2021-01-12", #omicron
+    "Zambia/ZMB-128347/2021" : "2021-02-12", #omicron
+    "Zambia/ZMB-128414/2021" : "2021-02-12", #omicron
+    "Zambia/ZMB-128476/2021" : "2021-07-12", #omicron
+    "Zambia/ZMB-128620/2021" : "2021-08-12", #omicron
+    "Zambia/ZMB-128629/2021" : "2021-06-12", #omicron
+    "Zambia/ZMB-128631/2021" : "2021-07-12", #omicron
+    "Zambia/ZMB-128632/2021" : "2021-08-12", #omicron
+    "Zambia/ZMB-128638/2021" : "2021-08-12", #omicron
+    "Zambia/ZMB-128639/2021" : "2021-09-12", #omicron
+    "Zambia/ZMB-128641/2021" : "2021-05-12", #omicron
+    "Zambia/ZMB-128642/2021" : "2021-05-12", #omicron
+    "Zambia/ZMB-128645/2021" : "2021-09-12", #omicron
+    "Zambia/ZMB-128656/2021" : "2021-09-12", #omicron
+    "Zambia/ZMB-128657/2021" : "2021-09-12", #omicron
+    "Zambia/ZMB-128678/2021" : "2021-09-12", #omicron
+    "Zambia/ZMB-128680/2021" : "2021-09-12", #omicron
+    "Zambia/ZMB-128843/2021" : "2021-07-12", #omicron
+    "Zambia/ZMB-128868/2021" : "2021-04-12", #omicron
+    "Zambia/ZMB-128870/2021" : "2021-07-12", #omicron
+    "Zambia/ZMB-128871/2021" : "2021-06-12", #omicron
+    "Zambia/ZMB-129008/2021" : "2021-10-12", #omicron
+    "Zambia/ZMB-129024/2021" : "2021-10-12", #omicron
+    "Zambia/ZMB-129057/2021" : "2021-07-12", #omicron
+    "Zambia/ZMB-129064/2021" : "2021-09-12", #omicron
+    "Zambia/ZMB-129159/2021" : "2021-10-12", #omicron
+    "Zambia/ZMB-129162/2021" : "2021-10-12", #omicron
 
     # Bad sequences from Germany - supposedly Delta in Oct 2020 - unlikely
     "Germany/NW-RKI-I-291769/2020" : "2020-10-13", #delta
