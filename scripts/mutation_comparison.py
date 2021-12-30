@@ -54,7 +54,7 @@ mutation_comparison = {
             "S:T478K",
             "S:D614G",
             "S:P681R",
-            "S:D950N"
+            "S:D950N",
         ]
     },
     "21B (Kappa)\n(B.1.617.1)": {
@@ -64,7 +64,7 @@ mutation_comparison = {
             "S:E484Q",
             "S:D614G",
             "S:P681R",
-            "S:Q1071H"
+            "S:Q1071H",
         ]
     },
     "21K (Omicron)\n(BA.1)": {
@@ -104,7 +104,7 @@ mutation_comparison = {
             "S:N856K",
             "S:Q954H",
             "S:N969K",
-            "S:L981F"
+            "S:L981F",
         ]
     },
     "21L\n(BA.2)": {
@@ -142,7 +142,7 @@ mutation_comparison = {
             "S:N764K",
             "S:D796Y",
             "S:Q954H",
-            "S:N969K"
+            "S:N969K",
         ]
     },
     "21D (Eta)\n(B.1.525)": {
@@ -158,9 +158,7 @@ mutation_comparison = {
             "S:F888L",
         ]
     },
-    "21F (Iota)\n(B.1.526)": {
-        "nonsynonymous": ["S:L5F", "S:T95I", "S:D253G", "S:E484K", "S:D614G", "S:A701V"]
-    },
+    "21F (Iota)\n(B.1.526)": {"nonsynonymous": ["S:L5F", "S:T95I", "S:D253G", "S:E484K", "S:D614G", "S:A701V"]},
     "21G (Lambda)\n(C.37)": {
         "nonsynonymous": [
             "S:G75V",
@@ -192,24 +190,23 @@ mutation_comparison = {
             "S:D950N",
         ]
     },
-#    "20A/S:126A\n(B.1.620)": {
-#        "nonsynonymous": [
-#            "S:P26S",
-#            "S:H69-",
-#            "S:V70-",
-#            "S:V126A",
-#            "S:Y144-",
-#            "S:L241-",
-#            "S:L242-",
-#            "S:A243-",
-#            "S:H245Y",
-#            "S:S477N",
-#            "S:E484K",
-#            "S:D614G",
-#            "S:P681H",
-#            "S:T1027I",
-#            "S:D1118H",
-#        ]
-#    },
-
+    #    "20A/S:126A\n(B.1.620)": {
+    #        "nonsynonymous": [
+    #            "S:P26S",
+    #            "S:H69-",
+    #            "S:V70-",
+    #            "S:V126A",
+    #            "S:Y144-",
+    #            "S:L241-",
+    #            "S:L242-",
+    #            "S:A243-",
+    #            "S:H245Y",
+    #            "S:S477N",
+    #            "S:E484K",
+    #            "S:D614G",
+    #            "S:P681H",
+    #            "S:T1027I",
+    #            "S:D1118H",
+    #        ]
+    #    },
 }

@@ -95,9 +95,7 @@ clus_to_run = ["S222"]
 reask = True
 
 while reask:
-    clus_answer = input(
-        "\nWhat cluster to run? (Enter for S222) Type 'all' for all, type 'all mink' for all+mink: "
-    )
+    clus_answer = input("\nWhat cluster to run? (Enter for S222) Type 'all' for all, type 'all mink' for all+mink: ")
     if len(clus_answer) != 0:
         if clus_answer in clusters.keys():
             print(f"Using {clus_answer}\n")
@@ -125,7 +123,7 @@ if print_files and "all" in clus_answer:
         fh.write(
             "# Overview of Clusters/Mutations in Europe\n"
             "[Overview of proportion of clusters in selected countries](country_overview.md)\n\n"
-            "In the graphs below, countries are displayed in the chart if the country has at least 20 sequences present in the cluster.\n\n"
+            "In the graphs below, countries are displayed in the chart if the country has at least 20 sequences present in the cluster.\n\n"  # noqa: E501
             "# Mutation Tables and Graphs\n"
             "- [20A.EU1](#20aeu1) _(S:A222V)_ \n"
             "- [20A.EU2](#20aeu2) _(S:S477N)_ \n"
@@ -153,8 +151,8 @@ for clus in clus_to_run:
         mink_meta = meta[meta["host"].apply(lambda x: x == "Mink")]
         wanted_seqs = list(mink_meta["strain"])
 
-        clusterlist_output = cluster_path + f"/clusters/cluster_mink.txt"
-        out_meta_file = cluster_path + f"/cluster_info/cluster_mink_meta.tsv"
+        clusterlist_output = cluster_path + "/clusters/cluster_mink.txt"
+        out_meta_file = cluster_path + "/cluster_info/cluster_mink_meta.tsv"
 
     else:
         clus_display = clusters[clus]["build_name"]
@@ -172,13 +170,8 @@ for clus in clus_to_run:
         else:
             exclude_snps = []
 
-        clusterlist_output = (
-            cluster_path + f'/clusters/cluster_{clusters[clus]["build_name"]}.txt'
-        )
-        out_meta_file = (
-            cluster_path
-            + f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
-        )
+        clusterlist_output = cluster_path + f'/clusters/cluster_{clusters[clus]["build_name"]}.txt'
+        out_meta_file = cluster_path + f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
 
         # get the sequences that we want - which are 'part of the cluster:
         wanted_seqs = []
@@ -189,24 +182,15 @@ for clus in clus_to_run:
             gaplist = row["gap_list"]
 
             # look for occurance of snp(s) *without* some other snp(s) (to exclude a certain group)
-            if (
-                snps
-                and not pd.isna(snplist)
-                and exclude_snps
-                and not pd.isna(exclude_snps)
-            ):
+            if snps and not pd.isna(snplist) and exclude_snps and not pd.isna(exclude_snps):
                 intsnp = [int(x) for x in snplist.split(",")]
-                if all(x in intsnp for x in snps) and all(
-                    x not in intsnp for x in exclude_snps
-                ):
+                if all(x in intsnp for x in snps) and all(x not in intsnp for x in exclude_snps):
                     wanted_seqs.append(row["strain"])
 
             elif snps and not pd.isna(snplist):
                 intsnp = [int(x) for x in snplist.split(",")]
                 # this looks for all SNPs in 'snps' OR all in 'snps2' (two nucs that affect same AA, for example)
-                if all(x in intsnp for x in snps) or (
-                    all(x in intsnp for x in snps2) and len(snps2) != 0
-                ):
+                if all(x in intsnp for x in snps) or (all(x in intsnp for x in snps2) and len(snps2) != 0):
                     # if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
                     wanted_seqs.append(row["strain"])
             # look for all locations in gap list
@@ -318,19 +302,12 @@ for clus in clus_to_run:
 
     # Make a version of N501 which does not have as much UK sequences for increased viewability
     if clus == "S501":
-        nouk_501_meta = cluster_meta[
-            cluster_meta["country"].apply(lambda x: x != "United Kingdom")
-        ]
+        nouk_501_meta = cluster_meta[cluster_meta["country"].apply(lambda x: x != "United Kingdom")]
         # re-set wanted_seqs
         extra501_wanted_seqs = list(nouk_501_meta["strain"])
 
-        noUK_clusterlist_output = (
-            cluster_path + f'/clusters/cluster_{clusters[clus]["build_name"]}-noUK.txt'
-        )
-        noUK_out_meta_file = (
-            cluster_path
-            + f'/cluster_info/cluster_{clusters[clus]["build_name"]}-noUK_meta.tsv'
-        )
+        noUK_clusterlist_output = cluster_path + f'/clusters/cluster_{clusters[clus]["build_name"]}-noUK.txt'
+        noUK_out_meta_file = cluster_path + f'/cluster_info/cluster_{clusters[clus]["build_name"]}-noUK_meta.tsv'
 
         if print_files:
             with open(noUK_clusterlist_output, "w") as f:
@@ -339,9 +316,7 @@ for clus in clus_to_run:
             build_nam = clusters[clus]["build_name"]
             copypath = noUK_clusterlist_output.replace(
                 f"{build_nam}-noUK",
-                "{}-noUK-{}".format(
-                    build_nam, datetime.date.today().strftime("%Y-%m-%d")
-                ),
+                "{}-noUK-{}".format(build_nam, datetime.date.today().strftime("%Y-%m-%d")),
             )
             copyfile(noUK_clusterlist_output, copypath)
             nouk_501_meta.to_csv(noUK_out_meta_file, sep="\t", index=False)
@@ -388,9 +363,7 @@ for clus in clus_to_run:
         country_info.loc[coun].last_seq = temp_meta["date"].max()
         country_info.loc[coun].num_seqs = len(temp_meta)
 
-        country_dates[coun] = [
-            datetime.datetime.strptime(dat, "%Y-%m-%d") for dat in temp_meta["date"]
-        ]
+        country_dates[coun] = [datetime.datetime.strptime(dat, "%Y-%m-%d") for dat in temp_meta["date"]]
 
         herbst_dates = [x for x in country_dates[coun] if x >= cutoffDate]
         if coun in uk_countries:
@@ -400,16 +373,12 @@ for clus in clus_to_run:
         all_dates = [
             datetime.datetime.strptime(x, "%Y-%m-%d")
             for x in temp_meta["date"]
-            if len(x) is 10
-            and "-XX" not in x
-            and datetime.datetime.strptime(x, "%Y-%m-%d") >= cutoffDate
+            if len(x) is 10 and "-XX" not in x and datetime.datetime.strptime(x, "%Y-%m-%d") >= cutoffDate
         ]
         if len(all_dates) == 0:
             country_info.loc[coun].sept_oct_freq = 0
         else:
-            country_info.loc[coun].sept_oct_freq = round(
-                len(herbst_dates) / len(all_dates), 2
-            )
+            country_info.loc[coun].sept_oct_freq = round(len(herbst_dates) / len(all_dates), 2)
 
     print(country_info)
     print("\n")
@@ -455,41 +424,31 @@ for clus in clus_to_run:
         if "all" in clus_answer and clus != "DanishCluster":
             with open(f"{tables_path}all_tables.md", "a") as fh:
                 fh.write(f"\n\n## {clus_display}\n")
-                fh.write(
-                    f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{url_params})\n\n"
-                )
+                fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{url_params})\n\n")
                 if clus is "S501":
                     fh.write(
-                        f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n"
+                        "Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n"
                     )
                     fh.write(
-                        f"Note that this mutation has multiple amino-acid mutants - these numbers "
+                        "Note that this mutation has multiple amino-acid mutants - these numbers "
                         "refer to _all_ these mutations (Y, S, T).\n"
                     )
                 fh.write(mrk_tbl)
                 fh.write("\n\n")
-                fh.write(
-                    f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)"
-                )
+                fh.write(f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)")
 
         with open(f"{tables_path}{clus_display}_table.md", "w") as fh:
             fh.write(f"\n\n## {clus_display}\n")
-            fh.write(
-                f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{url_params})\n\n"
-            )
+            fh.write(f"[Focal Build](https://nextstrain.org/groups/neherlab/ncov/{clus_display}?{url_params})\n\n")
             if clus is "S501":
+                fh.write("Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n")
                 fh.write(
-                    f"Note any pre-2020 Chinese sequences are from SARS-like viruses in bats (not SARS-CoV-2).\n"
-                )
-                fh.write(
-                    f"Note that this mutation has multiple amino-acid mutants - these numbers "
+                    "Note that this mutation has multiple amino-acid mutants - these numbers "
                     "refer to _all_ these mutations (Y, S, T).\n"
                 )
             fh.write(mrk_tbl)
             fh.write("\n\n")
-            fh.write(
-                f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)"
-            )
+            fh.write(f"![Overall trends {clus_display}](/overall_trends_figures/overall_trends_{clus_display}.png)")
 
     # ordered_country.to_markdown(f"{tables_path}all_tables.md", mode='a')
 
@@ -520,9 +479,7 @@ for clus in clus_to_run:
         # week 20
         for ri, row in temp_meta.iterrows():
             dat = row.date
-            if (
-                len(dat) is 10 and "-XX" not in dat
-            ):  # only take those that have real dates
+            if len(dat) is 10 and "-XX" not in dat:  # only take those that have real dates
                 dt = datetime.datetime.strptime(dat, "%Y-%m-%d")
                 # exclude sequences with identical dates & underdiverged
                 if coun == "Ireland" and dat == "2020-09-22":
@@ -544,12 +501,8 @@ for clus in clus_to_run:
         total_week_counts[coun] = counts_by_week
 
     if print_files:
-        with open(
-            f"{acknowledgement_folder}{clus}_acknowledgement_table.tsv", "w"
-        ) as fh:
-            fh.write(
-                "#strain\tEPI_ISOLATE_ID\tOriginating lab\tsubmitting lab\tauthors\n"
-            )
+        with open(f"{acknowledgement_folder}{clus}_acknowledgement_table.tsv", "w") as fh:
+            fh.write("#strain\tEPI_ISOLATE_ID\tOriginating lab\tsubmitting lab\tauthors\n")
             for d in acknowledgement_table:
                 fh.write("\t".join(d) + "\n")
 
@@ -640,12 +593,8 @@ for clus in clus_to_run:
 
                     ax1.text(strt, y_start + 0.003, q_times["msg"], fontsize=fs * 0.8)
                     if coun == "Denmark":
-                        strt = datetime.datetime.strptime(
-                            q_free_to_spain["Denmark2"]["start"], "%Y-%m-%d"
-                        )
-                        end = datetime.datetime.strptime(
-                            q_free_to_spain["Denmark2"]["end"], "%Y-%m-%d"
-                        )
+                        strt = datetime.datetime.strptime(q_free_to_spain["Denmark2"]["start"], "%Y-%m-%d")
+                        end = datetime.datetime.strptime(q_free_to_spain["Denmark2"]["end"], "%Y-%m-%d")
                         ax1.add_patch(
                             Rectangle(
                                 (strt, y_start),
@@ -686,24 +635,20 @@ for clus in clus_to_run:
 
         # for a simpler plot of most interesting countries use this:
         for coun in [x for x in countries_to_plot]:
-            week_as_date, cluster_count, total_count = non_zero_counts(
-                cluster_data, total_data, coun
-            )
+            week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
             # remove last data point if that point as less than frac sequences compared to the previous count
             week_as_date, cluster_count, total_count = trim_last_data_point(
-                week_as_date, cluster_count, total_count, frac=0.1, keep_count=10
+                week_as_date,
+                cluster_count,
+                total_count,
+                frac=0.1,
+                keep_count=10,
             )
 
             json_output[clus_display][coun] = {}
-            json_output[clus_display][coun]["week"] = [
-                datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date
-            ]
-            json_output[clus_display][coun]["total_sequences"] = [
-                int(x) for x in total_count
-            ]
-            json_output[clus_display][coun]["cluster_sequences"] = [
-                int(x) for x in cluster_count
-            ]
+            json_output[clus_display][coun]["week"] = [datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date]
+            json_output[clus_display][coun]["total_sequences"] = [int(x) for x in total_count]
+            json_output[clus_display][coun]["cluster_sequences"] = [int(x) for x in cluster_count]
 
             ax3.plot(
                 week_as_date,

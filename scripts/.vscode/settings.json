@@ -1,0 +1,28 @@
+{
+    "python.defaultInterpreterPath": ".venv/bin/python",
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": ".venv/bin/black",
+    "python.formatting.blackArgs": [
+        "--line-length",
+        "120",
+    ],
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Path": ".venv/bin/flake8",
+    "python.linting.mypyEnabled": false,
+    "python.linting.mypyPath": ".venv/bin/mypy",
+    "python.linting.enabled": true,
+    "python.analysis.extraPaths": [ // setting for pylance when used
+        "PATH_TO_MISSING_MODULES",
+    ],
+    "[python]": {
+        "editor.formatOnPaste": false, // not supported by black
+        "editor.formatOnSaveMode": "file"
+    },
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+        {
+            "column": 120,
+        }
+    ]
+}

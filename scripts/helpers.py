@@ -3,6 +3,7 @@ import numpy as np
 import datetime
 from collections import defaultdict
 
+
 def logistic(x, a, t50):
     return np.exp((x - t50) * a) / (1 + np.exp((x - t50) * a))
 
@@ -19,9 +20,7 @@ def fit_logistic(days, cluster, total):
     return sol
 
 
-def trim_last_data_point(
-    week_as_date, cluster_count, total_count, frac=0.2, keep_count=10
-):
+def trim_last_data_point(week_as_date, cluster_count, total_count, frac=0.2, keep_count=10):
     if total_count[-1] < frac * total_count[-2] and total_count[-1] < keep_count:
         return week_as_date[:-1], cluster_count[:-1], total_count[:-1]
 
@@ -35,30 +34,23 @@ def non_zero_counts(cluster_data, total_data, country, smoothing=None):
         smoothing = np.array([1])
         smooth = False
 
-    cluster_and_total = pd.concat(
-        [cluster_data[country], total_data[country]], axis=1
-    ).fillna(0)
+    cluster_and_total = pd.concat([cluster_data[country], total_data[country]], axis=1).fillna(0)
     # remove initial time points without data
     data_range = np.cumsum(cluster_and_total.iloc[:, 1]) > 0
     with_data = cluster_and_total.iloc[:, 1] > 0
     with_data_inrange = with_data[data_range]
     # this lets us plot X axis as dates rather than weeks (I struggle with weeks...)
     week_as_date = [
-        datetime.datetime.strptime("{}-W{}-1".format(*x), "%G-W%V-%u")
-        for x in cluster_and_total[data_range].index
+        datetime.datetime.strptime("{}-W{}-1".format(*x), "%G-W%V-%u") for x in cluster_and_total[data_range].index
     ]
     # plt.plot(weeks.index[with_data_inrange], weeks.loc[with_data_inrange].iloc[:,0]/(total[with_data_inrange]), 'o', color=palette[i], label=coun, linestyle=sty)
     if len(week_as_date) < len(smoothing) and smooth:
         chop = -(len(week_as_date) - len(smoothing) - 1) // 2
         smoothing = smoothing[chop:-chop]
     mode = "same"  # RICHARD
-    cluster_count = np.convolve(
-        cluster_and_total[data_range].iloc[:, 0], smoothing, mode=mode
-    )  #'same')
+    cluster_count = np.convolve(cluster_and_total[data_range].iloc[:, 0], smoothing, mode=mode)  # 'same')
     # cluster_count = cluster_count[0:len(week_as_date)]
-    total_count = np.convolve(
-        cluster_and_total[data_range].iloc[:, 1], smoothing, mode=mode
-    )  #'same')
+    total_count = np.convolve(cluster_and_total[data_range].iloc[:, 1], smoothing, mode=mode)  # 'same')
     # if mode == 'valid':
     #     total_count = total_count[0:len(week_as_date)]
 

@@ -33,15 +33,15 @@ for clus, ax in zip(clusters.keys(), axs):
     percents_t = percents[clus].div(percents[clus].sum(axis=1), axis=0)
     percents_t = percents_t.transpose()
     percents_t = percents_t.fillna(0)
-    week_as_date = [
-        datetime.datetime.strptime("2020-W{}-1".format(x), "%G-W%V-%u")
-        for x in percents[clus].index
-    ]
+    week_as_date = [datetime.datetime.strptime("2020-W{}-1".format(x), "%G-W%V-%u") for x in percents[clus].index]
 
     colors = [country_styles[co]["c"] for co in percents_t.index]
 
     ax.stackplot(
-        week_as_date, percents_t.values.tolist(), labels=percents_t.index, colors=colors
+        week_as_date,
+        percents_t.values.tolist(),
+        labels=percents_t.index,
+        colors=colors,
     )
     ax.text(
         datetime.datetime(2020, 5, 25),

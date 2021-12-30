@@ -5,36 +5,29 @@ name_table = [
     {
         "clade": "20I (Alpha, V1)",
         "who": "Alpha",
-        "lineages": [
-            {"name": "B.1.1.7", "url": None}
-        ],
-        "others": [
-            {"name": "VOC 202012/01", "url": None}
-        ],
+        "lineages": [{"name": "B.1.1.7", "url": None}],
+        "others": [{"name": "VOC 202012/01", "url": None}],
     },
     {
         "clade": "20H (Beta, V2)",
         "who": "Beta",
-        "lineages": [
-            {"name": "B.1.351", "url": None}
-        ],
-        "others": [
-            {"name": "501Y.V2", "url": None}
-        ],
+        "lineages": [{"name": "B.1.351", "url": None}],
+        "others": [{"name": "501Y.V2", "url": None}],
     },
     {
         "clade": "20J (Gamma, V3)",
         "who": "Gamma",
-        "lineages": [
-            {"name": "P.1", "url": None}
-        ],
+        "lineages": [{"name": "P.1", "url": None}],
         "others": [],
     },
     {
         "clade": "21A (Delta)",
         "who": "Delta",
         "lineages": [
-            {"name": "B.1.617.2", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.2.html"}
+            {
+                "name": "B.1.617.2",
+                "url": "https://cov-lineages.org/lineages/lineage_B.1.617.2.html",
+            }
         ],
         "others": [],
     },
@@ -54,60 +47,56 @@ name_table = [
         "clade": "21B (Kappa)",
         "who": "Kappa",
         "lineages": [
-            {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
+            {
+                "name": "B.1.617.1",
+                "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html",
+            }
         ],
-        "others": []
+        "others": [],
     },
     {
         "clade": "21C (Epsilon)",
         "who": "Epsilon",
         "lineages": [
             {"name": "B.1.427", "url": None},
-            {"name": "B.1.429", "url": None}
+            {"name": "B.1.429", "url": None},
         ],
-        "others": [
-            {"name": "CAL.20C", "url": None}
-        ],
+        "others": [{"name": "CAL.20C", "url": None}],
     },
     {
         "clade": "21D (Eta)",
         "who": "Eta",
-        "lineages": [
-            {"name": "B.1.525", "url": None}
-        ],
+        "lineages": [{"name": "B.1.525", "url": None}],
         "others": [],
     },
     {
         "clade": "21F (Iota)",
         "who": "Iota",
-        "lineages": [
-            {"name": "B.1.526", "url": None}
-        ],
+        "lineages": [{"name": "B.1.526", "url": None}],
         "others": [
             {"name": "(Part of Pango lineage)", "url": None},
-        ]
+        ],
     },
     {
         "clade": "21G (Lambda)",
         "who": "Lambda",
-        "lineages": [
-            {"name": "C.37", "url": None}
-        ],
+        "lineages": [{"name": "C.37", "url": None}],
         "others": [],
     },
     {
         "clade": "21H (Mu)",
         "who": "Mu",
-        "lineages": [
-            {"name": "B.1.621", "url": None}
-        ],
+        "lineages": [{"name": "B.1.621", "url": None}],
         "others": [],
     },
     {
         "clade": "21K (Omicron)",
         "who": "Omicron",
         "lineages": [
-            {"name": "BA.1", "url": "https://cov-lineages.org/lineages/lineage_BA.1.html"}
+            {
+                "name": "BA.1",
+                "url": "https://cov-lineages.org/lineages/lineage_BA.1.html",
+            }
         ],
         "others": [],
     },
@@ -117,79 +106,61 @@ name_table = [
         "lineages": [
             {"name": "B.1.177", "url": None},
         ],
-        "others": [
-            {"name": "EU1", "url": None}
-        ],
+        "others": [{"name": "EU1", "url": None}],
     },
     {
         "clade": "20B/S:732A",
         "who": "",
-        "lineages": [
-            {"name": "B.1.1.519", "url": None}
-        ],
+        "lineages": [{"name": "B.1.1.519", "url": None}],
         "others": [],
     },
     {
         "clade": "20A/S:126A",
         "who": "",
-        "lineages": [
-            {"name": "B.1.620", "url": None}
-        ],
+        "lineages": [{"name": "B.1.620", "url": None}],
         "others": [],
     },
     {
         "clade": "20A.EU2",
         "who": None,
-        "lineages": [
-            {"name": "B.1.160", "url": None}
-        ],
+        "lineages": [{"name": "B.1.160", "url": None}],
         "others": [],
     },
     {
         "clade": "20A/S:439K",
         "who": None,
-        "lineages": [
-            {"name": "B.1.258", "url": None}
-        ],
+        "lineages": [{"name": "B.1.258", "url": None}],
         "others": [],
     },
     {
         "clade": "20A/S:98F",
         "who": None,
-        "lineages": [
-            {"name": "B.1.221", "url": None}
-        ],
+        "lineages": [{"name": "B.1.221", "url": None}],
         "others": [],
     },
     {
         "clade": "20C/S:80Y",
         "who": None,
-        "lineages": [
-            {"name": "B.1.367", "url": None}
-        ],
+        "lineages": [{"name": "B.1.367", "url": None}],
         "others": [],
     },
     {
         "clade": "20B/S:626S",
         "who": None,
-        "lineages": [
-            {"name": "B.1.1.277", "url": None}
-        ],
+        "lineages": [{"name": "B.1.1.277", "url": None}],
         "others": [],
     },
     {
         "clade": "20B/S:1122L",
         "who": None,
-        "lineages": [
-            {"name": "B.1.1.302", "url": None}
-        ],
+        "lineages": [{"name": "B.1.1.302", "url": None}],
         "others": [],
-    }
+    },
 ]
 
 
 def does_url_respond(url: str):
-    req = urllib.request.Request(url, headers={'content-type': 'text/html'})
+    req = urllib.request.Request(url, headers={"content-type": "text/html"})
 
     try:
         urllib.request.urlopen(req)
