@@ -81,9 +81,7 @@ clus_to_run = ["S222"]
 reask = True
 
 while reask:
-    clus_answer = input(
-        "\nWhat cluster to run? (Enter for S222) Type 'all' for all, type 'all mink' for all+mink: "
-    )
+    clus_answer = input("\nWhat cluster to run? (Enter for S222) Type 'all' for all, type 'all mink' for all+mink: ")
     if len(clus_answer) != 0:
         if clus_answer in clusters.keys():
             print(f"Using {clus_answer}\n")
@@ -113,8 +111,8 @@ for clus in clus_to_run:
         mink_meta = meta[meta["host"].apply(lambda x: x == "Mink")]
         wanted_seqs = list(mink_meta["strain"])
 
-        clusterlist_output = cluster_path + f"/clusters/cluster_mink.txt"
-        out_meta_file = cluster_path + f"/cluster_info/cluster_mink_meta.tsv"
+        clusterlist_output = cluster_path + "/clusters/cluster_mink.txt"
+        out_meta_file = cluster_path + "/cluster_info/cluster_mink_meta.tsv"
 
     else:
         snps = clusters[clus]["snps"]
@@ -123,13 +121,8 @@ for clus in clus_to_run:
         else:
             snps2 = []
 
-        clusterlist_output = (
-            cluster_path + f'/clusters/cluster_{clusters[clus]["build_name"]}.txt'
-        )
-        out_meta_file = (
-            cluster_path
-            + f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
-        )
+        clusterlist_output = cluster_path + f'/clusters/cluster_{clusters[clus]["build_name"]}.txt'
+        out_meta_file = cluster_path + f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
 
         # get the sequences that we want - which are 'part of the cluster:
         wanted_seqs = []
@@ -139,53 +132,33 @@ for clus in clus_to_run:
             snplist = row["all_snps"]
             if not pd.isna(snplist):
                 intsnp = [int(x) for x in snplist.split(",")]
-                if all(x in intsnp for x in snps) or (
-                    all(x in intsnp for x in snps2) and len(snps2) != 0
-                ):
+                if all(x in intsnp for x in snps) or (all(x in intsnp for x in snps2) and len(snps2) != 0):
                     # if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
                     wanted_seqs.append(row["strain"])
 
     # There's one spanish seq with date of 7 March - we think this is wrong.
     # If seq there and date bad - exclude!
     bad_seq = meta[meta["strain"].isin(["Spain/VC-IBV-98006466/2020"])]
-    if (
-        bad_seq.date.values[0] == "2020-03-07"
-        and "Spain/VC-IBV-98006466/2020" in wanted_seqs
-    ):
+    if bad_seq.date.values[0] == "2020-03-07" and "Spain/VC-IBV-98006466/2020" in wanted_seqs:
         wanted_seqs.remove("Spain/VC-IBV-98006466/2020")
 
     # There are two sequences from UK with suspected bad dates: exclude
     bad_seq = meta[meta["strain"].isin(["England/LIVE-1DD7AC/2020"])]
-    if (
-        bad_seq.date.values[0] == "2020-03-10"
-        and "England/LIVE-1DD7AC/2020" in wanted_seqs
-    ):
+    if bad_seq.date.values[0] == "2020-03-10" and "England/LIVE-1DD7AC/2020" in wanted_seqs:
         wanted_seqs.remove("England/LIVE-1DD7AC/2020")
     bad_seq = meta[meta["strain"].isin(["England/PORT-2D2111/2020"])]
-    if (
-        bad_seq.date.values[0] == "2020-03-21"
-        and "England/PORT-2D2111/2020" in wanted_seqs
-    ):
+    if bad_seq.date.values[0] == "2020-03-21" and "England/PORT-2D2111/2020" in wanted_seqs:
         wanted_seqs.remove("England/PORT-2D2111/2020")
 
     # suspected that these ones have reversed dd-mm (are actually 5 and 6 Nov)
     bad_seq = meta[meta["strain"].isin(["England/CAMB-1BA110/2020"])]
-    if (
-        bad_seq.date.values[0] == "2020-06-11"
-        and "England/CAMB-1BA110/2020" in wanted_seqs
-    ):
+    if bad_seq.date.values[0] == "2020-06-11" and "England/CAMB-1BA110/2020" in wanted_seqs:
         wanted_seqs.remove("England/CAMB-1BA110/2020")
     bad_seq = meta[meta["strain"].isin(["England/CAMB-1BA0F5/2020"])]
-    if (
-        bad_seq.date.values[0] == "2020-05-11"
-        and "England/CAMB-1BA0F5/2020" in wanted_seqs
-    ):
+    if bad_seq.date.values[0] == "2020-05-11" and "England/CAMB-1BA0F5/2020" in wanted_seqs:
         wanted_seqs.remove("England/CAMB-1BA0F5/2020")
     bad_seq = meta[meta["strain"].isin(["England/CAMB-1BA0B9/2020"])]
-    if (
-        bad_seq.date.values[0] == "2020-05-11"
-        and "England/CAMB-1BA0B9/2020" in wanted_seqs
-    ):
+    if bad_seq.date.values[0] == "2020-05-11" and "England/CAMB-1BA0B9/2020" in wanted_seqs:
         wanted_seqs.remove("England/CAMB-1BA0B9/2020")
 
     # get metadata for these sequences
@@ -262,9 +235,7 @@ for clus in clus_to_run:
         country_info.loc[coun].last_seq = temp_meta["date"].max()
         country_info.loc[coun].num_seqs = len(temp_meta)
 
-        country_dates[coun] = [
-            datetime.datetime.strptime(dat, "%Y-%m-%d") for dat in temp_meta["date"]
-        ]
+        country_dates[coun] = [datetime.datetime.strptime(dat, "%Y-%m-%d") for dat in temp_meta["date"]]
 
         herbst_dates = [x for x in country_dates[coun] if x >= cutoffDate]
         if coun in uk_countries:
@@ -274,16 +245,12 @@ for clus in clus_to_run:
         all_dates = [
             datetime.datetime.strptime(x, "%Y-%m-%d")
             for x in temp_meta["date"]
-            if len(x) is 10
-            and "-XX" not in x
-            and datetime.datetime.strptime(x, "%Y-%m-%d") >= cutoffDate
+            if len(x) is 10 and "-XX" not in x and datetime.datetime.strptime(x, "%Y-%m-%d") >= cutoffDate
         ]
         if len(all_dates) == 0:
             country_info.loc[coun].sept_oct_freq = 0
         else:
-            country_info.loc[coun].sept_oct_freq = round(
-                len(herbst_dates) / len(all_dates), 2
-            )
+            country_info.loc[coun].sept_oct_freq = round(len(herbst_dates) / len(all_dates), 2)
 
     print(country_info)
     print("\n")
@@ -328,9 +295,7 @@ for clus in clus_to_run:
         # week 20
         for ri, row in temp_meta.iterrows():
             dat = row.date
-            if (
-                len(dat) is 10 and "-XX" not in dat
-            ):  # only take those that have real dates
+            if len(dat) is 10 and "-XX" not in dat:  # only take those that have real dates
                 dt = datetime.datetime.strptime(dat, "%Y-%m-%d")
                 # exclude sequences with identical dates & underdiverged
                 if coun == "Ireland" and dat == "2020-09-22":
@@ -352,12 +317,8 @@ for clus in clus_to_run:
         total_week_counts[coun] = counts_by_week
 
     if print_files:
-        with open(
-            f"../cluster_new_scripts/{clus}_acknowledgement_table.tsv", "w"
-        ) as fh:
-            fh.write(
-                "#strain\tEPI_ISOLATE_ID\tOriginating lab\tsubmitting lab\tauthors\n"
-            )
+        with open(f"../cluster_new_scripts/{clus}_acknowledgement_table.tsv", "w") as fh:
+            fh.write("#strain\tEPI_ISOLATE_ID\tOriginating lab\tsubmitting lab\tauthors\n")
             for d in acknowledgement_table:
                 fh.write("\t".join(d) + "\n")
 
@@ -387,7 +348,7 @@ for clus in clus_to_run:
     countries_to_plot = [
         "France",
         "United Kingdom",
-        #'Latvia',
+        # 'Latvia',
         "Norway",
         "Spain",
         "Switzerland",
@@ -409,7 +370,10 @@ for clus in clus_to_run:
         #                                    gridspec_kw={'height_ratios':[1,1,3]})
         # Change to just show Travel to spain only. see above for old 3 panel version
         fig, (ax1, ax3) = plt.subplots(
-            nrows=2, sharex=True, figsize=(10, 6), gridspec_kw={"height_ratios": [1, 3]}
+            nrows=2,
+            sharex=True,
+            figsize=(10, 6),
+            gridspec_kw={"height_ratios": [1, 3]},
         )
         i = 0
         # for coun in [x for x in countries_to_plot]:
@@ -432,12 +396,8 @@ for clus in clus_to_run:
                 # ax1.text(strt, y_start+0.002, q_times["msg"], fontsize=fs*0.8)
                 ax1.text(strt, y_start + 0.003, q_times["msg"], fontsize=fs * 0.8)
                 if coun == "Denmark":
-                    strt = datetime.datetime.strptime(
-                        q_free_to_spain["Denmark2"]["start"], "%Y-%m-%d"
-                    )
-                    end = datetime.datetime.strptime(
-                        q_free_to_spain["Denmark2"]["end"], "%Y-%m-%d"
-                    )
+                    strt = datetime.datetime.strptime(q_free_to_spain["Denmark2"]["start"], "%Y-%m-%d")
+                    end = datetime.datetime.strptime(q_free_to_spain["Denmark2"]["end"], "%Y-%m-%d")
                     ax1.add_patch(
                         Rectangle(
                             (strt, y_start),
@@ -478,12 +438,14 @@ for clus in clus_to_run:
 
         # for a simpler plot of most interesting countries use this:
         for coun in [x for x in countries_to_plot]:
-            week_as_date, cluster_count, total_count = non_zero_counts(
-                cluster_data, total_data, coun
-            )
+            week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
             # remove last data point if that point as less than frac sequences compared to the previous count
             week_as_date, cluster_count, total_count = trim_last_data_point(
-                week_as_date, cluster_count, total_count, frac=0.1, keep_count=10
+                week_as_date,
+                cluster_count,
+                total_count,
+                frac=0.1,
+                keep_count=10,
             )
 
             ax3.plot(
@@ -533,13 +495,12 @@ for clus in clus_to_run:
             plt.savefig(figure_path + f"overall_trends.{fmt}")
             trends_path = figure_path + f"overall_trends.{fmt}"
             copypath = trends_path.replace(
-                "trends", "trends-{}".format(datetime.date.today().strftime("%Y-%m-%d"))
+                "trends",
+                "trends-{}".format(datetime.date.today().strftime("%Y-%m-%d")),
             )
             copyfile(trends_path, copypath)
 
-        all_plots = input(
-            "\nDo you want to plot growth rate + all sequences graphs? (y/n): "
-        )
+        all_plots = input("\nDo you want to plot growth rate + all sequences graphs? (y/n): ")
 
         if all_plots == "y":
 
@@ -556,9 +517,7 @@ for clus in clus_to_run:
                 "Northern Ireland",
                 "United Kingdom",
             ]:
-                week_as_date, cluster_count, total_count = non_zero_counts(
-                    cluster_data, total_data, coun
-                )
+                week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
 
                 if coun == "United Kingdom":
                     print("UK")
@@ -599,9 +558,7 @@ for clus in clus_to_run:
                 "United Kingdom",
                 "Denmark",
             ]:
-                week_as_date, cluster_count, total_count = non_zero_counts(
-                    cluster_data, total_data, coun
-                )
+                week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
                 days = np.array([x.toordinal() for x in week_as_date])
                 mean_upper_lower = []
                 for x, n in zip(cluster_count, total_count):
@@ -671,19 +628,21 @@ for clus in clus_to_run:
 
             seqs_week = {}
 
-            for coun in ["Switzerland", "Spain", "United Kingdom", "Norway", "Denmark"]:
+            for coun in [
+                "Switzerland",
+                "Spain",
+                "United Kingdom",
+                "Norway",
+                "Denmark",
+            ]:
                 # read in case data
-                case_week_as_date, case_data = read_case_data_by_week(
-                    case_data_path + case_files[coun]
-                )
+                case_week_as_date, case_data = read_case_data_by_week(case_data_path + case_files[coun])
 
                 # Now get total number of sequence, per week - by using metadata.tsv from ncov
                 counts_by_week = defaultdict(int)
                 temp_meta = meta[meta["country"].isin([coun])]
                 for dat in temp_meta["date"]:
-                    if (
-                        len(dat) is 10 and "-XX" not in dat
-                    ):  # only take those that have real dates
+                    if len(dat) is 10 and "-XX" not in dat:  # only take those that have real dates
                         dt = datetime.datetime.strptime(dat, "%Y-%m-%d")
                         wk = dt.isocalendar()[1]  # returns ISO calendar week
                         counts_by_week[wk] += 1
@@ -693,12 +652,8 @@ for clus in clus_to_run:
                 seqs_data = seqs_data.sort_index()
 
                 # Only plot sequence data for weeks were data is available (avoid plotting random 0s bc no seqs)
-                weeks = pd.concat([cluster_data[coun], seqs_data[coun]], axis=1).fillna(
-                    0
-                )
-                week_as_date, cluster_count, total_count = non_zero_counts(
-                    cluster_data, total_data, coun
-                )
+                weeks = pd.concat([cluster_data[coun], seqs_data[coun]], axis=1).fillna(0)
+                week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
                 # convert week numbers back to first day of that week - so that X axis is real time rather than weeks
                 days = np.array([x.toordinal() for x in case_week_as_date])
 
@@ -721,9 +676,7 @@ for clus in clus_to_run:
                 ax1.tick_params(axis="y", labelcolor=color)
                 ax1.set_yscale("log")
 
-                ax2 = (
-                    ax1.twinx()
-                )  # instantiate a second axes that shares the same x-axis
+                ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
                 color = "tab:red"
                 ax2.set_ylabel("Sequences", color=color)
                 # ax2.plot(week_as_date, weeks.loc[with_data].iloc[:,0]/(total[with_data]), 'o', color=color, label=coun, linestyle=sty)
@@ -754,14 +707,18 @@ for clus in clus_to_run:
                 if coun is "Norway":
                     plt.legend(
                         lines,
-                        ["cases per week", "total sequences", "sequences in cluster"],
+                        [
+                            "cases per week",
+                            "total sequences",
+                            "sequences in cluster",
+                        ],
                         loc=3,
                     )
                 else:
                     plt.legend(
                         lines,
                         [
-                            "cases per week",  #'cases per week w/o cluster',
+                            "cases per week",  # 'cases per week w/o cluster',
                             "total sequences",
                             "sequences in cluster",
                         ],
@@ -793,28 +750,28 @@ for clus in clus_to_run:
 # eng_y_end = 0.05
 # ax1.add_patch(Rectangle((eng_quarFree_start,eng_y_start), eng_quarFree_end-eng_quarFree_start, eng_y_end, ec='lightskyblue', fc='lightskyblue'))
 #
-##swiss q-free-travel to spain
+## swiss q-free-travel to spain
 # ch_quarFree_start = datetime.datetime.strptime("2020-06-15", "%Y-%m-%d")
 # ch_quarFree_end = datetime.datetime.strptime("2020-08-10", "%Y-%m-%d")
 # ch_y_start = 0.07
 # ch_y_end = 0.05
 # ax1.add_patch(Rectangle((ch_quarFree_start,ch_y_start), ch_quarFree_end-ch_quarFree_start, ch_y_end, ec='peru', fc='peru'))
 #
-##norway q-free-travel to spain
+## norway q-free-travel to spain
 # no_quarFree_start = datetime.datetime.strptime("2020-07-15", "%Y-%m-%d")
 # no_quarFree_end = datetime.datetime.strptime("2020-07-25", "%Y-%m-%d")
 # no_y_start = 0.12
 # no_y_end = 0.05
 # ax1.add_patch(Rectangle((no_quarFree_start,no_y_start), no_quarFree_end-no_quarFree_start, no_y_end, ec='lightpink', fc='lightpink'))
 #
-##latvia q-free-travel to spain
+## latvia q-free-travel to spain
 # la_quarFree_start = datetime.datetime.strptime("2020-07-01", "%Y-%m-%d")
 # la_quarFree_end = datetime.datetime.strptime("2020-07-17", "%Y-%m-%d")
 # la_y_start = 0.17
 # la_y_end = 0.05
 # ax1.add_patch(Rectangle((la_quarFree_start,la_y_start), la_quarFree_end-la_quarFree_start, la_y_end, ec='lightgreen', fc='lightgreen'))
 #
-##france Q-free travel to spain
+## france Q-free travel to spain
 # fr_quarFree_start = datetime.datetime.strptime("2020-06-15", "%Y-%m-%d")
 # fr_quarFree_end = datetime.datetime.strptime("2020-10-05", "%Y-%m-%d")
 # fr_y_start = 0.22

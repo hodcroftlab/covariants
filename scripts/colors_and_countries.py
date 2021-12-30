@@ -58,9 +58,7 @@ colors = [
 
 # separate out Scotland, England, NI, Wales...
 uk_countries = ["Scotland", "England", "Wales", "Northern Ireland"]
-countries_and_uk_list = [
-    x for x in country_list if x != "United Kingdom"
-] + uk_countries
+countries_and_uk_list = [x for x in country_list if x != "United Kingdom"] + uk_countries
 all_countries = country_list + uk_countries
 
 # For the main cluster, ran out of colors... try this hack.
@@ -68,8 +66,7 @@ all_countries = country_list + uk_countries
 linestyles = ["-", "-.", "--", ":"]
 
 country_styles = {
-    country: {"c": colors[i], "ls": linestyles[i // len(colors)]}
-    for i, country in enumerate(country_list)
+    country: {"c": colors[i], "ls": linestyles[i // len(colors)]} for i, country in enumerate(country_list)
 }
 
 country_styles.update(
@@ -77,7 +74,10 @@ country_styles.update(
         "Scotland": {"c": country_styles["United Kingdom"]["c"], "ls": "--"},
         "England": {"c": country_styles["United Kingdom"]["c"], "ls": "-"},
         "Wales": {"c": country_styles["United Kingdom"]["c"], "ls": "-."},
-        "Northern Ireland": {"c": country_styles["United Kingdom"]["c"], "ls": ":"},
+        "Northern Ireland": {
+            "c": country_styles["United Kingdom"]["c"],
+            "ls": ":",
+        },
     }
 )
 
@@ -149,7 +149,7 @@ country_list_2 = [
     "Turkey",  # 4
     "South Africa",  # 5
     "Curacao",  # 6
-    "Russia", # 7
+    "Russia",  # 7
     "Poland",  # 8
     "Romania",  # 9
     "Canada",  # 10
@@ -178,48 +178,45 @@ country_list_3 = [
     "Estonia",  # 10
     "Greece",  # 11
     "Chile",  # 12
-    "Qatar",    # 13
-    "Sri Lanka",   # 14
-    "Kenya",    # 15
-    "Philippines",     # 16
-    "Argentina", # 17
-    "Cambodia",       # 18  
-    "Ecuador",    #19
-    "Fiji",    #20
+    "Qatar",  # 13
+    "Sri Lanka",  # 14
+    "Kenya",  # 15
+    "Philippines",  # 16
+    "Argentina",  # 17
+    "Cambodia",  # 18
+    "Ecuador",  # 19
+    "Fiji",  # 20
 ]
 
 country_list_4 = [
-    "Sint Maarten",         #1
-    "Angola",               #2
-    "Trinidad and Tobago",  #3
-    "Peru",                 #4
-    "Maldives",               #5
-    "Lebanon",              #6
-    "New Zealand",          #7
-    "Vietnam",             #8
-    "Costa Rica",           #9
-    "Bahrain",              #10
-    "Pakistan",             #11
-    "Kosovo",               #12
-    "Bonaire",              #13
-    "Papua New Guinea",     #14
-    "Jordan",               #15
-    "Uganda",               #16
+    "Sint Maarten",  # 1
+    "Angola",  # 2
+    "Trinidad and Tobago",  # 3
+    "Peru",  # 4
+    "Maldives",  # 5
+    "Lebanon",  # 6
+    "New Zealand",  # 7
+    "Vietnam",  # 8
+    "Costa Rica",  # 9
+    "Bahrain",  # 10
+    "Pakistan",  # 11
+    "Kosovo",  # 12
+    "Bonaire",  # 13
+    "Papua New Guinea",  # 14
+    "Jordan",  # 15
+    "Uganda",  # 16
 ]
 
 country_styles_1 = {
-    country: {"c": colors_2[i], "ls": "-"}  # linestyles[i//len(colors)]}
-    for i, country in enumerate(country_list_1)
+    country: {"c": colors_2[i], "ls": "-"} for i, country in enumerate(country_list_1)  # linestyles[i//len(colors)]}
 }
 
 country_styles_2 = {
-    country: {"c": colors_2[i], "ls": "--"}  # linestyles[i//len(colors)]}
-    for i, country in enumerate(country_list_2)
+    country: {"c": colors_2[i], "ls": "--"} for i, country in enumerate(country_list_2)  # linestyles[i//len(colors)]}
 }
 
 country_styles_3 = {
-    country: {"c": colors_2[i], "ls": "-."}  # linestyles[i//len(colors)]}
-    for i, country in enumerate(country_list_3)
+    country: {"c": colors_2[i], "ls": "-."} for i, country in enumerate(country_list_3)  # linestyles[i//len(colors)]}
 }
 
 country_styles_4 = {
@@ -227,4 +224,9 @@ country_styles_4 = {
     for i, country in enumerate(country_list_4)
 }
 
-country_styles_all = {**country_styles_1, **country_styles_2, **country_styles_3, **country_styles_4}
+country_styles_all = {
+    **country_styles_1,
+    **country_styles_2,
+    **country_styles_3,
+    **country_styles_4,
+}

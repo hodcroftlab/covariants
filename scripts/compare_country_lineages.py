@@ -7,7 +7,6 @@ import seaborn as sns
 from shutil import copyfile
 from collections import defaultdict
 from matplotlib.patches import Rectangle
-import matplotlib.patches as mpatches
 import copy
 import json
 from colors_and_countries import *
@@ -83,9 +82,7 @@ for clus in clusters:
         gaplist = row["gap_list"]
         if snps and not pd.isna(snplist):
             intsnp = [int(x) for x in snplist.split(",")]
-            if all(x in intsnp for x in snps) or (
-                all(x in intsnp for x in snps2) and len(snps2) != 0
-            ):
+            if all(x in intsnp for x in snps) or (all(x in intsnp for x in snps2) and len(snps2) != 0):
                 # if meta.loc[meta['strain'] == strain].region.values[0] == "Europe":
                 wanted_seqs.append(row["strain"])
         # look for all locations in gap list
@@ -131,9 +128,7 @@ for clus in clusters:
         country_info.loc[coun].last_seq = temp_meta["date"].max()
         country_info.loc[coun].num_seqs = len(temp_meta)
 
-        country_dates[coun] = [
-            datetime.datetime.strptime(dat, "%Y-%m-%d") for dat in temp_meta["date"]
-        ]
+        country_dates[coun] = [datetime.datetime.strptime(dat, "%Y-%m-%d") for dat in temp_meta["date"]]
 
         herbst_dates = [x for x in country_dates[coun] if x >= cutoffDate]
         if coun in uk_countries:
@@ -143,9 +138,7 @@ for clus in clusters:
         all_dates = [
             datetime.datetime.strptime(x, "%Y-%m-%d")
             for x in temp_meta["date"]
-            if len(x) is 10
-            and "-XX" not in x
-            and datetime.datetime.strptime(x, "%Y-%m-%d") >= cutoffDate
+            if len(x) is 10 and "-XX" not in x and datetime.datetime.strptime(x, "%Y-%m-%d") >= cutoffDate
         ]
         # country_info.loc[coun].sept_aug_freq = round(len(herbst_dates)/len(all_dates),2)
 
@@ -161,9 +154,7 @@ for clus in clusters:
         for dat in country_dates[coun]:
             #   counts_by_week[dat.isocalendar()[1]]+=1  #FOR ONE WEEK
             # for TWO WEEKS 2 weeks
-            wk = (
-                dat.isocalendar()[1] // 2 * 2
-            )  # returns ISO calendar week -every 2 weeks
+            wk = dat.isocalendar()[1] // 2 * 2  # returns ISO calendar week -every 2 weeks
             yr = dat.isocalendar()[0]
             yr_wk = (yr, wk)
             counts_by_week[yr_wk] += 1
@@ -180,9 +171,7 @@ for clus in clusters:
         # week 20
         for ri, row in temp_meta.iterrows():
             dat = row.date
-            if (
-                len(dat) is 10 and "-XX" not in dat
-            ):  # only take those that have real dates
+            if len(dat) is 10 and "-XX" not in dat:  # only take those that have real dates
                 dt = datetime.datetime.strptime(dat, "%Y-%m-%d")
                 # exclude sequences with identical dates & underdiverged
                 if coun == "Ireland" and dat == "2020-09-22":
@@ -260,7 +249,10 @@ country_week = {clus: {} for clus in clusters}
 fs = 14
 rws = int(np.ceil((len(countries_to_plot) + 1) / 2))
 fig, axs = plt.subplots(
-    nrows=rws, ncols=2, sharex=True, figsize=(9, 11)  # len(countries_to_plot)+1,
+    nrows=rws,
+    ncols=2,
+    sharex=True,
+    figsize=(9, 11),  # len(countries_to_plot)+1,
 )
 
 min_week = datetime.datetime(2020, 12, 31)
@@ -303,9 +295,7 @@ for coun, ax in zip(countries_to_plot, fig.axes[1:]):  # axs[1:]):
 
         week_as_dates[coun] = week_as_date
 
-        json_output["countries"][coun][clusters[clus]["display_name"]] = list(
-            cluster_count
-        )
+        json_output["countries"][coun][clusters[clus]["display_name"]] = list(cluster_count)
 
         country_week[clus][coun] = cluster_count / total_count
 
@@ -328,16 +318,17 @@ for coun, ax in zip(countries_to_plot, fig.axes[1:]):  # axs[1:]):
         ptchs.append(patch)
         if i == len(clus_keys) - 1:  # len(clusters)-1 :
             ax.fill_between(
-                week_as_date, cluster_count / total_count, 1, facecolor=grey_color
+                week_as_date,
+                cluster_count / total_count,
+                1,
+                facecolor=grey_color,
             )
-            patch = mpatches.Patch(color=grey_color, label=f"other")
+            patch = mpatches.Patch(color=grey_color, label="other")
             ptchs.append(patch)
         # if i == 0:
         first_clus_count = cluster_count  # unindented
         i += 1
-    json_output["countries"][coun]["week"] = [
-        datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date
-    ]
+    json_output["countries"][coun]["week"] = [datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date]
     json_output["countries"][coun]["total_sequences"] = [int(x) for x in total_count]
 
     ax.text(datetime.datetime(2020, 6, 1), 0.7, coun, fontsize=fs)
@@ -346,12 +337,8 @@ for coun, ax in zip(countries_to_plot, fig.axes[1:]):  # axs[1:]):
     # ax.legend(ncol=1, fontsize=fs*0.8, loc=2)
 
 json_output["plotting_dates"] = {}
-json_output["plotting_dates"]["min_date"] = datetime.datetime.strftime(
-    min_week, "%Y-%m-%d"
-)
-json_output["plotting_dates"]["max_date"] = datetime.datetime.strftime(
-    max_week, "%Y-%m-%d"
-)
+json_output["plotting_dates"]["min_date"] = datetime.datetime.strftime(min_week, "%Y-%m-%d")
+json_output["plotting_dates"]["max_date"] = datetime.datetime.strftime(max_week, "%Y-%m-%d")
 
 fig.axes[0].legend(handles=ptchs, loc=3, fontsize=fs * 0.7, ncol=3)
 fig.axes[0].axis("off")
@@ -359,16 +346,14 @@ fig.autofmt_xdate(rotation=30)
 plt.show()
 plt.tight_layout()
 
-with open(cluster_tables_path + f"EUClusters_data.json", "w") as fh:
+with open(cluster_tables_path + "EUClusters_data.json", "w") as fh:
     json.dump(json_output, fh)
 
-plt.savefig(overall_trends_figs_path + f"EUClusters_compare.png")
+plt.savefig(overall_trends_figs_path + "EUClusters_compare.png")
 
 plt.savefig(figure_path + f"EUClusters_compare.{fmt}")
 trends_path = figure_path + f"EUClusters_compare.{fmt}"
-copypath = trends_path.replace(
-    "compare", "compare-{}".format(datetime.date.today().strftime("%Y-%m-%d"))
-)
+copypath = trends_path.replace("compare", "compare-{}".format(datetime.date.today().strftime("%Y-%m-%d")))
 copyfile(trends_path, copypath)
 
 

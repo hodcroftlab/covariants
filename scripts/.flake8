@@ -1,0 +1,17 @@
+[flake8]
+ignore = E203, # Whitespace before :
+    E266, # Too many leading hashes in comment
+    E402, # Module import should be at the top
+    E501, # Line length exceeds max-line-length
+    E712, # Comparison to boolean value should use is
+    F401, # Imported but unsued
+    F403, # Unable to detect import names
+    F405, # Value may be undefined or imported via star import
+    F601, # Repeated dictionary key
+    F632, # Use ==/!= to compare constant literals
+    F821, # Undefined names
+    F841, # Local variable is assigned but never used
+    W605, # Invalid escape sequence, "\d" in regular expression
+max-complexity = 75
+max-line-length = 120
+exclude = .git,__pycache__,.mypycache,.venv

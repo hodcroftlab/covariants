@@ -7,7 +7,6 @@ import seaborn as sns
 from shutil import copyfile
 from collections import defaultdict
 from matplotlib.patches import Rectangle
-import matplotlib.patches as mpatches
 import copy
 from colors_and_countries import *
 from travel_data import *
@@ -56,10 +55,7 @@ for clus in clusters.keys():
     # There's one spanish seq with date of 7 March - we think this is wrong.
     # If seq there and date bad - exclude!
     bad_seq = meta[meta["strain"].isin(["Spain/VC-IBV-98006466/2020"])]
-    if (
-        bad_seq.date.values[0] == "2020-03-07"
-        and "Spain/VC-IBV-98006466/2020" in wanted_seqs
-    ):
+    if bad_seq.date.values[0] == "2020-03-07" and "Spain/VC-IBV-98006466/2020" in wanted_seqs:
         wanted_seqs.remove("Spain/VC-IBV-98006466/2020")
 
     print(len(wanted_seqs))  # how many are there?
@@ -87,9 +83,7 @@ for clus in clusters.keys():
         country_info.loc[coun].last_seq = temp_meta["date"].max()
         country_info.loc[coun].num_seqs = len(temp_meta)
 
-        country_dates[coun] = [
-            datetime.datetime.strptime(dat, "%Y-%m-%d") for dat in temp_meta["date"]
-        ]
+        country_dates[coun] = [datetime.datetime.strptime(dat, "%Y-%m-%d") for dat in temp_meta["date"]]
 
         herbst_dates = [x for x in country_dates[coun] if x >= cutoffDate]
         if coun in uk_countries:
@@ -99,13 +93,9 @@ for clus in clusters.keys():
         all_dates = [
             datetime.datetime.strptime(x, "%Y-%m-%d")
             for x in temp_meta["date"]
-            if len(x) is 10
-            and "-XX" not in x
-            and datetime.datetime.strptime(x, "%Y-%m-%d") >= cutoffDate
+            if len(x) is 10 and "-XX" not in x and datetime.datetime.strptime(x, "%Y-%m-%d") >= cutoffDate
         ]
-        country_info.loc[coun].sept_aug_freq = round(
-            len(herbst_dates) / len(all_dates), 2
-        )
+        country_info.loc[coun].sept_aug_freq = round(len(herbst_dates) / len(all_dates), 2)
 
     print(f"\nCluster {clus}")
     print(country_info)
@@ -118,9 +108,7 @@ for clus in clusters.keys():
         counts_by_week = defaultdict(int)
         for dat in country_dates[coun]:
             # counts_by_week[dat.timetuple().tm_yday//7]+=1 # old method
-            counts_by_week[
-                (dat.isocalendar()[1] // 2 * 2)
-            ] += 1  # returns ISO calendar week
+            counts_by_week[(dat.isocalendar()[1] // 2 * 2)] += 1  # returns ISO calendar week
         clus_week_counts[coun] = counts_by_week
 
     # Get counts per week for sequences regardless of whether in the cluster or not - from week 20 only.
@@ -134,9 +122,7 @@ for clus in clusters.keys():
         # week 20
         for ri, row in temp_meta.iterrows():
             dat = row.date
-            if (
-                len(dat) is 10 and "-XX" not in dat
-            ):  # only take those that have real dates
+            if len(dat) is 10 and "-XX" not in dat:  # only take those that have real dates
                 dt = datetime.datetime.strptime(dat, "%Y-%m-%d")
                 # exclude sequences with identical dates & underdiverged
                 if coun == "Ireland" and dat == "2020-09-22":
@@ -226,9 +212,7 @@ for coun, ax in zip(countries_to_plot, axs[1:]):
     # for cluster_data in [cluster_data_S477, cluster_data_S222]:
     for clus in clusters.keys():
         cluster_data = clusters[clus]["cluster_data"]
-        week_as_date, cluster_count, total_count = non_zero_counts(
-            cluster_data, total_data, coun
-        )
+        week_as_date, cluster_count, total_count = non_zero_counts(cluster_data, total_data, coun)
 
         week_as_dates[coun] = week_as_date
         # clusters[clus]['week_as_date'] = week_as_date
@@ -270,9 +254,12 @@ for coun, ax in zip(countries_to_plot, axs[1:]):
             ptchs.append(patch)
         if i == len(clusters) - 1:
             ax.fill_between(
-                week_as_date, cluster_count / total_count, 1, facecolor=grey_color
+                week_as_date,
+                cluster_count / total_count,
+                1,
+                facecolor=grey_color,
             )
-            patch = mpatches.Patch(color=grey_color, label=f"other")
+            patch = mpatches.Patch(color=grey_color, label="other")
             ptchs.append(patch)
         # if i == 0:
         first_clus_count = cluster_count  # unindented
@@ -290,9 +277,7 @@ plt.tight_layout()
 
 plt.savefig(figure_path + f"EUClusters_compare.{fmt}")
 trends_path = figure_path + f"EUClusters_compare.{fmt}"
-copypath = trends_path.replace(
-    "compare", "compare-{}".format(datetime.date.today().strftime("%Y-%m-%d"))
-)
+copypath = trends_path.replace("compare", "compare-{}".format(datetime.date.today().strftime("%Y-%m-%d")))
 copyfile(trends_path, copypath)
 
 

@@ -53,10 +53,7 @@ known_clusters = {}
 clus_files = [
     x
     for x in listdir(named_clusters_dir)
-    if "2020-" not in x
-    and "clusone" not in x
-    and "clustwo" not in x
-    and "_clus" not in x
+    if "2020-" not in x and "clusone" not in x and "clustwo" not in x and "_clus" not in x
 ]
 for file in clus_files:
     cluster_name = file.strip("cluster_.txt")
@@ -75,9 +72,12 @@ for file in clus_files:
 T = Phylo.read(treefile, "newick")
 node_data = read_node_data([branchfile])
 
-node_data, node_attrs, node_data_names, metadata_names = parse_node_data_and_metadata(
-    T, [branchfile], metadatafile
-)
+(
+    node_data,
+    node_attrs,
+    node_data_names,
+    metadata_names,
+) = parse_node_data_and_metadata(T, [branchfile], metadatafile)
 rate = node_data["clock"]["rate"]
 
 # Add country and division, date, etc to each node
@@ -153,9 +153,7 @@ for country, date in countries_dates.items():
     ##### Reorganize collected data #####
 
     # Compare against known clusters:
-    lineage_clusters = (
-        {}
-    )  # compares all collected lineages to known clusters and stores overlap percentage
+    lineage_clusters = {}  # compares all collected lineages to known clusters and stores overlap percentage
     for lineage in lineages_strains:
         lineage_clusters[lineage] = {}
         strains = lineages_strains[lineage]
@@ -165,14 +163,10 @@ for country, date in countries_dates.items():
             for strain in strains:
                 if strain in strains_cluster:
                     overlapping_strains += 1
-            lineage_clusters[lineage][cluster] = round(
-                overlapping_strains / len(strains), 2
-            )
+            lineage_clusters[lineage][cluster] = round(overlapping_strains / len(strains), 2)
 
     # Save lineage strains in text file for easier access
-    with open(
-        output_folder + "lineage_strains_" + country + "_" + date + ".txt", "w"
-    ) as f:
+    with open(output_folder + "lineage_strains_" + country + "_" + date + ".txt", "w") as f:
         for lineage in lineages_strains:
             f.write(lineage + "\n")
             for strain in lineages_strains[lineage]:
@@ -210,10 +204,7 @@ for country, date in countries_dates.items():
     total_data = total_data.fillna(0)
 
     # Get dates for calendar weeks
-    week_as_date = [
-        datetime.datetime.strptime("2020-W{}-1".format(x), "%G-W%V-%u")
-        for x in lineages_data.index
-    ]
+    week_as_date = [datetime.datetime.strptime("2020-W{}-1".format(x), "%G-W%V-%u") for x in lineages_data.index]
     lineages_data.index = week_as_date
     total_data.index = week_as_date
 
@@ -228,13 +219,14 @@ for country, date in countries_dates.items():
 
     fs = 14
     fig, (ax1, ax2) = plt.subplots(
-        nrows=2, sharex=True, figsize=(12, 6), gridspec_kw={"height_ratios": [1, 3]}
+        nrows=2,
+        sharex=True,
+        figsize=(12, 6),
+        gridspec_kw={"height_ratios": [1, 3]},
     )
 
     # First plot: absolute numbers compare total versus lineages
-    ax1.stackplot(
-        total_data.columns, total_data.values.tolist(), color="darkblue"
-    )  # "lightgray")
+    ax1.stackplot(total_data.columns, total_data.values.tolist(), color="darkblue")  # "lightgray")
     # ax1.stackplot(lineages_data.columns, lineages_data.values.sum(axis = 0).tolist(), color="gray")
     # ax1.legend(["Overall total", "Lineages total"], fontsize=fs * 0.8, loc=2)
     ax1.tick_params(labelsize=fs * 0.8)
@@ -264,10 +256,7 @@ for country, date in countries_dates.items():
         for i in range(len(lineages_data_frequencies.index))
     ]  # create gradient of grey shades
     for i, lineage in enumerate(lineages_data_frequencies.index):
-        if (
-            lineage in lineage_to_cluster
-            and lineage_to_cluster[lineage] in special_colors
-        ):
+        if lineage in lineage_to_cluster and lineage_to_cluster[lineage] in special_colors:
             colors[i] = special_colors[lineage_to_cluster[lineage]]
 
     ax2.fill_between(
@@ -284,11 +273,12 @@ for country, date in countries_dates.items():
         colors=colors,
     )
 
-    handles, labels = ax2.get_legend_handles_labels()  # get the labels and handles
+    (
+        handles,
+        labels,
+    ) = ax2.get_legend_handles_labels()  # get the labels and handles
     new_labels = ["other lineages"]  # one gray label for all gray lineages
-    gray_handles = [
-        handles[i] for i in range(len(labels)) if labels[i] not in lineage_to_cluster
-    ]
+    gray_handles = [handles[i] for i in range(len(labels)) if labels[i] not in lineage_to_cluster]
     new_handles = [gray_handles[int(len(gray_handles) / 2)]]  # medium shade of gray
 
     for i, label in enumerate(labels):
@@ -297,7 +287,11 @@ for country, date in countries_dates.items():
             new_handles.append(handles[i])
 
     ax2.legend(
-        reversed(new_handles), reversed(new_labels), ncol=1, loc=2, fontsize=fs * 0.8
+        reversed(new_handles),
+        reversed(new_labels),
+        ncol=1,
+        loc=2,
+        fontsize=fs * 0.8,
     )
     fig.autofmt_xdate(rotation=30)
     ax2.tick_params(labelsize=fs * 0.8)
@@ -305,7 +299,8 @@ for country, date in countries_dates.items():
     ax2.set_title("Lineage frequencies")
     ax2.set_ylim(0, 1)
     ax2.set_xlim(
-        lineages_data_frequencies.columns[0], lineages_data_frequencies.columns[-1]
+        lineages_data_frequencies.columns[0],
+        lineages_data_frequencies.columns[-1],
     )
 
     # fig.suptitle(country + " (Tree Cutoff Date: " + cutoffDate.strftime("%A, %d %b %Y") + ")")
@@ -318,6 +313,7 @@ for country, date in countries_dates.items():
     plt.savefig(figure_path + f"compare_lineages_{country}.{fmt}")
     lineages_path = figure_path + f"compare_lineages_{country}.{fmt}"
     copypath = lineages_path.replace(
-        country, "{}-{}".format(country, datetime.date.today().strftime("%Y-%m-%d"))
+        country,
+        "{}-{}".format(country, datetime.date.today().strftime("%Y-%m-%d")),
     )
     copyfile(lineages_path, copypath)

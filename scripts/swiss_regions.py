@@ -1,5 +1,5 @@
 swiss_regions = {
-    'Geneva': "Region 1",
+    "Geneva": "Region 1",
     "Neuchâtel": "Region 1",
     "Vaud": "Region 1",
     "Valais": "Region 1",
@@ -25,7 +25,7 @@ swiss_regions = {
     "Zürich": "Region 5",
     "Graubünden": "Region 6",
     "Ticino": "Region 6",
-    "Switzerland": ""
+    "Switzerland": "",
 }
 
 
