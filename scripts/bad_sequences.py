@@ -1367,10 +1367,15 @@ bad_seqs = {
     "USA/CA-SEARCH-58495/2020" : "2020-10-06", #delta
     "USA/CA-SEARCH-58338/2020" : "2020-01-26", #epsilon
     "USA/TX-HMH-MCoV-50023/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-41511/2020" : "2020-07-31", #alpha
+    "USA/TX-HMH-MCoV-42600/2020" : "2020-07-19",  #alpha
 
     #Omicron with bad dates
     "Italy/LOM_Policlinico_Milano_18972196/2021" : "2021-10-13", #omicron
     "Italy/LOM_Policlinico_Milano_18972245/2021" : "2021-10-13", #omicron
+    "India/GJ-INSACOG-GBRC3442/2021" : "2021-02-15", #omicron
+    "USA/AZ-ASU29569/2021" : "2021-01-29", #omicron
+    "USA/CO-CDPHE-2102465572/2021" : "2021-10-15", #omicron
     # Omicron with maybe? bad date:
     "SouthAfrica/NICD-N01333/2021" : "2021-01-05", #omicron
     "SouthAfrica/NICD-N22599/2021" : "2021-09-04", #omicron
