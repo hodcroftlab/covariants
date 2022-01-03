@@ -5,12 +5,18 @@ import { pickBy } from 'lodash'
 import { getEnabledCountriesNames, getPlaces, Places } from 'src/io/getPlaces'
 import perCountryDataJson from 'src/../data/perCountryData.json'
 
+export enum Region {
+  WORLD = 'World',
+  UNITED_STATES = 'United States',
+  SWITZERLAND = 'Switzerland',
+}
+
 export interface PerCountryDatum {
   cluster_names: string[]
   distributions: CountryDistribution[]
   max_date: string
   min_date: string
-  region: string
+  region: Region
   per_country_intro_content: string
 }
 

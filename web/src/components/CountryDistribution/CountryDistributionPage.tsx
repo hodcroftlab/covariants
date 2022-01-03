@@ -1,6 +1,7 @@
 import { mapValues } from 'lodash'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Col, Row } from 'reactstrap'
+import { useRouter } from 'next/router'
 
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
 import { ColCustom } from 'src/components/Common/ColCustom'
@@ -13,6 +14,7 @@ import { getRegionPerCountryContent } from 'src/io/getRegionContent'
 import { disableAllPlaces, enableAllPlaces, Places, toggleContinent, toggleCountry } from 'src/io/getPlaces'
 
 import {
+  Region,
   ClusterState,
   filterClusters,
   filterCountries,
@@ -27,11 +29,43 @@ import { CountryFlag } from '../Common/CountryFlag'
 import { USStateCode } from '../Common/USStateCode'
 import { PageHeading } from '../Common/PageHeading'
 
-const { defaultRegionName, regionNames, regionsHaveData } = getRegions()
 const enabledFilters = ['clusters', 'countriesWithIcons']
+const { regionNames, regionsHaveData } = getRegions()
+
+const getRegionBySelectedCountries = (countries: string | string[] | undefined): Region => {
+  if (Array.isArray(countries)) {
+    if (
+      countries.length === 1 &&
+      [Region.UNITED_STATES.toLowerCase(), 'usa', 'us'].includes(countries[0].toLowerCase())
+    ) {
+      return Region.UNITED_STATES
+    }
+    if (countries.length === 1 && countries[0].toLowerCase() === Region.SWITZERLAND.toLowerCase()) {
+      return Region.SWITZERLAND
+    }
+    return Region.WORLD
+  }
+  if (countries) {
+    switch (countries.toLowerCase()) {
+      case Region.UNITED_STATES.toLowerCase():
+      case 'usa':
+      case 'us':
+        return Region.UNITED_STATES
+      case Region.SWITZERLAND.toLowerCase():
+        return Region.SWITZERLAND
+      default:
+        return Region.WORLD
+    }
+  }
+  return Region.WORLD
+}
 
 export function CountryDistributionPage() {
-  const [currentRegion, setCurrentRegion] = useState(defaultRegionName)
+  const router = useRouter()
+
+  const { countries: selectedCountries, variants: selectedVariants } = router.query
+  const initialRegion = getRegionBySelectedCountries(selectedCountries)
+  const [currentRegion, setCurrentRegion] = useState(initialRegion)
   const { clusters: initialClusters, places: initialPlaces, countryDistributions } =
     /* prettier-ignore */
     useMemo(() => getPerCountryData(currentRegion), [currentRegion])
@@ -43,10 +77,10 @@ export function CountryDistributionPage() {
     setPlaces(initialPlaces)
   }, [initialPlaces])
 
-  const regionsTitle = useMemo(() => (currentRegion === 'World' ? 'Countries' : 'Regions'), [currentRegion])
+  const regionsTitle = useMemo(() => (currentRegion === Region.WORLD ? 'Countries' : 'Regions'), [currentRegion])
   const iconComponent = useMemo(() => {
-    if (currentRegion === 'World') return CountryFlag
-    if (currentRegion === 'United States') return USStateCode
+    if (currentRegion === Region.WORLD) return CountryFlag
+    if (currentRegion === Region.UNITED_STATES) return USStateCode
     return undefined
   }, [currentRegion])
 
