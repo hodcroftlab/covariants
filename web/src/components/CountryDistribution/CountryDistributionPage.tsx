@@ -60,18 +60,44 @@ const getRegionBySelectedCountries = (countries: string | string[] | undefined):
   return Region.WORLD
 }
 
+const getCurriedClustersBySelectedClusters = (fallbackClusters: ClusterState) => {
+  const clusterKeys = Object.keys(fallbackClusters)
+  const noClusterSelectedState = clusterKeys.reduce((acc, key) => {
+    return { ...acc, [key]: { enabled: false } }
+  }, {})
+  return (clusters: string | string[] | undefined, deselectAll = false): ClusterState => {
+    if (!clusters) {
+      if (!deselectAll) {
+        return fallbackClusters
+      }
+      return noClusterSelectedState
+    }
+    let selectedClusters = new Set<string>()
+    if (typeof clusters === 'string') {
+      selectedClusters.add(clusters)
+    } else if (Array.isArray(clusters)) {
+      selectedClusters = new Set(clusters)
+    }
+    return clusterKeys.reduce((acc, key) => {
+      return { ...acc, [key]: { enabled: selectedClusters.has(key) } }
+    }, {})
+  }
+}
+
 export function CountryDistributionPage() {
   const router = useRouter()
 
-  const { countries: selectedCountries, variants: selectedVariants } = router.query
+  const { countries: selectedCountries, variants: selectedClusters } = router.query
   const initialRegion = getRegionBySelectedCountries(selectedCountries)
   const [currentRegion, setCurrentRegion] = useState(initialRegion)
   const { clusters: initialClusters, places: initialPlaces, countryDistributions } =
     /* prettier-ignore */
     useMemo(() => getPerCountryData(currentRegion), [currentRegion])
 
+  const getClustersBySelectedClusters = getCurriedClustersBySelectedClusters(initialClusters)
+  const initialClustersState = getClustersBySelectedClusters(selectedClusters)
   const [places, setPlaces] = useState<Places>(initialPlaces)
-  const [clusters, setClusters] = useState<ClusterState>(initialClusters)
+  const [clustersState, setClusters] = useState<ClusterState>(initialClustersState)
 
   useEffect(() => {
     setPlaces(initialPlaces)
@@ -90,7 +116,7 @@ export function CountryDistributionPage() {
 
   const { enabledClusters, withClustersFiltered } =
     /* prettier-ignore */
-    useMemo(() => filterClusters(clusters, withCountriesFiltered), [clusters, withCountriesFiltered])
+    useMemo(() => filterClusters(clustersState, withCountriesFiltered), [clustersState, withCountriesFiltered])
 
   const countryDistributionComponents = useMemo(
     () =>
@@ -181,7 +207,7 @@ export function CountryDistributionPage() {
             <WrapperFlex>
               <SidebarFlex>
                 <DistributionSidebar
-                  clusters={clusters}
+                  clusters={clustersState}
                   places={places}
                   regionsTitle={regionsTitle}
                   enabledFilters={enabledFilters}
