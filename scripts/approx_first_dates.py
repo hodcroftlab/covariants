@@ -13,13 +13,14 @@ cluster_first_dates = {
     "Delta": {"first_date": "2020-10-22"}, #Delta
     "21I.Delta": {"first_date": "2020-10-22"}, #21I Delta
     "21J.Delta": {"first_date": "2020-10-22"}, #21J Delta
+    "21L": {"first_date": "2021-10-20"}, #omicron
     "21K.Omicron": {"first_date": "2021-10-20"}, #omicron
     "Kappa": {"first_date": "2020-10-30"}, #Kappa
     "Delta417": {"first_date": "2020-10-30"}, #Delta plus (same as delta)
     "Eta": {"first_date": "2020-11-21"}, #Eta
     "Iota": {"first_date": "2020-11-10"}, #Iota
     "21GLambda": {"first_date": "2020-11-05"}, # Lambda
-    "21H": {"first_date": "2021-01-05"}, # B.1.621
+    "21H": {"first_date": "2020-12-10"}, # B.1.621
     "20BS732": {"first_date": "2020-10-01"}, #B.1.1.519
     "20AS126": {"first_date": "2021-01-15"}, #B.1.620
     "S677HRobin1": {"first_date": "2020-06-01"},

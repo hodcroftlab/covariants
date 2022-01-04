@@ -1008,7 +1008,7 @@ print(f"Date-binning data took {round((t1-t0)/60,1)} min to run\n\n")
 
 t0 = time.time()
 
-cutoff_num_seqs = 500
+cutoff_num_seqs = 600
 
 # This prints countries with more than cutoff_num_seqs PER CLUSTER - messy output.
 clusters_tww = []

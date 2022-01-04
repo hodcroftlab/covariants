@@ -103,6 +103,10 @@
     "c": "#a6cee3",
     "ls": "-"
   },
+  "Georgia": {
+    "c": "#004d00",
+    "ls": "dotted"
+  },
   "Germany": {
     "c": "#cab2d6",
     "ls": "-"
@@ -114,6 +118,14 @@
   "Greece": {
     "c": "#9900cc",
     "ls": "-."
+  },
+  "Guatemala": {
+    "c": "#0099ff",
+    "ls": "dotted"
+  },
+  "Hong Kong": {
+    "c": "#ffcc00",
+    "ls": "dotted"
   },
   "Iceland": {
     "c": "#0000ff",
@@ -177,6 +189,10 @@
   },
   "Maldives": {
     "c": "#e31a1c",
+    "ls": "dotted"
+  },
+  "Malta": {
+    "c": "#fdbf6f",
     "ls": "dotted"
   },
   "Mexico": {
