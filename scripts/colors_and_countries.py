@@ -185,7 +185,7 @@ country_list_3 = [
     "Argentina", # 17
     "Cambodia",       # 18  
     "Ecuador",    #19
-    "Fiji",    #20
+    "Bosnia and Herzegovina",    #20
 ]
 
 country_list_4 = [
@@ -203,12 +203,8 @@ country_list_4 = [
     "Kosovo",               #12
     "Bonaire",              #13
     "Papua New Guinea",     #14
-    "Jordan",               #15
-    "Uganda",               #16
-    "Georgia",              #17
-    "Hong Kong",            #18
-    "Malta",                #19
-    "Guatemala",            #20
+    "Georgia",              #15
+    "Guatemala",            #16
 ]
 
 country_styles_1 = {
