@@ -10,3 +10,9 @@ Mutations included on CoVariants are mutations associated with VoCs or other var
 
 
 <NameTable />
+
+How are all these variants/clades related to each other? CoVariants follows the Nextstrain Clade schema, where variants can descend from other variants. Here's a chart to show the overall relationships of Nextstrain Clades:
+![Variant graph](https://raw.githubusercontent.com/nextstrain/ncov-clades-schema/master/clades.svg)
+_(This image is pulled from the [Nextstrain Clade Schema](https://github.com/nextstrain/ncov-clades-schema) Github repository)_
+
+<!-- <img src="https://raw.githubusercontent.com/nextstrain/ncov-clades-schema/master/clades.svg" height="400" float="center" /> -->
