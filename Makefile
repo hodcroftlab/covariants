@@ -1,6 +1,9 @@
 
+export CLADES_SVG_SRC="https://raw.githubusercontent.com/nextstrain/ncov-clades-schema/master/clades.svg"
+export CLADES_SVG_DST="web/src/assets/images/clades.svg"
+
 # Umbrella target for updating all data for web app
-web-data: web-json stills
+web-data: web-json stills update-clades-svg
 
 # Update JSON files for web app
 web-json:
@@ -9,6 +12,11 @@ web-json:
 # Update jpeg images for web app
 stills:
 	cd web && yarn stills
+
+# Download fresh clades.svg
+update-clades-svg:
+	@echo "Downloading clade schema from '${CLADES_SVG_SRC}' to '${CLADES_SVG_DST}'"
+	curl -fsSL ${CLADES_SVG_SRC} -o ${CLADES_SVG_DST}
 
 # Run web app in development mode
 dev:
