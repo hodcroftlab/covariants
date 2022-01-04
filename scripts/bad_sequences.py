@@ -1384,12 +1384,12 @@ bad_seqs = {
     "England/NORW-31059C2/2021" : "2021-09-13", #omicron
     "USA/CO-CDPHE-2102465572/2021" : "2021-10-15", #omicron
     # Omicron with maybe? bad date:
-    "SouthAfrica/NICD-N01333/2021" : "2021-01-05", #omicron
-    "SouthAfrica/NICD-N22599/2021" : "2021-09-04", #omicron
-    "SouthAfrica/NICD-N22601/2021" : "2021-08-16", #omicron
-    "SouthAfrica/NICD-N22603/2021" : "2021-08-16", #omicron
-    "SouthAfrica/NICD-N22621/2021" : "2021-09-30", #omicron
-    "SouthAfrica/NICD-N22894/2021" : "2021-10-12", #omicron
+    "SouthAfrica/NICD-N01333/2021" : "2021-01-05", #omicron (gone as of 4Jan)
+    "SouthAfrica/NICD-N22599/2021" : "2021-09-04", #omicron (gone as of 4Jan)
+    "SouthAfrica/NICD-N22601/2021" : "2021-08-16", #omicron (gone as of 4Jan)
+    "SouthAfrica/NICD-N22603/2021" : "2021-08-16", #omicron (gone as of 4Jan)
+    "SouthAfrica/NICD-N22621/2021" : "2021-09-30", #omicron (gone as of 4Jan)
+    "SouthAfrica/NICD-N22894/2021" : "2021-10-12", #omicron (gone as of 4Jan)
     #Omicron with very suspicous dates - month-day mixup?
     "Brazil/SP-IAL-7587/2021" : "2021-10-12", #omicron
 
