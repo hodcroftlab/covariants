@@ -35,6 +35,10 @@
     "c": "#ff66ff",
     "ls": "dotted"
   },
+  "Bosnia and Herzegovina": {
+    "c": "#0099ff",
+    "ls": "-."
+  },
   "Botswana": {
     "c": "#33a02c",
     "ls": "--"
@@ -91,10 +95,6 @@
     "c": "#b15928",
     "ls": "-."
   },
-  "Fiji": {
-    "c": "#0099ff",
-    "ls": "-."
-  },
   "Finland": {
     "c": "#a6cee3",
     "ls": "-."
@@ -104,7 +104,7 @@
     "ls": "-"
   },
   "Georgia": {
-    "c": "#004d00",
+    "c": "#a6a6a6",
     "ls": "dotted"
   },
   "Germany": {
@@ -120,11 +120,7 @@
     "ls": "-."
   },
   "Guatemala": {
-    "c": "#0099ff",
-    "ls": "dotted"
-  },
-  "Hong Kong": {
-    "c": "#ffcc00",
+    "c": "#000000",
     "ls": "dotted"
   },
   "Iceland": {
@@ -154,10 +150,6 @@
   "Japan": {
     "c": "#1f78b4",
     "ls": "-."
-  },
-  "Jordan": {
-    "c": "#a6a6a6",
-    "ls": "dotted"
   },
   "Kenya": {
     "c": "#a6a6a6",
@@ -189,10 +181,6 @@
   },
   "Maldives": {
     "c": "#e31a1c",
-    "ls": "dotted"
-  },
-  "Malta": {
-    "c": "#fdbf6f",
     "ls": "dotted"
   },
   "Mexico": {
@@ -306,10 +294,6 @@
   "USA": {
     "c": "#6a3d9a",
     "ls": "-"
-  },
-  "Uganda": {
-    "c": "#000000",
-    "ls": "dotted"
   },
   "United Kingdom": {
     "c": "#1f78b4",
