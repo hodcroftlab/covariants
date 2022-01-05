@@ -1,5 +1,21 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2022-01-05
+
+- Add plot of all Nextstrain clades to Variants page
+
+## 2021-12-21
+
+- Add 21M (parent of 21L and 21K) to 21K page
+- Updates to the content on 21K page
+
+## 2021-12-15
+
+- Restructuring of the spacing of pages
+- Graphs have more space around them and Y-axis is less squashed
+- Plot tooltip on Per Variant page now sticks to top of page as you scroll
+- Thanks to Richard Goater for these!
+
 ## 2021-12-13
 
 - Add 21L section to the 21K page
