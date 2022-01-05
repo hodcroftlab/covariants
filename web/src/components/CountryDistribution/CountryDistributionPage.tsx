@@ -101,7 +101,15 @@ export function CountryDistributionPage() {
 
   useEffect(() => {
     setPlaces(initialPlaces)
-  }, [initialPlaces])
+  }, [initialPlaces, setPlaces])
+
+  useEffect(() => {
+    setCurrentRegion(initialRegion)
+  }, [initialRegion, setCurrentRegion])
+
+  useEffect(() => {
+    setClusters(initialClustersState)
+  }, [initialClustersState, setClusters])
 
   const regionsTitle = useMemo(() => (currentRegion === Region.WORLD ? 'Countries' : 'Regions'), [currentRegion])
   const iconComponent = useMemo(() => {
@@ -137,15 +145,13 @@ export function CountryDistributionPage() {
     setClusters((oldClusters) => toggleCluster(oldClusters, clusterName))
   }, [])
 
-  const handleClusterSelectAll = useCallback(
-    () => setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: true }))),
-    [],
-  )
+  const handleClusterSelectAll = useCallback(() => {
+    setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: true })))
+  }, [])
 
-  const handleClusterDeselectAll = useCallback(
-    () => setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: false }))),
-    [],
-  )
+  const handleClusterDeselectAll = useCallback(() => {
+    setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: false })))
+  }, [])
 
   const handleCountryCheckedChange = useCallback(
     (countryName: string) => {
