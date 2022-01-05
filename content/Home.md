@@ -2,7 +2,7 @@ import { HomeImages } from 'src/components/Home/HomeImages'
 import { Link } from 'src/components/Link/Link'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { NameTable } from 'src/components/Common/NameTable'
-
+import { CladeSchema } from 'src/components/Variants/CladeSchema.tsx'
 
 **Click on a variant button to start exploring!**
 
@@ -13,12 +13,16 @@ To look at many variants at once, check out the [Per Variant](/per-variant) and 
 
 <HomeImages/>
 
-**What do the names mean?** 
+**What do the names mean?**
 CoVariants uses the Nextstrain naming system for variants ([read more here](https://nextstrain.org/blog/2021-01-06-updated-SARS-CoV-2-clade-naming/)). However, the fact that there's multiple naming systems is confusing! See the table below to help find the variant you're interested in.
 
 <NameTable/>
 
 <!-- The variants featured are currently slightly biased towards circulation in Europe: this is simply a reflection that the primary maintainer (Emma Hodcroft) works mostly with European data. We hope to add more variants from other regions soon! -->
+
+How are all these variants/clades related to each other? CoVariants follows the Nextstrain Clade schema, where variants can descend from other variants. Here's a chart to show the overall relationships of Nextstrain Clades:
+
+<CladeSchema/>
 
 This project is free and open source. The content, derived data, code used to generate the data, and code that implements this web application can be found on GitHub: [github.com/hodcroftlab/covariants](https://github.com/hodcroftlab/covariants/).
 
