@@ -115,7 +115,11 @@ export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotToo
                 </td>
                 <td>{interpolated && '*'}</td>
                 <td className="px-2 text-right">
-                  {value !== undefined && value > EPSILON ? formatProportion(value) : '-'}
+                  {value !== undefined && value > EPSILON
+                    ? formatProportion(value)
+                    : value !== undefined && value !== 0
+                    ? `<${EPSILON}`
+                    : '-'}
                 </td>
               </tr>
             )
