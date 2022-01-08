@@ -1379,6 +1379,10 @@ bad_seqs = {
     "USA/TX-HMH-MCoV-49967/2020" : "2020-07-16", #delta
     "USA/TX-HMH-MCoV-50500/2020" : "2020-07-17", #delta
     "USA/TX-HMH-MCoV-50040/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50526/2020" : "2020-07-17", #delta
+    "Oman/205029065/2020" : "2020-04-13", #alpha
+    "USA/AZ-TG1047402/2020" : "2020-08-29", #delta
+    "USA/AZ-TG816882/2020" : "2020-03-26", #S677PPelican
 
     #Omicron with possibly bad dates (very early)
     "England/NORW-31059C2/2021" : "2021-09-13", #omicron
@@ -1390,6 +1394,9 @@ bad_seqs = {
     "SouthAfrica/NICD-N22603/2021" : "2021-08-16", #omicron (gone as of 4Jan)
     "SouthAfrica/NICD-N22621/2021" : "2021-09-30", #omicron (gone as of 4Jan)
     "SouthAfrica/NICD-N22894/2021" : "2021-10-12", #omicron (gone as of 4Jan)
+    "Brazil/PA-L193-cd26806/2021" : "2021-09-10", #omicron
+    "Netherlands/ZH-EMC-4332/2021" : "2021-08-12", #omicron
+    "Scotland/QEUH-1DB485E/2021" : "2021-09-05", #21L omicron
     #Omicron with very suspicous dates - month-day mixup?
     "Brazil/SP-IAL-7587/2021" : "2021-10-12", #omicron
 
