@@ -22,7 +22,7 @@ export const convertUrlQueryToSelection = (queryString: ParsedUrlQuery): string[
 
 export const useCountryAndClusterQuery = (): {
   rawQueries: {
-    selectedCountries: ParsedUrlQuery
+    selectedRegion: ParsedUrlQuery
     selectedClusters: ParsedUrlQuery
   }
   state: {
@@ -36,9 +36,9 @@ export const useCountryAndClusterQuery = (): {
 } => {
   const router = useRouter()
 
-  const { countries: selectedCountries, variants: selectedClusters } = router.query
+  const { region: selectedRegion, variants: selectedClusters } = router.query
 
-  const [currentRegion, setCurrentRegion] = useState(getRegionBySelectedCountries(selectedCountries))
+  const [currentRegion, setCurrentRegion] = useState(getRegionBySelectedCountries(selectedRegion))
 
   const {
     allPossibleClusters,
@@ -72,12 +72,12 @@ export const useCountryAndClusterQuery = (): {
   }, [selectedClusters, setClusters, getClustersBySelectedClusters])
 
   useEffect(() => {
-    setCurrentRegion(getRegionBySelectedCountries(selectedCountries))
-  }, [selectedCountries, setCurrentRegion])
+    setCurrentRegion(getRegionBySelectedCountries(selectedRegion))
+  }, [selectedRegion, setCurrentRegion])
 
   return {
     rawQueries: {
-      selectedCountries,
+      selectedRegion,
       selectedClusters,
     },
     state: {

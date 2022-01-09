@@ -121,11 +121,11 @@ export function CountryDistributionPage() {
       const nextRegionQs = { ...getCurrentQs(router) }
 
       if (nextRegion === Region.WORLD) {
-        delete nextRegionQs.countries
+        delete nextRegionQs.region
       } else if (nextRegion === Region.UNITED_STATES) {
-        nextRegionQs.countries = 'usa'
+        nextRegionQs.region = 'usa'
       } else if (nextRegion === Region.SWITZERLAND) {
-        nextRegionQs.countries = 'switzerland'
+        nextRegionQs.region = 'switzerland'
       }
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       router.replace(`${fullPath}?${stringify(nextRegionQs)}`)

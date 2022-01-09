@@ -55,9 +55,9 @@ export const getCurriedClustersBySelectedClusters = (fallbackClusters: ClusterSt
 }
 
 export const getCurrentQs = (router: NextRouter) => {
-  const result: Partial<Record<'countries' | 'variants', string[] | string>> = {}
-  if (router.query && router.query.countries) {
-    result.countries = router.query.countries
+  const result: Partial<Record<'region' | 'variants', string[] | string>> = {}
+  if (router.query && router.query.region) {
+    result.region = router.query.region
   }
   if (router.query && router.query.variants) {
     result.variants = router.query.variants
