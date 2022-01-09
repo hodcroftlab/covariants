@@ -4,7 +4,7 @@ import { stringify } from 'querystring'
 import { Region, ClusterState, getPerCountryData, CountryDistribution } from 'src/io/getPerCountryData'
 import { Places } from 'src/io/getPlaces'
 
-import { getRegionBySelectedCountries, getCurriedClustersBySelectedClusters } from './utils'
+import { getRegionBySelectedCountries, getCurriedClustersBySelectedClusters, getCurrentQs } from './utils'
 
 export type ParsedUrlQuery = string | string[] | undefined
 
@@ -65,17 +65,15 @@ export const useCountryAndClusterQuery = (): {
     if (currentRegion === nextRegion) {
       return
     }
-
     const fullPath = `${router.basePath}${router.pathname}`
-
-    let nextRegionQs = {}
+    const nextRegionQs = { ...getCurrentQs(router) }
 
     if (nextRegion === Region.WORLD) {
-      nextRegionQs = {}
+      delete nextRegionQs.countries
     } else if (nextRegion === Region.UNITED_STATES) {
-      nextRegionQs = { countries: 'usa' }
+      nextRegionQs.countries = 'usa'
     } else if (nextRegion === Region.SWITZERLAND) {
-      nextRegionQs = { countries: 'switzerland' }
+      nextRegionQs.countries = 'switzerland'
     }
     return void router.replace(`${fullPath}?${stringify(nextRegionQs)}`)
   }

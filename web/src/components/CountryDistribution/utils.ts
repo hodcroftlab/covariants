@@ -1,3 +1,5 @@
+import { NextRouter } from 'next/router'
+
 import { Region, ClusterState } from 'src/io/getPerCountryData'
 
 export const getRegionBySelectedCountries = (countries: string | string[] | undefined): Region => {
@@ -50,4 +52,15 @@ export const getCurriedClustersBySelectedClusters = (fallbackClusters: ClusterSt
       return { ...acc, [key]: { enabled: selectedClusters.has(key) } }
     }, {})
   }
+}
+
+export const getCurrentQs = (router: NextRouter) => {
+  const result: Partial<Record<'countries' | 'variants', string[] | string>> = {}
+  if (router.query && router.query.countries) {
+    result.countries = router.query.countries
+  }
+  if (router.query && router.query.variants) {
+    result.variants = router.query.variants
+  }
+  return result
 }
