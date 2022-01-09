@@ -1,4 +1,6 @@
 import { mapValues } from 'lodash'
+import { stringify } from 'querystring'
+import { useRouter } from 'next/router'
 import React, { useCallback, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
 
@@ -23,6 +25,7 @@ import {
 
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
 import { useCountryAndClusterQuery } from './useCountryQuery'
+import { getCurrentQs } from './utils'
 import { CountryFlag } from '../Common/CountryFlag'
 import { USStateCode } from '../Common/USStateCode'
 import { PageHeading } from '../Common/PageHeading'
@@ -31,8 +34,9 @@ const enabledFilters = ['clusters', 'countriesWithIcons']
 const { regionNames, regionsHaveData } = getRegions()
 
 export function CountryDistributionPage() {
+  const router = useRouter()
   const {
-    state: { region, setRegion, setPlaces, places, countryDistributions, currentClusters, setClusters },
+    state: { region, setPlaces, places, countryDistributions, currentClusters, setClusters },
   } = useCountryAndClusterQuery()
 
   const regionsTitle = useMemo(() => (region === Region.WORLD ? 'Countries' : 'Regions'), [region])
@@ -107,6 +111,27 @@ export function CountryDistributionPage() {
     const contentFilename = getPerCountryIntroContentFilename(region)
     return getRegionPerCountryContent(contentFilename)
   }, [region])
+
+  const setRegion = useCallback(
+    (nextRegion: Region) => {
+      if (region === nextRegion) {
+        return
+      }
+      const fullPath = `${router.basePath}${router.pathname}`
+      const nextRegionQs = { ...getCurrentQs(router) }
+
+      if (nextRegion === Region.WORLD) {
+        delete nextRegionQs.countries
+      } else if (nextRegion === Region.UNITED_STATES) {
+        nextRegionQs.countries = 'usa'
+      } else if (nextRegion === Region.SWITZERLAND) {
+        nextRegionQs.countries = 'switzerland'
+      }
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      router.replace(`${fullPath}?${stringify(nextRegionQs)}`)
+    },
+    [region, router],
+  )
 
   return (
     <Layout wide>
