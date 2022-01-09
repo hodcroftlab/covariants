@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/router'
+import { stringify } from 'querystring'
 import { Region, ClusterState, getPerCountryData, CountryDistribution } from 'src/io/getPerCountryData'
 import { Places } from 'src/io/getPlaces'
 
@@ -27,7 +28,7 @@ export const useCountryAndClusterQuery = (): {
   }
   state: {
     region: Region
-    setRegion: React.Dispatch<React.SetStateAction<Region>>
+    setRegion: (region: Region) => void
     places: Places
     setPlaces: React.Dispatch<React.SetStateAction<Places>>
     countryDistributions: CountryDistribution[]
@@ -60,6 +61,25 @@ export const useCountryAndClusterQuery = (): {
   const [places, setPlaces] = useState<Places>(initialPlaces)
   const [currentClusters, setClusters] = useState<ClusterState>(getClustersBySelectedClusters(selectedClusters))
 
+  const setCurrentRegionAsQs = (nextRegion: Region): void => {
+    if (currentRegion === nextRegion) {
+      return
+    }
+
+    const fullPath = `${router.basePath}${router.pathname}`
+
+    let nextRegionQs = {}
+
+    if (nextRegion === Region.WORLD) {
+      nextRegionQs = {}
+    } else if (nextRegion === Region.UNITED_STATES) {
+      nextRegionQs = { countries: 'usa' }
+    } else if (nextRegion === Region.SWITZERLAND) {
+      nextRegionQs = { countries: 'switzerland' }
+    }
+    return void router.replace(`${fullPath}?${stringify(nextRegionQs)}`)
+  }
+
   useEffect(() => {
     setPlaces(initialPlaces)
   }, [initialPlaces, setPlaces])
@@ -83,7 +103,7 @@ export const useCountryAndClusterQuery = (): {
     },
     state: {
       region: currentRegion,
-      setRegion: setCurrentRegion,
+      setRegion: setCurrentRegionAsQs,
       places,
       setPlaces,
       countryDistributions,
