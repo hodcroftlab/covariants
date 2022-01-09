@@ -19,6 +19,10 @@ export const convertUrlQueryToSelection = (queryString: ParsedUrlQuery): string[
   return []
 }
 
+/**
+ * A react hook that take in router query params as source of truth
+ * and compute the React component states for UI display
+ */
 export const useRouterQuery = (): {
   rawQueries: {
     selectedRegion: ParsedUrlQuery
