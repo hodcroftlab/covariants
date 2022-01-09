@@ -3,9 +3,8 @@ import { useRouter } from 'next/router'
 import { Region, ClusterState, getPerCountryData, CountryDistribution } from 'src/io/getPerCountryData'
 import { Places } from 'src/io/getPlaces'
 
-import { getRegionBySelectedCountries, getCurriedClustersBySelectedClusters } from './utils'
+import { getRegionBySelectedRegionQs, getCurriedClustersStateBySelectedClusters, ParsedUrlQuery } from './utils'
 
-export type ParsedUrlQuery = string | string[] | undefined
 
 export const convertUrlQueryToSelection = (queryString: ParsedUrlQuery): string[] => {
   if (!queryString) {
@@ -20,7 +19,7 @@ export const convertUrlQueryToSelection = (queryString: ParsedUrlQuery): string[
   return []
 }
 
-export const useCountryAndClusterQuery = (): {
+export const useRouterQuery = (): {
   rawQueries: {
     selectedRegion: ParsedUrlQuery
     selectedClusters: ParsedUrlQuery
@@ -38,7 +37,7 @@ export const useCountryAndClusterQuery = (): {
 
   const { region: selectedRegion, variants: selectedClusters } = router.query
 
-  const [currentRegion, setCurrentRegion] = useState(getRegionBySelectedCountries(selectedRegion))
+  const [currentRegion, setCurrentRegion] = useState<Region>(getRegionBySelectedRegionQs(selectedRegion))
 
   const {
     allPossibleClusters,
@@ -47,7 +46,7 @@ export const useCountryAndClusterQuery = (): {
     countryDistributions,
   } = useMemo(() => {
     const { clusters: allPossibleClusters, places, countryDistributions } = getPerCountryData(currentRegion)
-    const getClustersBySelectedClusters = getCurriedClustersBySelectedClusters(allPossibleClusters)
+    const getClustersBySelectedClusters = getCurriedClustersStateBySelectedClusters(allPossibleClusters)
     return {
       places,
       allPossibleClusters,
@@ -72,7 +71,7 @@ export const useCountryAndClusterQuery = (): {
   }, [selectedClusters, setClusters, getClustersBySelectedClusters])
 
   useEffect(() => {
-    setCurrentRegion(getRegionBySelectedCountries(selectedRegion))
+    setCurrentRegion(getRegionBySelectedRegionQs(selectedRegion))
   }, [selectedRegion, setCurrentRegion])
 
   return {

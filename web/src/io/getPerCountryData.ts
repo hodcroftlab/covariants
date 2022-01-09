@@ -5,11 +5,15 @@ import { pickBy } from 'lodash'
 import { getEnabledCountriesNames, getPlaces, Places } from 'src/io/getPlaces'
 import perCountryDataJson from 'src/../data/perCountryData.json'
 
+/**
+ * An enum of possible `region`, used primarily for internal React state. Also same key of the raw data
+ */
 export enum Region {
-  WORLD = 'World',
-  UNITED_STATES = 'United States',
-  SWITZERLAND = 'Switzerland',
+  World = 'World',
+  UnitedStates = 'United States',
+  Switzerland = 'Switzerland',
 }
+
 
 export interface PerCountryDatum {
   cluster_names: string[]

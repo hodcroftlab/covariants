@@ -24,8 +24,8 @@ import {
 } from 'src/io/getPerCountryData'
 
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
-import { useCountryAndClusterQuery } from './useCountryQuery'
-import { getCurrentQs } from './utils'
+import { useRouterQuery } from './useCountryQuery'
+import { getCurrentQs, RegionQueryString } from './utils'
 import { CountryFlag } from '../Common/CountryFlag'
 import { USStateCode } from '../Common/USStateCode'
 import { PageHeading } from '../Common/PageHeading'
@@ -37,12 +37,12 @@ export function CountryDistributionPage() {
   const router = useRouter()
   const {
     state: { region, setPlaces, places, countryDistributions, currentClusters, setClusters },
-  } = useCountryAndClusterQuery()
+  } = useRouterQuery()
 
-  const regionsTitle = useMemo(() => (region === Region.WORLD ? 'Countries' : 'Regions'), [region])
+  const regionsTitle = useMemo(() => (region === Region.World ? 'Countries' : 'Regions'), [region])
   const iconComponent = useMemo(() => {
-    if (region === Region.WORLD) return CountryFlag
-    if (region === Region.UNITED_STATES) return USStateCode
+    if (region === Region.World) return CountryFlag
+    if (region === Region.UnitedStates) return USStateCode
     return undefined
   }, [region])
 
@@ -120,12 +120,12 @@ export function CountryDistributionPage() {
       const fullPath = `${router.basePath}${router.pathname}`
       const nextRegionQs = { ...getCurrentQs(router) }
 
-      if (nextRegion === Region.WORLD) {
+      if (nextRegion === Region.World) {
         delete nextRegionQs.region
-      } else if (nextRegion === Region.UNITED_STATES) {
-        nextRegionQs.region = 'usa'
-      } else if (nextRegion === Region.SWITZERLAND) {
-        nextRegionQs.region = 'switzerland'
+      } else if (nextRegion === Region.UnitedStates) {
+        nextRegionQs.region = RegionQueryString.UnitedStates
+      } else if (nextRegion === Region.Switzerland) {
+        nextRegionQs.region = RegionQueryString.Switzerland
       }
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       router.replace(`${fullPath}?${stringify(nextRegionQs)}`)
