@@ -5,7 +5,6 @@ import { Places } from 'src/io/getPlaces'
 
 import { getRegionBySelectedRegionQs, getCurriedClustersStateBySelectedClusters, ParsedUrlQuery } from './utils'
 
-
 export const convertUrlQueryToSelection = (queryString: ParsedUrlQuery): string[] => {
   if (!queryString) {
     return []

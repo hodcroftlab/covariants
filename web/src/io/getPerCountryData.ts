@@ -14,7 +14,6 @@ export enum Region {
   Switzerland = 'Switzerland',
 }
 
-
 export interface PerCountryDatum {
   cluster_names: string[]
   distributions: CountryDistribution[]
