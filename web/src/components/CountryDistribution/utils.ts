@@ -55,12 +55,7 @@ export const getCurriedClustersStateBySelectedClusters = (fallbackClusters: Clus
       }
       return noClusterSelectedState
     }
-    let selectedClusters = new Set<string>()
-    if (typeof clusters === 'string') {
-      selectedClusters.add(clusters)
-    } else if (Array.isArray(clusters)) {
-      selectedClusters = new Set(clusters)
-    }
+    const selectedClusters = new Set<string>(Array.isArray(clusters) ? clusters : [clusters])
     return clusterKeys.reduce((acc, key) => {
       return { ...acc, [key]: { enabled: selectedClusters.has(key) } }
     }, {})
