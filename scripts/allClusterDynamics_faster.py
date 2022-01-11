@@ -799,6 +799,15 @@ print(f"Gathering metadata for all clusters took {round((t1-t0)/60,1)} min to ru
 ##################################
 # Get ALL sequence counts for ALL countries ONCE
 
+#This function takes are of the rare case when there are 53 wks & dates at start of the next year generate 'week 0'
+def to2week(x):
+    iso_y, iso_w, iso_d = x.isocalendar()[:3]
+    if iso_w==1:
+        prev_week = x - datetime.timedelta(days=7)
+        iso_y, iso_w, iso_d = prev_week.isocalendar()[:3]
+
+    return (iso_y, iso_w // 2 * 2)
+
 print("\nGathering up total sequences per week & 2 week period")
 
 t0 = time.time()
@@ -824,9 +833,7 @@ for coun in all_observed_countries:
     all_sequence_counts[coun]['week'] = counts_by_week
 
     # TWO WEEKS
-    temp_meta["calendar_2week"] = temp_meta["date_formatted"].apply(
-        lambda x: (x.isocalendar()[0], x.isocalendar()[1] // 2 * 2)
-    )
+    temp_meta["calendar_2week"] = temp_meta["date_formatted"].apply(to2week)
     temp_meta = temp_meta[temp_meta["calendar_2week"] >= min_data_week]
     week2_counts = temp_meta["calendar_2week"].value_counts().sort_index()
     counts_by_2week = week2_counts.to_dict()
@@ -861,9 +868,7 @@ if division:
             division_all_sequence_counts[sel_coun][div]['week'] = counts_by_week
 
             # TWO WEEKS
-            temp_meta["calendar_2week"] = temp_meta["date_formatted"].apply(
-                lambda x: (x.isocalendar()[0], x.isocalendar()[1] // 2 * 2)
-            )
+            temp_meta["calendar_2week"] = temp_meta["date_formatted"].apply(to2week)
             temp_meta = temp_meta[temp_meta["calendar_2week"] >= min_data_week]
             week2_counts = temp_meta["calendar_2week"].value_counts().sort_index()
             counts_by_2week = week2_counts.to_dict()
@@ -923,14 +928,6 @@ for clus in clus_to_run:
     # converts to tuple (year, ISO calendar week)
     cluster_meta["yr_wk"] = cluster_meta.date_formatted.apply(lambda x: (x.isocalendar()[0], x.isocalendar()[1]))
     # converts to tuple (year, ISO calendar week - every 2 weeks)
-    #This function takes are of the rare case when there are 53 wks & dates at start of the next year generate 'week 0'
-    def to2week(x):
-        iso_y, iso_w, iso_d = x.isocalendar()[:3]
-        if iso_w==1:
-            prev_week = x - datetime.timedelta(days=7)
-            iso_y, iso_w, iso_d = prev_week.isocalendar()[:3]
-
-        return (iso_y, iso_w // 2 * 2)
     cluster_meta["yr_2wk"] = cluster_meta.date_formatted.apply(to2week)
 
     for coun in observed_countries:
