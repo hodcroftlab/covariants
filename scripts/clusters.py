@@ -557,7 +557,7 @@ clusters = {
         "nextstrain_build": True,
         "graphing": False,
         "important": False,
-        "other_nextstrain_names": ["21K (Omicron)","21L (Omicron)","21M (Omicron)"]
+        "other_nextstrain_names": ["21K (Omicron)","21L (Omicron)","21M (Omicron)"],
         "country_info": [], 'col': "#b3d9ff", 
         "display_name": "21K.21L",
         "type": "do_not_display",
