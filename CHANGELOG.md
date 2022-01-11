@@ -1,5 +1,17 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2022-01-11
+
+### Including 21L (Omicron) in plotting
+
+- Include 21L (Omicron) in all plotting
+- Create separate 21L (Omicron) page, add to name table, etc
+- Separate out "VoC Header" from VoC pages to be an import - easier to update
+
+### Bugfix: Double-dates appearing
+
+- Bugfix for year-switch 'week 0' bug in 2-week datasets
+
 ## 2022-01-05
 
 - Add plot of all Nextstrain clades to Variants page
