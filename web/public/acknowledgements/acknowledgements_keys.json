@@ -1,10 +1,10 @@
 {
   "acknowledgements": {
     "20A.EU1": {
-      "numChunks": 170
+      "numChunks": 171
     },
     "20A.EU2": {
-      "numChunks": 34
+      "numChunks": 35
     },
     "20A.S.126A": {
       "numChunks": 2
@@ -13,67 +13,73 @@
       "numChunks": 23
     },
     "20H.Beta.V2": {
-      "numChunks": 40
+      "numChunks": 41
     },
     "20I.Alpha.V1": {
-      "numChunks": 1125
+      "numChunks": 1137
     },
     "20J.Gamma.V3": {
-      "numChunks": 112
+      "numChunks": 117
     },
     "21A.Delta": {
-      "numChunks": 124
+      "numChunks": 113
     },
     "21A.Delta.S.K417": {
-      "numChunks": 6
+      "numChunks": 7
     },
     "21B.Kappa": {
       "numChunks": 8
     },
     "21C.Epsilon": {
-      "numChunks": 64
+      "numChunks": 69
     },
     "21D.Eta": {
-      "numChunks": 9
+      "numChunks": 8
     },
     "21F.Iota": {
-      "numChunks": 43
+      "numChunks": 44
     },
     "21G.Lambda": {
       "numChunks": 10
     },
     "21H.Mu": {
-      "numChunks": 13
+      "numChunks": 15
     },
     "21I.Delta": {
-      "numChunks": 231
+      "numChunks": 269
     },
     "21J.Delta": {
-      "numChunks": 2526
+      "numChunks": 3546
+    },
+    "21K.21L": {
+      "numChunks": 224
     },
     "21K.Omicron": {
-      "numChunks": 1
+      "numChunks": 222
+    },
+    "21L": {
+      "numChunks": 2
+    },
+    "21L.Omicron": {
+      "numChunks": 2
     },
     "Delta.145H": {
-      "numChunks": 61
+      "numChunks": 130
     },
     "Delta.250I": {
-      "numChunks": 14
+      "numChunks": 18
     },
     "Delta.299I": {
-      "numChunks": 6
+      "numChunks": 7
     },
     "Delta.ORF1a3059F": {
-      "numChunks": 10
+      "numChunks": 17
     },
     "ORF1a.S3675": {
-      "numChunks": 1331
-    },
-    "Omicron.Similar": {
-      "numChunks": 1
+      "numChunks": 1568
     },
     "S.A222": {
-      "numChunks": 460
+      "numChunks": 569
     },
     "S.A626S": {
       "numChunks": 2
@@ -82,34 +88,34 @@
       "numChunks": 1
     },
     "S.E484": {
-      "numChunks": 238
+      "numChunks": 251
     },
     "S.H655": {
-      "numChunks": 120
+      "numChunks": 349
     },
     "S.H69-": {
-      "numChunks": 1136
+      "numChunks": 1366
     },
     "S.K417": {
-      "numChunks": 46
+      "numChunks": 123
     },
     "S.L18": {
-      "numChunks": 217
+      "numChunks": 229
     },
     "S.N439K": {
       "numChunks": 31
     },
     "S.N501": {
-      "numChunks": 1272
+      "numChunks": 1489
     },
     "S.P681": {
-      "numChunks": 4086
+      "numChunks": 5367
     },
     "S.Q613": {
-      "numChunks": 53
+      "numChunks": 66
     },
     "S.Q677": {
-      "numChunks": 63
+      "numChunks": 76
     },
     "S.Q677H.Bluebird": {
       "numChunks": 1
@@ -139,22 +145,22 @@
       "numChunks": 1
     },
     "S.S477": {
-      "numChunks": 77
+      "numChunks": 281
     },
     "S.S98F": {
       "numChunks": 16
     },
     "S.T572": {
-      "numChunks": 20
+      "numChunks": 25
     },
     "S.V1122L": {
       "numChunks": 1
     },
     "S.Y144-": {
-      "numChunks": 1117
+      "numChunks": 1342
     },
     "S.Y145": {
-      "numChunks": 76
+      "numChunks": 147
     },
     "S.Y453F": {
       "numChunks": 2
