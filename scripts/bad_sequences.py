@@ -1383,6 +1383,7 @@ bad_seqs = {
     "Oman/205029065/2020" : "2020-04-13", #alpha
     "USA/AZ-TG1047402/2020" : "2020-08-29", #delta
     "USA/AZ-TG816882/2020" : "2020-03-26", #S677PPelican
+    "Indonesia/JB-GS-WJHL-ITB-WGS092/2020" : "2020-10-02", #delta
 
     #Omicron with possibly bad dates (very early)
     "England/NORW-31059C2/2021" : "2021-09-13", #omicron
@@ -1397,8 +1398,14 @@ bad_seqs = {
     "Brazil/PA-L193-cd26806/2021" : "2021-09-10", #omicron
     "Netherlands/ZH-EMC-4332/2021" : "2021-08-12", #omicron
     "Scotland/QEUH-1DB485E/2021" : "2021-09-05", #21L omicron
-    #Omicron with very suspicous dates - month-day mixup?
+    #Omicron with very suspicous dates - month-day mixup or year mix up?
     "Brazil/SP-IAL-7587/2021" : "2021-10-12", #omicron
+    "USA/MD-HP22984-PIDCAGBGJL/2021" : "2021-02-23", #omicron, suspect should be '12-23'
+    "USA/LA-Tech2/2020" : "2020-12-27", #omicron, fixed to 2021 on GISAID 11Jan
+    "USA/LA-Tech3/2020" : "2020-12-28", #omicron, fixed to 2021 on GISAID 11Jan
+    "USA/LA-Tech4/2020" : "2020-12-28", #omicron, fixed to 2021 on GISAID 11Jan
+
+
 
     # Bad sequences from Germany - supposedly Delta in Oct 2020 - unlikely
     "Germany/NW-RKI-I-291769/2020" : "2020-10-13", #delta
