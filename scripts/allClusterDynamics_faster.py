@@ -923,7 +923,15 @@ for clus in clus_to_run:
     # converts to tuple (year, ISO calendar week)
     cluster_meta["yr_wk"] = cluster_meta.date_formatted.apply(lambda x: (x.isocalendar()[0], x.isocalendar()[1]))
     # converts to tuple (year, ISO calendar week - every 2 weeks)
-    cluster_meta["yr_2wk"] = cluster_meta.date_formatted.apply(lambda x: (x.isocalendar()[0], x.isocalendar()[1] // 2 * 2))
+    #This function takes are of the rare case when there are 53 wks & dates at start of the next year generate 'week 0'
+    def to2week(x):
+        iso_y, iso_w, iso_d = x.isocalendar()[:3]
+        if iso_w==1:
+            prev_week = x - datetime.timedelta(days=7)
+            iso_y, iso_w, iso_d = prev_week.isocalendar()[:3]
+
+        return (iso_y, iso_w // 2 * 2)
+    cluster_meta["yr_2wk"] = cluster_meta.date_formatted.apply(to2week)
 
     for coun in observed_countries:
         temp = cluster_meta[cluster_meta["country"].apply(lambda x: x == coun)]
