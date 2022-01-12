@@ -107,7 +107,7 @@ mutation_comparison = {
             "S:L981F"
         ]
     },
-    "21L\n(BA.2)": {
+    "21L (Omicron)\n(BA.2)": {
         "nonsynonymous": [
             "S:T19I",
             "S:L24-",
