@@ -1,5 +1,9 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2022-01-13
+- Correct suspected origin date of 20A/S:126A to late 2020 (to reflect publication cited)
+- Add '(Omicron)' to 21L in shared mutations table
+
 ## 2022-01-11
 
 ### Including 21L (Omicron) in plotting
