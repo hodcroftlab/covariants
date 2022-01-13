@@ -1384,6 +1384,11 @@ bad_seqs = {
     "USA/AZ-TG1047402/2020" : "2020-08-29", #delta
     "USA/AZ-TG816882/2020" : "2020-03-26", #S677PPelican
     "Indonesia/JB-GS-WJHL-ITB-WGS092/2020" : "2020-10-02", #delta
+    "USA/TX-HMH-MCoV-50521/2020" : "2020-07-17", #delta
+    "USA/NY-MSHSPSP-PV17752/2020" : "2020-09-07", #iota
+    "Germany/BAV-PL-virotum_ZKJ74/2020" : "2020-03-22", #EU1
+    "Senegal/1185/2020" : "2020-03-26", #EU1
+    "Senegal/1187/2020" : "2020-03-26", #EU1
 
     #Omicron with possibly bad dates (very early)
     "England/NORW-31059C2/2021" : "2021-09-13", #omicron
@@ -1404,8 +1409,97 @@ bad_seqs = {
     "USA/LA-Tech2/2020" : "2020-12-27", #omicron, fixed to 2021 on GISAID 11Jan
     "USA/LA-Tech3/2020" : "2020-12-28", #omicron, fixed to 2021 on GISAID 11Jan
     "USA/LA-Tech4/2020" : "2020-12-28", #omicron, fixed to 2021 on GISAID 11Jan
+    "Denmark/DCGC-302444/2020" : "2020-10-30", #omicron 21L - not available GISAID 13Jan
+    "CzechRepublic/CSQ4233/2021" : "2021-07-30", #omicron - bad as of 13Jan
+    "CzechRepublic/CSQ4569/2020" : "2020-10-23", #omicron - bad as of 13Jan
+    "Italy/EMR_AUSLRomagna_C003-22-33/2020" : "2020-12-30", #omicron - bad as of 13Jan
+    "SouthAfrica/NICD-N01364/2020" : "2020-12-30", #omicron - bad as of 13Jan
+    "USA/NJ-PHEL-V22000805/2021" : "2021-01-04", #omicron - bad as of 13Jan
+    "USA/NJ-PHEL-V22000812/2021" : "2021-01-03", #omicron - bad as of 13Jan
 
 
+    #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
+    #Alpha
+    "Senegal/24725/2020" : "2020-05-09", #alpha
+    "Senegal/24729/2020" : "2020-05-09", #alpha
+    "Senegal/24841/2020" : "2020-05-09", #alpha
+    "Senegal/24866/2020" : "2020-05-09", #alpha
+    "Senegal/24961/2020" : "2020-05-09", #alpha
+    #Beta
+    "Senegal/25620/2020" : "2020-05-10", #beta
+    #Delta
+    "Senegal/1785/2020" : "2020-03-31", #delta
+    "Senegal/1786/2020" : "2020-03-31", #delta
+    "Senegal/1803/2020" : "2020-03-30", #delta
+    "Senegal/25616/2020" : "2020-05-10", #delta
+    #21J.Delta
+    "Senegal/2018/2020" : "2020-04-01", #21J Delta
+    "Senegal/2021/2020" : "2020-04-02", #21J Delta
+    "Senegal/25388/2020" : "2020-05-09", #21J Delta
+    "Senegal/3426/2020" : "2020-04-10", #21J Delta
+    "Senegal/3428/2020" : "2020-04-10", #21J Delta
+    "Senegal/509/2020" : "2020-03-27", #21J Delta
+    #Eta
+    "Senegal/1083/2020" : "2020-03-25", #eta
+    "Senegal/26999/2020" : "2020-05-16", #eta
+    "Senegal/28296/2020" : "2020-05-11", #eta
+    #20AS126
+    "Senegal/24728/2020" : "2020-05-09", #20AS126
+    "Senegal/24929/2020" : "2020-05-09", #20AS126
+    "Senegal/25084/2020" : "2020-05-09", #20AS126
+    "Senegal/25116/2020" : "2020-05-09", #20AS126
+    "Senegal/25230/2020" : "2020-05-09", #20AS126
+    "Senegal/25237/2020" : "2020-05-09", #20AS126
+    "Senegal/25245/2020" : "2020-05-09", #20AS126
+    "Senegal/25246/2020" : "2020-05-09", #20AS126
+    "Senegal/25250/2020" : "2020-05-09", #20AS126
+    "Senegal/25371/2020" : "2020-05-10", #20AS126
+    "Senegal/25404/2020" : "2020-05-10", #20AS126
+    "Senegal/25423/2020" : "2020-05-10", #20AS126
+    "Senegal/25612/2020" : "2020-05-10", #20AS126
+    "Senegal/25614/2020" : "2020-05-10", #20AS126
+    "Senegal/25669/2020" : "2020-05-10", #20AS126
+    "Senegal/25725/2020" : "2020-05-10", #20AS126
+    "Senegal/25977/2020" : "2020-05-11", #20AS126
+    "Senegal/26003/2020" : "2020-05-09", #20AS126
+    "Senegal/26101/2020" : "2020-05-10", #20AS126
+    "Senegal/26167/2020" : "2020-05-10", #20AS126
+    "Senegal/26171/2020" : "2020-05-10", #20AS126
+    "Senegal/26190/2020" : "2020-05-11", #20AS126
+    "Senegal/26326/2020" : "2020-05-11", #20AS126
+    "Senegal/26403/2020" : "2020-05-12", #20AS126
+    "Senegal/26418/2020" : "2020-05-12", #20AS126
+    "Senegal/26471/2020" : "2020-05-13", #20AS126
+    "Senegal/26475/2020" : "2020-05-13", #20AS126
+    "Senegal/26493/2020" : "2020-05-13", #20AS126
+    "Senegal/26501/2020" : "2020-05-13", #20AS126
+    "Senegal/26508/2020" : "2020-05-13", #20AS126
+    "Senegal/26564/2020" : "2020-05-14", #20AS126
+    "Senegal/27009/2020" : "2020-05-16", #20AS126
+    "Senegal/27018/2020" : "2020-05-16", #20AS126
+    "Senegal/2703/2020" : "2020-04-05", #20AS126
+    "Senegal/27079/2020" : "2020-05-16", #20AS126
+    "Senegal/27181/2020" : "2020-05-16", #20AS126
+    "Senegal/27353/2020" : "2020-05-18", #20AS126
+    "Senegal/27634/2020" : "2020-05-20", #20AS126
+    "Senegal/28176/2020" : "2020-05-11", #20AS126
+    "Senegal/28219/2020" : "2020-05-11", #20AS126
+    "Senegal/28239/2020" : "2020-05-11", #20AS126
+    "Senegal/28362/2020" : "2020-05-11", #20AS126
+    "Senegal/28462/2020" : "2020-05-11", #20AS126
+    "Senegal/28852/2020" : "2020-05-12", #20AS126
+    "Senegal/28859/2020" : "2020-05-12", #20AS126
+    "Senegal/28861/2020" : "2020-05-12", #20AS126
+    "Senegal/28889/2020" : "2020-05-12", #20AS126
+    "Senegal/28892/2020" : "2020-05-12", #20AS126
+    "Senegal/28933/2020" : "2020-05-12", #20AS126
+    "Senegal/29211/2020" : "2020-05-12", #20AS126
+    "Senegal/29741/2020" : "2020-05-13", #20AS126
+    "Senegal/30120/2020" : "2020-05-13", #20AS126
+    "Senegal/30875/2020" : "2020-05-14", #20AS126
+    "Senegal/30917/2020" : "2020-05-14", #20AS126
+    "Senegal/30995/2020" : "2020-05-14", #20AS126
+    "Senegal/31134/2020" : "2020-05-14", #20AS126
 
     # Bad sequences from Germany - supposedly Delta in Oct 2020 - unlikely
     "Germany/NW-RKI-I-291769/2020" : "2020-10-13", #delta
