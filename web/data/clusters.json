@@ -2250,37 +2250,6 @@
     },
     {
       "alt_display_name": [
-        "21L"
-      ],
-      "build_name": "21L",
-      "cluster_data": [],
-      "col": "#cfafcf",
-      "country_info": [],
-      "display_name": "21L",
-      "graphing": false,
-      "important": false,
-      "mutations": {},
-      "nextstrain_build": true,
-      "nextstrain_name": "21L",
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21L",
-      "old_build_names": [
-        "21L"
-      ],
-      "pango_lineages": [
-        {
-          "name": "BA.2",
-          "url": "https://cov-lineages.org/lineage.html?lineage=BA.2"
-        }
-      ],
-      "snps": [
-        21618,
-        22775,
-        23525
-      ],
-      "type": "do_not_display"
-    },
-    {
-      "alt_display_name": [
         "21A/S:154K"
       ],
       "build_name": "21B.Kappa",
