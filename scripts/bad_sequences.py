@@ -1392,6 +1392,13 @@ bad_seqs = {
     "USA/TX-Retrobiotech-ACSQ1-19/2020" : "2020-08-01", #21J delta
     "USA/TX-Retrobiotech-ACSQ1-20/2020" : "2020-08-01", #21J delta
     "USA/TX-Retrobiotech-ACSQ1-21/2020" : "2020-08-01", #21J delta
+    "India/DL-ILBS-21724/2020" : "2020-06-13", #21JDelta
+    "Senegal/27609/2020" : "2020-05-21", #21JDelta
+    "Senegal/1787/2020" : "2020-03-31", #21JDelta
+    "Senegal/27963/2020" : "2020-05-23", #alpha
+    "Senegal/SC20-507/2020" : "2020-08-02", #alpha
+    "USA/TX-HMH-MCoV-45769/2020" : "2020-07-31", #alpha
+    "SouthAfrica/NICD-N01348/2020" : "2020-12-31", #omicron
 
     #Omicron with possibly bad dates (very early)
     "England/NORW-31059C2/2021" : "2021-09-13", #omicron
@@ -1457,6 +1464,14 @@ bad_seqs = {
     "USA/CO-CDPHE-2102497606/2021" : "2021-10-16", #omicron -  EPI_ISL_8594550
     "USA/CO-CDPHE-2102497611/2021" : "2021-10-17", #omicron -  EPI_ISL_8594773
     "USA/ID-IBL-781835/2021" : "2021-01-04", #omicron -  EPI_ISL_8750832
+    "Belgium/IPG-1120/2020" : "2020-01-03",  #omicron - EPI_ISL_8782907 #already corrected 19 Jan
+    "CzechRepublic/FNHK-Ps-002360/2021" : "2021-01-27", #Omicron -  EPI_ISL_8754081
+    "CzechRepublic/FNHK-Ps-002387/2021" : "2021-01-30", #Omicron -  EPI_ISL_8754108
+    "England/NORW-3121DB6/2021" : "2021-01-31", #Omicron -  EPI_ISL_8780855
+    "France/ARA-HCL022001382101/2021" : "2021-09-18", #Omicron -  EPI_ISL_8787158
+    "USA/NJ-PHEL-V22001459/2021" : "2021-01-05", #Omicron -  EPI_ISL_8751733
+    "USA/NJ-PHEL-V22001802/2021" : "2021-01-05", #Omicron -  EPI_ISL_8751771
+    "Wales/PHWC-PGWTHP/2021" : "2021-02-21", #Omicron -  EPI_ISL_8785818
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
