@@ -1399,6 +1399,8 @@ bad_seqs = {
     "Senegal/SC20-507/2020" : "2020-08-02", #alpha
     "USA/TX-HMH-MCoV-45769/2020" : "2020-07-31", #alpha
     "SouthAfrica/NICD-N01348/2020" : "2020-12-31", #omicron
+    "Slovenia/17-033034-CE/2020" : "2020-10-20", #delta
+    "Slovenia/17-034120-CE/2020" : "2020-10-21", #delta
 
     #Omicron with possibly bad dates (very early)
     "England/NORW-31059C2/2021" : "2021-09-13", #omicron
@@ -1414,7 +1416,7 @@ bad_seqs = {
     "Netherlands/ZH-EMC-4332/2021" : "2021-08-12", #omicron
     "Scotland/QEUH-1DB485E/2021" : "2021-09-05", #21L omicron
     #Omicron with very suspicous dates - month-day mixup or year mix up?
-    "Brazil/SP-IAL-7587/2021" : "2021-10-12", #omicron
+    "Brazil/SP-IAL-7587/2021" : "2021-10-12", #omicron #updated to 2021-12 as of 21 Jan
     "USA/MD-HP22984-PIDCAGBGJL/2021" : "2021-02-23", #omicron, suspect should be '12-23'
     "USA/LA-Tech2/2020" : "2020-12-27", #omicron, fixed to 2021 on GISAID 11Jan
     "USA/LA-Tech3/2020" : "2020-12-28", #omicron, fixed to 2021 on GISAID 11Jan
@@ -1424,54 +1426,58 @@ bad_seqs = {
     "CzechRepublic/CSQ4569/2020" : "2020-10-23", #omicron - bad as of 13Jan - gone as of 17
     "Italy/EMR_AUSLRomagna_C003-22-33/2020" : "2020-12-30", #omicron - bad as of 17Jan
     "SouthAfrica/NICD-N01364/2020" : "2020-12-30", #omicron - bad as of 13Jan - gone as of 17 
-    "USA/NJ-PHEL-V22000805/2021" : "2021-01-04", #omicron - bad as of 17Jan
-    "USA/NJ-PHEL-V22000812/2021" : "2021-01-03", #omicron - bad as of 17Jan
+    "USA/NJ-PHEL-V22000805/2021" : "2021-01-04", #omicron - bad as of 21Jan
+    "USA/NJ-PHEL-V22000812/2021" : "2021-01-03", #omicron - bad as of 21Jan
     #17 jan
-    "Botswana/R63B94_BHP_AAC51601/2021" : "2021-01-04", #omicron -  EPI_ISL_8608121
-    "Colombia/DC-LSPSDS-VG-585/2021" : "2021-01-02", #omicron -  EPI_ISL_8633813
-    "Denmark/DCGC-308314/2021" : "2021-01-08", #omicron -  EPI_ISL_8654495
-    "England/PHEP-YYDBAEU/2021" : "2021-03-20", #omicron -  EPI_ISL_8739344
-    "England/PHEP-YYDBYMF/2021" : "2021-01-12", #omicron -  EPI_ISL_8740466
-    "England/PHEP-YYDNQXP/2021" : "2021-01-27", #omicron -  EPI_ISL_8742366
-    "England/PHEP-YYDNX1F/2021" : "2021-07-10", #omicron -  EPI_ISL_8742630
-    "France/BFC-HMN-21122300847/2021" : "2021-04-16", #omicron -  EPI_ISL_8712774
-    "Italy/CAM-IZSM-RD00387701-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605091
-    "Italy/CAM-IZSM-RD00397677-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605094
-    "Italy/CAM-IZSM-RD00397685-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605096
-    "Italy/CAM-IZSM-RD00397686-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605095
-    "Italy/CAM-IZSM-RD050789D56-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605086
-    "Italy/CAM-IZSM-RD050885D56-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605087
-    "Italy/CAM-IZSM-RD051066D56-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605088
-    "Italy/CAM-IZSM-RD051108D56-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605085
-    "Italy/CAM-IZSM-RD051641D56-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605093
-    "Italy/CAM-IZSM-RD051800D56-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605092
-    "Italy/CAM-IZSM-RD054078D56-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605090
-    "Italy/CAM-IZSM-RD056893D57-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605084
-    "Italy/CAM-IZSM-RD056963D57-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605072
-    "Italy/CAM-IZSM-RD057057D57-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605082
-    "Italy/CAM-IZSM-RD057160D57-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605078
-    "Italy/CAM-IZSM-RD057230D57-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605077
-    "Italy/CAM-IZSM-RD057363D57-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605076
-    "Italy/CAM-IZSM-RD057685D57-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605075
-    "Italy/CAM-IZSM-RD058705D57-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605079
-    "Italy/CAM-IZSM-RD058831D57-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605080
-    "Switzerland/BE-SRO-500006_5564/2021" : "2021-01-01", #omicron -  EPI_ISL_8682997
-    "Switzerland/BE-SRO-500006_5615/2021" : "2021-01-01", #omicron -  EPI_ISL_8683006
-    "USA/CA-LACPHL-AF05847/2020" : "2020-12-22", #omicron -  EPI_ISL_8749301
-    "USA/CA-LACPHL-AF05848/2020" : "2020-12-22", #omicron -  EPI_ISL_8749302
-    "USA/CA-LACPHL-AF05859/2021" : "2021-02-28", #omicron -  EPI_ISL_8749341
-    "USA/CA-SCPHL-22WGS00055/2021" : "2021-01-06", #omicron -  EPI_ISL_8693648
-    "USA/CO-CDPHE-2102497606/2021" : "2021-10-16", #omicron -  EPI_ISL_8594550
-    "USA/CO-CDPHE-2102497611/2021" : "2021-10-17", #omicron -  EPI_ISL_8594773
-    "USA/ID-IBL-781835/2021" : "2021-01-04", #omicron -  EPI_ISL_8750832
+    "Colombia/DC-LSPSDS-VG-585/2021" : "2021-01-02", #omicron -  EPI_ISL_8633813 -corrected to 2022 21 Jan
     "Belgium/IPG-1120/2020" : "2020-01-03",  #omicron - EPI_ISL_8782907 #already corrected 19 Jan
-    "CzechRepublic/FNHK-Ps-002360/2021" : "2021-01-27", #Omicron -  EPI_ISL_8754081
-    "CzechRepublic/FNHK-Ps-002387/2021" : "2021-01-30", #Omicron -  EPI_ISL_8754108
-    "England/NORW-3121DB6/2021" : "2021-01-31", #Omicron -  EPI_ISL_8780855
-    "France/ARA-HCL022001382101/2021" : "2021-09-18", #Omicron -  EPI_ISL_8787158
-    "USA/NJ-PHEL-V22001459/2021" : "2021-01-05", #Omicron -  EPI_ISL_8751733
-    "USA/NJ-PHEL-V22001802/2021" : "2021-01-05", #Omicron -  EPI_ISL_8751771
-    "Wales/PHWC-PGWTHP/2021" : "2021-02-21", #Omicron -  EPI_ISL_8785818
+    "Botswana/R63B94_BHP_AAC51601/2021" : "2021-01-04", #omicron -  EPI_ISL_8608121 - bad 21 jan
+    "Denmark/DCGC-308314/2021" : "2021-01-08", #omicron -  EPI_ISL_8654495 - bad 21 Jan
+    "England/PHEP-YYDBAEU/2021" : "2021-03-20", #omicron -  EPI_ISL_8739344 - bad 21 Jan
+    "England/PHEP-YYDBYMF/2021" : "2021-01-12", #omicron -  EPI_ISL_8740466 - bad 21 Jan
+    "England/PHEP-YYDNQXP/2021" : "2021-01-27", #omicron -  EPI_ISL_8742366 - bad 21 Jan
+    "England/PHEP-YYDNX1F/2021" : "2021-07-10", #omicron -  EPI_ISL_8742630 - bad 21 Jan
+    "France/BFC-HMN-21122300847/2021" : "2021-04-16", #omicron -  EPI_ISL_8712774 - bad 21 Jan
+    "Italy/CAM-IZSM-RD00387701-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605091 - bad 21 ajn
+    "Italy/CAM-IZSM-RD00397677-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605094 - bad 21 ajn
+    "Italy/CAM-IZSM-RD00397685-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605096 - bad 21 ajn
+    "Italy/CAM-IZSM-RD00397686-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605095 - bad 21 ajn
+    "Italy/CAM-IZSM-RD050789D56-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605086 - bad 21 ajn
+    "Italy/CAM-IZSM-RD050885D56-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605087 - bad 21 ajn
+    "Italy/CAM-IZSM-RD051066D56-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605088 - bad 21 ajn
+    "Italy/CAM-IZSM-RD051108D56-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605085 - bad 21 ajn
+    "Italy/CAM-IZSM-RD051641D56-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605093 - bad 21 ajn
+    "Italy/CAM-IZSM-RD051800D56-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605092 - bad 21 ajn
+    "Italy/CAM-IZSM-RD054078D56-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605090 - bad 21 ajn
+    "Italy/CAM-IZSM-RD056893D57-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605084 - bad 21 ajn
+    "Italy/CAM-IZSM-RD056963D57-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605072 - bad 21 ajn
+    "Italy/CAM-IZSM-RD057057D57-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605082 - bad 21 ajn
+    "Italy/CAM-IZSM-RD057160D57-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605078 - bad 21 ajn
+    "Italy/CAM-IZSM-RD057230D57-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605077 - bad 21 ajn
+    "Italy/CAM-IZSM-RD057363D57-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605076 - bad 21 ajn
+    "Italy/CAM-IZSM-RD057685D57-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605075 - bad 21 ajn
+    "Italy/CAM-IZSM-RD058705D57-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605079 - bad 21 ajn
+    "Italy/CAM-IZSM-RD058831D57-IZSM-COLLI-TIGEM/2021" : "2021-01-03", #omicron -  EPI_ISL_8605080 - bad 21 ajn
+    "Switzerland/BE-SRO-500006_5564/2021" : "2021-01-01", #omicron -  EPI_ISL_8682997 -still bad 21 Jan
+    "Switzerland/BE-SRO-500006_5615/2021" : "2021-01-01", #omicron -  EPI_ISL_8683006 -still bad 21 Jan
+    "USA/CA-LACPHL-AF05847/2020" : "2020-12-22", #omicron -  EPI_ISL_8749301 -still bad 21 Jan
+    "USA/CA-LACPHL-AF05848/2020" : "2020-12-22", #omicron -  EPI_ISL_8749302 -still bad 21 Jan
+    "USA/CA-LACPHL-AF05859/2021" : "2021-02-28", #omicron -  EPI_ISL_8749341 -still bad 21 Jan
+    "USA/CA-SCPHL-22WGS00055/2021" : "2021-01-06", #omicron -  EPI_ISL_8693648 -still bad 21 Jan
+    "USA/CO-CDPHE-2102497606/2021" : "2021-10-16", #omicron -  EPI_ISL_8594550 -still bad 21 Jan
+    "USA/CO-CDPHE-2102497611/2021" : "2021-10-17", #omicron -  EPI_ISL_8594773 -still bad 21 Jan
+    "USA/ID-IBL-781835/2021" : "2021-01-04", #omicron -  EPI_ISL_8750832 -still bad 21 Jan
+    "CzechRepublic/FNHK-Ps-002360/2021" : "2021-01-27", #Omicron -  EPI_ISL_8754081 -still bad 21 Jan
+    "CzechRepublic/FNHK-Ps-002387/2021" : "2021-01-30", #Omicron -  EPI_ISL_8754108 -still bad 21 Jan
+    "England/NORW-3121DB6/2021" : "2021-01-31", #Omicron -  EPI_ISL_8780855 -still bad 21 Jan
+    "France/ARA-HCL022001382101/2021" : "2021-09-18", #Omicron -  EPI_ISL_8787158 -still bad 21 Jan
+    "USA/NJ-PHEL-V22001459/2021" : "2021-01-05", #Omicron -  EPI_ISL_8751733 -still bad 21 Jan
+    "USA/NJ-PHEL-V22001802/2021" : "2021-01-05", #Omicron -  EPI_ISL_8751771 -still bad 21 Jan
+    "Wales/PHWC-PGWTHP/2021" : "2021-02-21", #Omicron -  EPI_ISL_8785818 -still bad 21 Jan
+    #21 jan
+    "Canada/SK-RRPL-297384/2021" : "2021-08-31",  #omicron - EPI_ISL_8796646
+    "CzechRepublic/CSQ4732/2021" : "2021-07-20",  #omicron - EPI_ISL_8800893
+    "USA/NJ-PHEL-V22000870/2021" : "2021-01-03",  #omicron - EPI_ISL_8817265
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
