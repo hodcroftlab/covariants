@@ -1401,6 +1401,80 @@ bad_seqs = {
     "SouthAfrica/NICD-N01348/2020" : "2020-12-31", #omicron
     "Slovenia/17-033034-CE/2020" : "2020-10-20", #delta
     "Slovenia/17-034120-CE/2020" : "2020-10-21", #delta
+    "Switzerland/AG-UHB-301226-1010/2020" : "2020-01-05", #alpha
+    "Switzerland/BE-UHB-40388277501/2020" : "2020-01-10", #alpha
+    "Switzerland/BE-UHB-40388300901/2020" : "2020-01-10", #alpha
+    "Switzerland/BE-UHB-40388385501/2020" : "2020-01-10", #alpha
+    "USA/HI-BL030/2020" : "2020-05-28", #alpha
+    "USA/HI-BL031/2020" : "2020-07-22", #alpha
+    "USA/HI-BL034/2020" : "2020-06-29", #alpha
+    "USA/HI-BL038/2020" : "2020-06-24", #alpha
+    "USA/HI-BL041/2020" : "2020-06-25", #alpha
+    "USA/HI-BL047/2020" : "2020-06-26", #alpha
+    "USA/HI-BL051/2020" : "2020-06-28", #alpha
+    "USA/HI-BL054/2020" : "2020-06-28", #alpha
+    "TrinidadandTobago/25889M/2020" : "2020-08-22", #gamma
+    "USA/HI-BL043/2020" : "2020-06-25", #gamma
+    "USA/HI-BL050/2020" : "2020-06-27", #gamma
+    "Gabon/11046/2020" : "2020-07-12", #delta
+    "USA/HI-BL092/2020" : "2020-07-31", #delta
+    "USA/HI-BL106/2020" : "2020-07-30", #delta
+    "USA/HI-BL036/2020" : "2020-06-30", #delta
+    "USA/HI-BL044/2020" : "2020-06-25", #delta
+    "USA/HI-BL063/2020" : "2020-08-10", #delta
+    "USA/HI-BL081/2020" : "2020-07-30", #delta
+    "USA/HI-BL086/2020" : "2020-07-30", #delta
+    "USA/HI-BL088/2020" : "2020-07-30", #delta
+    "USA/HI-BL032/2020" : "2020-06-29", #delta
+    "USA/HI-BL035/2020" : "2020-06-30", #delta
+    "USA/HI-BL037/2020" : "2020-06-23", #delta
+    "USA/HI-BL039/2020" : "2020-06-24", #delta
+    "USA/HI-BL040/2020" : "2020-06-24", #delta
+    "USA/HI-BL042/2020" : "2020-06-25", #delta
+    "USA/HI-BL045/2020" : "2020-06-25", #delta
+    "USA/HI-BL048/2020" : "2020-06-26", #delta
+    "USA/HI-BL049/2020" : "2020-06-27", #delta
+    "USA/HI-BL052/2020" : "2020-06-28", #delta
+    "USA/HI-BL057/2020" : "2020-07-11", #delta
+    "USA/HI-BL059/2020" : "2020-07-23", #delta
+    "USA/HI-BL060/2020" : "2020-07-30", #delta
+    "USA/HI-BL065/2020" : "2020-08-04", #delta
+    "USA/HI-BL066/2020" : "2020-07-29", #delta
+    "USA/HI-BL067/2020" : "2020-07-29", #delta
+    "USA/HI-BL068/2020" : "2020-07-29", #delta
+    "USA/HI-BL070/2020" : "2020-07-29", #delta
+    "USA/HI-BL075/2020" : "2020-07-30", #delta
+    "USA/HI-BL076/2020" : "2020-07-30", #delta
+    "USA/HI-BL077/2020" : "2020-07-30", #delta
+    "USA/HI-BL078/2020" : "2020-07-30", #delta
+    "USA/HI-BL079/2020" : "2020-07-30", #delta
+    "USA/HI-BL080/2020" : "2020-07-30", #delta
+    "USA/HI-BL082/2020" : "2020-07-30", #delta
+    "USA/HI-BL084/2020" : "2020-07-30", #delta
+    "USA/HI-BL085/2020" : "2020-07-30", #delta
+    "USA/HI-BL087/2020" : "2020-07-30", #delta
+    "USA/HI-BL093/2020" : "2020-07-21", #delta
+    "USA/HI-BL094/2020" : "2020-07-21", #delta
+    "USA/HI-BL095/2020" : "2020-07-21", #delta
+    "USA/HI-BL096/2020" : "2020-07-23", #delta
+    "USA/HI-BL097/2020" : "2020-07-27", #delta
+    "USA/HI-BL098/2020" : "2020-07-28", #delta
+    "USA/HI-BL101/2020" : "2020-07-28", #delta
+    "USA/HI-BL104/2020" : "2020-07-29", #delta
+    "USA/HI-BL105/2020" : "2020-07-30", #delta
+    "USA/HI-BL108/2020" : "2020-07-31", #delta
+    "USA/HI-BL109/2020" : "2020-07-31", #delta
+    "USA/HI-BL110/2020" : "2020-08-03", #delta
+    "USA/HI-BL112/2020" : "2020-07-27", #delta
+    "USA/HI-BL115/2020" : "2020-07-28", #delta
+    "USA/HI-BL118/2020" : "2020-08-17", #delta
+    "USA/HI-BL120/2020" : "2020-08-18", #delta
+    "USA/HI-BL121/2020" : "2020-08-12", #delta
+    "USA/HI-BL065/2020" : "2020-08-04", #delta
+    "USA/HI-BL093/2020" : "2020-07-21", #delta
+    "USA/HI-BL095/2020" : "2020-07-21", #delta
+    "USA/HI-BL112/2020" : "2020-07-27", #delta
+    "USA/HI-BL115/2020" : "2020-07-28", #delta
 
     #Omicron with possibly bad dates (very early)
     "England/NORW-31059C2/2021" : "2021-09-13", #omicron
@@ -1478,6 +1552,24 @@ bad_seqs = {
     "Canada/SK-RRPL-297384/2021" : "2021-08-31",  #omicron - EPI_ISL_8796646
     "CzechRepublic/CSQ4732/2021" : "2021-07-20",  #omicron - EPI_ISL_8800893
     "USA/NJ-PHEL-V22000870/2021" : "2021-01-03",  #omicron - EPI_ISL_8817265
+    # 24 jan
+    "Belgium/ULG-23678/2021" : "2021-01-28",  # omicron - EPI_ISL_8893774
+    "Belgium/ULG-23679/2021" : "2021-01-28",  # omicron - EPI_ISL_8893775
+    "Belgium/ULG-23680/2021" : "2021-01-28",  # omicron - EPI_ISL_8893776
+    "England/PHEP-YYDKEHE/2021" : "2021-03-21",  # omicron - EPI_ISL_8884877
+    "Italy/APU-IZSPB-PT5669/2021" : "2021-10-07",  # omicron - EPI_ISL_8920739
+    "Poland/PZH-UMB-6862/2021" : "2021-01-03",  # omicron - EPI_ISL_8975569
+    "Poland/PZH-UMB-6863/2021" : "2021-01-03",  # omicron - EPI_ISL_8975882
+    "Poland/PZH-UMB-6926/2021" : "2021-01-07",  # omicron - EPI_ISL_8975670
+    "SouthAfrica/NHLS-UCT-GS-E463/2021" : "2021-07-21",  # omicron - EPI_ISL_8975087
+    "USA/CA-Curative-595174224035/2021" : "2021-01-07",  # omicron - EPI_ISL_8977069
+    "USA/CA-Curative-828963186251/2021" : "2021-01-07",  # omicron - EPI_ISL_8977019
+    "USA/TN-IVY-ZZXACKAU/2021" : "2021-01-05",  # omicron - EPI_ISL_8898157
+    "USA/TN-IVY-ZZXACKAZ/2021" : "2021-01-05",  # omicron - EPI_ISL_8898158
+    "USA/TN-IVY-ZZXACKBE/2021" : "2021-01-05",  # omicron - EPI_ISL_8898159
+    "USA/TN-IVY-ZZXACKBY/2021" : "2021-01-06",  # omicron - EPI_ISL_8898161
+    "USA/TN-IVY-ZZXACKC3/2021" : "2021-01-06",  # omicron - EPI_ISL_8898162
+
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
