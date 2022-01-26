@@ -1569,7 +1569,9 @@ bad_seqs = {
     "USA/TN-IVY-ZZXACKBE/2021" : "2021-01-05",  # omicron - EPI_ISL_8898159
     "USA/TN-IVY-ZZXACKBY/2021" : "2021-01-06",  # omicron - EPI_ISL_8898161
     "USA/TN-IVY-ZZXACKC3/2021" : "2021-01-06",  # omicron - EPI_ISL_8898162
-
+    # 26 jan
+    "CzechRepublic/CSQ5216/2021" : "2021-01-12", #omicron -  EPI_ISL_9018586
+    "England/LOND-YYBY9H8/2020" : "2020-09-15", #omicron -  EPI_ISL_8989562
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
