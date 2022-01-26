@@ -13,8 +13,9 @@ cluster_first_dates = {
     "Delta": {"first_date": "2020-10-22"}, #Delta
     "21I.Delta": {"first_date": "2020-10-22"}, #21I Delta
     "21J.Delta": {"first_date": "2020-10-22"}, #21J Delta
-    "21L": {"first_date": "2021-10-20"}, #omicron
-    "21K.Omicron": {"first_date": "2021-10-20"}, #omicron
+    "21M.Omicron": {"first_date": "2021-10-17"}, #omicron
+    "21L.Omicron": {"first_date": "2021-10-17"}, #omicron
+    "21K.Omicron": {"first_date": "2021-10-17"}, #omicron
     "Kappa": {"first_date": "2020-10-30"}, #Kappa
     "Delta417": {"first_date": "2020-10-30"}, #Delta plus (same as delta)
     "Eta": {"first_date": "2020-11-21"}, #Eta
