@@ -1572,6 +1572,16 @@ bad_seqs = {
     # 26 jan
     "CzechRepublic/CSQ5216/2021" : "2021-01-12", #omicron -  EPI_ISL_9018586
     "England/LOND-YYBY9H8/2020" : "2020-09-15", #omicron -  EPI_ISL_8989562
+    "Denmark/DCGC-313876/2021" : "2021-01-11", #21L omicron
+    #28 jan
+    "Australia/NSW-RPAH-2375/2021" : "2021-01-18", #21K Omicron -- EPI_ISL_9059113
+    "Bermuda/WR-NYGC-DEC-6121-EYDE033/2021" : "2021-09-12", #21K Omicron -- EPI_ISL_9121167
+    "Bermuda/WR-NYGC-DEC-6122-FFRF784/2021" : "2021-09-12", #21K Omicron -- EPI_ISL_9121153
+    "Bermuda/WR-NYGC-DEC-6126-GNOP644/2021" : "2021-10-12", #21K Omicron -- EPI_ISL_9121170
+    "Italy/PUG_UNIBA_APU-BA419/2021" : "2021-01-17", #21K Omicron -- EPI_ISL_9012689
+    "USA/LA-EVTL11053/2021" : "2021-01-04", #21K Omicron -- EPI_ISL_9090449
+    "USA/NJ-PHEL-V22002856/2020" : "2020-12-31", #21K Omicron -- EPI_ISL_9060723
+    "India/KA-RFNB-2760/2021" :  "2021-01-04", #21L Omicron -- EPI_ISL_9092511
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
