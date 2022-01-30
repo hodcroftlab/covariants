@@ -51,7 +51,7 @@ export function ProteinCardTitle({ cluster }: ProteinCardProps) {
   return (
     <span className="d-flex w-100">
       <ProteinCardTitleIcon />
-      <ProteinCardHeading>{`Protein model for ${cluster.display_name}`}</ProteinCardHeading>
+      <ProteinCardHeading>{`Spike protein model for ${cluster.display_name}`}</ProteinCardHeading>
     </span>
   )
 }
@@ -61,7 +61,7 @@ export function Placeholder() {
     <Container fluid className="">
       <Row noGutters>
         <Col>
-          <p>{'Protein model is not yet available for this variant'}</p>
+          <p>{'Spike protein model is not yet available for this variant'}</p>
         </Col>
       </Row>
 
@@ -131,7 +131,7 @@ export function ProteinCard({ cluster }: ProteinCardProps) {
             <GifPlayerWrapper>{Player}</GifPlayerWrapper>
             <figcaption className="d-flex">
               <small className="mx-auto">
-                {`Protein model for ${cluster.display_name}. Figure made via `}
+                {`Spike protein model for ${cluster.display_name}. Figure made via `}
                 <LinkExternal href="https://www.gisaid.org/" icon={null}>
                   <GisaidLogo className="my-auto" height={18} />
                 </LinkExternal>
