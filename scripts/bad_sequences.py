@@ -1475,6 +1475,29 @@ bad_seqs = {
     "USA/HI-BL095/2020" : "2020-07-21", #delta
     "USA/HI-BL112/2020" : "2020-07-27", #delta
     "USA/HI-BL115/2020" : "2020-07-28", #delta
+    "USA/HI-BL029/2020" : "2020-05-28", #alpha
+    "USA/HI-BL053/2020" : "2020-06-28", #gamma
+    "USA/HI-BL033/2020" : "2020-06-29", #21H
+    "India/TN-CLRI-CIC0568/2020" : "2020-09-05", #delta
+    "India/TN-CLRI-CIC0604/2020" : "2020-09-03", #delta
+    "India/TN-CLRI-CIC0648/2020" : "2020-08-25", #delta
+    "India/TN-CLRI-CIC0643/2020" : "2020-07-11", #delta
+    "India/TN-CLRI-CIC0646/2020" : "2020-08-25", #delta
+    "India/TN-CLRI-CIC0647/2020" : "2020-08-10", #delta
+    "India/TN-CLRI-CIC0651/2020" : "2020-08-25", #delta
+    "India/TN-CLRI-CIC0654/2020" : "2020-09-14", #delta
+    "USA/HI-BL062/2020" : "2020-08-09", #delta
+    "USA/HI-BL064/2020" : "2020-07-03", #delta
+    "USA/HI-BL069/2020" : "2020-07-29", #delta
+    "USA/HI-BL071/2020" : "2020-07-29", #delta
+    "USA/HI-BL072/2020" : "2020-07-29", #delta
+    "USA/HI-BL090/2020" : "2020-07-30", #delta
+    "USA/HI-BL091/2020" : "2020-07-31", #delta
+    "USA/HI-BL099/2020" : "2020-07-28", #delta
+    "USA/HI-BL103/2020" : "2020-07-19", #delta
+    "USA/HI-BL107/2020" : "2020-07-30", #delta
+    "USA/HI-BL111/2020" : "2020-07-27", #delta
+    "USA/HI-BL117/2020" : "2020-08-13", #delta
 
     #Omicron with possibly bad dates (very early)
     "England/NORW-31059C2/2021" : "2021-09-13", #omicron
@@ -1582,6 +1605,30 @@ bad_seqs = {
     "USA/LA-EVTL11053/2021" : "2021-01-04", #21K Omicron -- EPI_ISL_9090449
     "USA/NJ-PHEL-V22002856/2020" : "2020-12-31", #21K Omicron -- EPI_ISL_9060723
     "India/KA-RFNB-2760/2021" :  "2021-01-04", #21L Omicron -- EPI_ISL_9092511
+    #31 jan
+    "Croatia/21065/2021" : "2021-01-03", #omicron -  EPI_ISL_9148694
+    "Croatia/21066/2021" : "2021-01-03", #omicron -  EPI_ISL_9148695
+    "England/NORT-YBU1G4/2021" : "2021-10-07", #omicron -  EPI_ISL_9226081
+    "England/NORT-YBUZR3/2021" : "2021-02-05", #omicron -  EPI_ISL_9227884
+    "France/PDL-IPP02231/2021" : "2021-01-09", #omicron -  EPI_ISL_9245864
+    "France/PDL-IPP02232/2021" : "2021-01-09", #omicron -  EPI_ISL_9245865
+    "France/PDL-IPP02235/2021" : "2021-01-10", #omicron -  EPI_ISL_9245867
+    "France/PDL-IPP02236/2021" : "2021-01-10", #omicron -  EPI_ISL_9245868
+    "France/PDL-IPP02237/2021" : "2021-01-10", #omicron -  EPI_ISL_9245925
+    "France/PDL-IPP02238/2021" : "2021-01-10", #omicron -  EPI_ISL_9245869
+    "France/PDL-IPP02239/2021" : "2021-01-10", #omicron -  EPI_ISL_9245870
+    "France/PDL-IPP02241/2021" : "2021-01-10", #omicron -  EPI_ISL_9245871
+    "Japan/PG-179772/2021" : "2021-01-07", #omicron -  EPI_ISL_9209138
+    "Japan/PG-179953/2021" : "2021-01-06", #omicron -  EPI_ISL_9209712
+    "Japan/PG-179964/2021" : "2021-01-06", #omicron -  EPI_ISL_9209750
+    "Japan/PG-179973/2021" : "2021-01-06", #omicron -  EPI_ISL_9209773
+    "Japan/PG-180032/2021" : "2021-01-07", #omicron -  EPI_ISL_9209943
+    "Japan/PG-180052/2021" : "2021-01-07", #omicron -  EPI_ISL_9210006
+    "Poland/PZH-UMB-7844/2021" : "2021-01-14", #omicron -  EPI_ISL_9154371
+    "Slovakia/UKBA-8595/2021" : "2021-01-20", #omicron -  EPI_ISL_9206118
+    "USA/CT-DPH-1060794001/2021" : "2021-01-12", #omicron -  EPI_ISL_9261945
+    "USA/ME-HETL-J11431/2021" : "2021-01-27", #omicron -  EPI_ISL_9263961
+    "Zimbabwe/S_2910_B23/2021" : "2021-10-12", #omicron -  EPI_ISL_9184696
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
