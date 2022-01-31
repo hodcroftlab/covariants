@@ -1013,7 +1013,7 @@ print(f"Date-binning data took {round((t1-t0)/60,1)} min to run\n\n")
 
 t0 = time.time()
 
-cutoff_num_seqs = 600
+cutoff_num_seqs = 1000
 
 # This prints countries with more than cutoff_num_seqs PER CLUSTER - messy output.
 clusters_tww = []
@@ -1411,4 +1411,19 @@ if "all" in clus_answer:
 print("\nDate alerts:")
 print([f"{x}: {len(alert_first_date[x])}" for x in alert_first_date.keys()])
 print("To view, use 'print_date_alerts(clus)' or 'print_all_date_alerts()'")
+
+#reminder to check for countries without colors or no longer plotted
+
+if "all" in clus_answer:
+    no_colors = [coun for coun in countries_plotted.keys() if coun not in country_styles_all]
+    if len(no_colors) > 0:
+        print(
+            f"REMINDER: {len(no_colors)} countries have no color. Scroll up to see them!"
+        )
+    not_plotted = [coun for coun in country_styles_all if coun not in countries_plotted.keys()]
+    if len(not_plotted) > 0:
+        print(
+            f"REMINDER: {len(not_plotted)} countries are not plotted anymore. Scroll up to see them!"
+        )
+
 
