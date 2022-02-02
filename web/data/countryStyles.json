@@ -1,8 +1,4 @@
 {
-  "Angola": {
-    "c": "#1f78b4",
-    "ls": "dotted"
-  },
   "Argentina": {
     "c": "#004d00",
     "ls": "-."
@@ -20,7 +16,7 @@
     "ls": "--"
   },
   "Bahrain": {
-    "c": "#b15928",
+    "c": "#6a3d9a",
     "ls": "dotted"
   },
   "Bangladesh": {
@@ -32,7 +28,7 @@
     "ls": "-"
   },
   "Bonaire": {
-    "c": "#ff66ff",
+    "c": "#b15928",
     "ls": "dotted"
   },
   "Bosnia and Herzegovina": {
@@ -68,7 +64,7 @@
     "ls": "--"
   },
   "Costa Rica": {
-    "c": "#b2df8a",
+    "c": "#cab2d6",
     "ls": "dotted"
   },
   "Croatia": {
@@ -104,7 +100,7 @@
     "ls": "-"
   },
   "Georgia": {
-    "c": "#a6a6a6",
+    "c": "#990000",
     "ls": "dotted"
   },
   "Germany": {
@@ -118,14 +114,6 @@
   "Greece": {
     "c": "#9900cc",
     "ls": "-."
-  },
-  "Guatemala": {
-    "c": "#000000",
-    "ls": "dotted"
-  },
-  "Hong Kong": {
-    "c": "#004d00",
-    "ls": "dotted"
   },
   "Iceland": {
     "c": "#0000ff",
@@ -159,17 +147,9 @@
     "c": "#a6a6a6",
     "ls": "-."
   },
-  "Kosovo": {
-    "c": "#990000",
-    "ls": "dotted"
-  },
   "Latvia": {
     "c": "#a6a6a6",
     "ls": "--"
-  },
-  "Lebanon": {
-    "c": "#ff7f00",
-    "ls": "dotted"
   },
   "Lithuania": {
     "c": "#ff66ff",
@@ -183,24 +163,16 @@
     "c": "#cab2d6",
     "ls": "-."
   },
-  "Maldives": {
-    "c": "#e31a1c",
-    "ls": "dotted"
-  },
   "Mexico": {
     "c": "#e31a1c",
     "ls": "-."
-  },
-  "Nepal": {
-    "c": "#ffcc00",
-    "ls": "dotted"
   },
   "Netherlands": {
     "c": "#33a02c",
     "ls": "-"
   },
   "New Zealand": {
-    "c": "#cab2d6",
+    "c": "#e31a1c",
     "ls": "dotted"
   },
   "Nigeria": {
@@ -212,11 +184,11 @@
     "ls": "-"
   },
   "Pakistan": {
-    "c": "#9900cc",
+    "c": "#b2df8a",
     "ls": "dotted"
   },
   "Papua New Guinea": {
-    "c": "#0000ff",
+    "c": "#9900cc",
     "ls": "dotted"
   },
   "Peru": {
@@ -247,8 +219,8 @@
     "c": "#cab2d6",
     "ls": "--"
   },
-  "Seychelles": {
-    "c": "#fdbf6f",
+  "Senegal": {
+    "c": "#1f78b4",
     "ls": "dotted"
   },
   "Singapore": {
@@ -312,7 +284,7 @@
     "ls": "-"
   },
   "Vietnam": {
-    "c": "#6a3d9a",
+    "c": "#ff7f00",
     "ls": "dotted"
   }
 }
