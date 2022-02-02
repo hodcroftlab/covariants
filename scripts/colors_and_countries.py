@@ -190,24 +190,17 @@ country_list_3 = [
 
 country_list_4 = [
     "Sint Maarten",         #1
-    "Angola",               #2
+    "Senegal",              #2
     "Trinidad and Tobago",  #3
     "Peru",                 #4
-    "Maldives",               #5
-    "Lebanon",              #6
-    "New Zealand",          #7
-    "Vietnam",             #8
-    "Costa Rica",           #9
-    "Bahrain",              #10
-    "Pakistan",             #11
-    "Kosovo",               #12
-    "Bonaire",              #13
-    "Papua New Guinea",     #14
-    "Georgia",              #15
-    "Guatemala",            #16
-    "Hong Kong",            #17
-    "Nepal",                #18
-    "Seychelles",           #19
+    "New Zealand",          #5
+    "Vietnam",             #6
+    "Costa Rica",           #7
+    "Bahrain",              #8
+    "Pakistan",             #9
+    "Bonaire",              #10
+    "Papua New Guinea",     #11
+    "Georgia",              #12
 ]
 
 country_styles_1 = {

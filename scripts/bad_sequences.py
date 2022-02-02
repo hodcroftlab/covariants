@@ -1629,6 +1629,49 @@ bad_seqs = {
     "USA/CT-DPH-1060794001/2021" : "2021-01-12", #omicron -  EPI_ISL_9261945
     "USA/ME-HETL-J11431/2021" : "2021-01-27", #omicron -  EPI_ISL_9263961
     "Zimbabwe/S_2910_B23/2021" : "2021-10-12", #omicron -  EPI_ISL_9184696
+    #2 Feb
+    "Brazil/MG-FIOCRUZ-550/2021" : "2021-01-03", #omicron -  EPI_ISL_9274902
+    "Canada/ON-PHL-22-04025/2021" : "2021-01-13", #omicron -  EPI_ISL_9341303
+    "CzechRepublic/CSQ5299/2021" : "2021-07-08", #omicron -  EPI_ISL_9342977
+    "France/ARA-HCL022007644301/2021" : "2021-01-04", #omicron -  EPI_ISL_9315313
+    "PuertoRico/PR-CDC-2-5441294/2021" : "2021-01-04", #omicron -  EPI_ISL_9329089
+    "PuertoRico/PR-CDC-2-5441298/2021" : "2021-01-03", #omicron -  EPI_ISL_9329080
+    "PuertoRico/PR-CDC-2-5441299/2021" : "2021-01-03", #omicron -  EPI_ISL_9329079
+    "PuertoRico/PR-CDC-2-5441363/2021" : "2021-01-04", #omicron -  EPI_ISL_9329086
+    "PuertoRico/PR-CDC-2-5441364/2021" : "2021-01-04", #omicron -  EPI_ISL_9329084
+    "PuertoRico/PR-CDC-2-5441369/2021" : "2021-01-03", #omicron -  EPI_ISL_9329081
+    "PuertoRico/PR-CDC-2-5441370/2021" : "2021-01-03", #omicron -  EPI_ISL_9329077
+    "PuertoRico/PR-CDC-2-5441375/2021" : "2021-01-03", #omicron -  EPI_ISL_9329076
+    "PuertoRico/PR-CDC-2-5441376/2021" : "2021-01-03", #omicron -  EPI_ISL_9329073
+    "PuertoRico/PR-CDC-2-5441396/2021" : "2021-01-04", #omicron -  EPI_ISL_9329090
+    "PuertoRico/PR-CDC-2-5441397/2021" : "2021-01-03", #omicron -  EPI_ISL_9329078
+    "PuertoRico/PR-CDC-2-5441461/2021" : "2021-01-03", #omicron -  EPI_ISL_9329072
+    "PuertoRico/PR-CDC-2-5441463/2021" : "2021-01-04", #omicron -  EPI_ISL_9329087
+    "PuertoRico/PR-CDC-2-5441469/2021" : "2021-01-03", #omicron -  EPI_ISL_9329075
+    "PuertoRico/PR-CDC-2-5441470/2021" : "2021-01-04", #omicron -  EPI_ISL_9329088
+    "PuertoRico/PR-CDC-2-5441474/2021" : "2021-01-03", #omicron -  EPI_ISL_9329083
+    "PuertoRico/PR-CDC-2-5441475/2021" : "2021-01-03", #omicron -  EPI_ISL_9329074
+    "PuertoRico/PR-CDC-2-5441479/2021" : "2021-01-03", #omicron -  EPI_ISL_9329082
+    "PuertoRico/PR-CDC-2-5441482/2021" : "2021-01-04", #omicron -  EPI_ISL_9329085
+    "USA/TX-DSHS-14288/2021" : "2021-09-30", #omicron -  EPI_ISL_9196631
+    "USA/TX-DSHS-14289/2021" : "2021-09-30", #omicron -  EPI_ISL_9196633
+    "USA/TX-DSHS-14290/2021" : "2021-09-30", #omicron -  EPI_ISL_9196634
+    "USA/TX-DSHS-14291/2021" : "2021-09-30", #omicron -  EPI_ISL_9196636
+    "USA/TX-DSHS-14292/2021" : "2021-10-01", #omicron -  EPI_ISL_9196639
+    "USA/TX-DSHS-14293/2021" : "2021-10-01", #omicron -  EPI_ISL_9196641
+    "USA/TX-DSHS-14294/2021" : "2021-10-01", #omicron -  EPI_ISL_9196644
+    "USA/TX-DSHS-14295/2021" : "2021-10-01", #omicron -  EPI_ISL_9196646
+    "USA/TX-DSHS-14296/2021" : "2021-10-01", #omicron -  EPI_ISL_9196649
+    "USA/TX-DSHS-14297/2021" : "2021-10-01", #omicron -  EPI_ISL_9196651
+    "USA/TX-DSHS-14298/2021" : "2021-10-02", #omicron -  EPI_ISL_9196653
+    "USA/TX-DSHS-14299/2021" : "2021-10-02", #omicron -  EPI_ISL_9196655
+    "USA/TX-DSHS-14300/2021" : "2021-10-02", #omicron -  EPI_ISL_9196657
+    "USA/TX-DSHS-14301/2021" : "2021-10-02", #omicron -  EPI_ISL_9196659
+    "USA/TX-DSHS-14302/2021" : "2021-10-02", #omicron -  EPI_ISL_9196661
+    "USA/TX-DSHS-14303/2021" : "2021-10-03", #omicron -  EPI_ISL_9196663
+    "USA/TX-DSHS-14304/2021" : "2021-10-03", #omicron -  EPI_ISL_9196665
+    "USA/TX-DSHS-14305/2021" : "2021-10-03", #omicron -  EPI_ISL_9196667
+    "USA/TX-DSHS-14306/2021" : "2021-10-03", #omicron -  EPI_ISL_9196739
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
