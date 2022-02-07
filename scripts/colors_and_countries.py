@@ -201,6 +201,7 @@ country_list_4 = [
     "Bonaire",              #10
     "Papua New Guinea",     #11
     "Georgia",              #12
+    "Maldives",             #13
 ]
 
 country_styles_1 = {
