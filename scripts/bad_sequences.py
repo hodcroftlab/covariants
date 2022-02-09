@@ -1499,6 +1499,10 @@ bad_seqs = {
     "USA/HI-BL111/2020" : "2020-07-27", #delta
     "USA/HI-BL117/2020" : "2020-08-13", #delta
     "USA/NM-UNM-TC222973/2020" : "2020-08-20", #delta
+    "India/TN-CLRI-CIC0592/2020" : "2020-09-16", #delta
+    "USA/TX-HMH-MCoV-49849/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-49914/2020" : "2020-07-16", #delta
+    "USA/TX-HMH-MCoV-50058/2020" : "2020-07-16", #delta
     
 
     #Omicron with possibly bad dates (very early)
@@ -1708,6 +1712,148 @@ bad_seqs = {
     "USA/ND-NDDH-10646/2021" : "2021-01-18", #omicron - EPI_ISL_9390440
     "USA/NY-PRL-2022_0108_08B08/2021" : "2021-01-02", #omicron - EPI_ISL_9348229
     "France/IDF-HMN-22012240364/2021" : "2021-01-16", #omicron - EPI_ISL_9518264
+    "DRC/INRB-RDC-791/2021" : "2021-10-26", #omicron
+    "Italy/VEN-IRCCS-SCDC-134/2021" : "2021-10-20", #omicron
+    "USA/AZ-TG1170254/2021" : "2021-10-28", #omicron
+    "USA/MN-MDH-20528/2021" : "2021-10-28", #omicron
+    # 9 feb
+    "Norway/35622/2021" : "2021-01-06", #omicron - EPI_ISL_9626450
+    "Thailand/DMSc-07080/2021" : "2021-01-14", #omicron - EPI_ISL_9593100
+    "Belgium/ULG-24323/2021" : "2021-01-31", #omicron - EPI_ISL_9611028
+    "England/PHEP-YYD4GXR/2021" : "2021-05-10", #omicron - EPI_ISL_9589414
+    "Malaysia/UiTM1049/2021" : "2021-01-20", #omicron - EPI_ISL_9579118
+    "Suriname/SR-913/2021" : "2021-01-01", #omicron - EPI_ISL_9628807
+    "Suriname/SR-914/2021" : "2021-01-02", #omicron - EPI_ISL_9628808
+    "Suriname/SR-915/2021" : "2021-01-03", #omicron - EPI_ISL_9628809
+    "Suriname/SR-916/2021" : "2021-01-03", #omicron - EPI_ISL_9628810
+    "Suriname/SR-917/2021" : "2021-01-04", #omicron - EPI_ISL_9628811
+    "Suriname/SR-918/2021" : "2021-01-04", #omicron - EPI_ISL_9628812
+    "Suriname/SR-919/2021" : "2021-01-05", #omicron - EPI_ISL_9628813
+    "Suriname/SR-920/2021" : "2021-01-05", #omicron - EPI_ISL_9628814
+    "Suriname/SR-921/2021" : "2021-01-06", #omicron - EPI_ISL_9628815
+    "Suriname/SR-922/2021" : "2021-01-06", #omicron - EPI_ISL_9628816
+    "Suriname/SR-923/2021" : "2021-01-09", #omicron - EPI_ISL_9628817
+    "Suriname/SR-924/2021" : "2021-01-09", #omicron - EPI_ISL_9628818
+    "Suriname/SR-925/2021" : "2021-01-09", #omicron - EPI_ISL_9628819
+    "Suriname/SR-926/2021" : "2021-01-10", #omicron - EPI_ISL_9628820
+    "Suriname/SR-927/2021" : "2021-01-10", #omicron - EPI_ISL_9628821
+    "Suriname/SR-928/2021" : "2021-01-10", #omicron - EPI_ISL_9628822
+    "Suriname/SR-929/2021" : "2021-01-13", #omicron - EPI_ISL_9628823
+    "Suriname/SR-930/2021" : "2021-01-13", #omicron - EPI_ISL_9628824
+    "Suriname/SR-931/2021" : "2021-01-15", #omicron - EPI_ISL_9628825
+    "Suriname/SR-933/2021" : "2021-01-19", #omicron - EPI_ISL_9628827
+    "Suriname/SR-934/2021" : "2021-01-19", #omicron - EPI_ISL_9628828
+    "Suriname/SR-935/2021" : "2021-01-19", #omicron - EPI_ISL_9628829
+    "Suriname/SR-936/2021" : "2021-01-18", #omicron - EPI_ISL_9628830
+    "Suriname/SR-937/2021" : "2021-01-20", #omicron - EPI_ISL_9628831
+    "Suriname/SR-938/2021" : "2021-01-20", #omicron - EPI_ISL_9628832
+    "Suriname/SR-939/2021" : "2021-01-20", #omicron - EPI_ISL_9628833
+    "Suriname/SR-940/2021" : "2021-01-20", #omicron - EPI_ISL_9628834
+    "Suriname/SR-941/2021" : "2021-01-14", #omicron - EPI_ISL_9628835
+    "Suriname/SR-942/2021" : "2021-01-14", #omicron - EPI_ISL_9628836
+    "Suriname/SR-943/2021" : "2021-01-19", #omicron - EPI_ISL_9628837
+    "Suriname/SR-944/2021" : "2021-01-19", #omicron - EPI_ISL_9628838
+    "Suriname/SR-945/2021" : "2021-01-19", #omicron - EPI_ISL_9628839
+    "Suriname/SR-946/2021" : "2021-01-19", #omicron - EPI_ISL_9628840
+    "Suriname/SR-947/2021" : "2021-01-14", #omicron - EPI_ISL_9628841
+    "Suriname/SR-948/2021" : "2021-01-19", #omicron - EPI_ISL_9628842
+    "Suriname/SR-949/2021" : "2021-01-19", #omicron - EPI_ISL_9628843
+    "Suriname/SR-950/2021" : "2021-01-19", #omicron - EPI_ISL_9628844
+    "Suriname/SR-951/2021" : "2021-01-19", #omicron - EPI_ISL_9628845
+    "Suriname/SR-952/2021" : "2021-01-19", #omicron - EPI_ISL_9628846
+    "Suriname/SR-953/2021" : "2021-01-19", #omicron - EPI_ISL_9628847
+    "Suriname/SR-954/2021" : "2021-01-19", #omicron - EPI_ISL_9628848
+    "Suriname/SR-955/2021" : "2021-01-19", #omicron - EPI_ISL_9628849
+    "Suriname/SR-956/2021" : "2021-01-08", #omicron - EPI_ISL_9628850
+    "Suriname/SR-957/2021" : "2021-01-14", #omicron - EPI_ISL_9628851
+    "Thailand/DMSc-06972/2021" : "2021-01-13", #omicron - EPI_ISL_9592995
+    "Thailand/DMSc-06973/2021" : "2021-01-13", #omicron - EPI_ISL_9592996
+    "Thailand/DMSc-06974/2021" : "2021-01-13", #omicron - EPI_ISL_9592997
+    "Thailand/DMSc-06975/2021" : "2021-01-13", #omicron - EPI_ISL_9592998
+    "Thailand/DMSc-06977/2021" : "2021-01-12", #omicron - EPI_ISL_9592999
+    "Thailand/DMSc-06978/2021" : "2021-01-13", #omicron - EPI_ISL_9593000
+    "Thailand/DMSc-06980/2021" : "2021-01-13", #omicron - EPI_ISL_9593002
+    "Thailand/DMSc-06981/2021" : "2021-01-13", #omicron - EPI_ISL_9593003
+    "Thailand/DMSc-06982/2021" : "2021-01-13", #omicron - EPI_ISL_9593004
+    "Thailand/DMSc-06983/2021" : "2021-01-13", #omicron - EPI_ISL_9593005
+    "Thailand/DMSc-06984/2021" : "2021-01-12", #omicron - EPI_ISL_9593006
+    "Thailand/DMSc-06985/2021" : "2021-01-13", #omicron - EPI_ISL_9593007
+    "Thailand/DMSc-06986/2021" : "2021-01-13", #omicron - EPI_ISL_9593008
+    "Thailand/DMSc-06988/2021" : "2021-01-13", #omicron - EPI_ISL_9593010
+    "Thailand/DMSc-06989/2021" : "2021-01-13", #omicron - EPI_ISL_9593011
+    "Thailand/DMSc-06990/2021" : "2021-01-13", #omicron - EPI_ISL_9593012
+    "Thailand/DMSc-06991/2021" : "2021-01-13", #omicron - EPI_ISL_9593013
+    "Thailand/DMSc-06992/2021" : "2021-01-12", #omicron - EPI_ISL_9593014
+    "Thailand/DMSc-06993/2021" : "2021-01-13", #omicron - EPI_ISL_9593015
+    "Thailand/DMSc-06994/2021" : "2021-01-13", #omicron - EPI_ISL_9593016
+    "Thailand/DMSc-06996/2021" : "2021-01-13", #omicron - EPI_ISL_9593018
+    "Thailand/DMSc-06997/2021" : "2021-01-13", #omicron - EPI_ISL_9593019
+    "Thailand/DMSc-06998/2021" : "2021-01-13", #omicron - EPI_ISL_9593020
+    "Thailand/DMSc-06999/2021" : "2021-01-13", #omicron - EPI_ISL_9593021
+    "Thailand/DMSc-07001/2021" : "2021-01-13", #omicron - EPI_ISL_9593023
+    "Thailand/DMSc-07002/2021" : "2021-01-13", #omicron - EPI_ISL_9593024
+    "Thailand/DMSc-07004/2021" : "2021-01-13", #omicron - EPI_ISL_9593026
+    "Thailand/DMSc-07005/2021" : "2021-01-13", #omicron - EPI_ISL_9593027
+    "Thailand/DMSc-07006/2021" : "2021-01-13", #omicron - EPI_ISL_9593028
+    "Thailand/DMSc-07007/2021" : "2021-01-13", #omicron - EPI_ISL_9593029
+    "Thailand/DMSc-07009/2021" : "2021-01-13", #omicron - EPI_ISL_9593031
+    "Thailand/DMSc-07010/2021" : "2021-01-13", #omicron - EPI_ISL_9593032
+    "Thailand/DMSc-07012/2021" : "2021-01-13", #omicron - EPI_ISL_9593034
+    "Thailand/DMSc-07013/2021" : "2021-01-13", #omicron - EPI_ISL_9593035
+    "Thailand/DMSc-07014/2021" : "2021-01-13", #omicron - EPI_ISL_9593036
+    "Thailand/DMSc-07015/2021" : "2021-01-13", #omicron - EPI_ISL_9593037
+    "Thailand/DMSc-07016/2021" : "2021-01-12", #omicron - EPI_ISL_9593038
+    "Thailand/DMSc-07017/2021" : "2021-01-13", #omicron - EPI_ISL_9593039
+    "Thailand/DMSc-07018/2021" : "2021-01-14", #omicron - EPI_ISL_9593040
+    "Thailand/DMSc-07020/2021" : "2021-01-13", #omicron - EPI_ISL_9593042
+    "Thailand/DMSc-07021/2021" : "2021-01-13", #omicron - EPI_ISL_9593043
+    "Thailand/DMSc-07022/2021" : "2021-01-13", #omicron - EPI_ISL_9593044
+    "Thailand/DMSc-07024/2021" : "2021-01-12", #omicron - EPI_ISL_9593046
+    "Thailand/DMSc-07025/2021" : "2021-01-13", #omicron - EPI_ISL_9593047
+    "Thailand/DMSc-07026/2021" : "2021-01-14", #omicron - EPI_ISL_9593048
+    "Thailand/DMSc-07028/2021" : "2021-01-13", #omicron - EPI_ISL_9593050
+    "Thailand/DMSc-07029/2021" : "2021-01-13", #omicron - EPI_ISL_9593051
+    "Thailand/DMSc-07030/2021" : "2021-01-13", #omicron - EPI_ISL_9593052
+    "Thailand/DMSc-07031/2021" : "2021-01-13", #omicron - EPI_ISL_9593053
+    "Thailand/DMSc-07033/2021" : "2021-01-13", #omicron - EPI_ISL_9593055
+    "Thailand/DMSc-07034/2021" : "2021-01-14", #omicron - EPI_ISL_9593056
+    "Thailand/DMSc-07036/2021" : "2021-01-13", #omicron - EPI_ISL_9593058
+    "Thailand/DMSc-07037/2021" : "2021-01-13", #omicron - EPI_ISL_9593059
+    "Thailand/DMSc-07038/2021" : "2021-01-13", #omicron - EPI_ISL_9593060
+    "Thailand/DMSc-07039/2021" : "2021-01-13", #omicron - EPI_ISL_9593061
+    "Thailand/DMSc-07040/2021" : "2021-01-12", #omicron - EPI_ISL_9593062
+    "Thailand/DMSc-07041/2021" : "2021-01-13", #omicron - EPI_ISL_9593063
+    "Thailand/DMSc-07044/2021" : "2021-01-13", #omicron - EPI_ISL_9593065
+    "Thailand/DMSc-07045/2021" : "2021-01-13", #omicron - EPI_ISL_9593066
+    "Thailand/DMSc-07046/2021" : "2021-01-13", #omicron - EPI_ISL_9593067
+    "Thailand/DMSc-07047/2021" : "2021-01-13", #omicron - EPI_ISL_9593068
+    "Thailand/DMSc-07048/2021" : "2021-01-12", #omicron - EPI_ISL_9593069
+    "Thailand/DMSc-07049/2021" : "2021-01-13", #omicron - EPI_ISL_9593070
+    "Thailand/DMSc-07050/2021" : "2021-01-14", #omicron - EPI_ISL_9593071
+    "Thailand/DMSc-07052/2021" : "2021-01-13", #omicron - EPI_ISL_9593073
+    "Thailand/DMSc-07053/2021" : "2021-01-13", #omicron - EPI_ISL_9593074
+    "Thailand/DMSc-07057/2021" : "2021-01-13", #omicron - EPI_ISL_9593078
+    "Thailand/DMSc-07058/2021" : "2021-01-13", #omicron - EPI_ISL_9593079
+    "Thailand/DMSc-07059/2021" : "2021-01-13", #omicron - EPI_ISL_9593080
+    "Thailand/DMSc-07060/2021" : "2021-01-13", #omicron - EPI_ISL_9593081
+    "Thailand/DMSc-07062/2021" : "2021-01-12", #omicron - EPI_ISL_9593083
+    "Thailand/DMSc-07063/2021" : "2021-01-13", #omicron - EPI_ISL_9593084
+    "Thailand/DMSc-07064/2021" : "2021-01-14", #omicron - EPI_ISL_9593085
+    "Thailand/DMSc-07065/2021" : "2021-01-14", #omicron - EPI_ISL_9593086
+    "Thailand/DMSc-07072/2021" : "2021-01-14", #omicron - EPI_ISL_9593093
+    "Thailand/DMSc-07073/2021" : "2021-01-14", #omicron - EPI_ISL_9593094
+    "Thailand/DMSc-07081/2021" : "2021-01-14", #omicron - EPI_ISL_9593101
+    "Thailand/DMSc-07087/2021" : "2021-01-14", #omicron - EPI_ISL_9593107
+    "Thailand/DMSc-07088/2021" : "2021-01-14", #omicron - EPI_ISL_9593108
+    "Thailand/DMSc-07096/2021" : "2021-01-14", #omicron - EPI_ISL_9593116
+    "Thailand/DMSc-07110/2021" : "2021-01-14", #omicron - EPI_ISL_9593130
+    "Thailand/DMSc-07111/2021" : "2021-01-14", #omicron - EPI_ISL_9593131
+    "Thailand/DMSc-07119/2021" : "2021-01-14", #omicron - EPI_ISL_9593138
+    "Thailand/DMSc-07126/2021" : "2021-01-14", #omicron - EPI_ISL_9593145
+    "Thailand/DMSc-07127/2021" : "2021-01-14", #omicron - EPI_ISL_9593146
+    "Thailand/DMSc-07134/2021" : "2021-01-14", #omicron - EPI_ISL_9593153
+    "Thailand/DMSc-07149/2021" : "2021-01-14", #omicron - EPI_ISL_9593167
+    "USA/CA-SCPHL-22WGS00318/2021" : "2021-01-29", #omicron - EPI_ISL_9595018
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
