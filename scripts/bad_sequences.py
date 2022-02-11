@@ -1854,6 +1854,32 @@ bad_seqs = {
     "Thailand/DMSc-07134/2021" : "2021-01-14", #omicron - EPI_ISL_9593153
     "Thailand/DMSc-07149/2021" : "2021-01-14", #omicron - EPI_ISL_9593167
     "USA/CA-SCPHL-22WGS00318/2021" : "2021-01-29", #omicron - EPI_ISL_9595018
+    #11 Feb
+    "Nigeria/NCDC-NR1188/2021" : "2021-10-12", #omicron - EPI_ISL_9673555
+    "Nigeria/NCDC-NR1219/2021" : "2021-10-04", #omicron - EPI_ISL_9673560
+    "USA/MT-UMGC-01822/2020" : "2020-11-10", #omicron - EPI_ISL_9637197
+    "USA/MT-UMGC-01826/2020" : "2020-11-09", #omicron - EPI_ISL_9637200
+    "USA/MT-UMGC-01828/2020" : "2020-11-10", #omicron - EPI_ISL_9637202
+    "USA/MT-UMGC-01829/2020" : "2020-11-10", #omicron - EPI_ISL_9637203
+    "USA/MT-UMGC-01830/2020" : "2020-11-10", #omicron - EPI_ISL_9637204
+    "USA/MT-UMGC-01831/2020" : "2020-11-09", #omicron - EPI_ISL_9637205
+    "USA/MT-UMGC-01838/2020" : "2020-11-10", #omicron - EPI_ISL_9637210
+    "USA/MT-UMGC-01847/2020" : "2020-11-10", #omicron - EPI_ISL_9637218
+    "USA/MT-UMGC-01848/2020" : "2020-11-10", #omicron - EPI_ISL_9637219
+    "USA/MT-UMGC-01850/2020" : "2020-11-10", #omicron - EPI_ISL_9637221
+    "USA/MT-UMGC-01852/2020" : "2020-11-10", #omicron - EPI_ISL_9637223
+    "USA/MT-UMGC-01857/2020" : "2020-11-10", #omicron - EPI_ISL_9637227
+    "USA/MT-UMGC-01858/2020" : "2020-11-10", #omicron - EPI_ISL_9637228
+    "USA/MT-UMGC-01859/2020" : "2020-11-10", #omicron - EPI_ISL_9637229
+    "USA/MT-UMGC-01860/2020" : "2020-11-10", #omicron - EPI_ISL_9637230
+    "USA/MT-UMGC-01862/2020" : "2020-11-10", #omicron - EPI_ISL_9637232
+    "USA/MT-UMGC-01864/2020" : "2020-11-10", #omicron - EPI_ISL_9637234
+    "USA/MT-UMGC-01865/2020" : "2020-11-10", #omicron - EPI_ISL_9637235
+    "USA/MT-UMGC-01866/2020" : "2020-11-09", #omicron - EPI_ISL_9637236
+    "USA/MT-UMGC-01867/2020" : "2020-11-10", #omicron - EPI_ISL_9637237
+    "USA/MT-UMGC-01869/2020" : "2020-11-10", #omicron - EPI_ISL_9637239
+    "USA/MT-UMGC-01870/2020" : "2020-11-10", #omicron - EPI_ISL_9637240
+    "USA/NJ-PHEL-V22006124/2021" : "2021-01-19", #omicron - EPI_ISL_9701643
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
