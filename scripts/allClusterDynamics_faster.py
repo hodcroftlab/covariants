@@ -412,6 +412,9 @@ print("\nLooking for the wanted sequences in the file...\n")
 #muts["gap_pos"] = muts.nucleotide.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y and y[-1] in '-'])
 muts_snp_pos = meta.substitutions.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y])
 
+# expand metadata deletions formatting
+muts_del_pos = meta.deletions.fillna('').apply(lambda x: [z for y in x.split(',') if y for z in range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)])
+
 
 # If an official Nextstrain clade, then use Nextclade designation to find them.
 # If not an official Nextstrain clade, use our SNP method
@@ -428,17 +431,6 @@ for clus in [x for x in clus_to_run if x != "mink"]:
     display_name = clus_data['display_name']
     exclude_snps = clus_data["exclude_snps"]
     wanted_seqs = clus_data["wanted_seqs"]
-
-    # reduce gaps to match meta (e.g. [11288, 11289, 11290] to 11288-11290)
-    gaps_reduced = []
-    if gaps:
-        gaps_reduced = [str(gaps[0])]
-        if len(gaps) > 1:
-            for i, g in enumerate(gaps[1:]):
-                if g == int(gaps_reduced[-1].split("-")[-1]) + 1:
-                    gaps_reduced[-1] = "-".join([gaps_reduced[-1].split("-")[0], str(g)])
-                else:
-                    gaps_reduced.append(str(g))
 
     # Use Nextclade
     if "other_nextstrain_names" in clus_data:
@@ -467,7 +459,7 @@ for clus in [x for x in clus_to_run if x != "mink"]:
 
         #look for sequences by gaps
         if gaps:
-            founds = meta.loc[meta.deletions.fillna('').apply(lambda x: all((p in x) for p in gaps_reduced)),'strain']
+            founds = meta.loc[muts_del_pos.apply(lambda x: all((p in x) for p in gaps)),'strain']
             wanted_seqs.extend(founds)
 
     #dedup
