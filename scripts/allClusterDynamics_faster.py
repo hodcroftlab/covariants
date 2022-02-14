@@ -245,13 +245,6 @@ start_time = time.time()
 
 print("\nReading in files...\n")
 
-
-# Get mutation summary file - used to get list of SNPs of all sequences, to pick out seqs that have right SNPS
-muts_file = (
-    "results/mutation_summary_gisaid.tsv"  # "results/sequence-diagnostics.tsv"
-)
-muts = pd.read_csv(muts_file, sep="\t", index_col=False)
-
 t0 = time.time()
 
 # Read metadata file
@@ -337,10 +330,8 @@ meta['orig_division'] = meta['division']
 meta['division'] = meta['division'].replace(swiss_regions)
 # meta[meta["country"].apply(lambda x: x == "Switzerland")]  #can check
 
-# Filter mutations to match Metadata - to exclude sequences with bad dates
-muts = muts[muts['Unnamed: 0'].isin(meta['strain'])]
-# Filter Metadata to only have those we have mutations for! Allows 'out of sync' files.
-meta = meta[meta["strain"].isin(muts["Unnamed: 0"])]
+# Filter Metadata to only have those we have mutations for! Allows 'out of sync' files. --> Should we check for the subtitutions and deletions columns to be not empty?
+# meta = meta[meta["strain"].isin(muts["Unnamed: 0"])]
 
 t1 = time.time()
 print(f"Reading & cleaning meta run took {round((t1-t0)/60,1)} min to run")
@@ -417,8 +408,13 @@ t0 = time.time()
 
 print("\nLooking for the wanted sequences in the file...\n")
 
-muts["snp_pos"] = muts.nucleotide.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y and y[-1] in 'ACGT'])
-muts["gap_pos"] = muts.nucleotide.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y and y[-1] in '-'])
+#muts["snp_pos"] = muts.nucleotide.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y and y[-1] in 'ACGT'])
+#muts["gap_pos"] = muts.nucleotide.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y and y[-1] in '-'])
+muts_snp_pos = meta.substitutions.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y])
+
+# expand metadata deletions formatting
+muts_del_pos = meta.deletions.fillna('').apply(lambda x: [z for y in x.split(',') if y for z in range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)])
+
 
 # If an official Nextstrain clade, then use Nextclade designation to find them.
 # If not an official Nextstrain clade, use our SNP method
@@ -452,18 +448,18 @@ for clus in [x for x in clus_to_run if x != "mink"]:
 
         # look for occurance of snp(s) *without* some other snp(s) (to exclude a certain group)
         if snps:
-            founds = muts.loc[muts.snp_pos.apply(lambda x: all((p in x) for p in snps) & all((p not in x) for p in exclude_snps)),'Unnamed: 0']
+            founds = meta.loc[muts_snp_pos.apply(lambda x: all((p in x) for p in snps) & all((p not in x) for p in exclude_snps)),'strain']
             wanted_seqs.extend(founds)
 
         # look for additional occurances which have snps2
         # (to look for 2 muts that affect same AA, for example)
         if snps2:
-            founds = muts.loc[muts.snp_pos.apply(lambda x: all((p in x) for p in snps2) & all((p not in x) for p in exclude_snps)),'Unnamed: 0']
+            founds = meta.loc[muts_snp_pos.apply(lambda x: all((p in x) for p in snps2) & all((p not in x) for p in exclude_snps)),'strain']
             wanted_seqs.extend(founds)
 
         #look for sequences by gaps
         if gaps:
-            founds = muts.loc[muts.gap_pos.apply(lambda x: all((p in x) for p in gaps) & all((p not in x) for p in exclude_snps)),'Unnamed: 0']
+            founds = meta.loc[muts_del_pos.apply(lambda x: all((p in x) for p in gaps)),'strain']
             wanted_seqs.extend(founds)
 
     #dedup
