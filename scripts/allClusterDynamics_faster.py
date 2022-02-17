@@ -128,6 +128,17 @@ def print_all_date_alerts():
         print_date_alerts(clus)
         print("\n")
 
+def print_date_alerts_quick(clus):
+    print(clus)
+    print(f"Expected date: {cluster_first_dates[clus]['first_date']}")
+    print(alert_first_date_quick[clus][['strain','date','gisaid_epi_isl']])
+
+def print_all_date_alerts_quick():
+    for clus in alert_first_date_quick.keys():
+        print_date_alerts_quick(clus)
+        print("\n")
+
+
 def marker_size(n):
     if n > 100:
         return 150
@@ -338,6 +349,28 @@ print(f"Reading & cleaning meta run took {round((t1-t0)/60,1)} min to run")
 
 print("\nMetadata is ready to go...\n")
 
+# Figure out what clades are really recognised
+official_clades = list(meta["Nextstrain_clade"].unique())
+
+# Search for early dates
+t0 = time.time()
+
+# Adjust to display names for easier check in meta dataframe (can directly compare to "Nextstrain_clade")
+#TODO: include alternative names?
+clus_dates = {clusters[clus]["display_name"] : datetime.datetime.strptime(cluster_first_dates[clus]["first_date"], "%Y-%m-%d") for clus in clus_to_run if clus in cluster_first_dates}
+
+# Search for sequences with too early dates - only for Nextstrain_clades
+before_date = meta[[date < clus_dates[clade] if clade in clus_dates else False for date,clade in zip(meta["date_formatted"], meta["Nextstrain_clade"])]]
+
+# Sort by clus
+alert_first_date_quick = {clus : before_date[before_date["Nextstrain_clade"] == clusters[clus]["display_name"]] for clus in clus_to_run if clusters[clus]["display_name"] in before_date["Nextstrain_clade"].values}
+
+print("\nDate alerts (fast check):")
+print([f"{x}: {len(alert_first_date_quick[x])}" for x in alert_first_date_quick.keys()])
+print("To view, use 'alert_first_date_quick[clus][['strain','date']]'\n")
+
+t1 = time.time()
+print(f"Checking for early dates took {round((t1-t0)/60,1)} min to run")
 
 ##################################
 ##################################
@@ -418,9 +451,6 @@ muts_del_pos = meta.deletions.fillna('').apply(lambda x: [z for y in x.split(','
 
 # If an official Nextstrain clade, then use Nextclade designation to find them.
 # If not an official Nextstrain clade, use our SNP method
-
-# Figure out what clades are really recognised
-official_clades = list(meta["Nextstrain_clade"].unique())
 
 n_done = 1
 for clus in [x for x in clus_to_run if x != "mink"]:
