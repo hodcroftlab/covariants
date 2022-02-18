@@ -305,7 +305,8 @@ t0 = time.time()
 #}
 input_meta = "data/metadata.tsv"
 dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str, 'age': str, 'QC_frame_shifts': str, 'frame_shifts': str}
-meta = pd.read_csv(input_meta, sep="\t", dtype=dtype, index_col=False) #dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str}, index_col=False)
+cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country']
+meta = pd.read_csv(input_meta, sep="\t", dtype=dtype, index_col=False, usecols=cols) #dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str}, index_col=False)
 meta = meta.fillna("")
 
 # Clean up metadata
