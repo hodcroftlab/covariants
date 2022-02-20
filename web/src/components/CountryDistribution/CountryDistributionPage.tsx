@@ -135,6 +135,31 @@ export function CountryDistributionPage() {
     [region, router],
   )
 
+  const setClusterState = useCallback(
+    (variant: 'all' | 'none' | string) => {
+      const fullPath = `${router.basePath}${router.pathname}`
+      const nextQs = { ...getCurrentQs(router) }
+      if (variant === 'all') {
+        nextQs.variants = 'all'
+      } else if (variant === 'none') {
+        nextQs.variants = 'none'
+      } else {
+        const currentVariants: string[] = (Array.isArray(nextQs.variants)
+          ? [...nextQs.variants].filter(Boolean).filter(v => v!=="all" && v!=="none")
+          : [nextQs.variants].filter(Boolean).filter(v => v!=="all" && v!=="none")) as string[]
+        const variantAlreadySelected = currentVariants.includes(variant)
+        if (variantAlreadySelected) {
+          nextQs.variants = currentVariants.filter((v) => v !== variant)
+        } else {
+          nextQs.variants = [...currentVariants, variant]
+        }
+      }
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      router.replace(`${fullPath}?${stringify(nextQs)}`)
+    },
+    [router],
+  )
+
   return (
     <Layout wide>
       <Row noGutters>
@@ -174,9 +199,13 @@ export function CountryDistributionPage() {
                   enabledFilters={enabledFilters}
                   clustersCollapsedByDefault={false}
                   Icon={iconComponent}
-                  onClusterFilterChange={() => {}}
-                  onClusterFilterSelectAll={() => {}}
-                  onClusterFilterDeselectAll={() => {}}
+                  onClusterFilterChange={(variant: string) => {setClusterState(variant)}}
+                  onClusterFilterSelectAll={() => {
+                    setClusterState('all')
+                  }}
+                  onClusterFilterDeselectAll={() => {
+                    setClusterState('none')
+                  }}
                   onCountryFilterChange={handleCountryCheckedChange}
                   onRegionFilterChange={handleRegionCheckedChange}
                   onCountryFilterSelectAll={handleCountrySelectAll}
