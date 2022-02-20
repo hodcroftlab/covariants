@@ -40,6 +40,19 @@ export const getRegionBySelectedRegionQs = (regionQs: ParsedUrlQuery): Region =>
 }
 
 /**
+ * map the extracted router query string to the currently selected clusters
+ */
+export const getClustersBySelectedClustersQs = (qs: ParsedUrlQuery): string[] => {
+  if (Array.isArray(qs)) {
+    return qs
+  }
+  if (!qs) {
+    return []
+  }
+  return [qs]
+}
+
+/**
  * A curried function that take in a fallback cluster state, return a callback function that
  * take in the selected clusters, and return the `ClusterState`
  */

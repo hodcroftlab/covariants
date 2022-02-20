@@ -1,10 +1,15 @@
 import React, { useState, useEffect, useMemo } from 'react'
+import { mapValues } from 'lodash'
 import { useRouter } from 'next/router'
 import { Region, ClusterState, getPerCountryData, CountryDistribution } from 'src/io/getPerCountryData'
 import { Places } from 'src/io/getPlaces'
 
-import { getRegionBySelectedRegionQs, getCurriedClustersStateBySelectedClusters, ParsedUrlQuery } from './utils'
-
+import {
+  getRegionBySelectedRegionQs,
+  getClustersBySelectedClustersQs,
+  getCurriedClustersStateBySelectedClusters,
+  ParsedUrlQuery,
+} from './utils'
 
 export const convertUrlQueryToSelection = (queryString: ParsedUrlQuery): string[] => {
   if (!queryString) {
@@ -61,6 +66,24 @@ export const useRouterQuery = (): {
 
   const [places, setPlaces] = useState<Places>(initialPlaces)
   const [currentClusters, setClusters] = useState<ClusterState>(getClustersBySelectedClusters(selectedClusters))
+
+  React.useEffect(() => {
+    if (selectedClusters === 'all' || !selectedClusters) {
+      setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: true })))
+    } else if (selectedClusters === 'none') {
+      setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: false })))
+    } else {
+      // parse value from qs
+      setClusters(
+        getClustersBySelectedClustersQs(selectedClusters).reduce((acc: ClusterState, curr: string) => {
+          return {
+            ...acc,
+            [curr]: { enabled: true },
+          }
+        }, {}),
+      )
+    }
+  }, [selectedClusters])
 
   useEffect(() => {
     setPlaces(initialPlaces)
