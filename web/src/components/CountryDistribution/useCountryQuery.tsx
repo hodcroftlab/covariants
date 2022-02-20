@@ -39,7 +39,6 @@ export const useRouterQuery = (): {
     setPlaces: React.Dispatch<React.SetStateAction<Places>>
     countryDistributions: CountryDistribution[]
     currentClusters: ClusterState
-    setClusters: React.Dispatch<React.SetStateAction<ClusterState>>
   }
 } => {
   const router = useRouter()
@@ -48,12 +47,7 @@ export const useRouterQuery = (): {
 
   const [currentRegion, setCurrentRegion] = useState<Region>(getRegionBySelectedRegionQs(selectedRegion))
 
-  const {
-    allPossibleClusters,
-    getClustersBySelectedClusters,
-    places: initialPlaces,
-    countryDistributions,
-  } = useMemo(() => {
+  const { getClustersBySelectedClusters, places: initialPlaces, countryDistributions } = useMemo(() => {
     const { clusters: allPossibleClusters, places, countryDistributions } = getPerCountryData(currentRegion)
     const getClustersBySelectedClusters = getCurriedClustersStateBySelectedClusters(allPossibleClusters)
     return {
@@ -90,14 +84,6 @@ export const useRouterQuery = (): {
   }, [initialPlaces, setPlaces])
 
   useEffect(() => {
-    setClusters(getClustersBySelectedClusters(selectedClusters))
-  }, [selectedClusters, getClustersBySelectedClusters, allPossibleClusters])
-
-  useEffect(() => {
-    setClusters(getClustersBySelectedClusters(selectedClusters))
-  }, [selectedClusters, setClusters, getClustersBySelectedClusters])
-
-  useEffect(() => {
     setCurrentRegion(getRegionBySelectedRegionQs(selectedRegion))
   }, [selectedRegion, setCurrentRegion])
 
@@ -112,7 +98,6 @@ export const useRouterQuery = (): {
       setPlaces,
       countryDistributions,
       currentClusters,
-      setClusters,
     },
   }
 }

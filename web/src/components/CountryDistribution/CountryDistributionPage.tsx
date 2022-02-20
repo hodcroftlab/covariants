@@ -36,8 +36,10 @@ const { regionNames, regionsHaveData } = getRegions()
 export function CountryDistributionPage() {
   const router = useRouter()
   const {
-    state: { region, setPlaces, places, countryDistributions, currentClusters, setClusters },
+    state: { region, setPlaces, places, countryDistributions, currentClusters },
   } = useRouterQuery()
+
+  console.log(`currentClusters is ${JSON.stringify(currentClusters, null, 4)}`)
 
   const regionsTitle = useMemo(() => (region === Region.World ? 'Countries' : 'Regions'), [region])
   const iconComponent = useMemo(() => {
@@ -70,20 +72,20 @@ export function CountryDistributionPage() {
     [enabledClusters, withClustersFiltered, iconComponent],
   )
 
-  const handleClusterCheckedChange = useCallback(
-    (clusterName: string) => {
-      setClusters((oldClusters) => toggleCluster(oldClusters, clusterName))
-    },
-    [setClusters],
-  )
+  // const handleClusterCheckedChange = useCallback(
+  //   (clusterName: string) => {
+  //     setClusters((oldClusters) => toggleCluster(oldClusters, clusterName))
+  //   },
+  //   [setClusters],
+  // )
 
-  const handleClusterSelectAll = useCallback(() => {
-    setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: true })))
-  }, [setClusters])
+  // const handleClusterSelectAll = useCallback(() => {
+  //   setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: true })))
+  // }, [setClusters])
 
-  const handleClusterDeselectAll = useCallback(() => {
-    setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: false })))
-  }, [setClusters])
+  // const handleClusterDeselectAll = useCallback(() => {
+  //   setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: false })))
+  // }, [setClusters])
 
   const handleCountryCheckedChange = useCallback(
     (countryName: string) => {
@@ -172,9 +174,9 @@ export function CountryDistributionPage() {
                   enabledFilters={enabledFilters}
                   clustersCollapsedByDefault={false}
                   Icon={iconComponent}
-                  onClusterFilterChange={handleClusterCheckedChange}
-                  onClusterFilterSelectAll={handleClusterSelectAll}
-                  onClusterFilterDeselectAll={handleClusterDeselectAll}
+                  onClusterFilterChange={() => {}}
+                  onClusterFilterSelectAll={() => {}}
+                  onClusterFilterDeselectAll={() => {}}
                   onCountryFilterChange={handleCountryCheckedChange}
                   onRegionFilterChange={handleRegionCheckedChange}
                   onCountryFilterSelectAll={handleCountrySelectAll}

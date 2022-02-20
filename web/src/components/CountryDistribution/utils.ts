@@ -59,7 +59,7 @@ export const getClustersBySelectedClustersQs = (qs: ParsedUrlQuery): string[] =>
 export const getCurriedClustersStateBySelectedClusters = (fallbackClusters: ClusterState) => {
   const clusterKeys = Object.keys(fallbackClusters)
   const noClusterSelectedState = clusterKeys.reduce((acc, key) => {
-    return { ...acc, [key]: { enabled: false } }
+    return { ...acc, [key]: { enabled: true } }
   }, {})
   return (clusters: string | string[] | undefined, deselectAll = false): ClusterState => {
     if (!clusters) {
