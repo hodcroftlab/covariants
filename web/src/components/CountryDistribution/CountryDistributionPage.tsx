@@ -1,4 +1,3 @@
-import { mapValues } from 'lodash'
 import { stringify } from 'querystring'
 import { useRouter } from 'next/router'
 import React, { useCallback, useMemo } from 'react'
@@ -20,7 +19,6 @@ import {
   filterCountries,
   getPerCountryIntroContentFilename,
   getRegions,
-  toggleCluster,
 } from 'src/io/getPerCountryData'
 
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
@@ -71,21 +69,6 @@ export function CountryDistributionPage() {
       )),
     [enabledClusters, withClustersFiltered, iconComponent],
   )
-
-  // const handleClusterCheckedChange = useCallback(
-  //   (clusterName: string) => {
-  //     setClusters((oldClusters) => toggleCluster(oldClusters, clusterName))
-  //   },
-  //   [setClusters],
-  // )
-
-  // const handleClusterSelectAll = useCallback(() => {
-  //   setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: true })))
-  // }, [setClusters])
-
-  // const handleClusterDeselectAll = useCallback(() => {
-  //   setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: false })))
-  // }, [setClusters])
 
   const handleCountryCheckedChange = useCallback(
     (countryName: string) => {
@@ -145,8 +128,8 @@ export function CountryDistributionPage() {
         nextQs.variants = 'none'
       } else {
         const currentVariants: string[] = (Array.isArray(nextQs.variants)
-          ? [...nextQs.variants].filter(Boolean).filter(v => v!=="all" && v!=="none")
-          : [nextQs.variants].filter(Boolean).filter(v => v!=="all" && v!=="none")) as string[]
+          ? [...nextQs.variants].filter(Boolean).filter((v) => v !== 'all' && v !== 'none')
+          : [nextQs.variants].filter(Boolean).filter((v) => v !== 'all' && v !== 'none')) as string[]
         const variantAlreadySelected = currentVariants.includes(variant)
         if (variantAlreadySelected) {
           nextQs.variants = currentVariants.filter((v) => v !== variant)
@@ -155,7 +138,7 @@ export function CountryDistributionPage() {
         }
       }
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      router.replace(`${fullPath}?${stringify(nextQs)}`)
+      router.push(`${fullPath}?${stringify(nextQs)}`, undefined, { scroll: false })
     },
     [router],
   )
@@ -199,7 +182,9 @@ export function CountryDistributionPage() {
                   enabledFilters={enabledFilters}
                   clustersCollapsedByDefault={false}
                   Icon={iconComponent}
-                  onClusterFilterChange={(variant: string) => {setClusterState(variant)}}
+                  onClusterFilterChange={(variant: string) => {
+                    setClusterState(variant)
+                  }}
                   onClusterFilterSelectAll={() => {
                     setClusterState('all')
                   }}
