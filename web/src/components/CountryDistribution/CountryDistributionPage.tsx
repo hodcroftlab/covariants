@@ -125,6 +125,7 @@ export function CountryDistributionPage() {
       } else if (variant === 'none') {
         nextQs.variants = 'none'
       } else {
+        const allClusterKeys = Object.keys(currentClusters)
         const allCurrentlySelected =
           nextQs.variants === 'all' ||
           (Array.isArray(nextQs.variants) && nextQs.variants.length === 1 && nextQs.variants[0] === 'all')
@@ -133,13 +134,16 @@ export function CountryDistributionPage() {
           : [nextQs.variants].filter(Boolean).filter((v) => v !== 'all' && v !== 'none')) as string[]
         const variantAlreadySelected = currentVariants.includes(variant)
         if (allCurrentlySelected) {
-          const allClusterKeys = Object.keys(currentClusters)
+          // currently all cluster -> click on one checkbox, to deselect the cluster represented by the checkbox
           const newSelectedVariants = allClusterKeys.filter((v) => v !== variant)
           nextQs.variants = [...newSelectedVariants]
         } else if (variantAlreadySelected) {
+          // to deselect this variant
           nextQs.variants = currentVariants.filter((v) => v !== variant)
         } else {
-          nextQs.variants = [...currentVariants, variant]
+          const newSelectedVariants = [...currentVariants, variant]
+          nextQs.variants =
+            newSelectedVariants.length !== allClusterKeys.length ? [...currentVariants, variant] : ['all']
         }
       }
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
