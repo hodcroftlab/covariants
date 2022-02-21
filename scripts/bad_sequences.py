@@ -1988,6 +1988,16 @@ bad_seqs = {
     "USA/TX-DSHS-15313/2021" : "2021-01-06", #omicron
     "USA/WI-WSLH-2203474/2021" : "2021-01-03", #omicron
     "USA/WI-WSLH-2203617/2021" : "2021-01-07", #omicron
+    #21 Feb
+    "DemocraticRepublicoftheCongo/RC-356/2021" : "2021-08-12", #omicron
+    "DemocraticRepublicoftheCongo/RC-396/2021" : "2021-06-12", #omicron
+    "DemocraticRepublicoftheCongo/RC-405/2021" : "2021-08-12", #omicron
+    "DemocraticRepublicoftheCongo/RC-409/2021" : "2021-08-12", #omicron
+    "DemocraticRepublicoftheCongo/RC-412/2021" : "2021-10-12", #omicron
+    "DemocraticRepublicoftheCongo/RC-413/2021" : "2021-08-12", #omicron
+    "DemocraticRepublicoftheCongo/RC-415/2021" : "2021-09-12", #omicron
+    "USA/LA-EVTL11612/2021" : "2021-07-29", #omicron
+
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
