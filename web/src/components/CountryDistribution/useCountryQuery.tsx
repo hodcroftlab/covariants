@@ -67,7 +67,6 @@ export const useRouterQuery = (): {
     } else if (selectedClusters === 'none') {
       setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: false })))
     } else {
-      // TODO: fix edge case: all -> clicking one variant
       // parse value from qs
       setClusters((oldClusters) => {
         return getClustersBySelectedClustersQs(selectedClusters).reduce(

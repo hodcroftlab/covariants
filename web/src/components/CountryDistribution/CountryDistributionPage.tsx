@@ -37,8 +37,6 @@ export function CountryDistributionPage() {
     state: { region, setPlaces, places, countryDistributions, currentClusters },
   } = useRouterQuery()
 
-  console.log(`currentClusters is ${JSON.stringify(currentClusters, null, 4)}`)
-
   const regionsTitle = useMemo(() => (region === Region.World ? 'Countries' : 'Regions'), [region])
   const iconComponent = useMemo(() => {
     if (region === Region.World) return CountryFlag
@@ -127,11 +125,18 @@ export function CountryDistributionPage() {
       } else if (variant === 'none') {
         nextQs.variants = 'none'
       } else {
+        const allCurrentlySelected =
+          nextQs.variants === 'all' ||
+          (Array.isArray(nextQs.variants) && nextQs.variants.length === 1 && nextQs.variants[0] === 'all')
         const currentVariants: string[] = (Array.isArray(nextQs.variants)
           ? [...nextQs.variants].filter(Boolean).filter((v) => v !== 'all' && v !== 'none')
           : [nextQs.variants].filter(Boolean).filter((v) => v !== 'all' && v !== 'none')) as string[]
         const variantAlreadySelected = currentVariants.includes(variant)
-        if (variantAlreadySelected) {
+        if (allCurrentlySelected) {
+          const allClusterKeys = Object.keys(currentClusters)
+          const newSelectedVariants = allClusterKeys.filter((v) => v !== variant)
+          nextQs.variants = [...newSelectedVariants]
+        } else if (variantAlreadySelected) {
           nextQs.variants = currentVariants.filter((v) => v !== variant)
         } else {
           nextQs.variants = [...currentVariants, variant]
@@ -140,7 +145,7 @@ export function CountryDistributionPage() {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       router.push(`${fullPath}?${stringify(nextQs)}`, undefined, { scroll: false })
     },
-    [router],
+    [currentClusters, router],
   )
 
   return (
