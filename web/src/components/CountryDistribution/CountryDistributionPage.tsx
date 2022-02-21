@@ -102,7 +102,6 @@ export function CountryDistributionPage() {
       }
       const fullPath = `${router.basePath}${router.pathname}`
       const nextRegionQs = { ...getCurrentQs(router) }
-
       if (nextRegion === Region.World) {
         delete nextRegionQs.region
       } else if (nextRegion === Region.UnitedStates) {
@@ -138,10 +137,12 @@ export function CountryDistributionPage() {
           const newSelectedVariants = allClusterKeys.filter((v) => v !== variant)
           nextQs.variants = [...newSelectedVariants]
         } else if (variantAlreadySelected) {
-          // to deselect this variant
+          // currently this cluster is already selected -> deselect this cluster
           nextQs.variants = currentVariants.filter((v) => v !== variant)
         } else {
+          // current this cluster is not selected -> select this cluster
           const newSelectedVariants = [...currentVariants, variant]
+          // special case, if all clusters are selected -> set the query string to 'all'
           nextQs.variants =
             newSelectedVariants.length !== allClusterKeys.length ? [...currentVariants, variant] : ['all']
         }
