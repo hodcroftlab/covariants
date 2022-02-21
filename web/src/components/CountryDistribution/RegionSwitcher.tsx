@@ -4,6 +4,8 @@ import { Button, Col, Row } from 'reactstrap'
 import { safeZip } from 'src/helpers/safeZip'
 import styled from 'styled-components'
 
+import { Region } from 'src/io/getPerCountryData'
+
 export const RegionSwitcherContainer = styled.div`
   margin: 5px 5px;
   padding: 0.65rem 1rem;
@@ -33,14 +35,14 @@ export const RegionButton = styled(Button)`
 `
 
 export interface RegionSwitcherProps {
-  regions: string[]
+  regions: Region[]
   regionsHaveData: boolean[]
   currentRegion: string
-  setCurrentRegion(region: string): void
+  setCurrentRegion(region: Region): void
 }
 
 export function RegionSwitcher({ regions, regionsHaveData, currentRegion, setCurrentRegion }: RegionSwitcherProps) {
-  const onRegionButtonClick = useCallback((region: string) => () => setCurrentRegion(region), [setCurrentRegion])
+  const onRegionButtonClick = useCallback((region: Region) => () => setCurrentRegion(region), [setCurrentRegion])
   const getRegionButtonColor = (region: string) => (currentRegion === region ? 'success' : undefined)
 
   return (

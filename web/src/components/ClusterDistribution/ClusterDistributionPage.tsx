@@ -143,7 +143,7 @@ export function ClusterDistributionPage() {
     [setTooltipSort],
   )
 
-  const [clusters, setClusters] = useState<ClusterState>(initialClusters)
+  const [clusters, _] = useState<ClusterState>(initialClusters)
   const [places, setPlaces] = useState<Places>(initialPlaces)
 
   const { withClustersFiltered } = useMemo(() => filterClusters(clusters, clusterDistributions), [
@@ -168,20 +168,6 @@ export function ClusterDistributionPage() {
         </ColCustom>
       )),
     [clusterBuildNames, enabledCountries, withCountriesFiltered],
-  )
-
-  const handleClusterCheckedChange = useCallback((clusterName: string) => {
-    setClusters((oldClusters) => toggleCluster(oldClusters, clusterName))
-  }, [])
-
-  const handleClusterSelectAll = useCallback(
-    () => setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: true }))),
-    [],
-  )
-
-  const handleClusterDeselectAll = useCallback(
-    () => setClusters((oldClusters) => mapValues(oldClusters, (cluster) => ({ ...cluster, enabled: false }))),
-    [],
   )
 
   const handleCountryCheckedChange = useCallback(
@@ -233,9 +219,9 @@ export function ClusterDistributionPage() {
                   regionsTitle="Countries"
                   countriesCollapsedByDefault={false}
                   enabledFilters={enabledFilters}
-                  onClusterFilterChange={handleClusterCheckedChange}
-                  onClusterFilterSelectAll={handleClusterSelectAll}
-                  onClusterFilterDeselectAll={handleClusterDeselectAll}
+                  onClusterFilterChange={() => {}}
+                  onClusterFilterSelectAll={() => {}}
+                  onClusterFilterDeselectAll={() => {}}
                   onCountryFilterChange={handleCountryCheckedChange}
                   onRegionFilterChange={handleRegionCheckedChange}
                   onCountryFilterSelectAll={handleCountrySelectAll}
