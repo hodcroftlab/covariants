@@ -5,7 +5,7 @@ import { get } from 'lodash'
 
 import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
 import { takeFirstMaybe } from 'src/helpers/takeFirstMaybe'
-import { updateUrlQuery } from 'src/helpers/urlQuery'
+import { setUrlQuery, updateUrlQuery } from 'src/helpers/urlQuery'
 import { shouldPlotCountry } from 'src/io/getCountryColor'
 
 import { getPerClusterDataRaw } from 'src/io/getPerClusterData'
@@ -167,8 +167,9 @@ export const regionAtom = atom<string>({
   effects: [
     ({ onSet }) => {
       onSet((region) => {
+        // NOTE: This will overwrite the query entirely
         // eslint-disable-next-line no-void
-        void updateUrlQuery({ region })
+        void setUrlQuery({ region })
       })
     },
   ],
