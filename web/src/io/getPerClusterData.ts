@@ -1,7 +1,5 @@
-import copy from 'fast-copy'
-
-import { ClusterState } from 'src/io/getPerCountryData'
-import { getClusters } from 'src/io/getClusters'
+import type { Cluster } from 'src/state/Clusters'
+import { getClusters, sortClusters } from 'src/io/getClusters'
 
 import perClusterData from '../../data/perClusterData.json'
 
@@ -29,7 +27,7 @@ export interface PerClusterDataRaw {
 }
 
 export interface PerClusterData {
-  clusters: ClusterState
+  clusters: Cluster[]
   clusterBuildNames: Map<string, string>
   clusterDistributions: ClusterDistribution[]
 }
@@ -40,10 +38,8 @@ export function getPerClusterDataRaw(): PerClusterDataRaw {
 export function getPerClusterData(): PerClusterData {
   const perClusterData = getPerClusterDataRaw()
 
-  const CLUSTERS = perClusterData.distributions.map(({ cluster }) => cluster).sort()
-  const clusters = CLUSTERS.reduce((result, cluster) => {
-    return { ...result, [cluster]: { enabled: true } }
-  }, {})
+  const clusterNames = perClusterData.distributions.map(({ cluster }) => cluster).sort()
+  const clusters = sortClusters(clusterNames.map((cluster) => ({ cluster, enabled: true })))
 
   const clusterBuildNames: Map<string, string> = new Map(getClusters().map((c) => [c.display_name, c.build_name]))
 

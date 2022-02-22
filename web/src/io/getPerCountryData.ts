@@ -2,7 +2,10 @@
 import copy from 'fast-copy'
 import { pickBy } from 'lodash'
 
+import type { Cluster } from 'src/state/Clusters'
 import type { Country } from 'src/state/Places'
+import { sortClusters } from 'src/io/getClusters'
+
 import perCountryDataJson from 'src/../data/perCountryData.json'
 
 export interface PerCountryDatum {
@@ -37,7 +40,7 @@ export interface ClusterState {
 
 export interface PerCountryData {
   clusterNames: string[]
-  clusters: ClusterState
+  clusters: Cluster[]
   countryDistributions: CountryDistribution[]
   perCountryIntroContent: string
 }
@@ -57,9 +60,7 @@ export function getPerCountryData(regionName: string): PerCountryData {
   }
 
   const clusterNames = copy(perCountryData.cluster_names).sort()
-  const clusters = clusterNames.reduce((result, cluster) => {
-    return { ...result, [cluster]: { enabled: true } }
-  }, {})
+  const clusters = sortClusters(clusterNames.map((cluster) => ({ cluster, enabled: true })))
 
   const countryDistributions = perCountryData.distributions
 
@@ -107,10 +108,8 @@ export function filterCountries(countries: Country[], countryDistributions: Coun
   return { enabledCountries, withCountriesFiltered }
 }
 
-export function filterClusters(clusters: ClusterState, withCountriesFiltered: CountryDistribution[]) {
-  const enabledClusters = Object.entries(clusters)
-    .filter(([_0, { enabled }]) => enabled)
-    .map(([cluster]) => cluster)
+export function filterClusters(clusters: Cluster[], withCountriesFiltered: CountryDistribution[]) {
+  const enabledClusters = clusters.filter(({ enabled }) => enabled).map(({ cluster }) => cluster)
 
   const withClustersFiltered = withCountriesFiltered.map(({ country, distribution }) => {
     const distributionFiltered = distribution.map((dist) => {
