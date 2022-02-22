@@ -62,6 +62,7 @@ from swiss_regions import *
 import os
 import re
 import time
+import sys
 
 def get_division_summary(cluster_meta, chosen_country):
 
@@ -248,6 +249,11 @@ if "all" in clus_answer:
     if print_answer in ["y", "Y", "yes", "YES", "Yes"]:
         do_divisions_country = True
 
+exit_bad_dates = True
+print_answer = input("\nExit the script when bad dates found during early check? (y/n) (Enter is yes): ")
+if print_answer in ["n", "N", "no", "NO", "No"]:
+    exit_bad_dates = False
+
 start_time = time.time()
 
 ##################################
@@ -305,7 +311,7 @@ t0 = time.time()
 #}
 input_meta = "data/metadata.tsv"
 dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str, 'age': str, 'QC_frame_shifts': str, 'frame_shifts': str}
-cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country']
+cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl']
 meta = pd.read_csv(input_meta, sep="\t", dtype=dtype, index_col=False, usecols=cols) #dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str}, index_col=False)
 meta = meta.fillna("")
 
@@ -357,7 +363,6 @@ official_clades = list(meta["Nextstrain_clade"].unique())
 t0 = time.time()
 
 # Adjust to display names for easier check in meta dataframe (can directly compare to "Nextstrain_clade")
-#TODO: include alternative names?
 clus_dates = {clusters[clus]["display_name"] : datetime.datetime.strptime(cluster_first_dates[clus]["first_date"], "%Y-%m-%d") for clus in clus_to_run if clus in cluster_first_dates}
 
 # Search for sequences with too early dates - only for Nextstrain_clades
@@ -366,9 +371,14 @@ before_date = meta[[date < clus_dates[clade] if clade in clus_dates else False f
 # Sort by clus
 alert_first_date_quick = {clus : before_date[before_date["Nextstrain_clade"] == clusters[clus]["display_name"]] for clus in clus_to_run if clusters[clus]["display_name"] in before_date["Nextstrain_clade"].values}
 
-print("\nDate alerts (fast check):")
-print([f"{x}: {len(alert_first_date_quick[x])}" for x in alert_first_date_quick.keys()])
-print("To view, use 'alert_first_date_quick[clus][['strain','date']]'\n")
+if alert_first_date_quick:
+    print("\nDate alerts (fast check):")
+    print([f"{x}: {len(alert_first_date_quick[x])}" for x in alert_first_date_quick.keys()])
+    print("To view, use 'alert_first_date_quick[clus][['strain','date']]'\n")
+    if exit_bad_dates:
+        sys.exit("Bad dates found. Exit program...")
+else:
+    print("\nNo bad dates found.\n")
 
 t1 = time.time()
 print(f"Checking for early dates took {round((t1-t0)/60,1)} min to run")
