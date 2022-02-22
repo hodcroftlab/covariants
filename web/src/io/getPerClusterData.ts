@@ -1,3 +1,6 @@
+import { pickBy } from 'lodash'
+
+import type { Country } from 'src/state/Places'
 import type { Cluster } from 'src/state/Clusters'
 import { getClusters, sortClusters } from 'src/io/getClusters'
 
@@ -65,4 +68,31 @@ export function getClusterDistribution(cluster: string): ClusterDistribution {
 export function getCountryNames(): string[] {
   const perClusterData = getPerClusterDataRaw()
   return perClusterData.country_names
+}
+
+export function filterCountries(countries: Country[], withClustersFiltered: ClusterDistribution[]) {
+  const enabledCountries = new Set<string>(
+    countries.filter((country) => country.enabled).map((country) => country.country),
+  )
+
+  const withCountriesFiltered = withClustersFiltered.map(({ cluster, distribution }) => {
+    const distributionFiltered = distribution.map((dist) => {
+      const frequenciesFiltered = pickBy(dist.frequencies, (_0, country) => {
+        return enabledCountries.has(country)
+      })
+
+      return { ...dist, frequencies: frequenciesFiltered }
+    })
+    return { cluster, distribution: distributionFiltered }
+  })
+
+  return { enabledCountries: Array.from(enabledCountries), withCountriesFiltered }
+}
+
+export function filterClusters(clusters: Cluster[], clusterDistributions: ClusterDistribution[]) {
+  const enabledClusters = clusters.filter(({ enabled }) => enabled).map(({ cluster }) => cluster)
+  const withClustersFiltered = clusterDistributions.filter(({ cluster }) => {
+    return enabledClusters.some((candidate) => candidate === cluster)
+  })
+  return { enabledClusters, withClustersFiltered }
 }

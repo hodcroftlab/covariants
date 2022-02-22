@@ -124,7 +124,3 @@ export function filterClusters(clusters: Cluster[], withCountriesFiltered: Count
 
   return { enabledClusters, withClustersFiltered }
 }
-
-export function toggleCluster(oldClusters: ClusterState, clusterName: string): ClusterState {
-  return { ...oldClusters, [clusterName]: { ...oldClusters[clusterName], enabled: !oldClusters[clusterName].enabled } }
-}

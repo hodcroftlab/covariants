@@ -73,11 +73,11 @@ export function getAllCountries(region?: string): Country[] {
   return countryNames.map((country) => ({ country, enabled: shouldPlotCountry(country) }))
 }
 
-export function getAllContinents(region: string): Continent[] {
+export function getAllContinents(region?: string): Continent[] {
   if (region === 'World') {
     return Object.keys(regionCountryJson).map((continent) => ({ continent, enabled: true }))
   }
-  return [{ continent: region, enabled: true }]
+  return [{ continent: region ?? '', enabled: true }]
 }
 
 export function getCountryToContinentMap(): Map<string, string> {
@@ -94,7 +94,7 @@ export function getCountryToContinentMap(): Map<string, string> {
  * Toggles `enable` field of each country, according to whether the corresponding continent is enabled
  */
 export function toggleCountriesFromContinents(
-  region: string,
+  region: string | undefined,
   countries: Country[],
   continents: Continent[],
 ): Country[] {
@@ -110,7 +110,7 @@ export function toggleCountriesFromContinents(
 /**
  * Deduces which continents are enabled, depending on which countries are enabled
  */
-export function getContinentsFromCountries(region: string, countries: Country[]): Continent[] {
+export function getContinentsFromCountries(region: string | undefined, countries: Country[]): Continent[] {
   // Continents are only relevant for the 'World' region
   if (region === 'World') {
     return Object.entries(regionCountryJson).map(([continent, continentCountries]) => {
@@ -125,7 +125,7 @@ export function getContinentsFromCountries(region: string, countries: Country[])
 
   // For other regions, there is only one fake continent and it's enabled if all countries are enabled
   const enabled = countries.every((country) => country.enabled)
-  return [{ continent: region, enabled }]
+  return [{ continent: region ?? DEFAULT_REGION, enabled }]
 }
 
 /** Toggles a given country enabled/disabled */
@@ -178,9 +178,9 @@ export const regionAtom = atom<string>({
  * Represents a list of currently enabled countries
  * NOTE: this atom can be modified, when the selector for continents is modified.
  */
-export const countriesAtom = atomFamily<Country[], string>({
+export const countriesAtom = atomFamily<Country[], string | undefined>({
   key: 'countries',
-  default(region: string) {
+  default(region?: string) {
     return getAllCountries(region)
   },
   effects: [
@@ -200,13 +200,13 @@ export const countriesAtom = atomFamily<Country[], string>({
  * NOTE: this is a selector and it's value is tied to the countries atom.
  * NOTE: this selector is mutable, i.e. it can be set(). When this happens, it also modifies the countries atom.
  */
-export const continentsAtom = selectorFamily<Continent[], string>({
+export const continentsAtom = selectorFamily<Continent[], string | undefined>({
   key: 'continents',
-  get: (region) => ({ get }) => {
+  get: (region?: string) => ({ get }) => {
     const countries = get(countriesAtom(region))
     return getContinentsFromCountries(region, countries)
   },
-  set: (region) => ({ set, get, reset }, continentsOrDefault) => {
+  set: (region?: string) => ({ set, get, reset }, continentsOrDefault) => {
     const countriesOld = get(countriesAtom(region))
     const continents = continentsOrDefault instanceof DefaultValue ? getAllContinents(region) : continentsOrDefault
     const countries = toggleCountriesFromContinents(region, countriesOld, continents)
