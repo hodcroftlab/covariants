@@ -26,7 +26,7 @@ export interface Continent {
 
 /**
  * Converts values incoming from URL query into region, countries and continents.
- * UseTo be used during app startup.
+ * To be used during app startup.
  */
 export function urlQueryToPlaces(query: ParsedUrlQuery) {
   const regionRaw = takeFirstMaybe(get(query, 'region'))

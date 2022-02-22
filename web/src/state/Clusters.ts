@@ -1,4 +1,7 @@
+import { get } from 'lodash'
+import { ParsedUrlQuery } from 'querystring'
 import { atomFamily } from 'recoil'
+import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
 
 import { updateUrlQuery } from 'src/helpers/urlQuery'
 import { getPerClusterData } from 'src/io/getPerClusterData'
@@ -18,6 +21,25 @@ export type ClustersDataParams = {
 export interface Cluster {
   cluster: string
   enabled: boolean
+}
+
+/**
+ * Converts values incoming from URL query into clusters.
+ * To be used during app startup.
+ */
+export function urlQueryToClusters(query: ParsedUrlQuery, { dataFlavor, region }: ClustersDataParams) {
+  const enabledCountries = convertToArrayMaybe(get(query, 'variant'))
+
+  // Take all clusters and set only the clusters present in the query as `enabled`
+  let clusters = getAllClusters({ dataFlavor, region })
+  if (enabledCountries) {
+    clusters = clusters.map((cluster) => ({
+      ...cluster,
+      enabled: includesCaseInsensitive(enabledCountries, cluster.cluster),
+    }))
+  }
+
+  return clusters
 }
 
 export function getAllClusters({ dataFlavor, region }: ClustersDataParams): Cluster[] {

@@ -12,6 +12,7 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 
 import type { AppProps } from 'next/app'
 import { parseUrl } from 'src/helpers/parseUrl'
+import { clustersAtom, ClustersDataFlavor, urlQueryToClusters } from 'src/state/Clusters'
 import { continentsAtom, countriesAtom, regionAtom, urlQueryToPlaces } from 'src/state/Places'
 import { ThemeProvider } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
@@ -31,7 +32,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   const queryClient = useMemo(() => new QueryClient(), [])
 
   // NOTE: We do manual parsing here, because router.query is randomly empty on the first few renders.
-  const { query } = useMemo(() => parseUrl(router.asPath), [router.asPath])
+  const { pathname, query } = useMemo(() => parseUrl(router.asPath), [router.asPath])
 
   const initializeState = useCallback(
     ({ set }: MutableSnapshot) => {
@@ -39,11 +40,24 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       const { region, continents, countries } = urlQueryToPlaces(query)
 
       // Set initial state
-      set(regionAtom, region)
-      set(continentsAtom(region), continents)
-      set(countriesAtom(region), countries)
+      if (pathname === '/per-country') {
+        set(regionAtom, region)
+        set(continentsAtom(region), continents)
+        set(countriesAtom(region), countries)
+
+        const params = { dataFlavor: ClustersDataFlavor.PerCountry, region }
+        const clusters = urlQueryToClusters(query, params)
+        set(clustersAtom(params), clusters)
+      } else if (pathname === '/per-variant') {
+        set(continentsAtom(undefined), continents)
+        set(countriesAtom(undefined), countries)
+
+        const params = { dataFlavor: ClustersDataFlavor.PerCluster, region }
+        const clusters = urlQueryToClusters(query, params)
+        set(clustersAtom(params), clusters)
+      }
     },
-    [query],
+    [pathname, query],
   )
 
   return (
