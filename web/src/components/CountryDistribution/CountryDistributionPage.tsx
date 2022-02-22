@@ -1,7 +1,6 @@
-import { stringify } from 'querystring'
-import { useRouter } from 'next/router'
 import React, { useCallback, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
+import { useRecoilState } from 'recoil'
 
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
 import { ColCustom } from 'src/components/Common/ColCustom'
@@ -11,19 +10,25 @@ import { DistributionSidebar } from 'src/components/DistributionSidebar/Distribu
 import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 import { getRegionPerCountryContent } from 'src/io/getRegionContent'
-import { disableAllPlaces, enableAllPlaces, toggleContinent, toggleCountry } from 'src/io/getPlaces'
 
 import {
-  Region,
   filterClusters,
   filterCountries,
   getPerCountryIntroContentFilename,
   getRegions,
+  getPerCountryData,
 } from 'src/io/getPerCountryData'
+import {
+  regionAtom,
+  countriesAtom,
+  continentsAtom,
+  disableAllCountries,
+  enableAllCountries,
+  toggleContinent,
+  toggleCountry,
+} from 'src/state/Places'
 
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
-import { useRouterQuery } from './useCountryQuery'
-import { getCurrentQs, RegionQueryString } from './utils'
 import { CountryFlag } from '../Common/CountryFlag'
 import { USStateCode } from '../Common/USStateCode'
 import { PageHeading } from '../Common/PageHeading'
@@ -32,26 +37,25 @@ const enabledFilters = ['clusters', 'countriesWithIcons']
 const { regionNames, regionsHaveData } = getRegions()
 
 export function CountryDistributionPage() {
-  const router = useRouter()
-  const {
-    state: { region, setPlaces, places, countryDistributions, currentClusters },
-  } = useRouterQuery()
+  const [region, setRegion] = useRecoilState(regionAtom)
+  const [countries, setCountries] = useRecoilState(countriesAtom(region))
+  const [continents, setContinents] = useRecoilState(continentsAtom(region))
+  const { clusters: currentClusters, countryDistributions } = useMemo(() => getPerCountryData(region), [region])
 
-  const regionsTitle = useMemo(() => (region === Region.World ? 'Countries' : 'Regions'), [region])
+  const regionsTitle = useMemo(() => (region === 'World' ? 'Countries' : 'Regions'), [region])
+
   const iconComponent = useMemo(() => {
-    if (region === Region.World) return CountryFlag
-    if (region === Region.UnitedStates) return USStateCode
+    if (region === 'World') return CountryFlag
+    if (region === 'United States') return USStateCode
     return undefined
   }, [region])
 
   const { enabledClusters, withClustersFiltered } = useMemo(() => {
-    const { withCountriesFiltered } = filterCountries(places, countryDistributions)
+    const { withCountriesFiltered } = filterCountries(countries, countryDistributions)
     const filteredClusters = filterClusters(currentClusters, withCountriesFiltered)
-
     const { enabledClusters, withClustersFiltered } = filteredClusters
-
     return { enabledClusters, withClustersFiltered }
-  }, [countryDistributions, currentClusters, places])
+  }, [countries, countryDistributions, currentClusters])
 
   const countryDistributionComponents = useMemo(
     () =>
@@ -70,88 +74,70 @@ export function CountryDistributionPage() {
 
   const handleCountryCheckedChange = useCallback(
     (countryName: string) => {
-      setPlaces((oldPlaces) => toggleCountry(oldPlaces, countryName))
+      setCountries((oldCountries) => toggleCountry(oldCountries, countryName))
     },
-    [setPlaces],
+    [setCountries],
   )
 
-  const handleRegionCheckedChange = useCallback(
+  const handleContinentCheckedChange = useCallback(
     (continentName: string) => {
-      setPlaces((oldPlaces) => toggleContinent(oldPlaces, continentName))
+      setContinents((oldContinents) => toggleContinent(oldContinents, continentName))
     },
-    [setPlaces],
+    [setContinents],
   )
 
   const handleCountrySelectAll = useCallback(() => {
-    setPlaces(enableAllPlaces)
-  }, [setPlaces])
+    setCountries(enableAllCountries)
+  }, [setCountries])
 
   const handleCountryDeselectAll = useCallback(() => {
-    setPlaces(disableAllPlaces)
-  }, [setPlaces])
+    setCountries(disableAllCountries)
+  }, [setCountries])
 
   const IntroContent = useMemo(() => {
     const contentFilename = getPerCountryIntroContentFilename(region)
     return getRegionPerCountryContent(contentFilename)
   }, [region])
 
-  const setRegion = useCallback(
-    (nextRegion: Region) => {
-      if (region === nextRegion) {
-        return
-      }
-      const fullPath = `${router.basePath}${router.pathname}`
-      const nextRegionQs = { ...getCurrentQs(router) }
-      if (nextRegion === Region.World) {
-        delete nextRegionQs.region
-      } else if (nextRegion === Region.UnitedStates) {
-        nextRegionQs.region = RegionQueryString.UnitedStates
-      } else if (nextRegion === Region.Switzerland) {
-        nextRegionQs.region = RegionQueryString.Switzerland
-      }
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      router.replace(`${fullPath}?${stringify(nextRegionQs)}`)
-    },
-    [region, router],
-  )
+  const setClusterState = useCallback(() => {}, [])
 
-  const setClusterState = useCallback(
-    (variant: 'all' | 'none' | string) => {
-      const fullPath = `${router.basePath}${router.pathname}`
-      const nextQs = { ...getCurrentQs(router) }
-      if (variant === 'all') {
-        nextQs.variants = 'all'
-      } else if (variant === 'none') {
-        nextQs.variants = 'none'
-      } else {
-        const allClusterKeys = Object.keys(currentClusters)
-        const allCurrentlySelected =
-          nextQs.variants === 'all' ||
-          (Array.isArray(nextQs.variants) && nextQs.variants.length === 1 && nextQs.variants[0] === 'all')
-        const currentVariants: string[] = (Array.isArray(nextQs.variants)
-          ? [...nextQs.variants].filter(Boolean).filter((v) => v !== 'all' && v !== 'none')
-          : [nextQs.variants].filter(Boolean).filter((v) => v !== 'all' && v !== 'none')) as string[]
-        const variantAlreadySelected = currentVariants.includes(variant)
-        if (allCurrentlySelected) {
-          // currently all cluster -> click on one checkbox, to deselect the cluster represented by the checkbox
-          const newSelectedVariants = allClusterKeys.filter((v) => v !== variant)
-          nextQs.variants = [...newSelectedVariants]
-        } else if (variantAlreadySelected) {
-          // currently this cluster is already selected -> deselect this cluster
-          nextQs.variants = currentVariants.filter((v) => v !== variant)
-        } else {
-          // current this cluster is not selected -> select this cluster
-          const newSelectedVariants = [...currentVariants, variant]
-          // special case, if all clusters are selected -> set the query string to 'all'
-          nextQs.variants =
-            newSelectedVariants.length !== allClusterKeys.length ? [...currentVariants, variant] : ['all']
-        }
-      }
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      router.push(`${fullPath}?${stringify(nextQs)}`, undefined, { scroll: false })
-    },
-    [currentClusters, router],
-  )
+  // const setClusterState = useCallback(
+  //   (variant: 'all' | 'none' | string) => {
+  //     const fullPath = `${router.basePath}${router.pathname}`
+  //     const nextQs = { ...getCurrentQs(router) }
+  //     if (variant === 'all') {
+  //       nextQs.variants = 'all'
+  //     } else if (variant === 'none') {
+  //       nextQs.variants = 'none'
+  //     } else {
+  //       const allClusterKeys = Object.keys(currentClusters)
+  //       const allCurrentlySelected =
+  //         nextQs.variants === 'all' ||
+  //         (Array.isArray(nextQs.variants) && nextQs.variants.length === 1 && nextQs.variants[0] === 'all')
+  //       const currentVariants: string[] = (Array.isArray(nextQs.variants)
+  //         ? [...nextQs.variants].filter(Boolean).filter((v) => v !== 'all' && v !== 'none')
+  //         : [nextQs.variants].filter(Boolean).filter((v) => v !== 'all' && v !== 'none')) as string[]
+  //       const variantAlreadySelected = currentVariants.includes(variant)
+  //       if (allCurrentlySelected) {
+  //         // currently all cluster -> click on one checkbox, to deselect the cluster represented by the checkbox
+  //         const newSelectedVariants = allClusterKeys.filter((v) => v !== variant)
+  //         nextQs.variants = [...newSelectedVariants]
+  //       } else if (variantAlreadySelected) {
+  //         // currently this cluster is already selected -> deselect this cluster
+  //         nextQs.variants = currentVariants.filter((v) => v !== variant)
+  //       } else {
+  //         // current this cluster is not selected -> select this cluster
+  //         const newSelectedVariants = [...currentVariants, variant]
+  //         // special case, if all clusters are selected -> set the query string to 'all'
+  //         nextQs.variants =
+  //           newSelectedVariants.length !== allClusterKeys.length ? [...currentVariants, variant] : ['all']
+  //       }
+  //     }
+  //     // eslint-disable-next-line @typescript-eslint/no-floating-promises
+  //     router.push(`${fullPath}?${stringify(nextQs)}`, undefined, { scroll: false })
+  //   },
+  //   [currentClusters, router],
+  // )
 
   return (
     <Layout wide>
@@ -186,8 +172,9 @@ export function CountryDistributionPage() {
             <WrapperFlex>
               <SidebarFlex>
                 <DistributionSidebar
+                  countries={countries}
+                  continents={continents}
                   clusters={currentClusters}
-                  places={places}
                   regionsTitle={regionsTitle}
                   enabledFilters={enabledFilters}
                   clustersCollapsedByDefault={false}
@@ -202,7 +189,7 @@ export function CountryDistributionPage() {
                     setClusterState('none')
                   }}
                   onCountryFilterChange={handleCountryCheckedChange}
-                  onRegionFilterChange={handleRegionCheckedChange}
+                  onRegionFilterChange={handleContinentCheckedChange}
                   onCountryFilterSelectAll={handleCountrySelectAll}
                   onCountryFilterDeselectAll={handleCountryDeselectAll}
                 />

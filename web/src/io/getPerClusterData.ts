@@ -2,8 +2,6 @@ import copy from 'fast-copy'
 
 import { ClusterState } from 'src/io/getPerCountryData'
 import { getClusters } from 'src/io/getClusters'
-import { shouldPlotCountry } from 'src/io/getCountryColor'
-import { getPlaces, Places } from 'src/io/getPlaces'
 
 import perClusterData from '../../data/perClusterData.json'
 
@@ -31,7 +29,6 @@ export interface PerClusterDataRaw {
 }
 
 export interface PerClusterData {
-  places: Places
   clusters: ClusterState
   clusterBuildNames: Map<string, string>
   clusterDistributions: ClusterDistribution[]
@@ -43,11 +40,6 @@ export function getPerClusterDataRaw(): PerClusterDataRaw {
 export function getPerClusterData(): PerClusterData {
   const perClusterData = getPerClusterDataRaw()
 
-  const countryNames: string[] = copy(perClusterData.country_names).sort()
-
-  const countriesListRaw = countryNames.map((countryName) => ({ countryName, enabled: shouldPlotCountry(countryName) }))
-  const places = getPlaces(countriesListRaw)
-
   const CLUSTERS = perClusterData.distributions.map(({ cluster }) => cluster).sort()
   const clusters = CLUSTERS.reduce((result, cluster) => {
     return { ...result, [cluster]: { enabled: true } }
@@ -58,7 +50,6 @@ export function getPerClusterData(): PerClusterData {
   const clusterDistributions: ClusterDistribution[] = perClusterData.distributions
 
   return {
-    places,
     clusters,
     clusterBuildNames,
     clusterDistributions,

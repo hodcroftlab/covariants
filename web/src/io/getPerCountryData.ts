@@ -2,24 +2,15 @@
 import copy from 'fast-copy'
 import { pickBy } from 'lodash'
 
-import { getEnabledCountriesNames, getPlaces, Places } from 'src/io/getPlaces'
+import type { Country } from 'src/state/Places'
 import perCountryDataJson from 'src/../data/perCountryData.json'
-
-/**
- * An enum of possible `region`, used primarily for internal React state. Also same key of the raw data
- */
-export enum Region {
-  World = 'World',
-  UnitedStates = 'United States',
-  Switzerland = 'Switzerland',
-}
 
 export interface PerCountryDatum {
   cluster_names: string[]
   distributions: CountryDistribution[]
   max_date: string
   min_date: string
-  region: Region
+  region: string
   per_country_intro_content: string
 }
 
@@ -47,7 +38,6 @@ export interface ClusterState {
 export interface PerCountryData {
   clusterNames: string[]
   clusters: ClusterState
-  places: Places
   countryDistributions: CountryDistribution[]
   perCountryIntroContent: string
 }
@@ -71,9 +61,6 @@ export function getPerCountryData(regionName: string): PerCountryData {
     return { ...result, [cluster]: { enabled: true } }
   }, {})
 
-  const countriesListRaw = perCountryData.distributions.map(({ country }) => ({ countryName: country, enabled: true }))
-  const places = getPlaces(countriesListRaw, regionName)
-
   const countryDistributions = perCountryData.distributions
 
   const perCountryIntroContent = perCountryData.per_country_intro_content
@@ -81,7 +68,6 @@ export function getPerCountryData(regionName: string): PerCountryData {
   return {
     clusterNames,
     clusters,
-    places,
     countryDistributions,
     perCountryIntroContent,
   }
@@ -111,8 +97,10 @@ export function getRegions() {
   }
 }
 
-export function filterCountries(places: Places, countryDistributions: CountryDistribution[]) {
-  const enabledCountries = getEnabledCountriesNames(places)
+export function filterCountries(countries: Country[], countryDistributions: CountryDistribution[]) {
+  const enabledCountries = new Set<string>(
+    countries.filter((country) => country.enabled).map((country) => country.country),
+  )
   const withCountriesFiltered = countryDistributions.filter(({ country }) => {
     return enabledCountries.has(country)
   })

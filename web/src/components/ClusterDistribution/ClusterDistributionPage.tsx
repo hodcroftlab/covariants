@@ -17,14 +17,7 @@ import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLa
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
 import { PageHeading } from 'src/components/Common/PageHeading'
-import {
-  disableAllPlaces,
-  enableAllPlaces,
-  getEnabledCountriesNames,
-  Places,
-  toggleContinent,
-  toggleCountry,
-} from 'src/io/getPlaces'
+
 import PerClusterIntro from 'src/../../content/PerClusterIntro.md'
 
 const Dropdown = styled(DropdownBase)`

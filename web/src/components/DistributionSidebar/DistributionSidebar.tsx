@@ -2,8 +2,8 @@ import { get } from 'lodash'
 import React, { useState, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
 
+import type { Continent, Country } from 'src/state/Places'
 import type { ClusterState } from 'src/io/getPerCountryData'
-import type { Places } from 'src/io/getPlaces'
 import { getClusterNames } from 'src/io/getClusters'
 import { ClusterFilters } from './ClusterFilters'
 import { CountryFilters } from './CountryFilters'
@@ -28,8 +28,9 @@ export function sortClusters(clusters?: ClusterState): ClusterState | undefined 
 }
 
 export interface DistributionSidebarProps {
+  countries: Country[]
+  continents: Continent[]
   clusters?: ClusterState
-  places: Places
   regionsTitle: string
   clustersCollapsedByDefault?: boolean
   countriesCollapsedByDefault?: boolean
@@ -45,8 +46,9 @@ export interface DistributionSidebarProps {
 }
 
 export function DistributionSidebar({
+  countries,
+  continents,
   clusters,
-  places,
   regionsTitle,
   clustersCollapsedByDefault = true,
   countriesCollapsedByDefault = true,
@@ -70,8 +72,9 @@ export function DistributionSidebar({
       countries: (
         <CountryFilters
           key="country-filters"
+          countries={countries}
+          continents={continents}
           regionsTitle={regionsTitle}
-          places={places}
           onFilterSelectRegion={onRegionFilterChange}
           onFilterChange={onCountryFilterChange}
           onFilterSelectAll={onCountryFilterSelectAll}
@@ -84,9 +87,10 @@ export function DistributionSidebar({
         <CountryFilters
           key="country-filters"
           regionsTitle={regionsTitle}
+          countries={countries}
+          continents={continents}
           withIcons
           Icon={Icon}
-          places={places}
           onFilterChange={onCountryFilterChange}
           onFilterSelectRegion={onRegionFilterChange}
           onFilterSelectAll={onCountryFilterSelectAll}
@@ -119,8 +123,9 @@ export function DistributionSidebar({
       onCountryFilterDeselectAll,
       onCountryFilterSelectAll,
       onRegionFilterChange,
-      places,
       regionsTitle,
+      countries,
+      continents,
     ],
   )
 
