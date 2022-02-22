@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { get, sortBy, reverse, uniqBy } from 'lodash'
-import { useSelector } from 'react-redux'
+import { useRecoilValue } from 'recoil'
 import { ColoredHorizontalLineIcon } from 'src/components/Common/ColoredHorizontalLineIcon'
+import { tooltipSortAtom } from 'src/state/TooltipSort'
 import { theme } from 'src/theme'
 import styled from 'styled-components'
 
 import type { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
-import { selectPerCountryTooltipSortBy, selectPerCountryTooltipSortReversed } from 'src/state/ui/ui.selectors'
 import { formatDateWeekly, formatProportion } from 'src/helpers/format'
 import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
 
@@ -51,8 +51,7 @@ const TooltipTableBody = styled.tbody``
 export type ClusterDistributionPlotTooltipProps = DefaultTooltipContentProps<number, string>
 
 export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotTooltipProps) {
-  const perCountryTooltipSortBy = useSelector(selectPerCountryTooltipSortBy)
-  const perCountryTooltipSortReversed = useSelector(selectPerCountryTooltipSortReversed)
+  const { criterion, reversed } = useRecoilValue(tooltipSortAtom)
 
   const { payload } = props
   if (!payload || payload.length === 0) {
@@ -69,14 +68,11 @@ export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotToo
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const week = formatDateWeekly(data?.week)
 
-  let payloadSorted = sortBy(payload, perCountryTooltipSortBy === 'country' ? 'name' : 'value')
+  let payloadSorted = sortBy(payload, criterion === 'country' ? 'name' : 'value')
 
   // sortBy sorts in ascending order, but if sorting by frequency the natural/non-reversed order is descending
 
-  if (
-    (perCountryTooltipSortBy !== 'frequency' && perCountryTooltipSortReversed) ||
-    (perCountryTooltipSortBy === 'frequency' && !perCountryTooltipSortReversed)
-  ) {
+  if ((criterion !== 'frequency' && reversed) || (criterion === 'frequency' && !reversed)) {
     payloadSorted = reverse(payloadSorted)
   }
 
