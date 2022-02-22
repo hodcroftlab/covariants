@@ -147,24 +147,26 @@ export function CountryFilters({
             </Col>
           </Row>
 
-          <Row noGutters className="pb-3 pt-3 border-bottom border-top">
-            <Col className="d-flex">
-              <Form>
-                {continents.map(({ continent, enabled }) => {
-                  return (
-                    <CountryFilterCheckbox
-                      key={continent}
-                      country={continent}
-                      enabled={enabled}
-                      withIcons
-                      Icon={Icon}
-                      onFilterChange={() => onFilterSelectRegion(continent)}
-                    />
-                  )
-                })}
-              </Form>
-            </Col>
-          </Row>
+          {continents.length > 1 && (
+            <Row noGutters className="pb-3 pt-3 border-bottom border-top">
+              <Col className="d-flex">
+                <Form>
+                  {continents.map(({ continent, enabled }) => {
+                    return (
+                      <CountryFilterCheckbox
+                        key={continent}
+                        country={continent}
+                        enabled={enabled}
+                        withIcons
+                        Icon={Icon}
+                        onFilterChange={() => onFilterSelectRegion(continent)}
+                      />
+                    )
+                  })}
+                </Form>
+              </Col>
+            </Row>
+          )}
 
           <Row noGutters className="mt-3">
             <Col>

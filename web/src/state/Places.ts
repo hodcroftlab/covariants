@@ -5,7 +5,7 @@ import { get } from 'lodash'
 
 import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
 import { takeFirstMaybe } from 'src/helpers/takeFirstMaybe'
-import { setUrlQuery } from 'src/helpers/urlQuery'
+import { updateUrlQuery } from 'src/helpers/urlQuery'
 import { shouldPlotCountry } from 'src/io/getCountryColor'
 
 import { getPerClusterDataRaw } from 'src/io/getPerClusterData'
@@ -168,7 +168,7 @@ export const regionAtom = atom<string>({
     ({ onSet }) => {
       onSet((region) => {
         // eslint-disable-next-line no-void
-        void setUrlQuery({ region })
+        void updateUrlQuery({ region })
       })
     },
   ],
@@ -187,7 +187,7 @@ export const countriesAtom = atomFamily<Country[], string | undefined>({
     ({ onSet }) => {
       onSet((countries) => {
         // eslint-disable-next-line no-void
-        void setUrlQuery({
+        void updateUrlQuery({
           country: countries.filter((country) => country.enabled).map((country) => country.country),
         })
       })

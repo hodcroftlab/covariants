@@ -1,6 +1,6 @@
 import { atomFamily } from 'recoil'
 
-import { setUrlQuery } from 'src/helpers/urlQuery'
+import { updateUrlQuery } from 'src/helpers/urlQuery'
 import { getPerClusterData } from 'src/io/getPerClusterData'
 import { getPerCountryData } from 'src/io/getPerCountryData'
 
@@ -47,7 +47,7 @@ export const clustersAtom = atomFamily<Cluster[], ClustersDataParams>({
     ({ onSet }) => {
       onSet((clusters) => {
         // eslint-disable-next-line no-void
-        void setUrlQuery({
+        void updateUrlQuery({
           variant: clusters.filter((cluster) => cluster.enabled).map((cluster) => cluster.cluster),
         })
       })
