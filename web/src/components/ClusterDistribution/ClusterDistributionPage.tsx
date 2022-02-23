@@ -1,8 +1,9 @@
 import React, { useCallback, useMemo, useState } from 'react'
 
 import { mapValues, pickBy } from 'lodash'
-import { useDispatch, useSelector } from 'react-redux'
 import { Card, CardBody, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
+import { useRecoilState } from 'recoil'
+import { tooltipSortAtom, TooltipSortCriterion } from 'src/state/TooltipSort'
 import styled from 'styled-components'
 
 import { ClusterState, toggleCluster } from 'src/io/getPerCountryData'
@@ -25,9 +26,6 @@ import {
   toggleCountry,
 } from 'src/io/getPlaces'
 import PerClusterIntro from 'src/../../content/PerClusterIntro.md'
-import { setPerCountryTooltipSortBy, setPerCountryTooltipSortReversed } from 'src/state/ui/ui.actions'
-import { PerCountryTooltipSortBy } from 'src/state/ui/ui.reducer'
-import { selectPerCountryTooltipSortBy, selectPerCountryTooltipSortReversed } from 'src/state/ui/ui.selectors'
 
 const Dropdown = styled(DropdownBase)`
   min-width: 130px;
@@ -65,15 +63,15 @@ export function filterCountries(places: Places, withClustersFiltered: ClusterDis
 const enabledFilters = ['countries', 'clusters']
 
 export interface SortByDropdownProps {
-  perCountryTooltipSortBy: PerCountryTooltipSortBy
-  onSortByChange(perCountryTooltipSortBy: PerCountryTooltipSortBy): void
+  perCountryTooltipSortBy: TooltipSortCriterion
+  onSortByChange(perCountryTooltipSortBy: TooltipSortCriterion): void
 }
 
-const sortByOptions = Object.entries(PerCountryTooltipSortBy).map(([key, value]) => ({ value, label: key }))
+const sortByOptions = Object.entries(TooltipSortCriterion).map(([key, value]) => ({ value, label: key }))
 
 export function SortByDropdown({ perCountryTooltipSortBy, onSortByChange }: SortByDropdownProps) {
   const handleSortByChange = useCallback(
-    ({ value }) => onSortByChange(PerCountryTooltipSortBy[value as keyof typeof PerCountryTooltipSortBy]),
+    ({ value }) => onSortByChange(TooltipSortCriterion[value as keyof typeof TooltipSortCriterion]),
     [onSortByChange],
   )
 
@@ -119,8 +117,11 @@ const StickyRow = styled(Row)`
 `
 
 export function ClusterDistributionPage() {
-  const perCountryTooltipSortBy = useSelector(selectPerCountryTooltipSortBy)
-  const perCountryTooltipSortReversed = useSelector(selectPerCountryTooltipSortReversed)
+  const [tooltipSort, setTooltipSort] = useRecoilState(tooltipSortAtom)
+
+  const perCountryTooltipSortBy = tooltipSort.criterion
+  const perCountryTooltipSortReversed = tooltipSort.reversed
+
   const {
     places: initialPlaces,
     clusters: initialClusters,
@@ -128,17 +129,18 @@ export function ClusterDistributionPage() {
     clusterDistributions,
   } = getPerClusterData()
 
-  const dispatch = useDispatch()
   const setSortBy = useCallback(
-    (perCountryTooltipSortBy: PerCountryTooltipSortBy) =>
-      dispatch(setPerCountryTooltipSortBy({ perCountryTooltipSortBy })),
-    [dispatch],
+    (criterion: TooltipSortCriterion) => {
+      setTooltipSort((tooltipSort) => ({ ...tooltipSort, criterion }))
+    },
+    [setTooltipSort],
   )
 
   const setSortReversed = useCallback(
-    (perCountryTooltipSortReversed: boolean) =>
-      dispatch(setPerCountryTooltipSortReversed({ perCountryTooltipSortReversed })),
-    [dispatch],
+    (reversed: boolean) => {
+      setTooltipSort((tooltipSort) => ({ ...tooltipSort, reversed }))
+    },
+    [setTooltipSort],
   )
 
   const [clusters, setClusters] = useState<ClusterState>(initialClusters)

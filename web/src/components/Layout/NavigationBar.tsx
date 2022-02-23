@@ -1,6 +1,6 @@
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 
-import { connect } from 'react-redux'
 import styled from 'styled-components'
 import {
   Collapse,
@@ -19,9 +19,6 @@ import { ReactComponent as BrandLogoLargeBase } from 'src/assets/images/logo_tex
 import { Link } from 'src/components/Link/Link'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { TWITTER_USERNAME_RAW, URL_GITHUB } from 'src/constants'
-
-import { State } from 'src/state/reducer'
-import { selectPathname } from 'src/state/router/router.selectors'
 
 let navLinksLeft: Record<string, string> = {
   '/': 'Home',
@@ -141,19 +138,8 @@ export const BrandLogoLarge = styled(BrandLogoLargeBase)`
   margin: 7px 10px 10px;
 `
 
-export interface NavigationBarProps {
-  pathname: string
-}
-
-const mapStateToProps = (state: State) => ({
-  pathname: selectPathname(state),
-})
-
-const mapDispatchToProps = {}
-
-export const NavigationBar = connect(mapStateToProps, mapDispatchToProps)(NavigationBarDisconnected)
-
-export function NavigationBarDisconnected({ pathname }: NavigationBarProps) {
+export function NavigationBar() {
+  const { pathname } = useRouter()
   const [isOpen, setIsOpen] = useState(false)
   const toggle = () => setIsOpen(!isOpen)
 

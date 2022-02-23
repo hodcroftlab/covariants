@@ -3,20 +3,14 @@ import 'resize-observer-polyfill/dist/ResizeObserver.global'
 
 import 'css.escape'
 
-import 'map.prototype.tojson' // to visualize Map in Redux Dev Tools
-import 'set.prototype.tojson' // to visualize Set in Redux Dev Tools
-import 'src/helpers/errorPrototypeTojson' // to visualize Error in Redux Dev Tools
-import 'src/helpers/functionPrototypeTojson' // to visualize Function in Redux Dev Tools
-
 import { enableES5 } from 'immer'
 import dynamic from 'next/dynamic'
 import React, { useMemo } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { RecoilRoot } from 'recoil'
 import { ReactQueryDevtools } from 'react-query/devtools'
 
 import type { AppProps } from 'next/app'
-import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'connected-next-router'
 import { ThemeProvider } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
 
@@ -25,32 +19,28 @@ import { DOMAIN_STRIPPED } from 'src/constants'
 import { Plausible } from 'src/components/Common/Plausible'
 import { SeoApp } from 'src/components/Common/SeoApp'
 
-import { configureStore } from 'src/state/store'
 import { mdxComponents } from 'src/components/Common/MdxComponents'
 
 import 'src/styles/global.scss'
 
 enableES5()
 
-function MyApp({ Component, pageProps, router }: AppProps) {
-  const store = useMemo(() => configureStore({ router }), [router])
+function MyApp({ Component, pageProps }: AppProps) {
   const queryClient = useMemo(() => new QueryClient(), [])
 
   return (
-    <Provider store={store}>
-      <ConnectedRouter>
-        <ThemeProvider theme={theme}>
-          <MDXProvider components={(components) => ({ ...components, ...mdxComponents })}>
-            <Plausible domain={DOMAIN_STRIPPED} />
-            <SeoApp />
-            <QueryClientProvider client={queryClient}>
-              <Component {...pageProps} />
-              <ReactQueryDevtools initialIsOpen={false} />
-            </QueryClientProvider>
-          </MDXProvider>
-        </ThemeProvider>
-      </ConnectedRouter>
-    </Provider>
+    <RecoilRoot>
+      <ThemeProvider theme={theme}>
+        <MDXProvider components={(components) => ({ ...components, ...mdxComponents })}>
+          <Plausible domain={DOMAIN_STRIPPED} />
+          <SeoApp />
+          <QueryClientProvider client={queryClient}>
+            <Component {...pageProps} />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
+        </MDXProvider>
+      </ThemeProvider>
+    </RecoilRoot>
   )
 }
 

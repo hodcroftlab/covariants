@@ -168,8 +168,6 @@ const transpilationListProd = uniq([
   'react-router',
   'react-share',
   'recharts',
-  'redux-saga',
-  'redux/es',
   'semver',
   'split-on-first',
   'strict-uri-encode',

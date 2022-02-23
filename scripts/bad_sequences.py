@@ -1969,6 +1969,35 @@ bad_seqs = {
     "France/NAQ-HCL722000143901/2021" : "2021-01-24", #omicron -  EPI_ISL_9798328
     "France/NAQ-HCL722000222201/2021" : "2021-01-31", #omicron -  EPI_ISL_9798984
     "France/OCC-HCL722000143201/2021" : "2021-01-24", #omicron -  EPI_ISL_9798321
+    #18 feb
+    "Gambia/99215/2021" : "2021-06-06", #omicron
+    "Honduras/26998-ICGES/2021" : "2021-09-01", #omicron
+    "Italy/PUG_UNIBA_APU-BA485/2021" : "2021-01-31", #omicron
+    "Norway/2122/2021" : "2021-01-10", #omicron
+    "Slovakia/run220208_RUVZ_BB-22-0375/2021" : "2021-01-24", #omicron
+    "SouthAfrica/NCV575/2020" : "2020-12-19", #omicron
+    "SouthAfrica/NCV577/2020" : "2020-12-18", #omicron
+    "Spain/CL-COV24171/2021" : "2021-01-26", #omicron
+    "Spain/CL-COV24172/2021" : "2021-01-26", #omicron
+    "Thailand/NIC_SRI_SEQ01603/2021" : "2021-01-24", #omicron
+    "Thailand/NIC_SRI_SEQ01604/2021" : "2021-01-27", #omicron
+    "USA/CA-LACPHL-AF06398/2021" : "2021-09-07", #omicron
+    "USA/MA-CDCBI-CRSP_NRDHXYXTJJQAVYA6/2021" : "2021-01-31", #omicron
+    "USA/NY-Wadsworth-22006856-01/2021" : "2021-01-26", #omicron
+    "USA/RI-CDCBI-RIDOH_D7KNKRLYISMFHSJW/2021" : "2021-01-26", #omicron
+    "USA/TX-DSHS-15313/2021" : "2021-01-06", #omicron
+    "USA/WI-WSLH-2203474/2021" : "2021-01-03", #omicron
+    "USA/WI-WSLH-2203617/2021" : "2021-01-07", #omicron
+    #21 Feb
+    "DemocraticRepublicoftheCongo/RC-356/2021" : "2021-08-12", #omicron
+    "DemocraticRepublicoftheCongo/RC-396/2021" : "2021-06-12", #omicron
+    "DemocraticRepublicoftheCongo/RC-405/2021" : "2021-08-12", #omicron
+    "DemocraticRepublicoftheCongo/RC-409/2021" : "2021-08-12", #omicron
+    "DemocraticRepublicoftheCongo/RC-412/2021" : "2021-10-12", #omicron
+    "DemocraticRepublicoftheCongo/RC-413/2021" : "2021-08-12", #omicron
+    "DemocraticRepublicoftheCongo/RC-415/2021" : "2021-09-12", #omicron
+    "USA/LA-EVTL11612/2021" : "2021-07-29", #omicron
+
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
