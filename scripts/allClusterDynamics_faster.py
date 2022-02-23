@@ -374,7 +374,7 @@ alert_first_date_quick = {clus : before_date[before_date["Nextstrain_clade"] == 
 if alert_first_date_quick:
     print("\nDate alerts (fast check):")
     print([f"{x}: {len(alert_first_date_quick[x])}" for x in alert_first_date_quick.keys()])
-    print("To view, use 'alert_first_date_quick[clus][['strain','date']]'\n")
+    print("To view, use 'print_all_date_alerts_quick()' or 'print_date_alerts_quick(<clus>)'\n")
     if exit_bad_dates:
         sys.exit("Bad dates found. Exit program...")
 else:
