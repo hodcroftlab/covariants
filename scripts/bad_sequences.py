@@ -1503,6 +1503,7 @@ bad_seqs = {
     "USA/TX-HMH-MCoV-49849/2020" : "2020-07-16", #delta
     "USA/TX-HMH-MCoV-49914/2020" : "2020-07-16", #delta
     "USA/TX-HMH-MCoV-50058/2020" : "2020-07-16", #delta
+    "Tunisia/X-3240/2020" : "2020-08-29", #delta
     
 
     #Omicron with possibly bad dates (very early)
@@ -1997,6 +1998,36 @@ bad_seqs = {
     "DemocraticRepublicoftheCongo/RC-413/2021" : "2021-08-12", #omicron
     "DemocraticRepublicoftheCongo/RC-415/2021" : "2021-09-12", #omicron
     "USA/LA-EVTL11612/2021" : "2021-07-29", #omicron
+    #23 feb
+    "DemocraticRepublicoftheCongo/RC-356/2021" : "2021-08-12", #omicron  EPI_ISL_10023502
+    "DemocraticRepublicoftheCongo/RC-396/2021" : "2021-06-12", #omicron  EPI_ISL_10023518
+    "DemocraticRepublicoftheCongo/RC-405/2021" : "2021-08-12", #omicron  EPI_ISL_10023523
+    "DemocraticRepublicoftheCongo/RC-409/2021" : "2021-08-12", #omicron  EPI_ISL_10023526
+    "DemocraticRepublicoftheCongo/RC-412/2021" : "2021-10-12", #omicron  EPI_ISL_10023527
+    "DemocraticRepublicoftheCongo/RC-413/2021" : "2021-08-12", #omicron  EPI_ISL_10023528
+    "DemocraticRepublicoftheCongo/RC-415/2021" : "2021-09-12", #omicron  EPI_ISL_10023530
+    "Honduras/26998-ICGES/2021" : "2021-09-01", #omicron   EPI_ISL_9983950
+    "Norway/2122/2021" : "2021-01-10", #omicron   EPI_ISL_9984342
+    "Oman/72210/2021" : "2021-01-02", #omicron  EPI_ISL_10104936
+    "Oman/722143/2021" : "2021-01-03", #omicron  EPI_ISL_10104934
+    "Oman/72293/2021" : "2021-01-03", #omicron  EPI_ISL_10104935
+    "Rwanda/NRLNAT4311/2021" : "2021-01-27", #omicron  EPI_ISL_10114824
+    "Rwanda/NRLNAT4335/2021" : "2021-01-04", #omicron  EPI_ISL_10114823
+    "SouthAfrica/NCV575/2020" : "2020-12-19", #omicron   EPI_ISL_9877975
+    "SouthAfrica/NCV577/2020" : "2020-12-18", #omicron   EPI_ISL_9877973
+    "Spain/CL-COV24171/2021" : "2021-01-26", #omicron   EPI_ISL_9909915
+    "Spain/CL-COV24172/2021" : "2021-01-26", #omicron   EPI_ISL_9909913
+    "Thailand/NIC_SRI_SEQ01603/2021" : "2021-01-24", #omicron   EPI_ISL_9872444
+    "Thailand/NIC_SRI_SEQ01604/2021" : "2021-01-27", #omicron   EPI_ISL_9872445
+    "USA/CA-LACPHL-AF06398/2021" : "2021-09-07", #omicron   EPI_ISL_9843366
+    "USA/CA-LACPHL-AF06814/2021" : "2021-01-11", #omicron  EPI_ISL_10116082
+    "USA/CA-LACPHL-AF06817/2021" : "2021-01-11", #omicron  EPI_ISL_10116085
+    "USA/LA-EVTL11612/2021" : "2021-07-29", #omicron   EPI_ISL_9396281
+    "USA/TX-DSHS-15313/2021" : "2021-01-06", #omicron   EPI_ISL_9862688
+    "USA/WA-PHL-014485/2021" : "2021-10-12", #omicron  EPI_ISL_10117310
+    "USA/WA-PHL-014487/2021" : "2021-10-12", #omicron  EPI_ISL_10117312
+    "USA/WA-PHL-014495/2021" : "2021-09-29", #omicron  EPI_ISL_10117320
+    "USA/WA-PHL-014498/2021" : "2021-09-29", #omicron  EPI_ISL_10117322
 
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
