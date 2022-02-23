@@ -130,6 +130,42 @@ export function CountryFilters({
   onFilterChange,
   setCollapsed,
 }: CountryFiltersProps) {
+  const handleContinentChange = useCallback((continent: string) => onFilterSelectRegion(continent), [
+    onFilterSelectRegion,
+  ])
+
+  const continentCheckboxes = useMemo(
+    () =>
+      continents.map(({ continent, enabled }) => {
+        return (
+          <CountryFilterCheckbox
+            key={continent}
+            country={continent}
+            enabled={enabled}
+            withIcons
+            Icon={Icon}
+            onFilterChange={handleContinentChange}
+          />
+        )
+      }),
+    [Icon, continents, handleContinentChange],
+  )
+
+  const countryCheckboxes = useMemo(
+    () =>
+      countries.map(({ country, enabled }) => (
+        <CountryFilterCheckbox
+          key={country}
+          country={country}
+          enabled={enabled}
+          withIcons={withIcons}
+          Icon={Icon}
+          onFilterChange={onFilterChange}
+        />
+      )),
+    [Icon, countries, onFilterChange, withIcons],
+  )
+
   return (
     <CardCollapsible className="m-2" title={regionsTitle} collapsed={collapsed} setCollapsed={setCollapsed}>
       <CardBody>
@@ -150,38 +186,14 @@ export function CountryFilters({
           {continents.length > 1 && (
             <Row noGutters className="pb-3 pt-3 border-bottom border-top">
               <Col className="d-flex">
-                <Form>
-                  {continents.map(({ continent, enabled }) => {
-                    return (
-                      <CountryFilterCheckbox
-                        key={continent}
-                        country={continent}
-                        enabled={enabled}
-                        withIcons
-                        Icon={Icon}
-                        onFilterChange={() => onFilterSelectRegion(continent)}
-                      />
-                    )
-                  })}
-                </Form>
+                <Form>{continentCheckboxes}</Form>
               </Col>
             </Row>
           )}
 
           <Row noGutters className="mt-3">
             <Col>
-              <Form>
-                {countries.map(({ country, enabled }) => (
-                  <CountryFilterCheckbox
-                    key={country}
-                    country={country}
-                    enabled={enabled}
-                    withIcons={withIcons}
-                    Icon={Icon}
-                    onFilterChange={onFilterChange}
-                  />
-                ))}
-              </Form>
+              <Form>{countryCheckboxes}</Form>
             </Col>
           </Row>
         </Container>

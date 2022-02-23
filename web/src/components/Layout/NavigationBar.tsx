@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 
 import styled from 'styled-components'
 import {
@@ -141,7 +141,7 @@ export const BrandLogoLarge = styled(BrandLogoLargeBase)`
 export function NavigationBar() {
   const { pathname } = useRouter()
   const [isOpen, setIsOpen] = useState(false)
-  const toggle = () => setIsOpen(!isOpen)
+  const toggle = useCallback(() => setIsOpen(!isOpen), [isOpen])
 
   return (
     <Navbar expand="md" color="light" light role="navigation">

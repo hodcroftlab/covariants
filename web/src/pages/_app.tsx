@@ -21,7 +21,7 @@ import { DOMAIN_STRIPPED } from 'src/constants'
 import { Plausible } from 'src/components/Common/Plausible'
 import { SeoApp } from 'src/components/Common/SeoApp'
 
-import { mdxComponents } from 'src/components/Common/MdxComponents'
+import { getMdxComponents } from 'src/components/Common/MdxComponents'
 
 import 'src/styles/global.scss'
 
@@ -60,7 +60,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <RecoilRoot initializeState={initializeState}>
       <ThemeProvider theme={theme}>
-        <MDXProvider components={(components) => ({ ...components, ...mdxComponents })}>
+        <MDXProvider components={getMdxComponents}>
           <Plausible domain={DOMAIN_STRIPPED} />
           <SeoApp />
           <QueryClientProvider client={queryClient}>
