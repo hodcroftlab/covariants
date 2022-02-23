@@ -1,3 +1,5 @@
+import { NextConfig } from 'next'
+import { webpack5 } from 'next/dist/compiled/webpack/webpack'
 import path from 'path'
 
 import { uniq } from 'lodash'
@@ -64,29 +66,37 @@ const clientEnv = {
 
 console.info(`Client-side Environment:\n${JSON.stringify(clientEnv, null, 2)}`)
 
-const nextConfig = {
+const nextConfig: NextConfig = {
   distDir: `.build/${process.env.NODE_ENV}/tmp`,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx', 'all-contributorsrc'],
   onDemandEntries: {
     maxInactiveAge: 60 * 1000,
     pagesBufferLength: 2,
   },
+  modern: false,
+  // reactStrictMode: true,
   experimental: {
-    modern: false, // this breaks Threads.js workers in production
-    productionBrowserSourceMaps: ENABLE_SOURCE_MAPS,
+    // reactMode: 'concurrent',
+    // reactRoot: true,
+    scrollRestoration: true,
   },
-  future: {
-    excludeDefaultMomentLocales: true,
-  },
+  swcMinify: true,
+  productionBrowserSourceMaps: ENABLE_SOURCE_MAPS,
+  excludeDefaultMomentLocales: true,
   devIndicators: {
     buildActivity: false,
-    autoPrerender: false,
   },
   typescript: {
-    ignoreDevErrors: true,
     ignoreBuildErrors: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  compiler: {
+    styledComponents: true,
+  },
   env: clientEnv,
+  poweredByHeader: false,
 }
 
 const withMDX = getWithMDX({
