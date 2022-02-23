@@ -659,40 +659,41 @@ for clus in clus_to_run:
         if alert:
             alert_first_date[clus] = before_date
 
+    #Stop making this build - 23 Feb 2022
     # Make a version of Delta which does not have as much UK/India sequences for increased viewability
     #if clus == "21AS478":
-    if clus_build_name == "21A.Delta":
-        nouk_delta_meta = cluster_meta[
-            cluster_meta["country"].apply(lambda x: x != "United Kingdom" and x != "India")
-        ]
-        # re-set wanted_seqs
-        extraDelta_wanted_seqs = list(nouk_delta_meta["strain"])
-
-        noUK_clusterlist_output = (
-            cluster_path + f'/clusters/cluster_{clusters[clus]["build_name"]}-noUKIndia.txt'
-        )
-        noUK_out_meta_file = (
-            cluster_path
-            + f'/cluster_info/cluster_{clusters[clus]["build_name"]}-noUKIndia_meta.tsv'
-        )
-
-        if print_files:
-            with open(noUK_clusterlist_output, "w") as f:
-                for item in extraDelta_wanted_seqs:
-                    f.write("%s\n" % item)
-            build_nam = clusters[clus]["build_name"]
-            copypath = noUK_clusterlist_output.replace(
-                f"{build_nam}-noUKIndia",
-                "{}-noUKIndia-{}".format(
-                    build_nam, datetime.date.today().strftime("%Y-%m-%d")
-                ),
-            )
-            copyfile(noUK_clusterlist_output, copypath)
-            nouk_delta_meta.to_csv(noUK_out_meta_file, sep="\t", index=False)
-            copypath2 = noUK_clusterlist_output.replace(
-                "clusters/cluster_", "clusters/current/cluster_"
-            )
-            copyfile(noUK_clusterlist_output, copypath2)
+    #if clus_build_name == "21A.Delta":
+    #    nouk_delta_meta = cluster_meta[
+    #        cluster_meta["country"].apply(lambda x: x != "United Kingdom" and x != "India")
+    #    ]
+    #    # re-set wanted_seqs
+    #    extraDelta_wanted_seqs = list(nouk_delta_meta["strain"])
+#
+    #    noUK_clusterlist_output = (
+    #        cluster_path + f'/clusters/cluster_{clusters[clus]["build_name"]}-noUKIndia.txt'
+    #    )
+    #    noUK_out_meta_file = (
+    #        cluster_path
+    #        + f'/cluster_info/cluster_{clusters[clus]["build_name"]}-noUKIndia_meta.tsv'
+    #    )
+#
+    #    if print_files:
+    #        with open(noUK_clusterlist_output, "w") as f:
+    #            for item in extraDelta_wanted_seqs:
+    #                f.write("%s\n" % item)
+    #        build_nam = clusters[clus]["build_name"]
+    #        copypath = noUK_clusterlist_output.replace(
+    #            f"{build_nam}-noUKIndia",
+    #            "{}-noUKIndia-{}".format(
+    #                build_nam, datetime.date.today().strftime("%Y-%m-%d")
+    #            ),
+    #        )
+    #        copyfile(noUK_clusterlist_output, copypath)
+    #        nouk_delta_meta.to_csv(noUK_out_meta_file, sep="\t", index=False)
+    #        copypath2 = noUK_clusterlist_output.replace(
+    #            "clusters/cluster_", "clusters/current/cluster_"
+    #        )
+    #        copyfile(noUK_clusterlist_output, copypath2)
 
     # Make a version of Delta for Europe
     ### DISABLED because there are now 3 delta categories -no way to pull Europe seqs from each.
@@ -730,42 +731,43 @@ for clus in clus_to_run:
 #            )
 #            copyfile(eu_clusterlist_output, copypath2)
 
+    #Stop making these builds, 23 Feb 2022 - currently only for A,B,G & these are not worth updating as variants ess. gone
     # Make a version of  Alpha-Delta which only have Swiss sequences for increased focus
     #if clus in ["501YV1", "501YV2", "501YV3", "21AS478"]:
     ## DISABLED for DELTA because now 3 categories of Delta - no way to pull seqs from all of them...
-    if clus_build_name in ["20I.Alpha.V1", "20H.Beta.V2", "20J.Gamma.V3" ]: #, "21A.Delta"]:
-        swiss_voc_meta = cluster_meta[
-            cluster_meta["country"].apply(lambda x: x == "Switzerland")
-        ]
-        # re-set wanted_seqs
-        extravoc_wanted_seqs = list(swiss_voc_meta["strain"])
-
-        swissvoc_clusterlist_output = (
-            cluster_path
-            + f'/clusters/cluster_{clusters[clus]["build_name"]}-swiss.txt'
-        )
-        swissvoc_out_meta_file = (
-            cluster_path
-            + f'/cluster_info/cluster_{clusters[clus]["build_name"]}-swiss_meta.tsv'
-        )
-
-        if print_files:
-            with open(swissvoc_clusterlist_output, "w") as f:
-                for item in extravoc_wanted_seqs:
-                    f.write("%s\n" % item)
-            build_nam = clusters[clus]["build_name"]
-            copypath = swissvoc_clusterlist_output.replace(
-                f"{build_nam}-swiss",
-                "{}-swiss-{}".format(
-                    build_nam, datetime.date.today().strftime("%Y-%m-%d")
-                ),
-            )
-            copyfile(swissvoc_clusterlist_output, copypath)
-            swiss_voc_meta.to_csv(swissvoc_out_meta_file, sep="\t", index=False)
-            copypath2 = swissvoc_clusterlist_output.replace(
-                "clusters/cluster_", "clusters/current/cluster_"
-            )
-            copyfile(swissvoc_clusterlist_output, copypath2)
+#    if clus_build_name in ["20I.Alpha.V1", "20H.Beta.V2", "20J.Gamma.V3" ]: #, "21A.Delta"]:
+#        swiss_voc_meta = cluster_meta[
+#            cluster_meta["country"].apply(lambda x: x == "Switzerland")
+#        ]
+#        # re-set wanted_seqs
+#        extravoc_wanted_seqs = list(swiss_voc_meta["strain"])
+#
+#        swissvoc_clusterlist_output = (
+#            cluster_path
+#            + f'/clusters/cluster_{clusters[clus]["build_name"]}-swiss.txt'
+#        )
+#        swissvoc_out_meta_file = (
+#            cluster_path
+#            + f'/cluster_info/cluster_{clusters[clus]["build_name"]}-swiss_meta.tsv'
+#        )
+#
+#        if print_files:
+#            with open(swissvoc_clusterlist_output, "w") as f:
+#                for item in extravoc_wanted_seqs:
+#                    f.write("%s\n" % item)
+#            build_nam = clusters[clus]["build_name"]
+#            copypath = swissvoc_clusterlist_output.replace(
+#                f"{build_nam}-swiss",
+#                "{}-swiss-{}".format(
+#                    build_nam, datetime.date.today().strftime("%Y-%m-%d")
+#                ),
+#            )
+#            copyfile(swissvoc_clusterlist_output, copypath)
+#            swiss_voc_meta.to_csv(swissvoc_out_meta_file, sep="\t", index=False)
+#            copypath2 = swissvoc_clusterlist_output.replace(
+#                "clusters/cluster_", "clusters/current/cluster_"
+#            )
+#            copyfile(swissvoc_clusterlist_output, copypath2)
 
     #######
     # print out the table
