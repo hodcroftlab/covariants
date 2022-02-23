@@ -68,9 +68,12 @@ export const clustersAtom = atomFamily<Cluster[], ClustersDataParams>({
   effects: [
     ({ onSet }) => {
       onSet((clusters) => {
+        // If all clusters are enabled, we will remove cluster url params
+        const hasAllEnabled = clusters.every((cluster) => cluster.enabled)
+
         // eslint-disable-next-line no-void
         void updateUrlQuery({
-          variant: clusters.filter((cluster) => cluster.enabled).map((cluster) => cluster.cluster),
+          variant: hasAllEnabled ? [] : clusters.filter((cluster) => cluster.enabled).map((cluster) => cluster.cluster),
         })
       })
     },
