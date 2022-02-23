@@ -18,10 +18,7 @@ import getWithFriendlyConsole from './withFriendlyConsole'
 import getWithLodash from './withLodash'
 import { getWithRobotsTxt } from './withRobotsTxt'
 import getWithTypeChecking from './withTypeChecking'
-import withRaw from './withRaw'
-import withJson from './withJson'
 import withSvg from './withSvg'
-import withImages from './withImages'
 import withIgnore from './withIgnore'
 import withoutMinification from './withoutMinification'
 import withFriendlyChunkNames from './withFriendlyChunkNames'
@@ -152,26 +149,12 @@ const transpilationListDev = [
 
 const transpilationListProd = uniq([
   ...transpilationListDev,
-  '!d3-array/src/cumsum.js',
-  '@loadable',
-  'create-color',
-  'd3-array',
   'debug',
-  'delay',
   'immer',
-  'is-observable',
   'lodash',
-  'observable-fns',
-  'p-min-delay',
-  'proper-url-join',
-  'query-string',
-  'react-router',
   'react-share',
   'recharts',
   'semver',
-  'split-on-first',
-  'strict-uri-encode',
-  'threads',
 ])
 
 const withTranspileModules = getWithTranspileModules(PRODUCTION ? transpilationListProd : transpilationListDev)
@@ -183,9 +166,6 @@ const config = withPlugins(
     [withIgnore],
     [withExtraWatch],
     [withSvg],
-    [withImages],
-    [withRaw],
-    [withJson],
     [withFriendlyConsole],
     [withMDX],
     [withLodash],

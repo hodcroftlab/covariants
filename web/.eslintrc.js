@@ -85,6 +85,7 @@ module.exports = {
     ],
     '@typescript-eslint/no-empty-function': 'off',
     'import/no-extraneous-dependencies': ['warn', { devDependencies: true }],
+    'import/no-webpack-loader-syntax': 'off',
     'import/order': 'warn',
     'import/prefer-default-export': 'off',
     'jest/consistent-test-it': 'warn',
@@ -184,7 +185,7 @@ module.exports = {
     {
       files: [
         '.eslintrc.js',
-        'babel.config.js',
+        'babel-node.config.js',
         'config/**/*.js',
         'config/**/*.ts',
         'config/jest/mocks/**/*.js',
@@ -200,6 +201,7 @@ module.exports = {
         'webpack.config.js',
       ],
       rules: {
+        '@typescript-eslint/no-unsafe-argument': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unsafe-call': 'off',
         '@typescript-eslint/no-unsafe-member-access': 'off',

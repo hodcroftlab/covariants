@@ -27,7 +27,9 @@
     "sourceMap": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "incremental": true,
+    "tsBuildInfoFile": ".cache/.tsbuildinfo"
   },
   "include": [
     "./*.js",

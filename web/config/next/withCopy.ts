@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 import { NextConfig } from 'next'
 import CopyPlugin from 'copy-webpack-plugin'
 import { addWebpackPlugin } from './lib/addWebpackPlugin'

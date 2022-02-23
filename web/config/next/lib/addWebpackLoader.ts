@@ -1,10 +1,10 @@
 import type { NextConfig, NextWebpackOptions } from 'next'
 
-import type { WebpackOptions, RuleSetRule } from 'webpack/declarations/WebpackOptions'
+import type { Configuration, RuleSetRule } from 'webpack'
 
 import { addWebpackConfig } from './addWebpackConfig'
 
-export type GetLoaderFunction = (webpackConfig: WebpackOptions, options: NextWebpackOptions) => RuleSetRule
+export type GetLoaderFunction = (webpackConfig: Configuration, options: NextWebpackOptions) => RuleSetRule
 
 export function addWebpackLoader(nextConfig: NextConfig, getLoader: GetLoaderFunction) {
   return addWebpackConfig(nextConfig, (nextConfig, webpackConfig, options) => {

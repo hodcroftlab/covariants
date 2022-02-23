@@ -1,5 +1,5 @@
 import { WebpackEntrypoints } from 'next/dist/build/entries'
-import { WebpackOptions } from 'webpack/declarations/WebpackOptions'
+import { Configuration } from 'webpack'
 
 export * from 'next/types/global'
 export * from 'next/types/index'
@@ -15,7 +15,7 @@ export interface NextWebpackOptions {
   entrypoints: WebpackEntrypoints
 }
 
-export type WebpackFunction = (webpackConfig: WebpackOptions, options: NextWebpackOptions) => WebpackOptions
+export type WebpackFunction = (webpackConfig: Configuration, options: NextWebpackOptions) => WebpackOptions
 
 export type Target = 'server' | 'serverless' | 'experimental-serverless-trace'
 

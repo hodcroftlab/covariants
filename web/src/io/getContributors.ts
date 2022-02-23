@@ -1,4 +1,4 @@
-import allContributors, { ContributorData } from 'src/../../.all-contributorsrc'
+import allContributors, { ContributorData } from 'json-loader!src/../../.all-contributorsrc'
 
 export function getContributors(): ContributorData[] {
   return allContributors.contributors

@@ -1,4 +1,4 @@
-import { nameTable } from 'src/../data/nameTable.json'
+import nameTableJson from 'src/../data/nameTable.json'
 
 export interface NameTableEntry {
   name: string
@@ -13,7 +13,7 @@ export interface NameTableDatum {
 }
 
 export function getNameTable(): NameTableDatum[] {
-  return nameTable
+  return nameTableJson.nameTable
 }
 
 export const NAME_TABLE = getNameTable()
