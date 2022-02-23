@@ -9,9 +9,9 @@
 import fs from 'fs-extra'
 
 export async function replace(filename: string, searchValue: string, replaceValue = '') {
-  const content = await fs.readFile(filename, 'utf-8')
+  const content = await fs.readFile(filename, 'utf8')
   const newContent = content.replace(searchValue, replaceValue)
-  await fs.writeFile(filename, newContent, { encoding: 'utf-8' })
+  await fs.writeFile(filename, newContent, { encoding: 'utf8' })
 }
 
 export async function main() {

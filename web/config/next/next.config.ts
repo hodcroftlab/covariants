@@ -1,5 +1,4 @@
 import { NextConfig } from 'next'
-import { webpack5 } from 'next/dist/compiled/webpack/webpack'
 import path from 'path'
 
 import { uniq } from 'lodash'
@@ -136,8 +135,6 @@ const withExtraWatch = getWithExtraWatch({
 
 const withLodash = getWithLodash({ unicode: false })
 
-// const withStaticComprression = getWithStaticComprression({ brotli: false })
-
 const withTypeChecking = getWithTypeChecking({
   typeChecking: ENABLE_TYPE_CHECKS,
   eslint: ENABLE_ESLINT,
@@ -149,7 +146,15 @@ const transpilationListDev = [
   "d3-scale",
 ]
 
-const transpilationListProd = uniq([...transpilationListDev, 'debug', 'lodash', 'react-share', 'recharts', 'semver'])
+const transpilationListProd = uniq([
+  // prettier-ignore
+  ...transpilationListDev,
+  'debug',
+  'lodash',
+  'react-share',
+  'recharts',
+  'semver',
+])
 
 const withTranspileModules = getWithTranspileModules(PRODUCTION ? transpilationListProd : transpilationListDev)
 

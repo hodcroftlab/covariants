@@ -31,7 +31,7 @@ import { DistributionSidebar } from 'src/components/DistributionSidebar/Distribu
 import { Layout } from 'src/components/Layout/Layout'
 import { PageHeading } from 'src/components/Common/PageHeading'
 
-import PerClusterIntro from 'src/../../content/PerClusterIntro.md'
+import PerClusterIntro from '../../../../content/PerClusterIntro.md'
 
 const Dropdown = styled(DropdownBase)`
   min-width: 130px;

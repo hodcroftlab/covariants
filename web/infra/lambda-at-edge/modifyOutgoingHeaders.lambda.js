@@ -22,8 +22,8 @@ const FEATURE_POLICY = {
   'xr-spatial-tracking': `'none'`,
 }
 
-function generateFeaturePolicyHeader(featurePoicyObject) {
-  return Object.entries(featurePoicyObject)
+function generateFeaturePolicyHeader(featurePolicyObject) {
+  return Object.entries(featurePolicyObject)
     .map(([policy, value]) => `${policy} ${value}`)
     .join('; ')
 }
@@ -42,18 +42,15 @@ const NEW_HEADERS = {
 }
 
 function addHeaders(headersObject) {
-  return Object.entries(headersObject).reduce(
-    (result, [header, value]) => ({
-      ...result,
-      [header.toLowerCase()]: [{ key: header, value }],
-    }),
-    {},
+  return Object.fromEntries(
+    Object.entries(headersObject).map(([header, value]) => [header.toLowerCase(), [{ key: header, value }]]),
   )
 }
 
 const HEADERS_TO_REMOVE = new Set(['server', 'via'])
 
 function filterHeaders(headers) {
+  // eslint-disable-next-line unicorn/prefer-object-from-entries
   return Object.entries(headers).reduce((result, [key, value]) => {
     if (HEADERS_TO_REMOVE.has(key.toLowerCase())) {
       return result

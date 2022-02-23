@@ -36,16 +36,18 @@ const LetterSpan = styled.span<{ pos: number }>`
   color: ${(props) => TITLE_COLORS[props.pos]};
 `
 
-export const NextstrainLogo = () => (
-  <Wrapper>
-    <NextstrainIcon />
-    <span>
-      {'Nextstrain'.split('').map((letter, i) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <LetterSpan key={`${i}_${letter}`} pos={i}>
-          {letter}
-        </LetterSpan>
-      ))}
-    </span>
-  </Wrapper>
-)
+export function NextstrainLogo() {
+  return (
+    <Wrapper>
+      <NextstrainIcon />
+      <span>
+        {'Nextstrain'.split('').map((letter, i) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <LetterSpan key={`${i}_${letter}`} pos={i}>
+            {letter}
+          </LetterSpan>
+        ))}
+      </span>
+    </Wrapper>
+  )
+}

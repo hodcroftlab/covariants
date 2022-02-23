@@ -1,15 +1,17 @@
+const path = require('path')
+
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   parserOptions: {
     sourceType: 'module',
-    ecmaVersion: 2020,
+    ecmaVersion: 'latest',
     ecmaFeatures: {
       jsx: true,
       globalReturn: false,
     },
+    project: [path.resolve(__dirname, './tsconfig.eslint.json')],
     tsconfigRootDir: __dirname,
-    project: './tsconfig.json',
     warnOnUnsupportedTypeScriptVersion: true,
   },
   globals: {},
@@ -17,6 +19,8 @@ module.exports = {
     'eslint:recommended',
 
     'airbnb',
+    'airbnb-typescript',
+    'airbnb/hooks',
     'react-app',
 
     'next/core-web-vitals',
@@ -65,11 +69,17 @@ module.exports = {
   ],
   reportUnusedDisableDirectives: true,
   rules: {
+    '@next/next/no-title-in-document-head': 'off',
     '@typescript-eslint/array-type': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/lines-between-class-members': 'off',
+    '@typescript-eslint/naming-convention': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-shadow': 'off',
     '@typescript-eslint/unbound-method': ['off'],
     'array-func/prefer-array-from': 'off',
+    'camelcase': 'warn',
     'cflint/no-substr': 'warn',
     'cflint/no-this-assignment': 'warn',
     'import/extensions': [
@@ -83,7 +93,6 @@ module.exports = {
         tsx: 'never',
       },
     ],
-    '@typescript-eslint/no-empty-function': 'off',
     'import/no-extraneous-dependencies': ['warn', { devDependencies: true }],
     'import/no-webpack-loader-syntax': 'off',
     'import/order': 'warn',
@@ -123,11 +132,15 @@ module.exports = {
     'unicorn/filename-case': 'off',
     'unicorn/new-for-builtins': 'off',
     'unicorn/no-abusive-eslint-disable': 'warn',
+    'unicorn/no-array-callback-reference': 'off',
+    'unicorn/no-array-for-each': 'off',
+    'unicorn/no-array-reduce': 'off',
     'unicorn/no-fn-reference-in-iterator': 'off',
     'unicorn/no-null': 'off',
     'unicorn/no-reduce': 'off',
     'unicorn/no-useless-undefined': 'off',
     'unicorn/no-zero-fractions': 'off',
+    'unicorn/prefer-node-protocol': 'off',
     'unicorn/prefer-query-selector': 'off',
     'unicorn/prefer-spread': 'off',
     'unicorn/prevent-abbreviations': 'off',
@@ -163,12 +176,9 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['src/algorithms/**/*.{js,ts}'],
+      files: ['src/pages/**/*', 'src/types/**/*'],
       rules: {
-        'no-loops/no-loops': 'off',
-        'no-plusplus': 'off',
-        'sonarjs/cognitive-complexity': 'off',
-        'unicorn/no-for-loop': 'off',
+        'no-restricted-exports': 'off',
       },
     },
     {
@@ -209,20 +219,19 @@ module.exports = {
         '@typescript-eslint/no-var-requires': 'off',
         '@typescript-eslint/restrict-template-expressions': 'off',
         'global-require': 'off',
+        'import/extensions': 'off',
+        'import/no-anonymous-default-export': 'off',
+        'import/no-import-module-exports': 'off',
         'security/detect-child-process': 'off',
         'sonarjs/cognitive-complexity': ['warn', 50],
+        'unicorn/prefer-module': 'off',
       },
     },
     {
       files: ['config/jest/mocks/**/*.js'],
       rules: {
+        'no-constructor-return': 'off',
         'react/display-name': 'off',
-      },
-    },
-    {
-      files: ['src/state/sagas.ts'],
-      rules: {
-        'no-loops/no-loops': 'off',
       },
     },
     {
@@ -235,21 +244,6 @@ module.exports = {
         '@typescript-eslint/restrict-template-expressions': 'off',
         'sonarjs/no-duplicate-string': 'off',
         'sonarjs/no-identical-functions': 'off',
-      },
-    },
-    {
-      files: [
-        '**/__tests__/*.reducer.*',
-        '**/__tests__/*.reducers.*',
-        '**/*.reducer.test.*',
-        '**/*.reducers.test.*',
-        '**/__tests__/*.saga.*',
-        '**/__tests__/*.sagas.*',
-        '**/*.saga.test.*',
-        '**/*.sagas.test.*',
-      ],
-      rules: {
-        'jest/expect-expect': 'off',
       },
     },
   ],

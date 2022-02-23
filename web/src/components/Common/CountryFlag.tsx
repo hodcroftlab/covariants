@@ -67,5 +67,6 @@ export interface CountryFlagProps extends SVGProps<SVGSVGElement> {
 
 export function CountryFlag({ country, withFallback = false }: CountryFlagProps) {
   const Flag = useMemo(() => getFlagComponent(country, withFallback), [country, withFallback])
+  // eslint-disable-next-line react/jsx-no-useless-fragment
   return <>{Flag}</>
 }

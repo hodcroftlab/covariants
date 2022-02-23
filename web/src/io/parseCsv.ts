@@ -17,7 +17,7 @@ export function parseCsv(content: string) {
         .map(appendDash)
         .join('\n')}`,
     )
-  } else if (meta.aborted || !data?.length) {
+  } else if (meta.aborted) {
     throw new Error('CSV error: Aborted')
   } else if (!data?.length) {
     throw new Error('CSV error: There was no data')
