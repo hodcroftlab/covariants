@@ -15,9 +15,11 @@ module.exports = {
   globals: {},
   extends: [
     'eslint:recommended',
+
     'airbnb',
     'react-app',
 
+    'next/core-web-vitals',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
@@ -36,8 +38,6 @@ module.exports = {
     'plugin:unicorn/recommended',
 
     'plugin:prettier/recommended',
-    'prettier/react',
-    'prettier/@typescript-eslint',
   ],
   plugins: [
     'array-func',
@@ -90,7 +90,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'jest/consistent-test-it': 'warn',
     'jest/expect-expect': 'warn',
-    'jest/no-test-callback': 'warn',
+    'jest/no-done-callback': 'warn',
     'jsx-a11y/label-has-associated-control': ['warn', { assert: 'either' }],
     'lodash/chaining': 'off',
     'lodash/import-scope': 'off',
