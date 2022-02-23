@@ -19,7 +19,6 @@ jobs:
 
     environment:
       PROD_ENABLE_TYPE_CHECKS: 0
-      PROD_ENABLE_REDUX_DEV_TOOLS: 0
 
     steps:
       - git-shallow-clone/checkout:

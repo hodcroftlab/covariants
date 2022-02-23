@@ -37,10 +37,6 @@ const {
   ENABLE_ESLINT,
   ENABLE_TYPE_CHECKS,
   // ENABLE_STYLELINT,
-  ENABLE_REDUX_DEV_TOOLS,
-  ENABLE_REDUX_IMMUTABLE_STATE_INVARIANT,
-  ENABLE_REDUX_LOGGER,
-  DEBUG_SET_INITIAL_DATA,
   DOMAIN,
   DOMAIN_STRIPPED,
   WATCH_POLL,
@@ -51,10 +47,6 @@ const BRANCH_NAME = getGitBranch()
 const { pkg, moduleRoot } = findModuleRoot()
 
 const clientEnv = {
-  ENABLE_REDUX_DEV_TOOLS: ENABLE_REDUX_DEV_TOOLS.toString(),
-  ENABLE_REDUX_LOGGER: ENABLE_REDUX_LOGGER.toString(),
-  ENABLE_REDUX_IMMUTABLE_STATE_INVARIANT: ENABLE_REDUX_IMMUTABLE_STATE_INVARIANT.toString(),
-  DEBUG_SET_INITIAL_DATA: DEBUG_SET_INITIAL_DATA.toString(),
   BRANCH_NAME,
   PACKAGE_VERSION: pkg.version ?? '',
   BUILD_NUMBER: getBuildNumber(),
@@ -157,15 +149,7 @@ const transpilationListDev = [
   "d3-scale",
 ]
 
-const transpilationListProd = uniq([
-  ...transpilationListDev,
-  'debug',
-  'immer',
-  'lodash',
-  'react-share',
-  'recharts',
-  'semver',
-])
+const transpilationListProd = uniq([...transpilationListDev, 'debug', 'lodash', 'react-share', 'recharts', 'semver'])
 
 const withTranspileModules = getWithTranspileModules(PRODUCTION ? transpilationListProd : transpilationListDev)
 

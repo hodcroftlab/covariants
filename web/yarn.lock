@@ -6233,11 +6233,6 @@ ignore@^5.1.8, ignore@^5.2.0:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.0.tgz#6d3bac8fa7fe0d45d9f9be7bac2fc279577e345a"
   integrity sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==
 
-immer@7.0.8:
-  version "7.0.8"
-  resolved "https://registry.yarnpkg.com/immer/-/immer-7.0.8.tgz#41dcbc5669a76500d017bef3ad0d03ce0a1d7c1e"
-  integrity sha512-XnpIN8PXBBaOD43U8Z17qg6RQiKQYGDGGCIbz1ixmLGwBkSWwmrmx5X7d+hTtXDM8ur7m5OdLE0PiO+y5RB3pw==
-
 immutable@3.8.2:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
@@ -9599,11 +9594,6 @@ rc@^1.2.8:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-re-reselect@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/re-reselect/-/re-reselect-4.0.0.tgz#9ddec4c72c4d952f68caa5aa4b76a9ed38b75cac"
-  integrity sha512-wuygyq8TXUlSdVXv2kigXxQNOgdb9m7LbIjwfTNGSpaY1riLd5e+VeQjlQMyUtrk0oiyhi1AqIVynworl3qxHA==
-
 react-aspect-ratio@1.0.46:
   version "1.0.46"
   resolved "https://registry.yarnpkg.com/react-aspect-ratio/-/react-aspect-ratio-1.0.46.tgz#9dedbc07ce0b2a8d1b1b69f2302b8f39f6b47aa6"
@@ -10243,7 +10233,7 @@ requireindex@~1.1.0:
   resolved "https://registry.yarnpkg.com/requireindex/-/requireindex-1.1.0.tgz#e5404b81557ef75db6e49c5a72004893fe03e162"
   integrity sha1-5UBLgVV+91225JxacgBIk/4D4WI=
 
-reselect@4.0.0, reselect@^4.0.0:
+reselect@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/reselect/-/reselect-4.0.0.tgz#f2529830e5d3d0e021408b246a206ef4ea4437f7"
   integrity sha512-qUgANli03jjAyGlnbYVAV5vvnOmJnODyABz51RdBN7M4WaVu8mecZWgyQNkG8Yqe3KRGRt0l4K4B3XVEULC4CA==
