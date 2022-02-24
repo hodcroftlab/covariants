@@ -112,6 +112,7 @@
     "url-join": "4.0.1"
   },
   "devDependencies": {
+    "@babel/core": "7.17.5",
     "@babel/node": "7.16.8",
     "@babel/plugin-proposal-decorators": "7.17.2",
     "@babel/preset-env": "7.16.11",
