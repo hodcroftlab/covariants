@@ -2432,7 +2432,7 @@
           }
         ]
       },
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_name": "21B (Kappa)",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21B.Kappa",
       "old_build_names": [
@@ -2675,7 +2675,7 @@
           }
         ]
       },
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_name": "21D (Eta)",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21D.Eta",
       "old_build_names": [
@@ -4020,7 +4020,7 @@
           }
         ]
       },
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Robin1?f_country=USA",
       "snps": [
         23593,
@@ -4146,7 +4146,7 @@
           }
         ]
       },
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677P.Pelican?f_country=USA",
       "snps": [
         23592,
@@ -4241,7 +4241,8 @@
       ],
       "snps": [
         22992,
-        4543
+        4543,
+        16889
       ],
       "type": "variant"
     },
