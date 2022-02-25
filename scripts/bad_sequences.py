@@ -2028,7 +2028,24 @@ bad_seqs = {
     "USA/WA-PHL-014487/2021" : "2021-10-12", #omicron  EPI_ISL_10117312
     "USA/WA-PHL-014495/2021" : "2021-09-29", #omicron  EPI_ISL_10117320
     "USA/WA-PHL-014498/2021" : "2021-09-29", #omicron  EPI_ISL_10117322
-
+    #25 Feb
+    "Austria/AGES-619882/2021" : "2021-08-21", #omicron  EPI_ISL_10258336
+    "Austria/AGES-619892/2021" : "2021-08-21", #omicron  EPI_ISL_10258642
+    "Austria/AGES-619894/2021" : "2021-08-21", #omicron  EPI_ISL_10258334
+    "Austria/AGES-619898/2021" : "2021-08-21", #omicron  EPI_ISL_10258465
+    "France/IDF-IPP11015/2021" : "2021-02-14", #omicron  EPI_ISL_10187078
+    "Palau/PW-CDC-2-5546529/2021" : "2021-09-18", #omicron  EPI_ISL_10218064
+    "Palau/PW-CDC-2-5546533/2021" : "2021-09-14", #omicron  EPI_ISL_10218061
+    "Palau/PW-CDC-2-5546609/2021" : "2021-09-11", #omicron  EPI_ISL_10218059
+    "Palau/PW-CDC-2-5546611/2021" : "2021-09-20", #omicron  EPI_ISL_10218066
+    "Palau/PW-CDC-2-5546612/2021" : "2021-09-13", #omicron  EPI_ISL_10218060
+    "Palau/PW-CDC-2-5546614/2021" : "2021-09-17", #omicron  EPI_ISL_10218063
+    "Palau/PW-CDC-2-5546615/2021" : "2021-09-22", #omicron  EPI_ISL_10218067
+    "Palau/PW-CDC-2-5546620/2021" : "2021-09-19", #omicron  EPI_ISL_10218065
+    "Palau/PW-CDC-2-5546629/2021" : "2021-09-15", #omicron  EPI_ISL_10218062
+    "Palau/PW-CDC-2-5546708/2021" : "2021-09-23", #omicron  EPI_ISL_10218068
+    "USA/SD-CDC-2-5594711/2021" : "2021-01-02", #omicron  EPI_ISL_10226533
+    "USA/SD-CDC-2-5594844/2021" : "2021-01-02", #omicron  EPI_ISL_10226534
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
