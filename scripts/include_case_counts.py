@@ -55,6 +55,11 @@ for i in range(len(world_data)):
     country = world_data[i]["country"]
     if country not in owid_grouped["location"].values and country not in alernative_country_names:
         print("Attention! Country not found in owid data: " + country)
+        continue
+
+    country_owid = country
+    if country in alernative_country_names:
+        country_owid = alernative_country_names[country]
 
     world_data_counts.append({"country": country, "distribution": []})
     for j in world_data[i]["distribution"]:
@@ -64,20 +69,17 @@ for i in range(len(world_data)):
 
         percent_counts = {c : float(n) / total_sequences for c, n in cluster_counts.items()}
 
-        country_i = country
-        if country in alernative_country_names:
-            country_i = alernative_country_names[country]
-
-        total_cases = owid_grouped.loc[(owid_grouped.date_2weeks == week) & (owid_grouped.location == country_i)]["new_cases"]
+        total_cases = owid_grouped.loc[(owid_grouped.date_2weeks == week) & (owid_grouped.location == country_owid)]["new_cases"]
 
         if len(total_cases) > 0:
             total_cases = int(total_cases.iloc[0])
-        else:
-            total_cases = 0
+        else:  # No count data
+            continue  # Skip if no count data
+
         estimated_cases = {c: round(float(n) * total_cases) for c, n in percent_counts.items()}
         percent_total_cases = total_sequences / total_cases if total_cases != 0 else None
 
-        world_data_counts[i]["distribution"].append({"week": week, "percent_counts": percent_counts, "total_sequences": total_sequences, "total_cases" : total_cases, "estimated_cases" : estimated_cases, "percent_total_cases" : percent_total_cases})
+        world_data_counts[-1]["distribution"].append({"week": week, "percent_counts": percent_counts, "total_sequences": total_sequences, "total_cases" : total_cases, "estimated_cases" : estimated_cases, "percent_total_cases" : percent_total_cases})
 
 
 with open(OUTPUT_CSV_PATH, "w") as out:
