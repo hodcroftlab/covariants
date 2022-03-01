@@ -1504,7 +1504,7 @@ bad_seqs = {
     "USA/TX-HMH-MCoV-49914/2020" : "2020-07-16", #delta
     "USA/TX-HMH-MCoV-50058/2020" : "2020-07-16", #delta
     "Tunisia/X-3240/2020" : "2020-08-29", #delta
-    
+    "Serbia/348B17-09/2020" : "2020-09-02",  #delta
 
     #Omicron with possibly bad dates (very early)
     "England/NORW-31059C2/2021" : "2021-09-13", #omicron
@@ -2046,6 +2046,27 @@ bad_seqs = {
     "Palau/PW-CDC-2-5546708/2021" : "2021-09-23", #omicron  EPI_ISL_10218068
     "USA/SD-CDC-2-5594711/2021" : "2021-01-02", #omicron  EPI_ISL_10226533
     "USA/SD-CDC-2-5594844/2021" : "2021-01-02", #omicron  EPI_ISL_10226534
+    # 1 march
+    "Canada/SK-RRPL-354439/2021" : "2021-06-16", #omicron  EPI_ISL_10362289
+    "Congo/RC-356/2021" : "2021-08-12", #omicron  EPI_ISL_10023502 -- think these should be DECEMBER as month
+    "Congo/RC-396/2021" : "2021-06-12", #omicron  EPI_ISL_10023518 -- think these should be DECEMBER as month
+    "Congo/RC-405/2021" : "2021-08-12", #omicron  EPI_ISL_10023523 -- think these should be DECEMBER as month
+    "Congo/RC-409/2021" : "2021-08-12", #omicron  EPI_ISL_10023526 -- think these should be DECEMBER as month
+    "Congo/RC-412/2021" : "2021-10-12", #omicron  EPI_ISL_10023527 -- think these should be DECEMBER as month
+    "Congo/RC-413/2021" : "2021-08-12", #omicron  EPI_ISL_10023528 -- think these should be DECEMBER as month
+    "Congo/RC-415/2021" : "2021-09-12", #omicron  EPI_ISL_10023530 -- think these should be DECEMBER as month
+    "France/HDF-IPP10662/2021" : "2021-02-07", #omicron  EPI_ISL_10352660
+    "India/KA-NIMH-SEQ-4177/2021" : "2021-02-12", #omicron  EPI_ISL_10397492
+    "Japan/GK2749/2021" : "2021-01-13", #omicron  EPI_ISL_10343846
+    "Japan/GK2751/2021" : "2021-01-13", #omicron  EPI_ISL_10343847
+    "Japan/GK2764/2021" : "2021-01-13", #omicron  EPI_ISL_10343848
+    "Japan/GK2768/2021" : "2021-01-13", #omicron  EPI_ISL_10343849
+    "Japan/GK2769/2021" : "2021-01-13", #omicron  EPI_ISL_10343850
+    "Japan/GK2773/2021" : "2021-01-13", #omicron  EPI_ISL_10343851
+    "Malaysia/IMR_CV03377/2021" : "2021-01-01", #omicron  EPI_ISL_10297348
+    "USA/NJ-GBW-EWR000070/2021" : "2021-01-03", #omicron  EPI_ISL_10272635
+    "USA/NJ-GBW-EWR000071/2021" : "2021-01-03", #omicron  EPI_ISL_10272636
+    "USA/NJ-GBW-EWR000072/2021" : "2021-01-03", #omicron  EPI_ISL_10272637
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
