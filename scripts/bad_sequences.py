@@ -2067,6 +2067,43 @@ bad_seqs = {
     "USA/NJ-GBW-EWR000070/2021" : "2021-01-03", #omicron  EPI_ISL_10272635
     "USA/NJ-GBW-EWR000071/2021" : "2021-01-03", #omicron  EPI_ISL_10272636
     "USA/NJ-GBW-EWR000072/2021" : "2021-01-03", #omicron  EPI_ISL_10272637
+    #3 Mar
+    "Chile/RM-Culture_MSJ_6476/2021" : "2021-08-12", #omicron  EPI_ISL_10487167
+    "England/DHSC-CYB1MIA/2021" : "2021-01-01", #omicron  EPI_ISL_10437253
+    "England/DHSC-CYB5B7Y/2021" : "2021-01-01", #omicron  EPI_ISL_10437721
+    "England/DHSC-CYB5ZR7/2021" : "2021-01-01", #omicron  EPI_ISL_10437924
+    "England/DHSC-CYB6XG5/2021" : "2021-01-01", #omicron  EPI_ISL_10438151
+    "England/DHSC-CYB7QWB/2021" : "2021-01-01", #omicron  EPI_ISL_10438657
+    "England/DHSC-CYBDJBN/2021" : "2021-01-01", #omicron  EPI_ISL_10439721
+    "England/DHSC-CYBGKZQ/2021" : "2021-01-01", #omicron  EPI_ISL_10440258
+    "England/DHSC-CYBMXGN/2021" : "2021-01-01", #omicron  EPI_ISL_10441799
+    "England/DHSC-CYBR5QW/2021" : "2021-01-01", #omicron  EPI_ISL_10442556
+    "England/DHSC-CYBUB6Q/2021" : "2021-01-01", #omicron  EPI_ISL_10443055
+    "England/DHSC-CYBWXX7/2021" : "2021-01-01", #omicron  EPI_ISL_10443745
+    "England/DHSC-CYBY3DW/2021" : "2021-01-01", #omicron  EPI_ISL_10445073
+    "England/DHSC-CYD5WR6/2021" : "2021-01-01", #omicron  EPI_ISL_10446547
+    "England/DHSC-CYDFHCU/2021" : "2021-04-14", #omicron  EPI_ISL_10448467
+    "England/DHSC-CYDWFBB/2021" : "2021-01-01", #omicron  EPI_ISL_10451346
+    "England/DHSC-CYN3OSN/2021" : "2021-01-01", #omicron  EPI_ISL_10453162
+    "England/DHSC-CYN5T7X/2021" : "2021-01-01", #omicron  EPI_ISL_10454024
+    "England/DHSC-CYN7E9O/2021" : "2021-01-01", #omicron  EPI_ISL_10454905
+    "England/DHSC-CYNET4H/2021" : "2021-01-01", #omicron  EPI_ISL_10456395
+    "England/DHSC-CYNNUEM/2021" : "2021-01-01", #omicron  EPI_ISL_10457369
+    "England/DHSC-CYNTYUE/2021" : "2021-01-01", #omicron  EPI_ISL_10458285
+    "England/DHSC-CYNWA54/2021" : "2021-01-01", #omicron  EPI_ISL_10458494
+    "England/DHSC-CYNYFHW/2021" : "2021-01-01", #omicron  EPI_ISL_10458850
+    "England/DHSC-CYY1T13/2021" : "2021-01-01", #omicron  EPI_ISL_10459323
+    "England/DHSC-CYY3TA9/2021" : "2021-01-01", #omicron  EPI_ISL_10459465
+    "England/DHSC-CYY9MKS/2021" : "2021-01-01", #omicron  EPI_ISL_10460591
+    "England/DHSC-CYYASJ5/2021" : "2021-01-01", #omicron  EPI_ISL_10461245
+    "England/DHSC-CYYQWNY/2021" : "2021-01-01", #omicron  EPI_ISL_10469051
+    "England/DHSC-CYYRS3D/2021" : "2021-01-01", #omicron  EPI_ISL_10469484
+    "England/DHSC-CYYSXNW/2021" : "2021-01-01", #omicron  EPI_ISL_10470113
+    "England/DHSC-CYYUQY9/2021" : "2021-01-01", #omicron  EPI_ISL_10471157
+    "Spain/MC-HCUVA-16185980/2020" : "2020-10-29", #omicron  EPI_ISL_10503257
+    "USA/MT-WL-1302/2020" : "2020-12-23", #omicron  EPI_ISL_10493876
+    "England/DHSC-CYYOH7H/2021" : "2021-01-01", #omicron  EPI_ISL_10467862
+
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
