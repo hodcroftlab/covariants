@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback } from 'react'
 
 import {
   Button,
@@ -12,7 +12,7 @@ import {
   Row,
 } from 'reactstrap'
 
-import type { ClusterState } from 'src/io/getPerCountryData'
+import type { Cluster } from 'src/state/Clusters'
 import { getClusterColor } from 'src/io/getClusters'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
@@ -52,7 +52,7 @@ export function ClusterFilterCheckbox({ cluster, enabled, onFilterChange }: Clus
 }
 
 export interface ClusterFiltersProps {
-  clusters: ClusterState
+  clusters: Cluster[]
   collapsed: boolean
   onFilterChange(cluster: string): void
   onFilterSelectAll(): void
@@ -68,8 +68,6 @@ export function ClusterFilters({
   onFilterChange,
   setCollapsed,
 }: ClusterFiltersProps) {
-  const filters = useMemo(() => Object.entries(clusters), [clusters])
-
   return (
     <CardCollapsible className="m-2" title={'Variants'} collapsed={collapsed} setCollapsed={setCollapsed}>
       <CardBody>
@@ -90,7 +88,7 @@ export function ClusterFilters({
           <Row noGutters>
             <Col>
               <Form>
-                {filters.map(([cluster, { enabled }]) => (
+                {clusters.map(({ cluster, enabled }) => (
                   <ClusterFilterCheckbox
                     key={cluster}
                     cluster={cluster}
