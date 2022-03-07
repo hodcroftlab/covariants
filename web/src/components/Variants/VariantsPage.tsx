@@ -19,6 +19,7 @@ import { VariantTitle } from 'src/components/Variants/VariantTitle'
 import { ReactComponent as NextstrainIconBase } from 'src/assets/images/nextstrain_logo.svg'
 
 import { PlotCard } from './PlotCard'
+import { AquariaLinksCard } from './AquariaLinksCard'
 import { ProteinCard } from './ProteinCard'
 
 const clusters = getClusters()
@@ -124,6 +125,12 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
           <Row noGutters className="mb-2">
             <Col>
               <PlotCard cluster={currentCluster} />
+            </Col>
+          </Row>
+
+          <Row noGutters className="mb-2">
+            <Col>
+              <AquariaLinksCard cluster={currentCluster} />
             </Col>
           </Row>
 

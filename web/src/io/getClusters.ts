@@ -22,6 +22,7 @@ export type ClusterDatum = {
     nonsynonymous?: Mutation[]
     synonymous?: Mutation[]
   }
+  aquaria_urls?: Record<string, string | undefined>
   type: string
   important: boolean
 }
