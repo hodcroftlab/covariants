@@ -24,6 +24,7 @@ let navLinksLeft: Record<string, string> = {
   '/': 'Home',
   '/faq': 'FAQ',
   '/variants': 'Variants',
+  '/cases': 'Cases',
   '/per-country': 'Per country',
   '/per-variant': 'Per variant',
   '/shared-mutations': 'Shared Mutations',
