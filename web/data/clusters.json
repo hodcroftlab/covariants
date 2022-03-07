@@ -7,6 +7,13 @@
       "alternative_names": [
         "VOC 202012/01"
       ],
+      "aquaria_urls": {
+        "N": "https://aquaria.app/SARS-CoV-2/N?D3L&R203K&G204R&S235F",
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?T1001I&A1708D&I2230T&S3675Del&G3676Del&F3677Del",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?T1001I&A1708D&I2230T&S3675Del&G3676Del&F3677Del&P4715L",
+        "ORF8": "https://aquaria.app/SARS-CoV-2/ORF8?Q27*&R52I&Y73C",
+        "S": "https://aquaria.app/SARS-CoV-2/S?H69Del&V70Del&Y144Del&N501Y&A570D&D614G&P681H&T716I&S982A&D1118H"
+      },
       "build_name": "20I.Alpha.V1",
       "cluster_data": [],
       "col": "#D16666",
@@ -228,6 +235,14 @@
       "alternative_names": [
         "501Y.V2"
       ],
+      "aquaria_urls": {
+        "E": "https://aquaria.app/SARS-CoV-2/E?P71L",
+        "N": "https://aquaria.app/SARS-CoV-2/N?T205I",
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?T265I&K1655N&K3353R&S3675Del&G3676Del&F3677Del",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?T265I&K1655N&K3353R&S3675Del&G3676Del&F3677Del&P4715L",
+        "ORF3a": "https://aquaria.app/SARS-CoV-2/ORF3a?Q57H",
+        "S": "https://aquaria.app/SARS-CoV-2/S?D80A&D215G&L241Del&L242Del&A243Del&K417N&E484K&N501Y&D614G&A701V"
+      },
       "build_name": "20H.Beta.V2",
       "cluster_data": [],
       "col": "#FF6666",
@@ -407,6 +422,14 @@
       "alt_display_name": [
         "S.501Y.V3"
       ],
+      "aquaria_urls": {
+        "N": "https://aquaria.app/SARS-CoV-2/N?P80R&R203K&G204R",
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?S1188L&K1795Q&S3675Del&G3676Del&F3677Del",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?S1188L&K1795Q&S3675Del&G3676Del&F3677Del&P4715L&E5665D",
+        "ORF3a": "https://aquaria.app/SARS-CoV-2/ORF3a?S253P",
+        "ORF8": "https://aquaria.app/SARS-CoV-2/ORF8?E92K",
+        "S": "https://aquaria.app/SARS-CoV-2/S?L18F&T20N&P26S&D138Y&R190S&K417T&E484K&N501Y&D614G&H655Y&T1027I&V1176F"
+      },
       "build_name": "20J.Gamma.V3",
       "cluster_data": [],
       "col": "#FFB3B3",
@@ -640,6 +663,16 @@
       "alt_display_name": [
         "21A/S:478K"
       ],
+      "aquaria_urls": {
+        "M": "https://aquaria.app/SARS-CoV-2/M?I82T",
+        "N": "https://aquaria.app/SARS-CoV-2/N?D63G&R203M&D377Y",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?P4715L&G5063S&P5401L",
+        "ORF3a": "https://aquaria.app/SARS-CoV-2/ORF3a?S26L",
+        "ORF7a": "https://aquaria.app/SARS-CoV-2/ORF7a?V82A&T120I",
+        "ORF8": "https://aquaria.app/SARS-CoV-2/ORF8?D119Del&F120Del",
+        "ORF9b": "https://aquaria.app/SARS-CoV-2/ORF9b?T60A",
+        "S": "https://aquaria.app/SARS-CoV-2/S?T19R&E156Del&F157Del&R158G&L452R&T478K&D614G&P681R&D950N"
+      },
       "build_name": "21A.Delta",
       "cluster_data": [],
       "col": "#66C266",
@@ -834,6 +867,17 @@
     },
     {
       "alt_display_name": [],
+      "aquaria_urls": {
+        "M": "https://aquaria.app/SARS-CoV-2/M?I82T",
+        "N": "https://aquaria.app/SARS-CoV-2/N?D63G&R203M&D377Y",
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?P1640L&A3209V&V3718A&T3750I",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?P1640L&A3209V&V3718A&T3750I&P4715L&G5063S&P5401L",
+        "ORF3a": "https://aquaria.app/SARS-CoV-2/ORF3a?S26L",
+        "ORF7a": "https://aquaria.app/SARS-CoV-2/ORF7a?V82A&T120I",
+        "ORF8": "https://aquaria.app/SARS-CoV-2/ORF8?D119Del&F120Del",
+        "ORF9b": "https://aquaria.app/SARS-CoV-2/ORF9b?T60A",
+        "S": "https://aquaria.app/SARS-CoV-2/S?T19R&E156Del&F157Del&R158G&A222V&L452R&T478K&D614G&P681R&D950N"
+      },
       "build_name": "21I.Delta",
       "cluster_data": [],
       "col": "#aaff80",
@@ -1066,6 +1110,18 @@
     },
     {
       "alt_display_name": [],
+      "aquaria_urls": {
+        "M": "https://aquaria.app/SARS-CoV-2/M?I82T",
+        "N": "https://aquaria.app/SARS-CoV-2/N?D63G&R203M&G215C&D377Y",
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?A1306S&V2930L&T3255I&T3646A",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?A1306S&V2930L&T3255I&T3646A&P4715L&G5063S&P5401L&A6319V",
+        "ORF3a": "https://aquaria.app/SARS-CoV-2/ORF3a?S26L",
+        "ORF7a": "https://aquaria.app/SARS-CoV-2/ORF7a?V82A&T120I",
+        "ORF7b": "https://aquaria.app/SARS-CoV-2/ORF7b?T40I",
+        "ORF8": "https://aquaria.app/SARS-CoV-2/ORF8?D119Del&F120Del",
+        "ORF9b": "https://aquaria.app/SARS-CoV-2/ORF9b?T60A",
+        "S": "https://aquaria.app/SARS-CoV-2/S?T19R&E156Del&F157Del&R158G&L452R&T478K&D614G&P681R&D950N"
+      },
       "build_name": "21J.Delta",
       "cluster_data": [],
       "col": "#66A366",
@@ -1312,6 +1368,15 @@
       "alt_display_name": [
         "BA.1"
       ],
+      "aquaria_urls": {
+        "E": "https://aquaria.app/SARS-CoV-2/E?T9I",
+        "M": "https://aquaria.app/SARS-CoV-2/M?D3G&Q19E&A63T",
+        "N": "https://aquaria.app/SARS-CoV-2/N?P13L&E31Del&R32Del&S33Del&R203K&G204R",
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?K856R&S2083Del&L2084I&A2710T&T3255I&P3395H&L3674Del&S3675Del&G3676Del&I3758V",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?K856R&S2083Del&L2084I&A2710T&T3255I&P3395H&L3674Del&S3675Del&G3676Del&I3758V&P4715L&I5967V",
+        "ORF9b": "https://aquaria.app/SARS-CoV-2/ORF9b?P10S&E27Del&N28Del&A29Del",
+        "S": "https://aquaria.app/SARS-CoV-2/S?A67V&H69Del&V70Del&T95I&G142Del&V143Del&Y144Del&Y145D&N211Del&L212I&G339D&S371L&S373P&S375F&K417N&N440K&G446S&S477N&T478K&E484A&Q493R&G496S&Q498R&N501Y&Y505H&T547K&D614G&H655Y&N679K&P681H&N764K&D796Y&N856K&Q954H&N969K&L981F"
+      },
       "build_name": "21K.Omicron",
       "cluster_data": [],
       "col": "#A366A3",
@@ -1773,6 +1838,17 @@
       "alt_display_name": [
         "BA.2"
       ],
+      "aquaria_urls": {
+        "E": "https://aquaria.app/SARS-CoV-2/E?T9I",
+        "M": "https://aquaria.app/SARS-CoV-2/M?Q19E&A63T",
+        "N": "https://aquaria.app/SARS-CoV-2/N?P13L&E31Del&R32Del&S33Del&R203K&G204R&S413R",
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?S135R&T842I&G1307S&L3027F&T3090I&L3201F&T3255I&P3395H&S3675Del&G3676Del&F3677Del",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?S135R&T842I&G1307S&L3027F&T3090I&L3201F&T3255I&P3395H&S3675Del&G3676Del&F3677Del&P4715L&R5716C&I5967V&T6564I",
+        "ORF3a": "https://aquaria.app/SARS-CoV-2/ORF3a?T223I",
+        "ORF6": "https://aquaria.app/SARS-CoV-2/ORF6?D61L",
+        "ORF9b": "https://aquaria.app/SARS-CoV-2/ORF9b?P10S&E27Del&N28Del&A29Del",
+        "S": "https://aquaria.app/SARS-CoV-2/S?T19I&L24Del&P25Del&P26Del&A27S&G142D&V213G&G339D&S371F&S373P&S375F&T376A&D405N&R408S&K417N&N440K&S477N&T478K&E484A&Q493R&Q498R&N501Y&Y505H&D614G&H655Y&N679K&P681H&N764K&D796Y&Q954H&N969K"
+      },
       "build_name": "21L.Omicron",
       "cluster_data": [],
       "col": "#cfafcf",
@@ -2251,6 +2327,7 @@
       ]
     },
     {
+      "aquaria_urls": {},
       "build_name": "21K.21L",
       "cluster_data": [],
       "col": "#b3d9ff",
@@ -2276,6 +2353,15 @@
       "alt_display_name": [
         "21A/S:154K"
       ],
+      "aquaria_urls": {
+        "M": "https://aquaria.app/SARS-CoV-2/M?I82S",
+        "N": "https://aquaria.app/SARS-CoV-2/N?R203M&D377Y",
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?T1567I&T3646A",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?P4715L&G5530C&M5753I&K6711R&S6713A&T1567I&T3646A",
+        "ORF3a": "https://aquaria.app/SARS-CoV-2/ORF3a?S26L",
+        "ORF7a": "https://aquaria.app/SARS-CoV-2/ORF7a?V82A",
+        "S": "https://aquaria.app/SARS-CoV-2/S?E154K&L452R&E484Q&D614G&P681R&Q1071H"
+      },
       "build_name": "21B.Kappa",
       "cluster_data": [],
       "col": "#A3FFD1",
@@ -2455,6 +2541,7 @@
       ]
     },
     {
+      "aquaria_urls": {},
       "build_name": "21A.Delta.S.K417",
       "cluster_data": [],
       "col": "#006600",
@@ -2476,6 +2563,15 @@
       "alt_display_name": [
         "20A/S:484K"
       ],
+      "aquaria_urls": {
+        "E": "https://aquaria.app/SARS-CoV-2/E?L21F",
+        "M": "https://aquaria.app/SARS-CoV-2/M?I82T",
+        "N": "https://aquaria.app/SARS-CoV-2/N?S2Del&D3Y&A12G&T205I",
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?T2007I&S3675Del&G3676Del&F3677Del",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?P4715F&T2007I&S3675Del&G3676Del&F3677Del",
+        "ORF6": "https://aquaria.app/SARS-CoV-2/ORF6?F2Del",
+        "S": "https://aquaria.app/SARS-CoV-2/S?Q52R&A67V&H69Del&V70Del&Y144Del&E484K&D614G&Q677H&F888L"
+      },
       "build_name": "21D.Eta",
       "cluster_data": [],
       "col": "#6666A3",
@@ -2704,6 +2800,14 @@
       "alternative_names": [
         "B.1.526 (partial)"
       ],
+      "aquaria_urls": {
+        "N": "https://aquaria.app/SARS-CoV-2/N?P199L&M234I",
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?T265I&L3201P&S3675Del&G3676Del&F3677Del",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?P4715L&Q5412H&T265I&L3201P&S3675Del&G3676Del&F3677Del",
+        "ORF3a": "https://aquaria.app/SARS-CoV-2/ORF3a?P42L&Q57H",
+        "ORF8": "https://aquaria.app/SARS-CoV-2/ORF8?T11I",
+        "S": "https://aquaria.app/SARS-CoV-2/S?L5F&T95I&D253G&E484K&D614G&A701V"
+      },
       "build_name": "21F.Iota",
       "cluster_data": [],
       "col": "#FFC2FF",
@@ -2868,6 +2972,12 @@
       ]
     },
     {
+      "aquaria_urls": {
+        "N": "https://aquaria.app/SARS-CoV-2/N?P13L&R203K&G204R&G214C",
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?T1246I&P2287S&F2387V&L3201P&T3255I&G3278S&S3675Del&G3676Del&F3677Del",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?T1246I&P2287S&F2387V&L3201P&T3255I&G3278S&S3675Del&G3676Del&F3677Del&P4715L",
+        "S": "https://aquaria.app/SARS-CoV-2/S?G75V&T76I&R246Del&S247Del&Y248Del&L249Del&T250Del&P251Del&G252Del&D253N&L452Q&F490S&D614G&T859N"
+      },
       "build_name": "21G.Lambda",
       "cluster_data": [],
       "col": "#cc6699",
@@ -3105,6 +3215,14 @@
       ]
     },
     {
+      "aquaria_urls": {
+        "N": "https://aquaria.app/SARS-CoV-2/N?T205I",
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?T1055A&T1538I&T3255I&Q3729R",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?T1055A&T1538I&T3255I&Q3729R&P4715L&P5743S",
+        "ORF3a": "https://aquaria.app/SARS-CoV-2/ORF3a?Q57H&V256I&N257Q&P258*",
+        "ORF8": "https://aquaria.app/SARS-CoV-2/ORF8?T11K&P38S&S67F",
+        "S": "https://aquaria.app/SARS-CoV-2/S?T95I&Y144S&Y145N&R346K&E484K&N501Y&D614G&P681H&D950N"
+      },
       "build_name": "21H.Mu",
       "cluster_data": [],
       "col": "#f4dc81",
@@ -3319,6 +3437,12 @@
       ]
     },
     {
+      "aquaria_urls": {
+        "N": "https://aquaria.app/SARS-CoV-2/N?R203K&G204R",
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?P959S&T3255I&I3618V&T4175I",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?P959S&T3255I&I3618V&T4175I&P4715L",
+        "S": "https://aquaria.app/SARS-CoV-2/S?T478K&D614G&P681H&T732A"
+      },
       "build_name": "20B.S.732A",
       "cluster_data": [],
       "col": "#a3e3f8",
@@ -3457,6 +3581,13 @@
       "who_name": []
     },
     {
+      "aquaria_urls": {
+        "N": "https://aquaria.app/SARS-CoV-2/N?A220V",
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?T403I&V1991I&S3675Del&G3676Del&F3677Del",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?T403I&V1991I&S3675Del&G3676Del&F3677Del&P4715L&A5616S",
+        "ORF9b": "https://aquaria.app/SARS-CoV-2/ORF9b?I5T",
+        "S": "https://aquaria.app/SARS-CoV-2/S?P26S&H69Del&V70Del&V126A&Y144Del&L241Del&L242Del&A243Del&H245Y&S477N&E484K&D614G&P681H&T1027I&D1118H"
+      },
       "build_name": "20A.S.126A",
       "cluster_data": [],
       "col": "#d5f6d5",
@@ -3683,6 +3814,11 @@
       "alternative_names": [
         "20A.EU1"
       ],
+      "aquaria_urls": {
+        "N": "https://aquaria.app/SARS-CoV-2/N?A220V",
+        "ORF10": "https://aquaria.app/SARS-CoV-2/ORF10?V30L",
+        "S": "https://aquaria.app/SARS-CoV-2/S?A222V"
+      },
       "build_name": "20A.EU1",
       "cluster_data": [],
       "col": "#FFBB8B",
@@ -3752,6 +3888,11 @@
       "alternative_names": [
         "CAL.20C"
       ],
+      "aquaria_urls": {
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?I4205V",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?I4205V&D5584Y",
+        "S": "https://aquaria.app/SARS-CoV-2/S?S13I&W152C&L452R&D614G"
+      },
       "build_name": "21C.Epsilon",
       "cluster_data": [],
       "col": "#e2cfe2",
@@ -3853,6 +3994,10 @@
       ]
     },
     {
+      "aquaria_urls": {
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?I2501T",
+        "S": "https://aquaria.app/SARS-CoV-2/S?S439K"
+      },
       "build_name": "S.N439K",
       "cluster_data": [],
       "col": "#6666FF",
@@ -3898,6 +4043,14 @@
       "type": "variant"
     },
     {
+      "aquaria_urls": {
+        "N": "https://aquaria.app/SARS-CoV-2/N?P67S&P199L&D377Y",
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?T265I&M2606I&L3352F",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?T265I&M2606I&L3352F&P4715L&N6054D&R7014C",
+        "ORF3a": "https://aquaria.app/SARS-CoV-2/ORF3a?Q57H&G172V",
+        "ORF8": "https://aquaria.app/SARS-CoV-2/ORF8?S24L",
+        "S": "https://aquaria.app/SARS-CoV-2/S?D614G&Q677H"
+      },
       "build_name": "S.Q677H.Robin1",
       "cluster_data": [],
       "col": "#E0A366",
@@ -4030,6 +4183,14 @@
       "type": "variant"
     },
     {
+      "aquaria_urls": {
+        "N": "https://aquaria.app/SARS-CoV-2/N?P67S&P199L",
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?T265I&L3352F&Q3729R",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?T265I&L3352F&Q3729R&P4715L&N6054D&R7014C",
+        "ORF3a": "https://aquaria.app/SARS-CoV-2/ORF3a?Q57H&G172V",
+        "ORF8": "https://aquaria.app/SARS-CoV-2/ORF8?S24L",
+        "S": "https://aquaria.app/SARS-CoV-2/S?D614G&Q677P"
+      },
       "build_name": "S.Q677P.Pelican",
       "cluster_data": [],
       "col": "#E085FF",
@@ -4156,6 +4317,11 @@
       "type": "variant"
     },
     {
+      "aquaria_urls": {
+        "N": "https://aquaria.app/SARS-CoV-2/N?M234I&A376T",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?A4577S&V5168L&K5542R&E5585D",
+        "S": "https://aquaria.app/SARS-CoV-2/S?S477N"
+      },
       "build_name": "20A.EU2",
       "cluster_data": [],
       "col": "#A3D8F3",
@@ -4247,6 +4413,11 @@
       "type": "variant"
     },
     {
+      "aquaria_urls": {
+        "N": "https://aquaria.app/SARS-CoV-2/N?P199L",
+        "ORF3a": "https://aquaria.app/SARS-CoV-2/ORF3a?Q38R&G172R&V202L",
+        "S": "https://aquaria.app/SARS-CoV-2/S?S98F"
+      },
       "build_name": "S.S98F",
       "cluster_data": [],
       "col": "#C8C8DA",
@@ -4310,6 +4481,13 @@
       "type": "variant"
     },
     {
+      "aquaria_urls": {
+        "N": "https://aquaria.app/SARS-CoV-2/N?S186Y&D377Y",
+        "ORF1a": "https://aquaria.app/SARS-CoV-2/PP1a?T945I&T1567I&Q3346K&V3475F&M3862I",
+        "ORF1b": "https://aquaria.app/SARS-CoV-2/PP1ab?T945I&T1567I&Q3346K&V3475F&M3862I&P4656T",
+        "ORF7a": "https://aquaria.app/SARS-CoV-2/ORF7a?R80I",
+        "S": "https://aquaria.app/SARS-CoV-2/S?D80Y"
+      },
       "build_name": "S.D80Y",
       "cluster_data": [],
       "col": "#D1E8FF",
@@ -4438,6 +4616,9 @@
       "type": "variant"
     },
     {
+      "aquaria_urls": {
+        "S": "https://aquaria.app/SARS-CoV-2/S?A626S"
+      },
       "build_name": "S.A626S",
       "cluster_data": [],
       "col": "#b3e6ff",
@@ -4470,6 +4651,9 @@
       "type": "variant"
     },
     {
+      "aquaria_urls": {
+        "S": "https://aquaria.app/SARS-CoV-2/S?V1122L"
+      },
       "build_name": "S.V1122L",
       "cluster_data": [],
       "col": "#A3A3C2",
@@ -4502,6 +4686,7 @@
       "type": "variant"
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.N501",
       "cluster_data": [],
       "col": "#ff99ff",
@@ -4520,6 +4705,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.E484",
       "cluster_data": [],
       "col": "#006600",
@@ -4535,6 +4721,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.H69-",
       "cluster_data": [],
       "col": "#ffcc00",
@@ -4553,6 +4740,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.Q677",
       "cluster_data": [],
       "col": "#000099",
@@ -4571,6 +4759,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.Y453F",
       "cluster_data": [],
       "col": "#ff1a1a",
@@ -4586,6 +4775,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.S477",
       "cluster_data": [],
       "col": "#0000ff",
@@ -4601,6 +4791,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": {},
       "build_name": "DanishCluster",
       "cluster_data": [],
       "col": "#ffffff",
@@ -4616,6 +4807,7 @@
       "type": "do_not_display"
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.L18",
       "cluster_data": [],
       "col": "#000066",
@@ -4631,6 +4823,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.Y144-",
       "cluster_data": [],
       "col": "#b3d9ff",
@@ -4647,6 +4840,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.K417",
       "cluster_data": [],
       "col": "#ff8d3d",
@@ -4662,6 +4856,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.H655",
       "cluster_data": [],
       "col": "#b30000",
@@ -4677,6 +4872,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.P681",
       "cluster_data": [],
       "col": "#ff8080",
@@ -4692,6 +4888,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": {},
       "build_name": "ORF1a.S3675",
       "cluster_data": [],
       "col": "#65beeb",
@@ -4710,6 +4907,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.Q677H.Robin2",
       "cluster_data": [],
       "col": "#804000",
@@ -4727,6 +4925,7 @@
       "usa_graph": true
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.Q677H.Yellowhammer",
       "cluster_data": [],
       "col": "#ffcc00",
@@ -4744,6 +4943,7 @@
       "usa_graph": true
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.Q677R.Roadrunner",
       "cluster_data": [],
       "col": "#ff8d3d",
@@ -4762,6 +4962,7 @@
       "usa_graph": true
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.Q677H.Heron",
       "cluster_data": [],
       "col": "#65beeb",
@@ -4780,6 +4981,7 @@
       "usa_graph": true
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.Q677H.Bluebird",
       "cluster_data": [],
       "col": "#003366",
@@ -4797,6 +4999,7 @@
       "usa_graph": true
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.Q677H.Quail",
       "cluster_data": [],
       "col": "#a3a3c2",
@@ -4815,6 +5018,7 @@
       "usa_graph": true
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.Q677H.Mockingbird",
       "cluster_data": [],
       "col": "#b3d9ff",
@@ -4832,6 +5036,7 @@
       "usa_graph": true
     },
     {
+      "aquaria_urls": {},
       "build_name": "Delta.299I",
       "cluster_data": [],
       "col": "#b3d9ff",
@@ -4851,6 +5056,7 @@
       "type": "do_not_display"
     },
     {
+      "aquaria_urls": {},
       "build_name": "Delta.250I",
       "cluster_data": [],
       "col": "#b3d9ff",
@@ -4868,6 +5074,7 @@
       "type": "do_not_display"
     },
     {
+      "aquaria_urls": {},
       "build_name": "Delta.145H",
       "cluster_data": [],
       "col": "#b3d9ff",
@@ -4885,6 +5092,7 @@
       "type": "do_not_display"
     },
     {
+      "aquaria_urls": {},
       "build_name": "Delta.ORF1a3059F",
       "cluster_data": [],
       "col": "#b3d9ff",
@@ -4902,6 +5110,7 @@
       "type": "do_not_display"
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.Q613",
       "cluster_data": [],
       "col": "#ff8080",
@@ -4917,6 +5126,7 @@
       "type": "do_not_display"
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.A222",
       "cluster_data": [],
       "col": "#ff8080",
@@ -4932,6 +5142,7 @@
       "type": "do_not_display"
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.Y145",
       "cluster_data": [],
       "col": "#ff8080",
@@ -4947,6 +5158,7 @@
       "type": "do_not_display"
     },
     {
+      "aquaria_urls": {},
       "build_name": "S.T572",
       "cluster_data": [],
       "col": "#ff8080",
