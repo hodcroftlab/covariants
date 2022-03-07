@@ -3,6 +3,7 @@ import { groupBy } from 'lodash'
 import { notUndefinedOrNull } from 'src/helpers/notUndefined'
 
 import type { Mutation } from 'src/types'
+import type { Cluster } from 'src/state/Clusters'
 import { theme } from 'src/theme'
 
 import clustersJson from 'src/../data/clusters.json'
@@ -75,4 +76,15 @@ export type ClusterDataGrouped = Record<string, ClusterDatum[]>
 export function getClustersGrouped(): ClusterDataGrouped {
   const clusters = getClusters()
   return groupBy(clusters, 'type')
+}
+
+export function sortClusters(clusters: Cluster[]): Cluster[] {
+  const clusterNames = getClusterNames()
+  return clusterNames.reduce((result, name) => {
+    const cluster = clusters.find((cluster) => cluster.cluster === name)
+    if (cluster) {
+      result.push(cluster)
+    }
+    return result
+  }, [] as Cluster[])
 }

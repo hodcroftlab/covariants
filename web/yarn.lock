@@ -7177,6 +7177,11 @@ is-url@^1.2.2:
   resolved "https://registry.yarnpkg.com/is-url/-/is-url-1.2.4.tgz#04a4df46d28c4cff3d73d01ff06abeb318a1aa52"
   integrity sha512-ITvGim8FhRiYe4IQ5uHSkj7pVaPDrCTkNd3yq3cV7iZAcJdHTUMPMEHcqSOy9xZ9qFenQCvi+2wjH9a1nXqHww==
 
+is-what@^4.1.6:
+  version "4.1.7"
+  resolved "https://registry.yarnpkg.com/is-what/-/is-what-4.1.7.tgz#c41dc1d2d2d6a9285c624c2505f61849c8b1f9cc"
+  integrity sha512-DBVOQNiPKnGMxRMLIYSwERAS5MVY1B7xYiGnpgctsOFvVDz9f9PFXXxMcTOHuoqYp4NK9qFYQaIC1NRRxLMpBQ==
+
 is-whitespace-character@^1.0.0:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/is-whitespace-character/-/is-whitespace-character-1.0.4.tgz#0858edd94a95594c7c9dd0b5c174ec6e45ee4aa7"
@@ -8462,6 +8467,14 @@ memorystream@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/memorystream/-/memorystream-0.3.1.tgz#86d7090b30ce455d63fbae12dda51a47ddcaf9b2"
   integrity sha1-htcJCzDORV1j+64S3aUaR93K+bI=
+
+merge-anything@5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/merge-anything/-/merge-anything-5.0.2.tgz#b023af9b8f48e2fc71eb859d4ad834ba667f4150"
+  integrity sha512-POPQBWkBC0vxdgzRJ2Mkj4+2NTKbvkHo93ih+jGDhNMLzIw+rYKjO7949hOQM2X7DxMHH1uoUkwWFLIzImw7gA==
+  dependencies:
+    is-what "^4.1.6"
+    ts-toolbelt "^9.6.0"
 
 merge-descriptors@1.0.1:
   version "1.0.1"
@@ -12254,6 +12267,11 @@ ts-pnp@^1.1.6:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.2.0.tgz#a500ad084b0798f1c3071af391e65912c86bca92"
   integrity sha512-csd+vJOb/gkzvcCHgTGSChYpy5f1/XKNsmvBGO4JXS+z1v2HobugDz4s1IeFXM3wZB44uczs+eazB5Q/ccdhQw==
+
+ts-toolbelt@8.0.7, ts-toolbelt@^9.6.0:
+  version "8.0.7"
+  resolved "https://registry.yarnpkg.com/ts-toolbelt/-/ts-toolbelt-8.0.7.tgz#4dad2928831a811ee17dbdab6eb1919fc0a295bf"
+  integrity sha512-KICHyKxc5Nu34kyoODrEe2+zvuQQaubTJz7pnC5RQ19TH/Jged1xv+h8LBrouaSD310m75oAljYs59LNHkLDkQ==
 
 tsconfig-paths@^3.9.0:
   version "3.9.0"

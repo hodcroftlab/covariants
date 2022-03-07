@@ -2,7 +2,10 @@
 import copy from 'fast-copy'
 import { pickBy } from 'lodash'
 
-import { getEnabledCountriesNames, getPlaces, Places } from 'src/io/getPlaces'
+import type { Cluster } from 'src/state/Clusters'
+import type { Country } from 'src/state/Places'
+import { sortClusters } from 'src/io/getClusters'
+
 import perCountryDataJson from 'src/../data/perCountryData.json'
 
 export interface PerCountryDatum {
@@ -37,8 +40,7 @@ export interface ClusterState {
 
 export interface PerCountryData {
   clusterNames: string[]
-  clusters: ClusterState
-  places: Places
+  clusters: Cluster[]
   countryDistributions: CountryDistribution[]
   perCountryIntroContent: string
 }
@@ -58,12 +60,7 @@ export function getPerCountryData(regionName: string): PerCountryData {
   }
 
   const clusterNames = copy(perCountryData.cluster_names).sort()
-  const clusters = clusterNames.reduce((result, cluster) => {
-    return { ...result, [cluster]: { enabled: true } }
-  }, {})
-
-  const countriesListRaw = perCountryData.distributions.map(({ country }) => ({ countryName: country, enabled: true }))
-  const places = getPlaces(countriesListRaw, regionName)
+  const clusters = sortClusters(clusterNames.map((cluster) => ({ cluster, enabled: true })))
 
   const countryDistributions = perCountryData.distributions
 
@@ -72,7 +69,6 @@ export function getPerCountryData(regionName: string): PerCountryData {
   return {
     clusterNames,
     clusters,
-    places,
     countryDistributions,
     perCountryIntroContent,
   }
@@ -102,18 +98,18 @@ export function getRegions() {
   }
 }
 
-export function filterCountries(places: Places, countryDistributions: CountryDistribution[]) {
-  const enabledCountries = getEnabledCountriesNames(places)
+export function filterCountries(countries: Country[], countryDistributions: CountryDistribution[]) {
+  const enabledCountries = new Set<string>(
+    countries.filter((country) => country.enabled).map((country) => country.country),
+  )
   const withCountriesFiltered = countryDistributions.filter(({ country }) => {
     return enabledCountries.has(country)
   })
   return { enabledCountries, withCountriesFiltered }
 }
 
-export function filterClusters(clusters: ClusterState, withCountriesFiltered: CountryDistribution[]) {
-  const enabledClusters = Object.entries(clusters)
-    .filter(([_0, { enabled }]) => enabled)
-    .map(([cluster]) => cluster)
+export function filterClusters(clusters: Cluster[], withCountriesFiltered: CountryDistribution[]) {
+  const enabledClusters = clusters.filter(({ enabled }) => enabled).map(({ cluster }) => cluster)
 
   const withClustersFiltered = withCountriesFiltered.map(({ country, distribution }) => {
     const distributionFiltered = distribution.map((dist) => {
@@ -127,8 +123,4 @@ export function filterClusters(clusters: ClusterState, withCountriesFiltered: Co
   })
 
   return { enabledClusters, withClustersFiltered }
-}
-
-export function toggleCluster(oldClusters: ClusterState, clusterName: string): ClusterState {
-  return { ...oldClusters, [clusterName]: { ...oldClusters[clusterName], enabled: !oldClusters[clusterName].enabled } }
 }
