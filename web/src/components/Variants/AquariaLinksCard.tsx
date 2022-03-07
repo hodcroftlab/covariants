@@ -3,7 +3,7 @@ import { notUndefined, notUndefinedOrNull } from 'src/helpers/notUndefined'
 
 import styled from 'styled-components'
 
-import { Card, CardBody, CardHeader, Row } from 'reactstrap'
+import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
 
 import type { ClusterDatum } from 'src/io/getClusters'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
@@ -18,7 +18,8 @@ const AquariaLogoSmall = styled(AquariaLogo)`
 `
 
 const AquariaLinksCardBody = styled(CardBody)`
-  padding: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
 `
 
 const AquariaLinksCardHeading = styled.h1`
@@ -63,7 +64,9 @@ export function AquariaLinksCard({ cluster }: AquariaLinksCardProps) {
     <Card>
       <CardHeader>{title}</CardHeader>
       <AquariaLinksCardBody>
-        <Row noGutters>{proteinBadges}</Row>
+        <Row noGutters>
+          <Col>{proteinBadges}</Col>
+        </Row>
       </AquariaLinksCardBody>
     </Card>
   )
