@@ -48,6 +48,10 @@ with open(COUNTRY_CSV_INPUT_PATH) as f:
     perCountryData = json.load(f)
 
 world_data = perCountryData["regions"][0]["distributions"]
+per_country_intro_content = perCountryData["regions"][0]["per_country_intro_content"]
+max_date = perCountryData["regions"][0]["max_date"]
+min_date = perCountryData["regions"][0]["min_date"]
+cluster_names = perCountryData["regions"][0]["cluster_names"]
 
 world_data_counts = []
 
@@ -83,11 +87,4 @@ for i in range(len(world_data)):
 
 
 with open(OUTPUT_CSV_PATH, "w") as out:
-    json.dump({"regions": [{"region": "World", "distributions" : world_data_counts}]}, out, indent=2, sort_keys=True)
-    # Which of the following to add?
-    # cluster_names
-    # distributions
-    # max_date
-    # min_date
-    # per_country_intro_content
-    # region
+    json.dump({"regions": [{"region": "World", "distributions" : world_data_counts, "per_country_intro_content": per_country_intro_content, "max_date": max_date, "min_date": min_date, "cluster_names": cluster_names}]}, out, indent=2, sort_keys=True)
