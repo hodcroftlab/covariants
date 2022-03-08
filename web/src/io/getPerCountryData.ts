@@ -4,7 +4,6 @@ import { pickBy } from 'lodash'
 
 import type { Cluster } from 'src/state/Clusters'
 import type { Country } from 'src/state/Places'
-import { sortClusters } from 'src/io/getClusters'
 
 import perCountryDataJson from 'src/../data/perCountryData.json'
 
