@@ -4,7 +4,6 @@ import { pickBy } from 'lodash'
 
 import type { Cluster } from 'src/state/Clusters'
 import type { Country } from 'src/state/Places'
-import { sortClusters } from 'src/io/getClusters'
 
 import perCountryDataJson from 'src/../data/perCountryData.json'
 
@@ -60,7 +59,7 @@ export function getPerCountryData(regionName: string): PerCountryData {
   }
 
   const clusterNames = copy(perCountryData.cluster_names).sort()
-  const clusters = sortClusters(clusterNames.map((cluster) => ({ cluster, enabled: true })))
+  const clusters = clusterNames.map((cluster) => ({ cluster, enabled: true }))
 
   const countryDistributions = perCountryData.distributions
 
