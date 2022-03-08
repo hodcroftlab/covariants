@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import urljoin from 'url-join'
 import { useRouter } from 'next/router'
@@ -23,6 +23,7 @@ import {
 import {
   DOMAIN,
   FACEBOOK_HASHTAG,
+  PROJECT_DESCRIPTION,
   PROJECT_NAME,
   TWITTER_HASHTAGS,
   TWITTER_RELATED,
@@ -53,9 +54,14 @@ const SharingButton = styled.span`
   }
 `
 
+function getEmailBody(url: string) {
+  return `${PROJECT_NAME}: ${PROJECT_DESCRIPTION}\n${url}\n`
+}
+
 export function SharingPanel() {
   const { asPath } = useRouter()
   const url = urljoin(DOMAIN, asPath)
+  const emailBody = useMemo(() => getEmailBody(url), [url])
 
   return (
     <Row noGutters>
@@ -70,7 +76,7 @@ export function SharingPanel() {
           <Col className="d-flex">
             <SharingPanelWrapper>
               <SharingButton title={'Send in an Email'}>
-                <EmailShareButton url={url} subject={PROJECT_NAME} body={`\n${url}\n`}>
+                <EmailShareButton url="" subject={PROJECT_NAME} body={emailBody}>
                   <EmailIcon size={SOCIAL_ICON_SIZE} />
                 </EmailShareButton>
               </SharingButton>
