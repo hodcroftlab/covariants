@@ -28,7 +28,7 @@ jobs:
       - restore_cache:
           name: "Restore web application build cache"
           keys:
-            - cache-web-v2-{{ arch }}-{{ checksum "web/yarn.lock" }}
+            - cache-web-v3-{{ arch }}-{{ checksum "web/yarn.lock" }}
 
       - run:
           name: "Install AWS CLI"
@@ -49,7 +49,7 @@ jobs:
 
       - save_cache:
           name: "Save web application build cache"
-          key: cache-web-v2-{{ arch }}-{{ checksum "web/yarn.lock" }}
+          key: cache-web-v3-{{ arch }}-{{ checksum "web/yarn.lock" }}
           paths:
             - web/.cache
             - web/.build/production/tmp/cache
