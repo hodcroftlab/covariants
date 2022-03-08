@@ -1,7 +1,11 @@
-import React, { useMemo } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 
 import urljoin from 'url-join'
 import { useRouter } from 'next/router'
+import styled from 'styled-components'
+import { Button, Col, Row } from 'reactstrap'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+import { FaClipboard as FaClipboardBase, FaClipboardCheck as FaClipboardCheckBase } from 'react-icons/fa'
 
 import {
   EmailIcon,
@@ -29,10 +33,25 @@ import {
   TWITTER_RELATED,
   TWITTER_USERNAME_RAW,
 } from 'src/constants'
-import styled from 'styled-components'
-import { Col, Row } from 'reactstrap'
 
 const SOCIAL_ICON_SIZE = 30
+
+const FaClipboard = styled(FaClipboardBase)`
+  width: 18px;
+  height: 18px;
+  color: ${(props) => props.theme.gray600};
+`
+
+const FaClipboardCheck = styled(FaClipboardCheckBase)`
+  width: 18px;
+  height: 18px;
+  color: ${(props) => props.theme.success};
+`
+
+const CopyToClipBoardButton = styled(Button)`
+  padding: 0;
+  margin: 0;
+`
 
 const SharingPanelH1 = styled.h1`
   font-size: 1.33rem;
@@ -53,6 +72,20 @@ const SharingButton = styled.span`
     border-radius: ${SOCIAL_ICON_SIZE / 2}px;
   }
 `
+
+function CopyToClipBoardComponent({ url }: { url: string }) {
+  const [isCopied, setIsCopied] = useState(false)
+
+  const handleOnCopy = useCallback(() => setIsCopied(true), [])
+
+  return (
+    <CopyToClipboard text={url} onCopy={handleOnCopy}>
+      <CopyToClipBoardButton>
+        <span>{isCopied ? <FaClipboardCheck /> : <FaClipboard />}</span>
+      </CopyToClipBoardButton>
+    </CopyToClipboard>
+  )
+}
 
 function getEmailBody(url: string) {
   return `${PROJECT_NAME}: ${PROJECT_DESCRIPTION}\n${url}\n`
@@ -75,6 +108,10 @@ export function SharingPanel() {
         <Row noGutters>
           <Col className="d-flex">
             <SharingPanelWrapper>
+              <SharingButton title={'Copy link to clipboard'}>
+                <CopyToClipBoardComponent url={url} />
+              </SharingButton>
+
               <SharingButton title={'Send in an Email'}>
                 <EmailShareButton url="" subject={PROJECT_NAME} body={emailBody}>
                   <EmailIcon size={SOCIAL_ICON_SIZE} />
