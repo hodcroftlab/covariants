@@ -4,6 +4,7 @@ import { useRecoilState } from 'recoil'
 
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
 import { ColCustom } from 'src/components/Common/ColCustom'
+import { SharingPanel } from 'src/components/Common/SharingPanel'
 import { RegionSwitcher } from 'src/components/CountryDistribution/RegionSwitcher'
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
@@ -144,6 +145,12 @@ export function CountryDistributionPage() {
           <CenteredEditable githubUrl="tree/master/content/PerCountryIntro/">
             <IntroContent />
           </CenteredEditable>
+        </Col>
+      </Row>
+
+      <Row noGutters>
+        <Col>
+          <SharingPanel />
         </Col>
       </Row>
 
