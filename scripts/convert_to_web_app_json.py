@@ -249,10 +249,9 @@ def get_build_url(cluster):
 
 def create_aquaria_urls(clusters):
     for cluster in clusters:
-        print(cluster)
         clusters[cluster]["aquaria_urls"] = {}
 
-        if "mutations" not in clusters[cluster]: #TODO: Before or after I add aquaria_urls? Is it better to be empty or not there?
+        if "mutations" not in clusters[cluster]:
             continue
         # 2. Generating URLs with all variations in all genes of that cluster (strain)
         # ---------------------------------------------------------------------------
@@ -262,10 +261,7 @@ def create_aquaria_urls(clusters):
         for mut in clusters[cluster]['mutations']['nonsynonymous']:
             genes.add(mut['gene'])
 
-        # initialise the dictionaries:
-        # gURL for assembling the URL for each gene
-        gURL = {}  # type: Dict[str, str]
-        # gStrings for essembling the Strings defining the mutations for that gene
+        # gStrings for assembling the Strings defining the mutations for that gene
         gStrings = {}  # type: Dict[str, List[Any]]
 
         for gene in genes:
@@ -287,12 +283,12 @@ def create_aquaria_urls(clusters):
             if gene == 'ORF1a':
                 # append ORF1a mutations to PP1ab (ORF1b)
                 if 'ORF1b' in gStrings:
-                    gStrings['ORF1b'].append("".join(mut['left'] + str(pos) + right))
+                    gStrings['ORF1b'].append(f"{mut['left']}{pos}{right}")
             elif gene == 'ORF1b':
                 # fix numbering for PP1ab (ORF1b)
                 pos = pos + offset
 
-            gStrings[gene].append("".join(mut['left'] + str(pos) + right))
+            gStrings[gene].append(f"{mut['left']}{pos}{right}")
 
         # finally assemble URLS
         for gene in gStrings.keys():
@@ -303,7 +299,8 @@ def create_aquaria_urls(clusters):
                 g = 'PP1a'
             elif gene == 'ORF1b':
                 g = 'PP1ab'
-            clusters[cluster]["aquaria_urls"][gene] = "https://aquaria.app/SARS-CoV-2/" + g + "?" + "&".join(gStrings[gene])
+            gString = "&".join(gStrings[gene])
+            clusters[cluster]["aquaria_urls"][gene] = f"https://aquaria.app/SARS-CoV-2/{g}?{gString}"
 
     return clusters
 
