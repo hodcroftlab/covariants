@@ -1503,7 +1503,8 @@ bad_seqs = {
     "USA/TX-HMH-MCoV-49849/2020" : "2020-07-16", #delta
     "USA/TX-HMH-MCoV-49914/2020" : "2020-07-16", #delta
     "USA/TX-HMH-MCoV-50058/2020" : "2020-07-16", #delta
-    
+    "Tunisia/X-3240/2020" : "2020-08-29", #delta
+    "Serbia/348B17-09/2020" : "2020-09-02",  #delta
 
     #Omicron with possibly bad dates (very early)
     "England/NORW-31059C2/2021" : "2021-09-13", #omicron
@@ -1988,6 +1989,184 @@ bad_seqs = {
     "USA/TX-DSHS-15313/2021" : "2021-01-06", #omicron
     "USA/WI-WSLH-2203474/2021" : "2021-01-03", #omicron
     "USA/WI-WSLH-2203617/2021" : "2021-01-07", #omicron
+    #21 Feb
+    "DemocraticRepublicoftheCongo/RC-356/2021" : "2021-08-12", #omicron
+    "DemocraticRepublicoftheCongo/RC-396/2021" : "2021-06-12", #omicron
+    "DemocraticRepublicoftheCongo/RC-405/2021" : "2021-08-12", #omicron
+    "DemocraticRepublicoftheCongo/RC-409/2021" : "2021-08-12", #omicron
+    "DemocraticRepublicoftheCongo/RC-412/2021" : "2021-10-12", #omicron
+    "DemocraticRepublicoftheCongo/RC-413/2021" : "2021-08-12", #omicron
+    "DemocraticRepublicoftheCongo/RC-415/2021" : "2021-09-12", #omicron
+    "USA/LA-EVTL11612/2021" : "2021-07-29", #omicron
+    #23 feb
+    "DemocraticRepublicoftheCongo/RC-356/2021" : "2021-08-12", #omicron  EPI_ISL_10023502
+    "DemocraticRepublicoftheCongo/RC-396/2021" : "2021-06-12", #omicron  EPI_ISL_10023518
+    "DemocraticRepublicoftheCongo/RC-405/2021" : "2021-08-12", #omicron  EPI_ISL_10023523
+    "DemocraticRepublicoftheCongo/RC-409/2021" : "2021-08-12", #omicron  EPI_ISL_10023526
+    "DemocraticRepublicoftheCongo/RC-412/2021" : "2021-10-12", #omicron  EPI_ISL_10023527
+    "DemocraticRepublicoftheCongo/RC-413/2021" : "2021-08-12", #omicron  EPI_ISL_10023528
+    "DemocraticRepublicoftheCongo/RC-415/2021" : "2021-09-12", #omicron  EPI_ISL_10023530
+    "Honduras/26998-ICGES/2021" : "2021-09-01", #omicron   EPI_ISL_9983950
+    "Norway/2122/2021" : "2021-01-10", #omicron   EPI_ISL_9984342
+    "Oman/72210/2021" : "2021-01-02", #omicron  EPI_ISL_10104936
+    "Oman/722143/2021" : "2021-01-03", #omicron  EPI_ISL_10104934
+    "Oman/72293/2021" : "2021-01-03", #omicron  EPI_ISL_10104935
+    "Rwanda/NRLNAT4311/2021" : "2021-01-27", #omicron  EPI_ISL_10114824
+    "Rwanda/NRLNAT4335/2021" : "2021-01-04", #omicron  EPI_ISL_10114823
+    "SouthAfrica/NCV575/2020" : "2020-12-19", #omicron   EPI_ISL_9877975
+    "SouthAfrica/NCV577/2020" : "2020-12-18", #omicron   EPI_ISL_9877973
+    "Spain/CL-COV24171/2021" : "2021-01-26", #omicron   EPI_ISL_9909915
+    "Spain/CL-COV24172/2021" : "2021-01-26", #omicron   EPI_ISL_9909913
+    "Thailand/NIC_SRI_SEQ01603/2021" : "2021-01-24", #omicron   EPI_ISL_9872444
+    "Thailand/NIC_SRI_SEQ01604/2021" : "2021-01-27", #omicron   EPI_ISL_9872445
+    "USA/CA-LACPHL-AF06398/2021" : "2021-09-07", #omicron   EPI_ISL_9843366
+    "USA/CA-LACPHL-AF06814/2021" : "2021-01-11", #omicron  EPI_ISL_10116082
+    "USA/CA-LACPHL-AF06817/2021" : "2021-01-11", #omicron  EPI_ISL_10116085
+    "USA/LA-EVTL11612/2021" : "2021-07-29", #omicron   EPI_ISL_9396281
+    "USA/TX-DSHS-15313/2021" : "2021-01-06", #omicron   EPI_ISL_9862688
+    "USA/WA-PHL-014485/2021" : "2021-10-12", #omicron  EPI_ISL_10117310
+    "USA/WA-PHL-014487/2021" : "2021-10-12", #omicron  EPI_ISL_10117312
+    "USA/WA-PHL-014495/2021" : "2021-09-29", #omicron  EPI_ISL_10117320
+    "USA/WA-PHL-014498/2021" : "2021-09-29", #omicron  EPI_ISL_10117322
+    #25 Feb
+    "Austria/AGES-619882/2021" : "2021-08-21", #omicron  EPI_ISL_10258336
+    "Austria/AGES-619892/2021" : "2021-08-21", #omicron  EPI_ISL_10258642
+    "Austria/AGES-619894/2021" : "2021-08-21", #omicron  EPI_ISL_10258334
+    "Austria/AGES-619898/2021" : "2021-08-21", #omicron  EPI_ISL_10258465
+    "France/IDF-IPP11015/2021" : "2021-02-14", #omicron  EPI_ISL_10187078
+    "Palau/PW-CDC-2-5546529/2021" : "2021-09-18", #omicron  EPI_ISL_10218064
+    "Palau/PW-CDC-2-5546533/2021" : "2021-09-14", #omicron  EPI_ISL_10218061
+    "Palau/PW-CDC-2-5546609/2021" : "2021-09-11", #omicron  EPI_ISL_10218059
+    "Palau/PW-CDC-2-5546611/2021" : "2021-09-20", #omicron  EPI_ISL_10218066
+    "Palau/PW-CDC-2-5546612/2021" : "2021-09-13", #omicron  EPI_ISL_10218060
+    "Palau/PW-CDC-2-5546614/2021" : "2021-09-17", #omicron  EPI_ISL_10218063
+    "Palau/PW-CDC-2-5546615/2021" : "2021-09-22", #omicron  EPI_ISL_10218067
+    "Palau/PW-CDC-2-5546620/2021" : "2021-09-19", #omicron  EPI_ISL_10218065
+    "Palau/PW-CDC-2-5546629/2021" : "2021-09-15", #omicron  EPI_ISL_10218062
+    "Palau/PW-CDC-2-5546708/2021" : "2021-09-23", #omicron  EPI_ISL_10218068
+    "USA/SD-CDC-2-5594711/2021" : "2021-01-02", #omicron  EPI_ISL_10226533
+    "USA/SD-CDC-2-5594844/2021" : "2021-01-02", #omicron  EPI_ISL_10226534
+    # 1 march
+    "Canada/SK-RRPL-354439/2021" : "2021-06-16", #omicron  EPI_ISL_10362289
+    "Congo/RC-356/2021" : "2021-08-12", #omicron  EPI_ISL_10023502 -- think these should be DECEMBER as month
+    "Congo/RC-396/2021" : "2021-06-12", #omicron  EPI_ISL_10023518 -- think these should be DECEMBER as month
+    "Congo/RC-405/2021" : "2021-08-12", #omicron  EPI_ISL_10023523 -- think these should be DECEMBER as month
+    "Congo/RC-409/2021" : "2021-08-12", #omicron  EPI_ISL_10023526 -- think these should be DECEMBER as month
+    "Congo/RC-412/2021" : "2021-10-12", #omicron  EPI_ISL_10023527 -- think these should be DECEMBER as month
+    "Congo/RC-413/2021" : "2021-08-12", #omicron  EPI_ISL_10023528 -- think these should be DECEMBER as month
+    "Congo/RC-415/2021" : "2021-09-12", #omicron  EPI_ISL_10023530 -- think these should be DECEMBER as month
+    "France/HDF-IPP10662/2021" : "2021-02-07", #omicron  EPI_ISL_10352660
+    "India/KA-NIMH-SEQ-4177/2021" : "2021-02-12", #omicron  EPI_ISL_10397492
+    "Japan/GK2749/2021" : "2021-01-13", #omicron  EPI_ISL_10343846
+    "Japan/GK2751/2021" : "2021-01-13", #omicron  EPI_ISL_10343847
+    "Japan/GK2764/2021" : "2021-01-13", #omicron  EPI_ISL_10343848
+    "Japan/GK2768/2021" : "2021-01-13", #omicron  EPI_ISL_10343849
+    "Japan/GK2769/2021" : "2021-01-13", #omicron  EPI_ISL_10343850
+    "Japan/GK2773/2021" : "2021-01-13", #omicron  EPI_ISL_10343851
+    "Malaysia/IMR_CV03377/2021" : "2021-01-01", #omicron  EPI_ISL_10297348
+    "USA/NJ-GBW-EWR000070/2021" : "2021-01-03", #omicron  EPI_ISL_10272635
+    "USA/NJ-GBW-EWR000071/2021" : "2021-01-03", #omicron  EPI_ISL_10272636
+    "USA/NJ-GBW-EWR000072/2021" : "2021-01-03", #omicron  EPI_ISL_10272637
+    #3 Mar
+    "Chile/RM-Culture_MSJ_6476/2021" : "2021-08-12", #omicron  EPI_ISL_10487167
+    "England/DHSC-CYB1MIA/2021" : "2021-01-01", #omicron  EPI_ISL_10437253
+    "England/DHSC-CYB5B7Y/2021" : "2021-01-01", #omicron  EPI_ISL_10437721
+    "England/DHSC-CYB5ZR7/2021" : "2021-01-01", #omicron  EPI_ISL_10437924
+    "England/DHSC-CYB6XG5/2021" : "2021-01-01", #omicron  EPI_ISL_10438151
+    "England/DHSC-CYB7QWB/2021" : "2021-01-01", #omicron  EPI_ISL_10438657
+    "England/DHSC-CYBDJBN/2021" : "2021-01-01", #omicron  EPI_ISL_10439721
+    "England/DHSC-CYBGKZQ/2021" : "2021-01-01", #omicron  EPI_ISL_10440258
+    "England/DHSC-CYBMXGN/2021" : "2021-01-01", #omicron  EPI_ISL_10441799
+    "England/DHSC-CYBR5QW/2021" : "2021-01-01", #omicron  EPI_ISL_10442556
+    "England/DHSC-CYBUB6Q/2021" : "2021-01-01", #omicron  EPI_ISL_10443055
+    "England/DHSC-CYBWXX7/2021" : "2021-01-01", #omicron  EPI_ISL_10443745
+    "England/DHSC-CYBY3DW/2021" : "2021-01-01", #omicron  EPI_ISL_10445073
+    "England/DHSC-CYD5WR6/2021" : "2021-01-01", #omicron  EPI_ISL_10446547
+    "England/DHSC-CYDFHCU/2021" : "2021-04-14", #omicron  EPI_ISL_10448467
+    "England/DHSC-CYDWFBB/2021" : "2021-01-01", #omicron  EPI_ISL_10451346
+    "England/DHSC-CYN3OSN/2021" : "2021-01-01", #omicron  EPI_ISL_10453162
+    "England/DHSC-CYN5T7X/2021" : "2021-01-01", #omicron  EPI_ISL_10454024
+    "England/DHSC-CYN7E9O/2021" : "2021-01-01", #omicron  EPI_ISL_10454905
+    "England/DHSC-CYNET4H/2021" : "2021-01-01", #omicron  EPI_ISL_10456395
+    "England/DHSC-CYNNUEM/2021" : "2021-01-01", #omicron  EPI_ISL_10457369
+    "England/DHSC-CYNTYUE/2021" : "2021-01-01", #omicron  EPI_ISL_10458285
+    "England/DHSC-CYNWA54/2021" : "2021-01-01", #omicron  EPI_ISL_10458494
+    "England/DHSC-CYNYFHW/2021" : "2021-01-01", #omicron  EPI_ISL_10458850
+    "England/DHSC-CYY1T13/2021" : "2021-01-01", #omicron  EPI_ISL_10459323
+    "England/DHSC-CYY3TA9/2021" : "2021-01-01", #omicron  EPI_ISL_10459465
+    "England/DHSC-CYY9MKS/2021" : "2021-01-01", #omicron  EPI_ISL_10460591
+    "England/DHSC-CYYASJ5/2021" : "2021-01-01", #omicron  EPI_ISL_10461245
+    "England/DHSC-CYYQWNY/2021" : "2021-01-01", #omicron  EPI_ISL_10469051
+    "England/DHSC-CYYRS3D/2021" : "2021-01-01", #omicron  EPI_ISL_10469484
+    "England/DHSC-CYYSXNW/2021" : "2021-01-01", #omicron  EPI_ISL_10470113
+    "England/DHSC-CYYUQY9/2021" : "2021-01-01", #omicron  EPI_ISL_10471157
+    "Spain/MC-HCUVA-16185980/2020" : "2020-10-29", #omicron  EPI_ISL_10503257
+    "USA/MT-WL-1302/2020" : "2020-12-23", #omicron  EPI_ISL_10493876
+    "England/DHSC-CYYOH7H/2021" : "2021-01-01", #omicron  EPI_ISL_10467862
+    #8 mar
+    "Colombia/DC-CSB-1130622121/2021" : "2021-05-20", #omicron  EPI_ISL_10594793
+    "Colombia/VAC-CSB-1017128204/2021" : "2021-04-08", #omicron  EPI_ISL_10594778
+    "Colombia/VAC-CSB-1107517302/2021" : "2021-07-01", #omicron  EPI_ISL_10594763
+    "Colombia/VAC-CSB-1113651029/2021" : "2021-03-15", #omicron  EPI_ISL_10594727
+    "Colombia/VAC-CSB-1144079554/2021" : "2021-03-26", #omicron  EPI_ISL_10594748
+    "Colombia/VAC-CSB-1144160693/2021" : "2021-04-26", #omicron  EPI_ISL_10594733
+    "Colombia/VAC-CSB-1234193441/2021" : "2021-06-24", #omicron  EPI_ISL_10594744
+    "Colombia/VAC-CSB-31947468/2021" : "2021-03-26", #omicron  EPI_ISL_10594750
+    "Colombia/VAC-CSB-66862023/2021" : "2021-09-10", #omicron  EPI_ISL_10594798
+    "Colombia/VAC-CSB-94318427/2021" : "2021-01-13", #omicron  EPI_ISL_10594728
+    "France/ARA-HCL722000841701/2021" : "2021-01-24", #omicron  EPI_ISL_10718500
+    "France/ARA-HCL722000841801/2021" : "2021-01-24", #omicron  EPI_ISL_10718501
+    "France/ARA-HCL722000841901/2021" : "2021-01-24", #omicron  EPI_ISL_10718502
+    "France/ARA-HCL722000842001/2021" : "2021-01-24", #omicron  EPI_ISL_10718503
+    "France/ARA-HCL722000842101/2021" : "2021-01-24", #omicron  EPI_ISL_10718504
+    "France/ARA-HCL722000842201/2021" : "2021-01-24", #omicron  EPI_ISL_10718505
+    "France/ARA-HCL722000842301/2021" : "2021-01-24", #omicron  EPI_ISL_10718506
+    "France/ARA-HCL722000942601/2021" : "2021-01-10", #omicron  EPI_ISL_10719324
+    "France/ARA-HCL722000946601/2021" : "2021-01-17", #omicron  EPI_ISL_10719360
+    "France/NAQ-HCL722000879701/2021" : "2021-02-21", #omicron  EPI_ISL_10718830
+    "France/NAQ-HCL722000879801/2021" : "2021-02-21", #omicron  EPI_ISL_10718831
+    "Italy/VEN-IZSVe-22RS8068-5_VI/2021" : "2021-02-13", #omicron  EPI_ISL_10626936
+    "Italy/VEN-IZSVe-22RS8068-6_VI/2021" : "2021-02-13", #omicron  EPI_ISL_10626937
+    "Slovakia/BA_22_00004773/2020" : "2020-12-31", #omicron  EPI_ISL_10699545
+    "Spain/CT-HUGTiPM081UY6B1/2021" : "2021-02-15", #omicron  EPI_ISL_10497567
+    "Spain/CT-HUGTiPM081UY6C1/2021" : "2021-02-15", #omicron  EPI_ISL_10497579
+    "Spain/CT-HUGTiPM081UY6E1/2021" : "2021-02-15", #omicron  EPI_ISL_10497602
+    "Spain/CT-HUGTiPM081UY6F1/2021" : "2021-02-15", #omicron  EPI_ISL_10497614
+    "Spain/CT-HUGTiPM081UY6H1/2021" : "2021-02-15", #omicron  EPI_ISL_10497637
+    "USA/CA-SCPHL-22WGS00457/2021" : "2021-01-05", #omicron  EPI_ISL_10570648
+    "USA/MI-UM-10043952723/2020" : "2020-02-08", #omicron  EPI_ISL_10640614
+    "USA/MI-UM-10043953420/2020" : "2020-02-08", #omicron  EPI_ISL_10640615
+    "USA/MI-UM-10043956501/2020" : "2020-02-08", #omicron  EPI_ISL_10640616
+    "USA/MI-UM-10043957326/2020" : "2020-02-08", #omicron  EPI_ISL_10640617
+    "USA/MI-UM-10043957900/2020" : "2020-02-08", #omicron  EPI_ISL_10640618
+    "USA/MI-UM-10043958005/2020" : "2020-02-08", #omicron  EPI_ISL_10640619
+    "USA/MI-UM-10043958144/2020" : "2020-02-08", #omicron  EPI_ISL_10640620
+    "USA/MI-UM-10043961308/2020" : "2020-02-08", #omicron  EPI_ISL_10640621
+    "USA/MI-UM-10043963333/2020" : "2020-02-08", #omicron  EPI_ISL_10640622
+    "USA/MI-UM-10043963337/2020" : "2020-02-08", #omicron  EPI_ISL_10640623
+    "USA/MI-UM-10043963641/2020" : "2020-02-08", #omicron  EPI_ISL_10640624
+    "USA/MI-UM-10043964665/2020" : "2020-02-08", #omicron  EPI_ISL_10640625
+    "USA/MI-UM-10043966952/2020" : "2020-02-08", #omicron  EPI_ISL_10640626
+    "USA/MI-UM-10043967000/2020" : "2020-02-08", #omicron  EPI_ISL_10640627
+    "USA/MI-UM-10043975423/2020" : "2020-02-09", #omicron  EPI_ISL_10640628
+    "USA/MI-UM-10043975705/2020" : "2020-02-09", #omicron  EPI_ISL_10640629
+    "USA/MI-UM-10043976010/2020" : "2020-02-09", #omicron  EPI_ISL_10640630
+    "USA/MI-UM-10043977230/2020" : "2020-02-09", #omicron  EPI_ISL_10640631
+    "USA/MI-UM-10043982911/2020" : "2020-02-08", #omicron  EPI_ISL_10640632
+    "USA/MI-UM-10043984027/2020" : "2020-02-09", #omicron  EPI_ISL_10640633
+    "USA/MI-UM-10043998614/2020" : "2020-02-10", #omicron  EPI_ISL_10640634
+    "USA/MI-UM-10044001570/2020" : "2020-02-10", #omicron  EPI_ISL_10640635
+    "USA/MI-UM-10044006725/2020" : "2020-02-10", #omicron  EPI_ISL_10640636
+    "USA/MI-UM-10044006967/2020" : "2020-02-10", #omicron  EPI_ISL_10640637
+    "USA/MI-UM-10044008229/2020" : "2020-02-10", #omicron  EPI_ISL_10640638
+    "USA/MI-UM-10044016821/2020" : "2020-02-10", #omicron  EPI_ISL_10640639
+    "USA/NJ-PHEL-V22011240/2021" : "2021-02-20", #omicron  EPI_ISL_10686508
+    "USA/NY-NYULH5825/2021" : "2021-10-13", #omicron  EPI_ISL_10650980
+    "France/NAQ-HCL722000879401/2021" : "2021-02-21", #omicron  EPI_ISL_10718828
+    "France/NAQ-HCL722000879901/2021" : "2021-02-21", #omicron  EPI_ISL_10718832
+    "India/MH-KasturbaMCGM-ICMR-INSACOG-WG3084/2021" : "2021-05-19", #omicron  EPI_ISL_10638860
+    "Spain/CT-HUGTiPM081UY6D1/2021" : "2021-02-15", #omicron  EPI_ISL_10497591
+    "Sweden/10336331/2021" : "2021-03-25", #omicron  EPI_ISL_10610556
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha

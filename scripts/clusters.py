@@ -597,7 +597,7 @@ clusters = {
     "Kappa": {
         "snps": [17523, 23604, 22917], #ORF1b:1352, S:681, 452 
         "cluster_data": [],  
-        "nextstrain_build": True,
+        "nextstrain_build": False, #as of 25 Feb 22 - no new seqs since sept
         "type": "variant",
         "graphing": True,
         "important": False,
@@ -666,7 +666,7 @@ clusters = {
     "Eta": {
         "snps": [8593, 23012, 24224],
         "cluster_data": [],  # nuc 8593 S 484, 888
-        "nextstrain_build": True,
+        "nextstrain_build": False, #as of 25 Feb 2022 - no new seqs since Nov 
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -1102,7 +1102,7 @@ clusters = {
     "S677HRobin1": {
         "snps": [23593, 29402, 8083], #T, T, A
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False, #as of 25 Feb 22 - no new seqs since Sept
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -1140,7 +1140,7 @@ clusters = {
     "S677PPelican": {
         "snps": [23592, 11451, 21811],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False, # as of 25 Feb 22 - no new seqs since Sept
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -1176,7 +1176,7 @@ clusters = {
     },
 
     "EU2": {
-        "snps": [22992, 4543],
+        "snps": [22992, 4543, 16889], #A, T, G - the last one added to stop showing up in Omicron
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,

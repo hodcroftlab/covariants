@@ -187,9 +187,14 @@ export const countriesAtom = atomFamily<Country[], string | undefined>({
   effects: [
     ({ onSet }) => {
       onSet((countries) => {
+        // If all countries are enabled, we will remove country url params
+        const hasAllEnabled = countries.every((country) => country.enabled)
+
         // eslint-disable-next-line no-void
         void updateUrlQuery({
-          country: countries.filter((country) => country.enabled).map((country) => country.country),
+          country: hasAllEnabled
+            ? []
+            : countries.filter((country) => country.enabled).map((country) => country.country),
         })
       })
     },

@@ -2,6 +2,7 @@ import React, { useCallback, useMemo } from 'react'
 
 import { Card, CardBody, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
+import { SharingPanel } from 'src/components/Common/SharingPanel'
 import {
   clustersAtom,
   ClustersDataFlavor,
@@ -194,6 +195,12 @@ export function ClusterDistributionPage() {
           <CenteredEditable githubUrl="blob/master/content/PerClusterIntro.md">
             <PerClusterIntro />
           </CenteredEditable>
+        </Col>
+      </Row>
+
+      <Row noGutters>
+        <Col>
+          <SharingPanel />
         </Col>
       </Row>
 
