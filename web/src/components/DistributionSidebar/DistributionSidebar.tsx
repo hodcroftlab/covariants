@@ -8,6 +8,7 @@ import { ClusterFilters } from './ClusterFilters'
 import { CountryFilters } from './CountryFilters'
 
 import { CountryFlagProps } from '../Common/CountryFlag'
+import { sortClusters } from 'src/io/getClusters'
 
 export interface DistributionSidebarProps {
   countries: Country[]
@@ -46,6 +47,7 @@ export function DistributionSidebar({
 }: DistributionSidebarProps) {
   const [clustersCollapsed, setClustersCollapsed] = useState(clustersCollapsedByDefault)
   const [countriesCollapsed, setCountriesCollapsed] = useState(countriesCollapsedByDefault)
+  const clustersSorted = useMemo(() => sortClusters(clusters ?? []), [clusters])
 
   const availableFilters: { [key: string]: React.ReactNode } = useMemo(
     () => ({
@@ -82,7 +84,7 @@ export function DistributionSidebar({
       clusters: clusters && (
         <ClusterFilters
           key="cluster-filters"
-          clusters={clusters}
+          clusters={clustersSorted}
           onFilterChange={onClusterFilterChange}
           onFilterSelectAll={onClusterFilterSelectAll}
           onFilterDeselectAll={onClusterFilterDeselectAll}
@@ -95,6 +97,7 @@ export function DistributionSidebar({
       Icon,
       clustersCollapsed,
       clusters,
+      clustersSorted,
       countriesCollapsed,
       onClusterFilterChange,
       onClusterFilterDeselectAll,
