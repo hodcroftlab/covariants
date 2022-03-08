@@ -1,14 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { FC, ReactElement, SVGProps, useMemo } from 'react'
 
 import iso3311a2 from 'iso-3166-1-alpha-2'
 import Flags from 'country-flag-icons/react/3x2'
 
-import { ReactComponent as Africa } from 'src/assets/images/continents/Africa.svg'
-import { ReactComponent as Asia } from 'src/assets/images/continents/Asia.svg'
-import { ReactComponent as Europe } from 'src/assets/images/continents/Europe.svg'
-import { ReactComponent as NorthAmerica } from 'src/assets/images/continents/North America.svg'
-import { ReactComponent as Oceania } from 'src/assets/images/continents/Oceania.svg'
-import { ReactComponent as SouthAmerica } from 'src/assets/images/continents/South America.svg'
+import Africa from 'src/assets/images/continents/Africa.svg'
+import Asia from 'src/assets/images/continents/Asia.svg'
+import Europe from 'src/assets/images/continents/Europe.svg'
+import NorthAmerica from 'src/assets/images/continents/North America.svg'
+import Oceania from 'src/assets/images/continents/Oceania.svg'
+import SouthAmerica from 'src/assets/images/continents/South America.svg'
 
 import { FlagWrapper } from './FlagWrapper'
 

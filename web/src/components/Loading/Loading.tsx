@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { ReactComponent as LogoNextstrain } from 'src/assets/images/logo.svg'
+import LogoNextstrain from 'src/assets/images/logo.svg'
 import styled from 'styled-components'
 
 const Container = styled.div`

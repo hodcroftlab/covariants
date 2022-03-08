@@ -4,8 +4,8 @@ import { Row, Col } from 'reactstrap'
 import styled from 'styled-components'
 
 import { Link as LinkBase } from 'src/components/Link/Link'
-import { ReactComponent as PerCountry } from 'src/assets/images/perCountry.svg'
-import { ReactComponent as PerVariant } from 'src/assets/images/perVariant.svg'
+import PerCountry from 'src/assets/images/perCountry.svg'
+import PerVariant from 'src/assets/images/perVariant.svg'
 
 const Link = styled(LinkBase)`
   &:hover {

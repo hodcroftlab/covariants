@@ -1,13 +1,13 @@
 import React from 'react'
 
 import styled from 'styled-components'
-import Loader from 'react-loader-spinner'
+import { ThreeDots as ThreeDotsLoader } from 'react-loader-spinner'
 import { ResponsiveContainer } from 'recharts'
 
 import { theme } from 'src/theme'
 import { ChartContainerOuter, ChartContainerInner } from './PlotLayout'
 
-const LoadingSpinner = styled(Loader)`
+const LoadingSpinner = styled(ThreeDotsLoader)`
   display: flex;
 
   svg {
@@ -20,7 +20,7 @@ export function PlotPlaceholder() {
     <ChartContainerOuter>
       <ChartContainerInner>
         <ResponsiveContainer aspect={theme.plot.aspectRatio}>
-          <LoadingSpinner type="ThreeDots" color={theme.gray400} />
+          <LoadingSpinner color={theme.gray400} />
         </ResponsiveContainer>
       </ChartContainerInner>
     </ChartContainerOuter>

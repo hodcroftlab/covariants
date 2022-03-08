@@ -2,7 +2,7 @@ import React from 'react'
 
 import styled from 'styled-components'
 
-import { ReactComponent as NextstrainIconBase } from 'src/assets/images/nextstrain_logo.svg'
+import NextstrainIconBase from 'src/assets/images/nextstrain_logo.svg'
 
 // Borrowed with modifications from Nextstrain.org
 // https://github.com/nextstrain/nextstrain.org/blob/master/static-site/src/components/splash/title.jsx

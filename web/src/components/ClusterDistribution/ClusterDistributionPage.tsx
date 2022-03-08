@@ -121,10 +121,10 @@ export function ClusterDistributionPage() {
     [setTooltipSort],
   )
 
-  const { withClustersFiltered } = useMemo(() => filterClusters(clusters, clusterDistributions), [
-    clusterDistributions,
-    clusters,
-  ])
+  const { withClustersFiltered } = useMemo(
+    () => filterClusters(clusters, clusterDistributions),
+    [clusterDistributions, clusters],
+  )
   const { enabledCountries, withCountriesFiltered } =
     /* prettier-ignore */
     useMemo(() => filterCountries(countries, withClustersFiltered), [countries, withClustersFiltered])

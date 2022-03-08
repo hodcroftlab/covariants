@@ -16,7 +16,7 @@ import { NarrowPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 import { DefiningMutations, hasDefiningMutations } from 'src/components/Variants/DefiningMutations'
 import { VariantTitle } from 'src/components/Variants/VariantTitle'
 
-import { ReactComponent as NextstrainIconBase } from 'src/assets/images/nextstrain_logo.svg'
+import NextstrainIconBase from 'src/assets/images/nextstrain_logo.svg'
 
 import { PlotCard } from './PlotCard'
 import { ProteinCard } from './ProteinCard'

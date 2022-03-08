@@ -25,6 +25,7 @@ import withoutMinification from './withoutMinification'
 import withFriendlyChunkNames from './withFriendlyChunkNames'
 import withResolve from './withResolve'
 import withWebpackWatchPoll from './withWebpackWatchPoll'
+import withUrlAsset from './withUrlAsset'
 
 const {
   // BABEL_ENV,
@@ -175,6 +176,7 @@ const config = withPlugins(
     [withFriendlyChunkNames],
     [withResolve],
     [withRobotsTxt],
+    [withUrlAsset],
   ].filter(Boolean),
   nextConfig,
 )

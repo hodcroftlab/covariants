@@ -208,14 +208,18 @@ export const countriesAtom = atomFamily<Country[], string | undefined>({
  */
 export const continentsAtom = selectorFamily<Continent[], string | undefined>({
   key: 'continents',
-  get: (region?: string) => ({ get }) => {
-    const countries = get(countriesAtom(region))
-    return getContinentsFromCountries(region, countries)
-  },
-  set: (region?: string) => ({ set, get, reset }, continentsOrDefault) => {
-    const countriesOld = get(countriesAtom(region))
-    const continents = continentsOrDefault instanceof DefaultValue ? getAllContinents(region) : continentsOrDefault
-    const countries = toggleCountriesFromContinents(region, countriesOld, continents)
-    set(countriesAtom(region), countries)
-  },
+  get:
+    (region?: string) =>
+    ({ get }) => {
+      const countries = get(countriesAtom(region))
+      return getContinentsFromCountries(region, countries)
+    },
+  set:
+    (region?: string) =>
+    ({ set, get, reset }, continentsOrDefault) => {
+      const countriesOld = get(countriesAtom(region))
+      const continents = continentsOrDefault instanceof DefaultValue ? getAllContinents(region) : continentsOrDefault
+      const countries = toggleCountriesFromContinents(region, countriesOld, continents)
+      set(countriesAtom(region), countries)
+    },
 })

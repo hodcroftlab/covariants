@@ -13,8 +13,8 @@ import {
 import classNames from 'classnames'
 import { FaGithub, FaTwitter } from 'react-icons/fa'
 
-import { ReactComponent as BrandLogoBase } from 'src/assets/images/logo.svg'
-import { ReactComponent as BrandLogoLargeBase } from 'src/assets/images/logo_text_right.svg'
+import BrandLogoBase from 'src/assets/images/logo.svg'
+import BrandLogoLargeBase from 'src/assets/images/logo_text_right.svg'
 
 import { Link } from 'src/components/Link/Link'
 import { LinkExternal } from 'src/components/Link/LinkExternal'

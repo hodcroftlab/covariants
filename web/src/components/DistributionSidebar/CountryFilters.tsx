@@ -130,9 +130,10 @@ export function CountryFilters({
   onFilterChange,
   setCollapsed,
 }: CountryFiltersProps) {
-  const handleContinentChange = useCallback((continent: string) => onFilterSelectRegion(continent), [
-    onFilterSelectRegion,
-  ])
+  const handleContinentChange = useCallback(
+    (continent: string) => onFilterSelectRegion(continent),
+    [onFilterSelectRegion],
+  )
 
   const continentCheckboxes = useMemo(
     () =>
