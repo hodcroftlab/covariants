@@ -4,11 +4,11 @@ import { Col, Row } from 'reactstrap'
 import { Cluster } from 'src/state/Clusters'
 
 import type { Continent, Country } from 'src/state/Places'
+import { sortClusters } from 'src/io/getClusters'
 import { ClusterFilters } from './ClusterFilters'
 import { CountryFilters } from './CountryFilters'
 
 import { CountryFlagProps } from '../Common/CountryFlag'
-import { sortClusters } from 'src/io/getClusters'
 
 export interface DistributionSidebarProps {
   countries: Country[]
