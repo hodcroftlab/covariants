@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { MutableRefObject, useMemo } from 'react'
+import React, { useMemo } from 'react'
 
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { DateTime } from 'luxon'
@@ -17,13 +17,12 @@ import { CountryDistributionPlotTooltip } from './CountryDistributionPlotTooltip
 const allowEscapeViewBox = { x: false, y: true }
 
 export interface AreaPlotProps {
-  ref: MutableRefObject<ResponsiveContainer>
   width?: number
   cluster_names: string[]
   distribution: CountryDistributionDatum[]
 }
 
-function AreaPlot({ ref, width, cluster_names, distribution }: AreaPlotProps) {
+function AreaPlot({ width, cluster_names, distribution }: AreaPlotProps) {
   const data = useMemo(
     () =>
       distribution.map(({ week, total_sequences, cluster_counts }) => {
@@ -45,7 +44,7 @@ function AreaPlot({ ref, width, cluster_names, distribution }: AreaPlotProps) {
   }, [width])
 
   return (
-    <ResponsiveContainer ref={ref} aspect={theme.plot.aspectRatio} debounce={0}>
+    <ResponsiveContainer aspect={theme.plot.aspectRatio} debounce={0}>
       <AreaChart margin={theme.plot.margin} data={data} stackOffset="expand">
         <XAxis
           dataKey="week"
@@ -111,9 +110,9 @@ export function CountryDistributionPlot({ cluster_names, distribution }: Country
   const { ref, width } = useResizeDetector({ handleWidth: true })
 
   return (
-    <ChartContainerOuter>
+    <ChartContainerOuter ref={ref}>
       <ChartContainerInner>
-        <AreaPlot ref={ref} width={width} cluster_names={cluster_names} distribution={distribution} />
+        <AreaPlot width={width} cluster_names={cluster_names} distribution={distribution} />
       </ChartContainerInner>
     </ChartContainerOuter>
   )

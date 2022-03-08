@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { MutableRefObject, useMemo } from 'react'
+import React, { useMemo } from 'react'
 
 import { get } from 'lodash'
 import { DateTime } from 'luxon'
@@ -36,13 +36,12 @@ const getValueInterp = (country: string) => (value: ClusterDistributionDatum) =>
 const allowEscapeViewBox = { x: false, y: true }
 
 interface LinePlotProps {
-  ref: MutableRefObject<ResponsiveContainer>
   width?: number
   country_names: string[]
   distribution: ClusterDistributionDatum[]
 }
 
-function LinePlot({ ref, width, country_names, distribution }: LinePlotProps) {
+function LinePlot({ width, country_names, distribution }: LinePlotProps) {
   const theme = useTheme()
 
   const data = useMemo(
@@ -94,7 +93,7 @@ function LinePlot({ ref, width, country_names, distribution }: LinePlotProps) {
   }, [country_names])
 
   return (
-    <ResponsiveContainer ref={ref} aspect={theme.plot.aspectRatio}>
+    <ResponsiveContainer aspect={theme.plot.aspectRatio}>
       <LineChart margin={theme.plot.margin} data={data}>
         <XAxis
           dataKey="week"
@@ -138,9 +137,9 @@ export function ClusterDistributionPlot({ country_names, distribution }: Cluster
   const { ref, width } = useResizeDetector({ handleWidth: true })
 
   return (
-    <ChartContainerOuter>
+    <ChartContainerOuter ref={ref}>
       <ChartContainerInner>
-        <LinePlot ref={ref} width={width} country_names={country_names} distribution={distribution} />
+        <LinePlot width={width} country_names={country_names} distribution={distribution} />
       </ChartContainerInner>
     </ChartContainerOuter>
   )
