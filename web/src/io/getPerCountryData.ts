@@ -60,7 +60,7 @@ export function getPerCountryData(regionName: string): PerCountryData {
   }
 
   const clusterNames = copy(perCountryData.cluster_names).sort()
-  const clusters = sortClusters(clusterNames.map((cluster) => ({ cluster, enabled: true })))
+  const clusters = clusterNames.map((cluster) => ({ cluster, enabled: true }))
 
   const countryDistributions = perCountryData.distributions
 
