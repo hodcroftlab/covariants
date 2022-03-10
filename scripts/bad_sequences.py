@@ -2167,6 +2167,32 @@ bad_seqs = {
     "India/MH-KasturbaMCGM-ICMR-INSACOG-WG3084/2021" : "2021-05-19", #omicron  EPI_ISL_10638860
     "Spain/CT-HUGTiPM081UY6D1/2021" : "2021-02-15", #omicron  EPI_ISL_10497591
     "Sweden/10336331/2021" : "2021-03-25", #omicron  EPI_ISL_10610556
+    #10 mar
+    "Austria/AGES-636780/2021" : "2021-09-25", #omicron  EPI_ISL_10741494
+    "CzechRepublic/CSQ6538/2021" : "2021-02-15", #omicron  EPI_ISL_10754172
+    "France/OCC-IPP12318/2021" : "2021-02-14", #omicron  EPI_ISL_10757277
+    "France/OCC-IPP12325/2021" : "2021-02-14", #omicron  EPI_ISL_10757269
+    "France/OCC-IPP12329/2021" : "2021-02-14", #omicron  EPI_ISL_10757294
+    "France/OCC-IPP12334/2021" : "2021-02-14", #omicron  EPI_ISL_10757291
+    "France/OCC-IPP12338/2021" : "2021-02-14", #omicron  EPI_ISL_10757267
+    "France/OCC-IPP12339/2021" : "2021-02-14", #omicron  EPI_ISL_10757263
+    "France/OCC-IPP12340/2021" : "2021-02-14", #omicron  EPI_ISL_10757303
+    "France/OCC-IPP12341/2021" : "2021-02-14", #omicron  EPI_ISL_10757297
+    "France/OCC-IPP12343/2021" : "2021-02-14", #omicron  EPI_ISL_10757260
+    "France/OCC-IPP12344/2021" : "2021-02-14", #omicron  EPI_ISL_10757273
+    "France/OCC-IPP12346/2021" : "2021-02-14", #omicron  EPI_ISL_10757306
+    "France/OCC-IPP12347/2021" : "2021-02-14", #omicron  EPI_ISL_10757382
+    "France/OCC-IPP12349/2021" : "2021-02-14", #omicron  EPI_ISL_10757274
+    "France/OCC-IPP12350/2021" : "2021-02-14", #omicron  EPI_ISL_10757309
+    "France/OCC-IPP12352/2021" : "2021-02-14", #omicron  EPI_ISL_10757383
+    "France/OCC-IPP12355/2021" : "2021-02-14", #omicron  EPI_ISL_10757316
+    "Germany/BY-MVP-000012525/2021" : "2021-02-22", #omicron  EPI_ISL_10815473
+    "Slovakia/BA_22_00009226/2021" : "2021-08-11", #omicron  EPI_ISL_10765798
+    "France/OCC-IPP12322/2021" : "2021-02-14", #omicron  EPI_ISL_10757265
+    "France/OCC-IPP12326/2021" : "2021-02-14", #omicron  EPI_ISL_10757307
+    "France/OCC-IPP12332/2021" : "2021-02-14", #omicron  EPI_ISL_10757305
+    "France/OCC-IPP12333/2021" : "2021-02-14", #omicron  EPI_ISL_10757404
+    "France/OCC-IPP12335/2021" : "2021-02-14", #omicron  EPI_ISL_10757304
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
