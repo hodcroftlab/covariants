@@ -25,6 +25,7 @@ def to2week(x):
 
     return datetime.datetime.strptime("{}-W{}-1".format(*(iso_y, iso_w // 2 * 2)), "%G-W%V-%u")
 
+
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 
 OWID_CSV_FILENAME = "owid-covid-data.csv"
@@ -35,6 +36,9 @@ COUNTRY_CSV_INPUT_PATH = os.path.join(THIS_DIR, "..", "web", "data", COUNTRY_CSV
 
 OUTPUT_CSV_FILENAME = "perCountryDataCaseCounts.json"
 OUTPUT_CSV_PATH = os.path.join(THIS_DIR, "..", "web", "data", OUTPUT_CSV_FILENAME)
+
+THRESHOLD = 0.03
+PERIOD_PASS = 0.5
 
 columns = ["continent", "location", "date", "total_cases", "new_cases"]
 owid = pd.read_csv(OWID_CSV_INPUT_PATH, usecols=columns)
@@ -86,5 +90,35 @@ for i in range(len(world_data)):
         world_data_counts[-1]["distribution"].append({"week": week, "percent_counts": percent_counts, "total_sequences": total_sequences, "total_cases" : total_cases, "estimated_cases" : estimated_cases, "percent_total_cases" : percent_total_cases})
 
 
+### Check which countries pass the threshold
+weeks = []
+countries = []
+# First collect all weeks and countries
+for i in range(len(world_data_counts)):
+    country = world_data_counts[i]["country"]
+    countries.append(country)
+    for j in world_data_counts[i]["distribution"]:
+        week = j["week"]
+        if week not in weeks and "2020" not in week:
+            weeks.append(week)
+
+df = pd.DataFrame(columns=sorted(weeks), index=sorted(countries))
+
+for i in range(len(world_data_counts)):
+    country = world_data_counts[i]["country"]
+    for j in world_data_counts[i]["distribution"]:
+        week = j["week"]
+        if week in weeks:
+            percent_total_cases = j["percent_total_cases"]
+            df[week][country]= percent_total_cases
+
+total_weeks = len(weeks)
+df_threshold = (df>=THRESHOLD).sum(axis=1)
+countries_pass = df_threshold[(df_threshold/float(total_weeks)) >= PERIOD_PASS].index
+
+world_data_counts_cutoff = [x for x in world_data_counts if x["country"] in countries_pass]
+
+print(f"{len(world_data_counts_cutoff)}/{len(world_data_counts)} countries have passed threshold {THRESHOLD} and period_pass {PERIOD_PASS}")
+
 with open(OUTPUT_CSV_PATH, "w") as out:
-    json.dump({"regions": [{"region": "World", "distributions" : world_data_counts, "per_country_intro_content": per_country_intro_content, "max_date": max_date, "min_date": min_date, "cluster_names": cluster_names}]}, out, indent=2, sort_keys=True)
+    json.dump({"regions": [{"region": "World", "distributions" : world_data_counts_cutoff, "per_country_intro_content": per_country_intro_content, "max_date": max_date, "min_date": min_date, "cluster_names": cluster_names}]}, out, indent=2, sort_keys=True)
