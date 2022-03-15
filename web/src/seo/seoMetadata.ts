@@ -21,4 +21,24 @@ export const SEO_OVERRIDES: Record<string, PageMetadata> = {
     description: `${PROJECT_NAME}: Frequently Asked Questions`,
     image: faqImage,
   },
+  '/variants': {
+    name: `${PROJECT_NAME}: Variants`,
+    description: `${PROJECT_NAME}: Overview of Variants`,
+  },
+  '/per-country': {
+    name: `${PROJECT_NAME}: Per Country`,
+    description: `${PROJECT_NAME}: Plots of Frequencies by Country`,
+  },
+  '/per-variant': {
+    name: `${PROJECT_NAME}: Per Variant`,
+    description: `${PROJECT_NAME}: Plots of Frequencies by Variant`,
+  },
+  '/shared-mutations': {
+    name: `${PROJECT_NAME}: Shared Mutations`,
+    description: `${PROJECT_NAME}: Shared Mutations`,
+  },
+  '/acknowledgements': {
+    name: `${PROJECT_NAME}: Acknowledgements`,
+    description: `${PROJECT_NAME}: Acknowledgements`,
+  },
 }
