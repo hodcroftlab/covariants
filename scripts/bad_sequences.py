@@ -2193,7 +2193,27 @@ bad_seqs = {
     "France/OCC-IPP12332/2021" : "2021-02-14", #omicron  EPI_ISL_10757305
     "France/OCC-IPP12333/2021" : "2021-02-14", #omicron  EPI_ISL_10757404
     "France/OCC-IPP12335/2021" : "2021-02-14", #omicron  EPI_ISL_10757304
+    #15 mar
+    "Japan/4VA-647/2021" : "2021-01-21", #omicron  EPI_ISL_10842406
+    "Spain/CL-COV26027/2021" : "2021-01-19", #omicron  EPI_ISL_10856019
+    "Spain/CL-COV26094/2021" : "2021-01-22", #omicron  EPI_ISL_10856302
+    "Spain/CL-COV26102/2021" : "2021-01-20", #omicron  EPI_ISL_10856672
+    "Spain/CL-COV26105/2021" : "2021-01-10", #omicron  EPI_ISL_10856282
+    "Spain/CL-COV26106/2021" : "2021-01-10", #omicron  EPI_ISL_10856526
+    "Spain/CL-COV26107/2021" : "2021-01-14", #omicron  EPI_ISL_10856283
+    "Spain/CL-COV26108/2021" : "2021-01-14", #omicron  EPI_ISL_10856284
+    "Spain/CL-COV26109/2021" : "2021-01-14", #omicron  EPI_ISL_10856285
+    "Spain/CL-COV26110/2021" : "2021-01-14", #omicron  EPI_ISL_10856286
+    "Spain/CL-COV26111/2021" : "2021-01-19", #omicron  EPI_ISL_10855832
+    "Spain/CL-COV26112/2021" : "2021-01-19", #omicron  EPI_ISL_10856287
+    "Spain/CL-COV26113/2021" : "2021-01-19", #omicron  EPI_ISL_10855544
+    "Spain/CL-COV26114/2021" : "2021-01-19", #omicron  EPI_ISL_10856062
+    "Spain/CL-COV26115/2021" : "2021-01-19", #omicron  EPI_ISL_10856288
+    "Thailand/NIC_SNI_FRS254/2021" : "2021-01-29", #omicron  EPI_ISL_10890915
+    "USA/CO-CDPHE-2103012145/2021" : "2021-01-03", #omicron  EPI_ISL_10956610
+    "India/AS-CSIR-NEIST-INSACOG-NEIST3-CIDIN0213/2020" : "2020-09-06", #delta  EPI_ISL_10955237
 
+    
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
     "Senegal/24725/2020" : "2020-05-09", #alpha
