@@ -10,6 +10,7 @@ import os
 import re
 from datetime import datetime
 from shutil import copyfile
+from urllib.parse import quote
 
 import numpy as np
 import pandas as pd
@@ -249,7 +250,7 @@ def get_build_url(cluster):
 
 def create_aquaria_urls(clusters):
     for cluster in clusters:
-        clusters[cluster]["aquaria_urls"] = {}
+        clusters[cluster]["aquaria_urls"] = []
 
         if "mutations" not in clusters[cluster]:
             continue
@@ -291,7 +292,11 @@ def create_aquaria_urls(clusters):
             gStrings[gene].append(f"{mut['left']}{pos}{right}")
 
         # finally assemble URLS
-        for gene in gStrings.keys():
+        gene_list = sorted(gStrings.keys())
+        if "S" in gene_list: # Sort alphabetically but have S first
+            gene_list.remove("S")
+            gene_list = ["S"] + gene_list
+        for gene in gene_list:
             # ORF1a and ORF1b are called PP1a and PP1ab in Aquaria (like the respective Uniprot entries),
             # so we have to change the name.
             g = gene
@@ -299,8 +304,8 @@ def create_aquaria_urls(clusters):
                 g = 'PP1a'
             elif gene == 'ORF1b':
                 g = 'PP1ab'
-            gString = "&".join(gStrings[gene])
-            clusters[cluster]["aquaria_urls"][gene] = f"https://aquaria.app/SARS-CoV-2/{g}?{gString}"
+            gString = "&".join([quote(x) for x in gStrings[gene]])
+            clusters[cluster]["aquaria_urls"].append({"gene":gene, "url":f"https://aquaria.app/SARS-CoV-2/{g}?{gString}"})
 
     return clusters
 
