@@ -10,6 +10,11 @@ import clustersJson from 'src/../data/clusters.json'
 
 export const CLUSTER_NAME_OTHERS = 'others' as const
 
+export interface AquariaDatum {
+  gene: string
+  url: string
+}
+
 export type ClusterDatum = {
   build_name: string
   old_build_names?: string[]
@@ -22,7 +27,7 @@ export type ClusterDatum = {
     nonsynonymous?: Mutation[]
     synonymous?: Mutation[]
   }
-  aquaria_urls?: Record<string, string | undefined>
+  aquaria_urls?: AquariaDatum[]
   type: string
   important: boolean
 }

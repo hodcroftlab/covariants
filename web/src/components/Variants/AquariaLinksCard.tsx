@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react'
-import { notUndefinedOrNull } from 'src/helpers/notUndefined'
 
 import styled from 'styled-components'
 
@@ -48,13 +47,11 @@ export function AquariaLinksCardTitle({ cluster }: AquariaLinksCardProps) {
 export function AquariaLinksCard({ cluster }: AquariaLinksCardProps) {
   const proteinBadges = useMemo(
     () =>
-      Object.entries(cluster?.aquaria_urls ?? {})
-        .filter(([gene, url]) => notUndefinedOrNull(gene) && notUndefinedOrNull(url))
-        .map(([gene, url]) => (
-          <LinkExternal key={gene} href={url} icon={null}>
-            <ProteinBadge gene={gene} />
-          </LinkExternal>
-        )),
+      (cluster?.aquaria_urls ?? []).map(({ gene, url }) => (
+        <LinkExternal key={gene} href={url} icon={null}>
+          <ProteinBadge gene={gene} />
+        </LinkExternal>
+      )),
     [cluster.aquaria_urls],
   )
 
