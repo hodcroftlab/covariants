@@ -204,6 +204,8 @@ country_list_4 = [
     "Maldives",             #13
     "Nepal",                #14
     "Hong Kong",            #15
+    "Brunei",               #16
+    "Mauritius",            #17
 ]
 
 country_styles_1 = {

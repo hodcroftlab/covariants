@@ -43,6 +43,10 @@
     "c": "#a6cee3",
     "ls": "--"
   },
+  "Brunei": {
+    "c": "#000000",
+    "ls": "dotted"
+  },
   "Bulgaria": {
     "c": "#6a3d9a",
     "ls": "-."
@@ -169,6 +173,10 @@
   },
   "Maldives": {
     "c": "#ff66ff",
+    "ls": "dotted"
+  },
+  "Mauritius": {
+    "c": "#004d00",
     "ls": "dotted"
   },
   "Mexico": {

@@ -14,17 +14,23 @@ import SouthAmerica from 'src/assets/images/continents/South America.svg'
 import { FlagWrapper } from './FlagWrapper'
 
 export const missingCountryCodes: Record<string, string> = {
+  'Bolivia': 'BO',
   'Bonaire': 'BQ',
   'Brunei': 'BN',
   'Curacao': 'CW',
+  'Democratic Republic of the Congo': 'CD',
+  'Eswatini': 'SZ',
   'Iran': 'IR',
   'Kosovo': 'XK',
+  'Moldova': 'MD',
   'North Macedonia': 'MK',
   'Republic of the Congo': 'CD',
   'Russia': 'RU',
+  'Saint Martin': 'SX',
   'Sint Maarten': 'SX',
   'South Korea': 'KR',
   'USA': 'US',
+  'Venezuela': 'VE',
   'Vietnam': 'VN',
 }
 
