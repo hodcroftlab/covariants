@@ -26,15 +26,35 @@ def build_url(base_url,cluster,threshold):
     return url
 
 if __name__ == '__main__':
-    for cluster_name, cluster_muts in clusters_example.items():
+    for cluster_name in clusters:
+        # Don't use all clusters
+
+        if clusters[cluster_name]["type"] == "do_not_display":
+            continue
+
+        if clusters[cluster_name]["type"] == "mutation":
+            continue
+
+        if "snps_with_base" not in clusters[cluster_name]:
+            print(f"snps_with_base missing from {cluster_name}")
+            continue
+
+        if "mutations" not in clusters[cluster_name]:
+            print(f"mutations missing from {cluster_name}")
+            continue
+
+
+        cluster_muts = clusters[cluster_name]["snps_with_base"]
         aa_request_url = build_url(aa_base_url,cluster_muts,THRESHOLD)
         count_request_url = build_url(count_base_url,cluster_muts,None)
+        print(f"Requesting cov-spectrum for {cluster_name} with snps {', '.join(cluster_muts)}")
         print(aa_request_url)
         print(count_request_url)
         aa_request = requests.get(aa_request_url)
         count_request = requests.get(count_request_url)
         aa = json.loads(aa_request.content)
         count = json.loads(count_request.content)
+        print("Download complete...\n")
 
         defining_mutations = []
         for mut in clusters[cluster_name]["mutations"]["nonsynonymous"]:

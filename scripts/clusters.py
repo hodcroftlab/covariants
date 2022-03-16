@@ -1320,6 +1320,7 @@ clusters = {
     },
     "S1122": {
         "snps": [24926, 9120],
+        "snps_with_base": ["24926T", "9120T"],
         "cluster_data": [],  # mostly Swedish cluster
         "nextstrain_build": False,
         "graphing": True,
