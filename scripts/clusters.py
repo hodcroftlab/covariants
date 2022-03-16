@@ -1,7 +1,8 @@
 clusters = {
 
     "Alpha": {
-        "snps": [23063, 23604, 24914], #23063T, 23604A, 24914C
+        "snps": [23063, 23604, 24914],  # 23063T, 23604A, 24914C
+        "snps_with_base": ["23063T", "23604A", "24914C"],
         "cluster_data": [],  # 501, 681, 1118
         "nextstrain_build": True,
         "graphing": True,
@@ -60,6 +61,7 @@ clusters = {
     },
     "Beta": {
         "snps": [21801, 23063, 23664],
+        "snps_with_base": ["21801C", "23063T", "23664T"],
         "cluster_data": [],  # 80,501,701
         "nextstrain_build": True,
         "graphing": True,
@@ -111,6 +113,7 @@ clusters = {
     },
     "Gamma": {
         "snps": [21621, 23063, 23525],
+        "snps_with_base": ["21621A", "23063T", "23525T"],
         "cluster_data": [],  # 20,501,655
         "nextstrain_build": True,
         "graphing": True,
@@ -170,12 +173,11 @@ clusters = {
         },
     },
 
-
-
     # Delta variant  -- part of 'Indian' in media - B.1.617.2
     "Delta": {
-        "snps": [22995, 23604, 22917], # S:478, 681, 452
-        "cluster_data": [],  
+        "snps": [22995, 23604, 22917],  # S:478, 681, 452
+        "snps_with_base": ["22995A", "23604G", "22917G"],
+        "cluster_data": [],
         "nextstrain_build": True,
         "type": "variant",
         "graphing": True,
@@ -184,7 +186,7 @@ clusters = {
         "col": "#66C266",
         "display_name": "21A (Delta)",
         "alt_display_name": ["21A/S:478K"],
-        #"other_nextstrain_names": ["21A (Delta)","21J (Delta)","21I (Delta)"],
+        # "other_nextstrain_names": ["21A (Delta)","21J (Delta)","21I (Delta)"],
         "build_name": "21A.Delta",
         "old_build_names": ["21A.S.478K"],
         "who_name": ["Delta"],
@@ -229,8 +231,9 @@ clusters = {
     },
 
     "21I.Delta": {
-        "snps": [5184, 11514, 22227], # 5184T, 11514T, 22227T : ORF1a:1640, ORF1a:3750, S:222
-        "cluster_data": [],  
+        "snps": [5184, 11514, 22227],  # 5184T, 11514T, 22227T : ORF1a:1640, ORF1a:3750, S:222
+        "snps_with_base": ["5184T", "11514T", "22227T"],
+        "cluster_data": [],
         "nextstrain_build": True,
         "type": "variant",
         "graphing": True,
@@ -290,8 +293,9 @@ clusters = {
     },
 
     "21J.Delta": {
-        "snps": [4181,8986,11201], # 4181T,8986T,11201G - ORF1a: 1306, 2907, 3646
-        "cluster_data": [],  
+        "snps": [4181, 8986, 11201],  # 4181T,8986T,11201G - ORF1a: 1306, 2907, 3646
+        "snps_with_base": ["4181T", "8986T", "11201G"],
+        "cluster_data": [],
         "nextstrain_build": True,
         "type": "variant",
         "graphing": True,
@@ -352,8 +356,9 @@ clusters = {
         },
     },
 
-    "21K.Omicron": { #S.T572I - 23277T
-        "snps": [25000,25584,8393], #25000T,25584T,8393A
+    "21K.Omicron": {  # S.T572I - 23277T
+        "snps": [25000, 25584, 8393],  # 25000T,25584T,8393A
+        "snps_with_base": ["25000T", "25584T", "8393A"],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": True,
@@ -449,11 +454,12 @@ clusters = {
                 {"left": "A", "pos": 28271, "right": "T"},
             ],
         },
-     },
+    },
 
-    "21L.Omicron": { 
-        "snps": [9344,10198,27383], #9344T 10198T 27383T
-        #"snps": [21618,22775,23525], # S21618T, 22775A, 23525T
+    "21L.Omicron": {
+        "snps": [9344, 10198, 27383],  # 9344T 10198T 27383T
+        "snps_with_base": ["9344T", "10198T", "27383T"],
+        # "snps": [21618,22775,23525], # S21618T, 22775A, 23525T
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": True,
@@ -553,17 +559,18 @@ clusters = {
                 {"left": "A", "pos": 28271, "right": "T"},
             ],
         },
-     },
+    },
 
-    #21K.21L 21M together
-    "21K.21L": { 
-        "snps": [22679, 23040, 23604], # 22679C, 23040G, 23604A
+    # 21K.21L 21M together
+    "21K.21L": {
+        "snps": [22679, 23040, 23604],  # 22679C, 23040G, 23604A
+        "snps_with_base": ["22679C", "23040G", "23604A"],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
         "important": False,
-        "other_nextstrain_names": ["21K (Omicron)","21L (Omicron)","21M (Omicron)"],
-        "country_info": [], 'col': "#b3d9ff", 
+        "other_nextstrain_names": ["21K (Omicron)", "21L (Omicron)", "21M (Omicron)"],
+        "country_info": [], 'col': "#b3d9ff",
         "display_name": "21K.21L",
         "type": "do_not_display",
         "build_name": "21K.21L",
@@ -571,9 +578,9 @@ clusters = {
     },
 
     # Sister clade to 21K - TBD if Omicron
-    #"21L": {
+    # "21L": {
     #    "snps": [21618,22775,23525], # S21618T, 22775A, 23525T
-    #    "cluster_data": [],  
+    #    "cluster_data": [],
     #    "nextstrain_build": True,
     #    "type": "do_not_display",
     #    "graphing": False,
@@ -591,13 +598,14 @@ clusters = {
     #    ],
     #    "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21L",
     #    "mutations": {}
-    #},
+    # },
 
-    # variant  -- part of 'Indian' in media - B.1.617.1 
+    # variant  -- part of 'Indian' in media - B.1.617.1
     "Kappa": {
-        "snps": [17523, 23604, 22917], #ORF1b:1352, S:681, 452 
-        "cluster_data": [],  
-        "nextstrain_build": False, #as of 25 Feb 22 - no new seqs since sept
+        "snps": [17523, 23604, 22917],  # ORF1b:1352, S:681, 452
+        "snps_with_base": ["17523T", "23604G", "22917G"],
+        "cluster_data": [],
+        "nextstrain_build": False,  # as of 25 Feb 22 - no new seqs since sept
         "type": "variant",
         "graphing": True,
         "important": False,
@@ -648,8 +656,8 @@ clusters = {
 
     # "delta plus" - build only - Delta + 417
     "Delta417": {
-        "snps": [22995, 23604, 22917, 22813], # S:478, 681, 452, 417
-        "cluster_data": [],  
+        "snps": [22995, 23604, 22917, 22813],  # S:478, 681, 452, 417
+        "cluster_data": [],
         "nextstrain_build": True,
         "type": "do_not_display",
         "graphing": False,
@@ -665,8 +673,9 @@ clusters = {
     # 21D Eta
     "Eta": {
         "snps": [8593, 23012, 24224],
+        "snps_with_base": ["8593C", "23012A", "24224C"],
         "cluster_data": [],  # nuc 8593 S 484, 888
-        "nextstrain_build": False, #as of 25 Feb 2022 - no new seqs since Nov 
+        "nextstrain_build": False,  # as of 25 Feb 2022 - no new seqs since Nov
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -727,6 +736,7 @@ clusters = {
     # 21F Iota
     "Iota": {
         "snps": [21575, 9867, 1059],
+        "snps_with_base": ["21575T", "9867C", "1059T"],
         "cluster_data": [],  # S5, ORF1a 3201, 265 -- 484 is 23012 (1-based)
         "nextstrain_build": True,
         "graphing": True,
@@ -777,8 +787,9 @@ clusters = {
 
     # C.37 - build only
     "21GLambda": {
-        "snps": [7424, 23031, 24138], #ORF1a 2387 (7424G)  #S 490 (23031C) 859 (24138A)
-        "cluster_data": [],  
+        "snps": [7424, 23031, 24138],  # ORF1a 2387 (7424G)  #S 490 (23031C) 859 (24138A)
+        "snps_with_base": ["7424G", "23031C", "24138A"],
+        "cluster_data": [],
         "nextstrain_build": True,
         "graphing": True,
         "type": "variant",
@@ -839,8 +850,9 @@ clusters = {
 
     # B.1.621 - Mu
     "21H": {
-        "snps": [22599, 4878, 17491], #S 346 (22599A)  ORF1a: 1538 (4878T) nuc: 17491T
-        "cluster_data": [],  
+        "snps": [22599, 4878, 17491],  # S 346 (22599A)  ORF1a: 1538 (4878T) nuc: 17491T
+        "snps_with_base": ["22599A", "4878T", "17491T"],
+        "cluster_data": [],
         "nextstrain_build": True,
         "graphing": True,
         "type": "variant",
@@ -897,8 +909,9 @@ clusters = {
 
     # B.1.1.519 - builds turned of 11 Oct, graphing continues
     "20BS732": {
-        "snps": [10029, 23756, 21306], #ORF1a  3255 (10029T)   S: 732 (23756G) nuc 21306T
-        "cluster_data": [],  
+        "snps": [10029, 23756, 21306],  # ORF1a  3255 (10029T)   S: 732 (23756G) nuc 21306T
+        "snps_with_base": ["10029T", "23756G", "21306T"],
+        "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
@@ -941,10 +954,11 @@ clusters = {
         },
     },
 
-    #B.1.620 20A/S:126A - builds turned off 11 Oct, graphing continues
+    # B.1.620 20A/S:126A - builds turned off 11 Oct, graphing continues
     "20AS126": {
-        "snps": [21939, 1473, 6236], #S: 126 (21939C)  #ORF1a: 403 (1473T), 1991 (6236A)
-        "cluster_data": [],  
+        "snps": [21939, 1473, 6236],  # S: 126 (21939C)  #ORF1a: 403 (1473T), 1991 (6236A)
+        "snps_with_base": ["21939C", "1473T", "6236A"],
+        "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
@@ -1000,9 +1014,9 @@ clusters = {
         },
     },
 
-
     "EU1": {
         "snps": [22227, 28932, 29645],
+        "snps_with_base": ["22227T", "28932T", "29645T"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -1036,7 +1050,8 @@ clusters = {
     # 'CA variant'
     "Epsilon": {
         "snps": [21600, 22018, 22917],
-        "cluster_data": [],  #'CA' variant
+        "snps_with_base": ["21600T", "22018T", "22917G"],
+        "cluster_data": [],  # 'CA' variant
         "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
@@ -1076,6 +1091,7 @@ clusters = {
 
     "S439": {
         "snps": [7767, 22879],
+        "snps_with_base": ["7767C", "22879A"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -1100,9 +1116,10 @@ clusters = {
         },
     },
     "S677HRobin1": {
-        "snps": [23593, 29402, 8083], #T, T, A
+        "snps": [23593, 29402, 8083],  # T, T, A
+        "snps_with_base": ["23593T", "29402T", "8083A"],
         "cluster_data": [],
-        "nextstrain_build": False, #as of 25 Feb 22 - no new seqs since Sept
+        "nextstrain_build": False,  # as of 25 Feb 22 - no new seqs since Sept
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -1139,8 +1156,9 @@ clusters = {
     },
     "S677PPelican": {
         "snps": [23592, 11451, 21811],
+        "snps_with_base": ["23592C", "11451G", "21811A"],
         "cluster_data": [],
-        "nextstrain_build": False, # as of 25 Feb 22 - no new seqs since Sept
+        "nextstrain_build": False,  # as of 25 Feb 22 - no new seqs since Sept
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -1176,7 +1194,8 @@ clusters = {
     },
 
     "EU2": {
-        "snps": [22992, 4543, 16889], #A, T, G - the last one added to stop showing up in Omicron
+        "snps": [22992, 4543, 16889],  # A, T, G - the last one added to stop showing up in Omicron
+        "snps_with_base": ["22992A", "4543T", "16889G"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -1185,7 +1204,7 @@ clusters = {
         "country_info": [],
         "col": "#A3D8F3",
         "display_name": "20A.EU2",
-        #"alt_display_name": "S:477N",
+        # "alt_display_name": "S:477N",
         "build_name": "20A.EU2",
         "pango_lineages": [
             {"name": "B.1.160", "url": None}
@@ -1212,6 +1231,7 @@ clusters = {
 
     "S98": {
         "snps": [21855, 25505],
+        "snps_with_base": ["21855T", "25505G"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -1224,7 +1244,8 @@ clusters = {
         "pango_lineages": [
             {"name": "B.1.221", "url": None}
         ],
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.S98F?c=gt-S_98&f_region=Europe",  # color, europe Filter
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.S98F?c=gt-S_98&f_region=Europe",
+    # color, europe Filter
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "S", "pos": 98, "right": "F"},
@@ -1238,6 +1259,7 @@ clusters = {
     },
     "S80": {
         "snps": [21800, 3099],
+        "snps_with_base": ["23438T", "772C"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -1278,6 +1300,7 @@ clusters = {
     },
     "S626": {
         "snps": [23438, 772],
+        "snps_with_base": ["24926T", "9120T"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -1309,7 +1332,8 @@ clusters = {
         "pango_lineages": [
             {"name": "B.1.1.302", "url": None}
         ],
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.V1122L?c=gt-S_1122&f_region=Europe",  # color, europe Filter
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.V1122L?c=gt-S_1122&f_region=Europe",
+    # color, europe Filter
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "V", "pos": 1122, "right": "L"},
@@ -1357,7 +1381,8 @@ clusters = {
         "col": "#ffcc00",
         "display_name": "S:H69-",
         "build_name": "S.H69-",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.H69-?c=gt-S_69,501,453"  # color, no europe filter
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.H69-?c=gt-S_69,501,453"
+    # color, no europe filter
         # no mutations because has appeared many times independently
     },
     # here's 677 to generate for the nextstrain build
@@ -1387,7 +1412,8 @@ clusters = {
         "col": "#ff1a1a",
         "display_name": "S:Y453F",
         "build_name": "S.Y453F",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y453F?c=gt-S_453&f_region=Europe"  # color, europe filter
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y453F?c=gt-S_453&f_region=Europe"
+    # color, europe filter
         # no mutations because has appeared many times independently
     },
     "S477mut": {
@@ -1415,7 +1441,8 @@ clusters = {
         "col": "#ffffff",
         "display_name": "DanishCluster",
         "build_name": "DanishCluster",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/DanishCluster?f_country=Denmark"  # filter to denmark
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/DanishCluster?f_country=Denmark"
+    # filter to denmark
         # no mutations because is not displayed
     },
     "S18": {
@@ -1605,20 +1632,21 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Mockingbird?c=gt-S_677&f_country=USA",
     },
 
-#    "Delta.N.412R": { # 613 cluster expanding in canada? #stopped 11 Oct 21
-#        "snps": [2401,23401,26763,29507], #ORF1a: 712Q (2401A), S: 613H (23401T), M: 81S (26763T), N: 412R (29507C)
-#        "cluster_data": [],
-#        "nextstrain_build": True,
-#        "graphing": False,
-#        "important": False,
-#        "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+N:412R",
-#        "type": "do_not_display",
-#        "build_name": "Delta.N.412R",
-#        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.N.412R?c=gt-S_613"
-#    },
+    #    "Delta.N.412R": { # 613 cluster expanding in canada? #stopped 11 Oct 21
+    #        "snps": [2401,23401,26763,29507], #ORF1a: 712Q (2401A), S: 613H (23401T), M: 81S (26763T), N: 412R (29507C)
+    #        "cluster_data": [],
+    #        "nextstrain_build": True,
+    #        "graphing": False,
+    #        "important": False,
+    #        "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+N:412R",
+    #        "type": "do_not_display",
+    #        "build_name": "Delta.N.412R",
+    #        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.N.412R?c=gt-S_613"
+    #    },
 
-    "Delta.299I": { # "AY.33" - has Spike T29A, T250I, T299I and Q613H
-        "snps": [4181,21647,22311,22458,23401], #ORF1a: 1306S (4181T), S: 29A (21647G), 250I (22311T), 299I (22458T), 613H (23401T)
+    "Delta.299I": {  # "AY.33" - has Spike T29A, T250I, T299I and Q613H
+        "snps": [4181, 21647, 22311, 22458, 23401],
+    # ORF1a: 1306S (4181T), S: 29A (21647G), 250I (22311T), 299I (22458T), 613H (23401T)
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
@@ -1629,8 +1657,8 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.299I?c=gt-S_299"
     },
 
-    "Delta.250I": { # cornelius' larger cluster - key one has Spike T29A, T250I, T299I and then Q613H
-        "snps": [4181,21647,22311], #ORF1a: 1306S (4181T), S: 29A (21647G), 250I (22311T) 
+    "Delta.250I": {  # cornelius' larger cluster - key one has Spike T29A, T250I, T299I and then Q613H
+        "snps": [4181, 21647, 22311],  # ORF1a: 1306S (4181T), S: 29A (21647G), 250I (22311T)
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
@@ -1641,9 +1669,9 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.250I?c=gt-S_250"
     },
 
-    #AY.4.2 - up to 10% in UK - cornelius
-    "Delta.145H": { # OF1a:2529v + S:222V + S:145H (in some)
-        "snps": [22227, 17040, 7851], # 22227T (S:222V), 17040C (syn), 7851T (ORF1a:2529V)
+    # AY.4.2 - up to 10% in UK - cornelius
+    "Delta.145H": {  # OF1a:2529v + S:222V + S:145H (in some)
+        "snps": [22227, 17040, 7851],  # 22227T (S:222V), 17040C (syn), 7851T (ORF1a:2529V)
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
@@ -1654,9 +1682,9 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.145H?c=gt-S_145,222"
     },
 
-    #AY.34 - possible rise Italy? - cornelius
-    "Delta.ORF1a3059F": { # 
-        "snps": [23593, 9441, 22498], # S:677H (23593C), ORF1a:3059F (9441T) nuc: C22498T , ####26109A, 26681T, 27014T
+    # AY.34 - possible rise Italy? - cornelius
+    "Delta.ORF1a3059F": {  #
+        "snps": [23593, 9441, 22498],  # S:677H (23593C), ORF1a:3059F (9441T) nuc: C22498T , ####26109A, 26681T, 27014T
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
@@ -1667,9 +1695,9 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.ORF1a3059F?c=gt-ORF1a_3059"
     },
 
-    #additional mutation builds with no pages (yet?)
+    # additional mutation builds with no pages (yet?)
 
-    "S613": { #613H - 23401T
+    "S613": {  # 613H - 23401T
         "snps": [23401],
         "cluster_data": [],
         "nextstrain_build": True,
@@ -1682,7 +1710,7 @@ clusters = {
         "build_name": "S.Q613",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q613?c=gt-S_613",  # color
     },
-    "S_222": { #S.A222V - 22227T
+    "S_222": {  # S.A222V - 22227T
         "snps": [22227],
         "cluster_data": [],
         "nextstrain_build": True,
@@ -1695,7 +1723,7 @@ clusters = {
         "build_name": "S.A222",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.A222?c=gt-S_222",  # color
     },
-    "S145": { #S.Y145H - 21995C
+    "S145": {  # S.Y145H - 21995C
         "snps": [21995],
         "cluster_data": [],
         "nextstrain_build": True,
@@ -1708,7 +1736,7 @@ clusters = {
         "build_name": "S.Y145",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y145?c=gt-S_145",  # color
     },
-    "S572": { #S.T572I - 23277T
+    "S572": {  # S.T572I - 23277T
         "snps": [23277],
         "cluster_data": [],
         "nextstrain_build": True,
@@ -1722,68 +1750,64 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.T572?c=gt-S_572",  # color
     },
 
-
-
- #  "Orf1b813": { #S.T572I - 23277T
- #      "snps": [15904, 18904], #813H, 1813H
- #      "cluster_data": [],
- #      "nextstrain_build": True,
- #      "graphing": False,
- #      "type": "do_not_display",
- #      "important": False,
- #      "country_info": [],
- #      "col": "#ff8080",
- #      "display_name": "Orf1b:Q813H",
- #      "build_name": "Orf1b.Q813H",
- #      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Orf1b.Q813H?c=gt-ORF1b_813,1813",  # color
- #  },
-    
+    #  "Orf1b813": { #S.T572I - 23277T
+    #      "snps": [15904, 18904], #813H, 1813H
+    #      "cluster_data": [],
+    #      "nextstrain_build": True,
+    #      "graphing": False,
+    #      "type": "do_not_display",
+    #      "important": False,
+    #      "country_info": [],
+    #      "col": "#ff8080",
+    #      "display_name": "Orf1b:Q813H",
+    #      "build_name": "Orf1b.Q813H",
+    #      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Orf1b.Q813H?c=gt-ORF1b_813,1813",  # color
+    #  },
 
     # build for Delta and Kappa -- retired 11/11/21
-#    "21AS154S478":{
-#        "snps": [29402, 22917, 14408], # N377, S452. ORF1b 314
-#        "cluster_data": [],  
-#        "nextstrain_build": True,
-#        "type": "do_not_display",
-#        "graphing": False,
-#        "important": False,
-#        "country_info": [],
-#        "col": "#009900",
-#        "display_name": "21A/21B",
-#        "build_name": "21A.21B",
-#        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.21B",
-#    },
+    #    "21AS154S478":{
+    #        "snps": [29402, 22917, 14408], # N377, S452. ORF1b 314
+    #        "cluster_data": [],
+    #        "nextstrain_build": True,
+    #        "type": "do_not_display",
+    #        "graphing": False,
+    #        "important": False,
+    #        "country_info": [],
+    #        "col": "#009900",
+    #        "display_name": "21A/21B",
+    #        "build_name": "21A.21B",
+    #        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.21B",
+    #    },
 
-    #B.1.1.318 - prominent in Greece
+    # B.1.1.318 - prominent in Greece
     # Turned off 11 Oct 2021 as few recent sequences
-#    "S796": {'snps': [23604,23948,9072], #A/C/T
-#    "cluster_data": [], 
-#    "build_name": "20B.S.796H", 
-#    "display_name": "20B/S:796H",
-#    "nextstrain_build": True, 
-#    "graphing": False, 
-#    "important": False,
-#    "type": "do_not_display",
-#    "country_info": [],
-#    "col": "#b3d9ff",
-#    "nextstrain_url": ""},
+    #    "S796": {'snps': [23604,23948,9072], #A/C/T
+    #    "cluster_data": [],
+    #    "build_name": "20B.S.796H",
+    #    "display_name": "20B/S:796H",
+    #    "nextstrain_build": True,
+    #    "graphing": False,
+    #    "important": False,
+    #    "type": "do_not_display",
+    #    "country_info": [],
+    #    "col": "#b3d9ff",
+    #    "nextstrain_url": ""},
 
-    #B.1.619 - recent expansion in S Korea
+    # B.1.619 - recent expansion in S Korea
     # Turned off 11 Oct 2021 as few recent sequences
-#    "S210": {'snps': [8311,9319], #T/T
-#    "cluster_data": [], 
-#    "build_name": "20A.S.210T", 
-#    "display_name": "20A/S:210T",
-#    "nextstrain_build": False, 
-#    "graphing": False, 
-#    "important": False,
-#    "type": "do_not_display",
-#    "country_info": [],
-#    "col": "#b3d9ff",
-#    "nextstrain_url": ""},
+    #    "S210": {'snps': [8311,9319], #T/T
+    #    "cluster_data": [],
+    #    "build_name": "20A.S.210T",
+    #    "display_name": "20A/S:210T",
+    #    "nextstrain_build": False,
+    #    "graphing": False,
+    #    "important": False,
+    #    "type": "do_not_display",
+    #    "country_info": [],
+    #    "col": "#b3d9ff",
+    #    "nextstrain_url": ""},
 
-
-    #"21H.417": { #21H + 417
+    # "21H.417": { #21H + 417
     #    "snps": [22599, 4878, 17491, 22813], #S 346 (22599A)  ORF1a: 1538 (4878T) nuc: 17491T, S:417
     #    "nextstrain_build": True,
     #    "graphing": False,
@@ -1793,24 +1817,24 @@ clusters = {
     #    "type": "do_not_display",
     #    "build_name": "21H.417N",
     #    "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21H.417N?c=gt-S_417"
-    #}
+    # }
 
-    #uk delta?
-    #"Ukdelt": {"snps": [22995,23604,22917,7851], # S:478, 681, 452, ??
-    #"cluster_data": [], "build_name": "ukdelt", "display_name": "ukdelt",
-    #"nextstrain_build": True, "graphing": False, "nextstrain_url": ""}
+    # uk delta?
+    # "Ukdelt": {"snps": [22995,23604,22917,7851], # S:478, 681, 452, ??
+    # "cluster_data": [], "build_name": "ukdelt", "display_name": "ukdelt",
+    # "nextstrain_build": True, "graphing": False, "nextstrain_url": ""}
 
     # B.1.1.519  23756, 22995, 12789
-    #"S732": {'snps': [23755, 22994, 12788], 'cluster_data': [], #S732, S478, ORF1a 4175
-    #"nextstrain_build": True,
-    #"graphing": False,
-    #"usa_graph": False,
-    #"important": False,
-    #"country_info": [], 'col': "#b3d9ff", "display_name": "S:732A",
-    #"type": "do_not_display",
-    #"build_name": "S.Q675",
-    #"nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.732A?c=gt-S_732"
-    #}
+    # "S732": {'snps': [23755, 22994, 12788], 'cluster_data': [], #S732, S478, ORF1a 4175
+    # "nextstrain_build": True,
+    # "graphing": False,
+    # "usa_graph": False,
+    # "important": False,
+    # "country_info": [], 'col': "#b3d9ff", "display_name": "S:732A",
+    # "type": "do_not_display",
+    # "build_name": "S.Q675",
+    # "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.732A?c=gt-S_732"
+    # }
 
     # trying out 675
     # "S675": {'snps': [23586], 'cluster_data': [],
@@ -1879,7 +1903,7 @@ clusters = {
     # }
     # NY stuff
     # "ORF811": {  'snps': [9866, 25516, 27924], 'cluster_data': [],
-    #'build_name': "ORF8.T11I"
+    # 'build_name': "ORF8.T11I"
     # }
     #            "S222": {'snps': [22226, 28931, 29644], 'cluster_data': [],
     #            "country_info":[], 'col': "#8a8a8a", "display_name": "20A.EU1",
