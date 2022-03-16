@@ -58,7 +58,7 @@ export function CasesPage() {
         <Col>
           <Editable githubUrl="blob/master/scripts" text={'View data generation scripts'}>
             <WrapperFlex>
-              <SidebarFlex></SidebarFlex>
+              <SidebarFlex />
 
               <MainFlex>
                 <Row noGutters>

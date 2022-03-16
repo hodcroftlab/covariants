@@ -25,11 +25,11 @@ export interface CasesPlotProps {
 export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotProps) {
   const chartRef = useRef(null)
 
-  const data = distribution.map(({ week, total_cases, estimated_cases }) => {
+  const data = distribution.map(({ week, stand_total_cases, stand_estimated_cases }) => {
     // Zeros need to be filtered out, because log-scale plots won't display anything
     // if there's at least a single zero
     // See: https://github.com/recharts/recharts/issues/2012
-    const casesNonZero = mapValues(estimated_cases, (cases) => {
+    const casesNonZero = mapValues(stand_estimated_cases, (cases) => {
       if (cases === undefined || cases === 0) {
         return undefined
       }
@@ -37,7 +37,7 @@ export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotPro
       return cases
     })
 
-    let total: number | undefined = total_cases
+    let total: number | undefined = stand_total_cases
     if (total === 0) {
       total = undefined
     }
