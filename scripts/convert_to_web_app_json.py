@@ -23,6 +23,11 @@ cluster_tables_path = "cluster_tables"
 output_path = "web/data"
 ack_output_path = "web/public/acknowledgements"
 
+def remove_zeros_array_dict(ar):
+    """
+    Removes values of zeros from array of dicts
+    """
+    return [{k:v for k,v in d.items() if v!=0 or (v==0 and k=="total_sequences")} for d in ar]
 
 def soa_to_aos(soa):
     """
@@ -69,7 +74,7 @@ def convert_per_country_data(json_input):
     cluster_names = []
     distributions = []
     for (country, country_data) in countries.items():
-        country_data_aos = soa_to_aos(country_data)
+        country_data_aos = remove_zeros_array_dict(soa_to_aos(country_data))
         country_data_aos_wrapped, cluster_names_new = wrap_cluster_data(
             country_data_aos
         )
