@@ -83,10 +83,10 @@ export interface ClusterButtonProps {
 }
 
 export function ClusterButton({ cluster, isCurrent }: ClusterButtonProps) {
-  const { display_name, col } = cluster
+  const { display_name, col, build_name } = cluster
 
   return (
-    <ClusterButtonComponent href={`/variants/${cluster.build_name}`} $isCurrent={isCurrent} $color={col}>
+    <ClusterButtonComponent href={`/variants/${build_name}`} $isCurrent={isCurrent} $color={col}>
       <ClusterTitle $isCurrent={isCurrent}>{display_name}</ClusterTitle>
     </ClusterButtonComponent>
   )

@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 declare module '*.all-contributorsrc' {
   export interface ContributorData {
     login: string

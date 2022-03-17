@@ -1,21 +1,18 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 
-import Select, { ValueType, Props as SelectProps } from 'react-select'
+import Select from 'react-select'
+import type { ActionMeta, OnChangeValue } from 'react-select/dist/declarations/src/types'
+import type { StateManagerProps } from 'react-select/dist/declarations/src/useStateManager'
 
 import { DropdownOption } from 'src/components/Common/DropdownOption'
 
-export interface DropdownProps extends SelectProps {
+export type IsMultiValue = false
+
+export interface DropdownProps extends StateManagerProps<DropdownOption<string>, IsMultiValue> {
   identifier: string
-  className?: string
-  options: DropdownOption<string>[]
   defaultOption?: DropdownOption<string>
-  value?: DropdownOption<string>
-
   onValueChange?(value: string): void
-
   onOptionChange?(option: DropdownOption<string>): void
-
-  onBlur?<T>(e: React.FocusEvent<T>): void
 }
 
 export function Dropdown({
@@ -26,9 +23,18 @@ export function Dropdown({
   value,
   onOptionChange,
   onValueChange,
-  onBlur,
   ...restProps
 }: DropdownProps) {
+  const handleChange = useCallback(
+    (option: OnChangeValue<DropdownOption<string>, IsMultiValue>, _actionMeta: ActionMeta<DropdownOption<string>>) => {
+      if (option) {
+        onValueChange?.(option.value)
+        onOptionChange?.(option)
+      }
+    },
+    [onOptionChange, onValueChange],
+  )
+
   return (
     <Select
       className={className}
@@ -38,13 +44,7 @@ export function Dropdown({
       defaultValue={defaultOption}
       value={value}
       isMulti={false}
-      onChange={(option: ValueType<DropdownOption<string>, false>) => {
-        if (option) {
-          onValueChange?.(option.value)
-          onOptionChange?.(option)
-        }
-      }}
-      onBlur={onBlur}
+      onChange={handleChange}
       {...restProps}
     />
   )

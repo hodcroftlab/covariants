@@ -9,7 +9,7 @@ import type { ClusterDatum } from 'src/io/getClusters'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import GifPlayer from 'src/components/Common/GifPlayer'
 
-import { ReactComponent as GisaidLogo } from 'src/assets/images/GISAID_logo.svg'
+import GisaidLogo from 'src/assets/images/GISAID_logo.svg'
 
 const ProteinCardTitleIcon = styled(SiMoleculer)`
   margin: auto 5px;

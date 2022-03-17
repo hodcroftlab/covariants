@@ -12,14 +12,14 @@ export interface PageMetadata {
 export const SEO_DEFAULT: PageMetadata = {
   name: PROJECT_NAME,
   description: PROJECT_DESCRIPTION,
-  image: defaultImage,
+  image: defaultImage.src,
 }
 
 export const SEO_OVERRIDES: Record<string, PageMetadata> = {
   '/faq': {
     name: `${PROJECT_NAME}: FAQ`,
     description: `${PROJECT_NAME}: Frequently Asked Questions`,
-    image: faqImage,
+    image: faqImage.src,
   },
   '/variants': {
     name: `${PROJECT_NAME}: Variants`,

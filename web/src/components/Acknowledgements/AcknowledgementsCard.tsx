@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useCallback, useMemo, useState } from 'react'
-import Loader from 'react-loader-spinner'
 
+import { Oval as OvalLoader } from 'react-loader-spinner'
 import { useQuery } from 'react-query'
 import PaginationComponent from 'react-reactstrap-pagination'
 import { CardBody } from 'reactstrap'
@@ -86,7 +86,7 @@ export function AcknowledgementsCardBody({ cluster, numPages }: Acknowledgements
         {(isLoading || isFetching) && (
           <div className="d-flex">
             <div className="mx-auto">
-              <Loader type="Oval" color="#777" height={100} width={50} timeout={3000} />
+              <OvalLoader color="#777" height={100} width={50} />
             </div>
           </div>
         )}
