@@ -7,8 +7,10 @@ export interface ColProps extends Omit<ReactstrapColProps, 'ref'> {
   readonly xxl?: number
 }
 
+const WIDTHS = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl']
+
 function ColCustom({ ...restProps }: ColProps) {
-  return <Col widths={['xs', 'sm', 'md', 'lg', 'xl', 'xxl']} {...restProps} />
+  return <Col widths={WIDTHS} {...restProps} />
 }
 
 export { ColCustom }

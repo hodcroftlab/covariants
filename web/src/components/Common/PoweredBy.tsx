@@ -5,8 +5,8 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 import styled from 'styled-components'
 
 import { PROJECT_NAME, TEAM_NAME } from 'src/constants'
-import { ReactComponent as VercelLogo } from 'src/assets/images/vercel_logo.svg'
-import { ReactComponent as NextJsLogo } from 'src/assets/images/nextjs_logo.svg'
+import VercelLogo from 'src/assets/images/vercel_logo.svg'
+import NextJsLogo from 'src/assets/images/nextjs_logo.svg'
 import { NextstrainLogo } from './NextstrainLogo'
 
 const Flex = styled.section`

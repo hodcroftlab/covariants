@@ -3,7 +3,7 @@ import { ParsedUrlQuery } from 'querystring'
 /** Borrowed from Next.js */
 export function getLocationOrigin() {
   const { protocol, hostname, port } = window.location
-  return `${protocol}//${hostname}${port ? `:${port}` : ''}`
+  return `${protocol}//${hostname}${port ? `:${port}` : ''}` // eslint-disable-line sonarjs/no-nested-template-literals
 }
 
 /** Borrowed from Next.js */

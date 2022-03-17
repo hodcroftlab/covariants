@@ -160,12 +160,10 @@ export function MutationBadge({ prefix, mutation, colors, tooltip }: MutationBad
           >{`${parent}${parentDelimiterStr}`}</ParentText>
         )}
         {gene && (
-          <>
-            <GeneText $color={geneColor}>
-              {gene}
-              <span>{':'}</span>
-            </GeneText>
-          </>
+          <GeneText $color={geneColor}>
+            {gene}
+            <span>{':'}</span>
+          </GeneText>
         )}
         {left && <ColoredText $color={leftColor}>{left}</ColoredText>}
         {pos && <PositionText>{pos}</PositionText>}

@@ -6,7 +6,7 @@ import { useQuery } from 'react-query'
 import { AcknowledgementsError } from 'src/components/Acknowledgements/AcknowledgementsError'
 import styled from 'styled-components'
 import { Popover as PopoverBase, PopoverBody as PopoverBodyBase, PopoverHeader as PopoverHeaderBase } from 'reactstrap'
-import Loader from 'react-loader-spinner'
+import { ThreeDots as ThreeDotsLoader } from 'react-loader-spinner'
 
 export const Popover = styled(PopoverBase)`
   .popover {
@@ -121,7 +121,7 @@ export function AcknowledgementEpiIslPopup({ target, isOpen, epiIsl }: Acknowled
         {(isLoading || isFetching) && (
           <div className="d-flex">
             <div className="mx-auto">
-              <Loader type="ThreeDots" color="#777" height={100} width={50} timeout={3000} />
+              <ThreeDotsLoader color="#777" height={100} width={50} />
             </div>
           </div>
         )}

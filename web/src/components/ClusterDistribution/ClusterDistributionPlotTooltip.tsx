@@ -65,7 +65,7 @@ export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotToo
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-argument
   const week = formatDateWeekly(data?.week)
 
   let payloadSorted = sortBy(payload, criterion === 'country' ? 'name' : 'value')
@@ -91,7 +91,6 @@ export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotToo
           </tr>
         </thead>
         <TooltipTableBody>
-          {/* @ts-ignore */}
           {payloadUnique.map(({ name, value, payload }) => {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore

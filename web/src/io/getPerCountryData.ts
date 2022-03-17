@@ -113,7 +113,7 @@ export function filterClusters(clusters: Cluster[], withCountriesFiltered: Count
   const withClustersFiltered = withCountriesFiltered.map(({ country, distribution }) => {
     const distributionFiltered = distribution.map((dist) => {
       const countsFiltered = pickBy(dist.cluster_counts, (_0, cluster) => {
-        return enabledClusters.some((candidate) => candidate === cluster)
+        return enabledClusters.includes(cluster)
       })
 
       return { ...dist, cluster_counts: countsFiltered }

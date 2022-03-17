@@ -58,9 +58,7 @@ describe('parseAminoacidMutation', () => {
       right: undefined,
     })
   })
-})
 
-describe('parseAminoacidMutation ', () => {
   it('should reject one letter', () => {
     expect(parseAminoacidMutation('V')).toBeUndefined()
   })

@@ -2,7 +2,7 @@ import React from 'react'
 
 import styled from 'styled-components'
 
-import { ReactComponent as NextstrainIconBase } from 'src/assets/images/nextstrain_logo.svg'
+import NextstrainIconBase from 'src/assets/images/nextstrain_logo.svg'
 
 // Borrowed with modifications from Nextstrain.org
 // https://github.com/nextstrain/nextstrain.org/blob/master/static-site/src/components/splash/title.jsx
@@ -36,16 +36,18 @@ const LetterSpan = styled.span<{ pos: number }>`
   color: ${(props) => TITLE_COLORS[props.pos]};
 `
 
-export const NextstrainLogo = () => (
-  <Wrapper>
-    <NextstrainIcon />
-    <span>
-      {'Nextstrain'.split('').map((letter, i) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <LetterSpan key={`${i}_${letter}`} pos={i}>
-          {letter}
-        </LetterSpan>
-      ))}
-    </span>
-  </Wrapper>
-)
+export function NextstrainLogo() {
+  return (
+    <Wrapper>
+      <NextstrainIcon />
+      <span>
+        {'Nextstrain'.split('').map((letter, i) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <LetterSpan key={`${i}_${letter}`} pos={i}>
+            {letter}
+          </LetterSpan>
+        ))}
+      </span>
+    </Wrapper>
+  )
+}
