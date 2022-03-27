@@ -23,13 +23,8 @@ export interface PerCountryCasesDataRaw {
 
 export interface PerCountryCasesDistributionDatum {
   week: string
-  total_cases: number
-  total_sequences: number
-  percent_total_cases: number
-  estimated_cases: {
-    [key: string]: number | undefined
-  }
-  percent_counts: {
+  stand_total_cases: number
+  stand_estimated_cases: {
     [key: string]: number | undefined
   }
 }
@@ -129,7 +124,7 @@ export function filterClusters(clusters: Cluster[], withCountriesFiltered: PerCo
 
   const withClustersFiltered = withCountriesFiltered.map(({ country, distribution }) => {
     const distributionFiltered = distribution.map((dist) => {
-      const countsFiltered = pickBy(dist.estimated_cases, (_0, cluster) => {
+      const countsFiltered = pickBy(dist.stand_estimated_cases, (_0, cluster) => {
         return enabledClusters.some((candidate) => candidate === cluster)
       })
 

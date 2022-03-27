@@ -25,7 +25,7 @@ export interface ClusterDistribution {
 }
 
 export interface PerClusterDataRaw {
-  country_names: string[] // eslint-disable-line camelcase
+  country_names: string[]
   distributions: ClusterDistribution[]
 }
 
@@ -92,7 +92,7 @@ export function filterCountries(countries: Country[], withClustersFiltered: Clus
 export function filterClusters(clusters: Cluster[], clusterDistributions: ClusterDistribution[]) {
   const enabledClusters = clusters.filter(({ enabled }) => enabled).map(({ cluster }) => cluster)
   const withClustersFiltered = clusterDistributions.filter(({ cluster }) => {
-    return enabledClusters.some((candidate) => candidate === cluster)
+    return enabledClusters.includes(cluster)
   })
   return { enabledClusters, withClustersFiltered }
 }

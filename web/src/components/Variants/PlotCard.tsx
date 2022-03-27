@@ -47,9 +47,10 @@ export function PlotCardTitle({ cluster }: PlotCardProps) {
 
 export function PlotCard({ cluster }: PlotCardProps) {
   const title = useMemo(() => <PlotCardTitle cluster={cluster} />, [cluster])
-  const clusterDistribution = useMemo(() => getClusterDistribution(cluster.display_name).distribution, [
-    cluster.display_name,
-  ])
+  const clusterDistribution = useMemo(
+    () => getClusterDistribution(cluster.display_name).distribution,
+    [cluster.display_name],
+  )
   const countryNames = useMemo(() => getCountryNames(), [])
 
   return (

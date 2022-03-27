@@ -41,11 +41,9 @@ export function LinkExternal({
   const Icon: React.ReactNode = icon === undefined ? <GoLinkExternal /> : icon
 
   return (
-    <>
-      <A target="_blank" rel="noopener noreferrer" href={href} $color={$color} {...restProps}>
-        <ContentWrapper>{children}</ContentWrapper>{' '}
-        {Icon && <LinkExternalIconWrapper $color={$iconColor}>{Icon}</LinkExternalIconWrapper>}
-      </A>
-    </>
+    <A target="_blank" rel="noopener noreferrer" href={href} $color={$color} {...restProps}>
+      <ContentWrapper>{children}</ContentWrapper>{' '}
+      {Icon && <LinkExternalIconWrapper $color={$iconColor}>{Icon}</LinkExternalIconWrapper>}
+    </A>
   )
 }

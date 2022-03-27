@@ -9,8 +9,8 @@ import ReactResizeDetector from 'react-resize-detector'
 import type { PerCountryCasesDistributionDatum } from 'src/io/getPerCountryCasesData'
 import { theme } from 'src/theme'
 import { ticks, timeDomain } from 'src/io/getParams'
-import { CLUSTER_NAME_OTHERS, getClusterColor } from 'src/io/getClusters'
-import { formatDateHumanely, formatProportion } from 'src/helpers/format'
+import { getClusterColor } from 'src/io/getClusters'
+import { formatDateHumanely } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
 import { ChartContainerOuter, ChartContainerInner } from 'src/components/Common/PlotLayout'
@@ -24,13 +24,9 @@ export interface CasesPlotProps {
 export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotProps) {
   const chartRef = useRef(null)
 
-  const data = distribution.map(({ week, total_cases, estimated_cases }) => {
-    const totalCasesWithKnownVariant = Object.values(estimated_cases) // prettier-ignore
-      .reduce<number>((result, count = 0) => result + (count ?? 0), 0)
-
-    const others = total_cases - totalCasesWithKnownVariant
+  const data = distribution.map(({ week, stand_total_cases, stand_estimated_cases }) => {
     const weekSec = DateTime.fromFormat(week, 'yyyy-MM-dd').toSeconds()
-    return { week: weekSec, ...estimated_cases, others, total: total_cases }
+    return { week: weekSec, ...stand_estimated_cases, total: stand_total_cases }
   })
 
   return (
@@ -41,7 +37,7 @@ export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotPro
             const adjustedTicks = adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin).slice(1) // slice ensures first tick is not outside domain
             return (
               <ResponsiveContainer aspect={theme.plot.aspectRatio} debounce={0}>
-                <AreaChart margin={theme.plot.margin} data={data} stackOffset="expand" ref={chartRef}>
+                <AreaChart data={data} ref={chartRef}>
                   <XAxis
                     dataKey="week"
                     type="number"
@@ -54,8 +50,6 @@ export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotPro
                   />
                   <YAxis
                     type="number"
-                    tickFormatter={formatProportion}
-                    domain={[0, 1]}
                     tick={theme.plot.tickStyle}
                     tickMargin={theme.plot.tickMargin?.y}
                     allowDataOverflow
@@ -73,16 +67,6 @@ export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotPro
                       isAnimationActive={false}
                     />
                   ))}
-
-                  <Area
-                    type="monotone"
-                    dataKey={CLUSTER_NAME_OTHERS}
-                    stackId="1"
-                    stroke="none"
-                    fill={theme.clusters.color.others}
-                    fillOpacity={1}
-                    isAnimationActive={false}
-                  />
 
                   <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
 

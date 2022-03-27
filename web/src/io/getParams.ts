@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { DateTime, Interval } from 'luxon'
 import paramsJson from 'src/../data/params.json'
 import { dateStringToSeconds } from 'src/helpers/format'

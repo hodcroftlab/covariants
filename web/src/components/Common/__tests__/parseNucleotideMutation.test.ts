@@ -18,7 +18,7 @@ describe('parseNucleotideMutation', () => {
   })
 
   it('should parse different left, position, right', () => {
-    expect(parseNucleotideMutation('T43516N')).toStrictEqual({ left: 'T', pos: 43516, right: 'N' })
+    expect(parseNucleotideMutation('T43516N')).toStrictEqual({ left: 'T', pos: 43_516, right: 'N' })
   })
 
   it('should parse left "-", position, right', () => {
@@ -32,9 +32,7 @@ describe('parseNucleotideMutation', () => {
   it('should parse left "-", position and right "-"', () => {
     expect(parseNucleotideMutation('-123-')).toStrictEqual({ left: '-', pos: 123, right: '-' })
   })
-})
 
-describe('parseNucleotideMutation ', () => {
   it('should reject empty', () => {
     expect(parseNucleotideMutation('')).toBeUndefined()
   })

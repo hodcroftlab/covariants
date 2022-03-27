@@ -6,8 +6,7 @@ module.exports = {
     'postcss-preset-env': {
       stage: 2,
       features: {
-        'custom-properties': false,
-        'postcss-custom-properties': { preserve: false },
+        'custom-properties': { preserve: false },
       },
       autoprefixer: {
         remove: false,

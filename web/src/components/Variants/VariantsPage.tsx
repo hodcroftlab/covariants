@@ -16,7 +16,7 @@ import { NarrowPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 import { DefiningMutations, hasDefiningMutations } from 'src/components/Variants/DefiningMutations'
 import { VariantTitle } from 'src/components/Variants/VariantTitle'
 
-import { ReactComponent as NextstrainIconBase } from 'src/assets/images/nextstrain_logo.svg'
+import NextstrainIconBase from 'src/assets/images/nextstrain_logo.svg'
 
 import { PlotCard } from './PlotCard'
 import { ProteinCard } from './ProteinCard'
@@ -91,6 +91,8 @@ export function VariantsPage({ clusterName: clusterNameUnsafe }: VariantsPagePro
   )
 }
 
+const NEXTSTRAIN_ICON = <NextstrainIcon />
+
 export function VariantsPageContent({ currentCluster }: { currentCluster: ClusterDatum }) {
   const ClusterContent = getClusterContent(currentCluster.build_name)
   const showDefiningMutations = useMemo(() => hasDefiningMutations(currentCluster), [currentCluster])
@@ -102,11 +104,7 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
           <Row noGutters className="mb-3">
             <Col className="d-flex w-100">
               {currentCluster.nextstrain_url ? (
-                <LinkExternal
-                  href={currentCluster.nextstrain_url}
-                  icon={<NextstrainIcon />}
-                  color={theme.link.dim.color}
-                >
+                <LinkExternal href={currentCluster.nextstrain_url} icon={NEXTSTRAIN_ICON} color={theme.link.dim.color}>
                   {`Dedicated ${currentCluster.display_name} Nextstrain build`}
                 </LinkExternal>
               ) : (
