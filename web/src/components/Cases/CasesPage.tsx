@@ -42,7 +42,7 @@ export function CasesPage() {
     <Layout wide>
       <Row noGutters>
         <Col>
-          <PageHeading>{'Give me a name'}</PageHeading>
+          <PageHeading>{'Estimated Cases by Variant'}</PageHeading>
         </Col>
       </Row>
 
