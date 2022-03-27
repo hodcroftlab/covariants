@@ -1328,7 +1328,7 @@ clusters = {
         "col": "#ff99ff",
         "display_name": "S:N501",
         "build_name": "S.N501",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.N501"  # no europe filter
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501"  # no europe filter
         # no mutations because has appeared many times independently
     },
     "S484": {
