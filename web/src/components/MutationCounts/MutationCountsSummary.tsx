@@ -98,7 +98,7 @@ export function MutationCountsSummary({ currentCluster }: MutationCountsSummaryP
         <Row noGutters>
           <Col>
             <h5 className="text-center mb-2">
-              <span className="d-inline">{'Mutation counts summary '}</span>
+              <span className="d-inline">{'Non-defining mutation counts '}</span>
               <span className="small">
                 <span>{'('}</span>
                 <span>
