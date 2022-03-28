@@ -2348,6 +2348,46 @@ bad_seqs = {
     "Italy/EMR_AUSLRomagna_C028-22-23/2021" : "2021-03-08", #omicron EPI_ISL_11191103
     "SouthAfrica/1056910/2021" : "2021-08-27", #omicron EPI_ISL_11160398
     "Kenya/K15832/2020" : "2020-06-23", # kappa  EPI_ISL_5797443
+    #28 Mar
+    "Senegal/51052/2020" : "2020-06-02",  #alpha EPI_ISL_8525730
+    "USA/TX-HMH-MCoV-35058/2020" : "2020-08-11",  #alpha EPI_ISL_2219553
+    "USA/TX-HMH-MCoV-41497/2020" : "2020-07-31",  #alpha EPI_ISL_2223062
+    "USA/TX-HMH-MCoV-41508/2020" : "2020-07-31",  #alpha EPI_ISL_2223073
+    "USA/TX-HMH-MCoV-41509/2020" : "2020-07-31",  #alpha EPI_ISL_2223074
+    "env/Austria/CeMM1441/2020" : "2020-09-20",  #delta EPI_ISL_11229007
+    "Brazil/CE-REDE-L2BC67LACE/2021" : "2021-03-16",  #omicron EPI_ISL_11298163
+    "Canada/ON-PHL-22-11852/2021" : "2021-01-19",  #omicron EPI_ISL_11249519
+    "India/KA-8366/2021" : "2021-10-12",  #omicron EPI_ISL_11427550
+    "Israel/SMC-7043736/2021" : "2021-02-03",  #omicron EPI_ISL_11296030
+    "Israel/SMC-7043915/2021" : "2021-02-23",  #omicron EPI_ISL_11296060
+    "Kenya/ILRI_COVM02985/2021" : "2021-08-18",  #omicron EPI_ISL_11290868
+    "Kenya/SS6711/2021" : "2021-01-07",  #omicron EPI_ISL_11220543
+    "Nigeria/GEL/09-21/0176/2021" : "2021-09-03",  #omicron EPI_ISL_11297515
+    "Nigeria/GEL/09-21/0513/2021" : "2021-09-07",  #omicron EPI_ISL_11297516
+    "Nigeria/GEL/09-21/0548/2021" : "2021-09-07",  #omicron EPI_ISL_11297517
+    "Nigeria/GEL/09-21/0668/2021" : "2021-09-09",  #omicron EPI_ISL_11297519
+    "Nigeria/GEL/09-21/0723/2021" : "2021-09-09",  #omicron EPI_ISL_11297520
+    "Nigeria/GEL/09-21/1095/2021" : "2021-09-14",  #omicron EPI_ISL_11297523
+    "Nigeria/GEL/09-21/1848/2021" : "2021-09-26",  #omicron EPI_ISL_11297524
+    "Nigeria/GEL/09-21/1975/2021" : "2021-09-28",  #omicron EPI_ISL_11297525
+    "Nigeria/GEL/10-21/0493/2021" : "2021-10-08",  #omicron EPI_ISL_11297527
+    "Nigeria/NM-22-90209/2021" : "2021-08-13",  #omicron EPI_ISL_11297766
+    "Nigeria/NM-22-96030/2021" : "2021-08-13",  #omicron EPI_ISL_11297794
+    "Nigeria/NM-22-98355/2021" : "2021-09-27",  #omicron EPI_ISL_11297841
+    "Scotland/CVR14236/2021" : "2021-02-20",  #omicron EPI_ISL_11221139
+    "Slovakia/KE_22_00000393/2020" : "2020-11-09",  #omicron EPI_ISL_11311397
+    "USA/AZ-ASU53871/2021" : "2021-07-24",  #omicron EPI_ISL_11247065
+    "USA/AZ-TG1276258/2021" : "2021-10-03",  #omicron EPI_ISL_11404687
+    "USA/AZ-TG1276263/2021" : "2021-10-03",  #omicron EPI_ISL_11404692
+    "USA/CA-Curative-GRND-705726637453/2021" : "2021-03-14",  #omicron EPI_ISL_11369877
+    "USA/CA-Curative-GRND-946926962441/2021" : "2021-03-14",  #omicron EPI_ISL_11369886
+    "USA/CT-DPH-1062318001/2020" : "2020-01-18",  #omicron EPI_ISL_11297999
+    "USA/DE-DHSS-B1175863/2021" : "2021-01-07",  #omicron EPI_ISL_11315889
+    "USA/NE-NPHL22-1251/2021" : "2021-01-04",  #omicron EPI_ISL_11403341
+    "USA/TX-HMH-MCoV-95778/2021" : "2021-03-10",  #omicron EPI_ISL_11236169
+    "France/HDF-IPP17161/2021" : "2021-03-07",  #omicron EPI_ISL_11248617
+    "Slovakia/BA_22_00016381/2021" : "2021-01-19",  #omicron EPI_ISL_11310487
+
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
