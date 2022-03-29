@@ -8,7 +8,7 @@ import type { ClusterDatum } from 'src/io/getClusters'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { ProteinBadge as ProteinBadgeBase } from 'src/components/Common/MutationBadge'
 
-import { ReactComponent as AquariaLogo } from 'src/assets/images/aquaria.svg'
+import AquariaLogo from 'src/assets/images/aquaria.svg'
 
 const AquariaLogoSmall = styled(AquariaLogo)`
   margin: auto 5px;
