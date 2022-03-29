@@ -1,5 +1,5 @@
 import { MDXProvider } from '@mdx-js/react'
-import React, { PropsWithChildren, useState } from 'react'
+import React, { PropsWithChildren, useCallback, useState } from 'react'
 
 import {
   Button,
@@ -199,17 +199,17 @@ const components = {
 export function ChangelogButton({ children, ...props }: PropsWithChildren<ButtonProps>) {
   const [showChangelog, setShowChangelog] = useState(false)
 
-  function toggleOpen() {
+  const toggleOpen = useCallback(() => {
     setShowChangelog(!showChangelog)
-  }
+  }, [showChangelog])
 
-  function open() {
+  const open = useCallback(() => {
     setShowChangelog(true)
-  }
+  }, [])
 
-  function close() {
+  const close = useCallback(() => {
     setShowChangelog(false)
-  }
+  }, [])
 
   const text = 'Recent updates'
   const closeText = 'Close this window'

@@ -2,7 +2,7 @@ import React from 'react'
 
 import styled from 'styled-components'
 
-import { ReactComponent as CladeSchemaSvg } from 'src/assets/images/clades.svg'
+import CladeSchemaSvg from 'src/assets/images/clades.svg'
 
 const CladeSchemaFigure = styled.figure`
   display: flex;

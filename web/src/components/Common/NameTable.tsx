@@ -86,10 +86,7 @@ export function NameTableRow({ datum }: NameTableRowProps) {
   )
 
   const otherEntries = useMemo(
-    () =>
-      joinWithCommas(
-        others.map<ReactNode>((entry) => <NameTableEntryComponent key={entry.name} entry={entry} />),
-      ),
+    () => joinWithCommas(others.map<ReactNode>((entry) => <NameTableEntryComponent key={entry.name} entry={entry} />)),
     [others],
   )
 

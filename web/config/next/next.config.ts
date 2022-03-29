@@ -1,3 +1,4 @@
+import { NextConfig } from 'next'
 import path from 'path'
 
 import { uniq } from 'lodash'
@@ -18,15 +19,13 @@ import getWithFriendlyConsole from './withFriendlyConsole'
 import getWithLodash from './withLodash'
 import { getWithRobotsTxt } from './withRobotsTxt'
 import getWithTypeChecking from './withTypeChecking'
-import withRaw from './withRaw'
-import withJson from './withJson'
 import withSvg from './withSvg'
-import withImages from './withImages'
 import withIgnore from './withIgnore'
 import withoutMinification from './withoutMinification'
 import withFriendlyChunkNames from './withFriendlyChunkNames'
 import withResolve from './withResolve'
 import withWebpackWatchPoll from './withWebpackWatchPoll'
+import withUrlAsset from './withUrlAsset'
 
 const {
   // BABEL_ENV,
@@ -38,10 +37,6 @@ const {
   ENABLE_ESLINT,
   ENABLE_TYPE_CHECKS,
   // ENABLE_STYLELINT,
-  ENABLE_REDUX_DEV_TOOLS,
-  ENABLE_REDUX_IMMUTABLE_STATE_INVARIANT,
-  ENABLE_REDUX_LOGGER,
-  DEBUG_SET_INITIAL_DATA,
   DOMAIN,
   DOMAIN_STRIPPED,
   WATCH_POLL,
@@ -52,10 +47,6 @@ const BRANCH_NAME = getGitBranch()
 const { pkg, moduleRoot } = findModuleRoot()
 
 const clientEnv = {
-  ENABLE_REDUX_DEV_TOOLS: ENABLE_REDUX_DEV_TOOLS.toString(),
-  ENABLE_REDUX_LOGGER: ENABLE_REDUX_LOGGER.toString(),
-  ENABLE_REDUX_IMMUTABLE_STATE_INVARIANT: ENABLE_REDUX_IMMUTABLE_STATE_INVARIANT.toString(),
-  DEBUG_SET_INITIAL_DATA: DEBUG_SET_INITIAL_DATA.toString(),
   BRANCH_NAME,
   PACKAGE_VERSION: pkg.version ?? '',
   BUILD_NUMBER: getBuildNumber(),
@@ -67,29 +58,37 @@ const clientEnv = {
 
 console.info(`Client-side Environment:\n${JSON.stringify(clientEnv, null, 2)}`)
 
-const nextConfig = {
+const nextConfig: NextConfig = {
   distDir: `.build/${process.env.NODE_ENV}/tmp`,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx', 'all-contributorsrc'],
   onDemandEntries: {
     maxInactiveAge: 60 * 1000,
     pagesBufferLength: 2,
   },
+  modern: false,
+  // reactStrictMode: true,
   experimental: {
-    modern: false, // this breaks Threads.js workers in production
-    productionBrowserSourceMaps: ENABLE_SOURCE_MAPS,
+    // reactMode: 'concurrent',
+    // reactRoot: true,
+    scrollRestoration: true,
   },
-  future: {
-    excludeDefaultMomentLocales: true,
-  },
+  swcMinify: true,
+  productionBrowserSourceMaps: ENABLE_SOURCE_MAPS,
+  excludeDefaultMomentLocales: true,
   devIndicators: {
     buildActivity: false,
-    autoPrerender: false,
   },
   typescript: {
-    ignoreDevErrors: true,
     ignoreBuildErrors: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  compiler: {
+    styledComponents: true,
+  },
   env: clientEnv,
+  poweredByHeader: false,
 }
 
 const withMDX = getWithMDX({
@@ -137,8 +136,6 @@ const withExtraWatch = getWithExtraWatch({
 
 const withLodash = getWithLodash({ unicode: false })
 
-// const withStaticComprression = getWithStaticComprression({ brotli: false })
-
 const withTypeChecking = getWithTypeChecking({
   typeChecking: ENABLE_TYPE_CHECKS,
   eslint: ENABLE_ESLINT,
@@ -151,27 +148,13 @@ const transpilationListDev = [
 ]
 
 const transpilationListProd = uniq([
+  // prettier-ignore
   ...transpilationListDev,
-  '!d3-array/src/cumsum.js',
-  '@loadable',
-  'create-color',
-  'd3-array',
   'debug',
-  'delay',
-  'immer',
-  'is-observable',
   'lodash',
-  'observable-fns',
-  'p-min-delay',
-  'proper-url-join',
-  'query-string',
-  'react-router',
   'react-share',
   'recharts',
   'semver',
-  'split-on-first',
-  'strict-uri-encode',
-  'threads',
 ])
 
 const withTranspileModules = getWithTranspileModules(PRODUCTION ? transpilationListProd : transpilationListDev)
@@ -183,9 +166,6 @@ const config = withPlugins(
     [withIgnore],
     [withExtraWatch],
     [withSvg],
-    [withImages],
-    [withRaw],
-    [withJson],
     [withFriendlyConsole],
     [withMDX],
     [withLodash],
@@ -196,6 +176,7 @@ const config = withPlugins(
     [withFriendlyChunkNames],
     [withResolve],
     [withRobotsTxt],
+    [withUrlAsset],
   ].filter(Boolean),
   nextConfig,
 )

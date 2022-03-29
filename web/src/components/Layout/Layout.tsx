@@ -4,7 +4,7 @@ import { ChangelogButton } from 'src/components/Common/ChangelogButton'
 import styled from 'styled-components'
 import { Container as ContainerBase, Row, Col } from 'reactstrap'
 
-import { ReactComponent as GisaidLogoBase } from 'src/assets/images/GISAID_logo.svg'
+import GisaidLogoBase from 'src/assets/images/GISAID_logo.svg'
 
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { NavigationBar } from './NavigationBar'

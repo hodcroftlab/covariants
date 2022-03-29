@@ -32,7 +32,7 @@ import { DistributionSidebar } from 'src/components/DistributionSidebar/Distribu
 import { Layout } from 'src/components/Layout/Layout'
 import { PageHeading } from 'src/components/Common/PageHeading'
 
-import PerClusterIntro from 'src/../../content/PerClusterIntro.md'
+import PerClusterIntro from '../../../../content/PerClusterIntro.md'
 
 const Dropdown = styled(DropdownBase)`
   min-width: 130px;
@@ -121,10 +121,10 @@ export function ClusterDistributionPage() {
     [setTooltipSort],
   )
 
-  const { withClustersFiltered } = useMemo(() => filterClusters(clusters, clusterDistributions), [
-    clusterDistributions,
-    clusters,
-  ])
+  const { withClustersFiltered } = useMemo(
+    () => filterClusters(clusters, clusterDistributions),
+    [clusterDistributions, clusters],
+  )
   const { enabledCountries, withCountriesFiltered } =
     /* prettier-ignore */
     useMemo(() => filterCountries(countries, withClustersFiltered), [countries, withClustersFiltered])

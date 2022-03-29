@@ -1,10 +1,11 @@
-import type { NextWebpackOptions, NextConfig } from 'next'
-import type { WebpackOptions } from 'webpack/declarations/WebpackOptions'
+import type { NextConfig } from 'next'
+import type { WebpackConfigContext } from 'next/dist/server/config-shared'
+import type { Configuration } from 'webpack'
 
 import { CustomWebpackConfig } from './CustomWebpackConfig'
 
 export function addWebpackConfig(nextConfig: NextConfig, customWebpackConfig: CustomWebpackConfig) {
-  const webpack = (webpackConfig: WebpackOptions, options: NextWebpackOptions) => {
+  const webpack = (webpackConfig: Configuration, options: WebpackConfigContext) => {
     const newConfig = customWebpackConfig(nextConfig, webpackConfig, options)
 
     if (typeof nextConfig.webpack === 'function') {

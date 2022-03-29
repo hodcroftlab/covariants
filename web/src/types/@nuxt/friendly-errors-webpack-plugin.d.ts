@@ -1,3 +1,1 @@
-import FriendlyErrorsWebpackPlugin from '@types/friendly-errors-webpack-plugin'
-
-export default FriendlyErrorsWebpackPlugin
+export { default } from '@types/friendly-errors-webpack-plugin'

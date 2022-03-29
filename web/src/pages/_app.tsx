@@ -3,7 +3,6 @@ import 'resize-observer-polyfill/dist/ResizeObserver.global'
 
 import 'css.escape'
 
-import { enableES5 } from 'immer'
 import dynamic from 'next/dynamic'
 import React, { useCallback, useMemo } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
@@ -22,11 +21,9 @@ import { DOMAIN_STRIPPED } from 'src/constants'
 import { Plausible } from 'src/components/Common/Plausible'
 import { SeoApp } from 'src/components/Common/SeoApp'
 
-import { mdxComponents } from 'src/components/Common/MdxComponents'
+import { getMdxComponents } from 'src/components/Common/MdxComponents'
 
 import 'src/styles/global.scss'
-
-enableES5()
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   const queryClient = useMemo(() => new QueryClient(), [])
@@ -63,7 +60,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <RecoilRoot initializeState={initializeState}>
       <ThemeProvider theme={theme}>
-        <MDXProvider components={(components) => ({ ...components, ...mdxComponents })}>
+        <MDXProvider components={getMdxComponents}>
           <Plausible domain={DOMAIN_STRIPPED} />
           <SeoApp />
           <QueryClientProvider client={queryClient}>

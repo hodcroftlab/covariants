@@ -29,7 +29,7 @@ export const AppleIcons = [57, 60, 72, 76, 114, 120, 144, 152, 180].map((size) =
     <React.Fragment key={size}>
       <link rel="apple-touch-icon" sizes={sizes} href={`${DOMAIN}/icons/apple-touch-icon-${sizes}.png`} />
       <link
-        rel="apple-touch-icon-precomposed"
+        rel="apple-touch-icon-precomposed" // eslint-disable-line react/no-invalid-html-attribute
         sizes={sizes}
         href={`${DOMAIN}/icons/apple-touch-icon-${sizes}-precomposed.png`}
       />
@@ -49,6 +49,7 @@ export const MicrosoftIcons = (
   </>
 )
 
+// noinspection JSUnusedGlobalSymbols
 export default class Document extends NextDocument {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
     const sheet = new ServerStyleSheet()
@@ -88,11 +89,11 @@ export default class Document extends NextDocument {
     return (
       <Html lang={lang}>
         <Head>
-          <meta charSet="UTF-8" />
+          <meta charSet="utf8" />
 
           <meta name="theme-color" content="#ffffff" />
           <link rel="manifest" href={URL_MANIFEST_JSON} />
-          <link rel="shortcut icon" href={URL_FAVICON} />
+          <link rel="icon" href={URL_FAVICON} />
 
           {GenericIcons}
 
