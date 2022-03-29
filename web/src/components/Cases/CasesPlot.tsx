@@ -26,24 +26,8 @@ export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotPro
   const chartRef = useRef(null)
 
   const data = distribution.map(({ week, stand_total_cases, stand_estimated_cases }) => {
-    // Zeros need to be filtered out, because log-scale plots won't display anything
-    // if there's at least a single zero
-    // See: https://github.com/recharts/recharts/issues/2012
-    const casesNonZero = mapValues(stand_estimated_cases, (cases) => {
-      if (cases === undefined || cases === 0) {
-        return undefined
-      }
-
-      return cases
-    })
-
-    let total: number | undefined = stand_total_cases
-    if (total === 0) {
-      total = undefined
-    }
-
     const weekSec = DateTime.fromFormat(week, 'yyyy-MM-dd').toSeconds()
-    return { week: weekSec, ...casesNonZero, total }
+    return { week: weekSec, ...stand_estimated_cases, total: stand_total_cases }
   })
 
   return (
@@ -67,11 +51,6 @@ export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotPro
                   />
                   <YAxis
                     type="number"
-                    // TODO: Log scale does not work with `stackId` for some reason.
-                    // NOTE: Uncomment these 2 lines and comment the `stackId` line in the `Area` component to see
-                    //  the unstacked log chart.
-                    // scale="log"
-                    // domain={['auto', 'auto']}
                     tick={theme.plot.tickStyle}
                     tickMargin={theme.plot.tickMargin?.y}
                     allowDataOverflow
@@ -82,7 +61,6 @@ export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotPro
                       key={cluster}
                       type="monotone"
                       dataKey={cluster}
-                      // Log scale does not work with `stackId` for some reason
                       stackId="1"
                       stroke="none"
                       fill={getClusterColor(cluster)}
