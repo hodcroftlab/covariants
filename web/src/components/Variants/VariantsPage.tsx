@@ -98,6 +98,18 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
   const ClusterContent = getClusterContent(currentCluster.build_name)
   const showDefiningMutations = useMemo(() => hasDefiningMutations(currentCluster), [currentCluster])
 
+  const AquariaSection = useMemo(() => {
+    return (
+      (currentCluster.aquaria_urls?.length ?? 0) > 0 && (
+        <Row noGutters className="mb-2">
+          <Col>
+            <AquariaLinksCard cluster={currentCluster} />
+          </Col>
+        </Row>
+      )
+    )
+  }, [currentCluster])
+
   return (
     <FlexContainer>
       <FlexGrowing>
@@ -126,11 +138,7 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
             </Col>
           </Row>
 
-          <Row noGutters className="mb-2">
-            <Col>
-              <AquariaLinksCard cluster={currentCluster} />
-            </Col>
-          </Row>
+          {AquariaSection}
 
           <Row noGutters className="mb-2">
             <Col>
