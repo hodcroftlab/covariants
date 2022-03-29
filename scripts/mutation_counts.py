@@ -82,11 +82,14 @@ if __name__ == '__main__':
 
         out_json_S = {"total": total, "counts": sorted(mutations["S"], key=lambda d: d['count'], reverse=True)}
         out_json_nonS = {"total": total, "counts": sorted(mutations["nonS"], key=lambda d: d['count'], reverse=True)}
+        out_json = {
+            "S": out_json_S,
+            "others": out_json_nonS,
+        }
 
         OUTPUT_PATH = pathlib.Path(f"{OUTPUT_FOLDER}/{cluster_name}")
         OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
 
-        with open(f"{OUTPUT_PATH}_S.json",'w') as f:
-            json.dump(out_json_S,f,indent=2)
-        with open(f"{OUTPUT_PATH}_nonS.json",'w') as f:
-            json.dump(out_json_nonS,f,indent=2)
+        with open(f"{OUTPUT_PATH}.json",'w') as f:
+            json.dump(out_json,f,indent=2)
+
