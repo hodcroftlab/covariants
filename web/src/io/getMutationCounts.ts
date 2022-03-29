@@ -1,6 +1,6 @@
 import type { Mutation } from 'src/types'
 import { parseAminoacidMutation } from 'src/components/Common/parseAminoacidMutation'
-import { sortBy } from 'lodash'
+import { mapValues, sortBy } from 'lodash'
 
 export interface MutationCountsDatum {
   mut: Mutation
@@ -8,9 +8,14 @@ export interface MutationCountsDatum {
   key: string
 }
 
-export interface MutationCountsData {
+export interface MutationCountsGeneRecord {
   total: number
   counts: MutationCountsDatum[]
+}
+
+export interface MutationCountsData {
+  S: MutationCountsGeneRecord
+  others: MutationCountsGeneRecord
 }
 
 export interface MutationCountsJsonEntry {
@@ -18,15 +23,17 @@ export interface MutationCountsJsonEntry {
   count: number
 }
 
-export interface MutationCountsJson {
+export interface MutationCountsJsonGeneRecord {
   total: number
   counts: MutationCountsJsonEntry[]
 }
 
-export async function getMutationCounts(clusterBuildName: string): Promise<MutationCountsData> {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  const data = (await import(`../../data/mutationCounts/${clusterBuildName}.json`)).default as MutationCountsJson
+export interface MutationCountsJson {
+  S: MutationCountsJsonGeneRecord
+  others: MutationCountsJsonGeneRecord
+}
 
+export function parseMutationCounts(data: MutationCountsJsonGeneRecord) {
   let counts = data.counts.map((mutationCounts) => {
     const mut = parseAminoacidMutation(mutationCounts.mut)
     if (!mut) {
@@ -38,4 +45,10 @@ export async function getMutationCounts(clusterBuildName: string): Promise<Mutat
   counts = sortBy(counts, (count) => -count.count)
 
   return { ...data, counts }
+}
+
+export async function getMutationCounts(clusterBuildName: string): Promise<MutationCountsData> {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,unicorn/no-await-expression-member
+  const data = (await import(`../../data/mutationCounts/${clusterBuildName}.json`)).default as MutationCountsJson
+  return mapValues(data, (datum) => parseMutationCounts(datum))
 }

@@ -1,17 +1,14 @@
 import React, { useMemo } from 'react'
 
-import { partition } from 'lodash'
 import { useQuery } from 'react-query'
 import { Row, Col } from 'reactstrap'
 
 import type { ClusterDatum } from 'src/io/getClusters'
-import { getMutationCounts, MutationCountsDatum } from 'src/io/getMutationCounts'
+import { getMutationCounts, MutationCountsDatum, MutationCountsGeneRecord } from 'src/io/getMutationCounts'
 import { AminoacidMutationBadge } from 'src/components/Common/MutationBadge'
 import { TableSlim } from 'src/components/Common/TableSlim'
 import { Link } from 'src/components/Link/Link'
 import styled from 'styled-components'
-
-const NUM_ROWS_IN_MUTATION_COUNTS_SUMMARY = 20
 
 export const Table = styled(TableSlim)`
   max-width: 350px;
@@ -39,31 +36,47 @@ export function MutationCountsSummaryRow({ total, counts }: MutationCountsSummar
         <AminoacidMutationBadge mutation={counts.mut} />
       </td>
       <td className="text-right">{counts.count}</td>
-      <td className="text-right">{freq}</td>
+      <td className="text-right">{`${freq}%`}</td>
     </tr>
   )
 }
 
-export function useMutationCounts(clusterBuildName: string) {
-  return useQuery(
-    ['mutationCounts', clusterBuildName],
-    async () => {
-      const mutationCounts = await getMutationCounts(clusterBuildName)
-      const [geneS, geneNonS] = partition(mutationCounts.counts, (x) => x.mut.gene === 'S') // eslint-disable-line lodash/matches-prop-shorthand
-      const counts = [
-        ...geneS.slice(0, NUM_ROWS_IN_MUTATION_COUNTS_SUMMARY / 2),
-        ...geneNonS.slice(0, NUM_ROWS_IN_MUTATION_COUNTS_SUMMARY / 2),
-      ]
-      return { ...mutationCounts, counts }
-    },
-    {
-      staleTime: Number.POSITIVE_INFINITY,
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: true,
-      refetchInterval: Number.POSITIVE_INFINITY,
-    },
+export interface MutationCountsSummarySubTableProps {
+  record: MutationCountsGeneRecord
+}
+
+export function MutationCountsSummarySubTable({ record }: MutationCountsSummarySubTableProps) {
+  return (
+    <Table striped>
+      <thead>
+        <tr>
+          <th className="text-center">{'Mutation'}</th>
+          <th className="text-center">{'Count'}</th>
+          <th className="text-center">{'Frequency'}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td className="font-weight-bold">{'Total'}</td>
+          <td className="font-weight-bold text-right">{record.total}</td>
+          <td className="font-weight-bold text-right">{'100.00%'}</td>
+        </tr>
+        {record.counts.map((counts) => (
+          <MutationCountsSummaryRow key={counts.key} counts={counts} total={record.total} />
+        ))}
+      </tbody>
+    </Table>
   )
+}
+
+export function useMutationCounts(clusterBuildName: string) {
+  return useQuery(['mutationCounts', clusterBuildName], async () => getMutationCounts(clusterBuildName), {
+    staleTime: Number.POSITIVE_INFINITY,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
+    refetchInterval: Number.POSITIVE_INFINITY,
+  })
 }
 
 export interface MutationCountsSummaryProps {
@@ -72,6 +85,12 @@ export interface MutationCountsSummaryProps {
 
 export function MutationCountsSummary({ currentCluster }: MutationCountsSummaryProps) {
   const { data, isError, error, isLoading } = useMutationCounts(currentCluster.build_name)
+
+  if (!data) {
+    return null
+  }
+
+  const { S, others } = data
 
   return (
     <Row noGutters>
@@ -92,23 +111,17 @@ export function MutationCountsSummary({ currentCluster }: MutationCountsSummaryP
         </Row>
 
         <Row noGutters>
-          <Col className="d-flex">
-            {data && (
-              <Table striped>
-                <thead>
-                  <tr>
-                    <th className="text-center">{'Mutation'}</th>
-                    <th className="text-center">{'Count'}</th>
-                    <th className="text-center">{'Frequency'}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {data.counts.map((counts) => (
-                    <MutationCountsSummaryRow key={counts.key} counts={counts} total={data.total} />
-                  ))}
-                </tbody>
-              </Table>
-            )}
+          <Col className="d-flex mx-1 my-1">
+            <MutationCountsSummarySubTable record={S} />
+          </Col>
+
+          <Col className="d-flex mx-1 my-1">
+            <MutationCountsSummarySubTable record={others} />
+          </Col>
+        </Row>
+
+        <Row noGutters>
+          <Col>
             {isLoading && <div className="mx-auto">{'Loading...'}</div>}
             {isError && (
               <div className="mx-auto">
