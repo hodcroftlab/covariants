@@ -4,7 +4,7 @@ import type { NextConfig } from 'next'
 import { addWebpackConfig } from './lib/addWebpackConfig'
 
 export default function withFriendlyChunkNames(nextConfig: NextConfig) {
-  return addWebpackConfig(nextConfig, (nextConfig, webpackConfig, options) => {
+  return addWebpackConfig(nextConfig, (nextConfig, webpackConfig, _options) => {
     if (
       typeof webpackConfig.optimization?.splitChunks !== 'boolean' &&
       webpackConfig.optimization?.splitChunks?.cacheGroups

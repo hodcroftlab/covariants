@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 
 import styled from 'styled-components'
 import {
@@ -13,8 +13,8 @@ import {
 import classNames from 'classnames'
 import { FaGithub, FaTwitter } from 'react-icons/fa'
 
-import { ReactComponent as BrandLogoBase } from 'src/assets/images/logo.svg'
-import { ReactComponent as BrandLogoLargeBase } from 'src/assets/images/logo_text_right.svg'
+import BrandLogoBase from 'src/assets/images/logo.svg'
+import BrandLogoLargeBase from 'src/assets/images/logo_text_right.svg'
 
 import { Link } from 'src/components/Link/Link'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
@@ -141,7 +141,7 @@ export const BrandLogoLarge = styled(BrandLogoLargeBase)`
 export function NavigationBar() {
   const { pathname } = useRouter()
   const [isOpen, setIsOpen] = useState(false)
-  const toggle = () => setIsOpen(!isOpen)
+  const toggle = useCallback(() => setIsOpen(!isOpen), [isOpen])
 
   return (
     <Navbar expand="md" color="light" light role="navigation">

@@ -3,28 +3,15 @@ import type { NextConfig } from 'next'
 import { addWebpackLoader } from './lib/addWebpackLoader'
 
 export default function withSvg(nextConfig: NextConfig) {
-  return addWebpackLoader(nextConfig, (webpackConfig, { dev }) => ({
-    // eslint-disable-next-line security/detect-unsafe-regex
-    test: /\.svg(\?.*)?$/i,
+  return addWebpackLoader(nextConfig, (_webpackConfig, _context) => ({
+    test: /\.svg$/i,
+    issuer: /\.(ts|tsx|js|jsx|md|mdx|scss|sass|css)$/,
     use: [
       {
         loader: '@svgr/webpack',
         options: {
-          svgoConfig: {
-            plugins: [
-              {
-                removeViewBox: false,
-              },
-            ],
-          },
-        },
-      },
-      {
-        loader: 'url-loader',
-        options: {
-          limit: false,
-          name: dev ? '[name].[ext]' : '[name].[hash:7].[ext]',
-          publicPath: 'assets',
+          removeViewbox: false,
+          typescript: false,
         },
       },
     ],

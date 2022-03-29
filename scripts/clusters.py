@@ -738,7 +738,7 @@ clusters = {
         "snps": [21575, 9867, 1059],
         "snps_with_base": ["21575T", "9867C", "1059T"],
         "cluster_data": [],  # S5, ORF1a 3201, 265 -- 484 is 23012 (1-based)
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -853,7 +853,7 @@ clusters = {
         "snps": [22599, 4878, 17491],  # S 346 (22599A)  ORF1a: 1538 (4878T) nuc: 17491T
         "snps_with_base": ["22599A", "4878T", "17491T"],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": True,

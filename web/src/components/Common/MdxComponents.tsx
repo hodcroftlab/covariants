@@ -1,3 +1,4 @@
+import { MDXProviderComponents } from '@mdx-js/react'
 import styled from 'styled-components'
 
 import { AaMut, Lin, Mut, NucMut, Var, Who } from 'src/components/Common/MutationBadge'
@@ -26,4 +27,8 @@ export const mdxComponents = {
   Mut,
   Lin,
   Who,
+}
+
+export function getMdxComponents(components: MDXProviderComponents): MDXProviderComponents {
+  return { ...components, ...mdxComponents }
 }
