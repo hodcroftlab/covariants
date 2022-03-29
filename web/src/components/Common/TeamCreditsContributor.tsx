@@ -1,6 +1,6 @@
 import React from 'react'
 
-import type { ContributorData } from 'src/../../.all-contributorsrc'
+import type { ContributorData } from 'json-loader!src/../../.all-contributorsrc'
 import { LinkExternal as LinkExternalBase } from 'src/components/Link/LinkExternal'
 
 import styled from 'styled-components'

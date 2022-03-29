@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    ".build",
+    ".cache",
+    ".idea",
+    ".ignore",
+    ".reports",
+    ".vscode",
+    ".vscode*",
+    "3rdparty",
+    "dist",
+    "docker",
+    "node_modules",
+    "public",
+    "tsconfig.json"
+  ],
+  "include": ["**/*.ts", "**/*.js", "**/*.tsx", "**/*.jsx"]
+}

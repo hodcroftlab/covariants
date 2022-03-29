@@ -8,8 +8,10 @@ export interface WithExtraWatchOptions {
   dirs: string[]
 }
 
-const getWithExtraWatch = ({ files, dirs }: WithExtraWatchOptions) => (nextConfig: NextConfig) => {
-  return addWebpackPlugin(nextConfig, new ExtraWatchWebpackPlugin({ files, dirs }))
-}
+const getWithExtraWatch =
+  ({ files, dirs }: WithExtraWatchOptions) =>
+  (nextConfig: NextConfig) => {
+    return addWebpackPlugin(nextConfig, new ExtraWatchWebpackPlugin({ files, dirs }))
+  }
 
 export default getWithExtraWatch

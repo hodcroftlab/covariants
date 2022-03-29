@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren, useMemo } from 'react'
 
 import styled from 'styled-components'
 import { FaGithub } from 'react-icons/fa'
@@ -8,7 +8,7 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { theme } from 'src/theme'
 
 const Container = styled.div`
-  margin: 0px auto;
+  margin: 0 auto;
   padding: 0.65rem 1rem;
   border-radius: 3px;
 `
@@ -51,6 +51,31 @@ const ContentWrapper = styled.div`
   }
 `
 
+export interface EditableBodyProps {
+  githubUrl?: string
+  text?: string
+}
+
+export function EditableHeader({ githubUrl, text }: EditableBodyProps) {
+  const href = useMemo(() => `${URL_GITHUB}/${githubUrl ?? ''}`, [githubUrl])
+  const icon = useMemo(() => <FaGithub />, [])
+  const titleText = useMemo(() => text ?? 'Propose changes to this section', [text])
+
+  if (!githubUrl) {
+    return null
+  }
+
+  return (
+    <Flex>
+      <LinkWrapper>
+        <LinkExternal href={href} icon={icon} $color={theme.link.dim.color}>
+          <ProposeChangesText>{titleText}</ProposeChangesText>
+        </LinkExternal>
+      </LinkWrapper>
+    </Flex>
+  )
+}
+
 export interface EditableProps {
   githubUrl?: string
   text?: string
@@ -59,15 +84,7 @@ export interface EditableProps {
 export function Editable({ githubUrl, text, children, ...restProps }: PropsWithChildren<EditableProps>) {
   return (
     <Container {...restProps}>
-      {githubUrl && (
-        <Flex>
-          <LinkWrapper>
-            <LinkExternal href={`${URL_GITHUB}/${githubUrl}`} icon={<FaGithub />} $color={theme.link.dim.color}>
-              <ProposeChangesText>{text ?? 'Propose changes to this section'}</ProposeChangesText>
-            </LinkExternal>
-          </LinkWrapper>
-        </Flex>
-      )}
+      <EditableHeader githubUrl={githubUrl} text={text} />
       <ContentWrapper>{children}</ContentWrapper>
     </Container>
   )

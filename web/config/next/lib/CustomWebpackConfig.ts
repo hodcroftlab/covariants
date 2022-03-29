@@ -1,8 +1,9 @@
-import { NextConfig, NextWebpackOptions } from 'next'
-import { WebpackOptions } from 'webpack/declarations/WebpackOptions'
+import type { NextConfig } from 'next'
+import type { WebpackConfigContext } from 'next/dist/server/config-shared'
+import type { Configuration } from 'webpack'
 
 export type CustomWebpackConfig = (
   nextConfig: NextConfig,
-  webpackConfig: WebpackOptions,
-  options: NextWebpackOptions,
-) => WebpackOptions
+  webpackConfig: Configuration,
+  options: WebpackConfigContext,
+) => Configuration

@@ -7,7 +7,6 @@ export function getEnvVars() {
   const ANALYZE = getbool('ANALYZE')
   const PROFILE = getbool('PROFILE')
   const PRODUCTION = NODE_ENV === 'production'
-  const DEBUG_SET_INITIAL_DATA = !PRODUCTION && getbool('DEV_DEBUG_SET_INITIAL_DATA')
   const DOMAIN = getDomain()
   const DOMAIN_STRIPPED = DOMAIN.replace('https://', '').replace('http://', '')
   const WATCH_POLL = getbool('WATCH_POLL', false)
@@ -18,7 +17,6 @@ export function getEnvVars() {
     ANALYZE,
     PROFILE,
     PRODUCTION,
-    DEBUG_SET_INITIAL_DATA,
     DOMAIN,
     DOMAIN_STRIPPED,
     WATCH_POLL,
@@ -31,9 +29,6 @@ export function getEnvVars() {
       ENABLE_ESLINT: getbool('PROD_ENABLE_ESLINT'),
       ENABLE_TYPE_CHECKS: getbool('PROD_ENABLE_TYPE_CHECKS'),
       ENABLE_STYLELINT: getbool('PROD_ENABLE_STYLELINT'),
-      ENABLE_REDUX_DEV_TOOLS: getbool('PROD_ENABLE_REDUX_DEV_TOOLS'),
-      ENABLE_REDUX_IMMUTABLE_STATE_INVARIANT: getbool('PROD_ENABLE_REDUX_IMMUTABLE_STATE_INVARIANT'),
-      ENABLE_REDUX_LOGGER: getbool('PROD_ENABLE_REDUX_LOGGER'),
     }
   }
 
@@ -43,8 +38,5 @@ export function getEnvVars() {
     ENABLE_ESLINT: getbool('DEV_ENABLE_ESLINT'),
     ENABLE_TYPE_CHECKS: getbool('DEV_ENABLE_TYPE_CHECKS'),
     ENABLE_STYLELINT: getbool('DEV_ENABLE_STYLELINT'),
-    ENABLE_REDUX_DEV_TOOLS: getbool('DEV_ENABLE_REDUX_DEV_TOOLS'),
-    ENABLE_REDUX_IMMUTABLE_STATE_INVARIANT: getbool('DEV_ENABLE_REDUX_IMMUTABLE_STATE_INVARIANT'),
-    ENABLE_REDUX_LOGGER: getbool('DEV_ENABLE_REDUX_LOGGER'),
   }
 }
