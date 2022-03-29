@@ -26,25 +26,27 @@ def build_url(base_url,cluster,threshold):
     return url
 
 if __name__ == '__main__':
-    for cluster_name in clusters:
+    for cluster in clusters.values():
+        cluster_name = cluster["build_name"]
+
         # Don't use all clusters
 
-        if clusters[cluster_name]["type"] == "do_not_display":
+        if cluster["type"] == "do_not_display":
             continue
 
-        if clusters[cluster_name]["type"] == "mutation":
+        if cluster["type"] == "mutation":
             continue
 
-        if "snps_with_base" not in clusters[cluster_name]:
+        if "snps_with_base" not in cluster:
             print(f"snps_with_base missing from {cluster_name}")
             continue
 
-        if "mutations" not in clusters[cluster_name]:
+        if "mutations" not in cluster:
             print(f"mutations missing from {cluster_name}")
             continue
 
 
-        cluster_muts = clusters[cluster_name]["snps_with_base"]
+        cluster_muts = cluster["snps_with_base"]
         aa_request_url = build_url(aa_base_url,cluster_muts,THRESHOLD)
         count_request_url = build_url(count_base_url,cluster_muts,None)
         print(f"Requesting cov-spectrum for {cluster_name} with snps {', '.join(cluster_muts)}")
@@ -57,7 +59,7 @@ if __name__ == '__main__':
         print("Download complete...\n")
 
         defining_mutations = []
-        for mut in clusters[cluster_name]["mutations"]["nonsynonymous"]:
+        for mut in cluster["mutations"]["nonsynonymous"]:
             defining_mutations.append(f"{mut['gene']}:{mut['left']}{mut['pos']}{mut['right']}")
 
         total = count['data'][0]['count']
@@ -80,10 +82,10 @@ if __name__ == '__main__':
 
         out_json_S = {"total": total, "counts": sorted(mutations["S"], key=lambda d: d['count'], reverse=True)}
         out_json_nonS = {"total": total, "counts": sorted(mutations["nonS"], key=lambda d: d['count'], reverse=True)}
-        
+
         OUTPUT_PATH = pathlib.Path(f"{OUTPUT_FOLDER}/{cluster_name}")
         OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-        
+
         with open(f"{OUTPUT_PATH}_S.json",'w') as f:
             json.dump(out_json_S,f,indent=2)
         with open(f"{OUTPUT_PATH}_nonS.json",'w') as f:
