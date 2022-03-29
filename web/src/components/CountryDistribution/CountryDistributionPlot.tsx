@@ -64,7 +64,7 @@ export function CountryDistributionPlotComponent({ cluster_names, distribution }
                   {cluster_names.map((cluster) => (
                     <Area
                       key={cluster}
-                      type="monotone"
+                      type="stepAfter"
                       dataKey={cluster}
                       stackId="1"
                       stroke="none"
@@ -75,7 +75,7 @@ export function CountryDistributionPlotComponent({ cluster_names, distribution }
                   ))}
 
                   <Area
-                    type="monotone"
+                    type="stepAfter"
                     dataKey={CLUSTER_NAME_OTHERS}
                     stackId="1"
                     stroke="none"
