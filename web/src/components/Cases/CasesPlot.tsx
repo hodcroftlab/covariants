@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import React, { useRef } from 'react'
 
-import { mapValues } from 'lodash'
 import dynamic from 'next/dynamic'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { DateTime } from 'luxon'
