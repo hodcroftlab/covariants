@@ -310,8 +310,8 @@ t0 = time.time()
 #    "clock_deviation": "category"
 #}
 input_meta = "data/metadata.tsv"
-dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str, 'age': str, 'QC_frame_shifts': str, 'frame_shifts': str}
-cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl']
+dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str, 'age': str, 'QC_frame_shifts': str, 'frame_shifts': str, 'QC_overall_status': str}
+cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl', 'QC_overall_status']
 meta = pd.read_csv(input_meta, sep="\t", dtype=dtype, index_col=False, usecols=cols) #dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str}, index_col=False)
 meta = meta.fillna("")
 
@@ -350,6 +350,13 @@ meta['division'] = meta['division'].replace(swiss_regions)
 
 # Filter for only Host = Human
 meta = meta[meta["host"] == "Human"]
+
+#Filter only for those without 'bad' and those without '' QC status
+# available values (as of 30 mar 22) are 'bad', 'good', 'mediocre', ''
+# these '' values are likely those where alignment fails
+# as of 30 mar 22, this excludes 466,596 sequences (!) for bad, and 4,781 for ''
+meta = meta[meta["QC_overall_status"] != "bad"]
+meta = meta[meta["QC_overall_status"] != ""]
 
 # Filter Metadata to only have those we have mutations for! Allows 'out of sync' files. --> Should we check for the subtitutions and deletions columns to be not empty?
 # meta = meta[meta["strain"].isin(muts["Unnamed: 0"])]
