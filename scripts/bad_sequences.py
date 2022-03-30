@@ -2387,6 +2387,8 @@ bad_seqs = {
     "USA/TX-HMH-MCoV-95778/2021" : "2021-03-10",  #omicron EPI_ISL_11236169
     "France/HDF-IPP17161/2021" : "2021-03-07",  #omicron EPI_ISL_11248617
     "Slovakia/BA_22_00016381/2021" : "2021-01-19",  #omicron EPI_ISL_11310487
+    #30 mar
+    "India/NL-IBSD-DMP-P13-110/2021" : "2021-10-07", #omicron  EPI_ISL_11465686
 
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
