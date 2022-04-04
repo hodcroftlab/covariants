@@ -119,6 +119,10 @@
     "c": "#9900cc",
     "ls": "-."
   },
+  "Guatemala": {
+    "c": "#000000",
+    "ls": "dotted"
+  },
   "Hong Kong": {
     "c": "#ff66ff",
     "ls": "dotted"
@@ -179,6 +183,10 @@
     "c": "#9900cc",
     "ls": "dotted"
   },
+  "Mauritius": {
+    "c": "#ffcc00",
+    "ls": "dotted"
+  },
   "Mexico": {
     "c": "#e31a1c",
     "ls": "-."
@@ -205,6 +213,10 @@
   },
   "Pakistan": {
     "c": "#cab2d6",
+    "ls": "dotted"
+  },
+  "Panama": {
+    "c": "#004d00",
     "ls": "dotted"
   },
   "Papua New Guinea": {
