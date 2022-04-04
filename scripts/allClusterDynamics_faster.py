@@ -37,8 +37,10 @@ fmt = "png"  # "pdf"
 grey_color = "#cccccc"  # for "other clusters" of country plots
 
 #dated_limit = "2021-03-31" #only works for Q677 currently
-#dated_limit = "2021-06-30"
+#dated_limit = "2021-07-31"
 #dated_cluster = "21A (Delta)"
+#dated_cluster = "21I (Delta)"
+#dated_cluster = "21J (Delta)"
 #dated_cluster = "20I (Alpha, V1)"
 dated_cluster = "Q677"
 dated_limit = ""
