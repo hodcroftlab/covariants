@@ -2396,6 +2396,27 @@ bad_seqs = {
     "USA/MA-UMASSMED-202145120/2021" : "2021-07-05",  #omicron EPI_ISL_11574200
     "USA/VA-VTVAS3-GSC29550/2021" : "2021-01-05",  #omicron EPI_ISL_11532377
     "NorthernIreland/NIRE-01b062/2021" : "2021-04-30",  #omicron EPI_ISL_11460017
+    #6 Apr
+    "France/HDF-IPP20854/2021" : "2021-03-14", #omicron  EPI_ISL_11759954
+    "France/HDF-IPP20856/2021" : "2021-03-14", #omicron  EPI_ISL_11759955
+    "France/HDF-IPP20857/2021" : "2021-03-14", #omicron  EPI_ISL_11759956
+    "France/HDF-IPP20860/2021" : "2021-03-14", #omicron  EPI_ISL_11759959
+    "France/HDF-IPP20862/2021" : "2021-03-14", #omicron  EPI_ISL_11759961
+    "France/HDF-IPP20863/2021" : "2021-03-14", #omicron  EPI_ISL_11759962
+    "France/HDF-IPP20866/2021" : "2021-03-14", #omicron  EPI_ISL_11759965
+    "Japan/PG-202036/2021" : "2021-02-18", #omicron  EPI_ISL_11711479
+    "Malaysia/A483/2021" : "2021-01-03", #omicron  EPI_ISL_11754756
+    "France/HDF-IPP20849/2021" : "2021-03-14", #omicron  EPI_ISL_11759949
+    "France/HDF-IPP20850/2021" : "2021-03-14", #omicron  EPI_ISL_11759950
+    "France/HDF-IPP20851/2021" : "2021-03-14", #omicron  EPI_ISL_11759951
+    "France/HDF-IPP20852/2021" : "2021-03-14", #omicron  EPI_ISL_11759952
+    "France/HDF-IPP20853/2021" : "2021-03-14", #omicron  EPI_ISL_11759953
+    "France/HDF-IPP20858/2021" : "2021-03-14", #omicron  EPI_ISL_11759957
+    "France/HDF-IPP20859/2021" : "2021-03-14", #omicron  EPI_ISL_11759958
+    "France/HDF-IPP20861/2021" : "2021-03-14", #omicron  EPI_ISL_11759960
+    "France/HDF-IPP20864/2021" : "2021-03-14", #omicron  EPI_ISL_11759963
+    "France/HDF-IPP20865/2021" : "2021-03-14", #omicron  EPI_ISL_11759964
+    "France/HDF-IPP20867/2021" : "2021-03-14", #omicron  EPI_ISL_11759966
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
