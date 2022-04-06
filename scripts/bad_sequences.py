@@ -2417,6 +2417,36 @@ bad_seqs = {
     "France/HDF-IPP20864/2021" : "2021-03-14", #omicron  EPI_ISL_11759963
     "France/HDF-IPP20865/2021" : "2021-03-14", #omicron  EPI_ISL_11759964
     "France/HDF-IPP20867/2021" : "2021-03-14", #omicron  EPI_ISL_11759966
+    "Germany/NW-RKI-I-323118/2020" : "2020-09-11", #delta EPI_ISL_6463130
+    "Guatemala/4583-GMI/2021" : "2021-08-26", #omicron 21K (too divergent!)
+    "Slovakia/BA_22_00010686/2021" : "2021-10-22", #omicron 21K (too divergent)
+    "Austria/AGES-655623/2021" : "2021-11-04", #omicron 21K (too divergent)
+    "England/DHSC-CYDW4E6/2021" : "2021-10-27", #omicron 21K (too divergent)
+    "England/DHSC-CYY9NFJ/2021" : "2021-10-16", #omicron 21K (too divergent)
+    "England/DHSC-CYNSUZD/2021" : "2021-10-20", #omicron 21K (too divergent)
+    "Germany/NW-RKI-I-323126/2020" : "2020-08-11", #delta EPI_ISL_6463172
+    "USA/CA-CDPH-6000005630/2021" : "2021-01-11", #delta
+    "DominicanRepublic/1421092/2021" : "2021-01-11", #delta
+    "USA/AZ-ASU10204/2021" : "2021-01-30", #delta
+    "Slovenia/17-007616-CE/2021" : "2021-01-20", #delta
+    "Turkey/HSGM-E3272/2021" : "2021-03-09", #delta
+    "Turkey/HSGM-E3082/2021" : "2021-03-09", #delta
+    "CzechRepublic/NRL_19346/2021" : "2021-11-11", #omicron
+    "Turkey/HSGM-G2195/2022" : "2022-02-17", #21M -- severely underdiverged
+    "Austria/LB-R00067-S240/2022": "2022-03-23", #21M severely underdiverged
+    "Ireland/LH-NVRL-gS21IRL00545589/2021" : "2021-01-07", #delta overdiverged
+    "England/DHSC-CYN7A9Y/2021" : "2021-01-01", #delta overdiverged
+    "Slovakia/uvzsr-A08-BA_22_00000344/2021" : "2021-01-02", #delta overdiverged
+    "USA/ID-IVREF-697981/2020" : "2020-12-30", #delta
+    "Canada/QC-L00381548001/2021" : "2021-01-01", #delta
+    "DominicanRepublic/1423927/2021" : "2021-01-11", #delta
+    "USA/ID-IVREF-696562/2020" : "2020-12-27", #delta
+    "USA/UT-UPHL-220109420824/2021" : "2021-01-01", #delta
+    "Netherlands/ZH-MZ-1037/2021" : "2021-02-11", #delta
+    "Netherlands/ZH-MZ-1044/2021" : "2021-02-11", #delta
+    "Netherlands/ZH-MZ-1024/2021" : "2021-01-11", #delta
+    "Slovenia/17-007616-CE/2021" : "2021-01-20", #delta
+    "Slovenia/17-009523-CE/2021" : "2021-01-25", #delta
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
