@@ -1,5 +1,9 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2022-03-30
+- All non-human samples are now filtered out from CoVariants graphs
+- All samples with a quality control (QC) score of 'bad' or '' from NextClade are filtered out of CoVariants graphs
+
 ## 2022-03-07
 - Add direct URL linking to user selection of variants & countries (or regions) on Per Country and Per Variant pages
 

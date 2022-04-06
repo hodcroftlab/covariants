@@ -2387,7 +2387,15 @@ bad_seqs = {
     "USA/TX-HMH-MCoV-95778/2021" : "2021-03-10",  #omicron EPI_ISL_11236169
     "France/HDF-IPP17161/2021" : "2021-03-07",  #omicron EPI_ISL_11248617
     "Slovakia/BA_22_00016381/2021" : "2021-01-19",  #omicron EPI_ISL_11310487
-
+    #30 mar
+    "India/NL-IBSD-DMP-P13-110/2021" : "2021-10-07", #omicron  EPI_ISL_11465686
+    #4 apr
+    "Brazil/RN-IMT-2.12/2020" : "2020-08-06",  #gamma EPI_ISL_11681288
+    "Guatemala/4583-GMI/2021" : "2021-08-26",  #omicron EPI_ISL_11629493
+    "USA/LA-EVTL13675/2021" : "2021-08-27",  #omicron EPI_ISL_11571647
+    "USA/MA-UMASSMED-202145120/2021" : "2021-07-05",  #omicron EPI_ISL_11574200
+    "USA/VA-VTVAS3-GSC29550/2021" : "2021-01-05",  #omicron EPI_ISL_11532377
+    "NorthernIreland/NIRE-01b062/2021" : "2021-04-30",  #omicron EPI_ISL_11460017
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
