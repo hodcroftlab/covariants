@@ -2448,6 +2448,8 @@ bad_seqs = {
     "Slovenia/17-007616-CE/2021" : "2021-01-20", #delta
     "Slovenia/17-009523-CE/2021" : "2021-01-25", #delta
 
+    
+
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
     "Senegal/24725/2020" : "2020-05-09", #alpha
