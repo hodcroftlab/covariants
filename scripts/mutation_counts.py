@@ -12,6 +12,7 @@ OUTPUT_FOLDER = os.path.join(THIS_DIR, "..", "web", "data", "mutationCounts")
 aa_base_url = 'https://cov-spectrum.ethz.ch/gisaid/api/v1/sample/aa-mutations'
 count_base_url = 'https://cov-spectrum.ethz.ch/gisaid/api/v1/sample/aggregated'
 THRESHOLD = 0.005
+N_ENTRIES = 10
 
 
 clusters_example = {
@@ -80,8 +81,8 @@ if __name__ == '__main__':
             else:
                 print(f"Duplicate mutation found: {mutation['mutation']} (counts {mutation['proportion']} vs {muts[mutation['mutation']]}")
 
-        out_json_S = {"total": total, "counts": sorted(mutations["S"], key=lambda d: d['count'], reverse=True)}
-        out_json_nonS = {"total": total, "counts": sorted(mutations["nonS"], key=lambda d: d['count'], reverse=True)}
+        out_json_S = {"total": total, "counts": sorted(mutations["S"], key=lambda d: d['count'], reverse=True)[:N_ENTRIES]}
+        out_json_nonS = {"total": total, "counts": sorted(mutations["nonS"], key=lambda d: d['count'], reverse=True)[:N_ENTRIES]}
         out_json = {
             "S": out_json_S,
             "others": out_json_nonS,
