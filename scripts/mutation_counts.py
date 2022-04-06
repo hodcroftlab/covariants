@@ -11,6 +11,8 @@ OUTPUT_FOLDER = os.path.join(THIS_DIR, "..", "web", "data", "mutationCounts")
 
 aa_base_url = 'https://cov-spectrum.ethz.ch/gisaid/api/v1/sample/aa-mutations'
 count_base_url = 'https://cov-spectrum.ethz.ch/gisaid/api/v1/sample/aggregated'
+filter_deletions_url = "aaMutations=Orf1a:1.,N:420."
+
 THRESHOLD = 0.005
 N_ENTRIES = 10
 
@@ -21,7 +23,7 @@ clusters_example = {
 }
 
 def build_url(base_url,cluster,threshold):
-    url = f"{base_url}?nucMutations={','.join(cluster)}"
+    url = f"{base_url}?{filter_deletions_url}&nucMutations={','.join(cluster)}"
     if threshold is not None:
         url += f"&minProportion={threshold:f}"
     return url
