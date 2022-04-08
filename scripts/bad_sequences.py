@@ -2447,6 +2447,10 @@ bad_seqs = {
     "Netherlands/ZH-MZ-1024/2021" : "2021-01-11", #delta
     "Slovenia/17-007616-CE/2021" : "2021-01-20", #delta
     "Slovenia/17-009523-CE/2021" : "2021-01-25", #delta
+    #8 Apr - @Emma still need to be added to ncov exclude!
+    "SouthAfrica/NHLS-UCT-GS-3679/2020": "2020-06-19", #21I.Delta, EPI_ISL_11789806
+    "France/HDF-IPP19891/2021": "2021-03-14", #21L.Omicron, EPI_ISL_11811198
+    "France/HDF-IPP19893/2021": "2021-03-14", #21L.Omicron, EPI_ISL_11811199
 
     
 
