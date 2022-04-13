@@ -118,11 +118,11 @@ export function MutationCountsSummary({ currentCluster }: MutationCountsSummaryP
         </Row>
 
         <Row noGutters>
-          <Col className="d-flex mx-1 my-1">
+          <Col className="d-flex mx-1 my-1 mb-auto">
             <MutationCountsSummarySubTable title="Gene S" record={S} />
           </Col>
 
-          <Col className="d-flex mx-1 my-1">
+          <Col className="d-flex mx-1 my-1 mb-auto">
             <MutationCountsSummarySubTable title="Other genes" record={others} />
           </Col>
         </Row>
