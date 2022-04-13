@@ -15,6 +15,11 @@ export const Table = styled(TableSlim)`
   margin: auto;
 `
 
+export const Caption = styled.caption`
+  caption-side: top;
+  text-align: center;
+`
+
 export function formatError(error: unknown) {
   let message = 'Unable to load data: '
   if (error instanceof Error) {
@@ -43,11 +48,13 @@ export function MutationCountsSummaryRow({ total, counts }: MutationCountsSummar
 
 export interface MutationCountsSummarySubTableProps {
   record: MutationCountsGeneRecord
+  title: string
 }
 
-export function MutationCountsSummarySubTable({ record }: MutationCountsSummarySubTableProps) {
+export function MutationCountsSummarySubTable({ record, title }: MutationCountsSummarySubTableProps) {
   return (
     <Table striped>
+      <Caption>{title}</Caption>
       <thead>
         <tr>
           <th className="text-center">{'Mutation'}</th>
@@ -112,11 +119,11 @@ export function MutationCountsSummary({ currentCluster }: MutationCountsSummaryP
 
         <Row noGutters>
           <Col className="d-flex mx-1 my-1">
-            <MutationCountsSummarySubTable record={S} />
+            <MutationCountsSummarySubTable title="Gene S" record={S} />
           </Col>
 
           <Col className="d-flex mx-1 my-1">
-            <MutationCountsSummarySubTable record={others} />
+            <MutationCountsSummarySubTable title="Other genes" record={others} />
           </Col>
         </Row>
 
