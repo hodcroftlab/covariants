@@ -37,8 +37,10 @@ fmt = "png"  # "pdf"
 grey_color = "#cccccc"  # for "other clusters" of country plots
 
 #dated_limit = "2021-03-31" #only works for Q677 currently
-#dated_limit = "2021-06-30"
+#dated_limit = "2021-07-31"
 #dated_cluster = "21A (Delta)"
+#dated_cluster = "21I (Delta)"
+#dated_cluster = "21J (Delta)"
 #dated_cluster = "20I (Alpha, V1)"
 dated_cluster = "Q677"
 dated_limit = ""
@@ -310,8 +312,8 @@ t0 = time.time()
 #    "clock_deviation": "category"
 #}
 input_meta = "data/metadata.tsv"
-dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str, 'age': str, 'QC_frame_shifts': str, 'frame_shifts': str}
-cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl']
+dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str, 'age': str, 'QC_frame_shifts': str, 'frame_shifts': str, 'QC_overall_status': str}
+cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl', 'QC_overall_status']
 meta = pd.read_csv(input_meta, sep="\t", dtype=dtype, index_col=False, usecols=cols) #dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str}, index_col=False)
 meta = meta.fillna("")
 
@@ -350,6 +352,13 @@ meta['division'] = meta['division'].replace(swiss_regions)
 
 # Filter for only Host = Human
 meta = meta[meta["host"] == "Human"]
+
+#Filter only for those without 'bad' and those without '' QC status
+# available values (as of 30 mar 22) are 'bad', 'good', 'mediocre', ''
+# these '' values are likely those where alignment fails
+# as of 30 mar 22, this excludes 466,596 sequences (!) for bad, and 4,781 for ''
+meta = meta[meta["QC_overall_status"] != "bad"]
+meta = meta[meta["QC_overall_status"] != ""]
 
 # Filter Metadata to only have those we have mutations for! Allows 'out of sync' files. --> Should we check for the subtitutions and deletions columns to be not empty?
 # meta = meta[meta["strain"].isin(muts["Unnamed: 0"])]
@@ -1217,8 +1226,13 @@ def get_ordered_clusters_to_plot(clusters, division=False, selected_country=None
         proposed_coun_to_plot.extend(
             country_inf[country_inf.num_seqs > min_to_plot].index
         )
+        #special rule for Andorra
+        proposed_coun_to_plot.extend(
+            country_inf[(country_inf.num_seqs > 50) & (country_inf.index == "Andorra")].index
+        )
+
     proposed_coun_to_plot = set(proposed_coun_to_plot)
-    print(f"At min plot {min_to_plot}, there are {len(proposed_coun_to_plot)} entries")
+    print(f"At min plot {min_to_plot}, there are {len(proposed_coun_to_plot)} entries PLUS ANDORRA")
 
     total_coun_counts = {}
     # decide order
