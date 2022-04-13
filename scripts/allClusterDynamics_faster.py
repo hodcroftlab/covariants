@@ -1280,8 +1280,13 @@ def get_ordered_clusters_to_plot(clusters, division=False, selected_country=None
         proposed_coun_to_plot.extend(
             country_inf[country_inf.num_seqs > min_to_plot].index
         )
+        #special rule for Andorra
+        proposed_coun_to_plot.extend(
+            country_inf[(country_inf.num_seqs > 50) & (country_inf.index == "Andorra")].index
+        )
+
     proposed_coun_to_plot = set(proposed_coun_to_plot)
-    print(f"At min plot {min_to_plot}, there are {len(proposed_coun_to_plot)} entries")
+    print(f"At min plot {min_to_plot}, there are {len(proposed_coun_to_plot)} entries PLUS ANDORRA")
 
     total_coun_counts = {}
     # decide order
