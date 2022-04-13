@@ -16,6 +16,9 @@ import { ChartContainerOuter, ChartContainerInner } from 'src/components/Common/
 import { useTheme } from 'styled-components'
 import { CasesPlotTooltip } from './CasesPlotTooltip'
 
+const CHART_MARGIN = { left: 10, top: 12, bottom: 6, right: 12 }
+const ALLOW_ESCAPE_VIEW_BOX = { x: false, y: true }
+
 export interface CasesPlotProps {
   cluster_names: string[]
   distribution: PerCountryCasesDistributionDatum[]
@@ -47,12 +50,12 @@ export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotPro
             const adjustedTicks = adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin).slice(1) // slice ensures first tick is not outside domain
             return (
               <ResponsiveContainer aspect={theme.plot.aspectRatio} debounce={0}>
-                <AreaChart margin={{ left: 10, top: 12, bottom: 6, right: 12 }} data={data} ref={chartRef}>
+                <AreaChart margin={CHART_MARGIN} data={data} ref={chartRef}>
                   <XAxis
                     dataKey="week"
                     type="number"
                     tickFormatter={formatDateHumanely}
-                    domain={[timeDomain[0], timeDomain[1]]}
+                    domain={timeDomain}
                     ticks={adjustedTicks}
                     tick={theme.plot.tickStyle}
                     tickMargin={theme.plot.tickMargin?.x}
@@ -92,7 +95,7 @@ export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotPro
                   <Tooltip
                     content={CasesPlotTooltip}
                     isAnimationActive={false}
-                    allowEscapeViewBox={{ x: false, y: true }}
+                    allowEscapeViewBox={ALLOW_ESCAPE_VIEW_BOX}
                     offset={50}
                   />
                 </AreaChart>

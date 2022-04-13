@@ -51,12 +51,12 @@ export function CasesPlotTooltip(props: DefaultTooltipContentProps<number, strin
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-argument
   const week = formatDateBiweekly(payload[0]?.payload.week)
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-argument
   const total: number = formatInteger(payload[0]?.payload.total ?? 0)
 
   const payloadSorted = reverse(sortBy(payload, 'value'))

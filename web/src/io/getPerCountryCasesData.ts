@@ -125,7 +125,7 @@ export function filterClusters(clusters: Cluster[], withCountriesFiltered: PerCo
   const withClustersFiltered = withCountriesFiltered.map(({ country, distribution }) => {
     const distributionFiltered = distribution.map((dist) => {
       const countsFiltered = pickBy(dist.stand_estimated_cases, (_0, cluster) => {
-        return enabledClusters.some((candidate) => candidate === cluster)
+        return enabledClusters.includes(cluster)
       })
 
       return { ...dist, cluster_counts: countsFiltered }
