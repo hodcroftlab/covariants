@@ -1,23 +1,32 @@
 import React, { useMemo } from 'react'
 
 import { useQuery } from 'react-query'
-import { Row, Col } from 'reactstrap'
+import { Row, Col, CardHeader, Card, CardBody } from 'reactstrap'
 
 import type { ClusterDatum } from 'src/io/getClusters'
 import { getMutationCounts, MutationCountsDatum, MutationCountsGeneRecord } from 'src/io/getMutationCounts'
 import { AminoacidMutationBadge } from 'src/components/Common/MutationBadge'
 import { TableSlim } from 'src/components/Common/TableSlim'
-import { Link } from 'src/components/Link/Link'
 import styled from 'styled-components'
 
+const MutationCountsSummaryCardBody = styled(CardBody)`
+  padding: 1rem;
+  padding-top: 0.5rem;
+`
 export const Table = styled(TableSlim)`
   max-width: 350px;
   margin: auto;
+  font-family: ${(props) => props.theme.font.monospace};
+  font-size: 0.85rem;
 `
 
 export const Caption = styled.caption`
   caption-side: top;
   text-align: center;
+  padding: 0;
+  color: ${(props) => props.theme.gray700};
+  font-size: 1.1rem;
+  font-weight: bold;
 `
 
 export function formatError(error: unknown) {
@@ -90,7 +99,7 @@ export interface MutationCountsSummaryProps {
   currentCluster: ClusterDatum
 }
 
-export function MutationCountsSummary({ currentCluster }: MutationCountsSummaryProps) {
+export function MutationCountsSummaryCard({ currentCluster }: MutationCountsSummaryProps) {
   const { data, isError, error, isLoading } = useMutationCounts(currentCluster.build_name)
 
   if (!data) {
@@ -100,45 +109,35 @@ export function MutationCountsSummary({ currentCluster }: MutationCountsSummaryP
   const { S, others } = data
 
   return (
-    <Row noGutters>
-      <Col>
+    <Card>
+      <CardHeader>{'Non-defining mutation counts'}</CardHeader>
+      <MutationCountsSummaryCardBody>
         <Row noGutters>
           <Col>
-            <h5 className="text-center mb-2">
-              <span className="d-inline">{'Non-defining mutation counts '}</span>
-              <span className="small">
-                <span>{'('}</span>
-                <span>
-                  <Link href="/">{'Details'}</Link>
-                </span>
-                <span>{')'}</span>
-              </span>
-            </h5>
+            <Row noGutters>
+              <Col className="d-flex mx-1 my-1 mb-auto">
+                <MutationCountsSummarySubTable title="Gene S" record={S} />
+              </Col>
+
+              <Col className="d-flex mx-1 my-1 mb-auto">
+                <MutationCountsSummarySubTable title="Other genes" record={others} />
+              </Col>
+            </Row>
+
+            <Row noGutters>
+              <Col>
+                {isLoading && <div className="mx-auto">{'Loading...'}</div>}
+                {isError && (
+                  <div className="mx-auto">
+                    <div>{`Mutation counts are not yet available`}</div>
+                    <div className="text-danger">{process.env.NODE_ENV === 'development' && formatError(error)}</div>
+                  </div>
+                )}
+              </Col>
+            </Row>
           </Col>
         </Row>
-
-        <Row noGutters>
-          <Col className="d-flex mx-1 my-1 mb-auto">
-            <MutationCountsSummarySubTable title="Gene S" record={S} />
-          </Col>
-
-          <Col className="d-flex mx-1 my-1 mb-auto">
-            <MutationCountsSummarySubTable title="Other genes" record={others} />
-          </Col>
-        </Row>
-
-        <Row noGutters>
-          <Col>
-            {isLoading && <div className="mx-auto">{'Loading...'}</div>}
-            {isError && (
-              <div className="mx-auto">
-                <div>{`Mutation counts are not yet available`}</div>
-                <div className="text-danger">{process.env.NODE_ENV === 'development' && formatError(error)}</div>
-              </div>
-            )}
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+      </MutationCountsSummaryCardBody>
+    </Card>
   )
 }
