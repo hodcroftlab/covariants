@@ -2387,7 +2387,97 @@ bad_seqs = {
     "USA/TX-HMH-MCoV-95778/2021" : "2021-03-10",  #omicron EPI_ISL_11236169
     "France/HDF-IPP17161/2021" : "2021-03-07",  #omicron EPI_ISL_11248617
     "Slovakia/BA_22_00016381/2021" : "2021-01-19",  #omicron EPI_ISL_11310487
-
+    #30 mar
+    "India/NL-IBSD-DMP-P13-110/2021" : "2021-10-07", #omicron  EPI_ISL_11465686
+    #4 apr
+    "Brazil/RN-IMT-2.12/2020" : "2020-08-06",  #gamma EPI_ISL_11681288
+    "Guatemala/4583-GMI/2021" : "2021-08-26",  #omicron EPI_ISL_11629493
+    "USA/LA-EVTL13675/2021" : "2021-08-27",  #omicron EPI_ISL_11571647
+    "USA/MA-UMASSMED-202145120/2021" : "2021-07-05",  #omicron EPI_ISL_11574200
+    "USA/VA-VTVAS3-GSC29550/2021" : "2021-01-05",  #omicron EPI_ISL_11532377
+    "NorthernIreland/NIRE-01b062/2021" : "2021-04-30",  #omicron EPI_ISL_11460017
+    #6 Apr
+    "France/HDF-IPP20854/2021" : "2021-03-14", #omicron  EPI_ISL_11759954
+    "France/HDF-IPP20856/2021" : "2021-03-14", #omicron  EPI_ISL_11759955
+    "France/HDF-IPP20857/2021" : "2021-03-14", #omicron  EPI_ISL_11759956
+    "France/HDF-IPP20860/2021" : "2021-03-14", #omicron  EPI_ISL_11759959
+    "France/HDF-IPP20862/2021" : "2021-03-14", #omicron  EPI_ISL_11759961
+    "France/HDF-IPP20863/2021" : "2021-03-14", #omicron  EPI_ISL_11759962
+    "France/HDF-IPP20866/2021" : "2021-03-14", #omicron  EPI_ISL_11759965
+    "Japan/PG-202036/2021" : "2021-02-18", #omicron  EPI_ISL_11711479
+    "Malaysia/A483/2021" : "2021-01-03", #omicron  EPI_ISL_11754756
+    "France/HDF-IPP20849/2021" : "2021-03-14", #omicron  EPI_ISL_11759949
+    "France/HDF-IPP20850/2021" : "2021-03-14", #omicron  EPI_ISL_11759950
+    "France/HDF-IPP20851/2021" : "2021-03-14", #omicron  EPI_ISL_11759951
+    "France/HDF-IPP20852/2021" : "2021-03-14", #omicron  EPI_ISL_11759952
+    "France/HDF-IPP20853/2021" : "2021-03-14", #omicron  EPI_ISL_11759953
+    "France/HDF-IPP20858/2021" : "2021-03-14", #omicron  EPI_ISL_11759957
+    "France/HDF-IPP20859/2021" : "2021-03-14", #omicron  EPI_ISL_11759958
+    "France/HDF-IPP20861/2021" : "2021-03-14", #omicron  EPI_ISL_11759960
+    "France/HDF-IPP20864/2021" : "2021-03-14", #omicron  EPI_ISL_11759963
+    "France/HDF-IPP20865/2021" : "2021-03-14", #omicron  EPI_ISL_11759964
+    "France/HDF-IPP20867/2021" : "2021-03-14", #omicron  EPI_ISL_11759966
+    "Germany/NW-RKI-I-323118/2020" : "2020-09-11", #delta EPI_ISL_6463130
+    "Guatemala/4583-GMI/2021" : "2021-08-26", #omicron 21K (too divergent!)
+    "Slovakia/BA_22_00010686/2021" : "2021-10-22", #omicron 21K (too divergent)
+    "Austria/AGES-655623/2021" : "2021-11-04", #omicron 21K (too divergent)
+    "England/DHSC-CYDW4E6/2021" : "2021-10-27", #omicron 21K (too divergent)
+    "England/DHSC-CYY9NFJ/2021" : "2021-10-16", #omicron 21K (too divergent)
+    "England/DHSC-CYNSUZD/2021" : "2021-10-20", #omicron 21K (too divergent)
+    "Germany/NW-RKI-I-323126/2020" : "2020-08-11", #delta EPI_ISL_6463172
+    "USA/CA-CDPH-6000005630/2021" : "2021-01-11", #delta
+    "DominicanRepublic/1421092/2021" : "2021-01-11", #delta
+    "USA/AZ-ASU10204/2021" : "2021-01-30", #delta
+    "Slovenia/17-007616-CE/2021" : "2021-01-20", #delta
+    "Turkey/HSGM-E3272/2021" : "2021-03-09", #delta
+    "Turkey/HSGM-E3082/2021" : "2021-03-09", #delta
+    "CzechRepublic/NRL_19346/2021" : "2021-11-11", #omicron
+    "Turkey/HSGM-G2195/2022" : "2022-02-17", #21M -- severely underdiverged
+    "Austria/LB-R00067-S240/2022": "2022-03-23", #21M severely underdiverged
+    "Ireland/LH-NVRL-gS21IRL00545589/2021" : "2021-01-07", #delta overdiverged
+    "England/DHSC-CYN7A9Y/2021" : "2021-01-01", #delta overdiverged
+    "Slovakia/uvzsr-A08-BA_22_00000344/2021" : "2021-01-02", #delta overdiverged
+    "USA/ID-IVREF-697981/2020" : "2020-12-30", #delta
+    "Canada/QC-L00381548001/2021" : "2021-01-01", #delta
+    "DominicanRepublic/1423927/2021" : "2021-01-11", #delta
+    "USA/ID-IVREF-696562/2020" : "2020-12-27", #delta
+    "USA/UT-UPHL-220109420824/2021" : "2021-01-01", #delta
+    "Netherlands/ZH-MZ-1037/2021" : "2021-02-11", #delta
+    "Netherlands/ZH-MZ-1044/2021" : "2021-02-11", #delta
+    "Netherlands/ZH-MZ-1024/2021" : "2021-01-11", #delta
+    "Slovenia/17-007616-CE/2021" : "2021-01-20", #delta
+    "Slovenia/17-009523-CE/2021" : "2021-01-25", #delta
+    #8 Apr - @Emma still need to be added to ncov exclude!
+    "SouthAfrica/NHLS-UCT-GS-3679/2020": "2020-06-19", #21I.Delta, EPI_ISL_11789806
+    "France/HDF-IPP19891/2021": "2021-03-14", #21L.Omicron, EPI_ISL_11811198
+    "France/HDF-IPP19893/2021": "2021-03-14", #21L.Omicron, EPI_ISL_11811199
+    #11 Apr
+    "Angola/CERI-KRISP-K037086/2021": "2021-01-30",
+    "Belgium/UGent-14601/2021": "2021-01-04",
+    "Nigeria/BCVL_GHRU_32940_S21/2021": "2021-09-03",
+    "USA/KS-KHEL-10341/2021": "2021-01-18",
+    "USA/UT-UPHL-220407118460/2021": "2021-01-02",
+    "France/ARA-HCL722001572801/2021": "2021-03-21",
+    "France/ARA-HCL722001572901/2021": "2021-03-21",
+    "France/ARA-HCL722001573001/2021": "2021-03-21",
+    "France/NAQ-HCL722001602101/2021": "2021-03-21",
+    "France/NAQ-HCL722001602201/2021": "2021-03-21",
+    "France/NAQ-HCL722001602301/2021": "2021-03-21",
+    "France/NAQ-HCL722001602501/2021": "2021-03-21",
+    "France/NAQ-HCL722001603201/2021": "2021-03-21",
+    "France/NAQ-HCL722001603301/2021": "2021-03-21",
+    "France/NAQ-HCL722001603401/2021": "2021-03-21",
+    "France/NAQ-HCL722001603501/2021": "2021-03-21",
+    "France/NAQ-HCL722001603601/2021": "2021-03-21",
+    "France/NAQ-HCL722001603701/2021": "2021-03-21",
+    "France/NAQ-HCL722001604001/2021": "2021-03-21",
+    "France/NAQ-HCL722001604101/2021": "2021-03-21",
+    "France/NAQ-HCL722001604301/2021": "2021-03-21",
+    "France/NAQ-HCL722001604401/2021": "2021-03-21",
+    "France/NAQ-HCL722001604501/2021": "2021-03-21",
+    "Israel/ICH-741204376/2021": "2021-09-29",
+    "Pakistan/AKU-HEC-13/2021": "2021-03-22",
+    "Slovakia/BA_22_00021142/2021": "2021-03-20",
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha

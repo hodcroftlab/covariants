@@ -16,7 +16,7 @@
     "ls": "--"
   },
   "Bahrain": {
-    "c": "#6a3d9a",
+    "c": "#ff7f00",
     "ls": "dotted"
   },
   "Bangladesh": {
@@ -28,7 +28,7 @@
     "ls": "-"
   },
   "Bonaire": {
-    "c": "#b15928",
+    "c": "#6a3d9a",
     "ls": "dotted"
   },
   "Bosnia and Herzegovina": {
@@ -44,7 +44,7 @@
     "ls": "--"
   },
   "Brunei": {
-    "c": "#000000",
+    "c": "#0000ff",
     "ls": "dotted"
   },
   "Bulgaria": {
@@ -68,7 +68,7 @@
     "ls": "--"
   },
   "Costa Rica": {
-    "c": "#cab2d6",
+    "c": "#e31a1c",
     "ls": "dotted"
   },
   "Croatia": {
@@ -104,7 +104,7 @@
     "ls": "-"
   },
   "Georgia": {
-    "c": "#990000",
+    "c": "#b15928",
     "ls": "dotted"
   },
   "Germany": {
@@ -119,8 +119,12 @@
     "c": "#9900cc",
     "ls": "-."
   },
+  "Guatemala": {
+    "c": "#000000",
+    "ls": "dotted"
+  },
   "Hong Kong": {
-    "c": "#a6a6a6",
+    "c": "#ff66ff",
     "ls": "dotted"
   },
   "Iceland": {
@@ -160,7 +164,7 @@
     "ls": "--"
   },
   "Lebanon": {
-    "c": "#ffcc00",
+    "c": "#a6a6a6",
     "ls": "dotted"
   },
   "Lithuania": {
@@ -176,11 +180,11 @@
     "ls": "-."
   },
   "Maldives": {
-    "c": "#ff66ff",
+    "c": "#9900cc",
     "ls": "dotted"
   },
   "Mauritius": {
-    "c": "#004d00",
+    "c": "#ffcc00",
     "ls": "dotted"
   },
   "Mexico": {
@@ -188,7 +192,7 @@
     "ls": "-."
   },
   "Nepal": {
-    "c": "#0000ff",
+    "c": "#990000",
     "ls": "dotted"
   },
   "Netherlands": {
@@ -196,7 +200,7 @@
     "ls": "-"
   },
   "New Zealand": {
-    "c": "#e31a1c",
+    "c": "#33a02c",
     "ls": "dotted"
   },
   "Nigeria": {
@@ -208,15 +212,19 @@
     "ls": "-"
   },
   "Pakistan": {
-    "c": "#b2df8a",
+    "c": "#cab2d6",
+    "ls": "dotted"
+  },
+  "Panama": {
+    "c": "#004d00",
     "ls": "dotted"
   },
   "Papua New Guinea": {
-    "c": "#9900cc",
+    "c": "#b2df8a",
     "ls": "dotted"
   },
   "Peru": {
-    "c": "#fb9a99",
+    "c": "#1f78b4",
     "ls": "dotted"
   },
   "Philippines": {
@@ -242,10 +250,6 @@
   "Russia": {
     "c": "#cab2d6",
     "ls": "--"
-  },
-  "Senegal": {
-    "c": "#1f78b4",
-    "ls": "dotted"
   },
   "Singapore": {
     "c": "#a6a6a6",
@@ -291,10 +295,6 @@
     "c": "#000000",
     "ls": "-"
   },
-  "Trinidad and Tobago": {
-    "c": "#33a02c",
-    "ls": "dotted"
-  },
   "Turkey": {
     "c": "#fb9a99",
     "ls": "--"
@@ -308,7 +308,7 @@
     "ls": "-"
   },
   "Vietnam": {
-    "c": "#ff7f00",
+    "c": "#fb9a99",
     "ls": "dotted"
   }
 }
