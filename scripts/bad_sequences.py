@@ -2506,6 +2506,13 @@ bad_seqs = {
     "France/ARA-HCL722001838101/2021": "2021-03-28", #21L.Omicron, 2021-10-16
     "Israel/ICH-741211805/2020": "2020-11-26", #21L.Omicron, 2021-10-16
     "SouthAfrica/NHLS-UCT-GS-E555/2021": "2021-07-22", #21L.Omicron, 2021-10-16
+    # 19 Apr
+    "Belgium/UGent-14783/2021": "2021-10-11", #21K.Omicron
+    "USA/CA-LACPHL-AF08307/2021": "2021-01-27", #21K.Omicron
+    "USA/CA-LACPHL-AF08507/2021": "2021-01-22", #21K.Omicron
+    "USA/CO-CDPHE-2103101340/2021": "2021-09-30", #21K.Omicron
+    "USA/NJ-PHEL-V22016862/2020": "2020-04-03", #21L.Omicron
+
 
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
