@@ -25,7 +25,7 @@ export function VariantTitle({ cluster }: VariantTitleProps) {
       <ClusterNameTitle>{cluster?.display_name && `Variant: ${cluster?.display_name}`}</ClusterNameTitle>
       {
         <ClusterNameSubtitle>
-          {cluster?.alt_display_name && (
+          {cluster?.alt_display_name?.length > 0 && (
             <>
               {`also known as `}
               {cluster.alt_display_name.join(', ')}
