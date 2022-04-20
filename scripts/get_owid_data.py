@@ -50,6 +50,7 @@ if __name__ == '__main__':
     if yesterday_data.empty:
         where_date_most_recent = all_data["date"] == get_most_recent(all_data)
         yesterday_data = all_data.loc[where_date_most_recent]
+        print(f"Data is from the date {yesterday_data}")
 
     if yesterday_data.empty:
         print('***ERROR*** Case data was NOT retrieved from OWID! Or another error occurred (what time is it CET?)')
