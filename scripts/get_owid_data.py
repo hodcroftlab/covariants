@@ -26,6 +26,9 @@ def get_yesterday():
     yesterday = datetime.now() - timedelta(days=1)
     return yesterday.strftime('%Y-%m-%d')
 
+def get_most_recent(all_data):
+    most_recent = max(pd.to_datetime(all_data["date"]))
+    return most_recent.strftime('%Y-%m-%d')
 
 if __name__ == '__main__':
     download_owid_data()
@@ -42,6 +45,14 @@ if __name__ == '__main__':
     # Get data for yesterday, for example
     where_date_is_yesterday = all_data["date"] == get_yesterday()
     yesterday_data = all_data.loc[where_date_is_yesterday]
+
+    #if not possible, get most recent date, and report it
+    if yesterday_data.empty:
+        where_date_most_recent = all_data["date"] == get_most_recent(all_data)
+        yesterday_data = all_data.loc[where_date_most_recent]
+
+    if yesterday_data.empty:
+        print('***ERROR*** Case data was NOT retrieved from OWID! Or another error occurred (what time is it CET?)')
 
     with pd.option_context('display.max_rows', None):
         print(yesterday_data)
