@@ -6,7 +6,7 @@ In some countries (particularly those good molecular surveillance) this assumpti
 
 To try to reduce misinterpretation, countries are only displayed if they sequenced at least 3% of cases in at least 50% of the 2-week periods tracked by CoVariants.
 
-Note that case data will often seem to go _down_ nearer to the present, because the number of cases reported is incomplete. **Always interpret the 'end' of these plots with care!**
+As always, **interpret the 'end' of these plots with care!** Sequencing data is often still incoming, and even case data can be delayed.
 
 As with all of the variant plots:
 
