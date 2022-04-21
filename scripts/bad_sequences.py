@@ -2447,7 +2447,7 @@ bad_seqs = {
     "Netherlands/ZH-MZ-1024/2021" : "2021-01-11", #delta
     "Slovenia/17-007616-CE/2021" : "2021-01-20", #delta
     "Slovenia/17-009523-CE/2021" : "2021-01-25", #delta
-    #8 Apr - @Emma still need to be added to ncov exclude!
+    #8 Apr
     "SouthAfrica/NHLS-UCT-GS-3679/2020": "2020-06-19", #21I.Delta, EPI_ISL_11789806
     "France/HDF-IPP19891/2021": "2021-03-14", #21L.Omicron, EPI_ISL_11811198
     "France/HDF-IPP19893/2021": "2021-03-14", #21L.Omicron, EPI_ISL_11811199
@@ -2512,7 +2512,9 @@ bad_seqs = {
     "USA/CA-LACPHL-AF08507/2021": "2021-01-22", #21K.Omicron
     "USA/CO-CDPHE-2103101340/2021": "2021-09-30", #21K.Omicron
     "USA/NJ-PHEL-V22016862/2020": "2020-04-03", #21L.Omicron
-
+    # 21 Apr
+    "USA/VA-VTVAS3-GSC31172/2021" : "2021-01-04",  # omicron - EPI_ISL_12125110
+    "USA/VA-VTVAS3-GSC31185/2021" : "2021-01-04",  # omicron - EPI_ISL_12125124
 
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
