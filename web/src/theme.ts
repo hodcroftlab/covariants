@@ -114,7 +114,7 @@ export const shadows = {
 export const plot = {
   titleFontSize: '1.25rem',
   aspectRatio: 1.88,
-  margin: { left: -12, top: 12, bottom: 6, right: 12 },
+  margin: { left: -10, top: 12, bottom: 6, right: 12 },
   tickMargin: {
     y: 4,
     x: 6,

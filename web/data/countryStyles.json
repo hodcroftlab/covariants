@@ -16,7 +16,7 @@
     "ls": "--"
   },
   "Bahrain": {
-    "c": "#ff7f00",
+    "c": "#e31a1c",
     "ls": "dotted"
   },
   "Bangladesh": {
@@ -28,12 +28,8 @@
     "ls": "-"
   },
   "Bonaire": {
-    "c": "#6a3d9a",
+    "c": "#cab2d6",
     "ls": "dotted"
-  },
-  "Bosnia and Herzegovina": {
-    "c": "#0099ff",
-    "ls": "-."
   },
   "Botswana": {
     "c": "#33a02c",
@@ -44,7 +40,7 @@
     "ls": "--"
   },
   "Brunei": {
-    "c": "#0000ff",
+    "c": "#ff66ff",
     "ls": "dotted"
   },
   "Bulgaria": {
@@ -68,7 +64,7 @@
     "ls": "--"
   },
   "Costa Rica": {
-    "c": "#e31a1c",
+    "c": "#fb9a99",
     "ls": "dotted"
   },
   "Croatia": {
@@ -119,12 +115,8 @@
     "c": "#9900cc",
     "ls": "-."
   },
-  "Guatemala": {
-    "c": "#000000",
-    "ls": "dotted"
-  },
   "Hong Kong": {
-    "c": "#ff66ff",
+    "c": "#990000",
     "ls": "dotted"
   },
   "Iceland": {
@@ -163,10 +155,6 @@
     "c": "#a6a6a6",
     "ls": "--"
   },
-  "Lebanon": {
-    "c": "#a6a6a6",
-    "ls": "dotted"
-  },
   "Lithuania": {
     "c": "#ff66ff",
     "ls": "-"
@@ -179,20 +167,12 @@
     "c": "#cab2d6",
     "ls": "-."
   },
-  "Maldives": {
-    "c": "#9900cc",
-    "ls": "dotted"
-  },
-  "Mauritius": {
-    "c": "#ffcc00",
-    "ls": "dotted"
-  },
   "Mexico": {
     "c": "#e31a1c",
     "ls": "-."
   },
   "Nepal": {
-    "c": "#990000",
+    "c": "#9900cc",
     "ls": "dotted"
   },
   "Netherlands": {
@@ -200,8 +180,8 @@
     "ls": "-"
   },
   "New Zealand": {
-    "c": "#33a02c",
-    "ls": "dotted"
+    "c": "#0099ff",
+    "ls": "-."
   },
   "Nigeria": {
     "c": "#000000",
@@ -212,15 +192,15 @@
     "ls": "-"
   },
   "Pakistan": {
-    "c": "#cab2d6",
+    "c": "#ff7f00",
     "ls": "dotted"
   },
   "Panama": {
-    "c": "#004d00",
+    "c": "#b2df8a",
     "ls": "dotted"
   },
   "Papua New Guinea": {
-    "c": "#b2df8a",
+    "c": "#6a3d9a",
     "ls": "dotted"
   },
   "Peru": {
@@ -308,7 +288,7 @@
     "ls": "-"
   },
   "Vietnam": {
-    "c": "#fb9a99",
+    "c": "#33a02c",
     "ls": "dotted"
   }
 }
