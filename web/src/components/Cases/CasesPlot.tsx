@@ -8,7 +8,7 @@ import ReactResizeDetector from 'react-resize-detector'
 
 import type { PerCountryCasesDistributionDatum } from 'src/io/getPerCountryCasesData'
 import { ticks, timeDomain } from 'src/io/getParams'
-import { getClusterColor } from 'src/io/getClusters'
+import { CLUSTER_NAME_OTHERS, getClusterColor } from 'src/io/getClusters'
 import { formatDateHumanely } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
@@ -89,6 +89,16 @@ export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotPro
                       isAnimationActive={false}
                     />
                   ))}
+
+                  <Area
+                    type="monotone"
+                    dataKey={CLUSTER_NAME_OTHERS}
+                    stackId="1"
+                    stroke="none"
+                    fill={theme.clusters.color.others}
+                    fillOpacity={1}
+                    isAnimationActive={false}
+                  />
 
                   <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
 
