@@ -92,6 +92,7 @@ for i in range(len(world_data)):
             continue  # Skip if no count data
 
         stand_estimated_cases = {c: round(float(n) * stand_total_cases) for c, n in percent_counts.items()}
+        stand_estimated_cases["Unknown"] = stand_total_cases - sum(stand_estimated_cases.values())
         percent_total_cases = total_sequences / total_cases if total_cases != 0 else None
 
         world_data_counts[-1]["distribution"].append({"week": week, "total_sequences": total_sequences, "stand_total_cases" : stand_total_cases, "stand_estimated_cases" : stand_estimated_cases, "percent_total_cases" : percent_total_cases})
