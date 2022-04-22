@@ -3,7 +3,7 @@ export CLADES_SVG_SRC="https://raw.githubusercontent.com/nextstrain/ncov-clades-
 export CLADES_SVG_DST="web/src/assets/images/clades.svg"
 
 # Umbrella target for updating all data for web app
-web-data: get_owid_data case-counts web-json stills update-clades-svg
+web-data: get_owid_data web-json case-counts stills update-clades-svg
 
 get_owid_data:
 	python3 scripts/get_owid_data.py
