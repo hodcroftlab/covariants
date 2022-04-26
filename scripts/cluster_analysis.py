@@ -355,7 +355,7 @@ with open(input_meta) as f:
         if not line:
             break
         n += 1
-        if ((n-1)/n_total) % 0.05 > n/n_total % 0.01:
+        if ((n-1)/n_total) % 0.05 > n/n_total % 0.05:
             print(f"{round(n/n_total * 100)}% complete...")
 
         l = line.split("\t")
@@ -425,12 +425,15 @@ with open(input_meta) as f:
         ##### COLLECT COUNTS PER CLUSTER #####
         for clus in clus_all:
 
+
+            # TODO: S:Q677 not in clus_dates
             if clus not in nextstrain_clade_to_clus:
-                if date_formatted < clus_dates[clus]:
-                    if clus not in early_dates_no_Nextclade:
-                        early_dates_no_Nextclade[clus] = {}
-                    early_dates_no_Nextclade[clus][l[indices['strain']]] = l[indices['date']]
-                    continue
+                if clusters[clus]["display_name"] in clus_dates: # TODO: Could do faster...
+                    if date_formatted < clus_dates[clusters[clus]["display_name"]]:
+                        if clus not in early_dates_no_Nextclade:
+                            early_dates_no_Nextclade[clus] = {}
+                        early_dates_no_Nextclade[clus][l[indices['strain']]] = l[indices['date']]
+                        continue
 
             # TODO: Maybe remove from certain clusters?
             # if wanted seqs are part of a Nextclade designated variant, remove from that count & use this one.
@@ -474,14 +477,15 @@ with open(input_meta) as f:
 
 # TODO: print out second date check
 
-# Create total_counts: Total counts per cluster and date, not sorted by country
+# Create total_counts: Total counts per country and date, not sorted by cluster
+total_counts_countries = {country: {} for country in all_countries}
 for clus in clus_data_all:
     clus_data_all[clus]["total_counts"] = {}
-    for country in clus_data_all[clus]["biweekly_counts_per_clus"]:
-        for date in clus_data_all[clus]["biweekly_counts_per_clus"][country]:
-            if date not in clus_data_all[clus]["total_counts"]:
-                clus_data_all[clus]["total_counts"][date] = 0
-            clus_data_all[clus]["total_counts"][date] += clus_data_all[clus]["biweekly_counts_per_clus"][country][date]
+    for country in clus_data_all[clus]["cluster_counts"]:
+        for date in clus_data_all[clus]["cluster_counts"][country]:
+            if date not in total_counts_countries[country]:
+                total_counts_countries[country][date] = 0
+            total_counts_countries[country][date] += clus_data_all[clus]["cluster_counts"][country][date]
 
 cutoff_num_seqs = 1200
 
@@ -519,8 +523,8 @@ for clus in clus_to_run:
 
     print(f"\nPlotting & writing out cluster {clus}: number {ndone} of {len(clus_to_run)}")
 
-    total_data = clus_data_all[clus]["total_counts"]
-    cluster_data = clus_data_all[clus]["cluster_data"]
+    total_data = pd.DataFrame(total_counts_countries)
+    cluster_data = pd.DataFrame(clus_data_all[clus]["cluster_counts"])
     clus_build_name = clus_data_all[clus]["build_name"]
 
     json_output[clus_build_name] = {}
