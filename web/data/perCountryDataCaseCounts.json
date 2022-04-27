@@ -1614,7 +1614,7 @@
               "week": "2022-04-04"
             },
             {
-              "percent_total_cases": 6.113022449463643e-05,
+              "percent_total_cases": 5.361964795483939e-05,
               "stand_estimated_cases": {
                 "20A.EU2": 0,
                 "20A/S:126A": 0,
@@ -1634,13 +1634,13 @@
                 "21H (Mu)": 0,
                 "21I (Delta)": 0,
                 "21J (Delta)": 0,
-                "21K (Omicron)": 98,
-                "21L (Omicron)": 1130,
+                "21K (Omicron)": 112,
+                "21L (Omicron)": 1288,
                 "S:677H.Robin1": 0,
                 "S:677P.Pelican": 0,
                 "others": 0
               },
-              "stand_total_cases": 1228,
+              "stand_total_cases": 1400,
               "total_sequences": 25,
               "week": "2022-04-18"
             }
@@ -3333,7 +3333,7 @@
               "week": "2022-04-04"
             },
             {
-              "percent_total_cases": 0.0008492990049837039,
+              "percent_total_cases": 0.0007920107423995111,
               "stand_estimated_cases": {
                 "20A.EU2": 0,
                 "20A/S:126A": 0,
@@ -3356,12 +3356,12 @@
                 "21H (Mu)": 0,
                 "21I (Delta)": 0,
                 "21J (Delta)": 0,
-                "21K (Omicron)": 207,
-                "21L (Omicron)": 3124,
+                "21K (Omicron)": 222,
+                "21L (Omicron)": 3350,
                 "S:677P.Pelican": 0,
-                "others": 69
+                "others": 74
               },
-              "stand_total_cases": 3400,
+              "stand_total_cases": 3646,
               "total_sequences": 197,
               "week": "2022-04-18"
             }
@@ -8226,7 +8226,7 @@
               "week": "2022-04-04"
             },
             {
-              "percent_total_cases": 0.0005645464809936018,
+              "percent_total_cases": 0.0005122825848315566,
               "stand_estimated_cases": {
                 "20A.EU2": 0,
                 "20A/S:126A": 0,
@@ -8247,13 +8247,13 @@
                 "21H (Mu)": 0,
                 "21I (Delta)": 0,
                 "21J (Delta)": 0,
-                "21K (Omicron)": 465,
-                "21L (Omicron)": 1489,
+                "21K (Omicron)": 513,
+                "21L (Omicron)": 1640,
                 "S:677H.Robin1": 0,
                 "S:677P.Pelican": 0,
                 "others": 0
               },
-              "stand_total_cases": 1954,
+              "stand_total_cases": 2153,
               "total_sequences": 42,
               "week": "2022-04-18"
             }
@@ -16188,7 +16188,7 @@
               "week": "2022-04-04"
             },
             {
-              "percent_total_cases": 0.0010273652750537033,
+              "percent_total_cases": 0.0006967537608867776,
               "stand_estimated_cases": {
                 "20A.EU2": 0,
                 "20A/S:126A": 0,
@@ -16209,11 +16209,11 @@
                 "21H (Mu)": 0,
                 "21I (Delta)": 0,
                 "21J (Delta)": 0,
-                "21K (Omicron)": 84,
-                "21L (Omicron)": 3597,
+                "21K (Omicron)": 123,
+                "21L (Omicron)": 5305,
                 "others": 0
               },
-              "stand_total_cases": 3681,
+              "stand_total_cases": 5428,
               "total_sequences": 44,
               "week": "2022-04-18"
             }
@@ -19186,7 +19186,7 @@
               "week": "2022-04-04"
             },
             {
-              "percent_total_cases": 0.0027185577335813423,
+              "percent_total_cases": 0.0024998355371357145,
               "stand_estimated_cases": {
                 "20A.EU2": 0,
                 "20A/S:126A": 0,
@@ -19207,10 +19207,10 @@
                 "21I (Delta)": 0,
                 "21J (Delta)": 0,
                 "21K (Omicron)": 0,
-                "21L (Omicron)": 2731,
-                "others": 74
+                "21L (Omicron)": 2970,
+                "others": 80
               },
-              "stand_total_cases": 2805,
+              "stand_total_cases": 3050,
               "total_sequences": 38,
               "week": "2022-04-18"
             }
@@ -22029,7 +22029,7 @@
               "week": "2022-04-04"
             },
             {
-              "percent_total_cases": 0.0013480116827679174,
+              "percent_total_cases": 0.001213837750354036,
               "stand_estimated_cases": {
                 "20A.EU2": 0,
                 "20A/S:126A": 0,
@@ -22050,11 +22050,11 @@
                 "21I (Delta)": 0,
                 "21J (Delta)": 0,
                 "21K (Omicron)": 0,
-                "21L (Omicron)": 814,
+                "21L (Omicron)": 904,
                 "S:677H.Robin1": 0,
                 "others": 0
               },
-              "stand_total_cases": 814,
+              "stand_total_cases": 904,
               "total_sequences": 6,
               "week": "2022-04-18"
             }
