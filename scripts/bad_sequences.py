@@ -2515,6 +2515,9 @@ bad_seqs = {
     # 21 Apr
     "USA/VA-VTVAS3-GSC31172/2021" : "2021-01-04",  # omicron - EPI_ISL_12125110
     "USA/VA-VTVAS3-GSC31185/2021" : "2021-01-04",  # omicron - EPI_ISL_12125124
+    # 26 Apr
+    "USA/NC-NCSU-090121R32C5/2021": "2021-09-01", # 21K.Omicron
+    "USA/CA-LACPHL-AF08650/2021": "2021-02-23", # 21L.Omicron
 
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant

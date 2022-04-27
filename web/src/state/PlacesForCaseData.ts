@@ -1,20 +1,34 @@
+import { get } from 'lodash'
+import { ParsedUrlQuery } from 'querystring'
 import { atom, DefaultValue, selector } from 'recoil'
 
+import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
+import type { Continent, Country } from 'src/state/Places'
 import { updateUrlQuery } from 'src/helpers/urlQuery'
 import { getPerCountryCasesData } from 'src/io/getPerCountryCasesData'
 
 import regionCountryJson from '../../data/region_country.json'
 
-export const DEFAULT_REGION = 'World'
+/**
+ * Converts values incoming from URL query into region, countries and continents.
+ * To be used during app startup.
+ */
+export function urlQueryToPlacesCases(query: ParsedUrlQuery) {
+  const enabledCountries = convertToArrayMaybe(get(query, 'country'))
 
-export interface Country {
-  country: string
-  enabled: boolean
-}
+  // Take all countries and set only the countries present in the query as `enabled`
+  let countries = getAllCountries()
+  if (enabledCountries) {
+    countries = countries.map((country) => ({
+      ...country,
+      enabled: includesCaseInsensitive(enabledCountries, country.country),
+    }))
+  }
 
-export interface Continent {
-  continent: string
-  enabled: boolean
+  // Enable/disable continents depending on which countries are enabled
+  const continents = getContinentsFromCountries(countries)
+
+  return { continents, countries }
 }
 
 function getAllCountries(): Country[] {
@@ -97,7 +111,7 @@ export function disableAllCountries(countries: Country[]): Country[] {
  * Represents a list of currently enabled countries
  * NOTE: this atom can be modified, when the selector for continents is modified.
  */
-export const countriesAtom = atom<Country[]>({
+export const countriesCasesAtom = atom<Country[]>({
   key: 'casesCountries',
   default: getAllCountries(),
   effects: [
@@ -122,16 +136,16 @@ export const countriesAtom = atom<Country[]>({
  * NOTE: this is a selector and it's value is tied to the countries atom.
  * NOTE: this selector is mutable, i.e. it can be set(). When this happens, it also modifies the countries atom.
  */
-export const continentsAtom = selector<Continent[]>({
+export const continentsCasesAtom = selector<Continent[]>({
   key: 'casesContinents',
   get: ({ get }) => {
-    const countries = get(countriesAtom)
+    const countries = get(countriesCasesAtom)
     return getContinentsFromCountries(countries)
   },
   set: ({ set, get, reset }, continentsOrDefault) => {
-    const countriesOld = get(countriesAtom)
+    const countriesOld = get(countriesCasesAtom)
     const continents = continentsOrDefault instanceof DefaultValue ? getAllContinents() : continentsOrDefault
     const countries = toggleCountriesFromContinents(countriesOld, continents)
-    set(countriesAtom, countries)
+    set(countriesCasesAtom, countries)
   },
 })

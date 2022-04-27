@@ -12,7 +12,9 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import type { AppProps } from 'next/app'
 import { parseUrl } from 'src/helpers/parseUrl'
 import { clustersAtom, ClustersDataFlavor, urlQueryToClusters } from 'src/state/Clusters'
+import { clustersCasesAtom, urlQueryToClustersCases } from 'src/state/ClustersForCaseData'
 import { continentsAtom, countriesAtom, regionAtom, urlQueryToPlaces } from 'src/state/Places'
+import { continentsCasesAtom, countriesCasesAtom, urlQueryToPlacesCases } from 'src/state/PlacesForCaseData'
 import { ThemeProvider } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
 
@@ -33,25 +35,46 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
   const initializeState = useCallback(
     ({ set }: MutableSnapshot) => {
-      // Extract state of places from the URL query params
-      const { region, continents, countries } = urlQueryToPlaces(query)
-
       // Set initial state
-      if (pathname === '/per-country') {
-        set(regionAtom, region)
-        set(continentsAtom(region), continents)
-        set(countriesAtom(region), countries)
+      switch (pathname) {
+        case '/per-country': {
+          const { region, continents, countries } = urlQueryToPlaces(query)
 
-        const params = { dataFlavor: ClustersDataFlavor.PerCountry, region }
-        const clusters = urlQueryToClusters(query, params)
-        set(clustersAtom(params), clusters)
-      } else if (pathname === '/per-variant') {
-        set(continentsAtom(undefined), continents)
-        set(countriesAtom(undefined), countries)
+          set(regionAtom, region)
+          set(continentsAtom(region), continents)
+          set(countriesAtom(region), countries)
 
-        const params = { dataFlavor: ClustersDataFlavor.PerCluster, region }
-        const clusters = urlQueryToClusters(query, params)
-        set(clustersAtom(params), clusters)
+          const params = { dataFlavor: ClustersDataFlavor.PerCountry, region }
+          const clusters = urlQueryToClusters(query, params)
+          set(clustersAtom(params), clusters)
+
+          break
+        }
+        case '/per-variant': {
+          const { region, continents, countries } = urlQueryToPlaces(query)
+
+          set(continentsAtom(undefined), continents)
+          set(countriesAtom(undefined), countries)
+
+          const params = { dataFlavor: ClustersDataFlavor.PerCluster, region }
+          const clusters = urlQueryToClusters(query, params)
+          set(clustersAtom(params), clusters)
+
+          break
+        }
+        case '/cases': {
+          const { continents, countries } = urlQueryToPlacesCases(query)
+
+          set(continentsCasesAtom, continents)
+          set(countriesCasesAtom, countries)
+
+          const clusters = urlQueryToClustersCases(query)
+          set(clustersCasesAtom, clusters)
+
+          break
+        }
+        default:
+          break
       }
     },
     [pathname, query],
