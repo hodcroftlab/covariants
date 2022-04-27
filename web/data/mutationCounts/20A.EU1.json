@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 164476,
+    "total": 164537,
     "counts": [
       {
         "mut": "S:D614G",
-        "count": 164179
+        "count": 164459
       },
       {
         "mut": "S:L18F",
-        "count": 59823
+        "count": 61015
       },
       {
         "mut": "S:A262S",
-        "count": 12079
+        "count": 13233
       },
       {
         "mut": "S:P272L",
-        "count": 9820
+        "count": 10630
       },
       {
         "mut": "S:L5F",
-        "count": 3159
+        "count": 3214
       },
       {
         "mut": "S:D1163Y",
-        "count": 3118
+        "count": 3123
       },
       {
         "mut": "S:E583D",
-        "count": 2830
+        "count": 2837
       },
       {
         "mut": "S:G1167V",
-        "count": 2169
+        "count": 2174
       },
       {
         "mut": "S:Q675H",
-        "count": 2047
+        "count": 2054
       },
       {
         "mut": "S:D215H",
-        "count": 1332
+        "count": 1333
       }
     ]
   },
   "others": {
-    "total": 164476,
+    "total": 164537,
     "counts": [
       {
         "mut": "ORF1b:P314L",
-        "count": 163908
+        "count": 164401
       },
       {
         "mut": "N:P365S",
-        "count": 16080
+        "count": 16391
       },
       {
         "mut": "ORF1a:A3623S",
-        "count": 8811
+        "count": 8869
       },
       {
         "mut": "ORF1a:L3711F",
-        "count": 7273
+        "count": 7354
       },
       {
         "mut": "ORF3a:R122I",
-        "count": 6382
-      },
-      {
-        "mut": "ORF3a:V77F",
-        "count": 5846
+        "count": 6474
       },
       {
         "mut": "ORF3a:S166L",
-        "count": 5817
+        "count": 5888
+      },
+      {
+        "mut": "ORF3a:V77F",
+        "count": 5865
       },
       {
         "mut": "ORF1a:P3952S",
-        "count": 5695
+        "count": 5740
       },
       {
         "mut": "ORF7b:S5L",
-        "count": 5179
+        "count": 5464
       },
       {
         "mut": "ORF7b:E39*",
-        "count": 5105
+        "count": 5150
       }
     ]
   }

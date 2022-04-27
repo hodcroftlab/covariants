@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 261097,
+    "total": 262077,
     "counts": [
       {
         "mut": "S:G142D",
-        "count": 160916
+        "count": 192428
       },
       {
         "mut": "S:V1264L",
-        "count": 41664
+        "count": 42098
       },
       {
         "mut": "S:V289I",
-        "count": 32561
+        "count": 34057
       },
       {
         "mut": "S:Q613H",
-        "count": 19410
+        "count": 19543
       },
       {
         "mut": "S:N1074S",
-        "count": 15475
+        "count": 15599
       },
       {
         "mut": "S:R21T",
-        "count": 4924
+        "count": 4951
       },
       {
         "mut": "S:D253A",
-        "count": 2793
+        "count": 2841
       },
       {
         "mut": "S:L5F",
-        "count": 2736
+        "count": 2769
+      },
+      {
+        "mut": "S:A67V",
+        "count": 2722
       },
       {
         "mut": "S:K417N",
-        "count": 2651
-      },
-      {
-        "mut": "S:D979E",
-        "count": 2549
+        "count": 2679
       }
     ]
   },
   "others": {
-    "total": 261097,
+    "total": 262077,
     "counts": [
       {
         "mut": "ORF1b:R188Q",
-        "count": 42566
+        "count": 42722
       },
       {
         "mut": "ORF1b:T1540I",
-        "count": 42136
+        "count": 42499
       },
       {
         "mut": "ORF6:K48N",
-        "count": 38126
+        "count": 38976
       },
       {
         "mut": "ORF9b:V15L",
-        "count": 34121
+        "count": 34403
       },
       {
         "mut": "N:G18V",
-        "count": 34116
+        "count": 34398
       },
       {
         "mut": "ORF1a:E1633D",
-        "count": 34023
+        "count": 34286
       },
       {
         "mut": "ORF1a:H712Q",
-        "count": 21922
+        "count": 22090
       },
       {
         "mut": "M:A81S",
-        "count": 21895
+        "count": 21928
       },
       {
         "mut": "N:S412R",
-        "count": 21762
+        "count": 21864
       },
       {
         "mut": "ORF3a:G224C",
-        "count": 16478
+        "count": 16587
       }
     ]
   }
