@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 
 import { useQuery } from 'react-query'
 import { Row, Col, CardHeader, Card, CardBody } from 'reactstrap'
+import { LinkExternal } from 'src/components/Link/LinkExternal'
 
 import type { ClusterDatum } from 'src/io/getClusters'
 import { getMutationCounts, MutationCountsDatum, MutationCountsGeneRecord } from 'src/io/getMutationCounts'
@@ -110,7 +111,13 @@ export function MutationCountsSummaryCard({ currentCluster }: MutationCountsSumm
 
   return (
     <Card>
-      <CardHeader>{'Non-defining mutation counts (data from CoV-Spectrum)'}</CardHeader>
+      <CardHeader>
+        <span>{'Non-defining mutation counts (data from '}</span>
+        <span>
+          <LinkExternal href="https://cov-spectrum.org/">{'CoV-Spectrum'}</LinkExternal>
+        </span>
+        <span>{')'}</span>
+      </CardHeader>
       <MutationCountsSummaryCardBody>
         <Row noGutters>
           <Col>
