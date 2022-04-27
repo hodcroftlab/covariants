@@ -3,7 +3,8 @@ export CLADES_SVG_SRC="https://raw.githubusercontent.com/nextstrain/ncov-clades-
 export CLADES_SVG_DST="web/src/assets/images/clades.svg"
 
 # Umbrella target for updating all data for web app
-web-data: get_owid_data web-json case-counts stills update-clades-svg
+# getting OWID data is first, then mut-counts, because has long output (case counts) & may hide other warnings/errors
+web-data: get_owid_data mutation-counts web-json case-counts stills update-clades-svg
 
 get_owid_data:
 	python3 scripts/get_owid_data.py
@@ -11,8 +12,10 @@ get_owid_data:
 case-counts:
 	python3 scripts/include_case_counts.py
 
+mutation-counts:
+	python3 scripts/mutation_counts.py
+
 # Update JSON files for web app
-# getting OWID data is first, because has long output (case counts) & may hide other warnings/errors
 web-json:
 	python3 scripts/convert_to_web_app_json.py
 
