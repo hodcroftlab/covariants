@@ -110,7 +110,7 @@ export function MutationCountsSummaryCard({ currentCluster }: MutationCountsSumm
 
   return (
     <Card>
-      <CardHeader>{'Non-defining mutation counts'}</CardHeader>
+      <CardHeader>{'Non-defining mutation counts (data from CoV-Spectrum)'}</CardHeader>
       <MutationCountsSummaryCardBody>
         <Row noGutters>
           <Col>
