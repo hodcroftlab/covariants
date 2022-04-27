@@ -13,7 +13,9 @@ aa_base_url = 'https://cov-spectrum.ethz.ch/gisaid/api/v1/sample/aa-mutations'
 count_base_url = 'https://cov-spectrum.ethz.ch/gisaid/api/v1/sample/aggregated'
 filter_deletions_url = "aaMutations=Orf1a:1.,N:420."
 
+#only include mutations that are above this threshhold
 THRESHOLD = 0.005
+#only show the top N_ENTRIES most frequent mutations on the website
 N_ENTRIES = 10
 
 
