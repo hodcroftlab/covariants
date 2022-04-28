@@ -666,6 +666,8 @@ clusters = {
        "mutations": {}
     },
 
+    ##create a comprehensive Omicron build
+
 
     # variant  -- part of 'Indian' in media - B.1.617.1
     "Kappa": {
