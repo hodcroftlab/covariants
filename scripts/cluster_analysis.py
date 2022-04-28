@@ -67,21 +67,26 @@ import sys
 
 
 # TODO: Figure out whether we still use this, and in which shape
-def print_date_alerts_quick(clus):
+def print_date_alerts(data, clus):
     print(clus)
     print(f"Expected date: {cluster_first_dates[clus]['first_date']}")
-    print(alert_first_date_quick[clus][['strain','date','gisaid_epi_isl']])
+    print(data[clus][['strain','date','gisaid_epi_isl']])
 
 def print_all_date_alerts_quick():
     for clus in alert_first_date_quick.keys():
-        alert_first_date_quick(clus)
+        print_date_alerts(alert_first_date_quick, clus)
+        print("\n")
+
+def print_all_date_alerts_late():
+    for clus in early_dates_no_Nextclade.keys():
+        print_date_alerts(early_dates_no_Nextclade, clus)
         print("\n")
 
 # Print out bad sequences in a format that can be directly copied over to bad_sequences.py
-def print_bad_sequences():
+def print_bad_sequences(data):
     print()
-    for clus in alert_first_date_quick.keys():
-        for row in alert_first_date_quick[clus].iterrows():
+    for clus in data.keys():
+        for row in data[clus].iterrows():
             print(f"\"{row[1]['strain']}\": \"{row[1]['date']}\", #{clus}, {clus_dates[clus].strftime('%Y-%m-%d')}")
     print("\n")
 
@@ -277,10 +282,11 @@ sequences_exclude = [] # Exclude all sequences newly identified as too early
 if check_dates:
     print(f"Checking for early dates took {round((t1-t0)/60,1)} min to run")
 
-    for c in alert_first_date_quick:
-        alert_first_date_quick[c] = pd.DataFrame.from_dict(alert_first_date_quick[c])
-
     if alert_first_date_quick:
+
+        for c in alert_first_date_quick:
+            alert_first_date_quick[c] = pd.DataFrame.from_dict(alert_first_date_quick[c])
+
         print("\nDate alerts (fast check):")
         print([f"{x}: {len(alert_first_date_quick[x])}" for x in alert_first_date_quick.keys()])
         print("To view, use 'print_all_date_alerts_quick()' or 'print_date_alerts_quick(<clus>)'\n")
@@ -289,10 +295,10 @@ if check_dates:
         if print_answer in ["n", "N", "no", "NO", "No"]:
             sys.exit("Bad dates found. Exit program...")
         else:
-            print_bad_sequences()
+            print_bad_sequences(alert_first_date_quick)
             sequences_exclude = [row[1]["strain"] for clus in alert_first_date_quick.values() for row in clus.iterrows()]
     else:
-        print("\nNo bad dates found.\n")
+        print("\nNo bad dates found in sequences with Nextstrain clade.\n")
 
 ##################################
 ##################################
@@ -300,6 +306,10 @@ if check_dates:
 
 # Collect counts by country & date and various other information, all sorted per cluster
 clus_data_all = {}
+division_data_all = {}
+if division:
+    for country in selected_country:
+        division_data_all[country] = {}
 
 # Random very early date for max & min date search (just needs to be earlier than any date we might encounter)
 earliest_date = datetime.datetime.strptime("2019-01-01", '%Y-%m-%d')
@@ -342,7 +352,10 @@ for clus in clus_to_run:
 ##################################
 ##################################
 #### Read and clean metadata line by line
+t0 = time.time()
+
 early_dates_no_Nextclade = {}
+all_sequences = {clus: [] for clus in clusters}
 
 print("\nReading and cleaning up the metadata line-by-line...\n")
 n = 0
@@ -390,10 +403,6 @@ with open(input_meta) as f:
             print(f"{l[indices['strain']]}: {l[indices['date']]}")
             continue
 
-        # Replace Swiss divisions with swiss-region, but store original division
-        if l[indices['division']] in swiss_regions:
-            swiss_division = swiss_regions[l[indices['division']]]
-
         ##### ASSIGNING CLUSTERS #####
 
         # If an official Nextstrain clade, then use Nextclade designation to assign them.
@@ -439,16 +448,9 @@ with open(input_meta) as f:
             # if wanted seqs are part of a Nextclade designated variant, remove from that count & use this one.
             # ONLY IF PLOTTING and if this run ISN'T an official run
 
-            # TODO: This takes an insane amount of time
-            ''' 
-            # Do we want to write out cluster for Nextstrain?
-            if print_files:
-                nextstrain_run = clusters[clus]['nextstrain_build']
-                if nextstrain_run:
-                    # TODO: What is faster, opening file n timer or storing list of length n?
-                    with open(clus_data_all[clus]["clusterlist_output"], "a") as f2: # TODO: add expected length of string to make faster?
-                        f2.write("%s\n" % l[indices['strain']])
-            '''
+            # Store all strains per assigned cluster
+            all_sequences[clus].append(l[indices['strain']])
+
 
             # TODO: Removed dated_limit, check if must be added again
 
@@ -470,12 +472,73 @@ with open(input_meta) as f:
                 clus_data_all[clus]["cluster_counts"][country][date_2weeks] = 0
             clus_data_all[clus]["cluster_counts"][country][date_2weeks] += 1
 
+            # For selected countries (e.g. USA, Switzerland), also collect data by division
+            if division:
+                if country in selected_country:
+                    # TODO: no summary for these cases?
+
+                    # Replace Swiss divisions with swiss-region, but store original division
+                    division = l[indices['division']]
+                    if division in swiss_regions:
+                        division = swiss_regions[division]
+
+                    if division not in division_data_all[country]:
+                        division_data_all[country][division] = {}
+                    if clus not in division_data_all[country][division]:
+                        division_data_all[country][division][clus] = {}
+                    if date_2weeks not in division_data_all[country][division][clus]:
+                        division_data_all[country][division][clus][date_2weeks] = 0
+                    division_data_all[country][division][clus][date_2weeks] += 1
+
+t1 = time.time()
+print(f"Collecting all data took {round((t1-t0)/60,1)} min to run")
 
 ##################################
 ##################################
 #### Process counts and check for min number of sequences per country
 
-# TODO: print out second date check
+if early_dates_no_Nextclade:
+
+    for c in early_dates_no_Nextclade:
+        early_dates_no_Nextclade[c] = pd.DataFrame.from_dict(early_dates_no_Nextclade[c])
+
+    print("\nDate alerts (late check): These have been automatically excluded.")
+    print([f"{x}: {len(early_dates_no_Nextclade[x])}" for x in early_dates_no_Nextclade.keys()])
+    print("To view, use 'print_all_date_alerts_late()'\n")
+
+    print_answer = input("\nBad dates have been automatically excluded. Do you want to continue (\"n\" is exit program)? ")
+    if print_answer in ["n", "N", "no", "NO", "No"]:
+        sys.exit("Bad dates found. Exit program...")
+    else:
+        print_bad_sequences(early_dates_no_Nextclade)
+else:
+    print("\nNo bad dates found in sequences without Nextstrain clade.\n")
+
+# Do we want to write out cluster for Nextstrain?
+if print_files:
+    for clus in clus_to_run:
+        # Store all strains per cluster
+        nextstrain_run = clusters[clus]['nextstrain_build']
+        if nextstrain_run:
+            with open(clus_data_all[clus]["clusterlist_output"], "w") as f:
+                f.write("\n".join(all_sequences[clus]))
+
+# Write out summary table
+if print_files:
+    for clus in clus_to_run:
+        clus_build_name = clus_data_all[clus]["build_name"]
+        table_file = f"{tables_path}{clus_build_name}_table.tsv"
+        ordered_country = pd.DataFrame(data=clus_data_all[clus]["summary"]).sort_values(by="first_seq")
+
+        if print_files:
+            ordered_country.to_csv(table_file, sep="\t")
+            # only write if doing all clusters
+            if "all" in clus_answer:
+                with open(overall_tables_file, "a") as fh:
+                    fh.write(f"\n\n## {display_cluster}\n")
+                ordered_country.to_csv(overall_tables_file, sep="\t", mode="a")
+
+# TODO: print acks?
 
 # Create total_counts: Total counts per country and date, not sorted by cluster
 total_counts_countries = {country: {} for country in all_countries}
@@ -508,20 +571,32 @@ print(
     "\n",
 )
 
+if division:
+    total_counts_divisions = {country: {} for country in division_data_all}
+    for country in division_data_all:
+        for division in division_data_all[country]:
+            total_counts_divisions[country][division]["total_counts"] = {}
+            for clus in division_data_all[country][division]:
+                for date in division_data_all[country][division][clus]:
+                    if date not in total_counts_divisions[country][division]["total_counts"]:
+                        total_counts_divisions[country][division]["total_counts"][date] = 0
+                    total_counts_divisions[country][division]["total_counts"][date] += 1
+
+
 ##################################
 ##################################
 #### Plotting
 
 ### CLUSTERS ###
 
-ndone = 1
-
 width = 1
 smoothing = np.exp(-np.arange(-10, 10) ** 2 / 2 / width ** 2)
 smoothing /= smoothing.sum()
+
+ndone = 1
 for clus in clus_to_run:
 
-    print(f"\nPlotting & writing out cluster {clus}: number {ndone} of {len(clus_to_run)}")
+    print(f"Plotting & writing out cluster {clus}: number {ndone} of {len(clus_to_run)}")
 
     total_data = pd.DataFrame(total_counts_countries)
     cluster_data = pd.DataFrame(clus_data_all[clus]["cluster_counts"])
@@ -816,21 +891,6 @@ if "all" in clus_answer:
 
 
 '''
-
-for clus in clus_to_run:
-    # Summary table
-    table_file = f"{tables_path}{clus_build_name}_table.tsv"
-    ordered_country = pd.DataFrame(data=clus_data_all[clus]["summary"]).sort_values(by="first_seq")
-
-    if print_files:
-        ordered_country.to_csv(table_file, sep="\t")
-        # only write if doing all clusters
-        if "all" in clus_answer:
-            with open(overall_tables_file, "a") as fh:
-                fh.write(f"\n\n## {display_cluster}\n")
-            ordered_country.to_csv(overall_tables_file, sep="\t", mode="a")
-
-    # TODO: print acks
 
 
     clusterlist_output = clusters[clus]["clusterlist_output"]
