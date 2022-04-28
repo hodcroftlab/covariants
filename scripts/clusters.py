@@ -472,7 +472,7 @@ clusters = {
         "alt_display_name": ["BA.2"],
         "nextstrain_name": "21L (Omicron)",
         "pango_lineages": [
-            {"name": "BA.1", "url": "https://cov-lineages.org/lineages/lineage_BA.2.html"},
+            {"name": "BA.2", "url": "https://cov-lineages.org/lineages/lineage_BA.2.html"},
         ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21L.Omicron",
         "mutations": {
@@ -597,6 +597,75 @@ clusters = {
     #    "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21L",
     #    "mutations": {}
     # },
+
+    #Omicron subclades
+    "22A": {  #BA.4
+       "snps": [22786,28724,22917], #CTG -- S:R408S (A22786C), N:P151S (C28724T), S:L452R (T22917G)
+       "cluster_data": [],
+       "nextstrain_build": True,
+       "type": "do_not_display",
+       "graphing": False,
+       "important": False,
+       "country_info": [],
+       "col": "#cfafcf",
+       "display_name": "22A (Omicron)",
+       "alt_display_name": ["BA.4"],
+       #"other_nextstrain_names": ["21A (Delta)","21J (Delta)","21I (Delta)"],
+       "build_name": "22A.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": ["22A"],
+       "nextstrain_name": "22A",
+       "pango_lineages": [
+           {"name": "BA.4", "url": "https://cov-lineages.org/lineage.html?lineage=BA.4"}
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22A.Omicron",
+       "mutations": {}
+    },
+    "22B": {  #BA.5
+       "snps": [22917,26529,27889], #GAT - S:L452R (T22917G), M:D3N (G26529A), nuc:C27889T
+       "cluster_data": [],
+       "nextstrain_build": True,
+       "type": "do_not_display",
+       "graphing": False,
+       "important": False,
+       "country_info": [],
+       "col": "#cfafcf",
+       "display_name": "22B (Omicron)",
+       "alt_display_name": ["BA.5"],
+       #"other_nextstrain_names": ["21A (Delta)","21J (Delta)","21I (Delta)"],
+       "build_name": "22B.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": ["22B"],
+       "nextstrain_name": "22B",
+       "pango_lineages": [
+           {"name": "BA.5", "url": "https://cov-lineages.org/lineage.html?lineage=BA.5"}
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22B.Omicron",
+       "mutations": {}
+    },
+    "22C": {  #BA.2.12.1
+       "snps": [22917,23673,2790], #ATT = S:L452Q (T22917A) S:S704L (C23673T) nuc:C2790T  -- also C11674T (ORF1a:3803)
+       "cluster_data": [],
+       "nextstrain_build": True,
+       "type": "do_not_display",
+       "graphing": False,
+       "important": False,
+       "country_info": [],
+       "col": "#cfafcf",
+       "display_name": "22C (Omicron)",
+       "alt_display_name": ["BA.2.12.14"],
+       #"other_nextstrain_names": ["21A (Delta)","21J (Delta)","21I (Delta)"],
+       "build_name": "22C.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": ["22C"],
+       "nextstrain_name": "22C",
+       "pango_lineages": [
+           {"name": "BA.2.12.1", "url": "https://cov-lineages.org/lineage.html?lineage=BA.2.12.1"}
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22C.Omicron",
+       "mutations": {}
+    },
+
 
     # variant  -- part of 'Indian' in media - B.1.617.1
     "Kappa": {
