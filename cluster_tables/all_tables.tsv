@@ -1294,6 +1294,49 @@ Palau	2022-02-20	8	2022-03-28
 Albania	2022-04-07	1	2022-04-07
 
 
+## 22A (Omicron)
+	first_seq	num_seqs	last_seq
+South Africa	2022-01-10	119	2022-04-10
+Denmark	2022-03-02	10	2022-04-15
+United Kingdom	2022-03-22	9	2022-04-17
+USA	2022-03-28	7	2022-04-12
+Belgium	2022-03-29	6	2022-04-14
+Australia	2022-03-31	1	2022-03-31
+Switzerland	2022-04-04	1	2022-04-04
+Botswana	2022-04-12	1	2022-04-12
+
+
+## 22B (Omicron)
+	first_seq	num_seqs	last_seq
+South Africa	2022-02-25	54	2022-04-08
+Germany	2022-03-19	15	2022-04-10
+France	2022-03-28	2	2022-04-11
+Portugal	2022-03-29	11	2022-04-05
+USA	2022-03-29	4	2022-04-11
+United Kingdom	2022-04-04	6	2022-04-16
+Hong Kong	2022-04-08	1	2022-04-08
+Denmark	2022-04-15	1	2022-04-15
+
+
+## 22C (Omicron)
+	first_seq	num_seqs	last_seq
+USA	2021-12-14	4558	2022-04-19
+Canada	2022-01-20	115	2022-04-12
+Australia	2022-01-24	2	2022-04-02
+Luxembourg	2022-01-25	1	2022-01-25
+Qatar	2022-03-13	1	2022-03-13
+United Kingdom	2022-03-23	8	2022-04-15
+Israel	2022-04-01	4	2022-04-03
+India	2022-04-04	1	2022-04-04
+Denmark	2022-04-07	9	2022-04-13
+Germany	2022-04-09	2	2022-04-13
+Ireland	2022-04-10	1	2022-04-10
+Mexico	2022-04-10	1	2022-04-10
+Belgium	2022-04-12	1	2022-04-12
+Austria	2022-04-13	1	2022-04-13
+Singapore	2022-04-14	2	2022-04-14
+
+
 ## 21B (Kappa)
 	first_seq	num_seqs	last_seq
 India	2020-12-01	4245	2022-02-14
