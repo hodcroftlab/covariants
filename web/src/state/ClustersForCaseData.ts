@@ -34,7 +34,7 @@ export function urlQueryToClustersCases(query: ParsedUrlQuery) {
  * Represents a list of currently enabled clusters (variants)
  */
 export const clustersCasesAtom = atom<Cluster[]>({
-  key: 'clusters',
+  key: 'clustersCases',
   default: getAllClusters(),
   effects: [
     ({ onSet }) => {
