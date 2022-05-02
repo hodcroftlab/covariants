@@ -467,6 +467,7 @@ clusters = {
         "col": "#cfafcf",
         "display_name": "21L (Omicron)",
         "build_name": "21L.Omicron",
+        "other_nextstrain_names": ["21L (Omicron)", "22A (Omicron)","22B (Omicron)","22C (Omicron)"],
         "who_name": ["Omicron"],
         "old_build_names": ["21L"],
         "alt_display_name": ["BA.2"],
