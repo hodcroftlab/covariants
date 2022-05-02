@@ -2267,9 +2267,15 @@
       "old_build_names": [
         "21L"
       ],
+      "other_nextstrain_names": [
+        "21L (Omicron)",
+        "22A (Omicron)",
+        "22B (Omicron)",
+        "22C (Omicron)"
+      ],
       "pango_lineages": [
         {
-          "name": "BA.1",
+          "name": "BA.2",
           "url": "https://cov-lineages.org/lineages/lineage_BA.2.html"
         }
       ],
@@ -2314,6 +2320,108 @@
         "23604A"
       ],
       "type": "do_not_display"
+    },
+    {
+      "alt_display_name": [
+        "BA.4"
+      ],
+      "build_name": "22A.Omicron",
+      "cluster_data": [],
+      "col": "#8a66ff",
+      "country_info": [],
+      "display_name": "22A (Omicron)",
+      "graphing": false,
+      "important": false,
+      "mutations": {},
+      "nextstrain_build": true,
+      "nextstrain_name": "22A",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22A.Omicron",
+      "old_build_names": [
+        "22A"
+      ],
+      "pango_lineages": [
+        {
+          "name": "BA.4",
+          "url": "https://cov-lineages.org/lineage.html?lineage=BA.4"
+        }
+      ],
+      "snps": [
+        22786,
+        28724,
+        22917
+      ],
+      "type": "do_not_display",
+      "who_name": [
+        "Omicron"
+      ]
+    },
+    {
+      "alt_display_name": [
+        "BA.5"
+      ],
+      "build_name": "22B.Omicron",
+      "cluster_data": [],
+      "col": "#484eff",
+      "country_info": [],
+      "display_name": "22B (Omicron)",
+      "graphing": false,
+      "important": false,
+      "mutations": {},
+      "nextstrain_build": true,
+      "nextstrain_name": "22B",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22B.Omicron",
+      "old_build_names": [
+        "22B"
+      ],
+      "pango_lineages": [
+        {
+          "name": "BA.5",
+          "url": "https://cov-lineages.org/lineage.html?lineage=BA.5"
+        }
+      ],
+      "snps": [
+        22917,
+        26529,
+        27889
+      ],
+      "type": "do_not_display",
+      "who_name": [
+        "Omicron"
+      ]
+    },
+    {
+      "alt_display_name": [
+        "BA.2.12.14"
+      ],
+      "build_name": "22C.Omicron",
+      "cluster_data": [],
+      "col": "#5d85ff",
+      "country_info": [],
+      "display_name": "22C (Omicron)",
+      "graphing": false,
+      "important": false,
+      "mutations": {},
+      "nextstrain_build": true,
+      "nextstrain_name": "22C",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22C.Omicron",
+      "old_build_names": [
+        "22C"
+      ],
+      "pango_lineages": [
+        {
+          "name": "BA.2.12.1",
+          "url": "https://cov-lineages.org/lineage.html?lineage=BA.2.12.1"
+        }
+      ],
+      "snps": [
+        22917,
+        23673,
+        2790
+      ],
+      "type": "do_not_display",
+      "who_name": [
+        "Omicron"
+      ]
     },
     {
       "alt_display_name": [
