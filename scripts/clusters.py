@@ -782,7 +782,7 @@ clusters = {
        "graphing": True,
        "important": True,
        "country_info": [],
-       "col": "#484eff",
+       "col": "#585eff",
        "display_name": "22B (Omicron)",
        "alt_display_name": ["BA.5"],
        #"other_nextstrain_names": ["21A (Delta)","21J (Delta)","21I (Delta)"],
