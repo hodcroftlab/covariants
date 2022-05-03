@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { ClusterDatum } from 'src/io/getClusters'
 
 import styled from 'styled-components'
@@ -20,19 +20,23 @@ export interface VariantTitleProps {
 }
 
 export function VariantTitle({ cluster }: VariantTitleProps) {
+  const subtitle = useMemo(() => {
+    if (!cluster?.alt_display_name || cluster?.alt_display_name?.length === 0) {
+      return null
+    }
+
+    return (
+      <ClusterNameSubtitle>
+        {`also known as `}
+        {cluster.alt_display_name.join(', ')}
+      </ClusterNameSubtitle>
+    )
+  }, [cluster?.alt_display_name])
+
   return (
     <VariantTitleWrapper>
       <ClusterNameTitle>{cluster?.display_name && `Variant: ${cluster?.display_name}`}</ClusterNameTitle>
-      {
-        <ClusterNameSubtitle>
-          {cluster?.alt_display_name && (
-            <>
-              {`also known as `}
-              {cluster.alt_display_name.join(', ')}
-            </>
-          )}
-        </ClusterNameSubtitle>
-      }
+      {subtitle}
     </VariantTitleWrapper>
   )
 }

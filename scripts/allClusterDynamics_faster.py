@@ -850,6 +850,7 @@ print(f"Gathering metadata for all clusters took {round((t1-t0)/60,1)} min to ru
 ##################################
 # Get ALL sequence counts for ALL countries ONCE
 
+
 print("\nGathering up total sequences (only 2 week period)")
 
 # Don't use isocalendar, just compare to reference Monday
@@ -869,12 +870,8 @@ for coun in all_observed_countries:
     # TWO WEEKS
     temp_meta["calendar_2week"] = temp_meta["date_formatted"].apply(to2week_ordinal)
     temp_meta = temp_meta[temp_meta["calendar_2week"] >= min_data_week]
-    if temp_meta.empty:
-        continue
-
     week2_counts = temp_meta["calendar_2week"].value_counts().sort_index()
     counts_by_2week = week2_counts.to_dict()
-    all_sequence_counts[coun] = {}
     all_sequence_counts[coun]['2week'] = counts_by_2week
 
 ##################################
@@ -893,12 +890,8 @@ if division:
             # TWO WEEKS
             temp_meta["calendar_2week"] = temp_meta["date_formatted"].apply(to2week_ordinal)
             temp_meta = temp_meta[temp_meta["calendar_2week"] >= min_data_week]
-            if temp_meta.empty:
-                continue
-
             week2_counts = temp_meta["calendar_2week"].value_counts().sort_index()
             counts_by_2week = week2_counts.to_dict()
-            division_all_sequence_counts[sel_coun][div] = {}
             division_all_sequence_counts[sel_coun][div]['2week'] = counts_by_2week
 
 t1 = time.time()
@@ -947,6 +940,7 @@ for clus in clus_to_run:
 
     # COUNTRY LEVEL
     # Get counts per week for sequences in the cluster
+
     clus_2week_counts = {}
 
     # converts to tuple (year, ISO calendar week - every 2 weeks)
@@ -1010,7 +1004,7 @@ print(f"Date-binning data took {round((t1-t0)/60,1)} min to run\n\n")
 
 t0 = time.time()
 
-cutoff_num_seqs = 1000
+cutoff_num_seqs = 1200
 
 # This prints countries with more than cutoff_num_seqs PER CLUSTER - messy output.
 clusters_tww = []
@@ -1077,8 +1071,8 @@ for clus in clus_to_run:
     observed_countries = clus_data["observed_countries"]
     country_dates = clus_data["country_dates"]
     country_info_df = clus_data["country_info_ordered"]
-    cluster_data = clus_data["cluster_data_2wk"]
-    total_data = clus_data["total_data_2wk"]
+    cluster_data = clus_data["cluster_data"]
+    total_data = clus_data["total_data"]
 
     width = 1
     smoothing = np.exp(-np.arange(-10, 10) ** 2 / 2 / width ** 2)
