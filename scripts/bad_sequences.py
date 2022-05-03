@@ -2554,6 +2554,10 @@ bad_seqs = {
     "USA/AZ-ASU65923/2021" : "2021-06-20", #omicron  EPI_ISL_12429305
     "Australia/VIC51922/2021" : "2021-10-09", #omicron  EPI_ISL_12276184
     "France/GES-HMN-22042070708/2020" : "2020-03-28", #omicron  EPI_ISL_12269393
+    "England/DHSC-CYNNUEM/2021" : "2021-01-01", #omicron 21K
+    "England/DHSC-CYYQWNY/2021" : "2021-01-01", #omicron 21K
+    "England/DHSC-CYYUQY9/2021" : "2021-01-01", #omicron 21K
+    "England/DHSC-CYYRS3D/2021" : "2021-01-01", #omicron 21K
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
