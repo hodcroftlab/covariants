@@ -3,7 +3,7 @@ import React from 'react'
 import { Col, Container, Row } from 'reactstrap'
 import styled from 'styled-components'
 
-import { Editable, CenteredEditable } from 'src/components/Common/Editable'
+import { CenteredEditable } from 'src/components/Common/Editable'
 import { Layout } from 'src/components/Layout/Layout'
 
 import SharedMutationsIntro from '../../../../content/SharedMutations.md'
@@ -24,8 +24,8 @@ export const SharedMutationsWrapperInner = styled.div`
 
 export function SharedMutationsPage() {
   return (
-    <Layout>
-      <SharedMutationsPageContainer>
+    <Layout wide>
+      <SharedMutationsPageContainer fluid>
         <Row noGutters>
           <Col>
             <PageHeading>{'Shared mutations'}</PageHeading>
@@ -42,11 +42,9 @@ export function SharedMutationsPage() {
 
         <Row noGutters>
           <Col className="pb-10">
-            <Editable githubUrl="blob/master/scripts" text={'View data generation scripts'}>
-              <SharedMutationsWrapper>
-                <SharedMutations />
-              </SharedMutationsWrapper>
-            </Editable>
+            <SharedMutationsWrapper>
+              <SharedMutations />
+            </SharedMutationsWrapper>
           </Col>
         </Row>
       </SharedMutationsPageContainer>
