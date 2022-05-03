@@ -169,6 +169,39 @@
       "who": "Omicron"
     },
     {
+      "clade": "22A (Omicron)",
+      "lineages": [
+        {
+          "name": "BA.4",
+          "url": "https://cov-lineages.org/lineages/lineage_BA.4.html"
+        }
+      ],
+      "others": [],
+      "who": "Omicron"
+    },
+    {
+      "clade": "22B (Omicron)",
+      "lineages": [
+        {
+          "name": "BA.5",
+          "url": "https://cov-lineages.org/lineages/lineage_BA.5.html"
+        }
+      ],
+      "others": [],
+      "who": "Omicron"
+    },
+    {
+      "clade": "22C (Omicron)",
+      "lineages": [
+        {
+          "name": "BA.2.12.1",
+          "url": "https://cov-lineages.org/lineages/lineage_BA.2.12.1.html"
+        }
+      ],
+      "others": [],
+      "who": "Omicron"
+    },
+    {
       "clade": "20E (EU1)",
       "lineages": [
         {
