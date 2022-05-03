@@ -853,13 +853,6 @@ print(f"Gathering metadata for all clusters took {round((t1-t0)/60,1)} min to ru
 
 print("\nGathering up total sequences (only 2 week period)")
 
-# Don't use isocalendar, just compare to reference Monday
-ref_monday = datetime.datetime.strptime("2020-04-27", '%Y-%m-%d').toordinal()
-def to2week_ordinal(x):
-    n = x.toordinal()
-    monday = datetime.date.fromordinal(n - ((n - ref_monday) % 14))
-    return (monday.isocalendar()[0], monday.isocalendar()[1]) #TODO: Currently returned as tuple of year & week -> Can we switch to returning datetime? Needs adjustment at several places in the script
-
 t0 = time.time()
 
 all_sequence_counts = {}
@@ -872,6 +865,7 @@ for coun in all_observed_countries:
     temp_meta = temp_meta[temp_meta["calendar_2week"] >= min_data_week]
     week2_counts = temp_meta["calendar_2week"].value_counts().sort_index()
     counts_by_2week = week2_counts.to_dict()
+    all_sequence_counts[coun] = {}
     all_sequence_counts[coun]['2week'] = counts_by_2week
 
 ##################################
@@ -892,6 +886,7 @@ if division:
             temp_meta = temp_meta[temp_meta["calendar_2week"] >= min_data_week]
             week2_counts = temp_meta["calendar_2week"].value_counts().sort_index()
             counts_by_2week = week2_counts.to_dict()
+            division_all_sequence_counts[sel_coun][div] = {}
             division_all_sequence_counts[sel_coun][div]['2week'] = counts_by_2week
 
 t1 = time.time()
@@ -1074,10 +1069,6 @@ for clus in clus_to_run:
     cluster_data = clus_data["cluster_data"]
     total_data = clus_data["total_data"]
 
-    width = 1
-    smoothing = np.exp(-np.arange(-10, 10) ** 2 / 2 / width ** 2)
-    smoothing /= smoothing.sum()
-
     # Only plot countries with >= X seqs
     min_to_plot = cutoff_num_seqs
 
@@ -1101,7 +1092,7 @@ for clus in clus_to_run:
             total_count,
             unsmoothed_cluster_count,
             unsmoothed_total_count,
-        ) = non_zero_counts(cluster_data, total_data, coun, smoothing=smoothing)
+        ) = non_zero_counts(cluster_data, total_data, coun)
         # remove last data point if that point as less than frac sequences compared to the previous count
         week_as_date, cluster_count, total_count = trim_last_data_point(
             week_as_date, cluster_count, total_count, frac=0.1, keep_count=10
@@ -1121,12 +1112,6 @@ for clus in clus_to_run:
         ]
         json_output[clus_build_name][coun]["cluster_sequences"] = [
             int(x) for x in cluster_count
-        ]
-        json_output[clus_build_name][coun]["unsmoothed_cluster_sequences"] = [
-            int(x) for x in unsmoothed_cluster_count
-        ]
-        json_output[clus_build_name][coun]["unsmoothed_total_sequences"] = [
-            int(x) for x in unsmoothed_total_count
         ]
 
         # This used to only plot a subset (those in 'countries to plot' below.)
