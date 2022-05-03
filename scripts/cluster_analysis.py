@@ -67,27 +67,22 @@ import sys
 
 
 # TODO: Figure out whether we still use this, and in which shape
-def print_date_alerts(data, clus):
+def print_date_alerts(clus):
     print(clus)
     print(f"Expected date: {cluster_first_dates[clus]['first_date']}")
-    print(data[clus][['strain','date','gisaid_epi_isl']])
+    print(alert_dates[clus][['strain','date','gisaid_epi_isl']])
 
-def print_all_date_alerts_quick():
-    for clus in alert_first_date_quick.keys():
-        print_date_alerts(alert_first_date_quick, clus)
-        print("\n")
-
-def print_all_date_alerts_late():
-    for clus in early_dates_no_Nextclade.keys():
-        print_date_alerts(early_dates_no_Nextclade, clus)
+def print_all_date_alerts():
+    for clus in alert_dates.keys():
+        print_date_alerts(clus)
         print("\n")
 
 # Print out bad sequences in a format that can be directly copied over to bad_sequences.py
-def print_bad_sequences(data):
+def print_bad_sequences():
     print()
-    for clus in data.keys():
-        for row in data[clus].iterrows():
-            print(f"\"{row[1]['strain']}\": \"{row[1]['date']}\", #{clus}, {clus_dates[clus].strftime('%Y-%m-%d')}")
+    for clus in alert_dates.keys():
+        for row in alert_dates[clus].iterrows():
+            print(f"\"{row[1]['strain']}\": \"{row[1]['date']}\", #{clus}, {cluster_first_dates[clus]['first_date']}")
     print("\n")
 
 # Transform (year, month, day) datetime to (year, week) tuple in a two-week interval, starting at this reference Monday
@@ -216,32 +211,16 @@ if print_files and "all" in clus_answer:
 
 ##################################
 ##################################
-#### Prepare various useful dictionaries and do first date check
-
-t0 = time.time()
+#### Prepare various useful dictionaries and count metadata lines for percentage output
 
 # Link Nextstrain clade and name to our cluster names used in clusters.py
 nextstrain_clade_to_clus = {clusters[clus]["display_name"]: clus for clus in clus_to_run if "display_name" in clusters[clus]}
 nextstrain_name_to_clus = {clusters[clus]["nextstrain_name"]: clus for clus in clus_to_run if "nextstrain_name" in clusters[clus]}
 # TODO: Might need to add extra entries for "21K.21L" using "other_nextstrain_names"
 
-# Expected earliest date by cluster as taken from approx_first_dates.py
-# Instead of using (random) clus names from clusters.py, switch to "display_name" which is the same as "Nextstrain_clade" from metadata
-clus_dates = {clusters[clus]["display_name"] : datetime.datetime.strptime(cluster_first_dates[clus]["first_date"], "%Y-%m-%d") for clus in clus_to_run if clus in cluster_first_dates}
-
-
-# Date check - do a separate metadata pass just for dates
-alert_first_date_quick = {} # Collect all strains with too early dates
-
-# Compile a list of all countries found in the metadata
-all_countries = []
-answer = input("\nCheck for early dates? ") # If skipped, only number of metadata lines and list of countries will be collected
-check_dates = answer in ["Y", "y", "Yes", "yes", "YES"]
-
-if check_dates:
-    print("\nChecking for early dates...") #Also collect all countries and count lines
-else:
-    print("\nCollect all countries and count metadata lines...")
+alert_dates = {} # All strains that are dated earlier than their respective clade are autoexcluded and printed out
+for clus in cluster_first_dates: # Transform date from string to datetime for easier comparison
+    cluster_first_dates[clus]["date_formatted"] = datetime.datetime.strptime(cluster_first_dates[clus]["first_date"], "%Y-%m-%d")
 
 # Input metadata file
 input_meta = "data/metadata.tsv"
@@ -252,53 +231,10 @@ n_total = 0
 with open(input_meta) as f:
     header = f.readline().split("\t")
     indices = {c:header.index(c) for c in cols}
-    # TODO: is it faster when I create a variable for Nextstrain_clade?
     line = f.readline()
     while line:
         n_total += 1
-        l = line.split("\t")
-        if l[indices['country']] not in all_countries:
-            all_countries.append(l[indices['country']])
-
-        if check_dates:
-            if not l[indices['strain']] in bad_seqs or bad_seqs[l[indices['strain']]] != l[indices['date']]:
-                # Search for sequences with too early dates - only for Nextstrain_clades
-                if l[indices['Nextstrain_clade']] in clus_dates:
-                    if len(l[indices['date']]) == 10 and not "X" in l[indices['date']]:
-                        date_formatted = datetime.datetime.strptime(l[indices['date']], "%Y-%m-%d")
-                        if date_formatted < clus_dates[l[indices['Nextstrain_clade']]]:
-                            if l[indices['Nextstrain_clade']] not in alert_first_date_quick:
-                                alert_first_date_quick[l[indices['Nextstrain_clade']]] = {'strain': [],'date': [],'gisaid_epi_isl': []}
-                            for k in alert_first_date_quick[l[indices['Nextstrain_clade']]]:
-                                alert_first_date_quick[l[indices['Nextstrain_clade']]][k].append(l[indices[k]])
         line = f.readline()
-
-t1 = time.time()
-print(f"First metadata pass took {round((t1-t0)/60,1)} min to run")
-
-# Print out how many bad seqs were found
-# TODO: adjust to Emmas wishes
-sequences_exclude = [] # Exclude all sequences newly identified as too early
-if check_dates:
-    print(f"Checking for early dates took {round((t1-t0)/60,1)} min to run")
-
-    if alert_first_date_quick:
-
-        for c in alert_first_date_quick:
-            alert_first_date_quick[c] = pd.DataFrame.from_dict(alert_first_date_quick[c])
-
-        print("\nDate alerts (fast check):")
-        print([f"{x}: {len(alert_first_date_quick[x])}" for x in alert_first_date_quick.keys()])
-        print("To view, use 'print_all_date_alerts_quick()' or 'print_date_alerts_quick(<clus>)'\n")
-
-        print_answer = input("\nBad dates have been found. Do you want to auto-exclude them for this run and continue (\"n\" is exit program)? ")
-        if print_answer in ["n", "N", "no", "NO", "No"]:
-            sys.exit("Bad dates found. Exit program...")
-        else:
-            print_bad_sequences(alert_first_date_quick)
-            sequences_exclude = [row[1]["strain"] for clus in alert_first_date_quick.values() for row in clus.iterrows()]
-    else:
-        print("\nNo bad dates found in sequences with Nextstrain clade.\n")
 
 ##################################
 ##################################
@@ -318,8 +254,8 @@ today = datetime.datetime.today() # TODO: is date faster than datetime?
 for clus in clus_to_run:
     clus_data_all[clus] = clusters[clus]
     # Prepare both summary and biweekly counts for all countries TODO: might need to remove unused countries at some point?
-    clus_data_all[clus]["summary"] = {c: {'first_seq': today, 'num_seqs': 0, 'last_seq': earliest_date } for c in all_countries}
-    clus_data_all[clus]["cluster_counts"] = {c: {} for c in all_countries}
+    clus_data_all[clus]["summary"] = {}
+    clus_data_all[clus]["cluster_counts"] = {}
 
     if clus == "mink":
         clus_data_all[clus]["clus_build_name"] = "mink"
@@ -379,7 +315,7 @@ with open(input_meta) as f:
 
         # If bad seq there  - exclude!
         # Also, if only just identified as bad sequence but not yet in the official list - still exclude
-        if l[indices['strain']] in bad_seqs and l[indices['date']] == l[indices['date']] or l[indices['strain']] in sequences_exclude:
+        if l[indices['strain']] in bad_seqs and l[indices['date']] == bad_seqs[l[indices['strain']]]:
             continue
 
         # Filter for only Host = Human
@@ -420,6 +356,7 @@ with open(input_meta) as f:
             muts_del_pos = [z for y in l[indices['deletions']].split(',') if y for z in range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)]
 
             # TODO: Did not include "exclude_snps" since none are currently used in clusters.py
+            # TODO: Is it okay for one sequence to belong to multiple clus?
             for c in clus_to_run:
                 if all([p in muts_snp_pos for p in clus_data_all[c]["snps"]]) and clus_data_all[c]["snps"]:
                     clus_all.append(c)
@@ -434,15 +371,15 @@ with open(input_meta) as f:
         ##### COLLECT COUNTS PER CLUSTER #####
         for clus in clus_all:
 
-
+            # Exclude all strains that are dated before their respective clade
             # TODO: S:Q677 not in clus_dates
-            if clus not in nextstrain_clade_to_clus:
-                if clusters[clus]["display_name"] in clus_dates: # TODO: Could do faster...
-                    if date_formatted < clus_dates[clusters[clus]["display_name"]]:
-                        if clus not in early_dates_no_Nextclade:
-                            early_dates_no_Nextclade[clus] = {}
-                        early_dates_no_Nextclade[clus][l[indices['strain']]] = l[indices['date']]
-                        continue
+            if clus in cluster_first_dates: # TODO: What if missing?
+                if date_formatted < cluster_first_dates[clus]["date_formatted"]:
+                    if clus not in alert_dates:
+                        alert_dates[clus] = {'strain': [], 'date': [], 'gisaid_epi_isl': []}
+                    for k in alert_dates[clus]:
+                        alert_dates[clus][k].append(l[indices[k]])
+                    continue
 
             # TODO: Maybe remove from certain clusters?
             # if wanted seqs are part of a Nextclade designated variant, remove from that count & use this one.
@@ -457,6 +394,8 @@ with open(input_meta) as f:
             country = l[indices["country"]]
 
             # Summary: Total counts and first & last seq
+            if country not in clus_data_all[clus]["summary"]:
+                clus_data_all[clus]["summary"][country] = {'first_seq': today, 'num_seqs': 0, 'last_seq': earliest_date}
             clus_data_all[clus]["summary"][country]["num_seqs"] += 1
             clus_data_all[clus]["summary"][country]["first_seq"] = min(clus_data_all[clus]["summary"][country]["first_seq"], date_formatted)
             clus_data_all[clus]["summary"][country]["last_seq"] = max(clus_data_all[clus]["summary"][country]["first_seq"], date_formatted)
@@ -468,6 +407,8 @@ with open(input_meta) as f:
 
             # cluster_counts: Number of sequences per cluster per country per date (2-week interval)
             # TODO: What if there are *NO* sequences in a given week?
+            if country not in clus_data_all[clus]["cluster_counts"]:
+                clus_data_all[clus]["cluster_counts"][country] = {}
             if date_2weeks not in clus_data_all[clus]["cluster_counts"][country]:
                 clus_data_all[clus]["cluster_counts"][country][date_2weeks] = 0
             clus_data_all[clus]["cluster_counts"][country][date_2weeks] += 1
@@ -497,24 +438,20 @@ print(f"Collecting all data took {round((t1-t0)/60,1)} min to run")
 ##################################
 #### Process counts and check for min number of sequences per country
 
-if early_dates_no_Nextclade:
+# Print out how many bad seqs were found
+# TODO: adjust to Emmas wishes
+if alert_dates:
+    for clus in alert_dates:
+        alert_dates[clus] = pd.DataFrame.from_dict(alert_dates[clus])
 
-    for c in early_dates_no_Nextclade:
-        early_dates_no_Nextclade[c] = pd.DataFrame.from_dict(early_dates_no_Nextclade[c])
+    print("\nDate alerts (all have been auto-excluded):")
+    print([f"{x}: {len(alert_dates[x])}" for x in alert_dates.keys()])
+    print("To view, use 'print_all_date_alerts()' or 'print_date_alerts(<clus>)'. Formatted for bad_sequences.py: use print_bad_sequences()'\n")
 
-    print("\nDate alerts (late check): These have been automatically excluded.")
-    print([f"{x}: {len(early_dates_no_Nextclade[x])}" for x in early_dates_no_Nextclade.keys()])
-    print("To view, use 'print_all_date_alerts_late()'\n")
-
-    print_answer = input("\nBad dates have been automatically excluded. Do you want to continue (\"n\" is exit program)? ")
-    if print_answer in ["n", "N", "no", "NO", "No"]:
-        sys.exit("Bad dates found. Exit program...")
-    else:
-        print_bad_sequences(early_dates_no_Nextclade)
 else:
-    print("\nNo bad dates found in sequences without Nextstrain clade.\n")
+    print("\nNo bad dates found.\n")
 
-# Do we want to write out cluster for Nextstrain?
+# Write out strains for Nextstrain runs
 if print_files:
     for clus in clus_to_run:
         # Store all strains per cluster
@@ -524,16 +461,18 @@ if print_files:
                 f.write("\n".join(all_sequences[clus]))
 
 # Write out summary table
+
 if print_files:
     for clus in clus_to_run:
-        clus_build_name = clus_data_all[clus]["build_name"]
-        table_file = f"{tables_path}{clus_build_name}_table.tsv"
-        ordered_country = pd.DataFrame(data=clus_data_all[clus]["summary"]).sort_values(by="first_seq")
+        if clus_data_all[clus]["summary"]: #TODO: No sequence is "Delta.299I"? Is that possible?
+            clus_build_name = clus_data_all[clus]["build_name"]
+            table_file = f"{tables_path}{clus_build_name}_table.tsv"
+            ordered_country = pd.DataFrame.from_dict(clus_data_all[clus]["summary"], orient="index").sort_values(by="first_seq")
 
-        if print_files:
             ordered_country.to_csv(table_file, sep="\t")
             # only write if doing all clusters
             if "all" in clus_answer:
+                display_cluster = clus_data_all[clus]["display_name"]
                 with open(overall_tables_file, "a") as fh:
                     fh.write(f"\n\n## {display_cluster}\n")
                 ordered_country.to_csv(overall_tables_file, sep="\t", mode="a")
@@ -541,10 +480,12 @@ if print_files:
 # TODO: print acks?
 
 # Create total_counts: Total counts per country and date, not sorted by cluster
-total_counts_countries = {country: {} for country in all_countries}
+total_counts_countries = {}
 for clus in clus_data_all:
     clus_data_all[clus]["total_counts"] = {}
     for country in clus_data_all[clus]["cluster_counts"]:
+        if country not in total_counts_countries:
+            total_counts_countries[country] = {}
         for date in clus_data_all[clus]["cluster_counts"][country]:
             if date not in total_counts_countries[country]:
                 total_counts_countries[country][date] = 0
@@ -558,7 +499,7 @@ cutoff_num_seqs = 1200
 
 # Collect all countries that have at least *cutoff_num_seqs* in at least one cluster
 countries_to_plot = []
-for country in all_countries:
+for country in total_counts_countries:
     for clus in clus_data_all:
         if clus_data_all[clus]["summary"][country]["num_seqs"] > cutoff_num_seqs and country not in countries_to_plot:
             countries_to_plot.append(country)
@@ -589,10 +530,6 @@ if division:
 
 ### CLUSTERS ###
 
-width = 1
-smoothing = np.exp(-np.arange(-10, 10) ** 2 / 2 / width ** 2)
-smoothing /= smoothing.sum()
-
 ndone = 1
 for clus in clus_to_run:
 
@@ -611,33 +548,16 @@ for clus in clus_to_run:
             total_count,
             unsmoothed_cluster_count,
             unsmoothed_total_count,
-        ) = non_zero_counts(cluster_data, total_data, country, smoothing=smoothing) # TODO: do we need smoothing?
+        ) = non_zero_counts(cluster_data, total_data, country) # TODO: was it okay to remove smoothing?
 
         week_as_date, cluster_count, total_count = trim_last_data_point(
             week_as_date, cluster_count, total_count, frac=0.1, keep_count=10
         )
-        if len(cluster_count) < len(
-            unsmoothed_cluster_count
-        ):  # if the trim_last_data_point came true, match trimming
-            unsmoothed_cluster_count = unsmoothed_cluster_count[:-1]
-            unsmoothed_total_count = unsmoothed_total_count[:-1]
 
         json_output[clus_build_name][country] = {}
-        json_output[clus_build_name][country]["week"] = [
-            datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date
-        ]
-        json_output[clus_build_name][country]["total_sequences"] = [
-            int(x) for x in total_count
-        ]
-        json_output[clus_build_name][country]["cluster_sequences"] = [
-            int(x) for x in cluster_count
-        ]
-        json_output[clus_build_name][country]["unsmoothed_cluster_sequences"] = [
-            int(x) for x in unsmoothed_cluster_count
-        ]
-        json_output[clus_build_name][country]["unsmoothed_total_sequences"] = [
-            int(x) for x in unsmoothed_total_count
-        ]
+        json_output[clus_build_name][country]["week"] = [datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date]
+        json_output[clus_build_name][country]["total_sequences"] = [int(x) for x in total_count]
+        json_output[clus_build_name][country]["cluster_sequences"] = [int(x) for x in cluster_count]
 
         if print_files:
             with open(tables_path + f"{clus_build_name}_data.json", "w") as fh:
