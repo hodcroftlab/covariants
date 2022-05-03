@@ -15,7 +15,6 @@ export const SharedMutationsPageContainer = styled(Container)``
 export const SharedMutationsWrapper = styled.div`
   display: block;
   flex: 0;
-  overflow-x: auto;
 `
 
 export const SharedMutationsWrapperInner = styled.div`
