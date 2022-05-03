@@ -10,9 +10,7 @@ import SharedMutationsIntro from '../../../../content/SharedMutations.md'
 import { SharedMutations } from './SharedMutations'
 import { PageHeading } from '../Common/PageHeading'
 
-export const SharedMutationsPageContainer = styled(Container)`
-  max-width: 1200px;
-`
+export const SharedMutationsPageContainer = styled(Container)``
 
 export const SharedMutationsWrapper = styled.div`
   display: block;
