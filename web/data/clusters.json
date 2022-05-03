@@ -859,7 +859,7 @@
       "country_info": [],
       "display_name": "21I (Delta)",
       "graphing": true,
-      "important": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -1095,7 +1095,7 @@
       "country_info": [],
       "display_name": "21J (Delta)",
       "graphing": true,
-      "important": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -2075,12 +2075,6 @@
           },
           {
             "gene": "ORF1a",
-            "left": "L",
-            "pos": 3201,
-            "right": "F"
-          },
-          {
-            "gene": "ORF1a",
             "left": "T",
             "pos": 3255,
             "right": "I"
@@ -2267,12 +2261,6 @@
       "old_build_names": [
         "21L"
       ],
-      "other_nextstrain_names": [
-        "21L (Omicron)",
-        "22A (Omicron)",
-        "22B (Omicron)",
-        "22C (Omicron)"
-      ],
       "pango_lineages": [
         {
           "name": "BA.2",
@@ -2330,8 +2318,8 @@
       "col": "#8a66ff",
       "country_info": [],
       "display_name": "22A (Omicron)",
-      "graphing": false,
-      "important": false,
+      "graphing": true,
+      "important": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -3195,7 +3183,7 @@
         28724,
         22917
       ],
-      "type": "do_not_display",
+      "type": "variant",
       "who_name": [
         "Omicron"
       ]
@@ -3209,8 +3197,8 @@
       "col": "#484eff",
       "country_info": [],
       "display_name": "22B (Omicron)",
-      "graphing": false,
-      "important": false,
+      "graphing": true,
+      "important": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -3991,7 +3979,7 @@
         26529,
         27889
       ],
-      "type": "do_not_display",
+      "type": "variant",
       "who_name": [
         "Omicron"
       ]
@@ -4005,8 +3993,8 @@
       "col": "#5d85ff",
       "country_info": [],
       "display_name": "22C (Omicron)",
-      "graphing": false,
-      "important": false,
+      "graphing": true,
+      "important": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -4795,7 +4783,7 @@
         23673,
         2790
       ],
-      "type": "do_not_display",
+      "type": "variant",
       "who_name": [
         "Omicron"
       ]
@@ -5417,7 +5405,7 @@
       "country_info": [],
       "display_name": "21G (Lambda)",
       "graphing": true,
-      "important": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -5659,7 +5647,7 @@
       "country_info": [],
       "display_name": "21H (Mu)",
       "graphing": true,
-      "important": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
