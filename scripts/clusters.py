@@ -115,7 +115,7 @@ clusters = {
         "snps": [21621, 23063, 23525],
         "snps_with_base": ["21621A", "23063T", "23525T"],
         "cluster_data": [],  # 20,501,655
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": True,
@@ -723,10 +723,11 @@ clusters = {
     },
 
     # "delta plus" - build only - Delta + 417
+    # Turned off 3 May 2022 - Omicron dominates now.
     "Delta417": {
         "snps": [22995, 23604, 22917, 22813],  # S:478, 681, 452, 417
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "type": "do_not_display",
         "graphing": False,
         "important": False,
@@ -853,12 +854,12 @@ clusters = {
         },
     },
 
-    # C.37 - build only
+    # C.37 
     "21GLambda": {
         "snps": [7424, 23031, 24138],  # ORF1a 2387 (7424G)  #S 490 (23031C) 859 (24138A)
         "snps_with_base": ["7424G", "23031C", "24138A"],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": True,
@@ -1713,11 +1714,12 @@ clusters = {
     #        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.N.412R?c=gt-S_613"
     #    },
 
+    #Turned off all these extra delta builds 3 May 2022 - Omicron dominates now
     "Delta.299I": {  # "AY.33" - has Spike T29A, T250I, T299I and Q613H
         "snps": [4181, 21647, 22311, 22458, 23401],
     # ORF1a: 1306S (4181T), S: 29A (21647G), 250I (22311T), 299I (22458T), 613H (23401T)
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": False,
         "important": False,
         "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+299I",
@@ -1725,11 +1727,10 @@ clusters = {
         "build_name": "Delta.299I",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.299I?c=gt-S_299"
     },
-
     "Delta.250I": {  # cornelius' larger cluster - key one has Spike T29A, T250I, T299I and then Q613H
         "snps": [4181, 21647, 22311],  # ORF1a: 1306S (4181T), S: 29A (21647G), 250I (22311T)
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": False,
         "important": False,
         "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+250I",
@@ -1737,12 +1738,11 @@ clusters = {
         "build_name": "Delta.250I",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.250I?c=gt-S_250"
     },
-
     # AY.4.2 - up to 10% in UK - cornelius
     "Delta.145H": {  # OF1a:2529v + S:222V + S:145H (in some)
         "snps": [22227, 17040, 7851],  # 22227T (S:222V), 17040C (syn), 7851T (ORF1a:2529V)
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": False,
         "important": False,
         "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+145H",
@@ -1750,12 +1750,11 @@ clusters = {
         "build_name": "Delta.145H",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.145H?c=gt-S_145,222"
     },
-
     # AY.34 - possible rise Italy? - cornelius
     "Delta.ORF1a3059F": {  #
         "snps": [23593, 9441, 22498],  # S:677H (23593C), ORF1a:3059F (9441T) nuc: C22498T , ####26109A, 26681T, 27014T
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": False,
         "important": False,
         "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+ORF1a3059F",
