@@ -1938,7 +1938,7 @@ clusters = {
     "DanishCluster": {
         "snps": [15656],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": False,
         "type": "do_not_display",
         "important": False,
