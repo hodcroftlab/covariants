@@ -1,5 +1,14 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2022-05-04
+- Added the 22A (BA.4), 22B (BA.5), and 22C (BA.2.12.1) variants, in line with updates to Nextstrain's recognised clades
+
+## 2022-04-28
+- Added lists of 10 most-frequent non-defining amino-acid mutations to each variant page (spike, and non-spike)
+
+## 2022-04-21
+- A new 'Cases' page now shows cases from Our World in Data, coloured by variant
+
 ## 2022-03-30
 - All non-human samples are now filtered out from CoVariants graphs
 - All samples with a quality control (QC) score of 'bad' or '' from NextClade are filtered out of CoVariants graphs
