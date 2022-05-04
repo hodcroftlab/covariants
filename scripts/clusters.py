@@ -602,6 +602,7 @@ clusters = {
     #Omicron subclades
     "22A": {  #BA.4
        "snps": [22786,28724,22917], #CTG -- S:R408S (A22786C), N:P151S (C28724T), S:L452R (T22917G)
+       "snps_with_base": ["22786C", "28724T", "22917G"],
        "cluster_data": [],
        "nextstrain_build": True,
        "type": "variant",
@@ -776,6 +777,7 @@ clusters = {
     },
     "22B": {  #BA.5
        "snps": [22917,26529,27889], #GAT - S:L452R (T22917G), M:D3N (G26529A), nuc:C27889T
+       "snps_with_base": ["22917G", "26529A", "27889T"],
        "cluster_data": [],
        "nextstrain_build": True,
        "type": "variant",
@@ -936,6 +938,7 @@ clusters = {
     },
     "22C": {  #BA.2.12.1
        "snps": [22917,23673,2790], #ATT = S:L452Q (T22917A) S:S704L (C23673T) nuc:C2790T  -- also C11674T (ORF1a:3803)
+       "snps_with_base": ["22917A", "23673T", "2790T"],
        "cluster_data": [],
        "nextstrain_build": True,
        "type": "variant",
