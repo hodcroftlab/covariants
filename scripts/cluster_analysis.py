@@ -438,27 +438,34 @@ print(f"Collecting all data took {round((t1-t0)/60,1)} min to run")
 ##################################
 #### Process counts and check for min number of sequences per country
 
-# Print out how many bad seqs were found
-# TODO: adjust to Emmas wishes
-if alert_dates:
-    for clus in alert_dates:
-        alert_dates[clus] = pd.DataFrame.from_dict(alert_dates[clus])
-
-    print("\nDate alerts (all have been auto-excluded):")
-    print([f"{x}: {len(alert_dates[x])}" for x in alert_dates.keys()])
-    print("To view, use 'print_all_date_alerts()' or 'print_date_alerts(<clus>)'. Formatted for bad_sequences.py: use print_bad_sequences()'\n")
-
-else:
-    print("\nNo bad dates found.\n")
-
 # Write out strains for Nextstrain runs
 if print_files:
     for clus in clus_to_run:
         # Store all strains per cluster
         nextstrain_run = clusters[clus]['nextstrain_build']
+        clusterlist_output = clusters[clus]["clusterlist_output"]
         if nextstrain_run:
-            with open(clus_data_all[clus]["clusterlist_output"], "w") as f:
+            with open(clusterlist_output, "w") as f:
                 f.write("\n".join(all_sequences[clus]))
+
+            # Copy file with date, so we can compare to prev dates if we want...
+            if clus in clusters:
+                build_nam = clusters[clus]["build_name"]
+            else:
+                build_nam = "mink"
+            copypath = clusterlist_output.replace(
+                f"{build_nam}",
+                "{}-{}".format(build_nam, datetime.date.today().strftime("%Y-%m-%d")),
+            )
+            copyfile(clusterlist_output, copypath)
+            copypath2 = clusterlist_output.replace(
+                "clusters/cluster_", "clusters/current/cluster_"
+            )
+            copyfile(clusterlist_output, copypath2)
+
+            # TODO: Currently I don't do that to save time, should I add it again?
+            # Just so we have the data, write out the metadata for these sequences
+            #cluster_meta.to_csv(out_meta_file, sep="\t", index=False)
 
 # Write out summary table
 
@@ -528,20 +535,13 @@ if division:
 ##################################
 #### Plotting
 
-### CLUSTERS ###
-
-ndone = 1
-for clus in clus_to_run:
-
-    print(f"Plotting & writing out cluster {clus}: number {ndone} of {len(clus_to_run)}")
-
+# Pass helper function non_zero_counts over all cluster and all countries once
+for clus in clus_data_all:
     total_data = pd.DataFrame(total_counts_countries)
-    cluster_data = pd.DataFrame(clus_data_all[clus]["cluster_counts"])
-    clus_build_name = clus_data_all[clus]["build_name"]
+    cluster_data = pd.DataFrame(clus_data_all[clus]["cluster_counts"]).sort_index() # TODO: Countries sort, clusters not. Hope it's okay to sort for both
+    clus_data_all[clus]["non_zero_counts"] = {}
 
-    json_output[clus_build_name] = {}
     for country in countries_to_plot:
-
         if country not in cluster_data: #TODO: Is this okay?
             continue
 
@@ -556,6 +556,46 @@ for clus in clus_to_run:
         week_as_date, cluster_count, total_count = trim_last_data_point(
             week_as_date, cluster_count, total_count, frac=0.1, keep_count=10
         )
+
+        clus_data_all[clus]["non_zero_counts"][country] = (week_as_date, cluster_count, total_count)
+
+if division:
+    for country in selected_country:
+        for clus in division_data_all[country]:
+            total_data = pd.DataFrame(total_counts_divisions[country])
+            cluster_data = pd.DataFrame(division_data_all[country][clus]["cluster_counts"]).sort_index()  # TODO: Countries sort, clusters not. Hope it's okay to sort for both
+            division_data_all[country][clus]["non_zero_counts"] = {}
+
+            for division in division_data_all[country][clus]["cluster_counts"]: # TODO: Is this list okay?
+
+                (
+                    week_as_date,
+                    cluster_count,
+                    total_count,
+                    unsmoothed_cluster_count,
+                    unsmoothed_total_count,
+                ) = non_zero_counts(cluster_data, total_data, division)  # TODO: was it okay to remove smoothing?
+
+                week_as_date, cluster_count, total_count = trim_last_data_point(
+                    week_as_date, cluster_count, total_count, frac=0.1, keep_count=10
+                )
+
+                division_data_all[country][clus]["non_zero_counts"][division] = (week_as_date, cluster_count, total_count)
+
+
+### CLUSTERS ###
+
+ndone = 1
+for clus in clus_to_run:
+
+    print(f"Plotting & writing out cluster {clus}: number {ndone} of {len(clus_to_run)}")
+
+    clus_build_name = clus_data_all[clus]["build_name"]
+
+    json_output[clus_build_name] = {}
+    for country in clus_data_all[clus]["non_zero_counts"]:
+
+        (week_as_date, cluster_count, total_count) = clus_data_all[clus]["non_zero_counts"][country]
 
         json_output[clus_build_name][country] = {}
         json_output[clus_build_name][country]["week"] = [datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date]
@@ -651,37 +691,18 @@ def plot_country_data(
 
         for clus in clus_keys:
             if division_local:
-                cluster_data = division_data_all[selected_country_local][clus]["cluster_counts"]
+                if country not in division_data_all[selected_country_local][clus]["non_zero_counts"]:
+                    i += 1
+                    continue # TODO: What exactly is this for?
+                (week_as_date, cluster_count, total_count) = division_data_all[selected_country_local][clus]["non_zero_counts"][country]
             else:
-                cluster_data = clus_data_all[clus]["cluster_counts"]
-            if division_local:
-                total_data = total_counts_divisions[selected_country_local]
-            else:
-                total_data = total_counts_countries
+                if country not in clus_data_all[clus]["non_zero_counts"]:
+                    i += 1
+                    continue
+                (week_as_date, cluster_count, total_count) = clus_data_all[clus]["non_zero_counts"][country]
 
-            total_data = pd.DataFrame(total_data)
-            cluster_data = pd.DataFrame(cluster_data)
-            cluster_data = cluster_data.sort_index()
-
-            if country not in cluster_data:
-                i += 1
+            if len(total_count) < 2: # TODO: Okay if this happens after trimming?
                 continue
-
-            (
-                week_as_date,
-                cluster_count,
-                total_count,
-                unsmoothed_cluster_count,
-                unsmoothed_total_count,
-            ) = non_zero_counts(cluster_data, total_data, country)
-
-            if len(total_count) < 2:
-                continue
-
-            # trim away any last data points that only have 1 or 2 seqs
-            week_as_date, cluster_count, total_count = trim_last_data_point(
-                week_as_date, cluster_count, total_count, frac=0.1, keep_count=10
-            )
 
             mindat = min(week_as_date)
             if mindat < min_week:
@@ -760,64 +781,37 @@ if "all" in clus_answer:
     for clus in clusters:
         if clusters[clus]['type'] == "variant":
             displayn = clusters[clus]["display_name"]
-            ccounts.append([displayn, len(clusters[clus]['cluster_meta'])])
+            ccounts.append([displayn, len(all_sequences[clus])])
 
     count_df = pd.DataFrame(ccounts, columns=['cluster', 'counts'])
     print("Showing cluster counts")
     print(count_df.sort_values(by="counts"))
 
 
-if "all" in clus_answer:
-    for country in countries_to_plot.keys():
-        if country not in country_styles_all:
-            print(
-                f"WARNING!: {coun} has no color! Please add it to country_list_2 in colors_and_countries.py and re-run make web-data"
-            )
+# Print out how many bad seqs were found
+# TODO: adjust to Emmas wishes
+if alert_dates:
+    for clus in alert_dates:
+        alert_dates[clus] = pd.DataFrame.from_dict(alert_dates[clus])
 
+    print("\nDate alerts (all have been auto-excluded):")
+    print([f"{x}: {len(alert_dates[x])}" for x in alert_dates.keys()])
+    print("To view, use 'print_all_date_alerts()' or 'print_date_alerts(<clus>)'. Formatted for bad_sequences.py: use print_bad_sequences()'\n")
+
+else:
+    print("\nNo bad dates found.\n")
+
+# Print out countries missing colors
+if "all" in clus_answer:
+    for country in countries_to_plot:
+        if country not in country_styles_all:
+            print(f"WARNING!: {coun} has no color! Please add it to country_list_2 in colors_and_countries.py and re-run make web-data")
+
+# Print out countries with assigned colors that did not make it into plotting
 if "all" in clus_answer:
     for coun in country_styles_all:
-        if coun not in countries_to_plot.keys():
+        if coun not in countries_to_plot:
             print(f"Not plotted anymore: {coun}")
-
-
-'''
-
-
-    clusterlist_output = clusters[clus]["clusterlist_output"]
-    if print_files:
-        nextstrain_run = clusters[clus]['nextstrain_build']
-    else:
-        nextstrain_run = False
-
-    if print_files and nextstrain_run:
-        # Copy file with date, so we can compare to prev dates if we want...
-        if clus in clusters:
-            build_nam = clusters[clus]["build_name"]
-        else:
-            build_nam = "mink"
-        copypath = clusterlist_output.replace(
-            f"{build_nam}",
-            "{}-{}".format(build_nam, datetime.date.today().strftime("%Y-%m-%d")),
-        )
-        copyfile(clusterlist_output, copypath)
-        copypath2 = clusterlist_output.replace(
-            "clusters/cluster_", "clusters/current/cluster_"
-        )
-        copyfile(clusterlist_output, copypath2)
-
-        # TODO: Currently I don't do that to save time, should I add it again?
-        # Just so we have the data, write out the metadata for these sequences
-        #cluster_meta.to_csv(out_meta_file, sep="\t", index=False)
-
-
-
-
-
-
-
-'''
-
-
 
 
 
