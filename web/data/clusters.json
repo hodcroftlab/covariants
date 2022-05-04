@@ -624,7 +624,7 @@
           }
         ]
       },
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_name": "20J (Gamma, V3)",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20J.Gamma.V3",
       "old_build_names": [
@@ -859,7 +859,7 @@
       "country_info": [],
       "display_name": "21I (Delta)",
       "graphing": true,
-      "important": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -1095,7 +1095,7 @@
       "country_info": [],
       "display_name": "21J (Delta)",
       "graphing": true,
-      "important": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -2075,12 +2075,6 @@
           },
           {
             "gene": "ORF1a",
-            "left": "L",
-            "pos": 3201,
-            "right": "F"
-          },
-          {
-            "gene": "ORF1a",
             "left": "T",
             "pos": 3255,
             "right": "I"
@@ -2267,12 +2261,6 @@
       "old_build_names": [
         "21L"
       ],
-      "other_nextstrain_names": [
-        "21L (Omicron)",
-        "22A (Omicron)",
-        "22B (Omicron)",
-        "22C (Omicron)"
-      ],
       "pango_lineages": [
         {
           "name": "BA.2",
@@ -2330,9 +2318,854 @@
       "col": "#8a66ff",
       "country_info": [],
       "display_name": "22A (Omicron)",
-      "graphing": false,
-      "important": false,
-      "mutations": {},
+      "graphing": true,
+      "important": true,
+      "mutations": {
+        "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 19,
+            "right": "I"
+          },
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 24,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 24,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 25,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 25,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 25,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 26,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 26,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 26,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "A",
+            "pos": 27,
+            "right": "S"
+          },
+          {
+            "gene": "S",
+            "left": "H",
+            "pos": 69,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "H",
+            "pos": 69,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "H",
+            "pos": 69,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "V",
+            "pos": 70,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "V",
+            "pos": 70,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "V",
+            "pos": 70,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "G",
+            "pos": 142,
+            "right": "D"
+          },
+          {
+            "gene": "S",
+            "left": "V",
+            "pos": 213,
+            "right": "G"
+          },
+          {
+            "gene": "S",
+            "left": "G",
+            "pos": 339,
+            "right": "D"
+          },
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 371,
+            "right": "F"
+          },
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 373,
+            "right": "P"
+          },
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 375,
+            "right": "F"
+          },
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 376,
+            "right": "A"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 405,
+            "right": "N"
+          },
+          {
+            "gene": "S",
+            "left": "R",
+            "pos": 408,
+            "right": "S"
+          },
+          {
+            "gene": "S",
+            "left": "K",
+            "pos": 417,
+            "right": "N"
+          },
+          {
+            "gene": "S",
+            "left": "N",
+            "pos": 440,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 452,
+            "right": "R"
+          },
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 477,
+            "right": "N"
+          },
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 478,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "E",
+            "pos": 484,
+            "right": "A"
+          },
+          {
+            "gene": "S",
+            "left": "F",
+            "pos": 486,
+            "right": "V"
+          },
+          {
+            "gene": "S",
+            "left": "Q",
+            "pos": 498,
+            "right": "R"
+          },
+          {
+            "gene": "S",
+            "left": "N",
+            "pos": 501,
+            "right": "Y"
+          },
+          {
+            "gene": "S",
+            "left": "Y",
+            "pos": 505,
+            "right": "H"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
+          {
+            "gene": "S",
+            "left": "H",
+            "pos": 655,
+            "right": "Y"
+          },
+          {
+            "gene": "S",
+            "left": "N",
+            "pos": 679,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 681,
+            "right": "H"
+          },
+          {
+            "gene": "S",
+            "left": "N",
+            "pos": 764,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 796,
+            "right": "Y"
+          },
+          {
+            "gene": "S",
+            "left": "Q",
+            "pos": 954,
+            "right": "H"
+          },
+          {
+            "gene": "S",
+            "left": "N",
+            "pos": 969,
+            "right": "K"
+          },
+          {
+            "gene": "N",
+            "left": "P",
+            "pos": 13,
+            "right": "L"
+          },
+          {
+            "gene": "N",
+            "left": "E",
+            "pos": 31,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "E",
+            "pos": 31,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "E",
+            "pos": 31,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "R",
+            "pos": 32,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "R",
+            "pos": 32,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "R",
+            "pos": 32,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "S",
+            "pos": 33,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "S",
+            "pos": 33,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "S",
+            "pos": 33,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "P",
+            "pos": 151,
+            "right": "S"
+          },
+          {
+            "gene": "N",
+            "left": "R",
+            "pos": 203,
+            "right": "K"
+          },
+          {
+            "gene": "N",
+            "left": "R",
+            "pos": 203,
+            "right": "K"
+          },
+          {
+            "gene": "N",
+            "left": "G",
+            "pos": 204,
+            "right": "R"
+          },
+          {
+            "gene": "N",
+            "left": "S",
+            "pos": 413,
+            "right": "R"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 135,
+            "right": "R"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "K",
+            "pos": 141,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "K",
+            "pos": 141,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "K",
+            "pos": 141,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 142,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 142,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 142,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 143,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 143,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 143,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 842,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 1307,
+            "right": "S"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "L",
+            "pos": 3027,
+            "right": "F"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 3090,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 3255,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "P",
+            "pos": 3395,
+            "right": "H"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 3675,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 3675,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 3675,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 3676,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 3676,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 3676,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 3677,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 3677,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 3677,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "P",
+            "pos": 314,
+            "right": "L"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "R",
+            "pos": 1315,
+            "right": "C"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "I",
+            "pos": 1566,
+            "right": "V"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "T",
+            "pos": 2163,
+            "right": "I"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "T",
+            "pos": 223,
+            "right": "I"
+          },
+          {
+            "gene": "ORF6",
+            "left": "D",
+            "pos": 61,
+            "right": "L"
+          },
+          {
+            "gene": "ORF6",
+            "left": "D",
+            "pos": 61,
+            "right": "L"
+          },
+          {
+            "gene": "ORF6",
+            "left": "D",
+            "pos": 61,
+            "right": "L"
+          },
+          {
+            "gene": "ORF7b",
+            "left": "L",
+            "pos": 11,
+            "right": "F"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "P",
+            "pos": 10,
+            "right": "S"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "E",
+            "pos": 27,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "E",
+            "pos": 27,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "E",
+            "pos": 27,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "N",
+            "pos": 28,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "N",
+            "pos": 28,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "N",
+            "pos": 28,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "A",
+            "pos": 29,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "A",
+            "pos": 29,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "A",
+            "pos": 29,
+            "right": "-"
+          },
+          {
+            "gene": "E",
+            "left": "T",
+            "pos": 9,
+            "right": "I"
+          },
+          {
+            "gene": "M",
+            "left": "Q",
+            "pos": 19,
+            "right": "E"
+          },
+          {
+            "gene": "M",
+            "left": "A",
+            "pos": 63,
+            "right": "T"
+          }
+        ],
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 241,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 3037,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 4321,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 9424,
+            "right": "G"
+          },
+          {
+            "left": "C",
+            "pos": 10198,
+            "right": "T"
+          },
+          {
+            "left": "G",
+            "pos": 10447,
+            "right": "A"
+          },
+          {
+            "left": "G",
+            "pos": 12160,
+            "right": "A"
+          },
+          {
+            "left": "C",
+            "pos": 12880,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 15714,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 20055,
+            "right": "G"
+          },
+          {
+            "left": "C",
+            "pos": 25000,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 25584,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 26858,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 27259,
+            "right": "C"
+          },
+          {
+            "left": "C",
+            "pos": 27807,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 28271,
+            "right": "T"
+          },
+          {
+            "left": "G",
+            "pos": 29734,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 29735,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29736,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29737,
+            "right": "-"
+          },
+          {
+            "left": "C",
+            "pos": 29738,
+            "right": "-"
+          },
+          {
+            "left": "C",
+            "pos": 29739,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 29740,
+            "right": "-"
+          },
+          {
+            "left": "C",
+            "pos": 29741,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29742,
+            "right": "-"
+          },
+          {
+            "left": "C",
+            "pos": 29743,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29744,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29745,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 29746,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29747,
+            "right": "-"
+          },
+          {
+            "left": "T",
+            "pos": 29748,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 29749,
+            "right": "-"
+          },
+          {
+            "left": "C",
+            "pos": 29750,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29751,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 29752,
+            "right": "-"
+          },
+          {
+            "left": "T",
+            "pos": 29753,
+            "right": "-"
+          },
+          {
+            "left": "C",
+            "pos": 29754,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29755,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 29756,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29757,
+            "right": "-"
+          },
+          {
+            "left": "T",
+            "pos": 29758,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29759,
+            "right": "-"
+          }
+        ]
+      },
       "nextstrain_build": true,
       "nextstrain_name": "22A",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22A.Omicron",
@@ -2350,7 +3183,7 @@
         28724,
         22917
       ],
-      "type": "do_not_display",
+      "type": "variant",
       "who_name": [
         "Omicron"
       ]
@@ -2361,12 +3194,774 @@
       ],
       "build_name": "22B.Omicron",
       "cluster_data": [],
-      "col": "#484eff",
+      "col": "#585eff",
       "country_info": [],
       "display_name": "22B (Omicron)",
-      "graphing": false,
-      "important": false,
-      "mutations": {},
+      "graphing": true,
+      "important": true,
+      "mutations": {
+        "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 19,
+            "right": "I"
+          },
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 24,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 24,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 25,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 25,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 25,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 26,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 26,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 26,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "A",
+            "pos": 27,
+            "right": "S"
+          },
+          {
+            "gene": "S",
+            "left": "H",
+            "pos": 69,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "H",
+            "pos": 69,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "H",
+            "pos": 69,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "V",
+            "pos": 70,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "V",
+            "pos": 70,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "V",
+            "pos": 70,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "G",
+            "pos": 142,
+            "right": "D"
+          },
+          {
+            "gene": "S",
+            "left": "V",
+            "pos": 213,
+            "right": "G"
+          },
+          {
+            "gene": "S",
+            "left": "G",
+            "pos": 339,
+            "right": "D"
+          },
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 371,
+            "right": "F"
+          },
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 373,
+            "right": "P"
+          },
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 375,
+            "right": "F"
+          },
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 376,
+            "right": "A"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 405,
+            "right": "N"
+          },
+          {
+            "gene": "S",
+            "left": "R",
+            "pos": 408,
+            "right": "S"
+          },
+          {
+            "gene": "S",
+            "left": "K",
+            "pos": 417,
+            "right": "N"
+          },
+          {
+            "gene": "S",
+            "left": "N",
+            "pos": 440,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 452,
+            "right": "R"
+          },
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 477,
+            "right": "N"
+          },
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 478,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "E",
+            "pos": 484,
+            "right": "A"
+          },
+          {
+            "gene": "S",
+            "left": "F",
+            "pos": 486,
+            "right": "V"
+          },
+          {
+            "gene": "S",
+            "left": "Q",
+            "pos": 498,
+            "right": "R"
+          },
+          {
+            "gene": "S",
+            "left": "N",
+            "pos": 501,
+            "right": "Y"
+          },
+          {
+            "gene": "S",
+            "left": "Y",
+            "pos": 505,
+            "right": "H"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
+          {
+            "gene": "S",
+            "left": "H",
+            "pos": 655,
+            "right": "Y"
+          },
+          {
+            "gene": "S",
+            "left": "N",
+            "pos": 679,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 681,
+            "right": "H"
+          },
+          {
+            "gene": "S",
+            "left": "N",
+            "pos": 764,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 796,
+            "right": "Y"
+          },
+          {
+            "gene": "S",
+            "left": "Q",
+            "pos": 954,
+            "right": "H"
+          },
+          {
+            "gene": "S",
+            "left": "N",
+            "pos": 969,
+            "right": "K"
+          },
+          {
+            "gene": "N",
+            "left": "P",
+            "pos": 13,
+            "right": "L"
+          },
+          {
+            "gene": "N",
+            "left": "E",
+            "pos": 31,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "E",
+            "pos": 31,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "E",
+            "pos": 31,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "R",
+            "pos": 32,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "R",
+            "pos": 32,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "R",
+            "pos": 32,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "S",
+            "pos": 33,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "S",
+            "pos": 33,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "S",
+            "pos": 33,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "R",
+            "pos": 203,
+            "right": "K"
+          },
+          {
+            "gene": "N",
+            "left": "R",
+            "pos": 203,
+            "right": "K"
+          },
+          {
+            "gene": "N",
+            "left": "G",
+            "pos": 204,
+            "right": "R"
+          },
+          {
+            "gene": "N",
+            "left": "S",
+            "pos": 413,
+            "right": "R"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 135,
+            "right": "R"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 842,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 1307,
+            "right": "S"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "L",
+            "pos": 3027,
+            "right": "F"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 3090,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 3255,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "P",
+            "pos": 3395,
+            "right": "H"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 3675,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 3675,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 3675,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 3676,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 3676,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 3676,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 3677,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 3677,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 3677,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "P",
+            "pos": 314,
+            "right": "L"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "R",
+            "pos": 1315,
+            "right": "C"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "I",
+            "pos": 1566,
+            "right": "V"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "T",
+            "pos": 2163,
+            "right": "I"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "T",
+            "pos": 223,
+            "right": "I"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "P",
+            "pos": 10,
+            "right": "S"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "E",
+            "pos": 27,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "E",
+            "pos": 27,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "E",
+            "pos": 27,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "N",
+            "pos": 28,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "N",
+            "pos": 28,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "N",
+            "pos": 28,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "A",
+            "pos": 29,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "A",
+            "pos": 29,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "A",
+            "pos": 29,
+            "right": "-"
+          },
+          {
+            "gene": "E",
+            "left": "T",
+            "pos": 9,
+            "right": "I"
+          },
+          {
+            "gene": "M",
+            "left": "D",
+            "pos": 3,
+            "right": "N"
+          },
+          {
+            "gene": "M",
+            "left": "Q",
+            "pos": 19,
+            "right": "E"
+          },
+          {
+            "gene": "M",
+            "left": "A",
+            "pos": 63,
+            "right": "T"
+          }
+        ],
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 241,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 3037,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 4321,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 9424,
+            "right": "G"
+          },
+          {
+            "left": "C",
+            "pos": 10198,
+            "right": "T"
+          },
+          {
+            "left": "G",
+            "pos": 10447,
+            "right": "A"
+          },
+          {
+            "left": "G",
+            "pos": 12160,
+            "right": "A"
+          },
+          {
+            "left": "C",
+            "pos": 12880,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 15714,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 20055,
+            "right": "G"
+          },
+          {
+            "left": "C",
+            "pos": 25000,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 25584,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 27807,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 27889,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 28271,
+            "right": "T"
+          },
+          {
+            "left": "G",
+            "pos": 29734,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 29735,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29736,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29737,
+            "right": "-"
+          },
+          {
+            "left": "C",
+            "pos": 29738,
+            "right": "-"
+          },
+          {
+            "left": "C",
+            "pos": 29739,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 29740,
+            "right": "-"
+          },
+          {
+            "left": "C",
+            "pos": 29741,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29742,
+            "right": "-"
+          },
+          {
+            "left": "C",
+            "pos": 29743,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29744,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29745,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 29746,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29747,
+            "right": "-"
+          },
+          {
+            "left": "T",
+            "pos": 29748,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 29749,
+            "right": "-"
+          },
+          {
+            "left": "C",
+            "pos": 29750,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29751,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 29752,
+            "right": "-"
+          },
+          {
+            "left": "T",
+            "pos": 29753,
+            "right": "-"
+          },
+          {
+            "left": "C",
+            "pos": 29754,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29755,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 29756,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29757,
+            "right": "-"
+          },
+          {
+            "left": "T",
+            "pos": 29758,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29759,
+            "right": "-"
+          }
+        ]
+      },
       "nextstrain_build": true,
       "nextstrain_name": "22B",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22B.Omicron",
@@ -2384,23 +3979,793 @@
         26529,
         27889
       ],
-      "type": "do_not_display",
+      "type": "variant",
       "who_name": [
         "Omicron"
       ]
     },
     {
       "alt_display_name": [
-        "BA.2.12.14"
+        "BA.2.12.1"
       ],
       "build_name": "22C.Omicron",
       "cluster_data": [],
-      "col": "#5d85ff",
+      "col": "#0400e0",
       "country_info": [],
       "display_name": "22C (Omicron)",
-      "graphing": false,
-      "important": false,
-      "mutations": {},
+      "graphing": true,
+      "important": true,
+      "mutations": {
+        "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 19,
+            "right": "I"
+          },
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 24,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 24,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 25,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 25,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 25,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 26,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 26,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 26,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "A",
+            "pos": 27,
+            "right": "S"
+          },
+          {
+            "gene": "S",
+            "left": "G",
+            "pos": 142,
+            "right": "D"
+          },
+          {
+            "gene": "S",
+            "left": "V",
+            "pos": 213,
+            "right": "G"
+          },
+          {
+            "gene": "S",
+            "left": "G",
+            "pos": 339,
+            "right": "D"
+          },
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 371,
+            "right": "F"
+          },
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 373,
+            "right": "P"
+          },
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 375,
+            "right": "F"
+          },
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 376,
+            "right": "A"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 405,
+            "right": "N"
+          },
+          {
+            "gene": "S",
+            "left": "R",
+            "pos": 408,
+            "right": "S"
+          },
+          {
+            "gene": "S",
+            "left": "K",
+            "pos": 417,
+            "right": "N"
+          },
+          {
+            "gene": "S",
+            "left": "N",
+            "pos": 440,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 452,
+            "right": "Q"
+          },
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 477,
+            "right": "N"
+          },
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 478,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "E",
+            "pos": 484,
+            "right": "A"
+          },
+          {
+            "gene": "S",
+            "left": "Q",
+            "pos": 493,
+            "right": "R"
+          },
+          {
+            "gene": "S",
+            "left": "Q",
+            "pos": 498,
+            "right": "R"
+          },
+          {
+            "gene": "S",
+            "left": "N",
+            "pos": 501,
+            "right": "Y"
+          },
+          {
+            "gene": "S",
+            "left": "Y",
+            "pos": 505,
+            "right": "H"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
+          {
+            "gene": "S",
+            "left": "H",
+            "pos": 655,
+            "right": "Y"
+          },
+          {
+            "gene": "S",
+            "left": "N",
+            "pos": 679,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 681,
+            "right": "H"
+          },
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 704,
+            "right": "L"
+          },
+          {
+            "gene": "S",
+            "left": "N",
+            "pos": 764,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 796,
+            "right": "Y"
+          },
+          {
+            "gene": "S",
+            "left": "Q",
+            "pos": 954,
+            "right": "H"
+          },
+          {
+            "gene": "S",
+            "left": "N",
+            "pos": 969,
+            "right": "K"
+          },
+          {
+            "gene": "N",
+            "left": "P",
+            "pos": 13,
+            "right": "L"
+          },
+          {
+            "gene": "N",
+            "left": "E",
+            "pos": 31,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "E",
+            "pos": 31,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "E",
+            "pos": 31,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "R",
+            "pos": 32,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "R",
+            "pos": 32,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "R",
+            "pos": 32,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "S",
+            "pos": 33,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "S",
+            "pos": 33,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "S",
+            "pos": 33,
+            "right": "-"
+          },
+          {
+            "gene": "N",
+            "left": "R",
+            "pos": 203,
+            "right": "K"
+          },
+          {
+            "gene": "N",
+            "left": "R",
+            "pos": 203,
+            "right": "K"
+          },
+          {
+            "gene": "N",
+            "left": "G",
+            "pos": 204,
+            "right": "R"
+          },
+          {
+            "gene": "N",
+            "left": "S",
+            "pos": 413,
+            "right": "R"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 135,
+            "right": "R"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 842,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 1307,
+            "right": "S"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "L",
+            "pos": 3027,
+            "right": "F"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 3090,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "L",
+            "pos": 3201,
+            "right": "F"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 3255,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "P",
+            "pos": 3395,
+            "right": "H"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 3675,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 3675,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 3675,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 3676,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 3676,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 3676,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 3677,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 3677,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 3677,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "P",
+            "pos": 314,
+            "right": "L"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "R",
+            "pos": 1315,
+            "right": "C"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "I",
+            "pos": 1566,
+            "right": "V"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "T",
+            "pos": 2163,
+            "right": "I"
+          },
+          {
+            "gene": "ORF3a",
+            "left": "T",
+            "pos": 223,
+            "right": "I"
+          },
+          {
+            "gene": "ORF6",
+            "left": "D",
+            "pos": 61,
+            "right": "L"
+          },
+          {
+            "gene": "ORF6",
+            "left": "D",
+            "pos": 61,
+            "right": "L"
+          },
+          {
+            "gene": "ORF6",
+            "left": "D",
+            "pos": 61,
+            "right": "L"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "P",
+            "pos": 10,
+            "right": "S"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "E",
+            "pos": 27,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "E",
+            "pos": 27,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "E",
+            "pos": 27,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "N",
+            "pos": 28,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "N",
+            "pos": 28,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "N",
+            "pos": 28,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "A",
+            "pos": 29,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "A",
+            "pos": 29,
+            "right": "-"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "A",
+            "pos": 29,
+            "right": "-"
+          },
+          {
+            "gene": "E",
+            "left": "T",
+            "pos": 9,
+            "right": "I"
+          },
+          {
+            "gene": "M",
+            "left": "Q",
+            "pos": 19,
+            "right": "E"
+          },
+          {
+            "gene": "M",
+            "left": "A",
+            "pos": 63,
+            "right": "T"
+          }
+        ],
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 241,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 3037,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 4321,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 9424,
+            "right": "G"
+          },
+          {
+            "left": "C",
+            "pos": 10198,
+            "right": "T"
+          },
+          {
+            "left": "G",
+            "pos": 10447,
+            "right": "A"
+          },
+          {
+            "left": "C",
+            "pos": 11674,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 12880,
+            "right": "T"
+          },
+          {
+            "left": "T",
+            "pos": 15009,
+            "right": "C"
+          },
+          {
+            "left": "C",
+            "pos": 15714,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 20055,
+            "right": "G"
+          },
+          {
+            "left": "C",
+            "pos": 21721,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 25000,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 25416,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 25584,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 26858,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 27259,
+            "right": "C"
+          },
+          {
+            "left": "C",
+            "pos": 27807,
+            "right": "T"
+          },
+          {
+            "left": "A",
+            "pos": 28271,
+            "right": "T"
+          },
+          {
+            "left": "G",
+            "pos": 29734,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 29735,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29736,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29737,
+            "right": "-"
+          },
+          {
+            "left": "C",
+            "pos": 29738,
+            "right": "-"
+          },
+          {
+            "left": "C",
+            "pos": 29739,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 29740,
+            "right": "-"
+          },
+          {
+            "left": "C",
+            "pos": 29741,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29742,
+            "right": "-"
+          },
+          {
+            "left": "C",
+            "pos": 29743,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29744,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29745,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 29746,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29747,
+            "right": "-"
+          },
+          {
+            "left": "T",
+            "pos": 29748,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 29749,
+            "right": "-"
+          },
+          {
+            "left": "C",
+            "pos": 29750,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29751,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 29752,
+            "right": "-"
+          },
+          {
+            "left": "T",
+            "pos": 29753,
+            "right": "-"
+          },
+          {
+            "left": "C",
+            "pos": 29754,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29755,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 29756,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29757,
+            "right": "-"
+          },
+          {
+            "left": "T",
+            "pos": 29758,
+            "right": "-"
+          },
+          {
+            "left": "G",
+            "pos": 29759,
+            "right": "-"
+          }
+        ]
+      },
       "nextstrain_build": true,
       "nextstrain_name": "22C",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22C.Omicron",
@@ -2418,7 +4783,7 @@
         23673,
         2790
       ],
-      "type": "do_not_display",
+      "type": "variant",
       "who_name": [
         "Omicron"
       ]
@@ -2618,7 +4983,7 @@
       "display_name": "Delta + S:K417",
       "graphing": false,
       "important": false,
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.Delta.S.K417",
       "snps": [
         22995,
@@ -3040,7 +5405,7 @@
       "country_info": [],
       "display_name": "21G (Lambda)",
       "graphing": true,
-      "important": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -3250,7 +5615,7 @@
           }
         ]
       },
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_name": "21G (Lambda)",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21G.Lambda",
       "old_build_names": [],
@@ -3282,7 +5647,7 @@
       "country_info": [],
       "display_name": "21H (Mu)",
       "graphing": true,
-      "important": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -5070,7 +7435,7 @@
       "display_name": "Delta+299I",
       "graphing": false,
       "important": false,
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.299I?c=gt-S_299",
       "snps": [
         4181,
@@ -5089,7 +7454,7 @@
       "display_name": "Delta+250I",
       "graphing": false,
       "important": false,
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.250I?c=gt-S_250",
       "snps": [
         4181,
@@ -5106,7 +7471,7 @@
       "display_name": "Delta+145H",
       "graphing": false,
       "important": false,
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.145H?c=gt-S_145,222",
       "snps": [
         22227,
@@ -5123,7 +7488,7 @@
       "display_name": "Delta+ORF1a3059F",
       "graphing": false,
       "important": false,
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.ORF1a3059F?c=gt-ORF1a_3059",
       "snps": [
         23593,
