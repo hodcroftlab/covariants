@@ -66,7 +66,6 @@ import time
 import sys
 
 
-# TODO: Figure out whether we still use this, and in which shape
 def print_date_alerts(clus):
     print(clus)
     print(f"Expected date: {cluster_first_dates[clus]['first_date']}")
@@ -92,11 +91,6 @@ def to2week_ordinal(x):
     monday = datetime.date.fromordinal(n - ((n - ref_monday) % 14))
     return (monday.isocalendar()[0], monday.isocalendar()[1]) #TODO: Currently returned as tuple of year & week -> Can we switch to returning datetime? Needs adjustment at several places in the script
 
-
-# Store early date alarms (only those sequences with Nextstrain clade). This should be enough to capture wrong dates
-# from new variants (those will be most likely to have year reversals etc). There is an additional check later
-# where also sequences with variants assigned in this script are tested for early dates.
-alert_first_date = {}
 
 # store acknoweledgements
 acknowledgement_by_variant = {}
@@ -246,6 +240,10 @@ division_data_all = {}
 if division:
     for country in selected_country:
         division_data_all[country] = {}
+        for clus in clus_to_run:
+            division_data_all[country][clus] = {}
+            division_data_all[country][clus]["summary"] = {}
+            division_data_all[country][clus]["cluster_counts"] = {}
 
 # Random very early date for max & min date search (just needs to be earlier than any date we might encounter)
 earliest_date = datetime.datetime.strptime("2019-01-01", '%Y-%m-%d')
@@ -314,7 +312,6 @@ with open(input_meta) as f:
         #l = [float("NaN") if i == "" else i for i in l] # Fillna # TODO: Do we really need this?
 
         # If bad seq there  - exclude!
-        # Also, if only just identified as bad sequence but not yet in the official list - still exclude
         if l[indices['strain']] in bad_seqs and l[indices['date']] == bad_seqs[l[indices['strain']]]:
             continue
 
@@ -416,20 +413,23 @@ with open(input_meta) as f:
             # For selected countries (e.g. USA, Switzerland), also collect data by division
             if division:
                 if country in selected_country:
-                    # TODO: no summary for these cases?
 
                     # Replace Swiss divisions with swiss-region, but store original division
-                    division = l[indices['division']]
-                    if division in swiss_regions:
-                        division = swiss_regions[division]
+                    div = l[indices['division']]
+                    if div in swiss_regions:
+                        div = swiss_regions[div]
 
-                    if division not in division_data_all[country]:
-                        division_data_all[country][division] = {}
-                    if clus not in division_data_all[country][division]:
-                        division_data_all[country][division][clus] = {}
-                    if date_2weeks not in division_data_all[country][division][clus]:
-                        division_data_all[country][division][clus][date_2weeks] = 0
-                    division_data_all[country][division][clus][date_2weeks] += 1
+                    if div not in division_data_all[country][clus]["summary"]:
+                        division_data_all[country][clus]["summary"][div] = {'first_seq': today, 'num_seqs': 0, 'last_seq': earliest_date}
+                    division_data_all[country][clus]["summary"][div]["num_seqs"] += 1
+                    division_data_all[country][clus]["summary"][div]["first_seq"] = min(division_data_all[country][clus]["summary"][div]["first_seq"], date_formatted)
+                    division_data_all[country][clus]["summary"][div]["last_seq"] = max(division_data_all[country][clus]["summary"][div]["first_seq"], date_formatted)
+
+                    if div not in division_data_all[country][clus]["cluster_counts"]:
+                        division_data_all[country][clus]["cluster_counts"][div] = {}
+                    if date_2weeks not in division_data_all[country][clus]["cluster_counts"][div]:
+                        division_data_all[country][clus]["cluster_counts"][div][date_2weeks] = 0
+                    division_data_all[country][clus]["cluster_counts"][div][date_2weeks] += 1
 
 t1 = time.time()
 print(f"Collecting all data took {round((t1-t0)/60,1)} min to run")
@@ -499,8 +499,8 @@ cutoff_num_seqs = 1200
 
 # Collect all countries that have at least *cutoff_num_seqs* in at least one cluster
 countries_to_plot = []
-for country in total_counts_countries:
-    for clus in clus_data_all:
+for clus in clus_data_all:
+    for country in clus_data_all[clus]["summary"]:
         if clus_data_all[clus]["summary"][country]["num_seqs"] > cutoff_num_seqs and country not in countries_to_plot:
             countries_to_plot.append(country)
 
@@ -515,13 +515,13 @@ print(
 if division:
     total_counts_divisions = {country: {} for country in division_data_all}
     for country in division_data_all:
-        for division in division_data_all[country]:
-            total_counts_divisions[country][division]["total_counts"] = {}
-            for clus in division_data_all[country][division]:
-                for date in division_data_all[country][division][clus]:
-                    if date not in total_counts_divisions[country][division]["total_counts"]:
-                        total_counts_divisions[country][division]["total_counts"][date] = 0
-                    total_counts_divisions[country][division]["total_counts"][date] += 1
+        for clus in division_data_all[country]:
+            for division in division_data_all[country][clus]["cluster_counts"]:
+                total_counts_divisions[country][division] = {}
+                for date in division_data_all[country][clus]["cluster_counts"][division]:
+                    if date not in total_counts_divisions[country][division]:
+                        total_counts_divisions[country][division][date] = 0
+                    total_counts_divisions[country][division][date] += division_data_all[country][clus]["cluster_counts"][division][date]
 
 
 ##################################
@@ -540,7 +540,10 @@ for clus in clus_to_run:
     clus_build_name = clus_data_all[clus]["build_name"]
 
     json_output[clus_build_name] = {}
-    for country in [x for x in countries_to_plot]:
+    for country in countries_to_plot:
+
+        if country not in cluster_data: #TODO: Is this okay?
+            continue
 
         (
             week_as_date,
@@ -559,9 +562,9 @@ for clus in clus_to_run:
         json_output[clus_build_name][country]["total_sequences"] = [int(x) for x in total_count]
         json_output[clus_build_name][country]["cluster_sequences"] = [int(x) for x in cluster_count]
 
-        if print_files:
-            with open(tables_path + f"{clus_build_name}_data.json", "w") as fh:
-                json.dump(json_output[clus_build_name], fh)
+    if print_files:
+        with open(tables_path + f"{clus_build_name}_data.json", "w") as fh:
+            json.dump(json_output[clus_build_name], fh)
     ndone += 1
 
 
@@ -575,71 +578,49 @@ if print_files and "all" in clus_answer:
 
 ### COUNTRIES ###
 
-def get_ordered_clusters_to_plot(clusters, division=False, selected_country=None):
+# Return a list of proposed countries to plot as well as a list of clusters to plot
+def get_ordered_clusters_to_plot(division_local=False, selected_country_local=None):
     # fix cluster order in a list so it's reliable
     clus_keys = [x for x in clusters.keys()]  # if x in clusters_tww]
-
-    # DO NOT PLOT 69 AS IT OVERLAPS WITH 439 AND 501!!!!
-    # Do not plot 484 as it overlaps with 501Y.V2, possibly others
-    # Do not plot DanishCluster as also overlaps
-    # clus_keys = [x for x in clus_keys if x not in ["S69","S484", "DanishCluster"]]
-    if division:
-        clus_keys = [
-            x
-            for x in clus_keys
-            if clusters[x]["type"] == "variant"
-               or ("usa_graph" in clusters[x] and clusters[x]["usa_graph"] is True)
-        ]
-        cluster_data_key = "cluster_data_2wk_div"
+    if division_local:
+        clus_keys = [x for x in clus_keys if clusters[x]["type"] == "variant" or ("usa_graph" in clusters[x] and clusters[x]["usa_graph"] is True)]
         min_to_plot = 20
     else:
         clus_keys = [x for x in clus_keys if clusters[x]["graphing"] is True]
-        cluster_data_key = "cluster_data_2wk"
         min_to_plot = 70
 
-    countries_all = defaultdict(dict)
-    for clus in clus_keys:
-        if division:
-            clus_dat = clusters[clus][selected_country][cluster_data_key]
-        else:
-            clus_dat = clusters[clus][cluster_data_key]
-        for coun in clus_dat.columns:
-            countries_all[coun][clus] = clus_dat[coun]
-
-    # how to decide what to plot?
+    # Countries to plot must have at least *min_to_plot* sequences in at least one cluster (special case for Andorra)
     proposed_coun_to_plot = []
     for clus in clus_keys:
-        if division:
-            country_inf = clusters[clus][selected_country]["division_info"]
+        if division_local:
+            country_info = division_data_all[selected_country_local][clus]["summary"]
         else:
-            country_inf = clusters[clus]["country_info_df"]
-        proposed_coun_to_plot.extend(
-            country_inf[country_inf.num_seqs > min_to_plot].index
-        )
-        # special rule for Andorra
-        proposed_coun_to_plot.extend(
-            country_inf[(country_inf.num_seqs > 50) & (country_inf.index == "Andorra")].index
-        )
+            country_info = clus_data_all[clus]["summary"]
 
-    proposed_coun_to_plot = set(proposed_coun_to_plot)
+        for c in country_info:
+            if country_info[c]["num_seqs"] > min_to_plot and c not in proposed_coun_to_plot:
+                proposed_coun_to_plot.append(c)
+
+        # special rule for Andorra
+        if "Andorra" in country_info and country_info["Andorra"]["num_seqs"] > 50 and "Andorra" not in proposed_coun_to_plot:
+            proposed_coun_to_plot.append("Andorra")
+
     print(f"At min plot {min_to_plot}, there are {len(proposed_coun_to_plot)} entries PLUS ANDORRA")
 
     total_coun_counts = {}
-    # decide order
+    # Sort by total number of cases
     for clus in clus_keys:
-        if division:
-            country_inf = clusters[clus][selected_country]["division_info"]
+        if division_local:
+            country_info = division_data_all[selected_country_local][clus]["summary"]
         else:
-            country_inf = clusters[clus]["country_info_df"]
-        for coun in proposed_coun_to_plot:
-            if coun not in total_coun_counts:
-                total_coun_counts[coun] = 0
-            if coun in country_inf.index:
-                total_coun_counts[coun] += country_inf.num_seqs[coun]
+            country_info = clus_data_all[clus]["summary"]
+        for country in country_info:
+            if country in proposed_coun_to_plot:
+                if country not in total_coun_counts:
+                    total_coun_counts[country] = 0
+                total_coun_counts[country] += country_info[country]["num_seqs"]
 
-    sorted_country_tups = sorted(
-        total_coun_counts.items(), key=lambda x: x[1], reverse=True
-    )
+    sorted_country_tups = sorted(total_coun_counts.items(), key=lambda x: x[1], reverse=True)
     proposed_coun_to_plot = [x[0] for x in sorted_country_tups]
 
     return proposed_coun_to_plot, clus_keys
@@ -651,44 +632,48 @@ def plot_country_data(
         print_files,
         clus_keys,
         file_prefix,
-        division=False,
-        selected_country=None,
+        division_local=False,
+        selected_country_local=None,
 ):
     country_week = {clus: {} for clus in clusters}
 
-    min_week = datetime.datetime(2020, 12, 31)
-    max_week = datetime.datetime(2020, 1, 1)
+    min_week = today
+    max_week = earliest_date
     week_as_dates = {}
     json_output = {}
     json_output["countries"] = {}
 
-    for coun in proposed_coun_to_plot:
+    for country in proposed_coun_to_plot:
         i = 0
         first_clus_count = []
 
         country_data = {"week": {}, "total_sequences": {}}
 
         for clus in clus_keys:
-            if division:
-                cluster_data = clusters[clus][selected_country]["cluster_data_2wk_div"]
+            if division_local:
+                cluster_data = division_data_all[selected_country_local][clus]["cluster_counts"]
             else:
-                cluster_data = clusters[clus]["cluster_data_2wk"]
-            cluster_data = cluster_data.sort_index()
-            if division:
-                total_data = clusters[clus][selected_country]["total_data_2wk_div"]
+                cluster_data = clus_data_all[clus]["cluster_counts"]
+            if division_local:
+                total_data = total_counts_divisions[selected_country_local]
             else:
-                total_data = clusters[clus]["total_data_2wk"]
+                total_data = total_counts_countries
 
-            if coun not in cluster_data:
+            total_data = pd.DataFrame(total_data)
+            cluster_data = pd.DataFrame(cluster_data)
+            cluster_data = cluster_data.sort_index()
+
+            if country not in cluster_data:
                 i += 1
                 continue
+
             (
                 week_as_date,
                 cluster_count,
                 total_count,
                 unsmoothed_cluster_count,
                 unsmoothed_total_count,
-            ) = non_zero_counts(cluster_data, total_data, coun)
+            ) = non_zero_counts(cluster_data, total_data, country)
 
             if len(total_count) < 2:
                 continue
@@ -705,16 +690,11 @@ def plot_country_data(
             if maxdat > max_week:
                 max_week = maxdat
 
-            week_as_dates[coun] = week_as_date
+            week_as_dates[country] = week_as_date
 
-            country_data[clusters[clus]["display_name"]] = list(
-                cluster_count
-            )
+            country_data[clusters[clus]["display_name"]] = list(cluster_count)
+            country_week[clus][country] = cluster_count / total_count
 
-            country_week[clus][coun] = cluster_count / total_count
-
-            linesty = "-"
-            lab = clusters[clus]["display_name"]
             if i == 0:
                 first_clus_count = [0] * len(total_count)
             if len(first_clus_count) == 0:
@@ -723,14 +703,11 @@ def plot_country_data(
 
             first_clus_count = cluster_count  # unindented
             i += 1
-        country_data["week"] = [
-            datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date
-        ]
-        country_data["total_sequences"] = [
-            int(x) for x in total_count
-        ]
+
+        country_data["week"] = [datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date]
+        country_data["total_sequences"] = [int(x) for x in total_count]
         if len(total_count) >= 2:
-            json_output["countries"][coun] = country_data
+            json_output["countries"][country] = country_data
 
     json_output["plotting_dates"] = {}
     json_output["plotting_dates"]["min_date"] = datetime.datetime.strftime(
@@ -744,17 +721,12 @@ def plot_country_data(
         with open(tables_path + f"{file_prefix}_data.json", "w") as fh:
             json.dump(json_output, fh)
 
-
 if do_country:
-    proposed_coun_to_plot, clus_keys = get_ordered_clusters_to_plot(clusters)
-    plot_country_data(
-        clusters, proposed_coun_to_plot, print_files, clus_keys, "EUClusters"
-    )
+    proposed_coun_to_plot, clus_keys = get_ordered_clusters_to_plot()
+    plot_country_data(clusters, proposed_coun_to_plot, print_files, clus_keys, "EUClusters")
 
 if do_divisions_country:
-    proposed_coun_to_plot, clus_keys = get_ordered_clusters_to_plot(
-        clusters, True, "USA"
-    )
+    proposed_coun_to_plot, clus_keys = get_ordered_clusters_to_plot(True, "USA")
     plot_country_data(
         clusters,
         proposed_coun_to_plot,
@@ -765,9 +737,7 @@ if do_divisions_country:
         "USA",
     )
 
-    proposed_coun_to_plot, clus_keys = get_ordered_clusters_to_plot(
-        clusters, True, "Switzerland"
-    )
+    proposed_coun_to_plot, clus_keys = get_ordered_clusters_to_plot(True, "Switzerland")
     plot_country_data(
         clusters,
         proposed_coun_to_plot,
