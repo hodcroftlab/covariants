@@ -216,6 +216,11 @@
         23604,
         24914
       ],
+      "snps_with_base": [
+        "23063T",
+        "23604A",
+        "24914C"
+      ],
       "type": "variant",
       "who_name": [
         "Alpha"
@@ -397,6 +402,11 @@
         21801,
         23063,
         23664
+      ],
+      "snps_with_base": [
+        "21801C",
+        "23063T",
+        "23664T"
       ],
       "type": "variant",
       "who_name": [
@@ -631,6 +641,11 @@
         23063,
         23525
       ],
+      "snps_with_base": [
+        "21621A",
+        "23063T",
+        "23525T"
+      ],
       "type": "variant",
       "who_name": [
         "Gamma"
@@ -826,6 +841,11 @@
         22995,
         23604,
         22917
+      ],
+      "snps_with_base": [
+        "22995A",
+        "23604G",
+        "22917G"
       ],
       "type": "variant",
       "who_name": [
@@ -1057,6 +1077,11 @@
         5184,
         11514,
         22227
+      ],
+      "snps_with_base": [
+        "5184T",
+        "11514T",
+        "22227T"
       ],
       "type": "variant",
       "who_name": [
@@ -1300,6 +1325,11 @@
         4181,
         8986,
         11201
+      ],
+      "snps_with_base": [
+        "4181T",
+        "8986T",
+        "11201G"
       ],
       "type": "variant",
       "who_name": [
@@ -1761,6 +1791,11 @@
         25000,
         25584,
         8393
+      ],
+      "snps_with_base": [
+        "25000T",
+        "25584T",
+        "8393A"
       ],
       "type": "variant",
       "who_name": [
@@ -2232,9 +2267,15 @@
       "old_build_names": [
         "21L"
       ],
+      "other_nextstrain_names": [
+        "21L (Omicron)",
+        "22A (Omicron)",
+        "22B (Omicron)",
+        "22C (Omicron)"
+      ],
       "pango_lineages": [
         {
-          "name": "BA.1",
+          "name": "BA.2",
           "url": "https://cov-lineages.org/lineages/lineage_BA.2.html"
         }
       ],
@@ -2242,6 +2283,11 @@
         9344,
         10198,
         27383
+      ],
+      "snps_with_base": [
+        "9344T",
+        "10198T",
+        "27383T"
       ],
       "type": "variant",
       "who_name": [
@@ -2268,7 +2314,114 @@
         23040,
         23604
       ],
+      "snps_with_base": [
+        "22679C",
+        "23040G",
+        "23604A"
+      ],
       "type": "do_not_display"
+    },
+    {
+      "alt_display_name": [
+        "BA.4"
+      ],
+      "build_name": "22A.Omicron",
+      "cluster_data": [],
+      "col": "#8a66ff",
+      "country_info": [],
+      "display_name": "22A (Omicron)",
+      "graphing": false,
+      "important": false,
+      "mutations": {},
+      "nextstrain_build": true,
+      "nextstrain_name": "22A",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22A.Omicron",
+      "old_build_names": [
+        "22A"
+      ],
+      "pango_lineages": [
+        {
+          "name": "BA.4",
+          "url": "https://cov-lineages.org/lineage.html?lineage=BA.4"
+        }
+      ],
+      "snps": [
+        22786,
+        28724,
+        22917
+      ],
+      "type": "do_not_display",
+      "who_name": [
+        "Omicron"
+      ]
+    },
+    {
+      "alt_display_name": [
+        "BA.5"
+      ],
+      "build_name": "22B.Omicron",
+      "cluster_data": [],
+      "col": "#484eff",
+      "country_info": [],
+      "display_name": "22B (Omicron)",
+      "graphing": false,
+      "important": false,
+      "mutations": {},
+      "nextstrain_build": true,
+      "nextstrain_name": "22B",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22B.Omicron",
+      "old_build_names": [
+        "22B"
+      ],
+      "pango_lineages": [
+        {
+          "name": "BA.5",
+          "url": "https://cov-lineages.org/lineage.html?lineage=BA.5"
+        }
+      ],
+      "snps": [
+        22917,
+        26529,
+        27889
+      ],
+      "type": "do_not_display",
+      "who_name": [
+        "Omicron"
+      ]
+    },
+    {
+      "alt_display_name": [
+        "BA.2.12.14"
+      ],
+      "build_name": "22C.Omicron",
+      "cluster_data": [],
+      "col": "#5d85ff",
+      "country_info": [],
+      "display_name": "22C (Omicron)",
+      "graphing": false,
+      "important": false,
+      "mutations": {},
+      "nextstrain_build": true,
+      "nextstrain_name": "22C",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22C.Omicron",
+      "old_build_names": [
+        "22C"
+      ],
+      "pango_lineages": [
+        {
+          "name": "BA.2.12.1",
+          "url": "https://cov-lineages.org/lineage.html?lineage=BA.2.12.1"
+        }
+      ],
+      "snps": [
+        22917,
+        23673,
+        2790
+      ],
+      "type": "do_not_display",
+      "who_name": [
+        "Omicron"
+      ]
     },
     {
       "alt_display_name": [
@@ -2446,6 +2599,11 @@
         17523,
         23604,
         22917
+      ],
+      "snps_with_base": [
+        "17523T",
+        "23604G",
+        "22917G"
       ],
       "type": "variant",
       "who_name": [
@@ -2690,6 +2848,11 @@
         23012,
         24224
       ],
+      "snps_with_base": [
+        "8593C",
+        "23012A",
+        "24224C"
+      ],
       "type": "variant",
       "who_name": [
         "Eta"
@@ -2859,6 +3022,11 @@
         21575,
         9867,
         1059
+      ],
+      "snps_with_base": [
+        "21575T",
+        "9867C",
+        "1059T"
       ],
       "type": "variant",
       "who_name": [
@@ -3097,6 +3265,11 @@
         23031,
         24138
       ],
+      "snps_with_base": [
+        "7424G",
+        "23031C",
+        "24138A"
+      ],
       "type": "variant",
       "who_name": [
         "Lambda"
@@ -3311,6 +3484,11 @@
         4878,
         17491
       ],
+      "snps_with_base": [
+        "22599A",
+        "4878T",
+        "17491T"
+      ],
       "type": "variant",
       "who_name": [
         "Mu"
@@ -3450,6 +3628,11 @@
         10029,
         23756,
         21306
+      ],
+      "snps_with_base": [
+        "10029T",
+        "23756G",
+        "21306T"
       ],
       "type": "variant",
       "who_name": []
@@ -3671,6 +3854,11 @@
         1473,
         6236
       ],
+      "snps_with_base": [
+        "21939C",
+        "1473T",
+        "6236A"
+      ],
       "type": "variant",
       "who_name": []
     },
@@ -3740,6 +3928,11 @@
         22227,
         28932,
         29645
+      ],
+      "snps_with_base": [
+        "22227T",
+        "28932T",
+        "29645T"
       ],
       "type": "variant"
     },
@@ -3845,6 +4038,11 @@
         22018,
         22917
       ],
+      "snps_with_base": [
+        "21600T",
+        "22018T",
+        "22917G"
+      ],
       "type": "variant",
       "who_name": [
         "Epsilon"
@@ -3892,6 +4090,10 @@
       "snps": [
         7767,
         22879
+      ],
+      "snps_with_base": [
+        "7767C",
+        "22879A"
       ],
       "type": "variant"
     },
@@ -4025,6 +4227,11 @@
         29402,
         8083
       ],
+      "snps_with_base": [
+        "23593T",
+        "29402T",
+        "8083A"
+      ],
       "type": "variant"
     },
     {
@@ -4151,6 +4358,11 @@
         11451,
         21811
       ],
+      "snps_with_base": [
+        "23592C",
+        "11451G",
+        "21811A"
+      ],
       "type": "variant"
     },
     {
@@ -4242,6 +4454,11 @@
         4543,
         16889
       ],
+      "snps_with_base": [
+        "22992A",
+        "4543T",
+        "16889G"
+      ],
       "type": "variant"
     },
     {
@@ -4304,6 +4521,10 @@
       "snps": [
         21855,
         25505
+      ],
+      "snps_with_base": [
+        "21855T",
+        "25505G"
       ],
       "type": "variant"
     },
@@ -4433,6 +4654,10 @@
         21800,
         3099
       ],
+      "snps_with_base": [
+        "23438T",
+        "772C"
+      ],
       "type": "variant"
     },
     {
@@ -4465,6 +4690,10 @@
         23438,
         772
       ],
+      "snps_with_base": [
+        "24926T",
+        "9120T"
+      ],
       "type": "variant"
     },
     {
@@ -4496,6 +4725,10 @@
       "snps": [
         24926,
         9120
+      ],
+      "snps_with_base": [
+        "24926T",
+        "9120T"
       ],
       "type": "variant"
     },

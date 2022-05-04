@@ -8,10 +8,10 @@ import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 
 import { getPerCountryCasesData, filterClusters, filterCountries } from 'src/io/getPerCountryCasesData'
-import { clustersAtom, disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/ClustersForCaseData'
+import { clustersCasesAtom, disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/ClustersForCaseData'
 import {
-  continentsAtom,
-  countriesAtom,
+  continentsCasesAtom,
+  countriesCasesAtom,
   disableAllCountries,
   enableAllCountries,
   toggleContinent,
@@ -28,9 +28,9 @@ import IntroContent from '../../../../content/PerCountryCasesIntro.md'
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
 export function CasesPage() {
-  const [countries, setCountries] = useRecoilState(countriesAtom)
-  const [continents, setContinents] = useRecoilState(continentsAtom)
-  const [clusters, setClusters] = useRecoilState(clustersAtom)
+  const [countries, setCountries] = useRecoilState(countriesCasesAtom)
+  const [continents, setContinents] = useRecoilState(continentsCasesAtom)
+  const [clusters, setClusters] = useRecoilState(clustersCasesAtom)
 
   const { perCountryCasesDistributions } = useMemo(() => getPerCountryCasesData(), [])
 

@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 
 import { useRouter } from 'next/router'
 import { ClusterButtonPanelLayout } from 'src/components/ClusterButtonPanel/ClusterButtonPanelLayout'
+import { MutationCountsSummaryCard } from 'src/components/MutationCounts/MutationCountsSummaryCard'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 
@@ -122,6 +123,12 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
           <Row noGutters className="mb-2">
             <Col>
               <PlotCard cluster={currentCluster} />
+            </Col>
+          </Row>
+
+          <Row noGutters>
+            <Col>
+              <MutationCountsSummaryCard currentCluster={currentCluster} />
             </Col>
           </Row>
 
