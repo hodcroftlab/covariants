@@ -91,14 +91,6 @@ def to2week_ordinal(x):
     monday = datetime.date.fromordinal(n - ((n - ref_monday) % 14))
     return (monday.isocalendar()[0], monday.isocalendar()[1]) #TODO: Currently returned as tuple of year & week -> Can we switch to returning datetime? Needs adjustment at several places in the script
 
-
-# store acknoweledgements
-acknowledgement_by_variant = {}
-acknowledgement_by_variant["acknowledgements"] = {}
-
-acknowledgement_keys = {}
-acknowledgement_keys["acknowledgements"] = {}
-
 # set min data week to consider
 min_data_week = (2020, 18)  # 20)
 
@@ -262,6 +254,13 @@ for clus in clus_to_run:
         + f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
     )
 
+# store acknoweledgements
+acknowledgement_by_variant = {}
+acknowledgement_by_variant["acknowledgements"] = {clus: [] for clus in clus_to_run}
+
+acknowledgement_keys = {}
+acknowledgement_keys["acknowledgements"] = {}
+
 ##################################
 ##################################
 #### Read and clean metadata line by line
@@ -346,6 +345,9 @@ with open(input_meta) as f:
         ##### COLLECT COUNTS PER CLUSTER #####
         for clus in clus_all: # TODO: maybe include print_files to not collect data?
 
+            if clus not in clus_to_run:
+                continue
+
             # Exclude all strains that are dated before their respective clade
             # TODO: S:Q677 not in clus_dates
             if clus in cluster_first_dates: # TODO: What if missing?
@@ -362,7 +364,6 @@ with open(input_meta) as f:
 
             # Store all strains per assigned cluster
             all_sequences[clus].append(l[indices['strain']])
-
 
             # TODO: Removed dated_limit, check if must be added again
 
@@ -411,8 +412,6 @@ with open(input_meta) as f:
 
             if print_acks:
                 # remove all but EPI_ISL, on request from GISAID
-                if clus not in acknowledgement_by_variant["acknowledgements"]:
-                    acknowledgement_by_variant["acknowledgements"][clus] = [] #TODO: move up
                 acknowledgement_by_variant["acknowledgements"][clus].append(l[indices['gisaid_epi_isl']])
 
 print("100% complete!")
@@ -473,33 +472,35 @@ if print_files:
                 fh.write(f"\n\n## {display_cluster}\n")
             ordered_country.to_csv(overall_tables_file, sep="\t", mode="a")
 
-# TODO: print acks?
-if print_acks:
+# only do this for 'all' runs as otherwise the main file won't be updated.
+if print_acks and "all" in clus_answer:
     for clus in clus_to_run:
         if clus not in acknowledgement_by_variant["acknowledgements"]:
             print(f"Cluster {clus} missing from acknowledgements (no sequences assigned to this cluster).")
             continue
 
-        clus_build_name = clus_build_name = clusters[clus]["build_name"]
-        # only do this for 'all' runs as otherwise the main file won't be updated.
-        if clus_build_name != "DanishCluster" and "all" in clus_answer:
-            ack_out_folder = acknowledgement_folder_new + f"{clus_build_name}/"
-            if not os.path.exists(ack_out_folder):
-                os.mkdir(ack_out_folder)
-            ack_list = acknowledgement_by_variant["acknowledgements"][clus]
-            chunk_size = 1000
-            chunks = [ack_list[i : i + chunk_size] for i in range(0, len(ack_list), chunk_size)]
+        clus_build_name = clusters[clus]["build_name"]
 
-            # get number & file names
-            ack_file_names = ["{0:03}".format(i) for i in range(len(chunks))]
-            acknowledgement_keys["acknowledgements"][clus_build_name] = {}
-            acknowledgement_keys["acknowledgements"][clus_build_name]["numChunks"] = len(
-                chunks
-            )
+        if clus_build_name == "DanishCluster":
+            continue
 
-            for ch, fn in zip(chunks, ack_file_names):
-                with open(ack_out_folder + fn + ".json", "w") as fh:
-                    json.dump(ch, fh, indent=2, sort_keys=True)
+        ack_out_folder = acknowledgement_folder_new + f"{clus_build_name}/"
+        if not os.path.exists(ack_out_folder):
+            os.mkdir(ack_out_folder)
+        ack_list = acknowledgement_by_variant["acknowledgements"][clus]
+        chunk_size = 1000
+        chunks = [ack_list[i : i + chunk_size] for i in range(0, len(ack_list), chunk_size)]
+
+        # get number & file names
+        ack_file_names = ["{0:03}".format(i) for i in range(len(chunks))]
+        acknowledgement_keys["acknowledgements"][clus_build_name] = {}
+        acknowledgement_keys["acknowledgements"][clus_build_name]["numChunks"] = len(
+            chunks
+        )
+
+        #for ch, fn in zip(chunks, ack_file_names):
+            #with open(ack_out_folder + fn + ".json", "w") as fh:
+                #json.dump(ch, fh, indent=2, sort_keys=True)
 
 # Create total_counts: Total counts per country and date, not sorted by cluster
 total_counts_countries = {}
@@ -517,7 +518,6 @@ cutoff_num_seqs = 1200
 
 # TODO: Special case for Danish cluster?
 # TODO: also special for "UK countries"?
-# TODO: Line 1149, I don't understand the difference
 
 # Collect all countries that have at least *cutoff_num_seqs* in at least one cluster
 countries_to_plot = []
@@ -628,13 +628,13 @@ for clus in clus_to_run:
             json.dump(json_output[clus_build_name], fh)
     ndone += 1
 
-# TODO: Is this still needed?
-'''
+
 ## Write out plotting information - only if all clusters have run
 if print_files and "all" in clus_answer:
+    countries_plotted = list(clus_data_all[clus]["non_zero_counts"].keys())
     with open(tables_path + f"perVariant_countries_toPlot.json", "w") as fh:
         json.dump(countries_plotted, fh)
-'''
+
 
 ### COUNTRIES ###
 
