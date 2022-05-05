@@ -139,13 +139,13 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
             </Col>
           </Row>
 
-          {AquariaSection}
-
           <Row noGutters>
             <Col>
               <MutationCountsSummaryCard currentCluster={currentCluster} />
             </Col>
           </Row>
+
+          {AquariaSection}
 
           <Row noGutters className="mb-2">
             <Col>
