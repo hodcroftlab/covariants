@@ -92,6 +92,13 @@ The dates used are always the dates a sample was taken. Only samples with a samp
 I consider 'defining mutations' (appears on the right side of Variant pages) to be the mutations that define the phylogenetic root of a variant. This means that not every sequence in that variant must have them, or should be expected to have them (though many will!). I determine the defining mutations by looking at the mutations present at the root node of a variant on a Nextstrain tree. 
 You can find the list of defining mutations for each variant in a machine-readable format in [clusters.py](https://github.com/hodcroftlab/covariants/blob/master/scripts/clusters.py).
 
+### What are 'non-defining mutation counts'?
+
+This data is provided by [CoV-Spectrum](https://cov-spectrum.org/), a fantastic resource. 
+'Non-defining mutation counts' are intended to give an overview of that most common amino-acid (AA) mutations seen in a variant, excluding the AA mutations that define the variant (as we'd expect these to be present at high frequencies). 
+This can give insight into AA mutations that may be common or rising in prevalence, and that may be worth looking into more closely.
+To show more mutations, we show two mutation tables, one for 'Gene S' (Spike) and another for other (non-S) genes.
+
 ### What do the names you use mean?
 
 Variants that are recognised as clades in the [Nextstrain nomenclature](https://nextstrain.org/blog/2021-01-06-updated-SARS-CoV-2-clade-naming) are shown with this name (ex: '21A'). This is often accompanied by an official [WHO designation](https://www.who.int/en/activities/tracking-SARS-CoV-2-variants/) (ex: 'Alpha', 'Beta').
