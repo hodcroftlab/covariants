@@ -577,6 +577,21 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K.21L"
     },
 
+    "Omicron": {
+        "snps": [22679, 23040, 23604],  # 22679C, 23040G, 23604A
+        "snps_with_base": ["22679C", "23040G", "23604A"],
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "important": False,
+        "other_nextstrain_names": ["21K (Omicron)", "21L (Omicron)", "21M (Omicron)", "22A (Omicron)", "22B (Omicron)", "22C (Omciron)"],
+        "country_info": [], 'col': "#b3d9ff",
+        "display_name": "Omicron",
+        "type": "do_not_display",
+        "build_name": "Omicron",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Omicron"
+    },
+
     # Sister clade to 21K - TBD if Omicron
     # "21L": {
     #    "snps": [21618,22775,23525], # S21618T, 22775A, 23525T
