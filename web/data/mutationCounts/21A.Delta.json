@@ -1,18 +1,18 @@
 {
   "S": {
-    "total": 3975460,
+    "total": 3975685,
     "counts": [
       {
         "mut": "S:G142D",
-        "count": 3196728
+        "count": 3196926
       },
       {
         "mut": "S:T95I",
-        "count": 1791913
+        "count": 1791983
       },
       {
         "mut": "S:A222V",
-        "count": 412698
+        "count": 412703
       },
       {
         "mut": "S:Y145H",
@@ -20,15 +20,15 @@
       },
       {
         "mut": "S:V1264L",
-        "count": 101000
+        "count": 101002
       },
       {
         "mut": "S:S112L",
-        "count": 81727
+        "count": 81732
       },
       {
         "mut": "S:L5F",
-        "count": 57540
+        "count": 57547
       },
       {
         "mut": "S:V1104L",
@@ -36,7 +36,7 @@
       },
       {
         "mut": "S:Q613H",
-        "count": 51560
+        "count": 51561
       },
       {
         "mut": "S:P251L",
@@ -45,47 +45,47 @@
     ]
   },
   "others": {
-    "total": 3975460,
+    "total": 3975685,
     "counts": [
       {
         "mut": "ORF1a:V2930L",
-        "count": 3600101
+        "count": 3600321
       },
       {
         "mut": "ORF1b:A1918V",
-        "count": 3598735
+        "count": 3598956
       },
       {
         "mut": "ORF1a:P2046L",
-        "count": 3597575
+        "count": 3597794
       },
       {
         "mut": "ORF1a:T3646A",
-        "count": 3593932
+        "count": 3594150
       },
       {
         "mut": "ORF1a:T3255I",
-        "count": 3592131
+        "count": 3592351
       },
       {
         "mut": "ORF1a:P2287S",
-        "count": 3588737
+        "count": 3588957
       },
       {
         "mut": "N:G215C",
-        "count": 3585779
+        "count": 3586000
       },
       {
         "mut": "ORF1a:A1306S",
-        "count": 3576793
+        "count": 3577011
       },
       {
         "mut": "ORF7b:T40I",
-        "count": 3571610
+        "count": 3571830
       },
       {
         "mut": "ORF1a:A2529V",
-        "count": 992032
+        "count": 992035
       }
     ]
   }

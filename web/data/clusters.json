@@ -2185,6 +2185,11 @@
         "synonymous": [
           {
             "left": "C",
+            "pos": 241,
+            "right": "T"
+          },
+          {
+            "left": "C",
             "pos": 3037,
             "right": "T"
           },
@@ -2310,6 +2315,36 @@
       "type": "do_not_display"
     },
     {
+      "build_name": "Omicron",
+      "cluster_data": [],
+      "col": "#b3d9ff",
+      "country_info": [],
+      "display_name": "Omicron",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Omicron",
+      "other_nextstrain_names": [
+        "21K (Omicron)",
+        "21L (Omicron)",
+        "21M (Omicron)",
+        "22A (Omicron)",
+        "22B (Omicron)",
+        "22C (Omciron)"
+      ],
+      "snps": [
+        22679,
+        23040,
+        23604
+      ],
+      "snps_with_base": [
+        "22679C",
+        "23040G",
+        "23604A"
+      ],
+      "type": "do_not_display"
+    },
+    {
       "alt_display_name": [
         "BA.4"
       ],
@@ -2336,38 +2371,8 @@
           },
           {
             "gene": "S",
-            "left": "L",
-            "pos": 24,
-            "right": "-"
-          },
-          {
-            "gene": "S",
             "left": "P",
             "pos": 25,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "P",
-            "pos": 25,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "P",
-            "pos": 25,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "P",
-            "pos": 26,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "P",
-            "pos": 26,
             "right": "-"
           },
           {
@@ -2386,30 +2391,6 @@
             "gene": "S",
             "left": "H",
             "pos": 69,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "H",
-            "pos": 69,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "H",
-            "pos": 69,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "V",
-            "pos": 70,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "V",
-            "pos": 70,
             "right": "-"
           },
           {
@@ -2594,44 +2575,8 @@
           },
           {
             "gene": "N",
-            "left": "E",
-            "pos": 31,
-            "right": "-"
-          },
-          {
-            "gene": "N",
-            "left": "E",
-            "pos": 31,
-            "right": "-"
-          },
-          {
-            "gene": "N",
             "left": "R",
             "pos": 32,
-            "right": "-"
-          },
-          {
-            "gene": "N",
-            "left": "R",
-            "pos": 32,
-            "right": "-"
-          },
-          {
-            "gene": "N",
-            "left": "R",
-            "pos": 32,
-            "right": "-"
-          },
-          {
-            "gene": "N",
-            "left": "S",
-            "pos": 33,
-            "right": "-"
-          },
-          {
-            "gene": "N",
-            "left": "S",
-            "pos": 33,
             "right": "-"
           },
           {
@@ -2645,12 +2590,6 @@
             "left": "P",
             "pos": 151,
             "right": "S"
-          },
-          {
-            "gene": "N",
-            "left": "R",
-            "pos": 203,
-            "right": "K"
           },
           {
             "gene": "N",
@@ -2684,44 +2623,8 @@
           },
           {
             "gene": "ORF1a",
-            "left": "K",
-            "pos": 141,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "K",
-            "pos": 141,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
             "left": "S",
             "pos": 142,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "S",
-            "pos": 142,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "S",
-            "pos": 142,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "F",
-            "pos": 143,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "F",
-            "pos": 143,
             "right": "-"
           },
           {
@@ -2774,44 +2677,8 @@
           },
           {
             "gene": "ORF1a",
-            "left": "S",
-            "pos": 3675,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "S",
-            "pos": 3675,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
             "left": "G",
             "pos": 3676,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "G",
-            "pos": 3676,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "G",
-            "pos": 3676,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "F",
-            "pos": 3677,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "F",
-            "pos": 3677,
             "right": "-"
           },
           {
@@ -2857,18 +2724,6 @@
             "right": "L"
           },
           {
-            "gene": "ORF6",
-            "left": "D",
-            "pos": 61,
-            "right": "L"
-          },
-          {
-            "gene": "ORF6",
-            "left": "D",
-            "pos": 61,
-            "right": "L"
-          },
-          {
             "gene": "ORF7b",
             "left": "L",
             "pos": 11,
@@ -2888,44 +2743,8 @@
           },
           {
             "gene": "ORF9b",
-            "left": "E",
-            "pos": 27,
-            "right": "-"
-          },
-          {
-            "gene": "ORF9b",
-            "left": "E",
-            "pos": 27,
-            "right": "-"
-          },
-          {
-            "gene": "ORF9b",
             "left": "N",
             "pos": 28,
-            "right": "-"
-          },
-          {
-            "gene": "ORF9b",
-            "left": "N",
-            "pos": 28,
-            "right": "-"
-          },
-          {
-            "gene": "ORF9b",
-            "left": "N",
-            "pos": 28,
-            "right": "-"
-          },
-          {
-            "gene": "ORF9b",
-            "left": "A",
-            "pos": 29,
-            "right": "-"
-          },
-          {
-            "gene": "ORF9b",
-            "left": "A",
-            "pos": 29,
             "right": "-"
           },
           {
@@ -3220,38 +3039,8 @@
           },
           {
             "gene": "S",
-            "left": "L",
-            "pos": 24,
-            "right": "-"
-          },
-          {
-            "gene": "S",
             "left": "P",
             "pos": 25,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "P",
-            "pos": 25,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "P",
-            "pos": 25,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "P",
-            "pos": 26,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "P",
-            "pos": 26,
             "right": "-"
           },
           {
@@ -3270,30 +3059,6 @@
             "gene": "S",
             "left": "H",
             "pos": 69,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "H",
-            "pos": 69,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "H",
-            "pos": 69,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "V",
-            "pos": 70,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "V",
-            "pos": 70,
             "right": "-"
           },
           {
@@ -3478,30 +3243,6 @@
           },
           {
             "gene": "N",
-            "left": "E",
-            "pos": 31,
-            "right": "-"
-          },
-          {
-            "gene": "N",
-            "left": "E",
-            "pos": 31,
-            "right": "-"
-          },
-          {
-            "gene": "N",
-            "left": "R",
-            "pos": 32,
-            "right": "-"
-          },
-          {
-            "gene": "N",
-            "left": "R",
-            "pos": 32,
-            "right": "-"
-          },
-          {
-            "gene": "N",
             "left": "R",
             "pos": 32,
             "right": "-"
@@ -3511,24 +3252,6 @@
             "left": "S",
             "pos": 33,
             "right": "-"
-          },
-          {
-            "gene": "N",
-            "left": "S",
-            "pos": 33,
-            "right": "-"
-          },
-          {
-            "gene": "N",
-            "left": "S",
-            "pos": 33,
-            "right": "-"
-          },
-          {
-            "gene": "N",
-            "left": "R",
-            "pos": 203,
-            "right": "K"
           },
           {
             "gene": "N",
@@ -3598,44 +3321,8 @@
           },
           {
             "gene": "ORF1a",
-            "left": "S",
-            "pos": 3675,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "S",
-            "pos": 3675,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
             "left": "G",
             "pos": 3676,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "G",
-            "pos": 3676,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "G",
-            "pos": 3676,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "F",
-            "pos": 3677,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "F",
-            "pos": 3677,
             "right": "-"
           },
           {
@@ -3688,44 +3375,8 @@
           },
           {
             "gene": "ORF9b",
-            "left": "E",
-            "pos": 27,
-            "right": "-"
-          },
-          {
-            "gene": "ORF9b",
-            "left": "E",
-            "pos": 27,
-            "right": "-"
-          },
-          {
-            "gene": "ORF9b",
             "left": "N",
             "pos": 28,
-            "right": "-"
-          },
-          {
-            "gene": "ORF9b",
-            "left": "N",
-            "pos": 28,
-            "right": "-"
-          },
-          {
-            "gene": "ORF9b",
-            "left": "N",
-            "pos": 28,
-            "right": "-"
-          },
-          {
-            "gene": "ORF9b",
-            "left": "A",
-            "pos": 29,
-            "right": "-"
-          },
-          {
-            "gene": "ORF9b",
-            "left": "A",
-            "pos": 29,
             "right": "-"
           },
           {
@@ -4021,38 +3672,8 @@
           },
           {
             "gene": "S",
-            "left": "L",
-            "pos": 24,
-            "right": "-"
-          },
-          {
-            "gene": "S",
             "left": "P",
             "pos": 25,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "P",
-            "pos": 25,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "P",
-            "pos": 25,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "P",
-            "pos": 26,
-            "right": "-"
-          },
-          {
-            "gene": "S",
-            "left": "P",
-            "pos": 26,
             "right": "-"
           },
           {
@@ -4249,30 +3870,6 @@
           },
           {
             "gene": "N",
-            "left": "E",
-            "pos": 31,
-            "right": "-"
-          },
-          {
-            "gene": "N",
-            "left": "E",
-            "pos": 31,
-            "right": "-"
-          },
-          {
-            "gene": "N",
-            "left": "R",
-            "pos": 32,
-            "right": "-"
-          },
-          {
-            "gene": "N",
-            "left": "R",
-            "pos": 32,
-            "right": "-"
-          },
-          {
-            "gene": "N",
             "left": "R",
             "pos": 32,
             "right": "-"
@@ -4282,24 +3879,6 @@
             "left": "S",
             "pos": 33,
             "right": "-"
-          },
-          {
-            "gene": "N",
-            "left": "S",
-            "pos": 33,
-            "right": "-"
-          },
-          {
-            "gene": "N",
-            "left": "S",
-            "pos": 33,
-            "right": "-"
-          },
-          {
-            "gene": "N",
-            "left": "R",
-            "pos": 203,
-            "right": "K"
           },
           {
             "gene": "N",
@@ -4375,44 +3954,8 @@
           },
           {
             "gene": "ORF1a",
-            "left": "S",
-            "pos": 3675,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "S",
-            "pos": 3675,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
             "left": "G",
             "pos": 3676,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "G",
-            "pos": 3676,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "G",
-            "pos": 3676,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "F",
-            "pos": 3677,
-            "right": "-"
-          },
-          {
-            "gene": "ORF1a",
-            "left": "F",
-            "pos": 3677,
             "right": "-"
           },
           {
@@ -4458,18 +4001,6 @@
             "right": "L"
           },
           {
-            "gene": "ORF6",
-            "left": "D",
-            "pos": 61,
-            "right": "L"
-          },
-          {
-            "gene": "ORF6",
-            "left": "D",
-            "pos": 61,
-            "right": "L"
-          },
-          {
             "gene": "ORF9b",
             "left": "P",
             "pos": 10,
@@ -4483,44 +4014,8 @@
           },
           {
             "gene": "ORF9b",
-            "left": "E",
-            "pos": 27,
-            "right": "-"
-          },
-          {
-            "gene": "ORF9b",
-            "left": "E",
-            "pos": 27,
-            "right": "-"
-          },
-          {
-            "gene": "ORF9b",
             "left": "N",
             "pos": 28,
-            "right": "-"
-          },
-          {
-            "gene": "ORF9b",
-            "left": "N",
-            "pos": 28,
-            "right": "-"
-          },
-          {
-            "gene": "ORF9b",
-            "left": "N",
-            "pos": 28,
-            "right": "-"
-          },
-          {
-            "gene": "ORF9b",
-            "left": "A",
-            "pos": 29,
-            "right": "-"
-          },
-          {
-            "gene": "ORF9b",
-            "left": "A",
-            "pos": 29,
             "right": "-"
           },
           {
@@ -7219,7 +6714,7 @@
       "display_name": "DanishCluster",
       "graphing": false,
       "important": false,
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/DanishCluster?f_country=Denmark",
       "snps": [
         15656
