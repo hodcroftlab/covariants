@@ -10,6 +10,7 @@ import os
 import re
 from datetime import datetime
 from shutil import copyfile
+from urllib.parse import quote
 
 import numpy as np
 import pandas as pd
@@ -247,6 +248,68 @@ def get_build_url(cluster):
     return f"https://nextstrain.org/groups/neherlab/ncov/{build_name}?{url_params}"
 
 
+def create_aquaria_urls(clusters):
+    for cluster in clusters:
+        clusters[cluster]["aquaria_urls"] = []
+
+        if "mutations" not in clusters[cluster]:
+            continue
+        # 2. Generating URLs with all variations in all genes of that cluster (strain)
+        # ---------------------------------------------------------------------------
+
+        # get a list of all genes that have mutations
+        genes = set()
+        for mut in clusters[cluster]['mutations']['nonsynonymous']:
+            genes.add(mut['gene'])
+
+        # gStrings for assembling the Strings defining the mutations for that gene
+        gStrings = {}  # type: Dict[str, List[Any]]
+
+        for gene in genes:
+            gStrings[gene] = []
+
+        # go over all mutations and put together the strings that describes them, e.g. N501Y
+
+        # PP1ab is the entire polyprotein generated from ORF1a and OFR1b together,
+        # so we have to change the numbering
+        offset = 4401
+        for mut in clusters[cluster]['mutations']['nonsynonymous']:
+            # correct deletions (see above)
+            if mut['right'] == '-':
+                right = 'Del'
+            else:
+                right = mut['right']
+            gene = mut['gene']
+            pos = mut['pos']
+            if gene == 'ORF1a':
+                # append ORF1a mutations to PP1ab (ORF1b)
+                if 'ORF1b' in gStrings:
+                    gStrings['ORF1b'].append(f"{mut['left']}{pos}{right}")
+            elif gene == 'ORF1b':
+                # fix numbering for PP1ab (ORF1b)
+                pos = pos + offset
+
+            gStrings[gene].append(f"{mut['left']}{pos}{right}")
+
+        # finally assemble URLS
+        gene_list = sorted(gStrings.keys())
+        if "S" in gene_list: # Sort alphabetically but have S first
+            gene_list.remove("S")
+            gene_list = ["S"] + gene_list
+        for gene in gene_list:
+            # ORF1a and ORF1b are called PP1a and PP1ab in Aquaria (like the respective Uniprot entries),
+            # so we have to change the name.
+            g = gene
+            if gene == 'ORF1a':
+                g = 'PP1a'
+            elif gene == 'ORF1b':
+                g = 'PP1ab'
+            gString = "&".join([quote(x) for x in gStrings[gene]])
+            clusters[cluster]["aquaria_urls"].append({"gene":gene, "url":f"https://aquaria.app/SARS-CoV-2/{g}?{gString}"})
+
+    return clusters
+
+
 def add_cluster_properties(cluster):
     result = {}
     result.update(cluster)
@@ -473,6 +536,7 @@ if __name__ == "__main__":
     with open(os.path.join(output_path, "perClusterData.json"), "w") as fh:
         json.dump(per_cluster_data_output, fh, indent=2, sort_keys=True)
 
+    clusters = create_aquaria_urls(clusters)
     clusters = [cluster for _, cluster in clusters.items()]
     with open(os.path.join(output_path, "clusters.json"), "w") as fh:
         json.dump({"clusters": clusters}, fh, indent=2, sort_keys=True)

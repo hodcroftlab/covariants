@@ -7,6 +7,28 @@
       "alternative_names": [
         "VOC 202012/01"
       ],
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?H69Del&V70Del&Y144Del&N501Y&A570D&D614G&P681H&T716I&S982A&D1118H"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?D3L&R203K&G204R&S235F"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?T1001I&A1708D&I2230T&S3675Del&G3676Del&F3677Del"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?T1001I&A1708D&I2230T&S3675Del&G3676Del&F3677Del&P4715L"
+        },
+        {
+          "gene": "ORF8",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF8?Q27%2A&R52I&Y73C"
+        }
+      ],
       "build_name": "20I.Alpha.V1",
       "cluster_data": [],
       "col": "#D16666",
@@ -233,6 +255,32 @@
       "alternative_names": [
         "501Y.V2"
       ],
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?D80A&D215G&L241Del&L242Del&A243Del&K417N&E484K&N501Y&D614G&A701V"
+        },
+        {
+          "gene": "E",
+          "url": "https://aquaria.app/SARS-CoV-2/E?P71L"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?T205I"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?T265I&K1655N&K3353R&S3675Del&G3676Del&F3677Del"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?T265I&K1655N&K3353R&S3675Del&G3676Del&F3677Del&P4715L"
+        },
+        {
+          "gene": "ORF3a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF3a?Q57H"
+        }
+      ],
       "build_name": "20H.Beta.V2",
       "cluster_data": [],
       "col": "#FF6666",
@@ -416,6 +464,32 @@
     {
       "alt_display_name": [
         "S.501Y.V3"
+      ],
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?L18F&T20N&P26S&D138Y&R190S&K417T&E484K&N501Y&D614G&H655Y&T1027I&V1176F"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?P80R&R203K&G204R"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?S1188L&K1795Q&S3675Del&G3676Del&F3677Del"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?S1188L&K1795Q&S3675Del&G3676Del&F3677Del&P4715L&E5665D"
+        },
+        {
+          "gene": "ORF3a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF3a?S253P"
+        },
+        {
+          "gene": "ORF8",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF8?E92K"
+        }
       ],
       "build_name": "20J.Gamma.V3",
       "cluster_data": [],
@@ -655,6 +729,40 @@
       "alt_display_name": [
         "21A/S:478K"
       ],
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?T19R&E156Del&F157Del&R158G&L452R&T478K&D614G&P681R&D950N"
+        },
+        {
+          "gene": "M",
+          "url": "https://aquaria.app/SARS-CoV-2/M?I82T"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?D63G&R203M&D377Y"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?P4715L&G5063S&P5401L"
+        },
+        {
+          "gene": "ORF3a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF3a?S26L"
+        },
+        {
+          "gene": "ORF7a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF7a?V82A&T120I"
+        },
+        {
+          "gene": "ORF8",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF8?D119Del&F120Del"
+        },
+        {
+          "gene": "ORF9b",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF9b?T60A"
+        }
+      ],
       "build_name": "21A.Delta",
       "cluster_data": [],
       "col": "#66C266",
@@ -853,6 +961,44 @@
       ]
     },
     {
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?T19R&E156Del&F157Del&R158G&A222V&L452R&T478K&D614G&P681R&D950N"
+        },
+        {
+          "gene": "M",
+          "url": "https://aquaria.app/SARS-CoV-2/M?I82T"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?D63G&R203M&D377Y"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?P1640L&A3209V&V3718A&T3750I"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?P1640L&A3209V&V3718A&T3750I&P4715L&G5063S&P5401L"
+        },
+        {
+          "gene": "ORF3a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF3a?S26L"
+        },
+        {
+          "gene": "ORF7a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF7a?V82A&T120I"
+        },
+        {
+          "gene": "ORF8",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF8?D119Del&F120Del"
+        },
+        {
+          "gene": "ORF9b",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF9b?T60A"
+        }
+      ],
       "build_name": "21I.Delta",
       "cluster_data": [],
       "col": "#aaff80",
@@ -1089,6 +1235,48 @@
       ]
     },
     {
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?T19R&E156Del&F157Del&R158G&L452R&T478K&D614G&P681R&D950N"
+        },
+        {
+          "gene": "M",
+          "url": "https://aquaria.app/SARS-CoV-2/M?I82T"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?D63G&R203M&G215C&D377Y"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?A1306S&V2930L&T3255I&T3646A"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?A1306S&V2930L&T3255I&T3646A&P4715L&G5063S&P5401L&A6319V"
+        },
+        {
+          "gene": "ORF3a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF3a?S26L"
+        },
+        {
+          "gene": "ORF7a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF7a?V82A&T120I"
+        },
+        {
+          "gene": "ORF7b",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF7b?T40I"
+        },
+        {
+          "gene": "ORF8",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF8?D119Del&F120Del"
+        },
+        {
+          "gene": "ORF9b",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF9b?T60A"
+        }
+      ],
       "build_name": "21J.Delta",
       "cluster_data": [],
       "col": "#66A366",
@@ -1339,6 +1527,36 @@
     {
       "alt_display_name": [
         "BA.1"
+      ],
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?A67V&H69Del&V70Del&T95I&G142Del&V143Del&Y144Del&Y145D&N211Del&L212I&G339D&S371L&S373P&S375F&K417N&N440K&G446S&S477N&T478K&E484A&Q493R&G496S&Q498R&N501Y&Y505H&T547K&D614G&H655Y&N679K&P681H&N764K&D796Y&N856K&Q954H&N969K&L981F"
+        },
+        {
+          "gene": "E",
+          "url": "https://aquaria.app/SARS-CoV-2/E?T9I"
+        },
+        {
+          "gene": "M",
+          "url": "https://aquaria.app/SARS-CoV-2/M?D3G&Q19E&A63T"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?P13L&E31Del&R32Del&S33Del&R203K&G204R"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?K856R&S2083Del&L2084I&A2710T&T3255I&P3395H&L3674Del&S3675Del&G3676Del&I3758V"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?K856R&S2083Del&L2084I&A2710T&T3255I&P3395H&L3674Del&S3675Del&G3676Del&I3758V&P4715L&I5967V"
+        },
+        {
+          "gene": "ORF9b",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF9b?P10S&E27Del&N28Del&A29Del"
+        }
       ],
       "build_name": "21K.Omicron",
       "cluster_data": [],
@@ -1805,6 +2023,44 @@
     {
       "alt_display_name": [
         "BA.2"
+      ],
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?T19I&L24Del&P25Del&P26Del&A27S&G142D&V213G&G339D&S371F&S373P&S375F&T376A&D405N&R408S&K417N&N440K&S477N&T478K&E484A&Q493R&Q498R&N501Y&Y505H&D614G&H655Y&N679K&P681H&N764K&D796Y&Q954H&N969K"
+        },
+        {
+          "gene": "E",
+          "url": "https://aquaria.app/SARS-CoV-2/E?T9I"
+        },
+        {
+          "gene": "M",
+          "url": "https://aquaria.app/SARS-CoV-2/M?Q19E&A63T"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?P13L&E31Del&R32Del&S33Del&R203K&G204R&S413R"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?S135R&T842I&G1307S&L3027F&T3090I&T3255I&P3395H&S3675Del&G3676Del&F3677Del"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?S135R&T842I&G1307S&L3027F&T3090I&T3255I&P3395H&S3675Del&G3676Del&F3677Del&P4715L&R5716C&I5967V&T6564I"
+        },
+        {
+          "gene": "ORF3a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF3a?T223I"
+        },
+        {
+          "gene": "ORF6",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF6?D61L"
+        },
+        {
+          "gene": "ORF9b",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF9b?P10S&E27Del&N28Del&A29Del"
+        }
       ],
       "build_name": "21L.Omicron",
       "cluster_data": [],
@@ -2288,6 +2544,7 @@
       ]
     },
     {
+      "aquaria_urls": [],
       "build_name": "21K.21L",
       "cluster_data": [],
       "col": "#b3d9ff",
@@ -2347,6 +2604,48 @@
     {
       "alt_display_name": [
         "BA.4"
+      ],
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?T19I&L24Del&L24Del&P25Del&P25Del&P25Del&P26Del&P26Del&P26Del&A27S&H69Del&H69Del&H69Del&V70Del&V70Del&V70Del&G142D&V213G&G339D&S371F&S373P&S375F&T376A&D405N&R408S&K417N&N440K&L452R&S477N&T478K&E484A&F486V&Q498R&N501Y&Y505H&D614G&H655Y&N679K&P681H&N764K&D796Y&Q954H&N969K"
+        },
+        {
+          "gene": "E",
+          "url": "https://aquaria.app/SARS-CoV-2/E?T9I"
+        },
+        {
+          "gene": "M",
+          "url": "https://aquaria.app/SARS-CoV-2/M?Q19E&A63T"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?P13L&E31Del&E31Del&E31Del&R32Del&R32Del&R32Del&S33Del&S33Del&S33Del&P151S&R203K&R203K&G204R&S413R"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?S135R&K141Del&K141Del&K141Del&S142Del&S142Del&S142Del&F143Del&F143Del&F143Del&T842I&G1307S&L3027F&T3090I&T3255I&P3395H&S3675Del&S3675Del&S3675Del&G3676Del&G3676Del&G3676Del&F3677Del&F3677Del&F3677Del"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?S135R&K141Del&K141Del&K141Del&S142Del&S142Del&S142Del&F143Del&F143Del&F143Del&T842I&G1307S&L3027F&T3090I&T3255I&P3395H&S3675Del&S3675Del&S3675Del&G3676Del&G3676Del&G3676Del&F3677Del&F3677Del&F3677Del&P4715L&R5716C&I5967V&T6564I"
+        },
+        {
+          "gene": "ORF3a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF3a?T223I"
+        },
+        {
+          "gene": "ORF6",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF6?D61L&D61L&D61L"
+        },
+        {
+          "gene": "ORF7b",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF7b?L11F"
+        },
+        {
+          "gene": "ORF9b",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF9b?P10S&E27Del&E27Del&E27Del&N28Del&N28Del&N28Del&A29Del&A29Del&A29Del"
+        }
       ],
       "build_name": "22A.Omicron",
       "cluster_data": [],
@@ -3016,6 +3315,40 @@
       "alt_display_name": [
         "BA.5"
       ],
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?T19I&L24Del&L24Del&P25Del&P25Del&P25Del&P26Del&P26Del&P26Del&A27S&H69Del&H69Del&H69Del&V70Del&V70Del&V70Del&G142D&V213G&G339D&S371F&S373P&S375F&T376A&D405N&R408S&K417N&N440K&L452R&S477N&T478K&E484A&F486V&Q498R&N501Y&Y505H&D614G&H655Y&N679K&P681H&N764K&D796Y&Q954H&N969K"
+        },
+        {
+          "gene": "E",
+          "url": "https://aquaria.app/SARS-CoV-2/E?T9I"
+        },
+        {
+          "gene": "M",
+          "url": "https://aquaria.app/SARS-CoV-2/M?D3N&Q19E&A63T"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?P13L&E31Del&E31Del&E31Del&R32Del&R32Del&R32Del&S33Del&S33Del&S33Del&R203K&R203K&G204R&S413R"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?S135R&T842I&G1307S&L3027F&T3090I&T3255I&P3395H&S3675Del&S3675Del&S3675Del&G3676Del&G3676Del&G3676Del&F3677Del&F3677Del&F3677Del"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?S135R&T842I&G1307S&L3027F&T3090I&T3255I&P3395H&S3675Del&S3675Del&S3675Del&G3676Del&G3676Del&G3676Del&F3677Del&F3677Del&F3677Del&P4715L&R5716C&I5967V&T6564I"
+        },
+        {
+          "gene": "ORF3a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF3a?T223I"
+        },
+        {
+          "gene": "ORF9b",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF9b?P10S&E27Del&E27Del&E27Del&N28Del&N28Del&N28Del&A29Del&A29Del&A29Del"
+        }
+      ],
       "build_name": "22B.Omicron",
       "cluster_data": [],
       "col": "#585eff",
@@ -3648,6 +3981,44 @@
     {
       "alt_display_name": [
         "BA.2.12.1"
+      ],
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?T19I&L24Del&L24Del&P25Del&P25Del&P25Del&P26Del&P26Del&P26Del&A27S&G142D&V213G&G339D&S371F&S373P&S375F&T376A&D405N&R408S&K417N&N440K&L452Q&S477N&T478K&E484A&Q493R&Q498R&N501Y&Y505H&D614G&H655Y&N679K&P681H&S704L&N764K&D796Y&Q954H&N969K"
+        },
+        {
+          "gene": "E",
+          "url": "https://aquaria.app/SARS-CoV-2/E?T9I"
+        },
+        {
+          "gene": "M",
+          "url": "https://aquaria.app/SARS-CoV-2/M?Q19E&A63T"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?P13L&E31Del&E31Del&E31Del&R32Del&R32Del&R32Del&S33Del&S33Del&S33Del&R203K&R203K&G204R&S413R"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?S135R&T842I&G1307S&L3027F&T3090I&L3201F&T3255I&P3395H&S3675Del&S3675Del&S3675Del&G3676Del&G3676Del&G3676Del&F3677Del&F3677Del&F3677Del"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?S135R&T842I&G1307S&L3027F&T3090I&L3201F&T3255I&P3395H&S3675Del&S3675Del&S3675Del&G3676Del&G3676Del&G3676Del&F3677Del&F3677Del&F3677Del&P4715L&R5716C&I5967V&T6564I"
+        },
+        {
+          "gene": "ORF3a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF3a?T223I"
+        },
+        {
+          "gene": "ORF6",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF6?D61L&D61L&D61L"
+        },
+        {
+          "gene": "ORF9b",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF9b?P10S&E27Del&E27Del&E27Del&N28Del&N28Del&N28Del&A29Del&A29Del&A29Del"
+        }
       ],
       "build_name": "22C.Omicron",
       "cluster_data": [],
@@ -4302,6 +4673,36 @@
       "alt_display_name": [
         "21A/S:154K"
       ],
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?E154K&L452R&E484Q&D614G&P681R&Q1071H"
+        },
+        {
+          "gene": "M",
+          "url": "https://aquaria.app/SARS-CoV-2/M?I82S"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?R203M&D377Y"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?T1567I&T3646A"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?P4715L&G5530C&M5753I&K6711R&S6713A&T1567I&T3646A"
+        },
+        {
+          "gene": "ORF3a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF3a?S26L"
+        },
+        {
+          "gene": "ORF7a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF7a?V82A"
+        }
+      ],
       "build_name": "21B.Kappa",
       "cluster_data": [],
       "col": "#A3FFD1",
@@ -4486,6 +4887,7 @@
       ]
     },
     {
+      "aquaria_urls": [],
       "build_name": "21A.Delta.S.K417",
       "cluster_data": [],
       "col": "#006600",
@@ -4506,6 +4908,36 @@
     {
       "alt_display_name": [
         "20A/S:484K"
+      ],
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?Q52R&A67V&H69Del&V70Del&Y144Del&E484K&D614G&Q677H&F888L"
+        },
+        {
+          "gene": "E",
+          "url": "https://aquaria.app/SARS-CoV-2/E?L21F"
+        },
+        {
+          "gene": "M",
+          "url": "https://aquaria.app/SARS-CoV-2/M?I82T"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?S2Del&D3Y&A12G&T205I"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?T2007I&S3675Del&G3676Del&F3677Del"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?P4715F&T2007I&S3675Del&G3676Del&F3677Del"
+        },
+        {
+          "gene": "ORF6",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF6?F2Del"
+        }
       ],
       "build_name": "21D.Eta",
       "cluster_data": [],
@@ -4740,6 +5172,32 @@
       "alternative_names": [
         "B.1.526 (partial)"
       ],
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?L5F&T95I&D253G&E484K&D614G&A701V"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?P199L&M234I"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?T265I&L3201P&S3675Del&G3676Del&F3677Del"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?P4715L&Q5412H&T265I&L3201P&S3675Del&G3676Del&F3677Del"
+        },
+        {
+          "gene": "ORF3a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF3a?P42L&Q57H"
+        },
+        {
+          "gene": "ORF8",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF8?T11I"
+        }
+      ],
       "build_name": "21F.Iota",
       "cluster_data": [],
       "col": "#FFC2FF",
@@ -4909,6 +5367,24 @@
       ]
     },
     {
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?G75V&T76I&R246Del&S247Del&Y248Del&L249Del&T250Del&P251Del&G252Del&D253N&L452Q&F490S&D614G&T859N"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?P13L&R203K&G204R&G214C"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?T1246I&P2287S&F2387V&L3201P&T3255I&G3278S&S3675Del&G3676Del&F3677Del"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?T1246I&P2287S&F2387V&L3201P&T3255I&G3278S&S3675Del&G3676Del&F3677Del&P4715L"
+        }
+      ],
       "build_name": "21G.Lambda",
       "cluster_data": [],
       "col": "#cc6699",
@@ -5151,6 +5627,32 @@
       ]
     },
     {
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?T95I&Y144S&Y145N&R346K&E484K&N501Y&D614G&P681H&D950N"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?T205I"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?T1055A&T1538I&T3255I&Q3729R"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?T1055A&T1538I&T3255I&Q3729R&P4715L&P5743S"
+        },
+        {
+          "gene": "ORF3a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF3a?Q57H&V256I&N257Q&P258%2A"
+        },
+        {
+          "gene": "ORF8",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF8?T11K&P38S&S67F"
+        }
+      ],
       "build_name": "21H.Mu",
       "cluster_data": [],
       "col": "#f4dc81",
@@ -5370,6 +5872,24 @@
       ]
     },
     {
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?T478K&D614G&P681H&T732A"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?R203K&G204R"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?P959S&T3255I&I3618V&T4175I"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?P959S&T3255I&I3618V&T4175I&P4715L"
+        }
+      ],
       "build_name": "20B.S.732A",
       "cluster_data": [],
       "col": "#a3e3f8",
@@ -5513,6 +6033,28 @@
       "who_name": []
     },
     {
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?P26S&H69Del&V70Del&V126A&Y144Del&L241Del&L242Del&A243Del&H245Y&S477N&E484K&D614G&P681H&T1027I&D1118H"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?A220V"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?T403I&V1991I&S3675Del&G3676Del&F3677Del"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?T403I&V1991I&S3675Del&G3676Del&F3677Del&P4715L&A5616S"
+        },
+        {
+          "gene": "ORF9b",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF9b?I5T"
+        }
+      ],
       "build_name": "20A.S.126A",
       "cluster_data": [],
       "col": "#d5f6d5",
@@ -5744,6 +6286,20 @@
       "alternative_names": [
         "20A.EU1"
       ],
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?A222V"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?A220V"
+        },
+        {
+          "gene": "ORF10",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF10?V30L"
+        }
+      ],
       "build_name": "20A.EU1",
       "cluster_data": [],
       "col": "#FFBB8B",
@@ -5817,6 +6373,20 @@
       ],
       "alternative_names": [
         "CAL.20C"
+      ],
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?S13I&W152C&L452R&D614G"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?I4205V"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?I4205V&D5584Y"
+        }
       ],
       "build_name": "21C.Epsilon",
       "cluster_data": [],
@@ -5924,6 +6494,16 @@
       ]
     },
     {
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?S439K"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?I2501T"
+        }
+      ],
       "build_name": "S.N439K",
       "cluster_data": [],
       "col": "#6666FF",
@@ -5973,6 +6553,32 @@
       "type": "variant"
     },
     {
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?D614G&Q677H"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?P67S&P199L&D377Y"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?T265I&M2606I&L3352F"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?T265I&M2606I&L3352F&P4715L&N6054D&R7014C"
+        },
+        {
+          "gene": "ORF3a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF3a?Q57H&G172V"
+        },
+        {
+          "gene": "ORF8",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF8?S24L"
+        }
+      ],
       "build_name": "S.Q677H.Robin1",
       "cluster_data": [],
       "col": "#E0A366",
@@ -6110,6 +6716,32 @@
       "type": "variant"
     },
     {
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?D614G&Q677P"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?P67S&P199L"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?T265I&L3352F&Q3729R"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?T265I&L3352F&Q3729R&P4715L&N6054D&R7014C"
+        },
+        {
+          "gene": "ORF3a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF3a?Q57H&G172V"
+        },
+        {
+          "gene": "ORF8",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF8?S24L"
+        }
+      ],
       "build_name": "S.Q677P.Pelican",
       "cluster_data": [],
       "col": "#E085FF",
@@ -6241,6 +6873,20 @@
       "type": "variant"
     },
     {
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?S477N"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?M234I&A376T"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?A4577S&V5168L&K5542R&E5585D"
+        }
+      ],
       "build_name": "20A.EU2",
       "cluster_data": [],
       "col": "#A3D8F3",
@@ -6337,6 +6983,20 @@
       "type": "variant"
     },
     {
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?S98F"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?P199L"
+        },
+        {
+          "gene": "ORF3a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF3a?Q38R&G172R&V202L"
+        }
+      ],
       "build_name": "S.S98F",
       "cluster_data": [],
       "col": "#C8C8DA",
@@ -6404,6 +7064,28 @@
       "type": "variant"
     },
     {
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?D80Y"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?S186Y&D377Y"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?T945I&T1567I&Q3346K&V3475F&M3862I"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?T945I&T1567I&Q3346K&V3475F&M3862I&P4656T"
+        },
+        {
+          "gene": "ORF7a",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF7a?R80I"
+        }
+      ],
       "build_name": "S.D80Y",
       "cluster_data": [],
       "col": "#D1E8FF",
@@ -6536,6 +7218,12 @@
       "type": "variant"
     },
     {
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?A626S"
+        }
+      ],
       "build_name": "S.A626S",
       "cluster_data": [],
       "col": "#b3e6ff",
@@ -6572,6 +7260,12 @@
       "type": "variant"
     },
     {
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?V1122L"
+        }
+      ],
       "build_name": "S.V1122L",
       "cluster_data": [],
       "col": "#A3A3C2",
@@ -6608,6 +7302,7 @@
       "type": "variant"
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.N501",
       "cluster_data": [],
       "col": "#ff99ff",
@@ -6616,7 +7311,7 @@
       "graphing": false,
       "important": true,
       "nextstrain_build": true,
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.N501",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501",
       "snps": [
         23064
       ],
@@ -6626,6 +7321,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.E484",
       "cluster_data": [],
       "col": "#006600",
@@ -6641,6 +7337,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.H69-",
       "cluster_data": [],
       "col": "#ffcc00",
@@ -6659,6 +7356,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.Q677",
       "cluster_data": [],
       "col": "#000099",
@@ -6677,6 +7375,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.Y453F",
       "cluster_data": [],
       "col": "#ff1a1a",
@@ -6692,6 +7391,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.S477",
       "cluster_data": [],
       "col": "#0000ff",
@@ -6707,6 +7407,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": [],
       "build_name": "DanishCluster",
       "cluster_data": [],
       "col": "#ffffff",
@@ -6722,6 +7423,7 @@
       "type": "do_not_display"
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.L18",
       "cluster_data": [],
       "col": "#000066",
@@ -6737,6 +7439,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.Y144-",
       "cluster_data": [],
       "col": "#b3d9ff",
@@ -6753,6 +7456,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.K417",
       "cluster_data": [],
       "col": "#ff8d3d",
@@ -6768,6 +7472,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.H655",
       "cluster_data": [],
       "col": "#b30000",
@@ -6783,6 +7488,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.P681",
       "cluster_data": [],
       "col": "#ff8080",
@@ -6798,6 +7504,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": [],
       "build_name": "ORF1a.S3675",
       "cluster_data": [],
       "col": "#65beeb",
@@ -6816,6 +7523,7 @@
       "type": "mutation"
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.Q677H.Robin2",
       "cluster_data": [],
       "col": "#804000",
@@ -6833,6 +7541,7 @@
       "usa_graph": true
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.Q677H.Yellowhammer",
       "cluster_data": [],
       "col": "#ffcc00",
@@ -6850,6 +7559,7 @@
       "usa_graph": true
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.Q677R.Roadrunner",
       "cluster_data": [],
       "col": "#ff8d3d",
@@ -6868,6 +7578,7 @@
       "usa_graph": true
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.Q677H.Heron",
       "cluster_data": [],
       "col": "#65beeb",
@@ -6886,6 +7597,7 @@
       "usa_graph": true
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.Q677H.Bluebird",
       "cluster_data": [],
       "col": "#003366",
@@ -6903,6 +7615,7 @@
       "usa_graph": true
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.Q677H.Quail",
       "cluster_data": [],
       "col": "#a3a3c2",
@@ -6921,6 +7634,7 @@
       "usa_graph": true
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.Q677H.Mockingbird",
       "cluster_data": [],
       "col": "#b3d9ff",
@@ -6938,6 +7652,7 @@
       "usa_graph": true
     },
     {
+      "aquaria_urls": [],
       "build_name": "Delta.299I",
       "cluster_data": [],
       "col": "#b3d9ff",
@@ -6957,6 +7672,7 @@
       "type": "do_not_display"
     },
     {
+      "aquaria_urls": [],
       "build_name": "Delta.250I",
       "cluster_data": [],
       "col": "#b3d9ff",
@@ -6974,6 +7690,7 @@
       "type": "do_not_display"
     },
     {
+      "aquaria_urls": [],
       "build_name": "Delta.145H",
       "cluster_data": [],
       "col": "#b3d9ff",
@@ -6991,6 +7708,7 @@
       "type": "do_not_display"
     },
     {
+      "aquaria_urls": [],
       "build_name": "Delta.ORF1a3059F",
       "cluster_data": [],
       "col": "#b3d9ff",
@@ -7008,6 +7726,7 @@
       "type": "do_not_display"
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.Q613",
       "cluster_data": [],
       "col": "#ff8080",
@@ -7023,6 +7742,7 @@
       "type": "do_not_display"
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.A222",
       "cluster_data": [],
       "col": "#ff8080",
@@ -7038,6 +7758,7 @@
       "type": "do_not_display"
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.Y145",
       "cluster_data": [],
       "col": "#ff8080",
@@ -7053,6 +7774,7 @@
       "type": "do_not_display"
     },
     {
+      "aquaria_urls": [],
       "build_name": "S.T572",
       "cluster_data": [],
       "col": "#ff8080",
