@@ -2558,6 +2558,10 @@ bad_seqs = {
     "England/DHSC-CYYQWNY/2021" : "2021-01-01", #omicron 21K
     "England/DHSC-CYYUQY9/2021" : "2021-01-01", #omicron 21K
     "England/DHSC-CYYRS3D/2021" : "2021-01-01", #omicron 21K
+    "India/RJ-SMS-ICMR-INSACOG-TS-377/2021" : "2021-02-12", #omicron  EPI_ISL_12493255
+    "India/RJ-SMS-ICMR-INSACOG-TS-453/2021" : "2021-03-12", #omicron  EPI_ISL_12493257
+    "Italy/TAA-PAB_SABES_1900913394/2021" : "2021-04-07", #omicron  EPI_ISL_12471703
+    "Italy/TAA-PAB_SABES_1900916795/2021" : "2021-04-22", #omicron  EPI_ISL_12489872
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
