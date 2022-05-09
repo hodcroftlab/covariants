@@ -214,6 +214,24 @@ export function AminoacidMutationBadge({ mutation }: AminoacidMutationBadgeProps
   return <MutationBadge mutation={mutationObj} colors={AMINOACID_COLORS} tooltip={tooltip} />
 }
 
+export interface ProteinBadgeProps {
+  gene: string
+}
+
+export function ProteinBadge({ gene, ...rest }: ProteinBadgeProps) {
+  const { tooltip, geneColor } = useMemo(
+    () => ({ tooltip: `Protein ${gene}`, geneColor: get(GENE_COLORS, gene ?? '', DEFAULT_COLOR) }),
+    [gene],
+  )
+  return (
+    <MutationBadgeBox title={tooltip} {...rest}>
+      <MutationWrapper>
+        <GeneText $color={geneColor}>{gene}</GeneText>
+      </MutationWrapper>
+    </MutationBadgeBox>
+  )
+}
+
 export const LinkUnstyled = styled(LinkSmart)`
   color: unset;
   text-decoration: none;
