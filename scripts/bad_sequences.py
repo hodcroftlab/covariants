@@ -2562,6 +2562,11 @@ bad_seqs = {
     "India/RJ-SMS-ICMR-INSACOG-TS-453/2021" : "2021-03-12", #omicron  EPI_ISL_12493257
     "Italy/TAA-PAB_SABES_1900913394/2021" : "2021-04-07", #omicron  EPI_ISL_12471703
     "Italy/TAA-PAB_SABES_1900916795/2021" : "2021-04-22", #omicron  EPI_ISL_12489872
+    #11 may
+    "USA/CO-CDPHE-2103139245/2021" : "2021-01-04", # omicron  EPI_ISL_12575541
+    "USA/CO-CDPHE-2103139260/2021" : "2021-01-03", # omicron  EPI_ISL_12575356
+    "USA/CO-CDPHE-2103149012/2020" : "2020-12-30", # omicron  EPI_ISL_12571247
+    "USA/CO-CDPHE-2103149017/2020" : "2020-12-29", # omicron  EPI_ISL_12571400
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
