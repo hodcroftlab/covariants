@@ -2567,6 +2567,20 @@ bad_seqs = {
     "USA/CO-CDPHE-2103139260/2021" : "2021-01-03", # omicron  EPI_ISL_12575356
     "USA/CO-CDPHE-2103149012/2020" : "2020-12-30", # omicron  EPI_ISL_12571247
     "USA/CO-CDPHE-2103149017/2020" : "2020-12-29", # omicron  EPI_ISL_12571400
+    #16 may
+    "India/NL-IBSD-DMP-P13-133/2021" : "2021-10-27",
+    "USA/UT-CDC-2-5847434/2021" : "2021-12-14",
+    "Venezuela/Suc746/2021" : "2021-01-07",
+    "Germany/NW-RKI-I-323137/2020" : "2020-10-11",  #delta
+    "Norway/35841/2021" : "2021-01-27", #omicron  EPI_ISL_12649544
+    "USA/NE-TESTNE_ABJ3CRJ/2021" : "2021-03-05", #omicron  EPI_ISL_12622431
+    "Australia/NSW-SAVID-11556/2021" : "2021-04-25", #omicron  EPI_ISL_12666328
+    "Canada/BC-BCCDC-422751/2020" : "2020-04-14", #omicron  EPI_ISL_12663852
+    "Israel/ICH-741222178/2020" : "2020-09-24", #omicron  EPI_ISL_12635843
+    "Israel/ICH-741223215/2020" : "2020-09-24", #omicron  EPI_ISL_12633157
+    "SouthAfrica/NHLS-UCT-GS-C479/2021" : "2021-06-17", #omicron  EPI_ISL_12644863
+    "SouthAfrica/NHLS-UCT-GS-F745/2021" : "2021-08-03", #omicron  EPI_ISL_12644876
+    "Austria/CeMM28774/2020" : "2020-04-15", #delta EPI_ISL_12650256"
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
