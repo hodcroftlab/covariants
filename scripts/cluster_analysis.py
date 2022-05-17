@@ -91,6 +91,17 @@ def to2week_ordinal(x):
     monday = datetime.date.fromordinal(n - ((n - ref_monday) % 14))
     return (monday.isocalendar()[0], monday.isocalendar()[1]) #TODO: Currently returned as tuple of year & week -> Can we switch to returning datetime? Needs adjustment at several places in the script
 
+def print_clus_alerts(key, clus):
+    print(clus)
+    print(summary[key][clus])
+
+def print_all_clus_alerts(key):
+    for clus in summary[key]:
+        print_clus_alerts(key, clus)
+
+
+
+
 # set min data week to consider
 min_data_week = (2020, 18)  # 20)
 
@@ -196,6 +207,7 @@ if print_files and "all" in clus_answer:
 #### Prepare various useful dictionaries and count metadata lines for percentage output
 
 # Link Nextstrain clade and name to our cluster names used in clusters.py
+# TODO: There could be more than one display name
 nextstrain_clade_to_clus = {clusters[clus]["display_name"]: clus for clus in clus_to_run if "display_name" in clusters[clus]}
 nextstrain_name_to_clus = {clusters[clus]["nextstrain_name"]: clus for clus in clus_to_run if "nextstrain_name" in clusters[clus]}
 # TODO: Might need to add extra entries for "21K.21L" using "other_nextstrain_names"
@@ -353,14 +365,17 @@ with open(input_meta) as f:
         clade = l[indices['Nextstrain_clade']]
 
         clus_all = []
+        only_Nextstrain = True
         # Use Nextclade
         if clade in nextstrain_clade_to_clus:
             clus_all.append(nextstrain_clade_to_clus[clade])
             if clade in daughter_clades and not clus_check:
                 clus_to_check += daughter_clades[clade]
+                only_Nextstrain = False
 
         if clus_check or clus_all == []: # We only check everything if requested or no Nextstrain clade found
             clus_to_check = clus_to_check + unique_clus
+            only_Nextstrain = False
 
         muts_snp_pos = [int(y[1:-1]) for y in l[indices['substitutions']].split(',') if y]
         # expand metadata deletions formatting
@@ -386,7 +401,7 @@ with open(input_meta) as f:
         # TODO: Maybe remove from certain clusters?
         # if wanted seqs are part of a Nextclade designated variant, remove from that count & use this one.
         # ONLY IF PLOTTING and if this run ISN'T an official run
-        if len(clus_to_check) > len_unofficial_clus: # Only check for inconsistencies if there could be more than only Nextstrain clade
+        if not only_Nextstrain: # Only check for inconsistencies if there could be more than only one Nextstrain clade
             clus_all_unique = [c for c in clus_all if c in unique_clus]
             daughter_parent = False
             if len(clus_all_unique) == 2: # More than one unique cluster - check if daughter/parent pair, otherwise remove
@@ -903,18 +918,15 @@ summary = {}
 for key in cluster_inconsistencies:
     summary[key] = {}
     for strain, clus in cluster_inconsistencies[key].items():
-        if clus not in summary[key]:
-            summary[key][clus] = []
-        summary[key][clus].append(strain)
+        if str(clus) not in summary[key]:
+            summary[key][str(clus)] = []
+        summary[key][str(clus)].append(strain)
 
 for key in summary:
     if summary[key]:
         print(f"\nWarning: Inconsistent cluster assignment found for {key} sequences (all automatically excluded unless Nextstrain clade):")
         for clus in summary[key]:
             print(f"{clus}: {len(summary[key][clus])}")
-
-
-
-
-
-
+        print(f"To view, use 'print_all_clus_alerts('{key}')' or 'print_clus_alerts('{key}', \"[clus_list]\")'")
+    else:
+        print(f"\nNo inconsistent cluster assignment found for {key} sequences.")
