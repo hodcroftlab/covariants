@@ -100,11 +100,10 @@ min_data_week = (2020, 18)  # 20)
 
 # TODO: Which of these are still required?
 # ask user if they want to write-out files or not:
-print_files = False
-print_answer = input("\nWrite out data files?(y/n) (Enter is no): ")
-if print_answer in ["y", "Y", "yes", "YES", "Yes"]:
-    print_files = True
-print_files2 = True
+print_files = True
+print_answer = input("\nWrite out data files?(y/n) (Enter is yes): ")
+if print_answer in ["n", "N", "no", "NO", "No"]:
+    print_files = False
 print(f"Writing out files? {print_files}")
 
 print_acks = False
@@ -148,7 +147,7 @@ print("These clusters will be run: ", clus_to_run)
 # division: collect division info for USA and Switzerland
 division = False
 do_divisions_country = False
-if "all" in  clus_answer:
+if "all" in clus_answer:
     print("Doing division for USA and Switzerland.")
     selected_country = ["USA", "Switzerland"]
     division = True
@@ -166,6 +165,12 @@ else:
 
 if do_country == False:
     print("You can alway run this step by calling `plot_country_data(clusters, proposed_coun_to_plot, print_files)`")
+
+clus_check = False
+print_answer = input("\nCheck all sequences for cluster inconsistencies (one sequence appearing in multiple official clusters)?(y/n) (Enter is no): ")
+if print_answer in ["y", "Y", "yes", "YES", "Yes"]:
+    clus_check = True
+print(f"Cluster check? {clus_check}")
 
 start_time = time.time()
 
@@ -198,6 +203,25 @@ nextstrain_name_to_clus = {clusters[clus]["nextstrain_name"]: clus for clus in c
 alert_dates = {} # All strains that are dated earlier than their respective clade are autoexcluded and printed out
 for clus in cluster_first_dates: # Transform date from string to datetime for easier comparison
     cluster_first_dates[clus]["date_formatted"] = datetime.datetime.strptime(cluster_first_dates[clus]["first_date"], "%Y-%m-%d")
+
+unique_clus = []
+unofficial_clus = []
+for clus in clus_to_run:
+    if clusters[clus]["type"] == "variant" and clusters[clus]["graphing"]:
+        unique_clus.append(clus)
+    else:
+        unofficial_clus.append(clus)
+len_unofficial_clus = len(unofficial_clus)
+
+daughter_clades = {}
+# TODO: Rename and adjust
+for c in clus_to_run:
+    if "parent" in clusters[c]:
+        Nextstrain_clade = clusters[clusters[c]["parent"]]["display_name"]
+        if Nextstrain_clade not in daughter_clades:
+            daughter_clades[Nextstrain_clade] = []
+        daughter_clades[Nextstrain_clade].append(c)
+
 
 # Input metadata file
 input_meta = "data/metadata.tsv"
@@ -268,6 +292,7 @@ t0 = time.time()
 
 early_dates_no_Nextclade = {}
 all_sequences = {clus: [] for clus in clusters}
+cluster_inconsistencies = {"Nextstrain_clade": {}, "Non_Nextstrain_clade": {}}
 
 print("\nReading and cleaning up the metadata line-by-line...\n")
 n = 0
@@ -281,7 +306,8 @@ with open(input_meta) as f:
             break
         n += 1
         if ((n-1)/n_total) % 0.05 > n/n_total % 0.05:
-            print(f"{round(n/n_total * 100)}% complete...")
+            t1 = time.time()
+            print(f"{round(n/n_total * 100)}% complete... ({round((t1-t0)/60,1)} min)")
 
         l = line.split("\t")
 
@@ -319,33 +345,71 @@ with open(input_meta) as f:
         # If an official Nextstrain clade, then use Nextclade designation to assign them.
         # If not an official Nextstrain clade, use our SNP method
 
-        clus_all = [] #TODO: Does this have to be a list, are several clusters possible per sequence?
+        # In a normal run, only check "unofficial" clusters - clusters that are either not variants (but e.g. mutations)
+        # or that are not plotted, so that an overlap with an official, "unique" clus does not pose a problem
+        # Only check for "unique" clus if no Nextclade found or we specifically asked for it
+        clus_to_check = unofficial_clus
+
+        clade = l[indices['Nextstrain_clade']]
+
+        clus_all = []
         # Use Nextclade
-        if l[indices['Nextstrain_clade']] in nextstrain_clade_to_clus:
-            clus_all.append(nextstrain_clade_to_clus[l[indices['Nextstrain_clade']]])
+        if clade in nextstrain_clade_to_clus:
+            clus_all.append(nextstrain_clade_to_clus[clade])
+            if clade in daughter_clades and not clus_check:
+                clus_to_check += daughter_clades[clade]
 
-        else: #Use SNPS
-            muts_snp_pos = [int(y[1:-1]) for y in l[indices['substitutions']].split(',') if y]
-            # expand metadata deletions formatting
-            muts_del_pos = [z for y in l[indices['deletions']].split(',') if y for z in range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)]
+        if clus_check or clus_all == []: # We only check everything if requested or no Nextstrain clade found
+            clus_to_check = clus_to_check + unique_clus
 
-            # TODO: Did not include "exclude_snps" since none are currently used in clusters.py
-            # TODO: Is it okay for one sequence to belong to multiple clus?
-            for c in clus_to_run:
-                if all([p in muts_snp_pos for p in clus_data_all[c]["snps"]]) and clus_data_all[c]["snps"]:
-                    clus_all.append(c)
+        muts_snp_pos = [int(y[1:-1]) for y in l[indices['substitutions']].split(',') if y]
+        # expand metadata deletions formatting
+        muts_del_pos = [z for y in l[indices['deletions']].split(',') if y for z in
+                        range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)]
 
-                if all([p in muts_snp_pos for p in clus_data_all[c]["snps2"]]) and clus_data_all[c]["snps2"]:
-                    clus_all.append(c)
+        # TODO: Did not include "exclude_snps" since none are currently used in clusters.py
+        for c in clus_to_check:
+            if c in clus_all:
+                continue
+            if clus_data_all[c]["snps"] and all([p in muts_snp_pos for p in clus_data_all[c]["snps"]]):
+                clus_all.append(c)
+                continue
 
-                if all([p in muts_del_pos for p in clus_data_all[c]["gaps"]]) and clus_data_all[c]["gaps"]:
-                    clus_all.append(c)
+            if clus_data_all[c]["snps2"] and all([p in muts_snp_pos for p in clus_data_all[c]["snps2"]]):
+                clus_all.append(c)
+                continue
 
+            if clus_data_all[c]["gaps"] and all([p in muts_del_pos for p in clus_data_all[c]["gaps"]]):
+                clus_all.append(c)
+
+        # Check for inconsistencies
+        # TODO: Maybe remove from certain clusters?
+        # if wanted seqs are part of a Nextclade designated variant, remove from that count & use this one.
+        # ONLY IF PLOTTING and if this run ISN'T an official run
+        if len(clus_to_check) > len_unofficial_clus: # Only check for inconsistencies if there could be more than only Nextstrain clade
+            clus_all_unique = [c for c in clus_all if c in unique_clus]
+            if len(clus_all_unique) == 2: # More than one unique cluster - check if daughter/parent pair, otherwise remove
+                if clus_all_unique[0] in daughter_clades and daughter_clades[clus_all_unique[0]] == clus_all_unique[1]:
+                    clus_all.remove(clus_all_unique[0]) # Remove parent, keep child
+                if clus_all_unique[1] in daughter_clades and daughter_clades[clus_all_unique[1]] == clus_all_unique[0]:
+                    clus_all.remove(clus_all_unique[1]) # Remove parent, keep child
+
+            if len(clus_all_unique) > 2: # Print out warnings
+                clus_all = [c for c in clus_all if c not in clus_all_unique]
+                if clade and clade in clus_all_unique: # If Nextstrain clade: Keep this and remove all others
+                    clus_all.append(clade)
+                    cluster_inconsistencies["Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
+
+                else:# If no Nextstrain clade: Drop all unique clusters (still keep mutations and unofficial clusters)
+                    cluster_inconsistencies["Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
+
+        # TODO: Do we want sequences in our sequence list that are not in our cluster counts?
 
         ##### COLLECT COUNTS PER CLUSTER #####
+
         for clus in clus_all: # TODO: maybe include print_files to not collect data?
 
-            if clus not in clus_to_run:
+            if clus not in clus_to_run: # TODO: Maybe put out warning
                 continue
 
             # Exclude all strains that are dated before their respective clade
@@ -357,10 +421,6 @@ with open(input_meta) as f:
                     for k in alert_dates[clus]:
                         alert_dates[clus][k].append(l[indices[k]])
                     continue
-
-            # TODO: Maybe remove from certain clusters?
-            # if wanted seqs are part of a Nextclade designated variant, remove from that count & use this one.
-            # ONLY IF PLOTTING and if this run ISN'T an official run
 
             # Store all strains per assigned cluster
             all_sequences[clus].append(l[indices['strain']])
@@ -824,16 +884,20 @@ if "all" in clus_answer:
     missing_c_found = False
     for country in countries_to_plot:
         if country not in country_styles_all:
-            print(f"WARNING!: {coun} has no color! Please add it to country_list_2 in colors_and_countries.py and re-run make web-data.\n")
+            print(f"WARNING!: {country} has no color! Please add it to country_list_2 in colors_and_countries.py and re-run make web-data.\n")
             missing_c_found = True
     if not missing_c_found:
         print("No country is missing colors.\n")
 
 # Print out countries with assigned colors that did not make it into plotting
 if "all" in clus_answer:
-    for coun in country_styles_all:
-        if coun not in countries_to_plot:
-            print(f"Not plotted anymore: {coun}")
+    for country in country_styles_all:
+        if country not in countries_to_plot:
+            print(f"Not plotted anymore: {country}")
+
+
+if cluster_inconsistencies["Nextstrain_clade"]:
+    print()
 
 
 
