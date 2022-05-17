@@ -388,13 +388,16 @@ with open(input_meta) as f:
         # ONLY IF PLOTTING and if this run ISN'T an official run
         if len(clus_to_check) > len_unofficial_clus: # Only check for inconsistencies if there could be more than only Nextstrain clade
             clus_all_unique = [c for c in clus_all if c in unique_clus]
+            daughter_parent = False
             if len(clus_all_unique) == 2: # More than one unique cluster - check if daughter/parent pair, otherwise remove
                 if clus_all_unique[0] in daughter_clades and daughter_clades[clus_all_unique[0]] == clus_all_unique[1]:
                     clus_all.remove(clus_all_unique[0]) # Remove parent, keep child
+                    daughter_parent = True
                 if clus_all_unique[1] in daughter_clades and daughter_clades[clus_all_unique[1]] == clus_all_unique[0]:
                     clus_all.remove(clus_all_unique[1]) # Remove parent, keep child
+                    daughter_parent = True
 
-            if len(clus_all_unique) > 2: # Print out warnings
+            if len(clus_all_unique) > 1 and not daughter_parent: # Print out warnings
                 clus_all = [c for c in clus_all if c not in clus_all_unique]
                 if clade and clade in clus_all_unique: # If Nextstrain clade: Keep this and remove all others
                     clus_all.append(clade)
@@ -895,9 +898,22 @@ if "all" in clus_answer:
         if country not in countries_to_plot:
             print(f"Not plotted anymore: {country}")
 
+# Print out inconsistent cluster assignments (more than one cluster per sequence)
+summary = {}
+for key in cluster_inconsistencies:
+    summary[key] = {}
+    for strain, clus in cluster_inconsistencies[key].items():
+        if clus not in summary[key]:
+            summary[key][clus] = []
+        summary[key][clus].append(strain)
 
-if cluster_inconsistencies["Nextstrain_clade"]:
-    print()
+for key in summary:
+    if summary[key]:
+        print(f"\nWarning: Inconsistent cluster assignment found for {key} sequences (all automatically excluded unless Nextstrain clade):")
+        for clus in summary[key]:
+            print(f"{clus}: {len(summary[key][clus])}")
+
+
 
 
 
