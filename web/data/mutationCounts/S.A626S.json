@@ -3,11 +3,11 @@
     "total": 471,
     "counts": [
       {
-        "mut": "S:D614G",
+        "mut": "S:V1122L",
         "count": 471
       },
       {
-        "mut": "S:V1122L",
+        "mut": "S:D614G",
         "count": 471
       },
       {
@@ -23,19 +23,19 @@
         "count": 4
       },
       {
-        "mut": "S:S12C",
-        "count": 4
-      },
-      {
         "mut": "S:T1076I",
         "count": 4
       },
       {
-        "mut": "S:T1027I",
-        "count": 3
+        "mut": "S:S12C",
+        "count": 4
       },
       {
         "mut": "S:A688V",
+        "count": 3
+      },
+      {
+        "mut": "S:T1027I",
         "count": 3
       }
     ]
