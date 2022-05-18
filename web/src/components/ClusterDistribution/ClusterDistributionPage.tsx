@@ -49,7 +49,7 @@ const sortByOptions = Object.entries(TooltipSortCriterion).map(([key, value]) =>
 
 export function SortByDropdown({ perCountryTooltipSortBy, onSortByChange }: SortByDropdownProps) {
   const handleSortByChange = useCallback(
-    ({ value }) => onSortByChange(TooltipSortCriterion[value as keyof typeof TooltipSortCriterion]),
+    (value: string) => onSortByChange(TooltipSortCriterion[value as keyof typeof TooltipSortCriterion]),
     [onSortByChange],
   )
 
@@ -61,7 +61,7 @@ export function SortByDropdown({ perCountryTooltipSortBy, onSortByChange }: Sort
           identifier="per-variant-sort-by"
           options={sortByOptions}
           value={stringToOption(perCountryTooltipSortBy)}
-          onChange={handleSortByChange}
+          onValueChange={handleSortByChange}
           isSearchable={false}
         />
       </Label>

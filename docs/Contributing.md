@@ -56,17 +56,16 @@ To add a new variant, you'll need to generate the neccessary files to plot the g
 ### Generate the files
 
 3. From within the `ncov` directory (which again, should be a sister-directory to `covariants`), run `scripts/alClusterDynamics_faster.py`. To test just your variant, you can type in just the name of your variant, or you can re-run all the clusters.
-4. To re-generate the country figure and data, run `scripts/compare_country_lineages.py` (again, from inside `ncov`).
 
 ### Add the protein structure
 
-5. Copy the amino-acid sequence from the 'S' or 'Structural protein' (spike) sequence from [the reference genome of SARS-CoV-2](https://www.ncbi.nlm.nih.gov/nuccore/MN908947.3/).
-6. In your favourite alignment editor, replace the amino acid which reflects the change you wish to show in the protein structure.
-7. Navigate to [CoVsurver](https://corona.bii.a-star.edu.sg/) and paste in the modified AA sequence, and press 'submit'.
-8. Use your favourite GIF tool to make a GIF of the picture. Try to adjust it to match the ones already on CoVariants. Copy this file into `covariants/web/public/proteins/gif` and ensure the file name matches the 'display name' in `clusters.py`.
+4. Copy the amino-acid sequence from the 'S' or 'Structural protein' (spike) sequence from [the reference genome of SARS-CoV-2](https://www.ncbi.nlm.nih.gov/nuccore/MN908947.3/).
+5. In your favourite alignment editor, replace the amino acid which reflects the change you wish to show in the protein structure.
+6. Navigate to [CoVsurver](https://corona.bii.a-star.edu.sg/) and paste in the modified AA sequence, and press 'submit'.
+7. Use your favourite GIF tool to make a GIF of the picture. Try to adjust it to match the ones already on CoVariants. Copy this file into `covariants/web/public/proteins/gif` and ensure the file name matches the 'display name' in `clusters.py`.
 
 ### Convert the data
 
-9. After generating all the required files, navigate back to `covariants` and run `make web-data` to convert all the files into the format needed for the website.
+8. After generating all the required files, navigate back to `covariants` and run `make web-data` to convert all the files into the format needed for the website. This will also run scripts to download case data from Our World in Data and combine this with the variant data (for the 'Cases' page) and query mutations from CoV-Spectrum.
 
 You can now try re-building the repository to check that the cluster has been added correctly.

@@ -1,4 +1,3 @@
-/* eslint-disable security/detect-unsafe-regex */
 import type { Mutation } from 'src/types'
 import { parsePosition } from './parsePosition'
 

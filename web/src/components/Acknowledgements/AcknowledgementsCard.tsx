@@ -66,6 +66,34 @@ export function AcknowledgementsCardBody({ cluster, numPages }: Acknowledgements
   const handlePagination = useCallback((page: number) => setPage(page - 1) /* one-based to zero-based */, [])
   const { isLoading, isFetching, isError, data: epiIsls, error } = useQueryAcknowledgements(cluster.build_name, page)
 
+  const body = useMemo(() => {
+    if (isLoading || isFetching) {
+      return (
+        <div className="d-flex">
+          <div className="mx-auto">
+            <OvalLoader color="#777" height={100} width={50} />
+          </div>
+        </div>
+      )
+    }
+    if (isError && error) {
+      return <AcknowledgementsError error={error} />
+    }
+    return null
+  }, [error, isError, isFetching, isLoading])
+
+  const epiIslsComponents = useMemo(() => {
+    if (epiIsls) {
+      return epiIsls.map((epiIsl) => (
+        <span key={`$${cluster.display_name}-${epiIsl}`}>
+          <AcknowledgementEpiIsl epiIsl={epiIsl} />
+          {', '}
+        </span>
+      ))
+    }
+    return null
+  }, [cluster.display_name, epiIsls])
+
   return (
     <CardBody>
       <PaginationContainer>
@@ -82,23 +110,8 @@ export function AcknowledgementsCardBody({ cluster, numPages }: Acknowledgements
         />
       </PaginationContainer>
 
-      <div>
-        {(isLoading || isFetching) && (
-          <div className="d-flex">
-            <div className="mx-auto">
-              <OvalLoader color="#777" height={100} width={50} />
-            </div>
-          </div>
-        )}
-        {isError && error && <AcknowledgementsError error={error} />}
-      </div>
-      {epiIsls &&
-        epiIsls.map((epiIsl) => (
-          <span key={`$${cluster.display_name}-${epiIsl}`}>
-            <AcknowledgementEpiIsl epiIsl={epiIsl} />
-            {', '}
-          </span>
-        ))}
+      <div>{body}</div>
+      <div>{epiIslsComponents}</div>
     </CardBody>
   )
 }

@@ -2554,6 +2554,42 @@ bad_seqs = {
     "USA/AZ-ASU65923/2021" : "2021-06-20", #omicron  EPI_ISL_12429305
     "Australia/VIC51922/2021" : "2021-10-09", #omicron  EPI_ISL_12276184
     "France/GES-HMN-22042070708/2020" : "2020-03-28", #omicron  EPI_ISL_12269393
+    "England/DHSC-CYNNUEM/2021" : "2021-01-01", #omicron 21K
+    "England/DHSC-CYYQWNY/2021" : "2021-01-01", #omicron 21K
+    "England/DHSC-CYYUQY9/2021" : "2021-01-01", #omicron 21K
+    "England/DHSC-CYYRS3D/2021" : "2021-01-01", #omicron 21K
+    "India/RJ-SMS-ICMR-INSACOG-TS-377/2021" : "2021-02-12", #omicron  EPI_ISL_12493255
+    "India/RJ-SMS-ICMR-INSACOG-TS-453/2021" : "2021-03-12", #omicron  EPI_ISL_12493257
+    "Italy/TAA-PAB_SABES_1900913394/2021" : "2021-04-07", #omicron  EPI_ISL_12471703
+    "Italy/TAA-PAB_SABES_1900916795/2021" : "2021-04-22", #omicron  EPI_ISL_12489872
+    #11 may
+    "USA/CO-CDPHE-2103139245/2021" : "2021-01-04", # omicron  EPI_ISL_12575541
+    "USA/CO-CDPHE-2103139260/2021" : "2021-01-03", # omicron  EPI_ISL_12575356
+    "USA/CO-CDPHE-2103149012/2020" : "2020-12-30", # omicron  EPI_ISL_12571247
+    "USA/CO-CDPHE-2103149017/2020" : "2020-12-29", # omicron  EPI_ISL_12571400
+    #16 may
+    "India/NL-IBSD-DMP-P13-133/2021" : "2021-10-27",
+    "USA/UT-CDC-2-5847434/2021" : "2021-12-14",
+    "Venezuela/Suc746/2021" : "2021-01-07",
+    "Germany/NW-RKI-I-323137/2020" : "2020-10-11",  #delta
+    "Norway/35841/2021" : "2021-01-27", #omicron  EPI_ISL_12649544
+    "USA/NE-TESTNE_ABJ3CRJ/2021" : "2021-03-05", #omicron  EPI_ISL_12622431
+    "Australia/NSW-SAVID-11556/2021" : "2021-04-25", #omicron  EPI_ISL_12666328
+    "Canada/BC-BCCDC-422751/2020" : "2020-04-14", #omicron  EPI_ISL_12663852
+    "Israel/ICH-741222178/2020" : "2020-09-24", #omicron  EPI_ISL_12635843
+    "Israel/ICH-741223215/2020" : "2020-09-24", #omicron  EPI_ISL_12633157
+    "SouthAfrica/NHLS-UCT-GS-C479/2021" : "2021-06-17", #omicron  EPI_ISL_12644863
+    "SouthAfrica/NHLS-UCT-GS-F745/2021" : "2021-08-03", #omicron  EPI_ISL_12644876
+    "Austria/CeMM28774/2020" : "2020-04-15", #delta EPI_ISL_12650256"
+    "India/HR-618342786/2021" : "2021-09-07", #omicron
+    "Scotland/EDB57666/2021" : "2021-10-22", #omicron 21L - seems too early
+    "India/NL-IBSD-DMP-P13-125/2021" : "2021-10-27", #omicron
+    "India/NL-IBSD-DMP-P13-102/2021" : "2021-10-23", #omicron
+    "Kosovo/CO-00795_XXK000_8669_03_Niph_2022/2022" : "2022-04-04", #omicron 21L - very divergent
+    "Kosovo/CO-00795_XXK000_8343_03_Niph_2022/2022" : "2022-03-28", #omicron 21L - very divergent
+    "Kosovo/CO-00795_XXK000_8148_03_Niph_2022/2022" : "2022-03-23", #omicron 21L - very divergent
+    "Kosovo/CO-00795_XXK000_8316_03_Niph_2022/2022" : "2022-03-26", #same but 21K
+    "Kosovo/CO-00795_XXK000_7096_03_Niph_2022/2022" : "2022-03-01", #same but 21K
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha

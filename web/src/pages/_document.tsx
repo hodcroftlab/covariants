@@ -61,14 +61,11 @@ export default class Document extends NextDocument {
 
       const initialProps = await NextDocument.getInitialProps(ctx)
 
+      const styles = [initialProps.styles, sheet.getStyleElement()]
+
       return {
         ...initialProps,
-        styles: (
-          <>
-            {initialProps.styles}
-            {sheet.getStyleElement()}
-          </>
-        ),
+        styles,
       }
     } finally {
       sheet.seal()
