@@ -1066,8 +1066,8 @@ for clus in clus_to_run:
     observed_countries = clus_data["observed_countries"]
     country_dates = clus_data["country_dates"]
     country_info_df = clus_data["country_info_ordered"]
-    cluster_data = clus_data["cluster_data"]
-    total_data = clus_data["total_data"]
+    cluster_data = clus_data["cluster_data_2wk"]
+    total_data = clus_data["total_data_2wk"]
 
     # Only plot countries with >= X seqs
     min_to_plot = cutoff_num_seqs
