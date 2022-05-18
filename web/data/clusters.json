@@ -2572,6 +2572,7 @@
       "type": "do_not_display"
     },
     {
+      "aquaria_urls": [],
       "build_name": "Omicron",
       "cluster_data": [],
       "col": "#b3d9ff",
@@ -2608,7 +2609,7 @@
       "aquaria_urls": [
         {
           "gene": "S",
-          "url": "https://aquaria.app/SARS-CoV-2/S?T19I&L24Del&L24Del&P25Del&P25Del&P25Del&P26Del&P26Del&P26Del&A27S&H69Del&H69Del&H69Del&V70Del&V70Del&V70Del&G142D&V213G&G339D&S371F&S373P&S375F&T376A&D405N&R408S&K417N&N440K&L452R&S477N&T478K&E484A&F486V&Q498R&N501Y&Y505H&D614G&H655Y&N679K&P681H&N764K&D796Y&Q954H&N969K"
+          "url": "https://aquaria.app/SARS-CoV-2/S?T19I&L24Del&P25Del&P26Del&A27S&H69Del&V70Del&G142D&V213G&G339D&S371F&S373P&S375F&T376A&D405N&R408S&K417N&N440K&L452R&S477N&T478K&E484A&F486V&Q498R&N501Y&Y505H&D614G&H655Y&N679K&P681H&N764K&D796Y&Q954H&N969K"
         },
         {
           "gene": "E",
@@ -2620,15 +2621,15 @@
         },
         {
           "gene": "N",
-          "url": "https://aquaria.app/SARS-CoV-2/N?P13L&E31Del&E31Del&E31Del&R32Del&R32Del&R32Del&S33Del&S33Del&S33Del&P151S&R203K&R203K&G204R&S413R"
+          "url": "https://aquaria.app/SARS-CoV-2/N?P13L&E31Del&R32Del&S33Del&P151S&R203K&G204R&S413R"
         },
         {
           "gene": "ORF1a",
-          "url": "https://aquaria.app/SARS-CoV-2/PP1a?S135R&K141Del&K141Del&K141Del&S142Del&S142Del&S142Del&F143Del&F143Del&F143Del&T842I&G1307S&L3027F&T3090I&T3255I&P3395H&S3675Del&S3675Del&S3675Del&G3676Del&G3676Del&G3676Del&F3677Del&F3677Del&F3677Del"
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?S135R&K141Del&S142Del&F143Del&T842I&G1307S&L3027F&T3090I&T3255I&P3395H&S3675Del&G3676Del&F3677Del"
         },
         {
           "gene": "ORF1b",
-          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?S135R&K141Del&K141Del&K141Del&S142Del&S142Del&S142Del&F143Del&F143Del&F143Del&T842I&G1307S&L3027F&T3090I&T3255I&P3395H&S3675Del&S3675Del&S3675Del&G3676Del&G3676Del&G3676Del&F3677Del&F3677Del&F3677Del&P4715L&R5716C&I5967V&T6564I"
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?S135R&K141Del&S142Del&F143Del&T842I&G1307S&L3027F&T3090I&T3255I&P3395H&S3675Del&G3676Del&F3677Del&P4715L&R5716C&I5967V&T6564I"
         },
         {
           "gene": "ORF3a",
@@ -2636,7 +2637,7 @@
         },
         {
           "gene": "ORF6",
-          "url": "https://aquaria.app/SARS-CoV-2/ORF6?D61L&D61L&D61L"
+          "url": "https://aquaria.app/SARS-CoV-2/ORF6?D61L"
         },
         {
           "gene": "ORF7b",
@@ -2644,7 +2645,7 @@
         },
         {
           "gene": "ORF9b",
-          "url": "https://aquaria.app/SARS-CoV-2/ORF9b?P10S&E27Del&E27Del&E27Del&N28Del&N28Del&N28Del&A29Del&A29Del&A29Del"
+          "url": "https://aquaria.app/SARS-CoV-2/ORF9b?P10S&E27Del&N28Del&A29Del"
         }
       ],
       "build_name": "22A.Omicron",
@@ -3318,7 +3319,7 @@
       "aquaria_urls": [
         {
           "gene": "S",
-          "url": "https://aquaria.app/SARS-CoV-2/S?T19I&L24Del&L24Del&P25Del&P25Del&P25Del&P26Del&P26Del&P26Del&A27S&H69Del&H69Del&H69Del&V70Del&V70Del&V70Del&G142D&V213G&G339D&S371F&S373P&S375F&T376A&D405N&R408S&K417N&N440K&L452R&S477N&T478K&E484A&F486V&Q498R&N501Y&Y505H&D614G&H655Y&N679K&P681H&N764K&D796Y&Q954H&N969K"
+          "url": "https://aquaria.app/SARS-CoV-2/S?T19I&L24Del&P25Del&P26Del&A27S&H69Del&V70Del&G142D&V213G&G339D&S371F&S373P&S375F&T376A&D405N&R408S&K417N&N440K&L452R&S477N&T478K&E484A&F486V&Q498R&N501Y&Y505H&D614G&H655Y&N679K&P681H&N764K&D796Y&Q954H&N969K"
         },
         {
           "gene": "E",
@@ -3330,15 +3331,15 @@
         },
         {
           "gene": "N",
-          "url": "https://aquaria.app/SARS-CoV-2/N?P13L&E31Del&E31Del&E31Del&R32Del&R32Del&R32Del&S33Del&S33Del&S33Del&R203K&R203K&G204R&S413R"
+          "url": "https://aquaria.app/SARS-CoV-2/N?P13L&E31Del&R32Del&S33Del&R203K&G204R&S413R"
         },
         {
           "gene": "ORF1a",
-          "url": "https://aquaria.app/SARS-CoV-2/PP1a?S135R&T842I&G1307S&L3027F&T3090I&T3255I&P3395H&S3675Del&S3675Del&S3675Del&G3676Del&G3676Del&G3676Del&F3677Del&F3677Del&F3677Del"
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?S135R&T842I&G1307S&L3027F&T3090I&T3255I&P3395H&S3675Del&G3676Del&F3677Del"
         },
         {
           "gene": "ORF1b",
-          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?S135R&T842I&G1307S&L3027F&T3090I&T3255I&P3395H&S3675Del&S3675Del&S3675Del&G3676Del&G3676Del&G3676Del&F3677Del&F3677Del&F3677Del&P4715L&R5716C&I5967V&T6564I"
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?S135R&T842I&G1307S&L3027F&T3090I&T3255I&P3395H&S3675Del&G3676Del&F3677Del&P4715L&R5716C&I5967V&T6564I"
         },
         {
           "gene": "ORF3a",
@@ -3346,7 +3347,7 @@
         },
         {
           "gene": "ORF9b",
-          "url": "https://aquaria.app/SARS-CoV-2/ORF9b?P10S&E27Del&E27Del&E27Del&N28Del&N28Del&N28Del&A29Del&A29Del&A29Del"
+          "url": "https://aquaria.app/SARS-CoV-2/ORF9b?P10S&E27Del&N28Del&A29Del"
         }
       ],
       "build_name": "22B.Omicron",
@@ -3985,7 +3986,7 @@
       "aquaria_urls": [
         {
           "gene": "S",
-          "url": "https://aquaria.app/SARS-CoV-2/S?T19I&L24Del&L24Del&P25Del&P25Del&P25Del&P26Del&P26Del&P26Del&A27S&G142D&V213G&G339D&S371F&S373P&S375F&T376A&D405N&R408S&K417N&N440K&L452Q&S477N&T478K&E484A&Q493R&Q498R&N501Y&Y505H&D614G&H655Y&N679K&P681H&S704L&N764K&D796Y&Q954H&N969K"
+          "url": "https://aquaria.app/SARS-CoV-2/S?T19I&L24Del&P25Del&P26Del&A27S&G142D&V213G&G339D&S371F&S373P&S375F&T376A&D405N&R408S&K417N&N440K&L452Q&S477N&T478K&E484A&Q493R&Q498R&N501Y&Y505H&D614G&H655Y&N679K&P681H&S704L&N764K&D796Y&Q954H&N969K"
         },
         {
           "gene": "E",
@@ -3997,15 +3998,15 @@
         },
         {
           "gene": "N",
-          "url": "https://aquaria.app/SARS-CoV-2/N?P13L&E31Del&E31Del&E31Del&R32Del&R32Del&R32Del&S33Del&S33Del&S33Del&R203K&R203K&G204R&S413R"
+          "url": "https://aquaria.app/SARS-CoV-2/N?P13L&E31Del&R32Del&S33Del&R203K&G204R&S413R"
         },
         {
           "gene": "ORF1a",
-          "url": "https://aquaria.app/SARS-CoV-2/PP1a?S135R&T842I&G1307S&L3027F&T3090I&L3201F&T3255I&P3395H&S3675Del&S3675Del&S3675Del&G3676Del&G3676Del&G3676Del&F3677Del&F3677Del&F3677Del"
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?S135R&T842I&G1307S&L3027F&T3090I&L3201F&T3255I&P3395H&S3675Del&G3676Del&F3677Del"
         },
         {
           "gene": "ORF1b",
-          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?S135R&T842I&G1307S&L3027F&T3090I&L3201F&T3255I&P3395H&S3675Del&S3675Del&S3675Del&G3676Del&G3676Del&G3676Del&F3677Del&F3677Del&F3677Del&P4715L&R5716C&I5967V&T6564I"
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?S135R&T842I&G1307S&L3027F&T3090I&L3201F&T3255I&P3395H&S3675Del&G3676Del&F3677Del&P4715L&R5716C&I5967V&T6564I"
         },
         {
           "gene": "ORF3a",
@@ -4013,11 +4014,11 @@
         },
         {
           "gene": "ORF6",
-          "url": "https://aquaria.app/SARS-CoV-2/ORF6?D61L&D61L&D61L"
+          "url": "https://aquaria.app/SARS-CoV-2/ORF6?D61L"
         },
         {
           "gene": "ORF9b",
-          "url": "https://aquaria.app/SARS-CoV-2/ORF9b?P10S&E27Del&E27Del&E27Del&N28Del&N28Del&N28Del&A29Del&A29Del&A29Del"
+          "url": "https://aquaria.app/SARS-CoV-2/ORF9b?P10S&E27Del&N28Del&A29Del"
         }
       ],
       "build_name": "22C.Omicron",
