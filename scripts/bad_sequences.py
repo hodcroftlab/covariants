@@ -2581,6 +2581,15 @@ bad_seqs = {
     "SouthAfrica/NHLS-UCT-GS-C479/2021" : "2021-06-17", #omicron  EPI_ISL_12644863
     "SouthAfrica/NHLS-UCT-GS-F745/2021" : "2021-08-03", #omicron  EPI_ISL_12644876
     "Austria/CeMM28774/2020" : "2020-04-15", #delta EPI_ISL_12650256"
+    "India/HR-618342786/2021" : "2021-09-07", #omicron
+    "Scotland/EDB57666/2021" : "2021-10-22", #omicron 21L - seems too early
+    "India/NL-IBSD-DMP-P13-125/2021" : "2021-10-27", #omicron
+    "India/NL-IBSD-DMP-P13-102/2021" : "2021-10-23", #omicron
+    "Kosovo/CO-00795_XXK000_8669_03_Niph_2022/2022" : "2022-04-04", #omicron 21L - very divergent
+    "Kosovo/CO-00795_XXK000_8343_03_Niph_2022/2022" : "2022-03-28", #omicron 21L - very divergent
+    "Kosovo/CO-00795_XXK000_8148_03_Niph_2022/2022" : "2022-03-23", #omicron 21L - very divergent
+    "Kosovo/CO-00795_XXK000_8316_03_Niph_2022/2022" : "2022-03-26", #same but 21K
+    "Kosovo/CO-00795_XXK000_7096_03_Niph_2022/2022" : "2022-03-01", #same but 21K
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
