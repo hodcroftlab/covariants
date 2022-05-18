@@ -189,6 +189,8 @@ start_time = time.time()
 ##################################
 #### Prepare output files
 
+t0 = time.time()
+
 json_output = {}
 
 # if running all clusters, clear file so can write again.
@@ -214,7 +216,7 @@ nextstrain_name_to_clus = {clusters[clus]["nextstrain_name"]: clus for clus in c
 
 alert_dates = {} # All strains that are dated earlier than their respective clade are autoexcluded and printed out
 for clus in cluster_first_dates: # Transform date from string to datetime for easier comparison
-    cluster_first_dates[clus]["date_formatted"] = datetime.datetime.strptime(cluster_first_dates[clus]["first_date"], "%Y-%m-%d")
+    cluster_first_dates[clus]["date_formatted"] = datetime.datetime.strptime(cluster_first_dates[clus]["first_date"], "%Y-%m-%d").date()
 
 
 # Input metadata file
@@ -235,26 +237,30 @@ with open(input_meta) as f:
         n_total += 1
         line = f.readline()
 
-Nextstrain_clades_breakdown = {"display_name": []}
+Nextstrain_clades_display_names = []
 for clus in Nextstrain_clades:
     if clus in display_name_to_clus and display_name_to_clus[clus] in clus_to_run:
-        Nextstrain_clades_breakdown["display_name"].append(clus)
+        Nextstrain_clades_display_names.append(clus)
 
-clus_to_run_breakdown = {
-    "official_clus": [],
-    "unofficial_clus": [],
-    "rest": [],
-}
+snps_categories = ["snps", "snps2", "gaps"]
+clus_to_run_breakdown = {key: {"official_clus": [], "unofficial_clus": [], "rest": []} for key in snps_categories}
+
 for clus in clus_to_run:
-    if clusters[clus]["display_name"] in Nextstrain_clades:
-        clus_to_run_breakdown["official_clus"].append(clus)
-    elif clusters[clus]["type"] == "variant" and clusters[clus]["graphing"]:
-        clus_to_run_breakdown["unofficial_clus"].append(clus)
-    else:
-        clus_to_run_breakdown["rest"].append(clus)
+    for key in snps_categories:
+        if clusters[clus][key]:
+            if clusters[clus]["display_name"] in Nextstrain_clades:
+                clus_to_run_breakdown[key]["official_clus"].append(clus)
+            elif clusters[clus]["type"] == "variant" and clusters[clus]["graphing"]:
+                clus_to_run_breakdown[key]["unofficial_clus"].append(clus)
+            else:
+                clus_to_run_breakdown[key]["rest"].append(clus)
 
-
-len_unofficial_clus = len(clus_to_run_breakdown["rest"])
+# TODO: think of prettier solution
+rest_all = []
+for key in clus_to_run_breakdown:
+    for clus in clus_to_run_breakdown[key]["rest"]:
+        if clus not in rest_all:
+            rest_all.append(clus)
 
 daughter_clades = {}
 # TODO: Rename and adjust
@@ -283,7 +289,7 @@ if division:
 
 # Random very early date for max & min date search (just needs to be earlier than any date we might encounter)
 earliest_date = datetime.datetime.strptime("2019-01-01", '%Y-%m-%d')
-today = datetime.datetime.today() # TODO: is date faster than datetime?
+today = datetime.datetime.today().date() # TODO: is date faster than datetime?
 #TODO: Check if items() is better for all my iterations
 for clus in clus_to_run:
     clus_data_all[clus] = clusters[clus]
@@ -314,14 +320,20 @@ acknowledgement_by_variant["acknowledgements"] = {clus: [] for clus in clus_to_r
 acknowledgement_keys = {}
 acknowledgement_keys["acknowledgements"] = {}
 
+t1 = time.time()
+print(f"Preparation took {round((t1-t0)/60,1)} min to run.\n")
+
 ##################################
 ##################################
 #### Read and clean metadata line by line
 t0 = time.time()
+detailed_time_measurement = {"ab": 0, "bc": 0,"cd": 0,"de": 0,"ef": 0,"fg": 0,"gh": 0}
 
 early_dates_no_Nextclade = {}
 all_sequences = {clus: [] for clus in clusters}
 cluster_inconsistencies = {"Nextstrain_clade": {}, "Non_Nextstrain_clade": {}}
+
+print_lines = sorted([int(n_total/20*i) + 1 for i in range(1,20)])
 
 print("\nReading and cleaning up the metadata line-by-line...\n")
 n = 0
@@ -330,23 +342,24 @@ with open(input_meta) as f:
     indices = {c:header.index(c) for c in cols}
 
     while True:
+        t_a = time.time()
         line = f.readline()
         if not line:
             break
         n += 1
-        if ((n-1)/n_total) % 0.05 > n/n_total % 0.05:
+
+        if n in print_lines:
             t1 = time.time()
             print(f"{round(n/n_total * 100)}% complete... ({round((t1-t0)/60,1)} min)")
+            print(detailed_time_measurement)
 
         l = line.split("\t")
+        t_b = time.time()
+
 
         ##### CLEANING METADATA #####
 
         #l = [float("NaN") if i == "" else i for i in l] # Fillna # TODO: Do we really need this?
-
-        # If bad seq there  - exclude!
-        if l[indices['strain']] in bad_seqs and l[indices['date']] == bad_seqs[l[indices['strain']]]:
-            continue
 
         # Filter for only Host = Human
         if l[indices['host']] != "Human":
@@ -360,92 +373,115 @@ with open(input_meta) as f:
             continue
 
         # Invalid dates
-        if len(l[indices['date']]) != 10 or "X" in l[indices['date']]:
+        if len(l[indices['date']]) != 10:
             continue
+
+        if "X" in l[indices['date']]:
+            continue
+
+        # If bad seq there  - exclude!
+        if l[indices['strain']] in bad_seqs and l[indices['date']] == bad_seqs[l[indices['strain']]]:
+            continue
+
         # Future dates
-        date_formatted = datetime.datetime.strptime(l[indices['date']], "%Y-%m-%d")
+        date_formatted = datetime.datetime.strptime(l[indices['date']], "%Y-%m-%d").date()
         if date_formatted > today:
             print("WARNING! Data from the future!")
             print(f"{l[indices['strain']]}: {l[indices['date']]}")
             continue
+
+        t_c = time.time()
 
         ##### ASSIGNING CLUSTERS #####
 
         # If an official Nextstrain clade, then use Nextclade designation to assign them.
         # If not an official Nextstrain clade, use our SNP method
 
-        clus_to_check = clus_to_run_breakdown["rest"]
+        clus_to_check = {key: clus_to_run_breakdown[key]["rest"] for key in clus_to_run_breakdown}
 
         clade = l[indices['Nextstrain_clade']]
 
         clus_all = []
         only_Nextstrain = False
         # Use Nextclade
-        if clade in Nextstrain_clades_breakdown["display_name"]:
+        if clade in Nextstrain_clades_display_names:
             clus_all.append(display_name_to_clus[clade])
             only_Nextstrain = True
             if clade in daughter_clades:
-                if clus_check:
-                    clus_to_check += [c for c in daughter_clades[clade] if c not in clus_to_run_breakdown["unofficial_clus"]] # Make sure daughter clade is not added double
-                else:
-                    clus_to_check += daughter_clades[clade]
+                for daughter in daughter_clades[clade]:
+                #TODO: make sure this works for snps
+                    if not clus_check or daughter not in clus_to_run_breakdown["unofficial_clus"]: # Make sure daughter clade is not added two times
+                        clus_to_check = {key: clus_to_check[key] + daughter for key in clus_to_check if daughter in clus_to_check[key]["official_clus"] or daughter in clus_to_check[key]["unofficial_clus"]}
                 only_Nextstrain = False
 
         if clus_all == []:
-            clus_to_check += clus_to_run_breakdown["official_clus"] + clus_to_run_breakdown["unofficial_clus"]
+            clus_to_check = {key: clus_to_check[key] + clus_to_run_breakdown[key]["official_clus"] + clus_to_run_breakdown[key]["unofficial_clus"] for key in clus_to_check}
             only_Nextstrain = False
 
         elif clus_check:
-            clus_to_check += clus_to_run_breakdown["unofficial_clus"]
+            clus_to_check = {
+            key: clus_to_check[key] + clus_to_run_breakdown[key]["unofficial_clus"] for key in clus_to_check}
             only_Nextstrain = False
 
-        muts_snp_pos = [int(y[1:-1]) for y in l[indices['substitutions']].split(',') if y]
-        # expand metadata deletions formatting
-        muts_del_pos = [z for y in l[indices['deletions']].split(',') if y for z in
-                        range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)]
+        t_d = time.time()
+
+        muts = {"snps": []}
+
+        if l[indices['substitutions']]:
+            muts["snps"] = [int(y[1:-1]) for y in l[indices['substitutions']].split(',')]
+
+        #muts = {"snps": [int(y[1:-1]) for y in l[indices['substitutions']].split(',') if y], "gaps": [z for y in l[indices['deletions']].split(',') if y for z in
+                        #range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)]} # expand metadata deletions formatting
+
+        muts["snps2"] = muts["snps"]
+
+        if l[indices['deletions']]:
+            muts["gaps"] = [z for y in l[indices['deletions']].split(',') for z in range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)]
+
+        t_e = time.time()
 
         # TODO: Did not include "exclude_snps" since none are currently used in clusters.py
-        for c in clus_to_check:
-            if c in clus_all:
-                continue
-            if clus_data_all[c]["snps"] and all([p in muts_snp_pos for p in clus_data_all[c]["snps"]]):
-                clus_all.append(c)
-                continue
+        for key in clus_to_check:
+            for clus in clus_to_check[key]:
+                if clus in clus_all:
+                    continue
+                for snp in clus_data_all[c][key]:
+                    if snp not in muts[key]:
+                        break
+                else:
+                    clus_all.append(clus)
 
-            if clus_data_all[c]["snps2"] and all([p in muts_snp_pos for p in clus_data_all[c]["snps2"]]):
-                clus_all.append(c)
-                continue
+        t_f = time.time()
 
-            if clus_data_all[c]["gaps"] and all([p in muts_del_pos for p in clus_data_all[c]["gaps"]]):
-                clus_all.append(c)
 
         clus_all_no_plotting = []
         # Check for inconsistencies
         # TODO: Maybe remove from certain clusters?
         # if wanted seqs are part of a Nextclade designated variant, remove from that count & use this one.
         # ONLY IF PLOTTING and if this run ISN'T an official run
-        if not only_Nextstrain and clus_check: # Only check for inconsistencies if there could be more than only one Nextstrain clade
-            clus_all_unique = [c for c in clus_all if c in clus_to_run_breakdown["unofficial_clus"] + clus_to_run_breakdown["official_clus"]]
+        if not only_Nextstrain: # Only check for inconsistencies if there could be more than only one Nextstrain clade
+            clus_all_unique = [c for c in clus_all if c not in rest_all]
             daughter_parent = False
             if len(clus_all_unique) == 2: # Exactly two clus - check if daughter/parent pair
                 if clus_all_unique[0] in daughter_clades and daughter_clades[clus_all_unique[0]] == clus_all_unique[1]:
-                    clus_all.remove(clus_all_unique[0]) # Remove parent, keep child
+                    clus_all_no_plotting.append(clus_all_unique[0]) # Remove parent, keep child
                     daughter_parent = True
                 if clus_all_unique[1] in daughter_clades and daughter_clades[clus_all_unique[1]] == clus_all_unique[0]:
-                    clus_all.remove(clus_all_unique[1]) # Remove parent, keep child
+                    clus_all_no_plotting.append(clus_all_unique[1]) # Remove parent, keep child
                     daughter_parent = True
 
             if len(clus_all_unique) > 1 and not daughter_parent: # Flag for inconsistency
-                clus_all_no_plotting = clus_all_unique
-                if clade and display_name_to_clus[clade] in clus_all_unique: # If Nextstrain clade: Keep this and remove all others
-                    clus_all_no_plotting.remove(display_name_to_clus[clade])
+                clus_all = [clus for clus in clus_all if clus not in clus_all_unique]
+                if clade in display_name_to_clus and display_name_to_clus[clade] in clus_all_unique: # If Nextstrain clade: Keep this and remove all others
+                    clus_all.append(display_name_to_clus[clade])
                     cluster_inconsistencies["Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
 
                 else:# If no Nextstrain clade: Drop all unique clusters (still keep mutations and unofficial clusters)
                     cluster_inconsistencies["Non_Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
 
-        ##### COLLECT COUNTS PER CLUSTER #####
+        t_g = time.time()
 
+        ##### COLLECT COUNTS PER CLUSTER #####
         for clus in clus_all: # TODO: maybe include print_files to not collect data?
 
             if clus not in clus_to_run: # TODO: Maybe put out warning
@@ -515,6 +551,17 @@ with open(input_meta) as f:
             if print_acks:
                 # remove all but EPI_ISL, on request from GISAID
                 acknowledgement_by_variant["acknowledgements"][clus].append(l[indices['gisaid_epi_isl']])
+
+        t_h = time.time()
+
+        detailed_time_measurement["ab"] += t_b-t_a
+        detailed_time_measurement["bc"] += t_c - t_b
+        detailed_time_measurement["cd"] += t_d - t_c
+        detailed_time_measurement["de"] += t_e - t_d
+        detailed_time_measurement["ef"] += t_f - t_e
+        detailed_time_measurement["fg"] += t_g - t_f
+        detailed_time_measurement["gh"] += t_h - t_g
+
 
 print("100% complete!")
 t1 = time.time()
