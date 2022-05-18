@@ -208,7 +208,7 @@ if print_files and "all" in clus_answer:
 
 # Link Nextstrain clade and name to our cluster names used in clusters.py
 # TODO: There could be more than one display name
-nextstrain_clade_to_clus = {clusters[clus]["display_name"]: clus for clus in clus_to_run if "display_name" in clusters[clus]}
+display_name_to_clus = {clusters[clus]["display_name"]: clus for clus in clus_to_run if "display_name" in clusters[clus]}
 nextstrain_name_to_clus = {clusters[clus]["nextstrain_name"]: clus for clus in clus_to_run if "nextstrain_name" in clusters[clus]}
 # TODO: Might need to add extra entries for "21K.21L" using "other_nextstrain_names"
 
@@ -216,14 +216,45 @@ alert_dates = {} # All strains that are dated earlier than their respective clad
 for clus in cluster_first_dates: # Transform date from string to datetime for easier comparison
     cluster_first_dates[clus]["date_formatted"] = datetime.datetime.strptime(cluster_first_dates[clus]["first_date"], "%Y-%m-%d")
 
-unique_clus = []
-unofficial_clus = []
+
+# Input metadata file
+input_meta = "data/metadata.tsv"
+cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl', 'QC_overall_status']
+
+# Traverse metadata once to count lines and collect Nextstrain_clades
+Nextstrain_clades = []
+n_total = 0
+with open(input_meta) as f:
+    header = f.readline().split("\t")
+    indices = {c:header.index(c) for c in cols}
+    line = f.readline()
+    while line:
+        l = line.split("\t")
+        if l[indices['Nextstrain_clade']] not in Nextstrain_clades:
+            Nextstrain_clades.append(l[indices['Nextstrain_clade']])
+        n_total += 1
+        line = f.readline()
+
+Nextstrain_clades_breakdown = {"display_name": []}
+for clus in Nextstrain_clades:
+    if clus in display_name_to_clus and display_name_to_clus[clus] in clus_to_run:
+        Nextstrain_clades_breakdown["display_name"].append(clus)
+
+clus_to_run_breakdown = {
+    "official_clus": [],
+    "unofficial_clus": [],
+    "rest": [],
+}
 for clus in clus_to_run:
-    if clusters[clus]["type"] == "variant" and clusters[clus]["graphing"]:
-        unique_clus.append(clus)
+    if clusters[clus]["display_name"] in Nextstrain_clades:
+        clus_to_run_breakdown["official_clus"].append(clus)
+    elif clusters[clus]["type"] == "variant" and clusters[clus]["graphing"]:
+        clus_to_run_breakdown["unofficial_clus"].append(clus)
     else:
-        unofficial_clus.append(clus)
-len_unofficial_clus = len(unofficial_clus)
+        clus_to_run_breakdown["rest"].append(clus)
+
+
+len_unofficial_clus = len(clus_to_run_breakdown["rest"])
 
 daughter_clades = {}
 # TODO: Rename and adjust
@@ -234,20 +265,6 @@ for c in clus_to_run:
             daughter_clades[Nextstrain_clade] = []
         daughter_clades[Nextstrain_clade].append(c)
 
-
-# Input metadata file
-input_meta = "data/metadata.tsv"
-cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl', 'QC_overall_status']
-
-# Traverse metadata and collect all strains that have date earlier than expected date for their clade
-n_total = 0
-with open(input_meta) as f:
-    header = f.readline().split("\t")
-    indices = {c:header.index(c) for c in cols}
-    line = f.readline()
-    while line:
-        n_total += 1
-        line = f.readline()
 
 ##################################
 ##################################
@@ -357,24 +374,29 @@ with open(input_meta) as f:
         # If an official Nextstrain clade, then use Nextclade designation to assign them.
         # If not an official Nextstrain clade, use our SNP method
 
-        # In a normal run, only check "unofficial" clusters - clusters that are either not variants (but e.g. mutations)
-        # or that are not plotted, so that an overlap with an official, "unique" clus does not pose a problem
-        # Only check for "unique" clus if no Nextclade found or we specifically asked for it
-        clus_to_check = unofficial_clus
+        clus_to_check = clus_to_run_breakdown["rest"]
 
         clade = l[indices['Nextstrain_clade']]
 
         clus_all = []
-        only_Nextstrain = True
+        only_Nextstrain = False
         # Use Nextclade
-        if clade in nextstrain_clade_to_clus:
-            clus_all.append(nextstrain_clade_to_clus[clade])
-            if clade in daughter_clades and not clus_check:
-                clus_to_check += daughter_clades[clade]
+        if clade in Nextstrain_clades_breakdown["display_name"]:
+            clus_all.append(display_name_to_clus[clade])
+            only_Nextstrain = True
+            if clade in daughter_clades:
+                if clus_check:
+                    clus_to_check += [c for c in daughter_clades[clade] if c not in clus_to_run_breakdown["unofficial_clus"]] # Make sure daughter clade is not added double
+                else:
+                    clus_to_check += daughter_clades[clade]
                 only_Nextstrain = False
 
-        if clus_check or clus_all == []: # We only check everything if requested or no Nextstrain clade found
-            clus_to_check = clus_to_check + unique_clus
+        if clus_all == []:
+            clus_to_check += clus_to_run_breakdown["official_clus"] + clus_to_run_breakdown["unofficial_clus"]
+            only_Nextstrain = False
+
+        elif clus_check:
+            clus_to_check += clus_to_run_breakdown["unofficial_clus"]
             only_Nextstrain = False
 
         muts_snp_pos = [int(y[1:-1]) for y in l[indices['substitutions']].split(',') if y]
@@ -397,14 +419,15 @@ with open(input_meta) as f:
             if clus_data_all[c]["gaps"] and all([p in muts_del_pos for p in clus_data_all[c]["gaps"]]):
                 clus_all.append(c)
 
+        clus_all_no_plotting = []
         # Check for inconsistencies
         # TODO: Maybe remove from certain clusters?
         # if wanted seqs are part of a Nextclade designated variant, remove from that count & use this one.
         # ONLY IF PLOTTING and if this run ISN'T an official run
-        if not only_Nextstrain: # Only check for inconsistencies if there could be more than only one Nextstrain clade
-            clus_all_unique = [c for c in clus_all if c in unique_clus]
+        if not only_Nextstrain and clus_check: # Only check for inconsistencies if there could be more than only one Nextstrain clade
+            clus_all_unique = [c for c in clus_all if c in clus_to_run_breakdown["unofficial_clus"] + clus_to_run_breakdown["official_clus"]]
             daughter_parent = False
-            if len(clus_all_unique) == 2: # More than one unique cluster - check if daughter/parent pair, otherwise remove
+            if len(clus_all_unique) == 2: # Exactly two clus - check if daughter/parent pair
                 if clus_all_unique[0] in daughter_clades and daughter_clades[clus_all_unique[0]] == clus_all_unique[1]:
                     clus_all.remove(clus_all_unique[0]) # Remove parent, keep child
                     daughter_parent = True
@@ -412,16 +435,14 @@ with open(input_meta) as f:
                     clus_all.remove(clus_all_unique[1]) # Remove parent, keep child
                     daughter_parent = True
 
-            if len(clus_all_unique) > 1 and not daughter_parent: # Print out warnings
-                clus_all = [c for c in clus_all if c not in clus_all_unique]
-                if clade and clade in clus_all_unique: # If Nextstrain clade: Keep this and remove all others
-                    clus_all.append(clade)
+            if len(clus_all_unique) > 1 and not daughter_parent: # Flag for inconsistency
+                clus_all_no_plotting = clus_all_unique
+                if clade and display_name_to_clus[clade] in clus_all_unique: # If Nextstrain clade: Keep this and remove all others
+                    clus_all_no_plotting.remove(display_name_to_clus[clade])
                     cluster_inconsistencies["Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
 
                 else:# If no Nextstrain clade: Drop all unique clusters (still keep mutations and unofficial clusters)
-                    cluster_inconsistencies["Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
-
-        # TODO: Do we want sequences in our sequence list that are not in our cluster counts?
+                    cluster_inconsistencies["Non_Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
 
         ##### COLLECT COUNTS PER CLUSTER #####
 
@@ -442,6 +463,9 @@ with open(input_meta) as f:
 
             # Store all strains per assigned cluster
             all_sequences[clus].append(l[indices['strain']])
+
+            if clus in clus_all_no_plotting:
+                continue
 
             # TODO: Removed dated_limit, check if must be added again
 
