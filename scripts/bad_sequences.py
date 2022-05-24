@@ -2590,6 +2590,13 @@ bad_seqs = {
     "Kosovo/CO-00795_XXK000_8148_03_Niph_2022/2022" : "2022-03-23", #omicron 21L - very divergent
     "Kosovo/CO-00795_XXK000_8316_03_Niph_2022/2022" : "2022-03-26", #same but 21K
     "Kosovo/CO-00795_XXK000_7096_03_Niph_2022/2022" : "2022-03-01", #same but 21K
+    #24 may
+    "Colombia/SAN-13INS/2021" : "2021-01-06",  #21K.Omicron
+    "USA/OH-ODH-SC2040052/2021" : "2021-01-03",  #21K.Omicron
+    "USA/OH-ODH-SC2040057/2021" : "2021-01-03",  #21K.Omicron
+    "USA/OH-ODH-SC2041169/2021" : "2021-01-12",  #21K.Omicron
+    "USA/AZ-TG1332009/2021" : "2021-10-11",  #21L.Omicron
+    "USA/CT-DPH-1079649001/2021" : "2021-04-22",  #21L.Omicron
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
