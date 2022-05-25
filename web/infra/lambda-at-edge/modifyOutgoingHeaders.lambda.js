@@ -50,7 +50,6 @@ function addHeaders(headersObject) {
 const HEADERS_TO_REMOVE = new Set(['server', 'via'])
 
 function filterHeaders(headers) {
-  // eslint-disable-next-line unicorn/prefer-object-from-entries
   return Object.entries(headers).reduce((result, [key, value]) => {
     if (HEADERS_TO_REMOVE.has(key.toLowerCase())) {
       return result

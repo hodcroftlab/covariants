@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import { get } from 'lodash'
 import { Oval as OvalLoader } from 'react-loader-spinner'
@@ -50,6 +50,27 @@ export function useQueryAcknowledgementsKeys() {
 export function AcknowledgementsPage() {
   const { isLoading, isFetching, isError, data, error } = useQueryAcknowledgementsKeys()
 
+  const body = useMemo(() => {
+    if (isLoading || isFetching) {
+      return (
+        <div className="d-flex">
+          <div className="mx-auto">
+            <OvalLoader color="#777" height={100} width={50} />
+          </div>
+        </div>
+      )
+    }
+    if (isError && error) {
+      return <AcknowledgementsError error={error} />
+    }
+    if (data) {
+      return data.map((datum) => (
+        <AcknowledgementsCard key={datum.cluster.build_name} cluster={datum.cluster} numPages={datum.numChunks} />
+      ))
+    }
+    return null
+  }, [data, error, isError, isFetching, isLoading])
+
   return (
     <Layout>
       <AcknowledgementsPageContainer>
@@ -66,24 +87,7 @@ export function AcknowledgementsPage() {
         </Row>
 
         <Row className="mt-5">
-          <Col>
-            {(isLoading || isFetching) && (
-              <div className="d-flex">
-                <div className="mx-auto">
-                  <OvalLoader color="#777" height={100} width={50} />
-                </div>
-              </div>
-            )}
-            {isError && error && <AcknowledgementsError error={error} />}
-            {data &&
-              data.map((datum) => (
-                <AcknowledgementsCard
-                  key={datum.cluster.build_name}
-                  cluster={datum.cluster}
-                  numPages={datum.numChunks}
-                />
-              ))}
-          </Col>
+          <Col>{body}</Col>
         </Row>
       </AcknowledgementsPageContainer>
     </Layout>
