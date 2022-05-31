@@ -93,10 +93,10 @@ def to2week_ordinal(x):
 
 def print_clus_alerts(key, clus):
     print(clus)
-    print(summary[key][clus])
+    print(summary_cluster_assignments[key][clus])
 
 def print_all_clus_alerts(key):
-    for clus in summary[key]:
+    for clus in summary_cluster_assignments[key]:
         print_clus_alerts(key, clus)
 
 
@@ -129,7 +129,7 @@ reask = True
 
 while reask:
     clus_answer = input(
-        "\nWhat cluster to run? (Enter for all): "
+        "\nWhat cluster to run? (Enter is all): "
     )
     if clus_answer == '':
         print("Using default of all\n")
@@ -210,7 +210,7 @@ if print_files and "all" in clus_answer:
 
 # Random very early date for max & min date search (just needs to be earlier than any date we might encounter)
 earliest_date = datetime.datetime.strptime("2019-01-01", '%Y-%m-%d')
-today = datetime.datetime.today().date() # TODO: is date faster than datetime?
+today = datetime.datetime.today() # TODO: is date faster than datetime?
 
 # Link Nextstrain clade and name to our cluster names used in clusters.py
 # TODO: There could be more than one display name
@@ -220,7 +220,7 @@ nextstrain_name_to_clus = {clusters[clus]["nextstrain_name"]: clus for clus in c
 
 alert_dates = {} # All strains that are dated earlier than their respective clade are autoexcluded and printed out
 for clus in cluster_first_dates: # Transform date from string to datetime for easier comparison
-    cluster_first_dates[clus]["date_formatted"] = datetime.datetime.strptime(cluster_first_dates[clus]["first_date"], "%Y-%m-%d").date()
+    cluster_first_dates[clus]["date_formatted"] = datetime.datetime.strptime(cluster_first_dates[clus]["first_date"], "%Y-%m-%d")
 
 
 # Input metadata file
@@ -230,6 +230,7 @@ cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nex
 # Traverse metadata once to count lines and collect Nextstrain_clades
 print("\nDoing first metadata pass...")
 Nextstrain_clades = []
+all_countries = []
 n_total = 0
 with open(input_meta) as f:
     header = f.readline().split("\t")
@@ -239,6 +240,8 @@ with open(input_meta) as f:
         l = line.split("\t")
         if l[indices['Nextstrain_clade']] not in Nextstrain_clades:
             Nextstrain_clades.append(l[indices['Nextstrain_clade']])
+        if l[indices['country']] not in all_countries:
+            all_countries.append(l[indices['country']])
         n_total += 1
         line = f.readline()
 
@@ -295,8 +298,8 @@ if division:
 #TODO: Check if items() is better for all my iterations
 for clus in clus_to_run:
     clus_data_all[clus] = clusters[clus]
-    clus_data_all[clus]["summary"] = {}
-    clus_data_all[clus]["cluster_counts"] = {}
+    clus_data_all[clus]["summary"] = {country: {'first_seq': today, 'num_seqs': 0, 'last_seq': earliest_date} for country in all_countries}
+    clus_data_all[clus]["cluster_counts"] = {country: {} for country in all_countries}
 
     clus_data_all[clus]["clus_build_name"] = clusters[clus]["build_name"]
     clus_data_all[clus]["snps"] = [str(s) for s in clusters[clus]["snps"]]
@@ -393,11 +396,19 @@ with open(input_meta) as f:
             continue
 
         # Future dates
-        date_formatted = datetime.datetime.strptime(l[indices['date']], "%Y-%m-%d").date()
+        date_formatted = datetime.datetime.strptime(l[indices['date']], "%Y-%m-%d")
         if date_formatted > today:
             print("WARNING! Data from the future!")
             print(f"{l[indices['strain']]}: {l[indices['date']]}")
             continue
+
+        # TODO: is it faster if I don't call the function?
+        date_2weeks = to2week_ordinal(date_formatted)
+        # n = date_formatted.toordinal()
+        # monday = datetime.date.fromordinal(n - ((n - ref_monday) % 14))
+        # date_2weeks = (monday.isocalendar()[0], monday.isocalendar()[1])
+
+        country = l[indices["country"]]
 
         t_c = time.time()
 
@@ -428,8 +439,7 @@ with open(input_meta) as f:
             only_Nextstrain = False
 
         elif clus_check:
-            clus_to_check = {
-            key: clus_to_check[key] + clus_to_run_breakdown[key]["unofficial_clus"] for key in clus_to_check}
+            clus_to_check = {key: clus_to_check[key] + clus_to_run_breakdown[key]["unofficial_clus"] for key in clus_to_check}
             only_Nextstrain = False
 
         t_d = time.time()
@@ -450,18 +460,17 @@ with open(input_meta) as f:
         t_e = time.time()
 
         # TODO: Did not include "exclude_snps" since none are currently used in clusters.py
-        for key in clus_to_check:
+        for key in muts:
             for clus in clus_to_check[key]:
                 if clus in clus_all:
                     continue
-                for snp in clus_data_all[c][key]:
+                for snp in clus_data_all[clus][key]:
                     if snp not in muts[key]:
                         break
                 else:
                     clus_all.append(clus)
 
         t_f = time.time()
-
 
         clus_all_no_plotting = []
         # Check for inconsistencies
@@ -487,6 +496,7 @@ with open(input_meta) as f:
 
                 else:# If no Nextstrain clade: Drop all unique clusters (still keep mutations and unofficial clusters)
                     cluster_inconsistencies["Non_Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
+
 
         t_g = time.time()
 
@@ -522,15 +532,13 @@ with open(input_meta) as f:
             if clus in clus_all_no_plotting:
                 continue
 
-
-
             # TODO: Removed dated_limit, check if must be added again
 
-            country = l[indices["country"]]
-
+            '''
             # Summary: Total counts and first & last seq
             if country not in clus_data_all[clus]["summary"]:
                 clus_data_all[clus]["summary"][country] = {'first_seq': today, 'num_seqs': 0, 'last_seq': earliest_date}
+            '''
 
             t_4 = time.time()
             clus_data_all[clus]["summary"][country]["num_seqs"] += 1
@@ -539,15 +547,9 @@ with open(input_meta) as f:
 
             t_5 = time.time()
 
-            # TODO: is it faster if I don't call the function?
-            date_2weeks = to2week_ordinal(date_formatted)
-            #n = date_formatted.toordinal()
-            #monday = datetime.date.fromordinal(n - ((n - ref_monday) % 14))
-            #date_2weeks = (monday.isocalendar()[0], monday.isocalendar()[1])
-
             t_6 = time.time()
 
-            # TODO: is it okay to apply this threshold here already?
+            # TODO: is it okay to apply this threshold here already? It does have to be in summary, right?
             if date_2weeks < min_data_week:
                 continue
 
@@ -555,8 +557,10 @@ with open(input_meta) as f:
 
             # cluster_counts: Number of sequences per cluster per country per date (2-week interval)
             # TODO: What if there are *NO* sequences in a given week?
+            '''
             if country not in clus_data_all[clus]["cluster_counts"]:
                 clus_data_all[clus]["cluster_counts"][country] = {}
+            '''
             if date_2weeks not in clus_data_all[clus]["cluster_counts"][country]:
                 clus_data_all[clus]["cluster_counts"][country][date_2weeks] = 0
             clus_data_all[clus]["cluster_counts"][country][date_2weeks] += 1
@@ -829,7 +833,7 @@ for clus in clus_to_run:
 if print_files and "all" in clus_answer:
     countries_plotted = list(clus_data_all[clus]["non_zero_counts"].keys())
     with open(tables_path + f"perVariant_countries_toPlot.json", "w") as fh:
-        json.dump(countries_plotted, fh)
+        json.dump({c: True  for c in countries_plotted}, fh) #TODO: Could we adjust the format?
 
 
 ### COUNTRIES ###
@@ -896,7 +900,6 @@ def plot_country_data(
         division_local=False,
         selected_country_local=None,
 ):
-    country_week = {clus: {} for clus in clusters}
 
     min_week = today
     max_week = earliest_date
@@ -932,15 +935,12 @@ def plot_country_data(
             week_as_dates[country] = week_as_date
 
             country_data[clusters[clus]["display_name"]] = list(cluster_count)
-            country_week[clus][country] = cluster_count / total_count
 
             if i == 0:
                 first_clus_count = [0] * len(total_count)
             if len(first_clus_count) == 0:
                 first_clus_count = [0] * len(total_count)
-            cluster_count = first_clus_count + cluster_count  # unindented
 
-            first_clus_count = cluster_count  # unindented
             i += 1
 
         country_data["week"] = [datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date]
@@ -1020,7 +1020,7 @@ if "all" in clus_answer:
     missing_c_found = False
     for country in countries_to_plot:
         if country not in country_styles_all:
-            print(f"WARNING!: {country} has no color! Please add it to country_list_2 in colors_and_countries.py and re-run make web-data.\n")
+            print(f"WARNING!: {country} has no color! Please add it to country_list_2 in colors_and_countries.py and re-run make web-data.")
             missing_c_found = True
     if not missing_c_found:
         print("No country is missing colors.\n")
@@ -1032,19 +1032,20 @@ if "all" in clus_answer:
             print(f"Not plotted anymore: {country}")
 
 # Print out inconsistent cluster assignments (more than one cluster per sequence)
-summary = {}
+summary_cluster_assignments = {}
 for key in cluster_inconsistencies:
-    summary[key] = {}
+    summary_cluster_assignments[key] = {}
     for strain, clus in cluster_inconsistencies[key].items():
-        if str(clus) not in summary[key]:
-            summary[key][str(clus)] = []
-        summary[key][str(clus)].append(strain)
+        clus = [c for c in clus if c not in rest_all]
+        if str(clus) not in summary_cluster_assignments[key]:
+            summary_cluster_assignments[key][str(clus)] = []
+        summary_cluster_assignments[key][str(clus)].append(strain)
 
-for key in summary:
-    if summary[key]:
+for key in summary_cluster_assignments:
+    if summary_cluster_assignments[key]:
         print(f"\nWarning: Inconsistent cluster assignment found for {key} sequences (all automatically excluded unless Nextstrain clade):")
-        for clus in summary[key]:
-            print(f"{clus}: {len(summary[key][clus])}")
+        for clus in summary_cluster_assignments[key]:
+            print(f"{clus}: {len(summary_cluster_assignments[key][clus])}")
         print(f"To view, use 'print_all_clus_alerts('{key}')' or 'print_clus_alerts('{key}', \"[clus_list]\")'")
     else:
         print(f"\nNo inconsistent cluster assignment found for {key} sequences.")
