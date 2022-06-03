@@ -2606,7 +2606,8 @@ bad_seqs = {
     "Colombia/TOL-I458/2020" : "2020-08-11", #21K omicron EPI_ISL_12876781
     "Colombia/TOL-I470/2020" : "2020-11-13", #21K omicron EPI_ISL_12876774
     "USA/CO-CDPHE-2103204851/2021" : "2021-04-16", #21K omicron EPI_ISL_12913570
-
+    #3 June
+    "Eswatini/N22721/2021": "2021-08-02", #omicron 21K - may actually be ok!  EPI_ISL_12954196"
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
