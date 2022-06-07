@@ -2608,6 +2608,11 @@ bad_seqs = {
     "USA/CO-CDPHE-2103204851/2021" : "2021-04-16", #21K omicron EPI_ISL_12913570
     #3 June
     "Eswatini/N22721/2021": "2021-08-02", #omicron 21K - may actually be ok!  EPI_ISL_12954196"
+    #4 June
+    "Israel/ICH-741226590/2020" : "2020-09-24", #omicron  EPI_ISL_13073645
+    "Israel/ICH-741226592/2020" : "2020-09-23", #omicron  EPI_ISL_13073927
+    "Israel/ICH-741237350/2020" : "2020-09-24", #omicron  EPI_ISL_13077034
+    "Israel/ICH-741237353/2020" : "2020-10-11", #omicron  EPI_ISL_13077035
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
