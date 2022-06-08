@@ -308,9 +308,9 @@ for clus in clus_to_run:
     else:
         clus_data_all[clus]["snps2"] = []
 
-    if "gaps" in clusters[clus]:
-        clus_data_all[clus]["gaps"] = [str(s) for s in clusters[clus]["gaps"]]
-    else:
+    # use int for gaps since they need to be expanded from the metadata deletions column
+    # -> save time by not converting to str for each line.
+    if "gaps" not in clusters[clus]:
         clus_data_all[clus]["gaps"] = []
 
     #TODO: Is this still required?
@@ -543,7 +543,7 @@ with open(input_meta) as f:
             t_4 = time.time()
             clus_data_all[clus]["summary"][country]["num_seqs"] += 1
             clus_data_all[clus]["summary"][country]["first_seq"] = min(clus_data_all[clus]["summary"][country]["first_seq"], date_formatted)
-            clus_data_all[clus]["summary"][country]["last_seq"] = max(clus_data_all[clus]["summary"][country]["first_seq"], date_formatted)
+            clus_data_all[clus]["summary"][country]["last_seq"] = max(clus_data_all[clus]["summary"][country]["last_seq"], date_formatted)
 
             t_5 = time.time()
 
@@ -580,7 +580,7 @@ with open(input_meta) as f:
                         division_data_all[country][clus]["summary"][div] = {'first_seq': today, 'num_seqs': 0, 'last_seq': earliest_date}
                     division_data_all[country][clus]["summary"][div]["num_seqs"] += 1
                     division_data_all[country][clus]["summary"][div]["first_seq"] = min(division_data_all[country][clus]["summary"][div]["first_seq"], date_formatted)
-                    division_data_all[country][clus]["summary"][div]["last_seq"] = max(division_data_all[country][clus]["summary"][div]["first_seq"], date_formatted)
+                    division_data_all[country][clus]["summary"][div]["last_seq"] = max(division_data_all[country][clus]["summary"][div]["last_seq"], date_formatted)
 
                     if div not in division_data_all[country][clus]["cluster_counts"]:
                         division_data_all[country][clus]["cluster_counts"][div] = {}
@@ -621,6 +621,8 @@ print(f"Collecting all data took {round((t1-t0)/60,1)} min to run.\n")
 ##################################
 ##################################
 #### Process counts and check for min number of sequences per country
+
+#TODO: Maybe adjust clus_to_run, what if a clus is not found?
 
 # Write out strains for Nextstrain runs
 if print_files:
@@ -663,7 +665,8 @@ if print_files:
         clus_build_name = clus_data_all[clus]["build_name"]
         table_file = f"{tables_path}{clus_build_name}_table.tsv"
         ordered_country = pd.DataFrame.from_dict(clus_data_all[clus]["summary"], orient="index").sort_values(by="first_seq")
-
+        ordered_country["first_seq"] = ordered_country["first_seq"].dt.date
+        ordered_country["last_seq"] = ordered_country["last_seq"].dt.date
         ordered_country.to_csv(table_file, sep="\t")
         # only write if doing all clusters
         if "all" in clus_answer:
