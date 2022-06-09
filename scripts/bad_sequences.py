@@ -2613,6 +2613,19 @@ bad_seqs = {
     "Israel/ICH-741226592/2020" : "2020-09-23", #omicron  EPI_ISL_13073927
     "Israel/ICH-741237350/2020" : "2020-09-24", #omicron  EPI_ISL_13077034
     "Israel/ICH-741237353/2020" : "2020-10-11", #omicron  EPI_ISL_13077035
+    "USA/OR-TRACE-LINN-081221-1406/2021" : "2021-08-12", #omicron
+    # 9 june
+    "Colombia/ATL-UNINORTE-UN-368/2021" : "2021-06-14",  #omicron  EPI_ISL_13131652
+    "Colombia/ATL-UNINORTE-UN-384/2021" : "2021-06-28",  #omicron  EPI_ISL_13131664
+    "Panama/2421-GMI/2020" : "2020-06-20",  #omicron  EPI_ISL_13104952
+    "Panama/3837-GMI/2020" : "2020-07-27",  #omicron  EPI_ISL_13105039
+    "Panama/3915-GMI/2020" : "2020-07-31",  #omicron  EPI_ISL_13105045
+    "Panama/4054-GMI/2020" : "2020-08-13",  #omicron  EPI_ISL_13105050
+    "Panama/4059-GMI/2020" : "2020-08-13",  #omicron  EPI_ISL_13105051
+    "Panama/4140-GMI/2020" : "2020-08-15",  #omicron  EPI_ISL_13105061
+    "Panama/4145-GMI/2020" : "2020-08-15",  #omicron  EPI_ISL_13105062
+    "Panama/501080-GMI/2020" : "2020-09-27",  #omicron  EPI_ISL_13105124
+    "Israel/ICH-741237331/2020" : "2020-10-13", #delta417  EPI_ISL_13077038
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
