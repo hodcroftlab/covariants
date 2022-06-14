@@ -2626,6 +2626,43 @@ bad_seqs = {
     "Panama/4145-GMI/2020" : "2020-08-15",  #omicron  EPI_ISL_13105062
     "Panama/501080-GMI/2020" : "2020-09-27",  #omicron  EPI_ISL_13105124
     "Israel/ICH-741237331/2020" : "2020-10-13", #delta417  EPI_ISL_13077038
+    #14 june
+    "Brazil/RJ-FIOCRUZ-202211567/2021" : "2021-06-08",  #omicron EPI_ISL_13228879
+    "USA/AZ-ASU79726/2021" : "2021-06-20",  #omicron EPI_ISL_13197585
+    "USA/AZ-ASU79730/2021" : "2021-03-30",  #omicron EPI_ISL_13197586
+    "USA/AZ-ASU79739/2021" : "2021-06-13",  #omicron EPI_ISL_13197588
+    "USA/AZ-ASU79746/2021" : "2021-03-25",  #omicron EPI_ISL_13197590
+    "USA/AZ-ASU79748/2021" : "2021-03-21",  #omicron EPI_ISL_13197591
+    "USA/AZ-ASU79750/2021" : "2021-03-23",  #omicron EPI_ISL_13197592
+    "USA/AZ-ASU79752/2021" : "2021-06-20",  #omicron EPI_ISL_13197593
+    "USA/AZ-ASU79756/2021" : "2021-05-27",  #omicron EPI_ISL_13197594
+    "USA/AZ-ASU79758/2021" : "2021-03-15",  #omicron EPI_ISL_13197595
+    "USA/AZ-ASU79768/2021" : "2021-05-28",  #omicron EPI_ISL_13197599
+    "USA/AZ-ASU79774/2021" : "2021-03-13",  #omicron EPI_ISL_13197601
+    "USA/AZ-ASU79780/2021" : "2021-03-22",  #omicron EPI_ISL_13197602
+    "USA/AZ-ASU79790/2021" : "2021-06-03",  #omicron EPI_ISL_13197605
+    "USA/AZ-ASU79794/2021" : "2021-03-19",  #omicron EPI_ISL_13197606
+    "USA/AZ-ASU79798/2021" : "2021-05-15",  #omicron EPI_ISL_13197607
+    "USA/AZ-ASU79800/2021" : "2021-06-16",  #omicron EPI_ISL_13197608
+    "USA/AZ-ASU79812/2021" : "2021-06-05",  #omicron EPI_ISL_13197611
+    "USA/AZ-ASU79814/2021" : "2021-05-19",  #omicron EPI_ISL_13197612
+    "Philippines/PH-PGC-103689/2021" : "2021-02-01", #omicron  EPI_ISL_13175169
+    "Philippines/PH-PGC-103696/2021" : "2021-01-02", #omicron  EPI_ISL_13175177
+    "Philippines/PH-PGC-103719/2021" : "2021-01-01", #omicron  EPI_ISL_13175178
+    "Philippines/PH-PGC-103720/2021" : "2021-01-01", #omicron  EPI_ISL_13175179
+    "Philippines/PH-PGC-104461/2021" : "2021-01-06", #omicron  EPI_ISL_13175175
+    "Philippines/PH-PGC-104474/2021" : "2021-01-06", #omicron  EPI_ISL_13175173
+    "Philippines/PH-PGC-104476/2021" : "2021-01-06", #omicron  EPI_ISL_13175176
+    "Philippines/PH-PGC-104477/2021" : "2021-01-06", #omicron  EPI_ISL_13175172
+    "Philippines/PH-PGC-104481/2021" : "2021-01-07", #omicron  EPI_ISL_13175171
+    "Philippines/PH-PGC-104482/2021" : "2021-01-06", #omicron  EPI_ISL_13175174
+    "Philippines/PH-PGC-105006/2021" : "2021-01-10", #omicron  EPI_ISL_13175170
+    "Philippines/PH-PGC-51070/2021" : "2021-05-19", #omicron  EPI_ISL_13175152
+    "Philippines/PH-PGC-51073/2021" : "2021-05-19", #omicron  EPI_ISL_13175151
+    "Philippines/PH-PGC-51082/2021" : "2021-05-21", #omicron  EPI_ISL_13175149
+    "Philippines/PH-PGC-51330/2021" : "2021-05-26", #omicron  EPI_ISL_13175139
+    "Philippines/PH-PGC-51500/2021" : "2021-05-28", #omicron  EPI_ISL_13175133
+    "Philippines/PH-PGC-51507/2021" : "2021-05-31", #omicron  EPI_ISL_13175130
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
