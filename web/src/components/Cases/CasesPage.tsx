@@ -38,6 +38,7 @@ export function CasesPage() {
     const { withCountriesFiltered } = filterCountries(countries, perCountryCasesDistributions)
     const filteredClusters = filterClusters(clusters, withCountriesFiltered)
     const { enabledClusters, withClustersFiltered } = filteredClusters
+    withClustersFiltered.sort((a, b) => (a.country > b.country ? 1 : -1))
     return { enabledClusters, withClustersFiltered }
   }, [countries, perCountryCasesDistributions, clusters])
 
