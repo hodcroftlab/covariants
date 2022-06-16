@@ -1,13 +1,22 @@
 import { DateTime, DurationLike } from 'luxon'
 
-export const formatProportion = (value: number) => value.toFixed(2)
+export function formatProportion(value: number): string {
+  const percentage = value * 100
+
+  if (percentage < 0.1) {
+    return `<0.1%`
+  }
+
+  const percentageStr = percentage.toFixed(1)
+  return `${percentageStr}%`
+}
 
 export const formatInteger = (value: number) => value.toFixed(0)
 
 export const formatDate = (date: number) => DateTime.fromSeconds(date).toISODate()
 
 export function formatDateRange(weekTimestamp: number, range: DurationLike) {
-  const begin = DateTime.fromSeconds(weekTimestamp)
+  const begin = DateTime.fromMillis(weekTimestamp)
   const end = begin.plus(range)
   return `${begin.toFormat('dd MMM yyyy')} - ${end.toFormat('dd MMM yyyy')}`
 }

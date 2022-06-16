@@ -1,103 +1,155 @@
 /* eslint-disable camelcase */
-import React, { useMemo } from 'react'
-
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
-import { DateTime } from 'luxon'
-import { useResizeDetector } from 'react-resize-detector'
+import type { EChartsOption, LineSeriesOption } from 'echarts'
+import type { Opts } from 'echarts-for-react/lib/types'
+import ReactEChartsCore from 'echarts-for-react/lib/core'
+import { LineChart } from 'echarts/charts'
+import {
+  AxisPointerComponent,
+  DataZoomComponent,
+  DataZoomInsideComponent,
+  GridComponent,
+  TooltipComponent,
+} from 'echarts/components'
+import * as echarts from 'echarts/core'
+import { CanvasRenderer } from 'echarts/renderers'
+import { get, sortBy } from 'lodash'
+import {
+  PlotTooltipDatum,
+  renderCountryDistributionPlotTooltip,
+} from 'src/components/CountryDistribution/CountryDistributionPlotTooltip'
 
 import type { CountryDistributionDatum } from 'src/io/getPerCountryData'
-import { theme } from 'src/theme'
-import { ticks, timeDomain } from 'src/io/getParams'
-import { CLUSTER_NAME_OTHERS, getClusterColor } from 'src/io/getClusters'
-import { formatDateHumanely, formatProportion } from 'src/helpers/format'
-import { adjustTicks } from 'src/helpers/adjustTicks'
-import { ChartContainerOuter, ChartContainerInner } from 'src/components/Common/PlotLayout'
-import { CountryDistributionPlotTooltip } from './CountryDistributionPlotTooltip'
+import { DateTime } from 'luxon'
+import React, { useCallback, useMemo } from 'react'
+import { useResizeDetector } from 'react-resize-detector'
+import { ChartContainerInner, ChartContainerOuter } from 'src/components/Common/PlotLayout'
+import { getClusterColor } from 'src/io/getClusters'
 
-const allowEscapeViewBox = { x: false, y: true }
+echarts.use([
+  AxisPointerComponent,
+  CanvasRenderer,
+  DataZoomComponent,
+  DataZoomInsideComponent,
+  GridComponent,
+  LineChart,
+  TooltipComponent,
+])
+
+const chartConfig: EChartsOption = {
+  animation: false,
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: { type: 'cross' },
+    formatter: (data) => renderCountryDistributionPlotTooltip(data as unknown as PlotTooltipDatum[]),
+  },
+  toolbox: {
+    tooltip: { show: false },
+    feature: { saveAsImage: {} },
+  },
+  grid: {
+    top: '5px',
+    left: '20px',
+    right: '10px',
+    bottom: '10px',
+    containLabel: true,
+  },
+  xAxis: { type: 'time' },
+  yAxis: {
+    type: 'value',
+    min: 0,
+    max: 1,
+  },
+  dataZoom: [
+    {
+      type: 'inside',
+      id: 'insideX',
+      xAxisIndex: 0,
+      filterMode: 'none',
+      zoomOnMouseWheel: true,
+      moveOnMouseMove: true,
+    },
+  ],
+}
+
+const seriesConfig: LineSeriesOption = {
+  type: 'line',
+  stack: 'y',
+  areaStyle: { opacity: 1 },
+  smooth: true,
+  lineStyle: { width: 0 },
+  showSymbol: false,
+}
 
 export interface AreaPlotProps {
-  width?: number
+  width: number
   cluster_names: string[]
   distribution: CountryDistributionDatum[]
 }
 
-function AreaPlot({ width, cluster_names, distribution }: AreaPlotProps) {
-  const data = useMemo(
-    () =>
-      distribution.map(({ week, total_sequences, cluster_counts }) => {
-        const total_cluster_sequences = Object.values(cluster_counts) // prettier-ignore
-          .reduce<number>((result, count = 0) => result + (count ?? 0), 0)
+function AreaPlot({ width, cluster_names: clusterNames, distribution }: AreaPlotProps) {
+  const onChartReady = useCallback(() => {}, [])
+  const opts: Opts = useMemo(() => ({ width, renderer: 'canvas' }), [width])
 
-        const others = total_sequences - total_cluster_sequences
-        const weekSec = DateTime.fromFormat(week, 'yyyy-MM-dd').toSeconds()
-        return { week: weekSec, ...cluster_counts, others, total: total_sequences }
+  const { xMin, series } = useMemo(() => {
+    const seriesMap = Object.fromEntries(
+      clusterNames.map((clusterName) => {
+        const data = distribution.map(({ week, cluster_counts, total_sequences }) => {
+          const timestamp = DateTime.fromFormat(week, 'yyyy-MM-dd').toUTC().toMillis()
+          const countMaybe = get(cluster_counts, clusterName)
+          const frequency = countMaybe ? countMaybe / total_sequences : 0
+          return [timestamp, frequency]
+        })
+
+        return [
+          clusterName,
+          {
+            ...seriesConfig,
+            name: clusterName,
+            areaStyle: {
+              ...seriesConfig.areaStyle,
+              color: getClusterColor(clusterName),
+            },
+            data,
+          },
+        ]
       }),
-    [distribution],
-  )
+    )
 
-  const { adjustedTicks, domainX, domainY } = useMemo(() => {
-    const adjustedTicks = adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin).slice(1) // slice ensures first tick is not outside domain
-    const domainX = [timeDomain[0], timeDomain[1]]
-    const domainY = [0, 1]
-    return { adjustedTicks, domainX, domainY }
-  }, [width])
+    const series = Object.values(seriesMap)
+
+    const data = distribution.map(({ week, cluster_counts, total_sequences }) => {
+      const timestamp = DateTime.fromFormat(week, 'yyyy-MM-dd').toUTC().toMillis()
+      const total_cluster_sequences = Object.values(cluster_counts) // prettier-ignore
+        .reduce<number>((result, count = 0) => result + (count ?? 0), 0)
+      const frequency: number = (total_sequences - total_cluster_sequences) / total_sequences
+      return [timestamp, frequency]
+    })
+
+    series.push({
+      ...seriesConfig,
+      name: 'others',
+      areaStyle: {
+        ...seriesConfig.areaStyle,
+        color: getClusterColor('others'),
+      },
+      data,
+    })
+
+    const xMin = series[0].data[0][0]
+
+    return { xMin, series }
+  }, [clusterNames, distribution])
+
+  const option: EChartsOption = useMemo(() => {
+    return {
+      ...chartConfig,
+      xAxis: { ...chartConfig.xAxis, min: xMin },
+      series,
+    }
+  }, [series, xMin])
 
   return (
-    <ResponsiveContainer aspect={theme.plot.aspectRatio} debounce={0}>
-      <AreaChart margin={theme.plot.margin} data={data} stackOffset="expand">
-        <XAxis
-          dataKey="week"
-          type="number"
-          tickFormatter={formatDateHumanely}
-          domain={domainX}
-          ticks={adjustedTicks}
-          tick={theme.plot.tickStyle}
-          tickMargin={theme.plot.tickMargin?.x}
-          allowDataOverflow
-        />
-        <YAxis
-          type="number"
-          tickFormatter={formatProportion}
-          domain={domainY}
-          tick={theme.plot.tickStyle}
-          tickMargin={theme.plot.tickMargin?.y}
-          allowDataOverflow
-        />
-
-        {cluster_names.map((cluster) => (
-          <Area
-            key={cluster}
-            type="monotone"
-            dataKey={cluster}
-            stackId="1"
-            stroke="none"
-            fill={getClusterColor(cluster)}
-            fillOpacity={1}
-            isAnimationActive={false}
-          />
-        ))}
-
-        <Area
-          type="monotone"
-          dataKey={CLUSTER_NAME_OTHERS}
-          stackId="1"
-          stroke="none"
-          fill={theme.clusters.color.others}
-          fillOpacity={1}
-          isAnimationActive={false}
-        />
-
-        <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
-
-        <Tooltip
-          content={CountryDistributionPlotTooltip}
-          isAnimationActive={false}
-          allowEscapeViewBox={allowEscapeViewBox}
-          offset={50}
-        />
-      </AreaChart>
-    </ResponsiveContainer>
+    <ReactEChartsCore echarts={echarts} option={option} onChartReady={onChartReady} opts={opts} notMerge lazyUpdate />
   )
 }
 
@@ -109,10 +161,18 @@ export interface CountryDistributionPlotProps {
 export function CountryDistributionPlot({ cluster_names, distribution }: CountryDistributionPlotProps) {
   const { ref, width } = useResizeDetector({ handleWidth: true })
 
+  if (!width) {
+    return (
+      <ChartContainerOuter ref={ref}>
+        <ChartContainerInner />
+      </ChartContainerOuter>
+    )
+  }
+
   return (
     <ChartContainerOuter ref={ref}>
       <ChartContainerInner>
-        <AreaPlot width={width} cluster_names={cluster_names} distribution={distribution} />
+        <AreaPlot width={width} cluster_names={cluster_names} distribution={sortBy(distribution, 'week')} />
       </ChartContainerInner>
     </ChartContainerOuter>
   )

@@ -145,6 +145,8 @@ const withTypeChecking = getWithTypeChecking({
 const transpilationListDev = [
   // prettier-ignore
   "d3-scale",
+  'echarts',
+  'zrender',
 ]
 
 const transpilationListProd = uniq([
