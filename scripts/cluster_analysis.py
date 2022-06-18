@@ -299,7 +299,7 @@ if division:
 for clus in clus_to_run:
     clus_data_all[clus] = clusters[clus]
     clus_data_all[clus]["summary"] = {country: {'first_seq': today, 'num_seqs': 0, 'last_seq': earliest_date} for country in all_countries}
-    clus_data_all[clus]["cluster_counts"] = {country: {} for country in all_countries}
+    clus_data_all[clus]["cluster_counts"] = {country: {} for country in all_countries} #TODO: Do I need to remove unused countries?
 
     clus_data_all[clus]["clus_build_name"] = clusters[clus]["build_name"]
     clus_data_all[clus]["snps"] = [str(s) for s in clusters[clus]["snps"]]
@@ -325,6 +325,8 @@ for clus in clus_to_run:
         + f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
     )
 
+total_counts_countries = {country: {} for country in all_countries}
+
 # store acknoweledgements
 acknowledgement_by_variant = {}
 acknowledgement_by_variant["acknowledgements"] = {clus: [] for clus in clus_to_run}
@@ -339,7 +341,7 @@ print(f"Preparation took {round((t1-t0)/60,1)} min to run.\n")
 ##################################
 #### Read and clean metadata line by line
 t0 = time.time()
-detailed_time_measurement = {"ab": 0, "bc": 0,"cd": 0,"de": 0,"ef": 0,"fg": 0,"gh": [0,0,0,0,0,0,0,0,0]}
+#detailed_time_measurement = {"ab": 0, "bc": 0,"cd": 0,"de": 0,"ef": 0,"fg": 0,"gh": [0,0,0,0,0,0,0,0,0]}
 
 early_dates_no_Nextclade = {}
 all_sequences = {clus: [] for clus in clusters}
@@ -354,7 +356,7 @@ with open(input_meta) as f:
     indices = {c:header.index(c) for c in cols}
 
     while True:
-        t_a = time.time()
+        #t_a = time.time()
         line = f.readline()
         if not line:
             break
@@ -363,10 +365,11 @@ with open(input_meta) as f:
         if n in print_lines:
             t1 = time.time()
             print(f"{round(n/n_total * 100)}% complete... ({round((t1-t0)/60,1)} min)")
-            print(detailed_time_measurement)
+            #print(detailed_time_measurement)
+
 
         l = line.split("\t")
-        t_b = time.time()
+        #t_b = time.time()
 
 
         ##### CLEANING METADATA #####
@@ -410,7 +413,12 @@ with open(input_meta) as f:
 
         country = l[indices["country"]]
 
-        t_c = time.time()
+        if date_2weeks >= min_data_week:
+            if date_2weeks not in total_counts_countries[country]:
+                total_counts_countries[country][date_2weeks] = 0
+            total_counts_countries[country][date_2weeks] += 1
+
+        #t_c = time.time()
 
         ##### ASSIGNING CLUSTERS #####
 
@@ -442,7 +450,7 @@ with open(input_meta) as f:
             clus_to_check = {key: clus_to_check[key] + clus_to_run_breakdown[key]["unofficial_clus"] for key in clus_to_check}
             only_Nextstrain = False
 
-        t_d = time.time()
+        #t_d = time.time()
 
         muts = {"snps": []}
 
@@ -457,7 +465,7 @@ with open(input_meta) as f:
         if l[indices['deletions']]:
             muts["gaps"] = [z for y in l[indices['deletions']].split(',') for z in range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)]
 
-        t_e = time.time()
+        #t_e = time.time()
 
         # TODO: Did not include "exclude_snps" since none are currently used in clusters.py
         for key in muts:
@@ -470,7 +478,7 @@ with open(input_meta) as f:
                 else:
                     clus_all.append(clus)
 
-        t_f = time.time()
+        #t_f = time.time()
 
         clus_all_no_plotting = []
         # Check for inconsistencies
@@ -498,19 +506,19 @@ with open(input_meta) as f:
                     cluster_inconsistencies["Non_Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
 
 
-        t_g = time.time()
+        #t_g = time.time()
 
-        t_gh = [0,0,0,0,0,0,0,0,0]
+        #t_gh = [0,0,0,0,0,0,0,0,0]
 
         ##### COLLECT COUNTS PER CLUSTER #####
         for clus in clus_all: # TODO: maybe include print_files to not collect data?
 
-            t_0 = time.time()
+            #t_0 = time.time()
 
             #if clus not in clus_to_run: # TODO: I think this would never happen, can I cut it out to save time?
                 #continue
 
-            t_1 = time.time()
+            #t_1 = time.time()
 
             # Exclude all strains that are dated before their respective clade
             # TODO: S:Q677 not in clus_dates
@@ -522,12 +530,12 @@ with open(input_meta) as f:
                         alert_dates[clus][k].append(l[indices[k]])
                     continue
 
-            t_2 = time.time()
+            #t_2 = time.time()
 
             # Store all strains per assigned cluster
             all_sequences[clus].append(l[indices['strain']])
 
-            t_3 = time.time()
+            #t_3 = time.time()
 
             if clus in clus_all_no_plotting:
                 continue
@@ -540,20 +548,20 @@ with open(input_meta) as f:
                 clus_data_all[clus]["summary"][country] = {'first_seq': today, 'num_seqs': 0, 'last_seq': earliest_date}
             '''
 
-            t_4 = time.time()
+            #t_4 = time.time()
             clus_data_all[clus]["summary"][country]["num_seqs"] += 1
             clus_data_all[clus]["summary"][country]["first_seq"] = min(clus_data_all[clus]["summary"][country]["first_seq"], date_formatted)
             clus_data_all[clus]["summary"][country]["last_seq"] = max(clus_data_all[clus]["summary"][country]["last_seq"], date_formatted)
 
-            t_5 = time.time()
+            #t_5 = time.time()
 
-            t_6 = time.time()
+            #t_6 = time.time()
 
             # TODO: is it okay to apply this threshold here already? It does have to be in summary, right?
             if date_2weeks < min_data_week:
                 continue
 
-            t_7 = time.time()
+            #t_7 = time.time()
 
             # cluster_counts: Number of sequences per cluster per country per date (2-week interval)
             # TODO: What if there are *NO* sequences in a given week?
@@ -565,7 +573,7 @@ with open(input_meta) as f:
                 clus_data_all[clus]["cluster_counts"][country][date_2weeks] = 0
             clus_data_all[clus]["cluster_counts"][country][date_2weeks] += 1
 
-            t_8 = time.time()
+            #t_8 = time.time()
 
             # For selected countries (e.g. USA, Switzerland), also collect data by division
             if division:
@@ -588,30 +596,30 @@ with open(input_meta) as f:
                         division_data_all[country][clus]["cluster_counts"][div][date_2weeks] = 0
                     division_data_all[country][clus]["cluster_counts"][div][date_2weeks] += 1
 
-            t_9 = time.time()
+            #t_9 = time.time()
 
             if print_acks:
                 # remove all but EPI_ISL, on request from GISAID
                 acknowledgement_by_variant["acknowledgements"][clus].append(l[indices['gisaid_epi_isl']])
 
-            t_gh[0] += t_1 - t_0
-            t_gh[1] += t_2 - t_1
-            t_gh[2] += t_3 - t_2
-            t_gh[3] += t_4 - t_3
-            t_gh[4] += t_5 - t_4
-            t_gh[5] += t_6 - t_5
-            t_gh[6] += t_7 - t_6
-            t_gh[7] += t_8 - t_7
-            t_gh[8] += t_9 - t_8
+            #t_gh[0] += t_1 - t_0
+            #t_gh[1] += t_2 - t_1
+            #t_gh[2] += t_3 - t_2
+            #t_gh[3] += t_4 - t_3
+            #t_gh[4] += t_5 - t_4
+            #t_gh[5] += t_6 - t_5
+            #t_gh[6] += t_7 - t_6
+            #t_gh[7] += t_8 - t_7
+            #t_gh[8] += t_9 - t_8
 
 
-        detailed_time_measurement["ab"] += t_b-t_a
-        detailed_time_measurement["bc"] += t_c - t_b
-        detailed_time_measurement["cd"] += t_d - t_c
-        detailed_time_measurement["de"] += t_e - t_d
-        detailed_time_measurement["ef"] += t_f - t_e
-        detailed_time_measurement["fg"] += t_g - t_f
-        detailed_time_measurement["gh"] = [t_gh[i] + detailed_time_measurement["gh"][i] for i in range(len(t_gh))]
+        #detailed_time_measurement["ab"] += t_b-t_a
+        #detailed_time_measurement["bc"] += t_c - t_b
+        #detailed_time_measurement["cd"] += t_d - t_c
+        #detailed_time_measurement["de"] += t_e - t_d
+        #detailed_time_measurement["ef"] += t_f - t_e
+        #detailed_time_measurement["fg"] += t_g - t_f
+        #detailed_time_measurement["gh"] = [t_gh[i] + detailed_time_measurement["gh"][i] for i in range(len(t_gh))]
 
 
 print("100% complete!")
@@ -665,6 +673,7 @@ if print_files:
         clus_build_name = clus_data_all[clus]["build_name"]
         table_file = f"{tables_path}{clus_build_name}_table.tsv"
         ordered_country = pd.DataFrame.from_dict(clus_data_all[clus]["summary"], orient="index").sort_values(by="first_seq")
+        ordered_country = ordered_country[ordered_country["num_seqs"] != 0]
         ordered_country["first_seq"] = ordered_country["first_seq"].dt.date
         ordered_country["last_seq"] = ordered_country["last_seq"].dt.date
         ordered_country.to_csv(table_file, sep="\t")
@@ -704,11 +713,12 @@ if print_acks and "all" in clus_answer:
         #for ch, fn in zip(chunks, ack_file_names):
             #with open(ack_out_folder + fn + ".json", "w") as fh:
                 #json.dump(ch, fh, indent=2, sort_keys=True)
-
+'''
+# TODO: Make sure my totals are not off due to the mutations!
 # Create total_counts: Total counts per country and date, not sorted by cluster
 total_counts_countries = {}
 for clus in clus_data_all:
-    clus_data_all[clus]["total_counts"] = {}
+    #clus_data_all[clus]["total_counts"] = {}
     for country in clus_data_all[clus]["cluster_counts"]:
         if country not in total_counts_countries:
             total_counts_countries[country] = {}
@@ -716,7 +726,7 @@ for clus in clus_data_all:
             if date not in total_counts_countries[country]:
                 total_counts_countries[country][date] = 0
             total_counts_countries[country][date] += clus_data_all[clus]["cluster_counts"][country][date]
-
+'''
 cutoff_num_seqs = 1200
 
 # TODO: Special case for Danish cluster?
