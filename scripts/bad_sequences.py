@@ -2663,6 +2663,9 @@ bad_seqs = {
     "Philippines/PH-PGC-51330/2021" : "2021-05-26", #omicron  EPI_ISL_13175139
     "Philippines/PH-PGC-51500/2021" : "2021-05-28", #omicron  EPI_ISL_13175133
     "Philippines/PH-PGC-51507/2021" : "2021-05-31", #omicron  EPI_ISL_13175130
+    #18 june
+    "Kyrgyzstan/NRL-52392/2020": "2020-05-06", #beta EPI_ISL_13283875
+    "Israel/SMC-7072941/2020": "2020-10-04", #omicron EPI_ISL_13316741
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
