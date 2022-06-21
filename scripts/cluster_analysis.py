@@ -632,6 +632,7 @@ print(f"Collecting all data took {round((t1-t0)/60,1)} min to run.\n")
 
 #TODO: Maybe adjust clus_to_run, what if a clus is not found?
 
+print("\nWrite out strains for Nextstrain runs...\n")
 # Write out strains for Nextstrain runs
 if print_files:
     for clus in clus_to_run:
@@ -663,7 +664,7 @@ if print_files:
             #cluster_meta.to_csv(out_meta_file, sep="\t", index=False)
 
 # Write out summary table
-
+print("\nWrite out summary tables...\n")
 if print_files:
     for clus in clus_to_run:
         if clus_data_all[clus]["summary"] == {}: #TODO: No sequence is "Delta.299I"? Is that possible?
@@ -686,6 +687,7 @@ if print_files:
 
 # only do this for 'all' runs as otherwise the main file won't be updated.
 if print_acks and "all" in clus_answer:
+    print("\nWrite out acknowledgements...\n")
     for clus in clus_to_run:
         if clus not in acknowledgement_by_variant["acknowledgements"]:
             print(f"Cluster {clus} missing from acknowledgements (no sequences assigned to this cluster).")
@@ -727,11 +729,12 @@ for clus in clus_data_all:
                 total_counts_countries[country][date] = 0
             total_counts_countries[country][date] += clus_data_all[clus]["cluster_counts"][country][date]
 '''
-cutoff_num_seqs = 1200
 
 # TODO: Special case for Danish cluster?
 # TODO: also special for "UK countries"?
 
+print("\nCollect countries above cutoff_num_seqs...\n")
+cutoff_num_seqs = 1200
 # Collect all countries that have at least *cutoff_num_seqs* in at least one cluster
 countries_to_plot = []
 for clus in clus_data_all:
@@ -764,7 +767,10 @@ if division:
 #### Plotting
 
 # Pass helper function non_zero_counts over all cluster and all countries once
+print("\nPass non_zero_counts() helper function over the data...\n")
+ndone = 0
 for clus in clus_data_all:
+    print(f"Plotting & writing out cluster {clus}: number {ndone} of {len(clus_to_run)}")
     total_data = pd.DataFrame(total_counts_countries)
     cluster_data = pd.DataFrame(clus_data_all[clus]["cluster_counts"]).sort_index() # TODO: Countries sort, clusters not. Hope it's okay to sort for both
     clus_data_all[clus]["non_zero_counts"] = {}
@@ -789,6 +795,7 @@ for clus in clus_data_all:
         )
 
         clus_data_all[clus]["non_zero_counts"][country] = (week_as_date, cluster_count, total_count)
+    ndone += 1
 
 if division:
     for country in selected_country:
@@ -819,10 +826,8 @@ if division:
 
 ### CLUSTERS ###
 
-ndone = 1
+print("\nWrite out clusters...\n")
 for clus in clus_to_run:
-
-    print(f"Plotting & writing out cluster {clus}: number {ndone} of {len(clus_to_run)}")
 
     clus_build_name = clus_data_all[clus]["build_name"]
 
@@ -839,7 +844,6 @@ for clus in clus_to_run:
     if print_files:
         with open(tables_path + f"{clus_build_name}_data.json", "w") as fh:
             json.dump(json_output[clus_build_name], fh)
-    ndone += 1
 
 
 ## Write out plotting information - only if all clusters have run
@@ -851,6 +855,7 @@ if print_files and "all" in clus_answer:
 
 ### COUNTRIES ###
 
+print("\nWrite out countries...\n")
 # Return a list of proposed countries to plot as well as a list of clusters to plot
 def get_ordered_clusters_to_plot(division_local=False, selected_country_local=None):
     # fix cluster order in a list so it's reliable
@@ -947,7 +952,7 @@ def plot_country_data(
 
             week_as_dates[country] = week_as_date
 
-            country_data[clusters[clus]["display_name"]] = list(cluster_count)
+            country_data[clusters[clus]["display_name"]] = list([int(x) for x in cluster_count])
 
             if i == 0:
                 first_clus_count = [0] * len(total_count)
