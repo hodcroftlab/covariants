@@ -1,87 +1,87 @@
 {
   "S": {
-    "total": 8759,
+    "total": 9520,
     "counts": [
       {
         "mut": "S:V3G",
-        "count": 4882
+        "count": 5239
       },
       {
         "mut": "S:N658S",
-        "count": 2227
+        "count": 2463
       },
       {
         "mut": "S:I670V",
-        "count": 327
+        "count": 348
       },
       {
         "mut": "S:R346T",
-        "count": 145
+        "count": 152
       },
       {
         "mut": "S:S640F",
-        "count": 122
+        "count": 134
       },
       {
         "mut": "S:A701V",
-        "count": 78
+        "count": 99
       },
       {
         "mut": "S:L5F",
-        "count": 62
+        "count": 67
       },
       {
         "mut": "S:D936N",
-        "count": 50
+        "count": 55
       },
       {
         "mut": "S:Q52R",
-        "count": 48
+        "count": 49
       }
     ]
   },
   "others": {
-    "total": 8759,
+    "total": 9520,
     "counts": [
       {
         "mut": "ORF3a:L106F",
-        "count": 477
+        "count": 534
       },
       {
         "mut": "ORF3a:I37T",
-        "count": 270
+        "count": 288
       },
       {
         "mut": "ORF1a:H1636Q",
-        "count": 209
-      },
-      {
-        "mut": "ORF1a:T2247I",
-        "count": 190
-      },
-      {
-        "mut": "N:E136D",
-        "count": 183
-      },
-      {
-        "mut": "ORF1a:Q556K",
-        "count": 181
-      },
-      {
-        "mut": "ORF7a:P34L",
-        "count": 176
+        "count": 232
       },
       {
         "mut": "ORF1a:A967V",
-        "count": 174
+        "count": 215
       },
       {
-        "mut": "M:D3N",
-        "count": 173
+        "mut": "ORF7a:P34L",
+        "count": 210
+      },
+      {
+        "mut": "ORF1a:P2046S",
+        "count": 204
+      },
+      {
+        "mut": "ORF1a:T2247I",
+        "count": 202
+      },
+      {
+        "mut": "N:E136D",
+        "count": 195
+      },
+      {
+        "mut": "ORF1a:Q556K",
+        "count": 193
       },
       {
         "mut": "ORF1b:Y1247C",
-        "count": 172
+        "count": 184
       }
     ]
   }
