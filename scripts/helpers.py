@@ -92,3 +92,11 @@ def bernoulli_estimator(x, n, dp=0.10):
         higherbound -= 0.01
 
     return naivemean, max(0, naivemean - lowerbound), max(0, higherbound - naivemean)
+
+
+# Transform (year, month, day) datetime to (year, week) tuple in a two-week interval, starting at this reference Monday
+ref_monday = datetime.datetime.strptime("2020-04-27", '%Y-%m-%d').toordinal()
+def to2week_ordinal(x):
+    n = x.toordinal()
+    monday = datetime.date.fromordinal(n - ((n - ref_monday) % 14))
+    return (monday.isocalendar()[0], monday.isocalendar()[1])

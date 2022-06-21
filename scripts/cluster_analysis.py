@@ -733,7 +733,7 @@ for clus in clus_data_all:
 # TODO: Special case for Danish cluster?
 # TODO: also special for "UK countries"?
 
-print("\nCollect countries above cutoff_num_seqs...\n")
+print("\nCollect countries above cutoff_num_seqs...")
 cutoff_num_seqs = 1200
 # Collect all countries that have at least *cutoff_num_seqs* in at least one cluster
 countries_to_plot = []
@@ -770,7 +770,7 @@ if division:
 print("\nPass non_zero_counts() helper function over the data...\n")
 ndone = 0
 for clus in clus_data_all:
-    print(f"Plotting & writing out cluster {clus}: number {ndone} of {len(clus_to_run)}")
+    print(f"Process cluster {clus}: number {ndone + 1} of {len(clus_to_run)}")
     total_data = pd.DataFrame(total_counts_countries)
     cluster_data = pd.DataFrame(clus_data_all[clus]["cluster_counts"]).sort_index() # TODO: Countries sort, clusters not. Hope it's okay to sort for both
     clus_data_all[clus]["non_zero_counts"] = {}
@@ -952,7 +952,7 @@ def plot_country_data(
 
             week_as_dates[country] = week_as_date
 
-            country_data[clusters[clus]["display_name"]] = list([int(x) for x in cluster_count])
+            country_data[clusters[clus]["display_name"]] = list([float(x) for x in cluster_count])
 
             if i == 0:
                 first_clus_count = [0] * len(total_count)
