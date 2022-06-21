@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+export NICE="nice -14 ionice -c2 -n3"
+
+DOCKER_REPO="hodcroftlab/covariants"
+DOCKER_IMAGE_NAME_SAFE="${DOCKER_REPO//\//-}"
+DOCKER_CONTAINER_NAME="${DOCKER_IMAGE_NAME_SAFE}-$(date +%s)"
+
+USER="user"
+GROUP="group"
+
+DEFAULT_COMMAND="cd web && yarn install && yarn dev"
+
+${NICE} docker build -q \
+  --file="docker/docker-dev.dockerfile" \
+  --tag="${DOCKER_REPO}" \
+  --network=host \
+  --build-arg="UID=$(id -u)" \
+  --build-arg="GID=$(id -g)" \
+  --build-arg="USER=${USER}" \
+  --build-arg="GROUP=${GROUP}" \
+  "$(pwd)"
+
+${NICE} docker run -it --rm \
+  --network=host \
+  --init \
+  --name="${DOCKER_CONTAINER_NAME}" \
+  --hostname="${DOCKER_IMAGE_NAME_SAFE}" \
+  --user="$(id -u):$(id -g)" \
+  --volume="$(pwd):/workdir" \
+  --workdir="/workdir" \
+  --env="UID=$(id -u)" \
+  --env="GID=$(id -g)" \
+  --env="USER=${USER}" \
+  --env="GROUP=${GROUP}" \
+  --env="PS1=\${USER}@\${HOST}" \
+  "${DOCKER_REPO}" \
+  bash -c "set -euo pipefail; ${*:-${DEFAULT_COMMAND}}"
+
+

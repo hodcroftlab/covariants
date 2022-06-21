@@ -11,3 +11,6 @@ In order to modify the data in the web application, one should modify and run th
 See also:
 
  - the data I/O and transformation functions of the web application are aggregated in `web/src/io`
+
+
+Note that from 3 June 2022, one must have an access key to aggregate the CoV-Spectrum data from the URL we access. There is an example file in `covariants/.env.example` - please add your own access key, and install `dotenv`, before attempting to use the mutation-counts code.

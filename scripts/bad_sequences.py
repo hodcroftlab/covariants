@@ -2597,6 +2597,75 @@ bad_seqs = {
     "USA/OH-ODH-SC2041169/2021" : "2021-01-12",  #21K.Omicron
     "USA/AZ-TG1332009/2021" : "2021-10-11",  #21L.Omicron
     "USA/CT-DPH-1079649001/2021" : "2021-04-22",  #21L.Omicron
+    "Brazil/RJ-FIOCRUZ-PVM100348/2021" : "2021-07-14", #21K omicron EPI_ISL_12883411
+    "Colombia/DC-I507/2021" : "2021-01-07", #21K omicron EPI_ISL_12876783
+    "Colombia/DC-I508/2020" : "2020-08-07", #21K omicron EPI_ISL_12876784
+    "Colombia/TOL-I436/2020" : "2020-10-27", #21K omicron EPI_ISL_12876789
+    "Colombia/TOL-I451/2020" : "2020-12-22", #21K omicron EPI_ISL_12876753
+    "Colombia/TOL-I453/2020" : "2020-11-18", #21K omicron EPI_ISL_12876759
+    "Colombia/TOL-I458/2020" : "2020-08-11", #21K omicron EPI_ISL_12876781
+    "Colombia/TOL-I470/2020" : "2020-11-13", #21K omicron EPI_ISL_12876774
+    "USA/CO-CDPHE-2103204851/2021" : "2021-04-16", #21K omicron EPI_ISL_12913570
+    #3 June
+    "Eswatini/N22721/2021": "2021-08-02", #omicron 21K - may actually be ok!  EPI_ISL_12954196"
+    #4 June
+    "Israel/ICH-741226590/2020" : "2020-09-24", #omicron  EPI_ISL_13073645
+    "Israel/ICH-741226592/2020" : "2020-09-23", #omicron  EPI_ISL_13073927
+    "Israel/ICH-741237350/2020" : "2020-09-24", #omicron  EPI_ISL_13077034
+    "Israel/ICH-741237353/2020" : "2020-10-11", #omicron  EPI_ISL_13077035
+    "USA/OR-TRACE-LINN-081221-1406/2021" : "2021-08-12", #omicron
+    # 9 june
+    "Colombia/ATL-UNINORTE-UN-368/2021" : "2021-06-14",  #omicron  EPI_ISL_13131652
+    "Colombia/ATL-UNINORTE-UN-384/2021" : "2021-06-28",  #omicron  EPI_ISL_13131664
+    "Panama/2421-GMI/2020" : "2020-06-20",  #omicron  EPI_ISL_13104952
+    "Panama/3837-GMI/2020" : "2020-07-27",  #omicron  EPI_ISL_13105039
+    "Panama/3915-GMI/2020" : "2020-07-31",  #omicron  EPI_ISL_13105045
+    "Panama/4054-GMI/2020" : "2020-08-13",  #omicron  EPI_ISL_13105050
+    "Panama/4059-GMI/2020" : "2020-08-13",  #omicron  EPI_ISL_13105051
+    "Panama/4140-GMI/2020" : "2020-08-15",  #omicron  EPI_ISL_13105061
+    "Panama/4145-GMI/2020" : "2020-08-15",  #omicron  EPI_ISL_13105062
+    "Panama/501080-GMI/2020" : "2020-09-27",  #omicron  EPI_ISL_13105124
+    "Israel/ICH-741237331/2020" : "2020-10-13", #delta417  EPI_ISL_13077038
+    #14 june
+    "Brazil/RJ-FIOCRUZ-202211567/2021" : "2021-06-08",  #omicron EPI_ISL_13228879
+    "USA/AZ-ASU79726/2021" : "2021-06-20",  #omicron EPI_ISL_13197585
+    "USA/AZ-ASU79730/2021" : "2021-03-30",  #omicron EPI_ISL_13197586
+    "USA/AZ-ASU79739/2021" : "2021-06-13",  #omicron EPI_ISL_13197588
+    "USA/AZ-ASU79746/2021" : "2021-03-25",  #omicron EPI_ISL_13197590
+    "USA/AZ-ASU79748/2021" : "2021-03-21",  #omicron EPI_ISL_13197591
+    "USA/AZ-ASU79750/2021" : "2021-03-23",  #omicron EPI_ISL_13197592
+    "USA/AZ-ASU79752/2021" : "2021-06-20",  #omicron EPI_ISL_13197593
+    "USA/AZ-ASU79756/2021" : "2021-05-27",  #omicron EPI_ISL_13197594
+    "USA/AZ-ASU79758/2021" : "2021-03-15",  #omicron EPI_ISL_13197595
+    "USA/AZ-ASU79768/2021" : "2021-05-28",  #omicron EPI_ISL_13197599
+    "USA/AZ-ASU79774/2021" : "2021-03-13",  #omicron EPI_ISL_13197601
+    "USA/AZ-ASU79780/2021" : "2021-03-22",  #omicron EPI_ISL_13197602
+    "USA/AZ-ASU79790/2021" : "2021-06-03",  #omicron EPI_ISL_13197605
+    "USA/AZ-ASU79794/2021" : "2021-03-19",  #omicron EPI_ISL_13197606
+    "USA/AZ-ASU79798/2021" : "2021-05-15",  #omicron EPI_ISL_13197607
+    "USA/AZ-ASU79800/2021" : "2021-06-16",  #omicron EPI_ISL_13197608
+    "USA/AZ-ASU79812/2021" : "2021-06-05",  #omicron EPI_ISL_13197611
+    "USA/AZ-ASU79814/2021" : "2021-05-19",  #omicron EPI_ISL_13197612
+    "Philippines/PH-PGC-103689/2021" : "2021-02-01", #omicron  EPI_ISL_13175169
+    "Philippines/PH-PGC-103696/2021" : "2021-01-02", #omicron  EPI_ISL_13175177
+    "Philippines/PH-PGC-103719/2021" : "2021-01-01", #omicron  EPI_ISL_13175178
+    "Philippines/PH-PGC-103720/2021" : "2021-01-01", #omicron  EPI_ISL_13175179
+    "Philippines/PH-PGC-104461/2021" : "2021-01-06", #omicron  EPI_ISL_13175175
+    "Philippines/PH-PGC-104474/2021" : "2021-01-06", #omicron  EPI_ISL_13175173
+    "Philippines/PH-PGC-104476/2021" : "2021-01-06", #omicron  EPI_ISL_13175176
+    "Philippines/PH-PGC-104477/2021" : "2021-01-06", #omicron  EPI_ISL_13175172
+    "Philippines/PH-PGC-104481/2021" : "2021-01-07", #omicron  EPI_ISL_13175171
+    "Philippines/PH-PGC-104482/2021" : "2021-01-06", #omicron  EPI_ISL_13175174
+    "Philippines/PH-PGC-105006/2021" : "2021-01-10", #omicron  EPI_ISL_13175170
+    "Philippines/PH-PGC-51070/2021" : "2021-05-19", #omicron  EPI_ISL_13175152
+    "Philippines/PH-PGC-51073/2021" : "2021-05-19", #omicron  EPI_ISL_13175151
+    "Philippines/PH-PGC-51082/2021" : "2021-05-21", #omicron  EPI_ISL_13175149
+    "Philippines/PH-PGC-51330/2021" : "2021-05-26", #omicron  EPI_ISL_13175139
+    "Philippines/PH-PGC-51500/2021" : "2021-05-28", #omicron  EPI_ISL_13175133
+    "Philippines/PH-PGC-51507/2021" : "2021-05-31", #omicron  EPI_ISL_13175130
+    #18 june
+    "Kyrgyzstan/NRL-52392/2020": "2020-05-06", #beta EPI_ISL_13283875
+    "Israel/SMC-7072941/2020": "2020-10-04", #omicron EPI_ISL_13316741
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
