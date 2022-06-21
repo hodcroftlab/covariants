@@ -84,12 +84,14 @@ def print_bad_sequences():
             print(f"\"{row[1]['strain']}\": \"{row[1]['date']}\", # {clus}, {cluster_first_dates[clus]['first_date']}")
     print("\n")
 
+'''
 # Transform (year, month, day) datetime to (year, week) tuple in a two-week interval, starting at this reference Monday
 ref_monday = datetime.datetime.strptime("2020-04-27", '%Y-%m-%d').toordinal()
 def to2week_ordinal(x):
     n = x.toordinal()
     monday = datetime.date.fromordinal(n - ((n - ref_monday) % 14))
     return (monday.isocalendar()[0], monday.isocalendar()[1]) #TODO: Currently returned as tuple of year & week -> Can we switch to returning datetime? Needs adjustment at several places in the script
+'''
 
 def print_clus_alerts(key, clus):
     print(clus)
