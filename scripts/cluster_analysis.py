@@ -328,6 +328,7 @@ for clus in clus_to_run:
     )
 
 total_counts_countries = {country: {} for country in all_countries}
+total_counts_divisions = {country: {} for country in division_data_all}
 
 # store acknoweledgements
 acknowledgement_by_variant = {}
@@ -414,11 +415,24 @@ with open(input_meta) as f:
         # date_2weeks = (monday.isocalendar()[0], monday.isocalendar()[1])
 
         country = l[indices["country"]]
+        # Replace Swiss divisions with swiss-region, but store original division
+        div = l[indices['division']]
+        if div in swiss_regions:
+            div = swiss_regions[div]
 
         if date_2weeks >= min_data_week:
             if date_2weeks not in total_counts_countries[country]:
                 total_counts_countries[country][date_2weeks] = 0
             total_counts_countries[country][date_2weeks] += 1
+
+            if division:
+                if country in selected_country:
+                    if div not in total_counts_divisions[country]:
+                        total_counts_divisions[country][div] = {}
+                    if date_2weeks not in total_counts_divisions[country][div]:
+                        total_counts_divisions[country][div][date_2weeks] = 0
+                    total_counts_divisions[country][div][date_2weeks] += 1
+
 
         #t_c = time.time()
 
@@ -555,6 +569,19 @@ with open(input_meta) as f:
             clus_data_all[clus]["summary"][country]["first_seq"] = min(clus_data_all[clus]["summary"][country]["first_seq"], date_formatted)
             clus_data_all[clus]["summary"][country]["last_seq"] = max(clus_data_all[clus]["summary"][country]["last_seq"], date_formatted)
 
+            # For selected countries (e.g. USA, Switzerland), also collect data by division
+            if division:
+                if country in selected_country:
+
+                    if div not in division_data_all[country][clus]["summary"]:
+                        division_data_all[country][clus]["summary"][div] = {'first_seq': today, 'num_seqs': 0,
+                                                                            'last_seq': earliest_date}
+                    division_data_all[country][clus]["summary"][div]["num_seqs"] += 1
+                    division_data_all[country][clus]["summary"][div]["first_seq"] = min(
+                        division_data_all[country][clus]["summary"][div]["first_seq"], date_formatted)
+                    division_data_all[country][clus]["summary"][div]["last_seq"] = max(
+                        division_data_all[country][clus]["summary"][div]["last_seq"], date_formatted)
+
             #t_5 = time.time()
 
             #t_6 = time.time()
@@ -577,20 +604,8 @@ with open(input_meta) as f:
 
             #t_8 = time.time()
 
-            # For selected countries (e.g. USA, Switzerland), also collect data by division
             if division:
                 if country in selected_country:
-
-                    # Replace Swiss divisions with swiss-region, but store original division
-                    div = l[indices['division']]
-                    if div in swiss_regions:
-                        div = swiss_regions[div]
-
-                    if div not in division_data_all[country][clus]["summary"]:
-                        division_data_all[country][clus]["summary"][div] = {'first_seq': today, 'num_seqs': 0, 'last_seq': earliest_date}
-                    division_data_all[country][clus]["summary"][div]["num_seqs"] += 1
-                    division_data_all[country][clus]["summary"][div]["first_seq"] = min(division_data_all[country][clus]["summary"][div]["first_seq"], date_formatted)
-                    division_data_all[country][clus]["summary"][div]["last_seq"] = max(division_data_all[country][clus]["summary"][div]["last_seq"], date_formatted)
 
                     if div not in division_data_all[country][clus]["cluster_counts"]:
                         division_data_all[country][clus]["cluster_counts"][div] = {}
@@ -717,20 +732,6 @@ if print_acks and "all" in clus_answer:
         #for ch, fn in zip(chunks, ack_file_names):
             #with open(ack_out_folder + fn + ".json", "w") as fh:
                 #json.dump(ch, fh, indent=2, sort_keys=True)
-'''
-# TODO: Make sure my totals are not off due to the mutations!
-# Create total_counts: Total counts per country and date, not sorted by cluster
-total_counts_countries = {}
-for clus in clus_data_all:
-    #clus_data_all[clus]["total_counts"] = {}
-    for country in clus_data_all[clus]["cluster_counts"]:
-        if country not in total_counts_countries:
-            total_counts_countries[country] = {}
-        for date in clus_data_all[clus]["cluster_counts"][country]:
-            if date not in total_counts_countries[country]:
-                total_counts_countries[country][date] = 0
-            total_counts_countries[country][date] += clus_data_all[clus]["cluster_counts"][country][date]
-'''
 
 # TODO: Special case for Danish cluster?
 # TODO: also special for "UK countries"?
@@ -751,18 +752,6 @@ print(
     f"There are {len(countries_to_plot)}",
     "\n",
 )
-
-if division:
-    total_counts_divisions = {country: {} for country in division_data_all}
-    for country in division_data_all:
-        for clus in division_data_all[country]:
-            for div in division_data_all[country][clus]["cluster_counts"]:
-                total_counts_divisions[country][div] = {}
-                for date in division_data_all[country][clus]["cluster_counts"][div]:
-                    if date not in total_counts_divisions[country][div]:
-                        total_counts_divisions[country][div][date] = 0
-                    total_counts_divisions[country][div][date] += division_data_all[country][clus]["cluster_counts"][div][date]
-
 
 ##################################
 ##################################
@@ -964,7 +953,7 @@ def plot_country_data(
             i += 1
 
         country_data["week"] = [datetime.datetime.strftime(x, "%Y-%m-%d") for x in week_as_date]
-        country_data["total_sequences"] = [int(x) for x in total_count] # TODO: I don't get this, why is this outside of the for loop?
+        country_data["total_sequences"] = [int(x) for x in total_count]
         if len(total_count) >= 2:
             json_output["countries"][country] = country_data
 
