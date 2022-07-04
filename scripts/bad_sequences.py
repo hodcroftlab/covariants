@@ -2666,6 +2666,15 @@ bad_seqs = {
     #18 june
     "Kyrgyzstan/NRL-52392/2020": "2020-05-06", #beta EPI_ISL_13283875
     "Israel/SMC-7072941/2020": "2020-10-04", #omicron EPI_ISL_13316741
+    #1 july
+    "USA/AZ-ASU83363/2020" : "2020-07-08",  #delta EPI_ISL_13497598
+    "USA/AZ-ASU83351/2020" : "2020-07-04",  #delta EPI_ISL_13497590
+    "USA/AZ-ASU83361/2020" : "2020-07-06",  #delta EPI_ISL_13497591
+    "USA/AZ-ASU83362/2020" : "2020-07-22",  #delta EPI_ISL_13497596
+    "USA/AZ-ASU83355/2020" : "2020-07-25",  #omicron EPI_ISL_13497629
+    "USA/AZ-ASU83357/2020" : "2020-06-24",  #omicron EPI_ISL_13497630
+    "USA/AZ-ASU83358/2020" : "2020-06-29",  #omicron EPI_ISL_13497644
+    "USA/AZ-ASU83367/2020" : "2020-07-23",  #omicron EPI_ISL_13497645
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
