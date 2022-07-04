@@ -466,10 +466,10 @@ print("\nLooking for the wanted sequences in the file...\n")
 
 #muts["snp_pos"] = muts.nucleotide.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y and y[-1] in 'ACGT'])
 #muts["gap_pos"] = muts.nucleotide.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y and y[-1] in '-'])
-muts_snp_pos = meta.substitutions.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y])
+muts_snp_pos = meta.substitutions.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y and len(y)>2])
 
 # expand metadata deletions formatting
-muts_del_pos = meta.deletions.fillna('').apply(lambda x: [z for y in x.split(',') if y for z in range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)])
+muts_del_pos = meta.deletions.fillna('').apply(lambda x: [z for y in x.split(',') if y and len(y)>2 for z in range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)])
 
 
 # If an official Nextstrain clade, then use Nextclade designation to find them.
