@@ -68,7 +68,7 @@ export function Variant({ variants, shared }: VariantProps) {
   return (
     <Tr>
       {shared.presence.map((mutation, i) => (
-        <Td key={`${variants[i]} ${mutation ?? ''}`}>{mutation && <AminoacidMutationBadge mutation={mutation} />}</Td>
+        <Td key={`${variants[i]} ${mutation ?? ''}`}>{mutation && <AminoacidMutationBadge mutation={mutation} isTLA={false}/>}</Td>
       ))}
     </Tr>
   )
@@ -122,7 +122,7 @@ export function SharedMutations() {
             <Tr key={index}>
               {mutations.map((mutation, i) => (
                 <Td key={`${variants[i]} ${mutation ?? ''}`}>
-                  {mutation && <AminoacidMutationBadge mutation={mutation} />}
+                  {mutation && <AminoacidMutationBadge mutation={mutation}  isTLA={false}/>}
                 </Td>
               ))}
             </Tr>

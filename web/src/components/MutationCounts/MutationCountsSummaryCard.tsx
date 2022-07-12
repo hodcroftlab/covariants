@@ -48,7 +48,7 @@ export function MutationCountsSummaryRow({ total, counts }: MutationCountsSummar
   return (
     <tr>
       <td>
-        <AminoacidMutationBadge mutation={counts.mut} />
+        <AminoacidMutationBadge mutation={counts.mut} isTLA={false}/>
       </td>
       <td className="text-right">{counts.count}</td>
       <td className="text-right">{`${freq}%`}</td>

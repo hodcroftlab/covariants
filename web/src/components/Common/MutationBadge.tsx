@@ -13,7 +13,7 @@ import { LinkSmart } from 'src/components/Link/LinkSmart'
 import { parseAminoacidMutation } from 'src/components/Common/parseAminoacidMutation'
 import { parseNucleotideMutation } from 'src/components/Common/parseNucleotideMutation'
 import { formatMutation } from 'src/components/Common/formatMutation'
-import { AMINOACID_NAMES, GENE_NAMES, GREEK_ALPHABET, NUCELOTIDE_NAMES } from 'src/names'
+import { AMINOACID_NAMES, AMINOACID_ONE, AMINOACID_TLA, GENE_NAMES, GREEK_ALPHABET, NUCELOTIDE_NAMES } from 'src/names'
 import { colorHash } from 'src/helpers/colorHash'
 import { rainbow } from 'src/helpers/colorRainbow'
 
@@ -196,13 +196,18 @@ export function NucleotideMutationBadge({ mutation }: NucleotideMutationBadgePro
 
 export interface AminoacidMutationBadgeProps {
   mutation: Mutation | string
+  isTLA: boolean
 }
 
-export function AminoacidMutationBadge({ mutation }: AminoacidMutationBadgeProps) {
-  const mutationObj = aminoacidMutationFromStringMaybe(mutation)
+// Added isTLA boolean variable to the function
+export function AminoacidMutationBadge({ mutation, isTLA }: AminoacidMutationBadgeProps) {
+  let mutationObj = aminoacidMutationFromStringMaybe(mutation)
   if (!mutationObj) {
     return <span>{`Invalid mutation: '${JSON.stringify(mutation)}'`}</span>
   }
+
+  // Parse the mutation object before the required logic
+  mutationObj = mutationObjToOLA(mutationObj)
 
   const { gene, left, pos, right } = mutationObj
   const wildTypeAA = get(AMINOACID_NAMES, left ?? '', '')
@@ -211,7 +216,39 @@ export function AminoacidMutationBadge({ mutation }: AminoacidMutationBadgeProps
   const posStr = pos ?? ''
   const tooltip = `Mutation of amino acid ${posStr} in ${geneName} from ${wildTypeAA} to ${variantAA}`
 
+  // Check if the state variable is on and call the function to parse to TLA after the required logics
+  if (isTLA) {
+    mutationObj = mutationObjToTLA(mutationObj)
+  }
+
   return <MutationBadge mutation={mutationObj} colors={AMINOACID_COLORS} tooltip={tooltip} />
+}
+
+// Functions to parse from OLA to TLA and from TLA to OLA
+function mutationObjToOLA(mutationObj: Mutation) {
+  const { left, right } = mutationObj
+
+  mutationObj.left = parseToOLA(left ?? '')
+  mutationObj.right = parseToOLA(right ?? '')
+
+  return mutationObj
+}
+
+function mutationObjToTLA(mutationObj: Mutation) {
+  const { left, right } = mutationObj
+
+  mutationObj.left = parseToTLA(left ?? '')
+  mutationObj.right = parseToTLA(right ?? '')
+
+  return mutationObj
+}
+
+function parseToTLA(ola: string): string {
+  return get(AMINOACID_TLA, ola, ola)
+}
+
+function parseToOLA(tla: string): string {
+  return get(AMINOACID_ONE, tla, tla)
 }
 
 export interface ProteinBadgeProps {
@@ -279,7 +316,7 @@ export function VariantLinkBadge({ name, href, prefix }: VariantLinkBadgeProps) 
         {
           // prettier-ignore
           `VariantLinkBadge: Variant not recognized: ${JSON.stringify(name)}.` +
-        `Known variants: ${clusterNames.join(', ')}`
+          `Known variants: ${clusterNames.join(', ')}`
         }
       </span>
     )
@@ -375,7 +412,7 @@ export function NucMut({ mut }: { mut: string }) {
 
 /** Shorter convenience alias for AminoacidMutationBadge */
 export function AaMut({ mut }: { mut: string }) {
-  return <AminoacidMutationBadge mutation={mut} />
+  return <AminoacidMutationBadge mutation={mut} isTLA={false} />
 }
 
 /** Shorter convenience alias for VariantLinkBadge */

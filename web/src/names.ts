@@ -25,6 +25,55 @@ export const AMINOACID_NAMES: Record<string, string> = {
   '*': 'Stop codon',
   '-': 'deleted',
 }
+
+// Added TLA to One Letter Abbreviation
+export const AMINOACID_ONE: Record<string, string> = {
+  'Ala' : 'A',
+  'Val' : 'V',
+  'Leu' : 'L',
+  'Ile' : 'I',
+  'Cys' : 'C',
+  'Asp' : 'D',
+  'Glu' : 'E',
+  'Phe' : 'F',
+  'Gly' : 'G',
+  'His' : 'H',
+  'Lys' : 'K',
+  'Met' : 'M',
+  'Asn' : 'N',
+  'Pro' : 'P',
+  'Gln' : 'Q',
+  'Arg' : 'R',
+  'Ser' : 'S',
+  'Thr' : 'T',
+  'Trp' : 'W',
+  'Tyr' : 'Y',
+}
+
+// Added OLA to Three letter abbreviation
+export const AMINOACID_TLA: Record<string, string> = {
+  'A': 'Ala',
+  'V': 'Val',
+  'L': 'Leu',
+  'I': 'Ile',
+  'C': 'Cys',
+  'D': 'Asp',
+  'E': 'Glu',
+  'F': 'Phe',
+  'G': 'Gly',
+  'H': 'His',
+  'K': 'Lys',
+  'M': 'Met',
+  'N': 'Asn',
+  'P': 'Pro',
+  'Q': 'Gln',
+  'R': 'Arg',
+  'S': 'Ser',
+  'T': 'Thr',
+  'W': 'Trp',
+  'Y': 'Tyr',
+}
+
 export const NUCELOTIDE_NAMES: Record<string, string> = {
   'A': 'Adenine',
   'C': 'Cytosine',
