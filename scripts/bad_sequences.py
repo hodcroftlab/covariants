@@ -2929,7 +2929,11 @@ bad_seqs = {
     "USA/AZ-TG1369544/2020" : "2020-10-13", #omicron  EPI_ISL_13530718
     "USA/MN-Mayo-1305/2020" : "2020-05-07", #iota  EPI_ISL_13596956
     "USA/MN-Mayo-1503/2020" : "2020-05-11", #epsilon EPI_ISL_13599156
-
+    # 11 jul
+    "U.S.VirginIslands/VI-Yale-10210/2020" : "2020-08-21", #delta  EPI_ISL_4577392
+    "U.S.VirginIslands/VI-Yale-10211/2020" : "2020-08-21", #delta  EPI_ISL_4577393
+    "USA/AZ-TG1379646/2020" : "2020-10-12",  #delta EPI_ISL_13689575
+    "Brazil/AM-IEC-182322/2021" : "2021-01-18", #omicron EPI_ISL_13726319
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
