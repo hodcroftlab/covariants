@@ -2934,6 +2934,24 @@ bad_seqs = {
     "U.S.VirginIslands/VI-Yale-10211/2020" : "2020-08-21", #delta  EPI_ISL_4577393
     "USA/AZ-TG1379646/2020" : "2020-10-12",  #delta EPI_ISL_13689575
     "Brazil/AM-IEC-182322/2021" : "2021-01-18", #omicron EPI_ISL_13726319
+    "env/Austria/CeMM31016/2021" : "2021-06-14", #omicron 21L
+    "Eswatini/N22721/2021"   : "2021-08-02",  #omicron 21K
+    "USA/NJ-PHEL-V22024328/2021" : "2021-05-20",  #omicron 22C
+    "Brazil/AM-IEC-182317/2021"  : "2021-04-29",  #omicron 21K
+    "USA/NV-NSPHL-22-00059178/2021" : "2021-10-20", #omicron 22B
+    "USA/UT-CDC-2-6137379/2021"  : "2021-12-14",  #omicron 22B
+    "USA/UT-CDC-2-6092846/2021"  : "2021-12-14",  #omicron 22B
+    #14 jul
+    "Cyprus/CING_02_2401_Ma/2021" : "2021-01-24", # omicron EPI_ISL_13773707
+    "Reunion/CHU722060096601/2021" : "2021-06-30", # omicron EPI_ISL_13767727
+    "Reunion/CHU722060097101/2021" : "2021-06-30", # omicron EPI_ISL_13767723
+    "Reunion/CHU722060101401/2021" : "2021-06-30", # omicron EPI_ISL_13767724
+    "Reunion/CHU722060101501/2021" : "2021-06-30", # omicron EPI_ISL_13767725
+    "Reunion/CHU722060105201/2021" : "2021-06-30", # omicron EPI_ISL_13767722
+    "Reunion/CHU722060105901/2021" : "2021-06-30", # omicron EPI_ISL_13767728
+    "Reunion/CHU722060322601/2021" : "2021-06-27", # omicron EPI_ISL_13767731
+    "Reunion/CHU722060322801/2021" : "2021-06-27", # omicron EPI_ISL_13767730
+    "Reunion/CHU722060322901/2021" : "2021-06-27", # omicron EPI_ISL_13767729
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
