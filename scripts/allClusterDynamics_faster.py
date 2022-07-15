@@ -313,7 +313,7 @@ t0 = time.time()
 #}
 input_meta = "data/metadata.tsv"
 dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str, 'age': str, 'QC_frame_shifts': str, 'frame_shifts': str, 'QC_overall_status': str}
-cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl', 'QC_overall_status']
+cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl', 'QC_overall_status', 'Nextclade_pango']
 meta = pd.read_csv(input_meta, sep="\t", dtype=dtype, index_col=False, usecols=cols) #dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str}, index_col=False)
 meta = meta.fillna("")
 
@@ -484,6 +484,7 @@ for clus in [x for x in clus_to_run if x != "mink"]:
     display_name = clus_data['display_name']
     exclude_snps = clus_data["exclude_snps"]
     wanted_seqs = clus_data["wanted_seqs"]
+    pango_lineages = clus_data["pango_lineages"]
 
     # Use Nextclade
     if "other_nextstrain_names" in clus_data:
@@ -494,6 +495,11 @@ for clus in [x for x in clus_to_run if x != "mink"]:
 
     elif display_name in official_clades:
         next_assign = meta[meta["Nextstrain_clade"].apply(lambda x: x == display_name)]
+        wanted_seqs.extend(list(next_assign.strain))
+
+    elif pango_lineages in official_clades:
+        lineage_list = pango_lineages.apply(lambda x: x["name"]).tolist()
+        next_assign = meta[meta["Nextclade_pango"].apply(lambda x: x in lineage_list)]
         wanted_seqs.extend(list(next_assign.strain))
 
     else:
