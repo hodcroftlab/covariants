@@ -1026,7 +1026,33 @@ clusters = {
        }
     },
 
-    ##create a comprehensive Omicron build
+    "22D": {  #BA.2.75
+       "snps": [3927, 26275, 3796], #TGT = C3927T, A26275G, C3796T 
+       "snps_with_base": ["3927T", "26275G", "3796T"],
+       "cluster_data": [],
+       "nextstrain_build": True,
+       "type": "variant",
+       "graphing": False,
+       "important": False,
+       "country_info": [],
+       "col": "#0400e0",
+       "display_name": "22D (Omicron)",
+       "alt_display_name": ["BA.2.75"],
+       "build_name": "22D.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": ["22D"],
+       "nextstrain_name": "22D",
+       "pango_lineages": [
+           {"name": "BA.2.75", "url": "https://cov-lineages.org/lineage.html?lineage=BA.2.75"}
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22D",
+       "mutations": {
+            "nonsynonymous": [
+            ],
+            "synonymous": [
+            ],
+       }
+    },
 
 
     # variant  -- part of 'Indian' in media - B.1.617.1
