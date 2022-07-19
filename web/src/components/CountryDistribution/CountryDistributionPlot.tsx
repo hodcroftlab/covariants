@@ -39,7 +39,7 @@ const chartConfig: EChartsOption = {
   animation: false,
   tooltip: {
     trigger: 'axis',
-    axisPointer: { type: 'cross' },
+    axisPointer: { type: 'line' },
     formatter: (data) => renderCountryDistributionPlotTooltip(data as unknown as PlotTooltipDatum[]),
   },
   grid: {
