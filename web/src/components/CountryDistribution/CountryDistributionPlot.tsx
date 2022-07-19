@@ -24,6 +24,7 @@ import React, { useCallback, useMemo } from 'react'
 import { useResizeDetector } from 'react-resize-detector'
 import { ChartContainerInner, ChartContainerOuter } from 'src/components/Common/PlotLayout'
 import { getClusterColor } from 'src/io/getClusters'
+import { theme } from 'src/theme'
 
 echarts.use([
   AxisPointerComponent,
@@ -49,11 +50,57 @@ const chartConfig: EChartsOption = {
     bottom: '10px',
     containLabel: true,
   },
-  xAxis: { type: 'time' },
+  xAxis: {
+    axisLine: {
+      show: false,
+    },
+    axisTick: {
+      show: true,
+      lineStyle: {
+        width: 1,
+        color: theme.gray700,
+        opacity: 0.5,
+        type: 'solid',
+      },
+    },
+    splitLine: {
+      show: true,
+      lineStyle: {
+        width: 1,
+        color: theme.gray700,
+        opacity: 0.2,
+        type: 'solid',
+      },
+    },
+    type: 'time',
+    zlevel: 10000,
+  },
   yAxis: {
+    axisLine: {
+      show: false,
+    },
+    axisTick: {
+      show: true,
+      lineStyle: {
+        width: 1,
+        color: theme.gray700,
+        opacity: 0.5,
+        type: 'solid',
+      },
+    },
+    splitLine: {
+      show: true,
+      lineStyle: {
+        width: 1,
+        color: theme.gray700,
+        opacity: 0.2,
+        type: 'solid',
+      },
+    },
     type: 'value',
     min: 0,
     max: 1,
+    zlevel: 10000,
   },
   dataZoom: [
     {
@@ -70,6 +117,7 @@ const chartConfig: EChartsOption = {
 const seriesConfig: LineSeriesOption = {
   type: 'line',
   stack: 'y',
+  zlevel: 1,
   areaStyle: { opacity: 1 },
   smooth: true,
   lineStyle: { width: 0 },
