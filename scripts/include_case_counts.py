@@ -31,8 +31,9 @@ OUTPUT_CSV_FILENAME = "perCountryDataCaseCounts.json"
 OUTPUT_CSV_PATH = os.path.join(THIS_DIR, "..", "web", "data", OUTPUT_CSV_FILENAME)
 
 # the case_counts_analysis.py file can be used to explore different thresholds!
-THRESHOLD = 0.03
-PERIOD_PASS = 0.5
+# But need to generate a very broad file first! As that script uses the output of `perCountryDataCaseCounts.json`
+THRESHOLD = 0.02 #0.03 is 3%
+PERIOD_PASS = 0.4 #0.5 is 50%
 
 columns = ["continent", "location", "date", "new_cases", "new_cases_per_million"]
 owid = pd.read_csv(OWID_CSV_INPUT_PATH, usecols=columns)
