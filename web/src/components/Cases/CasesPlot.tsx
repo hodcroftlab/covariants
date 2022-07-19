@@ -1,18 +1,8 @@
-/* eslint-disable camelcase */
-import React, { CSSProperties, useCallback, useMemo, useRef } from 'react'
+import React, { useCallback, useMemo } from 'react'
 
-import dynamic from 'next/dynamic'
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Label } from 'recharts'
 import { DateTime } from 'luxon'
-import ReactResizeDetector from 'react-resize-detector'
 
 import type { PerCountryCasesDistributionDatum } from 'src/io/getPerCountryCasesData'
-import { ticks, timeDomain } from 'src/io/getParams'
-import { formatDateHumanely } from 'src/helpers/format'
-import { adjustTicks } from 'src/helpers/adjustTicks'
-import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
-import { useTheme } from 'styled-components'
-import { CasesPlotTooltip } from './CasesPlotTooltip'
 
 /* eslint-disable camelcase */
 import type { EChartsOption, LineSeriesOption } from 'echarts'
@@ -83,7 +73,7 @@ const chartConfig: EChartsOption = {
       },
     },
     type: 'time',
-    zlevel: 10000,
+    zlevel: 10_000,
   },
   yAxis: {
     axisLine: {
@@ -109,7 +99,7 @@ const chartConfig: EChartsOption = {
     },
     type: 'value',
     min: 0,
-    zlevel: 10000,
+    zlevel: 10_000,
   },
   dataZoom: [
     {

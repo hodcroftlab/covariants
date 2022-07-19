@@ -73,7 +73,7 @@ const chartConfig: EChartsOption = {
       },
     },
     type: 'time',
-    zlevel: 10000,
+    zlevel: 10_000,
   },
   yAxis: {
     axisLine: {
@@ -100,7 +100,7 @@ const chartConfig: EChartsOption = {
     type: 'value',
     min: 0,
     max: 1,
-    zlevel: 10000,
+    zlevel: 10_000,
   },
   dataZoom: [
     {
