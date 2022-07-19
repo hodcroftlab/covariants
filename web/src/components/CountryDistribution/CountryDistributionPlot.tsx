@@ -139,9 +139,9 @@ function AreaPlot({ width, cluster_names: clusterNames, distribution }: AreaPlot
       clusterNames.map((clusterName) => {
         const data = distribution.map(({ week, cluster_counts, total_sequences }) => {
           const timestamp = DateTime.fromFormat(week, 'yyyy-MM-dd').toUTC().toMillis()
-          const countMaybe = get(cluster_counts, clusterName)
-          const frequency = countMaybe ? countMaybe / total_sequences : 0
-          return [timestamp, frequency]
+          const count = get(cluster_counts, clusterName) ?? 0
+          const frequency = count / total_sequences
+          return [timestamp, frequency, count]
         })
 
         return [
@@ -165,13 +165,14 @@ function AreaPlot({ width, cluster_names: clusterNames, distribution }: AreaPlot
       const timestamp = DateTime.fromFormat(week, 'yyyy-MM-dd').toUTC().toMillis()
       const total_cluster_sequences = Object.values(cluster_counts) // prettier-ignore
         .reduce<number>((result, count = 0) => result + (count ?? 0), 0)
-      const frequency: number = (total_sequences - total_cluster_sequences) / total_sequences
-      return [timestamp, frequency]
+      const count = total_sequences - total_cluster_sequences
+      const frequency: number = count / total_sequences
+      return [timestamp, frequency, count]
     })
 
     series.push({
       ...seriesConfig,
-      name: 'others',
+      name: CLUSTER_NAME_OTHERS,
       areaStyle: {
         ...seriesConfig.areaStyle,
         color: getClusterColor(CLUSTER_NAME_OTHERS),

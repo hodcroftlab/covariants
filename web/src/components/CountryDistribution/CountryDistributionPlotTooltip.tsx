@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { sortBy, reverse, isEmpty, isNil } from 'lodash'
+import { sortBy, reverse, isEmpty, isNil, sum } from 'lodash'
 import { getClusterColor } from 'src/io/getClusters'
 import styled, { ThemeProvider } from 'styled-components'
 
@@ -42,7 +42,7 @@ export const ClusterNameText = styled.span`
 
 export interface PlotTooltipDatum {
   seriesName: string
-  value: [number, number | undefined]
+  value: [number, number | undefined, number | undefined]
   axisValue: number
 }
 
@@ -56,23 +56,26 @@ export function CountryDistributionPlotTooltip({ data }: { data: PlotTooltipDatu
 
     let valuesRaw = data
       .map(({ seriesName, value }) => {
-        return { name: seriesName, value: value[1], color: getClusterColor(seriesName) }
+        return { name: seriesName, count: value[2], frequency: value[1], color: getClusterColor(seriesName) }
       })
-      .filter(({ value }) => notUndefinedOrNull(value))
-      .filter(({ value }) => value !== 0)
+      .filter(({ count }) => notUndefinedOrNull(count))
+      .filter(({ count }) => count !== 0)
+      .filter(({ frequency }) => notUndefinedOrNull(frequency))
+      .filter(({ frequency }) => frequency !== 0)
 
     valuesRaw = reverse(sortBy(valuesRaw, 'value'))
 
-    const values = valuesRaw.map((datum) => ({ ...datum, value: formatProportion(datum.value ?? 0) }))
+    const values = valuesRaw.map((datum) => ({ ...datum, frequency: formatProportion(datum.frequency ?? 0) }))
+    const total = sum(values.map(({ count }) => count))
 
-    return { week, values }
+    return { week, values, total }
   }, [data])
 
   if (isNil(dataPrepared)) {
     return null
   }
 
-  const { week, values } = dataPrepared
+  const { week, values, total } = dataPrepared
 
   return (
     <Tooltip>
@@ -82,17 +85,19 @@ export function CountryDistributionPlotTooltip({ data }: { data: PlotTooltipDatu
         <thead>
           <tr className="w-100">
             <th className="px-2 text-left">{'Variant'}</th>
+            <th className="px-2 text-right">{'Count'}</th>
             <th className="px-2 text-right">{'Freq'}</th>
           </tr>
         </thead>
         <TooltipTableBody>
-          {values.map(({ name, value, color }) => (
+          {values.map(({ name, count, frequency, color }) => (
             <tr key={name}>
               <td className="px-2 text-left">
                 <ColoredBox $color={color} $size={10} $aspect={1.66} />
                 <ClusterNameText>{name}</ClusterNameText>
               </td>
-              <td className="px-2 text-right">{value}</td>
+              <td className="px-2 text-right">{count}</td>
+              <td className="px-2 text-right">{frequency}</td>
             </tr>
           ))}
 
@@ -102,6 +107,7 @@ export function CountryDistributionPlotTooltip({ data }: { data: PlotTooltipDatu
                 <b>{'Total'}</b>
               </span>
             </td>
+            <td className="px-2 text-right">{total}</td>
             <td className="px-2 text-right">{'1.00'}</td>
           </tr>
         </TooltipTableBody>
