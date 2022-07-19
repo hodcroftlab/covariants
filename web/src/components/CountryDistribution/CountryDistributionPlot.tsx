@@ -42,10 +42,6 @@ const chartConfig: EChartsOption = {
     axisPointer: { type: 'cross' },
     formatter: (data) => renderCountryDistributionPlotTooltip(data as unknown as PlotTooltipDatum[]),
   },
-  toolbox: {
-    tooltip: { show: false },
-    feature: { saveAsImage: {} },
-  },
   grid: {
     top: '5px',
     left: '20px',
