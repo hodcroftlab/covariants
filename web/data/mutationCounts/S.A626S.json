@@ -3,11 +3,11 @@
     "total": 471,
     "counts": [
       {
-        "mut": "S:V1122L",
+        "mut": "S:D614G",
         "count": 471
       },
       {
-        "mut": "S:D614G",
+        "mut": "S:V1122L",
         "count": 471
       },
       {
@@ -23,11 +23,7 @@
         "count": 4
       },
       {
-<<<<<<< HEAD
-        "mut": "S:T1076I",
-=======
         "mut": "S:L5F",
->>>>>>> clusters_2week_intervals
         "count": 4
       },
       {

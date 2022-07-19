@@ -1,42 +1,22 @@
 {
   "S": {
-<<<<<<< HEAD
-    "total": 29805,
+    "total": 29835,
     "counts": [
       {
         "mut": "S:N439K",
-        "count": 29805
+        "count": 29835
       },
       {
         "mut": "S:D614G",
-        "count": 29747
+        "count": 29777
       },
       {
         "mut": "S:H69-",
-        "count": 23060
+        "count": 23105
       },
       {
         "mut": "S:V70-",
-        "count": 22885
-=======
-    "total": 29833,
-    "counts": [
-      {
-        "mut": "S:N439K",
-        "count": 29833
-      },
-      {
-        "mut": "S:D614G",
-        "count": 29775
-      },
-      {
-        "mut": "S:H69-",
-        "count": 23103
-      },
-      {
-        "mut": "S:V70-",
-        "count": 22929
->>>>>>> clusters_2week_intervals
+        "count": 22931
       },
       {
         "mut": "S:L189F",
@@ -65,51 +45,27 @@
     ]
   },
   "others": {
-<<<<<<< HEAD
-    "total": 29805,
+    "total": 29835,
     "counts": [
       {
         "mut": "ORF1b:P314L",
-        "count": 29786
+        "count": 29816
       },
       {
         "mut": "ORF1b:H1213Y",
-        "count": 29756
+        "count": 29784
       },
       {
         "mut": "ORF1a:M4241I",
-        "count": 23083
+        "count": 23108
       },
       {
         "mut": "ORF1b:V711I",
-        "count": 23073
+        "count": 23097
       },
       {
         "mut": "ORF1b:A1521S",
-        "count": 23050
-=======
-    "total": 29833,
-    "counts": [
-      {
-        "mut": "ORF1b:P314L",
-        "count": 29814
-      },
-      {
-        "mut": "ORF1b:H1213Y",
-        "count": 29782
-      },
-      {
-        "mut": "ORF1a:M4241I",
-        "count": 23106
-      },
-      {
-        "mut": "ORF1b:V711I",
-        "count": 23095
-      },
-      {
-        "mut": "ORF1b:A1521S",
-        "count": 23072
->>>>>>> clusters_2week_intervals
+        "count": 23074
       },
       {
         "mut": "ORF1b:P976L",
@@ -121,11 +77,7 @@
       },
       {
         "mut": "ORF1b:E1977D",
-<<<<<<< HEAD
-        "count": 8831
-=======
         "count": 8839
->>>>>>> clusters_2week_intervals
       },
       {
         "mut": "ORF1b:P1570L",

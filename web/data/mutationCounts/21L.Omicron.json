@@ -1,151 +1,91 @@
 {
   "S": {
-<<<<<<< HEAD
-    "total": 1039947,
+    "total": 1585442,
     "counts": [
       {
         "mut": "S:S704L",
-        "count": 29518
+        "count": 198102
       },
       {
         "mut": "S:L452Q",
-        "count": 24550
-      },
-      {
-        "mut": "S:L5F",
-        "count": 11336
-=======
-    "total": 1562958,
-    "counts": [
-      {
-        "mut": "S:S704L",
-        "count": 189738
-      },
-      {
-        "mut": "S:L452Q",
-        "count": 181596
+        "count": 189800
       },
       {
         "mut": "S:H69-",
-        "count": 41469
+        "count": 46705
       },
       {
         "mut": "S:V70-",
-        "count": 41312
+        "count": 46535
       },
       {
         "mut": "S:L452R",
-        "count": 37797
+        "count": 43077
       },
       {
         "mut": "S:F486V",
-        "count": 36373
+        "count": 41671
       },
       {
         "mut": "S:V3G",
-        "count": 19524
+        "count": 22292
       },
       {
         "mut": "S:L5F",
-        "count": 17818
+        "count": 18092
       },
       {
         "mut": "S:K417T",
-        "count": 13677
+        "count": 14118
       },
       {
-        "mut": "S:I68T",
-        "count": 11082
->>>>>>> clusters_2week_intervals
+        "mut": "S:N658S",
+        "count": 11626
       }
     ]
   },
   "others": {
-<<<<<<< HEAD
-    "total": 1039947,
+    "total": 1585442,
     "counts": [
       {
         "mut": "ORF1a:L3201F",
-        "count": 1021367
+        "count": 1522408
       },
       {
         "mut": "ORF3a:H78Y",
-        "count": 133039
-      },
-      {
-        "mut": "ORF1a:V84-",
-        "count": 66049
-      },
-      {
-        "mut": "ORF1a:M85-",
-        "count": 59203
-      },
-      {
-        "mut": "ORF3a:L140F",
-        "count": 56937
+        "count": 170608
       },
       {
         "mut": "ORF1a:A2909V",
-        "count": 56405
-      },
-      {
-        "mut": "ORF1b:S959P",
-        "count": 42629
-      },
-      {
-        "mut": "ORF1a:H83-",
-        "count": 42347
-      },
-      {
-        "mut": "ORF1a:G82-",
-        "count": 40907
-      },
-      {
-        "mut": "ORF1a:V86-",
-        "count": 29036
-=======
-    "total": 1562958,
-    "counts": [
-      {
-        "mut": "ORF1a:L3201F",
-        "count": 1505277
-      },
-      {
-        "mut": "ORF3a:H78Y",
-        "count": 169632
-      },
-      {
-        "mut": "ORF1a:A2909V",
-        "count": 106166
+        "count": 107162
       },
       {
         "mut": "ORF3a:L140F",
-        "count": 102322
+        "count": 103093
       },
       {
         "mut": "ORF1a:V84-",
-        "count": 85737
+        "count": 86369
       },
       {
         "mut": "ORF1a:M85-",
-        "count": 78129
+        "count": 78766
       },
       {
         "mut": "ORF1a:H83-",
-        "count": 55167
-      },
-      {
-        "mut": "ORF1a:G82-",
-        "count": 53836
-      },
-      {
-        "mut": "ORF1b:S959P",
-        "count": 51752
+        "count": 55585
       },
       {
         "mut": "ORF1a:F143-",
-        "count": 50289
->>>>>>> clusters_2week_intervals
+        "count": 55435
+      },
+      {
+        "mut": "ORF1a:K141-",
+        "count": 55394
+      },
+      {
+        "mut": "ORF1a:S142-",
+        "count": 55380
       }
     ]
   }

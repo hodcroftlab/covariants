@@ -1,10 +1,6 @@
 {
   "S": {
-<<<<<<< HEAD
-    "total": 7089,
-=======
-    "total": 7809,
->>>>>>> clusters_2week_intervals
+    "total": 7824,
     "counts": [
       {
         "mut": "S:L5F",
@@ -49,15 +45,11 @@
     ]
   },
   "others": {
-<<<<<<< HEAD
-    "total": 7089,
-=======
-    "total": 7809,
->>>>>>> clusters_2week_intervals
+    "total": 7824,
     "counts": [
       {
         "mut": "M:A85S",
-        "count": 1513
+        "count": 1528
       },
       {
         "mut": "ORF1b:T1162I",
@@ -65,7 +57,7 @@
       },
       {
         "mut": "ORF1b:P314F",
-        "count": 660
+        "count": 675
       },
       {
         "mut": "ORF1a:T2777I",
@@ -88,13 +80,8 @@
         "count": 292
       },
       {
-<<<<<<< HEAD
-        "mut": "ORF1a:L890F",
-        "count": 235
-=======
         "mut": "ORF1b:K151N",
         "count": 263
->>>>>>> clusters_2week_intervals
       },
       {
         "mut": "ORF1a:A3454V",
