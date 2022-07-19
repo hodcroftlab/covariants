@@ -1,22 +1,19 @@
-import React from 'react'
-
-import { sortBy, reverse } from 'lodash'
-import styled from 'styled-components'
-import { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
-
-import { formatDateBiweekly, formatInteger, formatProportion } from 'src/helpers/format'
+import React, { useMemo } from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
+import { sortBy, reverse, isEmpty, isNil, sum } from 'lodash'
 import { getClusterColor } from 'src/io/getClusters'
-import { ColoredBox } from '../Common/ColoredBox'
+import styled, { ThemeProvider } from 'styled-components'
 
-const EPSILON = 1e-2
+import { theme } from 'src/theme'
+import { formatDateBiweekly, formatProportion } from 'src/helpers/format'
+import { notUndefinedOrNull } from 'src/helpers/notUndefined'
+import { ColoredBox } from 'src/components/Common/ColoredBox'
 
 const Tooltip = styled.div`
   display: flex;
   flex-direction: column;
-
   padding: 5px 10px;
   background-color: ${(props) => props.theme.gray100};
-  box-shadow: ${(props) => props.theme.shadows.slight};
   border-radius: 3px;
 `
 
@@ -43,23 +40,42 @@ export const ClusterNameText = styled.span`
   font-family: ${(props) => props.theme.font.monospace};
 `
 
-export function CasesPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
-  const { payload } = props
-  if (!payload || payload.length === 0) {
+export interface PlotTooltipDatum {
+  seriesName: string
+  value: [number, number | undefined, number | undefined]
+  axisValue: number
+}
+
+export function CasesPlotTooltip({ data }: { data: PlotTooltipDatum[] }) {
+  const dataPrepared = useMemo(() => {
+    if (isEmpty(data)) {
+      return null
+    }
+
+    const week = formatDateBiweekly(data[0].axisValue)
+
+    let valuesRaw = data
+      .map(({ seriesName, value }) => {
+        return { name: seriesName, count: value[1], frequency: value[2], color: getClusterColor(seriesName) }
+      })
+      .filter(({ count }) => notUndefinedOrNull(count))
+      .filter(({ frequency }) => notUndefinedOrNull(frequency))
+      .filter(({ count }) => count !== 0)
+      .filter(({ frequency }) => frequency !== 0)
+
+    valuesRaw = reverse(sortBy(valuesRaw, 'count'))
+
+    const values = valuesRaw.map((datum) => ({ ...datum, frequency: formatProportion(datum.frequency ?? 0) }))
+    const total = sum(values.map(({ count }) => count))
+
+    return { week, values, total }
+  }, [data])
+
+  if (isNil(dataPrepared)) {
     return null
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-argument
-  const week = formatDateBiweekly(payload[0]?.payload.week)
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-argument
-  const total: number = formatInteger(payload[0]?.payload.total ?? 0)
-
-  const payloadSorted = reverse(sortBy(payload, 'value'))
+  const { week, values, total } = dataPrepared
 
   return (
     <Tooltip>
@@ -69,21 +85,19 @@ export function CasesPlotTooltip(props: DefaultTooltipContentProps<number, strin
         <thead>
           <tr className="w-100">
             <th className="px-2 text-left">{'Variant'}</th>
-            <th className="px-2 text-right">{'Est. cases'}</th>
+            <th className="px-2 text-left">{'Count'}</th>
             <th className="px-2 text-right">{'Freq'}</th>
           </tr>
         </thead>
         <TooltipTableBody>
-          {payloadSorted.map(({ name, value }) => (
+          {values.map(({ name, count, frequency, color }) => (
             <tr key={name}>
               <td className="px-2 text-left">
-                <ColoredBox $color={getClusterColor(name ?? '')} $size={10} $aspect={1.66} />
+                <ColoredBox $color={color} $size={10} $aspect={1.66} />
                 <ClusterNameText>{name}</ClusterNameText>
               </td>
-              <td className="px-2 text-right">{value !== undefined && value > EPSILON ? formatInteger(value) : '-'}</td>
-              <td className="px-2 text-right">
-                {value !== undefined && value > EPSILON ? formatProportion(value / total) : '-'}
-              </td>
+              <td className="px-2 text-right">{count}</td>
+              <td className="px-2 text-right">{frequency}</td>
             </tr>
           ))}
 
@@ -99,5 +113,13 @@ export function CasesPlotTooltip(props: DefaultTooltipContentProps<number, strin
         </TooltipTableBody>
       </TooltipTable>
     </Tooltip>
+  )
+}
+
+export function renderCasesPlotTooltip(data: PlotTooltipDatum[]) {
+  return renderToStaticMarkup(
+    <ThemeProvider theme={theme}>
+      <CasesPlotTooltip data={data} />
+    </ThemeProvider>,
   )
 }
