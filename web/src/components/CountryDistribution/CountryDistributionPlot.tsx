@@ -23,7 +23,7 @@ import { DateTime } from 'luxon'
 import React, { useCallback, useMemo } from 'react'
 import { useResizeDetector } from 'react-resize-detector'
 import { ChartContainerInner, ChartContainerOuter } from 'src/components/Common/PlotLayout'
-import { getClusterColor } from 'src/io/getClusters'
+import { CLUSTER_NAME_OTHERS, getClusterColor } from 'src/io/getClusters'
 import { theme } from 'src/theme'
 
 echarts.use([
@@ -174,7 +174,7 @@ function AreaPlot({ width, cluster_names: clusterNames, distribution }: AreaPlot
       name: 'others',
       areaStyle: {
         ...seriesConfig.areaStyle,
-        color: getClusterColor('others'),
+        color: getClusterColor(CLUSTER_NAME_OTHERS),
       },
       data,
     })

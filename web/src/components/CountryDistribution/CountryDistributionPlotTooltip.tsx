@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { sortBy, reverse, isEmpty, isNil } from 'lodash'
+import { getClusterColor } from 'src/io/getClusters'
 import styled, { ThemeProvider } from 'styled-components'
 
 import { theme } from 'src/theme'
@@ -42,7 +43,6 @@ export const ClusterNameText = styled.span`
 export interface PlotTooltipDatum {
   seriesName: string
   value: [number, number | undefined]
-  color: string
   axisValue: number
 }
 
@@ -55,7 +55,9 @@ export function CountryDistributionPlotTooltip({ data }: { data: PlotTooltipDatu
     const week = formatDateBiweekly(data[0].axisValue)
 
     let valuesRaw = data
-      .map(({ seriesName, value, color }) => ({ name: seriesName, value: value[1], color }))
+      .map(({ seriesName, value }) => {
+        return { name: seriesName, value: value[1], color: getClusterColor(seriesName) }
+      })
       .filter(({ value }) => notUndefinedOrNull(value))
       .filter(({ value }) => value !== 0)
 
