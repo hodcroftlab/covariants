@@ -118,7 +118,7 @@ def interpolate_per_cluster_data(cluster_data):
 
     # Add rows for missing weeks. Fill values of the new rows wih NaN.
     old_index = df.index
-    new_index = pd.date_range(old_index[0], old_index[-1], freq="7D").strftime(
+    new_index = pd.date_range(old_index[0], old_index[-1], freq="14D").strftime(
         "%Y-%m-%d"
     )
     df_reindexed = df.reindex(new_index, fill_value=np.NaN)
