@@ -173,11 +173,9 @@ function AreaPlot({ width, cluster_names: clusterNames, distribution }: AreaPlot
     // Add data for "others" (unknown variants)
     const data = distribution.map(({ week, stand_estimated_cases, stand_total_cases }) => {
       const timestamp = DateTime.fromFormat(week, 'yyyy-MM-dd').toUTC().toMillis()
-      const total_variant_cases = Object.values(stand_estimated_cases) // prettier-ignore
-        .reduce<number>((result, count = 0) => result + (count ?? 0), 0)
-      const others: number = stand_total_cases - total_variant_cases
-      const frequency = others / stand_total_cases
-      return [timestamp, others, frequency]
+      const count = get(stand_estimated_cases, CLUSTER_NAME_OTHERS) ?? 0
+      const frequency = count / stand_total_cases
+      return [timestamp, count, frequency]
     })
 
     series.push({
