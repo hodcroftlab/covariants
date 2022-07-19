@@ -125,6 +125,9 @@ def interpolate_per_cluster_data(cluster_data):
 
     df_interp = df_reindexed.interpolate(method="linear")
 
+    if len(old_index)!=len(new_index):
+        import ipdb; ipdb.set_trace()
+
     # Calculate indices to pick from the interpolation results.
     # We want a closed diff: only rows that are not in the original data, plus boundaries for every span of missing data
     index_interp = diff_left_closed(new_index.tolist(), old_index.tolist(), closed=True)
