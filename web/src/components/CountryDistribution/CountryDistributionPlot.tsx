@@ -65,7 +65,7 @@ const chartConfig: EChartsOption = {
       id: 'insideX',
       xAxisIndex: 0,
       filterMode: 'none',
-      zoomOnMouseWheel: true,
+      zoomOnMouseWheel: 'shift',
       moveOnMouseMove: true,
     },
   ],
