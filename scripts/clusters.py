@@ -1031,6 +1031,7 @@ clusters = {
        "snps_with_base": ["3927T", "26275G", "3796T"],
        "cluster_data": [],
        "nextstrain_build": True,
+       "use_pango": True,
        "type": "variant",
        "graphing": False,
        "important": False,
