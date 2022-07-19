@@ -5,7 +5,7 @@ In some countries (particularly those good molecular surveillance) this assumpti
 Case data comes from the fantastic [Our World in Data](https://ourworldindata.org/coronavirus), sourced from the brilliant [COVID-19 Data Repository](https://github.com/CSSEGISandData/COVID-19) by the CSSE at Johns Hopkins University.
 
 
-To try to reduce misinterpretation, countries are only displayed if they sequenced at least 3% of cases in at least 50% of the 2-week periods tracked by CoVariants.
+To try to reduce misinterpretation, countries are only displayed if they sequenced at least 2% of cases in at least 40% of the 2-week periods tracked by CoVariants since the end of 2020.
 
 As always, **interpret the 'end' of these plots with care!** Sequencing data is often still incoming, and even case data can be delayed.
 

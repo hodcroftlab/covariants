@@ -1,5 +1,6 @@
 {
   "S": {
+<<<<<<< HEAD
     "total": 262722,
     "counts": [
       {
@@ -13,50 +14,74 @@
       {
         "mut": "S:V289I",
         "count": 34135
+=======
+    "total": 265512,
+    "counts": [
+      {
+        "mut": "S:G142D",
+        "count": 195025
+      },
+      {
+        "mut": "S:V1264L",
+        "count": 42617
+      },
+      {
+        "mut": "S:V289I",
+        "count": 34511
+>>>>>>> clusters_2week_intervals
       },
       {
         "mut": "S:Q613H",
-        "count": 19515
+        "count": 20232
       },
       {
         "mut": "S:N1074S",
+<<<<<<< HEAD
         "count": 15637
+=======
+        "count": 15787
+>>>>>>> clusters_2week_intervals
       },
       {
         "mut": "S:R21T",
-        "count": 4957
+        "count": 4973
       },
       {
         "mut": "S:D253A",
-        "count": 2844
+        "count": 2855
       },
       {
         "mut": "S:L5F",
-        "count": 2783
+        "count": 2803
       },
       {
         "mut": "S:A67V",
-        "count": 2725
+        "count": 2739
       },
       {
         "mut": "S:K417N",
-        "count": 2680
+        "count": 2698
       }
     ]
   },
   "others": {
+<<<<<<< HEAD
     "total": 262722,
+=======
+    "total": 265512,
+>>>>>>> clusters_2week_intervals
     "counts": [
       {
         "mut": "ORF1b:R188Q",
-        "count": 42745
+        "count": 42890
       },
       {
         "mut": "ORF1b:T1540I",
-        "count": 42526
+        "count": 42678
       },
       {
         "mut": "ORF6:K48N",
+<<<<<<< HEAD
         "count": 39080
       },
       {
@@ -70,22 +95,41 @@
       {
         "mut": "ORF1a:E1633D",
         "count": 34361
+=======
+        "count": 39440
+      },
+      {
+        "mut": "ORF9b:V15L",
+        "count": 34842
+      },
+      {
+        "mut": "N:G18V",
+        "count": 34837
+      },
+      {
+        "mut": "ORF1a:E1633D",
+        "count": 34726
+>>>>>>> clusters_2week_intervals
       },
       {
         "mut": "ORF1a:H712Q",
-        "count": 22054
+        "count": 22752
       },
       {
         "mut": "M:A81S",
-        "count": 21891
+        "count": 22584
       },
       {
         "mut": "N:S412R",
-        "count": 21827
+        "count": 22519
       },
       {
         "mut": "ORF3a:G224C",
+<<<<<<< HEAD
         "count": 16651
+=======
+        "count": 16757
+>>>>>>> clusters_2week_intervals
       }
     ]
   }

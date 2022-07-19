@@ -4,6 +4,9 @@ import requests
 import json
 import pathlib
 from clusters import clusters
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv())
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 OUTPUT_FOLDER = os.path.join(THIS_DIR, "..", "web", "data", "mutationCounts")
@@ -12,6 +15,8 @@ OUTPUT_FOLDER = os.path.join(THIS_DIR, "..", "web", "data", "mutationCounts")
 aa_base_url = 'https://cov-spectrum.ethz.ch/gisaid/api/v1/sample/aa-mutations'
 count_base_url = 'https://cov-spectrum.ethz.ch/gisaid/api/v1/sample/aggregated'
 filter_deletions_url = "aaMutations=Orf1a:1.,N:420."
+
+LAPIS_API_ACCESS_KEY = os.environ.get("LAPIS_API_ACCESS_KEY")
 
 #only include mutations that are above this threshhold
 THRESHOLD = 0.005
@@ -25,7 +30,7 @@ clusters_example = {
 }
 
 def build_url(base_url,cluster,threshold):
-    url = f"{base_url}?{filter_deletions_url}&nucMutations={','.join(cluster)}"
+    url = f"{base_url}?{filter_deletions_url}&accessKey={LAPIS_API_ACCESS_KEY}&nucMutations={','.join(cluster)}"
     if threshold is not None:
         url += f"&minProportion={threshold:f}"
     return url

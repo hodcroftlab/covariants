@@ -63,7 +63,7 @@ clusters = {
         "snps": [21801, 23063, 23664],
         "snps_with_base": ["21801C", "23063T", "23664T"],
         "cluster_data": [],  # 80,501,701
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": True,
