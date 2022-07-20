@@ -139,7 +139,7 @@ def interpolate_per_cluster_data(cluster_data):
 
     # Calculate indices to pick from the interpolation results.
     # We want a closed diff: only rows that are not in the original data, plus boundaries for every span of missing data
-    index_interp = diff_left_closed(new_index.tolist(), old_index.tolist(), closed=False)#closed=True)
+    index_interp = diff_left_closed(new_index.tolist(), old_index.tolist(), closed=True)
 
     index_interp_open = diff_left_closed(
         new_index.tolist(), old_index.tolist(), closed=False
