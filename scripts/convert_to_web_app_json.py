@@ -19,6 +19,7 @@ from clusters import clusters
 from colors_and_countries import country_styles_all
 from mutation_comparison import mutation_comparison
 from name_table import name_table
+from math import isnan
 
 cluster_tables_path = "cluster_tables"
 output_path = "web/data"
@@ -115,6 +116,9 @@ def interpolate_per_cluster_data(cluster_data):
 
     # NOTE: using "week" column as index
     df = pd.DataFrame(cluster_data).set_index("week")
+    #df_orig = pd.DataFrame(cluster_data).set_index("week")
+    #add a frequencies column we'll interpolate later
+    df['frequencies'] = df.cluster_sequences/df.total_sequences
 
     # Add rows for missing weeks. Fill values of the new rows wih NaN.
     old_index = df.index
@@ -123,20 +127,30 @@ def interpolate_per_cluster_data(cluster_data):
     )
     df_reindexed = df.reindex(new_index, fill_value=np.NaN)
 
-    df_interp = df_reindexed.interpolate(method="linear")
+    #separate out frequencies so only interpolate this
+    df_freqs = df_reindexed[['frequencies']].copy()
 
-    if len(old_index)!=len(new_index):
-        import ipdb; ipdb.set_trace()
+    #df_interp = df_reindexed.interpolate(method="linear")
+    df_interp = df_freqs.interpolate(method="linear")
+
+    #if len(old_index)!=len(new_index) and country=="Nepal":
+        #import ipdb; ipdb.set_trace()
+        #jj = next(x for x in df_reindexed['cluster_sequences'] if not isnan(x) or x == 0)
 
     # Calculate indices to pick from the interpolation results.
     # We want a closed diff: only rows that are not in the original data, plus boundaries for every span of missing data
-    index_interp = diff_left_closed(new_index.tolist(), old_index.tolist(), closed=True)
+    index_interp = diff_left_closed(new_index.tolist(), old_index.tolist(), closed=False)#closed=True)
 
     index_interp_open = diff_left_closed(
         new_index.tolist(), old_index.tolist(), closed=False
     )
 
-    df_result = df_interp
+    #df_result = df_interp
+    #use the original dataframe, with NA values but
+    df_result = df_reindexed
+    #add in interpolated freqs
+    df_result['frequencies'] = df_interp['frequencies']
+
     df_result["interp"] = False
     df_result.loc[index_interp, "interp"] = True
 
@@ -145,6 +159,9 @@ def interpolate_per_cluster_data(cluster_data):
 
     # Make a "week" column from index
     df_result["week"] = df_result.index
+
+    #if len(old_index)!=len(new_index) and country=="Nepal":
+    #    import ipdb; ipdb.set_trace()
 
     return df_result.replace({np.nan: None}).to_dict("list")
 
@@ -158,10 +175,11 @@ def update_per_cluster_distribution(cluster_data, country, distribution):
         total_sequences = cluster_datum["total_sequences"]
         interp = cluster_datum["interp"]
         orig = cluster_datum["orig"]
+        frequency = cluster_datum['frequencies']
 
-        frequency = 0
-        if total_sequences != 0:
-            frequency = cluster_sequences / total_sequences
+#        frequency = 0
+#        if total_sequences != 0:
+#            frequency = cluster_sequences / total_sequences
 
         if len(distribution) == 0:
             distribution.append(
