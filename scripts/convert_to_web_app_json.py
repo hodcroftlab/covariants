@@ -115,6 +115,8 @@ def interpolate_per_cluster_data(cluster_data):
 
     # NOTE: using "week" column as index
     df = pd.DataFrame(cluster_data).set_index("week")
+    #add a frequencies column we'll interpolate later
+    df['frequencies'] = df.cluster_sequences/df.total_sequences
 
     # Add rows for missing weeks. Fill values of the new rows wih NaN.
     old_index = df.index
@@ -123,7 +125,9 @@ def interpolate_per_cluster_data(cluster_data):
     )
     df_reindexed = df.reindex(new_index, fill_value=np.NaN)
 
-    df_interp = df_reindexed.interpolate(method="linear")
+    #separate out frequencies so that we only interpolate this, nothing else
+    df_freqs = df_reindexed[['frequencies']].copy()
+    df_interp = df_freqs.interpolate(method="linear")
 
     # Calculate indices to pick from the interpolation results.
     # We want a closed diff: only rows that are not in the original data, plus boundaries for every span of missing data
@@ -133,7 +137,11 @@ def interpolate_per_cluster_data(cluster_data):
         new_index.tolist(), old_index.tolist(), closed=False
     )
 
-    df_result = df_interp
+    #use the original dataframe, with NA values but -
+    df_result = df_reindexed
+    #add in interpolated freqs to overwrite the ones with NAs
+    df_result['frequencies'] = df_interp['frequencies']
+
     df_result["interp"] = False
     df_result.loc[index_interp, "interp"] = True
 
@@ -155,10 +163,8 @@ def update_per_cluster_distribution(cluster_data, country, distribution):
         total_sequences = cluster_datum["total_sequences"]
         interp = cluster_datum["interp"]
         orig = cluster_datum["orig"]
-
-        frequency = 0
-        if total_sequences != 0:
-            frequency = cluster_sequences / total_sequences
+        #we've now already calculated & interpolated freqs previously, so use this
+        frequency = cluster_datum['frequencies']
 
         if len(distribution) == 0:
             distribution.append(
