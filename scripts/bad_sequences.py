@@ -2952,6 +2952,28 @@ bad_seqs = {
     "Reunion/CHU722060322601/2021" : "2021-06-27", # omicron EPI_ISL_13767731
     "Reunion/CHU722060322801/2021" : "2021-06-27", # omicron EPI_ISL_13767730
     "Reunion/CHU722060322901/2021" : "2021-06-27", # omicron EPI_ISL_13767729
+    #18 jul
+    "USA/OR-TRACE-LINN-081921-1407/2021" : "2021-08-19", #omicron 	EPI_ISL_12934173
+    "USA/AZ-ASU83465/2022" : "2022-01-06", # omicron EPI_ISL_13497727
+    "USA/AZ-ASU83488/2022" : "2022-01-06", #omicron EPI_ISL_13497728
+    "USA/UT-CDC-2-6092912/2021" : "2021-12-14", #omicron EPI_ISL_13654331
+    "USA/UT-CDC-2-6092903/2021" : "2021-12-14",  #omicron EPI_ISL_13654336
+    "Spain/MD-HULP-2006040/2022" : "2022-01-13", #omicron EPI_ISL_13661886
+    "England/PHEC-YYFXIJS/2022" : "2022-01-17", #omicron EPI_ISL_13399807
+    "Austria/Medilab_347/2022" : "2022-01-05", #omicron EPI_ISL_12688263
+    #20 Jul
+    "India/TN-CDFD-E130377/2022" : "2022-01-07", # 2.75, far too early EPI_ISL_13804325
+    "India/MH-ICMR-MCL-20-1587_1-4153/2020" : "2020-07-23",  #delta EPI_ISL_13857976
+    "Uganda/008/2020" : "2020-11-09", #omicron  EPI_ISL_13860433
+    "Uganda/018/2020" : "2020-11-10", #omicron  EPI_ISL_13860440
+    "Uganda/019/2020" : "2020-11-14", #omicron  EPI_ISL_13860441
+    "Uganda/027/2020" : "2020-11-16", #omicron  EPI_ISL_13860447
+    "Uganda/035/2020" : "2020-12-07", #omicron  EPI_ISL_13860454
+    "Uganda/045/2020" : "2020-12-09", #omicron  EPI_ISL_13860462
+    "Uganda/081/2021" : "2021-07-08", #omicron  EPI_ISL_13860470
+    "Uganda/082/2021" : "2021-07-09", #omicron  EPI_ISL_13860471
+    "Uganda/093/2021" : "2021-07-23", #omicron  EPI_ISL_13860478
+    "Uganda/094/2021" : "2021-06-10", #omicron  EPI_ISL_13860479
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha

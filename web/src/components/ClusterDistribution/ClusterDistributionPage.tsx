@@ -2,6 +2,9 @@ import React, { useCallback, useMemo } from 'react'
 
 import { Card, CardBody, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
+import { useShowMoreButton } from 'src/components/Common/ShowMoreButton'
+import styled from 'styled-components'
+
 import { SharingPanel } from 'src/components/Common/SharingPanel'
 import {
   clustersAtom,
@@ -19,8 +22,8 @@ import {
   toggleCountry,
 } from 'src/state/Places'
 import { tooltipSortAtom, TooltipSortCriterion } from 'src/state/TooltipSort'
-import styled from 'styled-components'
 
+import { SHOW_MORE_PLOT_LIMIT } from 'src/constants'
 import { getPerClusterData, filterClusters, filterCountries } from 'src/io/getPerClusterData'
 import { ClusterDistributionPlotCard } from 'src/components/ClusterDistribution/ClusterDistributionPlotCard'
 import { ColCustom } from 'src/components/Common/ColCustom'
@@ -95,6 +98,8 @@ const StickyRow = styled(Row)`
 `
 
 export function ClusterDistributionPage() {
+  const { showMore, showMoreButton } = useShowMoreButton()
+
   const [countries, setCountries] = useRecoilState(countriesAtom(undefined))
   const [continents, setContinents] = useRecoilState(continentsAtom(undefined))
   const [clusters, setClusters] = useRecoilState(
@@ -129,21 +134,23 @@ export function ClusterDistributionPage() {
     /* prettier-ignore */
     useMemo(() => filterCountries(countries, withClustersFiltered), [countries, withClustersFiltered])
 
-  const clusterDistributionComponents = useMemo(
-    () =>
-      withCountriesFiltered.map(({ cluster, distribution }) => (
-        <ColCustom key={cluster} md={12} lg={6} xl={6} xxl={4}>
-          <ClusterDistributionPlotCard
-            key={cluster}
-            clusterBuildName={clusterBuildNames.get(cluster) || ''}
-            clusterDisplayName={cluster}
-            distribution={distribution}
-            country_names={enabledCountries}
-          />
-        </ColCustom>
-      )),
-    [clusterBuildNames, enabledCountries, withCountriesFiltered],
-  )
+  const clusterDistributionComponents = useMemo(() => {
+    let items = withCountriesFiltered
+    if (!showMore) {
+      items = withCountriesFiltered.slice(0, SHOW_MORE_PLOT_LIMIT)
+    }
+    return items.map(({ cluster, distribution }) => (
+      <ColCustom key={cluster} md={12} lg={6} xl={6} xxl={4}>
+        <ClusterDistributionPlotCard
+          key={cluster}
+          clusterBuildName={clusterBuildNames.get(cluster) || ''}
+          clusterDisplayName={cluster}
+          distribution={distribution}
+          country_names={enabledCountries}
+        />
+      </ColCustom>
+    ))
+  }, [clusterBuildNames, enabledCountries, showMore, withCountriesFiltered])
 
   const handleClusterCheckedChange = useCallback(
     (cluster: string) => {
@@ -248,6 +255,7 @@ export function ClusterDistributionPage() {
                     <Row noGutters>{clusterDistributionComponents}</Row>
                   </Col>
                 </Row>
+                {showMoreButton}
               </MainFlex>
             </WrapperFlex>
           </Editable>
