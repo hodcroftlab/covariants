@@ -2,11 +2,11 @@ import React, { useCallback, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 
+import { SHOW_MORE_PLOT_LIMIT } from 'src/constants'
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
 import { ColCustom } from 'src/components/Common/ColCustom'
 import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
-
 import { getPerCountryCasesData, filterClusters, filterCountries } from 'src/io/getPerCountryCasesData'
 import { clustersCasesAtom, disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/ClustersForCaseData'
 import {
@@ -21,6 +21,7 @@ import { CountryFlag } from 'src/components/Common/CountryFlag'
 import { PageHeading } from 'src/components/Common/PageHeading'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
+import { useShowMoreButton } from 'src/components/Common/ShowMoreButton'
 import { CasesPlotCard } from './CasesPlotCard'
 
 import IntroContent from '../../../../content/PerCountryCasesIntro.md'
@@ -28,6 +29,8 @@ import IntroContent from '../../../../content/PerCountryCasesIntro.md'
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
 export function CasesPage() {
+  const { showMore, showMoreButton } = useShowMoreButton()
+
   const [countries, setCountries] = useRecoilState(countriesCasesAtom)
   const [continents, setContinents] = useRecoilState(continentsCasesAtom)
   const [clusters, setClusters] = useRecoilState(clustersCasesAtom)
@@ -41,20 +44,23 @@ export function CasesPage() {
     return { enabledClusters, withClustersFiltered }
   }, [countries, perCountryCasesDistributions, clusters])
 
-  const casesComponents = useMemo(
-    () =>
-      withClustersFiltered.map(({ country, distribution }) => (
-        <ColCustom key={country} md={12} lg={6} xl={6} xxl={4}>
-          <CasesPlotCard
-            country={country}
-            distribution={distribution}
-            cluster_names={enabledClusters}
-            Icon={CountryFlag}
-          />
-        </ColCustom>
-      )),
-    [enabledClusters, withClustersFiltered],
-  )
+  const casesComponents = useMemo(() => {
+    let items = withClustersFiltered
+    if (!showMore) {
+      items = withClustersFiltered.slice(0, SHOW_MORE_PLOT_LIMIT)
+    }
+
+    return items.map(({ country, distribution }) => (
+      <ColCustom key={country} md={12} lg={6} xl={6} xxl={4}>
+        <CasesPlotCard
+          country={country}
+          distribution={distribution}
+          cluster_names={enabledClusters}
+          Icon={CountryFlag}
+        />
+      </ColCustom>
+    ))
+  }, [enabledClusters, showMore, withClustersFiltered])
 
   const handleClusterCheckedChange = useCallback(
     (cluster: string) => {
@@ -145,6 +151,7 @@ export function CasesPage() {
                     <Row noGutters>{casesComponents}</Row>
                   </Col>
                 </Row>
+                {showMoreButton}
               </MainFlex>
             </WrapperFlex>
           </Editable>

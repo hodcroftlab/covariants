@@ -2,6 +2,7 @@ import React, { useCallback, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 
+import { SHOW_MORE_PLOT_LIMIT } from 'src/constants'
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
 import { ColCustom } from 'src/components/Common/ColCustom'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
@@ -38,11 +39,14 @@ import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
 import { CountryFlag } from '../Common/CountryFlag'
 import { USStateCode } from '../Common/USStateCode'
 import { PageHeading } from '../Common/PageHeading'
+import { useShowMoreButton } from '../Common/ShowMoreButton'
 
 const enabledFilters = ['clusters', 'countriesWithIcons']
 const { regionNames, regionsHaveData } = getRegions()
 
 export function CountryDistributionPage() {
+  const { showMore, showMoreButton } = useShowMoreButton()
+
   const [region, setRegion] = useRecoilState(regionAtom)
   const [countries, setCountries] = useRecoilState(countriesAtom(region))
   const [continents, setContinents] = useRecoilState(continentsAtom(region))
@@ -64,20 +68,23 @@ export function CountryDistributionPage() {
     return { enabledClusters, withClustersFiltered }
   }, [countries, countryDistributions, clusters])
 
-  const countryDistributionComponents = useMemo(
-    () =>
-      withClustersFiltered.map(({ country, distribution }) => (
-        <ColCustom key={country} md={12} lg={6} xl={6} xxl={4}>
-          <CountryDistributionPlotCard
-            country={country}
-            distribution={distribution}
-            cluster_names={enabledClusters}
-            Icon={iconComponent}
-          />
-        </ColCustom>
-      )),
-    [enabledClusters, withClustersFiltered, iconComponent],
-  )
+  const countryDistributionComponents = useMemo(() => {
+    let items = withClustersFiltered
+    if (!showMore) {
+      items = withClustersFiltered.slice(0, SHOW_MORE_PLOT_LIMIT)
+    }
+
+    return items.map(({ country, distribution }) => (
+      <ColCustom key={country} md={12} lg={6} xl={6} xxl={4}>
+        <CountryDistributionPlotCard
+          country={country}
+          distribution={distribution}
+          cluster_names={enabledClusters}
+          Icon={iconComponent}
+        />
+      </ColCustom>
+    ))
+  }, [withClustersFiltered, showMore, enabledClusters, iconComponent])
 
   const handleClusterCheckedChange = useCallback(
     (cluster: string) => {
@@ -183,6 +190,7 @@ export function CountryDistributionPage() {
                     <Row noGutters>{countryDistributionComponents}</Row>
                   </Col>
                 </Row>
+                {showMoreButton}
               </MainFlex>
             </WrapperFlex>
           </Editable>
