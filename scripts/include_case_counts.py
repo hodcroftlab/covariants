@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import json
 import datetime
+import sys
 from helpers import to2week_ordinal
 
 # key: country names in covariants
@@ -68,7 +69,9 @@ for i in range(len(world_data)):
     for j in world_data[i]["distribution"]:
         cluster_counts = j["cluster_counts"]
         total_sequences = j["total_sequences"]
-        week = j["week"]
+        #convert the 'date' objects into week tuples so matches what we're doing to OWID dates
+        date_week = datetime.datetime.strptime(j["week"], "%Y-%m-%d")
+        week = to2week_ordinal(date_week)
 
         percent_counts = {c : float(n) / total_sequences for c, n in cluster_counts.items()}
 
@@ -121,6 +124,12 @@ countries_pass = df_threshold[(df_threshold/float(total_weeks)) >= PERIOD_PASS].
 world_data_counts_cutoff = [x for x in world_data_counts if x["country"] in countries_pass]
 
 print(f"{len(world_data_counts_cutoff)}/{len(world_data_counts)} countries have passed threshold {THRESHOLD} and period_pass {PERIOD_PASS}")
+
+if len(world_data_counts_cutoff) == 0:
+    with open(OUTPUT_CSV_PATH, "w") as out:
+        out.write("")
+    sys.exit("**FAILED TO FIND ANY COUNTRIES THAT PASS THRESHOLD - CHECK FOR ERRORS!**")
+    
 
 with open(OUTPUT_CSV_PATH, "w") as out:
     json.dump({"regions": [{"region": "World", "distributions" : world_data_counts_cutoff, "per_country_intro_content": per_country_intro_content, "max_date": max_date, "min_date": min_date, "cluster_names": cluster_names}]}, out, indent=2, sort_keys=True)
