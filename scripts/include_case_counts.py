@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import json
 import datetime
+from helpers import to2week_ordinal
 
 # key: country names in covariants
 # value: country name in owid
@@ -16,14 +17,6 @@ alernative_country_names = {
     "Bonaire" : "Bonaire Sint Eustatius and Saba",
     "Republic of the Congo" : "Congo"
 }
-
-def to2week(x):
-    iso_y, iso_w, iso_d = x.isocalendar()[:3]
-    if iso_w==1:
-        prev_week = x - datetime.timedelta(days=7)
-        iso_y, iso_w, iso_d = prev_week.isocalendar()[:3]
-
-    return datetime.datetime.strptime("{}-W{}-1".format(*(iso_y, iso_w // 2 * 2)), "%G-W%V-%u")
 
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -46,7 +39,7 @@ columns = ["continent", "location", "date", "new_cases", "new_cases_per_million"
 owid = pd.read_csv(OWID_CSV_INPUT_PATH, usecols=columns)
 
 owid["date_formatted"] = owid["date"].apply(lambda x: datetime.datetime.strptime(x, "%Y-%m-%d"))
-owid["date_2weeks"] = owid["date_formatted"].apply(to2week)
+owid["date_2weeks"] = owid["date_formatted"].apply(to2week_ordinal)
 
 owid_grouped = owid.groupby(["date_2weeks", "location"])[["new_cases_per_million", "new_cases"]].sum().reset_index()
 
