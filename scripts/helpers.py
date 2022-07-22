@@ -100,3 +100,9 @@ def to2week_ordinal(x):
     n = x.toordinal()
     monday = datetime.date.fromordinal(n - ((n - ref_monday) % 14))
     return (monday.isocalendar()[0], monday.isocalendar()[1])
+
+# Transform a datetime 2-week intervals starting a reference monday -- but returns as a date string
+def to2week_ordinal_string(x):
+    n = x.toordinal()
+    monday = datetime.date.fromordinal(n - ((n - ref_monday) % 14))
+    return monday.strftime("%Y-%m-%d")

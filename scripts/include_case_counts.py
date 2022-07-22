@@ -3,7 +3,7 @@ import pandas as pd
 import json
 import datetime
 import sys
-from helpers import to2week_ordinal
+from helpers import to2week_ordinal, to2week_ordinal_string
 
 # key: country names in covariants
 # value: country name in owid
@@ -40,7 +40,8 @@ columns = ["continent", "location", "date", "new_cases", "new_cases_per_million"
 owid = pd.read_csv(OWID_CSV_INPUT_PATH, usecols=columns)
 
 owid["date_formatted"] = owid["date"].apply(lambda x: datetime.datetime.strptime(x, "%Y-%m-%d"))
-owid["date_2weeks"] = owid["date_formatted"].apply(to2week_ordinal)
+# get ordinal dates, but as a string, so can compare to dates in perCOuntryData.json
+owid["date_2weeks"] = owid["date_formatted"].apply(to2week_ordinal_string)
 
 owid_grouped = owid.groupby(["date_2weeks", "location"])[["new_cases_per_million", "new_cases"]].sum().reset_index()
 
@@ -69,9 +70,7 @@ for i in range(len(world_data)):
     for j in world_data[i]["distribution"]:
         cluster_counts = j["cluster_counts"]
         total_sequences = j["total_sequences"]
-        #convert the 'date' objects into week tuples so matches what we're doing to OWID dates
-        date_week = datetime.datetime.strptime(j["week"], "%Y-%m-%d")
-        week = to2week_ordinal(date_week)
+        week = j["week"]
 
         percent_counts = {c : float(n) / total_sequences for c, n in cluster_counts.items()}
 
