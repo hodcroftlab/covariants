@@ -841,7 +841,7 @@ for clus in clus_to_run:
 if print_files and "all" in clus_answer:
     countries_plotted = list(clus_data_all[clus]["non_zero_counts"].keys())
     with open(tables_path + f"perVariant_countries_toPlot.json", "w") as fh:
-        json.dump({c: True  for c in countries_plotted}, fh) #TODO: Could we adjust the format?
+        json.dump({c: "True"  for c in countries_plotted}, fh) #TODO: Could we adjust the format?
 
 
 ### COUNTRIES ###
