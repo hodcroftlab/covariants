@@ -466,10 +466,10 @@ print("\nLooking for the wanted sequences in the file...\n")
 
 #muts["snp_pos"] = muts.nucleotide.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y and y[-1] in 'ACGT'])
 #muts["gap_pos"] = muts.nucleotide.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y and y[-1] in '-'])
-muts_snp_pos = meta.substitutions.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y])
+muts_snp_pos = meta.substitutions.fillna('').apply(lambda x: [int(y[1:-1]) for y in x.split(',') if y and len(y)>2])
 
 # expand metadata deletions formatting
-muts_del_pos = meta.deletions.fillna('').apply(lambda x: [z for y in x.split(',') if y for z in range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)])
+muts_del_pos = meta.deletions.fillna('').apply(lambda x: [z for y in x.split(',') if y and len(y)>2 for z in range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)])
 
 
 # If an official Nextstrain clade, then use Nextclade designation to find them.
@@ -850,16 +850,8 @@ print(f"Gathering metadata for all clusters took {round((t1-t0)/60,1)} min to ru
 ##################################
 # Get ALL sequence counts for ALL countries ONCE
 
-#This function takes are of the rare case when there are 53 wks & dates at start of the next year generate 'week 0'
-def to2week(x):
-    iso_y, iso_w, iso_d = x.isocalendar()[:3]
-    if iso_w==1:
-        prev_week = x - datetime.timedelta(days=7)
-        iso_y, iso_w, iso_d = prev_week.isocalendar()[:3]
 
-    return (iso_y, iso_w // 2 * 2)
-
-print("\nGathering up total sequences per week & 2 week period")
+print("\nGathering up total sequences (only 2 week period)")
 
 t0 = time.time()
 
@@ -868,26 +860,12 @@ all_observed_countries = list(meta.country.unique())
 for coun in all_observed_countries:
     temp_meta = meta[meta["country"].apply(lambda x: x == coun)].copy()
 
-    #For by week 
-    temp_meta["calendar_week"] = temp_meta["date_formatted"].apply(
-        lambda x: (x.isocalendar()[0], x.isocalendar()[1])
-    )
-    temp_meta = temp_meta[temp_meta["calendar_week"] >= min_data_week]
-    # If no samples are after min_data_week, will be empty!!
-    if temp_meta.empty:
-        continue
-
-    # Store by week
-    week_counts = temp_meta["calendar_week"].value_counts().sort_index()
-    counts_by_week = week_counts.to_dict()
-    all_sequence_counts[coun] = {}
-    all_sequence_counts[coun]['week'] = counts_by_week
-
     # TWO WEEKS
-    temp_meta["calendar_2week"] = temp_meta["date_formatted"].apply(to2week)
+    temp_meta["calendar_2week"] = temp_meta["date_formatted"].apply(to2week_ordinal)
     temp_meta = temp_meta[temp_meta["calendar_2week"] >= min_data_week]
     week2_counts = temp_meta["calendar_2week"].value_counts().sort_index()
     counts_by_2week = week2_counts.to_dict()
+    all_sequence_counts[coun] = {}
     all_sequence_counts[coun]['2week'] = counts_by_2week
 
 ##################################
@@ -903,26 +881,12 @@ if division:
         for div in observed_divisions:
             temp_meta = meta[meta["division"].apply(lambda x: x == div)].copy()
 
-            # For by week
-            temp_meta["calendar_week"] = temp_meta["date_formatted"].apply(
-                lambda x: (x.isocalendar()[0], x.isocalendar()[1])
-            )
-            temp_meta = temp_meta[temp_meta["calendar_week"] >= min_data_week]
-            # If no samples are after min_data_week, will be empty!!
-            if temp_meta.empty:
-                continue
-
-            # Store by week
-            week_counts = temp_meta["calendar_week"].value_counts().sort_index()
-            counts_by_week = week_counts.to_dict()
-            division_all_sequence_counts[sel_coun][div] = {}
-            division_all_sequence_counts[sel_coun][div]['week'] = counts_by_week
-
             # TWO WEEKS
-            temp_meta["calendar_2week"] = temp_meta["date_formatted"].apply(to2week)
+            temp_meta["calendar_2week"] = temp_meta["date_formatted"].apply(to2week_ordinal)
             temp_meta = temp_meta[temp_meta["calendar_2week"] >= min_data_week]
             week2_counts = temp_meta["calendar_2week"].value_counts().sort_index()
             counts_by_2week = week2_counts.to_dict()
+            division_all_sequence_counts[sel_coun][div] = {}
             division_all_sequence_counts[sel_coun][div]['2week'] = counts_by_2week
 
 t1 = time.time()
@@ -943,8 +907,6 @@ for clus in clus_to_run:
     country_dates = clus_data["country_dates"]
     country_info_df = clus_data["country_info_ordered"]
 
-    clus_data["cluster_data"] = []
-    clus_data["total_data"] = []
     if division:
         for sel_coun in selected_country:
             clus_data[sel_coun] = {}
@@ -973,36 +935,22 @@ for clus in clus_to_run:
 
     # COUNTRY LEVEL
     # Get counts per week for sequences in the cluster
-    clus_week_counts = {}
+
     clus_2week_counts = {}
 
-    # converts to tuple (year, ISO calendar week)
-    cluster_meta["yr_wk"] = cluster_meta.date_formatted.apply(lambda x: (x.isocalendar()[0], x.isocalendar()[1]))
     # converts to tuple (year, ISO calendar week - every 2 weeks)
-    cluster_meta["yr_2wk"] = cluster_meta.date_formatted.apply(to2week)
+    cluster_meta["yr_2wk"] = cluster_meta.date_formatted.apply(to2week_ordinal)
 
     for coun in observed_countries:
         temp = cluster_meta[cluster_meta["country"].apply(lambda x: x == coun)]
-        clus_week_counts[coun] = temp.value_counts(subset="yr_wk").sort_index().to_dict()
         clus_2week_counts[coun] = temp.value_counts(subset="yr_2wk").sort_index().to_dict()
 
     # Get counts per week for sequences regardless of whether in the cluster or not - from week 20 only.
-    total_week_counts = {}
     total_2week_counts = {}
-    for coun in observed_countries: 
-        total_week_counts[coun] = all_sequence_counts[coun]['week']
+    for coun in observed_countries:
         total_2week_counts[coun] = all_sequence_counts[coun]['2week']
 
     # COUNTRY LEVEL
-    # Convert into dataframe
-    cluster_data = pd.DataFrame(data=clus_week_counts)
-    total_data = pd.DataFrame(data=total_week_counts)
-    # sort
-    total_data = total_data.sort_index()
-    cluster_data = cluster_data.sort_index()
-    # store
-    clus_data["cluster_data"] = cluster_data
-    clus_data["total_data"] = total_data
 
     # Convert into dataframe -- 2 weeks
     cluster_data_2wk = pd.DataFrame(data=clus_2week_counts)
@@ -1019,31 +967,18 @@ for clus in clus_to_run:
     # Get counts per week for sequences in the cluster
     if division:
         for sel_coun in selected_country:
-            clus_week_counts_div = {}
             clus_2week_counts_div = {}
             observed_divisions = clus_data[sel_coun]["observed_divisions"] 
             for div in observed_divisions:
                 temp = cluster_meta[cluster_meta["division"].apply(lambda x: x == div)]
-                clus_week_counts_div[div] = temp.value_counts(subset="yr_wk").sort_index().to_dict()
                 clus_2week_counts_div[div] = temp.value_counts(subset="yr_2wk").sort_index().to_dict()
 
             # Get counts per week for sequences regardless of whether in the cluster or not - from week 20 only.
-            total_week_counts_div = {}
             total_2week_counts_div = {}
             for div in observed_divisions:
-                total_week_counts_div[div] = division_all_sequence_counts[sel_coun][div]['week']
                 total_2week_counts_div[div] = division_all_sequence_counts[sel_coun][div]['2week']
 
             # DIVISION LEVEL
-            # Convert into dataframe
-            cluster_data_div = pd.DataFrame(data=clus_week_counts_div)
-            total_data_div = pd.DataFrame(data=total_week_counts_div)
-            # sort
-            total_data_div = total_data_div.sort_index()
-            cluster_data_div = cluster_data_div.sort_index()
-            # store
-            clus_data[sel_coun]["cluster_data_div"] = cluster_data_div
-            clus_data[sel_coun]["total_data_div"] = total_data_div
 
             # Convert into dataframe -- 2 weeks
             cluster_data_2wk_div = pd.DataFrame(data=clus_2week_counts_div)
@@ -1131,12 +1066,8 @@ for clus in clus_to_run:
     observed_countries = clus_data["observed_countries"]
     country_dates = clus_data["country_dates"]
     country_info_df = clus_data["country_info_ordered"]
-    cluster_data = clus_data["cluster_data"]
-    total_data = clus_data["total_data"]
-
-    width = 1
-    smoothing = np.exp(-np.arange(-10, 10) ** 2 / 2 / width ** 2)
-    smoothing /= smoothing.sum()
+    cluster_data = clus_data["cluster_data_2wk"]
+    total_data = clus_data["total_data_2wk"]
 
     # Only plot countries with >= X seqs
     min_to_plot = cutoff_num_seqs
@@ -1161,7 +1092,7 @@ for clus in clus_to_run:
             total_count,
             unsmoothed_cluster_count,
             unsmoothed_total_count,
-        ) = non_zero_counts(cluster_data, total_data, coun, smoothing=smoothing)
+        ) = non_zero_counts(cluster_data, total_data, coun)
         # remove last data point if that point as less than frac sequences compared to the previous count
         week_as_date, cluster_count, total_count = trim_last_data_point(
             week_as_date, cluster_count, total_count, frac=0.1, keep_count=10
@@ -1181,12 +1112,6 @@ for clus in clus_to_run:
         ]
         json_output[clus_build_name][coun]["cluster_sequences"] = [
             int(x) for x in cluster_count
-        ]
-        json_output[clus_build_name][coun]["unsmoothed_cluster_sequences"] = [
-            int(x) for x in unsmoothed_cluster_count
-        ]
-        json_output[clus_build_name][coun]["unsmoothed_total_sequences"] = [
-            int(x) for x in unsmoothed_total_count
         ]
 
         # This used to only plot a subset (those in 'countries to plot' below.)
