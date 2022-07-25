@@ -1,5 +1,8 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2022-07-25
+- Updated Delta shared mutations, defining mutations, & Delta pages to reflect S:G142D as being a defining mutation. WT is likely shown due to a sequencing issue with ARTIC v3 primers. Thanks to Paula Ruiz Rodriguez for spotting this!
+
 ## 2022-07-22
 - Per Variants page now displays frequencies in 2 week intervals, unsmoothed (previously this was 1-week intervals with smoothing)
 - In both Per Variants & Per Country the 'New Year bug' is fixed. This caused random days to be missed around New Year (due to inability to fit 2-week epi-week intervals neatly into every year). This can in some areas of low sequencing numbers alter how plots display slightly.
