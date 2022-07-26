@@ -198,6 +198,7 @@ clusters = {
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "T", "pos": 19, "right": "R"},
+                {"gene": "S", "left": "G", "pos": 142, "right": "D"},
                 {"gene": "S", "left": "E", "pos": 156, "right": "-"},
                 {"gene": "S", "left": "F", "pos": 157, "right": "-"},
                 {"gene": "S", "left": "R", "pos": 158, "right": "G"},
@@ -252,6 +253,7 @@ clusters = {
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "T", "pos": 19, "right": "R"},
+                {"gene": "S", "left": "G", "pos": 142, "right": "D"},
                 {"gene": "S", "left": "E", "pos": 156, "right": "-"},
                 {"gene": "S", "left": "F", "pos": 157, "right": "-"},
                 {"gene": "S", "left": "R", "pos": 158, "right": "G"},
@@ -313,6 +315,7 @@ clusters = {
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "T", "pos": 19, "right": "R"},
+                {"gene": "S", "left": "G", "pos": 142, "right": "D"},
                 {"gene": "S", "left": "E", "pos": 156, "right": "-"},
                 {"gene": "S", "left": "F", "pos": 157, "right": "-"},
                 {"gene": "S", "left": "R", "pos": 158, "right": "G"},

@@ -3,6 +3,13 @@ These are the recent updates on CoVariants in reverse chronological order. For l
 ## 2022-07-26
 - Added 22D page and plots. Removed Iota from Shared Mutation page
 
+## 2022-07-25
+- Updated Delta shared mutations, defining mutations, & Delta pages to reflect S:G142D as being a defining mutation. WT is likely shown due to a sequencing issue with ARTIC v3 primers. Thanks to Paula Ruiz Rodriguez for spotting this!
+
+## 2022-07-22
+- Per Variants page now displays frequencies in 2 week intervals, unsmoothed (previously this was 1-week intervals with smoothing)
+- In both Per Variants & Per Country the 'New Year bug' is fixed. This caused random days to be missed around New Year (due to inability to fit 2-week epi-week intervals neatly into every year). This can in some areas of low sequencing numbers alter how plots display slightly.
+
 ## 2022-05-04
 - Added the 22A (BA.4), 22B (BA.5), and 22C (BA.2.12.1) variants, in line with updates to Nextstrain's recognised clades
 
