@@ -2974,6 +2974,18 @@ bad_seqs = {
     "Uganda/082/2021" : "2021-07-09", #omicron  EPI_ISL_13860471
     "Uganda/093/2021" : "2021-07-23", #omicron  EPI_ISL_13860478
     "Uganda/094/2021" : "2021-06-10", #omicron  EPI_ISL_13860479
+    #26 jul
+    "France/IDF-LBZCentre-C1111550105/2021" : "2021-05-15", #omicron  EPI_ISL_13304875
+    "France/IDF-LBZCentre-YU2111150148/2021" : "2021-01-15", #omicron  EPI_ISL_13304951
+    "Reunion/ChuReu-722060096601/2021" : "2021-06-30", #omicron  EPI_ISL_13910556
+    "Reunion/ChuReu-722060097101/2021" : "2021-06-30", #omicron  EPI_ISL_13909422
+    "Reunion/ChuReu-722060101401/2021" : "2021-06-30", #omicron  EPI_ISL_13909167
+    "Reunion/ChuReu-722060101501/2021" : "2021-06-30", #omicron  EPI_ISL_13909209
+    "Reunion/ChuReu-722060105201/2021" : "2021-06-30", #omicron  EPI_ISL_13910576
+    "Reunion/ChuReu-722060105901/2021" : "2021-06-30", #omicron  EPI_ISL_13909216
+    "Reunion/ChuReu-722060322601/2021" : "2021-06-27", #omicron  EPI_ISL_13909510
+    "Reunion/ChuReu-722060322801/2021" : "2021-06-27", #omicron  EPI_ISL_13909237
+    "Reunion/ChuReu-722060322901/2021" : "2021-06-27", #omicron  EPI_ISL_13910610
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
