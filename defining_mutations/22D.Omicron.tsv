@@ -7,6 +7,7 @@ C3796T			y
 C3927T	ORF1a:S1221L		y		
 G4184A	ORF1a:G1307S				
 C4321T					
+C4586T			y		
 C5183T	ORF1a:P1640S		y		
 C9344T	ORF1a:L3027F				
 A9424G					
@@ -47,9 +48,11 @@ G21641-	S:A27S				This change is a consequence of the prior deletion
 G21987A	S:G142D				Nearby mutation S:K147E is present in much of 22D, but not at the root
 T22016C	S:W152R		y		
 C22033A	S:F157L		y		
-T22200G	S:V213G				Nearby mutation S:I210V is present in much of 22D, but not at the root
-G22331A	S:G257S 		y		
-G22578A	S:G339D				The mutation to H is caused by adjacent mutation G22577C, but occurs deeper in the 22D clade
+A22190G	S:I210V		y		
+T22200G	S:V213G				
+G22331A	S:G257S		y		
+G22577C	S:G339H		y		Note this is the amino acid present in 22D
+G22578A	S:G339D				This mutation is present in all of Omicron; the above mutation (G22577C) in 22D means the final AA at this position is H (see line above)
 C22674T	S:S371F				
 T22679C	S:S373P				
 C22686T	S:S375F				
