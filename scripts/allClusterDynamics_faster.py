@@ -360,6 +360,9 @@ meta = meta[meta["host"] == "Human"]
 meta = meta[meta["QC_overall_status"] != "bad"]
 meta = meta[meta["QC_overall_status"] != ""]
 
+# Remove any that are recombinants
+meta = meta[meta["Nextstrain_clade"] != "recombinant"]
+
 # Filter Metadata to only have those we have mutations for! Allows 'out of sync' files. --> Should we check for the subtitutions and deletions columns to be not empty?
 # meta = meta[meta["strain"].isin(muts["Unnamed: 0"])]
 
