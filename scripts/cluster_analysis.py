@@ -102,7 +102,7 @@ def print_all_clus_alerts(key):
         print_clus_alerts(key, clus)
 
 
-
+# TODO: USe "usa_graph": True (Slack, Emma, May 18 22)
 
 # set min data week to consider
 min_data_week = (2020, 18)  # 20)
@@ -247,11 +247,19 @@ with open(input_meta) as f:
         n_total += 1
         line = f.readline()
 
+# All clus that appear in the Nextstrain_clade column in the metadata
 Nextstrain_clades_display_names = []
 for clus in Nextstrain_clades:
     if clus in display_name_to_clus and display_name_to_clus[clus] in clus_to_run:
         Nextstrain_clades_display_names.append(clus)
 
+# To save time, split up clusters into categories:
+# - official_clus: All clus whose display name appears in the Nextstrain_clade column
+# - unofficial_clus: all other clus that have type == variant and graphing == true
+# - rest: mutations and clusters that are not displayed
+
+# Additionally split categories up by snps, snps2 and gaps (same logic will be applied during snps search,
+# however we're saving a lot of time by avoiding checks for e.g. gaps if a clus doesn't have any gaps designated)
 snps_categories = ["snps", "snps2", "gaps"]
 clus_to_run_breakdown = {key: {"official_clus": [], "unofficial_clus": [], "rest": []} for key in snps_categories}
 
@@ -266,12 +274,17 @@ for clus in clus_to_run:
                 clus_to_run_breakdown[key]["rest"].append(clus)
 
 # TODO: think of prettier solution
+# Undo split by snps, snps2 and gaps for a compact list of all clus that are muts or not displayed
+# (Those will not trigger any duplication flags, i.e. a sequence may be in an "official" or "unofficial" clus and
+# in several of these simultaneously
 rest_all = []
 for key in clus_to_run_breakdown:
     for clus in clus_to_run_breakdown[key]["rest"]:
         if clus not in rest_all:
             rest_all.append(clus)
 
+# For new clades: If Nextstrain has no clade assigned yet but we do, make sure our assignment overwrites Nextclade
+# (This needs special assignment in clusters.py)
 daughter_clades = {}
 # TODO: Rename and adjust
 for c in clus_to_run:
@@ -286,7 +299,7 @@ for c in clus_to_run:
 ##################################
 ##### Prepare datastructure
 
-# Collect counts by country & date and various other information, all sorted per cluster
+# Prepare summary table separately for division
 clus_data_all = {}
 division_data_all = {}
 if division:
@@ -298,6 +311,7 @@ if division:
             division_data_all[country][clus]["cluster_counts"] = {}
 
 #TODO: Check if items() is better for all my iterations
+# Prepare output dictionary
 for clus in clus_to_run:
     clus_data_all[clus] = clusters[clus]
     clus_data_all[clus]["summary"] = {country: {'first_seq': today, 'num_seqs': 0, 'last_seq': earliest_date} for country in all_countries}
@@ -327,13 +341,13 @@ for clus in clus_to_run:
         + f'/cluster_info/cluster_{clusters[clus]["build_name"]}_meta.tsv'
     )
 
+# Collect total counts by country and division
 total_counts_countries = {country: {} for country in all_countries}
 total_counts_divisions = {country: {} for country in division_data_all}
 
 # store acknoweledgements
 acknowledgement_by_variant = {}
 acknowledgement_by_variant["acknowledgements"] = {clus: [] for clus in clus_to_run}
-
 acknowledgement_keys = {}
 acknowledgement_keys["acknowledgements"] = {}
 
@@ -346,11 +360,14 @@ print(f"Preparation took {round((t1-t0)/60,1)} min to run.\n")
 t0 = time.time()
 #detailed_time_measurement = {"ab": 0, "bc": 0,"cd": 0,"de": 0,"ef": 0,"fg": 0,"gh": [0,0,0,0,0,0,0,0,0]}
 
-early_dates_no_Nextclade = {}
+# Store all strains by clus
 all_sequences = {clus: [] for clus in clusters}
+
+# Check for inconsistencies (e.g. two clades assigned via snps). These will be autoexcluded and flagged at the end
+# of the file. If a Nextstrain was found additionally to others, it will use the Nextstrain_clade for assignment
 cluster_inconsistencies = {"Nextstrain_clade": {}, "Non_Nextstrain_clade": {}}
 
-print_lines = sorted([int(n_total/20*i) + 1 for i in range(1,20)])
+print_lines = sorted([int(n_total/20*i) + 1 for i in range(1,20)]) # Print progress in %
 
 print("\nReading and cleaning up the metadata line-by-line...\n")
 n = 0
@@ -359,7 +376,6 @@ with open(input_meta) as f:
     indices = {c:header.index(c) for c in cols}
 
     while True:
-        #t_a = time.time()
         line = f.readline()
         if not line:
             break
@@ -368,12 +384,8 @@ with open(input_meta) as f:
         if n in print_lines:
             t1 = time.time()
             print(f"{round(n/n_total * 100)}% complete... ({round((t1-t0)/60,1)} min)")
-            #print(detailed_time_measurement)
-
 
         l = line.split("\t")
-        #t_b = time.time()
-
 
         ##### CLEANING METADATA #####
 
@@ -393,12 +405,15 @@ with open(input_meta) as f:
         # Invalid dates
         if len(l[indices['date']]) != 10:
             continue
-
         if "X" in l[indices['date']]:
             continue
 
-        # If bad seq there  - exclude!
+        # If in bad_sequences and the date matches
         if l[indices['strain']] in bad_seqs and l[indices['date']] == bad_seqs[l[indices['strain']]]:
+            continue
+
+        clade = l[indices['Nextstrain_clade']]
+        if clade == "recombinant":
             continue
 
         # Future dates
@@ -420,6 +435,7 @@ with open(input_meta) as f:
         if div in swiss_regions:
             div = swiss_regions[div]
 
+        # Collect total sequence counts by countries and dates
         if date_2weeks >= min_data_week:
             if date_2weeks not in total_counts_countries[country]:
                 total_counts_countries[country][date_2weeks] = 0
@@ -434,16 +450,12 @@ with open(input_meta) as f:
                     total_counts_divisions[country][div][date_2weeks] += 1
 
 
-        #t_c = time.time()
-
         ##### ASSIGNING CLUSTERS #####
 
         # If an official Nextstrain clade, then use Nextclade designation to assign them.
         # If not an official Nextstrain clade, use our SNP method
-
+        # Always check for "rest" (mutations and clusters that are currently not displayed)
         clus_to_check = {key: clus_to_run_breakdown[key]["rest"] for key in clus_to_run_breakdown}
-
-        clade = l[indices['Nextstrain_clade']]
 
         clus_all = []
         only_Nextstrain = False
@@ -458,32 +470,38 @@ with open(input_meta) as f:
                         clus_to_check = {key: clus_to_check[key] + daughter for key in clus_to_check if daughter in clus_to_check[key]["official_clus"] or daughter in clus_to_check[key]["unofficial_clus"]}
                 only_Nextstrain = False
 
-        if clus_all == []:
+
+        #TODO: Remove when absolutely sure we don't need this anymore
+        '''
+        if clus_all == []: #TODO: Should we trust nextclade and not check for official clus when nextclade hasn't assigned any?
             clus_to_check = {key: clus_to_check[key] + clus_to_run_breakdown[key]["official_clus"] + clus_to_run_breakdown[key]["unofficial_clus"] for key in clus_to_check}
             only_Nextstrain = False
 
         elif clus_check:
             clus_to_check = {key: clus_to_check[key] + clus_to_run_breakdown[key]["unofficial_clus"] for key in clus_to_check}
             only_Nextstrain = False
+        '''
 
-        #t_d = time.time()
+        # If no official Nextstrain_clade assigned or we want additional checks, also check for "unofficial" clusters
+        # We NEVER check for "officialE clusters. If Nextclade did not assign a cluster, then we won't do it either
+        if clus_all == [] or clus_check:
+            clus_to_check = {key: clus_to_check[key] + clus_to_run_breakdown[key]["unofficial_clus"] for key in clus_to_check}
+            only_Nextstrain = False
 
+        #TODO: Use Pango if no Nextstrain
+
+        # Store mutations as taken from metadata table in three categories to make comparison alter easier/faster
         muts = {"snps": []}
-
         if l[indices['substitutions']]:
             muts["snps"] = [y[1:-1] for y in l[indices['substitutions']].split(',')]
-
-        #muts = {"snps": [int(y[1:-1]) for y in l[indices['substitutions']].split(',') if y], "gaps": [z for y in l[indices['deletions']].split(',') if y for z in
-                        #range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)]} # expand metadata deletions formatting
-
         muts["snps2"] = muts["snps"]
 
+        # Expand from range format (metadata) to list (covariants)
         if l[indices['deletions']]:
             muts["gaps"] = [z for y in l[indices['deletions']].split(',') for z in range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)]
 
-        #t_e = time.time()
-
         # TODO: Did not include "exclude_snps" since none are currently used in clusters.py
+        # Check for each clus if snps/gaps matches the list given in metadata
         for key in muts:
             for clus in clus_to_check[key]:
                 if clus in clus_all:
@@ -494,9 +512,9 @@ with open(input_meta) as f:
                 else:
                     clus_all.append(clus)
 
-        #t_f = time.time()
-
+        # For some clusters we might want the sequence in our total sequences list (used for runs) but not on covariants
         clus_all_no_plotting = []
+
         # Check for inconsistencies
         # TODO: Maybe remove from certain clusters?
         # if wanted seqs are part of a Nextclade designated variant, remove from that count & use this one.
@@ -521,23 +539,11 @@ with open(input_meta) as f:
                 else:# If no Nextstrain clade: Drop all unique clusters (still keep mutations and unofficial clusters)
                     cluster_inconsistencies["Non_Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
 
-
-        #t_g = time.time()
-
-        #t_gh = [0,0,0,0,0,0,0,0,0]
-
         ##### COLLECT COUNTS PER CLUSTER #####
         for clus in clus_all: # TODO: maybe include print_files to not collect data?
 
-            #t_0 = time.time()
-
-            #if clus not in clus_to_run: # TODO: I think this would never happen, can I cut it out to save time?
-                #continue
-
-            #t_1 = time.time()
-
             # Exclude all strains that are dated before their respective clade
-            # TODO: S:Q677 not in clus_dates
+            # TODO: S:Q677 not in clus_dates (is this still relevant?)
             if clus in cluster_first_dates: # TODO: What if missing?
                 if date_formatted < cluster_first_dates[clus]["date_formatted"]:
                     if clus not in alert_dates:
@@ -546,25 +552,17 @@ with open(input_meta) as f:
                         alert_dates[clus][k].append(l[indices[k]])
                     continue
 
-            #t_2 = time.time()
 
-            # Store all strains per assigned cluster
+            # Store all strains per assigned cluster (used for runs)
             all_sequences[clus].append(l[indices['strain']])
 
-            #t_3 = time.time()
-
+            # Skip now if we don't want this sequence in that cluster on covariants
             if clus in clus_all_no_plotting:
                 continue
 
             # TODO: Removed dated_limit, check if must be added again
 
-            '''
-            # Summary: Total counts and first & last seq
-            if country not in clus_data_all[clus]["summary"]:
-                clus_data_all[clus]["summary"][country] = {'first_seq': today, 'num_seqs': 0, 'last_seq': earliest_date}
-            '''
-
-            #t_4 = time.time()
+            # Collect summary counts (total by country, also store first and last date)
             clus_data_all[clus]["summary"][country]["num_seqs"] += 1
             clus_data_all[clus]["summary"][country]["first_seq"] = min(clus_data_all[clus]["summary"][country]["first_seq"], date_formatted)
             clus_data_all[clus]["summary"][country]["last_seq"] = max(clus_data_all[clus]["summary"][country]["last_seq"], date_formatted)
@@ -572,7 +570,6 @@ with open(input_meta) as f:
             # For selected countries (e.g. USA, Switzerland), also collect data by division
             if division:
                 if country in selected_country:
-
                     if div not in division_data_all[country][clus]["summary"]:
                         division_data_all[country][clus]["summary"][div] = {'first_seq': today, 'num_seqs': 0,
                                                                             'last_seq': earliest_date}
@@ -582,27 +579,15 @@ with open(input_meta) as f:
                     division_data_all[country][clus]["summary"][div]["last_seq"] = max(
                         division_data_all[country][clus]["summary"][div]["last_seq"], date_formatted)
 
-            #t_5 = time.time()
-
-            #t_6 = time.time()
-
             # TODO: is it okay to apply this threshold here already? It does have to be in summary, right?
             if date_2weeks < min_data_week:
                 continue
 
-            #t_7 = time.time()
-
             # cluster_counts: Number of sequences per cluster per country per date (2-week interval)
-            # TODO: What if there are *NO* sequences in a given week?
-            '''
-            if country not in clus_data_all[clus]["cluster_counts"]:
-                clus_data_all[clus]["cluster_counts"][country] = {}
-            '''
+            # TODO: What if there are *NO* sequences in a given week? Will this be filled later on?
             if date_2weeks not in clus_data_all[clus]["cluster_counts"][country]:
                 clus_data_all[clus]["cluster_counts"][country][date_2weeks] = 0
             clus_data_all[clus]["cluster_counts"][country][date_2weeks] += 1
-
-            #t_8 = time.time()
 
             if division:
                 if country in selected_country:
@@ -613,30 +598,10 @@ with open(input_meta) as f:
                         division_data_all[country][clus]["cluster_counts"][div][date_2weeks] = 0
                     division_data_all[country][clus]["cluster_counts"][div][date_2weeks] += 1
 
-            #t_9 = time.time()
 
             if print_acks:
                 # remove all but EPI_ISL, on request from GISAID
                 acknowledgement_by_variant["acknowledgements"][clus].append(l[indices['gisaid_epi_isl']])
-
-            #t_gh[0] += t_1 - t_0
-            #t_gh[1] += t_2 - t_1
-            #t_gh[2] += t_3 - t_2
-            #t_gh[3] += t_4 - t_3
-            #t_gh[4] += t_5 - t_4
-            #t_gh[5] += t_6 - t_5
-            #t_gh[6] += t_7 - t_6
-            #t_gh[7] += t_8 - t_7
-            #t_gh[8] += t_9 - t_8
-
-
-        #detailed_time_measurement["ab"] += t_b-t_a
-        #detailed_time_measurement["bc"] += t_c - t_b
-        #detailed_time_measurement["cd"] += t_d - t_c
-        #detailed_time_measurement["de"] += t_e - t_d
-        #detailed_time_measurement["ef"] += t_f - t_e
-        #detailed_time_measurement["fg"] += t_g - t_f
-        #detailed_time_measurement["gh"] = [t_gh[i] + detailed_time_measurement["gh"][i] for i in range(len(t_gh))]
 
 
 print("100% complete!")
@@ -650,7 +615,6 @@ print(f"Collecting all data took {round((t1-t0)/60,1)} min to run.\n")
 #TODO: Maybe adjust clus_to_run, what if a clus is not found?
 
 print("\nWrite out strains for Nextstrain runs...\n")
-# Write out strains for Nextstrain runs
 if print_files:
     for clus in clus_to_run:
         if all_sequences[clus] == []:
@@ -676,15 +640,10 @@ if print_files:
             )
             copyfile(clusterlist_output, copypath2)
 
-            # TODO: Currently I don't do that to save time, should I add it again?
-            # Just so we have the data, write out the metadata for these sequences
-            #cluster_meta.to_csv(out_meta_file, sep="\t", index=False)
-
-# Write out summary table
 print("\nWrite out summary tables...\n")
 if print_files:
     for clus in clus_to_run:
-        if clus_data_all[clus]["summary"] == {}: #TODO: No sequence is "Delta.299I"? Is that possible?
+        if clus_data_all[clus]["summary"] == {}:
             print(f"No summary written out for cluster {clus} (no sequences assigned to this cluster).")
             continue
 
@@ -729,16 +688,15 @@ if print_acks and "all" in clus_answer:
             chunks
         )
 
-        #for ch, fn in zip(chunks, ack_file_names):
-            #with open(ack_out_folder + fn + ".json", "w") as fh:
-                #json.dump(ch, fh, indent=2, sort_keys=True)
+        for ch, fn in zip(chunks, ack_file_names):
+            with open(ack_out_folder + fn + ".json", "w") as fh:
+                json.dump(ch, fh, indent=2, sort_keys=True)
 
 # TODO: Special case for Danish cluster?
 # TODO: also special for "UK countries"?
 
-print("\nCollect countries above cutoff_num_seqs...")
+print("\nCollect countries above cutoff_num_seqs (in at least one cluster)...")
 cutoff_num_seqs = 1200
-# Collect all countries that have at least *cutoff_num_seqs* in at least one cluster
 countries_to_plot = []
 for clus in clus_data_all:
     for country in clus_data_all[clus]["summary"]:
@@ -757,7 +715,7 @@ print(
 ##################################
 #### Plotting
 
-# Pass helper function non_zero_counts over all cluster and all countries once
+# Pass helper function non_zero_counts over all cluster and all countries once to save time
 print("\nPass non_zero_counts() helper function over the data...\n")
 ndone = 0
 for clus in clus_data_all:
@@ -836,7 +794,6 @@ for clus in clus_to_run:
         with open(tables_path + f"{clus_build_name}_data.json", "w") as fh:
             json.dump(json_output[clus_build_name], fh)
 
-
 ## Write out plotting information - only if all clusters have run
 if print_files and "all" in clus_answer:
     countries_plotted = list(clus_data_all[clus]["non_zero_counts"].keys())
@@ -878,8 +835,6 @@ def get_ordered_clusters_to_plot(division_local=False, selected_country_local=No
         print(f"\nDivision plotting ({selected_country_local}): At min plot {min_to_plot}, there are {len(proposed_coun_to_plot)} entries")
     else:
         print(f"\nCountry plotting: At min plot {min_to_plot}, there are {len(proposed_coun_to_plot)} entries PLUS ANDORRA")
-
-
 
     total_coun_counts = {}
     # Sort by total number of cases
@@ -926,7 +881,7 @@ def plot_country_data(
             if division_local:
                 if country not in division_data_all[selected_country_local][clus]["non_zero_counts"]:
                     i += 1
-                    continue # TODO: What exactly is this for?
+                    continue
                 (week_as_date, cluster_count, total_count) = division_data_all[selected_country_local][clus]["non_zero_counts"][country]
             else:
                 if country not in clus_data_all[clus]["non_zero_counts"]:
@@ -993,9 +948,8 @@ if do_divisions_country:
     )
 
 # if all went well (script got to this point), and did an 'all' run, then print out an update!
-update_json = {"lastUpdated": str(datetime.datetime.now().isoformat())}
-
 if print_files and "all" in clus_answer:
+    update_json = {"lastUpdated": str(datetime.datetime.now().isoformat())}
     with open(web_data_folder + f"update.json", "w") as fh:
         json.dump(update_json, fh)
 
@@ -1010,9 +964,7 @@ if "all" in clus_answer:
     print("\nShowing cluster counts")
     print(count_df.sort_values(by="counts"))
 
-
 # Print out how many bad seqs were found
-# TODO: adjust to Emmas wishes
 if alert_dates:
     for clus in alert_dates:
         alert_dates[clus] = pd.DataFrame.from_dict(alert_dates[clus])
