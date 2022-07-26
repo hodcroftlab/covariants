@@ -486,8 +486,8 @@ for clus in [x for x in clus_to_run if x != "mink"]:
     display_name = clus_data['display_name']
     exclude_snps = clus_data["exclude_snps"]
     wanted_seqs = clus_data["wanted_seqs"]
-    pango_lineages = clus_data["pango_lineages"]
-    use_pango = clus_data["use_pango"]
+    pango_lineages = clus_data["pango_lineages"] if "pango_lineages" in clus_data else False
+    use_pango = clus_data["use_pango"] if "use_pango" in clus_data else False
 
     # Use Nextclade
     if "other_nextstrain_names" in clus_data:
@@ -500,7 +500,7 @@ for clus in [x for x in clus_to_run if x != "mink"]:
         next_assign = meta[meta["Nextstrain_clade"].apply(lambda x: x == display_name)]
         wanted_seqs.extend(list(next_assign.strain))
 
-    elif pango_lineages in official_pango and use_pango:
+    elif use_pango and pango_lineages and pango_lineages in official_pango:
         lineage_list = pango_lineages.apply(lambda x: x["name"]).tolist()
         next_assign = meta[meta["Nextclade_pango"].apply(lambda x: x in lineage_list)]
         wanted_seqs.extend(list(next_assign.strain))
