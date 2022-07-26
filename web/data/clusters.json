@@ -4695,7 +4695,7 @@
       "aquaria_urls": [
         {
           "gene": "S",
-          "url": "https://aquaria.app/SARS-CoV-2/S?T19I&L24Del&P25Del&P26Del&A27S&G142D&W152R&F157L&V213G&G257S&G339D&S371F&S373P&S375F&T376A&D405N&R408S&K417N&N440K&G446S&N460K&S477N&T478K&E484A&R493Q&Q498R&N501Y&Y505H&D614G&H655Y&N679K&P681H&N764K&D796Y&Q954H&N969K"
+          "url": "https://aquaria.app/SARS-CoV-2/S?T19I&L24Del&P25Del&P26Del&A27S&G142D&W152R&F157L&I210V&V213G&G257S&G339H&S371F&S373P&S375F&T376A&D405N&R408S&K417N&N440K&G446S&N460K&S477N&T478K&E484A&R493Q&Q498R&N501Y&Y505H&D614G&H655Y&N679K&P681H&N764K&D796Y&Q954H&N969K"
         },
         {
           "gene": "E",
@@ -4732,7 +4732,7 @@
       ],
       "build_name": "22D.Omicron",
       "cluster_data": [],
-      "col": "#02008a",
+      "col": "#008fe0",
       "country_info": [],
       "display_name": "22D (Omicron)",
       "graphing": true,
@@ -4789,6 +4789,12 @@
           },
           {
             "gene": "S",
+            "left": "I",
+            "pos": 210,
+            "right": "V"
+          },
+          {
+            "gene": "S",
             "left": "V",
             "pos": 213,
             "right": "G"
@@ -4803,7 +4809,7 @@
             "gene": "S",
             "left": "G",
             "pos": 339,
-            "right": "D"
+            "right": "H"
           },
           {
             "gene": "S",
@@ -5191,6 +5197,11 @@
           {
             "left": "C",
             "pos": 4321,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 4586,
             "right": "T"
           },
           {

@@ -3,20 +3,16 @@
     "total": 441,
     "counts": [
       {
-        "mut": "S:I210V",
-        "count": 430
-      },
-      {
-        "mut": "S:G339H",
-        "count": 425
-      },
-      {
         "mut": "S:K147E",
         "count": 378
       },
       {
         "mut": "S:D574V",
         "count": 30
+      },
+      {
+        "mut": "S:G339D",
+        "count": 11
       },
       {
         "mut": "S:H69-",
