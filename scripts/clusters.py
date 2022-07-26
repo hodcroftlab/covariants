@@ -16,7 +16,7 @@ clusters = {
         "old_build_names": ["S.501Y.V1"],
         "who_name": ["Alpha"],
         "nextstrain_name": "20I (Alpha, V1)",
-        "pango_lineage": [
+        "pango_lineages": [
             {"name": "B.1.1.7", "url": None}
         ],
         "alternative_names": ["VOC 202012/01"],
