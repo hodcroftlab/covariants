@@ -144,6 +144,16 @@ name_table = [
         "others": [],
     },
     {
+        "clade": "22D (Omicron)",
+        "who": "Omicron",
+        "lineages": [
+            {"name": "BA.2.75", "url": "https://cov-lineages.org/lineages/lineage_BA.2.75.html"}
+        ],
+        "others": [
+            {"name": "Centaurus", "url": "https://www.snopes.com/news/2022/07/14/centaurus-covid-19-strain/"}
+        ],
+    },
+    {
         "clade": "20E (EU1)",
         "who": None,
         "lineages": [
