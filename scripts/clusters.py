@@ -1048,7 +1048,7 @@ clusters = {
        "pango_lineages": [
            {"name": "BA.2.75", "url": "https://cov-lineages.org/lineage.html?lineage=BA.2.75"}
        ],
-       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22D",
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22D.Omicron",
        "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "T", "pos": 19, "right": "I"},
