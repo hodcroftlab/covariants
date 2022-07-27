@@ -2986,6 +2986,43 @@ bad_seqs = {
     "Reunion/ChuReu-722060322601/2021" : "2021-06-27", #omicron  EPI_ISL_13909510
     "Reunion/ChuReu-722060322801/2021" : "2021-06-27", #omicron  EPI_ISL_13909237
     "Reunion/ChuReu-722060322901/2021" : "2021-06-27", #omicron  EPI_ISL_13910610
+    #27 jul
+    "Uganda/094/2021" : "2021-06-10", #omicron 	EPI_ISL_13860479
+    "Uganda/081/2021" : "2021-07-08", #omicron EPI_ISL_13860470
+    "Uganda/082/2021" : "2021-07-09", #omicron EPI_ISL_13860471
+    "Uganda/093/2021" : "2021-07-23", #omicron EPI_ISL_13860478
+    "Uganda/035/2020" : "2020-12-07", #omicron EPI_ISL_13860454
+    "Italy/PUG_UNIBA_APU-BA737/2021" : "2021-07-05", # omicron EPI_ISL_13876414
+    "USA/OR-TRACE-BENT-060321-1396/2021 " :	"2021-06-03", # omicron EPI_ISL_12934186
+    "USA/OR-TRACE-BENT-092321-1412/2021" : "2021-09-23", # omicron EPI_ISL_12934145
+    "USA/OR-TRACE-BENT-100721-1414/2021" : "2021-10-07", # omicron EPI_ISL_12934167
+    "USA/OR-TRACE-BENT-101421-1415/2021" : "2021-10-14", # omicron EPI_ISL_12934260
+    "USA/OR-TRACE-BENT-060321-1396/2021" : "2021-06-03", # omicron EPI_ISL_12934186
+    "USA/OR-TRACE-BENT-102121-1416/2021" : "2021-10-21", # omicron EPI_ISL_12934228
+    "France/IDF-LBZCentre-C11115K0640/2021" : "2021-11-15", # omicron EPI_ISL_13304917
+    "France/IDF-LBZCentre-C11115Z0093/2021" : "2021-11-15", # omicron EPI_ISL_13304911
+    "France/IDF-LBZCentre-YU2111150142/2021" : "2021-11-15", # omicron EPI_ISL_13304903
+    "France/IDF-LBZCentre-ZA2111150064/2021" : "2021-11-15", # omicron EPI_ISL_13304916
+    "France/IDF-LBZCentre-C11115k0421/2021" : "2021-11-15", # omicron EPI_ISL_13304897
+    "France/IDF-LBZCentre-S2111150103/2021" : "2021-11-15", # omicron EPI_ISL_13304909
+    "France/IDF-LBZCentre-YZ2111150106/2021" : "2021-11-15", # omicron EPI_ISL_13304930
+    "France/IDF-LBZCentre-AR111150053/2021" : "2021-11-15", # omicron EPI_ISL_13304938
+    "France/HDF-LBZCentre-1111510153/2021" : "2021-11-15", # omicron EPI_ISL_13304879
+    "France/IDF-LBZCentre-YU2111150151/2021" : "2021-11-15", # omicron EPI_ISL_13304891
+    "France/IDF-LBZCentre-C11115k0364/2021" : "2021-11-15", # omicron EPI_ISL_13304888
+    "France/IDF-LBZCentre-YW2111150235/2021" : "2021-11-15", # omicron EPI_ISL_13304895
+    "France/IDF-LBZCentre-YU2111150153/2021" : "2021-11-15", # omicron EPI_ISL_13304946
+    "France/IDF-LBZCentre-YN2111150091/2021" : "2021-11-15", # omicron EPI_ISL_13304878
+    "France/IDF-LBZCentre-YX2111150083/2021" : "2021-11-15", # omicron EPI_ISL_13304933
+    "France/IDF-LBZCentre-C11115P0152/2021" : "2021-11-15", # omicron EPI_ISL_13304921
+    "France/HDF-LBZCentre-1111501299/2021" : "2021-11-15", # omicron EPI_ISL_13304934
+    "France/IDF-LBZCentre-AC111150080/2021" : "2021-11-15", # omicron EPI_ISL_13304923
+    "France/IDF-LBZCentre-1111530063/2021" : "2021-11-15", # omicron EPI_ISL_13304926
+    "France/IDF-LBZCentre-C11115K0077/2021" : "2021-11-15", # omicron EPI_ISL_13304953
+    "France/IDF-LBZCentre-C11115K0686/2021" : "2021-11-15", # omicron EPI_ISL_13304912
+    "Slovakia/BB_22_00000588/2021" : "2021-11-09", #omicron  EPI_ISL_10764821
+    "Guadeloupe/IPP42838/2021" : "2021-11-02", #omicron  EPI_ISL_13873803
+
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
