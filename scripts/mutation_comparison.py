@@ -47,7 +47,7 @@ mutation_comparison = {
     "21A (Delta)\n(B.1.617.2)": {
         "nonsynonymous": [
             "S:T19R",
-            "S:G142D"
+            "S:G142D",
             "S:E156-",
             "S:F157-",
             "S:R158G",

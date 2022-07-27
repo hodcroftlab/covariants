@@ -6,7 +6,7 @@
         "S:A570D",
         "S:D80A",
         "S:T20N",
-        "S:G142DS:E156-",
+        "S:E156-",
         "S:E154K",
         "S:V143-",
         null,
@@ -345,6 +345,24 @@
       ]
     },
     {
+      "pos": 142,
+      "presence": [
+        null,
+        null,
+        null,
+        "S:G142D",
+        null,
+        "S:G142-",
+        "S:G142D",
+        "S:G142D",
+        "S:G142D",
+        "S:G142D",
+        null,
+        null,
+        null
+      ]
+    },
+    {
       "pos": 339,
       "presence": [
         null,
@@ -519,24 +537,6 @@
         "S:Y505H",
         "S:Y505H",
         "S:Y505H",
-        null,
-        null,
-        null
-      ]
-    },
-    {
-      "pos": 142,
-      "presence": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        "S:G142-",
-        "S:G142D",
-        "S:G142D",
-        "S:G142D",
-        "S:G142D",
         null,
         null,
         null
@@ -1162,7 +1162,7 @@
         null,
         null,
         null,
-        null,
+        "S:G142D",
         null,
         "S:G142-",
         "S:G142D",
