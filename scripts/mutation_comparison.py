@@ -240,6 +240,7 @@ mutation_comparison = {
             "S:P26-",
             "S:A27S",
             "S:G142D",
+            "S:K147E", 
             "S:W152R",
             "S:F157L",
             "S:I210V",
