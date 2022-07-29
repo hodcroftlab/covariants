@@ -1667,8 +1667,8 @@ clusters = {
     },
 
     "S439": {
-        "snps": [7767, 22879],
-        "snps_with_base": ["7767C", "22879A"],
+        "snps": [7767, 22879, 8047], #CAT
+        "snps_with_base": ["7767C", "22879A", "8047T"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -1684,7 +1684,8 @@ clusters = {
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_439&f_region=Europe",
         "mutations": {
             "nonsynonymous": [
-                {"gene": "S", "left": "S", "pos": 439, "right": "K"},
+                {"gene": "S", "left": "N", "pos": 439, "right": "K"},
+                {"gene": "S", "left": "D", "pos": 614, "right": "G"},
                 {"gene": "ORF1a", "left": "I", "pos": 2501, "right": "T"},
             ],
             "synonymous": [
@@ -1807,8 +1808,8 @@ clusters = {
     },
 
     "S98": {
-        "snps": [21855, 25505],
-        "snps_with_base": ["21855T", "25505G"],
+        "snps": [21855, 25505, 28651], #TGT
+        "snps_with_base": ["21855T", "25505G", "28651T"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -1826,6 +1827,7 @@ clusters = {
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "S", "pos": 98, "right": "F"},
+                {"gene": "S", "left": "D", "pos": 614, "right": "G"},
                 {"gene": "N", "left": "P", "pos": 199, "right": "L"},
                 {"gene": "ORF3a", "left": "Q", "pos": 38, "right": "R"},
                 {"gene": "ORF3a", "left": "G", "pos": 172, "right": "R"},
@@ -1835,10 +1837,10 @@ clusters = {
         },
     },
     "S80": {
-        "snps": [21800, 3099],
-        "snps_with_base": ["23438T", "772C"],
+        "snps": [21800, 3099], #TTT 4965T
+        "snps_with_base": ["21800T", "3099T", "4965T"],
         "cluster_data": [],
-        "nextstrain_build": False,
+        "nextstrain_build": True,
         "graphing": True,
         "type": "variant",
         "important": False,
@@ -1853,6 +1855,7 @@ clusters = {
         "mutations": {
             "nonsynonymous": [
                 {"gene": "S", "left": "D", "pos": 80, "right": "Y"},
+                {"gene": "S", "left": "D", "pos": 614, "right": "G"},
                 {"gene": "N", "left": "S", "pos": 186, "right": "Y"},
                 {"gene": "N", "left": "D", "pos": 377, "right": "Y"},
                 {"gene": "ORF1a", "left": "T", "pos": 945, "right": "I"},
@@ -1876,8 +1879,8 @@ clusters = {
         },
     },
     "S626": {
-        "snps": [23438, 772],
-        "snps_with_base": ["24926T", "9120T"],
+        "snps": [23438, 772, 10868], #TC 10868T
+        "snps_with_base": ["23438T", "772C", "10868T"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -1892,12 +1895,15 @@ clusters = {
         ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.A626S?f_region=Europe",
         "mutations": {
-            "nonsynonymous": [{"gene": "S", "left": "A", "pos": 626, "right": "S"}]
+            "nonsynonymous": [
+                {"gene": "S", "left": "D", "pos": 614, "right": "G"},
+                {"gene": "S", "left": "A", "pos": 626, "right": "S"},
+                ]
         },
     },
     "S1122": {
-        "snps": [24926, 9120],
-        "snps_with_base": ["24926T", "9120T"],
+        "snps": [24926, 9120, 18032], #TTT
+        "snps_with_base": ["24926T", "9120T", "18032T"],
         "cluster_data": [],  # mostly Swedish cluster
         "nextstrain_build": False,
         "graphing": True,
@@ -1914,6 +1920,7 @@ clusters = {
     # color, europe Filter
         "mutations": {
             "nonsynonymous": [
+                {"gene": "S", "left": "D", "pos": 614, "right": "G"},
                 {"gene": "S", "left": "V", "pos": 1122, "right": "L"},
             ]
         },
