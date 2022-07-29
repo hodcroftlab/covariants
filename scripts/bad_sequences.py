@@ -3022,7 +3022,11 @@ bad_seqs = {
     "France/IDF-LBZCentre-C11115K0686/2021" : "2021-11-15", # omicron EPI_ISL_13304912
     "Slovakia/BB_22_00000588/2021" : "2021-11-09", #omicron  EPI_ISL_10764821
     "Guadeloupe/IPP42838/2021" : "2021-11-02", #omicron  EPI_ISL_13873803
-
+    #29 july
+    "Argentina/PAIS-F0342/2021" : "2021-09-08", #omicron 21K EPI_ISL_14050436
+    "Argentina/PAIS-F0349/2021" : "2021-09-14", #omicron 21K EPI_ISL_14050437
+    "Argentina/PAIS-F0350/2021" : "2021-09-15", #omicron 21K EPI_ISL_14050438
+    "Argentina/PAIS-F0353/2021" : "2021-09-18", #omicron 21K EPI_ISL_14050439
 
     #Senegal set with suspicious dates - excluding until can confirm. Sorted by variant
     #Alpha
