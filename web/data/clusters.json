@@ -7262,7 +7262,7 @@
       "aquaria_urls": [
         {
           "gene": "S",
-          "url": "https://aquaria.app/SARS-CoV-2/S?S439K"
+          "url": "https://aquaria.app/SARS-CoV-2/S?N439K&D614G"
         },
         {
           "gene": "ORF1a",
@@ -7280,9 +7280,15 @@
         "nonsynonymous": [
           {
             "gene": "S",
-            "left": "S",
+            "left": "N",
             "pos": 439,
             "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
           },
           {
             "gene": "ORF1a",
@@ -7309,11 +7315,13 @@
       ],
       "snps": [
         7767,
-        22879
+        22879,
+        8047
       ],
       "snps_with_base": [
         "7767C",
-        "22879A"
+        "22879A",
+        "8047T"
       ],
       "type": "variant"
     },
@@ -7751,7 +7759,7 @@
       "aquaria_urls": [
         {
           "gene": "S",
-          "url": "https://aquaria.app/SARS-CoV-2/S?S98F"
+          "url": "https://aquaria.app/SARS-CoV-2/S?S98F&D614G"
         },
         {
           "gene": "N",
@@ -7776,6 +7784,12 @@
             "left": "S",
             "pos": 98,
             "right": "F"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
           },
           {
             "gene": "N",
@@ -7820,11 +7834,13 @@
       ],
       "snps": [
         21855,
-        25505
+        25505,
+        28651
       ],
       "snps_with_base": [
         "21855T",
-        "25505G"
+        "25505G",
+        "28651T"
       ],
       "type": "variant"
     },
@@ -7832,7 +7848,7 @@
       "aquaria_urls": [
         {
           "gene": "S",
-          "url": "https://aquaria.app/SARS-CoV-2/S?D80Y"
+          "url": "https://aquaria.app/SARS-CoV-2/S?D80Y&D614G"
         },
         {
           "gene": "N",
@@ -7865,6 +7881,12 @@
             "left": "D",
             "pos": 80,
             "right": "Y"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
           },
           {
             "gene": "N",
@@ -7964,7 +7986,7 @@
           }
         ]
       },
-      "nextstrain_build": false,
+      "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.D80Y?f_region=Europe",
       "pango_lineages": [
         {
@@ -7977,8 +7999,9 @@
         3099
       ],
       "snps_with_base": [
-        "23438T",
-        "772C"
+        "21800T",
+        "3099T",
+        "4965T"
       ],
       "type": "variant"
     },
@@ -7986,7 +8009,7 @@
       "aquaria_urls": [
         {
           "gene": "S",
-          "url": "https://aquaria.app/SARS-CoV-2/S?A626S"
+          "url": "https://aquaria.app/SARS-CoV-2/S?D614G&A626S"
         }
       ],
       "build_name": "S.A626S",
@@ -7998,6 +8021,12 @@
       "important": false,
       "mutations": {
         "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
           {
             "gene": "S",
             "left": "A",
@@ -8016,11 +8045,13 @@
       ],
       "snps": [
         23438,
-        772
+        772,
+        10868
       ],
       "snps_with_base": [
-        "24926T",
-        "9120T"
+        "23438T",
+        "772C",
+        "10868T"
       ],
       "type": "variant"
     },
@@ -8028,7 +8059,7 @@
       "aquaria_urls": [
         {
           "gene": "S",
-          "url": "https://aquaria.app/SARS-CoV-2/S?V1122L"
+          "url": "https://aquaria.app/SARS-CoV-2/S?D614G&V1122L"
         }
       ],
       "build_name": "S.V1122L",
@@ -8040,6 +8071,12 @@
       "important": false,
       "mutations": {
         "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
           {
             "gene": "S",
             "left": "V",
@@ -8058,11 +8095,13 @@
       ],
       "snps": [
         24926,
-        9120
+        9120,
+        18032
       ],
       "snps_with_base": [
         "24926T",
-        "9120T"
+        "9120T",
+        "18032T"
       ],
       "type": "variant"
     },
