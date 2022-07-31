@@ -22,14 +22,12 @@ import { theme } from 'src/theme'
 import { DOMAIN_STRIPPED } from 'src/constants'
 import { Plausible } from 'src/components/Common/Plausible'
 import { SeoApp } from 'src/components/Common/SeoApp'
-
 import { getMdxComponents } from 'src/components/Common/MdxComponents'
+import { loadPolyfills } from 'src/polyfills'
 
 import 'src/styles/global.scss'
 
-if (typeof window.IntersectionObserver === 'undefined') {
-  await import('intersection-observer')
-}
+await loadPolyfills()
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   const queryClient = useMemo(() => new QueryClient(), [])
