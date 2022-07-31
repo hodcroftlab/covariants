@@ -27,6 +27,10 @@ import { getMdxComponents } from 'src/components/Common/MdxComponents'
 
 import 'src/styles/global.scss'
 
+if (typeof window.IntersectionObserver === 'undefined') {
+  await import('intersection-observer')
+}
+
 function MyApp({ Component, pageProps, router }: AppProps) {
   const queryClient = useMemo(() => new QueryClient(), [])
 
