@@ -2,9 +2,8 @@
 import React, { CSSProperties, useMemo, useRef } from 'react'
 
 import dynamic from 'next/dynamic'
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Label } from 'recharts'
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Label } from 'recharts'
 import { DateTime } from 'luxon'
-import ReactResizeDetector from 'react-resize-detector'
 
 import type { PerCountryCasesDistributionDatum } from 'src/io/getPerCountryCasesData'
 import { ticks, timeDomain } from 'src/io/getParams'
@@ -12,7 +11,7 @@ import { CLUSTER_NAME_OTHERS, getClusterColor } from 'src/io/getClusters'
 import { formatDateHumanely } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
-import { ChartContainerOuter, ChartContainerInner } from 'src/components/Common/PlotLayout'
+import { ChartContainer } from 'src/components/Common/ChartContainer'
 import { useTheme } from 'styled-components'
 import { CasesPlotTooltip } from './CasesPlotTooltip'
 
@@ -43,78 +42,72 @@ export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotPro
   )
 
   return (
-    <ChartContainerOuter>
-      <ChartContainerInner>
-        <ReactResizeDetector handleWidth refreshRate={300} refreshMode="debounce">
-          {({ width }: { width?: number }) => {
-            const adjustedTicks = adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin).slice(1) // slice ensures first tick is not outside domain
-            return (
-              <ResponsiveContainer aspect={theme.plot.aspectRatio} debounce={0}>
-                <AreaChart margin={CHART_MARGIN} data={data} ref={chartRef}>
-                  <XAxis
-                    dataKey="week"
-                    type="number"
-                    tickFormatter={formatDateHumanely}
-                    domain={timeDomain}
-                    ticks={adjustedTicks}
-                    tick={theme.plot.tickStyle}
-                    tickMargin={theme.plot.tickMargin?.x}
-                    allowDataOverflow
-                  />
-                  <YAxis
-                    type="number"
-                    name="Cases per million"
-                    tick={theme.plot.tickStyle}
-                    tickMargin={theme.plot.tickMargin?.y}
-                    allowDataOverflow
-                  >
-                    <Label
-                      style={yAxisLabelStyle}
-                      position="insideLeft"
-                      offset={0}
-                      angle={270}
-                      value={'Cases per million people'}
-                    />
-                  </YAxis>
+    <ChartContainer>
+      {({ width, height }) => {
+        const adjustedTicks = adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin).slice(1) // slice ensures first tick is not outside domain
+        return (
+          <AreaChart width={width} height={height} margin={CHART_MARGIN} data={data} ref={chartRef}>
+            <XAxis
+              dataKey="week"
+              type="number"
+              tickFormatter={formatDateHumanely}
+              domain={timeDomain}
+              ticks={adjustedTicks}
+              tick={theme.plot.tickStyle}
+              tickMargin={theme.plot.tickMargin?.x}
+              allowDataOverflow
+            />
+            <YAxis
+              type="number"
+              name="Cases per million"
+              tick={theme.plot.tickStyle}
+              tickMargin={theme.plot.tickMargin?.y}
+              allowDataOverflow
+            >
+              <Label
+                style={yAxisLabelStyle}
+                position="insideLeft"
+                offset={0}
+                angle={270}
+                value={'Cases per million people'}
+              />
+            </YAxis>
 
-                  {cluster_names.map((cluster) => (
-                    <Area
-                      key={cluster}
-                      type="monotone"
-                      dataKey={cluster}
-                      stackId="1"
-                      stroke="none"
-                      fill={getClusterColor(cluster)}
-                      fillOpacity={1}
-                      isAnimationActive={false}
-                    />
-                  ))}
+            {cluster_names.map((cluster) => (
+              <Area
+                key={cluster}
+                type="monotone"
+                dataKey={cluster}
+                stackId="1"
+                stroke="none"
+                fill={getClusterColor(cluster)}
+                fillOpacity={1}
+                isAnimationActive={false}
+              />
+            ))}
 
-                  <Area
-                    type="monotone"
-                    dataKey={CLUSTER_NAME_OTHERS}
-                    stackId="1"
-                    stroke="none"
-                    fill={theme.clusters.color.others}
-                    fillOpacity={1}
-                    isAnimationActive={false}
-                  />
+            <Area
+              type="monotone"
+              dataKey={CLUSTER_NAME_OTHERS}
+              stackId="1"
+              stroke="none"
+              fill={theme.clusters.color.others}
+              fillOpacity={1}
+              isAnimationActive={false}
+            />
 
-                  <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
+            <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
 
-                  <Tooltip
-                    content={CasesPlotTooltip}
-                    isAnimationActive={false}
-                    allowEscapeViewBox={ALLOW_ESCAPE_VIEW_BOX}
-                    offset={50}
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
-            )
-          }}
-        </ReactResizeDetector>
-      </ChartContainerInner>
-    </ChartContainerOuter>
+            <Tooltip
+              content={CasesPlotTooltip}
+              isAnimationActive={false}
+              allowEscapeViewBox={ALLOW_ESCAPE_VIEW_BOX}
+              offset={50}
+            />
+          </AreaChart>
+        )
+      }}
+    </ChartContainer>
   )
 }
 

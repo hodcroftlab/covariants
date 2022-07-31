@@ -3,8 +3,6 @@ import React, { useMemo } from 'react'
 
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
 import { DateTime } from 'luxon'
-import { useResizeDetector } from 'react-resize-detector'
-import { useInView } from 'react-intersection-observer'
 
 import type { CountryDistributionDatum } from 'src/io/getPerCountryData'
 import { theme } from 'src/theme'
@@ -12,8 +10,7 @@ import { ticks, timeDomain } from 'src/io/getParams'
 import { CLUSTER_NAME_OTHERS, getClusterColor } from 'src/io/getClusters'
 import { formatDateHumanely, formatProportion } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
-import { ChartContainerOuter, ChartContainerInner } from 'src/components/Common/PlotLayout'
-import FadeIn from 'src/components/Common/FadeIn'
+import { ChartContainer } from 'src/components/Common/ChartContainer'
 import { CountryDistributionPlotTooltip } from './CountryDistributionPlotTooltip'
 
 const allowEscapeViewBox = { x: false, y: true }
@@ -46,67 +43,59 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
     return { adjustedTicks, domainX, domainY }
   }, [width])
 
-  const [ref, inView] = useInView()
-
   return (
-    <div ref={ref} style={{ width, height }}>
-      {inView && (
-        <FadeIn>
-          <AreaChart margin={theme.plot.margin} data={data} stackOffset="expand" width={width} height={height}>
-            <XAxis
-              dataKey="week"
-              type="number"
-              tickFormatter={formatDateHumanely}
-              domain={domainX}
-              ticks={adjustedTicks}
-              tick={theme.plot.tickStyle}
-              tickMargin={theme.plot.tickMargin?.x}
-              allowDataOverflow
-            />
-            <YAxis
-              type="number"
-              tickFormatter={formatProportion}
-              domain={domainY}
-              tick={theme.plot.tickStyle}
-              tickMargin={theme.plot.tickMargin?.y}
-              allowDataOverflow
-            />
+    <AreaChart margin={theme.plot.margin} data={data} stackOffset="expand" width={width} height={height}>
+      <XAxis
+        dataKey="week"
+        type="number"
+        tickFormatter={formatDateHumanely}
+        domain={domainX}
+        ticks={adjustedTicks}
+        tick={theme.plot.tickStyle}
+        tickMargin={theme.plot.tickMargin?.x}
+        allowDataOverflow
+      />
+      <YAxis
+        type="number"
+        tickFormatter={formatProportion}
+        domain={domainY}
+        tick={theme.plot.tickStyle}
+        tickMargin={theme.plot.tickMargin?.y}
+        allowDataOverflow
+      />
 
-            {cluster_names.map((cluster) => (
-              <Area
-                key={cluster}
-                type="monotone"
-                dataKey={cluster}
-                stackId="1"
-                stroke="none"
-                fill={getClusterColor(cluster)}
-                fillOpacity={1}
-                isAnimationActive={false}
-              />
-            ))}
+      {cluster_names.map((cluster) => (
+        <Area
+          key={cluster}
+          type="monotone"
+          dataKey={cluster}
+          stackId="1"
+          stroke="none"
+          fill={getClusterColor(cluster)}
+          fillOpacity={1}
+          isAnimationActive={false}
+        />
+      ))}
 
-            <Area
-              type="monotone"
-              dataKey={CLUSTER_NAME_OTHERS}
-              stackId="1"
-              stroke="none"
-              fill={theme.clusters.color.others}
-              fillOpacity={1}
-              isAnimationActive={false}
-            />
+      <Area
+        type="monotone"
+        dataKey={CLUSTER_NAME_OTHERS}
+        stackId="1"
+        stroke="none"
+        fill={theme.clusters.color.others}
+        fillOpacity={1}
+        isAnimationActive={false}
+      />
 
-            <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
+      <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
 
-            <Tooltip
-              content={CountryDistributionPlotTooltip}
-              isAnimationActive={false}
-              allowEscapeViewBox={allowEscapeViewBox}
-              offset={50}
-            />
-          </AreaChart>
-        </FadeIn>
-      )}
-    </div>
+      <Tooltip
+        content={CountryDistributionPlotTooltip}
+        isAnimationActive={false}
+        allowEscapeViewBox={allowEscapeViewBox}
+        offset={50}
+      />
+    </AreaChart>
   )
 }
 
@@ -116,18 +105,11 @@ export interface CountryDistributionPlotProps {
 }
 
 export function CountryDistributionPlot({ cluster_names, distribution }: CountryDistributionPlotProps) {
-  const { ref, width } = useResizeDetector({ handleWidth: true })
-
   return (
-    <ChartContainerOuter ref={ref}>
-      <ChartContainerInner>
-        <AreaPlot
-          width={width}
-          height={(width || 0) / theme.plot.aspectRatio}
-          cluster_names={cluster_names}
-          distribution={distribution}
-        />
-      </ChartContainerInner>
-    </ChartContainerOuter>
+    <ChartContainer>
+      {({ width, height }) => (
+        <AreaPlot width={width} height={height} cluster_names={cluster_names} distribution={distribution} />
+      )}
+    </ChartContainer>
   )
 }

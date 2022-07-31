@@ -3,9 +3,8 @@ import React, { useMemo } from 'react'
 
 import { get } from 'lodash'
 import { DateTime } from 'luxon'
-import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts'
 import { useTheme } from 'styled-components'
-import { useResizeDetector } from 'react-resize-detector'
 
 import { ticks, timeDomain } from 'src/io/getParams'
 import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
@@ -13,7 +12,7 @@ import { formatDateHumanely, formatProportion } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import type { ClusterDistributionDatum } from 'src/io/getPerClusterData'
 import { ClusterDistributionPlotTooltip } from 'src/components/ClusterDistribution/ClusterDistributionPlotTooltip'
-import { ChartContainerInner, ChartContainerOuter } from 'src/components/Common/PlotLayout'
+import { ChartContainer } from 'src/components/Common/ChartContainer'
 
 const getValueOrig = (country: string) => (value: ClusterDistributionDatum) => {
   const orig = get(value.orig, country, false)
@@ -36,12 +35,13 @@ const getValueInterp = (country: string) => (value: ClusterDistributionDatum) =>
 const allowEscapeViewBox = { x: false, y: true }
 
 interface LinePlotProps {
-  width?: number
+  width: number
+  height: number
   country_names: string[]
   distribution: ClusterDistributionDatum[]
 }
 
-function LinePlot({ width, country_names, distribution }: LinePlotProps) {
+function LinePlot({ width, height, country_names, distribution }: LinePlotProps) {
   const theme = useTheme()
 
   const data = useMemo(
@@ -93,38 +93,36 @@ function LinePlot({ width, country_names, distribution }: LinePlotProps) {
   }, [country_names])
 
   return (
-    <ResponsiveContainer aspect={theme.plot.aspectRatio}>
-      <LineChart margin={theme.plot.margin} data={data}>
-        <XAxis
-          dataKey="week"
-          type="number"
-          tickFormatter={formatDateHumanely}
-          domain={domainX}
-          ticks={adjustedTicks}
-          tick={theme.plot.tickStyle}
-          tickMargin={theme.plot.tickMargin?.x}
-          allowDataOverflow
-        />
-        <YAxis
-          type="number"
-          tickFormatter={formatProportion}
-          domain={domainY}
-          tick={theme.plot.tickStyle}
-          tickMargin={theme.plot.tickMargin?.y}
-          allowDataOverflow
-        />
-        <Tooltip
-          content={ClusterDistributionPlotTooltip}
-          isAnimationActive={false}
-          allowEscapeViewBox={allowEscapeViewBox}
-          offset={50}
-        />
+    <LineChart width={width} height={height} margin={theme.plot.margin} data={data}>
+      <XAxis
+        dataKey="week"
+        type="number"
+        tickFormatter={formatDateHumanely}
+        domain={domainX}
+        ticks={adjustedTicks}
+        tick={theme.plot.tickStyle}
+        tickMargin={theme.plot.tickMargin?.x}
+        allowDataOverflow
+      />
+      <YAxis
+        type="number"
+        tickFormatter={formatProportion}
+        domain={domainY}
+        tick={theme.plot.tickStyle}
+        tickMargin={theme.plot.tickMargin?.y}
+        allowDataOverflow
+      />
+      <Tooltip
+        content={ClusterDistributionPlotTooltip}
+        isAnimationActive={false}
+        allowEscapeViewBox={allowEscapeViewBox}
+        offset={50}
+      />
 
-        <CartesianGrid stroke="#2222" />
+      <CartesianGrid stroke="#2222" />
 
-        {lines}
-      </LineChart>
-    </ResponsiveContainer>
+      {lines}
+    </LineChart>
   )
 }
 
@@ -134,13 +132,11 @@ export interface ClusterDistributionPlotProps {
 }
 
 export function ClusterDistributionPlot({ country_names, distribution }: ClusterDistributionPlotProps) {
-  const { ref, width } = useResizeDetector({ handleWidth: true })
-
   return (
-    <ChartContainerOuter ref={ref}>
-      <ChartContainerInner>
-        <LinePlot width={width} country_names={country_names} distribution={distribution} />
-      </ChartContainerInner>
-    </ChartContainerOuter>
+    <ChartContainer>
+      {({ width, height }) => (
+        <LinePlot width={width} height={height} country_names={country_names} distribution={distribution} />
+      )}
+    </ChartContainer>
   )
 }
