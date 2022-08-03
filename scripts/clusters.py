@@ -1840,7 +1840,7 @@ clusters = {
         "snps": [21800, 3099], #TTT 4965T
         "snps_with_base": ["21800T", "3099T", "4965T"],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": False,
