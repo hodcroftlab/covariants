@@ -3013,9 +3013,10 @@ bad_seqs = {
     "Argentina/PAIS-F0400/2021" : "2021-10-27", #omicron EPI_ISL_12958296
     "England/DHSC-CYDFT9Z/2021" : "2021-10-31", #omicron EPI_ISL_10448522
     "Canada/ON-KHS-21-08090-v1/2021" : "2021-10-29", #omicron EPI_ISL_13495688
-    "Argentina/PAIS-F0420/2021 " : "2021-11-06", #omicron EPI_ISL_12958304
+    "Argentina/PAIS-F0420/2021" : "2021-11-06", #omicron EPI_ISL_12958304
     "USA/UT-UPHL-220207170277/2021" : "2021-10-27", #omicron EPI_ISL_9677117
     "Canada/ON-KHS-21-08089-v1/2021" : "2021-10-29", #omicron EPI_ISL_13495687
+    #3 Aug
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
