@@ -111,7 +111,6 @@ min_data_week = (2020, 18)  # 20)
 ##################################
 #### Find out what users want
 
-# TODO: Which of these are still required?
 # ask user if they want to write-out files or not:
 print_files = True
 print_answer = input("\nWrite out data files?(y/n) (Enter is yes): ")
@@ -273,7 +272,6 @@ for clus in clus_to_run:
             else:
                 clus_to_run_breakdown[key]["rest"].append(clus)
 
-# TODO: think of prettier solution
 # Undo split by snps, snps2 and gaps for a compact list of all clus that are muts or not displayed
 # (Those will not trigger any duplication flags, i.e. a sequence may be in an "official" or "unofficial" clus and
 # in several of these simultaneously
@@ -423,11 +421,7 @@ with open(input_meta) as f:
             print(f"{l[indices['strain']]}: {l[indices['date']]}")
             continue
 
-        # TODO: is it faster if I don't call the function?
         date_2weeks = to2week_ordinal(date_formatted)
-        # n = date_formatted.toordinal()
-        # monday = datetime.date.fromordinal(n - ((n - ref_monday) % 14))
-        # date_2weeks = (monday.isocalendar()[0], monday.isocalendar()[1])
 
         country = l[indices["country"]]
         # Replace Swiss divisions with swiss-region, but store original division
@@ -516,9 +510,6 @@ with open(input_meta) as f:
         clus_all_no_plotting = []
 
         # Check for inconsistencies
-        # TODO: Maybe remove from certain clusters?
-        # if wanted seqs are part of a Nextclade designated variant, remove from that count & use this one.
-        # ONLY IF PLOTTING and if this run ISN'T an official run
         if not only_Nextstrain: # Only check for inconsistencies if there could be more than only one Nextstrain clade
             clus_all_unique = [c for c in clus_all if c not in rest_all]
             daughter_parent = False
@@ -552,7 +543,6 @@ with open(input_meta) as f:
                         alert_dates[clus][k].append(l[indices[k]])
                     continue
 
-
             # Store all strains per assigned cluster (used for runs)
             all_sequences[clus].append(l[indices['strain']])
 
@@ -584,7 +574,6 @@ with open(input_meta) as f:
                 continue
 
             # cluster_counts: Number of sequences per cluster per country per date (2-week interval)
-            # TODO: What if there are *NO* sequences in a given week? Will this be filled later on?
             if date_2weeks not in clus_data_all[clus]["cluster_counts"][country]:
                 clus_data_all[clus]["cluster_counts"][country][date_2weeks] = 0
             clus_data_all[clus]["cluster_counts"][country][date_2weeks] += 1
@@ -611,8 +600,6 @@ print(f"Collecting all data took {round((t1-t0)/60,1)} min to run.\n")
 ##################################
 ##################################
 #### Process counts and check for min number of sequences per country
-
-#TODO: Maybe adjust clus_to_run, what if a clus is not found?
 
 print("\nWrite out strains for Nextstrain runs...\n")
 if print_files:
