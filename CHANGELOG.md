@@ -1,5 +1,8 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2022-07-26
+- Added 22D page and plots. Removed Iota from Shared Mutation page
+
 ## 2022-07-25
 - Updated Delta shared mutations, defining mutations, & Delta pages to reflect S:G142D as being a defining mutation. WT is likely shown due to a sequencing issue with ARTIC v3 primers. Thanks to Paula Ruiz Rodriguez for spotting this!
 

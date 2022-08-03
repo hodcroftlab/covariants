@@ -313,7 +313,7 @@ t0 = time.time()
 #}
 input_meta = "data/metadata.tsv"
 dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str, 'age': str, 'QC_frame_shifts': str, 'frame_shifts': str, 'QC_overall_status': str}
-cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl', 'QC_overall_status']
+cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl', 'QC_overall_status', 'Nextclade_pango']
 meta = pd.read_csv(input_meta, sep="\t", dtype=dtype, index_col=False, usecols=cols) #dtype={'location': str, 'sampling_strategy': str, 'clock_deviation': str}, index_col=False)
 meta = meta.fillna("")
 
@@ -360,6 +360,9 @@ meta = meta[meta["host"] == "Human"]
 meta = meta[meta["QC_overall_status"] != "bad"]
 meta = meta[meta["QC_overall_status"] != ""]
 
+# Remove any that are recombinants
+meta = meta[meta["Nextstrain_clade"] != "recombinant"]
+
 # Filter Metadata to only have those we have mutations for! Allows 'out of sync' files. --> Should we check for the subtitutions and deletions columns to be not empty?
 # meta = meta[meta["strain"].isin(muts["Unnamed: 0"])]
 
@@ -370,6 +373,8 @@ print("\nMetadata is ready to go...\n")
 
 # Figure out what clades are really recognised
 official_clades = list(meta["Nextstrain_clade"].unique())
+# Figure out what pango lineages are recognised
+official_pango = list(meta["Nextclade_pango"].unique())
 
 # Search for early dates
 t0 = time.time()
@@ -484,6 +489,8 @@ for clus in [x for x in clus_to_run if x != "mink"]:
     display_name = clus_data['display_name']
     exclude_snps = clus_data["exclude_snps"]
     wanted_seqs = clus_data["wanted_seqs"]
+    pango_lineages = clus_data["pango_lineages"] if "pango_lineages" in clus_data else False
+    use_pango = clus_data["use_pango"] if "use_pango" in clus_data else False
 
     # Use Nextclade
     if "other_nextstrain_names" in clus_data:
@@ -494,6 +501,11 @@ for clus in [x for x in clus_to_run if x != "mink"]:
 
     elif display_name in official_clades:
         next_assign = meta[meta["Nextstrain_clade"].apply(lambda x: x == display_name)]
+        wanted_seqs.extend(list(next_assign.strain))
+
+    elif use_pango and pango_lineages and pango_lineages in official_pango:
+        lineage_list = pango_lineages.apply(lambda x: x["name"]).tolist()
+        next_assign = meta[meta["Nextclade_pango"].apply(lambda x: x in lineage_list)]
         wanted_seqs.extend(list(next_assign.strain))
 
     else:
