@@ -464,18 +464,6 @@ with open(input_meta) as f:
                         clus_to_check = {key: clus_to_check[key] + daughter for key in clus_to_check if daughter in clus_to_check[key]["official_clus"] or daughter in clus_to_check[key]["unofficial_clus"]}
                 only_Nextstrain = False
 
-
-        #TODO: Remove when absolutely sure we don't need this anymore
-        '''
-        if clus_all == []: #TODO: Should we trust nextclade and not check for official clus when nextclade hasn't assigned any?
-            clus_to_check = {key: clus_to_check[key] + clus_to_run_breakdown[key]["official_clus"] + clus_to_run_breakdown[key]["unofficial_clus"] for key in clus_to_check}
-            only_Nextstrain = False
-
-        elif clus_check:
-            clus_to_check = {key: clus_to_check[key] + clus_to_run_breakdown[key]["unofficial_clus"] for key in clus_to_check}
-            only_Nextstrain = False
-        '''
-
         # If no official Nextstrain_clade assigned or we want additional checks, also check for "unofficial" clusters
         # We NEVER check for "officialE clusters. If Nextclade did not assign a cluster, then we won't do it either
         if clus_all == [] or clus_check:
@@ -531,7 +519,7 @@ with open(input_meta) as f:
                     cluster_inconsistencies["Non_Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
 
         ##### COLLECT COUNTS PER CLUSTER #####
-        for clus in clus_all: # TODO: maybe include print_files to not collect data?
+        for clus in clus_all:
 
             # Exclude all strains that are dated before their respective clade
             # TODO: S:Q677 not in clus_dates (is this still relevant?)
@@ -601,6 +589,12 @@ print(f"Collecting all data took {round((t1-t0)/60,1)} min to run.\n")
 ##################################
 #### Process counts and check for min number of sequences per country
 
+print("\nRemoving unused countries from cluster counts...\n")
+for clus in clus_to_run:
+    for country in list(clus_data_all[clus]["cluster_counts"]):
+        if clus_data_all[clus]["cluster_counts"][country] == {}:
+            clus_data_all[clus]["cluster_counts"].pop(country)
+
 print("\nWrite out strains for Nextstrain runs...\n")
 if print_files:
     for clus in clus_to_run:
@@ -636,7 +630,7 @@ if print_files:
 
         clus_build_name = clus_data_all[clus]["build_name"]
         table_file = f"{tables_path}{clus_build_name}_table.tsv"
-        ordered_country = pd.DataFrame.from_dict(clus_data_all[clus]["summary"], orient="index").sort_values(by="first_seq")
+        ordered_country = pd.DataFrame.from_dict(clus_data_all[clus]["summary"], orient="index").sort_values(by=["first_seq", "last_seq"])
         ordered_country = ordered_country[ordered_country["num_seqs"] != 0]
         ordered_country["first_seq"] = ordered_country["first_seq"].dt.date
         ordered_country["last_seq"] = ordered_country["last_seq"].dt.date
@@ -712,7 +706,7 @@ for clus in clus_data_all:
     clus_data_all[clus]["non_zero_counts"] = {}
 
     for country in countries_to_plot:
-        if country not in cluster_data: #TODO: Is this okay?
+        if country not in cluster_data:
             continue
 
         (
@@ -721,9 +715,9 @@ for clus in clus_data_all:
             total_count,
             unsmoothed_cluster_count,
             unsmoothed_total_count,
-        ) = non_zero_counts(cluster_data, total_data, country) # TODO: was it okay to remove smoothing?
+        ) = non_zero_counts(cluster_data, total_data, country)
 
-        if len(total_count) < 2:  # TODO: Okay if this happens after trimming?
+        if len(total_count) < 2:
             continue
 
         week_as_date, cluster_count, total_count = trim_last_data_point(
@@ -740,7 +734,7 @@ if division:
             cluster_data = pd.DataFrame(division_data_all[country][clus]["cluster_counts"]).sort_index()  # TODO: Countries sort, clusters not. Hope it's okay to sort for both
             division_data_all[country][clus]["non_zero_counts"] = {}
 
-            for div in division_data_all[country][clus]["cluster_counts"]: # TODO: Is this list okay?
+            for div in division_data_all[country][clus]["cluster_counts"]:
 
                 (
                     week_as_date,
@@ -748,7 +742,7 @@ if division:
                     total_count,
                     unsmoothed_cluster_count,
                     unsmoothed_total_count,
-                ) = non_zero_counts(cluster_data, total_data, div)  # TODO: was it okay to remove smoothing?
+                ) = non_zero_counts(cluster_data, total_data, div)
 
                 if len(total_count) < 2:
                     continue
@@ -761,6 +755,8 @@ if division:
 
 
 ### CLUSTERS ###
+
+countries_plotted = {}
 
 print("\nWrite out clusters...\n")
 for clus in clus_to_run:
@@ -777,15 +773,16 @@ for clus in clus_to_run:
         json_output[clus_build_name][country]["total_sequences"] = [int(x) for x in total_count]
         json_output[clus_build_name][country]["cluster_sequences"] = [int(x) for x in cluster_count]
 
+        countries_plotted[country] = "True" #TODO: Could we adjust the format?
+
     if print_files:
         with open(tables_path + f"{clus_build_name}_data.json", "w") as fh:
             json.dump(json_output[clus_build_name], fh)
 
 ## Write out plotting information - only if all clusters have run
 if print_files and "all" in clus_answer:
-    countries_plotted = list(clus_data_all[clus]["non_zero_counts"].keys())
     with open(tables_path + f"perVariant_countries_toPlot.json", "w") as fh:
-        json.dump({c: "True"  for c in countries_plotted}, fh) #TODO: Could we adjust the format?
+        json.dump(countries_plotted, fh)
 
 
 ### COUNTRIES ###
