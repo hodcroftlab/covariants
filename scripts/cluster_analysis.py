@@ -774,6 +774,8 @@ for clus in clus_to_run:
 
     json_output[clus_build_name] = {}
     for country in clus_data_all[clus]["non_zero_counts"]:
+        if country not in countries_to_plot:
+            continue
 
         (week_as_date, cluster_count, total_count) = clus_data_all[clus]["non_zero_counts"][country]
 
