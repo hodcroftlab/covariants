@@ -33,15 +33,13 @@ web_data_folder = "../covariants/web/data/"
 fmt = "png"  # "pdf"
 grey_color = "#cccccc"  # for "other clusters" of country plots
 
-
-# TODO: What is this needed for?
 #dated_limit = "2021-03-31" #only works for Q677 currently
 #dated_limit = "2021-07-31"
 #dated_cluster = "21A (Delta)"
 #dated_cluster = "21I (Delta)"
 #dated_cluster = "21J (Delta)"
 #dated_cluster = "20I (Alpha, V1)"
-dated_cluster = "Q677"
+dated_cluster = ""
 dated_limit = ""
 
 import pandas as pd
@@ -83,15 +81,6 @@ def print_bad_sequences():
         for row in alert_dates[clus].iterrows():
             print(f"\"{row[1]['strain']}\": \"{row[1]['date']}\", # {clus}, {cluster_first_dates[clus]['first_date']}")
     print("\n")
-
-'''
-# Transform (year, month, day) datetime to (year, week) tuple in a two-week interval, starting at this reference Monday
-ref_monday = datetime.datetime.strptime("2020-04-27", '%Y-%m-%d').toordinal()
-def to2week_ordinal(x):
-    n = x.toordinal()
-    monday = datetime.date.fromordinal(n - ((n - ref_monday) % 14))
-    return (monday.isocalendar()[0], monday.isocalendar()[1]) #TODO: Currently returned as tuple of year & week -> Can we switch to returning datetime? Needs adjustment at several places in the script
-'''
 
 def print_clus_alerts(key, clus):
     print(clus)
@@ -223,6 +212,13 @@ alert_dates = {} # All strains that are dated earlier than their respective clad
 for clus in cluster_first_dates: # Transform date from string to datetime for easier comparison
     cluster_first_dates[clus]["date_formatted"] = datetime.datetime.strptime(cluster_first_dates[clus]["first_date"], "%Y-%m-%d")
 
+if dated_limit:
+    if dated_cluster not in clus_to_run:
+        print(f"\nDated cluster '{dated_cluster}' not found in list of clusters to run. Disabling dated limit...\n")
+        dated_limit = ""
+    else:
+        dated_limit_formatted = datetime.datetime.strptime(dated_limit, "%Y-%m-%d")
+        dated_cluster_strains = []
 
 # Input metadata file
 input_meta = "data/metadata.tsv"
@@ -313,7 +309,7 @@ if division:
 for clus in clus_to_run:
     clus_data_all[clus] = clusters[clus]
     clus_data_all[clus]["summary"] = {country: {'first_seq': today, 'num_seqs': 0, 'last_seq': earliest_date} for country in all_countries}
-    clus_data_all[clus]["cluster_counts"] = {country: {} for country in all_countries} #TODO: Do I need to remove unused countries?
+    clus_data_all[clus]["cluster_counts"] = {country: {} for country in all_countries}
 
     clus_data_all[clus]["clus_build_name"] = clusters[clus]["build_name"]
     clus_data_all[clus]["snps"] = [str(s) for s in clusters[clus]["snps"]]
@@ -327,9 +323,8 @@ for clus in clus_to_run:
     if "gaps" not in clusters[clus]:
         clus_data_all[clus]["gaps"] = []
 
-    #TODO: Is this still required?
-    #if "exclude_snps" not in clusters[clus]:
-        #clus_data_all[clus]["exclude_snps"] = []
+    if "exclude_snps" not in clusters[clus]:
+        clus_data_all[clus]["exclude_snps"] = []
 
     clus_data_all[clus]["clusterlist_output"] = (
         cluster_path + f'/clusters/cluster_{clusters[clus]["build_name"]}.txt'
@@ -482,7 +477,6 @@ with open(input_meta) as f:
         if l[indices['deletions']]:
             muts["gaps"] = [z for y in l[indices['deletions']].split(',') for z in range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)]
 
-        # TODO: Did not include "exclude_snps" since none are currently used in clusters.py
         # Check for each clus if snps/gaps matches the list given in metadata
         for key in muts:
             for clus in clus_to_check[key]:
@@ -493,6 +487,12 @@ with open(input_meta) as f:
                         break
                 else:
                     clus_all.append(clus)
+
+        for clus in clus_all:
+            for snp in clus_data_all[clus]["exclude_snps"]:
+                if snp in muts["snps"]:
+                    clus_all.remove(clus)
+                    break
 
         # For some clusters we might want the sequence in our total sequences list (used for runs) but not on covariants
         clus_all_no_plotting = []
@@ -522,8 +522,7 @@ with open(input_meta) as f:
         for clus in clus_all:
 
             # Exclude all strains that are dated before their respective clade
-            # TODO: S:Q677 not in clus_dates (is this still relevant?)
-            if clus in cluster_first_dates: # TODO: What if missing?
+            if clus in cluster_first_dates:
                 if date_formatted < cluster_first_dates[clus]["date_formatted"]:
                     if clus not in alert_dates:
                         alert_dates[clus] = {'strain': [], 'date': [], 'gisaid_epi_isl': []}
@@ -538,7 +537,10 @@ with open(input_meta) as f:
             if clus in clus_all_no_plotting:
                 continue
 
-            # TODO: Removed dated_limit, check if must be added again
+            # if want a dated limit, specify cluster and limit at top
+            if dated_limit and clus == dated_cluster:
+                if date_formatted < dated_limit_formatted:
+                    dated_cluster_strains.append(l[indices['strain']])
 
             # Collect summary counts (total by country, also store first and last date)
             clus_data_all[clus]["summary"][country]["num_seqs"] += 1
@@ -557,7 +559,6 @@ with open(input_meta) as f:
                     division_data_all[country][clus]["summary"][div]["last_seq"] = max(
                         division_data_all[country][clus]["summary"][div]["last_seq"], date_formatted)
 
-            # TODO: is it okay to apply this threshold here already? It does have to be in summary, right?
             if date_2weeks < min_data_week:
                 continue
 
@@ -621,6 +622,17 @@ if print_files:
             )
             copyfile(clusterlist_output, copypath2)
 
+    if dated_limit:
+        build_nam = clusters[dated_cluster]["build_name"]
+        clusterlist_output = clusters[dated_cluster]["clusterlist_output"]
+
+        datedpath = clusterlist_output.replace(f"{build_nam}","{}-{}".format(build_nam, dated_limit),)
+        curr_datedpath = datedpath.replace("clusters/cluster_", "clusters/current/cluster_")
+
+        with open(curr_datedpath, "w") as f:
+            for item in dated_cluster_strains:
+                f.write("%s\n" % item)
+
 print("\nWrite out summary tables...\n")
 if print_files:
     for clus in clus_to_run:
@@ -673,9 +685,6 @@ if print_acks and "all" in clus_answer:
             with open(ack_out_folder + fn + ".json", "w") as fh:
                 json.dump(ch, fh, indent=2, sort_keys=True)
 
-# TODO: Special case for Danish cluster?
-# TODO: also special for "UK countries"?
-
 print("\nCollect countries above cutoff_num_seqs (in at least one cluster)...")
 cutoff_num_seqs = 1200
 countries_to_plot = []
@@ -705,7 +714,7 @@ for clus in clus_data_all:
     cluster_data = pd.DataFrame(clus_data_all[clus]["cluster_counts"]).sort_index() # TODO: Countries sort, clusters not. Hope it's okay to sort for both
     clus_data_all[clus]["non_zero_counts"] = {}
 
-    for country in countries_to_plot:
+    for country in all_countries:
         if country not in cluster_data:
             continue
 
@@ -773,7 +782,8 @@ for clus in clus_to_run:
         json_output[clus_build_name][country]["total_sequences"] = [int(x) for x in total_count]
         json_output[clus_build_name][country]["cluster_sequences"] = [int(x) for x in cluster_count]
 
-        countries_plotted[country] = "True" #TODO: Could we adjust the format?
+        # Currently "True" for all countries
+        countries_plotted[country] = "True"
 
     if print_files:
         with open(tables_path + f"{clus_build_name}_data.json", "w") as fh:
