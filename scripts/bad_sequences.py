@@ -3020,7 +3020,158 @@ bad_seqs = {
     "Italy/EMR_AUSLRomagna_C072-22-26/2020" : "2020-07-21", #omicron  EPI_ISL_14182010
     "Italy/EMR_AUSLRomagna_C072-22-33/2020" : "2020-07-22", #omicron  EPI_ISL_14182003
     "USA/AZ-TG1386766/2020" : "2020-09-02", #omicron  EPI_ISL_14157879
-
+    # 8 aug -date check
+    "Italy/EMR_AUSLRomagna_C072-22-10/2020" : "2020-07-20", #omicron  EPI_ISL_14182029
+    "Italy/EMR_AUSLRomagna_C072-22-11/2020" : "2020-07-20", #omicron  EPI_ISL_14182025
+    "Italy/EMR_AUSLRomagna_C072-22-12/2020" : "2020-07-20", #omicron  EPI_ISL_14182024
+    "Italy/EMR_AUSLRomagna_C072-22-14/2020" : "2020-07-20", #omicron  EPI_ISL_14182021
+    "Italy/EMR_AUSLRomagna_C073-22-17/2020" : "2020-07-25", #omicron  EPI_ISL_14181996
+    "Italy/EMR_AUSLRomagna_C073-22-19/2020" : "2020-07-25", #omicron  EPI_ISL_14181987
+    "Mauritius/CERI-KRISP-K045566/2020" : "2020-07-02", #omicron  EPI_ISL_14218675
+    "Mauritius/CERI-KRISP-K045567/2020" : "2020-07-02", #omicron  EPI_ISL_14218676
+    "Mauritius/CERI-KRISP-K045590/2020" : "2020-07-04", #omicron  EPI_ISL_14218680
+    "Reunion/CHU722060102201/2021" : "2021-06-30", #omicron  EPI_ISL_13767726
+    "Reunion/ChuReu-722060102201/2021" : "2021-06-30", #omicron  EPI_ISL_13909215
+    "USA/AZ-TG1386612/2020" : "2020-09-02", #omicron  EPI_ISL_14157749
+    "USA/AZ-TG1386699/2020" : "2020-08-18", # omicron  EPI_ISL_14157820
+    "USA/AZ-TG1386704/2020" : "2020-08-22", # omicron  EPI_ISL_14157824
+    "USA/AZ-TG1386772/2020" : "2020-09-03", # omicron  EPI_ISL_14157884
+    "USA/ND-CDC-2-6210015/2021" : "2021-09-28", # omicron  EPI_ISL_14262613
+    "Belgium/MBLG-CTMAOT07251464/2021" : "2021-10-24", #omicron  EPI_ISL_14145879
+    "Italy/EMR_AUSLRomagna_C072-22-13/2020" : "2020-07-20", #omicron  EPI_ISL_14182023
+    "Italy/EMR_AUSLRomagna_C072-22-15/2020" : "2020-07-20", #omicron  EPI_ISL_14182022
+    "Italy/EMR_AUSLRomagna_C072-22-16/2020" : "2020-07-20", #omicron  EPI_ISL_14182019
+    "Italy/EMR_AUSLRomagna_C072-22-17/2020" : "2020-07-20", #omicron  EPI_ISL_14182020
+    "Italy/EMR_AUSLRomagna_C072-22-18/2020" : "2020-07-20", #omicron  EPI_ISL_14182018
+    "Italy/EMR_AUSLRomagna_C072-22-19/2020" : "2020-07-20", #omicron  EPI_ISL_14182017
+    "Italy/EMR_AUSLRomagna_C072-22-20/2020" : "2020-07-21", #omicron  EPI_ISL_14182016
+    "Italy/EMR_AUSLRomagna_C072-22-21/2020" : "2020-07-21", #omicron  EPI_ISL_14182013
+    "Italy/EMR_AUSLRomagna_C072-22-22/2020" : "2020-07-21", #omicron  EPI_ISL_14182014
+    "Italy/EMR_AUSLRomagna_C072-22-23/2020" : "2020-07-21", #omicron  EPI_ISL_14182015
+    "Italy/EMR_AUSLRomagna_C072-22-24/2020" : "2020-07-21", #omicron  EPI_ISL_14182011
+    "Italy/EMR_AUSLRomagna_C072-22-25/2020" : "2020-07-21", #omicron  EPI_ISL_14182012
+    "Italy/EMR_AUSLRomagna_C072-22-27/2020" : "2020-07-21", #omicron  EPI_ISL_14182009
+    "Italy/EMR_AUSLRomagna_C072-22-28/2020" : "2020-07-22", #omicron  EPI_ISL_14182008
+    "Italy/EMR_AUSLRomagna_C072-22-29/2020" : "2020-07-22", #omicron  EPI_ISL_14182005
+    "Italy/EMR_AUSLRomagna_C072-22-30/2020" : "2020-07-22", #omicron  EPI_ISL_14182007
+    "Italy/EMR_AUSLRomagna_C072-22-31/2020" : "2020-07-22", #omicron  EPI_ISL_14182006
+    "Italy/EMR_AUSLRomagna_C072-22-32/2020" : "2020-07-22", #omicron  EPI_ISL_14182004
+    "Italy/EMR_AUSLRomagna_C072-22-34/2020" : "2020-07-22", #omicron  EPI_ISL_14182002
+    "Italy/EMR_AUSLRomagna_C072-22-35/2020" : "2020-07-22", #omicron  EPI_ISL_14182001
+    "Italy/EMR_AUSLRomagna_C072-22-36/2020" : "2020-07-22", #omicron  EPI_ISL_14182000
+    "Italy/EMR_AUSLRomagna_C072-22-37/2020" : "2020-07-22", #omicron  EPI_ISL_14181999
+    "Italy/EMR_AUSLRomagna_C073-22-01/2020" : "2020-07-23", #omicron  EPI_ISL_14181967
+    "Italy/EMR_AUSLRomagna_C073-22-02/2020" : "2020-07-23", #omicron  EPI_ISL_14181968
+    "Italy/EMR_AUSLRomagna_C073-22-03/2020" : "2020-07-23", #omicron  EPI_ISL_14181962
+    "Italy/EMR_AUSLRomagna_C073-22-04/2020" : "2020-07-23", #omicron  EPI_ISL_14181963
+    "Italy/EMR_AUSLRomagna_C073-22-05/2020" : "2020-07-24", #omicron  EPI_ISL_14181961
+    "Italy/EMR_AUSLRomagna_C073-22-06/2020" : "2020-07-24", #omicron  EPI_ISL_14181965
+    "Italy/EMR_AUSLRomagna_C073-22-07/2020" : "2020-07-24", #omicron  EPI_ISL_14181966
+    "Italy/EMR_AUSLRomagna_C073-22-08/2020" : "2020-07-24", #omicron  EPI_ISL_14181964
+    "Italy/EMR_AUSLRomagna_C073-22-11/2020" : "2020-07-25", #omicron  EPI_ISL_14181992
+    "Italy/EMR_AUSLRomagna_C073-22-12/2020" : "2020-07-25", #omicron  EPI_ISL_14181997
+    "Italy/EMR_AUSLRomagna_C073-22-13/2020" : "2020-07-25", #omicron  EPI_ISL_14181994
+    "Italy/EMR_AUSLRomagna_C073-22-14/2020" : "2020-07-25", #omicron  EPI_ISL_14181990
+    "Italy/EMR_AUSLRomagna_C073-22-15/2020" : "2020-07-25", #omicron  EPI_ISL_14181993
+    "Italy/EMR_AUSLRomagna_C073-22-16/2020" : "2020-07-25", #omicron  EPI_ISL_14181991
+    "Italy/EMR_AUSLRomagna_C073-22-18/2020" : "2020-07-25", #omicron  EPI_ISL_14181989
+    "Mauritius/CERI-KRISP-K045525/2020" : "2020-06-30", #omicron  EPI_ISL_14218658
+    "Mauritius/CERI-KRISP-K045528/2020" : "2020-06-30", #omicron  EPI_ISL_14218659
+    "Mauritius/CERI-KRISP-K045535/2020" : "2020-07-01", #omicron  EPI_ISL_14218663
+    "Mauritius/CERI-KRISP-K045541/2020" : "2020-07-01", #omicron  EPI_ISL_14218666
+    "Mauritius/CERI-KRISP-K045559/2020" : "2020-07-02", #omicron  EPI_ISL_14218673
+    "Mauritius/CERI-KRISP-K045562/2020" : "2020-07-02", #omicron  EPI_ISL_14218674
+    "Mauritius/CERI-KRISP-K045568/2020" : "2020-07-02", #omicron  EPI_ISL_14218677
+    "Spain/CT-HUGTiPM107KU8G7/2021" : "2021-07-19", #omicron  EPI_ISL_14200562
+    "USA/MN-MDH-28325/2021" : "2021-07-30", #omicron  EPI_ISL_14287537
+    "Austria/Medilab_352/2022" : "2022-01-05", #omicron  EPI_ISL_12703374
+    "CzechRepublic/NRL_s4061/2022" : "2022-01-22", #omicron  EPI_ISL_14240390
+    "CzechRepublic/NRL_s4125/2022" : "2022-01-19", #omicron  EPI_ISL_14240383
+    "England/PHEC-YYF4J5G/2022" : "2022-02-03", #omicron  EPI_ISL_13841402
+    "England/PHEC-YYFOWYG/2022" : "2022-02-01", #omicron  EPI_ISL_13443892
+    "England/PHEC-YYGKEUZ/2022" : "2022-02-22", #omicron  EPI_ISL_14258841
+    "England/PHEP-YYFCS1E/2022" : "2022-02-08", #omicron  EPI_ISL_14025044
+    "England/PHEP-YYFGKSA/2022" : "2022-02-22", #omicron  EPI_ISL_13694394
+    "England/PHEP-YYFXUFY/2022" : "2022-02-17", #omicron  EPI_ISL_14173926
+    "Eswatini/ILRI_M03303/2022" : "2022-02-28", #omicron  EPI_ISL_13149308
+    "Eswatini/N40393/2022" : "2022-02-14", #omicron  EPI_ISL_12954177
+    "Eswatini/N40406/2022" : "2022-02-27", #omicron  EPI_ISL_12954170
+    "France/ARA-HMN-22042190356/2022" : "2022-01-31", #omicron  EPI_ISL_13719081
+    "France/PDL-CHUN-221511638/2022" : "2022-01-29", #omicron  EPI_ISL_13264369
+    "Gambia/PF6331/2022" : "2022-02-22", #omicron  EPI_ISL_14243867
+    "Germany/BW-RKI-I-888447/2022" : "2022-02-24", #omicron  EPI_ISL_13920321
+    "Israel/CVL-8008061/2022" : "2022-02-09", #omicron  EPI_ISL_13111336
+    "Israel/ICH-741232867/2022" : "2022-02-27", #omicron  EPI_ISL_13461050
+    "Israel/ICH-741248151/2022" : "2022-01-10", #omicron  EPI_ISL_13889425
+    "Israel/SMC-7072916/2022" : "2022-01-30", #omicron  EPI_ISL_13316764
+    "Italy/VEN-AOUIVR-7225401001_VR/2022" : "2022-02-23", #omicron  EPI_ISL_13950849
+    "Luxembourg/LNS0058085/2022" : "2022-02-21", #omicron  EPI_ISL_13661484
+    "Mexico/CMX-INMEGEN-81-324/2022" : "2022-01-07", #omicron  EPI_ISL_13963720
+    "Netherlands/GE-RIVM-107697/2022" : "2022-02-24", #omicron  EPI_ISL_14240086
+    "Philippines/PH-RITM-1939/2022" : "2022-01-07", #omicron  EPI_ISL_13876285
+    "Romania/211935/2022" : "2022-02-19", #omicron  EPI_ISL_14026096
+    "Romania/211937/2022" : "2022-02-19", #omicron  EPI_ISL_14026113
+    "Romania/211942/2022" : "2022-02-27", #omicron  EPI_ISL_14026061
+    "Romania/211943/2022" : "2022-02-19", #omicron  EPI_ISL_14026121
+    "Romania/211946/2022" : "2022-02-19", #omicron  EPI_ISL_14026084
+    "Romania/211959/2022" : "2022-02-24", #omicron  EPI_ISL_14026087
+    "Romania/211961/2022" : "2022-02-26", #omicron  EPI_ISL_14026077
+    "Romania/211963/2022" : "2022-02-26", #omicron  EPI_ISL_14026066
+    "Romania/211999/2022" : "2022-02-19", #omicron  EPI_ISL_14026134
+    "Romania/212001/2022" : "2022-02-26", #omicron  EPI_ISL_14026126
+    "Romania/212043/2022" : "2022-02-27", #omicron  EPI_ISL_14026091
+    "Romania/212047/2022" : "2022-02-24", #omicron  EPI_ISL_14026136
+    "Romania/212054/2022" : "2022-02-25", #omicron  EPI_ISL_14026076
+    "Romania/212057/2022" : "2022-02-27", #omicron  EPI_ISL_14026080
+    "Romania/212058/2022" : "2022-02-26", #omicron  EPI_ISL_14026055
+    "Romania/212059/2022" : "2022-02-27", #omicron  EPI_ISL_14026118
+    "Romania/212060/2022" : "2022-02-27", #omicron  EPI_ISL_14026131
+    "Romania/212061/2022" : "2022-02-19", #omicron  EPI_ISL_14026068
+    "Romania/212063/2022" : "2022-02-19", #omicron  EPI_ISL_14026056
+    "Romania/212064/2022" : "2022-02-26", #omicron  EPI_ISL_14026063
+    "Romania/212065/2022" : "2022-02-27", #omicron  EPI_ISL_14026130
+    "Romania/212068/2022" : "2022-02-19", #omicron  EPI_ISL_14026137
+    "Romania/212115/2022" : "2022-02-19", #omicron  EPI_ISL_14026090
+    "Romania/212116/2022" : "2022-02-20", #omicron  EPI_ISL_14026081
+    "Romania/212125/2022" : "2022-02-27", #omicron  EPI_ISL_14026120
+    "Romania/212126/2022" : "2022-02-24", #omicron  EPI_ISL_14026116
+    "Romania/212127/2022" : "2022-02-26", #omicron  EPI_ISL_14026067
+    "Romania/212130/2022" : "2022-02-27", #omicron  EPI_ISL_14026141
+    "Romania/212131/2022" : "2022-02-19", #omicron  EPI_ISL_14026122
+    "Romania/212133/2022" : "2022-02-26", #omicron  EPI_ISL_14026125
+    "Romania/212134/2022" : "2022-02-27", #omicron  EPI_ISL_14026057
+    "Romania/212135/2022" : "2022-02-27", #omicron  EPI_ISL_14026129
+    "Romania/212136/2022" : "2022-02-20", #omicron  EPI_ISL_14026099
+    "Romania/212139/2022" : "2022-02-26", #omicron  EPI_ISL_14026135
+    "Romania/212146/2022" : "2022-02-26", #omicron  EPI_ISL_14026101
+    "Romania/212150/2022" : "2022-02-26", #omicron  EPI_ISL_14026075
+    "Romania/212152/2022" : "2022-02-26", #omicron  EPI_ISL_14026107
+    "Romania/212153/2022" : "2022-02-19", #omicron  EPI_ISL_14026082
+    "Romania/212157/2022" : "2022-02-26", #omicron  EPI_ISL_14026095
+    "Romania/212158/2022" : "2022-02-26", #omicron  EPI_ISL_14026108
+    "Romania/212159/2022" : "2022-02-26", #omicron  EPI_ISL_14026132
+    "Romania/212161/2022" : "2022-02-20", #omicron  EPI_ISL_14026083
+    "Romania/212175/2022" : "2022-02-22", #omicron  EPI_ISL_14026071
+    "Romania/212240/2022" : "2022-02-26", #omicron  EPI_ISL_14026112
+    "Romania/212243/2022" : "2022-02-26", #omicron  EPI_ISL_14026073
+    "Romania/212248/2022" : "2022-02-20", #omicron  EPI_ISL_14026059
+    "Romania/212249/2022" : "2022-02-24", #omicron  EPI_ISL_14026086
+    "SouthAfrica/CERI-KRISP-K036980/2022" : "2022-02-25", #omicron  EPI_ISL_11017528
+    "Sweden/CSF477598030/2022" : "2022-01-31", #omicron  EPI_ISL_14227532
+    "USA/AZ-ASPHL-1174/2022" : "2022-02-26", #omicron  EPI_ISL_13431267
+    "USA/AZ-ASPHL-1260/2022" : "2022-02-26", #omicron  EPI_ISL_13672141
+    "USA/AZ-ASPHL-1357/2022" : "2022-02-26", #omicron  EPI_ISL_14082458
+    "USA/AZ-ASPHL-1412/2022" : "2022-02-26", #omicron  EPI_ISL_14082441
+    "USA/AZ-ASPHL-1450/2022" : "2022-02-26", #omicron  EPI_ISL_14156977
+    "USA/FL-BPHL-10740/2022" : "2022-01-05", #omicron  EPI_ISL_13956892
+    "USA/FL-BPHL-10741/2022" : "2022-01-05", #omicron  EPI_ISL_13956893
+    "USA/FL-BPHL-9743/2022" : "2022-01-19", #omicron  EPI_ISL_13522019
+    "USA/FL-BPHL-9747/2022" : "2022-01-19", #omicron  EPI_ISL_13522023
+    "USA/FL-BPHL-9750/2022" : "2022-01-19", #omicron  EPI_ISL_13522026
+    "USA/FL-BPHL-9757/2022" : "2022-01-19", #omicron  EPI_ISL_13522032
+    "USA/GA-EHC-4839C/2022" : "2022-01-10", #omicron  EPI_ISL_13728944
+    "USA/ND-NDDH-17541/2022" : "2022-01-16", #omicron  EPI_ISL_14056409
+    "USA/TN-SPHL-3238/2022" : "2022-01-12", #omicron  EPI_ISL_13578958
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
@@ -3121,6 +3272,16 @@ bad_seqs = {
     "USA/UT-CDC-2-5973881/2021" : "2021-12-14", #omicron EPI_ISL_12959038
     "USA/UT-CDC-2-6137489/2021" : "2021-12-14", #omicron EPI_ISL_13671635
     "USA/UT-CDC-2-6005674/2021" : "2021-12-14", #omicron EPI_ISL_13082868
+    "USA/UT-CDC-2-6185080/2021" : "2021-12-14", #omicron  EPI_ISL_14262719
+    "USA/UT-CDC-2-6184978/2021" : "2021-12-14", #omicron  EPI_ISL_14262710
+    "USA/UT-CDC-2-6184982/2021" : "2021-12-14", #omicron  EPI_ISL_14262714
+    "USA/UT-CDC-2-6185060/2021" : "2021-12-14", #omicron  EPI_ISL_14262717
+    "USA/UT-CDC-2-6185063/2021" : "2021-12-14", #omicron  EPI_ISL_14262718
+    "USA/UT-CDC-2-6185064/2021" : "2021-12-14", #omicron  EPI_ISL_14262712
+    "USA/UT-CDC-2-6185069/2021" : "2021-12-14", #omicron  EPI_ISL_14262715
+    "USA/UT-CDC-2-6185078/2021" : "2021-12-14", #omicron  EPI_ISL_14262716
+    "USA/UT-CDC-2-6185157/2021" : "2021-12-14", #omicron  EPI_ISL_14262713
+    "USA/UT-CDC-2-6185159/2021" : "2021-12-14", #omicron  EPI_ISL_14262711
     #other utah
     "USA/UT-UPHL-220207170277/2021" : "2021-10-27", #omicron EPI_ISL_9677117
     "USA/UT-UPHL-220514591384/2021" : "2021-12-23", #omicron EPI_ISL_12789786
