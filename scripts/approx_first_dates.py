@@ -1,4 +1,5 @@
 cluster_first_dates = {
+    #WHATEVER IS HERE HAS TO MATCH THE **KEY** in clusters.py NOT THE DISPLAY NAME
     "EU1": {"first_date": "2020-04-01"}, #EU1
     "EU2": {"first_date": "2020-07-01"},
     "S439": {"first_date": "2020-04-02"},
@@ -16,10 +17,10 @@ cluster_first_dates = {
     "21M.Omicron": {"first_date": "2021-10-16"}, #omicron
     "21L.Omicron": {"first_date": "2021-10-16"}, #omicron
     "21K.Omicron": {"first_date": "2021-10-16"}, #omicron
-    "22A.Omicron": {"first_date": "2021-10-16"}, #omicron
-    "22B.Omicron": {"first_date": "2021-10-16"}, #omicron
-    "22C.Omicron": {"first_date": "2021-10-16"}, #omicron
-    "22D.Omicron": {"first_date": "2022-05-01"}, #omicron BA.2.75
+    "22A": {"first_date": "2021-12-15"}, #omicron
+    "22B": {"first_date": "2022-03-01"}, #omicron
+    "22C": {"first_date": "2021-12-20"}, #omicron
+    "22D": {"first_date": "2022-05-01"}, #omicron BA.2.75
     "Kappa": {"first_date": "2020-10-30"}, #Kappa
     "Delta417": {"first_date": "2020-10-30"}, #Delta plus (same as delta)
     "Eta": {"first_date": "2020-11-21"}, #Eta
