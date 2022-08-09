@@ -29,7 +29,7 @@ const Wrapper = styled.div<{ $delay?: number; $duration?: number }>`
   @media (prefers-reduced-motion: no-preference) {
     animation-name: ${fadeIn};
     animation-fill-mode: backwards;
-    animation-delay: ${(props) => props.$delay};
-    animation-duration: ${(props) => props.$duration};
+    animation-delay: ${(props) => props.$delay}ms;
+    animation-duration: ${(props) => props.$duration}ms;
   }
 `
