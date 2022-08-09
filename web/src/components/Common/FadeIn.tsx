@@ -1,7 +1,20 @@
 // https://www.joshwcomeau.com/snippets/react-components/fade-in/
 
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import styled, { keyframes } from 'styled-components'
+
+export interface FadeInProps {
+  duration?: number
+  delay?: number
+}
+
+export function FadeIn({ duration = 300, delay = 0, children }: PropsWithChildren<FadeInProps>) {
+  return (
+    <Wrapper $delay={delay} $duration={duration}>
+      {children}
+    </Wrapper>
+  )
+}
 
 const fadeIn = keyframes`
   from {
@@ -11,24 +24,12 @@ const fadeIn = keyframes`
     opacity: 1;
   }
 `
-function FadeIn({ duration = 300, delay = 0, children, ...delegated }) {
-  return (
-    <Wrapper
-      {...delegated}
-      style={{
-        ...delegated.style,
-        animationDuration: `${duration}ms`,
-        animationDelay: `${delay}ms`,
-      }}
-    >
-      {children}
-    </Wrapper>
-  )
-}
-const Wrapper = styled.div`
+
+const Wrapper = styled.div<{ $delay?: number; $duration?: number }>`
   @media (prefers-reduced-motion: no-preference) {
     animation-name: ${fadeIn};
     animation-fill-mode: backwards;
+    animation-delay: ${(props) => props.$delay};
+    animation-duration: ${(props) => props.$duration};
   }
 `
-export default FadeIn
