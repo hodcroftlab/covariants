@@ -8592,6 +8592,18 @@
         23277
       ],
       "type": "do_not_display"
+    },
+    {
+      "build_name": "others",
+      "cluster_data": [],
+      "snps": [],
+      "col": "#222222",
+      "country_info": [],
+      "display_name": "others",
+      "graphing": false,
+      "important": false,
+      "nextstrain_build": false,
+      "type": "variant"
     }
   ]
 }
