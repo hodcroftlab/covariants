@@ -29,9 +29,11 @@ export function CladeSchema() {
       </CladeSchemaPicture>
       <CladeSchemaFigcaption>
         <small>
-          <span>{'Phylogenetic relationships of Nextstrain SARS-CoV-2 clades. Please credit/link to '}</span>
+          <span>{'Phylogenetic relationships of Nextstrain SARS-CoV-2 clades ('}</span>
+          <LinkExternal href="https://github.com/nextstrain/ncov-clades-schema">{'source'}</LinkExternal>
+          <span>{'). Please credit/link to '}</span>
           <LinkExternal href="https://nextstrain.org">{'Nextstrain'}</LinkExternal>
-          <span>{' if using this figure'}</span>
+          <span>{' if using this figure.'}</span>
         </small>
       </CladeSchemaFigcaption>
     </CladeSchemaFigure>
