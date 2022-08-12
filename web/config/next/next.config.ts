@@ -89,6 +89,10 @@ const nextConfig: NextConfig = {
   },
   env: clientEnv,
   poweredByHeader: false,
+  webpack(config) {
+    config.experiments.topLevelAwait = true
+    return config
+  },
 }
 
 const withMDX = getWithMDX({
