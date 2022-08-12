@@ -1,4 +1,5 @@
 import React from 'react'
+import { LinkExternal } from 'src/components/Link/LinkExternal'
 
 import styled from 'styled-components'
 
@@ -28,9 +29,11 @@ export function CladeSchema() {
       </CladeSchemaPicture>
       <CladeSchemaFigcaption>
         <small>
-          {
-            'Phylogenetic relationships of Nextstrain SARS-CoV-2 clades. Please credit/link to Nextstrain if using this figure'
-          }
+          <span>{'Phylogenetic relationships of Nextstrain SARS-CoV-2 clades ('}</span>
+          <LinkExternal href="https://github.com/nextstrain/ncov-clades-schema">{'source'}</LinkExternal>
+          <span>{'). Please credit/link to '}</span>
+          <LinkExternal href="https://nextstrain.org">{'Nextstrain'}</LinkExternal>
+          <span>{' if using this figure.'}</span>
         </small>
       </CladeSchemaFigcaption>
     </CladeSchemaFigure>
