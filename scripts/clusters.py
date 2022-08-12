@@ -1030,7 +1030,7 @@ clusters = {
     },
 
     "22D": {  #BA.2.75
-       "snps": [3927, 26275, 3796], #TGT = C3927T, A26275G, C3796T 
+       "snps": [3927, 26275, 3796], #TGT = C3927T, A26275G, C3796T
        "snps_with_base": ["3927T", "26275G", "3796T"],
        "cluster_data": [],
        "nextstrain_build": True,
@@ -1362,7 +1362,7 @@ clusters = {
         },
     },
 
-    # C.37 
+    # C.37
     "21GLambda": {
         "snps": [7424, 23031, 24138],  # ORF1a 2387 (7424G)  #S 490 (23031C) 859 (24138A)
         "snps_with_base": ["7424G", "23031C", "24138A"],
@@ -2509,4 +2509,16 @@ clusters = {
     # "ORFTEN30": {'snps': [29644], 'exclude_snps': [22226], 'cluster_data': [], "build_name": "ORF10.V30", "display_name": "ORF10:V30"}
     # "N220re": {'snps': [28931,29644], 'exclude_snps': [22226], 'cluster_data': [], "build_name": "N.A220Vre", "display_name": "N:A220Vre"}
     # "B1139" {'snps': [28486,28867], 'exclude_snps': [], 'cluster_data': [], "build_name": "B1139", "display_name": "B1139"}
+
+    "others": {
+        "build_name": "others",
+        "cluster_data": [],
+        "col": "#222222",
+        "snps": [],
+        "display_name": "others",
+        "graphing": False,
+        "important": False,
+        "nextstrain_build": False,
+        "type": "variant"
+    }
 }
