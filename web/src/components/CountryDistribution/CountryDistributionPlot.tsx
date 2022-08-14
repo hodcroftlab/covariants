@@ -1,7 +1,8 @@
 /* eslint-disable camelcase */
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
+import styled from 'styled-components'
 
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceArea } from 'recharts'
 import { DateTime } from 'luxon'
 
 import type { CountryDistributionDatum } from 'src/io/getPerCountryData'
@@ -22,6 +23,18 @@ export interface AreaPlotProps {
   distribution: CountryDistributionDatum[]
 }
 
+const ResetButton = styled.button`
+  position: absolute;
+  top: ${theme.plot.margin.top}px;
+  right: ${theme.plot.margin.right}px;
+  font-size: 12px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.25);
+  border: none;
+  outline: none;
+  border-radius: none;
+`
+
 function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps) {
   const data = useMemo(
     () =>
@@ -31,7 +44,13 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
 
         const others = total_sequences - total_cluster_sequences
         const weekSec = DateTime.fromFormat(week, 'yyyy-MM-dd').toSeconds()
-        return { week: weekSec, ...cluster_counts, others, total: total_sequences }
+        return {
+          week: weekSec,
+          ...cluster_counts,
+          others,
+          total: total_sequences,
+          total_clusters_pct: total_cluster_sequences / total_sequences,
+        }
       }),
     [distribution],
   )
@@ -43,59 +62,113 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
     return { adjustedTicks, domainX, domainY }
   }, [width])
 
-  return (
-    <AreaChart margin={theme.plot.margin} data={data} stackOffset="expand" width={width} height={height}>
-      <XAxis
-        dataKey="week"
-        type="number"
-        tickFormatter={formatDateHumanely}
-        domain={domainX}
-        ticks={adjustedTicks}
-        tick={theme.plot.tickStyle}
-        tickMargin={theme.plot.tickMargin?.x}
-        allowDataOverflow
-      />
-      <YAxis
-        type="number"
-        tickFormatter={formatProportion}
-        domain={domainY}
-        tick={theme.plot.tickStyle}
-        tickMargin={theme.plot.tickMargin?.y}
-        allowDataOverflow
-      />
+  const [zoomArea, setZoomArea] = useState<[number, number] | undefined>()
+  const [isZooming, setIsZooming] = useState(false)
+  const [selectedArea, setSelectedArea] = useState<[number, number] | undefined>()
 
-      {cluster_names.map((cluster) => (
+  const yDomainOrSelected = useMemo(() => {
+    if (selectedArea) {
+      let max = 0
+      data.forEach((d) => {
+        if (d.week >= selectedArea[0] && d.week <= selectedArea[1]) {
+          max = Math.max(max, d.total_clusters_pct)
+        }
+      })
+      return [0, Math.min(1, max + max * 0.1)]
+    }
+    return domainY
+  }, [selectedArea, domainY])
+
+  return (
+    <>
+      <AreaChart
+        margin={theme.plot.margin}
+        data={data}
+        stackOffset="expand"
+        width={width}
+        height={height}
+        onMouseDown={(e) => {
+          if (e) {
+            setIsZooming(true)
+            setZoomArea([e.activeLabel, e.activeLabel])
+          }
+        }}
+        onMouseMove={(e) => {
+          if (e && isZooming) {
+            setZoomArea([zoomArea[0], e.activeLabel])
+          }
+        }}
+        onMouseUp={(e) => {
+          if (isZooming) {
+            if (zoomArea[0] !== zoomArea[1]) {
+              setSelectedArea(zoomArea[0] < zoomArea[1] ? zoomArea : [zoomArea[1], zoomArea[0]])
+            }
+            setZoomArea(undefined)
+            setIsZooming(false)
+          }
+        }}
+      >
+        <XAxis
+          dataKey="week"
+          type="number"
+          tickFormatter={formatDateHumanely}
+          domain={selectedArea || domainX}
+          ticks={adjustedTicks}
+          tick={theme.plot.tickStyle}
+          tickMargin={theme.plot.tickMargin?.x}
+          allowDataOverflow
+        />
+        <YAxis
+          type="number"
+          tickFormatter={formatProportion}
+          domain={yDomainOrSelected}
+          tick={theme.plot.tickStyle}
+          tickMargin={theme.plot.tickMargin?.y}
+          allowDataOverflow
+        />
+
+        {cluster_names.map((cluster) => (
+          <Area
+            key={cluster}
+            type="monotone"
+            dataKey={cluster}
+            stackId="1"
+            stroke="none"
+            fill={getClusterColor(cluster)}
+            fillOpacity={1}
+            isAnimationActive
+            animationDuration={500}
+          />
+        ))}
+
         <Area
-          key={cluster}
           type="monotone"
-          dataKey={cluster}
+          dataKey={CLUSTER_NAME_OTHERS}
           stackId="1"
           stroke="none"
-          fill={getClusterColor(cluster)}
+          fill={theme.clusters.color.others}
           fillOpacity={1}
-          isAnimationActive={false}
+          isAnimationActive
+          animationDuration={500}
         />
-      ))}
 
-      <Area
-        type="monotone"
-        dataKey={CLUSTER_NAME_OTHERS}
-        stackId="1"
-        stroke="none"
-        fill={theme.clusters.color.others}
-        fillOpacity={1}
-        isAnimationActive={false}
-      />
+        <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
 
-      <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
+        {isZooming && (
+          <ReferenceArea x1={zoomArea[0]} x2={zoomArea[1]} y1={0} y2={1} fill={theme.black} fillOpacity={0.25} />
+        )}
 
-      <Tooltip
-        content={CountryDistributionPlotTooltip}
-        isAnimationActive={false}
-        allowEscapeViewBox={allowEscapeViewBox}
-        offset={50}
-      />
-    </AreaChart>
+        {!isZooming && (
+          <Tooltip
+            content={CountryDistributionPlotTooltip}
+            isAnimationActive={false}
+            allowEscapeViewBox={allowEscapeViewBox}
+            offset={50}
+          />
+        )}
+      </AreaChart>
+      {selectedArea && <ResetButton onClick={() => setSelectedArea(undefined)}>Reset zoom</ResetButton>}
+    </>
   )
 }
 
