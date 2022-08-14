@@ -65,8 +65,9 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
   const [zoomArea, setZoomArea] = useState<[number, number] | undefined>()
   const [isZooming, setIsZooming] = useState(false)
   const [selectedArea, setSelectedArea] = useState<[number, number] | undefined>()
+  const [hovering, setHovering] = useState(false)
 
-  const yDomainOrSelected = useMemo(() => {
+  const calculatedDomainY = useMemo(() => {
     if (selectedArea) {
       let max = 0
       data.forEach((d) => {
@@ -87,6 +88,7 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
         stackOffset="expand"
         width={width}
         height={height}
+        style={hovering ? { cursor: 'cell' } : null}
         onMouseDown={(e) => {
           if (e) {
             setIsZooming(true)
@@ -94,8 +96,13 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
           }
         }}
         onMouseMove={(e) => {
-          if (e && isZooming) {
-            setZoomArea([zoomArea[0], e.activeLabel])
+          if (e && e.activeLabel) {
+            setHovering(true)
+            if (isZooming) {
+              setZoomArea([zoomArea[0], e.activeLabel])
+            }
+          } else {
+            setHovering(false)
           }
         }}
         onMouseUp={(e) => {
@@ -121,7 +128,7 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
         <YAxis
           type="number"
           tickFormatter={formatProportion}
-          domain={yDomainOrSelected}
+          domain={calculatedDomainY}
           tick={theme.plot.tickStyle}
           tickMargin={theme.plot.tickMargin?.y}
           allowDataOverflow
@@ -155,7 +162,14 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
         <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
 
         {isZooming && (
-          <ReferenceArea x1={zoomArea[0]} x2={zoomArea[1]} y1={0} y2={1} fill={theme.black} fillOpacity={0.25} />
+          <ReferenceArea
+            x1={zoomArea[0]}
+            x2={zoomArea[1]}
+            y1={calculatedDomainY[0]}
+            y2={calculatedDomainY[1]}
+            fill={theme.black}
+            fillOpacity={0.25}
+          />
         )}
 
         {!isZooming && (
