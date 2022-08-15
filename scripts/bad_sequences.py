@@ -3172,6 +3172,15 @@ bad_seqs = {
     "USA/GA-EHC-4839C/2022" : "2022-01-10", #omicron  EPI_ISL_13728944
     "USA/ND-NDDH-17541/2022" : "2022-01-16", #omicron  EPI_ISL_14056409
     "USA/TN-SPHL-3238/2022" : "2022-01-12", #omicron  EPI_ISL_13578958
+    # 15 aug
+    "USA/MT-UMGC-02647/2020" : "2020-11-23",  #omicron EPI_ISL_14320426
+    "France/HDF-biopath-6607960900/2021" : "2021-04-06",  #omicron EPI_ISL_12249596
+    "France/HDF-biopath-7748823502/2020" : "2020-03-29",  #omicron EPI_ISL_12154385
+    "USA/FL-BPHL-20695/2021" : "2021-07-05",  #omicron EPI_ISL_14438700
+    "USA/AZ-ASPHL-1508/2022" : "2022-02-26",  #omicron EPI_ISL_14333421 
+    "Malaysia/C19UMB2210/2022" : "2022-01-07",  #omicron EPI_ISL_14314280 
+    "India/AS-ICMR-NIV-INSACOG-G-12102/2022" : "2022-01-01", #omicron EPI_ISL_14402515 - far too diverged for date
+    "Belgium/LHUB-ULB_STR074/2020" : "2020-03-14",  #omicron EPI_ISL_14445224
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
