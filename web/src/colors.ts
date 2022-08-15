@@ -67,6 +67,7 @@ export const NUCLEOTIDE_COLORS: Record<string, string> = {
 }
 
 // Borrowed from http://ugene.net/forum/YaBB.pl?num=1337064665
+// Added three letter abbreviation colors
 export const AMINOACID_COLORS: Record<string, string> = {
   'A': '#EAEABA',
   'V': '#EAEA9F',
@@ -93,4 +94,25 @@ export const AMINOACID_COLORS: Record<string, string> = {
   'Z': '#AAAAAA',
   '*': '#AAAAAA',
   '-': '#AAAAAA',
+
+  'Ala': '#EAEABA',
+  'Val': '#EAEA9F',
+  'Leu': '#E1E177',
+  'Ile': '#C9C94D',
+  'Cys': '#E3F9B0',
+  'Asp': '#E98F6D',
+  'Glu': '#F7B080',
+  'Phe': '#C7C88D',
+  'Gly': '#C0C0C0',
+  'His': '#D6F6FA',
+  'Lys': '#CEC0F3',
+  'Met': '#C3ED3C',
+  'Asn': '#F29290',
+  'Pro': '#D2D1F8',
+  'Gln': '#F8C4E3',
+  'Arg': '#A6ACEF',
+  'Ser': '#D8B9D4',
+  'Thr': '#F0D6E3',
+  'Trp': '#86B0CC',
+  'Tyr': '#8FC7D1',
 }

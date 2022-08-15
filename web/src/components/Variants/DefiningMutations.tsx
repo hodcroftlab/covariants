@@ -1,10 +1,10 @@
-import React from 'react'
+import React ,{ useState } from 'react'
 
 import styled from 'styled-components'
 
 import type { ClusterDatum } from 'src/io/getClusters'
 import { AminoacidMutationBadge, NucleotideMutationBadge } from 'src/components/Common/MutationBadge'
-import { Row, Col } from 'reactstrap'
+import { Row, Col, Button } from 'reactstrap'
 
 const Container = styled.div`
   width: 100%;
@@ -55,6 +55,12 @@ export function hasDefiningMutations(cluster: ClusterDatum) {
 }
 
 export function DefiningMutations({ cluster }: DefiningMutationsProps) {
+  const [isTLA, setTLA] = useState(true) // State changer for TLA or OLA
+
+  const OLALabel = 'One Letter Abbreviation'
+  const TLALabel = 'Three Letter Abbreviation'
+  let label = OLALabel
+
   if (!cluster?.mutations) {
     return null
   }
@@ -62,11 +68,28 @@ export function DefiningMutations({ cluster }: DefiningMutationsProps) {
   const hasNonsynonymous = cluster.mutations?.nonsynonymous?.length && cluster.mutations?.nonsynonymous?.length > 0
   const hasSynonymous = cluster.mutations?.synonymous?.length && cluster.mutations?.synonymous?.length > 0
 
+  if (isTLA) {
+    label = TLALabel
+  }
+
   return (
     <Container>
       <Row noGutters>
         <Col>
           <H3>{'Defining mutations'}</H3>
+          <Button style={{ 
+              padding: 0,
+              width: 125, 
+              background: "#ffffff", 
+              borderRadius: 10 , 
+              color: '#495057' , 
+              font: "Open Sans" , 
+              fontSize: 14 , 
+              textAlign: 'center'
+          }}
+            onClick = {() => setTLA(isTLA => !isTLA)}>
+            {label}
+          </Button>
         </Col>
       </Row>
 
@@ -77,7 +100,7 @@ export function DefiningMutations({ cluster }: DefiningMutationsProps) {
             <Ul>
               {cluster.mutations?.nonsynonymous?.map((mutation) => (
                 <Li key={`${mutation?.gene ?? ''}:${mutation.left ?? ''}${mutation.pos ?? ''}${mutation.right ?? ''}`}>
-                  <AminoacidMutationBadge mutation={mutation} />
+                  <AminoacidMutationBadge mutation={mutation} isTLA={isTLA} />
                 </Li>
               ))}
             </Ul>
