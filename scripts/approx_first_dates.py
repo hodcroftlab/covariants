@@ -18,7 +18,7 @@ cluster_first_dates = {
     "21L.Omicron": {"first_date": "2021-10-16"}, #omicron
     "21K.Omicron": {"first_date": "2021-10-16"}, #omicron
     "22A": {"first_date": "2021-12-15"}, #omicron
-    "22B": {"first_date": "2022-03-01"}, #omicron
+    "22B": {"first_date": "2022-02-01"}, #omicron
     "22C": {"first_date": "2021-12-20"}, #omicron
     "22D": {"first_date": "2022-05-01"}, #omicron BA.2.75
     "Kappa": {"first_date": "2020-10-30"}, #Kappa
