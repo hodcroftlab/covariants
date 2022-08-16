@@ -200,7 +200,7 @@ if print_files and "all" in clus_answer:
 
 # Random very early date for max & min date search (just needs to be earlier than any date we might encounter)
 earliest_date = datetime.datetime.strptime("2019-01-01", '%Y-%m-%d')
-today = datetime.datetime.today() # TODO: is date faster than datetime?
+today = datetime.datetime.today()
 
 # Link Nextstrain clade and name to our cluster names used in clusters.py
 # TODO: There could be more than one display name
