@@ -91,7 +91,7 @@ def print_all_clus_alerts(key):
         print_clus_alerts(key, clus)
 
 
-# TODO: USe "usa_graph": True (Slack, Emma, May 18 22)
+# TODO: Use "usa_graph": True (Slack, Emma, May 18 22)
 
 # set min data week to consider
 min_data_week = (2020, 18)  # 20)
@@ -206,7 +206,7 @@ today = datetime.datetime.today()
 # TODO: There could be more than one display name
 display_name_to_clus = {clusters[clus]["display_name"]: clus for clus in clus_to_run if "display_name" in clusters[clus]}
 nextstrain_name_to_clus = {clusters[clus]["nextstrain_name"]: clus for clus in clus_to_run if "nextstrain_name" in clusters[clus]}
-# TODO: Might need to add extra entries for "21K.21L" using "other_nextstrain_names"
+pango_lineage_to_clus = {p["name"]: clus for clus in clus_to_run for p in clusters[clus]["pango_lineages"] if "pango_lineages" in clusters[clus]}
 
 alert_dates = {} # All strains that are dated earlier than their respective clade are autoexcluded and printed out
 for clus in cluster_first_dates: # Transform date from string to datetime for easier comparison
@@ -261,7 +261,7 @@ clus_to_run_breakdown = {key: {"official_clus": [], "unofficial_clus": [], "rest
 for clus in clus_to_run:
     for key in snps_categories:
         if key in clusters[clus] and clusters[clus][key]:
-            if clusters[clus]["display_name"] in Nextstrain_clades:
+            if clusters[clus]["display_name"] in Nextstrain_clades or "meta_cluster" in clusters[clus] and clusters[clus]["meta_cluster"]: #TODO: Is this an okay solution?
                 clus_to_run_breakdown[key]["official_clus"].append(clus)
             elif clusters[clus]["type"] == "variant" and clusters[clus]["graphing"]:
                 clus_to_run_breakdown[key]["unofficial_clus"].append(clus)
@@ -409,6 +409,8 @@ with open(input_meta) as f:
         if clade == "recombinant":
             continue
 
+        pango = l[indices['Nextclade_pango']]
+
         # Future dates
         date_formatted = datetime.datetime.strptime(l[indices['date']], "%Y-%m-%d")
         if date_formatted > today:
@@ -459,13 +461,16 @@ with open(input_meta) as f:
                         clus_to_check = {key: clus_to_check[key] + daughter for key in clus_to_check if daughter in clus_to_check[key]["official_clus"] or daughter in clus_to_check[key]["unofficial_clus"]}
                 only_Nextstrain = False
 
+        else: #TODO: Use Pango if no Nextstrain
+            if pango in pango_lineage_to_clus:
+                clus_all.append(pango_lineage_to_clus[clade])
+                only_Nextstrain = True #TODO: CORRECT?
+
         # If no official Nextstrain_clade assigned or we want additional checks, also check for "unofficial" clusters
         # We NEVER check for "officialE clusters. If Nextclade did not assign a cluster, then we won't do it either
         if clus_all == [] or clus_check:
             clus_to_check = {key: clus_to_check[key] + clus_to_run_breakdown[key]["unofficial_clus"] for key in clus_to_check}
             only_Nextstrain = False
-
-        #TODO: Use Pango if no Nextstrain
 
         # Store mutations as taken from metadata table in three categories to make comparison alter easier/faster
         muts = {"snps": []}
@@ -589,6 +594,33 @@ print(f"Collecting all data took {round((t1-t0)/60,1)} min to run.\n")
 ##################################
 ##################################
 #### Process counts and check for min number of sequences per country
+
+#TODO: Add decoy for 21M!
+print("\nCompile \"Meta\" clusters (e.g. 21K.21L) from individual clusters...")
+meta_clusters = [clus for clus in clusters if "meta_cluster" in clusters[clus] and clusters[clus]["meta_cluster"]]
+for meta_clus in meta_clusters:
+    for disp in clusters[meta_clus]["other_nextstrain_names"]:
+        if disp not in display_name_to_clus:
+            print(f"\nWarning: {disp} (from meta_cluster {meta_clus}) not found in clusters.")
+            continue
+        clus = display_name_to_clus[disp]
+        all_sequences[meta_clus].extend(all_sequences[clus])
+
+        for country in clus_data_all[clus]["summary"]:
+
+            clus_data_all[meta_clus]["summary"][country]["num_seqs"] += clus_data_all[clus]["summary"][country]["num_seqs"]
+            clus_data_all[meta_clus]["summary"][country]["first_seq"] = min(clus_data_all[meta_clus]["summary"][country]["first_seq"],clus_data_all[clus]["summary"][country]["first_seq"])
+            clus_data_all[meta_clus]["summary"][country]["last_seq"] = max(clus_data_all[meta_clus]["summary"][country]["last_seq"],clus_data_all[clus]["summary"][country]["last_seq"])
+
+            for date in clus_data_all[clus]["cluster_counts"][country]:
+                if date not in clus_data_all[meta_clus]["cluster_counts"][country]:
+                    clus_data_all[meta_clus]["cluster_counts"][country][date] = 0
+                clus_data_all[meta_clus]["cluster_counts"][country][date] += clus_data_all[clus]["cluster_counts"][country][date]
+
+    if print_acks:
+        for clus in clusters[meta_clus]["other_nextstrain_names"]:
+            acknowledgement_by_variant["acknowledgements"][meta_clus].extend(acknowledgement_by_variant["acknowledgements"][clus])
+
 
 print("\nRemoving unused countries from cluster counts...\n")
 for clus in clus_to_run:
