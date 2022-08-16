@@ -159,10 +159,6 @@
     "c": "#a6a6a6",
     "ls": "-."
   },
-  "Kosovo": {
-    "c": "#0099ff",
-    "ls": "dotted"
-  },
   "Latvia": {
     "c": "#a6a6a6",
     "ls": "--"
@@ -294,6 +290,10 @@
   "Switzerland": {
     "c": "#ff7f00",
     "ls": "-"
+  },
+  "Taiwan": {
+    "c": "#0099ff",
+    "ls": "dotted"
   },
   "Thailand": {
     "c": "#000000",

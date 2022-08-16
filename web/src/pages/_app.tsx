@@ -22,8 +22,8 @@ import { theme } from 'src/theme'
 import { DOMAIN_STRIPPED } from 'src/constants'
 import { Plausible } from 'src/components/Common/Plausible'
 import { SeoApp } from 'src/components/Common/SeoApp'
-
 import { getMdxComponents } from 'src/components/Common/MdxComponents'
+import { loadPolyfills } from 'src/polyfills'
 
 import 'src/styles/global.scss'
 
@@ -96,4 +96,9 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   )
 }
 
-export default dynamic(() => Promise.resolve(MyApp), { ssr: false })
+async function run() {
+  await loadPolyfills()
+  return MyApp
+}
+
+export default dynamic(() => run(), { ssr: false })
