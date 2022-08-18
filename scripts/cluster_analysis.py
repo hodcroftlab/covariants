@@ -206,7 +206,7 @@ today = datetime.datetime.today()
 # TODO: There could be more than one display name
 display_name_to_clus = {clusters[clus]["display_name"]: clus for clus in clus_to_run if "display_name" in clusters[clus]}
 nextstrain_name_to_clus = {clusters[clus]["nextstrain_name"]: clus for clus in clus_to_run if "nextstrain_name" in clusters[clus]}
-pango_lineage_to_clus = {p["name"]: clus for clus in clus_to_run for p in clusters[clus]["pango_lineages"] if "pango_lineages" in clusters[clus]}
+pango_lineage_to_clus = {p["name"]: clus for clus in clus_to_run if "pango_lineages" in clusters[clus] for p in clusters[clus]["pango_lineages"]}
 
 alert_dates = {} # All strains that are dated earlier than their respective clade are autoexcluded and printed out
 for clus in cluster_first_dates: # Transform date from string to datetime for easier comparison
@@ -222,7 +222,7 @@ if dated_limit:
 
 # Input metadata file
 input_meta = "data/metadata.tsv"
-cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl', 'QC_overall_status']
+cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl', 'QC_overall_status', 'Nextclade_pango']
 
 # Traverse metadata once to count lines and collect Nextstrain_clades
 print("\nDoing first metadata pass...")
@@ -344,6 +344,14 @@ acknowledgement_by_variant["acknowledgements"] = {clus: [] for clus in clus_to_r
 acknowledgement_keys = {}
 acknowledgement_keys["acknowledgements"] = {}
 
+# Prepare decoy clusters for meta clusters
+meta_clusters = [clus for clus in clusters if "meta_cluster" in clusters[clus] and clusters[clus]["meta_cluster"]]
+decoy_clusters = {}
+for meta_clus in meta_clusters:
+    for disp in clusters[meta_clus]["other_nextstrain_names"]:
+        if disp not in display_name_to_clus:
+            decoy_clusters[disp] = meta_clus
+
 t1 = time.time()
 print(f"Preparation took {round((t1-t0)/60,1)} min to run.\n")
 
@@ -463,8 +471,12 @@ with open(input_meta) as f:
 
         else: #TODO: Use Pango if no Nextstrain
             if pango in pango_lineage_to_clus:
-                clus_all.append(pango_lineage_to_clus[clade])
+                clus_all.append(pango_lineage_to_clus[pango])
                 only_Nextstrain = True #TODO: CORRECT?
+
+           # Decoy cluster
+            if clade in decoy_clusters:
+                clus_all.append(decoy_clusters[clade])
 
         # If no official Nextstrain_clade assigned or we want additional checks, also check for "unofficial" clusters
         # We NEVER check for "officialE clusters. If Nextclade did not assign a cluster, then we won't do it either
@@ -597,7 +609,6 @@ print(f"Collecting all data took {round((t1-t0)/60,1)} min to run.\n")
 
 #TODO: Add decoy for 21M!
 print("\nCompile \"Meta\" clusters (e.g. 21K.21L) from individual clusters...")
-meta_clusters = [clus for clus in clusters if "meta_cluster" in clusters[clus] and clusters[clus]["meta_cluster"]]
 for meta_clus in meta_clusters:
     for disp in clusters[meta_clus]["other_nextstrain_names"]:
         if disp not in display_name_to_clus:
