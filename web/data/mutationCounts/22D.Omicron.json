@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 2178,
+    "total": 2464,
     "counts": [
       {
         "mut": "S:D574V",
-        "count": 407
-      },
-      {
-        "mut": "S:L24S",
-        "count": 124
+        "count": 494
       },
       {
         "mut": "S:G339D",
-        "count": 98
+        "count": 149
+      },
+      {
+        "mut": "S:L24S",
+        "count": 122
       },
       {
         "mut": "S:R346T",
-        "count": 60
+        "count": 80
       },
       {
         "mut": "S:H69-",
-        "count": 29
+        "count": 47
       },
       {
         "mut": "S:V70-",
-        "count": 28
+        "count": 46
       },
       {
         "mut": "S:L452R",
-        "count": 25
-      },
-      {
-        "mut": "S:K356T",
-        "count": 21
+        "count": 34
       },
       {
         "mut": "S:F486S",
-        "count": 20
+        "count": 33
+      },
+      {
+        "mut": "S:K356T",
+        "count": 32
       },
       {
         "mut": "S:L5F",
-        "count": 14
+        "count": 17
       }
     ]
   },
   "others": {
-    "total": 2178,
+    "total": 2464,
     "counts": [
       {
         "mut": "ORF1b:V1706I",
-        "count": 422
+        "count": 475
       },
       {
         "mut": "ORF1a:F3677L",
-        "count": 393
+        "count": 409
       },
       {
         "mut": "ORF9b:E27V",
-        "count": 240
+        "count": 248
+      },
+      {
+        "mut": "ORF1a:T3959A",
+        "count": 129
       },
       {
         "mut": "ORF1a:G3676S",
-        "count": 126
+        "count": 127
       },
       {
         "mut": "ORF1a:S3675T",
         "count": 124
       },
       {
-        "mut": "N:S33G",
-        "count": 118
+        "mut": "N:R32C",
+        "count": 124
       },
       {
-        "mut": "N:R32C",
+        "mut": "N:S33G",
         "count": 117
       },
       {
-        "mut": "ORF1a:T3959A",
-        "count": 114
-      },
-      {
         "mut": "ORF7a:P45L",
-        "count": 59
+        "count": 67
       },
       {
         "mut": "ORF1a:A2891V",
-        "count": 44
+        "count": 48
       }
     ]
   }
