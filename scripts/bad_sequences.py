@@ -3181,6 +3181,21 @@ bad_seqs = {
     "Malaysia/C19UMB2210/2022" : "2022-01-07",  #omicron EPI_ISL_14314280 
     "India/AS-ICMR-NIV-INSACOG-G-12102/2022" : "2022-01-01", #omicron EPI_ISL_14402515 - far too diverged for date
     "Belgium/LHUB-ULB_STR074/2020" : "2020-03-14",  #omicron EPI_ISL_14445224
+    #22 aug
+    "Colombia/QUI-UTP-VG-702/2021" : "2021-07-27", #omicron EPI_ISL_14536694 
+    "Colombia/QUI-UTP-VG-864/2021" : "2021-01-25", #omicron EPI_ISL_14536727 
+    "Colombia/QUI-UTP-VG-881/2021" : "2021-01-17", #omicron EPI_ISL_14536728 
+    "Colombia/QUI-UTP-VG-883/2021" : "2021-01-15", #omicron EPI_ISL_14536729 
+    "USA/MT-UMGC-05450/2021" : "2021-04-27", #omicron EPI_ISL_14488915 
+    "Colombia/ANT-LDSP3455/2022" : "2022-01-07", #omicron EPI_ISL_14489858 
+    "Colombia/ANT-LDSP3456/2022" : "2022-01-07", #omicron EPI_ISL_14489859 
+    "Germany/ST-MD9545/2021" : "2021-12-20", #omicron EPI_ISL_14463155 
+    "Germany/ST-MD9753/2022" : "2022-01-31", #omicron EPI_ISL_14463164 
+    "Mexico/GRO-INMEGEN-88-118/2022" : "2022-01-08", #omicron EPI_ISL_14504597 
+    "Slovakia/KE_22_00001561/2020" : "2020-03-31", #omicron EPI_ISL_14471084 
+    "USA/MT-MTPHL-3965241/2022" : "2022-01-13", #omicron EPI_ISL_14497446 
+    "USA/MT-MTPHL-3965245/2022" : "2022-01-13", #omicron EPI_ISL_14497450 
+    "USA/TX-DSHS-21944/2022" : "2022-01-19", #omicron EPI_ISL_14463514 
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
