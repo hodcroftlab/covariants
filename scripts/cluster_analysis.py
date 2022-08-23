@@ -90,7 +90,6 @@ def print_all_clus_alerts(key):
     for clus in summary_cluster_assignments[key]:
         print_clus_alerts(key, clus)
 
-
 # TODO: Use "usa_graph": True (Slack, Emma, May 18 22)
 
 # set min data week to consider
@@ -203,7 +202,6 @@ earliest_date = datetime.datetime.strptime("2019-01-01", '%Y-%m-%d')
 today = datetime.datetime.today()
 
 # Link Nextstrain clade and name to our cluster names used in clusters.py
-# TODO: There could be more than one display name
 display_name_to_clus = {clusters[clus]["display_name"]: clus for clus in clus_to_run if "display_name" in clusters[clus]}
 nextstrain_name_to_clus = {clusters[clus]["nextstrain_name"]: clus for clus in clus_to_run if "nextstrain_name" in clusters[clus]}
 pango_lineage_to_clus = {p["name"]: clus for clus in clus_to_run if "pango_lineages" in clusters[clus] for p in clusters[clus]["pango_lineages"]}
@@ -261,7 +259,7 @@ clus_to_run_breakdown = {key: {"official_clus": [], "unofficial_clus": [], "rest
 for clus in clus_to_run:
     for key in snps_categories:
         if key in clusters[clus] and clusters[clus][key]:
-            if clusters[clus]["display_name"] in Nextstrain_clades or "meta_cluster" in clusters[clus] and clusters[clus]["meta_cluster"]: #TODO: Is this an okay solution?
+            if clusters[clus]["display_name"] in Nextstrain_clades or "meta_cluster" in clusters[clus] and clusters[clus]["meta_cluster"]:
                 clus_to_run_breakdown[key]["official_clus"].append(clus)
             elif clusters[clus]["type"] == "variant" and clusters[clus]["graphing"]:
                 clus_to_run_breakdown[key]["unofficial_clus"].append(clus)
@@ -288,7 +286,6 @@ for c in clus_to_run:
             daughter_clades[Nextstrain_clade] = []
         daughter_clades[Nextstrain_clade].append(c)
 
-
 ##################################
 ##################################
 ##### Prepare datastructure
@@ -304,12 +301,13 @@ if division:
             division_data_all[country][clus]["summary"] = {}
             division_data_all[country][clus]["cluster_counts"] = {}
 
-#TODO: Check if items() is better for all my iterations
 # Prepare output dictionary
 for clus in clus_to_run:
     clus_data_all[clus] = clusters[clus]
     clus_data_all[clus]["summary"] = {country: {'first_seq': today, 'num_seqs': 0, 'last_seq': earliest_date} for country in all_countries}
     clus_data_all[clus]["cluster_counts"] = {country: {} for country in all_countries}
+
+    clus_data_all[clus]["use_pango"] = clusters[clus]["use_pango"] if "use_pango" in clusters[clus] else False
 
     clus_data_all[clus]["clus_build_name"] = clusters[clus]["build_name"]
     clus_data_all[clus]["snps"] = [str(s) for s in clusters[clus]["snps"]]
@@ -344,13 +342,7 @@ acknowledgement_by_variant["acknowledgements"] = {clus: [] for clus in clus_to_r
 acknowledgement_keys = {}
 acknowledgement_keys["acknowledgements"] = {}
 
-# Prepare decoy clusters for meta clusters
 meta_clusters = [clus for clus in clusters if "meta_cluster" in clusters[clus] and clusters[clus]["meta_cluster"]]
-decoy_clusters = {}
-for meta_clus in meta_clusters:
-    for disp in clusters[meta_clus]["other_nextstrain_names"]:
-        if disp not in display_name_to_clus:
-            decoy_clusters[disp] = meta_clus
 
 t1 = time.time()
 print(f"Preparation took {round((t1-t0)/60,1)} min to run.\n")
@@ -389,8 +381,6 @@ with open(input_meta) as f:
         l = line.split("\t")
 
         ##### CLEANING METADATA #####
-
-        #l = [float("NaN") if i == "" else i for i in l] # Fillna # TODO: Do we really need this?
 
         # Filter for only Host = Human
         if l[indices['host']] != "Human":
@@ -442,11 +432,12 @@ with open(input_meta) as f:
 
             if division:
                 if country in selected_country:
-                    if div not in total_counts_divisions[country]:
-                        total_counts_divisions[country][div] = {}
-                    if date_2weeks not in total_counts_divisions[country][div]:
-                        total_counts_divisions[country][div][date_2weeks] = 0
-                    total_counts_divisions[country][div][date_2weeks] += 1
+                    if div:
+                        if div not in total_counts_divisions[country]:
+                            total_counts_divisions[country][div] = {}
+                        if date_2weeks not in total_counts_divisions[country][div]:
+                            total_counts_divisions[country][div][date_2weeks] = 0
+                        total_counts_divisions[country][div][date_2weeks] += 1
 
 
         ##### ASSIGNING CLUSTERS #####
@@ -463,23 +454,23 @@ with open(input_meta) as f:
             clus_all.append(display_name_to_clus[clade])
             only_Nextstrain = True
             if clade in daughter_clades:
-                for daughter in daughter_clades[clade]:
-                #TODO: make sure this works for snps
-                    if not clus_check or daughter not in clus_to_run_breakdown["unofficial_clus"]: # Make sure daughter clade is not added two times
-                        clus_to_check = {key: clus_to_check[key] + daughter for key in clus_to_check if daughter in clus_to_check[key]["official_clus"] or daughter in clus_to_check[key]["unofficial_clus"]}
+                if pango in pango_lineage_to_clus and clus_data_all[pango_lineage_to_clus[pango]]["use_pango"] and pango_lineage_to_clus[pango] in daughter_clades[clade]:
+                    clus_all.append(pango_lineage_to_clus[pango])
+                else:
+                    for daughter in daughter_clades[clade]:
+                    #TODO: make sure this works for snps
+                        if not clus_check: # Make sure daughter clade is not added two times
+                            clus_to_check = {key: clus_to_check[key] + [daughter] if daughter in clus_to_run_breakdown[key]["official_clus"] or daughter in clus_to_run_breakdown[key]["unofficial_clus"] else clus_to_check[key] for key in clus_to_check}
+
                 only_Nextstrain = False
-
-        else: #TODO: Use Pango if no Nextstrain
+        else:
             if pango in pango_lineage_to_clus:
-                clus_all.append(pango_lineage_to_clus[pango])
-                only_Nextstrain = True #TODO: CORRECT?
-
-           # Decoy cluster
-            if clade in decoy_clusters:
-                clus_all.append(decoy_clusters[clade])
+                if clus_data_all[pango_lineage_to_clus[pango]]["use_pango"]:
+                    clus_all.append(pango_lineage_to_clus[pango])
+                    only_Nextstrain = True
 
         # If no official Nextstrain_clade assigned or we want additional checks, also check for "unofficial" clusters
-        # We NEVER check for "officialE clusters. If Nextclade did not assign a cluster, then we won't do it either
+        # We NEVER check for "official" clusters. If Nextclade did not assign a cluster, then we won't do it either
         if clus_all == [] or clus_check:
             clus_to_check = {key: clus_to_check[key] + clus_to_run_breakdown[key]["unofficial_clus"] for key in clus_to_check}
             only_Nextstrain = False
@@ -519,11 +510,11 @@ with open(input_meta) as f:
             clus_all_unique = [c for c in clus_all if c not in rest_all]
             daughter_parent = False
             if len(clus_all_unique) == 2: # Exactly two clus - check if daughter/parent pair
-                if clus_all_unique[0] in daughter_clades and daughter_clades[clus_all_unique[0]] == clus_all_unique[1]:
-                    clus_all_no_plotting.append(clus_all_unique[0]) # Remove parent, keep child
+                if clusters[clus_all_unique[0]]["display_name"] in daughter_clades and clus_all_unique[1] in daughter_clades[clusters[clus_all_unique[0]]["display_name"]]:
+                    clus_all_no_plotting.append(clus_all_unique[0]) # Remove parent, keep child (only for nextstrain run files)
                     daughter_parent = True
-                if clus_all_unique[1] in daughter_clades and daughter_clades[clus_all_unique[1]] == clus_all_unique[0]:
-                    clus_all_no_plotting.append(clus_all_unique[1]) # Remove parent, keep child
+                if clusters[clus_all_unique[1]]["display_name"] in daughter_clades and clus_all_unique[0] in daughter_clades[clusters[clus_all_unique[1]]["display_name"]]:
+                    clus_all_no_plotting.append(clus_all_unique[1]) # Remove parent, keep child (only for nextstrain run files)
                     daughter_parent = True
 
             if len(clus_all_unique) > 1 and not daughter_parent: # Flag for inconsistency
@@ -541,11 +532,14 @@ with open(input_meta) as f:
             # Exclude all strains that are dated before their respective clade
             if clus in cluster_first_dates:
                 if date_formatted < cluster_first_dates[clus]["date_formatted"]:
-                    if clus not in alert_dates:
-                        alert_dates[clus] = {'strain': [], 'date': [], 'gisaid_epi_isl': []}
-                    for k in alert_dates[clus]:
-                        alert_dates[clus][k].append(l[indices[k]])
-                    continue
+                    if clus in first_date_exceptions and l[indices["strain"]] in first_date_exceptions[clus]: #TODO: Test if this works
+                        print(f"\nEarly date exception: {l[indices['strain']]}\n")
+                    else:
+                        if clus not in alert_dates:
+                            alert_dates[clus] = {'strain': [], 'date': [], 'gisaid_epi_isl': []}
+                        for k in alert_dates[clus]:
+                            alert_dates[clus][k].append(l[indices[k]])
+                        continue
 
             # Store all strains per assigned cluster (used for runs)
             all_sequences[clus].append(l[indices['strain']])
@@ -567,14 +561,15 @@ with open(input_meta) as f:
             # For selected countries (e.g. USA, Switzerland), also collect data by division
             if division:
                 if country in selected_country:
-                    if div not in division_data_all[country][clus]["summary"]:
-                        division_data_all[country][clus]["summary"][div] = {'first_seq': today, 'num_seqs': 0,
-                                                                            'last_seq': earliest_date}
-                    division_data_all[country][clus]["summary"][div]["num_seqs"] += 1
-                    division_data_all[country][clus]["summary"][div]["first_seq"] = min(
-                        division_data_all[country][clus]["summary"][div]["first_seq"], date_formatted)
-                    division_data_all[country][clus]["summary"][div]["last_seq"] = max(
-                        division_data_all[country][clus]["summary"][div]["last_seq"], date_formatted)
+                    if div:
+                        if div not in division_data_all[country][clus]["summary"]:
+                            division_data_all[country][clus]["summary"][div] = {'first_seq': today, 'num_seqs': 0,
+                                                                                'last_seq': earliest_date}
+                        division_data_all[country][clus]["summary"][div]["num_seqs"] += 1
+                        division_data_all[country][clus]["summary"][div]["first_seq"] = min(
+                            division_data_all[country][clus]["summary"][div]["first_seq"], date_formatted)
+                        division_data_all[country][clus]["summary"][div]["last_seq"] = max(
+                            division_data_all[country][clus]["summary"][div]["last_seq"], date_formatted)
 
             if date_2weeks < min_data_week:
                 continue
@@ -586,12 +581,12 @@ with open(input_meta) as f:
 
             if division:
                 if country in selected_country:
-
-                    if div not in division_data_all[country][clus]["cluster_counts"]:
-                        division_data_all[country][clus]["cluster_counts"][div] = {}
-                    if date_2weeks not in division_data_all[country][clus]["cluster_counts"][div]:
-                        division_data_all[country][clus]["cluster_counts"][div][date_2weeks] = 0
-                    division_data_all[country][clus]["cluster_counts"][div][date_2weeks] += 1
+                    if div:
+                        if div not in division_data_all[country][clus]["cluster_counts"]:
+                            division_data_all[country][clus]["cluster_counts"][div] = {}
+                        if date_2weeks not in division_data_all[country][clus]["cluster_counts"][div]:
+                            division_data_all[country][clus]["cluster_counts"][div][date_2weeks] = 0
+                        division_data_all[country][clus]["cluster_counts"][div][date_2weeks] += 1
 
 
             if print_acks:
@@ -607,7 +602,6 @@ print(f"Collecting all data took {round((t1-t0)/60,1)} min to run.\n")
 ##################################
 #### Process counts and check for min number of sequences per country
 
-#TODO: Add decoy for 21M!
 print("\nCompile \"Meta\" clusters (e.g. 21K.21L) from individual clusters...")
 for meta_clus in meta_clusters:
     for disp in clusters[meta_clus]["other_nextstrain_names"]:
@@ -754,7 +748,7 @@ ndone = 0
 for clus in clus_data_all:
     print(f"Process cluster {clus}: number {ndone + 1} of {len(clus_to_run)}")
     total_data = pd.DataFrame(total_counts_countries)
-    cluster_data = pd.DataFrame(clus_data_all[clus]["cluster_counts"]).sort_index() # TODO: Countries sort, clusters not. Hope it's okay to sort for both
+    cluster_data = pd.DataFrame(clus_data_all[clus]["cluster_counts"]).sort_index()
     clus_data_all[clus]["non_zero_counts"] = {}
 
     for country in all_countries:
@@ -783,7 +777,7 @@ if division:
     for country in selected_country:
         for clus in division_data_all[country]:
             total_data = pd.DataFrame(total_counts_divisions[country])
-            cluster_data = pd.DataFrame(division_data_all[country][clus]["cluster_counts"]).sort_index()  # TODO: Countries sort, clusters not. Hope it's okay to sort for both
+            cluster_data = pd.DataFrame(division_data_all[country][clus]["cluster_counts"]).sort_index()
             division_data_all[country][clus]["non_zero_counts"] = {}
 
             for div in division_data_all[country][clus]["cluster_counts"]:
@@ -888,7 +882,8 @@ def get_ordered_clusters_to_plot(division_local=False, selected_country_local=No
                     total_coun_counts[country] = 0
                 total_coun_counts[country] += country_info[country]["num_seqs"]
 
-    sorted_country_tups = sorted(total_coun_counts.items(), key=lambda x: x[1], reverse=True)
+    sorted_country_tups = sorted(total_coun_counts.items(), key=lambda x: (-x[1], x[0]))
+    print(sorted_country_tups)
     proposed_coun_to_plot = [x[0] for x in sorted_country_tups]
 
     return proposed_coun_to_plot, clus_keys
