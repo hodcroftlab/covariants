@@ -3196,6 +3196,7 @@ bad_seqs = {
     "USA/MT-MTPHL-3965241/2022" : "2022-01-13", #omicron EPI_ISL_14497446 
     "USA/MT-MTPHL-3965245/2022" : "2022-01-13", #omicron EPI_ISL_14497450 
     "USA/TX-DSHS-21944/2022" : "2022-01-19", #omicron EPI_ISL_14463514 
+    "Pakistan/PPHRL-PACP-59/2021" : "2021-08-21", #omicron
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
