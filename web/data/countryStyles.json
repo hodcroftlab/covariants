@@ -16,7 +16,7 @@
     "ls": "--"
   },
   "Bahrain": {
-    "c": "#e31a1c",
+    "c": "#fb9a99",
     "ls": "dotted"
   },
   "Bangladesh": {
@@ -27,10 +27,6 @@
     "c": "#fdbf6f",
     "ls": "-"
   },
-  "Bonaire": {
-    "c": "#cab2d6",
-    "ls": "dotted"
-  },
   "Botswana": {
     "c": "#33a02c",
     "ls": "--"
@@ -40,7 +36,7 @@
     "ls": "--"
   },
   "Brunei": {
-    "c": "#ff66ff",
+    "c": "#b15928",
     "ls": "dotted"
   },
   "Bulgaria": {
@@ -64,16 +60,12 @@
     "ls": "--"
   },
   "Costa Rica": {
-    "c": "#fb9a99",
+    "c": "#33a02c",
     "ls": "dotted"
   },
   "Croatia": {
     "c": "#33a02c",
     "ls": "-."
-  },
-  "Curacao": {
-    "c": "#ff7f00",
-    "ls": "--"
   },
   "Czech Republic": {
     "c": "#004d00",
@@ -84,8 +76,8 @@
     "ls": "-"
   },
   "Ecuador": {
-    "c": "#fdbf6f",
-    "ls": "-."
+    "c": "#ff7f00",
+    "ls": "--"
   },
   "Estonia": {
     "c": "#b15928",
@@ -99,10 +91,6 @@
     "c": "#a6cee3",
     "ls": "-"
   },
-  "Georgia": {
-    "c": "#b15928",
-    "ls": "dotted"
-  },
   "Germany": {
     "c": "#cab2d6",
     "ls": "-"
@@ -115,12 +103,8 @@
     "c": "#9900cc",
     "ls": "-."
   },
-  "Guatemala": {
-    "c": "#000000",
-    "ls": "dotted"
-  },
   "Hong Kong": {
-    "c": "#990000",
+    "c": "#b2df8a",
     "ls": "dotted"
   },
   "Iceland": {
@@ -147,10 +131,6 @@
     "c": "#b15928",
     "ls": "-"
   },
-  "Jamaica": {
-    "c": "#a6a6a6",
-    "ls": "dotted"
-  },
   "Japan": {
     "c": "#1f78b4",
     "ls": "-."
@@ -162,10 +142,6 @@
   "Latvia": {
     "c": "#a6a6a6",
     "ls": "--"
-  },
-  "Lebanon": {
-    "c": "#ffcc00",
-    "ls": "dotted"
   },
   "Lithuania": {
     "c": "#ff66ff",
@@ -179,12 +155,8 @@
     "c": "#cab2d6",
     "ls": "-."
   },
-  "Maldives": {
-    "c": "#fdbf6f",
-    "ls": "dotted"
-  },
   "Mauritius": {
-    "c": "#0000ff",
+    "c": "#9900cc",
     "ls": "dotted"
   },
   "Mexico": {
@@ -192,7 +164,7 @@
     "ls": "-."
   },
   "Nepal": {
-    "c": "#9900cc",
+    "c": "#6a3d9a",
     "ls": "dotted"
   },
   "Netherlands": {
@@ -212,15 +184,15 @@
     "ls": "-"
   },
   "Pakistan": {
-    "c": "#ff7f00",
+    "c": "#e31a1c",
     "ls": "dotted"
   },
   "Panama": {
-    "c": "#b2df8a",
+    "c": "#cab2d6",
     "ls": "dotted"
   },
   "Papua New Guinea": {
-    "c": "#6a3d9a",
+    "c": "#ff7f00",
     "ls": "dotted"
   },
   "Peru": {
@@ -292,16 +264,12 @@
     "ls": "-"
   },
   "Taiwan": {
-    "c": "#0099ff",
+    "c": "#990000",
     "ls": "dotted"
   },
   "Thailand": {
     "c": "#000000",
     "ls": "-"
-  },
-  "Trinidad and Tobago": {
-    "c": "#004d00",
-    "ls": "dotted"
   },
   "Turkey": {
     "c": "#fb9a99",
@@ -316,7 +284,7 @@
     "ls": "-"
   },
   "Vietnam": {
-    "c": "#33a02c",
-    "ls": "dotted"
+    "c": "#fdbf6f",
+    "ls": "-."
   }
 }
