@@ -193,14 +193,14 @@ country_list_4 = [
     "Peru",                 #2
     "Costa Rica",           #3
     "Bahrain",              #4
-    "Pakistan",             #6
-    "Papua New Guinea",     #8
-    "Panama",               #9
-    "Nepal",                #11
-    "Hong Kong",            #12
-    "Brunei",               #13
-    "Mauritius",            #14
-    "Taiwan",               #20
+    "Pakistan",             #5
+    "Papua New Guinea",     #6
+    "Panama",               #7
+    "Nepal",                #8
+    "Hong Kong",            #9
+    "Brunei",               #10
+    "Mauritius",            #11
+    "Taiwan",               #12
 ]
 
 country_styles_1 = {

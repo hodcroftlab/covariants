@@ -3199,6 +3199,9 @@ bad_seqs = {
     "Pakistan/PPHRL-PACP-59/2021" : "2021-08-21", #omicron
     "Mauritius/CERI-KRISP-K045542/2020" : "2020-07-01", # omicron EPI_ISL_14218667
     "England/PHEP-YYF1UHK/2022" : "2022-01-12", # omicron EPI_ISL_14572429
+    #30 aug
+    "France/BRE-IPP48578/2022" : "2022-01-08", #omicron  EPI_ISL_14673785
+    "Japan/PG-332426/2022" : "2022-01-18", #omicron  EPI_ISL_14644507
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
