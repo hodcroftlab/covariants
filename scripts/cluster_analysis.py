@@ -532,9 +532,7 @@ with open(input_meta) as f:
             # Exclude all strains that are dated before their respective clade
             if clus in cluster_first_dates:
                 if date_formatted < cluster_first_dates[clus]["date_formatted"]:
-                    if clus in first_date_exceptions and l[indices["strain"]] in first_date_exceptions[clus]: #TODO: Test if this works
-                        print(f"\nEarly date exception: {l[indices['strain']]}\n")
-                    else:
+                    if not (clus in first_date_exceptions and l[indices["strain"]] in first_date_exceptions[clus]):
                         if clus not in alert_dates:
                             alert_dates[clus] = {'strain': [], 'date': [], 'gisaid_epi_isl': []}
                         for k in alert_dates[clus]:
@@ -627,7 +625,7 @@ for meta_clus in meta_clusters:
             acknowledgement_by_variant["acknowledgements"][meta_clus].extend(acknowledgement_by_variant["acknowledgements"][clus])
 
 
-print("\nRemoving unused countries from cluster counts...\n")
+print("\nRemoving unused countries from cluster counts...\n") #TODO: also remove from summary?
 for clus in clus_to_run:
     for country in list(clus_data_all[clus]["cluster_counts"]):
         if clus_data_all[clus]["cluster_counts"][country] == {}:
@@ -883,7 +881,6 @@ def get_ordered_clusters_to_plot(division_local=False, selected_country_local=No
                 total_coun_counts[country] += country_info[country]["num_seqs"]
 
     sorted_country_tups = sorted(total_coun_counts.items(), key=lambda x: (-x[1], x[0]))
-    print(sorted_country_tups)
     proposed_coun_to_plot = [x[0] for x in sorted_country_tups]
 
     return proposed_coun_to_plot, clus_keys
