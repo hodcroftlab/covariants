@@ -1,10 +1,10 @@
 {
   "S": {
-    "total": 114061,
+    "total": 114065,
     "counts": [
       {
         "mut": "S:P681H",
-        "count": 6135
+        "count": 6136
       },
       {
         "mut": "S:A688V",
@@ -12,7 +12,7 @@
       },
       {
         "mut": "S:N679K",
-        "count": 2038
+        "count": 2039
       },
       {
         "mut": "S:S1252F",
@@ -45,15 +45,15 @@
     ]
   },
   "others": {
-    "total": 114061,
+    "total": 114065,
     "counts": [
       {
         "mut": "ORF9b:Q77E",
-        "count": 113705
+        "count": 113708
       },
       {
         "mut": "ORF1a:S2947N",
-        "count": 20466
+        "count": 20467
       },
       {
         "mut": "ORF1a:K3573R",
@@ -61,7 +61,7 @@
       },
       {
         "mut": "ORF1a:T2121I",
-        "count": 4539
+        "count": 4540
       },
       {
         "mut": "ORF1a:H388Y",

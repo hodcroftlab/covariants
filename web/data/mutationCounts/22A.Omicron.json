@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 92822,
+    "total": 95057,
     "counts": [
       {
         "mut": "S:V3G",
-        "count": 44138
+        "count": 44963
       },
       {
         "mut": "S:N658S",
-        "count": 30907
+        "count": 31995
       },
       {
         "mut": "S:R346T",
-        "count": 11848
+        "count": 12688
       },
       {
         "mut": "S:I670V",
-        "count": 1882
+        "count": 1894
       },
       {
         "mut": "S:Q1201L",
-        "count": 855
+        "count": 875
       },
       {
         "mut": "S:G181E",
-        "count": 799
+        "count": 818
       },
       {
         "mut": "S:A701V",
-        "count": 713
+        "count": 716
       },
       {
         "mut": "S:R346S",
-        "count": 589
+        "count": 613
       },
       {
         "mut": "S:L5F",
-        "count": 548
+        "count": 565
       },
       {
         "mut": "S:D936N",
-        "count": 503
+        "count": 504
       }
     ]
   },
   "others": {
-    "total": 92822,
+    "total": 95057,
     "counts": [
       {
         "mut": "M:D3N",
-        "count": 5264
+        "count": 5432
       },
       {
         "mut": "ORF3a:L106F",
-        "count": 5199
+        "count": 5282
       },
       {
         "mut": "ORF1a:Q556K",
-        "count": 4996
+        "count": 5148
       },
       {
         "mut": "N:E136D",
-        "count": 4926
+        "count": 5074
       },
       {
         "mut": "ORF1b:Y1247C",
-        "count": 4857
+        "count": 5005
       },
       {
         "mut": "ORF1a:H1636Q",
-        "count": 3060
+        "count": 3107
       },
       {
         "mut": "ORF1a:P2046S",
-        "count": 2438
+        "count": 2479
       },
       {
         "mut": "ORF1a:A967V",
-        "count": 2141
+        "count": 2163
       },
       {
         "mut": "ORF1a:M85-",
-        "count": 1987
+        "count": 2064
       },
       {
-        "mut": "ORF7a:P34L",
-        "count": 1961
+        "mut": "ORF1a:V84-",
+        "count": 2002
       }
     ]
   }
