@@ -3202,6 +3202,10 @@ bad_seqs = {
     #30 aug
     "France/BRE-IPP48578/2022" : "2022-01-08", #omicron  EPI_ISL_14673785
     "Japan/PG-332426/2022" : "2022-01-18", #omicron  EPI_ISL_14644507
+    "Brazil/SP-112233/2020" : "2020-08-15", #omicron  EPI_ISL_14710805
+    "Portugal/APO-9378/2021" : "2021-02-02", #omicron  EPI_ISL_14710812
+    "Belgium/rega-44642/2022" : "2022-01-04", #omicron  EPI_ISL_14732379
+    "Belgium/rega-44672/2022" : "2022-01-04", #omicron  EPI_ISL_14732408
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
