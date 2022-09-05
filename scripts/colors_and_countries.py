@@ -148,7 +148,7 @@ country_list_2 = [
     "Botswana",  # 3
     "Turkey",  # 4
     "South Africa",  # 5
-    "Curacao",  # 6
+    "Ecuador",  # 6
     "Russia", # 7
     "Poland",  # 8
     "Romania",  # 9
@@ -184,31 +184,25 @@ country_list_3 = [
     "Philippines",     # 16
     "Argentina", # 17
     "Cambodia",       # 18  
-    "Ecuador",    #19
+    "Vietnam",    #19
     "New Zealand",    #20
 ]
 
 country_list_4 = [
     "Sint Maarten",         #1
     "Peru",                 #2
-    "Vietnam",             #3
-    "Costa Rica",           #4
-    "Bahrain",              #5
-    "Pakistan",             #6
-    "Bonaire",              #7
-    "Papua New Guinea",     #8
-    "Panama",               #9
-    "Georgia",              #10
-    "Nepal",                #11
-    "Hong Kong",            #12
-    "Brunei",               #13
-    "Mauritius",            #14
-    "Jamaica",              #15
-    "Guatemala",            #16
-    "Trinidad and Tobago",  #17
-    "Lebanon",              #18
-    "Maldives",             #19
-    "Taiwan",               #20
+    "Costa Rica",           #3
+    "Bahrain",              #4
+    "Pakistan",             #5
+    "Papua New Guinea",     #6
+    "Panama",               #7
+    "Nepal",                #8
+    "Hong Kong",            #9
+    "Brunei",               #10
+    "Mauritius",            #11
+    "Taiwan",               #12
+    "Georgia",              #13
+    "Jamaica",              #14
 ]
 
 country_styles_1 = {
