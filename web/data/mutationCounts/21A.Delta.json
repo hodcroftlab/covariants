@@ -1,14 +1,14 @@
 {
   "S": {
-    "total": 4059524,
+    "total": 4060524,
     "counts": [
       {
         "mut": "S:T95I",
-        "count": 1820848
+        "count": 1821018
       },
       {
         "mut": "S:A222V",
-        "count": 420353
+        "count": 420393
       },
       {
         "mut": "S:Y145H",
@@ -16,76 +16,76 @@
       },
       {
         "mut": "S:V1264L",
-        "count": 102305
+        "count": 102322
       },
       {
         "mut": "S:S112L",
-        "count": 83307
+        "count": 83306
       },
       {
         "mut": "S:L5F",
-        "count": 58730
+        "count": 58744
       },
       {
         "mut": "S:V1104L",
-        "count": 56413
+        "count": 56424
       },
       {
         "mut": "S:Q613H",
-        "count": 53204
+        "count": 53207
       },
       {
         "mut": "S:P251L",
-        "count": 40205
+        "count": 40208
       },
       {
         "mut": "S:I850L",
-        "count": 37874
+        "count": 37877
       }
     ]
   },
   "others": {
-    "total": 4059524,
+    "total": 4060524,
     "counts": [
       {
         "mut": "ORF1a:V2930L",
-        "count": 3675099
+        "count": 3676040
       },
       {
         "mut": "ORF1b:A1918V",
-        "count": 3673660
+        "count": 3674596
       },
       {
         "mut": "ORF1a:P2046L",
-        "count": 3672505
+        "count": 3673431
       },
       {
         "mut": "ORF1a:T3646A",
-        "count": 3669001
+        "count": 3669934
       },
       {
         "mut": "ORF1a:T3255I",
-        "count": 3667148
+        "count": 3668094
       },
       {
         "mut": "ORF1a:P2287S",
-        "count": 3663623
+        "count": 3664563
       },
       {
         "mut": "N:G215C",
-        "count": 3660554
+        "count": 3661486
       },
       {
         "mut": "ORF1a:A1306S",
-        "count": 3651562
+        "count": 3652501
       },
       {
         "mut": "ORF7b:T40I",
-        "count": 3646624
+        "count": 3647558
       },
       {
         "mut": "ORF1a:A2529V",
-        "count": 997232
+        "count": 997244
       }
     ]
   }
