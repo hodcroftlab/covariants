@@ -721,7 +721,7 @@ if print_acks and "all" in clus_answer:
                 json.dump(ch, fh, indent=2, sort_keys=True)
 
 print("\nCollect countries above cutoff_num_seqs (in at least one cluster)...")
-cutoff_num_seqs = 1200
+cutoff_num_seqs = 2000
 countries_to_plot = []
 for clus in clus_data_all:
     for country in clus_data_all[clus]["summary"]:
