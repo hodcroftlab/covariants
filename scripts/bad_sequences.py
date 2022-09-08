@@ -3208,6 +3208,8 @@ bad_seqs = {
     "Belgium/rega-44672/2022" : "2022-01-04", #omicron  EPI_ISL_14732408
     #5 sept
     "USA/TX-DSHS-22452/2022" : "2022-01-01", # omicron EPI_ISL_14775980
+    #8 sept
+    "Chile/AP-102862/2022" : "2022-01-18", #omicron EPI_ISL_14817829
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
