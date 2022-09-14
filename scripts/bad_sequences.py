@@ -3210,6 +3210,13 @@ bad_seqs = {
     "USA/TX-DSHS-22452/2022" : "2022-01-01", # omicron EPI_ISL_14775980
     #8 sept
     "Chile/AP-102862/2022" : "2022-01-18", #omicron EPI_ISL_14817829
+    #14 Sept
+    "CzechRepublic/NRL_s4893/2022" : "2022-01-27", #omicron  EPI_ISL_14893004
+    "Japan/PG-340095/2020" : "2020-08-15", #omicron  EPI_ISL_14876743
+    "Japan/PG-340096/2020" : "2020-08-15", #omicron  EPI_ISL_14876744
+    "Japan/PG-341553/2020" : "2020-08-15", #omicron  EPI_ISL_14879022
+    "Japan/PG-341554/2020" : "2020-08-15", #omicron  EPI_ISL_14879023
+    "Japan/PG-344758/2020" : "2020-08-23", #omicron  EPI_ISL_14881852
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
