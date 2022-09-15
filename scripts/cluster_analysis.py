@@ -992,7 +992,7 @@ if "all" in clus_answer:
             ccounts.append([displayn, len(all_sequences[clus])])
 
     count_df = pd.DataFrame(ccounts, columns=['cluster', 'counts'])
-    print("\nShowing cluster counts")
+    print("\nShowing cluster counts (these are taken from the nextstrain files and might deviate slightly from the final counts on covariants)")
     print(count_df.sort_values(by="counts"))
 
 # Print out how many bad seqs were found
