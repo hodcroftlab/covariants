@@ -3217,6 +3217,11 @@ bad_seqs = {
     "Japan/PG-341553/2020" : "2020-08-15", #omicron  EPI_ISL_14879022
     "Japan/PG-341554/2020" : "2020-08-15", #omicron  EPI_ISL_14879023
     "Japan/PG-344758/2020" : "2020-08-23", #omicron  EPI_ISL_14881852
+    #21 Sept
+    "France/ARA-009-0053/2021" : "2021-05-15", #omicron  EPI_ISL_14949212
+    "France/CVL-039-0089/2021" : "2021-09-03", #omicron  EPI_ISL_14949213
+    "France/CVL-054-0015/2021" : "2021-06-02", #omicron  EPI_ISL_14949214
+    "France/OCC-026-0032/2021" : "2021-07-12", #omicron  EPI_ISL_14949216
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
