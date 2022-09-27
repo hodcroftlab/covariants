@@ -3222,6 +3222,23 @@ bad_seqs = {
     "France/CVL-039-0089/2021" : "2021-09-03", #omicron  EPI_ISL_14949213
     "France/CVL-054-0015/2021" : "2021-06-02", #omicron  EPI_ISL_14949214
     "France/OCC-026-0032/2021" : "2021-07-12", #omicron  EPI_ISL_14949216
+    #27 Sept
+    "Djibouti/NAMRU3_SOTF_EA_36/2022": "2022-01-20", # 22B, 2022-02-01
+    "France/IDF-HB-112207023809/2020": "2020-07-06", # 22B, 2022-02-01
+    "Italy/EMR_AUSLRomagna_C073-22-10/2020": "2020-07-25", # 22B, 2022-02-01
+    "Reunion/ChuReu-722090410801/2021": "2021-08-26", # 22B, 2022-02-01
+    "Reunion/ChuReu-722090411801/2021": "2021-08-26", # 22B, 2022-02-01
+    "Reunion/ChuReu-722090413801/2021": "2021-09-26", # 22B, 2022-02-01
+    "Reunion/ChuReu-722090414201/2021": "2021-09-24", # 22B, 2022-02-01
+    "Reunion/ChuReu-722090415201/2021": "2021-08-26", # 22B, 2022-02-01
+    "Russia/NVS-RII-MH79368S/2022": "2022-01-08", # 22B, 2022-02-01
+    "France/CVL-039-0083/2021": "2021-05-01", # 21K.Omicron, 2021-10-16
+    "France/IDF-HB-112201040385/2021": "2021-01-09", # 21K.Omicron, 2021-10-16
+    "France/IDF-HB-112201051796/2021": "2021-01-12", # 21K.Omicron, 2021-10-16
+    "France/IDF-HB-112202016945/2021": "2021-02-03", # 21K.Omicron, 2021-10-16
+    "Netherlands/ZH-EMC-6779/2021": "2021-02-18", # 21K.Omicron, 2021-10-16
+    "USA/SD-SDAIHG-0829/2021": "2021-02-18", # 21K.Omicron, 2021-10-16
+    "Italy/EMR_AUSLRomagna_C073-22-10/2020": "2020-07-25", # Delta417, 2020-10-30
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
