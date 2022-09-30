@@ -10,6 +10,7 @@ LAPIS_API_ACCESS_KEY = os.environ.get("LAPIS_API_ACCESS_KEY")
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 CASECOUNTS_CSV_FILENAME = "perCountryDataCaseCounts.json"
 CASECOUNTS_CSV_PATH = os.path.join(THIS_DIR, "..", "web", "data", CASECOUNTS_CSV_FILENAME)
+OUTPUT_PATH = os.path.join(THIS_DIR, "..", "web", "data")
 
 base_url = 'https://cov-spectrum.ethz.ch/gisaid/api/v1/sample/aa-mutations'
 filter_deletions_url = "aaMutations=Orf1a:1.,N:420."
@@ -28,19 +29,7 @@ def build_url(base_url,cluster,threshold):
         url += f"&minProportion={threshold:f}"
     return url
 
-#TODO: Probably not needed
-def get_all_defining_mutations():
-
-    mutations = set()
-
-    for clus in CLUSTERS:
-        defining_mutations = clusters[clus]["mutations"]["nonsynonymous"]
-        for mut in defining_mutations:
-            s = f"{mut['gene']}:{mut['left']}{mut['pos']}{mut['right']}"
-            mutations.add(s)
-
-    return mutations
-
+#TODO: Currently, defining_mutations from clusters is not used at all
 # For each country and covariants cluster, query mutations and proportions from covSPECTRUM using SNPs
 def get_mutation_proportions():
     mutation_proportions = {country: {clus: {} for clus in CLUSTERS} for country in COUNTRIES}
@@ -75,11 +64,9 @@ def get_mutation_proportions():
 
     return mutation_proportions
 
-def get_mutation_distribution():
+# Multiply case count data with mutation proportions to get estimated mutation coverage per country
+def get_mutation_distribution(mutation_proportions, caseCountData):
     mutation_distribution = {country: {} for country in COUNTRIES}
-
-    with open(CASECOUNTS_CSV_PATH) as f:
-        caseCountData = json.load(f)["regions"][0]["distributions"]
 
     for i in range(len(caseCountData)):
         country = caseCountData[i]["country"]
@@ -106,6 +93,7 @@ def get_mutation_distribution():
 
     return mutation_distribution
 
+# Accumulate bi-weekly mutation percentages
 def accumulate_mutations(mutation_distribution):
 
     mutation_distribution_accum = {country: {week: {} for week in mutation_distribution[country]} for country in mutation_distribution}
@@ -122,14 +110,78 @@ def accumulate_mutations(mutation_distribution):
 
     return mutation_distribution_accum
 
+#TODO: Is it necessary to do this by brute force? Could we not get this from further above? Also, cutoff and order?
+# Get a list of all mutations
+def get_mutation_list(data):
+    mutation_names = set()
+    for country in data:
+        for week in data[country]:
+            for mut in data[country][week]:
+                mutation_names.add(mut)
+    return list(mutation_names)
+
+# Put data into json-friendly format
+def to_json(data, mutation_names, caseCountData, invert = False):
+    per_country_intro_content = caseCountData["regions"][0]["per_country_intro_content"]
+    max_date = caseCountData["regions"][0]["max_date"]
+    min_date = caseCountData["regions"][0]["min_date"]
+
+    distributions = []
+    i = 0
+    for country in data:
+        if not invert:
+            distributions.append({"country": country, "distribution": []})
+        else:
+            distributions.append({"mutation": country, "distribution": []})
+        for week in data[country]:
+            distributions[i]["distribution"].append({"week": week, "mutation_percentages": data[country][week]})
+        i += 1
+
+    output_data = {"regions": [{"region": "World", "distributions": distributions,
+                  "per_country_intro_content": per_country_intro_content, "max_date": max_date, "min_date": min_date,
+                  "mutation_names":  mutation_names}]}
+
+    return output_data
+
+# Inverted: Sort per mutation instead of per country
+def to_json_invert(data, mutation_names, caseCountData):
+
+    data_invert = {}
+    for country in data:
+        for week in data[country]:
+            for mut in data[country][week]:
+                if mut not in data_invert:
+                    data_invert[mut] = {}
+                if week not in data_invert[mut]:
+                    data_invert[mut][week] = {}
+                data_invert[mut][week][country] = data[country][week][mut]
+
+    output_data = to_json(data_invert, mutation_names, caseCountData, invert = True)
+
+    return output_data
 
 
 if __name__ == "__main__":
 
     mutation_proportions = get_mutation_proportions()
 
-    mutation_distribution = get_mutation_distribution()
+    with open(CASECOUNTS_CSV_PATH) as f:
+        caseCountData = json.load(f)
+
+    mutation_distribution = get_mutation_distribution(mutation_proportions, caseCountData["regions"][0]["distributions"])
+    mutation_names = get_mutation_list(mutation_distribution)
+
+    #TODO: How to include reinfections and undercounting
+    #TODO: Which mutations to use in which order?
 
     mutation_distribution_accum = accumulate_mutations(mutation_distribution)
 
+    json_format = to_json(mutation_distribution_accum, mutation_names, caseCountData)
+    json_format_invert = to_json_invert(mutation_distribution_accum, mutation_names, caseCountData)
+
+    with open(os.path.join(OUTPUT_PATH, "perCountryMutationAnalysis.json"), "w") as out:
+        json.dump(json_format, out, indent=2, sort_keys=True)
+
+    with open(os.path.join(OUTPUT_PATH, "perMutationAnalysis.json"), "w") as out:
+        json.dump(json_format_invert, out, indent=2, sort_keys=True)
 
