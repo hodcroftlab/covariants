@@ -3239,6 +3239,9 @@ bad_seqs = {
     "Netherlands/ZH-EMC-6779/2021": "2021-02-18", # 21K.Omicron, 2021-10-16
     "USA/SD-SDAIHG-0829/2021": "2021-02-18", # 21K.Omicron, 2021-10-16
     "Italy/EMR_AUSLRomagna_C073-22-10/2020": "2020-07-25", # Delta417, 2020-10-30
+    #30 Sept
+    "Indonesia/KI-FKUNMUL-1765/2020": "2020-10-15", # 21J.Delta, 2020-10-22
+    "Pakistan/NIH-B92-S14/2022": "2022-01-27", # 22B, 2022-02-01
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
