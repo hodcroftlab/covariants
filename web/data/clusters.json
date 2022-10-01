@@ -221,7 +221,7 @@
           }
         ]
       },
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_name": "20I (Alpha, V1)",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20I.Alpha.V1",
       "old_build_names": [
@@ -2563,6 +2563,38 @@
     },
     {
       "aquaria_urls": [],
+      "build_name": "21M.Omicron",
+      "cluster_data": [],
+      "col": "#000000",
+      "country_info": [],
+      "display_name": "21M (Omicron)",
+      "graphing": false,
+      "important": false,
+      "mutations": {
+        "nonsynonymous": []
+      },
+      "nextstrain_build": false,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21M.Omicron",
+      "pango_lineages": [
+        {
+          "name": "B.1.1.529",
+          "url": null
+        }
+      ],
+      "snps": [
+        23438,
+        772,
+        10868
+      ],
+      "snps_with_base": [
+        "23438T",
+        "772C",
+        "10868T"
+      ],
+      "type": "do_not_display"
+    },
+    {
+      "aquaria_urls": [],
       "build_name": "21K.21L",
       "cluster_data": [],
       "col": "#b3d9ff",
@@ -2570,6 +2602,7 @@
       "display_name": "21K.21L",
       "graphing": false,
       "important": false,
+      "meta_cluster": true,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K.21L",
       "other_nextstrain_names": [
@@ -2598,6 +2631,7 @@
       "display_name": "Omicron",
       "graphing": false,
       "important": false,
+      "meta_cluster": true,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Omicron",
       "other_nextstrain_names": [
@@ -2606,7 +2640,7 @@
         "21M (Omicron)",
         "22A (Omicron)",
         "22B (Omicron)",
-        "22C (Omciron)"
+        "22C (Omicron)"
       ],
       "snps": [
         22679,

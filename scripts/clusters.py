@@ -4,7 +4,7 @@ clusters = {
         "snps": [23063, 23604, 24914],  # 23063T, 23604A, 24914C
         "snps_with_base": ["23063T", "23604A", "24914C"],
         "cluster_data": [],  # 501, 681, 1118
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": True,
@@ -564,8 +564,30 @@ clusters = {
         },
     },
 
+    "21M.Omicron": {  # THIS DOES NOT PLOT, IS ONLY FOR the JOINT BUILDS (Omicron/21K.21L)
+        "snps": [23438, 772, 10868],  # TC 10868T
+        "snps_with_base": ["23438T", "772C", "10868T"],
+        "cluster_data": [],
+        "nextstrain_build": False,
+        "graphing": False,
+        "type": "do_not_display",
+        "important": False,
+        "country_info": [],
+        "col": "#000000",
+        "display_name": "21M (Omicron)",
+        "build_name": "21M.Omicron",
+        "pango_lineages": [
+            {"name": "B.1.1.529", "url": None}
+        ],
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21M.Omicron",
+        "mutations": {
+            "nonsynonymous": []
+        },
+    },
+
     # 21K.21L 21M together
     "21K.21L": {
+        "meta_cluster": True,
         "snps": [22679, 23040, 23604],  # 22679C, 23040G, 23604A
         "snps_with_base": ["22679C", "23040G", "23604A"],
         "cluster_data": [],
@@ -581,13 +603,14 @@ clusters = {
     },
 
     "Omicron": {
+        "meta_cluster": True,
         "snps": [22679, 23040, 23604],  # 22679C, 23040G, 23604A
         "snps_with_base": ["22679C", "23040G", "23604A"],
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
         "important": False,
-        "other_nextstrain_names": ["21K (Omicron)", "21L (Omicron)", "21M (Omicron)", "22A (Omicron)", "22B (Omicron)", "22C (Omciron)"],
+        "other_nextstrain_names": ["21K (Omicron)", "21L (Omicron)", "21M (Omicron)", "22A (Omicron)", "22B (Omicron)", "22C (Omicron)"],
         "country_info": [], 'col': "#b3d9ff",
         "display_name": "Omicron",
         "type": "do_not_display",
@@ -2332,6 +2355,7 @@ clusters = {
         "build_name": "S.T572",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.T572?c=gt-S_572",  # color
     },
+
 
     #  "Orf1b813": { #S.T572I - 23277T
     #      "snps": [15904, 18904], #813H, 1813H

@@ -1,5 +1,11 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2022-09-21
+- Start using the newly refactored script cluster_analysis.py, replacing allClusterDynamics_faster.py - runtime is cut to less than 30 minutes and output is the same. This refactoring was done by Moira Zuber, to which CoV is very grateful!
+
+## 2022-08-22
+- Up the threshold for number of sequences for a country to be plotted in Per variant view from 1200 to 2000
+
 ## 2022-08-12
 - Add proper links to the footer of the clades graph on the front page
 - Add 'on demand' graph loading on Per Cluster, Cases, and Per Variant pages, thanks to Richard Goater!

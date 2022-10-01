@@ -1,42 +1,42 @@
 {
   "S": {
-    "total": 29685,
+    "total": 29875,
     "counts": [
       {
         "mut": "S:H69-",
-        "count": 23020
+        "count": 23193
       },
       {
         "mut": "S:V70-",
-        "count": 22849
+        "count": 23000
       },
       {
         "mut": "S:L189F",
-        "count": 8891
+        "count": 8961
       },
       {
         "mut": "S:V772I",
-        "count": 8847
+        "count": 8918
       },
       {
         "mut": "S:V143F",
-        "count": 1379
+        "count": 1385
       },
       {
         "mut": "S:A688V",
-        "count": 501
+        "count": 504
+      },
+      {
+        "mut": "S:I68-",
+        "count": 492
       },
       {
         "mut": "S:C1253F",
-        "count": 393
+        "count": 395
       },
       {
         "mut": "S:P25S",
         "count": 386
-      },
-      {
-        "mut": "S:I68-",
-        "count": 360
       },
       {
         "mut": "S:A67V",
@@ -45,47 +45,47 @@
     ]
   },
   "others": {
-    "total": 29685,
+    "total": 29875,
     "counts": [
       {
         "mut": "ORF1b:P314L",
-        "count": 29669
+        "count": 29859
       },
       {
         "mut": "ORF1b:H1213Y",
-        "count": 29651
+        "count": 29841
       },
       {
         "mut": "ORF1a:M4241I",
-        "count": 23044
+        "count": 23227
       },
       {
         "mut": "ORF1b:V711I",
-        "count": 23021
+        "count": 23205
       },
       {
         "mut": "ORF1b:A1521S",
-        "count": 23007
+        "count": 23190
       },
       {
         "mut": "ORF1b:P976L",
-        "count": 8895
+        "count": 9044
       },
       {
         "mut": "ORF3a:Q185H",
-        "count": 8888
+        "count": 9036
       },
       {
         "mut": "ORF1b:E1977D",
-        "count": 8791
+        "count": 8943
       },
       {
         "mut": "ORF1b:P1570L",
-        "count": 8471
+        "count": 8620
       },
       {
         "mut": "ORF8:E64*",
-        "count": 7642
+        "count": 7789
       }
     ]
   }
