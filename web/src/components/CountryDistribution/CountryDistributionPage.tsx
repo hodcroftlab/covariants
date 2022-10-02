@@ -39,7 +39,7 @@ import { CountryFlag } from '../Common/CountryFlag'
 import { USStateCode } from '../Common/USStateCode'
 import { PageHeading } from '../Common/PageHeading'
 
-const enabledFilters = ['clusters', 'countriesWithIcons']
+const enabledFilters = ['date', 'clusters', 'countriesWithIcons']
 const { regionNames, regionsHaveData } = getRegions()
 
 export function CountryDistributionPage() {

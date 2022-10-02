@@ -8,14 +8,21 @@ const Card = styled(CardBase)``
 
 const CardHeader = styled(CardHeaderBase)`
   display: flex;
+  align-items: center;
   cursor: pointer;
 `
 
 const CollapseIcon = styled(MdArrowDropDown)<{ $rotated?: boolean }>`
   display: inline;
-  fill: ${(props) => props.theme.gray650};
+  fill: ${(props) => props.theme.gray550};
   transition: transform linear 0.25s;
   transform: rotate(${(props) => (props.$rotated ? '-90deg' : '0deg')});
+`
+
+const CardTitle = styled.span`
+  display: flex;
+  flex-grow: 1;
+  margin-left: 8px;
 `
 
 export interface CollapsibleCardProps {
@@ -38,7 +45,7 @@ export function CardCollapsible({
     <Card className={className}>
       <CardHeader onClick={toggle}>
         <CollapseIcon size={30} $rotated={collapsed} />
-        <span className="d-flex w-100">{title}</span>
+        <CardTitle>{title}</CardTitle>
       </CardHeader>
 
       <Collapse isOpen={!collapsed}>{children}</Collapse>
