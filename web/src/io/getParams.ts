@@ -19,8 +19,7 @@ export function getTimeDomain(): [number, number] {
   return [minDate, maxDate]
 }
 
-export function getTicks() {
-  const timeDomain = getTimeDomain()
+export function getTicks(timeDomain = getTimeDomain()) {
   const start = timeDomain[0]
   const end = timeDomain[1]
   return Interval.fromDateTimes(

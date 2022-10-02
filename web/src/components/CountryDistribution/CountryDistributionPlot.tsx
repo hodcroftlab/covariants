@@ -7,7 +7,7 @@ import { DateTime } from 'luxon'
 
 import type { CountryDistributionDatum } from 'src/io/getPerCountryData'
 import { theme } from 'src/theme'
-import { ticks, timeDomain } from 'src/io/getParams'
+import { getTicks, timeDomain } from 'src/io/getParams'
 import { CLUSTER_NAME_OTHERS, getClusterColor } from 'src/io/getClusters'
 import { formatDateHumanely, formatProportion } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
@@ -55,17 +55,18 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
     [distribution],
   )
 
-  const { adjustedTicks, domainX, domainY } = useMemo(() => {
-    const adjustedTicks = adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin).slice(1) // slice ensures first tick is not outside domain
-    const domainX = [timeDomain[0], timeDomain[1]]
-    const domainY = [0, 1]
-    return { adjustedTicks, domainX, domainY }
-  }, [width])
-
   const [zoomArea, setZoomArea] = useState<[number, number] | undefined>()
   const [isZooming, setIsZooming] = useState(false)
   const [selectedArea, setSelectedArea] = useState<[number, number] | undefined>()
   const [hovering, setHovering] = useState(false)
+
+  const { adjustedTicks, domainX, domainY } = useMemo(() => {
+    const ticks = getTicks(selectedArea || timeDomain)
+    const adjustedTicks = adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin).slice(1) // slice ensures first tick is not outside domain
+    const domainX = [timeDomain[0], timeDomain[1]]
+    const domainY = [0, 1]
+    return { adjustedTicks, domainX, domainY }
+  }, [width, selectedArea])
 
   const calculatedDomainY = useMemo(() => {
     if (selectedArea) {
@@ -78,7 +79,7 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
       return [0, Math.min(1, max + max * 0.1)]
     }
     return domainY
-  }, [selectedArea, domainY])
+  }, [data, selectedArea, domainY])
 
   return (
     <>
@@ -143,8 +144,8 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
             stroke="none"
             fill={getClusterColor(cluster)}
             fillOpacity={1}
-            isAnimationActive
-            animationDuration={500}
+            isAnimationActive={false}
+            // animationDuration={500}
           />
         ))}
 
@@ -155,8 +156,8 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
           stroke="none"
           fill={theme.clusters.color.others}
           fillOpacity={1}
-          isAnimationActive
-          animationDuration={500}
+          isAnimationActive={false}
+          // animationDuration={500}
         />
 
         <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
