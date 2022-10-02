@@ -24,13 +24,13 @@ const Input = styled.input`
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     background: #fff;
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 50%;
     cursor: pointer;
-    margin-top: -6px;
+    margin-top: -4px;
   }
 
   &:focus-visible::-webkit-slider-thumb {
@@ -40,13 +40,13 @@ const Input = styled.input`
   /* All the same stuff for Firefox */
   &::-moz-range-thumb {
     background: #fff;
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 50%;
     cursor: pointer;
-    margin-top: -6px;
+    margin-top: -4px;
   }
 
   &:focus-visible::-moz-range-thumb {

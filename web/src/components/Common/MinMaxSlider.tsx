@@ -71,7 +71,7 @@ const Container = styled.div`
     --min-pct: calc((var(--min-v) / var(--length)) * 100%);
     --max-pct: calc((var(--max-v) / var(--length)) * 100%);
     border: 1px solid #ccc;
-    margin: 2px calc(var(--thumb-space) - 2px);
+    margin: 2px calc(var(--thumb-space) / 2);
     background: linear-gradient(
       to right,
       var(--bg),
