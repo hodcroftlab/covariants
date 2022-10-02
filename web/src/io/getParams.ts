@@ -19,7 +19,7 @@ export function getTimeDomain(): [number, number] {
   return [minDate, maxDate]
 }
 
-export function getTicks(timeDomain = getTimeDomain()) {
+export function getTimeInterval(timeDomain = getTimeDomain()): Interval {
   const start = timeDomain[0]
   const end = timeDomain[1]
   return Interval.fromDateTimes(
@@ -27,6 +27,16 @@ export function getTicks(timeDomain = getTimeDomain()) {
     DateTime.fromSeconds(start).startOf('month'),
     DateTime.fromSeconds(end).endOf('month'),
   )
+}
+
+export function getWeeks(): number[] {
+  return getTimeInterval()
+    .splitBy({ weeks: 1 })
+    .map((d) => d.start.toSeconds())
+}
+
+export function getTicks(timeDomain = getTimeDomain()) {
+  return getTimeInterval(timeDomain)
     .splitBy({ months: 1 })
     .map((d) => d.start.toSeconds())
 }

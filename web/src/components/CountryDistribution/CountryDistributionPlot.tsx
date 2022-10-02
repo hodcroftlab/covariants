@@ -12,6 +12,8 @@ import { CLUSTER_NAME_OTHERS, getClusterColor } from 'src/io/getClusters'
 import { formatDateHumanely, formatProportion } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import { ChartContainer } from 'src/components/Common/ChartContainer'
+import { useRecoilState } from 'recoil'
+import { dateFilterAtom } from 'src/state/DateFilter'
 import { CountryDistributionPlotTooltip } from './CountryDistributionPlotTooltip'
 
 const allowEscapeViewBox = { x: false, y: true }
@@ -57,29 +59,30 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
 
   const [zoomArea, setZoomArea] = useState<[number, number] | undefined>()
   const [isZooming, setIsZooming] = useState(false)
-  const [selectedArea, setSelectedArea] = useState<[number, number] | undefined>()
+  const [dateFilter, setDateFilter] = useRecoilState(dateFilterAtom)
+  // const [selectedArea, setSelectedArea] = useState<[number, number] | undefined>()
   const [hovering, setHovering] = useState(false)
 
   const { adjustedTicks, domainX, domainY } = useMemo(() => {
-    const ticks = getTicks(selectedArea || timeDomain)
+    const ticks = getTicks(dateFilter || timeDomain)
     const adjustedTicks = adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin).slice(1) // slice ensures first tick is not outside domain
     const domainX = [timeDomain[0], timeDomain[1]]
     const domainY = [0, 1]
     return { adjustedTicks, domainX, domainY }
-  }, [width, selectedArea])
+  }, [width, dateFilter])
 
   const calculatedDomainY = useMemo(() => {
-    if (selectedArea) {
+    if (dateFilter) {
       let max = 0
       data.forEach((d) => {
-        if (d.week >= selectedArea[0] && d.week <= selectedArea[1]) {
+        if (d.week >= dateFilter[0] && d.week <= dateFilter[1]) {
           max = Math.max(max, d.total_clusters_pct)
         }
       })
       return [0, Math.min(1, max + max * 0.1)]
     }
     return domainY
-  }, [data, selectedArea, domainY])
+  }, [data, dateFilter, domainY])
 
   return (
     <>
@@ -109,7 +112,7 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
         onMouseUp={(e) => {
           if (isZooming) {
             if (zoomArea[0] !== zoomArea[1]) {
-              setSelectedArea(zoomArea[0] < zoomArea[1] ? zoomArea : [zoomArea[1], zoomArea[0]])
+              setDateFilter(zoomArea[0] < zoomArea[1] ? zoomArea : [zoomArea[1], zoomArea[0]])
             }
             setZoomArea(undefined)
             setIsZooming(false)
@@ -120,7 +123,7 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
           dataKey="week"
           type="number"
           tickFormatter={formatDateHumanely}
-          domain={selectedArea || domainX}
+          domain={dateFilter || domainX}
           ticks={adjustedTicks}
           tick={theme.plot.tickStyle}
           tickMargin={theme.plot.tickMargin?.x}
@@ -182,7 +185,7 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
           />
         )}
       </AreaChart>
-      {selectedArea && <ResetButton onClick={() => setSelectedArea(undefined)}>Reset zoom</ResetButton>}
+      {/* {selectedArea && <ResetButton onClick={() => setSelectedArea(undefined)}>Reset zoom</ResetButton>} */}
     </>
   )
 }

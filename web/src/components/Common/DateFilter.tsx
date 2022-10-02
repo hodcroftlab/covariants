@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
 import {
   Button,
@@ -12,8 +12,11 @@ import {
   Row,
 } from 'reactstrap'
 import styled, { useTheme } from 'styled-components'
+import { useRecoilState } from 'recoil'
 
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
+import { getWeeks } from 'src/io/getParams'
+import { dateFilterAtom } from 'src/state/DateFilter'
 import MinMaxSlider from './MinMaxSlider'
 
 export const CardBody = styled(CardBodyBase)``
@@ -24,8 +27,25 @@ export interface DateFiltersProps {
 }
 
 export function DateFilter({ collapsed, setCollapsed }: DateFiltersProps) {
+  const weeks = React.useMemo(() => getWeeks(), [])
+
   const [minIndex, setMinIndex] = useState(0)
-  const [maxIndex, setMaxIndex] = useState(10)
+  const [maxIndex, setMaxIndex] = useState(weeks.length - 1)
+
+  const [dateFilter, setDateFilter] = useRecoilState(dateFilterAtom)
+
+  useEffect(() => {
+    setDateFilter(() => [weeks[minIndex], weeks[maxIndex]])
+  }, [minIndex, maxIndex])
+
+  // useEffect(() => {
+  //   if (dateFilter !== null) {
+  //     const [min, max] = dateFilter
+  //     console.log(min, weeks.indexOf(min), max, weeks.indexOf(max))
+  //     setMinIndex(weeks.indexOf(min))
+  //     setMaxIndex(weeks.indexOf(max))
+  //   }
+  // }, [dateFilter])
 
   return (
     <CardCollapsible className="m-2" title="Dates" collapsed={collapsed} setCollapsed={setCollapsed}>
@@ -34,7 +54,7 @@ export function DateFilter({ collapsed, setCollapsed }: DateFiltersProps) {
           <Row noGutters>
             <MinMaxSlider
               min={0}
-              max={10}
+              max={weeks.length - 1}
               minValue={minIndex}
               maxValue={maxIndex}
               onMinChange={setMinIndex}
