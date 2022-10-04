@@ -601,7 +601,7 @@ print(f"Collecting all data took {round((t1-t0)/60,1)} min to run.\n")
 #### Process counts and check for min number of sequences per country
 
 print("\nCompile \"Meta\" clusters (e.g. 21K.21L) from individual clusters...")
-for meta_clus in meta_clusters:
+for meta_clus in [mc for mc in meta_clusters if mc in clus_to_run]: #only run meta-clusters we have asked for
     for disp in clusters[meta_clus]["other_nextstrain_names"]:
         if disp not in display_name_to_clus:
             print(f"\nWarning: {disp} (from meta_cluster {meta_clus}) not found in clusters.")
