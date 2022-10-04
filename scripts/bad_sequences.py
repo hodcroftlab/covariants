@@ -3242,6 +3242,10 @@ bad_seqs = {
     #30 Sept
     "Indonesia/KI-FKUNMUL-1765/2020": "2020-10-15", # 21J.Delta, 2020-10-22
     "Pakistan/NIH-B92-S14/2022": "2022-01-27", # 22B, 2022-02-01
+    #4 Oct
+    "India/HR-768578963/2022" : "2022-04-08", #22D  EPI_ISL_15192532
+    "Pakistan/KRISS0432/2020" : "2020-07-10", #Delta  EPI_ISL_15171917
+    "Venezuela/Zul183/2020" : "2020-04-26", #Gamma  EPI_ISL_15165686
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
