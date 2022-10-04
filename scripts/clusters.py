@@ -1198,6 +1198,50 @@ clusters = {
        }
     },
 
+    "22E": {  #BQ.1  -- remember to add/check a date cutoff if adding this formally
+       "snps": [], #"snps": [3927, 26275, 3796], #DO NOT WORK
+       "snps_with_base": [], #"snps_with_base": ["3927T", "26275G", "3796T"], #MUST ADD VALUE WHEN TURN INTO PAGE!
+       "cluster_data": [],
+       "nextstrain_build": True,
+       "parent": "22B", 
+       "use_pango": True,
+       "type": "variant",
+       "graphing": False,
+       "important": False,
+       "country_info": [],
+       "col": "#008fe0",
+       "display_name": "22E (Omicron)",
+       "alt_display_name": ["BQ.1"],
+       "build_name": "22E.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": ["22E"],
+       "nextstrain_name": "22E",
+       "pango_lineages": [
+           {"name": "BQ.1", "url": "https://cov-lineages.org/lineage.html?lineage=BQ.1"},
+           {"name": "BQ.1.1", "url": "https://cov-lineages.org/lineage.html?lineage=BQ.1.1"}
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22E.Omicron",
+       "mutations": {
+            "nonsynonymous": [],
+            "synonymous": [],
+       }
+    },
+
+    "22B22E": {
+        "meta_cluster": True,
+        "snps": [], #"snps": [22679, 23040, 23604],  #meaningless
+        "snps_with_base": [], #"snps_with_base": ["22679C", "23040G", "23604A"], #meaningless
+        "cluster_data": [],
+        "nextstrain_build": True,
+        "graphing": False,
+        "important": False,
+        "other_nextstrain_names": ["22B (Omicron)", "22E (Omicron)"],
+        "country_info": [], 'col': "#b3d9ff",
+        "display_name": "22B22E",
+        "type": "do_not_display",
+        "build_name": "22B22E",
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22B22E"
+    },
 
     # variant  -- part of 'Indian' in media - B.1.617.1
     "Kappa": {
