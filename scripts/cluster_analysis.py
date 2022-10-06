@@ -201,6 +201,25 @@ if print_files and "all" in clus_answer:
 earliest_date = datetime.datetime.strptime("2019-01-01", '%Y-%m-%d')
 today = datetime.datetime.today()
 
+changed_clus_to_run = False
+meta_clusters = [clus for clus in clus_to_run if "meta_cluster" in clusters[clus] and clusters[clus]["meta_cluster"]]
+# Print warning if not all components of a meta_cluster are enabled
+for meta_clus in meta_clusters:
+    for disp in clusters[meta_clus]["other_nextstrain_names"]:
+        clus = None
+        for c in clusters:
+            if clusters[c]["display_name"] == disp:
+                clus = c
+        if not clus:
+            print(f"\nWARNING: {disp} (component of meta_cluster {meta_clus}) is not found in clusters. Maybe a typo?")
+        elif clus not in clus_to_run:
+            print(f"\nWarning: {clus} missing from clus_to_run. It is automatically added for meta_cluster {meta_clus}")
+            clus_to_run.append(clus)
+            changed_clus_to_run = True
+
+if changed_clus_to_run:
+    print("\nThese clusters will be run: ", clus_to_run)
+
 # Link Nextstrain clade and name to our cluster names used in clusters.py
 display_name_to_clus = {clusters[clus]["display_name"]: clus for clus in clus_to_run if "display_name" in clusters[clus]}
 nextstrain_name_to_clus = {clusters[clus]["nextstrain_name"]: clus for clus in clus_to_run if "nextstrain_name" in clusters[clus]}
@@ -341,8 +360,6 @@ acknowledgement_by_variant = {}
 acknowledgement_by_variant["acknowledgements"] = {clus: [] for clus in clus_to_run}
 acknowledgement_keys = {}
 acknowledgement_keys["acknowledgements"] = {}
-
-meta_clusters = [clus for clus in clusters if "meta_cluster" in clusters[clus] and clusters[clus]["meta_cluster"]]
 
 t1 = time.time()
 print(f"Preparation took {round((t1-t0)/60,1)} min to run.\n")
@@ -601,7 +618,7 @@ print(f"Collecting all data took {round((t1-t0)/60,1)} min to run.\n")
 #### Process counts and check for min number of sequences per country
 
 print("\nCompile \"Meta\" clusters (e.g. 21K.21L) from individual clusters...")
-for meta_clus in [mc for mc in meta_clusters if mc in clus_to_run]: #only run meta-clusters we have asked for
+for meta_clus in meta_clusters:
     for disp in clusters[meta_clus]["other_nextstrain_names"]:
         if disp not in display_name_to_clus:
             print(f"\nWarning: {disp} (from meta_cluster {meta_clus}) not found in clusters.")
