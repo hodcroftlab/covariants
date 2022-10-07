@@ -5470,6 +5470,67 @@
     },
     {
       "alt_display_name": [
+        "BQ.1"
+      ],
+      "aquaria_urls": [],
+      "build_name": "22E.Omicron",
+      "cluster_data": [],
+      "col": "#008fe0",
+      "country_info": [],
+      "display_name": "22E (Omicron)",
+      "graphing": false,
+      "important": false,
+      "mutations": {
+        "nonsynonymous": [],
+        "synonymous": []
+      },
+      "nextstrain_build": true,
+      "nextstrain_name": "22E",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22E.Omicron",
+      "old_build_names": [
+        "22E"
+      ],
+      "pango_lineages": [
+        {
+          "name": "BQ.1",
+          "url": "https://cov-lineages.org/lineage.html?lineage=BQ.1"
+        },
+        {
+          "name": "BQ.1.1",
+          "url": "https://cov-lineages.org/lineage.html?lineage=BQ.1.1"
+        }
+      ],
+      "parent": "22B",
+      "snps": [],
+      "snps_with_base": [],
+      "type": "variant",
+      "use_pango": true,
+      "who_name": [
+        "Omicron"
+      ]
+    },
+    {
+      "aquaria_urls": [],
+      "build_name": "22B22E",
+      "cluster_data": [],
+      "col": "#b3d9ff",
+      "country_info": [],
+      "display_name": "22B22E",
+      "graphing": false,
+      "important": false,
+      "meta_cluster": true,
+      "nextstrain_build": true,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22B22E",
+      "other_nextstrain_names": [
+        "22B (Omicron)",
+        "22E (Omicron)"
+      ],
+      "snps": [],
+      "snps_with_base": [],
+      "type": "do_not_display"
+    },
+    {
+      "alt_display_name": [
         "21A/S:154K"
       ],
       "aquaria_urls": [
