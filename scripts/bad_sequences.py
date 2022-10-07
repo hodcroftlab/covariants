@@ -3249,6 +3249,8 @@ bad_seqs = {
     "France/IDF-HMN-22092080153/2022" : "2022-03-05", #omicron 22E EPI_ISL_15115256
     "Nigeria/NCDC-NR-GL-005840/2022" : "2022-07-10", # 22e EPI_ISL_14711977
     "Nigeria/NCDC-NR-GL-005835/2022" : "2022-07-10", #22e EPI_ISL_14711972
+    #7 Oct
+    "Slovakia/BA_22_00038608/2021" : "2021-02-26" #22B  EPI_ISL_15214166
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
