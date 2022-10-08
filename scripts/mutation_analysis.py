@@ -12,7 +12,7 @@ CASECOUNTS_CSV_FILENAME = "perCountryDataCaseCounts.json"
 CASECOUNTS_CSV_PATH = os.path.join(THIS_DIR, "..", "web", "data", CASECOUNTS_CSV_FILENAME)
 OUTPUT_PATH = os.path.join(THIS_DIR, "..", "web", "data")
 
-base_url = 'https://cov-spectrum.ethz.ch/gisaid/api/v1/sample/aa-mutations'
+base_url = 'https://lapis.cov-spectrum.org/gisaid/v1/sample/aa-mutations'
 filter_deletions_url = "aaMutations=Orf1a:1.,N:420."
 
 #only include mutations that are above this threshhold
