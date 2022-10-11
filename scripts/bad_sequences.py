@@ -3253,6 +3253,9 @@ bad_seqs = {
     "Slovakia/BA_22_00038608/2021" : "2021-02-26", #22B  EPI_ISL_15214166
     "India/HR-767087152/2022" : "2022-05-08", #22D EPI_ISL_15192533
     "India/KA-15741_S95_R1_001/2022" : "2022-05-20", #22D EPI_ISL_15203427
+    #11 Oct
+    "Kenya/KEM-21-9-105112/2021": "2021-09-28", # 21K.Omicron, 2021-10-16
+    "USA/OR-OHSU-222590261/2022": "2022-06-21", # 22E, 2022-07-01
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
