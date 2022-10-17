@@ -66,7 +66,7 @@ clusters = {
         "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
-        "important": True,
+        "important": False, # as of 17 Oct
         "country_info": [],
         "col": "#FF6666",
         "display_name": "20H (Beta, V2)",
@@ -118,7 +118,7 @@ clusters = {
         "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
-        "important": True,
+        "important": False, # as of 17 Oct
         "country_info": [],
         "col": "#FFB3B3",
         "display_name": "20J (Gamma, V3)",
@@ -1205,8 +1205,8 @@ clusters = {
        "nextstrain_build": True,
        "parent": "22B", 
        "use_pango": True,
-       "type": "do_not_display",
-       "graphing": False,
+       "type": "variant",
+       "graphing": True,
        "important": False,
        "country_info": [],
        "col": "#ac00e0",
