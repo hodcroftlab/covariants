@@ -1209,7 +1209,7 @@ clusters = {
        "graphing": False,
        "important": False,
        "country_info": [],
-       "col": "#008fe0",
+       "col": "#ac00e0",
        "display_name": "22E (Omicron)",
        "alt_display_name": ["BQ.1"],
        "build_name": "22E.Omicron",
