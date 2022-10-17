@@ -5502,8 +5502,12 @@
       ],
       "parent": "22B",
       "snps": [],
-      "snps_with_base": [],
-      "type": "variant",
+      "snps_with_base": [
+        "27259A",
+        "14257C",
+        "22942A"
+      ],
+      "type": "do_not_display",
       "use_pango": true,
       "who_name": [
         "Omicron"
