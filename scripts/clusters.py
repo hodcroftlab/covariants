@@ -1199,13 +1199,13 @@ clusters = {
     },
 
     "22E": {  #BQ.1  -- remember to add/check a date cutoff if adding this formally
-       "snps": [], #"snps": [3927, 26275, 3796], #DO NOT WORK
-       "snps_with_base": [], #"snps_with_base": ["3927T", "26275G", "3796T"], #MUST ADD VALUE WHEN TURN INTO PAGE!
+       "snps": [], #"snps": [27259, 14257, 22942], #SNPS should be ok but keep turned off while using Pango #C27259A T14257C T22942A
+       "snps_with_base": ["27259A", "14257C", "22942A"], #should work
        "cluster_data": [],
        "nextstrain_build": True,
        "parent": "22B", 
        "use_pango": True,
-       "type": "variant",
+       "type": "do_not_display",
        "graphing": False,
        "important": False,
        "country_info": [],
