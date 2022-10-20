@@ -528,10 +528,16 @@ with open(input_meta) as f:
             daughter_parent = False
             if len(clus_all_unique) == 2: # Exactly two clus - check if daughter/parent pair
                 if clusters[clus_all_unique[0]]["display_name"] in daughter_clades and clus_all_unique[1] in daughter_clades[clusters[clus_all_unique[0]]["display_name"]]:
-                    clus_all_no_plotting.append(clus_all_unique[0]) # Remove parent, keep child (only for nextstrain run files)
+                    if clusters[clus_all_unique[1]]["graphing"]:
+                        clus_all_no_plotting.append(clus_all_unique[0]) # Assign sequence to child, but for parent keep in nextstrain files
+                    else:
+                        clus_all_no_plotting.append(clus_all_unique[1]) # Assign sequence to parent, but for child keep in nextstrain files
                     daughter_parent = True
                 if clusters[clus_all_unique[1]]["display_name"] in daughter_clades and clus_all_unique[0] in daughter_clades[clusters[clus_all_unique[1]]["display_name"]]:
-                    clus_all_no_plotting.append(clus_all_unique[1]) # Remove parent, keep child (only for nextstrain run files)
+                    if clusters[clus_all_unique[1]]["graphing"]:
+                        clus_all_no_plotting.append(clus_all_unique[1]) # Assign sequence to child, but for parent keep in nextstrain files
+                    else:
+                        clus_all_no_plotting.append(clus_all_unique[0]) # Assign sequence to parent, but for child keep in nextstrain files
                     daughter_parent = True
 
             if len(clus_all_unique) > 1 and not daughter_parent: # Flag for inconsistency
