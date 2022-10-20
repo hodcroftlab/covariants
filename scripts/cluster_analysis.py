@@ -534,7 +534,7 @@ with open(input_meta) as f:
                         clus_all_no_plotting.append(clus_all_unique[1]) # Assign sequence to parent, but for child keep in nextstrain files
                     daughter_parent = True
                 if clusters[clus_all_unique[1]]["display_name"] in daughter_clades and clus_all_unique[0] in daughter_clades[clusters[clus_all_unique[1]]["display_name"]]:
-                    if clusters[clus_all_unique[1]]["graphing"]:
+                    if clusters[clus_all_unique[0]]["graphing"]:
                         clus_all_no_plotting.append(clus_all_unique[1]) # Assign sequence to child, but for parent keep in nextstrain files
                     else:
                         clus_all_no_plotting.append(clus_all_unique[0]) # Assign sequence to parent, but for child keep in nextstrain files
