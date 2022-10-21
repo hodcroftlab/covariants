@@ -2342,7 +2342,7 @@
               "week": "2022-09-26"
             },
             {
-              "percent_total_cases": 0.0002206078291752762,
+              "percent_total_cases": 0.00022602309016083445,
               "stand_estimated_cases": {
                 "20A.EU2": 0,
                 "20A/S:126A": 0,
@@ -2363,17 +2363,17 @@
                 "21I (Delta)": 0,
                 "21J (Delta)": 0,
                 "21K (Omicron)": 13,
-                "21L (Omicron)": 27,
-                "22A (Omicron)": 108,
-                "22B (Omicron)": 1129,
+                "21L (Omicron)": 26,
+                "22A (Omicron)": 105,
+                "22B (Omicron)": 1102,
                 "22C (Omicron)": 0,
                 "22D (Omicron)": 13,
-                "22E (Omicron)": 67,
+                "22E (Omicron)": 66,
                 "S:677H.Robin1": 0,
                 "S:677P.Pelican": 0,
-                "others": 1
+                "others": 0
               },
-              "stand_total_cases": 1358,
+              "stand_total_cases": 1325,
               "total_sequences": 101,
               "week": "2022-10-10"
             }

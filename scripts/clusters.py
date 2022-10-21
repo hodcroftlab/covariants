@@ -1207,7 +1207,7 @@ clusters = {
        "use_pango": True,
        "type": "variant",
        "graphing": True,
-       "important": False,
+       "important": True,
        "country_info": [],
        "col": "#ac00e0",
        "display_name": "22E (Omicron)",
