@@ -1,5 +1,9 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2022-10-21
+- Add a 22E (BQ.1) page and on plots
+- Remove Beta & Gamma from the 'important' (default view) buttons
+
 ## 2022-09-21
 - Start using the newly refactored script cluster_analysis.py, replacing allClusterDynamics_faster.py - runtime is cut to less than 30 minutes and output is the same. This refactoring was done by Moira Zuber, to which CoV is very grateful!
 

@@ -154,6 +154,14 @@ name_table = [
         ],
     },
     {
+        "clade": "22E (Omicron)",
+        "who": "Omicron",
+        "lineages": [
+            {"name": "BQ.1", "url": "https://cov-lineages.org/lineages/lineage_BQ.1.html"}
+        ],
+        "others": [],
+    },
+    {
         "clade": "20E (EU1)",
         "who": None,
         "lineages": [
