@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 13413,
+    "total": 14270,
     "counts": [
       {
         "mut": "S:R346T",
-        "count": 5429
+        "count": 6094
       },
       {
         "mut": "S:F486S",
-        "count": 3646
+        "count": 4038
       },
       {
         "mut": "S:D574V",
-        "count": 3448
+        "count": 3593
       },
       {
         "mut": "S:K356T",
-        "count": 1866
+        "count": 2086
       },
       {
         "mut": "S:D1199N",
-        "count": 1728
+        "count": 1905
       },
       {
         "mut": "S:F490S",
-        "count": 885
+        "count": 1075
       },
       {
         "mut": "S:L452R",
-        "count": 466
+        "count": 533
       },
       {
         "mut": "S:G339D",
-        "count": 407
+        "count": 420
       },
       {
         "mut": "S:L24S",
-        "count": 385
+        "count": 418
       },
       {
         "mut": "S:K444M",
-        "count": 158
+        "count": 172
       }
     ]
   },
   "others": {
-    "total": 13413,
+    "total": 14270,
     "counts": [
       {
         "mut": "ORF1b:V1706I",
-        "count": 2415
+        "count": 2607
       },
       {
         "mut": "ORF1a:F3677L",
-        "count": 1185
+        "count": 1254
       },
       {
         "mut": "ORF9b:E27V",
-        "count": 780
+        "count": 862
       },
       {
         "mut": "ORF1a:T3959A",
-        "count": 492
+        "count": 506
       },
       {
         "mut": "ORF1a:G3676S",
-        "count": 456
-      },
-      {
-        "mut": "ORF1a:S3675T",
-        "count": 382
+        "count": 495
       },
       {
         "mut": "N:S33G",
-        "count": 378
+        "count": 421
+      },
+      {
+        "mut": "ORF1a:S3675T",
+        "count": 418
       },
       {
         "mut": "ORF1a:Q1198K",
-        "count": 340
+        "count": 376
       },
       {
         "mut": "N:R32C",
-        "count": 294
+        "count": 327
       },
       {
-        "mut": "ORF1a:V2955M",
-        "count": 255
+        "mut": "ORF3a:T229I",
+        "count": 277
       }
     ]
   }

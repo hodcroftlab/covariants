@@ -1,22 +1,22 @@
 {
   "S": {
-    "total": 3736890,
+    "total": 3737059,
     "counts": [
       {
         "mut": "S:T95I",
-        "count": 1843392
+        "count": 1843428
       },
       {
         "mut": "S:A222V",
-        "count": 147607
+        "count": 147608
       },
       {
         "mut": "S:Y145H",
-        "count": 142364
+        "count": 142365
       },
       {
         "mut": "S:S112L",
-        "count": 83827
+        "count": 83835
       },
       {
         "mut": "S:V1264L",
@@ -24,19 +24,19 @@
       },
       {
         "mut": "S:V1104L",
-        "count": 57686
+        "count": 57689
       },
       {
         "mut": "S:L5F",
-        "count": 55894
+        "count": 55903
       },
       {
         "mut": "S:P251L",
-        "count": 40269
+        "count": 40270
       },
       {
         "mut": "S:I850L",
-        "count": 38010
+        "count": 38022
       },
       {
         "mut": "S:Q677H",
@@ -45,47 +45,47 @@
     ]
   },
   "others": {
-    "total": 3736890,
+    "total": 3737059,
     "counts": [
       {
         "mut": "ORF1a:P2046L",
-        "count": 3730969
+        "count": 3731138
       },
       {
         "mut": "ORF1a:P2287S",
-        "count": 3714115
+        "count": 3714282
       },
       {
         "mut": "ORF1a:A2529V",
-        "count": 1017013
+        "count": 1017018
       },
       {
         "mut": "ORF1b:L829I",
-        "count": 312360
+        "count": 312372
       },
       {
         "mut": "N:Q9L",
-        "count": 310036
+        "count": 310047
       },
       {
         "mut": "ORF9b:S6C",
-        "count": 309930
+        "count": 309941
       },
       {
         "mut": "ORF1b:I1257V",
-        "count": 293262
+        "count": 293283
       },
       {
         "mut": "ORF3a:E239Q",
-        "count": 262605
+        "count": 262620
       },
       {
         "mut": "ORF1b:F183V",
-        "count": 233542
+        "count": 233562
       },
       {
         "mut": "ORF1a:K261N",
-        "count": 213754
+        "count": 213770
       }
     ]
   }
