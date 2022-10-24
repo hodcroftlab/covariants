@@ -3290,6 +3290,8 @@ bad_seqs = {
     "USA/FL-BPHL-14072/2022" : "2022-01-14",  # 22B, EPI_ISL_15360993
     #20 oct
     "USA/SC-REDDI-AD76C5238R8/2021" : "2021-10-04", # 22B EPI_ISL_15393565
+    #24 Oct
+    "Brazil/SP-FIOCRUZ-20210/2022" : "2022-01-18", #22B  EPI_ISL_15442743
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
