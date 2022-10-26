@@ -3,6 +3,9 @@ import requests
 import json
 from dotenv import load_dotenv, find_dotenv
 from clusters import clusters
+import datetime
+import matplotlib.pyplot as plt
+import numpy as np
 
 load_dotenv(find_dotenv())
 LAPIS_API_ACCESS_KEY = os.environ.get("LAPIS_API_ACCESS_KEY")
@@ -18,51 +21,75 @@ filter_deletions_url = "aaMutations=Orf1a:1.,N:420."
 #only include mutations that are above this threshhold
 THRESHOLD = 0.1
 
-COUNTRIES = ["Switzerland", "Germany"]
+COUNTRIES = ["Portugal", "Denmark", "Sweden", "Germany", "United Kingdom", "USA", "South Africa", "India"]
+#COUNTRIES = ["Switzerland", "Germany"]
 CLUSTERS = [clus for clus in clusters if clusters[clus]["type"] == "variant" and clusters[clus]["graphing"]]
 #CLUSTERS = ["22D", "22C"]$
 
-def build_url(base_url,cluster,threshold):
+def build_url(base_url,nextstrainClade,threshold):
     #TODO: is this the proper url? include filterdeletions?
-    url = f"{base_url}?{filter_deletions_url}&accessKey={LAPIS_API_ACCESS_KEY}&nucMutations={','.join(cluster)}"
+    url = f"{base_url}?{filter_deletions_url}&accessKey={LAPIS_API_ACCESS_KEY}&nextstrainClade={nextstrainClade}"
     if threshold is not None:
         url += f"&minProportion={threshold:f}"
     return url
 
-#TODO: Currently, defining_mutations from clusters is not used at all
 # For each country and covariants cluster, query mutations and proportions from covSPECTRUM using SNPs
 def get_mutation_proportions():
     mutation_proportions = {country: {clus: {} for clus in CLUSTERS} for country in COUNTRIES}
 
     for clus in CLUSTERS:
 
-        print(f"\nQuery mutations from covSPECTRUm for cluster {clus}")
+        nextstrainClade = clusters[clus]["display_name"].split(" ")[0]
+        print(f"\nQuery mutations from covSPECTRUm for cluster {clus} (nextstrainClade {nextstrainClade})")
 
-        if "snps_with_base" not in clusters[clus]:
-            print(f"snps_with_base missing from {clus}")
-            continue
-
-        cluster_muts = clusters[clus]["snps_with_base"]
         defining_mutations = clusters[clus]["mutations"]["nonsynonymous"]
         defining_mutations_list = [f"{mut['gene']}:{mut['left']}{mut['pos']}{mut['right']}" for mut in
                                    defining_mutations]
 
         for country in COUNTRIES:
             # Query mutation information from covSPECTRUM
-            # TODO: Does it make sense to query with snps? Wouldn't it make much more sense to query using Pango or something else?
-            request_url = build_url(base_url, cluster_muts, THRESHOLD)
+            request_url = build_url(base_url, nextstrainClade, THRESHOLD)
             request = requests.get(request_url)
             mutation_data = json.loads(request.content)["data"]
+
+            if not mutation_data:
+                print(f"Request not valid (country {country}, nextstrainClade {nextstrainClade})")
 
             for entry in mutation_data:
                 mutation = entry["mutation"]
                 proportion = entry['proportion']
-                if mutation not in defining_mutations_list:
-                    print(f"{mutation} missing from synonymous mutations (proportion {proportion}, country {country})")
+                #if mutation not in defining_mutations_list:
+                    #print(f"{mutation} missing from synonymous mutations (proportion {proportion}, country {country})")
 
                 mutation_proportions[country][clus][mutation] = proportion
 
     return mutation_proportions
+
+# TODO: Possible, but takes insane amount of time - can we somehow get entire data directly sorted by date?
+def get_mutation_proportions_biweekly(clus, country, week):
+    mutation_proportions = {}
+    nextstrainClade = clusters[clus]["display_name"].split(" ")[0]
+
+    week_end = (datetime.datetime.strptime(week, '%Y-%m-%d') + datetime.timedelta(days=13))
+
+    print(f"\nQuery mutations from covSPECTRUm for cluster {clus} (nextstrainClade {nextstrainClade}) for week {week}")
+    request_url = build_url(base_url, nextstrainClade, THRESHOLD)
+    request = requests.get(request_url)
+    mutation_data = json.loads(request.content)["data"]
+
+    if not mutation_data:
+        print(f"Request not valid (country {country}, nextstrainClade {nextstrainClade}")
+
+    for entry in mutation_data:
+        mutation = entry["mutation"]
+        proportion = entry['proportion']
+        #if mutation not in defining_mutations_list:
+            #print(f"{mutation} missing from synonymous mutations (proportion {proportion}, country {country})")
+
+        mutation_proportions[mutation] = proportion
+
+    return mutation_proportions
+
 
 # Multiply case count data with mutation proportions to get estimated mutation coverage per country
 def get_mutation_distribution(mutation_proportions, caseCountData):
@@ -99,6 +126,8 @@ def accumulate_mutations(mutation_distribution):
     mutation_distribution_accum = {country: {week: {} for week in mutation_distribution[country]} for country in mutation_distribution}
 
     for country in mutation_distribution:
+        if not mutation_distribution[country]:
+            continue
         weeks = sorted(list(mutation_distribution[country].keys()))
         mutation_distribution_accum[country][weeks[0]] = mutation_distribution[country][weeks[0]]
         for i in range(1,len(weeks)):
@@ -160,10 +189,52 @@ def to_json_invert(data, mutation_names, caseCountData):
 
     return output_data
 
+def plot(mutation_distribution_accum):
+    dates = []
+    data = {}
+    for country in mutation_distribution_accum:
+        for week in mutation_distribution_accum[country]:
+            if week not in dates:
+                dates.append(week)
+            for mut in mutation_distribution_accum[country][week]:
+                if mut not in data:
+                    data[mut] = {}
+                if country not in data[mut]:
+                    data[mut][country] = []
+    dates=sorted(dates)
+    for mut in data:
+        for week in dates:
+            for country in data[mut]:
+                if week not in mutation_distribution_accum[country] or mut not in mutation_distribution_accum[country][week]:
+                    data[mut][country].append(0.0)
+                else:
+                    data[mut][country].append(mutation_distribution_accum[country][week][mut])
+
+    for mut in data:
+        fig, ax = plt.subplots()
+        for country in data[mut]:
+            ax.plot(dates, data[mut][country])
+
+        ax.set(xlabel='weeks', ylabel="percentage of population", title=mut)
+        ax.legend(list(data[mut]))
+        ax.set_ylim(0.0, 1.0)
+        ax.set_xticks(np.arange(0, len(dates) + 1, 10))
+        plt.xticks(rotation=45, ha="right")
+
+        fig.savefig(f"plots/{mut}.png")
+        #ax.close()
+
+
 
 if __name__ == "__main__":
 
     mutation_proportions = get_mutation_proportions()
+
+    for clus in mutation_proportions:
+        for country in mutation_proportions[clus]:
+            for mut in list(mutation_proportions[clus][country]):
+                if not mut.startswith("S"):
+                    mutation_proportions[clus][country].pop(mut)
 
     with open(CASECOUNTS_CSV_PATH) as f:
         caseCountData = json.load(f)
@@ -184,4 +255,6 @@ if __name__ == "__main__":
 
     with open(os.path.join(OUTPUT_PATH, "perMutationAnalysis.json"), "w") as out:
         json.dump(json_format_invert, out, indent=2, sort_keys=True)
+
+    plot(mutation_distribution_accum)
 
