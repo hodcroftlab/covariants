@@ -142,7 +142,16 @@ while reask:
     else:
         print(f"Not found. Options are: {clusters.keys()}")
 
-print("These clusters will be run: ", clus_to_run)
+print("These clusters will be run: ", clus_to_run, "\n")
+
+removed = False
+for clus in clus_to_run:
+    if clusters[clus]["type"] == "do_not_display" and not clusters[clus]["nextstrain_build"]:
+        print(f"Remark: cluster {clus} has type 'do_not_display' and nextstrain_build=False -> Will be automatically removed from this run (maybe consider commenting out this cluster?)")
+        clus_to_run.remove(clus)
+        removed = True
+if removed:
+    print("\nThese clusters will be run: ", clus_to_run, "\n")
 
 # division: collect division info for USA and Switzerland
 division = False
@@ -694,20 +703,19 @@ if print_files:
 
         nextstrain_run = clusters[clus]['nextstrain_build']
         build_type = clusters[clus]['type']
-        if not (build_type == "do_not_display" and not nextstrain_run): #if do_not_display and no nextstrain build, we shouldn't output files anymore, so skip below
-            clus_build_name = clus_data_all[clus]["build_name"]
-            table_file = f"{tables_path}{clus_build_name}_table.tsv"
-            ordered_country = pd.DataFrame.from_dict(clus_data_all[clus]["summary"], orient="index").sort_values(by=["first_seq", "last_seq"])
-            ordered_country = ordered_country[ordered_country["num_seqs"] != 0]
-            ordered_country["first_seq"] = ordered_country["first_seq"].dt.date
-            ordered_country["last_seq"] = ordered_country["last_seq"].dt.date
-            ordered_country.to_csv(table_file, sep="\t")
-            # only write if doing all clusters
-            if "all" in clus_answer:
-                display_cluster = clus_data_all[clus]["display_name"]
-                with open(overall_tables_file, "a") as fh:
-                    fh.write(f"\n\n## {display_cluster}\n")
-                ordered_country.to_csv(overall_tables_file, sep="\t", mode="a")
+        clus_build_name = clus_data_all[clus]["build_name"]
+        table_file = f"{tables_path}{clus_build_name}_table.tsv"
+        ordered_country = pd.DataFrame.from_dict(clus_data_all[clus]["summary"], orient="index").sort_values(by=["first_seq", "last_seq"])
+        ordered_country = ordered_country[ordered_country["num_seqs"] != 0]
+        ordered_country["first_seq"] = ordered_country["first_seq"].dt.date
+        ordered_country["last_seq"] = ordered_country["last_seq"].dt.date
+        ordered_country.to_csv(table_file, sep="\t")
+        # only write if doing all clusters
+        if "all" in clus_answer:
+            display_cluster = clus_data_all[clus]["display_name"]
+            with open(overall_tables_file, "a") as fh:
+                fh.write(f"\n\n## {display_cluster}\n")
+            ordered_country.to_csv(overall_tables_file, sep="\t", mode="a")
 
 # only do this for 'all' runs as otherwise the main file won't be updated.
 if print_acks and "all" in clus_answer:
@@ -843,9 +851,8 @@ for clus in clus_to_run:
         countries_plotted[country] = "True"
 
     if print_files:
-        if not (build_type == "do_not_display" and not nextstrain_run): #if do_not_display and no nextstrain build, we shouldn't output files anymore, so skip below
-            with open(tables_path + f"{clus_build_name}_data.json", "w") as fh:
-                json.dump(json_output[clus_build_name], fh)
+        with open(tables_path + f"{clus_build_name}_data.json", "w") as fh:
+            json.dump(json_output[clus_build_name], fh)
 
 ## Write out plotting information - only if all clusters have run
 if print_files and "all" in clus_answer:
