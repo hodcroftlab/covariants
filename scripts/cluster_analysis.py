@@ -278,7 +278,7 @@ clus_to_run_breakdown = {key: {"official_clus": [], "unofficial_clus": [], "rest
 for clus in clus_to_run:
     for key in snps_categories:
         if key in clusters[clus] and clusters[clus][key]:
-            if clusters[clus]["display_name"] in Nextstrain_clades or "meta_cluster" in clusters[clus] and clusters[clus]["meta_cluster"]:
+            if (clusters[clus]["display_name"] in Nextstrain_clades) or ("meta_cluster" in clusters[clus] and clusters[clus]["meta_cluster"]) or ("use_pango" in clusters[clus] and clusters[clus]["use_pango"]):
                 clus_to_run_breakdown[key]["official_clus"].append(clus)
             elif clusters[clus]["type"] == "variant" and clusters[clus]["graphing"]:
                 clus_to_run_breakdown[key]["unofficial_clus"].append(clus)
