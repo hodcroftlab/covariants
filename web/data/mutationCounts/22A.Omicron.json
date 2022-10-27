@@ -1,18 +1,18 @@
 {
   "S": {
-    "total": 132682,
+    "total": 134013,
     "counts": [
       {
         "mut": "S:N658S",
-        "count": 56900
+        "count": 58004
       },
       {
         "mut": "S:V3G",
-        "count": 53226
+        "count": 53351
       },
       {
         "mut": "S:R346T",
-        "count": 34917
+        "count": 35965
       },
       {
         "mut": "S:I670V",
@@ -20,72 +20,72 @@
       },
       {
         "mut": "S:R346S",
-        "count": 1248
+        "count": 1285
       },
       {
         "mut": "S:Q1201L",
-        "count": 978
+        "count": 981
       },
       {
         "mut": "S:G181E",
-        "count": 927
+        "count": 933
       },
       {
         "mut": "S:L5F",
-        "count": 857
+        "count": 865
       },
       {
         "mut": "S:A701V",
-        "count": 836
+        "count": 840
       },
       {
         "mut": "S:Y144-",
-        "count": 664
+        "count": 688
       }
     ]
   },
   "others": {
-    "total": 132682,
+    "total": 134013,
     "counts": [
       {
         "mut": "M:D3N",
-        "count": 7910
+        "count": 7973
       },
       {
         "mut": "ORF1a:Q556K",
-        "count": 7310
+        "count": 7357
       },
       {
         "mut": "N:E136D",
-        "count": 7236
+        "count": 7283
       },
       {
         "mut": "ORF1b:Y1247C",
-        "count": 7126
+        "count": 7174
       },
       {
         "mut": "ORF3a:L106F",
-        "count": 6380
+        "count": 6392
       },
       {
         "mut": "ORF1a:H1636Q",
-        "count": 3893
+        "count": 3903
       },
       {
         "mut": "ORF1a:M2259I",
-        "count": 3633
+        "count": 3748
       },
       {
         "mut": "ORF1a:M85-",
-        "count": 3085
-      },
-      {
-        "mut": "ORF1a:P2046S",
-        "count": 3013
+        "count": 3135
       },
       {
         "mut": "ORF1a:V84-",
-        "count": 2999
+        "count": 3053
+      },
+      {
+        "mut": "ORF1a:P2046S",
+        "count": 3022
       }
     ]
   }
