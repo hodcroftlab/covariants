@@ -2640,7 +2640,9 @@
         "21M (Omicron)",
         "22A (Omicron)",
         "22B (Omicron)",
-        "22C (Omicron)"
+        "22C (Omicron)",
+        "22D (Omicron)",
+        "22E (Omicron)"
       ],
       "snps": [
         22679,
@@ -6225,6 +6227,40 @@
       "snps": [],
       "snps_with_base": [],
       "type": "do_not_display"
+    },
+    {
+      "alt_display_name": [
+        "XBB"
+      ],
+      "aquaria_urls": [],
+      "build_name": "22F.Omicron",
+      "cluster_data": [],
+      "col": "#dd6bff",
+      "country_info": [],
+      "display_name": "22F (Omicron)",
+      "graphing": false,
+      "important": false,
+      "mutations": {
+        "nonsynonymous": [],
+        "synonymous": []
+      },
+      "nextstrain_build": true,
+      "nextstrain_name": "22F",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22F.Omicron",
+      "old_build_names": [],
+      "pango_lineages": [
+        {
+          "name": "XBB",
+          "url": "https://cov-lineages.org/lineage.html?lineage=XBB"
+        }
+      ],
+      "snps": [],
+      "snps_with_base": [],
+      "type": "do_not_display",
+      "use_pango": true,
+      "who_name": [
+        "Omicron"
+      ]
     },
     {
       "alt_display_name": [
