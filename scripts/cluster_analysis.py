@@ -421,8 +421,9 @@ with open(input_meta) as f:
             continue
 
         clade = l[indices['Nextstrain_clade']]
-        if clade == "recombinant":
-            continue
+        # As of 28 Oct 22 - process recombinants so we can start including them as designated variants
+        #if clade == "recombinant":
+        #    continue
 
         pango = l[indices['Nextclade_pango']]
 

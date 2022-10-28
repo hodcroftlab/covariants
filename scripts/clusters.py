@@ -610,7 +610,7 @@ clusters = {
         "nextstrain_build": True,
         "graphing": False,
         "important": False,
-        "other_nextstrain_names": ["21K (Omicron)", "21L (Omicron)", "21M (Omicron)", "22A (Omicron)", "22B (Omicron)", "22C (Omicron)"],
+        "other_nextstrain_names": ["21K (Omicron)", "21L (Omicron)", "21M (Omicron)", "22A (Omicron)", "22B (Omicron)", "22C (Omicron)", "22D (Omicron)", "22E (Omicron)"],
         "country_info": [], 'col': "#b3d9ff",
         "display_name": "Omicron",
         "type": "do_not_display",
@@ -1359,6 +1359,34 @@ clusters = {
         "type": "do_not_display",
         "build_name": "22B22E",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22B22E"
+    },
+
+    "22F": {  #XBB
+       "snps": [], 
+       "snps_with_base": [], #MUST ADD VALUE WHEN TURN INTO PAGE!
+       "cluster_data": [],
+       "nextstrain_build": True,
+       #"parent": "",  #for recombinants, don't seem to need this as it not currently classified anywhere
+       "use_pango": True,
+       "type": "do_not_display",
+       "graphing": False,
+       "important": False,
+       "country_info": [],
+       "col": "#dd6bff",
+       "display_name": "22F (Omicron)",
+       "alt_display_name": ["XBB"],
+       "build_name": "22F.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "22F",
+       "pango_lineages": [
+           {"name": "XBB", "url": "https://cov-lineages.org/lineage.html?lineage=XBB"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22F.Omicron",
+       "mutations": {
+            "nonsynonymous": [],
+            "synonymous": [],
+       }
     },
 
     # variant  -- part of 'Indian' in media - B.1.617.1
