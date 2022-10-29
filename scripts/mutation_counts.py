@@ -12,8 +12,8 @@ THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 OUTPUT_FOLDER = os.path.join(THIS_DIR, "..", "web", "data", "mutationCounts")
 
 
-aa_base_url = 'https://cov-spectrum.ethz.ch/gisaid/api/v1/sample/aa-mutations'
-count_base_url = 'https://cov-spectrum.ethz.ch/gisaid/api/v1/sample/aggregated'
+aa_base_url = 'https://lapis.cov-spectrum.org/gisaid/v1/sample/aa-mutations'
+count_base_url = 'https://lapis.cov-spectrum.org/gisaid/v1/sample/aggregated'
 filter_deletions_url = "aaMutations=Orf1a:1.,N:420."
 
 LAPIS_API_ACCESS_KEY = os.environ.get("LAPIS_API_ACCESS_KEY")

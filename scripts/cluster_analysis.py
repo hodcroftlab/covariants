@@ -201,6 +201,25 @@ if print_files and "all" in clus_answer:
 earliest_date = datetime.datetime.strptime("2019-01-01", '%Y-%m-%d')
 today = datetime.datetime.today()
 
+changed_clus_to_run = False
+meta_clusters = [clus for clus in clus_to_run if "meta_cluster" in clusters[clus] and clusters[clus]["meta_cluster"]]
+# Print warning if not all components of a meta_cluster are enabled
+for meta_clus in meta_clusters:
+    for disp in clusters[meta_clus]["other_nextstrain_names"]:
+        clus = None
+        for c in clusters:
+            if clusters[c]["display_name"] == disp:
+                clus = c
+        if not clus:
+            print(f"\nWARNING: {disp} (component of meta_cluster {meta_clus}) is not found in clusters. Maybe a typo?")
+        elif clus not in clus_to_run:
+            print(f"\nWarning: {clus} missing from clus_to_run. It is automatically added for meta_cluster {meta_clus}")
+            clus_to_run.append(clus)
+            changed_clus_to_run = True
+
+if changed_clus_to_run:
+    print("\nThese clusters will be run: ", clus_to_run)
+
 # Link Nextstrain clade and name to our cluster names used in clusters.py
 display_name_to_clus = {clusters[clus]["display_name"]: clus for clus in clus_to_run if "display_name" in clusters[clus]}
 nextstrain_name_to_clus = {clusters[clus]["nextstrain_name"]: clus for clus in clus_to_run if "nextstrain_name" in clusters[clus]}
@@ -342,8 +361,6 @@ acknowledgement_by_variant["acknowledgements"] = {clus: [] for clus in clus_to_r
 acknowledgement_keys = {}
 acknowledgement_keys["acknowledgements"] = {}
 
-meta_clusters = [clus for clus in clusters if "meta_cluster" in clusters[clus] and clusters[clus]["meta_cluster"]]
-
 t1 = time.time()
 print(f"Preparation took {round((t1-t0)/60,1)} min to run.\n")
 
@@ -404,8 +421,9 @@ with open(input_meta) as f:
             continue
 
         clade = l[indices['Nextstrain_clade']]
-        if clade == "recombinant":
-            continue
+        # As of 28 Oct 22 - process recombinants so we can start including them as designated variants
+        #if clade == "recombinant":
+        #    continue
 
         pango = l[indices['Nextclade_pango']]
 
@@ -511,10 +529,16 @@ with open(input_meta) as f:
             daughter_parent = False
             if len(clus_all_unique) == 2: # Exactly two clus - check if daughter/parent pair
                 if clusters[clus_all_unique[0]]["display_name"] in daughter_clades and clus_all_unique[1] in daughter_clades[clusters[clus_all_unique[0]]["display_name"]]:
-                    clus_all_no_plotting.append(clus_all_unique[0]) # Remove parent, keep child (only for nextstrain run files)
+                    if clusters[clus_all_unique[1]]["graphing"]:
+                        clus_all_no_plotting.append(clus_all_unique[0]) # Assign sequence to child, but for parent keep in nextstrain files
+                    else:
+                        clus_all_no_plotting.append(clus_all_unique[1]) # Assign sequence to parent, but for child keep in nextstrain files
                     daughter_parent = True
                 if clusters[clus_all_unique[1]]["display_name"] in daughter_clades and clus_all_unique[0] in daughter_clades[clusters[clus_all_unique[1]]["display_name"]]:
-                    clus_all_no_plotting.append(clus_all_unique[1]) # Remove parent, keep child (only for nextstrain run files)
+                    if clusters[clus_all_unique[0]]["graphing"]:
+                        clus_all_no_plotting.append(clus_all_unique[1]) # Assign sequence to child, but for parent keep in nextstrain files
+                    else:
+                        clus_all_no_plotting.append(clus_all_unique[0]) # Assign sequence to parent, but for child keep in nextstrain files
                     daughter_parent = True
 
             if len(clus_all_unique) > 1 and not daughter_parent: # Flag for inconsistency

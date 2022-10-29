@@ -274,6 +274,56 @@ mutation_comparison = {
             "S:N969K"
         ]
     },
+    "22E (Omicron)\n(BQ.1)": {
+        "nonsynonymous": [
+            "S:T19I",
+            "S:L24-",
+            "S:L24-",
+            "S:P25-",
+            "S:P25-",
+            "S:P25-",
+            "S:P26-",
+            "S:P26-",
+            "S:P26-",
+            "S:A27S",
+            "S:H69-",
+            "S:H69-",
+            "S:H69-",
+            "S:V70-",
+            "S:V70-",
+            "S:V70-",
+            "S:G142D",
+            "S:V213G",
+            "S:G339D",
+            "S:S371F",
+            "S:S373P",
+            "S:S375F",
+            "S:T376A",
+            "S:D405N",
+            "S:R408S",
+            "S:K417N",
+            "S:N440K",
+            "S:K444T",
+            "S:L452R",
+            "S:N460K",
+            "S:S477N",
+            "S:T478K",
+            "S:E484A",
+            "S:F486V",
+            "S:Q493Q",
+            "S:Q498R",
+            "S:N501Y",
+            "S:Y505H",
+            "S:D614G",
+            "S:H655Y",
+            "S:N679K",
+            "S:P681H",
+            "S:N764K",
+            "S:D796Y",
+            "S:Q954H",
+            "S:N969K",
+        ]
+    },
     "21D (Eta)\n(B.1.525)": {
         "nonsynonymous": [
             "S:Q52R",
@@ -308,19 +358,19 @@ mutation_comparison = {
             "S:T859N",
         ]
     },
-    "21H (Mu)\n(B.1.621)": {
-        "nonsynonymous": [
-            "S:T95I",
-            "S:Y144S",
-            "S:Y145N",
-            "S:R346K",
-            "S:E484K",
-            "S:N501Y",
-            "S:D614G",
-            "S:P681H",
-            "S:D950N",
-        ]
-    },
+#    "21H (Mu)\n(B.1.621)": {
+#        "nonsynonymous": [
+#            "S:T95I",
+#            "S:Y144S",
+#            "S:Y145N",
+#            "S:R346K",
+#            "S:E484K",
+#            "S:N501Y",
+#            "S:D614G",
+#            "S:P681H",
+#            "S:D950N",
+#        ]
+#    },
 #    "20A/S:126A\n(B.1.620)": {
 #        "nonsynonymous": [
 #            "S:P26S",
