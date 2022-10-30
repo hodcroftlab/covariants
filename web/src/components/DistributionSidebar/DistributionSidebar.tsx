@@ -9,7 +9,7 @@ import { ClusterFilters } from './ClusterFilters'
 import { CountryFilters } from './CountryFilters'
 
 import { CountryFlagProps } from '../Common/CountryFlag'
-import { DateFilter } from '../Common/DateFilter'
+// import { DateFilter } from '../Common/DateFilter'
 
 export interface DistributionSidebarProps {
   countries: Country[]
@@ -48,14 +48,14 @@ export function DistributionSidebar({
   onCountryFilterSelectAll,
   onCountryFilterDeselectAll,
 }: DistributionSidebarProps) {
-  const [dateCollapsed, setDateCollapsed] = useState(datesCollapsedDefault)
+  // const [dateCollapsed, setDateCollapsed] = useState(datesCollapsedDefault)
   const [clustersCollapsed, setClustersCollapsed] = useState(clustersCollapsedByDefault)
   const [countriesCollapsed, setCountriesCollapsed] = useState(countriesCollapsedByDefault)
   const clustersSorted = useMemo(() => sortClusters(clusters ?? []), [clusters])
 
   const availableFilters: { [key: string]: React.ReactNode } = useMemo(
     () => ({
-      date: <DateFilter key="date-filter" collapsed={dateCollapsed} setCollapsed={setDateCollapsed} />,
+      // date: <DateFilter key="date-filter" collapsed={dateCollapsed} setCollapsed={setDateCollapsed} />,
       countries: (
         <CountryFilters
           key="country-filters"
@@ -104,7 +104,7 @@ export function DistributionSidebar({
       clusters,
       clustersSorted,
       countriesCollapsed,
-      dateCollapsed,
+      // dateCollapsed,
       onClusterFilterChange,
       onClusterFilterDeselectAll,
       onClusterFilterSelectAll,

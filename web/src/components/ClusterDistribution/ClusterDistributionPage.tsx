@@ -31,6 +31,7 @@ import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLa
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
 import { PageHeading } from 'src/components/Common/PageHeading'
+import { StickyToolbar } from '../Common/StickyToolbar'
 
 import PerClusterIntro from '../../../../content/PerClusterIntro.md'
 
@@ -86,13 +87,6 @@ export function SortReverseCheckbox({ reverse, setReverse }: SortReverseCheckbox
     </FormGroup>
   )
 }
-
-const StickyRow = styled(Row)`
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  align-self: flex-start;
-`
 
 export function ClusterDistributionPage() {
   const [countries, setCountries] = useRecoilState(countriesAtom(undefined))
@@ -227,22 +221,10 @@ export function ClusterDistributionPage() {
               </SidebarFlex>
 
               <MainFlex>
-                <StickyRow noGutters>
-                  <Col>
-                    <Card className="m-2">
-                      <CardBody className="px-3 py-2">
-                        <Form inline>
-                          <SortByDropdown
-                            perCountryTooltipSortBy={perCountryTooltipSortBy}
-                            onSortByChange={setSortBy}
-                          />
-                          <SortReverseCheckbox reverse={perCountryTooltipSortReversed} setReverse={setSortReversed} />
-                        </Form>
-                      </CardBody>
-                    </Card>
-                  </Col>
-                </StickyRow>
-
+                <StickyToolbar>
+                  <SortByDropdown perCountryTooltipSortBy={perCountryTooltipSortBy} onSortByChange={setSortBy} />
+                  <SortReverseCheckbox reverse={perCountryTooltipSortReversed} setReverse={setSortReversed} />
+                </StickyToolbar>
                 <Row noGutters>
                   <Col>
                     <Row noGutters>{clusterDistributionComponents}</Row>
