@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { FormGroup, Label } from 'reactstrap'
+import { FormGroup, Label, Button } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 
 import { getWeeks } from 'src/io/getParams'
@@ -33,6 +33,9 @@ export function DateFilter() {
       if (maxI !== -1 && maxI !== maxIndex) {
         setMaxIndex(maxI)
       }
+    } else {
+      setMinIndex(0)
+      setMaxIndex(weeks.length - 1)
     }
   }, [dateFilter])
 
@@ -49,6 +52,16 @@ export function DateFilter() {
           onMaxChange={setMaxIndex}
         />
       </Label>
+      <Button
+        className="ml-3"
+        type="button"
+        color="link"
+        onClick={() => {
+          setDateFilter(() => null)
+        }}
+      >
+        Reset
+      </Button>
     </FormGroup>
   )
 }

@@ -62,15 +62,15 @@ const Container = styled.div`
     border-radius: 4px;
     box-sizing: border-box;
     background: #efefef;
+    border: 1px solid #ccc;
   }
 
   &::after {
     --bg: transparent;
-    --fg: #fff;
+    --fg: #2196f3;
     --length: calc(var(--max, 0) - var(--min, 100));
     --min-pct: calc((var(--min-v) / var(--length)) * 100%);
     --max-pct: calc((var(--max-v) / var(--length)) * 100%);
-    border: 1px solid #ccc;
     margin: 2px calc(var(--thumb-space) - 2px);
     background: linear-gradient(
       to right,
