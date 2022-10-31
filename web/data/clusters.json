@@ -6263,6 +6263,31 @@
       ]
     },
     {
+      "alt_display_name": [],
+      "aquaria_urls": [],
+      "build_name": "recombinant",
+      "cluster_data": [],
+      "col": "#784421",
+      "country_info": [],
+      "display_name": "recombinant",
+      "graphing": true,
+      "important": false,
+      "mutations": {
+        "nonsynonymous": [],
+        "synonymous": []
+      },
+      "nextstrain_build": false,
+      "nextstrain_names": "recombinant",
+      "nextstrain_url": "",
+      "old_build_names": [],
+      "pango_lineages": [],
+      "snps": [],
+      "snps_with_base": [],
+      "type": "do_not_display",
+      "use_pango": false,
+      "who_name": []
+    },
+    {
       "alt_display_name": [
         "21A/S:154K"
       ],
