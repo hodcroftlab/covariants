@@ -239,7 +239,7 @@ if dated_limit:
 
 # Input metadata file
 input_meta = "data/metadata.tsv"
-cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl', 'QC_overall_status', 'Nextclade_pango']
+cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl', 'coverage', 'QC_overall_status', 'Nextclade_pango']
 
 # Traverse metadata once to count lines and collect Nextstrain_clades
 print("\nDoing first metadata pass...")
@@ -418,6 +418,10 @@ with open(input_meta) as f:
 
         # If in bad_sequences and the date matches
         if l[indices['strain']] in bad_seqs and l[indices['date']] == bad_seqs[l[indices['strain']]]:
+            continue
+
+        # Keep only if at least 90% coverage
+        if float(l[indices['coverage']]) < 0.9:
             continue
 
         clade = l[indices['Nextstrain_clade']]
