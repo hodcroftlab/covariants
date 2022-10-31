@@ -1389,6 +1389,31 @@ clusters = {
        }
     },
 
+    "Recombinant" : {
+        "snps": [],
+        "snps_with_base": [],
+        "cluster_data": [],
+        "nextstrain_build": False,
+        "use_pango": False,
+        "type": "do_not_display",
+        "graphing": True,
+        "important": False,
+        "country_info": [],
+        "col": "#784421",
+        "display_name": "recombinant",
+        "alt_display_name": [],
+        "build_name": "recombinant",
+        "who_name": [],
+        "old_build_names": [],
+        "nextstrain_names": "recombinant",
+        "pango_lineages": [],
+        "nextstrain_url": "",
+        "mutations": {
+            "nonsynonymous": [],
+            "synonymous": [],
+       }
+    },
+
     # variant  -- part of 'Indian' in media - B.1.617.1
     "Kappa": {
         "snps": [17523, 23604, 22917],  # ORF1b:1352, S:681, 452
