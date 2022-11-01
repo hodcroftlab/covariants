@@ -28,7 +28,7 @@
 # | snps                    | ??? (unused in web)
 # | snps2                   | ??? (unused in web)
 # | snps_with_base          | ??? (unused in web)
-# | type                    | Type of the entry:
+# | type                    | Type of the entry: "variant", "mutation", "do_not_display". Currently used to group entries in the side bar on main page. The "do_not_display" means the entry is completely excluded from web.
 # | usa_graph               | ??? (unused in web)
 # | use_pango               | ??? (unused in web)
 # | who_name                | ??? (unused in web)
