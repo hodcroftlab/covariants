@@ -1,3 +1,40 @@
+# Meaning of fields
+#
+# You can query the list of all fields existing in `clusters.json` using this command (requires jq (https://github.com/stedolan/jq/releases) ):
+#
+#    jq '[ .clusters[] | keys[] ] | unique' web/data/clusters.json
+#
+# Note that not all fields from `clusters.py` end up in JSON, and vice-versa not all fields in JSON are present in `clusters.py` (some are generated elsewhere).
+#
+# | alt_display_name        | List of alternative friendly names (appear in web under the heading on variant page)
+# | build_name              | Safe name of a variant (to use in keys, URLs etc.)
+# | cluster_data            | Always empty (unused?)
+# | col                     | Color associated with the variant
+# | country_info            | Always empty (unused?)
+# | display_name            | Friendly name of a variant (to display to the user)
+# | gaps                    | ??? List of gaps defining the variant
+# | graphing                | ??? (unused in web)
+# | important               | Boolean: Whether we should show it by default in web or it can be hidden under "show more"
+# | meta_cluster            | ??? (unused in web)
+# | mutations               | ??? List of mutations defining the variant
+# | nextstrain_build        | ??? (unused in web)
+# | nextstrain_name         | Variant name in Nextstrain nomenclature
+# | nextstrain_names        | Alternative variant names in Nextstrain nomenclature
+# | nextstrain_url          | URL to the phylogenetic tree visualization (the "build" in Nextstrain lingo) of this variant on nextstrain.org
+# | old_build_names         | Old variant names in Nextstrain nomenclature
+# | other_nextstrain_names  | ??? (unused in web)
+# | pango_lineages          | List of pango lineages associated with the variant
+# | parent                  | ??? (unused in web)
+# | snps                    | ??? (unused in web)
+# | snps2                   | ??? (unused in web)
+# | snps_with_base          | ??? (unused in web)
+# | type                    | Type of the entry:
+# | usa_graph               | ??? (unused in web)
+# | use_pango               | ??? (unused in web)
+# | who_name                | ??? (unused in web)
+
+
+
 clusters = {
 
     "Alpha": {
