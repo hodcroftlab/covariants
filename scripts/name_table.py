@@ -162,6 +162,14 @@ name_table = [
         "others": [],
     },
     {
+        "clade": "22F (Omicron)",
+        "who": "Omicron",
+        "lineages": [
+            {"name": "XBB", "url": "https://cov-lineages.org/lineages/lineage_XBB.html"}
+        ],
+        "others": [],
+    },
+    {
         "clade": "20E (EU1)",
         "who": None,
         "lineages": [
