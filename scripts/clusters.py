@@ -610,7 +610,7 @@ clusters = {
         "nextstrain_build": True,
         "graphing": False,
         "important": False,
-        "other_nextstrain_names": ["21K (Omicron)", "21L (Omicron)", "21M (Omicron)", "22A (Omicron)", "22B (Omicron)", "22C (Omicron)", "22D (Omicron)", "22E (Omicron)"],
+        "other_nextstrain_names": ["21K (Omicron)", "21L (Omicron)", "21M (Omicron)", "22A (Omicron)", "22B (Omicron)", "22C (Omicron)", "22D (Omicron)", "22E (Omicron)", "22F (Omicron)"],
         "country_info": [], 'col': "#b3d9ff",
         "display_name": "Omicron",
         "type": "do_not_display",
@@ -1465,7 +1465,6 @@ clusters = {
                 {"gene":"ORF9b", "left":"A", "pos": 29, "right": "-"},
             ],
             "synonymous": [
-                {"left": "C", "pos": 241, "right": "T"},
                 {"left": "C", "pos": 241, "right": "T"},
                 {"left": "C", "pos": 3037, "right": "T"},
                 {"left": "C", "pos": 4321, "right": "T"},
