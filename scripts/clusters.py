@@ -1367,7 +1367,7 @@ clusters = {
        "cluster_data": [],
        "nextstrain_build": True,
        #"parent": "",  #for recombinants, don't seem to need this as it not currently classified anywhere
-       "use_pango": True,
+       "use_pango": False,
        "type": "do_not_display",
        "graphing": False,
        "important": False,
