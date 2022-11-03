@@ -1198,7 +1198,7 @@ clusters = {
        }
     },
 
-    "22E": {  #BQ.1  -- remember to add/check a date cutoff if adding this formally
+    "22E": {  #BQ.1  
        "snps": [], #"snps": [27259, 14257, 22942], #SNPS should be ok but keep turned off while using Pango #C27259A T14257C T22942A
        "snps_with_base": ["27259A", "14257C", "22942A"], #should work
        "cluster_data": [],
@@ -1368,9 +1368,9 @@ clusters = {
        "nextstrain_build": True,
        #"parent": "",  #for recombinants, don't seem to need this as it not currently classified anywhere
        "use_pango": False,
-       "type": "do_not_display",
-       "graphing": False,
-       "important": False,
+       "type": "variant",
+       "graphing": True,
+       "important": True,
        "country_info": [],
        "col": "#dd6bff",
        "display_name": "22F (Omicron)",
