@@ -1408,7 +1408,6 @@ clusters = {
                 {"gene":"S", "left":"K", "pos": 417, "right": "N"},
                 {"gene":"S", "left":"N", "pos": 440, "right": "K"},
                 {"gene":"S", "left":"V", "pos": 445, "right": "P"},
-                {"gene":"S", "left":"V", "pos": 445, "right": "P"},
                 {"gene":"S", "left":"G", "pos": 446, "right": "S"},
                 {"gene":"S", "left":"N", "pos": 460, "right": "K"},
                 {"gene":"S", "left":"S", "pos": 477, "right": "N"},
