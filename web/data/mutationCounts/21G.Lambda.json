@@ -1,6 +1,6 @@
 {
   "S": {
-    "total": 9090,
+    "total": 9096,
     "counts": [
       {
         "mut": "S:Q675H",
@@ -45,19 +45,19 @@
     ]
   },
   "others": {
-    "total": 9090,
+    "total": 9096,
     "counts": [
       {
         "mut": "ORF9b:P10S",
-        "count": 8993
+        "count": 8999
       },
       {
         "mut": "N:T366I",
-        "count": 3069
+        "count": 3068
       },
       {
         "mut": "N:A119P",
-        "count": 1098
+        "count": 1099
       },
       {
         "mut": "ORF3a:A110S",
@@ -81,7 +81,7 @@
       },
       {
         "mut": "ORF1a:M1014I",
-        "count": 261
+        "count": 263
       },
       {
         "mut": "ORF7a:I3T",
