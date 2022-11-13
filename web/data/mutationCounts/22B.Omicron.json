@@ -1,87 +1,91 @@
 {
   "S": {
-    "total": 971382,
+    "total": 1005120,
     "counts": [
       {
-        "mut": "S:T76I",
-        "count": 46373
+        "mut": "S:R346T",
+        "count": 50777
       },
       {
-        "mut": "S:R346T",
-        "count": 42884
+        "mut": "S:T76I",
+        "count": 46825
       },
       {
         "mut": "S:A1020S",
-        "count": 40835
+        "count": 42378
       },
       {
         "mut": "S:K444T",
-        "count": 16160
+        "count": 21798
       },
       {
         "mut": "S:N460K",
-        "count": 14454
+        "count": 20101
       },
       {
         "mut": "S:Y144-",
-        "count": 14409
+        "count": 16058
       },
       {
         "mut": "S:L5F",
-        "count": 13706
+        "count": 14203
       },
       {
         "mut": "S:V289I",
-        "count": 6439
+        "count": 6527
       },
       {
         "mut": "S:P1162L",
-        "count": 5707
+        "count": 5785
+      },
+      {
+        "mut": "S:N450D",
+        "count": 5304
       }
     ]
   },
   "others": {
-    "total": 971382,
+    "total": 1005120,
     "counts": [
       {
         "mut": "ORF9b:D16G",
-        "count": 543978
+        "count": 564388
       },
       {
         "mut": "ORF1b:T1050N",
-        "count": 195163
+        "count": 203494
       },
       {
         "mut": "ORF1a:Q556K",
-        "count": 97742
+        "count": 104571
       },
       {
         "mut": "N:G30-",
-        "count": 95474
+        "count": 100675
       },
       {
         "mut": "N:E136D",
-        "count": 92316
+        "count": 99154
       },
       {
         "mut": "ORF9b:M26-",
-        "count": 91544
+        "count": 96629
       },
       {
         "mut": "ORF9b:A29I",
-        "count": 84002
+        "count": 89053
       },
       {
         "mut": "ORF9b:V30L",
-        "count": 81602
+        "count": 86488
       },
       {
         "mut": "N:S33F",
-        "count": 80562
+        "count": 85512
       },
       {
         "mut": "ORF1b:M1156I",
-        "count": 76250
+        "count": 82699
       }
     ]
   }
