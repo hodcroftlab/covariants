@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 20125,
+    "total": 20805,
     "counts": [
       {
         "mut": "S:R346T",
-        "count": 10944
+        "count": 11558
       },
       {
         "mut": "S:F486S",
-        "count": 6387
+        "count": 6584
       },
       {
         "mut": "S:K356T",
-        "count": 4397
+        "count": 4760
       },
       {
         "mut": "S:D574V",
-        "count": 4246
+        "count": 4293
       },
       {
         "mut": "S:F490S",
-        "count": 3129
+        "count": 3479
       },
       {
         "mut": "S:D1199N",
-        "count": 3032
+        "count": 3109
       },
       {
         "mut": "S:L452R",
-        "count": 1106
+        "count": 1210
       },
       {
         "mut": "S:G339D",
-        "count": 499
+        "count": 501
       },
       {
         "mut": "S:L24S",
-        "count": 472
+        "count": 474
       },
       {
         "mut": "S:K444M",
-        "count": 315
+        "count": 332
       }
     ]
   },
   "others": {
-    "total": 20125,
+    "total": 20805,
     "counts": [
       {
         "mut": "ORF1b:V1706I",
-        "count": 3685
+        "count": 3796
       },
       {
         "mut": "ORF1a:F3677L",
-        "count": 1318
+        "count": 1323
       },
       {
         "mut": "ORF3a:T229I",
-        "count": 1015
-      },
-      {
-        "mut": "ORF9b:E27V",
-        "count": 961
+        "count": 1164
       },
       {
         "mut": "ORF1a:M3627I",
-        "count": 950
+        "count": 1096
       },
       {
-        "mut": "ORF1a:Q1198K",
-        "count": 661
+        "mut": "ORF9b:E27V",
+        "count": 966
       },
       {
         "mut": "ORF1a:H110Y",
-        "count": 620
+        "count": 745
+      },
+      {
+        "mut": "ORF1a:Q1198K",
+        "count": 702
       },
       {
         "mut": "ORF1a:T3959A",
-        "count": 567
+        "count": 569
       },
       {
         "mut": "ORF1a:G3676S",
-        "count": 562
+        "count": 565
       },
       {
         "mut": "N:S33G",
-        "count": 478
+        "count": 480
       }
     ]
   }
