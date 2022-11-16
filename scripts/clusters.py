@@ -6,33 +6,52 @@
 #
 # Note that not all fields from `clusters.py` end up in JSON, and vice-versa not all fields in JSON are present in `clusters.py` (some are generated elsewhere).
 #
-# | alt_display_name        | List of alternative friendly names (appear in web under the heading on variant page)
-# | build_name              | Safe name of a variant (to use in keys, URLs etc.)
-# | cluster_data            | Always empty (unused?)
-# | col                     | Color associated with the variant
-# | country_info            | Always empty (unused?)
-# | display_name            | Friendly name of a variant (to display to the user)
-# | gaps                    | ??? List of gaps defining the variant
-# | graphing                | ??? (unused in web)
-# | important               | Boolean: Whether we should show it by default in web or it can be hidden under "show more"
-# | meta_cluster            | ??? (unused in web)
-# | mutations               | ??? List of mutations defining the variant
-# | nextstrain_build        | ??? (unused in web)
-# | nextstrain_name         | Variant name in Nextstrain nomenclature
-# | nextstrain_names        | Alternative variant names in Nextstrain nomenclature
-# | nextstrain_url          | URL to the phylogenetic tree visualization (the "build" in Nextstrain lingo) of this variant on nextstrain.org
-# | old_build_names         | Old variant names in Nextstrain nomenclature
-# | other_nextstrain_names  | ??? (unused in web)
-# | pango_lineages          | List of pango lineages associated with the variant
-# | parent                  | ??? (unused in web)
-# | snps                    | ??? (unused in web)
-# | snps2                   | ??? (unused in web)
-# | snps_with_base          | ??? (unused in web)
-# | type                    | Type of the entry: "variant", "mutation", "do_not_display". Currently used to group entries in the side bar on main page. The "do_not_display" means the entry is completely excluded from web.
-# | usa_graph               | ??? (unused in web)
-# | use_pango               | ??? (unused in web)
-# | who_name                | ??? (unused in web)
 
+# Though not explicitly noted, clusters/variants are assigned based on this hierarchy:
+# if 'display_name' is found in metadata.tsv Nextclade (if this is an official Nextstrain clade) this is used
+# Otherwise, if not, and 'use_pango' is true, the pango lineages are used (the Nextclade assignments in metadata.tsv)
+# If neither of the above, use the SNPs/gaps to determine the variant
+# "Mutations" (not variants) always use SNPs or gaps
+
+#Defining variants
+# | snps                    | PIPELINE - used to identify clusters when not using pango or nextclade definitions
+# | snps2                   | PIPELINE - alternative set of SNPs (see above) - can have one set or the other to qualify
+# | gaps                    | PIPELINE - define a variant/mutation by gaps rather than SNPs
+# | snps_with_base          | PIPELINE (not clus_anal) - used to query CoVSpectrum to find other common mutations (mutation_counts.py)
+# | meta_cluster            | PIPELINE - set to TRUE if this definition is a group of variants (for Nextstrain builds)
+# | other_nextstrain_names  | PIPELINE - if a meta_cluster, this defines what variants make up this meta_cluster
+# | parent                  | PIPELINE - if not yet an official Nextstrain clade, the parent (what the variant would currently be called as) needs to be specified so that we re-check these seqs in case they are the new variant
+# | use_pango               | PIPELINE - if true, use the pango lineage designation to assign sequences (using their Nextclade pango assignment in metadata.tsv)
+# | pango_lineages          | BOTH - List of pango lineages associated with the variant
+
+# | cluster_data            | PIPELINE - used to store data in cluster_analysis.py, but code assumes it's there
+# | country_info            | PIPELINE - used to store data in cluster_analysis.py, but code assumes it's there
+
+# | usa_graph               | PIPELINE - include this in USA-specific output files that create USA per Country page. Overrides 'graphing=False' for USA-specific outputs for these clusters.
+# | nextstrain_build        | PIPELINE - determines whether cluster files are output, which are the starting point of Nextstrain builds
+# | graphing                | PIPELINE - determines whether a particular variant/mutation is included in output files that are eventually graphed on the website
+# Some confusion here. For Per Country, this means it gets included in the master files which
+# are used by convert_to_web_app_json.py to create graphing files (SwissClsutres_data.json, USAClusters_data.json, EUClusters_data.json)
+# The same files are used for Cases page.
+# However for Per Variant, it pulls everything like this: cluster_tables/*_data.json
+# And it doesn't _seem_ like this `graphing` is checked before outputting those files...
+
+
+# | type                    | Type of the entry: "variant", "mutation", "do_not_display". Currently used to group entries in the side bar on main page. The "do_not_display" means the entry is completely excluded from web.
+# | build_name              | Safe name of a variant (to use in files, keys, URLs etc.) - does not have spaces or special symbols
+
+# | display_name            | Friendly name of a variant (to display to the user) PIPELINE - also used to match Nextstrain clade
+#TODO with new nextclade naming, can switch to nextclade name instead for matching
+# | nextstrain_name         | Variant name in Nextstrain nomenclature
+# | who_name                | The Variant name assigned by WHO (Alpha, Beta, etc)
+
+#Visual display on website
+# | important               | Boolean: Whether we should show it by default in web or it can be hidden under "show more"
+# | alt_display_name        | List of alternative friendly names (appear in web under the heading on variant page)
+# | col                     | Color associated with the variant
+# | mutations               | List of nonsyn & syn muts that should be displayed on variant/mutation pages on the right-hand side
+# | nextstrain_url          | URL to the phylogenetic tree visualization (the "build" in Nextstrain lingo) of this variant on nextstrain.org
+# | old_build_names         | Old variant names in Nextstrain nomenclature (usually before assigned a greek letter)
 
 
 clusters = {
