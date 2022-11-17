@@ -1,5 +1,8 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2022-11-3
+- Add a 22F (XBB) page and on plots
+
 ## 2022-10-21
 - Add a 22E (BQ.1) page and on plots
 - Remove Beta & Gamma from the 'important' (default view) buttons

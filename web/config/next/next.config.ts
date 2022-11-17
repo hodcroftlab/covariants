@@ -143,7 +143,7 @@ const withLodash = getWithLodash({ unicode: false })
 const withTypeChecking = getWithTypeChecking({
   typeChecking: ENABLE_TYPE_CHECKS,
   eslint: ENABLE_ESLINT,
-  memoryLimit: 2048,
+  memoryLimit: 4096,
 })
 
 const transpilationListDev = [

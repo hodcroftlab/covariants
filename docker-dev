@@ -21,7 +21,7 @@ ${NICE} docker build -q \
   --build-arg="GID=$(id -g)" \
   --build-arg="USER=${USER}" \
   --build-arg="GROUP=${GROUP}" \
-  "$(pwd)"
+  "$(pwd)" >/dev/null
 
 ${NICE} docker run -it --rm \
   --network=host \
@@ -36,7 +36,6 @@ ${NICE} docker run -it --rm \
   --env="USER=${USER}" \
   --env="GROUP=${GROUP}" \
   --env="PS1=\${USER}@\${HOST}" \
+  --ulimit core=0 \
   "${DOCKER_REPO}" \
   bash -c "set -euo pipefail; ${*:-${DEFAULT_COMMAND}}"
-
-
