@@ -41,7 +41,7 @@ if __name__ == '__main__':
 
         # Don't use all clusters
 
-        if cluster["type"] == "do_not_display":
+        if cluster.get("has_no_page"):
             continue
 
         if cluster["type"] == "mutation":

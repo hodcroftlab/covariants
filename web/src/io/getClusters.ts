@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { groupBy } from 'lodash'
+import { groupBy, isNil } from 'lodash'
 import { notUndefinedOrNull } from 'src/helpers/notUndefined'
 
 import type { Mutation } from 'src/types'
@@ -28,16 +28,13 @@ export type ClusterDatum = {
     synonymous?: Mutation[]
   }
   aquaria_urls?: AquariaDatum[]
-  type: string
-  important: boolean
-}
-
-export function getClustersIncludingHidden(): ClusterDatum[] {
-  return clustersJson.clusters
+  type?: string
+  important?: boolean
+  has_no_page?: boolean
 }
 
 export function getClusters(): ClusterDatum[] {
-  return clustersJson.clusters.filter(({ type }) => type !== 'do_not_display')
+  return clustersJson.clusters
 }
 
 export function getDefaultCluster(): ClusterDatum {
@@ -72,16 +69,16 @@ export function getClusterColor(clusterName: string) {
     return theme.clusters.color.others
   }
 
-  const clusters = getClustersIncludingHidden()
+  const clusters = getClusters()
   const found = clusters.find(({ display_name }) => display_name === clusterName)
   return found ? found.col : theme.clusters.color.unknown
 }
 
 export type ClusterDataGrouped = Record<string, ClusterDatum[]>
 
-export function getClustersGrouped(): ClusterDataGrouped {
-  const clusters = getClusters()
-  return groupBy(clusters, 'type')
+export function getClustersGrouped(clusters: ClusterDatum[]): ClusterDataGrouped {
+  const clustersWithType = clusters.filter((cluster) => !isNil(cluster.type))
+  return groupBy(clustersWithType, 'type')
 }
 
 export function sortClusters(clusters: Cluster[]): Cluster[] {
