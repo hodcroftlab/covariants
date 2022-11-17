@@ -21,7 +21,7 @@ ${NICE} docker build -q \
   --build-arg="GID=$(id -g)" \
   --build-arg="USER=${USER}" \
   --build-arg="GROUP=${GROUP}" \
-  "$(pwd)"
+  "$(pwd)" >/dev/null
 
 ${NICE} docker run -it --rm \
   --network=host \
