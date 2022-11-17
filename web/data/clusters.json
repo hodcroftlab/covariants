@@ -2569,6 +2569,7 @@
       "country_info": [],
       "display_name": "21M (Omicron)",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "mutations": {
         "nonsynonymous": []
@@ -2590,8 +2591,7 @@
         "23438T",
         "772C",
         "10868T"
-      ],
-      "type": "do_not_display"
+      ]
     },
     {
       "aquaria_urls": [],
@@ -2601,6 +2601,7 @@
       "country_info": [],
       "display_name": "21K.21L",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "meta_cluster": true,
       "nextstrain_build": true,
@@ -2619,8 +2620,7 @@
         "22679C",
         "23040G",
         "23604A"
-      ],
-      "type": "do_not_display"
+      ]
     },
     {
       "aquaria_urls": [],
@@ -2630,6 +2630,7 @@
       "country_info": [],
       "display_name": "Omicron",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "meta_cluster": true,
       "nextstrain_build": true,
@@ -2654,8 +2655,7 @@
         "22679C",
         "23040G",
         "23604A"
-      ],
-      "type": "do_not_display"
+      ]
     },
     {
       "alt_display_name": [
@@ -6216,6 +6216,7 @@
       "country_info": [],
       "display_name": "22B22E",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "meta_cluster": true,
       "nextstrain_build": true,
@@ -6225,8 +6226,7 @@
         "22E (Omicron)"
       ],
       "snps": [],
-      "snps_with_base": [],
-      "type": "do_not_display"
+      "snps_with_base": []
     },
     {
       "alt_display_name": [
@@ -7016,6 +7016,7 @@
       "country_info": [],
       "display_name": "recombinant",
       "graphing": true,
+      "has_no_page": true,
       "important": false,
       "mutations": {
         "nonsynonymous": [],
@@ -7028,7 +7029,6 @@
       "pango_lineages": [],
       "snps": [],
       "snps_with_base": [],
-      "type": "do_not_display",
       "use_pango": false,
       "who_name": []
     },
@@ -7257,6 +7257,7 @@
       "country_info": [],
       "display_name": "Delta + S:K417",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.Delta.S.K417",
@@ -7265,8 +7266,7 @@
         23604,
         22917,
         22813
-      ],
-      "type": "do_not_display"
+      ]
     },
     {
       "alt_display_name": [
@@ -9816,13 +9816,13 @@
       "country_info": [],
       "display_name": "DanishCluster",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/DanishCluster?f_country=Denmark",
       "snps": [
         15656
-      ],
-      "type": "do_not_display"
+      ]
     },
     {
       "aquaria_urls": [],
@@ -9932,6 +9932,7 @@
       "country_info": [],
       "display_name": "20G/S:677H.Robin2",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Robin2?c=gt-S_677&f_country=USA",
@@ -9939,7 +9940,6 @@
         23593,
         7348
       ],
-      "type": "do_not_display",
       "usa_graph": true
     },
     {
@@ -9950,6 +9950,7 @@
       "country_info": [],
       "display_name": "20G/S:677H.Yellowhammer",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Yellowhammer?c=gt-S_677&f_country=USA",
@@ -9957,7 +9958,6 @@
         23593,
         9928
       ],
-      "type": "do_not_display",
       "usa_graph": true
     },
     {
@@ -9968,6 +9968,7 @@
       "country_info": [],
       "display_name": "20G/S:677R.Roadrunner",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677R.Roadrunner?c=gt-S_677&f_country=USA",
@@ -9976,7 +9977,6 @@
         3450,
         6382
       ],
-      "type": "do_not_display",
       "usa_graph": true
     },
     {
@@ -9987,6 +9987,7 @@
       "country_info": [],
       "display_name": "20G/S:677H.Heron",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Heron?c=gt-S_677&f_country=USA",
@@ -9995,7 +9996,6 @@
         28833,
         1592
       ],
-      "type": "do_not_display",
       "usa_graph": true
     },
     {
@@ -10006,6 +10006,7 @@
       "country_info": [],
       "display_name": "20G/S:677H.Bluebird",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Bluebird?c=gt-S_677&f_country=USA",
@@ -10013,7 +10014,6 @@
         23593,
         21648
       ],
-      "type": "do_not_display",
       "usa_graph": true
     },
     {
@@ -10024,6 +10024,7 @@
       "country_info": [],
       "display_name": "20G/S:677H.Quail",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Quail?c=gt-S_677&f_country=USA",
@@ -10032,7 +10033,6 @@
         23756,
         21757
       ],
-      "type": "do_not_display",
       "usa_graph": true
     },
     {
@@ -10043,6 +10043,7 @@
       "country_info": [],
       "display_name": "20G/S:677H.Mockingbird",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Mockingbird?c=gt-S_677&f_country=USA",
@@ -10050,7 +10051,6 @@
         23593,
         21986
       ],
-      "type": "do_not_display",
       "usa_graph": true
     },
     {
@@ -10061,6 +10061,7 @@
       "country_info": [],
       "display_name": "Delta+299I",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.299I?c=gt-S_299",
@@ -10070,8 +10071,7 @@
         22311,
         22458,
         23401
-      ],
-      "type": "do_not_display"
+      ]
     },
     {
       "aquaria_urls": [],
@@ -10081,6 +10081,7 @@
       "country_info": [],
       "display_name": "Delta+250I",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.250I?c=gt-S_250",
@@ -10088,8 +10089,7 @@
         4181,
         21647,
         22311
-      ],
-      "type": "do_not_display"
+      ]
     },
     {
       "aquaria_urls": [],
@@ -10099,6 +10099,7 @@
       "country_info": [],
       "display_name": "Delta+145H",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.145H?c=gt-S_145,222",
@@ -10106,8 +10107,7 @@
         22227,
         17040,
         7851
-      ],
-      "type": "do_not_display"
+      ]
     },
     {
       "aquaria_urls": [],
@@ -10117,6 +10117,7 @@
       "country_info": [],
       "display_name": "Delta+ORF1a3059F",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.ORF1a3059F?c=gt-ORF1a_3059",
@@ -10124,8 +10125,7 @@
         23593,
         9441,
         22498
-      ],
-      "type": "do_not_display"
+      ]
     },
     {
       "aquaria_urls": [],
@@ -10135,13 +10135,13 @@
       "country_info": [],
       "display_name": "S:Q613",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q613?c=gt-S_613",
       "snps": [
         23401
-      ],
-      "type": "do_not_display"
+      ]
     },
     {
       "aquaria_urls": [],
@@ -10151,13 +10151,13 @@
       "country_info": [],
       "display_name": "S:A222",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.A222?c=gt-S_222",
       "snps": [
         22227
-      ],
-      "type": "do_not_display"
+      ]
     },
     {
       "aquaria_urls": [],
@@ -10167,13 +10167,13 @@
       "country_info": [],
       "display_name": "S:Y145",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Y145?c=gt-S_145",
       "snps": [
         21995
-      ],
-      "type": "do_not_display"
+      ]
     },
     {
       "aquaria_urls": [],
@@ -10183,13 +10183,13 @@
       "country_info": [],
       "display_name": "S:T572",
       "graphing": false,
+      "has_no_page": true,
       "important": false,
       "nextstrain_build": true,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.T572?c=gt-S_572",
       "snps": [
         23277
-      ],
-      "type": "do_not_display"
+      ]
     }
   ]
 }
