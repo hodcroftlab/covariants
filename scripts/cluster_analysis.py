@@ -280,7 +280,7 @@ for clus in clus_to_run:
         if key in clusters[clus] and clusters[clus][key]:
             if (clusters[clus]["display_name"] in Nextstrain_clades) or ("meta_cluster" in clusters[clus] and clusters[clus]["meta_cluster"]) or ("use_pango" in clusters[clus] and clusters[clus]["use_pango"]):
                 clus_to_run_breakdown[key]["official_clus"].append(clus)
-            elif clusters[clus]["type"] == "variant" and clusters[clus]["graphing"]:
+            elif clusters[clus].get("type") == "variant" and clusters[clus]["graphing"]:
                 clus_to_run_breakdown[key]["unofficial_clus"].append(clus)
             else:
                 clus_to_run_breakdown[key]["rest"].append(clus)
@@ -868,7 +868,7 @@ def get_ordered_clusters_to_plot(division_local=False, selected_country_local=No
     # fix cluster order in a list so it's reliable
     clus_keys = [x for x in clusters.keys()]  # if x in clusters_tww]
     if division_local:
-        clus_keys = [x for x in clus_keys if clusters[x]["type"] == "variant" or ("usa_graph" in clusters[x] and clusters[x]["usa_graph"] is True)]
+        clus_keys = [x for x in clus_keys if clusters[x].get("type") == "variant" or ("usa_graph" in clusters[x] and clusters[x]["usa_graph"] is True)]
         min_to_plot = 20
     else:
         clus_keys = [x for x in clus_keys if clusters[x]["graphing"] is True]
