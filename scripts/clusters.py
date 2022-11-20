@@ -36,6 +36,7 @@
 # However, for Per Variant, it pulls everything like this: cluster_tables/*_data.json
 # And it doesn't _seem_ like this `graphing` is checked before outputting those files...
 
+# | type                    | PIPELINE & VIZ: Used to distinguish types of graphing, & name of the group in the sidebar on main page
 
 # | build_name              | Unique, safe name of a variant (to use in files, keys, URLs etc.) - does not have spaces or special symbols
 # | display_name            | Friendly name of a variant (to display to the user) PIPELINE - also used to match Nextstrain clade
@@ -43,8 +44,8 @@
 # | nextstrain_name         | Variant name in Nextstrain nomenclature
 # | who_name                | The Variant name assigned by WHO (Alpha, Beta, etc)
 
+
 # Visual display on website
-# | type                    | Name of the group in the sidebar on main page
 # | important               | Boolean: Whether we should show it by default in web or it can be hidden under "show more"
 # | has_no_page             | Boolean: if true, variant will not be shown on the left sidebar on main page and will not have a page to navigate to
 # | alt_display_name        | List of alternative friendly names (appear in web under the heading on variant page)
@@ -1571,31 +1572,6 @@ clusters = {
        }
     },
 
-    "Recombinant" : {
-        "snps": [],
-        "snps_with_base": [],
-        "cluster_data": [],
-        "nextstrain_build": False,
-        "use_pango": False,
-        "has_no_page": True,
-        "graphing": True,
-        "important": False,
-        "country_info": [],
-        "col": "#784421",
-        "display_name": "recombinant",
-        "alt_display_name": [],
-        "build_name": "recombinant",
-        "who_name": [],
-        "old_build_names": [],
-        "nextstrain_names": "recombinant",
-        "pango_lineages": [],
-        "nextstrain_url": "",
-        "mutations": {
-            "nonsynonymous": [],
-            "synonymous": [],
-       }
-    },
-
     # variant  -- part of 'Indian' in media - B.1.617.1
     "Kappa": {
         "snps": [17523, 23604, 22917],  # ORF1b:1352, S:681, 452
@@ -2345,6 +2321,32 @@ clusters = {
             ]
         },
     },
+
+    "Recombinant" : {
+        "snps": [],
+        "snps_with_base": [],
+        "cluster_data": [],
+        "nextstrain_build": False,
+        "use_pango": False,
+        "has_no_page": True,
+        "graphing": True,
+        "important": False,
+        "country_info": [],
+        "col": "#784421",
+        "display_name": "recombinant",
+        "alt_display_name": [],
+        "build_name": "recombinant",
+        "who_name": [],
+        "old_build_names": [],
+        "nextstrain_names": "recombinant",
+        "pango_lineages": [],
+        "nextstrain_url": "",
+        "mutations": {
+            "nonsynonymous": [],
+            "synonymous": [],
+       }
+    },
+
     "S501": {
         "snps": [23064],
         "cluster_data": [],
