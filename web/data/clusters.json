@@ -7008,31 +7008,6 @@
       ]
     },
     {
-      "alt_display_name": [],
-      "aquaria_urls": [],
-      "build_name": "recombinant",
-      "cluster_data": [],
-      "col": "#784421",
-      "country_info": [],
-      "display_name": "recombinant",
-      "graphing": true,
-      "has_no_page": true,
-      "important": false,
-      "mutations": {
-        "nonsynonymous": [],
-        "synonymous": []
-      },
-      "nextstrain_build": false,
-      "nextstrain_names": "recombinant",
-      "nextstrain_url": "",
-      "old_build_names": [],
-      "pango_lineages": [],
-      "snps": [],
-      "snps_with_base": [],
-      "use_pango": false,
-      "who_name": []
-    },
-    {
       "alt_display_name": [
         "21A/S:154K"
       ],
@@ -9702,6 +9677,31 @@
         "18032T"
       ],
       "type": "variant"
+    },
+    {
+      "alt_display_name": [],
+      "aquaria_urls": [],
+      "build_name": "recombinant",
+      "cluster_data": [],
+      "col": "#784421",
+      "country_info": [],
+      "display_name": "recombinant",
+      "graphing": true,
+      "has_no_page": true,
+      "important": false,
+      "mutations": {
+        "nonsynonymous": [],
+        "synonymous": []
+      },
+      "nextstrain_build": false,
+      "nextstrain_names": "recombinant",
+      "nextstrain_url": "",
+      "old_build_names": [],
+      "pango_lineages": [],
+      "snps": [],
+      "snps_with_base": [],
+      "use_pango": false,
+      "who_name": []
     },
     {
       "aquaria_urls": [],
