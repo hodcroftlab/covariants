@@ -203,7 +203,7 @@ def convert_per_cluster_data(clusters):
     per_cluster_data_output_interp = {"distributions": [], "country_names": []}
 
     for _, cluster in clusters.items():
-        if cluster["type"] == "do_not_display":
+        if cluster.get("has_no_page"):
             continue
 
         display_name = cluster["display_name"]

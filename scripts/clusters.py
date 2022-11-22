@@ -1,3 +1,60 @@
+# Meaning of fields
+#
+# You can query the list of all fields existing in `clusters.json` using this command (requires jq (https://github.com/stedolan/jq/releases) ):
+#
+#    jq '[ .clusters[] | keys[] ] | unique' web/data/clusters.json
+#
+# Note that not all fields from `clusters.py` end up in JSON, and vice-versa not all fields in JSON are present in `clusters.py` (some are generated elsewhere).
+#
+
+# Though not explicitly noted, clusters/variants are assigned based on this hierarchy:
+# if 'display_name' is found in metadata.tsv Nextclade (if this is an official Nextstrain clade) this is used
+# Otherwise, if not, and 'use_pango' is true, the pango lineages are used (the Nextclade assignments in metadata.tsv)
+# If neither of the above, use the SNPs/gaps to determine the variant
+# "Mutations" (not variants) always use SNPs or gaps
+
+#Defining variants
+# | snps                    | PIPELINE - used to identify clusters when not using pango or nextclade definitions
+# | snps2                   | PIPELINE - alternative set of SNPs (see above) - can have one set or the other to qualify
+# | gaps                    | PIPELINE - define a variant/mutation by gaps rather than SNPs
+# | snps_with_base          | PIPELINE (not clus_anal) - used to query CoVSpectrum to find other common mutations (mutation_counts.py)
+# | meta_cluster            | PIPELINE - set to TRUE if this definition is a group of variants (for Nextstrain builds)
+# | other_nextstrain_names  | PIPELINE - if a meta_cluster, this defines what variants make up this meta_cluster
+# | parent                  | PIPELINE - if not yet an official Nextstrain clade, the parent (what the variant would currently be called as) needs to be specified so that we re-check these seqs in case they are the new variant
+# | use_pango               | PIPELINE - if true, use the pango lineage designation to assign sequences (using their Nextclade pango assignment in metadata.tsv)
+# | pango_lineages          | BOTH - List of pango lineages associated with the variant
+
+# | cluster_data            | PIPELINE - used to store data in cluster_analysis.py, but code assumes it's there
+# | country_info            | PIPELINE - used to store data in cluster_analysis.py, but code assumes it's there
+
+# | usa_graph               | PIPELINE - include this in USA-specific output files that create USA per Country page. Overrides 'graphing=False' for USA-specific outputs for these clusters.
+# | nextstrain_build        | PIPELINE - determines whether cluster files are output, which are the starting point of Nextstrain builds
+# | graphing                | PIPELINE - determines whether a particular variant/mutation is included in output files that are eventually graphed on the website
+# Some confusion here. For Per Country, this means it gets included in the master files which
+# are used by convert_to_web_app_json.py to create graphing files (SwissClsutres_data.json, USAClusters_data.json, EUClusters_data.json)
+# The same files are used for Cases page.
+# However, for Per Variant, it pulls everything like this: cluster_tables/*_data.json
+# And it doesn't _seem_ like this `graphing` is checked before outputting those files...
+
+# | type                    | PIPELINE & VIZ: Used to distinguish types of graphing, & name of the group in the sidebar on main page
+
+# | build_name              | Unique, safe name of a variant (to use in files, keys, URLs etc.) - does not have spaces or special symbols
+# | display_name            | Friendly name of a variant (to display to the user) PIPELINE - also used to match Nextstrain clade
+#TODO with new nextclade naming, can switch to nextclade name instead for matching
+# | nextstrain_name         | Variant name in Nextstrain nomenclature
+# | who_name                | The Variant name assigned by WHO (Alpha, Beta, etc)
+
+
+# Visual display on website
+# | important               | Boolean: Whether we should show it by default in web or it can be hidden under "show more"
+# | has_no_page             | Boolean: if true, variant will not be shown on the left sidebar on main page and will not have a page to navigate to
+# | alt_display_name        | List of alternative friendly names (appear in web under the heading on variant page)
+# | col                     | Color associated with the variant
+# | mutations               | List of nonsyn & syn muts that should be displayed on variant/mutation pages on the right-hand side
+# | nextstrain_url          | URL to the phylogenetic tree visualization (the "build" in Nextstrain lingo) of this variant on nextstrain.org
+# | old_build_names         | Old variant names in Nextstrain nomenclature (usually before assigned a greek letter)
+
+
 clusters = {
 
     "Alpha": {
@@ -570,7 +627,7 @@ clusters = {
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": False,
-        "type": "do_not_display",
+        "has_no_page": True,
         "important": False,
         "country_info": [],
         "col": "#000000",
@@ -597,7 +654,7 @@ clusters = {
         "other_nextstrain_names": ["21K (Omicron)", "21L (Omicron)", "21M (Omicron)"],
         "country_info": [], 'col': "#b3d9ff",
         "display_name": "21K.21L",
-        "type": "do_not_display",
+        "has_no_page": True,
         "build_name": "21K.21L",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K.21L"
     },
@@ -613,7 +670,7 @@ clusters = {
         "other_nextstrain_names": ["21K (Omicron)", "21L (Omicron)", "21M (Omicron)", "22A (Omicron)", "22B (Omicron)", "22C (Omicron)", "22D (Omicron)", "22E (Omicron)", "22F (Omicron)"],
         "country_info": [], 'col': "#b3d9ff",
         "display_name": "Omicron",
-        "type": "do_not_display",
+        "has_no_page": True,
         "build_name": "Omicron",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Omicron"
     },
@@ -623,7 +680,7 @@ clusters = {
     #    "snps": [21618,22775,23525], # S21618T, 22775A, 23525T
     #    "cluster_data": [],
     #    "nextstrain_build": True,
-    #    "type": "do_not_display",
+    #    "has_no_page": True,
     #    "graphing": False,
     #    "important": False,
     #    "country_info": [],
@@ -1053,7 +1110,7 @@ clusters = {
     },
 
     "22D": {  #BA.2.75
-       "snps": [3927, 26275, 3796], #TGT = C3927T, A26275G, C3796T 
+       "snps": [3927, 26275, 3796], #TGT = C3927T, A26275G, C3796T
        "snps_with_base": ["3927T", "26275G", "3796T"],
        "cluster_data": [],
        "nextstrain_build": True,
@@ -1198,12 +1255,12 @@ clusters = {
        }
     },
 
-    "22E": {  #BQ.1  
+    "22E": {  #BQ.1
        "snps": [], #"snps": [27259, 14257, 22942], #SNPS should be ok but keep turned off while using Pango #C27259A T14257C T22942A
        "snps_with_base": ["27259A", "14257C", "22942A"], #should work
        "cluster_data": [],
        "nextstrain_build": True,
-       #"parent": "22B", 
+       #"parent": "22B",
        "use_pango": False,
        "type": "variant",
        "graphing": True,
@@ -1356,7 +1413,7 @@ clusters = {
         "other_nextstrain_names": ["22B (Omicron)", "22E (Omicron)"],
         "country_info": [], 'col': "#b3d9ff",
         "display_name": "22B22E",
-        "type": "do_not_display",
+        "has_no_page": True,
         "build_name": "22B22E",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22B22E"
     },
@@ -1515,31 +1572,6 @@ clusters = {
        }
     },
 
-    "Recombinant" : {
-        "snps": [],
-        "snps_with_base": [],
-        "cluster_data": [],
-        "nextstrain_build": False,
-        "use_pango": False,
-        "type": "do_not_display",
-        "graphing": True,
-        "important": False,
-        "country_info": [],
-        "col": "#784421",
-        "display_name": "recombinant",
-        "alt_display_name": [],
-        "build_name": "recombinant",
-        "who_name": [],
-        "old_build_names": [],
-        "nextstrain_names": "recombinant",
-        "pango_lineages": [],
-        "nextstrain_url": "",
-        "mutations": {
-            "nonsynonymous": [],
-            "synonymous": [],
-       }
-    },
-
     # variant  -- part of 'Indian' in media - B.1.617.1
     "Kappa": {
         "snps": [17523, 23604, 22917],  # ORF1b:1352, S:681, 452
@@ -1600,7 +1632,7 @@ clusters = {
         "snps": [22995, 23604, 22917, 22813],  # S:478, 681, 452, 417
         "cluster_data": [],
         "nextstrain_build": False,
-        "type": "do_not_display",
+        "has_no_page": True,
         "graphing": False,
         "important": False,
         "country_info": [],
@@ -1726,7 +1758,7 @@ clusters = {
         },
     },
 
-    # C.37 
+    # C.37
     "21GLambda": {
         "snps": [7424, 23031, 24138],  # ORF1a 2387 (7424G)  #S 490 (23031C) 859 (24138A)
         "snps_with_base": ["7424G", "23031C", "24138A"],
@@ -2289,6 +2321,32 @@ clusters = {
             ]
         },
     },
+
+    "Recombinant" : {
+        "snps": [],
+        "snps_with_base": [],
+        "cluster_data": [],
+        "nextstrain_build": False,
+        "use_pango": False,
+        "has_no_page": True,
+        "graphing": True,
+        "important": False,
+        "country_info": [],
+        "col": "#784421",
+        "display_name": "recombinant",
+        "alt_display_name": [],
+        "build_name": "recombinant",
+        "who_name": [],
+        "old_build_names": [],
+        "nextstrain_names": "recombinant",
+        "pango_lineages": [],
+        "nextstrain_url": "",
+        "mutations": {
+            "nonsynonymous": [],
+            "synonymous": [],
+       }
+    },
+
     "S501": {
         "snps": [23064],
         "cluster_data": [],
@@ -2384,7 +2442,7 @@ clusters = {
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": False,
-        "type": "do_not_display",
+        "has_no_page": True,
         "important": False,
         "country_info": [],
         "col": "#ffffff",
@@ -2486,7 +2544,7 @@ clusters = {
         "country_info": [],
         "col": "#804000",
         "display_name": "20G/S:677H.Robin2",
-        "type": "do_not_display",
+        "has_no_page": True,
         "build_name": "S.Q677H.Robin2",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Robin2?c=gt-S_677&f_country=USA",
     },
@@ -2501,7 +2559,7 @@ clusters = {
         "country_info": [],
         "col": "#ffcc00",
         "display_name": "20G/S:677H.Yellowhammer",
-        "type": "do_not_display",
+        "has_no_page": True,
         "build_name": "S.Q677H.Yellowhammer",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Yellowhammer?c=gt-S_677&f_country=USA",
     },
@@ -2516,7 +2574,7 @@ clusters = {
         "country_info": [],
         "col": "#ff8d3d",
         "display_name": "20G/S:677R.Roadrunner",
-        "type": "do_not_display",
+        "has_no_page": True,
         "build_name": "S.Q677R.Roadrunner",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677R.Roadrunner?c=gt-S_677&f_country=USA",
     },
@@ -2531,7 +2589,7 @@ clusters = {
         "country_info": [],
         "col": "#65beeb",
         "display_name": "20G/S:677H.Heron",
-        "type": "do_not_display",
+        "has_no_page": True,
         "build_name": "S.Q677H.Heron",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Heron?c=gt-S_677&f_country=USA",
     },
@@ -2546,7 +2604,7 @@ clusters = {
         "country_info": [],
         "col": "#003366",
         "display_name": "20G/S:677H.Bluebird",
-        "type": "do_not_display",
+        "has_no_page": True,
         "build_name": "S.Q677H.Bluebird",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Bluebird?c=gt-S_677&f_country=USA",
     },
@@ -2561,7 +2619,7 @@ clusters = {
         "country_info": [],
         "col": "#a3a3c2",
         "display_name": "20G/S:677H.Quail",
-        "type": "do_not_display",
+        "has_no_page": True,
         "build_name": "S.Q677H.Quail",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Quail?c=gt-S_677&f_country=USA",
     },
@@ -2576,7 +2634,7 @@ clusters = {
         "country_info": [],
         "col": "#b3d9ff",
         "display_name": "20G/S:677H.Mockingbird",
-        "type": "do_not_display",
+        "has_no_page": True,
         "build_name": "S.Q677H.Mockingbird",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Mockingbird?c=gt-S_677&f_country=USA",
     },
@@ -2588,7 +2646,7 @@ clusters = {
     #        "graphing": False,
     #        "important": False,
     #        "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+N:412R",
-    #        "type": "do_not_display",
+    #        "has_no_page": True,
     #        "build_name": "Delta.N.412R",
     #        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.N.412R?c=gt-S_613"
     #    },
@@ -2602,7 +2660,7 @@ clusters = {
         "graphing": False,
         "important": False,
         "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+299I",
-        "type": "do_not_display",
+        "has_no_page": True,
         "build_name": "Delta.299I",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.299I?c=gt-S_299"
     },
@@ -2613,7 +2671,7 @@ clusters = {
         "graphing": False,
         "important": False,
         "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+250I",
-        "type": "do_not_display",
+        "has_no_page": True,
         "build_name": "Delta.250I",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.250I?c=gt-S_250"
     },
@@ -2625,7 +2683,7 @@ clusters = {
         "graphing": False,
         "important": False,
         "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+145H",
-        "type": "do_not_display",
+        "has_no_page": True,
         "build_name": "Delta.145H",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.145H?c=gt-S_145,222"
     },
@@ -2637,7 +2695,7 @@ clusters = {
         "graphing": False,
         "important": False,
         "country_info": [], 'col': "#b3d9ff", "display_name": "Delta+ORF1a3059F",
-        "type": "do_not_display",
+        "has_no_page": True,
         "build_name": "Delta.ORF1a3059F",
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/Delta.ORF1a3059F?c=gt-ORF1a_3059"
     },
@@ -2649,7 +2707,7 @@ clusters = {
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
-        "type": "do_not_display",
+        "has_no_page": True,
         "important": False,
         "country_info": [],
         "col": "#ff8080",
@@ -2662,7 +2720,7 @@ clusters = {
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
-        "type": "do_not_display",
+        "has_no_page": True,
         "important": False,
         "country_info": [],
         "col": "#ff8080",
@@ -2675,7 +2733,7 @@ clusters = {
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
-        "type": "do_not_display",
+        "has_no_page": True,
         "important": False,
         "country_info": [],
         "col": "#ff8080",
@@ -2688,7 +2746,7 @@ clusters = {
         "cluster_data": [],
         "nextstrain_build": True,
         "graphing": False,
-        "type": "do_not_display",
+        "has_no_page": True,
         "important": False,
         "country_info": [],
         "col": "#ff8080",
@@ -2703,7 +2761,7 @@ clusters = {
     #      "cluster_data": [],
     #      "nextstrain_build": True,
     #      "graphing": False,
-    #      "type": "do_not_display",
+    #      "has_no_page": True,
     #      "important": False,
     #      "country_info": [],
     #      "col": "#ff8080",
@@ -2717,7 +2775,7 @@ clusters = {
     #        "snps": [29402, 22917, 14408], # N377, S452. ORF1b 314
     #        "cluster_data": [],
     #        "nextstrain_build": True,
-    #        "type": "do_not_display",
+    #        "has_no_page": True,
     #        "graphing": False,
     #        "important": False,
     #        "country_info": [],
@@ -2736,7 +2794,7 @@ clusters = {
     #    "nextstrain_build": True,
     #    "graphing": False,
     #    "important": False,
-    #    "type": "do_not_display",
+    #    "has_no_page": True,
     #    "country_info": [],
     #    "col": "#b3d9ff",
     #    "nextstrain_url": ""},
@@ -2750,7 +2808,7 @@ clusters = {
     #    "nextstrain_build": False,
     #    "graphing": False,
     #    "important": False,
-    #    "type": "do_not_display",
+    #    "has_no_page": True,
     #    "country_info": [],
     #    "col": "#b3d9ff",
     #    "nextstrain_url": ""},
@@ -2762,7 +2820,7 @@ clusters = {
     #    "usa_graph": False,
     #    "important": False,
     #    "country_info": [], 'col': "#b3d9ff", "display_name": "21H+417N",
-    #    "type": "do_not_display",
+    #    "has_no_page": True,
     #    "build_name": "21H.417N",
     #    "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21H.417N?c=gt-S_417"
     # }
@@ -2779,7 +2837,7 @@ clusters = {
     # "usa_graph": False,
     # "important": False,
     # "country_info": [], 'col': "#b3d9ff", "display_name": "S:732A",
-    # "type": "do_not_display",
+    # "has_no_page": True,
     # "build_name": "S.Q675",
     # "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.732A?c=gt-S_732"
     # }
@@ -2792,7 +2850,7 @@ clusters = {
     # "usa_graph": False,
     # "important": False,
     # "country_info": [], 'col': "#b3d9ff", "display_name": "S:Q675",
-    # "type": "do_not_display",
+    # "has_no_page": True,
     # "build_name": "S.Q675",
     # "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q675?c=gt-S_675"
     # }
@@ -2802,7 +2860,7 @@ clusters = {
     # "type": "variant",
     # "important": False,
     # "country_info": [], 'col': "#db4439", "display_name": "19B/S:501T",
-    # "type": "do_not_display",
+    # "has_no_page": True,
     # "build_name": "19B.S.501T",
     # "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/19B.S.501T?c=gt-S_501"
     # }
@@ -2813,7 +2871,7 @@ clusters = {
     # "type": "variant",
     # "important": False,
     # "country_info": [], 'col': "#db4439", "display_name": "19B/S:501Y",
-    # "type": "do_not_display",
+    # "has_no_page": True,
     # "build_name": "19B.S.501Y",
     # "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/19B.S.501Y?c=gt-S_501"
     # }
@@ -2823,7 +2881,7 @@ clusters = {
     # "type": "variant",
     # "important": False,
     # "country_info": [], 'col': "#db4439", "display_name": "19B/S:681R",
-    # "type": "do_not_display",
+    # "has_no_page": True,
     # "build_name": "19B.S.681R",
     # "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/19B.S.681R?c=gt-S_681"
     # }
@@ -2834,7 +2892,7 @@ clusters = {
     # "type": "variant",
     # "important": False,
     # "country_info": [], 'col': "#db4439", "display_name": "20B/S:769V",
-    # "type": "do_not_display",
+    # "has_no_page": True,
     # "build_name": "20B.S.769V",
     # "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20B.S.769V?c=gt-S_769"
     # }

@@ -3,10 +3,11 @@ import React from 'react'
 import { Card, CardBody, CardHeader, Row } from 'reactstrap'
 import { ClusterButtonGroup } from 'src/components/ClusterButtonPanel/ClusterButtonGroup'
 
-import { ClusterDatum, getClustersGrouped } from 'src/io/getClusters'
+import { ClusterDatum, getClusters, getClustersGrouped } from 'src/io/getClusters'
 import styled from 'styled-components'
 
-const clustersGrouped = getClustersGrouped()
+const clusters = getClusters().filter((cluster) => !cluster.has_no_page)
+const clustersGrouped = getClustersGrouped(clusters)
 
 const ClustersRow = styled(Row)`
   display: flex;
