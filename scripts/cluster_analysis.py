@@ -1015,7 +1015,7 @@ if print_files and "all" in clus_answer:
 if "all" in clus_answer:
     ccounts = []
     for clus in clusters:
-        if clusters[clus]['type'] == "variant":
+        if clusters[clus].get("type") == "variant":
             displayn = clusters[clus]["display_name"]
             ccounts.append([displayn, len(all_sequences[clus])])
 

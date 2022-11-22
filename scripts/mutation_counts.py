@@ -44,7 +44,7 @@ if __name__ == '__main__':
         if cluster.get("has_no_page"):
             continue
 
-        if cluster["type"] == "mutation":
+        if cluster.get("type") == "mutation":
             continue
 
         if "snps_with_base" not in cluster:
