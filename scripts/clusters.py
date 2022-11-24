@@ -37,6 +37,8 @@
 # And it doesn't _seem_ like this `graphing` is checked before outputting those files...
 
 # | type                    | PIPELINE & VIZ: Used to distinguish types of graphing, & name of the group in the sidebar on main page
+# | mutations               | List of nonsyn & syn muts that should be displayed on variant/mutation pages on the right-hand side
+#                           | Also used in mutation_counts.py - when querying CoVSpectrum, all these mutations are removed from results (as they are defining)
 
 # | build_name              | Unique, safe name of a variant (to use in files, keys, URLs etc.) - does not have spaces or special symbols
 # | display_name            | Friendly name of a variant (to display to the user) PIPELINE - also used to match Nextstrain clade
@@ -50,7 +52,6 @@
 # | has_no_page             | Boolean: if true, variant will not be shown on the left sidebar on main page and will not have a page to navigate to
 # | alt_display_name        | List of alternative friendly names (appear in web under the heading on variant page)
 # | col                     | Color associated with the variant
-# | mutations               | List of nonsyn & syn muts that should be displayed on variant/mutation pages on the right-hand side
 # | nextstrain_url          | URL to the phylogenetic tree visualization (the "build" in Nextstrain lingo) of this variant on nextstrain.org
 # | old_build_names         | Old variant names in Nextstrain nomenclature (usually before assigned a greek letter)
 
