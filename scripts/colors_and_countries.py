@@ -204,6 +204,8 @@ country_list_4 = [
     "Georgia",              #13
     "Jamaica",              #14
     "Trinidad and Tobago",  #15
+    "Curacao",              #16
+    "Guatemala",            #17
 ]
 
 country_styles_1 = {
