@@ -8,6 +8,7 @@ export function getEnvVars() {
   const DOMAIN = getDomain()
   const DOMAIN_STRIPPED = DOMAIN.replace('https://', '').replace('http://', '')
   const WATCH_POLL = getbool('WATCH_POLL', false)
+  const DATA_ROOT_URL = getenv('DATA_ROOT_URL')
 
   const common = {
     NODE_ENV,
@@ -16,6 +17,7 @@ export function getEnvVars() {
     DOMAIN,
     DOMAIN_STRIPPED,
     WATCH_POLL,
+    DATA_ROOT_URL,
   }
 
   if (PRODUCTION) {

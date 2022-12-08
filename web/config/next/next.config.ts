@@ -37,6 +37,7 @@ const {
   DOMAIN,
   DOMAIN_STRIPPED,
   WATCH_POLL,
+  DATA_ROOT_URL,
 } = getEnvVars()
 
 const BRANCH_NAME = getGitBranch()
@@ -51,6 +52,7 @@ const clientEnv = {
   COMMIT_HASH: getGitCommitHash(),
   DOMAIN,
   DOMAIN_STRIPPED,
+  DATA_ROOT_URL,
 }
 
 const nextConfig: NextConfig = {

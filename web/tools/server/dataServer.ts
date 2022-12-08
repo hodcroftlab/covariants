@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-process-exit,unicorn/prefer-module */
 /**
  * Serves production build artifacts.
  *
@@ -17,14 +18,7 @@ import allowMethods from 'allow-methods'
 import compression from 'compression'
 import morgan from 'morgan'
 import expressStaticGzip from 'express-static-gzip'
-import { getenv } from '../../lib/getenv'
-import { findModuleRoot } from '../../lib/findModuleRoot'
-import { modifyHeaders } from '../../../infra/web/lambda-at-edge/ViewerResponse.lambda'
-
-const { moduleRoot } = findModuleRoot()
-
-const buildDir = path.join(moduleRoot, '.build', 'production', 'web')
-const nextDir = path.join(buildDir, '_next')
+import { modifyHeaders } from '../../../infra/data/lambda-at-edge/ViewerResponse.lambda'
 
 export interface NewHeaders {
   [key: string]: { key: string; value: string }[]
@@ -37,14 +31,6 @@ const cacheNone = {
   serveStatic: {
     ...expressStaticGzipOptions.serveStatic,
     setHeaders: (res: ServerResponse) => res.setHeader('Cache-Control', 'no-cache'),
-  },
-}
-const cacheOneYear = {
-  ...expressStaticGzipOptions,
-  serveStatic: {
-    ...expressStaticGzipOptions.serveStatic,
-    maxAge: '31556952000',
-    immutable: true,
   },
 }
 
@@ -75,15 +61,22 @@ function setHeaders(req: express.Request, res: express.Response, next: express.N
 function main() {
   const app = express()
 
+  if (process.argv.length < 3) {
+    console.error('Error: Positional argument is required: path to a data directory')
+    console.error(`Usage:\n  ${process.argv[0]} ${path.basename(__filename)} <path_to_data_dir>`)
+    process.exit(0)
+  }
+
+  const dataDir = process.argv[2]
+
   app.use(morgan('dev'))
   app.use(compression())
   app.use(allowMethods(['GET', 'HEAD']))
   app.use(setHeaders)
-  app.use('/_next', expressStaticGzip(nextDir, cacheOneYear))
-  app.get('*', expressStaticGzip(buildDir, cacheNone))
+  app.use(expressStaticGzip(dataDir, cacheNone))
   app.use(notFound)
 
-  const port = getenv('WEB_PORT_PROD')
+  const port = '27722'
   app.listen(port, () => {
     console.info(`Server is listening on port ${port}`)
   })

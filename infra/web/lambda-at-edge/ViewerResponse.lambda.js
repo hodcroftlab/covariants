@@ -1,25 +1,21 @@
-// Adds some of the security headers to requests using AWS Lambda@Edge
-// See https://securityheaders.com/
+// Adds additional headers to the response, including security headers.
+// Suited for websites.
 //
-// Usage: Create an AWS Lambda function and attach this to "Viewer Response" event of a Cloudfront distribution
+// See also:
+//  - https://securityheaders.com/
+//
+// Usage: Create an AWS Lambda@Edge function and attach it to "Viewer Response"
+// event of a Cloudfront distribution
 
 const FEATURE_POLICY = {
-  'accelerometer': `'none'`,
-  'autoplay': `'none'`,
-  'camera': `'none'`,
-  'document-domain': `'none'`,
-  'encrypted-media': `'none'`,
-  'fullscreen': `'none'`,
-  'geolocation': `'none'`,
-  'gyroscope': `'none'`,
-  'magnetometer': `'none'`,
-  'microphone': `'none'`,
-  'midi': `'none'`,
-  'payment': `'none'`,
-  'picture-in-picture': `'none'`,
-  'sync-xhr': `'none'`,
-  'usb': `'none'`,
-  'xr-spatial-tracking': `'none'`,
+  accelerometer: `'none'`,
+  camera: `'none'`,
+  geolocation: `'none'`,
+  gyroscope: `'none'`,
+  magnetometer: `'none'`,
+  microphone: `'none'`,
+  payment: `'none'`,
+  usb: `'none'`,
 }
 
 function generateFeaturePolicyHeader(featurePolicyObject) {
@@ -28,9 +24,26 @@ function generateFeaturePolicyHeader(featurePolicyObject) {
     .join('; ')
 }
 
+const PERMISSIONS_POLICY = {
+  'accelerometer': '()',
+  'camera': '()',
+  'geolocation': '()',
+  'gyroscope': '()',
+  'magnetometer': '()',
+  'microphone': '()',
+  'payment': '()',
+  'usb': '()',
+  'interest-cohort': '()',
+}
+
+function generatePermissionsPolicyHeader(permissionsPolicyObject) {
+  return Object.entries(permissionsPolicyObject)
+    .map(([policy, value]) => `${policy}=${value}`)
+    .join(', ')
+}
+
 const NEW_HEADERS = {
-  'Content-Security-Policy':
-    "default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src *; frame-src https://nextstrain.org",
+  'Content-Security-Policy': `default-src 'self' *.pangenome.org; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: *.pangenome.org plausible.io maxcdn.bootstrapcdn.com; style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com fonts.googleapis.com; font-src 'self' maxcdn.bootstrapcdn.com fonts.googleapis.com fonts.gstatic.com;img-src 'self' data:; connect-src *; frame-src 'self' player.vimeo.com`,
   'Referrer-Policy': 'no-referrer',
   'Strict-Transport-Security': 'max-age=15768000; includeSubDomains; preload',
   'X-Content-Type-Options': 'nosniff',
@@ -39,6 +52,7 @@ const NEW_HEADERS = {
   'X-Frame-Options': 'SAMEORIGIN',
   'X-XSS-Protection': '1; mode=block',
   'Feature-Policy': generateFeaturePolicyHeader(FEATURE_POLICY),
+  'Permissions-Policy': generatePermissionsPolicyHeader(PERMISSIONS_POLICY),
 }
 
 function addHeaders(headersObject) {
@@ -63,7 +77,7 @@ function filterHeaders(headers) {
   }, {})
 }
 
-function modifyHeaders({ request, response }) {
+function modifyHeaders({ response }) {
   let newHeaders = addHeaders(NEW_HEADERS)
 
   newHeaders = {
@@ -72,18 +86,6 @@ function modifyHeaders({ request, response }) {
   }
 
   newHeaders = filterHeaders(newHeaders)
-
-  const url = request.uri || request.url
-  if (url.startsWith('/_next')) {
-    const cacheHeaders = addHeaders({
-      'Cache-Control': 'public,max-age=31536000,immutable',
-    })
-
-    newHeaders = {
-      ...newHeaders,
-      ...cacheHeaders,
-    }
-  }
 
   return newHeaders
 }
