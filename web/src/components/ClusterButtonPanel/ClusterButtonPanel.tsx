@@ -1,13 +1,9 @@
-import React from 'react'
-
+import { groupBy, isNil } from 'lodash'
+import React, { useMemo } from 'react'
 import { Card, CardBody, CardHeader, Row } from 'reactstrap'
-import { ClusterButtonGroup } from 'src/components/ClusterButtonPanel/ClusterButtonGroup'
-
-import { ClusterDatum, getClusters, getClustersGrouped } from 'src/io/getClusters'
 import styled from 'styled-components'
-
-const clusters = getClusters().filter((cluster) => !cluster.has_no_page)
-const clustersGrouped = getClustersGrouped(clusters)
+import { ClusterDatum, useClusters } from 'src/io/getClusters'
+import { ClusterButtonGroup } from 'src/components/ClusterButtonPanel/ClusterButtonGroup'
 
 const ClustersRow = styled(Row)`
   display: flex;
@@ -46,16 +42,29 @@ export interface ClusterPanelProps {
 }
 
 export function ClusterButtonPanel({ currentCluster, className }: ClusterPanelProps) {
-  return (
-    <ClustersRow noGutters className={className}>
-      {Object.entries(clustersGrouped).map(([clusterType, clusterGroup]) => (
+  const clusters = useClusters()
+
+  const clustersGrouped = useMemo(() => {
+    const clustersWithType = clusters.filter((cluster) => !isNil(cluster.type))
+    return groupBy(clustersWithType, 'type')
+  }, [clusters])
+
+  const clusterButtons = useMemo(
+    () =>
+      Object.entries(clustersGrouped).map(([clusterType, clusterGroup]) => (
         <ClusterGroupCard key={clusterType}>
           <ClusterGroupHeader>{clusterType}</ClusterGroupHeader>
           <ClusterGroupBody>
             <ClusterButtonGroup clusterGroup={clusterGroup} currentCluster={currentCluster} />
           </ClusterGroupBody>
         </ClusterGroupCard>
-      ))}
+      )),
+    [clustersGrouped, currentCluster],
+  )
+
+  return (
+    <ClustersRow noGutters className={className}>
+      {clusterButtons}
     </ClustersRow>
   )
 }

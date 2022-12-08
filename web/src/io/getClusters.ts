@@ -1,10 +1,13 @@
 /* eslint-disable camelcase */
-import { groupBy, isNil } from 'lodash'
 import { notUndefinedOrNull } from 'src/helpers/notUndefined'
 
 import type { Mutation } from 'src/types'
 import type { Cluster } from 'src/state/Clusters'
 import { theme } from 'src/theme'
+
+import { useAxiosQuery } from 'src/hooks/useAxiosQuery'
+import urljoin from 'url-join'
+import { getDataRootUrl } from 'src/io/getDataRootUrl'
 
 import clustersJson from 'src/../data/clusters.json'
 
@@ -33,12 +36,15 @@ export type ClusterDatum = {
   has_no_page?: boolean
 }
 
-export function getClusters(): ClusterDatum[] {
-  return clustersJson.clusters
+export function useClusters() {
+  const { clusters } = useAxiosQuery<{ clusters: ClusterDatum[] }>(urljoin(getDataRootUrl(), 'clusters.json'))
+  return clusters.filter((cluster) => !cluster.has_no_page)
 }
 
-export function getDefaultCluster(): ClusterDatum {
-  return getClusters()[0]
+/** ---------------- Functions below this line should be removed --------- */
+
+export function getClusters(): ClusterDatum[] {
+  return clustersJson.clusters
 }
 
 export function getClusterNames() {
@@ -72,13 +78,6 @@ export function getClusterColor(clusterName: string) {
   const clusters = getClusters()
   const found = clusters.find(({ display_name }) => display_name === clusterName)
   return found ? found.col : theme.clusters.color.unknown
-}
-
-export type ClusterDataGrouped = Record<string, ClusterDatum[]>
-
-export function getClustersGrouped(clusters: ClusterDatum[]): ClusterDataGrouped {
-  const clustersWithType = clusters.filter((cluster) => !isNil(cluster.type))
-  return groupBy(clustersWithType, 'type')
 }
 
 export function sortClusters(clusters: Cluster[]): Cluster[] {
