@@ -19,6 +19,7 @@ import getWithFriendlyConsole from './withFriendlyConsole'
 import getWithLodash from './withLodash'
 import { getWithRobotsTxt } from './withRobotsTxt'
 import getWithTypeChecking from './withTypeChecking'
+import withoutDebugPackage from './withoutDebugPackage'
 import withSvg from './withSvg'
 import withIgnore from './withIgnore'
 import withoutMinification from './withoutMinification'
@@ -179,6 +180,7 @@ const config = withPlugins(
     [withResolve],
     [withRobotsTxt],
     [withUrlAsset],
+    PRODUCTION && [withoutDebugPackage],
   ].filter(Boolean),
   nextConfig,
 )
