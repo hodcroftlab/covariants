@@ -3,7 +3,6 @@ import React from 'react'
 import { Col, Row } from 'reactstrap'
 import { Var, WhoBadge } from 'src/components/Common/MutationBadge'
 
-import { Layout } from 'src/components/Layout/Layout'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
 
 import { getClusterNames, getClusterBuildNames, getClusterOldBuildNames } from 'src/io/getClusters'
@@ -17,7 +16,7 @@ const domain = process.env.DOMAIN ?? ''
 
 export default function DebugBadges() {
   return (
-    <Layout>
+    <>
       <Row noGutters>
         <Col>
           {'Display names'}
@@ -73,6 +72,6 @@ export default function DebugBadges() {
           </ul>
         </Col>
       </Row>
-    </Layout>
+    </>
   )
 }

@@ -19,6 +19,7 @@ import getWithFriendlyConsole from './withFriendlyConsole'
 import getWithLodash from './withLodash'
 import { getWithRobotsTxt } from './withRobotsTxt'
 import getWithTypeChecking from './withTypeChecking'
+import withoutDebugPackage from './withoutDebugPackage'
 import withSvg from './withSvg'
 import withIgnore from './withIgnore'
 import withoutMinification from './withoutMinification'
@@ -28,15 +29,11 @@ import withWebpackWatchPoll from './withWebpackWatchPoll'
 import withUrlAsset from './withUrlAsset'
 
 const {
-  // BABEL_ENV,
-  // NODE_ENV,
-  // ANALYZE,
-  PROFILE,
   PRODUCTION,
+  PROFILE,
   ENABLE_SOURCE_MAPS,
   ENABLE_ESLINT,
   ENABLE_TYPE_CHECKS,
-  // ENABLE_STYLELINT,
   DOMAIN,
   DOMAIN_STRIPPED,
   WATCH_POLL,
@@ -56,8 +53,6 @@ const clientEnv = {
   DOMAIN_STRIPPED,
 }
 
-console.info(`Client-side Environment:\n${JSON.stringify(clientEnv, null, 2)}`)
-
 const nextConfig: NextConfig = {
   distDir: `.build/${process.env.NODE_ENV}/tmp`,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx', 'all-contributorsrc'],
@@ -66,10 +61,9 @@ const nextConfig: NextConfig = {
     pagesBufferLength: 2,
   },
   modern: false,
-  // reactStrictMode: true,
+  reactStrictMode: false,
+  reactRoot: true,
   experimental: {
-    // reactMode: 'concurrent',
-    // reactRoot: true,
     scrollRestoration: true,
   },
   swcMinify: true,
@@ -100,7 +94,7 @@ const withMDX = getWithMDX({
   options: {
     remarkPlugins: [
       // prettier-ignore
-      require('remark-breaks'),
+      require("remark-breaks"),
       require('remark-images'),
       require('remark-math'),
       require('remark-slug'),
@@ -130,7 +124,7 @@ const withFriendlyConsole = getWithFriendlyConsole({
   clearConsole: false,
   projectRoot: path.resolve(moduleRoot),
   packageName: pkg.name || 'web',
-  progressBarColor: '#6529ff',
+  progressBarColor: '#3a5f0b',
 })
 
 const withExtraWatch = getWithExtraWatch({
@@ -181,6 +175,7 @@ const config = withPlugins(
     [withResolve],
     [withRobotsTxt],
     [withUrlAsset],
+    PRODUCTION && [withoutDebugPackage],
   ].filter(Boolean),
   nextConfig,
 )

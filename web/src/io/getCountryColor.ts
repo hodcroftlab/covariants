@@ -22,5 +22,6 @@ export function getCountryStrokeDashArray(country: string) {
 }
 
 export function shouldPlotCountry(country: string): boolean {
-  return get(countriesToPlot, country, 'False') === 'True'
+  const shouldPlot = get(countriesToPlot, country, 'False') as 'False' | 'True'
+  return shouldPlot === 'True'
 }

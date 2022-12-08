@@ -4,7 +4,6 @@ import { Col, Container, Row } from 'reactstrap'
 import styled from 'styled-components'
 
 import { Editable, CenteredEditable } from 'src/components/Common/Editable'
-import { Layout } from 'src/components/Layout/Layout'
 
 import SharedMutationsIntro from '../../../../content/SharedMutations.md'
 import { SharedMutations } from './SharedMutations'
@@ -20,38 +19,32 @@ export const SharedMutationsWrapper = styled.div`
   overflow-x: auto;
 `
 
-export const SharedMutationsWrapperInner = styled.div`
-  flex: 1;
-`
-
 export function SharedMutationsPage() {
   return (
-    <Layout>
-      <SharedMutationsPageContainer>
-        <Row noGutters>
-          <Col>
-            <PageHeading>{'Shared mutations'}</PageHeading>
-          </Col>
-        </Row>
+    <SharedMutationsPageContainer>
+      <Row noGutters>
+        <Col>
+          <PageHeading>{'Shared mutations'}</PageHeading>
+        </Col>
+      </Row>
 
-        <Row noGutters>
-          <Col>
-            <CenteredEditable githubUrl="blob/master/content/SharedMutations.md">
-              <SharedMutationsIntro />
-            </CenteredEditable>
-          </Col>
-        </Row>
+      <Row noGutters>
+        <Col>
+          <CenteredEditable githubUrl="blob/master/content/SharedMutations.md">
+            <SharedMutationsIntro />
+          </CenteredEditable>
+        </Col>
+      </Row>
 
-        <Row noGutters>
-          <Col className="pb-10">
-            <Editable githubUrl="blob/master/scripts" text={'View data generation scripts'}>
-              <SharedMutationsWrapper>
-                <SharedMutations />
-              </SharedMutationsWrapper>
-            </Editable>
-          </Col>
-        </Row>
-      </SharedMutationsPageContainer>
-    </Layout>
+      <Row noGutters>
+        <Col className="pb-10">
+          <Editable githubUrl="blob/master/scripts" text={'View data generation scripts'}>
+            <SharedMutationsWrapper>
+              <SharedMutations />
+            </SharedMutationsWrapper>
+          </Editable>
+        </Col>
+      </Row>
+    </SharedMutationsPageContainer>
   )
 }

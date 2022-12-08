@@ -1,16 +1,12 @@
-import axios from 'axios'
-import React, { useCallback, useMemo, useState } from 'react'
-
-import { Oval as OvalLoader } from 'react-loader-spinner'
-import { useQuery } from 'react-query'
+import React, { Suspense, useCallback, useMemo, useState } from 'react'
 import PaginationComponent from 'react-reactstrap-pagination'
 import { CardBody } from 'reactstrap'
-import { AcknowledgementEpiIsl } from 'src/components/Acknowledgements/AcknowledgementEpiIsl'
-import { AcknowledgementsError } from 'src/components/Acknowledgements/AcknowledgementsError'
-import { CardCollapsible } from 'src/components/Common/CardCollapsible'
-
-import type { ClusterDatum } from 'src/io/getClusters'
 import styled from 'styled-components'
+import { useAxiosQuery } from 'src/hooks/useAxiosQuery'
+import { AcknowledgementEpiIsl } from 'src/components/Acknowledgements/AcknowledgementEpiIsl'
+import { CardCollapsible } from 'src/components/Common/CardCollapsible'
+import { SPINNER } from 'src/components/Loading/Loading'
+import type { ClusterDatum } from 'src/io/getClusters'
 
 export interface AcknowledgementsKeysDatum {
   numChunks: number
@@ -24,6 +20,7 @@ export interface AcknowledgementsKeysJson {
 
 export const PaginationContainer = styled.div`
   display: flex;
+
   & > * {
     margin: 0 auto;
   }
@@ -36,24 +33,7 @@ export function useQueryAcknowledgements(cluster: string, page: number) {
     const pageString = page.toString().padStart(3, '0')
     return `acknowledgements/${cluster}/${pageString}.json`
   }, [cluster, page])
-
-  return useQuery(
-    ['acknowledgements_page', cluster, page],
-    async () => {
-      const res = await axios.get(url)
-      if (!res.data) {
-        throw new Error(`Unable to fetch acknowledgements data: request to URL "${url}" resulted in no data`)
-      }
-      return res.data as string[]
-    },
-    {
-      staleTime: Number.POSITIVE_INFINITY,
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: true,
-      refetchInterval: Number.POSITIVE_INFINITY,
-    },
-  )
+  return useAxiosQuery<string[]>(url)
 }
 
 export interface AcknowledgementsCardBodyProps {
@@ -64,34 +44,15 @@ export interface AcknowledgementsCardBodyProps {
 export function AcknowledgementsCardBody({ cluster, numPages }: AcknowledgementsCardBodyProps) {
   const [page, setPage] = useState(0)
   const handlePagination = useCallback((page: number) => setPage(page - 1) /* one-based to zero-based */, [])
-  const { isLoading, isFetching, isError, data: epiIsls, error } = useQueryAcknowledgements(cluster.build_name, page)
+  const epiIsls = useQueryAcknowledgements(cluster.build_name, page)
 
   const body = useMemo(() => {
-    if (isLoading || isFetching) {
-      return (
-        <div className="d-flex">
-          <div className="mx-auto">
-            <OvalLoader color="#777" height={100} width={50} />
-          </div>
-        </div>
-      )
-    }
-    if (isError && error) {
-      return <AcknowledgementsError error={error} />
-    }
-    return null
-  }, [error, isError, isFetching, isLoading])
-
-  const epiIslsComponents = useMemo(() => {
-    if (epiIsls) {
-      return epiIsls.map((epiIsl) => (
-        <span key={`$${cluster.display_name}-${epiIsl}`}>
-          <AcknowledgementEpiIsl epiIsl={epiIsl} />
-          {', '}
-        </span>
-      ))
-    }
-    return null
+    return (epiIsls ?? []).map((epiIsl) => (
+      <span key={`$${cluster.display_name}-${epiIsl}`}>
+        <AcknowledgementEpiIsl epiIsl={epiIsl} />
+        {', '}
+      </span>
+    ))
   }, [cluster.display_name, epiIsls])
 
   return (
@@ -111,7 +72,6 @@ export function AcknowledgementsCardBody({ cluster, numPages }: Acknowledgements
       </PaginationContainer>
 
       <div>{body}</div>
-      <div>{epiIslsComponents}</div>
     </CardBody>
   )
 }
@@ -125,7 +85,11 @@ export function AcknowledgementsCard({ cluster, numPages }: AcknowledgementsCard
   const [collapsed, setCollapsed] = useState(true)
   return (
     <CardCollapsible className="my-2" title={cluster.display_name} collapsed={collapsed} setCollapsed={setCollapsed}>
-      {!collapsed && <AcknowledgementsCardBody cluster={cluster} numPages={numPages} />}
+      {!collapsed && (
+        <Suspense fallback={SPINNER}>
+          <AcknowledgementsCardBody cluster={cluster} numPages={numPages} />
+        </Suspense>
+      )}
     </CardCollapsible>
   )
 }

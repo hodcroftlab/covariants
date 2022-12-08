@@ -1,6 +1,7 @@
 import type { Mutation } from 'src/types'
 import { parseAminoacidMutation } from 'src/components/Common/parseAminoacidMutation'
 import { mapValues, sortBy } from 'lodash'
+import { useQuery } from '@tanstack/react-query'
 
 export interface MutationCountsDatum {
   mut: Mutation
@@ -51,4 +52,8 @@ export async function getMutationCounts(clusterBuildName: string): Promise<Mutat
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,unicorn/no-await-expression-member
   const data = (await import(`../../data/mutationCounts/${clusterBuildName}.json`)).default as MutationCountsJson
   return mapValues(data, (datum) => parseMutationCounts(datum))
+}
+
+export function useMutationCounts(clusterBuildName: string) {
+  return useQuery(['mutationCounts', clusterBuildName], async () => getMutationCounts(clusterBuildName))
 }

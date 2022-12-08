@@ -1,14 +1,13 @@
-import React, { useMemo } from 'react'
-
-import { useQuery } from 'react-query'
+import React, { Suspense, useMemo } from 'react'
 import { Row, Col, CardHeader, Card, CardBody } from 'reactstrap'
-import { LinkExternal } from 'src/components/Link/LinkExternal'
-
+import { ErrorBoundary as ErrorBoundaryBase } from 'react-error-boundary'
+import styled from 'styled-components'
 import type { ClusterDatum } from 'src/io/getClusters'
-import { getMutationCounts, MutationCountsDatum, MutationCountsGeneRecord } from 'src/io/getMutationCounts'
+import { LinkExternal } from 'src/components/Link/LinkExternal'
+import { MutationCountsDatum, MutationCountsGeneRecord, useMutationCounts } from 'src/io/getMutationCounts'
 import { AminoacidMutationBadge } from 'src/components/Common/MutationBadge'
 import { TableSlim } from 'src/components/Common/TableSlim'
-import styled from 'styled-components'
+import { SPINNER } from 'src/components/Loading/Loading'
 
 const MutationCountsSummaryCardBody = styled(CardBody)`
   padding: 1rem;
@@ -86,22 +85,14 @@ export function MutationCountsSummarySubTable({ record, title }: MutationCountsS
   )
 }
 
-export function useMutationCounts(clusterBuildName: string) {
-  return useQuery(['mutationCounts', clusterBuildName], async () => getMutationCounts(clusterBuildName), {
-    staleTime: Number.POSITIVE_INFINITY,
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: true,
-    refetchInterval: Number.POSITIVE_INFINITY,
-  })
+export interface MutationCountsSummaryCardBodyContentProps {
+  currentClusterBuildName: string
 }
 
-export interface MutationCountsSummaryProps {
-  currentCluster: ClusterDatum
-}
-
-export function MutationCountsSummaryCard({ currentCluster }: MutationCountsSummaryProps) {
-  const { data, isError, error, isLoading } = useMutationCounts(currentCluster.build_name)
+export function MutationCountsSummaryCardBodyContent({
+  currentClusterBuildName,
+}: MutationCountsSummaryCardBodyContentProps) {
+  const { data } = useMutationCounts(currentClusterBuildName)
 
   if (!data) {
     return null
@@ -109,6 +100,33 @@ export function MutationCountsSummaryCard({ currentCluster }: MutationCountsSumm
 
   const { S, others } = data
 
+  return (
+    <Row noGutters>
+      <Col className="d-flex mx-1 my-1 mb-auto">
+        <MutationCountsSummarySubTable title="Gene S" record={S} />
+      </Col>
+
+      <Col className="d-flex mx-1 my-1 mb-auto">
+        <MutationCountsSummarySubTable title="Other genes" record={others} />
+      </Col>
+    </Row>
+  )
+}
+
+function ErrorFallbackComponent({ error }: { error: unknown }) {
+  return (
+    <div className="mx-auto">
+      <div>{`Mutation counts are not yet available`}</div>
+      <div className="text-danger">{process.env.NODE_ENV === 'development' && formatError(error)}</div>
+    </div>
+  )
+}
+
+export interface MutationCountsSummaryProps {
+  currentCluster: ClusterDatum
+}
+
+export function MutationCountsSummaryCard({ currentCluster }: MutationCountsSummaryProps) {
   return (
     <Card>
       <CardHeader>
@@ -121,27 +139,11 @@ export function MutationCountsSummaryCard({ currentCluster }: MutationCountsSumm
       <MutationCountsSummaryCardBody>
         <Row noGutters>
           <Col>
-            <Row noGutters>
-              <Col className="d-flex mx-1 my-1 mb-auto">
-                <MutationCountsSummarySubTable title="Gene S" record={S} />
-              </Col>
-
-              <Col className="d-flex mx-1 my-1 mb-auto">
-                <MutationCountsSummarySubTable title="Other genes" record={others} />
-              </Col>
-            </Row>
-
-            <Row noGutters>
-              <Col>
-                {isLoading && <div className="mx-auto">{'Loading...'}</div>}
-                {isError && (
-                  <div className="mx-auto">
-                    <div>{`Mutation counts are not yet available`}</div>
-                    <div className="text-danger">{process.env.NODE_ENV === 'development' && formatError(error)}</div>
-                  </div>
-                )}
-              </Col>
-            </Row>
+            <ErrorBoundaryBase FallbackComponent={ErrorFallbackComponent}>
+              <Suspense fallback={SPINNER}>
+                <MutationCountsSummaryCardBodyContent currentClusterBuildName={currentCluster.build_name} />
+              </Suspense>
+            </ErrorBoundaryBase>
           </Col>
         </Row>
       </MutationCountsSummaryCardBody>
