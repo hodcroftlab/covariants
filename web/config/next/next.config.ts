@@ -128,7 +128,7 @@ const withFriendlyConsole = getWithFriendlyConsole({
   clearConsole: false,
   projectRoot: path.resolve(moduleRoot),
   packageName: pkg.name || 'web',
-  progressBarColor: '#6529ff',
+  progressBarColor: '#3a5f0b',
 })
 
 const withExtraWatch = getWithExtraWatch({
