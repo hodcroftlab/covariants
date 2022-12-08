@@ -5,7 +5,7 @@ import 'css.escape'
 
 import dynamic from 'next/dynamic'
 import React, { useCallback, useMemo } from 'react'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClient, QueryClientConfig, QueryClientProvider } from '@tanstack/react-query'
 import { MutableSnapshot, RecoilRoot } from 'recoil'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
@@ -27,8 +27,12 @@ import { loadPolyfills } from 'src/polyfills'
 
 import 'src/styles/global.scss'
 
+const REACT_QUERY_OPTIONS: QueryClientConfig = {
+  defaultOptions: { queries: { suspense: true, retry: 1 } },
+}
+
 function MyApp({ Component, pageProps, router }: AppProps) {
-  const queryClient = useMemo(() => new QueryClient(), [])
+  const queryClient = useMemo(() => new QueryClient(REACT_QUERY_OPTIONS), [])
 
   // NOTE: We do manual parsing here, because router.query is randomly empty on the first few renders.
   const { pathname, query } = useMemo(() => parseUrl(router.asPath), [router.asPath])
