@@ -43,10 +43,12 @@ const getWithTypeChecking =
           configOverwrite: {
             compilerOptions: {
               ...tsConfig.compilerOptions,
+              allowJs: false,
               skipLibCheck: true,
               sourceMap: false,
               inlineSourceMap: false,
               declarationMap: false,
+              tsBuildInfoFile: '.cache/.tsbuildinfo.webpackplugin',
             },
             include: [
               'lib/**/*.js',
