@@ -9,10 +9,6 @@ export async function setUrlQuery(query: ParsedUrlQuery) {
 
 export async function updateUrlQuery(newQuery: ParsedUrlQuery) {
   const { query: oldQuery } = parseUrl(Router.asPath)
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore: TS2589: Type instantiation is excessively deep and possibly infinite.
-  const query = merge(oldQuery, newQuery) as ParsedUrlQuery
-
+  const query = merge(oldQuery, newQuery)
   return setUrlQuery(query)
 }

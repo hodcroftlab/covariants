@@ -2,7 +2,7 @@ import React, { useMemo, useState, useCallback } from 'react'
 
 import Axios from 'axios'
 import { get } from 'lodash'
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import { AcknowledgementsError } from 'src/components/Acknowledgements/AcknowledgementsError'
 import styled from 'styled-components'
 import { Popover as PopoverBase, PopoverBody as PopoverBodyBase, PopoverHeader as PopoverHeaderBase } from 'reactstrap'

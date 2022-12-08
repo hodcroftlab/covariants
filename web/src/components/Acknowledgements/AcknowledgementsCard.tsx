@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useCallback, useMemo, useState } from 'react'
 
 import { Oval as OvalLoader } from 'react-loader-spinner'
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import PaginationComponent from 'react-reactstrap-pagination'
 import { CardBody } from 'reactstrap'
 import { AcknowledgementEpiIsl } from 'src/components/Acknowledgements/AcknowledgementEpiIsl'

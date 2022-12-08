@@ -5,9 +5,9 @@ import 'css.escape'
 
 import dynamic from 'next/dynamic'
 import React, { useCallback, useMemo } from 'react'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { MutableSnapshot, RecoilRoot } from 'recoil'
-import { ReactQueryDevtools } from 'react-query/devtools'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 import type { AppProps } from 'next/app'
 import { parseUrl } from 'src/helpers/parseUrl'
