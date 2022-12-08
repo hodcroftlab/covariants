@@ -4,7 +4,7 @@ import 'resize-observer-polyfill/dist/ResizeObserver.global'
 import 'css.escape'
 
 import dynamic from 'next/dynamic'
-import React, { useCallback, useMemo } from 'react'
+import React, { Suspense, useCallback, useMemo } from 'react'
 import { QueryClient, QueryClientConfig, QueryClientProvider } from '@tanstack/react-query'
 import { MutableSnapshot, RecoilRoot } from 'recoil'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -22,13 +22,26 @@ import { theme } from 'src/theme'
 import { DOMAIN_STRIPPED } from 'src/constants'
 import { Plausible } from 'src/components/Common/Plausible'
 import { SeoApp } from 'src/components/Common/SeoApp'
+import { LOADING } from 'src/components/Loading/Loading'
 import { getMdxComponents } from 'src/components/Common/MdxComponents'
+import { ErrorBoundary } from 'src/components/Error/ErrorBoundary'
 import { loadPolyfills } from 'src/polyfills'
 
 import 'src/styles/global.scss'
+import { Layout } from 'src/components/Layout/Layout'
 
 const REACT_QUERY_OPTIONS: QueryClientConfig = {
-  defaultOptions: { queries: { suspense: true, retry: 1 } },
+  defaultOptions: {
+    queries: {
+      suspense: true,
+      retry: 1,
+      staleTime: Number.POSITIVE_INFINITY,
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: true,
+      refetchInterval: Number.POSITIVE_INFINITY,
+    },
+  },
 }
 
 function MyApp({ Component, pageProps, router }: AppProps) {
@@ -85,18 +98,26 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   )
 
   return (
-    <RecoilRoot initializeState={initializeState}>
-      <ThemeProvider theme={theme}>
-        <MDXProvider components={getMdxComponents}>
-          <Plausible domain={DOMAIN_STRIPPED} />
-          <SeoApp />
-          <QueryClientProvider client={queryClient}>
-            <Component {...pageProps} />
-            <ReactQueryDevtools initialIsOpen={false} />
-          </QueryClientProvider>
-        </MDXProvider>
-      </ThemeProvider>
-    </RecoilRoot>
+    <Suspense fallback={LOADING}>
+      <ErrorBoundary>
+        <RecoilRoot initializeState={initializeState}>
+          <ThemeProvider theme={theme}>
+            <MDXProvider components={getMdxComponents}>
+              <Plausible domain={DOMAIN_STRIPPED} />
+              <SeoApp />
+              <QueryClientProvider client={queryClient}>
+                <Layout>
+                  <Suspense>
+                    <Component {...pageProps} />
+                  </Suspense>
+                </Layout>
+                <ReactQueryDevtools initialIsOpen={false} />
+              </QueryClientProvider>
+            </MDXProvider>
+          </ThemeProvider>
+        </RecoilRoot>
+      </ErrorBoundary>
+    </Suspense>
   )
 }
 

@@ -11,7 +11,6 @@ import type { ClusterDatum } from 'src/io/getClusters'
 import { getClusterContent } from 'src/io/getClusterContent'
 import { getClusterRedirects, getClusters } from 'src/io/getClusters'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
-import { Layout } from 'src/components/Layout/Layout'
 import { Editable } from 'src/components/Common/Editable'
 import { NarrowPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 import { DefiningMutations, hasDefiningMutations } from 'src/components/Variants/DefiningMutations'
@@ -81,15 +80,13 @@ export function VariantsPage({ clusterName: clusterNameUnsafe }: VariantsPagePro
   const currentCluster = useMemo(() => clusters.find((cluster) => cluster.build_name === clusterName), [clusterName])
 
   return (
-    <Layout>
-      <NarrowPageContainer>
-        <VariantTitle cluster={currentCluster} />
+    <NarrowPageContainer>
+      <VariantTitle cluster={currentCluster} />
 
-        <ClusterButtonPanelLayout currentCluster={currentCluster}>
-          {currentCluster && <VariantsPageContent currentCluster={currentCluster} />}
-        </ClusterButtonPanelLayout>
-      </NarrowPageContainer>
-    </Layout>
+      <ClusterButtonPanelLayout currentCluster={currentCluster}>
+        {currentCluster && <VariantsPageContent currentCluster={currentCluster} />}
+      </ClusterButtonPanelLayout>
+    </NarrowPageContainer>
   )
 }
 

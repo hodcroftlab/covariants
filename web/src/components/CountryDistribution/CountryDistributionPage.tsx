@@ -7,7 +7,6 @@ import { ColCustom } from 'src/components/Common/ColCustom'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
 import { RegionSwitcher } from 'src/components/CountryDistribution/RegionSwitcher'
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
-import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 import { getRegionPerCountryContent } from 'src/io/getRegionContent'
 
@@ -122,7 +121,7 @@ export function CountryDistributionPage() {
   }, [region])
 
   return (
-    <Layout wide>
+    <>
       <Row noGutters>
         <Col>
           <PageHeading>{'Overview of Variants in Countries'}</PageHeading>
@@ -188,6 +187,6 @@ export function CountryDistributionPage() {
           </Editable>
         </Col>
       </Row>
-    </Layout>
+    </>
   )
 }

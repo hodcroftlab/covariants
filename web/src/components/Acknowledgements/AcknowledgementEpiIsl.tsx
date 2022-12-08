@@ -1,12 +1,11 @@
-import React, { useMemo, useState, useCallback } from 'react'
-
-import Axios from 'axios'
+import React, { useMemo, useState, useCallback, Suspense, useRef, RefObject } from 'react'
 import { get } from 'lodash'
-import { useQuery } from '@tanstack/react-query'
-import { AcknowledgementsError } from 'src/components/Acknowledgements/AcknowledgementsError'
 import styled from 'styled-components'
+import { ErrorBoundary } from 'react-error-boundary'
 import { Popover as PopoverBase, PopoverBody as PopoverBodyBase, PopoverHeader as PopoverHeaderBase } from 'reactstrap'
-import { ThreeDots as ThreeDotsLoader } from 'react-loader-spinner'
+import { THREE_DOTS } from 'src/components/Loading/Loading'
+import { useAxiosQuery } from 'src/hooks/useAxiosQuery'
+import { formatError } from 'src/components/MutationCounts/MutationCountsSummaryCard'
 
 export const Popover = styled(PopoverBase)`
   .popover {
@@ -35,6 +34,7 @@ export const PopoverHeaderText = styled.span`
 
 export const EpiIslText = styled.span`
   text-decoration: #777 underline dashed;
+  cursor: pointer;
 `
 
 export interface AcknowledgementEpiIslDatum {
@@ -43,15 +43,15 @@ export interface AcknowledgementEpiIslDatum {
   authors: string
 }
 
-export function getEpiIslUrl(epiIsl: string) {
+export function getEpiIslUrl(epiIsl: string): string {
   const accessionIdComponents = epiIsl.split('_')
   if (accessionIdComponents.length < 3) {
-    return undefined
+    throw new Error(`Invalid EPI ISL: not enough components: ${epiIsl}`)
   }
 
   const id = accessionIdComponents[2]
   if (id.length < 4) {
-    return undefined
+    throw new Error(`Invalid EPI ISL: ID component is too short: ${epiIsl}`)
   }
 
   const first = id.slice(-4, -2) // 2 characters from the end, skipping the two last
@@ -75,73 +75,61 @@ export function validateEpiIslData(data: unknown): AcknowledgementEpiIslDatum {
 }
 
 export function useQueryAcknowledgementData(epiIsl: string) {
-  const url: string | undefined = useMemo(() => getEpiIslUrl(epiIsl), [epiIsl])
+  const url = useMemo(() => getEpiIslUrl(epiIsl), [epiIsl])
+  const data = useAxiosQuery(url)
+  return useMemo(() => validateEpiIslData(data), [data])
+}
 
-  return useQuery(
-    ['acknowledgement_data', epiIsl],
-    async () => {
-      if (!url) {
-        throw new Error(
-          `Unable to fetch acknowledgements data from GISAID: Unable to construct request URL: EPI ISL is incorrect: "${epiIsl}"`,
-        )
-      }
-      const res = await Axios.get(url)
-      if (!res.data) {
-        throw new Error(
-          `Unable to fetch acknowledgements data from GISAID: request to URL "${url}" resulted in no data`,
-        )
-      }
-      return validateEpiIslData(res.data)
-    },
-    {
-      staleTime: Number.POSITIVE_INFINITY,
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: true,
-      refetchInterval: Number.POSITIVE_INFINITY,
-    },
+export interface AcknowledgementEpiIslPopupBodyProps {
+  epiIsl: string
+}
+
+export function AcknowledgementEpiIslPopupBody({ epiIsl }: AcknowledgementEpiIslPopupBodyProps) {
+  const data = useQueryAcknowledgementData(epiIsl)
+  return (
+    <section>
+      <p>
+        <b>{'Originating lab: '}</b>
+        <span>{data.origLab}</span>
+      </p>
+      <p>
+        <b>{'Submitting lab: '}</b>
+        <span>{data.submLab}</span>
+      </p>
+      <p>
+        <b>{'Authors: '}</b>
+        <span>{data.authors}</span>
+      </p>
+    </section>
+  )
+}
+
+function ErrorFallbackComponent({ error }: { error: unknown }) {
+  return (
+    <div className="mx-auto">
+      <div>{`Unable to fetch acknowledgements: ${formatError(error)}`}</div>
+    </div>
   )
 }
 
 export interface AcknowledgementEpiIslPopupProps {
-  target: string
+  target: RefObject<Element>
   isOpen: boolean
   epiIsl: string
 }
 
 export function AcknowledgementEpiIslPopup({ target, isOpen, epiIsl }: AcknowledgementEpiIslPopupProps) {
-  const { isLoading, isFetching, isError, data, error } = useQueryAcknowledgementData(epiIsl)
-
   return (
     <Popover isOpen={isOpen} target={target} placement="auto">
       <PopoverHeader>
         <PopoverHeaderText>{`GISAID.org/${epiIsl}`}</PopoverHeaderText>
       </PopoverHeader>
       <PopoverBody>
-        {(isLoading || isFetching) && (
-          <div className="d-flex">
-            <div className="mx-auto">
-              <ThreeDotsLoader color="#777" height={100} width={50} />
-            </div>
-          </div>
-        )}
-        {isError && error && <AcknowledgementsError error={error} />}
-        {data && (
-          <section>
-            <p>
-              <b>{'Originating lab: '}</b>
-              <span>{data.origLab}</span>
-            </p>
-            <p>
-              <b>{'Submitting lab: '}</b>
-              <span>{data.submLab}</span>
-            </p>
-            <p>
-              <b>{'Authors: '}</b>
-              <span>{data.authors}</span>
-            </p>
-          </section>
-        )}
+        <ErrorBoundary FallbackComponent={ErrorFallbackComponent}>
+          <Suspense fallback={THREE_DOTS}>
+            <AcknowledgementEpiIslPopupBody epiIsl={epiIsl} />
+          </Suspense>
+        </ErrorBoundary>
       </PopoverBody>
     </Popover>
   )
@@ -158,14 +146,15 @@ export function AcknowledgementEpiIsl({ epiIsl }: AcknowledgementEpiIslProps) {
   // Example JSON URL: 'https://www.epicov.org/acknowledgement/49/39/EPI_ISL_1014939.json'
 
   const [popoverOpen, setPopoverOpen] = useState(false)
-  const id = useMemo(() => CSS.escape(epiIsl), [epiIsl])
   const handleMouseOver = useCallback(() => setPopoverOpen(true), [])
   const handleMouseLeave = useCallback(() => setPopoverOpen(false), [])
+
+  const ref = useRef(null)
 
   return (
     <span>
       <EpiIslText
-        id={id}
+        ref={ref}
         onMouseOver={handleMouseOver}
         onMouseLeave={handleMouseLeave}
         onFocus={handleMouseOver}
@@ -173,7 +162,7 @@ export function AcknowledgementEpiIsl({ epiIsl }: AcknowledgementEpiIslProps) {
       >
         {epiIsl}
       </EpiIslText>
-      {popoverOpen && <AcknowledgementEpiIslPopup target={id} epiIsl={epiIsl} isOpen={popoverOpen} />}
+      {popoverOpen && <AcknowledgementEpiIslPopup target={ref} epiIsl={epiIsl} isOpen={popoverOpen} />}
     </span>
   )
 }

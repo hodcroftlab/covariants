@@ -4,7 +4,6 @@ import { useRecoilState } from 'recoil'
 
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
 import { ColCustom } from 'src/components/Common/ColCustom'
-import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 
 import { getPerCountryCasesData, filterClusters, filterCountries } from 'src/io/getPerCountryCasesData'
@@ -94,7 +93,7 @@ export function CasesPage() {
   }, [setCountries])
 
   return (
-    <Layout wide>
+    <>
       <Row noGutters>
         <Col>
           <PageHeading>{'Estimated Cases by Variant'}</PageHeading>
@@ -150,6 +149,6 @@ export function CasesPage() {
           </Editable>
         </Col>
       </Row>
-    </Layout>
+    </>
   )
 }

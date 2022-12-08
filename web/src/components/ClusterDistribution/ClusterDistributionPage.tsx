@@ -29,7 +29,6 @@ import { stringToOption } from 'src/components/Common/DropdownOption'
 import { Editable, CenteredEditable } from 'src/components/Common/Editable'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
-import { Layout } from 'src/components/Layout/Layout'
 import { PageHeading } from 'src/components/Common/PageHeading'
 
 import PerClusterIntro from '../../../../content/PerClusterIntro.md'
@@ -183,7 +182,7 @@ export function ClusterDistributionPage() {
   }, [setCountries])
 
   return (
-    <Layout wide>
+    <>
       <Row noGutters>
         <Col>
           <PageHeading>{'Overview of Variants/Mutations'}</PageHeading>
@@ -253,6 +252,6 @@ export function ClusterDistributionPage() {
           </Editable>
         </Col>
       </Row>
-    </Layout>
+    </>
   )
 }
