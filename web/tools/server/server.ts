@@ -16,7 +16,6 @@ import path from 'path'
 import express from 'express'
 
 import allowMethods from 'allow-methods'
-// import history from 'connect-history-api-fallback'
 import expressStaticGzip from 'express-static-gzip'
 
 import { getenv } from '../../lib/getenv'

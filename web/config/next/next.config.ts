@@ -29,15 +29,11 @@ import withWebpackWatchPoll from './withWebpackWatchPoll'
 import withUrlAsset from './withUrlAsset'
 
 const {
-  // BABEL_ENV,
-  // NODE_ENV,
-  // ANALYZE,
-  PROFILE,
   PRODUCTION,
+  PROFILE,
   ENABLE_SOURCE_MAPS,
   ENABLE_ESLINT,
   ENABLE_TYPE_CHECKS,
-  // ENABLE_STYLELINT,
   DOMAIN,
   DOMAIN_STRIPPED,
   WATCH_POLL,
@@ -98,7 +94,7 @@ const withMDX = getWithMDX({
   options: {
     remarkPlugins: [
       // prettier-ignore
-      require('remark-breaks'),
+      require("remark-breaks"),
       require('remark-images'),
       require('remark-math'),
       require('remark-slug'),
