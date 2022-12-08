@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React, { useMemo } from 'react'
 
 import { get } from 'lodash'
@@ -8,7 +7,6 @@ import styled from 'styled-components'
 import type { Mutation, MutationColors } from 'src/types'
 import { theme } from 'src/theme'
 import { AMINOACID_COLORS, CLADE_COLORS, GENE_COLORS, NUCLEOTIDE_COLORS } from 'src/colors'
-import { getClusterNames, getClusters } from 'src/io/getClusters'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
 import { parseAminoacidMutation } from 'src/components/Common/parseAminoacidMutation'
 import { parseNucleotideMutation } from 'src/components/Common/parseNucleotideMutation'
@@ -16,9 +14,7 @@ import { formatMutation } from 'src/components/Common/formatMutation'
 import { AMINOACID_NAMES, GENE_NAMES, GREEK_ALPHABET, NUCELOTIDE_NAMES } from 'src/names'
 import { colorHash } from 'src/helpers/colorHash'
 import { rainbow } from 'src/helpers/colorRainbow'
-
-const clusters = getClusters()
-const clusterNames = getClusterNames()
+import { useClusterNames, useClusterUrl } from 'src/io/getClusters'
 
 const DEFAULT_COLOR = theme.gray700
 const DEFAULT_TEXT_COLOR = theme.gray100
@@ -61,10 +57,6 @@ export const LetterText = styled.span`
 
 export const WhoText = styled.span<{ $color: string }>`
   padding: 1px 5px;
-  background-color: ${(props) => props.$color};
-`
-
-export const ColoredComponent = styled.span<{ $color: string }>`
   background-color: ${(props) => props.$color};
 `
 
@@ -113,23 +105,6 @@ export function aminoacidMutationFromStringMaybe(mutation: Mutation | string): M
     return parseAminoacidMutation(mutation)
   }
   return mutation
-}
-
-export function formatMutationMaybe(mutation: Mutation | string) {
-  if (typeof mutation === 'string') {
-    return mutation
-  }
-  return formatMutation(mutation)
-}
-
-export function formatVariantUrl(mutation: string) {
-  const cluster = clusters.find(({ display_name }) => display_name === mutation)
-  if (!cluster) {
-    console.warn(`Variant not recognized: ${mutation}. Known variants: ${clusterNames.join(', ')}`)
-    return undefined
-  }
-
-  return `/variants/${cluster.build_name}`
 }
 
 export interface MutationBadgeProps {
@@ -266,8 +241,10 @@ export interface VariantLinkBadgeProps {
 }
 
 export function VariantLinkBadge({ name, href, prefix }: VariantLinkBadgeProps) {
+  const clusterNames = useClusterNames()
   const { mutationObj, mutationStr } = useMemo(() => variantToObjectAndString(name), [name])
-  const url = useMemo(() => href ?? formatVariantUrl(mutationStr), [href, mutationStr])
+  const clusterUrl = useClusterUrl(mutationStr)
+  const url = useMemo(() => href ?? clusterUrl, [clusterUrl, href])
 
   if (!mutationObj) {
     return <span className="text-danger">{`VariantLinkBadge: Invalid mutation: ${JSON.stringify(name)}`}</span>
@@ -279,7 +256,7 @@ export function VariantLinkBadge({ name, href, prefix }: VariantLinkBadgeProps) 
         {
           // prettier-ignore
           `VariantLinkBadge: Variant not recognized: ${JSON.stringify(name)}.` +
-        `Known variants: ${clusterNames.join(', ')}`
+          `Known variants: ${clusterNames.join(", ")}`
         }
       </span>
     )
@@ -302,7 +279,7 @@ export interface LineageLinkBadgeProps {
 export function LineageLinkBadge({ name, href, prefix, report }: LineageLinkBadgeProps) {
   const url = useMemo(
     // prettier-ignore
-    () => (href ?? (report ? `https://cov-lineages.org/global_report_${name}.html` : '')),
+    () => (href ?? (report ? `https://cov-lineages.org/global_report_${name}.html` : "")),
     [href, report, name],
   )
   const tooltip = useMemo(() => `Pango Lineage ${name}`, [name])

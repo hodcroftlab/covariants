@@ -41,6 +41,20 @@ export function useClusters() {
   return clusters.filter((cluster) => !cluster.has_no_page)
 }
 
+export function useClusterNames() {
+  const clusters = useClusters()
+  return clusters.map((cluster) => cluster.display_name)
+}
+
+export function useClusterUrl(displayName: string) {
+  const clusters = useClusters()
+  const cluster = clusters.find(({ display_name }) => display_name === displayName)
+  if (!cluster) {
+    return undefined
+  }
+  return `/variants/${cluster.build_name}`
+}
+
 /** ---------------- Functions below this line should be removed --------- */
 
 export function getClusters(): ClusterDatum[] {
