@@ -19,6 +19,7 @@ jobs:
 
     environment:
       PROD_ENABLE_TYPE_CHECKS: 0
+      AWS_MAX_ATTEMPTS: 10
 
     steps:
       - git-shallow-clone/checkout:
