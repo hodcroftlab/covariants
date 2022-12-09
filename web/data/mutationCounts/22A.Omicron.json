@@ -1,18 +1,18 @@
 {
   "S": {
-    "total": 147599,
+    "total": 148165,
     "counts": [
       {
         "mut": "S:N658S",
-        "count": 68885
+        "count": 69341
       },
       {
         "mut": "S:V3G",
-        "count": 55189
+        "count": 55265
       },
       {
         "mut": "S:R346T",
-        "count": 46618
+        "count": 47098
       },
       {
         "mut": "S:I670V",
@@ -20,72 +20,72 @@
       },
       {
         "mut": "S:R346S",
-        "count": 1515
+        "count": 1524
+      },
+      {
+        "mut": "S:L5F",
+        "count": 996
       },
       {
         "mut": "S:Q1201L",
         "count": 993
       },
       {
-        "mut": "S:L5F",
-        "count": 990
+        "mut": "S:Y144-",
+        "count": 968
       },
       {
         "mut": "S:G181E",
-        "count": 954
-      },
-      {
-        "mut": "S:Y144-",
-        "count": 950
+        "count": 955
       },
       {
         "mut": "S:A701V",
-        "count": 875
+        "count": 876
       }
     ]
   },
   "others": {
-    "total": 147599,
+    "total": 148165,
     "counts": [
       {
         "mut": "M:D3N",
-        "count": 8567
+        "count": 8596
       },
       {
         "mut": "ORF1a:Q556K",
-        "count": 7773
+        "count": 7793
       },
       {
         "mut": "N:E136D",
-        "count": 7695
+        "count": 7714
       },
       {
         "mut": "ORF1b:Y1247C",
-        "count": 7544
+        "count": 7560
       },
       {
         "mut": "ORF3a:L106F",
-        "count": 6585
+        "count": 6590
       },
       {
         "mut": "ORF1a:M2259I",
-        "count": 5180
+        "count": 5247
       },
       {
         "mut": "ORF1a:H1636Q",
-        "count": 3987
+        "count": 3989
       },
       {
         "mut": "ORF1a:M85-",
-        "count": 3728
+        "count": 3755
       },
       {
         "mut": "ORF1a:V84-",
-        "count": 3626
+        "count": 3654
       },
       {
         "mut": "ORF9b:N36S",
-        "count": 3481
+        "count": 3519
       }
     ]
   }
