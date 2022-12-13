@@ -1,16 +1,13 @@
 import React from 'react'
 
-import { Col, Row } from 'reactstrap'
+import { Col, Container, Row } from 'reactstrap'
 import { ClusterButtonPanelLayout } from 'src/components/ClusterButtonPanel/ClusterButtonPanelLayout'
-
-import { NarrowPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 import { Editable } from 'src/components/Common/Editable'
-
 import HomeContent from '../../../../content/Home.md'
 
 export function HomePage() {
   return (
-    <NarrowPageContainer>
+    <Container>
       <Row noGutters>
         <Col>
           <h1 className="display-4 mb-4 text-center">CoVariants</h1>
@@ -26,6 +23,6 @@ export function HomePage() {
           </ClusterButtonPanelLayout>
         </Col>
       </Row>
-    </NarrowPageContainer>
+    </Container>
   )
 }

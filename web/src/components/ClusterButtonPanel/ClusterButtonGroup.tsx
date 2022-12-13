@@ -2,7 +2,6 @@ import React, { useMemo, useState } from 'react'
 
 import styled from 'styled-components'
 import { Button } from 'reactstrap'
-
 import type { ClusterDatum } from 'src/io/getClusters'
 import { ClusterButton } from 'src/components/ClusterButtonPanel/ClusterButton'
 

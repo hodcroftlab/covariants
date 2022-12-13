@@ -1,17 +1,8 @@
 /* eslint-disable camelcase */
-import { notUndefinedOrNull } from 'src/helpers/notUndefined'
-
-import type { Mutation } from 'src/types'
-import type { Cluster } from 'src/state/Clusters'
-import { theme } from 'src/theme'
-
-import { useAxiosQuery } from 'src/hooks/useAxiosQuery'
 import urljoin from 'url-join'
+import type { Mutation } from 'src/types'
+import { useAxiosQuery } from 'src/hooks/useAxiosQuery'
 import { getDataRootUrl } from 'src/io/getDataRootUrl'
-
-import clustersJson from 'src/../data/clusters.json'
-
-export const CLUSTER_NAME_OTHERS = 'others' as const
 
 export interface AquariaDatum {
   gene: string
@@ -53,54 +44,4 @@ export function useClusterUrl(displayName: string) {
     return undefined
   }
   return `/variants/${cluster.build_name}`
-}
-
-/** ---------------- Functions below this line should be removed --------- */
-
-export function getClusters(): ClusterDatum[] {
-  return clustersJson.clusters
-}
-
-export function getClusterNames() {
-  return getClusters().map((cluster) => cluster.display_name)
-}
-
-export function getClusterRedirects(): Map<string, string> {
-  return getClusters().reduce((result, cluster) => {
-    if (cluster.old_build_names) {
-      cluster.old_build_names.forEach((oldName) => result.set(oldName, cluster.build_name))
-    }
-    return result
-  }, new Map<string, string>())
-}
-
-export function getClusterBuildNames() {
-  return getClusters().map((cluster) => cluster.build_name)
-}
-
-export function getClusterOldBuildNames() {
-  return getClusters()
-    .flatMap((cluster) => cluster.old_build_names)
-    .filter(notUndefinedOrNull)
-}
-
-export function getClusterColor(clusterName: string) {
-  if (clusterName === CLUSTER_NAME_OTHERS) {
-    return theme.clusters.color.others
-  }
-
-  const clusters = getClusters()
-  const found = clusters.find(({ display_name }) => display_name === clusterName)
-  return found ? found.col : theme.clusters.color.unknown
-}
-
-export function sortClusters(clusters: Cluster[]): Cluster[] {
-  const clusterNames = getClusterNames()
-  return clusterNames.reduce((result, name) => {
-    const cluster = clusters.find((cluster) => cluster.cluster === name)
-    if (cluster) {
-      result.push(cluster)
-    }
-    return result
-  }, [] as Cluster[])
 }
