@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react'
-
 import styled from 'styled-components'
 import { Button } from 'reactstrap'
 import type { ClusterDatum } from 'src/io/getClusters'
@@ -8,21 +7,16 @@ import { ClusterButton } from 'src/components/ClusterButtonPanel/ClusterButton'
 const ClusterGroupContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 0 1rem;
+  width: 100%;
 `
 
 const ClusterGroupWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  flex: 1 1;
+  flex: 0;
 `
 
-const ClusterGroup = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex: 1 0;
-  margin: auto;
-  justify-content: center;
-`
+const ClusterGroup = styled.div``
 
 const ShowMoreButton = styled(Button)`
   margin: 0 auto;
@@ -45,7 +39,7 @@ export function ClusterButtonOptional({ cluster, isCurrent, showNonImportant }: 
     return null
   }
 
-  return <ClusterButton key={cluster.display_name} cluster={cluster} isCurrent={isCurrent} />
+  return <ClusterButton key={cluster.display_name} cluster={cluster} />
 }
 
 export interface ClusterButtonGroupProps {
@@ -55,7 +49,7 @@ export interface ClusterButtonGroupProps {
 
 export function ClusterButtonGroup({ clusterGroup, currentCluster }: ClusterButtonGroupProps) {
   const [showNonImportant, setShowNonImportant] = useState(false)
-  const toggleShowNonImportant = useMemo(() => (_: unknown) => setShowNonImportant(!showNonImportant), [showNonImportant]) // prettier-ignore
+  const toggleShowNonImportant = useMemo(() => (_: unknown) => setShowNonImportant(!showNonImportant), [showNonImportant]); // prettier-ignore
 
   return (
     <ClusterGroupContainer>

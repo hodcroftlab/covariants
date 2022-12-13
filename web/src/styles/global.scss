@@ -23,32 +23,21 @@
 }
 
 html,
-body {
+body,
+#__next {
   height: 100%;
+  width: 100%;
   margin: 0;
-}
-
-html {
-  overflow-y: auto;
+  padding: 0;
 }
 
 body {
   background-color: $body-bg;
-}
-
-#__next {
-  height: 100%;
 }
 
 .container,
 .container-fluid {
   padding: 0;
-}
-
-.main-container {
-  height: 100%;
-  background-color: $body-bg;
-  min-width: 320px;
 }
 
 .bi.bi-link-45deg.mdx-link-icon {

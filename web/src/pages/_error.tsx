@@ -1,30 +1,10 @@
 import React, { useMemo } from 'react'
 import type { NextPageContext } from 'next'
 import styled from 'styled-components'
-import { Button, Col, Container as ContainerBase, Row } from 'reactstrap'
-
+import { Button, Col, Row } from 'reactstrap'
 import { ErrorContent } from 'src/components/Error/ErrorContent'
 import { ErrorContentExplanation } from 'src/components/Error/ErrorContentExplanation'
 import { useReloadPage } from 'src/hooks/useReloadPage'
-
-export const Container = styled(ContainerBase)`
-  max-height: 100vh;
-  height: 100%;
-  max-width: ${(props) => props.theme.xl};
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-
-  @media (max-width: 991.98px) {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  @media (max-width: 767.98px) {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-`
 
 export const MainContent = styled.main`
   margin: 0 auto;

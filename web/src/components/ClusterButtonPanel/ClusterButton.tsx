@@ -1,92 +1,47 @@
 /* eslint-disable camelcase */
-import React from 'react'
+import React, { useCallback, useMemo } from 'react'
+import { isEqual } from 'lodash'
+import { useRecoilState } from 'recoil'
 import styled from 'styled-components'
 import type { ClusterDatum } from 'src/io/getClusters'
-import { Link } from 'src/components/Link/Link'
+import { currentClusterAtom } from 'src/state/Clusters'
+import { VariantLinkBadge as VariantLinkBadgeBase } from 'src/components/Common/MutationBadge'
 
-const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: string }>`
-  display: flex;
-  width: 200px;
-  height: 55px;
-  margin: 3px;
+const VariantLinkBadge = styled(VariantLinkBadgeBase)<{ $isCurrent: boolean }>`
+  @media (min-width: ${(props) => props.theme.grid.md}) {
+    display: block;
+  }
 
-  border: none;
-  border-left: 30px solid ${(props) => props.$color};
-  border-radius: 3px;
-  cursor: pointer;
+  transform: scale(1.2);
+  margin-bottom: 0.5rem;
 
-  box-shadow: ${({ $isCurrent, theme }) => ($isCurrent ? theme.shadows.normal : theme.shadows.light)};
-  background-color: ${({ $isCurrent, theme }) => ($isCurrent ? theme.white : theme.gray100)};
-  text-decoration: none;
+  opacity: ${(props) => !props.$isCurrent && 0.75};
 
-  &:active,
-  &:focus,
+  & > span {
+    border-radius: 4px;
+    border: ${(props) => (props.$isCurrent ? props.theme.green : 'transparent')} solid 1px;
+  }
+
   &:hover {
-    text-decoration: none;
-  }
-
-  @media (min-width: 992px) {
-  }
-
-  @media (max-width: 991.98px) {
-    width: 180px;
-    height: 45px;
-  }
-
-  @media (max-width: 767.98px) {
-    width: 160px;
-    height: 40px;
-  }
-
-  @media (max-width: 575.98px) {
-    width: 150px;
-    height: 32px;
-  }
-`
-
-const ClusterTitle = styled.h2<{ $isCurrent: boolean }>`
-  font-family: ${(props) => props.theme.font.monospace};
-  font-size: 1rem;
-
-  @media (max-width: 991.98px) {
-    font-size: 0.8rem;
-    margin: auto 7px;
-  }
-
-  @media (max-width: 767.98px) {
-    font-size: 0.75rem;
-    margin: auto 5px;
-  }
-
-  @media (max-width: 575.98px) {
-    font-size: 0.7rem;
-    margin: auto 4px;
-  }
-
-  margin: auto 5px;
-
-  color: ${({ $isCurrent, theme }) => ($isCurrent ? theme.gray700 : theme.gray600)};
-  text-decoration: none;
-
-  &:active,
-  &:focus,
-  &:hover {
-    color: ${(props) => props.theme.gray700};
-    text-decoration: none;
+    opacity: 1;
   }
 `
 
 export interface ClusterButtonProps {
   cluster: ClusterDatum
-  isCurrent: boolean
 }
 
-export function ClusterButton({ cluster, isCurrent }: ClusterButtonProps) {
-  const { display_name, col, build_name } = cluster
+export function ClusterButton({ cluster }: ClusterButtonProps) {
+  const { display_name } = cluster
+  const [currentCluster, setCurrentCluster] = useRecoilState(currentClusterAtom)
 
-  return (
-    <ClusterButtonComponent href={`/variants/${build_name}`} $isCurrent={isCurrent} $color={col}>
-      <ClusterTitle $isCurrent={isCurrent}>{display_name}</ClusterTitle>
-    </ClusterButtonComponent>
-  )
+  const isCurrent = useMemo(() => {
+    return isEqual(cluster, currentCluster)
+  }, [cluster, currentCluster])
+
+  const onClick = useCallback(() => {
+    setCurrentCluster(cluster)
+  }, [cluster, setCurrentCluster])
+
+  return <VariantLinkBadge name={display_name} $isCurrent={isCurrent} onClick={onClick} />
 }

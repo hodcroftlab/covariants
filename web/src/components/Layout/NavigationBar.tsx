@@ -1,34 +1,29 @@
 import { useRouter } from 'next/router'
-import React, { useCallback, useState } from 'react'
+import React from 'react'
 
 import styled from 'styled-components'
-import {
-  Collapse,
-  Nav as NavBase,
-  Navbar as NavbarBase,
-  NavbarToggler as NavbarTogglerBase,
-  NavItem as NavItemBase,
-  NavLink as NavLinkBase,
-} from 'reactstrap'
+import { Nav as NavBase, Navbar as NavbarBase, NavItem as NavItemBase, NavLink as NavLinkBase } from 'reactstrap'
 import classNames from 'classnames'
 import { FaGithub, FaTwitter } from 'react-icons/fa'
-
-import BrandLogoBase from 'src/assets/images/logo.svg'
-import BrandLogoLargeBase from 'src/assets/images/logo_text_right.svg'
-
 import { Link } from 'src/components/Link/Link'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { TWITTER_USERNAME_RAW, URL_GITHUB } from 'src/constants'
+import { PoweredByGisaid } from 'src/components/Layout/PoweredByGisaid'
+import BrandLogoBase from 'src/assets/images/logo.svg'
+import BrandLogoLargeBase from 'src/assets/images/logo_text_right.svg'
 
 let navLinksLeft: Record<string, string> = {
   '/': 'Home',
-  '/faq': 'FAQ',
-  '/variants': 'Variants',
-  '/per-country': 'Per country',
-  '/per-variant': 'Per variant',
+  '/per-country': 'Countries',
+  '/per-variant': 'Variants',
   '/cases': 'Cases',
-  '/shared-mutations': 'Shared Mutations',
-  '/acknowledgements': 'Acknowledgements',
+  '/shared-mutations': 'Mutations',
+  '/credits': 'Credits',
+  '/faq': 'FAQ',
+}
+
+if (process.env.NODE_ENV === 'development' || process.env.DOMAIN?.includes('vercel')) {
+  navLinksLeft = { ...navLinksLeft, '/debug': 'Debug' }
 }
 
 export function matchingUrl(url: string, pathname: string): boolean {
@@ -58,18 +53,15 @@ const navLinksRight = [
   },
 ]
 
-if (process.env.NODE_ENV === 'development' || process.env.DOMAIN?.includes('vercel')) {
-  navLinksLeft = { ...navLinksLeft, '/debug-badges': 'Debug badges' }
-}
-
 export const Navbar = styled(NavbarBase)`
-  box-shadow: none;
+  min-height: 50px;
+  box-shadow: 0 2px 10px 2px #222f;
+  background: rgb(18, 42, 113);
+  background: linear-gradient(0deg, rgba(18, 42, 113, 1) 0%, rgb(79, 11, 136) 100%);
 `
 
 export const Nav = styled(NavBase)`
-  & .nav-link {
-    padding: 5px;
-  }
+  background-color: transparent !important;
 `
 
 export const NavWrappable = styled(NavBase)`
@@ -77,20 +69,12 @@ export const NavWrappable = styled(NavBase)`
 
   scrollbar-width: none;
   -ms-overflow-style: none;
+
   &::-webkit-scrollbar {
     display: none;
   }
 
   width: 100%;
-
-  background-image: linear-gradient(to right, white, white), linear-gradient(to right, white, white),
-    linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)),
-    linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
-  background-position: left center, right center, left center, right center;
-  background-repeat: no-repeat;
-  background-color: white;
-  background-size: 20px 100%, 20px 100%, 10px 100%, 10px 100%;
-  background-attachment: local, local, scroll, scroll;
 
   & .nav-link {
     padding: 5px;
@@ -103,13 +87,19 @@ export const NavItem = styled(NavItemBase)`
   flex-grow: 0;
   flex-shrink: 0;
 
+  font-weight: bold;
+
   &.active {
-    background-color: #6bb24e;
-    border-radius: 5px;
+  }
+
+  & > .nav-link {
+    padding: 5px;
+    color: #ddda !important;
   }
 
   &.active > .nav-link {
-    color: white !important;
+    color: #fff !important;
+    text-decoration: #fffa solid underline 3px;
   }
 
   @media (max-width: 991.98px) {
@@ -121,64 +111,85 @@ export const NavLink = styled(NavLinkBase)`
   margin: 0 auto;
 `
 
-export const LinkRight = styled(LinkExternal)``
+const navButtonRightSize = 37
 
-export const NavbarToggler = styled(NavbarTogglerBase)`
-  border: none;
+export const NavLinkRight = styled(NavLinkBase)`
+  background-color: #fffb;
+  width: ${navButtonRightSize}px;
+  height: ${navButtonRightSize}px;
+  border-radius: ${navButtonRightSize}px;
+  margin: 0 0.25rem;
+  padding: 5px;
 `
 
-export const BrandLogo = styled(BrandLogoBase)`
+export const LinkRight = styled(LinkExternal)``
+
+export const BrandLogoSmall = styled(BrandLogoBase)`
   height: 40px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 4px;
+  margin: auto;
 `
 
 export const BrandLogoLarge = styled(BrandLogoLargeBase)`
   height: 40px;
-  margin: 7px 10px 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+`
+
+const BrandWrapper = styled.div`
+  margin-right: 2rem;
+  margin-left: 1rem;
+`
+
+const BrandRowUpper = styled.div``
+
+const BrandRowLower = styled.div`
+  position: relative;
+  top: -12px;
+  left: 50px;
 `
 
 export function NavigationBar() {
   const { pathname } = useRouter()
-  const [isOpen, setIsOpen] = useState(false)
-  const toggle = useCallback(() => setIsOpen(!isOpen), [isOpen])
 
   return (
-    <Navbar expand="md" color="light" light role="navigation">
-      <Link href="/">
-        <BrandLogoLarge className="d-none d-lg-block" />
-        <BrandLogo className="d-block d-lg-none" />
-      </Link>
+    <Navbar expand="xs" role="navigation">
+      <BrandWrapper>
+        <BrandRowUpper>
+          <Link href="/">
+            <BrandLogoLarge className="d-none d-lg-block" />
+            <BrandLogoSmall className="d-block d-lg-none" />
+          </Link>
+          <BrandRowLower className="d-none d-lg-block">
+            <PoweredByGisaid />
+          </BrandRowLower>
+        </BrandRowUpper>
+      </BrandWrapper>
 
-      <NavbarToggler onClick={toggle} />
-
-      <Collapse isOpen={isOpen} navbar>
-        <NavWrappable navbar>
-          {Object.entries(navLinksLeft).map(([url, text]) => {
-            return (
-              <NavItem key={url} className={classNames(matchingUrl(url, pathname) && 'active')}>
-                <NavLink tag={Link} href={url}>
-                  {text}
-                </NavLink>
-              </NavItem>
-            )
-          })}
-        </NavWrappable>
-
-        <Nav className="ml-auto" navbar>
-          {navLinksRight.map(({ text, title, url, alt, icon }) => (
-            <NavItem key={title}>
-              <NavLink tag={LinkRight} title={title} href={url} alt={alt} icon={null}>
-                <span>
-                  <span className="mr-2">{icon}</span>
-                  <span className="d-inline d-sm-none">{text}</span>
-                </span>
+      <NavWrappable navbar>
+        {Object.entries(navLinksLeft).map(([url, text]) => {
+          return (
+            <NavItem key={url} className={classNames(matchingUrl(url, pathname) && 'active')}>
+              <NavLink tag={Link} href={url}>
+                {text}
               </NavLink>
             </NavItem>
-          ))}
-        </Nav>
-      </Collapse>
+          )
+        })}
+      </NavWrappable>
+
+      <Nav className="ml-auto" navbar>
+        {navLinksRight.map(({ text, title, url, alt, icon }) => (
+          <NavItem key={title}>
+            <NavLinkRight tag={LinkRight} title={title} href={url} alt={alt} icon={null}>
+              <span>
+                <span className="mr-2">{icon}</span>
+                <span className="d-inline d-sm-none">{text}</span>
+              </span>
+            </NavLinkRight>
+          </NavItem>
+        ))}
+      </Nav>
     </Navbar>
   )
 }

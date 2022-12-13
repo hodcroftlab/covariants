@@ -1,7 +1,7 @@
 import { groupBy, isNil } from 'lodash'
 import React, { useMemo } from 'react'
-import { Card, CardBody, CardHeader, Row } from 'reactstrap'
 import styled from 'styled-components'
+import { Card, CardBody, CardHeader, Row } from 'reactstrap'
 import { ClusterDatum, useClusters } from 'src/io/getClusters'
 import { ClusterButtonGroup } from 'src/components/ClusterButtonPanel/ClusterButtonGroup'
 
@@ -17,6 +17,7 @@ const ClusterGroupCard = styled(Card)`
   border: 0;
   box-shadow: none;
   margin-bottom: 0.5rem;
+  background: none;
 `
 
 const ClusterGroupHeader = styled(CardHeader)`
@@ -24,7 +25,7 @@ const ClusterGroupHeader = styled(CardHeader)`
   text-align: center;
   width: 100%;
   background: none;
-  color: ${(props) => props.theme.gray700};
+  color: ${(props) => props.theme.gray200};
   font-size: 1.1rem;
   font-weight: 700;
   text-transform: capitalize;
@@ -44,23 +45,18 @@ export interface ClusterPanelProps {
 export function ClusterButtonPanel({ currentCluster, className }: ClusterPanelProps) {
   const clusters = useClusters()
 
-  const clustersGrouped = useMemo(() => {
+  const clusterButtons = useMemo(() => {
     const clustersWithType = clusters.filter((cluster) => !isNil(cluster.type))
-    return groupBy(clustersWithType, 'type')
-  }, [clusters])
-
-  const clusterButtons = useMemo(
-    () =>
-      Object.entries(clustersGrouped).map(([clusterType, clusterGroup]) => (
-        <ClusterGroupCard key={clusterType}>
-          <ClusterGroupHeader>{clusterType}</ClusterGroupHeader>
-          <ClusterGroupBody>
-            <ClusterButtonGroup clusterGroup={clusterGroup} currentCluster={currentCluster} />
-          </ClusterGroupBody>
-        </ClusterGroupCard>
-      )),
-    [clustersGrouped, currentCluster],
-  )
+    const clustersGrouped = groupBy(clustersWithType, 'type')
+    return Object.entries(clustersGrouped).map(([clusterType, clusterGroup]) => (
+      <ClusterGroupCard key={clusterType}>
+        <ClusterGroupHeader>{clusterType}</ClusterGroupHeader>
+        <ClusterGroupBody>
+          <ClusterButtonGroup clusterGroup={clusterGroup} currentCluster={currentCluster} />
+        </ClusterGroupBody>
+      </ClusterGroupCard>
+    ))
+  }, [clusters, currentCluster])
 
   return (
     <ClustersRow noGutters className={className}>

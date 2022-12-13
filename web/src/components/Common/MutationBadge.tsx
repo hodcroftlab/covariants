@@ -1,13 +1,11 @@
 import React, { useMemo } from 'react'
-
 import { get } from 'lodash'
 import { parseVariant } from 'src/components/Common/parseVariant'
 import styled from 'styled-components'
-
 import type { Mutation, MutationColors } from 'src/types'
 import { theme } from 'src/theme'
 import { AMINOACID_COLORS, CLADE_COLORS, GENE_COLORS, NUCLEOTIDE_COLORS } from 'src/colors'
-import { LinkSmart } from 'src/components/Link/LinkSmart'
+import { LinkSmart, LinkSmartProps } from 'src/components/Link/LinkSmart'
 import { parseAminoacidMutation } from 'src/components/Common/parseAminoacidMutation'
 import { parseNucleotideMutation } from 'src/components/Common/parseNucleotideMutation'
 import { formatMutation } from 'src/components/Common/formatMutation'
@@ -234,17 +232,16 @@ export function variantToObjectAndString(mutation: Mutation | string) {
   return { mutationObj, mutationStr }
 }
 
-export interface VariantLinkBadgeProps {
+export interface VariantLinkBadgeProps extends LinkSmartProps {
   name: Mutation | string
-  href?: string
   prefix?: string
 }
 
-export function VariantLinkBadge({ name, href, prefix }: VariantLinkBadgeProps) {
+export function VariantLinkBadge({ name, href, prefix, ...restProps }: VariantLinkBadgeProps) {
   const clusterNames = useClusterNames()
   const { mutationObj, mutationStr } = useMemo(() => variantToObjectAndString(name), [name])
   const clusterUrl = useClusterUrl(mutationStr)
-  const url = useMemo(() => href ?? clusterUrl, [clusterUrl, href])
+  const url = useMemo(() => href?.toString() ?? clusterUrl, [clusterUrl, href])
 
   if (!mutationObj) {
     return <span className="text-danger">{`VariantLinkBadge: Invalid mutation: ${JSON.stringify(name)}`}</span>
@@ -263,7 +260,7 @@ export function VariantLinkBadge({ name, href, prefix }: VariantLinkBadgeProps) 
   }
 
   return (
-    <LinkUnstyled href={url} icon={null}>
+    <LinkUnstyled href={url} icon={null} {...restProps}>
       <MutationBadge prefix={prefix} mutation={mutationObj} colors={AMINOACID_COLORS} />
     </LinkUnstyled>
   )

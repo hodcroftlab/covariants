@@ -1,6 +1,6 @@
 import { rgba } from 'polished'
 
-const gridBreakpoints = {
+const grid = {
   xs: '0',
   sm: '576px',
   md: '768px',
@@ -9,7 +9,7 @@ const gridBreakpoints = {
   xxl: '2000px',
 }
 
-const containerMaxWidths = {
+const containerWidth = {
   sm: '540px',
   md: '720px',
   lg: '960px',
@@ -172,11 +172,13 @@ export const clusters = {
 }
 
 export const theme = {
+  bodyColor: basicColors.gray700,
+  bodyBg: basicColors.white,
   ...basicColors,
   ...themeColors,
-  ...gridBreakpoints,
+  grid,
+  containerWidth,
   link,
-  containerMaxWidths,
   font,
   shadows,
   plot,

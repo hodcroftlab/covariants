@@ -6,7 +6,7 @@ import isAbsoluteUrl from 'is-absolute-url'
 import { Link, LinkProps } from './Link'
 import { LinkExternal, LinkExternalProps } from './LinkExternal'
 
-export interface LinkSmartProps extends StrictOmit<LinkProps, 'href'> {
+export interface LinkSmartProps extends StrictOmit<LinkProps, 'href' | 'as'> {
   href?: string
 }
 
