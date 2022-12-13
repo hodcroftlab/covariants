@@ -82,7 +82,7 @@ module.exports = {
     '@typescript-eslint/unbound-method': ['off'],
     'array-func/no-unnecessary-this-arg': 'off',
     'array-func/prefer-array-from': 'off',
-    'camelcase': 'warn',
+    'camelcase': 'off',
     'cflint/no-substr': 'warn',
     'cflint/no-this-assignment': 'warn',
     'import/extensions': [

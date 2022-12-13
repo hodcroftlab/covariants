@@ -12,6 +12,8 @@ import { PoweredByGisaid } from 'src/components/Layout/PoweredByGisaid'
 import BrandLogoBase from 'src/assets/images/logo.svg'
 import BrandLogoLargeBase from 'src/assets/images/logo_text_right.svg'
 
+export const HEIGHT_NAVBAR = 69
+
 let navLinksLeft: Record<string, string> = {
   '/': 'Home',
   '/per-country': 'Countries',
@@ -54,7 +56,7 @@ const navLinksRight = [
 ]
 
 export const Navbar = styled(NavbarBase)`
-  min-height: 50px;
+  min-height: ${HEIGHT_NAVBAR}px;
   box-shadow: 0 2px 10px 2px #222f;
   background: rgb(18, 42, 113);
   background: linear-gradient(0deg, rgba(18, 42, 113, 1) 0%, rgb(79, 11, 136) 100%);
@@ -111,13 +113,13 @@ export const NavLink = styled(NavLinkBase)`
   margin: 0 auto;
 `
 
-const navButtonRightSize = 37
+const SIZE_NAV_BUTTON_RIGHT = 37
 
 export const NavLinkRight = styled(NavLinkBase)`
   background-color: #fffb;
-  width: ${navButtonRightSize}px;
-  height: ${navButtonRightSize}px;
-  border-radius: ${navButtonRightSize}px;
+  width: ${SIZE_NAV_BUTTON_RIGHT}px;
+  height: ${SIZE_NAV_BUTTON_RIGHT}px;
+  border-radius: ${SIZE_NAV_BUTTON_RIGHT}px;
   margin: 0 0.25rem;
   padding: 5px;
 `

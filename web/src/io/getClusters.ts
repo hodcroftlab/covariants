@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import urljoin from 'url-join'
 import type { Mutation } from 'src/types'
 import { useAxiosQuery } from 'src/hooks/useAxiosQuery'

@@ -1,66 +1,45 @@
 import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components'
-import { Container as ContainerBase, Row, Col } from 'reactstrap'
-import { NavigationBar } from 'src/components/Layout/NavigationBar'
-import { FooterContent } from 'src/components/Layout/Footer'
+import { HEIGHT_NAVBAR, NavigationBar } from 'src/components/Layout/NavigationBar'
+// import { FooterContent } from 'src/components/Layout/Footer'
 import { ClusterButtonPanel } from 'src/components/ClusterButtonPanel/ClusterButtonPanel'
 
-const Container = styled(ContainerBase)`
-  overflow-y: hidden;
+const Header = styled.div`
+  height: ${HEIGHT_NAVBAR}px;
+`
+
+const Body = styled.div`
+  position: absolute;
+  top: ${HEIGHT_NAVBAR}px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  background-color: ${(props) => props.theme.bodyBg};
+`
+
+const Sidebar = styled.div`
+  flex: 0 0 240px;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
-`
-
-const HeaderRow = styled(Row)`
-  flex: 0;
-  padding: 0;
-`
-
-const HeaderCol = styled(Col)`
-  padding: 0;
-`
-
-const MiddleRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-
-  @media (max-width: 767.98px) {
-    flex-direction: column;
-  }
-
-  @media (min-width: 1120px) {
-    height: 100%;
-    width: 100%;
-  }
-
-  @media (max-width: 1119px) {
-    overflow-y: scroll;
-  }
-`
-
-const MainContainer = styled(ContainerBase)`
-  @media (min-width: 1120px) {
-    overflow-y: scroll;
-  }
-`
-
-const Sidebar = styled.aside`
-  flex: 0 0 250px;
-  flex-wrap: wrap;
-
   background-color: rgba(18, 42, 113, 1);
-
-  @media (min-width: 1120px) {
-    overflow-y: scroll;
-  }
 `
 
-const FooterWrapper = styled.main`
-  margin: 0 auto;
-  max-width: ${(props) => props.theme.containerWidth.md};
+const Main = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+`
+
+const Content = styled.div`
+  flex: 1;
+  display: flex;
+  overflow: auto;
+`
+
+const Box = styled.div`
+  min-height: min-content;
+  display: flex;
 `
 
 export interface LayoutProps {
@@ -69,25 +48,31 @@ export interface LayoutProps {
 
 export function Layout({ children }: PropsWithChildren<LayoutProps>) {
   return (
-    <Container fluid>
-      <HeaderRow noGutters>
-        <HeaderCol>
-          <NavigationBar />
-        </HeaderCol>
-      </HeaderRow>
+    <div className="bg-danger">
+      <Header>
+        <NavigationBar />
+      </Header>
 
-      <MiddleRow>
+      <Body>
         <Sidebar>
-          <ClusterButtonPanel />
+          <Content>
+            <Box>
+              <ClusterButtonPanel />
+            </Box>
+          </Content>
         </Sidebar>
 
-        <MainContainer fluid>
-          {children}
-          <FooterWrapper>
-            <FooterContent />
-          </FooterWrapper>
-        </MainContainer>
-      </MiddleRow>
-    </Container>
+        <Main>
+          <Content>
+            <Box>
+              {children}
+              {/* <FooterWrapper> */}
+              {/*   <FooterContent /> */}
+              {/* </FooterWrapper> */}
+            </Box>
+          </Content>
+        </Main>
+      </Body>
+    </div>
   )
 }

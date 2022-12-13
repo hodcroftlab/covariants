@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React, { useCallback, useMemo } from 'react'
 import { isEqual } from 'lodash'
 import { useRecoilState } from 'recoil'

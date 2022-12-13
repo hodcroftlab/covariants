@@ -1,14 +1,14 @@
-import { groupBy, isNil } from 'lodash'
+import { get, groupBy, isNil } from 'lodash'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
-import { Card, CardBody, CardHeader, Row } from 'reactstrap'
+import { Card, CardBody, CardHeader, Row, RowProps } from 'reactstrap'
 import { ClusterDatum, useClusters } from 'src/io/getClusters'
 import { ClusterButtonGroup } from 'src/components/ClusterButtonPanel/ClusterButtonGroup'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 const ClustersRow = styled(Row)`
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+  flex-direction: row;
 `
 
 const ClusterGroupCard = styled(Card)`
@@ -21,45 +21,54 @@ const ClusterGroupCard = styled(Card)`
 `
 
 const ClusterGroupHeader = styled(CardHeader)`
-  flex: 0 0 100%;
-  text-align: center;
-  width: 100%;
   background: none;
-  color: ${(props) => props.theme.gray200};
+  color: ${(props) => props.theme.gray300};
   font-size: 1.1rem;
   font-weight: 700;
-  text-transform: capitalize;
 `
 
 const ClusterGroupBody = styled(CardBody)`
   display: flex;
   padding: 0;
   margin: auto;
+  background: none;
 `
 
-export interface ClusterPanelProps {
+export interface ClusterPanelProps extends RowProps {
   currentCluster?: ClusterDatum
   className?: string
 }
 
-export function ClusterButtonPanel({ currentCluster, className }: ClusterPanelProps) {
+export function ClusterButtonPanel({ currentCluster, ...restProps }: ClusterPanelProps) {
+  const { t } = useTranslationSafe()
   const clusters = useClusters()
 
   const clusterButtons = useMemo(() => {
     const clustersWithType = clusters.filter((cluster) => !isNil(cluster.type))
     const clustersGrouped = groupBy(clustersWithType, 'type')
-    return Object.entries(clustersGrouped).map(([clusterType, clusterGroup]) => (
-      <ClusterGroupCard key={clusterType}>
-        <ClusterGroupHeader>{clusterType}</ClusterGroupHeader>
-        <ClusterGroupBody>
-          <ClusterButtonGroup clusterGroup={clusterGroup} currentCluster={currentCluster} />
-        </ClusterGroupBody>
-      </ClusterGroupCard>
-    ))
-  }, [clusters, currentCluster])
+
+    return Object.entries(clustersGrouped).map(([clusterType, clusterGroup]) => {
+      const clusterTypeHeading = get(
+        {
+          variant: t('Variants'),
+          mutation: t('Mutations'),
+        },
+        clusterType,
+        'Other',
+      )
+      return (
+        <ClusterGroupCard key={clusterType}>
+          <ClusterGroupHeader>{clusterTypeHeading.toUpperCase()}</ClusterGroupHeader>
+          <ClusterGroupBody>
+            <ClusterButtonGroup clusterGroup={clusterGroup} currentCluster={currentCluster} />
+          </ClusterGroupBody>
+        </ClusterGroupCard>
+      )
+    })
+  }, [clusters, currentCluster, t])
 
   return (
-    <ClustersRow noGutters className={className}>
+    <ClustersRow noGutters {...restProps}>
       {clusterButtons}
     </ClustersRow>
   )
