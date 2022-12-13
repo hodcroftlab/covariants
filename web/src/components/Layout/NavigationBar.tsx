@@ -1,9 +1,7 @@
 import { useRouter } from 'next/router'
 import React from 'react'
-
 import styled from 'styled-components'
-import { Nav as NavBase, Navbar as NavbarBase, NavItem as NavItemBase, NavLink as NavLinkBase } from 'reactstrap'
-import classNames from 'classnames'
+import { Nav as NavBase, Navbar as NavbarBase, NavItem as NavItemBase } from 'reactstrap'
 import { FaGithub, FaTwitter } from 'react-icons/fa'
 import { Link } from 'src/components/Link/Link'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
@@ -86,22 +84,7 @@ export const NavWrappable = styled(NavBase)`
 export const NavItem = styled(NavItemBase)`
   padding: 0;
 
-  flex-grow: 0;
-  flex-shrink: 0;
-
-  font-weight: bold;
-
   &.active {
-  }
-
-  & > .nav-link {
-    padding: 5px;
-    color: #ddda !important;
-  }
-
-  &.active > .nav-link {
-    color: #fff !important;
-    text-decoration: #fffa solid underline 3px;
   }
 
   @media (max-width: 991.98px) {
@@ -109,22 +92,37 @@ export const NavItem = styled(NavItemBase)`
   }
 `
 
-export const NavLink = styled(NavLinkBase)`
+export const NavLink = styled(Link)<{ $active?: boolean }>`
   margin: 0 auto;
+  padding: 5px;
+  color: #ddda !important;
+
+  font-weight: bold;
+
+  ${(props) =>
+    props.$active &&
+    `
+    color: #fff !important;
+    text-decoration: #fffa solid underline 3px;
+  `}
 `
 
-const SIZE_NAV_BUTTON_RIGHT = 37
+const SIZE_NAV_BUTTON_RIGHT = 40
 
-export const NavLinkRight = styled(NavLinkBase)`
-  background-color: #fffb;
+export const NavLinkRight = styled(LinkExternal)`
+  background-color: #fff;
+  opacity: 0.8;
+
   width: ${SIZE_NAV_BUTTON_RIGHT}px;
   height: ${SIZE_NAV_BUTTON_RIGHT}px;
   border-radius: ${SIZE_NAV_BUTTON_RIGHT}px;
   margin: 0 0.25rem;
-  padding: 5px;
-`
+  padding: 7px;
 
-export const LinkRight = styled(LinkExternal)``
+  &:hover {
+    opacity: 1;
+  }
+`
 
 export const BrandLogoSmall = styled(BrandLogoBase)`
   height: 40px;
@@ -171,8 +169,8 @@ export function NavigationBar() {
       <NavWrappable navbar>
         {Object.entries(navLinksLeft).map(([url, text]) => {
           return (
-            <NavItem key={url} className={classNames(matchingUrl(url, pathname) && 'active')}>
-              <NavLink tag={Link} href={url}>
+            <NavItem key={url}>
+              <NavLink href={url} $active={matchingUrl(url, pathname)}>
                 {text}
               </NavLink>
             </NavItem>
@@ -181,13 +179,10 @@ export function NavigationBar() {
       </NavWrappable>
 
       <Nav className="ml-auto" navbar>
-        {navLinksRight.map(({ text, title, url, alt, icon }) => (
+        {navLinksRight.map(({ title, url, alt, icon }) => (
           <NavItem key={title}>
-            <NavLinkRight tag={LinkRight} title={title} href={url} alt={alt} icon={null}>
-              <span>
-                <span className="mr-2">{icon}</span>
-                <span className="d-inline d-sm-none">{text}</span>
-              </span>
+            <NavLinkRight title={title} href={url} alt={alt} icon={null}>
+              {icon}
             </NavLinkRight>
           </NavItem>
         ))}
