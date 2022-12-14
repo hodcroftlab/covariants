@@ -97,16 +97,17 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ErrorBoundary>
         <QueryClientProvider client={queryClient}>
           <ThemeProvider theme={theme}>
-            <MDXProvider components={getMdxComponents}>
-              <I18nextProvider i18n={i18n} />
-              <Plausible domain={DOMAIN_STRIPPED} />
-              <Router>
-                <Suspense>
-                  <Component {...pageProps} />
-                </Suspense>
-              </Router>
-              <ReactQueryDevtools initialIsOpen={false} />
-            </MDXProvider>
+            <I18nextProvider i18n={i18n}>
+              <MDXProvider components={getMdxComponents}>
+                <Plausible domain={DOMAIN_STRIPPED} />
+                <Router>
+                  <Suspense>
+                    <Component {...pageProps} />
+                  </Suspense>
+                </Router>
+                <ReactQueryDevtools initialIsOpen={false} />
+              </MDXProvider>
+            </I18nextProvider>
           </ThemeProvider>
         </QueryClientProvider>
       </ErrorBoundary>
