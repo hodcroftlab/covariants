@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo } from 'react'
 import { isEqual } from 'lodash'
-import { useRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import type { ClusterDatum } from 'src/io/getClusters'
 import { currentClusterAtom } from 'src/state/Clusters'
@@ -31,12 +32,13 @@ export interface ClusterButtonProps {
 }
 
 export function ClusterButton({ cluster }: ClusterButtonProps) {
-  const { display_name } = cluster
-  const [currentCluster, setCurrentCluster] = useRecoilState(currentClusterAtom)
+  const { asPath } = useRouter()
+  const { display_name, build_name } = cluster
+  const setCurrentCluster = useSetRecoilState(currentClusterAtom)
 
   const isCurrent = useMemo(() => {
-    return isEqual(cluster, currentCluster)
-  }, [cluster, currentCluster])
+    return isEqual(asPath, `/variants/${build_name}`)
+  }, [asPath, build_name])
 
   const onClick = useCallback(() => {
     setCurrentCluster(cluster)

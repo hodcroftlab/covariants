@@ -150,7 +150,7 @@ const BrandRowLower = styled.div`
 `
 
 export function NavigationBar() {
-  const { pathname } = useRouter()
+  const { asPath } = useRouter()
 
   return (
     <Navbar expand="xs" role="navigation">
@@ -170,7 +170,7 @@ export function NavigationBar() {
         {Object.entries(navLinksLeft).map(([url, text]) => {
           return (
             <NavItem key={url}>
-              <NavLink href={url} $active={matchingUrl(url, pathname)}>
+              <NavLink href={url} $active={matchingUrl(url, asPath)}>
                 {text}
               </NavLink>
             </NavItem>

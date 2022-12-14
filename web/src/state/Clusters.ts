@@ -8,5 +8,4 @@ export interface Cluster {
 
 export const currentClusterAtom = atom<ClusterDatum>({
   key: 'currentClusterAtom',
-  default: undefined,
 })

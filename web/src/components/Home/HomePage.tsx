@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { Editable } from 'src/components/Common/Editable'
 import styled from 'styled-components'
 import HomeContent from '../../../../content/Home.md'
 
@@ -12,9 +11,7 @@ const HomePageWrapper = styled.main`
 export function HomePage() {
   return (
     <HomePageWrapper>
-      <Editable>
-        <HomeContent />
-      </Editable>
+      <HomeContent />
     </HomePageWrapper>
   )
 }

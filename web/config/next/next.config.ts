@@ -89,6 +89,9 @@ const nextConfig: NextConfig = {
     config.experiments.topLevelAwait = true
     return config
   },
+  async rewrites() {
+    return [{ source: '/variants/:variant', destination: '/' }]
+  },
 }
 
 const withMDX = getWithMDX({
