@@ -14,12 +14,12 @@ export const HEIGHT_NAVBAR = 69
 
 let navLinksLeft: Record<string, string> = {
   '/': 'Home',
-  '/per-country': 'Countries',
-  '/per-variant': 'Variants',
+  '/countries': 'Countries',
+  '/variants': 'Variants',
   '/cases': 'Cases',
-  '/shared-mutations': 'Mutations',
-  '/credits': 'Credits',
+  '/mutations': 'Mutations',
   '/faq': 'FAQ',
+  '/credits': 'Credits',
 }
 
 if (process.env.NODE_ENV === 'development' || process.env.DOMAIN?.includes('vercel')) {

@@ -1,3 +1,5 @@
+export type SetterOrUpdater<T> = (valOrUpdater: ((currVal: T) => T) | T) => void
+
 export interface Mutation {
   parent?: string
   parentDelimiter?: string
