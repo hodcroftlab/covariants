@@ -8,7 +8,7 @@ import React, { useCallback, useMemo } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { MutableSnapshot, RecoilRoot } from 'recoil'
 import { ReactQueryDevtools } from 'react-query/devtools'
-
+import { I18nextProvider } from 'react-i18next'
 import type { AppProps } from 'next/app'
 import { parseUrl } from 'src/helpers/parseUrl'
 import { clustersAtom, ClustersDataFlavor, urlQueryToClusters } from 'src/state/Clusters'
@@ -17,7 +17,7 @@ import { continentsAtom, countriesAtom, regionAtom, urlQueryToPlaces } from 'src
 import { continentsCasesAtom, countriesCasesAtom, urlQueryToPlacesCases } from 'src/state/PlacesForCaseData'
 import { ThemeProvider } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
-
+import i18n from 'src/i18n/i18n'
 import { theme } from 'src/theme'
 import { DOMAIN_STRIPPED } from 'src/constants'
 import { Plausible } from 'src/components/Common/Plausible'
@@ -83,14 +83,16 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <RecoilRoot initializeState={initializeState}>
       <ThemeProvider theme={theme}>
-        <MDXProvider components={getMdxComponents}>
-          <Plausible domain={DOMAIN_STRIPPED} />
-          <SeoApp />
-          <QueryClientProvider client={queryClient}>
-            <Component {...pageProps} />
-            <ReactQueryDevtools initialIsOpen={false} />
-          </QueryClientProvider>
-        </MDXProvider>
+        <I18nextProvider i18n={i18n}>
+          <MDXProvider components={getMdxComponents}>
+            <Plausible domain={DOMAIN_STRIPPED} />
+            <SeoApp />
+            <QueryClientProvider client={queryClient}>
+              <Component {...pageProps} />
+              <ReactQueryDevtools initialIsOpen={false} />
+            </QueryClientProvider>
+          </MDXProvider>
+        </I18nextProvider>
       </ThemeProvider>
     </RecoilRoot>
   )
