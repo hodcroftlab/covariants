@@ -25,8 +25,7 @@ import { Plausible } from 'src/components/Common/Plausible'
 import { SeoApp } from 'src/components/Common/SeoApp'
 import { getMdxComponents } from 'src/components/Common/MdxComponents'
 import { loadPolyfills } from 'src/polyfills'
-import { localeAtom, setLocaleInUrl } from 'src/state/locale.state'
-import { getQueryParamMaybe } from 'src/io/getQueryParamMaybe'
+import { localeAtom } from 'src/state/locale.state'
 
 import 'src/styles/global.scss'
 
@@ -44,13 +43,14 @@ export function RecoilStateInitializer() {
 
     // eslint-disable-next-line no-void
     void Promise.resolve()
+      // eslint-disable-next-line promise/always-return
       .then(async () => {
-        // eslint-disable-next-line promise/always-return
-        const localeKey = getQueryParamMaybe(urlQuery, 'lang') ?? (await getPromise(localeAtom))
+        // const localeKeyFromUrl = getQueryParamMaybe(urlQuery, 'lang')
+        const localeKey = await getPromise(localeAtom)
         const locale = getLocaleWithKey(localeKey)
         await changeLocale(i18n, locale.key)
         set(localeAtom, locale.key)
-        void setLocaleInUrl(localeKey) // eslint-disable-line no-void
+        // void setLocaleInUrl(localeKey) // eslint-disable-line no-void
       })
       .finally(() => {
         snapShotRelease()
