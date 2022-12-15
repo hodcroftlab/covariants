@@ -17,6 +17,7 @@ import { getClusterColor } from 'src/io/getClusters'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 import styled from 'styled-components'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 export const FormGroup = styled(FormGroupBase)`
   flex: 1 0 320px;
@@ -68,18 +69,20 @@ export function ClusterFilters({
   onFilterChange,
   setCollapsed,
 }: ClusterFiltersProps) {
+  const { t } = useTranslationSafe()
+
   return (
-    <CardCollapsible className="m-2" title={'Variants'} collapsed={collapsed} setCollapsed={setCollapsed}>
+    <CardCollapsible className="m-2" title={t('Variants')} collapsed={collapsed} setCollapsed={setCollapsed}>
       <CardBody>
         <Container fluid>
           <Row noGutters>
             <Col className="d-flex">
               <FormGroup className="flex-grow-0 mx-auto">
                 <Button type="button" color="link" onClick={onFilterSelectAll}>
-                  {'Select all'}
+                  {t('Select all')}
                 </Button>
                 <Button type="button" color="link" onClick={onFilterDeselectAll}>
-                  {'Deselect all'}
+                  {t('Deselect all')}
                 </Button>
               </FormGroup>
             </Col>

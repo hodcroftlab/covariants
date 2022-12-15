@@ -3,9 +3,9 @@ import React from 'react'
 import { Col, Container, Row } from 'reactstrap'
 import styled from 'styled-components'
 
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { Editable, CenteredEditable } from 'src/components/Common/Editable'
 import { Layout } from 'src/components/Layout/Layout'
-
 import SharedMutationsIntro from '../../../../content/SharedMutations.md'
 import { SharedMutations } from './SharedMutations'
 import { PageHeading } from '../Common/PageHeading'
@@ -25,12 +25,14 @@ export const SharedMutationsWrapperInner = styled.div`
 `
 
 export function SharedMutationsPage() {
+  const { t } = useTranslationSafe()
+
   return (
     <Layout>
       <SharedMutationsPageContainer>
         <Row noGutters>
           <Col>
-            <PageHeading>{'Shared mutations'}</PageHeading>
+            <PageHeading>{t('Shared mutations')}</PageHeading>
           </Col>
         </Row>
 
@@ -44,7 +46,7 @@ export function SharedMutationsPage() {
 
         <Row noGutters>
           <Col className="pb-10">
-            <Editable githubUrl="blob/master/scripts" text={'View data generation scripts'}>
+            <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
               <SharedMutationsWrapper>
                 <SharedMutations />
               </SharedMutationsWrapper>

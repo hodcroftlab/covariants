@@ -10,7 +10,7 @@ import { DistributionSidebar } from 'src/components/DistributionSidebar/Distribu
 import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 import { getRegionPerCountryContent } from 'src/io/getRegionContent'
-
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import {
   filterClusters,
   filterCountries,
@@ -43,13 +43,15 @@ const enabledFilters = ['clusters', 'countriesWithIcons']
 const { regionNames, regionsHaveData } = getRegions()
 
 export function CountryDistributionPage() {
+  const { t } = useTranslationSafe()
+
   const [region, setRegion] = useRecoilState(regionAtom)
   const [countries, setCountries] = useRecoilState(countriesAtom(region))
   const [continents, setContinents] = useRecoilState(continentsAtom(region))
   const [clusters, setClusters] = useRecoilState(clustersAtom({ dataFlavor: ClustersDataFlavor.PerCountry, region }))
   const { countryDistributions } = useMemo(() => getPerCountryData(region), [region])
 
-  const regionsTitle = useMemo(() => (region === 'World' ? 'Countries' : 'Regions'), [region])
+  const regionsTitle = useMemo(() => (region === 'World' ? t('Countries') : t('Regions')), [region, t])
 
   const iconComponent = useMemo(() => {
     if (region === 'World') return CountryFlag
@@ -125,7 +127,7 @@ export function CountryDistributionPage() {
     <Layout wide>
       <Row noGutters>
         <Col>
-          <PageHeading>{'Overview of Variants in Countries'}</PageHeading>
+          <PageHeading>{t('Overview of Variants in Countries')}</PageHeading>
         </Col>
       </Row>
 
@@ -156,7 +158,7 @@ export function CountryDistributionPage() {
 
       <Row noGutters>
         <Col>
-          <Editable githubUrl="blob/master/scripts" text={'View data generation scripts'}>
+          <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
             <WrapperFlex>
               <SidebarFlex>
                 <DistributionSidebar

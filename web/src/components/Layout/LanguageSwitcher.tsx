@@ -33,19 +33,20 @@ export function LanguageSwitcher({ ...restProps }: LanguageSwitcherProps) {
 }
 
 export function LanguageSwitcherItem({ locale }: { locale: string }) {
-  const { Flag, name, native } = getLocaleWithKey(locale)
+  const { Flag, name, native, key } = getLocaleWithKey(locale)
 
   const label = useMemo(() => {
     if (name === native) {
-      return name
+      return `${name}`
     }
 
-    return `${native} (${name})`
+    return `${name} (${native})`
   }, [name, native])
 
   return (
     <>
       <Flag className="language-switcher-flag" />
+      <span className="pl-2 text-monospace">{`[${key}]`}</span>
       <span className="pl-2">{label}</span>
     </>
   )

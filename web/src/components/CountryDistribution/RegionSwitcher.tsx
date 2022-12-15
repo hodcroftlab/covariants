@@ -3,6 +3,7 @@ import React, { useCallback } from 'react'
 import { Button, Col, Row } from 'reactstrap'
 import { safeZip } from 'src/helpers/safeZip'
 import styled from 'styled-components'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 export const RegionSwitcherContainer = styled.div`
   margin: 5px 5px;
@@ -40,6 +41,8 @@ export interface RegionSwitcherProps {
 }
 
 export function RegionSwitcher({ regions, regionsHaveData, currentRegion, setCurrentRegion }: RegionSwitcherProps) {
+  const { t } = useTranslationSafe()
+
   const onRegionButtonClick = useCallback((region: string) => () => setCurrentRegion(region), [setCurrentRegion])
   const getRegionButtonColor = (region: string) => (currentRegion === region ? 'success' : undefined)
 
@@ -47,7 +50,7 @@ export function RegionSwitcher({ regions, regionsHaveData, currentRegion, setCur
     <RegionSwitcherContainer>
       <Row noGutters>
         <Col>
-          <RegionSwitcherHeading>{'Choose region'}</RegionSwitcherHeading>
+          <RegionSwitcherHeading>{t('Choose region')}</RegionSwitcherHeading>
         </Col>
       </Row>
 
@@ -60,9 +63,9 @@ export function RegionSwitcher({ regions, regionsHaveData, currentRegion, setCur
                   color={getRegionButtonColor(region)}
                   onClick={onRegionButtonClick(region)}
                   disabled={!regionHaveData}
-                  title={regionHaveData ? region : 'Coming soon!'}
+                  title={regionHaveData ? t(region) : t('Coming soon!')}
                 >
-                  {region}
+                  {t(region)}
                 </RegionButton>
               </RegionButtonWrapper>
             ))}

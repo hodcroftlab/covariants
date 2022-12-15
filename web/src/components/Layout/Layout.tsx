@@ -6,6 +6,7 @@ import { Container as ContainerBase, Row, Col } from 'reactstrap'
 
 import GisaidLogoBase from 'src/assets/images/GISAID_logo.svg'
 
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { NavigationBar } from './NavigationBar'
 import { FooterContent } from './Footer'
@@ -68,6 +69,8 @@ export interface LayoutProps {
 }
 
 export function Layout({ children }: PropsWithChildren<LayoutProps>) {
+  const { t } = useTranslationSafe()
+
   return (
     <Container fluid>
       <HeaderRow noGutters>
@@ -79,7 +82,7 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
       <Row noGutters className="ml-3 mt-n1 d-none d-md-block">
         <Col className="d-flex">
           <GisaidText className="d-flex mr-auto">
-            <span className="mr-1">{'Enabled by data from '}</span>
+            <span className="mr-1">{t('Enabled by data from {{ gisaid }}', { gisaid: '' })}</span>
             <LinkExternal href="https://www.gisaid.org/" icon={null}>
               <GisaidLogo height={20} />
             </LinkExternal>

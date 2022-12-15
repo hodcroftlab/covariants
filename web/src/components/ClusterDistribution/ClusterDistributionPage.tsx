@@ -20,7 +20,7 @@ import {
 } from 'src/state/Places'
 import { tooltipSortAtom, TooltipSortCriterion } from 'src/state/TooltipSort'
 import styled from 'styled-components'
-
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { getPerClusterData, filterClusters, filterCountries } from 'src/io/getPerClusterData'
 import { ClusterDistributionPlotCard } from 'src/components/ClusterDistribution/ClusterDistributionPlotCard'
 import { ColCustom } from 'src/components/Common/ColCustom'
@@ -48,6 +48,8 @@ export interface SortByDropdownProps {
 const sortByOptions = Object.entries(TooltipSortCriterion).map(([key, value]) => ({ value, label: key }))
 
 export function SortByDropdown({ perCountryTooltipSortBy, onSortByChange }: SortByDropdownProps) {
+  const { t } = useTranslationSafe()
+
   const handleSortByChange = useCallback(
     (value: string) => onSortByChange(TooltipSortCriterion[value as keyof typeof TooltipSortCriterion]),
     [onSortByChange],
@@ -56,7 +58,7 @@ export function SortByDropdown({ perCountryTooltipSortBy, onSortByChange }: Sort
   return (
     <FormGroup check inline>
       <Label htmlFor="per-variant-sort-by">
-        <span className="mr-2">{'Tooltip sort by:'}</span>
+        <span className="mr-2">{t('Tooltip sort by:')}</span>
         <Dropdown
           identifier="per-variant-sort-by"
           options={sortByOptions}
@@ -95,6 +97,8 @@ const StickyRow = styled(Row)`
 `
 
 export function ClusterDistributionPage() {
+  const { t } = useTranslationSafe()
+
   const [countries, setCountries] = useRecoilState(countriesAtom(undefined))
   const [continents, setContinents] = useRecoilState(continentsAtom(undefined))
   const [clusters, setClusters] = useRecoilState(
@@ -186,7 +190,7 @@ export function ClusterDistributionPage() {
     <Layout wide>
       <Row noGutters>
         <Col>
-          <PageHeading>{'Overview of Variants/Mutations'}</PageHeading>
+          <PageHeading>{t('Overview of Variants/Mutations')}</PageHeading>
         </Col>
       </Row>
 
@@ -206,14 +210,14 @@ export function ClusterDistributionPage() {
 
       <Row noGutters>
         <Col className="pb-10">
-          <Editable githubUrl="blob/master/scripts" text={'View data generation scripts'}>
+          <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
             <WrapperFlex>
               <SidebarFlex>
                 <DistributionSidebar
                   countries={countries}
                   continents={continents}
                   clusters={clusters}
-                  regionsTitle="Countries"
+                  regionsTitle={t('Countries')}
                   countriesCollapsedByDefault={false}
                   enabledFilters={enabledFilters}
                   onClusterFilterChange={handleClusterCheckedChange}
