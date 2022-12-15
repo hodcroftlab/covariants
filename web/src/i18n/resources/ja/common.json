@@ -39,7 +39,6 @@
   "Share on VK": "VK でシェア",
   "Share on Weibo": "ウェイボーでシェア",
   "Share on WhatsApp": "WhatsAppでシェア",
-  "Nextstrain Clade": "ネクストトレインクレード",
   "Other": "その他",
   "Pango Lineage": "パンゴリネージュ",
   "WHO Label": "WHOラベル",
@@ -62,7 +61,6 @@
   "Frequency": "頻度",
   "{{asterisk}} Interpolated values": "{{asterisk}} 補間値",
   "Dedicated {{nextstrain}} build for {{variant}}": "{{nextstrain}} 専用ビルド {{variant}}",
-  "No dedicated Nextstrain build is available": "Nexttrain専用のビルドはありません",
   "Reversed": "逆転した",
   "Defining mutations": "突然変異の定義",
   "None. See notes below": "[なし]。以下の注記を参照してください",
@@ -86,6 +84,7 @@
   "Spike protein model for {{variant}}": "のスパイクタンパク質モデル {{variant}}",
   "Spike protein model is not yet available for this variant": "このバリアントでは、スパイクタンパク質モデルはまだ使用できません。",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "以下によって定義されるSARS-CoV-2クレードの系統発生関係 {{nextstrain}}",
+  "source": "ソース",
   "Africa": "アフリカ",
   "Alabama": "アラバマ",
   "Alaska": "アラスカ",
@@ -221,6 +220,7 @@
   "New Zealand": "ニュージーランド",
   "Nicaragua": "ニカラグア",
   "Nigeria": "ナイジェリア",
+  "No dedicated {{nextstrain}} build is available": "{{nextstrain}} 専用ビルドはありません",
   "North America": "北アメリカ",
   "North Carolina": "ノースカロライナ",
   "North Dakota": "ノースダコタ",
@@ -299,5 +299,5 @@
   "Wyoming": "ワイオミング",
   "Zambia": "ザンビア",
   "Zimbabwe": "ジンバブエ",
-  "source": "ソース"
+  "{{nextstrain}} Clade": "{{nextstrain}} クレード"
 }

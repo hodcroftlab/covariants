@@ -39,7 +39,6 @@
   "Share on VK": "แชร์บน VK",
   "Share on Weibo": "แชร์บน Weibo",
   "Share on WhatsApp": "แชร์บน WhatsApp",
-  "Nextstrain Clade": "เน็กซ์สเตรนเคลด",
   "Other": "อื่นๆ",
   "Pango Lineage": "สายพันธุ์ปังโก",
   "WHO Label": "ฉลากของ WHO",
@@ -62,7 +61,6 @@
   "Frequency": "ความถี่",
   "{{asterisk}} Interpolated values": "{{asterisk}} ค่าสอดแทรก",
   "Dedicated {{nextstrain}} build for {{variant}}": "{{nextstrain}} สร้างเฉพาะสำหรับ {{variant}}",
-  "No dedicated Nextstrain build is available": "ไม่มีบิลด์ Nextstrain เฉพาะ",
   "Reversed": "ย้อนกลับ",
   "Defining mutations": "การกำหนดการกลายพันธุ์",
   "None. See notes below": "ไม่มีดูหมายเหตุด้านล่าง",
@@ -86,6 +84,7 @@
   "Spike protein model for {{variant}}": "แบบจำลองโปรตีนแบบเข็มสำหรับ {{variant}}",
   "Spike protein model is not yet available for this variant": "รูปแบบโปรตีน Spike ยังไม่พร้อมใช้งานสำหรับตัวแปรนี้",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "ความสัมพันธ์ทางวิวัฒนาการของเคลด SARS-Cov-2 ตามที่กำหนดโดย {{nextstrain}}",
+  "source": "ต้นกำเนิด",
   "Africa": "แอฟริกา",
   "Alabama": "อลาบามา",
   "Alaska": "มลรัฐอะแลสกา",
@@ -221,6 +220,7 @@
   "New Zealand": "นิวซีแลนด์",
   "Nicaragua": "นิการากัว",
   "Nigeria": "ประเทศไนจีเรีย",
+  "No dedicated {{nextstrain}} build is available": "ไม่มี {{nextstrain}} บิลด์เฉพาะที่สามารถใช้ได้",
   "North America": "ทวีปอเมริกาเหนือ",
   "North Carolina": "นอร์ทแคโรไลนา",
   "North Dakota": "รัฐนอร์ทดาโคตา",
@@ -299,5 +299,5 @@
   "Wyoming": "ไวโอมิง",
   "Zambia": "แซมเบีย",
   "Zimbabwe": "ประเทศซิมบับเว",
-  "source": "ต้นกำเนิด"
+  "{{nextstrain}} Clade": "{{nextstrain}} เคลด"
 }

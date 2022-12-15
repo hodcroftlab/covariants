@@ -110,7 +110,7 @@ export function NameTable() {
     <Table>
       <Thead>
         <Tr>
-          <Th>{t('Nextstrain Clade')}</Th>
+          <Th>{t('{{nextstrain}} Clade', { nextstrain: 'Nextstrain' })}</Th>
           <Th>{t('Pango Lineage')}</Th>
           <Th>
             <LinkExternal href="https://www.who.int/en/activities/tracking-SARS-CoV-2-variants/">

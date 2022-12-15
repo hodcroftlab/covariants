@@ -39,7 +39,6 @@
   "Share on VK": "VK'da paylaş",
   "Share on Weibo": "Weibo'da paylaş",
   "Share on WhatsApp": "WhatsApp'ta paylaş",
-  "Nextstrain Clade": "SonrakiGerinim Clade",
   "Other": "Diğer",
   "Pango Lineage": "Pango Soy",
   "WHO Label": "WHO Etiketi",
@@ -62,7 +61,6 @@
   "Frequency": "Frekans",
   "{{asterisk}} Interpolated values": "{{asterisk}} İnterpolasyonlu değerler",
   "Dedicated {{nextstrain}} build for {{variant}}": "Için özel {{nextstrain}} yapı {{variant}}",
-  "No dedicated Nextstrain build is available": "Özel bir Nextstrain yapısı mevcut değil",
   "Reversed": "Tersten",
   "Defining mutations": "Mutasyonların tanımlanması",
   "None. See notes below": "Hiçbiri. Aşağıdaki notlara bakın",
@@ -86,6 +84,7 @@
   "Spike protein model for {{variant}}": "Spike protein modeli {{variant}}",
   "Spike protein model is not yet available for this variant": "Spike protein modeli henüz bu varyant için mevcut değil",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "SARS-CoV-2 sınıflarının filogenetik ilişkileri {{nextstrain}}",
+  "source": "kaynak",
   "Africa": "Afrika",
   "Alabama": "Alabama",
   "Alaska": "Alaska",
@@ -221,6 +220,7 @@
   "New Zealand": "Yeni Zelanda",
   "Nicaragua": "Nikaragua",
   "Nigeria": "Nijerya",
+  "No dedicated {{nextstrain}} build is available": "Özel bir {{nextstrain}} yapı mevcut değil",
   "North America": "Kuzey Amerika",
   "North Carolina": "Kuzey Carolina",
   "North Dakota": "Kuzey Dakota",
@@ -299,5 +299,5 @@
   "Wyoming": "Wyoming",
   "Zambia": "Zambiya",
   "Zimbabwe": "Zimbabve",
-  "source": "kaynak"
+  "{{nextstrain}} Clade": "{{nextstrain}} Clade"
 }

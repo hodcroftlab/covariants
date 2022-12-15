@@ -39,7 +39,6 @@
   "Share on VK": "Bagikan di VK",
   "Share on Weibo": "Bagikan di Weibo",
   "Share on WhatsApp": "Bagikan di WhatsApp",
-  "Nextstrain Clade": "NextStrain Clade",
   "Other": "Lainnya",
   "Pango Lineage": "Garis Keturunan Pango",
   "WHO Label": "Label WHO",
@@ -62,7 +61,6 @@
   "Frequency": "Frekuensi",
   "{{asterisk}} Interpolated values": "{{asterisk}} Nilai interpolasi",
   "Dedicated {{nextstrain}} build for {{variant}}": "Dedicated {{nextstrain}} membangun untuk {{variant}}",
-  "No dedicated Nextstrain build is available": "Tidak ada build Nextstrain khusus yang tersedia",
   "Reversed": "Terbalik",
   "Defining mutations": "Mendefinisikan mutasi",
   "None. See notes below": "Tidak ada. Lihat catatan di bawah",
@@ -86,6 +84,7 @@
   "Spike protein model for {{variant}}": "Model protein lonjakan untuk {{variant}}",
   "Spike protein model is not yet available for this variant": "Model protein lonjakan belum tersedia untuk varian ini",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "Hubungan filogenetik klade SARS-CoV-2 seperti yang didefinisikan oleh {{nextstrain}}",
+  "source": "sumber",
   "Africa": "Afrika",
   "Alabama": "Alabama",
   "Alaska": "Alaska",
@@ -221,6 +220,7 @@
   "New Zealand": "Selandia Baru",
   "Nicaragua": "Nikaragua",
   "Nigeria": "Nigeria",
+  "No dedicated {{nextstrain}} build is available": "Tidak ada {{nextstrain}} build khusus yang tersedia",
   "North America": "Amerika Utara",
   "North Carolina": "Carolina Utara",
   "North Dakota": "Dakota Utara",
@@ -299,5 +299,5 @@
   "Wyoming": "Wyoming",
   "Zambia": "Zambia",
   "Zimbabwe": "Zimbabwe",
-  "source": "sumber"
+  "{{nextstrain}} Clade": "{{nextstrain}} Clade"
 }

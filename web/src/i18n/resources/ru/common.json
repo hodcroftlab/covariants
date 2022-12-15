@@ -39,7 +39,6 @@
   "Share on VK": "Поделиться в VK",
   "Share on Weibo": "Поделиться на Weibo",
   "Share on WhatsApp": "Поделиться в WhatsApp",
-  "Nextstrain Clade": "Следующий сорт Clade",
   "Other": "Другой",
   "Pango Lineage": "Родословная панго",
   "WHO Label": "Этикетка ВОЗ",
@@ -62,7 +61,6 @@
   "Frequency": "Частота",
   "{{asterisk}} Interpolated values": "{{asterisk}} Интерполированные значения",
   "Dedicated {{nextstrain}} build for {{variant}}": "Специальная {{nextstrain}} сборка для {{variant}}",
-  "No dedicated Nextstrain build is available": "Специальная сборка Nextstrain недоступна",
   "Reversed": "Перевернутый",
   "Defining mutations": "Определение мутаций",
   "None. See notes below": "Ничего. См. примечания ниже",
@@ -86,6 +84,7 @@
   "Spike protein model for {{variant}}": "Модель спайкового белка для {{variant}}",
   "Spike protein model is not yet available for this variant": "Модель протеина Spike для этого варианта пока недоступна",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "Филогенетические взаимосвязи клад SARS-CoV-2, определенные {{nextstrain}}",
+  "source": "источник",
   "Africa": "Африка",
   "Alabama": "Алабама",
   "Alaska": "Аляска",
@@ -221,6 +220,7 @@
   "New Zealand": "Новая Зеландия",
   "Nicaragua": "Никарагуа",
   "Nigeria": "Нигерия",
+  "No dedicated {{nextstrain}} build is available": "Специальная {{nextstrain}} сборка недоступна",
   "North America": "Северная Америка",
   "North Carolina": "Северная Каролина",
   "North Dakota": "Северная Дакота",
@@ -299,5 +299,5 @@
   "Wyoming": "Вайоминг",
   "Zambia": "Замбия",
   "Zimbabwe": "Зимбабве",
-  "source": "источника"
+  "{{nextstrain}} Clade": "{{nextstrain}} клад"
 }

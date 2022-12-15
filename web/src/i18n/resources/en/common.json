@@ -173,10 +173,9 @@
   "New Mexico": "New Mexico",
   "New York": "New York",
   "New Zealand": "New Zealand",
-  "Nextstrain Clade": "Nextstrain Clade",
   "Nicaragua": "Nicaragua",
   "Nigeria": "Nigeria",
-  "No dedicated Nextstrain build is available": "No dedicated Nextstrain build is available",
+  "No dedicated {{nextstrain}} build is available": "No dedicated {{nextstrain}} build is available",
   "Non-defining mutation counts": "Non-defining mutation counts",
   "None. See notes below": "None. See notes below",
   "Nonsynonymous": "Nonsynonymous",
@@ -299,5 +298,6 @@
   "Zimbabwe": "Zimbabwe",
   "source": "source",
   "{{ covariants }} is brought to you by": "{{ covariants }} is brought to you by",
-  "{{asterisk}} Interpolated values": "{{asterisk}} Interpolated values"
+  "{{asterisk}} Interpolated values": "{{asterisk}} Interpolated values",
+  "{{nextstrain}} Clade": "{{nextstrain}} Clade"
 }

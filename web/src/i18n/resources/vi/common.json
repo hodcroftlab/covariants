@@ -39,7 +39,6 @@
   "Share on VK": "Chia sẻ trên VK",
   "Share on Weibo": "Chia sẻ trên Weibo",
   "Share on WhatsApp": "Chia sẻ trên WhatsApp",
-  "Nextstrain Clade": "Nextstrain Clade",
   "Other": "Khác",
   "Pango Lineage": "Dòng dõi Pango",
   "WHO Label": "Nhãn WHO",
@@ -62,7 +61,6 @@
   "Frequency": "Tần số",
   "{{asterisk}} Interpolated values": "{{asterisk}} Giá trị nội suy",
   "Dedicated {{nextstrain}} build for {{variant}}": "{{nextstrain}} Xây dựng dành riêng cho {{variant}}",
-  "No dedicated Nextstrain build is available": "Không có bản xây dựng Nextstrain chuyên dụng",
   "Reversed": "Đảo ngược",
   "Defining mutations": "Xác định đột biến",
   "None. See notes below": "Không có. Xem ghi chú bên dưới",
@@ -86,6 +84,7 @@
   "Spike protein model for {{variant}}": "Mô hình protein tăng đột biến cho {{variant}}",
   "Spike protein model is not yet available for this variant": "Mô hình protein tăng đột biến chưa có sẵn cho biến thể này",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "Mối quan hệ phát sinh chủng loài của các clades SARS-COV-2 được xác định bởi {{nextstrain}}",
+  "source": "nguồn",
   "Africa": "Châu phi",
   "Alabama": "Alabama",
   "Alaska": "Alaska",
@@ -221,6 +220,7 @@
   "New Zealand": "New Zealand",
   "Nicaragua": "Nicaragua",
   "Nigeria": "Nigeria",
+  "No dedicated {{nextstrain}} build is available": "Không có bản {{nextstrain}} xây dựng chuyên dụng",
   "North America": "Bắc Mỹ",
   "North Carolina": "North Carolina",
   "North Dakota": "North Dakota",
@@ -299,5 +299,5 @@
   "Wyoming": "Wyoming",
   "Zambia": "Dăm-bi-a",
   "Zimbabwe": "Zimbabwe",
-  "source": "nguồn"
+  "{{nextstrain}} Clade": "{{nextstrain}} Clade"
 }

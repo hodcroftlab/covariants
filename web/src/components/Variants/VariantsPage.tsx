@@ -131,7 +131,7 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
                   })}
                 </LinkExternal>
               ) : (
-                <span>{t('No dedicated Nextstrain build is available')}</span>
+                <span>{t('No dedicated {{nextstrain}} build is available', { nextstrain: 'Nextstrain' })}</span>
               )}
             </Col>
           </Row>

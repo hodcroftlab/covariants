@@ -39,7 +39,6 @@
   "Share on VK": "Compartir en VK",
   "Share on Weibo": "Compartir en Weibo",
   "Share on WhatsApp": "Compartir en WhatsApp",
-  "Nextstrain Clade": "Clade Nextstrain",
   "Other": "Otro",
   "Pango Lineage": "Linaje Pango",
   "WHO Label": "Etiqueta de la OMS",
@@ -62,7 +61,6 @@
   "Frequency": "Frecuencia",
   "{{asterisk}} Interpolated values": "{{asterisk}} Valores interpolados",
   "Dedicated {{nextstrain}} build for {{variant}}": "{{nextstrain}} Compilación dedicada para {{variant}}",
-  "No dedicated Nextstrain build is available": "No hay disponible ninguna versión dedicada de Nextstrain",
   "Reversed": "Revertido",
   "Defining mutations": "Definición de mutaciones",
   "None. See notes below": "Ninguna. Consulte las notas a continuación",
@@ -86,6 +84,7 @@
   "Spike protein model for {{variant}}": "Modelo de proteína Spike para {{variant}}",
   "Spike protein model is not yet available for this variant": "El modelo de proteína Spike aún no está disponible para esta variante",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "Relaciones filogenéticas de los clados del SARS-CoV-2 definidas por {{nextstrain}}",
+  "source": "fuente",
   "Africa": "África",
   "Alabama": "Alabama",
   "Alaska": "Alaska",
@@ -221,6 +220,7 @@
   "New Zealand": "Nueva Zelanda",
   "Nicaragua": "Nicaragua",
   "Nigeria": "Nigeria",
+  "No dedicated {{nextstrain}} build is available": "No hay ninguna {{nextstrain}} compilación dedicada disponible",
   "North America": "Norteamérica",
   "North Carolina": "Carolina del Norte",
   "North Dakota": "Dakota del Norte",
@@ -299,5 +299,5 @@
   "Wyoming": "Wyoming",
   "Zambia": "Zambia",
   "Zimbabwe": "Zimbabue",
-  "source": "fuente"
+  "{{nextstrain}} Clade": "{{nextstrain}} Clade"
 }

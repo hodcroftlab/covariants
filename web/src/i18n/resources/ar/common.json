@@ -39,7 +39,6 @@
   "Share on VK": "شارك على VK",
   "Share on Weibo": "شارك على ويبو",
   "Share on WhatsApp": "شارك على واتساب",
-  "Nextstrain Clade": "نيكست ترين كلايد",
   "Other": "أخرى",
   "Pango Lineage": "سلالة بانغو",
   "WHO Label": "ملصق منظمة الصحة العالمية",
@@ -62,7 +61,6 @@
   "Frequency": "التردد",
   "{{asterisk}} Interpolated values": "{{asterisk}} القيم المحرفة",
   "Dedicated {{nextstrain}} build for {{variant}}": "{{nextstrain}} بناء مخصص لـ {{variant}}",
-  "No dedicated Nextstrain build is available": "لا يتوفر إصدار Nextstrain مخصص",
   "Reversed": "معكوس",
   "Defining mutations": "تحديد الطفرات",
   "None. See notes below": "لا شيء. انظر الملاحظات أدناه",
@@ -86,6 +84,7 @@
   "Spike protein model for {{variant}}": "نموذج بروتين سبايك لـ {{variant}}",
   "Spike protein model is not yet available for this variant": "نموذج بروتين سبايك غير متاح بعد لهذا البديل",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "العلاقات التطورية لكتل SARS-CoV-2 على النحو المحدد بواسطة {{nextstrain}}",
+  "source": "مصدر",
   "Africa": "أفريقيا",
   "Alabama": "ألاباما",
   "Alaska": "ألاسكا",
@@ -221,6 +220,7 @@
   "New Zealand": "نيوزيلندا",
   "Nicaragua": "نيكاراغوا",
   "Nigeria": "نيجيريا",
+  "No dedicated {{nextstrain}} build is available": "لا يوجد {{nextstrain}} بناء مخصص متاح",
   "North America": "أمريكا الشمالية",
   "North Carolina": "كارولينا الشمالية",
   "North Dakota": "داكوتا الشمالية",
@@ -299,5 +299,5 @@
   "Wyoming": "وايومنغ",
   "Zambia": "زامبيا",
   "Zimbabwe": "زيمبابوي",
-  "source": "مصدر"
+  "{{nextstrain}} Clade": "{{nextstrain}} كليد"
 }

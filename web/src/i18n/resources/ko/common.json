@@ -39,7 +39,6 @@
   "Share on VK": "VK에 공유하기",
   "Share on Weibo": "웨이보에서 공유하기",
   "Share on WhatsApp": "왓츠앱에서 공유하기",
-  "Nextstrain Clade": "넥스트스트레인 클레이드",
   "Other": "기타",
   "Pango Lineage": "판고 리니지",
   "WHO Label": "WHO 라벨",
@@ -62,7 +61,6 @@
   "Frequency": "주파수",
   "{{asterisk}} Interpolated values": "{{asterisk}} 보간된 값",
   "Dedicated {{nextstrain}} build for {{variant}}": "전용 {{nextstrain}} 빌드 {{variant}}",
-  "No dedicated Nextstrain build is available": "전용 Nexttrain 빌드는 사용할 수 없습니다.",
   "Reversed": "반전",
   "Defining mutations": "돌연변이의 정의",
   "None. See notes below": "없음.아래 참고 사항 참조",
@@ -86,6 +84,7 @@
   "Spike protein model for {{variant}}": "스파이크 단백질 모델 {{variant}}",
   "Spike protein model is not yet available for this variant": "이 변이체에는 스파이크 단백질 모델을 아직 사용할 수 없습니다.",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "다음과 같이 정의된 SARS-CoV-2 계통군의 계통발생적 관계 {{nextstrain}}",
+  "source": "출처",
   "Africa": "아프리카",
   "Alabama": "앨라배마",
   "Alaska": "알래스카",
@@ -221,6 +220,7 @@
   "New Zealand": "뉴질랜드",
   "Nicaragua": "니카라과",
   "Nigeria": "나이지리아",
+  "No dedicated {{nextstrain}} build is available": "전용 {{nextstrain}} 빌드를 사용할 수 없습니다.",
   "North America": "북미",
   "North Carolina": "노스캐롤라이나",
   "North Dakota": "노스다코타",
@@ -299,5 +299,5 @@
   "Wyoming": "와이오밍",
   "Zambia": "잠비아",
   "Zimbabwe": "짐바브웨",
-  "source": "출처"
+  "{{nextstrain}} Clade": "{{nextstrain}} 클레이드"
 }

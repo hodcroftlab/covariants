@@ -39,7 +39,6 @@
   "Share on VK": "به اشتراک گذاشتن در VK",
   "Share on Weibo": "اشتراک در ویبو",
   "Share on WhatsApp": "اشتراک گذاری در واتساپ",
-  "Nextstrain Clade": "نکست‌استرین کلاد",
   "Other": "دیگر",
   "Pango Lineage": "دودمان پانگو",
   "WHO Label": "WHO برچسب",
@@ -62,7 +61,6 @@
   "Frequency": "فرکانس",
   "{{asterisk}} Interpolated values": "{{asterisk}} مقادیر درونیابی",
   "Dedicated {{nextstrain}} build for {{variant}}": "{{nextstrain}} ساخت اختصاصی برای {{variant}}",
-  "No dedicated Nextstrain build is available": "هیچ ساخت اختصاصی Nextstrain در دسترس نیست",
   "Reversed": "معکوس",
   "Defining mutations": "تعریف جهش",
   "None. See notes below": "هیچ کدام. یادداشت های زیر را ببینید",
@@ -86,6 +84,7 @@
   "Spike protein model for {{variant}}": "مدل پروتئین سنبله برای {{variant}}",
   "Spike protein model is not yet available for this variant": "مدل پروتئین سنبله هنوز برای این نوع در دسترس نیست",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "روابط فیلوژنتیکی کلادهای SARS-CoV-2 به صورت تعریف شده توسط {{nextstrain}}",
+  "source": "منبع",
   "Africa": "آفريقا",
   "Alabama": "آلاباما",
   "Alaska": "آلاسکا",
@@ -221,6 +220,7 @@
   "New Zealand": "نيوزلند",
   "Nicaragua": "نیکاراگوئه",
   "Nigeria": "نيجريه",
+  "No dedicated {{nextstrain}} build is available": "هیچ {{nextstrain}} ساخت اختصاصی در دسترس نیست",
   "North America": "آمریکای شمالی",
   "North Carolina": "کارولینای شمالی",
   "North Dakota": "داكوتاي شمالي",
@@ -299,5 +299,5 @@
   "Wyoming": "وایومینگ",
   "Zambia": "زامبیا",
   "Zimbabwe": "زیمبابوه",
-  "source": "منبع"
+  "{{nextstrain}} Clade": "{{nextstrain}} کلاد"
 }

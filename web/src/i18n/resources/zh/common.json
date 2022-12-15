@@ -39,7 +39,6 @@
   "Share on VK": "在 VK 上分享",
   "Share on Weibo": "在微博上分享",
   "Share on WhatsApp": "在微信上分享",
-  "Nextstrain Clade": "下一步：克莱德",
   "Other": "其他",
   "Pango Lineage": "Pango Lineage",
   "WHO Label": "世卫组织标签",
@@ -62,7 +61,6 @@
   "Frequency": "频率",
   "{{asterisk}} Interpolated values": "{{asterisk}} 内插值",
   "Dedicated {{nextstrain}} build for {{variant}}": "{{nextstrain}} 专为 {{variant}}",
-  "No dedicated Nextstrain build is available": "没有专门的 Nextrain 版本可用",
   "Reversed": "反向了",
   "Defining mutations": "定义突变",
   "None. See notes below": "没有。参见下面的注释",
@@ -86,6 +84,7 @@
   "Spike protein model for {{variant}}": "Spike 蛋白模型 {{variant}}",
   "Spike protein model is not yet available for this variant": "Spike 蛋白模型尚不可用于此变体",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "SARS-CoV-2 进化论的系统发育关系定义为 {{nextstrain}}",
+  "source": "资源",
   "Africa": "非洲",
   "Alabama": "阿拉巴马州",
   "Alaska": "阿拉斯加",
@@ -221,6 +220,7 @@
   "New Zealand": "新西兰",
   "Nicaragua": "尼加拉瓜",
   "Nigeria": "尼日利亚",
+  "No dedicated {{nextstrain}} build is available": "没有专用 {{nextstrain}} 版本可用",
   "North America": "北美",
   "North Carolina": "北卡罗来纳",
   "North Dakota": "北达科他州",
@@ -299,5 +299,5 @@
   "Wyoming": "怀俄明州",
   "Zambia": "赞比亚",
   "Zimbabwe": "津巴布韦",
-  "source": "资源"
+  "{{nextstrain}} Clade": "{{nextstrain}} 克莱德"
 }

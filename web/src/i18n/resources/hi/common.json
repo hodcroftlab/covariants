@@ -39,7 +39,6 @@
   "Share on VK": "VK पर साझा करें",
   "Share on Weibo": "Weibo पर साझा करें",
   "Share on WhatsApp": "WhatsApp पर शेयर करें",
-  "Nextstrain Clade": "नेक्स्टस्ट्रेन क्लेड",
   "Other": "अन्य",
   "Pango Lineage": "पैंगो वंश",
   "WHO Label": "WHO लेबल",
@@ -62,7 +61,6 @@
   "Frequency": "फ़्रिक्वेंसी",
   "{{asterisk}} Interpolated values": "{{asterisk}} इंटरपोलेटेड मान",
   "Dedicated {{nextstrain}} build for {{variant}}": "के लिए समर्पित {{nextstrain}} निर्माण {{variant}}",
-  "No dedicated Nextstrain build is available": "कोई डेडिकेटेड नेक्स्टस्ट्रेन बिल्ड उपलब्ध नहीं है",
   "Reversed": "उलट",
   "Defining mutations": "म्यूटेशन को परिभाषित करना",
   "None. See notes below": "कोई नहीं। नीचे दिए गए नोट्स देखें",
@@ -86,6 +84,7 @@
   "Spike protein model for {{variant}}": "के लिए स्पाइक प्रोटीन मॉडल {{variant}}",
   "Spike protein model is not yet available for this variant": "इस वेरिएंट के लिए स्पाइक प्रोटीन मॉडल अभी उपलब्ध नहीं है",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "SARS-CoV-2 समूहों के फ़ाइलोजेनेटिक संबंध, जैसा कि इसके द्वारा परिभाषित किया गया है {{nextstrain}}",
+  "source": "स्रोत",
   "Africa": "अफ्रीका",
   "Alabama": "अलबामा",
   "Alaska": "अलास्का",
@@ -221,6 +220,7 @@
   "New Zealand": "न्यूज़ीलैंड",
   "Nicaragua": "निकारागुआ",
   "Nigeria": "नाइजीरिया",
+  "No dedicated {{nextstrain}} build is available": "कोई डेडिकेटेड {{nextstrain}} बिल्ड उपलब्ध नहीं है",
   "North America": "उत्तरी अमेरिका",
   "North Carolina": "नार्थ कैरोलीना",
   "North Dakota": "नार्थ डकोटा",
@@ -299,5 +299,5 @@
   "Wyoming": "व्योमिंग",
   "Zambia": "जाम्बिया",
   "Zimbabwe": "जिम्बाब्वे",
-  "source": "स्रोत"
+  "{{nextstrain}} Clade": "{{nextstrain}} क्लेड"
 }

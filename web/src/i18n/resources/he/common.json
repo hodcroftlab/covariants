@@ -39,7 +39,6 @@
   "Share on VK": "שתף ב- VK",
   "Share on Weibo": "שתף ב- Weibo",
   "Share on WhatsApp": "שתף בוואטסאפ",
-  "Nextstrain Clade": "הַבָּאזן קלאדה",
   "Other": "אחרים",
   "Pango Lineage": "שושלת פנגו",
   "WHO Label": "תווית WHO",
@@ -62,7 +61,6 @@
   "Frequency": "תדירות",
   "{{asterisk}} Interpolated values": "{{asterisk}} ערכים אינטרפולציה",
   "Dedicated {{nextstrain}} build for {{variant}}": "{{nextstrain}} בנייה ייעודית עבור {{variant}}",
-  "No dedicated Nextstrain build is available": "אין בנייה ייעודית של NextStrain זמינה",
   "Reversed": "הפוך",
   "Defining mutations": "הגדרת מוטציות",
   "None. See notes below": "אף אחד. ראה הערות למטה",
@@ -86,6 +84,7 @@
   "Spike protein model for {{variant}}": "מודל חלבון ספייק עבור {{variant}}",
   "Spike protein model is not yet available for this variant": "מודל חלבון ספייק אינו זמין עדיין עבור גרסה זו",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "יחסים פילוגנטיים של SARS-CoV-2 clades כפי שהוגדרו על ידי {{nextstrain}}",
+  "source": "מקור",
   "Africa": "אפריקה",
   "Alabama": "אלבמה",
   "Alaska": "אלסקה",
@@ -221,6 +220,7 @@
   "New Zealand": "ניו זילנד",
   "Nicaragua": "ניקרגואה",
   "Nigeria": "ניגריה",
+  "No dedicated {{nextstrain}} build is available": "אין {{nextstrain}} בנייה ייעודית זמינה",
   "North America": "צפון אמריקה",
   "North Carolina": "צפון קרוליינה",
   "North Dakota": "דקוטה הצפונית",
@@ -299,5 +299,5 @@
   "Wyoming": "ויומינג",
   "Zambia": "זמביה",
   "Zimbabwe": "זימבבואה",
-  "source": "מקור"
+  "{{nextstrain}} Clade": "{{nextstrain}} קלאדה"
 }

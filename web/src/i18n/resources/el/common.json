@@ -39,7 +39,6 @@
   "Share on VK": "Μοιραστείτε στο VK",
   "Share on Weibo": "Μοιραστείτε το στο Weibo",
   "Share on WhatsApp": "Μοιραστείτε στο WhatsApp",
-  "Nextstrain Clade": "Επόμενη στέλεχος Κλάδιο",
   "Other": "'Αλλες",
   "Pango Lineage": "Pango γενεαλογία",
   "WHO Label": "Ετικέτα ΠΟΥ",
@@ -62,7 +61,6 @@
   "Frequency": "Συχνότητα",
   "{{asterisk}} Interpolated values": "{{asterisk}} Τιμές με παρεμβολή",
   "Dedicated {{nextstrain}} build for {{variant}}": "Αποκλειστική {{nextstrain}} κατασκευή για {{variant}}",
-  "No dedicated Nextstrain build is available": "Δεν υπάρχει διαθέσιμη αποκλειστική έκδοση Nextstrain",
   "Reversed": "Αντιστράφηκε",
   "Defining mutations": "Ορισμός μεταλλάξεων",
   "None. See notes below": "Κανένα. Δείτε τις σημειώσεις παρακάτω",
@@ -86,6 +84,7 @@
   "Spike protein model for {{variant}}": "Spike μοντέλο πρωτεΐνης για {{variant}}",
   "Spike protein model is not yet available for this variant": "Το μοντέλο πρωτεΐνης Spike δεν είναι ακόμη διαθέσιμο για αυτή την παραλλαγή",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "Φυλογενετικές σχέσεις των κλαδίων SARS-COV-2, όπως ορίζονται από το {{nextstrain}}",
+  "source": "πηγής",
   "Africa": "Αφρική",
   "Alabama": "Alabama",
   "Alaska": "Αλάσκα",
@@ -221,6 +220,7 @@
   "New Zealand": "Νέα Ζηλανδία",
   "Nicaragua": "Νικαράγουα",
   "Nigeria": "Νιγηρία",
+  "No dedicated {{nextstrain}} build is available": "Δεν υπάρχει διαθέσιμη αποκλειστική {{nextstrain}} έκδοση",
   "North America": "Βόρεια Αμερική",
   "North Carolina": "Βόρεια Καρολίνα",
   "North Dakota": "Βόρεια Ντακότα",
@@ -299,5 +299,5 @@
   "Wyoming": "Γουαϊόμινγκ",
   "Zambia": "Ζάμπια",
   "Zimbabwe": "Ζιμπάμπουε",
-  "source": "πηγής"
+  "{{nextstrain}} Clade": "{{nextstrain}} Κλάδιο"
 }

@@ -39,7 +39,6 @@
   "Share on VK": "VK இல் பகிர்",
   "Share on Weibo": "வெயிபோவில் பகிர்",
   "Share on WhatsApp": "WhatsApp இல் பகிர்",
-  "Nextstrain Clade": "நெக்ஸ்ட்ஸ்ட்ரைன் கிளேட்",
   "Other": "ஏனைய",
   "Pango Lineage": "பாங்கோ லீனேஜ்",
   "WHO Label": "WHO லேபிள்",
@@ -62,7 +61,6 @@
   "Frequency": "அதிர்வெண்",
   "{{asterisk}} Interpolated values": "{{asterisk}} இடைச்செருகிய மதிப்புகள்",
   "Dedicated {{nextstrain}} build for {{variant}}": "அர்ப்பணிக்கப்பட்ட {{nextstrain}} உருவாக்க {{variant}}",
-  "No dedicated Nextstrain build is available": "இல்லை அர்ப்பணித்து Nextstrain உருவாக்க கிடைக்கிறது",
   "Reversed": "தலைகீழாய்",
   "Defining mutations": "பிறழ்வுகளை வரையறுத்தல்",
   "None. See notes below": "எதுவுமில்லை. கீழே உள்ள குறிப்புகளைக் காண்க",
@@ -86,6 +84,7 @@
   "Spike protein model for {{variant}}": "ஸ்பைக் புரதம் மாதிரி {{variant}}",
   "Spike protein model is not yet available for this variant": "ஸ்பைக் புரத மாதிரி இந்த மாறுபாட்டிற்கு இன்னும் கிடைக்கவில்லை",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "வரையறுக்கப்பட்ட SARS-COV-2 கிளேடுகளின் ஃபைலோஜெனடிக் உறவுகள் {{nextstrain}}",
+  "source": "மூலம்",
   "Africa": "ஆப்ரிக்கா",
   "Alabama": "அலபாமா",
   "Alaska": "அலாஸ்கா",
@@ -221,6 +220,7 @@
   "New Zealand": "நியூசிலாந்து",
   "Nicaragua": "நிகரகுவா",
   "Nigeria": "நைஜீரியா",
+  "No dedicated {{nextstrain}} build is available": "இல்லை அர்ப்பணிப்பு {{nextstrain}} உருவாக்க கிடைக்கிறது",
   "North America": "வட அமெரிக்கா",
   "North Carolina": "வட கரோலினா",
   "North Dakota": "வடக்கு டகோட்டா",
@@ -299,5 +299,5 @@
   "Wyoming": "வயோமிங்",
   "Zambia": "ஜாம்பியா",
   "Zimbabwe": "ஜிம்பாப்வே",
-  "source": "மூலம்"
+  "{{nextstrain}} Clade": "{{nextstrain}} கிளேட்"
 }

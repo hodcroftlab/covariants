@@ -39,7 +39,6 @@
   "Share on VK": "VK پر اشتراک کریں",
   "Share on Weibo": "ویبو پر اشتراک کریں",
   "Share on WhatsApp": "واٹس ایپ پر شیئر کریں",
-  "Nextstrain Clade": "اگلا کشیدگی کلڈ",
   "Other": "دیگر",
   "Pango Lineage": "پنگو شجرہ",
   "WHO Label": "ڈاکو لیبل",
@@ -62,7 +61,6 @@
   "Frequency": "فریکوئنسی",
   "{{asterisk}} Interpolated values": "{{asterisk}} مداخلت شدہ اقدار",
   "Dedicated {{nextstrain}} build for {{variant}}": "کے لئے وقف {{nextstrain}} تعمیر {{variant}}",
-  "No dedicated Nextstrain build is available": "کوئی وقف اگلا کشیدگی کی تعمیر دستیاب نہیں ہے",
   "Reversed": "الٹ",
   "Defining mutations": "تغیرات کی وضاحت",
   "None. See notes below": "کوئی نہیں. ذیل میں نوٹ ملاحظہ کریں",
@@ -86,6 +84,7 @@
   "Spike protein model for {{variant}}": "سپائیک پروٹین ماڈل کے لئے {{variant}}",
   "Spike protein model is not yet available for this variant": "سپائیک پروٹین ماڈل ابھی تک اس قسم کے لئے دستیاب نہیں ہے",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "کی طرف سے وضاحت کے طور پر سارس CoV-2 کلڈ کے Phylogenetic تعلقات {{nextstrain}}",
+  "source": "ذریعہ",
   "Africa": "افریقہ",
   "Alabama": "الاباما",
   "Alaska": "الاسکا",
@@ -221,6 +220,7 @@
   "New Zealand": "نیوزی لینڈ",
   "Nicaragua": "نکاراگووا",
   "Nigeria": "نائیجیریا",
+  "No dedicated {{nextstrain}} build is available": "کوئی وقف {{nextstrain}} تعمیر دستیاب نہیں ہے",
   "North America": "شمالی امریکہ",
   "North Carolina": "شمالی کیرولائنا",
   "North Dakota": "شمالی ڈکوٹا",
@@ -299,5 +299,5 @@
   "Wyoming": "وائیومنگ",
   "Zambia": "زیمبیا",
   "Zimbabwe": "زمبابوے",
-  "source": "ذریعہ"
+  "{{nextstrain}} Clade": "{{nextstrain}} کلڈ"
 }
