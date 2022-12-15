@@ -7,8 +7,8 @@ import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 
 import { theme } from 'src/theme'
+import { MdxContent } from 'src/i18n/getMdxContent'
 import type { ClusterDatum } from 'src/io/getClusters'
-import { getClusterContent } from 'src/io/getClusterContent'
 import { getClusterRedirects, getClusters } from 'src/io/getClusters'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { Layout } from 'src/components/Layout/Layout'
@@ -96,7 +96,10 @@ export function VariantsPage({ clusterName: clusterNameUnsafe }: VariantsPagePro
 const NEXTSTRAIN_ICON = <NextstrainIcon />
 
 export function VariantsPageContent({ currentCluster }: { currentCluster: ClusterDatum }) {
-  const ClusterContent = getClusterContent(currentCluster.build_name)
+  const ClusterContent = useMemo(
+    () => <MdxContent filepath={`clusters/${currentCluster.build_name}.md`} />,
+    [currentCluster.build_name],
+  )
   const showDefiningMutations = useMemo(() => hasDefiningMutations(currentCluster), [currentCluster])
 
   const AquariaSection = useMemo(() => {
@@ -128,9 +131,7 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
           </Row>
 
           <Row noGutters className="mb-2">
-            <Col>
-              <ClusterContent />
-            </Col>
+            <Col>{ClusterContent}</Col>
           </Row>
 
           <Row noGutters className="mb-2">

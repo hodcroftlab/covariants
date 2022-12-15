@@ -1,11 +1,9 @@
 import React from 'react'
-
 import { Col, Container, Row } from 'reactstrap'
+import { MdxContent } from 'src/i18n/getMdxContent'
 import { CenteredEditable } from 'src/components/Common/Editable'
 import { PageHeading } from 'src/components/Common/PageHeading'
 import { Layout } from 'src/components/Layout/Layout'
-
-import Faq from '../../../../content/Faq.md'
 
 export function FaqPage() {
   return (
@@ -20,7 +18,7 @@ export function FaqPage() {
         <Row noGutters>
           <Col>
             <CenteredEditable githubUrl="blob/master/content/Faq.md">
-              <Faq />
+              <MdxContent filepath="Faq.md" />
             </CenteredEditable>
           </Col>
         </Row>

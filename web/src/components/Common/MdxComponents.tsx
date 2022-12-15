@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { AaMut, Lin, Mut, NucMut, Var, Who } from 'src/components/Common/MutationBadge'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
+import { MdxContent } from 'src/i18n/getMdxContent'
 
 export const Pre = styled.pre`
   padding: 0.5rem 1rem;
@@ -27,6 +28,7 @@ export const mdxComponents = {
   Mut,
   Lin,
   Who,
+  MdxContent,
 }
 
 export function getMdxComponents(components: MDXProviderComponents): MDXProviderComponents {

@@ -2,6 +2,7 @@ import React, { useCallback, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 
+import { MdxContent } from 'src/i18n/getMdxContent'
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
 import { ColCustom } from 'src/components/Common/ColCustom'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
@@ -9,7 +10,6 @@ import { RegionSwitcher } from 'src/components/CountryDistribution/RegionSwitche
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
-import { getRegionPerCountryContent } from 'src/io/getRegionContent'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import {
   filterClusters,
@@ -120,7 +120,7 @@ export function CountryDistributionPage() {
 
   const IntroContent = useMemo(() => {
     const contentFilename = getPerCountryIntroContentFilename(region)
-    return getRegionPerCountryContent(contentFilename)
+    return <MdxContent filepath={`PerCountryIntro/${contentFilename}`} />
   }, [region])
 
   return (
@@ -144,8 +144,8 @@ export function CountryDistributionPage() {
 
       <Row noGutters>
         <Col>
-          <CenteredEditable githubUrl="tree/master/content/PerCountryIntro/">
-            <IntroContent />
+          <CenteredEditable githubUrl="tree/master/web/src/content/en/PerCountryIntro/">
+            {IntroContent}
           </CenteredEditable>
         </Col>
       </Row>

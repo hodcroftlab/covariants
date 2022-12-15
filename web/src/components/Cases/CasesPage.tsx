@@ -1,12 +1,12 @@
 import React, { useCallback, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
-
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
 import { ColCustom } from 'src/components/Common/ColCustom'
 import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
+import { MdxContent } from 'src/i18n/getMdxContent'
 import { getPerCountryCasesData, filterClusters, filterCountries } from 'src/io/getPerCountryCasesData'
 import { clustersCasesAtom, disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/ClustersForCaseData'
 import {
@@ -22,8 +22,6 @@ import { PageHeading } from 'src/components/Common/PageHeading'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { CasesPlotCard } from './CasesPlotCard'
-
-import IntroContent from '../../../../content/PerCountryCasesIntro.md'
 
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
@@ -105,8 +103,8 @@ export function CasesPage() {
 
       <Row noGutters>
         <Col>
-          <CenteredEditable githubUrl="tree/master/content/PerCountryCasesIntro.md">
-            <IntroContent />
+          <CenteredEditable githubUrl="tree/master/web/src/content/en/PerCountryCasesIntro.md">
+            <MdxContent filepath="PerCountryCasesIntro.md" />
           </CenteredEditable>
         </Col>
       </Row>

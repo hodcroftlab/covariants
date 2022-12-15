@@ -1,4 +1,4 @@
-import RegionBreakdown from 'content/RegionBreakdownInfo.md'
+
 import swissRegionMap from 'src/assets/images/swissRegionMap.png'
 
 Graphs show for each multi-canton region, the proportion of total number of **sequences** (*not cases*), over time, that fall into defined variant groups. Regions are displayed if they have at least 20 sequences in any variant being tracked. They are ordered by total number of sequences in tracked variants.
@@ -16,4 +16,4 @@ The Swiss regions are the same as those used for the [Sentinella](https://www.se
 </figure>
 
 
-<RegionBreakdown/>
+<MdxContent filepath="RegionBreakdownInfo.md" />

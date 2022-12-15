@@ -20,6 +20,7 @@ import {
 } from 'src/state/Places'
 import { tooltipSortAtom, TooltipSortCriterion } from 'src/state/TooltipSort'
 import styled from 'styled-components'
+import { MdxContent } from 'src/i18n/getMdxContent'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { getPerClusterData, filterClusters, filterCountries } from 'src/io/getPerClusterData'
 import { ClusterDistributionPlotCard } from 'src/components/ClusterDistribution/ClusterDistributionPlotCard'
@@ -31,8 +32,6 @@ import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLa
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
 import { PageHeading } from 'src/components/Common/PageHeading'
-
-import PerClusterIntro from '../../../../content/PerClusterIntro.md'
 
 const Dropdown = styled(DropdownBase)`
   min-width: 130px;
@@ -197,7 +196,7 @@ export function ClusterDistributionPage() {
       <Row noGutters>
         <Col>
           <CenteredEditable githubUrl="blob/master/content/PerClusterIntro.md">
-            <PerClusterIntro />
+            <MdxContent filepath="PerClusterIntro.md" />
           </CenteredEditable>
         </Col>
       </Row>

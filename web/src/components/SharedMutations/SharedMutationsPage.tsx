@@ -4,9 +4,9 @@ import { Col, Container, Row } from 'reactstrap'
 import styled from 'styled-components'
 
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
+import { MdxContent } from 'src/i18n/getMdxContent'
 import { Editable, CenteredEditable } from 'src/components/Common/Editable'
 import { Layout } from 'src/components/Layout/Layout'
-import SharedMutationsIntro from '../../../../content/SharedMutations.md'
 import { SharedMutations } from './SharedMutations'
 import { PageHeading } from '../Common/PageHeading'
 
@@ -39,7 +39,7 @@ export function SharedMutationsPage() {
         <Row noGutters>
           <Col>
             <CenteredEditable githubUrl="blob/master/content/SharedMutations.md">
-              <SharedMutationsIntro />
+              <MdxContent filepath="SharedMutations.md" />
             </CenteredEditable>
           </Col>
         </Row>
