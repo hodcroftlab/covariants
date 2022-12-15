@@ -85,6 +85,8 @@
   "Spike protein model is not yet available for this variant": "ஸ்பைக் புரத மாதிரி இந்த மாறுபாட்டிற்கு இன்னும் கிடைக்கவில்லை",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "வரையறுக்கப்பட்ட SARS-COV-2 கிளேடுகளின் ஃபைலோஜெனடிக் உறவுகள் {{nextstrain}}",
   "source": "மூலம்",
+  "No dedicated {{nextstrain}} build is available": "இல்லை அர்ப்பணிப்பு {{nextstrain}} உருவாக்க கிடைக்கிறது",
+  "{{nextstrain}} Clade": "{{nextstrain}} கிளேட்",
   "Africa": "ஆப்ரிக்கா",
   "Alabama": "அலபாமா",
   "Alaska": "அலாஸ்கா",
@@ -208,6 +210,7 @@
   "Montenegro": "மாண்டெனக்ரா",
   "Morocco": "மொரோக்கோ",
   "Mozambique": "மொசாம்பிக்",
+  "Mutations": "பிறழ்வுகள்",
   "Namibia": "நமீபியா",
   "Nebraska": "நெப்ராஸ்கா",
   "Nepal": "நேபால்",
@@ -220,7 +223,6 @@
   "New Zealand": "நியூசிலாந்து",
   "Nicaragua": "நிகரகுவா",
   "Nigeria": "நைஜீரியா",
-  "No dedicated {{nextstrain}} build is available": "இல்லை அர்ப்பணிப்பு {{nextstrain}} உருவாக்க கிடைக்கிறது",
   "North America": "வட அமெரிக்கா",
   "North Carolina": "வட கரோலினா",
   "North Dakota": "வடக்கு டகோட்டா",
@@ -253,6 +255,8 @@
   "Senegal": "செனகல்",
   "Serbia": "செர்பியா",
   "Seychelles": "செஷல்ஸ்",
+  "Show less": "குறைவாகவே காட்டு",
+  "Show more": "மேலும் காட்டு",
   "Singapore": "சிங்கப்பூர்",
   "Sint Maarten": "சின்ட் மார்டென்",
   "Slovakia": "ஸ்லோவாகியா",
@@ -298,6 +302,5 @@
   "World": "உலகம்",
   "Wyoming": "வயோமிங்",
   "Zambia": "ஜாம்பியா",
-  "Zimbabwe": "ஜிம்பாப்வே",
-  "{{nextstrain}} Clade": "{{nextstrain}} கிளேட்"
+  "Zimbabwe": "ஜிம்பாப்வே"
 }

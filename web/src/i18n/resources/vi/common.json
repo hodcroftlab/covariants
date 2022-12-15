@@ -85,6 +85,8 @@
   "Spike protein model is not yet available for this variant": "Mô hình protein tăng đột biến chưa có sẵn cho biến thể này",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "Mối quan hệ phát sinh chủng loài của các clades SARS-COV-2 được xác định bởi {{nextstrain}}",
   "source": "nguồn",
+  "No dedicated {{nextstrain}} build is available": "Không có bản {{nextstrain}} xây dựng chuyên dụng",
+  "{{nextstrain}} Clade": "{{nextstrain}} Clade",
   "Africa": "Châu phi",
   "Alabama": "Alabama",
   "Alaska": "Alaska",
@@ -208,6 +210,7 @@
   "Montenegro": "Montenegro",
   "Morocco": "Ma-rốc",
   "Mozambique": "Mozambique",
+  "Mutations": "Đột biến",
   "Namibia": "Namibia",
   "Nebraska": "Nebraska",
   "Nepal": "Nepal",
@@ -220,7 +223,6 @@
   "New Zealand": "New Zealand",
   "Nicaragua": "Nicaragua",
   "Nigeria": "Nigeria",
-  "No dedicated {{nextstrain}} build is available": "Không có bản {{nextstrain}} xây dựng chuyên dụng",
   "North America": "Bắc Mỹ",
   "North Carolina": "North Carolina",
   "North Dakota": "North Dakota",
@@ -253,6 +255,8 @@
   "Senegal": "Sê-nê-gan",
   "Serbia": "Serbia",
   "Seychelles": "Seychelles",
+  "Show less": "Hiển thị ít hơn",
+  "Show more": "Xem thêm",
   "Singapore": "Singapore",
   "Sint Maarten": "Sint Maarten",
   "Slovakia": "Slovakia",
@@ -298,6 +302,5 @@
   "World": "Thế giới",
   "Wyoming": "Wyoming",
   "Zambia": "Dăm-bi-a",
-  "Zimbabwe": "Zimbabwe",
-  "{{nextstrain}} Clade": "{{nextstrain}} Clade"
+  "Zimbabwe": "Zimbabwe"
 }

@@ -85,6 +85,8 @@
   "Spike protein model is not yet available for this variant": "מודל חלבון ספייק אינו זמין עדיין עבור גרסה זו",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "יחסים פילוגנטיים של SARS-CoV-2 clades כפי שהוגדרו על ידי {{nextstrain}}",
   "source": "מקור",
+  "No dedicated {{nextstrain}} build is available": "אין {{nextstrain}} בנייה ייעודית זמינה",
+  "{{nextstrain}} Clade": "{{nextstrain}} קלאדה",
   "Africa": "אפריקה",
   "Alabama": "אלבמה",
   "Alaska": "אלסקה",
@@ -208,6 +210,7 @@
   "Montenegro": "מונטנגרו",
   "Morocco": "מרוקו",
   "Mozambique": "מוזמביק",
+  "Mutations": "מוטציות",
   "Namibia": "נמיביה",
   "Nebraska": "נברסקה",
   "Nepal": "נפאל",
@@ -220,7 +223,6 @@
   "New Zealand": "ניו זילנד",
   "Nicaragua": "ניקרגואה",
   "Nigeria": "ניגריה",
-  "No dedicated {{nextstrain}} build is available": "אין {{nextstrain}} בנייה ייעודית זמינה",
   "North America": "צפון אמריקה",
   "North Carolina": "צפון קרוליינה",
   "North Dakota": "דקוטה הצפונית",
@@ -253,6 +255,8 @@
   "Senegal": "סנגל",
   "Serbia": "סרביה",
   "Seychelles": "סיישל",
+  "Show less": "הצג פחות",
+  "Show more": "הצג יותר",
   "Singapore": "סינגפור",
   "Sint Maarten": "סנט מארטן",
   "Slovakia": "סלובקיה",
@@ -298,6 +302,5 @@
   "World": "העולם",
   "Wyoming": "ויומינג",
   "Zambia": "זמביה",
-  "Zimbabwe": "זימבבואה",
-  "{{nextstrain}} Clade": "{{nextstrain}} קלאדה"
+  "Zimbabwe": "זימבבואה"
 }

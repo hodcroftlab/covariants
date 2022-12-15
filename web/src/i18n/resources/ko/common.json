@@ -85,6 +85,8 @@
   "Spike protein model is not yet available for this variant": "이 변이체에는 스파이크 단백질 모델을 아직 사용할 수 없습니다.",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "다음과 같이 정의된 SARS-CoV-2 계통군의 계통발생적 관계 {{nextstrain}}",
   "source": "출처",
+  "No dedicated {{nextstrain}} build is available": "전용 {{nextstrain}} 빌드를 사용할 수 없습니다.",
+  "{{nextstrain}} Clade": "{{nextstrain}} 클레이드",
   "Africa": "아프리카",
   "Alabama": "앨라배마",
   "Alaska": "알래스카",
@@ -208,6 +210,7 @@
   "Montenegro": "몬테네그로",
   "Morocco": "모로코",
   "Mozambique": "모잠비크",
+  "Mutations": "돌연변이",
   "Namibia": "나미비아",
   "Nebraska": "네브래스카",
   "Nepal": "네팔",
@@ -220,7 +223,6 @@
   "New Zealand": "뉴질랜드",
   "Nicaragua": "니카라과",
   "Nigeria": "나이지리아",
-  "No dedicated {{nextstrain}} build is available": "전용 {{nextstrain}} 빌드를 사용할 수 없습니다.",
   "North America": "북미",
   "North Carolina": "노스캐롤라이나",
   "North Dakota": "노스다코타",
@@ -253,6 +255,8 @@
   "Senegal": "세네갈",
   "Serbia": "세르비아",
   "Seychelles": "세이셸",
+  "Show less": "적게 보기",
+  "Show more": "더 보기",
   "Singapore": "싱가포르",
   "Sint Maarten": "신트마르턴",
   "Slovakia": "슬로바키아",
@@ -298,6 +302,5 @@
   "World": "세계",
   "Wyoming": "와이오밍",
   "Zambia": "잠비아",
-  "Zimbabwe": "짐바브웨",
-  "{{nextstrain}} Clade": "{{nextstrain}} 클레이드"
+  "Zimbabwe": "짐바브웨"
 }

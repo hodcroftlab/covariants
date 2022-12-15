@@ -85,6 +85,8 @@
   "Spike protein model is not yet available for this variant": "รูปแบบโปรตีน Spike ยังไม่พร้อมใช้งานสำหรับตัวแปรนี้",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "ความสัมพันธ์ทางวิวัฒนาการของเคลด SARS-Cov-2 ตามที่กำหนดโดย {{nextstrain}}",
   "source": "ต้นกำเนิด",
+  "No dedicated {{nextstrain}} build is available": "ไม่มี {{nextstrain}} บิลด์เฉพาะที่สามารถใช้ได้",
+  "{{nextstrain}} Clade": "{{nextstrain}} เคลด",
   "Africa": "แอฟริกา",
   "Alabama": "อลาบามา",
   "Alaska": "มลรัฐอะแลสกา",
@@ -208,6 +210,7 @@
   "Montenegro": "มอนเตเนโกร",
   "Morocco": "โมร็อกโก",
   "Mozambique": "ประเทศโมซัมบิก",
+  "Mutations": "การกลายพันธุ์",
   "Namibia": "นามิเบีย",
   "Nebraska": "เนบราสก้า",
   "Nepal": "ประเทศเนปาล",
@@ -220,7 +223,6 @@
   "New Zealand": "นิวซีแลนด์",
   "Nicaragua": "นิการากัว",
   "Nigeria": "ประเทศไนจีเรีย",
-  "No dedicated {{nextstrain}} build is available": "ไม่มี {{nextstrain}} บิลด์เฉพาะที่สามารถใช้ได้",
   "North America": "ทวีปอเมริกาเหนือ",
   "North Carolina": "นอร์ทแคโรไลนา",
   "North Dakota": "รัฐนอร์ทดาโคตา",
@@ -253,6 +255,8 @@
   "Senegal": "ประเทศเซเนกัล",
   "Serbia": "เซอร์เบีย",
   "Seychelles": "เซเชลส์",
+  "Show less": "แสดงน้อยลง",
+  "Show more": "แสดงเพิ่มเติม",
   "Singapore": "สิงคโปร์",
   "Sint Maarten": "ซินท์มาร์เทิน",
   "Slovakia": "สโลวะเกีย",
@@ -298,6 +302,5 @@
   "World": "โลก",
   "Wyoming": "ไวโอมิง",
   "Zambia": "แซมเบีย",
-  "Zimbabwe": "ประเทศซิมบับเว",
-  "{{nextstrain}} Clade": "{{nextstrain}} เคลด"
+  "Zimbabwe": "ประเทศซิมบับเว"
 }

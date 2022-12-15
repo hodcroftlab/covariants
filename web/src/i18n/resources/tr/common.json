@@ -85,6 +85,8 @@
   "Spike protein model is not yet available for this variant": "Spike protein modeli henüz bu varyant için mevcut değil",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "SARS-CoV-2 sınıflarının filogenetik ilişkileri {{nextstrain}}",
   "source": "kaynak",
+  "No dedicated {{nextstrain}} build is available": "Özel bir {{nextstrain}} yapı mevcut değil",
+  "{{nextstrain}} Clade": "{{nextstrain}} Clade",
   "Africa": "Afrika",
   "Alabama": "Alabama",
   "Alaska": "Alaska",
@@ -208,6 +210,7 @@
   "Montenegro": "Karadağ",
   "Morocco": "Fas",
   "Mozambique": "Mozambik",
+  "Mutations": "Mutasyonlar",
   "Namibia": "Namibya",
   "Nebraska": "Nebraska",
   "Nepal": "Nepal",
@@ -220,7 +223,6 @@
   "New Zealand": "Yeni Zelanda",
   "Nicaragua": "Nikaragua",
   "Nigeria": "Nijerya",
-  "No dedicated {{nextstrain}} build is available": "Özel bir {{nextstrain}} yapı mevcut değil",
   "North America": "Kuzey Amerika",
   "North Carolina": "Kuzey Carolina",
   "North Dakota": "Kuzey Dakota",
@@ -253,6 +255,8 @@
   "Senegal": "Senegal",
   "Serbia": "Sırbistan",
   "Seychelles": "Seyşeller",
+  "Show less": "Daha az göster",
+  "Show more": "Daha fazla göster",
   "Singapore": "Singapur",
   "Sint Maarten": "Sint Maarten",
   "Slovakia": "Slovakya",
@@ -298,6 +302,5 @@
   "World": "Dünya",
   "Wyoming": "Wyoming",
   "Zambia": "Zambiya",
-  "Zimbabwe": "Zimbabve",
-  "{{nextstrain}} Clade": "{{nextstrain}} Clade"
+  "Zimbabwe": "Zimbabve"
 }

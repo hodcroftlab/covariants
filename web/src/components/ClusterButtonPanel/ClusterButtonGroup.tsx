@@ -5,6 +5,7 @@ import { Button } from 'reactstrap'
 
 import type { ClusterDatum } from 'src/io/getClusters'
 import { ClusterButton } from 'src/components/ClusterButtonPanel/ClusterButton'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 const ClusterGroupContainer = styled.div`
   display: flex;
@@ -55,8 +56,10 @@ export interface ClusterButtonGroupProps {
 }
 
 export function ClusterButtonGroup({ clusterGroup, currentCluster }: ClusterButtonGroupProps) {
+  const { t } = useTranslationSafe()
+
   const [showNonImportant, setShowNonImportant] = useState(false)
-  const toggleShowNonImportant = useMemo(() => (_: unknown) => setShowNonImportant(!showNonImportant), [showNonImportant]) // prettier-ignore
+  const toggleShowNonImportant = useMemo(() => (_: unknown) => setShowNonImportant(!showNonImportant), [showNonImportant]); // prettier-ignore
 
   return (
     <ClusterGroupContainer>
@@ -74,7 +77,7 @@ export function ClusterButtonGroup({ clusterGroup, currentCluster }: ClusterButt
       </ClusterGroupWrapper>
 
       <ShowMoreButton type="button" color="link" onClick={toggleShowNonImportant}>
-        {showNonImportant ? 'Show less' : 'Show more'}
+        {showNonImportant ? t('Show less') : t('Show more')}
       </ShowMoreButton>
     </ClusterGroupContainer>
   )

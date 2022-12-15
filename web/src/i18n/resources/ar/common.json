@@ -85,6 +85,8 @@
   "Spike protein model is not yet available for this variant": "نموذج بروتين سبايك غير متاح بعد لهذا البديل",
   "Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}": "العلاقات التطورية لكتل SARS-CoV-2 على النحو المحدد بواسطة {{nextstrain}}",
   "source": "مصدر",
+  "No dedicated {{nextstrain}} build is available": "لا يوجد {{nextstrain}} بناء مخصص متاح",
+  "{{nextstrain}} Clade": "{{nextstrain}} كليد",
   "Africa": "أفريقيا",
   "Alabama": "ألاباما",
   "Alaska": "ألاسكا",
@@ -208,6 +210,7 @@
   "Montenegro": "مونتينيغرو",
   "Morocco": "المغرب",
   "Mozambique": "موزمبيق",
+  "Mutations": "الطفرات",
   "Namibia": "ناميبيا",
   "Nebraska": "نبراسكا",
   "Nepal": "نيبال",
@@ -220,7 +223,6 @@
   "New Zealand": "نيوزيلندا",
   "Nicaragua": "نيكاراغوا",
   "Nigeria": "نيجيريا",
-  "No dedicated {{nextstrain}} build is available": "لا يوجد {{nextstrain}} بناء مخصص متاح",
   "North America": "أمريكا الشمالية",
   "North Carolina": "كارولينا الشمالية",
   "North Dakota": "داكوتا الشمالية",
@@ -253,6 +255,8 @@
   "Senegal": "السنغال",
   "Serbia": "صربيا",
   "Seychelles": "سيشيل",
+  "Show less": "أظهر أقل",
+  "Show more": "عرض المزيد",
   "Singapore": "سنغافورة",
   "Sint Maarten": "سينت مارتن",
   "Slovakia": "سلوفاكيا",
@@ -298,6 +302,5 @@
   "World": "العالم",
   "Wyoming": "وايومنغ",
   "Zambia": "زامبيا",
-  "Zimbabwe": "زيمبابوي",
-  "{{nextstrain}} Clade": "{{nextstrain}} كليد"
+  "Zimbabwe": "زيمبابوي"
 }
