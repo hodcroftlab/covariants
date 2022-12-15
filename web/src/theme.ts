@@ -105,6 +105,7 @@ export const shadows = {
   medium: `2px 2px 3px 3px ${rgba(gray700, 0.25)}`,
   normal: `2px 2px 3px 3px ${rgba(gray900, 0.25)}`,
   thick: `3px 3px 3px 5px ${rgba(gray900, 0.33)}`,
+  blurredMedium: `5px 5px 20px 5px ${rgba(gray700, 0.25)}`,
   filter: {
     slight: `1px 1px 1px ${rgba(gray700, 0.25)}`,
     medium: `2px 2px 3px ${rgba(gray900, 0.33)}`,

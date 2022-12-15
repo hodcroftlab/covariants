@@ -1,9 +1,10 @@
-import React, { useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import styled from 'styled-components'
 import { Button, Col, Form, FormGroup, Row } from 'reactstrap'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
+import { Dropdown, DropdownEntry } from 'src/components/Common/Dropdown'
 import { CheckboxWithIcon } from 'src/components/Common/CheckboxWithIcon'
 import {
   continentAtom,
@@ -13,6 +14,7 @@ import {
   geographyDisableAllAtom,
   geographyEnableAllAtom,
   regionAtom,
+  regionsAtom,
 } from 'src/state/Geography'
 
 const GeoIconCountry = dynamic(() => import('src/components/Common/GeoIconCountry').then((m) => m.GeoIconCountry))
@@ -52,6 +54,7 @@ export function GeographyToggles() {
 
   return (
     <Container>
+      <RegionSwitcher />
       <GeographySelectAll />
       {continents}
       {countries}
@@ -118,4 +121,33 @@ export function ContinentCheckbox({ continent }: { continent: string }) {
   const [continentEnabled, setContinentEnabled] = useRecoilState(continentAtom(continent))
   const Icon = useMemo(() => <GeoIconContinent continent={continent} />, [continent])
   return <CheckboxWithIcon label={continent} Icon={Icon} checked={continentEnabled} setChecked={setContinentEnabled} />
+}
+
+export function RegionSwitcher() {
+  const { t } = useTranslationSafe()
+  const regions = useRecoilValue(regionsAtom)
+  const [region, setRegion] = useRecoilState(regionAtom)
+
+  const setCurrentEntry = useCallback((entry: DropdownEntry) => setRegion(entry.key), [setRegion])
+
+  const { entries } = useMemo(() => {
+    const entries = regions.map((region) => ({ key: region, value: t(region) }))
+    return { entries }
+  }, [regions])
+
+  const currentEntry = useMemo(() => {
+    const currentEntry = entries.find((entry) => entry.key === region)
+    if (!currentEntry) {
+      return entries[0]
+    }
+    return currentEntry
+  }, [entries, region])
+
+  return (
+    <Row noGutters>
+      <Col>
+        <Dropdown entries={entries} currentEntry={currentEntry} setCurrentEntry={setCurrentEntry} />
+      </Col>
+    </Row>
+  )
 }

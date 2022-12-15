@@ -28,11 +28,11 @@ def json_read(filepath: str):
 def json_write(obj: dict, filepath: str):
     mkdir(dirname(filepath))
     with open(filepath, "w") as f:
-        return json.dump(obj, f, sort_keys=True, indent=2)
+        return json.dump(obj, f, indent=2)
 
 
 def json_stringify(obj: dict):
-    return json.dumps(obj, sort_keys=True, indent=2, default=lambda o: o.__dict__)
+    return json.dumps(obj, indent=2, default=lambda o: o.__dict__)
 
 
 def json_print(obj: dict):
