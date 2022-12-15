@@ -64,8 +64,9 @@ export function GeographyToggles() {
 
 export function GeographySelectAll() {
   const { t } = useTranslationSafe()
-  const selectAll = useSetRecoilState(geographyEnableAllAtom)
-  const deselectAll = useSetRecoilState(geographyDisableAllAtom)
+  const region = useRecoilValue(regionAtom)
+  const selectAll = useSetRecoilState(geographyEnableAllAtom(region))
+  const deselectAll = useSetRecoilState(geographyDisableAllAtom(region))
   return (
     <Row noGutters>
       <Col className="d-flex">
@@ -83,7 +84,8 @@ export function GeographySelectAll() {
 }
 
 export function CountryCheckboxes() {
-  const countryNames = useRecoilValue(countryNamesAtom)
+  const region = useRecoilValue(regionAtom)
+  const countryNames = useRecoilValue(countryNamesAtom(region))
   const countryCheckboxes = useMemo(
     () => countryNames.map((country) => <CountryCheckbox key={country} country={country} />),
     [countryNames],
@@ -93,7 +95,7 @@ export function CountryCheckboxes() {
 
 export function CountryCheckbox({ country }: { country: string }) {
   const region = useRecoilValue(regionAtom)
-  const [countryEnabled, setCountryEnabled] = useRecoilState(countryAtom(country))
+  const [countryEnabled, setCountryEnabled] = useRecoilState(countryAtom({ region, country }))
   const Icon = useMemo(() => {
     if (region === 'World') return <GeoIconCountry country={country} />
     if (region === 'United States') return <GeoIconUsState state={country} />
@@ -104,7 +106,7 @@ export function CountryCheckbox({ country }: { country: string }) {
 
 export function ContinentCheckboxes() {
   const region = useRecoilValue(regionAtom)
-  const continentNames = useRecoilValue(continentNamesAtom)
+  const continentNames = useRecoilValue(continentNamesAtom(region))
   const continentCheckboxes = useMemo(() => {
     return continentNames.map((continent) => {
       return <ContinentCheckbox key={continent} continent={continent} />
@@ -118,7 +120,8 @@ export function ContinentCheckboxes() {
 }
 
 export function ContinentCheckbox({ continent }: { continent: string }) {
-  const [continentEnabled, setContinentEnabled] = useRecoilState(continentAtom(continent))
+  const region = useRecoilValue(regionAtom)
+  const [continentEnabled, setContinentEnabled] = useRecoilState(continentAtom({ region, continent }))
   const Icon = useMemo(() => <GeoIconContinent continent={continent} />, [continent])
   return <CheckboxWithIcon label={continent} Icon={Icon} checked={continentEnabled} setChecked={setContinentEnabled} />
 }
@@ -133,7 +136,7 @@ export function RegionSwitcher() {
   const { entries } = useMemo(() => {
     const entries = regions.map((region) => ({ key: region, value: t(region) }))
     return { entries }
-  }, [regions])
+  }, [regions, t])
 
   const currentEntry = useMemo(() => {
     const currentEntry = entries.find((entry) => entry.key === region)

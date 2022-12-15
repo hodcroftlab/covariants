@@ -1,5 +1,5 @@
 import copy from 'fast-copy'
-import { atom, selector, selectorFamily } from 'recoil'
+import { atom, atomFamily, selector, selectorFamily } from 'recoil'
 import { axiosFetch } from 'src/io/axiosFetch'
 import { getDataRootUrl } from 'src/io/getDataRootUrl'
 import urljoin from 'url-join'
@@ -31,48 +31,51 @@ function getAllContinentNames(region: Record<string, string[]>) {
   return Object.keys(region)
 }
 
-const continentsAtom = atom<{ continent: string; enabled: boolean }[]>({
+const continentsAtom = atomFamily<{ continent: string; enabled: boolean }[], string>({
   key: 'continentsAtom',
-  default: selector({
-    key: 'continentsAtom/default',
-    get({ get }) {
-      const region = get(regionAtom)
-      return getAllContinentNames(get(geographyAtom).regions[region]).map((continent) => ({ continent, enabled: true }))
-    },
-  }),
+  default: (region) =>
+    selector({
+      key: `continentsAtom/default/${region}`,
+      get: ({ get }) => {
+        return getAllContinentNames(get(geographyAtom).regions[region]).map((continent) => ({
+          continent,
+          enabled: true,
+        }))
+      },
+    }),
 })
 
-export const continentNamesAtom = atom<string[]>({
+export const continentNamesAtom = atomFamily<string[], string>({
   key: 'continentNamesAtom',
-  default: selector({
-    key: 'continentNamesAtom/default',
-    get({ get }) {
-      const region = get(regionAtom)
-      return getAllContinentNames(get(geographyAtom).regions[region])
-    },
-  }),
+  default: (region) =>
+    selector({
+      key: `continentNamesAtom/default/${region}`,
+      get({ get }) {
+        return getAllContinentNames(get(geographyAtom).regions[region])
+      },
+    }),
 })
 
-export const continentAtom = selectorFamily<boolean, string>({
+export const continentAtom = selectorFamily<boolean, { region: string; continent: string }>({
   key: 'continentAtom',
   get:
-    (continent) =>
+    ({ region, continent }) =>
     ({ get }) => {
-      return get(continentsAtom).find((candidate) => candidate.continent === continent)?.enabled ?? false
+      return get(continentsAtom(region)).find((candidate) => candidate.continent === continent)?.enabled ?? false
     },
   set:
-    (continent) =>
+    ({ region, continent }) =>
     ({ get, set, reset }, enabled) => {
       if (isDefaultValue(enabled)) {
-        reset(continentsAtom)
+        reset(continentsAtom(region))
       } else {
-        const continents = copy(get(continentsAtom))
+        const continents = copy(get(continentsAtom(region)))
         continents.forEach((item) => {
           if (item.continent === continent) {
             item.enabled = enabled
           }
         })
-        set(continentsAtom, continents)
+        set(continentsAtom(region), continents)
       }
     },
 })
@@ -81,48 +84,48 @@ function getAllCountryNames(regions: Record<string, string[]>) {
   return Object.entries(regions).flatMap(([_, countries]) => countries)
 }
 
-const countriesAtom = atom<{ country: string; enabled: boolean }[]>({
+const countriesAtom = atomFamily<{ country: string; enabled: boolean }[], string>({
   key: 'countriesAtom',
-  default: selector({
-    key: 'countriesAtom/default',
-    get({ get }) {
-      const region = get(regionAtom)
-      return getAllCountryNames(get(geographyAtom).regions[region]).map((country) => ({ country, enabled: true }))
-    },
-  }),
+  default: (region) =>
+    selector({
+      key: `countriesAtom/default/${region}`,
+      get({ get }) {
+        return getAllCountryNames(get(geographyAtom).regions[region]).map((country) => ({ country, enabled: true }))
+      },
+    }),
 })
 
-export const countryNamesAtom = atom<string[]>({
+export const countryNamesAtom = atomFamily<string[], string>({
   key: 'countryNamesAtom',
-  default: selector({
-    key: 'countryNamesAtom/default',
-    get({ get }) {
-      const region = get(regionAtom)
-      return getAllCountryNames(get(geographyAtom).regions[region])
-    },
-  }),
+  default: (region) =>
+    selector({
+      key: `countryNamesAtom/default/${region}`,
+      get({ get }) {
+        return getAllCountryNames(get(geographyAtom).regions[region])
+      },
+    }),
 })
 
-export const countryAtom = selectorFamily<boolean, string>({
+export const countryAtom = selectorFamily<boolean, { region: string; country: string }>({
   key: 'countryAtom',
   get:
-    (country) =>
+    ({ region, country }) =>
     ({ get }) => {
-      return get(countriesAtom).find((candidate) => candidate.country === country)?.enabled ?? false
+      return get(countriesAtom(region)).find((candidate) => candidate.country === country)?.enabled ?? false
     },
   set:
-    (country) =>
+    ({ region, country }) =>
     ({ get, set, reset }, enabled) => {
       if (isDefaultValue(enabled)) {
-        reset(countriesAtom)
+        reset(countriesAtom(region))
       } else {
-        const countries = copy(get(countriesAtom))
+        const countries = copy(get(countriesAtom(region)))
         countries.forEach((item) => {
           if (item.country === country) {
             item.enabled = enabled
           }
         })
-        set(countriesAtom, countries)
+        set(countriesAtom(region), countries)
       }
     },
 })
@@ -131,24 +134,28 @@ function setEnabledAll<T extends { enabled: boolean }>(items: T[], enabled: bool
   return items.map((item) => ({ ...item, enabled }))
 }
 
-export const geographyEnableAllAtom = selector<unknown>({
+export const geographyEnableAllAtom = selectorFamily<unknown, string>({
   key: 'geographyEnableAllAtom',
   get() {
     throw new ErrorInternal("Attempt to read from write-only atom: 'geographyEnableAllAtom'")
   },
-  set({ get, set }) {
-    set(countriesAtom, setEnabledAll(get(countriesAtom), true))
-    set(continentsAtom, setEnabledAll(get(continentsAtom), true))
-  },
+  set:
+    (region) =>
+    ({ get, set }) => {
+      set(countriesAtom(region), setEnabledAll(get(countriesAtom(region)), true))
+      set(continentsAtom(region), setEnabledAll(get(continentsAtom(region)), true))
+    },
 })
 
-export const geographyDisableAllAtom = selector<unknown>({
+export const geographyDisableAllAtom = selectorFamily<unknown, string>({
   key: 'geographyDisableAllAtom',
   get() {
     throw new ErrorInternal("Attempt to read from write-only atom: 'geographyDisableAllAtom'")
   },
-  set({ get, set }) {
-    set(countriesAtom, setEnabledAll(get(countriesAtom), false))
-    set(continentsAtom, setEnabledAll(get(continentsAtom), false))
-  },
+  set:
+    (region) =>
+    ({ get, set }) => {
+      set(countriesAtom(region), setEnabledAll(get(countriesAtom(region)), false))
+      set(continentsAtom(region), setEnabledAll(get(continentsAtom(region)), false))
+    },
 })
