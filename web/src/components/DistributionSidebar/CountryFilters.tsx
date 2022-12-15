@@ -46,10 +46,11 @@ export interface IconOrLineComponentProps {
 }
 
 export function IconComponent({ country, Icon }: IconOrLineComponentProps) {
+  const { t } = useTranslationSafe()
   return (
     <FlagAlignment>
       {Icon && <Icon country={country} withFallback />}
-      <span>{country}</span>
+      <span>{t(country)}</span>
     </FlagAlignment>
   )
 }

@@ -59,7 +59,8 @@
     "run:node:prod": "cross-env NODE_ENV=production BABEL_ENV=production  babel-node --config-file \"./babel-node.config.js\" --extensions '.ts'",
     "monkey-patch": "yarn run:node tools/monkeyPatch.ts",
     "stills": "yarn run:node tools/generateStillImages.ts",
-    "i18n": "yarn i18next -c config/i18next/i18next.config.js",
+    "i18n:extract": "yarn i18next -c config/i18next/i18next.config.js",
+    "i18n:addkeys": "babel-node --config-file \"./babel-node.config.js\" --extensions \".ts\" tools/addLocaleKeys.ts",
     "i18n:fix": "babel-node --config-file \"./babel-node.config.js\" --extensions \".ts\" tools/fixLocales.ts",
     "i18n:translate": "json-autotranslate --config=json-autotranslate.json --input=src/i18n/resources --service=amazon-translate --matcher=i18next --fix-inconsistencies --delete-unused-strings"
   },

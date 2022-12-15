@@ -4,9 +4,9 @@ import { difference, isObject, padStart, isEmpty, get } from 'lodash'
 import { notUndefined } from '../src/helpers/notUndefined'
 import { safeZip } from '../src/helpers/safeZip'
 
-const DEFAULT_LOCALE_KEY = 'en'
-const I18N_RESOURCES_DIR = 'src/i18n/resources/'
-const I18N_RESOURCES_DEFAULT_LOCALE_FILE = path.join(I18N_RESOURCES_DIR, DEFAULT_LOCALE_KEY, 'common.json')
+export const DEFAULT_LOCALE_KEY = 'en'
+export const I18N_RESOURCES_DIR = 'src/i18n/resources/'
+export const I18N_RESOURCES_DEFAULT_LOCALE_FILE = path.join(I18N_RESOURCES_DIR, DEFAULT_LOCALE_KEY, 'common.json')
 
 const dirs = fs.readdirSync(I18N_RESOURCES_DIR)
 
