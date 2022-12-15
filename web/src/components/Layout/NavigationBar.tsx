@@ -19,6 +19,7 @@ import BrandLogoLargeBase from 'src/assets/images/logo_text_right.svg'
 import { Link } from 'src/components/Link/Link'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { TWITTER_USERNAME_RAW, URL_GITHUB } from 'src/constants'
+import { LanguageSwitcher } from 'src/components/Layout/LanguageSwitcher'
 
 let navLinksLeft: Record<string, string> = {
   '/': 'Home',
@@ -177,6 +178,7 @@ export function NavigationBar() {
               </NavLink>
             </NavItem>
           ))}
+          <LanguageSwitcher />
         </Nav>
       </Collapse>
     </Navbar>
