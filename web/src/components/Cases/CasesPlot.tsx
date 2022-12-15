@@ -6,6 +6,7 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Label } from 're
 import { DateTime } from 'luxon'
 
 import type { PerCountryCasesDistributionDatum } from 'src/io/getPerCountryCasesData'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { ticks, timeDomain } from 'src/io/getParams'
 import { CLUSTER_NAME_OTHERS, getClusterColor } from 'src/io/getClusters'
 import { formatDateHumanely } from 'src/helpers/format'
@@ -24,6 +25,7 @@ export interface CasesPlotProps {
 }
 
 export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotProps) {
+  const { t } = useTranslationSafe()
   const theme = useTheme()
   const chartRef = useRef(null)
 
@@ -69,7 +71,7 @@ export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotPro
                 position="insideLeft"
                 offset={0}
                 angle={270}
-                value={'Cases per million people'}
+                value={t('Cases per million people')}
               />
             </YAxis>
 

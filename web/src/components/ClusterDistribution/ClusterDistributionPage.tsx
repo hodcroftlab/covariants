@@ -76,13 +76,14 @@ export interface SortReverseCheckboxProps {
 }
 
 export function SortReverseCheckbox({ reverse, setReverse }: SortReverseCheckboxProps) {
+  const { t } = useTranslationSafe()
   const onChange = useCallback(() => setReverse(!reverse), [setReverse, reverse])
 
   return (
     <FormGroup check inline>
       <Label htmlFor="per-variant-sort-reverse" check>
         <Input id="per-variant-sort-reverse" type="checkbox" checked={reverse} onChange={onChange} />
-        <span>{'Reversed'}</span>
+        <span>{t('Reversed')}</span>
       </Label>
     </FormGroup>
   )

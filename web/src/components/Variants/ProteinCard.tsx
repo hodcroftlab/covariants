@@ -10,6 +10,7 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 import GifPlayer from 'src/components/Common/GifPlayer'
 
 import GisaidLogo from 'src/assets/images/GISAID_logo.svg'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 const ProteinCardTitleIcon = styled(SiMoleculer)`
   margin: auto 5px;
@@ -48,30 +49,34 @@ export interface ProteinCardProps {
 }
 
 export function ProteinCardTitle({ cluster }: ProteinCardProps) {
+  const { t } = useTranslationSafe()
+
   return (
     <span className="d-flex w-100">
       <ProteinCardTitleIcon />
-      <ProteinCardHeading>{`Spike protein model for ${cluster.display_name}`}</ProteinCardHeading>
+      <ProteinCardHeading>
+        {t('Spike protein model for {{variant}}', { variant: cluster.display_name })}
+      </ProteinCardHeading>
     </span>
   )
 }
 
 export function Placeholder() {
+  const { t } = useTranslationSafe()
+
   return (
     <Container fluid className="">
       <Row noGutters>
         <Col>
-          <p>{'Spike protein model is not yet available for this variant'}</p>
+          <p>{t('Spike protein model is not yet available for this variant')}</p>
         </Col>
       </Row>
 
       <Row noGutters>
         <Col>
           <p>
-            {'Consider '}
-            <LinkExternal href={`${URL_GITHUB}/tree/master/web/public/proteins/gif`}>
-              {'contributing on Github'}
-            </LinkExternal>
+            {t('Consider contributing on {{github}}', { github: ' ' })}
+            <LinkExternal href={`${URL_GITHUB}/tree/master/web/public/proteins/gif`}>{'Github'}</LinkExternal>
           </p>
         </Col>
       </Row>

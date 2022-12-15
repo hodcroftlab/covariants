@@ -5,10 +5,10 @@ import styled from 'styled-components'
 import { GoGraph } from 'react-icons/go'
 import { Card, CardBody, Col, Row } from 'reactstrap'
 
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { theme } from 'src/theme'
 import { ClusterDistributionPlot } from 'src/components/ClusterDistribution/ClusterDistributionPlot'
 import { ClusterDatum } from 'src/io/getClusters'
-
 import { Link } from '../Link/Link'
 
 const PlotCardTitleIcon = styled(GoGraph)`
@@ -32,13 +32,17 @@ export interface PlotCardProps {
 }
 
 export function PlotCardTitle({ cluster }: PlotCardProps) {
+  const { t } = useTranslationSafe()
+
   return (
     <span className="d-flex w-100">
       <PlotCardTitleIcon />
-      <PlotCardHeading>{`Distribution of ${cluster.display_name} per country`}</PlotCardHeading>
+      <PlotCardHeading>
+        {t('Distribution of {{variant}} per country', { variant: cluster.display_name })}
+      </PlotCardHeading>
       <span className="ml-auto">
         <Link href="/per-variant" color={theme.link.dim.color}>
-          {'Compare'}
+          {t('Compare')}
         </Link>
       </span>
     </span>

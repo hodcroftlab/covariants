@@ -56,6 +56,7 @@ export function IconComponent({ country, Icon }: IconOrLineComponentProps) {
 }
 
 export function LineComponent({ country }: IconOrLineComponentProps) {
+  const { t } = useTranslationSafe()
   const theme = useTheme()
   const { stroke, strokeDasharray } = useMemo(() => {
     return {
@@ -73,7 +74,7 @@ export function LineComponent({ country }: IconOrLineComponentProps) {
         strokeWidth={theme.plot.country.legend.lineIcon.thickness}
         strokeDasharray={strokeDasharray}
       />
-      <span className="ml-2">{country}</span>
+      <span className="ml-2">{t(country)}</span>
     </>
   )
 }

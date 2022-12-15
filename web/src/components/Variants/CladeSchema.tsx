@@ -4,6 +4,7 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 import styled from 'styled-components'
 
 import CladeSchemaSvg from 'src/assets/images/clades.svg'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 const CladeSchemaFigure = styled.figure`
   display: flex;
@@ -22,6 +23,8 @@ const CladeSchemaFigcaption = styled.figcaption`
 `
 
 export function CladeSchema() {
+  const { t } = useTranslationSafe()
+
   return (
     <CladeSchemaFigure className="figure w-100 text-center">
       <CladeSchemaPicture className="w-100 figure-img">
@@ -29,11 +32,14 @@ export function CladeSchema() {
       </CladeSchemaPicture>
       <CladeSchemaFigcaption>
         <small>
-          <span>{'Phylogenetic relationships of Nextstrain SARS-CoV-2 clades ('}</span>
-          <LinkExternal href="https://github.com/nextstrain/ncov-clades-schema">{'source'}</LinkExternal>
-          <span>{'). Please credit/link to '}</span>
-          <LinkExternal href="https://nextstrain.org">{'Nextstrain'}</LinkExternal>
-          <span>{' if using this figure.'}</span>
+          <span>
+            {t('Phylogenetic relationships of SARS-CoV-2 clades as defined by {{nextstrain}}', {
+              nextstrain: 'Nextstrain',
+            })}
+          </span>
+          <span>{' ('}</span>
+          <LinkExternal href="https://github.com/nextstrain/ncov-clades-schema">{t('source')}</LinkExternal>
+          <span>{')'}</span>
         </small>
       </CladeSchemaFigcaption>
     </CladeSchemaFigure>
