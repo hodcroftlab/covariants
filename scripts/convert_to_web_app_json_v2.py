@@ -66,10 +66,12 @@ def get_geography_json():
             # Let's imagine regions "US" and "Switzerland" have 1 pseudo-continent, of the same name as region
             continents = {region_name: countries}
 
-        regions.update({region_name: continents})
+        region_data = {"continents": continents, "countries": countries}
+
+        regions.update({region_name: region_data})
 
     geography = {
-        "regions": regions
+        "regions": regions,
     }
 
     json_print(geography)

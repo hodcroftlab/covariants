@@ -7,7 +7,12 @@ import { isDefaultValue } from 'src/state/utils/isDefaultValue'
 import { ErrorInternal } from 'src/helpers/ErrorInternal'
 
 export interface Geography {
-  regions: Record<string, Record<string, string[]>>
+  regions: Record<string, Region>
+}
+
+export interface Region {
+  continents: Record<string, string[]>
+  countries: string[]
 }
 
 const geographyAtom = atom<Geography>({
@@ -27,8 +32,8 @@ export const regionAtom = atom({
   default: 'World',
 })
 
-function getAllContinentNames(region: Record<string, string[]>) {
-  return Object.keys(region)
+function getAllContinentNames(geography: Geography, region: string) {
+  return Object.keys(geography.regions[region].continents)
 }
 
 const continentsAtom = atomFamily<{ continent: string; enabled: boolean }[], string>({
@@ -36,11 +41,8 @@ const continentsAtom = atomFamily<{ continent: string; enabled: boolean }[], str
   default: (region) =>
     selector({
       key: `continentsAtom/default/${region}`,
-      get: ({ get }) => {
-        return getAllContinentNames(get(geographyAtom).regions[region]).map((continent) => ({
-          continent,
-          enabled: true,
-        }))
+      get({ get }) {
+        return getAllContinentNames(get(geographyAtom), region).map((continent) => ({ continent, enabled: true }))
       },
     }),
 })
@@ -51,7 +53,7 @@ export const continentNamesAtom = atomFamily<string[], string>({
     selector({
       key: `continentNamesAtom/default/${region}`,
       get({ get }) {
-        return getAllContinentNames(get(geographyAtom).regions[region])
+        return getAllContinentNames(get(geographyAtom), region)
       },
     }),
 })
@@ -80,8 +82,8 @@ export const continentAtom = selectorFamily<boolean, { region: string; continent
     },
 })
 
-function getAllCountryNames(regions: Record<string, string[]>) {
-  return Object.entries(regions).flatMap(([_, countries]) => countries)
+function getAllCountryNames(geography: Geography, region: string) {
+  return Object.entries(geography.regions[region].countries).flatMap(([_, countries]) => countries)
 }
 
 const countriesAtom = atomFamily<{ country: string; enabled: boolean }[], string>({
@@ -90,7 +92,7 @@ const countriesAtom = atomFamily<{ country: string; enabled: boolean }[], string
     selector({
       key: `countriesAtom/default/${region}`,
       get({ get }) {
-        return getAllCountryNames(get(geographyAtom).regions[region]).map((country) => ({ country, enabled: true }))
+        return getAllCountryNames(get(geographyAtom), region).map((country) => ({ country, enabled: true }))
       },
     }),
 })
@@ -101,7 +103,7 @@ export const countryNamesAtom = atomFamily<string[], string>({
     selector({
       key: `countryNamesAtom/default/${region}`,
       get({ get }) {
-        return getAllCountryNames(get(geographyAtom).regions[region])
+        return getAllCountryNames(get(geographyAtom), region)
       },
     }),
 })
