@@ -55,5 +55,7 @@
   "Mutation of amino acid at position {{pos}} in {{gene}} from {{ref}} to {{qry}}": "การกลายพันธุ์ของกรดอะมิโนที่ตำแหน่ง {{pos}} ใน {{gene}} จาก {{ref}} ไป {{qry}}",
   "Mutation of nucleotide at position {{pos}} from {{ref}} to {{qry}}": "การกลายพันธุ์ของนิวคลีโอไทด์ที่ตำแหน่ง {{pos}} จาก {{ref}} ไป {{qry}}",
   "Pango Lineage {{lineage}}": "สายพันธุ์ปังโก {{lineage}}",
-  "Protein {{geneName}}": "โปรตีน {{geneName}}"
+  "Protein {{geneName}}": "โปรตีน {{geneName}}",
+  "Close this window": "ปิดหน้าต่างนี้",
+  "Recent updates": "อัปเดตล่าสุด"
 }

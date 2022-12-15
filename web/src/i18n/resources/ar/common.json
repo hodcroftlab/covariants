@@ -55,5 +55,7 @@
   "Mutation of amino acid at position {{pos}} in {{gene}} from {{ref}} to {{qry}}": "تحور الأحماض الأمينية {{pos}} في الموضع {{gene}} من {{ref}} إلى {{qry}}",
   "Mutation of nucleotide at position {{pos}} from {{ref}} to {{qry}}": "تحور النيوكليوتيد في الموضع {{pos}} من {{ref}} إلى {{qry}}",
   "Pango Lineage {{lineage}}": "سلالة بانغو {{lineage}}",
-  "Protein {{geneName}}": "بروتين {{geneName}}"
+  "Protein {{geneName}}": "بروتين {{geneName}}",
+  "Close this window": "أغلق هذه النافذة",
+  "Recent updates": "التحديثات الأخيرة"
 }

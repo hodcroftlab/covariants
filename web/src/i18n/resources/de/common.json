@@ -55,5 +55,7 @@
   "Mutation of amino acid at position {{pos}} in {{gene}} from {{ref}} to {{qry}}": "Mutation der Aminosäure an {{pos}} der Position {{gene}} von von {{ref}} bis {{qry}}",
   "Mutation of nucleotide at position {{pos}} from {{ref}} to {{qry}}": "Mutation des Nukleotids an der Position {{pos}} von {{ref}} bis {{qry}}",
   "Pango Lineage {{lineage}}": "Pango-Linie {{lineage}}",
-  "Protein {{geneName}}": "Eiweiss {{geneName}}"
+  "Protein {{geneName}}": "Eiweiss {{geneName}}",
+  "Close this window": "Dieses Fenster schließen",
+  "Recent updates": "Aktuelle Updates"
 }

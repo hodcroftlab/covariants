@@ -55,5 +55,7 @@
   "Mutation of amino acid at position {{pos}} in {{gene}} from {{ref}} to {{qry}}": "Mutación del aminoácido {{pos}} en la posición {{gene}} de {{ref}} a {{qry}}",
   "Mutation of nucleotide at position {{pos}} from {{ref}} to {{qry}}": "Mutación del nucleótido en la posición {{pos}} de {{ref}} a {{qry}}",
   "Pango Lineage {{lineage}}": "Linaje Pango {{lineage}}",
-  "Protein {{geneName}}": "Proteína {{geneName}}"
+  "Protein {{geneName}}": "Proteína {{geneName}}",
+  "Close this window": "Cerrar esta ventana",
+  "Recent updates": "Actualizaciones recientes"
 }

@@ -55,5 +55,7 @@
   "Mutation of amino acid at position {{pos}} in {{gene}} from {{ref}} to {{qry}}": "{{pos}} 에서 {{gene}}{{ref}} 까지의 위치에 있는 아미노산의 돌연변이 {{qry}}",
   "Mutation of nucleotide at position {{pos}} from {{ref}} to {{qry}}": "{{pos}} 에서 {{ref}} 까지의 위치에 있는 뉴클레오티드의 돌연변이 {{qry}}",
   "Pango Lineage {{lineage}}": "판고 리니지 {{lineage}}",
-  "Protein {{geneName}}": "단백질 {{geneName}}"
+  "Protein {{geneName}}": "단백질 {{geneName}}",
+  "Close this window": "이 창 닫기",
+  "Recent updates": "최근 업데이트"
 }

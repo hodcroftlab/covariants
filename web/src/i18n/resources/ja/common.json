@@ -55,5 +55,7 @@
   "Mutation of amino acid at position {{pos}} in {{gene}} from {{ref}} to {{qry}}": "{{pos}}{{gene}}{{ref}} からまでの位置でのアミノ酸の変異 {{qry}}",
   "Mutation of nucleotide at position {{pos}} from {{ref}} to {{qry}}": "{{pos}}{{ref}} からまでの位置でのヌクレオチドの変異 {{qry}}",
   "Pango Lineage {{lineage}}": "パンゴリネージュ {{lineage}}",
-  "Protein {{geneName}}": "プロテイン {{geneName}}"
+  "Protein {{geneName}}": "プロテイン {{geneName}}",
+  "Close this window": "このウィンドウを閉じる",
+  "Recent updates": "最近の更新"
 }

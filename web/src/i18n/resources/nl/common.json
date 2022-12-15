@@ -55,5 +55,7 @@
   "Mutation of amino acid at position {{pos}} in {{gene}} from {{ref}} to {{qry}}": "Mutatie van aminozuur op positie {{pos}} in {{gene}} van {{ref}} naar {{qry}}",
   "Mutation of nucleotide at position {{pos}} from {{ref}} to {{qry}}": "Mutatie van nucleotide op positie {{pos}} van {{ref}} naar {{qry}}",
   "Pango Lineage {{lineage}}": "Pango afstamming {{lineage}}",
-  "Protein {{geneName}}": "Eiwit {{geneName}}"
+  "Protein {{geneName}}": "Eiwit {{geneName}}",
+  "Close this window": "Dit venster sluiten",
+  "Recent updates": "Recente updates"
 }

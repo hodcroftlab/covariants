@@ -55,5 +55,7 @@
   "Mutation of amino acid at position {{pos}} in {{gene}} from {{ref}} to {{qry}}": "Мутация аминокислоты {{pos}} в положении {{gene}} от {{ref}} до {{qry}}",
   "Mutation of nucleotide at position {{pos}} from {{ref}} to {{qry}}": "Мутация нуклеотида в положении {{pos}} от {{ref}} до {{qry}}",
   "Pango Lineage {{lineage}}": "Родословная панго {{lineage}}",
-  "Protein {{geneName}}": "Протеин {{geneName}}"
+  "Protein {{geneName}}": "Протеин {{geneName}}",
+  "Close this window": "Закройте это окно",
+  "Recent updates": "Последние обновления"
 }

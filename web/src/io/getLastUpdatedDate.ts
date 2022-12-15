@@ -5,11 +5,12 @@ import { DateTime } from 'luxon'
 export function getLastUpdatedDate() {
   const utc = DateTime.fromISO(updateJson.lastUpdated, { zone: 'UTC' })
   const local = utc.toLocal()
-  return local.toISODate()
+  return local.toLocaleString({ dateStyle: 'medium' })
 }
 
 export function getLastUpdatedFull() {
   const utc = DateTime.fromISO(updateJson.lastUpdated, { zone: 'UTC' })
   const local = utc.toLocal()
-  return `${local.toJSDate().toLocaleString()} (${local.zoneName})`
+  const s = local.toLocaleString({ timeStyle: 'medium', dateStyle: 'full' })
+  return `${s} (${local.zoneName})`
 }

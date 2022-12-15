@@ -55,5 +55,7 @@
   "Mutation of amino acid at position {{pos}} in {{gene}} from {{ref}} to {{qry}}": "Μετάλλαξη αμινοξέων {{pos}} σε θέση {{gene}} από {{ref}} έως {{qry}}",
   "Mutation of nucleotide at position {{pos}} from {{ref}} to {{qry}}": "Μετάλλαξη του νουκλεοτιδίου στη θέση {{pos}} από {{ref}} έως {{qry}}",
   "Pango Lineage {{lineage}}": "Pango γενεαλογία {{lineage}}",
-  "Protein {{geneName}}": "Πρωτεΐνη {{geneName}}"
+  "Protein {{geneName}}": "Πρωτεΐνη {{geneName}}",
+  "Close this window": "Κλείσιμο αυτού του παραθύρου",
+  "Recent updates": "Πρόσφατες ενημερώσεις"
 }

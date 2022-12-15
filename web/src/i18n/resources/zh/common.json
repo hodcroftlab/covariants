@@ -55,5 +55,7 @@
   "Mutation of amino acid at position {{pos}} in {{gene}} from {{ref}} to {{qry}}": "氨基酸在 {{gene}} 从 {{ref}} 到 {{pos}} 的位置突变 {{qry}}",
   "Mutation of nucleotide at position {{pos}} from {{ref}} to {{qry}}": "核苷酸在 {{pos}} 从 {{ref}} 到的位置发生突变 {{qry}}",
   "Pango Lineage {{lineage}}": "Pango Lineage {{lineage}}",
-  "Protein {{geneName}}": "蛋白质 {{geneName}}"
+  "Protein {{geneName}}": "蛋白质 {{geneName}}",
+  "Close this window": "关闭这个窗口",
+  "Recent updates": "最近更新"
 }

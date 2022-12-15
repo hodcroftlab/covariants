@@ -55,5 +55,7 @@
   "Mutation of amino acid at position {{pos}} in {{gene}} from {{ref}} to {{qry}}": "{{gene}} से दूसरे {{ref}} स्थान {{pos}} पर अमीनो एसिड का उत्परिवर्तन {{qry}}",
   "Mutation of nucleotide at position {{pos}} from {{ref}} to {{qry}}": "{{pos}} से दूसरे {{ref}} स्थान पर न्यूक्लियोटाइड का उत्परिवर्तन {{qry}}",
   "Pango Lineage {{lineage}}": "पैंगो वंश {{lineage}}",
-  "Protein {{geneName}}": "प्रोटीन {{geneName}}"
+  "Protein {{geneName}}": "प्रोटीन {{geneName}}",
+  "Close this window": "इस विंडो को बंद करें",
+  "Recent updates": "हाल ही के अपडेट"
 }

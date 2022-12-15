@@ -55,5 +55,7 @@
   "Mutation of amino acid at position {{pos}} in {{gene}} from {{ref}} to {{qry}}": "מוטציה של חומצת אמינו {{pos}} במיקום {{gene}} מ {{ref}} ל {{qry}}",
   "Mutation of nucleotide at position {{pos}} from {{ref}} to {{qry}}": "מוטציה של נוקליאוטידים במיקום {{pos}} מ {{ref}} ל {{qry}}",
   "Pango Lineage {{lineage}}": "שושלת פנגו {{lineage}}",
-  "Protein {{geneName}}": "חלבון {{geneName}}"
+  "Protein {{geneName}}": "חלבון {{geneName}}",
+  "Close this window": "סגור חלון זה",
+  "Recent updates": "עדכונים אחרונים"
 }
