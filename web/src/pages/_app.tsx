@@ -10,7 +10,6 @@ import { MutableSnapshot, RecoilRoot, useRecoilCallback } from 'recoil'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { I18nextProvider } from 'react-i18next'
 import type { AppProps } from 'next/app'
-import { useRouter } from 'next/router'
 import { parseUrl } from 'src/helpers/parseUrl'
 import { clustersAtom, ClustersDataFlavor, urlQueryToClusters } from 'src/state/Clusters'
 import { clustersCasesAtom, urlQueryToClustersCases } from 'src/state/ClustersForCaseData'
@@ -30,12 +29,12 @@ import { localeAtom } from 'src/state/locale.state'
 import 'src/styles/global.scss'
 
 export function RecoilStateInitializer() {
-  const router = useRouter()
+  // const router = useRouter()
 
-  // NOTE: Do manual parsing, because router.query is randomly empty on the first few renders and on repeated renders.
-  // This is important, because various states depend on query, and when it changes back and forth,
-  // the state also changes unexpectedly.
-  const { query: urlQuery } = useMemo(() => parseUrl(router.asPath), [router.asPath])
+  // // NOTE: Do manual parsing, because router.query is randomly empty on the first few renders and on repeated renders.
+  // // This is important, because various states depend on query, and when it changes back and forth,
+  // // the state also changes unexpectedly.
+  // const { query: urlQuery } = useMemo(() => parseUrl(router.asPath), [router.asPath])
 
   const initialize = useRecoilCallback(({ set, snapshot }) => () => {
     const snapShotRelease = snapshot.retain()
