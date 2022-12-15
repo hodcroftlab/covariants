@@ -327,7 +327,10 @@ export function LineageLinkBadge({ name, href, prefix, report }: LineageLinkBadg
     () => (href ?? (report ? `https://cov-lineages.org/global_report_${name}.html` : "")),
     [href, report, name],
   )
-  const tooltip = useMemo(() => t('Pango Lineage {{lineage}}', { lineage: name }), [name, t])
+  const tooltip = useMemo(() => {
+    const text = t('Pango Lineage')
+    return `${text} '${name}'`
+  }, [name, t])
 
   return (
     <LinkUnstyled href={url}>
