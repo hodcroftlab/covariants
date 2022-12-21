@@ -23,7 +23,7 @@ function useIsChristmas(): boolean {
   const enableChristmas = useRecoilValue(enableChristmasAtom)
   return useMemo(() => {
     const now = DateTime.now()
-    return enableChristmas && ((now.month === 12 && now.day >= 20) || (now.month === 1 && now.day <= 20))
+    return enableChristmas && ((now.month === 12 && now.day >= 20) || (now.month === 1 && now.day <= 4))
   }, [enableChristmas])
 }
 
