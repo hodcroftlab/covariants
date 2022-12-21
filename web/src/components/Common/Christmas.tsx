@@ -12,13 +12,13 @@ import SurpriseSanta from 'surprise-santa'
 import { persistAtom } from 'src/state/persist/localStorage'
 import { ToggleTwoLabels } from 'src/components/Common/ToggleTwoLabels'
 
-const enableChristmasAtom = atom({
+const enableChristmasAtom = atom<boolean>({
   key: 'enableChristmasAtom',
   default: true,
   effects: [persistAtom],
 })
 
-function useIsChristmas() {
+function useIsChristmas(): boolean {
   const enableChristmas = useRecoilValue(enableChristmasAtom)
   return useMemo(() => {
     const now = DateTime.now()
