@@ -37,9 +37,7 @@ function ChristmasLightRopeImpl(props: HTMLProps<HTMLDivElement>) {
     if (!width) {
       return null
     }
-
-    const li = <li />
-    return Array<ReactNode>(Math.ceil(width / (15 + 8)) + 1).fill(li)
+    return [...Array<number>(Math.ceil(width / (15 + 8)) + 1).keys()].map((i) => <li key={i} />)
   }, [width])
 
   return (
