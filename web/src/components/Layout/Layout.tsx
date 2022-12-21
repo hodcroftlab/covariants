@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 import { Container as ContainerBase, Row, Col } from 'reactstrap'
 import GisaidLogoBase from 'src/assets/images/GISAID_logo.svg'
-import { ChristmasLightRope, Santa, Snowfall } from 'src/components/Common/Christmas'
+import { ChristmasLightRope, ChristmasToggle, Santa, Snowfall } from 'src/components/Common/Christmas'
 import { ChangelogButton } from 'src/components/Common/ChangelogButton'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { NavigationBar } from './NavigationBar'
@@ -83,6 +83,12 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
               <GisaidLogo height={20} />
             </LinkExternal>
           </GisaidText>
+
+          <Row noGutters>
+            <Col>
+              <ChristmasToggle />
+            </Col>
+          </Row>
 
           <ChangelogButton className="d-flex ml-auto">
             <LastUpdated className="d-flex ml-auto" />
