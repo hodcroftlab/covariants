@@ -84,12 +84,6 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
             </LinkExternal>
           </GisaidText>
 
-          <Row noGutters>
-            <Col>
-              <ChristmasToggle />
-            </Col>
-          </Row>
-
           <ChangelogButton className="d-flex ml-auto">
             <LastUpdated className="d-flex ml-auto" />
           </ChangelogButton>
