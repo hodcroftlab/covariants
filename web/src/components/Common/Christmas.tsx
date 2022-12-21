@@ -11,6 +11,7 @@ import { TbSnowflake, TbSnowflakeOff } from 'react-icons/tb'
 import SurpriseSanta from 'surprise-santa'
 import { persistAtom } from 'src/state/persist/localStorage'
 import { ToggleTwoLabels } from 'src/components/Common/ToggleTwoLabels'
+import { ErrorBoundaryIgnore } from 'src/components/Common//ErrorBoundaryIgnore'
 
 const enableChristmasAtom = atom<boolean>({
   key: 'enableChristmasAtom',
@@ -56,7 +57,11 @@ export function Snowfall() {
   if (!isChristmas) {
     return null
   }
-  return <SnowfallBase style={SNOWFALL_STYLE} />
+  return (
+    <ErrorBoundaryIgnore>
+      <SnowfallBase style={SNOWFALL_STYLE} />
+    </ErrorBoundaryIgnore>
+  )
 }
 
 export function Santa() {
@@ -64,7 +69,11 @@ export function Santa() {
   if (!isChristmas) {
     return null
   }
-  return <SurpriseSanta minTime={30} maxTime={180} />
+  return (
+    <ErrorBoundaryIgnore>
+      <SurpriseSanta minTime={30} maxTime={180} />
+    </ErrorBoundaryIgnore>
+  )
 }
 
 export function ChristmasLightRope() {
@@ -72,7 +81,11 @@ export function ChristmasLightRope() {
   if (!isChristmas) {
     return null
   }
-  return <ChristmasLightRopeStyled />
+  return (
+    <ErrorBoundaryIgnore>
+      <ChristmasLightRopeStyled />
+    </ErrorBoundaryIgnore>
+  )
 }
 
 const SNOWFLAKE_ICON_ON = <TbSnowflake className="mt-1" color="#1200ff88" />
