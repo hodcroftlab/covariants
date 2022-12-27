@@ -3642,6 +3642,39 @@ bad_seqs = {
     "SouthAfrica/NCV1687/2020" : "2020-08-01",  #Delta EPI_ISL_16064244
     "SouthAfrica/NCV1699/2020" : "2020-08-01",  #Beta EPI_ISL_16064249
     "SouthAfrica/NICD-K309-003-104/2020" : "2020-07-28",  #Beta EPI_ISL_16078792
+    #27 Dec
+    "Malaysia/IMR_OS7272/2022" : "2022-05-10", #22D EPI_ISL_16098752
+    "Russia/ULY-RII-MH111844S/2022" : "2022-01-31", #22D EPI_ISL_15992913
+    "USA/UT-UPHL-221209776352/2022" : "2022-08-01", #22E EPI_ISL_16120385
+    "Spain/CT-HUJ23-32212/2022" : "2022-07-11", #22E EPI_ISL_15762515
+    "USA/UT-UPHL-221209930140/2022" : "2022-08-03", #22E EPI_ISL_16120646
+    "Scotland/SCOT-20927/2022" : "2022-08-03", #22E EPI_ISL_15926888
+    "USA/FL-BPHL-15689/2022" : "2022-08-12", #22F EPI_ISL_16132518
+    "Ghana/NMIMR-CT-22-1651/2022" : "2022-04-02", # 22E  EPI_ISL_16276144 seem too divergent to be so early?
+    "Ghana/NMIMR-CT-22-1811/2022" : "2022-05-31", # 22E  EPI_ISL_16275855 seem too divergent to be so early?
+    "Ghana/NMIMR-CT-22-1834/2022" : "2022-06-07", # 22E  EPI_ISL_16276075 seem too divergent to be so early?
+    "Ghana/NMIMR-N-22-3062/2022" : "2022-06-01", # 22E  EPI_ISL_16275900 seem too divergent to be so early?
+    "Ghana/NMIMR-NUP-22-879/2022" : "2022-06-13", # 22E  EPI_ISL_16275906 seem too divergent to be so early?
+    "Ghana/NMIMR-NUR-22-3586/2022" : "2022-05-30", # 22E  EPI_ISL_16275961 seem too divergent to be so early?
+    "Ghana/NMIMR-NUR-22-3710/2022" : "2022-06-08", # 22E  EPI_ISL_16276125 seem too divergent to be so early?
+    "Ghana/NMIMR-NUR-22-3712/2022" : "2022-06-08", # 22E  EPI_ISL_16275954 seem too divergent to be so early?
+    "Ghana/NMIMR-NUR-22-3728/2022" : "2022-06-09", # 22E  EPI_ISL_16275999 seem too divergent to be so early?
+    "Italy/VEN-IZSVe-22RS8366-10_RO/2022" : "2022-01-07", # 22E  EPI_ISL_16200515 seem too divergent to be so early?
+    "Henan/A85A89/2020" : "2020-08-10", #EPI_ISL_16138276 #21I
+    "Henan/GPDC-0000005/2020" : "2020-08-10", #EPI_ISL_16138280 #21I
+    "Henan/GPDC-0000002/2020" : "2020-08-10", #EPI_ISL_16138277 #Delta
+    "Henan/GPDC-0000004/2020" : "2020-08-10", #EPI_ISL_16138279 #Delta
+    "Spain/AN-CBA-17085/2020" : "2020-08-20", #EPI_ISL_16176984 #21J
+    "Spain/AN-CBA-18243/2021" : "2021-01-17", #EPI_ISL_16178012 #21K
+    "Spain/AN-CBA-18781/2020" : "2020-11-06", #EPI_ISL_16180825 #21K
+    "Spain/AN-CBA-18839/2020" : "2020-11-13", #EPI_ISL_16180873 #21K
+    "Spain/AN-CBA-19802/2021" : "2021-02-09", #EPI_ISL_16194764 #21K
+    "Spain/AN-CBA-20704/2021" : "2021-01-16", #EPI_ISL_16195527 #21K
+    "Spain/AN-CBA-21300/2021" : "2021-03-03", #EPI_ISL_16196019 #21K
+    "Spain/AN-CBA-21803/2020" : "2020-09-01", #EPI_ISL_16196950 #21K
+    "Spain/AN-CBA-22221/2021" : "2021-09-08", #EPI_ISL_16197337 #21K
+    "Spain/AN-CBA-21289/2021" : "2021-03-03", #EPI_ISL_16196008 #21L
+    "Spain/AN-CBA-23717/2021" : "2021-04-26", #EPI_ISL_16211592 #21L
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
