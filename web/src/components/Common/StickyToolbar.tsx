@@ -12,7 +12,9 @@ export function StickyToolbar({ children }: StickyToolbarProps) {
       <Col>
         <Card className="m-2">
           <CardBody className="px-3 py-2">
-            <Form inline>{children}</Form>
+            <Form inline className="justify-content-center">
+              {children}
+            </Form>
           </CardBody>
         </Card>
       </Col>

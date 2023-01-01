@@ -1,16 +1,18 @@
 import React from 'react'
-import classNames from 'classnames'
 import styled from 'styled-components'
 
 import Slider from './Slider'
 
 const Container = styled.div`
   & {
-    --thumb-space: 1rem;
+    --thumb-space: 1.5rem;
     display: grid;
     width: 100%;
     padding: 0;
     z-index: 0;
+    @media (min-width: 768px) {
+      --thumb-space: 1rem;
+    }
   }
 
   & input,
@@ -24,6 +26,7 @@ const Container = styled.div`
     pointer-events: none;
     z-index: 1;
     -webkit-appearance: none;
+    min-width: 200px;
   }
 
   & input:first-of-type {
@@ -46,9 +49,15 @@ const Container = styled.div`
 
   & input[type='range']::-webkit-slider-thumb {
     pointer-events: auto;
+    width: var(--thumb-space);
+    height: var(--thumb-space);
+    margin-top: calc(var(--thumb-space) / -2 + 4px);
   }
   & input[type='range']::-moz-range-thumb {
     pointer-events: auto;
+    width: var(--thumb-space);
+    height: var(--thumb-space);
+    margin-top: calc(var(--thumb-space) / -2 + 4px);
   }
 
   &::before,
@@ -67,10 +76,10 @@ const Container = styled.div`
 
   &::after {
     --bg: transparent;
-    --fg: #2196f3;
+    --fg: #aac;
     --length: calc(var(--max, 0) - var(--min, 100));
-    --min-pct: calc((var(--min-v) / var(--length)) * 100%);
-    --max-pct: calc((var(--max-v) / var(--length)) * 100%);
+    --min-pct: calc((var(--min-v) / var(--length)) * 100% - var(--thumb-space) / 2);
+    --max-pct: calc((var(--max-v) / var(--length)) * 100% + var(--thumb-space) / 2);
     margin: 2px calc(var(--thumb-space) - 2px);
     background: linear-gradient(
       to right,

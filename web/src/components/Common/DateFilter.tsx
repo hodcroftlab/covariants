@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 import { FormGroup, Label, Button } from 'reactstrap'
 import { useRecoilState } from 'recoil'
@@ -39,11 +39,16 @@ export function DateFilter() {
     }
   }, [dateFilter])
 
+  const reset = useCallback(() => {
+    setDateFilter(null)
+  }, [dateFilter])
+
   return (
-    <FormGroup inline>
-      <Label>
-        <span className="mr-2">{'Date range:'}</span>
+    <>
+      <Label className="m-0 flex-grow-1 flex-sm-grow-0">
+        <span className="mr-sm-2 text-nowrap">{'Date range:'}</span>
         <MinMaxSlider
+          className="mt-2 mb-2 m-sm-0"
           min={0}
           max={weeks.length - 1}
           minValue={minIndex}
@@ -52,16 +57,9 @@ export function DateFilter() {
           onMaxChange={setMaxIndex}
         />
       </Label>
-      <Button
-        className="ml-3"
-        type="button"
-        color="link"
-        onClick={() => {
-          setDateFilter(() => null)
-        }}
-      >
+      <Button className="ml-3" type="button" color="link" onClick={reset}>
         Reset
       </Button>
-    </FormGroup>
+    </>
   )
 }
