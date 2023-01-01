@@ -49,6 +49,7 @@ export interface ToggleTwoLabelsProps extends StrictOmit<ReactToggleProps, 'type
   onCheckedChanged: (checked: boolean) => void
   labelLeft?: ReactNode
   labelRight?: ReactNode
+  title?: string
   className?: string
 }
 
@@ -58,6 +59,7 @@ export function ToggleTwoLabels({
   labelLeft,
   labelRight,
   className,
+  title,
   ...props
 }: ToggleTwoLabelsProps) {
   const onChange = useCallback(
@@ -68,7 +70,7 @@ export function ToggleTwoLabels({
   )
 
   return (
-    <Label htmlFor={identifier} className={className}>
+    <Label htmlFor={identifier} className={className} title={title}>
       {labelRight}
       <span className="mr-2 ml-2">
         <ToggleTwoLabelsBase

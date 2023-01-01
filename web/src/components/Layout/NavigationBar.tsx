@@ -3,12 +3,14 @@ import React, { useCallback, useState } from 'react'
 
 import styled from 'styled-components'
 import {
+  Col,
   Collapse,
   Nav as NavBase,
   Navbar as NavbarBase,
   NavbarToggler as NavbarTogglerBase,
   NavItem as NavItemBase,
   NavLink as NavLinkBase,
+  Row,
 } from 'reactstrap'
 import classNames from 'classnames'
 import { FaGithub, FaTwitter } from 'react-icons/fa'
@@ -19,6 +21,7 @@ import BrandLogoLargeBase from 'src/assets/images/logo_text_right.svg'
 import { Link } from 'src/components/Link/Link'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { TWITTER_USERNAME_RAW, URL_GITHUB } from 'src/constants'
+import { ChristmasToggle } from 'src/components/Common/Christmas'
 
 let navLinksLeft: Record<string, string> = {
   '/': 'Home',
@@ -77,6 +80,7 @@ export const NavWrappable = styled(NavBase)`
 
   scrollbar-width: none;
   -ms-overflow-style: none;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -167,6 +171,13 @@ export function NavigationBar() {
         </NavWrappable>
 
         <Nav className="ml-auto" navbar>
+          <NavItem>
+            <Row noGutter>
+              <Col className="mt-2 mx-3">
+                <ChristmasToggle />
+              </Col>
+            </Row>
+          </NavItem>
           {navLinksRight.map(({ text, title, url, alt, icon }) => (
             <NavItem key={title}>
               <NavLink tag={LinkRight} title={title} href={url} alt={alt} icon={null}>

@@ -239,7 +239,7 @@ if dated_limit:
 
 # Input metadata file
 input_meta = "data/metadata.tsv"
-cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl', 'QC_overall_status', 'Nextclade_pango']
+cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl', 'coverage', 'QC_overall_status', 'Nextclade_pango']
 
 # Traverse metadata once to count lines and collect Nextstrain_clades
 print("\nDoing first metadata pass...")
@@ -278,9 +278,9 @@ clus_to_run_breakdown = {key: {"official_clus": [], "unofficial_clus": [], "rest
 for clus in clus_to_run:
     for key in snps_categories:
         if key in clusters[clus] and clusters[clus][key]:
-            if clusters[clus]["display_name"] in Nextstrain_clades or "meta_cluster" in clusters[clus] and clusters[clus]["meta_cluster"]:
+            if (clusters[clus]["display_name"] in Nextstrain_clades) or ("meta_cluster" in clusters[clus] and clusters[clus]["meta_cluster"]) or ("use_pango" in clusters[clus] and clusters[clus]["use_pango"]):
                 clus_to_run_breakdown[key]["official_clus"].append(clus)
-            elif clusters[clus]["type"] == "variant" and clusters[clus]["graphing"]:
+            elif clusters[clus].get("type") == "variant" and clusters[clus]["graphing"]:
                 clus_to_run_breakdown[key]["unofficial_clus"].append(clus)
             else:
                 clus_to_run_breakdown[key]["rest"].append(clus)
@@ -418,6 +418,10 @@ with open(input_meta) as f:
 
         # If in bad_sequences and the date matches
         if l[indices['strain']] in bad_seqs and l[indices['date']] == bad_seqs[l[indices['strain']]]:
+            continue
+
+        # Keep only if at least 90% coverage
+        if float(l[indices['coverage']]) < 0.9:
             continue
 
         clade = l[indices['Nextstrain_clade']]
@@ -864,7 +868,7 @@ def get_ordered_clusters_to_plot(division_local=False, selected_country_local=No
     # fix cluster order in a list so it's reliable
     clus_keys = [x for x in clusters.keys()]  # if x in clusters_tww]
     if division_local:
-        clus_keys = [x for x in clus_keys if clusters[x]["type"] == "variant" or ("usa_graph" in clusters[x] and clusters[x]["usa_graph"] is True)]
+        clus_keys = [x for x in clus_keys if clusters[x].get("type") == "variant" or ("usa_graph" in clusters[x] and clusters[x]["usa_graph"] is True)]
         min_to_plot = 20
     else:
         clus_keys = [x for x in clus_keys if clusters[x]["graphing"] is True]
@@ -1011,7 +1015,7 @@ if print_files and "all" in clus_answer:
 if "all" in clus_answer:
     ccounts = []
     for clus in clusters:
-        if clusters[clus]['type'] == "variant":
+        if clusters[clus].get("type") == "variant":
             displayn = clusters[clus]["display_name"]
             ccounts.append([displayn, len(all_sequences[clus])])
 
