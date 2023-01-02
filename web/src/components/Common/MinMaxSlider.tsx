@@ -93,8 +93,29 @@ const Container = styled.div`
   }
 `
 
-function MinMaxSlider({ min, max, minValue, maxValue, onMinChange, onMaxChange, className, style, ...props }) {
-  const _style = React.useMemo(
+export interface MinMaxSliderProps {
+  min: number
+  max: number
+  minValue: number
+  maxValue: number
+  onMinChange: (value: number) => void
+  onMaxChange: (value: number) => void
+  className?: string
+  style?: React.CSSProperties
+}
+
+function MinMaxSlider({
+  min,
+  max,
+  minValue,
+  maxValue,
+  onMinChange,
+  onMaxChange,
+  className,
+  style,
+  ...props
+}: MinMaxSliderProps) {
+  const mergedStyle = React.useMemo(
     () => ({
       ...style,
       '--min': min,
@@ -105,14 +126,14 @@ function MinMaxSlider({ min, max, minValue, maxValue, onMinChange, onMaxChange, 
     [min, max, minValue, maxValue],
   )
 
-  const _onMinChange = React.useCallback(
+  const handleMinChange = React.useCallback(
     (e) => {
-      onMinChange(Math.min(e.target.value, maxValue))
+      onMinChange(Math.min(e.target?.value, maxValue))
     },
     [maxValue, onMinChange],
   )
 
-  const _onMaxChange = React.useCallback(
+  const handleMaxChange = React.useCallback(
     (e) => {
       onMaxChange(Math.max(e.target.value, minValue))
     },
@@ -120,9 +141,9 @@ function MinMaxSlider({ min, max, minValue, maxValue, onMinChange, onMaxChange, 
   )
 
   return (
-    <Container className={className} style={_style} {...props}>
-      <Slider min={min} max={max} value={minValue} onChange={_onMinChange} />
-      <Slider min={min} max={max} value={maxValue} onChange={_onMaxChange} />
+    <Container className={className} style={mergedStyle} {...props}>
+      <Slider min={min} max={max} value={minValue} onChange={handleMinChange} />
+      <Slider min={min} max={max} value={maxValue} onChange={handleMaxChange} />
     </Container>
   )
 }

@@ -25,18 +25,6 @@ export interface AreaPlotProps {
   distribution: CountryDistributionDatum[]
 }
 
-const ResetButton = styled.button`
-  position: absolute;
-  top: ${theme.plot.margin.top}px;
-  right: ${theme.plot.margin.right}px;
-  font-size: 12px;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.25);
-  border: none;
-  outline: none;
-  border-radius: none;
-`
-
 function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps) {
   const data = useMemo(
     () =>
@@ -85,108 +73,105 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
   }, [data, dateFilter, domainY])
 
   return (
-    <>
-      <AreaChart
-        margin={theme.plot.margin}
-        data={data}
-        stackOffset="expand"
-        width={width}
-        height={height}
-        style={hovering ? { cursor: 'cell' } : null}
-        onMouseDown={(e) => {
-          if (e) {
-            setIsZooming(true)
-            setZoomArea([e.activeLabel, e.activeLabel])
-          }
-        }}
-        onMouseMove={(e) => {
-          if (e && e.activeLabel) {
-            setHovering(true)
-            if (isZooming) {
-              setZoomArea([zoomArea[0], e.activeLabel])
-            }
-          } else {
-            setHovering(false)
-          }
-        }}
-        onMouseUp={(e) => {
+    <AreaChart
+      margin={theme.plot.margin}
+      data={data}
+      stackOffset="expand"
+      width={width}
+      height={height}
+      style={hovering ? { cursor: 'cell' } : null}
+      onMouseDown={(e) => {
+        if (e) {
+          setIsZooming(true)
+          setZoomArea([e.activeLabel, e.activeLabel])
+        }
+      }}
+      onMouseMove={(e) => {
+        if (e && e.activeLabel) {
+          setHovering(true)
           if (isZooming) {
-            if (zoomArea[0] !== zoomArea[1]) {
-              setDateFilter(zoomArea[0] < zoomArea[1] ? zoomArea : [zoomArea[1], zoomArea[0]])
-            }
-            setZoomArea(undefined)
-            setIsZooming(false)
+            setZoomArea([zoomArea[0], e.activeLabel])
           }
-        }}
-      >
-        <XAxis
-          dataKey="week"
-          type="number"
-          tickFormatter={formatDateHumanely}
-          domain={dateFilter || domainX}
-          ticks={adjustedTicks}
-          tick={theme.plot.tickStyle}
-          tickMargin={theme.plot.tickMargin?.x}
-          allowDataOverflow
-        />
-        <YAxis
-          type="number"
-          tickFormatter={formatProportion}
-          domain={calculatedDomainY}
-          tick={theme.plot.tickStyle}
-          tickMargin={theme.plot.tickMargin?.y}
-          allowDataOverflow
-        />
+        } else {
+          setHovering(false)
+        }
+      }}
+      onMouseUp={(e) => {
+        if (isZooming) {
+          if (zoomArea[0] !== zoomArea[1]) {
+            setDateFilter(zoomArea[0] < zoomArea[1] ? zoomArea : [zoomArea[1], zoomArea[0]])
+          }
+          setZoomArea(undefined)
+          setIsZooming(false)
+        }
+      }}
+    >
+      <XAxis
+        dataKey="week"
+        type="number"
+        tickFormatter={formatDateHumanely}
+        domain={dateFilter || domainX}
+        ticks={adjustedTicks}
+        tick={theme.plot.tickStyle}
+        tickMargin={theme.plot.tickMargin?.x}
+        allowDataOverflow
+      />
+      <YAxis
+        type="number"
+        tickFormatter={formatProportion}
+        domain={calculatedDomainY}
+        tick={theme.plot.tickStyle}
+        tickMargin={theme.plot.tickMargin?.y}
+        allowDataOverflow
+      />
 
-        {cluster_names.map((cluster) => (
-          <Area
-            key={cluster}
-            type="monotone"
-            dataKey={cluster}
-            stackId="1"
-            stroke="none"
-            fill={getClusterColor(cluster)}
-            fillOpacity={1}
-            isAnimationActive={false}
-            // animationDuration={500}
-          />
-        ))}
-
+      {cluster_names.map((cluster) => (
         <Area
+          key={cluster}
           type="monotone"
-          dataKey={CLUSTER_NAME_OTHERS}
+          dataKey={cluster}
           stackId="1"
           stroke="none"
-          fill={theme.clusters.color.others}
+          fill={getClusterColor(cluster)}
           fillOpacity={1}
           isAnimationActive={false}
           // animationDuration={500}
         />
+      ))}
 
-        <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
+      <Area
+        type="monotone"
+        dataKey={CLUSTER_NAME_OTHERS}
+        stackId="1"
+        stroke="none"
+        fill={theme.clusters.color.others}
+        fillOpacity={1}
+        isAnimationActive={false}
+        // animationDuration={500}
+      />
 
-        {isZooming && (
-          <ReferenceArea
-            x1={zoomArea[0]}
-            x2={zoomArea[1]}
-            y1={calculatedDomainY[0]}
-            y2={calculatedDomainY[1]}
-            fill={theme.black}
-            fillOpacity={0.25}
-          />
-        )}
+      <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
 
-        {!isZooming && (
-          <Tooltip
-            content={CountryDistributionPlotTooltip}
-            isAnimationActive={false}
-            allowEscapeViewBox={allowEscapeViewBox}
-            offset={50}
-          />
-        )}
-      </AreaChart>
-      {/* {selectedArea && <ResetButton onClick={() => setSelectedArea(undefined)}>Reset zoom</ResetButton>} */}
-    </>
+      {isZooming && (
+        <ReferenceArea
+          x1={zoomArea[0]}
+          x2={zoomArea[1]}
+          y1={calculatedDomainY[0]}
+          y2={calculatedDomainY[1]}
+          fill={theme.black}
+          fillOpacity={0.25}
+        />
+      )}
+
+      {!isZooming && (
+        <Tooltip
+          content={CountryDistributionPlotTooltip}
+          isAnimationActive={false}
+          allowEscapeViewBox={allowEscapeViewBox}
+          offset={50}
+        />
+      )}
+    </AreaChart>
   )
 }
 

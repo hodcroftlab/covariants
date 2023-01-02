@@ -8,16 +8,17 @@ import React, { useCallback, useMemo } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { MutableSnapshot, RecoilRoot } from 'recoil'
 import { ReactQueryDevtools } from 'react-query/devtools'
-
+import { ThemeProvider } from 'styled-components'
+import { MDXProvider } from '@mdx-js/react'
 import type { AppProps } from 'next/app'
-import { parseUrl } from 'src/helpers/parseUrl'
+
 import { clustersAtom, ClustersDataFlavor, urlQueryToClusters } from 'src/state/Clusters'
 import { clustersCasesAtom, urlQueryToClustersCases } from 'src/state/ClustersForCaseData'
 import { continentsAtom, countriesAtom, regionAtom, urlQueryToPlaces } from 'src/state/Places'
 import { continentsCasesAtom, countriesCasesAtom, urlQueryToPlacesCases } from 'src/state/PlacesForCaseData'
-import { ThemeProvider } from 'styled-components'
-import { MDXProvider } from '@mdx-js/react'
+import { dateFilterAtom, urlQueryToDateFilter } from 'src/state/DateFilter'
 
+import { parseUrl } from 'src/helpers/parseUrl'
 import { theme } from 'src/theme'
 import { DOMAIN_STRIPPED } from 'src/constants'
 import { Plausible } from 'src/components/Common/Plausible'
@@ -47,6 +48,9 @@ function MyApp({ Component, pageProps, router }: AppProps) {
           const params = { dataFlavor: ClustersDataFlavor.PerCountry, region }
           const clusters = urlQueryToClusters(query, params)
           set(clustersAtom(params), clusters)
+
+          const dateFilter = urlQueryToDateFilter(query)
+          set(dateFilterAtom, dateFilter)
 
           break
         }

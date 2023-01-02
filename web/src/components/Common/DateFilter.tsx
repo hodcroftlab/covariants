@@ -19,11 +19,13 @@ export function DateFilter() {
   const [dateFilter, setDateFilter] = useRecoilState(dateFilterAtom)
 
   useEffect(() => {
-    setDateFilter(() => [weeks[minIndex], weeks[maxIndex]])
-  }, [minIndex, maxIndex])
+    if (minIndex > 0 || maxIndex < weeks.length - 1) {
+      setDateFilter(() => [weeks[minIndex], weeks[maxIndex]])
+    }
+  }, [minIndex, maxIndex, setDateFilter, weeks])
 
   useEffect(() => {
-    if (dateFilter !== null) {
+    if (Array.isArray(dateFilter)) {
       const [min, max] = dateFilter
       const minI = weeks.indexOf(min)
       const maxI = weeks.indexOf(max)
@@ -37,11 +39,11 @@ export function DateFilter() {
       setMinIndex(0)
       setMaxIndex(weeks.length - 1)
     }
-  }, [dateFilter])
+  }, [dateFilter, weeks])
 
   const reset = useCallback(() => {
     setDateFilter(null)
-  }, [dateFilter])
+  }, [setDateFilter])
 
   return (
     <>
