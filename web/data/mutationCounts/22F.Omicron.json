@@ -1,22 +1,22 @@
 {
   "S": {
-    "total": 16592,
+    "total": 19839,
     "counts": [
       {
         "mut": "S:G252V",
-        "count": 11228
+        "count": 13635
       },
       {
         "mut": "S:D253G",
-        "count": 2588
+        "count": 3205
       },
       {
         "mut": "S:F486P",
-        "count": 1279
+        "count": 2206
       },
       {
         "mut": "S:T883I",
-        "count": 579
+        "count": 675
       },
       {
         "mut": "S:V143D",
@@ -24,68 +24,68 @@
       },
       {
         "mut": "S:G142-",
-        "count": 572
+        "count": 574
       },
       {
         "mut": "S:H146K",
-        "count": 436
+        "count": 557
       },
       {
         "mut": "S:S673G",
-        "count": 429
+        "count": 470
       },
       {
         "mut": "S:L5F",
-        "count": 161
+        "count": 185
       },
       {
-        "mut": "S:K444R",
-        "count": 136
+        "mut": "S:Q613H",
+        "count": 157
       }
     ]
   },
   "others": {
-    "total": 16592,
+    "total": 19839,
     "counts": [
       {
         "mut": "ORF8:G8*",
-        "count": 10820
+        "count": 13068
       },
       {
         "mut": "ORF1a:G82D",
-        "count": 2255
+        "count": 2400
       },
       {
         "mut": "ORF1b:I1998V",
-        "count": 831
+        "count": 870
       },
       {
         "mut": "ORF1a:A540V",
-        "count": 663
+        "count": 858
       },
       {
         "mut": "ORF1a:P309L",
-        "count": 581
-      },
-      {
-        "mut": "ORF1a:V2866M",
-        "count": 376
+        "count": 619
       },
       {
         "mut": "ORF8:I121-",
-        "count": 363
+        "count": 431
       },
       {
         "mut": "N:A211S",
-        "count": 322
+        "count": 397
+      },
+      {
+        "mut": "ORF1a:V2866M",
+        "count": 387
       },
       {
         "mut": "ORF3a:D155Y",
-        "count": 303
+        "count": 327
       },
       {
-        "mut": "N:T49I",
-        "count": 289
+        "mut": "ORF1a:T4175I",
+        "count": 321
       }
     ]
   }
