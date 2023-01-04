@@ -26,12 +26,20 @@ COUNTRIES = ["Portugal", "Denmark", "Sweden", "Germany", "United Kingdom", "USA"
 CLUSTERS = [clus for clus in clusters if clusters[clus]["type"] == "variant" and clusters[clus]["graphing"]]
 #CLUSTERS = ["22D", "22C"]$
 
-def build_url(base_url,nextstrainClade,threshold):
+def build_url(base_url,cladeToUse,varQueryName,country,threshold):
     #TODO: is this the proper url? include filterdeletions?
-    url = f"{base_url}?{filter_deletions_url}&accessKey={LAPIS_API_ACCESS_KEY}&nextstrainClade={nextstrainClade}"
+    url = f"{base_url}?{filter_deletions_url}&accessKey={LAPIS_API_ACCESS_KEY}&{cladeToUse}={varQueryName}&country={country}"
     if threshold is not None:
         url += f"&minProportion={threshold:f}"
     return url
+
+# Returns a mutation as a dict with the individual parts labelled
+def decodeMutation(mutation):
+    gene_loc = mutation.split(":")
+    ref = gene_loc[1][0]
+    mut = gene_loc[1][-1]
+    loc = gene_loc[1][1:-1]
+    return {'gene': gene_loc[0], 'loc': loc, 'ref': ref, 'mut': mut}
 
 # For each country and covariants cluster, query mutations and proportions from covSPECTRUM using SNPs
 def get_mutation_proportions():
@@ -39,8 +47,13 @@ def get_mutation_proportions():
 
     for clus in CLUSTERS:
 
-        nextstrainClade = clusters[clus]["display_name"].split(" ")[0]
-        print(f"\nQuery mutations from covSPECTRUm for cluster {clus} (nextstrainClade {nextstrainClade})")
+        cladeToUse = "nextstrainClade" if "nextstrain_clade" in clusters[clus] else "nextcladePangoLineage"
+        if cladeToUse == "nextstrainClade":
+            varQueryName = clusters[clus]["nextstrain_clade"]
+        else:
+            varQueryName = clusters[clus]["pango_lineages"][0]["name"]
+
+        print(f"\nQuery mutations from covSPECTRUm for cluster {clus} ([{cladeToUse}] {varQueryName})")
 
         defining_mutations = clusters[clus]["mutations"]["nonsynonymous"]
         defining_mutations_list = [f"{mut['gene']}:{mut['left']}{mut['pos']}{mut['right']}" for mut in
@@ -48,37 +61,47 @@ def get_mutation_proportions():
 
         for country in COUNTRIES:
             # Query mutation information from covSPECTRUM
-            request_url = build_url(base_url, nextstrainClade, THRESHOLD)
+            request_url = build_url(base_url, cladeToUse, varQueryName, country, THRESHOLD)
             request = requests.get(request_url)
             mutation_data = json.loads(request.content)["data"]
 
             if not mutation_data:
-                print(f"Request not valid (country {country}, nextstrainClade {nextstrainClade})")
+                print(f"Request not valid (country {country}, {cladeToUse} {varQueryName})")
 
             for entry in mutation_data:
                 mutation = entry["mutation"]
                 proportion = entry['proportion']
-                #if mutation not in defining_mutations_list:
-                    #print(f"{mutation} missing from synonymous mutations (proportion {proportion}, country {country})")
+                dec_mut = decodeMutation(mutation)
+                loc = int(dec_mut["loc"])
 
-                mutation_proportions[country][clus][mutation] = proportion
+                if dec_mut["gene"] == "S":
+                    #TODO perhaps add to put in two categories of storage, for RDB and NTD? (not critical, but useful later?)
+                    if (loc >= 333 and loc <= 526) or (loc >=15 and loc <= 305): # RDB or NTD
+                        mutation_proportions[country][clus][mutation] = proportion
 
     return mutation_proportions
 
 # TODO: Possible, but takes insane amount of time - can we somehow get entire data directly sorted by date?
+# TODO: not tested with the new way of using both Nextstrain clade & Pango lineage (though code is identical to get_mutation_proportions)
+# TODO: have not added to only store the RBD & NTD mutations (see get_mutation_proportions above)
 def get_mutation_proportions_biweekly(clus, country, week):
     mutation_proportions = {}
-    nextstrainClade = clusters[clus]["display_name"].split(" ")[0]
+
+    cladeToUse = "nextstrainClade" if "nextstrain_clade" in clusters[clus] else "nextcladePangoLineage"
+    if cladeToUse == "nextstrainClade":
+        varQueryName = clusters[clus]["nextstrain_clade"]
+    else:
+        varQueryName = clusters[clus]["pango_lineages"][0]["name"]
 
     week_end = (datetime.datetime.strptime(week, '%Y-%m-%d') + datetime.timedelta(days=13))
 
-    print(f"\nQuery mutations from covSPECTRUm for cluster {clus} (nextstrainClade {nextstrainClade}) for week {week}")
-    request_url = build_url(base_url, nextstrainClade, THRESHOLD)
+    print(f"\nQuery mutations from covSPECTRUm for cluster {clus} ({cladeToUse} {varQueryName}) for week {week}")
+    request_url = build_url(base_url, cladeToUse, varQueryName, country, THRESHOLD)
     request = requests.get(request_url)
     mutation_data = json.loads(request.content)["data"]
 
     if not mutation_data:
-        print(f"Request not valid (country {country}, nextstrainClade {nextstrainClade}")
+        print(f"Request not valid (country {country}, {cladeToUse} {varQueryName}")
 
     for entry in mutation_data:
         mutation = entry["mutation"]
