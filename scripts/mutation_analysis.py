@@ -253,6 +253,7 @@ if __name__ == "__main__":
 
     mutation_proportions = get_mutation_proportions()
 
+    #TODO: Now only stores RTD/NRD, so no longer needed - but not yet implemented in get_mutation_proportions_biweekly!!
     for clus in mutation_proportions:
         for country in mutation_proportions[clus]:
             for mut in list(mutation_proportions[clus][country]):
