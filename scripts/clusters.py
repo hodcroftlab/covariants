@@ -1573,6 +1573,34 @@ clusters = {
        }
     },
 
+    "23A": {  #XBB.1.5
+       "snps": [],  #GGC
+       "snps_with_base": [], #MUST ADD VALUE WHEN TURN INTO PAGE!
+       "cluster_data": [],
+       "nextstrain_build": True,
+       "parent": "22F", #I think we now need this for XBB.1.5 as will be classed as 22F
+       "use_pango": True,
+       "type": "variant",
+       "graphing": False,
+       "important": False,
+       "country_info": [],
+       "col": "#dd6bff",
+       "display_name": "23A (Omicron)",
+       "alt_display_name": ["XBB.1.5"],
+       "build_name": "23A.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "23A",
+       "pango_lineages": [
+           {"name": "XBB.1.5", "url": "https://cov-lineages.org/lineage.html?lineage=XBB.1.5"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/23A.Omicron",
+       "mutations": {
+            "nonsynonymous": [],
+            "synonymous": [],
+       }
+    },
+
     # variant  -- part of 'Indian' in media - B.1.617.1
     "Kappa": {
         "snps": [17523, 23604, 22917],  # ORF1b:1352, S:681, 452
