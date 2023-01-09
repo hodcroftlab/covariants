@@ -7009,6 +7009,41 @@
     },
     {
       "alt_display_name": [
+        "XBB.1.5"
+      ],
+      "aquaria_urls": [],
+      "build_name": "23A.Omicron",
+      "cluster_data": [],
+      "col": "#dd6bff",
+      "country_info": [],
+      "display_name": "23A (Omicron)",
+      "graphing": false,
+      "important": false,
+      "mutations": {
+        "nonsynonymous": [],
+        "synonymous": []
+      },
+      "nextstrain_build": true,
+      "nextstrain_name": "23A",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/23A.Omicron",
+      "old_build_names": [],
+      "pango_lineages": [
+        {
+          "name": "XBB.1.5",
+          "url": "https://cov-lineages.org/lineage.html?lineage=XBB.1.5"
+        }
+      ],
+      "parent": "22F",
+      "snps": [],
+      "snps_with_base": [],
+      "type": "variant",
+      "use_pango": true,
+      "who_name": [
+        "Omicron"
+      ]
+    },
+    {
+      "alt_display_name": [
         "21A/S:154K"
       ],
       "aquaria_urls": [
