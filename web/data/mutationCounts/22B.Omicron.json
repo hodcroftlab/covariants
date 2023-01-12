@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 1356868,
+    "total": 1375698,
     "counts": [
       {
         "mut": "S:R346T",
-        "count": 193729
+        "count": 204344
       },
       {
         "mut": "S:N460K",
-        "count": 167424
+        "count": 179306
       },
       {
         "mut": "S:K444T",
-        "count": 164176
+        "count": 175613
       },
       {
         "mut": "S:A1020S",
-        "count": 61244
+        "count": 61960
       },
       {
         "mut": "S:Y144-",
-        "count": 56330
+        "count": 59917
       },
       {
         "mut": "S:T76I",
-        "count": 49546
+        "count": 49619
       },
       {
         "mut": "S:L5F",
-        "count": 19108
+        "count": 19345
       },
       {
         "mut": "S:N450D",
-        "count": 11038
+        "count": 11183
       },
       {
         "mut": "S:V445A",
-        "count": 9960
+        "count": 10247
       },
       {
         "mut": "S:K444N",
-        "count": 9541
+        "count": 9861
       }
     ]
   },
   "others": {
-    "total": 1356868,
+    "total": 1375698,
     "counts": [
       {
         "mut": "ORF9b:D16G",
-        "count": 726344
+        "count": 731404
       },
       {
         "mut": "ORF1b:T1050N",
-        "count": 269087
+        "count": 270963
       },
       {
         "mut": "ORF1a:Q556K",
-        "count": 254231
+        "count": 266034
       },
       {
         "mut": "N:E136D",
-        "count": 248877
+        "count": 260688
       },
       {
         "mut": "ORF1b:M1156I",
-        "count": 227189
+        "count": 238781
       },
       {
         "mut": "ORF1a:L3829F",
-        "count": 202653
+        "count": 214094
       },
       {
         "mut": "ORF9b:P10F",
-        "count": 162382
+        "count": 173823
       },
       {
         "mut": "ORF1b:Y264H",
-        "count": 156963
+        "count": 168349
       },
       {
         "mut": "N:G30-",
-        "count": 144982
+        "count": 146619
       },
       {
         "mut": "ORF9b:M26-",
-        "count": 139783
+        "count": 141402
       }
     ]
   }
