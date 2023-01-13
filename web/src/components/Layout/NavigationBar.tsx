@@ -172,7 +172,7 @@ export function NavigationBar() {
 
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <Row noGutter>
+            <Row noGutters>
               <Col className="mt-2 mx-3">
                 <ChristmasToggle />
               </Col>
