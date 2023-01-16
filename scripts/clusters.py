@@ -1580,6 +1580,7 @@ clusters = {
        "nextstrain_build": True,
        "parent": "22F", #I think we now need this for XBB.1.5 as will be classed as 22F
        "use_pango": True,
+        "has_no_page": True,
        "type": "variant",
        "graphing": False,
        "important": False,
