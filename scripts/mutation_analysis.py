@@ -21,8 +21,8 @@ filter_deletions_url = "aaMutations=Orf1a:1.,N:420."
 #only include mutations that are above this threshhold
 THRESHOLD = 0.1
 
-COUNTRIES = ["Portugal", "Denmark", "Sweden", "Germany", "United Kingdom", "USA", "South Africa", "India"]
-#COUNTRIES = ["Switzerland", "Germany"]
+#COUNTRIES = ["Portugal", "Denmark", "Sweden", "Germany", "United Kingdom", "USA", "South Africa"]
+COUNTRIES = ["Denmark", "United Kingdom", "Portugal"]
 CLUSTERS = [clus for clus in clusters if clusters[clus]["type"] == "variant" and clusters[clus]["graphing"]]
 #CLUSTERS = ["22D", "22C"]$
 
@@ -32,6 +32,29 @@ def build_url(base_url,cladeToUse,varQueryName,country,threshold):
     if threshold is not None:
         url += f"&minProportion={threshold:f}"
     return url
+
+def build_url_date(base_url,cladeToUse,varQueryName,country,threshold,dateFrom,dateTo):
+    #TODO: is this the proper url? include filterdeletions?
+    url = f"{base_url}?{filter_deletions_url}&accessKey={LAPIS_API_ACCESS_KEY}&{cladeToUse}={varQueryName}&country={country}&dateFrom={dateFrom}&dateTo={dateTo}"
+    if threshold is not None:
+        url += f"&minProportion={threshold:f}"
+    return url
+
+def get_all_weeks(caseCountData):
+    weeks = {}
+    for i in range(len(caseCountData)):
+        country = caseCountData[i]["country"]
+        if country not in COUNTRIES:
+            continue
+        weeks[country] = {}
+        for j in caseCountData[i]["distribution"]:
+            week = j["week"]
+            for var in j["stand_estimated_cases"]:
+                if j["stand_estimated_cases"][var] != 0:
+                    if var not in weeks[country]:
+                        weeks[country][var] = []
+                    weeks[country][var].append(week)
+    return weeks
 
 # Returns a mutation as a dict with the individual parts labelled
 def decodeMutation(mutation):
@@ -48,6 +71,11 @@ def get_mutation_proportions():
     for clus in CLUSTERS:
 
         cladeToUse = "nextstrainClade" if "nextstrain_clade" in clusters[clus] else "nextcladePangoLineage"
+
+        if "pango_lineages" not in clusters[clus]:
+            print(f"\nNeither nextstrainClade nor pango_lineages available in clusters.py for {clus}. Skipping this cluster...\n")
+            continue
+
         if cladeToUse == "nextstrainClade":
             varQueryName = clusters[clus]["nextstrain_clade"]
         else:
@@ -81,35 +109,64 @@ def get_mutation_proportions():
 
     return mutation_proportions
 
-# TODO: Possible, but takes insane amount of time - can we somehow get entire data directly sorted by date?
-# TODO: not tested with the new way of using both Nextstrain clade & Pango lineage (though code is identical to get_mutation_proportions)
-# TODO: have not added to only store the RBD & NTD mutations (see get_mutation_proportions above)
-def get_mutation_proportions_biweekly(clus, country, week):
-    mutation_proportions = {}
 
-    cladeToUse = "nextstrainClade" if "nextstrain_clade" in clusters[clus] else "nextcladePangoLineage"
-    if cladeToUse == "nextstrainClade":
-        varQueryName = clusters[clus]["nextstrain_clade"]
-    else:
-        varQueryName = clusters[clus]["pango_lineages"][0]["name"]
+def get_mutation_proportions_biweekly(weeks, interval = 1):
+    mutation_proportions = {country: {clus: {week: {} for week in weeks[country][clusters[clus]["display_name"]]} for clus in CLUSTERS if clusters[clus]["display_name"] in weeks[country]} for country in COUNTRIES}
 
-    week_end = (datetime.datetime.strptime(week, '%Y-%m-%d') + datetime.timedelta(days=13))
+    for clus in CLUSTERS:
 
-    print(f"\nQuery mutations from covSPECTRUm for cluster {clus} ({cladeToUse} {varQueryName}) for week {week}")
-    request_url = build_url(base_url, cladeToUse, varQueryName, country, THRESHOLD)
-    request = requests.get(request_url)
-    mutation_data = json.loads(request.content)["data"]
+        cladeToUse = "nextstrainClade" if "nextstrain_clade" in clusters[clus] else "nextcladePangoLineage"
 
-    if not mutation_data:
-        print(f"Request not valid (country {country}, {cladeToUse} {varQueryName}")
+        if "pango_lineages" not in clusters[clus]:
+            print(f"\nNeither nextstrainClade nor pango_lineages available in clusters.py for {clus}. Skipping this cluster...\n")
+            continue
 
-    for entry in mutation_data:
-        mutation = entry["mutation"]
-        proportion = entry['proportion']
-        #if mutation not in defining_mutations_list:
-            #print(f"{mutation} missing from synonymous mutations (proportion {proportion}, country {country})")
+        if cladeToUse == "nextstrainClade":
+            varQueryName = clusters[clus]["nextstrain_clade"]
+        else:
+            varQueryName = clusters[clus]["pango_lineages"][0]["name"]
 
-        mutation_proportions[mutation] = proportion
+        print(f"\nQuery mutations from covSPECTRUm for cluster {clus} ([{cladeToUse}] {varQueryName})")
+
+        for country in COUNTRIES:
+            print("\n" + country)
+
+            if clusters[clus]["display_name"] not in weeks[country]:
+                continue
+
+            weeks_to_do = weeks[country][clusters[clus]["display_name"]]
+
+            for i in range(0, len(weeks_to_do), interval):
+                week = weeks_to_do[i]
+                if i+interval < len(weeks_to_do):
+                    week_end = (datetime.datetime.strptime(weeks_to_do[i+interval], '%Y-%m-%d') - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
+                    subweeks = weeks_to_do[i:i+interval]
+                else:
+                    week_end = (datetime.datetime.strptime(weeks_to_do[-1], '%Y-%m-%d') + datetime.timedelta(days=13)).strftime('%Y-%m-%d')
+                    subweeks = weeks_to_do[i:]
+                print(f"{week}  -  {week_end}")
+                request_url = build_url_date(base_url, cladeToUse, varQueryName, country, THRESHOLD, week, week_end)
+
+                request = requests.get(request_url)
+                mutation_data = json.loads(request.content)["data"]
+
+                if not mutation_data:
+                    print(f"Request not valid (country {country}, {cladeToUse} {varQueryName})")
+
+                for entry in mutation_data:
+                    mutation = entry["mutation"]
+                    proportion = entry['proportion']
+                    dec_mut = decodeMutation(mutation)
+                    loc = int(dec_mut["loc"])
+
+                    if dec_mut["gene"] == "S":
+                        # TODO perhaps add to put in two categories of storage, for RDB and NTD? (not critical, but useful later?)
+                        if (loc >= 333 and loc <= 526) or (loc >= 15 and loc <= 305):  # RDB or NTD
+                            for subweek in subweeks:
+                                mutation_proportions[country][clus][subweek][mutation] = proportion
+
+            # TODO: Plot this! I want to know how this develops over time
+            #print(mutation_proportions)
 
     return mutation_proportions
 
@@ -138,10 +195,44 @@ def get_mutation_distribution(mutation_proportions, caseCountData):
                     if mut not in mutation_distribution[country][week]:
                         mutation_distribution[country][week][mut] = 0
 
+                    mutation_distribution[country][week][mut] += prop * float(stand_estimated_cases[clus_display_name]) / 1000000.0  # Cases data comes in per million
+
+    return mutation_distribution
+
+
+# Multiply case count data with mutation proportions to get estimated mutation coverage per country
+def get_mutation_distribution_biweekly(mutation_proportions, caseCountData):
+    mutation_distribution = {country: {} for country in COUNTRIES}
+
+    for i in range(len(caseCountData)):
+        country = caseCountData[i]["country"]
+        if country not in COUNTRIES:
+            continue
+
+        for j in caseCountData[i]["distribution"]:
+            stand_estimated_cases = j["stand_estimated_cases"]
+            week = j["week"]
+
+            mutation_distribution[country][week] = {}
+
+            for clus in mutation_proportions[country]:
+                clus_display_name = clusters[clus]["display_name"]
+                if clus_display_name not in stand_estimated_cases:
+                    #print(f"{clus_display_name} missing from perCountryData.")
+                    continue
+
+                if week not in mutation_proportions[country][clus]:
+                    continue
+
+                for mut, prop in mutation_proportions[country][clus][week].items():
+                    if mut not in mutation_distribution[country][week]:
+                        mutation_distribution[country][week][mut] = 0
+
                     mutation_distribution[country][week][mut] += prop * float(
                         stand_estimated_cases[clus_display_name]) / 1000000.0  # Cases data comes in per million
 
     return mutation_distribution
+
 
 # Accumulate bi-weekly mutation percentages
 def accumulate_mutations(mutation_distribution):
@@ -151,14 +242,23 @@ def accumulate_mutations(mutation_distribution):
     for country in mutation_distribution:
         if not mutation_distribution[country]:
             continue
+
         weeks = sorted(list(mutation_distribution[country].keys()))
-        mutation_distribution_accum[country][weeks[0]] = mutation_distribution[country][weeks[0]]
-        for i in range(1,len(weeks)):
-            for mut in mutation_distribution[country][weeks[i]]:
-                if mut not in mutation_distribution_accum[country][weeks[i-1]]:
-                    mutation_distribution_accum[country][weeks[i]][mut] = mutation_distribution[country][weeks[i]][mut]
+
+        mutations = set([m for week in weeks for m in list(mutation_distribution[country][week].keys())])
+
+        for mut in mutations:
+            if mut in mutation_distribution[country][weeks[0]]:
+                mutation_distribution_accum[country][weeks[0]][mut] = mutation_distribution[country][weeks[0]][mut]
+            else:
+                mutation_distribution_accum[country][weeks[0]][mut] = 0.0
+
+        for i in range(0, len(weeks)-1):
+            for mut in mutations:
+                if mut not in mutation_distribution[country][weeks[i + 1]]:
+                    mutation_distribution_accum[country][weeks[i + 1]][mut] = mutation_distribution_accum[country][weeks[i]][mut]
                 else:
-                    mutation_distribution_accum[country][weeks[i]][mut] = mutation_distribution_accum[country][weeks[i-1]][mut] + mutation_distribution[country][weeks[i]][mut]
+                    mutation_distribution_accum[country][weeks[i + 1]][mut] = mutation_distribution_accum[country][weeks[i]][mut] + mutation_distribution[country][weeks[i + 1]][mut]
 
     return mutation_distribution_accum
 
@@ -213,6 +313,9 @@ def to_json_invert(data, mutation_names, caseCountData):
     return output_data
 
 def plot(mutation_distribution_accum):
+    if not os.path.exists("plots"):
+        os.makedirs("plots")
+
     dates = []
     data = {}
     for country in mutation_distribution_accum:
@@ -247,23 +350,76 @@ def plot(mutation_distribution_accum):
         fig.savefig(f"plots/{mut}.png")
         #ax.close()
 
+def plot_mutation_proportions(mutation_proportions):
+    if not os.path.exists("plots/mutation_proportions"):
+        os.makedirs("plots/mutation_proportions")
+
+
+    dates = []
+    clus_muts = []
+    for country in mutation_proportions:
+        for clus in mutation_proportions[country]:
+            for week in mutation_proportions[country][clus]:
+                if week not in dates:
+                    dates.append(week)
+                for mut, prop in mutation_proportions[country][clus][week].items():
+                    clus_mut = (clus,mut)
+                    if clus_mut not in clus_muts:
+                        clus_muts.append(clus_mut)
+
+    dates = sorted(dates)
+
+    data = {}
+    for (clus, mut) in clus_muts:
+        clus_mut = f"{mut} ({clus})"
+        if clus_mut not in data:
+            data[clus_mut] = {}
+        for country in mutation_proportions:
+            if country not in data[clus_mut]:
+                data[clus_mut][country] = []
+            if clus not in mutation_proportions[country]:
+                continue
+            for week in dates:
+                if week not in mutation_proportions[country][clus] or mut not in mutation_proportions[country][clus][week]:
+                    data[clus_mut][country].append(0.0)
+                else:
+                    data[clus_mut][country].append(mutation_proportions[country][clus][week][mut])
+
+    for mut in data:
+        fig, ax = plt.subplots()
+        for country in data[mut]:
+            if data[mut][country]:
+                ax.plot(dates, data[mut][country])
+
+        ax.set(xlabel='weeks', ylabel="percentage", title=mut)
+        ax.legend(list(data[mut]))
+        ax.set_ylim(0.0, 1.0)
+        ax.set_xticks(np.arange(0, len(dates) + 1, 10))
+        plt.xticks(rotation=45, ha="right")
+
+        fig.savefig(f"plots/mutation_proportions/{mut}.png")
+
 
 
 if __name__ == "__main__":
 
-    mutation_proportions = get_mutation_proportions()
-
-    #TODO: Now only stores RTD/NRD, so no longer needed - but not yet implemented in get_mutation_proportions_biweekly!!
-    for clus in mutation_proportions:
-        for country in mutation_proportions[clus]:
-            for mut in list(mutation_proportions[clus][country]):
-                if not mut.startswith("S"):
-                    mutation_proportions[clus][country].pop(mut)
-
     with open(CASECOUNTS_CSV_PATH) as f:
         caseCountData = json.load(f)
 
-    mutation_distribution = get_mutation_distribution(mutation_proportions, caseCountData["regions"][0]["distributions"])
+    weeks = get_all_weeks(caseCountData["regions"][0]["distributions"])
+
+    biweekly = True
+
+    if biweekly:
+        mutation_proportions = get_mutation_proportions_biweekly(weeks, 5)
+        #plot_mutation_proportions(mutation_proportions)
+        mutation_distribution = get_mutation_distribution_biweekly(mutation_proportions,
+                                                                   caseCountData["regions"][0]["distributions"])
+    else:
+        mutation_proportions = get_mutation_proportions()
+        mutation_distribution = get_mutation_distribution(mutation_proportions, caseCountData["regions"][0]["distributions"])
+
+
     mutation_names = get_mutation_list(mutation_distribution)
 
     #TODO: How to include reinfections and undercounting
