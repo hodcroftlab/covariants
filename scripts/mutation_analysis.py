@@ -78,8 +78,10 @@ def get_mutation_proportions():
 
         if cladeToUse == "nextstrainClade":
             varQueryName = clusters[clus]["nextstrain_clade"]
-        else:
+        elif "pango_lineages" in clusters[clus]:
             varQueryName = clusters[clus]["pango_lineages"][0]["name"]
+        else:
+            varQueryName = "NA" #this should spark an invalid request result
 
         print(f"\nQuery mutations from covSPECTRUm for cluster {clus} ([{cladeToUse}] {varQueryName})")
 
@@ -123,8 +125,10 @@ def get_mutation_proportions_biweekly(weeks, interval = 1):
 
         if cladeToUse == "nextstrainClade":
             varQueryName = clusters[clus]["nextstrain_clade"]
-        else:
+        elif "pango_lineages" in clusters[clus]:
             varQueryName = clusters[clus]["pango_lineages"][0]["name"]
+        else:
+            varyQueryName = "NA" #this should spark an invalid request result
 
         print(f"\nQuery mutations from covSPECTRUm for cluster {clus} ([{cladeToUse}] {varQueryName})")
 
