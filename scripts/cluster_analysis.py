@@ -382,7 +382,6 @@ print_lines = sorted([int(n_total/20*i) + 1 for i in range(1,20)]) # Print progr
 print("\nReading and cleaning up the metadata line-by-line...\n")
 n = 0
 noQC = 0
-noQCdates = []
 with open(input_meta) as f:
     header = f.readline().split("\t")
     indices = {c:header.index(c) for c in cols}
@@ -425,7 +424,6 @@ with open(input_meta) as f:
         # Keep only if at least 90% coverage -- exclude if no coverage info
         if l[indices['coverage']] == "?":
             noQC += 1
-            noQCdates.append(l[28])
             continue
         if float(l[indices['coverage']]) < 0.9:
             continue
@@ -630,7 +628,6 @@ print("100% complete!")
 t1 = time.time()
 print(f"Collecting all data took {round((t1-t0)/60,1)} min to run.\n")
 print(f"There are {noQC} without QC information.\n")
-#import ipdb; ipdb.set_trace()
 
 ##################################
 ##################################
