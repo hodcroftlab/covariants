@@ -41,9 +41,8 @@
 #                           | Also used in mutation_counts.py - when querying CoVSpectrum, all these mutations are removed from results (as they are defining)
 
 # | build_name              | Unique, safe name of a variant (to use in files, keys, URLs etc.) - does not have spaces or special symbols
-# | display_name            | Friendly name of a variant (to display to the user) PIPELINE - also used to match Nextstrain clade
-#TODO with new nextclade naming, can switch to nextclade name instead for matching
-# | nextstrain_name         | Variant name in Nextstrain nomenclature
+# | display_name            | Friendly name of a variant (to display to the user) PIPELINE - also CURRENTLY used to match Nextstrain clade
+# | nextstrain_name         | Variant name in year-letter Nextstrain nomenclature TODO MAY BE USED IN PIPELINE to match Nextstrain clade in future.
 # | who_name                | The Variant name assigned by WHO (Alpha, Beta, etc)
 
 
@@ -73,7 +72,7 @@ clusters = {
         "build_name": "20I.Alpha.V1",
         "old_build_names": ["S.501Y.V1"],
         "who_name": ["Alpha"],
-        "nextstrain_name": "20I (Alpha, V1)",
+        "nextstrain_name": "20I",
         "pango_lineages": [
             {"name": "B.1.1.7", "url": None}
         ],
@@ -132,7 +131,7 @@ clusters = {
         "build_name": "20H.Beta.V2",
         "old_build_names": ["S.501Y.V2"],
         "who_name": ["Beta"],
-        "nextstrain_name": "20H (Beta, V2)",
+        "nextstrain_name": "20H",
         "pango_lineages": [
             {"name": "B.1.351", "url": None}
         ],
@@ -184,7 +183,7 @@ clusters = {
         "build_name": "20J.Gamma.V3",
         "old_build_names": ["S.501Y.V3"],
         "who_name": ["Gamma"],
-        "nextstrain_name": "20J (Gamma, V3)",
+        "nextstrain_name": "20J",
         "pango_lineages": [
             {"name": "P.1", "url": None}
         ],
@@ -248,7 +247,7 @@ clusters = {
         "build_name": "21A.Delta",
         "old_build_names": ["21A.S.478K"],
         "who_name": ["Delta"],
-        "nextstrain_name": "21A (Delta)",
+        "nextstrain_name": "21A",
         "pango_lineages": [
             {"name": "B.1.617.2", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.2.html"}
         ],
@@ -303,7 +302,7 @@ clusters = {
         "build_name": "21I.Delta",
         "old_build_names": [],
         "who_name": ["Delta"],
-        "nextstrain_name": "21I (Delta)",
+        "nextstrain_name": "21I",
         "pango_lineages": [
             {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
         ],
@@ -365,7 +364,7 @@ clusters = {
         "build_name": "21J.Delta",
         "old_build_names": [],
         "who_name": ["Delta"],
-        "nextstrain_name": "21J (Delta)",
+        "nextstrain_name": "21J",
         "pango_lineages": [
             {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
         ],
@@ -532,7 +531,7 @@ clusters = {
         "who_name": ["Omicron"],
         "old_build_names": ["21L"],
         "alt_display_name": ["BA.2"],
-        "nextstrain_name": "21L (Omicron)",
+        "nextstrain_name": "21L",
         "pango_lineages": [
             {"name": "BA.2", "url": "https://cov-lineages.org/lineages/lineage_BA.2.html"},
         ],
@@ -1618,7 +1617,7 @@ clusters = {
         "build_name": "21B.Kappa",
         "old_build_names": ["21A.S.154K"],
         "who_name": ["Kappa"],
-        "nextstrain_name": "21B (Kappa)",
+        "nextstrain_name": "21B",
         "pango_lineages": [
             {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
         ],
@@ -1689,7 +1688,7 @@ clusters = {
         "build_name": "21D.Eta",
         "old_build_names": ["20A.S.484K"],
         "who_name": ["Eta"],
-        "nextstrain_name": "21D (Eta)",
+        "nextstrain_name": "21D",
         "pango_lineages": [
             {"name": "B.1.525", "url": None}
         ],
@@ -1752,7 +1751,7 @@ clusters = {
         "build_name": "21F.Iota",
         "old_build_names": ["20C.S.484K"],
         "who_name": ["Iota"],
-        "nextstrain_name": "21F (Iota)",
+        "nextstrain_name": "21F",
         "pango_lineages": [
             {"name": "B.1.526", "url": None}
         ],
@@ -1803,7 +1802,7 @@ clusters = {
         "build_name": "21G.Lambda",
         "old_build_names": [],
         "who_name": ["Lambda"],
-        "nextstrain_name": "21G (Lambda)",
+        "nextstrain_name": "21G",
         "pango_lineages": [
             {"name": "C.37", "url": None}
         ],
@@ -1866,7 +1865,7 @@ clusters = {
         "build_name": "21H.Mu",
         "old_build_names": ["21H"],
         "who_name": ["Mu"],
-        "nextstrain_name": "21H (Mu)",
+        "nextstrain_name": "21H",
         "pango_lineages": [
             {"name": "B.1.621", "url": None}
         ],
@@ -2030,7 +2029,7 @@ clusters = {
         "display_name": "20E (EU1)",
         "alt_display_name": ["20A.EU1"],
         "build_name": "20A.EU1",
-        "nextstrain_name": "20E (EU1)",
+        "nextstrain_name": "20E",
         "pango_lineages": [
             {"name": "B.1.177", "url": None},
         ],
@@ -2066,7 +2065,7 @@ clusters = {
         "build_name": "21C.Epsilon",
         "old_build_names": ["S.L452R"],
         "who_name": ["Epsilon"],
-        "nextstrain_name": "21C (Epsilon)",
+        "nextstrain_name": "21C",
         "pango_lineages": [
             {"name": "B.1.427", "url": None},
             {"name": "B.1.429", "url": None}
