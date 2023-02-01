@@ -3825,7 +3825,8 @@ bad_seqs = {
     "Libya/421067089/2020" : "2020-05-30",  #Eta EPI_ISL_16648341
     "Libya/421067094/2020" : "2020-05-20",  #Eta EPI_ISL_16648336
     "Nigeria/CERID-05/2020" : "2020-09-16",  #Eta EPI_ISL_15801307
-
+    #1 Feb
+    "Indonesia/JB-WJHL-ITB-W05145/2022" : "2022-06-12", # 22F EPI_ISL_16700201
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
