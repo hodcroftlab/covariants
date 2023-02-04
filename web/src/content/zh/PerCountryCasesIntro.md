@@ -2,7 +2,7 @@
 
 在一些国家（特别是那些良好的分子监测），这种假设比其他国家（序列很少，或仅来自一个区域的序列）更合适，所以要小心解释！
 
-病例数据来自[用数据表示我们的世界](https://ourworldindata.org/coronavirus), 源自出色的[COVID-19数据存储库](https://github.com/CSSEGISandData/COVID-19)，由约翰霍普金斯大学的 CSSE提供。
+病例数据来自[用数据表示我们的世界](https://ourworldindata.org/coronavirus), 源自出色的[COVID-19数据存储库](https://github.com/CSSEGISandData/COVID-19)，它由约翰霍普金斯大学的CSSE部门提供。
 
 为了尽量减少误解，只有自 2020 年底以来至少40%的两周内对至少 2% 的病例进行测序的国家才会在CoVariants显示。
 
