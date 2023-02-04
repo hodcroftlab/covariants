@@ -10,7 +10,7 @@ CoVariants 概述了感兴趣的 SARS-CoV-2 变体和突变。在这里，您可
 
 单击其中一个彩色按钮以查看特定的[变体1](/variants) - 以阅读信息、查看图表和蛋白质结构，并链接到重点Nextstrain构建。
 
-要一次查看多个变体，请查看[按变体划分](/per-variant)和[按国家划分](/per-country)页面，你可以在同一位置查看大量数据并比较变体和国家！
+要一次查看多个变体，请查看[按变体分布](/per-variant)和[按国家分布](/per-country)页面，你可以在同一位置查看大量数据并比较变体和国家！
 
 <HomeImages/>
 
@@ -31,8 +31,8 @@ CoVariants对变体使用Nextstrain命名系统（[阅读更多内容](https://n
 
 ## 下一步是什么？
 
-- 浏览 [Variants](/variants)
-- 探索 [Per-country distribution](/per-country)
-- 探索 [Per-variant distribution](/per-variant)
-- 查看 [Shared mutations](/shared-mutations)
-- 查看 [Frequently asked questions](/faq)
+- 浏览 [变体](/variants)
+- 探索 [按国家分布](/per-country)
+- 探索 [按变体分布](/per-variant)
+- 查看 [共享突变](/shared-mutations)
+- 查看 [常见问题](/faq)

@@ -3,7 +3,7 @@ import { CladeSchema } from 'src/components/Variants/CladeSchema.tsx'
 
 单击其中一个彩色按钮以查看特定的[变体1](/variants) - 以阅读信息、查看图表和蛋白质结构，并链接到重点Nextstrain构建。
 
-要一次查看多个变体，请查看[按变体划分](/per-variant)和[按国家划分](/per-country)页面，你可以在同一位置查看大量数据并比较变体和国家！
+要一次查看多个变体，请查看[按变体分布](/per-variant)和[按国家分布](/per-country)页面，你可以在同一位置查看大量数据并比较变体和国家！
 
 CoVariants中包含的变异，包括国际公认的关注变异 (VoC) 和许多感兴趣变异 (VoI)，以及其他迅速扩张、在国家或地区占主导地位或具有感兴趣突变特征的变异。
 
