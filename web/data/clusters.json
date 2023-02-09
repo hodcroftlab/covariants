@@ -7058,9 +7058,9 @@
       "col": "#ff56c1",
       "country_info": [],
       "display_name": "23A (Omicron)",
-      "graphing": false,
+      "graphing": true,
       "has_no_page": false,
-      "important": false,
+      "important": true,
       "mutations": {
         "nonsynonymous": [
           {
