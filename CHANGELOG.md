@@ -1,5 +1,8 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2023-02-10
+- Add 22A (XBB.1.5) page and on plots
+
 ## 2022-11-22
 - Fix 'recombinants' category to be fully functional in plots & side-bar menus
 
