@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 276051,
+    "total": 281322,
     "counts": [
       {
         "mut": "S:R346T",
-        "count": 182973
+        "count": 187115
       },
       {
         "mut": "S:Y144-",
-        "count": 62762
+        "count": 64192
       },
       {
         "mut": "S:I666V",
-        "count": 9548
+        "count": 9659
       },
       {
         "mut": "S:E619Q",
-        "count": 5632
+        "count": 5704
       },
       {
         "mut": "S:L5F",
-        "count": 2906
+        "count": 2989
       },
       {
         "mut": "S:M153I",
-        "count": 2525
+        "count": 2585
       },
       {
         "mut": "S:D253G",
-        "count": 2367
+        "count": 2467
       },
       {
         "mut": "S:F157L",
-        "count": 2230
+        "count": 2361
       },
       {
         "mut": "S:I68-",
-        "count": 1867
+        "count": 1996
       },
       {
         "mut": "S:H146L",
-        "count": 1688
+        "count": 1721
       }
     ]
   },
   "others": {
-    "total": 276051,
+    "total": 281322,
     "counts": [
       {
         "mut": "ORF1b:N1191S",
-        "count": 210130
+        "count": 214449
       },
       {
         "mut": "ORF1a:V84-",
-        "count": 7459
+        "count": 7624
       },
       {
         "mut": "ORF1a:M85-",
-        "count": 6944
+        "count": 7120
       },
       {
         "mut": "ORF1b:P2313L",
-        "count": 6222
+        "count": 6313
       },
       {
         "mut": "ORF1a:V3855I",
-        "count": 6184
+        "count": 6273
       },
       {
         "mut": "ORF1a:L3293I",
-        "count": 5567
-      },
-      {
-        "mut": "ORF1a:S505F",
-        "count": 5148
+        "count": 5627
       },
       {
         "mut": "ORF1a:L3606F",
-        "count": 5127
+        "count": 5257
       },
       {
         "mut": "ORF1a:G82-",
-        "count": 5099
+        "count": 5205
+      },
+      {
+        "mut": "ORF1a:S505F",
+        "count": 5195
       },
       {
         "mut": "ORF1a:H83-",
-        "count": 5051
+        "count": 5153
       }
     ]
   }

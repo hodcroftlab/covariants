@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 48373,
+    "total": 50937,
     "counts": [
       {
         "mut": "S:G252V",
-        "count": 37331
+        "count": 39737
       },
       {
         "mut": "S:F486P",
-        "count": 19438
+        "count": 21737
       },
       {
         "mut": "S:D253G",
-        "count": 6442
+        "count": 6544
       },
       {
         "mut": "S:H146K",
-        "count": 1516
+        "count": 1606
       },
       {
         "mut": "S:T883I",
-        "count": 1253
+        "count": 1280
       },
       {
         "mut": "S:S673G",
-        "count": 802
+        "count": 810
       },
       {
         "mut": "S:G142-",
-        "count": 702
+        "count": 709
       },
       {
         "mut": "S:V143D",
-        "count": 665
+        "count": 664
       },
       {
         "mut": "S:L5F",
-        "count": 477
+        "count": 502
       },
       {
         "mut": "S:Q613H",
-        "count": 428
+        "count": 457
       }
     ]
   },
   "others": {
-    "total": 48373,
+    "total": 50937,
     "counts": [
       {
         "mut": "ORF8:G8*",
-        "count": 37000
+        "count": 39479
       },
       {
         "mut": "ORF1a:G82D",
-        "count": 3186
+        "count": 3200
       },
       {
         "mut": "ORF1a:A540V",
-        "count": 2551
+        "count": 2615
       },
       {
         "mut": "ORF1b:I1998V",
-        "count": 1128
+        "count": 1130
       },
       {
         "mut": "ORF1a:T4175I",
-        "count": 1006
+        "count": 1094
       },
       {
         "mut": "ORF9b:I5T",
-        "count": 993
+        "count": 1083
       },
       {
         "mut": "ORF1a:M85-",
-        "count": 975
+        "count": 1081
       },
       {
         "mut": "ORF1a:V84-",
-        "count": 951
+        "count": 1036
       },
       {
         "mut": "ORF1a:G1819S",
-        "count": 930
+        "count": 1016
       },
       {
-        "mut": "ORF1a:P309L",
-        "count": 871
+        "mut": "ORF8:I121-",
+        "count": 900
       }
     ]
   }
