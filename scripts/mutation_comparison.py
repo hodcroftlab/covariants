@@ -58,16 +58,16 @@ mutation_comparison = {
             "S:D950N"
         ]
     },
-    "21B (Kappa)\n(B.1.617.1)": {
-        "nonsynonymous": [
-            "S:E154K",
-            "S:L452R",
-            "S:E484Q",
-            "S:D614G",
-            "S:P681R",
-            "S:Q1071H"
-        ]
-    },
+#    "21B (Kappa)\n(B.1.617.1)": {
+#        "nonsynonymous": [
+#            "S:E154K",
+#            "S:L452R",
+#            "S:E484Q",
+#            "S:D614G",
+#            "S:P681R",
+#            "S:Q1071H"
+#        ]
+#    },
     "21K (Omicron)\n(BA.1)": {
         "nonsynonymous": [
             "S:A67V",
@@ -417,40 +417,40 @@ mutation_comparison = {
             "S:N969K",
         ]
     },
-    "21D (Eta)\n(B.1.525)": {
-        "nonsynonymous": [
-            "S:Q52R",
-            "S:A67V",
-            "S:H69-",
-            "S:V70-",
-            "S:Y144-",
-            "S:E484K",
-            "S:D614G",
-            "S:Q677H",
-            "S:F888L",
-        ]
-    },
+#    "21D (Eta)\n(B.1.525)": {
+#        "nonsynonymous": [
+#            "S:Q52R",
+#            "S:A67V",
+#            "S:H69-",
+#            "S:V70-",
+#            "S:Y144-",
+#            "S:E484K",
+#            "S:D614G",
+#            "S:Q677H",
+#            "S:F888L",
+#        ]
+#    },
 #    "21F (Iota)\n(B.1.526)": {
 #        "nonsynonymous": ["S:L5F", "S:T95I", "S:D253G", "S:E484K", "S:D614G", "S:A701V"]
 #    },
-    "21G (Lambda)\n(C.37)": {
-        "nonsynonymous": [
-            "S:G75V",
-            "S:T76I",
-            "S:R246-",
-            "S:S247-",
-            "S:Y248-",
-            "S:L249-",
-            "S:T250-",
-            "S:P251-",
-            "S:G252-",
-            "S:D253N",
-            "S:L452Q",
-            "S:F490S",
-            "S:D614G",
-            "S:T859N",
-        ]
-    },
+#    "21G (Lambda)\n(C.37)": {
+#        "nonsynonymous": [
+#            "S:G75V",
+#            "S:T76I",
+#            "S:R246-",
+#            "S:S247-",
+#            "S:Y248-",
+#            "S:L249-",
+#            "S:T250-",
+#            "S:P251-",
+#            "S:G252-",
+#            "S:D253N",
+#            "S:L452Q",
+#            "S:F490S",
+#            "S:D614G",
+#            "S:T859N",
+#        ]
+#    },
 #    "21H (Mu)\n(B.1.621)": {
 #        "nonsynonymous": [
 #            "S:T95I",
