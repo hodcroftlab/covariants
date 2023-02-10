@@ -1582,7 +1582,7 @@
       "country_info": [],
       "display_name": "21K (Omicron)",
       "graphing": true,
-      "important": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -4082,7 +4082,7 @@
       "country_info": [],
       "display_name": "22C (Omicron)",
       "graphing": true,
-      "important": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
