@@ -1,11 +1,9 @@
 import React, { PropsWithChildren } from 'react'
-import { ChangelogButton } from 'src/components/Common/ChangelogButton'
-
 import styled from 'styled-components'
 import { Container as ContainerBase, Row, Col } from 'reactstrap'
-
 import GisaidLogoBase from 'src/assets/images/GISAID_logo.svg'
-
+import { ChristmasLightRope, Santa, Snowfall } from 'src/components/Common/Christmas'
+import { ChangelogButton } from 'src/components/Common/ChangelogButton'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { NavigationBar } from './NavigationBar'
@@ -76,10 +74,11 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
       <HeaderRow noGutters>
         <HeaderCol>
           <NavigationBar />
+          <ChristmasLightRope />
         </HeaderCol>
       </HeaderRow>
 
-      <Row noGutters className="ml-3 mt-n1 d-none d-md-block">
+      <Row noGutters className="ml-3 mt-2 d-none d-md-block">
         <Col className="d-flex">
           <GisaidText className="d-flex mr-auto">
             <span className="mr-1">{t('Enabled by data from {{ gisaid }}', { gisaid: '' })}</span>
@@ -105,6 +104,9 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
           <FooterContent />
         </FooterCol>
       </FooterRow>
+
+      <Snowfall />
+      <Santa />
     </Container>
   )
 }

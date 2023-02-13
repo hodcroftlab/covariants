@@ -3,12 +3,14 @@ import React, { useCallback, useMemo, useState } from 'react'
 
 import styled from 'styled-components'
 import {
+  Col,
   Collapse,
   Nav as NavBase,
   Navbar as NavbarBase,
   NavbarToggler as NavbarTogglerBase,
   NavItem as NavItemBase,
   NavLink as NavLinkBase,
+  Row,
 } from 'reactstrap'
 import classNames from 'classnames'
 import { FaGithub, FaTwitter } from 'react-icons/fa'
@@ -16,11 +18,12 @@ import { FaGithub, FaTwitter } from 'react-icons/fa'
 import BrandLogoBase from 'src/assets/images/logo.svg'
 import BrandLogoLargeBase from 'src/assets/images/logo_text_right.svg'
 
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { Link } from 'src/components/Link/Link'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { TWITTER_USERNAME_RAW, URL_GITHUB } from 'src/constants'
+import { ChristmasToggle } from 'src/components/Common/Christmas'
 import { LanguageSwitcher } from 'src/components/Layout/LanguageSwitcher'
-import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 export function matchingUrl(url: string, pathname: string): boolean {
   if (pathname.startsWith('/variants')) {
@@ -175,6 +178,13 @@ export function NavigationBar() {
         </NavWrappable>
 
         <Nav className="ml-auto" navbar>
+          <NavItem>
+            <Row noGutters>
+              <Col className="mt-2 mx-3">
+                <ChristmasToggle />
+              </Col>
+            </Row>
+          </NavItem>
           {navLinksRight.map(({ text, title, url, alt, icon }) => (
             <NavItem key={title}>
               <NavLink tag={LinkRight} title={title} href={url} alt={alt} icon={null}>

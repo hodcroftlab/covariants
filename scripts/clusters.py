@@ -41,9 +41,8 @@
 #                           | Also used in mutation_counts.py - when querying CoVSpectrum, all these mutations are removed from results (as they are defining)
 
 # | build_name              | Unique, safe name of a variant (to use in files, keys, URLs etc.) - does not have spaces or special symbols
-# | display_name            | Friendly name of a variant (to display to the user) PIPELINE - also used to match Nextstrain clade
-#TODO with new nextclade naming, can switch to nextclade name instead for matching
-# | nextstrain_name         | Variant name in Nextstrain nomenclature
+# | display_name            | Friendly name of a variant (to display to the user) PIPELINE - also CURRENTLY used to match Nextstrain clade
+# | nextstrain_name         | Variant name in year-letter Nextstrain nomenclature TODO MAY BE USED IN PIPELINE to match Nextstrain clade in future.
 # | who_name                | The Variant name assigned by WHO (Alpha, Beta, etc)
 
 
@@ -73,7 +72,7 @@ clusters = {
         "build_name": "20I.Alpha.V1",
         "old_build_names": ["S.501Y.V1"],
         "who_name": ["Alpha"],
-        "nextstrain_name": "20I (Alpha, V1)",
+        "nextstrain_name": "20I",
         "pango_lineages": [
             {"name": "B.1.1.7", "url": None}
         ],
@@ -132,7 +131,7 @@ clusters = {
         "build_name": "20H.Beta.V2",
         "old_build_names": ["S.501Y.V2"],
         "who_name": ["Beta"],
-        "nextstrain_name": "20H (Beta, V2)",
+        "nextstrain_name": "20H",
         "pango_lineages": [
             {"name": "B.1.351", "url": None}
         ],
@@ -184,7 +183,7 @@ clusters = {
         "build_name": "20J.Gamma.V3",
         "old_build_names": ["S.501Y.V3"],
         "who_name": ["Gamma"],
-        "nextstrain_name": "20J (Gamma, V3)",
+        "nextstrain_name": "20J",
         "pango_lineages": [
             {"name": "P.1", "url": None}
         ],
@@ -248,7 +247,7 @@ clusters = {
         "build_name": "21A.Delta",
         "old_build_names": ["21A.S.478K"],
         "who_name": ["Delta"],
-        "nextstrain_name": "21A (Delta)",
+        "nextstrain_name": "21A",
         "pango_lineages": [
             {"name": "B.1.617.2", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.2.html"}
         ],
@@ -303,7 +302,7 @@ clusters = {
         "build_name": "21I.Delta",
         "old_build_names": [],
         "who_name": ["Delta"],
-        "nextstrain_name": "21I (Delta)",
+        "nextstrain_name": "21I",
         "pango_lineages": [
             {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
         ],
@@ -365,7 +364,7 @@ clusters = {
         "build_name": "21J.Delta",
         "old_build_names": [],
         "who_name": ["Delta"],
-        "nextstrain_name": "21J (Delta)",
+        "nextstrain_name": "21J",
         "pango_lineages": [
             {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
         ],
@@ -422,7 +421,7 @@ clusters = {
         "nextstrain_build": True,
         "graphing": True,
         "type": "variant",
-        "important": True,
+        "important": False,
         "country_info": [],
         "col": "#A366A3",
         "display_name": "21K (Omicron)",
@@ -532,7 +531,7 @@ clusters = {
         "who_name": ["Omicron"],
         "old_build_names": ["21L"],
         "alt_display_name": ["BA.2"],
-        "nextstrain_name": "21L (Omicron)",
+        "nextstrain_name": "21L",
         "pango_lineages": [
             {"name": "BA.2", "url": "https://cov-lineages.org/lineages/lineage_BA.2.html"},
         ],
@@ -979,7 +978,7 @@ clusters = {
        "nextstrain_build": True,
        "type": "variant",
        "graphing": True,
-       "important": True,
+       "important": False,
        "country_info": [],
        "col": "#0400e0",
        "display_name": "22C (Omicron)",
@@ -1573,6 +1572,165 @@ clusters = {
        }
     },
 
+
+    "23A": {  #XBB.1.5
+       "snps": [22109,23019,23018,22317],  #GCCT
+       "snps_with_base": ["22109G", "23019C", "23018C", "22317T"], #MUST ADD VALUE WHEN TURN INTO PAGE!  #last two are 486P and 252V
+       "cluster_data": [],
+       "nextstrain_build": True,
+       "parent": "22F", #I think we now need this for XBB.1.5 as will be classed as 22F
+       "use_pango": False,
+       "has_no_page": False,
+       "type": "variant",
+       "graphing": True,
+       "important": True,
+       "country_info": [],
+       "col": "#ff56c1",
+       "display_name": "23A (Omicron)",
+       "alt_display_name": ["XBB.1.5"],
+       "build_name": "23A.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "23A",
+       "pango_lineages": [
+           {"name": "XBB.1.5", "url": "https://cov-lineages.org/lineage.html?lineage=XBB.1.5"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/23A.Omicron",
+       "mutations": {
+            "nonsynonymous": [
+                {"gene":"S", "left":"T", "pos": 19, "right": "I"},
+                {"gene":"S", "left":"L", "pos": 24, "right": "-"},
+                {"gene":"S", "left":"P", "pos": 25, "right": "-"},
+                {"gene":"S", "left":"P", "pos": 26, "right": "-"},
+                {"gene":"S", "left":"A", "pos": 27, "right": "S"},
+                {"gene":"S", "left":"V", "pos": 83, "right": "A"},
+                {"gene":"S", "left":"G", "pos": 142, "right": "D"},
+                {"gene":"S", "left":"Y", "pos": 144, "right": "-"},
+                {"gene":"S", "left":"H", "pos": 146, "right": "Q"},
+                {"gene":"S", "left":"Q", "pos": 183, "right": "E"},
+                {"gene":"S", "left":"V", "pos": 213, "right": "E"},
+                {"gene":"S", "left":"G", "pos": 252, "right": "V"},
+                {"gene":"S", "left":"G", "pos": 339, "right": "H"},
+                {"gene":"S", "left":"R", "pos": 346, "right": "T"},
+                {"gene":"S", "left":"L", "pos": 368, "right": "I"},
+                {"gene":"S", "left":"S", "pos": 371, "right": "F"},
+                {"gene":"S", "left":"S", "pos": 373, "right": "P"},
+                {"gene":"S", "left":"S", "pos": 375, "right": "F"},
+                {"gene":"S", "left":"T", "pos": 376, "right": "A"},
+                {"gene":"S", "left":"D", "pos": 405, "right": "N"},
+                {"gene":"S", "left":"R", "pos": 408, "right": "S"},
+                {"gene":"S", "left":"K", "pos": 417, "right": "N"},
+                {"gene":"S", "left":"N", "pos": 440, "right": "K"},
+                {"gene":"S", "left":"V", "pos": 445, "right": "P"},
+                {"gene":"S", "left":"G", "pos": 446, "right": "S"},
+                {"gene":"S", "left":"N", "pos": 460, "right": "K"},
+                {"gene":"S", "left":"S", "pos": 477, "right": "N"},
+                {"gene":"S", "left":"T", "pos": 478, "right": "K"},
+                {"gene":"S", "left":"E", "pos": 484, "right": "A"},
+                {"gene":"S", "left":"F", "pos": 486, "right": "P"},
+                {"gene":"S", "left":"F", "pos": 490, "right": "S"},
+                {"gene":"S", "left":"R", "pos": 493, "right": "Q"},
+                {"gene":"S", "left":"Q", "pos": 498, "right": "R"},
+                {"gene":"S", "left":"N", "pos": 501, "right": "Y"},
+                {"gene":"S", "left":"Y", "pos": 505, "right": "H"},
+                {"gene":"S", "left":"D", "pos": 614, "right": "G"},
+                {"gene":"S", "left":"H", "pos": 655, "right": "Y"},
+                {"gene":"S", "left":"N", "pos": 679, "right": "K"},
+                {"gene":"S", "left":"P", "pos": 681, "right": "H"},
+                {"gene":"S", "left":"N", "pos": 764, "right": "K"},
+                {"gene":"S", "left":"D", "pos": 796, "right": "Y"},
+                {"gene":"S", "left":"Q", "pos": 954, "right": "H"},
+                {"gene":"S", "left":"N", "pos": 969, "right": "K"},
+                {"gene":"N", "left":"P", "pos": 13, "right": "L"},
+                {"gene":"N", "left":"E", "pos": 31, "right": "-"},
+                {"gene":"N", "left":"R", "pos": 32, "right": "-"},
+                {"gene":"N", "left":"S", "pos": 33, "right": "-"},
+                {"gene":"N", "left":"R", "pos": 203, "right": "K"},
+                {"gene":"N", "left":"G", "pos": 204, "right": "R"},
+                {"gene":"N", "left":"S", "pos": 413, "right": "R"},
+                {"gene":"ORF1a", "left":"K", "pos": 47, "right": "R"},
+                {"gene":"ORF1a", "left":"S", "pos": 135, "right": "R"},
+                {"gene":"ORF1a", "left":"T", "pos": 842, "right": "I"},
+                {"gene":"ORF1a", "left":"G", "pos": 1307, "right": "S"},
+                {"gene":"ORF1a", "left":"L", "pos": 3027, "right": "F"},
+                {"gene":"ORF1a", "left":"T", "pos": 3090, "right": "I"},
+                {"gene":"ORF1a", "left":"L", "pos": 3201, "right": "F"},
+                {"gene":"ORF1a", "left":"T", "pos": 3255, "right": "I"},
+                {"gene":"ORF1a", "left":"P", "pos": 3395, "right": "H"},
+                {"gene":"ORF1a", "left":"S", "pos": 3675, "right": "-"},
+                {"gene":"ORF1a", "left":"G", "pos": 3676, "right": "-"},
+                {"gene":"ORF1a", "left":"F", "pos": 3677, "right": "-"},
+                {"gene":"ORF1b", "left":"P", "pos": 314, "right": "L"},
+                {"gene":"ORF1b", "left":"G", "pos": 662, "right": "S"},
+                {"gene":"ORF1b", "left":"S", "pos": 959, "right": "P"},
+                {"gene":"ORF1b", "left":"R", "pos": 1315, "right": "C"},
+                {"gene":"ORF1b", "left":"I", "pos": 1566, "right": "V"},
+                {"gene":"ORF1b", "left":"T", "pos": 2163, "right": "I"},
+                {"gene":"ORF3a", "left":"T", "pos": 223, "right": "I"},
+                {"gene":"E", "left":"T", "pos": 9, "right": "I"},
+                {"gene":"E", "left":"T", "pos": 11, "right": "A"},
+                {"gene":"M", "left":"Q", "pos": 19, "right": "E"},
+                {"gene":"M", "left":"A", "pos": 63, "right": "T"},
+                {"gene":"ORF6", "left":"D", "pos": 61, "right": "L"},
+                {"gene":"ORF8", "left":"G", "pos": 8, "right": "*"},
+                {"gene":"ORF9b", "left":"P", "pos": 10, "right": "S"},
+                {"gene":"ORF9b", "left":"P", "pos": 10, "right": "F"},
+                {"gene":"ORF9b", "left":"E", "pos": 27, "right": "-"},
+                {"gene":"ORF9b", "left":"N", "pos": 28, "right": "-"},
+                {"gene":"ORF9b", "left":"A", "pos": 29, "right": "-"},
+            ],
+            "synonymous": [
+                {"left": "C", "pos": 241, "right": "T"},
+                {"left": "C", "pos": 3037, "right": "T"},
+                {"left": "C", "pos": 4321, "right": "T"},
+                {"left": "A", "pos": 9424, "right": "G"},
+                {"left": "C", "pos": 10198, "right": "T"},
+                {"left": "G", "pos": 10447, "right": "A"},
+                {"left": "C", "pos": 12880, "right": "T"},
+                {"left": "C", "pos": 15714, "right": "T"},
+                {"left": "C", "pos": 15738, "right": "T"},
+                {"left": "T", "pos": 15939, "right": "C"},
+                {"left": "T", "pos": 17124, "right": "C"},
+                {"left": "T", "pos": 17859, "right": "C"},
+                {"left": "A", "pos": 19326, "right": "G"},
+                {"left": "A", "pos": 20055, "right": "G"},
+                {"left": "C", "pos": 25000, "right": "T"},
+                {"left": "C", "pos": 25416, "right": "T"},
+                {"left": "C", "pos": 25584, "right": "T"},
+                {"left": "C", "pos": 26858, "right": "T"},
+                {"left": "A", "pos": 27259, "right": "C"},
+                {"left": "C", "pos": 27807, "right": "T"},
+                {"left": "A", "pos": 28271, "right": "T"},
+                {"left": "G", "pos": 29734, "right": "-"},
+                {"left": "A", "pos": 29735, "right": "-"},
+                {"left": "G", "pos": 29736, "right": "-"},
+                {"left": "G", "pos": 29737, "right": "-"},
+                {"left": "C", "pos": 29738, "right": "-"},
+                {"left": "C", "pos": 29739, "right": "-"},
+                {"left": "A", "pos": 29740, "right": "-"},
+                {"left": "C", "pos": 29741, "right": "-"},
+                {"left": "G", "pos": 29742, "right": "-"},
+                {"left": "C", "pos": 29743, "right": "-"},
+                {"left": "G", "pos": 29744, "right": "-"},
+                {"left": "G", "pos": 29745, "right": "-"},
+                {"left": "A", "pos": 29746, "right": "-"},
+                {"left": "G", "pos": 29747, "right": "-"},
+                {"left": "T", "pos": 29748, "right": "-"},
+                {"left": "A", "pos": 29749, "right": "-"},
+                {"left": "C", "pos": 29750, "right": "-"},
+                {"left": "G", "pos": 29751, "right": "-"},
+                {"left": "A", "pos": 29752, "right": "-"},
+                {"left": "T", "pos": 29753, "right": "-"},
+                {"left": "C", "pos": 29754, "right": "-"},
+                {"left": "G", "pos": 29755, "right": "-"},
+                {"left": "A", "pos": 29756, "right": "-"},
+                {"left": "G", "pos": 29757, "right": "-"},
+                {"left": "T", "pos": 29758, "right": "-"},
+                {"left": "G", "pos": 29759, "right": "-"},
+            ],
+       }
+    },
+
     # variant  -- part of 'Indian' in media - B.1.617.1
     "Kappa": {
         "snps": [17523, 23604, 22917],  # ORF1b:1352, S:681, 452
@@ -1589,7 +1747,7 @@ clusters = {
         "build_name": "21B.Kappa",
         "old_build_names": ["21A.S.154K"],
         "who_name": ["Kappa"],
-        "nextstrain_name": "21B (Kappa)",
+        "nextstrain_name": "21B",
         "pango_lineages": [
             {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
         ],
@@ -1660,7 +1818,7 @@ clusters = {
         "build_name": "21D.Eta",
         "old_build_names": ["20A.S.484K"],
         "who_name": ["Eta"],
-        "nextstrain_name": "21D (Eta)",
+        "nextstrain_name": "21D",
         "pango_lineages": [
             {"name": "B.1.525", "url": None}
         ],
@@ -1723,7 +1881,7 @@ clusters = {
         "build_name": "21F.Iota",
         "old_build_names": ["20C.S.484K"],
         "who_name": ["Iota"],
-        "nextstrain_name": "21F (Iota)",
+        "nextstrain_name": "21F",
         "pango_lineages": [
             {"name": "B.1.526", "url": None}
         ],
@@ -1774,7 +1932,7 @@ clusters = {
         "build_name": "21G.Lambda",
         "old_build_names": [],
         "who_name": ["Lambda"],
-        "nextstrain_name": "21G (Lambda)",
+        "nextstrain_name": "21G",
         "pango_lineages": [
             {"name": "C.37", "url": None}
         ],
@@ -1837,7 +1995,7 @@ clusters = {
         "build_name": "21H.Mu",
         "old_build_names": ["21H"],
         "who_name": ["Mu"],
-        "nextstrain_name": "21H (Mu)",
+        "nextstrain_name": "21H",
         "pango_lineages": [
             {"name": "B.1.621", "url": None}
         ],
@@ -2001,7 +2159,7 @@ clusters = {
         "display_name": "20E (EU1)",
         "alt_display_name": ["20A.EU1"],
         "build_name": "20A.EU1",
-        "nextstrain_name": "20E (EU1)",
+        "nextstrain_name": "20E",
         "pango_lineages": [
             {"name": "B.1.177", "url": None},
         ],
@@ -2037,7 +2195,7 @@ clusters = {
         "build_name": "21C.Epsilon",
         "old_build_names": ["S.L452R"],
         "who_name": ["Epsilon"],
-        "nextstrain_name": "21C (Epsilon)",
+        "nextstrain_name": "21C",
         "pango_lineages": [
             {"name": "B.1.427", "url": None},
             {"name": "B.1.429", "url": None}

@@ -240,6 +240,17 @@
       "who": "Omicron"
     },
     {
+      "clade": "23A (Omicron)",
+      "lineages": [
+        {
+          "name": "XBB.1.5",
+          "url": "https://cov-lineages.org/lineages/lineage_XBB.1.5.html"
+        }
+      ],
+      "others": [],
+      "who": "Omicron"
+    },
+    {
       "clade": "20E (EU1)",
       "lineages": [
         {

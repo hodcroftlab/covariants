@@ -381,6 +381,7 @@ print_lines = sorted([int(n_total/20*i) + 1 for i in range(1,20)]) # Print progr
 
 print("\nReading and cleaning up the metadata line-by-line...\n")
 n = 0
+noQC = 0
 with open(input_meta) as f:
     header = f.readline().split("\t")
     indices = {c:header.index(c) for c in cols}
@@ -420,7 +421,10 @@ with open(input_meta) as f:
         if l[indices['strain']] in bad_seqs and l[indices['date']] == bad_seqs[l[indices['strain']]]:
             continue
 
-        # Keep only if at least 90% coverage
+        # Keep only if at least 90% coverage -- exclude if no coverage info
+        if l[indices['coverage']] == "?":
+            noQC += 1
+            continue
         if float(l[indices['coverage']]) < 0.9:
             continue
 
@@ -623,6 +627,7 @@ with open(input_meta) as f:
 print("100% complete!")
 t1 = time.time()
 print(f"Collecting all data took {round((t1-t0)/60,1)} min to run.\n")
+print(f"There are {noQC} without QC information.\n")
 
 ##################################
 ##################################

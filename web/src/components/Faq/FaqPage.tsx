@@ -4,14 +4,17 @@ import { MdxContent } from 'src/i18n/getMdxContent'
 import { CenteredEditable } from 'src/components/Common/Editable'
 import { PageHeading } from 'src/components/Common/PageHeading'
 import { Layout } from 'src/components/Layout/Layout'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 export function FaqPage() {
+  const { t } = useTranslationSafe()
+
   return (
     <Layout>
       <Container>
         <Row noGutters>
           <Col>
-            <PageHeading>{'Frequently asked questions'}</PageHeading>
+            <PageHeading>{t('Frequently asked questions')}</PageHeading>
           </Col>
         </Row>
 

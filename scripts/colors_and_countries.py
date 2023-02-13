@@ -206,6 +206,9 @@ country_list_4 = [
     "Trinidad and Tobago",  #15
     "Curacao",              #16
     "Guatemala",            #17
+    "China",                #18
+    "Dominican Republic",   #19
+    "Bonaire",              #20
 ]
 
 country_styles_1 = {
