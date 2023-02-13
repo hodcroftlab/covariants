@@ -25,7 +25,6 @@ import { TWITTER_USERNAME_RAW, URL_GITHUB } from 'src/constants'
 import { ChristmasToggle } from 'src/components/Common/Christmas'
 import { LanguageSwitcher } from 'src/components/Layout/LanguageSwitcher'
 
-
 export function matchingUrl(url: string, pathname: string): boolean {
   if (pathname.startsWith('/variants')) {
     return url === '/variants'
