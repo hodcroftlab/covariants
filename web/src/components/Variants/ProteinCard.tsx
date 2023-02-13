@@ -5,12 +5,12 @@ import { SiMoleculer } from 'react-icons/si'
 import { Card, CardBody, CardHeader, Col, Container, Row } from 'reactstrap'
 
 import { URL_GITHUB } from 'src/constants'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import type { ClusterDatum } from 'src/io/getClusters'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import GifPlayer from 'src/components/Common/GifPlayer'
 
 import GisaidLogo from 'src/assets/images/GISAID_logo.svg'
-import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 const ProteinCardTitleIcon = styled(SiMoleculer)`
   margin: auto 5px;
@@ -91,6 +91,8 @@ enum GifPlayerCondition {
 }
 
 export function ProteinCard({ cluster }: ProteinCardProps) {
+  const { t } = useTranslationSafe()
+
   const [condition, setCondition] = useState(GifPlayerCondition.loading)
 
   useEffect(() => {
@@ -136,7 +138,9 @@ export function ProteinCard({ cluster }: ProteinCardProps) {
             <GifPlayerWrapper>{Player}</GifPlayerWrapper>
             <figcaption className="d-flex">
               <small className="mx-auto">
-                {`Spike protein model for ${cluster.display_name}. Figure made via `}
+                {t('Spike protein model for {{variant}}', { variant: cluster.display_name })}
+                {'. '}
+                {t('Figure made via {{source}}', { source: '' })}
                 <LinkExternal href="https://www.gisaid.org/" icon={null}>
                   <GisaidLogo className="my-auto" height={18} />
                 </LinkExternal>
