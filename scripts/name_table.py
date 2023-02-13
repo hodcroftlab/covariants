@@ -170,6 +170,14 @@ name_table = [
         "others": [],
     },
     {
+        "clade": "23A (Omicron)",
+        "who": "Omicron",
+        "lineages": [
+            {"name": "XBB.1.5", "url": "https://cov-lineages.org/lineages/lineage_XBB.1.5.html"}
+        ],
+        "others": [],
+    },
+    {
         "clade": "20E (EU1)",
         "who": None,
         "lineages": [

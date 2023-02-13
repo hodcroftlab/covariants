@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 115634,
+    "total": 117031,
     "counts": [
       {
         "mut": "S:P681H",
-        "count": 6224
+        "count": 6429
       },
       {
         "mut": "S:A688V",
-        "count": 3034
+        "count": 3036
       },
       {
         "mut": "S:N679K",
-        "count": 2067
+        "count": 2091
       },
       {
         "mut": "S:S1252F",
-        "count": 1614
+        "count": 1615
       },
       {
         "mut": "S:Q675H",
-        "count": 1282
+        "count": 1324
       },
       {
         "mut": "S:L5F",
-        "count": 1113
+        "count": 1137
       },
       {
         "mut": "S:A845S",
-        "count": 1074
+        "count": 1081
       },
       {
         "mut": "S:D427N",
-        "count": 914
+        "count": 917
       },
       {
         "mut": "S:E661D",
-        "count": 880
+        "count": 884
       },
       {
         "mut": "S:H49Y",
-        "count": 878
+        "count": 879
       }
     ]
   },
   "others": {
-    "total": 115634,
+    "total": 117031,
     "counts": [
       {
         "mut": "ORF9b:Q77E",
-        "count": 115259
+        "count": 116632
       },
       {
         "mut": "ORF1a:S2947N",
-        "count": 20500
+        "count": 20635
       },
       {
         "mut": "ORF1a:K3573R",
-        "count": 6193
+        "count": 6218
       },
       {
         "mut": "ORF1a:T2121I",
-        "count": 4634
+        "count": 4652
       },
       {
         "mut": "ORF1a:H388Y",
-        "count": 3449
+        "count": 3455
       },
       {
         "mut": "ORF1a:P309S",
-        "count": 3311
+        "count": 3318
       },
       {
         "mut": "ORF1a:T4355I",
-        "count": 3266
+        "count": 3270
       },
       {
         "mut": "ORF1a:T2166I",
-        "count": 3060
-      },
-      {
-        "mut": "N:D402Y",
-        "count": 2533
+        "count": 3062
       },
       {
         "mut": "ORF1a:T1820I",
-        "count": 2525
+        "count": 2568
+      },
+      {
+        "mut": "N:D402Y",
+        "count": 2557
       }
     ]
   }
