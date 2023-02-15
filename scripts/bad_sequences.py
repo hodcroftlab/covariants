@@ -3859,6 +3859,86 @@ bad_seqs = {
     "TrinidadandTobago/170816/2022" : "2022-01-05",  #23A EPI_ISL_16833843
     "UnitedArabEmirates/BTC-10716/2021" : "2021-01-02",  #21K EPI_ISL_16802654
     "UnitedArabEmirates/BTC-10717/2021" : "2021-01-02",  #21K EPI_ISL_16802655
+    #15 feb
+    "CzechRepublic/NRL-s351/2022" : "2022-01-16",  #22B EPI_ISL_16858703
+    "USA/CA-CCPHL-4491/2022" : "2022-01-18",  #22E EPI_ISL_16862267
+    "USA/MT-MTPHL-4083515/2022" : "2022-01-31",  #22E EPI_ISL_16863319
+    "USA/PA-DHSS-B1261500/2022" : "2022-01-25",  #23A EPI_ISL_16864369
+    "Kazakhstan/NU-01_10/2021" : "2021-08-02",  #21K EPI_ISL_16871860 - these seem too early & many are too diverse
+    "Kazakhstan/NU-01_15/2021" : "2021-08-09",  #21K EPI_ISL_16871798 - these seem too early & many are too diverse
+    "Kazakhstan/NU-02_15/2021" : "2021-08-09",  #21K EPI_ISL_16871797 - these seem too early & many are too diverse
+    "Kazakhstan/NU-03_08/2021" : "2021-08-02",  #21K EPI_ISL_16871866 - these seem too early & many are too diverse
+    "Kazakhstan/NU-03_14/2021" : "2021-08-07",  #21K EPI_ISL_16871804 - these seem too early & many are too diverse
+    "Kazakhstan/NU-03_15/2021" : "2021-08-09",  #21K EPI_ISL_16871796 - these seem too early & many are too diverse
+    "Kazakhstan/NU-04_11/2021" : "2021-08-06",  #21K EPI_ISL_16871814 - these seem too early & many are too diverse
+    "Kazakhstan/NU-04_14/2021" : "2021-08-07",  #21K EPI_ISL_16871803 - these seem too early & many are too diverse
+    "Kazakhstan/NU-04_15/2021" : "2021-08-09",  #21K EPI_ISL_16871795 - these seem too early & many are too diverse
+    "Kazakhstan/NU-05_15/2021" : "2021-08-09",  #21K EPI_ISL_16871794 - these seem too early & many are too diverse
+    "Kazakhstan/NU-06_15/2021" : "2021-08-09",  #21K EPI_ISL_16871793 - these seem too early & many are too diverse
+    "Kazakhstan/NU-07_10/2021" : "2021-08-02",  #21K EPI_ISL_16871859 - these seem too early & many are too diverse
+    "Kazakhstan/NU-07_15/2021" : "2021-08-09",  #21K EPI_ISL_16871792 - these seem too early & many are too diverse
+    "Kazakhstan/NU-08_11/2021" : "2021-08-06",  #21K EPI_ISL_16871813 - these seem too early & many are too diverse
+    "Kazakhstan/NU-08_15/2021" : "2021-08-09",  #21K EPI_ISL_16871791 - these seem too early & many are too diverse
+    "Kazakhstan/NU-09_10/2021" : "2021-08-02",  #21K EPI_ISL_16871858 - these seem too early & many are too diverse
+    "Kazakhstan/NU-09_15/2021" : "2021-08-09",  #21K EPI_ISL_16871790 - these seem too early & many are too diverse
+    "Kazakhstan/NU-10_10/2021" : "2021-08-02",  #21K EPI_ISL_16871857 - these seem too early & many are too diverse
+    "Kazakhstan/NU-14_10/2021" : "2021-08-02",  #21K EPI_ISL_16871856 - these seem too early & many are too diverse
+    "Kazakhstan/NU-17_10/2021" : "2021-08-02",  #21K EPI_ISL_16871855 - these seem too early & many are too diverse
+    "Kazakhstan/NU-18_08/2021" : "2021-08-02",  #21K EPI_ISL_16871865 - these seem too early & many are too diverse
+    "Kazakhstan/NU-19_08/2021" : "2021-08-02",  #21K EPI_ISL_16871864 - these seem too early & many are too diverse
+    "Kazakhstan/NU-19_10/2021" : "2021-08-02",  #21K EPI_ISL_16871854 - these seem too early & many are too diverse
+    "Kazakhstan/NU-19_12/2021" : "2021-08-06",  #21K EPI_ISL_16871810 - these seem too early & many are too diverse
+    "Kazakhstan/NU-20_10/2021" : "2021-08-02",  #21K EPI_ISL_16871853 - these seem too early & many are too diverse
+    "Kazakhstan/NU-20_14/2021" : "2021-08-07",  #21K EPI_ISL_16871802 - these seem too early & many are too diverse
+    "Kazakhstan/NU-21_10/2021" : "2021-08-02",  #21K EPI_ISL_16871852 - these seem too early & many are too diverse
+    "Kazakhstan/NU-25_08/2021" : "2021-08-02",  #21K EPI_ISL_16871863 - these seem too early & many are too diverse
+    "Kazakhstan/NU-25_12/2021" : "2021-08-06",  #21K EPI_ISL_16871809 - these seem too early & many are too diverse
+    "Kazakhstan/NU-26_08/2021" : "2021-08-02",  #21K EPI_ISL_16871862 - these seem too early & many are too diverse
+    "Kazakhstan/NU-26_10/2021" : "2021-08-02",  #21K EPI_ISL_16871850 - these seem too early & many are too diverse
+    "Kazakhstan/NU-27_10/2021" : "2021-08-02",  #21K EPI_ISL_16871849 - these seem too early & many are too diverse
+    "Kazakhstan/NU-28_10/2021" : "2021-08-02",  #21K EPI_ISL_16871848 - these seem too early & many are too diverse
+    "Kazakhstan/NU-29_10/2021" : "2021-08-03",  #21K EPI_ISL_16871847 - these seem too early & many are too diverse
+    "Kazakhstan/NU-31_10/2021" : "2021-08-03",  #21K EPI_ISL_16871846 - these seem too early & many are too diverse
+    "Kazakhstan/NU-32_10/2021" : "2021-08-03",  #21K EPI_ISL_16871845 - these seem too early & many are too diverse
+    "Kazakhstan/NU-34_10/2021" : "2021-08-03",  #21K EPI_ISL_16871844 - these seem too early & many are too diverse
+    "Kazakhstan/NU-37_10/2021" : "2021-08-03",  #21K EPI_ISL_16871843 - these seem too early & many are too diverse
+    "Kazakhstan/NU-39_10/2021" : "2021-08-03",  #21K EPI_ISL_16871842 - these seem too early & many are too diverse
+    "Kazakhstan/NU-39_14/2021" : "2021-08-07",  #21K EPI_ISL_16871801 - these seem too early & many are too diverse
+    "Kazakhstan/NU-40_10/2021" : "2021-08-03",  #21K EPI_ISL_16871841 - these seem too early & many are too diverse
+    "Kazakhstan/NU-41_10/2021" : "2021-08-03",  #21K EPI_ISL_16871840 - these seem too early & many are too diverse
+    "Kazakhstan/NU-41_14/2021" : "2021-08-07",  #21K EPI_ISL_16871800 - these seem too early & many are too diverse
+    "Kazakhstan/NU-42_10/2021" : "2021-08-03",  #21K EPI_ISL_16871839 - these seem too early & many are too diverse
+    "Kazakhstan/NU-42_13/2021" : "2021-08-06",  #21K EPI_ISL_16871808 - these seem too early & many are too diverse
+    "Kazakhstan/NU-43_10/2021" : "2021-08-03",  #21K EPI_ISL_16871838 - these seem too early & many are too diverse
+    "Kazakhstan/NU-43_13/2021" : "2021-08-06",  #21K EPI_ISL_16871807 - these seem too early & many are too diverse
+    "Kazakhstan/NU-44_10/2021" : "2021-08-03",  #21K EPI_ISL_16871837 - these seem too early & many are too diverse
+    "Kazakhstan/NU-47_10/2021" : "2021-08-03",  #21K EPI_ISL_16871836 - these seem too early & many are too diverse
+    "Kazakhstan/NU-47_13/2021" : "2021-08-06",  #21K EPI_ISL_16871806 - these seem too early & many are too diverse
+    "Kazakhstan/NU-48_10/2021" : "2021-08-04",  #21K EPI_ISL_16871835 - these seem too early & many are too diverse
+    "Kazakhstan/NU-48_14/2021" : "2021-08-07",  #21K EPI_ISL_16871799 - these seem too early & many are too diverse
+    "Kazakhstan/NU-49_10/2021" : "2021-08-04",  #21K EPI_ISL_16871834 - these seem too early & many are too diverse
+    "Kazakhstan/NU-52_10/2021" : "2021-08-04",  #21K EPI_ISL_16871833 - these seem too early & many are too diverse
+    "Kazakhstan/NU-57_10/2021" : "2021-08-04",  #21K EPI_ISL_16871832 - these seem too early & many are too diverse
+    "Kazakhstan/NU-58_10/2021" : "2021-08-04",  #21K EPI_ISL_16871831 - these seem too early & many are too diverse
+    "Kazakhstan/NU-60_11/2021" : "2021-08-06",  #21K EPI_ISL_16871812 - these seem too early & many are too diverse
+    "Kazakhstan/NU-64_11/2021" : "2021-08-06",  #21K EPI_ISL_16871811 - these seem too early & many are too diverse
+    "Kazakhstan/NU-65_10/2021" : "2021-08-04",  #21K EPI_ISL_16871830 - these seem too early & many are too diverse
+    "Kazakhstan/NU-67_10/2021" : "2021-08-04",  #21K EPI_ISL_16871829 - these seem too early & many are too diverse
+    "Kazakhstan/NU-68_10/2021" : "2021-08-04",  #21K EPI_ISL_16871828 - these seem too early & many are too diverse
+    "Kazakhstan/NU-69_10/2021" : "2021-08-04",  #21K EPI_ISL_16871827 - these seem too early & many are too diverse
+    "Kazakhstan/NU-70_10/2021" : "2021-08-04",  #21K EPI_ISL_16871826 - these seem too early & many are too diverse
+    "Kazakhstan/NU-75_10/2021" : "2021-08-04",  #21K EPI_ISL_16871824 - these seem too early & many are too diverse
+    "Kazakhstan/NU-77_10/2021" : "2021-08-05",  #21K EPI_ISL_16871823 - these seem too early & many are too diverse
+    "Kazakhstan/NU-80_10/2021" : "2021-08-05",  #21K EPI_ISL_16871822 - these seem too early & many are too diverse
+    "Kazakhstan/NU-81_13/2021" : "2021-08-07",  #21K EPI_ISL_16871805 - these seem too early & many are too diverse
+    "Kazakhstan/NU-82_10/2021" : "2021-08-05",  #21K EPI_ISL_16871821 - these seem too early & many are too diverse
+    "Kazakhstan/NU-85_08/2021" : "2021-08-02",  #21K EPI_ISL_16871861 - these seem too early & many are too diverse
+    "Kazakhstan/NU-85_10/2021" : "2021-08-05",  #21K EPI_ISL_16871820 - these seem too early & many are too diverse
+    "Kazakhstan/NU-87_10/2021" : "2021-08-05",  #21K EPI_ISL_16871819 - these seem too early & many are too diverse
+    "Kazakhstan/NU-88_10/2021" : "2021-08-05",  #21K EPI_ISL_16871818 - these seem too early & many are too diverse
+    "Kazakhstan/NU-89_10/2021" : "2021-08-05",  #21K EPI_ISL_16871817 - these seem too early & many are too diverse
+    "Kazakhstan/NU-90_10/2021" : "2021-08-06",  #21K EPI_ISL_16871816 - these seem too early & many are too diverse
+    "Kazakhstan/NU-91_10/2021" : "2021-08-06",  #21K EPI_ISL_16871815 - these seem too early & many are too diverse
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
