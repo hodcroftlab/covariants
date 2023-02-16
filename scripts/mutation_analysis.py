@@ -11,7 +11,7 @@ load_dotenv(find_dotenv())
 LAPIS_API_ACCESS_KEY = os.environ.get("LAPIS_API_ACCESS_KEY")
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
-CASECOUNTS_CSV_FILENAME = "perCountryDataCaseCounts.json"
+CASECOUNTS_CSV_FILENAME = "perCountryDataCaseCountsEstimates.json"
 CASECOUNTS_CSV_PATH = os.path.join(THIS_DIR, "..", "web", "data", CASECOUNTS_CSV_FILENAME)
 OUTPUT_PATH = os.path.join(THIS_DIR, "..", "web", "data")
 
@@ -21,8 +21,8 @@ filter_deletions_url = "aaMutations=Orf1a:1.,N:420."
 #only include mutations that are above this threshhold
 THRESHOLD = 0.1
 
-#COUNTRIES = ["Portugal", "Denmark", "Sweden", "Germany", "United Kingdom", "USA", "South Africa"]
-COUNTRIES = ["Denmark", "United Kingdom", "Portugal"]
+COUNTRIES = ["Portugal", "Denmark", "Sweden", "Germany", "United Kingdom", "USA", "South Africa", "India", "Brazil", "Thailand", "Australia"]
+#COUNTRIES = ["Denmark", "United Kingdom", "Portugal"]
 CLUSTERS = [clus for clus in clusters if clusters[clus]["type"] == "variant" and clusters[clus]["graphing"]]
 #CLUSTERS = ["22D", "22C"]$
 
@@ -431,8 +431,8 @@ if __name__ == "__main__":
 
     mutation_distribution_accum = accumulate_mutations(mutation_distribution)
 
-    json_format = to_json(mutation_distribution_accum, mutation_names, caseCountData)
-    json_format_invert = to_json_invert(mutation_distribution_accum, mutation_names, caseCountData)
+    json_format = to_json(mutation_distribution, mutation_names, caseCountData)
+    json_format_invert = to_json_invert(mutation_distribution, mutation_names, caseCountData)
 
     with open(os.path.join(OUTPUT_PATH, "perCountryMutationAnalysis.json"), "w") as out:
         json.dump(json_format, out, indent=2, sort_keys=True)
