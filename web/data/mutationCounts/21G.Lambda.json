@@ -1,6 +1,6 @@
 {
   "S": {
-    "total": 9133,
+    "total": 9131,
     "counts": [
       {
         "mut": "S:Q675H",
@@ -45,11 +45,11 @@
     ]
   },
   "others": {
-    "total": 9133,
+    "total": 9131,
     "counts": [
       {
         "mut": "ORF9b:P10S",
-        "count": 9036
+        "count": 9034
       },
       {
         "mut": "N:T366I",
@@ -81,7 +81,7 @@
       },
       {
         "mut": "ORF1a:M1014I",
-        "count": 264
+        "count": 262
       },
       {
         "mut": "ORF3a:I123T",
