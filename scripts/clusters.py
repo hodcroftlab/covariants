@@ -643,21 +643,21 @@ clusters = {
     },
 
     # 21K.21L 21M together
-    "21K.21L": {
-        "meta_cluster": True,
-        "snps": [22679, 23040, 23604],  # 22679C, 23040G, 23604A
-        "snps_with_base": ["22679C", "23040G", "23604A"],
-        "cluster_data": [],
-        "nextstrain_build": True,
-        "graphing": False,
-        "important": False,
-        "other_nextstrain_names": ["21K (Omicron)", "21L (Omicron)", "21M (Omicron)"],
-        "country_info": [], 'col': "#b3d9ff",
-        "display_name": "21K.21L",
-        "has_no_page": True,
-        "build_name": "21K.21L",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K.21L"
-    },
+#    "21K.21L": {
+#        "meta_cluster": True,
+#        "snps": [22679, 23040, 23604],  # 22679C, 23040G, 23604A
+#        "snps_with_base": ["22679C", "23040G", "23604A"],
+#        "cluster_data": [],
+#        "nextstrain_build": False,
+#        "graphing": False,
+#        "important": False,
+#        "other_nextstrain_names": ["21K (Omicron)", "21L (Omicron)", "21M (Omicron)"],
+#        "country_info": [], 'col': "#b3d9ff",
+#        "display_name": "21K.21L",
+#        "has_no_page": True,
+#        "build_name": "21K.21L",
+#        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K.21L"
+#    },
 
     "Omicron": {
         "meta_cluster": True,
@@ -667,7 +667,7 @@ clusters = {
         "nextstrain_build": True,
         "graphing": False,
         "important": False,
-        "other_nextstrain_names": ["21K (Omicron)", "21L (Omicron)", "21M (Omicron)", "22A (Omicron)", "22B (Omicron)", "22C (Omicron)", "22D (Omicron)", "22E (Omicron)", "22F (Omicron)"],
+        "other_nextstrain_names": ["21K (Omicron)", "21L (Omicron)", "21M (Omicron)", "22A (Omicron)", "22B (Omicron)", "22C (Omicron)", "22D (Omicron)", "22E (Omicron)", "22F (Omicron)", "23A (Omicron)"],
         "country_info": [], 'col': "#b3d9ff",
         "display_name": "Omicron",
         "has_no_page": True,
@@ -1402,21 +1402,21 @@ clusters = {
        }
     },
 
-    "22B22E": {
-        "meta_cluster": True,
-        "snps": [], #"snps": [22679, 23040, 23604],  #meaningless
-        "snps_with_base": [], #"snps_with_base": ["22679C", "23040G", "23604A"], #meaningless
-        "cluster_data": [],
-        "nextstrain_build": True,
-        "graphing": False,
-        "important": False,
-        "other_nextstrain_names": ["22B (Omicron)", "22E (Omicron)"],
-        "country_info": [], 'col': "#b3d9ff",
-        "display_name": "22B22E",
-        "has_no_page": True,
-        "build_name": "22B22E",
-        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22B22E"
-    },
+#    "22B22E": {
+#        "meta_cluster": True,
+#        "snps": [], #"snps": [22679, 23040, 23604],  #meaningless
+#        "snps_with_base": [], #"snps_with_base": ["22679C", "23040G", "23604A"], #meaningless
+#        "cluster_data": [],
+#        "nextstrain_build": False,
+#        "graphing": False,
+#        "important": False,
+#        "other_nextstrain_names": ["22B (Omicron)", "22E (Omicron)"],
+#        "country_info": [], 'col': "#b3d9ff",
+#        "display_name": "22B22E",
+#        "has_no_page": True,
+#        "build_name": "22B22E",
+#        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22B22E"
+#    },
 
     "22F": {  #XBB
        "snps": [19326,22109,23019],  #GGC
@@ -2696,7 +2696,7 @@ clusters = {
     "S677HRobin2": {
         "snps": [23593, 7348],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": False,
         "usa_graph": True,
         "important": False,
@@ -2711,7 +2711,7 @@ clusters = {
     "S677HYellowhammer": {
         "snps": [23593, 9928],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": False,
         "usa_graph": True,
         "important": False,
@@ -2726,7 +2726,7 @@ clusters = {
     "S677RRoadrunner": {
         "snps": [23592, 3450, 6382],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": False,
         "usa_graph": True,
         "important": False,
@@ -2741,7 +2741,7 @@ clusters = {
     "S677HHeron": {
         "snps": [23593, 28833, 1592],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": False,
         "usa_graph": True,
         "important": False,
@@ -2756,7 +2756,7 @@ clusters = {
     "S677HBluebird": {
         "snps": [23593, 21648],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": False,
         "usa_graph": True,
         "important": False,
@@ -2771,7 +2771,7 @@ clusters = {
     "S677HQuail": {
         "snps": [23593, 23756, 21757],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": False,
         "usa_graph": True,
         "important": False,
@@ -2786,7 +2786,7 @@ clusters = {
     "S677HMockingbird": {
         "snps": [23593, 21986],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": False,
         "usa_graph": True,
         "important": False,
