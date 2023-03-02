@@ -939,7 +939,7 @@
           }
         ]
       },
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_name": "21A",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21A.Delta",
       "old_build_names": [
@@ -1221,7 +1221,7 @@
           }
         ]
       },
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_name": "21I",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21I.Delta",
       "old_build_names": [],
@@ -1517,7 +1517,7 @@
           }
         ]
       },
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_name": "21J",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21J.Delta",
       "old_build_names": [],
@@ -2595,35 +2595,6 @@
     },
     {
       "aquaria_urls": [],
-      "build_name": "21K.21L",
-      "cluster_data": [],
-      "col": "#b3d9ff",
-      "country_info": [],
-      "display_name": "21K.21L",
-      "graphing": false,
-      "has_no_page": true,
-      "important": false,
-      "meta_cluster": true,
-      "nextstrain_build": true,
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21K.21L",
-      "other_nextstrain_names": [
-        "21K (Omicron)",
-        "21L (Omicron)",
-        "21M (Omicron)"
-      ],
-      "snps": [
-        22679,
-        23040,
-        23604
-      ],
-      "snps_with_base": [
-        "22679C",
-        "23040G",
-        "23604A"
-      ]
-    },
-    {
-      "aquaria_urls": [],
       "build_name": "Omicron",
       "cluster_data": [],
       "col": "#b3d9ff",
@@ -2644,7 +2615,8 @@
         "22C (Omicron)",
         "22D (Omicron)",
         "22E (Omicron)",
-        "22F (Omicron)"
+        "22F (Omicron)",
+        "23A (Omicron)"
       ],
       "snps": [
         22679,
@@ -6207,26 +6179,6 @@
       "who_name": [
         "Omicron"
       ]
-    },
-    {
-      "aquaria_urls": [],
-      "build_name": "22B22E",
-      "cluster_data": [],
-      "col": "#b3d9ff",
-      "country_info": [],
-      "display_name": "22B22E",
-      "graphing": false,
-      "has_no_page": true,
-      "important": false,
-      "meta_cluster": true,
-      "nextstrain_build": true,
-      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22B22E",
-      "other_nextstrain_names": [
-        "22B (Omicron)",
-        "22E (Omicron)"
-      ],
-      "snps": [],
-      "snps_with_base": []
     },
     {
       "alt_display_name": [
@@ -10738,7 +10690,7 @@
       "graphing": false,
       "has_no_page": true,
       "important": false,
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Robin2?c=gt-S_677&f_country=USA",
       "snps": [
         23593,
@@ -10756,7 +10708,7 @@
       "graphing": false,
       "has_no_page": true,
       "important": false,
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Yellowhammer?c=gt-S_677&f_country=USA",
       "snps": [
         23593,
@@ -10774,7 +10726,7 @@
       "graphing": false,
       "has_no_page": true,
       "important": false,
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677R.Roadrunner?c=gt-S_677&f_country=USA",
       "snps": [
         23592,
@@ -10793,7 +10745,7 @@
       "graphing": false,
       "has_no_page": true,
       "important": false,
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Heron?c=gt-S_677&f_country=USA",
       "snps": [
         23593,
@@ -10812,7 +10764,7 @@
       "graphing": false,
       "has_no_page": true,
       "important": false,
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Bluebird?c=gt-S_677&f_country=USA",
       "snps": [
         23593,
@@ -10830,7 +10782,7 @@
       "graphing": false,
       "has_no_page": true,
       "important": false,
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Quail?c=gt-S_677&f_country=USA",
       "snps": [
         23593,
@@ -10849,7 +10801,7 @@
       "graphing": false,
       "has_no_page": true,
       "important": false,
-      "nextstrain_build": true,
+      "nextstrain_build": false,
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Mockingbird?c=gt-S_677&f_country=USA",
       "snps": [
         23593,
