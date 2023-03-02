@@ -2,6 +2,7 @@ These are the recent updates on CoVariants in reverse chronological order. For l
 
 ## 2023-03-02
 - Stop the Nextstrain builds of 21A, 21I, 21J (Delta) due to lack of circulation
+- Stop 'bird' builds and partial combined Omicron builds
 
 ## 2023-02-10
 - Add 22A (XBB.1.5) page and on plots
