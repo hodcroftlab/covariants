@@ -235,7 +235,7 @@ clusters = {
         "snps": [22995, 23604, 22917],  # S:478, 681, 452
         "snps_with_base": ["22995A", "23604G", "22917G"],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "type": "variant",
         "graphing": True,
         "important": True,
@@ -292,7 +292,7 @@ clusters = {
         "snps": [5184, 11514, 22227],  # 5184T, 11514T, 22227T : ORF1a:1640, ORF1a:3750, S:222
         "snps_with_base": ["5184T", "11514T", "22227T"],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "type": "variant",
         "graphing": True,
         "important": False,
@@ -354,7 +354,7 @@ clusters = {
         "snps": [4181, 8986, 11201],  # 4181T,8986T,11201G - ORF1a: 1306, 2907, 3646
         "snps_with_base": ["4181T", "8986T", "11201G"],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "type": "variant",
         "graphing": True,
         "important": False,
