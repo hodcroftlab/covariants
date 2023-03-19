@@ -10,7 +10,7 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 该突变位于受体结合域 (RDB)，对 ACE2 结合和抗体识别很重要。
 
 - 可能与适应啮齿动物和鼬科动物有关：在雪貂(<LinkExternal href="https://www.nature.com/articles/s41467-020-17367-2">Richard等, Nature Comm.</LinkExternal>)、貂(<LinkExternal href="https://academic.oup.com/ve/advance-article/doi/10.1093/ve/veaa094/6025194?searchresult=1">Welkers等, Virus Evolution</LinkExternal>)和老鼠(<LinkExternal href="https://science.sciencemag.org/content/369/6511/1603">Gu等, Science</LinkExternal>)的身体中发现<AaMut mut={'S:N501T'}/>、 <AaMut mut={'S:N501Y'}/>。 
-- 一些人推测野生啮齿动物/鼬科动物可能存在持久性宿主的风险。  
+    - 一些人推测野生啮齿动物/鼬科动物可能存在持久性宿主的风险。  
 - 可能增强ACE2绑定 ([Bloom Lab ACE2 binding website](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS/), [Nelson等, bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.13.426558v1)) - 特别是预计通过增加在“开放”构象中花费的时间来做到这一点 ([Teruel等, bioRxiv](https://www.biorxiv.org/content/10.1101/2020.12.16.423118v2))
 - 由于<AaMut mut="S:E484K"/>的出现，ACE2绑定可能进一步增强，并由<AaMut mut="S:K417N"/>变得更稳定。 ([Nelson等, bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.13.426558v1))
 - 在免疫功能低下患者的纵向收集样本中发现了<AaMut mut={'S:N501Y'}/> (<LinkExternal href="https://www.nejm.org/doi/full/10.1056/NEJMc2031364?query=featured_coronavirus">Choi et al., NEJM</LinkExternal>)
