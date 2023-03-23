@@ -342,11 +342,13 @@ def plot(mutation_distribution_accum):
 
     for mut in data:
         fig, ax = plt.subplots()
-        for country in data[mut]:
+        lgnd = []
+        for country in sorted(data[mut]):
+            lgnd.append(country)
             ax.plot(dates, data[mut][country])
 
         ax.set(xlabel='weeks', ylabel="percentage of population", title=mut)
-        ax.legend(list(data[mut]))
+        ax.legend(lgnd)
         ax.set_ylim(0.0, 1.0)
         ax.set_xticks(np.arange(0, len(dates) + 1, 10))
         plt.xticks(rotation=45, ha="right")

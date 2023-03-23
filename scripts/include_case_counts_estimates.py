@@ -21,8 +21,7 @@ alernative_country_names = {
 
 def divide_by_population(owid_estimates, owid):
     owid_estimates = pd.merge(owid_estimates, owid, how='inner', left_on=['Entity','Day'], right_on = ['location','date'])
-    print(owid_estimates.head)
-    owid_estimates["estimated_infections_per_population"] = owid_estimates["Daily new estimated infections of COVID-19 (IHME, mean)"] / owid["population"]*1000000
+    owid_estimates["estimated_infections_per_population"] = owid_estimates["Daily new estimated infections of COVID-19 (IHME, mean)"] / owid_estimates["population"]*1000000
     return owid_estimates
 
 
@@ -53,12 +52,11 @@ owid_estimates = pd.read_csv(OWID_CSV_INPUT_PATH_ESTIMATES, usecols=columns_esti
 owid_estimates = divide_by_population(owid_estimates, owid)
 
 owid_estimates["date_formatted"] = owid_estimates["Day"].apply(lambda x: datetime.datetime.strptime(x, "%Y-%m-%d"))
+
 # get ordinal dates, but as a string, so can compare to dates in perCOuntryData.json
 owid_estimates["date_2weeks"] = owid_estimates["date_formatted"].apply(to2week_ordinal_string)
 
 owid_grouped = owid_estimates.groupby(["date_2weeks", "Entity"])[["estimated_infections_per_population", "Daily new estimated infections of COVID-19 (IHME, mean)"]].sum().reset_index()
-
-print(owid_grouped.head)
 
 with open(COUNTRY_CSV_INPUT_PATH) as f:
     perCountryData = json.load(f)
