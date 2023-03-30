@@ -27,10 +27,6 @@
     "c": "#fdbf6f",
     "ls": "-"
   },
-  "Bonaire": {
-    "c": "#0099ff",
-    "ls": "dotted"
-  },
   "Botswana": {
     "c": "#33a02c",
     "ls": "--"
@@ -40,7 +36,7 @@
     "ls": "--"
   },
   "Brunei": {
-    "c": "#b15928",
+    "c": "#b2df8a",
     "ls": "dotted"
   },
   "Bulgaria": {
@@ -60,7 +56,7 @@
     "ls": "-."
   },
   "China": {
-    "c": "#ffcc00",
+    "c": "#a6cee3",
     "ls": "dotted"
   },
   "Colombia": {
@@ -75,10 +71,6 @@
     "c": "#33a02c",
     "ls": "-."
   },
-  "Curacao": {
-    "c": "#000000",
-    "ls": "dotted"
-  },
   "Czech Republic": {
     "c": "#004d00",
     "ls": "-"
@@ -86,10 +78,6 @@
   "Denmark": {
     "c": "#0099ff",
     "ls": "-"
-  },
-  "Dominican Republic": {
-    "c": "#fdbf6f",
-    "ls": "dotted"
   },
   "Ecuador": {
     "c": "#ff7f00",
@@ -108,7 +96,7 @@
     "ls": "-"
   },
   "Georgia": {
-    "c": "#ff66ff",
+    "c": "#9900cc",
     "ls": "dotted"
   },
   "Germany": {
@@ -124,11 +112,11 @@
     "ls": "-."
   },
   "Guatemala": {
-    "c": "#004d00",
+    "c": "#990000",
     "ls": "dotted"
   },
   "Hong Kong": {
-    "c": "#b2df8a",
+    "c": "#6a3d9a",
     "ls": "dotted"
   },
   "Iceland": {
@@ -155,10 +143,6 @@
     "c": "#b15928",
     "ls": "-"
   },
-  "Jamaica": {
-    "c": "#0000ff",
-    "ls": "dotted"
-  },
   "Japan": {
     "c": "#1f78b4",
     "ls": "-."
@@ -184,16 +168,12 @@
     "ls": "-."
   },
   "Mauritius": {
-    "c": "#9900cc",
+    "c": "#b15928",
     "ls": "dotted"
   },
   "Mexico": {
     "c": "#e31a1c",
     "ls": "-."
-  },
-  "Nepal": {
-    "c": "#6a3d9a",
-    "ls": "dotted"
   },
   "Netherlands": {
     "c": "#33a02c",
@@ -255,10 +235,6 @@
     "c": "#a6a6a6",
     "ls": "-"
   },
-  "Sint Maarten": {
-    "c": "#a6cee3",
-    "ls": "dotted"
-  },
   "Slovakia": {
     "c": "#1f78b4",
     "ls": "--"
@@ -279,10 +255,6 @@
     "c": "#e31a1c",
     "ls": "-"
   },
-  "Sri Lanka": {
-    "c": "#0000ff",
-    "ls": "-."
-  },
   "Sweden": {
     "c": "#9900cc",
     "ls": "-"
@@ -291,17 +263,9 @@
     "c": "#ff7f00",
     "ls": "-"
   },
-  "Taiwan": {
-    "c": "#990000",
-    "ls": "dotted"
-  },
   "Thailand": {
     "c": "#000000",
     "ls": "-"
-  },
-  "Trinidad and Tobago": {
-    "c": "#a6a6a6",
-    "ls": "dotted"
   },
   "Turkey": {
     "c": "#fb9a99",
@@ -310,6 +274,10 @@
   "USA": {
     "c": "#6a3d9a",
     "ls": "-"
+  },
+  "United Arab Emirates": {
+    "c": "#0000ff",
+    "ls": "-."
   },
   "United Kingdom": {
     "c": "#1f78b4",
