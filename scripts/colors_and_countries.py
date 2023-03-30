@@ -179,7 +179,7 @@ country_list_3 = [
     "Greece",  # 11
     "Chile",  # 12
     "Qatar",    # 13
-    "Sri Lanka",   # 14
+    "United Arab Emirates",   # 14
     "Kenya",    # 15
     "Philippines",     # 16
     "Argentina", # 17
@@ -189,26 +189,18 @@ country_list_3 = [
 ]
 
 country_list_4 = [
-    "Sint Maarten",         #1
+    "China",                #1
     "Peru",                 #2
     "Costa Rica",           #3
     "Bahrain",              #4
     "Pakistan",             #5
     "Papua New Guinea",     #6
     "Panama",               #7
-    "Nepal",                #8
-    "Hong Kong",            #9
-    "Brunei",               #10
-    "Mauritius",            #11
-    "Taiwan",               #12
-    "Georgia",              #13
-    "Jamaica",              #14
-    "Trinidad and Tobago",  #15
-    "Curacao",              #16
-    "Guatemala",            #17
-    "China",                #18
-    "Dominican Republic",   #19
-    "Bonaire",              #20
+    "Hong Kong",            #8
+    "Brunei",               #9
+    "Mauritius",            #10
+    "Georgia",              #11
+    "Guatemala",            #12
 ]
 
 country_styles_1 = {
