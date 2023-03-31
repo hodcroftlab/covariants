@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  git-shallow-clone: guitarrapc/git-shallow-clone@2.3.0
+  git-shallow-clone: guitarrapc/git-shallow-clone@2.5.0
 
 major_branches_only: &major_branches_only
   filters:
