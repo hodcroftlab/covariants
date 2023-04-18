@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 1674338,
+    "total": 1678126,
     "counts": [
       {
         "mut": "S:R346T",
-        "count": 373257
+        "count": 375414
       },
       {
         "mut": "S:N460K",
-        "count": 352422
+        "count": 354673
       },
       {
         "mut": "S:K444T",
-        "count": 341955
+        "count": 344116
       },
       {
         "mut": "S:Y144-",
-        "count": 117659
+        "count": 118490
       },
       {
         "mut": "S:A1020S",
-        "count": 76980
+        "count": 77114
       },
       {
         "mut": "S:T76I",
-        "count": 52209
+        "count": 52241
       },
       {
         "mut": "S:L5F",
-        "count": 23482
+        "count": 23545
       },
       {
         "mut": "S:K444N",
-        "count": 15310
+        "count": 15400
       },
       {
         "mut": "S:N450D",
-        "count": 14501
+        "count": 14537
       },
       {
         "mut": "S:V445A",
-        "count": 13836
+        "count": 13878
       }
     ]
   },
   "others": {
-    "total": 1674338,
+    "total": 1678126,
     "counts": [
       {
         "mut": "ORF9b:D16G",
-        "count": 838134
+        "count": 839279
       },
       {
         "mut": "ORF1a:Q556K",
-        "count": 435157
+        "count": 437349
       },
       {
         "mut": "N:E136D",
-        "count": 430494
+        "count": 432708
       },
       {
         "mut": "ORF1b:M1156I",
-        "count": 404602
+        "count": 406756
       },
       {
         "mut": "ORF1a:L3829F",
-        "count": 378317
+        "count": 380448
       },
       {
         "mut": "ORF9b:P10F",
-        "count": 337816
+        "count": 339964
       },
       {
         "mut": "ORF1b:Y264H",
-        "count": 331495
+        "count": 333616
       },
       {
         "mut": "ORF1b:T1050N",
-        "count": 312421
+        "count": 312874
       },
       {
         "mut": "ORF1b:N1191S",
-        "count": 254338
+        "count": 255999
       },
       {
         "mut": "N:G30-",
-        "count": 182585
+        "count": 182948
       }
     ]
   }

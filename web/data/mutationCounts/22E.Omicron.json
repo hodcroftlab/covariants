@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 357854,
+    "total": 360048,
     "counts": [
       {
         "mut": "S:R346T",
-        "count": 246765
+        "count": 248435
       },
       {
         "mut": "S:Y144-",
-        "count": 89972
+        "count": 90701
       },
       {
         "mut": "S:I666V",
-        "count": 12228
+        "count": 12310
       },
       {
         "mut": "S:E619Q",
-        "count": 6632
+        "count": 6658
       },
       {
         "mut": "S:F157L",
-        "count": 4933
+        "count": 5018
       },
       {
         "mut": "S:M153I",
-        "count": 4122
+        "count": 4201
       },
       {
         "mut": "S:L5F",
-        "count": 4072
+        "count": 4108
       },
       {
         "mut": "S:D253G",
-        "count": 3968
+        "count": 3998
       },
       {
         "mut": "S:Y248D",
-        "count": 3113
+        "count": 3199
       },
       {
         "mut": "S:Q613H",
-        "count": 2816
+        "count": 2886
       }
     ]
   },
   "others": {
-    "total": 357854,
+    "total": 360048,
     "counts": [
       {
         "mut": "ORF1b:N1191S",
-        "count": 276075
+        "count": 277803
       },
       {
         "mut": "ORF1a:V84-",
-        "count": 10389
+        "count": 10449
       },
       {
         "mut": "ORF1a:M85-",
-        "count": 9915
+        "count": 9974
       },
       {
         "mut": "ORF1b:P2313L",
-        "count": 8045
+        "count": 8076
       },
       {
         "mut": "ORF1a:V3855I",
-        "count": 7981
+        "count": 8009
       },
       {
         "mut": "E:V62F",
-        "count": 7227
+        "count": 7295
       },
       {
         "mut": "ORF1a:G82-",
-        "count": 7016
+        "count": 7063
       },
       {
         "mut": "ORF1a:H83-",
-        "count": 6960
+        "count": 7004
       },
       {
         "mut": "ORF1a:L3606F",
-        "count": 6823
+        "count": 6889
       },
       {
         "mut": "ORF1a:F143-",
-        "count": 6681
+        "count": 6729
       }
     ]
   }
