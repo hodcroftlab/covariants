@@ -1743,7 +1743,7 @@ clusters = {
        "graphing": False,
        "important": False,
        "country_info": [],
-       "col": "#ff56c1",
+       "col": "#ff5656",
        "display_name": "23B (Omicron)",
        "alt_display_name": ["XBB.1.16"],
        "build_name": "23B.Omicron",
