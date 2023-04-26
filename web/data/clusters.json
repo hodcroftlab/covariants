@@ -2616,7 +2616,8 @@
         "22D (Omicron)",
         "22E (Omicron)",
         "22F (Omicron)",
-        "23A (Omicron)"
+        "23A (Omicron)",
+        "23B (Omicron)"
       ],
       "snps": [
         22679,
@@ -7814,7 +7815,8 @@
       "col": "#ff5656",
       "country_info": [],
       "display_name": "23B (Omicron)",
-      "graphing": false,
+      "graphing": true,
+      "has_no_page": false,
       "important": true,
       "mutations": {
         "nonsynonymous": [
@@ -8600,7 +8602,7 @@
         "29386T"
       ],
       "type": "variant",
-      "use_pango": true,
+      "use_pango": false,
       "who_name": [
         "Omicron"
       ]
