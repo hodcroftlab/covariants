@@ -1738,10 +1738,10 @@ clusters = {
        "nextstrain_build": True,
        "parent": "22F", #I think we now need this for XBB.1.16 as will be classed as 22F (XBB)
        "use_pango": True,
-       "has_no_page": True,
+       #"has_no_page": True,
        "type": "variant",
        "graphing": False,
-       "important": False,
+       "important": True,
        "country_info": [],
        "col": "#ff5656",
        "display_name": "23B (Omicron)",
