@@ -258,7 +258,12 @@
           "url": "https://cov-lineages.org/lineages/lineage_XBB.1.16.html"
         }
       ],
-      "others": [],
+      "others": [
+        {
+          "name": "Arcturus",
+          "url": null
+        }
+      ],
       "who": "Omicron"
     },
     {
