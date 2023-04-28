@@ -183,7 +183,9 @@ name_table = [
         "lineages": [
             {"name": "XBB.1.16", "url": "https://cov-lineages.org/lineages/lineage_XBB.1.16.html"}
         ],
-        "others": [],
+        "others": [
+            {"name": "Arcturus", "url": None}
+        ],
     },
     {
         "clade": "20E (EU1)",
