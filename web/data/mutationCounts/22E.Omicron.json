@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 360048,
+    "total": 362322,
     "counts": [
       {
         "mut": "S:R346T",
-        "count": 248435
+        "count": 250321
       },
       {
         "mut": "S:Y144-",
-        "count": 90701
+        "count": 91593
       },
       {
         "mut": "S:I666V",
-        "count": 12310
+        "count": 12379
       },
       {
         "mut": "S:E619Q",
-        "count": 6658
+        "count": 6670
       },
       {
         "mut": "S:F157L",
-        "count": 5018
+        "count": 5138
       },
       {
         "mut": "S:M153I",
-        "count": 4201
+        "count": 4246
       },
       {
         "mut": "S:L5F",
-        "count": 4108
+        "count": 4152
       },
       {
         "mut": "S:D253G",
-        "count": 3998
+        "count": 4042
       },
       {
         "mut": "S:Y248D",
-        "count": 3199
+        "count": 3300
       },
       {
         "mut": "S:Q613H",
-        "count": 2886
+        "count": 2964
       }
     ]
   },
   "others": {
-    "total": 360048,
+    "total": 362322,
     "counts": [
       {
         "mut": "ORF1b:N1191S",
-        "count": 277803
+        "count": 279794
       },
       {
         "mut": "ORF1a:V84-",
-        "count": 10449
+        "count": 10515
       },
       {
         "mut": "ORF1a:M85-",
-        "count": 9974
+        "count": 10054
       },
       {
         "mut": "ORF1b:P2313L",
-        "count": 8076
+        "count": 8121
       },
       {
         "mut": "ORF1a:V3855I",
-        "count": 8009
+        "count": 8054
       },
       {
         "mut": "E:V62F",
-        "count": 7295
+        "count": 7402
       },
       {
         "mut": "ORF1a:G82-",
-        "count": 7063
+        "count": 7102
       },
       {
         "mut": "ORF1a:H83-",
-        "count": 7004
+        "count": 7044
       },
       {
         "mut": "ORF1a:L3606F",
-        "count": 6889
+        "count": 6924
       },
       {
         "mut": "ORF1a:F143-",
-        "count": 6729
+        "count": 6760
       }
     ]
   }
