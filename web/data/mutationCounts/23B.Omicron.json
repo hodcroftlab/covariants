@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 5509,
+    "total": 6815,
     "counts": [
       {
         "mut": "S:T547I",
-        "count": 1300
+        "count": 1611
       },
       {
         "mut": "S:H146K",
-        "count": 122
+        "count": 156
       },
       {
         "mut": "S:T732I",
-        "count": 82
+        "count": 100
       },
       {
         "mut": "S:F86-",
         "count": 80
       },
       {
-        "mut": "S:F486L",
-        "count": 68
-      },
-      {
         "mut": "S:T678I",
-        "count": 63
+        "count": 73
       },
       {
         "mut": "S:L5F",
-        "count": 57
+        "count": 71
+      },
+      {
+        "mut": "S:F486L",
+        "count": 69
+      },
+      {
+        "mut": "S:E156Q",
+        "count": 50
       },
       {
         "mut": "S:P85-",
-        "count": 45
+        "count": 46
       },
       {
         "mut": "S:L84-",
-        "count": 44
-      },
-      {
-        "mut": "S:D88-",
         "count": 44
       }
     ]
   },
   "others": {
-    "total": 5509,
+    "total": 6815,
     "counts": [
       {
         "mut": "ORF9b:I5T",
-        "count": 5457
+        "count": 6753
       },
       {
         "mut": "ORF3a:V13L",
-        "count": 328
+        "count": 395
       },
       {
         "mut": "ORF1a:P926H",
-        "count": 321
+        "count": 385
       },
       {
         "mut": "ORF1a:F3677L",
-        "count": 309
+        "count": 341
       },
       {
         "mut": "ORF1a:L3606F",
-        "count": 104
+        "count": 128
       },
       {
         "mut": "ORF1a:V4137I",
-        "count": 93
+        "count": 120
+      },
+      {
+        "mut": "ORF1a:K510E",
+        "count": 103
       },
       {
         "mut": "ORF1a:G3676S",
-        "count": 83
+        "count": 91
+      },
+      {
+        "mut": "ORF1a:G519S",
+        "count": 88
       },
       {
         "mut": "ORF1b:V2172I",
-        "count": 75
-      },
-      {
-        "mut": "ORF1a:P1659A",
-        "count": 71
-      },
-      {
-        "mut": "M:A152-",
-        "count": 68
+        "count": 81
       }
     ]
   }
