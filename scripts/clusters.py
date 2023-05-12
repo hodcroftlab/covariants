@@ -1834,6 +1834,7 @@ clusters = {
                 {"gene":"M", "left":"A", "pos": 63, "right": "T"},
                 {"gene":"ORF6", "left":"D", "pos": 61, "right": "L"},
                 {"gene":"ORF8", "left":"G", "pos": 8, "right": "*"},
+                {"gene":"ORF9b", "left":"I", "pos": 5, "right": "T"},
                 {"gene":"ORF9b", "left":"P", "pos": 10, "right": "S"},
                 {"gene":"ORF9b", "left":"P", "pos": 10, "right": "F"},
                 {"gene":"ORF9b", "left":"E", "pos": 27, "right": "-"},
