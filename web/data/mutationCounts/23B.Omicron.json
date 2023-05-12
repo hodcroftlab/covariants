@@ -48,10 +48,6 @@
     "total": 7610,
     "counts": [
       {
-        "mut": "ORF9b:I5T",
-        "count": 7546
-      },
-      {
         "mut": "ORF3a:V13L",
         "count": 444
       },
@@ -85,6 +81,10 @@
       },
       {
         "mut": "ORF9b:T24S",
+        "count": 84
+      },
+      {
+        "mut": "ORF1b:V2172I",
         "count": 84
       }
     ]

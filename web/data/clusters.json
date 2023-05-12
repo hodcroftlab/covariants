@@ -7807,7 +7807,7 @@
         },
         {
           "gene": "ORF9b",
-          "url": "https://aquaria.app/SARS-CoV-2/ORF9b?P10S&P10F&E27Del&N28Del&A29Del&N55S"
+          "url": "https://aquaria.app/SARS-CoV-2/ORF9b?I5T&P10S&P10F&E27Del&N28Del&A29Del&N55S"
         }
       ],
       "build_name": "23B.Omicron",
@@ -8287,6 +8287,12 @@
             "left": "G",
             "pos": 8,
             "right": "*"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "I",
+            "pos": 5,
+            "right": "T"
           },
           {
             "gene": "ORF9b",
