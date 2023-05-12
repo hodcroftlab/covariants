@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 261480,
+    "total": 270728,
     "counts": [
       {
         "mut": "S:G252V",
-        "count": 239763
+        "count": 248591
       },
       {
         "mut": "S:F486P",
-        "count": 221397
+        "count": 230341
       },
       {
         "mut": "S:D253G",
-        "count": 14137
+        "count": 14487
       },
       {
         "mut": "S:H146K",
-        "count": 11762
+        "count": 12233
       },
       {
         "mut": "S:T478R",
-        "count": 7191
+        "count": 8128
       },
       {
         "mut": "S:E180V",
-        "count": 5686
+        "count": 6435
       },
       {
         "mut": "S:Q613H",
-        "count": 4533
-      },
-      {
-        "mut": "S:T883I",
-        "count": 3796
+        "count": 4756
       },
       {
         "mut": "S:P521S",
-        "count": 3766
+        "count": 4093
+      },
+      {
+        "mut": "S:T883I",
+        "count": 3869
       },
       {
         "mut": "S:L5F",
-        "count": 2901
+        "count": 3029
       }
     ]
   },
   "others": {
-    "total": 261480,
+    "total": 270728,
     "counts": [
       {
         "mut": "ORF8:G8*",
-        "count": 240352
+        "count": 249175
       },
       {
         "mut": "ORF9b:I5T",
-        "count": 31970
+        "count": 34457
       },
       {
         "mut": "ORF1a:T4175I",
-        "count": 25638
+        "count": 27283
       },
       {
         "mut": "ORF1a:G1819S",
-        "count": 25091
+        "count": 26706
       },
       {
         "mut": "ORF1a:L3829F",
-        "count": 7459
+        "count": 8281
       },
       {
         "mut": "ORF1a:M85-",
-        "count": 7245
+        "count": 7471
       },
       {
         "mut": "ORF1a:V84-",
-        "count": 6889
+        "count": 7098
       },
       {
         "mut": "ORF1b:D1746Y",
-        "count": 5758
+        "count": 6502
       },
       {
         "mut": "ORF9b:N55S",
-        "count": 5695
+        "count": 6434
       },
       {
         "mut": "ORF1b:V248F",
-        "count": 4990
+        "count": 5127
       }
     ]
   }
