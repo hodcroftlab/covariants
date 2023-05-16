@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 181532,
+    "total": 191239,
     "counts": [
       {
         "mut": "S:H146K",
-        "count": 8864
+        "count": 9338
       },
       {
         "mut": "S:T478R",
-        "count": 6588
+        "count": 7669
       },
       {
         "mut": "S:E180V",
-        "count": 5551
+        "count": 6519
       },
       {
         "mut": "S:Q613H",
-        "count": 3416
+        "count": 3833
       },
       {
         "mut": "S:L5F",
-        "count": 2092
+        "count": 2184
       },
       {
         "mut": "S:T573I",
-        "count": 1926
+        "count": 2050
       },
       {
         "mut": "S:T547I",
-        "count": 1666
+        "count": 1972
       },
       {
         "mut": "S:T883I",
-        "count": 1539
+        "count": 1673
       },
       {
         "mut": "S:F456L",
-        "count": 1375
+        "count": 1611
       },
       {
         "mut": "S:T323I",
-        "count": 1368
+        "count": 1425
       }
     ]
   },
   "others": {
-    "total": 181532,
+    "total": 191239,
     "counts": [
       {
         "mut": "ORF9b:I5T",
-        "count": 25880
+        "count": 29185
       },
       {
         "mut": "ORF1a:T4175I",
-        "count": 19803
+        "count": 21985
       },
       {
         "mut": "ORF1a:G1819S",
-        "count": 19373
+        "count": 21505
       },
       {
         "mut": "ORF1a:L3829F",
-        "count": 6704
+        "count": 7751
       },
       {
         "mut": "ORF1b:D1746Y",
-        "count": 5598
+        "count": 6566
       },
       {
         "mut": "ORF9b:N55S",
-        "count": 5552
+        "count": 6513
       },
       {
         "mut": "ORF1a:M85-",
-        "count": 5361
+        "count": 5582
       },
       {
         "mut": "ORF1a:V84-",
-        "count": 5019
+        "count": 5239
       },
       {
         "mut": "N:L219F",
-        "count": 3462
+        "count": 3844
       },
       {
-        "mut": "ORF1b:V248F",
-        "count": 3385
+        "mut": "ORF1a:G82-",
+        "count": 3471
       }
     ]
   }
