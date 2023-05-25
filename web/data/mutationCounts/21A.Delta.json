@@ -1,14 +1,14 @@
 {
   "S": {
-    "total": 4127606,
+    "total": 4127770,
     "counts": [
       {
         "mut": "S:T95I",
-        "count": 1845802
+        "count": 1845829
       },
       {
         "mut": "S:A222V",
-        "count": 426772
+        "count": 426792
       },
       {
         "mut": "S:Y145H",
@@ -16,11 +16,11 @@
       },
       {
         "mut": "S:V1264L",
-        "count": 103595
+        "count": 103607
       },
       {
         "mut": "S:S112L",
-        "count": 85020
+        "count": 85025
       },
       {
         "mut": "S:L5F",
@@ -28,15 +28,15 @@
       },
       {
         "mut": "S:V1104L",
-        "count": 57344
+        "count": 57351
       },
       {
         "mut": "S:Q613H",
-        "count": 54101
+        "count": 54103
       },
       {
         "mut": "S:P251L",
-        "count": 40725
+        "count": 40727
       },
       {
         "mut": "S:I850L",
@@ -45,47 +45,47 @@
     ]
   },
   "others": {
-    "total": 4127606,
+    "total": 4127770,
     "counts": [
       {
         "mut": "ORF1a:V2930L",
-        "count": 3736205
+        "count": 3736345
       },
       {
         "mut": "ORF1b:A1918V",
-        "count": 3734796
+        "count": 3734936
       },
       {
         "mut": "ORF1a:P2046L",
-        "count": 3733805
+        "count": 3733944
       },
       {
         "mut": "ORF1a:T3646A",
-        "count": 3730264
+        "count": 3730404
       },
       {
         "mut": "ORF1a:T3255I",
-        "count": 3728782
+        "count": 3728923
       },
       {
         "mut": "ORF1a:P2287S",
-        "count": 3724944
+        "count": 3725084
       },
       {
         "mut": "N:G215C",
-        "count": 3721861
+        "count": 3721999
       },
       {
         "mut": "ORF1a:A1306S",
-        "count": 3712860
+        "count": 3713000
       },
       {
         "mut": "ORF7b:T40I",
-        "count": 3708239
+        "count": 3708379
       },
       {
         "mut": "ORF1a:A2529V",
-        "count": 1001013
+        "count": 1001014
       }
     ]
   }
