@@ -7,7 +7,7 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 ### S:Y453F
 该突变位于受体结合域 (RDB)，对 ACE2 结合和抗体识别很重要。
 
-它与2020年秋季在丹麦引起恐慌的“第5群水貂”变种有关。
+它与2020年秋季在丹麦引起恐慌的“第5群水貂”变体有关。
 
 该变体具有以下额外的刺突突变：
 第 69 位和第 70 位的缺失 (<Mut name="S:H69-"/>、 <AaMut mut="S:V70-"/>)、<AaMut mut="S:I692V"/>和<AaMut mut="S:M1229I"/>
