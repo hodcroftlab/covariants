@@ -975,7 +975,7 @@ clusters = {
        "snps": [22917,23673,2790], #ATT = S:L452Q (T22917A) S:S704L (C23673T) nuc:C2790T  -- also C11674T (ORF1a:3803)
        "snps_with_base": ["22917A", "23673T", "2790T"],
        "cluster_data": [],
-       "nextstrain_build": True,
+       "nextstrain_build": False, #turned off 6 June 23
        "type": "variant",
        "graphing": True,
        "important": False,
