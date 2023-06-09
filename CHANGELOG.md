@@ -1,7 +1,14 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2023-04-26
+- Add 23B (XBB.1.16) page and on plots
+
+## 2023-03-02
+- Stop the Nextstrain builds of 21A, 21I, 21J (Delta) due to lack of circulation
+- Stop 'bird' builds and partial combined Omicron builds
+
 ## 2023-02-10
-- Add 22A (XBB.1.5) page and on plots
+- Add 23A (XBB.1.5) page and on plots
 
 ## 2022-11-22
 - Fix 'recombinants' category to be fully functional in plots & side-bar menus

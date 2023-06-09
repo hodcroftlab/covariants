@@ -251,6 +251,22 @@
       "who": "Omicron"
     },
     {
+      "clade": "23B (Omicron)",
+      "lineages": [
+        {
+          "name": "XBB.1.16",
+          "url": "https://cov-lineages.org/lineages/lineage_XBB.1.16.html"
+        }
+      ],
+      "others": [
+        {
+          "name": "Arcturus",
+          "url": null
+        }
+      ],
+      "who": "Omicron"
+    },
+    {
       "clade": "20E (EU1)",
       "lineages": [
         {

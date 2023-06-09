@@ -178,6 +178,16 @@ name_table = [
         "others": [],
     },
     {
+        "clade": "23B (Omicron)",
+        "who": "Omicron",
+        "lineages": [
+            {"name": "XBB.1.16", "url": "https://cov-lineages.org/lineages/lineage_XBB.1.16.html"}
+        ],
+        "others": [
+            {"name": "Arcturus", "url": None}
+        ],
+    },
+    {
         "clade": "20E (EU1)",
         "who": None,
         "lineages": [

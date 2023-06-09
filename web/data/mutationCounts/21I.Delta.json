@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 273297,
+    "total": 276370,
     "counts": [
       {
         "mut": "S:V1264L",
-        "count": 43433
+        "count": 43829
       },
       {
         "mut": "S:V289I",
-        "count": 34937
+        "count": 35292
       },
       {
         "mut": "S:Q613H",
-        "count": 20360
+        "count": 20371
       },
       {
         "mut": "S:N1074S",
-        "count": 15934
+        "count": 15998
       },
       {
         "mut": "S:R21T",
-        "count": 5124
+        "count": 5160
       },
       {
         "mut": "S:K417N",
-        "count": 3518
+        "count": 4698
       },
       {
         "mut": "S:D253A",
-        "count": 2911
+        "count": 2928
       },
       {
         "mut": "S:L5F",
-        "count": 2888
+        "count": 2919
+      },
+      {
+        "mut": "S:D215H",
+        "count": 2857
       },
       {
         "mut": "S:A67V",
-        "count": 2789
-      },
-      {
-        "mut": "S:V70F",
-        "count": 2652
+        "count": 2816
       }
     ]
   },
   "others": {
-    "total": 273297,
+    "total": 276370,
     "counts": [
       {
         "mut": "ORF1b:R188Q",
-        "count": 45213
+        "count": 45730
       },
       {
         "mut": "ORF1b:T1540I",
-        "count": 45012
+        "count": 45531
       },
       {
         "mut": "ORF6:K48N",
-        "count": 39908
+        "count": 40267
       },
       {
         "mut": "ORF9b:V15L",
-        "count": 35140
+        "count": 35480
       },
       {
         "mut": "N:G18V",
-        "count": 35136
+        "count": 35476
       },
       {
         "mut": "ORF1a:E1633D",
-        "count": 35023
+        "count": 35360
       },
       {
         "mut": "ORF1a:H712Q",
-        "count": 22768
+        "count": 22774
       },
       {
         "mut": "M:A81S",
-        "count": 22600
+        "count": 22608
       },
       {
         "mut": "N:S412R",
-        "count": 22552
+        "count": 22559
       },
       {
         "mut": "ORF3a:G224C",
-        "count": 16979
+        "count": 17075
       }
     ]
   }
