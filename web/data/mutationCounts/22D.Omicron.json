@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 138990,
+    "total": 139701,
     "counts": [
       {
         "mut": "S:R346T",
-        "count": 125733
+        "count": 126419
       },
       {
         "mut": "S:F490S",
-        "count": 65052
+        "count": 65296
       },
       {
         "mut": "S:K356T",
-        "count": 63151
+        "count": 63334
       },
       {
         "mut": "S:F486S",
-        "count": 54816
+        "count": 55269
       },
       {
         "mut": "S:L452R",
-        "count": 50864
+        "count": 51305
       },
       {
         "mut": "S:K444T",
-        "count": 42801
+        "count": 43234
       },
       {
         "mut": "S:N185D",
-        "count": 11840
+        "count": 11976
       },
       {
         "mut": "S:D574V",
-        "count": 6282
+        "count": 6286
       },
       {
         "mut": "S:D1199N",
-        "count": 6052
+        "count": 6060
       },
       {
         "mut": "S:F486P",
-        "count": 4370
+        "count": 4437
       }
     ]
   },
   "others": {
-    "total": 138990,
+    "total": 139701,
     "counts": [
       {
         "mut": "ORF1b:V1706I",
-        "count": 51861
+        "count": 52338
       },
       {
         "mut": "ORF1a:Q1198K",
-        "count": 43227
+        "count": 43666
       },
       {
         "mut": "ORF1b:Q2425R",
-        "count": 42157
+        "count": 42591
       },
       {
         "mut": "ORF3a:T229I",
-        "count": 25498
+        "count": 25537
       },
       {
         "mut": "ORF1a:M3627I",
-        "count": 25308
+        "count": 25345
       },
       {
         "mut": "ORF1a:H110Y",
-        "count": 18914
+        "count": 18932
       },
       {
         "mut": "E:D72G",
-        "count": 16840
+        "count": 16958
       },
       {
         "mut": "ORF1a:A427V",
-        "count": 9823
+        "count": 9953
       },
       {
         "mut": "ORF1b:K2140R",
-        "count": 9293
+        "count": 9423
       },
       {
         "mut": "ORF3a:A110V",
-        "count": 8400
+        "count": 8517
       }
     ]
   }
