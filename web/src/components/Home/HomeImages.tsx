@@ -3,6 +3,7 @@ import React from 'react'
 import { Row, Col } from 'reactstrap'
 import styled from 'styled-components'
 
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { Link as LinkBase } from 'src/components/Link/Link'
 import PerCountry from 'src/assets/images/perCountry.svg'
 import PerVariant from 'src/assets/images/perVariant.svg'
@@ -23,13 +24,15 @@ export const Figure = styled.figure`
 `
 
 export function HomeImages() {
+  const { t } = useTranslationSafe()
+
   return (
     <Row>
       <Col sm={6}>
         <Link href="/per-country">
           <Figure>
             <PerCountry />
-            {'Per Country'}
+            {t('By Country')}
           </Figure>
         </Link>
       </Col>
@@ -38,7 +41,7 @@ export function HomeImages() {
         <Link href="/per-variant">
           <Figure>
             <PerVariant />
-            {'Per Variant'}
+            {t('By Variant')}
           </Figure>
         </Link>
       </Col>

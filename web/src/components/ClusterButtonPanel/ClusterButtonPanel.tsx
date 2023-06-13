@@ -1,10 +1,11 @@
 import React from 'react'
 
 import { Card, CardBody, CardHeader, Row } from 'reactstrap'
-import { ClusterButtonGroup } from 'src/components/ClusterButtonPanel/ClusterButtonGroup'
-
-import { ClusterDatum, getClusters, getClustersGrouped } from 'src/io/getClusters'
 import styled from 'styled-components'
+import { get } from 'lodash'
+import { ClusterButtonGroup } from 'src/components/ClusterButtonPanel/ClusterButtonGroup'
+import { ClusterDatum, getClusters, getClustersGrouped } from 'src/io/getClusters'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 const clusters = getClusters().filter((cluster) => !cluster.has_no_page)
 const clustersGrouped = getClustersGrouped(clusters)
@@ -46,16 +47,29 @@ export interface ClusterPanelProps {
 }
 
 export function ClusterButtonPanel({ currentCluster, className }: ClusterPanelProps) {
+  const { t } = useTranslationSafe()
+
   return (
     <ClustersRow noGutters className={className}>
-      {Object.entries(clustersGrouped).map(([clusterType, clusterGroup]) => (
-        <ClusterGroupCard key={clusterType}>
-          <ClusterGroupHeader>{clusterType}</ClusterGroupHeader>
-          <ClusterGroupBody>
-            <ClusterButtonGroup clusterGroup={clusterGroup} currentCluster={currentCluster} />
-          </ClusterGroupBody>
-        </ClusterGroupCard>
-      ))}
+      {Object.entries(clustersGrouped).map(([clusterType, clusterGroup]) => {
+        const clusterTypeHeading = get(
+          {
+            variant: t('Variants'),
+            mutation: t('Mutations'),
+          },
+          clusterType,
+          'Other',
+        ) as string
+
+        return (
+          <ClusterGroupCard key={clusterType}>
+            <ClusterGroupHeader>{clusterTypeHeading.toUpperCase()}</ClusterGroupHeader>
+            <ClusterGroupBody>
+              <ClusterButtonGroup clusterGroup={clusterGroup} currentCluster={currentCluster} />
+            </ClusterGroupBody>
+          </ClusterGroupCard>
+        )
+      })}
     </ClustersRow>
   )
 }

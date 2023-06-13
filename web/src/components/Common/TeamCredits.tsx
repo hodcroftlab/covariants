@@ -7,6 +7,7 @@ import { FaGithub, FaTwitter } from 'react-icons/fa'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { TeamCreditsContributor } from 'src/components/Common/TeamCreditsContributor'
 import { getContributors } from 'src/io/getContributors'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 const contributors = getContributors()
 
@@ -76,12 +77,14 @@ const mainLinks = [
 ]
 
 export function TeamCredits() {
+  const { t } = useTranslationSafe()
+
   return (
     <Row noGutters>
       <Col>
         <Row noGutters>
           <Col className="d-flex text-center">
-            <TeamCreditsH1>{'CoVariants is brought to you by'}</TeamCreditsH1>
+            <TeamCreditsH1>{t('{{ covariants }} is brought to you by', { covariants: 'CoVariants' })}</TeamCreditsH1>
           </Col>
         </Row>
 

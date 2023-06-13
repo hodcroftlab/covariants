@@ -2,12 +2,10 @@ import React from 'react'
 
 import { Col, Row } from 'reactstrap'
 import { ClusterButtonPanelLayout } from 'src/components/ClusterButtonPanel/ClusterButtonPanelLayout'
-
 import { NarrowPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 import { Editable } from 'src/components/Common/Editable'
 import { Layout } from 'src/components/Layout/Layout'
-
-import HomeContent from '../../../../content/Home.md'
+import { MdxContent } from 'src/i18n/getMdxContent'
 
 export function HomePage() {
   return (
@@ -23,7 +21,7 @@ export function HomePage() {
           <Col>
             <ClusterButtonPanelLayout>
               <Editable>
-                <HomeContent />
+                <MdxContent filepath="Home.md" />
               </Editable>
             </ClusterButtonPanelLayout>
           </Col>

@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
 
 import type { ClusterDatum } from 'src/io/getClusters'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { ProteinBadge as ProteinBadgeBase } from 'src/components/Common/MutationBadge'
 
@@ -36,10 +37,17 @@ export interface AquariaLinksCardProps {
 }
 
 export function AquariaLinksCardTitle({ cluster }: AquariaLinksCardProps) {
+  const { t } = useTranslationSafe()
+
   return (
     <span className="d-flex w-100">
       <AquariaLogoSmall />
-      <AquariaLinksCardHeading>{`Aquaria protein visualisation for ${cluster.display_name}`}</AquariaLinksCardHeading>
+      <AquariaLinksCardHeading>
+        {t('Protein visualisation for {{variant}} by {{aquaria}}', {
+          variant: cluster.display_name,
+          aquaria: 'Aquaria',
+        })}
+      </AquariaLinksCardHeading>
     </span>
   )
 }

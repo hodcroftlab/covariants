@@ -3,6 +3,7 @@ import React, { ReactNode, useMemo } from 'react'
 import { Table as TableBase, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import styled from 'styled-components'
 
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import type { NameTableDatum, NameTableEntry } from 'src/io/getNameTable'
 import { NAME_TABLE } from 'src/io/getNameTable'
@@ -103,18 +104,20 @@ export function NameTableRow({ datum }: NameTableRowProps) {
 }
 
 export function NameTable() {
+  const { t } = useTranslationSafe()
+
   return (
     <Table>
       <Thead>
         <Tr>
-          <Th>{'Nextstrain Clade'}</Th>
-          <Th>{'Pango Lineage'}</Th>
+          <Th>{t('{{nextstrain}} Clade', { nextstrain: 'Nextstrain' })}</Th>
+          <Th>{t('Pango Lineage')}</Th>
           <Th>
             <LinkExternal href="https://www.who.int/en/activities/tracking-SARS-CoV-2-variants/">
-              {'WHO Label'}
+              {t('WHO Label')}
             </LinkExternal>
           </Th>
-          <Th>{'Other'}</Th>
+          <Th>{t('Other')}</Th>
         </Tr>
       </Thead>
       <Tbody>

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { FaGithub } from 'react-icons/fa'
 
 import { URL_GITHUB } from 'src/constants'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { theme } from 'src/theme'
 
@@ -57,9 +58,11 @@ export interface EditableBodyProps {
 }
 
 export function EditableHeader({ githubUrl, text }: EditableBodyProps) {
+  const { t } = useTranslationSafe()
+
   const href = useMemo(() => `${URL_GITHUB}/${githubUrl ?? ''}`, [githubUrl])
   const icon = useMemo(() => <FaGithub />, [])
-  const titleText = useMemo(() => text ?? 'Propose changes to this section', [text])
+  const titleText = useMemo(() => text ?? t('Propose changes to this section'), [t, text])
 
   if (!githubUrl) {
     return null

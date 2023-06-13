@@ -14,6 +14,7 @@ import {
 } from 'reactstrap'
 import styled from 'styled-components'
 
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import Changelog from '../../../../CHANGELOG.md'
 
@@ -197,6 +198,8 @@ const components = {
 }
 
 export function ChangelogButton({ children, ...props }: PropsWithChildren<ButtonProps>) {
+  const { t } = useTranslationSafe()
+
   const [showChangelog, setShowChangelog] = useState(false)
 
   const toggleOpen = useCallback(() => {
@@ -211,8 +214,8 @@ export function ChangelogButton({ children, ...props }: PropsWithChildren<Button
     setShowChangelog(false)
   }, [])
 
-  const text = 'Recent updates'
-  const closeText = 'Close this window'
+  const text = t('Recent updates')
+  const closeText = t('Close this window')
 
   return (
     <>

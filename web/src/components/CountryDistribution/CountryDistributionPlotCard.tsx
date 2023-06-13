@@ -3,6 +3,7 @@ import React from 'react'
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
 import styled from 'styled-components'
 
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import type { CountryDistributionDatum } from 'src/io/getPerCountryData'
 import { PlotCardTitle } from 'src/components/Common/PlotCardTitle'
 import { CountryFlagProps } from 'src/components/Common/CountryFlag'
@@ -12,10 +13,12 @@ import { CountryDistributionPlot } from 'src/components/CountryDistribution/Coun
 const FlagAlignment = styled.span`
   display: flex;
   align-items: center;
+
   > * + * {
     margin-left: 0.5em;
   }
 `
+
 export interface CountryDistributionPlotCardProps {
   country: string
   distribution: CountryDistributionDatum[]
@@ -29,13 +32,15 @@ export function CountryDistributionPlotCard({
   cluster_names,
   Icon,
 }: CountryDistributionPlotCardProps) {
+  const { t } = useTranslationSafe()
+
   return (
     <Card className="m-2">
       <CardHeader className="d-flex flex-sm-column">
         <PlotCardTitle>
           <FlagAlignment>
             {Icon && <Icon country={country} />}
-            <span>{country}</span>
+            <span>{t(country)}</span>
           </FlagAlignment>
         </PlotCardTitle>
       </CardHeader>

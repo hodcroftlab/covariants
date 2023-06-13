@@ -11,6 +11,7 @@ import { PoweredBy } from 'src/components/Common/PoweredBy'
 
 import { getCopyrightYearRange } from 'src/helpers/getCopyrightYearRange'
 import { getVersionString } from 'src/helpers/getVersionString'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 const FooterContainer = styled(Container)`
   padding: 7px 10px;
@@ -46,6 +47,8 @@ const VersionText = styled.div`
 `
 
 export function FooterContent() {
+  const { t } = useTranslationSafe()
+
   const copyrightYearRange = getCopyrightYearRange()
 
   return (
@@ -73,9 +76,9 @@ export function FooterContent() {
           <CopyrightText>{`${PROJECT_NAME} (c) ${copyrightYearRange} ${COMPANY_NAME}`}</CopyrightText>
 
           <GisaidTacText>
-            <span>{'GISAID data provided on this website are subject to '}</span>
+            <span>{t('GISAID data provided on this website are subject to ')}</span>
             <LinkExternal href="https://www.gisaid.org/registration/terms-of-use/" icon={null}>
-              {'GISAID Terms and Conditions'}
+              {t('GISAID Terms and Conditions')}
             </LinkExternal>
           </GisaidTacText>
 
