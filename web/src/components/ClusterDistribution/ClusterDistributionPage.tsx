@@ -32,7 +32,8 @@ import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLa
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
 import { PageHeading } from 'src/components/Common/PageHeading'
-import { StickyToolbar } from '../Common/StickyToolbar'
+import { StickyToolbar, ToolbarGroup } from '../Common/StickyToolbar'
+import { DateFilter } from '../Common/DateFilter'
 
 const Dropdown = styled(DropdownBase)`
   min-width: 130px;
@@ -205,6 +206,15 @@ export function ClusterDistributionPage() {
       <Row noGutters>
         <Col className="pb-10">
           <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
+            <StickyToolbar>
+              <ToolbarGroup>
+                <DateFilter />
+              </ToolbarGroup>
+              <ToolbarGroup>
+                <SortByDropdown perCountryTooltipSortBy={perCountryTooltipSortBy} onSortByChange={setSortBy} />
+                <SortReverseCheckbox reverse={perCountryTooltipSortReversed} setReverse={setSortReversed} />
+              </ToolbarGroup>
+            </StickyToolbar>
             <WrapperFlex>
               <SidebarFlex>
                 <DistributionSidebar
@@ -225,10 +235,6 @@ export function ClusterDistributionPage() {
               </SidebarFlex>
 
               <MainFlex>
-                <StickyToolbar>
-                  <SortByDropdown perCountryTooltipSortBy={perCountryTooltipSortBy} onSortByChange={setSortBy} />
-                  <SortReverseCheckbox reverse={perCountryTooltipSortReversed} setReverse={setSortReversed} />
-                </StickyToolbar>
                 <Row noGutters>
                   <Col>
                     <Row noGutters>{clusterDistributionComponents}</Row>

@@ -19,6 +19,7 @@ export const SidebarFlex = styled.aside`
 export const MainFlex = styled.section`
   flex: 1 0 350px;
   margin-bottom: 300px;
+  max-width: 100%;
 `
 
 export const ChartContainerOuter = styled.div`

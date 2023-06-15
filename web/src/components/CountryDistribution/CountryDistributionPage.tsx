@@ -39,7 +39,7 @@ import { CountryFlag } from '../Common/CountryFlag'
 import { USStateCode } from '../Common/USStateCode'
 import { PageHeading } from '../Common/PageHeading'
 import { DateFilter } from '../Common/DateFilter'
-import { StickyToolbar } from '../Common/StickyToolbar'
+import { StickyToolbar, ToolbarGroup } from '../Common/StickyToolbar'
 
 const enabledFilters = ['date', 'clusters', 'countriesWithIcons']
 const { regionNames, regionsHaveData } = getRegions()
@@ -161,6 +161,11 @@ export function CountryDistributionPage() {
       <Row noGutters>
         <Col>
           <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
+            <StickyToolbar>
+              <ToolbarGroup>
+                <DateFilter />
+              </ToolbarGroup>
+            </StickyToolbar>
             <WrapperFlex>
               <SidebarFlex>
                 <DistributionSidebar
@@ -180,11 +185,7 @@ export function CountryDistributionPage() {
                   onCountryFilterDeselectAll={handleCountryDeselectAll}
                 />
               </SidebarFlex>
-
               <MainFlex>
-                <StickyToolbar>
-                  <DateFilter />
-                </StickyToolbar>
                 <Row noGutters>
                   <Col>
                     <Row noGutters>{countryDistributionComponents}</Row>
