@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react'
 
-import { Card, CardBody, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
+import { Col, FormGroup, Input, Label, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
 import {

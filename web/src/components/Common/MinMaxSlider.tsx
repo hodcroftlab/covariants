@@ -123,7 +123,7 @@ function MinMaxSlider({
       '--min-v': minValue,
       '--max-v': maxValue,
     }),
-    [min, max, minValue, maxValue],
+    [min, max, minValue, maxValue, style],
   )
 
   const handleMinChange = React.useCallback(

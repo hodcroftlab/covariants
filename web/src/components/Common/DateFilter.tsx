@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 
-import { FormGroup, Label, Button } from 'reactstrap'
+import { Label, Button } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 
 import { getWeeks } from 'src/io/getParams'

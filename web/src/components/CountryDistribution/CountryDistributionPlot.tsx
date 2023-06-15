@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useMemo, useState } from 'react'
-import styled from 'styled-components'
+import React, { useCallback, useMemo, useState } from 'react'
 
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceArea } from 'recharts'
 import { DateTime } from 'luxon'
@@ -14,6 +13,7 @@ import { adjustTicks } from 'src/helpers/adjustTicks'
 import { ChartContainer } from 'src/components/Common/ChartContainer'
 import { useRecoilState } from 'recoil'
 import { dateFilterAtom } from 'src/state/DateFilter'
+import { CategoricalChartFunc } from 'recharts/types/chart/generateCategoricalChart'
 import { CountryDistributionPlotTooltip } from './CountryDistributionPlotTooltip'
 
 const allowEscapeViewBox = { x: false, y: true }
@@ -24,6 +24,8 @@ export interface AreaPlotProps {
   cluster_names: string[]
   distribution: CountryDistributionDatum[]
 }
+
+const hoverStyle = { cursor: 'cell' }
 
 function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps) {
   const data = useMemo(
@@ -46,7 +48,6 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
   )
 
   const [zoomArea, setZoomArea] = useState<[number, number] | undefined>()
-  const [isZooming, setIsZooming] = useState(false)
   const [dateFilter, setDateFilter] = useRecoilState(dateFilterAtom)
   // const [selectedArea, setSelectedArea] = useState<[number, number] | undefined>()
   const [hovering, setHovering] = useState(false)
@@ -72,6 +73,37 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
     return domainY
   }, [data, dateFilter, domainY])
 
+  const handleMouseDown = useCallback<CategoricalChartFunc>((e) => {
+    if (e && e.activeLabel) {
+      const value = Number.parseFloat(e.activeLabel)
+      setZoomArea([value, value])
+    }
+  }, [])
+
+  const handleMouseMove = useCallback<CategoricalChartFunc>(
+    (e) => {
+      if (e && e.activeLabel) {
+        setHovering(true)
+        if (zoomArea) {
+          const value = Number.parseFloat(e.activeLabel)
+          setZoomArea([zoomArea[0], value])
+        }
+      } else {
+        setHovering(false)
+      }
+    },
+    [zoomArea],
+  )
+
+  const handleMouseUp = useCallback<CategoricalChartFunc>(() => {
+    if (zoomArea) {
+      if (zoomArea[0] !== zoomArea[1]) {
+        setDateFilter(zoomArea[0] < zoomArea[1] ? zoomArea : [zoomArea[1], zoomArea[0]])
+      }
+      setZoomArea(undefined)
+    }
+  }, [zoomArea, setDateFilter])
+
   return (
     <AreaChart
       margin={theme.plot.margin}
@@ -79,32 +111,10 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
       stackOffset="expand"
       width={width}
       height={height}
-      style={hovering ? { cursor: 'cell' } : null}
-      onMouseDown={(e) => {
-        if (e) {
-          setIsZooming(true)
-          setZoomArea([e.activeLabel, e.activeLabel])
-        }
-      }}
-      onMouseMove={(e) => {
-        if (e && e.activeLabel) {
-          setHovering(true)
-          if (isZooming) {
-            setZoomArea([zoomArea[0], e.activeLabel])
-          }
-        } else {
-          setHovering(false)
-        }
-      }}
-      onMouseUp={(e) => {
-        if (isZooming) {
-          if (zoomArea[0] !== zoomArea[1]) {
-            setDateFilter(zoomArea[0] < zoomArea[1] ? zoomArea : [zoomArea[1], zoomArea[0]])
-          }
-          setZoomArea(undefined)
-          setIsZooming(false)
-        }
-      }}
+      style={hovering ? hoverStyle : null}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
     >
       <XAxis
         dataKey="week"
@@ -152,7 +162,7 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
 
       <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
 
-      {isZooming && (
+      {zoomArea && (
         <ReferenceArea
           x1={zoomArea[0]}
           x2={zoomArea[1]}
@@ -163,7 +173,7 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
         />
       )}
 
-      {!isZooming && (
+      {!zoomArea && (
         <Tooltip
           content={CountryDistributionPlotTooltip}
           isAnimationActive={false}

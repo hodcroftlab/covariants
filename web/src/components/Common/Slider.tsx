@@ -72,7 +72,7 @@ const Input = styled.input`
   }
 `
 
-const Slider = function (props) {
+function Slider(props) {
   return <Input type="range" {...props} />
 }
 
