@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 
 import styled from 'styled-components'
 import {
@@ -18,21 +18,12 @@ import { FaGithub, FaTwitter } from 'react-icons/fa'
 import BrandLogoBase from 'src/assets/images/logo.svg'
 import BrandLogoLargeBase from 'src/assets/images/logo_text_right.svg'
 
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { Link } from 'src/components/Link/Link'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { TWITTER_USERNAME_RAW, URL_GITHUB } from 'src/constants'
 import { ChristmasToggle } from 'src/components/Common/Christmas'
-
-let navLinksLeft: Record<string, string> = {
-  '/': 'Home',
-  '/faq': 'FAQ',
-  '/variants': 'Variants',
-  '/per-country': 'Per country',
-  '/per-variant': 'Per variant',
-  '/cases': 'Cases',
-  '/shared-mutations': 'Shared Mutations',
-  '/acknowledgements': 'Acknowledgements',
-}
+import { LanguageSwitcher } from 'src/components/Layout/LanguageSwitcher'
 
 export function matchingUrl(url: string, pathname: string): boolean {
   if (pathname.startsWith('/variants')) {
@@ -40,29 +31,6 @@ export function matchingUrl(url: string, pathname: string): boolean {
   }
 
   return url === pathname
-}
-
-const navLinksRight = [
-  {
-    text: 'Follow',
-    title: `Follow @${TWITTER_USERNAME_RAW} on Twitter`,
-    url: `https://twitter.com/${TWITTER_USERNAME_RAW}`,
-    alt: 'Link to Twitter, with blue Twitter bird logo',
-    icon: <FaTwitter size={22} color="#08a0e9" />,
-    color: '#08a0e9',
-  },
-  {
-    text: 'Fork',
-    title: "Let's collaborate on GitHub",
-    url: URL_GITHUB,
-    alt: 'Link to Github page, with grey Github Octocat logo',
-    icon: <FaGithub size={22} color="#24292E" />,
-    color: '#24292E',
-  },
-]
-
-if (process.env.NODE_ENV === 'development' || process.env.DOMAIN?.includes('vercel')) {
-  navLinksLeft = { ...navLinksLeft, '/debug-badges': 'Debug badges' }
 }
 
 export const Navbar = styled(NavbarBase)`
@@ -87,9 +55,9 @@ export const NavWrappable = styled(NavBase)`
 
   width: 100%;
 
-  background-image: linear-gradient(to right, white, white), linear-gradient(to right, white, white),
-    linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)),
-    linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+  background-image: linear-gradieni18n .t(to right, white, white), linear-gradieni18n .t(to right, white, white),
+    linear-gradieni18n .t(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)),
+    linear-gradieni18n .t(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
   background-position: left center, right center, left center, right center;
   background-repeat: no-repeat;
   background-color: white;
@@ -144,9 +112,48 @@ export const BrandLogoLarge = styled(BrandLogoLargeBase)`
 `
 
 export function NavigationBar() {
+  const { t } = useTranslationSafe()
   const { pathname } = useRouter()
   const [isOpen, setIsOpen] = useState(false)
   const toggle = useCallback(() => setIsOpen(!isOpen), [isOpen])
+
+  const navLinksLeft = useMemo(() => {
+    let navLinksLeft: Record<string, string> = {
+      '/': t('Home'),
+      '/faq': t('FAQ'),
+      '/variants': t('Variants'),
+      '/per-country': t('Per country'),
+      '/per-variant': t('Per variant'),
+      '/cases': t('Cases'),
+      '/shared-mutations': t('Shared Mutations'),
+      '/acknowledgements': t('Acknowledgements'),
+    }
+    if (process.env.NODE_ENV === 'development' || process.env.DOMAIN?.includes('vercel')) {
+      navLinksLeft = { ...navLinksLeft, '/debug-badges': 'Debug badges' }
+    }
+    return navLinksLeft
+  }, [t])
+
+  const navLinksRight = useMemo(() => {
+    return [
+      {
+        text: t('Follow'),
+        title: t('Follow {{twitterUsername}} on Twitter', { twitterUsername: `@${TWITTER_USERNAME_RAW}` }),
+        url: `https://twitter.com/${TWITTER_USERNAME_RAW}`,
+        alt: t('Link to Twitter, with blue Twitter bird logo'),
+        icon: <FaTwitter size={22} color="#08a0e9" />,
+        color: '#08a0e9',
+      },
+      {
+        text: t('Fork'),
+        title: t("Let's collaborate on GitHub"),
+        url: URL_GITHUB,
+        alt: t('Link to Github page, with grey Github Octocat logo'),
+        icon: <FaGithub size={22} color="#24292E" />,
+        color: '#24292E',
+      },
+    ]
+  }, [t])
 
   return (
     <Navbar expand="md" color="light" light role="navigation">
@@ -172,7 +179,7 @@ export function NavigationBar() {
 
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <Row noGutter>
+            <Row noGutters>
               <Col className="mt-2 mx-3">
                 <ChristmasToggle />
               </Col>
@@ -188,6 +195,7 @@ export function NavigationBar() {
               </NavLink>
             </NavItem>
           ))}
+          <LanguageSwitcher />
         </Nav>
       </Collapse>
     </Navbar>

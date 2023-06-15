@@ -33,6 +33,7 @@ import {
   TWITTER_RELATED,
   TWITTER_USERNAME_RAW,
 } from 'src/constants'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 const SOCIAL_ICON_SIZE = 30
 
@@ -92,6 +93,7 @@ function getEmailBody(url: string) {
 }
 
 export function SharingPanel() {
+  const { t } = useTranslationSafe()
   const { asPath } = useRouter()
   const url = urljoin(DOMAIN, asPath)
   const emailBody = useMemo(() => getEmailBody(url), [url])
@@ -101,24 +103,24 @@ export function SharingPanel() {
       <Col>
         <Row noGutters>
           <Col className="d-flex text-center">
-            <SharingPanelH1>{'Share'}</SharingPanelH1>
+            <SharingPanelH1>{t('Share')}</SharingPanelH1>
           </Col>
         </Row>
 
         <Row noGutters>
           <Col className="d-flex">
             <SharingPanelWrapper>
-              <SharingButton title={'Copy link to clipboard'}>
+              <SharingButton title={t('Copy link to clipboard')}>
                 <CopyToClipBoardComponent url={url} />
               </SharingButton>
 
-              <SharingButton title={'Send in an Email'}>
+              <SharingButton title={t('Send in an Email')}>
                 <EmailShareButton url="" subject={PROJECT_NAME} body={emailBody}>
                   <EmailIcon size={SOCIAL_ICON_SIZE} />
                 </EmailShareButton>
               </SharingButton>
 
-              <SharingButton title={'Share on Twitter'}>
+              <SharingButton title={t('Share on Twitter')}>
                 <TwitterShareButton
                   url={url}
                   title={PROJECT_NAME}
@@ -130,31 +132,31 @@ export function SharingPanel() {
                 </TwitterShareButton>
               </SharingButton>
 
-              <SharingButton title={'Share on Facebook'}>
+              <SharingButton title={t('Share on Facebook')}>
                 <FacebookShareButton url={url} quote={PROJECT_NAME} hashtag={FACEBOOK_HASHTAG}>
                   <FacebookIcon size={SOCIAL_ICON_SIZE} />
                 </FacebookShareButton>
               </SharingButton>
 
-              <SharingButton title={'Share on WhatsApp'}>
+              <SharingButton title={t('Share on WhatsApp')}>
                 <WhatsappShareButton url={url} title={PROJECT_NAME}>
                   <WhatsappIcon size={SOCIAL_ICON_SIZE} />
                 </WhatsappShareButton>
               </SharingButton>
 
-              <SharingButton title={'Share on LinkedIn'}>
+              <SharingButton title={t('Share on LinkedIn')}>
                 <LinkedinShareButton url={url} title={PROJECT_NAME}>
                   <LinkedinIcon size={SOCIAL_ICON_SIZE} />
                 </LinkedinShareButton>
               </SharingButton>
 
-              <SharingButton title={'Share on VK'}>
+              <SharingButton title={t('Share on VK')}>
                 <VKShareButton url={url} title={PROJECT_NAME}>
                   <VKIcon size={SOCIAL_ICON_SIZE} />
                 </VKShareButton>
               </SharingButton>
 
-              <SharingButton title={'Share on Weibo'}>
+              <SharingButton title={t('Share on Weibo')}>
                 <WeiboShareButton url={url} title={PROJECT_NAME}>
                   <WeiboIcon size={SOCIAL_ICON_SIZE} />
                 </WeiboShareButton>

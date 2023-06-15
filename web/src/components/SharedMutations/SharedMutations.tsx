@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react'
 
 import styled from 'styled-components'
 
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import type { MutationShared } from 'src/io/getMutationComparison'
 import {
   getMutationComparisonVariants,
@@ -75,6 +76,8 @@ export function Variant({ variants, shared }: VariantProps) {
 }
 
 export function SharedMutations() {
+  const { t } = useTranslationSafe()
+
   const [byPos, setByPos] = useState(true)
   const shared = useMemo(() => (byPos ? sharedByPos : sharedByCommonness), [byPos])
 
@@ -93,15 +96,15 @@ export function SharedMutations() {
       <TableBody>
         <Tr>
           <TdTitle colSpan={nCols}>
-            {'Shared mutations'}
+            {t('Shared mutations')}
             <AdvancedToggleWrapper>
-              {'Sort by: '}
+              {t('Sort by: ')}
               <ToggleTwoLabels
                 identifier="toggle-advanced-controls"
                 checked={byPos}
                 onCheckedChanged={setByPos}
-                labelLeft="Position"
-                labelRight="Commonness"
+                labelLeft={t('Position')}
+                labelRight={t('Commonness')}
               />
             </AdvancedToggleWrapper>
           </TdTitle>
@@ -114,7 +117,7 @@ export function SharedMutations() {
         </>
 
         <Tr>
-          <TdTitle colSpan={nCols}>{'Other mutations'}</TdTitle>
+          <TdTitle colSpan={nCols}>{t('Other mutations')}</TdTitle>
         </Tr>
 
         <>

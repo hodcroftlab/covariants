@@ -1,12 +1,12 @@
 import React, { useCallback, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
-
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
 import { ColCustom } from 'src/components/Common/ColCustom'
 import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
-
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
+import { MdxContent } from 'src/i18n/getMdxContent'
 import { getPerCountryCasesData, filterClusters, filterCountries } from 'src/io/getPerCountryCasesData'
 import { clustersCasesAtom, disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/ClustersForCaseData'
 import {
@@ -23,11 +23,11 @@ import { SharingPanel } from 'src/components/Common/SharingPanel'
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { CasesPlotCard } from './CasesPlotCard'
 
-import IntroContent from '../../../../content/PerCountryCasesIntro.md'
-
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
 export function CasesPage() {
+  const { t } = useTranslationSafe()
+
   const [countries, setCountries] = useRecoilState(countriesCasesAtom)
   const [continents, setContinents] = useRecoilState(continentsCasesAtom)
   const [clusters, setClusters] = useRecoilState(clustersCasesAtom)
@@ -97,14 +97,14 @@ export function CasesPage() {
     <Layout wide>
       <Row noGutters>
         <Col>
-          <PageHeading>{'Estimated Cases by Variant'}</PageHeading>
+          <PageHeading>{t('Estimated Cases by Variant')}</PageHeading>
         </Col>
       </Row>
 
       <Row noGutters>
         <Col>
-          <CenteredEditable githubUrl="tree/master/content/PerCountryCasesIntro.md">
-            <IntroContent />
+          <CenteredEditable githubUrl="tree/master/web/src/content/en/PerCountryCasesIntro.md">
+            <MdxContent filepath="PerCountryCasesIntro.md" />
           </CenteredEditable>
         </Col>
       </Row>
@@ -117,14 +117,14 @@ export function CasesPage() {
 
       <Row noGutters>
         <Col>
-          <Editable githubUrl="blob/master/scripts" text={'View data generation scripts'}>
+          <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
             <WrapperFlex>
               <SidebarFlex>
                 <DistributionSidebar
                   countries={countries}
                   continents={continents}
                   clusters={clusters}
-                  regionsTitle="Countries"
+                  regionsTitle={t('Countries')}
                   enabledFilters={enabledFilters}
                   clustersCollapsedByDefault={false}
                   countriesCollapsedByDefault={false}

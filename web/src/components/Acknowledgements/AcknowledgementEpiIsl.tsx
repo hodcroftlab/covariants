@@ -7,6 +7,7 @@ import { AcknowledgementsError } from 'src/components/Acknowledgements/Acknowled
 import styled from 'styled-components'
 import { Popover as PopoverBase, PopoverBody as PopoverBodyBase, PopoverHeader as PopoverHeaderBase } from 'reactstrap'
 import { ThreeDots as ThreeDotsLoader } from 'react-loader-spinner'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 export const Popover = styled(PopoverBase)`
   .popover {
@@ -110,6 +111,7 @@ export interface AcknowledgementEpiIslPopupProps {
 }
 
 export function AcknowledgementEpiIslPopup({ target, isOpen, epiIsl }: AcknowledgementEpiIslPopupProps) {
+  const { t } = useTranslationSafe()
   const { isLoading, isFetching, isError, data, error } = useQueryAcknowledgementData(epiIsl)
 
   return (
@@ -129,15 +131,15 @@ export function AcknowledgementEpiIslPopup({ target, isOpen, epiIsl }: Acknowled
         {data && (
           <section>
             <p>
-              <b>{'Originating lab: '}</b>
+              <b>{t('Originating lab: {{origLab}}', { origLab: '' })}</b>
               <span>{data.origLab}</span>
             </p>
             <p>
-              <b>{'Submitting lab: '}</b>
+              <b>{t('Submitting lab: {{submLab}}', { submLab: '' })}</b>
               <span>{data.submLab}</span>
             </p>
             <p>
-              <b>{'Authors: '}</b>
+              <b>{t('Authors: {{authors}}', { authors: '' })}</b>
               <span>{data.authors}</span>
             </p>
           </section>

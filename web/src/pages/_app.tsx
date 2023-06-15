@@ -4,12 +4,13 @@ import 'resize-observer-polyfill/dist/ResizeObserver.global'
 import 'css.escape'
 
 import dynamic from 'next/dynamic'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { MutableSnapshot, RecoilRoot } from 'recoil'
+import { MutableSnapshot, RecoilRoot, useRecoilCallback } from 'recoil'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { ThemeProvider } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
+import { I18nextProvider } from 'react-i18next'
 import type { AppProps } from 'next/app'
 
 import { clustersAtom, ClustersDataFlavor, urlQueryToClusters } from 'src/state/Clusters'
@@ -17,16 +18,52 @@ import { clustersCasesAtom, urlQueryToClustersCases } from 'src/state/ClustersFo
 import { continentsAtom, countriesAtom, regionAtom, urlQueryToPlaces } from 'src/state/Places'
 import { continentsCasesAtom, countriesCasesAtom, urlQueryToPlacesCases } from 'src/state/PlacesForCaseData'
 import { dateFilterAtom, urlQueryToDateFilter } from 'src/state/DateFilter'
-
 import { parseUrl } from 'src/helpers/parseUrl'
+import i18n, { changeLocale, getLocaleWithKey } from 'src/i18n/i18n'
 import { theme } from 'src/theme'
 import { DOMAIN_STRIPPED } from 'src/constants'
 import { Plausible } from 'src/components/Common/Plausible'
 import { SeoApp } from 'src/components/Common/SeoApp'
 import { getMdxComponents } from 'src/components/Common/MdxComponents'
 import { loadPolyfills } from 'src/polyfills'
+import { localeAtom } from 'src/state/locale.state'
 
 import 'src/styles/global.scss'
+
+export function RecoilStateInitializer() {
+  // const router = useRouter()
+
+  // // NOTE: Do manual parsing, because router.query is randomly empty on the first few renders and on repeated renders.
+  // // This is important, because various states depend on query, and when it changes back and forth,
+  // // the state also changes unexpectedly.
+  // const { query: urlQuery } = useMemo(() => parseUrl(router.asPath), [router.asPath])
+
+  const initialize = useRecoilCallback(({ set, snapshot }) => () => {
+    const snapShotRelease = snapshot.retain()
+    const { getPromise } = snapshot
+
+    // eslint-disable-next-line no-void
+    void Promise.resolve()
+      // eslint-disable-next-line promise/always-return
+      .then(async () => {
+        // const localeKeyFromUrl = getQueryParamMaybe(urlQuery, 'lang')
+        const localeKey = await getPromise(localeAtom)
+        const locale = getLocaleWithKey(localeKey)
+        await changeLocale(i18n, locale.key)
+        set(localeAtom, locale.key)
+        // void setLocaleInUrl(localeKey) // eslint-disable-line no-void
+      })
+      .finally(() => {
+        snapShotRelease()
+      })
+  })
+
+  useEffect(() => {
+    initialize()
+  })
+
+  return null
+}
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   const queryClient = useMemo(() => new QueryClient(), [])
@@ -86,15 +123,18 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
   return (
     <RecoilRoot initializeState={initializeState}>
+      <RecoilStateInitializer />
       <ThemeProvider theme={theme}>
-        <MDXProvider components={getMdxComponents}>
-          <Plausible domain={DOMAIN_STRIPPED} />
-          <SeoApp />
-          <QueryClientProvider client={queryClient}>
-            <Component {...pageProps} />
-            <ReactQueryDevtools initialIsOpen={false} />
-          </QueryClientProvider>
-        </MDXProvider>
+        <I18nextProvider i18n={i18n}>
+          <MDXProvider components={getMdxComponents}>
+            <Plausible domain={DOMAIN_STRIPPED} />
+            <SeoApp />
+            <QueryClientProvider client={queryClient}>
+              <Component {...pageProps} />
+              <ReactQueryDevtools initialIsOpen={false} />
+            </QueryClientProvider>
+          </MDXProvider>
+        </I18nextProvider>
       </ThemeProvider>
     </RecoilRoot>
   )

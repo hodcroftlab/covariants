@@ -4,6 +4,7 @@ import { sortBy, reverse } from 'lodash'
 import styled from 'styled-components'
 import { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { formatDateBiweekly, formatInteger, formatProportion } from 'src/helpers/format'
 import { getClusterColor } from 'src/io/getClusters'
 import { ColoredBox } from '../Common/ColoredBox'
@@ -44,6 +45,8 @@ export const ClusterNameText = styled.span`
 `
 
 export function CasesPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
+  const { t } = useTranslationSafe()
+
   const { payload } = props
   if (!payload || payload.length === 0) {
     return null
@@ -68,9 +71,9 @@ export function CasesPlotTooltip(props: DefaultTooltipContentProps<number, strin
       <TooltipTable>
         <thead>
           <tr className="w-100">
-            <th className="px-2 text-left">{'Variant'}</th>
-            <th className="px-2 text-right">{'Est. cases'}</th>
-            <th className="px-2 text-right">{'Freq'}</th>
+            <th className="px-2 text-left">{t('Variant')}</th>
+            <th className="px-2 text-right">{t('Est. cases')}</th>
+            <th className="px-2 text-right">{t('Freq')}</th>
           </tr>
         </thead>
         <TooltipTableBody>
@@ -90,7 +93,7 @@ export function CasesPlotTooltip(props: DefaultTooltipContentProps<number, strin
           <tr>
             <td className="px-2 text-left">
               <span>
-                <b>{'Total'}</b>
+                <b>{t('Total')}</b>
               </span>
             </td>
             <td className="px-2 text-right">{total}</td>

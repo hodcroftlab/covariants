@@ -13,7 +13,7 @@ import {
 } from 'reactstrap'
 import { Continent, Country } from 'src/state/Places'
 import styled, { useTheme } from 'styled-components'
-
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import type { CountryFlagProps } from 'src/components/Common/CountryFlag'
 import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
@@ -34,6 +34,7 @@ const FlagAlignment = styled.span`
   display: inline-flex;
   align-items: center;
   margin-left: 0.25em;
+
   > * + * {
     margin-left: 0.5em;
   }
@@ -45,14 +46,17 @@ export interface IconOrLineComponentProps {
 }
 
 export function IconComponent({ country, Icon }: IconOrLineComponentProps) {
+  const { t } = useTranslationSafe()
   return (
     <FlagAlignment>
       {Icon && <Icon country={country} withFallback />}
-      <span>{country}</span>
+      <span>{t(country)}</span>
     </FlagAlignment>
   )
 }
+
 export function LineComponent({ country }: IconOrLineComponentProps) {
+  const { t } = useTranslationSafe()
   const theme = useTheme()
   const { stroke, strokeDasharray } = useMemo(() => {
     return {
@@ -70,7 +74,7 @@ export function LineComponent({ country }: IconOrLineComponentProps) {
         strokeWidth={theme.plot.country.legend.lineIcon.thickness}
         strokeDasharray={strokeDasharray}
       />
-      <span className="ml-2">{country}</span>
+      <span className="ml-2">{t(country)}</span>
     </>
   )
 }
@@ -130,6 +134,8 @@ export function CountryFilters({
   onFilterChange,
   setCollapsed,
 }: CountryFiltersProps) {
+  const { t } = useTranslationSafe()
+
   const handleContinentChange = useCallback(
     (continent: string) => onFilterSelectRegion(continent),
     [onFilterSelectRegion],
@@ -175,10 +181,10 @@ export function CountryFilters({
             <Col className="d-flex">
               <FormGroup className="flex-grow-0 mx-auto">
                 <Button type="button" color="link" onClick={onFilterSelectAll}>
-                  {'Select all'}
+                  {t('Select all')}
                 </Button>
                 <Button type="button" color="link" onClick={onFilterDeselectAll}>
-                  {'Deselect all'}
+                  {t('Deselect all')}
                 </Button>
               </FormGroup>
             </Col>

@@ -1,10 +1,9 @@
 import React from 'react'
-
 import { Col, Row } from 'reactstrap'
-import { LinkExternal } from 'src/components/Link/LinkExternal'
 import styled from 'styled-components'
-
 import { PROJECT_NAME, TEAM_NAME } from 'src/constants'
+import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
+import { LinkExternal } from 'src/components/Link/LinkExternal'
 import VercelLogo from 'src/assets/images/vercel_logo.svg'
 import NextJsLogo from 'src/assets/images/nextjs_logo.svg'
 import { NextstrainLogo } from './NextstrainLogo'
@@ -62,12 +61,14 @@ const mainLinks = [
 ]
 
 export function PoweredBy() {
+  const { t } = useTranslationSafe()
+
   return (
     <Row noGutters>
       <Col>
         <Row noGutters>
           <Col className="text-center">
-            <PoweredByH1>{'Powered by'}</PoweredByH1>
+            <PoweredByH1>{t('Powered by')}</PoweredByH1>
           </Col>
         </Row>
 
