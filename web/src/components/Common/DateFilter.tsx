@@ -47,10 +47,10 @@ export function DateFilter() {
 
   return (
     <>
-      <Label className="m-0 flex-grow-1 flex-sm-grow-0">
-        <span className="mr-sm-2 text-nowrap">{'Date range:'}</span>
+      <Label className="m-0 flex-grow-1 flex-md-grow-0">
+        <span className="mr-md-2 text-nowrap">{'Date range:'}</span>
         <MinMaxSlider
-          className="mt-2 mb-2 m-sm-0"
+          className="mt-2 mb-2 m-md-0"
           min={0}
           max={weeks.length - 1}
           minValue={minIndex}
@@ -59,7 +59,7 @@ export function DateFilter() {
           onMaxChange={setMaxIndex}
         />
       </Label>
-      <Button className="ml-3" type="button" color="link" onClick={reset}>
+      <Button className="ml-2 mt-auto mb-n1 my-md-0" type="button" color="link" onClick={reset}>
         Reset
       </Button>
     </>

@@ -32,6 +32,7 @@ import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLa
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
 import { PageHeading } from 'src/components/Common/PageHeading'
+import { useMobile } from 'src/helpers/useMediaQuery'
 import { StickyToolbar, ToolbarGroup } from '../Common/StickyToolbar'
 import { DateFilter } from '../Common/DateFilter'
 
@@ -59,8 +60,9 @@ export function SortByDropdown({ perCountryTooltipSortBy, onSortByChange }: Sort
   return (
     <FormGroup check inline>
       <Label htmlFor="per-variant-sort-by">
-        <span className="mr-2">{t('Tooltip sort by:')}</span>
+        <span className="mr-md-2">{t('Tooltip sort by:')}</span>
         <Dropdown
+          className="mt-2 mt-md-0"
           identifier="per-variant-sort-by"
           options={sortByOptions}
           value={stringToOption(perCountryTooltipSortBy)}
@@ -82,10 +84,10 @@ export function SortReverseCheckbox({ reverse, setReverse }: SortReverseCheckbox
   const onChange = useCallback(() => setReverse(!reverse), [setReverse, reverse])
 
   return (
-    <FormGroup check inline>
-      <Label htmlFor="per-variant-sort-reverse" check>
+    <FormGroup check className="ml-1 mt-auto mb-3 my-md-0">
+      <Label htmlFor="per-variant-sort-reverse" check className="d-flex items-center">
         <Input id="per-variant-sort-reverse" type="checkbox" checked={reverse} onChange={onChange} />
-        <span>{t('Reversed')}</span>
+        <span className="ml-1">{t('Reversed')}</span>
       </Label>
     </FormGroup>
   )
@@ -93,6 +95,7 @@ export function SortReverseCheckbox({ reverse, setReverse }: SortReverseCheckbox
 
 export function ClusterDistributionPage() {
   const { t } = useTranslationSafe()
+  const isMobile = useMobile()
 
   const [countries, setCountries] = useRecoilState(countriesAtom(undefined))
   const [continents, setContinents] = useRecoilState(continentsAtom(undefined))
@@ -205,14 +208,14 @@ export function ClusterDistributionPage() {
 
       <Row noGutters>
         <Col className="pb-10">
-          <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
+          <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')} verticalRhythm={false}>
             <StickyToolbar>
-              <ToolbarGroup>
-                <DateFilter />
-              </ToolbarGroup>
               <ToolbarGroup>
                 <SortByDropdown perCountryTooltipSortBy={perCountryTooltipSortBy} onSortByChange={setSortBy} />
                 <SortReverseCheckbox reverse={perCountryTooltipSortReversed} setReverse={setSortReversed} />
+              </ToolbarGroup>
+              <ToolbarGroup>
+                <DateFilter />
               </ToolbarGroup>
             </StickyToolbar>
             <WrapperFlex>
@@ -222,7 +225,7 @@ export function ClusterDistributionPage() {
                   continents={continents}
                   clusters={clusters}
                   regionsTitle={t('Countries')}
-                  countriesCollapsedByDefault={false}
+                  countriesCollapsedByDefault={isMobile}
                   enabledFilters={enabledFilters}
                   onClusterFilterChange={handleClusterCheckedChange}
                   onClusterFilterSelectAll={handleClusterSelectAll}

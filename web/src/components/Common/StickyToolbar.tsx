@@ -1,7 +1,10 @@
 import React, { ReactNode } from 'react'
-import { Card, CardBody, Col, Form, Row } from 'reactstrap'
+import { Card, CardBody, Col, Form } from 'reactstrap'
 import styled from 'styled-components'
+
+import { useMobile } from 'src/helpers/useMediaQuery'
 import { StickyRow } from './StickyRow'
+import { MobileSheet } from './MobileSheet'
 
 export interface StickyToolbarProps {
   children?: ReactNode | undefined
@@ -9,34 +12,48 @@ export interface StickyToolbarProps {
 
 export const ToolbarGroup = styled.div`
   display: flex;
+  align-items: center;
   flex-wrap: nowrap;
   white-space: nowrap;
 
   * + & {
-    padding-left: 1rem;
-    border-left: 1px solid;
-    border-color: hsl(0, 0%, 80%);
+    margin-top: 1rem;
+
+    @media (min-width: 768px) {
+      margin-top: 0;
+      margin-left: 1rem;
+      padding-left: 1rem;
+      border-left: 1px solid;
+      border-color: hsl(0, 0%, 80%);
+    }
   }
 `
 
-const formStyle = {
-  gap: '1rem',
-  flexWrap: 'nowrap',
-  overflowX: 'auto',
-}
+const StickyContainer = styled(StickyRow)`
+  max-width: fit-content;
+  margin-left: auto;
+`
 
 export function StickyToolbar({ children }: StickyToolbarProps) {
+  const isMobile = useMobile()
+
+  if (isMobile) {
+    return (
+      <MobileSheet label="Toolbar">
+        <Form>{children}</Form>
+      </MobileSheet>
+    )
+  }
+
   return (
-    <StickyRow noGutters className="pt-2 mt-n2 mb-n3">
+    <StickyContainer noGutters className="mb-3 pt-2 mt-n2">
       <Col>
-        <Card style={{ maxWidth: 'fit-content', marginLeft: 'auto' }}>
+        <Card>
           <CardBody className="px-3 py-2 d-flex">
-            <Form inline style={formStyle}>
-              {children}
-            </Form>
+            <Form inline>{children}</Form>
           </CardBody>
         </Card>
       </Col>
-    </StickyRow>
+    </StickyContainer>
   )
 }

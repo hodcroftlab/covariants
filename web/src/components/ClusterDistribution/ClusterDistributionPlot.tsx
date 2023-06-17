@@ -3,16 +3,18 @@ import React, { useMemo } from 'react'
 
 import { get } from 'lodash'
 import { DateTime } from 'luxon'
-import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts'
+import { CartesianGrid, Line, LineChart, ReferenceArea, Tooltip, XAxis, YAxis } from 'recharts'
 import { useTheme } from 'styled-components'
+import { useRecoilState } from 'recoil'
 
-import { ticks, timeDomain } from 'src/io/getParams'
 import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
 import { formatDateHumanely, formatProportion } from 'src/helpers/format'
-import { adjustTicks } from 'src/helpers/adjustTicks'
 import type { ClusterDistributionDatum } from 'src/io/getPerClusterData'
 import { ClusterDistributionPlotTooltip } from 'src/components/ClusterDistribution/ClusterDistributionPlotTooltip'
 import { ChartContainer } from 'src/components/Common/ChartContainer'
+import { dateFilterAtom } from 'src/state/DateFilter'
+import { useDateFilter } from 'src/helpers/useDateFilter'
+import { useZoomArea, zoomAreaStyleProps } from 'src/helpers/useZoomArea'
 
 const getValueOrig = (country: string) => (value: ClusterDistributionDatum) => {
   const orig = get(value.orig, country, false)
@@ -48,17 +50,19 @@ function LinePlot({ width, height, country_names, distribution }: LinePlotProps)
     () =>
       distribution.map(({ week, ...rest }) => {
         const weekSec = DateTime.fromFormat(week, 'yyyy-MM-dd').toSeconds()
-        return { week: weekSec, ...rest }
+        const maxY = Object.values(rest.frequencies).reduce<number>((y, max = 0) => Math.max(y, max), 0)
+        return {
+          week: weekSec,
+          maxY,
+          ...rest,
+        }
       }),
     [distribution],
   )
 
-  const { adjustedTicks, domainX, domainY } = useMemo(() => {
-    const adjustedTicks = adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin)
-    const domainX = [adjustedTicks[0], timeDomain[1]]
-    const domainY = [0, 1]
-    return { adjustedTicks, domainX, domainY }
-  }, [theme.plot.tickWidthMin, width])
+  const [dateFilter, setDateFilter] = useRecoilState(dateFilterAtom)
+  const { domainX, domainY, ticks } = useDateFilter(dateFilter, data, width)
+  const { handleMouseDown, handleMouseMove, handleMouseUp, style, zoomArea } = useZoomArea(setDateFilter)
 
   const lines = useMemo(() => {
     const linesOrig = country_names.map((country) => (
@@ -93,13 +97,22 @@ function LinePlot({ width, height, country_names, distribution }: LinePlotProps)
   }, [country_names])
 
   return (
-    <LineChart width={width} height={height} margin={theme.plot.margin} data={data}>
+    <LineChart
+      width={width}
+      height={height}
+      margin={theme.plot.margin}
+      data={data}
+      style={style}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+    >
       <XAxis
         dataKey="week"
         type="number"
         tickFormatter={formatDateHumanely}
         domain={domainX}
-        ticks={adjustedTicks}
+        ticks={ticks}
         tick={theme.plot.tickStyle}
         tickMargin={theme.plot.tickMargin?.x}
         allowDataOverflow
@@ -112,16 +125,23 @@ function LinePlot({ width, height, country_names, distribution }: LinePlotProps)
         tickMargin={theme.plot.tickMargin?.y}
         allowDataOverflow
       />
-      <Tooltip
-        content={ClusterDistributionPlotTooltip}
-        isAnimationActive={false}
-        allowEscapeViewBox={allowEscapeViewBox}
-        offset={50}
-      />
+
+      {lines}
 
       <CartesianGrid stroke="#2222" />
 
-      {lines}
+      {zoomArea && (
+        <ReferenceArea x1={zoomArea[0]} x2={zoomArea[1]} y1={domainY[0]} y2={domainY[1]} {...zoomAreaStyleProps} />
+      )}
+
+      {!zoomArea && (
+        <Tooltip
+          content={ClusterDistributionPlotTooltip}
+          isAnimationActive={false}
+          allowEscapeViewBox={allowEscapeViewBox}
+          offset={50}
+        />
+      )}
     </LineChart>
   )
 }

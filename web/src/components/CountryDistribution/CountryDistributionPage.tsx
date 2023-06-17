@@ -34,6 +34,7 @@ import {
   toggleContinent,
   toggleCountry,
 } from 'src/state/Places'
+import { useMobile } from 'src/helpers/useMediaQuery'
 import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
 import { CountryFlag } from '../Common/CountryFlag'
 import { USStateCode } from '../Common/USStateCode'
@@ -46,6 +47,7 @@ const { regionNames, regionsHaveData } = getRegions()
 
 export function CountryDistributionPage() {
   const { t } = useTranslationSafe()
+  const isMobile = useMobile()
 
   const [region, setRegion] = useRecoilState(regionAtom)
   const [countries, setCountries] = useRecoilState(countriesAtom(region))
@@ -174,7 +176,7 @@ export function CountryDistributionPage() {
                   clusters={clusters}
                   regionsTitle={regionsTitle}
                   enabledFilters={enabledFilters}
-                  clustersCollapsedByDefault={false}
+                  clustersCollapsedByDefault={isMobile}
                   Icon={iconComponent}
                   onClusterFilterChange={handleClusterCheckedChange}
                   onClusterFilterSelectAll={handleClusterSelectAll}
