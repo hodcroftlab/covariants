@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { PropsWithChildren, useState } from 'react'
 import styled from 'styled-components'
-import { MdArrowDropUp, MdArrowDropDown } from 'react-icons/md'
+import { MdArrowDropUp } from 'react-icons/md'
 
 interface SheetProps {
   isOpen: boolean
@@ -56,11 +56,18 @@ const ButtonIcon = styled(MdArrowDropUp)<{ $rotated?: boolean }>`
   transform: rotate(${(props) => (props.$rotated ? '-180deg' : '0deg')});
 `
 
-export function MobileSheet({ label, children }) {
+interface MobileSheetProps {
+  label: string
+}
+
+export function MobileSheet({ label, children }: PropsWithChildren<MobileSheetProps>) {
   const [isOpen, setIsOpen] = useState(false)
+  const onToggle = React.useCallback(() => {
+    setIsOpen(!isOpen)
+  }, [isOpen])
   return (
     <Sheet isOpen={isOpen}>
-      <ToggleButton active={isOpen} onClick={() => setIsOpen(!isOpen)}>
+      <ToggleButton active={isOpen} onClick={onToggle}>
         {label}
         <ButtonIcon size={24} $rotated={isOpen} />
       </ToggleButton>
