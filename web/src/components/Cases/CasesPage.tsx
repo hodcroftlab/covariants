@@ -135,8 +135,8 @@ export function CasesPage() {
                   clusters={clusters}
                   regionsTitle={t('Countries')}
                   enabledFilters={enabledFilters}
-                  clustersCollapsedByDefault={!isMobile}
-                  countriesCollapsedByDefault={!isMobile}
+                  clustersCollapsedByDefault={isMobile}
+                  countriesCollapsedByDefault={isMobile}
                   Icon={CountryFlag}
                   onClusterFilterChange={handleClusterCheckedChange}
                   onClusterFilterSelectAll={handleClusterSelectAll}
