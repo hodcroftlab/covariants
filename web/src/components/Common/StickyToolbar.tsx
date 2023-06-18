@@ -29,9 +29,14 @@ export const ToolbarGroup = styled.div`
   }
 `
 
-const StickyContainer = styled(StickyRow)`
+const ToolbarContainer = styled(StickyRow)`
   max-width: fit-content;
   margin-left: auto;
+`
+
+const ToolbarForm = styled(Form)`
+  flex-wrap: nowrap;
+  overflow-x: auto;
 `
 
 export function StickyToolbar({ children }: StickyToolbarProps) {
@@ -46,14 +51,14 @@ export function StickyToolbar({ children }: StickyToolbarProps) {
   }
 
   return (
-    <StickyContainer noGutters className="mb-3 pt-2 mt-n2">
+    <ToolbarContainer noGutters className="mb-3 pt-2 mt-n2">
       <Col>
         <Card>
-          <CardBody className="px-3 py-2 d-flex">
-            <Form inline>{children}</Form>
+          <CardBody className="px-3 py-2">
+            <ToolbarForm inline>{children}</ToolbarForm>
           </CardBody>
         </Card>
       </Col>
-    </StickyContainer>
+    </ToolbarContainer>
   )
 }

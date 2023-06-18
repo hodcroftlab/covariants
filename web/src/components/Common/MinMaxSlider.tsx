@@ -27,6 +27,7 @@ const Container = styled.div`
     z-index: 1;
     -webkit-appearance: none;
     min-width: 200px;
+    touch-action: none;
   }
 
   & input:first-of-type {
