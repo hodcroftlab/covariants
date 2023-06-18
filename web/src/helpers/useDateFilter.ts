@@ -9,13 +9,10 @@ export type ChartData = {
   maxY: number
 }[]
 
-export function useDateFilter(dateFilter: DateFilter, data: ChartData, width: number | undefined) {
-  const { adjustedTicks, domainX, domainY } = useMemo(() => {
+export function useDateFilter(dateFilter: DateFilter, data: ChartData, width: number | undefined, domainY = [0, 1]) {
+  const adjustedTicks = useMemo(() => {
     const ticks = getTicks(dateFilter || timeDomain)
-    const adjustedTicks = adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin).slice(1) // slice ensures first tick is not outside domain
-    const domainX = [timeDomain[0], timeDomain[1]]
-    const domainY = [0, 1]
-    return { adjustedTicks, domainX, domainY }
+    return adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin).slice(1) // slice ensures first tick is not outside domain
   }, [width, dateFilter])
 
   const calculatedDomainY = useMemo(() => {
@@ -26,13 +23,14 @@ export function useDateFilter(dateFilter: DateFilter, data: ChartData, width: nu
           max = Math.max(max, d.maxY)
         }
       })
-      return [0, max === 0 ? 1 : Math.min(1, max + max * 0.1)]
+      const maxY = max === 0 ? domainY[1] : Math.min(domainY[1], max + max * 0.1)
+      return [0, maxY > 1 ? Math.round(maxY) : maxY]
     }
     return domainY
   }, [data, dateFilter, domainY])
 
   return {
-    domainX: dateFilter || domainX,
+    domainX: dateFilter || timeDomain,
     domainY: calculatedDomainY,
     ticks: adjustedTicks,
   }

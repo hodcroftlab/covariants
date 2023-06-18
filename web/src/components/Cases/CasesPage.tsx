@@ -22,6 +22,8 @@ import { PageHeading } from 'src/components/Common/PageHeading'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { CasesPlotCard } from './CasesPlotCard'
+import { StickyToolbar, ToolbarGroup } from '../Common/StickyToolbar'
+import { DateFilter } from '../Common/DateFilter'
 
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
@@ -118,6 +120,11 @@ export function CasesPage() {
       <Row noGutters>
         <Col>
           <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
+            <StickyToolbar>
+              <ToolbarGroup>
+                <DateFilter />
+              </ToolbarGroup>
+            </StickyToolbar>
             <WrapperFlex>
               <SidebarFlex>
                 <DistributionSidebar
