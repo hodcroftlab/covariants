@@ -121,7 +121,7 @@ export function CasesPage() {
 
       <Row noGutters>
         <Col>
-          <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
+          <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')} verticalRhythm={false}>
             <StickyToolbar>
               <ToolbarGroup>
                 <DateFilter />
@@ -147,7 +147,6 @@ export function CasesPage() {
                   onCountryFilterDeselectAll={handleCountryDeselectAll}
                 />
               </SidebarFlex>
-
               <MainFlex>
                 <Row noGutters>
                   <Col>
