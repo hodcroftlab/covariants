@@ -1,38 +1,38 @@
 {
   "S": {
-    "total": 139701,
+    "total": 140699,
     "counts": [
       {
         "mut": "S:R346T",
-        "count": 126419
+        "count": 127400
       },
       {
         "mut": "S:F490S",
-        "count": 65296
+        "count": 65724
       },
       {
         "mut": "S:K356T",
-        "count": 63334
+        "count": 63669
       },
       {
         "mut": "S:F486S",
-        "count": 55269
+        "count": 55814
       },
       {
         "mut": "S:L452R",
-        "count": 51305
+        "count": 51855
       },
       {
         "mut": "S:K444T",
-        "count": 43234
+        "count": 43778
       },
       {
         "mut": "S:N185D",
-        "count": 11976
+        "count": 12109
       },
       {
         "mut": "S:D574V",
-        "count": 6286
+        "count": 6300
       },
       {
         "mut": "S:D1199N",
@@ -40,52 +40,52 @@
       },
       {
         "mut": "S:F486P",
-        "count": 4437
+        "count": 4538
       }
     ]
   },
   "others": {
-    "total": 139701,
+    "total": 140699,
     "counts": [
       {
         "mut": "ORF1b:V1706I",
-        "count": 52338
+        "count": 52902
       },
       {
         "mut": "ORF1a:Q1198K",
-        "count": 43666
+        "count": 44206
       },
       {
         "mut": "ORF1b:Q2425R",
-        "count": 42591
+        "count": 43124
       },
       {
         "mut": "ORF3a:T229I",
-        "count": 25537
+        "count": 25579
       },
       {
         "mut": "ORF1a:M3627I",
-        "count": 25345
+        "count": 25386
       },
       {
         "mut": "ORF1a:H110Y",
-        "count": 18932
+        "count": 18966
       },
       {
         "mut": "E:D72G",
-        "count": 16958
+        "count": 17125
       },
       {
         "mut": "ORF1a:A427V",
-        "count": 9953
+        "count": 10078
       },
       {
         "mut": "ORF1b:K2140R",
-        "count": 9423
+        "count": 9551
       },
       {
         "mut": "ORF3a:A110V",
-        "count": 8517
+        "count": 8620
       }
     ]
   }
