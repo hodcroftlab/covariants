@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useMemo } from 'react'
 import { CategoricalChartFunc } from 'recharts/types/chart/generateCategoricalChart'
 
 import { theme } from 'src/theme'
@@ -42,10 +42,15 @@ export function useZoomArea(onChange: (zoomArea: ZoomAreaValues) => void) {
     }
   }, [zoomArea, onChange])
 
+  const isZooming = useMemo(() => {
+    return zoomArea && zoomArea[0] !== zoomArea[1]
+  }, [zoomArea])
+
   return {
     handleMouseDown,
     handleMouseMove,
     handleMouseUp,
+    isZooming,
     style: hovering ? hoverStyle : null,
     zoomArea,
   }

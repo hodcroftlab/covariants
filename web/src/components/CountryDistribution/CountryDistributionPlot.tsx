@@ -46,7 +46,7 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
 
   const [dateFilter, setDateFilter] = useRecoilState(dateFilterAtom)
   const { domainX, domainY, ticks } = useDateFilter(dateFilter, data, width)
-  const { handleMouseDown, handleMouseMove, handleMouseUp, style, zoomArea } = useZoomArea(setDateFilter)
+  const { handleMouseDown, handleMouseMove, handleMouseUp, isZooming, style, zoomArea } = useZoomArea(setDateFilter)
 
   return (
     <AreaChart
@@ -106,11 +106,11 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
 
       <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
 
-      {zoomArea && (
+      {zoomArea && isZooming && (
         <ReferenceArea x1={zoomArea[0]} x2={zoomArea[1]} y1={domainY[0]} y2={domainY[1]} {...zoomAreaStyleProps} />
       )}
 
-      {!zoomArea && (
+      {!isZooming && (
         <Tooltip
           content={CountryDistributionPlotTooltip}
           isAnimationActive={false}
