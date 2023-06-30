@@ -2,9 +2,7 @@ import { useMemo } from 'react'
 import { getTicks, timeDomain, weeks } from 'src/io/getParams'
 import { DateFilter } from 'src/state/DateFilter'
 import { theme } from 'src/theme'
-import { Interval } from 'luxon'
 import { adjustTicks } from './adjustTicks'
-import { formatDateHumanely, formatWeekHumanely } from './format'
 
 export type ChartData = {
   week: number
