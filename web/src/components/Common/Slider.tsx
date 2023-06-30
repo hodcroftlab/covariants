@@ -17,7 +17,6 @@ const Input = styled.input`
 
   &:focus-visible {
     outline: none;
-    border: 1px solid blue;
   }
 
   /* Special styling for WebKit/Blink */
@@ -34,7 +33,7 @@ const Input = styled.input`
   }
 
   &:focus-visible::-webkit-slider-thumb {
-    /* ring */
+    outline: 5px auto -webkit-focus-ring-color;
   }
 
   /* All the same stuff for Firefox */
@@ -49,8 +48,9 @@ const Input = styled.input`
     margin-top: -4px;
   }
 
+  /* https://remysharp.com/til/css/focus-ring-default-styles */
   &:focus-visible::-moz-range-thumb {
-    /* ring */
+    outline: 5px auto Highlight;
   }
 
   &::-webkit-slider-runnable-track {

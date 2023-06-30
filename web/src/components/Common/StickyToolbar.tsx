@@ -36,6 +36,9 @@ const ToolbarContainer = styled(StickyRow)`
 
 const ToolbarForm = styled(Form)`
   flex-wrap: nowrap;
+`
+
+const ToolbarCardBody = styled(CardBody)`
   overflow-x: auto;
 `
 
@@ -54,9 +57,9 @@ export function StickyToolbar({ children }: StickyToolbarProps) {
     <ToolbarContainer noGutters className="mb-3 pt-2 mt-n2">
       <Col>
         <Card>
-          <CardBody className="px-3 py-2">
+          <ToolbarCardBody className="px-3 py-2">
             <ToolbarForm inline>{children}</ToolbarForm>
-          </CardBody>
+          </ToolbarCardBody>
         </Card>
       </Col>
     </ToolbarContainer>
