@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { Label, Button } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 
-import { getWeeks } from 'src/io/getParams'
+import { weeks } from 'src/io/getParams'
 import { dateFilterAtom } from 'src/state/DateFilter'
 import MinMaxSlider from './MinMaxSlider'
 
@@ -11,8 +11,6 @@ import MinMaxSlider from './MinMaxSlider'
 // }
 
 export function DateFilter() {
-  const weeks = React.useMemo(() => getWeeks(), [])
-
   const [minIndex, setMinIndex] = useState(0)
   const [maxIndex, setMaxIndex] = useState(weeks.length - 1)
 
@@ -22,7 +20,7 @@ export function DateFilter() {
     if (minIndex > 0 || maxIndex < weeks.length - 1) {
       setDateFilter(() => [weeks[minIndex], weeks[maxIndex]])
     }
-  }, [minIndex, maxIndex, setDateFilter, weeks])
+  }, [minIndex, maxIndex, setDateFilter])
 
   useEffect(() => {
     if (Array.isArray(dateFilter)) {
@@ -39,7 +37,7 @@ export function DateFilter() {
       setMinIndex(0)
       setMaxIndex(weeks.length - 1)
     }
-  }, [dateFilter, weeks])
+  }, [dateFilter])
 
   const reset = useCallback(() => {
     setDateFilter(null)
