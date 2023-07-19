@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 286820,
+    "total": 293796,
     "counts": [
       {
         "mut": "S:T478R",
-        "count": 27993
+        "count": 29911
       },
       {
         "mut": "S:E180V",
-        "count": 24079
+        "count": 25754
       },
       {
         "mut": "S:H146K",
-        "count": 14003
+        "count": 14335
       },
       {
         "mut": "S:Q613H",
-        "count": 9035
+        "count": 9561
       },
       {
         "mut": "S:F456L",
-        "count": 8285
+        "count": 9498
       },
       {
         "mut": "S:T547I",
-        "count": 7604
+        "count": 8174
       },
       {
         "mut": "S:L5F",
-        "count": 3370
+        "count": 3454
       },
       {
         "mut": "S:T573I",
-        "count": 3121
-      },
-      {
-        "mut": "S:T883I",
-        "count": 2768
+        "count": 3194
       },
       {
         "mut": "S:Y200C",
-        "count": 2670
+        "count": 3007
+      },
+      {
+        "mut": "S:T883I",
+        "count": 2827
       }
     ]
   },
   "others": {
-    "total": 286820,
+    "total": 293796,
     "counts": [
       {
         "mut": "ORF9b:I5T",
-        "count": 78179
+        "count": 82802
       },
       {
         "mut": "ORF1a:T4175I",
-        "count": 50803
+        "count": 53359
       },
       {
         "mut": "ORF1a:G1819S",
-        "count": 49423
+        "count": 51874
       },
       {
         "mut": "ORF1a:L3829F",
-        "count": 25986
+        "count": 27704
       },
       {
         "mut": "ORF1b:D1746Y",
-        "count": 24093
+        "count": 25757
       },
       {
         "mut": "ORF9b:N55S",
-        "count": 23621
+        "count": 25145
       },
       {
         "mut": "N:L219F",
-        "count": 8190
+        "count": 8546
       },
       {
         "mut": "ORF1a:M85-",
-        "count": 7441
+        "count": 7540
       },
       {
         "mut": "ORF1a:V84-",
-        "count": 7226
+        "count": 7330
       },
       {
         "mut": "ORF1b:V1092F",
-        "count": 5253
+        "count": 5516
       }
     ]
   }
