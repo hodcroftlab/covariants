@@ -418,7 +418,7 @@ clusters = {
         "snps": [25000, 25584, 8393],  # 25000T,25584T,8393A
         "snps_with_base": ["25000T", "25584T", "8393A"],
         "cluster_data": [],
-        "nextstrain_build": True,
+        "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
         "important": False,
