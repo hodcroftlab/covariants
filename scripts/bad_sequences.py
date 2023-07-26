@@ -4281,6 +4281,9 @@ bad_seqs = {
     "Italy/CAM-ISMBAIA-30/2022" : "2022-01-12",  #22E EPI_ISL_17985191
     "Italy/CAM-ISMBAIA-37/2022" : "2022-02-02",  #22E EPI_ISL_17985199
     "USA/CA-CDPH-6000015507/2022" : "2022-03-09",  #23A EPI_ISL_17965841
+    #26 jul
+    "Egypt/NRC-2315/2021" : "2021-01-31",  #21K EPI_ISL_17989144
+    "Pakistan/NIH-B143-S22/2021" : "2021-05-18",  #21L EPI_ISL_17973457
 
     #bad french Omicron with 15 Nov dates 2021-11-15 france
     "France/IDF-LBZCentre-C2111150081/2021" : "2021-11-15", # omicron EPI_ISL_13304960
