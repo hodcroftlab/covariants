@@ -1,42 +1,42 @@
 {
   "S": {
-    "total": 4134388,
+    "total": 4135185,
     "counts": [
       {
         "mut": "S:T95I",
-        "count": 1847794
+        "count": 1848401
       },
       {
         "mut": "S:A222V",
-        "count": 427310
+        "count": 427321
       },
       {
         "mut": "S:Y145H",
-        "count": 141728
+        "count": 141727
       },
       {
         "mut": "S:V1264L",
-        "count": 103693
+        "count": 103695
       },
       {
         "mut": "S:S112L",
-        "count": 85175
+        "count": 85189
       },
       {
         "mut": "S:L5F",
-        "count": 59906
+        "count": 59913
       },
       {
         "mut": "S:V1104L",
-        "count": 57392
+        "count": 57396
       },
       {
         "mut": "S:Q613H",
-        "count": 54161
+        "count": 54164
       },
       {
         "mut": "S:P251L",
-        "count": 40927
+        "count": 40928
       },
       {
         "mut": "S:I850L",
@@ -45,47 +45,47 @@
     ]
   },
   "others": {
-    "total": 4134388,
+    "total": 4135185,
     "counts": [
       {
         "mut": "ORF1a:V2930L",
-        "count": 3742386
+        "count": 3743133
       },
       {
         "mut": "ORF1b:A1918V",
-        "count": 3741009
+        "count": 3741756
       },
       {
         "mut": "ORF1a:P2046L",
-        "count": 3740003
+        "count": 3740750
       },
       {
         "mut": "ORF1a:T3646A",
-        "count": 3736475
+        "count": 3737222
       },
       {
         "mut": "ORF1a:T3255I",
-        "count": 3735000
+        "count": 3735763
       },
       {
         "mut": "ORF1a:P2287S",
-        "count": 3731155
+        "count": 3731902
       },
       {
         "mut": "N:G215C",
-        "count": 3728026
+        "count": 3728774
       },
       {
         "mut": "ORF1a:A1306S",
-        "count": 3719067
+        "count": 3719814
       },
       {
         "mut": "ORF7b:T40I",
-        "count": 3714454
+        "count": 3715202
       },
       {
         "mut": "ORF1a:A2529V",
-        "count": 1001423
+        "count": 1001435
       }
     ]
   }

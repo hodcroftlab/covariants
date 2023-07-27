@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 30406,
+    "total": 32417,
     "counts": [
       {
         "mut": "S:T547I",
-        "count": 8852
+        "count": 9506
       },
       {
         "mut": "S:H146K",
-        "count": 809
+        "count": 878
       },
       {
         "mut": "S:T732I",
-        "count": 494
+        "count": 537
       },
       {
         "mut": "S:F456L",
-        "count": 352
+        "count": 440
       },
       {
         "mut": "S:L5F",
-        "count": 314
-      },
-      {
-        "mut": "S:T678I",
-        "count": 275
+        "count": 331
       },
       {
         "mut": "S:P521T",
-        "count": 262
+        "count": 297
+      },
+      {
+        "mut": "S:T678I",
+        "count": 280
       },
       {
         "mut": "S:L24S",
-        "count": 252
+        "count": 262
       },
       {
         "mut": "S:K304N",
-        "count": 188
+        "count": 232
       },
       {
         "mut": "S:P521S",
-        "count": 171
+        "count": 191
       }
     ]
   },
   "others": {
-    "total": 30406,
+    "total": 32417,
     "counts": [
       {
         "mut": "ORF3a:V13L",
-        "count": 2405
+        "count": 2581
       },
       {
         "mut": "ORF1a:P926H",
-        "count": 2387
+        "count": 2562
       },
       {
         "mut": "ORF1a:G519S",
-        "count": 721
+        "count": 795
       },
       {
         "mut": "ORF1a:F3677L",
-        "count": 700
+        "count": 699
       },
       {
         "mut": "ORF1a:L3606F",
-        "count": 576
+        "count": 623
       },
       {
         "mut": "ORF1a:G1101D",
-        "count": 525
+        "count": 581
       },
       {
         "mut": "ORF9b:E27V",
-        "count": 524
+        "count": 578
       },
       {
         "mut": "ORF1a:V4137I",
-        "count": 402
+        "count": 416
       },
       {
         "mut": "ORF7a:T39I",
-        "count": 361
+        "count": 403
       },
       {
         "mut": "ORF1a:G3676S",
-        "count": 352
+        "count": 351
       }
     ]
   }
