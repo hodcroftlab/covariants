@@ -2617,7 +2617,11 @@
         "22E (Omicron)",
         "22F (Omicron)",
         "23A (Omicron)",
-        "23B (Omicron)"
+        "23B (Omicron)",
+        "23C (Omicron)",
+        "23D (Omicron)",
+        "23E (Omicron)",
+        "23F (Omicron)"
       ],
       "snps": [
         22679,
@@ -5423,6 +5427,9 @@
       "old_build_names": [
         "22D"
       ],
+      "other_nextstrain_names": [
+        "23C (Omicron)"
+      ],
       "pango_lineages": [
         {
           "name": "BA.2.75",
@@ -6938,6 +6945,11 @@
       "nextstrain_name": "22F",
       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/22F.Omicron",
       "old_build_names": [],
+      "other_nextstrain_names": [
+        "23D (Omicron)",
+        "23E (Omicron)",
+        "23F (Omicron)"
+      ],
       "pango_lineages": [
         {
           "name": "XBB",
