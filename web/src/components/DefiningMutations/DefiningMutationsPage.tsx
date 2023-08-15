@@ -312,10 +312,6 @@ export function DefiningMutationsTable({ currentCluster, comparisonTargetName }:
     return [...codingRows, ...silentRows]
   }, [comparisonTargetName, currentCluster.mutations])
 
-  if (!rows) {
-    return null
-  }
-
   return (
     <TableSlimWithBorders>
       <thead>
