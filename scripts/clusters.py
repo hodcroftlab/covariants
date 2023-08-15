@@ -667,7 +667,7 @@ clusters = {
         "nextstrain_build": True,
         "graphing": False,
         "important": False,
-        "other_nextstrain_names": ["21K (Omicron)", "21L (Omicron)", "21M (Omicron)", "22A (Omicron)", "22B (Omicron)", "22C (Omicron)", "22D (Omicron)", "22E (Omicron)", "22F (Omicron)", "23A (Omicron)", "23B (Omicron)"],
+        "other_nextstrain_names": ["21K (Omicron)", "21L (Omicron)", "21M (Omicron)", "22A (Omicron)", "22B (Omicron)", "22C (Omicron)", "22D (Omicron)", "22E (Omicron)", "22F (Omicron)", "23A (Omicron)", "23B (Omicron)", "23C (Omicron)", "23D (Omicron)", "23E (Omicron)", "23F (Omicron)"],
         "country_info": [], 'col': "#b3d9ff",
         "display_name": "Omicron",
         "has_no_page": True,
@@ -1124,6 +1124,7 @@ clusters = {
        "build_name": "22D.Omicron",
        "who_name": ["Omicron"],
        "old_build_names": ["22D"],
+       "other_nextstrain_names": ["23C (Omicron)"],
        "nextstrain_name": "22D",
        "pango_lineages": [
            {"name": "BA.2.75", "url": "https://cov-lineages.org/lineage.html?lineage=BA.2.75"}
@@ -1434,6 +1435,7 @@ clusters = {
        "alt_display_name": ["XBB"],
        "build_name": "22F.Omicron",
        "who_name": ["Omicron"],
+       "other_nextstrain_names": ["23D (Omicron)", "23E (Omicron)", "23F (Omicron)"],
        "old_build_names": [],
        "nextstrain_name": "22F",
        "pango_lineages": [
@@ -1895,6 +1897,130 @@ clusters = {
                 {"left": "G", "pos": 29759, "right": "-"},
             ],
        }
+    },
+
+    "23C": {  #CH.1.1
+       "snps": [3857, 20741, 22893, 22917],  #AGCG 
+       "snps_with_base": ["3857A", "20741G", "22893C", "22917G"], #MUST ADD VALUE WHEN TURN INTO PAGE!  
+       "cluster_data": [],
+       "nextstrain_build": False,
+       "parent": "22D", 
+       "use_pango": False,
+       "has_no_page": True,
+       "type": "variant",
+       "graphing": False,
+       "important": False,
+       "country_info": [],
+       "col": "#a91212", 
+       "display_name": "23C (Omicron)",
+       "alt_display_name": ["CH.1.1"],
+       "build_name": "23C.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "23C",
+       "pango_lineages": [
+           {"name": "CH.1.1", "url": "https://cov-lineages.org/lineage.html?lineage=CH.1.1"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/23C.Omicron",
+        "mutations": {
+            "nonsynonymous": [
+            ],
+            "synonymous": [
+            ],
+        },
+    },
+
+    "23D": {  #XBB.1.9
+       "snps": [5720,11956,12789,28297],  #ATTC 
+       "snps_with_base": ["5720A","11956T","12789T","28297C"], #MUST ADD VALUE WHEN TURN INTO PAGE!  
+       "cluster_data": [],
+       "nextstrain_build": False,
+       "parent": "22F", 
+       "use_pango": False,
+       "has_no_page": True,
+       "type": "variant",
+       "graphing": False,
+       "important": False,
+       "country_info": [],
+       "col": "#bb6a33", 
+       "display_name": "23D (Omicron)",
+       "alt_display_name": ["XBB.1.9"],
+       "build_name": "23D.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "23D",
+       "pango_lineages": [
+           {"name": "XBB.1.9", "url": "https://cov-lineages.org/lineage.html?lineage=XBB.1.9"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/23D.Omicron",
+        "mutations": {
+            "nonsynonymous": [
+            ],
+            "synonymous": [
+            ],
+        },
+    },
+
+    "23E": {  #XBB.2.3
+       "snps": [4234,6536,23123,27431],  #TATT
+       "snps_with_base": ["4234T","6536A","23123T","27431T"], #MUST ADD VALUE WHEN TURN INTO PAGE!  
+       "cluster_data": [],
+       "nextstrain_build": False,
+       "parent": "22F", 
+       "use_pango": False,
+       "has_no_page": True,
+       "type": "variant",
+       "graphing": False,
+       "important": False,
+       "country_info": [],
+       "col": "#f5e424", 
+       "display_name": "23E (Omicron)",
+       "alt_display_name": ["XBB.2.3"],
+       "build_name": "23E.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "23E",
+       "pango_lineages": [
+           {"name": "XBB.2.3", "url": "https://cov-lineages.org/lineage.html?lineage=XBB.2.3"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/23E.Omicron",
+        "mutations": {
+            "nonsynonymous": [
+            ],
+            "synonymous": [
+            ],
+        },
+    },
+
+    "23F": {  #EG.5.1
+       "snps": [9693,18492,21718,22930],  #TGTA
+       "snps_with_base": ["9693T","18492G","21718T","22930A"], #MUST ADD VALUE WHEN TURN INTO PAGE!  
+       "cluster_data": [],
+       "nextstrain_build": False,
+       "parent": "22F", 
+       "use_pango": False,
+       "has_no_page": True,
+       "type": "variant",
+       "graphing": False,
+       "important": False,
+       "country_info": [],
+       "col": "#b4e80b", 
+       "display_name": "23F (Omicron)",
+       "alt_display_name": ["EG.5.1"],
+       "build_name": "23F.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "23F",
+       "pango_lineages": [
+           {"name": "EG.5.1", "url": "https://cov-lineages.org/lineage.html?lineage=EG.5.1"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/23F.Omicron",
+        "mutations": {
+            "nonsynonymous": [
+            ],
+            "synonymous": [
+            ],
+        },
     },
 
     # variant  -- part of 'Indian' in media - B.1.617.1
