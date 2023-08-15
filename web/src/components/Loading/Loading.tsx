@@ -45,3 +45,5 @@ function Loading() {
 }
 
 export default Loading
+
+export const LOADING = <Loading />
