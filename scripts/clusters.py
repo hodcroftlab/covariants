@@ -1903,7 +1903,7 @@ clusters = {
        "snps": [3857, 20741, 22893, 22917],  #AGCG 
        "snps_with_base": ["3857A", "20741G", "22893C", "22917G"], #MUST ADD VALUE WHEN TURN INTO PAGE!  
        "cluster_data": [],
-       "nextstrain_build": False,
+       "nextstrain_build": True,
        "parent": "22D", 
        "use_pango": False,
        "has_no_page": True,
@@ -1934,7 +1934,7 @@ clusters = {
        "snps": [5720,11956,12789,28297],  #ATTC 
        "snps_with_base": ["5720A","11956T","12789T","28297C"], #MUST ADD VALUE WHEN TURN INTO PAGE!  
        "cluster_data": [],
-       "nextstrain_build": False,
+       "nextstrain_build": True,
        "parent": "22F", 
        "use_pango": False,
        "has_no_page": True,
@@ -1965,7 +1965,7 @@ clusters = {
        "snps": [4234,6536,23123,27431],  #TATT
        "snps_with_base": ["4234T","6536A","23123T","27431T"], #MUST ADD VALUE WHEN TURN INTO PAGE!  
        "cluster_data": [],
-       "nextstrain_build": False,
+       "nextstrain_build": True,
        "parent": "22F", 
        "use_pango": False,
        "has_no_page": True,
@@ -1996,7 +1996,7 @@ clusters = {
        "snps": [9693,18492,21718,22930],  #TGTA
        "snps_with_base": ["9693T","18492G","21718T","22930A"], #MUST ADD VALUE WHEN TURN INTO PAGE!  
        "cluster_data": [],
-       "nextstrain_build": False,
+       "nextstrain_build": True,
        "parent": "22F", 
        "use_pango": False,
        "has_no_page": True,
