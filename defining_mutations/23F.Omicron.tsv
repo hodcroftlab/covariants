@@ -2,13 +2,16 @@ nuc_change	aa_change	aa_change_2	not_in_parent	reversion	notes
 C241T					
 A405G	ORF1a:K47R				
 T670G	ORF1a:S135R				
+C2334T	ORF1a:A690V		y		
 C2790T	ORF1a:T842I				
 C3037T					
 G4184A	ORF1a:G1307S				
 C4321T					
+G5720A	ORF1a:G1819S				
 C9344T	ORF1a:L3027F				
 A9424G					
 C9534T	ORF1a:T3090I				
+C9693T	ORF1a:A3143V		y		
 C9866T	ORF1a:L3201F				
 C10029T	ORF1a:T3255I				
 C10198T					
@@ -23,6 +26,7 @@ T11293-	ORF1a:G3676-				A 3-AA deletion in the same location but shifted 1 AA le
 T11294-	ORF1a:F3677-				A 3-AA deletion in the same location but shifted 1 AA left (starting 3674) is present in 21K. These may be 2 separate events, or a common deletion & then mutation to shift how the deletion aligns
 T11295-	ORF1a:F3677-				A 3-AA deletion in the same location but shifted 1 AA left (starting 3674) is present in 21K. These may be 2 separate events, or a common deletion & then mutation to shift how the deletion aligns
 T11296-	ORF1a:F3677-				A 3-AA deletion in the same location but shifted 1 AA left (starting 3674) is present in 21K. These may be 2 separate events, or a common deletion & then mutation to shift how the deletion aligns
+C12789T	ORF1a:T4175I				
 C12880T					
 C14408T	ORF1b:P314L				
 G15451A	ORF1b:G662S				
@@ -30,10 +34,12 @@ C15714T
 C15738T					
 T15939C					
 T16342C	ORF1b:S959P				
+A16878T			y		
 C17410T	ORF1b:R1315C				
 T17859C					
 A18163G	ORF1b:I1566V				
-A19326G			y		
+A18492G			y		
+A19326G					
 C19955T	ORF1b:T2163I				
 A20055G					
 C21618T	S:T19I				
@@ -46,6 +52,7 @@ C21638-	S:P26-				Deletion removes last 2 bases from AA 24, entirety of 25/26, f
 C21639-	S:P26-				Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27
 T21640-	S:P26-				Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27
 G21641-	S:A27S				This change is a consequence of the prior deletion
+G21718T	S:Q52H		y		
 T21810C	S:V83A				
 G21987A	S:G142D				
 T21992-	S:Y144-				
@@ -54,6 +61,8 @@ T21994-	S:Y144-
 C22000A	S:H146Q				
 C22109G	S:Q183E				
 T22200A	S:V213E				
+G22317T	S:G252V				
+C22480T			y		
 G22577C	S:G339H				
 G22578A	S:G339H				
 G22599C	S:R346T				
@@ -67,13 +76,15 @@ A22786C	S:R408S
 G22813T	S:K417N				
 T22882G	S:N440K				
 G22895C	S:V445P				
-T22896C	S:V445P				As BJ.1 has V445P & BM.1.1.1 has N460K (both unique) and 22F/XBB has both, the breakpoint is likely between these mutations
+T22896C	S:V445P				
 G22898A	S:G446S				
+T22930A	S:F456L		y		
 T22942G	S:N460K				
 G22992A	S:S477N				
 C22995A	S:T478K				
 A23013C	S:E484A				
-T23019C	S:F486S				
+T23018C	S:F486P		y		
+T23019C	S:F486S				This is ancestral, above mutation makes it S:486P in 23F
 T23031C	S:F490S				
 G23040A	S:R493Q			y	reversion inherited from the from BM.1.1.1 parent (relative to 21L)
 A23055G	S:Q498R				
@@ -100,10 +111,12 @@ A27259C
 G27382C	ORF6:D61L				
 A27383T	ORF6:D61L				
 T27384C	ORF6:D61L				
+A27507C			y		
 C27807T					
+G27915T	ORF8:G8*				
 A28271T					
-C28311T	N:P13L	ORF9b:P10S			This mutation causes ORG9b:P10S, but the adjacent mutation changes to P10F
-C28312T	N:P13L	ORF9b:P10F			This mutation on top of the one above, change ORf9b:P10S to P10F
+T28297C	ORF9b:I5T				
+C28311T	N:P13L	ORF9b:P10S			
 G28362-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
 A28363-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
 G28364-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
@@ -117,6 +130,7 @@ G28881A	N:R203K
 G28882A	N:R203K				
 G28883C	N:G204R				
 A29510C	N:S413R				
+C29625T			y		
 G29734-					
 A29735-					
 G29736-					

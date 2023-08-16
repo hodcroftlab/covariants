@@ -6,6 +6,7 @@ C2790T	ORF1a:T842I
 C3037T					
 G4184A	ORF1a:G1307S				
 C4321T					
+G5720A	ORF1a:G1819S		y		
 C9344T	ORF1a:L3027F				
 A9424G					
 C9534T	ORF1a:T3090I				
@@ -23,6 +24,7 @@ T11293-	ORF1a:G3676-				A 3-AA deletion in the same location but shifted 1 AA le
 T11294-	ORF1a:F3677-				A 3-AA deletion in the same location but shifted 1 AA left (starting 3674) is present in 21K. These may be 2 separate events, or a common deletion & then mutation to shift how the deletion aligns
 T11295-	ORF1a:F3677-				A 3-AA deletion in the same location but shifted 1 AA left (starting 3674) is present in 21K. These may be 2 separate events, or a common deletion & then mutation to shift how the deletion aligns
 T11296-	ORF1a:F3677-				A 3-AA deletion in the same location but shifted 1 AA left (starting 3674) is present in 21K. These may be 2 separate events, or a common deletion & then mutation to shift how the deletion aligns
+C12789T	ORF1a:T4175I		y		
 C12880T					
 C14408T	ORF1b:P314L				
 G15451A	ORF1b:G662S				
@@ -33,7 +35,7 @@ T16342C	ORF1b:S959P
 C17410T	ORF1b:R1315C				
 T17859C					
 A18163G	ORF1b:I1566V				
-A19326G			y		
+A19326G					
 C19955T	ORF1b:T2163I				
 A20055G					
 C21618T	S:T19I				
@@ -54,6 +56,7 @@ T21994-	S:Y144-
 C22000A	S:H146Q				
 C22109G	S:Q183E				
 T22200A	S:V213E				
+G22317T	S:G252V		y		
 G22577C	S:G339H				
 G22578A	S:G339H				
 G22599C	S:R346T				
@@ -67,7 +70,7 @@ A22786C	S:R408S
 G22813T	S:K417N				
 T22882G	S:N440K				
 G22895C	S:V445P				
-T22896C	S:V445P				As BJ.1 has V445P & BM.1.1.1 has N460K (both unique) and 22F/XBB has both, the breakpoint is likely between these mutations
+T22896C	S:V445P				
 G22898A	S:G446S				
 T22942G	S:N460K				
 G22992A	S:S477N				
@@ -101,9 +104,10 @@ G27382C	ORF6:D61L
 A27383T	ORF6:D61L				
 T27384C	ORF6:D61L				
 C27807T					
+G27915T	ORF8:G8*		y		
 A28271T					
-C28311T	N:P13L	ORF9b:P10S			This mutation causes ORG9b:P10S, but the adjacent mutation changes to P10F
-C28312T	N:P13L	ORF9b:P10F			This mutation on top of the one above, change ORf9b:P10S to P10F
+T28297C	ORF9b:I5T		y		
+C28311T	N:P13L	ORF9b:P10S			
 G28362-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
 A28363-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
 G28364-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
