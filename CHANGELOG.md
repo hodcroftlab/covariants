@@ -1,5 +1,8 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2023-08-15
+- Add 23C (CH.1.1), 23D (XBB.1.9), 23E (XBB.2.3), and 23F (EG.5.1) to graphing; pages & mutations to come soon
+
 ## 2023-04-26
 - Add 23B (XBB.1.16) page and on plots
 

@@ -188,6 +188,38 @@ name_table = [
         ],
     },
     {
+        "clade": "23C (Omicron)",
+        "who": "Omicron",
+        "lineages": [
+            {"name": "CH.1.1", "url": "https://cov-lineages.org/lineages/lineage_CH.1.1.html"}
+        ],
+        "others": [],
+    },
+    {
+        "clade": "23D (Omicron)",
+        "who": "Omicron",
+        "lineages": [
+            {"name": "XBB.1.9", "url": "https://cov-lineages.org/lineages/lineage_XBB.1.9.html"}
+        ],
+        "others": [],
+    },
+    {
+        "clade": "23E (Omicron)",
+        "who": "Omicron",
+        "lineages": [
+            {"name": "XBB.2.3", "url": "https://cov-lineages.org/lineages/lineage_XBB.2.3.html"}
+        ],
+        "others": [],
+    },
+    {
+        "clade": "23F (Omicron)",
+        "who": "Omicron",
+        "lineages": [
+            {"name": "EG.5.1", "url": "https://cov-lineages.org/lineages/lineage_EG.5.1.html"}
+        ],
+        "others": [],
+    },
+    {
         "clade": "20E (EU1)",
         "who": None,
         "lineages": [
