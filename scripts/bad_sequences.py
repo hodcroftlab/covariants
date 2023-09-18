@@ -4388,6 +4388,10 @@ bad_seqs = {
     "Pakistan/NIH-B155-S18/2021" : "2021-10-07",  #21K EPI_ISL_18123269
     "Pakistan/NIH-B155-S17/2021" : "2021-10-07",  #21L EPI_ISL_18123268
     "USA/NY-URMC-L5S1I436-1/2021" : "2021-11-06",  #22A EPI_ISL_18114993
+    #18 Sept 2023
+    "England/CLIMB-CM7YE46D/2023" : "2023-03-02",  #23F EPI_ISL_18244560
+    "Netherlands/GE-RIVM-131121/2023" : "2023-01-31",  #23F EPI_ISL_18238108
+    "USA/NY-URMC-N6S1J316-1/2023" : "2023-01-03",  #23F EPI_ISL_18247620
 
     #bad haiti recent uploads that seem to have some dating issues
     "Haiti/IMIS-0918368/2022" : "2022-07-01",  #? EPI_ISL_18060054
