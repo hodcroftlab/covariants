@@ -1,18 +1,18 @@
 {
   "S": {
-    "total": 160064,
+    "total": 160106,
     "counts": [
       {
         "mut": "S:N658S",
-        "count": 77096
+        "count": 77098
       },
       {
         "mut": "S:V3G",
-        "count": 57888
+        "count": 57929
       },
       {
         "mut": "S:R346T",
-        "count": 54571
+        "count": 54573
       },
       {
         "mut": "S:I670V",
@@ -45,7 +45,7 @@
     ]
   },
   "others": {
-    "total": 160064,
+    "total": 160106,
     "counts": [
       {
         "mut": "M:D3N",
