@@ -4398,6 +4398,8 @@ bad_seqs = {
     "Brazil/SP-LVCM-101/2022" : "2022-06-28",  #23A EPI_ISL_18277186
     "Brazil/SP-LVCM-101/2022" : "2022-06-28",  #22F EPI_ISL_18277186
     "USA/MI-MDHHS-SC44657/2023" : "2023-01-31",  #23F EPI_ISL_18287671
+    #3 oct 2023
+    "Kazakhstan/Arctic-94/2022" : "2022-04-11",  #22E EPI_ISL_18321265
 
     #bad haiti recent uploads that seem to have some dating issues
     "Haiti/IMIS-0918368/2022" : "2022-07-01",  #? EPI_ISL_18060054
