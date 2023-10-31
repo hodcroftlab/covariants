@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 2667839,
+    "total": 2753031,
     "counts": [
       {
         "mut": "S:R346T",
-        "count": 787702
+        "count": 870151
       },
       {
         "mut": "S:N460K",
-        "count": 738991
+        "count": 822377
       },
       {
         "mut": "S:G446S",
-        "count": 735300
+        "count": 819124
       },
       {
         "mut": "S:G339H",
-        "count": 731021
+        "count": 814627
       },
       {
         "mut": "S:F490S",
-        "count": 655306
+        "count": 736033
       },
       {
         "mut": "S:V213E",
-        "count": 577996
+        "count": 658715
       },
       {
         "mut": "S:V445P",
-        "count": 575000
+        "count": 655903
       },
       {
         "mut": "S:Q183E",
-        "count": 574572
+        "count": 654886
       },
       {
         "mut": "S:V83A",
-        "count": 574085
+        "count": 654391
       },
       {
         "mut": "S:L368I",
-        "count": 567488
+        "count": 646788
       }
     ]
   },
   "others": {
-    "total": 2667839,
+    "total": 2753031,
     "counts": [
       {
         "mut": "ORF1a:L3201F",
-        "count": 2480578
+        "count": 2564569
       },
       {
         "mut": "ORF1b:G662S",
-        "count": 739010
+        "count": 822625
       },
       {
         "mut": "E:T11A",
-        "count": 733457
+        "count": 816255
       },
       {
         "mut": "ORF1b:S959P",
-        "count": 612853
+        "count": 687484
       },
       {
         "mut": "ORF1a:K47R",
-        "count": 578090
+        "count": 659134
       },
       {
         "mut": "ORF8:G8*",
-        "count": 537420
+        "count": 612886
       },
       {
         "mut": "ORF9b:I5T",
-        "count": 218409
+        "count": 282436
+      },
+      {
+        "mut": "ORF1a:T4175I",
+        "count": 203376
       },
       {
         "mut": "ORF3a:H78Y",
-        "count": 187270
+        "count": 187767
       },
       {
         "mut": "ORF1a:K141-",
-        "count": 177632
-      },
-      {
-        "mut": "ORF1a:S142-",
-        "count": 177603
+        "count": 178537
       }
     ]
   }
