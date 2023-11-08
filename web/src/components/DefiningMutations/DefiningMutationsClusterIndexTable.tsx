@@ -68,8 +68,8 @@ export function DefiningMutationsClusterIndexTableRow({ cluster }: DefiningMutat
   const { lineage, nextstrainClade } = cluster
 
   const variant = useMemo(() => {
-    const cluster = clusters.find((cluster) => cluster.nextstrain_name === nextstrainClade)
-    const { mutationObj: variant } = variantToObjectAndString(cluster?.display_name ?? nextstrainClade)
+    const cl = clusters.find((cl) => cl.nextstrain_name === nextstrainClade)
+    const { mutationObj: variant } = variantToObjectAndString(cl?.display_name ?? nextstrainClade)
     if (!variant) {
       return { parent: nextstrainClade }
     }
