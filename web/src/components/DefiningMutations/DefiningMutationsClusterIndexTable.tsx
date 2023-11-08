@@ -2,6 +2,7 @@ import { isEmpty } from 'lodash'
 import { transparentize } from 'polished'
 import React, { useMemo, useState } from 'react'
 import { Col, Row } from 'reactstrap'
+import { getClusters } from 'src/io/getClusters'
 import styled from 'styled-components'
 import { AMINOACID_COLORS } from 'src/colors'
 import { search } from 'src/helpers/search'
@@ -15,6 +16,8 @@ import {
 import { DefMutClusterIndexDatum } from 'src/io/getDefiningMutationsClusters'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { SearchBox } from 'src/components/Common/SearchBox'
+
+const clusters = getClusters()
 
 export const Table = styled(TableBase)`
   margin-left: auto;
@@ -65,7 +68,8 @@ export function DefiningMutationsClusterIndexTableRow({ cluster }: DefiningMutat
   const { lineage, nextstrainClade } = cluster
 
   const variant = useMemo(() => {
-    const { mutationObj: variant } = variantToObjectAndString(nextstrainClade)
+    const cluster = clusters.find((cluster) => cluster.nextstrain_name === nextstrainClade)
+    const { mutationObj: variant } = variantToObjectAndString(cluster?.display_name ?? nextstrainClade)
     if (!variant) {
       return { parent: nextstrainClade }
     }

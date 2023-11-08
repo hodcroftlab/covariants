@@ -22,6 +22,7 @@ export type ClusterDatum = {
   col: string
   display_name: string
   alt_display_name?: string[]
+  nextstrain_name?: string
   snps: number[]
   mutations?: {
     nonsynonymous?: Mutation[]
