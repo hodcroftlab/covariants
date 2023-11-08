@@ -126,14 +126,6 @@ export function DefiningMutationsInfo({ currentCluster }: DefiningMutationsInfoP
           <td>{currentCluster.parent ? <LineageBadge name={currentCluster.parent} /> : 'none'}</td>
         </tr>
         <tr>
-          <td className="font-weight-bold">{t('Child lineages')}</td>
-          <td>
-            {joinWithCommas(
-              (currentCluster.children ?? ['none']).map((child) => <LineageBadge key={child} name={child} />),
-            )}
-          </td>
-        </tr>
-        <tr>
           <td className="font-weight-bold">{t('Designation date')}</td>
           <td>{currentCluster.designationDate}</td>
         </tr>
