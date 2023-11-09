@@ -1,10 +1,11 @@
 import unique from 'fork-ts-checker-webpack-plugin/lib/utils/array/unique'
 import React, { ChangeEvent, useCallback, useMemo, useState } from 'react'
-import { get } from 'lodash'
+import { get, sortBy } from 'lodash'
 import { Col, Row, Input, Label, Table, Form as FormBase, FormGroup as FormGroupBase } from 'reactstrap'
 import { AaMut, LineageBadge, NucMut, VariantLinkBadge } from 'src/components/Common/MutationBadge'
 import { parsePositionOrThrow } from 'src/components/Common/parsePosition'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
+import { notUndefinedOrNull } from 'src/helpers/notUndefined'
 import styled from 'styled-components'
 import { TableSlimWithBorders } from 'src/components/Common/TableSlim'
 import { DefMutLineageTitle } from 'src/components/DefiningMutations/DefMutLineageTitle'
@@ -17,6 +18,7 @@ import {
   DefMutClusterDatum,
   DefMutAa,
   DefMutNuc,
+  SilentOrCodingMut,
 } from 'src/io/getDefiningMutationsClusters'
 import { Layout } from 'src/components/Layout/Layout'
 import { NarrowPageContainer } from 'src/components/Common/ClusterSidebarLayout'
@@ -254,24 +256,38 @@ export function DefiningMutationsTable({ currentCluster, comparisonTargetName }:
       return { pos, ...nucMut }
     })
 
-    const aaMuts: DefMutAa[] = Object.entries(mutations.aa).flatMap(([gene, aaMuts]) =>
-      Object.entries(aaMuts).map(([posStr, aaMut]) => {
-        const pos = parsePositionOrThrow(posStr)
-        const nucMuts = allNucMuts.filter((nucMut) => aaMut.nucPos?.includes(nucMut.pos))
-        return { gene, pos, ...aaMut, nucMuts }
-      }),
+    const aaMuts = Object.entries(mutations.aa)
+      .flatMap(([gene, aaMuts]) =>
+        Object.entries(aaMuts).map(([posStr, aaMut]) => {
+          const pos = parsePositionOrThrow(posStr)
+          let nucMuts = allNucMuts.filter((nucMut) => aaMut.nucPos?.includes(nucMut.pos))
+          nucMuts = sortBy(nucMuts, (m) => m.pos)
+          return { gene, pos, ...aaMut, nucMuts }
+        }),
+      )
+      .map((aaMut: DefMutAa) => ({ aaMut }))
+
+    const codingPositions = unique(aaMuts.flatMap(({ aaMut }) => aaMut.nucPos))
+    const silentNucMuts = allNucMuts
+      .filter((nucMut) => !codingPositions.includes(nucMut.pos))
+      .map((nucMut) => ({ nucMut }))
+
+    const allMuts: SilentOrCodingMut[] = [...silentNucMuts, ...aaMuts]
+
+    const allRows: SilentOrCodingMut[] = sortBy(
+      allMuts,
+      ({ nucMut, aaMut }: SilentOrCodingMut) => nucMut?.pos ?? aaMut?.nucPos ?? Number.POSITIVE_INFINITY,
     )
 
-    const codingPositions = unique(aaMuts.flatMap((aaMut) => aaMut.nucPos))
-    const silentNucMuts = allNucMuts.filter((nucMut) => !codingPositions.includes(nucMut.pos))
+    const silentRows = allRows
+      .map(({ nucMut }) => nucMut)
+      .filter(notUndefinedOrNull)
+      .map((nucMut) => <DefiningMutationsTableRowSilent key={JSON.stringify(nucMut)} nucMut={nucMut} />)
 
-    const silentRows = silentNucMuts.map((nucMut) => (
-      <DefiningMutationsTableRowSilent key={JSON.stringify(nucMut)} nucMut={nucMut} />
-    ))
-
-    const codingRows = aaMuts.map((aaMut) => (
-      <DefiningMutationsTableRowCoding key={JSON.stringify(aaMut)} aaMut={aaMut} />
-    ))
+    const codingRows = allRows
+      .map(({ aaMut }) => aaMut)
+      .filter(notUndefinedOrNull)
+      .map((aaMut) => <DefiningMutationsTableRowCoding key={JSON.stringify(aaMut)} aaMut={aaMut} />)
 
     return [...codingRows, ...silentRows]
   }, [comparisonTargetName, currentCluster.mutations])

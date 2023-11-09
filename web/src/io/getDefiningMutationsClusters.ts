@@ -39,6 +39,11 @@ export interface DefMutAa {
   annotation: string
 }
 
+export interface SilentOrCodingMut {
+  nucMut?: DefMutNuc
+  aaMut?: DefMutAa
+}
+
 export interface DefiningMutations {
   nuc: Record<string, DefMutNucRaw>
   aa: Record<string, Record<string, DefMutAaRaw>>
