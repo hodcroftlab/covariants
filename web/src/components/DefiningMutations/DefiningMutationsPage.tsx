@@ -83,8 +83,8 @@ export default function DefiningMutationsPage({ clusterName: clusterNameUnsafe }
 }
 
 export const InfoTable = styled(Table)`
-  flex: 0;
   max-width: 600px;
+  margin-bottom: 0;
 
   & td {
     padding: 0.25rem 0.5rem;
@@ -102,44 +102,55 @@ export function DefiningMutationsInfo({ currentCluster }: DefiningMutationsInfoP
   const urlCovSpectrumLineage = `https://cov-spectrum.org/explore/World/AllSamples/Past6M/variants?nextcladePangoLineage=${lineageSafe}`
 
   return (
-    <InfoTable striped>
-      <tbody>
-        <tr>
-          <td className="font-weight-bold">{t('Nextstrain clade')}</td>
-          <td>
-            {currentCluster.cluster?.display_name ? (
-              <VariantLinkBadge name={currentCluster.cluster?.display_name} />
-            ) : (
-              'none'
-            )}
-          </td>
-        </tr>
-        <tr>
-          <td className="font-weight-bold">{t('Unaliased lineage')}</td>
-          <td>{currentCluster.unaliased ? <LineageBadge name={currentCluster.unaliased} /> : 'none'}</td>
-        </tr>
-        <tr>
-          <td className="font-weight-bold">{t('Parent lineage')}</td>
-          <td>{currentCluster.parent ? <LineageBadge name={currentCluster.parent} /> : 'none'}</td>
-        </tr>
-        <tr>
-          <td className="font-weight-bold">{t('Designation date')}</td>
-          <td>{currentCluster.designationDate}</td>
-        </tr>
-        <tr>
-          <td className="font-weight-bold">{t('Designation issue')}</td>
-          <td>{currentCluster.designationIssue}</td>
-        </tr>
-        <tr>
-          <td className="font-weight-bold">{t('Links')}</td>
-          <td className="d-flex">
-            <LinkSmart href={urlCovSpectrumLineage}>
-              {t('CoV Spectrum - Lineage {{name}}', { name: currentCluster.lineage })}
-            </LinkSmart>
-          </td>
-        </tr>
-      </tbody>
-    </InfoTable>
+    <Row noGutters className="mb-3">
+      <Col lg={6}>
+        <InfoTable striped>
+          <tbody>
+            <tr>
+              <td className="font-weight-bold">{t('Nextstrain clade')}</td>
+              <td>
+                {currentCluster.cluster?.display_name ? (
+                  <VariantLinkBadge name={currentCluster.cluster?.display_name} />
+                ) : (
+                  'none'
+                )}
+              </td>
+            </tr>
+            <tr>
+              <td className="font-weight-bold">{t('Unaliased lineage')}</td>
+              <td>{currentCluster.unaliased ? <LineageBadge name={currentCluster.unaliased} /> : 'none'}</td>
+            </tr>
+            <tr>
+              <td className="font-weight-bold">{t('Parent lineage')}</td>
+              <td>{currentCluster.parent ? <LineageBadge name={currentCluster.parent} /> : 'none'}</td>
+            </tr>
+          </tbody>
+        </InfoTable>
+      </Col>
+
+      <Col lg={6}>
+        <InfoTable striped>
+          <tbody>
+            <tr>
+              <td className="font-weight-bold">{t('Designation date')}</td>
+              <td>{currentCluster.designationDate}</td>
+            </tr>
+            <tr>
+              <td className="font-weight-bold">{t('Designation issue')}</td>
+              <td>{currentCluster.designationIssue}</td>
+            </tr>
+            <tr>
+              <td className="font-weight-bold">{t('Links')}</td>
+              <td className="d-flex">
+                <LinkSmart href={urlCovSpectrumLineage}>
+                  {t('CoV Spectrum - Lineage {{name}}', { name: currentCluster.lineage })}
+                </LinkSmart>
+              </td>
+            </tr>
+          </tbody>
+        </InfoTable>
+      </Col>
+    </Row>
   )
 }
 
