@@ -21,7 +21,7 @@ export interface DefMutLineageTitleProps {
   cluster: DefMutClusterDatum
 }
 
-export function DefMutLineageTitle({ cluster } : DefMutLineageTitleProps) {
+export function DefMutLineageTitle({ cluster }: DefMutLineageTitleProps) {
   const { t } = useTranslationSafe()
 
   const subtitle = useMemo(() => {
