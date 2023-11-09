@@ -3,7 +3,6 @@ import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 import clustersJson from 'src/../data/definingMutationsIndex.json'
 import { ClusterDatum, getClusters } from 'src/io/getClusters'
-import { Cluster } from 'src/state/Clusters'
 
 export interface DefMutClusterIndexDatum {
   lineage: string
@@ -88,8 +87,6 @@ export function useDefMutCluster(clusterName: string): DefMutClusterDatum {
     return { ...omit(defMutClusterRaw, 'nextstrainClade'), cluster }
   }, [clusterName, res.data])
 }
-
-function addMoreClusterInfo() {}
 
 export function getDefMutClusterRedirects(): Record<string, string> {
   return Object.fromEntries(

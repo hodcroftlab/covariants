@@ -20,21 +20,17 @@ export interface DefMutLineageTitleProps {
   cluster: DefMutClusterDatum
 }
 
-export function DefMutLineageTitle({ cluster: { lineage, nextstrainClade } }: DefMutLineageTitleProps) {
+export function DefMutLineageTitle({ cluster: { lineage, cluster } }: DefMutLineageTitleProps) {
   const { t } = useTranslationSafe()
 
   const subtitle = useMemo(() => {
-    if (nextstrainClade === 'recombinant') {
-      return null
-    }
-
     return (
       <ClusterNameSubtitle>
         {t(`also known as clade `)}
-        {nextstrainClade}
+        {cluster?.display_name}
       </ClusterNameSubtitle>
     )
-  }, [nextstrainClade, t])
+  }, [cluster?.display_name, t])
 
   return (
     <VariantTitleWrapper>

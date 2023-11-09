@@ -6,7 +6,6 @@ import { AaMut, LineageBadge, NucMut, VariantLinkBadge } from 'src/components/Co
 import { parsePositionOrThrow } from 'src/components/Common/parsePosition'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
 import styled from 'styled-components'
-import { getClusters } from 'src/io/getClusters'
 import { TableSlimWithBorders } from 'src/components/Common/TableSlim'
 import { DefMutLineageTitle } from 'src/components/DefiningMutations/DefMutLineageTitle'
 import { useRouter } from 'next/router'
@@ -23,7 +22,6 @@ import { Layout } from 'src/components/Layout/Layout'
 import { NarrowPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 
 const clusterRedirects = getDefMutClusterRedirects()
-const clusters = getClusters()
 
 export function useCurrentClusterName(clusterName?: string) {
   const router = useRouter()
