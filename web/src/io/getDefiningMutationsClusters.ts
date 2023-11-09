@@ -1,6 +1,9 @@
+import { omit } from 'lodash'
 import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 import clustersJson from 'src/../data/definingMutationsIndex.json'
+import { ClusterDatum, getClusters } from 'src/io/getClusters'
+import { Cluster } from 'src/state/Clusters'
 
 export interface DefMutClusterIndexDatum {
   lineage: string
@@ -42,7 +45,11 @@ export interface DefiningMutations {
   aa: Record<string, Record<string, DefMutAaRaw>>
 }
 
-export interface DefMutClusterDatum {
+export function getDefMutClusters(): DefMutClusterIndexDatum[] {
+  return clustersJson.clusters as DefMutClusterIndexDatum[]
+}
+
+export interface DefMutClusterDatumRaw {
   lineage: string
   unaliased?: string
   parent?: string
@@ -54,12 +61,12 @@ export interface DefMutClusterDatum {
   mutations: Record<string, DefiningMutations>
 }
 
-export function getDefMutClusters(): DefMutClusterIndexDatum[] {
-  return clustersJson.clusters as DefMutClusterIndexDatum[]
+export interface DefMutClusterDatum extends Omit<DefMutClusterDatumRaw, 'nextstrainClade'> {
+  cluster?: ClusterDatum
 }
 
 export function useDefMutCluster(clusterName: string): DefMutClusterDatum {
-  const res = useQuery<DefMutClusterDatum>(
+  const res = useQuery<DefMutClusterDatumRaw>(
     ['definingMutations', clusterName],
     async () => import(`src/../data/definingMutations/${clusterName}.json`),
     {
@@ -76,9 +83,13 @@ export function useDefMutCluster(clusterName: string): DefMutClusterDatum {
     if (!res.data) {
       throw new Error(`Data not found for clade or lineage '${clusterName}'`)
     }
-    return res.data
+    const defMutClusterRaw = res.data
+    const cluster = getClusters().find((cl) => cl.nextstrain_name === defMutClusterRaw.nextstrainClade)
+    return { ...omit(defMutClusterRaw, 'nextstrainClade'), cluster }
   }, [clusterName, res.data])
 }
+
+function addMoreClusterInfo() {}
 
 export function getDefMutClusterRedirects(): Record<string, string> {
   return Object.fromEntries(

@@ -2,11 +2,11 @@ import unique from 'fork-ts-checker-webpack-plugin/lib/utils/array/unique'
 import React, { ChangeEvent, useCallback, useMemo, useState } from 'react'
 import { get } from 'lodash'
 import { Col, Row, Input, Label, Table, Form as FormBase, FormGroup as FormGroupBase } from 'reactstrap'
-import { AaMut, LineageBadge, NucMut, VariantBadge } from 'src/components/Common/MutationBadge'
+import { AaMut, LineageBadge, NucMut, VariantLinkBadge } from 'src/components/Common/MutationBadge'
 import { parsePositionOrThrow } from 'src/components/Common/parsePosition'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
-import { joinWithCommas } from 'src/helpers/join'
 import styled from 'styled-components'
+import { getClusters } from 'src/io/getClusters'
 import { TableSlimWithBorders } from 'src/components/Common/TableSlim'
 import { DefMutLineageTitle } from 'src/components/DefiningMutations/DefMutLineageTitle'
 import { useRouter } from 'next/router'
@@ -23,6 +23,7 @@ import { Layout } from 'src/components/Layout/Layout'
 import { NarrowPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 
 const clusterRedirects = getDefMutClusterRedirects()
+const clusters = getClusters()
 
 export function useCurrentClusterName(clusterName?: string) {
   const router = useRouter()
@@ -82,15 +83,11 @@ export default function DefiningMutationsPage({ clusterName: clusterNameUnsafe }
 }
 
 export const InfoTable = styled(Table)`
-  max-width: 1000px;
+  flex: 0;
+  max-width: 600px;
 
   & td {
     padding: 0.25rem 0.5rem;
-    min-width: 200px;
-  }
-
-  * {
-    border: none !important;
   }
 `
 
@@ -101,21 +98,21 @@ export interface DefiningMutationsInfoProps {
 export function DefiningMutationsInfo({ currentCluster }: DefiningMutationsInfoProps) {
   const { t } = useTranslationSafe()
 
-  const cladeSafe = encodeURI(currentCluster.nextstrainClade)
   const lineageSafe = encodeURI(currentCluster.lineage)
-
-  const urlPerCountry = `/per-country?variant=${cladeSafe}`
-  const urlPerVariant = `/per-variant?variant=${cladeSafe}`
-  const urlNextstrainClade = `https://nextstrain.org/ncov/gisaid/global/6m?f_clade_membership=${cladeSafe}`
   const urlCovSpectrumLineage = `https://cov-spectrum.org/explore/World/AllSamples/Past6M/variants?nextcladePangoLineage=${lineageSafe}`
-  const urlCovSpectrumClade = `https://cov-spectrum.org/explore/World/AllSamples/Past6M/variants?nextstrainClade=${cladeSafe}`
 
   return (
-    <InfoTable>
+    <InfoTable striped>
       <tbody>
         <tr>
           <td className="font-weight-bold">{t('Nextstrain clade')}</td>
-          <td>{currentCluster.nextstrainClade ? <VariantBadge name={currentCluster.nextstrainClade} /> : 'none'}</td>
+          <td>
+            {currentCluster.cluster?.display_name ? (
+              <VariantLinkBadge name={currentCluster.cluster?.display_name} />
+            ) : (
+              'none'
+            )}
+          </td>
         </tr>
         <tr>
           <td className="font-weight-bold">{t('Unaliased lineage')}</td>
@@ -136,49 +133,15 @@ export function DefiningMutationsInfo({ currentCluster }: DefiningMutationsInfoP
         <tr>
           <td className="font-weight-bold">{t('Links')}</td>
           <td className="d-flex">
-            <Ul>
-              <Li>
-                <LinkSmart href={urlPerCountry}>
-                  {t('CoVariants - Per country - Clade {{name}}', { name: currentCluster.nextstrainClade })}
-                </LinkSmart>
-              </Li>
-              <Li>
-                <LinkSmart href={urlPerVariant}>
-                  {t('CoVariants - Per variant - Clade {{name}}', { name: currentCluster.nextstrainClade })}
-                </LinkSmart>
-              </Li>
-              <Li>
-                <LinkSmart href={urlNextstrainClade}>
-                  {t('Nextstrain - Clade {{name}}', { name: currentCluster.nextstrainClade })}
-                </LinkSmart>
-              </Li>
-              <Li>
-                <LinkSmart href={urlCovSpectrumClade}>
-                  {t('CoV Spectrum - Clade {{name}}', { name: currentCluster.nextstrainClade })}
-                </LinkSmart>
-              </Li>
-              <Li>
-                <LinkSmart href={urlCovSpectrumLineage}>
-                  {t('CoV Spectrum - Lineage {{name}}', { name: currentCluster.lineage })}
-                </LinkSmart>
-              </Li>
-            </Ul>
+            <LinkSmart href={urlCovSpectrumLineage}>
+              {t('CoV Spectrum - Lineage {{name}}', { name: currentCluster.lineage })}
+            </LinkSmart>
           </td>
         </tr>
       </tbody>
     </InfoTable>
   )
 }
-
-const Ul = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin-top: 0.5rem;
-`
-
-const Li = styled.li`
-  margin: 0;
-`
 
 export interface DefiningMutationsTableWithTargetsProps {
   currentCluster: DefMutClusterDatum
