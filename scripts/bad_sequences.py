@@ -4414,6 +4414,9 @@ bad_seqs = {
     "France/ARA-HCL023003250601/2022" : "2022-01-04",  #22D EPI_ISL_16609798
     "Lebanon/AU-5766/2022" : "2022-01-23",  #22D EPI_ISL_18384823
     "Senegal/DKR-UVR-0107/2022" : "2022-01-11",  #22B EPI_ISL_15273369
+    #13 Nov 2023
+    "Canada/NS-NSH-661539/2022" : "2022-10-15",  #23F EPI_ISL_18457113
+    "Canada/NS-NSH-661540/2022" : "2022-10-15",  #23F EPI_ISL_18457114
 
     #bad haiti recent uploads that seem to have some dating issues
     "Haiti/IMIS-0918368/2022" : "2022-07-01",  #? EPI_ISL_18060054
