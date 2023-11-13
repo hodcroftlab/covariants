@@ -1,26 +1,26 @@
 {
   "S": {
-    "total": 1723898,
+    "total": 1724504,
     "counts": [
       {
         "mut": "S:R346T",
-        "count": 394711
+        "count": 394935
       },
       {
         "mut": "S:N460K",
-        "count": 371228
+        "count": 371539
       },
       {
         "mut": "S:K444T",
-        "count": 359171
+        "count": 359472
       },
       {
         "mut": "S:Y144-",
-        "count": 125911
+        "count": 126060
       },
       {
         "mut": "S:A1020S",
-        "count": 78136
+        "count": 78137
       },
       {
         "mut": "S:T76I",
@@ -28,11 +28,11 @@
       },
       {
         "mut": "S:L5F",
-        "count": 24179
+        "count": 24185
       },
       {
         "mut": "S:K444N",
-        "count": 16572
+        "count": 16582
       },
       {
         "mut": "S:N450D",
@@ -40,52 +40,52 @@
       },
       {
         "mut": "S:V445A",
-        "count": 14288
+        "count": 14292
       }
     ]
   },
   "others": {
-    "total": 1723898,
+    "total": 1724504,
     "counts": [
       {
         "mut": "ORF9b:D16G",
-        "count": 862364
+        "count": 862605
       },
       {
         "mut": "ORF1a:Q556K",
-        "count": 453619
+        "count": 453920
       },
       {
         "mut": "N:E136D",
-        "count": 448974
+        "count": 449279
       },
       {
         "mut": "ORF1b:M1156I",
-        "count": 422347
+        "count": 422555
       },
       {
         "mut": "ORF1a:L3829F",
-        "count": 395876
+        "count": 396087
       },
       {
         "mut": "ORF9b:P10F",
-        "count": 354971
+        "count": 355183
       },
       {
         "mut": "ORF1b:Y264H",
-        "count": 348503
+        "count": 348709
       },
       {
         "mut": "ORF1b:T1050N",
-        "count": 324558
+        "count": 324692
       },
       {
         "mut": "ORF1b:N1191S",
-        "count": 267926
+        "count": 268098
       },
       {
         "mut": "N:G30-",
-        "count": 189680
+        "count": 189742
       }
     ]
   }

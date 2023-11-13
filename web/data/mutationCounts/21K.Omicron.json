@@ -1,34 +1,34 @@
 {
   "S": {
-    "total": 2346220,
+    "total": 2347065,
     "counts": [
       {
         "mut": "S:R346K",
-        "count": 1261323
+        "count": 1261316
       },
       {
         "mut": "S:A701V",
-        "count": 198881
+        "count": 198878
       },
       {
         "mut": "S:N211R",
-        "count": 72325
+        "count": 72322
       },
       {
         "mut": "S:I1081V",
         "count": 42296
       },
       {
+        "mut": "S:I68-",
+        "count": 19910
+      },
+      {
         "mut": "S:A67-",
         "count": 19908
       },
       {
-        "mut": "S:I68-",
-        "count": 19902
-      },
-      {
         "mut": "S:L5F",
-        "count": 18763
+        "count": 18766
       },
       {
         "mut": "S:F643L",
@@ -36,28 +36,28 @@
       },
       {
         "mut": "S:S371F",
-        "count": 13887
+        "count": 14768
       },
       {
         "mut": "S:R408S",
-        "count": 11994
+        "count": 12995
       }
     ]
   },
   "others": {
-    "total": 2346220,
+    "total": 2347065,
     "counts": [
       {
         "mut": "ORF1a:V1887I",
-        "count": 266255
+        "count": 266257
       },
       {
         "mut": "ORF3a:L106F",
-        "count": 230287
+        "count": 230291
       },
       {
         "mut": "N:D343G",
-        "count": 228593
+        "count": 228597
       },
       {
         "mut": "ORF1a:A2554V",
@@ -73,7 +73,7 @@
       },
       {
         "mut": "ORF1a:T1822I",
-        "count": 63404
+        "count": 63409
       },
       {
         "mut": "ORF3a:D155Y",
@@ -81,11 +81,11 @@
       },
       {
         "mut": "N:P67S",
-        "count": 39875
+        "count": 39874
       },
       {
         "mut": "ORF1a:V84-",
-        "count": 38582
+        "count": 38591
       }
     ]
   }
