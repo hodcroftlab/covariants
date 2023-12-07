@@ -239,7 +239,7 @@ if dated_limit:
 
 # Input metadata file
 input_meta = "data/metadata.tsv"
-cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'clade_nextstrain', 'country', 'gisaid_epi_isl', 'coverage', 'QC_overall_status', 'Nextclade_pango']
+cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl', 'coverage', 'QC_overall_status', 'Nextclade_pango']
 
 # Traverse metadata once to count lines and collect Nextstrain_clades
 print("\nDoing first metadata pass...")
@@ -252,10 +252,8 @@ with open(input_meta) as f:
     line = f.readline()
     while line:
         l = line.split("\t")
-        #if l[indices['Nextstrain_clade']] not in Nextstrain_clades:
-        #    Nextstrain_clades.append(l[indices['Nextstrain_clade']])
-        if l[indices['clade_nextstrain']] not in Nextstrain_clades:
-            Nextstrain_clades.append(l[indices['clade_nextstrain']])
+        if l[indices['Nextstrain_clade']] not in Nextstrain_clades:
+            Nextstrain_clades.append(l[indices['Nextstrain_clade']])
         if l[indices['country']] not in all_countries:
             all_countries.append(l[indices['country']])
         n_total += 1
@@ -266,16 +264,6 @@ Nextstrain_clades_display_names = []
 for clus in Nextstrain_clades:
     if clus in display_name_to_clus and display_name_to_clus[clus] in clus_to_run:
         Nextstrain_clades_display_names.append(clus)
-
-#All clus that appear in the clade_nextstrain column in the metadata
-clade_nextstrain_names = []
-for clus in Nextstrain_clades:
-    if clus in nextstrain_name_to_clus and nextstrain_name_to_clus[clus] in clus_to_run:
-        clade_nextstrain_names.append(clus)
-
-# Set a list of clades that are not yet in CoV, but are in Nextstrain - these need renaming to be part of their 'old' parent
-# until the clades can be added
-new_clades_to_rename = {"23I": "21L", "23G": "23A", "23H": "23F"}
 
 # To save time, split up clusters into categories:
 # - official_clus: All clus whose display name appears in the Nextstrain_clade column
@@ -312,8 +300,7 @@ daughter_clades = {}
 # TODO: Rename and adjust
 for c in clus_to_run:
     if "parent" in clusters[c]:
-        #Nextstrain_clade = clusters[clusters[c]["parent"]]["display_name"]
-        Nextstrain_clade = clusters[clusters[c]["parent"]]["nextstrain_name"]
+        Nextstrain_clade = clusters[clusters[c]["parent"]]["display_name"]
         if Nextstrain_clade not in daughter_clades:
             daughter_clades[Nextstrain_clade] = []
         daughter_clades[Nextstrain_clade].append(c)
@@ -441,16 +428,10 @@ with open(input_meta) as f:
         if float(l[indices['coverage']]) < 0.9:
             continue
 
-        #clade = l[indices['Nextstrain_clade']]
-        clade = l[indices['clade_nextstrain']]
+        clade = l[indices['Nextstrain_clade']]
         # As of 28 Oct 22 - process recombinants so we can start including them as designated variants
         #if clade == "recombinant":
         #    continue
-        # as of 7 Dec 2023 - if clade is in list of new clades that need renaming, replace clade
-        if clade in new_clades_to_rename:
-            #print(f"Renaming {clade} to {new_clades_to_rename[clade]}")
-            clade = new_clades_to_rename[clade]
-            #print(f"clade is now {clade}")
 
         pango = l[indices['Nextclade_pango']]
 
@@ -495,10 +476,8 @@ with open(input_meta) as f:
         clus_all = []
         only_Nextstrain = False
         # Use Nextclade
-        #if clade in Nextstrain_clades_display_names:
-        if clade in clade_nextstrain_names:
-            #clus_all.append(display_name_to_clus[clade])
-            clus_all.append(nextstrain_name_to_clus[clade])
+        if clade in Nextstrain_clades_display_names:
+            clus_all.append(display_name_to_clus[clade])
             only_Nextstrain = True
             if clade in daughter_clades:
                 if pango in pango_lineage_to_clus and clus_data_all[pango_lineage_to_clus[pango]]["use_pango"] and pango_lineage_to_clus[pango] in daughter_clades[clade]:
