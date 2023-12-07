@@ -4426,6 +4426,8 @@ bad_seqs = {
     "USA/DE-DHSS-B1312033/2023" : "2023-01-30",  #23F EPI_ISL_18498590
     "Switzerland/BL-UHB-USB_2023_11_07_abd94df3/2022" : "2022-08-01",  #23B EPI_ISL_18496280
     "USA/DE-DHSS-B1261909/2022" : "2022-12-31",  #23B EPI_ISL_18498477
+    #7 Dec 2023
+    "Italy/VEN-IZSVe-RS8226-3_PD/2023" : "2023-01-31",  #23F EPI_ISL_18499322
 
     #bad haiti recent uploads that seem to have some dating issues
     "Haiti/IMIS-0918368/2022" : "2022-07-01",  #? EPI_ISL_18060054
