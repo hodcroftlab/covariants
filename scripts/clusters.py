@@ -2866,7 +2866,6 @@ clusters = {
         "build_name": "20B.S.732A",
         "old_build_names": [],
         "who_name": [],
-        "nextstrain_name": "",
         "pango_lineages": [
             {"name": "B.1.1.519", "url": None}
         ],
