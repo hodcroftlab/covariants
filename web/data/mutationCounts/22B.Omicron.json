@@ -1,22 +1,22 @@
 {
   "S": {
-    "total": 1725715,
+    "total": 1726139,
     "counts": [
       {
         "mut": "S:R346T",
-        "count": 395115
+        "count": 395214
       },
       {
         "mut": "S:N460K",
-        "count": 371669
+        "count": 371857
       },
       {
         "mut": "S:K444T",
-        "count": 359599
+        "count": 359767
       },
       {
         "mut": "S:Y144-",
-        "count": 126133
+        "count": 126188
       },
       {
         "mut": "S:A1020S",
@@ -24,68 +24,68 @@
       },
       {
         "mut": "S:T76I",
-        "count": 52701
+        "count": 52704
       },
       {
         "mut": "S:L5F",
-        "count": 24207
+        "count": 24211
       },
       {
         "mut": "S:K444N",
-        "count": 16594
+        "count": 16603
       },
       {
         "mut": "S:N450D",
-        "count": 14808
+        "count": 14811
       },
       {
         "mut": "S:V445A",
-        "count": 14313
+        "count": 14318
       }
     ]
   },
   "others": {
-    "total": 1725715,
+    "total": 1726139,
     "counts": [
       {
         "mut": "ORF9b:D16G",
-        "count": 863253
+        "count": 863405
       },
       {
         "mut": "ORF1a:Q556K",
-        "count": 454131
+        "count": 454281
       },
       {
         "mut": "N:E136D",
-        "count": 449484
+        "count": 449636
       },
       {
         "mut": "ORF1b:M1156I",
-        "count": 422742
+        "count": 422894
       },
       {
         "mut": "ORF1a:L3829F",
-        "count": 396261
+        "count": 396419
       },
       {
         "mut": "ORF9b:P10F",
-        "count": 355310
+        "count": 355456
       },
       {
         "mut": "ORF1b:Y264H",
-        "count": 348826
+        "count": 348969
       },
       {
         "mut": "ORF1b:T1050N",
-        "count": 324999
+        "count": 325077
       },
       {
         "mut": "ORF1b:N1191S",
-        "count": 268198
+        "count": 268284
       },
       {
         "mut": "N:G30-",
-        "count": 189840
+        "count": 189866
       }
     ]
   }

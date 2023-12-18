@@ -1,6 +1,6 @@
 {
   "S": {
-    "total": 15608,
+    "total": 15610,
     "counts": [
       {
         "mut": "S:S1252F",
@@ -35,25 +35,25 @@
         "count": 112
       },
       {
-        "mut": "S:R346K",
+        "mut": "S:A222V",
         "count": 90
       },
       {
-        "mut": "S:T208S",
+        "mut": "S:R346K",
         "count": 90
       }
     ]
   },
   "others": {
-    "total": 15608,
+    "total": 15610,
     "counts": [
       {
         "mut": "ORF1b:P314L",
-        "count": 15595
+        "count": 15597
       },
       {
         "mut": "ORF1a:H1113Y",
-        "count": 14737
+        "count": 14739
       },
       {
         "mut": "ORF1a:I1259V",
