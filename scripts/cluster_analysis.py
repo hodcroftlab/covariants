@@ -241,6 +241,14 @@ if dated_limit:
 input_meta = "data/metadata.tsv"
 cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country', 'gisaid_epi_isl', 'coverage', 'QC_overall_status', 'Nextclade_pango']
 
+# Set a list of clades that are not yet in CoV, but are in Nextstrain - these need renaming to be part of their 'old' parent
+# until the clades can be added
+new_clades_to_rename = {"23I (Omicron)": "21L (Omicron)", "23G (Omicron)": "23A (Omicron)", "23H (Omicron)": "23F (Omicron)"}
+if new_clades_to_rename:
+    print("\n!!!!!!!!!!!!!!!!!!")
+    print("There are currently clades that will be renamed!!:")
+    print(new_clades_to_rename)
+
 # Traverse metadata once to count lines and collect Nextstrain_clades
 print("\nDoing first metadata pass...")
 Nextstrain_clades = []
@@ -432,6 +440,9 @@ with open(input_meta) as f:
         # As of 28 Oct 22 - process recombinants so we can start including them as designated variants
         #if clade == "recombinant":
         #    continue
+        # as of 7 Dec 2023 - if clade is in list of new clades that need renaming, replace clade
+        if clade in new_clades_to_rename:
+            clade = new_clades_to_rename[clade]
 
         pango = l[indices['Nextclade_pango']]
 
