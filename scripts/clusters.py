@@ -2889,7 +2889,7 @@ clusters = {
        "snps_with_base": ["G8393A","G21624C","G22895C","G26529C"], #MUST ADD VALUE WHEN TURN INTO PAGE!  
        "cluster_data": [],
        "nextstrain_build": True,
-       "parent": "21L", 
+       "parent": "21L.Omicron", 
        "use_pango": False,
        "has_no_page": True,
        "type": "variant",
