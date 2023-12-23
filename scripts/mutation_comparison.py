@@ -656,7 +656,7 @@ mutation_comparison = {
             "S:N969K",
         ]
     },
-    "23G (Eta)\n(B.1.525)": {
+    "23G (Omicron)\n(XBB.1.5.70)": {
         "nonsynonymous": [
             "S:T19I",
             "S:L24-",
@@ -705,7 +705,7 @@ mutation_comparison = {
             "S:N969K",
         ]
     },
-    "23H (Eta)\n(B.1.525)": {
+    "23H (Omicron)\n(HK.3)": {
         "nonsynonymous": [
             "S:T19I",
             "S:L24-",
@@ -756,7 +756,7 @@ mutation_comparison = {
             "S:N969K",
         ]
     },
-    "23I (Eta)\n(B.1.525)": {
+    "23I (Omicron)\n(BA.2.86)": {
         "nonsynonymous": [
             "S:T19I",
             "S:R21T",
@@ -786,7 +786,7 @@ mutation_comparison = {
             "S:S373P",
             "S:S375F",
             "S:T376A",
-            "S:R403K ",
+            "S:R403K",
             "S:D405N",
             "S:R408S",
             "S:K417N",
