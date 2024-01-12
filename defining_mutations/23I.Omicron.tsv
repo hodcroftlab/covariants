@@ -1,0 +1,180 @@
+nuc_change	aa_change	aa_change_2	not_in_parent	reversion	notes
+C241T					
+T670G	ORF1a:S135R				
+C897A	ORF1a:A211D		y		
+C2790T	ORF1a:T842I				
+C3037T					
+G3431T	ORF1a:V1056L		y		
+G4184A	ORF1a:G1307S				
+C4321T					
+A7842G	ORF1a:N2526S		y		
+C8293T			y		
+G8393A	ORF1a:A2710T		y		
+C9344T	ORF1a:L3027F				
+A9424G					
+C9534T	ORF1a:T3090I				
+C10029T	ORF1a:T3255I				
+C10198T					
+G10447A					
+C10449A	ORF1a:P3395H				
+T11288-	ORF1a:S3675-				A 3-AA deletion in the same location but shifted 1 AA left (starting 3674) is present in 21K. These may be 2 separate events, or a common deletion & then mutation to shift how the deletion aligns
+C11289-	ORF1a:S3675-				A 3-AA deletion in the same location but shifted 1 AA left (starting 3674) is present in 21K. These may be 2 separate events, or a common deletion & then mutation to shift how the deletion aligns
+T11290-	ORF1a:S3675-				A 3-AA deletion in the same location but shifted 1 AA left (starting 3674) is present in 21K. These may be 2 separate events, or a common deletion & then mutation to shift how the deletion aligns
+G11291-	ORF1a:G3676-				A 3-AA deletion in the same location but shifted 1 AA left (starting 3674) is present in 21K. These may be 2 separate events, or a common deletion & then mutation to shift how the deletion aligns
+G11292-	ORF1a:G3676-				A 3-AA deletion in the same location but shifted 1 AA left (starting 3674) is present in 21K. These may be 2 separate events, or a common deletion & then mutation to shift how the deletion aligns
+T11293-	ORF1a:G3676-				A 3-AA deletion in the same location but shifted 1 AA left (starting 3674) is present in 21K. These may be 2 separate events, or a common deletion & then mutation to shift how the deletion aligns
+T11294-	ORF1a:F3677-				A 3-AA deletion in the same location but shifted 1 AA left (starting 3674) is present in 21K. These may be 2 separate events, or a common deletion & then mutation to shift how the deletion aligns
+T11295-	ORF1a:F3677-				A 3-AA deletion in the same location but shifted 1 AA left (starting 3674) is present in 21K. These may be 2 separate events, or a common deletion & then mutation to shift how the deletion aligns
+T11296-	ORF1a:F3677-				A 3-AA deletion in the same location but shifted 1 AA left (starting 3674) is present in 21K. These may be 2 separate events, or a common deletion & then mutation to shift how the deletion aligns
+G11042T	ORF1a:V3593F		y		
+C12789T	ORF1a:T4175I		y		
+C12880T					
+T13339C			y		
+C14408T	ORF1b:P314L				
+C15714T					
+T15756A			y		
+C17410T	ORF1b:R1315C				
+A18163G	ORF1b:I1566V				
+A18492G			y		
+C19955T	ORF1b:T2163I				
+A20055G					
+C21618T	S:T19I				
+C21622T			y		
+G21624C	S:R21T		y		
+T21633-	S:L24-		y		Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27
+A21634-	S:L24-		y		Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27
+C21635-	S:P25-		y		Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27
+C21636-	S:P25-		y		Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27
+C21637-	S:P25-		y		Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27
+C21638-	S:P26-		y		Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27
+C21639-	S:P26-		y		Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27
+T21640-	S:P26-		y		Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27
+G21641-	S:A27S		y		This change is a consequence of the prior deletion
+C21711T	S:S50L		y		
+T21765-	S:H69-		y		
+A21766-	S:H69-		y		
+C21767-	S:H69-		y		
+A21768-	S:V70-		y		
+T21769-	S:V70-		y		
+G21770-	S:V70-		y		
+G21941T	S:V127F		y		
+G21987A	S:G142D				
+T21992-	S:Y144-		y		
+A21993-	S:Y144-		y		
+T21994-	S:Y144-		y		
+T22032C	S:F157S		y		
+C22033A	S:F157S		y		
+A22034G	S:R158G		y		
+G23040A	S:R493Q		y	y	Reversion from 21L (A23040G)
+A22194-	S:N211-		y		Out of frame deletion, second & third bases of 211, first of 212
+T22195-	S:N211-		y		Out of frame deletion, second & third bases of 211, first of 212
+T22196-	S:L212I		y		This change is a consequence of the prior deletion
+T22200G	S:V213G				
+C22208T	S:L216F				
+C22295A	S:H245N				
+C22353A	S:A264D				
+A22556G	S:I332V				
+G22577C	S:G339H				
+G22578A	S:G339H				
+A22629C	S:K356T				
+C22674T	S:S371F				
+T22679C	S:S373P				
+C22686T	S:S375F				
+A22688G	S:T376A				
+G22770A	S:R403K		y		
+G22775A	S:D405N				
+A22786C	S:R408S				
+G22813T	S:K417N				
+T22882G	S:N440K				
+G22895C	S:V445H		y		
+T22896A	S:V445H		y		
+G22898A	S:G446S		y		
+A22910G	S:N450D		y		
+C22916T	S:L452W		y		
+T22917G	S:L452W		y		
+T22942A	S:N460K		y		
+G22992A	S:S477N				
+C22995A	S:T478K				
+T23005A	S:N481K		y		
+G23009-	S:V483-		y		
+T23010-	S:V483-		y		
+T23011-	S:V483-		y		
+G23012A	S:E484K		y		
+G23013A	S:E484K		y	y	Reversion relative to 21L
+T23018C	S:F486P		y		
+T23019C	S:F486P		y		
+A23055G	S:Q498R				
+A23063T	S:N501Y				
+T23075C	S:Y505H				
+G23222A	S:E554K		y		
+C23271T	S:A570V		y		
+A23403G	S:D614G				
+C23423T	S:P621S		y		
+C23525T	S:H655Y				
+T23599G	S:N679K				
+C23604G	S:P681R		y		
+C23854A	S:N764K				
+G23948T	S:D796Y				
+C24378T	S:S939F		y		
+A24424T	S:Q954H				
+T24469A	S:N969K				
+C24990T	S:P1143L		y		
+C25000T					
+C25207T			y		
+C25584T					
+C26060T	ORF3a:T223I				
+C26270T	E:T9I				
+G26529C	M:D3H		y		
+C26577G	M:Q19E				
+A26610G	M:T30A		y		
+C26681T			y		
+G26709A	M:A63T				
+C26833T	M:A104V		y		
+C26858T					
+A27259C					
+G27382C	ORF6:D61L				
+A27383T	ORF6:D61L				
+T27384C	ORF6:D61L				
+C27807T					
+A28271T					
+C28311T	N:P13L	ORF9b:P10S			
+G28362-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
+A28363-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
+G28364-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
+A28365-	N:R32-	ORF9b:N28-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
+A28366-	N:R32-	ORF9b:N28-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
+C28367-	N:R32-	ORF9b:N28-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
+G28368-	N:S33-	ORF9b:A29-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
+C28369-	N:S33-	ORF9b:A29-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
+A28370-	N:S33-	ORF9b:A29-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
+G28881A	N:R203K				
+G28882A	N:R203K				
+G28883C	N:G204R				
+C28958A	N:Q229K		y		
+A29510C	N:S413R				
+G29734-					
+A29735-					
+G29736-					
+G29737-					
+C29738-					
+C29739-					
+A29740-					
+C29741-					
+G29742-					
+C29743-					
+G29744-					
+G29745-					
+A29746-					
+G29747-					
+T29748-					
+A29749-					
+C29750-					
+G29751-					
+A29752-					
+T29753-					
+C29754-					
+G29755-					
+A29756-					
+G29757-					
+T29758-					
+G29759-					

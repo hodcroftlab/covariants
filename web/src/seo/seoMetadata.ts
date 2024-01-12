@@ -121,6 +121,18 @@ export const SEO_OVERRIDES: Record<string, PageMetadata> = {
     name: `${PROJECT_NAME}: 23F (Omicron)`,
     description: `${PROJECT_NAME}: Variant 23F (Omicron)`,
   },
+  '/variants/23G.Omicron': {
+    name: `${PROJECT_NAME}: 23G (Omicron)`,
+    description: `${PROJECT_NAME}: Variant 23G (Omicron)`,
+  },
+  '/variants/23H.Omicron': {
+    name: `${PROJECT_NAME}: 23H (Omicron)`,
+    description: `${PROJECT_NAME}: Variant 23H (Omicron)`,
+  },
+  '/variants/23I.Omicron': {
+    name: `${PROJECT_NAME}: 23I (Omicron)`,
+    description: `${PROJECT_NAME}: Variant 23I (Omicron)`,
+  },
   '/variants/21B.Kappa': {
     name: `${PROJECT_NAME}: 21B (Kappa)`,
     description: `${PROJECT_NAME}: Variant 21B (Kappa)`,
