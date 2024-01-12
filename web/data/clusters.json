@@ -35,7 +35,7 @@
       "country_info": [],
       "display_name": "20I (Alpha, V1)",
       "graphing": true,
-      "important": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -769,7 +769,7 @@
       "country_info": [],
       "display_name": "21A (Delta)",
       "graphing": true,
-      "important": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -5499,7 +5499,7 @@
       "country_info": [],
       "display_name": "22E (Omicron)",
       "graphing": true,
-      "important": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -7829,7 +7829,7 @@
       "display_name": "23B (Omicron)",
       "graphing": true,
       "has_no_page": false,
-      "important": true,
+      "important": false,
       "mutations": {
         "nonsynonymous": [
           {
@@ -11095,7 +11095,7 @@
       "display_name": "23F (Omicron)",
       "graphing": true,
       "has_no_page": false,
-      "important": false,
+      "important": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -11959,8 +11959,8 @@
       "country_info": [],
       "display_name": "23G (Omicron)",
       "graphing": true,
-      "has_no_page": true,
-      "important": false,
+      "has_no_page": false,
+      "important": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -12817,8 +12817,8 @@
       "country_info": [],
       "display_name": "23H (Omicron)",
       "graphing": true,
-      "has_no_page": true,
-      "important": false,
+      "has_no_page": false,
+      "important": true,
       "mutations": {
         "nonsynonymous": [
           {
@@ -13707,8 +13707,8 @@
       "country_info": [],
       "display_name": "23I (Omicron)",
       "graphing": true,
-      "has_no_page": true,
-      "important": false,
+      "has_no_page": false,
+      "important": true,
       "mutations": {
         "nonsynonymous": [
           {
