@@ -12772,7 +12772,7 @@
       "aquaria_urls": [
         {
           "gene": "S",
-          "url": "https://aquaria.app/SARS-CoV-2/S?T19I&L24Del&P25Del&P26Del&A27S&Q52H&V83A&G142D&Y144Del&H146Q&Q183E&V213E&G252&G339H&R346T&L368I&S371F&S373P&S375F&T376A&D405N&R408S&K417N&N440K&V445P&G446S&L455F&F456L&N460K&S477N&T478K&E484A&F486P&F486S&F490S&R493Q&Q498R&N501Y&Y505H&D614G&H655Y&N679K&P681H&N764K&D796Y&Q954H&N969K"
+          "url": "https://aquaria.app/SARS-CoV-2/S?T19I&L24Del&P25Del&P26Del&A27S&Q52H&V83A&G142D&Y144Del&H146Q&Q183E&V213E&G252V&G339H&R346T&L368I&S371F&S373P&S375F&T376A&D405N&R408S&K417N&N440K&V445P&G446S&L455F&F456L&N460K&S477N&T478K&E484A&F486P&F486S&F490S&R493Q&Q498R&N501Y&Y505H&D614G&H655Y&N679K&P681H&N764K&D796Y&Q954H&N969K"
         },
         {
           "gene": "E",
@@ -12788,11 +12788,11 @@
         },
         {
           "gene": "ORF1a",
-          "url": "https://aquaria.app/SARS-CoV-2/PP1a?K47R&S135R&A690V&T842I&G1307S&G1819S&L3027F&T3090I&A3143V&L3201F&T3255&P3395H&S3675Del&S3675Del&G3676Del&F3677Del&T4175I"
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?K47R&S135R&A690V&T842I&G1307S&G1819S&L3027F&T3090I&A3143V&L3201F&T3255I&P3395H&S3675Del&S3675Del&G3676Del&F3677Del&T4175I"
         },
         {
           "gene": "ORF1b",
-          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?K47R&S135R&A690V&T842I&G1307S&G1819S&L3027F&T3090I&A3143V&L3201F&T3255&P3395H&S3675Del&S3675Del&G3676Del&F3677Del&T4175I&D4455N&P4715L&G5063S&S5360P&R5716C&I5967V&T6564I"
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?K47R&S135R&A690V&T842I&G1307S&G1819S&L3027F&T3090I&A3143V&L3201F&T3255I&P3395H&S3675Del&S3675Del&G3676Del&F3677Del&T4175I&D4455N&P4715L&G5063S&S5360P&R5716C&I5967V&T6564I"
         },
         {
           "gene": "ORF3a",
@@ -12896,8 +12896,8 @@
           {
             "gene": "S",
             "left": "G",
-            "pos": 25,
-            "right": "2"
+            "pos": 252,
+            "right": "V"
           },
           {
             "gene": "S",
@@ -13208,8 +13208,8 @@
           {
             "gene": "ORF1a",
             "left": "T",
-            "pos": 325,
-            "right": "5"
+            "pos": 3255,
+            "right": "I"
           },
           {
             "gene": "ORF1a",
