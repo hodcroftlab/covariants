@@ -1,16 +1,18 @@
 /* eslint-disable camelcase */
 import React, { useMemo } from 'react'
 
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceArea } from 'recharts'
 import { DateTime } from 'luxon'
 
 import type { CountryDistributionDatum } from 'src/io/getPerCountryData'
 import { theme } from 'src/theme'
-import { ticks, timeDomain } from 'src/io/getParams'
 import { CLUSTER_NAME_OTHERS, getClusterColor } from 'src/io/getClusters'
 import { formatDateHumanely, formatProportion } from 'src/helpers/format'
-import { adjustTicks } from 'src/helpers/adjustTicks'
 import { ChartContainer } from 'src/components/Common/ChartContainer'
+import { useRecoilState } from 'recoil'
+import { dateFilterAtom } from 'src/state/DateFilter'
+import { useDateFilter } from 'src/helpers/useDateFilter'
+import { useZoomArea, zoomAreaStyleProps } from 'src/helpers/useZoomArea'
 import { CountryDistributionPlotTooltip } from './CountryDistributionPlotTooltip'
 
 const allowEscapeViewBox = { x: false, y: true }
@@ -31,26 +33,39 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
 
         const others = total_sequences - total_cluster_sequences
         const weekSec = DateTime.fromFormat(week, 'yyyy-MM-dd').toSeconds()
-        return { week: weekSec, ...cluster_counts, others, total: total_sequences }
+        return {
+          week: weekSec,
+          ...cluster_counts,
+          others,
+          total: total_sequences,
+          maxY: total_cluster_sequences / total_sequences,
+        }
       }),
     [distribution],
   )
 
-  const { adjustedTicks, domainX, domainY } = useMemo(() => {
-    const adjustedTicks = adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin).slice(1) // slice ensures first tick is not outside domain
-    const domainX = [timeDomain[0], timeDomain[1]]
-    const domainY = [0, 1]
-    return { adjustedTicks, domainX, domainY }
-  }, [width])
+  const [dateFilter, setDateFilter] = useRecoilState(dateFilterAtom)
+  const { domainX, domainY, ticks } = useDateFilter(dateFilter, data, width)
+  const { handleMouseDown, handleMouseMove, handleMouseUp, isZooming, style, zoomArea } = useZoomArea(setDateFilter)
 
   return (
-    <AreaChart margin={theme.plot.margin} data={data} stackOffset="expand" width={width} height={height}>
+    <AreaChart
+      margin={theme.plot.margin}
+      data={data}
+      stackOffset="expand"
+      width={width}
+      height={height}
+      style={style}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+    >
       <XAxis
         dataKey="week"
         type="number"
         tickFormatter={formatDateHumanely}
         domain={domainX}
-        ticks={adjustedTicks}
+        ticks={ticks}
         tick={theme.plot.tickStyle}
         tickMargin={theme.plot.tickMargin?.x}
         allowDataOverflow
@@ -74,6 +89,7 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
           fill={getClusterColor(cluster)}
           fillOpacity={1}
           isAnimationActive={false}
+          // animationDuration={500}
         />
       ))}
 
@@ -85,16 +101,23 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
         fill={theme.clusters.color.others}
         fillOpacity={1}
         isAnimationActive={false}
+        // animationDuration={500}
       />
 
       <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
 
-      <Tooltip
-        content={CountryDistributionPlotTooltip}
-        isAnimationActive={false}
-        allowEscapeViewBox={allowEscapeViewBox}
-        offset={50}
-      />
+      {zoomArea && isZooming && (
+        <ReferenceArea x1={zoomArea[0]} x2={zoomArea[1]} y1={domainY[0]} y2={domainY[1]} {...zoomAreaStyleProps} />
+      )}
+
+      {!isZooming && (
+        <Tooltip
+          content={CountryDistributionPlotTooltip}
+          isAnimationActive={false}
+          allowEscapeViewBox={allowEscapeViewBox}
+          offset={50}
+        />
+      )}
     </AreaChart>
   )
 }

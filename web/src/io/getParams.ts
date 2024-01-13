@@ -13,16 +13,34 @@ export function getParams(): GlobalParams {
 
 export const params = getParams()
 
-export function getTimeDomain(): [number, number] {
+export function getDateRange(): { start: number; end: number } {
   const minDate = dateStringToSeconds(params.min_date)
   const maxDate = dateStringToSeconds(params.max_date)
-  return [minDate, maxDate]
+  return { start: minDate, end: maxDate }
 }
 
-export function getTicks() {
-  const timeDomain = getTimeDomain()
-  const start = timeDomain[0]
-  const end = timeDomain[1]
+function getWeeks(): number[] {
+  const dateRange = getDateRange()
+  return Interval.fromDateTimes(
+    // prettier-ignore
+    DateTime.fromSeconds(dateRange.start),
+    DateTime.fromSeconds(dateRange.end),
+  )
+    .splitBy({ weeks: 2 })
+    .map((d) => d.start.toSeconds())
+}
+
+export const weeks = getWeeks()
+
+function getTimeDomain(): [number, number] {
+  return [weeks[0], weeks[weeks.length - 1]]
+}
+
+export const timeDomain = getTimeDomain()
+
+export function getTicks(domain = timeDomain) {
+  const start = domain[0]
+  const end = domain[1]
   return Interval.fromDateTimes(
     // prettier-ignore
     DateTime.fromSeconds(start).startOf('month'),
@@ -32,5 +50,4 @@ export function getTicks() {
     .map((d) => d.start.toSeconds())
 }
 
-export const timeDomain = getTimeDomain()
 export const ticks = getTicks()

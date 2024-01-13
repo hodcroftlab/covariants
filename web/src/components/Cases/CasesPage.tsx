@@ -21,12 +21,16 @@ import { CountryFlag } from 'src/components/Common/CountryFlag'
 import { PageHeading } from 'src/components/Common/PageHeading'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
+import { useMobile } from 'src/helpers/useMediaQuery'
 import { CasesPlotCard } from './CasesPlotCard'
+import { StickyToolbar, ToolbarGroup } from '../Common/StickyToolbar'
+import { DateFilter } from '../Common/DateFilter'
 
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
 export function CasesPage() {
   const { t } = useTranslationSafe()
+  const isMobile = useMobile()
 
   const [countries, setCountries] = useRecoilState(countriesCasesAtom)
   const [continents, setContinents] = useRecoilState(continentsCasesAtom)
@@ -117,7 +121,12 @@ export function CasesPage() {
 
       <Row noGutters>
         <Col>
-          <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
+          <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')} verticalRhythm={false}>
+            <StickyToolbar>
+              <ToolbarGroup>
+                <DateFilter />
+              </ToolbarGroup>
+            </StickyToolbar>
             <WrapperFlex>
               <SidebarFlex>
                 <DistributionSidebar
@@ -126,8 +135,8 @@ export function CasesPage() {
                   clusters={clusters}
                   regionsTitle={t('Countries')}
                   enabledFilters={enabledFilters}
-                  clustersCollapsedByDefault={false}
-                  countriesCollapsedByDefault={false}
+                  clustersCollapsedByDefault={isMobile}
+                  countriesCollapsedByDefault={isMobile}
                   Icon={CountryFlag}
                   onClusterFilterChange={handleClusterCheckedChange}
                   onClusterFilterSelectAll={handleClusterSelectAll}
@@ -138,7 +147,6 @@ export function CasesPage() {
                   onCountryFilterDeselectAll={handleCountryDeselectAll}
                 />
               </SidebarFlex>
-
               <MainFlex>
                 <Row noGutters>
                   <Col>

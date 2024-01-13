@@ -30,7 +30,11 @@ const ProposeChangesText = styled.span`
   font-size: 0.85rem;
 `
 
-const ContentWrapper = styled.div`
+interface ContentWrapperProps {
+  verticalRhythm: boolean
+}
+
+const ContentWrapper = styled.div<ContentWrapperProps>`
   p,
   ul {
     max-width: 100ch;
@@ -38,18 +42,25 @@ const ContentWrapper = styled.div`
     margin-right: auto;
   }
 
-  & > * {
-    margin-bottom: 0;
-  }
+  ${(p) => {
+    if (p.verticalRhythm === false) {
+      return ''
+    }
+    return `
+      & > * {
+        margin-bottom: 0;
+      }
 
-  & > * + * {
-    margin-top: 1.5rem;
-  }
+      & > * + * {
+        margin-top: 1.5rem;
+      }
 
-  & > p + h2,
-  & > p + h3 {
-    margin-top: 3rem;
-  }
+      & > p + h2,
+      & > p + h3 {
+        margin-top: 3rem;
+      }
+    `
+  }}
 `
 
 export interface EditableBodyProps {
@@ -82,13 +93,20 @@ export function EditableHeader({ githubUrl, text }: EditableBodyProps) {
 export interface EditableProps {
   githubUrl?: string
   text?: string
+  verticalRhythm?: boolean
 }
 
-export function Editable({ githubUrl, text, children, ...restProps }: PropsWithChildren<EditableProps>) {
+export function Editable({
+  githubUrl,
+  text,
+  children,
+  verticalRhythm,
+  ...restProps
+}: PropsWithChildren<EditableProps>) {
   return (
     <Container {...restProps}>
       <EditableHeader githubUrl={githubUrl} text={text} />
-      <ContentWrapper>{children}</ContentWrapper>
+      <ContentWrapper verticalRhythm={verticalRhythm}>{children}</ContentWrapper>
     </Container>
   )
 }
