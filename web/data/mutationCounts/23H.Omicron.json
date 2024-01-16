@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 31143,
+    "total": 32206,
     "counts": [
       {
         "mut": "S:Q14K",
-        "count": 2993
+        "count": 3177
       },
       {
         "mut": "S:F157L",
-        "count": 1343
+        "count": 1386
       },
       {
         "mut": "S:H146K",
-        "count": 1295
+        "count": 1353
       },
       {
         "mut": "S:Q14H",
-        "count": 738
+        "count": 783
       },
       {
         "mut": "S:G482R",
-        "count": 608
+        "count": 658
       },
       {
         "mut": "S:P809S",
-        "count": 570
+        "count": 585
       },
       {
         "mut": "S:S256L",
-        "count": 545
+        "count": 553
       },
       {
         "mut": "S:P174S",
-        "count": 450
+        "count": 451
       },
       {
         "mut": "S:Q677H",
-        "count": 382
+        "count": 387
       },
       {
         "mut": "S:Q14R",
-        "count": 361
+        "count": 379
       }
     ]
   },
   "others": {
-    "total": 31143,
+    "total": 32206,
     "counts": [
       {
         "mut": "ORF1a:T1589I",
-        "count": 1339
+        "count": 1397
       },
       {
         "mut": "ORF3a:L52I",
-        "count": 1188
+        "count": 1222
       },
       {
         "mut": "ORF8:I121-",
-        "count": 695
+        "count": 708
       },
       {
         "mut": "ORF1b:P1570S",
-        "count": 671
+        "count": 696
       },
       {
         "mut": "ORF1a:P80S",
-        "count": 667
+        "count": 691
       },
       {
         "mut": "ORF1a:L3930F",
-        "count": 651
+        "count": 676
       },
       {
         "mut": "ORF1a:E1210K",
-        "count": 613
-      },
-      {
-        "mut": "N:P368S",
-        "count": 538
+        "count": 616
       },
       {
         "mut": "ORF1a:P2144S",
-        "count": 501
+        "count": 550
       },
       {
-        "mut": "ORF3a:S171L",
-        "count": 482
+        "mut": "N:P368S",
+        "count": 542
+      },
+      {
+        "mut": "ORF1a:L3606F",
+        "count": 496
       }
     ]
   }

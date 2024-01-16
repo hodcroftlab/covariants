@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 152255,
+    "total": 155509,
     "counts": [
       {
         "mut": "S:L455F",
-        "count": 44257
+        "count": 45672
       },
       {
         "mut": "S:F157L",
-        "count": 38426
+        "count": 39742
       },
       {
         "mut": "S:L452R",
-        "count": 31883
+        "count": 33080
       },
       {
         "mut": "S:S704L",
-        "count": 8880
+        "count": 9171
       },
       {
         "mut": "S:H146K",
-        "count": 6688
+        "count": 6821
       },
       {
         "mut": "S:Q14K",
-        "count": 2939
+        "count": 3114
       },
       {
         "mut": "S:T307I",
-        "count": 2012
+        "count": 2044
       },
       {
         "mut": "S:D253G",
-        "count": 1834
+        "count": 1848
       },
       {
         "mut": "S:L5F",
-        "count": 1518
+        "count": 1555
       },
       {
-        "mut": "S:S494P",
-        "count": 1185
+        "mut": "S:T478R",
+        "count": 1232
       }
     ]
   },
   "others": {
-    "total": 152255,
+    "total": 155509,
     "counts": [
       {
         "mut": "ORF1b:D54N",
-        "count": 65227
+        "count": 66524
       },
       {
         "mut": "ORF1a:S1857L",
-        "count": 36421
+        "count": 37674
       },
       {
         "mut": "ORF1a:R542C",
-        "count": 20145
+        "count": 20495
       },
       {
         "mut": "ORF1a:T4083M",
-        "count": 11387
+        "count": 11825
       },
       {
         "mut": "ORF1a:T2274I",
-        "count": 8302
+        "count": 8587
       },
       {
         "mut": "ORF1b:K2557R",
-        "count": 6968
+        "count": 7078
       },
       {
         "mut": "ORF3a:P240L",
-        "count": 5957
+        "count": 6036
       },
       {
         "mut": "ORF1a:T1589I",
-        "count": 2413
+        "count": 2492
       },
       {
         "mut": "ORF1a:L3606F",
-        "count": 1989
+        "count": 2030
       },
       {
         "mut": "ORF1b:A2431V",
-        "count": 1981
+        "count": 2008
       }
     ]
   }
