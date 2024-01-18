@@ -3,7 +3,7 @@ import React, { useMemo } from 'react'
 
 import { get } from 'lodash'
 import { Oval as OvalLoader } from 'react-loader-spinner'
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import { AcknowledgementsError } from 'src/components/Acknowledgements/AcknowledgementsError'
 import styled from 'styled-components'
 import { Col, Container, Row } from 'reactstrap'

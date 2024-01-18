@@ -49,6 +49,6 @@ export function parseMutationCounts(data: MutationCountsJsonGeneRecord) {
 
 export async function getMutationCounts(clusterBuildName: string): Promise<MutationCountsData> {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,unicorn/no-await-expression-member
-  const data = (await import(`../../data/mutationCounts/${clusterBuildName}.json`)).default as MutationCountsJson
+  const data = (await import(`../../public/data/mutationCounts/${clusterBuildName}.json`)).default as MutationCountsJson
   return mapValues(data, (datum) => parseMutationCounts(datum))
 }

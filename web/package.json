@@ -65,9 +65,12 @@
     "i18n:translate": "json-autotranslate --config=json-autotranslate.json --input=src/i18n/resources --service=amazon-translate --matcher=i18next --fix-inconsistencies --delete-unused-strings"
   },
   "dependencies": {
+    "@tanstack/query-core": "4.24.9",
+    "@tanstack/react-query": "4.24.9",
+    "@tanstack/react-query-devtools": "4.24.9",
     "animate.css": "4.1.1",
     "autoprefixer": "10.4.5",
-    "axios": "0.27.2",
+    "axios": "1.6.1",
     "bootstrap": "4.5.2",
     "bootstrap-icons": "1.8.1",
     "classnames": "2.3.1",
@@ -106,7 +109,6 @@
     "react-icons": "4.7.1",
     "react-intersection-observer": "9.4.0",
     "react-loader-spinner": "5.1.4",
-    "react-query": "3.38.0",
     "react-reactstrap-pagination": "2.0.3",
     "react-resize-detector": "7.0.0",
     "react-select": "5.3.1",
@@ -116,7 +118,8 @@
     "react-toggle": "4.1.2",
     "reactstrap": "8.10.1",
     "recharts": "2.1.9",
-    "recoil-persist": "4.2.0",
+    "recoil": "0.7.7",
+    "recoil-persist": "5.1.0",
     "reflect-metadata": "0.1.13",
     "regenerator-runtime": "0.13.9",
     "resize-observer-polyfill": "1.5.1",
@@ -125,7 +128,8 @@
     "surprise-santa": "1.0.6",
     "typeface-droid-sans-mono": "0.0.44",
     "typeface-open-sans": "0.0.75",
-    "url-join": "4.0.1"
+    "url-join": "4.0.1",
+    "use-sync-external-store": "1.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.17.9",
@@ -172,6 +176,7 @@
     "@types/reactstrap": "8.7.1",
     "@types/rimraf": "3.0.2",
     "@types/semver": "7.3.9",
+    "@types/use-sync-external-store": "0.0.6",
     "@types/serialize-javascript": "5.0.2",
     "@types/styled-components": "5.1.25",
     "@types/url-join": "4.0.1",
@@ -254,7 +259,6 @@
     "postcss-preset-env": "7.4.4",
     "prettier": "2.6.2",
     "raw-loader": "4.0.2",
-    "recoil": "0.7.2",
     "remark-autolink-headings": "6.0.1",
     "remark-breaks": "2.0.1",
     "remark-images": "2.0.0",
@@ -282,11 +286,15 @@
     "@babel/preset-env": "7.16.11",
     "@babel/preset-typescript": "7.16.7",
     "@next/eslint-plugin-next": "12.1.5",
+    "@tanstack/query-core": "4.24.9",
+    "@tanstack/react-query": "4.24.9",
+    "@tanstack/react-query-devtools": "4.24.9",
     "@types/react": "18.0.8",
     "@types/react-dom": "18.0.3",
     "@typescript-eslint/eslint-plugin": "5.21.0",
     "@typescript-eslint/parser": "5.21.0",
     "@typescript-eslint/typescript-estree": "5.21.0",
+    "axios": "1.6.1",
     "babel-plugin-parameter-decorator": "1.0.16",
     "babel-plugin-transform-typescript-metadata": "0.3.2",
     "compression-webpack-plugin": "9.2.0",
@@ -342,6 +350,7 @@
     "svgo": "1.3.2",
     "ts-toolbelt": "9.6.0",
     "typescript": "4.6.4",
-    "webpack": "5.72.0"
+    "webpack": "5.72.0",
+    "use-sync-external-store": "1.2.0"
   }
 }

@@ -1,28 +1,16 @@
 import React, { useCallback, useMemo } from 'react'
-
 import { Card, CardBody, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
-import {
-  clustersAtom,
-  ClustersDataFlavor,
-  disableAllClusters,
-  enableAllClusters,
-  toggleCluster,
-} from 'src/state/Clusters'
-import {
-  continentsAtom,
-  countriesAtom,
-  disableAllCountries,
-  enableAllCountries,
-  toggleContinent,
-  toggleCountry,
-} from 'src/state/Places'
+import { disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/Clusters'
+import { clustersForPerClusterDataAtom } from 'src/state/ClustersForPerClusterData'
+import { disableAllCountries, enableAllCountries, toggleContinent, toggleCountry } from 'src/state/Places'
+import { usePlacesPerCluster } from 'src/state/PlacesForPerClusterData'
 import { tooltipSortAtom, TooltipSortCriterion } from 'src/state/TooltipSort'
 import styled from 'styled-components'
 import { MdxContent } from 'src/i18n/getMdxContent'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { getPerClusterData, filterClusters, filterCountries } from 'src/io/getPerClusterData'
+import { usePerClusterData, filterClusters, filterCountries } from 'src/io/getPerClusterData'
 import { ClusterDistributionPlotCard } from 'src/components/ClusterDistribution/ClusterDistributionPlotCard'
 import { ColCustom } from 'src/components/Common/ColCustom'
 import { Dropdown as DropdownBase } from 'src/components/Common/Dropdown'
@@ -99,17 +87,14 @@ const StickyRow = styled(Row)`
 export function ClusterDistributionPage() {
   const { t } = useTranslationSafe()
 
-  const [countries, setCountries] = useRecoilState(countriesAtom(undefined))
-  const [continents, setContinents] = useRecoilState(continentsAtom(undefined))
-  const [clusters, setClusters] = useRecoilState(
-    clustersAtom({ dataFlavor: ClustersDataFlavor.PerCluster, region: 'World' }),
-  )
+  const { countries, setCountries, continents, setContinents } = usePlacesPerCluster()
+  const [clusters, setClusters] = useRecoilState(clustersForPerClusterDataAtom)
 
   const [tooltipSort, setTooltipSort] = useRecoilState(tooltipSortAtom)
   const perCountryTooltipSortBy = tooltipSort.criterion
   const perCountryTooltipSortReversed = tooltipSort.reversed
 
-  const { clusterBuildNames, clusterDistributions } = getPerClusterData()
+  const { clusterBuildNames, clusterDistributions } = usePerClusterData()
 
   const setSortBy = useCallback(
     (criterion: TooltipSortCriterion) => {

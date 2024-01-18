@@ -4,17 +4,14 @@ import 'resize-observer-polyfill/dist/ResizeObserver.global'
 import 'css.escape'
 
 import dynamic from 'next/dynamic'
-import React, { useCallback, useEffect, useMemo } from 'react'
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { MutableSnapshot, RecoilRoot, useRecoilCallback } from 'recoil'
-import { ReactQueryDevtools } from 'react-query/devtools'
+import React, { Suspense, useCallback, useEffect, useMemo } from 'react'
+import { RecoilEnv, RecoilRoot, useRecoilCallback } from 'recoil'
+import { QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { I18nextProvider } from 'react-i18next'
 import type { AppProps } from 'next/app'
-import { parseUrl } from 'src/helpers/parseUrl'
-import { clustersAtom, ClustersDataFlavor, urlQueryToClusters } from 'src/state/Clusters'
-import { clustersCasesAtom, urlQueryToClustersCases } from 'src/state/ClustersForCaseData'
-import { continentsAtom, countriesAtom, regionAtom, urlQueryToPlaces } from 'src/state/Places'
-import { continentsCasesAtom, countriesCasesAtom, urlQueryToPlacesCases } from 'src/state/PlacesForCaseData'
+import { LOADING } from 'src/components/Loading/Loading'
+import { FETCHER } from 'src/hooks/useAxiosQuery'
 import { ThemeProvider } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
 import i18n, { changeLocale, getLocaleWithKey } from 'src/i18n/i18n'
@@ -29,13 +26,6 @@ import { localeAtom } from 'src/state/locale.state'
 import 'src/styles/global.scss'
 
 export function RecoilStateInitializer() {
-  // const router = useRouter()
-
-  // // NOTE: Do manual parsing, because router.query is randomly empty on the first few renders and on repeated renders.
-  // // This is important, because various states depend on query, and when it changes back and forth,
-  // // the state also changes unexpectedly.
-  // const { query: urlQuery } = useMemo(() => parseUrl(router.asPath), [router.asPath])
-
   const initialize = useRecoilCallback(({ set, snapshot }) => () => {
     const snapShotRelease = snapshot.retain()
     const { getPromise } = snapshot
@@ -63,58 +53,63 @@ export function RecoilStateInitializer() {
   return null
 }
 
+RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false
+
 function MyApp({ Component, pageProps, router }: AppProps) {
-  const queryClient = useMemo(() => new QueryClient(), [])
+  const initializeState = useCallback(() => {}, [])
 
-  // NOTE: We do manual parsing here, because router.query is randomly empty on the first few renders.
-  const { pathname, query } = useMemo(() => parseUrl(router.asPath), [router.asPath])
+  // // NOTE: We do manual parsing here, because router.query is randomly empty on the first few renders.
+  // const { pathname, query } = useMemo(() => parseUrl(router.asPath), [router.asPath])
+  //
+  // const initializeState = useCallback(
+  //   ({ set }: MutableSnapshot) => {
+  //     // Set initial state
+  //     switch (pathname) {
+  //       case '/per-country': {
+  //         const { region, continents, countries } = useUrlQueryToPlaces(query)
+  //
+  //         set(regionAtom, region)
+  //         set(continentsAtom(region), continents)
+  //         set(countriesAtom(region), countries)
+  //
+  //         const params = { dataFlavor: ClustersDataFlavor.PerCountry, region }
+  //         const clusters = useQueryToClusters(query, params)
+  //         set(clustersAtom(params), clusters)
+  //
+  //         break
+  //       }
+  //       case '/per-variant': {
+  //         const { region, continents, countries } = useUrlQueryToPlaces(query)
+  //
+  //         set(continentsAtom(undefined), continents)
+  //         set(countriesAtom(undefined), countries)
+  //
+  //         const params = { dataFlavor: ClustersDataFlavor.PerCluster, region }
+  //         const clusters = useQueryToClusters(query, params)
+  //         set(clustersAtom(params), clusters)
+  //
+  //         break
+  //       }
+  //       case '/cases': {
+  //         const { continents, countries } = urlQueryToPlacesCases(query)
+  //
+  //         set(continentsCasesAtom, continents)
+  //         set(countriesCasesAtom, countries)
+  //
+  //         const clusters = urlQueryToClustersCases(query)
+  //         set(clustersCasesAtom, clusters)
+  //
+  //         break
+  //       }
+  //       default:
+  //         break
+  //     }
+  //   },
+  //   [pathname, query],
+  // )
 
-  const initializeState = useCallback(
-    ({ set }: MutableSnapshot) => {
-      // Set initial state
-      switch (pathname) {
-        case '/per-country': {
-          const { region, continents, countries } = urlQueryToPlaces(query)
-
-          set(regionAtom, region)
-          set(continentsAtom(region), continents)
-          set(countriesAtom(region), countries)
-
-          const params = { dataFlavor: ClustersDataFlavor.PerCountry, region }
-          const clusters = urlQueryToClusters(query, params)
-          set(clustersAtom(params), clusters)
-
-          break
-        }
-        case '/per-variant': {
-          const { region, continents, countries } = urlQueryToPlaces(query)
-
-          set(continentsAtom(undefined), continents)
-          set(countriesAtom(undefined), countries)
-
-          const params = { dataFlavor: ClustersDataFlavor.PerCluster, region }
-          const clusters = urlQueryToClusters(query, params)
-          set(clustersAtom(params), clusters)
-
-          break
-        }
-        case '/cases': {
-          const { continents, countries } = urlQueryToPlacesCases(query)
-
-          set(continentsCasesAtom, continents)
-          set(countriesCasesAtom, countries)
-
-          const clusters = urlQueryToClustersCases(query)
-          set(clustersCasesAtom, clusters)
-
-          break
-        }
-        default:
-          break
-      }
-    },
-    [pathname, query],
-  )
+  // Use shared QueryClient for queries inside and outside of React components
+  const queryClient = useMemo(() => FETCHER.getQueryClient(), [])
 
   return (
     <RecoilRoot initializeState={initializeState}>
@@ -125,7 +120,9 @@ function MyApp({ Component, pageProps, router }: AppProps) {
             <Plausible domain={DOMAIN_STRIPPED} />
             <SeoApp />
             <QueryClientProvider client={queryClient}>
-              <Component {...pageProps} />
+              <Suspense fallback={LOADING}>
+                <Component {...pageProps} />
+              </Suspense>
               <ReactQueryDevtools initialIsOpen={false} />
             </QueryClientProvider>
           </MDXProvider>

@@ -25,4 +25,4 @@ for (reg in unique(regions$region)) {
 
 final <- paste("{", paste(tog,collapse=",\n"), "}", sep="\n")
 
-write.table(final, "../../covariants/web/data/region_country.json", quote=F, row.names=F, col.names=F)
+write.table(final, "../../covariants/web/public/data/region_country.json", quote=F, row.names=F, col.names=F)

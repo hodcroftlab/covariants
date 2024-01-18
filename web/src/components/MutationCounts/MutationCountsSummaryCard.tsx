@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import { Row, Col, CardHeader, Card, CardBody } from 'reactstrap'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 

@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
 import copy from 'fast-copy'
 import { pickBy } from 'lodash'
-
+import { SetterOrUpdater, useRecoilState } from 'recoil'
 import type { Cluster } from 'src/state/Clusters'
 import type { Country } from 'src/state/Places'
-
-import perCountryDataJson from 'src/../data/perCountryData.json'
+import { FETCHER, useAxiosQuery, UseAxiosQueryOptions } from 'src/hooks/useAxiosQuery'
+import { clustersForPerCountryDataAtom } from 'src/state/ClustersForPerCountryData'
 
 export interface PerCountryDatum {
   cluster_names: string[]
@@ -33,10 +33,6 @@ export interface CountryDistribution {
   distribution: CountryDistributionDatum[]
 }
 
-export interface ClusterState {
-  [key: string]: { enabled: boolean }
-}
-
 export interface PerCountryData {
   clusterNames: string[]
   clusters: Cluster[]
@@ -44,37 +40,36 @@ export interface PerCountryData {
   perCountryIntroContent: string
 }
 
-export function getPerCountryDataRaw(): PerCountryDataRaw {
-  return perCountryDataJson as PerCountryDataRaw
+export function usePerCountryDataRaw(options?: UseAxiosQueryOptions<PerCountryDataRaw>) {
+  return useAxiosQuery<PerCountryDataRaw>('data/perCountryData.json', options)
 }
 
-export function getPerCountryData(regionName: string): PerCountryData {
-  const allData = getPerCountryDataRaw()
+export function fetchPerCountryDataRaw() {
+  return FETCHER.fetch<PerCountryDataRaw>('data/perCountryData.json')
+}
 
-  const perCountryData: PerCountryDatum | undefined = allData.regions.find(
-    (candidate) => candidate.region === regionName,
-  )
+export function usePerCountryData(region: string): PerCountryData & { setClusters: SetterOrUpdater<Cluster[]> } {
+  const allData = usePerCountryDataRaw()
+  const perCountryData: PerCountryDatum | undefined = allData.regions.find((candidate) => candidate.region === region)
   if (!perCountryData) {
-    throw new Error(`Region data not found for region: ${regionName}`)
+    throw new Error(`Per-country data not found for region: ${region}`)
   }
-
+  const [clusters, setClusters] = useRecoilState(clustersForPerCountryDataAtom(region))
   const clusterNames = copy(perCountryData.cluster_names).sort()
-  const clusters = clusterNames.map((cluster) => ({ cluster, enabled: true }))
-
   const countryDistributions = perCountryData.distributions
-
   const perCountryIntroContent = perCountryData.per_country_intro_content
 
   return {
     clusterNames,
     clusters,
+    setClusters,
     countryDistributions,
     perCountryIntroContent,
   }
 }
 
-export function getPerCountryIntroContentFilename(region: string): string {
-  const allData = getPerCountryDataRaw()
+export function usePerCountryIntroContentFilename(region: string): string {
+  const allData = usePerCountryDataRaw()
   const perCountryData: PerCountryDatum | undefined = allData.regions.find((candidate) => candidate.region === region)
   if (!perCountryData) {
     throw new Error(`Region data not found for region: ${region}`)
@@ -82,8 +77,8 @@ export function getPerCountryIntroContentFilename(region: string): string {
   return perCountryData.per_country_intro_content
 }
 
-export function getRegions() {
-  const allData = getPerCountryDataRaw()
+export function useRegions() {
+  const allData = usePerCountryDataRaw()
   const regionNames = allData.regions.map(({ region }) => region)
   const regionsHaveData = allData.regions.map(
     ({ cluster_names, distributions }) => cluster_names.length > 0 && distributions.length > 0,

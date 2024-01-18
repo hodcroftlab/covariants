@@ -1,8 +1,8 @@
 # Update Data
 
-Web application uses data from JSON files in `web/data/`.
+Web application uses data from JSON files in `web/public/data/`.
 
-These files are automatically generated using [`scripts/convert_to_web_app_json.py`](/scripts/convert_to_web_app_json.py) conversion script. This script aggregates and converts various intermediate data files in `cluster_tables/`, and, based on that, produces files in `web/data/` (overwriting them).
+These files are automatically generated using [`scripts/convert_to_web_app_json.py`](/scripts/convert_to_web_app_json.py) conversion script. This script aggregates and converts various intermediate data files in `cluster_tables/`, and, based on that, produces files in `web/public/data/` (overwriting them).
 
 In turn, files in `cluster_tables/` are generated (incrementally) using the remaining scripts in the [`scripts/`](/scripts) directory. See data curator guide for more details.
 

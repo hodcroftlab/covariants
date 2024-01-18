@@ -13,6 +13,7 @@ export const URL_MANIFEST_JSON = `${DOMAIN}/manifest.json`
 
 export const URL_GITHUB = 'https://github.com/hodcroftlab/covariants' as const
 export const URL_GITHUB_FRIENDLY = 'github.com/hodcroftlab/covariants' as const
+export const URL_GITHUB_ISSUES = 'https://github.com/hodcroftlab/covariants/issues'
 
 export const TWITTER_USERNAME_RAW = 'firefoxx66' as const
 export const TWITTER_USERNAME_FRIENDLY = `@${TWITTER_USERNAME_RAW}`

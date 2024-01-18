@@ -1,10 +1,10 @@
 import { pickBy } from 'lodash'
-
+import { SetterOrUpdater, useRecoilState } from 'recoil'
+import { FETCHER, useAxiosQuery, UseAxiosQueryOptions } from 'src/hooks/useAxiosQuery'
+import { clustersForPerClusterDataAtom } from 'src/state/ClustersForPerClusterData'
 import type { Country } from 'src/state/Places'
 import type { Cluster } from 'src/state/Clusters'
-import { getClusters, sortClusters } from 'src/io/getClusters'
-
-import perClusterData from '../../data/perClusterData.json'
+import { getClusters } from 'src/io/getClusters'
 
 export interface ClusterDistributionDatum {
   week: string
@@ -35,28 +35,31 @@ export interface PerClusterData {
   clusterDistributions: ClusterDistribution[]
 }
 
-export function getPerClusterDataRaw(): PerClusterDataRaw {
-  return perClusterData as PerClusterDataRaw
+export function usePerClusterDataRaw(options?: UseAxiosQueryOptions<PerClusterDataRaw>): PerClusterDataRaw {
+  return useAxiosQuery<PerClusterDataRaw>('data/perClusterData.json', options)
 }
-export function getPerClusterData(): PerClusterData {
-  const perClusterData = getPerClusterDataRaw()
 
-  const clusterNames = perClusterData.distributions.map(({ cluster }) => cluster).sort()
-  const clusters = sortClusters(clusterNames.map((cluster) => ({ cluster, enabled: true })))
+export function fetchPerClusterDataRaw() {
+  return FETCHER.fetch<PerClusterDataRaw>('data/perClusterData.json')
+}
 
+export function usePerClusterData(): PerClusterData & { setClusters: SetterOrUpdater<Cluster[]> } {
+  const perClusterData = usePerClusterDataRaw()
+
+  const [clusters, setClusters] = useRecoilState(clustersForPerClusterDataAtom)
   const clusterBuildNames: Map<string, string> = new Map(getClusters().map((c) => [c.display_name, c.build_name]))
-
   const clusterDistributions: ClusterDistribution[] = perClusterData.distributions
 
   return {
     clusters,
+    setClusters,
     clusterBuildNames,
     clusterDistributions,
   }
 }
 
-export function getClusterDistribution(cluster: string): ClusterDistribution {
-  const perClusterData = getPerClusterDataRaw()
+export function useClusterDistribution(cluster: string): ClusterDistribution {
+  const perClusterData = usePerClusterDataRaw()
   const clusterDistributions: ClusterDistribution[] = perClusterData.distributions
   const clusterDistribution = clusterDistributions.find((dist) => dist.cluster === cluster)
   if (!clusterDistribution) {
@@ -65,8 +68,8 @@ export function getClusterDistribution(cluster: string): ClusterDistribution {
   return clusterDistribution
 }
 
-export function getCountryNames(): string[] {
-  const perClusterData = getPerClusterDataRaw()
+export function useCountryNames(): string[] {
+  const perClusterData = usePerClusterDataRaw()
   return perClusterData.country_names
 }
 

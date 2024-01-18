@@ -1,4 +1,4 @@
-import updateJson from 'src/../data/update.json'
+import updateJson from 'src/../public/data/update.json'
 
 import { DateTime } from 'luxon'
 

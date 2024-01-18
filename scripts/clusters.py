@@ -2,7 +2,7 @@
 #
 # You can query the list of all fields existing in `clusters.json` using this command (requires jq (https://github.com/stedolan/jq/releases) ):
 #
-#    jq '[ .clusters[] | keys[] ] | unique' web/data/clusters.json
+#    jq '[ .clusters[] | keys[] ] | unique' web/public/data/clusters.json
 #
 # Note that not all fields from `clusters.py` end up in JSON, and vice-versa not all fields in JSON are present in `clusters.py` (some are generated elsewhere).
 #

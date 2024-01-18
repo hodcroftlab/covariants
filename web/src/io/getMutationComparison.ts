@@ -1,4 +1,4 @@
-import mutationComparisonJson from 'src/../data/mutationComparison.json'
+import mutationComparisonJson from 'src/../public/data/mutationComparison.json'
 
 export interface MutationShared {
   pos: number
