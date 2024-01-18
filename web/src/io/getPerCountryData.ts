@@ -5,7 +5,7 @@ import { SetterOrUpdater, useRecoilState } from 'recoil'
 import type { Cluster } from 'src/state/Clusters'
 import type { Country } from 'src/state/Places'
 import { FETCHER, useAxiosQuery, UseAxiosQueryOptions } from 'src/hooks/useAxiosQuery'
-import { clustersForPerCountryAtom } from 'src/state/ClustersForPerCountryData'
+import { clustersForPerCountryDataAtom } from 'src/state/ClustersForPerCountryData'
 
 export interface PerCountryDatum {
   cluster_names: string[]
@@ -58,7 +58,7 @@ export function usePerCountryData(region: string): PerCountryData & { setCluster
   if (!perCountryData) {
     throw new Error(`Per-country data not found for region: ${region}`)
   }
-  const [clusters, setClusters] = useRecoilState(clustersForPerCountryAtom(region))
+  const [clusters, setClusters] = useRecoilState(clustersForPerCountryDataAtom(region))
   const clusterNames = copy(perCountryData.cluster_names).sort()
   const countryDistributions = perCountryData.distributions
   const perCountryIntroContent = perCountryData.per_country_intro_content

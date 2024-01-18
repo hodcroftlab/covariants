@@ -1,9 +1,10 @@
 import { pickBy } from 'lodash'
-import { useAxiosQuery, UseAxiosQueryOptions } from 'src/hooks/useAxiosQuery'
-import { PerCountryDataRaw } from 'src/io/getPerCountryData'
+import { SetterOrUpdater, useRecoilState } from 'recoil'
+import { FETCHER, useAxiosQuery, UseAxiosQueryOptions } from 'src/hooks/useAxiosQuery'
+import { clustersForPerClusterDataAtom } from 'src/state/ClustersForPerClusterData'
 import type { Country } from 'src/state/Places'
 import type { Cluster } from 'src/state/Clusters'
-import { getClusters, sortClusters } from 'src/io/getClusters'
+import { getClusters } from 'src/io/getClusters'
 
 export interface ClusterDistributionDatum {
   week: string
@@ -42,18 +43,20 @@ export function usePerClusterDataRaw(options?: UseAxiosQueryOptions<PerClusterDa
   )
 }
 
-export function usePerClusterData(): PerClusterData {
+export function fetchPerClusterDataRaw() {
+  return FETCHER.fetch<PerClusterDataRaw>('http://localhost:4001/perClusterData.json')
+}
+
+export function usePerClusterData(): PerClusterData & { setClusters: SetterOrUpdater<Cluster[]> } {
   const perClusterData = usePerClusterDataRaw()
 
-  const clusterNames = perClusterData.distributions.map(({ cluster }) => cluster).sort()
-  const clusters = sortClusters(clusterNames.map((cluster) => ({ cluster, enabled: true })))
-
+  const [clusters, setClusters] = useRecoilState(clustersForPerClusterDataAtom)
   const clusterBuildNames: Map<string, string> = new Map(getClusters().map((c) => [c.display_name, c.build_name]))
-
   const clusterDistributions: ClusterDistribution[] = perClusterData.distributions
 
   return {
     clusters,
+    setClusters,
     clusterBuildNames,
     clusterDistributions,
   }

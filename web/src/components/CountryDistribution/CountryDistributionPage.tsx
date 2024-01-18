@@ -17,13 +17,8 @@ import {
   useRegions,
 } from 'src/io/getPerCountryData'
 import { disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/Clusters'
-import {
-  disableAllCountries,
-  enableAllCountries,
-  toggleContinent,
-  toggleCountry,
-  usePlacesPerCountry,
-} from 'src/state/PlacesForPerCountry'
+import { disableAllCountries, enableAllCountries, toggleContinent, toggleCountry } from 'src/state/Places'
+import { usePlacesPerCountry } from 'src/state/PlacesForPerCountryData'
 import { CountryDistributionPlotCard } from 'src/components/CountryDistribution/CountryDistributionPlotCard'
 import { CountryFlag } from 'src/components/Common/CountryFlag'
 import { USStateCode } from 'src/components/Common/USStateCode'

@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { useClusterDistribution, useCountryNames } from 'src/io/usePerClusterData'
+import { useClusterDistribution, useCountryNames } from 'src/io/getPerClusterData'
 
 import styled from 'styled-components'
 import { GoGraph } from 'react-icons/go'
