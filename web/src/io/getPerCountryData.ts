@@ -41,15 +41,11 @@ export interface PerCountryData {
 }
 
 export function usePerCountryDataRaw(options?: UseAxiosQueryOptions<PerCountryDataRaw>) {
-  return useAxiosQuery<PerCountryDataRaw>(
-    // 'https://raw.githubusercontent.com/hodcroftlab/covariants/master/web/public/data/perCountryData.json',
-    'http://localhost:4001/perCountryData.json',
-    options,
-  )
+  return useAxiosQuery<PerCountryDataRaw>('data/perCountryData.json', options)
 }
 
 export function fetchPerCountryDataRaw() {
-  return FETCHER.fetch<PerCountryDataRaw>('http://localhost:4001/perCountryData.json')
+  return FETCHER.fetch<PerCountryDataRaw>('data/perCountryData.json')
 }
 
 export function usePerCountryData(region: string): PerCountryData & { setClusters: SetterOrUpdater<Cluster[]> } {
