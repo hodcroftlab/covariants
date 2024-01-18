@@ -1,4 +1,4 @@
-import nameTableJson from 'src/../data/nameTable.json'
+import nameTableJson from 'src/../public/data/nameTable.json'
 
 export interface NameTableEntry {
   name: string

@@ -1,4 +1,4 @@
-import regionCountryJson from '../../data/region_country.json'
+import regionCountryJson from '../../public/data/region_country.json'
 
 export const WHOLE_WORLD_REGION = 'World'
 export const DEFAULT_REGION = WHOLE_WORLD_REGION

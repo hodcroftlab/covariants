@@ -7,7 +7,7 @@ import type { Continent, Country } from 'src/state/Places'
 import { updateUrlQuery } from 'src/helpers/urlQuery'
 import { getPerCountryCasesData } from 'src/io/getPerCountryCasesData'
 
-import regionCountryJson from '../../data/region_country.json'
+import regionCountryJson from '../../public/data/region_country.json'
 
 /**
  * Converts values incoming from URL query into region, countries and continents.

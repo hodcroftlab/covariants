@@ -42,7 +42,7 @@ export interface PerCountryData {
 
 export function usePerCountryDataRaw(options?: UseAxiosQueryOptions<PerCountryDataRaw>) {
   return useAxiosQuery<PerCountryDataRaw>(
-    // 'https://raw.githubusercontent.com/hodcroftlab/covariants/master/web/data/perCountryData.json',
+    // 'https://raw.githubusercontent.com/hodcroftlab/covariants/master/web/public/data/perCountryData.json',
     'http://localhost:4001/perCountryData.json',
     options,
   )

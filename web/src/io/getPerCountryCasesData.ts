@@ -6,7 +6,7 @@ import type { Cluster } from 'src/state/Clusters'
 import type { Country } from 'src/state/Places'
 import { sortClusters } from 'src/io/getClusters'
 
-import perCountryCasesDataJson from 'src/../data/perCountryDataCaseCounts.json'
+import perCountryCasesDataJson from 'src/../public/data/perCountryDataCaseCounts.json'
 
 export interface PerCountryCasesDatum {
   cluster_names: string[]

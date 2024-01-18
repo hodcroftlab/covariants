@@ -1,5 +1,5 @@
 import { DateTime, Interval } from 'luxon'
-import paramsJson from 'src/../data/params.json'
+import paramsJson from 'src/../public/data/params.json'
 import { dateStringToSeconds } from 'src/helpers/format'
 
 export interface GlobalParams {

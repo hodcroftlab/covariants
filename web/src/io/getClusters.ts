@@ -6,7 +6,7 @@ import type { Mutation } from 'src/types'
 import type { Cluster } from 'src/state/Clusters'
 import { theme } from 'src/theme'
 
-import clustersJson from 'src/../data/clusters.json'
+import clustersJson from 'src/../public/data/clusters.json'
 
 export const CLUSTER_NAME_OTHERS = 'others' as const
 

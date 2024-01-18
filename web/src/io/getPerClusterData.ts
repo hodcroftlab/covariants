@@ -37,7 +37,7 @@ export interface PerClusterData {
 
 export function usePerClusterDataRaw(options?: UseAxiosQueryOptions<PerClusterDataRaw>): PerClusterDataRaw {
   return useAxiosQuery<PerClusterDataRaw>(
-    // 'https://raw.githubusercontent.com/hodcroftlab/covariants/master/web/data/perClusterData.json',
+    // 'https://raw.githubusercontent.com/hodcroftlab/covariants/master/web/public/data/perClusterData.json',
     'http://localhost:4001/perClusterData.json',
     options,
   )

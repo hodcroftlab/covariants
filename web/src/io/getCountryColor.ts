@@ -1,7 +1,7 @@
 import { get } from 'lodash'
 
-import countriesToPlot from 'src/../data/countriesToPlot.json'
-import countryStyles from 'src/../data/countryStyles.json'
+import countriesToPlot from 'src/../public/data/countriesToPlot.json'
+import countryStyles from 'src/../public/data/countryStyles.json'
 
 import { lineStyleToStrokeDashArray } from 'src/helpers/lineStyleToStrokeDashArray'
 
