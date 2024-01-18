@@ -8,7 +8,7 @@ import { theme } from 'src/theme'
 import styled from 'styled-components'
 
 import type { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
-import type { ClusterDistributionDatum } from 'src/io/getPerClusterData'
+import type { ClusterDistributionDatum } from 'src/io/usePerClusterData'
 import { formatDateWeekly, formatProportion } from 'src/helpers/format'
 import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'

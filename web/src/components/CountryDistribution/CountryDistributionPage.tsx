@@ -1,7 +1,5 @@
 import React, { useCallback, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
-import { useRecoilState } from 'recoil'
-
 import { MdxContent } from 'src/i18n/getMdxContent'
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
 import { ColCustom } from 'src/components/Common/ColCustom'
@@ -14,42 +12,31 @@ import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import {
   filterClusters,
   filterCountries,
-  getPerCountryIntroContentFilename,
-  getRegions,
-  getPerCountryData,
+  usePerCountryData,
+  usePerCountryIntroContentFilename,
+  useRegions,
 } from 'src/io/getPerCountryData'
+import { disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/Clusters'
 import {
-  clustersAtom,
-  ClustersDataFlavor,
-  disableAllClusters,
-  enableAllClusters,
-  toggleCluster,
-} from 'src/state/Clusters'
-import {
-  continentsAtom,
-  countriesAtom,
   disableAllCountries,
   enableAllCountries,
-  regionAtom,
   toggleContinent,
   toggleCountry,
-} from 'src/state/Places'
-import { CountryDistributionPlotCard } from './CountryDistributionPlotCard'
-import { CountryFlag } from '../Common/CountryFlag'
-import { USStateCode } from '../Common/USStateCode'
-import { PageHeading } from '../Common/PageHeading'
+  usePlacesPerCountry,
+} from 'src/state/PlacesForPerCountry'
+import { CountryDistributionPlotCard } from 'src/components/CountryDistribution/CountryDistributionPlotCard'
+import { CountryFlag } from 'src/components/Common/CountryFlag'
+import { USStateCode } from 'src/components/Common/USStateCode'
+import { PageHeading } from 'src/components/Common/PageHeading'
 
 const enabledFilters = ['clusters', 'countriesWithIcons']
-const { regionNames, regionsHaveData } = getRegions()
 
 export function CountryDistributionPage() {
   const { t } = useTranslationSafe()
 
-  const [region, setRegion] = useRecoilState(regionAtom)
-  const [countries, setCountries] = useRecoilState(countriesAtom(region))
-  const [continents, setContinents] = useRecoilState(continentsAtom(region))
-  const [clusters, setClusters] = useRecoilState(clustersAtom({ dataFlavor: ClustersDataFlavor.PerCountry, region }))
-  const { countryDistributions } = useMemo(() => getPerCountryData(region), [region])
+  const { regionNames, regionsHaveData } = useRegions()
+  const { region, setRegion, countries, setCountries, continents, setContinents } = usePlacesPerCountry()
+  const { countryDistributions, clusters, setClusters } = usePerCountryData(region)
 
   const regionsTitle = useMemo(() => (region === 'World' ? t('Countries') : t('Regions')), [region, t])
 
@@ -118,10 +105,10 @@ export function CountryDistributionPage() {
     setCountries(disableAllCountries)
   }, [setCountries])
 
+  const contentFilename = usePerCountryIntroContentFilename(region)
   const IntroContent = useMemo(() => {
-    const contentFilename = getPerCountryIntroContentFilename(region)
     return <MdxContent filepath={`PerCountryIntro/${contentFilename}`} />
-  }, [region])
+  }, [contentFilename])
 
   return (
     <Layout wide>

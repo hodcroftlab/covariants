@@ -22,7 +22,7 @@ import { tooltipSortAtom, TooltipSortCriterion } from 'src/state/TooltipSort'
 import styled from 'styled-components'
 import { MdxContent } from 'src/i18n/getMdxContent'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { getPerClusterData, filterClusters, filterCountries } from 'src/io/getPerClusterData'
+import { usePerClusterData, filterClusters, filterCountries } from 'src/io/usePerClusterData'
 import { ClusterDistributionPlotCard } from 'src/components/ClusterDistribution/ClusterDistributionPlotCard'
 import { ColCustom } from 'src/components/Common/ColCustom'
 import { Dropdown as DropdownBase } from 'src/components/Common/Dropdown'
@@ -109,7 +109,7 @@ export function ClusterDistributionPage() {
   const perCountryTooltipSortBy = tooltipSort.criterion
   const perCountryTooltipSortReversed = tooltipSort.reversed
 
-  const { clusterBuildNames, clusterDistributions } = getPerClusterData()
+  const { clusterBuildNames, clusterDistributions } = usePerClusterData()
 
   const setSortBy = useCallback(
     (criterion: TooltipSortCriterion) => {

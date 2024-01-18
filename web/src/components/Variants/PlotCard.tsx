@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { getClusterDistribution, getCountryNames } from 'src/io/getPerClusterData'
+import { useClusterDistribution, useCountryNames } from 'src/io/usePerClusterData'
 
 import styled from 'styled-components'
 import { GoGraph } from 'react-icons/go'
@@ -52,10 +52,10 @@ export function PlotCardTitle({ cluster }: PlotCardProps) {
 export function PlotCard({ cluster }: PlotCardProps) {
   const title = useMemo(() => <PlotCardTitle cluster={cluster} />, [cluster])
   const clusterDistribution = useMemo(
-    () => getClusterDistribution(cluster.display_name).distribution,
+    () => useClusterDistribution(cluster.display_name).distribution,
     [cluster.display_name],
   )
-  const countryNames = useMemo(() => getCountryNames(), [])
+  const countryNames = useMemo(() => useCountryNames(), [])
 
   return (
     <Card>

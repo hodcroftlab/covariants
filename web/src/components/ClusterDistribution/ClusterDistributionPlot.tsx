@@ -10,7 +10,7 @@ import { ticks, timeDomain } from 'src/io/getParams'
 import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
 import { formatDateHumanely, formatProportion } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
-import type { ClusterDistributionDatum } from 'src/io/getPerClusterData'
+import type { ClusterDistributionDatum } from 'src/io/usePerClusterData'
 import { ClusterDistributionPlotTooltip } from 'src/components/ClusterDistribution/ClusterDistributionPlotTooltip'
 import { ChartContainer } from 'src/components/Common/ChartContainer'
 
