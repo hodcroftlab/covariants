@@ -21,7 +21,7 @@ from mutation_comparison import mutation_comparison
 from name_table import name_table
 
 cluster_tables_path = "cluster_tables"
-output_path = "web/data"
+output_path = "web/public/data"
 ack_output_path = "web/public/acknowledgements"
 
 

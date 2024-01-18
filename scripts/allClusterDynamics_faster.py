@@ -28,7 +28,7 @@ tables_path = "../covariants/cluster_tables/"
 overall_tables_file = "../covariants/cluster_tables/all_tables.tsv"
 acknowledgement_folder = "../covariants/acknowledgements/"
 acknowledgement_folder_new = "../covariants/web/public/acknowledgements/"
-web_data_folder = "../covariants/web/data/"
+web_data_folder = "../covariants/web/public/data/"
 # This assumes that `covariants` sites next to `ncov`
 # Otherwise, modify the paths above to put the files wherever you like.
 # (Alternatively just create a folder structure to mirror the above)

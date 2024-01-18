@@ -39,7 +39,7 @@ CoVariants的代码和作品已根据[GNU通用公共许可证(AGPL)](https://ww
 
 这些图表的原始数据来自[GISAID](https://www.gisaid.org/)。想知道这些数据是如何使用的，可以查看 [GISAID使用规范](https://www.gisaid.org/registration/terms-of-use/)。注意，由于使用规范的要求，GISAID的数据不能再分发。
 
-用于生成此处所示图的派生序列计数可用，你可以[在此Github目录](https://github.com/hodcroftlab/covariants/tree/master/cluster_tables)"按变体”找到相应的JSON或TSV文件。或者[在这里](https://github.com/hodcroftlab/covariants/blob/master/cluster_tables/EUClusters_data.json)以及[这里](https://github.com/hodcroftlab/covariants/blob/master/web/data/perCountryData.json)按国家找到对应的JSON文件 (其实数据是一样的，只是文件格式略有不同)。你可以在[这里](https://github.com/hodcroftlab/covariants/blob/master/web/data/perCountryDataCaseCounts.json)通过变体图表找到估计病例背后的数据。
+用于生成此处所示图的派生序列计数可用，你可以[在此Github目录](https://github.com/hodcroftlab/covariants/tree/master/cluster_tables)"按变体”找到相应的JSON或TSV文件。或者[在这里](https://github.com/hodcroftlab/covariants/blob/master/cluster_tables/EUClusters_data.json)以及[这里](https://github.com/hodcroftlab/covariants/blob/master/web/public/data/perCountryData.json)按国家找到对应的JSON文件 (其实数据是一样的，只是文件格式略有不同)。你可以在[这里](https://github.com/hodcroftlab/covariants/blob/master/web/public/data/perCountryDataCaseCounts.json)通过变体图表找到估计病例背后的数据。
 
 **如果你正在使用该数据，请适当[相信这个资源](#how-should-i-cite-or-acknowledge-this-work)，包括链接回本网站。**
 
