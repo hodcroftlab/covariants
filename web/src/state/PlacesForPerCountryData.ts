@@ -2,7 +2,6 @@ import { get } from 'lodash'
 import Router from 'next/router'
 import { selectorFamily, useRecoilState } from 'recoil'
 import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
-import { shouldPlotCountry } from 'src/io/getCountryColor'
 import {
   DEFAULT_REGION,
   getAllContinents,
