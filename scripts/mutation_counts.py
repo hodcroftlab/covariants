@@ -9,7 +9,7 @@ from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
-OUTPUT_FOLDER = os.path.join(THIS_DIR, "..", "web", "data", "mutationCounts")
+OUTPUT_FOLDER = os.path.join(THIS_DIR, "..", "web", "public", "data", "mutationCounts")
 
 
 aa_base_url = 'https://lapis.cov-spectrum.org/gisaid/v1/sample/aa-mutations'
