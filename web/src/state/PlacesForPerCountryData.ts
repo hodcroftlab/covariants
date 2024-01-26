@@ -69,7 +69,10 @@ const countriesAtom = atomFamilyAsync<Country[], string>({
     if (!data) {
       throw new Error(`Unable to find countries in region '${region}'`)
     }
-    const countries = data.distributions.map(({ country }) => ({ country, enabled: shouldPlotCountry(country) }))
+    const countries = data.distributions.map(({ country }) => ({
+      country,
+      enabled: region === DEFAULT_REGION ? shouldPlotCountry(country) : true,
+    }))
 
     const enabledCountries = convertToArrayMaybe(get(query, 'country'))
     if (enabledCountries) {
