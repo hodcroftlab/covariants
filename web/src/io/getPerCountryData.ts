@@ -41,11 +41,11 @@ export interface PerCountryData {
 }
 
 export function usePerCountryDataRaw(options?: UseAxiosQueryOptions<PerCountryDataRaw>) {
-  return useAxiosQuery<PerCountryDataRaw>('data/perCountryData.json', options)
+  return useAxiosQuery<PerCountryDataRaw>('/data/perCountryData.json', options)
 }
 
 export function fetchPerCountryDataRaw() {
-  return FETCHER.fetch<PerCountryDataRaw>('data/perCountryData.json')
+  return FETCHER.fetch<PerCountryDataRaw>('/data/perCountryData.json')
 }
 
 export function usePerCountryData(region: string): PerCountryData & { setClusters: SetterOrUpdater<Cluster[]> } {
