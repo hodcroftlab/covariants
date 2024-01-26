@@ -36,11 +36,11 @@ export interface PerClusterData {
 }
 
 export function usePerClusterDataRaw(options?: UseAxiosQueryOptions<PerClusterDataRaw>): PerClusterDataRaw {
-  return useAxiosQuery<PerClusterDataRaw>('data/perClusterData.json', options)
+  return useAxiosQuery<PerClusterDataRaw>('/data/perClusterData.json', options)
 }
 
 export function fetchPerClusterDataRaw() {
-  return FETCHER.fetch<PerClusterDataRaw>('data/perClusterData.json')
+  return FETCHER.fetch<PerClusterDataRaw>('/data/perClusterData.json')
 }
 
 export function usePerClusterData(): PerClusterData & { setClusters: SetterOrUpdater<Cluster[]> } {
