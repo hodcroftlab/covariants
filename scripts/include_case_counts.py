@@ -26,10 +26,10 @@ OWID_CSV_FILENAME = "owid-covid-data.csv"
 OWID_CSV_INPUT_PATH = os.path.join(THIS_DIR, "..", "data", "owid", OWID_CSV_FILENAME)
 
 COUNTRY_CSV_FILENAME = "perCountryData.json"
-COUNTRY_CSV_INPUT_PATH = os.path.join(THIS_DIR, "..", "web", "data", COUNTRY_CSV_FILENAME)
+COUNTRY_CSV_INPUT_PATH = os.path.join(THIS_DIR, "..", "web", "public", "data", COUNTRY_CSV_FILENAME)
 
 OUTPUT_CSV_FILENAME = "perCountryDataCaseCounts.json"
-OUTPUT_CSV_PATH = os.path.join(THIS_DIR, "..", "web", "data", OUTPUT_CSV_FILENAME)
+OUTPUT_CSV_PATH = os.path.join(THIS_DIR, "..", "web", "public", "data", OUTPUT_CSV_FILENAME)
 
 # the case_counts_analysis.py file can be used to explore different thresholds!
 # But need to generate a very broad file first! As that script uses the output of `perCountryDataCaseCounts.json`
