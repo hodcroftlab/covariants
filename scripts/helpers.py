@@ -37,7 +37,7 @@ def non_zero_counts(cluster_data, total_data, country, smoothing=None):
 
     cluster_and_total = pd.concat(
         [cluster_data[country], total_data[country]], axis=1
-    ).fillna(0)
+    ).fillna(0).sort_index()
     # remove initial time points without data
     data_range = np.cumsum(cluster_and_total.iloc[:, 1]) > 0
     with_data = cluster_and_total.iloc[:, 1] > 0

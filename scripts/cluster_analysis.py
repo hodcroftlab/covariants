@@ -790,6 +790,7 @@ ndone = 0
 for clus in clus_data_all:
     print(f"Process cluster {clus}: number {ndone + 1} of {len(clus_to_run)}")
     total_data = pd.DataFrame(total_counts_countries)
+    #import ipdb; ipdb.set_trace()
     cluster_data = pd.DataFrame(clus_data_all[clus]["cluster_counts"]).sort_index()
     clus_data_all[clus]["non_zero_counts"] = {}
 
