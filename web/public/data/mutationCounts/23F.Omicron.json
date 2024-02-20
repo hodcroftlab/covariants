@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 167883,
+    "total": 171562,
     "counts": [
       {
         "mut": "S:L455F",
-        "count": 51700
+        "count": 53622
       },
       {
         "mut": "S:F157L",
-        "count": 44515
+        "count": 45756
       },
       {
         "mut": "S:L452R",
-        "count": 37380
+        "count": 38466
       },
       {
         "mut": "S:S704L",
-        "count": 10820
+        "count": 11341
       },
       {
         "mut": "S:H146K",
-        "count": 7386
+        "count": 7495
       },
       {
         "mut": "S:Q14K",
-        "count": 3886
+        "count": 4219
       },
       {
         "mut": "S:T307I",
-        "count": 2334
+        "count": 2412
       },
       {
         "mut": "S:D253G",
-        "count": 1902
-      },
-      {
-        "mut": "S:L5F",
-        "count": 1663
+        "count": 1920
       },
       {
         "mut": "S:N450D",
-        "count": 1544
+        "count": 1712
+      },
+      {
+        "mut": "S:L5F",
+        "count": 1705
       }
     ]
   },
   "others": {
-    "total": 167883,
+    "total": 171562,
     "counts": [
       {
         "mut": "ORF1b:D54N",
-        "count": 71369
+        "count": 72909
       },
       {
         "mut": "ORF1a:S1857L",
-        "count": 42151
+        "count": 43302
       },
       {
         "mut": "ORF1a:R542C",
-        "count": 22179
+        "count": 22740
       },
       {
         "mut": "ORF1a:T4083M",
-        "count": 13262
+        "count": 13655
       },
       {
         "mut": "ORF1a:T2274I",
-        "count": 10128
+        "count": 10620
       },
       {
         "mut": "ORF1b:K2557R",
-        "count": 7435
+        "count": 7564
       },
       {
         "mut": "ORF3a:P240L",
-        "count": 6302
+        "count": 6408
       },
       {
         "mut": "ORF1a:T1589I",
-        "count": 2699
+        "count": 2763
       },
       {
         "mut": "ORF1a:L3606F",
-        "count": 2214
+        "count": 2257
       },
       {
         "mut": "ORF8:I121-",
-        "count": 2104
+        "count": 2174
       }
     ]
   }

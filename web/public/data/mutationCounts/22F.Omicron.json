@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 842515,
+    "total": 850192,
     "counts": [
       {
         "mut": "S:F486P",
-        "count": 797915
+        "count": 805527
       },
       {
         "mut": "S:G252V",
-        "count": 777108
+        "count": 784197
       },
       {
         "mut": "S:F456L",
-        "count": 281288
+        "count": 286650
       },
       {
         "mut": "S:Q52H",
-        "count": 181921
+        "count": 185753
       },
       {
         "mut": "S:T478R",
-        "count": 160692
+        "count": 162328
       },
       {
         "mut": "S:E180V",
-        "count": 103576
+        "count": 104463
       },
       {
         "mut": "S:L455F",
-        "count": 92149
+        "count": 95097
       },
       {
         "mut": "S:D253G",
-        "count": 58573
+        "count": 59094
       },
       {
         "mut": "S:P521S",
-        "count": 49486
+        "count": 50086
       },
       {
         "mut": "S:F157L",
-        "count": 48593
+        "count": 49914
       }
     ]
   },
   "others": {
-    "total": 842515,
+    "total": 850192,
     "counts": [
       {
         "mut": "ORF8:G8*",
-        "count": 777190
+        "count": 784359
       },
       {
         "mut": "ORF9b:I5T",
-        "count": 427082
+        "count": 432583
       },
       {
         "mut": "ORF1a:T4175I",
-        "count": 307928
+        "count": 312352
       },
       {
         "mut": "ORF1a:G1819S",
-        "count": 299141
+        "count": 303499
       },
       {
         "mut": "ORF1a:A690V",
-        "count": 183432
+        "count": 187225
       },
       {
         "mut": "ORF1a:A3143V",
-        "count": 181337
+        "count": 185110
       },
       {
         "mut": "ORF1a:L3829F",
-        "count": 110559
+        "count": 111460
       },
       {
         "mut": "ORF1b:D1746Y",
-        "count": 103222
+        "count": 104134
       },
       {
         "mut": "ORF9b:N55S",
-        "count": 97828
+        "count": 98689
       },
       {
         "mut": "ORF1b:D54N",
-        "count": 77873
+        "count": 79451
       }
     ]
   }

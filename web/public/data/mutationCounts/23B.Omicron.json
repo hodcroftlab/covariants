@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 105052,
+    "total": 106009,
     "counts": [
       {
         "mut": "S:T547I",
-        "count": 20026
+        "count": 20137
       },
       {
         "mut": "S:F456L",
-        "count": 19725
+        "count": 19988
       },
       {
         "mut": "S:P521T",
-        "count": 8684
+        "count": 8782
       },
       {
         "mut": "S:K304N",
-        "count": 6077
+        "count": 6143
       },
       {
         "mut": "S:P521S",
-        "count": 4809
+        "count": 4906
       },
       {
         "mut": "S:K147N",
-        "count": 4645
+        "count": 4714
       },
       {
         "mut": "S:L455F",
-        "count": 3914
+        "count": 3994
       },
       {
         "mut": "S:H146K",
-        "count": 3616
+        "count": 3637
       },
       {
         "mut": "S:E554K",
-        "count": 1844
+        "count": 1870
       },
       {
         "mut": "S:T732I",
-        "count": 1816
+        "count": 1834
       }
     ]
   },
   "others": {
-    "total": 105052,
+    "total": 106009,
     "counts": [
       {
         "mut": "ORF1a:G519S",
-        "count": 7681
+        "count": 7759
       },
       {
         "mut": "ORF3a:I35K",
-        "count": 7435
+        "count": 7513
       },
       {
         "mut": "ORF1a:G1101D",
-        "count": 6548
+        "count": 6612
       },
       {
         "mut": "ORF3a:V13L",
-        "count": 5504
+        "count": 5569
       },
       {
         "mut": "ORF1a:P926H",
-        "count": 5096
+        "count": 5146
       },
       {
         "mut": "ORF1a:P1158S",
-        "count": 3711
+        "count": 3747
       },
       {
         "mut": "ORF1a:L3606F",
-        "count": 2448
+        "count": 2471
       },
       {
         "mut": "ORF1a:S2030L",
-        "count": 2374
+        "count": 2419
       },
       {
         "mut": "N:A35T",
-        "count": 2335
+        "count": 2358
       },
       {
         "mut": "ORF1b:V1228L",
-        "count": 2296
+        "count": 2318
       }
     ]
   }

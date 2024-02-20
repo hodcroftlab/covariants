@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 36074,
+    "total": 37300,
     "counts": [
       {
         "mut": "S:Q14K",
-        "count": 3993
+        "count": 4329
       },
       {
         "mut": "S:F157L",
-        "count": 1590
+        "count": 1666
       },
       {
         "mut": "S:H146K",
-        "count": 1568
+        "count": 1604
       },
       {
         "mut": "S:Q14H",
-        "count": 871
+        "count": 899
       },
       {
         "mut": "S:G482R",
-        "count": 787
+        "count": 827
       },
       {
         "mut": "S:P809S",
-        "count": 638
+        "count": 639
       },
       {
         "mut": "S:S256L",
-        "count": 596
-      },
-      {
-        "mut": "S:P174S",
-        "count": 478
+        "count": 637
       },
       {
         "mut": "S:A475V",
-        "count": 470
+        "count": 514
       },
       {
         "mut": "S:Q14R",
-        "count": 467
+        "count": 497
+      },
+      {
+        "mut": "S:P174S",
+        "count": 486
       }
     ]
   },
   "others": {
-    "total": 36074,
+    "total": 37300,
     "counts": [
       {
         "mut": "ORF1a:T1589I",
-        "count": 1515
+        "count": 1546
       },
       {
         "mut": "ORF3a:L52I",
-        "count": 1407
+        "count": 1445
       },
       {
         "mut": "ORF8:I121-",
-        "count": 759
-      },
-      {
-        "mut": "ORF1b:P1570S",
-        "count": 744
+        "count": 789
       },
       {
         "mut": "ORF1a:P80S",
-        "count": 744
+        "count": 763
+      },
+      {
+        "mut": "ORF1b:P1570S",
+        "count": 762
       },
       {
         "mut": "ORF1a:L3930F",
-        "count": 722
+        "count": 739
       },
       {
         "mut": "ORF1a:P2144S",
-        "count": 657
+        "count": 688
       },
       {
         "mut": "ORF1a:E1210K",
-        "count": 645
+        "count": 654
       },
       {
         "mut": "ORF1a:L3606F",
-        "count": 562
+        "count": 586
       },
       {
         "mut": "N:P368S",
-        "count": 559
+        "count": 568
       }
     ]
   }
