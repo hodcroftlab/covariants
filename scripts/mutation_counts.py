@@ -12,9 +12,14 @@ THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 OUTPUT_FOLDER = os.path.join(THIS_DIR, "..", "web", "public", "data", "mutationCounts")
 
 
-aa_base_url = 'https://lapis.cov-spectrum.org/gisaid/v1/sample/aa-mutations'
-count_base_url = 'https://lapis.cov-spectrum.org/gisaid/v1/sample/aggregated'
-filter_deletions_url = "aaMutations=Orf1a:1.,N:420."
+#aa_base_url = 'https://lapis.cov-spectrum.org/gisaid/v1/sample/aa-mutations'
+#count_base_url = 'https://lapis.cov-spectrum.org/gisaid/v1/sample/aggregated'
+#updated URLS as of Feb 2024 to LAPIS 2 - via Chaoran
+aa_base_url = 'https://lapis.cov-spectrum.org/gisaid/v2/sample/aminoAcidMutations'
+count_base_url = 'https://lapis.cov-spectrum.org/gisaid/v2/sample/aggregated'
+#If nuc needed, should be: https://lapis.cov-spectrum.org/gisaid/v2/sample/nucleotideMutations
+
+filter_deletions_url = "aminoAcidMutations=Orf1a:1.,N:420." #prev was aaMutations
 
 LAPIS_API_ACCESS_KEY = os.environ.get("LAPIS_API_ACCESS_KEY")
 
@@ -30,7 +35,7 @@ clusters_example = {
 }
 
 def build_url(base_url,cluster,threshold):
-    url = f"{base_url}?{filter_deletions_url}&accessKey={LAPIS_API_ACCESS_KEY}&nucMutations={','.join(cluster)}"
+    url = f"{base_url}?{filter_deletions_url}&accessKey={LAPIS_API_ACCESS_KEY}&nucleotideMutations={','.join(cluster)}" #prev was nucMutations
     if threshold is not None:
         url += f"&minProportion={threshold:f}"
     return url
