@@ -4557,6 +4557,8 @@ bad_seqs = {
     "Slovakia/ruvztn_04_00002568/2022" : "2022-03-01",  #23B EPI_ISL_18682012
     "Slovakia/ruvztn_04_00002577/2021" : "2021-11-19",  #23B EPI_ISL_18682061
     "Slovakia/ruvztn_23_03_00002482/2020" : "2020-11-20",  #23B EPI_ISL_18584876
+    "Spain/CL-COV45818/2023" : "2023-01-02", #23I EPI_ISL_18830535
+    "Spain/CL-COV45459/2023" : "2023-02-10", #23I EPI_ISL_18777664
 
     #bad haiti recent uploads that seem to have some dating issues
     "Haiti/IMIS-0918368/2022" : "2022-07-01",  #? EPI_ISL_18060054
