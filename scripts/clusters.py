@@ -703,7 +703,7 @@ clusters = {
        "snps": [22786,28724,22917], #CTG -- S:R408S (A22786C), N:P151S (C28724T), S:L452R (T22917G)
        "snps_with_base": ["22786C", "28724T", "22917G"],
        "cluster_data": [],
-       "nextstrain_build": True,
+       "nextstrain_build": False,
        "type": "variant",
        "graphing": True,
        "important": True,
