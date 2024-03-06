@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 665370,
+    "total": 668896,
     "counts": [
       {
         "mut": "S:F456L",
-        "count": 258378
+        "count": 261359
       },
       {
         "mut": "S:Q52H",
-        "count": 166026
+        "count": 167937
       },
       {
         "mut": "S:T478R",
-        "count": 132708
+        "count": 133406
       },
       {
         "mut": "S:E180V",
-        "count": 96985
+        "count": 97439
       },
       {
         "mut": "S:L455F",
-        "count": 86678
+        "count": 88184
       },
       {
         "mut": "S:F157L",
-        "count": 46281
+        "count": 47181
       },
       {
         "mut": "S:L452R",
-        "count": 38039
+        "count": 38858
       },
       {
         "mut": "S:H146K",
-        "count": 30424
+        "count": 30545
       },
       {
         "mut": "S:S704L",
-        "count": 23976
+        "count": 24428
       },
       {
         "mut": "S:A701V",
-        "count": 23090
+        "count": 23269
       }
     ]
   },
   "others": {
-    "total": 665370,
+    "total": 668896,
     "counts": [
       {
         "mut": "ORF9b:I5T",
-        "count": 386393
+        "count": 389093
       },
       {
         "mut": "ORF1a:T4175I",
-        "count": 275391
+        "count": 277591
       },
       {
         "mut": "ORF1a:G1819S",
-        "count": 267362
+        "count": 269494
       },
       {
         "mut": "ORF1a:A690V",
-        "count": 167214
+        "count": 169136
       },
       {
         "mut": "ORF1a:A3143V",
-        "count": 165297
+        "count": 167212
       },
       {
         "mut": "ORF1a:L3829F",
-        "count": 99899
+        "count": 100371
       },
       {
         "mut": "ORF1b:D1746Y",
-        "count": 96558
+        "count": 97017
       },
       {
         "mut": "ORF9b:N55S",
-        "count": 91098
+        "count": 91486
       },
       {
         "mut": "ORF1b:D54N",
-        "count": 71147
+        "count": 71654
       },
       {
         "mut": "ORF1a:S1857L",
-        "count": 42159
+        "count": 43015
       }
     ]
   }

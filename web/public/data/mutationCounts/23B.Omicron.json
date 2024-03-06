@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 106009,
+    "total": 106454,
     "counts": [
       {
         "mut": "S:T547I",
-        "count": 20137
+        "count": 20171
       },
       {
         "mut": "S:F456L",
-        "count": 19988
+        "count": 20169
       },
       {
         "mut": "S:P521T",
-        "count": 8782
+        "count": 8843
       },
       {
         "mut": "S:K304N",
-        "count": 6143
+        "count": 6182
       },
       {
         "mut": "S:P521S",
-        "count": 4906
+        "count": 4932
       },
       {
         "mut": "S:K147N",
-        "count": 4714
+        "count": 4745
       },
       {
         "mut": "S:L455F",
-        "count": 3994
+        "count": 4087
       },
       {
         "mut": "S:H146K",
-        "count": 3637
+        "count": 3656
       },
       {
         "mut": "S:E554K",
-        "count": 1870
+        "count": 1882
       },
       {
         "mut": "S:T732I",
-        "count": 1834
+        "count": 1840
       }
     ]
   },
   "others": {
-    "total": 106009,
+    "total": 106454,
     "counts": [
       {
         "mut": "ORF1a:G519S",
-        "count": 7759
+        "count": 7790
       },
       {
         "mut": "ORF3a:I35K",
-        "count": 7513
+        "count": 7562
       },
       {
         "mut": "ORF1a:G1101D",
-        "count": 6612
+        "count": 6643
       },
       {
         "mut": "ORF3a:V13L",
-        "count": 5569
+        "count": 5589
       },
       {
         "mut": "ORF1a:P926H",
-        "count": 5146
+        "count": 5162
       },
       {
         "mut": "ORF1a:P1158S",
-        "count": 3747
-      },
-      {
-        "mut": "ORF1a:L3606F",
-        "count": 2471
+        "count": 3762
       },
       {
         "mut": "ORF1a:S2030L",
-        "count": 2419
+        "count": 2492
+      },
+      {
+        "mut": "ORF1a:L3606F",
+        "count": 2483
       },
       {
         "mut": "N:A35T",
-        "count": 2358
+        "count": 2370
       },
       {
         "mut": "ORF1b:V1228L",
-        "count": 2318
+        "count": 2330
       }
     ]
   }

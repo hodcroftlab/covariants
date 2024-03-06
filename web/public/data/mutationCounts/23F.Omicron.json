@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 171562,
+    "total": 173516,
     "counts": [
       {
         "mut": "S:L455F",
-        "count": 53622
+        "count": 54419
       },
       {
         "mut": "S:F157L",
-        "count": 45756
+        "count": 46659
       },
       {
         "mut": "S:L452R",
-        "count": 38466
+        "count": 39306
       },
       {
         "mut": "S:S704L",
-        "count": 11341
+        "count": 11620
       },
       {
         "mut": "S:H146K",
-        "count": 7495
+        "count": 7569
       },
       {
         "mut": "S:Q14K",
-        "count": 4219
+        "count": 4342
       },
       {
         "mut": "S:T307I",
-        "count": 2412
+        "count": 2456
       },
       {
         "mut": "S:D253G",
-        "count": 1920
+        "count": 1932
       },
       {
         "mut": "S:N450D",
-        "count": 1712
+        "count": 1821
       },
       {
         "mut": "S:L5F",
-        "count": 1705
+        "count": 1733
       }
     ]
   },
   "others": {
-    "total": 171562,
+    "total": 173516,
     "counts": [
       {
         "mut": "ORF1b:D54N",
-        "count": 72909
+        "count": 73441
       },
       {
         "mut": "ORF1a:S1857L",
-        "count": 43302
+        "count": 44194
       },
       {
         "mut": "ORF1a:R542C",
-        "count": 22740
+        "count": 23045
       },
       {
         "mut": "ORF1a:T4083M",
-        "count": 13655
+        "count": 13937
       },
       {
         "mut": "ORF1a:T2274I",
-        "count": 10620
+        "count": 10880
       },
       {
         "mut": "ORF1b:K2557R",
-        "count": 7564
+        "count": 7629
       },
       {
         "mut": "ORF3a:P240L",
-        "count": 6408
+        "count": 6463
       },
       {
         "mut": "ORF1a:T1589I",
-        "count": 2763
+        "count": 2802
       },
       {
         "mut": "ORF1a:L3606F",
-        "count": 2257
+        "count": 2291
       },
       {
         "mut": "ORF8:I121-",
-        "count": 2174
+        "count": 2267
       }
     ]
   }

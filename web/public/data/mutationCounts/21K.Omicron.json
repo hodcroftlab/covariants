@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 2459648,
+    "total": 2480499,
     "counts": [
       {
         "mut": "S:R346K",
-        "count": 1261196
+        "count": 1261139
       },
       {
         "mut": "S:A701V",
-        "count": 198989
+        "count": 198977
       },
       {
         "mut": "S:R408S",
-        "count": 144760
+        "count": 169047
       },
       {
         "mut": "S:N460K",
-        "count": 141708
-      },
-      {
-        "mut": "S:V445H",
-        "count": 140026
+        "count": 167329
       },
       {
         "mut": "S:N450D",
-        "count": 139970
+        "count": 165375
+      },
+      {
+        "mut": "S:V445H",
+        "count": 165155
       },
       {
         "mut": "S:L452W",
-        "count": 139307
+        "count": 164491
       },
       {
         "mut": "S:S371F",
-        "count": 134393
+        "count": 156658
       },
       {
         "mut": "S:V213G",
-        "count": 131950
+        "count": 154833
       },
       {
         "mut": "S:T376A",
-        "count": 131410
+        "count": 153255
       }
     ]
   },
   "others": {
-    "total": 2459648,
+    "total": 2480499,
     "counts": [
       {
         "mut": "ORF1a:V1887I",
-        "count": 266963
+        "count": 266991
       },
       {
         "mut": "ORF3a:L106F",
-        "count": 230723
+        "count": 230789
       },
       {
         "mut": "N:D343G",
-        "count": 228837
+        "count": 228881
       },
       {
         "mut": "ORF6:D61L",
-        "count": 122290
+        "count": 142604
       },
       {
         "mut": "ORF3a:T223I",
-        "count": 119466
+        "count": 139837
       },
       {
         "mut": "ORF1b:T2163I",
-        "count": 119205
+        "count": 139735
       },
       {
         "mut": "ORF1b:R1315C",
-        "count": 117526
+        "count": 137833
       },
       {
         "mut": "N:S413R",
-        "count": 116296
+        "count": 136632
       },
       {
         "mut": "ORF1a:L3027F",
-        "count": 113789
+        "count": 134221
       },
       {
         "mut": "M:D3H",
-        "count": 113185
+        "count": 134011
       }
     ]
   }
