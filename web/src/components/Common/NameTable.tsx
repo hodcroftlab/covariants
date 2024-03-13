@@ -3,6 +3,7 @@ import React, { ReactNode, useMemo } from 'react'
 import { Table as TableBase, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import styled from 'styled-components'
 
+import { joinWithCommas } from 'src/helpers/join'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import type { NameTableDatum, NameTableEntry } from 'src/io/getNameTable'
@@ -46,14 +47,6 @@ const Table = styled(TableBase)`
     padding: 2px;
   }
 `
-
-export function joinWithCommas(elems: ReactNode[]): ReactNode {
-  if (elems.length === 0) {
-    return ' '
-  }
-
-  return elems.reduce((prev, curr) => [prev, ', ', curr])
-}
 
 export interface NameTableEntryProps {
   entry: NameTableEntry
