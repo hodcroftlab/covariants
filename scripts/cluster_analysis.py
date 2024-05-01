@@ -243,7 +243,7 @@ cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nex
 
 # Set a list of clades that are not yet in CoV, but are in Nextstrain - these need renaming to be part of their 'old' parent
 # until the clades can be added
-new_clades_to_rename = {"24A (Omicron)": "23I (Omicron)"} #should be in format of Nexttrain_clade or column used to decide clade (Currently "23A (Omicron)")
+new_clades_to_rename = {"24A (Omicron)": "23I (Omicron)", "24B (Omicron)": "23I (Omicron)"} #should be in format of Nexttrain_clade or column used to decide clade (Currently "23A (Omicron)")
 if new_clades_to_rename:
     print("\n!!!!!!!!!!!!!!!!!!")
     print("There are currently clades that will be renamed!!:")
