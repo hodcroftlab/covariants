@@ -1,0 +1,107 @@
+
+// 'alignment_defining' means searching these in alignment _should_ identify - but will miss reversions or incomplete coverage
+// 'phylogenetic_defining' means on a phylogenetic tree these should identify the cluster
+// 'build_name' is what the build is called in files & URLs (character safe)
+// 'display name' is prettier for displaying in graphics/pages etc
+// 'pango_name' may not be an exact match to Pango designation
+
+{
+    "variants": [
+        {
+            "build_name": "S.501Y.V1",
+            "display_name": "20I/501Y.V1",
+            "pango_name": "B.1.1.7",
+            "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.501Y.V1?c=gt-S_501",
+            "covariants_url": "https://covariants.org/variants/S.501Y.V1",
+            "color": "#b30000",
+            "defining_mutations": [
+                {
+                    "type": "alignment_defining",
+                    "mutations": [
+                        "A23063T", //S N501Y
+                        "C23604A", //S P681H
+                        "G24914C" //S D1118H
+                    ]
+                },
+                {
+                    "type": "phylogenetic_defining",
+                    // these will be pulled directly from clades files & thus won't have reference base
+                    "mutations": [
+                        "8782C",
+                        "14408T",
+                        "23403G",
+                        "28881A",
+                        "28882A",
+                        "23063T",
+                        "14676T",
+                        "15279T"
+                    ]
+                }
+            ],
+            "all_mutations": [
+                //this is copied directly from clusters.py - NOT JSON FORMATTED
+                "nonsynonymous": [
+                    {"gene": "S", "left": "H", "pos": 69, "right": "-"},
+                    {"gene": "S", "left": "V", "pos": 70, "right": "-"},
+                    {"gene": "S", "left": "Y", "pos": 144, "right": "-"},
+                    {"gene": "S", "left": "N", "pos": 501, "right": "Y"},
+                    {"gene": "S", "left": "A", "pos": 570, "right": "D"},
+                    {'gene': 'S', 'left': 'D', 'pos': 614, 'right': 'G'},
+                    {"gene": "S", "left": "P", "pos": 681, "right": "H"},
+                    {'gene': 'S', 'left': 'T', 'pos': 716, 'right': 'I'},
+                    {'gene': 'S', 'left': 'S', 'pos': 982, 'right': 'A'},
+                    {'gene': 'S', 'left': 'D', 'pos': 1118, 'right': 'H'},
+                    {'gene': 'ORF1a', 'left': 'T', 'pos': 1001, 'right': 'I'},
+                    {'gene': 'ORF1a', 'left': 'A', 'pos': 1708, 'right': 'D'},
+                    {'gene': 'ORF1a', 'left': 'I', 'pos': 2230, 'right': 'T'},
+                    {"gene": "ORF1a", "left": "S", "pos": 3675, "right": "-"},
+                    {"gene": "ORF1a", "left": "G", "pos": 3676, "right": "-"},
+                    {"gene": "ORF1a", "left": "F", "pos": 3677, "right": "-"},
+                    {'gene': 'N', 'left': 'D', 'pos': 3, 'right': 'L'},
+                    {"gene": "N", "left": "R", "pos": 203, "right": "K"},
+                    {"gene": "N", "left": "G", "pos": 204, "right": "R"},
+                    {'gene': 'N', 'left': 'S', 'pos': 235, 'right': 'F'},
+                    {'gene': 'ORF1b', 'left': 'P', 'pos': 314, 'right': 'L'},
+                    {"gene": "ORF8", "left": "Q", "pos": 27, "right": "*"},
+                    {'gene': 'ORF8', 'left': 'R', 'pos': 52, 'right': 'I'},
+                    {'gene': 'ORF8', 'left': 'Y', 'pos': 73, 'right': 'C'}
+                ],
+                "synonymous": [
+                    {"left": "C", "pos": 241, "right": "T"},
+                    {"left": "C", "pos": 913, "right": "T"},
+                    {"left": "C", "pos": 3037, "right": "T"},
+                    {"left": "C", "pos": 5986, "right": "T"},
+                    {"left": "C", "pos": 14676, "right": "T"},
+                    {"left": "C", "pos": 15279, "right": "T"},
+                    {"left": "T", "pos": 16176, "right": "C"}
+                ]
+            ]
+        }
+
+    ],
+
+   "mutations": {
+        "build_name": "S.E484",
+        "display_name": "S:E484",
+        // no pango name
+        "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484",
+        "covariants_url": "https://covariants.org/variants/S.E484",
+        "color": "#006600",
+        "defining_mutations": [
+            {
+                "type": "alignment_defining",
+                "mutations": [
+                    // there is no 'to' base because currently the builds look for any change away from reference
+                    "G23012" // S E484
+                ]
+            },
+            {
+                "type": "phylogenetic_defining",
+                // this is same as alignment_defining for mutations
+                "mutations": [
+                    "G23012"
+                ]
+            }
+        ]
+    }
+}
