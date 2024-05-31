@@ -172,6 +172,8 @@ export const clusters = {
 }
 
 export const theme = {
+  bodyColor: basicColors.gray700,
+  bodyBg: basicColors.white,
   ...basicColors,
   ...themeColors,
   ...gridBreakpoints,
