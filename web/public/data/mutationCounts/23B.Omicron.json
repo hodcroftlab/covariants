@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 108354,
+    "total": 109148,
     "counts": [
       {
         "mut": "S:F456L",
-        "count": 20817
+        "count": 20987
       },
       {
         "mut": "S:T547I",
-        "count": 20339
+        "count": 20476
       },
       {
         "mut": "S:P521T",
-        "count": 9030
+        "count": 9140
       },
       {
         "mut": "S:K304N",
-        "count": 6372
+        "count": 6413
       },
       {
         "mut": "S:P521S",
-        "count": 5051
+        "count": 5098
       },
       {
         "mut": "S:K147N",
-        "count": 4856
+        "count": 4898
       },
       {
         "mut": "S:L455F",
-        "count": 4266
+        "count": 4320
       },
       {
         "mut": "S:H146K",
-        "count": 3729
+        "count": 3742
       },
       {
         "mut": "S:E554K",
-        "count": 1985
+        "count": 2003
       },
       {
         "mut": "S:Q613H",
-        "count": 1932
+        "count": 1959
       }
     ]
   },
   "others": {
-    "total": 108354,
+    "total": 109148,
     "counts": [
       {
         "mut": "ORF1a:G519S",
-        "count": 7990
+        "count": 8029
       },
       {
         "mut": "ORF3a:I35K",
-        "count": 7721
+        "count": 7823
       },
       {
         "mut": "ORF1a:G1101D",
-        "count": 6821
+        "count": 6854
       },
       {
         "mut": "ORF3a:V13L",
-        "count": 5667
+        "count": 5718
       },
       {
         "mut": "ORF1a:P926H",
-        "count": 5230
+        "count": 5276
       },
       {
         "mut": "ORF1a:P1158S",
-        "count": 3888
+        "count": 3909
       },
       {
         "mut": "ORF1a:S2030L",
-        "count": 2605
+        "count": 2631
       },
       {
         "mut": "ORF1a:L3606F",
-        "count": 2558
+        "count": 2574
       },
       {
         "mut": "N:A35T",
-        "count": 2421
+        "count": 2428
       },
       {
         "mut": "ORF1b:V1228L",
-        "count": 2381
+        "count": 2388
       }
     ]
   }

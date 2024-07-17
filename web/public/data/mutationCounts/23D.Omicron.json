@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 83775,
+    "total": 84358,
     "counts": [
       {
         "mut": "S:F486P",
-        "count": 83231
+        "count": 83813
       },
       {
         "mut": "S:F456L",
-        "count": 26599
+        "count": 26789
       },
       {
         "mut": "S:A701V",
-        "count": 22372
+        "count": 22505
       },
       {
         "mut": "S:T478R",
-        "count": 21729
-      },
-      {
-        "mut": "S:H146K",
-        "count": 3316
+        "count": 21880
       },
       {
         "mut": "S:E554K",
-        "count": 3310
+        "count": 3348
+      },
+      {
+        "mut": "S:H146K",
+        "count": 3338
       },
       {
         "mut": "S:Q52H",
-        "count": 2123
+        "count": 2139
       },
       {
         "mut": "S:F490P",
-        "count": 1969
+        "count": 1987
       },
       {
         "mut": "S:Q613H",
-        "count": 1751
+        "count": 1767
       },
       {
         "mut": "S:N481K",
-        "count": 1725
+        "count": 1739
       }
     ]
   },
   "others": {
-    "total": 83775,
+    "total": 84358,
     "counts": [
       {
         "mut": "ORF1a:G993S",
-        "count": 22316
+        "count": 22456
       },
       {
         "mut": "ORF1b:K2557R",
-        "count": 21041
+        "count": 21177
       },
       {
         "mut": "ORF1b:S2198I",
-        "count": 18237
+        "count": 18359
       },
       {
         "mut": "ORF1b:V1092F",
-        "count": 9462
+        "count": 9576
       },
       {
         "mut": "ORF1a:E637K",
-        "count": 3395
+        "count": 3425
       },
       {
         "mut": "N:T362I",
-        "count": 3316
+        "count": 3321
       },
       {
         "mut": "ORF1a:C657Y",
-        "count": 3149
+        "count": 3164
       },
       {
         "mut": "ORF1a:T2007I",
-        "count": 2578
+        "count": 2607
       },
       {
         "mut": "ORF1a:G400V",
-        "count": 2543
+        "count": 2573
       },
       {
         "mut": "ORF1b:K1383R",
-        "count": 2205
+        "count": 2261
       }
     ]
   }
