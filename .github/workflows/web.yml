@@ -100,20 +100,20 @@ jobs:
       - name: "[deployment] Setup environment (release)"
         if: endsWith(github.ref, '/release')
         run: |
-          echo "AWS_ACCESS_KEY_ID=${{ secrets.RELEASE_AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
-          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.RELEASE_AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
-          echo "AWS_CLOUDFRONT_DISTRIBUTION_ID=${{ secrets.RELEASE_AWS_CLOUDFRONT_DISTRIBUTION_ID }}" >> $GITHUB_ENV
-          echo "AWS_DEFAULT_REGION=${{ secrets.RELEASE_AWS_DEFAULT_REGION }}" >> $GITHUB_ENV
-          echo "AWS_S3_BUCKET=${{ secrets.RELEASE_AWS_S3_BUCKET }}" >> $GITHUB_ENV
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
+          echo "AWS_CLOUDFRONT_DISTRIBUTION_ID=${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}" >> $GITHUB_ENV
+          echo "AWS_DEFAULT_REGION=${{ secrets.AWS_DEFAULT_REGION }}" >> $GITHUB_ENV
+          echo "AWS_S3_BUCKET=${{ secrets.AWS_S3_BUCKET }}" >> $GITHUB_ENV
 
       - name: "[deployment] Setup environment (master)"
         if: endsWith(github.ref, '/master')
         run: |
-          echo "AWS_ACCESS_KEY_ID=${{ secrets.MASTER_AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
-          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.MASTER_AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
-          echo "AWS_CLOUDFRONT_DISTRIBUTION_ID=${{ secrets.MASTER_AWS_CLOUDFRONT_DISTRIBUTION_ID }}" >> $GITHUB_ENV
-          echo "AWS_DEFAULT_REGION=${{ secrets.MASTER_AWS_DEFAULT_REGION }}" >> $GITHUB_ENV
-          echo "AWS_S3_BUCKET=${{ secrets.MASTER_AWS_S3_BUCKET }}" >> $GITHUB_ENV
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
+          echo "AWS_CLOUDFRONT_DISTRIBUTION_ID=${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}" >> $GITHUB_ENV
+          echo "AWS_DEFAULT_REGION=${{ secrets.AWS_DEFAULT_REGION }}" >> $GITHUB_ENV
+          echo "AWS_S3_BUCKET=${{ secrets.AWS_S3_BUCKET }}" >> $GITHUB_ENV
 
       - name: "[deployment] Install dependencies"
         run: |
