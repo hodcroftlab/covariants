@@ -32,33 +32,6 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: "[init] Free disk space"
-        run: |
-          sudo swapoff -a || true
-          sudo rm -f /swapfile || true
-
-          sudo apt-get remove --yes --purge --verbose-versions '^dotnet-.*' '^llvm-.*' 'php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-cloud-sdk hhvm google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri || true
-          sudo apt-get autoremove --purge --verbose-versions --yes
-          sudo apt-get clean
-          sudo apt-get update
-
-          sudo rm -rf /opt/ghc
-          sudo rm -rf /usr/local/.ghcup
-          sudo rm -rf /usr/local/graalvm
-          sudo rm -rf /usr/local/lib/android
-          sudo rm -rf /usr/local/lib/node_modules
-          sudo rm -rf /usr/local/share/chromium
-          sudo rm -rf /usr/local/share/powershell
-          sudo rm -rf /usr/share/dotnet
-
-          docker container stop $(docker ps -q) || true
-          docker rmi $(docker image ls -aq) || true
-          yes | docker system prune -af --volumes || true
-          yes | docker network prune -f || true
-          yes | docker image prune -af || true
-          yes | docker builder prune -af || true
-          yes | docker buildx prune -af || true
-
       - name: "[init] Check disk space"
         run: |
           echo ""
