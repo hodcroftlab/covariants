@@ -30,6 +30,8 @@ jobs:
   build-web:
     name: "build-web"
     runs-on: ubuntu-22.04
+    environment:
+      name: ${{ github.ref }}
 
     steps:
       - name: "[init] Check disk space"
