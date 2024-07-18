@@ -56,7 +56,7 @@ jobs:
           echo "PLAUSIBLE_IO_DOMAIN=covariants.org" >> $GITHUB_ENV
 
       - name: "[build] Setup environment (master)"
-        if: ${{ !endsWith(github.ref, '/staging') && !endsWith(github.ref, '/release') }}
+        if: endsWith(github.ref, '/master')
         run: |
           echo "ENV_NAME=master" >> $GITHUB_ENV
           echo "FULL_DOMAIN=https://covariants.org" >> $GITHUB_ENV
