@@ -106,13 +106,13 @@ export interface MutationCountsSummaryProps {
 export function MutationCountsSummaryCard({ currentCluster }: MutationCountsSummaryProps) {
   const { t } = useTranslationSafe()
 
-  const { data, isError, error, isLoading } = useMutationCounts(currentCluster.build_name)
+  const { data } = useMutationCounts(currentCluster.build_name)
 
-  if (!data) {
+  if (!data?.result) {
     return null
   }
 
-  const { S, others } = data
+  const { S, others } = data.result
 
   return (
     <Card>
@@ -135,18 +135,6 @@ export function MutationCountsSummaryCard({ currentCluster }: MutationCountsSumm
 
               <Col className="d-flex mx-1 my-1 mb-auto">
                 <MutationCountsSummarySubTable title={t('Other genes')} record={others} />
-              </Col>
-            </Row>
-
-            <Row noGutters>
-              <Col>
-                {isLoading && <div className="mx-auto">{'Loading...'}</div>}
-                {isError && (
-                  <div className="mx-auto">
-                    <div>{t('Mutation counts are not yet available')}</div>
-                    <div className="text-danger">{process.env.NODE_ENV === 'development' && formatError(error)}</div>
-                  </div>
-                )}
               </Col>
             </Row>
           </Col>
