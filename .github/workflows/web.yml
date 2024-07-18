@@ -75,7 +75,7 @@ jobs:
           path: |
             web/.cache
             web/.build/production/tmp/cache
-          key: cache-v1-web-${{ runner.os }}-wasm32-unknown-unknown-${{ hashFiles('**/yarn.lock') }}
+          key: cache-v1-web-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             cache-v1-web-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
             cache-v1-web-${{ runner.os }}-
