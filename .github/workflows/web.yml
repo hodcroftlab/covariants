@@ -1,0 +1,205 @@
+# Build web app and deploy it
+name: web
+
+on:
+  push:
+    branches: [ "master" ]
+
+  repository_dispatch:
+    types: web
+
+  workflow_dispatch:
+
+  workflow_call:
+
+concurrency:
+  group: web-${{ github.workflow }}-${{ github.ref_type }}-${{ github.event.pull_request.number || github.ref || github.run_id }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash -euxo pipefail {0}
+
+env:
+  GITHUB_REPOSITORY_URL: ${{ github.server_url }}/${{ github.repository }}
+  AWS_MAX_ATTEMPTS: 10
+  PROD_ENABLE_TYPE_CHECKS: 0
+  VERBOSE: 1
+
+jobs:
+  build-web:
+    name: "build-web"
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: "[init] Free disk space"
+        run: |
+          sudo swapoff -a || true
+          sudo rm -f /swapfile || true
+
+          sudo apt-get remove --yes --purge --verbose-versions '^dotnet-.*' '^llvm-.*' 'php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-cloud-sdk hhvm google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri || true
+          sudo apt-get autoremove --purge --verbose-versions --yes
+          sudo apt-get clean
+          sudo apt-get update
+
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/.ghcup
+          sudo rm -rf /usr/local/graalvm
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /usr/local/lib/node_modules
+          sudo rm -rf /usr/local/share/chromium
+          sudo rm -rf /usr/local/share/powershell
+          sudo rm -rf /usr/share/dotnet
+
+          docker container stop $(docker ps -q) || true
+          docker rmi $(docker image ls -aq) || true
+          yes | docker system prune -af --volumes || true
+          yes | docker network prune -f || true
+          yes | docker image prune -af || true
+          yes | docker builder prune -af || true
+          yes | docker buildx prune -af || true
+
+      - name: "[init] Check disk space"
+        run: |
+          echo ""
+
+          df -Th | awk 'NR == 1; NR > 1 {print $0 | "sort -n"}'
+
+          echo ""
+
+          lsblk -o MOUNTPOINT,FSTYPE,FSSIZE,FSAVAIL,FSUSE%,TYPE,NAME,ROTA,SIZE,MODEL,UUID
+
+      - name: "[init] Checkout code"
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          submodules: true
+
+      - name: "[build] Setup environment (release)"
+        if: endsWith(github.ref, '/release')
+        run: |
+          echo "ENV_NAME=release" >> $GITHUB_ENV
+          echo "FULL_DOMAIN=https://covariants.org" >> $GITHUB_ENV
+          echo "PLAUSIBLE_IO_DOMAIN=covariants.org" >> $GITHUB_ENV
+
+      - name: "[build] Setup environment (master)"
+        if: ${{ !endsWith(github.ref, '/staging') && !endsWith(github.ref, '/release') }}
+        run: |
+          echo "ENV_NAME=master" >> $GITHUB_ENV
+          echo "FULL_DOMAIN=https://covariants.org" >> $GITHUB_ENV
+          echo "PLAUSIBLE_IO_DOMAIN=master.covariants.org" >> $GITHUB_ENV
+
+      - name: "[build] Setup Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "yarn"
+          cache-dependency-path: "web/yarn.lock"
+
+      - name: "[build] Setup cache for web app"
+        uses: actions/cache@v4
+        with:
+          path: |
+            web/.cache
+            web/.build/production/tmp/cache
+          key: cache-v1-web-${{ runner.os }}-wasm32-unknown-unknown-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            cache-v1-web-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+            cache-v1-web-${{ runner.os }}-
+
+      - name: "[build] Prepare .env file"
+        run: |
+          cd web/
+          cp .env.example .env
+          sed -i -e "s|FULL_DOMAIN=autodetect|FULL_DOMAIN=${FULL_DOMAIN}|g" .env
+
+      - name: "[build] Install Node.js packages"
+        run: |
+          cd web
+          yarn install --frozen-lockfile
+
+      - name: "[build] Build web application"
+        run: |
+          cd web
+          yarn lint:ci
+          yarn prod:build:ci
+
+      - name: "[deployment] Setup environment (release)"
+        if: endsWith(github.ref, '/release')
+        run: |
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.RELEASE_AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.RELEASE_AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
+          echo "AWS_CLOUDFRONT_DISTRIBUTION_ID=${{ secrets.RELEASE_AWS_CLOUDFRONT_DISTRIBUTION_ID }}" >> $GITHUB_ENV
+          echo "AWS_DEFAULT_REGION=${{ secrets.RELEASE_AWS_DEFAULT_REGION }}" >> $GITHUB_ENV
+          echo "AWS_S3_BUCKET=${{ secrets.RELEASE_AWS_S3_BUCKET }}" >> $GITHUB_ENV
+
+      - name: "[deployment] Setup environment (master)"
+        if: endsWith(github.ref, '/master')
+        run: |
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.MASTER_AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.MASTER_AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
+          echo "AWS_CLOUDFRONT_DISTRIBUTION_ID=${{ secrets.MASTER_AWS_CLOUDFRONT_DISTRIBUTION_ID }}" >> $GITHUB_ENV
+          echo "AWS_DEFAULT_REGION=${{ secrets.MASTER_AWS_DEFAULT_REGION }}" >> $GITHUB_ENV
+          echo "AWS_S3_BUCKET=${{ secrets.MASTER_AWS_S3_BUCKET }}" >> $GITHUB_ENV
+
+      - name: "[deployment] Install dependencies"
+        run: |
+          pushd /tmp >/dev/null
+            curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+            unzip -oqq awscliv2.zip
+            sudo ./aws/install --update
+          popd >/dev/null
+          aws --version
+
+      - name: "[deployment] Clear AWS S3 bucket: html files, web root, app bundle"
+        run: |
+          aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "proteins/*" --exclude "acknowledgements/*"
+
+      - name: "[deployment] Copy to AWS S3: app bundle"
+        run: |
+          cd web/.build/production/web
+          aws s3 cp --recursive --cache-control "max-age=2592000, public" "_next/" "s3://${AWS_S3_BUCKET}/_next/"
+
+      - name: "[deployment] Copy to AWS S3: web root"
+        run: |
+          cd web/.build/production/web
+          aws s3 cp --recursive \
+            --exclude "_next/*" \
+            --exclude "*.html" \
+            --exclude "acknowledgements/*" \
+            --exclude "proteins/*" \
+          "./" "s3://${AWS_S3_BUCKET}/"
+
+      - name: "[deployment] Copy to AWS S3: html files"
+        run: |
+          cd web/.build/production/web
+          find * -type f -name "*.html" -print0 | xargs -0 -P4 -n1 -I '{}' -- bash -c '\
+            file={}; \
+            aws s3 cp \
+              --content-type "text/html" \
+              --cache-control "no-cache" \
+              --metadata-directive REPLACE \
+                $file \
+                s3://${AWS_S3_BUCKET}/${file%.html}'
+
+      - name: "[deployment] Invalidate AWS Cloudfront cache: html files, web root, app bundle"
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${AWS_CLOUDFRONT_DISTRIBUTION_ID} \
+            --paths "/*"
+
+      - name: "[deployment] Clear AWS S3 bucket: large static files"
+        run: |
+          aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "*" --include "proteins/" --include "acknowledgements/"
+
+      - name: "[deployment] Copy to AWS S3: large static files "
+        run: |
+          cd web/.build/production/web
+          aws s3 cp --recursive --cache-control "max-age=7200, public" --metadata-directive REPLACE "proteins/" "s3://${AWS_S3_BUCKET}/proteins/"
+          aws s3 cp --recursive --cache-control "max-age=7200, public" --metadata-directive REPLACE "acknowledgements/" "s3://${AWS_S3_BUCKET}/acknowledgements/"
+
+      - name: "[deployment] Invalidate AWS Cloudfront cache: large static files"
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${AWS_CLOUDFRONT_DISTRIBUTION_ID} \
+            --paths "/acknowledgements/*" "/proteins/*"
