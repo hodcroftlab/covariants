@@ -3,7 +3,7 @@ name: web
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "release" ]
 
   repository_dispatch:
     types: web
