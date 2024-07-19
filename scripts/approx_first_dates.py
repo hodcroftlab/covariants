@@ -32,6 +32,9 @@ cluster_first_dates = {
     "23G": {"first_date": "2023-03-20"}, #omicron XBB.1.5.70
     "23H": {"first_date": "2023-06-15"}, #omicron HK.3
     "23I": {"first_date": "2023-08-01"}, #omicron BA.2.86
+    "24A": {"first_date": "2023-09-15"}, #omicron JN.1
+    "24B": {"first_date": "2024-02-01"}, #omicron JN.1.11.1
+    "24C": {"first_date": "2024-02-15"}, #omicron KP.3
     "Kappa": {"first_date": "2020-10-30"}, #Kappa
     "Delta417": {"first_date": "2020-10-30"}, #Delta plus (same as delta)
     "Eta": {"first_date": "2020-11-21"}, #Eta

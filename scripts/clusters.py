@@ -3064,6 +3064,99 @@ clusters = {
         },
     },
 
+    "24A": {  #JN.1
+       "snps": [3565,18894,22926,27810],  # CTCC
+       "snps_with_base": ["T3565C","C18894T","T22926C","T27810C"], #MUST ADD VALUE WHEN TURN INTO PAGE!  
+       "cluster_data": [],
+       "nextstrain_build": True,
+       "parent": "23I.Omicron", 
+       "use_pango": True,
+       "has_no_page": True,
+       "type": "variant",
+       "graphing": True,
+       "important": True,
+       "country_info": [],
+       "col": "#29a4ef", 
+       "display_name": "24A (Omicron)",
+       "alt_display_name": ["JN.1"],
+       "build_name": "24A.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "24A",
+       "pango_lineages": [
+           {"name": "JN.1", "url": "https://cov-lineages.org/lineage.html?lineage=JN.1"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/24A.Omicron",
+        "mutations": {
+            "nonsynonymous": [
+            ],
+            "synonymous": [
+            ],
+        },
+    },
+
+    "24B": {  #JN.1.11.1
+       "snps": [7113,17334,22928,24872,27810],  # TTCTC
+       "snps_with_base": ["7113T","17334T","22928C","24872T","27810C"], #MUST ADD VALUE WHEN TURN INTO PAGE!  
+       "cluster_data": [],
+       "nextstrain_build": True,
+       "parent": "24A.Omicron", 
+       "use_pango": True,
+       "has_no_page": True,
+       "type": "variant",
+       "graphing": True,
+       "important": True,
+       "country_info": [],
+       "col": "#6829ef", 
+       "display_name": "24B (Omicron)",
+       "alt_display_name": ["JN.1.11.1"],
+       "build_name": "24B.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "24B",
+       "pango_lineages": [
+           {"name": "JN.1.11.1", "url": "https://cov-lineages.org/lineage.html?lineage=JN.1.11.1"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/24B.Omicron",
+        "mutations": {
+            "nonsynonymous": [
+            ],
+            "synonymous": [
+            ],
+        },
+    },
+
+    "24C": {  #KP.3
+       "snps": [7113,17334,22928,24872,27810],  # TTCTC
+       "snps_with_base": ["7113T","17334T","22928C","24872T","27810C"], #MUST ADD VALUE WHEN TURN INTO PAGE!  
+       "cluster_data": [],
+       "nextstrain_build": True,
+       "parent": "24B.Omicron", 
+       "use_pango": True,
+       "has_no_page": True,
+       "type": "variant",
+       "graphing": True,
+       "important": True,
+       "country_info": [],
+       "col": "#331eee", 
+       "display_name": "24C (Omicron)",
+       "alt_display_name": ["KP.3"],
+       "build_name": "24C.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "24C",
+       "pango_lineages": [
+           {"name": "KP.3", "url": "https://cov-lineages.org/lineage.html?lineage=KP.3"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/24C.Omicron",
+        "mutations": {
+            "nonsynonymous": [
+            ],
+            "synonymous": [
+            ],
+        },
+    },
+
     # variant  -- part of 'Indian' in media - B.1.617.1
     "Kappa": {
         "snps": [17523, 23604, 22917],  # ORF1b:1352, S:681, 452
