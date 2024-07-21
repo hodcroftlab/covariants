@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 3253922,
+    "total": 3261008,
     "counts": [
       {
         "mut": "S:N460K",
-        "count": 1303095
+        "count": 1310052
       },
       {
         "mut": "S:G446S",
-        "count": 1300387
+        "count": 1307284
       },
       {
         "mut": "S:G339H",
-        "count": 1296515
+        "count": 1303564
       },
       {
         "mut": "S:R346T",
-        "count": 1120141
+        "count": 1122887
       },
       {
         "mut": "S:F486P",
-        "count": 1105102
+        "count": 1112112
       },
       {
         "mut": "S:Y144-",
-        "count": 1104980
+        "count": 1111906
       },
       {
         "mut": "S:F490S",
-        "count": 948063
+        "count": 948158
       },
       {
         "mut": "S:V213E",
-        "count": 869999
+        "count": 870147
       },
       {
         "mut": "S:V445P",
-        "count": 868713
+        "count": 869015
       },
       {
         "mut": "S:V83A",
-        "count": 865977
+        "count": 866143
       }
     ]
   },
   "others": {
-    "total": 3253922,
+    "total": 3261008,
     "counts": [
       {
         "mut": "ORF1a:L3201F",
-        "count": 2796956
+        "count": 2797134
       },
       {
         "mut": "ORF1b:G662S",
-        "count": 1039261
+        "count": 1039416
       },
       {
         "mut": "E:T11A",
-        "count": 1035406
+        "count": 1035545
       },
       {
         "mut": "ORF1b:S959P",
-        "count": 890139
+        "count": 890315
       },
       {
         "mut": "ORF1a:K47R",
-        "count": 876392
+        "count": 876654
       },
       {
         "mut": "ORF8:G8*",
-        "count": 819875
+        "count": 819976
       },
       {
         "mut": "ORF1a:T4175I",
-        "count": 610004
+        "count": 616815
       },
       {
         "mut": "ORF9b:I5T",
-        "count": 459717
+        "count": 459868
       },
       {
         "mut": "ORF1a:G1819S",
-        "count": 316046
+        "count": 316094
       },
       {
         "mut": "M:A104V",
-        "count": 274015
+        "count": 280949
       }
     ]
   }
