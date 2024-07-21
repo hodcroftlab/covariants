@@ -3069,7 +3069,7 @@ clusters = {
        "snps_with_base": ["T3565C","C18894T","T22926C","T27810C"], #MUST ADD VALUE WHEN TURN INTO PAGE!  
        "cluster_data": [],
        "nextstrain_build": True,
-       "parent": "23I.Omicron", 
+       "parent": "23I", 
        "use_pango": True,
        "has_no_page": True,
        "type": "variant",
@@ -3100,7 +3100,7 @@ clusters = {
        "snps_with_base": ["7113T","17334T","22928C","24872T","27810C"], #MUST ADD VALUE WHEN TURN INTO PAGE!  
        "cluster_data": [],
        "nextstrain_build": True,
-       "parent": "24A.Omicron", 
+       "parent": "24A", 
        "use_pango": True,
        "has_no_page": True,
        "type": "variant",
@@ -3131,7 +3131,7 @@ clusters = {
        "snps_with_base": ["7113T","17334T","22928C","24872T","27810C"], #MUST ADD VALUE WHEN TURN INTO PAGE!  
        "cluster_data": [],
        "nextstrain_build": True,
-       "parent": "24B.Omicron", 
+       "parent": "24B", 
        "use_pango": True,
        "has_no_page": True,
        "type": "variant",
