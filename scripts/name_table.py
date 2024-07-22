@@ -244,6 +244,30 @@ name_table = [
         "others": [],
     },
     {
+        "clade": "24A (Omicron)",
+        "who": "Omicron",
+        "lineages": [
+            {"name": "JN.1", "url": "https://cov-lineages.org/lineages/lineage_JN.1.html"}
+        ],
+        "others": [],
+    },
+    {
+        "clade": "24B (Omicron)",
+        "who": "Omicron",
+        "lineages": [
+            {"name": "JN.1.11.1", "url": "https://cov-lineages.org/lineages/lineage_JN.1.11.1.html"}
+        ],
+        "others": [],
+    },
+    {
+        "clade": "24C (Omicron)",
+        "who": "Omicron",
+        "lineages": [
+            {"name": "KP.3", "url": "https://cov-lineages.org/lineages/lineage_KP.3.html"}
+        ],
+        "others": [],
+    },
+    {
         "clade": "20E (EU1)",
         "who": None,
         "lineages": [
