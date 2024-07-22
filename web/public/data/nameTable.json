@@ -344,6 +344,39 @@
       "who": "Omicron"
     },
     {
+      "clade": "24A (Omicron)",
+      "lineages": [
+        {
+          "name": "JN.1",
+          "url": "https://cov-lineages.org/lineages/lineage_JN.1.html"
+        }
+      ],
+      "others": [],
+      "who": "Omicron"
+    },
+    {
+      "clade": "24B (Omicron)",
+      "lineages": [
+        {
+          "name": "JN.1.11.1",
+          "url": "https://cov-lineages.org/lineages/lineage_JN.1.11.1.html"
+        }
+      ],
+      "others": [],
+      "who": "Omicron"
+    },
+    {
+      "clade": "24C (Omicron)",
+      "lineages": [
+        {
+          "name": "KP.3",
+          "url": "https://cov-lineages.org/lineages/lineage_KP.3.html"
+        }
+      ],
+      "others": [],
+      "who": "Omicron"
+    },
+    {
       "clade": "20E (EU1)",
       "lineages": [
         {
