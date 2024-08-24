@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 67735,
+    "total": 69924,
     "counts": [
       {
         "mut": "S:Q493E",
-        "count": 38510
+        "count": 40172
       },
       {
         "mut": "S:R346T",
-        "count": 27213
+        "count": 27746
       },
       {
         "mut": "S:S31-",
-        "count": 22042
+        "count": 23110
       },
       {
         "mut": "S:H146Q",
-        "count": 8250
+        "count": 8457
       },
       {
         "mut": "S:K1086R",
-        "count": 7998
+        "count": 8170
       },
       {
         "mut": "S:F59L",
-        "count": 2693
+        "count": 2758
       },
       {
         "mut": "S:K1266R",
-        "count": 2658
+        "count": 2720
       },
       {
         "mut": "S:K182N",
-        "count": 1838
+        "count": 1866
       },
       {
         "mut": "S:T572I",
-        "count": 1737
+        "count": 1786
       },
       {
         "mut": "S:S31F",
-        "count": 1270
+        "count": 1307
       }
     ]
   },
   "others": {
-    "total": 67735,
+    "total": 69924,
     "counts": [
       {
         "mut": "ORF1a:S4286C",
-        "count": 10773
+        "count": 11560
       },
       {
         "mut": "N:G204P",
-        "count": 8387
+        "count": 8908
       },
       {
         "mut": "ORF9b:P3H",
-        "count": 8344
+        "count": 8859
       },
       {
         "mut": "ORF3a:K67N",
-        "count": 8339
+        "count": 8540
       },
       {
         "mut": "ORF3a:S40P",
-        "count": 2299
+        "count": 2395
       },
       {
         "mut": "ORF1b:L2213F",
-        "count": 2180
+        "count": 2215
       },
       {
         "mut": "ORF1b:P1675S",
-        "count": 1917
-      },
-      {
-        "mut": "ORF1a:E4388K",
-        "count": 1413
+        "count": 1939
       },
       {
         "mut": "ORF1a:L3606F",
-        "count": 1365
+        "count": 1430
+      },
+      {
+        "mut": "ORF1a:E4388K",
+        "count": 1430
       },
       {
         "mut": "ORF3a:L73F",
-        "count": 1234
+        "count": 1247
       }
     ]
   }
