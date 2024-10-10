@@ -139,139 +139,37 @@
   ],
   "shared_by_commonness": [
     {
-      "pos": 501,
+      "pos": 969,
       "presence": [
-        "S:N501Y",
-        "S:N501Y",
-        "S:N501Y",
-        "S:N501Y",
-        "S:N501Y",
-        "S:N501Y",
-        "S:N501Y",
-        "S:N501Y",
-        "S:N501Y",
-        "S:N501Y",
-        "S:N501Y",
-        "S:N501Y"
+        "S:N969K",
+        "S:N969K",
+        "S:N969K",
+        "S:N969K",
+        "S:N969K",
+        "S:N969K",
+        "S:N969K",
+        "S:N969K",
+        "S:N969K",
+        "S:N969K",
+        "S:N969K",
+        "S:N969K"
       ]
     },
     {
-      "pos": 142,
+      "pos": 954,
       "presence": [
-        "S:G142-",
-        "S:G142D",
-        "S:G142D",
-        "S:G142D",
-        "S:G142D",
-        "S:G142D",
-        "S:G142D",
-        "S:G142D",
-        "S:G142D",
-        "S:G142D",
-        "S:G142D",
-        "S:G142D"
-      ]
-    },
-    {
-      "pos": 373,
-      "presence": [
-        "S:S373P",
-        "S:S373P",
-        "S:S373P",
-        "S:S373P",
-        "S:S373P",
-        "S:S373P",
-        "S:S373P",
-        "S:S373P",
-        "S:S373P",
-        "S:S373P",
-        "S:S373P",
-        "S:S373P"
-      ]
-    },
-    {
-      "pos": 375,
-      "presence": [
-        "S:S375F",
-        "S:S375F",
-        "S:S375F",
-        "S:S375F",
-        "S:S375F",
-        "S:S375F",
-        "S:S375F",
-        "S:S375F",
-        "S:S375F",
-        "S:S375F",
-        "S:S375F",
-        "S:S375F"
-      ]
-    },
-    {
-      "pos": 417,
-      "presence": [
-        "S:K417N",
-        "S:K417N",
-        "S:K417N",
-        "S:K417N",
-        "S:K417N",
-        "S:K417N",
-        "S:K417N",
-        "S:K417N",
-        "S:K417N",
-        "S:K417N",
-        "S:K417N",
-        "S:K417N"
-      ]
-    },
-    {
-      "pos": 440,
-      "presence": [
-        "S:N440K",
-        "S:N440K",
-        "S:N440K",
-        "S:N440K",
-        "S:N440K",
-        "S:N440K",
-        "S:N440K",
-        "S:N440K",
-        "S:N440K",
-        "S:N440K",
-        "S:N440K",
-        "S:N440K"
-      ]
-    },
-    {
-      "pos": 477,
-      "presence": [
-        "S:S477N",
-        "S:S477N",
-        "S:S477N",
-        "S:S477N",
-        "S:S477N",
-        "S:S477N",
-        "S:S477N",
-        "S:S477N",
-        "S:S477N",
-        "S:S477N",
-        "S:S477N",
-        "S:S477N"
-      ]
-    },
-    {
-      "pos": 478,
-      "presence": [
-        "S:T478K",
-        "S:T478K",
-        "S:T478K",
-        "S:T478K",
-        "S:T478K",
-        "S:T478K",
-        "S:T478K",
-        "S:T478K",
-        "S:T478K",
-        "S:T478K",
-        "S:T478K",
-        "S:T478K"
+        "S:Q954H",
+        "S:Q954H",
+        "S:Q954H",
+        "S:Q954H",
+        "S:Q954H",
+        "S:Q954H",
+        "S:Q954H",
+        "S:Q954H",
+        "S:Q954H",
+        "S:Q954H",
+        "S:Q954H",
+        "S:Q954H"
       ]
     },
     {
@@ -309,6 +207,125 @@
       ]
     },
     {
+      "pos": 501,
+      "presence": [
+        "S:N501Y",
+        "S:N501Y",
+        "S:N501Y",
+        "S:N501Y",
+        "S:N501Y",
+        "S:N501Y",
+        "S:N501Y",
+        "S:N501Y",
+        "S:N501Y",
+        "S:N501Y",
+        "S:N501Y",
+        "S:N501Y"
+      ]
+    },
+    {
+      "pos": 505,
+      "presence": [
+        "S:Y505H",
+        "S:Y505H",
+        "S:Y505H",
+        "S:Y505H",
+        "S:Y505H",
+        "S:Y505H",
+        "S:Y505H",
+        "S:Y505H",
+        "S:Y505H",
+        "S:Y505H",
+        "S:Y505H",
+        "S:Y505H"
+      ]
+    },
+    {
+      "pos": 142,
+      "presence": [
+        "S:G142-",
+        "S:G142D",
+        "S:G142D",
+        "S:G142D",
+        "S:G142D",
+        "S:G142D",
+        "S:G142D",
+        "S:G142D",
+        "S:G142D",
+        "S:G142D",
+        "S:G142D",
+        "S:G142D"
+      ]
+    },
+    {
+      "pos": 477,
+      "presence": [
+        "S:S477N",
+        "S:S477N",
+        "S:S477N",
+        "S:S477N",
+        "S:S477N",
+        "S:S477N",
+        "S:S477N",
+        "S:S477N",
+        "S:S477N",
+        "S:S477N",
+        "S:S477N",
+        "S:S477N"
+      ]
+    },
+    {
+      "pos": 478,
+      "presence": [
+        "S:T478K",
+        "S:T478K",
+        "S:T478K",
+        "S:T478K",
+        "S:T478K",
+        "S:T478K",
+        "S:T478K",
+        "S:T478K",
+        "S:T478K",
+        "S:T478K",
+        "S:T478K",
+        "S:T478K"
+      ]
+    },
+    {
+      "pos": 417,
+      "presence": [
+        "S:K417N",
+        "S:K417N",
+        "S:K417N",
+        "S:K417N",
+        "S:K417N",
+        "S:K417N",
+        "S:K417N",
+        "S:K417N",
+        "S:K417N",
+        "S:K417N",
+        "S:K417N",
+        "S:K417N"
+      ]
+    },
+    {
+      "pos": 440,
+      "presence": [
+        "S:N440K",
+        "S:N440K",
+        "S:N440K",
+        "S:N440K",
+        "S:N440K",
+        "S:N440K",
+        "S:N440K",
+        "S:N440K",
+        "S:N440K",
+        "S:N440K",
+        "S:N440K",
+        "S:N440K"
+      ]
+    },
+    {
       "pos": 339,
       "presence": [
         "S:G339D",
@@ -343,20 +360,37 @@
       ]
     },
     {
-      "pos": 505,
+      "pos": 373,
       "presence": [
-        "S:Y505H",
-        "S:Y505H",
-        "S:Y505H",
-        "S:Y505H",
-        "S:Y505H",
-        "S:Y505H",
-        "S:Y505H",
-        "S:Y505H",
-        "S:Y505H",
-        "S:Y505H",
-        "S:Y505H",
-        "S:Y505H"
+        "S:S373P",
+        "S:S373P",
+        "S:S373P",
+        "S:S373P",
+        "S:S373P",
+        "S:S373P",
+        "S:S373P",
+        "S:S373P",
+        "S:S373P",
+        "S:S373P",
+        "S:S373P",
+        "S:S373P"
+      ]
+    },
+    {
+      "pos": 375,
+      "presence": [
+        "S:S375F",
+        "S:S375F",
+        "S:S375F",
+        "S:S375F",
+        "S:S375F",
+        "S:S375F",
+        "S:S375F",
+        "S:S375F",
+        "S:S375F",
+        "S:S375F",
+        "S:S375F",
+        "S:S375F"
       ]
     },
     {
@@ -462,142 +496,6 @@
       ]
     },
     {
-      "pos": 954,
-      "presence": [
-        "S:Q954H",
-        "S:Q954H",
-        "S:Q954H",
-        "S:Q954H",
-        "S:Q954H",
-        "S:Q954H",
-        "S:Q954H",
-        "S:Q954H",
-        "S:Q954H",
-        "S:Q954H",
-        "S:Q954H",
-        "S:Q954H"
-      ]
-    },
-    {
-      "pos": 969,
-      "presence": [
-        "S:N969K",
-        "S:N969K",
-        "S:N969K",
-        "S:N969K",
-        "S:N969K",
-        "S:N969K",
-        "S:N969K",
-        "S:N969K",
-        "S:N969K",
-        "S:N969K",
-        "S:N969K",
-        "S:N969K"
-      ]
-    },
-    {
-      "pos": 493,
-      "presence": [
-        "S:Q493R",
-        "S:Q493R",
-        null,
-        "S:Q493Q",
-        "S:R493Q",
-        "S:R493Q",
-        "S:R493Q",
-        "S:R493Q",
-        "S:R493Q",
-        "S:R493Q",
-        "S:R493Q",
-        "S:Q493E"
-      ]
-    },
-    {
-      "pos": 405,
-      "presence": [
-        null,
-        "S:D405N",
-        "S:D405N",
-        "S:D405N",
-        "S:D405N",
-        "S:D405N",
-        "S:D405N",
-        "S:D405N",
-        "S:D405N",
-        "S:D405N",
-        "S:D405N",
-        "S:D405N"
-      ]
-    },
-    {
-      "pos": 376,
-      "presence": [
-        null,
-        "S:T376A",
-        "S:T376A",
-        "S:T376A",
-        "S:T376A",
-        "S:T376A",
-        "S:T376A",
-        "S:T376A",
-        "S:T376A",
-        "S:T376A",
-        "S:T376A",
-        "S:T376A"
-      ]
-    },
-    {
-      "pos": 19,
-      "presence": [
-        null,
-        "S:T19I",
-        "S:T19I",
-        "S:T19I",
-        "S:T19I",
-        "S:T19I",
-        "S:T19I",
-        "S:T19I",
-        "S:T19I",
-        "S:T19I",
-        "S:T19I",
-        "S:T19I"
-      ]
-    },
-    {
-      "pos": 408,
-      "presence": [
-        null,
-        "S:R408S",
-        "S:R408S",
-        "S:R408S",
-        "S:R408S",
-        "S:R408S",
-        "S:R408S",
-        "S:R408S",
-        "S:R408S",
-        "S:R408S",
-        "S:R408S",
-        "S:R408S"
-      ]
-    },
-    {
-      "pos": 213,
-      "presence": [
-        null,
-        "S:V213G",
-        "S:V213G",
-        "S:V213G",
-        "S:V213E",
-        "S:V213E",
-        "S:V213G",
-        "S:V213E",
-        "S:V213G",
-        "S:V213G",
-        "S:V213G",
-        "S:V213G"
-      ]
-    },
-    {
       "pos": 24,
       "presence": [
         null,
@@ -663,6 +561,108 @@
         "S:A27S",
         "S:A27S",
         "S:A27S"
+      ]
+    },
+    {
+      "pos": 213,
+      "presence": [
+        null,
+        "S:V213G",
+        "S:V213G",
+        "S:V213G",
+        "S:V213E",
+        "S:V213E",
+        "S:V213G",
+        "S:V213E",
+        "S:V213G",
+        "S:V213G",
+        "S:V213G",
+        "S:V213G"
+      ]
+    },
+    {
+      "pos": 376,
+      "presence": [
+        null,
+        "S:T376A",
+        "S:T376A",
+        "S:T376A",
+        "S:T376A",
+        "S:T376A",
+        "S:T376A",
+        "S:T376A",
+        "S:T376A",
+        "S:T376A",
+        "S:T376A",
+        "S:T376A"
+      ]
+    },
+    {
+      "pos": 19,
+      "presence": [
+        null,
+        "S:T19I",
+        "S:T19I",
+        "S:T19I",
+        "S:T19I",
+        "S:T19I",
+        "S:T19I",
+        "S:T19I",
+        "S:T19I",
+        "S:T19I",
+        "S:T19I",
+        "S:T19I"
+      ]
+    },
+    {
+      "pos": 493,
+      "presence": [
+        "S:Q493R",
+        "S:Q493R",
+        null,
+        "S:Q493Q",
+        "S:R493Q",
+        "S:R493Q",
+        "S:R493Q",
+        "S:R493Q",
+        "S:R493Q",
+        "S:R493Q",
+        "S:R493Q",
+        "S:Q493E"
+      ]
+    },
+    {
+      "pos": 405,
+      "presence": [
+        null,
+        "S:D405N",
+        "S:D405N",
+        "S:D405N",
+        "S:D405N",
+        "S:D405N",
+        "S:D405N",
+        "S:D405N",
+        "S:D405N",
+        "S:D405N",
+        "S:D405N",
+        "S:D405N"
+      ]
+    },
+    {
+      "pos": 408,
+      "presence": [
+        null,
+        "S:R408S",
+        "S:R408S",
+        "S:R408S",
+        "S:R408S",
+        "S:R408S",
+        "S:R408S",
+        "S:R408S",
+        "S:R408S",
+        "S:R408S",
+        "S:R408S",
+        "S:R408S"
       ]
     },
     {
@@ -734,23 +734,6 @@
       ]
     },
     {
-      "pos": 445,
-      "presence": [
-        null,
-        null,
-        null,
-        null,
-        "S:V445P",
-        "S:V445P",
-        null,
-        "S:V445P",
-        "S:V445H",
-        "S:V445H",
-        "S:V445H",
-        "S:V445H"
-      ]
-    },
-    {
       "pos": 69,
       "presence": [
         "S:H69-",
@@ -802,6 +785,40 @@
       ]
     },
     {
+      "pos": 445,
+      "presence": [
+        null,
+        null,
+        null,
+        null,
+        "S:V445P",
+        "S:V445P",
+        null,
+        "S:V445P",
+        "S:V445H",
+        "S:V445H",
+        "S:V445H",
+        "S:V445H"
+      ]
+    },
+    {
+      "pos": 157,
+      "presence": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:F157L",
+        null,
+        "S:F157S",
+        "S:F157S",
+        "S:F157S",
+        "S:F157S"
+      ]
+    },
+    {
       "pos": 212,
       "presence": [
         "S:L212I",
@@ -836,24 +853,7 @@
       ]
     },
     {
-      "pos": 157,
-      "presence": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        "S:F157L",
-        null,
-        "S:F157S",
-        "S:F157S",
-        "S:F157S",
-        "S:F157S"
-      ]
-    },
-    {
-      "pos": 127,
+      "pos": 1143,
       "presence": [
         null,
         null,
@@ -863,10 +863,10 @@
         null,
         null,
         null,
-        "S:V127F",
-        "S:V127F",
-        "S:V127F",
-        "S:V127F"
+        "S:P1143L",
+        "S:P1143L",
+        "S:P1143L",
+        "S:P1143L"
       ]
     },
     {
@@ -887,23 +887,6 @@
       ]
     },
     {
-      "pos": 554,
-      "presence": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        "S:E554K",
-        "S:E554K",
-        "S:E554K",
-        "S:E554K"
-      ]
-    },
-    {
       "pos": 570,
       "presence": [
         null,
@@ -918,57 +901,6 @@
         "S:A570V",
         "S:A570V",
         "S:A570V"
-      ]
-    },
-    {
-      "pos": 158,
-      "presence": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        "S:R158G",
-        "S:R158G",
-        "S:R158G",
-        "S:R158G"
-      ]
-    },
-    {
-      "pos": 50,
-      "presence": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        "S:S50L",
-        "S:S50L",
-        "S:S50L",
-        "S:S50L"
-      ]
-    },
-    {
-      "pos": 939,
-      "presence": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        "S:S939F",
-        "S:S939F",
-        "S:S939F",
-        "S:S939F"
       ]
     },
     {
@@ -989,6 +921,108 @@
       ]
     },
     {
+      "pos": 403,
+      "presence": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:R403K",
+        "S:R403K",
+        "S:R403K",
+        "S:R403K"
+      ]
+    },
+    {
+      "pos": 50,
+      "presence": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:S50L",
+        "S:S50L",
+        "S:S50L",
+        "S:S50L"
+      ]
+    },
+    {
+      "pos": 21,
+      "presence": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:R21T",
+        "S:R21T",
+        "S:R21T",
+        "S:R21T"
+      ]
+    },
+    {
+      "pos": 356,
+      "presence": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:K356T",
+        "S:K356T",
+        "S:K356T",
+        "S:K356T"
+      ]
+    },
+    {
+      "pos": 216,
+      "presence": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:L216F",
+        "S:L216F",
+        "S:L216F",
+        "S:L216F"
+      ]
+    },
+    {
+      "pos": 455,
+      "presence": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:L455F",
+        null,
+        "S:L455S",
+        "S:L455S",
+        "S:L455S"
+      ]
+    },
+    {
       "pos": 481,
       "presence": [
         null,
@@ -1003,57 +1037,6 @@
         "S:N481K",
         "S:N481K",
         "S:N481K"
-      ]
-    },
-    {
-      "pos": 483,
-      "presence": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        "S:V483-",
-        "S:V483-",
-        "S:V483-",
-        "S:V483-"
-      ]
-    },
-    {
-      "pos": 450,
-      "presence": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        "S:N450D",
-        "S:N450D",
-        "S:N450D",
-        "S:N450D"
-      ]
-    },
-    {
-      "pos": 332,
-      "presence": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        "S:I332V",
-        "S:I332V",
-        "S:I332V",
-        "S:I332V"
       ]
     },
     {
@@ -1091,7 +1074,7 @@
       ]
     },
     {
-      "pos": 403,
+      "pos": 554,
       "presence": [
         null,
         null,
@@ -1101,14 +1084,14 @@
         null,
         null,
         null,
-        "S:R403K",
-        "S:R403K",
-        "S:R403K",
-        "S:R403K"
+        "S:E554K",
+        "S:E554K",
+        "S:E554K",
+        "S:E554K"
       ]
     },
     {
-      "pos": 216,
+      "pos": 332,
       "presence": [
         null,
         null,
@@ -1118,14 +1101,14 @@
         null,
         null,
         null,
-        "S:L216F",
-        "S:L216F",
-        "S:L216F",
-        "S:L216F"
+        "S:I332V",
+        "S:I332V",
+        "S:I332V",
+        "S:I332V"
       ]
     },
     {
-      "pos": 21,
+      "pos": 939,
       "presence": [
         null,
         null,
@@ -1135,14 +1118,14 @@
         null,
         null,
         null,
-        "S:R21T",
-        "S:R21T",
-        "S:R21T",
-        "S:R21T"
+        "S:S939F",
+        "S:S939F",
+        "S:S939F",
+        "S:S939F"
       ]
     },
     {
-      "pos": 455,
+      "pos": 483,
       "presence": [
         null,
         null,
@@ -1151,15 +1134,15 @@
         null,
         null,
         null,
-        "S:L455F",
         null,
-        "S:L455S",
-        "S:L455S",
-        "S:L455S"
+        "S:V483-",
+        "S:V483-",
+        "S:V483-",
+        "S:V483-"
       ]
     },
     {
-      "pos": 356,
+      "pos": 450,
       "presence": [
         null,
         null,
@@ -1169,14 +1152,14 @@
         null,
         null,
         null,
-        "S:K356T",
-        "S:K356T",
-        "S:K356T",
-        "S:K356T"
+        "S:N450D",
+        "S:N450D",
+        "S:N450D",
+        "S:N450D"
       ]
     },
     {
-      "pos": 1143,
+      "pos": 127,
       "presence": [
         null,
         null,
@@ -1186,10 +1169,27 @@
         null,
         null,
         null,
-        "S:P1143L",
-        "S:P1143L",
-        "S:P1143L",
-        "S:P1143L"
+        "S:V127F",
+        "S:V127F",
+        "S:V127F",
+        "S:V127F"
+      ]
+    },
+    {
+      "pos": 158,
+      "presence": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "S:R158G",
+        "S:R158G",
+        "S:R158G",
+        "S:R158G"
       ]
     },
     {
@@ -1210,16 +1210,33 @@
       ]
     },
     {
-      "pos": 490,
+      "pos": 368,
       "presence": [
         null,
         null,
         null,
         null,
-        "S:F490S",
-        "S:F490S",
+        "S:L368I",
+        "S:L368I",
         null,
-        "S:F490S",
+        "S:L368I",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "pos": 183,
+      "presence": [
+        null,
+        null,
+        null,
+        null,
+        "S:Q183E",
+        "S:Q183E",
+        null,
+        "S:Q183E",
         null,
         null,
         null,
@@ -1244,23 +1261,6 @@
       ]
     },
     {
-      "pos": 183,
-      "presence": [
-        null,
-        null,
-        null,
-        null,
-        "S:Q183E",
-        "S:Q183E",
-        null,
-        "S:Q183E",
-        null,
-        null,
-        null,
-        null
-      ]
-    },
-    {
       "pos": 146,
       "presence": [
         null,
@@ -1278,16 +1278,16 @@
       ]
     },
     {
-      "pos": 368,
+      "pos": 490,
       "presence": [
         null,
         null,
         null,
         null,
-        "S:L368I",
-        "S:L368I",
+        "S:F490S",
+        "S:F490S",
         null,
-        "S:L368I",
+        "S:F490S",
         null,
         null,
         null,
