@@ -75,3 +75,7 @@ Temporary Items
 .env
 
 web/.json-autotranslate-cache
+
+# IDE files
+*.iml
+/.idea
