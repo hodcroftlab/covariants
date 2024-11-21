@@ -65,14 +65,12 @@ const nextConfig: NextConfig = {
     maxInactiveAge: 60 * 1000,
     pagesBufferLength: 2,
   },
-  modern: false,
   // reactStrictMode: true,
   experimental: {
     // reactMode: 'concurrent',
     // reactRoot: true,
     scrollRestoration: true,
   },
-  swcMinify: true,
   productionBrowserSourceMaps: ENABLE_SOURCE_MAPS,
   excludeDefaultMomentLocales: true,
   devIndicators: {
