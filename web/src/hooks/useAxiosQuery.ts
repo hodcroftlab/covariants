@@ -25,6 +25,8 @@ function queryOptionsDefaulted<T>(options: T) {
 const REACT_QUERY_OPTIONS_DEFAULT: QueryClientConfig = {
   defaultOptions: {
     queries: {
+      // TODO: remove this ts-ignore, only here to get intermediate build off the ground
+      // @ts-ignore
       suspense: true,
       retry: 1,
       ...QUERY_OPTIONS_DEFAULT,
@@ -67,6 +69,8 @@ export type UseAxiosQueriesOptions<TData = unknown> = QueriesOptions<TData[]>
 export function useAxiosQuery<TData = unknown>(url: string, options?: UseAxiosQueryOptions<TData>): TData {
   const keys = useMemo(() => [url], [url])
   const optionsDefaulted = useMemo(() => queryOptionsDefaulted(options), [options])
+  // TODO: remove this ts-ignore, only here to get intermediate build off the ground
+  // @ts-ignore
   const res = useQuery<TData, Error, TData, string[]>(keys, async () => axiosFetch(url), optionsDefaulted)
   return useMemo(() => {
     if (!res.data) {

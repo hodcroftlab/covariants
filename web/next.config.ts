@@ -7,25 +7,25 @@ import getWithMDX from '@next/mdx'
 import withPlugins from 'next-compose-plugins'
 import getWithTranspileModules from 'next-transpile-modules'
 
-import { findModuleRoot } from '../../lib/findModuleRoot'
-import { getGitBranch } from '../../lib/getGitBranch'
-import { getBuildNumber } from '../../lib/getBuildNumber'
-import { getBuildUrl } from '../../lib/getBuildUrl'
-import { getGitCommitHash } from '../../lib/getGitCommitHash'
-import { getEnvVars } from './lib/getEnvVars'
+import { findModuleRoot } from './lib/findModuleRoot'
+import { getGitBranch } from './lib/getGitBranch'
+import { getBuildNumber } from './lib/getBuildNumber'
+import { getBuildUrl } from './lib/getBuildUrl'
+import { getGitCommitHash } from './lib/getGitCommitHash'
+import { getEnvVars } from './config/next/lib/getEnvVars'
 
-import getWithExtraWatch from './withExtraWatch'
-import getWithFriendlyConsole from './withFriendlyConsole'
-import getWithLodash from './withLodash'
-import { getWithRobotsTxt } from './withRobotsTxt'
-import getWithTypeChecking from './withTypeChecking'
-import withSvg from './withSvg'
-import withIgnore from './withIgnore'
-import withoutMinification from './withoutMinification'
-import withFriendlyChunkNames from './withFriendlyChunkNames'
-import withResolve from './withResolve'
-import withWebpackWatchPoll from './withWebpackWatchPoll'
-import withUrlAsset from './withUrlAsset'
+import getWithExtraWatch from './config/next/withExtraWatch'
+import getWithFriendlyConsole from './config/next/withFriendlyConsole'
+import getWithLodash from './config/next/withLodash'
+import { getWithRobotsTxt } from './config/next/withRobotsTxt'
+import getWithTypeChecking from './config/next/withTypeChecking'
+import withSvg from './config/next/withSvg'
+import withIgnore from './config/next/withIgnore'
+import withoutMinification from './config/next/withoutMinification'
+import withFriendlyChunkNames from './config/next/withFriendlyChunkNames'
+import withResolve from './config/next/withResolve'
+import withWebpackWatchPoll from './config/next/withWebpackWatchPoll'
+import withUrlAsset from './config/next/withUrlAsset'
 
 const {
   // BABEL_ENV,
@@ -100,16 +100,16 @@ const withMDX = getWithMDX({
   options: {
     remarkPlugins: [
       // prettier-ignore
-      require('remark-breaks'),
-      require('remark-images'),
-      require('remark-math'),
-      require('remark-slug'),
-      [
-        require('remark-toc'),
-        {
-          tight: true,
-        },
-      ],
+      // require('remark-breaks'),
+      // require('remark-images'),
+      // require('remark-math'),
+      // require('remark-slug'),
+      // [
+      //   require('remark-toc'),
+      //   {
+      //     tight: true,
+      //   },
+      // ],
       // [
       //   require('remark-autolink-headings'),
       //   {

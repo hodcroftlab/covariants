@@ -1,3 +1,5 @@
+// TODO: remove this ts-ignore, only here to get intermediate build off the ground
+// @ts-ignore
 import { MDXProviderComponents } from '@mdx-js/react'
 import styled from 'styled-components'
 

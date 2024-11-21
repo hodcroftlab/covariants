@@ -38,16 +38,16 @@ const LetterSpan = styled.span<{ pos: number }>`
 
 export function NextstrainLogo() {
   return (
-    <Wrapper>
+    (<Wrapper>
       <NextstrainIcon />
       <span>
         {'Nextstrain'.split('').map((letter, i) => (
           // eslint-disable-next-line react/no-array-index-key
-          <LetterSpan key={`${i}_${letter}`} pos={i}>
+          (<LetterSpan key={`${i}_${letter}`} pos={i}>
             {letter}
-          </LetterSpan>
+          </LetterSpan>)
         ))}
       </span>
-    </Wrapper>
-  )
+    </Wrapper>)
+  );
 }

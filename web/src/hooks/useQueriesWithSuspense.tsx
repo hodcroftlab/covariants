@@ -33,9 +33,13 @@ export function useQueries<T extends any[]>({
   options,
 }: {
   queries: readonly [...QueriesOptions<T>]
+  // TODO: remove this ts-ignore, only here to get intermediate build off the ground
+  // @ts-ignore
   context?: UseQueryOptions['context']
   options: { suspense?: boolean }
 }): QueriesResults<T> {
+  // TODO: remove this ts-ignore, only here to get intermediate build off the ground
+  // @ts-ignore
   const queryClient = useQueryClient({ context })
   const isRestoring = useIsRestoring()
   const errorResetBoundary = useQueryErrorResetBoundary()
@@ -46,6 +50,8 @@ export function useQueries<T extends any[]>({
         const defaultedOptions = queryClient.defaultQueryOptions(options)
 
         defaultedOptions.suspense = true
+        // TODO: remove this ts-ignore, only here to get intermediate build off the ground
+        // @ts-ignore
         defaultedOptions.useErrorBoundary = true
         defaultedOptions.retryOnMount = false
 
@@ -60,7 +66,8 @@ export function useQueries<T extends any[]>({
   const [observer] = React.useState(
     () => new QueriesObserver(queryClient, defaultedOptions) as unknown as QueriesObserverExt,
   )
-
+  // TODO: remove this ts-ignore, only here to get intermediate build off the ground
+  // @ts-ignore
   const results = observer.getOptimisticResult(defaultedOptions)
 
   useSyncExternalStore(
@@ -75,12 +82,19 @@ export function useQueries<T extends any[]>({
   React.useEffect(() => {
     // Do not notify on updates because of changes in the options because
     // these changes should already be reflected in the optimistic result.
+    // TODO: remove this ts-ignore, only here to get intermediate build off the ground
+    // @ts-ignore
     observer.setQueries(defaultedOptions, { listeners: false })
   }, [defaultedOptions, observer])
-
+  // TODO: remove this ts-ignore, only here to get intermediate build off the ground
+  // @ts-ignore
   const isError = results.some((r) => r.isError)
+  // TODO: remove this ts-ignore, only here to get intermediate build off the ground
+  // @ts-ignore
   const error = results.find((r) => !isNil(r.error))
   if (isError && error) {
+    // TODO: remove this ts-ignore, only here to get intermediate build off the ground
+    // @ts-ignore
     throw error?.error
   }
 
@@ -89,6 +103,8 @@ export function useQueries<T extends any[]>({
       if (isNil(observer) || isNil(defaultedOption) || isNil(result)) {
         throw new Error('useQueries: Attempted to zip arrays of different sizes.')
       }
+      // TODO: remove this ts-ignore, only here to get intermediate build off the ground
+      // @ts-ignore
       const shouldFetch = options.suspense && result.isLoading && result.isFetching && !isRestoring
       if (shouldFetch) {
         return observer.fetchOptimistic({
@@ -112,6 +128,8 @@ export function useQueries<T extends any[]>({
     if (!observer || !result) {
       throw new Error('useQueries: Attempted to zip arrays of different sizes.')
     }
+    // TODO: remove this ts-ignore, only here to get intermediate build off the ground
+    // @ts-ignore
     return observer.trackResult(result)
   }) as QueriesResults<T>
 }

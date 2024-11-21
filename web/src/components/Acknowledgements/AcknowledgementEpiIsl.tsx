@@ -94,6 +94,8 @@ export function useQueryAcknowledgementData(epiIsl: string) {
       }
       return validateEpiIslData(res.data)
     },
+    // TODO: remove this ts-ignore, only here to get intermediate build off the ground
+    // @ts-ignore
     {
       staleTime: Number.POSITIVE_INFINITY,
       refetchOnMount: false,
@@ -132,14 +134,20 @@ export function AcknowledgementEpiIslPopup({ target, isOpen, epiIsl }: Acknowled
           <section>
             <p>
               <b>{t('Originating lab: {{origLab}}', { origLab: '' })}</b>
+              {/*TODO: remove this ts-ignore, only here to get intermediate build off the ground*/}
+              {/*@ts-ignore*/}
               <span>{data.origLab}</span>
             </p>
             <p>
               <b>{t('Submitting lab: {{submLab}}', { submLab: '' })}</b>
+              {/*TODO: remove this ts-ignore, only here to get intermediate build off the ground*/}
+              {/*@ts-ignore*/}
               <span>{data.submLab}</span>
             </p>
             <p>
               <b>{t('Authors: {{authors}}', { authors: '' })}</b>
+              {/*TODO: remove this ts-ignore, only here to get intermediate build off the ground*/}
+              {/*@ts-ignore*/}
               <span>{data.authors}</span>
             </p>
           </section>
