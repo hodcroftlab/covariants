@@ -106,17 +106,16 @@ const withMDX = getWithMDX({
   options: {
     remarkPlugins: [
       // prettier-ignore
-      //  TODO: these plugins were needed, make them work again
-      // require('remark-breaks'),
-      // require('remark-images'),
-      // require('remark-math'),
-      // require('remark-slug'),
-      // [
-      //   require('remark-toc'),
-      //   {
-      //     tight: true,
-      //   },
-      // ],
+      require('remark-breaks'),
+      require('remark-images'),
+      require('remark-math'),
+      require('remark-slug'),
+      [
+        require('remark-toc'),
+        {
+          tight: true,
+        },
+      ],
       // [
       //   require('remark-autolink-headings'),
       //   {

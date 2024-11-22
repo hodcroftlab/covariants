@@ -1,6 +1,7 @@
 // TODO: remove this ts-ignore, only here to get intermediate build off the ground
 // @ts-ignore
-import { MDXProviderComponents } from '@mdx-js/react'
+// import { MDXProviderComponents } from '@mdx-js/react'
+import { MDXComponents } from 'mdx/types'
 import styled from 'styled-components'
 
 import { AaMut, Lin, Mut, NucMut, Var, Who } from 'src/components/Common/MutationBadge'
@@ -33,6 +34,6 @@ export const mdxComponents = {
   MdxContent,
 }
 
-export function getMdxComponents(components: MDXProviderComponents): MDXProviderComponents {
+export function getMdxComponents(components: MDXComponents): MDXComponents {
   return { ...components, ...mdxComponents }
 }

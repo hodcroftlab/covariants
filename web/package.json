@@ -139,8 +139,8 @@
     "@babel/plugin-transform-react-jsx": "^7.14.9",
     "@babel/preset-env": "7.26.0",
     "@babel/preset-typescript": "7.26.0",
-    "@mdx-js/loader": "3.1.0",
-    "@mdx-js/react": "3.1.0",
+    "@mdx-js/loader": "1.6.22",
+    "@mdx-js/react": "1.6.22",
     "@next/eslint-plugin-next": "15.0.3",
     "@next/mdx": "15.0.3",
     "@nuxt/friendly-errors-webpack-plugin": "2.6.0",
@@ -169,7 +169,7 @@
     "@types/lodash": "4.17.13",
     "@types/lodash-webpack-plugin": "0.11.9",
     "@types/luxon": "3.4.2",
-    "@types/mdx-js__react": "2.0.0",
+    "@types/mdx": "2.0.13",
     "@types/node": "22.9.1",
     "@types/papaparse": "5.3.15",
     "@types/react": "18.3.12",
@@ -289,5 +289,9 @@
     "webpack-cli": "5.1.4",
     "webpackbar": "7.0.0"
   },
+  "resolutions": {
+
+  },
   "type": "commonjs"
 }
+
