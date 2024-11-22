@@ -31,3 +31,7 @@ yarn prod:serve:nowatch # load localhost:8080
 ```sh
 npm run dev:start # http://localhost:3000/
 ```
+
+### Maintenance
+SASS creates a lot of warnings because of API changes, those are silenced in `next.config.ts`. As this might mask 
+warnings coming from our own code, be sure to check from time to time.

@@ -91,6 +91,14 @@ const nextConfig: NextConfig = {
     config.experiments.topLevelAwait = true
     return config
   },
+  sassOptions: {
+    includePaths: ['node_modules'], // the correct option should be loadPaths but somehow that does not work (yet)
+    // There are a lot of warnings coming from SASS API changes that bootstrap has not implemented, silencing those
+    // However, this might mask warnings from our own code, so be sure to check from time to time. `quietDeps` seems to
+    // not work completely as intended.
+    quietDeps: true,
+    silenceDeprecations: ['mixed-decls', 'color-functions', 'legacy-js-api', 'global-builtin', 'import'],
+  }
 }
 
 const withMDX = getWithMDX({
@@ -98,6 +106,7 @@ const withMDX = getWithMDX({
   options: {
     remarkPlugins: [
       // prettier-ignore
+      //  TODO: these plugins were needed, make them work again
       // require('remark-breaks'),
       // require('remark-images'),
       // require('remark-math'),

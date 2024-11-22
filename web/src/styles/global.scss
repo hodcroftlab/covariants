@@ -1,27 +1,25 @@
 @use 'sass:map';
 
-@import '~typeface-open-sans/index.css';
-@import '~typeface-droid-sans-mono/index.css';
-@import '~bootstrap-icons/font/bootstrap-icons.css';
-@import './font-family-system';
+@use 'typeface-open-sans/index.css' as open-sans; // only works because includePaths option is set in next.config.ts
+@use 'typeface-droid-sans-mono/index.css' as droid-sans; // only works because includePaths option is set in next.config.ts
+@use 'bootstrap-icons/font/bootstrap-icons.css'; // only works because includePaths option is set in next.config.ts
+@use './font-family-system';
 
-@import './variables';
-@import './bootstrap';
-@import './theme';
+@use './theme';
 
-@import './lightrope';
+@use './lightrope';
 
-@import '~react-aspect-ratio/aspect-ratio.css';
-@import '~react-gif-player/src/GifPlayer.scss';
-@import '~react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
+@use 'react-aspect-ratio/aspect-ratio.css';
+@use 'react-gif-player/src/GifPlayer.scss';
+@use 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
-@import './components/LanguageSwitcher';
+@use './components/LanguageSwitcher';
 
 .gif_player {
   margin: 1rem;
 
   img {
-    border: 2px solid $gray-500;
+    border: 2px solid theme.$gray-500;
     pointer-events: none;
   }
 }
@@ -37,7 +35,7 @@ html {
 }
 
 body {
-  background-color: $body-bg;
+  background-color: theme.$body-bg;
 }
 
 #__next {
@@ -51,12 +49,12 @@ body {
 
 .main-container {
   height: 100%;
-  background-color: $body-bg;
+  background-color: theme.$body-bg;
   min-width: 320px;
 }
 
 .bi.bi-link-45deg.mdx-link-icon {
-  color: $gray-600;
+  color: theme.$gray-600;
 }
 
 /* Override bootstrap for better contrast */
@@ -74,7 +72,7 @@ p {
   display: flex;
   min-height: 80px;
   padding: 5px 10px;
-  background-color: $blockquote-bg-color;
+  background-color: theme.$blockquote-bg-color;
 
   > p {
     margin: auto;
@@ -113,7 +111,7 @@ p {
 }
 
 .body-color {
-  color: $body-color;
+  color: theme.$body-color;
 }
 
 .text-decoration-none {
@@ -135,11 +133,11 @@ p {
 }
 
 .icon.fill-red {
-  fill: $red;
+  fill: theme.$red;
 }
 
 .icon.fill-green {
-  fill: $green;
+  fill: theme.$green;
 }
 
 .cursor-pointer {

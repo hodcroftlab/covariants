@@ -1,10 +1,10 @@
-@import './variables';
+@use './variables' as vars;
 
-@mixin horizontal-scroll-shadow($shadow-color: rgba($black, 0.33), $shadow-width: 33px) {
+@mixin horizontal-scroll-shadow($shadow-color: rgba(vars.$black, 0.33), $shadow-width: 33px) {
   // prettier-ignore
   background:
-    linear-gradient(90deg, $white 0%, transparent),
-    linear-gradient(-90deg, $white 0%, transparent) 100% 0,
+    linear-gradient(90deg, vars.$white 0%, transparent),
+    linear-gradient(-90deg, vars.$white 0%, transparent) 100% 0,
     linear-gradient(90deg, $shadow-color, transparent),
     linear-gradient(-90deg, $shadow-color, transparent) 100% 0;
   background-repeat: no-repeat;
