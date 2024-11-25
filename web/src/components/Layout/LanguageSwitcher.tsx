@@ -46,8 +46,8 @@ export function LanguageSwitcherItem({ locale }: { locale: string }) {
   return (
     <>
       <Flag className="language-switcher-flag" />
-      <span className="pl-2 text-monospace">{`[${key}]`}</span>
-      <span className="pl-2">{label}</span>
+      <span className="ps-2 text-monospace">{`[${key}]`}</span>
+      <span className="ps-2">{label}</span>
     </>
   )
 }

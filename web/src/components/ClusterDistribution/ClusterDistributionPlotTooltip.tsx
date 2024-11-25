@@ -107,7 +107,7 @@ export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotToo
                     strokeWidth={theme.plot.country.legend.lineIcon.thickness}
                     strokeDasharray={getCountryStrokeDashArray(country)}
                   />
-                  <span className="ml-2">{t(country)}</span>
+                  <span className="ms-2">{t(country)}</span>
                 </td>
                 <td>{interpolated && '*'}</td>
                 <td className="px-2 text-right">

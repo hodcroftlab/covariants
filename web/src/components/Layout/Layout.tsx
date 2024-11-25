@@ -2,6 +2,8 @@ import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 import { Container as ContainerBase, Row, Col } from 'reactstrap'
 import GisaidLogoBase from 'src/assets/images/GISAID_logo.svg'
+import Image from 'next/image'
+import GisaidLogoPNG from 'src/assets/images/GISAID_logo.png'
 import { ChristmasLightRope, Santa, Snowfall } from 'src/components/Common/Christmas'
 import { ChangelogButton } from 'src/components/Common/ChangelogButton'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
@@ -78,17 +80,18 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
         </HeaderCol>
       </HeaderRow>
 
-      <Row noGutters className="ml-3 mt-2 d-none d-md-block">
+      <Row noGutters className="ms-3 mt-2 d-none d-md-block">
         <Col className="d-flex">
-          <GisaidText className="d-flex mr-auto">
-            <span className="mr-1">{t('Enabled by data from {{ gisaid }}', { gisaid: '' })}</span>
-            <LinkExternal href="https://www.gisaid.org/" icon={null}>
-              <GisaidLogo height={20} />
+          <GisaidText className="d-flex me-auto">
+            <span className="me-1 align-self-center">{t('Enabled by data from {{ gisaid }}', { gisaid: '' })}</span>
+            <LinkExternal className="align-self-center" href="https://www.gisaid.org/" icon={null}>
+              {/*<GisaidLogo height={20}/> TODO: fix using svg or remove svg-related code*/}
+              <Image src={GisaidLogoPNG} alt='GISAID' height={27} width={73}/>
             </LinkExternal>
           </GisaidText>
 
-          <ChangelogButton className="d-flex ml-auto">
-            <LastUpdated className="d-flex ml-auto" />
+          <ChangelogButton className="d-flex ms-auto">
+            <LastUpdated className="d-flex ms-auto" />
           </ChangelogButton>
         </Col>
       </Row>

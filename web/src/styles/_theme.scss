@@ -4,8 +4,7 @@
 /* stylelint-disable selector-no-qualifying-type, plugin/stylelint-no-indistinguishable-colors, plugin/no-low-performance-animation-properties */
 
 @use './variables' as vars;
-@forward './variables';
-@use './bootstrap';
+
 
 @mixin ripple($color) {
   position: relative;
@@ -25,7 +24,7 @@
     border: 0;
     opacity: 0;
     transition: background 0.5s, opacity 1s;
-    @include bootstrap.gradient-radial($color 10%, transparent 10.01%);
+    @include gradient-radial($color 10%, transparent 10.01%);
   }
 
   &:active::after {
@@ -47,6 +46,7 @@
 .navbar {
   border: 0;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  padding: 0 1rem;
 
   &-brand {
     font-size: 24px;
@@ -125,8 +125,8 @@
 
     &:hover,
     &:focus {
-      color: bootstrap.$link-hover-color;
-      text-decoration: bootstrap.$link-hover-decoration;
+      color: $link-hover-color;
+      text-decoration: $link-hover-decoration;
       box-shadow: none;
     }
 
@@ -135,7 +135,7 @@
     fieldset[disabled] & {
       &:hover,
       &:active:hover {
-        color: bootstrap.$btn-link-disabled-color;
+        color: $btn-link-disabled-color;
         text-decoration: none;
       }
     }
@@ -247,11 +247,11 @@ a {
   font-size: 16px;
 
   &-sm {
-    font-size: bootstrap.$font-size-sm;
+    font-size: $font-size-sm;
   }
 
   &-lg {
-    font-size: bootstrap.$font-size-lg;
+    font-size: $font-size-lg;
   }
 }
 

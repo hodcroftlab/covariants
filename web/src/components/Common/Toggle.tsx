@@ -47,7 +47,7 @@ export function Toggle({ identifier, className, onCheckedChanged, children, ...p
   if (children) {
     return (
       <label htmlFor={identifier} className="d-flex m-0">
-        <span className="mr-2">{Result}</span>
+        <span className="me-2">{Result}</span>
         {children}
       </label>
     )

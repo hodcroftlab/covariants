@@ -74,7 +74,7 @@ export function LineComponent({ country }: IconOrLineComponentProps) {
         strokeWidth={theme.plot.country.legend.lineIcon.thickness}
         strokeDasharray={strokeDasharray}
       />
-      <span className="ml-2">{t(country)}</span>
+      <span className="ms-2">{t(country)}</span>
     </>
   )
 }

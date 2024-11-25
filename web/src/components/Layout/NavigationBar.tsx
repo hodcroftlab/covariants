@@ -55,9 +55,9 @@ export const NavWrappable = styled(NavBase)`
 
   width: 100%;
 
-  background-image: linear-gradieni18n .t(to right, white, white), linear-gradieni18n .t(to right, white, white),
-    linear-gradieni18n .t(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)),
-    linear-gradieni18n .t(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+  background-image: linear-gradient(to right, white, white), linear-gradient(to right, white, white),
+    linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+    linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
   background-position: left center, right center, left center, right center;
   background-repeat: no-repeat;
   background-color: white;
@@ -177,7 +177,7 @@ export function NavigationBar() {
           })}
         </NavWrappable>
 
-        <Nav className="ml-auto" navbar>
+        <Nav className="ms-auto" navbar>
           <NavItem>
             <Row noGutters>
               <Col className="mt-2 mx-3">
@@ -189,7 +189,7 @@ export function NavigationBar() {
             <NavItem key={title}>
               <NavLink tag={LinkRight} title={title} href={url} alt={alt} icon={null}>
                 <span>
-                  <span className="mr-2">{icon}</span>
+                  <span className="me-2">{icon}</span>
                   <span className="d-inline d-sm-none">{text}</span>
                 </span>
               </NavLink>

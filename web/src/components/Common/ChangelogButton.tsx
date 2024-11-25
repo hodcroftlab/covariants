@@ -238,7 +238,7 @@ export function ChangelogButton({ children, ...props }: PropsWithChildren<Button
           <Container fluid>
             <Row noGutters className="my-2">
               <Col className="d-flex w-100">
-                <ButtonOk className="ml-auto" type="button" color="success" onClick={close} title={closeText}>
+                <ButtonOk className="ms-auto" type="button" color="success" onClick={close} title={closeText}>
                   {'OK'}
                 </ButtonOk>
               </Col>
