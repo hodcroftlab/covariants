@@ -22,7 +22,5 @@ export function getCountryStrokeDashArray(country: string) {
 }
 
 export function shouldPlotCountry(country: string): boolean {
-  // TODO: remove this ts-ignore, only here to get intermediate build off the ground
-  // @ts-ignore
-  return get(countriesToPlot, country, 'False') === 'True'
+  return get<object, string, 'False' | 'True'>(countriesToPlot, country, 'False') === 'True'
 }

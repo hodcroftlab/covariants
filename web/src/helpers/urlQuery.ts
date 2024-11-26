@@ -1,5 +1,4 @@
 import { omit } from 'lodash'
-// TODO: remove this ts-ignore, only here to get intermediate build off the ground
 // @ts-ignore
 import { merge } from 'merge-anything'
 import Router from 'next/router'

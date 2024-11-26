@@ -84,8 +84,6 @@ export function AcknowledgementsCardBody({ cluster, numPages }: Acknowledgements
 
   const epiIslsComponents = useMemo(() => {
     if (epiIsls) {
-      // TODO: remove this ts-ignore, only here to get intermediate build off the ground
-      // @ts-ignore
       return epiIsls.map((epiIsl) => (
         <span key={`$${cluster.display_name}-${epiIsl}`}>
           <AcknowledgementEpiIsl epiIsl={epiIsl} />

@@ -79,24 +79,23 @@ export function useQueryAcknowledgementData(epiIsl: string) {
   const url: string | undefined = useMemo(() => getEpiIslUrl(epiIsl), [epiIsl])
 
   return useQuery(
-    ['acknowledgement_data', epiIsl],
-    async () => {
-      if (!url) {
-        throw new Error(
-          `Unable to fetch acknowledgements data from GISAID: Unable to construct request URL: EPI ISL is incorrect: "${epiIsl}"`,
-        )
-      }
-      const res = await Axios.get(url)
-      if (!res.data) {
-        throw new Error(
-          `Unable to fetch acknowledgements data from GISAID: request to URL "${url}" resulted in no data`,
-        )
-      }
-      return validateEpiIslData(res.data)
-    },
-    // TODO: remove this ts-ignore, only here to get intermediate build off the ground
-    // @ts-ignore
     {
+      queryKey: ['acknowledgement_data', epiIsl],
+      queryFn:
+        async () => {
+          if (!url) {
+            throw new Error(
+              `Unable to fetch acknowledgements data from GISAID: Unable to construct request URL: EPI ISL is incorrect: "${epiIsl}"`,
+            )
+          }
+          const res = await Axios.get(url)
+          if (!res.data) {
+            throw new Error(
+              `Unable to fetch acknowledgements data from GISAID: request to URL "${url}" resulted in no data`,
+            )
+          }
+          return validateEpiIslData(res.data)
+        },
       staleTime: Number.POSITIVE_INFINITY,
       refetchOnMount: false,
       refetchOnWindowFocus: false,
@@ -134,20 +133,14 @@ export function AcknowledgementEpiIslPopup({ target, isOpen, epiIsl }: Acknowled
           <section>
             <p>
               <b>{t('Originating lab: {{origLab}}', { origLab: '' })}</b>
-              {/*TODO: remove this ts-ignore, only here to get intermediate build off the ground*/}
-              {/*@ts-ignore*/}
               <span>{data.origLab}</span>
             </p>
             <p>
               <b>{t('Submitting lab: {{submLab}}', { submLab: '' })}</b>
-              {/*TODO: remove this ts-ignore, only here to get intermediate build off the ground*/}
-              {/*@ts-ignore*/}
               <span>{data.submLab}</span>
             </p>
             <p>
               <b>{t('Authors: {{authors}}', { authors: '' })}</b>
-              {/*TODO: remove this ts-ignore, only here to get intermediate build off the ground*/}
-              {/*@ts-ignore*/}
               <span>{data.authors}</span>
             </p>
           </section>

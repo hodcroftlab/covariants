@@ -1,7 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 import { Container as ContainerBase, Row, Col } from 'reactstrap'
-import GisaidLogoBase from 'src/assets/images/GISAID_logo.svg'
 import Image from 'next/image'
 import GisaidLogoPNG from 'src/assets/images/GISAID_logo.png'
 import { ChristmasLightRope, Santa, Snowfall } from 'src/components/Common/Christmas'
@@ -60,9 +59,6 @@ const GisaidText = styled.small`
   font-size: 0.9rem;
 `
 
-const GisaidLogo = styled(GisaidLogoBase)`
-  margin-bottom: 4px;
-`
 
 export interface LayoutProps {
   wide?: boolean
@@ -85,7 +81,6 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
           <GisaidText className="d-flex me-auto">
             <span className="me-1 align-self-center">{t('Enabled by data from {{ gisaid }}', { gisaid: '' })}</span>
             <LinkExternal className="align-self-center" href="https://www.gisaid.org/" icon={null}>
-              {/*<GisaidLogo height={20}/> TODO: fix using svg or remove svg-related code*/}
               <Image src={GisaidLogoPNG} alt='GISAID' height={27} width={73}/>
             </LinkExternal>
           </GisaidText>

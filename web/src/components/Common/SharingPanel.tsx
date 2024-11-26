@@ -133,9 +133,7 @@ export function SharingPanel() {
               </SharingButton>
 
               <SharingButton title={t('Share on Facebook')}>
-                {/*TODO: remove this ts-ignore, only here to get intermediate build off the ground*/}
-                {/*@ts-ignore*/}
-                <FacebookShareButton url={url} quote={PROJECT_NAME} hashtag={FACEBOOK_HASHTAG}>
+                <FacebookShareButton url={url} hashtag={FACEBOOK_HASHTAG}>
                   <FacebookIcon size={SOCIAL_ICON_SIZE} />
                 </FacebookShareButton>
               </SharingButton>

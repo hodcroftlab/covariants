@@ -29,7 +29,6 @@ export function getTicks() {
     DateTime.fromSeconds(end).endOf('month'),
   )
     .splitBy({ months: 1 })
-    // TODO: remove this ts-ignore, only here to get intermediate build off the ground
     // @ts-ignore
     .map((d) => d.start.toSeconds())
 }
