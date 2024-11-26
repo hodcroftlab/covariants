@@ -6,6 +6,11 @@ import { uniq } from 'lodash'
 import getWithMDX from '@next/mdx'
 import withPlugins from 'next-compose-plugins'
 import getWithTranspileModules from 'next-transpile-modules'
+import remarkToc from 'remark-toc';
+import remarkSlug from 'remark-slug';
+import remarkBreaks from 'remark-breaks';
+import remarkImages from 'remark-images';
+import remarkMath from 'remark-math';
 
 import { findModuleRoot } from './lib/findModuleRoot'
 import { getGitBranch } from './lib/getGitBranch'
@@ -106,16 +111,11 @@ const withMDX = getWithMDX({
   options: {
     remarkPlugins: [
       // prettier-ignore
-      require('remark-breaks'),
-      require('remark-images'),
-      require('remark-math'),
-      require('remark-slug'),
-      [
-        require('remark-toc'),
-        {
-          tight: true,
-        },
-      ],
+      remarkBreaks,
+      remarkImages,
+      remarkMath,
+      remarkSlug,
+      remarkToc,
       // [
       //   require('remark-autolink-headings'),
       //   {
