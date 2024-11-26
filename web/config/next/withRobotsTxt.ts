@@ -1,6 +1,6 @@
 import { NextConfig } from 'next'
 import { addWebpackPlugin } from './lib/addWebpackPlugin'
-import EmitFilePlugin from './lib/EmitFilePlugin'
+import EmitFilePlugin from 'emit-file-webpack-plugin'
 
 export const getWithRobotsTxt = (content: string) => (nextConfig: NextConfig) => {
   return addWebpackPlugin(
