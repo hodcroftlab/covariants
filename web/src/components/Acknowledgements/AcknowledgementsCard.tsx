@@ -38,23 +38,21 @@ export function useQueryAcknowledgements(cluster: string, page: number) {
   }, [cluster, page])
 
   return useQuery(
-    ['acknowledgements_page', cluster, page],
-    async () => {
-      const res = await axios.get(url)
-      if (!res.data) {
-        throw new Error(`Unable to fetch acknowledgements data: request to URL "${url}" resulted in no data`)
-      }
-      return res.data as string[]
-    },
-    // TODO: remove this ts-ignore, only here to get intermediate build off the ground
-    // @ts-ignore
     {
+      queryKey: ['acknowledgements_page', cluster, page],
+      queryFn: async () => {
+        const res = await axios.get(url)
+        if (!res.data) {
+          throw new Error(`Unable to fetch acknowledgements data: request to URL "${url}" resulted in no data`)
+        }
+        return res.data as string[]
+      },
       staleTime: Number.POSITIVE_INFINITY,
       refetchOnMount: false,
       refetchOnWindowFocus: false,
       refetchOnReconnect: true,
       refetchInterval: Number.POSITIVE_INFINITY,
-    },
+    }
   )
 }
 

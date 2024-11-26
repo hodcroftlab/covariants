@@ -24,28 +24,26 @@ const clusters = getClusters()
 
 export function useQueryAcknowledgementsKeys() {
   return useQuery(
-    ['acknowledgements_keys'],
-    async () => {
-      const url = '/acknowledgements/acknowledgements_keys.json'
-      const res = await axios.get(url)
-      if (!res.data) {
-        throw new Error(`Unable to fetch acknowledgement keys data: request to URL "${url}" resulted in no data`)
-      }
-      const json = res.data as AcknowledgementsKeysJson
-      return clusters.map((cluster) => {
-        const { numChunks } = get(json.acknowledgements, cluster.build_name, { numChunks: 0 })
-        return { cluster, numChunks }
-      })
-    },
-    // TODO: remove this ts-ignore, only here to get intermediate build off the ground
-    // @ts-ignore
     {
+      queryKey: ['acknowledgements_keys'],
+      queryFn: async () => {
+        const url = '/acknowledgements/acknowledgements_keys.json'
+        const res = await axios.get(url)
+        if (!res.data) {
+          throw new Error(`Unable to fetch acknowledgement keys data: request to URL "${url}" resulted in no data`)
+        }
+        const json = res.data as AcknowledgementsKeysJson
+        return clusters.map((cluster) => {
+          const { numChunks } = get(json.acknowledgements, cluster.build_name, { numChunks: 0 })
+          return { cluster, numChunks }
+        })
+      },
       staleTime: Number.POSITIVE_INFINITY,
       refetchOnMount: false,
       refetchOnWindowFocus: false,
       refetchOnReconnect: true,
       refetchInterval: Number.POSITIVE_INFINITY,
-    },
+    }
   )
 }
 
@@ -66,8 +64,6 @@ export function AcknowledgementsPage() {
       return <AcknowledgementsError error={error} />
     }
     if (data) {
-      // TODO: remove this ts-ignore, only here to get intermediate build off the ground
-      // @ts-ignore
       return data.map((datum) => (
         <AcknowledgementsCard key={datum.cluster.build_name} cluster={datum.cluster} numPages={datum.numChunks} />
       ))
