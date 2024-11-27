@@ -38,7 +38,7 @@ const LetterSpan = styled.span<{ pos: number }>`
 
 export function NextstrainLogo() {
   return (
-    (<Wrapper>
+    <Wrapper>
       <NextstrainIcon />
       <span>
         {'Nextstrain'.split('').map((letter, i) => (
@@ -48,6 +48,6 @@ export function NextstrainLogo() {
           </LetterSpan>)
         ))}
       </span>
-    </Wrapper>)
+    </Wrapper>
   );
 }
