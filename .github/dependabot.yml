@@ -1,0 +1,23 @@
+version: 2
+updates:
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    milestone: 1
+  - package-ecosystem: 'yarn'
+    directory: "/web"
+    schedule:
+      interval: 'weekly'
+    labels:
+      - 'typescript'
+      - 'dependencies'
+    milestone: 1
+  - package-ecosystem: 'pip'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    labels:
+      - 'python'
+      - 'dependencies'
+    milestone: 1
