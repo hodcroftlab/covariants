@@ -4,7 +4,7 @@ Firstly, ensure you have a suitable environment with nodejs, npm and yarn.
 There are many approaches to this, for example using conda:
 
 ```sh
-conda create -c conda-forge --name covariants nodejs=14
+conda create -c conda-forge --name covariants nodejs=22
 conda activate covariants
 npm install -g yarn
 ```
