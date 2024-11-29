@@ -78,31 +78,28 @@ export function validateEpiIslData(data: unknown): AcknowledgementEpiIslDatum {
 export function useQueryAcknowledgementData(epiIsl: string) {
   const url: string | undefined = useMemo(() => getEpiIslUrl(epiIsl), [epiIsl])
 
-  return useQuery(
-    {
-      queryKey: ['acknowledgement_data', epiIsl],
-      queryFn:
-        async () => {
-          if (!url) {
-            throw new Error(
-              `Unable to fetch acknowledgements data from GISAID: Unable to construct request URL: EPI ISL is incorrect: "${epiIsl}"`,
-            )
-          }
-          const res = await Axios.get(url)
-          if (!res.data) {
-            throw new Error(
-              `Unable to fetch acknowledgements data from GISAID: request to URL "${url}" resulted in no data`,
-            )
-          }
-          return validateEpiIslData(res.data)
-        },
-      staleTime: Number.POSITIVE_INFINITY,
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: true,
-      refetchInterval: Number.POSITIVE_INFINITY,
+  return useQuery({
+    queryKey: ['acknowledgement_data', epiIsl],
+    queryFn: async () => {
+      if (!url) {
+        throw new Error(
+          `Unable to fetch acknowledgements data from GISAID: Unable to construct request URL: EPI ISL is incorrect: "${epiIsl}"`,
+        )
+      }
+      const res = await Axios.get(url)
+      if (!res.data) {
+        throw new Error(
+          `Unable to fetch acknowledgements data from GISAID: request to URL "${url}" resulted in no data`,
+        )
+      }
+      return validateEpiIslData(res.data)
     },
-  )
+    staleTime: Number.POSITIVE_INFINITY,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
+    refetchInterval: Number.POSITIVE_INFINITY,
+  })
 }
 
 export interface AcknowledgementEpiIslPopupProps {

@@ -5,7 +5,6 @@
 
 @use './variables' as vars;
 
-
 @mixin ripple($color) {
   position: relative;
 
@@ -23,7 +22,9 @@
     background-size: 1000% 1000%;
     border: 0;
     opacity: 0;
-    transition: background 0.5s, opacity 1s;
+    transition:
+      background 0.5s,
+      opacity 1s;
     @include gradient-radial($color 10%, transparent 10.01%);
   }
 

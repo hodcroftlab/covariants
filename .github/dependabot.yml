@@ -5,7 +5,7 @@ updates:
     schedule:
       interval: 'weekly'
     milestone: 1
-  - package-ecosystem: 'yarn'
+  - package-ecosystem: 'npm'
     directory: "/web"
     schedule:
       interval: 'weekly'

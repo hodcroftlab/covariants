@@ -12,5 +12,5 @@ export function Link({ className, children, href, ...restProps }: LinkProps) {
       {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
       {children}
     </NextLink>
-  );
+  )
 }

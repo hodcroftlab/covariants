@@ -31,20 +31,20 @@ $globe-color-3: rgb(210, 61, 27);
     margin: calc($globe-spacing/2);
     display: inline-block;
     background: rgba($globe-color-1, 1);
-    box-shadow: 0 calc($globe-height/6) $globe-width*2 $globe-spread rgba($globe-color-1, 1);
+    box-shadow: 0 calc($globe-height/6) $globe-width * 2 $globe-spread rgba($globe-color-1, 1);
     animation-name: flash-1;
     animation-duration: 2.5s;
 
-    &:nth-child(2n+1) {
+    &:nth-child(2n + 1) {
       background: rgba($globe-color-2, 1);
-      box-shadow: 0 calc($globe-height/6) $globe-width*2 $globe-spread rgba($globe-color-2, 0.5);
+      box-shadow: 0 calc($globe-height/6) $globe-width * 2 $globe-spread rgba($globe-color-2, 0.5);
       animation-name: flash-2;
       animation-duration: 1.5s;
     }
 
-    &:nth-child(4n+2) {
+    &:nth-child(4n + 2) {
       background: rgba($globe-color-3, 1);
-      box-shadow: 0 calc($globe-height/6) $globe-width*2 $globe-spread rgba($globe-color-3, 1);
+      box-shadow: 0 calc($globe-height/6) $globe-width * 2 $globe-spread rgba($globe-color-3, 1);
       animation-name: flash-3;
       animation-duration: 1.75s;
     }
@@ -53,12 +53,12 @@ $globe-color-3: rgb(210, 61, 27);
       animation-duration: 1.7s;
     }
 
-    &:nth-child(3n+1) {
+    &:nth-child(3n + 1) {
       animation-duration: 1.2s;
     }
 
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       background: #222;
       width: ($globe-width - 2);
@@ -69,7 +69,7 @@ $globe-color-3: rgb(210, 61, 27);
     }
 
     &:after {
-      content: "";
+      content: '';
       top: (0 - calc($globe-height/2));
       left: $globe-width - 3;
       position: absolute;
@@ -90,34 +90,37 @@ $globe-color-3: rgb(210, 61, 27);
 }
 
 @keyframes flash-1 {
-  0%, 100% {
+  0%,
+  100% {
     background: rgba($globe-color-1, 1);
-    box-shadow: 0 calc($globe-height/6) $globe-width*2 $globe-spread rgba($globe-color-1, 1);
+    box-shadow: 0 calc($globe-height/6) $globe-width * 2 $globe-spread rgba($globe-color-1, 1);
   }
   50% {
     background: rgba($globe-color-1, $light-off-opacity);
-    box-shadow: 0 calc($globe-height/6) $globe-width*2 $globe-spread rgba($globe-color-1, 0.2);
+    box-shadow: 0 calc($globe-height/6) $globe-width * 2 $globe-spread rgba($globe-color-1, 0.2);
   }
 }
 
 @keyframes flash-2 {
-  0%, 100% {
+  0%,
+  100% {
     background: rgba($globe-color-2, 1);
-    box-shadow: 0 calc($globe-height/6) $globe-width*2 $globe-spread rgba($globe-color-2, 1);
+    box-shadow: 0 calc($globe-height/6) $globe-width * 2 $globe-spread rgba($globe-color-2, 1);
   }
   50% {
     background: rgba($globe-color-2, $light-off-opacity);
-    box-shadow: 0 calc($globe-height/6) $globe-width*2 $globe-spread rgba($globe-color-2, 0.2);
+    box-shadow: 0 calc($globe-height/6) $globe-width * 2 $globe-spread rgba($globe-color-2, 0.2);
   }
 }
 
 @keyframes flash-3 {
-  0%, 100% {
+  0%,
+  100% {
     background: rgba($globe-color-3, 1);
-    box-shadow: 0 calc($globe-height/6) $globe-width*2 $globe-spread rgba($globe-color-3, 1);
+    box-shadow: 0 calc($globe-height/6) $globe-width * 2 $globe-spread rgba($globe-color-3, 1);
   }
   50% {
     background: rgba($globe-color-3, $light-off-opacity);
-    box-shadow: 0 calc($globe-height/6) $globe-width*2 $globe-spread rgba($globe-color-3, 0.2);
+    box-shadow: 0 calc($globe-height/6) $globe-width * 2 $globe-spread rgba($globe-color-3, 0.2);
   }
 }

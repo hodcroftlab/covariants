@@ -143,7 +143,7 @@ export function ProteinCard({ cluster }: ProteinCardProps) {
                 {'. '}
                 {t('Figure made via {{source}}', { source: '' })}
                 <LinkExternal href="https://www.gisaid.org/" icon={null}>
-                  <Image src={GisaidLogo} alt='GISAID' className={"my-auto"} height={18} width={49}/>
+                  <Image src={GisaidLogo} alt="GISAID" className={'my-auto'} height={18} width={49} />
                 </LinkExternal>
               </small>
             </figcaption>

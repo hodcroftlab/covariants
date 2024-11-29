@@ -6,11 +6,11 @@ import { uniq } from 'lodash'
 import getWithMDX from '@next/mdx'
 import withPlugins from 'next-compose-plugins'
 import getWithTranspileModules from 'next-transpile-modules'
-import remarkToc from 'remark-toc';
-import remarkSlug from 'remark-slug';
-import remarkBreaks from 'remark-breaks';
-import remarkImages from 'remark-images';
-import remarkMath from 'remark-math';
+import remarkToc from 'remark-toc'
+import remarkSlug from 'remark-slug'
+import remarkBreaks from 'remark-breaks'
+import remarkImages from 'remark-images'
+import remarkMath from 'remark-math'
 
 import { findModuleRoot } from './lib/findModuleRoot'
 import { getGitBranch } from './lib/getGitBranch'
@@ -98,19 +98,20 @@ const nextConfig: NextConfig = {
   },
   sassOptions: {
     includePaths: ['node_modules'], // the correct option should be loadPaths but somehow that does not work (yet)
+    // TODO: remove this silencing once bootstrap has applied SASS API changes (https://github.com/hodcroftlab/covariants/issues/402)
     // There are a lot of warnings coming from SASS API changes that bootstrap has not implemented, silencing those
     // However, this might mask warnings from our own code, so be sure to check from time to time. `quietDeps` seems to
     // not work completely as intended.
     quietDeps: true,
     silenceDeprecations: ['mixed-decls', 'color-functions', 'legacy-js-api', 'global-builtin', 'import'],
   },
-  output: 'export', // TODO: with the cli command, two threads were used here, no idea how to do it with this config option
+  output: 'export', // TODO: with the cli command, two threads were used here, no idea how to do it with this config option.
   // TODO: images option is needed because of static export
   //  (https://nextjs.org/docs/app/building-your-application/deploying/static-exports#image-optimization);
-  //  can be removed, once the GISAID svg logo works again
+  //  can be removed, once the GISAID svg logo works again (https://github.com/hodcroftlab/covariants/issues/398)
   images: {
-    unoptimized: true
-  }
+    unoptimized: true,
+  },
 }
 
 const withMDX = getWithMDX({

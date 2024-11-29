@@ -9,5 +9,9 @@
     linear-gradient(-90deg, $shadow-color, transparent) 100% 0;
   background-repeat: no-repeat;
   background-attachment: local, local, scroll, scroll;
-  background-size: 100px 100%, 100px 100%, $shadow-width 100%, $shadow-width 100%;
+  background-size:
+    100px 100%,
+    100px 100%,
+    $shadow-width 100%,
+    $shadow-width 100%;
 }

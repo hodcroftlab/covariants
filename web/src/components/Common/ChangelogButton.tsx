@@ -88,7 +88,11 @@ export const ModalBody = styled(ReactstrapModalBody)`
   background-color: #ffffff;
   background-repeat: no-repeat;
   background-attachment: local, local, scroll, scroll;
-  background-size: 100% 24px, 100% 24px, 100% 8px, 100% 8px;
+  background-size:
+    100% 24px,
+    100% 24px,
+    100% 8px,
+    100% 8px;
 
   h1:first-child,
   h2:first-child {

@@ -58,10 +58,18 @@ export const NavWrappable = styled(NavBase)`
   background-image: linear-gradient(to right, white, white), linear-gradient(to right, white, white),
     linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
     linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
-  background-position: left center, right center, left center, right center;
+  background-position:
+    left center,
+    right center,
+    left center,
+    right center;
   background-repeat: no-repeat;
   background-color: white;
-  background-size: 20px 100%, 20px 100%, 10px 100%, 10px 100%;
+  background-size:
+    20px 100%,
+    20px 100%,
+    10px 100%,
+    10px 100%;
   background-attachment: local, local, scroll, scroll;
 
   & .nav-link {

@@ -59,7 +59,6 @@ const GisaidText = styled.small`
   font-size: 0.9rem;
 `
 
-
 export interface LayoutProps {
   wide?: boolean
 }
@@ -81,7 +80,7 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
           <GisaidText className="d-flex me-auto">
             <span className="me-1 align-self-center">{t('Enabled by data from {{ gisaid }}', { gisaid: '' })}</span>
             <LinkExternal className="align-self-center" href="https://www.gisaid.org/" icon={null}>
-              <Image src={GisaidLogoPNG} alt='GISAID' height={27} width={73}/>
+              <Image src={GisaidLogoPNG} alt="GISAID" height={27} width={73} />
             </LinkExternal>
           </GisaidText>
 

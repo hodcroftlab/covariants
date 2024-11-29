@@ -18,11 +18,11 @@ export function detectLocale({ defaultLanguage, availableLocales, shorten = true
   let language
   language =
     navigatorLocal?.languages && navigatorLocal.languages.length > 0
-      ? navigatorLocal.language[0] ?? navigatorLocal.language
-      : navigatorLocal?.browserLanguage ??
+      ? (navigatorLocal.language[0] ?? navigatorLocal.language)
+      : (navigatorLocal?.browserLanguage ??
         navigatorLocal?.userLanguage ??
         navigatorLocal?.systemLanguage ??
-        defaultLanguage
+        defaultLanguage)
 
   if (!language) {
     language = defaultLanguage

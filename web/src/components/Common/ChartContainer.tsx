@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react'
-import { useResizeDetector } from 'react-resize-detector'
-import { Props as ResizeDetectorProps } from 'react-resize-detector/build/types/ResizeDetector'
+import { useResizeDetector, useResizeDetectorProps } from 'react-resize-detector'
 import { useInView } from 'react-intersection-observer'
 
 import { theme } from 'src/theme'
@@ -13,12 +12,11 @@ type ChartContainerDimensions = {
 }
 
 export interface ChartContainerProps {
-  resizeOptions?: ResizeDetectorProps
+  resizeOptions?: useResizeDetectorProps<HTMLElement>
   children: (dimensions: ChartContainerDimensions) => React.ReactNode
 }
 
 export function ChartContainer({ children, resizeOptions }: ChartContainerProps) {
-  // @ts-ignore
   const { width = 0, ref: resizeRef } = useResizeDetector({ handleWidth: true, ...resizeOptions })
   const { inView, ref: intersectionRef } = useInView({ fallbackInView: true })
   const dimensions = useMemo(() => ({ width, height: width / theme.plot.aspectRatio }), [width])

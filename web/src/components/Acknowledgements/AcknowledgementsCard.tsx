@@ -37,23 +37,21 @@ export function useQueryAcknowledgements(cluster: string, page: number) {
     return `acknowledgements/${cluster}/${pageString}.json`
   }, [cluster, page])
 
-  return useQuery(
-    {
-      queryKey: ['acknowledgements_page', cluster, page],
-      queryFn: async () => {
-        const res = await axios.get(url)
-        if (!res.data) {
-          throw new Error(`Unable to fetch acknowledgements data: request to URL "${url}" resulted in no data`)
-        }
-        return res.data as string[]
-      },
-      staleTime: Number.POSITIVE_INFINITY,
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: true,
-      refetchInterval: Number.POSITIVE_INFINITY,
-    }
-  )
+  return useQuery({
+    queryKey: ['acknowledgements_page', cluster, page],
+    queryFn: async () => {
+      const res = await axios.get(url)
+      if (!res.data) {
+        throw new Error(`Unable to fetch acknowledgements data: request to URL "${url}" resulted in no data`)
+      }
+      return res.data as string[]
+    },
+    staleTime: Number.POSITIVE_INFINITY,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
+    refetchInterval: Number.POSITIVE_INFINITY,
+  })
 }
 
 export interface AcknowledgementsCardBodyProps {
