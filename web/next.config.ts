@@ -105,7 +105,7 @@ const nextConfig: NextConfig = {
     quietDeps: true,
     silenceDeprecations: ['mixed-decls', 'color-functions', 'legacy-js-api', 'global-builtin', 'import'],
   },
-  output: 'export', // TODO: with the cli command, two threads were used here, no idea how to do it with this config option.
+  output: 'export',
   // TODO: images option is needed because of static export
   //  (https://nextjs.org/docs/app/building-your-application/deploying/static-exports#image-optimization);
   //  can be removed, once the GISAID svg logo works again (https://github.com/hodcroftlab/covariants/issues/398)

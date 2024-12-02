@@ -1,4 +1,11 @@
-import { QueriesOptions, QueryClientConfig, QueryKey, useQuery, UseQueryOptions, useQueries } from '@tanstack/react-query'
+import {
+  QueriesOptions,
+  QueryClientConfig,
+  QueryKey,
+  useQuery,
+  UseQueryOptions,
+  useQueries,
+} from '@tanstack/react-query'
 import { QueryClient } from '@tanstack/query-core'
 import { keys, values, zip } from 'lodash'
 import { useMemo } from 'react'
@@ -80,7 +87,7 @@ export function useAxiosQuery<TData = unknown>(url: string, options?: UseAxiosQu
 }
 
 /** Make multiple cached fetches in parallel */
-// TODO: write a test this function, as it is currently unused
+// TODO: this function has been refactored without testing (as it is currently unused), make sure to test it before use
 export function useAxiosQueries<TData = unknown>(
   namedUrls: Record<string, string>,
   options?: UseAxiosQueriesOptions<TData>,
