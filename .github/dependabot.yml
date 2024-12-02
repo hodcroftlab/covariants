@@ -13,6 +13,11 @@ updates:
       - 'typescript'
       - 'dependencies'
     milestone: 1
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+      development-dependencies:
+        dependency-type: "development"
   - package-ecosystem: 'pip'
     directory: '/'
     schedule:
@@ -21,3 +26,8 @@ updates:
       - 'python'
       - 'dependencies'
     milestone: 1
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+      development-dependencies:
+        dependency-type: "development"
