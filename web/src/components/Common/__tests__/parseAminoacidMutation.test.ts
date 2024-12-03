@@ -1,4 +1,5 @@
 import { parseAminoacidMutation } from 'src/components/Common/parseAminoacidMutation'
+import { describe, it, expect } from 'vitest'
 
 describe('parseAminoacidMutation', () => {
   it('should parse gene, ref, position, right', () => {

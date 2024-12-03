@@ -81,3 +81,6 @@ web/.json-autotranslate-cache
 
 # nextjs builds
 web/.next
+
+# test coverage
+.coverage
