@@ -40,7 +40,7 @@ export function PlotCardTitle({ cluster }: PlotCardProps) {
       <PlotCardHeading>
         {t('Distribution of {{variant}} per country', { variant: cluster.display_name })}
       </PlotCardHeading>
-      <span className="ml-auto">
+      <span className="ms-auto">
         <Link href="/per-variant" color={theme.link.dim.color}>
           {t('Compare')}
         </Link>

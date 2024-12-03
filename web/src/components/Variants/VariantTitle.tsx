@@ -30,7 +30,7 @@ export function VariantTitle({ cluster }: VariantTitleProps) {
 
     return (
       <ClusterNameSubtitle>
-        {t(`also known as {{aliases}}`, { alias: '' })}
+        {t(`also known as {{aliases}}`, { aliases: '' })}
         {cluster.alt_display_name.join(', ')}
       </ClusterNameSubtitle>
     )

@@ -90,7 +90,9 @@ export function MutationCountsSummarySubTable({ record, title }: MutationCountsS
 }
 
 export function useMutationCounts(clusterBuildName: string) {
-  return useQuery(['mutationCounts', clusterBuildName], async () => getMutationCounts(clusterBuildName), {
+  return useQuery({
+    queryKey: ['mutationCounts', clusterBuildName],
+    queryFn: async () => getMutationCounts(clusterBuildName),
     staleTime: Number.POSITIVE_INFINITY,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
@@ -107,11 +109,9 @@ export function MutationCountsSummaryCard({ currentCluster }: MutationCountsSumm
   const { t } = useTranslationSafe()
 
   const { data } = useMutationCounts(currentCluster.build_name)
-
   if (!data?.result) {
     return null
   }
-
   const { S, others } = data.result
 
   return (

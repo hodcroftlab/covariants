@@ -1,11 +1,11 @@
-@import '../variables';
+@use '../variables' as vars;
 
 .language-switcher {
   margin-top: 3px;
 
   .language-switcher-menu.dropdown-menu {
-    background-color: $body-bg;
-    box-shadow: 1px 1px 2px 2px rgba($gray-600, 0.25);
+    background-color: vars.$body-bg;
+    box-shadow: 1px 1px 2px 2px rgba(vars.$gray-600, 0.25);
   }
 
   .language-switcher-flag {
@@ -14,6 +14,6 @@
     margin-bottom: 5px;
     background-size: cover;
     border-radius: 2px;
-    box-shadow: 1px 1px 2px 2px rgba($gray-600, 0.25);
+    box-shadow: 1px 1px 2px 2px rgba(vars.$gray-600, 0.25);
   }
 }

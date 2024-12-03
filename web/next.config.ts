@@ -6,26 +6,31 @@ import { uniq } from 'lodash'
 import getWithMDX from '@next/mdx'
 import withPlugins from 'next-compose-plugins'
 import getWithTranspileModules from 'next-transpile-modules'
+import remarkToc from 'remark-toc'
+import remarkSlug from 'remark-slug'
+import remarkBreaks from 'remark-breaks'
+import remarkImages from 'remark-images'
+import remarkMath from 'remark-math'
 
-import { findModuleRoot } from '../../lib/findModuleRoot'
-import { getGitBranch } from '../../lib/getGitBranch'
-import { getBuildNumber } from '../../lib/getBuildNumber'
-import { getBuildUrl } from '../../lib/getBuildUrl'
-import { getGitCommitHash } from '../../lib/getGitCommitHash'
-import { getEnvVars } from './lib/getEnvVars'
+import { findModuleRoot } from './lib/findModuleRoot'
+import { getGitBranch } from './lib/getGitBranch'
+import { getBuildNumber } from './lib/getBuildNumber'
+import { getBuildUrl } from './lib/getBuildUrl'
+import { getGitCommitHash } from './lib/getGitCommitHash'
+import { getEnvVars } from './config/next/lib/getEnvVars'
 
-import getWithExtraWatch from './withExtraWatch'
-import getWithFriendlyConsole from './withFriendlyConsole'
-import getWithLodash from './withLodash'
-import { getWithRobotsTxt } from './withRobotsTxt'
-import getWithTypeChecking from './withTypeChecking'
-import withSvg from './withSvg'
-import withIgnore from './withIgnore'
-import withoutMinification from './withoutMinification'
-import withFriendlyChunkNames from './withFriendlyChunkNames'
-import withResolve from './withResolve'
-import withWebpackWatchPoll from './withWebpackWatchPoll'
-import withUrlAsset from './withUrlAsset'
+import getWithExtraWatch from './config/next/withExtraWatch'
+import getWithFriendlyConsole from './config/next/withFriendlyConsole'
+import getWithLodash from './config/next/withLodash'
+import { getWithRobotsTxt } from './config/next/withRobotsTxt'
+import getWithTypeChecking from './config/next/withTypeChecking'
+import withSvg from './config/next/withSvg'
+import withIgnore from './config/next/withIgnore'
+import withoutMinification from './config/next/withoutMinification'
+import withFriendlyChunkNames from './config/next/withFriendlyChunkNames'
+import withResolve from './config/next/withResolve'
+import withWebpackWatchPoll from './config/next/withWebpackWatchPoll'
+import withUrlAsset from './config/next/withUrlAsset'
 
 const {
   // BABEL_ENV,
@@ -59,20 +64,18 @@ const clientEnv = {
 console.info(`Client-side Environment:\n${JSON.stringify(clientEnv, null, 2)}`)
 
 const nextConfig: NextConfig = {
-  distDir: `.build/${process.env.NODE_ENV}/tmp`,
+  distDir: `.build/${process.env.NODE_ENV}/web`,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx', 'all-contributorsrc'],
   onDemandEntries: {
     maxInactiveAge: 60 * 1000,
     pagesBufferLength: 2,
   },
-  modern: false,
   // reactStrictMode: true,
   experimental: {
     // reactMode: 'concurrent',
     // reactRoot: true,
     scrollRestoration: true,
   },
-  swcMinify: true,
   productionBrowserSourceMaps: ENABLE_SOURCE_MAPS,
   excludeDefaultMomentLocales: true,
   devIndicators: {
@@ -93,6 +96,22 @@ const nextConfig: NextConfig = {
     config.experiments.topLevelAwait = true
     return config
   },
+  sassOptions: {
+    includePaths: ['node_modules'], // the correct option should be loadPaths but somehow that does not work (yet)
+    // TODO: remove this silencing once bootstrap has applied SASS API changes (https://github.com/hodcroftlab/covariants/issues/402)
+    // There are a lot of warnings coming from SASS API changes that bootstrap has not implemented, silencing those
+    // However, this might mask warnings from our own code, so be sure to check from time to time. `quietDeps` seems to
+    // not work completely as intended.
+    quietDeps: true,
+    silenceDeprecations: ['mixed-decls', 'color-functions', 'legacy-js-api', 'global-builtin', 'import'],
+  },
+  output: 'export',
+  // TODO: images option is needed because of static export
+  //  (https://nextjs.org/docs/app/building-your-application/deploying/static-exports#image-optimization);
+  //  can be removed, once the GISAID svg logo works again (https://github.com/hodcroftlab/covariants/issues/398)
+  images: {
+    unoptimized: true,
+  },
 }
 
 const withMDX = getWithMDX({
@@ -100,16 +119,11 @@ const withMDX = getWithMDX({
   options: {
     remarkPlugins: [
       // prettier-ignore
-      require('remark-breaks'),
-      require('remark-images'),
-      require('remark-math'),
-      require('remark-slug'),
-      [
-        require('remark-toc'),
-        {
-          tight: true,
-        },
-      ],
+      remarkBreaks,
+      remarkImages,
+      remarkMath,
+      remarkSlug,
+      remarkToc,
       // [
       //   require('remark-autolink-headings'),
       //   {

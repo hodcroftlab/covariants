@@ -78,9 +78,9 @@ export function validateEpiIslData(data: unknown): AcknowledgementEpiIslDatum {
 export function useQueryAcknowledgementData(epiIsl: string) {
   const url: string | undefined = useMemo(() => getEpiIslUrl(epiIsl), [epiIsl])
 
-  return useQuery(
-    ['acknowledgement_data', epiIsl],
-    async () => {
+  return useQuery({
+    queryKey: ['acknowledgement_data', epiIsl],
+    queryFn: async () => {
       if (!url) {
         throw new Error(
           `Unable to fetch acknowledgements data from GISAID: Unable to construct request URL: EPI ISL is incorrect: "${epiIsl}"`,
@@ -94,14 +94,12 @@ export function useQueryAcknowledgementData(epiIsl: string) {
       }
       return validateEpiIslData(res.data)
     },
-    {
-      staleTime: Number.POSITIVE_INFINITY,
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: true,
-      refetchInterval: Number.POSITIVE_INFINITY,
-    },
-  )
+    staleTime: Number.POSITIVE_INFINITY,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
+    refetchInterval: Number.POSITIVE_INFINITY,
+  })
 }
 
 export interface AcknowledgementEpiIslPopupProps {

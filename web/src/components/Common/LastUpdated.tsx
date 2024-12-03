@@ -22,7 +22,7 @@ export function LastUpdated({ className }: HTMLProps<HTMLParagraphElement>) {
 
   return (
     <LastUpdatedText className={classNames(className)}>
-      <span className="ml-1" title={lastUpdatedFull}>
+      <span className="ms-1" title={lastUpdatedFull}>
         {lastUpdated}
       </span>
     </LastUpdatedText>

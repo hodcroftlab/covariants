@@ -4,7 +4,7 @@ Firstly, ensure you have a suitable environment with nodejs, npm and yarn.
 There are many approaches to this, for example using conda:
 
 ```sh
-conda create -c conda-forge --name covariants nodejs=14
+conda create -c conda-forge --name covariants nodejs=22
 conda activate covariants
 npm install -g yarn
 ```
@@ -31,3 +31,7 @@ yarn prod:serve:nowatch # load localhost:8080
 ```sh
 npm run dev:start # http://localhost:3000/
 ```
+
+### Maintenance
+SASS creates a lot of warnings because of API changes, those are silenced in `next.config.ts`. As this might mask 
+warnings coming from our own code, be sure to check from time to time.

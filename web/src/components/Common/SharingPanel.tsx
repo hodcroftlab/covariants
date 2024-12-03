@@ -133,7 +133,7 @@ export function SharingPanel() {
               </SharingButton>
 
               <SharingButton title={t('Share on Facebook')}>
-                <FacebookShareButton url={url} quote={PROJECT_NAME} hashtag={FACEBOOK_HASHTAG}>
+                <FacebookShareButton url={url} hashtag={FACEBOOK_HASHTAG}>
                   <FacebookIcon size={SOCIAL_ICON_SIZE} />
                 </FacebookShareButton>
               </SharingButton>

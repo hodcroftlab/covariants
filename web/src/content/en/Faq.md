@@ -1,6 +1,6 @@
 ## Table of contents
 
-[comment]: <> Table of contents is generated automatically
+[comment]: Table of contents is generated automatically
 
 ## General questions
 

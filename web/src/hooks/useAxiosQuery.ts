@@ -1,10 +1,16 @@
-import { QueriesOptions, QueryClientConfig, QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query'
+import {
+  QueriesOptions,
+  QueryClientConfig,
+  QueryKey,
+  useQuery,
+  UseQueryOptions,
+  useQueries,
+} from '@tanstack/react-query'
 import { QueryClient } from '@tanstack/query-core'
 import { keys, values, zip } from 'lodash'
 import { useMemo } from 'react'
 import { ErrorInternal } from 'src/helpers/ErrorInternal'
 import { axiosFetch } from 'src/io/axiosFetch'
-import { useQueries } from './useQueriesWithSuspense'
 
 const QUERY_OPTIONS_DEFAULT = {
   staleTime: Number.POSITIVE_INFINITY,
@@ -12,6 +18,7 @@ const QUERY_OPTIONS_DEFAULT = {
   refetchOnWindowFocus: false,
   refetchOnReconnect: false,
   refetchInterval: Number.POSITIVE_INFINITY,
+  suspense: true,
 }
 
 function queryOptionsDefaulted<T>(options: T) {
@@ -25,7 +32,6 @@ function queryOptionsDefaulted<T>(options: T) {
 const REACT_QUERY_OPTIONS_DEFAULT: QueryClientConfig = {
   defaultOptions: {
     queries: {
-      suspense: true,
       retry: 1,
       ...QUERY_OPTIONS_DEFAULT,
     },
@@ -67,7 +73,11 @@ export type UseAxiosQueriesOptions<TData = unknown> = QueriesOptions<TData[]>
 export function useAxiosQuery<TData = unknown>(url: string, options?: UseAxiosQueryOptions<TData>): TData {
   const keys = useMemo(() => [url], [url])
   const optionsDefaulted = useMemo(() => queryOptionsDefaulted(options), [options])
-  const res = useQuery<TData, Error, TData, string[]>(keys, async () => axiosFetch(url), optionsDefaulted)
+  const res = useQuery<TData, Error, TData, string[]>({
+    queryKey: keys,
+    queryFn: async () => axiosFetch(url),
+    ...optionsDefaulted,
+  })
   return useMemo(() => {
     if (!res.data) {
       throw new Error(`Fetch failed: ${url}`)
@@ -76,7 +86,8 @@ export function useAxiosQuery<TData = unknown>(url: string, options?: UseAxiosQu
   }, [res.data, url])
 }
 
-/** Make multiple cached fetches in parallel (and uses `Suspense`, by contrast to the default `useQueries()`)  */
+/** Make multiple cached fetches in parallel */
+// TODO: this function has been refactored without testing (as it is currently unused), make sure to test it before use
 export function useAxiosQueries<TData = unknown>(
   namedUrls: Record<string, string>,
   options?: UseAxiosQueriesOptions<TData>,
@@ -91,9 +102,6 @@ export function useAxiosQueries<TData = unknown>(
       queryKey: [url],
       queryFn: async () => axiosFetch(url),
     })),
-    options: {
-      suspense: true,
-    },
   })
 
   return useMemo(() => {

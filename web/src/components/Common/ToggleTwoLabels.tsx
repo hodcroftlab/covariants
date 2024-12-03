@@ -72,7 +72,7 @@ export function ToggleTwoLabels({
   return (
     <Label htmlFor={identifier} className={className} title={title}>
       {labelRight}
-      <span className="mr-2 ml-2">
+      <span className="me-2 ms-2">
         <ToggleTwoLabelsBase
           id={identifier}
           className="react-toggle-two-labels-custom"

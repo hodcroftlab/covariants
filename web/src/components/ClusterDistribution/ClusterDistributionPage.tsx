@@ -45,7 +45,7 @@ export function SortByDropdown({ perCountryTooltipSortBy, onSortByChange }: Sort
   return (
     <FormGroup check inline>
       <Label htmlFor="per-variant-sort-by">
-        <span className="mr-2">{t('Tooltip sort by:')}</span>
+        <span className="me-2">{t('Tooltip sort by:')}</span>
         <Dropdown
           identifier="per-variant-sort-by"
           options={sortByOptions}

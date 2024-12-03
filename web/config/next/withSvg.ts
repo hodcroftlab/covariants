@@ -12,6 +12,13 @@ export default function withSvg(nextConfig: NextConfig) {
         options: {
           removeViewbox: false,
           typescript: false,
+          svgoConfig: {
+            plugins: [
+              {
+                name: 'preset-default',
+              },
+            ],
+          },
         },
       },
     ],

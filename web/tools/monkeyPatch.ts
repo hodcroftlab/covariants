@@ -3,7 +3,7 @@
 /**
  *
  * This dangerously and unreliably patches some of the node_modules. Mostly cosmetic stuff.
- * Do no use this to fix bugs or introduce features. Consider contributing to the upstream project instead.
+ * Do not use this to fix bugs or introduce features. Consider contributing to the upstream project instead.
  *
  */
 import fs from 'fs-extra'

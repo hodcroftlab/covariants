@@ -1,21 +1,19 @@
-@use 'sass:map';
+@use 'typeface-open-sans' as open-sans; // only works because includePaths option is set in next.config.ts
+@use 'typeface-droid-sans-mono' as droid-sans; // only works because includePaths option is set in next.config.ts
+@use 'bootstrap-icons/font/bootstrap-icons.css'; // only works because includePaths option is set in next.config.ts
+@use './font-family-system';
 
-@import '~typeface-open-sans/index.css';
-@import '~typeface-droid-sans-mono/index.css';
-@import '~bootstrap-icons/font/bootstrap-icons.css';
-@import './font-family-system';
+@use './lightrope';
+
+@use 'react-aspect-ratio/aspect-ratio.css';
+@use 'react-gif-player/src/GifPlayer.scss';
+@use 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
+
+@use './components/LanguageSwitcher';
 
 @import './variables';
-@import './bootstrap';
+@import 'bootstrap/scss/bootstrap';
 @import './theme';
-
-@import './lightrope';
-
-@import '~react-aspect-ratio/aspect-ratio.css';
-@import '~react-gif-player/src/GifPlayer.scss';
-@import '~react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
-
-@import './components/LanguageSwitcher';
 
 .gif_player {
   margin: 1rem;

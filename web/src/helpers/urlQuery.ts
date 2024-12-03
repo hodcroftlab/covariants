@@ -1,4 +1,6 @@
 import { omit } from 'lodash'
+// TODO: remove this once issue: https://github.com/hodcroftlab/covariants/issues/399 is resolved
+// @ts-ignore
 import { merge } from 'merge-anything'
 import Router from 'next/router'
 import type { ParsedUrlQuery } from 'querystring'
@@ -16,8 +18,6 @@ export async function removeFromUrlQuery(key: string) {
 export async function updateUrlQuery(newQuery: ParsedUrlQuery) {
   const { query: oldQuery } = parseUrl(Router.asPath)
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore: TS2589: Type instantiation is excessively deep and possibly infinite.
   const query = merge(oldQuery, newQuery) as ParsedUrlQuery
 
   return setUrlQuery(query)

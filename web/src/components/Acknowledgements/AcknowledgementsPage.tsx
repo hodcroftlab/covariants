@@ -23,9 +23,9 @@ export const AcknowledgementsPageContainer = styled(Container)`
 const clusters = getClusters()
 
 export function useQueryAcknowledgementsKeys() {
-  return useQuery(
-    ['acknowledgements_keys'],
-    async () => {
+  return useQuery({
+    queryKey: ['acknowledgements_keys'],
+    queryFn: async () => {
       const url = '/acknowledgements/acknowledgements_keys.json'
       const res = await axios.get(url)
       if (!res.data) {
@@ -37,14 +37,12 @@ export function useQueryAcknowledgementsKeys() {
         return { cluster, numChunks }
       })
     },
-    {
-      staleTime: Number.POSITIVE_INFINITY,
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: true,
-      refetchInterval: Number.POSITIVE_INFINITY,
-    },
-  )
+    staleTime: Number.POSITIVE_INFINITY,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
+    refetchInterval: Number.POSITIVE_INFINITY,
+  })
 }
 
 export function AcknowledgementsPage() {
