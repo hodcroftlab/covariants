@@ -34,7 +34,7 @@
     "lint:fix": "run-s -c eslint:fix tsc:project",
     "lint:watch": "nodemon --config config/nodemon/lint.json",
     "lint:fix:watch": "nodemon --config config/nodemon/lint.fix.json",
-    "lint:ci": "run-s -c eslint:ci tsc",
+    "lint:ci": "run-s -c eslint:ci tsc:project",
     "eslint": "eslint --format codeframe \"**/*.{js,jsx,ts,tsx}\"",
     "eslint:i18n": "eslint --config .eslintrc.i18next.js --format codeframe \"src/{components,pages}/**/*.{js,jsx,ts,tsx}\"",
     "eslint:fix": "yarn eslint --fix",

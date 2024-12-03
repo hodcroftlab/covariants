@@ -96,7 +96,6 @@ jobs:
       - name: "[build] Build web application"
         run: |
           cd web
-          yarn lint:ci
           yarn prod:build:ci
 
       - name: "[deployment] Setup environment (release)"
