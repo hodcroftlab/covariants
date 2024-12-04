@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useCallback } from 'react'
 
 import Axios from 'axios'
-import { get } from 'lodash'
+import get from 'lodash/get.js'
 import { useQuery } from '@tanstack/react-query'
 import { AcknowledgementsError } from 'src/components/Acknowledgements/AcknowledgementsError'
 import styled from 'styled-components'
