@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test'
 
+test.describe('The Home page', () => {
 test.beforeEach(async ({ page }) => {
   await page.goto('/')
 })
@@ -13,3 +14,4 @@ test('navbar link', async ({ page }) => {
 
   await expect(page.getByRole('heading', { name: 'Frequently asked questions' })).toBeVisible()
 })
+});
