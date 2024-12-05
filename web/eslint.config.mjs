@@ -3,26 +3,23 @@ import arrayFunc from 'eslint-plugin-array-func'
 import cflint from 'eslint-plugin-cflint'
 import importPlugin from 'eslint-plugin-import'
 import jsxA11Y from 'eslint-plugin-jsx-a11y'
-import lodash from 'eslint-plugin-lodash'
 import noLoops from 'eslint-plugin-no-loops'
 import noSecrets from 'eslint-plugin-no-secrets'
 import node from 'eslint-plugin-node'
 import onlyAscii from 'eslint-plugin-only-ascii'
 import promise from 'eslint-plugin-promise'
 import react from 'eslint-plugin-react'
-import reactHooks from 'eslint-plugin-react-hooks'
 import reactPerf from 'eslint-plugin-react-perf'
 import security from 'eslint-plugin-security'
 import sonarjs from 'eslint-plugin-sonarjs'
 import unicorn from 'eslint-plugin-unicorn'
 import onlyWarn from 'eslint-plugin-only-warn'
-import typescriptEslint from '@typescript-eslint/eslint-plugin'
-import prettier from 'eslint-plugin-prettier'
 import globals from 'globals'
 import tsParser from '@typescript-eslint/parser'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import js from '@eslint/js'
+import tseslint from 'typescript-eslint'
 import { FlatCompat } from '@eslint/eslintrc'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -48,7 +45,6 @@ export default [
       '**/.ignore',
       '**/.reports',
       '**/.vscode',
-      'config/next/lib/EmitFilePlugin.js',
       'infra/lambda-at-edge/basicAuth.js',
       '**/node_modules',
       '**/public',
@@ -56,27 +52,41 @@ export default [
       '**/tsconfig.json',
     ],
   },
+  js.configs.recommended,
+  ...tseslint.configs.strictTypeChecked,
+  ...tseslint.configs.stylisticTypeChecked,
+  arrayFunc.configs.all,
+  // TODO: there is an issue with sonar that should soon be fixed: https://community.sonarsource.com/t/eslint-plugin-sonarjs-doesn-t-work-with-eslint-9-15-0/130771
+  // once this is fixed, uncomment the line below and remove sonarjs from the plugins. See https://github.com/hodcroftlab/covariants/issues/439
+  // sonarjs.configs.recommended,
+  security.configs.recommended,
+  unicorn.configs['flat/recommended'],
+  reactPerf.configs.flat.all,
+  react.configs.flat.recommended,
+  promise.configs['flat/recommended'],
+  importPlugin.flatConfigs.errors,
+  importPlugin.flatConfigs.warnings,
+  importPlugin.flatConfigs.typescript,
+  jsxA11Y['flatConfigs'].recommended,
+
+  ...fixupConfigRules(
+    compat.extends(
+      'plugin:@next/eslint-plugin-next/core-web-vitals',
+      'plugin:lodash/recommended',
+      'plugin:prettier/recommended',
+      'plugin:react-hooks/recommended',
+    ),
+  ),
   {
     plugins: {
       'array-func': arrayFunc,
       'cflint': fixupPluginRules(cflint),
-      'import': importPlugin,
-      'jsx-a11y': jsxA11Y,
-      'lodash': lodash,
       'no-loops': noLoops,
       'no-secrets': noSecrets,
       node,
       'only-ascii': onlyAscii,
-      promise,
-      react,
-      'react-hooks': reactHooks,
-      'react-perf': reactPerf,
-      security,
       sonarjs,
-      unicorn,
       'only-warn': onlyWarn,
-      '@typescript-eslint': typescriptEslint,
-      prettier,
     },
 
     linterOptions: {
@@ -129,7 +139,6 @@ export default [
       '@typescript-eslint/no-empty-function': 'off',
       '@typescript-eslint/no-shadow': 'off',
       '@typescript-eslint/unbound-method': ['off'],
-      'array-func/prefer-array-from': 'off',
       'camelcase': 'warn',
       'cflint/no-substr': 'warn',
       'cflint/no-this-assignment': 'warn',
@@ -262,6 +271,7 @@ export default [
     files: ['**/*.d.ts'],
 
     rules: {
+      'no-unused-vars': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
       'import/no-duplicates': 'off',
@@ -293,7 +303,7 @@ export default [
     files: ['**/*.test.*', '**/__test__/**', '**/__tests__/**', '**/test/**', '**/tests/**'],
 
     rules: {
-      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unsafe-assignment': 'error',
       '@typescript-eslint/no-unsafe-call': 'off',
       '@typescript-eslint/no-unsafe-member-access': 'off',
       '@typescript-eslint/no-unsafe-return': 'off',
