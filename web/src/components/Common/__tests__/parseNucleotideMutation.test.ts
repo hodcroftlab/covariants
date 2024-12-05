@@ -1,5 +1,5 @@
-import { parseNucleotideMutation } from 'src/components/Common/parseNucleotideMutation'
 import { describe, it, expect } from 'vitest'
+import { parseNucleotideMutation } from 'src/components/Common/parseNucleotideMutation'
 
 describe('parseNucleotideMutation', () => {
   it('should parse left, position, right', () => {

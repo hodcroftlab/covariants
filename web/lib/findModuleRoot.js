@@ -1,8 +1,8 @@
-import fs from 'fs-extra'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import fs from 'fs-extra'
 
-/* eslint-disable no-loops/no-loops,no-param-reassign,no-plusplus */
+/* eslint-disable no-loops/no-loops,no-param-reassign */
 export function findModuleRoot(maxDepth = 10) {
   let moduleRoot = fileURLToPath(new URL('.', import.meta.url))
   while (--maxDepth) {
