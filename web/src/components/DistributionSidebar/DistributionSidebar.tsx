@@ -1,4 +1,4 @@
-import { get } from 'lodash'
+import get from 'lodash/get.js'
 import React, { useState, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
 import { Cluster } from 'src/state/Clusters'

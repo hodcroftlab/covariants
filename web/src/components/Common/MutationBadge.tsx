@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React, { useMemo } from 'react'
 
-import { get } from 'lodash'
+import get from 'lodash/get.js'
 import { parseVariant } from 'src/components/Common/parseVariant'
 import styled from 'styled-components'
 

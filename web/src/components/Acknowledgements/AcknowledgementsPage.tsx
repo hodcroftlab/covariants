@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useMemo } from 'react'
 
-import { get } from 'lodash'
+import get from 'lodash/get.js'
 import { Oval as OvalLoader } from 'react-loader-spinner'
 import { useQuery } from '@tanstack/react-query'
 import { AcknowledgementsError } from 'src/components/Acknowledgements/AcknowledgementsError'

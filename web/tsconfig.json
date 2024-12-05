@@ -9,7 +9,7 @@
     "module": "esnext",
     "lib": ["esnext", "dom", "webworker"],
     "jsx": "preserve",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
@@ -33,6 +33,7 @@
   },
   "exclude": [
     ".build",
+    ".next",
     ".cache",
     ".idea",
     ".ignore",

@@ -1,4 +1,4 @@
-const EnvVarError = require('./EnvVarError')
+import EnvVarError from './EnvVarError'
 
 function getenv(key, defaultValue) {
   const value = process.env[key]
@@ -25,7 +25,4 @@ function getbool(key, defaultValue) {
   return value === '1' || value === 'true' || value === 'yes'
 }
 
-module.exports = {
-  getenv,
-  getbool,
-}
+export { getenv, getbool }
