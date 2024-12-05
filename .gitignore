@@ -78,6 +78,3 @@ web/.json-autotranslate-cache
 # IDE files
 *.iml
 /.idea
-
-# nextjs builds
-web/.next
