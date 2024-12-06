@@ -1,6 +1,11 @@
 import path from 'path'
+import * as url from 'node:url'
 import fs from 'fs-extra'
-import { difference, isObject, padStart, isEmpty, get } from 'lodash'
+import difference from 'lodash/difference'
+import isObject from 'lodash/isObject'
+import padStart from 'lodash/padStart'
+import isEmpty from 'lodash/isEmpty'
+import get from 'lodash/get'
 import { notUndefined } from 'src/helpers/notUndefined'
 import { safeZip } from 'src/helpers/safeZip'
 
@@ -162,6 +167,7 @@ function main() {
   })
 }
 
-if (require.main === module) {
+const modulePath = url.fileURLToPath(import.meta.url)
+if (process.argv[1] === modulePath) {
   main()
 }
