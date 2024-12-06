@@ -61,7 +61,7 @@ export function getEpiIslUrl(epiIsl: string) {
 }
 
 function getString(obj: unknown, objPath: string, defaultValue?: string): string {
-  const property: string | unknown = get(obj, objPath, defaultValue)
+  const property: unknown = get(obj, objPath, defaultValue)
   if (typeof property !== 'string') {
     return defaultValue ?? '-'
   }

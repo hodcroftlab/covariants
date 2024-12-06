@@ -39,7 +39,7 @@ export interface ClusterButtonArrayProps {
 export function ClusterButtonOptional({ cluster, isCurrent, showNonImportant }: ClusterButtonArrayProps) {
   const shouldShow = useMemo(
     // prettier-ignore
-    () => cluster.important || showNonImportant || isCurrent,
+    () => (cluster.important ?? showNonImportant) || isCurrent,
     [cluster.important, isCurrent, showNonImportant],
   )
 
@@ -59,6 +59,7 @@ export function ClusterButtonGroup({ clusterGroup, currentCluster }: ClusterButt
   const { t } = useTranslationSafe()
 
   const [showNonImportant, setShowNonImportant] = useState(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const toggleShowNonImportant = useMemo(() => (_: unknown) => setShowNonImportant(!showNonImportant), [showNonImportant]); // prettier-ignore
 
   return (

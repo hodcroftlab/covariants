@@ -262,6 +262,13 @@ export default [
     },
   },
   {
+    files: ['config/**/*'],
+
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'off',
+    },
+  },
+  {
     files: ['src/pages/**/*', 'src/types/**/*'],
 
     rules: {

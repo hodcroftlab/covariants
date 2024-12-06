@@ -131,8 +131,8 @@ export const countriesCasesAtom = atom<Country[]>({
 
 /**
  * Represents a list of currently enabled continents.
- * NOTE: this is a selector and it's value is tied to the countries atom.
- * NOTE: this selector is mutable, i.e. it can be set(). When this happens, it also modifies the countries atom.
+ * NOTE: this is a selector, and it's value is tied to the countries' atom.
+ * NOTE: this selector is mutable, i.e. it can be set(). When this happens, it also modifies the countries' atom.
  */
 export const continentsCasesAtom = selector<Continent[]>({
   key: 'casesContinents',
@@ -140,6 +140,7 @@ export const continentsCasesAtom = selector<Continent[]>({
     const countries = get(countriesCasesAtom)
     return getContinentsFromCountries(countries)
   },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   set: ({ set, get, reset }, continentsOrDefault) => {
     const countriesOld = get(countriesCasesAtom)
     const continents = continentsOrDefault instanceof DefaultValue ? getAllContinents() : continentsOrDefault

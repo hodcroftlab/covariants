@@ -25,6 +25,7 @@ export function Dropdown({
   ...restProps
 }: DropdownProps) {
   const handleChange = useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     (option: OnChangeValue<DropdownOption<string>, IsMultiValue>, _actionMeta: ActionMeta<DropdownOption<string>>) => {
       if (option) {
         onValueChange?.(option.value)

@@ -33,7 +33,7 @@ export interface TogglePropsWithoutChildren extends StrictOmit<ReactToggleProps,
 }
 
 export type ToggleProps = React.PropsWithChildren<TogglePropsWithoutChildren>
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function Toggle({ identifier, className, onCheckedChanged, children, ...props }: ToggleProps) {
   const onChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {

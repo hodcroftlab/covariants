@@ -1,8 +1,9 @@
 export async function loadPolyfills() {
-  if (typeof window === 'undefined') {
+  if (globalThis === undefined) {
     return
   }
-  if (typeof window.IntersectionObserver === 'undefined') {
+
+  if (globalThis.IntersectionObserver === undefined) {
     await import('intersection-observer')
   }
 }

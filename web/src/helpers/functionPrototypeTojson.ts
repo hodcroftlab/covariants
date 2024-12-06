@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 if (!Function.prototype.toJSON) {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   function toJSON(this: Function) {
     return this.toString()
   }

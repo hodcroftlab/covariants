@@ -28,8 +28,4 @@ export async function generateStillImages() {
   await concurrent.forEach(generateStillImage(GIF_DIR, OUT_DIR), filenames)
 }
 
-export async function main() {
-  return generateStillImages()
-}
-
-main().catch(console.error)
+await generateStillImages().catch(console.error)
