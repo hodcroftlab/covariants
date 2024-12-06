@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { FaTwitterSquare } from 'react-icons/fa'
 
 import type { LinkExternalProps } from './LinkExternal'

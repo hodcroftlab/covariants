@@ -1,5 +1,5 @@
 import { MDXComponents } from 'mdx/types'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { AaMut, Lin, Mut, NucMut, Var, Who } from 'src/components/Common/MutationBadge'
 import { LinkSmart } from 'src/components/Link/LinkSmart'

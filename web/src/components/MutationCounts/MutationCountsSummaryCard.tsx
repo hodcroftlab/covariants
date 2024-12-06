@@ -2,13 +2,13 @@ import React, { useMemo } from 'react'
 
 import { useQuery } from '@tanstack/react-query'
 import { Row, Col, CardHeader, Card, CardBody } from 'reactstrap'
+import { styled } from 'styled-components'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 
 import type { ClusterDatum } from 'src/io/getClusters'
 import { getMutationCounts, MutationCountsDatum, MutationCountsGeneRecord } from 'src/io/getMutationCounts'
 import { AminoacidMutationBadge } from 'src/components/Common/MutationBadge'
 import { TableSlim } from 'src/components/Common/TableSlim'
-import styled from 'styled-components'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 const MutationCountsSummaryCardBody = styled(CardBody)`

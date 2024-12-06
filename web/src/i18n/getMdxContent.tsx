@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react'
 
 import dynamic from 'next/dynamic'
-import { DEFAULT_LOCALE_KEY } from 'src/i18n/i18n'
 import { useRecoilValue } from 'recoil'
+import { DEFAULT_LOCALE_KEY } from 'src/i18n/i18n'
 import { localeAtom } from 'src/state/locale.state'
 
 export interface MdxContentProps {

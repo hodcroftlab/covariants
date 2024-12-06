@@ -10,10 +10,10 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { I18nextProvider } from 'react-i18next'
 import type { AppProps } from 'next/app'
-import { LOADING } from 'src/components/Loading/Loading'
-import { FETCHER } from 'src/hooks/useAxiosQuery'
 import { ThemeProvider } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
+import { LOADING } from 'src/components/Loading/Loading'
+import { FETCHER } from 'src/hooks/useAxiosQuery'
 import i18n, { changeLocale, getLocaleWithKey } from 'src/i18n/i18n'
 import { theme } from 'src/theme'
 import { DOMAIN_STRIPPED } from 'src/constants'
@@ -30,7 +30,6 @@ export function RecoilStateInitializer() {
     const snapShotRelease = snapshot.retain()
     const { getPromise } = snapshot
 
-    // eslint-disable-next-line no-void
     void Promise.resolve()
       // eslint-disable-next-line promise/always-return
       .then(async () => {

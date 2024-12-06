@@ -1,7 +1,6 @@
 import React from 'react'
+import { styled } from 'styled-components'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
-
-import styled from 'styled-components'
 
 import CladeSchemaSvg from 'src/assets/images/clades.svg'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'

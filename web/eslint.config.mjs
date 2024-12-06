@@ -53,7 +53,7 @@ export default [
     ],
   },
   js.configs.recommended,
-  ...tseslint.configs.strictTypeChecked,
+  ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
   arrayFunc.configs.all,
   // TODO: there is an issue with sonar that should soon be fixed: https://community.sonarsource.com/t/eslint-plugin-sonarjs-doesn-t-work-with-eslint-9-15-0/130771
@@ -138,6 +138,7 @@ export default [
       '@typescript-eslint/naming-convention': 'off',
       '@typescript-eslint/no-empty-function': 'off',
       '@typescript-eslint/no-shadow': 'off',
+      '@typescript-eslint/restrict-template-expressions': 'off',
       '@typescript-eslint/unbound-method': ['off'],
       'camelcase': 'warn',
       'cflint/no-substr': 'warn',

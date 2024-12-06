@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import type { MutationShared } from 'src/io/getMutationComparison'

@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { GoLinkExternal } from 'react-icons/go'
 
 import { LinkExternal } from 'src/components/Link/LinkExternal'

@@ -12,11 +12,11 @@ import {
   Row,
 } from 'reactstrap'
 
+import { styled } from 'styled-components'
 import type { Cluster } from 'src/state/Clusters'
 import { getClusterColor } from 'src/io/getClusters'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
-import styled from 'styled-components'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 export const FormGroup = styled(FormGroupBase)`

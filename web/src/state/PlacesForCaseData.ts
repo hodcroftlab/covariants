@@ -1,13 +1,12 @@
-import { get } from 'lodash'
 import { ParsedUrlQuery } from 'querystring'
+import { get } from 'lodash'
 import { atom, DefaultValue, selector } from 'recoil'
 
+import regionCountryJson from '../../public/data/region_country.json'
 import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
 import type { Continent, Country } from 'src/state/Places'
 import { updateUrlQuery } from 'src/helpers/urlQuery'
 import { getPerCountryCasesData } from 'src/io/getPerCountryCasesData'
-
-import regionCountryJson from '../../public/data/region_country.json'
 
 /**
  * Converts values incoming from URL query into region, countries and continents.
@@ -120,7 +119,6 @@ export const countriesCasesAtom = atom<Country[]>({
         // If all countries are enabled, we will remove country url params
         const hasAllEnabled = countries.every((country) => country.enabled)
 
-        // eslint-disable-next-line no-void
         void updateUrlQuery({
           country: hasAllEnabled
             ? []

@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { Card, CardBody, CardHeader, Row } from 'reactstrap'
-import styled from 'styled-components'
-import get from 'lodash/get.js'
+import { styled } from 'styled-components'
+import get from 'lodash/get'
 import { ClusterButtonGroup } from 'src/components/ClusterButtonPanel/ClusterButtonGroup'
 import { ClusterDatum, getClusters, getClustersGrouped } from 'src/io/getClusters'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'

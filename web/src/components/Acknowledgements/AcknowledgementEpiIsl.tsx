@@ -1,12 +1,12 @@
 import React, { useMemo, useState, useCallback } from 'react'
 
-import Axios from 'axios'
-import get from 'lodash/get.js'
+import axios from 'axios'
+import get from 'lodash/get'
 import { useQuery } from '@tanstack/react-query'
-import { AcknowledgementsError } from 'src/components/Acknowledgements/AcknowledgementsError'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { Popover as PopoverBase, PopoverBody as PopoverBodyBase, PopoverHeader as PopoverHeaderBase } from 'reactstrap'
 import { ThreeDots as ThreeDotsLoader } from 'react-loader-spinner'
+import { AcknowledgementsError } from 'src/components/Acknowledgements/AcknowledgementsError'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 export const Popover = styled(PopoverBase)`
@@ -86,7 +86,7 @@ export function useQueryAcknowledgementData(epiIsl: string) {
           `Unable to fetch acknowledgements data from GISAID: Unable to construct request URL: EPI ISL is incorrect: "${epiIsl}"`,
         )
       }
-      const res = await Axios.get(url)
+      const res = await axios.get(url)
       if (!res.data) {
         throw new Error(
           `Unable to fetch acknowledgements data from GISAID: request to URL "${url}" resulted in no data`,

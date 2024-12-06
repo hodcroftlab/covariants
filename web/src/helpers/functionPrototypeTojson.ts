@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment,no-inner-declarations,@typescript-eslint/ban-types,no-extend-native */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 if (!Function.prototype.toJSON) {
   function toJSON(this: Function) {

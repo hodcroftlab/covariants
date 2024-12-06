@@ -1,8 +1,7 @@
 import React, { useCallback } from 'react'
 
 import Select from 'react-select'
-import type { ActionMeta, OnChangeValue } from 'react-select'
-import type { Props as StateManagerProps } from 'react-select'
+import type { ActionMeta, OnChangeValue, Props as StateManagerProps } from 'react-select'
 
 import { DropdownOption } from 'src/components/Common/DropdownOption'
 

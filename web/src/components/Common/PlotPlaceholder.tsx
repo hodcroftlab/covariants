@@ -1,11 +1,11 @@
 import React from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { ThreeDots as ThreeDotsLoader } from 'react-loader-spinner'
 import { ResponsiveContainer } from 'recharts'
 
-import { theme } from 'src/theme'
 import { ChartContainerOuter, ChartContainerInner } from './PlotLayout'
+import { theme } from 'src/theme'
 
 const LoadingSpinner = styled(ThreeDotsLoader)`
   display: flex;

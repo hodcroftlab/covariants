@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
 

@@ -1,5 +1,5 @@
-import fs from 'fs-extra'
 import path from 'path'
+import fs from 'fs-extra'
 import { sortBy, uniqBy } from 'lodash'
 import { I18N_RESOURCES_DIR, I18N_RESOURCES_DEFAULT_LOCALE_FILE, readJson } from './fixLocales'
 

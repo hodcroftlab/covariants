@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Col, Row } from 'reactstrap'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { FaGithub, FaTwitter } from 'react-icons/fa'
 
 import { LinkExternal } from 'src/components/Link/LinkExternal'

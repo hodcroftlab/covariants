@@ -4,6 +4,7 @@ import React, { useMemo } from 'react'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
 import { DateTime } from 'luxon'
 
+import { CountryDistributionPlotTooltip } from './CountryDistributionPlotTooltip'
 import type { CountryDistributionDatum } from 'src/io/getPerCountryData'
 import { theme } from 'src/theme'
 import { ticks, timeDomain } from 'src/io/getParams'
@@ -11,7 +12,6 @@ import { CLUSTER_NAME_OTHERS, getClusterColor } from 'src/io/getClusters'
 import { formatDateHumanely, formatProportion } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import { ChartContainer } from 'src/components/Common/ChartContainer'
-import { CountryDistributionPlotTooltip } from './CountryDistributionPlotTooltip'
 
 const allowEscapeViewBox = { x: false, y: true }
 

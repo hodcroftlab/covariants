@@ -1,14 +1,13 @@
-import get from 'lodash/get.js'
+import get from 'lodash/get'
 import React, { useState, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
+import { CountryFlagProps } from '../Common/CountryFlag'
+import { ClusterFilters } from './ClusterFilters'
+import { CountryFilters } from './CountryFilters'
 import { Cluster } from 'src/state/Clusters'
 
 import type { Continent, Country } from 'src/state/Places'
 import { sortClusters } from 'src/io/getClusters'
-import { ClusterFilters } from './ClusterFilters'
-import { CountryFilters } from './CountryFilters'
-
-import { CountryFlagProps } from '../Common/CountryFlag'
 
 export interface DistributionSidebarProps {
   countries: Country[]
@@ -49,7 +48,7 @@ export function DistributionSidebar({
   const [countriesCollapsed, setCountriesCollapsed] = useState(countriesCollapsedByDefault)
   const clustersSorted = useMemo(() => sortClusters(clusters ?? []), [clusters])
 
-  const availableFilters: { [key: string]: React.ReactNode } = useMemo(
+  const availableFilters: Record<string, React.ReactNode> = useMemo(
     () => ({
       countries: (
         <CountryFilters

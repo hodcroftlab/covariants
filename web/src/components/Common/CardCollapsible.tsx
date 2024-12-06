@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, useCallback } from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { MdArrowDropDown } from 'react-icons/md'
 import { Card as CardBase, CardHeader as CardHeaderBase, Collapse } from 'reactstrap'
 
