@@ -1,7 +1,7 @@
-matplotlib==3.5.2
-numpy==1.22.4
-pandas==1.4.2
-python-dotenv==0.20.0
-requests==2.28.0
-scipy==1.8.1
-seaborn==0.11.2
+matplotlib==3.9.3
+numpy==2.2.0
+pandas==2.2.3
+python-dotenv==1.0.1
+requests==2.32.3
+scipy==1.14.1
+seaborn==0.13.2
