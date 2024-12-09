@@ -96,7 +96,7 @@ jobs:
       - name: "[build] Build web application"
         run: |
           cd web
-          yarn prod:build:ci
+          yarn prod:build
 
       - name: "[deployment] Setup environment (release)"
         if: endsWith(github.ref, '/release')
