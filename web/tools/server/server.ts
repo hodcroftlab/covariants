@@ -16,13 +16,16 @@ import path from 'path'
 import express from 'express'
 
 import allowMethods from 'allow-methods'
-// import history from 'connect-history-api-fallback'
+
 import expressStaticGzip from 'express-static-gzip'
 
 import { getenv } from '../../lib/getenv'
 import { findModuleRoot } from '../../lib/findModuleRoot'
 
 import { modifyHeaders } from '../../infra/lambda-at-edge/modifyOutgoingHeaders.lambda'
+
+import loadEnvVars from '../../config/dotenv'
+loadEnvVars()
 
 const { moduleRoot } = findModuleRoot()
 
@@ -65,9 +68,9 @@ function main() {
   })
 
   app.use(allowMethods(['GET', 'HEAD']))
-  // app.use(history())
+
   app.use('/_next', expressStaticGzip(nextDir, cacheOneYear))
-  app.get('*', expressStaticGzip(buildDir, cacheNone))
+  app.use(expressStaticGzip(buildDir, cacheNone))
 
   const port = getenv('WEB_PORT_PROD')
   app.listen(port, () => {
