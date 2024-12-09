@@ -1,9 +1,9 @@
-const path = require('path')
-
-const dotenv = require('dotenv')
-
-const { findModuleRoot } = require('../../lib/findModuleRoot')
+import path from 'path'
+import dotenv from 'dotenv'
+import { findModuleRoot } from '../../lib/findModuleRoot.js'
 
 const { moduleRoot } = findModuleRoot()
 
-dotenv.config({ path: path.join(moduleRoot, '.env') })
+export default function loadEnvVars() {
+  return dotenv.config({ path: path.join(moduleRoot, '.env') })
+}

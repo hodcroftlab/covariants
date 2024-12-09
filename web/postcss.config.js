@@ -1,6 +1,7 @@
-require('./config/dotenv')
+import loadEnvVars from './config/dotenv/index.js'
+loadEnvVars()
 
-module.exports = {
+export default {
   plugins: {
     'postcss-flexbugs-fixes': {},
     'postcss-preset-env': {

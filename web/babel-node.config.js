@@ -1,6 +1,7 @@
-require('./config/dotenv')
+import loadEnvVars from './config/dotenv'
+loadEnvVars()
 
-module.exports = {
+export default {
   comments: false,
   compact: false,
   minified: false,
@@ -10,7 +11,7 @@ module.exports = {
       '@babel/preset-env',
       {
         corejs: false,
-        modules: 'commonjs',
+        modules: 'auto',
         shippedProposals: true,
         targets: { node: '12' },
         exclude: ['transform-typeof-symbol'],
