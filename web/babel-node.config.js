@@ -11,7 +11,7 @@ export default {
       '@babel/preset-env',
       {
         corejs: false,
-        modules: false,
+        modules: 'auto',
         shippedProposals: true,
         targets: { node: '12' },
         exclude: ['transform-typeof-symbol'],
