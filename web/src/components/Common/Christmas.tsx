@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import React, { CSSProperties, HTMLProps, useMemo } from 'react'
 import { useResizeDetector } from 'react-resize-detector'
 import SnowfallBase from 'react-snowfall'
@@ -38,7 +38,7 @@ function ChristmasLightRopeImpl(props: HTMLProps<HTMLDivElement>) {
     if (!width) {
       return null
     }
-    return [...Array<number>(Math.ceil(width / (15 + 8)) + 1).keys()].map((i) => <li key={i} />)
+    return Array.from(Array<number>(Math.ceil(width / (15 + 8)) + 1).keys(), (i) => <li key={i} />)
   }, [width])
 
   return (

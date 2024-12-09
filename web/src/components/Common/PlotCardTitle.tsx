@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export const PlotCardTitle = styled.h1`
   margin: auto;

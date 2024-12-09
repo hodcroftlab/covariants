@@ -1,9 +1,8 @@
 import React from 'react'
 
 import type { ContributorData } from 'json-loader!src/../../.all-contributorsrc'
+import { styled } from 'styled-components'
 import { LinkExternal as LinkExternalBase } from 'src/components/Link/LinkExternal'
-
-import styled from 'styled-components'
 
 const FlexOuter = styled.section`
   display: flex;

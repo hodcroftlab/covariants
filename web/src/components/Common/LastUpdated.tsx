@@ -1,5 +1,5 @@
 import React, { HTMLProps, useMemo } from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import classNames from 'classnames'
 
 import { getLastUpdatedDate, getLastUpdatedFull } from 'src/io/getLastUpdatedDate'

@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { GoLinkExternal } from 'react-icons/go'
 
 import { LinkExternal } from 'src/components/Link/LinkExternal'
@@ -29,7 +29,7 @@ export interface LinkOpenInNewTabProps {
   href: string
   text?: string
 }
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function LinkOpenInNewTab({ href, text, children, ...restProps }: PropsWithChildren<LinkOpenInNewTabProps>) {
   const { t } = useTranslationSafe()
   return (

@@ -1,13 +1,13 @@
 import React, { useCallback, useMemo } from 'react'
 import { Card, CardBody, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
+import { styled } from 'styled-components'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
 import { disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/Clusters'
 import { clustersForPerClusterDataAtom } from 'src/state/ClustersForPerClusterData'
 import { disableAllCountries, enableAllCountries, toggleContinent, toggleCountry } from 'src/state/Places'
 import { usePlacesPerCluster } from 'src/state/PlacesForPerClusterData'
 import { tooltipSortAtom, TooltipSortCriterion } from 'src/state/TooltipSort'
-import styled from 'styled-components'
 import { MdxContent } from 'src/i18n/getMdxContent'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { usePerClusterData, filterClusters, filterCountries } from 'src/io/getPerClusterData'
@@ -124,7 +124,7 @@ export function ClusterDistributionPage() {
         <ColCustom key={cluster} md={12} lg={6} xl={6} xxl={4}>
           <ClusterDistributionPlotCard
             key={cluster}
-            clusterBuildName={clusterBuildNames.get(cluster) || ''}
+            clusterBuildName={clusterBuildNames.get(cluster) ?? ''}
             clusterDisplayName={cluster}
             distribution={distribution}
             country_names={enabledCountries}

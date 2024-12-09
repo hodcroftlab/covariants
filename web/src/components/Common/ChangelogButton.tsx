@@ -12,11 +12,11 @@ import {
   ModalHeader as ReactstrapModalHeader,
   Row,
 } from 'reactstrap'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
+import Changelog from '../../../../CHANGELOG.md'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
-import Changelog from '../../../../CHANGELOG.md'
 
 export const ButtonOk = styled(Button)<ButtonProps>`
   width: 100px;

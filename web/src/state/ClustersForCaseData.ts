@@ -1,11 +1,11 @@
-import { get } from 'lodash'
 import { ParsedUrlQuery } from 'querystring'
+import { get } from 'lodash'
 import { atom } from 'recoil'
+import type { Cluster } from './Clusters'
 import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
 
 import { updateUrlQuery } from 'src/helpers/urlQuery'
 import { getPerCountryCasesData } from 'src/io/getPerCountryCasesData'
-import type { Cluster } from './Clusters'
 
 function getAllClusters(): Cluster[] {
   return getPerCountryCasesData().clusters
@@ -42,7 +42,6 @@ export const clustersCasesAtom = atom<Cluster[]>({
         // If all clusters are enabled, we will remove cluster url params
         const hasAllEnabled = clusters.every((cluster) => cluster.enabled)
 
-        // eslint-disable-next-line no-void
         void updateUrlQuery({
           variant: hasAllEnabled ? [] : clusters.filter((cluster) => cluster.enabled).map((cluster) => cluster.cluster),
         })

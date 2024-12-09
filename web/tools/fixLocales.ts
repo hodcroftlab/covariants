@@ -1,8 +1,13 @@
-import fs from 'fs-extra'
 import path from 'path'
-import { difference, isObject, padStart, isEmpty, get } from 'lodash'
-import { notUndefined } from '../src/helpers/notUndefined'
-import { safeZip } from '../src/helpers/safeZip'
+import * as url from 'node:url'
+import fs from 'fs-extra'
+import difference from 'lodash/difference'
+import isObject from 'lodash/isObject'
+import padStart from 'lodash/padStart'
+import isEmpty from 'lodash/isEmpty'
+import get from 'lodash/get'
+import { notUndefined } from 'src/helpers/notUndefined'
+import { safeZip } from 'src/helpers/safeZip'
 
 export const DEFAULT_LOCALE_KEY = 'en'
 export const I18N_RESOURCES_DIR = 'src/i18n/resources/'
@@ -51,13 +56,13 @@ export function getReferenceKeys() {
 }
 
 export function fixSpaces(s: string) {
-  let fixed = s.replace(/([^ !#$%&()*,.;=_`{}~-]){{/gim, '$1 {{')
-  fixed = fixed.replace(/}}([^ !#$%&()*,./:;=_`{}~-])/gim, '}} $1')
-  fixed = fixed.replace(/ +/gim, ' ')
-  fixed = fixed.replace(/" (.*) "/gim, '"$1"')
-  fixed = fixed.replace(/" (.*)"/gim, '"$1"')
-  fixed = fixed.replace(/"(.*) "/gim, '"$1"')
-  fixed = fixed.replace(/ :/gim, ':')
+  let fixed = s.replaceAll(/([^ !#$%&()*,.;=_`{}~-]){{/gim, '$1 {{')
+  fixed = fixed.replaceAll(/}}([^ !#$%&()*,./:;=_`{}~-])/gim, '}} $1')
+  fixed = fixed.replaceAll(/ +/gim, ' ')
+  fixed = fixed.replaceAll(/" (.*) "/gim, '"$1"')
+  fixed = fixed.replaceAll(/" (.*)"/gim, '"$1"')
+  fixed = fixed.replaceAll(/"(.*) "/gim, '"$1"')
+  fixed = fixed.replaceAll(/ :/gim, ':')
   return fixed
 }
 
@@ -162,6 +167,7 @@ function main() {
   })
 }
 
-if (require.main === module) {
+const modulePath = url.fileURLToPath(import.meta.url)
+if (process.argv[1] === modulePath) {
   main()
 }

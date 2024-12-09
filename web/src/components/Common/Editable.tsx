@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, useMemo } from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { FaGithub } from 'react-icons/fa'
 
 import { URL_GITHUB } from 'src/constants'

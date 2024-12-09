@@ -5,12 +5,12 @@ import { Oval as OvalLoader } from 'react-loader-spinner'
 import { useQuery } from '@tanstack/react-query'
 import PaginationComponent from 'react-reactstrap-pagination'
 import { CardBody } from 'reactstrap'
+import { styled } from 'styled-components'
 import { AcknowledgementEpiIsl } from 'src/components/Acknowledgements/AcknowledgementEpiIsl'
 import { AcknowledgementsError } from 'src/components/Acknowledgements/AcknowledgementsError'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 
 import type { ClusterDatum } from 'src/io/getClusters'
-import styled from 'styled-components'
 
 export interface AcknowledgementsKeysDatum {
   numChunks: number

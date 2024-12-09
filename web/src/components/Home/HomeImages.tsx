@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Row, Col } from 'reactstrap'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { Link as LinkBase } from 'src/components/Link/Link'

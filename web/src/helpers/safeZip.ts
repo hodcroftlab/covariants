@@ -1,4 +1,4 @@
-import { zip } from 'lodash'
+import zip from 'lodash/zip'
 
 export function safeZip<T, U>(first: T[], second: U[]) {
   const firstLen = first.length

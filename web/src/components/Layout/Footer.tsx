@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Col, Container, Row } from 'reactstrap'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { PROJECT_NAME, COMPANY_NAME } from 'src/constants'
 import { SharingPanel } from 'src/components/Common/SharingPanel'

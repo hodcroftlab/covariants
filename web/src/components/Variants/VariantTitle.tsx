@@ -1,8 +1,7 @@
 import React, { useMemo } from 'react'
+import { styled } from 'styled-components'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { ClusterDatum } from 'src/io/getClusters'
-
-import styled from 'styled-components'
 
 const VariantTitleWrapper = styled.header`
   text-align: center;

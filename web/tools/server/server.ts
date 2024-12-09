@@ -29,9 +29,7 @@ const { moduleRoot } = findModuleRoot()
 const buildDir = path.join(moduleRoot, '.build', 'production', 'web')
 const nextDir = path.join(buildDir, '_next')
 
-export interface NewHeaders {
-  [key: string]: { key: string; value: string }[]
-}
+export type NewHeaders = Record<string, { key: string; value: string }[]>
 
 function main() {
   const app = express()

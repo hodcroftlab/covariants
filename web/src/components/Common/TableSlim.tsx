@@ -1,7 +1,7 @@
 import React, { HTMLProps } from 'react'
 
 import { Table as ReactstrapTable } from 'reactstrap'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export const TableSlim = styled(ReactstrapTable)`
   & td {

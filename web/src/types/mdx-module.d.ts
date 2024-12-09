@@ -1,4 +1,4 @@
 declare module '*.mdx' {
-  const MDXComponent: () => JSX.Element
+  const MDXComponent: () => React.JSX.Element
   export default MDXComponent
 }

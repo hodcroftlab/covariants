@@ -1,5 +1,5 @@
-import fs from 'fs-extra'
 import path from 'path'
+import fs from 'fs-extra'
 import gifFrames from 'gif-frames'
 import { concurrent } from 'fasy'
 
@@ -28,8 +28,4 @@ export async function generateStillImages() {
   await concurrent.forEach(generateStillImage(GIF_DIR, OUT_DIR), filenames)
 }
 
-export async function main() {
-  return generateStillImages()
-}
-
-main().catch(console.error)
+await generateStillImages().catch(console.error)

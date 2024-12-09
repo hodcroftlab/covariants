@@ -2,12 +2,12 @@ import React from 'react'
 
 import { get, sortBy, reverse, uniqBy } from 'lodash'
 import { useRecoilValue } from 'recoil'
-import { ColoredHorizontalLineIcon } from 'src/components/Common/ColoredHorizontalLineIcon'
-import { tooltipSortAtom } from 'src/state/TooltipSort'
-import { theme } from 'src/theme'
-import styled from 'styled-components'
-
+import { styled } from 'styled-components'
 import type { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
+import { ColoredHorizontalLineIcon } from 'src/components/Common/ColoredHorizontalLineIcon'
+import { tooltipSortAtom, TooltipSortCriterion } from 'src/state/TooltipSort'
+import { theme } from 'src/theme'
+
 import type { ClusterDistributionDatum } from 'src/io/getPerClusterData'
 import { formatDateWeekly, formatProportion } from 'src/helpers/format'
 import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
@@ -69,11 +69,14 @@ export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotToo
   // @ts-ignore
   const week = formatDateWeekly(data?.week)
 
-  let payloadSorted = sortBy(payload, criterion === 'country' ? 'name' : 'value')
+  let payloadSorted = sortBy(payload, criterion === TooltipSortCriterion.country ? 'name' : 'value')
 
   // sortBy sorts in ascending order, but if sorting by frequency the natural/non-reversed order is descending
 
-  if ((criterion !== 'frequency' && reversed) || (criterion === 'frequency' && !reversed)) {
+  if (
+    (criterion !== TooltipSortCriterion.frequency && reversed) ||
+    (criterion === TooltipSortCriterion.frequency && !reversed)
+  ) {
     payloadSorted = reverse(payloadSorted)
   }
 

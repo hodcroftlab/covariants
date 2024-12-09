@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react'
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import type { PerCountryCasesDistributionDatum } from 'src/io/getPerCountryCasesData'
 import { PlotCardTitle } from 'src/components/Common/PlotCardTitle'

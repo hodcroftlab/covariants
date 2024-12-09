@@ -1,5 +1,5 @@
-import { NextConfig } from 'next'
 import path from 'path'
+import { NextConfig } from 'next'
 
 import { uniq } from 'lodash'
 
@@ -143,7 +143,7 @@ const withMDX = getWithMDX({
 const withFriendlyConsole = getWithFriendlyConsole({
   clearConsole: false,
   projectRoot: path.resolve(moduleRoot),
-  packageName: pkg.name || 'web',
+  packageName: pkg.name ?? 'web',
   progressBarColor: '#6529ff',
 })
 

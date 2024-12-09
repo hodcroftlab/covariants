@@ -47,7 +47,6 @@ const regionAtom = atomAsync<string>({
     ({ onSet }) => {
       onSet((region) => {
         // NOTE: This will overwrite the query entirely
-        // eslint-disable-next-line no-void
         void setUrlQuery({ region })
       })
     },
@@ -85,7 +84,6 @@ const countriesAtom = atomFamilyAsync<Country[], string>({
         // If all countries are enabled, we will remove country url params
         const hasAllEnabled = countries.every((country) => country.enabled)
 
-        // eslint-disable-next-line no-void
         void updateUrlQuery({
           country: hasAllEnabled
             ? []
@@ -122,7 +120,7 @@ export const continentsAtom = selectorFamily<Continent[], string>({
 export async function validateRegion(regionRaw: string) {
   const { regions } = await fetchPerCountryDataRaw()
   const allRegions = regions.map((region) => region.region)
-  const region = allRegions.find((candidate) => candidate.toLowerCase() === regionRaw?.toLowerCase())
+  const region = allRegions.find((candidate) => candidate.toLowerCase() === regionRaw.toLowerCase())
   if (!region) {
     const availableRegionsMsg = allRegions.map((region) => `'${region}'`).join(', ')
     throw new Error(

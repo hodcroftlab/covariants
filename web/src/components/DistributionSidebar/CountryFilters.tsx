@@ -11,13 +11,13 @@ import {
   Label,
   Row,
 } from 'reactstrap'
+import { styled, useTheme } from 'styled-components'
+import { ColoredHorizontalLineIcon } from '../Common/ColoredHorizontalLineIcon'
 import { Continent, Country } from 'src/state/Places'
-import styled, { useTheme } from 'styled-components'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import type { CountryFlagProps } from 'src/components/Common/CountryFlag'
 import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
-import { ColoredHorizontalLineIcon } from '../Common/ColoredHorizontalLineIcon'
 
 export const CardBody = styled(CardBodyBase)``
 

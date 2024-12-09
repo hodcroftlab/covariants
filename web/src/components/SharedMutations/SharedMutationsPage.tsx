@@ -1,14 +1,14 @@
 import React from 'react'
 
 import { Col, Container, Row } from 'reactstrap'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
+import { PageHeading } from '../Common/PageHeading'
+import { SharedMutations } from './SharedMutations'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { MdxContent } from 'src/i18n/getMdxContent'
 import { Editable, CenteredEditable } from 'src/components/Common/Editable'
 import { Layout } from 'src/components/Layout/Layout'
-import { SharedMutations } from './SharedMutations'
-import { PageHeading } from '../Common/PageHeading'
 
 export const SharedMutationsPageContainer = styled(Container)`
   max-width: 1200px;

@@ -1,10 +1,13 @@
 import React, { useMemo } from 'react'
 
 import { useRouter } from 'next/router'
+import { styled } from 'styled-components'
+import { Col, Row } from 'reactstrap'
+import { PlotCard } from './PlotCard'
+import { AquariaLinksCard } from './AquariaLinksCard'
+import { ProteinCard } from './ProteinCard'
 import { ClusterButtonPanelLayout } from 'src/components/ClusterButtonPanel/ClusterButtonPanelLayout'
 import { MutationCountsSummaryCard } from 'src/components/MutationCounts/MutationCountsSummaryCard'
-import styled from 'styled-components'
-import { Col, Row } from 'reactstrap'
 
 import { theme } from 'src/theme'
 import { MdxContent } from 'src/i18n/getMdxContent'
@@ -19,10 +22,6 @@ import { DefiningMutations, hasDefiningMutations } from 'src/components/Variants
 import { VariantTitle } from 'src/components/Variants/VariantTitle'
 
 import NextstrainIconBase from 'src/assets/images/nextstrain_logo.svg'
-
-import { PlotCard } from './PlotCard'
-import { AquariaLinksCard } from './AquariaLinksCard'
-import { ProteinCard } from './ProteinCard'
 
 const clusters = getClusters()
 const clusterRedirects = getClusterRedirects()
@@ -65,7 +64,7 @@ export function useCurrentClusterName(clusterName?: string) {
   if (clusterName) {
     const clusterNewName = clusterRedirects.get(clusterName)
     if (clusterNewName) {
-      void router.replace(`/variants/${clusterNewName}`) // eslint-disable-line no-void
+      void router.replace(`/variants/${clusterNewName}`)
       return clusterNewName
     }
   }

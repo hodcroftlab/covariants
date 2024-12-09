@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
+import { CasesPlotCard } from './CasesPlotCard'
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
 import { ColCustom } from 'src/components/Common/ColCustom'
 import { Layout } from 'src/components/Layout/Layout'
@@ -21,7 +22,6 @@ import { CountryFlag } from 'src/components/Common/CountryFlag'
 import { PageHeading } from 'src/components/Common/PageHeading'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
-import { CasesPlotCard } from './CasesPlotCard'
 
 const enabledFilters = ['clusters', 'countriesWithIcons']
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
+import { styled } from 'styled-components'
 import LogoNextstrain from 'src/assets/images/logo.svg'
-import styled from 'styled-components'
 
 const Container = styled.div`
   display: flex;

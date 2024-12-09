@@ -13,7 +13,7 @@ export function detectLocale({ defaultLanguage, availableLocales, shorten = true
     return defaultLanguage
   }
 
-  const navigatorLocal = (navigator ?? window.navigator) as NavigatorPlus | undefined
+  const navigatorLocal = (navigator ?? globalThis.navigator) as NavigatorPlus | undefined
 
   let language
   language =

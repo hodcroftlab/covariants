@@ -1,4 +1,4 @@
-/* eslint-disable no-inner-declarations,cflint/no-this-assignment,@typescript-eslint/ban-ts-comment,no-extend-native */
+/* eslint-disable cflint/no-this-assignment,@typescript-eslint/ban-ts-comment */
 // @ts-ignore
 import { appendDash } from './appendDash'
 

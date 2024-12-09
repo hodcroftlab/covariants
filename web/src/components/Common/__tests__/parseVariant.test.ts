@@ -1,5 +1,5 @@
-import { parseVariant } from 'src/components/Common/parseVariant'
 import { describe, it, expect } from 'vitest'
+import { parseVariant } from 'src/components/Common/parseVariant'
 
 describe('parseVariant', () => {
   it('should accept "20A.EU2"', async () => {

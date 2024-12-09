@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, HTMLProps } from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { GoLinkExternal } from 'react-icons/go'
 
 const LinkExternalIconWrapper = styled.span<{ $color?: string }>`

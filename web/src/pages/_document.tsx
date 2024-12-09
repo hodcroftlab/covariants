@@ -29,7 +29,7 @@ export const AppleIcons = [57, 60, 72, 76, 114, 120, 144, 152, 180].map((size) =
     <React.Fragment key={size}>
       <link rel="apple-touch-icon" sizes={sizes} href={`${DOMAIN}/icons/apple-touch-icon-${sizes}.png`} />
       <link
-        rel="apple-touch-icon-precomposed" // eslint-disable-line react/no-invalid-html-attribute
+        rel="apple-touch-icon-precomposed"
         sizes={sizes}
         href={`${DOMAIN}/icons/apple-touch-icon-${sizes}-precomposed.png`}
       />

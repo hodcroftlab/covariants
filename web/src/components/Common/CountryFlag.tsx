@@ -4,14 +4,13 @@ import React, { FC, ReactElement, SVGProps, useMemo } from 'react'
 import iso3311a2 from 'iso-3166-1-alpha-2'
 import Flags from 'country-flag-icons/react/3x2'
 
+import { FlagWrapper } from './FlagWrapper'
 import Africa from 'src/assets/images/continents/Africa.svg'
 import Asia from 'src/assets/images/continents/Asia.svg'
 import Europe from 'src/assets/images/continents/Europe.svg'
 import NorthAmerica from 'src/assets/images/continents/North America.svg'
 import Oceania from 'src/assets/images/continents/Oceania.svg'
 import SouthAmerica from 'src/assets/images/continents/South America.svg'
-
-import { FlagWrapper } from './FlagWrapper'
 
 export const missingCountryCodes: Record<string, string> = {
   'Bolivia': 'BO',
@@ -77,6 +76,6 @@ export interface CountryFlagProps extends SVGProps<SVGSVGElement> {
 
 export function CountryFlag({ country, withFallback = false }: CountryFlagProps) {
   const Flag = useMemo(() => getFlagComponent(country, withFallback), [country, withFallback])
-  // eslint-disable-next-line react/jsx-no-useless-fragment
+
   return <>{Flag}</>
 }

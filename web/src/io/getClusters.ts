@@ -8,14 +8,14 @@ import { theme } from 'src/theme'
 
 import clustersJson from 'src/../public/data/clusters.json'
 
-export const CLUSTER_NAME_OTHERS = 'others' as const
+export const CLUSTER_NAME_OTHERS = 'others'
 
 export interface AquariaDatum {
   gene: string
   url: string
 }
 
-export type ClusterDatum = {
+export interface ClusterDatum {
   build_name: string
   old_build_names?: string[]
   nextstrain_url?: string

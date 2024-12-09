@@ -18,8 +18,8 @@ function cleanup() {
 function stripProjectRoot(projectRoot: string) {
   return (error: FriendlyErrorsWebpackPluginError) => ({
     ...error,
-    message: error && error.message && error.message.replace(`${projectRoot}/`, ''),
-    file: error && error.file && error.file.replace(`${projectRoot}/`, ''),
+    message: error?.message?.replace(`${projectRoot}/`, ''),
+    file: error?.file?.replace(`${projectRoot}/`, ''),
   })
 }
 

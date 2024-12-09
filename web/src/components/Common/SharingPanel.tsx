@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react'
 
 import urljoin from 'url-join'
 import { useRouter } from 'next/router'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { Button, Col, Row } from 'reactstrap'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { FaClipboard as FaClipboardBase, FaClipboardCheck as FaClipboardCheckBase } from 'react-icons/fa'

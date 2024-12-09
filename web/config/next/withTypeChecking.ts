@@ -2,10 +2,10 @@ import path from 'path'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 
 import type { NextConfig } from 'next'
-import { addWebpackPlugin } from './lib/addWebpackPlugin'
 
 import { findModuleRoot } from '../../lib/findModuleRoot'
 import tsConfig from '../../tsconfig.json'
+import { addWebpackPlugin } from './lib/addWebpackPlugin'
 
 const { moduleRoot } = findModuleRoot()
 

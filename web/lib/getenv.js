@@ -3,7 +3,7 @@ import EnvVarError from './EnvVarError'
 function getenv(key, defaultValue) {
   const value = process.env[key]
   if (!value) {
-    if (typeof defaultValue !== 'undefined') {
+    if (defaultValue !== undefined) {
       return defaultValue
     }
 
@@ -15,7 +15,7 @@ function getenv(key, defaultValue) {
 function getbool(key, defaultValue) {
   const value = process.env[key]
   if (!value) {
-    if (typeof defaultValue !== 'undefined') {
+    if (defaultValue !== undefined) {
       return defaultValue
     }
 

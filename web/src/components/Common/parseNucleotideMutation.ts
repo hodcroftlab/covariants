@@ -1,5 +1,5 @@
-import type { Mutation } from 'src/types'
 import { parsePosition } from './parsePosition'
+import type { Mutation } from 'src/types'
 
 export function parseNucleotide(raw: string | undefined | null) {
   if (!raw || raw.length === 0) {

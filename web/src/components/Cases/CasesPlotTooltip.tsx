@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { sortBy, reverse } from 'lodash'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 
+import { ColoredBox } from '../Common/ColoredBox'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { formatDateBiweekly, formatInteger, formatProportion } from 'src/helpers/format'
 import { getClusterColor } from 'src/io/getClusters'
-import { ColoredBox } from '../Common/ColoredBox'
 
 const EPSILON = 1e-2
 

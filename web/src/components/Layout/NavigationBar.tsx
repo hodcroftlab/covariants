@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import React, { useCallback, useMemo, useState } from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import {
   Col,
   Collapse,

@@ -1,5 +1,5 @@
 import React, { SVGProps } from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { FlagWrapper } from './FlagWrapper'
 
