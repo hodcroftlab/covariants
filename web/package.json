@@ -271,6 +271,8 @@
     "source-map-loader": "^5.0.0",
     "style-loader": "^4.0.0",
     "stylelint": "^16.11.0",
+    "stylelint-config-sass-guidelines": "^12.1.0",
+    "stylelint-config-standard": "^36.0.1",
     "svgo": "^3.3.2",
     "ts-essentials": "^10.0.3",
     "ts-node": "^10.9.2",

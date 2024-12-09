@@ -3,8 +3,6 @@
 // Some of the things are borrowed from bootswatch Materia theme
 // https://github.com/thomaspark/bootswatch
 
-/* stylelint-disable primer/no-unused-vars */
-
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -36,12 +34,11 @@ $font-family-default: $font-family-sans-serif;
 $font-family-base: $font-family-default;
 $font-size-base: 1rem;
 
-$white: #ffffff;
-$gray-100: #f8f9fa; // stylelint-disable-line plugin/stylelint-no-indistinguishable-colors
-$gray-150: #eff1f3;
+$white: #fff;
+$gray-100: #f8f9fa;
 $gray-200: #e9ecef;
 $gray-250: #e5e8ea;
-$gray-300: #dee2e6; // stylelint-disable-line plugin/stylelint-no-indistinguishable-colors
+$gray-300: #dee2e6;
 $gray-400: #ced4da;
 $gray-500: #adb5bd;
 $gray-600: #7b838a;
@@ -67,7 +64,7 @@ $success: $green;
 $info: $cyan;
 $warning: $yellow;
 $danger: $red;
-$light: $white; // stylelint-disable-line plugin/stylelint-no-indistinguishable-colors
+$light: $white;
 $dark: $gray-700;
 
 $yiq-contrasted-threshold: 170;
@@ -84,10 +81,10 @@ $code-font-size: $font-size-base * 0.9;
 $blockquote-font-size: $font-size-base * 0.9;
 $blockquote-bg-color: #fff7df;
 
-$navbar-dark-color: rgba($white, 0.75); // stylelint-disable-line plugin/stylelint-no-indistinguishable-colors
-$navbar-dark-hover-color: rgba($white, 1); // stylelint-disable-line plugin/stylelint-no-indistinguishable-colors
+$navbar-dark-color: rgba($white, 0.75);
+$navbar-dark-hover-color: rgba($white, 1);
 
-$navbar-light-hover-color: rgba($black, 0.9); // stylelint-disable-line plugin/stylelint-no-indistinguishable-colors
+$navbar-light-hover-color: rgba($black, 0.9);
 
 $alert-border-width: 0;
 $progress-height: 0.5rem;
