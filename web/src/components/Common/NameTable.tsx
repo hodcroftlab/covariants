@@ -1,13 +1,13 @@
 import React, { ReactNode, useMemo } from 'react'
 
 import { Table as TableBase, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
+import { LineageLinkBadge, Var, WhoBadge } from './MutationBadge'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import type { NameTableDatum, NameTableEntry } from 'src/io/getNameTable'
 import { NAME_TABLE } from 'src/io/getNameTable'
-import { LineageLinkBadge, Var, WhoBadge } from './MutationBadge'
 
 const Table = styled(TableBase)`
   max-width: 800px;

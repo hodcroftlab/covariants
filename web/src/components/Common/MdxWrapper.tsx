@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export const MdxSection = styled.section`
   margin: 10px 5px;

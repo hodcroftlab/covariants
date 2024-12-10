@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React, { useMemo } from 'react'
 
-import get from 'lodash/get.js'
+import get from 'lodash/get'
 import { DateTime } from 'luxon'
 import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts'
 import { useTheme } from 'styled-components'

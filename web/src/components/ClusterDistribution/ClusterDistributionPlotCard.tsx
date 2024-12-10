@@ -2,7 +2,7 @@
 import React from 'react'
 
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import type { ClusterDistributionDatum } from 'src/io/getPerClusterData'
 import { Link } from 'src/components/Link/Link'

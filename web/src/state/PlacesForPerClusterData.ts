@@ -59,8 +59,6 @@ const countriesAtom = atomAsync<Country[]>({
       onSet((countries) => {
         // If all countries are enabled, we will remove country url params
         const hasAllEnabled = countries.every((country) => country.enabled)
-
-        // eslint-disable-next-line no-void
         void updateUrlQuery({
           country: hasAllEnabled
             ? []

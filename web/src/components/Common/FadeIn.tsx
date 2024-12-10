@@ -1,7 +1,7 @@
 // https://www.joshwcomeau.com/snippets/react-components/fade-in/
 
 import React, { PropsWithChildren } from 'react'
-import styled, { keyframes } from 'styled-components'
+import { styled, keyframes } from 'styled-components'
 
 export interface FadeInProps {
   duration?: number

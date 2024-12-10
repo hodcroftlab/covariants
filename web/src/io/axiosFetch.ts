@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse, isAxiosError } from 'axios'
 import { isNil } from 'lodash'
 import serializeJavascript from 'serialize-javascript'
 import { ErrorInternal } from 'src/helpers/ErrorInternal'
@@ -27,7 +27,7 @@ export async function axiosFetch<TData = unknown>(
   try {
     res = await axios.get(url, options)
   } catch (error) {
-    throw axios.isAxiosError(error) ? new HttpRequestError(error) : sanitizeError(error)
+    throw isAxiosError(error) ? new HttpRequestError(error) : sanitizeError(error)
   }
 
   if (!res?.data) {

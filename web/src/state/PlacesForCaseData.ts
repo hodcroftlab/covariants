@@ -1,13 +1,12 @@
-import { get } from 'lodash'
 import { ParsedUrlQuery } from 'querystring'
+import { get } from 'lodash'
 import { atom, DefaultValue, selector } from 'recoil'
 
+import regionCountryJson from '../../public/data/region_country.json'
 import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
 import type { Continent, Country } from 'src/state/Places'
 import { updateUrlQuery } from 'src/helpers/urlQuery'
 import { getPerCountryCasesData } from 'src/io/getPerCountryCasesData'
-
-import regionCountryJson from '../../public/data/region_country.json'
 
 /**
  * Converts values incoming from URL query into region, countries and continents.
@@ -120,7 +119,6 @@ export const countriesCasesAtom = atom<Country[]>({
         // If all countries are enabled, we will remove country url params
         const hasAllEnabled = countries.every((country) => country.enabled)
 
-        // eslint-disable-next-line no-void
         void updateUrlQuery({
           country: hasAllEnabled
             ? []
@@ -133,8 +131,8 @@ export const countriesCasesAtom = atom<Country[]>({
 
 /**
  * Represents a list of currently enabled continents.
- * NOTE: this is a selector and it's value is tied to the countries atom.
- * NOTE: this selector is mutable, i.e. it can be set(). When this happens, it also modifies the countries atom.
+ * NOTE: this is a selector, and it's value is tied to the countries' atom.
+ * NOTE: this selector is mutable, i.e. it can be set(). When this happens, it also modifies the countries' atom.
  */
 export const continentsCasesAtom = selector<Continent[]>({
   key: 'casesContinents',
@@ -142,6 +140,7 @@ export const continentsCasesAtom = selector<Continent[]>({
     const countries = get(countriesCasesAtom)
     return getContinentsFromCountries(countries)
   },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   set: ({ set, get, reset }, continentsOrDefault) => {
     const countriesOld = get(countriesCasesAtom)
     const continents = continentsOrDefault instanceof DefaultValue ? getAllContinents() : continentsOrDefault

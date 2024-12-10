@@ -1,6 +1,5 @@
-import updateJson from 'src/../public/data/update.json'
-
 import { DateTime } from 'luxon'
+import updateJson from 'src/../public/data/update.json'
 
 export function getLastUpdatedDate() {
   const utc = DateTime.fromISO(updateJson.lastUpdated, { zone: 'UTC' })

@@ -5,6 +5,8 @@ import dynamic from 'next/dynamic'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Label } from 'recharts'
 import { DateTime } from 'luxon'
 
+import { useTheme } from 'styled-components'
+import { CasesPlotTooltip } from './CasesPlotTooltip'
 import type { PerCountryCasesDistributionDatum } from 'src/io/getPerCountryCasesData'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { ticks, timeDomain } from 'src/io/getParams'
@@ -13,8 +15,6 @@ import { formatDateHumanely } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
 import { ChartContainer } from 'src/components/Common/ChartContainer'
-import { useTheme } from 'styled-components'
-import { CasesPlotTooltip } from './CasesPlotTooltip'
 
 const CHART_MARGIN = { left: 10, top: 12, bottom: 6, right: 12 }
 const ALLOW_ESCAPE_VIEW_BOX = { x: false, y: true }

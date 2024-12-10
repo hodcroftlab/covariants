@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react'
 
 import { Button, Col, Row } from 'reactstrap'
+import { styled } from 'styled-components'
 import { safeZip } from 'src/helpers/safeZip'
-import styled from 'styled-components'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 export const RegionSwitcherContainer = styled.div`

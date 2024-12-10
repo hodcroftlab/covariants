@@ -1,4 +1,4 @@
-/* eslint-disable no-param-reassign,no-plusplus,no-loops/no-loops,prefer-destructuring,no-else-return,unicorn/prefer-code-point */
+/* eslint-disable no-param-reassign,no-loops/no-loops,unicorn/prefer-code-point */
 
 /**
  * Color Hash
@@ -88,7 +88,7 @@ function HSL2RGB(H: number, S: number, L: number): [number, number, number] {
 
 export { HSL2RGB as testFroHSL2RGB }
 
-export type Options = {
+export interface Options {
   lightness?: number | number[]
   saturation?: number | number[]
   hue?: number | { min: number; max: number } | { min: number; max: number }[]
@@ -120,13 +120,13 @@ class ColorHash {
     if (typeof options.hue === 'object' && !Array.isArray(options.hue)) {
       options.hue = [options.hue]
     }
-    if (typeof options.hue === 'undefined') {
+    if (options.hue === undefined) {
       options.hue = []
     }
     this.hueRanges = options.hue.map((range) => {
       return {
-        min: typeof range.min === 'undefined' ? 0 : range.min,
-        max: typeof range.max === 'undefined' ? 360 : range.max,
+        min: range.min ?? 0,
+        max: range.max ?? 360,
       }
     })
 

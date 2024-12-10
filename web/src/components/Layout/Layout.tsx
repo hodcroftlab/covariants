@@ -1,15 +1,15 @@
 import React, { PropsWithChildren } from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { Container as ContainerBase, Row, Col } from 'reactstrap'
 import Image from 'next/image'
+import { LastUpdated } from '../Common/LastUpdated'
+import { NavigationBar } from './NavigationBar'
+import { FooterContent } from './Footer'
 import GisaidLogoPNG from 'src/assets/images/GISAID_logo.png'
 import { ChristmasLightRope, Santa, Snowfall } from 'src/components/Common/Christmas'
 import { ChangelogButton } from 'src/components/Common/ChangelogButton'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
-import { NavigationBar } from './NavigationBar'
-import { FooterContent } from './Footer'
-import { LastUpdated } from '../Common/LastUpdated'
 
 const Container = styled(ContainerBase)`
   min-height: 100%;

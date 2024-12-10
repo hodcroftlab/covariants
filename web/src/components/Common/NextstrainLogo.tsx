@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import NextstrainIconBase from 'src/assets/images/nextstrain_logo.svg'
 
@@ -42,7 +42,6 @@ export function NextstrainLogo() {
       <NextstrainIcon />
       <span>
         {'Nextstrain'.split('').map((letter, i) => (
-          // eslint-disable-next-line react/no-array-index-key
           <LetterSpan key={`${i}_${letter}`} pos={i}>
             {letter}
           </LetterSpan>

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { SiMoleculer } from 'react-icons/si'
 import { Card, CardBody, CardHeader, Col, Container, Row } from 'reactstrap'
 import Image from 'next/image'

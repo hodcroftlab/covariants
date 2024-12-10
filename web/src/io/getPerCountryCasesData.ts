@@ -24,9 +24,7 @@ export interface PerCountryCasesDataRaw {
 export interface PerCountryCasesDistributionDatum {
   week: string
   stand_total_cases: number
-  stand_estimated_cases: {
-    [key: string]: number | undefined
-  }
+  stand_estimated_cases: Record<string, number | undefined>
 }
 
 export interface PerCountryCasesDistribution {
@@ -34,9 +32,7 @@ export interface PerCountryCasesDistribution {
   distribution: PerCountryCasesDistributionDatum[]
 }
 
-export interface ClusterState {
-  [key: string]: { enabled: boolean }
-}
+export type ClusterState = Record<string, { enabled: boolean }>
 
 export interface PerCountryCasesData {
   clusterNames: string[]

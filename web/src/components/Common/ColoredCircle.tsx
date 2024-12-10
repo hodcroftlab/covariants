@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export const ColoredCircle = styled.div<{ $color: string; $size: number }>`
   display: inline-block;

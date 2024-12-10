@@ -1,4 +1,5 @@
 import { NextConfig } from 'next'
+// eslint-disable-next-line import/default
 import CopyPlugin, { PluginOptions as CopyPluginOptions } from 'copy-webpack-plugin'
 import { addWebpackPlugin } from './lib/addWebpackPlugin'
 

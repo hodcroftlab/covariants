@@ -18,8 +18,8 @@ export const params = getParams()
 export function getTimeDomain(): [number, number] {
   const minDate = dateStringToSeconds(params.min_date)
   const maxDate = dateStringToSeconds(params.max_date)
-  if (isNaN(minDate) || isNaN(maxDate)) {
-    throw new Error(INVALID_PARAMS)
+  if (Number.isNaN(minDate) || Number.isNaN(maxDate)) {
+    throw new TypeError(INVALID_PARAMS)
   }
   return [minDate, maxDate]
 }

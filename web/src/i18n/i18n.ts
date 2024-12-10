@@ -3,7 +3,7 @@ import { ElementType, FC } from 'react'
 import type { StrictOmit } from 'ts-essentials'
 import { get, isNil, mapValues } from 'lodash'
 
-import i18nOriginal, { i18n as I18N, Resource } from 'i18next'
+import { i18n as I18N, Resource, use as i18use } from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
 import { Settings as LuxonSettings } from 'luxon'
@@ -157,7 +157,7 @@ export function i18nInit({ localeKey }: I18NInitParams) {
     numbro.registerLanguage({ ...enUS, ...languageRaw })
   })
 
-  const i18n = i18nOriginal.use(initReactI18next).createInstance({
+  const i18n = i18use(initReactI18next).createInstance({
     resources,
     lng: localeKey,
     fallbackLng: DEFAULT_LOCALE_KEY,
@@ -168,7 +168,6 @@ export function i18nInit({ localeKey }: I18NInitParams) {
     initImmediate: true,
   })
 
-  // eslint-disable-next-line no-void
   void i18n.init()
 
   const locale = locales[localeKey]

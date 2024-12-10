@@ -17,7 +17,7 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<Ge
     },
   }
 }
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function getStaticPaths(_0: GetStaticPathsContext): Promise<GetStaticPathsResult> {
   return {
     paths: [...clusterBuildNames, ...clusterOldBuildNames].map((clusterName) => `/variants/${clusterName}`),

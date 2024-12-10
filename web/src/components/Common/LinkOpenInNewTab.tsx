@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { GoLinkExternal } from 'react-icons/go'
 
 import { LinkExternal } from 'src/components/Link/LinkExternal'
@@ -30,7 +30,7 @@ export interface LinkOpenInNewTabProps {
   text?: string
 }
 
-export function LinkOpenInNewTab({ href, text, children, ...restProps }: PropsWithChildren<LinkOpenInNewTabProps>) {
+export function LinkOpenInNewTab({ href, text }: PropsWithChildren<LinkOpenInNewTabProps>) {
   const { t } = useTranslationSafe()
   return (
     <ProposeChangesLink href={href}>

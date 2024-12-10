@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
 import React, { useMemo } from 'react'
 
-import get from 'lodash/get.js'
+import get from 'lodash/get'
+import { styled } from 'styled-components'
 import { parseVariant } from 'src/components/Common/parseVariant'
-import styled from 'styled-components'
 
 import type { Mutation, MutationColors } from 'src/types'
 import { theme } from 'src/theme'
@@ -366,7 +366,7 @@ const whoRainbow = rainbow(Object.keys(GREEK_ALPHABET).length, { rgb: true, lum:
 export function getWhoBadgeColor(name: string): string {
   const i = Object.keys(GREEK_ALPHABET).indexOf(name.toLowerCase().trim())
 
-  if (i < 0 || i > whoRainbow.length) {
+  if (i === -1 || i > whoRainbow.length) {
     return theme.gray500
   }
   return whoRainbow[i]

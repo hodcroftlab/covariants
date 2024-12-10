@@ -2,11 +2,11 @@ import React, { useMemo } from 'react'
 import { useResizeDetector, useResizeDetectorProps } from 'react-resize-detector'
 import { useInView } from 'react-intersection-observer'
 
-import { theme } from 'src/theme'
 import { ChartContainerInner, ChartContainerOuter } from './PlotLayout'
 import { FadeIn } from './FadeIn'
+import { theme } from 'src/theme'
 
-type ChartContainerDimensions = {
+interface ChartContainerDimensions {
   width: number
   height: number
 }

@@ -1,9 +1,9 @@
 import React, { PropsWithChildren } from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
-import type { ClusterDatum } from 'src/io/getClusters'
 import { ClusterButtonPanel } from './ClusterButtonPanel'
+import type { ClusterDatum } from 'src/io/getClusters'
 
 const FlexContainer = styled.div`
   display: flex;

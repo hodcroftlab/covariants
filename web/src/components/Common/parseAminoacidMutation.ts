@@ -1,6 +1,6 @@
 /* eslint-disable security/detect-unsafe-regex */
-import type { Mutation } from 'src/types'
 import { parsePosition } from './parsePosition'
+import type { Mutation } from 'src/types'
 
 export function parseAminoacid(raw: string | undefined | null) {
   if (!raw || raw.length === 0) {

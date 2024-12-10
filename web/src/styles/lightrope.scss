@@ -4,9 +4,9 @@ $globe-spacing: 15px;
 $globe-spread: 3px;
 $light-off-opacity: 0.2;
 
-$globe-color-1: rgb(164, 215, 9);
-$globe-color-2: rgb(100, 126, 235);
-$globe-color-3: rgb(210, 61, 27);
+$globe-color-1: rgb(164 215 9);
+$globe-color-2: rgb(100 126 235);
+$globe-color-3: rgb(210 61 27);
 
 .lightrope {
   text-align: center;
@@ -14,7 +14,7 @@ $globe-color-3: rgb(210, 61, 27);
   overflow: hidden;
   position: absolute;
   z-index: 1;
-  margin: -15px 0 0 0;
+  margin: -15px 0 0;
   padding: 0;
   pointer-events: none;
   width: 100%;
@@ -57,7 +57,7 @@ $globe-color-3: rgb(210, 61, 27);
       animation-duration: 1.2s;
     }
 
-    &:before {
+    &::before {
       content: '';
       position: absolute;
       background: #222;
@@ -68,7 +68,7 @@ $globe-color-3: rgb(210, 61, 27);
       left: 1px;
     }
 
-    &:after {
+    &::after {
       content: '';
       top: (0 - calc($globe-height/2));
       left: $globe-width - 3;
@@ -79,7 +79,7 @@ $globe-color-3: rgb(210, 61, 27);
       border-radius: 50%;
     }
 
-    &:last-child:after {
+    &:last-child::after {
       content: none;
     }
 
@@ -95,6 +95,7 @@ $globe-color-3: rgb(210, 61, 27);
     background: rgba($globe-color-1, 1);
     box-shadow: 0 calc($globe-height/6) $globe-width * 2 $globe-spread rgba($globe-color-1, 1);
   }
+
   50% {
     background: rgba($globe-color-1, $light-off-opacity);
     box-shadow: 0 calc($globe-height/6) $globe-width * 2 $globe-spread rgba($globe-color-1, 0.2);
@@ -107,6 +108,7 @@ $globe-color-3: rgb(210, 61, 27);
     background: rgba($globe-color-2, 1);
     box-shadow: 0 calc($globe-height/6) $globe-width * 2 $globe-spread rgba($globe-color-2, 1);
   }
+
   50% {
     background: rgba($globe-color-2, $light-off-opacity);
     box-shadow: 0 calc($globe-height/6) $globe-width * 2 $globe-spread rgba($globe-color-2, 0.2);
@@ -119,6 +121,7 @@ $globe-color-3: rgb(210, 61, 27);
     background: rgba($globe-color-3, 1);
     box-shadow: 0 calc($globe-height/6) $globe-width * 2 $globe-spread rgba($globe-color-3, 1);
   }
+
   50% {
     background: rgba($globe-color-3, $light-off-opacity);
     box-shadow: 0 calc($globe-height/6) $globe-width * 2 $globe-spread rgba($globe-color-3, 0.2);

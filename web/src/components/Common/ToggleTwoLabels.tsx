@@ -1,6 +1,6 @@
 import React, { ReactNode, useCallback } from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import ReactToggle, { ToggleProps as ReactToggleProps } from 'react-toggle'
 import 'react-toggle/style.css'
 import { StrictOmit } from 'ts-essentials'

@@ -1,11 +1,11 @@
 import Router from 'next/router'
+import { get } from 'lodash'
 import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
 import { parseUrl } from 'src/helpers/parseUrl'
 import { Cluster, updateUrlOnClustersSet } from 'src/state/Clusters'
 import { fetchPerClusterDataRaw } from 'src/io/getPerClusterData'
 import { atomAsync } from 'src/state/utils/atomAsync'
 import { sortClusters } from 'src/io/getClusters'
-import { get } from 'lodash'
 
 export const clustersForPerClusterDataAtom = atomAsync<Cluster[]>({
   key: 'clustersForPerClusterDataAtom',

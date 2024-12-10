@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export const PageHeading = styled.h1`
   text-align: center;
@@ -11,6 +11,6 @@ export const PageHeading = styled.h1`
 
   @media (min-width: 1120px) {
     font-size: 3rem;
-    margin-top 0;
+    margin-top: 0;
   }
 `
