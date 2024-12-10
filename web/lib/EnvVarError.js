@@ -19,4 +19,4 @@ class EnvVarError extends TypeError {
   }
 }
 
-module.exports = EnvVarError
+export default EnvVarError

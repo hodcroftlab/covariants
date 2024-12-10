@@ -22,7 +22,7 @@ cp .env.example .env # .env is gitignored
 ### Build and serve a production bundle
 ```sh
 yarn prod:build
-yarn prod:serve:nowatch # load localhost:8080
+yarn prod:serve # load localhost:8080
 ```
 
 
