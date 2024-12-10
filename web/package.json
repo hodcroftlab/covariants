@@ -12,7 +12,7 @@
     "prod:build": "yarn next:build && yarn next:export",
     "prod:build:vercel": "cp .env.vercel .env && yarn install && yarn prod:build && cp .next/routes-manifest.json .build/production/web/",
     "prod:build:profile": "yarn next:build:profile && yarn next:export",
-    "next:build": "cross-env NODE_ENV=production BABEL_ENV=production NODE_OPTIONS=--max_old_space_size=5000  babel-node --config-file \"./babel-node.config.js\" --extensions \".js,.ts\" -- node_modules/.bin/next build",
+    "next:build": "cross-env NODE_ENV=production BABEL_ENV=production next build",
     "next:export": "cp .next/robots.txt .build/production/web/robots.txt",
     "next:build:profile": "PROFILE=1 yarn next:build --profile",
     "prod:start": "yarn prod:build && yarn prod:serve || cd .",
