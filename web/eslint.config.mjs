@@ -39,6 +39,7 @@ export default [
       '**/.coverage',
       '**/.playwright-report',
       '**/.cache',
+      '**/.json-autotranslate-cache',
       '**/.env',
       '**/.github',
       '**/.idea',
