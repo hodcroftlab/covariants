@@ -53,8 +53,8 @@ export function RecoilStateInitializer() {
 }
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function MyApp({ Component, pageProps, router }: AppProps) {
+
+function MyApp({ Component, pageProps }: AppProps) {
   const initializeState = useCallback(() => {}, [])
 
   // // NOTE: We do manual parsing here, because router.query is randomly empty on the first few renders.

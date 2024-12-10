@@ -29,8 +29,8 @@ export interface LinkOpenInNewTabProps {
   href: string
   text?: string
 }
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function LinkOpenInNewTab({ href, text, children, ...restProps }: PropsWithChildren<LinkOpenInNewTabProps>) {
+
+export function LinkOpenInNewTab({ href, text }: PropsWithChildren<LinkOpenInNewTabProps>) {
   const { t } = useTranslationSafe()
   return (
     <ProposeChangesLink href={href}>
