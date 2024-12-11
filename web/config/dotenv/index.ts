@@ -1,6 +1,6 @@
 import path from 'path'
 import dotenv from 'dotenv'
-import { findModuleRoot } from '../../lib/findModuleRoot.js'
+import { findModuleRoot } from '../../lib/findModuleRoot'
 
 const { moduleRoot } = findModuleRoot()
 

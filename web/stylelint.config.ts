@@ -1,4 +1,5 @@
-/** @type {import('stylelint').Config} */
+import type { Config } from 'stylelint'
+
 export default {
   extends: ['stylelint-config-standard', 'stylelint-config-sass-guidelines'],
   rules: {
@@ -12,4 +13,4 @@ export default {
     'selector-max-compound-selectors': 4,
     'max-nesting-depth': 3,
   },
-}
+} satisfies Config

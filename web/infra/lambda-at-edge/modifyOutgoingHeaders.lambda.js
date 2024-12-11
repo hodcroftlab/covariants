@@ -88,10 +88,10 @@ function modifyHeaders({ request, response }) {
   return newHeaders
 }
 
-exports.handler = (event, context, callback) => {
+export function handler(event, context, callback) {
   const { request, response } = event.Records[0].cf
   response.headers = modifyHeaders({ request, response })
   callback(null, response)
 }
 
-exports.modifyHeaders = modifyHeaders
+export { modifyHeaders }

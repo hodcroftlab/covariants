@@ -1,5 +1,5 @@
 class EnvVarError extends TypeError {
-  constructor(key, value) {
+  constructor(key: string, value: string | null | undefined) {
     super(`
       When reading an environement variable "${key}" (as \`process.env.${key}\`):
       it was expected to find a valid string, but found \`${value}\`.
@@ -19,4 +19,4 @@ class EnvVarError extends TypeError {
   }
 }
 
-module.exports = EnvVarError
+export default EnvVarError

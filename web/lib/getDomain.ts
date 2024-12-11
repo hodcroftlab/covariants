@@ -71,7 +71,7 @@ export function getDomain() {
     DOMAIN = detectedDomain
   }
 
-  if (!DOMAIN.startsWith('http')) {
+  if (!DOMAIN?.startsWith('http')) {
     DOMAIN = `https://${DOMAIN}`
   }
 
