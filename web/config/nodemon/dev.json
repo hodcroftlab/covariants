@@ -13,12 +13,12 @@
     "config",
     "next.config.ts",
     "package.json",
-    "postcss.config.js",
+    "postcss.config.ts",
     "tsconfig.json",
     "webpack.config.js",
     "yarn.lock"
   ],
   "ext": "js,jsx,ts,tsx,json,flow,css,scss,sass,styl,html,ejs,d,txt,yml,sh",
   "ignore": ["**/*.test.*s", "**/*.test.*sx", "**/__tests__", ".build", ".next", "node_modules", ".cache"],
-  "exec": "run-s -c  dev:clean dev:start || cd ."
+  "exec": "run-s -c dev:start || cd ."
 }

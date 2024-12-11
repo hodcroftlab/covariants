@@ -1,4 +1,5 @@
-import loadEnvVars from './config/dotenv/index.js'
+import type { Config } from 'postcss-load-config'
+import loadEnvVars from './config/dotenv/index'
 loadEnvVars()
 
 export default {
@@ -16,4 +17,4 @@ export default {
       },
     },
   },
-}
+} satisfies Config

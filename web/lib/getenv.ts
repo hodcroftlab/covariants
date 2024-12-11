@@ -1,6 +1,6 @@
 import EnvVarError from './EnvVarError'
 
-function getenv(key, defaultValue) {
+function getenv(key: string, defaultValue?: string | null) {
   const value = process.env[key]
   if (!value) {
     if (defaultValue !== undefined) {
@@ -12,7 +12,7 @@ function getenv(key, defaultValue) {
   return value
 }
 
-function getbool(key, defaultValue) {
+function getbool(key: string, defaultValue?: string) {
   const value = process.env[key]
   if (!value) {
     if (defaultValue !== undefined) {
