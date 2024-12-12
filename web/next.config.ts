@@ -14,8 +14,6 @@ import remarkMath from 'remark-math'
 
 import { findModuleRoot } from './lib/findModuleRoot'
 import { getGitBranch } from './lib/getGitBranch'
-import { getBuildNumber } from './lib/getBuildNumber'
-import { getBuildUrl } from './lib/getBuildUrl'
 import { getGitCommitHash } from './lib/getGitCommitHash'
 import { getEnvVars } from './config/next/lib/getEnvVars'
 
@@ -33,8 +31,7 @@ import withWebpackWatchPoll from './config/next/withWebpackWatchPoll'
 import withUrlAsset from './config/next/withUrlAsset'
 
 const {
-  // BABEL_ENV,
-  // NODE_ENV,
+  NODE_ENV,
   // ANALYZE,
   PROFILE,
   PRODUCTION,
@@ -54,8 +51,6 @@ const { pkg, moduleRoot } = findModuleRoot()
 const clientEnv = {
   BRANCH_NAME,
   PACKAGE_VERSION: pkg.version ?? '',
-  BUILD_NUMBER: getBuildNumber(),
-  TRAVIS_BUILD_WEB_URL: getBuildUrl(),
   COMMIT_HASH: getGitCommitHash(),
   DOMAIN,
   DOMAIN_STRIPPED,
@@ -64,7 +59,7 @@ const clientEnv = {
 console.info(`Client-side Environment:\n${JSON.stringify(clientEnv, null, 2)}`)
 
 const nextConfig: NextConfig = {
-  distDir: `.build/${process.env.NODE_ENV}/web`,
+  distDir: `.build/${NODE_ENV}/web`,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx', 'all-contributorsrc'],
   onDemandEntries: {
     maxInactiveAge: 60 * 1000,
@@ -80,12 +75,6 @@ const nextConfig: NextConfig = {
   excludeDefaultMomentLocales: true,
   devIndicators: {
     buildActivity: false,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
   },
   compiler: {
     styledComponents: true,
