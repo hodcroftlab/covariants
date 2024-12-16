@@ -3,20 +3,9 @@ import React, { useMemo, useState } from 'react'
 import { styled } from 'styled-components'
 
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import type { MutationShared } from 'src/io/getMutationComparison'
-import {
-  getMutationComparisonVariants,
-  getMutationComparisonSharedByPos,
-  getMutationComparisonSharedByCommonness,
-  getMutationComparisonIndividual,
-} from 'src/io/getMutationComparison'
+import { useMutationComparison, Mutations } from 'src/io/useMutationComparison'
 import { AminoacidMutationBadge } from 'src/components/Common/MutationBadge'
 import { ToggleTwoLabels } from 'src/components/Common/ToggleTwoLabels'
-
-const variants = getMutationComparisonVariants()
-const sharedByPos = getMutationComparisonSharedByPos()
-const sharedByCommonness = getMutationComparisonSharedByCommonness()
-const individual = getMutationComparisonIndividual()
 
 const Table = styled.table`
   margin: 0 auto;
@@ -62,13 +51,13 @@ const AdvancedToggleWrapper = styled.div`
 
 export interface VariantProps {
   variants: string[]
-  shared: MutationShared
+  shared: Mutations
 }
 
 export function Variant({ variants, shared }: VariantProps) {
   return (
     <Tr>
-      {shared.presence.map((mutation, i) => (
+      {shared.map((mutation, i) => (
         <Td key={`${variants[i]} ${mutation ?? ''}`}>{mutation && <AminoacidMutationBadge mutation={mutation} />}</Td>
       ))}
     </Tr>
@@ -78,10 +67,19 @@ export function Variant({ variants, shared }: VariantProps) {
 export function SharedMutations() {
   const { t } = useTranslationSafe()
 
-  const [byPos, setByPos] = useState(true)
-  const shared = useMemo(() => (byPos ? sharedByPos : sharedByCommonness), [byPos])
-
+  const {
+    variants,
+    shared_by_pos: sharedByPos,
+    shared_by_commonness: sharedByCommonness,
+    individual: individualMutations,
+  } = useMutationComparison()
   const nCols = variants.length
+
+  const [byPos, setByPos] = useState(true)
+  const sharedMutations = useMemo(
+    () => (byPos ? sharedByPos : sharedByCommonness),
+    [byPos, sharedByPos, sharedByCommonness],
+  )
 
   return (
     <Table>
@@ -111,8 +109,8 @@ export function SharedMutations() {
         </Tr>
 
         <>
-          {shared.map((shared) => (
-            <Variant key={shared.pos} variants={variants} shared={shared} />
+          {sharedMutations.map(({ pos, presence }) => (
+            <Variant key={pos} variants={variants} shared={presence} />
           ))}
         </>
 
@@ -121,14 +119,8 @@ export function SharedMutations() {
         </Tr>
 
         <>
-          {individual.map(({ index, mutations }) => (
-            <Tr key={index}>
-              {mutations.map((mutation, i) => (
-                <Td key={`${variants[i]} ${mutation ?? ''}`}>
-                  {mutation && <AminoacidMutationBadge mutation={mutation} />}
-                </Td>
-              ))}
-            </Tr>
+          {individualMutations.map(({ index, mutations }) => (
+            <Variant key={index} variants={variants} shared={mutations} />
           ))}
         </>
       </TableBody>
