@@ -4,7 +4,7 @@ import { screen, fireEvent } from '@testing-library/react'
 import React from 'react'
 import { ClusterButtonGroup } from '../ClusterButtonGroup'
 import { ClusterDatum } from 'src/io/getClusters'
-import { renderWithThemeAndTranslations } from 'src/helpers/__tests__/theme'
+import { renderWithThemeAndTranslations } from 'src/helpers/__tests__/providers'
 
 describe('ClusterButtonGroup', () => {
   describe('show more / show less button', () => {
