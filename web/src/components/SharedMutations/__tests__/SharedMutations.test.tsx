@@ -1,9 +1,12 @@
-import { afterAll, afterEach, beforeAll, describe, expect, test } from 'vitest'
+import { afterAll, afterEach, beforeAll, describe, expect, test, vi } from 'vitest'
 import { screen, fireEvent, waitFor } from '@testing-library/react'
 import React from 'react'
+import { http, HttpResponse } from 'msw'
+import { ErrorBoundary } from 'react-error-boundary'
 import { renderWithQueryClient } from 'src/helpers/__tests__/providers'
-import { SharedMutations } from 'src/components/SharedMutations/SharedMutations'
+import { SharedMutationsTable } from 'src/components/SharedMutations/SharedMutationsTable'
 import { server } from 'src/components/SharedMutations/__tests__/mockRequests'
+import { FETCHER } from 'src/hooks/useAxiosQuery'
 
 const getMutationElements = () => {
   return {
@@ -19,11 +22,14 @@ describe('SharedMutations', () => {
 
   afterAll(() => server.close())
 
-  afterEach(() => server.resetHandlers())
-  describe('shared button', () => {
-    test('toggles between shared by commonness and shared by position', async () => {
+  afterEach(() => {
+    server.resetHandlers()
+    FETCHER.getQueryClient().clear()
+  })
+  describe('SharedMutationsTable', () => {
+    test('shared button toggles between shared by commonness and shared by position', async () => {
       // Arrange
-      const { container } = renderWithQueryClient(<SharedMutations />)
+      const { container } = renderWithQueryClient(<SharedMutationsTable />)
       await waitFor(() => expect(screen.getByRole('table')).toBeDefined())
       const sharedByToggle = container.querySelector('#toggle-advanced-controls')
       if (!sharedByToggle) {
@@ -54,6 +60,27 @@ describe('SharedMutations', () => {
       expect(sharedByPositionExample.length).toBeGreaterThanOrEqual(1)
       expect(individualExample.length).toBeGreaterThanOrEqual(1)
       expect(sharedByCommonnessExample.length).toEqual(0)
+    })
+
+    test('triggers error boundary when backend call fails', async () => {
+      // Arrange
+      server.use(
+        http.get('/data/mutationComparison.json', () => {
+          return new HttpResponse(null, { status: 404 })
+        }),
+      )
+      // Disable console output
+      vi.spyOn(console, 'error').mockImplementation(() => null)
+
+      // Act
+      renderWithQueryClient(
+        <ErrorBoundary fallback={'Error boundary'}>
+          <SharedMutationsTable />
+        </ErrorBoundary>,
+      )
+
+      // Assert
+      expect(await screen.findByText('Error boundary', undefined, { timeout: 3000 })).toBeDefined()
     })
   })
 })

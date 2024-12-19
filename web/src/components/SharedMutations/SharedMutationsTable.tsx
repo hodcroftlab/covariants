@@ -3,7 +3,7 @@ import React, { useMemo, useState } from 'react'
 import { styled } from 'styled-components'
 
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { useMutationComparison, Mutations } from 'src/io/useMutationComparison'
+import { Mutations, useMutationComparison } from 'src/io/useMutationComparison'
 import { AminoacidMutationBadge } from 'src/components/Common/MutationBadge'
 import { ToggleTwoLabels } from 'src/components/Common/ToggleTwoLabels'
 
@@ -64,15 +64,16 @@ export function Variant({ variants, shared }: VariantProps) {
   )
 }
 
-export function SharedMutations() {
+export function SharedMutationsTable() {
   const { t } = useTranslationSafe()
 
+  const { data: mutationComparison } = useMutationComparison()
   const {
     variants,
     shared_by_pos: sharedByPos,
     shared_by_commonness: sharedByCommonness,
     individual: individualMutations,
-  } = useMutationComparison()
+  } = mutationComparison
   const nCols = variants.length
 
   const [byPos, setByPos] = useState(true)

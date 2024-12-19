@@ -1,24 +1,31 @@
-import { useAxiosQuery } from 'src/hooks/useAxiosQuery'
+import { z } from 'zod'
+import { useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
 
-export interface MutationComparisonResponse {
-  variants: string[]
-  shared_by_commonness: MutationShared[]
-  shared_by_pos: MutationShared[]
-  individual: MutationIndividualRow[]
-}
+const mutations = z.string().nullable().array()
 
-export interface MutationShared {
-  pos: number
-  presence: Mutations
-}
+const mutationShared = z.object({
+  pos: z.number(),
+  presence: mutations,
+})
 
-export interface MutationIndividualRow {
-  index: number
-  mutations: Mutations
-}
+const mutationIndividualRow = z.object({
+  index: z.number(),
+  mutations: mutations,
+})
 
-export type Mutations = (string | null)[]
+const mutationComparison = z.object({
+  variants: z.string().array(),
+  // eslint-disable-next-line camelcase
+  shared_by_commonness: mutationShared.array(),
+  // eslint-disable-next-line camelcase
+  shared_by_pos: mutationShared.array(),
+  individual: mutationIndividualRow.array(),
+})
+
+export type Mutations = z.infer<typeof mutations>
+
+export type MutationComparison = z.infer<typeof mutationComparison>
 
 export function useMutationComparison() {
-  return useAxiosQuery<MutationComparisonResponse>('/data/mutationComparison.json')
+  return useValidatedAxiosQuery<MutationComparison>('/data/mutationComparison.json', mutationComparison)
 }

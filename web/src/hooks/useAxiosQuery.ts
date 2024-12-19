@@ -2,13 +2,15 @@ import {
   QueriesOptions,
   QueryClientConfig,
   QueryKey,
-  useQuery,
-  UseQueryOptions,
   useQueries,
+  UseQueryOptions,
+  useSuspenseQuery,
 } from '@tanstack/react-query'
 import { QueryClient } from '@tanstack/query-core'
 import { keys, values, zip } from 'lodash'
 import { useMemo } from 'react'
+import axios from 'axios'
+import { z } from 'zod'
 import { ErrorInternal } from 'src/helpers/ErrorInternal'
 import { axiosFetch } from 'src/io/axiosFetch'
 
@@ -18,7 +20,6 @@ const QUERY_OPTIONS_DEFAULT = {
   refetchOnWindowFocus: false,
   refetchOnReconnect: false,
   refetchInterval: Number.POSITIVE_INFINITY,
-  suspense: true,
 }
 
 function queryOptionsDefaulted<T>(options: T) {
@@ -73,7 +74,7 @@ export type UseAxiosQueriesOptions<TData = unknown> = QueriesOptions<TData[]>
 export function useAxiosQuery<TData = unknown>(url: string, options?: UseAxiosQueryOptions<TData>): TData {
   const keys = useMemo(() => [url], [url])
   const optionsDefaulted = useMemo(() => queryOptionsDefaulted(options), [options])
-  const res = useQuery<TData, Error, TData, string[]>({
+  const res = useSuspenseQuery<TData, Error, TData, string[]>({
     queryKey: keys,
     queryFn: async () => axiosFetch(url),
     ...optionsDefaulted,
@@ -84,6 +85,22 @@ export function useAxiosQuery<TData = unknown>(url: string, options?: UseAxiosQu
     }
     return res.data
   }, [res.data, url])
+}
+
+export function useValidatedAxiosQuery<TData = unknown>(
+  url: string,
+  zodSchema: z.ZodSchema<TData>,
+  options?: UseAxiosQueryOptions<TData>,
+) {
+  return useSuspenseQuery<TData, Error, TData, string[]>({
+    queryKey: [url],
+    queryFn: async () => {
+      const res = await axios.get(url)
+
+      return zodSchema.parse(res.data)
+    },
+    ...queryOptionsDefaulted(options),
+  })
 }
 
 /** Make multiple cached fetches in parallel */
