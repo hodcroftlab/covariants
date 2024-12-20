@@ -22,7 +22,3 @@ export function FetchError({ error }: { error: unknown }) {
     </UncontrolledAlert>
   )
 }
-
-export default FetchError
-
-// export const FETCHERROR = <FetchError />

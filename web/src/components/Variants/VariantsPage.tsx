@@ -1,8 +1,9 @@
-import React, { useMemo } from 'react'
+import React, { Suspense, useMemo } from 'react'
 
 import { useRouter } from 'next/router'
 import { styled } from 'styled-components'
 import { Col, Row } from 'reactstrap'
+import { ErrorBoundary } from 'react-error-boundary'
 import { PlotCard } from './PlotCard'
 import { AquariaLinksCard } from './AquariaLinksCard'
 import { ProteinCard } from './ProteinCard'
@@ -22,6 +23,8 @@ import { DefiningMutations, hasDefiningMutations } from 'src/components/Variants
 import { VariantTitle } from 'src/components/Variants/VariantTitle'
 
 import NextstrainIconBase from 'src/assets/images/nextstrain_logo.svg'
+import { FetchError } from 'src/components/Error/FetchError'
+import { LOADING } from 'src/components/Loading/Loading'
 
 const clusters = getClusters()
 const clusterRedirects = getClusterRedirects()
@@ -141,7 +144,11 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
 
           <Row className="mb-2 gx-0">
             <Col>
-              <PlotCard cluster={currentCluster} />
+              <ErrorBoundary FallbackComponent={FetchError}>
+                <Suspense fallback={LOADING}>
+                  <PlotCard cluster={currentCluster} />
+                </Suspense>
+              </ErrorBoundary>
             </Col>
           </Row>
 

@@ -21,9 +21,11 @@ export interface CasesPlotCardProps {
   distribution: PerCountryCasesDistributionDatum[]
   cluster_names: string[]
   Icon?: React.ComponentType<CountryFlagProps | USStateCodeProps>
+  ticks: number[]
+  timeDomain: [number, number]
 }
 
-export function CasesPlotCard({ country, distribution, cluster_names, Icon }: CasesPlotCardProps) {
+export function CasesPlotCard({ country, distribution, cluster_names, Icon, ticks, timeDomain }: CasesPlotCardProps) {
   return (
     <Card className="m-2">
       <CardHeader className="d-flex flex-sm-column">
@@ -39,7 +41,12 @@ export function CasesPlotCard({ country, distribution, cluster_names, Icon }: Ca
         <Col className="p-0">
           <Row className={'gx-0'}>
             <Col className="p-0">
-              <CasesPlot distribution={distribution} cluster_names={cluster_names} />
+              <CasesPlot
+                distribution={distribution}
+                cluster_names={cluster_names}
+                ticks={ticks}
+                timeDomain={timeDomain}
+              />
             </Col>
           </Row>
         </Col>

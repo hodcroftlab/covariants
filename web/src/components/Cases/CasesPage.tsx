@@ -1,9 +1,8 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { Suspense, useCallback, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
-import { CasesPlotCard } from './CasesPlotCard'
+import { ErrorBoundary } from 'react-error-boundary'
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
-import { ColCustom } from 'src/components/Common/ColCustom'
 import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
@@ -22,6 +21,9 @@ import { CountryFlag } from 'src/components/Common/CountryFlag'
 import { PageHeading } from 'src/components/Common/PageHeading'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
+import { CasesComponents } from 'src/components/Cases/CasesComponents'
+import { FetchError } from 'src/components/Error/FetchError'
+import { LOADING } from 'src/components/Loading/Loading'
 
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
@@ -40,21 +42,6 @@ export function CasesPage() {
     const { enabledClusters, withClustersFiltered } = filteredClusters
     return { enabledClusters, withClustersFiltered }
   }, [countries, perCountryCasesDistributions, clusters])
-
-  const casesComponents = useMemo(
-    () =>
-      withClustersFiltered.map(({ country, distribution }) => (
-        <ColCustom key={country} md={12} lg={6} xl={6} xxl={4}>
-          <CasesPlotCard
-            country={country}
-            distribution={distribution}
-            cluster_names={enabledClusters}
-            Icon={CountryFlag}
-          />
-        </ColCustom>
-      )),
-    [enabledClusters, withClustersFiltered],
-  )
 
   const handleClusterCheckedChange = useCallback(
     (cluster: string) => {
@@ -142,7 +129,14 @@ export function CasesPage() {
               <MainFlex>
                 <Row className={'gx-0'}>
                   <Col>
-                    <Row className={'gx-0'}>{casesComponents}</Row>
+                    <ErrorBoundary FallbackComponent={FetchError}>
+                      <Suspense fallback={LOADING}>
+                        <CasesComponents
+                          withClustersFiltered={withClustersFiltered}
+                          enabledClusters={enabledClusters}
+                        />
+                      </Suspense>
+                    </ErrorBoundary>
                   </Col>
                 </Row>
               </MainFlex>

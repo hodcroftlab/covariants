@@ -1,7 +1,8 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { Suspense, useCallback, useMemo } from 'react'
 import { Card, CardBody, Col, Form, Input, Label, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 import { styled } from 'styled-components'
+import { ErrorBoundary } from 'react-error-boundary'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
 import { disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/Clusters'
 import { clustersForPerClusterDataAtom } from 'src/state/ClustersForPerClusterData'
@@ -11,8 +12,6 @@ import { tooltipSortAtom, TooltipSortCriterion } from 'src/state/TooltipSort'
 import { MdxContent } from 'src/i18n/getMdxContent'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { usePerClusterData, filterClusters, filterCountries } from 'src/io/getPerClusterData'
-import { ClusterDistributionPlotCard } from 'src/components/ClusterDistribution/ClusterDistributionPlotCard'
-import { ColCustom } from 'src/components/Common/ColCustom'
 import { Dropdown as DropdownBase } from 'src/components/Common/Dropdown'
 import { stringToOption } from 'src/components/Common/DropdownOption'
 import { Editable, CenteredEditable } from 'src/components/Common/Editable'
@@ -20,6 +19,9 @@ import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLa
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
 import { PageHeading } from 'src/components/Common/PageHeading'
+import { ClusterDistributionComponents } from 'src/components/ClusterDistribution/ClusterDistributionComponents'
+import { FetchError } from 'src/components/Error/FetchError'
+import { LOADING } from 'src/components/Loading/Loading'
 
 const Dropdown = styled(DropdownBase)`
   min-width: 130px;
@@ -117,22 +119,6 @@ export function ClusterDistributionPage() {
   const { enabledCountries, withCountriesFiltered } =
     /* prettier-ignore */
     useMemo(() => filterCountries(countries, withClustersFiltered), [countries, withClustersFiltered])
-
-  const clusterDistributionComponents = useMemo(
-    () =>
-      withCountriesFiltered.map(({ cluster, distribution }) => (
-        <ColCustom key={cluster} md={12} lg={6} xl={6} xxl={4}>
-          <ClusterDistributionPlotCard
-            key={cluster}
-            clusterBuildName={clusterBuildNames.get(cluster) ?? ''}
-            clusterDisplayName={cluster}
-            distribution={distribution}
-            country_names={enabledCountries}
-          />
-        </ColCustom>
-      )),
-    [clusterBuildNames, enabledCountries, withCountriesFiltered],
-  )
 
   const handleClusterCheckedChange = useCallback(
     (cluster: string) => {
@@ -236,7 +222,15 @@ export function ClusterDistributionPage() {
 
                 <Row className={'gx-0'}>
                   <Col>
-                    <Row className={'gx-0'}>{clusterDistributionComponents}</Row>
+                    <ErrorBoundary FallbackComponent={FetchError}>
+                      <Suspense fallback={LOADING}>
+                        <ClusterDistributionComponents
+                          withCountriesFiltered={withCountriesFiltered}
+                          clusterBuildNames={clusterBuildNames}
+                          enabledCountries={enabledCountries}
+                        />
+                      </Suspense>
+                    </ErrorBoundary>
                   </Col>
                 </Row>
               </MainFlex>

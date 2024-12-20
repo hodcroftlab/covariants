@@ -9,7 +9,6 @@ import { useTheme } from 'styled-components'
 import { CasesPlotTooltip } from './CasesPlotTooltip'
 import type { PerCountryCasesDistributionDatum } from 'src/io/getPerCountryCasesData'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { ticks, timeDomain } from 'src/io/getParams'
 import { CLUSTER_NAME_OTHERS, getClusterColor } from 'src/io/getClusters'
 import { formatDateHumanely } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
@@ -22,9 +21,11 @@ const ALLOW_ESCAPE_VIEW_BOX = { x: false, y: true }
 export interface CasesPlotProps {
   cluster_names: string[]
   distribution: PerCountryCasesDistributionDatum[]
+  ticks: number[]
+  timeDomain: [number, number]
 }
 
-export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotProps) {
+export function CasesPlotComponent({ cluster_names, distribution, ticks, timeDomain }: CasesPlotProps) {
   const { t } = useTranslationSafe()
   const theme = useTheme()
   const chartRef = useRef(null)

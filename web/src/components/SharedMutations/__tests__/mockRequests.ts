@@ -64,9 +64,46 @@ export const mockMutationComparison = {
   ],
 }
 
+const mockParams = {
+  // eslint-disable-next-line camelcase
+  max_date: '2024-09-23',
+  // eslint-disable-next-line camelcase
+  min_date: '2020-04-27',
+}
+
+const mockPerClusterData = {
+  // eslint-disable-next-line camelcase
+  country_names: ['Argentina'],
+  distributions: [
+    {
+      cluster: '20I (Alpha, V1)',
+      distribution: [
+        {
+          frequencies: {
+            Argentina: 0.0,
+          },
+          interp: {
+            Argentina: false,
+          },
+          orig: {
+            Argentina: true,
+          },
+          week: '2020-04-27',
+        },
+      ],
+    },
+  ],
+}
+
 const restHandlers = [
   http.get('/data/mutationComparison.json', () => {
     return HttpResponse.json(mockMutationComparison)
+  }),
+  http.get('/data/params.json', () => {
+    return HttpResponse.json(mockParams)
+  }),
+  http.get('/data/perClusterData.json', () => {
+    return HttpResponse.json(mockPerClusterData)
   }),
 ]
 

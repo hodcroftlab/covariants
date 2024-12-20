@@ -1,8 +1,8 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { Suspense, useCallback, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
+import { ErrorBoundary } from 'react-error-boundary'
 import { MdxContent } from 'src/i18n/getMdxContent'
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
-import { ColCustom } from 'src/components/Common/ColCustom'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
 import { RegionSwitcher } from 'src/components/CountryDistribution/RegionSwitcher'
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
@@ -19,10 +19,12 @@ import {
 import { disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/Clusters'
 import { disableAllCountries, enableAllCountries, toggleContinent, toggleCountry } from 'src/state/Places'
 import { usePlacesPerCountry } from 'src/state/PlacesForPerCountryData'
-import { CountryDistributionPlotCard } from 'src/components/CountryDistribution/CountryDistributionPlotCard'
 import { CountryFlag } from 'src/components/Common/CountryFlag'
 import { USStateCode } from 'src/components/Common/USStateCode'
 import { PageHeading } from 'src/components/Common/PageHeading'
+import { FetchError } from 'src/components/Error/FetchError'
+import { LOADING } from 'src/components/Loading/Loading'
+import { CountryDistributionComponents } from 'src/components/CountryDistribution/CountryDistributionComponents'
 
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
@@ -47,21 +49,6 @@ export function CountryDistributionPage() {
     const { enabledClusters, withClustersFiltered } = filteredClusters
     return { enabledClusters, withClustersFiltered }
   }, [countries, countryDistributions, clusters])
-
-  const countryDistributionComponents = useMemo(
-    () =>
-      withClustersFiltered.map(({ country, distribution }) => (
-        <ColCustom key={country} md={12} lg={6} xl={6} xxl={4}>
-          <CountryDistributionPlotCard
-            country={country}
-            distribution={distribution}
-            cluster_names={enabledClusters}
-            Icon={iconComponent}
-          />
-        </ColCustom>
-      )),
-    [enabledClusters, withClustersFiltered, iconComponent],
-  )
 
   const handleClusterCheckedChange = useCallback(
     (cluster: string) => {
@@ -164,7 +151,15 @@ export function CountryDistributionPage() {
               <MainFlex>
                 <Row className={'gx-0'}>
                   <Col>
-                    <Row className={'gx-0'}>{countryDistributionComponents}</Row>
+                    <ErrorBoundary FallbackComponent={FetchError}>
+                      <Suspense fallback={LOADING}>
+                        <CountryDistributionComponents
+                          withClustersFiltered={withClustersFiltered}
+                          enabledClusters={enabledClusters}
+                          iconComponent={iconComponent}
+                        />
+                      </Suspense>
+                    </ErrorBoundary>
                   </Col>
                 </Row>
               </MainFlex>
