@@ -16,13 +16,13 @@ export function VariantsPageIndex() {
   return (
     <Layout>
       <NarrowPageContainer>
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col>
             <PageHeading>{t('Overview of Variants/Mutations')}</PageHeading>
           </Col>
         </Row>
 
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col>
             <ClusterButtonPanelLayout>
               <Editable githubUrl="blob/master/content/VariantsPageIntro.md">

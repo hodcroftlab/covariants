@@ -126,9 +126,9 @@ export function MutationCountsSummaryCard({ currentCluster }: MutationCountsSumm
         <span>{')'}</span>
       </CardHeader>
       <MutationCountsSummaryCardBody>
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col>
-            <Row noGutters>
+            <Row className={'gx-0'}>
               <Col className="d-flex mx-1 my-1 mb-auto">
                 <MutationCountsSummarySubTable title={t('Gene S')} record={S} />
               </Col>

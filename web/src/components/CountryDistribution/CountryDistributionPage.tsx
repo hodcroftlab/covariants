@@ -107,13 +107,13 @@ export function CountryDistributionPage() {
 
   return (
     <Layout wide>
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <PageHeading>{t('Overview of Variants in Countries')}</PageHeading>
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <RegionSwitcher
             regions={regionNames}
@@ -124,7 +124,7 @@ export function CountryDistributionPage() {
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <CenteredEditable githubUrl="tree/master/web/src/content/en/PerCountryIntro/">
             {IntroContent}
@@ -132,13 +132,13 @@ export function CountryDistributionPage() {
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <SharingPanel />
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
             <WrapperFlex>
@@ -162,9 +162,9 @@ export function CountryDistributionPage() {
               </SidebarFlex>
 
               <MainFlex>
-                <Row noGutters>
+                <Row className={'gx-0'}>
                   <Col>
-                    <Row noGutters>{countryDistributionComponents}</Row>
+                    <Row className={'gx-0'}>{countryDistributionComponents}</Row>
                   </Col>
                 </Row>
               </MainFlex>

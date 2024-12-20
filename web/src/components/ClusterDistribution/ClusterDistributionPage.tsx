@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react'
-import { Card, CardBody, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
+import { Card, CardBody, Col, Form, Input, Label, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 import { styled } from 'styled-components'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
@@ -43,18 +43,18 @@ export function SortByDropdown({ perCountryTooltipSortBy, onSortByChange }: Sort
   )
 
   return (
-    <FormGroup check inline>
-      <Label htmlFor="per-variant-sort-by">
-        <span className="me-2">{t('Tooltip sort by:')}</span>
-        <Dropdown
-          identifier="per-variant-sort-by"
-          options={sortByOptions}
-          value={stringToOption(perCountryTooltipSortBy)}
-          onValueChange={handleSortByChange}
-          isSearchable={false}
-        />
+    <Col className={'d-flex flex-row align-items-center justify-between me-2'}>
+      <Label for="per-variant-sort-by" className={'mb-0 me-2'}>
+        {t('Tooltip sort by:')}
       </Label>
-    </FormGroup>
+      <Dropdown
+        identifier="per-variant-sort-by"
+        options={sortByOptions}
+        value={stringToOption(perCountryTooltipSortBy)}
+        onValueChange={handleSortByChange}
+        isSearchable={false}
+      />
+    </Col>
   )
 }
 
@@ -68,12 +68,12 @@ export function SortReverseCheckbox({ reverse, setReverse }: SortReverseCheckbox
   const onChange = useCallback(() => setReverse(!reverse), [setReverse, reverse])
 
   return (
-    <FormGroup check inline>
-      <Label htmlFor="per-variant-sort-reverse" check>
-        <Input id="per-variant-sort-reverse" type="checkbox" checked={reverse} onChange={onChange} />
-        <span>{t('Reversed')}</span>
+    <Col>
+      <Input id="per-variant-sort-reverse" type="checkbox" checked={reverse} onChange={onChange} className={'me-1'} />
+      <Label for="per-variant-sort-reverse" check>
+        {t('Reversed')}
       </Label>
-    </FormGroup>
+    </Col>
   )
 }
 
@@ -173,13 +173,13 @@ export function ClusterDistributionPage() {
 
   return (
     <Layout wide>
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <PageHeading>{t('Overview of Variants/Mutations')}</PageHeading>
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <CenteredEditable githubUrl="blob/master/content/PerClusterIntro.md">
             <MdxContent filepath="PerClusterIntro.md" />
@@ -187,13 +187,13 @@ export function ClusterDistributionPage() {
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <SharingPanel />
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col className="pb-10">
           <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
             <WrapperFlex>
@@ -216,25 +216,27 @@ export function ClusterDistributionPage() {
               </SidebarFlex>
 
               <MainFlex>
-                <StickyRow noGutters>
+                <StickyRow className={'gx-0'}>
                   <Col>
                     <Card className="m-2">
                       <CardBody className="px-3 py-2">
-                        <Form inline>
-                          <SortByDropdown
-                            perCountryTooltipSortBy={perCountryTooltipSortBy}
-                            onSortByChange={setSortBy}
-                          />
-                          <SortReverseCheckbox reverse={perCountryTooltipSortReversed} setReverse={setSortReversed} />
+                        <Form>
+                          <Row className="row-cols-lg-auto gx-0 align-items-center">
+                            <SortByDropdown
+                              perCountryTooltipSortBy={perCountryTooltipSortBy}
+                              onSortByChange={setSortBy}
+                            />
+                            <SortReverseCheckbox reverse={perCountryTooltipSortReversed} setReverse={setSortReversed} />
+                          </Row>
                         </Form>
                       </CardBody>
                     </Card>
                   </Col>
                 </StickyRow>
 
-                <Row noGutters>
+                <Row className={'gx-0'}>
                   <Col>
-                    <Row noGutters>{clusterDistributionComponents}</Row>
+                    <Row className={'gx-0'}>{clusterDistributionComponents}</Row>
                   </Col>
                 </Row>
               </MainFlex>

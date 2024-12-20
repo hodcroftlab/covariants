@@ -50,7 +50,7 @@ export function ClusterButtonPanel({ currentCluster, className }: ClusterPanelPr
   const { t } = useTranslationSafe()
 
   return (
-    <ClustersRow noGutters className={className}>
+    <ClustersRow className={`gx-0 ${className}`}>
       {Object.entries(clustersGrouped).map(([clusterType, clusterGroup]) => {
         const clusterTypeHeading = get(
           {

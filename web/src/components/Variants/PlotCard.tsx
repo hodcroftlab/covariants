@@ -57,7 +57,7 @@ export function PlotCard({ cluster }: PlotCardProps) {
     <Card>
       <CardBody>{title}</CardBody>
       <PlotCardBody>
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col>
             <ClusterDistributionPlot distribution={clusterDistribution} country_names={countryNames} />
           </Col>

@@ -11,13 +11,13 @@ export function HomePage() {
   return (
     <Layout>
       <NarrowPageContainer>
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col>
             <h1 className="display-4 mb-4 text-center">CoVariants</h1>
           </Col>
         </Row>
 
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col>
             <ClusterButtonPanelLayout>
               <Editable>

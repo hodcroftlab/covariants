@@ -112,7 +112,7 @@ export function DistributionSidebar({
   )
 
   return (
-    <Row noGutters>
+    <Row className={'gx-0'}>
       <Col>{enabledFilters.map((filterName) => get(availableFilters, filterName))}</Col>
     </Row>
   )

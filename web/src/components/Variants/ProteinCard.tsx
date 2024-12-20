@@ -67,13 +67,13 @@ export function Placeholder() {
 
   return (
     <Container fluid className="">
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <p>{t('Spike protein model is not yet available for this variant')}</p>
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <p>
             {t('Consider contributing on {{github}}', { github: ' ' })}
@@ -134,7 +134,7 @@ export function ProteinCard({ cluster }: ProteinCardProps) {
     <Card>
       <CardHeader>{title}</CardHeader>
       <ProteinCardBody>
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col tag="figure">
             <GifPlayerWrapper>{Player}</GifPlayerWrapper>
             <figcaption className="d-flex">

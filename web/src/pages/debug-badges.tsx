@@ -18,7 +18,7 @@ const domain = process.env.DOMAIN ?? ''
 export default function DebugBadges() {
   return (
     <Layout>
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           {'Display names'}
           <ul>
@@ -58,7 +58,7 @@ export default function DebugBadges() {
           </ul>
         </Col>
       </Row>
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <ul>
             {Object.keys(GREEK_ALPHABET)

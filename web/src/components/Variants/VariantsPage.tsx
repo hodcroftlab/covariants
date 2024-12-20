@@ -107,7 +107,7 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
   const AquariaSection = useMemo(() => {
     return (
       (currentCluster.aquaria_urls?.length ?? 0) > 0 && (
-        <Row noGutters className="mb-2">
+        <Row className="mb-2 gx-0">
           <Col>
             <AquariaLinksCard cluster={currentCluster} />
           </Col>
@@ -120,7 +120,7 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
     <FlexContainer>
       <FlexGrowing>
         <EditableClusterContent githubUrl={`blob/master/content/clusters/${currentCluster.build_name}.md`}>
-          <Row noGutters className="mb-3">
+          <Row className="mb-3 gx-0">
             <Col className="d-flex w-100">
               {currentCluster.nextstrain_url ? (
                 <LinkExternal href={currentCluster.nextstrain_url} icon={NEXTSTRAIN_ICON} color={theme.link.dim.color}>
@@ -135,17 +135,17 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
             </Col>
           </Row>
 
-          <Row noGutters className="mb-2">
+          <Row className="mb-2 gx-0">
             <Col>{ClusterContent}</Col>
           </Row>
 
-          <Row noGutters className="mb-2">
+          <Row className="mb-2 gx-0">
             <Col>
               <PlotCard cluster={currentCluster} />
             </Col>
           </Row>
 
-          <Row noGutters>
+          <Row className={'gx-0'}>
             <Col>
               <MutationCountsSummaryCard currentCluster={currentCluster} />
             </Col>
@@ -153,7 +153,7 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
 
           {AquariaSection}
 
-          <Row noGutters className="mb-2">
+          <Row className="mb-2 gx-0">
             <Col>
               <ProteinCard cluster={currentCluster} />
             </Col>

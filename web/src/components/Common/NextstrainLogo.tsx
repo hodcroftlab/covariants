@@ -31,9 +31,11 @@ const NextstrainIcon = styled(NextstrainIconBase)`
   margin-right: 5px;
 `
 
-const LetterSpan = styled.span<{ pos: number }>`
+const LetterSpan = styled.span.attrs<{ $pos: number }>((props) => ({
+  $pos: props.$pos,
+}))`
   font-size: 20px;
-  color: ${(props) => TITLE_COLORS[props.pos]};
+  color: ${(props) => TITLE_COLORS[props.$pos]};
 `
 
 export function NextstrainLogo() {
@@ -42,7 +44,7 @@ export function NextstrainLogo() {
       <NextstrainIcon />
       <span>
         {'Nextstrain'.split('').map((letter, i) => (
-          <LetterSpan key={`${i}_${letter}`} pos={i}>
+          <LetterSpan key={`${i}_${letter}`} $pos={i}>
             {letter}
           </LetterSpan>
         ))}

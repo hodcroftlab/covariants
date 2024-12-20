@@ -75,7 +75,7 @@ export function ClusterFilters({
     <CardCollapsible className="m-2" title={t('Variants')} collapsed={collapsed} setCollapsed={setCollapsed}>
       <CardBody>
         <Container fluid>
-          <Row noGutters>
+          <Row className={'gx-0'}>
             <Col className="d-flex">
               <FormGroup className="flex-grow-0 mx-auto">
                 <Button type="button" color="link" onClick={onFilterSelectAll}>
@@ -88,7 +88,7 @@ export function ClusterFilters({
             </Col>
           </Row>
 
-          <Row noGutters>
+          <Row className={'gx-0'}>
             <Col>
               <Form>
                 {clusters.map(({ cluster, enabled }) => (

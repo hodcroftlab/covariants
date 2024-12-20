@@ -68,14 +68,14 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
 
   return (
     <Container fluid>
-      <HeaderRow noGutters>
+      <HeaderRow className={'gx-0'}>
         <HeaderCol>
           <NavigationBar />
           <ChristmasLightRope />
         </HeaderCol>
       </HeaderRow>
 
-      <Row noGutters className="ms-3 mt-2 d-none d-md-block">
+      <Row className="ms-3 mt-2 d-none d-md-block gx-0">
         <Col className="d-flex">
           <GisaidText className="d-flex me-auto">
             <span className="me-1 align-self-center">{t('Enabled by data from {{ gisaid }}', { gisaid: '' })}</span>
@@ -91,12 +91,12 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
       </Row>
 
       <MainContainer fluid>
-        <MainRow noGutters>
+        <MainRow className={'gx-0'}>
           <MainCol>{children}</MainCol>
         </MainRow>
       </MainContainer>
 
-      <FooterRow noGutters>
+      <FooterRow className={'gx-0'}>
         <FooterCol>
           <FooterContent />
         </FooterCol>

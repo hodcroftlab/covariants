@@ -38,7 +38,7 @@ export function ClusterDistributionPlotCard({
 
       <CardBody className="p-0">
         <Col className="p-0">
-          <Row noGutters>
+          <Row className={'gx-0'}>
             <Col className="p-0">
               <ClusterDistributionPlot distribution={distribution} country_names={country_names} />
             </Col>

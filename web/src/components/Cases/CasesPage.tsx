@@ -95,13 +95,13 @@ export function CasesPage() {
 
   return (
     <Layout wide>
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <PageHeading>{t('Estimated Cases by Variant')}</PageHeading>
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <CenteredEditable githubUrl="tree/master/web/src/content/en/PerCountryCasesIntro.md">
             <MdxContent filepath="PerCountryCasesIntro.md" />
@@ -109,13 +109,13 @@ export function CasesPage() {
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <SharingPanel />
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
             <WrapperFlex>
@@ -140,9 +140,9 @@ export function CasesPage() {
               </SidebarFlex>
 
               <MainFlex>
-                <Row noGutters>
+                <Row className={'gx-0'}>
                   <Col>
-                    <Row noGutters>{casesComponents}</Row>
+                    <Row className={'gx-0'}>{casesComponents}</Row>
                   </Col>
                 </Row>
               </MainFlex>

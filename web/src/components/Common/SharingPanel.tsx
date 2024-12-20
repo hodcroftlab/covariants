@@ -99,15 +99,15 @@ export function SharingPanel() {
   const emailBody = useMemo(() => getEmailBody(url), [url])
 
   return (
-    <Row noGutters>
+    <Row className={'gx-0'}>
       <Col>
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col className="d-flex text-center">
             <SharingPanelH1>{t('Share')}</SharingPanelH1>
           </Col>
         </Row>
 
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col className="d-flex">
             <SharingPanelWrapper>
               <SharingButton title={t('Copy link to clipboard')}>

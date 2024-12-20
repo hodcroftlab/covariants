@@ -187,7 +187,7 @@ export function NavigationBar() {
 
         <Nav className="ms-auto" navbar>
           <NavItem>
-            <Row noGutters>
+            <Row className={'gx-0'}>
               <Col className="mt-2 mx-3">
                 <ChristmasToggle />
               </Col>

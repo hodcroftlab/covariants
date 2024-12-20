@@ -37,7 +37,7 @@ export function CasesPlotCard({ country, distribution, cluster_names, Icon }: Ca
 
       <CardBody className="p-0">
         <Col className="p-0">
-          <Row noGutters>
+          <Row className={'gx-0'}>
             <Col className="p-0">
               <CasesPlot distribution={distribution} cluster_names={cluster_names} />
             </Col>

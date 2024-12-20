@@ -18,7 +18,7 @@ export function LanguageSwitcher({ ...restProps }: LanguageSwitcherProps) {
       <DropdownToggle nav caret>
         <LanguageSwitcherItem locale={currentLocale} />
       </DropdownToggle>
-      <DropdownMenu className="language-switcher-menu" positionFixed>
+      <DropdownMenu className="language-switcher-menu position-fixed">
         {localesArray.map((locale) => {
           const isCurrent = locale.key === currentLocale
           return (

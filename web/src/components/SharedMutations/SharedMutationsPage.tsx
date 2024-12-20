@@ -33,13 +33,13 @@ export function SharedMutationsPage() {
   return (
     <Layout>
       <SharedMutationsPageContainer>
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col>
             <PageHeading>{t('Shared mutations')}</PageHeading>
           </Col>
         </Row>
 
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col>
             <CenteredEditable githubUrl="blob/master/content/SharedMutations.md">
               <MdxContent filepath="SharedMutations.md" />
@@ -47,7 +47,7 @@ export function SharedMutationsPage() {
           </Col>
         </Row>
 
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col className="pb-10">
             <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
               <SharedMutationsWrapper>
