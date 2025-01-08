@@ -1,7 +1,8 @@
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren, Suspense } from 'react'
 import { styled } from 'styled-components'
 import { Container as ContainerBase, Row, Col } from 'reactstrap'
 import Image from 'next/image'
+import { ErrorBoundary } from 'react-error-boundary'
 import { LastUpdated } from '../Common/LastUpdated'
 import { NavigationBar } from './NavigationBar'
 import { FooterContent } from './Footer'
@@ -10,6 +11,7 @@ import { ChristmasLightRope, Santa, Snowfall } from 'src/components/Common/Chris
 import { ChangelogButton } from 'src/components/Common/ChangelogButton'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
+import { FetchError } from 'src/components/Error/FetchError'
 
 const Container = styled(ContainerBase)`
   min-height: 100%;
@@ -85,7 +87,11 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
           </GisaidText>
 
           <ChangelogButton className="d-flex ms-auto">
-            <LastUpdated className="d-flex ms-auto" />
+            <ErrorBoundary FallbackComponent={FetchError}>
+              <Suspense>
+                <LastUpdated className="d-flex ms-auto" />
+              </Suspense>
+            </ErrorBoundary>
           </ChangelogButton>
         </Col>
       </Row>
