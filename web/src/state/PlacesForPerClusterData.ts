@@ -6,9 +6,9 @@ import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
 import {
   Continent,
   Country,
-  getAllContinents,
-  getContinentsFromCountries,
-  toggleCountriesFromContinents,
+  getAllContinentsSelector,
+  getContinentsFromCountriesSelector,
+  toggleCountriesFromContinentsSelector,
 } from 'src/state/Places'
 import { parseUrl } from 'src/helpers/parseUrl'
 import { updateUrlQuery } from 'src/helpers/urlQuery'
@@ -77,13 +77,11 @@ const countriesAtom = atomAsync<Country[]>({
 const continentsAtom = selector<Continent[]>({
   key: 'continents',
   get: ({ get }) => {
-    const countries = get(countriesAtom)
-    return getContinentsFromCountries(undefined, countries)
+    return get(getContinentsFromCountriesSelector)
   },
   set: ({ set, get }, continentsOrDefault) => {
-    const countriesOld = get(countriesAtom)
-    const continents = isDefaultValue(continentsOrDefault) ? getAllContinents() : continentsOrDefault
-    const countries = toggleCountriesFromContinents(countriesOld, continents)
+    const continents = isDefaultValue(continentsOrDefault) ? get(getAllContinentsSelector) : continentsOrDefault
+    const countries = get(toggleCountriesFromContinentsSelector(continents))
     set(countriesAtom, countries)
   },
 })

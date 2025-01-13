@@ -1,25 +1,25 @@
-import { get } from 'lodash'
+import { get as getLodash } from 'lodash'
 import Router from 'next/router'
-import { selectorFamily, useRecoilState } from 'recoil'
+import { selector, useRecoilState } from 'recoil'
 import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
 import {
   DEFAULT_REGION,
-  getAllContinents,
-  getContinentsFromCountries,
-  toggleCountriesFromContinents,
+  getAllContinentsSelector,
+  getContinentsFromCountriesSelector,
+  toggleCountriesFromContinentsSelector,
 } from 'src/state/Places'
-import type { Continent, Country } from 'src/state/Places'
+import type { Country } from 'src/state/Places'
 import { parseUrl } from 'src/helpers/parseUrl'
 import { takeFirstMaybe } from 'src/helpers/takeFirstMaybe'
 import { setUrlQuery, updateUrlQuery } from 'src/helpers/urlQuery'
 import { fetchPerCountryDataRaw } from 'src/io/getPerCountryData'
-import { atomAsync, atomFamilyAsync } from 'src/state/utils/atomAsync'
+import { atomAsync } from 'src/state/utils/atomAsync'
 import { isDefaultValue } from 'src/state/utils/isDefaultValue'
 
 export function usePlacesPerCountry() {
   const [region, setRegion] = useRecoilState(regionAtom)
-  const [countries, setCountries] = useRecoilState(countriesAtom(region))
-  const [continents, setContinents] = useRecoilState(continentsAtom(region))
+  const [countries, setCountries] = useRecoilState(countriesAtom)
+  const [continents, setContinents] = useRecoilState(continentsAtom)
   return {
     region,
     setRegion,
@@ -33,7 +33,7 @@ export function usePlacesPerCountry() {
 /**
  * Represents current region
  */
-const regionAtom = atomAsync<string>({
+export const regionAtom = atomAsync<string>({
   key: 'region',
   async default() {
     const { query } = parseUrl(Router.asPath)
@@ -57,11 +57,12 @@ const regionAtom = atomAsync<string>({
  * Represents a list of currently enabled countries
  * NOTE: this atom can be modified, when the selector for continents is modified.
  */
-const countriesAtom = atomFamilyAsync<Country[], string>({
+export const countriesAtom = atomAsync<Country[]>({
   key: 'countries',
-  async default(region) {
+  async default({ get }) {
     const { query } = parseUrl(Router.asPath)
     const { regions } = await fetchPerCountryDataRaw()
+    const region = get(regionAtom)
 
     const data = regions.find((dataRegion) => dataRegion.region === region)
     if (!data) {
@@ -69,7 +70,7 @@ const countriesAtom = atomFamilyAsync<Country[], string>({
     }
     const countries = data.distributions.map(({ country }) => ({ country, enabled: true }))
 
-    const enabledCountries = convertToArrayMaybe(get(query, 'country'))
+    const enabledCountries = convertToArrayMaybe(getLodash(query, 'country'))
     if (enabledCountries) {
       return countries.map((country) => ({
         ...country,
@@ -99,22 +100,16 @@ const countriesAtom = atomFamilyAsync<Country[], string>({
  * NOTE: this is a selector, and it's value is tied to the `countries` atom.
  * NOTE: this selector is mutable, i.e. it can be set(). When this happens, it also modifies the `countries` atom.
  */
-export const continentsAtom = selectorFamily<Continent[], string>({
+export const continentsAtom = selector({
   key: 'continents',
-  get:
-    (region: string) =>
-    ({ get }) => {
-      const countries = get(countriesAtom(region))
-      return getContinentsFromCountries(region, countries)
-    },
-  set:
-    (region: string) =>
-    ({ set, get }, continentsOrDefault) => {
-      const countriesOld = get(countriesAtom(region))
-      const continents = isDefaultValue(continentsOrDefault) ? getAllContinents(region) : continentsOrDefault
-      const countries = toggleCountriesFromContinents(countriesOld, continents)
-      set(countriesAtom(region), countries)
-    },
+  get: ({ get }) => {
+    return get(getContinentsFromCountriesSelector)
+  },
+  set: ({ set, get }, continentsOrDefault) => {
+    const continents = isDefaultValue(continentsOrDefault) ? get(getAllContinentsSelector) : continentsOrDefault
+    const countries = get(toggleCountriesFromContinentsSelector(continents))
+    set(countriesAtom, countries)
+  },
 })
 
 export async function validateRegion(regionRaw: string) {
