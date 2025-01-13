@@ -57,56 +57,6 @@ RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false
 function MyApp({ Component, pageProps }: AppProps) {
   const initializeState = useCallback(() => {}, [])
 
-  // // NOTE: We do manual parsing here, because router.query is randomly empty on the first few renders.
-  // const { pathname, query } = useMemo(() => parseUrl(router.asPath), [router.asPath])
-  //
-  // const initializeState = useCallback(
-  //   ({ set }: MutableSnapshot) => {
-  //     // Set initial state
-  //     switch (pathname) {
-  //       case '/per-country': {
-  //         const { region, continents, countries } = useUrlQueryToPlaces(query)
-  //
-  //         set(regionAtom, region)
-  //         set(continentsAtom(region), continents)
-  //         set(countriesAtom(region), countries)
-  //
-  //         const params = { dataFlavor: ClustersDataFlavor.PerCountry, region }
-  //         const clusters = useQueryToClusters(query, params)
-  //         set(clustersAtom(params), clusters)
-  //
-  //         break
-  //       }
-  //       case '/per-variant': {
-  //         const { region, continents, countries } = useUrlQueryToPlaces(query)
-  //
-  //         set(continentsAtom(undefined), continents)
-  //         set(countriesAtom(undefined), countries)
-  //
-  //         const params = { dataFlavor: ClustersDataFlavor.PerCluster, region }
-  //         const clusters = useQueryToClusters(query, params)
-  //         set(clustersAtom(params), clusters)
-  //
-  //         break
-  //       }
-  //       case '/cases': {
-  //         const { continents, countries } = urlQueryToPlacesCases(query)
-  //
-  //         set(continentsCasesAtom, continents)
-  //         set(countriesCasesAtom, countries)
-  //
-  //         const clusters = urlQueryToClustersCases(query)
-  //         set(clustersCasesAtom, clusters)
-  //
-  //         break
-  //       }
-  //       default:
-  //         break
-  //     }
-  //   },
-  //   [pathname, query],
-  // )
-
   // Use shared QueryClient for queries inside and outside of React components
   const queryClient = useMemo(() => FETCHER.getQueryClient(), [])
 

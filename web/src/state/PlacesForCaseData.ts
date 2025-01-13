@@ -1,34 +1,10 @@
-import { ParsedUrlQuery } from 'querystring'
-import { get } from 'lodash'
 import { atom, DefaultValue, selector } from 'recoil'
 
+// TODO: replace with dynamic call
 import regionCountryJson from '../../public/data/region_country.json'
-import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
 import type { Continent, Country } from 'src/state/Places'
 import { updateUrlQuery } from 'src/helpers/urlQuery'
 import { getPerCountryCasesData } from 'src/io/getPerCountryCasesData'
-
-/**
- * Converts values incoming from URL query into region, countries and continents.
- * To be used during app startup.
- */
-export function urlQueryToPlacesCases(query: ParsedUrlQuery) {
-  const enabledCountries = convertToArrayMaybe(get(query, 'country'))
-
-  // Take all countries and set only the countries present in the query as `enabled`
-  let countries = getAllCountries()
-  if (enabledCountries) {
-    countries = countries.map((country) => ({
-      ...country,
-      enabled: includesCaseInsensitive(enabledCountries, country.country),
-    }))
-  }
-
-  // Enable/disable continents depending on which countries are enabled
-  const continents = getContinentsFromCountries(countries)
-
-  return { continents, countries }
-}
 
 function getAllCountries(): Country[] {
   return getPerCountryCasesData().countries
@@ -74,36 +50,6 @@ function getContinentsFromCountries(countries: Country[]): Continent[] {
     })
     return { continent, enabled }
   })
-}
-
-/** Toggles a given country enabled/disabled */
-export function toggleCountry(countries: Country[], countryName: string): Country[] {
-  return countries.map((country) => {
-    if (country.country === countryName) {
-      return { ...country, enabled: !country.enabled }
-    }
-    return country
-  })
-}
-
-/** Toggles a given continent enabled/disabled */
-export function toggleContinent(continents: Continent[], continentName: string): Continent[] {
-  return continents.map((continent) => {
-    if (continent.continent === continentName) {
-      return { ...continent, enabled: !continent.enabled }
-    }
-    return continent
-  })
-}
-
-/** Toggles all countries enabled */
-export function enableAllCountries(countries: Country[]): Country[] {
-  return countries.map((country) => ({ ...country, enabled: true }))
-}
-
-/** Toggles all countries disabled */
-export function disableAllCountries(countries: Country[]): Country[] {
-  return countries.map((country) => ({ ...country, enabled: false }))
 }
 
 /**

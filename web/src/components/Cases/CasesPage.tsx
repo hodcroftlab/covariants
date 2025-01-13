@@ -8,15 +8,8 @@ import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLa
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { MdxContent } from 'src/i18n/getMdxContent'
 import { getPerCountryCasesData, filterClusters, filterCountries } from 'src/io/getPerCountryCasesData'
-import { clustersCasesAtom, disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/ClustersForCaseData'
-import {
-  continentsCasesAtom,
-  countriesCasesAtom,
-  disableAllCountries,
-  enableAllCountries,
-  toggleContinent,
-  toggleCountry,
-} from 'src/state/PlacesForCaseData'
+import { clustersCasesAtom } from 'src/state/ClustersForCaseData'
+import { continentsCasesAtom, countriesCasesAtom } from 'src/state/PlacesForCaseData'
 import { CountryFlag } from 'src/components/Common/CountryFlag'
 import { PageHeading } from 'src/components/Common/PageHeading'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
@@ -24,6 +17,8 @@ import { DistributionSidebar } from 'src/components/DistributionSidebar/Distribu
 import { CasesComponents } from 'src/components/Cases/CasesComponents'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
+import { disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/Clusters'
+import { disableAllCountries, enableAllCountries, toggleContinent, toggleCountry } from 'src/state/Places'
 
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
