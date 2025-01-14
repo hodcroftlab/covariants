@@ -7,7 +7,7 @@ import { DateTime } from 'luxon'
 import { CountryDistributionPlotTooltip } from './CountryDistributionPlotTooltip'
 import type { CountryDistributionDatum } from 'src/io/getPerCountryData'
 import { theme } from 'src/theme'
-import { CLUSTER_NAME_OTHERS, getClusterColor } from 'src/io/getClusters'
+import { CLUSTER_NAME_OTHERS, useClusterColors } from 'src/io/getClusters'
 import { formatDateHumanely, formatProportion } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import { ChartContainer } from 'src/components/Common/ChartContainer'
@@ -25,6 +25,7 @@ export interface AreaPlotProps {
 }
 
 function AreaPlot({ width, height, cluster_names, distribution, ticks, timeDomain }: AreaPlotProps) {
+  const getClusterColor = useClusterColors()
   const data = useMemo(
     () =>
       distribution.map(({ week, total_sequences, cluster_counts }) => {

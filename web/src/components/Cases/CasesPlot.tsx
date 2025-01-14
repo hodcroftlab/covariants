@@ -9,7 +9,7 @@ import { useTheme } from 'styled-components'
 import { CasesPlotTooltip } from './CasesPlotTooltip'
 import type { PerCountryCasesDistributionDatum } from 'src/io/getPerCountryCasesData'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { CLUSTER_NAME_OTHERS, getClusterColor } from 'src/io/getClusters'
+import { CLUSTER_NAME_OTHERS, useClusterColors } from 'src/io/getClusters'
 import { formatDateHumanely } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
@@ -29,6 +29,7 @@ export function CasesPlotComponent({ cluster_names, distribution, ticks, timeDom
   const { t } = useTranslationSafe()
   const theme = useTheme()
   const chartRef = useRef(null)
+  const getClusterColor = useClusterColors()
 
   const data = distribution.map(({ week, stand_total_cases, stand_estimated_cases }) => {
     const weekSec = DateTime.fromFormat(week, 'yyyy-MM-dd').toSeconds()
