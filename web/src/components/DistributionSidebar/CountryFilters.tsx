@@ -16,7 +16,7 @@ import { ColoredHorizontalLineIcon } from '../Common/ColoredHorizontalLineIcon'
 import { Continent, Country } from 'src/state/Places'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import type { CountryFlagProps } from 'src/components/Common/CountryFlag'
-import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
+import { useCountryColor, useCountryStrokeDashArray } from 'src/io/getCountryColor'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 
 export const CardBody = styled(CardBodyBase)``
@@ -58,12 +58,8 @@ export function IconComponent({ country, Icon }: IconOrLineComponentProps) {
 export function LineComponent({ country }: IconOrLineComponentProps) {
   const { t } = useTranslationSafe()
   const theme = useTheme()
-  const { stroke, strokeDasharray } = useMemo(() => {
-    return {
-      stroke: getCountryColor(country),
-      strokeDasharray: getCountryStrokeDashArray(country),
-    }
-  }, [country])
+  const stroke = useCountryColor()(country)
+  const strokeDasharray = useCountryStrokeDashArray()(country)
 
   return (
     <>

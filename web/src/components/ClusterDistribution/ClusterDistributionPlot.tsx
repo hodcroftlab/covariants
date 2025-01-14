@@ -6,7 +6,7 @@ import { DateTime } from 'luxon'
 import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts'
 import { useTheme } from 'styled-components'
 
-import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
+import { useCountryColor, useCountryStrokeDashArray } from 'src/io/getCountryColor'
 import { formatDateHumanely, formatProportion } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import type { ClusterDistributionDatum } from 'src/io/getPerClusterData'
@@ -45,6 +45,8 @@ interface LinePlotProps {
 
 function LinePlot({ width, height, country_names, distribution, ticks, timeDomain }: LinePlotProps) {
   const theme = useTheme()
+  const getCountryColor = useCountryColor()
+  const getCountryStrokeDashArray = useCountryStrokeDashArray()
 
   const data = useMemo(
     () =>
@@ -92,7 +94,7 @@ function LinePlot({ width, height, country_names, distribution, ticks, timeDomai
     ))
 
     return [...linesOrig, linesInterp]
-  }, [country_names])
+  }, [country_names, getCountryColor, getCountryStrokeDashArray])
 
   return (
     <LineChart width={width} height={height} margin={theme.plot.margin} data={data}>
