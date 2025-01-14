@@ -16,7 +16,7 @@ import { updateUrlQuery } from 'src/helpers/urlQuery'
 import { fetchPerClusterDataRaw } from 'src/io/getPerClusterData'
 import { atomAsync } from 'src/state/utils/atomAsync'
 import { isDefaultValue } from 'src/state/utils/isDefaultValue'
-import { shouldPlotCountry } from 'src/io/getCountryColor'
+import { getShouldPlotCountry } from 'src/io/getCountryColor'
 
 export function usePlacesPerCluster() {
   const [countries, setCountries] = useRecoilState(countriesAtom)
@@ -38,6 +38,7 @@ const countriesAtom = atomAsync<Country[]>({
   async default() {
     const { query } = parseUrl(Router.asPath)
     const data = await fetchPerClusterDataRaw()
+    const shouldPlotCountry = await getShouldPlotCountry()
 
     const countries = copy(data.country_names)
       .sort()

@@ -1,13 +1,18 @@
 import { get } from 'lodash'
 
 import { z } from 'zod'
-import countriesToPlot from 'src/../public/data/countriesToPlot.json'
 
 import { lineStyleToStrokeDashArray } from 'src/helpers/lineStyleToStrokeDashArray'
-import { useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
+import { FETCHER, useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
 
-export function shouldPlotCountry(country: string): boolean {
-  return get<object, string, 'False' | 'True'>(countriesToPlot, country, 'False') === 'True'
+const countriesToPlot = z.record(z.string(), z.literal('True').or(z.literal('False')))
+
+type CountriesToPlot = z.infer<typeof countriesToPlot>
+
+export async function getShouldPlotCountry(): Promise<(country: string) => boolean> {
+  const countriesToPlotRaw = await FETCHER.fetch<CountriesToPlot>('/data/countriesToPlot.json')
+  const countries = countriesToPlot.parse(countriesToPlotRaw)
+  return (country: string) => get<object, string, 'False' | 'True'>(countries, country, 'False') === 'True'
 }
 
 const countryStyles = z.record(z.string(), z.object({ c: z.string(), ls: z.string() }))
