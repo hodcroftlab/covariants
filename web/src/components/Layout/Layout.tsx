@@ -1,7 +1,8 @@
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren, Suspense } from 'react'
 import { styled } from 'styled-components'
 import { Container as ContainerBase, Row, Col } from 'reactstrap'
 import Image from 'next/image'
+import { ErrorBoundary } from 'react-error-boundary'
 import { LastUpdated } from '../Common/LastUpdated'
 import { NavigationBar } from './NavigationBar'
 import { FooterContent } from './Footer'
@@ -10,6 +11,7 @@ import { ChristmasLightRope, Santa, Snowfall } from 'src/components/Common/Chris
 import { ChangelogButton } from 'src/components/Common/ChangelogButton'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
+import { FetchError } from 'src/components/Error/FetchError'
 
 const Container = styled(ContainerBase)`
   min-height: 100%;
@@ -68,14 +70,14 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
 
   return (
     <Container fluid>
-      <HeaderRow noGutters>
+      <HeaderRow className={'gx-0'}>
         <HeaderCol>
           <NavigationBar />
           <ChristmasLightRope />
         </HeaderCol>
       </HeaderRow>
 
-      <Row noGutters className="ms-3 mt-2 d-none d-md-block">
+      <Row className="ms-3 mt-2 d-none d-md-block gx-0">
         <Col className="d-flex">
           <GisaidText className="d-flex me-auto">
             <span className="me-1 align-self-center">{t('Enabled by data from {{ gisaid }}', { gisaid: '' })}</span>
@@ -85,18 +87,22 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
           </GisaidText>
 
           <ChangelogButton className="d-flex ms-auto">
-            <LastUpdated className="d-flex ms-auto" />
+            <ErrorBoundary FallbackComponent={FetchError}>
+              <Suspense>
+                <LastUpdated className="d-flex ms-auto" />
+              </Suspense>
+            </ErrorBoundary>
           </ChangelogButton>
         </Col>
       </Row>
 
       <MainContainer fluid>
-        <MainRow noGutters>
+        <MainRow className={'gx-0'}>
           <MainCol>{children}</MainCol>
         </MainRow>
       </MainContainer>
 
-      <FooterRow noGutters>
+      <FooterRow className={'gx-0'}>
         <FooterCol>
           <FooterContent />
         </FooterCol>

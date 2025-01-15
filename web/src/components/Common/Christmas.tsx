@@ -21,10 +21,15 @@ const enableChristmasAtom = atom<boolean>({
 
 function useIsChristmas(): boolean {
   const enableChristmas = useRecoilValue(enableChristmasAtom)
+  const isChristmasTime = useIsChristmasTime()
   return useMemo(() => {
-    const now = DateTime.now()
-    return enableChristmas && ((now.month === 12 && now.day >= 20) || (now.month === 1 && now.day <= 4))
-  }, [enableChristmas])
+    return enableChristmas && isChristmasTime
+  }, [enableChristmas, isChristmasTime])
+}
+
+function useIsChristmasTime(): boolean {
+  const now = DateTime.now()
+  return (now.month === 12 && now.day >= 20) || (now.month === 1 && now.day <= 4)
 }
 
 const ChristmasLightRopeStyled = styled(ChristmasLightRopeImpl)`
@@ -93,8 +98,8 @@ const SNOWFLAKE_ICON_OFF = <TbSnowflakeOff className="mt-1" color="#aa001288" />
 
 export function ChristmasToggle() {
   const [enableChristmas, setEnableChristmas] = useRecoilState(enableChristmasAtom)
-  const isChristmas = useIsChristmas()
-  if (!isChristmas) {
+  const isChristmasTime = useIsChristmasTime()
+  if (!isChristmasTime) {
     return null
   }
   return (

@@ -48,13 +48,13 @@ export function RegionSwitcher({ regions, regionsHaveData, currentRegion, setCur
 
   return (
     <RegionSwitcherContainer>
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <RegionSwitcherHeading>{t('Choose region')}</RegionSwitcherHeading>
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col className="d-flex">
           <RegionButtonsContainer className="mx-auto">
             {safeZip(regions, regionsHaveData).map(([region, regionHaveData]) => (

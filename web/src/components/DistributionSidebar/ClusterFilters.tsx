@@ -14,7 +14,7 @@ import {
 
 import { styled } from 'styled-components'
 import type { Cluster } from 'src/state/Clusters'
-import { getClusterColor } from 'src/io/getClusters'
+import { useClusterColors } from 'src/io/getClusters'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
@@ -40,6 +40,7 @@ export interface ClusterFilterCheckboxProps {
 
 export function ClusterFilterCheckbox({ cluster, enabled, onFilterChange }: ClusterFilterCheckboxProps) {
   const onChange = useCallback(() => onFilterChange(cluster), [onFilterChange, cluster])
+  const getClusterColor = useClusterColors()
 
   return (
     <FormGroup key={cluster} check>
@@ -75,7 +76,7 @@ export function ClusterFilters({
     <CardCollapsible className="m-2" title={t('Variants')} collapsed={collapsed} setCollapsed={setCollapsed}>
       <CardBody>
         <Container fluid>
-          <Row noGutters>
+          <Row className={'gx-0'}>
             <Col className="d-flex">
               <FormGroup className="flex-grow-0 mx-auto">
                 <Button type="button" color="link" onClick={onFilterSelectAll}>
@@ -88,7 +89,7 @@ export function ClusterFilters({
             </Col>
           </Row>
 
-          <Row noGutters>
+          <Row className={'gx-0'}>
             <Col>
               <Form>
                 {clusters.map(({ cluster, enabled }) => (

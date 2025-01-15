@@ -6,19 +6,18 @@ import { Var, WhoBadge } from 'src/components/Common/MutationBadge'
 import { Layout } from 'src/components/Layout/Layout'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
 
-import { getClusterNames, getClusterBuildNames, getClusterOldBuildNames } from 'src/io/getClusters'
+import { useClusterNames, useClusterBuildNames, useClusterOldBuildNames } from 'src/io/getClusters'
 import { GREEK_ALPHABET } from 'src/names'
-
-const clusterNames = getClusterNames()
-const clusterBuildNames = getClusterBuildNames()
-const clusterOldBuildNames = getClusterOldBuildNames()
 
 const domain = process.env.DOMAIN ?? ''
 
 export default function DebugBadges() {
+  const clusterNames = useClusterNames()
+  const clusterBuildNames = useClusterBuildNames()
+  const clusterOldBuildNames = useClusterOldBuildNames()
   return (
     <Layout>
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           {'Display names'}
           <ul>
@@ -58,7 +57,7 @@ export default function DebugBadges() {
           </ul>
         </Col>
       </Row>
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <ul>
             {Object.keys(GREEK_ALPHABET)

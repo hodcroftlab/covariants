@@ -240,7 +240,7 @@ export function ChangelogButton({ children, ...props }: PropsWithChildren<Button
 
         <ModalFooter>
           <Container fluid>
-            <Row noGutters className="my-2">
+            <Row className="my-2 gx-0">
               <Col className="d-flex w-100">
                 <ButtonOk className="ms-auto" type="button" color="success" onClick={close} title={closeText}>
                   {'OK'}

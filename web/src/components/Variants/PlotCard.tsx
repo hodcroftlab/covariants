@@ -9,6 +9,7 @@ import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { theme } from 'src/theme'
 import { ClusterDistributionPlot } from 'src/components/ClusterDistribution/ClusterDistributionPlot'
 import { ClusterDatum } from 'src/io/getClusters'
+import { useTicks, useTimeDomain } from 'src/io/useParams'
 
 const PlotCardTitleIcon = styled(GoGraph)`
   margin: auto 5px;
@@ -52,14 +53,21 @@ export function PlotCard({ cluster }: PlotCardProps) {
   const title = useMemo(() => <PlotCardTitle cluster={cluster} />, [cluster])
   const clusterDistribution = useClusterDistribution(cluster.display_name).distribution
   const countryNames = useCountryNames()
+  const ticks = useTicks()
+  const timeDomain = useTimeDomain()
 
   return (
     <Card>
       <CardBody>{title}</CardBody>
       <PlotCardBody>
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col>
-            <ClusterDistributionPlot distribution={clusterDistribution} country_names={countryNames} />
+            <ClusterDistributionPlot
+              distribution={clusterDistribution}
+              country_names={countryNames}
+              ticks={ticks}
+              timeDomain={timeDomain}
+            />
           </Col>
         </Row>
       </PlotCardBody>

@@ -12,13 +12,13 @@ export function FaqPage() {
   return (
     <Layout>
       <Container>
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col>
             <PageHeading>{t('Frequently asked questions')}</PageHeading>
           </Col>
         </Row>
 
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col>
             <CenteredEditable githubUrl="blob/master/content/Faq.md">
               <MdxContent filepath="Faq.md" />

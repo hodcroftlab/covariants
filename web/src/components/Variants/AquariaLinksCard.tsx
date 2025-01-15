@@ -69,7 +69,7 @@ export function AquariaLinksCard({ cluster }: AquariaLinksCardProps) {
     <Card>
       <CardHeader>{title}</CardHeader>
       <AquariaLinksCardBody>
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col>{proteinBadges}</Col>
         </Row>
       </AquariaLinksCardBody>

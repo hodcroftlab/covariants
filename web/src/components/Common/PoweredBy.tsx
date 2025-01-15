@@ -64,15 +64,15 @@ export function PoweredBy() {
   const { t } = useTranslationSafe()
 
   return (
-    <Row noGutters>
+    <Row className={'gx-0'}>
       <Col>
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col className="text-center">
             <PoweredByH1>{t('Powered by')}</PoweredByH1>
           </Col>
         </Row>
 
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col className="d-flex">
             <Flex className="mx-auto">
               <Ul>

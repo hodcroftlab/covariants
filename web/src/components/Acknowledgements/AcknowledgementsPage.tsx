@@ -10,7 +10,7 @@ import { PageHeading } from '../Common/PageHeading'
 import AcknowledgementsContent from './AcknowledgementsContent.md'
 import { AcknowledgementsError } from 'src/components/Acknowledgements/AcknowledgementsError'
 
-import { getClusters } from 'src/io/getClusters'
+import { useClusters } from 'src/io/getClusters'
 import { Layout } from 'src/components/Layout/Layout'
 import { AcknowledgementsCard, AcknowledgementsKeysJson } from 'src/components/Acknowledgements/AcknowledgementsCard'
 
@@ -19,9 +19,8 @@ export const AcknowledgementsPageContainer = styled(Container)`
   padding: 0 0.5rem;
 `
 
-const clusters = getClusters()
-
 export function useQueryAcknowledgementsKeys() {
+  const clusters = useClusters()
   return useQuery({
     queryKey: ['acknowledgements_keys'],
     queryFn: async () => {

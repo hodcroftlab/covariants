@@ -1,8 +1,9 @@
-import React, { useMemo } from 'react'
+import React, { Suspense, useMemo } from 'react'
 
 import { useRouter } from 'next/router'
 import { styled } from 'styled-components'
 import { Col, Row } from 'reactstrap'
+import { ErrorBoundary } from 'react-error-boundary'
 import { PlotCard } from './PlotCard'
 import { AquariaLinksCard } from './AquariaLinksCard'
 import { ProteinCard } from './ProteinCard'
@@ -12,8 +13,7 @@ import { MutationCountsSummaryCard } from 'src/components/MutationCounts/Mutatio
 import { theme } from 'src/theme'
 import { MdxContent } from 'src/i18n/getMdxContent'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import type { ClusterDatum } from 'src/io/getClusters'
-import { getClusterRedirects, getClusters } from 'src/io/getClusters'
+import { ClusterDatum, useClusters, useClusterRedirects } from 'src/io/getClusters'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { Layout } from 'src/components/Layout/Layout'
 import { Editable } from 'src/components/Common/Editable'
@@ -22,9 +22,8 @@ import { DefiningMutations, hasDefiningMutations } from 'src/components/Variants
 import { VariantTitle } from 'src/components/Variants/VariantTitle'
 
 import NextstrainIconBase from 'src/assets/images/nextstrain_logo.svg'
-
-const clusters = getClusters()
-const clusterRedirects = getClusterRedirects()
+import { FetchError } from 'src/components/Error/FetchError'
+import { LOADING } from 'src/components/Loading/Loading'
 
 const FlexContainer = styled.div`
   display: flex;
@@ -60,6 +59,7 @@ const NextstrainIcon = styled(NextstrainIconBase)`
 
 export function useCurrentClusterName(clusterName?: string) {
   const router = useRouter()
+  const clusterRedirects = useClusterRedirects()
 
   if (clusterName) {
     const clusterNewName = clusterRedirects.get(clusterName)
@@ -78,7 +78,11 @@ export interface VariantsPageProps {
 
 export function VariantsPage({ clusterName: clusterNameUnsafe }: VariantsPageProps) {
   const clusterName = useCurrentClusterName(clusterNameUnsafe)
-  const currentCluster = useMemo(() => clusters.find((cluster) => cluster.build_name === clusterName), [clusterName])
+  const clusters = useClusters()
+  const currentCluster = useMemo(
+    () => clusters.find((cluster) => cluster.build_name === clusterName),
+    [clusterName, clusters],
+  )
 
   return (
     <Layout>
@@ -107,7 +111,7 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
   const AquariaSection = useMemo(() => {
     return (
       (currentCluster.aquaria_urls?.length ?? 0) > 0 && (
-        <Row noGutters className="mb-2">
+        <Row className="mb-2 gx-0">
           <Col>
             <AquariaLinksCard cluster={currentCluster} />
           </Col>
@@ -120,7 +124,7 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
     <FlexContainer>
       <FlexGrowing>
         <EditableClusterContent githubUrl={`blob/master/content/clusters/${currentCluster.build_name}.md`}>
-          <Row noGutters className="mb-3">
+          <Row className="mb-3 gx-0">
             <Col className="d-flex w-100">
               {currentCluster.nextstrain_url ? (
                 <LinkExternal href={currentCluster.nextstrain_url} icon={NEXTSTRAIN_ICON} color={theme.link.dim.color}>
@@ -135,17 +139,21 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
             </Col>
           </Row>
 
-          <Row noGutters className="mb-2">
+          <Row className="mb-2 gx-0">
             <Col>{ClusterContent}</Col>
           </Row>
 
-          <Row noGutters className="mb-2">
+          <Row className="mb-2 gx-0">
             <Col>
-              <PlotCard cluster={currentCluster} />
+              <ErrorBoundary FallbackComponent={FetchError}>
+                <Suspense fallback={LOADING}>
+                  <PlotCard cluster={currentCluster} />
+                </Suspense>
+              </ErrorBoundary>
             </Col>
           </Row>
 
-          <Row noGutters>
+          <Row className={'gx-0'}>
             <Col>
               <MutationCountsSummaryCard currentCluster={currentCluster} />
             </Col>
@@ -153,7 +161,7 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
 
           {AquariaSection}
 
-          <Row noGutters className="mb-2">
+          <Row className="mb-2 gx-0">
             <Col>
               <ProteinCard cluster={currentCluster} />
             </Col>

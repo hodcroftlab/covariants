@@ -68,13 +68,13 @@ export function DefiningMutations({ cluster }: DefiningMutationsProps) {
 
   return (
     <Container>
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <H3>{t('Defining mutations')}</H3>
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col className="my-2">
           <H4>{t('Nonsynonymous')}</H4>
           {hasNonsynonymous ? (

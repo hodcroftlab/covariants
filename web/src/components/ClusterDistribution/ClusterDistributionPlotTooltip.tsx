@@ -10,7 +10,7 @@ import { theme } from 'src/theme'
 
 import type { ClusterDistributionDatum } from 'src/io/getPerClusterData'
 import { formatDateWeekly, formatProportion } from 'src/helpers/format'
-import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
+import { useCountryColor, useCountryStrokeDashArray } from 'src/io/getCountryColor'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 const EPSILON = 1e-2
@@ -55,6 +55,8 @@ export type ClusterDistributionPlotTooltipProps = DefaultTooltipContentProps<num
 export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotTooltipProps) {
   const { t } = useTranslationSafe()
   const { criterion, reversed } = useRecoilValue(tooltipSortAtom)
+  const getCountryColor = useCountryColor()
+  const getCountryStrokeDashArray = useCountryStrokeDashArray()
 
   const { payload } = props
   if (!payload || payload.length === 0) {

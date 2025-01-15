@@ -7,11 +7,11 @@ import { DateTime } from 'luxon'
 import { CountryDistributionPlotTooltip } from './CountryDistributionPlotTooltip'
 import type { CountryDistributionDatum } from 'src/io/getPerCountryData'
 import { theme } from 'src/theme'
-import { ticks, timeDomain } from 'src/io/getParams'
-import { CLUSTER_NAME_OTHERS, getClusterColor } from 'src/io/getClusters'
+import { CLUSTER_NAME_OTHERS, useClusterColors } from 'src/io/getClusters'
 import { formatDateHumanely, formatProportion } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import { ChartContainer } from 'src/components/Common/ChartContainer'
+import { Ticks, TimeDomain } from 'src/io/useParams'
 
 const allowEscapeViewBox = { x: false, y: true }
 
@@ -20,9 +20,12 @@ export interface AreaPlotProps {
   height?: number
   cluster_names: string[]
   distribution: CountryDistributionDatum[]
+  ticks: Ticks
+  timeDomain: TimeDomain
 }
 
-function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps) {
+function AreaPlot({ width, height, cluster_names, distribution, ticks, timeDomain }: AreaPlotProps) {
+  const getClusterColor = useClusterColors()
   const data = useMemo(
     () =>
       distribution.map(({ week, total_sequences, cluster_counts }) => {
@@ -41,7 +44,7 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
     const domainX = [timeDomain[0], timeDomain[1]]
     const domainY = [0, 1]
     return { adjustedTicks, domainX, domainY }
-  }, [width])
+  }, [width, ticks, timeDomain])
 
   return (
     <AreaChart margin={theme.plot.margin} data={data} stackOffset="expand" width={width} height={height}>
@@ -102,13 +105,27 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
 export interface CountryDistributionPlotProps {
   cluster_names: string[]
   distribution: CountryDistributionDatum[]
+  ticks: Ticks
+  timeDomain: TimeDomain
 }
 
-export function CountryDistributionPlot({ cluster_names, distribution }: CountryDistributionPlotProps) {
+export function CountryDistributionPlot({
+  cluster_names,
+  distribution,
+  ticks,
+  timeDomain,
+}: CountryDistributionPlotProps) {
   return (
     <ChartContainer>
       {({ width, height }) => (
-        <AreaPlot width={width} height={height} cluster_names={cluster_names} distribution={distribution} />
+        <AreaPlot
+          width={width}
+          height={height}
+          cluster_names={cluster_names}
+          distribution={distribution}
+          ticks={ticks}
+          timeDomain={timeDomain}
+        />
       )}
     </ChartContainer>
   )

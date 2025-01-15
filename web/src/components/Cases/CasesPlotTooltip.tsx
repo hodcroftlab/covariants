@@ -7,7 +7,7 @@ import { Props as DefaultTooltipContentProps } from 'recharts/types/component/De
 import { ColoredBox } from '../Common/ColoredBox'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { formatDateBiweekly, formatInteger, formatProportion } from 'src/helpers/format'
-import { getClusterColor } from 'src/io/getClusters'
+import { useClusterColors } from 'src/io/getClusters'
 
 const EPSILON = 1e-2
 
@@ -46,6 +46,7 @@ export const ClusterNameText = styled.span`
 
 export function CasesPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
   const { t } = useTranslationSafe()
+  const getClusterColor = useClusterColors()
 
   const { payload } = props
   if (!payload || payload.length === 0) {

@@ -1,14 +1,11 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import { Card, CardBody, CardHeader, Row } from 'reactstrap'
 import { styled } from 'styled-components'
 import get from 'lodash/get'
 import { ClusterButtonGroup } from 'src/components/ClusterButtonPanel/ClusterButtonGroup'
-import { ClusterDatum, getClusters, getClustersGrouped } from 'src/io/getClusters'
+import { ClusterDatum, getClustersGrouped, useClusters } from 'src/io/getClusters'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-
-const clusters = getClusters().filter((cluster) => !cluster.has_no_page)
-const clustersGrouped = getClustersGrouped(clusters)
 
 const ClustersRow = styled(Row)`
   display: flex;
@@ -48,9 +45,12 @@ export interface ClusterPanelProps {
 
 export function ClusterButtonPanel({ currentCluster, className }: ClusterPanelProps) {
   const { t } = useTranslationSafe()
+  const allClusters = useClusters()
+  const clusters = useMemo(() => allClusters.filter((cluster) => !cluster.has_no_page), [allClusters])
+  const clustersGrouped = useMemo(() => getClustersGrouped(clusters), [clusters])
 
   return (
-    <ClustersRow noGutters className={className}>
+    <ClustersRow className={`gx-0 ${className}`}>
       {Object.entries(clustersGrouped).map(([clusterType, clusterGroup]) => {
         const clusterTypeHeading = get(
           {

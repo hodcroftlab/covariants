@@ -1,26 +1,40 @@
 import { get } from 'lodash'
 
-import countriesToPlot from 'src/../public/data/countriesToPlot.json'
-import countryStyles from 'src/../public/data/countryStyles.json'
+import { z } from 'zod'
 
 import { lineStyleToStrokeDashArray } from 'src/helpers/lineStyleToStrokeDashArray'
+import { FETCHER, useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
 
-export function getCountryStyle(country: string) {
-  return get<Record<string, { c: string; ls: string }>, string>(countryStyles, country) ?? { c: '#555555', ls: '-' }
+const countriesToPlotSchema = z.record(z.string(), z.literal('True').or(z.literal('False')))
+
+type CountriesToPlot = z.infer<typeof countriesToPlotSchema>
+
+export async function getShouldPlotCountry(): Promise<(country: string) => boolean> {
+  const countriesToPlotRaw = await FETCHER.fetch<CountriesToPlot>('/data/countriesToPlot.json')
+  const countries = countriesToPlotSchema.parse(countriesToPlotRaw)
+  return (country: string) => get<object, string, 'False' | 'True'>(countries, country, 'False') === 'True'
 }
 
-export function getCountryColor(country: string) {
-  return getCountryStyle(country).c
+const countryStylesSchema = z.record(z.string(), z.object({ c: z.string(), ls: z.string() }))
+
+export type CountryStyles = z.infer<typeof countryStylesSchema>
+
+export function useCountryStyle() {
+  const { data: styles } = useValidatedAxiosQuery<CountryStyles>('/data/countryStyles.json', countryStylesSchema)
+  return (country: string) => get(styles, country, { c: '#555555', ls: '-' })
 }
 
-export function getCountryLineStyle(country: string) {
-  return getCountryStyle(country).ls
+export function useCountryColor() {
+  const countryStyle = useCountryStyle()
+  return (country: string) => countryStyle(country).c
 }
 
-export function getCountryStrokeDashArray(country: string) {
-  return lineStyleToStrokeDashArray(getCountryLineStyle(country))
+export function useCountryLineStyle() {
+  const countryStyle = useCountryStyle()
+  return (country: string) => countryStyle(country).ls
 }
 
-export function shouldPlotCountry(country: string): boolean {
-  return get<object, string, 'False' | 'True'>(countriesToPlot, country, 'False') === 'True'
+export function useCountryStrokeDashArray() {
+  const countryLineStyle = useCountryLineStyle()
+  return (country: string) => lineStyleToStrokeDashArray(countryLineStyle(country))
 }
