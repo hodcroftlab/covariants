@@ -8,6 +8,7 @@ import { PlotCardTitle } from 'src/components/Common/PlotCardTitle'
 import { CountryFlagProps } from 'src/components/Common/CountryFlag'
 import { USStateCodeProps } from 'src/components/Common/USStateCode'
 import { CasesPlot } from 'src/components/Cases/CasesPlot'
+import { Ticks, TimeDomain } from 'src/io/useParams'
 
 const FlagAlignment = styled.span`
   display: flex;
@@ -21,8 +22,8 @@ export interface CasesPlotCardProps {
   distribution: PerCountryCasesDistributionDatum[]
   cluster_names: string[]
   Icon?: React.ComponentType<CountryFlagProps | USStateCodeProps>
-  ticks: number[]
-  timeDomain: [number, number]
+  ticks: Ticks
+  timeDomain: TimeDomain
 }
 
 export function CasesPlotCard({ country, distribution, cluster_names, Icon, ticks, timeDomain }: CasesPlotCardProps) {

@@ -72,19 +72,13 @@ export type UseAxiosQueriesOptions<TData = unknown> = QueriesOptions<TData[]>
 
 /** Makes a cached fetch request */
 export function useAxiosQuery<TData = unknown>(url: string, options?: UseAxiosQueryOptions<TData>): TData {
-  const keys = useMemo(() => [url], [url])
   const optionsDefaulted = useMemo(() => queryOptionsDefaulted(options), [options])
   const res = useSuspenseQuery<TData, Error, TData, string[]>({
-    queryKey: keys,
+    queryKey: [url],
     queryFn: async () => axiosFetch(url),
     ...optionsDefaulted,
   })
-  return useMemo(() => {
-    if (!res.data) {
-      throw new Error(`Fetch failed: ${url}`)
-    }
-    return res.data
-  }, [res.data, url])
+  return res.data
 }
 
 export function useValidatedAxiosQuery<TData = unknown>(

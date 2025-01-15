@@ -14,6 +14,7 @@ import { formatDateHumanely } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
 import { ChartContainer } from 'src/components/Common/ChartContainer'
+import { Ticks, TimeDomain } from 'src/io/useParams'
 
 const CHART_MARGIN = { left: 10, top: 12, bottom: 6, right: 12 }
 const ALLOW_ESCAPE_VIEW_BOX = { x: false, y: true }
@@ -21,8 +22,8 @@ const ALLOW_ESCAPE_VIEW_BOX = { x: false, y: true }
 export interface CasesPlotProps {
   cluster_names: string[]
   distribution: PerCountryCasesDistributionDatum[]
-  ticks: number[]
-  timeDomain: [number, number]
+  ticks: Ticks
+  timeDomain: TimeDomain
 }
 
 export function CasesPlotComponent({ cluster_names, distribution, ticks, timeDomain }: CasesPlotProps) {

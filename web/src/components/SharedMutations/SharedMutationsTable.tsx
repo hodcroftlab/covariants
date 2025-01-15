@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useState } from 'react'
 
 import { styled } from 'styled-components'
 
@@ -77,10 +77,7 @@ export function SharedMutationsTable() {
   const nCols = variants.length
 
   const [byPos, setByPos] = useState(true)
-  const sharedMutations = useMemo(
-    () => (byPos ? sharedByPos : sharedByCommonness),
-    [byPos, sharedByPos, sharedByCommonness],
-  )
+  const sharedMutations = byPos ? sharedByPos : sharedByCommonness
 
   return (
     <Table>
