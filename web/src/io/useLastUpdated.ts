@@ -2,14 +2,14 @@ import { DateTime } from 'luxon'
 import { z } from 'zod'
 import { useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
 
-const update = z.object({
+const updateSchema = z.object({
   lastUpdated: z.string(),
 })
 
-export type Update = z.infer<typeof update>
+export type Update = z.infer<typeof updateSchema>
 
 export function useLastUpdated() {
-  const { data: lastUpdated } = useValidatedAxiosQuery<Update>('/data/update.json', update)
+  const { data: lastUpdated } = useValidatedAxiosQuery<Update>('/data/update.json', updateSchema)
   const utc = DateTime.fromISO(lastUpdated.lastUpdated, { zone: 'UTC' })
   const local = utc.toLocal()
   const date = local.toLocaleString({ dateStyle: 'medium' })

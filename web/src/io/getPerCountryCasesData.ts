@@ -17,34 +17,34 @@ export interface PerCountryCasesData {
   perCountryCasesIntroContent: string
 }
 
-const perCountryCasesDistributionDatum = z.object({
+const perCountryCasesDistributionDatumSchema = z.object({
   week: z.string(),
   stand_total_cases: z.number(),
   stand_estimated_cases: z.record(z.string(), z.number().optional()),
 })
 
-const perCountryCasesDistribution = z.object({
+const perCountryCasesDistributionSchema = z.object({
   country: z.string(),
-  distribution: perCountryCasesDistributionDatum.array(),
+  distribution: perCountryCasesDistributionDatumSchema.array(),
 })
 
-const perCountryCasesDatum = z.object({
+const perCountryCasesDatumSchema = z.object({
   cluster_names: z.string().array(),
-  distributions: perCountryCasesDistribution.array(),
+  distributions: perCountryCasesDistributionSchema.array(),
   max_date: z.string(),
   min_date: z.string(),
   region: z.string(),
   per_country_intro_content: z.string(),
 })
 
-const perCountryCaseDataRaw = z.object({
-  regions: perCountryCasesDatum.array(),
+const perCountryCaseDataRawSchema = z.object({
+  regions: perCountryCasesDatumSchema.array(),
 })
 
-type PerCountryCasesDataRaw = z.infer<typeof perCountryCaseDataRaw>
-type PerCountryCasesDatum = z.infer<typeof perCountryCasesDatum>
-export type PerCountryCasesDistribution = z.infer<typeof perCountryCasesDistribution>
-export type PerCountryCasesDistributionDatum = z.infer<typeof perCountryCasesDistributionDatum>
+type PerCountryCasesDataRaw = z.infer<typeof perCountryCaseDataRawSchema>
+type PerCountryCasesDatum = z.infer<typeof perCountryCasesDatumSchema>
+export type PerCountryCasesDistribution = z.infer<typeof perCountryCasesDistributionSchema>
+export type PerCountryCasesDistributionDatum = z.infer<typeof perCountryCasesDistributionDatumSchema>
 
 export function fetchPerCountryCasesDataRaw(): Promise<PerCountryCasesDataRaw> {
   return FETCHER.fetch<PerCountryCasesDataRaw>('/data/perCountryDataCaseCounts.json')
@@ -53,7 +53,7 @@ export function fetchPerCountryCasesDataRaw(): Promise<PerCountryCasesDataRaw> {
 export function usePerCountryCasesDataRaw(): PerCountryCasesDataRaw {
   const { data: regions } = useValidatedAxiosQuery<PerCountryCasesDataRaw>(
     '/data/perCountryDataCaseCounts.json',
-    perCountryCaseDataRaw,
+    perCountryCaseDataRawSchema,
   )
   return regions
 }

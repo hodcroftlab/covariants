@@ -1,27 +1,27 @@
 import { z } from 'zod'
 import { useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
 
-const nameTableEntry = z.object({
+const nameTableEntrySchema = z.object({
   name: z.string(),
   url: z.string().optional().nullable(),
 })
 
-const nameTableDatum = z.object({
+const nameTableDatumSchema = z.object({
   clade: z.string(),
   who: z.string().nullable(),
-  lineages: nameTableEntry.array(),
-  others: nameTableEntry.array(),
+  lineages: nameTableEntrySchema.array(),
+  others: nameTableEntrySchema.array(),
 })
 
-const nameTable = z.object({
-  nameTable: nameTableDatum.array(),
+const nameTableSchema = z.object({
+  nameTable: nameTableDatumSchema.array(),
 })
 
-export type NameTableEntry = z.infer<typeof nameTableEntry>
-export type NameTableDatum = z.infer<typeof nameTableDatum>
-export type NameTable = z.infer<typeof nameTable>
+export type NameTableEntry = z.infer<typeof nameTableEntrySchema>
+export type NameTableDatum = z.infer<typeof nameTableDatumSchema>
+export type NameTable = z.infer<typeof nameTableSchema>
 
 export function useNameTable(): NameTableDatum[] {
-  const { data: table } = useValidatedAxiosQuery<NameTable>('/data/nameTable.json', nameTable)
+  const { data: table } = useValidatedAxiosQuery<NameTable>('/data/nameTable.json', nameTableSchema)
   return table.nameTable
 }

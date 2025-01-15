@@ -5,22 +5,22 @@ import { z } from 'zod'
 import { lineStyleToStrokeDashArray } from 'src/helpers/lineStyleToStrokeDashArray'
 import { FETCHER, useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
 
-const countriesToPlot = z.record(z.string(), z.literal('True').or(z.literal('False')))
+const countriesToPlotSchema = z.record(z.string(), z.literal('True').or(z.literal('False')))
 
-type CountriesToPlot = z.infer<typeof countriesToPlot>
+type CountriesToPlot = z.infer<typeof countriesToPlotSchema>
 
 export async function getShouldPlotCountry(): Promise<(country: string) => boolean> {
   const countriesToPlotRaw = await FETCHER.fetch<CountriesToPlot>('/data/countriesToPlot.json')
-  const countries = countriesToPlot.parse(countriesToPlotRaw)
+  const countries = countriesToPlotSchema.parse(countriesToPlotRaw)
   return (country: string) => get<object, string, 'False' | 'True'>(countries, country, 'False') === 'True'
 }
 
-const countryStyles = z.record(z.string(), z.object({ c: z.string(), ls: z.string() }))
+const countryStylesSchema = z.record(z.string(), z.object({ c: z.string(), ls: z.string() }))
 
-export type CountryStyles = z.infer<typeof countryStyles>
+export type CountryStyles = z.infer<typeof countryStylesSchema>
 
 export function useCountryStyle() {
-  const { data: styles } = useValidatedAxiosQuery<CountryStyles>('/data/countryStyles.json', countryStyles)
+  const { data: styles } = useValidatedAxiosQuery<CountryStyles>('/data/countryStyles.json', countryStylesSchema)
   return (country: string) => get(styles, country, { c: '#555555', ls: '-' })
 }
 

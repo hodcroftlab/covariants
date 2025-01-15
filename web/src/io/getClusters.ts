@@ -10,7 +10,7 @@ import { FETCHER, useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
 
 export const CLUSTER_NAME_OTHERS = 'others'
 
-const mutation = z.object({
+const mutationSchema = z.object({
   parent: z.string().optional(),
   parentDelimiter: z.string().optional(),
   gene: z.string().optional(),
@@ -21,12 +21,12 @@ const mutation = z.object({
   note: z.string().optional(),
 })
 
-const aquariaDatum = z.object({
+const aquariaDatumSchema = z.object({
   gene: z.string(),
   url: z.string(),
 })
 
-const clusterDatum = z.object({
+const clusterDatumSchema = z.object({
   build_name: z.string(),
   old_build_names: z.string().array().optional(),
   nextstrain_url: z.string().optional(),
@@ -36,22 +36,22 @@ const clusterDatum = z.object({
   snps: z.number().array(),
   mutations: z
     .object({
-      nonsynonymous: mutation.array().optional(),
-      synonymous: mutation.array().optional(),
+      nonsynonymous: mutationSchema.array().optional(),
+      synonymous: mutationSchema.array().optional(),
     })
     .optional(),
-  aquaria_urls: aquariaDatum.array().optional(),
+  aquaria_urls: aquariaDatumSchema.array().optional(),
   type: z.string().optional(),
   important: z.boolean().optional(),
   has_no_page: z.boolean().optional(),
 })
 
-const clusterDataRaw = z.object({
-  clusters: clusterDatum.array(),
+const clusterDataRawSchema = z.object({
+  clusters: clusterDatumSchema.array(),
 })
 
-type ClusterDataRaw = z.infer<typeof clusterDataRaw>
-export type ClusterDatum = z.infer<typeof clusterDatum>
+type ClusterDataRaw = z.infer<typeof clusterDataRawSchema>
+export type ClusterDatum = z.infer<typeof clusterDatumSchema>
 
 export async function fetchClusters(): Promise<ClusterDatum[]> {
   const clusters = await FETCHER.fetch<ClusterDataRaw>('/data/clusters.json')
@@ -59,7 +59,7 @@ export async function fetchClusters(): Promise<ClusterDatum[]> {
 }
 
 export function useClusters(): ClusterDatum[] {
-  const { data: clusters } = useValidatedAxiosQuery<ClusterDataRaw>('/data/clusters.json', clusterDataRaw)
+  const { data: clusters } = useValidatedAxiosQuery<ClusterDataRaw>('/data/clusters.json', clusterDataRawSchema)
   return clusters.clusters
 }
 

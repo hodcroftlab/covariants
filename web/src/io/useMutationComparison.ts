@@ -1,31 +1,31 @@
 import { z } from 'zod'
 import { useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
 
-const mutations = z.string().nullable().array()
+const mutationsSchema = z.string().nullable().array()
 
-const mutationShared = z.object({
+const mutationSharedSchema = z.object({
   pos: z.number(),
-  presence: mutations,
+  presence: mutationsSchema,
 })
 
-const mutationIndividualRow = z.object({
+const mutationIndividualRowSchema = z.object({
   index: z.number(),
-  mutations: mutations,
+  mutations: mutationsSchema,
 })
 
-const mutationComparison = z.object({
+const mutationComparisonSchema = z.object({
   variants: z.string().array(),
   // eslint-disable-next-line camelcase
-  shared_by_commonness: mutationShared.array(),
+  shared_by_commonness: mutationSharedSchema.array(),
   // eslint-disable-next-line camelcase
-  shared_by_pos: mutationShared.array(),
-  individual: mutationIndividualRow.array(),
+  shared_by_pos: mutationSharedSchema.array(),
+  individual: mutationIndividualRowSchema.array(),
 })
 
-export type Mutations = z.infer<typeof mutations>
+export type Mutations = z.infer<typeof mutationsSchema>
 
-export type MutationComparison = z.infer<typeof mutationComparison>
+export type MutationComparison = z.infer<typeof mutationComparisonSchema>
 
 export function useMutationComparison() {
-  return useValidatedAxiosQuery<MutationComparison>('/data/mutationComparison.json', mutationComparison)
+  return useValidatedAxiosQuery<MutationComparison>('/data/mutationComparison.json', mutationComparisonSchema)
 }

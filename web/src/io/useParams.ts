@@ -11,7 +11,7 @@ export interface GlobalParams {
 export type Ticks = number[]
 export type TimeDomain = [number, number]
 
-const globalParams = z.object({
+const globalParamsSchema = z.object({
   // eslint-disable-next-line camelcase
   min_date: z.string(),
   // eslint-disable-next-line camelcase
@@ -19,7 +19,7 @@ const globalParams = z.object({
 })
 
 export function useParams() {
-  return useValidatedAxiosQuery<GlobalParams>('/data/params.json', globalParams)
+  return useValidatedAxiosQuery<GlobalParams>('/data/params.json', globalParamsSchema)
 }
 
 const INVALID_PARAMS = 'Invalid date params in params.json or invalid split point chosen'
