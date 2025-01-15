@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { http, HttpResponse } from 'msw'
 import { setupServer } from 'msw/node'
 
@@ -8,7 +9,6 @@ export const mockMutationComparison = {
       mutations: ['S:A67V', null, null, null, null, null, 'S:K147E', 'S:Q52H', null, null, null, null],
     },
   ],
-  // eslint-disable-next-line camelcase
   shared_by_commonness: [
     {
       pos: 969,
@@ -28,7 +28,6 @@ export const mockMutationComparison = {
       ],
     },
   ],
-  // eslint-disable-next-line camelcase
   shared_by_pos: [
     {
       pos: 19,
@@ -65,14 +64,11 @@ export const mockMutationComparison = {
 }
 
 const mockParams = {
-  // eslint-disable-next-line camelcase
   max_date: '2024-09-23',
-  // eslint-disable-next-line camelcase
   min_date: '2020-04-27',
 }
 
 const mockPerClusterData = {
-  // eslint-disable-next-line camelcase
   country_names: ['Argentina'],
   distributions: [
     {
@@ -95,6 +91,66 @@ const mockPerClusterData = {
   ],
 }
 
+const mockClusters = {
+  clusters: [
+    {
+      alt_display_name: ['S.501Y.V1'],
+      alternative_names: ['VOC 202012/01'],
+      aquaria_urls: [
+        {
+          gene: 'S',
+          url: 'https://aquaria.app/SARS-CoV-2/S?H69Del&V70Del&Y144Del&N501Y&A570D&D614G&P681H&T716I&S982A&D1118H',
+        },
+      ],
+      build_name: '20I.Alpha.V1',
+      cluster_data: [],
+      col: '#D16666',
+      country_info: [],
+      display_name: '20I (Alpha, V1)',
+      graphing: true,
+      important: false,
+      mutations: {
+        nonsynonymous: [
+          {
+            gene: 'S',
+            left: 'H',
+            pos: 69,
+            right: '-',
+          },
+        ],
+        synonymous: [
+          {
+            left: 'C',
+            pos: 241,
+            right: 'T',
+          },
+        ],
+      },
+      nextstrain_build: false,
+      nextstrain_name: '20I',
+      nextstrain_url: 'https://nextstrain.org/groups/neherlab/ncov/20I.Alpha.V1',
+      old_build_names: ['S.501Y.V1'],
+      pango_lineages: [
+        {
+          name: 'B.1.1.7',
+          url: null,
+        },
+      ],
+      snps: [23_063, 23_604, 24_914],
+      snps_with_base: ['23063T', '23604A', '24914C'],
+      type: 'variant',
+      who_name: ['Alpha'],
+    },
+  ],
+}
+
+const mockCountryStyles = {
+  Argentina: {
+    c: '#004d00',
+    ls: '-.',
+  },
+}
+
 const restHandlers = [
   http.get('/data/mutationComparison.json', () => {
     return HttpResponse.json(mockMutationComparison)
@@ -104,6 +160,12 @@ const restHandlers = [
   }),
   http.get('/data/perClusterData.json', () => {
     return HttpResponse.json(mockPerClusterData)
+  }),
+  http.get('/data/clusters.json', () => {
+    return HttpResponse.json(mockClusters)
+  }),
+  http.get('/data/countryStyles.json', () => {
+    return HttpResponse.json(mockCountryStyles)
   }),
 ]
 
