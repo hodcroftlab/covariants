@@ -1,19 +1,18 @@
-import { atom } from 'recoil'
 import type { Cluster } from './Clusters'
 
 import { updateUrlQuery } from 'src/helpers/urlQuery'
-import { getPerCountryCasesData } from 'src/io/getPerCountryCasesData'
-
-function getAllClusters(): Cluster[] {
-  return getPerCountryCasesData().clusters
-}
+import { fetchPerCountryCasesData } from 'src/io/getPerCountryCasesData'
+import { atomAsync } from 'src/state/utils/atomAsync'
 
 /**
  * Represents a list of currently enabled clusters (variants)
  */
-export const clustersCasesAtom = atom<Cluster[]>({
+export const clustersCasesAtom = atomAsync<Cluster[]>({
   key: 'clustersCases',
-  default: getAllClusters(),
+  async default() {
+    const clusters = await fetchPerCountryCasesData()
+    return clusters.clusters
+  },
   effects: [
     ({ onSet }) => {
       onSet((clusters) => {

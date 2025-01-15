@@ -1,4 +1,4 @@
-import { atom, selector } from 'recoil'
+import { selector } from 'recoil'
 
 import {
   Continent,
@@ -10,20 +10,20 @@ import {
   WHOLE_WORLD_REGION,
 } from 'src/state/Places'
 import { updateUrlQuery } from 'src/helpers/urlQuery'
-import { getPerCountryCasesData } from 'src/io/getPerCountryCasesData'
+import { fetchPerCountryCasesData } from 'src/io/getPerCountryCasesData'
 import { isDefaultValue } from 'src/state/utils/isDefaultValue'
-
-function getAllCountries(): Country[] {
-  return getPerCountryCasesData().countries
-}
+import { atomAsync } from 'src/state/utils/atomAsync'
 
 /**
  * Represents a list of currently enabled countries
  * NOTE: this atom can be modified, when the selector for continents is modified.
  */
-export const countriesCasesAtom = atom<Country[]>({
+export const countriesCasesAtom = atomAsync<Country[]>({
   key: 'casesCountries',
-  default: getAllCountries(),
+  async default() {
+    const clusters = await fetchPerCountryCasesData()
+    return clusters.countries
+  },
   effects: [
     ({ onSet }) => {
       onSet((countries) => {

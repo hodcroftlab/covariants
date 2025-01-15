@@ -7,7 +7,7 @@ import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { MdxContent } from 'src/i18n/getMdxContent'
-import { getPerCountryCasesData, filterClusters, filterCountries } from 'src/io/getPerCountryCasesData'
+import { filterClusters, filterCountries, usePerCountryCasesData } from 'src/io/getPerCountryCasesData'
 import { clustersCasesAtom } from 'src/state/ClustersForCaseData'
 import { continentsCasesAtom, countriesCasesAtom } from 'src/state/PlacesForCaseData'
 import { CountryFlag } from 'src/components/Common/CountryFlag'
@@ -29,7 +29,7 @@ export function CasesPage() {
   const [continents, setContinents] = useRecoilState(continentsCasesAtom)
   const [clusters, setClusters] = useRecoilState(clustersCasesAtom)
 
-  const { perCountryCasesDistributions } = useMemo(() => getPerCountryCasesData(), [])
+  const { perCountryCasesDistributions } = usePerCountryCasesData()
 
   const { enabledClusters, withClustersFiltered } = useMemo(() => {
     const { withCountriesFiltered } = filterCountries(countries, perCountryCasesDistributions)
