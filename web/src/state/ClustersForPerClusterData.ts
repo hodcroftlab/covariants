@@ -5,14 +5,16 @@ import { parseUrl } from 'src/helpers/parseUrl'
 import { Cluster, updateUrlOnClustersSet } from 'src/state/Clusters'
 import { fetchPerClusterDataRaw } from 'src/io/getPerClusterData'
 import { atomAsync } from 'src/state/utils/atomAsync'
-import { sortClusters } from 'src/io/getClusters'
+import { fetchClusterNames, sortClustersByClusterNames } from 'src/io/getClusters'
 
 export const clustersForPerClusterDataAtom = atomAsync<Cluster[]>({
   key: 'clustersForPerClusterDataAtom',
   async default() {
     const { distributions } = await fetchPerClusterDataRaw()
+    const allClusterNames = await fetchClusterNames()
     const clusterNames = distributions.map(({ cluster }) => cluster).sort()
-    const clusters = sortClusters(clusterNames.map((cluster) => ({ cluster, enabled: true })))
+    const unsortedClusters = clusterNames.map((cluster) => ({ cluster, enabled: true }))
+    const clusters = sortClustersByClusterNames(unsortedClusters, allClusterNames)
 
     const { query } = parseUrl(Router.asPath)
     const enabledClusters = convertToArrayMaybe(get(query, 'variant'))

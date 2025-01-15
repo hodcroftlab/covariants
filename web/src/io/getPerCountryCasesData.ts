@@ -6,7 +6,7 @@ import { z } from 'zod'
 import { useMemo } from 'react'
 import type { Cluster } from 'src/state/Clusters'
 import type { Country } from 'src/state/Places'
-import { sortClusters } from 'src/io/getClusters'
+import { fetchClusterNames, sortClustersByClusterNames, useClusterNames } from 'src/io/getClusters'
 import { FETCHER, useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
 
 export interface PerCountryCasesData {
@@ -60,17 +60,19 @@ export function usePerCountryCasesDataRaw(): PerCountryCasesDataRaw {
 
 export async function fetchPerCountryCasesData(): Promise<PerCountryCasesData> {
   const allData = await fetchPerCountryCasesDataRaw()
+  const allClusterNames = await fetchClusterNames()
 
-  return mapPerCountryCasesData(allData)
+  return mapPerCountryCasesData(allData, allClusterNames)
 }
 
 export function usePerCountryCasesData(): PerCountryCasesData {
   const allData = usePerCountryCasesDataRaw()
+  const allClusterNames = useClusterNames()
 
-  return useMemo(() => mapPerCountryCasesData(allData), [allData])
+  return useMemo(() => mapPerCountryCasesData(allData, allClusterNames), [allData, allClusterNames])
 }
 
-function mapPerCountryCasesData(allData: PerCountryCasesDataRaw): PerCountryCasesData {
+function mapPerCountryCasesData(allData: PerCountryCasesDataRaw, allClusterNames: string[]): PerCountryCasesData {
   const regionName = 'World'
 
   const perCountryCasesData: PerCountryCasesDatum | undefined = allData.regions.find(
@@ -81,7 +83,8 @@ function mapPerCountryCasesData(allData: PerCountryCasesDataRaw): PerCountryCase
   }
 
   const clusterNames = copy(perCountryCasesData.cluster_names).sort()
-  const clusters = sortClusters(clusterNames.map((cluster) => ({ cluster, enabled: true })))
+  const unsortedClusters = clusterNames.map((cluster) => ({ cluster, enabled: true }))
+  const clusters = sortClustersByClusterNames(unsortedClusters, allClusterNames)
 
   const perCountryCasesDistributions = perCountryCasesData.distributions
 
