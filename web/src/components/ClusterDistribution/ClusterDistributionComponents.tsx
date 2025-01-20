@@ -3,19 +3,29 @@ import React, { useMemo } from 'react'
 import { ColCustom } from 'src/components/Common/ColCustom'
 import { ClusterDistributionPlotCard } from 'src/components/ClusterDistribution/ClusterDistributionPlotCard'
 import { useTicks, useTimeDomain } from 'src/io/useParams'
-import { ClusterDistribution } from 'src/io/getPerClusterData'
+import { filterClusters, filterCountries, usePerClusterData } from 'src/io/getPerClusterData'
+import { Country } from 'src/state/Places'
+import { Cluster } from 'src/state/Clusters'
 
 export function ClusterDistributionComponents({
-  withCountriesFiltered,
-  clusterBuildNames,
-  enabledCountries,
+  clustersSelected,
+  countriesSelected,
 }: {
-  withCountriesFiltered: ClusterDistribution[]
-  clusterBuildNames: Map<string, string>
-  enabledCountries: string[]
+  clustersSelected: Cluster[]
+  countriesSelected: Country[]
 }) {
   const ticks = useTicks()
   const timeDomain = useTimeDomain()
+  const { clusterBuildNames, clusterDistributions } = usePerClusterData()
+
+  const { withClustersFiltered } = useMemo(
+    () => filterClusters(clustersSelected, clusterDistributions),
+    [clustersSelected, clusterDistributions],
+  )
+  const { enabledCountries, withCountriesFiltered } = useMemo(
+    () => filterCountries(countriesSelected, withClustersFiltered),
+    [countriesSelected, withClustersFiltered],
+  )
 
   const clusterDistributionComponents = useMemo(
     () =>

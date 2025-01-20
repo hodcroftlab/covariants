@@ -19,13 +19,13 @@ import { isDefaultValue } from 'src/state/utils/isDefaultValue'
 import { getShouldPlotCountry } from 'src/io/getCountryColor'
 
 export function usePlacesPerCluster() {
-  const [countries, setCountries] = useRecoilState(countriesAtom)
-  const [continents, setContinents] = useRecoilState(continentsAtom)
+  const [countriesSelected, setCountriesSelected] = useRecoilState(countriesAtom)
+  const [continentsSelected, setContinentsSelected] = useRecoilState(continentsAtom)
   return {
-    countries,
-    setCountries,
-    continents,
-    setContinents,
+    countriesSelected,
+    setCountriesSelected,
+    continentsSelected,
+    setContinentsSelected,
   }
 }
 

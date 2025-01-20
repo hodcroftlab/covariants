@@ -1,4 +1,4 @@
-import React, { Suspense, useCallback, useMemo } from 'react'
+import React, { Suspense, useCallback } from 'react'
 import { Card, CardBody, Col, Form, Input, Label, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 import { styled } from 'styled-components'
@@ -11,7 +11,6 @@ import { usePlacesPerCluster } from 'src/state/PlacesForPerClusterData'
 import { tooltipSortAtom, TooltipSortCriterion } from 'src/state/TooltipSort'
 import { MdxContent } from 'src/i18n/getMdxContent'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { usePerClusterData, filterClusters, filterCountries } from 'src/io/getPerClusterData'
 import { Dropdown as DropdownBase } from 'src/components/Common/Dropdown'
 import { stringToOption } from 'src/components/Common/DropdownOption'
 import { Editable, CenteredEditable } from 'src/components/Common/Editable'
@@ -31,6 +30,7 @@ const enabledFilters = ['countries', 'clusters']
 
 export interface SortByDropdownProps {
   perCountryTooltipSortBy: TooltipSortCriterion
+
   onSortByChange(perCountryTooltipSortBy: TooltipSortCriterion): void
 }
 
@@ -86,17 +86,14 @@ const StickyRow = styled(Row)`
   align-self: flex-start;
 `
 
-export function ClusterDistributionPage() {
+function ClusterDistributionPlotSection() {
   const { t } = useTranslationSafe()
-
-  const { countries, setCountries, continents, setContinents } = usePlacesPerCluster()
-  const [clusters, setClusters] = useRecoilState(clustersForPerClusterDataAtom)
+  const { countriesSelected, setCountriesSelected, continentsSelected, setContinentsSelected } = usePlacesPerCluster()
+  const [clustersSelected, setClustersSelected] = useRecoilState(clustersForPerClusterDataAtom)
 
   const [tooltipSort, setTooltipSort] = useRecoilState(tooltipSortAtom)
   const perCountryTooltipSortBy = tooltipSort.criterion
   const perCountryTooltipSortReversed = tooltipSort.reversed
-
-  const { clusterBuildNames, clusterDistributions } = usePerClusterData()
 
   const setSortBy = useCallback(
     (criterion: TooltipSortCriterion) => {
@@ -112,50 +109,97 @@ export function ClusterDistributionPage() {
     [setTooltipSort],
   )
 
-  const { withClustersFiltered } = useMemo(
-    () => filterClusters(clusters, clusterDistributions),
-    [clusterDistributions, clusters],
-  )
-  const { enabledCountries, withCountriesFiltered } =
-    /* prettier-ignore */
-    useMemo(() => filterCountries(countries, withClustersFiltered), [countries, withClustersFiltered])
-
   const handleClusterCheckedChange = useCallback(
     (cluster: string) => {
-      setClusters((oldClusters) => toggleCluster(oldClusters, cluster))
+      setClustersSelected((oldClusters) => toggleCluster(oldClusters, cluster))
     },
-    [setClusters],
+    [setClustersSelected],
   )
 
   const handleClusterSelectAll = useCallback(() => {
-    setClusters((oldClusters) => enableAllClusters(oldClusters))
-  }, [setClusters])
+    setClustersSelected((oldClusters) => enableAllClusters(oldClusters))
+  }, [setClustersSelected])
 
   const handleClusterDeselectAll = useCallback(() => {
-    setClusters((oldClusters) => disableAllClusters(oldClusters))
-  }, [setClusters])
+    setClustersSelected((oldClusters) => disableAllClusters(oldClusters))
+  }, [setClustersSelected])
 
   const handleCountryCheckedChange = useCallback(
     (countryName: string) => {
-      setCountries((oldCountries) => toggleCountry(oldCountries, countryName))
+      setCountriesSelected((oldCountries) => toggleCountry(oldCountries, countryName))
     },
-    [setCountries],
+    [setCountriesSelected],
   )
 
   const handleContinentCheckedChange = useCallback(
     (continentName: string) => {
-      setContinents((oldContinents) => toggleContinent(oldContinents, continentName))
+      setContinentsSelected((oldContinents) => toggleContinent(oldContinents, continentName))
     },
-    [setContinents],
+    [setContinentsSelected],
   )
 
   const handleCountrySelectAll = useCallback(() => {
-    setCountries(enableAllCountries)
-  }, [setCountries])
+    setCountriesSelected(enableAllCountries)
+  }, [setCountriesSelected])
 
   const handleCountryDeselectAll = useCallback(() => {
-    setCountries(disableAllCountries)
-  }, [setCountries])
+    setCountriesSelected(disableAllCountries)
+  }, [setCountriesSelected])
+  return (
+    <WrapperFlex>
+      <SidebarFlex>
+        <DistributionSidebar
+          countries={countriesSelected}
+          continents={continentsSelected}
+          clusters={clustersSelected}
+          regionsTitle={t('Countries')}
+          countriesCollapsedByDefault={false}
+          enabledFilters={enabledFilters}
+          onClusterFilterChange={handleClusterCheckedChange}
+          onClusterFilterSelectAll={handleClusterSelectAll}
+          onClusterFilterDeselectAll={handleClusterDeselectAll}
+          onCountryFilterChange={handleCountryCheckedChange}
+          onRegionFilterChange={handleContinentCheckedChange}
+          onCountryFilterSelectAll={handleCountrySelectAll}
+          onCountryFilterDeselectAll={handleCountryDeselectAll}
+        />
+      </SidebarFlex>
+
+      <MainFlex>
+        <StickyRow className={'gx-0'}>
+          <Col>
+            <Card className="m-2">
+              <CardBody className="px-3 py-2">
+                <Form>
+                  <Row className="row-cols-lg-auto gx-0 align-items-center">
+                    <SortByDropdown perCountryTooltipSortBy={perCountryTooltipSortBy} onSortByChange={setSortBy} />
+                    <SortReverseCheckbox reverse={perCountryTooltipSortReversed} setReverse={setSortReversed} />
+                  </Row>
+                </Form>
+              </CardBody>
+            </Card>
+          </Col>
+        </StickyRow>
+
+        <Row className={'gx-0'}>
+          <Col>
+            <ErrorBoundary FallbackComponent={FetchError}>
+              <Suspense fallback={LOADING}>
+                <ClusterDistributionComponents
+                  clustersSelected={clustersSelected}
+                  countriesSelected={countriesSelected}
+                />
+              </Suspense>
+            </ErrorBoundary>
+          </Col>
+        </Row>
+      </MainFlex>
+    </WrapperFlex>
+  )
+}
+
+export function ClusterDistributionPage() {
+  const { t } = useTranslationSafe()
 
   return (
     <Layout wide>
@@ -182,59 +226,7 @@ export function ClusterDistributionPage() {
       <Row className={'gx-0'}>
         <Col className="pb-10">
           <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
-            <WrapperFlex>
-              <SidebarFlex>
-                <DistributionSidebar
-                  countries={countries}
-                  continents={continents}
-                  clusters={clusters}
-                  regionsTitle={t('Countries')}
-                  countriesCollapsedByDefault={false}
-                  enabledFilters={enabledFilters}
-                  onClusterFilterChange={handleClusterCheckedChange}
-                  onClusterFilterSelectAll={handleClusterSelectAll}
-                  onClusterFilterDeselectAll={handleClusterDeselectAll}
-                  onCountryFilterChange={handleCountryCheckedChange}
-                  onRegionFilterChange={handleContinentCheckedChange}
-                  onCountryFilterSelectAll={handleCountrySelectAll}
-                  onCountryFilterDeselectAll={handleCountryDeselectAll}
-                />
-              </SidebarFlex>
-
-              <MainFlex>
-                <StickyRow className={'gx-0'}>
-                  <Col>
-                    <Card className="m-2">
-                      <CardBody className="px-3 py-2">
-                        <Form>
-                          <Row className="row-cols-lg-auto gx-0 align-items-center">
-                            <SortByDropdown
-                              perCountryTooltipSortBy={perCountryTooltipSortBy}
-                              onSortByChange={setSortBy}
-                            />
-                            <SortReverseCheckbox reverse={perCountryTooltipSortReversed} setReverse={setSortReversed} />
-                          </Row>
-                        </Form>
-                      </CardBody>
-                    </Card>
-                  </Col>
-                </StickyRow>
-
-                <Row className={'gx-0'}>
-                  <Col>
-                    <ErrorBoundary FallbackComponent={FetchError}>
-                      <Suspense fallback={LOADING}>
-                        <ClusterDistributionComponents
-                          withCountriesFiltered={withCountriesFiltered}
-                          clusterBuildNames={clusterBuildNames}
-                          enabledCountries={enabledCountries}
-                        />
-                      </Suspense>
-                    </ErrorBoundary>
-                  </Col>
-                </Row>
-              </MainFlex>
-            </WrapperFlex>
+            <ClusterDistributionPlotSection />
           </Editable>
         </Col>
       </Row>

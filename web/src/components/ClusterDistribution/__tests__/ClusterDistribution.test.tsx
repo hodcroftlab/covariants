@@ -8,7 +8,6 @@ import { renderWithQueryClient } from 'src/helpers/__tests__/providers'
 import { server } from 'src/components/SharedMutations/__tests__/mockRequests'
 import { FETCHER } from 'src/hooks/useAxiosQuery'
 import { ClusterDistributionComponents } from 'src/components/ClusterDistribution/ClusterDistributionComponents'
-import { ClusterDistribution } from 'src/io/getPerClusterData'
 
 globalThis.ResizeObserver = ResizeObserver
 
@@ -22,31 +21,25 @@ describe('ClusterDistribution', () => {
     FETCHER.getQueryClient().clear()
   })
   describe('ClusterDistributionComponents', () => {
-    const withCountriesFiltered: ClusterDistribution[] = [
+    const clustersSelected = [
       {
         cluster: '20I (Alpha, V1)',
-        distribution: [
-          {
-            week: '2020-04-27',
-            frequencies: { Argentina: 0.0 },
-            interp: { Argentina: false },
-            orig: { Argentina: true },
-          },
-        ],
+        enabled: true,
       },
     ]
-    const clusterBuildNames = new Map()
-    const enabledCountries = ['Argentina']
+
+    const countriesSelected = [
+      {
+        country: 'Argentina',
+        enabled: true,
+      },
+    ]
 
     test('does not trigger error boundary when backend call succeeds', async () => {
       // Act
       renderWithQueryClient(
         <ErrorBoundary fallback={'Error boundary'}>
-          <ClusterDistributionComponents
-            withCountriesFiltered={withCountriesFiltered}
-            clusterBuildNames={clusterBuildNames}
-            enabledCountries={enabledCountries}
-          />
+          <ClusterDistributionComponents clustersSelected={clustersSelected} countriesSelected={countriesSelected} />
         </ErrorBoundary>,
       )
 
@@ -67,11 +60,7 @@ describe('ClusterDistribution', () => {
       // Act
       renderWithQueryClient(
         <ErrorBoundary fallback={'Error boundary'}>
-          <ClusterDistributionComponents
-            withCountriesFiltered={withCountriesFiltered}
-            clusterBuildNames={clusterBuildNames}
-            enabledCountries={enabledCountries}
-          />
+          <ClusterDistributionComponents clustersSelected={clustersSelected} countriesSelected={countriesSelected} />
         </ErrorBoundary>,
       )
 

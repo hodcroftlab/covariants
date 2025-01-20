@@ -1,7 +1,5 @@
 import { pickBy } from 'lodash'
-import { SetterOrUpdater, useRecoilState } from 'recoil'
 import { FETCHER, useAxiosQuery, UseAxiosQueryOptions } from 'src/hooks/useAxiosQuery'
-import { clustersForPerClusterDataAtom } from 'src/state/ClustersForPerClusterData'
 import type { Country } from 'src/state/Places'
 import type { Cluster } from 'src/state/Clusters'
 import { useClusters } from 'src/io/getClusters'
@@ -24,7 +22,6 @@ export interface PerClusterDataRaw {
 }
 
 export interface PerClusterData {
-  clusters: Cluster[]
   clusterBuildNames: Map<string, string>
   clusterDistributions: ClusterDistribution[]
 }
@@ -37,16 +34,13 @@ export function fetchPerClusterDataRaw() {
   return FETCHER.fetch<PerClusterDataRaw>('/data/perClusterData.json')
 }
 
-export function usePerClusterData(): PerClusterData & { setClusters: SetterOrUpdater<Cluster[]> } {
+export function usePerClusterData(): PerClusterData {
   const perClusterData = usePerClusterDataRaw()
 
-  const [clusters, setClusters] = useRecoilState(clustersForPerClusterDataAtom)
   const clusterBuildNames = new Map<string, string>(useClusters().map((c) => [c.display_name, c.build_name]))
   const clusterDistributions: ClusterDistribution[] = perClusterData.distributions
 
   return {
-    clusters,
-    setClusters,
     clusterBuildNames,
     clusterDistributions,
   }
