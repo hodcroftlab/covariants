@@ -5,7 +5,7 @@ import { parseUrl } from 'src/helpers/parseUrl'
 import { Cluster, clusterNamesSelector, updateUrlOnClustersSet } from 'src/state/Clusters'
 import { atomAsync } from 'src/state/utils/atomAsync'
 import { sortClustersByClusterNames } from 'src/io/getClusters'
-import { perClusterDataAtom } from 'src/state/perClusterData'
+import { perClusterDataAtom } from 'src/state/PerClusterData'
 
 export const clustersForPerClusterDataAtom = atomAsync<Cluster[]>({
   key: 'clustersForPerClusterDataAtom',

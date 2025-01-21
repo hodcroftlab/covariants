@@ -6,7 +6,7 @@ import { ClusterDistributionPlotCard } from 'src/components/ClusterDistribution/
 import { filterClusters, filterCountries } from 'src/io/getPerClusterData'
 import { Country } from 'src/state/Places'
 import { Cluster, clusterBuildNamesSelector } from 'src/state/Clusters'
-import { perClusterDataDistributionsSelector } from 'src/state/perClusterData'
+import { perClusterDataDistributionsSelector } from 'src/state/PerClusterData'
 
 export function ClusterDistributionComponents({
   clustersSelected,

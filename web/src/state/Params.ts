@@ -1,7 +1,7 @@
 import { selector } from 'recoil'
 import { DateTime, Interval } from 'luxon'
 import { atomAsync } from 'src/state/utils/atomAsync'
-import { fetchParams, GlobalParams } from 'src/io/useParams'
+import { fetchParams, GlobalParams } from 'src/io/getParams'
 import { dateStringToSeconds } from 'src/helpers/format'
 
 const paramsAtom = atomAsync<GlobalParams>({

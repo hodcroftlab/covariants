@@ -15,8 +15,8 @@ import { parseUrl } from 'src/helpers/parseUrl'
 import { updateUrlQuery } from 'src/helpers/urlQuery'
 import { atomAsync } from 'src/state/utils/atomAsync'
 import { isDefaultValue } from 'src/state/utils/isDefaultValue'
-import { perClusterDataAtom } from 'src/state/perClusterData'
-import { shouldPlotCountryAtom } from 'src/state/shouldPlotCountry'
+import { perClusterDataAtom } from 'src/state/PerClusterData'
+import { shouldPlotCountryAtom } from 'src/state/ShouldPlotCountry'
 
 /**
  * Represents a list of currently enabled countries
