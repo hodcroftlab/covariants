@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 109467,
+    "total": 109943,
     "counts": [
       {
         "mut": "S:F456L",
-        "count": 21041
+        "count": 21122
       },
       {
         "mut": "S:T547I",
-        "count": 20499
+        "count": 20560
       },
       {
         "mut": "S:P521T",
-        "count": 9194
+        "count": 9254
       },
       {
         "mut": "S:K304N",
-        "count": 6423
+        "count": 6461
       },
       {
         "mut": "S:P521S",
-        "count": 5112
+        "count": 5131
       },
       {
         "mut": "S:K147N",
-        "count": 4909
+        "count": 4926
       },
       {
         "mut": "S:L455F",
-        "count": 4346
+        "count": 4384
       },
       {
         "mut": "S:H146K",
-        "count": 3757
+        "count": 3772
       },
       {
         "mut": "S:E554K",
-        "count": 2044
+        "count": 2052
       },
       {
         "mut": "S:Q613H",
-        "count": 1986
+        "count": 2002
       }
     ]
   },
   "others": {
-    "total": 109467,
+    "total": 109943,
     "counts": [
       {
         "mut": "ORF1a:G519S",
-        "count": 8041
+        "count": 8090
       },
       {
         "mut": "ORF3a:I35K",
-        "count": 7872
+        "count": 7924
       },
       {
         "mut": "ORF1a:G1101D",
-        "count": 6863
+        "count": 6907
       },
       {
         "mut": "ORF3a:V13L",
-        "count": 5722
+        "count": 5751
       },
       {
         "mut": "ORF1a:P926H",
-        "count": 5280
+        "count": 5309
       },
       {
         "mut": "ORF1a:P1158S",
-        "count": 3916
+        "count": 3932
       },
       {
         "mut": "ORF1a:S2030L",
-        "count": 2650
+        "count": 2682
       },
       {
         "mut": "ORF1a:L3606F",
-        "count": 2590
+        "count": 2612
       },
       {
         "mut": "N:A35T",
-        "count": 2430
+        "count": 2454
       },
       {
         "mut": "ORF1b:V1228L",
-        "count": 2389
+        "count": 2411
       }
     ]
   }

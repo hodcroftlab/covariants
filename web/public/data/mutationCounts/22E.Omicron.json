@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 379132,
+    "total": 379618,
     "counts": [
       {
         "mut": "S:R346T",
-        "count": 263109
+        "count": 263457
       },
       {
         "mut": "S:Y144-",
-        "count": 98054
+        "count": 98184
       },
       {
         "mut": "S:I666V",
-        "count": 12960
+        "count": 12988
       },
       {
         "mut": "S:E619Q",
-        "count": 6913
+        "count": 6920
       },
       {
         "mut": "S:F157L",
-        "count": 5755
+        "count": 5763
       },
       {
         "mut": "S:M153I",
-        "count": 4559
+        "count": 4561
       },
       {
         "mut": "S:L5F",
-        "count": 4340
+        "count": 4341
       },
       {
         "mut": "S:D253G",
-        "count": 4334
+        "count": 4337
       },
       {
         "mut": "S:Y248D",
-        "count": 3751
+        "count": 3755
       },
       {
         "mut": "S:Q613H",
-        "count": 3604
+        "count": 3617
       }
     ]
   },
   "others": {
-    "total": 379132,
+    "total": 379618,
     "counts": [
       {
         "mut": "ORF1b:N1191S",
-        "count": 293318
+        "count": 293656
       },
       {
         "mut": "ORF1a:V84-",
-        "count": 11006
+        "count": 11020
       },
       {
         "mut": "ORF1a:M85-",
-        "count": 10595
+        "count": 10612
       },
       {
         "mut": "ORF1b:P2313L",
-        "count": 8364
+        "count": 8376
       },
       {
         "mut": "ORF1a:V3855I",
-        "count": 8296
+        "count": 8308
       },
       {
         "mut": "E:V62F",
-        "count": 8224
+        "count": 8234
       },
       {
         "mut": "ORF1a:G82-",
-        "count": 7429
+        "count": 7438
       },
       {
         "mut": "ORF1a:H83-",
-        "count": 7382
+        "count": 7391
       },
       {
         "mut": "ORF1a:L3606F",
-        "count": 7248
+        "count": 7254
       },
       {
         "mut": "ORF1a:F143-",
-        "count": 7037
+        "count": 7048
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "S": {
-    "total": 5226,
+    "total": 5238,
     "counts": [
       {
         "mut": "S:M177I",
-        "count": 231
+        "count": 233
       },
       {
         "mut": "S:L5F",
@@ -45,7 +45,7 @@
     ]
   },
   "others": {
-    "total": 5226,
+    "total": 5238,
     "counts": [
       {
         "mut": "N:A211S",
@@ -85,7 +85,7 @@
       },
       {
         "mut": "ORF1a:F941L",
-        "count": 146
+        "count": 147
       }
     ]
   }
