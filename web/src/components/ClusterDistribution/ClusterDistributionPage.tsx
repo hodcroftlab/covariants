@@ -28,20 +28,24 @@ const Dropdown = styled(DropdownBase)`
 
 const enabledFilters = ['countries', 'clusters']
 
-export interface SortByDropdownProps {
-  perCountryTooltipSortBy: TooltipSortCriterion
-
-  onSortByChange(perCountryTooltipSortBy: TooltipSortCriterion): void
-}
-
 const sortByOptions = Object.entries(TooltipSortCriterion).map(([key, value]) => ({ value, label: key }))
 
-export function SortByDropdown({ perCountryTooltipSortBy, onSortByChange }: SortByDropdownProps) {
+export function SortByDropdown() {
   const { t } = useTranslationSafe()
 
+  const [tooltipSort, setTooltipSort] = useRecoilState(tooltipSortAtom)
+  const sortBy = tooltipSort.criterion
+
+  const setSortBy = useCallback(
+    (criterion: TooltipSortCriterion) => {
+      setTooltipSort((tooltipSort) => ({ ...tooltipSort, criterion }))
+    },
+    [setTooltipSort],
+  )
+
   const handleSortByChange = useCallback(
-    (value: string) => onSortByChange(TooltipSortCriterion[value as keyof typeof TooltipSortCriterion]),
-    [onSortByChange],
+    (value: string) => setSortBy(TooltipSortCriterion[value as keyof typeof TooltipSortCriterion]),
+    [setSortBy],
   )
 
   return (
@@ -52,7 +56,7 @@ export function SortByDropdown({ perCountryTooltipSortBy, onSortByChange }: Sort
       <Dropdown
         identifier="per-variant-sort-by"
         options={sortByOptions}
-        value={stringToOption(perCountryTooltipSortBy)}
+        value={stringToOption(sortBy)}
         onValueChange={handleSortByChange}
         isSearchable={false}
       />
@@ -60,18 +64,30 @@ export function SortByDropdown({ perCountryTooltipSortBy, onSortByChange }: Sort
   )
 }
 
-export interface SortReverseCheckboxProps {
-  reverse: boolean
-  setReverse(reverse: boolean): void
-}
-
-export function SortReverseCheckbox({ reverse, setReverse }: SortReverseCheckboxProps) {
+export function SortReverseCheckbox() {
   const { t } = useTranslationSafe()
-  const onChange = useCallback(() => setReverse(!reverse), [setReverse, reverse])
+
+  const [tooltipSort, setTooltipSort] = useRecoilState(tooltipSortAtom)
+  const sortReversed = tooltipSort.reversed
+
+  const setSortReversed = useCallback(
+    (reversed: boolean) => {
+      setTooltipSort((tooltipSort) => ({ ...tooltipSort, reversed }))
+    },
+    [setTooltipSort],
+  )
+
+  const onChange = useCallback(() => setSortReversed(!sortReversed), [setSortReversed, sortReversed])
 
   return (
     <Col>
-      <Input id="per-variant-sort-reverse" type="checkbox" checked={reverse} onChange={onChange} className={'me-1'} />
+      <Input
+        id="per-variant-sort-reverse"
+        type="checkbox"
+        checked={sortReversed}
+        onChange={onChange}
+        className={'me-1'}
+      />
       <Label for="per-variant-sort-reverse" check>
         {t('Reversed')}
       </Label>
@@ -90,24 +106,6 @@ function ClusterDistributionPlotSection() {
   const { t } = useTranslationSafe()
   const { countriesSelected, setCountriesSelected, continentsSelected, setContinentsSelected } = usePlacesPerCluster()
   const [clustersSelected, setClustersSelected] = useRecoilState(clustersForPerClusterDataAtom)
-
-  const [tooltipSort, setTooltipSort] = useRecoilState(tooltipSortAtom)
-  const perCountryTooltipSortBy = tooltipSort.criterion
-  const perCountryTooltipSortReversed = tooltipSort.reversed
-
-  const setSortBy = useCallback(
-    (criterion: TooltipSortCriterion) => {
-      setTooltipSort((tooltipSort) => ({ ...tooltipSort, criterion }))
-    },
-    [setTooltipSort],
-  )
-
-  const setSortReversed = useCallback(
-    (reversed: boolean) => {
-      setTooltipSort((tooltipSort) => ({ ...tooltipSort, reversed }))
-    },
-    [setTooltipSort],
-  )
 
   const handleClusterCheckedChange = useCallback(
     (cluster: string) => {
@@ -172,8 +170,8 @@ function ClusterDistributionPlotSection() {
               <CardBody className="px-3 py-2">
                 <Form>
                   <Row className="row-cols-lg-auto gx-0 align-items-center">
-                    <SortByDropdown perCountryTooltipSortBy={perCountryTooltipSortBy} onSortByChange={setSortBy} />
-                    <SortReverseCheckbox reverse={perCountryTooltipSortReversed} setReverse={setSortReversed} />
+                    <SortByDropdown />
+                    <SortReverseCheckbox />
                   </Row>
                 </Form>
               </CardBody>
