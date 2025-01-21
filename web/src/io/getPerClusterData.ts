@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { pickBy } from 'lodash'
 import { z } from 'zod'
-import { FETCHER, UseAxiosQueryOptions, useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
+import { FETCHER } from 'src/hooks/useAxiosQuery'
 import type { Country } from 'src/state/Places'
 import type { Cluster } from 'src/state/Clusters'
 
@@ -26,33 +26,9 @@ export type PerClusterDataRaw = z.infer<typeof perClusterDataRawSchema>
 export type ClusterDistribution = z.infer<typeof clusterDistributionSchema>
 export type ClusterDistributionDatum = z.infer<typeof clusterDistributionDatumSchema>
 
-export function usePerClusterDataRaw(options?: UseAxiosQueryOptions<PerClusterDataRaw>): PerClusterDataRaw {
-  const { data: perClusterDataRaw } = useValidatedAxiosQuery<PerClusterDataRaw>(
-    '/data/perClusterData.json',
-    perClusterDataRawSchema,
-    options,
-  )
-  return perClusterDataRaw
-}
-
 export async function fetchPerClusterDataRaw() {
   const data = await FETCHER.fetch<PerClusterDataRaw>('/data/perClusterData.json')
   return perClusterDataRawSchema.parse(data)
-}
-
-export function useClusterDistribution(cluster: string): ClusterDistribution {
-  const perClusterData = usePerClusterDataRaw()
-  const clusterDistributions: ClusterDistribution[] = perClusterData.distributions
-  const clusterDistribution = clusterDistributions.find((dist) => dist.cluster === cluster)
-  if (!clusterDistribution) {
-    throw new Error(`Cluster distribution not found for cluster '${cluster}'`)
-  }
-  return clusterDistribution
-}
-
-export function useCountryNames(): string[] {
-  const perClusterData = usePerClusterDataRaw()
-  return perClusterData.country_names
 }
 
 export function filterCountries(countries: Country[], withClustersFiltered: ClusterDistribution[]) {

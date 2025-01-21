@@ -2,13 +2,14 @@ import React, { useMemo } from 'react'
 import { styled } from 'styled-components'
 import { GoGraph } from 'react-icons/go'
 import { Card, CardBody, Col, Row } from 'reactstrap'
+import { useRecoilValue } from 'recoil'
 import { Link } from '../Link/Link'
-import { useClusterDistribution, useCountryNames } from 'src/io/getPerClusterData'
 
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { theme } from 'src/theme'
 import { ClusterDistributionPlot } from 'src/components/ClusterDistribution/ClusterDistributionPlot'
 import { ClusterDatum } from 'src/io/getClusters'
+import { perClusterDataCountryNamesSelector, perClusterDataDistributionSelector } from 'src/state/PerClusterData'
 
 const PlotCardTitleIcon = styled(GoGraph)`
   margin: auto 5px;
@@ -50,8 +51,8 @@ export function PlotCardTitle({ cluster }: PlotCardProps) {
 
 export function PlotCard({ cluster }: PlotCardProps) {
   const title = useMemo(() => <PlotCardTitle cluster={cluster} />, [cluster])
-  const clusterDistribution = useClusterDistribution(cluster.display_name).distribution
-  const countryNames = useCountryNames()
+  const clusterDistribution = useRecoilValue(perClusterDataDistributionSelector(cluster.display_name))
+  const countryNames = useRecoilValue(perClusterDataCountryNamesSelector)
 
   return (
     <Card>
