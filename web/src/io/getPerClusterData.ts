@@ -1,31 +1,43 @@
+/* eslint-disable camelcase */
 import { pickBy } from 'lodash'
-import { FETCHER, useAxiosQuery, UseAxiosQueryOptions } from 'src/hooks/useAxiosQuery'
+import { z } from 'zod'
+import { FETCHER, UseAxiosQueryOptions, useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
 import type { Country } from 'src/state/Places'
 import type { Cluster } from 'src/state/Clusters'
 
-export interface ClusterDistributionDatum {
-  week: string
-  frequencies: Record<string, number | undefined>
-  interp: Record<string, boolean | undefined>
-  orig: Record<string, boolean | undefined>
-}
+const clusterDistributionDatumSchema = z.object({
+  week: z.string(),
+  frequencies: z.record(z.string(), z.number().optional()),
+  interp: z.record(z.string(), z.boolean().optional()),
+  orig: z.record(z.string(), z.boolean().optional()),
+})
 
-export interface ClusterDistribution {
-  cluster: string
-  distribution: ClusterDistributionDatum[]
-}
+const clusterDistributionSchema = z.object({
+  cluster: z.string(),
+  distribution: clusterDistributionDatumSchema.array(),
+})
 
-export interface PerClusterDataRaw {
-  country_names: string[]
-  distributions: ClusterDistribution[]
-}
+const perClusterDataRawSchema = z.object({
+  country_names: z.string().array(),
+  distributions: clusterDistributionSchema.array(),
+})
+
+export type PerClusterDataRaw = z.infer<typeof perClusterDataRawSchema>
+export type ClusterDistribution = z.infer<typeof clusterDistributionSchema>
+export type ClusterDistributionDatum = z.infer<typeof clusterDistributionDatumSchema>
 
 export function usePerClusterDataRaw(options?: UseAxiosQueryOptions<PerClusterDataRaw>): PerClusterDataRaw {
-  return useAxiosQuery<PerClusterDataRaw>('/data/perClusterData.json', options)
+  const { data: perClusterDataRaw } = useValidatedAxiosQuery<PerClusterDataRaw>(
+    '/data/perClusterData.json',
+    perClusterDataRawSchema,
+    options,
+  )
+  return perClusterDataRaw
 }
 
-export function fetchPerClusterDataRaw() {
-  return FETCHER.fetch<PerClusterDataRaw>('/data/perClusterData.json')
+export async function fetchPerClusterDataRaw() {
+  const data = await FETCHER.fetch<PerClusterDataRaw>('/data/perClusterData.json')
+  return perClusterDataRawSchema.parse(data)
 }
 
 export function useClusterDistribution(cluster: string): ClusterDistribution {
