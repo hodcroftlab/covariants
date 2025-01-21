@@ -2,7 +2,6 @@ import { pickBy } from 'lodash'
 import { FETCHER, useAxiosQuery, UseAxiosQueryOptions } from 'src/hooks/useAxiosQuery'
 import type { Country } from 'src/state/Places'
 import type { Cluster } from 'src/state/Clusters'
-import { useClusters } from 'src/io/getClusters'
 
 export interface ClusterDistributionDatum {
   week: string
@@ -21,29 +20,12 @@ export interface PerClusterDataRaw {
   distributions: ClusterDistribution[]
 }
 
-export interface PerClusterData {
-  clusterBuildNames: Map<string, string>
-  clusterDistributions: ClusterDistribution[]
-}
-
 export function usePerClusterDataRaw(options?: UseAxiosQueryOptions<PerClusterDataRaw>): PerClusterDataRaw {
   return useAxiosQuery<PerClusterDataRaw>('/data/perClusterData.json', options)
 }
 
 export function fetchPerClusterDataRaw() {
   return FETCHER.fetch<PerClusterDataRaw>('/data/perClusterData.json')
-}
-
-export function usePerClusterData(): PerClusterData {
-  const perClusterData = usePerClusterDataRaw()
-
-  const clusterBuildNames = new Map<string, string>(useClusters().map((c) => [c.display_name, c.build_name]))
-  const clusterDistributions: ClusterDistribution[] = perClusterData.distributions
-
-  return {
-    clusterBuildNames,
-    clusterDistributions,
-  }
 }
 
 export function useClusterDistribution(cluster: string): ClusterDistribution {

@@ -1,11 +1,13 @@
 import { Row } from 'reactstrap'
 import React, { useMemo } from 'react'
+import { useRecoilValue } from 'recoil'
 import { ColCustom } from 'src/components/Common/ColCustom'
 import { ClusterDistributionPlotCard } from 'src/components/ClusterDistribution/ClusterDistributionPlotCard'
 import { useTicks, useTimeDomain } from 'src/io/useParams'
-import { filterClusters, filterCountries, usePerClusterData } from 'src/io/getPerClusterData'
+import { filterClusters, filterCountries } from 'src/io/getPerClusterData'
 import { Country } from 'src/state/Places'
-import { Cluster } from 'src/state/Clusters'
+import { Cluster, clusterBuildNamesSelector } from 'src/state/Clusters'
+import { perClusterDataDistributionsSelector } from 'src/state/perClusterData'
 
 export function ClusterDistributionComponents({
   clustersSelected,
@@ -16,7 +18,8 @@ export function ClusterDistributionComponents({
 }) {
   const ticks = useTicks()
   const timeDomain = useTimeDomain()
-  const { clusterBuildNames, clusterDistributions } = usePerClusterData()
+  const clusterBuildNames = useRecoilValue(clusterBuildNamesSelector)
+  const clusterDistributions = useRecoilValue(perClusterDataDistributionsSelector)
 
   const { withClustersFiltered } = useMemo(
     () => filterClusters(clustersSelected, clusterDistributions),

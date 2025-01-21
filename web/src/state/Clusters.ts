@@ -24,6 +24,14 @@ export const clusterNamesSelector = selector({
   },
 })
 
+export const clusterBuildNamesSelector = selector({
+  key: 'clusterBuildNames',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return new Map<string, string>(clusters.map((c) => [c.display_name, c.build_name]))
+  },
+})
+
 /** Toggles a given cluster enabled/disabled */
 export function toggleCluster(clusters: Cluster[], clusterName: string): Cluster[] {
   return clusters.map((cluster) => {
