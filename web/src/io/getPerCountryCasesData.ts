@@ -2,41 +2,12 @@
 import copy from 'fast-copy'
 import { pickBy } from 'lodash'
 
+import { z } from 'zod'
+import { useMemo } from 'react'
 import type { Cluster } from 'src/state/Clusters'
 import type { Country } from 'src/state/Places'
-import { sortClusters } from 'src/io/getClusters'
-
-import perCountryCasesDataJson from 'src/../public/data/perCountryDataCaseCounts.json'
-
-export interface PerCountryCasesDatum {
-  cluster_names: string[]
-  distributions: PerCountryCasesDistribution[]
-  max_date: string
-  min_date: string
-  region: string
-  per_country_intro_content: string
-}
-
-export interface PerCountryCasesDataRaw {
-  regions: PerCountryCasesDatum[]
-}
-
-export interface PerCountryCasesDistributionDatum {
-  week: string
-  stand_total_cases: number
-  stand_estimated_cases: {
-    [key: string]: number | undefined
-  }
-}
-
-export interface PerCountryCasesDistribution {
-  country: string
-  distribution: PerCountryCasesDistributionDatum[]
-}
-
-export interface ClusterState {
-  [key: string]: { enabled: boolean }
-}
+import { fetchClusterNames, sortClustersByClusterNames, useClusterNames } from 'src/io/getClusters'
+import { FETCHER, useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
 
 export interface PerCountryCasesData {
   clusterNames: string[]
@@ -46,13 +17,62 @@ export interface PerCountryCasesData {
   perCountryCasesIntroContent: string
 }
 
-export function getPerCountryCasesDataRaw(): PerCountryCasesDataRaw {
-  return perCountryCasesDataJson as PerCountryCasesDataRaw
+const perCountryCasesDistributionDatumSchema = z.object({
+  week: z.string(),
+  stand_total_cases: z.number(),
+  stand_estimated_cases: z.record(z.string(), z.number().optional()),
+})
+
+const perCountryCasesDistributionSchema = z.object({
+  country: z.string(),
+  distribution: perCountryCasesDistributionDatumSchema.array(),
+})
+
+const perCountryCasesDatumSchema = z.object({
+  cluster_names: z.string().array(),
+  distributions: perCountryCasesDistributionSchema.array(),
+  max_date: z.string(),
+  min_date: z.string(),
+  region: z.string(),
+  per_country_intro_content: z.string(),
+})
+
+const perCountryCaseDataRawSchema = z.object({
+  regions: perCountryCasesDatumSchema.array(),
+})
+
+type PerCountryCasesDataRaw = z.infer<typeof perCountryCaseDataRawSchema>
+type PerCountryCasesDatum = z.infer<typeof perCountryCasesDatumSchema>
+export type PerCountryCasesDistribution = z.infer<typeof perCountryCasesDistributionSchema>
+export type PerCountryCasesDistributionDatum = z.infer<typeof perCountryCasesDistributionDatumSchema>
+
+export function fetchPerCountryCasesDataRaw(): Promise<PerCountryCasesDataRaw> {
+  return FETCHER.fetch<PerCountryCasesDataRaw>('/data/perCountryDataCaseCounts.json')
 }
 
-export function getPerCountryCasesData(): PerCountryCasesData {
-  const allData = getPerCountryCasesDataRaw()
+export function usePerCountryCasesDataRaw(): PerCountryCasesDataRaw {
+  const { data: regions } = useValidatedAxiosQuery<PerCountryCasesDataRaw>(
+    '/data/perCountryDataCaseCounts.json',
+    perCountryCaseDataRawSchema,
+  )
+  return regions
+}
 
+export async function fetchPerCountryCasesData(): Promise<PerCountryCasesData> {
+  const allData = await fetchPerCountryCasesDataRaw()
+  const allClusterNames = await fetchClusterNames()
+
+  return mapPerCountryCasesData(allData, allClusterNames)
+}
+
+export function usePerCountryCasesData(): PerCountryCasesData {
+  const allData = usePerCountryCasesDataRaw()
+  const allClusterNames = useClusterNames()
+
+  return useMemo(() => mapPerCountryCasesData(allData, allClusterNames), [allData, allClusterNames])
+}
+
+function mapPerCountryCasesData(allData: PerCountryCasesDataRaw, allClusterNames: string[]): PerCountryCasesData {
   const regionName = 'World'
 
   const perCountryCasesData: PerCountryCasesDatum | undefined = allData.regions.find(
@@ -63,7 +83,8 @@ export function getPerCountryCasesData(): PerCountryCasesData {
   }
 
   const clusterNames = copy(perCountryCasesData.cluster_names).sort()
-  const clusters = sortClusters(clusterNames.map((cluster) => ({ cluster, enabled: true })))
+  const unsortedClusters = clusterNames.map((cluster) => ({ cluster, enabled: true }))
+  const clusters = sortClustersByClusterNames(unsortedClusters, allClusterNames)
 
   const perCountryCasesDistributions = perCountryCasesData.distributions
 
@@ -80,32 +101,6 @@ export function getPerCountryCasesData(): PerCountryCasesData {
     countries,
     perCountryCasesDistributions,
     perCountryCasesIntroContent,
-  }
-}
-
-export function getPerCountryCasesIntroContentFilename(region: string): string {
-  const allData = getPerCountryCasesDataRaw()
-  const perCountryCasesData: PerCountryCasesDatum | undefined = allData.regions.find(
-    (candidate) => candidate.region === region,
-  )
-  if (!perCountryCasesData) {
-    throw new Error(`Region data not found for region: ${region}`)
-  }
-  return perCountryCasesData.per_country_intro_content
-}
-
-export function getRegions() {
-  const allData = getPerCountryCasesDataRaw()
-  const regionNames = allData.regions.map(({ region }) => region)
-  const regionsHaveData = allData.regions.map(
-    ({ cluster_names, distributions }) => cluster_names.length > 0 && distributions.length > 0,
-  )
-  const defaultRegionName = regionNames[0]
-
-  return {
-    regionNames,
-    regionsHaveData,
-    defaultRegionName,
   }
 }
 

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export const FlagWrapper = styled.div`
   height: calc(1em + 2px);

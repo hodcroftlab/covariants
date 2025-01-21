@@ -1,31 +1,29 @@
 import axios from 'axios'
 import React, { useMemo } from 'react'
 
-import { get } from 'lodash'
+import get from 'lodash/get'
 import { Oval as OvalLoader } from 'react-loader-spinner'
 import { useQuery } from '@tanstack/react-query'
-import { AcknowledgementsError } from 'src/components/Acknowledgements/AcknowledgementsError'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { Col, Container, Row } from 'reactstrap'
+import { PageHeading } from '../Common/PageHeading'
+import AcknowledgementsContent from './AcknowledgementsContent.md'
+import { AcknowledgementsError } from 'src/components/Acknowledgements/AcknowledgementsError'
 
-import { getClusters } from 'src/io/getClusters'
+import { useClusters } from 'src/io/getClusters'
 import { Layout } from 'src/components/Layout/Layout'
 import { AcknowledgementsCard, AcknowledgementsKeysJson } from 'src/components/Acknowledgements/AcknowledgementsCard'
-
-import AcknowledgementsContent from './AcknowledgementsContent.md'
-import { PageHeading } from '../Common/PageHeading'
 
 export const AcknowledgementsPageContainer = styled(Container)`
   max-width: 1200px;
   padding: 0 0.5rem;
 `
 
-const clusters = getClusters()
-
 export function useQueryAcknowledgementsKeys() {
-  return useQuery(
-    ['acknowledgements_keys'],
-    async () => {
+  const clusters = useClusters()
+  return useQuery({
+    queryKey: ['acknowledgements_keys'],
+    queryFn: async () => {
       const url = '/acknowledgements/acknowledgements_keys.json'
       const res = await axios.get(url)
       if (!res.data) {
@@ -37,14 +35,12 @@ export function useQueryAcknowledgementsKeys() {
         return { cluster, numChunks }
       })
     },
-    {
-      staleTime: Number.POSITIVE_INFINITY,
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: true,
-      refetchInterval: Number.POSITIVE_INFINITY,
-    },
-  )
+    staleTime: Number.POSITIVE_INFINITY,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
+    refetchInterval: Number.POSITIVE_INFINITY,
+  })
 }
 
 export function AcknowledgementsPage() {

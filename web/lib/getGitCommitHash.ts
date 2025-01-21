@@ -1,7 +1,5 @@
 import { execSync } from 'child_process'
 
-import { getenv } from './getenv'
-
 export function getGitCommitHashLocal() {
   try {
     return execSync('git rev-parse HEAD').toString().trim()
@@ -12,18 +10,14 @@ export function getGitCommitHashLocal() {
 
 export function getGitCommitHash() {
   return (
-    getenv('GIT_COMMIT', null) ??
-    getenv('GIT_COMMIT_HASH', null) ??
-    getenv('TRAVIS_COMMIT', null) ??
-    getenv('NOW_GITHUB_COMMIT_SHA', null) ??
-    getenv('GITHUB_SHA', null) ??
-    getenv('COMMIT_REF', null) ??
-    getenv('VERCEL_GITHUB_COMMIT_SHA', null) ??
-    getenv('VERCEL_GITLAB_COMMIT_SHA', null) ??
-    getenv('VERCEL_BITBUCKET_COMMIT_SHA', null) ??
-    getenv('ZEIT_GITHUB_COMMIT_SHA', null) ??
-    getenv('ZEIT_GITLAB_COMMIT_SHA', null) ??
-    getenv('ZEIT_BITBUCKET_COMMIT_SHA', null) ??
-    getGitCommitHashLocal()
+    process.env.GIT_COMMIT ??
+    process.env.GIT_COMMIT_HASH ??
+    process.env.GITHUB_SHA ??
+    process.env.COMMIT_REF ??
+    process.env.VERCEL_GITHUB_COMMIT_SHA ??
+    process.env.VERCEL_GITLAB_COMMIT_SHA ??
+    process.env.VERCEL_BITBUCKET_COMMIT_SHA ??
+    getGitCommitHashLocal() ??
+    ''
   )
 }

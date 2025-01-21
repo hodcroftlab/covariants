@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Col, Row } from 'reactstrap'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { FaGithub, FaTwitter } from 'react-icons/fa'
 
 import { LinkExternal } from 'src/components/Link/LinkExternal'
@@ -80,15 +80,15 @@ export function TeamCredits() {
   const { t } = useTranslationSafe()
 
   return (
-    <Row noGutters>
+    <Row className={'gx-0'}>
       <Col>
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col className="d-flex text-center">
             <TeamCreditsH1>{t('{{ covariants }} is brought to you by', { covariants: 'CoVariants' })}</TeamCreditsH1>
           </Col>
         </Row>
 
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col className="d-flex text-center">
             <Flex>
               <Portrait src="https://avatars3.githubusercontent.com/u/14290674?s=400&u=e074280fd3dd9a9b0e583af5f17d3a69f3068f8b&v=4" />
@@ -109,7 +109,7 @@ export function TeamCredits() {
           </Col>
         </Row>
 
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col>
             <FlexContributors>
               {contributors.map((contributor) => (

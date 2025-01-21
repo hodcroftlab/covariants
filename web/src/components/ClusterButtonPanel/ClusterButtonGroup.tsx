@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { Button } from 'reactstrap'
 
 import type { ClusterDatum } from 'src/io/getClusters'
@@ -38,8 +38,7 @@ export interface ClusterButtonArrayProps {
 
 export function ClusterButtonOptional({ cluster, isCurrent, showNonImportant }: ClusterButtonArrayProps) {
   const shouldShow = useMemo(
-    // prettier-ignore
-    () => cluster.important || showNonImportant || isCurrent,
+    () => (cluster.important ?? false) || showNonImportant || isCurrent,
     [cluster.important, isCurrent, showNonImportant],
   )
 
@@ -59,7 +58,7 @@ export function ClusterButtonGroup({ clusterGroup, currentCluster }: ClusterButt
   const { t } = useTranslationSafe()
 
   const [showNonImportant, setShowNonImportant] = useState(false)
-  const toggleShowNonImportant = useMemo(() => (_: unknown) => setShowNonImportant(!showNonImportant), [showNonImportant]); // prettier-ignore
+  const toggleShowNonImportant = useMemo(() => () => setShowNonImportant(!showNonImportant), [showNonImportant])
 
   return (
     <ClusterGroupContainer>

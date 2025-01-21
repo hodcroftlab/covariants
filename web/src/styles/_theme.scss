@@ -1,7 +1,9 @@
 // Some of the things are borrowed from bootswatch Materia theme
 // https://github.com/thomaspark/bootswatch
 
-/* stylelint-disable selector-no-qualifying-type, plugin/stylelint-no-indistinguishable-colors, plugin/no-low-performance-animation-properties */
+/* stylelint-disable selector-no-qualifying-type */
+
+@use './variables' as vars;
 
 @mixin ripple($color) {
   position: relative;
@@ -20,7 +22,10 @@
     background-size: 1000% 1000%;
     border: 0;
     opacity: 0;
-    transition: background 0.5s, opacity 1s;
+    transition:
+      background 0.5s,
+      opacity 1s;
+
     @include gradient-radial($color 10%, transparent 10.01%);
   }
 
@@ -42,7 +47,8 @@
 
 .navbar {
   border: 0;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 30%);
+  padding: 0 1rem;
 
   &-brand {
     font-size: 24px;
@@ -61,14 +67,14 @@
     input[type='number'],
     input[type='tel'] {
       color: #fff;
-      box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5);
+      box-shadow: inset 0 -1px 0 rgb(255 255 255 / 50%);
 
       &:focus {
         box-shadow: inset 0 -2px 0 #fff;
       }
 
       &::placeholder {
-        color: rgba(255, 255, 255, 0.5);
+        color: rgb(255 255 255 / 50%);
       }
     }
   }
@@ -80,16 +86,16 @@
   .btn-#{$class} {
     &:focus {
       background-color: $bg;
-      box-shadow: 0 0 0 2px rgba(204, 204, 204, 0.5);
+      box-shadow: 0 0 0 2px rgb(204 204 204 / 50%);
     }
 
     &:hover,
     &:active:hover {
-      background-color: darken($bg, 6%);
+      background-color: darken($bg, 6%); /* stylelint-disable-line scss/no-global-function-names, function-no-unknown */
     }
 
     &:active {
-      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+      box-shadow: 2px 2px 4px rgb(0 0 0 / 40%);
     }
 
     @include ripple($color);
@@ -100,22 +106,22 @@
   }
 }
 
-@include btn(primary, $primary, $white);
-@include btn(secondary, $secondary, $gray-500);
-@include btn(success, $success, $white);
-@include btn(info, $info, $white);
-@include btn(warning, $warning, $white);
-@include btn(danger, $danger, $white);
-@include btn(dark, $dark, $white);
-@include btn(light, $light, $white);
+@include btn(primary, vars.$primary, vars.$white);
+@include btn(secondary, vars.$secondary, vars.$gray-500);
+@include btn(success, vars.$success, vars.$white);
+@include btn(info, vars.$info, vars.$white);
+@include btn(warning, vars.$warning, vars.$white);
+@include btn(danger, vars.$danger, vars.$white);
+@include btn(dark, vars.$dark, vars.$white);
+@include btn(light, vars.$light, vars.$white);
 
 .btn {
   border: 0;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-  transition: all 0.4s; // stylelint-disable-line declaration-property-value-blacklist
+  box-shadow: 0 1px 4px rgb(0 0 0 / 40%);
+  transition: all 0.4s;
 
   &-link {
-    color: $link-color;
+    color: vars.$link-color;
     text-transform: none;
     box-shadow: none;
 
@@ -141,24 +147,24 @@
     &.disabled,
     &[disabled],
     fieldset[disabled] & {
-      color: rgba(0, 0, 0, 0.4);
-      background-color: rgba(0, 0, 0, 0.1);
+      color: rgb(0 0 0 / 40%);
+      background-color: rgb(0 0 0 / 10%);
       opacity: 1;
 
       &:hover,
       &:focus {
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: rgb(0 0 0 / 10%);
       }
     }
   }
 
   &-outline-secondary {
-    color: $gray-300;
-    border-color: $gray-200;
+    color: vars.$gray-300;
+    border-color: vars.$gray-200;
   }
 
   &-warning {
-    color: $white;
+    color: vars.$white;
   }
 
   &.dropdown-toggle::before {
@@ -193,7 +199,7 @@
 
   .btn + .btn,
   .btn + .btn-group > .dropdown-toggle {
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 1px 1px 4px rgb(0 0 0 / 40%);
   }
 }
 
@@ -215,11 +221,11 @@ p {
 }
 
 a {
-  transition: all 0.2s; // stylelint-disable-line declaration-property-value-blacklist
+  transition: all 0.2s;
 }
 
 .text-secondary {
-  color: $gray-500 !important;
+  color: vars.$gray-500 !important;
 }
 
 // Tables ======================================================================
@@ -228,13 +234,14 @@ a {
   > tbody > tr,
   > tbody > tr > th,
   > tbody > tr > td {
-    transition: all 0.2s; // stylelint-disable-line declaration-property-value-blacklist
+    transition: all 0.2s;
   }
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .thead-inverse th {
-  color: $white;
-  background-color: $primary;
+  color: vars.$white;
+  background-color: vars.$primary;
 }
 
 // Forms =======================================================================
@@ -254,17 +261,17 @@ a {
 textarea,
 textarea.form-control,
 input.form-control,
-input[type='text'],
-input[type='password'],
-input[type='email'],
-input[type='number'],
+input[type='text'], /* stylelint-disable-line no-descending-specificity */
+input[type='password'], /* stylelint-disable-line no-descending-specificity */
+input[type='email'], /* stylelint-disable-line no-descending-specificity */
+input[type='number'], /* stylelint-disable-line no-descending-specificity */
 [type='text'].form-control,
 [type='password'].form-control,
 [type='email'].form-control,
 [type='tel'].form-control,
 [contenteditable].form-control {
-  background-color: $white;
-  border: 1px solid $gray-300;
+  background-color: vars.$white;
+  border: 1px solid vars.$gray-300;
 }
 
 // Navs ========================================================================
@@ -272,7 +279,7 @@ input[type='number'],
 .dropdown-menu {
   margin-top: 0;
   border: 0;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 4px rgb(0 0 0 / 30%);
 }
 
 .nav-tabs {
@@ -283,27 +290,27 @@ input[type='number'],
   .nav-link,
   .nav-link:focus {
     margin-right: 0;
-    color: $body-color;
+    color: vars.$body-color;
     background-color: transparent;
     border: 0;
     box-shadow: inset 0 -1px 0 #ddd;
-    transition: all 0.2s; // stylelint-disable-line declaration-property-value-blacklist
+    transition: all 0.2s;
 
     &:hover {
-      color: $primary;
+      color: vars.$primary;
       background-color: transparent;
-      box-shadow: inset 0 -2px 0 $primary;
+      box-shadow: inset 0 -2px 0 vars.$primary;
     }
   }
 
   .nav-link.active,
   .nav-link.active:focus {
-    color: $primary;
+    color: vars.$primary;
     border: 0;
-    box-shadow: inset 0 -2px 0 $primary;
+    box-shadow: inset 0 -2px 0 vars.$primary;
 
     &:hover {
-      color: $primary;
+      color: vars.$primary;
       border: 0;
     }
   }
@@ -313,10 +320,10 @@ input[type='number'],
   }
 
   &.nav-justified {
-    .nav-link,
+    .nav-link, /* stylelint-disable-line no-descending-specificity */
     .nav-link:hover,
     .nav-link:focus,
-    .nav-link.active,
+    .nav-link.active, /* stylelint-disable-line no-descending-specificity */
     .nav-link.active:hover,
     .nav-link.active:focus {
       border: 0;
@@ -330,16 +337,16 @@ input[type='number'],
 
 .badge {
   &-secondary {
-    color: $white;
-    background-color: $gray-500;
+    color: vars.$white;
+    background-color: vars.$gray-500;
   }
 
   &-light {
-    background-color: $gray-200;
+    background-color: vars.$gray-200;
   }
 
   &-warning {
-    color: $white;
+    color: vars.$white;
   }
 }
 
@@ -352,7 +359,7 @@ input[type='number'],
 .close {
   line-height: 0.5;
   opacity: 0.6;
-  transition: all 0.2s; // stylelint-disable-line declaration-property-value-blacklist
+  transition: all 0.2s;
 
   &:hover {
     opacity: 1;
@@ -360,7 +367,7 @@ input[type='number'],
 }
 
 .card {
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 4px rgb(0 0 0 / 40%);
 
   &.border-primary,
   &.border-secondary,
@@ -380,29 +387,6 @@ input[type='number'],
   }
 }
 
-.list-group {
-  &-item-action.active {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      color: $white;
-    }
-  }
-}
-
-.modal-content {
-  border-radius: 0.2rem;
-  box-shadow: 0 6px 36px rgba(0, 0, 0, 0.3);
-}
-
-.popover {
-  border: 0;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-}
-
 .carousel {
   &-caption {
     h1,
@@ -414,4 +398,27 @@ input[type='number'],
       color: inherit;
     }
   }
+}
+
+.list-group {
+  &-item-action.active {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: vars.$white;
+    }
+  }
+}
+
+.modal-content {
+  border-radius: 0.2rem;
+  box-shadow: 0 6px 36px rgb(0 0 0 / 30%);
+}
+
+.popover {
+  border: 0;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 30%);
 }

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
 
@@ -69,7 +69,7 @@ export function AquariaLinksCard({ cluster }: AquariaLinksCardProps) {
     <Card>
       <CardHeader>{title}</CardHeader>
       <AquariaLinksCardBody>
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col>{proteinBadges}</Col>
         </Row>
       </AquariaLinksCardBody>

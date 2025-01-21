@@ -1,8 +1,8 @@
-import React, { HTMLProps, useMemo } from 'react'
-import styled from 'styled-components'
+import React, { HTMLProps } from 'react'
+import { styled } from 'styled-components'
 import classNames from 'classnames'
 
-import { getLastUpdatedDate, getLastUpdatedFull } from 'src/io/getLastUpdatedDate'
+import { useLastUpdated } from 'src/io/useLastUpdated'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 const LastUpdatedText = styled.small`
@@ -11,19 +11,12 @@ const LastUpdatedText = styled.small`
 
 export function LastUpdated({ className }: HTMLProps<HTMLParagraphElement>) {
   const { t } = useTranslationSafe()
-
-  const { lastUpdated, lastUpdatedFull } = useMemo(
-    () => ({
-      lastUpdated: t('Last updated: {{ date }}', { date: getLastUpdatedDate() }),
-      lastUpdatedFull: getLastUpdatedFull(),
-    }),
-    [t],
-  )
+  const { date, full } = useLastUpdated()
 
   return (
     <LastUpdatedText className={classNames(className)}>
-      <span className="ml-1" title={lastUpdatedFull}>
-        {lastUpdated}
+      <span className="ms-1" title={full}>
+        {t('Last updated: {{ date }}', { date: date })}
       </span>
     </LastUpdatedText>
   )

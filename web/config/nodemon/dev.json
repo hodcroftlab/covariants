@@ -7,22 +7,18 @@
     ".browserslistrc",
     ".editorconfig",
     ".env",
-    ".eslintignore",
-    ".eslintrc.js",
+    ".eslint.config.mjs",
     ".prettierignore",
     ".prettierrc",
-    "babel.config.js",
     "config",
-    "next.config.js",
+    "next.config.ts",
     "package.json",
-    "postcss.config.js",
-    "schemas",
-    "stylelint.config.js",
+    "postcss.config.ts",
     "tsconfig.json",
     "webpack.config.js",
     "yarn.lock"
   ],
   "ext": "js,jsx,ts,tsx,json,flow,css,scss,sass,styl,html,ejs,d,txt,yml,sh",
-  "ignore": ["**/*.test.*s", "**/*.test.*sx", "**/__tests__", ".build", "config/jest", "node_modules"],
-  "exec": "run-s -c clear dev:clean dev:start || cd ."
+  "ignore": ["**/*.test.*s", "**/*.test.*sx", "**/__tests__", ".build", ".next", "node_modules", ".cache"],
+  "exec": "run-s -c dev:start || cd ."
 }

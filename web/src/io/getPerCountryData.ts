@@ -23,9 +23,7 @@ export interface PerCountryDataRaw {
 export interface CountryDistributionDatum {
   week: string
   total_sequences: number
-  cluster_counts: {
-    [key: string]: number | undefined
-  }
+  cluster_counts: Record<string, number | undefined>
 }
 
 export interface CountryDistribution {

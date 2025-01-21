@@ -1,6 +1,7 @@
 *.log
 .DS_Store
 \.build
+.next
 \.cache
 \.ignore
 \.env
@@ -9,3 +10,10 @@
 \.vscode
 node_modules
 dist/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+.coverage
+.playwright-report
+.json-autotranslate-cache

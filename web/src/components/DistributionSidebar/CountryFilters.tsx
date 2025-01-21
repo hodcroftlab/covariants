@@ -11,13 +11,13 @@ import {
   Label,
   Row,
 } from 'reactstrap'
+import { styled, useTheme } from 'styled-components'
+import { ColoredHorizontalLineIcon } from '../Common/ColoredHorizontalLineIcon'
 import { Continent, Country } from 'src/state/Places'
-import styled, { useTheme } from 'styled-components'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import type { CountryFlagProps } from 'src/components/Common/CountryFlag'
-import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
+import { useCountryColor, useCountryStrokeDashArray } from 'src/io/getCountryColor'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
-import { ColoredHorizontalLineIcon } from '../Common/ColoredHorizontalLineIcon'
 
 export const CardBody = styled(CardBodyBase)``
 
@@ -58,12 +58,8 @@ export function IconComponent({ country, Icon }: IconOrLineComponentProps) {
 export function LineComponent({ country }: IconOrLineComponentProps) {
   const { t } = useTranslationSafe()
   const theme = useTheme()
-  const { stroke, strokeDasharray } = useMemo(() => {
-    return {
-      stroke: getCountryColor(country),
-      strokeDasharray: getCountryStrokeDashArray(country),
-    }
-  }, [country])
+  const stroke = useCountryColor()(country)
+  const strokeDasharray = useCountryStrokeDashArray()(country)
 
   return (
     <>
@@ -74,7 +70,7 @@ export function LineComponent({ country }: IconOrLineComponentProps) {
         strokeWidth={theme.plot.country.legend.lineIcon.thickness}
         strokeDasharray={strokeDasharray}
       />
-      <span className="ml-2">{t(country)}</span>
+      <span className="ms-2">{t(country)}</span>
     </>
   )
 }
@@ -177,7 +173,7 @@ export function CountryFilters({
     <CardCollapsible className="m-2" title={regionsTitle} collapsed={collapsed} setCollapsed={setCollapsed}>
       <CardBody>
         <Container fluid>
-          <Row noGutters>
+          <Row className={'gx-0'}>
             <Col className="d-flex">
               <FormGroup className="flex-grow-0 mx-auto">
                 <Button type="button" color="link" onClick={onFilterSelectAll}>
@@ -191,14 +187,14 @@ export function CountryFilters({
           </Row>
 
           {continents.length > 1 && (
-            <Row noGutters className="pb-3 pt-3 border-bottom border-top">
+            <Row className="pb-3 pt-3 border-bottom border-top gx-0">
               <Col className="d-flex">
                 <Form>{continentCheckboxes}</Form>
               </Col>
             </Row>
           )}
 
-          <Row noGutters className="mt-3">
+          <Row className="mt-3 gx-0">
             <Col>
               <Form>{countryCheckboxes}</Form>
             </Col>

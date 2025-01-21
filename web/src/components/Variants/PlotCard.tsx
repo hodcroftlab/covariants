@@ -1,15 +1,15 @@
 import React, { useMemo } from 'react'
-import { useClusterDistribution, useCountryNames } from 'src/io/getPerClusterData'
-
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { GoGraph } from 'react-icons/go'
 import { Card, CardBody, Col, Row } from 'reactstrap'
+import { Link } from '../Link/Link'
+import { useClusterDistribution, useCountryNames } from 'src/io/getPerClusterData'
 
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { theme } from 'src/theme'
 import { ClusterDistributionPlot } from 'src/components/ClusterDistribution/ClusterDistributionPlot'
 import { ClusterDatum } from 'src/io/getClusters'
-import { Link } from '../Link/Link'
+import { useTicks, useTimeDomain } from 'src/io/useParams'
 
 const PlotCardTitleIcon = styled(GoGraph)`
   margin: auto 5px;
@@ -40,7 +40,7 @@ export function PlotCardTitle({ cluster }: PlotCardProps) {
       <PlotCardHeading>
         {t('Distribution of {{variant}} per country', { variant: cluster.display_name })}
       </PlotCardHeading>
-      <span className="ml-auto">
+      <span className="ms-auto">
         <Link href="/per-variant" color={theme.link.dim.color}>
           {t('Compare')}
         </Link>
@@ -53,14 +53,21 @@ export function PlotCard({ cluster }: PlotCardProps) {
   const title = useMemo(() => <PlotCardTitle cluster={cluster} />, [cluster])
   const clusterDistribution = useClusterDistribution(cluster.display_name).distribution
   const countryNames = useCountryNames()
+  const ticks = useTicks()
+  const timeDomain = useTimeDomain()
 
   return (
     <Card>
       <CardBody>{title}</CardBody>
       <PlotCardBody>
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col>
-            <ClusterDistributionPlot distribution={clusterDistribution} country_names={countryNames} />
+            <ClusterDistributionPlot
+              distribution={clusterDistribution}
+              country_names={countryNames}
+              ticks={ticks}
+              timeDomain={timeDomain}
+            />
           </Col>
         </Row>
       </PlotCardBody>

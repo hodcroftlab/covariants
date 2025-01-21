@@ -1,27 +1,24 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { Suspense, useCallback, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
+import { ErrorBoundary } from 'react-error-boundary'
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
-import { ColCustom } from 'src/components/Common/ColCustom'
 import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { MdxContent } from 'src/i18n/getMdxContent'
-import { getPerCountryCasesData, filterClusters, filterCountries } from 'src/io/getPerCountryCasesData'
-import { clustersCasesAtom, disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/ClustersForCaseData'
-import {
-  continentsCasesAtom,
-  countriesCasesAtom,
-  disableAllCountries,
-  enableAllCountries,
-  toggleContinent,
-  toggleCountry,
-} from 'src/state/PlacesForCaseData'
+import { filterClusters, filterCountries, usePerCountryCasesData } from 'src/io/getPerCountryCasesData'
+import { clustersCasesAtom } from 'src/state/ClustersForCaseData'
+import { continentsCasesAtom, countriesCasesAtom } from 'src/state/PlacesForCaseData'
 import { CountryFlag } from 'src/components/Common/CountryFlag'
 import { PageHeading } from 'src/components/Common/PageHeading'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
-import { CasesPlotCard } from './CasesPlotCard'
+import { CasesComponents } from 'src/components/Cases/CasesComponents'
+import { FetchError } from 'src/components/Error/FetchError'
+import { LOADING } from 'src/components/Loading/Loading'
+import { disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/Clusters'
+import { disableAllCountries, enableAllCountries, toggleContinent, toggleCountry } from 'src/state/Places'
 
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
@@ -32,7 +29,7 @@ export function CasesPage() {
   const [continents, setContinents] = useRecoilState(continentsCasesAtom)
   const [clusters, setClusters] = useRecoilState(clustersCasesAtom)
 
-  const { perCountryCasesDistributions } = useMemo(() => getPerCountryCasesData(), [])
+  const { perCountryCasesDistributions } = usePerCountryCasesData()
 
   const { enabledClusters, withClustersFiltered } = useMemo(() => {
     const { withCountriesFiltered } = filterCountries(countries, perCountryCasesDistributions)
@@ -40,21 +37,6 @@ export function CasesPage() {
     const { enabledClusters, withClustersFiltered } = filteredClusters
     return { enabledClusters, withClustersFiltered }
   }, [countries, perCountryCasesDistributions, clusters])
-
-  const casesComponents = useMemo(
-    () =>
-      withClustersFiltered.map(({ country, distribution }) => (
-        <ColCustom key={country} md={12} lg={6} xl={6} xxl={4}>
-          <CasesPlotCard
-            country={country}
-            distribution={distribution}
-            cluster_names={enabledClusters}
-            Icon={CountryFlag}
-          />
-        </ColCustom>
-      )),
-    [enabledClusters, withClustersFiltered],
-  )
 
   const handleClusterCheckedChange = useCallback(
     (cluster: string) => {
@@ -95,13 +77,13 @@ export function CasesPage() {
 
   return (
     <Layout wide>
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <PageHeading>{t('Estimated Cases by Variant')}</PageHeading>
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <CenteredEditable githubUrl="tree/master/web/src/content/en/PerCountryCasesIntro.md">
             <MdxContent filepath="PerCountryCasesIntro.md" />
@@ -109,13 +91,13 @@ export function CasesPage() {
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <SharingPanel />
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
             <WrapperFlex>
@@ -140,9 +122,16 @@ export function CasesPage() {
               </SidebarFlex>
 
               <MainFlex>
-                <Row noGutters>
+                <Row className={'gx-0'}>
                   <Col>
-                    <Row noGutters>{casesComponents}</Row>
+                    <ErrorBoundary FallbackComponent={FetchError}>
+                      <Suspense fallback={LOADING}>
+                        <CasesComponents
+                          withClustersFiltered={withClustersFiltered}
+                          enabledClusters={enabledClusters}
+                        />
+                      </Suspense>
+                    </ErrorBoundary>
                   </Col>
                 </Row>
               </MainFlex>

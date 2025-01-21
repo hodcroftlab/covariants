@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { UncontrolledAlert } from 'reactstrap'
-import { get } from 'lodash'
+import get from 'lodash/get'
 
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { URL_GITHUB } from 'src/constants'

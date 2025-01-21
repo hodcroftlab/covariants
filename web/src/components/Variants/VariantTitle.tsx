@@ -1,8 +1,7 @@
 import React, { useMemo } from 'react'
+import { styled } from 'styled-components'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { ClusterDatum } from 'src/io/getClusters'
-
-import styled from 'styled-components'
 
 const VariantTitleWrapper = styled.header`
   text-align: center;
@@ -30,7 +29,7 @@ export function VariantTitle({ cluster }: VariantTitleProps) {
 
     return (
       <ClusterNameSubtitle>
-        {t(`also known as {{aliases}}`, { alias: '' })}
+        {t(`also known as {{aliases}}`, { aliases: '' })}
         {cluster.alt_display_name.join(', ')}
       </ClusterNameSubtitle>
     )

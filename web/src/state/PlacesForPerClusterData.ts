@@ -8,6 +8,7 @@ import {
   Country,
   getAllContinents,
   getContinentsFromCountries,
+  regionCountryAtom,
   toggleCountriesFromContinents,
 } from 'src/state/Places'
 import { parseUrl } from 'src/helpers/parseUrl'
@@ -15,7 +16,7 @@ import { updateUrlQuery } from 'src/helpers/urlQuery'
 import { fetchPerClusterDataRaw } from 'src/io/getPerClusterData'
 import { atomAsync } from 'src/state/utils/atomAsync'
 import { isDefaultValue } from 'src/state/utils/isDefaultValue'
-import { shouldPlotCountry } from 'src/io/getCountryColor'
+import { getShouldPlotCountry } from 'src/io/getCountryColor'
 
 export function usePlacesPerCluster() {
   const [countries, setCountries] = useRecoilState(countriesAtom)
@@ -33,10 +34,11 @@ export function usePlacesPerCluster() {
  * NOTE: this atom can be modified, when the selector for continents is modified.
  */
 const countriesAtom = atomAsync<Country[]>({
-  key: 'countries',
+  key: 'perClusterCountries',
   async default() {
     const { query } = parseUrl(Router.asPath)
     const data = await fetchPerClusterDataRaw()
+    const shouldPlotCountry = await getShouldPlotCountry()
 
     const countries = copy(data.country_names)
       .sort()
@@ -59,8 +61,6 @@ const countriesAtom = atomAsync<Country[]>({
       onSet((countries) => {
         // If all countries are enabled, we will remove country url params
         const hasAllEnabled = countries.every((country) => country.enabled)
-
-        // eslint-disable-next-line no-void
         void updateUrlQuery({
           country: hasAllEnabled
             ? []
@@ -77,15 +77,16 @@ const countriesAtom = atomAsync<Country[]>({
  * NOTE: this selector is mutable, i.e. it can be set(). When this happens, it also modifies the `countries` atom.
  */
 const continentsAtom = selector<Continent[]>({
-  key: 'continents',
+  key: 'perClusterContinents',
   get: ({ get }) => {
     const countries = get(countriesAtom)
-    return getContinentsFromCountries(undefined, countries)
+    return getContinentsFromCountries(countries)
   },
   set: ({ set, get }, continentsOrDefault) => {
     const countriesOld = get(countriesAtom)
+    const regionCountry = get(regionCountryAtom)
     const continents = isDefaultValue(continentsOrDefault) ? getAllContinents() : continentsOrDefault
-    const countries = toggleCountriesFromContinents(countriesOld, continents)
+    const countries = toggleCountriesFromContinents(countriesOld, continents, regionCountry)
     set(countriesAtom, countries)
   },
 })

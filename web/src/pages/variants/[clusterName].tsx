@@ -2,11 +2,14 @@ import type { GetStaticPathsContext, GetStaticPropsContext, GetStaticPathsResult
 import { get } from 'lodash'
 
 import type { VariantsPageProps } from 'src/components/Variants/VariantsPage'
-import { getClusterBuildNames, getClusterOldBuildNames } from 'src/io/getClusters'
 import { takeFirstMaybe } from 'src/helpers/takeFirstMaybe'
+import clustersJson from 'src/../public/data/clusters.json'
+import { notUndefinedOrNull } from 'src/helpers/notUndefined'
 
-const clusterBuildNames = getClusterBuildNames()
-const clusterOldBuildNames = getClusterOldBuildNames()
+const clusterBuildNames = clustersJson.clusters.map((cluster) => cluster.build_name)
+const clusterOldBuildNames = clustersJson.clusters
+  .flatMap((cluster) => cluster.old_build_names)
+  .filter(notUndefinedOrNull)
 
 export async function getStaticProps(context: GetStaticPropsContext): Promise<GetStaticPropsResult<VariantsPageProps>> {
   const clusterName = takeFirstMaybe(get(context?.params, 'clusterName'))
@@ -18,6 +21,7 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<Ge
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function getStaticPaths(_0: GetStaticPathsContext): Promise<GetStaticPathsResult> {
   return {
     paths: [...clusterBuildNames, ...clusterOldBuildNames].map((clusterName) => `/variants/${clusterName}`),

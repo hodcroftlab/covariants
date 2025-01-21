@@ -33,5 +33,5 @@ export function Plausible({ domain, plausibleDomain = PLAUSIBLE_DOMAIN_DEFAULT }
 export type PlausibleHookResult = (event: string) => void
 
 export function usePlausible() {
-  return get(window, 'plausible', noop) as PlausibleHookResult
+  return get(globalThis, 'plausible', noop) as PlausibleHookResult
 }

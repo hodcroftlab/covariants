@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
 import React from 'react'
 
-import { ClusterDatum } from 'src/io/getClusters'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { Link } from '../Link/Link'
+import { ClusterDatum } from 'src/io/getClusters'
 
 const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: string }>`
   display: flex;

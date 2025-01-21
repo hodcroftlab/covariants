@@ -1,18 +1,18 @@
 /* eslint-disable camelcase */
 import React, { useMemo } from 'react'
 
-import { get } from 'lodash'
+import get from 'lodash/get'
 import { DateTime } from 'luxon'
 import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts'
 import { useTheme } from 'styled-components'
 
-import { ticks, timeDomain } from 'src/io/getParams'
-import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
+import { useCountryColor, useCountryStrokeDashArray } from 'src/io/getCountryColor'
 import { formatDateHumanely, formatProportion } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import type { ClusterDistributionDatum } from 'src/io/getPerClusterData'
 import { ClusterDistributionPlotTooltip } from 'src/components/ClusterDistribution/ClusterDistributionPlotTooltip'
 import { ChartContainer } from 'src/components/Common/ChartContainer'
+import { Ticks, TimeDomain } from 'src/io/useParams'
 
 const getValueOrig = (country: string) => (value: ClusterDistributionDatum) => {
   const orig = get(value.orig, country, false)
@@ -39,10 +39,14 @@ interface LinePlotProps {
   height: number
   country_names: string[]
   distribution: ClusterDistributionDatum[]
+  ticks: Ticks
+  timeDomain: TimeDomain
 }
 
-function LinePlot({ width, height, country_names, distribution }: LinePlotProps) {
+function LinePlot({ width, height, country_names, distribution, ticks, timeDomain }: LinePlotProps) {
   const theme = useTheme()
+  const getCountryColor = useCountryColor()
+  const getCountryStrokeDashArray = useCountryStrokeDashArray()
 
   const data = useMemo(
     () =>
@@ -58,7 +62,7 @@ function LinePlot({ width, height, country_names, distribution }: LinePlotProps)
     const domainX = [adjustedTicks[0], timeDomain[1]]
     const domainY = [0, 1]
     return { adjustedTicks, domainX, domainY }
-  }, [theme.plot.tickWidthMin, width])
+  }, [theme.plot.tickWidthMin, width, ticks, timeDomain])
 
   const lines = useMemo(() => {
     const linesOrig = country_names.map((country) => (
@@ -90,7 +94,7 @@ function LinePlot({ width, height, country_names, distribution }: LinePlotProps)
     ))
 
     return [...linesOrig, linesInterp]
-  }, [country_names])
+  }, [country_names, getCountryColor, getCountryStrokeDashArray])
 
   return (
     <LineChart width={width} height={height} margin={theme.plot.margin} data={data}>
@@ -129,13 +133,27 @@ function LinePlot({ width, height, country_names, distribution }: LinePlotProps)
 export interface ClusterDistributionPlotProps {
   country_names: string[]
   distribution: ClusterDistributionDatum[]
+  ticks: Ticks
+  timeDomain: TimeDomain
 }
 
-export function ClusterDistributionPlot({ country_names, distribution }: ClusterDistributionPlotProps) {
+export function ClusterDistributionPlot({
+  country_names,
+  distribution,
+  ticks,
+  timeDomain,
+}: ClusterDistributionPlotProps) {
   return (
     <ChartContainer>
       {({ width, height }) => (
-        <LinePlot width={width} height={height} country_names={country_names} distribution={distribution} />
+        <LinePlot
+          width={width}
+          height={height}
+          country_names={country_names}
+          distribution={distribution}
+          ticks={ticks}
+          timeDomain={timeDomain}
+        />
       )}
     </ChartContainer>
   )

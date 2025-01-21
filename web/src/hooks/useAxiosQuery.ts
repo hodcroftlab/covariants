@@ -1,10 +1,18 @@
-import { QueriesOptions, QueryClientConfig, QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query'
+import {
+  QueriesOptions,
+  QueryClientConfig,
+  QueryKey,
+  useQueries,
+  UseQueryOptions,
+  useSuspenseQuery,
+} from '@tanstack/react-query'
 import { QueryClient } from '@tanstack/query-core'
 import { keys, values, zip } from 'lodash'
 import { useMemo } from 'react'
+import axios from 'axios'
+import { z } from 'zod'
 import { ErrorInternal } from 'src/helpers/ErrorInternal'
 import { axiosFetch } from 'src/io/axiosFetch'
-import { useQueries } from './useQueriesWithSuspense'
 
 const QUERY_OPTIONS_DEFAULT = {
   staleTime: Number.POSITIVE_INFINITY,
@@ -25,7 +33,6 @@ function queryOptionsDefaulted<T>(options: T) {
 const REACT_QUERY_OPTIONS_DEFAULT: QueryClientConfig = {
   defaultOptions: {
     queries: {
-      suspense: true,
       retry: 1,
       ...QUERY_OPTIONS_DEFAULT,
     },
@@ -65,18 +72,33 @@ export type UseAxiosQueriesOptions<TData = unknown> = QueriesOptions<TData[]>
 
 /** Makes a cached fetch request */
 export function useAxiosQuery<TData = unknown>(url: string, options?: UseAxiosQueryOptions<TData>): TData {
-  const keys = useMemo(() => [url], [url])
   const optionsDefaulted = useMemo(() => queryOptionsDefaulted(options), [options])
-  const res = useQuery<TData, Error, TData, string[]>(keys, async () => axiosFetch(url), optionsDefaulted)
-  return useMemo(() => {
-    if (!res.data) {
-      throw new Error(`Fetch failed: ${url}`)
-    }
-    return res.data
-  }, [res.data, url])
+  const res = useSuspenseQuery<TData, Error, TData, string[]>({
+    queryKey: [url],
+    queryFn: async () => axiosFetch(url),
+    ...optionsDefaulted,
+  })
+  return res.data
 }
 
-/** Make multiple cached fetches in parallel (and uses `Suspense`, by contrast to the default `useQueries()`)  */
+export function useValidatedAxiosQuery<TData = unknown>(
+  url: string,
+  zodSchema: z.ZodSchema<TData>,
+  options?: UseAxiosQueryOptions<TData>,
+) {
+  return useSuspenseQuery<TData, Error, TData, string[]>({
+    queryKey: [url],
+    queryFn: async () => {
+      const res = await axios.get(url)
+
+      return zodSchema.parse(res.data)
+    },
+    ...queryOptionsDefaulted(options),
+  })
+}
+
+/** Make multiple cached fetches in parallel */
+// TODO: this function has been refactored without testing (as it is currently unused), make sure to test it before use
 export function useAxiosQueries<TData = unknown>(
   namedUrls: Record<string, string>,
   options?: UseAxiosQueriesOptions<TData>,
@@ -91,9 +113,6 @@ export function useAxiosQueries<TData = unknown>(
       queryKey: [url],
       queryFn: async () => axiosFetch(url),
     })),
-    options: {
-      suspense: true,
-    },
   })
 
   return useMemo(() => {

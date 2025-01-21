@@ -1,4 +1,4 @@
-/* eslint-disable no-param-reassign,no-multi-assign,no-underscore-dangle,no-plusplus,no-loops/no-loops */
+/* eslint-disable no-param-reassign,no-loops/no-loops */
 
 function hslToRgb(h: number, s: number, l: number) {
   let r
@@ -34,7 +34,7 @@ export interface RainbowOptions {
 }
 
 export function rainbow(num: number, config?: RainbowOptions) {
-  const _config = config || {
+  const _config = config ?? {
     lum: 50,
     sat: 50,
   }

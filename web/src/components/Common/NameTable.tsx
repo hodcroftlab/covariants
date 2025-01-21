@@ -1,13 +1,15 @@
-import React, { ReactNode, useMemo } from 'react'
+import React, { ReactNode, Suspense, useMemo } from 'react'
 
 import { Table as TableBase, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
+import { ErrorBoundary } from 'react-error-boundary'
+import { LineageLinkBadge, Var, WhoBadge } from './MutationBadge'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
-import type { NameTableDatum, NameTableEntry } from 'src/io/getNameTable'
-import { NAME_TABLE } from 'src/io/getNameTable'
-import { LineageLinkBadge, Var, WhoBadge } from './MutationBadge'
+import { NameTableDatum, NameTableEntry, useNameTable } from 'src/io/useNameTable'
+import { FetchError } from 'src/components/Error/FetchError'
+import { LOADING } from 'src/components/Loading/Loading'
 
 const Table = styled(TableBase)`
   max-width: 800px;
@@ -103,8 +105,9 @@ export function NameTableRow({ datum }: NameTableRowProps) {
   )
 }
 
-export function NameTable() {
+export function NameTableRaw() {
   const { t } = useTranslationSafe()
+  const nameTable = useNameTable()
 
   return (
     <Table>
@@ -121,10 +124,21 @@ export function NameTable() {
         </Tr>
       </Thead>
       <Tbody>
-        {NAME_TABLE.map((datum) => (
+        {nameTable.map((datum) => (
           <NameTableRow key={datum.clade} datum={datum} />
         ))}
       </Tbody>
     </Table>
+  )
+}
+
+// Wrap component in error boundary here because it is used in .md file
+export function NameTable() {
+  return (
+    <ErrorBoundary FallbackComponent={FetchError}>
+      <Suspense fallback={LOADING}>
+        <NameTableRaw />
+      </Suspense>
+    </ErrorBoundary>
   )
 }

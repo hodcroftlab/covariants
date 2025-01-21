@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 
 import type { StrictOmit } from 'ts-essentials'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import ReactToggle, { ToggleProps as ReactToggleProps } from 'react-toggle'
 import 'react-toggle/style.css'
 
@@ -34,7 +34,7 @@ export interface TogglePropsWithoutChildren extends StrictOmit<ReactToggleProps,
 
 export type ToggleProps = React.PropsWithChildren<TogglePropsWithoutChildren>
 
-export function Toggle({ identifier, className, onCheckedChanged, children, ...props }: ToggleProps) {
+export function Toggle({ identifier, onCheckedChanged, children, ...props }: ToggleProps) {
   const onChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       onCheckedChanged(e.target.checked)
@@ -47,7 +47,7 @@ export function Toggle({ identifier, className, onCheckedChanged, children, ...p
   if (children) {
     return (
       <label htmlFor={identifier} className="d-flex m-0">
-        <span className="mr-2">{Result}</span>
+        <span className="me-2">{Result}</span>
         {children}
       </label>
     )

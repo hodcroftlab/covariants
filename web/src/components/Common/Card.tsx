@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { Card as ReactstrapCard, CardHeader as ReactstrapCardHeader, CardBody as ReactstrapCardBody } from 'reactstrap'
 

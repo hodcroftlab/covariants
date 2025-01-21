@@ -3,7 +3,7 @@ import { ElementType, FC } from 'react'
 import type { StrictOmit } from 'ts-essentials'
 import { get, isNil, mapValues } from 'lodash'
 
-import i18nOriginal, { i18n as I18N, Resource } from 'i18next'
+import { i18n as I18N, Resource, use as i18use } from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
 import { Settings as LuxonSettings } from 'luxon'
@@ -15,27 +15,27 @@ import prettyBytesOriginal, { Options as PrettyBytesOptionsOriginal } from 'pret
 // @ts-ignore
 import numbroLanguages from 'numbro/dist/languages.min'
 
-import CN from 'flag-icon-css/flags/1x1/cn.svg'
-import DE from 'flag-icon-css/flags/1x1/de.svg'
-import ES from 'flag-icon-css/flags/1x1/es.svg'
-import FR from 'flag-icon-css/flags/1x1/fr.svg'
-import GB from 'flag-icon-css/flags/1x1/gb.svg'
-import GR from 'flag-icon-css/flags/1x1/gr.svg'
-import ID from 'flag-icon-css/flags/1x1/id.svg'
-import IL from 'flag-icon-css/flags/1x1/il.svg'
-import IN from 'flag-icon-css/flags/1x1/in.svg'
-import IR from 'flag-icon-css/flags/1x1/ir.svg'
-import IT from 'flag-icon-css/flags/1x1/it.svg'
-import JP from 'flag-icon-css/flags/1x1/jp.svg'
-import KR from 'flag-icon-css/flags/1x1/kr.svg'
-import NL from 'flag-icon-css/flags/1x1/nl.svg'
-import PK from 'flag-icon-css/flags/1x1/pk.svg'
-import PT from 'flag-icon-css/flags/1x1/pt.svg'
-import RU from 'flag-icon-css/flags/1x1/ru.svg'
-import SA from 'flag-icon-css/flags/1x1/sa.svg'
-import TH from 'flag-icon-css/flags/1x1/th.svg'
-import TR from 'flag-icon-css/flags/1x1/tr.svg'
-import VN from 'flag-icon-css/flags/1x1/vn.svg'
+import CN from 'flag-icons/flags/1x1/cn.svg'
+import DE from 'flag-icons/flags/1x1/de.svg'
+import ES from 'flag-icons/flags/1x1/es.svg'
+import FR from 'flag-icons/flags/1x1/fr.svg'
+import GB from 'flag-icons/flags/1x1/gb.svg'
+import GR from 'flag-icons/flags/1x1/gr.svg'
+import ID from 'flag-icons/flags/1x1/id.svg'
+import IL from 'flag-icons/flags/1x1/il.svg'
+import IN from 'flag-icons/flags/1x1/in.svg'
+import IR from 'flag-icons/flags/1x1/ir.svg'
+import IT from 'flag-icons/flags/1x1/it.svg'
+import JP from 'flag-icons/flags/1x1/jp.svg'
+import KR from 'flag-icons/flags/1x1/kr.svg'
+import NL from 'flag-icons/flags/1x1/nl.svg'
+import PK from 'flag-icons/flags/1x1/pk.svg'
+import PT from 'flag-icons/flags/1x1/pt.svg'
+import RU from 'flag-icons/flags/1x1/ru.svg'
+import SA from 'flag-icons/flags/1x1/sa.svg'
+import TH from 'flag-icons/flags/1x1/th.svg'
+import TR from 'flag-icons/flags/1x1/tr.svg'
+import VN from 'flag-icons/flags/1x1/vn.svg'
 
 import ar from './resources/ar/common.json'
 import de from './resources/de/common.json'
@@ -157,7 +157,7 @@ export function i18nInit({ localeKey }: I18NInitParams) {
     numbro.registerLanguage({ ...enUS, ...languageRaw })
   })
 
-  const i18n = i18nOriginal.use(initReactI18next).createInstance({
+  const i18n = i18use(initReactI18next).createInstance({
     resources,
     lng: localeKey,
     fallbackLng: DEFAULT_LOCALE_KEY,
@@ -168,7 +168,6 @@ export function i18nInit({ localeKey }: I18NInitParams) {
     initImmediate: true,
   })
 
-  // eslint-disable-next-line no-void
   void i18n.init()
 
   const locale = locales[localeKey]

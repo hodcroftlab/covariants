@@ -1,12 +1,12 @@
 import React from 'react'
 import { Col, Row } from 'reactstrap'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
+import { NextstrainLogo } from './NextstrainLogo'
 import { PROJECT_NAME, TEAM_NAME } from 'src/constants'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import VercelLogo from 'src/assets/images/vercel_logo.svg'
 import NextJsLogo from 'src/assets/images/nextjs_logo.svg'
-import { NextstrainLogo } from './NextstrainLogo'
 
 const Flex = styled.section`
   max-width: 700px;
@@ -64,15 +64,15 @@ export function PoweredBy() {
   const { t } = useTranslationSafe()
 
   return (
-    <Row noGutters>
+    <Row className={'gx-0'}>
       <Col>
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col className="text-center">
             <PoweredByH1>{t('Powered by')}</PoweredByH1>
           </Col>
         </Row>
 
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col className="d-flex">
             <Flex className="mx-auto">
               <Ul>

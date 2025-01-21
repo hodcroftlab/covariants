@@ -1,14 +1,13 @@
-import { get } from 'lodash'
+import get from 'lodash/get'
 import React, { useState, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
+import { CountryFlagProps } from '../Common/CountryFlag'
+import { ClusterFilters } from './ClusterFilters'
+import { CountryFilters } from './CountryFilters'
 import { Cluster } from 'src/state/Clusters'
 
 import type { Continent, Country } from 'src/state/Places'
-import { sortClusters } from 'src/io/getClusters'
-import { ClusterFilters } from './ClusterFilters'
-import { CountryFilters } from './CountryFilters'
-
-import { CountryFlagProps } from '../Common/CountryFlag'
+import { sortClustersByClusterNames, useClusterNames } from 'src/io/getClusters'
 
 export interface DistributionSidebarProps {
   countries: Country[]
@@ -47,9 +46,13 @@ export function DistributionSidebar({
 }: DistributionSidebarProps) {
   const [clustersCollapsed, setClustersCollapsed] = useState(clustersCollapsedByDefault)
   const [countriesCollapsed, setCountriesCollapsed] = useState(countriesCollapsedByDefault)
-  const clustersSorted = useMemo(() => sortClusters(clusters ?? []), [clusters])
+  const clusterNames = useClusterNames()
+  const clustersSorted = useMemo(
+    () => sortClustersByClusterNames(clusters ?? [], clusterNames),
+    [clusters, clusterNames],
+  )
 
-  const availableFilters: { [key: string]: React.ReactNode } = useMemo(
+  const availableFilters: Record<string, React.ReactNode> = useMemo(
     () => ({
       countries: (
         <CountryFilters
@@ -113,7 +116,7 @@ export function DistributionSidebar({
   )
 
   return (
-    <Row noGutters>
+    <Row className={'gx-0'}>
       <Col>{enabledFilters.map((filterName) => get(availableFilters, filterName))}</Col>
     </Row>
   )

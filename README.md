@@ -80,12 +80,6 @@ Emma B. Hodcroft. 2021. "CoVariants: SARS-CoV-2 Mutations and Variants of Intere
     <img src="https://img.shields.io/website?url=https%3A%2F%2Fnextstrain%3Anextstrain%40master.covariants.org&logo=circle&logoColor=white&label=master.covariants.org" />
   </a>
 
-  <a href="https://travis-ci.com/github/hodcroftlab/covariants/branches">
-    <img src="https://img.shields.io/travis/hodcroftlab/covariants/release?label=build%3Aproduction" alt="Build status for production" />
-  </a>
-  <a href="https://travis-ci.com/github/hodcroftlab/covariants/branches/master">
-    <img src="https://img.shields.io/travis/hodcroftlab/covariants/master?label=build%3Amaster" alt="Build status for master" />
-  </a>
 </p>
 
 <p align="center">

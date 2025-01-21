@@ -18,7 +18,7 @@ export function LanguageSwitcher({ ...restProps }: LanguageSwitcherProps) {
       <DropdownToggle nav caret>
         <LanguageSwitcherItem locale={currentLocale} />
       </DropdownToggle>
-      <DropdownMenu className="language-switcher-menu" positionFixed>
+      <DropdownMenu className="language-switcher-menu position-fixed">
         {localesArray.map((locale) => {
           const isCurrent = locale.key === currentLocale
           return (
@@ -46,8 +46,8 @@ export function LanguageSwitcherItem({ locale }: { locale: string }) {
   return (
     <>
       <Flag className="language-switcher-flag" />
-      <span className="pl-2 text-monospace">{`[${key}]`}</span>
-      <span className="pl-2">{label}</span>
+      <span className="ps-2 text-monospace">{`[${key}]`}</span>
+      <span className="ps-2">{label}</span>
     </>
   )
 }

@@ -4,19 +4,13 @@ import { FETCHER, useAxiosQuery, UseAxiosQueryOptions } from 'src/hooks/useAxios
 import { clustersForPerClusterDataAtom } from 'src/state/ClustersForPerClusterData'
 import type { Country } from 'src/state/Places'
 import type { Cluster } from 'src/state/Clusters'
-import { getClusters } from 'src/io/getClusters'
+import { useClusters } from 'src/io/getClusters'
 
 export interface ClusterDistributionDatum {
   week: string
-  frequencies: {
-    [country: string]: number | undefined
-  }
-  interp: {
-    [country: string]: boolean | undefined
-  }
-  orig: {
-    [country: string]: boolean | undefined
-  }
+  frequencies: Record<string, number | undefined>
+  interp: Record<string, boolean | undefined>
+  orig: Record<string, boolean | undefined>
 }
 
 export interface ClusterDistribution {
@@ -47,7 +41,7 @@ export function usePerClusterData(): PerClusterData & { setClusters: SetterOrUpd
   const perClusterData = usePerClusterDataRaw()
 
   const [clusters, setClusters] = useRecoilState(clustersForPerClusterDataAtom)
-  const clusterBuildNames: Map<string, string> = new Map(getClusters().map((c) => [c.display_name, c.build_name]))
+  const clusterBuildNames = new Map<string, string>(useClusters().map((c) => [c.display_name, c.build_name]))
   const clusterDistributions: ClusterDistribution[] = perClusterData.distributions
 
   return {

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Col, Container, Row } from 'reactstrap'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { PROJECT_NAME, COMPANY_NAME } from 'src/constants'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
@@ -53,25 +53,25 @@ export function FooterContent() {
 
   return (
     <FooterContainer fluid tag="footer">
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <SharingPanel />
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <TeamCredits />
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <PoweredBy />
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col className="d-flex p-0 flex-wrap">
           <CopyrightText>{`${PROJECT_NAME} (c) ${copyrightYearRange} ${COMPANY_NAME}`}</CopyrightText>
 

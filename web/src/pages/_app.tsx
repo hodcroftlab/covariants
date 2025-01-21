@@ -10,10 +10,10 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { I18nextProvider } from 'react-i18next'
 import type { AppProps } from 'next/app'
-import { LOADING } from 'src/components/Loading/Loading'
-import { FETCHER } from 'src/hooks/useAxiosQuery'
 import { ThemeProvider } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
+import { LOADING } from 'src/components/Loading/Loading'
+import { FETCHER } from 'src/hooks/useAxiosQuery'
 import i18n, { changeLocale, getLocaleWithKey } from 'src/i18n/i18n'
 import { theme } from 'src/theme'
 import { DOMAIN_STRIPPED } from 'src/constants'
@@ -30,7 +30,6 @@ export function RecoilStateInitializer() {
     const snapShotRelease = snapshot.retain()
     const { getPromise } = snapshot
 
-    // eslint-disable-next-line no-void
     void Promise.resolve()
       // eslint-disable-next-line promise/always-return
       .then(async () => {
@@ -55,58 +54,8 @@ export function RecoilStateInitializer() {
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false
 
-function MyApp({ Component, pageProps, router }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   const initializeState = useCallback(() => {}, [])
-
-  // // NOTE: We do manual parsing here, because router.query is randomly empty on the first few renders.
-  // const { pathname, query } = useMemo(() => parseUrl(router.asPath), [router.asPath])
-  //
-  // const initializeState = useCallback(
-  //   ({ set }: MutableSnapshot) => {
-  //     // Set initial state
-  //     switch (pathname) {
-  //       case '/per-country': {
-  //         const { region, continents, countries } = useUrlQueryToPlaces(query)
-  //
-  //         set(regionAtom, region)
-  //         set(continentsAtom(region), continents)
-  //         set(countriesAtom(region), countries)
-  //
-  //         const params = { dataFlavor: ClustersDataFlavor.PerCountry, region }
-  //         const clusters = useQueryToClusters(query, params)
-  //         set(clustersAtom(params), clusters)
-  //
-  //         break
-  //       }
-  //       case '/per-variant': {
-  //         const { region, continents, countries } = useUrlQueryToPlaces(query)
-  //
-  //         set(continentsAtom(undefined), continents)
-  //         set(countriesAtom(undefined), countries)
-  //
-  //         const params = { dataFlavor: ClustersDataFlavor.PerCluster, region }
-  //         const clusters = useQueryToClusters(query, params)
-  //         set(clustersAtom(params), clusters)
-  //
-  //         break
-  //       }
-  //       case '/cases': {
-  //         const { continents, countries } = urlQueryToPlacesCases(query)
-  //
-  //         set(continentsCasesAtom, continents)
-  //         set(countriesCasesAtom, countries)
-  //
-  //         const clusters = urlQueryToClustersCases(query)
-  //         set(clustersCasesAtom, clusters)
-  //
-  //         break
-  //       }
-  //       default:
-  //         break
-  //     }
-  //   },
-  //   [pathname, query],
-  // )
 
   // Use shared QueryClient for queries inside and outside of React components
   const queryClient = useMemo(() => FETCHER.getQueryClient(), [])

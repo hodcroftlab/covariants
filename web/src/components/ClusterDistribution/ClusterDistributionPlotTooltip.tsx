@@ -2,15 +2,15 @@ import React from 'react'
 
 import { get, sortBy, reverse, uniqBy } from 'lodash'
 import { useRecoilValue } from 'recoil'
-import { ColoredHorizontalLineIcon } from 'src/components/Common/ColoredHorizontalLineIcon'
-import { tooltipSortAtom } from 'src/state/TooltipSort'
-import { theme } from 'src/theme'
-import styled from 'styled-components'
-
+import { styled } from 'styled-components'
 import type { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
+import { ColoredHorizontalLineIcon } from 'src/components/Common/ColoredHorizontalLineIcon'
+import { tooltipSortAtom, TooltipSortCriterion } from 'src/state/TooltipSort'
+import { theme } from 'src/theme'
+
 import type { ClusterDistributionDatum } from 'src/io/getPerClusterData'
 import { formatDateWeekly, formatProportion } from 'src/helpers/format'
-import { getCountryColor, getCountryStrokeDashArray } from 'src/io/getCountryColor'
+import { useCountryColor, useCountryStrokeDashArray } from 'src/io/getCountryColor'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 const EPSILON = 1e-2
@@ -55,6 +55,8 @@ export type ClusterDistributionPlotTooltipProps = DefaultTooltipContentProps<num
 export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotTooltipProps) {
   const { t } = useTranslationSafe()
   const { criterion, reversed } = useRecoilValue(tooltipSortAtom)
+  const getCountryColor = useCountryColor()
+  const getCountryStrokeDashArray = useCountryStrokeDashArray()
 
   const { payload } = props
   if (!payload || payload.length === 0) {
@@ -69,11 +71,14 @@ export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotToo
   // @ts-ignore
   const week = formatDateWeekly(data?.week)
 
-  let payloadSorted = sortBy(payload, criterion === 'country' ? 'name' : 'value')
+  let payloadSorted = sortBy(payload, criterion === TooltipSortCriterion.country ? 'name' : 'value')
 
   // sortBy sorts in ascending order, but if sorting by frequency the natural/non-reversed order is descending
 
-  if ((criterion !== 'frequency' && reversed) || (criterion === 'frequency' && !reversed)) {
+  if (
+    (criterion !== TooltipSortCriterion.frequency && reversed) ||
+    (criterion === TooltipSortCriterion.frequency && !reversed)
+  ) {
     payloadSorted = reverse(payloadSorted)
   }
 
@@ -107,7 +112,7 @@ export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotToo
                     strokeWidth={theme.plot.country.legend.lineIcon.thickness}
                     strokeDasharray={getCountryStrokeDashArray(country)}
                   />
-                  <span className="ml-2">{t(country)}</span>
+                  <span className="ms-2">{t(country)}</span>
                 </td>
                 <td>{interpolated && '*'}</td>
                 <td className="px-2 text-right">

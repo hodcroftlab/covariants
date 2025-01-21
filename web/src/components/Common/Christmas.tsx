@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import React, { CSSProperties, HTMLProps, useMemo } from 'react'
 import { useResizeDetector } from 'react-resize-detector'
 import SnowfallBase from 'react-snowfall'
@@ -21,10 +21,15 @@ const enableChristmasAtom = atom<boolean>({
 
 function useIsChristmas(): boolean {
   const enableChristmas = useRecoilValue(enableChristmasAtom)
+  const isChristmasTime = useIsChristmasTime()
   return useMemo(() => {
-    const now = DateTime.now()
-    return enableChristmas && ((now.month === 12 && now.day >= 20) || (now.month === 1 && now.day <= 4))
-  }, [enableChristmas])
+    return enableChristmas && isChristmasTime
+  }, [enableChristmas, isChristmasTime])
+}
+
+function useIsChristmasTime(): boolean {
+  const now = DateTime.now()
+  return (now.month === 12 && now.day >= 20) || (now.month === 1 && now.day <= 4)
 }
 
 const ChristmasLightRopeStyled = styled(ChristmasLightRopeImpl)`
@@ -38,7 +43,7 @@ function ChristmasLightRopeImpl(props: HTMLProps<HTMLDivElement>) {
     if (!width) {
       return null
     }
-    return [...Array<number>(Math.ceil(width / (15 + 8)) + 1).keys()].map((i) => <li key={i} />)
+    return Array.from(Array<number>(Math.ceil(width / (15 + 8)) + 1).keys(), (i) => <li key={i} />)
   }, [width])
 
   return (
@@ -93,8 +98,8 @@ const SNOWFLAKE_ICON_OFF = <TbSnowflakeOff className="mt-1" color="#aa001288" />
 
 export function ChristmasToggle() {
   const [enableChristmas, setEnableChristmas] = useRecoilState(enableChristmasAtom)
-  const isChristmas = useIsChristmas()
-  if (!isChristmas) {
+  const isChristmasTime = useIsChristmasTime()
+  if (!isChristmasTime) {
     return null
   }
   return (

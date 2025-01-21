@@ -1,11 +1,11 @@
 import React from 'react'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
+import { Row, Col } from 'reactstrap'
 import type { ClusterDatum } from 'src/io/getClusters'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { AminoacidMutationBadge, NucleotideMutationBadge } from 'src/components/Common/MutationBadge'
-import { Row, Col } from 'reactstrap'
 
 const Container = styled.div`
   width: 100%;
@@ -68,13 +68,13 @@ export function DefiningMutations({ cluster }: DefiningMutationsProps) {
 
   return (
     <Container>
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <H3>{t('Defining mutations')}</H3>
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col className="my-2">
           <H4>{t('Nonsynonymous')}</H4>
           {hasNonsynonymous ? (

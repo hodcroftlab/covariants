@@ -2,20 +2,20 @@ import { ParsedUrlQuery } from 'querystring'
 
 /** Borrowed from Next.js */
 export function getLocationOrigin() {
-  const { protocol, hostname, port } = window.location
-  return `${protocol}//${hostname}${port ? `:${port}` : ''}` // eslint-disable-line sonarjs/no-nested-template-literals
+  const { protocol, hostname, port } = globalThis.location
+  return `${protocol}//${hostname}${port ? `:${port}` : ''}`
 }
 
 /** Borrowed from Next.js */
 export function searchParamsToUrlQuery(searchParams: URLSearchParams): ParsedUrlQuery {
   const query: ParsedUrlQuery = {}
   searchParams.forEach((value, key) => {
-    if (typeof query[key] === 'undefined') {
+    if (query[key] === undefined) {
       query[key] = value
     } else if (Array.isArray(query[key])) {
-      ;(query[key] as string[]).push(value)
+      query[key].push(value)
     } else {
-      query[key] = [query[key] as string, value]
+      query[key] = [query[key], value]
     }
   })
   return query
@@ -23,7 +23,7 @@ export function searchParamsToUrlQuery(searchParams: URLSearchParams): ParsedUrl
 
 /** Borrowed from Next.js */
 export function parseRelativeUrl(url: string, base?: string) {
-  const globalBase = new URL(typeof window === 'undefined' ? 'http://n' : getLocationOrigin())
+  const globalBase = new URL(globalThis === undefined ? 'http://n' : getLocationOrigin())
   const resolvedBase = base ? new URL(base, globalBase) : globalBase
   const { pathname, searchParams, search, hash, href, origin } = new URL(url, resolvedBase)
   if (origin !== globalBase.origin) {

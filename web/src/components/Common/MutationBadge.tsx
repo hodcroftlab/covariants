@@ -1,14 +1,14 @@
 /* eslint-disable camelcase */
 import React, { useMemo } from 'react'
 
-import { get } from 'lodash'
+import get from 'lodash/get'
+import { styled } from 'styled-components'
 import { parseVariant } from 'src/components/Common/parseVariant'
-import styled from 'styled-components'
 
 import type { Mutation, MutationColors } from 'src/types'
 import { theme } from 'src/theme'
 import { AMINOACID_COLORS, CLADE_COLORS, GENE_COLORS, NUCLEOTIDE_COLORS } from 'src/colors'
-import { getClusterNames, getClusters } from 'src/io/getClusters'
+import { ClusterDatum, useClusterNames, useClusters } from 'src/io/getClusters'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
 import { parseAminoacidMutation } from 'src/components/Common/parseAminoacidMutation'
 import { parseNucleotideMutation } from 'src/components/Common/parseNucleotideMutation'
@@ -17,9 +17,6 @@ import { AMINOACID_NAMES, GENE_NAMES, GREEK_ALPHABET, NUCELOTIDE_NAMES } from 's
 import { colorHash } from 'src/helpers/colorHash'
 import { rainbow } from 'src/helpers/colorRainbow'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-
-const clusters = getClusters()
-const clusterNames = getClusterNames()
 
 const DEFAULT_COLOR = theme.gray700
 const DEFAULT_TEXT_COLOR = theme.gray100
@@ -123,7 +120,7 @@ export function formatMutationMaybe(mutation: Mutation | string) {
   return formatMutation(mutation)
 }
 
-export function formatVariantUrl(mutation: string) {
+export function formatVariantUrl(clusters: ClusterDatum[], clusterNames: string[], mutation: string) {
   const cluster = clusters.find(({ display_name }) => display_name === mutation)
   if (!cluster) {
     console.warn(`Variant not recognized: ${mutation}. Known variants: ${clusterNames.join(', ')}`)
@@ -286,8 +283,13 @@ export interface VariantLinkBadgeProps {
 }
 
 export function VariantLinkBadge({ name, href, prefix }: VariantLinkBadgeProps) {
+  const clusters = useClusters()
+  const clusterNames = useClusterNames()
   const { mutationObj, mutationStr } = useMemo(() => variantToObjectAndString(name), [name])
-  const url = useMemo(() => href ?? formatVariantUrl(mutationStr), [href, mutationStr])
+  const url = useMemo(
+    () => href ?? formatVariantUrl(clusters, clusterNames, mutationStr),
+    [href, mutationStr, clusters, clusterNames],
+  )
 
   if (!mutationObj) {
     return <span className="text-danger">{`VariantLinkBadge: Invalid mutation: ${JSON.stringify(name)}`}</span>
@@ -366,7 +368,7 @@ const whoRainbow = rainbow(Object.keys(GREEK_ALPHABET).length, { rgb: true, lum:
 export function getWhoBadgeColor(name: string): string {
   const i = Object.keys(GREEK_ALPHABET).indexOf(name.toLowerCase().trim())
 
-  if (i < 0 || i > whoRainbow.length) {
+  if (i === -1 || i > whoRainbow.length) {
     return theme.gray500
   }
   return whoRainbow[i]

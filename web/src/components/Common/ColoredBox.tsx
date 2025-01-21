@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export const ColoredBox = styled.div<{ $color: string; $size: number; $aspect: number }>`
   display: inline-block;

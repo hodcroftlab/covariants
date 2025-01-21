@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { parseVariant } from 'src/components/Common/parseVariant'
 
 describe('parseVariant', () => {

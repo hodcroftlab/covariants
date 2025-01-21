@@ -2,13 +2,13 @@ import React, { useMemo } from 'react'
 
 import { useQuery } from '@tanstack/react-query'
 import { Row, Col, CardHeader, Card, CardBody } from 'reactstrap'
+import { styled } from 'styled-components'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 
 import type { ClusterDatum } from 'src/io/getClusters'
 import { getMutationCounts, MutationCountsDatum, MutationCountsGeneRecord } from 'src/io/getMutationCounts'
 import { AminoacidMutationBadge } from 'src/components/Common/MutationBadge'
 import { TableSlim } from 'src/components/Common/TableSlim'
-import styled from 'styled-components'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 
 const MutationCountsSummaryCardBody = styled(CardBody)`
@@ -90,7 +90,9 @@ export function MutationCountsSummarySubTable({ record, title }: MutationCountsS
 }
 
 export function useMutationCounts(clusterBuildName: string) {
-  return useQuery(['mutationCounts', clusterBuildName], async () => getMutationCounts(clusterBuildName), {
+  return useQuery({
+    queryKey: ['mutationCounts', clusterBuildName],
+    queryFn: async () => getMutationCounts(clusterBuildName),
     staleTime: Number.POSITIVE_INFINITY,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
@@ -107,11 +109,9 @@ export function MutationCountsSummaryCard({ currentCluster }: MutationCountsSumm
   const { t } = useTranslationSafe()
 
   const { data } = useMutationCounts(currentCluster.build_name)
-
   if (!data?.result) {
     return null
   }
-
   const { S, others } = data.result
 
   return (
@@ -126,9 +126,9 @@ export function MutationCountsSummaryCard({ currentCluster }: MutationCountsSumm
         <span>{')'}</span>
       </CardHeader>
       <MutationCountsSummaryCardBody>
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col>
-            <Row noGutters>
+            <Row className={'gx-0'}>
               <Col className="d-flex mx-1 my-1 mb-auto">
                 <MutationCountsSummarySubTable title={t('Gene S')} record={S} />
               </Col>

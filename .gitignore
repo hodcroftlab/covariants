@@ -1,4 +1,3 @@
-.DS_Store
 Thumbs.db
 
 
@@ -74,4 +73,6 @@ Temporary Items
 # LAPIS Access key
 .env
 
-web/.json-autotranslate-cache
+# IDE files
+*.iml
+/.idea

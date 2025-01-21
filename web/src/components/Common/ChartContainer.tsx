@@ -1,19 +1,18 @@
 import React, { useMemo } from 'react'
-import { useResizeDetector } from 'react-resize-detector'
-import { Props as ResizeDetectorProps } from 'react-resize-detector/build/ResizeDetector'
+import { useResizeDetector, useResizeDetectorProps } from 'react-resize-detector'
 import { useInView } from 'react-intersection-observer'
 
-import { theme } from 'src/theme'
 import { ChartContainerInner, ChartContainerOuter } from './PlotLayout'
 import { FadeIn } from './FadeIn'
+import { theme } from 'src/theme'
 
-type ChartContainerDimensions = {
+interface ChartContainerDimensions {
   width: number
   height: number
 }
 
 export interface ChartContainerProps {
-  resizeOptions?: ResizeDetectorProps
+  resizeOptions?: useResizeDetectorProps<HTMLElement>
   children: (dimensions: ChartContainerDimensions) => React.ReactNode
 }
 

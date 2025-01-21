@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react'
 
 import urljoin from 'url-join'
 import { useRouter } from 'next/router'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { Button, Col, Row } from 'reactstrap'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { FaClipboard as FaClipboardBase, FaClipboardCheck as FaClipboardCheckBase } from 'react-icons/fa'
@@ -99,15 +99,15 @@ export function SharingPanel() {
   const emailBody = useMemo(() => getEmailBody(url), [url])
 
   return (
-    <Row noGutters>
+    <Row className={'gx-0'}>
       <Col>
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col className="d-flex text-center">
             <SharingPanelH1>{t('Share')}</SharingPanelH1>
           </Col>
         </Row>
 
-        <Row noGutters>
+        <Row className={'gx-0'}>
           <Col className="d-flex">
             <SharingPanelWrapper>
               <SharingButton title={t('Copy link to clipboard')}>
@@ -133,7 +133,7 @@ export function SharingPanel() {
               </SharingButton>
 
               <SharingButton title={t('Share on Facebook')}>
-                <FacebookShareButton url={url} quote={PROJECT_NAME} hashtag={FACEBOOK_HASHTAG}>
+                <FacebookShareButton url={url} hashtag={FACEBOOK_HASHTAG}>
                   <FacebookIcon size={SOCIAL_ICON_SIZE} />
                 </FacebookShareButton>
               </SharingButton>

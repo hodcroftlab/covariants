@@ -1,18 +1,17 @@
-import React, { useCallback, useMemo } from 'react'
-import { Card, CardBody, Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
+import React, { Suspense, useCallback, useMemo } from 'react'
+import { Card, CardBody, Col, Form, Input, Label, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
+import { styled } from 'styled-components'
+import { ErrorBoundary } from 'react-error-boundary'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
 import { disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/Clusters'
 import { clustersForPerClusterDataAtom } from 'src/state/ClustersForPerClusterData'
 import { disableAllCountries, enableAllCountries, toggleContinent, toggleCountry } from 'src/state/Places'
 import { usePlacesPerCluster } from 'src/state/PlacesForPerClusterData'
 import { tooltipSortAtom, TooltipSortCriterion } from 'src/state/TooltipSort'
-import styled from 'styled-components'
 import { MdxContent } from 'src/i18n/getMdxContent'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { usePerClusterData, filterClusters, filterCountries } from 'src/io/getPerClusterData'
-import { ClusterDistributionPlotCard } from 'src/components/ClusterDistribution/ClusterDistributionPlotCard'
-import { ColCustom } from 'src/components/Common/ColCustom'
 import { Dropdown as DropdownBase } from 'src/components/Common/Dropdown'
 import { stringToOption } from 'src/components/Common/DropdownOption'
 import { Editable, CenteredEditable } from 'src/components/Common/Editable'
@@ -20,6 +19,9 @@ import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLa
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
 import { Layout } from 'src/components/Layout/Layout'
 import { PageHeading } from 'src/components/Common/PageHeading'
+import { ClusterDistributionComponents } from 'src/components/ClusterDistribution/ClusterDistributionComponents'
+import { FetchError } from 'src/components/Error/FetchError'
+import { LOADING } from 'src/components/Loading/Loading'
 
 const Dropdown = styled(DropdownBase)`
   min-width: 130px;
@@ -43,18 +45,18 @@ export function SortByDropdown({ perCountryTooltipSortBy, onSortByChange }: Sort
   )
 
   return (
-    <FormGroup check inline>
-      <Label htmlFor="per-variant-sort-by">
-        <span className="mr-2">{t('Tooltip sort by:')}</span>
-        <Dropdown
-          identifier="per-variant-sort-by"
-          options={sortByOptions}
-          value={stringToOption(perCountryTooltipSortBy)}
-          onValueChange={handleSortByChange}
-          isSearchable={false}
-        />
+    <Col className={'d-flex flex-row align-items-center justify-between me-2'}>
+      <Label for="per-variant-sort-by" className={'mb-0 me-2'}>
+        {t('Tooltip sort by:')}
       </Label>
-    </FormGroup>
+      <Dropdown
+        identifier="per-variant-sort-by"
+        options={sortByOptions}
+        value={stringToOption(perCountryTooltipSortBy)}
+        onValueChange={handleSortByChange}
+        isSearchable={false}
+      />
+    </Col>
   )
 }
 
@@ -68,12 +70,12 @@ export function SortReverseCheckbox({ reverse, setReverse }: SortReverseCheckbox
   const onChange = useCallback(() => setReverse(!reverse), [setReverse, reverse])
 
   return (
-    <FormGroup check inline>
-      <Label htmlFor="per-variant-sort-reverse" check>
-        <Input id="per-variant-sort-reverse" type="checkbox" checked={reverse} onChange={onChange} />
-        <span>{t('Reversed')}</span>
+    <Col>
+      <Input id="per-variant-sort-reverse" type="checkbox" checked={reverse} onChange={onChange} className={'me-1'} />
+      <Label for="per-variant-sort-reverse" check>
+        {t('Reversed')}
       </Label>
-    </FormGroup>
+    </Col>
   )
 }
 
@@ -118,22 +120,6 @@ export function ClusterDistributionPage() {
     /* prettier-ignore */
     useMemo(() => filterCountries(countries, withClustersFiltered), [countries, withClustersFiltered])
 
-  const clusterDistributionComponents = useMemo(
-    () =>
-      withCountriesFiltered.map(({ cluster, distribution }) => (
-        <ColCustom key={cluster} md={12} lg={6} xl={6} xxl={4}>
-          <ClusterDistributionPlotCard
-            key={cluster}
-            clusterBuildName={clusterBuildNames.get(cluster) || ''}
-            clusterDisplayName={cluster}
-            distribution={distribution}
-            country_names={enabledCountries}
-          />
-        </ColCustom>
-      )),
-    [clusterBuildNames, enabledCountries, withCountriesFiltered],
-  )
-
   const handleClusterCheckedChange = useCallback(
     (cluster: string) => {
       setClusters((oldClusters) => toggleCluster(oldClusters, cluster))
@@ -173,13 +159,13 @@ export function ClusterDistributionPage() {
 
   return (
     <Layout wide>
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <PageHeading>{t('Overview of Variants/Mutations')}</PageHeading>
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <CenteredEditable githubUrl="blob/master/content/PerClusterIntro.md">
             <MdxContent filepath="PerClusterIntro.md" />
@@ -187,13 +173,13 @@ export function ClusterDistributionPage() {
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col>
           <SharingPanel />
         </Col>
       </Row>
 
-      <Row noGutters>
+      <Row className={'gx-0'}>
         <Col className="pb-10">
           <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
             <WrapperFlex>
@@ -216,25 +202,35 @@ export function ClusterDistributionPage() {
               </SidebarFlex>
 
               <MainFlex>
-                <StickyRow noGutters>
+                <StickyRow className={'gx-0'}>
                   <Col>
                     <Card className="m-2">
                       <CardBody className="px-3 py-2">
-                        <Form inline>
-                          <SortByDropdown
-                            perCountryTooltipSortBy={perCountryTooltipSortBy}
-                            onSortByChange={setSortBy}
-                          />
-                          <SortReverseCheckbox reverse={perCountryTooltipSortReversed} setReverse={setSortReversed} />
+                        <Form>
+                          <Row className="row-cols-lg-auto gx-0 align-items-center">
+                            <SortByDropdown
+                              perCountryTooltipSortBy={perCountryTooltipSortBy}
+                              onSortByChange={setSortBy}
+                            />
+                            <SortReverseCheckbox reverse={perCountryTooltipSortReversed} setReverse={setSortReversed} />
+                          </Row>
                         </Form>
                       </CardBody>
                     </Card>
                   </Col>
                 </StickyRow>
 
-                <Row noGutters>
+                <Row className={'gx-0'}>
                   <Col>
-                    <Row noGutters>{clusterDistributionComponents}</Row>
+                    <ErrorBoundary FallbackComponent={FetchError}>
+                      <Suspense fallback={LOADING}>
+                        <ClusterDistributionComponents
+                          withCountriesFiltered={withCountriesFiltered}
+                          clusterBuildNames={clusterBuildNames}
+                          enabledCountries={enabledCountries}
+                        />
+                      </Suspense>
+                    </ErrorBoundary>
                   </Col>
                 </Row>
               </MainFlex>

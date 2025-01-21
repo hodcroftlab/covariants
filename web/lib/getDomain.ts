@@ -1,37 +1,26 @@
-/* eslint-disable lodash/prefer-is-nil */
 import isInteractive from 'is-interactive'
 
-import { getenv } from './getenv'
+import { getEnvOrThrow } from './getenv'
 
-const WEB_PORT_DEV = getenv('WEB_PORT_DEV', null)
-const WEB_PORT_PROD = getenv('WEB_PORT_PROD', null)
+const WEB_PORT_DEV = process.env.WEB_PORT_DEV ?? ''
+const WEB_PORT_PROD = process.env.WEB_PORT_PROD ?? ''
 const devDomain = `http://localhost:${WEB_PORT_DEV}`
 const prodDomain = `http://localhost:${WEB_PORT_PROD}`
 
 const ENV_VARS = [
   // prettier-ignore
   'VERCEL_URL',
-  'NOW_URL',
-  'ZEIT_URL',
   'DEPLOY_PRIME_URL',
   'DEPLOY_URL',
   'URL',
 ]
 
 export function getenvFirst(vars: string[]) {
-  return vars.map((v) => getenv(v, null)).find((v) => v !== undefined && v !== null)
+  return vars.map((v) => process.env[v]).find((v) => v !== undefined)
 }
 
 export function listEnvVars(vars: string[]) {
-  return vars
-    .map((v) => {
-      let val = getenv(v, null)
-      if (val === null) {
-        val = ''
-      }
-      return `\n   - ${v}=${val}`
-    })
-    .join('')
+  return vars.map((v) => `\n   - ${v}=${process.env[v] ?? ''}`).join('')
 }
 
 export function devError() {
@@ -49,7 +38,7 @@ export function devError() {
 }
 
 export function getDomain() {
-  let DOMAIN = getenv('FULL_DOMAIN')
+  let DOMAIN = getEnvOrThrow('FULL_DOMAIN')
 
   if (DOMAIN === 'autodetect') {
     const interactive = isInteractive()
