@@ -13,7 +13,10 @@ const paramsAtom = atomAsync<GlobalParams>({
 
 const INVALID_PARAMS = 'Invalid date params in params.json or invalid split point chosen'
 
-export const timeDomainSelector = selector({
+type Ticks = number[]
+type TimeDomain = [number, number]
+
+export const timeDomainSelector = selector<TimeDomain>({
   key: 'timeDomain',
   get: ({ get }) => {
     const params = get(paramsAtom)
@@ -27,7 +30,7 @@ export const timeDomainSelector = selector({
   },
 })
 
-export const ticksSelector = selector({
+export const ticksSelector = selector<Ticks>({
   key: 'ticks',
   get: ({ get }) => {
     const timeDomain = get(timeDomainSelector)

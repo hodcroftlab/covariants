@@ -6,9 +6,6 @@ export interface GlobalParams {
   max_date: string
 }
 
-export type Ticks = number[]
-export type TimeDomain = [number, number]
-
 const globalParamsSchema = z.object({
   // eslint-disable-next-line camelcase
   min_date: z.string(),
