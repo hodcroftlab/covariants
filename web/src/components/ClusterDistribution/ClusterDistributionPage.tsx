@@ -4,10 +4,8 @@ import { useRecoilState } from 'recoil'
 import { styled } from 'styled-components'
 import { ErrorBoundary } from 'react-error-boundary'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
-import { disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/Clusters'
 import { clustersForPerClusterDataAtom } from 'src/state/ClustersForPerClusterData'
-import { disableAllCountries, enableAllCountries, toggleContinent, toggleCountry } from 'src/state/Places'
-import { usePlacesPerCluster } from 'src/state/PlacesForPerClusterData'
+import { perClusterContinentsAtom, perClusterCountriesAtom } from 'src/state/PlacesForPerClusterData'
 import { tooltipSortAtom, TooltipSortCriterion } from 'src/state/TooltipSort'
 import { MdxContent } from 'src/i18n/getMdxContent'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
@@ -104,45 +102,10 @@ const StickyRow = styled(Row)`
 
 function ClusterDistributionPlotSection() {
   const { t } = useTranslationSafe()
-  const { countriesSelected, setCountriesSelected, continentsSelected, setContinentsSelected } = usePlacesPerCluster()
+  const [countriesSelected, setCountriesSelected] = useRecoilState(perClusterCountriesAtom)
+  const [continentsSelected, setContinentsSelected] = useRecoilState(perClusterContinentsAtom)
   const [clustersSelected, setClustersSelected] = useRecoilState(clustersForPerClusterDataAtom)
 
-  const handleClusterCheckedChange = useCallback(
-    (cluster: string) => {
-      setClustersSelected((oldClusters) => toggleCluster(oldClusters, cluster))
-    },
-    [setClustersSelected],
-  )
-
-  const handleClusterSelectAll = useCallback(() => {
-    setClustersSelected((oldClusters) => enableAllClusters(oldClusters))
-  }, [setClustersSelected])
-
-  const handleClusterDeselectAll = useCallback(() => {
-    setClustersSelected((oldClusters) => disableAllClusters(oldClusters))
-  }, [setClustersSelected])
-
-  const handleCountryCheckedChange = useCallback(
-    (countryName: string) => {
-      setCountriesSelected((oldCountries) => toggleCountry(oldCountries, countryName))
-    },
-    [setCountriesSelected],
-  )
-
-  const handleContinentCheckedChange = useCallback(
-    (continentName: string) => {
-      setContinentsSelected((oldContinents) => toggleContinent(oldContinents, continentName))
-    },
-    [setContinentsSelected],
-  )
-
-  const handleCountrySelectAll = useCallback(() => {
-    setCountriesSelected(enableAllCountries)
-  }, [setCountriesSelected])
-
-  const handleCountryDeselectAll = useCallback(() => {
-    setCountriesSelected(disableAllCountries)
-  }, [setCountriesSelected])
   return (
     <WrapperFlex>
       <SidebarFlex>
@@ -150,16 +113,12 @@ function ClusterDistributionPlotSection() {
           countries={countriesSelected}
           continents={continentsSelected}
           clusters={clustersSelected}
+          setCountries={setCountriesSelected}
+          setContinents={setContinentsSelected}
+          setClusters={setClustersSelected}
           regionsTitle={t('Countries')}
           countriesCollapsedByDefault={false}
           enabledFilters={enabledFilters}
-          onClusterFilterChange={handleClusterCheckedChange}
-          onClusterFilterSelectAll={handleClusterSelectAll}
-          onClusterFilterDeselectAll={handleClusterDeselectAll}
-          onCountryFilterChange={handleCountryCheckedChange}
-          onRegionFilterChange={handleContinentCheckedChange}
-          onCountryFilterSelectAll={handleCountrySelectAll}
-          onCountryFilterDeselectAll={handleCountryDeselectAll}
         />
       </SidebarFlex>
 

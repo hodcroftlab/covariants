@@ -1,4 +1,4 @@
-import React, { Suspense, useCallback, useMemo } from 'react'
+import React, { Suspense, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 import { ErrorBoundary } from 'react-error-boundary'
@@ -17,8 +17,6 @@ import { DistributionSidebar } from 'src/components/DistributionSidebar/Distribu
 import { CasesComponents } from 'src/components/Cases/CasesComponents'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
-import { disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/Clusters'
-import { disableAllCountries, enableAllCountries, toggleContinent, toggleCountry } from 'src/state/Places'
 
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
@@ -37,43 +35,6 @@ export function CasesPage() {
     const { enabledClusters, withClustersFiltered } = filteredClusters
     return { enabledClusters, withClustersFiltered }
   }, [countries, perCountryCasesDistributions, clusters])
-
-  const handleClusterCheckedChange = useCallback(
-    (cluster: string) => {
-      setClusters((oldClusters) => toggleCluster(oldClusters, cluster))
-    },
-    [setClusters],
-  )
-
-  const handleClusterSelectAll = useCallback(() => {
-    setClusters((oldClusters) => enableAllClusters(oldClusters))
-  }, [setClusters])
-
-  const handleClusterDeselectAll = useCallback(() => {
-    setClusters((oldClusters) => disableAllClusters(oldClusters))
-  }, [setClusters])
-
-  const handleCountryCheckedChange = useCallback(
-    (countryName: string) => {
-      setCountries((oldCountries) => toggleCountry(oldCountries, countryName))
-    },
-    [setCountries],
-  )
-
-  const handleContinentCheckedChange = useCallback(
-    (continentName: string) => {
-      setContinents((oldContinents) => toggleContinent(oldContinents, continentName))
-    },
-    [setContinents],
-  )
-
-  const handleCountrySelectAll = useCallback(() => {
-    setCountries(enableAllCountries)
-  }, [setCountries])
-
-  const handleCountryDeselectAll = useCallback(() => {
-    setCountries(disableAllCountries)
-  }, [setCountries])
 
   return (
     <Layout wide>
@@ -106,18 +67,14 @@ export function CasesPage() {
                   countries={countries}
                   continents={continents}
                   clusters={clusters}
+                  setClusters={setClusters}
+                  setContinents={setContinents}
+                  setCountries={setCountries}
                   regionsTitle={t('Countries')}
                   enabledFilters={enabledFilters}
                   clustersCollapsedByDefault={false}
                   countriesCollapsedByDefault={false}
                   Icon={CountryFlag}
-                  onClusterFilterChange={handleClusterCheckedChange}
-                  onClusterFilterSelectAll={handleClusterSelectAll}
-                  onClusterFilterDeselectAll={handleClusterDeselectAll}
-                  onCountryFilterChange={handleCountryCheckedChange}
-                  onRegionFilterChange={handleContinentCheckedChange}
-                  onCountryFilterSelectAll={handleCountrySelectAll}
-                  onCountryFilterDeselectAll={handleCountryDeselectAll}
                 />
               </SidebarFlex>
 

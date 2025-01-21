@@ -1,4 +1,4 @@
-import React, { Suspense, useCallback, useMemo } from 'react'
+import React, { Suspense, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
 import { ErrorBoundary } from 'react-error-boundary'
 import { MdxContent } from 'src/i18n/getMdxContent'
@@ -16,8 +16,6 @@ import {
   usePerCountryIntroContentFilename,
   useRegions,
 } from 'src/io/getPerCountryData'
-import { disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/Clusters'
-import { disableAllCountries, enableAllCountries, toggleContinent, toggleCountry } from 'src/state/Places'
 import { usePlacesPerCountry } from 'src/state/PlacesForPerCountryData'
 import { CountryFlag } from 'src/components/Common/CountryFlag'
 import { USStateCode } from 'src/components/Common/USStateCode'
@@ -49,43 +47,6 @@ export function CountryDistributionPage() {
     const { enabledClusters, withClustersFiltered } = filteredClusters
     return { enabledClusters, withClustersFiltered }
   }, [countries, countryDistributions, clusters])
-
-  const handleClusterCheckedChange = useCallback(
-    (cluster: string) => {
-      setClusters((oldClusters) => toggleCluster(oldClusters, cluster))
-    },
-    [setClusters],
-  )
-
-  const handleClusterSelectAll = useCallback(() => {
-    setClusters((oldClusters) => enableAllClusters(oldClusters))
-  }, [setClusters])
-
-  const handleClusterDeselectAll = useCallback(() => {
-    setClusters((oldClusters) => disableAllClusters(oldClusters))
-  }, [setClusters])
-
-  const handleCountryCheckedChange = useCallback(
-    (countryName: string) => {
-      setCountries((oldCountries) => toggleCountry(oldCountries, countryName))
-    },
-    [setCountries],
-  )
-
-  const handleContinentCheckedChange = useCallback(
-    (continentName: string) => {
-      setContinents((oldContinents) => toggleContinent(oldContinents, continentName))
-    },
-    [setContinents],
-  )
-
-  const handleCountrySelectAll = useCallback(() => {
-    setCountries(enableAllCountries)
-  }, [setCountries])
-
-  const handleCountryDeselectAll = useCallback(() => {
-    setCountries(disableAllCountries)
-  }, [setCountries])
 
   const contentFilename = usePerCountryIntroContentFilename(region)
   const IntroContent = useMemo(() => {
@@ -134,17 +95,13 @@ export function CountryDistributionPage() {
                   countries={countries}
                   continents={continents}
                   clusters={clusters}
+                  setCountries={setCountries}
+                  setClusters={setClusters}
+                  setContinents={setContinents}
                   regionsTitle={regionsTitle}
                   enabledFilters={enabledFilters}
                   clustersCollapsedByDefault={false}
                   Icon={iconComponent}
-                  onClusterFilterChange={handleClusterCheckedChange}
-                  onClusterFilterSelectAll={handleClusterSelectAll}
-                  onClusterFilterDeselectAll={handleClusterDeselectAll}
-                  onCountryFilterChange={handleCountryCheckedChange}
-                  onRegionFilterChange={handleContinentCheckedChange}
-                  onCountryFilterSelectAll={handleCountrySelectAll}
-                  onCountryFilterDeselectAll={handleCountryDeselectAll}
                 />
               </SidebarFlex>
 
