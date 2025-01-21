@@ -7,12 +7,15 @@ import { FETCHER, useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
 
 const countriesToPlotSchema = z.record(z.string(), z.literal('True').or(z.literal('False')))
 
-type CountriesToPlot = z.infer<typeof countriesToPlotSchema>
+type CountriesToPlotRaw = z.infer<typeof countriesToPlotSchema>
 
-export async function getShouldPlotCountry(): Promise<(country: string) => boolean> {
-  const countriesToPlotRaw = await FETCHER.fetch<CountriesToPlot>('/data/countriesToPlot.json')
-  const countries = countriesToPlotSchema.parse(countriesToPlotRaw)
-  return (country: string) => get<object, string, 'False' | 'True'>(countries, country, 'False') === 'True'
+export type CountriesToPlot = Record<string, boolean>
+
+export async function fetchShouldPlotCountry(): Promise<CountriesToPlot> {
+  const countriesToPlotRaw = await FETCHER.fetch<CountriesToPlotRaw>('/data/countriesToPlot.json')
+  const countriesRaw = countriesToPlotSchema.parse(countriesToPlotRaw)
+  const countries = Object.entries(countriesRaw).map(([country, shouldPlot]) => [country, shouldPlot === 'True'])
+  return Object.fromEntries(countries) as CountriesToPlot
 }
 
 const countryStylesSchema = z.record(z.string(), z.object({ c: z.string(), ls: z.string() }))

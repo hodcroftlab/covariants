@@ -1,5 +1,5 @@
 import copy from 'fast-copy'
-import { get } from 'lodash'
+import { get as getLodash } from 'lodash'
 import Router from 'next/router'
 import { selector, useRecoilState } from 'recoil'
 import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
@@ -13,10 +13,10 @@ import {
 } from 'src/state/Places'
 import { parseUrl } from 'src/helpers/parseUrl'
 import { updateUrlQuery } from 'src/helpers/urlQuery'
-import { fetchPerClusterDataRaw } from 'src/io/getPerClusterData'
 import { atomAsync } from 'src/state/utils/atomAsync'
 import { isDefaultValue } from 'src/state/utils/isDefaultValue'
-import { getShouldPlotCountry } from 'src/io/getCountryColor'
+import { perClusterDataAtom } from 'src/state/perClusterData'
+import { shouldPlotCountryAtom } from 'src/state/shouldPlotCountry'
 
 export function usePlacesPerCluster() {
   const [countriesSelected, setCountriesSelected] = useRecoilState(countriesAtom)
@@ -35,19 +35,19 @@ export function usePlacesPerCluster() {
  */
 const countriesAtom = atomAsync<Country[]>({
   key: 'perClusterCountries',
-  async default() {
+  async default({ get }) {
     const { query } = parseUrl(Router.asPath)
-    const data = await fetchPerClusterDataRaw()
-    const shouldPlotCountry = await getShouldPlotCountry()
+    const data = get(perClusterDataAtom)
+    const shouldPlotCountry = get(shouldPlotCountryAtom)
 
     const countries = copy(data.country_names)
       .sort()
       .map((country) => ({
         country,
-        enabled: shouldPlotCountry(country),
+        enabled: shouldPlotCountry[country],
       }))
 
-    const enabledCountries = convertToArrayMaybe(get(query, 'country'))
+    const enabledCountries = convertToArrayMaybe(getLodash(query, 'country'))
     if (enabledCountries) {
       return countries.map((country) => ({
         ...country,

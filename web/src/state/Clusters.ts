@@ -1,10 +1,28 @@
+import { selector } from 'recoil'
 import { updateUrlQuery } from 'src/helpers/urlQuery'
 import type { AtomEffectParams } from 'src/state/utils/atomEffect'
+import { atomAsync } from 'src/state/utils/atomAsync'
+import { ClusterDatum, fetchClusters } from 'src/io/getClusters'
 
 export interface Cluster {
   cluster: string
   enabled: boolean
 }
+
+export const clustersAtom = atomAsync<ClusterDatum[]>({
+  key: 'clusters',
+  async default() {
+    return await fetchClusters()
+  },
+})
+
+export const clusterNamesSelector = selector({
+  key: 'clusterNames',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return clusters.map((cluster) => cluster.display_name)
+  },
+})
 
 /** Toggles a given cluster enabled/disabled */
 export function toggleCluster(clusters: Cluster[], clusterName: string): Cluster[] {
