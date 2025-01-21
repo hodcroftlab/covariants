@@ -4,6 +4,7 @@ import React, { useMemo } from 'react'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
 import { DateTime } from 'luxon'
 
+import { useRecoilValue } from 'recoil'
 import { CountryDistributionPlotTooltip } from './CountryDistributionPlotTooltip'
 import type { CountryDistributionDatum } from 'src/io/getPerCountryData'
 import { theme } from 'src/theme'
@@ -11,7 +12,7 @@ import { CLUSTER_NAME_OTHERS, useClusterColors } from 'src/io/getClusters'
 import { formatDateHumanely, formatProportion } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import { ChartContainer } from 'src/components/Common/ChartContainer'
-import { Ticks, TimeDomain } from 'src/io/useParams'
+import { ticksSelector, timeDomainSelector } from 'src/state/Params'
 
 const allowEscapeViewBox = { x: false, y: true }
 
@@ -20,12 +21,13 @@ export interface AreaPlotProps {
   height?: number
   cluster_names: string[]
   distribution: CountryDistributionDatum[]
-  ticks: Ticks
-  timeDomain: TimeDomain
 }
 
-function AreaPlot({ width, height, cluster_names, distribution, ticks, timeDomain }: AreaPlotProps) {
+function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps) {
   const getClusterColor = useClusterColors()
+  const ticks = useRecoilValue(ticksSelector)
+  const timeDomain = useRecoilValue(timeDomainSelector)
+
   const data = useMemo(
     () =>
       distribution.map(({ week, total_sequences, cluster_counts }) => {
@@ -105,27 +107,13 @@ function AreaPlot({ width, height, cluster_names, distribution, ticks, timeDomai
 export interface CountryDistributionPlotProps {
   cluster_names: string[]
   distribution: CountryDistributionDatum[]
-  ticks: Ticks
-  timeDomain: TimeDomain
 }
 
-export function CountryDistributionPlot({
-  cluster_names,
-  distribution,
-  ticks,
-  timeDomain,
-}: CountryDistributionPlotProps) {
+export function CountryDistributionPlot({ cluster_names, distribution }: CountryDistributionPlotProps) {
   return (
     <ChartContainer>
       {({ width, height }) => (
-        <AreaPlot
-          width={width}
-          height={height}
-          cluster_names={cluster_names}
-          distribution={distribution}
-          ticks={ticks}
-          timeDomain={timeDomain}
-        />
+        <AreaPlot width={width} height={height} cluster_names={cluster_names} distribution={distribution} />
       )}
     </ChartContainer>
   )

@@ -3,7 +3,6 @@ import React, { useMemo } from 'react'
 import { useRecoilValue } from 'recoil'
 import { ColCustom } from 'src/components/Common/ColCustom'
 import { ClusterDistributionPlotCard } from 'src/components/ClusterDistribution/ClusterDistributionPlotCard'
-import { useTicks, useTimeDomain } from 'src/io/useParams'
 import { filterClusters, filterCountries } from 'src/io/getPerClusterData'
 import { Country } from 'src/state/Places'
 import { Cluster, clusterBuildNamesSelector } from 'src/state/Clusters'
@@ -16,8 +15,6 @@ export function ClusterDistributionComponents({
   clustersSelected: Cluster[]
   countriesSelected: Country[]
 }) {
-  const ticks = useTicks()
-  const timeDomain = useTimeDomain()
   const clusterBuildNames = useRecoilValue(clusterBuildNamesSelector)
   const clusterDistributions = useRecoilValue(perClusterDataDistributionsSelector)
 
@@ -40,12 +37,10 @@ export function ClusterDistributionComponents({
             clusterDisplayName={cluster}
             distribution={distribution}
             country_names={enabledCountries}
-            ticks={ticks}
-            timeDomain={timeDomain}
           />
         </ColCustom>
       )),
-    [clusterBuildNames, enabledCountries, withCountriesFiltered, ticks, timeDomain],
+    [clusterBuildNames, enabledCountries, withCountriesFiltered],
   )
   return <Row className={'gx-0'}>{clusterDistributionComponents}</Row>
 }

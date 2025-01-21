@@ -6,13 +6,14 @@ import { DateTime } from 'luxon'
 import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts'
 import { useTheme } from 'styled-components'
 
+import { useRecoilValue } from 'recoil'
 import { useCountryColor, useCountryStrokeDashArray } from 'src/io/getCountryColor'
 import { formatDateHumanely, formatProportion } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import type { ClusterDistributionDatum } from 'src/io/getPerClusterData'
 import { ClusterDistributionPlotTooltip } from 'src/components/ClusterDistribution/ClusterDistributionPlotTooltip'
 import { ChartContainer } from 'src/components/Common/ChartContainer'
-import { Ticks, TimeDomain } from 'src/io/useParams'
+import { ticksSelector, timeDomainSelector } from 'src/state/Params'
 
 const getValueOrig = (country: string) => (value: ClusterDistributionDatum) => {
   const orig = get(value.orig, country, false)
@@ -39,14 +40,15 @@ interface LinePlotProps {
   height: number
   country_names: string[]
   distribution: ClusterDistributionDatum[]
-  ticks: Ticks
-  timeDomain: TimeDomain
 }
 
-function LinePlot({ width, height, country_names, distribution, ticks, timeDomain }: LinePlotProps) {
+function LinePlot({ width, height, country_names, distribution }: LinePlotProps) {
   const theme = useTheme()
   const getCountryColor = useCountryColor()
   const getCountryStrokeDashArray = useCountryStrokeDashArray()
+
+  const ticks = useRecoilValue(ticksSelector)
+  const timeDomain = useRecoilValue(timeDomainSelector)
 
   const data = useMemo(
     () =>
@@ -133,27 +135,13 @@ function LinePlot({ width, height, country_names, distribution, ticks, timeDomai
 export interface ClusterDistributionPlotProps {
   country_names: string[]
   distribution: ClusterDistributionDatum[]
-  ticks: Ticks
-  timeDomain: TimeDomain
 }
 
-export function ClusterDistributionPlot({
-  country_names,
-  distribution,
-  ticks,
-  timeDomain,
-}: ClusterDistributionPlotProps) {
+export function ClusterDistributionPlot({ country_names, distribution }: ClusterDistributionPlotProps) {
   return (
     <ChartContainer>
       {({ width, height }) => (
-        <LinePlot
-          width={width}
-          height={height}
-          country_names={country_names}
-          distribution={distribution}
-          ticks={ticks}
-          timeDomain={timeDomain}
-        />
+        <LinePlot width={width} height={height} country_names={country_names} distribution={distribution} />
       )}
     </ChartContainer>
   )

@@ -6,6 +6,7 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Label } from 're
 import { DateTime } from 'luxon'
 
 import { useTheme } from 'styled-components'
+import { useRecoilValue } from 'recoil'
 import { CasesPlotTooltip } from './CasesPlotTooltip'
 import type { PerCountryCasesDistributionDatum } from 'src/io/getPerCountryCasesData'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
@@ -14,7 +15,7 @@ import { formatDateHumanely } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
 import { ChartContainer } from 'src/components/Common/ChartContainer'
-import { Ticks, TimeDomain } from 'src/io/useParams'
+import { ticksSelector, timeDomainSelector } from 'src/state/Params'
 
 const CHART_MARGIN = { left: 10, top: 12, bottom: 6, right: 12 }
 const ALLOW_ESCAPE_VIEW_BOX = { x: false, y: true }
@@ -22,15 +23,16 @@ const ALLOW_ESCAPE_VIEW_BOX = { x: false, y: true }
 export interface CasesPlotProps {
   cluster_names: string[]
   distribution: PerCountryCasesDistributionDatum[]
-  ticks: Ticks
-  timeDomain: TimeDomain
 }
 
-export function CasesPlotComponent({ cluster_names, distribution, ticks, timeDomain }: CasesPlotProps) {
+export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotProps) {
   const { t } = useTranslationSafe()
   const theme = useTheme()
   const chartRef = useRef(null)
   const getClusterColor = useClusterColors()
+
+  const ticks = useRecoilValue(ticksSelector)
+  const timeDomain = useRecoilValue(timeDomainSelector)
 
   const data = distribution.map(({ week, stand_total_cases, stand_estimated_cases }) => {
     const weekSec = DateTime.fromFormat(week, 'yyyy-MM-dd').toSeconds()
