@@ -1,42 +1,45 @@
 /* eslint-disable camelcase */
 import { pickBy } from 'lodash'
+import { z } from 'zod'
 import type { Cluster } from 'src/state/Clusters'
 import type { Country } from 'src/state/Places'
 import { FETCHER } from 'src/hooks/useAxiosQuery'
-
-export interface PerCountryDatum {
-  cluster_names: string[]
-  distributions: CountryDistribution[]
-  max_date: string
-  min_date: string
-  region: string
-  per_country_intro_content: string
-}
-
-export interface PerCountryDataRaw {
-  regions: PerCountryDatum[]
-}
-
-export interface CountryDistributionDatum {
-  week: string
-  total_sequences: number
-  cluster_counts: Record<string, number | undefined>
-}
 
 export interface CountryDistribution {
   country: string
   distribution: CountryDistributionDatum[]
 }
 
-export interface PerCountryData {
-  clusterNames: string[]
-  clusters: Cluster[]
-  countryDistributions: CountryDistribution[]
-  perCountryIntroContent: string
-}
+const countryDistributionDatumSchema = z.object({
+  week: z.string(),
+  total_sequences: z.number(),
+  cluster_counts: z.record(z.string(), z.number().optional()),
+})
 
-export function fetchPerCountryDataRaw() {
-  return FETCHER.fetch<PerCountryDataRaw>('/data/perCountryData.json')
+const countryDistributionSchema = z.object({
+  country: z.string(),
+  distribution: countryDistributionDatumSchema.array(),
+})
+
+const perCountryDatumSchema = z.object({
+  cluster_names: z.string().array(),
+  distributions: countryDistributionSchema.array(),
+  max_date: z.string(),
+  min_date: z.string(),
+  region: z.string(),
+  per_country_intro_content: z.string(),
+})
+
+const perCountryDataRawSchema = z.object({
+  regions: perCountryDatumSchema.array(),
+})
+
+export type PerCountryDataRaw = z.infer<typeof perCountryDataRawSchema>
+export type CountryDistributionDatum = z.infer<typeof countryDistributionDatumSchema>
+
+export async function fetchPerCountryDataRaw(): Promise<PerCountryDataRaw> {
+  const data = await FETCHER.fetch<PerCountryDataRaw>('/data/perCountryData.json')
+  return perCountryDataRawSchema.parse(data)
 }
 
 export function filterCountries(countries: Country[], countryDistributions: CountryDistribution[]) {

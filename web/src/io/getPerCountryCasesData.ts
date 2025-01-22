@@ -46,8 +46,9 @@ type PerCountryCasesDatum = z.infer<typeof perCountryCasesDatumSchema>
 export type PerCountryCasesDistribution = z.infer<typeof perCountryCasesDistributionSchema>
 export type PerCountryCasesDistributionDatum = z.infer<typeof perCountryCasesDistributionDatumSchema>
 
-export function fetchPerCountryCasesDataRaw(): Promise<PerCountryCasesDataRaw> {
-  return FETCHER.fetch<PerCountryCasesDataRaw>('/data/perCountryDataCaseCounts.json')
+export async function fetchPerCountryCasesDataRaw(): Promise<PerCountryCasesDataRaw> {
+  const data = await FETCHER.fetch<PerCountryCasesDataRaw>('/data/perCountryDataCaseCounts.json')
+  return perCountryCaseDataRawSchema.parse(data)
 }
 
 export function usePerCountryCasesDataRaw(): PerCountryCasesDataRaw {

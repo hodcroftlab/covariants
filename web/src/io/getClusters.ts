@@ -55,7 +55,7 @@ export type ClusterDatum = z.infer<typeof clusterDatumSchema>
 
 export async function fetchClusters(): Promise<ClusterDatum[]> {
   const clusters = await FETCHER.fetch<ClusterDataRaw>('/data/clusters.json')
-  return clusters.clusters
+  return clusterDataRawSchema.parse(clusters).clusters
 }
 
 export function useClusters(): ClusterDatum[] {
