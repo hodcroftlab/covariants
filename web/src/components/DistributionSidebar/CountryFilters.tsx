@@ -12,12 +12,13 @@ import {
   Row,
 } from 'reactstrap'
 import { styled, useTheme } from 'styled-components'
+import { useRecoilValue } from 'recoil'
 import { ColoredHorizontalLineIcon } from '../Common/ColoredHorizontalLineIcon'
 import { Continent, Country } from 'src/state/Places'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import type { CountryFlagProps } from 'src/components/Common/CountryFlag'
-import { useCountryColor, useCountryStrokeDashArray } from 'src/io/getCountryColor'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
+import { getCountryStylesSelector } from 'src/state/CountryStyles'
 
 export const CardBody = styled(CardBodyBase)``
 
@@ -58,8 +59,9 @@ export function IconComponent({ country, Icon }: IconOrLineComponentProps) {
 export function LineComponent({ country }: IconOrLineComponentProps) {
   const { t } = useTranslationSafe()
   const theme = useTheme()
-  const stroke = useCountryColor()(country)
-  const strokeDasharray = useCountryStrokeDashArray()(country)
+  const getCountryStyles = useRecoilValue(getCountryStylesSelector)
+  const stroke = getCountryStyles(country).color
+  const strokeDasharray = getCountryStyles(country).strokeDashArray
 
   return (
     <>

@@ -1,11 +1,11 @@
 import get from 'lodash/get'
 import React, { useState, useMemo, useCallback } from 'react'
 import { Col, Row } from 'reactstrap'
-import { SetterOrUpdater } from 'recoil'
+import { SetterOrUpdater, useRecoilValue } from 'recoil'
 import { CountryFlagProps } from '../Common/CountryFlag'
 import { ClusterFilters } from './ClusterFilters'
 import { CountryFilters } from './CountryFilters'
-import { Cluster, disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/Clusters'
+import { Cluster, clusterNamesSelector, disableAllClusters, enableAllClusters, toggleCluster } from 'src/state/Clusters'
 
 import {
   Continent,
@@ -15,7 +15,7 @@ import {
   toggleContinent,
   toggleCountry,
 } from 'src/state/Places'
-import { sortClustersByClusterNames, useClusterNames } from 'src/io/getClusters'
+import { sortClustersByClusterNames } from 'src/io/getClusters'
 
 export interface DistributionSidebarProps {
   countries: Country[]
@@ -46,7 +46,7 @@ export function DistributionSidebar({
 }: DistributionSidebarProps) {
   const [clustersCollapsed, setClustersCollapsed] = useState(clustersCollapsedByDefault)
   const [countriesCollapsed, setCountriesCollapsed] = useState(countriesCollapsedByDefault)
-  const clusterNames = useClusterNames()
+  const clusterNames = useRecoilValue(clusterNamesSelector)
   const clustersSorted = useMemo(
     () => sortClustersByClusterNames(clusters ?? [], clusterNames),
     [clusters, clusterNames],
