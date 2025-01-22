@@ -17608,6 +17608,211 @@
     },
     {
       "alt_display_name": [
+        "KP.3.1.1"
+      ],
+      "aquaria_urls": [],
+      "build_name": "24E.Omicron",
+      "cluster_data": [],
+      "col": "#0d2f6b",
+      "country_info": [],
+      "display_name": "24E (Omicron)",
+      "graphing": true,
+      "has_no_page": true,
+      "important": false,
+      "mutations": {
+        "nonsynonymous": [],
+        "synonymous": []
+      },
+      "nextstrain_build": false,
+      "nextstrain_name": "24E",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/24E.Omicron",
+      "old_build_names": [],
+      "pango_lineages": [
+        {
+          "name": "KP.3.1.1",
+          "url": "https://cov-lineages.org/lineage.html?lineage=KP.3.1.1"
+        }
+      ],
+      "snps": [
+        7113,
+        17334,
+        22928,
+        24872,
+        27810
+      ],
+      "snps_with_base": [],
+      "type": "variant",
+      "use_pango": false,
+      "who_name": [
+        "Omicron"
+      ]
+    },
+    {
+      "alt_display_name": [
+        "XEC"
+      ],
+      "aquaria_urls": [],
+      "build_name": "24F.Omicron",
+      "cluster_data": [],
+      "col": "#77096b",
+      "country_info": [],
+      "display_name": "24F (Omicron)",
+      "graphing": true,
+      "has_no_page": true,
+      "important": false,
+      "mutations": {
+        "nonsynonymous": [],
+        "synonymous": []
+      },
+      "nextstrain_build": false,
+      "nextstrain_name": "24F",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/24F.Omicron",
+      "old_build_names": [],
+      "pango_lineages": [
+        {
+          "name": "XEC",
+          "url": "https://cov-lineages.org/lineage.html?lineage=XEC"
+        }
+      ],
+      "snps": [
+        7113,
+        17334,
+        22928,
+        24872,
+        27810
+      ],
+      "snps_with_base": [],
+      "type": "variant",
+      "use_pango": false,
+      "who_name": [
+        "Omicron"
+      ]
+    },
+    {
+      "alt_display_name": [
+        "KP.2.3"
+      ],
+      "aquaria_urls": [],
+      "build_name": "24G.Omicron",
+      "cluster_data": [],
+      "col": "#194330",
+      "country_info": [],
+      "display_name": "24G (Omicron)",
+      "graphing": true,
+      "has_no_page": true,
+      "important": false,
+      "mutations": {
+        "nonsynonymous": [],
+        "synonymous": []
+      },
+      "nextstrain_build": false,
+      "nextstrain_name": "24G",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/24G.Omicron",
+      "old_build_names": [],
+      "pango_lineages": [
+        {
+          "name": "KP.2.3",
+          "url": "https://cov-lineages.org/lineage.html?lineage=KP.2.3"
+        }
+      ],
+      "snps": [
+        7113,
+        17334,
+        22928,
+        24872,
+        27810
+      ],
+      "snps_with_base": [],
+      "type": "variant",
+      "use_pango": false,
+      "who_name": [
+        "Omicron"
+      ]
+    },
+    {
+      "alt_display_name": [
+        "LF.7"
+      ],
+      "aquaria_urls": [],
+      "build_name": "24H.Omicron",
+      "cluster_data": [],
+      "col": "#9b096b",
+      "country_info": [],
+      "display_name": "24H (Omicron)",
+      "graphing": true,
+      "has_no_page": true,
+      "important": false,
+      "mutations": {
+        "nonsynonymous": [],
+        "synonymous": []
+      },
+      "nextstrain_build": false,
+      "nextstrain_name": "24H",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/24H.Omicron",
+      "old_build_names": [],
+      "pango_lineages": [
+        {
+          "name": "LF.7",
+          "url": "https://cov-lineages.org/lineage.html?lineage=LF.7"
+        }
+      ],
+      "snps": [
+        7113,
+        17334,
+        22928,
+        24872,
+        27810
+      ],
+      "snps_with_base": [],
+      "type": "variant",
+      "use_pango": false,
+      "who_name": [
+        "Omicron"
+      ]
+    },
+    {
+      "alt_display_name": [
+        "MV.1"
+      ],
+      "aquaria_urls": [],
+      "build_name": "24I.Omicron",
+      "cluster_data": [],
+      "col": "#9b096b",
+      "country_info": [],
+      "display_name": "24I (Omicron)",
+      "graphing": true,
+      "has_no_page": true,
+      "important": false,
+      "mutations": {
+        "nonsynonymous": [],
+        "synonymous": []
+      },
+      "nextstrain_build": false,
+      "nextstrain_name": "24I",
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/24I.Omicron",
+      "old_build_names": [],
+      "pango_lineages": [
+        {
+          "name": "MV.1",
+          "url": "https://cov-lineages.org/lineage.html?lineage=MV.1"
+        }
+      ],
+      "snps": [
+        7113,
+        17334,
+        22928,
+        24872,
+        27810
+      ],
+      "snps_with_base": [],
+      "type": "variant",
+      "use_pango": false,
+      "who_name": [
+        "Omicron"
+      ]
+    },
+    {
+      "alt_display_name": [
         "21A/S:154K"
       ],
       "aquaria_urls": [
