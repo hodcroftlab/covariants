@@ -3634,6 +3634,192 @@ clusters = {
         },
     },
 
+    "24D": {  #XDV.1
+       "snps": [7113,17334,22928,24872,27810],  # TTCTC
+       "snps_with_base": [], #MUST ADD VALUE WHEN TURN INTO PAGE!  
+       "cluster_data": [],
+       "nextstrain_build": False,
+       #"parent": "", 
+       "use_pango": False,
+       "has_no_page": True,
+       "type": "variant",
+       "graphing": True,
+       "important": False,
+       "country_info": [],
+       "col": "#521e7a", 
+       "display_name": "24D (Omicron)",
+       "alt_display_name": ["XDV.1"],
+       "build_name": "24D.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "24D",
+       "pango_lineages": [
+           {"name": "XDV.1", "url": "https://cov-lineages.org/lineage.html?lineage=XDV.1"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/24D.Omicron",
+        "mutations": {
+            "nonsynonymous": [
+            ],
+            "synonymous": [
+            ],
+        },
+    },
+
+    "24E": {  #KP.3.1.1
+       "snps": [7113,17334,22928,24872,27810],  # TTCTC
+       "snps_with_base": [], #MUST ADD VALUE WHEN TURN INTO PAGE!  
+       "cluster_data": [],
+       "nextstrain_build": False,
+       #"parent": "", 
+       "use_pango": False,
+       "has_no_page": True,
+       "type": "variant",
+       "graphing": True,
+       "important": False,
+       "country_info": [],
+       "col": "#0d2f6b", 
+       "display_name": "24E (Omicron)",
+       "alt_display_name": ["KP.3.1.1"],
+       "build_name": "24E.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "24E",
+       "pango_lineages": [
+           {"name": "KP.3.1.1", "url": "https://cov-lineages.org/lineage.html?lineage=KP.3.1.1"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/24E.Omicron",
+        "mutations": {
+            "nonsynonymous": [
+            ],
+            "synonymous": [
+            ],
+        },
+    },
+
+    "24F": {  #XEC
+       "snps": [7113,17334,22928,24872,27810],  # TTCTC
+       "snps_with_base": [], #MUST ADD VALUE WHEN TURN INTO PAGE!  
+       "cluster_data": [],
+       "nextstrain_build": False,
+       #"parent": "", 
+       "use_pango": False,
+       "has_no_page": True,
+       "type": "variant",
+       "graphing": True,
+       "important": False,
+       "country_info": [],
+       "col": "#77096b", 
+       "display_name": "24F (Omicron)",
+       "alt_display_name": ["XEC"],
+       "build_name": "24F.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "24F",
+       "pango_lineages": [
+           {"name": "XEC", "url": "https://cov-lineages.org/lineage.html?lineage=XEC"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/24F.Omicron",
+        "mutations": {
+            "nonsynonymous": [
+            ],
+            "synonymous": [
+            ],
+        },
+    },
+
+    "24G": {  #KP.2.3
+       "snps": [7113,17334,22928,24872,27810],  # TTCTC
+       "snps_with_base": [], #MUST ADD VALUE WHEN TURN INTO PAGE!  
+       "cluster_data": [],
+       "nextstrain_build": False,
+       #"parent": "", 
+       "use_pango": False,
+       "has_no_page": True,
+       "type": "variant",
+       "graphing": True,
+       "important": False,
+       "country_info": [],
+       "col": "#194330", 
+       "display_name": "24G (Omicron)",
+       "alt_display_name": ["KP.2.3"],
+       "build_name": "24G.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "24G",
+       "pango_lineages": [
+           {"name": "KP.2.3", "url": "https://cov-lineages.org/lineage.html?lineage=KP.2.3"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/24G.Omicron",
+        "mutations": {
+            "nonsynonymous": [
+            ],
+            "synonymous": [
+            ],
+        },
+    },
+
+    "24H": {  #LF.7
+       "snps": [7113,17334,22928,24872,27810],  # TTCTC
+       "snps_with_base": [], #MUST ADD VALUE WHEN TURN INTO PAGE!  
+       "cluster_data": [],
+       "nextstrain_build": False,
+       #"parent": "", 
+       "use_pango": False,
+       "has_no_page": True,
+       "type": "variant",
+       "graphing": True,
+       "important": False,
+       "country_info": [],
+       "col": "#9b096b", 
+       "display_name": "24H (Omicron)",
+       "alt_display_name": ["LF.7"],
+       "build_name": "24H.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "24H",
+       "pango_lineages": [
+           {"name": "LF.7", "url": "https://cov-lineages.org/lineage.html?lineage=LF.7"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/24H.Omicron",
+        "mutations": {
+            "nonsynonymous": [
+            ],
+            "synonymous": [
+            ],
+        },
+    },
+
+    "24I": {  #MV.1
+       "snps": [7113,17334,22928,24872,27810],  # TTCTC
+       "snps_with_base": [], #MUST ADD VALUE WHEN TURN INTO PAGE!  
+       "cluster_data": [],
+       "nextstrain_build": False,
+       #"parent": "", 
+       "use_pango": False,
+       "has_no_page": True,
+       "type": "variant",
+       "graphing": True,
+       "important": False,
+       "country_info": [],
+       "col": "#9b096b", 
+       "display_name": "24I (Omicron)",
+       "alt_display_name": ["MV.1"],
+       "build_name": "24I.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "24I",
+       "pango_lineages": [
+           {"name": "MV.1", "url": "https://cov-lineages.org/lineage.html?lineage=MV.1"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/24I.Omicron",
+        "mutations": {
+            "nonsynonymous": [
+            ],
+            "synonymous": [
+            ],
+        },
+    },
+
     # variant  -- part of 'Indian' in media - B.1.617.1
     "Kappa": {
         "snps": [17523, 23604, 22917],  # ORF1b:1352, S:681, 452
