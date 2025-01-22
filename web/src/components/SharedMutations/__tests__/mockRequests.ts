@@ -91,6 +91,29 @@ const mockPerClusterData = {
   ],
 }
 
+const mockPerCountryData = {
+  regions: [
+    {
+      cluster_names: ['20I (Alpha, V1)'],
+      distributions: [
+        {
+          country: 'USA',
+          distribution: [
+            {
+              cluster_counts: {
+                '20I (Alpha, V1)': 0.0,
+              },
+              total_sequences: 1000,
+              week: '2020-04-27',
+            },
+          ],
+        },
+      ],
+      region: 'World',
+    },
+  ],
+}
+
 const mockClusters = {
   clusters: [
     {
@@ -160,6 +183,9 @@ const restHandlers = [
   }),
   http.get('/data/perClusterData.json', () => {
     return HttpResponse.json(mockPerClusterData)
+  }),
+  http.get('/data/perCountryData.json', () => {
+    return HttpResponse.json(mockPerCountryData)
   }),
   http.get('/data/clusters.json', () => {
     return HttpResponse.json(mockClusters)

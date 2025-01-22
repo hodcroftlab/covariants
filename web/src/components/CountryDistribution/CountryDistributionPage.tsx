@@ -1,6 +1,7 @@
 import React, { Suspense, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
 import { ErrorBoundary } from 'react-error-boundary'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { MdxContent } from 'src/i18n/getMdxContent'
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
@@ -10,29 +11,27 @@ import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import {
-  filterClusters,
-  filterCountries,
-  usePerCountryData,
-  usePerCountryIntroContentFilename,
-  useRegions,
-} from 'src/io/getPerCountryData'
-import { usePlacesPerCountry } from 'src/state/PlacesForPerCountryData'
+  perCountryContinentsAtom,
+  perCountryCountriesAtom,
+  perCountryRegionAtom,
+} from 'src/state/PlacesForPerCountryData'
 import { CountryFlag } from 'src/components/Common/CountryFlag'
 import { USStateCode } from 'src/components/Common/USStateCode'
 import { PageHeading } from 'src/components/Common/PageHeading'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
 import { CountryDistributionComponents } from 'src/components/CountryDistribution/CountryDistributionComponents'
+import { clustersForPerCountryDataAtom } from 'src/state/ClustersForPerCountryData'
+import { perCountryDataIntroContentFilenameSelector } from 'src/state/PerCountryData'
 
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
-export function CountryDistributionPage() {
+function CountryDistributionPlotSection() {
   const { t } = useTranslationSafe()
-
-  const { regionNames, regionsHaveData } = useRegions()
-  const { region, setRegion, countries, setCountries, continents, setContinents } = usePlacesPerCountry()
-  const { countryDistributions, clusters, setClusters } = usePerCountryData(region)
-
+  const region = useRecoilValue(perCountryRegionAtom)
+  const [countries, setCountries] = useRecoilState(perCountryCountriesAtom(region))
+  const [continents, setContinents] = useRecoilState(perCountryContinentsAtom)
+  const [clusters, setClusters] = useRecoilState(clustersForPerCountryDataAtom(region))
   const regionsTitle = useMemo(() => (region === 'World' ? t('Countries') : t('Regions')), [region, t])
 
   const iconComponent = useMemo(() => {
@@ -41,34 +40,56 @@ export function CountryDistributionPage() {
     return undefined
   }, [region])
 
-  const { enabledClusters, withClustersFiltered } = useMemo(() => {
-    const { withCountriesFiltered } = filterCountries(countries, countryDistributions)
-    const filteredClusters = filterClusters(clusters, withCountriesFiltered)
-    const { enabledClusters, withClustersFiltered } = filteredClusters
-    return { enabledClusters, withClustersFiltered }
-  }, [countries, countryDistributions, clusters])
+  return (
+    <WrapperFlex>
+      <SidebarFlex>
+        <DistributionSidebar
+          countries={countries}
+          continents={continents}
+          clusters={clusters}
+          setCountries={setCountries}
+          setClusters={setClusters}
+          setContinents={setContinents}
+          regionsTitle={regionsTitle}
+          enabledFilters={enabledFilters}
+          clustersCollapsedByDefault={false}
+          Icon={iconComponent}
+        />
+      </SidebarFlex>
 
-  const contentFilename = usePerCountryIntroContentFilename(region)
+      <MainFlex>
+        <Row className={'gx-0'}>
+          <Col>
+            <ErrorBoundary FallbackComponent={FetchError}>
+              <Suspense fallback={LOADING}>
+                <CountryDistributionComponents
+                  countries={countries}
+                  clusters={clusters}
+                  region={region}
+                  iconComponent={iconComponent}
+                />
+              </Suspense>
+            </ErrorBoundary>
+          </Col>
+        </Row>
+      </MainFlex>
+    </WrapperFlex>
+  )
+}
+
+function CountryDistributionPageBody() {
+  const { t } = useTranslationSafe()
+
+  const contentFilename = useRecoilValue(perCountryDataIntroContentFilenameSelector)
   const IntroContent = useMemo(() => {
     return <MdxContent filepath={`PerCountryIntro/${contentFilename}`} />
   }, [contentFilename])
 
   return (
-    <Layout wide>
+    <>
       <Row className={'gx-0'}>
         <Col>
-          <PageHeading>{t('Overview of Variants in Countries')}</PageHeading>
-        </Col>
-      </Row>
-
-      <Row className={'gx-0'}>
-        <Col>
-          <RegionSwitcher
-            regions={regionNames}
-            regionsHaveData={regionsHaveData}
-            currentRegion={region}
-            setCurrentRegion={setRegion}
-          />
+          <RegionSwitcher />
         </Col>
       </Row>
 
@@ -89,41 +110,25 @@ export function CountryDistributionPage() {
       <Row className={'gx-0'}>
         <Col>
           <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
-            <WrapperFlex>
-              <SidebarFlex>
-                <DistributionSidebar
-                  countries={countries}
-                  continents={continents}
-                  clusters={clusters}
-                  setCountries={setCountries}
-                  setClusters={setClusters}
-                  setContinents={setContinents}
-                  regionsTitle={regionsTitle}
-                  enabledFilters={enabledFilters}
-                  clustersCollapsedByDefault={false}
-                  Icon={iconComponent}
-                />
-              </SidebarFlex>
-
-              <MainFlex>
-                <Row className={'gx-0'}>
-                  <Col>
-                    <ErrorBoundary FallbackComponent={FetchError}>
-                      <Suspense fallback={LOADING}>
-                        <CountryDistributionComponents
-                          withClustersFiltered={withClustersFiltered}
-                          enabledClusters={enabledClusters}
-                          iconComponent={iconComponent}
-                        />
-                      </Suspense>
-                    </ErrorBoundary>
-                  </Col>
-                </Row>
-              </MainFlex>
-            </WrapperFlex>
+            <CountryDistributionPlotSection />
           </Editable>
         </Col>
       </Row>
+    </>
+  )
+}
+
+export function CountryDistributionPage() {
+  const { t } = useTranslationSafe()
+
+  return (
+    <Layout wide>
+      <Row className={'gx-0'}>
+        <Col>
+          <PageHeading>{t('Overview of Variants in Countries')}</PageHeading>
+        </Col>
+      </Row>
+      <CountryDistributionPageBody />
     </Layout>
   )
 }

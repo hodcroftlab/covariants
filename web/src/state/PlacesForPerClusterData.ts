@@ -13,18 +13,18 @@ import {
 } from 'src/state/Places'
 import { parseUrl } from 'src/helpers/parseUrl'
 import { updateUrlQuery } from 'src/helpers/urlQuery'
-import { atomAsync } from 'src/state/utils/atomAsync'
 import { isDefaultValue } from 'src/state/utils/isDefaultValue'
 import { perClusterDataAtom } from 'src/state/PerClusterData'
 import { shouldPlotCountryAtom } from 'src/state/ShouldPlotCountry'
+import { atomDefault } from 'src/state/utils/atomDefault'
 
 /**
  * Represents a list of currently enabled countries
  * NOTE: this atom can be modified, when the selector for continents is modified.
  */
-export const perClusterCountriesAtom = atomAsync<Country[]>({
+export const perClusterCountriesAtom = atomDefault<Country[]>({
   key: 'perClusterCountries',
-  async default({ get }) {
+  default: ({ get }) => {
     const { query } = parseUrl(Router.asPath)
     const data = get(perClusterDataAtom)
     const shouldPlotCountry = get(shouldPlotCountryAtom)

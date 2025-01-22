@@ -3,6 +3,7 @@ import { render } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
 import { I18nextProvider } from 'react-i18next'
 import { QueryClientProvider } from '@tanstack/react-query'
+import { RecoilRoot } from 'recoil'
 import { theme } from 'src/theme'
 import i18n from 'src/i18n/i18n'
 import { FETCHER } from 'src/hooks/useAxiosQuery'
@@ -22,5 +23,17 @@ export const renderWithQueryClient = (component: React.JSX.Element) => {
         <I18nextProvider i18n={i18n}>{component}</I18nextProvider>
       </ThemeProvider>
     </QueryClientProvider>,
+  )
+}
+
+export const renderWithQueryClientAndRecoilRoot = (component: React.JSX.Element) => {
+  return render(
+    <RecoilRoot>
+      <QueryClientProvider client={FETCHER.getQueryClient()}>
+        <ThemeProvider theme={theme}>
+          <I18nextProvider i18n={i18n}>{component}</I18nextProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </RecoilRoot>,
   )
 }

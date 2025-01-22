@@ -4,11 +4,10 @@ import React from 'react'
 import { http, HttpResponse } from 'msw'
 import { ErrorBoundary } from 'react-error-boundary'
 import ResizeObserver from 'resize-observer-polyfill'
-import { renderWithQueryClient } from 'src/helpers/__tests__/providers'
+import { renderWithQueryClientAndRecoilRoot } from 'src/helpers/__tests__/providers'
 import { server } from 'src/components/SharedMutations/__tests__/mockRequests'
 import { FETCHER } from 'src/hooks/useAxiosQuery'
 import { CountryDistributionComponents } from 'src/components/CountryDistribution/CountryDistributionComponents'
-import { CountryDistribution } from 'src/io/getPerCountryData'
 
 globalThis.ResizeObserver = ResizeObserver
 
@@ -22,32 +21,25 @@ describe('CountryDistribution', () => {
     FETCHER.getQueryClient().clear()
   })
   describe('CountryDistributionComponents', () => {
-    const withClustersFiltered: CountryDistribution[] = [
+    const clusters = [
       {
-        country: 'USA',
-        distribution: [
-          {
-            // eslint-disable-next-line camelcase
-            total_sequences: 1114,
-            week: '2020-04-27',
-            // eslint-disable-next-line camelcase
-            cluster_counts: {
-              '20A.EU2': 0,
-            },
-          },
-        ],
+        cluster: '20I (Alpha, V1)',
+        enabled: true,
       },
     ]
-    const enabledClusters = ['20A.EU2']
+    const countries = [
+      {
+        country: 'USA',
+        enabled: true,
+      },
+    ]
+    const region = 'World'
 
     test('does not trigger error boundary when backend call succeeds', async () => {
       // Act
-      renderWithQueryClient(
+      renderWithQueryClientAndRecoilRoot(
         <ErrorBoundary fallback={'Error boundary'}>
-          <CountryDistributionComponents
-            withClustersFiltered={withClustersFiltered}
-            enabledClusters={enabledClusters}
-          />
+          <CountryDistributionComponents countries={countries} clusters={clusters} region={region} />
         </ErrorBoundary>,
       )
 
@@ -66,12 +58,9 @@ describe('CountryDistribution', () => {
       vi.spyOn(console, 'error').mockImplementation(() => null)
 
       // Act
-      renderWithQueryClient(
+      renderWithQueryClientAndRecoilRoot(
         <ErrorBoundary fallback={'Error boundary'}>
-          <CountryDistributionComponents
-            withClustersFiltered={withClustersFiltered}
-            enabledClusters={enabledClusters}
-          />
+          <CountryDistributionComponents countries={countries} clusters={clusters} region={region} />
         </ErrorBoundary>,
       )
 
