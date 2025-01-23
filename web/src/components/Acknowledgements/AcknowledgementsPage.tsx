@@ -6,13 +6,14 @@ import { Oval as OvalLoader } from 'react-loader-spinner'
 import { useQuery } from '@tanstack/react-query'
 import { styled } from 'styled-components'
 import { Col, Container, Row } from 'reactstrap'
+import { useRecoilValue } from 'recoil'
 import { PageHeading } from '../Common/PageHeading'
 import AcknowledgementsContent from './AcknowledgementsContent.md'
 import { AcknowledgementsError } from 'src/components/Acknowledgements/AcknowledgementsError'
 
-import { useClusters } from 'src/io/getClusters'
 import { Layout } from 'src/components/Layout/Layout'
 import { AcknowledgementsCard, AcknowledgementsKeysJson } from 'src/components/Acknowledgements/AcknowledgementsCard'
+import { clustersAtom } from 'src/state/Clusters'
 
 export const AcknowledgementsPageContainer = styled(Container)`
   max-width: 1200px;
@@ -20,7 +21,7 @@ export const AcknowledgementsPageContainer = styled(Container)`
 `
 
 export function useQueryAcknowledgementsKeys() {
-  const clusters = useClusters()
+  const clusters = useRecoilValue(clustersAtom)
   return useQuery({
     queryKey: ['acknowledgements_keys'],
     queryFn: async () => {

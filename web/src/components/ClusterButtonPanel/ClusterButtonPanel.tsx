@@ -3,9 +3,11 @@ import React, { useMemo } from 'react'
 import { Card, CardBody, CardHeader, Row } from 'reactstrap'
 import { styled } from 'styled-components'
 import get from 'lodash/get'
+import { useRecoilValue } from 'recoil'
 import { ClusterButtonGroup } from 'src/components/ClusterButtonPanel/ClusterButtonGroup'
-import { ClusterDatum, getClustersGrouped, useClusters } from 'src/io/getClusters'
+import { ClusterDatum, getClustersGrouped } from 'src/io/getClusters'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
+import { clustersAtom } from 'src/state/Clusters'
 
 const ClustersRow = styled(Row)`
   display: flex;
@@ -45,7 +47,7 @@ export interface ClusterPanelProps {
 
 export function ClusterButtonPanel({ currentCluster, className }: ClusterPanelProps) {
   const { t } = useTranslationSafe()
-  const allClusters = useClusters()
+  const allClusters = useRecoilValue(clustersAtom)
   const clusters = useMemo(() => allClusters.filter((cluster) => !cluster.has_no_page), [allClusters])
   const clustersGrouped = useMemo(() => getClustersGrouped(clusters), [clusters])
 

@@ -4,10 +4,11 @@ import { sortBy, reverse } from 'lodash'
 import { styled } from 'styled-components'
 import { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 
+import { useRecoilValue } from 'recoil'
 import { ColoredBox } from '../Common/ColoredBox'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { formatDateBiweekly, formatInteger, formatProportion } from 'src/helpers/format'
-import { useClusterColors } from 'src/io/getClusters'
+import { getClusterColorsSelector } from 'src/state/Clusters'
 
 const EPSILON = 1e-2
 
@@ -46,7 +47,7 @@ export const ClusterNameText = styled.span`
 
 export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
   const { t } = useTranslationSafe()
-  const getClusterColor = useClusterColors()
+  const getClusterColor = useRecoilValue(getClusterColorsSelector)
 
   const { payload } = props
   if (!payload || payload.length === 0) {

@@ -5,7 +5,7 @@ import { pickBy } from 'lodash'
 import { z } from 'zod'
 import type { Cluster } from 'src/state/Clusters'
 import type { Country } from 'src/state/Places'
-import { fetchClusterNames, sortClustersByClusterNames } from 'src/io/getClusters'
+import { sortClustersByClusterNames } from 'src/io/getClusters'
 import { FETCHER } from 'src/hooks/useAxiosQuery'
 
 export interface PerCountryCasesData {
@@ -48,13 +48,6 @@ export type PerCountryCasesDistributionDatum = z.infer<typeof perCountryCasesDis
 export async function fetchPerCountryCasesDataRaw(): Promise<PerCountryCasesDataRaw> {
   const data = await FETCHER.fetch<PerCountryCasesDataRaw>('/data/perCountryDataCaseCounts.json')
   return perCountryCaseDataRawSchema.parse(data)
-}
-
-export async function fetchPerCountryCasesData(): Promise<PerCountryCasesData> {
-  const allData = await fetchPerCountryCasesDataRaw()
-  const allClusterNames = await fetchClusterNames()
-
-  return mapPerCountryCasesData(allData, allClusterNames)
 }
 
 export function mapPerCountryCasesData(

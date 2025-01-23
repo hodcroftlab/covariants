@@ -5,7 +5,7 @@ import { ColCustom } from 'src/components/Common/ColCustom'
 import { ClusterDistributionPlotCard } from 'src/components/ClusterDistribution/ClusterDistributionPlotCard'
 import { filterClusters, filterCountries } from 'src/io/getPerClusterData'
 import { Country } from 'src/state/Places'
-import { Cluster, clusterBuildNamesSelector } from 'src/state/Clusters'
+import { Cluster, clusterBuildNamesMapSelector } from 'src/state/Clusters'
 import { perClusterDataDistributionsSelector } from 'src/state/PerClusterData'
 
 export function ClusterDistributionComponents({
@@ -15,7 +15,7 @@ export function ClusterDistributionComponents({
   clustersSelected: Cluster[]
   countriesSelected: Country[]
 }) {
-  const clusterBuildNames = useRecoilValue(clusterBuildNamesSelector)
+  const clusterBuildNames = useRecoilValue(clusterBuildNamesMapSelector)
   const clusterDistributions = useRecoilValue(perClusterDataDistributionsSelector)
 
   const { withClustersFiltered } = useMemo(

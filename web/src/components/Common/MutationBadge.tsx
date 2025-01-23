@@ -3,12 +3,13 @@ import React, { useMemo } from 'react'
 
 import get from 'lodash/get'
 import { styled } from 'styled-components'
+import { useRecoilValue } from 'recoil'
 import { parseVariant } from 'src/components/Common/parseVariant'
 
 import type { Mutation, MutationColors } from 'src/types'
 import { theme } from 'src/theme'
 import { AMINOACID_COLORS, CLADE_COLORS, GENE_COLORS, NUCLEOTIDE_COLORS } from 'src/colors'
-import { ClusterDatum, useClusterNames, useClusters } from 'src/io/getClusters'
+import { ClusterDatum } from 'src/io/getClusters'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
 import { parseAminoacidMutation } from 'src/components/Common/parseAminoacidMutation'
 import { parseNucleotideMutation } from 'src/components/Common/parseNucleotideMutation'
@@ -17,6 +18,7 @@ import { AMINOACID_NAMES, GENE_NAMES, GREEK_ALPHABET, NUCELOTIDE_NAMES } from 's
 import { colorHash } from 'src/helpers/colorHash'
 import { rainbow } from 'src/helpers/colorRainbow'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
+import { clusterNamesSelector, clustersAtom } from 'src/state/Clusters'
 
 const DEFAULT_COLOR = theme.gray700
 const DEFAULT_TEXT_COLOR = theme.gray100
@@ -283,8 +285,8 @@ export interface VariantLinkBadgeProps {
 }
 
 export function VariantLinkBadge({ name, href, prefix }: VariantLinkBadgeProps) {
-  const clusters = useClusters()
-  const clusterNames = useClusterNames()
+  const clusters = useRecoilValue(clustersAtom)
+  const clusterNames = useRecoilValue(clusterNamesSelector)
   const { mutationObj, mutationStr } = useMemo(() => variantToObjectAndString(name), [name])
   const url = useMemo(
     () => href ?? formatVariantUrl(clusters, clusterNames, mutationStr),

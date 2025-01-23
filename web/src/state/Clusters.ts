@@ -2,7 +2,9 @@ import { selector } from 'recoil'
 import { updateUrlQuery } from 'src/helpers/urlQuery'
 import type { AtomEffectParams } from 'src/state/utils/atomEffect'
 import { atomAsync } from 'src/state/utils/atomAsync'
-import { ClusterDatum, fetchClusters } from 'src/io/getClusters'
+import { CLUSTER_NAME_OTHERS, ClusterDatum, fetchClusters } from 'src/io/getClusters'
+import { theme } from 'src/theme'
+import { notUndefinedOrNull } from 'src/helpers/notUndefined'
 
 export interface Cluster {
   cluster: string
@@ -24,11 +26,27 @@ export const clusterNamesSelector = selector({
   },
 })
 
+export const clusterBuildNamesMapSelector = selector({
+  key: 'clusterBuildNamesMap',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return new Map<string, string>(clusters.map((c) => [c.display_name, c.build_name]))
+  },
+})
+
 export const clusterBuildNamesSelector = selector({
   key: 'clusterBuildNames',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
-    return new Map<string, string>(clusters.map((c) => [c.display_name, c.build_name]))
+    return clusters.map((cluster) => cluster.build_name)
+  },
+})
+
+export const clusterOldBuildNamesSelector = selector({
+  key: 'clusterOldBuildNames',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return clusters.flatMap((cluster) => cluster.old_build_names).filter(notUndefinedOrNull)
   },
 })
 
@@ -42,6 +60,23 @@ export const clusterRedirectsSelector = selector({
       }
       return result
     }, new Map<string, string>())
+  },
+})
+
+export const getClusterColorsSelector = selector({
+  key: 'clusterColors',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+
+    return (clusterName: string) => {
+      if (clusterName === CLUSTER_NAME_OTHERS) {
+        return theme.clusters.color.others
+      }
+
+      // eslint-disable-next-line camelcase
+      const found = clusters.find(({ display_name }) => display_name === clusterName)
+      return found ? found.col : theme.clusters.color.unknown
+    }
   },
 })
 

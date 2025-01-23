@@ -8,11 +8,12 @@ import { useRecoilValue } from 'recoil'
 import { CountryDistributionPlotTooltip } from './CountryDistributionPlotTooltip'
 import type { CountryDistributionDatum } from 'src/io/getPerCountryData'
 import { theme } from 'src/theme'
-import { CLUSTER_NAME_OTHERS, useClusterColors } from 'src/io/getClusters'
+import { CLUSTER_NAME_OTHERS } from 'src/io/getClusters'
 import { formatDateHumanely, formatProportion } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import { ChartContainer } from 'src/components/Common/ChartContainer'
 import { ticksSelector, timeDomainSelector } from 'src/state/Params'
+import { getClusterColorsSelector } from 'src/state/Clusters'
 
 const allowEscapeViewBox = { x: false, y: true }
 
@@ -24,7 +25,7 @@ export interface AreaPlotProps {
 }
 
 function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps) {
-  const getClusterColor = useClusterColors()
+  const getClusterColor = useRecoilValue(getClusterColorsSelector)
   const ticks = useRecoilValue(ticksSelector)
   const timeDomain = useRecoilValue(timeDomainSelector)
 

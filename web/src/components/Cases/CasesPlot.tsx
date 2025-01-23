@@ -10,12 +10,13 @@ import { useRecoilValue } from 'recoil'
 import { CasesPlotTooltip } from './CasesPlotTooltip'
 import type { PerCountryCasesDistributionDatum } from 'src/io/getPerCountryCasesData'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { CLUSTER_NAME_OTHERS, useClusterColors } from 'src/io/getClusters'
+import { CLUSTER_NAME_OTHERS } from 'src/io/getClusters'
 import { formatDateHumanely } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import { PlotPlaceholder } from 'src/components/Common/PlotPlaceholder'
 import { ChartContainer } from 'src/components/Common/ChartContainer'
 import { ticksSelector, timeDomainSelector } from 'src/state/Params'
+import { getClusterColorsSelector } from 'src/state/Clusters'
 
 const CHART_MARGIN = { left: 10, top: 12, bottom: 6, right: 12 }
 const ALLOW_ESCAPE_VIEW_BOX = { x: false, y: true }
@@ -29,7 +30,7 @@ export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotPro
   const { t } = useTranslationSafe()
   const theme = useTheme()
   const chartRef = useRef(null)
-  const getClusterColor = useClusterColors()
+  const getClusterColor = useRecoilValue(getClusterColorsSelector)
 
   const ticks = useRecoilValue(ticksSelector)
   const timeDomain = useRecoilValue(timeDomainSelector)
