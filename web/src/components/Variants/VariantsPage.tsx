@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { styled } from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import { ErrorBoundary } from 'react-error-boundary'
+import { useRecoilValue } from 'recoil'
 import { PlotCard } from './PlotCard'
 import { AquariaLinksCard } from './AquariaLinksCard'
 import { ProteinCard } from './ProteinCard'
@@ -13,7 +14,7 @@ import { MutationCountsSummaryCard } from 'src/components/MutationCounts/Mutatio
 import { theme } from 'src/theme'
 import { MdxContent } from 'src/i18n/getMdxContent'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { ClusterDatum, useClusters, useClusterRedirects } from 'src/io/getClusters'
+import { ClusterDatum } from 'src/io/getClusters'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { Layout } from 'src/components/Layout/Layout'
 import { Editable } from 'src/components/Common/Editable'
@@ -24,6 +25,7 @@ import { VariantTitle } from 'src/components/Variants/VariantTitle'
 import NextstrainIconBase from 'src/assets/images/nextstrain_logo.svg'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
+import { clusterRedirectsSelector, clustersAtom } from 'src/state/Clusters'
 
 const FlexContainer = styled.div`
   display: flex;
@@ -59,7 +61,7 @@ const NextstrainIcon = styled(NextstrainIconBase)`
 
 export function useCurrentClusterName(clusterName?: string) {
   const router = useRouter()
-  const clusterRedirects = useClusterRedirects()
+  const clusterRedirects = useRecoilValue(clusterRedirectsSelector)
 
   if (clusterName) {
     const clusterNewName = clusterRedirects.get(clusterName)
@@ -78,7 +80,7 @@ export interface VariantsPageProps {
 
 export function VariantsPage({ clusterName: clusterNameUnsafe }: VariantsPageProps) {
   const clusterName = useCurrentClusterName(clusterNameUnsafe)
-  const clusters = useClusters()
+  const clusters = useRecoilValue(clustersAtom)
   const currentCluster = useMemo(
     () => clusters.find((cluster) => cluster.build_name === clusterName),
     [clusterName, clusters],

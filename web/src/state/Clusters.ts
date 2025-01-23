@@ -32,6 +32,19 @@ export const clusterBuildNamesSelector = selector({
   },
 })
 
+export const clusterRedirectsSelector = selector({
+  key: 'clusterRedirects',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return clusters.reduce((result, cluster) => {
+      if (cluster.old_build_names) {
+        cluster.old_build_names.forEach((oldName) => result.set(oldName, cluster.build_name))
+      }
+      return result
+    }, new Map<string, string>())
+  },
+})
+
 /** Toggles a given cluster enabled/disabled */
 export function toggleCluster(clusters: Cluster[], clusterName: string): Cluster[] {
   return clusters.map((cluster) => {

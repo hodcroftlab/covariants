@@ -109,6 +109,9 @@ const mockPerCountryData = {
           ],
         },
       ],
+      max_date: '2024-09-23',
+      min_date: '2020-04-27',
+      per_country_intro_content: 'World.md',
       region: 'World',
     },
   ],
@@ -167,6 +170,34 @@ const mockClusters = {
   ],
 }
 
+const mockCasesData = {
+  regions: [
+    {
+      cluster_names: ['20A.EU2'],
+      distributions: [
+        {
+          country: 'USA',
+          distribution: [
+            {
+              percent_total_cases: 0.0173,
+              stand_total_cases: 1114,
+              total_sequences: 6614,
+              week: '2020-04-27',
+              stand_estimated_cases: {
+                '20A.EU2': 0,
+              },
+            },
+          ],
+        },
+      ],
+      region: 'World',
+      max_date: '2024-09-23',
+      min_date: '2020-04-27',
+      per_country_intro_content: 'World.md',
+    },
+  ],
+}
+
 const mockCountryStyles = {
   Argentina: {
     c: '#004d00',
@@ -186,6 +217,9 @@ const restHandlers = [
   }),
   http.get('/data/perCountryData.json', () => {
     return HttpResponse.json(mockPerCountryData)
+  }),
+  http.get('/data/perCountryDataCaseCounts.json', () => {
+    return HttpResponse.json(mockCasesData)
   }),
   http.get('/data/clusters.json', () => {
     return HttpResponse.json(mockClusters)

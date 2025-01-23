@@ -1,17 +1,24 @@
 import { Row } from 'reactstrap'
 import React, { useMemo } from 'react'
+import { useRecoilValue } from 'recoil'
 import { ColCustom } from 'src/components/Common/ColCustom'
 import { CasesPlotCard } from 'src/components/Cases/CasesPlotCard'
 import { CountryFlag } from 'src/components/Common/CountryFlag'
-import { PerCountryCasesDistribution } from 'src/io/getPerCountryCasesData'
+import { filterClusters, filterCountries } from 'src/io/getPerCountryCasesData'
+import { Cluster } from 'src/state/Clusters'
+import { Country } from 'src/state/Places'
+import { perCountryCasesDataSelector } from 'src/state/PerCountryCasesData'
 
-export function CasesComponents({
-  withClustersFiltered,
-  enabledClusters,
-}: {
-  withClustersFiltered: PerCountryCasesDistribution[]
-  enabledClusters: string[]
-}) {
+export function CasesComponents({ clusters, countries }: { clusters: Cluster[]; countries: Country[] }) {
+  const { perCountryCasesDistributions } = useRecoilValue(perCountryCasesDataSelector)
+
+  const { enabledClusters, withClustersFiltered } = useMemo(() => {
+    const { withCountriesFiltered } = filterCountries(countries, perCountryCasesDistributions)
+    const filteredClusters = filterClusters(clusters, withCountriesFiltered)
+    const { enabledClusters, withClustersFiltered } = filteredClusters
+    return { enabledClusters, withClustersFiltered }
+  }, [countries, perCountryCasesDistributions, clusters])
+
   const casesComponents = useMemo(
     () =>
       withClustersFiltered.map(({ country, distribution }) => (

@@ -3,11 +3,10 @@ import copy from 'fast-copy'
 import { pickBy } from 'lodash'
 
 import { z } from 'zod'
-import { useMemo } from 'react'
 import type { Cluster } from 'src/state/Clusters'
 import type { Country } from 'src/state/Places'
-import { fetchClusterNames, sortClustersByClusterNames, useClusterNames } from 'src/io/getClusters'
-import { FETCHER, useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
+import { fetchClusterNames, sortClustersByClusterNames } from 'src/io/getClusters'
+import { FETCHER } from 'src/hooks/useAxiosQuery'
 
 export interface PerCountryCasesData {
   clusterNames: string[]
@@ -41,7 +40,7 @@ const perCountryCaseDataRawSchema = z.object({
   regions: perCountryCasesDatumSchema.array(),
 })
 
-type PerCountryCasesDataRaw = z.infer<typeof perCountryCaseDataRawSchema>
+export type PerCountryCasesDataRaw = z.infer<typeof perCountryCaseDataRawSchema>
 type PerCountryCasesDatum = z.infer<typeof perCountryCasesDatumSchema>
 export type PerCountryCasesDistribution = z.infer<typeof perCountryCasesDistributionSchema>
 export type PerCountryCasesDistributionDatum = z.infer<typeof perCountryCasesDistributionDatumSchema>
@@ -51,14 +50,6 @@ export async function fetchPerCountryCasesDataRaw(): Promise<PerCountryCasesData
   return perCountryCaseDataRawSchema.parse(data)
 }
 
-export function usePerCountryCasesDataRaw(): PerCountryCasesDataRaw {
-  const { data: regions } = useValidatedAxiosQuery<PerCountryCasesDataRaw>(
-    '/data/perCountryDataCaseCounts.json',
-    perCountryCaseDataRawSchema,
-  )
-  return regions
-}
-
 export async function fetchPerCountryCasesData(): Promise<PerCountryCasesData> {
   const allData = await fetchPerCountryCasesDataRaw()
   const allClusterNames = await fetchClusterNames()
@@ -66,14 +57,10 @@ export async function fetchPerCountryCasesData(): Promise<PerCountryCasesData> {
   return mapPerCountryCasesData(allData, allClusterNames)
 }
 
-export function usePerCountryCasesData(): PerCountryCasesData {
-  const allData = usePerCountryCasesDataRaw()
-  const allClusterNames = useClusterNames()
-
-  return useMemo(() => mapPerCountryCasesData(allData, allClusterNames), [allData, allClusterNames])
-}
-
-function mapPerCountryCasesData(allData: PerCountryCasesDataRaw, allClusterNames: string[]): PerCountryCasesData {
+export function mapPerCountryCasesData(
+  allData: PerCountryCasesDataRaw,
+  allClusterNames: string[],
+): PerCountryCasesData {
   const regionName = 'World'
 
   const perCountryCasesData: PerCountryCasesDatum | undefined = allData.regions.find(

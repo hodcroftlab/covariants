@@ -72,15 +72,6 @@ export function useClusterNames() {
   return useClusters().map((cluster) => cluster.display_name)
 }
 
-export function useClusterRedirects(): Map<string, string> {
-  return useClusters().reduce((result, cluster) => {
-    if (cluster.old_build_names) {
-      cluster.old_build_names.forEach((oldName) => result.set(oldName, cluster.build_name))
-    }
-    return result
-  }, new Map<string, string>())
-}
-
 export function useClusterBuildNames() {
   return useClusters().map((cluster) => cluster.build_name)
 }
