@@ -82,6 +82,7 @@ export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotToo
   }
 
   const payloadUnique = uniqBy(payloadSorted, (payload) => payload.name)
+  const payloadNonZero = payloadUnique.filter((pld) => pld.value !== undefined && pld.value > EPSILON)
 
   return (
     <Tooltip>
@@ -96,7 +97,7 @@ export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotToo
           </tr>
         </thead>
         <TooltipTableBody>
-          {payloadUnique.map(({ name, value, payload }) => {
+          {payloadNonZero.map(({ name, value, payload }) => {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             const interpolated = !get(payload?.orig, name, false) // eslint-disable-line @typescript-eslint/no-unsafe-member-access
