@@ -65,6 +65,7 @@ export function CasesPlotTooltip(props: DefaultTooltipContentProps<number, strin
   const total: number = formatInteger(payload[0]?.payload.total ?? 0)
 
   const payloadSorted = reverse(sortBy(payload, 'value'))
+  const payloadNonZero = payloadSorted.filter((pld) => pld.value !== undefined && pld.value > EPSILON)
 
   return (
     <Tooltip>
@@ -79,7 +80,7 @@ export function CasesPlotTooltip(props: DefaultTooltipContentProps<number, strin
           </tr>
         </thead>
         <TooltipTableBody>
-          {payloadSorted.map(({ name, value }) => (
+          {payloadNonZero.map(({ name, value }) => (
             <tr key={name}>
               <td className="px-2 text-left">
                 <ColoredBox $color={getClusterColor(name ?? '')} $size={10} $aspect={1.66} />
