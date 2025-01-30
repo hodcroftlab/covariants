@@ -48,12 +48,11 @@ const clusterDataRawSchema = z.object({
   clusters: clusterDatumSchema.array(),
 })
 
-type ClusterDataRaw = z.infer<typeof clusterDataRawSchema>
 export type ClusterDatum = z.infer<typeof clusterDatumSchema>
 
 export async function fetchClusters(): Promise<ClusterDatum[]> {
-  const clusters = await FETCHER.fetch<ClusterDataRaw>('/data/clusters.json')
-  return clusterDataRawSchema.parse(clusters).clusters
+  const clusters = await FETCHER.validatedFetch('/data/clusters.json', clusterDataRawSchema)
+  return clusters.clusters
 }
 
 export type ClusterDataGrouped = Record<string, ClusterDatum[]>

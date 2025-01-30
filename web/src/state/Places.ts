@@ -1,3 +1,4 @@
+import { z } from 'zod'
 import { FETCHER } from 'src/hooks/useAxiosQuery'
 import { atomAsync } from 'src/state/utils/atomAsync'
 
@@ -18,10 +19,11 @@ export interface Continent {
   [key: string]: string | boolean
 }
 
-export type RegionCountry = Record<string, string[]>
+const regionCountrySchema = z.record(z.string(), z.string().array())
+export type RegionCountry = z.infer<typeof regionCountrySchema>
 
 export function fetchRegionCountry() {
-  return FETCHER.fetch<RegionCountry>('/data/region_country.json')
+  return FETCHER.validatedFetch('/data/region_country.json', regionCountrySchema)
 }
 
 export const regionCountryAtom = atomAsync<RegionCountry>({

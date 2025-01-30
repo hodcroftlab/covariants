@@ -1,4 +1,4 @@
-import type { AtomEffect, GetCallback, GetRecoilValue, RecoilState, SerializableParam } from 'recoil'
+import type { AtomEffect, AtomOptions, GetCallback, GetRecoilValue, RecoilState, SerializableParam } from 'recoil'
 import { atom, atomFamily, selector, selectorFamily } from 'recoil'
 
 export type AtomDefaultOptions<T> = Omit<AtomOptions<T>, 'default'> & {

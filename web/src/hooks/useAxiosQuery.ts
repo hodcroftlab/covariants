@@ -54,6 +54,15 @@ export class Fetcher {
       queryFn: async () => axiosFetch(url),
     })
   }
+
+  public async validatedFetch<TData = unknown>(
+    url: string,
+    zodSchema: z.ZodSchema<TData>,
+    options?: QueryOptions<TData>,
+  ) {
+    const data = await this.fetch(url, options)
+    return zodSchema.parse(data)
+  }
 }
 
 export const FETCHER = new Fetcher()

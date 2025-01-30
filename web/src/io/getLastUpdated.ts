@@ -9,8 +9,7 @@ const updateSchema = z.object({
 export type Update = z.infer<typeof updateSchema>
 
 export async function fetchLastUpdated() {
-  const data = await FETCHER.fetch<Update>('/data/update.json')
-  const lastUpdated = updateSchema.parse(data)
+  const lastUpdated = await FETCHER.validatedFetch('/data/update.json', updateSchema)
   const utc = DateTime.fromISO(lastUpdated.lastUpdated, { zone: 'UTC' })
   const local = utc.toLocal()
   const date = local.toLocaleString({ dateStyle: 'medium' })

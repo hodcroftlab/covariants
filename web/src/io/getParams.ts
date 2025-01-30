@@ -14,6 +14,5 @@ const globalParamsSchema = z.object({
 })
 
 export async function fetchParams() {
-  const data = await FETCHER.fetch<GlobalParams>('/data/params.json')
-  return globalParamsSchema.parse(data)
+  return await FETCHER.validatedFetch('/data/params.json', globalParamsSchema)
 }
