@@ -34,16 +34,14 @@ export function SortByDropdown() {
   const [tooltipSort, setTooltipSort] = useRecoilState(tooltipSortAtom)
   const sortBy = tooltipSort.criterion
 
-  const setSortBy = useCallback(
-    (criterion: TooltipSortCriterion) => {
-      setTooltipSort((tooltipSort) => ({ ...tooltipSort, criterion }))
+  const handleSortByChange = useCallback(
+    (value: string) => {
+      const setSortBy = (criterion: TooltipSortCriterion) => {
+        setTooltipSort((tooltipSort) => ({ ...tooltipSort, criterion }))
+      }
+      return setSortBy(TooltipSortCriterion[value as keyof typeof TooltipSortCriterion])
     },
     [setTooltipSort],
-  )
-
-  const handleSortByChange = useCallback(
-    (value: string) => setSortBy(TooltipSortCriterion[value as keyof typeof TooltipSortCriterion]),
-    [setSortBy],
   )
 
   return (
