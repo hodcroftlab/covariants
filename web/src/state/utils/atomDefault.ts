@@ -1,4 +1,11 @@
-import type { AtomEffect, AtomOptions, GetCallback, GetRecoilValue, RecoilState, SerializableParam } from 'recoil'
+import type {
+  AtomFamilyOptions,
+  AtomOptions,
+  GetCallback,
+  GetRecoilValue,
+  RecoilState,
+  SerializableParam,
+} from 'recoil'
 import { atom, atomFamily, selector, selectorFamily } from 'recoil'
 
 export type AtomDefaultOptions<T> = Omit<AtomOptions<T>, 'default'> & {
@@ -17,12 +24,8 @@ export function atomDefault<T>(options: AtomDefaultOptions<T>): RecoilState<T> {
   return atom(options)
 }
 
-export interface AtomFamilyDefaultOptions<T, P extends SerializableParam> {
-  key: string
+export type AtomFamilyDefaultOptions<T, P extends SerializableParam> = Omit<AtomFamilyOptions<T, P>, 'default'> & {
   default: (param: P, opts: { get: GetRecoilValue; getCallback: GetCallback }) => T
-  dangerouslyAllowMutability?: boolean
-  effects?: ReadonlyArray<AtomEffect<T>> | ((param: P) => ReadonlyArray<AtomEffect<T>>)
-  effects_UNSTABLE?: ReadonlyArray<AtomEffect<T>> | ((param: P) => ReadonlyArray<AtomEffect<T>>)
 }
 
 /* Atom family with `default` accepting also a function */
