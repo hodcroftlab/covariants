@@ -10,19 +10,20 @@ import {
   WHOLE_WORLD_REGION,
 } from 'src/state/Places'
 import { updateUrlQuery } from 'src/helpers/urlQuery'
-import { fetchPerCountryCasesData } from 'src/io/getPerCountryCasesData'
 import { isDefaultValue } from 'src/state/utils/isDefaultValue'
-import { atomAsync } from 'src/state/utils/atomAsync'
+import { perCountryCasesDataSelector } from 'src/state/PerCountryCasesData'
+import { atomDefault } from 'src/state/utils/atomDefault'
 
 /**
  * Represents a list of currently enabled countries
  * NOTE: this atom can be modified, when the selector for continents is modified.
  */
-export const countriesCasesAtom = atomAsync<Country[]>({
+export const countriesCasesAtom = atomDefault<Country[]>({
   key: 'casesCountries',
-  async default() {
-    const clusters = await fetchPerCountryCasesData()
-    return clusters.countries
+  default: ({ get }) => {
+    const data = get(perCountryCasesDataSelector)
+
+    return data.countries
   },
   effects: [
     ({ onSet }) => {

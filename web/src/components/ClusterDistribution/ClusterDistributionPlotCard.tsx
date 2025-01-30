@@ -8,15 +8,12 @@ import type { ClusterDistributionDatum } from 'src/io/getPerClusterData'
 import { Link } from 'src/components/Link/Link'
 import { PlotCardTitle } from 'src/components/Common/PlotCardTitle'
 import { ClusterDistributionPlot } from 'src/components/ClusterDistribution/ClusterDistributionPlot'
-import { Ticks, TimeDomain } from 'src/io/useParams'
 
 export interface ClusterDistributionPlotCardProps {
   clusterBuildName: string
   clusterDisplayName: string
   distribution: ClusterDistributionDatum[]
   country_names: string[]
-  ticks: Ticks
-  timeDomain: TimeDomain
 }
 
 const GreyLink = styled(Link)`
@@ -28,8 +25,6 @@ export function ClusterDistributionPlotCard({
   clusterDisplayName,
   distribution,
   country_names,
-  ticks,
-  timeDomain,
 }: ClusterDistributionPlotCardProps) {
   const url = `/variants/${clusterBuildName}`
 
@@ -45,12 +40,7 @@ export function ClusterDistributionPlotCard({
         <Col className="p-0">
           <Row className={'gx-0'}>
             <Col className="p-0">
-              <ClusterDistributionPlot
-                distribution={distribution}
-                country_names={country_names}
-                ticks={ticks}
-                timeDomain={timeDomain}
-              />
+              <ClusterDistributionPlot distribution={distribution} country_names={country_names} />
             </Col>
           </Row>
         </Col>

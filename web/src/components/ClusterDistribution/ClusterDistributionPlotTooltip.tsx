@@ -10,8 +10,8 @@ import { theme } from 'src/theme'
 
 import type { ClusterDistributionDatum } from 'src/io/getPerClusterData'
 import { formatDateWeekly, formatProportion } from 'src/helpers/format'
-import { useCountryColor, useCountryStrokeDashArray } from 'src/io/getCountryColor'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
+import { getCountryStylesSelector } from 'src/state/CountryStyles'
 
 const EPSILON = 1e-2
 
@@ -55,8 +55,7 @@ export type ClusterDistributionPlotTooltipProps = DefaultTooltipContentProps<num
 export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotTooltipProps) {
   const { t } = useTranslationSafe()
   const { criterion, reversed } = useRecoilValue(tooltipSortAtom)
-  const getCountryColor = useCountryColor()
-  const getCountryStrokeDashArray = useCountryStrokeDashArray()
+  const getCountryStyles = useRecoilValue(getCountryStylesSelector)
 
   const { payload } = props
   if (!payload || payload.length === 0) {
@@ -108,9 +107,9 @@ export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotToo
                   <ColoredHorizontalLineIcon
                     width={theme.plot.country.legend.lineIcon.width}
                     height={theme.plot.country.legend.lineIcon.height}
-                    stroke={getCountryColor(country)}
+                    stroke={getCountryStyles(country).color}
                     strokeWidth={theme.plot.country.legend.lineIcon.thickness}
-                    strokeDasharray={getCountryStrokeDashArray(country)}
+                    strokeDasharray={getCountryStyles(country).strokeDashArray}
                   />
                   <span className="ms-2">{t(country)}</span>
                 </td>

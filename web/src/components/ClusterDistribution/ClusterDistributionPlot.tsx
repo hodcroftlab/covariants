@@ -6,13 +6,14 @@ import { DateTime } from 'luxon'
 import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts'
 import { useTheme } from 'styled-components'
 
-import { useCountryColor, useCountryStrokeDashArray } from 'src/io/getCountryColor'
+import { useRecoilValue } from 'recoil'
 import { formatDateHumanely, formatProportion } from 'src/helpers/format'
 import { adjustTicks } from 'src/helpers/adjustTicks'
 import type { ClusterDistributionDatum } from 'src/io/getPerClusterData'
 import { ClusterDistributionPlotTooltip } from 'src/components/ClusterDistribution/ClusterDistributionPlotTooltip'
 import { ChartContainer } from 'src/components/Common/ChartContainer'
-import { Ticks, TimeDomain } from 'src/io/useParams'
+import { ticksSelector, timeDomainSelector } from 'src/state/Params'
+import { getCountryStylesSelector } from 'src/state/CountryStyles'
 
 const getValueOrig = (country: string) => (value: ClusterDistributionDatum) => {
   const orig = get(value.orig, country, false)
@@ -39,14 +40,14 @@ interface LinePlotProps {
   height: number
   country_names: string[]
   distribution: ClusterDistributionDatum[]
-  ticks: Ticks
-  timeDomain: TimeDomain
 }
 
-function LinePlot({ width, height, country_names, distribution, ticks, timeDomain }: LinePlotProps) {
+function LinePlot({ width, height, country_names, distribution }: LinePlotProps) {
   const theme = useTheme()
-  const getCountryColor = useCountryColor()
-  const getCountryStrokeDashArray = useCountryStrokeDashArray()
+  const getCountryStyle = useRecoilValue(getCountryStylesSelector)
+
+  const ticks = useRecoilValue(ticksSelector)
+  const timeDomain = useRecoilValue(timeDomainSelector)
 
   const data = useMemo(
     () =>
@@ -71,9 +72,9 @@ function LinePlot({ width, height, country_names, distribution, ticks, timeDomai
         type="monotone"
         name={country}
         dataKey={getValueOrig(country)}
-        stroke={getCountryColor(country)}
+        stroke={getCountryStyle(country).color}
         strokeWidth={2}
-        strokeDasharray={getCountryStrokeDashArray(country)}
+        strokeDasharray={getCountryStyle(country).strokeDashArray}
         dot={false}
         isAnimationActive={false}
       />
@@ -85,7 +86,7 @@ function LinePlot({ width, height, country_names, distribution, ticks, timeDomai
         type="monotone"
         name={country}
         dataKey={getValueInterp(country)}
-        stroke={getCountryColor(country)}
+        stroke={getCountryStyle(country).color}
         strokeWidth={1.2}
         strokeDasharray="1 2"
         dot={false}
@@ -94,7 +95,7 @@ function LinePlot({ width, height, country_names, distribution, ticks, timeDomai
     ))
 
     return [...linesOrig, linesInterp]
-  }, [country_names, getCountryColor, getCountryStrokeDashArray])
+  }, [country_names, getCountryStyle])
 
   return (
     <LineChart width={width} height={height} margin={theme.plot.margin} data={data}>
@@ -133,27 +134,13 @@ function LinePlot({ width, height, country_names, distribution, ticks, timeDomai
 export interface ClusterDistributionPlotProps {
   country_names: string[]
   distribution: ClusterDistributionDatum[]
-  ticks: Ticks
-  timeDomain: TimeDomain
 }
 
-export function ClusterDistributionPlot({
-  country_names,
-  distribution,
-  ticks,
-  timeDomain,
-}: ClusterDistributionPlotProps) {
+export function ClusterDistributionPlot({ country_names, distribution }: ClusterDistributionPlotProps) {
   return (
     <ChartContainer>
       {({ width, height }) => (
-        <LinePlot
-          width={width}
-          height={height}
-          country_names={country_names}
-          distribution={distribution}
-          ticks={ticks}
-          timeDomain={timeDomain}
-        />
+        <LinePlot width={width} height={height} country_names={country_names} distribution={distribution} />
       )}
     </ChartContainer>
   )

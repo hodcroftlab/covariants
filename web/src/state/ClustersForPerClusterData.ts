@@ -1,23 +1,23 @@
 import Router from 'next/router'
-import { get } from 'lodash'
+import { get as getLodash } from 'lodash'
 import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
 import { parseUrl } from 'src/helpers/parseUrl'
-import { Cluster, updateUrlOnClustersSet } from 'src/state/Clusters'
-import { fetchPerClusterDataRaw } from 'src/io/getPerClusterData'
+import { Cluster, clusterNamesSelector, updateUrlOnClustersSet } from 'src/state/Clusters'
 import { atomAsync } from 'src/state/utils/atomAsync'
-import { fetchClusterNames, sortClustersByClusterNames } from 'src/io/getClusters'
+import { sortClustersByClusterNames } from 'src/io/getClusters'
+import { perClusterDataAtom } from 'src/state/PerClusterData'
 
 export const clustersForPerClusterDataAtom = atomAsync<Cluster[]>({
   key: 'clustersForPerClusterDataAtom',
-  async default() {
-    const { distributions } = await fetchPerClusterDataRaw()
-    const allClusterNames = await fetchClusterNames()
+  async default({ get }) {
+    const { distributions } = get(perClusterDataAtom)
+    const allClusterNames = get(clusterNamesSelector)
     const clusterNames = distributions.map(({ cluster }) => cluster).sort()
     const unsortedClusters = clusterNames.map((cluster) => ({ cluster, enabled: true }))
     const clusters = sortClustersByClusterNames(unsortedClusters, allClusterNames)
 
     const { query } = parseUrl(Router.asPath)
-    const enabledClusters = convertToArrayMaybe(get(query, 'variant'))
+    const enabledClusters = convertToArrayMaybe(getLodash(query, 'variant'))
     if (enabledClusters) {
       return clusters.map((cluster) => ({
         ...cluster,

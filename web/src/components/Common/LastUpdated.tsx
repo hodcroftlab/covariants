@@ -2,8 +2,9 @@ import React, { HTMLProps } from 'react'
 import { styled } from 'styled-components'
 import classNames from 'classnames'
 
-import { useLastUpdated } from 'src/io/useLastUpdated'
+import { useRecoilValue } from 'recoil'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
+import { lastUpdatedAtom } from 'src/state/LastUpdated'
 
 const LastUpdatedText = styled.small`
   font-size: 0.9rem;
@@ -11,7 +12,7 @@ const LastUpdatedText = styled.small`
 
 export function LastUpdated({ className }: HTMLProps<HTMLParagraphElement>) {
   const { t } = useTranslationSafe()
-  const { date, full } = useLastUpdated()
+  const { date, full } = useRecoilValue(lastUpdatedAtom)
 
   return (
     <LastUpdatedText className={classNames(className)}>

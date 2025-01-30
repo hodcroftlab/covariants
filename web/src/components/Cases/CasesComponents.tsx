@@ -1,20 +1,21 @@
 import { Row } from 'reactstrap'
 import React, { useMemo } from 'react'
+import { useRecoilValue } from 'recoil'
 import { ColCustom } from 'src/components/Common/ColCustom'
-import { useTicks, useTimeDomain } from 'src/io/useParams'
 import { CasesPlotCard } from 'src/components/Cases/CasesPlotCard'
 import { CountryFlag } from 'src/components/Common/CountryFlag'
-import { PerCountryCasesDistribution } from 'src/io/getPerCountryCasesData'
+import { filterClusters, filterCountries } from 'src/io/getPerCountryCasesData'
+import { Cluster } from 'src/state/Clusters'
+import { Country } from 'src/state/Places'
+import { perCountryCasesDataSelector } from 'src/state/PerCountryCasesData'
 
-export function CasesComponents({
-  withClustersFiltered,
-  enabledClusters,
-}: {
-  withClustersFiltered: PerCountryCasesDistribution[]
-  enabledClusters: string[]
-}) {
-  const timeDomain = useTimeDomain()
-  const ticks = useTicks()
+export function CasesComponents({ clusters, countries }: { clusters: Cluster[]; countries: Country[] }) {
+  const { perCountryCasesDistributions } = useRecoilValue(perCountryCasesDataSelector)
+
+  const { enabledClusters, withClustersFiltered } = useMemo(() => {
+    const { withCountriesFiltered } = filterCountries(countries, perCountryCasesDistributions)
+    return filterClusters(clusters, withCountriesFiltered)
+  }, [countries, perCountryCasesDistributions, clusters])
 
   const casesComponents = useMemo(
     () =>
@@ -25,12 +26,10 @@ export function CasesComponents({
             distribution={distribution}
             cluster_names={enabledClusters}
             Icon={CountryFlag}
-            ticks={ticks}
-            timeDomain={timeDomain}
           />
         </ColCustom>
       )),
-    [enabledClusters, withClustersFiltered, ticks, timeDomain],
+    [enabledClusters, withClustersFiltered],
   )
   return <Row className={'gx-0'}>{casesComponents}</Row>
 }

@@ -1,12 +1,10 @@
 /* eslint-disable camelcase */
 import { groupBy, isNil } from 'lodash'
 import { z } from 'zod'
-import { notUndefinedOrNull } from 'src/helpers/notUndefined'
 
 import type { Cluster } from 'src/state/Clusters'
-import { theme } from 'src/theme'
 
-import { FETCHER, useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
+import { FETCHER } from 'src/hooks/useAxiosQuery'
 
 export const CLUSTER_NAME_OTHERS = 'others'
 
@@ -50,58 +48,11 @@ const clusterDataRawSchema = z.object({
   clusters: clusterDatumSchema.array(),
 })
 
-type ClusterDataRaw = z.infer<typeof clusterDataRawSchema>
 export type ClusterDatum = z.infer<typeof clusterDatumSchema>
 
 export async function fetchClusters(): Promise<ClusterDatum[]> {
-  const clusters = await FETCHER.fetch<ClusterDataRaw>('/data/clusters.json')
+  const clusters = await FETCHER.validatedFetch('/data/clusters.json', clusterDataRawSchema)
   return clusters.clusters
-}
-
-export function useClusters(): ClusterDatum[] {
-  const { data: clusters } = useValidatedAxiosQuery<ClusterDataRaw>('/data/clusters.json', clusterDataRawSchema)
-  return clusters.clusters
-}
-
-export async function fetchClusterNames() {
-  const clusters = await fetchClusters()
-  return clusters.map((cluster) => cluster.display_name)
-}
-
-export function useClusterNames() {
-  return useClusters().map((cluster) => cluster.display_name)
-}
-
-export function useClusterRedirects(): Map<string, string> {
-  return useClusters().reduce((result, cluster) => {
-    if (cluster.old_build_names) {
-      cluster.old_build_names.forEach((oldName) => result.set(oldName, cluster.build_name))
-    }
-    return result
-  }, new Map<string, string>())
-}
-
-export function useClusterBuildNames() {
-  return useClusters().map((cluster) => cluster.build_name)
-}
-
-export function useClusterOldBuildNames() {
-  return useClusters()
-    .flatMap((cluster) => cluster.old_build_names)
-    .filter(notUndefinedOrNull)
-}
-
-export function useClusterColors() {
-  const clusters = useClusters()
-
-  return (clusterName: string) => {
-    if (clusterName === CLUSTER_NAME_OTHERS) {
-      return theme.clusters.color.others
-    }
-
-    const found = clusters.find(({ display_name }) => display_name === clusterName)
-    return found ? found.col : theme.clusters.color.unknown
-  }
 }
 
 export type ClusterDataGrouped = Record<string, ClusterDatum[]>

@@ -1,24 +1,35 @@
 import React, { useMemo } from 'react'
 import { Row } from 'reactstrap'
+import { useRecoilValue } from 'recoil'
 import { ColCustom } from 'src/components/Common/ColCustom'
 import { CountryDistributionPlotCard } from 'src/components/CountryDistribution/CountryDistributionPlotCard'
-import { useTicks, useTimeDomain } from 'src/io/useParams'
 import { CountryFlagProps } from 'src/components/Common/CountryFlag'
-import { CountryDistribution } from 'src/io/getPerCountryData'
+import { filterClusters, filterCountries } from 'src/io/getPerCountryData'
+import { Country } from 'src/state/Places'
+import { Cluster } from 'src/state/Clusters'
+import { perCountryDataDistributionsSelector } from 'src/state/PerCountryData'
 
 export interface ClusterDistributionComponentsProps {
-  withClustersFiltered: CountryDistribution[]
-  enabledClusters: string[]
+  clusters: Cluster[]
+  countries: Country[]
+  region: string
   iconComponent?: React.ComponentType<CountryFlagProps>
 }
 
 export function CountryDistributionComponents({
-  withClustersFiltered,
-  enabledClusters,
+  countries,
+  clusters,
   iconComponent,
+  region,
 }: ClusterDistributionComponentsProps) {
-  const ticks = useTicks()
-  const timeDomain = useTimeDomain()
+  const countryDistributions = useRecoilValue(perCountryDataDistributionsSelector(region))
+
+  const { enabledClusters, withClustersFiltered } = useMemo(() => {
+    const { withCountriesFiltered } = filterCountries(countries, countryDistributions)
+    const filteredClusters = filterClusters(clusters, withCountriesFiltered)
+    const { enabledClusters, withClustersFiltered } = filteredClusters
+    return { enabledClusters, withClustersFiltered }
+  }, [countries, countryDistributions, clusters])
 
   const countryDistributionComponents = useMemo(
     () =>
@@ -29,12 +40,10 @@ export function CountryDistributionComponents({
             distribution={distribution}
             cluster_names={enabledClusters}
             Icon={iconComponent}
-            ticks={ticks}
-            timeDomain={timeDomain}
           />
         </ColCustom>
       )),
-    [enabledClusters, withClustersFiltered, iconComponent, ticks, timeDomain],
+    [enabledClusters, withClustersFiltered, iconComponent],
   )
 
   return <Row className={'gx-0'}>{countryDistributionComponents}</Row>

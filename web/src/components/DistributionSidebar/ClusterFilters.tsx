@@ -13,8 +13,8 @@ import {
 } from 'reactstrap'
 
 import { styled } from 'styled-components'
-import type { Cluster } from 'src/state/Clusters'
-import { useClusterColors } from 'src/io/getClusters'
+import { useRecoilValue } from 'recoil'
+import { Cluster, getClusterColorsSelector } from 'src/state/Clusters'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
@@ -40,7 +40,7 @@ export interface ClusterFilterCheckboxProps {
 
 export function ClusterFilterCheckbox({ cluster, enabled, onFilterChange }: ClusterFilterCheckboxProps) {
   const onChange = useCallback(() => onFilterChange(cluster), [onFilterChange, cluster])
-  const getClusterColor = useClusterColors()
+  const getClusterColor = useRecoilValue(getClusterColorsSelector)
 
   return (
     <FormGroup key={cluster} check>

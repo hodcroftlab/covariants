@@ -10,7 +10,6 @@ import { CountryFlagProps } from 'src/components/Common/CountryFlag'
 import { USStateCodeProps } from 'src/components/Common/USStateCode'
 import { CountryDistributionPlot } from 'src/components/CountryDistribution/CountryDistributionPlot'
 import { LOADING } from 'src/components/Loading/Loading'
-import { Ticks, TimeDomain } from 'src/io/useParams'
 
 const FlagAlignment = styled.span`
   display: flex;
@@ -26,8 +25,6 @@ export interface CountryDistributionPlotCardProps {
   distribution: CountryDistributionDatum[]
   cluster_names: string[]
   Icon?: React.ComponentType<CountryFlagProps | USStateCodeProps>
-  ticks: Ticks
-  timeDomain: TimeDomain
 }
 
 export function CountryDistributionPlotCard({
@@ -35,8 +32,6 @@ export function CountryDistributionPlotCard({
   distribution,
   cluster_names,
   Icon,
-  ticks,
-  timeDomain,
 }: CountryDistributionPlotCardProps) {
   const { t } = useTranslationSafe()
 
@@ -56,12 +51,7 @@ export function CountryDistributionPlotCard({
           <Row className={'gx-0'}>
             <Col className="p-0">
               <Suspense fallback={LOADING}>
-                <CountryDistributionPlot
-                  distribution={distribution}
-                  cluster_names={cluster_names}
-                  ticks={ticks}
-                  timeDomain={timeDomain}
-                />
+                <CountryDistributionPlot distribution={distribution} cluster_names={cluster_names} />
               </Suspense>
             </Col>
           </Row>

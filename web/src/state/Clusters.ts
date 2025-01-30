@@ -1,10 +1,84 @@
+import { selector } from 'recoil'
 import { updateUrlQuery } from 'src/helpers/urlQuery'
 import type { AtomEffectParams } from 'src/state/utils/atomEffect'
+import { atomAsync } from 'src/state/utils/atomAsync'
+import { CLUSTER_NAME_OTHERS, ClusterDatum, fetchClusters } from 'src/io/getClusters'
+import { theme } from 'src/theme'
+import { notUndefinedOrNull } from 'src/helpers/notUndefined'
 
 export interface Cluster {
   cluster: string
   enabled: boolean
 }
+
+export const clustersAtom = atomAsync<ClusterDatum[]>({
+  key: 'clusters',
+  async default() {
+    return await fetchClusters()
+  },
+})
+
+export const clusterNamesSelector = selector({
+  key: 'clusterNames',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return clusters.map((cluster) => cluster.display_name)
+  },
+})
+
+export const clusterBuildNamesMapSelector = selector({
+  key: 'clusterBuildNamesMap',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return new Map<string, string>(clusters.map((c) => [c.display_name, c.build_name]))
+  },
+})
+
+export const clusterBuildNamesSelector = selector({
+  key: 'clusterBuildNames',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return clusters.map((cluster) => cluster.build_name)
+  },
+})
+
+export const clusterOldBuildNamesSelector = selector({
+  key: 'clusterOldBuildNames',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return clusters.flatMap((cluster) => cluster.old_build_names).filter(notUndefinedOrNull)
+  },
+})
+
+export const clusterRedirectsSelector = selector({
+  key: 'clusterRedirects',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return clusters.reduce((result, cluster) => {
+      if (cluster.old_build_names) {
+        cluster.old_build_names.forEach((oldName) => result.set(oldName, cluster.build_name))
+      }
+      return result
+    }, new Map<string, string>())
+  },
+})
+
+export const getClusterColorsSelector = selector({
+  key: 'clusterColors',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+
+    return (clusterName: string) => {
+      if (clusterName === CLUSTER_NAME_OTHERS) {
+        return theme.clusters.color.others
+      }
+
+      // eslint-disable-next-line camelcase
+      const found = clusters.find(({ display_name }) => display_name === clusterName)
+      return found ? found.col : theme.clusters.color.unknown
+    }
+  },
+})
 
 /** Toggles a given cluster enabled/disabled */
 export function toggleCluster(clusters: Cluster[], clusterName: string): Cluster[] {

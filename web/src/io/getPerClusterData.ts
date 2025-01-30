@@ -1,70 +1,33 @@
+/* eslint-disable camelcase */
 import { pickBy } from 'lodash'
-import { SetterOrUpdater, useRecoilState } from 'recoil'
-import { FETCHER, useAxiosQuery, UseAxiosQueryOptions } from 'src/hooks/useAxiosQuery'
-import { clustersForPerClusterDataAtom } from 'src/state/ClustersForPerClusterData'
+import { z } from 'zod'
+import { FETCHER } from 'src/hooks/useAxiosQuery'
 import type { Country } from 'src/state/Places'
 import type { Cluster } from 'src/state/Clusters'
-import { useClusters } from 'src/io/getClusters'
 
-export interface ClusterDistributionDatum {
-  week: string
-  frequencies: Record<string, number | undefined>
-  interp: Record<string, boolean | undefined>
-  orig: Record<string, boolean | undefined>
-}
+const clusterDistributionDatumSchema = z.object({
+  week: z.string(),
+  frequencies: z.record(z.string(), z.number().optional()),
+  interp: z.record(z.string(), z.boolean().optional()),
+  orig: z.record(z.string(), z.boolean().optional()),
+})
 
-export interface ClusterDistribution {
-  cluster: string
-  distribution: ClusterDistributionDatum[]
-}
+const clusterDistributionSchema = z.object({
+  cluster: z.string(),
+  distribution: clusterDistributionDatumSchema.array(),
+})
 
-export interface PerClusterDataRaw {
-  country_names: string[]
-  distributions: ClusterDistribution[]
-}
+const perClusterDataRawSchema = z.object({
+  country_names: z.string().array(),
+  distributions: clusterDistributionSchema.array(),
+})
 
-export interface PerClusterData {
-  clusters: Cluster[]
-  clusterBuildNames: Map<string, string>
-  clusterDistributions: ClusterDistribution[]
-}
+export type PerClusterDataRaw = z.infer<typeof perClusterDataRawSchema>
+export type ClusterDistribution = z.infer<typeof clusterDistributionSchema>
+export type ClusterDistributionDatum = z.infer<typeof clusterDistributionDatumSchema>
 
-export function usePerClusterDataRaw(options?: UseAxiosQueryOptions<PerClusterDataRaw>): PerClusterDataRaw {
-  return useAxiosQuery<PerClusterDataRaw>('/data/perClusterData.json', options)
-}
-
-export function fetchPerClusterDataRaw() {
-  return FETCHER.fetch<PerClusterDataRaw>('/data/perClusterData.json')
-}
-
-export function usePerClusterData(): PerClusterData & { setClusters: SetterOrUpdater<Cluster[]> } {
-  const perClusterData = usePerClusterDataRaw()
-
-  const [clusters, setClusters] = useRecoilState(clustersForPerClusterDataAtom)
-  const clusterBuildNames = new Map<string, string>(useClusters().map((c) => [c.display_name, c.build_name]))
-  const clusterDistributions: ClusterDistribution[] = perClusterData.distributions
-
-  return {
-    clusters,
-    setClusters,
-    clusterBuildNames,
-    clusterDistributions,
-  }
-}
-
-export function useClusterDistribution(cluster: string): ClusterDistribution {
-  const perClusterData = usePerClusterDataRaw()
-  const clusterDistributions: ClusterDistribution[] = perClusterData.distributions
-  const clusterDistribution = clusterDistributions.find((dist) => dist.cluster === cluster)
-  if (!clusterDistribution) {
-    throw new Error(`Cluster distribution not found for cluster '${cluster}'`)
-  }
-  return clusterDistribution
-}
-
-export function useCountryNames(): string[] {
-  const perClusterData = usePerClusterDataRaw()
-  return perClusterData.country_names
+export async function fetchPerClusterDataRaw() {
+  return await FETCHER.validatedFetch('/data/perClusterData.json', perClusterDataRawSchema)
 }
 
 export function filterCountries(countries: Country[], withClustersFiltered: ClusterDistribution[]) {
