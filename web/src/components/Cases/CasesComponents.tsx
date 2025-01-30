@@ -14,9 +14,7 @@ export function CasesComponents({ clusters, countries }: { clusters: Cluster[]; 
 
   const { enabledClusters, withClustersFiltered } = useMemo(() => {
     const { withCountriesFiltered } = filterCountries(countries, perCountryCasesDistributions)
-    const filteredClusters = filterClusters(clusters, withCountriesFiltered)
-    const { enabledClusters, withClustersFiltered } = filteredClusters
-    return { enabledClusters, withClustersFiltered }
+    return filterClusters(clusters, withCountriesFiltered)
   }, [countries, perCountryCasesDistributions, clusters])
 
   const casesComponents = useMemo(

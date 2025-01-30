@@ -60,8 +60,7 @@ export function LineComponent({ country }: IconOrLineComponentProps) {
   const { t } = useTranslationSafe()
   const theme = useTheme()
   const getCountryStyles = useRecoilValue(getCountryStylesSelector)
-  const stroke = getCountryStyles(country).color
-  const strokeDasharray = getCountryStyles(country).strokeDashArray
+  const { color: stroke, strokeDashArray: strokeDasharray } = getCountryStyles(country)
 
   return (
     <>

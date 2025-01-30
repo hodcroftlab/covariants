@@ -1,11 +1,7 @@
 import type { AtomEffect, GetCallback, GetRecoilValue, RecoilState, SerializableParam } from 'recoil'
 import { atom, atomFamily, selector, selectorFamily } from 'recoil'
 
-export interface AtomDefaultOptions<T> {
-  key: string
-  effects?: ReadonlyArray<AtomEffect<T>>
-  effects_UNSTABLE?: ReadonlyArray<AtomEffect<T>>
-  dangerouslyAllowMutability?: boolean
+export type AtomDefaultOptions<T> = Omit<AtomOptions<T>, 'default'> & {
   default: (opts: { get: GetRecoilValue; getCallback: GetCallback }) => T
 }
 
