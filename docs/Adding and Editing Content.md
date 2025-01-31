@@ -3,15 +3,15 @@
 This web application uses on [Next.js framework](https://nextjs.org/docs) (based on React).
 
 Additionally, most of the text content is rendered from Markdown files using [MDX.js](https://mdxjs.com/) package. It
-allows to transflorm `.md` and `.mdx` files and use them as React components.
+allows to transform `.md` and `.mdx` files and use them as React components.
 
-In the end, everythigs is a React component.
+In the end, everything is a React component.
 
 
 ## Add a new page
 
 
-In general, all the "navigatable" pages are in `web/src/pages`. To add a new page, you need to add a file, in either of these formats: 
+In general, all the "navigable" pages are in `web/src/pages`. To add a new page, you need to add a file, in either of these formats: 
 
  - js, jsx, ts, tsx: should have a React component as default export 
    
@@ -23,7 +23,7 @@ For example if you add `web/src/pages/foo.md`, you can then navigate to `/foo` i
 
 `index.tsx` is the main page, it's URL is `/`.
 
-Next.js, bu convention, has a few special "pages" starting with "_". 
+Next.js, by convention, has a few special "pages" starting with "_". 
 
 
 Currently, files in `web/src/pages/` are pretty empty and simply another component, so that all the React code actually lives in `web/src/components`.

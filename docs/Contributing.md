@@ -2,7 +2,7 @@
 
 As an open-source project, we welcome contributions! Please follow the guide below for how to help add to CoVariants!
 
-To make a 'Pull Request' or 'PR,' you'll need to be a little familiar with Github. If you aren't comfortable doing this, but still have some information to share or a suggestion to make, you can make an [Issue](https://github.com/hodcroftlab/covariants/issues/new) instead. We may be slower to review and/or implement these, but we still appreciate getting the information!
+To make a 'Pull Request' or 'PR,' you'll need to be a little familiar with GitHub. If you aren't comfortable doing this, but still have some information to share or a suggestion to make, you can make an [Issue](https://github.com/hodcroftlab/covariants/issues/new) instead. We may be slower to review and/or implement these, but we still appreciate getting the information!
 
 ## How to build locally to check your changes:
 
@@ -11,7 +11,7 @@ When possible, you should build the repository locally after making changes, to 
 If you can't build the repository - that's ok. By creating a PR an automatic build should trigger, allowing you to view the branch. This isn't as fast as building locally, since it's harder to see the difference between each change, but it can be used for small changes or if you can't build locally.
 
 To build locally:
-Navigate to `covariants/web` and type the folowing commands:
+Navigate to `covariants/web` and type the following commands:
 ```
 cp .env.example .env
 nvm use
@@ -43,7 +43,7 @@ Be sure to preview your changes locally by building the repository (see above).
 
 ## To add new variant:
 
-To add a new variant, you'll need to generate the neccessary files to plot the graphs and make the other figures.
+To add a new variant, you'll need to generate the necessary files to plot the graphs and make the other figures.
 
 ### Add the cluster
 
