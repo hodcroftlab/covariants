@@ -15,11 +15,6 @@ from urllib.parse import quote
 import numpy as np
 import pandas as pd
 
-from clusters import clusters
-from colors_and_countries import country_styles_all
-from mutation_comparison import mutation_comparison
-from name_table import name_table
-
 cluster_tables_path = "cluster_tables"
 output_path = "web/public/data"
 ack_output_path = "web/public/acknowledgements"
@@ -481,7 +476,7 @@ def compare_dates(left_date: str, right_date: str, comp):
     return format_date(dt)
 
 
-def check_acknowledgements(ack_output_path: str):
+def check_acknowledgements(clusters, ack_output_path: str):
     os.makedirs(ack_output_path, exist_ok=True)
 
     with open(os.path.join(ack_output_path, "acknowledgements_keys.json"), "r") as f:
@@ -513,7 +508,7 @@ def check_acknowledgements(ack_output_path: str):
                 print(f"\nWarning: cluster {build_name}:\n    {warnings_str}")
 
 
-if __name__ == "__main__":
+def main(clusters):
     os.makedirs(output_path, exist_ok=True)
 
     regions_data = {"regions": []}
@@ -563,4 +558,13 @@ if __name__ == "__main__":
     with open(os.path.join(output_path, "nameTable.json"), "w") as fh:
         json.dump(name_table_data, fh, indent=2, sort_keys=True)
 
-    check_acknowledgements(ack_output_path)
+    check_acknowledgements(clusters, ack_output_path)
+
+
+if __name__ == "__main__":
+    from clusters import clusters
+    from colors_and_countries import country_styles_all
+    from mutation_comparison import mutation_comparison
+    from name_table import name_table
+
+    main(clusters)
