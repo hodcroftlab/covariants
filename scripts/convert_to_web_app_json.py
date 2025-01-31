@@ -15,9 +15,7 @@ from urllib.parse import quote
 import numpy as np
 import pandas as pd
 
-cluster_tables_path = "cluster_tables"
-output_path = "web/public/data"
-ack_output_path = "web/public/acknowledgements"
+from helpers import format_date, compare_dates
 
 
 def soa_to_aos(soa):
@@ -110,8 +108,8 @@ def interpolate_per_cluster_data(cluster_data):
 
     # NOTE: using "week" column as index
     df = pd.DataFrame(cluster_data).set_index("week")
-    #add a frequencies column we'll interpolate later
-    df['frequencies'] = df.cluster_sequences/df.total_sequences
+    # add a frequencies column we'll interpolate later
+    df['frequencies'] = df.cluster_sequences / df.total_sequences
 
     # Add rows for missing weeks. Fill values of the new rows wih NaN.
     old_index = df.index
@@ -120,7 +118,7 @@ def interpolate_per_cluster_data(cluster_data):
     )
     df_reindexed = df.reindex(new_index, fill_value=np.NaN)
 
-    #separate out frequencies so that we only interpolate this, nothing else
+    # separate out frequencies so that we only interpolate this, nothing else
     df_freqs = df_reindexed[['frequencies']].copy()
     df_interp = df_freqs.interpolate(method="linear")
 
@@ -132,9 +130,9 @@ def interpolate_per_cluster_data(cluster_data):
         new_index.tolist(), old_index.tolist(), closed=False
     )
 
-    #use the original dataframe, with NA values but -
+    # use the original dataframe, with NA values but -
     df_result = df_reindexed
-    #add in interpolated freqs to overwrite the ones with NAs
+    # add in interpolated freqs to overwrite the ones with NAs
     df_result['frequencies'] = df_interp['frequencies']
 
     df_result["interp"] = False
@@ -158,7 +156,7 @@ def update_per_cluster_distribution(cluster_data, country, distribution):
         total_sequences = cluster_datum["total_sequences"]
         interp = cluster_datum["interp"]
         orig = cluster_datum["orig"]
-        #we've now already calculated & interpolated freqs previously, so use this
+        # we've now already calculated & interpolated freqs previously, so use this
         frequency = cluster_datum['frequencies']
 
         if len(distribution) == 0:
@@ -193,7 +191,7 @@ def update_per_cluster_distribution(cluster_data, country, distribution):
                         dist["orig"][country] = orig
 
 
-def convert_per_cluster_data(clusters):
+def convert_per_cluster_data(clusters, cluster_tables_path):
     per_cluster_data_output = {"distributions": [], "country_names": []}
     per_cluster_data_output_interp = {"distributions": [], "country_names": []}
 
@@ -206,7 +204,7 @@ def convert_per_cluster_data(clusters):
 
         distribution = []
         with open(
-            os.path.join(cluster_tables_path, f"{build_name}_data.json"), "r"
+                os.path.join(cluster_tables_path, f"{build_name}_data.json"), "r"
         ) as f:
             json_input = json.load(f)
 
@@ -294,7 +292,7 @@ def create_aquaria_urls(clusters):
 
         # finally assemble URLS
         gene_list = sorted(gStrings.keys())
-        if "S" in gene_list: # Sort alphabetically but have S first
+        if "S" in gene_list:  # Sort alphabetically but have S first
             gene_list.remove("S")
             gene_list = ["S"] + gene_list
         for gene in gene_list:
@@ -306,7 +304,8 @@ def create_aquaria_urls(clusters):
             elif gene == 'ORF1b':
                 g = 'PP1ab'
             gString = "&".join([quote(x) for x in gStrings[gene]])
-            clusters[cluster]["aquaria_urls"].append({"gene":gene, "url":f"https://aquaria.app/SARS-CoV-2/{g}?{gString}"})
+            clusters[cluster]["aquaria_urls"].append(
+                {"gene": gene, "url": f"https://aquaria.app/SARS-CoV-2/{g}?{gString}"})
 
     return clusters
 
@@ -358,8 +357,6 @@ def convert_mutation_comparison(mutation_comparison):
     all_mutations = list(all_mutations)
     all_mutations_obj = [mutation_string_to_object(mut) for mut in all_mutations]
     all_mutations_pos = list(set([mut["pos"] for mut in all_mutations_obj]))
-
-    # print(all_mutations_pos)
 
     # Matrix [ variants x mutation_positions ],
     # containing mutation string if there is a mutation at a given position in a given variant, and NaN otherwise
@@ -414,7 +411,7 @@ def convert_mutation_comparison(mutation_comparison):
     }
 
 
-def convert_region_data(region_name, region_input):
+def convert_region_data(region_name, region_input, cluster_tables_path):
     region_input_file = region_input['data']
     per_country_intro_content = region_input['per_country_intro_content']
 
@@ -442,38 +439,6 @@ def convert_region_data(region_name, region_input):
         "min_date": min_date,
         "max_date": max_date,
     }
-
-
-# `per_country_intro_content` is a file name relative to `content/PerCountryIntro`
-REGIONS_INPUTS = {
-    "World": {
-        "data": "EUClusters_data.json",
-        "per_country_intro_content": "World.md"
-    },
-    "United States": {
-        "data": "USAClusters_data.json",
-        "per_country_intro_content": "UnitedStates.md"
-    },
-    "Switzerland": {
-        "data": "SwissClusters_data.json",
-        "per_country_intro_content": "Switzerland.md"
-    }
-}
-
-
-def parse_date(s: str) -> datetime:
-    return datetime.strptime(s, "%Y-%m-%d")
-
-
-def format_date(dt: datetime) -> str:
-    return datetime.strftime(dt, "%Y-%m-%d")
-
-
-def compare_dates(left_date: str, right_date: str, comp):
-    left_date = parse_date(left_date)
-    right_date = parse_date(right_date)
-    dt = comp(left_date, right_date)
-    return format_date(dt)
 
 
 def check_acknowledgements(clusters, ack_output_path: str):
@@ -508,14 +473,15 @@ def check_acknowledgements(clusters, ack_output_path: str):
                 print(f"\nWarning: cluster {build_name}:\n    {warnings_str}")
 
 
-def main(clusters):
+def main(clusters, mutation_comparison, country_styles_all, name_table, cluster_tables_path, output_path,
+         ack_output_path, regions_inputs):
     os.makedirs(output_path, exist_ok=True)
 
     regions_data = {"regions": []}
     min_date = format_date(datetime(3000, 1, 1))
     max_date = format_date(datetime(1000, 1, 1))
-    for region_name, region_input in REGIONS_INPUTS.items():
-        region_data = convert_region_data(region_name, region_input)
+    for region_name, region_input in regions_inputs.items():
+        region_data = convert_region_data(region_name, region_input, cluster_tables_path)
         if region_data['min_date'] is not None and region_data['max_date'] is not None:
             min_date = compare_dates(min_date, region_data['min_date'], min)
             max_date = compare_dates(max_date, region_data['max_date'], max)
@@ -532,7 +498,8 @@ def main(clusters):
         json.dump(params, fh, indent=2, sort_keys=True)
 
     per_cluster_data_output, per_cluster_data_output_interp = convert_per_cluster_data(
-        clusters
+        clusters,
+        cluster_tables_path
     )
     with open(os.path.join(output_path, "perClusterData.json"), "w") as fh:
         json.dump(per_cluster_data_output, fh, indent=2, sort_keys=True)
@@ -562,9 +529,30 @@ def main(clusters):
 
 
 if __name__ == "__main__":
-    from clusters import clusters
-    from colors_and_countries import country_styles_all
-    from mutation_comparison import mutation_comparison
-    from name_table import name_table
+    from clusters import clusters as clusters_input
+    from colors_and_countries import country_styles_all as country_styles_input
+    from mutation_comparison import mutation_comparison as mutation_comparison_input
+    from name_table import name_table as name_table_input
 
-    main(clusters)
+    cluster_tables_dir = "cluster_tables"
+    output_dir = "web/public/data"
+    ack_output_dir = "web/public/acknowledgements"
+
+    # `per_country_intro_content` is a file name relative to `content/PerCountryIntro`
+    regions_input = {
+        "World": {
+            "data": "EUClusters_data.json",
+            "per_country_intro_content": "World.md"
+        },
+        "United States": {
+            "data": "USAClusters_data.json",
+            "per_country_intro_content": "UnitedStates.md"
+        },
+        "Switzerland": {
+            "data": "SwissClusters_data.json",
+            "per_country_intro_content": "Switzerland.md"
+        }
+    }
+
+    main(clusters_input, mutation_comparison_input, country_styles_input, name_table_input, cluster_tables_dir,
+         output_dir, ack_output_dir, regions_input)

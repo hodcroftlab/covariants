@@ -106,3 +106,17 @@ def to2week_ordinal_string(x):
     n = x.toordinal()
     monday = datetime.date.fromordinal(n - ((n - ref_monday) % 14))
     return monday.strftime("%Y-%m-%d")
+
+def parse_date(s: str) -> datetime:
+    return datetime.datetime.strptime(s, "%Y-%m-%d")
+
+
+def format_date(dt: datetime) -> str:
+    return datetime.datetime.strftime(dt, "%Y-%m-%d")
+
+
+def compare_dates(left_date: str, right_date: str, comp):
+    left_date = parse_date(left_date)
+    right_date = parse_date(right_date)
+    dt = comp(left_date, right_date)
+    return format_date(dt)
