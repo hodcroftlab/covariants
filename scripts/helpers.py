@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import datetime
-from collections import defaultdict
 
 def logistic(x, a, t50):
     return np.exp((x - t50) * a) / (1 + np.exp((x - t50) * a))

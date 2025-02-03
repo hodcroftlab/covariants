@@ -1,0 +1,9 @@
+strain	date	division	host	substitutions	deletions	Nextstrain_clade	country	gisaid_epi_isl	coverage	QC_overall_status	Nextclade_pango
+20I	2025-01-31	2	Human	2	5	20I (Alpha, V1)	Argentina	epistel	0.91	bad	ba_pango
+20I	2025-01-31	2	Human	2	5	20I (Alpha, V1)	Argentina	epistel	?	good	ba_pango
+20I	2025-01-31	2	Human	2	5	20I (Alpha, V1)	Argentina	epistel	0.91	good	ba_pango
+20I	2025-01-31	2	Human	2	5	20I (Alpha, V1)	Argentina	epistel	0.91	good	ba_pango
+20I	2025-01-31	2	Human	2	5	20I (Alpha, V1)	Argentina	epistel	0.75	good	ba_pango
+20I	2025-01-31	Geneva	Human	2	5	20I (Alpha, V1)	Switzerland	epistel	0.75	good	ba_pango
+20I	2025-01-31	Geneva	Human	2	5	20I (Alpha, V1)	Switzerland	epistel	0.91	good	ba_pango
+20I	2025-01-31	1	Monkey	2	5	20I (Alpha, V1)	Argentina	epistel	0.91	mediocre	ba_pingo
