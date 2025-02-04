@@ -1,10 +1,12 @@
+from datetime import datetime
+
 import numpy as np
 import pandas as pd
 from typing import cast
 
 from scripts.cluster_analysis_refactored import read_metadata_file_first_run, read_and_clean_metadata_file_line_by_line, \
     split_clusters_into_categories, create_name_mappings, format_cluster_first_dates, compile_meta_clusters, \
-    check_for_meta_clusters, remove_unused_countries
+    check_for_meta_clusters, remove_unused_countries, collect_countries_to_plot, pass_helper_functions_over_data
 from scripts.swiss_regions import swiss_regions
 
 cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country',
@@ -181,7 +183,9 @@ clusters = {
         "nextstrain_build": True,
         "graphing": False,
         "important": False,
-        "other_nextstrain_names": ["21K (Omicron)", "21L (Omicron)", "21M (Omicron)", "22A (Omicron)", "22B (Omicron)", "22C (Omicron)", "22D (Omicron)", "22E (Omicron)", "22F (Omicron)", "23A (Omicron)", "23B (Omicron)", "23C (Omicron)", "23D (Omicron)", "23E (Omicron)", "23F (Omicron)"],
+        "other_nextstrain_names": ["21K (Omicron)", "21L (Omicron)", "21M (Omicron)", "22A (Omicron)", "22B (Omicron)",
+                                   "22C (Omicron)", "22D (Omicron)", "22E (Omicron)", "22F (Omicron)", "23A (Omicron)",
+                                   "23B (Omicron)", "23C (Omicron)", "23D (Omicron)", "23E (Omicron)", "23F (Omicron)"],
         "country_info": [], 'col': "#b3d9ff",
         "display_name": "Omicron",
         "has_no_page": True,
@@ -270,11 +274,13 @@ def test_read_and_clean_metadata():
     assert total_counts_divisions == {'Switzerland': {'Region 1': {(2025, 5): 1}}, 'USA': {}}
     assert rest_all == []
 
+
 def test_check_for_meta_clusters():
     clus_to_run = ['Alpha', 'Omicron']
     meta_clusters, clus_to_run = check_for_meta_clusters(clus_to_run, clusters)
     assert meta_clusters == ['Omicron']
     assert clus_to_run == ['Alpha', 'Omicron', '21K.Omicron']
+
 
 def test_compile_meta_clusters():
     # User input
@@ -321,7 +327,6 @@ def test_compile_meta_clusters():
                                                            all_countries
                                                            )
 
-
     # intermediate data
     all_sequences, clus_data_all, acknowledgement_by_variant = compile_meta_clusters(acknowledgement_by_variant,
                                                                                      all_sequences, clus_data_all,
@@ -343,3 +348,30 @@ def test_remove_unused_countries():
     assert len(clus_data_all['Alpha']['cluster_counts']) == 1
     clus_data_all = remove_unused_countries(clus_data_all, clus_to_run)
     assert len(clus_data_all['21K.Omicron']['cluster_counts']) == 0
+
+
+def test_collect_countries_to_plot():
+    clus_data_all = {'Alpha': clusters['Alpha'] | {
+        'summary': {'Argentina': {'num_seqs': 3, 'first_seq': (2025, 5), 'last_seq': (2025, 5)}}}}
+    countries_to_plot = collect_countries_to_plot(clus_data_all, 1)
+    assert countries_to_plot == ['Argentina']
+
+
+def test_pass_helper_functions_over_data():
+    selected_country = ['USA', 'Switzerland']
+    all_countries = ['Argentina', 'Switzerland']
+    clus_to_run = ['Alpha']
+    clus_data_all = {'Alpha': clusters['Alpha'] | {
+        'summary': {'Argentina': {'num_seqs': 3, 'first_seq': (2025, 5), 'last_seq': (2025, 5)}}}
+                              | {'cluster_counts': {'Argentina': {(2025, 5): 3}}}}
+    division_data_all = {'Switzerland': {'Alpha': {'cluster_counts': {'Region 1': {(2025, 5): 1}}, 'summary': {
+        'Region 1': {'first_seq': datetime(2025, 1, 31, 0, 0), 'last_seq': datetime(2025, 1, 31, 0, 0),
+                     'num_seqs': 1}}}}, 'USA': {'Alpha': {'cluster_counts': {}, 'summary': {}}}}
+    total_counts_countries = {'Argentina': {(2025, 5): 2}, 'Switzerland': {(2025, 5): 1}}
+    total_counts_divisions = {'Switzerland': {'Region 1': {(2025, 5): 1}}, 'USA': {}}
+    clus_data_all, division_data_all = pass_helper_functions_over_data(all_countries, clus_data_all, clus_to_run,
+                                                                       division_data_all, selected_country,
+                                                                       total_counts_countries, total_counts_divisions)
+    assert clus_data_all['Alpha']['non_zero_counts'] == {}
+    assert division_data_all['Switzerland']['Alpha']['non_zero_counts'] == {}
+    assert division_data_all['USA']['Alpha']['non_zero_counts'] == {}
