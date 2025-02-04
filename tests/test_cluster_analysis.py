@@ -1,8 +1,10 @@
+import numpy as np
 import pandas as pd
+from typing import cast
 
 from scripts.cluster_analysis_refactored import read_metadata_file_first_run, read_and_clean_metadata_file_line_by_line, \
     split_clusters_into_categories, create_name_mappings, format_cluster_first_dates, compile_meta_clusters, \
-    check_for_meta_clusters
+    check_for_meta_clusters, remove_unused_countries
 from scripts.swiss_regions import swiss_regions
 
 cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country',
@@ -199,7 +201,7 @@ first_date_exceptions = {
 
 def test_load_tsv_file():
     data = pd.read_csv(testfile_path, sep='\t')
-    bla = data.columns == cols
+    bla = cast(np.ndarray, data.columns == cols)
     assert bla.all()
 
 
@@ -330,3 +332,14 @@ def test_compile_meta_clusters():
     assert acknowledgement_by_variant == {'acknowledgements': {'21K.Omicron': [],
                                                                'Alpha': ['epistel', 'epistel', 'epistel'],
                                                                'Omicron': []}}
+
+
+def test_remove_unused_countries():
+    clus_to_run = ['Alpha', '21K.Omicron']
+    clus_data_all = {'Alpha': clusters['Alpha'] | {'cluster_counts': {'Argentina': {'2025-01-31': 3}}},
+                     '21K.Omicron': clusters['21K.Omicron'] | {'cluster_counts': {'Argentina': {}}},
+                     }
+    assert len(clus_data_all['21K.Omicron']['cluster_counts']) == 1
+    assert len(clus_data_all['Alpha']['cluster_counts']) == 1
+    clus_data_all = remove_unused_countries(clus_data_all, clus_to_run)
+    assert len(clus_data_all['21K.Omicron']['cluster_counts']) == 0
