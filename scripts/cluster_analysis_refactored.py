@@ -66,6 +66,9 @@ earliest_date = datetime.datetime.strptime("2019-01-01", '%Y-%m-%d')
 # set min data week to consider
 min_data_week = (2020, 18)  # 20)
 
+# minimum number of sequences to consider plotting a country
+cutoff_num_seqs = 2700
+
 
 def print_date_alerts(clus, alert_dates, cluster_first_dates):
     print(clus)
@@ -152,12 +155,14 @@ def get_instructions_from_user(clusters):
         print("Doing country plotting.")
         print("Doing division for USA and Switzerland.")
         selected_country = ["USA", "Switzerland"]
+        run_all_clusters = True
     else:
         print("Can't do country plot as aren't doing 'all' clusters")
         print(
             "You can always run this step by calling `plot_country_data(clusters, proposed_countries_to_plot, print_files)`")
         print("Not doing division for USA and Switzerland (not 'all' clusters selected).")
         selected_country = []
+        run_all_clusters = False
 
     clus_check = False
     print_answer = input(
@@ -165,7 +170,7 @@ def get_instructions_from_user(clusters):
     if print_answer in ["y", "Y", "yes", "YES", "Yes"]:
         clus_check = True
     print(f"Cluster check? {clus_check}")
-    return clus_answer, clus_to_run, print_files, selected_country, clus_check, print_acks
+    return run_all_clusters, clus_to_run, print_files, selected_country, clus_check, print_acks
 
 
 def clear_output_files():
@@ -569,36 +574,28 @@ def plot_country_data(
     return json_output
 
 
-def main(dated_limit, dated_cluster, clusters, bad_seqs, swiss_regions, cluster_first_dates, date_exceptions,
-         country_styles_all, input_meta, cols,
-         clus_answer, clus_to_run, print_files, selected_country, clus_check, print_acks):
+def main(dated_limit: str, dated_cluster: str, clusters: dict[str, dict], bad_seqs: dict, swiss_regions: dict,
+         cluster_first_dates: dict[dict], date_exceptions: dict[str, list[str]],
+         country_styles_all: dict, input_meta: str, cols: list[str], cutoff_num_seqs: int,
+         run_all_clusters: bool, clus_to_run: list[str], selected_country: list[str],
+         clus_check: bool, print_acks: bool):
     ##################################
     ##################################
-    #### Prepare output files, useful dictionaries and count metadata lines for percentage output
+    #### Prepare useful dictionaries and count metadata lines for percentage output
 
-    t0 = time.time()
-
-    if print_files and "all" in clus_answer:
-        clear_output_files()
-
-    meta_clusters, clus_to_run = check_for_meta_clusters(clus_to_run, clusters)
-
-    display_name_to_clus, pango_lineage_to_clus = create_name_mappings(clus_to_run, clusters)
-
-    if dated_limit:
-        if dated_cluster not in clus_to_run:
-            print(f"\nDated cluster '{dated_cluster}' not found in list of clusters to run. Disabling dated limit...\n")
-            dated_limit = ""
-
-    if new_clades_to_rename:
-        print("\n!!!!!!!!!!!!!!!!!!")
-        print("There are currently clades that will be renamed!!:")
-        print(new_clades_to_rename)
-
-    nextstrain_clades, all_countries, n_total = read_metadata_file_first_run(input_meta, cols)
-
-    t1 = time.time()
-    print(f"Preparation took {round((t1 - t0) / 60, 1)} min to run.\n")
+    (all_countries,
+     clus_to_run,
+     dated_limit,
+     display_name_to_clus,
+     meta_clusters,
+     n_total,
+     nextstrain_clades,
+     pango_lineage_to_clus) = prepare_dicts_and_meta_clusters(clus_to_run,
+                                                              clusters,
+                                                              cols,
+                                                              dated_cluster,
+                                                              dated_limit,
+                                                              input_meta)
 
     ##################################
     ##################################
@@ -637,92 +634,93 @@ def main(dated_limit, dated_cluster, clusters, bad_seqs, swiss_regions, cluster_
                                                                                      clusters, display_name_to_clus,
                                                                                      meta_clusters, print_acks)
 
-    clus_data_all = remove_unused_countries(clus_data_all, clus_to_run)
-
-    if print_files:
-        write_out_strains(all_sequences, clus_to_run, clusters, dated_cluster_strains, dated_limit)
-        write_summary_tables(clus_answer, clus_data_all, clus_to_run)
-
-    # only do this for 'all' runs as otherwise the main file won't be updated.
-    if print_acks and "all" in clus_answer:
-        write_acknowledgements(acknowledgement_by_variant, clus_to_run, clusters)
+    clus_data_all = remove_unused_countries(clus_data_all)
 
     ##################################
     ##################################
-    #### Plotting
+    #### Prepare plotting data
 
-    countries_to_plot = collect_countries_to_plot(clus_data_all)
+    countries_to_plot = collect_countries_to_plot(clus_data_all, cutoff_num_seqs)
 
-    clus_data_all, division_data_all = pass_helper_functions_over_data(all_countries, clus_data_all, clus_to_run,
+    clus_data_all, division_data_all = pass_helper_functions_over_data(all_countries, clus_data_all,
                                                                        division_data_all, selected_country,
                                                                        total_counts_countries, total_counts_divisions)
 
-    ### CLUSTERS ###
+    clusters_output, per_variant_countries_to_plot = plot_clusters(clus_data_all, countries_to_plot)
 
-    countries_plotted = {}
+    if run_all_clusters:
+        countries_output = plot_countries(clus_data_all, clusters, division_data_all)
+    else:
+        countries_output = {}
 
-    for clus in clus_to_run:
-        json_output = {}
+    #######################
+    #######################
+    # print out additional info
+
+    if run_all_clusters:
+        print_cluster_counts(all_sequences, clusters)
+        print_color_info(countries_to_plot, country_styles_all)
+
+    print_number_of_bad_sequences(alert_dates)
+    print_inconsistent_cluster_assignments(cluster_inconsistencies, rest_all)
+
+    return (clusters_output, per_variant_countries_to_plot, countries_output, clus_data_all, acknowledgement_by_variant,
+            all_sequences, dated_cluster_strains, dated_limit)
+
+
+def prepare_dicts_and_meta_clusters(clus_to_run, clusters, cols, dated_cluster, dated_limit, input_meta):
+    t0 = time.time()
+    meta_clusters, clus_to_run = check_for_meta_clusters(clus_to_run, clusters)
+    display_name_to_clus, pango_lineage_to_clus = create_name_mappings(clus_to_run, clusters)
+    if dated_limit:
+        if dated_cluster not in clus_to_run:
+            print(f"\nDated cluster '{dated_cluster}' not found in list of clusters to run. Disabling dated limit...\n")
+            dated_limit = ""
+    if new_clades_to_rename:
+        print("\n!!!!!!!!!!!!!!!!!!")
+        print("There are currently clades that will be renamed!!:")
+        print(new_clades_to_rename)
+    nextstrain_clades, all_countries, n_total = read_metadata_file_first_run(input_meta, cols)
+    t1 = time.time()
+    print(f"Preparation took {round((t1 - t0) / 60, 1)} min to run.\n")
+    return all_countries, clus_to_run, dated_limit, display_name_to_clus, meta_clusters, n_total, nextstrain_clades, pango_lineage_to_clus
+
+
+def plot_countries(clus_data_all, clusters, division_data_all):
+    countries_output = {}
+    for file_prefix, division_local, selected_country_local in zip(['EUClusters', 'USAClusters', 'SwissClusters'],
+                                                                   [False, True, True],
+                                                                   [None, 'USA', 'Switzerland']):
+        proposed_countries_to_plot, clus_keys = get_ordered_clusters_to_plot(clusters, division_data_all,
+                                                                             clus_data_all,
+                                                                             division_local, selected_country_local)
+        plot_country_json_output = plot_country_data(clusters, proposed_countries_to_plot, clus_keys,
+                                                     division_data_all,
+                                                     clus_data_all)
+        countries_output[file_prefix] = plot_country_json_output
+    return countries_output
+
+
+def plot_clusters(clus_data_all, countries_to_plot):
+    per_variant_countries_to_plot = {}
+    clusters_output = {}
+    for clus in clus_data_all:
+        clusters_output[clus] = {}
         for country in clus_data_all[clus]["non_zero_counts"]:
             if country not in countries_to_plot:
                 continue
 
             (week_as_date, cluster_count, total_count) = clus_data_all[clus]["non_zero_counts"][country]
 
-            json_output[country] = {}
-            json_output[country]["week"] = [datetime.datetime.strftime(x, "%Y-%m-%d") for x in
-                                            week_as_date]
-            json_output[country]["total_sequences"] = [int(x) for x in total_count]
-            json_output[country]["cluster_sequences"] = [int(x) for x in cluster_count]
+            clusters_output[clus][country] = {}
+            clusters_output[clus][country]["week"] = [datetime.datetime.strftime(x, "%Y-%m-%d") for x in
+                                                      week_as_date]
+            clusters_output[clus][country]["total_sequences"] = [int(x) for x in total_count]
+            clusters_output[clus][country]["cluster_sequences"] = [int(x) for x in cluster_count]
 
             # Currently "True" for all countries
-            countries_plotted[country] = "True"
-
-        if print_files:
-            print("\nWrite out clusters...\n")
-            clus_build_name = clus_data_all[clus]["build_name"]
-            with open(tables_path + f"{clus_build_name}_data.json", "w") as fh:
-                json.dump(json_output, fh)
-
-    ### COUNTRIES ###
-
-    if "all" in clus_answer:
-        for file_prefix, division_local, selected_country_local in zip(['EUClusters', 'USAClusters', 'SwissClusters'],
-                                                                       [False, True, True],
-                                                                       [None, 'USA', 'Switzerland']):
-            proposed_countries_to_plot, clus_keys = get_ordered_clusters_to_plot(clusters, division_data_all,
-                                                                                 clus_data_all,
-                                                                                 division_local, selected_country_local)
-            plot_country_json_output = plot_country_data(clusters, proposed_countries_to_plot, clus_keys,
-                                                         division_data_all,
-                                                         clus_data_all)
-
-            if print_files:
-                print(f"\nWrite out countries...{file_prefix}\n")
-                with open(tables_path + f"{file_prefix}_data.json", "w") as fh:
-                    json.dump(plot_country_json_output, fh)
-
-        if print_files:
-            print(f"\nWrite out plotting information...\n")
-            with open(tables_path + f"perVariant_countries_toPlot.json", "w") as fh:
-                json.dump(countries_plotted, fh)
-
-            # if all went well (script got to this point), and did an 'all' run, then print out an update!
-            print(f"\nWrite out update...\n")
-            update_json = {"lastUpdated": str(datetime.datetime.now().isoformat())}
-            with open(web_data_folder + f"update.json", "w") as fh:
-                json.dump(update_json, fh)
-
-    #######################
-    #######################
-    # print out additional info
-
-    if "all" in clus_answer:
-        print_cluster_counts(all_sequences, clusters)
-        print_color_info(countries_to_plot, country_styles_all)
-
-    print_number_of_bad_sequences(alert_dates)
-    print_inconsistent_cluster_assignments(cluster_inconsistencies, rest_all)
+            per_variant_countries_to_plot[country] = "True"
+    return clusters_output, per_variant_countries_to_plot
 
 
 def print_color_info(countries_to_plot, country_styles_all):
@@ -781,22 +779,22 @@ def compile_meta_clusters(acknowledgement_by_variant, all_sequences, clus_data_a
     return all_sequences, clus_data_all, acknowledgement_by_variant
 
 
-def remove_unused_countries(clus_data_all, clus_to_run):
+def remove_unused_countries(clus_data_all):
     print("\nRemoving unused countries from cluster counts...\n")  # TODO: also remove from summary?
-    for clus in clus_to_run:
+    for clus in clus_data_all:
         for country in list(clus_data_all[clus]["cluster_counts"]):
             if clus_data_all[clus]["cluster_counts"][country] == {}:
                 clus_data_all[clus]["cluster_counts"].pop(country)
     return clus_data_all
 
 
-def pass_helper_functions_over_data(all_countries, clus_data_all, clus_to_run, division_data_all, selected_country,
+def pass_helper_functions_over_data(all_countries, clus_data_all, division_data_all, selected_country,
                                     total_counts_countries, total_counts_divisions):
     # Pass helper function non_zero_counts over all cluster and all countries once to save time
     print("\nPass non_zero_counts() helper function over the data...\n")
     ndone = 0
     for clus in clus_data_all:
-        print(f"Process cluster {clus}: number {ndone + 1} of {len(clus_to_run)}")
+        print(f"Process cluster {clus}: number {ndone + 1} of {len(clus_data_all)}")
         total_data = pd.DataFrame(total_counts_countries)
 
         cluster_data = pd.DataFrame(clus_data_all[clus]["cluster_counts"]).sort_index()
@@ -899,7 +897,7 @@ def print_cluster_counts(all_sequences, clusters):
     print(count_df.sort_values(by="counts"))
 
 
-def collect_countries_to_plot(clus_data_all, cutoff_num_seqs=2700):
+def collect_countries_to_plot(clus_data_all, cutoff_num_seqs):
     print("\nCollect countries above cutoff_num_seqs (in at least one cluster)...")
     countries_to_plot = []
     for clus in clus_data_all:
@@ -917,15 +915,15 @@ def collect_countries_to_plot(clus_data_all, cutoff_num_seqs=2700):
     return countries_to_plot
 
 
-def write_acknowledgements(acknowledgement_by_variant, clus_to_run, clusters):
+def write_acknowledgements(acknowledgement_by_variant, clus_data_all):
     print("\nWrite out acknowledgements...\n")
     acknowledgement_keys = {"acknowledgements": {}}
-    for clus in clus_to_run:
+    for clus in clus_data_all:
         if clus not in acknowledgement_by_variant["acknowledgements"]:
             print(f"Cluster {clus} missing from acknowledgements (no sequences assigned to this cluster).")
             continue
 
-        clus_build_name = clusters[clus]["build_name"]
+        clus_build_name = clus_data_all[clus]["build_name"]
 
         if clus_build_name == "DanishCluster":
             continue
@@ -973,9 +971,9 @@ def check_for_meta_clusters(clus_to_run, clusters):
     return meta_clusters, clus_to_run
 
 
-def write_summary_tables(clus_answer, clus_data_all, clus_to_run):
+def write_summary_tables(run_all_clusters, clus_data_all):
     print("\nWrite out summary tables...\n")
-    for clus in clus_to_run:
+    for clus in clus_data_all:
         if clus_data_all[clus]["summary"] == {}:
             print(f"No summary written out for cluster {clus} (no sequences assigned to this cluster).")
             continue
@@ -989,29 +987,29 @@ def write_summary_tables(clus_answer, clus_data_all, clus_to_run):
         ordered_country["last_seq"] = ordered_country["last_seq"].dt.date
         ordered_country.to_csv(table_file, sep="\t")
         # only write if doing all clusters
-        if "all" in clus_answer:
+        if run_all_clusters:
             display_cluster = clus_data_all[clus]["display_name"]
             with open(overall_tables_file, "a") as fh:
                 fh.write(f"\n\n## {display_cluster}\n")
             ordered_country.to_csv(overall_tables_file, sep="\t", mode="a")
 
 
-def write_out_strains(all_sequences, clus_to_run, clusters, dated_cluster_strains, dated_limit):
+def write_out_strains(all_sequences, clus_data_all, dated_cluster_strains, dated_limit, dated_cluster):
     print("\nWrite out strains for Nextstrain runs...\n")
-    for clus in clus_to_run:
+    for clus in clus_data_all:
         if all_sequences[clus] == []:
             print(f"No strains written out for cluster {clus} (no sequences assigned to this cluster).")
             continue
 
         # Store all strains per cluster
-        nextstrain_run = clusters[clus]['nextstrain_build']
-        clusterlist_output = clusters[clus]["clusterlist_output"]
+        nextstrain_run = clus_data_all[clus]['nextstrain_build']
+        clusterlist_output = clus_data_all[clus]["clusterlist_output"]
         if nextstrain_run:
             with open(clusterlist_output, "w") as f:
                 f.write("\n".join(all_sequences[clus]))
 
             # Copy file with date, so we can compare to prev dates if we want...
-            build_nam = clusters[clus]["build_name"]
+            build_nam = clus_data_all[clus]["build_name"]
             copypath = clusterlist_output.replace(
                 f"{build_nam}",
                 "{}-{}".format(build_nam, datetime.date.today().strftime("%Y-%m-%d")),
@@ -1022,8 +1020,8 @@ def write_out_strains(all_sequences, clus_to_run, clusters, dated_cluster_strain
             )
             copyfile(clusterlist_output, copypath2)
     if dated_limit:
-        build_nam = clusters[dated_cluster]["build_name"]
-        clusterlist_output = clusters[dated_cluster]["clusterlist_output"]
+        build_nam = clus_data_all[dated_cluster]["build_name"]
+        clusterlist_output = clus_data_all[dated_cluster]["clusterlist_output"]
 
         datedpath = clusterlist_output.replace(f"{build_nam}", "{}-{}".format(build_nam, dated_limit), )
         curr_datedpath = datedpath.replace("clusters/cluster_", "clusters/current/cluster_")
@@ -1234,18 +1232,59 @@ if __name__ == '__main__':
 
     cluster_first_dates = format_cluster_first_dates(cluster_first_dates_raw)
 
-    (clus_answer,
+    (run_all_clusters,
      clus_to_run,
      print_files,
      selected_country,
      clus_check,
      print_acks) = get_instructions_from_user(cluster_data)
 
+    if print_files and run_all_clusters:
+        clear_output_files()
+
     # Input metadata file
     input_meta = "data/metadata.tsv"
     cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country',
             'gisaid_epi_isl', 'coverage', 'QC_overall_status', 'Nextclade_pango']
 
-    main(dated_limit, dated_cluster, cluster_data, bad_sqs, sw_regions, cluster_first_dates, date_exceptions,
-         country_styles, input_meta, cols,
-         clus_answer, clus_to_run, print_files, selected_country, clus_check, print_acks)
+    (clusters_output, per_variant_countries_to_plot,
+     countries_output, clus_data_all,
+     acknowledgement_by_variant,
+     all_sequences,
+     dated_cluster_strains,
+     dated_limit) = main(dated_limit, dated_cluster, cluster_data, bad_sqs,
+                         sw_regions,
+                         cluster_first_dates, date_exceptions,
+                         country_styles, input_meta, cols, cutoff_num_seqs,
+                         run_all_clusters, clus_to_run, selected_country, clus_check,
+                         print_acks)
+
+    if print_files:
+        write_summary_tables(run_all_clusters, clus_data_all)
+        write_out_strains(all_sequences, clus_data_all, dated_cluster_strains, dated_limit, dated_cluster)
+
+        print("\nWrite out clusters...\n")
+        for clus in clus_data_all:
+            clus_build_name = clus_data_all[clus]["build_name"]
+            with open(tables_path + f"{clus_build_name}_data.json", "w") as fh:
+                json.dump(clusters_output[clus], fh)
+
+        if run_all_clusters:
+            for file_prefix, plot_country_json_output in countries_output:
+                print(f"\nWrite out countries...{file_prefix}\n")
+                with open(tables_path + f"{file_prefix}_data.json", "w") as fh:
+                    json.dump(plot_country_json_output, fh)
+
+            print(f"\nWrite out plotting information...\n")
+            with open(tables_path + f"perVariant_countries_toPlot.json", "w") as fh:
+                json.dump(per_variant_countries_to_plot, fh)
+
+            # if all went well (script got to this point), and did an 'all' run, then print out an update!
+            print(f"\nWrite out update...\n")
+            update_json = {"lastUpdated": str(datetime.datetime.now().isoformat())}
+            with open(web_data_folder + f"update.json", "w") as fh:
+                json.dump(update_json, fh)
+
+    if print_acks and run_all_clusters:
+        # only do this for 'all' runs as otherwise the main file won't be updated.
+        write_acknowledgements(acknowledgement_by_variant, clus_data_all)

@@ -6,7 +6,8 @@ from typing import cast
 
 from scripts.cluster_analysis_refactored import read_metadata_file_first_run, read_and_clean_metadata_file_line_by_line, \
     split_clusters_into_categories, create_name_mappings, format_cluster_first_dates, compile_meta_clusters, \
-    check_for_meta_clusters, remove_unused_countries, collect_countries_to_plot, pass_helper_functions_over_data, main
+    check_for_meta_clusters, remove_unused_countries, collect_countries_to_plot, pass_helper_functions_over_data, main, \
+    plot_clusters
 from scripts.swiss_regions import swiss_regions
 from scripts.colors_and_countries import country_styles_all
 
@@ -334,7 +335,8 @@ def test_compile_meta_clusters():
     all_sequences, clus_data_all, acknowledgement_by_variant = compile_meta_clusters(acknowledgement_by_variant,
                                                                                      all_sequences, clus_data_all,
                                                                                      clusters, display_name_to_clus,
-                                                                                     meta_clusters, print_acknowledgments)
+                                                                                     meta_clusters,
+                                                                                     print_acknowledgments)
     assert all_sequences == {'21K.Omicron': [], 'Alpha': ['20I', '20I', '20I'], 'Omicron': []}
     assert clus_data_all == clusters
     assert acknowledgement_by_variant == {'acknowledgements': {'21K.Omicron': [],
@@ -343,14 +345,14 @@ def test_compile_meta_clusters():
 
 
 def test_remove_unused_countries():
-    clus_to_run = ['Alpha', '21K.Omicron']
     clus_data_all = {'Alpha': clusters['Alpha'] | {'cluster_counts': {'Argentina': {'2025-01-31': 3}}},
                      '21K.Omicron': clusters['21K.Omicron'] | {'cluster_counts': {'Argentina': {}}},
                      }
     assert len(clus_data_all['21K.Omicron']['cluster_counts']) == 1
     assert len(clus_data_all['Alpha']['cluster_counts']) == 1
-    clus_data_all = remove_unused_countries(clus_data_all, clus_to_run)
+    clus_data_all = remove_unused_countries(clus_data_all)
     assert len(clus_data_all['21K.Omicron']['cluster_counts']) == 0
+    assert list(clus_data_all.keys()) == ['Alpha', '21K.Omicron']
 
 
 def test_collect_countries_to_plot():
@@ -363,7 +365,6 @@ def test_collect_countries_to_plot():
 def test_pass_helper_functions_over_data():
     selected_country = ['USA', 'Switzerland']
     all_countries = ['Argentina', 'Switzerland']
-    clus_to_run = ['Alpha']
     clus_data_all = {'Alpha': clusters['Alpha'] | {
         'summary': {'Argentina': {'num_seqs': 3, 'first_seq': (2025, 5), 'last_seq': (2025, 5)}}}
                               | {'cluster_counts': {'Argentina': {(2025, 5): 3}}}}
@@ -372,9 +373,10 @@ def test_pass_helper_functions_over_data():
                      'num_seqs': 1}}}}, 'USA': {'Alpha': {'cluster_counts': {}, 'summary': {}}}}
     total_counts_countries = {'Argentina': {(2025, 5): 2}, 'Switzerland': {(2025, 5): 1}}
     total_counts_divisions = {'Switzerland': {'Region 1': {(2025, 5): 1}}, 'USA': {}}
-    clus_data_all, division_data_all = pass_helper_functions_over_data(all_countries, clus_data_all, clus_to_run,
+    clus_data_all, division_data_all = pass_helper_functions_over_data(all_countries, clus_data_all,
                                                                        division_data_all, selected_country,
                                                                        total_counts_countries, total_counts_divisions)
+    assert list(clus_data_all.keys()) == ['Alpha']
     assert clus_data_all['Alpha']['non_zero_counts'] == {}
     assert division_data_all['Switzerland']['Alpha']['non_zero_counts'] == {}
     assert division_data_all['USA']['Alpha']['non_zero_counts'] == {}
@@ -382,9 +384,8 @@ def test_pass_helper_functions_over_data():
 
 def test_main():
     # User input
-    clus_answer = 'all'
+    run_all_clusters = True
     clus_to_run = list(clusters.keys())
-    print_files = False
     selected_country = ['USA', 'Switzerland']
     clus_check = True
     print_acknowledgments = False
@@ -394,7 +395,48 @@ def test_main():
     cluster_first_dates = format_cluster_first_dates(cluster_first_dates_raw)
     dated_limit = ''
     dated_cluster = ''
+    cutoff_num_seqs = 1
 
-    main(dated_limit, dated_cluster, clusters, bad_seqs, swiss_regions, cluster_first_dates, first_date_exceptions,
-         country_styles_all, testfile_path, cols,
-         clus_answer, clus_to_run, print_files, selected_country, clus_check, print_acknowledgments)
+    (clusters_output,
+     per_variant_countries_to_plot,
+     countries_output,
+     clus_data_all,
+     acknowledgement_by_variant,
+     all_sequences,
+     dated_cluster_strains,
+     dated_limit) = main(dated_limit, dated_cluster,
+                         clusters, bad_seqs,
+                         swiss_regions,
+                         cluster_first_dates,
+                         first_date_exceptions,
+                         country_styles_all,
+                         testfile_path, cols,
+                         cutoff_num_seqs,
+                         run_all_clusters,
+                         clus_to_run,
+                         selected_country,
+                         clus_check,
+                         print_acknowledgments)
+
+    assert clusters_output == {'21K.Omicron': {}, 'Alpha': {}, 'Omicron': {}}
+    assert per_variant_countries_to_plot == {}
+    assert countries_output == {
+        'EUClusters': {'countries': {}, 'plotting_dates': {'max_date': '2019-01-01', 'min_date': '2025-02-05'}},
+        'SwissClusters': {'countries': {}, 'plotting_dates': {'max_date': '2019-01-01', 'min_date': '2025-02-05'}},
+        'USAClusters': {'countries': {}, 'plotting_dates': {'max_date': '2019-01-01', 'min_date': '2025-02-05'}}}
+    assert clus_data_all == clusters
+    assert acknowledgement_by_variant == {'acknowledgements': {'21K.Omicron': [], 'Alpha': [], 'Omicron': []}}
+    assert all_sequences == {'21K.Omicron': [], 'Alpha': ['20I', '20I', '20I'], 'Omicron': []}
+    assert dated_cluster_strains == []
+    assert dated_limit == ''
+
+
+def test_plot_clusters():
+    clus_data_all = {'Alpha': clusters['Alpha'] | {
+        'summary': {'Argentina': {'num_seqs': 3, 'first_seq': (2025, 5), 'last_seq': (2025, 5)}}}
+                              | {'cluster_counts': {'Argentina': {(2025, 5): 3}}}
+                              | {'non_zero_counts': {}}}
+    countries_to_plot = ['Argentina']
+    clusters_output, per_variant_output = plot_clusters(clus_data_all, countries_to_plot)
+    assert clusters_output == {'Alpha': {}}
+    assert per_variant_output == {}
