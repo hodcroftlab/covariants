@@ -6,8 +6,9 @@ from typing import cast
 
 from scripts.cluster_analysis_refactored import read_metadata_file_first_run, read_and_clean_metadata_file_line_by_line, \
     split_clusters_into_categories, create_name_mappings, format_cluster_first_dates, compile_meta_clusters, \
-    check_for_meta_clusters, remove_unused_countries, collect_countries_to_plot, pass_helper_functions_over_data
+    check_for_meta_clusters, remove_unused_countries, collect_countries_to_plot, pass_helper_functions_over_data, main
 from scripts.swiss_regions import swiss_regions
+from scripts.colors_and_countries import country_styles_all
 
 cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country',
         'gisaid_epi_isl', 'coverage', 'QC_overall_status', 'Nextclade_pango']
@@ -228,7 +229,7 @@ def test_read_and_clean_metadata():
     selected_country = ["USA", "Switzerland"]
     clus_to_run = ['Alpha']
     clus_check = True
-    print_acks = True
+    print_acknowledgments = True
 
     # data input
     display_name_to_clus, pango_lineage_to_clus = create_name_mappings(clus_to_run, clusters)
@@ -238,33 +239,34 @@ def test_read_and_clean_metadata():
     # organize from clusters file
     clades, all_countries, _ = read_metadata_file_first_run(testfile_path, cols)
 
-    dated_limit_formatted = ''
-    dated_cluster_strains = []
+    dated_limit = ''
+    dated_cluster = ''
 
     (cluster_inconsistencies, all_sequences, alert_dates, acknowledgement_by_variant,
      total_counts_countries,
      total_counts_divisions,
      clus_data_all,
      division_data_all,
-     rest_all) = read_and_clean_metadata_file_line_by_line(clusters,
-                                                           testfile_path,
-                                                           cols,
-                                                           6,
-                                                           selected_country,
-                                                           clades,
-                                                           display_name_to_clus,
-                                                           pango_lineage_to_clus,
-                                                           clus_check,
-                                                           dated_limit_formatted,
-                                                           dated_cluster_strains,
-                                                           print_acks,
-                                                           clus_to_run,
-                                                           bad_seqs,
-                                                           swiss_regions,
-                                                           cluster_first_dates,
-                                                           first_date_exceptions,
-                                                           all_countries
-                                                           )
+     rest_all,
+     dated_cluster_strains) = read_and_clean_metadata_file_line_by_line(clusters,
+                                                                        testfile_path,
+                                                                        cols,
+                                                                        6,
+                                                                        selected_country,
+                                                                        clades,
+                                                                        display_name_to_clus,
+                                                                        pango_lineage_to_clus,
+                                                                        clus_check,
+                                                                        dated_limit,
+                                                                        dated_cluster,
+                                                                        print_acknowledgments,
+                                                                        clus_to_run,
+                                                                        bad_seqs,
+                                                                        swiss_regions,
+                                                                        cluster_first_dates,
+                                                                        first_date_exceptions,
+                                                                        all_countries
+                                                                        )
     assert all_sequences == {'21K.Omicron': [], 'Alpha': ['20I', '20I', '20I'], 'Omicron': []}
     assert alert_dates == {}
     assert acknowledgement_by_variant == {'acknowledgements': {'Alpha': ['epistel', 'epistel', 'epistel']}}
@@ -287,7 +289,7 @@ def test_compile_meta_clusters():
     clus_to_run = ['Alpha', 'Omicron']
     selected_country = ['USA', 'Switzerland']
     clus_check = True
-    print_acks = True
+    print_acknowledgments = True
 
     # data input
     bad_seqs = {"Spain/VC-IBV-98006466/2020": "2020-03-07"}
@@ -296,8 +298,8 @@ def test_compile_meta_clusters():
     # organize from clusters file
     clades, all_countries, _ = read_metadata_file_first_run(testfile_path, cols)
 
-    dated_limit_formatted = ''
-    dated_cluster_strains = []
+    dated_limit = ''
+    dated_cluster = ''
 
     meta_clusters, clus_to_run = check_for_meta_clusters(clus_to_run, clusters)
     display_name_to_clus, pango_lineage_to_clus = create_name_mappings(clus_to_run, clusters)
@@ -307,31 +309,32 @@ def test_compile_meta_clusters():
      total_counts_divisions,
      clus_data_all,
      division_data_all,
-     rest_all) = read_and_clean_metadata_file_line_by_line(clusters,
-                                                           testfile_path,
-                                                           cols,
-                                                           6,
-                                                           selected_country,
-                                                           clades,
-                                                           display_name_to_clus,
-                                                           pango_lineage_to_clus,
-                                                           clus_check,
-                                                           dated_limit_formatted,
-                                                           dated_cluster_strains,
-                                                           print_acks,
-                                                           clus_to_run,
-                                                           bad_seqs,
-                                                           swiss_regions,
-                                                           cluster_first_dates,
-                                                           first_date_exceptions,
-                                                           all_countries
-                                                           )
+     rest_all,
+     dated_cluster_strains) = read_and_clean_metadata_file_line_by_line(clusters,
+                                                                        testfile_path,
+                                                                        cols,
+                                                                        6,
+                                                                        selected_country,
+                                                                        clades,
+                                                                        display_name_to_clus,
+                                                                        pango_lineage_to_clus,
+                                                                        clus_check,
+                                                                        dated_limit,
+                                                                        dated_cluster,
+                                                                        print_acknowledgments,
+                                                                        clus_to_run,
+                                                                        bad_seqs,
+                                                                        swiss_regions,
+                                                                        cluster_first_dates,
+                                                                        first_date_exceptions,
+                                                                        all_countries
+                                                                        )
 
     # intermediate data
     all_sequences, clus_data_all, acknowledgement_by_variant = compile_meta_clusters(acknowledgement_by_variant,
                                                                                      all_sequences, clus_data_all,
                                                                                      clusters, display_name_to_clus,
-                                                                                     meta_clusters, print_acks)
+                                                                                     meta_clusters, print_acknowledgments)
     assert all_sequences == {'21K.Omicron': [], 'Alpha': ['20I', '20I', '20I'], 'Omicron': []}
     assert clus_data_all == clusters
     assert acknowledgement_by_variant == {'acknowledgements': {'21K.Omicron': [],
@@ -375,3 +378,23 @@ def test_pass_helper_functions_over_data():
     assert clus_data_all['Alpha']['non_zero_counts'] == {}
     assert division_data_all['Switzerland']['Alpha']['non_zero_counts'] == {}
     assert division_data_all['USA']['Alpha']['non_zero_counts'] == {}
+
+
+def test_main():
+    # User input
+    clus_answer = 'all'
+    clus_to_run = list(clusters.keys())
+    print_files = False
+    selected_country = ['USA', 'Switzerland']
+    clus_check = True
+    print_acknowledgments = False
+
+    # data input
+    bad_seqs = {"Spain/VC-IBV-98006466/2020": "2020-03-07"}
+    cluster_first_dates = format_cluster_first_dates(cluster_first_dates_raw)
+    dated_limit = ''
+    dated_cluster = ''
+
+    main(dated_limit, dated_cluster, clusters, bad_seqs, swiss_regions, cluster_first_dates, first_date_exceptions,
+         country_styles_all, testfile_path, cols,
+         clus_answer, clus_to_run, print_files, selected_country, clus_check, print_acknowledgments)
