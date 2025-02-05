@@ -8,14 +8,18 @@ import { Layout } from 'src/components/Layout/Layout'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
 
 import { GREEK_ALPHABET } from 'src/names'
-import { clusterBuildNamesSelector, clusterNamesSelector, clusterOldBuildNamesSelector } from 'src/state/Clusters'
+import {
+  hasPageClusterBuildNamesSelector,
+  hasPageClusterOldBuildNamesSelector,
+  hasPageClusterNamesSelector,
+} from 'src/state/Clusters'
 
 const domain = process.env.DOMAIN ?? ''
 
 export default function DebugBadges() {
-  const clusterNames = useRecoilValue(clusterNamesSelector)
-  const clusterBuildNames = useRecoilValue(clusterBuildNamesSelector)
-  const clusterOldBuildNames = useRecoilValue(clusterOldBuildNamesSelector)
+  const clusterNames = useRecoilValue(hasPageClusterNamesSelector)
+  const clusterBuildNames = useRecoilValue(hasPageClusterBuildNamesSelector)
+  const clusterOldBuildNames = useRecoilValue(hasPageClusterOldBuildNamesSelector)
   return (
     <Layout>
       <Row className={'gx-0'}>
