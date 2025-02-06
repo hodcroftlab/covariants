@@ -42,6 +42,14 @@ export const hasPageClusterNamesSelector = selector({
   },
 })
 
+export const noPageClusterNamesSelector = selector({
+  key: 'noPageClusterNames',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return clusters.filter((cluster) => cluster.has_no_page).map((cluster) => cluster.display_name)
+  },
+})
+
 export const clusterBuildNamesMapSelector = selector({
   key: 'clusterBuildNamesMap',
   get: ({ get }) => {
