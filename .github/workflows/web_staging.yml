@@ -1,12 +1,12 @@
 # Build web app and deploy it
-name: web
+name: web-staging
 
 on:
-  push:
-    branches: [ "master", "release" ]
+  pull_request:
+    types: [ opened, synchronize ]
 
   repository_dispatch:
-    types: web
+    types: web_staging
 
   workflow_dispatch:
 
@@ -50,26 +50,11 @@ jobs:
           fetch-depth: 1
           submodules: true
 
-      - name: "[build] Setup environment (release)"
-        if: endsWith(github.ref, '/release')
-        run: |
-          echo "ENV_NAME=release" >> $GITHUB_ENV
-          echo "FULL_DOMAIN=https://covariants.org" >> $GITHUB_ENV
-          echo "PLAUSIBLE_IO_DOMAIN=covariants.org" >> $GITHUB_ENV
-
       - name: "[build] Setup environment (staging)"
-        if: endsWith(github.ref, '/staging')
         run: |
           echo "ENV_NAME=staging" >> $GITHUB_ENV
           echo "FULL_DOMAIN=https://covariants.org" >> $GITHUB_ENV
           echo "PLAUSIBLE_IO_DOMAIN=staging.covariants.org" >> $GITHUB_ENV
-
-      - name: "[build] Setup environment (master)"
-        if: endsWith(github.ref, '/master')
-        run: |
-          echo "ENV_NAME=master" >> $GITHUB_ENV
-          echo "FULL_DOMAIN=https://covariants.org" >> $GITHUB_ENV
-          echo "PLAUSIBLE_IO_DOMAIN=master.covariants.org" >> $GITHUB_ENV
 
       - name: "[build] Setup Node.js"
         uses: actions/setup-node@v4
@@ -105,26 +90,8 @@ jobs:
           cd web
           yarn prod:build
 
-      - name: "[deployment] Setup environment (release)"
-        if: endsWith(github.ref, '/release')
-        run: |
-          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
-          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
-          echo "AWS_CLOUDFRONT_DISTRIBUTION_ID=${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}" >> $GITHUB_ENV
-          echo "AWS_DEFAULT_REGION=${{ secrets.AWS_DEFAULT_REGION }}" >> $GITHUB_ENV
-          echo "AWS_S3_BUCKET=${{ secrets.AWS_S3_BUCKET }}" >> $GITHUB_ENV
-
       - name: "[deployment] Setup environment (staging)"
         if: endsWith(github.ref, '/staging')
-        run: |
-          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
-          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
-          echo "AWS_CLOUDFRONT_DISTRIBUTION_ID=${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}" >> $GITHUB_ENV
-          echo "AWS_DEFAULT_REGION=${{ secrets.AWS_DEFAULT_REGION }}" >> $GITHUB_ENV
-          echo "AWS_S3_BUCKET=${{ secrets.AWS_S3_BUCKET }}" >> $GITHUB_ENV
-
-      - name: "[deployment] Setup environment (master)"
-        if: endsWith(github.ref, '/master')
         run: |
           echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
           echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
