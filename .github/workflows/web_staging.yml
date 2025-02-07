@@ -90,6 +90,13 @@ jobs:
           cd web
           yarn prod:build
 
+      - name: "[build] Calculate acknowledgements checksums"
+        run : | 
+          touch web/checksums-ack-ci.txt
+          cd web/.build/production/web/acknowledgements
+          find . -type f -printf "%P\n" | xargs -d '\n' sha256sum | awk '{print $2, $1}' | sort > ../../../../checksums-ack-ci.txt
+          
+
       - name: "[deployment] Setup environment (staging)"
         run: |
           echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
@@ -107,9 +114,9 @@ jobs:
           popd >/dev/null
           aws --version
 
-      - name: "[deployment] Clear AWS S3 bucket: html files, web root, app bundle"
+      - name: "[deployment] Clear AWS S3 bucket: html files, web root, app bundle, keep checksums"
         run: |
-          aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "proteins/*" --exclude "acknowledgements/*"
+          aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "proteins/*" --exclude "acknowledgements/*" --exclude "checksums-ack-s3.txt"
 
       - name: "[deployment] Copy to AWS S3: app bundle"
         run: |
@@ -144,15 +151,54 @@ jobs:
             --distribution-id ${AWS_CLOUDFRONT_DISTRIBUTION_ID} \
             --paths "/*"
 
+      - name: "[deployment] Compare acknowledgements checksums"
+        run: |
+          cd web
+          if aws s3 ls s3://${AWS_S3_BUCKET}/checksums-ack-s3.txt; then
+            echo "s3 checksums found, downloading s3 checksums"
+            aws s3api get-object --bucket ${AWS_S3_BUCKET} --key checksums-ack-s3.txt checksums-ack-s3.txt
+          else
+            echo "no s3 checksums found, using ci checksums"
+            touch checksums-ack-s3.txt
+          fi
+          echo "comparing checksums"
+          comm -23 checksums-ack-ci.txt checksums-ack-s3.txt | awk '{print $1}' > outdated_acknowledgements.txt
+          echo "found outdated files"
+          cat outdated_acknowledgements.txt
+          comm -13 checksums-ack-ci.txt checksums-ack-s3.txt | awk '{print $1}' | comm -23 - outdated_acknowledgements.txt > obsolete_acknowledgements.txt
+          echo "found obsolete files"
+          cat obsolete_acknowledgements.txt
+
+      - name: "[deployment] Sync acknowledgements files"
+        run: | 
+          echo "removing obsolete files"
+          cd web
+          for file in $(cat obsolete_acknowledgements.txt); do
+              aws s3 rm s3://${AWS_S3_BUCKET}/acknowledgements/${file}
+              folder=$(dirname $file)
+              if [ -z "$(aws s3 ls s3://${AWS_S3_BUCKET}/acknowledgements/${folder}/)" ]; then
+                  echo "removing empty directory $folder"
+                  aws s3 rm s3://${AWS_S3_BUCKET}/acknowledgements/${folder}/ --recursive
+              fi
+          done
+          echo "copying updated files"
+          for file in $(cat outdated_acknowledgements.txt); do
+              aws s3 cp --cache-control "max-age=7200, public" --metadata-directive REPLACE .build/production/web/acknowledgements/${file} s3://${AWS_S3_BUCKET}/acknowledgements/${file}
+          done
+
+      - name: "[deployment] Replace acknowledgements checksums in bucket"
+        run: |
+          cd web
+          aws s3 cp checksums-ack-ci.txt s3://${AWS_S3_BUCKET}/checksums-ack-s3.txt
+
       - name: "[deployment] Clear AWS S3 bucket: large static files"
         run: |
-          aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "*" --include "proteins/" --include "acknowledgements/"
+          aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "*" --include "proteins/"
 
       - name: "[deployment] Copy to AWS S3: large static files "
         run: |
           cd web/.build/production/web
           aws s3 cp --recursive --cache-control "max-age=7200, public" --metadata-directive REPLACE "proteins/" "s3://${AWS_S3_BUCKET}/proteins/"
-          aws s3 cp --recursive --cache-control "max-age=7200, public" --metadata-directive REPLACE "acknowledgements/" "s3://${AWS_S3_BUCKET}/acknowledgements/"
 
       - name: "[deployment] Invalidate AWS Cloudfront cache: large static files"
         run: |
