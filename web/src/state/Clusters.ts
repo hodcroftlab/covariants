@@ -18,11 +18,35 @@ export const clustersAtom = atomAsync<ClusterDatum[]>({
   },
 })
 
+export const hasPageClustersSelector = selector({
+  key: 'hasPageClusters',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return clusters.filter((cluster) => !cluster.has_no_page)
+  },
+})
+
 export const clusterNamesSelector = selector({
   key: 'clusterNames',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
     return clusters.map((cluster) => cluster.display_name)
+  },
+})
+
+export const hasPageClusterNamesSelector = selector({
+  key: 'hasPageClusterNames',
+  get: ({ get }) => {
+    const clusters = get(hasPageClustersSelector)
+    return clusters.map((cluster) => cluster.display_name)
+  },
+})
+
+export const noPageClusterNamesSelector = selector({
+  key: 'noPageClusterNames',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return clusters.filter((cluster) => cluster.has_no_page).map((cluster) => cluster.display_name)
   },
 })
 
@@ -34,18 +58,18 @@ export const clusterBuildNamesMapSelector = selector({
   },
 })
 
-export const clusterBuildNamesSelector = selector({
-  key: 'clusterBuildNames',
+export const hasPageClusterBuildNamesSelector = selector({
+  key: 'hasPageClusterBuildNames',
   get: ({ get }) => {
-    const clusters = get(clustersAtom)
+    const clusters = get(hasPageClustersSelector)
     return clusters.map((cluster) => cluster.build_name)
   },
 })
 
-export const clusterOldBuildNamesSelector = selector({
-  key: 'clusterOldBuildNames',
+export const hasPageClusterOldBuildNamesSelector = selector({
+  key: 'hasPageClusterOldBuildNames',
   get: ({ get }) => {
-    const clusters = get(clustersAtom)
+    const clusters = get(hasPageClustersSelector)
     return clusters.flatMap((cluster) => cluster.old_build_names).filter(notUndefinedOrNull)
   },
 })
@@ -53,7 +77,7 @@ export const clusterOldBuildNamesSelector = selector({
 export const clusterRedirectsSelector = selector({
   key: 'clusterRedirects',
   get: ({ get }) => {
-    const clusters = get(clustersAtom)
+    const clusters = get(hasPageClustersSelector)
     return clusters.reduce((result, cluster) => {
       if (cluster.old_build_names) {
         cluster.old_build_names.forEach((oldName) => result.set(oldName, cluster.build_name))

@@ -13,7 +13,7 @@ import { AcknowledgementsError } from 'src/components/Acknowledgements/Acknowled
 
 import { Layout } from 'src/components/Layout/Layout'
 import { AcknowledgementsCard, AcknowledgementsKeysJson } from 'src/components/Acknowledgements/AcknowledgementsCard'
-import { clustersAtom } from 'src/state/Clusters'
+import { hasPageClustersSelector } from 'src/state/Clusters'
 
 export const AcknowledgementsPageContainer = styled(Container)`
   max-width: 1200px;
@@ -21,7 +21,7 @@ export const AcknowledgementsPageContainer = styled(Container)`
 `
 
 export function useQueryAcknowledgementsKeys() {
-  const clusters = useRecoilValue(clustersAtom)
+  const clusters = useRecoilValue(hasPageClustersSelector)
   return useQuery({
     queryKey: ['acknowledgements_keys'],
     queryFn: async () => {

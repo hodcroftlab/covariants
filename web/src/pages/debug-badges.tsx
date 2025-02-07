@@ -8,14 +8,20 @@ import { Layout } from 'src/components/Layout/Layout'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
 
 import { GREEK_ALPHABET } from 'src/names'
-import { clusterBuildNamesSelector, clusterNamesSelector, clusterOldBuildNamesSelector } from 'src/state/Clusters'
+import {
+  hasPageClusterBuildNamesSelector,
+  hasPageClusterOldBuildNamesSelector,
+  hasPageClusterNamesSelector,
+  noPageClusterNamesSelector,
+} from 'src/state/Clusters'
 
 const domain = process.env.DOMAIN ?? ''
 
 export default function DebugBadges() {
-  const clusterNames = useRecoilValue(clusterNamesSelector)
-  const clusterBuildNames = useRecoilValue(clusterBuildNamesSelector)
-  const clusterOldBuildNames = useRecoilValue(clusterOldBuildNamesSelector)
+  const clusterNames = useRecoilValue(hasPageClusterNamesSelector)
+  const noPageClusterNames = useRecoilValue(noPageClusterNamesSelector)
+  const clusterBuildNames = useRecoilValue(hasPageClusterBuildNamesSelector)
+  const clusterOldBuildNames = useRecoilValue(hasPageClusterOldBuildNamesSelector)
   return (
     <Layout>
       <Row className={'gx-0'}>
@@ -58,8 +64,21 @@ export default function DebugBadges() {
           </ul>
         </Col>
       </Row>
+      <Row>
+        <Col>
+          {'No Page Display names'}
+          <ul>
+            {noPageClusterNames.map((name) => (
+              <li key={name}>
+                <Var name={name} />
+              </li>
+            ))}
+          </ul>
+        </Col>
+      </Row>
       <Row className={'gx-0'}>
         <Col>
+          {'WHO labels'}
           <ul>
             {Object.keys(GREEK_ALPHABET)
               .map((name) => name[0].toUpperCase() + name.slice(1))

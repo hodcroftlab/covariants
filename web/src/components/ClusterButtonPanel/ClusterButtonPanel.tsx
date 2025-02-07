@@ -7,7 +7,7 @@ import { useRecoilValue } from 'recoil'
 import { ClusterButtonGroup } from 'src/components/ClusterButtonPanel/ClusterButtonGroup'
 import { ClusterDatum, getClustersGrouped } from 'src/io/getClusters'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { clustersAtom } from 'src/state/Clusters'
+import { hasPageClustersSelector } from 'src/state/Clusters'
 
 const ClustersRow = styled(Row)`
   display: flex;
@@ -47,8 +47,7 @@ export interface ClusterPanelProps {
 
 export function ClusterButtonPanel({ currentCluster, className }: ClusterPanelProps) {
   const { t } = useTranslationSafe()
-  const allClusters = useRecoilValue(clustersAtom)
-  const clusters = useMemo(() => allClusters.filter((cluster) => !cluster.has_no_page), [allClusters])
+  const clusters = useRecoilValue(hasPageClustersSelector)
   const clustersGrouped = useMemo(() => getClustersGrouped(clusters), [clusters])
 
   return (

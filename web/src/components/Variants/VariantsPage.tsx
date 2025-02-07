@@ -25,7 +25,7 @@ import { VariantTitle } from 'src/components/Variants/VariantTitle'
 import NextstrainIconBase from 'src/assets/images/nextstrain_logo.svg'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
-import { clusterRedirectsSelector, clustersAtom } from 'src/state/Clusters'
+import { clusterRedirectsSelector, hasPageClustersSelector } from 'src/state/Clusters'
 
 const FlexContainer = styled.div`
   display: flex;
@@ -80,7 +80,7 @@ export interface VariantsPageProps {
 
 export function VariantsPage({ clusterName: clusterNameUnsafe }: VariantsPageProps) {
   const clusterName = useCurrentClusterName(clusterNameUnsafe)
-  const clusters = useRecoilValue(clustersAtom)
+  const clusters = useRecoilValue(hasPageClustersSelector)
   const currentCluster = useMemo(
     () => clusters.find((cluster) => cluster.build_name === clusterName),
     [clusterName, clusters],

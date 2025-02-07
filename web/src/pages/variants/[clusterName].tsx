@@ -6,10 +6,9 @@ import { takeFirstMaybe } from 'src/helpers/takeFirstMaybe'
 import clustersJson from 'src/../public/data/clusters.json'
 import { notUndefinedOrNull } from 'src/helpers/notUndefined'
 
-const clusterBuildNames = clustersJson.clusters.map((cluster) => cluster.build_name)
-const clusterOldBuildNames = clustersJson.clusters
-  .flatMap((cluster) => cluster.old_build_names)
-  .filter(notUndefinedOrNull)
+const clusters = clustersJson.clusters.filter((cluster) => !cluster.has_no_page)
+const clusterBuildNames = clusters.map((cluster) => cluster.build_name)
+const clusterOldBuildNames = clusters.flatMap((cluster) => cluster.old_build_names).filter(notUndefinedOrNull)
 
 export async function getStaticProps(context: GetStaticPropsContext): Promise<GetStaticPropsResult<VariantsPageProps>> {
   const clusterName = takeFirstMaybe(get(context?.params, 'clusterName'))
