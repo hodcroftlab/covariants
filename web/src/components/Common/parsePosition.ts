@@ -11,3 +11,11 @@ export function parsePosition(raw: string | undefined | null) {
 
   return num
 }
+
+export function parsePositionOrThrow(raw: string | undefined | null) {
+  const pos = parsePosition(raw)
+  if (!pos) {
+    throw new Error(`Unable to parse mutation posiiton: '${JSON.stringify(raw)}'`)
+  }
+  return pos
+}

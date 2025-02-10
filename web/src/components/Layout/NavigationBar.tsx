@@ -80,6 +80,7 @@ function NavigationLinks() {
       '/per-variant': t('Per variant'),
       '/cases': t('Cases'),
       '/shared-mutations': t('Shared Mutations'),
+      '/defining-mutations': t('Defining Mutations'),
       '/acknowledgements': t('Acknowledgements'),
     }
     if (process.env.NODE_ENV === 'development' || DEPLOY_ENVIRONMENT === 'staging') {
