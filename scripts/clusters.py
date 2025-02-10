@@ -3820,6 +3820,37 @@ clusters = {
         },
     },
 
+    "25A": {  #LP.8.1
+       "snps": [7113,17334,22928,24872,27810],  # TTCTC
+       "snps_with_base": [], #MUST ADD VALUE WHEN TURN INTO PAGE!  
+       "cluster_data": [],
+       "nextstrain_build": False,
+       #"parent": "", 
+       "use_pango": False,
+       "has_no_page": True,
+       "type": "variant",
+       "graphing": True,
+       "important": False,
+       "country_info": [],
+       "col": "#11a90b", 
+       "display_name": "25A (Omicron)",
+       "alt_display_name": ["LP.8.1"],
+       "build_name": "25A.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "25A",
+       "pango_lineages": [
+           {"name": "LP.8.1", "url": "https://cov-lineages.org/lineage.html?lineage=LP.8.1"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/25A.Omicron",
+        "mutations": {
+            "nonsynonymous": [
+            ],
+            "synonymous": [
+            ],
+        },
+    },
+
     # variant  -- part of 'Indian' in media - B.1.617.1
     "Kappa": {
         "snps": [17523, 23604, 22917],  # ORF1b:1352, S:681, 452
