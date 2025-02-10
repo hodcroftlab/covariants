@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 2878434,
+    "total": 2897774,
     "counts": [
       {
         "mut": "S:R346K",
-        "count": 1258332
+        "count": 1257949
       },
       {
         "mut": "S:N460K",
-        "count": 642768
+        "count": 665768
       },
       {
         "mut": "S:N450D",
-        "count": 638846
+        "count": 661806
       },
       {
         "mut": "S:L452W",
-        "count": 637715
+        "count": 660663
       },
       {
         "mut": "S:V445H",
-        "count": 629169
+        "count": 649455
       },
       {
         "mut": "S:R408S",
-        "count": 625605
+        "count": 647456
       },
       {
         "mut": "S:L455S",
-        "count": 612151
+        "count": 635113
       },
       {
         "mut": "S:V213G",
-        "count": 582984
+        "count": 604230
       },
       {
         "mut": "S:S371F",
-        "count": 582531
+        "count": 603416
       },
       {
         "mut": "S:T376A",
-        "count": 576332
+        "count": 597110
       }
     ]
   },
   "others": {
-    "total": 2878434,
+    "total": 2897774,
     "counts": [
       {
         "mut": "M:D3H",
-        "count": 534557
+        "count": 554414
       },
       {
         "mut": "ORF1b:T2163I",
-        "count": 533481
+        "count": 553013
       },
       {
         "mut": "ORF6:D61L",
-        "count": 531802
+        "count": 551136
       },
       {
         "mut": "ORF3a:T223I",
-        "count": 530164
+        "count": 549465
       },
       {
         "mut": "ORF1b:R1315C",
-        "count": 527951
+        "count": 547273
       },
       {
         "mut": "ORF1a:L3027F",
-        "count": 526823
+        "count": 546250
       },
       {
         "mut": "N:S413R",
-        "count": 526213
+        "count": 545517
       },
       {
         "mut": "ORF1a:T4175I",
-        "count": 522748
+        "count": 542204
       },
       {
         "mut": "M:A104V",
-        "count": 520850
+        "count": 540278
       },
       {
         "mut": "ORF1a:T3090I",
-        "count": 519826
+        "count": 539152
       }
     ]
   }
