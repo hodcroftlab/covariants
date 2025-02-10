@@ -311,9 +311,25 @@ export function VariantLinkBadge({ name, href, prefix }: VariantLinkBadgeProps) 
 
   return (
     <LinkUnstyled href={url} icon={null}>
-      <MutationBadge prefix={prefix} mutation={mutationObj} colors={AMINOACID_COLORS} />
+      <VariantBadge prefix={prefix} name={name} />
     </LinkUnstyled>
   )
+}
+
+export interface VariantBadgeProps {
+  name: string | Mutation
+  prefix?: string
+}
+
+export function VariantBadge({ name, prefix }: VariantBadgeProps) {
+  const mutationObj = useMemo(() => {
+    const { mutationObj } = variantToObjectAndString(name)
+    if (!mutationObj) {
+      return { parent: mutationObj }
+    }
+    return mutationObj
+  }, [name])
+  return <MutationBadge prefix={prefix} mutation={mutationObj} colors={AMINOACID_COLORS} />
 }
 
 export interface LineageLinkBadgeProps {
@@ -324,38 +340,50 @@ export interface LineageLinkBadgeProps {
 }
 
 export function LineageLinkBadge({ name, href, prefix, report }: LineageLinkBadgeProps) {
-  const { t } = useTranslationSafe()
-
   const url = useMemo(
     // prettier-ignore
-    () => (href ?? (report ? `https://cov-lineages.org/global_report_${name}.html` : "")),
+    () => (href ?? (report ? `https://cov-lineages.org/global_report_${name}.html` : '')),
     [href, report, name],
   )
+
+  return (
+    <LinkUnstyled href={url}>
+      <LineageBadge name={name} prefix={prefix} />
+    </LinkUnstyled>
+  )
+}
+
+export interface LineageBadgeProps {
+  name: string
+  prefix?: string
+}
+
+export function LineageBadge({ name, prefix }: LineageBadgeProps) {
+  const { t } = useTranslationSafe()
+
   const tooltip = useMemo(() => {
     const text = t('Pango Lineage')
     return `${text} '${name}'`
   }, [name, t])
 
   return (
-    <LinkUnstyled href={url}>
-      <MutationBadgeBox title={tooltip}>
-        <MutationWrapper>
-          {prefix && <PrefixText>{prefix}</PrefixText>}
-          <ColoredText
-            $color={colorHash(name, {
-              reverse: false,
-              prefix: '',
-              suffix: '',
-              lightness: 0.75,
-              hue: undefined,
-              saturation: undefined,
-            })}
-          >
-            {name}
-          </ColoredText>
-        </MutationWrapper>
-      </MutationBadgeBox>
-    </LinkUnstyled>
+    <MutationBadgeBox title={tooltip}>
+      <MutationWrapper>
+        {prefix && <PrefixText>{prefix}</PrefixText>}
+        <ColoredText
+          $color={colorHash(name, {
+            reverse: false,
+            prefix: '',
+            suffix: '',
+            lightness: 0.75,
+            hue: undefined,
+            saturation: undefined,
+          })}
+        >
+          {name}
+        </ColoredText>
+      </MutationWrapper>
+    </MutationBadgeBox>
   )
 }
 
