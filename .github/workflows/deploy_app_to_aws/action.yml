@@ -1,0 +1,51 @@
+name: "deploy app to aws"
+
+runs:
+  using: "composite"
+  steps:
+    - name: "[deployment] Clear AWS S3 bucket: html files, web root, app bundle, keep checksums"
+      run: |
+        echo "[deployment] Clear AWS S3 bucket: html files, web root, app bundle, keep checksums"
+        aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "proteins/*" --exclude "acknowledgements/*" --exclude "checksums-ack-s3.txt"
+      shell: bash
+
+    - name: "[deployment] Copy to AWS S3: app bundle"
+      run: |
+        echo "[deployment] Copy to AWS S3: app bundle"
+        cd web/.build/production/web
+        aws s3 cp --recursive --cache-control "max-age=2592000, public" "_next/" "s3://${AWS_S3_BUCKET}/_next/"
+      shell: bash
+
+    - name: "[deployment] Copy to AWS S3: web root"
+      run: |
+        echo "[deployment] Copy to AWS S3: web root"
+        cd web/.build/production/web
+        aws s3 cp --recursive \
+          --exclude "_next/*" \
+          --exclude "*.html" \
+          --exclude "acknowledgements/*" \
+          --exclude "proteins/*" \
+        "./" "s3://${AWS_S3_BUCKET}/"
+      shell: bash
+
+    - name: "[deployment] Copy to AWS S3: html files"
+      run: |
+        echo "[deployment] Copy to AWS S3: html files"
+        cd web/.build/production/web
+        find * -type f -name "*.html" -print0 | xargs -0 -P4 -n1 -I '{}' -- bash -c '\
+          file={}; \
+          aws s3 cp \
+            --content-type "text/html" \
+            --cache-control "no-cache" \
+            --metadata-directive REPLACE \
+              $file \
+              s3://${AWS_S3_BUCKET}/${file%.html}'
+      shell: bash
+
+    - name: "[deployment] Invalidate AWS Cloudfront cache: html files, web root, app bundle"
+      run: |
+        echo "[deployment] Invalidate AWS Cloudfront cache: html files, web root, app bundle"
+        aws cloudfront create-invalidation \
+          --distribution-id ${AWS_CLOUDFRONT_DISTRIBUTION_ID} \
+          --paths "/*"
+      shell: bash

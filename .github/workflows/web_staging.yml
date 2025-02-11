@@ -37,11 +37,8 @@ jobs:
       - name: "[init] Check disk space"
         run: |
           echo ""
-
           df -Th | awk 'NR == 1; NR > 1 {print $0 | "sort -n"}'
-
           echo ""
-
           lsblk -o MOUNTPOINT,FSTYPE,FSSIZE,FSAVAIL,FSUSE%,TYPE,NAME,ROTA,SIZE,MODEL,UUID
 
       - name: "[init] Checkout code"
@@ -50,52 +47,10 @@ jobs:
           fetch-depth: 1
           submodules: true
 
-      - name: "[build] Setup environment (staging)"
-        run: |
-          echo "ENV_NAME=staging" >> $GITHUB_ENV
-          echo "FULL_DOMAIN=https://covariants.org" >> $GITHUB_ENV
-          echo "PLAUSIBLE_IO_DOMAIN=staging.covariants.org" >> $GITHUB_ENV
-
-      - name: "[build] Setup Node.js"
-        uses: actions/setup-node@v4
+      - name: "[build] Run common build actions"
+        uses: ./.github/workflows/common_build_steps
         with:
-          node-version-file: ".nvmrc"
-          cache: "yarn"
-          cache-dependency-path: "web/yarn.lock"
-
-      - name: "[build] Setup cache for web app"
-        uses: actions/cache@v4
-        with:
-          path: |
-            web/.cache
-            web/.build/production/tmp/cache
-          key: cache-v1-web-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            cache-v1-web-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-            cache-v1-web-${{ runner.os }}-
-
-      - name: "[build] Prepare .env file"
-        run: |
-          cd web/
-          cp .env.example .env
-          sed -i -e "s|FULL_DOMAIN=autodetect|FULL_DOMAIN=${FULL_DOMAIN}|g" .env
-
-      - name: "[build] Install Node.js packages"
-        run: |
-          cd web
-          yarn install --frozen-lockfile
-
-      - name: "[build] Build web application"
-        run: |
-          cd web
-          yarn prod:build
-
-      - name: "[build] Calculate acknowledgements checksums"
-        run : | 
-          touch web/checksums-ack-ci.txt
-          cd web/.build/production/web/acknowledgements
-          find . -type f -printf "%P\n" | xargs -d '\n' sha256sum | awk '{print $2, $1}' | sort > ../../../../checksums-ack-ci.txt
-          
+          deploy_environment: "staging"
 
       - name: "[deployment] Setup environment (staging)"
         run: |
@@ -114,94 +69,11 @@ jobs:
           popd >/dev/null
           aws --version
 
-      - name: "[deployment] Clear AWS S3 bucket: html files, web root, app bundle, keep checksums"
-        run: |
-          aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "proteins/*" --exclude "acknowledgements/*" --exclude "checksums-ack-s3.txt"
+      - name: "[deployment] Deploy app to aws"
+        uses: ./.github/workflows/deploy_app_to_aws
 
-      - name: "[deployment] Copy to AWS S3: app bundle"
-        run: |
-          cd web/.build/production/web
-          aws s3 cp --recursive --cache-control "max-age=2592000, public" "_next/" "s3://${AWS_S3_BUCKET}/_next/"
+      - name: "[deployment] Sync acknowledgements (large static files) based on checksums"
+        uses: ./.github/workflows/sync_acknowledgements_checksum_based
 
-      - name: "[deployment] Copy to AWS S3: web root"
-        run: |
-          cd web/.build/production/web
-          aws s3 cp --recursive \
-            --exclude "_next/*" \
-            --exclude "*.html" \
-            --exclude "acknowledgements/*" \
-            --exclude "proteins/*" \
-          "./" "s3://${AWS_S3_BUCKET}/"
-
-      - name: "[deployment] Copy to AWS S3: html files"
-        run: |
-          cd web/.build/production/web
-          find * -type f -name "*.html" -print0 | xargs -0 -P4 -n1 -I '{}' -- bash -c '\
-            file={}; \
-            aws s3 cp \
-              --content-type "text/html" \
-              --cache-control "no-cache" \
-              --metadata-directive REPLACE \
-                $file \
-                s3://${AWS_S3_BUCKET}/${file%.html}'
-
-      - name: "[deployment] Invalidate AWS Cloudfront cache: html files, web root, app bundle"
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id ${AWS_CLOUDFRONT_DISTRIBUTION_ID} \
-            --paths "/*"
-
-      - name: "[deployment] Compare acknowledgements checksums"
-        run: |
-          cd web
-          if aws s3 ls s3://${AWS_S3_BUCKET}/checksums-ack-s3.txt; then
-            echo "s3 checksums found, downloading s3 checksums"
-            aws s3api get-object --bucket ${AWS_S3_BUCKET} --key checksums-ack-s3.txt checksums-ack-s3.txt
-          else
-            echo "No s3 checksums found, using ci checksums"
-            touch checksums-ack-s3.txt
-          fi
-          echo "Comparing checksums"
-          comm -23 checksums-ack-ci.txt checksums-ack-s3.txt | awk '{print $1}' > outdated_acknowledgements.txt
-          echo "Listing outdated files:"
-          cat outdated_acknowledgements.txt
-          comm -13 checksums-ack-ci.txt checksums-ack-s3.txt | awk '{print $1}' | comm -23 - outdated_acknowledgements.txt > obsolete_acknowledgements.txt
-          echo "Listing obsolete files:"
-          cat obsolete_acknowledgements.txt
-
-      - name: "[deployment] Sync acknowledgements files"
-        run: | 
-          echo "Removing obsolete files"
-          cd web
-          for file in $(cat obsolete_acknowledgements.txt); do
-              aws s3 rm s3://${AWS_S3_BUCKET}/acknowledgements/${file}
-              folder=$(dirname $file)
-              if [ -z "$(aws s3 ls s3://${AWS_S3_BUCKET}/acknowledgements/${folder}/)" ]; then
-                  echo "removing empty directory $folder"
-                  aws s3 rm s3://${AWS_S3_BUCKET}/acknowledgements/${folder}/ --recursive
-              fi
-          done
-          echo "Copying updated files"
-          for file in $(cat outdated_acknowledgements.txt); do
-              aws s3 cp --cache-control "max-age=7200, public" --metadata-directive REPLACE .build/production/web/acknowledgements/${file} s3://${AWS_S3_BUCKET}/acknowledgements/${file}
-          done
-
-      - name: "[deployment] Replace acknowledgements checksums in bucket"
-        run: |
-          cd web
-          aws s3 cp checksums-ack-ci.txt s3://${AWS_S3_BUCKET}/checksums-ack-s3.txt
-
-      - name: "[deployment] Clear AWS S3 bucket: large static files"
-        run: |
-          aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "*" --include "proteins/"
-
-      - name: "[deployment] Copy to AWS S3: large static files "
-        run: |
-          cd web/.build/production/web
-          aws s3 cp --recursive --cache-control "max-age=7200, public" --metadata-directive REPLACE "proteins/" "s3://${AWS_S3_BUCKET}/proteins/"
-
-      - name: "[deployment] Invalidate AWS Cloudfront cache: large static files"
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id ${AWS_CLOUDFRONT_DISTRIBUTION_ID} \
-            --paths "/acknowledgements/*" "/proteins/*"
+      - name: "[deployment] Sync proteins (large static files)"
+        uses: ./.github/workflows/sync_proteins

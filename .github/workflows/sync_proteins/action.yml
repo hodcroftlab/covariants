@@ -1,0 +1,25 @@
+name: "sync proteins"
+
+runs:
+  using: "composite"
+  steps:
+    - name: "[deployment] Clear AWS S3 bucket: proteins"
+      run: |
+        echo "[deployment] Clear AWS S3 bucket: proteins"
+        aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "*" --include "proteins/"
+      shell: bash
+
+    - name: "[deployment] Copy to AWS S3: proteins"
+      run: |
+        echo "[deployment] Copy to AWS S3: proteins"
+        cd web/.build/production/web
+        aws s3 cp --recursive --cache-control "max-age=7200, public" --metadata-directive REPLACE "proteins/" "s3://${AWS_S3_BUCKET}/proteins/"
+      shell: bash
+
+    - name: "[deployment] Invalidate AWS Cloudfront cache: proteins"
+      run: |
+        echo "[deployment] Invalidate AWS Cloudfront cache: proteins"
+        aws cloudfront create-invalidation \
+          --distribution-id ${AWS_CLOUDFRONT_DISTRIBUTION_ID} \
+          --paths "/proteins/*"
+      shell: bash
