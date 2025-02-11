@@ -158,20 +158,20 @@ jobs:
             echo "s3 checksums found, downloading s3 checksums"
             aws s3api get-object --bucket ${AWS_S3_BUCKET} --key checksums-ack-s3.txt checksums-ack-s3.txt
           else
-            echo "no s3 checksums found, using ci checksums"
+            echo "No s3 checksums found, using ci checksums"
             touch checksums-ack-s3.txt
           fi
-          echo "comparing checksums"
+          echo "Comparing checksums"
           comm -23 checksums-ack-ci.txt checksums-ack-s3.txt | awk '{print $1}' > outdated_acknowledgements.txt
-          echo "found outdated files"
+          echo "Listing outdated files:"
           cat outdated_acknowledgements.txt
           comm -13 checksums-ack-ci.txt checksums-ack-s3.txt | awk '{print $1}' | comm -23 - outdated_acknowledgements.txt > obsolete_acknowledgements.txt
-          echo "found obsolete files"
+          echo "Listing obsolete files:"
           cat obsolete_acknowledgements.txt
 
       - name: "[deployment] Sync acknowledgements files"
         run: | 
-          echo "removing obsolete files"
+          echo "Removing obsolete files"
           cd web
           for file in $(cat obsolete_acknowledgements.txt); do
               aws s3 rm s3://${AWS_S3_BUCKET}/acknowledgements/${file}
@@ -181,7 +181,7 @@ jobs:
                   aws s3 rm s3://${AWS_S3_BUCKET}/acknowledgements/${folder}/ --recursive
               fi
           done
-          echo "copying updated files"
+          echo "Copying updated files"
           for file in $(cat outdated_acknowledgements.txt); do
               aws s3 cp --cache-control "max-age=7200, public" --metadata-directive REPLACE .build/production/web/acknowledgements/${file} s3://${AWS_S3_BUCKET}/acknowledgements/${file}
           done
