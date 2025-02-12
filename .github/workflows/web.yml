@@ -98,17 +98,7 @@ jobs:
           cd web
           yarn prod:build
 
-      - name: "[deployment] Setup environment (release)"
-        if: endsWith(github.ref, '/release')
-        run: |
-          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
-          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
-          echo "AWS_CLOUDFRONT_DISTRIBUTION_ID=${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}" >> $GITHUB_ENV
-          echo "AWS_DEFAULT_REGION=${{ secrets.AWS_DEFAULT_REGION }}" >> $GITHUB_ENV
-          echo "AWS_S3_BUCKET=${{ secrets.AWS_S3_BUCKET }}" >> $GITHUB_ENV
-
-      - name: "[deployment] Setup environment (master)"
-        if: endsWith(github.ref, '/master')
+      - name: "[deployment] Setup environment"
         run: |
           echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
           echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
@@ -125,55 +115,11 @@ jobs:
           popd >/dev/null
           aws --version
 
-      - name: "[deployment] Clear AWS S3 bucket: html files, web root, app bundle"
-        run: |
-          aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "proteins/*" --exclude "acknowledgements/*"
+      - name: "[deployment] Deploy app to aws"
+        uses: ./.github/workflows/deploy_app_to_aws
 
-      - name: "[deployment] Copy to AWS S3: app bundle"
-        run: |
-          cd web/.build/production/web
-          aws s3 cp --recursive --cache-control "max-age=2592000, public" "_next/" "s3://${AWS_S3_BUCKET}/_next/"
+      - name: "[deployment] Sync acknowledgements (large static files)"
+        uses: ./.github/workflows/sync_acknowledgements
 
-      - name: "[deployment] Copy to AWS S3: web root"
-        run: |
-          cd web/.build/production/web
-          aws s3 cp --recursive \
-            --exclude "_next/*" \
-            --exclude "*.html" \
-            --exclude "acknowledgements/*" \
-            --exclude "proteins/*" \
-          "./" "s3://${AWS_S3_BUCKET}/"
-
-      - name: "[deployment] Copy to AWS S3: html files"
-        run: |
-          cd web/.build/production/web
-          find * -type f -name "*.html" -print0 | xargs -0 -P4 -n1 -I '{}' -- bash -c '\
-            file={}; \
-            aws s3 cp \
-              --content-type "text/html" \
-              --cache-control "no-cache" \
-              --metadata-directive REPLACE \
-                $file \
-                s3://${AWS_S3_BUCKET}/${file%.html}'
-
-      - name: "[deployment] Invalidate AWS Cloudfront cache: html files, web root, app bundle"
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id ${AWS_CLOUDFRONT_DISTRIBUTION_ID} \
-            --paths "/*"
-
-      - name: "[deployment] Clear AWS S3 bucket: large static files"
-        run: |
-          aws s3 rm s3://${AWS_S3_BUCKET} --recursive --exclude "*" --include "proteins/" --include "acknowledgements/"
-
-      - name: "[deployment] Copy to AWS S3: large static files "
-        run: |
-          cd web/.build/production/web
-          aws s3 cp --recursive --cache-control "max-age=7200, public" --metadata-directive REPLACE "proteins/" "s3://${AWS_S3_BUCKET}/proteins/"
-          aws s3 cp --recursive --cache-control "max-age=7200, public" --metadata-directive REPLACE "acknowledgements/" "s3://${AWS_S3_BUCKET}/acknowledgements/"
-
-      - name: "[deployment] Invalidate AWS Cloudfront cache: large static files"
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id ${AWS_CLOUDFRONT_DISTRIBUTION_ID} \
-            --paths "/acknowledgements/*" "/proteins/*"
+      - name: "[deployment] Sync proteins (large static files)"
+        uses: ./.github/workflows/sync_proteins
