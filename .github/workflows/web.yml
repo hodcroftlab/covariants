@@ -50,53 +50,10 @@ jobs:
           fetch-depth: 1
           submodules: true
 
-      - name: "[build] Setup environment (release)"
-        if: endsWith(github.ref, '/release')
-        run: |
-          echo "ENV_NAME=release" >> $GITHUB_ENV
-          echo "FULL_DOMAIN=https://covariants.org" >> $GITHUB_ENV
-          echo "PLAUSIBLE_IO_DOMAIN=covariants.org" >> $GITHUB_ENV
-
-      - name: "[build] Setup environment (master)"
-        if: endsWith(github.ref, '/master')
-        run: |
-          echo "ENV_NAME=master" >> $GITHUB_ENV
-          echo "FULL_DOMAIN=https://covariants.org" >> $GITHUB_ENV
-          echo "PLAUSIBLE_IO_DOMAIN=master.covariants.org" >> $GITHUB_ENV
-
-      - name: "[build] Setup Node.js"
-        uses: actions/setup-node@v4
+      - name: "[build] Run common build actions"
+        uses: ./.github/workflows/common_build_steps
         with:
-          node-version-file: ".nvmrc"
-          cache: "yarn"
-          cache-dependency-path: "web/yarn.lock"
-
-      - name: "[build] Setup cache for web app"
-        uses: actions/cache@v4
-        with:
-          path: |
-            web/.cache
-            web/.build/production/tmp/cache
-          key: cache-v1-web-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            cache-v1-web-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-            cache-v1-web-${{ runner.os }}-
-
-      - name: "[build] Prepare .env file"
-        run: |
-          cd web/
-          cp .env.example .env
-          sed -i -e "s|FULL_DOMAIN=autodetect|FULL_DOMAIN=${FULL_DOMAIN}|g" .env
-
-      - name: "[build] Install Node.js packages"
-        run: |
-          cd web
-          yarn install --frozen-lockfile
-
-      - name: "[build] Build web application"
-        run: |
-          cd web
-          yarn prod:build
+          deploy_environment: ${{ endsWith(github.ref, '/master') && 'master' || 'release' }}
 
       - name: "[deployment] Setup environment"
         run: |
