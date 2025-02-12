@@ -1,4 +1,4 @@
-name: "common build steps"
+name: "build app"
 inputs:
   deploy_environment:
     description: "deploy environment"
