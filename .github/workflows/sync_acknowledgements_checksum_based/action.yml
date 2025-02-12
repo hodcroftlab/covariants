@@ -1,0 +1,66 @@
+name: "sync acknowledgements based on checksums"
+
+runs:
+  using: "composite"
+  steps:
+    - name: "[deployment] Calculate acknowledgements checksums"
+      run: |
+        echo "[deployment] Calculate acknowledgements checksums"
+        touch web/checksums-ack-ci.txt
+        cd web/.build/production/web/acknowledgements
+        find . -type f -printf "%P\n" | xargs -d '\n' sha256sum | awk '{print $2, $1}' | sort > ../../../../checksums-ack-ci.txt
+      shell: bash
+
+    - name: "[deployment] Compare acknowledgements checksums"
+      run: |
+        echo "[deployment] Compare acknowledgements checksums"
+        cd web
+        if aws s3 ls s3://${AWS_S3_BUCKET}/checksums-ack-s3.txt; then
+          echo "s3 checksums found, downloading s3 checksums"
+          aws s3api get-object --bucket ${AWS_S3_BUCKET} --key checksums-ack-s3.txt checksums-ack-s3.txt
+        else
+          echo "No s3 checksums found, using ci checksums"
+          touch checksums-ack-s3.txt
+        fi
+        echo "Comparing checksums"
+        comm -23 checksums-ack-ci.txt checksums-ack-s3.txt | awk '{print $1}' > outdated_acknowledgements.txt
+        echo "Listing outdated files:"
+        cat outdated_acknowledgements.txt
+        comm -13 checksums-ack-ci.txt checksums-ack-s3.txt | awk '{print $1}' | comm -23 - outdated_acknowledgements.txt > obsolete_acknowledgements.txt
+        echo "Listing obsolete files:"
+        cat obsolete_acknowledgements.txt
+      shell: bash
+
+    - name: "[deployment] Sync acknowledgements files"
+      run: |
+        echo "[deployment] Sync acknowledgements files"
+        echo "Removing obsolete files"
+        cd web
+        for file in $(cat obsolete_acknowledgements.txt); do
+            aws s3 rm s3://${AWS_S3_BUCKET}/acknowledgements/${file}
+            folder=$(dirname $file)
+            if [ -z "$(aws s3 ls s3://${AWS_S3_BUCKET}/acknowledgements/${folder}/)" ]; then
+                echo "removing empty directory $folder"
+                aws s3 rm s3://${AWS_S3_BUCKET}/acknowledgements/${folder}/ --recursive
+            fi
+        done
+        echo "Copying updated files"
+        for file in $(cat outdated_acknowledgements.txt); do
+            aws s3 cp --cache-control "max-age=7200, public" --metadata-directive REPLACE .build/production/web/acknowledgements/${file} s3://${AWS_S3_BUCKET}/acknowledgements/${file}
+        done
+      shell: bash
+
+    - name: "[deployment] Replace acknowledgements checksums in bucket"
+      run: |
+        echo "[deployment] Replace acknowledgements checksums in bucket"
+        cd web
+        aws s3 cp checksums-ack-ci.txt s3://${AWS_S3_BUCKET}/checksums-ack-s3.txt
+      shell: bash
+
+    - name: "[deployment] Invalidate AWS Cloudfront cache: acknowledgements"
+      run: |
+        echo "[deployment] Invalidate AWS Cloudfront cache: acknowledgements"
+        aws cloudfront create-invalidation \
+          --distribution-id ${AWS_CLOUDFRONT_DISTRIBUTION_ID} \
+          --paths "/acknowledgements/*"
+      shell: bash
