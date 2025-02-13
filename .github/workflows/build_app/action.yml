@@ -16,13 +16,6 @@ runs:
         echo "PLAUSIBLE_IO_DOMAIN=${SUBDOMAIN}covariants.org" >> $GITHUB_ENV
       shell: bash
 
-    - name: "[build] Setup Node.js"
-      uses: actions/setup-node@v4
-      with:
-        node-version-file: ".nvmrc"
-        cache: "yarn"
-        cache-dependency-path: "web/yarn.lock"
-
     - name: "[build] Setup cache for web app"
       uses: actions/cache@v4
       with:
@@ -40,13 +33,6 @@ runs:
         cd web/
         cp .env.example .env
         sed -i -e "s|FULL_DOMAIN=autodetect|FULL_DOMAIN=${FULL_DOMAIN}|g" .env
-      shell: bash
-
-    - name: "[build] Install Node.js packages"
-      run: |
-        echo "[build] Install Node.js packages"
-        cd web
-        yarn install --frozen-lockfile
       shell: bash
 
     - name: "[build] Build web application"
