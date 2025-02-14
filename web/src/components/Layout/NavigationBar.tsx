@@ -21,7 +21,7 @@ import BrandLogoLargeBase from 'src/assets/images/logo_text_right.svg'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { Link } from 'src/components/Link/Link'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
-import { TWITTER_USERNAME_RAW, URL_GITHUB } from 'src/constants'
+import { DEPLOY_ENVIRONMENT, TWITTER_USERNAME_RAW, URL_GITHUB } from 'src/constants'
 import { ChristmasToggle } from 'src/components/Common/Christmas'
 import { LanguageSwitcher } from 'src/components/Layout/LanguageSwitcher'
 
@@ -136,7 +136,7 @@ export function NavigationBar() {
       '/shared-mutations': t('Shared Mutations'),
       '/acknowledgements': t('Acknowledgements'),
     }
-    if (process.env.NODE_ENV === 'development' || process.env.DOMAIN?.includes('vercel')) {
+    if (process.env.NODE_ENV === 'development' || DEPLOY_ENVIRONMENT === 'staging') {
       navLinksLeft = { ...navLinksLeft, '/debug-badges': 'Debug badges' }
     }
     return navLinksLeft

@@ -41,6 +41,7 @@ const {
   // ENABLE_STYLELINT,
   DOMAIN,
   DOMAIN_STRIPPED,
+  DEPLOY_ENVIRONMENT,
   WATCH_POLL,
 } = getEnvVars()
 
@@ -53,6 +54,7 @@ const clientEnv = {
   PACKAGE_VERSION: pkg.version ?? '',
   COMMIT_HASH: getGitCommitHash(),
   DOMAIN,
+  DEPLOY_ENVIRONMENT,
   DOMAIN_STRIPPED,
 }
 

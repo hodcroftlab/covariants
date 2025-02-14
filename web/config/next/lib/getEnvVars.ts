@@ -1,4 +1,4 @@
-import { getBoolOrThrow } from '../../../lib/getenv'
+import { getBoolOrThrow, getEnvOrThrow } from '../../../lib/getenv'
 import { getDomain } from '../../../lib/getDomain'
 
 export function getEnvVars() {
@@ -8,6 +8,7 @@ export function getEnvVars() {
   const PRODUCTION = NODE_ENV === 'production'
   const DOMAIN = getDomain()
   const DOMAIN_STRIPPED = DOMAIN.replace('https://', '').replace('http://', '')
+  const DEPLOY_ENVIRONMENT = getEnvOrThrow('DEPLOY_ENVIRONMENT')
   const WATCH_POLL = getBoolOrThrow('WATCH_POLL')
 
   const common = {
@@ -17,6 +18,7 @@ export function getEnvVars() {
     PRODUCTION,
     DOMAIN,
     DOMAIN_STRIPPED,
+    DEPLOY_ENVIRONMENT,
     WATCH_POLL,
   }
 
