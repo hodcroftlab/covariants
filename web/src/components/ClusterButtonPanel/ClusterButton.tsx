@@ -2,8 +2,10 @@
 import React from 'react'
 
 import { styled } from 'styled-components'
+import { useRecoilValue } from 'recoil'
 import { Link } from '../Link/Link'
 import { ClusterDatum } from 'src/io/getClusters'
+import { enablePangolinAtom } from 'src/state/Nomenclature'
 
 const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: string }>`
   display: flex;
@@ -83,11 +85,14 @@ export interface ClusterButtonProps {
 }
 
 export function ClusterButton({ cluster, isCurrent }: ClusterButtonProps) {
-  const { display_name, col, build_name } = cluster
+  const { display_name, alt_display_name, col, build_name } = cluster
+  const enablePangolin = useRecoilValue(enablePangolinAtom)
 
   return (
     <ClusterButtonComponent href={`/variants/${build_name}`} $isCurrent={isCurrent} $color={col}>
-      <ClusterTitle $isCurrent={isCurrent}>{display_name}</ClusterTitle>
+      <ClusterTitle $isCurrent={isCurrent}>
+        {enablePangolin ? (alt_display_name ?? display_name) : display_name}
+      </ClusterTitle>
     </ClusterButtonComponent>
   )
 }
