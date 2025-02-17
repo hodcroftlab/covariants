@@ -8,7 +8,6 @@
     "dev": "nodemon --config config/nodemon/dev.json",
     "dev:start": "yarn install && yarn next dev || cd .",
     "prod:build": "yarn next build && yarn next:export",
-    "prod:build:vercel": "cp .env.vercel .env && yarn install && yarn prod:build && cp .next/routes-manifest.json .build/production/web/",
     "prod:build:profile": "PROFILE=1 yarn next build --profile && yarn next:export",
     "next:export": "cp .next/robots.txt .build/production/web/robots.txt",
     "prod:start": "yarn prod:build && yarn prod:serve || cd .",

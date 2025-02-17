@@ -25,7 +25,6 @@ runs:
         cp .env.example .env
         sed -i -e "s|FULL_DOMAIN=autodetect|FULL_DOMAIN=https://covariants.org|g" .env
         sed -i -e "s|DEPLOY_ENVIRONMENT=|DEPLOY_ENVIRONMENT=${{inputs.deploy_environment}}|g" .env
-        cat .env
       shell: bash
 
     - name: "[build] Build web application"
