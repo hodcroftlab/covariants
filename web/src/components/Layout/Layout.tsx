@@ -3,6 +3,7 @@ import { styled } from 'styled-components'
 import { Container as ContainerBase, Row, Col } from 'reactstrap'
 import Image from 'next/image'
 import { ErrorBoundary } from 'react-error-boundary'
+import { useRecoilState } from 'recoil'
 import { LastUpdated } from '../Common/LastUpdated'
 import { NavigationBar } from './NavigationBar'
 import { FooterContent } from './Footer'
@@ -12,6 +13,8 @@ import { ChangelogButton } from 'src/components/Common/ChangelogButton'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { FetchError } from 'src/components/Error/FetchError'
+import { ToggleTwoLabels } from 'src/components/Common/ToggleTwoLabels'
+import { enablePangolinAtom } from 'src/state/Nomenclature'
 
 const Container = styled(ContainerBase)`
   min-height: 100%;
@@ -65,6 +68,21 @@ export interface LayoutProps {
   wide?: boolean
 }
 
+function NomenclatureSwitch() {
+  const [enablePangolin, setEnablePangolin] = useRecoilState(enablePangolinAtom)
+
+  return (
+    <ToggleTwoLabels
+      identifier="nomenclature-switch"
+      title="Switch nomenclature"
+      checked={enablePangolin}
+      onCheckedChanged={setEnablePangolin}
+      labelLeft="Pangolin"
+      labelRight="Nextstrain"
+    />
+  )
+}
+
 export function Layout({ children }: PropsWithChildren<LayoutProps>) {
   const { t } = useTranslationSafe()
 
@@ -86,13 +104,17 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
             </LinkExternal>
           </GisaidText>
 
-          <ChangelogButton className="d-flex ms-auto">
-            <ErrorBoundary FallbackComponent={FetchError}>
-              <Suspense>
-                <LastUpdated className="d-flex ms-auto" />
-              </Suspense>
-            </ErrorBoundary>
-          </ChangelogButton>
+          <div className="d-flex">
+            <NomenclatureSwitch />
+
+            <ChangelogButton className="d-flex ms-auto">
+              <ErrorBoundary FallbackComponent={FetchError}>
+                <Suspense>
+                  <LastUpdated className="d-flex ms-auto" />
+                </Suspense>
+              </ErrorBoundary>
+            </ChangelogButton>
+          </div>
         </Col>
       </Row>
 
