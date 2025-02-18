@@ -6,7 +6,7 @@ _Note that as of 20 July 2021, the Nextstrain build is no longer being regularly
 Of full list of 18 nucleotide mutations, 15 are mutations to `T` (possibly related to APOBEC-like editing within host, see <LinkExternal href="https://www.biorxiv.org/content/10.1101/2020.05.01.072330v1">Simmonds, bioRxiv</LinkExternal>
 
 
-This variant is found in at least 10 countries across Europe.
+<VarOrLin name="20C/S:80Y" /> is found in at least 10 countries across Europe.
 
 ### S:D80Y
 <AaMut mut="S:D80Y"/> is the opposite end of the loop 'tucked in' by the 69/70 deletion (hypothetical association). See <Mut name="S:H69-"/> for more detail on the impact of 69/70 deletion.

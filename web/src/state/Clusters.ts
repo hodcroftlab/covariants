@@ -58,6 +58,16 @@ export const clusterBuildNamesMapSelector = selector({
   },
 })
 
+export const clusterAltDisplayNamesMapSelector = selector({
+  key: 'clusterAltDisplayNamesMap',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return new Map<string, string>(
+      clusters.map((c) => [c.display_name, c.alt_display_name ? c.alt_display_name[0] : c.display_name]),
+    )
+  },
+})
+
 export const hasPageClusterBuildNamesSelector = selector({
   key: 'hasPageClusterBuildNames',
   get: ({ get }) => {
