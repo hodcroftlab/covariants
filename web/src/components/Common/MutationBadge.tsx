@@ -18,7 +18,7 @@ import { AMINOACID_NAMES, GENE_NAMES, GREEK_ALPHABET, NUCELOTIDE_NAMES } from 's
 import { colorHash } from 'src/helpers/colorHash'
 import { rainbow } from 'src/helpers/colorRainbow'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { clusterAltDisplayNamesMapSelector, clusterNamesSelector, clustersAtom } from 'src/state/Clusters'
+import { clusterNamesSelector, clusterPangoLineageMapSelector, clustersAtom } from 'src/state/Clusters'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
 
 const DEFAULT_COLOR = theme.gray700
@@ -408,8 +408,8 @@ export interface VariantOrLineageLinkBadgeProps {
 /** Dynamically switches between Variant and Lineage depending on nomenclature selected */
 export function VariantOrLineageLinkBadgeLink({ name, href, prefix, invert }: VariantOrLineageLinkBadgeProps) {
   const enablePangolin = useRecoilValue(enablePangolinAtom)
-  const displayNamesMap = useRecoilValue(clusterAltDisplayNamesMapSelector)
-  const pangoName = displayNamesMap.get(name) ?? name
+  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
+  const pangoName = pangoLineageMap.get(name) ?? name
   const showLineageBadge = enablePangolin != invert
   return showLineageBadge ? <Lin name={pangoName} href={href} /> : <Var name={name} href={href} prefix={prefix} />
 }

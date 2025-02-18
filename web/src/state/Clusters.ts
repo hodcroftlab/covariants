@@ -58,12 +58,15 @@ export const clusterBuildNamesMapSelector = selector({
   },
 })
 
-export const clusterAltDisplayNamesMapSelector = selector({
-  key: 'clusterAltDisplayNamesMap',
+export const clusterPangoLineageMapSelector = selector({
+  key: 'clusterPangoLineageMap',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
     return new Map<string, string>(
-      clusters.map((c) => [c.display_name, c.alt_display_name ? c.alt_display_name[0] : c.display_name]),
+      clusters.map((c) => [
+        c.display_name,
+        c.pango_lineages ? (c.pango_lineages[0] ? c.pango_lineages[0].name : c.display_name) : c.display_name,
+      ]),
     )
   },
 })
