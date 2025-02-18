@@ -2,9 +2,7 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 
 _Note that as of 2 Sept 2021, the Nextstrain build is no longer being regularly updated, as there is little ongoing circulation. It will continue to be tracked in the graphs._
 
-### 20A/S:439K
-
-About 2/3 of the sequences in this variant have deletions at Spike amino-acid positions 69 and 70 ([Nextstrain build with S:69- deletion in the variant highlighted](https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_69&label=clade:S.N439K); see <Mut name="S:H69-"/> page)
+About 2/3 of the sequences in <VarOrLin name="20A/S:439K" /> have deletions at Spike amino-acid positions 69 and 70 ([Nextstrain build with S:69- deletion in the variant highlighted](https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_69&label=clade:S.N439K); see <Mut name="S:H69-"/> page)
 
 Clusters defined by <AaMut mut={'S:N439K'}/> have emerged twice independently in Europe. However, the first was exclusive to Scotland in the first wave and went extinct ([Thompson et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1))
 
@@ -20,4 +18,4 @@ This mutation is in the receptor binding domain (RDB), important to ACE2 binding
 reduction in binding to N439K RBD as compared to WT. In some individuals, the >two-fold reduction diminished the RBD ED50 response below 30
 a threshold previously determined to be a cutoff for specific binding
 ([Thomson et al. Cell](https://www.cell.com/cell/fulltext/S0092-8674(21)00080-5)).
-- Ablates binding by class 3 mAbs such as C135 that do not directly interfere with ACE2 binding, BUT clonal somatic mutations of memory B cells at 6.2 months (evolving humoral immune response) show pronounced increase in binding to the variant ([Gaebler et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.03.367391v2)).
+- Ablates binding by class 3 mAbs such as C135 that do not directly interfere with ACE2 binding, BUT clonal somatic mutations of memory B cells at 6.2 months (evolving humoral immune response) show pronounced increase in binding to <VarOrLin  name="20A/S:439K" prefix="" /> ([Gaebler et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.03.367391v2)).
