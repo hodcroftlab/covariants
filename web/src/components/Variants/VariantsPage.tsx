@@ -26,7 +26,6 @@ import NextstrainIconBase from 'src/assets/images/nextstrain_logo.svg'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
 import { clusterRedirectsSelector, hasPageClustersSelector } from 'src/state/Clusters'
-import { VarOrLin } from 'src/components/Common/MutationBadge'
 
 const FlexContainer = styled.div`
   display: flex;
