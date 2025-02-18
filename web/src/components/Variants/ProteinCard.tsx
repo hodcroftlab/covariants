@@ -5,6 +5,7 @@ import { SiMoleculer } from 'react-icons/si'
 import { Card, CardBody, CardHeader, Col, Container, Row } from 'reactstrap'
 import Image from 'next/image'
 
+import { useRecoilValue } from 'recoil'
 import { URL_GITHUB } from 'src/constants'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import type { ClusterDatum } from 'src/io/getClusters'
@@ -12,6 +13,8 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 import GifPlayer from 'src/components/Common/GifPlayer'
 
 import GisaidLogo from 'src/assets/images/GISAID_logo.png'
+import { enablePangolinAtom } from 'src/state/Nomenclature'
+import { clusterPangoLineageMapSelector } from 'src/state/Clusters'
 
 const ProteinCardTitleIcon = styled(SiMoleculer)`
   margin: auto 5px;
@@ -51,12 +54,15 @@ export interface ProteinCardProps {
 
 export function ProteinCardTitle({ cluster }: ProteinCardProps) {
   const { t } = useTranslationSafe()
+  const enablePangolin = useRecoilValue(enablePangolinAtom)
+  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
+  const pangoName = pangoLineageMap.get(cluster.display_name) ?? cluster.display_name
 
   return (
     <span className="d-flex w-100">
       <ProteinCardTitleIcon />
       <ProteinCardHeading>
-        {t('Spike protein model for {{variant}}', { variant: cluster.display_name })}
+        {t('Spike protein model for {{variant}}', { variant: enablePangolin ? pangoName : cluster.display_name })}
       </ProteinCardHeading>
     </span>
   )
