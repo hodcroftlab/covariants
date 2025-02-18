@@ -10,6 +10,8 @@ import { theme } from 'src/theme'
 import { ClusterDistributionPlot } from 'src/components/ClusterDistribution/ClusterDistributionPlot'
 import { ClusterDatum } from 'src/io/getClusters'
 import { perClusterDataCountryNamesSelector, perClusterDataDistributionSelector } from 'src/state/PerClusterData'
+import { enablePangolinAtom } from 'src/state/Nomenclature'
+import { clusterPangoLineageMapSelector } from 'src/state/Clusters'
 
 const PlotCardTitleIcon = styled(GoGraph)`
   margin: auto 5px;
@@ -33,12 +35,15 @@ export interface PlotCardProps {
 
 export function PlotCardTitle({ cluster }: PlotCardProps) {
   const { t } = useTranslationSafe()
+  const enablePangolin = useRecoilValue(enablePangolinAtom)
+  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
+  const pangoName = pangoLineageMap.get(cluster.display_name) ?? cluster.display_name
 
   return (
     <span className="d-flex w-100">
       <PlotCardTitleIcon />
       <PlotCardHeading>
-        {t('Distribution of {{variant}} per country', { variant: cluster.display_name })}
+        {t('Distribution of {{variant}} per country', { variant: enablePangolin ? pangoName : cluster.display_name })}
       </PlotCardHeading>
       <span className="ms-auto">
         <Link href="/per-variant" color={theme.link.dim.color}>
