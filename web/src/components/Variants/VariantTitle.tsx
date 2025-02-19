@@ -1,7 +1,10 @@
 import React, { useMemo } from 'react'
 import { styled } from 'styled-components'
+import { useRecoilValue } from 'recoil'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { ClusterDatum } from 'src/io/getClusters'
+import { enablePangolinAtom } from 'src/state/Nomenclature'
+import { clusterPangoLineageMapSelector } from 'src/state/Clusters'
 
 const VariantTitleWrapper = styled.header`
   text-align: center;
@@ -21,23 +24,28 @@ export interface VariantTitleProps {
 
 export function VariantTitle({ cluster }: VariantTitleProps) {
   const { t } = useTranslationSafe()
+  const enablePangolin = useRecoilValue(enablePangolinAtom)
+  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
+  const pangoName = cluster && pangoLineageMap.get(cluster.display_name)
 
   const subtitle = useMemo(() => {
-    if (!cluster?.alt_display_name || cluster?.alt_display_name?.length === 0) {
+    if (!pangoName) {
       return null
     }
 
     return (
       <ClusterNameSubtitle>
         {t(`also known as {{aliases}}`, { aliases: '' })}
-        {cluster.alt_display_name.join(', ')}
+        {enablePangolin ? cluster.display_name : pangoName}
       </ClusterNameSubtitle>
     )
-  }, [cluster?.alt_display_name, t])
+  }, [cluster?.display_name, t, enablePangolin, pangoName])
 
   return (
     <VariantTitleWrapper>
-      <ClusterNameTitle>{cluster?.display_name && `Variant: ${cluster?.display_name}`}</ClusterNameTitle>
+      <ClusterNameTitle>
+        {cluster && `Variant: ${enablePangolin && pangoName ? pangoName : cluster.display_name}`}
+      </ClusterNameTitle>
       {subtitle}
     </VariantTitleWrapper>
   )
