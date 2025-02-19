@@ -15,5 +15,5 @@
     "public",
     "tsconfig.json"
   ],
-  "include": ["**/*.ts", "**/*.js", "**/*.tsx", "**/*.jsx"]
+  "include": ["**/*.ts", "**/*.js", "**/*.tsx", "**/*.jsx", "**/*.mjs"]
 }
