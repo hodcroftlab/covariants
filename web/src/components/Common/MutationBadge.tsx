@@ -411,10 +411,18 @@ export function VariantOrLineageLinkBadgeLink({ name, href, prefix, invert }: Va
   const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
   const pangoName = pangoLineageMap.get(name)
   const showLineageBadge = enablePangolin != invert
+
+  const clusters = useRecoilValue(clustersAtom)
+  const clusterNames = useRecoilValue(clusterNamesSelector)
+  const { mutationStr } = useMemo(() => variantToObjectAndString(name), [name])
+  const url = useMemo(
+    () => href ?? formatVariantUrl(clusters, clusterNames, mutationStr),
+    [href, mutationStr, clusters, clusterNames],
+  )
   return showLineageBadge && pangoName ? (
-    <Lin name={pangoName} href={href} />
+    <Lin name={pangoName} href={url} />
   ) : (
-    <Var name={name} href={href} prefix={prefix} />
+    <Var name={name} href={url} prefix={prefix} />
   )
 }
 
