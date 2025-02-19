@@ -1,7 +1,7 @@
 import { MDXComponents } from 'mdx/types'
 import { styled } from 'styled-components'
 
-import { AaMut, Lin, Mut, NucMut, Var, VarOrLin, Who } from 'src/components/Common/MutationBadge'
+import { AaMut, Lin, Mut, NucMut, Var, VarOrLin, VarOrLinText, Who } from 'src/components/Common/MutationBadge'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
 import { MdxContent } from 'src/i18n/getMdxContent'
 
@@ -28,6 +28,7 @@ export const mdxComponents = {
   Mut,
   Lin,
   VarOrLin,
+  VarOrLinText,
   Who,
   MdxContent,
 }

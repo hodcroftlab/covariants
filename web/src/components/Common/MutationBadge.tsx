@@ -409,9 +409,27 @@ export interface VariantOrLineageLinkBadgeProps {
 export function VariantOrLineageLinkBadgeLink({ name, href, prefix, invert }: VariantOrLineageLinkBadgeProps) {
   const enablePangolin = useRecoilValue(enablePangolinAtom)
   const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
+  const pangoName = pangoLineageMap.get(name)
+  const showLineageBadge = enablePangolin != invert
+  return showLineageBadge && pangoName ? (
+    <Lin name={pangoName} href={href} />
+  ) : (
+    <Var name={name} href={href} prefix={prefix} />
+  )
+}
+
+export interface VariantOrLineageTextProps {
+  name: string
+  invert?: boolean
+}
+
+/** Dynamically switches between Variant and Lineage as text depending on nomenclature selected */
+export function VariantOrLineageText({ name, invert }: VariantOrLineageTextProps) {
+  const enablePangolin = useRecoilValue(enablePangolinAtom)
+  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
   const pangoName = pangoLineageMap.get(name) ?? name
   const showLineageBadge = enablePangolin != invert
-  return showLineageBadge ? <Lin name={pangoName} href={href} /> : <Var name={name} href={href} prefix={prefix} />
+  return <>{showLineageBadge ? pangoName : name}</>
 }
 
 /** Shorter convenience alias for NucleotideMutationBadge */
@@ -447,4 +465,9 @@ export function Who({ name, href, prefix = '' }: WhoBadgeProps) {
 /** Shorter convenience alias for VariantOrLineageLinkBadge*/
 export function VarOrLin({ name, href, prefix, invert = false }: VariantOrLineageLinkBadgeProps) {
   return <VariantOrLineageLinkBadgeLink name={name} href={href} prefix={prefix} invert={invert} />
+}
+
+/** Shorter convenience alias for VariantOrLineageText*/
+export function VarOrLinText({ name, invert = false }: VariantOrLineageTextProps) {
+  return <VariantOrLineageText name={name} invert={invert} />
 }
