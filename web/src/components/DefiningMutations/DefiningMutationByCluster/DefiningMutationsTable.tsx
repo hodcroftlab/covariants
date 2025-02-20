@@ -13,13 +13,6 @@ import { TableSlimWithBorders } from 'src/components/Common/TableSlim'
 import { NucleotideMutationBadge } from 'src/components/Common/Badges/NucleotideMutationBadge'
 import { AminoacidMutationBadge } from 'src/components/Common/Badges/AminoacidMutationBadge'
 
-const DefiningMutationsTableTdNarrow = styled.td`
-  width: 10%;
-`
-const DefiningMutationsTableTd = styled.td`
-  width: 45%;
-`
-
 export interface DefiningMutationsTableProps {
   currentCluster: DefiningMutationCluster
   referenceSequenceName: string
@@ -101,6 +94,13 @@ export function DefiningMutationsTableRowSilent({ nucleotideMutation }: { nucleo
     </tr>
   )
 }
+
+const DefiningMutationsTableTdNarrow = styled.td`
+  width: 10%;
+`
+const DefiningMutationsTableTd = styled.td`
+  width: 45%;
+`
 
 export function DefiningMutationsTableRowCoding({ aminoAcidMutation }: { aminoAcidMutation: AminoAcidMutation }) {
   const numNucMuts = aminoAcidMutation.nucMuts.length

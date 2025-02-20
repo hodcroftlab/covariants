@@ -8,29 +8,6 @@ import { DefiningMutationCluster } from 'src/io/getDefiningMutationsClusters'
 import { VariantBadge } from 'src/components/Common/Badges/VariantBadge'
 import { LineageBadge } from 'src/components/Common/Badges/LineageBadge'
 
-const Ul = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin-top: 0.5rem;
-`
-
-const Li = styled.li`
-  margin: 0;
-`
-
-export const InfoTable = styled(Table)`
-  max-width: 1000px;
-
-  & td {
-    padding: 0.25rem 0.5rem;
-    min-width: 200px;
-  }
-
-  * {
-    border: none !important;
-  }
-`
-
 export function DefiningMutationsInfo({ cluster }: { cluster: DefiningMutationCluster }) {
   const { t } = useTranslationSafe()
 
@@ -122,3 +99,26 @@ function NextstrainCladeInfo({ nextstrainClade }: { nextstrainClade: string }) {
 
   return <VariantBadge name={nextstrainClade} href={`/defining-mutations/${nextstrainClade}`} />
 }
+
+const Ul = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin-top: 0.5rem;
+`
+
+const Li = styled.li`
+  margin: 0;
+`
+
+export const InfoTable = styled(Table)`
+  max-width: 1000px;
+
+  & td {
+    padding: 0.25rem 0.5rem;
+    min-width: 200px;
+  }
+
+  * {
+    border: none !important;
+  }
+`
