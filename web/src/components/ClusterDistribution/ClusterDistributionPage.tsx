@@ -20,83 +20,43 @@ import { ClusterDistributionComponents } from 'src/components/ClusterDistributio
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
 
-const Dropdown = styled(DropdownBase)`
-  min-width: 130px;
-`
+export function ClusterDistributionPage() {
+  const { t } = useTranslationSafe()
+
+  return (
+    <Layout wide>
+      <Row className={'gx-0'}>
+        <Col>
+          <PageHeading>{t('Overview of Variants/Mutations')}</PageHeading>
+        </Col>
+      </Row>
+
+      <Row className={'gx-0'}>
+        <Col>
+          <CenteredEditable githubUrl="blob/master/content/PerClusterIntro.md">
+            <MdxContent filepath="PerClusterIntro.md" />
+          </CenteredEditable>
+        </Col>
+      </Row>
+
+      <Row className={'gx-0'}>
+        <Col>
+          <SharingPanel />
+        </Col>
+      </Row>
+
+      <Row className={'gx-0'}>
+        <Col className="pb-10">
+          <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
+            <ClusterDistributionPlotSection />
+          </Editable>
+        </Col>
+      </Row>
+    </Layout>
+  )
+}
 
 const enabledFilters = ['countries', 'clusters']
-
-const sortByOptions = Object.entries(TooltipSortCriterion).map(([key, value]) => ({ value, label: key }))
-
-export function SortByDropdown() {
-  const { t } = useTranslationSafe()
-
-  const [tooltipSort, setTooltipSort] = useRecoilState(tooltipSortAtom)
-  const sortBy = tooltipSort.criterion
-
-  const handleSortByChange = useCallback(
-    (value: string) => {
-      const setSortBy = (criterion: TooltipSortCriterion) => {
-        setTooltipSort((tooltipSort) => ({ ...tooltipSort, criterion }))
-      }
-      return setSortBy(TooltipSortCriterion[value as keyof typeof TooltipSortCriterion])
-    },
-    [setTooltipSort],
-  )
-
-  return (
-    <Col className={'d-flex flex-row align-items-center justify-between me-2'}>
-      <Label for="per-variant-sort-by" className={'mb-0 me-2'}>
-        {t('Tooltip sort by:')}
-      </Label>
-      <Dropdown
-        identifier="per-variant-sort-by"
-        options={sortByOptions}
-        value={stringToOption(sortBy)}
-        onValueChange={handleSortByChange}
-        isSearchable={false}
-      />
-    </Col>
-  )
-}
-
-export function SortReverseCheckbox() {
-  const { t } = useTranslationSafe()
-
-  const [tooltipSort, setTooltipSort] = useRecoilState(tooltipSortAtom)
-  const sortReversed = tooltipSort.reversed
-
-  const setSortReversed = useCallback(
-    (reversed: boolean) => {
-      setTooltipSort((tooltipSort) => ({ ...tooltipSort, reversed }))
-    },
-    [setTooltipSort],
-  )
-
-  const onChange = useCallback(() => setSortReversed(!sortReversed), [setSortReversed, sortReversed])
-
-  return (
-    <Col>
-      <Input
-        id="per-variant-sort-reverse"
-        type="checkbox"
-        checked={sortReversed}
-        onChange={onChange}
-        className={'me-1'}
-      />
-      <Label for="per-variant-sort-reverse" check>
-        {t('Reversed')}
-      </Label>
-    </Col>
-  )
-}
-
-const StickyRow = styled(Row)`
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  align-self: flex-start;
-`
 
 function ClusterDistributionPlotSection() {
   const { t } = useTranslationSafe()
@@ -153,38 +113,78 @@ function ClusterDistributionPlotSection() {
   )
 }
 
-export function ClusterDistributionPage() {
+const sortByOptions = Object.entries(TooltipSortCriterion).map(([key, value]) => ({ value, label: key }))
+
+export function SortByDropdown() {
   const { t } = useTranslationSafe()
 
+  const [tooltipSort, setTooltipSort] = useRecoilState(tooltipSortAtom)
+  const sortBy = tooltipSort.criterion
+
+  const handleSortByChange = useCallback(
+    (value: string) => {
+      const setSortBy = (criterion: TooltipSortCriterion) => {
+        setTooltipSort((tooltipSort) => ({ ...tooltipSort, criterion }))
+      }
+      return setSortBy(TooltipSortCriterion[value as keyof typeof TooltipSortCriterion])
+    },
+    [setTooltipSort],
+  )
+
   return (
-    <Layout wide>
-      <Row className={'gx-0'}>
-        <Col>
-          <PageHeading>{t('Overview of Variants/Mutations')}</PageHeading>
-        </Col>
-      </Row>
-
-      <Row className={'gx-0'}>
-        <Col>
-          <CenteredEditable githubUrl="blob/master/content/PerClusterIntro.md">
-            <MdxContent filepath="PerClusterIntro.md" />
-          </CenteredEditable>
-        </Col>
-      </Row>
-
-      <Row className={'gx-0'}>
-        <Col>
-          <SharingPanel />
-        </Col>
-      </Row>
-
-      <Row className={'gx-0'}>
-        <Col className="pb-10">
-          <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
-            <ClusterDistributionPlotSection />
-          </Editable>
-        </Col>
-      </Row>
-    </Layout>
+    <Col className={'d-flex flex-row align-items-center justify-between me-2'}>
+      <Label for="per-variant-sort-by" className={'mb-0 me-2'}>
+        {t('Tooltip sort by:')}
+      </Label>
+      <Dropdown
+        identifier="per-variant-sort-by"
+        options={sortByOptions}
+        value={stringToOption(sortBy)}
+        onValueChange={handleSortByChange}
+        isSearchable={false}
+      />
+    </Col>
   )
 }
+
+const Dropdown = styled(DropdownBase)`
+  min-width: 130px;
+`
+
+export function SortReverseCheckbox() {
+  const { t } = useTranslationSafe()
+
+  const [tooltipSort, setTooltipSort] = useRecoilState(tooltipSortAtom)
+  const sortReversed = tooltipSort.reversed
+
+  const setSortReversed = useCallback(
+    (reversed: boolean) => {
+      setTooltipSort((tooltipSort) => ({ ...tooltipSort, reversed }))
+    },
+    [setTooltipSort],
+  )
+
+  const onChange = useCallback(() => setSortReversed(!sortReversed), [setSortReversed, sortReversed])
+
+  return (
+    <Col>
+      <Input
+        id="per-variant-sort-reverse"
+        type="checkbox"
+        checked={sortReversed}
+        onChange={onChange}
+        className={'me-1'}
+      />
+      <Label for="per-variant-sort-reverse" check>
+        {t('Reversed')}
+      </Label>
+    </Col>
+  )
+}
+
+const StickyRow = styled(Row)`
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  align-self: flex-start;
+`
