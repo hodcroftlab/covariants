@@ -49,7 +49,7 @@
 # Visual display on website
 # | important               | Boolean: Whether we should show it by default in web or it can be hidden under "show more"
 # | has_no_page             | Boolean: if true, variant will not be shown on the left sidebar on main page and will not have a page to navigate to
-# | alt_display_name        | List of alternative friendly names (appear in web under the heading on variant page)
+# | alt_display_name        | REQUIRED: List of alternative friendly names (appear in web under the heading on variant page - and are used in the pango/nextstrain name switch)
 # | col                     | Color associated with the variant
 # | nextstrain_url          | URL to the phylogenetic tree visualization (the "build" in Nextstrain lingo) of this variant on nextstrain.org
 # | old_build_names         | Old variant names in Nextstrain nomenclature (usually before assigned a greek letter)
@@ -4370,6 +4370,7 @@ clusters = {
     "S677HRobin1": {
         "snps": [23593, 29402, 8083],  # T, T, A
         "snps_with_base": ["23593T", "29402T", "8083A"],
+        "alt_display_name": ["B.1.2"],
         "cluster_data": [],
         "nextstrain_build": False,  # as of 25 Feb 22 - no new seqs since Sept
         "graphing": True,
@@ -4409,6 +4410,7 @@ clusters = {
     "S677PPelican": {
         "snps": [23592, 11451, 21811],
         "snps_with_base": ["23592C", "11451G", "21811A"],
+        "alt_display_name": ["B.1.2.1"],
         "cluster_data": [],
         "nextstrain_build": False,  # as of 25 Feb 22 - no new seqs since Sept
         "graphing": True,
@@ -4814,6 +4816,7 @@ clusters = {
     # variant
     "S677HRobin2": {
         "snps": [23593, 7348],
+        "alt_display_name": ["B.1.2.2"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": False,
@@ -4830,6 +4833,7 @@ clusters = {
     "S677HYellowhammer": {
         "snps": [23593, 9928],
         "cluster_data": [],
+        "alt_display_name": ["B.1.2"],
         "nextstrain_build": False,
         "graphing": False,
         "usa_graph": True,
@@ -4846,6 +4850,7 @@ clusters = {
         "snps": [23592, 3450, 6382],
         "cluster_data": [],
         "nextstrain_build": False,
+        "alt_display_name": ["B.1.2"],
         "graphing": False,
         "usa_graph": True,
         "important": False,
@@ -4861,6 +4866,7 @@ clusters = {
         "snps": [23593, 28833, 1592],
         "cluster_data": [],
         "nextstrain_build": False,
+        "alt_display_name": ["B.1.265"],
         "graphing": False,
         "usa_graph": True,
         "important": False,
@@ -4875,6 +4881,7 @@ clusters = {
     "S677HBluebird": {
         "snps": [23593, 21648],
         "cluster_data": [],
+        "alt_display_name": ["B.1.1.486"],
         "nextstrain_build": False,
         "graphing": False,
         "usa_graph": True,
@@ -4891,6 +4898,7 @@ clusters = {
         "snps": [23593, 23756, 21757],
         "cluster_data": [],
         "nextstrain_build": False,
+        "alt_display_name": ["B.1.1.316"],
         "graphing": False,
         "usa_graph": True,
         "important": False,
@@ -4905,6 +4913,7 @@ clusters = {
     "S677HMockingbird": {
         "snps": [23593, 21986],
         "cluster_data": [],
+        "alt_display_name": ["B.1.234"],
         "nextstrain_build": False,
         "graphing": False,
         "usa_graph": True,
