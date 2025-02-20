@@ -1,0 +1,25 @@
+name: "setup node"
+
+runs:
+  using: "composite"
+  steps:
+    - name: "[init] Setup Node.js"
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: ".nvmrc"
+        cache: "yarn"
+        cache-dependency-path: "web/yarn.lock"
+
+    - name: "[init] Install Node.js packages"
+      run: |
+        echo "[build] Install Node.js packages"
+        cd web
+        yarn install --frozen-lockfile
+      shell: bash
+
+    - name: "[init] Install playwright dependencies"
+      run: |
+        echo "[init] Install playwright dependencies"
+        cd web
+        yarn playwright install --with-deps
+      shell: bash

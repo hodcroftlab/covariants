@@ -14,9 +14,6 @@ export function getGitCommitHash() {
     process.env.GIT_COMMIT_HASH ??
     process.env.GITHUB_SHA ??
     process.env.COMMIT_REF ??
-    process.env.VERCEL_GITHUB_COMMIT_SHA ??
-    process.env.VERCEL_GITLAB_COMMIT_SHA ??
-    process.env.VERCEL_BITBUCKET_COMMIT_SHA ??
     getGitCommitHashLocal() ??
     ''
   )

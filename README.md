@@ -209,20 +209,3 @@ otherwise. Thanks goes to these wonderful people ([emoji key](https://allcontrib
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification.
 Contributions of any kind welcome!
-
----
-
-<h3 id="sponsors" align="center">
-🎁 Sponsors
-</h3>
-
-We are grateful to Vercel for sponsoring our web application builds
-
-<p align="center">
-  <a target="_blank" href="https://vercel.com/?utm_source=hodcroftlab&utm_campaign=oss">
-    <img
-      src="https://user-images.githubusercontent.com/9403403/105740694-b9358880-5f39-11eb-95ff-3ea98e4fa43a.png"
-      alt="Vercel logo"
-    />
-  </a>
-</p>

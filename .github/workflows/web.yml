@@ -50,12 +50,33 @@ jobs:
           fetch-depth: 1
           submodules: true
 
+      - name: "[init] Setup Node.js"
+        uses: ./.github/workflows/setup_node
+
+      - name: "[lint] Code formatting and CSS linting"
+        run: |
+          cd web
+          yarn format
+          yarn stylelint
+
+      - name: "[test] Run unit tests"
+        run: |
+          cd web
+          yarn test:unit
+
       - name: "[build] Build app"
         uses: ./.github/workflows/build_app
         with:
           deploy_environment: ${{ endsWith(github.ref, '/master') && 'master' || 'release' }}
 
-      - name: "[deployment] Install dependencies"
+      - name: "[test] Run end to end tests"
+        run: |
+          cd web
+          yarn test:e2e
+        env:
+          CI: true
+
+      - name: "[deploy] Install dependencies"
         run: |
           pushd /tmp >/dev/null
             curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -64,7 +85,7 @@ jobs:
           popd >/dev/null
           aws --version
 
-      - name: "[deployment] Deploy app to aws"
+      - name: "[deploy] Deploy app to aws"
         uses: ./.github/workflows/deploy_app_to_aws
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -73,7 +94,7 @@ jobs:
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
-      - name: "[deployment] Sync acknowledgements (large static files)"
+      - name: "[deploy] Sync acknowledgements (large static files)"
         uses: ./.github/workflows/sync_acknowledgements
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -82,7 +103,7 @@ jobs:
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
-      - name: "[deployment] Sync proteins (large static files)"
+      - name: "[deploy] Sync proteins (large static files)"
         uses: ./.github/workflows/sync_proteins
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

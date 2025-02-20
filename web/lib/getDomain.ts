@@ -7,13 +7,7 @@ const WEB_PORT_PROD = process.env.WEB_PORT_PROD ?? ''
 const devDomain = `http://localhost:${WEB_PORT_DEV}`
 const prodDomain = `http://localhost:${WEB_PORT_PROD}`
 
-const ENV_VARS = [
-  // prettier-ignore
-  'VERCEL_URL',
-  'DEPLOY_PRIME_URL',
-  'DEPLOY_URL',
-  'URL',
-]
+const ENV_VARS = ['DEPLOY_PRIME_URL', 'DEPLOY_URL', 'URL']
 
 export function getenvFirst(vars: string[]) {
   return vars.map((v) => process.env[v]).find((v) => v !== undefined)

@@ -3,17 +3,17 @@ name: "sync acknowledgements based on checksums"
 runs:
   using: "composite"
   steps:
-    - name: "[deployment] Calculate acknowledgements checksums"
+    - name: "[deploy] Calculate acknowledgements checksums"
       run: |
-        echo "[deployment] Calculate acknowledgements checksums"
+        echo "[deploy] Calculate acknowledgements checksums"
         touch web/checksums-ack-ci.txt
         cd web/.build/production/web/acknowledgements
         find . -type f -printf "%P\n" | xargs -d '\n' sha256sum | awk '{print $2, $1}' | sort > ../../../../checksums-ack-ci.txt
       shell: bash
 
-    - name: "[deployment] Compare acknowledgements checksums"
+    - name: "[deploy] Compare acknowledgements checksums"
       run: |
-        echo "[deployment] Compare acknowledgements checksums"
+        echo "[deploy] Compare acknowledgements checksums"
         cd web
         if aws s3 ls s3://${AWS_S3_BUCKET}/checksums-ack-s3.txt; then
           echo "s3 checksums found, downloading s3 checksums"
@@ -31,9 +31,9 @@ runs:
         cat obsolete_acknowledgements.txt
       shell: bash
 
-    - name: "[deployment] Sync acknowledgements files"
+    - name: "[deploy] Sync acknowledgements files"
       run: |
-        echo "[deployment] Sync acknowledgements files"
+        echo "[deploy] Sync acknowledgements files"
         echo "Removing obsolete files"
         cd web
         for file in $(cat obsolete_acknowledgements.txt); do
@@ -50,16 +50,16 @@ runs:
         done
       shell: bash
 
-    - name: "[deployment] Replace acknowledgements checksums in bucket"
+    - name: "[deploy] Replace acknowledgements checksums in bucket"
       run: |
-        echo "[deployment] Replace acknowledgements checksums in bucket"
+        echo "[deploy] Replace acknowledgements checksums in bucket"
         cd web
         aws s3 cp checksums-ack-ci.txt s3://${AWS_S3_BUCKET}/checksums-ack-s3.txt
       shell: bash
 
-    - name: "[deployment] Invalidate AWS Cloudfront cache: acknowledgements"
+    - name: "[deploy] Invalidate AWS Cloudfront cache: acknowledgements"
       run: |
-        echo "[deployment] Invalidate AWS Cloudfront cache: acknowledgements"
+        echo "[deploy] Invalidate AWS Cloudfront cache: acknowledgements"
         aws cloudfront create-invalidation \
           --distribution-id ${AWS_CLOUDFRONT_DISTRIBUTION_ID} \
           --paths "/acknowledgements/*"

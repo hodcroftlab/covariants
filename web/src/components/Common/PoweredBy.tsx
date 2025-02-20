@@ -5,7 +5,6 @@ import { NextstrainLogo } from './NextstrainLogo'
 import { PROJECT_NAME, TEAM_NAME } from 'src/constants'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
-import VercelLogo from 'src/assets/images/vercel_logo.svg'
 import NextJsLogo from 'src/assets/images/nextjs_logo.svg'
 
 const Flex = styled.section`
@@ -51,12 +50,6 @@ const mainLinks = [
     url: `https://nextjs.com?utm_source=${TEAM_NAME}&utm_campaign=oss`,
     alt: '',
     icon: <NextJsLogo height={30} />,
-  },
-  {
-    title: 'Vercel',
-    url: `https://vercel.com?utm_source=${TEAM_NAME}&utm_campaign=oss`,
-    alt: '',
-    icon: <VercelLogo width={100} />,
   },
 ]
 

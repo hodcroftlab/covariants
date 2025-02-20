@@ -6,6 +6,7 @@ export const TEAM_NAME = 'hodcroftlab'
 
 export const DOMAIN = process.env.DOMAIN ?? ''
 export const DOMAIN_STRIPPED = process.env.DOMAIN_STRIPPED ?? ''
+export const DEPLOY_ENVIRONMENT = process.env.DEPLOY_ENVIRONMENT ?? ''
 export const URL_FAVICON = `${DOMAIN}/favicon.ico`
 export const SOCIAL_IMAGE_WIDTH = '1200'
 export const SOCIAL_IMAGE_HEIGHT = '630'

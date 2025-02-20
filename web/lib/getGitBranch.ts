@@ -9,13 +9,5 @@ export function getGitCommitHashLocal() {
 }
 
 export function getGitBranch() {
-  return (
-    process.env.GIT_BRANCH ??
-    process.env.BRANCH ??
-    process.env.VERCEL_GITHUB_COMMIT_REF ??
-    process.env.VERCEL_GITLAB_COMMIT_REF ??
-    process.env.VERCEL_BITBUCKET_COMMIT_REF ??
-    getGitCommitHashLocal() ??
-    ''
-  )
+  return process.env.GIT_BRANCH ?? process.env.BRANCH ?? getGitCommitHashLocal() ?? ''
 }
