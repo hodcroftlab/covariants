@@ -18,12 +18,6 @@ export interface DefiningMutationsPageProps {
   clusterName: string
 }
 
-const JustifyEnd = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: end;
-`
-
 export default function DefiningMutationsPage({ clusterName }: DefiningMutationsPageProps) {
   const currentClusterName = useClusterNameToLineage(clusterName)
 
@@ -58,6 +52,12 @@ function useClusterNameToLineage(clusterName: string) {
   }
   return clusterName
 }
+
+const JustifyEnd = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+`
 
 function DefiningMutationsTableWithTargets({ cluster }: { cluster: DefiningMutationCluster }) {
   const referenceSequences = Object.keys(cluster.mutations)
