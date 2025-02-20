@@ -3,18 +3,6 @@ import { styled } from 'styled-components'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import type { DefiningMutationCluster } from 'src/io/getDefiningMutationsClusters'
 
-const VariantTitleWrapper = styled.header`
-  text-align: center;
-  min-height: 90px;
-`
-
-const ClusterNameTitle = styled.h1``
-
-const ClusterNameSubtitle = styled.p`
-  margin-bottom: 0;
-  text-align: center;
-`
-
 export interface DefiningMutationsLineageTitleProps {
   cluster: DefiningMutationCluster
 }
@@ -41,3 +29,15 @@ export function DefiningMutationLineageTitle({ cluster }: DefiningMutationsLinea
     </VariantTitleWrapper>
   )
 }
+
+const VariantTitleWrapper = styled.header`
+  text-align: center;
+  min-height: 90px;
+`
+
+const ClusterNameTitle = styled.h1``
+
+const ClusterNameSubtitle = styled.p`
+  margin-bottom: 0;
+  text-align: center;
+`

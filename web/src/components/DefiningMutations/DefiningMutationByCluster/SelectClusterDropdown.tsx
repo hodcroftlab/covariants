@@ -10,11 +10,6 @@ import { definingMutationClustersAtom } from 'src/state/DefiningMutations'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { Dropdown } from 'src/components/Common/Dropdown'
 
-const Wrapper = styled.div`
-  max-width: 200px;
-  min-width: 150px;
-`
-
 export function SelectClusterDropdown({ cluster }: { cluster: DefiningMutationCluster }) {
   const { t } = useTranslationSafe()
   const { push } = useRouter()
@@ -43,3 +38,8 @@ export function SelectClusterDropdown({ cluster }: { cluster: DefiningMutationCl
     </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  max-width: 200px;
+  min-width: 150px;
+`
