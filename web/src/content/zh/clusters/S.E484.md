@@ -20,14 +20,14 @@ import { Link } from 'src/components/Link/Link'
 ---
 
 2020年底/2021年初报告的4种变体（其中2个是受关注变体）种发现了特定突变<AaMut mut={'S:E484K'}/>，它们是：
-- 南非(<Var name="20H (Beta, V2)" prefix=""/> or `B.1.351`)
-- 巴西 ( <Var name="20J (Gamma, V3)" prefix=""/> or `P.1`)
+- 南非(<VarOrLin name="20H (Beta, V2)" prefix=""/>)
+- 巴西 (<VarOrLin name="20J (Gamma, V3)" prefix=""/>)
 - 巴西 (20B/S:484K or `P.2`) (看下面)
-- 印度 (<Var name="21B (Kappa)" prefix=""/> or `B.1.617.1`)
+- 印度 (<VarOrLin name="21B (Kappa)" prefix=""/>)
 
 查看这些变体的<Link href="/shared-mutations">共享突变列表</Link>。点击上面或下面的20B/S.484K链接可以获得更多关于每一个变体的信息。
 
-在少量的 20I（Alpha，V1）序列中也发现了<AaMut mut={'S:E484K'}/>，可在<Var name="20I (Alpha, V1)"/>阅读更多内容。
+在少量的 20I（Alpha，V1）序列中也发现了<AaMut mut={'S:E484K'}/>，可在<VarOrLin name="20I (Alpha, V1)"/>阅读更多内容。
 
 <br/><br/>
 
