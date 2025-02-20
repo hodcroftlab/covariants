@@ -2,8 +2,6 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 
 _请注意，自2021年9月2日起，Nextstrain 构建不再定期更新，因为几乎没有持续的流通。它将继续在图表中进行跟踪。_
 
-### 20A/S:439K
-
 该变体中大约 2/3 的序列在刺突氨基酸位置 69 和 70 处有缺失 ([Nextstrain build with S:69- deletion in the variant highlighted](https://nextstrain.org/groups/neherlab/ncov/S.N439K?c=gt-S_69&label=clade:S.N439K); see <Mut name="S:H69-"/> page)
 
 由<AaMut mut={'S:N439K'}/>定义的集群在欧洲独立出现了两次。 然而，第一个在第一波浪潮中是苏格兰独有的，然后就灭绝了 ([Thompson等 bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.04.355842v1))
