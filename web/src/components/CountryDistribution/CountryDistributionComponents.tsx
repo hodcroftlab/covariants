@@ -9,13 +9,6 @@ import { Country } from 'src/state/Places'
 import { Cluster } from 'src/state/Clusters'
 import { perCountryDataDistributionsSelector } from 'src/state/PerCountryData'
 
-export interface ClusterDistributionComponentsProps {
-  clusters: Cluster[]
-  countries: Country[]
-  region: string
-  iconComponent?: React.ComponentType<CountryFlagProps>
-}
-
 export function CountryDistributionComponents({
   countries,
   clusters,
@@ -47,4 +40,11 @@ export function CountryDistributionComponents({
   )
 
   return <Row className={'gx-0'}>{countryDistributionComponents}</Row>
+}
+
+export interface ClusterDistributionComponentsProps {
+  clusters: Cluster[]
+  countries: Country[]
+  region: string
+  iconComponent?: React.ComponentType<CountryFlagProps>
 }

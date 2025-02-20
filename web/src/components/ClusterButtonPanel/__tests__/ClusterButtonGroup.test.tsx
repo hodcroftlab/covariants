@@ -1,14 +1,14 @@
 /* eslint-disable camelcase */
 import { describe, expect, test } from 'vitest'
-import { screen, fireEvent } from '@testing-library/react'
+import { screen, fireEvent, waitFor } from '@testing-library/react'
 import React from 'react'
 import { ClusterButtonGroup } from '../ClusterButtonGroup'
 import { ClusterDatum } from 'src/io/getClusters'
-import { renderWithThemeAndTranslations } from 'src/helpers/__tests__/providers'
+import { renderWithQueryClientAndRecoilRoot } from 'src/helpers/__tests__/providers'
 
 describe('ClusterButtonGroup', () => {
   describe('show more / show less button', () => {
-    test('toggles unimportant clusters', () => {
+    test('toggles unimportant clusters', async () => {
       // Arrange
       const importantClusters: ClusterDatum[] = [
         {
@@ -51,8 +51,8 @@ describe('ClusterButtonGroup', () => {
       const clusters = importantClusters.concat(unimportantClusters)
 
       // Assert
-      renderWithThemeAndTranslations(<ClusterButtonGroup clusterGroup={clusters} />)
-      let visibleClusters = screen.getAllByRole('link')
+      renderWithQueryClientAndRecoilRoot(<ClusterButtonGroup clusterGroup={clusters} />)
+      let visibleClusters = await waitFor(() => screen.getAllByRole('link'))
       expect(visibleClusters.length).toEqual(importantClusters.length)
 
       // Act
