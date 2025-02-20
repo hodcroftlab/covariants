@@ -5,10 +5,6 @@ import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { DropdownOption, stringsToOptions, stringToOption } from 'src/components/Common/DropdownOption'
 import { Dropdown } from 'src/components/Common/Dropdown'
 
-const Wrapper = styled.div`
-  max-width: 200px;
-`
-
 export function SelectReferenceDropdown({
   referenceSequences,
   selectedSequence,
@@ -42,3 +38,7 @@ export function SelectReferenceDropdown({
     </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  max-width: 200px;
+`

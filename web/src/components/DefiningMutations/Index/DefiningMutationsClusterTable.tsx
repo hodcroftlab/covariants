@@ -15,55 +15,6 @@ import { DefiningMutationListElement } from 'src/io/getDefiningMutationsClusters
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { SearchBox } from 'src/components/Common/SearchBox'
 
-export const Table = styled(TableBase)`
-  margin-left: auto;
-  margin-right: auto;
-  border-collapse: collapse;
-
-  & > thead > tr,
-  & > tbody > tr,
-  & > tbody > td {
-    border: #aaa solid 1px;
-    border-collapse: collapse;
-  }
-
-  & > tbody > tr:nth-child(even) {
-    background-color: white;
-  }
-
-  & > tbody > tr:nth-child(odd) {
-    background-color: #f5f5f5;
-  }
-
-  & > thead > tr > th {
-    font-size: 0.9rem;
-    text-align: center;
-    height: 3rem;
-    border: #aaa solid 1px;
-  }
-
-  & > tbody > tr:hover {
-    background-color: ${(props) => transparentize(0.8)(props.theme.green)};
-  }
-
-  & > tbody > tr > td {
-    font-family: ${(props) => props.theme.font.monospace};
-    font-size: 0.8rem;
-    text-align: left;
-    border: #aaa solid 1px;
-    min-width: 100px;
-    padding: 2px;
-  }
-`
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  width: 500px;
-  gap: 1rem;
-`
-
 export function DefiningMutationsClusterIndexTableWithSearch({
   clusters,
 }: {
@@ -105,6 +56,14 @@ export function DefiningMutationsClusterIndexTableWithSearch({
   )
 }
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 500px;
+  gap: 1rem;
+`
+
 export function DefiningMutationsClusterTable({ clusters }: { clusters: DefiningMutationListElement[] }) {
   const { t } = useTranslationSafe()
 
@@ -133,6 +92,47 @@ export function DefiningMutationsClusterTable({ clusters }: { clusters: Defining
     </Table>
   )
 }
+
+export const Table = styled(TableBase)`
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+
+  & > thead > tr,
+  & > tbody > tr,
+  & > tbody > td {
+    border: #aaa solid 1px;
+    border-collapse: collapse;
+  }
+
+  & > tbody > tr:nth-child(even) {
+    background-color: white;
+  }
+
+  & > tbody > tr:nth-child(odd) {
+    background-color: #f5f5f5;
+  }
+
+  & > thead > tr > th {
+    font-size: 0.9rem;
+    text-align: center;
+    height: 3rem;
+    border: #aaa solid 1px;
+  }
+
+  & > tbody > tr:hover {
+    background-color: ${(props) => transparentize(0.8)(props.theme.green)};
+  }
+
+  & > tbody > tr > td {
+    font-family: ${(props) => props.theme.font.monospace};
+    font-size: 0.8rem;
+    text-align: left;
+    border: #aaa solid 1px;
+    min-width: 100px;
+    padding: 2px;
+  }
+`
 
 export interface DefiningMutationsClusterIndexTableRowProps {
   cluster: DefiningMutationListElement

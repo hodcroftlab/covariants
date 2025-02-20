@@ -23,6 +23,50 @@ import { clusterNamesSelector, clustersAtom } from 'src/state/Clusters'
 const DEFAULT_COLOR = theme.gray700
 const DEFAULT_TEXT_COLOR = theme.gray100
 
+export interface MutationBadgeProps {
+  prefix?: string
+  mutation: Mutation
+  colors: MutationColors
+  tooltip?: string
+}
+
+export function MutationBadge({ prefix, mutation, colors, tooltip }: MutationBadgeProps) {
+  const { t } = useTranslationSafe()
+  const { parent, parentDelimiter, gene, left, pos, right, version, note } = mutation
+
+  const parentColors = get(CLADE_COLORS, parent ?? '', { bg: DEFAULT_COLOR, fg: DEFAULT_TEXT_COLOR })
+  const geneColor = get(GENE_COLORS, gene ?? '', DEFAULT_COLOR)
+  const leftColor = get(colors, left ?? '', DEFAULT_COLOR)
+  const rightColor = get(colors, right ?? '', DEFAULT_COLOR)
+
+  const parentDelimiterStr = parentDelimiter ?? ''
+
+  return (
+    <MutationBadgeBox title={tooltip}>
+      <MutationWrapper>
+        {prefix && <PrefixText>{t(prefix)}</PrefixText>}
+        {parent && (
+          <ParentText
+            $backgroundColor={parentColors.bg}
+            $color={parentColors.fg}
+          >{`${parent}${parentDelimiterStr}`}</ParentText>
+        )}
+        {gene && (
+          <GeneText $color={geneColor}>
+            {gene}
+            <span>{':'}</span>
+          </GeneText>
+        )}
+        {left && <ColoredText $color={leftColor}>{left}</ColoredText>}
+        {pos && <PositionText>{pos}</PositionText>}
+        {right && <ColoredText $color={rightColor}>{right}</ColoredText>}
+        {version && <VersionText>{version}</VersionText>}
+      </MutationWrapper>
+      {note && <span>{note}</span>}
+    </MutationBadgeBox>
+  )
+}
+
 export const MutationBadgeBox = styled.span`
   display: inline-block;
   font-size: 0.75rem;
@@ -130,50 +174,6 @@ export function formatVariantUrl(clusters: ClusterDatum[], clusterNames: string[
   }
 
   return `/variants/${cluster.build_name}`
-}
-
-export interface MutationBadgeProps {
-  prefix?: string
-  mutation: Mutation
-  colors: MutationColors
-  tooltip?: string
-}
-
-export function MutationBadge({ prefix, mutation, colors, tooltip }: MutationBadgeProps) {
-  const { t } = useTranslationSafe()
-  const { parent, parentDelimiter, gene, left, pos, right, version, note } = mutation
-
-  const parentColors = get(CLADE_COLORS, parent ?? '', { bg: DEFAULT_COLOR, fg: DEFAULT_TEXT_COLOR })
-  const geneColor = get(GENE_COLORS, gene ?? '', DEFAULT_COLOR)
-  const leftColor = get(colors, left ?? '', DEFAULT_COLOR)
-  const rightColor = get(colors, right ?? '', DEFAULT_COLOR)
-
-  const parentDelimiterStr = parentDelimiter ?? ''
-
-  return (
-    <MutationBadgeBox title={tooltip}>
-      <MutationWrapper>
-        {prefix && <PrefixText>{t(prefix)}</PrefixText>}
-        {parent && (
-          <ParentText
-            $backgroundColor={parentColors.bg}
-            $color={parentColors.fg}
-          >{`${parent}${parentDelimiterStr}`}</ParentText>
-        )}
-        {gene && (
-          <GeneText $color={geneColor}>
-            {gene}
-            <span>{':'}</span>
-          </GeneText>
-        )}
-        {left && <ColoredText $color={leftColor}>{left}</ColoredText>}
-        {pos && <PositionText>{pos}</PositionText>}
-        {right && <ColoredText $color={rightColor}>{right}</ColoredText>}
-        {version && <VersionText>{version}</VersionText>}
-      </MutationWrapper>
-      {note && <span>{note}</span>}
-    </MutationBadgeBox>
-  )
 }
 
 export interface NucleotideMutationBadgeProps {

@@ -7,29 +7,6 @@ import { joinWithCommas } from 'src/helpers/join'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
 import { DefiningMutationCluster } from 'src/io/getDefiningMutationsClusters'
 
-const Ul = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin-top: 0.5rem;
-`
-
-const Li = styled.li`
-  margin: 0;
-`
-
-export const InfoTable = styled(Table)`
-  max-width: 1000px;
-
-  & td {
-    padding: 0.25rem 0.5rem;
-    min-width: 200px;
-  }
-
-  * {
-    border: none !important;
-  }
-`
-
 export function DefiningMutationsInfo({ cluster }: { cluster: DefiningMutationCluster }) {
   const { t } = useTranslationSafe()
 
@@ -107,3 +84,26 @@ export function DefiningMutationsInfo({ cluster }: { cluster: DefiningMutationCl
     </InfoTable>
   )
 }
+
+const Ul = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin-top: 0.5rem;
+`
+
+const Li = styled.li`
+  margin: 0;
+`
+
+export const InfoTable = styled(Table)`
+  max-width: 1000px;
+
+  & td {
+    padding: 0.25rem 0.5rem;
+    min-width: 200px;
+  }
+
+  * {
+    border: none !important;
+  }
+`
