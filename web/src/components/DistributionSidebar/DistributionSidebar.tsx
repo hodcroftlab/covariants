@@ -17,20 +17,6 @@ import {
 } from 'src/state/Places'
 import { sortClustersByClusterNames } from 'src/io/getClusters'
 
-export interface DistributionSidebarProps {
-  countries: Country[]
-  continents: Continent[]
-  clusters?: Cluster[]
-  setCountries: SetterOrUpdater<Country[]>
-  setContinents: SetterOrUpdater<Continent[]>
-  setClusters: SetterOrUpdater<Cluster[]>
-  regionsTitle: string
-  clustersCollapsedByDefault?: boolean
-  countriesCollapsedByDefault?: boolean
-  enabledFilters: string[]
-  Icon?: React.ComponentType<CountryFlagProps>
-}
-
 export function DistributionSidebar({
   countries,
   continents,
@@ -157,4 +143,18 @@ export function DistributionSidebar({
       <Col>{enabledFilters.map((filterName) => get(availableFilters, filterName))}</Col>
     </Row>
   )
+}
+
+export interface DistributionSidebarProps {
+  countries: Country[]
+  continents: Continent[]
+  clusters?: Cluster[]
+  setCountries: SetterOrUpdater<Country[]>
+  setContinents: SetterOrUpdater<Continent[]>
+  setClusters: SetterOrUpdater<Cluster[]>
+  regionsTitle: string
+  clustersCollapsedByDefault?: boolean
+  countriesCollapsedByDefault?: boolean
+  enabledFilters: string[]
+  Icon?: React.ComponentType<CountryFlagProps>
 }
