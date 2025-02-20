@@ -49,7 +49,7 @@
 # Visual display on website
 # | important               | Boolean: Whether we should show it by default in web or it can be hidden under "show more"
 # | has_no_page             | Boolean: if true, variant will not be shown on the left sidebar on main page and will not have a page to navigate to
-# | alt_display_name        | List of alternative friendly names (appear in web under the heading on variant page)
+# | alt_display_name        | REQUIRED: List of alternative friendly names (appear in web under the heading on variant page - and are used in the pango/nextstrain name switch)
 # | col                     | Color associated with the variant
 # | nextstrain_url          | URL to the phylogenetic tree visualization (the "build" in Nextstrain lingo) of this variant on nextstrain.org
 # | old_build_names         | Old variant names in Nextstrain nomenclature (usually before assigned a greek letter)
@@ -68,7 +68,7 @@ clusters = {
         "country_info": [],
         "col": "#D16666",
         "display_name": "20I (Alpha, V1)",
-        "alt_display_name": ["S.501Y.V1"],
+        "alt_display_name": ["B.1.1.7"],
         "build_name": "20I.Alpha.V1",
         "old_build_names": ["S.501Y.V1"],
         "who_name": ["Alpha"],
@@ -127,7 +127,7 @@ clusters = {
         "country_info": [],
         "col": "#FF6666",
         "display_name": "20H (Beta, V2)",
-        "alt_display_name": ["S.501Y.V2"],
+        "alt_display_name": ["B.1.351"],
         "build_name": "20H.Beta.V2",
         "old_build_names": ["S.501Y.V2"],
         "who_name": ["Beta"],
@@ -179,7 +179,7 @@ clusters = {
         "country_info": [],
         "col": "#FFB3B3",
         "display_name": "20J (Gamma, V3)",
-        "alt_display_name": ["S.501Y.V3"],
+        "alt_display_name": ["P.1"],
         "build_name": "20J.Gamma.V3",
         "old_build_names": ["S.501Y.V3"],
         "who_name": ["Gamma"],
@@ -242,7 +242,7 @@ clusters = {
         "country_info": [],
         "col": "#66C266",
         "display_name": "21A (Delta)",
-        "alt_display_name": ["21A/S:478K"],
+        "alt_display_name": ["B.1.617.2"],
         # "other_nextstrain_names": ["21A (Delta)","21J (Delta)","21I (Delta)"],
         "build_name": "21A.Delta",
         "old_build_names": ["21A.S.478K"],
@@ -3863,7 +3863,7 @@ clusters = {
         "country_info": [],
         "col": "#A3FFD1",
         "display_name": "21B (Kappa)",
-        "alt_display_name": ["21A/S:154K"],
+        "alt_display_name": ["B.1.617.1"],
         "build_name": "21B.Kappa",
         "old_build_names": ["21A.S.154K"],
         "who_name": ["Kappa"],
@@ -3934,7 +3934,7 @@ clusters = {
         "country_info": [],
         "col": "#6666A3",
         "display_name": "21D (Eta)",
-        "alt_display_name": ["20A/S:484K"],
+        "alt_display_name": ["B.1.525"],
         "build_name": "21D.Eta",
         "old_build_names": ["20A.S.484K"],
         "who_name": ["Eta"],
@@ -3997,7 +3997,7 @@ clusters = {
         "country_info": [],
         "col": "#FFC2FF",
         "display_name": "21F (Iota)",
-        "alt_display_name": ["20C/S:484K"],
+        "alt_display_name": ["B.1.526"],
         "build_name": "21F.Iota",
         "old_build_names": ["20C.S.484K"],
         "who_name": ["Iota"],
@@ -4276,7 +4276,7 @@ clusters = {
         "country_info": [],
         "col": "#FFBB8B",
         "display_name": "20E (EU1)",
-        "alt_display_name": ["20A.EU1"],
+        "alt_display_name": ["B.1.177"],
         "build_name": "20A.EU1",
         "nextstrain_name": "20E",
         "pango_lineages": [
@@ -4310,7 +4310,7 @@ clusters = {
         "country_info": [],
         "col": "#e2cfe2",
         "display_name": "21C (Epsilon)",
-        "alt_display_name": ["20C/S:452R"],
+        "alt_display_name": ["B.1.427", "B.1.429"],
         "build_name": "21C.Epsilon",
         "old_build_names": ["S.L452R"],
         "who_name": ["Epsilon"],
@@ -4370,6 +4370,7 @@ clusters = {
     "S677HRobin1": {
         "snps": [23593, 29402, 8083],  # T, T, A
         "snps_with_base": ["23593T", "29402T", "8083A"],
+        "alt_display_name": ["B.1.2"],
         "cluster_data": [],
         "nextstrain_build": False,  # as of 25 Feb 22 - no new seqs since Sept
         "graphing": True,
@@ -4409,6 +4410,7 @@ clusters = {
     "S677PPelican": {
         "snps": [23592, 11451, 21811],
         "snps_with_base": ["23592C", "11451G", "21811A"],
+        "alt_display_name": ["B.1.2.1"],
         "cluster_data": [],
         "nextstrain_build": False,  # as of 25 Feb 22 - no new seqs since Sept
         "graphing": True,
@@ -4456,7 +4458,7 @@ clusters = {
         "country_info": [],
         "col": "#A3D8F3",
         "display_name": "20A.EU2",
-        # "alt_display_name": "S:477N",
+        "alt_display_name": "B.1.160",
         "build_name": "20A.EU2",
         "pango_lineages": [
             {"name": "B.1.160", "url": None}
@@ -4814,6 +4816,7 @@ clusters = {
     # variant
     "S677HRobin2": {
         "snps": [23593, 7348],
+        "alt_display_name": ["B.1.2.2"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": False,
@@ -4830,6 +4833,7 @@ clusters = {
     "S677HYellowhammer": {
         "snps": [23593, 9928],
         "cluster_data": [],
+        "alt_display_name": ["B.1.2"],
         "nextstrain_build": False,
         "graphing": False,
         "usa_graph": True,
@@ -4846,6 +4850,7 @@ clusters = {
         "snps": [23592, 3450, 6382],
         "cluster_data": [],
         "nextstrain_build": False,
+        "alt_display_name": ["B.1.2"],
         "graphing": False,
         "usa_graph": True,
         "important": False,
@@ -4861,6 +4866,7 @@ clusters = {
         "snps": [23593, 28833, 1592],
         "cluster_data": [],
         "nextstrain_build": False,
+        "alt_display_name": ["B.1.265"],
         "graphing": False,
         "usa_graph": True,
         "important": False,
@@ -4875,6 +4881,7 @@ clusters = {
     "S677HBluebird": {
         "snps": [23593, 21648],
         "cluster_data": [],
+        "alt_display_name": ["B.1.1.486"],
         "nextstrain_build": False,
         "graphing": False,
         "usa_graph": True,
@@ -4891,6 +4898,7 @@ clusters = {
         "snps": [23593, 23756, 21757],
         "cluster_data": [],
         "nextstrain_build": False,
+        "alt_display_name": ["B.1.1.316"],
         "graphing": False,
         "usa_graph": True,
         "important": False,
@@ -4905,6 +4913,7 @@ clusters = {
     "S677HMockingbird": {
         "snps": [23593, 21986],
         "cluster_data": [],
+        "alt_display_name": ["B.1.234"],
         "nextstrain_build": False,
         "graphing": False,
         "usa_graph": True,
