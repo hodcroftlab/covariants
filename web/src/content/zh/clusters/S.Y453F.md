@@ -19,6 +19,6 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 - 可能是水貂特有的适应，增加与水貂 ACE2 的结合：([Rodrigues等 PloS Comp Bio](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008449)和 [Welkers等, Virus Evolution](https://academic.oup.com/ve/advance-article/doi/10.1093/ve/veaa094/6025194?searchresult=1)); 并多次出现 ([van Dorp等 bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.16.384743v1)).
 - 也可能增加人体中 ACE2 的结合：[Bloom Lab ACE2 binding website](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS/).
 - 确认对再生元鸡尾酒中的抗体具有抗性: REGN10933 ([Baum等 Science](https://science.sciencemag.org/content/369/6506/1014/tab-pdf); [Starr等 bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.30.405472v1.full)).
-- 出现在一名接受利妥昔单抗单克隆抗体治疗的慢性感染免疫抑制患者身上 (伴随着<Var name="S:H69-"/>和<AaMut mut={'S:V70-'}/>) ([Bazykin等, Virological](https://virological.org/t/emergence-of-y453f-and-69-70hv-mutations-in-a-lymphoma-patient-with-long-term-covid-19/580))
+- 出现在一名接受利妥昔单抗单克隆抗体治疗的慢性感染免疫抑制患者身上 (伴随着<VarOrLin name="S:H69-"/>和<AaMut mut={'S:V70-'}/>) ([Bazykin等, Virological](https://virological.org/t/emergence-of-y453f-and-69-70hv-mutations-in-a-lymphoma-patient-with-long-term-covid-19/580))
 
 请注意，由于对水貂养殖场进行了有针对性的抽样，2020 年夏季丹麦 <AaMut mut="S:Y453F"/>的频率可能会被夸大，而带有这种突变的变体可能已经普遍存在。

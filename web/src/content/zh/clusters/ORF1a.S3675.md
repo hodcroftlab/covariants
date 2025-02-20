@@ -1,4 +1,4 @@
-<AaMut mut={"ORF1a:S3675-"}/>是<code>ORF1a</code>中第 3675-3677 位的 3 个氨基酸缺失的一部分，这在所有三个相关变体，以及 <Var name="21D (Eta)"/>和 <Var name="21F (Iota)"/>，以及其他循环变体中都可以看到。
+<AaMut mut={"ORF1a:S3675-"}/>是<code>ORF1a</code>中第 3675-3677 位的 3 个氨基酸缺失的一部分，这在所有三个相关变体，以及 <VarOrLin name="21D (Eta)"/>和 <VarOrLin name="21F (Iota)"/>，以及其他循环变体中都可以看到。
 <br/><br/>
 
 请注意，蛋白质模型不适用于<code>ORF1a</code>.
