@@ -18,7 +18,8 @@ import { AMINOACID_NAMES, GENE_NAMES, GREEK_ALPHABET, NUCELOTIDE_NAMES } from 's
 import { colorHash } from 'src/helpers/colorHash'
 import { rainbow } from 'src/helpers/colorRainbow'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { clusterNamesSelector, clustersAtom } from 'src/state/Clusters'
+import { clusterNamesSelector, clusterPangoLineageMapSelector, clustersAtom } from 'src/state/Clusters'
+import { enablePangolinAtom } from 'src/state/Nomenclature'
 
 const DEFAULT_COLOR = theme.gray700
 const DEFAULT_TEXT_COLOR = theme.gray100
@@ -303,7 +304,7 @@ export function VariantLinkBadge({ name, href, prefix }: VariantLinkBadgeProps) 
         {
           // prettier-ignore
           `VariantLinkBadge: Variant not recognized: ${JSON.stringify(name)}.` +
-          `Known variants: ${clusterNames.join(", ")}`
+          `Known variants: ${clusterNames.join(', ')}`
         }
       </span>
     )
@@ -328,7 +329,7 @@ export function LineageLinkBadge({ name, href, prefix, report }: LineageLinkBadg
 
   const url = useMemo(
     // prettier-ignore
-    () => (href ?? (report ? `https://cov-lineages.org/global_report_${name}.html` : "")),
+    () => (href ?? (report ? `https://cov-lineages.org/global_report_${name}.html` : '')),
     [href, report, name],
   )
   const tooltip = useMemo(() => {
@@ -397,6 +398,48 @@ export function WhoBadge({ name, href, prefix }: WhoBadgeProps) {
   )
 }
 
+export interface VariantOrLineageLinkBadgeProps {
+  name: string
+  href?: string
+  prefix?: string
+  invert?: boolean
+}
+
+/** Dynamically switches between Variant and Lineage depending on nomenclature selected */
+export function VariantOrLineageLinkBadgeLink({ name, href, prefix, invert }: VariantOrLineageLinkBadgeProps) {
+  const enablePangolin = useRecoilValue(enablePangolinAtom)
+  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
+  const pangoName = pangoLineageMap.get(name)
+  const showLineageBadge = enablePangolin != invert
+
+  const clusters = useRecoilValue(clustersAtom)
+  const clusterNames = useRecoilValue(clusterNamesSelector)
+  const { mutationStr } = useMemo(() => variantToObjectAndString(name), [name])
+  const url = useMemo(
+    () => href ?? formatVariantUrl(clusters, clusterNames, mutationStr),
+    [href, mutationStr, clusters, clusterNames],
+  )
+  return showLineageBadge && pangoName ? (
+    <Lin name={pangoName} href={url} />
+  ) : (
+    <Var name={name} href={url} prefix={prefix} />
+  )
+}
+
+export interface VariantOrLineageTextProps {
+  name: string
+  invert?: boolean
+}
+
+/** Dynamically switches between Variant and Lineage as text depending on nomenclature selected */
+export function VariantOrLineageText({ name, invert }: VariantOrLineageTextProps) {
+  const enablePangolin = useRecoilValue(enablePangolinAtom)
+  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
+  const pangoName = pangoLineageMap.get(name) ?? name
+  const showLineageBadge = enablePangolin != invert
+  return <>{showLineageBadge ? pangoName : name}</>
+}
+
 /** Shorter convenience alias for NucleotideMutationBadge */
 export function NucMut({ mut }: { mut: string }) {
   return <NucleotideMutationBadge mutation={mut} />
@@ -425,4 +468,14 @@ export function Lin({ name, href, prefix = '', report }: LineageLinkBadgeProps) 
 /** Shorter convenience alias for WhoBadge */
 export function Who({ name, href, prefix = '' }: WhoBadgeProps) {
   return <WhoBadge name={name} href={href} prefix={prefix} />
+}
+
+/** Shorter convenience alias for VariantOrLineageLinkBadge*/
+export function VarOrLin({ name, href, prefix, invert = false }: VariantOrLineageLinkBadgeProps) {
+  return <VariantOrLineageLinkBadgeLink name={name} href={href} prefix={prefix} invert={invert} />
+}
+
+/** Shorter convenience alias for VariantOrLineageText*/
+export function VarOrLinText({ name, invert = false }: VariantOrLineageTextProps) {
+  return <VariantOrLineageText name={name} invert={invert} />
 }

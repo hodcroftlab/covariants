@@ -58,6 +58,21 @@ export const clusterBuildNamesMapSelector = selector({
   },
 })
 
+export const clusterPangoLineageMapSelector = selector({
+  key: 'clusterPangoLineageMap',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return new Map<string, string>(
+      clusters
+        .map((c) => [
+          c.display_name,
+          c.pango_lineages ? (c.pango_lineages[0] ? c.pango_lineages[0].name : undefined) : undefined,
+        ])
+        .filter(([, pangoName]) => pangoName !== undefined) as [string, string][],
+    )
+  },
+})
+
 export const hasPageClusterBuildNamesSelector = selector({
   key: 'hasPageClusterBuildNames',
   get: ({ get }) => {

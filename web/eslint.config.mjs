@@ -1,3 +1,5 @@
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { fixupConfigRules, fixupPluginRules } from '@eslint/compat'
 import arrayFunc from 'eslint-plugin-array-func'
 import cflint from 'eslint-plugin-cflint'
@@ -16,10 +18,8 @@ import unicorn from 'eslint-plugin-unicorn'
 import onlyWarn from 'eslint-plugin-only-warn'
 import globals from 'globals'
 import tsParser from '@typescript-eslint/parser'
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 import js from '@eslint/js'
-import tseslint from 'typescript-eslint'
+import { configs as tsEslintConfigs } from 'typescript-eslint'
 import { FlatCompat } from '@eslint/eslintrc'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -54,8 +54,8 @@ export default [
     ],
   },
   js.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked,
-  ...tseslint.configs.stylisticTypeChecked,
+  ...tsEslintConfigs.recommendedTypeChecked,
+  ...tsEslintConfigs.stylisticTypeChecked,
   arrayFunc.configs.all,
   // TODO: there is an issue with sonar that should soon be fixed: https://community.sonarsource.com/t/eslint-plugin-sonarjs-doesn-t-work-with-eslint-9-15-0/130771
   // once this is fixed, uncomment the line below and remove sonarjs from the plugins. See https://github.com/hodcroftlab/covariants/issues/439
@@ -68,7 +68,7 @@ export default [
   importPlugin.flatConfigs.errors,
   importPlugin.flatConfigs.warnings,
   importPlugin.flatConfigs.typescript,
-  jsxA11Y['flatConfigs'].recommended,
+  jsxA11Y.flatConfigs.recommended,
 
   ...fixupConfigRules(
     compat.extends(

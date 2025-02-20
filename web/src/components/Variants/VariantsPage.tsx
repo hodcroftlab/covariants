@@ -25,7 +25,8 @@ import { VariantTitle } from 'src/components/Variants/VariantTitle'
 import NextstrainIconBase from 'src/assets/images/nextstrain_logo.svg'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
-import { clusterRedirectsSelector, hasPageClustersSelector } from 'src/state/Clusters'
+import { clusterPangoLineageMapSelector, clusterRedirectsSelector, hasPageClustersSelector } from 'src/state/Clusters'
+import { enablePangolinAtom } from 'src/state/Nomenclature'
 
 const FlexContainer = styled.div`
   display: flex;
@@ -103,6 +104,9 @@ const NEXTSTRAIN_ICON = <NextstrainIcon />
 
 export function VariantsPageContent({ currentCluster }: { currentCluster: ClusterDatum }) {
   const { t } = useTranslationSafe()
+  const enablePangolin = useRecoilValue(enablePangolinAtom)
+  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
+  const pangoName = pangoLineageMap.get(currentCluster.display_name) ?? currentCluster.display_name
 
   const ClusterContent = useMemo(
     () => <MdxContent filepath={`clusters/${currentCluster.build_name}.md`} />,
@@ -132,7 +136,7 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
                 <LinkExternal href={currentCluster.nextstrain_url} icon={NEXTSTRAIN_ICON} color={theme.link.dim.color}>
                   {t(`Dedicated {{nextstrain}} build for {{variant}}`, {
                     nextstrain: 'Nextstrain',
-                    variant: currentCluster.display_name,
+                    variant: enablePangolin ? pangoName : currentCluster.display_name,
                   })}
                 </LinkExternal>
               ) : (

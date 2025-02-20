@@ -5,6 +5,6 @@ _请注意，自 2022年2月24日起，该Nextstrain构建不再定期更新，�
 这种变体于 2021 年初首次被发现，在美国各地都有发现，但在威斯康星州和其他中北部各州尤为突出。
 ([Hodcroft等, medRxiv](https://www.medrxiv.org/content/10.1101/2021.02.12.21251658v2)).
 
-`20G/S:677H Robin1`是`20G`Nextstrain进化枝的一部分，它最值得注意的突变是<AaMut mut={'S:Q677'}/>。 <br/>
+<VarOrLin name="S:677H.Robin1" prefix=""/>是`20G`Nextstrain进化枝的一部分，它最值得注意的突变是<AaMut mut={'S:Q677'}/>。 <br/>
 
 <MdxContent filepath="clusters/S.Q677.md" />

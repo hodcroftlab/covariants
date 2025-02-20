@@ -21,9 +21,9 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 ---
 
 特殊突变<AaMut mut="S:N501Y"/>于2020年底/2021年初在3个受关注的变体中找到：
-- 英国 (<Var name="20I (Alpha, V1)" prefix=""/> or `B.1.1.7`)
-- 南非 (<Var name="20H (Beta, V2)" prefix=""/> or `B.1.351`)
-- 巴西 ( <Var name="20J (Gamma, V3)" prefix=""/> or `P.1`)
+- 英国 (<VarOrLin name="20I (Alpha, V1)" prefix=""/>)
+- 南非 (<VarOrLin name="20H (Beta, V2)" prefix=""/>)
+- 巴西 ( <VarOrLin name="20J (Gamma, V3)" prefix=""/>)
 
 查看这些变体的<Link href="/shared-mutations">共享突变列表</Link>。可以通过访问上面的链接找到有关这些变体的更多信息。
 

@@ -25,23 +25,30 @@ const aquariaDatumSchema = z.object({
 })
 
 const clusterDatumSchema = z.object({
+  alt_display_name: z.string().array().optional(),
+  aquaria_urls: aquariaDatumSchema.array().optional(),
   build_name: z.string(),
-  old_build_names: z.string().array().optional(),
-  nextstrain_url: z.string().optional(),
   col: z.string(),
   display_name: z.string(),
-  alt_display_name: z.string().array().optional(),
-  snps: z.number().array(),
+  has_no_page: z.boolean().optional(),
+  important: z.boolean().optional(),
   mutations: z
     .object({
       nonsynonymous: mutationSchema.array().optional(),
       synonymous: mutationSchema.array().optional(),
     })
     .optional(),
-  aquaria_urls: aquariaDatumSchema.array().optional(),
+  nextstrain_url: z.string().optional(),
+  old_build_names: z.string().array().optional(),
+  pango_lineages: z
+    .object({
+      name: z.string(),
+      url: z.string().or(z.null()),
+    })
+    .array()
+    .optional(),
+  snps: z.number().array(),
   type: z.string().optional(),
-  important: z.boolean().optional(),
-  has_no_page: z.boolean().optional(),
 })
 
 const clusterDataRawSchema = z.object({

@@ -1,4 +1,4 @@
-<AaMut mut={"S:H655Y"}/>出现在 <Var name="20J (Gamma, V3)"/>以及一些其他循环变体中。
+<AaMut mut={"S:H655Y"}/>出现在 <VarOrLin name="20J (Gamma, V3)"/>以及一些其他循环变体中。
 <br/><br/>
 
 _关于此突变知之甚少 - 如果可以提供帮助，请添加链接！_
