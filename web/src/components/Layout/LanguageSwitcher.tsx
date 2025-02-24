@@ -7,14 +7,14 @@ import { getLocaleWithKey, Locale, localesArray } from 'src/i18n/i18n'
 
 export type LanguageSwitcherProps = DropdownProps
 
-export function LanguageSwitcher({ ...restProps }: LanguageSwitcherProps) {
+export function LanguageSwitcher({ className, ...restProps }: LanguageSwitcherProps) {
   const [currentLocale, setCurrentLocale] = useRecoilState(localeAtom)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const toggle = useCallback(() => setDropdownOpen((prevState) => !prevState), [])
   const setLocaleLocal = useCallback((locale: Locale) => () => setCurrentLocale(locale.key), [setCurrentLocale])
 
   return (
-    <Dropdown className="language-switcher" isOpen={dropdownOpen} toggle={toggle} {...restProps}>
+    <Dropdown className={`language-switcher ${className}`} isOpen={dropdownOpen} toggle={toggle} {...restProps}>
       <DropdownToggle nav caret>
         <LanguageSwitcherItem locale={currentLocale} />
       </DropdownToggle>
