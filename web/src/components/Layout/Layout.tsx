@@ -1,17 +1,37 @@
 import React, { PropsWithChildren } from 'react'
 import { styled } from 'styled-components'
 import { Container as ContainerBase, Row, Col } from 'reactstrap'
-import Image from 'next/image'
-import { useRecoilState } from 'recoil'
 import { NavigationBar } from './NavigationBar'
 import { FooterContent } from './Footer'
-import { Changelog } from './Changelog'
-import GisaidLogoPNG from 'src/assets/images/GISAID_logo.png'
 import { ChristmasLightRope, Santa, Snowfall } from 'src/components/Common/Christmas'
-import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { LinkExternal } from 'src/components/Link/LinkExternal'
-import { ToggleTwoLabels } from 'src/components/Common/ToggleTwoLabels'
-import { enablePangolinAtom } from 'src/state/Nomenclature'
+
+export function Layout({ children }: PropsWithChildren<LayoutProps>) {
+  return (
+    <Container fluid>
+      <HeaderRow className={'gx-0'}>
+        <HeaderCol>
+          <NavigationBar />
+          <ChristmasLightRope />
+        </HeaderCol>
+      </HeaderRow>
+
+      <MainContainer fluid>
+        <MainRow className={'gx-0 mt-4 mt-md-2'}>
+          <MainCol>{children}</MainCol>
+        </MainRow>
+      </MainContainer>
+
+      <FooterRow className={'gx-0'}>
+        <FooterCol>
+          <FooterContent />
+        </FooterCol>
+      </FooterRow>
+
+      <Snowfall />
+      <Santa />
+    </Container>
+  )
+}
 
 const Container = styled(ContainerBase)`
   min-height: 100%;
@@ -57,71 +77,6 @@ const FooterCol = styled(Col)`
   padding: 0;
 `
 
-const GisaidText = styled.small`
-  font-size: 0.9rem;
-`
-
 export interface LayoutProps {
   wide?: boolean
-}
-
-function NomenclatureSwitch() {
-  const [enablePangolin, setEnablePangolin] = useRecoilState(enablePangolinAtom)
-
-  return (
-    <ToggleTwoLabels
-      identifier="nomenclature-switch"
-      title="Switch nomenclature"
-      checked={enablePangolin}
-      onCheckedChanged={setEnablePangolin}
-      labelLeft="Pangolin"
-      labelRight="Nextstrain"
-    />
-  )
-}
-
-export function Layout({ children }: PropsWithChildren<LayoutProps>) {
-  const { t } = useTranslationSafe()
-
-  return (
-    <Container fluid>
-      <HeaderRow className={'gx-0'}>
-        <HeaderCol>
-          <NavigationBar />
-          <ChristmasLightRope />
-        </HeaderCol>
-      </HeaderRow>
-
-      <Row className="ms-3 mt-2 d-none d-md-block gx-0">
-        <Col className="d-flex">
-          <GisaidText className="d-flex me-auto">
-            <span className="me-1 align-self-center">{t('Enabled by data from {{ gisaid }}', { gisaid: '' })}</span>
-            <LinkExternal className="align-self-center" href="https://www.gisaid.org/" icon={null}>
-              <Image src={GisaidLogoPNG} alt="GISAID" height={27} width={73} />
-            </LinkExternal>
-          </GisaidText>
-
-          <div className="d-flex">
-            <NomenclatureSwitch />
-            <Changelog />
-          </div>
-        </Col>
-      </Row>
-
-      <MainContainer fluid>
-        <MainRow className={'gx-0'}>
-          <MainCol>{children}</MainCol>
-        </MainRow>
-      </MainContainer>
-
-      <FooterRow className={'gx-0'}>
-        <FooterCol>
-          <FooterContent />
-        </FooterCol>
-      </FooterRow>
-
-      <Snowfall />
-      <Santa />
-    </Container>
-  )
 }

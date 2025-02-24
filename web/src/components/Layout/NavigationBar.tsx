@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { Suspense, useCallback, useMemo, useState } from 'react'
 
 import { styled } from 'styled-components'
 import {
@@ -15,6 +15,9 @@ import {
 import classNames from 'classnames'
 import { FaGithub, FaTwitter } from 'react-icons/fa'
 
+import Image from 'next/image'
+import { ErrorBoundary } from 'react-error-boundary'
+import { NomenclatureSwitch } from '../Common/NomenclatureSwitch'
 import BrandLogoBase from 'src/assets/images/logo.svg'
 import BrandLogoLargeBase from 'src/assets/images/logo_text_right.svg'
 
@@ -24,6 +27,10 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { DEPLOY_ENVIRONMENT, TWITTER_USERNAME_RAW, URL_GITHUB } from 'src/constants'
 import { ChristmasToggle } from 'src/components/Common/Christmas'
 import { LanguageSwitcher } from 'src/components/Layout/LanguageSwitcher'
+import GisaidLogoPNG from 'src/assets/images/GISAID_logo.png'
+import { ChangelogButton } from 'src/components/Common/ChangelogButton'
+import { FetchError } from 'src/components/Error/FetchError'
+import { LastUpdated } from 'src/components/Common/LastUpdated'
 
 export function matchingUrl(url: string, pathname: string): boolean {
   if (pathname.startsWith('/variants')) {
@@ -164,48 +171,81 @@ export function NavigationBar() {
   }, [t])
 
   return (
-    <Navbar expand="md" color="light" light role="navigation">
-      <Link href="/">
-        <BrandLogoLarge className="d-none d-lg-block" />
-        <BrandLogo className="d-block d-lg-none" />
-      </Link>
+    <>
+      <Navbar expand="md" color="light" light role="navigation">
+        <Link href="/">
+          <BrandLogoLarge className="d-none d-lg-block" />
+          <BrandLogo className="d-block d-lg-none" />
+        </Link>
 
-      <NavbarToggler onClick={toggle} />
+        <NavbarToggler onClick={toggle} />
 
-      <Collapse isOpen={isOpen} navbar>
-        <NavWrappable navbar>
-          {Object.entries(navLinksLeft).map(([url, text]) => {
-            return (
-              <NavItem key={url} className={classNames(matchingUrl(url, pathname) && 'active')}>
-                <NavLink tag={Link} href={url}>
-                  {text}
+        <Collapse isOpen={isOpen} navbar>
+          <NavWrappable navbar>
+            {Object.entries(navLinksLeft).map(([url, text]) => {
+              return (
+                <NavItem key={url} className={classNames(matchingUrl(url, pathname) && 'active')}>
+                  <NavLink tag={Link} href={url}>
+                    {text}
+                  </NavLink>
+                </NavItem>
+              )
+            })}
+          </NavWrappable>
+
+          <Nav className="ms-auto" navbar>
+            <NavItem>
+              <Row className={'gx-0'}>
+                <Col className="mt-2 mx-3">
+                  <ChristmasToggle />
+                </Col>
+              </Row>
+            </NavItem>
+            {navLinksRight.map(({ text, title, url, alt, icon }) => (
+              <NavItem key={title}>
+                <NavLink tag={LinkRight} title={title} href={url} alt={alt} icon={null}>
+                  <span>
+                    <span className="me-2">{icon}</span>
+                    <span className="d-inline d-sm-none">{text}</span>
+                  </span>
                 </NavLink>
               </NavItem>
-            )
-          })}
-        </NavWrappable>
+            ))}
+            <LanguageSwitcher className="mx-auto mx-md-0" />
+          </Nav>
+        </Collapse>
+      </Navbar>
 
-        <Nav className="ms-auto" navbar>
-          <NavItem>
-            <Row className={'gx-0'}>
-              <Col className="mt-2 mx-3">
-                <ChristmasToggle />
-              </Col>
-            </Row>
-          </NavItem>
-          {navLinksRight.map(({ text, title, url, alt, icon }) => (
-            <NavItem key={title}>
-              <NavLink tag={LinkRight} title={title} href={url} alt={alt} icon={null}>
-                <span>
-                  <span className="me-2">{icon}</span>
-                  <span className="d-inline d-sm-none">{text}</span>
-                </span>
-              </NavLink>
-            </NavItem>
-          ))}
-          <LanguageSwitcher />
-        </Nav>
-      </Collapse>
-    </Navbar>
+      {!isOpen && <SubNavigationBar className="d-none d-md-flex mt-2 gx-0 px-3" />}
+      {isOpen && <SubNavigationBar className="d-flex mt-2 gx-0 px-3" />}
+    </>
   )
 }
+
+function SubNavigationBar({ className }: { className?: string }) {
+  const { t } = useTranslationSafe()
+  return (
+    <div className={className}>
+      <GisaidText className="d-none d-md-flex align-items-center gap-1">
+        {t('Enabled by data from {{ gisaid }}', { gisaid: '' })}
+        <LinkExternal href="https://www.gisaid.org/" icon={null}>
+          <Image src={GisaidLogoPNG} alt="GISAID" height={27} width={73} />
+        </LinkExternal>
+      </GisaidText>
+
+      <NomenclatureSwitch className="mx-auto mx-md-0 ms-md-auto" />
+
+      <ChangelogButton className="d-none d-md-flex">
+        <ErrorBoundary FallbackComponent={FetchError}>
+          <Suspense>
+            <LastUpdated />
+          </Suspense>
+        </ErrorBoundary>
+      </ChangelogButton>
+    </div>
+  )
+}
+
+const GisaidText = styled.small`
+  font-size: 0.9rem;
+`
