@@ -17,19 +17,23 @@ const aminoAcidMutationSchema = nucleotideMutationSchema.extend({
 const codingMutationSchemaRaw = z.object({
   aa_mutation: aminoAcidMutationSchema,
   nuc_mutations: nucleotideMutationSchema.array(),
+  notes: z.string().optional(),
 })
 
-const codingMutationSchema = codingMutationSchemaRaw.transform(({ aa_mutation, nuc_mutations }) => ({
+const codingMutationSchema = codingMutationSchemaRaw.transform(({ aa_mutation, nuc_mutations, notes }) => ({
   aaMutation: aa_mutation,
   nucMutations: nuc_mutations,
+  notes,
 }))
 
 const silentMutationSchemaRaw = z.object({
   nuc_mutation: nucleotideMutationSchema,
+  notes: z.string().optional(),
 })
 
-const silentMutationSchema = silentMutationSchemaRaw.transform(({ nuc_mutation }) => ({
+const silentMutationSchema = silentMutationSchemaRaw.transform(({ nuc_mutation, notes }) => ({
   nucMutation: nuc_mutation,
+  notes,
 }))
 
 const definingMutationsSchemaRaw = z.object({
@@ -82,6 +86,7 @@ const definingMutationClusterListSchemaRaw = z.object({
 export type NucleotideMutation = z.infer<typeof nucleotideMutationSchema>
 export type AminoAcidMutation = z.infer<typeof aminoAcidMutationSchema>
 export type CodingMutation = z.infer<typeof codingMutationSchema>
+export type SilentMutation = z.infer<typeof silentMutationSchema>
 export type DefiningMutations = z.infer<typeof definingMutationsSchema>
 
 export type DefiningMutationCluster = z.infer<typeof definingMutationClusterSchema>
