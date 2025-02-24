@@ -8,7 +8,8 @@ import { StrictOmit } from 'ts-essentials'
 export const Label = styled.label`
   flex: 0;
   display: flex;
-  margin: 0 auto;
+  gap: 0.25rem;
+  align-items: center;
   word-wrap: normal;
   text-overflow: clip;
   white-space: nowrap;
@@ -72,15 +73,13 @@ export function ToggleTwoLabels({
   return (
     <Label htmlFor={identifier} className={className} title={title}>
       {labelRight}
-      <span className="me-2 ms-2">
-        <ToggleTwoLabelsBase
-          id={identifier}
-          className="react-toggle-two-labels-custom"
-          icons={false}
-          onChange={onChange}
-          {...props}
-        />
-      </span>
+      <ToggleTwoLabelsBase
+        id={identifier}
+        className="react-toggle-two-labels-custom"
+        icons={false}
+        onChange={onChange}
+        {...props}
+      />
       {labelLeft}
     </Label>
   )
