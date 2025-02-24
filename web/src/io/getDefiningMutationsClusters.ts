@@ -10,7 +10,8 @@ const mutationReadSchema = z.object({
 })
 const nucleotideMutationSchema = mutationReadSchema.extend({ pos: z.number() })
 const aminoAcidMutationReadSchema = mutationReadSchema.extend({ nucPos: z.array(z.number()) })
-const aminoAcidMutationSchema = aminoAcidMutationReadSchema.extend({
+const aminoAcidMutationsSchema = mutationReadSchema.extend({ pos: z.number(), gene: z.string() })
+const aminoAcidMutationWithNucleotideMutationsSchema = aminoAcidMutationReadSchema.extend({
   gene: z.string(),
   pos: z.number(),
   nucMuts: z.array(nucleotideMutationSchema),
@@ -46,7 +47,8 @@ const definingMutationClusterListSchema = z.object({
 })
 
 export type NucleotideMutation = z.infer<typeof nucleotideMutationSchema>
-export type AminoAcidMutation = z.infer<typeof aminoAcidMutationSchema>
+export type AminoAcidMutation = z.infer<typeof aminoAcidMutationsSchema>
+export type AminoAcidMutationWithNucleotideMutations = z.infer<typeof aminoAcidMutationWithNucleotideMutationsSchema>
 export type DefiningMutations = z.infer<typeof definingMutationsSchema>
 
 export type DefiningMutationCluster = z.infer<typeof definingMutationClusterSchema>
