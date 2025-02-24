@@ -10,7 +10,7 @@ import { NarrowPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 import { definingMutationsCladeToLineage } from 'src/state/DefiningMutations'
 import { SelectClusterDropdown } from 'src/components/DefiningMutations/DefiningMutationByCluster/SelectClusterDropdown'
 import { DefiningMutationsInfo } from 'src/components/DefiningMutations/DefiningMutationByCluster/DefiningMutationsInfo'
-import { DefiningMutationsTable } from 'src/components/DefiningMutations/DefiningMutationByCluster/DefiningMutationsTable'
+import { DefiningMutationsTables } from 'src/components/DefiningMutations/DefiningMutationByCluster/DefiningMutationsTables'
 import { SelectReferenceDropdown } from 'src/components/DefiningMutations/DefiningMutationByCluster/SelectReferenceDropdown'
 import { DefiningMutationsInfoText } from 'src/components/DefiningMutations/DefiningMutationByCluster/DefiningMutationsInfoText'
 
@@ -74,7 +74,7 @@ function DefiningMutationsTableWithTargets({ cluster }: { cluster: DefiningMutat
         selectedSequence={selectedReference}
         setSelectedReference={setSelectedReference}
       />
-      <DefiningMutationsTable currentCluster={cluster} referenceSequenceName={selectedReference} />
+      <DefiningMutationsTables currentCluster={cluster} referenceSequenceName={selectedReference} />
     </div>
   )
 }
