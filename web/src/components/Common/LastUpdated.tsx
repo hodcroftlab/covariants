@@ -16,9 +16,7 @@ export function LastUpdated({ className }: HTMLProps<HTMLParagraphElement>) {
 
   return (
     <LastUpdatedText className={classNames(className)}>
-      <span className="ms-1" title={full}>
-        {t('Last updated: {{ date }}', { date: date })}
-      </span>
+      <span title={full}>{t('Last updated: {{ date }}', { date: date })}</span>
     </LastUpdatedText>
   )
 }
