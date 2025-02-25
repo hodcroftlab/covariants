@@ -19,7 +19,7 @@ Citation:
 Emma B. Hodcroft. 2021. "CoVariants: SARS-CoV-2 Mutations and Variants of Interest." https://covariants.org/
 ```
 
-Emma Hodcroft, PhD, is a researcher at the Institute of Social and Preventive Medicine, University of Bern in Bern, Switzerland and member of SIB Swiss Insitute of Bioinformatics, Switzerland.
+Emma Hodcroft, PhD, is a researcher at the Institute of Social and Preventive Medicine, University of Bern in Bern, Switzerland and member of SIB Swiss Institute of Bioinformatics, Switzerland.
 
 Ivan Aksamentov is a major contributor to this project and is based in the [Neher Lab](https://neherlab.org/) at the University of Basel.
 
@@ -41,7 +41,7 @@ This work is enabled by data made available on [GISAID](https://www.gisaid.org/)
 
 The raw data behind these charts comes from [GISAID](https://www.gisaid.org/). See the [GISAID Terms of Use](https://www.gisaid.org/registration/terms-of-use/) for more information about how this data can be used. Note that under the terms of use, data on GISAID cannot be redistributed.
 
-The derived sequence counts used to generate the plots seen here are available. You can find them 'per variant' as JSON or TSV files [in this Github folder](https://github.com/hodcroftlab/covariants/tree/master/cluster_tables), or 'per country' as a JSON file [here](https://github.com/hodcroftlab/covariants/blob/master/cluster_tables/EUClusters_data.json), or [here](https://github.com/hodcroftlab/covariants/blob/master/web/public/data/perCountryData.json) (data is the same, file format differs slightly). You can find the data behind the estimated cases by variant plots [here](https://github.com/hodcroftlab/covariants/blob/master/web/public/data/perCountryDataCaseCounts.json).
+The derived sequence counts used to generate the plots seen here are available. You can find them 'per variant' as JSON or TSV files [in this GitHub folder](https://github.com/hodcroftlab/covariants/tree/master/cluster_tables), or 'per country' as a JSON file [here](https://github.com/hodcroftlab/covariants/blob/master/cluster_tables/EUClusters_data.json), or [here](https://github.com/hodcroftlab/covariants/blob/master/web/public/data/perCountryData.json) (data is the same, file format differs slightly). You can find the data behind the estimated cases by variant plots [here](https://github.com/hodcroftlab/covariants/blob/master/web/public/data/perCountryDataCaseCounts.json).
 
 **If you use this data please [credit this resource](#how-should-i-cite-or-acknowledge-this-work) appropriately, including linking back to this website.**
 
@@ -101,9 +101,9 @@ To show more mutations, we show two mutation tables, one for 'Gene S' (Spike) an
 
 ### What do the names you use mean?
 
-Variants that are recognised as clades in the [Nextstrain nomenclature](https://nextstrain.org/blog/2021-01-06-updated-SARS-CoV-2-clade-naming) are shown with this name (ex: '21A'). This is often accompanied by an official [WHO designation](https://www.who.int/en/activities/tracking-SARS-CoV-2-variants/) (ex: 'Alpha', 'Beta').
+Variants that are recognised as clades in the [Nextstrain nomenclature](https://nextstrain.org/blog/2021-01-06-updated-SARS-CoV-2-clade-naming) are shown with this name (ex: '21A'). This is often accompanied by an official [WHO designation](https://www.who.int/en/activities/tracking-SARS-CoV-2-variants/) (ex: 'Alpha', 'Beta'). Additionally, we provide the corresponding [Pango lineage](https://cov-lineages.org/) for each variant. You can toggle between Nextstrain and Pango nomenclature using the toggle in the top-right. An overview table of the nomenclature relationships can be found on the [home](/) and [variants](/variants) page. 
 
-Variants/mutations without official names are listed by the location of a mutation in the spike protein (`S:`). The letter after `:` indicates the original amino-acid, the number is the position of the amino-acid in the spike protein, and the last letter is the 'new' amino-acid. For Variants named like this, they are often preceeded by the 'parent' clade name (ex: 20A/S:439K).
+Variants/mutations without official names are listed by the location of a mutation in the spike protein (`S:`). The letter after `:` indicates the original amino-acid, the number is the position of the amino-acid in the spike protein, and the last letter is the 'new' amino-acid. For Variants named like this, they are often preceded by the 'parent' clade name (ex: 20A/S:439K).
 
 For many nutation builds, like `S:N501` and `S:E484`, there is no last letter. This is because the builds track multiple amino-acid changes.
 
