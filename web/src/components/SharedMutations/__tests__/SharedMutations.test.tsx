@@ -3,7 +3,7 @@ import { screen, fireEvent, waitFor } from '@testing-library/react'
 import React from 'react'
 import { http, HttpResponse } from 'msw'
 import { ErrorBoundary } from 'react-error-boundary'
-import { renderWithQueryClient } from 'src/helpers/__tests__/providers'
+import { renderWithQueryClient, renderWithQueryClientAndRecoilRoot } from 'src/helpers/__tests__/providers'
 import { SharedMutationsTable } from 'src/components/SharedMutations/SharedMutationsTable'
 import { server } from 'src/components/SharedMutations/__tests__/mockRequests'
 import { FETCHER } from 'src/hooks/useAxiosQuery'
@@ -29,7 +29,7 @@ describe('SharedMutations', () => {
   describe('SharedMutationsTable', () => {
     test('shared button toggles between shared by commonness and shared by position', async () => {
       // Arrange
-      const { container } = renderWithQueryClient(<SharedMutationsTable />)
+      const { container } = renderWithQueryClientAndRecoilRoot(<SharedMutationsTable />)
       await waitFor(() => expect(screen.getByRole('table')).toBeDefined())
       const sharedByToggle = container.querySelector('#toggle-advanced-controls')
       if (!sharedByToggle) {
