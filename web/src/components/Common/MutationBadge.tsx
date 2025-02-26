@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React, { useMemo } from 'react'
 
 import get from 'lodash/get'
@@ -129,7 +128,7 @@ export function formatVariantUrl(
   mutation: string,
   usePangolin = false,
 ) {
-  const cluster = clusters.find(({ displayName }) => display_name === mutation)
+  const cluster = clusters.find(({ displayName }) => displayName === mutation)
   if (!cluster) {
     console.warn(`Variant not recognized: ${mutation}. Known variants: ${clusterNames.join(', ')}`)
     return undefined
