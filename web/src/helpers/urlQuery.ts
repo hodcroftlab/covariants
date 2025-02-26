@@ -22,6 +22,5 @@ export async function updateUrlQuery(newQuery: ParsedUrlQuery) {
 }
 
 export async function setUrlPath(path: string) {
-  console.log(path)
-  return Router.replace(path, undefined, { scroll: false, shallow: true })
+  return Router.push(path, undefined, { scroll: false })
 }
