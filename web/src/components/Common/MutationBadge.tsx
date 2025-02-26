@@ -123,14 +123,22 @@ export function formatMutationMaybe(mutation: Mutation | string) {
   return formatMutation(mutation)
 }
 
-export function formatVariantUrl(clusters: ClusterDatum[], clusterNames: string[], mutation: string) {
+export function formatVariantUrl(
+  clusters: ClusterDatum[],
+  clusterNames: string[],
+  mutation: string,
+  usePangolin = false,
+) {
   const cluster = clusters.find(({ display_name }) => display_name === mutation)
   if (!cluster) {
     console.warn(`Variant not recognized: ${mutation}. Known variants: ${clusterNames.join(', ')}`)
     return undefined
   }
+  if (usePangolin && !cluster.pango_lineages) {
+    console.warn(`Variant ${mutation} does not have a pango lineage. Using nextstrain nomenclature in link.`)
+  }
 
-  return `/variants/${cluster.build_name}`
+  return `/variants/${usePangolin ? (cluster.pango_lineages?.[0]?.name ?? cluster.build_name) : cluster.build_name}`
 }
 
 export interface MutationBadgeProps {
@@ -416,8 +424,8 @@ export function VariantOrLineageLinkBadgeLink({ name, href, prefix, invert }: Va
   const clusterNames = useRecoilValue(clusterNamesSelector)
   const { mutationStr } = useMemo(() => variantToObjectAndString(name), [name])
   const url = useMemo(
-    () => href ?? formatVariantUrl(clusters, clusterNames, mutationStr),
-    [href, mutationStr, clusters, clusterNames],
+    () => href ?? formatVariantUrl(clusters, clusterNames, mutationStr, showLineageBadge),
+    [href, mutationStr, clusters, clusterNames, showLineageBadge],
   )
   return showLineageBadge && pangoName ? (
     <Lin name={pangoName} href={url} />

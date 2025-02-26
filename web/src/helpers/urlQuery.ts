@@ -20,3 +20,7 @@ export async function updateUrlQuery(newQuery: ParsedUrlQuery) {
 
   return setUrlQuery(query)
 }
+
+export async function setUrlPath(path: string) {
+  return Router.push(path, undefined, { scroll: false })
+}
