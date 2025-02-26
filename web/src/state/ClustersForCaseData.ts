@@ -1,8 +1,11 @@
-import { Cluster } from './Clusters'
+import Router from 'next/router'
+import { get as getLodash } from 'lodash'
+import { Cluster, updateUrlOnClustersSet } from './Clusters'
 
-import { updateUrlQuery } from 'src/helpers/urlQuery'
 import { perCountryCasesDataSelector } from 'src/state/PerCountryCasesData'
 import { atomDefault } from 'src/state/utils/atomDefault'
+import { parseUrl } from 'src/helpers/parseUrl'
+import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
 
 /**
  * Represents a list of currently enabled clusters (variants)
@@ -10,20 +13,18 @@ import { atomDefault } from 'src/state/utils/atomDefault'
 export const clustersCasesAtom = atomDefault<Cluster[]>({
   key: 'clustersCases',
   default: ({ get }) => {
-    const data = get(perCountryCasesDataSelector)
+    const { clusters } = get(perCountryCasesDataSelector)
 
-    return data.clusters
+    const { query } = parseUrl(Router.asPath)
+    const enabledClusters = convertToArrayMaybe(getLodash(query, 'variant'))
+    if (enabledClusters) {
+      return clusters.map((cluster) => ({
+        ...cluster,
+        enabled: includesCaseInsensitive(enabledClusters, cluster.cluster),
+      }))
+    }
+
+    return clusters
   },
-  effects: [
-    ({ onSet }) => {
-      onSet((clusters) => {
-        // If all clusters are enabled, we will remove cluster url params
-        const hasAllEnabled = clusters.every((cluster) => cluster.enabled)
-
-        void updateUrlQuery({
-          variant: hasAllEnabled ? [] : clusters.filter((cluster) => cluster.enabled).map((cluster) => cluster.cluster),
-        })
-      })
-    },
-  ],
+  effects: [updateUrlOnClustersSet],
 })
