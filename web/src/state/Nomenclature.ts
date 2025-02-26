@@ -29,7 +29,7 @@ export function updateUrlOnPangolinSet({ onSet, getPromise }: AtomEffectParams<b
             ? (buildNameToLineageMap.get(variantName) ?? variantName)
             : (lineageToBuildNameMap.get(variantName) ?? variantName)
 
-          return setUrlPath(enablePangolin ? `/${path}/${newVariantName}` : `/${path}/${newVariantName}`)
+          return setUrlPath(`/${path}/${newVariantName}`)
         })
         .catch((error) => {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
