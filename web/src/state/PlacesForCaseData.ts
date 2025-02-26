@@ -1,5 +1,7 @@
 import { selector } from 'recoil'
 
+import Router from 'next/router'
+import { get as getLodash } from 'lodash'
 import {
   Continent,
   Country,
@@ -13,6 +15,9 @@ import { updateUrlQuery } from 'src/helpers/urlQuery'
 import { isDefaultValue } from 'src/state/utils/isDefaultValue'
 import { perCountryCasesDataSelector } from 'src/state/PerCountryCasesData'
 import { atomDefault } from 'src/state/utils/atomDefault'
+import { parseUrl } from 'src/helpers/parseUrl'
+import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
+import { shouldPlotCountryAtom } from 'src/state/ShouldPlotCountry'
 
 /**
  * Represents a list of currently enabled countries
@@ -21,9 +26,26 @@ import { atomDefault } from 'src/state/utils/atomDefault'
 export const countriesCasesAtom = atomDefault<Country[]>({
   key: 'casesCountries',
   default: ({ get }) => {
+    const { query } = parseUrl(Router.asPath)
     const data = get(perCountryCasesDataSelector)
+    const shouldPlotCountry = get(shouldPlotCountryAtom)
 
-    return data.countries
+    const countries = data.countries
+      .map((c) => c.country)
+      .sort()
+      .map((country) => ({
+        country,
+        enabled: shouldPlotCountry[country],
+      }))
+
+    const enabledCountries = convertToArrayMaybe(getLodash(query, 'country'))
+    if (enabledCountries) {
+      return countries.map((country) => ({
+        ...country,
+        enabled: includesCaseInsensitive(enabledCountries, country.country),
+      }))
+    }
+    return countries
   },
   effects: [
     ({ onSet }) => {
