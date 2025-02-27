@@ -5,7 +5,7 @@ import Router from 'next/router'
 import { parseUrl } from 'src/helpers/parseUrl'
 
 export async function setUrlQuery(query: ParsedUrlQuery) {
-  return Router.replace({ pathname: Router.pathname, query }, undefined, { scroll: false, shallow: true })
+  return Router.replace({ pathname: Router.pathname, query }, undefined, { scroll: false, shallow: false })
 }
 
 export async function removeFromUrlQuery(key: string) {
@@ -22,5 +22,5 @@ export async function updateUrlQuery(newQuery: ParsedUrlQuery) {
 }
 
 export async function setUrlPath(path: string) {
-  return Router.push(path, undefined, { scroll: false })
+  return Router.replace(path, undefined, { scroll: false })
 }

@@ -5,6 +5,7 @@ import { atomAsync } from 'src/state/utils/atomAsync'
 import { CLUSTER_NAME_OTHERS, ClusterDatum, fetchClusters } from 'src/io/getClusters'
 import { theme } from 'src/theme'
 import { notUndefinedOrNull } from 'src/helpers/notUndefined'
+import { enablePangolinAtom } from 'src/state/Nomenclature'
 
 export interface Cluster {
   cluster: string
@@ -31,14 +32,6 @@ export const clusterNamesSelector = selector({
   get: ({ get }) => {
     const clusters = get(clustersAtom)
     return clusters.map((cluster) => cluster.displayName)
-  },
-})
-
-export const clusterBuildNamesSelector = selector({
-  key: 'clusterBuildNames',
-  get: ({ get }) => {
-    const clusters = get(clustersAtom)
-    return clusters.map((cluster) => cluster.buildName)
   },
 })
 
@@ -90,6 +83,21 @@ export const clusterLineageBuildNameMapSelector = selector({
         .map((c) => [
           c.pangoLineages ? (c.pangoLineages[0] ? c.pangoLineages[0].name : undefined) : undefined,
           c.buildName,
+        ])
+        .filter(([pangoName]) => pangoName !== undefined) as [string, string][],
+    )
+  },
+})
+
+export const clusterLineageDisplayNameMapSelector = selector({
+  key: 'clusterLineageDisplayNameMap',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return new Map<string, string>(
+      clusters
+        .map((c) => [
+          c.pango_lineages ? (c.pango_lineages[0] ? c.pango_lineages[0].name : undefined) : undefined,
+          c.display_name,
         ])
         .filter(([pangoName]) => pangoName !== undefined) as [string, string][],
     )
@@ -162,13 +170,26 @@ export function disableAllClusters(clusters: Cluster[]): Cluster[] {
 }
 
 /** Atom effect which synchronizes list of selected clusters to URL query params */
-export function updateUrlOnClustersSet({ onSet }: AtomEffectParams<Cluster[]>) {
+export function updateUrlOnClustersSet({ onSet, getPromise }: AtomEffectParams<Cluster[]>) {
   onSet((clusters: Cluster[]) => {
     // If all clusters are enabled, we will remove cluster url params
     const hasAllEnabled = clusters.every((cluster) => cluster.enabled)
+    const variants = hasAllEnabled
+      ? []
+      : clusters.filter((cluster) => cluster.enabled).map((cluster) => cluster.cluster)
 
-    void updateUrlQuery({
-      variant: hasAllEnabled ? [] : clusters.filter((cluster) => cluster.enabled).map((cluster) => cluster.cluster),
-    })
+    // Map display names to pango lineages if pango nomenclature is enabled
+    Promise.all([getPromise(clusterPangoLineageMapSelector), getPromise(enablePangolinAtom)])
+      .then(([lineageMap, enablePangolin]) => {
+        return updateUrlQuery({
+          variant: enablePangolin
+            ? variants.map((displayName) => lineageMap.get(displayName) ?? displayName)
+            : variants,
+        })
+      })
+      .catch((error) => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        throw new Error(error)
+      })
   })
 }
