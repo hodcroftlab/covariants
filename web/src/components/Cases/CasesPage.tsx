@@ -17,6 +17,42 @@ import { CasesComponents } from 'src/components/Cases/CasesComponents'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
 
+export function CasesPage() {
+  const { t } = useTranslationSafe()
+
+  return (
+    <Layout wide>
+      <Row className={'gx-0'}>
+        <Col>
+          <PageHeading>{t('Estimated Cases by Variant')}</PageHeading>
+        </Col>
+      </Row>
+
+      <Row className={'gx-0'}>
+        <Col>
+          <CenteredEditable githubUrl="tree/master/web/src/content/en/PerCountryCasesIntro.md">
+            <MdxContent filepath="PerCountryCasesIntro.md" />
+          </CenteredEditable>
+        </Col>
+      </Row>
+
+      <Row className={'gx-0'}>
+        <Col>
+          <SharingPanel />
+        </Col>
+      </Row>
+
+      <Row className={'gx-0'}>
+        <Col>
+          <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
+            <CasesPlotSection />
+          </Editable>
+        </Col>
+      </Row>
+    </Layout>
+  )
+}
+
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
 function CasesPlotSection() {
@@ -55,41 +91,5 @@ function CasesPlotSection() {
         </Row>
       </MainFlex>
     </WrapperFlex>
-  )
-}
-
-export function CasesPage() {
-  const { t } = useTranslationSafe()
-
-  return (
-    <Layout wide>
-      <Row className={'gx-0'}>
-        <Col>
-          <PageHeading>{t('Estimated Cases by Variant')}</PageHeading>
-        </Col>
-      </Row>
-
-      <Row className={'gx-0'}>
-        <Col>
-          <CenteredEditable githubUrl="tree/master/web/src/content/en/PerCountryCasesIntro.md">
-            <MdxContent filepath="PerCountryCasesIntro.md" />
-          </CenteredEditable>
-        </Col>
-      </Row>
-
-      <Row className={'gx-0'}>
-        <Col>
-          <SharingPanel />
-        </Col>
-      </Row>
-
-      <Row className={'gx-0'}>
-        <Col>
-          <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
-            <CasesPlotSection />
-          </Editable>
-        </Col>
-      </Row>
-    </Layout>
   )
 }
