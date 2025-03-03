@@ -10,7 +10,6 @@ export function NomenclatureSwitch({ className }: { className?: string }) {
   return (
     <NomenclatureToggle
       className={className}
-      identifier="nomenclature-switch"
       title="Switch nomenclature"
       checked={enablePangolin}
       onCheckedChanged={setEnablePangolin}
