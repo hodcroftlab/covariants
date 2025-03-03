@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { describe, expect, test } from 'vitest'
 import { screen, fireEvent } from '@testing-library/react'
 import React from 'react'
@@ -12,39 +11,39 @@ describe('ClusterButtonGroup', () => {
       // Arrange
       const importantClusters: ClusterDatum[] = [
         {
-          build_name: 'foo',
+          buildName: 'foo',
           col: 'bla',
-          display_name: 'foo',
+          displayName: 'foo',
           snps: [1, 2, 3],
           important: true,
         },
         {
-          build_name: 'bar',
+          buildName: 'bar',
           col: 'bla',
-          display_name: 'bar',
+          displayName: 'bar',
           snps: [1, 2, 3],
           important: true,
         },
         {
-          build_name: 'badum',
+          buildName: 'badum',
           col: 'bla',
-          display_name: 'badum',
+          displayName: 'badum',
           snps: [1, 2, 3],
           important: true,
         },
       ]
       const unimportantClusters: ClusterDatum[] = [
         {
-          build_name: 'baz',
+          buildName: 'baz',
           col: 'bla',
-          display_name: 'baz',
+          displayName: 'baz',
           snps: [1, 2, 3],
           important: false,
         },
         {
-          build_name: 'bun',
+          buildName: 'bun',
           col: 'bla',
-          display_name: 'bun',
+          displayName: 'bun',
           snps: [1, 2, 3],
         },
       ]
