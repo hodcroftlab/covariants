@@ -38,13 +38,12 @@ export function PlotCardTitle({ cluster }: PlotCardProps) {
   const enablePangolin = useRecoilValue(enablePangolinAtom)
   const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
   const pangoName = pangoLineageMap.get(cluster.displayName) ?? cluster.displayName
+  const variant = enablePangolin ? pangoName : cluster.displayName
 
   return (
     <span className="d-flex w-100">
       <PlotCardTitleIcon />
-      <PlotCardHeading>
-        {t('Distribution of {{variant}} per country', { variant: enablePangolin ? pangoName : cluster.displayName })}
-      </PlotCardHeading>
+      <PlotCardHeading>{t('Distribution of {{variant}} per country', { variant })}</PlotCardHeading>
       <span className="ms-auto">
         <Link href="/per-variant" color={theme.link.dim.color}>
           {t('Compare')}

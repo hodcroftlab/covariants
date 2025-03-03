@@ -57,13 +57,12 @@ export function ProteinCardTitle({ cluster }: ProteinCardProps) {
   const enablePangolin = useRecoilValue(enablePangolinAtom)
   const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
   const pangoName = pangoLineageMap.get(cluster.displayName) ?? cluster.displayName
+  const variant = enablePangolin ? pangoName : cluster.displayName
 
   return (
     <span className="d-flex w-100">
       <ProteinCardTitleIcon />
-      <ProteinCardHeading>
-        {t('Spike protein model for {{variant}}', { variant: enablePangolin ? pangoName : cluster.displayName })}
-      </ProteinCardHeading>
+      <ProteinCardHeading>{t('Spike protein model for {{variant}}', { variant })}</ProteinCardHeading>
     </span>
   )
 }

@@ -7,9 +7,9 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 
 import type { ClusterDatum } from 'src/io/getClusters'
 import { getMutationCounts, MutationCountsDatum, MutationCountsGeneRecord } from 'src/io/getMutationCounts'
-import { AminoacidMutationBadge } from 'src/components/Common/MutationBadge'
 import { TableSlim } from 'src/components/Common/TableSlim'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
+import { AminoacidMutationBadge } from 'src/components/Common/Badges/AminoacidMutationBadge'
 
 const MutationCountsSummaryCardBody = styled(CardBody)`
   padding: 1rem;

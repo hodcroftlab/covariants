@@ -4,8 +4,8 @@ import { styled } from 'styled-components'
 
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { Mutations, useMutationComparison } from 'src/io/useMutationComparison'
-import { AminoacidMutationBadge } from 'src/components/Common/MutationBadge'
 import { ToggleTwoLabels } from 'src/components/Common/ToggleTwoLabels'
+import { AminoacidMutationBadge } from 'src/components/Common/Badges/AminoacidMutationBadge'
 
 const Table = styled.table`
   margin: 0 auto;
