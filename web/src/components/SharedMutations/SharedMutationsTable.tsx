@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 
 import { styled } from 'styled-components'
 
+import { useRecoilValue } from 'recoil'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { Mutations, useMutationComparison } from 'src/io/useMutationComparison'
 import { ToggleTwoLabels } from 'src/components/Common/ToggleTwoLabels'
 import { AminoacidMutationBadge } from 'src/components/Common/Badges/AminoacidMutationBadge'
+import { enablePangolinAtom } from 'src/state/Nomenclature'
 
 const Table = styled.table`
   margin: 0 auto;
@@ -46,7 +48,13 @@ const Tr = styled.tr`
 const AdvancedToggleWrapper = styled.div`
   flex: 0 0 100%;
   display: flex;
+  justify-content: center;
   transform: scale(0.8);
+  gap: 0.25rem;
+`
+
+const PositionToggle = styled(ToggleTwoLabels)`
+  margin: 0;
 `
 
 export interface VariantProps {
@@ -66,6 +74,7 @@ export function Variant({ variants, shared }: VariantProps) {
 
 export function SharedMutationsTable() {
   const { t } = useTranslationSafe()
+  const enablePangolin = useRecoilValue(enablePangolinAtom)
 
   const { data: mutationComparison } = useMutationComparison()
   const {
@@ -84,7 +93,7 @@ export function SharedMutationsTable() {
       <TableHeader>
         <Tr>
           {variants.map((variant) => (
-            <Th key={variant}>{variant}</Th>
+            <Th key={variant}>{enablePangolin ? variant.split('\n')[1].trim() : variant.split('\n')[0].trim()}</Th>
           ))}
         </Tr>
       </TableHeader>
@@ -95,7 +104,7 @@ export function SharedMutationsTable() {
             {t('Shared mutations')}
             <AdvancedToggleWrapper>
               {t('Sort by: ')}
-              <ToggleTwoLabels
+              <PositionToggle
                 identifier="toggle-advanced-controls"
                 checked={byPos}
                 onCheckedChanged={setByPos}
