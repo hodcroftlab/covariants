@@ -105,7 +105,6 @@ export function SharedMutationsTable() {
             <AdvancedToggleWrapper>
               {t('Sort by: ')}
               <PositionToggle
-                identifier="toggle-advanced-controls"
                 checked={byPos}
                 onCheckedChanged={setByPos}
                 labelLeft={t('Position')}

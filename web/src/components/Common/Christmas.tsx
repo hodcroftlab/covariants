@@ -104,7 +104,6 @@ export function ChristmasToggle() {
   }
   return (
     <ToggleTwoLabels
-      identifier="christmas-toggle"
       title="Let it snow!"
       checked={enableChristmas}
       onCheckedChanged={setEnableChristmas}
