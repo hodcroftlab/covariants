@@ -4370,7 +4370,7 @@ clusters = {
     "S677HRobin1": {
         "snps": [23593, 29402, 8083],  # T, T, A
         "snps_with_base": ["23593T", "29402T", "8083A"],
-        "alt_display_name": ["B.1.2"],
+        "alt_display_name": ["B.1.2.2"], #doesn't exist in pango, added for uniqueness
         "cluster_data": [],
         "nextstrain_build": False,  # as of 25 Feb 22 - no new seqs since Sept
         "graphing": True,
@@ -4410,7 +4410,7 @@ clusters = {
     "S677PPelican": {
         "snps": [23592, 11451, 21811],
         "snps_with_base": ["23592C", "11451G", "21811A"],
-        "alt_display_name": ["B.1.2.1"],
+        "alt_display_name": ["B.1.2.1"], #doesn't exist in pango, added for uniqueness
         "cluster_data": [],
         "nextstrain_build": False,  # as of 25 Feb 22 - no new seqs since Sept
         "graphing": True,
@@ -4816,7 +4816,7 @@ clusters = {
     # variant
     "S677HRobin2": {
         "snps": [23593, 7348],
-        "alt_display_name": ["B.1.2.2"],
+        "alt_display_name": ["B.1.2.3"], #doesn't exist in pango, added for uniqueness
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": False,
@@ -4833,7 +4833,7 @@ clusters = {
     "S677HYellowhammer": {
         "snps": [23593, 9928],
         "cluster_data": [],
-        "alt_display_name": ["B.1.2"],
+        "alt_display_name": ["B.1.2.4"], #doesn't exist in pango, added for uniqueness
         "nextstrain_build": False,
         "graphing": False,
         "usa_graph": True,
@@ -4850,7 +4850,7 @@ clusters = {
         "snps": [23592, 3450, 6382],
         "cluster_data": [],
         "nextstrain_build": False,
-        "alt_display_name": ["B.1.2"],
+        "alt_display_name": ["B.1.2.5"], #doesn't exist in pango, added for uniqueness
         "graphing": False,
         "usa_graph": True,
         "important": False,
