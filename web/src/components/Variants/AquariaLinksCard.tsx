@@ -8,7 +8,7 @@ import { useRecoilValue } from 'recoil'
 import type { ClusterDatum } from 'src/io/getClusters'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
-import { ProteinBadge as ProteinBadgeBase } from 'src/components/Common/MutationBadge'
+import { ProteinBadge as ProteinBadgeBase } from 'src/components/Common/Badges/ProteinBadge'
 
 import AquariaLogo from 'src/assets/images/aquaria.svg'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
@@ -44,13 +44,14 @@ export function AquariaLinksCardTitle({ cluster }: AquariaLinksCardProps) {
   const enablePangolin = useRecoilValue(enablePangolinAtom)
   const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
   const pangoName = pangoLineageMap.get(cluster.displayName) ?? cluster.displayName
+  const variant = enablePangolin ? pangoName : cluster.displayName
 
   return (
     <span className="d-flex w-100">
       <AquariaLogoSmall />
       <AquariaLinksCardHeading>
         {t('Protein visualisation for {{variant}} by {{aquaria}}', {
-          variant: enablePangolin ? pangoName : cluster.displayName,
+          variant,
           aquaria: 'Aquaria',
         })}
       </AquariaLinksCardHeading>
