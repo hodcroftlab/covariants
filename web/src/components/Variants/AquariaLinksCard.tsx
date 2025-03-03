@@ -43,14 +43,14 @@ export function AquariaLinksCardTitle({ cluster }: AquariaLinksCardProps) {
   const { t } = useTranslationSafe()
   const enablePangolin = useRecoilValue(enablePangolinAtom)
   const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
-  const pangoName = pangoLineageMap.get(cluster.display_name) ?? cluster.display_name
+  const pangoName = pangoLineageMap.get(cluster.displayName) ?? cluster.displayName
 
   return (
     <span className="d-flex w-100">
       <AquariaLogoSmall />
       <AquariaLinksCardHeading>
         {t('Protein visualisation for {{variant}} by {{aquaria}}', {
-          variant: enablePangolin ? pangoName : cluster.display_name,
+          variant: enablePangolin ? pangoName : cluster.displayName,
           aquaria: 'Aquaria',
         })}
       </AquariaLinksCardHeading>
@@ -61,12 +61,12 @@ export function AquariaLinksCardTitle({ cluster }: AquariaLinksCardProps) {
 export function AquariaLinksCard({ cluster }: AquariaLinksCardProps) {
   const proteinBadges = useMemo(
     () =>
-      (cluster?.aquaria_urls ?? []).map(({ gene, url }) => (
+      (cluster?.aquariaUrls ?? []).map(({ gene, url }) => (
         <LinkExternal key={gene} href={url} icon={null}>
           <ProteinBadge gene={gene} />
         </LinkExternal>
       )),
-    [cluster.aquaria_urls],
+    [cluster.aquariaUrls],
   )
 
   const title = useMemo(() => <AquariaLinksCardTitle cluster={cluster} />, [cluster])

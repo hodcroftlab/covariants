@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React from 'react'
 
 import { styled } from 'styled-components'
@@ -86,14 +85,14 @@ export interface ClusterButtonProps {
 }
 
 export function ClusterButton({ cluster, isCurrent }: ClusterButtonProps) {
-  const { display_name, col, build_name } = cluster
+  const { displayName, col, buildName } = cluster
   const enablePangolin = useRecoilValue(enablePangolinAtom)
   const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
-  const pangoName = pangoLineageMap.get(display_name) ?? display_name
+  const pangoName = pangoLineageMap.get(displayName) ?? displayName
 
   return (
-    <ClusterButtonComponent href={`/variants/${build_name}`} $isCurrent={isCurrent} $color={col}>
-      <ClusterTitle $isCurrent={isCurrent}>{enablePangolin ? pangoName : display_name}</ClusterTitle>
+    <ClusterButtonComponent href={`/variants/${buildName}`} $isCurrent={isCurrent} $color={col}>
+      <ClusterTitle $isCurrent={isCurrent}>{enablePangolin ? pangoName : displayName}</ClusterTitle>
     </ClusterButtonComponent>
   )
 }

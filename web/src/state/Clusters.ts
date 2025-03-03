@@ -22,7 +22,7 @@ export const hasPageClustersSelector = selector({
   key: 'hasPageClusters',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
-    return clusters.filter((cluster) => !cluster.has_no_page)
+    return clusters.filter((cluster) => !cluster.hasNoPage)
   },
 })
 
@@ -30,7 +30,7 @@ export const clusterNamesSelector = selector({
   key: 'clusterNames',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
-    return clusters.map((cluster) => cluster.display_name)
+    return clusters.map((cluster) => cluster.displayName)
   },
 })
 
@@ -38,7 +38,7 @@ export const hasPageClusterNamesSelector = selector({
   key: 'hasPageClusterNames',
   get: ({ get }) => {
     const clusters = get(hasPageClustersSelector)
-    return clusters.map((cluster) => cluster.display_name)
+    return clusters.map((cluster) => cluster.displayName)
   },
 })
 
@@ -46,7 +46,7 @@ export const noPageClusterNamesSelector = selector({
   key: 'noPageClusterNames',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
-    return clusters.filter((cluster) => cluster.has_no_page).map((cluster) => cluster.display_name)
+    return clusters.filter((cluster) => cluster.hasNoPage).map((cluster) => cluster.displayName)
   },
 })
 
@@ -54,7 +54,7 @@ export const clusterBuildNamesMapSelector = selector({
   key: 'clusterBuildNamesMap',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
-    return new Map<string, string>(clusters.map((c) => [c.display_name, c.build_name]))
+    return new Map<string, string>(clusters.map((c) => [c.displayName, c.buildName]))
   },
 })
 
@@ -65,8 +65,8 @@ export const clusterPangoLineageMapSelector = selector({
     return new Map<string, string>(
       clusters
         .map((c) => [
-          c.display_name,
-          c.pango_lineages ? (c.pango_lineages[0] ? c.pango_lineages[0].name : undefined) : undefined,
+          c.displayName,
+          c.pangoLineages ? (c.pangoLineages[0] ? c.pangoLineages[0].name : undefined) : undefined,
         ])
         .filter(([, pangoName]) => pangoName !== undefined) as [string, string][],
     )
@@ -77,7 +77,7 @@ export const hasPageClusterBuildNamesSelector = selector({
   key: 'hasPageClusterBuildNames',
   get: ({ get }) => {
     const clusters = get(hasPageClustersSelector)
-    return clusters.map((cluster) => cluster.build_name)
+    return clusters.map((cluster) => cluster.buildName)
   },
 })
 
@@ -85,7 +85,7 @@ export const hasPageClusterOldBuildNamesSelector = selector({
   key: 'hasPageClusterOldBuildNames',
   get: ({ get }) => {
     const clusters = get(hasPageClustersSelector)
-    return clusters.flatMap((cluster) => cluster.old_build_names).filter(notUndefinedOrNull)
+    return clusters.flatMap((cluster) => cluster.oldBuildNames).filter(notUndefinedOrNull)
   },
 })
 
@@ -94,8 +94,8 @@ export const clusterRedirectsSelector = selector({
   get: ({ get }) => {
     const clusters = get(hasPageClustersSelector)
     return clusters.reduce((result, cluster) => {
-      if (cluster.old_build_names) {
-        cluster.old_build_names.forEach((oldName) => result.set(oldName, cluster.build_name))
+      if (cluster.oldBuildNames) {
+        cluster.oldBuildNames.forEach((oldName) => result.set(oldName, cluster.buildName))
       }
       return result
     }, new Map<string, string>())
@@ -112,8 +112,7 @@ export const getClusterColorsSelector = selector({
         return theme.clusters.color.others
       }
 
-      // eslint-disable-next-line camelcase
-      const found = clusters.find(({ display_name }) => display_name === clusterName)
+      const found = clusters.find(({ displayName }) => displayName === clusterName)
       return found ? found.col : theme.clusters.color.unknown
     }
   },

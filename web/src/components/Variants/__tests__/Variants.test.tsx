@@ -23,20 +23,16 @@ describe('Variants', () => {
   })
   describe('PlotCard', () => {
     const cluster: ClusterDatum = {
-      // eslint-disable-next-line camelcase
-      alt_display_name: ['S.501Y.V1'],
-      // eslint-disable-next-line camelcase
-      aquaria_urls: [
+      altDisplayName: ['S.501Y.V1'],
+      aquariaUrls: [
         {
           gene: 'S',
           url: 'https://aquaria.app/SARS-CoV-2/S?H69Del&V70Del&Y144Del&N501Y&A570D&D614G&P681H&T716I&S982A&D1118H',
         },
       ],
-      // eslint-disable-next-line camelcase
-      build_name: '20I.Alpha.V1',
+      buildName: '20I.Alpha.V1',
       col: '#D16666',
-      // eslint-disable-next-line camelcase
-      display_name: '20I (Alpha, V1)',
+      displayName: '20I (Alpha, V1)',
       important: false,
       mutations: {
         nonsynonymous: [
@@ -55,10 +51,8 @@ describe('Variants', () => {
           },
         ],
       },
-      // eslint-disable-next-line camelcase
-      nextstrain_url: 'https://nextstrain.org/groups/neherlab/ncov/20I.Alpha.V1',
-      // eslint-disable-next-line camelcase
-      old_build_names: ['S.501Y.V1'],
+      nextstrainUrl: 'https://nextstrain.org/groups/neherlab/ncov/20I.Alpha.V1',
+      oldBuildNames: ['S.501Y.V1'],
       snps: [23_063],
       type: 'variant',
     }

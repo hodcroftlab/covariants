@@ -83,7 +83,7 @@ export function VariantsPage({ clusterName: clusterNameUnsafe }: VariantsPagePro
   const clusterName = useCurrentClusterName(clusterNameUnsafe)
   const clusters = useRecoilValue(hasPageClustersSelector)
   const currentCluster = useMemo(
-    () => clusters.find((cluster) => cluster.build_name === clusterName),
+    () => clusters.find((cluster) => cluster.buildName === clusterName),
     [clusterName, clusters],
   )
 
@@ -106,17 +106,17 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
   const { t } = useTranslationSafe()
   const enablePangolin = useRecoilValue(enablePangolinAtom)
   const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
-  const pangoName = pangoLineageMap.get(currentCluster.display_name) ?? currentCluster.display_name
+  const pangoName = pangoLineageMap.get(currentCluster.displayName) ?? currentCluster.displayName
 
   const ClusterContent = useMemo(
-    () => <MdxContent filepath={`clusters/${currentCluster.build_name}.md`} />,
-    [currentCluster.build_name],
+    () => <MdxContent filepath={`clusters/${currentCluster.buildName}.md`} />,
+    [currentCluster.buildName],
   )
   const showDefiningMutations = useMemo(() => hasDefiningMutations(currentCluster), [currentCluster])
 
   const AquariaSection = useMemo(() => {
     return (
-      (currentCluster.aquaria_urls?.length ?? 0) > 0 && (
+      (currentCluster.aquariaUrls?.length ?? 0) > 0 && (
         <Row className="mb-2 gx-0">
           <Col>
             <AquariaLinksCard cluster={currentCluster} />
@@ -129,14 +129,14 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
   return (
     <FlexContainer>
       <FlexGrowing>
-        <EditableClusterContent githubUrl={`blob/master/content/clusters/${currentCluster.build_name}.md`}>
+        <EditableClusterContent githubUrl={`blob/master/content/clusters/${currentCluster.buildName}.md`}>
           <Row className="mb-3 gx-0">
             <Col className="d-flex w-100">
-              {currentCluster.nextstrain_url ? (
-                <LinkExternal href={currentCluster.nextstrain_url} icon={NEXTSTRAIN_ICON} color={theme.link.dim.color}>
+              {currentCluster.nextstrainUrl ? (
+                <LinkExternal href={currentCluster.nextstrainUrl} icon={NEXTSTRAIN_ICON} color={theme.link.dim.color}>
                   {t(`Dedicated {{nextstrain}} build for {{variant}}`, {
                     nextstrain: 'Nextstrain',
-                    variant: enablePangolin ? pangoName : currentCluster.display_name,
+                    variant: enablePangolin ? pangoName : currentCluster.displayName,
                   })}
                 </LinkExternal>
               ) : (

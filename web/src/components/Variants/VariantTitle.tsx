@@ -26,7 +26,7 @@ export function VariantTitle({ cluster }: VariantTitleProps) {
   const { t } = useTranslationSafe()
   const enablePangolin = useRecoilValue(enablePangolinAtom)
   const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
-  const pangoName = cluster && pangoLineageMap.get(cluster.display_name)
+  const pangoName = cluster && pangoLineageMap.get(cluster.displayName)
 
   const subtitle = useMemo(() => {
     if (!pangoName) {
@@ -36,15 +36,15 @@ export function VariantTitle({ cluster }: VariantTitleProps) {
     return (
       <ClusterNameSubtitle>
         {t(`also known as {{aliases}}`, { aliases: '' })}
-        {enablePangolin ? cluster.display_name : pangoName}
+        {enablePangolin ? cluster.displayName : pangoName}
       </ClusterNameSubtitle>
     )
-  }, [cluster?.display_name, t, enablePangolin, pangoName])
+  }, [cluster?.displayName, t, enablePangolin, pangoName])
 
   return (
     <VariantTitleWrapper>
       <ClusterNameTitle>
-        {cluster && `Variant: ${enablePangolin && pangoName ? pangoName : cluster.display_name}`}
+        {cluster && `Variant: ${enablePangolin && pangoName ? pangoName : cluster.displayName}`}
       </ClusterNameTitle>
       {subtitle}
     </VariantTitleWrapper>
