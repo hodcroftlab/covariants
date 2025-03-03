@@ -160,7 +160,7 @@ export function NavigationBar() {
         color: '#08a0e9',
       },
       {
-        text: t('Fork'),
+        text: t('Collaborate'),
         title: t("Let's collaborate on GitHub"),
         url: URL_GITHUB,
         alt: t('Link to Github page, with grey Github Octocat logo'),
@@ -171,7 +171,7 @@ export function NavigationBar() {
   }, [t])
 
   return (
-    <>
+    <header>
       <Navbar expand="md" color="light" light role="navigation">
         <Link href="/">
           <BrandLogoLarge className="d-none d-lg-block" />
@@ -216,9 +216,12 @@ export function NavigationBar() {
         </Collapse>
       </Navbar>
 
-      {!isOpen && <SubNavigationBar className="d-none d-md-flex mt-2 gx-0 px-3" />}
-      {isOpen && <SubNavigationBar className="d-flex mt-2 gx-0 px-3" />}
-    </>
+      {isOpen ? (
+        <SubNavigationBar className="d-flex mt-2 gx-0 px-3" />
+      ) : (
+        <SubNavigationBar className="d-none d-md-flex mt-2 gx-0 px-3" />
+      )}
+    </header>
   )
 }
 

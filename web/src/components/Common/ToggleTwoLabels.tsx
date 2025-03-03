@@ -46,7 +46,6 @@ export const ToggleTwoLabelsBase = styled(ReactToggle)<ReactToggleProps>`
 `
 
 export interface ToggleTwoLabelsProps extends StrictOmit<ReactToggleProps, 'type' | 'value'> {
-  identifier: string
   onCheckedChanged: (checked: boolean) => void
   labelLeft?: ReactNode
   labelRight?: ReactNode
@@ -55,7 +54,6 @@ export interface ToggleTwoLabelsProps extends StrictOmit<ReactToggleProps, 'type
 }
 
 export function ToggleTwoLabels({
-  identifier,
   onCheckedChanged,
   labelLeft,
   labelRight,
@@ -71,15 +69,9 @@ export function ToggleTwoLabels({
   )
 
   return (
-    <Label htmlFor={identifier} className={className} title={title}>
+    <Label className={className} title={title}>
       {labelRight}
-      <ToggleTwoLabelsBase
-        id={identifier}
-        className="react-toggle-two-labels-custom"
-        icons={false}
-        onChange={onChange}
-        {...props}
-      />
+      <ToggleTwoLabelsBase className="react-toggle-two-labels-custom" icons={false} onChange={onChange} {...props} />
       {labelLeft}
     </Label>
   )
