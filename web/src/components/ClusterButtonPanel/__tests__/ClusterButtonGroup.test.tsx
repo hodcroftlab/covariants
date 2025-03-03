@@ -1,11 +1,15 @@
-import { describe, expect, test } from 'vitest'
+import { afterAll, beforeAll, describe, expect, test } from 'vitest'
 import { screen, fireEvent } from '@testing-library/react'
 import React from 'react'
 import { ClusterButtonGroup } from '../ClusterButtonGroup'
 import { ClusterDatum } from 'src/io/getClusters'
-import { renderWithQueryClientAndRecoilRoot } from 'src/helpers/__tests__/providers'
+import { renderWithThemeAndRecoilRoot } from 'src/helpers/__tests__/providers'
+import { server } from 'src/components/SharedMutations/__tests__/mockRequests'
 
 describe('ClusterButtonGroup', () => {
+  beforeAll(() => server.listen({ onUnhandledRequest: 'error' }))
+
+  afterAll(() => server.close())
   describe('show more / show less button', () => {
     test('toggles unimportant clusters', async () => {
       // Arrange
@@ -50,8 +54,8 @@ describe('ClusterButtonGroup', () => {
       const clusters = importantClusters.concat(unimportantClusters)
 
       // Assert
-      renderWithQueryClientAndRecoilRoot(<ClusterButtonGroup clusterGroup={clusters} />)
-      let visibleClusters = await screen.findAllByRole('link', undefined, { timeout: 3000 })
+      renderWithThemeAndRecoilRoot(<ClusterButtonGroup clusterGroup={clusters} />)
+      let visibleClusters = await screen.findAllByRole('link')
       expect(visibleClusters.length).toEqual(importantClusters.length)
 
       // Act

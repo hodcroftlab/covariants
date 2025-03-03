@@ -16,6 +16,16 @@ export const renderWithThemeAndTranslations = (component: React.JSX.Element) => 
   )
 }
 
+export const renderWithThemeAndRecoilRoot = (component: React.JSX.Element) => {
+  return render(
+    <RecoilRoot>
+      <ThemeProvider theme={theme}>
+        <I18nextProvider i18n={i18n}>{component}</I18nextProvider>
+      </ThemeProvider>
+    </RecoilRoot>,
+  )
+}
+
 export const renderWithQueryClient = (component: React.JSX.Element) => {
   return render(
     <QueryClientProvider client={FETCHER.getQueryClient()}>
