@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React, { useMemo } from 'react'
 
 import get from 'lodash/get'
@@ -124,13 +123,13 @@ export function formatMutationMaybe(mutation: Mutation | string) {
 }
 
 export function formatVariantUrl(clusters: ClusterDatum[], clusterNames: string[], mutation: string) {
-  const cluster = clusters.find(({ display_name }) => display_name === mutation)
+  const cluster = clusters.find(({ displayName }) => displayName === mutation)
   if (!cluster) {
     console.warn(`Variant not recognized: ${mutation}. Known variants: ${clusterNames.join(', ')}`)
     return undefined
   }
 
-  return `/variants/${cluster.build_name}`
+  return `/variants/${cluster.buildName}`
 }
 
 export interface MutationBadgeProps {

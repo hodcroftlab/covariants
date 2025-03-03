@@ -108,7 +108,7 @@ export interface MutationCountsSummaryProps {
 export function MutationCountsSummaryCard({ currentCluster }: MutationCountsSummaryProps) {
   const { t } = useTranslationSafe()
 
-  const { data } = useMutationCounts(currentCluster.build_name)
+  const { data } = useMutationCounts(currentCluster.buildName)
   if (!data?.result) {
     return null
   }

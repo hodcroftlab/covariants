@@ -24,7 +24,7 @@ const aquariaDatumSchema = z.object({
   url: z.string(),
 })
 
-const clusterDatumSchema = z.object({
+const clusterDatumSchemaRaw = z.object({
   alt_display_name: z.string().array().optional(),
   aquaria_urls: aquariaDatumSchema.array().optional(),
   build_name: z.string(),
@@ -51,15 +51,39 @@ const clusterDatumSchema = z.object({
   type: z.string().optional(),
 })
 
+const clusterDatumSchema = clusterDatumSchemaRaw.transform(
+  ({
+    alt_display_name,
+    aquaria_urls,
+    build_name,
+    display_name,
+    has_no_page,
+    nextstrain_url,
+    old_build_names,
+    pango_lineages,
+    ...rest
+  }) => ({
+    ...(alt_display_name ? { altDisplayName: alt_display_name } : {}),
+    ...(aquaria_urls ? { aquariaUrls: aquaria_urls } : {}),
+    buildName: build_name,
+    displayName: display_name,
+    ...(has_no_page ? { hasNoPage: has_no_page } : {}),
+    ...(nextstrain_url ? { nextstrainUrl: nextstrain_url } : {}),
+    ...(old_build_names ? { oldBuildNames: old_build_names } : {}),
+    ...(pango_lineages ? { pangoLineages: pango_lineages } : {}),
+    ...rest,
+  }),
+)
+
 const clusterDataRawSchema = z.object({
-  clusters: clusterDatumSchema.array(),
+  clusters: clusterDatumSchemaRaw.array(),
 })
 
 export type ClusterDatum = z.infer<typeof clusterDatumSchema>
 
 export async function fetchClusters(): Promise<ClusterDatum[]> {
   const clusters = await FETCHER.validatedFetch('/data/clusters.json', clusterDataRawSchema)
-  return clusters.clusters
+  return clusterDatumSchema.array().parse(clusters.clusters)
 }
 
 export type ClusterDataGrouped = Record<string, ClusterDatum[]>

@@ -37,13 +37,13 @@ export function PlotCardTitle({ cluster }: PlotCardProps) {
   const { t } = useTranslationSafe()
   const enablePangolin = useRecoilValue(enablePangolinAtom)
   const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
-  const pangoName = pangoLineageMap.get(cluster.display_name) ?? cluster.display_name
+  const pangoName = pangoLineageMap.get(cluster.displayName) ?? cluster.displayName
 
   return (
     <span className="d-flex w-100">
       <PlotCardTitleIcon />
       <PlotCardHeading>
-        {t('Distribution of {{variant}} per country', { variant: enablePangolin ? pangoName : cluster.display_name })}
+        {t('Distribution of {{variant}} per country', { variant: enablePangolin ? pangoName : cluster.displayName })}
       </PlotCardHeading>
       <span className="ms-auto">
         <Link href="/per-variant" color={theme.link.dim.color}>
@@ -56,7 +56,7 @@ export function PlotCardTitle({ cluster }: PlotCardProps) {
 
 export function PlotCard({ cluster }: PlotCardProps) {
   const title = useMemo(() => <PlotCardTitle cluster={cluster} />, [cluster])
-  const clusterDistribution = useRecoilValue(perClusterDataDistributionSelector(cluster.display_name))
+  const clusterDistribution = useRecoilValue(perClusterDataDistributionSelector(cluster.displayName))
   const countryNames = useRecoilValue(perClusterDataCountryNamesSelector)
 
   return (
