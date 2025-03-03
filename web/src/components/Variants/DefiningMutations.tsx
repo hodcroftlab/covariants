@@ -5,7 +5,8 @@ import { styled } from 'styled-components'
 import { Row, Col } from 'reactstrap'
 import type { ClusterDatum } from 'src/io/getClusters'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { AminoacidMutationBadge, NucleotideMutationBadge } from 'src/components/Common/MutationBadge'
+import { AminoacidMutationBadge } from 'src/components/Common/Badges/AminoacidMutationBadge'
+import { NucleotideMutationBadge } from 'src/components/Common/Badges/NucleotideMutationBadge'
 
 const Container = styled.div`
   width: 100%;

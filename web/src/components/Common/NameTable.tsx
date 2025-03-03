@@ -4,12 +4,14 @@ import { Table as TableBase, Thead, Tbody, Tr, Th, Td } from 'react-super-respon
 import { styled } from 'styled-components'
 
 import { ErrorBoundary } from 'react-error-boundary'
-import { LineageLinkBadge, Var, WhoBadge } from './MutationBadge'
+import { WhoBadge } from './Badges/WhoBadge'
+import { VariantBadge } from './Badges/VariantBadge'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
 import { NameTableDatum, NameTableEntry, useNameTable } from 'src/io/useNameTable'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
+import { LineageBadge } from 'src/components/Common/Badges/LineageBadge'
 
 const Table = styled(TableBase)`
   max-width: 800px;
@@ -82,7 +84,7 @@ export function NameTableRow({ datum }: NameTableRowProps) {
     () =>
       joinWithCommas(
         lineages.map<ReactNode>((entry) => (
-          <LineageLinkBadge key={entry.name} name={entry.name} href={entry.url ?? undefined} prefix="" />
+          <LineageBadge key={entry.name} name={entry.name} href={entry.url ?? undefined} prefix="" />
         )),
       ),
     [lineages],
@@ -96,7 +98,7 @@ export function NameTableRow({ datum }: NameTableRowProps) {
   return (
     <Tr>
       <Td>
-        <Var name={clade} prefix="" />
+        <VariantBadge name={clade} prefix="" />
       </Td>
       <Td>{lineageEntries}</Td>
       <Td>{who && <WhoBadge name={who} />}</Td>

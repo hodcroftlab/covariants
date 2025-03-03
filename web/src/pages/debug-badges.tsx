@@ -2,7 +2,9 @@ import React from 'react'
 
 import { Col, Row } from 'reactstrap'
 import { useRecoilValue } from 'recoil'
-import { Var, VarOrLin, WhoBadge } from 'src/components/Common/MutationBadge'
+
+import { Var } from 'src/components/Common/Badges/VariantBadge'
+import { WhoBadge } from 'src/components/Common/Badges/WhoBadge'
 
 import { Layout } from 'src/components/Layout/Layout'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
@@ -14,6 +16,7 @@ import {
   hasPageClusterNamesSelector,
   noPageClusterNamesSelector,
 } from 'src/state/Clusters'
+import { VarOrLin } from 'src/components/Common/Badges/VariantOrLineageBadge'
 
 const domain = process.env.DOMAIN ?? ''
 
