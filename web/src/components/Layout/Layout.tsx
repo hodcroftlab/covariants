@@ -1,18 +1,15 @@
-import React, { PropsWithChildren, Suspense } from 'react'
+import React, { PropsWithChildren } from 'react'
 import { styled } from 'styled-components'
 import { Container as ContainerBase, Row, Col } from 'reactstrap'
 import Image from 'next/image'
-import { ErrorBoundary } from 'react-error-boundary'
 import { useRecoilState } from 'recoil'
-import { LastUpdated } from '../Common/LastUpdated'
 import { NavigationBar } from './NavigationBar'
 import { FooterContent } from './Footer'
+import { Changelog } from './Changelog'
 import GisaidLogoPNG from 'src/assets/images/GISAID_logo.png'
 import { ChristmasLightRope, Santa, Snowfall } from 'src/components/Common/Christmas'
-import { ChangelogButton } from 'src/components/Common/ChangelogButton'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
-import { FetchError } from 'src/components/Error/FetchError'
 import { ToggleTwoLabels } from 'src/components/Common/ToggleTwoLabels'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
 
@@ -106,14 +103,7 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
 
           <div className="d-flex">
             <NomenclatureSwitch />
-
-            <ChangelogButton className="d-flex ms-auto">
-              <ErrorBoundary FallbackComponent={FetchError}>
-                <Suspense>
-                  <LastUpdated className="d-flex ms-auto" />
-                </Suspense>
-              </ErrorBoundary>
-            </ChangelogButton>
+            <Changelog />
           </div>
         </Col>
       </Row>
