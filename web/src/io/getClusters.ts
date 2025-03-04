@@ -24,7 +24,7 @@ const aquariaDatumSchema = z.object({
   url: z.string(),
 })
 
-const clusterDatumSchemaRaw = z.object({
+const clusterDatumRawSchema = z.object({
   alt_display_name: z.string().array().optional(),
   aquaria_urls: aquariaDatumSchema.array().optional(),
   build_name: z.string(),
@@ -51,7 +51,7 @@ const clusterDatumSchemaRaw = z.object({
   type: z.string().optional(),
 })
 
-const clusterDatumSchema = clusterDatumSchemaRaw.transform(
+const clusterDatumSchema = clusterDatumRawSchema.transform(
   ({
     alt_display_name,
     aquaria_urls,
@@ -76,7 +76,7 @@ const clusterDatumSchema = clusterDatumSchemaRaw.transform(
 )
 
 const clusterDataRawSchema = z.object({
-  clusters: clusterDatumSchemaRaw.array(),
+  clusters: clusterDatumRawSchema.array(),
 })
 
 export type ClusterDatum = z.infer<typeof clusterDatumSchema>
