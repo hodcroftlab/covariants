@@ -96,7 +96,7 @@ export function ChristmasLightRope() {
 const SNOWFLAKE_ICON_ON = <TbSnowflake className="mt-1" color="#1200ff88" />
 const SNOWFLAKE_ICON_OFF = <TbSnowflakeOff className="mt-1" color="#aa001288" />
 
-export function ChristmasToggle() {
+export function ChristmasToggle({ className }: { className: string }) {
   const [enableChristmas, setEnableChristmas] = useRecoilState(enableChristmasAtom)
   const isChristmasTime = useIsChristmasTime()
   if (!isChristmasTime) {
@@ -104,6 +104,7 @@ export function ChristmasToggle() {
   }
   return (
     <ToggleTwoLabels
+      className={className}
       title="Let it snow!"
       checked={enableChristmas}
       onCheckedChanged={setEnableChristmas}
