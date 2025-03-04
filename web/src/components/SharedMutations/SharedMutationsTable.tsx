@@ -4,10 +4,11 @@ import { styled } from 'styled-components'
 
 import { useRecoilValue } from 'recoil'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { Mutations, useMutationComparison } from 'src/io/useMutationComparison'
+import { Mutations } from 'src/io/getMutationComparison'
 import { ToggleTwoLabels } from 'src/components/Common/ToggleTwoLabels'
 import { AminoacidMutationBadge } from 'src/components/Common/Badges/AminoacidMutationBadge'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
+import { mutationComparisonAtom } from 'src/state/MutationComparison'
 
 const Table = styled.table`
   margin: 0 auto;
@@ -76,13 +77,8 @@ export function SharedMutationsTable() {
   const { t } = useTranslationSafe()
   const enablePangolin = useRecoilValue(enablePangolinAtom)
 
-  const { data: mutationComparison } = useMutationComparison()
-  const {
-    variants,
-    shared_by_pos: sharedByPos,
-    shared_by_commonness: sharedByCommonness,
-    individual: individualMutations,
-  } = mutationComparison
+  const { variants, sharedByPos, sharedByCommonness, individualMutations } = useRecoilValue(mutationComparisonAtom)
+  const variantsNames = variants.map((v) => (enablePangolin ? v.pangolin : v.nextstrain))
   const nCols = variants.length
 
   const [byPos, setByPos] = useState(true)
@@ -92,8 +88,8 @@ export function SharedMutationsTable() {
     <Table>
       <TableHeader>
         <Tr>
-          {variants.map((variant) => (
-            <Th key={variant}>{enablePangolin ? variant.split('\n')[1].trim() : variant.split('\n')[0].trim()}</Th>
+          {variantsNames.map((variant) => (
+            <Th key={variant}>{variant}</Th>
           ))}
         </Tr>
       </TableHeader>
@@ -116,7 +112,7 @@ export function SharedMutationsTable() {
 
         <>
           {sharedMutations.map(({ pos, presence }) => (
-            <Variant key={pos} variants={variants} shared={presence} />
+            <Variant key={pos} variants={variantsNames} shared={presence} />
           ))}
         </>
 
@@ -126,7 +122,7 @@ export function SharedMutationsTable() {
 
         <>
           {individualMutations.map(({ index, mutations }) => (
-            <Variant key={index} variants={variants} shared={mutations} />
+            <Variant key={index} variants={variantsNames} shared={mutations} />
           ))}
         </>
       </TableBody>
