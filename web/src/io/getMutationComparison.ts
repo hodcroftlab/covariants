@@ -1,5 +1,6 @@
+/* eslint-disable camelcase */
 import { z } from 'zod'
-import { useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
+import { FETCHER } from 'src/hooks/useAxiosQuery'
 
 const mutationsSchema = z.string().nullable().array()
 
@@ -13,19 +14,26 @@ const mutationIndividualRowSchema = z.object({
   mutations: mutationsSchema,
 })
 
-const mutationComparisonSchema = z.object({
+const mutationComparisonSchemaRaw = z.object({
   variants: z.string().array(),
-  // eslint-disable-next-line camelcase
   shared_by_commonness: mutationSharedSchema.array(),
-  // eslint-disable-next-line camelcase
   shared_by_pos: mutationSharedSchema.array(),
   individual: mutationIndividualRowSchema.array(),
 })
+
+const mutationComparisonSchema = mutationComparisonSchemaRaw.transform(
+  ({ shared_by_pos, shared_by_commonness, ...rest }) => ({
+    sharedByPos: shared_by_pos,
+    sharedByCommonness: shared_by_commonness,
+    ...rest,
+  }),
+)
 
 export type Mutations = z.infer<typeof mutationsSchema>
 
 export type MutationComparison = z.infer<typeof mutationComparisonSchema>
 
-export function useMutationComparison() {
-  return useValidatedAxiosQuery<MutationComparison>('/data/mutationComparison.json', mutationComparisonSchema)
+export async function fetchMutationComparison() {
+  const mutationComparison = await FETCHER.validatedFetch('/data/mutationComparison.json', mutationComparisonSchemaRaw)
+  return mutationComparisonSchema.parse(mutationComparison)
 }
