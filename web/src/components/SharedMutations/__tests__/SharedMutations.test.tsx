@@ -1,12 +1,15 @@
-import { afterAll, afterEach, beforeAll, describe, expect, test, vi } from 'vitest'
-import { screen, fireEvent, waitFor } from '@testing-library/react'
-import React from 'react'
+import { afterAll, beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
+import { screen, fireEvent, waitFor, renderHook } from '@testing-library/react'
+import React, { Suspense } from 'react'
 import { http, HttpResponse } from 'msw'
 import { ErrorBoundary } from 'react-error-boundary'
-import { renderWithQueryClient, renderWithQueryClientAndRecoilRoot } from 'src/helpers/__tests__/providers'
+import { RecoilRoot } from 'recoil'
+import { renderWithQueryClientAndRecoilRoot } from 'src/helpers/__tests__/providers'
 import { SharedMutationsTable } from 'src/components/SharedMutations/SharedMutationsTable'
 import { server } from 'src/components/SharedMutations/__tests__/mockRequests'
 import { FETCHER } from 'src/hooks/useAxiosQuery'
+import { fetchMutCompSelector } from 'src/state/MutationComparison'
+import { useResetSelectorCache } from 'src/helpers/__tests__/useResetSelectorCache'
 
 const getMutationElements = () => {
   return {
@@ -21,20 +24,20 @@ describe('SharedMutations', () => {
   beforeAll(() => server.listen({ onUnhandledRequest: 'error' }))
 
   afterAll(() => server.close())
-
-  afterEach(() => {
-    server.resetHandlers()
-    FETCHER.getQueryClient().clear()
-  })
   describe('SharedMutationsTable', () => {
+    beforeEach(() => {
+      server.resetHandlers()
+      FETCHER.getQueryClient().clear()
+    })
     test('shared button toggles between shared by commonness and shared by position', async () => {
       // Arrange
-      const { container } = renderWithQueryClientAndRecoilRoot(<SharedMutationsTable />)
+      renderWithQueryClientAndRecoilRoot(
+        <Suspense>
+          <SharedMutationsTable />
+        </Suspense>,
+      )
       await waitFor(() => expect(screen.getByRole('table')).toBeDefined())
-      const sharedByToggle = container.querySelector('#toggle-advanced-controls')
-      if (!sharedByToggle) {
-        throw new Error('Could not find sharedByToggle')
-      }
+      const sharedByToggle = screen.getByRole('checkbox')
 
       let { sharedByPositionExample, sharedByCommonnessExample, individualExample } = getMutationElements()
       expect(sharedByPositionExample.length).toBeGreaterThanOrEqual(1)
@@ -72,10 +75,15 @@ describe('SharedMutations', () => {
       // Disable console output
       vi.spyOn(console, 'error').mockImplementation(() => null)
 
+      // reset selector cache
+      renderHook(() => useResetSelectorCache(fetchMutCompSelector), { wrapper: RecoilRoot })
+
       // Act
-      renderWithQueryClient(
+      renderWithQueryClientAndRecoilRoot(
         <ErrorBoundary fallback={'Error boundary'}>
-          <SharedMutationsTable />
+          <Suspense>
+            <SharedMutationsTable />
+          </Suspense>
         </ErrorBoundary>,
       )
 

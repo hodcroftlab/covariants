@@ -1,13 +1,16 @@
 import { afterAll, afterEach, beforeAll, describe, expect, test, vi } from 'vitest'
-import { screen } from '@testing-library/react'
-import React from 'react'
+import { renderHook, screen } from '@testing-library/react'
+import React, { Suspense } from 'react'
 import { http, HttpResponse } from 'msw'
 import { ErrorBoundary } from 'react-error-boundary'
 import ResizeObserver from 'resize-observer-polyfill'
+import { RecoilRoot } from 'recoil'
 import { renderWithQueryClientAndRecoilRoot } from 'src/helpers/__tests__/providers'
 import { server } from 'src/components/SharedMutations/__tests__/mockRequests'
 import { FETCHER } from 'src/hooks/useAxiosQuery'
 import { CasesComponents } from 'src/components/Cases/CasesComponents'
+import { fetchParamsSelector } from 'src/state/Params'
+import { useResetSelectorCache } from 'src/helpers/__tests__/useResetSelectorCache'
 
 globalThis.ResizeObserver = ResizeObserver
 
@@ -38,7 +41,9 @@ describe('Cases', () => {
       // Act
       renderWithQueryClientAndRecoilRoot(
         <ErrorBoundary fallback={'Error boundary'}>
-          <CasesComponents clusters={clusters} countries={countries} />
+          <Suspense>
+            <CasesComponents clusters={clusters} countries={countries} />
+          </Suspense>
         </ErrorBoundary>,
       )
 
@@ -55,6 +60,9 @@ describe('Cases', () => {
       )
       // Disable console output
       vi.spyOn(console, 'error').mockImplementation(() => null)
+
+      // reset selector cache
+      renderHook(() => useResetSelectorCache(fetchParamsSelector), { wrapper: RecoilRoot })
 
       // Act
       renderWithQueryClientAndRecoilRoot(
