@@ -1,14 +1,16 @@
-import { selector } from 'recoil'
+import { atom, selector } from 'recoil'
 import { DateTime, Interval } from 'luxon'
-import { atomAsync } from 'src/state/utils/atomAsync'
 import { fetchParams, GlobalParams } from 'src/io/getParams'
 import { dateStringToSeconds } from 'src/helpers/format'
 
-const paramsAtom = atomAsync<GlobalParams>({
+export const fetchParamsSelector = selector<GlobalParams>({
+  key: 'fetchParams',
+  get: fetchParams,
+})
+
+const paramsAtom = atom<GlobalParams>({
   key: 'params',
-  async default() {
-    return await fetchParams()
-  },
+  default: fetchParamsSelector,
 })
 
 const INVALID_PARAMS = 'Invalid date params in params.json or invalid split point chosen'
