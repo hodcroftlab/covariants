@@ -88,10 +88,16 @@ export function ClusterButton({ cluster, isCurrent }: ClusterButtonProps) {
   const { displayName, col, buildName } = cluster
   const enablePangolin = useRecoilValue(enablePangolinAtom)
   const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
-  const pangoName = pangoLineageMap.get(displayName) ?? displayName
+  const pangoLineage = pangoLineageMap.get(displayName)
+  const pangoName = pangoLineage ?? displayName
+  const pangoUrl = pangoLineage ?? buildName
 
   return (
-    <ClusterButtonComponent href={`/variants/${buildName}`} $isCurrent={isCurrent} $color={col}>
+    <ClusterButtonComponent
+      href={`/variants/${enablePangolin ? pangoUrl : buildName}`}
+      $isCurrent={isCurrent}
+      $color={col}
+    >
       <ClusterTitle $isCurrent={isCurrent}>{enablePangolin ? pangoName : displayName}</ClusterTitle>
     </ClusterButtonComponent>
   )

@@ -1,10 +1,10 @@
-import React, { Suspense, useMemo } from 'react'
+import React, { Suspense, useEffect, useMemo } from 'react'
 
 import { useRouter } from 'next/router'
 import { styled } from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import { ErrorBoundary } from 'react-error-boundary'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { PlotCard } from './PlotCard'
 import { AquariaLinksCard } from './AquariaLinksCard'
 import { ProteinCard } from './ProteinCard'
@@ -25,7 +25,12 @@ import { VariantTitle } from 'src/components/Variants/VariantTitle'
 import NextstrainIconBase from 'src/assets/images/nextstrain_logo.svg'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
-import { clusterPangoLineageMapSelector, clusterRedirectsSelector, hasPageClustersSelector } from 'src/state/Clusters'
+import {
+  clusterLineageBuildNameMapSelector,
+  clusterPangoLineageMapSelector,
+  clusterRedirectsSelector,
+  hasPageClustersSelector,
+} from 'src/state/Clusters'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
 
 const FlexContainer = styled.div`
@@ -60,19 +65,24 @@ const NextstrainIcon = styled(NextstrainIconBase)`
   height: 25px;
 `
 
-export function useCurrentClusterName(clusterName?: string) {
+export function useCurrentClusterName(clusterName?: string): [string | undefined, boolean] {
   const router = useRouter()
   const clusterRedirects = useRecoilValue(clusterRedirectsSelector)
+  const lineageToBuildName = useRecoilValue(clusterLineageBuildNameMapSelector)
 
   if (clusterName) {
     const clusterNewName = clusterRedirects.get(clusterName)
     if (clusterNewName) {
       void router.replace(`/variants/${clusterNewName}`)
-      return clusterNewName
+      return [clusterNewName, false]
+    }
+    const clusterBuildName = lineageToBuildName.get(clusterName)
+    if (clusterBuildName) {
+      return [clusterBuildName, true]
     }
   }
 
-  return clusterName
+  return [clusterName, false]
 }
 
 export interface VariantsPageProps {
@@ -80,7 +90,9 @@ export interface VariantsPageProps {
 }
 
 export function VariantsPage({ clusterName: clusterNameUnsafe }: VariantsPageProps) {
-  const clusterName = useCurrentClusterName(clusterNameUnsafe)
+  const [clusterName, pango] = useCurrentClusterName(clusterNameUnsafe)
+  const [, setEnablePangolin] = useRecoilState(enablePangolinAtom)
+  useEffect(() => setEnablePangolin(pango), [pango, setEnablePangolin])
   const clusters = useRecoilValue(hasPageClustersSelector)
   const currentCluster = useMemo(
     () => clusters.find((cluster) => cluster.buildName === clusterName),
