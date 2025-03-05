@@ -1,18 +1,14 @@
-import { useRecoilState, useRecoilValue } from 'recoil'
-import React, { useEffect } from 'react'
+import { useRecoilState } from 'recoil'
+import React from 'react'
 import { styled } from 'styled-components'
 import Router from 'next/router'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
 import { ToggleTwoLabels } from 'src/components/Common/ToggleTwoLabels'
 import { parseUrl } from 'src/helpers/parseUrl'
-import { clusterBuildNamesSelector, clusterLineageBuildNameMapSelector } from 'src/state/Clusters'
 import { setUrlPath } from 'src/helpers/urlQuery'
 
 export function NomenclatureSwitch({ className }: { className?: string }) {
   const [enablePangolin, setEnablePangolin] = useRecoilState(enablePangolinAtom)
-  // const buildNames = useRecoilValue(clusterBuildNamesSelector)
-  // const lineageMap = useRecoilValue(clusterLineageBuildNameMapSelector)
-  // useEffect(() => updateUrlOnPangolinSet(enablePangolin, buildNames, lineageMap), [enablePangolin])
 
   return (
     <NomenclatureToggle

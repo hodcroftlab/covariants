@@ -96,8 +96,8 @@ export const clusterLineageDisplayNameMapSelector = selector({
     return new Map<string, string>(
       clusters
         .map((c) => [
-          c.pango_lineages ? (c.pango_lineages[0] ? c.pango_lineages[0].name : undefined) : undefined,
-          c.display_name,
+          c.pangoLineages ? (c.pangoLineages[0] ? c.pangoLineages[0].name : undefined) : undefined,
+          c.displayName,
         ])
         .filter(([pangoName]) => pangoName !== undefined) as [string, string][],
     )
