@@ -10,6 +10,7 @@ export default defineConfig({
       provider: 'v8',
       reportsDirectory: '.coverage',
     },
+    setupFiles: ['vitestSetup.ts'],
   },
   // for some reason, vitest does not manage to load postcss.config.ts even though it should
   // https://github.com/vitejs/vite/issues/11894
