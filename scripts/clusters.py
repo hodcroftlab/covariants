@@ -291,6 +291,7 @@ clusters = {
     "21I.Delta": {
         "snps": [5184, 11514, 22227],  # 5184T, 11514T, 22227T : ORF1a:1640, ORF1a:3750, S:222
         "snps_with_base": ["5184T", "11514T", "22227T"],
+        "alt_display_name": ["B.1.617.2/S:222V"],
         "cluster_data": [],
         "nextstrain_build": False,
         "type": "variant",
@@ -304,7 +305,7 @@ clusters = {
         "who_name": ["Delta"],
         "nextstrain_name": "21I",
         "pango_lineages": [
-            {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
+            {"name": "B.1.617.2", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.2.html"}
         ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21I.Delta",
         "mutations": {
@@ -354,6 +355,7 @@ clusters = {
         "snps": [4181, 8986, 11201],  # 4181T,8986T,11201G - ORF1a: 1306, 2907, 3646
         "snps_with_base": ["4181T", "8986T", "11201G"],
         "cluster_data": [],
+        "alt_display_name": ["B.1.617.2/N:215C"],
         "nextstrain_build": False,
         "type": "variant",
         "graphing": True,
@@ -366,7 +368,7 @@ clusters = {
         "who_name": ["Delta"],
         "nextstrain_name": "21J",
         "pango_lineages": [
-            {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
+            {"name": "B.1.617.2", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.2.html"}
         ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21J.Delta",
         "mutations": {
@@ -4041,6 +4043,7 @@ clusters = {
     "21GLambda": {
         "snps": [7424, 23031, 24138],  # ORF1a 2387 (7424G)  #S 490 (23031C) 859 (24138A)
         "snps_with_base": ["7424G", "23031C", "24138A"],
+        "alt_display_name": ["C.37"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -4104,6 +4107,7 @@ clusters = {
     "21H": {
         "snps": [22599, 4878, 17491],  # S 346 (22599A)  ORF1a: 1538 (4878T) nuc: 17491T
         "snps_with_base": ["22599A", "4878T", "17491T"],
+        "alt_display_name": ["B.1.621"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -4164,6 +4168,7 @@ clusters = {
         "snps": [10029, 23756, 21306],  # ORF1a  3255 (10029T)   S: 732 (23756G) nuc 21306T
         "snps_with_base": ["10029T", "23756G", "21306T"],
         "cluster_data": [],
+        "alt_display_name": ["B.1.1.519"],
         "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
@@ -4209,6 +4214,7 @@ clusters = {
     "20AS126": {
         "snps": [21939, 1473, 6236],  # S: 126 (21939C)  #ORF1a: 403 (1473T), 1991 (6236A)
         "snps_with_base": ["21939C", "1473T", "6236A"],
+        "alt_display_name": ["B.1.620"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -4343,6 +4349,7 @@ clusters = {
     "S439": {
         "snps": [7767, 22879, 8047], #CAT
         "snps_with_base": ["7767C", "22879A", "8047T"],
+        "alt_display_name": ["B.1.258"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -4451,6 +4458,7 @@ clusters = {
         "snps": [22992, 4543, 16889],  # A, T, G - the last one added to stop showing up in Omicron
         "snps_with_base": ["22992A", "4543T", "16889G"],
         "cluster_data": [],
+        "alt_display_name": ["B.1.160"],
         "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
@@ -4458,7 +4466,6 @@ clusters = {
         "country_info": [],
         "col": "#A3D8F3",
         "display_name": "20A.EU2",
-        "alt_display_name": "B.1.160",
         "build_name": "20A.EU2",
         "pango_lineages": [
             {"name": "B.1.160", "url": None}
@@ -4486,6 +4493,7 @@ clusters = {
     "S98": {
         "snps": [21855, 25505, 28651], #TGT
         "snps_with_base": ["21855T", "25505G", "28651T"],
+        "alt_display_name": ["B.1.221"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -4515,6 +4523,7 @@ clusters = {
     "S80": {
         "snps": [21800, 3099], #TTT 4965T
         "snps_with_base": ["21800T", "3099T", "4965T"],
+        "alt_display_name": ["B.1.367"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -4558,6 +4567,7 @@ clusters = {
         "snps": [23438, 772, 10868], #TC 10868T
         "snps_with_base": ["23438T", "772C", "10868T"],
         "cluster_data": [],
+        "alt_display_name": ["B.1.1.277"],
         "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
@@ -4580,6 +4590,7 @@ clusters = {
     "S1122": {
         "snps": [24926, 9120, 18032], #TTT
         "snps_with_base": ["24926T", "9120T", "18032T"],
+        "alt_display_name": ["B.1.1.302"],
         "cluster_data": [],  # mostly Swedish cluster
         "nextstrain_build": False,
         "graphing": True,
