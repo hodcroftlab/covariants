@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { styled } from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import { ErrorBoundary } from 'react-error-boundary'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { PlotCard } from './PlotCard'
 import { AquariaLinksCard } from './AquariaLinksCard'
 import { ProteinCard } from './ProteinCard'
@@ -65,7 +65,10 @@ const NextstrainIcon = styled(NextstrainIconBase)`
   height: 25px;
 `
 
-export function useCurrentClusterName(clusterName?: string): [string | undefined, boolean] {
+export function useDeriveCurrentClusterNameFromUrl(clusterName?: string): {
+  clusterBuildName: string | undefined
+  enablePangolinFromUrl: boolean
+} {
   const router = useRouter()
   const clusterRedirects = useRecoilValue(clusterRedirectsSelector)
   const lineageToBuildName = useRecoilValue(clusterLineageBuildNameMapSelector)
@@ -74,15 +77,18 @@ export function useCurrentClusterName(clusterName?: string): [string | undefined
     const clusterNewName = clusterRedirects.get(clusterName)
     if (clusterNewName) {
       void router.replace(`/variants/${clusterNewName}`)
-      return [clusterNewName, false]
+      return { clusterBuildName: clusterNewName, enablePangolinFromUrl: false }
     }
     const clusterBuildName = lineageToBuildName.get(clusterName)
     if (clusterBuildName) {
-      return [clusterBuildName, true]
+      return { clusterBuildName: clusterBuildName, enablePangolinFromUrl: true }
     }
   }
 
-  return [clusterName, false]
+  return {
+    clusterBuildName: clusterName,
+    enablePangolinFromUrl: false,
+  }
 }
 
 export interface VariantsPageProps {
@@ -90,13 +96,13 @@ export interface VariantsPageProps {
 }
 
 export function VariantsPage({ clusterName: clusterNameUnsafe }: VariantsPageProps) {
-  const [clusterName, pango] = useCurrentClusterName(clusterNameUnsafe)
-  const [, setEnablePangolin] = useRecoilState(enablePangolinAtom)
-  useEffect(() => setEnablePangolin(pango), [pango, setEnablePangolin])
+  const { clusterBuildName, enablePangolinFromUrl } = useDeriveCurrentClusterNameFromUrl(clusterNameUnsafe)
+  const setEnablePangolin = useSetRecoilState(enablePangolinAtom)
+  useEffect(() => setEnablePangolin(enablePangolinFromUrl), [enablePangolinFromUrl, setEnablePangolin])
   const clusters = useRecoilValue(hasPageClustersSelector)
   const currentCluster = useMemo(
-    () => clusters.find((cluster) => cluster.buildName === clusterName),
-    [clusterName, clusters],
+    () => clusters.find((cluster) => cluster.buildName === clusterBuildName),
+    [clusterBuildName, clusters],
   )
 
   return (
