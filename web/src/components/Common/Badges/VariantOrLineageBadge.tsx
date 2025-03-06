@@ -1,9 +1,9 @@
 import { useRecoilValue } from 'recoil'
-import React, { useMemo } from 'react'
+import React from 'react'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
-import { clusterNamesSelector, clusterPangoLineageMapSelector, clustersAtom } from 'src/state/Clusters'
+import { clusterPangoLineageMapSelector } from 'src/state/Clusters'
 import { LineageBadge } from 'src/components/Common/Badges/LineageBadge'
-import { formatVariantUrl, VariantBadge, variantToObjectAndString } from 'src/components/Common/Badges/VariantBadge'
+import { VariantBadge } from 'src/components/Common/Badges/VariantBadge'
 
 export function VariantOrLineageBadge({ name, href, prefix, invert }: VariantOrLineageBadgeProps) {
   const enablePangolin = useRecoilValue(enablePangolinAtom)
@@ -11,19 +11,10 @@ export function VariantOrLineageBadge({ name, href, prefix, invert }: VariantOrL
   const pangoName = pangoLineageMap.get(name)
   const showLineageBadge = enablePangolin != invert
 
-  const clusters = useRecoilValue(clustersAtom)
-  const clusterNames = useRecoilValue(clusterNamesSelector)
-  const { mutationStr } = useMemo(() => {
-    return variantToObjectAndString(name)
-  }, [name])
-  const url = useMemo(
-    () => href ?? formatVariantUrl(clusters, clusterNames, mutationStr),
-    [href, mutationStr, clusters, clusterNames],
-  )
   return showLineageBadge && pangoName ? (
-    <LineageBadge name={pangoName} href={url} />
+    <LineageBadge name={pangoName} href={href} />
   ) : (
-    <VariantBadge name={name} href={url} prefix={prefix} />
+    <VariantBadge name={name} href={href} prefix={prefix} />
   )
 }
 

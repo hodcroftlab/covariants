@@ -9,7 +9,7 @@ export function LineageBadge({ name, href, prefix, report }: LineageBadgeProps) 
   const { t } = useTranslationSafe()
 
   const url = useMemo(
-    () => href ?? (report ? `https://cov-lineages.org/global_report_${name}.html` : ''),
+    () => href ?? (report ? `https://cov-lineages.org/global_report_${name}.html` : `/variants/${name}`),
     [href, report, name],
   )
   const tooltip = useMemo(() => {
