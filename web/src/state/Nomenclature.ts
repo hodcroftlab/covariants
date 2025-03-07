@@ -15,6 +15,7 @@ import {
 import { clustersCasesAtom } from 'src/state/ClustersForCaseData'
 import { convertToArrayMaybe } from 'src/helpers/array'
 import { atomDefault } from 'src/state/utils/atomDefault'
+import { clustersForPerClusterDataAtom } from 'src/state/ClustersForPerClusterData'
 
 /** This is a writeable "facade-selector" for two "sub-atoms" to allow getting the nomenclature from the url on page load
  * while still allowing a change in the nomenclature state to update the url later.
@@ -115,9 +116,13 @@ export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<b
         })
     }
 
-    if (path === 'cases') {
+    if (['cases', 'per-variant'].includes(path)) {
+      const dataAtom = pathToAtom.get(path)
+      if (!dataAtom) {
+        throw new Error('Data atom not found, cannot update url')
+      }
       // If all clusters are enabled, we will remove cluster url params
-      Promise.all([getPromise(clustersCasesAtom), getPromise(clusterDisplayNameToLineageMapSelector)])
+      Promise.all([getPromise(dataAtom), getPromise(clusterDisplayNameToLineageMapSelector)])
         .then(([clusters, lineageMap]) => {
           const hasAllEnabled = clusters.every((cluster) => cluster.enabled)
           const variants = hasAllEnabled
@@ -137,3 +142,8 @@ export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<b
     }
   })
 }
+
+const pathToAtom = new Map([
+  ['cases', clustersCasesAtom],
+  ['per-variant', clustersForPerClusterDataAtom],
+])
