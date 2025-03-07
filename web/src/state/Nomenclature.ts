@@ -5,7 +5,7 @@ import { persistAtom } from 'src/state/persist/localStorage'
 import { parseUrl } from 'src/helpers/parseUrl'
 import { setUrlPath, updateUrlQuery } from 'src/helpers/urlQuery'
 import type { AtomEffectParams } from 'src/state/utils/atomEffect'
-import { CASES, VARIANTS } from 'src/constants'
+import { CASES, PER_VARIANT, VARIANTS } from 'src/constants'
 import {
   clusterLineagesToBuildNameMapSelector,
   clusterLineagesToDisplayNameMapSelector,
@@ -15,6 +15,7 @@ import {
 import { clustersCasesAtom } from 'src/state/ClustersForCaseData'
 import { convertToArrayMaybe } from 'src/helpers/array'
 import { atomDefault } from 'src/state/utils/atomDefault'
+import { clustersForPerClusterDataAtom } from 'src/state/ClustersForPerClusterData'
 
 /** This is a writeable "facade-selector" for two "sub-atoms" to allow getting the nomenclature from the url on page load
  * while still allowing a change in the nomenclature state to update the url later.
@@ -115,9 +116,13 @@ export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<b
         })
     }
 
-    if (path === CASES) {
+    if ([CASES, PER_VARIANT].includes(path)) {
+      const dataAtom = pathToAtom.get(path)
+      if (!dataAtom) {
+        throw new Error('Data atom not found, cannot update url')
+      }
       // If all clusters are enabled, we will remove cluster url params
-      Promise.all([getPromise(clustersCasesAtom), getPromise(clusterDisplayNameToLineageMapSelector)])
+      Promise.all([getPromise(dataAtom), getPromise(clusterDisplayNameToLineageMapSelector)])
         .then(([clusters, lineageMap]) => {
           const hasAllEnabled = clusters.every((cluster) => cluster.enabled)
           const variants = hasAllEnabled
@@ -130,10 +135,14 @@ export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<b
               : variants,
           })
         })
-        .catch((error) => {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-          throw new Error(error)
+        .catch((error: Error) => {
+          throw error
         })
     }
   })
 }
+
+const pathToAtom = new Map([
+  [CASES, clustersCasesAtom],
+  [PER_VARIANT, clustersForPerClusterDataAtom],
+])
