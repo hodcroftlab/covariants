@@ -5,8 +5,8 @@ import { useRecoilValue } from 'recoil'
 import { Link } from '../Link/Link'
 import { ClusterDatum } from 'src/io/getClusters'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
-import { clusterPangoLineageMapSelector } from 'src/state/Clusters'
 import { VARIANTS } from 'src/constants'
+import { clusterDisplayNameToLineageMapSelector } from 'src/state/Clusters'
 
 const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: string }>`
   display: flex;
@@ -99,12 +99,12 @@ export function ClusterButton({ cluster, isCurrent }: ClusterButtonProps) {
 function useGetVariantUrlAndTitleForNomenclature(cluster: ClusterDatum) {
   const { displayName, buildName } = cluster
   const enablePangolin = useRecoilValue(enablePangolinAtom)
-  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
-  const pangoLineage = pangoLineageMap.get(displayName)
-  const pangoName = pangoLineage ?? displayName
-  const pangoUrl = pangoLineage ?? buildName
+  const displayNameToLineageMap = useRecoilValue(clusterDisplayNameToLineageMapSelector)
+  const pangoName = displayNameToLineageMap.get(displayName)
+  const pangoDisplay = pangoName ?? displayName
+  const pangoUrl = pangoName ?? buildName
   return {
     clusterUrl: `/${VARIANTS}/${enablePangolin ? pangoUrl : buildName}`,
-    clusterTitle: enablePangolin ? pangoName : displayName,
+    clusterTitle: enablePangolin ? pangoDisplay : displayName,
   }
 }
