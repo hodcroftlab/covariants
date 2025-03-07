@@ -4,7 +4,7 @@ import { useRecoilValue } from 'recoil'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { ClusterDatum } from 'src/io/getClusters'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
-import { clusterPangoLineageMapSelector } from 'src/state/Clusters'
+import { clusterDisplayNameToLineageMapSelector } from 'src/state/Clusters'
 
 const VariantTitleWrapper = styled.header`
   text-align: center;
@@ -25,7 +25,7 @@ export interface VariantTitleProps {
 export function VariantTitle({ cluster }: VariantTitleProps) {
   const { t } = useTranslationSafe()
   const enablePangolin = useRecoilValue(enablePangolinAtom)
-  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
+  const pangoLineageMap = useRecoilValue(clusterDisplayNameToLineageMapSelector)
   const pangoName = cluster && pangoLineageMap.get(cluster.displayName)
 
   const subtitle = useMemo(() => {
