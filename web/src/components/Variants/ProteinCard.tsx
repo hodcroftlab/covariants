@@ -14,7 +14,7 @@ import GifPlayer from 'src/components/Common/GifPlayer'
 
 import GisaidLogo from 'src/assets/images/GISAID_logo.png'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
-import { clusterPangoLineageMapSelector } from 'src/state/Clusters'
+import { clusterDisplayNameToLineageMapSelector } from 'src/state/Clusters'
 
 const ProteinCardTitleIcon = styled(SiMoleculer)`
   margin: auto 5px;
@@ -55,7 +55,7 @@ export interface ProteinCardProps {
 export function ProteinCardTitle({ cluster }: ProteinCardProps) {
   const { t } = useTranslationSafe()
   const enablePangolin = useRecoilValue(enablePangolinAtom)
-  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
+  const pangoLineageMap = useRecoilValue(clusterDisplayNameToLineageMapSelector)
   const pangoName = pangoLineageMap.get(cluster.displayName) ?? cluster.displayName
   const variant = enablePangolin ? pangoName : cluster.displayName
 

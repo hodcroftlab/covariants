@@ -12,7 +12,7 @@ import { ProteinBadge as ProteinBadgeBase } from 'src/components/Common/Badges/P
 
 import AquariaLogo from 'src/assets/images/aquaria.svg'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
-import { clusterPangoLineageMapSelector } from 'src/state/Clusters'
+import { clusterDisplayNameToLineageMapSelector } from 'src/state/Clusters'
 
 const AquariaLogoSmall = styled(AquariaLogo)`
   margin: auto 5px;
@@ -42,7 +42,7 @@ export interface AquariaLinksCardProps {
 export function AquariaLinksCardTitle({ cluster }: AquariaLinksCardProps) {
   const { t } = useTranslationSafe()
   const enablePangolin = useRecoilValue(enablePangolinAtom)
-  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
+  const pangoLineageMap = useRecoilValue(clusterDisplayNameToLineageMapSelector)
   const pangoName = pangoLineageMap.get(cluster.displayName) ?? cluster.displayName
   const variant = enablePangolin ? pangoName : cluster.displayName
 

@@ -51,16 +51,17 @@ export const noPageClusterNamesSelector = selector({
   },
 })
 
-export const clusterBuildNamesMapSelector = selector({
-  key: 'clusterBuildNamesMap',
+export const clusterDisplayNameToBuildNameMapSelector = selector({
+  key: 'clusterDisplayNameToBuildNameMap',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
     return new Map<string, string>(clusters.map((c) => [c.displayName, c.buildName]))
   },
 })
 
-export const clusterPangoLineageMapSelector = selector({
-  key: 'clusterPangoLineageMap',
+/** This map contains *only the first* pango lineage, so display names remain unique. **/
+export const clusterDisplayNameToLineageMapSelector = selector({
+  key: 'clusterDisplayNameToLineageMap',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
     return new Map<string, string>(
@@ -100,8 +101,8 @@ export const clusterBuildNameToLineageMapSelector = selector({
   },
 })
 
-export const clusterLineageDisplayNameMapSelector = selector({
-  key: 'clusterLineageDisplayNameMap',
+export const clusterLineageToDisplayNameMapSelector = selector({
+  key: 'clusterLineageToDisplayNameMap',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
     return new Map<string, string>(
@@ -190,7 +191,7 @@ export function updateUrlOnClustersSet({ onSet, getPromise }: AtomEffectParams<C
       : clusters.filter((cluster) => cluster.enabled).map((cluster) => cluster.cluster)
 
     // Map display names to pango lineages if pango nomenclature is enabled
-    Promise.all([getPromise(clusterPangoLineageMapSelector), getPromise(enablePangolinAtom)])
+    Promise.all([getPromise(clusterDisplayNameToLineageMapSelector), getPromise(enablePangolinAtom)])
       .then(([lineageMap, enablePangolin]) => {
         return updateUrlQuery({
           variant: enablePangolin
