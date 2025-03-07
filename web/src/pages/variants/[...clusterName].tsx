@@ -2,17 +2,19 @@ import type { GetStaticPathsContext, GetStaticPropsContext, GetStaticPathsResult
 import { get } from 'lodash'
 
 import type { VariantsPageProps } from 'src/components/Variants/VariantsPage'
-import { takeFirstMaybe } from 'src/helpers/takeFirstMaybe'
+import { joinAllMaybe } from 'src/helpers/takeFirstMaybe'
 import clustersJson from 'src/../public/data/clusters.json'
 import { notUndefinedOrNull } from 'src/helpers/notUndefined'
 
 const clusters = clustersJson.clusters.filter((cluster) => !cluster.has_no_page)
 const clusterBuildNames = clusters.map((cluster) => cluster.build_name)
-const clusterLineages = clusters.map((cluster) => cluster.pango_lineages?.[0]?.name).filter(notUndefinedOrNull)
+const clusterLineages = clusters.flatMap((cluster) =>
+  cluster.pango_lineages?.map((lineage) => lineage.name).filter(notUndefinedOrNull),
+)
 const clusterOldBuildNames = clusters.flatMap((cluster) => cluster.old_build_names).filter(notUndefinedOrNull)
 
 export async function getStaticProps(context: GetStaticPropsContext): Promise<GetStaticPropsResult<VariantsPageProps>> {
-  const clusterName = takeFirstMaybe(get(context?.params, 'clusterName'))
+  const clusterName = joinAllMaybe(get(context?.params, 'clusterName'))
 
   return {
     props: {

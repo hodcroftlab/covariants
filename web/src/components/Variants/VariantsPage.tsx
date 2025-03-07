@@ -26,10 +26,10 @@ import NextstrainIconBase from 'src/assets/images/nextstrain_logo.svg'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
 import {
-  clusterLineageBuildNameMapSelector,
-  clusterPangoLineageMapSelector,
+  clusterLineagesToBuildNameMapSelector,
   clusterRedirectsSelector,
   hasPageClustersSelector,
+  clusterDisplayNameToLineagesMapSelector,
 } from 'src/state/Clusters'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
 
@@ -71,7 +71,7 @@ export function useDeriveCurrentClusterNameFromUrl(clusterName?: string): {
 } {
   const router = useRouter()
   const clusterRedirects = useRecoilValue(clusterRedirectsSelector)
-  const lineageToBuildName = useRecoilValue(clusterLineageBuildNameMapSelector)
+  const lineageToBuildName = useRecoilValue(clusterLineagesToBuildNameMapSelector)
 
   if (clusterName) {
     const clusterNewName = clusterRedirects.get(clusterName)
@@ -123,8 +123,8 @@ const NEXTSTRAIN_ICON = <NextstrainIcon />
 export function VariantsPageContent({ currentCluster }: { currentCluster: ClusterDatum }) {
   const { t } = useTranslationSafe()
   const enablePangolin = useRecoilValue(enablePangolinAtom)
-  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
-  const pangoName = pangoLineageMap.get(currentCluster.displayName) ?? currentCluster.displayName
+  const pangoLineagesMap = useRecoilValue(clusterDisplayNameToLineagesMapSelector)
+  const pangoNames = pangoLineagesMap.get(currentCluster.displayName)?.join(', ') ?? currentCluster.displayName
 
   const ClusterContent = useMemo(
     () => <MdxContent filepath={`clusters/${currentCluster.buildName}.md`} />,
@@ -154,7 +154,7 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
                 <LinkExternal href={currentCluster.nextstrainUrl} icon={NEXTSTRAIN_ICON} color={theme.link.dim.color}>
                   {t(`Dedicated {{nextstrain}} build for {{variant}}`, {
                     nextstrain: 'Nextstrain',
-                    variant: enablePangolin ? pangoName : currentCluster.displayName,
+                    variant: enablePangolin ? pangoNames : currentCluster.displayName,
                   })}
                 </LinkExternal>
               ) : (

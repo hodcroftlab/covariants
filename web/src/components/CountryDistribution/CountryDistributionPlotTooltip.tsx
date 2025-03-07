@@ -8,14 +8,14 @@ import { useRecoilValue } from 'recoil'
 import { ColoredBox } from '../Common/ColoredBox'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { formatDateBiweekly, formatInteger, formatProportion } from 'src/helpers/format'
-import { clusterPangoLineageMapSelector, getClusterColorsSelector } from 'src/state/Clusters'
+import { clusterDisplayNameToLineageMapSelector, getClusterColorsSelector } from 'src/state/Clusters'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
 
 export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
   const { t } = useTranslationSafe()
   const getClusterColor = useRecoilValue(getClusterColorsSelector)
   const enablePangolin = useRecoilValue(enablePangolinAtom)
-  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
+  const pangoLineageMap = useRecoilValue(clusterDisplayNameToLineageMapSelector)
 
   const { payload } = props
   if (!payload || payload.length === 0) {

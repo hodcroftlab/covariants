@@ -14,7 +14,7 @@ import {
 
 import { styled } from 'styled-components'
 import { useRecoilValue } from 'recoil'
-import { Cluster, clusterPangoLineageMapSelector, getClusterColorsSelector } from 'src/state/Clusters'
+import { Cluster, clusterDisplayNameToLineageMapSelector, getClusterColorsSelector } from 'src/state/Clusters'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
@@ -90,7 +90,7 @@ export function ClusterFilterCheckbox({ cluster, enabled, onFilterChange }: Clus
   const onChange = useCallback(() => onFilterChange(cluster), [onFilterChange, cluster])
   const getClusterColor = useRecoilValue(getClusterColorsSelector)
   const enablePangolin = useRecoilValue(enablePangolinAtom)
-  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
+  const pangoLineageMap = useRecoilValue(clusterDisplayNameToLineageMapSelector)
   const pangoName = pangoLineageMap.get(cluster) ?? cluster
 
   return (

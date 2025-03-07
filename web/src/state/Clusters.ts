@@ -51,16 +51,17 @@ export const noPageClusterNamesSelector = selector({
   },
 })
 
-export const clusterBuildNamesMapSelector = selector({
-  key: 'clusterBuildNamesMap',
+export const clusterDisplayNameToBuildNameMapSelector = selector({
+  key: 'clusterDisplayNameToBuildNameMap',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
     return new Map<string, string>(clusters.map((c) => [c.displayName, c.buildName]))
   },
 })
 
-export const clusterPangoLineageMapSelector = selector({
-  key: 'clusterPangoLineageMap',
+/** This map contains *only the first* pango lineage, so display names remain unique. **/
+export const clusterDisplayNameToLineageMapSelector = selector({
+  key: 'clusterDisplayNameToLineageMap',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
     return new Map<string, string>(
@@ -74,32 +75,53 @@ export const clusterPangoLineageMapSelector = selector({
   },
 })
 
-export const clusterLineageBuildNameMapSelector = selector({
-  key: 'clusterLineageBuildNameMap',
+/** This map contains *all* pango lineages **/
+export const clusterDisplayNameToLineagesMapSelector = selector({
+  key: 'clusterDisplayNameToLineagesMap',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
-    return new Map<string, string>(
+    return new Map<string, string[]>(
       clusters
-        .map((c) => [
-          c.pangoLineages ? (c.pangoLineages[0] ? c.pangoLineages[0].name : undefined) : undefined,
-          c.buildName,
-        ])
-        .filter(([pangoName]) => pangoName !== undefined) as [string, string][],
+        .map((c) => [c.displayName, c.pangoLineages?.map((lin) => lin.name) ?? undefined])
+        .filter(([, pangoName]) => pangoName !== undefined) as [string, string[]][],
     )
   },
 })
 
-export const clusterLineageDisplayNameMapSelector = selector({
-  key: 'clusterLineageDisplayNameMap',
+/** Careful, this is not the inverse of {@link clusterBuildNameToLineageMapSelector}! This map contains *all* pango lineages! **/
+export const clusterLineagesToBuildNameMapSelector = selector({
+  key: 'clusterLineagesToBuildNameMap',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
     return new Map<string, string>(
       clusters
-        .map((c) => [
-          c.pangoLineages ? (c.pangoLineages[0] ? c.pangoLineages[0].name : undefined) : undefined,
-          c.displayName,
-        ])
-        .filter(([pangoName]) => pangoName !== undefined) as [string, string][],
+        .flatMap((c) => c.pangoLineages?.map((lineage) => [lineage.name, c.buildName]))
+        .filter(notUndefinedOrNull) as [string, string][],
+    )
+  },
+})
+
+/** Careful, this is not the inverse of {@link clusterLineagesToBuildNameMapSelector}! This map contains *only the first* pango lineage, so build names remain unique. **/
+export const clusterBuildNameToLineageMapSelector = selector({
+  key: 'clusterBuildNameToLineageMap',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return new Map<string, string>(
+      clusters
+        .map((c) => [c.buildName, c.pangoLineages?.[0]?.name])
+        .filter(([, pangoName]) => pangoName !== undefined) as [string, string][],
+    )
+  },
+})
+
+export const clusterLineagesToDisplayNameMapSelector = selector({
+  key: 'clusterLineagesToDisplayNameMap',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return new Map<string, string>(
+      clusters
+        .flatMap((c) => c.pangoLineages?.map((lineage) => [lineage.name, c.displayName]))
+        .filter(notUndefinedOrNull) as [string, string][],
     )
   },
 })
@@ -179,7 +201,7 @@ export function updateUrlOnClustersSet({ onSet, getPromise }: AtomEffectParams<C
       : clusters.filter((cluster) => cluster.enabled).map((cluster) => cluster.cluster)
 
     // Map display names to pango lineages if pango nomenclature is enabled
-    Promise.all([getPromise(clusterPangoLineageMapSelector), getPromise(enablePangolinAtom)])
+    Promise.all([getPromise(clusterDisplayNameToLineageMapSelector), getPromise(enablePangolinAtom)])
       .then(([lineageMap, enablePangolin]) => {
         return updateUrlQuery({
           variant: enablePangolin

@@ -1,4 +1,4 @@
-import { get as getLodash, invert } from 'lodash'
+import { get as getLodash } from 'lodash'
 import Router from 'next/router'
 import { atom, selector } from 'recoil'
 import { persistAtom } from 'src/state/persist/localStorage'
@@ -6,13 +6,15 @@ import { parseUrl } from 'src/helpers/parseUrl'
 import { setUrlPath, updateUrlQuery } from 'src/helpers/urlQuery'
 import type { AtomEffectParams } from 'src/state/utils/atomEffect'
 import {
-  clusterLineageBuildNameMapSelector,
-  clusterLineageDisplayNameMapSelector,
-  clusterPangoLineageMapSelector,
+  clusterLineagesToBuildNameMapSelector,
+  clusterLineagesToDisplayNameMapSelector,
+  clusterDisplayNameToLineageMapSelector,
+  clusterBuildNameToLineageMapSelector,
 } from 'src/state/Clusters'
 import { clustersCasesAtom } from 'src/state/ClustersForCaseData'
 import { convertToArrayMaybe } from 'src/helpers/array'
 import { atomDefault } from 'src/state/utils/atomDefault'
+import { clustersForPerClusterDataAtom } from 'src/state/ClustersForPerClusterData'
 
 /** This is a writeable "facade-selector" for two "sub-atoms" to allow getting the nomenclature from the url on page load
  * while still allowing a change in the nomenclature state to update the url later.
@@ -50,8 +52,8 @@ export const urlEnablePangolinAtom = atomDefault<boolean | undefined>({
     const variants = convertToArrayMaybe(getLodash(query, 'variant'))
 
     if (variants) {
-      const lineageMap = get(clusterPangoLineageMapSelector)
-      const displayNameMap = get(clusterLineageDisplayNameMapSelector)
+      const lineageMap = get(clusterDisplayNameToLineageMapSelector)
+      const displayNameMap = get(clusterLineagesToDisplayNameMapSelector)
 
       const { enablePangolin, newQuery } = extractNomenclatureAndQuery(variants, lineageMap, displayNameMap)
 
@@ -72,7 +74,7 @@ function extractNomenclatureAndQuery(
   lineageMap: Map<string, string>,
   displayNameMap: Map<string, string>,
 ) {
-  const lineageNames = variants.filter((variant) => Array.from(lineageMap.values()).includes(variant))
+  const lineageNames = variants.filter((variant) => displayNameMap.has(variant))
   const displayNames = variants.filter((variant) => lineageMap.has(variant))
   const enablePangolin = lineageNames.length > displayNames.length // arbitrarily chose the nomenclature that has more query parameters
 
@@ -89,22 +91,23 @@ function extractNomenclatureAndQuery(
 
     newQuery = displayNames.concat(convertedDisplayNameVariants)
   }
+
   return { enablePangolin, newQuery }
 }
 
 export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<boolean | undefined>) {
   onSet((enablePangolin) => {
     const { pathname: oldPath } = parseUrl(Router.asPath)
-    const [, path, variantName] = oldPath.split('/')
+    const [, path, ...variantNameFragments] = oldPath.split('/')
+    const variantName = variantNameFragments.join('/')
 
-    if (path === 'variants' && variantName !== undefined) {
-      getPromise(clusterLineageBuildNameMapSelector)
-        .then((lineageToBuildNameMap) => {
+    if (path === 'variants' && variantName !== '') {
+      Promise.all([getPromise(clusterBuildNameToLineageMapSelector), getPromise(clusterLineagesToBuildNameMapSelector)])
+        .then(([buildNameToLineageMap, lineagesToBuildNameMap]) => {
           // If nomenclature is changed, pathname will be adjusted to match
-          const buildNameToLineageMap = new Map(Object.entries(invert(Object.fromEntries(lineageToBuildNameMap))))
           const newVariantName = enablePangolin
             ? (buildNameToLineageMap.get(variantName) ?? variantName)
-            : (lineageToBuildNameMap.get(variantName) ?? variantName)
+            : (lineagesToBuildNameMap.get(variantName) ?? variantName)
 
           return setUrlPath(`/${path}/${newVariantName}`)
         })
@@ -114,9 +117,13 @@ export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<b
         })
     }
 
-    if (path === 'cases') {
+    if (['cases', 'per-variant'].includes(path)) {
+      const dataAtom = pathToAtom.get(path)
+      if (!dataAtom) {
+        throw new Error('Data atom not found, cannot update url')
+      }
       // If all clusters are enabled, we will remove cluster url params
-      Promise.all([getPromise(clustersCasesAtom), getPromise(clusterPangoLineageMapSelector)])
+      Promise.all([getPromise(dataAtom), getPromise(clusterDisplayNameToLineageMapSelector)])
         .then(([clusters, lineageMap]) => {
           const hasAllEnabled = clusters.every((cluster) => cluster.enabled)
           const variants = hasAllEnabled
@@ -136,3 +143,8 @@ export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<b
     }
   })
 }
+
+const pathToAtom = new Map([
+  ['cases', clustersCasesAtom],
+  ['per-variant', clustersForPerClusterDataAtom],
+])
