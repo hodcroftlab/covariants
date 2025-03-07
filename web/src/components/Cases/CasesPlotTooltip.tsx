@@ -8,14 +8,14 @@ import { useRecoilValue } from 'recoil'
 import { ColoredBox } from '../Common/ColoredBox'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { formatDateBiweekly, formatInteger, formatProportion } from 'src/helpers/format'
-import { clusterDisplayNameToLineageMapSelector, getClusterColorsSelector } from 'src/state/Clusters'
+import { clusterDisplayNameToLineagesMapSelector, getClusterColorsSelector } from 'src/state/Clusters'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
 
 export function CasesPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
   const { t } = useTranslationSafe()
   const getClusterColor = useRecoilValue(getClusterColorsSelector)
   const enablePangolin = useRecoilValue(enablePangolinAtom)
-  const pangoLineageMap = useRecoilValue(clusterDisplayNameToLineageMapSelector)
+  const pangoLineagesMap = useRecoilValue(clusterDisplayNameToLineagesMapSelector)
 
   const { payload } = props
   if (!payload || payload.length === 0) {
@@ -53,7 +53,7 @@ export function CasesPlotTooltip(props: DefaultTooltipContentProps<number, strin
               <td className="px-2 text-left">
                 <ColoredBox $color={getClusterColor(name ?? '')} $size={10} $aspect={1.66} />
                 <ClusterNameText>
-                  {enablePangolin ? ((name && pangoLineageMap.get(name)) ?? name) : name}
+                  {enablePangolin ? ((name && pangoLineagesMap.get(name)?.join(', ')) ?? name) : name}
                 </ClusterNameText>
               </td>
               <td className="px-2 text-right">{value !== undefined && value > EPSILON ? formatInteger(value) : '-'}</td>
