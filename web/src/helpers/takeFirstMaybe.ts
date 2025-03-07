@@ -14,3 +14,15 @@ export function takeFirstMaybe<T>(maybeArray: T | T[]): T | undefined {
 
   return undefined
 }
+
+export function joinAllMaybe(maybeArray: string | string[] | undefined): string | undefined {
+  if (!Array.isArray(maybeArray)) {
+    return maybeArray
+  }
+
+  if (maybeArray.length > 0) {
+    return maybeArray.join('/')
+  }
+
+  return undefined
+}
