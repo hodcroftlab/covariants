@@ -27,7 +27,7 @@ import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
 import {
   clusterLineageToBuildNameMapSelector,
-  clusterPangoLineageMapSelector,
+  clusterDisplayNameToLineageMapSelector,
   clusterRedirectsSelector,
   hasPageClustersSelector,
 } from 'src/state/Clusters'
@@ -123,7 +123,7 @@ const NEXTSTRAIN_ICON = <NextstrainIcon />
 export function VariantsPageContent({ currentCluster }: { currentCluster: ClusterDatum }) {
   const { t } = useTranslationSafe()
   const enablePangolin = useRecoilValue(enablePangolinAtom)
-  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
+  const pangoLineageMap = useRecoilValue(clusterDisplayNameToLineageMapSelector)
   const pangoName = pangoLineageMap.get(currentCluster.displayName) ?? currentCluster.displayName
 
   const ClusterContent = useMemo(
