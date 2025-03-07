@@ -26,7 +26,7 @@ import NextstrainIconBase from 'src/assets/images/nextstrain_logo.svg'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
 import {
-  clusterLineageBuildNameMapSelector,
+  clusterLineageToBuildNameMapSelector,
   clusterPangoLineageMapSelector,
   clusterRedirectsSelector,
   hasPageClustersSelector,
@@ -71,7 +71,7 @@ export function useDeriveCurrentClusterNameFromUrl(clusterName?: string): {
 } {
   const router = useRouter()
   const clusterRedirects = useRecoilValue(clusterRedirectsSelector)
-  const lineageToBuildName = useRecoilValue(clusterLineageBuildNameMapSelector)
+  const lineageToBuildName = useRecoilValue(clusterLineageToBuildNameMapSelector)
 
   if (clusterName) {
     const clusterNewName = clusterRedirects.get(clusterName)

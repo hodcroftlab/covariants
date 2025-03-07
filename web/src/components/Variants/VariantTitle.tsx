@@ -44,7 +44,8 @@ export function VariantTitle({ cluster }: VariantTitleProps) {
   return (
     <VariantTitleWrapper>
       <ClusterNameTitle>
-        {cluster && `Variant: ${enablePangolin && pangoName ? pangoName : cluster.displayName}`}
+        {cluster &&
+          `${cluster.type == 'variant' ? t('Variant') : t('Mutation')}: ${enablePangolin && pangoName ? pangoName : cluster.displayName}`}
       </ClusterNameTitle>
       {subtitle}
     </VariantTitleWrapper>

@@ -1,4 +1,4 @@
-import { get as getLodash, invert } from 'lodash'
+import { get as getLodash } from 'lodash'
 import Router from 'next/router'
 import { atom, selector } from 'recoil'
 import { persistAtom } from 'src/state/persist/localStorage'
@@ -6,9 +6,10 @@ import { parseUrl } from 'src/helpers/parseUrl'
 import { setUrlPath, updateUrlQuery } from 'src/helpers/urlQuery'
 import type { AtomEffectParams } from 'src/state/utils/atomEffect'
 import {
-  clusterLineageBuildNameMapSelector,
+  clusterLineageToBuildNameMapSelector,
   clusterLineageDisplayNameMapSelector,
   clusterPangoLineageMapSelector,
+  clusterBuildNameToLineageMapSelector,
 } from 'src/state/Clusters'
 import { clustersCasesAtom } from 'src/state/ClustersForCaseData'
 import { convertToArrayMaybe } from 'src/helpers/array'
@@ -98,10 +99,9 @@ export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<b
     const [, path, variantName] = oldPath.split('/')
 
     if (path === 'variants' && variantName !== undefined) {
-      getPromise(clusterLineageBuildNameMapSelector)
-        .then((lineageToBuildNameMap) => {
+      Promise.all([getPromise(clusterBuildNameToLineageMapSelector), getPromise(clusterLineageToBuildNameMapSelector)])
+        .then(([buildNameToLineageMap, lineageToBuildNameMap]) => {
           // If nomenclature is changed, pathname will be adjusted to match
-          const buildNameToLineageMap = new Map(Object.entries(invert(Object.fromEntries(lineageToBuildNameMap))))
           const newVariantName = enablePangolin
             ? (buildNameToLineageMap.get(variantName) ?? variantName)
             : (lineageToBuildNameMap.get(variantName) ?? variantName)
