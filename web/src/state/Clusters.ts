@@ -75,6 +75,19 @@ export const clusterDisplayNameToLineageMapSelector = selector({
   },
 })
 
+/** This map contains *all* pango lineages **/
+export const clusterDisplayNameToLineagesMapSelector = selector({
+  key: 'clusterDisplayNameToLineagesMap',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return new Map<string, string[]>(
+      clusters
+        .map((c) => [c.displayName, c.pangoLineages?.map((lin) => lin.name) ?? undefined])
+        .filter(([, pangoName]) => pangoName !== undefined) as [string, string[]][],
+    )
+  },
+})
+
 /** Careful, this is not the inverse of {@link clusterBuildNameToLineageMapSelector}! This map contains *all* pango lineages! **/
 export const clusterLineageToBuildNameMapSelector = selector({
   key: 'clusterLineageToBuildNameMap',
