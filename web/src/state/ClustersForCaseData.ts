@@ -1,6 +1,6 @@
 import Router from 'next/router'
 import { get as getLodash, invert } from 'lodash'
-import { Cluster, clusterPangoLineageMapSelector, updateUrlOnClustersSet } from './Clusters'
+import { Cluster, clusterDisplayNameToLineageMapSelector, updateUrlOnClustersSet } from './Clusters'
 
 import { perCountryCasesDataSelector } from 'src/state/PerCountryCasesData'
 import { atomDefault } from 'src/state/utils/atomDefault'
@@ -14,7 +14,7 @@ export const clustersCasesAtom = atomDefault<Cluster[]>({
   key: 'clustersCases',
   default: ({ get }) => {
     const { clusters } = get(perCountryCasesDataSelector)
-    const clusterDisplayNameToPangoLineageMap = get(clusterPangoLineageMapSelector)
+    const clusterDisplayNameToPangoLineageMap = get(clusterDisplayNameToLineageMapSelector)
     const clusterPangoLineageToDisplayNameMap = new Map(
       Object.entries(invert(Object.fromEntries(clusterDisplayNameToPangoLineageMap))),
     )

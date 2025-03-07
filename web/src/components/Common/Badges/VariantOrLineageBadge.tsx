@@ -1,13 +1,13 @@
 import { useRecoilValue } from 'recoil'
 import React from 'react'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
-import { clusterPangoLineageMapSelector } from 'src/state/Clusters'
+import { clusterDisplayNameToLineageMapSelector } from 'src/state/Clusters'
 import { LineageBadge } from 'src/components/Common/Badges/LineageBadge'
 import { VariantBadge } from 'src/components/Common/Badges/VariantBadge'
 
 export function VariantOrLineageBadge({ name, href, prefix, invert }: VariantOrLineageBadgeProps) {
   const enablePangolin = useRecoilValue(enablePangolinAtom)
-  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
+  const pangoLineageMap = useRecoilValue(clusterDisplayNameToLineageMapSelector)
   const pangoName = pangoLineageMap.get(name)
   const showLineageBadge = enablePangolin != invert
 

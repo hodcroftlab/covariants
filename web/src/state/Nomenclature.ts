@@ -8,8 +8,8 @@ import type { AtomEffectParams } from 'src/state/utils/atomEffect'
 import { VARIANTS } from 'src/constants'
 import {
   clusterLineageToBuildNameMapSelector,
-  clusterLineageDisplayNameMapSelector,
-  clusterPangoLineageMapSelector,
+  clusterLineageToDisplayNameMapSelector,
+  clusterDisplayNameToLineageMapSelector,
   clusterBuildNameToLineageMapSelector,
 } from 'src/state/Clusters'
 import { clustersCasesAtom } from 'src/state/ClustersForCaseData'
@@ -52,8 +52,8 @@ export const urlEnablePangolinAtom = atomDefault<boolean | undefined>({
     const variants = convertToArrayMaybe(getLodash(query, 'variant'))
 
     if (variants) {
-      const lineageMap = get(clusterPangoLineageMapSelector)
-      const displayNameMap = get(clusterLineageDisplayNameMapSelector)
+      const lineageMap = get(clusterDisplayNameToLineageMapSelector)
+      const displayNameMap = get(clusterLineageToDisplayNameMapSelector)
 
       const { enablePangolin, newQuery } = extractNomenclatureAndQuery(variants, lineageMap, displayNameMap)
 
@@ -115,7 +115,7 @@ export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<b
 
     if (path === 'cases') {
       // If all clusters are enabled, we will remove cluster url params
-      Promise.all([getPromise(clustersCasesAtom), getPromise(clusterPangoLineageMapSelector)])
+      Promise.all([getPromise(clustersCasesAtom), getPromise(clusterDisplayNameToLineageMapSelector)])
         .then(([clusters, lineageMap]) => {
           const hasAllEnabled = clusters.every((cluster) => cluster.enabled)
           const variants = hasAllEnabled
