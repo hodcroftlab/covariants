@@ -4387,6 +4387,9 @@ clusters = {
         "col": "#E0A366",
         "display_name": "S:677H.Robin1",
         "build_name": "S.Q677H.Robin1",
+        "pango_lineages": [
+            {"name": "B.1.2", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Robin1?f_country=USA",
         "mutations": {
             "nonsynonymous": [
@@ -4427,6 +4430,9 @@ clusters = {
         "col": "#E085FF",
         "display_name": "S:677P.Pelican",
         "build_name": "S.Q677P.Pelican",
+        "pango_lineages": [
+            {"name": "B.1.2", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677P.Pelican?f_country=USA",
         "mutations": {
             "nonsynonymous": [
@@ -4838,6 +4844,9 @@ clusters = {
         "display_name": "20G/S:677H.Robin2",
         "has_no_page": True,
         "build_name": "S.Q677H.Robin2",
+        "pango_lineages": [
+            {"name": "B.1.2", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Robin2?c=gt-S_677&f_country=USA",
     },
     # variant
@@ -4854,6 +4863,9 @@ clusters = {
         "display_name": "20G/S:677H.Yellowhammer",
         "has_no_page": True,
         "build_name": "S.Q677H.Yellowhammer",
+        "pango_lineages": [
+            {"name": "B.1.2", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Yellowhammer?c=gt-S_677&f_country=USA",
     },
     # variant
@@ -4870,6 +4882,9 @@ clusters = {
         "display_name": "20G/S:677R.Roadrunner",
         "has_no_page": True,
         "build_name": "S.Q677R.Roadrunner",
+        "pango_lineages": [
+            {"name": "B.1.2", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677R.Roadrunner?c=gt-S_677&f_country=USA",
     },
     # variant
@@ -4886,6 +4901,9 @@ clusters = {
         "display_name": "20G/S:677H.Heron",
         "has_no_page": True,
         "build_name": "S.Q677H.Heron",
+        "pango_lineages": [
+            {"name": "B.1.265", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Heron?c=gt-S_677&f_country=USA",
     },
     # variant
@@ -4902,6 +4920,9 @@ clusters = {
         "display_name": "20G/S:677H.Bluebird",
         "has_no_page": True,
         "build_name": "S.Q677H.Bluebird",
+        "pango_lineages": [
+            {"name": "B.1.1.486", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Bluebird?c=gt-S_677&f_country=USA",
     },
     # variant
@@ -4918,6 +4939,9 @@ clusters = {
         "display_name": "20G/S:677H.Quail",
         "has_no_page": True,
         "build_name": "S.Q677H.Quail",
+        "pango_lineages": [
+            {"name": "B.1.1.316", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Quail?c=gt-S_677&f_country=USA",
     },
     # variant
@@ -4934,6 +4958,9 @@ clusters = {
         "display_name": "20G/S:677H.Mockingbird",
         "has_no_page": True,
         "build_name": "S.Q677H.Mockingbird",
+        "pango_lineages": [
+            {"name": "B.1.234", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Mockingbird?c=gt-S_677&f_country=USA",
     },
 
