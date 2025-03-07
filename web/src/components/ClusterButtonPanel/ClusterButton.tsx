@@ -5,7 +5,7 @@ import { useRecoilValue } from 'recoil'
 import { Link } from '../Link/Link'
 import { ClusterDatum } from 'src/io/getClusters'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
-import { clusterPangoLineageMapSelector } from 'src/state/Clusters'
+import { clusterDisplayNameToLineageMapSelector } from 'src/state/Clusters'
 
 const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: string }>`
   display: flex;
@@ -87,10 +87,10 @@ export interface ClusterButtonProps {
 export function ClusterButton({ cluster, isCurrent }: ClusterButtonProps) {
   const { displayName, col, buildName } = cluster
   const enablePangolin = useRecoilValue(enablePangolinAtom)
-  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
-  const pangoLineage = pangoLineageMap.get(displayName)
-  const pangoName = pangoLineage ?? displayName
-  const pangoUrl = pangoLineage ?? buildName
+  const displayNameToLineageMap = useRecoilValue(clusterDisplayNameToLineageMapSelector)
+  const pangoName = displayNameToLineageMap.get(displayName)
+  const pangoDisplay = pangoName ?? displayName
+  const pangoUrl = pangoName ?? buildName
 
   return (
     <ClusterButtonComponent
@@ -98,7 +98,7 @@ export function ClusterButton({ cluster, isCurrent }: ClusterButtonProps) {
       $isCurrent={isCurrent}
       $color={col}
     >
-      <ClusterTitle $isCurrent={isCurrent}>{enablePangolin ? pangoName : displayName}</ClusterTitle>
+      <ClusterTitle $isCurrent={isCurrent}>{enablePangolin ? pangoDisplay : displayName}</ClusterTitle>
     </ClusterButtonComponent>
   )
 }
