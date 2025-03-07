@@ -96,9 +96,10 @@ function extractNomenclatureAndQuery(
 export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<boolean | undefined>) {
   onSet((enablePangolin) => {
     const { pathname: oldPath } = parseUrl(Router.asPath)
-    const [, path, variantName] = oldPath.split('/')
+    const [, path, ...variantNameFragments] = oldPath.split('/')
+    const variantName = variantNameFragments.join('/')
 
-    if (path === 'variants' && variantName !== undefined) {
+    if (path === 'variants' && variantName !== '') {
       Promise.all([getPromise(clusterBuildNameToLineageMapSelector), getPromise(clusterLineageToBuildNameMapSelector)])
         .then(([buildNameToLineageMap, lineageToBuildNameMap]) => {
           // If nomenclature is changed, pathname will be adjusted to match
