@@ -1,14 +1,14 @@
 import { useRecoilValue } from 'recoil'
 import React from 'react'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
-import { clusterDisplayNameToLineageMapSelector } from 'src/state/Clusters'
+import { clusterDisplayNameToLineagesMapSelector } from 'src/state/Clusters'
 
 export function VariantOrLineageText({ name, invert }: VariantOrLineageTextProps) {
   const enablePangolin = useRecoilValue(enablePangolinAtom)
-  const pangoLineageMap = useRecoilValue(clusterDisplayNameToLineageMapSelector)
-  const pangoName = pangoLineageMap.get(name) ?? name
+  const pangoLineagesMap = useRecoilValue(clusterDisplayNameToLineagesMapSelector)
+  const pangoNames = pangoLineagesMap.get(name)
   const showLineageBadge = enablePangolin != invert
-  return <>{showLineageBadge ? pangoName : name}</>
+  return <>{showLineageBadge ? pangoNames?.join(', ') : name}</>
 }
 
 export interface VariantOrLineageTextProps {
