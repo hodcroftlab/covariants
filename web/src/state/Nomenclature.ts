@@ -97,7 +97,8 @@ function extractNomenclatureAndQuery(
 export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<boolean | undefined>) {
   onSet((enablePangolin) => {
     const { pathname: oldPath } = parseUrl(Router.asPath)
-    const [, path, variantName] = oldPath.split('/')
+    const [, path, ...variantNameFragments] = oldPath.split('/')
+    const variantName = variantNameFragments.join('/')
 
     if (path === VARIANTS && variantName !== undefined) {
       Promise.all([getPromise(clusterBuildNameToLineageMapSelector), getPromise(clusterLineageToBuildNameMapSelector)])
