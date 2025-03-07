@@ -89,8 +89,8 @@ export const clusterDisplayNameToLineagesMapSelector = selector({
 })
 
 /** Careful, this is not the inverse of {@link clusterBuildNameToLineageMapSelector}! This map contains *all* pango lineages! **/
-export const clusterLineageToBuildNameMapSelector = selector({
-  key: 'clusterLineageToBuildNameMap',
+export const clusterLineagesToBuildNameMapSelector = selector({
+  key: 'clusterLineagesToBuildNameMap',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
     return new Map<string, string>(
@@ -101,7 +101,7 @@ export const clusterLineageToBuildNameMapSelector = selector({
   },
 })
 
-/** Careful, this is not the inverse of {@link clusterLineageToBuildNameMapSelector}! This map contains *only the first* pango lineage, so build names remain unique. **/
+/** Careful, this is not the inverse of {@link clusterLineagesToBuildNameMapSelector}! This map contains *only the first* pango lineage, so build names remain unique. **/
 export const clusterBuildNameToLineageMapSelector = selector({
   key: 'clusterBuildNameToLineageMap',
   get: ({ get }) => {
@@ -114,17 +114,14 @@ export const clusterBuildNameToLineageMapSelector = selector({
   },
 })
 
-export const clusterLineageToDisplayNameMapSelector = selector({
-  key: 'clusterLineageToDisplayNameMap',
+export const clusterLineagesToDisplayNameMapSelector = selector({
+  key: 'clusterLineagesToDisplayNameMap',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
     return new Map<string, string>(
       clusters
-        .map((c) => [
-          c.pangoLineages ? (c.pangoLineages[0] ? c.pangoLineages[0].name : undefined) : undefined,
-          c.displayName,
-        ])
-        .filter(([pangoName]) => pangoName !== undefined) as [string, string][],
+        .flatMap((c) => c.pangoLineages?.map((lineage) => [lineage.name, c.displayName]))
+        .filter(notUndefinedOrNull) as [string, string][],
     )
   },
 })
