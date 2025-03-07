@@ -7,8 +7,8 @@ import { setUrlPath, updateUrlQuery } from 'src/helpers/urlQuery'
 import type { AtomEffectParams } from 'src/state/utils/atomEffect'
 import { CASES, VARIANTS } from 'src/constants'
 import {
-  clusterLineageToBuildNameMapSelector,
-  clusterLineageToDisplayNameMapSelector,
+  clusterLineagesToBuildNameMapSelector,
+  clusterLineagesToDisplayNameMapSelector,
   clusterDisplayNameToLineageMapSelector,
   clusterBuildNameToLineageMapSelector,
 } from 'src/state/Clusters'
@@ -53,7 +53,7 @@ export const urlEnablePangolinAtom = atomDefault<boolean | undefined>({
 
     if (variants) {
       const lineageMap = get(clusterDisplayNameToLineageMapSelector)
-      const displayNameMap = get(clusterLineageToDisplayNameMapSelector)
+      const displayNameMap = get(clusterLineagesToDisplayNameMapSelector)
 
       const { enablePangolin, newQuery } = extractNomenclatureAndQuery(variants, lineageMap, displayNameMap)
 
@@ -74,7 +74,7 @@ function extractNomenclatureAndQuery(
   lineageMap: Map<string, string>,
   displayNameMap: Map<string, string>,
 ) {
-  const lineageNames = variants.filter((variant) => Array.from(lineageMap.values()).includes(variant))
+  const lineageNames = variants.filter((variant) => displayNameMap.has(variant))
   const displayNames = variants.filter((variant) => lineageMap.has(variant))
   const enablePangolin = lineageNames.length > displayNames.length // arbitrarily chose the nomenclature that has more query parameters
 
@@ -91,6 +91,7 @@ function extractNomenclatureAndQuery(
 
     newQuery = displayNames.concat(convertedDisplayNameVariants)
   }
+
   return { enablePangolin, newQuery }
 }
 
@@ -101,7 +102,7 @@ export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<b
     const variantName = variantNameFragments.join('/')
 
     if (path === VARIANTS && variantName !== undefined) {
-      Promise.all([getPromise(clusterBuildNameToLineageMapSelector), getPromise(clusterLineageToBuildNameMapSelector)])
+      Promise.all([getPromise(clusterBuildNameToLineageMapSelector), getPromise(clusterLineagesToBuildNameMapSelector)])
         .then(([buildNameToLineageMap, lineageToBuildNameMap]) => {
           // If nomenclature is changed, pathname will be adjusted to match
           const convertedVariantName = enablePangolin
