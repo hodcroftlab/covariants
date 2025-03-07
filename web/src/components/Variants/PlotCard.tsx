@@ -11,7 +11,7 @@ import { ClusterDistributionPlot } from 'src/components/ClusterDistribution/Clus
 import { ClusterDatum } from 'src/io/getClusters'
 import { perClusterDataCountryNamesSelector, perClusterDataDistributionSelector } from 'src/state/PerClusterData'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
-import { clusterPangoLineageMapSelector } from 'src/state/Clusters'
+import { clusterDisplayNameToLineageMapSelector } from 'src/state/Clusters'
 
 const PlotCardTitleIcon = styled(GoGraph)`
   margin: auto 5px;
@@ -36,7 +36,7 @@ export interface PlotCardProps {
 export function PlotCardTitle({ cluster }: PlotCardProps) {
   const { t } = useTranslationSafe()
   const enablePangolin = useRecoilValue(enablePangolinAtom)
-  const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
+  const pangoLineageMap = useRecoilValue(clusterDisplayNameToLineageMapSelector)
   const pangoName = pangoLineageMap.get(cluster.displayName) ?? cluster.displayName
   const variant = enablePangolin ? pangoName : cluster.displayName
 
