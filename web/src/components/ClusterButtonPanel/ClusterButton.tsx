@@ -6,6 +6,7 @@ import { Link } from '../Link/Link'
 import { ClusterDatum } from 'src/io/getClusters'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
 import { clusterPangoLineageMapSelector } from 'src/state/Clusters'
+import { VARIANTS } from 'src/constants'
 
 const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: string }>`
   display: flex;
@@ -85,20 +86,25 @@ export interface ClusterButtonProps {
 }
 
 export function ClusterButton({ cluster, isCurrent }: ClusterButtonProps) {
-  const { displayName, col, buildName } = cluster
+  const { col } = cluster
+  const { clusterUrl, clusterTitle } = useGetVariantUrlAndTitleForNomenclature(cluster)
+
+  return (
+    <ClusterButtonComponent href={clusterUrl} $isCurrent={isCurrent} $color={col}>
+      <ClusterTitle $isCurrent={isCurrent}>{clusterTitle}</ClusterTitle>
+    </ClusterButtonComponent>
+  )
+}
+
+function useGetVariantUrlAndTitleForNomenclature(cluster: ClusterDatum) {
+  const { displayName, buildName } = cluster
   const enablePangolin = useRecoilValue(enablePangolinAtom)
   const pangoLineageMap = useRecoilValue(clusterPangoLineageMapSelector)
   const pangoLineage = pangoLineageMap.get(displayName)
   const pangoName = pangoLineage ?? displayName
   const pangoUrl = pangoLineage ?? buildName
-
-  return (
-    <ClusterButtonComponent
-      href={`/variants/${enablePangolin ? pangoUrl : buildName}`}
-      $isCurrent={isCurrent}
-      $color={col}
-    >
-      <ClusterTitle $isCurrent={isCurrent}>{enablePangolin ? pangoName : displayName}</ClusterTitle>
-    </ClusterButtonComponent>
-  )
+  return {
+    clusterUrl: `/${VARIANTS}/${enablePangolin ? pangoUrl : buildName}`,
+    clusterTitle: enablePangolin ? pangoName : displayName,
+  }
 }
