@@ -1,9 +1,9 @@
 import copy from 'fast-copy'
-import { get as getLodash } from 'lodash'
-import Router from 'next/router'
-import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
-import { parseUrl } from 'src/helpers/parseUrl'
-import { clusterLineagesToDisplayNameMapSelector, updateUrlOnClustersSet } from 'src/state/Clusters'
+import {
+  clusterLineagesToDisplayNameMapSelector,
+  extractEnabledClustersFromUrlQuery,
+  updateUrlOnClustersSet,
+} from 'src/state/Clusters'
 import type { Cluster } from 'src/state/Clusters'
 import { fetchPerCountryDataRaw } from 'src/io/getPerCountryData'
 import { atomFamilyAsync } from 'src/state/utils/atomAsync'
@@ -20,20 +20,7 @@ export const clustersForPerCountryDataAtom = atomFamilyAsync<Cluster[], string>(
     const clusters = clusterNames.map((cluster) => ({ cluster, enabled: true }))
     const clusterPangoLineagesToDisplayNameMap = get(clusterLineagesToDisplayNameMapSelector)
 
-    const { query } = parseUrl(Router.asPath)
-    const enabledClustersLineagesOrDisplayNames = convertToArrayMaybe(getLodash(query, 'variant'))
-    if (enabledClustersLineagesOrDisplayNames) {
-      const enabledClustersDisplayNames = enabledClustersLineagesOrDisplayNames.map(
-        (displayNameOrLineage) =>
-          clusterPangoLineagesToDisplayNameMap.get(displayNameOrLineage) ?? displayNameOrLineage,
-      )
-      return clusters.map((cluster) => ({
-        ...cluster,
-        enabled: includesCaseInsensitive(enabledClustersDisplayNames, cluster.cluster),
-      }))
-    }
-
-    return clusters
+    return extractEnabledClustersFromUrlQuery(clusters, clusterPangoLineagesToDisplayNameMap)
   },
   effects: [updateUrlOnClustersSet],
 })

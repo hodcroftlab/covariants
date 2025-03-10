@@ -1,4 +1,6 @@
 import { selector } from 'recoil'
+import Router from 'next/router'
+import { get as getLodash } from 'lodash'
 import { updateUrlQuery } from 'src/helpers/urlQuery'
 import type { AtomEffectParams } from 'src/state/utils/atomEffect'
 import { atomAsync } from 'src/state/utils/atomAsync'
@@ -6,6 +8,8 @@ import { CLUSTER_NAME_OTHERS, ClusterDatum, fetchClusters } from 'src/io/getClus
 import { theme } from 'src/theme'
 import { notUndefinedOrNull } from 'src/helpers/notUndefined'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
+import { parseUrl } from 'src/helpers/parseUrl'
+import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
 
 export interface Cluster {
   cluster: string
@@ -213,4 +217,21 @@ export function updateUrlOnClustersSet({ onSet, getPromise }: AtomEffectParams<C
         throw error
       })
   })
+}
+
+export function extractEnabledClustersFromUrlQuery(clusters: Cluster[], lineagesMap: Map<string, string>) {
+  const { query } = parseUrl(Router.asPath)
+  const enabledClustersLineagesOrDisplayNames = convertToArrayMaybe(getLodash(query, 'variant'))
+
+  if (enabledClustersLineagesOrDisplayNames) {
+    const enabledClustersDisplayNames = enabledClustersLineagesOrDisplayNames.map(
+      (displayNameOrLineage) => lineagesMap.get(displayNameOrLineage) ?? displayNameOrLineage,
+    )
+    return clusters.map((cluster) => ({
+      ...cluster,
+      enabled: includesCaseInsensitive(enabledClustersDisplayNames, cluster.cluster),
+    }))
+  }
+
+  return clusters
 }
