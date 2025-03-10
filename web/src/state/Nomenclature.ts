@@ -5,7 +5,7 @@ import { persistAtom } from 'src/state/persist/localStorage'
 import { parseUrl } from 'src/helpers/parseUrl'
 import { setUrlPath, updateUrlQuery } from 'src/helpers/urlQuery'
 import type { AtomEffectParams } from 'src/state/utils/atomEffect'
-import { CASES, PER_VARIANT, VARIANTS } from 'src/constants'
+import { CASES, PER_COUNTRY, PER_VARIANT, VARIANTS } from 'src/constants'
 import {
   clusterLineagesToBuildNameMapSelector,
   clusterLineagesToDisplayNameMapSelector,
@@ -142,7 +142,7 @@ export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<b
         })
     }
 
-    if (path === 'per-country') {
+    if (path === PER_COUNTRY) {
       // If all clusters are enabled, we will remove cluster url params
       getPromise(perCountryRegionAtom)
         .then(async (region) => {

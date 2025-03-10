@@ -26,3 +26,4 @@ export const FACEBOOK_HASHTAG = PROJECT_NAME
 export const VARIANTS = 'variants'
 export const CASES = 'cases'
 export const PER_VARIANT = 'per-variant'
+export const PER_COUNTRY = 'per-country'
