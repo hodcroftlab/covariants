@@ -1,11 +1,8 @@
-import Router from 'next/router'
-import { get as getLodash } from 'lodash'
-import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
-import { parseUrl } from 'src/helpers/parseUrl'
 import {
   Cluster,
   clusterLineagesToDisplayNameMapSelector,
   clusterNamesSelector,
+  extractEnabledClustersFromUrlQuery,
   updateUrlOnClustersSet,
 } from 'src/state/Clusters'
 import { atomAsync } from 'src/state/utils/atomAsync'
@@ -22,21 +19,7 @@ export const clustersForPerClusterDataAtom = atomAsync<Cluster[]>({
     const clusters = sortClustersByClusterNames(unsortedClusters, allClusterNames)
     const clusterPangoLineagesToDisplayNameMap = get(clusterLineagesToDisplayNameMapSelector)
 
-    const { query } = parseUrl(Router.asPath)
-    const enabledClustersLineagesOrDisplayNames = convertToArrayMaybe(getLodash(query, 'variant'))
-
-    if (enabledClustersLineagesOrDisplayNames) {
-      const enabledClustersDisplayNames = enabledClustersLineagesOrDisplayNames.map(
-        (displayNameOrLineage) =>
-          clusterPangoLineagesToDisplayNameMap.get(displayNameOrLineage) ?? displayNameOrLineage,
-      )
-      return clusters.map((cluster) => ({
-        ...cluster,
-        enabled: includesCaseInsensitive(enabledClustersDisplayNames, cluster.cluster),
-      }))
-    }
-
-    return clusters
+    return extractEnabledClustersFromUrlQuery(clusters, clusterPangoLineagesToDisplayNameMap)
   },
   effects: [updateUrlOnClustersSet],
 })
