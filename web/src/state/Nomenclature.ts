@@ -5,7 +5,7 @@ import { persistAtom } from 'src/state/persist/localStorage'
 import { parseUrl } from 'src/helpers/parseUrl'
 import { setUrlPath, updateUrlQuery } from 'src/helpers/urlQuery'
 import type { AtomEffectParams } from 'src/state/utils/atomEffect'
-import { VARIANTS } from 'src/constants'
+import { CASES, VARIANTS } from 'src/constants'
 import {
   clusterLineageBuildNameMapSelector,
   clusterLineageDisplayNameMapSelector,
@@ -113,7 +113,7 @@ export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<b
         })
     }
 
-    if (path === 'cases') {
+    if (path === CASES) {
       // If all clusters are enabled, we will remove cluster url params
       Promise.all([getPromise(clustersCasesAtom), getPromise(clusterPangoLineageMapSelector)])
         .then(([clusters, lineageMap]) => {

@@ -174,22 +174,21 @@ export function updateUrlOnClustersSet({ onSet, getPromise }: AtomEffectParams<C
   onSet((clusters: Cluster[]) => {
     // If all clusters are enabled, we will remove cluster url params
     const hasAllEnabled = clusters.every((cluster) => cluster.enabled)
-    const variants = hasAllEnabled
+    const enabledClusters = hasAllEnabled
       ? []
       : clusters.filter((cluster) => cluster.enabled).map((cluster) => cluster.cluster)
 
-    // Map display names to pango lineages if pango nomenclature is enabled
+    // Update query to enabled clusters and map display names to pango lineages if pango nomenclature is enabled
     Promise.all([getPromise(clusterPangoLineageMapSelector), getPromise(enablePangolinAtom)])
-      .then(([lineageMap, enablePangolin]) => {
+      .then(([displayNameToLineageMap, enablePangolin]) => {
         return updateUrlQuery({
           variant: enablePangolin
-            ? variants.map((displayName) => lineageMap.get(displayName) ?? displayName)
-            : variants,
+            ? enabledClusters.map((displayName) => displayNameToLineageMap.get(displayName) ?? displayName)
+            : enabledClusters,
         })
       })
-      .catch((error) => {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-        throw new Error(error)
+      .catch((error: Error) => {
+        throw error
       })
   })
 }

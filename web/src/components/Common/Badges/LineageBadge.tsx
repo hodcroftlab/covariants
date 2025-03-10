@@ -4,12 +4,13 @@ import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { colorHash } from 'src/helpers/colorHash'
 import { ColoredText, MutationBadgeBox, MutationWrapper, PrefixText } from 'src/components/Common/Badges/MutationBadge'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
+import { VARIANTS } from 'src/constants'
 
 export function LineageBadge({ name, href, prefix, report }: LineageBadgeProps) {
   const { t } = useTranslationSafe()
 
   const url = useMemo(
-    () => href ?? (report ? `https://cov-lineages.org/global_report_${name}.html` : `/variants/${name}`),
+    () => href ?? (report ? `https://cov-lineages.org/global_report_${name}.html` : `/${VARIANTS}/${name}`),
     [href, report, name],
   )
   const tooltip = useMemo(() => {
