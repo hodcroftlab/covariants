@@ -1,7 +1,7 @@
 import { get as getLodash } from 'lodash'
 import Router from 'next/router'
 import { selector } from 'recoil'
-import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
+import { convertToArrayMaybe, includesCaseInsensitive, takeFirstMaybe } from 'src/helpers/array'
 import {
   DEFAULT_REGION,
   getAllContinents,
@@ -11,7 +11,6 @@ import {
 } from 'src/state/Places'
 import type { Country } from 'src/state/Places'
 import { parseUrl } from 'src/helpers/parseUrl'
-import { takeFirstMaybe } from 'src/helpers/takeFirstMaybe'
 import { setUrlQuery, updateUrlQuery } from 'src/helpers/urlQuery'
 import { isDefaultValue } from 'src/state/utils/isDefaultValue'
 import { perCountryDataDistributionsSelector, perCountryDataRegionsSelector } from 'src/state/PerCountryData'

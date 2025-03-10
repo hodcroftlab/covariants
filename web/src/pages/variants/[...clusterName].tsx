@@ -2,9 +2,9 @@ import type { GetStaticPathsContext, GetStaticPropsContext, GetStaticPathsResult
 import { get } from 'lodash'
 
 import type { VariantsPageProps } from 'src/components/Variants/VariantsPage'
-import { joinAllMaybe } from 'src/helpers/takeFirstMaybe'
 import clustersJson from 'src/../public/data/clusters.json'
 import { notUndefinedOrNull } from 'src/helpers/notUndefined'
+import { joinAllMaybe } from 'src/helpers/array'
 
 const clusters = clustersJson.clusters.filter((cluster) => !cluster.has_no_page)
 const clusterBuildNames = clusters.map((cluster) => cluster.build_name)
