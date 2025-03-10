@@ -24,3 +24,4 @@ export const TWITTER_RELATED = [TWITTER_USERNAME_RAW]
 export const FACEBOOK_HASHTAG = PROJECT_NAME
 
 export const VARIANTS = 'variants'
+export const CASES = 'cases'
