@@ -16,6 +16,8 @@ import { clustersCasesAtom } from 'src/state/ClustersForCaseData'
 import { convertToArrayMaybe } from 'src/helpers/array'
 import { atomDefault } from 'src/state/utils/atomDefault'
 import { clustersForPerClusterDataAtom } from 'src/state/ClustersForPerClusterData'
+import { clustersForPerCountryDataAtom } from 'src/state/ClustersForPerCountryData'
+import { perCountryRegionAtom } from 'src/state/PlacesForPerCountryData'
 
 /** This is a writeable "facade-selector" for two "sub-atoms" to allow getting the nomenclature from the url on page load
  * while still allowing a change in the nomenclature state to update the url later.
@@ -124,6 +126,29 @@ export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<b
       // If all clusters are enabled, we will remove cluster url params
       Promise.all([getPromise(dataAtom), getPromise(clusterDisplayNameToLineageMapSelector)])
         .then(([clusters, lineageMap]) => {
+          const hasAllEnabled = clusters.every((cluster) => cluster.enabled)
+          const variants = hasAllEnabled
+            ? []
+            : clusters.filter((cluster) => cluster.enabled).map((cluster) => cluster.cluster)
+
+          return updateUrlQuery({
+            variant: enablePangolin
+              ? variants.map((displayName) => lineageMap.get(displayName) ?? displayName)
+              : variants,
+          })
+        })
+        .catch((error) => {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+          throw new Error(error)
+        })
+    }
+
+    if (path === 'per-country') {
+      // If all clusters are enabled, we will remove cluster url params
+      getPromise(perCountryRegionAtom)
+        .then(async (region) => {
+          const clusters = await getPromise(clustersForPerCountryDataAtom(region))
+          const lineageMap = await getPromise(clusterDisplayNameToLineageMapSelector)
           const hasAllEnabled = clusters.every((cluster) => cluster.enabled)
           const variants = hasAllEnabled
             ? []
