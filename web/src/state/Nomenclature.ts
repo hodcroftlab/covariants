@@ -104,7 +104,7 @@ export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<b
     const [, path, ...variantNameFragments] = oldPath.split('/')
     const variantName = variantNameFragments.join('/')
 
-    if (path === VARIANTS && variantName !== undefined) {
+    if (path === VARIANTS && variantName !== '') {
       Promise.all([getPromise(clusterBuildNameToLineageMapSelector), getPromise(clusterLineagesToBuildNameMapSelector)])
         .then(([buildNameToLineageMap, lineageToBuildNameMap]) => {
           // If nomenclature is changed, pathname will be adjusted to match
