@@ -27,7 +27,7 @@ export type ClusterDistribution = z.infer<typeof clusterDistributionSchema>
 export type ClusterDistributionDatum = z.infer<typeof clusterDistributionDatumSchema>
 
 export async function fetchPerClusterDataRaw() {
-  return await FETCHER.validatedFetch('/data/perClusterData.json', perClusterDataRawSchema)
+  return await FETCHER.validatedFetch('/data/perClusterData_compact.json', perClusterDataRawSchema)
 }
 
 export function filterCountries(countries: Country[], withClustersFiltered: ClusterDistribution[]) {

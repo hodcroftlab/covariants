@@ -212,10 +212,10 @@ const restHandlers = [
   http.get('/data/params.json', () => {
     return HttpResponse.json(mockParams)
   }),
-  http.get('/data/perClusterData.json', () => {
+  http.get('/data/perClusterData_compact.json', () => {
     return HttpResponse.json(mockPerClusterData)
   }),
-  http.get('/data/perCountryData.json', () => {
+  http.get('/data/perCountryData_compact.json', () => {
     return HttpResponse.json(mockPerCountryData)
   }),
   http.get('/data/perCountryDataCaseCounts.json', () => {

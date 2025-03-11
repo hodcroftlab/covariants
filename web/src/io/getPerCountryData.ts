@@ -38,7 +38,7 @@ export type PerCountryDataRaw = z.infer<typeof perCountryDataRawSchema>
 export type CountryDistributionDatum = z.infer<typeof countryDistributionDatumSchema>
 
 export async function fetchPerCountryDataRaw(): Promise<PerCountryDataRaw> {
-  return await FETCHER.validatedFetch('/data/perCountryData.json', perCountryDataRawSchema)
+  return await FETCHER.validatedFetch('/data/perCountryData_compact.json', perCountryDataRawSchema)
 }
 
 export function filterCountries(countries: Country[], countryDistributions: CountryDistribution[]) {
