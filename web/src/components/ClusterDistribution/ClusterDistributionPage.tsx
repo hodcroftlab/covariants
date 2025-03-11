@@ -3,6 +3,7 @@ import { Card, CardBody, Col, Form, Input, Label, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 import { styled } from 'styled-components'
 import { ErrorBoundary } from 'react-error-boundary'
+import { useAtom } from 'jotai/index'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
 import { clustersForPerClusterDataAtom } from 'src/state/ClustersForPerClusterData'
 import { perClusterContinentsAtom, perClusterCountriesAtom } from 'src/state/PlacesForPerClusterData'
@@ -19,6 +20,7 @@ import { PageHeading } from 'src/components/Common/PageHeading'
 import { ClusterDistributionComponents } from 'src/components/ClusterDistribution/ClusterDistributionComponents'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
+import { clusterSidebarCollapsedAtoms, countriesSidebarCollapsedAtoms } from 'src/state/DistributionSidebar'
 
 export function ClusterDistributionPage() {
   const { t } = useTranslationSafe()
@@ -63,6 +65,8 @@ function ClusterDistributionPlotSection() {
   const [countriesSelected, setCountriesSelected] = useRecoilState(perClusterCountriesAtom)
   const [continentsSelected, setContinentsSelected] = useRecoilState(perClusterContinentsAtom)
   const [clustersSelected, setClustersSelected] = useRecoilState(clustersForPerClusterDataAtom)
+  const [clustersCollapsed, setClustersCollapsed] = useAtom(clusterSidebarCollapsedAtoms.perVariant)
+  const [countriesCollapsed, setCountriesCollapsed] = useAtom(countriesSidebarCollapsedAtoms.perVariant)
 
   return (
     <WrapperFlex>
@@ -75,7 +79,10 @@ function ClusterDistributionPlotSection() {
           setContinents={setContinentsSelected}
           setClusters={setClustersSelected}
           regionsTitle={t('Countries')}
-          countriesCollapsedByDefault={false}
+          clustersCollapsed={clustersCollapsed}
+          setClustersCollapsed={setClustersCollapsed}
+          countriesCollapsed={countriesCollapsed}
+          setCountriesCollapsed={setCountriesCollapsed}
           enabledFilters={enabledFilters}
         />
       </SidebarFlex>

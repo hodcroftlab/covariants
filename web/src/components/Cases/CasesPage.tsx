@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import { Col, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 import { ErrorBoundary } from 'react-error-boundary'
+import { useAtom } from 'jotai/index'
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
 import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
@@ -16,6 +17,7 @@ import { DistributionSidebar } from 'src/components/DistributionSidebar/Distribu
 import { CasesComponents } from 'src/components/Cases/CasesComponents'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
+import { clusterSidebarCollapsedAtoms, countriesSidebarCollapsedAtoms } from 'src/state/DistributionSidebar'
 
 export function CasesPage() {
   const { t } = useTranslationSafe()
@@ -60,6 +62,8 @@ function CasesPlotSection() {
   const [countries, setCountries] = useRecoilState(countriesCasesAtom)
   const [continents, setContinents] = useRecoilState(continentsCasesAtom)
   const [clusters, setClusters] = useRecoilState(clustersCasesAtom)
+  const [clustersCollapsed, setClustersCollapsed] = useAtom(clusterSidebarCollapsedAtoms.cases)
+  const [countriesCollapsed, setCountriesCollapsed] = useAtom(countriesSidebarCollapsedAtoms.cases)
 
   return (
     <WrapperFlex>
@@ -73,8 +77,10 @@ function CasesPlotSection() {
           setCountries={setCountries}
           regionsTitle={t('Countries')}
           enabledFilters={enabledFilters}
-          clustersCollapsedByDefault={false}
-          countriesCollapsedByDefault={false}
+          clustersCollapsed={clustersCollapsed}
+          setClustersCollapsed={setClustersCollapsed}
+          countriesCollapsed={countriesCollapsed}
+          setCountriesCollapsed={setCountriesCollapsed}
           Icon={CountryFlag}
         />
       </SidebarFlex>

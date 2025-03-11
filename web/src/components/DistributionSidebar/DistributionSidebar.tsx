@@ -1,5 +1,5 @@
 import get from 'lodash/get'
-import React, { useState, useMemo, useCallback } from 'react'
+import React, { useMemo, useCallback } from 'react'
 import { Col, Row } from 'reactstrap'
 import { SetterOrUpdater, useRecoilValue } from 'recoil'
 import { CountryFlagProps } from '../Common/CountryFlag'
@@ -16,6 +16,7 @@ import {
   toggleCountry,
 } from 'src/state/Places'
 import { sortClustersByClusterNames } from 'src/io/getClusters'
+import { SetPrimitiveAtom } from 'src/types'
 
 export function DistributionSidebar({
   countries,
@@ -25,13 +26,13 @@ export function DistributionSidebar({
   setContinents,
   setClusters,
   regionsTitle,
-  clustersCollapsedByDefault = true,
-  countriesCollapsedByDefault = true,
+  clustersCollapsed,
+  setClustersCollapsed,
+  countriesCollapsed,
+  setCountriesCollapsed,
   enabledFilters,
   Icon,
 }: DistributionSidebarProps) {
-  const [clustersCollapsed, setClustersCollapsed] = useState(clustersCollapsedByDefault)
-  const [countriesCollapsed, setCountriesCollapsed] = useState(countriesCollapsedByDefault)
   const clusterNames = useRecoilValue(clusterNamesSelector)
   const clustersSorted = useMemo(
     () => sortClustersByClusterNames(clusters ?? [], clusterNames),
@@ -122,9 +123,11 @@ export function DistributionSidebar({
     [
       Icon,
       clustersCollapsed,
+      setClustersCollapsed,
       clusters,
       clustersSorted,
       countriesCollapsed,
+      setCountriesCollapsed,
       handleClusterCheckedChange,
       handleClusterDeselectAll,
       handleClusterSelectAll,
@@ -153,8 +156,10 @@ export interface DistributionSidebarProps {
   setContinents: SetterOrUpdater<Continent[]>
   setClusters: SetterOrUpdater<Cluster[]>
   regionsTitle: string
-  clustersCollapsedByDefault?: boolean
-  countriesCollapsedByDefault?: boolean
+  clustersCollapsed: boolean
+  setClustersCollapsed: SetPrimitiveAtom<boolean>
+  countriesCollapsed: boolean
+  setCountriesCollapsed: SetPrimitiveAtom<boolean>
   enabledFilters: string[]
   Icon?: React.ComponentType<CountryFlagProps>
 }
