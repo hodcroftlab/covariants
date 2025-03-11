@@ -9,7 +9,7 @@ import { joinAllMaybe } from 'src/helpers/array'
 const clusters = clustersJson.clusters.filter((cluster) => !cluster.has_no_page)
 const clusterBuildNames = clusters.map((cluster) => cluster.build_name)
 const clusterLineages = clusters.flatMap((cluster) =>
-  cluster.pango_lineages?.map((lineage) => lineage.name).filter(notUndefinedOrNull),
+  cluster.alt_display_name?.map((lineage) => lineage).filter(notUndefinedOrNull),
 )
 const clusterOldBuildNames = clusters.flatMap((cluster) => cluster.old_build_names).filter(notUndefinedOrNull)
 
