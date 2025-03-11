@@ -70,10 +70,7 @@ export const clusterDisplayNameToLineageMapSelector = selector({
     const clusters = get(clustersAtom)
     return new Map<string, string>(
       clusters
-        .map((c) => [
-          c.displayName,
-          c.pangoLineages ? (c.pangoLineages[0] ? c.pangoLineages[0].name : undefined) : undefined,
-        ])
+        .map((c) => [c.displayName, c.altDisplayName?.[0]])
         .filter(([, pangoName]) => pangoName !== undefined) as [string, string][],
     )
   },
@@ -85,9 +82,10 @@ export const clusterDisplayNameToLineagesMapSelector = selector({
   get: ({ get }) => {
     const clusters = get(clustersAtom)
     return new Map<string, string[]>(
-      clusters
-        .map((c) => [c.displayName, c.pangoLineages?.map((lin) => lin.name) ?? undefined])
-        .filter(([, pangoName]) => pangoName !== undefined) as [string, string[]][],
+      clusters.map((c) => [c.displayName, c.altDisplayName]).filter(([, pangoName]) => pangoName !== undefined) as [
+        string,
+        string[],
+      ][],
     )
   },
 })
@@ -119,7 +117,7 @@ export const clusterLineagesToBuildNameMapSelector = selector({
     const clusters = get(clustersAtom)
     return new Map<string, string>(
       clusters
-        .flatMap((c) => c.pangoLineages?.map((lineage) => [lineage.name, c.buildName]))
+        .flatMap((c) => c.altDisplayName?.map((lineage) => [lineage, c.buildName]))
         .filter(notUndefinedOrNull) as [string, string][],
     )
   },
@@ -131,9 +129,10 @@ export const clusterBuildNameToLineageMapSelector = selector({
   get: ({ get }) => {
     const clusters = get(clustersAtom)
     return new Map<string, string>(
-      clusters
-        .map((c) => [c.buildName, c.pangoLineages?.[0]?.name])
-        .filter(([, pangoName]) => pangoName !== undefined) as [string, string][],
+      clusters.map((c) => [c.buildName, c.altDisplayName?.[0]]).filter(([, pangoName]) => pangoName !== undefined) as [
+        string,
+        string,
+      ][],
     )
   },
 })
@@ -144,7 +143,7 @@ export const clusterLineagesToDisplayNameMapSelector = selector({
     const clusters = get(clustersAtom)
     return new Map<string, string>(
       clusters
-        .flatMap((c) => c.pangoLineages?.map((lineage) => [lineage.name, c.displayName]))
+        .flatMap((c) => c.altDisplayName?.map((lineage) => [lineage, c.displayName]))
         .filter(notUndefinedOrNull) as [string, string][],
     )
   },
