@@ -3,6 +3,7 @@ import { FETCHER } from 'src/hooks/useAxiosQuery'
 import { atomAsync } from 'src/state/utils/atomAsync'
 
 export const WHOLE_WORLD_REGION = 'World'
+export const UNITED_STATES_REGION = 'United States'
 export const DEFAULT_REGION = WHOLE_WORLD_REGION
 
 export interface Country {
