@@ -529,6 +529,9 @@ if __name__ == "__main__":
     with open(os.path.join(output_path, "perCountryData.json"), "w") as fh:
         json.dump(regions_data, fh, indent=2, sort_keys=True)
 
+    with open(os.path.join(output_path, "perCountryData_compact.json"), "w") as fh:
+        json.dump(regions_data, fh, sort_keys=True)
+
     params = {
         "min_date": min_date,
         "max_date": max_date,
@@ -541,6 +544,9 @@ if __name__ == "__main__":
     )
     with open(os.path.join(output_path, "perClusterData.json"), "w") as fh:
         json.dump(per_cluster_data_output, fh, indent=2, sort_keys=True)
+
+    with open(os.path.join(output_path, "perClusterData_compact.json"), "w") as fh:
+        json.dump(per_cluster_data_output, fh, sort_keys=True)
 
     clusters = create_aquaria_urls(clusters)
     clusters = [cluster for _, cluster in clusters.items()]
