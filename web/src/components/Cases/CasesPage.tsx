@@ -2,7 +2,6 @@ import React, { Suspense } from 'react'
 import { Col, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 import { ErrorBoundary } from 'react-error-boundary'
-import { useAtom } from 'jotai/index'
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
 import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
@@ -62,8 +61,6 @@ function CasesPlotSection() {
   const [countries, setCountries] = useRecoilState(countriesCasesAtom)
   const [continents, setContinents] = useRecoilState(continentsCasesAtom)
   const [clusters, setClusters] = useRecoilState(clustersCasesAtom)
-  const [clustersCollapsed, setClustersCollapsed] = useAtom(clusterSidebarCollapsedAtoms.cases)
-  const [countriesCollapsed, setCountriesCollapsed] = useAtom(countriesSidebarCollapsedAtoms.cases)
 
   return (
     <WrapperFlex>
@@ -77,10 +74,8 @@ function CasesPlotSection() {
           setCountries={setCountries}
           regionsTitle={t('Countries')}
           enabledFilters={enabledFilters}
-          clustersCollapsed={clustersCollapsed}
-          setClustersCollapsed={setClustersCollapsed}
-          countriesCollapsed={countriesCollapsed}
-          setCountriesCollapsed={setCountriesCollapsed}
+          clustersCollapsedAtom={clusterSidebarCollapsedAtoms.cases}
+          countriesCollapsedAtom={countriesSidebarCollapsedAtoms.cases}
           Icon={CountryFlag}
         />
       </SidebarFlex>

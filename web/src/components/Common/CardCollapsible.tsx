@@ -3,6 +3,7 @@ import React, { PropsWithChildren, useCallback } from 'react'
 import { styled } from 'styled-components'
 import { MdArrowDropDown } from 'react-icons/md'
 import { Card as CardBase, CardHeader as CardHeaderBase, Collapse } from 'reactstrap'
+import { SetPrimitiveAtom } from 'src/types'
 
 const Card = styled(CardBase)``
 
@@ -21,7 +22,7 @@ const CollapseIcon = styled(MdArrowDropDown)<{ $rotated?: boolean }>`
 export interface CollapsibleCardProps {
   className?: string
   collapsed: boolean
-  setCollapsed: (collapsed: boolean) => void
+  setCollapsed: SetPrimitiveAtom<boolean>
   title?: React.ReactNode
 }
 

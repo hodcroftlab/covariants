@@ -3,7 +3,6 @@ import { Card, CardBody, Col, Form, Input, Label, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 import { styled } from 'styled-components'
 import { ErrorBoundary } from 'react-error-boundary'
-import { useAtom } from 'jotai/index'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
 import { clustersForPerClusterDataAtom } from 'src/state/ClustersForPerClusterData'
 import { perClusterContinentsAtom, perClusterCountriesAtom } from 'src/state/PlacesForPerClusterData'
@@ -65,8 +64,6 @@ function ClusterDistributionPlotSection() {
   const [countriesSelected, setCountriesSelected] = useRecoilState(perClusterCountriesAtom)
   const [continentsSelected, setContinentsSelected] = useRecoilState(perClusterContinentsAtom)
   const [clustersSelected, setClustersSelected] = useRecoilState(clustersForPerClusterDataAtom)
-  const [clustersCollapsed, setClustersCollapsed] = useAtom(clusterSidebarCollapsedAtoms.perVariant)
-  const [countriesCollapsed, setCountriesCollapsed] = useAtom(countriesSidebarCollapsedAtoms.perVariant)
 
   return (
     <WrapperFlex>
@@ -79,10 +76,8 @@ function ClusterDistributionPlotSection() {
           setContinents={setContinentsSelected}
           setClusters={setClustersSelected}
           regionsTitle={t('Countries')}
-          clustersCollapsed={clustersCollapsed}
-          setClustersCollapsed={setClustersCollapsed}
-          countriesCollapsed={countriesCollapsed}
-          setCountriesCollapsed={setCountriesCollapsed}
+          clustersCollapsedAtom={clusterSidebarCollapsedAtoms.perVariant}
+          countriesCollapsedAtom={countriesSidebarCollapsedAtoms.perVariant}
           enabledFilters={enabledFilters}
         />
       </SidebarFlex>

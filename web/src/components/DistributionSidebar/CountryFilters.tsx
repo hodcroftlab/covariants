@@ -13,6 +13,7 @@ import {
 } from 'reactstrap'
 import { styled, useTheme } from 'styled-components'
 import { useRecoilValue } from 'recoil'
+import { PrimitiveAtom, useAtom } from 'jotai'
 import { ColoredHorizontalLineIcon } from '../Common/ColoredHorizontalLineIcon'
 import { Continent, Country } from 'src/state/Places'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
@@ -105,30 +106,29 @@ export interface CountryFiltersProps {
   countries: Country[]
   continents: Continent[]
   regionsTitle: string
-  collapsed: boolean
   withIcons?: boolean
   Icon?: React.ComponentType<CountryFlagProps>
   onFilterChange(country: string): void
   onFilterSelectRegion(regionName: string): void
   onFilterSelectAll(): void
   onFilterDeselectAll(): void
-  setCollapsed(collapsed: boolean): void
+  collapsedAtom: PrimitiveAtom<boolean>
 }
 
 export function CountryFilters({
   countries,
   continents,
   regionsTitle,
-  collapsed,
   withIcons,
   Icon,
   onFilterSelectRegion,
   onFilterSelectAll,
   onFilterDeselectAll,
   onFilterChange,
-  setCollapsed,
+  collapsedAtom,
 }: CountryFiltersProps) {
   const { t } = useTranslationSafe()
+  const [collapsed, setCollapsed] = useAtom(collapsedAtom)
 
   const handleContinentChange = useCallback(
     (continent: string) => onFilterSelectRegion(continent),

@@ -2,6 +2,7 @@ import get from 'lodash/get'
 import React, { useMemo, useCallback } from 'react'
 import { Col, Row } from 'reactstrap'
 import { SetterOrUpdater, useRecoilValue } from 'recoil'
+import { PrimitiveAtom } from 'jotai'
 import { CountryFlagProps } from '../Common/CountryFlag'
 import { ClusterFilters } from './ClusterFilters'
 import { CountryFilters } from './CountryFilters'
@@ -16,7 +17,6 @@ import {
   toggleCountry,
 } from 'src/state/Places'
 import { sortClustersByClusterNames } from 'src/io/getClusters'
-import { SetPrimitiveAtom } from 'src/types'
 
 export function DistributionSidebar({
   countries,
@@ -26,10 +26,8 @@ export function DistributionSidebar({
   setContinents,
   setClusters,
   regionsTitle,
-  clustersCollapsed,
-  setClustersCollapsed,
-  countriesCollapsed,
-  setCountriesCollapsed,
+  clustersCollapsedAtom,
+  countriesCollapsedAtom,
   enabledFilters,
   Icon,
 }: DistributionSidebarProps) {
@@ -88,8 +86,7 @@ export function DistributionSidebar({
           onFilterChange={handleCountryCheckedChange}
           onFilterSelectAll={handleCountrySelectAll}
           onFilterDeselectAll={handleCountryDeselectAll}
-          collapsed={countriesCollapsed}
-          setCollapsed={setCountriesCollapsed}
+          collapsedAtom={countriesCollapsedAtom}
         />
       ),
       countriesWithIcons: (
@@ -104,8 +101,7 @@ export function DistributionSidebar({
           onFilterSelectRegion={handleContinentCheckedChange}
           onFilterSelectAll={handleCountrySelectAll}
           onFilterDeselectAll={handleCountryDeselectAll}
-          collapsed={countriesCollapsed}
-          setCollapsed={setCountriesCollapsed}
+          collapsedAtom={countriesCollapsedAtom}
         />
       ),
       clusters: clusters && (
@@ -115,19 +111,16 @@ export function DistributionSidebar({
           onFilterChange={handleClusterCheckedChange}
           onFilterSelectAll={handleClusterSelectAll}
           onFilterDeselectAll={handleClusterDeselectAll}
-          collapsed={clustersCollapsed}
-          setCollapsed={setClustersCollapsed}
+          collapsedAtom={clustersCollapsedAtom}
         />
       ),
     }),
     [
       Icon,
-      clustersCollapsed,
-      setClustersCollapsed,
+      clustersCollapsedAtom,
       clusters,
       clustersSorted,
-      countriesCollapsed,
-      setCountriesCollapsed,
+      countriesCollapsedAtom,
       handleClusterCheckedChange,
       handleClusterDeselectAll,
       handleClusterSelectAll,
@@ -156,10 +149,8 @@ export interface DistributionSidebarProps {
   setContinents: SetterOrUpdater<Continent[]>
   setClusters: SetterOrUpdater<Cluster[]>
   regionsTitle: string
-  clustersCollapsed: boolean
-  setClustersCollapsed: SetPrimitiveAtom<boolean>
-  countriesCollapsed: boolean
-  setCountriesCollapsed: SetPrimitiveAtom<boolean>
+  clustersCollapsedAtom: PrimitiveAtom<boolean>
+  countriesCollapsedAtom: PrimitiveAtom<boolean>
   enabledFilters: string[]
   Icon?: React.ComponentType<CountryFlagProps>
 }

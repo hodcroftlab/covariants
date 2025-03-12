@@ -2,7 +2,6 @@ import React, { Suspense, useMemo } from 'react'
 import { Col, Row } from 'reactstrap'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { useAtom } from 'jotai/index'
 import { MdxContent } from 'src/i18n/getMdxContent'
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
@@ -87,8 +86,6 @@ const enabledFilters = ['clusters', 'countriesWithIcons']
 
 function CountryDistributionPlotSection() {
   const { t } = useTranslationSafe()
-  const [clustersCollapsed, setClustersCollapsed] = useAtom(clusterSidebarCollapsedAtoms.perCountry)
-  const [countriesCollapsed, setCountriesCollapsed] = useAtom(countriesSidebarCollapsedAtoms.perCountry)
   const region = useRecoilValue(perCountryRegionAtom)
   const [countries, setCountries] = useRecoilState(perCountryCountriesAtom(region))
   const [continents, setContinents] = useRecoilState(perCountryContinentsAtom)
@@ -113,10 +110,8 @@ function CountryDistributionPlotSection() {
           setContinents={setContinents}
           regionsTitle={regionsTitle}
           enabledFilters={enabledFilters}
-          clustersCollapsed={clustersCollapsed}
-          setClustersCollapsed={setClustersCollapsed}
-          countriesCollapsed={countriesCollapsed}
-          setCountriesCollapsed={setCountriesCollapsed}
+          clustersCollapsedAtom={clusterSidebarCollapsedAtoms.perCountry}
+          countriesCollapsedAtom={countriesSidebarCollapsedAtoms.perCountry}
           Icon={iconComponent}
         />
       </SidebarFlex>
