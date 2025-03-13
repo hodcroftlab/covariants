@@ -17,3 +17,5 @@ dist/
 .coverage
 .playwright-report
 .json-autotranslate-cache
+
+*storybook.log

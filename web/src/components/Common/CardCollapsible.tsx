@@ -37,7 +37,7 @@ export function CardCollapsible({
 
   return (
     <Card className={className}>
-      <CardHeader onClick={toggle}>
+      <CardHeader onClick={toggle} className={'d-flex align-items-center'} role="button">
         <CollapseIcon size={30} $rotated={collapsed} />
         <span className="d-flex w-100">{title}</span>
       </CardHeader>

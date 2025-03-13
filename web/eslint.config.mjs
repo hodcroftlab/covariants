@@ -16,6 +16,7 @@ import security from 'eslint-plugin-security'
 import sonarjs from 'eslint-plugin-sonarjs'
 import unicorn from 'eslint-plugin-unicorn'
 import onlyWarn from 'eslint-plugin-only-warn'
+import storybook from 'eslint-plugin-storybook'
 import globals from 'globals'
 import tsParser from '@typescript-eslint/parser'
 import js from '@eslint/js'
@@ -51,11 +52,13 @@ export default [
       '**/public',
       '**/styles',
       '**/tsconfig.json',
+      '!.storybook',
     ],
   },
   js.configs.recommended,
   ...tsEslintConfigs.recommendedTypeChecked,
   ...tsEslintConfigs.stylisticTypeChecked,
+  ...storybook.configs['flat/recommended'],
   arrayFunc.configs.all,
   // TODO: there is an issue with sonar that should soon be fixed: https://community.sonarsource.com/t/eslint-plugin-sonarjs-doesn-t-work-with-eslint-9-15-0/130771
   // once this is fixed, uncomment the line below and remove sonarjs from the plugins. See https://github.com/hodcroftlab/covariants/issues/439
