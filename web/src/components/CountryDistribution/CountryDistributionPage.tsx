@@ -23,7 +23,7 @@ import { LOADING } from 'src/components/Loading/Loading'
 import { CountryDistributionComponents } from 'src/components/CountryDistribution/CountryDistributionComponents'
 import { clustersForPerCountryDataAtom } from 'src/state/ClustersForPerCountryData'
 import { perCountryDataIntroContentFilenameSelector } from 'src/state/PerCountryData'
-import { UNITED_STATES_REGION, WHOLE_WORLD_REGION } from 'src/state/Places'
+import { REGIONS } from 'src/state/Places'
 
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
@@ -33,11 +33,11 @@ function CountryDistributionPlotSection() {
   const [countries, setCountries] = useRecoilState(perCountryCountriesAtom(region))
   const [continents, setContinents] = useRecoilState(perCountryContinentsAtom)
   const [clusters, setClusters] = useRecoilState(clustersForPerCountryDataAtom(region))
-  const regionsTitle = useMemo(() => (region === WHOLE_WORLD_REGION ? t('Countries') : t('Regions')), [region, t])
+  const regionsTitle = useMemo(() => (region === REGIONS.WORLD ? t('Countries') : t('Regions')), [region, t])
 
   const iconComponent = useMemo(() => {
-    if (region === WHOLE_WORLD_REGION) return CountryFlag
-    if (region === UNITED_STATES_REGION) return USStateCode
+    if (region === REGIONS.WORLD) return CountryFlag
+    if (region === REGIONS.UNITED_STATES) return USStateCode
     return undefined
   }, [region])
 
