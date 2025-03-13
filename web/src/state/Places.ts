@@ -2,9 +2,11 @@ import { z } from 'zod'
 import { FETCHER } from 'src/hooks/useAxiosQuery'
 import { atomAsync } from 'src/state/utils/atomAsync'
 
-export const WHOLE_WORLD_REGION = 'World'
-export const UNITED_STATES_REGION = 'United States'
-export const DEFAULT_REGION = WHOLE_WORLD_REGION
+export const REGIONS = {
+  WORLD: 'World' as const,
+  UNITED_STATES: 'United States' as const,
+}
+export const DEFAULT_REGION = REGIONS.WORLD
 
 export interface Country {
   country: string
@@ -35,7 +37,7 @@ export const regionCountryAtom = atomAsync<RegionCountry>({
 })
 
 export const getAllContinents = (region?: string, regionCountry?: RegionCountry) => {
-  if (region === WHOLE_WORLD_REGION && regionCountry !== undefined) {
+  if (region === REGIONS.WORLD && regionCountry !== undefined) {
     return Object.keys(regionCountry).map((continent) => ({ continent, enabled: true }))
   }
   return [{ continent: region ?? '', enabled: true }]
@@ -73,7 +75,7 @@ export const toggleCountriesFromContinents = (
  */
 export const getContinentsFromCountries = (countries: Country[], region?: string, regionCountry?: RegionCountry) => {
   // Continents are only relevant for the 'World' region
-  if (region === WHOLE_WORLD_REGION && regionCountry !== undefined) {
+  if (region === REGIONS.WORLD && regionCountry !== undefined) {
     return Object.entries(regionCountry).map(([continent, continentCountries]) => {
       // A continent is enabled if every country of this continent is enabled
       const enabled = continentCountries.every((continentCountry) => {

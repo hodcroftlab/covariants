@@ -6,8 +6,8 @@ import {
   getAllContinents,
   getContinentsFromCountries,
   regionCountryAtom,
+  REGIONS,
   toggleCountriesFromContinents,
-  WHOLE_WORLD_REGION,
 } from 'src/state/Places'
 import { updateUrlQuery } from 'src/helpers/urlQuery'
 import { isDefaultValue } from 'src/state/utils/isDefaultValue'
@@ -51,13 +51,13 @@ export const continentsCasesAtom = selector<Continent[]>({
   get: ({ get }) => {
     const countries = get(countriesCasesAtom)
     const regionCountry = get(regionCountryAtom)
-    return getContinentsFromCountries(countries, WHOLE_WORLD_REGION, regionCountry)
+    return getContinentsFromCountries(countries, REGIONS.WORLD, regionCountry)
   },
   set: ({ set, get }, continentsOrDefault) => {
     const countriesOld = get(countriesCasesAtom)
     const regionCountry = get(regionCountryAtom)
     const continents = isDefaultValue(continentsOrDefault)
-      ? getAllContinents(WHOLE_WORLD_REGION, regionCountry)
+      ? getAllContinents(REGIONS.WORLD, regionCountry)
       : continentsOrDefault
     const countries = toggleCountriesFromContinents(countriesOld, continents, regionCountry)
     set(countriesCasesAtom, countries)
