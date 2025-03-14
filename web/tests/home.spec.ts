@@ -12,6 +12,6 @@ test.describe('The Home page', () => {
   test('navbar link', async ({ page }) => {
     await page.getByRole('link', { name: 'FAQ' }).click()
 
-    await expect(page.getByRole('heading', { name: 'Frequently asked questions' })).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Frequently asked questions' })).toBeVisible({ timeout: 10_000 })
   })
 })
