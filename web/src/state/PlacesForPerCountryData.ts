@@ -53,9 +53,7 @@ export const perCountryCountriesAtom = atomFamilyDefault<Country[], string>({
     const countries = distributions.map(({ country }) => ({ country, enabled: true }))
     const regionFromUrl = getLodash(query, 'region')
     const enabledCountriesFromUrl = convertToArrayMaybe(getLodash(query, 'country'))
-    // we have to check that the regions are the same here, otherwise the query can spill from one region to another
-    // because the atom effect that updates the query (setRegionAtom) is run *after* all dependent atoms are updated
-    // see issue https://github.com/hodcroftlab/covariants/issues/472
+
     if (enabledCountriesFromUrl && regionFromUrl === region) {
       return countries.map((country) => ({
         ...country,
