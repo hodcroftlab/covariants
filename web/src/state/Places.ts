@@ -5,6 +5,7 @@ import { atomAsync } from 'src/state/utils/atomAsync'
 export const REGIONS = {
   WORLD: 'World' as const,
   UNITED_STATES: 'United States' as const,
+  SWITZERLAND: 'Switzerland' as const,
 }
 export const DEFAULT_REGION = REGIONS.WORLD
 

@@ -114,6 +114,27 @@ const mockPerCountryData = {
       per_country_intro_content: 'World.md',
       region: 'World',
     },
+    {
+      cluster_names: ['20I (Alpha, V1)'],
+      distributions: [
+        {
+          country: 'Region 4',
+          distribution: [
+            {
+              cluster_counts: {
+                '20I (Alpha, V1)': 0.0,
+              },
+              total_sequences: 2,
+              week: '2024-07-15',
+            },
+          ],
+        },
+      ],
+      max_date: '2024-12-30',
+      min_date: '2020-04-27',
+      per_country_intro_content: 'Switzerland.md',
+      region: 'Switzerland',
+    },
   ],
 }
 
