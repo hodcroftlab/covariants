@@ -14,10 +14,24 @@ updates:
       - 'scope: web'
       - 'dependencies'
     groups:
-      production-dependencies:
+      production-dependencies-major:
         dependency-type: "production"
-      development-dependencies:
+        update-types:
+          - "major"
+      production-dependencies-minor:
+        dependency-type: "production"
+        update-types:
+         - "minor"
+         - "patch"
+      development-dependencies-major:
         dependency-type: "development"
+        update-types:
+          - "major"
+      development-dependencies-minor:
+        dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
   - package-ecosystem: 'pip'
     directory: '/'
     schedule:
