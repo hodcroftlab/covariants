@@ -4,15 +4,15 @@ updates:
     directory: '/'
     schedule:
       interval: 'weekly'
-    milestone: 1
+    labels:
+      - 'dependencies'
   - package-ecosystem: 'npm'
     directory: "/web"
     schedule:
       interval: 'weekly'
     labels:
-      - 'typescript'
+      - 'scope: web'
       - 'dependencies'
-    milestone: 1
     groups:
       production-dependencies:
         dependency-type: "production"
@@ -23,9 +23,8 @@ updates:
     schedule:
       interval: 'weekly'
     labels:
-      - 'python'
+      - 'scope: scripts'
       - 'dependencies'
-    milestone: 1
     groups:
       production-dependencies:
         dependency-type: "production"
