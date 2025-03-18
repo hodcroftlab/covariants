@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   contextSeparator: '_',
   // Key separator used in your translation keys
 
@@ -55,7 +55,7 @@ module.exports = {
   // Ignored when parsing a `.jsx` file and namespace is extracted from that file.
 
   sort: true,
-  // Whether or not to sort the catalog
+  // Whether to sort the catalog
 
   useKeysAsDefaultValue: true,
   // Whether to use the keys as the default value; ex. "Hello": "Hello", "World": "World"

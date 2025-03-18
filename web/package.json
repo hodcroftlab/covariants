@@ -27,6 +27,7 @@
     "test:unit:coverage": "vitest src --coverage",
     "test:e2e": "playwright test",
     "stills": "tsx tools/generateStillImages.ts",
+    "i18n:update": "yarn i18n:extract && yarn i18n:addkeys && yarn i18n:fix && yarn i18n:translate",
     "i18n:extract": "i18next -c config/i18next/i18next.config.ts",
     "i18n:addkeys": "tsx tools/addLocaleKeys.ts",
     "i18n:fix": "tsx tools/fixLocales.ts",
