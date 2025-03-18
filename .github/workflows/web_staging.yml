@@ -74,6 +74,7 @@ jobs:
           CI: true
 
       - name: "[deploy] Install dependencies"
+        if: ${{ github.actor != 'dependabot[bot]' }}
         run: |
           pushd /tmp >/dev/null
             curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -83,6 +84,7 @@ jobs:
           aws --version
 
       - name: "[deploy] Deploy app to aws"
+        if: ${{ github.actor != 'dependabot[bot]' }}
         uses: ./.github/workflows/deploy_app_to_aws
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -92,6 +94,7 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
       - name: "[deploy] Sync acknowledgements (large static files) based on checksums"
+        if: ${{ github.actor != 'dependabot[bot]' }}
         uses: ./.github/workflows/sync_acknowledgements_checksum_based
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -101,6 +104,7 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
       - name: "[deploy] Sync proteins (large static files)"
+        if: ${{ github.actor != 'dependabot[bot]' }}
         uses: ./.github/workflows/sync_proteins
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
