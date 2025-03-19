@@ -30,13 +30,10 @@ export const countriesCasesAtom = atomDefault<Country[]>({
     const data = get(perCountryCasesDataSelector)
     const shouldPlotCountry = get(shouldPlotCountryAtom)
 
-    const countries = data.countries
-      .map((c) => c.country)
-      .sort()
-      .map((country) => ({
-        country,
-        enabled: shouldPlotCountry[country],
-      }))
+    const countries = data.countries.map((country) => ({
+      country: country.country,
+      enabled: shouldPlotCountry[country.country] ?? country.enabled,
+    }))
 
     const enabledCountries = convertToArrayMaybe(getLodash(query, 'country'))
     if (enabledCountries) {
