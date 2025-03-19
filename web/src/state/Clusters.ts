@@ -1,10 +1,15 @@
-import { selector } from 'recoil'
+import { selector, selectorFamily } from 'recoil'
+import Router from 'next/router'
+import { get as getLodash } from 'lodash'
 import { updateUrlQuery } from 'src/helpers/urlQuery'
 import type { AtomEffectParams } from 'src/state/utils/atomEffect'
 import { atomAsync } from 'src/state/utils/atomAsync'
 import { CLUSTER_NAME_OTHERS, ClusterDatum, fetchClusters } from 'src/io/getClusters'
 import { theme } from 'src/theme'
 import { notUndefinedOrNull } from 'src/helpers/notUndefined'
+import { enablePangolinAtom } from 'src/state/Nomenclature'
+import { parseUrl } from 'src/helpers/parseUrl'
+import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
 
 export interface Cluster {
   cluster: string
@@ -22,7 +27,7 @@ export const hasPageClustersSelector = selector({
   key: 'hasPageClusters',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
-    return clusters.filter((cluster) => !cluster.has_no_page)
+    return clusters.filter((cluster) => !cluster.hasNoPage)
   },
 })
 
@@ -30,7 +35,7 @@ export const clusterNamesSelector = selector({
   key: 'clusterNames',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
-    return clusters.map((cluster) => cluster.display_name)
+    return clusters.map((cluster) => cluster.displayName)
   },
 })
 
@@ -38,7 +43,7 @@ export const hasPageClusterNamesSelector = selector({
   key: 'hasPageClusterNames',
   get: ({ get }) => {
     const clusters = get(hasPageClustersSelector)
-    return clusters.map((cluster) => cluster.display_name)
+    return clusters.map((cluster) => cluster.displayName)
   },
 })
 
@@ -46,15 +51,101 @@ export const noPageClusterNamesSelector = selector({
   key: 'noPageClusterNames',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
-    return clusters.filter((cluster) => cluster.has_no_page).map((cluster) => cluster.display_name)
+    return clusters.filter((cluster) => cluster.hasNoPage).map((cluster) => cluster.displayName)
   },
 })
 
-export const clusterBuildNamesMapSelector = selector({
-  key: 'clusterBuildNamesMap',
+export const clusterDisplayNameToBuildNameMapSelector = selector({
+  key: 'clusterDisplayNameToBuildNameMap',
   get: ({ get }) => {
     const clusters = get(clustersAtom)
-    return new Map<string, string>(clusters.map((c) => [c.display_name, c.build_name]))
+    return new Map<string, string>(clusters.map((c) => [c.displayName, c.buildName]))
+  },
+})
+
+/** This map contains *only the first* pango lineage, so display names remain unique. **/
+export const clusterDisplayNameToLineageMapSelector = selector({
+  key: 'clusterDisplayNameToLineageMap',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return new Map<string, string>(
+      clusters
+        .map((c) => [c.displayName, c.altDisplayName?.[0]])
+        .filter(([, pangoName]) => pangoName !== undefined) as [string, string][],
+    )
+  },
+})
+
+/** This map contains *all* pango lineages **/
+export const clusterDisplayNameToLineagesMapSelector = selector({
+  key: 'clusterDisplayNameToLineagesMap',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return new Map<string, string[]>(
+      clusters.map((c) => [c.displayName, c.altDisplayName]).filter(([, pangoName]) => pangoName !== undefined) as [
+        string,
+        string[],
+      ][],
+    )
+  },
+})
+
+export const clusterDisplayNameToLineagesSelector = selectorFamily({
+  key: 'clusterDisplayNameToLineages',
+  get:
+    (displayName: string) =>
+    ({ get }) => {
+      const pangoLineagesMap = get(clusterDisplayNameToLineagesMapSelector)
+      return pangoLineagesMap.get(displayName)
+    },
+})
+
+export const clusterDisplayNameToJoinedLineagesSelector = selectorFamily({
+  key: 'clusterDisplayNameToJoinedLineages',
+  get:
+    (displayName: string) =>
+    ({ get }) => {
+      const pangoLineagesMap = get(clusterDisplayNameToLineagesMapSelector)
+      return pangoLineagesMap.get(displayName)?.join(', ')
+    },
+})
+
+/** Careful, this is not the inverse of {@link clusterBuildNameToLineageMapSelector}! This map contains *all* pango lineages! **/
+export const clusterLineagesToBuildNameMapSelector = selector({
+  key: 'clusterLineagesToBuildNameMap',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return new Map<string, string>(
+      clusters
+        .flatMap((c) => c.altDisplayName?.map((lineage) => [lineage, c.buildName]))
+        .filter(notUndefinedOrNull) as [string, string][],
+    )
+  },
+})
+
+/** Careful, this is not the inverse of {@link clusterLineagesToBuildNameMapSelector}! This map contains *only the first* pango lineage, so build names remain unique. **/
+export const clusterBuildNameToLineageMapSelector = selector({
+  key: 'clusterBuildNameToLineageMap',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return new Map<string, string>(
+      clusters.map((c) => [c.buildName, c.altDisplayName?.[0]]).filter(([, pangoName]) => pangoName !== undefined) as [
+        string,
+        string,
+      ][],
+    )
+  },
+})
+
+export const clusterLineagesToDisplayNameMapSelector = selector({
+  key: 'clusterLineagesToDisplayNameMap',
+  get: ({ get }) => {
+    const clusters = get(clustersAtom)
+    return new Map<string, string>(
+      clusters
+        .flatMap((c) => c.altDisplayName?.map((lineage) => [lineage, c.displayName]))
+        .filter(notUndefinedOrNull) as [string, string][],
+    )
   },
 })
 
@@ -62,7 +153,7 @@ export const hasPageClusterBuildNamesSelector = selector({
   key: 'hasPageClusterBuildNames',
   get: ({ get }) => {
     const clusters = get(hasPageClustersSelector)
-    return clusters.map((cluster) => cluster.build_name)
+    return clusters.map((cluster) => cluster.buildName)
   },
 })
 
@@ -70,7 +161,7 @@ export const hasPageClusterOldBuildNamesSelector = selector({
   key: 'hasPageClusterOldBuildNames',
   get: ({ get }) => {
     const clusters = get(hasPageClustersSelector)
-    return clusters.flatMap((cluster) => cluster.old_build_names).filter(notUndefinedOrNull)
+    return clusters.flatMap((cluster) => cluster.oldBuildNames).filter(notUndefinedOrNull)
   },
 })
 
@@ -79,8 +170,8 @@ export const clusterRedirectsSelector = selector({
   get: ({ get }) => {
     const clusters = get(hasPageClustersSelector)
     return clusters.reduce((result, cluster) => {
-      if (cluster.old_build_names) {
-        cluster.old_build_names.forEach((oldName) => result.set(oldName, cluster.build_name))
+      if (cluster.oldBuildNames) {
+        cluster.oldBuildNames.forEach((oldName) => result.set(oldName, cluster.buildName))
       }
       return result
     }, new Map<string, string>())
@@ -97,8 +188,7 @@ export const getClusterColorsSelector = selector({
         return theme.clusters.color.others
       }
 
-      // eslint-disable-next-line camelcase
-      const found = clusters.find(({ display_name }) => display_name === clusterName)
+      const found = clusters.find(({ displayName }) => displayName === clusterName)
       return found ? found.col : theme.clusters.color.unknown
     }
   },
@@ -125,13 +215,42 @@ export function disableAllClusters(clusters: Cluster[]): Cluster[] {
 }
 
 /** Atom effect which synchronizes list of selected clusters to URL query params */
-export function updateUrlOnClustersSet({ onSet }: AtomEffectParams<Cluster[]>) {
+export function updateUrlOnClustersSet({ onSet, getPromise }: AtomEffectParams<Cluster[]>) {
   onSet((clusters: Cluster[]) => {
     // If all clusters are enabled, we will remove cluster url params
     const hasAllEnabled = clusters.every((cluster) => cluster.enabled)
+    const enabledClusters = hasAllEnabled
+      ? []
+      : clusters.filter((cluster) => cluster.enabled).map((cluster) => cluster.cluster)
 
-    void updateUrlQuery({
-      variant: hasAllEnabled ? [] : clusters.filter((cluster) => cluster.enabled).map((cluster) => cluster.cluster),
-    })
+    // Update query to enabled clusters and map display names to pango lineages if pango nomenclature is enabled
+    Promise.all([getPromise(clusterDisplayNameToLineageMapSelector), getPromise(enablePangolinAtom)])
+      .then(([displayNameToLineageMap, enablePangolin]) => {
+        return updateUrlQuery({
+          variant: enablePangolin
+            ? enabledClusters.map((displayName) => displayNameToLineageMap.get(displayName) ?? displayName)
+            : enabledClusters,
+        })
+      })
+      .catch((error: Error) => {
+        throw error
+      })
   })
+}
+
+export function extractEnabledClustersFromUrlQuery(clusters: Cluster[], lineagesMap: Map<string, string>) {
+  const { query } = parseUrl(Router.asPath)
+  const enabledClustersLineagesOrDisplayNames = convertToArrayMaybe(getLodash(query, 'variant'))
+
+  if (enabledClustersLineagesOrDisplayNames) {
+    const enabledClustersDisplayNames = enabledClustersLineagesOrDisplayNames.map(
+      (displayNameOrLineage) => lineagesMap.get(displayNameOrLineage) ?? displayNameOrLineage,
+    )
+    return clusters.map((cluster) => ({
+      ...cluster,
+      enabled: includesCaseInsensitive(enabledClustersDisplayNames, cluster.cluster),
+    }))
+  }
+
+  return clusters
 }

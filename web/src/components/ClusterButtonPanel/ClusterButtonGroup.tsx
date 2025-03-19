@@ -46,7 +46,7 @@ export function ClusterButtonOptional({ cluster, isCurrent, showNonImportant }: 
     return null
   }
 
-  return <ClusterButton key={cluster.display_name} cluster={cluster} isCurrent={isCurrent} />
+  return <ClusterButton key={cluster.displayName} cluster={cluster} isCurrent={isCurrent} />
 }
 
 export interface ClusterButtonGroupProps {
@@ -66,9 +66,9 @@ export function ClusterButtonGroup({ clusterGroup, currentCluster }: ClusterButt
         <ClusterGroup>
           {clusterGroup.map((cluster) => (
             <ClusterButtonOptional
-              key={cluster.build_name}
+              key={cluster.buildName}
               cluster={cluster}
-              isCurrent={cluster.display_name === currentCluster?.display_name}
+              isCurrent={cluster.displayName === currentCluster?.displayName}
               showNonImportant={showNonImportant}
             />
           ))}

@@ -4,12 +4,15 @@ import { styled } from 'styled-components'
 
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
 
+import { useRecoilValue } from 'recoil'
 import type { ClusterDatum } from 'src/io/getClusters'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
-import { ProteinBadge as ProteinBadgeBase } from 'src/components/Common/MutationBadge'
+import { ProteinBadge as ProteinBadgeBase } from 'src/components/Common/Badges/ProteinBadge'
 
 import AquariaLogo from 'src/assets/images/aquaria.svg'
+import { enablePangolinAtom } from 'src/state/Nomenclature'
+import { clusterDisplayNameToLineageMapSelector } from 'src/state/Clusters'
 
 const AquariaLogoSmall = styled(AquariaLogo)`
   margin: auto 5px;
@@ -38,13 +41,17 @@ export interface AquariaLinksCardProps {
 
 export function AquariaLinksCardTitle({ cluster }: AquariaLinksCardProps) {
   const { t } = useTranslationSafe()
+  const enablePangolin = useRecoilValue(enablePangolinAtom)
+  const pangoLineageMap = useRecoilValue(clusterDisplayNameToLineageMapSelector)
+  const pangoName = pangoLineageMap.get(cluster.displayName) ?? cluster.displayName
+  const variant = enablePangolin ? pangoName : cluster.displayName
 
   return (
     <span className="d-flex w-100">
       <AquariaLogoSmall />
       <AquariaLinksCardHeading>
         {t('Protein visualisation for {{variant}} by {{aquaria}}', {
-          variant: cluster.display_name,
+          variant,
           aquaria: 'Aquaria',
         })}
       </AquariaLinksCardHeading>
@@ -55,12 +62,12 @@ export function AquariaLinksCardTitle({ cluster }: AquariaLinksCardProps) {
 export function AquariaLinksCard({ cluster }: AquariaLinksCardProps) {
   const proteinBadges = useMemo(
     () =>
-      (cluster?.aquaria_urls ?? []).map(({ gene, url }) => (
+      (cluster?.aquariaUrls ?? []).map(({ gene, url }) => (
         <LinkExternal key={gene} href={url} icon={null}>
           <ProteinBadge gene={gene} />
         </LinkExternal>
       )),
-    [cluster.aquaria_urls],
+    [cluster.aquariaUrls],
   )
 
   const title = useMemo(() => <AquariaLinksCardTitle cluster={cluster} />, [cluster])

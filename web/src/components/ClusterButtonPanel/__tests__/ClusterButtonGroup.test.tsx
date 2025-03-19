@@ -1,58 +1,61 @@
-/* eslint-disable camelcase */
-import { describe, expect, test } from 'vitest'
+import { afterAll, beforeAll, describe, expect, test } from 'vitest'
 import { screen, fireEvent } from '@testing-library/react'
 import React from 'react'
 import { ClusterButtonGroup } from '../ClusterButtonGroup'
 import { ClusterDatum } from 'src/io/getClusters'
-import { renderWithThemeAndTranslations } from 'src/helpers/__tests__/providers'
+import { renderWithThemeAndRecoilRoot } from 'src/helpers/__tests__/providers'
+import { server } from 'src/components/SharedMutations/__tests__/mockRequests'
 
 describe('ClusterButtonGroup', () => {
+  beforeAll(() => server.listen({ onUnhandledRequest: 'error' }))
+
+  afterAll(() => server.close())
   describe('show more / show less button', () => {
-    test('toggles unimportant clusters', () => {
+    test('toggles unimportant clusters', async () => {
       // Arrange
       const importantClusters: ClusterDatum[] = [
         {
-          build_name: 'foo',
+          buildName: 'foo',
           col: 'bla',
-          display_name: 'foo',
+          displayName: 'foo',
           snps: [1, 2, 3],
           important: true,
         },
         {
-          build_name: 'bar',
+          buildName: 'bar',
           col: 'bla',
-          display_name: 'bar',
+          displayName: 'bar',
           snps: [1, 2, 3],
           important: true,
         },
         {
-          build_name: 'badum',
+          buildName: 'badum',
           col: 'bla',
-          display_name: 'badum',
+          displayName: 'badum',
           snps: [1, 2, 3],
           important: true,
         },
       ]
       const unimportantClusters: ClusterDatum[] = [
         {
-          build_name: 'baz',
+          buildName: 'baz',
           col: 'bla',
-          display_name: 'baz',
+          displayName: 'baz',
           snps: [1, 2, 3],
           important: false,
         },
         {
-          build_name: 'bun',
+          buildName: 'bun',
           col: 'bla',
-          display_name: 'bun',
+          displayName: 'bun',
           snps: [1, 2, 3],
         },
       ]
       const clusters = importantClusters.concat(unimportantClusters)
 
       // Assert
-      renderWithThemeAndTranslations(<ClusterButtonGroup clusterGroup={clusters} />)
-      let visibleClusters = screen.getAllByRole('link')
+      renderWithThemeAndRecoilRoot(<ClusterButtonGroup clusterGroup={clusters} />)
+      let visibleClusters = await screen.findAllByRole('link')
       expect(visibleClusters.length).toEqual(importantClusters.length)
 
       // Act

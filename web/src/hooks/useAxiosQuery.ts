@@ -51,7 +51,9 @@ export class Fetcher {
     return this.getQueryClient().fetchQuery({
       ...queryOptionsDefaulted(options),
       queryKey: [url],
-      queryFn: async () => axiosFetch(url),
+      queryFn: async () => {
+        return axiosFetch(url)
+      },
     })
   }
 

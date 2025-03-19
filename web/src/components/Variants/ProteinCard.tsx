@@ -5,6 +5,7 @@ import { SiMoleculer } from 'react-icons/si'
 import { Card, CardBody, CardHeader, Col, Container, Row } from 'reactstrap'
 import Image from 'next/image'
 
+import { useRecoilValue } from 'recoil'
 import { URL_GITHUB } from 'src/constants'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import type { ClusterDatum } from 'src/io/getClusters'
@@ -12,6 +13,8 @@ import { LinkExternal } from 'src/components/Link/LinkExternal'
 import GifPlayer from 'src/components/Common/GifPlayer'
 
 import GisaidLogo from 'src/assets/images/GISAID_logo.png'
+import { enablePangolinAtom } from 'src/state/Nomenclature'
+import { clusterDisplayNameToLineageMapSelector } from 'src/state/Clusters'
 
 const ProteinCardTitleIcon = styled(SiMoleculer)`
   margin: auto 5px;
@@ -51,13 +54,15 @@ export interface ProteinCardProps {
 
 export function ProteinCardTitle({ cluster }: ProteinCardProps) {
   const { t } = useTranslationSafe()
+  const enablePangolin = useRecoilValue(enablePangolinAtom)
+  const pangoLineageMap = useRecoilValue(clusterDisplayNameToLineageMapSelector)
+  const pangoName = pangoLineageMap.get(cluster.displayName) ?? cluster.displayName
+  const variant = enablePangolin ? pangoName : cluster.displayName
 
   return (
     <span className="d-flex w-100">
       <ProteinCardTitleIcon />
-      <ProteinCardHeading>
-        {t('Spike protein model for {{variant}}', { variant: cluster.display_name })}
-      </ProteinCardHeading>
+      <ProteinCardHeading>{t('Spike protein model for {{variant}}', { variant })}</ProteinCardHeading>
     </span>
   )
 }
@@ -124,11 +129,11 @@ export function ProteinCard({ cluster }: ProteinCardProps) {
         style={style}
         onError={handleError}
         onLoad={handleLoad}
-        gif={`/proteins/gif/${cluster.build_name}.gif`}
-        still={`/proteins/jpg/${cluster.build_name}.jpg`}
+        gif={`/proteins/gif/${cluster.buildName}.gif`}
+        still={`/proteins/jpg/${cluster.buildName}.jpg`}
       />
     )
-  }, [cluster.build_name, condition, handleError, handleLoad, style])
+  }, [cluster.buildName, condition, handleError, handleLoad, style])
 
   return (
     <Card>
@@ -139,7 +144,7 @@ export function ProteinCard({ cluster }: ProteinCardProps) {
             <GifPlayerWrapper>{Player}</GifPlayerWrapper>
             <figcaption className="d-flex">
               <small className="mx-auto">
-                {t('Spike protein model for {{variant}}', { variant: cluster.display_name })}
+                {t('Spike protein model for {{variant}}', { variant: cluster.displayName })}
                 {'. '}
                 {t('Figure made via {{source}}', { source: '' })}
                 <LinkExternal href="https://www.gisaid.org/" icon={null}>

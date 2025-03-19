@@ -1,9 +1,12 @@
-/* eslint-disable camelcase */
 import React from 'react'
 
 import { styled } from 'styled-components'
+import { useRecoilValue } from 'recoil'
 import { Link } from '../Link/Link'
 import { ClusterDatum } from 'src/io/getClusters'
+import { enablePangolinAtom } from 'src/state/Nomenclature'
+import { PAGES } from 'src/constants'
+import { clusterDisplayNameToLineageMapSelector } from 'src/state/Clusters'
 
 const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: string }>`
   display: flex;
@@ -83,11 +86,25 @@ export interface ClusterButtonProps {
 }
 
 export function ClusterButton({ cluster, isCurrent }: ClusterButtonProps) {
-  const { display_name, col, build_name } = cluster
+  const { col } = cluster
+  const { clusterUrl, clusterTitle } = useGetVariantUrlAndTitleForNomenclature(cluster)
 
   return (
-    <ClusterButtonComponent href={`/variants/${build_name}`} $isCurrent={isCurrent} $color={col}>
-      <ClusterTitle $isCurrent={isCurrent}>{display_name}</ClusterTitle>
+    <ClusterButtonComponent href={clusterUrl} $isCurrent={isCurrent} $color={col}>
+      <ClusterTitle $isCurrent={isCurrent}>{clusterTitle}</ClusterTitle>
     </ClusterButtonComponent>
   )
+}
+
+function useGetVariantUrlAndTitleForNomenclature(cluster: ClusterDatum) {
+  const { displayName, buildName } = cluster
+  const enablePangolin = useRecoilValue(enablePangolinAtom)
+  const displayNameToLineageMap = useRecoilValue(clusterDisplayNameToLineageMapSelector)
+  const pangoName = displayNameToLineageMap.get(displayName)
+  const pangoDisplay = pangoName ?? displayName
+  const pangoUrl = pangoName ?? buildName
+  return {
+    clusterUrl: `/${PAGES.VARIANTS}/${enablePangolin ? pangoUrl : buildName}`,
+    clusterTitle: enablePangolin ? pangoDisplay : displayName,
+  }
 }

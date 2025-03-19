@@ -10,6 +10,8 @@ import { theme } from 'src/theme'
 import { ClusterDistributionPlot } from 'src/components/ClusterDistribution/ClusterDistributionPlot'
 import { ClusterDatum } from 'src/io/getClusters'
 import { perClusterDataCountryNamesSelector, perClusterDataDistributionSelector } from 'src/state/PerClusterData'
+import { enablePangolinAtom } from 'src/state/Nomenclature'
+import { clusterDisplayNameToJoinedLineagesSelector } from 'src/state/Clusters'
 
 const PlotCardTitleIcon = styled(GoGraph)`
   margin: auto 5px;
@@ -33,13 +35,15 @@ export interface PlotCardProps {
 
 export function PlotCardTitle({ cluster }: PlotCardProps) {
   const { t } = useTranslationSafe()
+  const enablePangolin = useRecoilValue(enablePangolinAtom)
+  const pangoName =
+    useRecoilValue(clusterDisplayNameToJoinedLineagesSelector(cluster.displayName)) ?? cluster.displayName
+  const variant = enablePangolin ? pangoName : cluster.displayName
 
   return (
     <span className="d-flex w-100">
       <PlotCardTitleIcon />
-      <PlotCardHeading>
-        {t('Distribution of {{variant}} per country', { variant: cluster.display_name })}
-      </PlotCardHeading>
+      <PlotCardHeading>{t('Distribution of {{variant}} per country', { variant })}</PlotCardHeading>
       <span className="ms-auto">
         <Link href="/per-variant" color={theme.link.dim.color}>
           {t('Compare')}
@@ -51,7 +55,7 @@ export function PlotCardTitle({ cluster }: PlotCardProps) {
 
 export function PlotCard({ cluster }: PlotCardProps) {
   const title = useMemo(() => <PlotCardTitle cluster={cluster} />, [cluster])
-  const clusterDistribution = useRecoilValue(perClusterDataDistributionSelector(cluster.display_name))
+  const clusterDistribution = useRecoilValue(perClusterDataDistributionSelector(cluster.displayName))
   const countryNames = useRecoilValue(perClusterDataCountryNamesSelector)
 
   return (

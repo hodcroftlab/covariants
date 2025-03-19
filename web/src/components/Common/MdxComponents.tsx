@@ -1,9 +1,16 @@
 import { MDXComponents } from 'mdx/types'
 import { styled } from 'styled-components'
 
-import { AaMut, Lin, Mut, NucMut, Var, Who } from 'src/components/Common/MutationBadge'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
 import { MdxContent } from 'src/i18n/getMdxContent'
+import { AaMut } from 'src/components/Common/Badges/AminoacidMutationBadge'
+import { NucMut } from 'src/components/Common/Badges/NucleotideMutationBadge'
+import { Mut, Var } from 'src/components/Common/Badges/VariantBadge'
+import { Lin } from 'src/components/Common/Badges/LineageBadge'
+import { VarOrLin } from 'src/components/Common/Badges/VariantOrLineageBadge'
+
+import { Who } from 'src/components/Common/Badges/WhoBadge'
+import { VarOrLinText } from 'src/components/Common/Badges/VariantOrLineageText'
 
 export const Pre = styled.pre`
   padding: 0.5rem 1rem;
@@ -27,6 +34,8 @@ export const mdxComponents = {
   Var,
   Mut,
   Lin,
+  VarOrLin,
+  VarOrLinText,
   Who,
   MdxContent,
 }

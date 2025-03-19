@@ -25,6 +25,62 @@ import { clustersForPerCountryDataAtom } from 'src/state/ClustersForPerCountryDa
 import { perCountryDataIntroContentFilenameSelector } from 'src/state/PerCountryData'
 import { REGIONS } from 'src/state/Places'
 
+export function CountryDistributionPage() {
+  const { t } = useTranslationSafe()
+
+  return (
+    <Layout wide>
+      <Row className={'gx-0'}>
+        <Col>
+          <PageHeading>{t('Overview of Variants in Countries')}</PageHeading>
+        </Col>
+      </Row>
+      <CountryDistributionPageBody />
+    </Layout>
+  )
+}
+
+function CountryDistributionPageBody() {
+  const { t } = useTranslationSafe()
+
+  const contentFilename = useRecoilValue(perCountryDataIntroContentFilenameSelector)
+  const IntroContent = useMemo(() => {
+    return <MdxContent filepath={`PerCountryIntro/${contentFilename}`} />
+  }, [contentFilename])
+
+  return (
+    <>
+      <Row className={'gx-0'}>
+        <Col>
+          <RegionSwitcher />
+        </Col>
+      </Row>
+
+      <Row className={'gx-0'}>
+        <Col>
+          <CenteredEditable githubUrl="tree/master/web/src/content/en/PerCountryIntro/">
+            {IntroContent}
+          </CenteredEditable>
+        </Col>
+      </Row>
+
+      <Row className={'gx-0'}>
+        <Col>
+          <SharingPanel />
+        </Col>
+      </Row>
+
+      <Row className={'gx-0'}>
+        <Col>
+          <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
+            <CountryDistributionPlotSection />
+          </Editable>
+        </Col>
+      </Row>
+    </>
+  )
+}
+
 const enabledFilters = ['clusters', 'countriesWithIcons']
 
 function CountryDistributionPlotSection() {
@@ -75,61 +131,5 @@ function CountryDistributionPlotSection() {
         </Row>
       </MainFlex>
     </WrapperFlex>
-  )
-}
-
-function CountryDistributionPageBody() {
-  const { t } = useTranslationSafe()
-
-  const contentFilename = useRecoilValue(perCountryDataIntroContentFilenameSelector)
-  const IntroContent = useMemo(() => {
-    return <MdxContent filepath={`PerCountryIntro/${contentFilename}`} />
-  }, [contentFilename])
-
-  return (
-    <>
-      <Row className={'gx-0'}>
-        <Col>
-          <RegionSwitcher />
-        </Col>
-      </Row>
-
-      <Row className={'gx-0'}>
-        <Col>
-          <CenteredEditable githubUrl="tree/master/web/src/content/en/PerCountryIntro/">
-            {IntroContent}
-          </CenteredEditable>
-        </Col>
-      </Row>
-
-      <Row className={'gx-0'}>
-        <Col>
-          <SharingPanel />
-        </Col>
-      </Row>
-
-      <Row className={'gx-0'}>
-        <Col>
-          <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
-            <CountryDistributionPlotSection />
-          </Editable>
-        </Col>
-      </Row>
-    </>
-  )
-}
-
-export function CountryDistributionPage() {
-  const { t } = useTranslationSafe()
-
-  return (
-    <Layout wide>
-      <Row className={'gx-0'}>
-        <Col>
-          <PageHeading>{t('Overview of Variants in Countries')}</PageHeading>
-        </Col>
-      </Row>
-      <CountryDistributionPageBody />
-    </Layout>
   )
 }

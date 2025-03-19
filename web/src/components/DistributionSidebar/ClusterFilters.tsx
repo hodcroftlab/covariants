@@ -14,53 +14,11 @@ import {
 
 import { styled } from 'styled-components'
 import { useRecoilValue } from 'recoil'
-import { Cluster, getClusterColorsSelector } from 'src/state/Clusters'
+import { Cluster, clusterDisplayNameToLineageMapSelector, getClusterColorsSelector } from 'src/state/Clusters'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-
-export const FormGroup = styled(FormGroupBase)`
-  flex: 1 0 320px;
-`
-
-export const Form = styled(FormBase)`
-  display: flex;
-  flex-wrap: wrap;
-`
-
-export const ClusterNameText = styled.span`
-  font-family: ${(props) => props.theme.font.monospace};
-`
-
-export interface ClusterFilterCheckboxProps {
-  cluster: string
-  enabled: boolean
-  onFilterChange(cluster: string): void
-}
-
-export function ClusterFilterCheckbox({ cluster, enabled, onFilterChange }: ClusterFilterCheckboxProps) {
-  const onChange = useCallback(() => onFilterChange(cluster), [onFilterChange, cluster])
-  const getClusterColor = useRecoilValue(getClusterColorsSelector)
-
-  return (
-    <FormGroup key={cluster} check>
-      <Label htmlFor={CSS.escape(cluster)} check>
-        <Input id={CSS.escape(cluster)} type="checkbox" checked={enabled} onChange={onChange} />
-        <ColoredBox $color={getClusterColor(cluster)} $size={14} $aspect={16 / 9} />
-        <ClusterNameText>{cluster}</ClusterNameText>
-      </Label>
-    </FormGroup>
-  )
-}
-
-export interface ClusterFiltersProps {
-  clusters: Cluster[]
-  collapsed: boolean
-  onFilterChange(cluster: string): void
-  onFilterSelectAll(): void
-  onFilterDeselectAll(): void
-  setCollapsed(collapsed: boolean): void
-}
+import { enablePangolinAtom } from 'src/state/Nomenclature'
 
 export function ClusterFilters({
   clusters,
@@ -108,3 +66,51 @@ export function ClusterFilters({
     </CardCollapsible>
   )
 }
+
+export interface ClusterFiltersProps {
+  clusters: Cluster[]
+  collapsed: boolean
+
+  onFilterChange(cluster: string): void
+  onFilterSelectAll(): void
+  onFilterDeselectAll(): void
+  setCollapsed(collapsed: boolean): void
+}
+
+export const FormGroup = styled(FormGroupBase)`
+  flex: 1 0 320px;
+`
+
+export const Form = styled(FormBase)`
+  display: flex;
+  flex-wrap: wrap;
+`
+
+export function ClusterFilterCheckbox({ cluster, enabled, onFilterChange }: ClusterFilterCheckboxProps) {
+  const onChange = useCallback(() => onFilterChange(cluster), [onFilterChange, cluster])
+  const getClusterColor = useRecoilValue(getClusterColorsSelector)
+  const enablePangolin = useRecoilValue(enablePangolinAtom)
+  const pangoLineageMap = useRecoilValue(clusterDisplayNameToLineageMapSelector)
+  const pangoName = pangoLineageMap.get(cluster) ?? cluster
+
+  return (
+    <FormGroup key={cluster} check>
+      <Label htmlFor={CSS.escape(cluster)} check>
+        <Input id={CSS.escape(cluster)} type="checkbox" checked={enabled} onChange={onChange} />
+        <ColoredBox $color={getClusterColor(cluster)} $size={14} $aspect={16 / 9} />
+        <ClusterNameText>{enablePangolin ? pangoName : cluster}</ClusterNameText>
+      </Label>
+    </FormGroup>
+  )
+}
+
+export interface ClusterFilterCheckboxProps {
+  cluster: string
+  enabled: boolean
+
+  onFilterChange(cluster: string): void
+}
+
+export const ClusterNameText = styled.span`
+  font-family: ${(props) => props.theme.font.monospace};
+`

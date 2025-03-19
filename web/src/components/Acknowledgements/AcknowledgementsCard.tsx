@@ -62,7 +62,7 @@ export interface AcknowledgementsCardBodyProps {
 export function AcknowledgementsCardBody({ cluster, numPages }: AcknowledgementsCardBodyProps) {
   const [page, setPage] = useState(0)
   const handlePagination = useCallback((page: number) => setPage(page - 1) /* one-based to zero-based */, [])
-  const { isLoading, isFetching, isError, data: epiIsls, error } = useQueryAcknowledgements(cluster.build_name, page)
+  const { isLoading, isFetching, isError, data: epiIsls, error } = useQueryAcknowledgements(cluster.buildName, page)
 
   const body = useMemo(() => {
     if (isLoading || isFetching) {
@@ -83,14 +83,14 @@ export function AcknowledgementsCardBody({ cluster, numPages }: Acknowledgements
   const epiIslsComponents = useMemo(() => {
     if (epiIsls) {
       return epiIsls.map((epiIsl) => (
-        <span key={`$${cluster.display_name}-${epiIsl}`}>
+        <span key={`$${cluster.displayName}-${epiIsl}`}>
           <AcknowledgementEpiIsl epiIsl={epiIsl} />
           {', '}
         </span>
       ))
     }
     return null
-  }, [cluster.display_name, epiIsls])
+  }, [cluster.displayName, epiIsls])
 
   return (
     <CardBody>
@@ -122,7 +122,7 @@ export interface AcknowledgementsCardProps {
 export function AcknowledgementsCard({ cluster, numPages }: AcknowledgementsCardProps) {
   const [collapsed, setCollapsed] = useState(true)
   return (
-    <CardCollapsible className="my-2" title={cluster.display_name} collapsed={collapsed} setCollapsed={setCollapsed}>
+    <CardCollapsible className="my-2" title={cluster.displayName} collapsed={collapsed} setCollapsed={setCollapsed}>
       {!collapsed && <AcknowledgementsCardBody cluster={cluster} numPages={numPages} />}
     </CardCollapsible>
   )

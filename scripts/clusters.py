@@ -49,7 +49,7 @@
 # Visual display on website
 # | important               | Boolean: Whether we should show it by default in web or it can be hidden under "show more"
 # | has_no_page             | Boolean: if true, variant will not be shown on the left sidebar on main page and will not have a page to navigate to
-# | alt_display_name        | List of alternative friendly names (appear in web under the heading on variant page)
+# | alt_display_name        | REQUIRED: List of alternative friendly names (appear in web under the heading on variant page - and are used in the pango/nextstrain name switch)
 # | col                     | Color associated with the variant
 # | nextstrain_url          | URL to the phylogenetic tree visualization (the "build" in Nextstrain lingo) of this variant on nextstrain.org
 # | old_build_names         | Old variant names in Nextstrain nomenclature (usually before assigned a greek letter)
@@ -68,7 +68,7 @@ clusters = {
         "country_info": [],
         "col": "#D16666",
         "display_name": "20I (Alpha, V1)",
-        "alt_display_name": ["S.501Y.V1"],
+        "alt_display_name": ["B.1.1.7"],
         "build_name": "20I.Alpha.V1",
         "old_build_names": ["S.501Y.V1"],
         "who_name": ["Alpha"],
@@ -127,7 +127,7 @@ clusters = {
         "country_info": [],
         "col": "#FF6666",
         "display_name": "20H (Beta, V2)",
-        "alt_display_name": ["S.501Y.V2"],
+        "alt_display_name": ["B.1.351"],
         "build_name": "20H.Beta.V2",
         "old_build_names": ["S.501Y.V2"],
         "who_name": ["Beta"],
@@ -179,7 +179,7 @@ clusters = {
         "country_info": [],
         "col": "#FFB3B3",
         "display_name": "20J (Gamma, V3)",
-        "alt_display_name": ["S.501Y.V3"],
+        "alt_display_name": ["P.1"],
         "build_name": "20J.Gamma.V3",
         "old_build_names": ["S.501Y.V3"],
         "who_name": ["Gamma"],
@@ -242,7 +242,7 @@ clusters = {
         "country_info": [],
         "col": "#66C266",
         "display_name": "21A (Delta)",
-        "alt_display_name": ["21A/S:478K"],
+        "alt_display_name": ["B.1.617.2"],
         # "other_nextstrain_names": ["21A (Delta)","21J (Delta)","21I (Delta)"],
         "build_name": "21A.Delta",
         "old_build_names": ["21A.S.478K"],
@@ -291,6 +291,7 @@ clusters = {
     "21I.Delta": {
         "snps": [5184, 11514, 22227],  # 5184T, 11514T, 22227T : ORF1a:1640, ORF1a:3750, S:222
         "snps_with_base": ["5184T", "11514T", "22227T"],
+        "alt_display_name": ["B.1.617.2/S:222V"],
         "cluster_data": [],
         "nextstrain_build": False,
         "type": "variant",
@@ -304,7 +305,7 @@ clusters = {
         "who_name": ["Delta"],
         "nextstrain_name": "21I",
         "pango_lineages": [
-            {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
+            {"name": "B.1.617.2", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.2.html"}
         ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21I.Delta",
         "mutations": {
@@ -354,6 +355,7 @@ clusters = {
         "snps": [4181, 8986, 11201],  # 4181T,8986T,11201G - ORF1a: 1306, 2907, 3646
         "snps_with_base": ["4181T", "8986T", "11201G"],
         "cluster_data": [],
+        "alt_display_name": ["B.1.617.2/N:215C"],
         "nextstrain_build": False,
         "type": "variant",
         "graphing": True,
@@ -366,7 +368,7 @@ clusters = {
         "who_name": ["Delta"],
         "nextstrain_name": "21J",
         "pango_lineages": [
-            {"name": "B.1.617.1", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.1.html"}
+            {"name": "B.1.617.2", "url": "https://cov-lineages.org/lineages/lineage_B.1.617.2.html"}
         ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/21J.Delta",
         "mutations": {
@@ -2487,6 +2489,7 @@ clusters = {
                 {"gene": "ORF9b", "left":"A", "pos":29, "right":"-"},
             ],
             "synonymous": [
+                {"left": "G", "pos": 29759, "right":"-"},
                 {"left": "C", "pos": 241, "right":"T"},
                 {"left": "C", "pos": 3037, "right":"T"},
                 {"left": "C", "pos": 4321, "right":"T"},
@@ -2802,6 +2805,7 @@ clusters = {
                 {"gene": "ORF1a", "left":"T", "pos":3255, "right": "I"},
                 {"gene": "ORF1a", "left":"P", "pos":3395, "right": "H"},
                 {"gene": "ORF1a", "left":"S", "pos":3675, "right": "-"},
+                {"gene": "ORF1a", "left":"S", "pos":3675, "right": "-"},
                 {"gene": "ORF1a", "left":"G", "pos":3676, "right": "-"},
                 {"gene": "ORF1a", "left":"F", "pos":3677, "right": "-"},
                 {"gene": "ORF1a", "left":"T", "pos":4175, "right": "I"},
@@ -2919,6 +2923,7 @@ clusters = {
                 {"gene": "S", "left":"V", "pos":127, "right":"F"},
                 {"gene": "S", "left":"G", "pos":142, "right":"D"},
                 {"gene": "S", "left":"Y", "pos":144, "right":"-"},
+                {"gene": "S", "left":"F", "pos":157, "right":"S"},
                 {"gene": "S", "left":"F", "pos":157, "right":"S"},
                 {"gene": "S", "left":"R", "pos":158, "right":"G"},
                 {"gene": "S", "left":"R", "pos":493, "right":"Q"},
@@ -3098,6 +3103,7 @@ clusters = {
                 {"gene": "S", "left":"V", "pos":127, "right":"F"},
                 {"gene": "S", "left":"G", "pos":142, "right":"D"},
                 {"gene": "S", "left":"Y", "pos":144, "right":"-"},
+                {"gene": "S", "left":"F", "pos":157, "right":"S"},
                 {"gene": "S", "left":"F", "pos":157, "right":"S"},
                 {"gene": "S", "left":"R", "pos":158, "right":"G"},
                 {"gene": "S", "left":"R", "pos":493, "right":"Q"},
@@ -3284,6 +3290,7 @@ clusters = {
                 {"gene": "S", "left":"V", "pos":127, "right":"F"},
                 {"gene": "S", "left":"G", "pos":142, "right":"D"},
                 {"gene": "S", "left":"Y", "pos":144, "right":"-"},
+                {"gene": "S", "left":"F", "pos":157, "right":"S"},
                 {"gene": "S", "left":"F", "pos":157, "right":"S"},
                 {"gene": "S", "left":"R", "pos":158, "right":"G"},
                 {"gene": "S", "left":"R", "pos":493, "right":"Q"},
@@ -3474,6 +3481,7 @@ clusters = {
                 {"gene": "S", "left":"V", "pos":127, "right":"F"},
                 {"gene": "S", "left":"G", "pos":142, "right":"D"},
                 {"gene": "S", "left":"Y", "pos":144, "right":"-"},
+                {"gene": "S", "left":"F", "pos":157, "right":"S"},
                 {"gene": "S", "left":"F", "pos":157, "right":"S"},
                 {"gene": "S", "left":"R", "pos":158, "right":"G"},
                 {"gene": "S", "left":"R", "pos":493, "right":"Q"},
@@ -3857,7 +3865,7 @@ clusters = {
         "country_info": [],
         "col": "#A3FFD1",
         "display_name": "21B (Kappa)",
-        "alt_display_name": ["21A/S:154K"],
+        "alt_display_name": ["B.1.617.1"],
         "build_name": "21B.Kappa",
         "old_build_names": ["21A.S.154K"],
         "who_name": ["Kappa"],
@@ -3928,7 +3936,7 @@ clusters = {
         "country_info": [],
         "col": "#6666A3",
         "display_name": "21D (Eta)",
-        "alt_display_name": ["20A/S:484K"],
+        "alt_display_name": ["B.1.525"],
         "build_name": "21D.Eta",
         "old_build_names": ["20A.S.484K"],
         "who_name": ["Eta"],
@@ -3991,7 +3999,7 @@ clusters = {
         "country_info": [],
         "col": "#FFC2FF",
         "display_name": "21F (Iota)",
-        "alt_display_name": ["20C/S:484K"],
+        "alt_display_name": ["B.1.526"],
         "build_name": "21F.Iota",
         "old_build_names": ["20C.S.484K"],
         "who_name": ["Iota"],
@@ -4035,6 +4043,7 @@ clusters = {
     "21GLambda": {
         "snps": [7424, 23031, 24138],  # ORF1a 2387 (7424G)  #S 490 (23031C) 859 (24138A)
         "snps_with_base": ["7424G", "23031C", "24138A"],
+        "alt_display_name": ["C.37"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -4098,6 +4107,7 @@ clusters = {
     "21H": {
         "snps": [22599, 4878, 17491],  # S 346 (22599A)  ORF1a: 1538 (4878T) nuc: 17491T
         "snps_with_base": ["22599A", "4878T", "17491T"],
+        "alt_display_name": ["B.1.621"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -4158,6 +4168,7 @@ clusters = {
         "snps": [10029, 23756, 21306],  # ORF1a  3255 (10029T)   S: 732 (23756G) nuc 21306T
         "snps_with_base": ["10029T", "23756G", "21306T"],
         "cluster_data": [],
+        "alt_display_name": ["B.1.1.519"],
         "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
@@ -4203,6 +4214,7 @@ clusters = {
     "20AS126": {
         "snps": [21939, 1473, 6236],  # S: 126 (21939C)  #ORF1a: 403 (1473T), 1991 (6236A)
         "snps_with_base": ["21939C", "1473T", "6236A"],
+        "alt_display_name": ["B.1.620"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -4270,7 +4282,7 @@ clusters = {
         "country_info": [],
         "col": "#FFBB8B",
         "display_name": "20E (EU1)",
-        "alt_display_name": ["20A.EU1"],
+        "alt_display_name": ["B.1.177"],
         "build_name": "20A.EU1",
         "nextstrain_name": "20E",
         "pango_lineages": [
@@ -4304,7 +4316,7 @@ clusters = {
         "country_info": [],
         "col": "#e2cfe2",
         "display_name": "21C (Epsilon)",
-        "alt_display_name": ["20C/S:452R"],
+        "alt_display_name": ["B.1.427", "B.1.429"],
         "build_name": "21C.Epsilon",
         "old_build_names": ["S.L452R"],
         "who_name": ["Epsilon"],
@@ -4337,6 +4349,7 @@ clusters = {
     "S439": {
         "snps": [7767, 22879, 8047], #CAT
         "snps_with_base": ["7767C", "22879A", "8047T"],
+        "alt_display_name": ["B.1.258"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -4364,6 +4377,7 @@ clusters = {
     "S677HRobin1": {
         "snps": [23593, 29402, 8083],  # T, T, A
         "snps_with_base": ["23593T", "29402T", "8083A"],
+        "alt_display_name": ["B.1.2.2"], #doesn't exist in pango, added for uniqueness
         "cluster_data": [],
         "nextstrain_build": False,  # as of 25 Feb 22 - no new seqs since Sept
         "graphing": True,
@@ -4373,6 +4387,9 @@ clusters = {
         "col": "#E0A366",
         "display_name": "S:677H.Robin1",
         "build_name": "S.Q677H.Robin1",
+        "pango_lineages": [
+            {"name": "B.1.2", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Robin1?f_country=USA",
         "mutations": {
             "nonsynonymous": [
@@ -4403,6 +4420,7 @@ clusters = {
     "S677PPelican": {
         "snps": [23592, 11451, 21811],
         "snps_with_base": ["23592C", "11451G", "21811A"],
+        "alt_display_name": ["B.1.2.1"], #doesn't exist in pango, added for uniqueness
         "cluster_data": [],
         "nextstrain_build": False,  # as of 25 Feb 22 - no new seqs since Sept
         "graphing": True,
@@ -4412,6 +4430,9 @@ clusters = {
         "col": "#E085FF",
         "display_name": "S:677P.Pelican",
         "build_name": "S.Q677P.Pelican",
+        "pango_lineages": [
+            {"name": "B.1.2", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677P.Pelican?f_country=USA",
         "mutations": {
             "nonsynonymous": [
@@ -4443,6 +4464,7 @@ clusters = {
         "snps": [22992, 4543, 16889],  # A, T, G - the last one added to stop showing up in Omicron
         "snps_with_base": ["22992A", "4543T", "16889G"],
         "cluster_data": [],
+        "alt_display_name": ["B.1.160"],
         "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
@@ -4450,7 +4472,6 @@ clusters = {
         "country_info": [],
         "col": "#A3D8F3",
         "display_name": "20A.EU2",
-        # "alt_display_name": "S:477N",
         "build_name": "20A.EU2",
         "pango_lineages": [
             {"name": "B.1.160", "url": None}
@@ -4478,6 +4499,7 @@ clusters = {
     "S98": {
         "snps": [21855, 25505, 28651], #TGT
         "snps_with_base": ["21855T", "25505G", "28651T"],
+        "alt_display_name": ["B.1.221"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -4507,6 +4529,7 @@ clusters = {
     "S80": {
         "snps": [21800, 3099], #TTT 4965T
         "snps_with_base": ["21800T", "3099T", "4965T"],
+        "alt_display_name": ["B.1.367"],
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": True,
@@ -4550,6 +4573,7 @@ clusters = {
         "snps": [23438, 772, 10868], #TC 10868T
         "snps_with_base": ["23438T", "772C", "10868T"],
         "cluster_data": [],
+        "alt_display_name": ["B.1.1.277"],
         "nextstrain_build": False,
         "graphing": True,
         "type": "variant",
@@ -4572,6 +4596,7 @@ clusters = {
     "S1122": {
         "snps": [24926, 9120, 18032], #TTT
         "snps_with_base": ["24926T", "9120T", "18032T"],
+        "alt_display_name": ["B.1.1.302"],
         "cluster_data": [],  # mostly Swedish cluster
         "nextstrain_build": False,
         "graphing": True,
@@ -4808,6 +4833,7 @@ clusters = {
     # variant
     "S677HRobin2": {
         "snps": [23593, 7348],
+        "alt_display_name": ["B.1.2.3"], #doesn't exist in pango, added for uniqueness
         "cluster_data": [],
         "nextstrain_build": False,
         "graphing": False,
@@ -4818,12 +4844,16 @@ clusters = {
         "display_name": "20G/S:677H.Robin2",
         "has_no_page": True,
         "build_name": "S.Q677H.Robin2",
+        "pango_lineages": [
+            {"name": "B.1.2", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Robin2?c=gt-S_677&f_country=USA",
     },
     # variant
     "S677HYellowhammer": {
         "snps": [23593, 9928],
         "cluster_data": [],
+        "alt_display_name": ["B.1.2.4"], #doesn't exist in pango, added for uniqueness
         "nextstrain_build": False,
         "graphing": False,
         "usa_graph": True,
@@ -4833,6 +4863,9 @@ clusters = {
         "display_name": "20G/S:677H.Yellowhammer",
         "has_no_page": True,
         "build_name": "S.Q677H.Yellowhammer",
+        "pango_lineages": [
+            {"name": "B.1.2", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Yellowhammer?c=gt-S_677&f_country=USA",
     },
     # variant
@@ -4840,6 +4873,7 @@ clusters = {
         "snps": [23592, 3450, 6382],
         "cluster_data": [],
         "nextstrain_build": False,
+        "alt_display_name": ["B.1.2.5"], #doesn't exist in pango, added for uniqueness
         "graphing": False,
         "usa_graph": True,
         "important": False,
@@ -4848,6 +4882,9 @@ clusters = {
         "display_name": "20G/S:677R.Roadrunner",
         "has_no_page": True,
         "build_name": "S.Q677R.Roadrunner",
+        "pango_lineages": [
+            {"name": "B.1.2", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677R.Roadrunner?c=gt-S_677&f_country=USA",
     },
     # variant
@@ -4855,6 +4892,7 @@ clusters = {
         "snps": [23593, 28833, 1592],
         "cluster_data": [],
         "nextstrain_build": False,
+        "alt_display_name": ["B.1.265"],
         "graphing": False,
         "usa_graph": True,
         "important": False,
@@ -4863,12 +4901,16 @@ clusters = {
         "display_name": "20G/S:677H.Heron",
         "has_no_page": True,
         "build_name": "S.Q677H.Heron",
+        "pango_lineages": [
+            {"name": "B.1.265", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Heron?c=gt-S_677&f_country=USA",
     },
     # variant
     "S677HBluebird": {
         "snps": [23593, 21648],
         "cluster_data": [],
+        "alt_display_name": ["B.1.1.486"],
         "nextstrain_build": False,
         "graphing": False,
         "usa_graph": True,
@@ -4878,6 +4920,9 @@ clusters = {
         "display_name": "20G/S:677H.Bluebird",
         "has_no_page": True,
         "build_name": "S.Q677H.Bluebird",
+        "pango_lineages": [
+            {"name": "B.1.1.486", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Bluebird?c=gt-S_677&f_country=USA",
     },
     # variant
@@ -4885,6 +4930,7 @@ clusters = {
         "snps": [23593, 23756, 21757],
         "cluster_data": [],
         "nextstrain_build": False,
+        "alt_display_name": ["B.1.1.316"],
         "graphing": False,
         "usa_graph": True,
         "important": False,
@@ -4893,12 +4939,16 @@ clusters = {
         "display_name": "20G/S:677H.Quail",
         "has_no_page": True,
         "build_name": "S.Q677H.Quail",
+        "pango_lineages": [
+            {"name": "B.1.1.316", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Quail?c=gt-S_677&f_country=USA",
     },
     # variant
     "S677HMockingbird": {
         "snps": [23593, 21986],
         "cluster_data": [],
+        "alt_display_name": ["B.1.234"],
         "nextstrain_build": False,
         "graphing": False,
         "usa_graph": True,
@@ -4908,6 +4958,9 @@ clusters = {
         "display_name": "20G/S:677H.Mockingbird",
         "has_no_page": True,
         "build_name": "S.Q677H.Mockingbird",
+        "pango_lineages": [
+            {"name": "B.1.234", "url": None}
+        ],
         "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/S.Q677H.Mockingbird?c=gt-S_677&f_country=USA",
     },
 

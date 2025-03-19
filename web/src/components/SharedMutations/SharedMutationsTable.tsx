@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 
 import { styled } from 'styled-components'
 
+import { useRecoilValue } from 'recoil'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { Mutations, useMutationComparison } from 'src/io/useMutationComparison'
-import { AminoacidMutationBadge } from 'src/components/Common/MutationBadge'
+import { Mutations } from 'src/io/getMutationComparison'
 import { ToggleTwoLabels } from 'src/components/Common/ToggleTwoLabels'
+import { AminoacidMutationBadge } from 'src/components/Common/Badges/AminoacidMutationBadge'
+import { enablePangolinAtom } from 'src/state/Nomenclature'
+import { mutationComparisonAtom } from 'src/state/MutationComparison'
 
 const Table = styled.table`
   margin: 0 auto;
@@ -46,7 +49,13 @@ const Tr = styled.tr`
 const AdvancedToggleWrapper = styled.div`
   flex: 0 0 100%;
   display: flex;
+  justify-content: center;
   transform: scale(0.8);
+  gap: 0.25rem;
+`
+
+const PositionToggle = styled(ToggleTwoLabels)`
+  margin: 0;
 `
 
 export interface VariantProps {
@@ -66,14 +75,10 @@ export function Variant({ variants, shared }: VariantProps) {
 
 export function SharedMutationsTable() {
   const { t } = useTranslationSafe()
+  const enablePangolin = useRecoilValue(enablePangolinAtom)
 
-  const { data: mutationComparison } = useMutationComparison()
-  const {
-    variants,
-    shared_by_pos: sharedByPos,
-    shared_by_commonness: sharedByCommonness,
-    individual: individualMutations,
-  } = mutationComparison
+  const { variants, sharedByPos, sharedByCommonness, individualMutations } = useRecoilValue(mutationComparisonAtom)
+  const variantsNames = variants.map((v) => (enablePangolin ? v.pangolin : v.nextstrain))
   const nCols = variants.length
 
   const [byPos, setByPos] = useState(true)
@@ -83,7 +88,7 @@ export function SharedMutationsTable() {
     <Table>
       <TableHeader>
         <Tr>
-          {variants.map((variant) => (
+          {variantsNames.map((variant) => (
             <Th key={variant}>{variant}</Th>
           ))}
         </Tr>
@@ -95,8 +100,7 @@ export function SharedMutationsTable() {
             {t('Shared mutations')}
             <AdvancedToggleWrapper>
               {t('Sort by: ')}
-              <ToggleTwoLabels
-                identifier="toggle-advanced-controls"
+              <PositionToggle
                 checked={byPos}
                 onCheckedChanged={setByPos}
                 labelLeft={t('Position')}
@@ -108,7 +112,7 @@ export function SharedMutationsTable() {
 
         <>
           {sharedMutations.map(({ pos, presence }) => (
-            <Variant key={pos} variants={variants} shared={presence} />
+            <Variant key={pos} variants={variantsNames} shared={presence} />
           ))}
         </>
 
@@ -118,7 +122,7 @@ export function SharedMutationsTable() {
 
         <>
           {individualMutations.map(({ index, mutations }) => (
-            <Variant key={index} variants={variants} shared={mutations} />
+            <Variant key={index} variants={variantsNames} shared={mutations} />
           ))}
         </>
       </TableBody>

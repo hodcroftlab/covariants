@@ -8,46 +8,14 @@ import { useRecoilValue } from 'recoil'
 import { ColoredBox } from '../Common/ColoredBox'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { formatDateBiweekly, formatInteger, formatProportion } from 'src/helpers/format'
-import { getClusterColorsSelector } from 'src/state/Clusters'
-
-const EPSILON = 1e-2
-
-const Tooltip = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  padding: 5px 10px;
-  background-color: ${(props) => props.theme.gray100};
-  box-shadow: ${(props) => props.theme.shadows.slight};
-  border-radius: 3px;
-`
-
-const TooltipTitle = styled.h1`
-  font-size: 1rem;
-  margin: 5px auto;
-  font-weight: 600;
-`
-
-const TooltipTable = styled.table`
-  padding: 30px 35px;
-  font-size: 0.9rem;
-  border: none;
-  min-width: 250px;
-
-  & > tbody > tr:nth-child(odd) {
-    background-color: ${(props) => props.theme.gray200};
-  }
-`
-
-const TooltipTableBody = styled.tbody``
-
-export const ClusterNameText = styled.span`
-  font-family: ${(props) => props.theme.font.monospace};
-`
+import { clusterDisplayNameToLineageMapSelector, getClusterColorsSelector } from 'src/state/Clusters'
+import { enablePangolinAtom } from 'src/state/Nomenclature'
 
 export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
   const { t } = useTranslationSafe()
   const getClusterColor = useRecoilValue(getClusterColorsSelector)
+  const enablePangolin = useRecoilValue(enablePangolinAtom)
+  const pangoLineageMap = useRecoilValue(clusterDisplayNameToLineageMapSelector)
 
   const { payload } = props
   if (!payload || payload.length === 0) {
@@ -84,7 +52,9 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
             <tr key={name}>
               <td className="px-2 text-left">
                 <ColoredBox $color={getClusterColor(name ?? '')} $size={10} $aspect={1.66} />
-                <ClusterNameText>{name}</ClusterNameText>
+                <ClusterNameText>
+                  {enablePangolin ? ((name && pangoLineageMap.get(name)) ?? name) : name}
+                </ClusterNameText>
               </td>
               <td className="px-2 text-right">{value !== undefined && value > EPSILON ? formatInteger(value) : '-'}</td>
               <td className="px-2 text-right">
@@ -107,3 +77,38 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
     </Tooltip>
   )
 }
+
+const EPSILON = 1e-2
+
+const Tooltip = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  padding: 5px 10px;
+  background-color: ${(props) => props.theme.gray100};
+  box-shadow: ${(props) => props.theme.shadows.slight};
+  border-radius: 3px;
+`
+
+const TooltipTitle = styled.h1`
+  font-size: 1rem;
+  margin: 5px auto;
+  font-weight: 600;
+`
+
+const TooltipTable = styled.table`
+  padding: 30px 35px;
+  font-size: 0.9rem;
+  border: none;
+  min-width: 250px;
+
+  & > tbody > tr:nth-child(odd) {
+    background-color: ${(props) => props.theme.gray200};
+  }
+`
+
+const TooltipTableBody = styled.tbody``
+
+export const ClusterNameText = styled.span`
+  font-family: ${(props) => props.theme.font.monospace};
+`

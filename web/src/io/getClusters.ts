@@ -24,35 +24,66 @@ const aquariaDatumSchema = z.object({
   url: z.string(),
 })
 
-const clusterDatumSchema = z.object({
+const clusterDatumRawSchema = z.object({
+  alt_display_name: z.string().array().optional(),
+  aquaria_urls: aquariaDatumSchema.array().optional(),
   build_name: z.string(),
-  old_build_names: z.string().array().optional(),
-  nextstrain_url: z.string().optional(),
   col: z.string(),
   display_name: z.string(),
-  alt_display_name: z.string().array().optional(),
-  snps: z.number().array(),
+  has_no_page: z.boolean().optional(),
+  important: z.boolean().optional(),
   mutations: z
     .object({
       nonsynonymous: mutationSchema.array().optional(),
       synonymous: mutationSchema.array().optional(),
     })
     .optional(),
-  aquaria_urls: aquariaDatumSchema.array().optional(),
+  nextstrain_url: z.string().optional(),
+  old_build_names: z.string().array().optional(),
+  pango_lineages: z
+    .object({
+      name: z.string(),
+      url: z.string().or(z.null()),
+    })
+    .array()
+    .optional(),
+  snps: z.number().array(),
   type: z.string().optional(),
-  important: z.boolean().optional(),
-  has_no_page: z.boolean().optional(),
 })
 
+const clusterDatumSchema = clusterDatumRawSchema.transform(
+  ({
+    alt_display_name,
+    aquaria_urls,
+    build_name,
+    display_name,
+    has_no_page,
+    nextstrain_url,
+    old_build_names,
+    pango_lineages,
+    ...rest
+  }) => ({
+    ...(alt_display_name ? { altDisplayName: alt_display_name } : {}),
+    ...(aquaria_urls ? { aquariaUrls: aquaria_urls } : {}),
+    buildName: build_name,
+    displayName: display_name,
+    ...(has_no_page ? { hasNoPage: has_no_page } : {}),
+    ...(nextstrain_url ? { nextstrainUrl: nextstrain_url } : {}),
+    ...(old_build_names ? { oldBuildNames: old_build_names } : {}),
+    ...(pango_lineages ? { pangoLineages: pango_lineages } : {}),
+    ...rest,
+  }),
+)
+
 const clusterDataRawSchema = z.object({
-  clusters: clusterDatumSchema.array(),
+  clusters: clusterDatumRawSchema.array(),
 })
 
 export type ClusterDatum = z.infer<typeof clusterDatumSchema>
 
 export async function fetchClusters(): Promise<ClusterDatum[]> {
   const clusters = await FETCHER.validatedFetch('/data/clusters.json', clusterDataRawSchema)
-  return clusters.clusters
+  return clusterDatumSchema.array().parse(clusters.clusters)
 }
 
 export type ClusterDataGrouped = Record<string, ClusterDatum[]>

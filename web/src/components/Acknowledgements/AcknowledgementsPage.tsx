@@ -32,7 +32,7 @@ export function useQueryAcknowledgementsKeys() {
       }
       const json = res.data as AcknowledgementsKeysJson
       return clusters.map((cluster) => {
-        const { numChunks } = get(json.acknowledgements, cluster.build_name, { numChunks: 0 })
+        const { numChunks } = get(json.acknowledgements, cluster.buildName, { numChunks: 0 })
         return { cluster, numChunks }
       })
     },
@@ -62,7 +62,7 @@ export function AcknowledgementsPage() {
     }
     if (data) {
       return data.map((datum) => (
-        <AcknowledgementsCard key={datum.cluster.build_name} cluster={datum.cluster} numPages={datum.numChunks} />
+        <AcknowledgementsCard key={datum.cluster.buildName} cluster={datum.cluster} numPages={datum.numChunks} />
       ))
     }
     return null
