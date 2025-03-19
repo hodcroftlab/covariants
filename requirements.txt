@@ -5,3 +5,5 @@ python-dotenv==0.20.0
 requests==2.32.2
 scipy==1.8.1
 seaborn==0.11.2
+
+polars==1.24.0
