@@ -9,7 +9,7 @@ import type { ClusterDistributionDatum } from 'src/io/getPerClusterData'
 import { Link } from 'src/components/Link/Link'
 import { PlotCardTitle } from 'src/components/Common/PlotCardTitle'
 import { ClusterDistributionPlot } from 'src/components/ClusterDistribution/ClusterDistributionPlot'
-import { clusterDisplayNameToLineagesMapSelector } from 'src/state/Clusters'
+import { clusterDisplayNameToJoinedLineagesSelector } from 'src/state/Clusters'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
 
 export interface ClusterDistributionPlotCardProps {
@@ -31,8 +31,7 @@ export function ClusterDistributionPlotCard({
 }: ClusterDistributionPlotCardProps) {
   const url = `/variants/${clusterBuildName}`
   const enablePangolin = useRecoilValue(enablePangolinAtom)
-  const pangoLineagesMap = useRecoilValue(clusterDisplayNameToLineagesMapSelector)
-  const pangoName = pangoLineagesMap.get(clusterDisplayName)?.join(', ') ?? clusterDisplayName
+  const pangoName = useRecoilValue(clusterDisplayNameToJoinedLineagesSelector(clusterDisplayName)) ?? clusterDisplayName
 
   return (
     <Card className="m-2">

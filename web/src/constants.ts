@@ -23,7 +23,9 @@ export const TWITTER_RELATED = [TWITTER_USERNAME_RAW]
 
 export const FACEBOOK_HASHTAG = PROJECT_NAME
 
-export const VARIANTS = 'variants'
-export const CASES = 'cases'
-export const PER_VARIANT = 'per-variant'
-export const PER_COUNTRY = 'per-country'
+export const PAGES = {
+  VARIANTS: 'variants' as const,
+  CASES: 'cases' as const,
+  PER_VARIANT: 'per-variant' as const,
+  PER_COUNTRY: 'per-country' as const,
+}

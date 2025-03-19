@@ -5,7 +5,7 @@ import { persistAtom } from 'src/state/persist/localStorage'
 import { parseUrl } from 'src/helpers/parseUrl'
 import { setUrlPath, updateUrlQuery } from 'src/helpers/urlQuery'
 import type { AtomEffectParams } from 'src/state/utils/atomEffect'
-import { CASES, PER_COUNTRY, PER_VARIANT, VARIANTS } from 'src/constants'
+import { PAGES } from 'src/constants'
 import {
   clusterLineagesToBuildNameMapSelector,
   clusterLineagesToDisplayNameMapSelector,
@@ -104,7 +104,7 @@ export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<b
     const [, path, ...variantNameFragments] = oldPath.split('/')
     const variantName = variantNameFragments.join('/')
 
-    if (path === VARIANTS && variantName !== '') {
+    if (path === PAGES.VARIANTS && variantName !== '') {
       Promise.all([getPromise(clusterBuildNameToLineageMapSelector), getPromise(clusterLineagesToBuildNameMapSelector)])
         .then(([buildNameToLineageMap, lineageToBuildNameMap]) => {
           // If nomenclature is changed, pathname will be adjusted to match
@@ -118,7 +118,7 @@ export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<b
         })
     }
 
-    if ([CASES, PER_VARIANT].includes(path)) {
+    if (path === PAGES.CASES || path === PAGES.PER_VARIANT) {
       const dataAtom = pathToAtom.get(path)
       if (!dataAtom) {
         throw new Error('Data atom not found, cannot update url')
@@ -142,7 +142,7 @@ export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<b
         })
     }
 
-    if (path === PER_COUNTRY) {
+    if (path === PAGES.PER_COUNTRY) {
       // If all clusters are enabled, we will remove cluster url params
       getPromise(perCountryRegionAtom)
         .then(async (region) => {
@@ -168,6 +168,6 @@ export function updateUrlOnSetPangolin({ onSet, getPromise }: AtomEffectParams<b
 }
 
 const pathToAtom = new Map([
-  [CASES, clustersCasesAtom],
-  [PER_VARIANT, clustersForPerClusterDataAtom],
+  [PAGES.CASES, clustersCasesAtom],
+  [PAGES.PER_VARIANT, clustersForPerClusterDataAtom],
 ])

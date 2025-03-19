@@ -5,7 +5,7 @@ import { useRecoilValue } from 'recoil'
 import { Link } from '../Link/Link'
 import { ClusterDatum } from 'src/io/getClusters'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
-import { VARIANTS } from 'src/constants'
+import { PAGES } from 'src/constants'
 import { clusterDisplayNameToLineageMapSelector } from 'src/state/Clusters'
 
 const ClusterButtonComponent = styled(Link)<{ $isCurrent: boolean; $color: string }>`
@@ -104,7 +104,7 @@ function useGetVariantUrlAndTitleForNomenclature(cluster: ClusterDatum) {
   const pangoDisplay = pangoName ?? displayName
   const pangoUrl = pangoName ?? buildName
   return {
-    clusterUrl: `/${VARIANTS}/${enablePangolin ? pangoUrl : buildName}`,
+    clusterUrl: `/${PAGES.VARIANTS}/${enablePangolin ? pangoUrl : buildName}`,
     clusterTitle: enablePangolin ? pangoDisplay : displayName,
   }
 }
