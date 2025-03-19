@@ -1,5 +1,8 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2025-03-19
+- Add nomenclature toggle to switch between nextclade and pangolin
+
 ## 2024-01-13
 - Add 23G (XBB.1.5.70), 23H (HK.3), 23I (BA.2.86) to graphing, pages, and mutations
 
