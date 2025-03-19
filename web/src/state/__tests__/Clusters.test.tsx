@@ -25,6 +25,6 @@ describe('clustersAtom', () => {
     }
     const result = await renderHookWithTimeout(useTestHook, RecoilRootAndQueryClientWrapper)
 
-    expect(result[0].build_name).toEqual('20I.Alpha.V1')
+    expect(result[0].buildName).toEqual('20I.Alpha.V1')
   })
 })
