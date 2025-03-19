@@ -95,8 +95,8 @@ export function ClusterFilterCheckbox({ cluster, enabled, onFilterChange }: Clus
 
   return (
     <FormGroup key={cluster} check>
-      <Label htmlFor={CSS.escape(cluster)} check>
-        <Input id={CSS.escape(cluster)} type="checkbox" checked={enabled} onChange={onChange} />
+      <Label check>
+        <Input type="checkbox" checked={enabled} onChange={onChange} />
         <ColoredBox $color={getClusterColor(cluster)} $size={14} $aspect={16 / 9} />
         <ClusterNameText>{enablePangolin ? pangoName : cluster}</ClusterNameText>
       </Label>

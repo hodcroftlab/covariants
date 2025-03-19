@@ -93,8 +93,8 @@ export function CountryFilterCheckbox({
 
   return (
     <FormGroup check>
-      <Label className={'d-flex align-items-baseline gap-2'} htmlFor={CSS.escape(country)} check>
-        <Input id={CSS.escape(country)} type="checkbox" checked={enabled} onChange={onChange} />
+      <Label className={'d-flex align-items-baseline gap-2'} check>
+        <Input type="checkbox" checked={enabled} onChange={onChange} />
         <IconOrLine Icon={Icon} country={country} />
       </Label>
     </FormGroup>
