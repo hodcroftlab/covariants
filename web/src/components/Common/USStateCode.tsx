@@ -21,6 +21,7 @@ const FlagText = styled.span`
 export const nameToCode: Record<string, string> = {
   'Alabama': 'AL',
   'Alaska': 'AK',
+  'American Samoa': 'AM',
   'Arizona': 'AZ',
   'Arkansas': 'AR',
   'California': 'CA',

@@ -6,7 +6,7 @@ import {
   Col,
   Container,
   Form as FormBase,
-  FormGroup as FormGroupBase,
+  FormGroup,
   Input,
   Label,
   Row,
@@ -22,18 +22,14 @@ import { getCountryStylesSelector } from 'src/state/CountryStyles'
 
 export const CardBody = styled(CardBodyBase)``
 
-export const FormGroup = styled(FormGroupBase)`
-  flex: 1 0 320px;
-`
-
 export const Form = styled(FormBase)`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 `
 
 const FlagAlignment = styled.span`
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   margin-left: 0.25em;
 
   > * + * {
@@ -65,13 +61,14 @@ export function LineComponent({ country }: IconOrLineComponentProps) {
   return (
     <>
       <ColoredHorizontalLineIcon
+        className={'align-self-start'}
         width={theme.plot.country.legend.lineIcon.width}
         height={theme.plot.country.legend.lineIcon.height}
         stroke={stroke}
         strokeWidth={theme.plot.country.legend.lineIcon.thickness}
         strokeDasharray={strokeDasharray}
       />
-      <span className="ms-2">{t(country)}</span>
+      <span>{t(country)}</span>
     </>
   )
 }
@@ -96,8 +93,8 @@ export function CountryFilterCheckbox({
 
   return (
     <FormGroup check>
-      <Label htmlFor={CSS.escape(country)} check>
-        <Input id={CSS.escape(country)} type="checkbox" checked={enabled} onChange={onChange} />
+      <Label className={'d-flex align-items-baseline gap-2'} check>
+        <Input type="checkbox" checked={enabled} onChange={onChange} />
         <IconOrLine Icon={Icon} country={country} />
       </Label>
     </FormGroup>
