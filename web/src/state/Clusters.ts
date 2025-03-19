@@ -1,4 +1,4 @@
-import { selector } from 'recoil'
+import { selector, selectorFamily } from 'recoil'
 import Router from 'next/router'
 import { get as getLodash } from 'lodash'
 import { updateUrlQuery } from 'src/helpers/urlQuery'
@@ -90,6 +90,26 @@ export const clusterDisplayNameToLineagesMapSelector = selector({
         .filter(([, pangoName]) => pangoName !== undefined) as [string, string[]][],
     )
   },
+})
+
+export const clusterDisplayNameToLineagesSelector = selectorFamily({
+  key: 'clusterDisplayNameToLineages',
+  get:
+    (displayName: string) =>
+    ({ get }) => {
+      const pangoLineagesMap = get(clusterDisplayNameToLineagesMapSelector)
+      return pangoLineagesMap.get(displayName)
+    },
+})
+
+export const clusterDisplayNameToJoinedLineagesSelector = selectorFamily({
+  key: 'clusterDisplayNameToJoinedLineages',
+  get:
+    (displayName: string) =>
+    ({ get }) => {
+      const pangoLineagesMap = get(clusterDisplayNameToLineagesMapSelector)
+      return pangoLineagesMap.get(displayName)?.join(', ')
+    },
 })
 
 /** Careful, this is not the inverse of {@link clusterBuildNameToLineageMapSelector}! This map contains *all* pango lineages! **/

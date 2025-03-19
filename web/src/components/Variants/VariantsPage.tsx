@@ -29,7 +29,7 @@ import {
   clusterLineagesToBuildNameMapSelector,
   clusterRedirectsSelector,
   hasPageClustersSelector,
-  clusterDisplayNameToLineagesMapSelector,
+  clusterDisplayNameToJoinedLineagesSelector,
 } from 'src/state/Clusters'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
 
@@ -123,8 +123,8 @@ const NEXTSTRAIN_ICON = <NextstrainIcon />
 export function VariantsPageContent({ currentCluster }: { currentCluster: ClusterDatum }) {
   const { t } = useTranslationSafe()
   const enablePangolin = useRecoilValue(enablePangolinAtom)
-  const pangoLineagesMap = useRecoilValue(clusterDisplayNameToLineagesMapSelector)
-  const pangoNames = pangoLineagesMap.get(currentCluster.displayName)?.join(', ') ?? currentCluster.displayName
+  const pangoName =
+    useRecoilValue(clusterDisplayNameToJoinedLineagesSelector(currentCluster.displayName)) ?? currentCluster.displayName
 
   const ClusterContent = useMemo(
     () => <MdxContent filepath={`clusters/${currentCluster.buildName}.md`} />,
@@ -154,7 +154,7 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
                 <LinkExternal href={currentCluster.nextstrainUrl} icon={NEXTSTRAIN_ICON} color={theme.link.dim.color}>
                   {t(`Dedicated {{nextstrain}} build for {{variant}}`, {
                     nextstrain: 'Nextstrain',
-                    variant: enablePangolin ? pangoNames : currentCluster.displayName,
+                    variant: enablePangolin ? pangoName : currentCluster.displayName,
                   })}
                 </LinkExternal>
               ) : (
