@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 204211,
+    "total": 205904,
     "counts": [
       {
         "mut": "S:S31-",
-        "count": 127813
+        "count": 129422
       },
       {
         "mut": "S:R346T",
-        "count": 57391
+        "count": 58322
       },
       {
         "mut": "S:K1086R",
-        "count": 19373
+        "count": 20113
       },
       {
         "mut": "S:H146Q",
-        "count": 18762
+        "count": 18781
       },
       {
         "mut": "S:T572I",
-        "count": 11915
-      },
-      {
-        "mut": "S:A435S",
-        "count": 6307
+        "count": 12110
       },
       {
         "mut": "S:R190S",
-        "count": 6196
+        "count": 6966
+      },
+      {
+        "mut": "S:A435S",
+        "count": 6602
       },
       {
         "mut": "S:V445R",
-        "count": 5745
+        "count": 6546
       },
       {
         "mut": "S:F186L",
-        "count": 5452
+        "count": 6212
       },
       {
         "mut": "S:F59L",
-        "count": 5128
+        "count": 5130
       }
     ]
   },
   "others": {
-    "total": 204211,
+    "total": 205904,
     "counts": [
       {
         "mut": "ORF1a:S4286C",
-        "count": 95329
+        "count": 96156
       },
       {
         "mut": "N:G204P",
-        "count": 21283
+        "count": 21337
       },
       {
         "mut": "ORF9b:P3H",
-        "count": 21170
+        "count": 21225
       },
       {
         "mut": "ORF3a:K67N",
-        "count": 19111
+        "count": 19130
       },
       {
         "mut": "ORF1a:A1997V",
-        "count": 5556
+        "count": 6302
       },
       {
         "mut": "ORF3a:P178L",
-        "count": 5404
+        "count": 6157
       },
       {
         "mut": "ORF1a:L3606F",
-        "count": 4522
+        "count": 4553
       },
       {
         "mut": "ORF3a:R68I",
-        "count": 4483
+        "count": 4504
       },
       {
         "mut": "ORF3a:S40P",
-        "count": 4028
+        "count": 4032
       },
       {
         "mut": "ORF1b:L2213F",
-        "count": 3547
+        "count": 3559
       }
     ]
   }

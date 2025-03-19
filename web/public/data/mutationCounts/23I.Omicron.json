@@ -1,91 +1,91 @@
 {
   "S": {
-    "total": 476421,
+    "total": 480038,
     "counts": [
       {
         "mut": "S:L455S",
-        "count": 459543
+        "count": 463153
       },
       {
         "mut": "S:F456L",
-        "count": 283559
+        "count": 287016
       },
       {
         "mut": "S:V1104L",
-        "count": 232452
+        "count": 235475
       },
       {
         "mut": "S:Q493E",
-        "count": 183094
+        "count": 186107
       },
       {
         "mut": "S:S31-",
-        "count": 142144
+        "count": 143831
       },
       {
         "mut": "S:R346T",
-        "count": 103054
+        "count": 104419
       },
       {
         "mut": "S:F59S",
-        "count": 45044
+        "count": 46411
       },
       {
         "mut": "S:T22N",
-        "count": 44076
+        "count": 45796
       },
       {
         "mut": "S:T572I",
-        "count": 37750
+        "count": 38082
       },
       {
         "mut": "S:Q183H",
-        "count": 23028
+        "count": 23178
       }
     ]
   },
   "others": {
-    "total": 476421,
+    "total": 480038,
     "counts": [
       {
         "mut": "ORF1a:K1973R",
-        "count": 471791
+        "count": 475402
       },
       {
         "mut": "ORF1a:R3821K",
-        "count": 459151
+        "count": 462763
       },
       {
         "mut": "ORF7b:F19L",
-        "count": 457051
+        "count": 460659
       },
       {
         "mut": "ORF1a:T2283I",
-        "count": 196752
+        "count": 198476
       },
       {
         "mut": "ORF1a:S4286C",
-        "count": 89942
+        "count": 90745
       },
       {
         "mut": "N:G204P",
-        "count": 55653
+        "count": 57024
       },
       {
         "mut": "ORF9b:P3H",
-        "count": 55417
+        "count": 56793
       },
       {
         "mut": "ORF1a:T170I",
-        "count": 41768
+        "count": 41826
       },
       {
         "mut": "ORF1a:A599T",
-        "count": 28291
+        "count": 29324
       },
       {
         "mut": "ORF1a:F499L",
-        "count": 18597
+        "count": 18617
       }
     ]
   }
