@@ -180,7 +180,6 @@ function CodingMutationsTable({
     state: {
       pagination,
     },
-    debugTable: true,
   })
 
   return <TableWithSearchPaginationFilter table={table} pageSizes={pageSizes} />
@@ -257,7 +256,6 @@ function SilentNucleotideMutationsTable({ nucleotideMutations }: { nucleotideMut
     state: {
       pagination,
     },
-    debugTable: true,
   })
 
   return <TableWithSearchPaginationFilter table={table} pageSizes={pageSizes} />
