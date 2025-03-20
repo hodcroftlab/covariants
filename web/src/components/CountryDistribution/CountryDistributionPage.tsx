@@ -24,6 +24,7 @@ import { CountryDistributionComponents } from 'src/components/CountryDistributio
 import { clustersForPerCountryDataAtom } from 'src/state/ClustersForPerCountryData'
 import { perCountryDataIntroContentFilenameSelector } from 'src/state/PerCountryData'
 import { REGIONS } from 'src/state/Places'
+import { clusterSidebarCollapsedAtoms, countriesSidebarCollapsedAtoms } from 'src/state/DistributionSidebar'
 
 export function CountryDistributionPage() {
   const { t } = useTranslationSafe()
@@ -109,7 +110,8 @@ function CountryDistributionPlotSection() {
           setContinents={setContinents}
           regionsTitle={regionsTitle}
           enabledFilters={enabledFilters}
-          clustersCollapsedByDefault={false}
+          clustersCollapsedAtom={clusterSidebarCollapsedAtoms.perCountry}
+          countriesCollapsedAtom={countriesSidebarCollapsedAtoms.perCountry}
           Icon={iconComponent}
         />
       </SidebarFlex>

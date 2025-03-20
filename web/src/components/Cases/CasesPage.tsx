@@ -16,6 +16,7 @@ import { DistributionSidebar } from 'src/components/DistributionSidebar/Distribu
 import { CasesComponents } from 'src/components/Cases/CasesComponents'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
+import { clusterSidebarCollapsedAtoms, countriesSidebarCollapsedAtoms } from 'src/state/DistributionSidebar'
 
 export function CasesPage() {
   const { t } = useTranslationSafe()
@@ -73,8 +74,8 @@ function CasesPlotSection() {
           setCountries={setCountries}
           regionsTitle={t('Countries')}
           enabledFilters={enabledFilters}
-          clustersCollapsedByDefault={false}
-          countriesCollapsedByDefault={false}
+          clustersCollapsedAtom={clusterSidebarCollapsedAtoms.cases}
+          countriesCollapsedAtom={countriesSidebarCollapsedAtoms.cases}
           Icon={CountryFlag}
         />
       </SidebarFlex>

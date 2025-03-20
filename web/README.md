@@ -43,6 +43,16 @@ yarn test:unit
 ```
 This will run all tests in the `src` folder.
 
+Storybook component tests can be run by starting storybook via
+```sh
+yarn storybook
+```
+and then running
+```sh
+yarn test:storybook
+```
+In the CI pipeline, storybook is built first and then run, see `.github/workflows/run_storybook_tests` for details. 
+
 End-to-end tests can be run using playwright via
 ```sh
 yarn test:e2e

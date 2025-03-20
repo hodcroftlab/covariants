@@ -19,6 +19,7 @@ import { PageHeading } from 'src/components/Common/PageHeading'
 import { ClusterDistributionComponents } from 'src/components/ClusterDistribution/ClusterDistributionComponents'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
+import { clusterSidebarCollapsedAtoms, countriesSidebarCollapsedAtoms } from 'src/state/DistributionSidebar'
 
 export function ClusterDistributionPage() {
   const { t } = useTranslationSafe()
@@ -75,7 +76,8 @@ function ClusterDistributionPlotSection() {
           setContinents={setContinentsSelected}
           setClusters={setClustersSelected}
           regionsTitle={t('Countries')}
-          countriesCollapsedByDefault={false}
+          clustersCollapsedAtom={clusterSidebarCollapsedAtoms.perVariant}
+          countriesCollapsedAtom={countriesSidebarCollapsedAtoms.perVariant}
           enabledFilters={enabledFilters}
         />
       </SidebarFlex>

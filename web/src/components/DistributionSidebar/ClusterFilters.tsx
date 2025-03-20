@@ -14,21 +14,22 @@ import {
 
 import { styled } from 'styled-components'
 import { useRecoilValue } from 'recoil'
+import { Atom, useAtom } from 'jotai'
 import { Cluster, clusterDisplayNameToLineageMapSelector, getClusterColorsSelector } from 'src/state/Clusters'
+import { enablePangolinAtom } from 'src/state/Nomenclature'
 import { ColoredBox } from 'src/components/Common/ColoredBox'
 import { CardCollapsible } from 'src/components/Common/CardCollapsible'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { enablePangolinAtom } from 'src/state/Nomenclature'
 
 export function ClusterFilters({
   clusters,
-  collapsed,
+  collapsedAtom,
   onFilterSelectAll,
   onFilterDeselectAll,
   onFilterChange,
-  setCollapsed,
 }: ClusterFiltersProps) {
   const { t } = useTranslationSafe()
+  const [collapsed, setCollapsed] = useAtom(collapsedAtom)
 
   return (
     <CardCollapsible className="m-2" title={t('Variants')} collapsed={collapsed} setCollapsed={setCollapsed}>
@@ -69,12 +70,10 @@ export function ClusterFilters({
 
 export interface ClusterFiltersProps {
   clusters: Cluster[]
-  collapsed: boolean
-
+  collapsedAtom: Atom<boolean>
   onFilterChange(cluster: string): void
   onFilterSelectAll(): void
   onFilterDeselectAll(): void
-  setCollapsed(collapsed: boolean): void
 }
 
 export const FormGroup = styled(FormGroupBase)`

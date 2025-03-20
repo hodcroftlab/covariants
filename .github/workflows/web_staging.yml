@@ -61,6 +61,9 @@ jobs:
           cd web
           yarn test:unit
 
+      - name: "[test] Run component tests"
+        uses: ./.github/workflows/run_storybook_tests
+
       - name: "[build] Build app (also checks types and runs eslint)"
         uses: ./.github/workflows/build_app
         with:
