@@ -251,7 +251,7 @@ function SilentNucleotideMutationsTable({ nucleotideMutations }: { nucleotideMut
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     initialState: {
-      sorting: [{ id: 'nucleotideMutations', desc: false }],
+      sorting: [{ id: 'nucleotideMutation', desc: false }],
     },
     onPaginationChange: setPagination,
     state: {
