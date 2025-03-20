@@ -62,13 +62,7 @@ jobs:
           yarn test:unit
 
       - name: "[test] Run component tests"
-        run: |
-          cd web
-          npx storybook build
-          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-            "npx http-server storybook-static --port 6006 --silent" \
-            "npx wait-on tcp:6006 && yarn test-storybook"
-          
+        uses: ./.github/workflows/run_storybook_tests
 
       - name: "[build] Build app (also checks types and runs eslint)"
         uses: ./.github/workflows/build_app
