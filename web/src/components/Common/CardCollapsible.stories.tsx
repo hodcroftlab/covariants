@@ -1,21 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React, { PropsWithChildren, useState } from 'react'
 import { atom, useAtom } from 'jotai'
-import { userEvent, within } from '@storybook/test'
+import { expect, userEvent, within, waitFor } from '@storybook/test'
 import { CardCollapsible, CollapsibleCardProps } from 'src/components/Common/CardCollapsible'
 
 const meta: Meta<typeof CardCollapsible> = {
   component: CardCollapsible,
   args: {
     title: 'Collapse This!',
-    children: 'Expaaaanded',
+    children: 'Expanded',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
 
     const expandable = canvas.getByText('Collapse This!')
+    const expanded = canvas.getByText('Expanded')
+    await expect(expanded).not.toBeVisible()
     await userEvent.click(expandable)
+    await expect(expanded).toBeVisible()
     await userEvent.click(expandable)
+    await waitFor(() => expect(expanded).not.toBeVisible())
   },
 }
 
@@ -35,10 +39,6 @@ const LocalStateWrapper = (args: PropsWithChildren<CollapsibleCardProps>) => {
 export const UseLocalState: Story = {
   render: (args) => {
     return <LocalStateWrapper {...args} />
-  },
-  args: {
-    title: 'Collapse This!',
-    children: 'Expaaaanded',
   },
 }
 
