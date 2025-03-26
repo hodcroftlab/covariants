@@ -61,7 +61,7 @@ def test_match_nucs_to_aas():
 def test_process_emma_file():
     emma = process_emma_file('data/defining_mutations/emma/22E.Omicron.tsv')
     assert len(emma) == 141
-    assert emma.columns == ['nextstrain_clade', 'nuc_change', 'aa_change', 'relative_to']
+    assert emma.columns == ['nextstrain_clade', 'nuc_change', 'aa_change', 'relative_to', 'notes']
 
 def test_process_cornelius_file():
     lineages, corn = process_cornelius_file('data/defining_mutations/cornelius.json')
