@@ -207,6 +207,7 @@ def check_relative_to_column(df):
 
 def main(emma_dir='../tests/data/defining_mutations/emma', corn_dir='../tests/data/defining_mutations/',
          output_dir='../tests/data/defining_mutations/output'):
+    # import files
     lineages, corn = process_cornelius_file(os.path.join(corn_dir, 'cornelius.json'))
 
     emma_files = os.listdir(emma_dir)
@@ -219,21 +220,36 @@ def main(emma_dir='../tests/data/defining_mutations/emma', corn_dir='../tests/da
         )
     emma = pl.concat(emma_processed)
 
+    # merge files
     combined = corn.join(emma, on=['lineage', 'nextstrain_clade', 'nuc_change', 'relative_to'], how='full',
                          coalesce=True)
 
     check_relative_to_column(combined)
 
-    coalesced = combined.with_columns(
-        aa_change=pl.coalesce(pl.col('aa_change_right'), pl.col('aa_change')),
-    )
+    coalesced = (
+        combined
+        .with_columns(
+            aa_change=pl.coalesce(pl.col('aa_change_right'), pl.col('aa_change')))
+        .drop('aa_change_right'))
 
     typed = coalesced.with_columns(
         mutation_type=pl.when(pl.col('aa_change').is_not_null()).then(pl.lit('coding')).otherwise(pl.lit('silent'))
-    )
+    ).select('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_change', 'nuc_change')
 
-    aggregate_mutations = (
+    coding_grouped_by_aa = (
         typed
+        .filter(pl.col('mutation_type') == 'coding')
+        .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_change')
+        .agg(pl.col('nuc_change'))
+    )
+    grouped_by_aa = pl.concat([
+        coding_grouped_by_aa,
+        typed.filter(pl.col('mutation_type') == 'silent').with_columns(pl.col('nuc_change').cast(pl.List(pl.String)))
+    ])
+
+    # reformat to match output
+    aggregate_mutations = (
+        grouped_by_aa
         .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type')
         .agg(pl.struct('aa_change', 'nuc_change').alias('mutations'))
     )
@@ -267,17 +283,20 @@ def main(emma_dir='../tests/data/defining_mutations/emma', corn_dir='../tests/da
                 mutation_types['silent'] = []
             for silent_mutation in mutation_types['silent']:
                 silent_mutation.pop('aa_change')
-                silent_mutation.update({'nuc_change': nuc_string_to_object(silent_mutation['nuc_change'])})
+                silent_mutation.update({'nuc_change': nuc_string_to_object(silent_mutation['nuc_change'][0])})
             if not mutation_types['coding']:
                 mutation_types['coding'] = []
             for coding_mutation in mutation_types['coding']:
                 coding_mutation.update({'aa_change': aa_string_to_object(coding_mutation['aa_change'])})
-                coding_mutation.update({'nuc_change': nuc_string_to_object(coding_mutation['nuc_change'])})
+                coding_mutation.update({'nuc_change': [nuc_string_to_object(mutation) for mutation in coding_mutation['nuc_change']]})
 
+    # write output
     for lineage in output_dicts:
         with open(os.path.join(output_dir, f'{lineage["lineage"]}.json'), 'w') as f:
             json.dump(lineage, f)
-    # TODO: nextclade parent, group mutations by amino acids where feasible (deletions, maybe coding mutations)
+    # TODO: nextclade parent
+    # TODO: fix cornelius' deletions (X1234-)
+    # TODO: add annotations
 
 
 if __name__ == '__main__':
