@@ -43,7 +43,8 @@ def match_nuc_to_aas(nuc, aas):
     if len(genes) == 0:
         print(f'WARNING: nuc {nuc} cannot be matched to gene region')
         return
-    locations = [int(np.ceil((nuc_location - GENE_BOUNDS[gene][0] + 1) / 3)) for gene in genes]
+    # TODO: this does not match correctly for all cases right now
+    locations = [int(np.floor((nuc_location - GENE_BOUNDS[gene][0]) / 3)) + 1 for gene in genes]
     for aa in aas:
         gene, aa_old, aa_location, aa_new = split_aa(aa)
         if gene in genes and aa_location in locations:
@@ -96,20 +97,26 @@ def process_cornelius_file(path):
          'aaDeletionsNew': 'aa_del_pango_parent'}
     )
 
-    reformat_deletions = rename.with_columns(
-        nuc_del_wuhan=pl.when(pl.col('nuc_del_wuhan').list.len() > 0)
-        .then(pl.col('nuc_del_wuhan').list.eval(
-            pl.concat_str(pl.lit('X'), pl.element().str.split('-', inclusive=True).list.first())
-        )),
-        nuc_del_pango_parent=pl.when(pl.col('nuc_del_pango_parent').list.len() > 0)
-        .then(pl.col('nuc_del_wuhan').list.eval(
-            # TODO: using X here leads to mismatches with Emma's file, discuss how to fix this
-            pl.concat_str(pl.lit('X'), pl.element().str.split('-', inclusive=True).list.first()))
-        )
-        .otherwise([]),
+    deletion_columns = ['nuc_del_wuhan', 'nuc_del_pango_parent']
+
+    expand_deletions = rename.with_columns(
+        pl.col(col_name).cast(pl.List(pl.String)).list.eval(
+            pl.element().str.split('-').list.eval(
+                pl.int_range(pl.element().first(), pl.element().last())
+            ).flatten(),
+        ).fill_null([]) for col_name in deletion_columns
     )
 
-    sub_and_del = reformat_deletions.with_columns(
+    reformat_deletions = expand_deletions.with_columns(
+        pl.col(col_name).list.eval(
+                pl.concat_str(
+                    pl.lit('X'),
+                    pl.element(),
+                    pl.lit('-'))
+        ) for col_name in deletion_columns
+    )
+
+    combine_nuc_changes = reformat_deletions.with_columns(
         nuc_change_wuhan=pl.concat_list(
             'nuc_sub_wuhan',
             'nuc_del_wuhan'),
@@ -128,11 +135,12 @@ def process_cornelius_file(path):
     )
 
     # TODO: move this part into the map_elements function
-    wuhan_aas = sub_and_del.select('aa_change_wuhan').to_series().to_list()[0]
-    pango_parent_aas = sub_and_del.select('aa_change_pango_parent').to_series().to_list()[0]
+    wuhan_aas = combine_nuc_changes.select('aa_change_wuhan').to_series().to_list()[0]
+    pango_parent_aas = combine_nuc_changes.select('aa_change_pango_parent').to_series().to_list()[0]
 
+    # TODO: make sure the nuc to aa matching is scientifically correct
     wuhan = (
-        sub_and_del
+        combine_nuc_changes
         .select(
             pl.col('lineage'),
             pl.col('nextstrain_clade'),
@@ -143,7 +151,7 @@ def process_cornelius_file(path):
 
     )
     pango_parent = (
-        sub_and_del
+        combine_nuc_changes
         .select(
             pl.col('lineage'),
             pl.col('nextstrain_clade'),
@@ -205,9 +213,7 @@ def check_relative_to_column(df):
         raise ValueError(f'Could not assign reference point for mutations {df.filter(pl.col("relative_to").is_null())}')
 
 
-def main(emma_dir='../tests/data/defining_mutations/emma', corn_dir='../tests/data/defining_mutations/',
-         output_dir='../tests/data/defining_mutations/output'):
-    # import files
+def import_file_dfs(emma_dir, corn_dir):
     lineages, corn = process_cornelius_file(os.path.join(corn_dir, 'cornelius.json'))
 
     emma_files = os.listdir(emma_dir)
@@ -220,17 +226,32 @@ def main(emma_dir='../tests/data/defining_mutations/emma', corn_dir='../tests/da
         )
     emma = pl.concat(emma_processed)
 
-    # merge files
-    combined = corn.join(emma, on=['lineage', 'nextstrain_clade', 'nuc_change', 'relative_to'], how='full',
-                         coalesce=True)
+    return lineages, emma, corn
 
-    check_relative_to_column(combined)
+
+def merge_file_dfs(emma_df: pl.DataFrame, corn_df: pl.DataFrame):
+    emma_raw = emma_df.with_columns(nuc_change_raw=pl.col('nuc_change').str.slice(1))
+    corn_raw = corn_df.with_columns(nuc_change_raw=pl.col('nuc_change').str.slice(1))
+    combined = (corn_raw
+                .join(emma_raw,
+                      on=['lineage', 'nextstrain_clade', 'nuc_change_raw', 'relative_to'],
+                      how='full',
+                      suffix='_emma',
+                      coalesce=True)
+                .drop('nuc_change_raw'))
+
+    not_in_emma = len(corn_raw.join(emma_raw, on=['lineage', 'nextstrain_clade', 'nuc_change_raw', 'relative_to'], how='anti'))
+    not_in_corn = len(emma_raw.join(corn_raw, on=['lineage', 'nextstrain_clade', 'nuc_change_raw', 'relative_to'], how='anti'))
+    if not_in_emma > 0 or not_in_corn > 0:
+        print(f'INFO: unmatched mutations: Emma {not_in_corn}, Cornelius {not_in_emma}')
 
     coalesced = (
         combined
         .with_columns(
-            aa_change=pl.coalesce(pl.col('aa_change_right'), pl.col('aa_change')))
-        .drop('aa_change_right'))
+            aa_change=pl.coalesce(pl.col('aa_change_emma'), pl.col('aa_change')),
+            nuc_change=pl.coalesce(pl.col('nuc_change_emma'), pl.col('nuc_change')))
+        .drop('aa_change_emma', 'nuc_change_emma')
+    )
 
     typed = coalesced.with_columns(
         mutation_type=pl.when(pl.col('aa_change').is_not_null()).then(pl.lit('coding')).otherwise(pl.lit('silent'))
@@ -242,14 +263,18 @@ def main(emma_dir='../tests/data/defining_mutations/emma', corn_dir='../tests/da
         .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_change')
         .agg(pl.col('nuc_change'), pl.col('notes').first())
     )
+    silent_grouped_by_aa = typed.filter(pl.col('mutation_type') == 'silent').with_columns(pl.col('nuc_change').cast(pl.List(pl.String)))
     grouped_by_aa = pl.concat([
         coding_grouped_by_aa,
-        typed.filter(pl.col('mutation_type') == 'silent').with_columns(pl.col('nuc_change').cast(pl.List(pl.String)))
+        silent_grouped_by_aa
     ])
 
-    # reformat to match output
+    return grouped_by_aa
+
+
+def reformat_df_to_dicts(merged, lineages):
     aggregate_mutations = (
-        grouped_by_aa
+        merged
         .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type')
         .agg(pl.struct('aa_change', 'nuc_change', 'notes').alias('mutations'))
     )
@@ -295,12 +320,21 @@ def main(emma_dir='../tests/data/defining_mutations/emma', corn_dir='../tests/da
                 if not coding_mutation['notes']:
                     coding_mutation.pop('notes')
 
-    # write output
-    for lineage in output_dicts:
+    return output_dicts
+
+
+def main(emma_dir='../tests/data/defining_mutations/emma', corn_dir='../tests/data/defining_mutations/',
+         output_dir='../tests/data/defining_mutations/output'):
+    lineages, emma, corn = import_file_dfs(emma_dir, corn_dir)
+
+    merged = merge_file_dfs(emma, corn)
+
+    output = reformat_df_to_dicts(merged, lineages)
+
+    for lineage in output:
         with open(os.path.join(output_dir, f'{lineage["lineage"]}.json'), 'w') as f:
             json.dump(lineage, f)
     # TODO: nextclade parent
-    # TODO: fix cornelius' deletions (X1234-)
 
 
 if __name__ == '__main__':

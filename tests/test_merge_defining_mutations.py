@@ -48,6 +48,13 @@ def test_match_nuc_to_aas():
     assert match_nuc_to_aas(nuc, aas) == 'ORF1a:S135R'
 
 
+def test_match_missed_nuc_to_aas():
+    nuc = "X21766-"
+    aas = ['S:H69-']
+    # TODO: this example is also classified differently in corn vs emma (wuhan vs pango_parent)
+    assert match_nuc_to_aas(nuc, aas) == 'S:H69-'
+
+
 def test_match_nucs_to_aas():
     with open('data/defining_mutations/cornelius.json') as f:
         data=json.load(f)
@@ -72,7 +79,7 @@ def test_process_cornelius_file():
                                 'children',
                                 'nextstrain_clade',
                                 'designation_date']
-    assert len(corn) == 160
+    assert len(corn) == 258
     assert corn.columns == ['lineage', 'nextstrain_clade', 'nuc_change', 'aa_change', 'relative_to']
 
 def test_main():
