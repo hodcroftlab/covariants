@@ -51,21 +51,6 @@ def match_nuc_to_aas(nuc, aas):
             return aa
 
 
-def match_nucs_to_aas(nucs, aas):
-    synonymous = []
-    non_synonymous = {}
-    for nuc in nucs:
-        aa = match_nuc_to_aas(nuc, aas)
-        if aa:
-            non_synonymous.update({nuc: aa})
-        else:
-            synonymous.append(nuc)
-    if len(non_synonymous) != len(aas):
-        raise ValueError(
-            f'Extracted non-synonymous mutations {len(non_synonymous)} do not match with aa mutations {len(aas)}')
-    return synonymous, non_synonymous
-
-
 def nuc_string_to_object(nuc):
     ref, pos, alt = split_nuc(nuc)
     return {'ref': ref, 'pos': pos, 'alt': alt}
@@ -97,9 +82,30 @@ def process_cornelius_file(path):
          'aaDeletionsNew': 'aa_del_pango_parent'}
     )
 
+    lineages = rename.select(
+        pl.col('lineage'),
+        pl.col('unaliased'),
+        pl.col('parent'),
+        pl.col('children'),
+        pl.col('nextstrain_clade'),
+        pl.col('designation_date'))
+
+    mutations = rename.select(
+        'lineage',
+        'nextstrain_clade',
+        'nuc_sub_wuhan',
+        'nuc_del_wuhan',
+        'nuc_sub_pango_parent',
+        'nuc_del_pango_parent',
+        'aa_sub_wuhan',
+        'aa_del_wuhan',
+        'aa_sub_pango_parent',
+        'aa_del_pango_parent'
+    )
+
     deletion_columns = ['nuc_del_wuhan', 'nuc_del_pango_parent']
 
-    expand_deletions = rename.with_columns(
+    expand_deletions = mutations.with_columns(
         pl.col(col_name).cast(pl.List(pl.String)).list.eval(
             pl.element().str.split('-').list.eval(
                 pl.int_range(pl.element().first(), pl.element().last())
@@ -109,10 +115,10 @@ def process_cornelius_file(path):
 
     reformat_deletions = expand_deletions.with_columns(
         pl.col(col_name).list.eval(
-                pl.concat_str(
-                    pl.lit('X'),
-                    pl.element(),
-                    pl.lit('-'))
+            pl.concat_str(
+                pl.lit('X'),
+                pl.element(),
+                pl.lit('-'))
         ) for col_name in deletion_columns
     )
 
@@ -134,45 +140,39 @@ def process_cornelius_file(path):
         )
     )
 
-    # TODO: move this part into the map_elements function
-    wuhan_aas = combine_nuc_changes.select('aa_change_wuhan').to_series().to_list()[0]
-    pango_parent_aas = combine_nuc_changes.select('aa_change_pango_parent').to_series().to_list()[0]
-
     # TODO: make sure the nuc to aa matching is scientifically correct
+    match_aa_changes = pl.struct('nuc_change', 'aa_change').map_elements(
+        lambda x: match_nuc_to_aas(x['nuc_change'], x['aa_change']), pl.String
+    )
     wuhan = (
         combine_nuc_changes
         .select(
             pl.col('lineage'),
             pl.col('nextstrain_clade'),
-            nuc_change='nuc_change_wuhan')
+            nuc_change='nuc_change_wuhan',
+            aa_change=pl.col('aa_change_wuhan'))
         .explode('nuc_change')
-        .with_columns(aa_change=pl.col('nuc_change').map_elements(lambda x: match_nuc_to_aas(x, wuhan_aas), pl.String),
-                      relative_to=pl.lit('wuhan'))
-
+        .with_columns(
+            aa_change=match_aa_changes,
+            relative_to=pl.lit('wuhan')
+        )
     )
     pango_parent = (
         combine_nuc_changes
         .select(
             pl.col('lineage'),
             pl.col('nextstrain_clade'),
-            nuc_change='nuc_change_pango_parent')
+            nuc_change='nuc_change_pango_parent',
+            aa_change=pl.col('aa_change_pango_parent'))
         .explode('nuc_change')
         .with_columns(
-            aa_change=pl.col('nuc_change').map_elements(lambda x: match_nuc_to_aas(x, pango_parent_aas), pl.String),
+            aa_change=match_aa_changes,
             relative_to=pl.lit('pango_parent'))
     )
 
     output = pl.concat([wuhan, pango_parent])
 
     check_relative_to_column(output)
-
-    lineages = rename.select(
-        pl.col('lineage'),
-        pl.col('unaliased'),
-        pl.col('parent'),
-        pl.col('children'),
-        pl.col('nextstrain_clade'),
-        pl.col('designation_date'))
 
     # TODO: reversions, frame shifts
     return lineages, output
@@ -240,8 +240,10 @@ def merge_file_dfs(emma_df: pl.DataFrame, corn_df: pl.DataFrame):
                       coalesce=True)
                 .drop('nuc_change_raw'))
 
-    not_in_emma = len(corn_raw.join(emma_raw, on=['lineage', 'nextstrain_clade', 'nuc_change_raw', 'relative_to'], how='anti'))
-    not_in_corn = len(emma_raw.join(corn_raw, on=['lineage', 'nextstrain_clade', 'nuc_change_raw', 'relative_to'], how='anti'))
+    not_in_emma = len(
+        corn_raw.join(emma_raw, on=['lineage', 'nextstrain_clade', 'nuc_change_raw', 'relative_to'], how='anti'))
+    not_in_corn = len(
+        emma_raw.join(corn_raw, on=['lineage', 'nextstrain_clade', 'nuc_change_raw', 'relative_to'], how='anti'))
     if not_in_emma > 0 or not_in_corn > 0:
         print(f'INFO: unmatched mutations: Emma {not_in_corn}, Cornelius {not_in_emma}')
 
@@ -263,7 +265,8 @@ def merge_file_dfs(emma_df: pl.DataFrame, corn_df: pl.DataFrame):
         .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_change')
         .agg(pl.col('nuc_change'), pl.col('notes').first())
     )
-    silent_grouped_by_aa = typed.filter(pl.col('mutation_type') == 'silent').with_columns(pl.col('nuc_change').cast(pl.List(pl.String)))
+    silent_grouped_by_aa = typed.filter(pl.col('mutation_type') == 'silent').with_columns(
+        pl.col('nuc_change').cast(pl.List(pl.String)))
     grouped_by_aa = pl.concat([
         coding_grouped_by_aa,
         silent_grouped_by_aa

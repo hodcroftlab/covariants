@@ -2,7 +2,7 @@ import json
 import os
 
 from scripts.merge_defining_mutations import process_cornelius_file, process_emma_file, split_nuc, nuc_to_gene, \
-    split_aa, match_nuc_to_aas, match_nucs_to_aas, main
+    split_aa, match_nuc_to_aas, main
 
 
 def test_split_nuc():
@@ -54,16 +54,11 @@ def test_match_missed_nuc_to_aas():
     # TODO: this example is also classified differently in corn vs emma (wuhan vs pango_parent)
     assert match_nuc_to_aas(nuc, aas) == 'S:H69-'
 
-
-def test_match_nucs_to_aas():
-    with open('data/defining_mutations/cornelius.json') as f:
-        data=json.load(f)
-    nucs = data['BQ.1']['nucSubstitutions']
-    aas = data['BQ.1']['aaSubstitutions']
-    syn, non_syn = match_nucs_to_aas(nucs, aas)
-    assert len(non_syn) == len(aas)
-    assert len(syn) == len(nucs) - len(aas)
-
+def test_match_nuc_to_multiple_aas():
+    nuc = "C28312T"
+    aas = ['N:P13L', 'ORF9b:P10F']
+    # TODO: need to clarify how we incorporate this
+    assert match_nuc_to_aas(nuc, aas) == ['N:P13L', 'ORF9b:P10F']
 
 def test_process_emma_file():
     emma = process_emma_file('data/defining_mutations/emma/22E.Omicron.tsv')
@@ -99,6 +94,7 @@ def test_main():
                 output = json.load(output_file)
                 expected_output = json.load(expected_output_file)
                 compare_nested_dicts(output, expected_output)
+
 
 def compare_nested_dicts(d1, d2):
     assert d1.keys() == d2.keys()
