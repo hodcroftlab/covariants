@@ -3,6 +3,7 @@ import os
 
 import numpy as np
 import polars as pl
+import pandas as pd
 
 GENE_BOUNDS = {
     'E': [26245, 26472],
@@ -38,6 +39,8 @@ def nuc_to_gene(nuc_location: int):
 
 
 def match_nuc_to_aas(nuc, aas):
+    if not nuc:
+        return
     nuc_old, nuc_location, nuc_new = split_nuc(nuc)
     genes = nuc_to_gene(nuc_location)
     if len(genes) == 0:
@@ -59,6 +62,13 @@ def nuc_string_to_object(nuc):
 def aa_string_to_object(aa):
     gene, ref, pos, alt = split_aa(aa)
     return {'gene': gene, 'ref': ref, 'pos': pos, 'alt': alt}
+
+
+def remove_empty_strings(y):
+    if len(y) == 1:
+        if y[0] == '':
+            return []
+    return y
 
 
 def process_cornelius_file(path):
@@ -103,17 +113,18 @@ def process_cornelius_file(path):
         'aa_del_pango_parent'
     )
 
+    empty_strings_removed = mutations.to_pandas().applymap(remove_empty_strings)
+
     deletion_columns = ['nuc_del_wuhan', 'nuc_del_pango_parent']
+    split_deletions = empty_strings_removed[deletion_columns].applymap(
+        lambda x: [[int(pos) for pos in del_range.split('-')] for del_range in x])
+    deletions_to_ranges = split_deletions.applymap(
+        lambda x: [list(range(*del_range)) if len(del_range) > 1 else del_range for del_range in x])
+    flatten_deletions = deletions_to_ranges.applymap(lambda x: list(pd.core.common.flatten(x)))
+    expand_deletions = empty_strings_removed.copy()
+    expand_deletions[deletion_columns] = flatten_deletions
 
-    expand_deletions = mutations.with_columns(
-        pl.col(col_name).cast(pl.List(pl.String)).list.eval(
-            pl.element().str.split('-').list.eval(
-                pl.int_range(pl.element().first(), pl.element().last())
-            ).flatten(),
-        ).fill_null([]) for col_name in deletion_columns
-    )
-
-    reformat_deletions = expand_deletions.with_columns(
+    reformat_deletions = pl.from_pandas(expand_deletions).with_columns(
         pl.col(col_name).list.eval(
             pl.concat_str(
                 pl.lit('X'),
@@ -149,7 +160,7 @@ def process_cornelius_file(path):
         .select(
             pl.col('lineage'),
             pl.col('nextstrain_clade'),
-            nuc_change='nuc_change_wuhan',
+            nuc_change=pl.col('nuc_change_wuhan'),
             aa_change=pl.col('aa_change_wuhan'))
         .explode('nuc_change')
         .with_columns(
@@ -326,7 +337,7 @@ def reformat_df_to_dicts(merged, lineages):
     return output_dicts
 
 
-def main(emma_dir='../tests/data/defining_mutations/emma', corn_dir='../tests/data/defining_mutations/',
+def main(emma_dir='../tests/data/defining_mutations/emma', corn_dir='../tests/data/defining_mutations/cornelius',
          output_dir='../tests/data/defining_mutations/output'):
     lineages, emma, corn = import_file_dfs(emma_dir, corn_dir)
 

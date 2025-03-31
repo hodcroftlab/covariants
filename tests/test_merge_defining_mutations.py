@@ -9,9 +9,11 @@ def test_split_nuc():
     nuc1 = "T670G"
     nuc2 = "C11289-"
     nuc3 = "G10447A"
+    nuc4 = "G4-"
     assert split_nuc(nuc1) == ('T', 670, 'G')
     assert split_nuc(nuc2) == ('C', 11289, '-')
     assert split_nuc(nuc3) == ('G', 10447, 'A')
+    assert split_nuc(nuc4) == ('G', 4, '-')
 
 
 def test_nuc_to_gene():
@@ -54,19 +56,22 @@ def test_match_missed_nuc_to_aas():
     # TODO: this example is also classified differently in corn vs emma (wuhan vs pango_parent)
     assert match_nuc_to_aas(nuc, aas) == 'S:H69-'
 
+
 def test_match_nuc_to_multiple_aas():
     nuc = "C28312T"
     aas = ['N:P13L', 'ORF9b:P10F']
-    # TODO: need to clarify how we incorporate this
+    # TODO: need to clarify how we incorporate multiple amino acids
     assert match_nuc_to_aas(nuc, aas) == ['N:P13L', 'ORF9b:P10F']
+
 
 def test_process_emma_file():
     emma = process_emma_file('data/defining_mutations/emma/22E.Omicron.tsv')
     assert len(emma) == 141
     assert emma.columns == ['nextstrain_clade', 'nuc_change', 'aa_change', 'relative_to', 'notes']
 
+
 def test_process_cornelius_file():
-    lineages, corn = process_cornelius_file('data/defining_mutations/cornelius.json')
+    lineages, corn = process_cornelius_file('data/defining_mutations/cornelius/cornelius.json')
     assert len(lineages) == 2
     assert lineages.columns == ['lineage',
                                 'unaliased',
@@ -77,10 +82,11 @@ def test_process_cornelius_file():
     assert len(corn) == 258
     assert corn.columns == ['lineage', 'nextstrain_clade', 'nuc_change', 'aa_change', 'relative_to']
 
+
 def test_main():
     test_dir = 'data/defining_mutations'
     emma_test_dir = os.path.join(test_dir, 'emma')
-    corn_test_dir = test_dir
+    corn_test_dir = os.path.join(test_dir, 'cornelius')
     output_test_dir = os.path.join(test_dir, 'output')
     expected_output_dir = os.path.join(test_dir, 'expected_output')
     expected_output_filenames = os.listdir(expected_output_dir)
@@ -107,3 +113,7 @@ def compare_nested_dicts(d1, d2):
                 assert item in d2[key]
         elif type(d1[key]) == dict:
             compare_nested_dicts(d1[key], d2[key])
+
+
+def test_edge_cases_do_not_throw_errors():
+    process_cornelius_file('data/defining_mutations/cornelius/cornelius_edge_cases.json')
