@@ -372,7 +372,7 @@ def reformat_df_to_dicts(merged, lineages):
 def save_mutations_to_file(output: pl.DataFrame, output_dir: str):
     for lineage in output:
         with open(os.path.join(output_dir, f'{lineage["lineage"]}.json'), 'w') as f:
-            json.dump(lineage, f)
+            json.dump(lineage, f, indent=2)
 
 
 def main(hand_curated_data_dir='defining_mutations',
