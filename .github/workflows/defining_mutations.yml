@@ -52,4 +52,4 @@ jobs:
 
       - name: "check"
         run: |
-          ls web/public/data/definingMutations
+          du -hs web/public/data/definingMutations

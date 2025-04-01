@@ -146,3 +146,8 @@ def test_edge_cases_do_not_throw_errors():
     _, auto_generated_mutations_raw = load_auto_generated_data(
         'data/defining_mutations/auto_generated/cornelius_edge_cases.json')
     process_auto_generated_data(auto_generated_mutations_raw)
+
+
+def test_main_full():
+    main(hand_curated_data_dir='../defining_mutations', auto_generated_data_dir='../data',
+         output_dir='../web/public/data/definingMutations', write_output=False)

@@ -199,7 +199,12 @@ def process_hand_curated_file(path: str) -> pl.DataFrame:
     filename = os.path.basename(path)
     lineage = filename.split('.')[0]
 
-    data = pl.read_csv(path, separator='\t')
+    data = (
+        pl.read_csv(path, separator='\t')
+        .with_columns(
+            pl.col('nuc_change').str.strip_chars(),
+            pl.col('aa_change').str.strip_chars())
+    )
 
     no_reversions = data.filter(pl.col('reversion').is_null())
 
@@ -302,10 +307,26 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
 
 
 def reformat_df_to_dicts(merged, lineages):
-    aggregate_mutations = (
-        merged
+    valid_mutations = merged.filter(pl.col('nuc_change').is_not_null())
+    no_mutations = merged.filter(pl.col('nuc_change').is_null())
+
+    aggregate_valid_mutations = (
+        valid_mutations
         .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type')
         .agg(pl.struct('aa_change', 'nuc_change', 'notes').alias('mutations'))
+    )
+
+    aggregate_no_mutations = (
+        no_mutations
+        .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type')
+        .agg()
+        .with_columns(mutations=[])
+    )
+
+    aggregate_mutations = (
+        pl.concat([aggregate_valid_mutations, aggregate_no_mutations])
+        .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type')
+        .agg(pl.col('mutations').flatten().drop_nulls())
     )
 
     pivot_mutation_types = (
@@ -356,7 +377,8 @@ def save_mutations_to_file(output: pl.DataFrame, output_dir: str):
 
 def main(hand_curated_data_dir='defining_mutations',
          auto_generated_data_dir='data',
-         output_dir='web/public/data/definingMutations'):
+         output_dir='web/public/data/definingMutations',
+         write_output=True):
     lineages, hand_curated_mutations, auto_generated_mutations = import_mutation_data(hand_curated_data_dir,
                                                                                       auto_generated_data_dir)
 
@@ -364,7 +386,8 @@ def main(hand_curated_data_dir='defining_mutations',
 
     output = reformat_df_to_dicts(merged_mutations, lineages)
 
-    save_mutations_to_file(output, output_dir)
+    if write_output:
+        save_mutations_to_file(output, output_dir)
     # TODO: nextclade parent: https://github.com/hodcroftlab/covariants/issues/582
 
 
