@@ -354,9 +354,9 @@ def save_mutations_to_file(output: pl.DataFrame, output_dir: str):
             json.dump(lineage, f)
 
 
-def main(hand_curated_data_dir='../tests/data/defining_mutations/emma',
-         auto_generated_data_dir='../tests/data/defining_mutations/cornelius',
-         output_dir='../tests/data/defining_mutations/output'):
+def main(hand_curated_data_dir='defining_mutations',
+         auto_generated_data_dir='data',
+         output_dir='web/public/data/definingMutations'):
     lineages, hand_curated_mutations, auto_generated_mutations = import_mutation_data(hand_curated_data_dir,
                                                                                       auto_generated_data_dir)
 

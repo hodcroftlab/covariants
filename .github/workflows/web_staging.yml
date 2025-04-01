@@ -2,8 +2,10 @@
 name: web-staging
 
 on:
+  # TODO: revert this
   pull_request:
-    types: [ opened, synchronize ]
+    types: [opened]
+#    types: [ opened, synchronize ]
 
   repository_dispatch:
     types: web_staging
