@@ -1,1 +1,18 @@
-{"lineage": "B.60", "nextstrain_clade": "19A", "mutations_relative_to": {"wuhan": {"coding": [], "silent": []}, "pango_parent": {"coding": [], "silent": []}}, "children": [], "designation_date": "2021-03-15", "unaliased": "B.60", "parent": "B"}
+{
+  "lineage": "B.60",
+  "nextstrain_clade": "19A",
+  "mutations_relative_to": {
+    "wuhan": {
+      "coding": [],
+      "silent": []
+    },
+    "pango_parent": {
+      "coding": [],
+      "silent": []
+    }
+  },
+  "children": [],
+  "designation_date": "2021-03-15",
+  "unaliased": "B.60",
+  "parent": "B"
+}

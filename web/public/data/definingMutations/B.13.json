@@ -1,1 +1,108 @@
-{"lineage": "B.13", "nextstrain_clade": "19A", "mutations_relative_to": {"wuhan": {"coding": [{"aa_change": {"gene": "ORF1a", "ref": "I", "pos": 1525, "alt": "V"}, "nuc_change": [{"ref": "A", "pos": 4838, "alt": "G"}]}], "silent": [{"nuc_change": {"ref": "C", "pos": 7420, "alt": "T"}}, {"nuc_change": {"ref": "C", "pos": 14937, "alt": "T"}}, {"nuc_change": {"ref": "C", "pos": 20148, "alt": "T"}}, {"nuc_change": {"ref": "G", "pos": 29711, "alt": "T"}}]}, "pango_parent": {"coding": [{"aa_change": {"gene": "ORF1a", "ref": "I", "pos": 1525, "alt": "V"}, "nuc_change": [{"ref": "A", "pos": 4838, "alt": "G"}]}], "silent": [{"nuc_change": {"ref": "C", "pos": 7420, "alt": "T"}}, {"nuc_change": {"ref": "C", "pos": 14937, "alt": "T"}}, {"nuc_change": {"ref": "C", "pos": 20148, "alt": "T"}}, {"nuc_change": {"ref": "G", "pos": 29711, "alt": "T"}}]}}, "children": [], "designation_date": "", "unaliased": "B.13", "parent": "B"}
+{
+  "lineage": "B.13",
+  "nextstrain_clade": "19A",
+  "mutations_relative_to": {
+    "wuhan": {
+      "coding": [
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "I",
+            "pos": 1525,
+            "alt": "V"
+          },
+          "nuc_change": [
+            {
+              "ref": "A",
+              "pos": 4838,
+              "alt": "G"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 7420,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 14937,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 20148,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "G",
+            "pos": 29711,
+            "alt": "T"
+          }
+        }
+      ]
+    },
+    "pango_parent": {
+      "coding": [
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "I",
+            "pos": 1525,
+            "alt": "V"
+          },
+          "nuc_change": [
+            {
+              "ref": "A",
+              "pos": 4838,
+              "alt": "G"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 7420,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 14937,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 20148,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "G",
+            "pos": 29711,
+            "alt": "T"
+          }
+        }
+      ]
+    }
+  },
+  "children": [],
+  "designation_date": "",
+  "unaliased": "B.13",
+  "parent": "B"
+}

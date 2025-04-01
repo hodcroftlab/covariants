@@ -1,1 +1,110 @@
-{"lineage": "B.53", "nextstrain_clade": "19A", "mutations_relative_to": {"wuhan": {"coding": [{"aa_change": {"gene": "S", "ref": "Y", "pos": 28, "alt": "H"}, "nuc_change": [{"ref": "T", "pos": 21644, "alt": "C"}]}, {"aa_change": {"gene": "N", "ref": "P", "pos": 344, "alt": "S"}, "nuc_change": [{"ref": "C", "pos": 29303, "alt": "T"}]}], "silent": [{"nuc_change": {"ref": "A", "pos": 1, "alt": "G"}}, {"nuc_change": {"ref": "C", "pos": 15324, "alt": "T"}}]}, "pango_parent": {"coding": [{"aa_change": {"gene": "S", "ref": "Y", "pos": 28, "alt": "H"}, "nuc_change": [{"ref": "T", "pos": 21644, "alt": "C"}]}, {"aa_change": {"gene": "N", "ref": "P", "pos": 344, "alt": "S"}, "nuc_change": [{"ref": "C", "pos": 29303, "alt": "T"}]}], "silent": [{"nuc_change": {"ref": "A", "pos": 1, "alt": "G"}}, {"nuc_change": {"ref": "C", "pos": 15324, "alt": "T"}}]}}, "children": [], "designation_date": "", "unaliased": "B.53", "parent": "B"}
+{
+  "lineage": "B.53",
+  "nextstrain_clade": "19A",
+  "mutations_relative_to": {
+    "wuhan": {
+      "coding": [
+        {
+          "aa_change": {
+            "gene": "N",
+            "ref": "P",
+            "pos": 344,
+            "alt": "S"
+          },
+          "nuc_change": [
+            {
+              "ref": "C",
+              "pos": 29303,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "S",
+            "ref": "Y",
+            "pos": 28,
+            "alt": "H"
+          },
+          "nuc_change": [
+            {
+              "ref": "T",
+              "pos": 21644,
+              "alt": "C"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_change": {
+            "ref": "A",
+            "pos": 1,
+            "alt": "G"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 15324,
+            "alt": "T"
+          }
+        }
+      ]
+    },
+    "pango_parent": {
+      "coding": [
+        {
+          "aa_change": {
+            "gene": "S",
+            "ref": "Y",
+            "pos": 28,
+            "alt": "H"
+          },
+          "nuc_change": [
+            {
+              "ref": "T",
+              "pos": 21644,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "N",
+            "ref": "P",
+            "pos": 344,
+            "alt": "S"
+          },
+          "nuc_change": [
+            {
+              "ref": "C",
+              "pos": 29303,
+              "alt": "T"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_change": {
+            "ref": "A",
+            "pos": 1,
+            "alt": "G"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 15324,
+            "alt": "T"
+          }
+        }
+      ]
+    }
+  },
+  "children": [],
+  "designation_date": "",
+  "unaliased": "B.53",
+  "parent": "B"
+}

@@ -1,1 +1,50 @@
-{"lineage": "B.19", "nextstrain_clade": "19A", "mutations_relative_to": {"wuhan": {"coding": [{"aa_change": {"gene": "ORF1a", "ref": "L", "pos": 3338, "alt": "F"}, "nuc_change": [{"ref": "C", "pos": 10277, "alt": "T"}]}], "silent": []}, "pango_parent": {"coding": [{"aa_change": {"gene": "ORF1a", "ref": "L", "pos": 3338, "alt": "F"}, "nuc_change": [{"ref": "C", "pos": 10277, "alt": "T"}]}], "silent": []}}, "children": [], "designation_date": "", "unaliased": "B.19", "parent": "B"}
+{
+  "lineage": "B.19",
+  "nextstrain_clade": "19A",
+  "mutations_relative_to": {
+    "wuhan": {
+      "coding": [
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "L",
+            "pos": 3338,
+            "alt": "F"
+          },
+          "nuc_change": [
+            {
+              "ref": "C",
+              "pos": 10277,
+              "alt": "T"
+            }
+          ]
+        }
+      ],
+      "silent": []
+    },
+    "pango_parent": {
+      "coding": [
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "L",
+            "pos": 3338,
+            "alt": "F"
+          },
+          "nuc_change": [
+            {
+              "ref": "C",
+              "pos": 10277,
+              "alt": "T"
+            }
+          ]
+        }
+      ],
+      "silent": []
+    }
+  },
+  "children": [],
+  "designation_date": "",
+  "unaliased": "B.19",
+  "parent": "B"
+}
