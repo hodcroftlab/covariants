@@ -1,14 +1,13 @@
 import React, { useMemo } from 'react'
 import { styled } from 'styled-components'
 import {
-  AminoAcidMutation,
+  CodingMutation,
   DefiningMutationCluster,
   getMutationFromAminoAcidMutation,
   getMutationFromNucleotideMutation,
   NucleotideMutation,
 } from 'src/io/getDefiningMutationsClusters'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { parsePositionOrThrow } from 'src/components/Common/parsePosition'
 import { TableSlimWithBorders } from 'src/components/Common/TableSlim'
 import { NucleotideMutationBadge } from 'src/components/Common/Badges/NucleotideMutationBadge'
 import { AminoacidMutationBadge } from 'src/components/Common/Badges/AminoacidMutationBadge'
@@ -22,28 +21,16 @@ export function DefiningMutationsTable({ currentCluster, referenceSequenceName }
   const { t } = useTranslationSafe()
 
   const tableData = useMemo(() => {
-    const mutations = currentCluster.mutations[referenceSequenceName]
+    const mutations = currentCluster.mutations.find(({ reference }) => reference === referenceSequenceName)
     if (!mutations) {
       return null
     }
 
-    const nucleotideMutations: NucleotideMutation[] = Object.entries(mutations.nuc).map(([posStr, nucMut]) => {
-      const pos = parsePositionOrThrow(posStr)
-      return { pos, ...nucMut }
-    })
+    const silentMutations: NucleotideMutation[] = mutations.silent.map((nucMut) => nucMut.nucMutation)
 
-    const aminoAcidMutations: AminoAcidMutation[] = Object.entries(mutations.aa).flatMap(([gene, aaMuts]) =>
-      Object.entries(aaMuts).map(([posStr, aaMut]) => {
-        const pos = parsePositionOrThrow(posStr)
-        const nucMuts = nucleotideMutations.filter((nucMut) => aaMut.nucPos?.includes(nucMut.pos))
-        return { gene, pos, ...aaMut, nucMuts }
-      }),
-    )
+    const codingMutations: CodingMutation[] = mutations.coding
 
-    const codingPositions = new Set(aminoAcidMutations.flatMap((aaMut) => aaMut.nucPos))
-    const silentNucleotideMutations = nucleotideMutations.filter((nucMut) => !codingPositions.has(nucMut.pos))
-
-    return { aminoAcidMutations, silentNucleotideMutations }
+    return { codingMutations, silentMutations }
   }, [referenceSequenceName, currentCluster.mutations])
 
   if (!tableData) {
@@ -61,15 +48,12 @@ export function DefiningMutationsTable({ currentCluster, referenceSequenceName }
         </tr>
       </thead>
       <tbody>
-        {tableData.aminoAcidMutations.map((aminoAcidMutation) => {
+        {tableData.codingMutations.map((codingMutation) => {
           return (
-            <DefiningMutationsTableRowCoding
-              key={JSON.stringify(aminoAcidMutation)}
-              aminoAcidMutation={aminoAcidMutation}
-            />
+            <DefiningMutationsTableRowCoding key={JSON.stringify(codingMutation)} codingMutation={codingMutation} />
           )
         })}
-        {tableData.silentNucleotideMutations.map((nucleotideMutation) => {
+        {tableData.silentMutations.map((nucleotideMutation) => {
           return (
             <DefiningMutationsTableRowSilent
               key={JSON.stringify(nucleotideMutation)}
@@ -102,19 +86,21 @@ const DefiningMutationsTableTd = styled.td`
   width: 45%;
 `
 
-export function DefiningMutationsTableRowCoding({ aminoAcidMutation }: { aminoAcidMutation: AminoAcidMutation }) {
-  const numNucMuts = aminoAcidMutation.nucMuts.length
+export function DefiningMutationsTableRowCoding({ codingMutation }: { codingMutation: CodingMutation }) {
+  const aaMutation = codingMutation.aaMutation
+  const nucMutations = codingMutation.nucMutations
+  const numNucMuts = codingMutation.nucMutations.length
 
   const components = useMemo(
     () =>
-      (aminoAcidMutation.nucMuts ?? []).map((nucleotideMutation, i) => {
+      nucMutations.map((nucleotideMutation, i) => {
         return (
           <tr key={JSON.stringify(nucleotideMutation)}>
             {i === 0 && (
               <>
-                <DefiningMutationsTableTd rowSpan={numNucMuts}>{aminoAcidMutation.annotation}</DefiningMutationsTableTd>
+                <DefiningMutationsTableTd rowSpan={numNucMuts}>{aaMutation.annotation}</DefiningMutationsTableTd>
                 <DefiningMutationsTableTdNarrow rowSpan={numNucMuts}>
-                  <AminoacidMutationBadge mutation={getMutationFromAminoAcidMutation(aminoAcidMutation)} />
+                  <AminoacidMutationBadge mutation={getMutationFromAminoAcidMutation(aaMutation)} />
                 </DefiningMutationsTableTdNarrow>
               </>
             )}
@@ -126,7 +112,7 @@ export function DefiningMutationsTableRowCoding({ aminoAcidMutation }: { aminoAc
           </tr>
         )
       }),
-    [aminoAcidMutation, numNucMuts],
+    [aaMutation, nucMutations, numNucMuts],
   )
 
   return <>{components}</>
