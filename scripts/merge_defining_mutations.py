@@ -292,7 +292,7 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
             mutation_type=pl.when(pl.col('aa_change').is_not_null()).then(pl.lit('coding')).otherwise(pl.lit('silent')),
             nuc_position=pl.col('nuc_change').str.tail(-1).str.head(-1).cast(pl.Int64)
         )
-        .sort('lineage', 'relative_to', 'mutation_type', 'nuc_position')
+        .sort('lineage', 'relative_to', 'mutation_type', 'nuc_position', 'nuc_change')
         .select('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_change', 'nuc_change', 'notes')
     )
 
