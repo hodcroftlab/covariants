@@ -188,21 +188,6 @@
         {
           "aa_change": {
             "gene": "ORF1a",
-            "ref": "L",
-            "pos": 3201,
-            "alt": "F"
-          },
-          "nuc_change": [
-            {
-              "ref": "C",
-              "pos": 9866,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_change": {
-            "gene": "ORF1a",
             "ref": "T",
             "pos": 3255,
             "alt": "I"
@@ -829,11 +814,6 @@
               "ref": "G",
               "pos": 23012,
               "alt": "A"
-            },
-            {
-              "ref": "A",
-              "pos": 23013,
-              "alt": "G"
             }
           ]
         },

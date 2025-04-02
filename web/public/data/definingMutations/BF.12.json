@@ -628,21 +628,6 @@
             "gene": "S",
             "ref": "F",
             "pos": 486,
-            "alt": "I"
-          },
-          "nuc_change": [
-            {
-              "ref": "T",
-              "pos": 23018,
-              "alt": "A"
-            }
-          ]
-        },
-        {
-          "aa_change": {
-            "gene": "S",
-            "ref": "F",
-            "pos": 486,
             "alt": "V"
           },
           "nuc_change": [
@@ -1434,21 +1419,6 @@
               "ref": "T",
               "pos": 22917,
               "alt": "G"
-            }
-          ]
-        },
-        {
-          "aa_change": {
-            "gene": "S",
-            "ref": "F",
-            "pos": 486,
-            "alt": "I"
-          },
-          "nuc_change": [
-            {
-              "ref": "T",
-              "pos": 23018,
-              "alt": "A"
             }
           ]
         },

@@ -1031,21 +1031,6 @@
         {
           "aa_change": {
             "gene": "S",
-            "ref": "V",
-            "pos": 445,
-            "alt": "P"
-          },
-          "nuc_change": [
-            {
-              "ref": "T",
-              "pos": 22896,
-              "alt": "C"
-            }
-          ]
-        },
-        {
-          "aa_change": {
-            "gene": "S",
             "ref": "G",
             "pos": 446,
             "alt": "S"
@@ -1955,13 +1940,6 @@
           "nuc_change": {
             "ref": "C",
             "pos": 21622,
-            "alt": "T"
-          }
-        },
-        {
-          "nuc_change": {
-            "ref": "A",
-            "pos": 21766,
             "alt": "T"
           }
         },

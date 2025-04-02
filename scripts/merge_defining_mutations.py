@@ -259,8 +259,8 @@ def import_hand_curated_data(hand_curated_data_dir: str) -> pl.DataFrame:
 
 
 def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mutations: pl.DataFrame) -> pl.DataFrame:
-    hand_curated_raw = hand_curated_mutations.with_columns(nuc_change_raw=pl.col('nuc_change').str.slice(1))
-    auto_generated_raw = auto_generated_mutations.with_columns(nuc_change_raw=pl.col('nuc_change').str.slice(1))
+    hand_curated_raw = hand_curated_mutations.with_columns(nuc_change_raw=pl.col('nuc_change').str.tail(-1).str.head(-1))
+    auto_generated_raw = auto_generated_mutations.with_columns(nuc_change_raw=pl.col('nuc_change').str.tail(-1).str.head(-1))
     combined = (auto_generated_raw
                 .join(hand_curated_raw,
                       on=['lineage', 'nextstrain_clade', 'nuc_change_raw', 'relative_to'],
@@ -289,21 +289,24 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
     typed = (
         coalesced
         .with_columns(
-            mutation_type=pl.when(pl.col('aa_change').is_not_null()).then(pl.lit('coding')).otherwise(pl.lit('silent')),
-            nuc_position=pl.col('nuc_change').str.tail(-1).str.head(-1).cast(pl.Int64)
-        )
+            mutation_type=pl.when(pl.col('aa_change').is_not_null()).then(pl.lit('coding')).otherwise(pl.lit('silent')))
+    )
+
+    position_sorted = (
+        typed
+        .with_columns(nuc_position=pl.col('nuc_change').str.tail(-1).str.head(-1).cast(pl.Int64))
         .sort('lineage', 'relative_to', 'mutation_type', 'nuc_position', 'nuc_change')
         .select('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_change', 'nuc_change', 'notes')
     )
 
     coding_grouped_by_aa = (
-        typed
+        position_sorted
         .filter(pl.col('mutation_type') == 'coding')
         .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_change', maintain_order=True)
         .agg(pl.col('nuc_change'), pl.col('notes').first())
     )
     silent_grouped_by_aa = (
-        typed.filter(pl.col('mutation_type') == 'silent')
+        position_sorted.filter(pl.col('mutation_type') == 'silent')
         .with_columns(pl.col('nuc_change').cast(pl.List(pl.String)))
     )
     grouped_by_aa = pl.concat([
