@@ -6,21 +6,6 @@
       "coding": [
         {
           "aa_change": {
-            "gene": "ORF8",
-            "ref": "L",
-            "pos": 84,
-            "alt": "S"
-          },
-          "nuc_change": [
-            {
-              "ref": "T",
-              "pos": 28144,
-              "alt": "C"
-            }
-          ]
-        },
-        {
-          "aa_change": {
             "gene": "ORF1a",
             "ref": "E",
             "pos": 972,
@@ -31,6 +16,21 @@
               "ref": "G",
               "pos": 3179,
               "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF8",
+            "ref": "L",
+            "pos": 84,
+            "alt": "S"
+          },
+          "nuc_change": [
+            {
+              "ref": "T",
+              "pos": 28144,
+              "alt": "C"
             }
           ]
         }

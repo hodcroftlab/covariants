@@ -7,14 +7,14 @@
         {
           "aa_change": {
             "gene": "ORF3a",
-            "ref": "Q",
-            "pos": 185,
-            "alt": "H"
+            "ref": "L",
+            "pos": 53,
+            "alt": "F"
           },
           "nuc_change": [
             {
-              "ref": "G",
-              "pos": 25947,
+              "ref": "C",
+              "pos": 25549,
               "alt": "T"
             }
           ]
@@ -37,14 +37,14 @@
         {
           "aa_change": {
             "gene": "ORF3a",
-            "ref": "L",
-            "pos": 53,
-            "alt": "F"
+            "ref": "Q",
+            "pos": 185,
+            "alt": "H"
           },
           "nuc_change": [
             {
-              "ref": "C",
-              "pos": 25549,
+              "ref": "G",
+              "pos": 25947,
               "alt": "T"
             }
           ]

@@ -6,46 +6,16 @@
       "coding": [
         {
           "aa_change": {
-            "gene": "ORF8",
-            "ref": "E",
-            "pos": 92,
-            "alt": "K"
+            "gene": "ORF1a",
+            "ref": "M",
+            "pos": 3655,
+            "alt": "I"
           },
           "nuc_change": [
             {
               "ref": "G",
-              "pos": 28167,
-              "alt": "A"
-            }
-          ]
-        },
-        {
-          "aa_change": {
-            "gene": "ORF8",
-            "ref": "L",
-            "pos": 84,
-            "alt": "S"
-          },
-          "nuc_change": [
-            {
-              "ref": "T",
-              "pos": 28144,
-              "alt": "C"
-            }
-          ]
-        },
-        {
-          "aa_change": {
-            "gene": "N",
-            "ref": "S",
-            "pos": 202,
-            "alt": "N"
-          },
-          "nuc_change": [
-            {
-              "ref": "G",
-              "pos": 28878,
-              "alt": "A"
+              "pos": 11230,
+              "alt": "T"
             }
           ]
         },
@@ -66,16 +36,46 @@
         },
         {
           "aa_change": {
-            "gene": "ORF1a",
-            "ref": "M",
-            "pos": 3655,
-            "alt": "I"
+            "gene": "ORF8",
+            "ref": "L",
+            "pos": 84,
+            "alt": "S"
+          },
+          "nuc_change": [
+            {
+              "ref": "T",
+              "pos": 28144,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF8",
+            "ref": "E",
+            "pos": 92,
+            "alt": "K"
           },
           "nuc_change": [
             {
               "ref": "G",
-              "pos": 11230,
-              "alt": "T"
+              "pos": 28167,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "N",
+            "ref": "S",
+            "pos": 202,
+            "alt": "N"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 28878,
+              "alt": "A"
             }
           ]
         }

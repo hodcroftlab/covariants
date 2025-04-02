@@ -23,13 +23,6 @@
       "silent": [
         {
           "nuc_change": {
-            "ref": "C",
-            "pos": 29870,
-            "alt": "A"
-          }
-        },
-        {
-          "nuc_change": {
             "ref": "X",
             "pos": 1605,
             "alt": "-"
@@ -40,6 +33,13 @@
             "ref": "X",
             "pos": 1606,
             "alt": "-"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 29870,
+            "alt": "A"
           }
         }
       ]
@@ -65,13 +65,6 @@
       "silent": [
         {
           "nuc_change": {
-            "ref": "C",
-            "pos": 29870,
-            "alt": "A"
-          }
-        },
-        {
-          "nuc_change": {
             "ref": "X",
             "pos": 1605,
             "alt": "-"
@@ -82,6 +75,13 @@
             "ref": "X",
             "pos": 1606,
             "alt": "-"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 29870,
+            "alt": "A"
           }
         }
       ]

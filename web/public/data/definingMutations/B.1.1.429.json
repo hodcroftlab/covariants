@@ -6,21 +6,6 @@
       "coding": [
         {
           "aa_change": {
-            "gene": "N",
-            "ref": "G",
-            "pos": 204,
-            "alt": "R"
-          },
-          "nuc_change": [
-            {
-              "ref": "G",
-              "pos": 28883,
-              "alt": "C"
-            }
-          ]
-        },
-        {
-          "aa_change": {
             "gene": "ORF1a",
             "ref": "T",
             "pos": 727,
@@ -31,51 +16,6 @@
               "ref": "C",
               "pos": 2445,
               "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_change": {
-            "gene": "S",
-            "ref": "E",
-            "pos": 1202,
-            "alt": "Q"
-          },
-          "nuc_change": [
-            {
-              "ref": "G",
-              "pos": 25166,
-              "alt": "C"
-            }
-          ]
-        },
-        {
-          "aa_change": {
-            "gene": "M",
-            "ref": "A",
-            "pos": 2,
-            "alt": "V"
-          },
-          "nuc_change": [
-            {
-              "ref": "C",
-              "pos": 26527,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_change": {
-            "gene": "S",
-            "ref": "D",
-            "pos": 614,
-            "alt": "G"
-          },
-          "nuc_change": [
-            {
-              "ref": "A",
-              "pos": 23403,
-              "alt": "G"
             }
           ]
         },
@@ -111,6 +51,51 @@
         },
         {
           "aa_change": {
+            "gene": "S",
+            "ref": "D",
+            "pos": 614,
+            "alt": "G"
+          },
+          "nuc_change": [
+            {
+              "ref": "A",
+              "pos": 23403,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "S",
+            "ref": "E",
+            "pos": 1202,
+            "alt": "Q"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 25166,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "M",
+            "ref": "A",
+            "pos": 2,
+            "alt": "V"
+          },
+          "nuc_change": [
+            {
+              "ref": "C",
+              "pos": 26527,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_change": {
             "gene": "N",
             "ref": "R",
             "pos": 203,
@@ -126,6 +111,21 @@
               "ref": "G",
               "pos": 28882,
               "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "N",
+            "ref": "G",
+            "pos": 204,
+            "alt": "R"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 28883,
+              "alt": "C"
             }
           ]
         }
@@ -193,16 +193,16 @@
       "coding": [
         {
           "aa_change": {
-            "gene": "S",
-            "ref": "E",
-            "pos": 1202,
-            "alt": "Q"
+            "gene": "ORF1a",
+            "ref": "T",
+            "pos": 727,
+            "alt": "I"
           },
           "nuc_change": [
             {
-              "ref": "G",
-              "pos": 25166,
-              "alt": "C"
+              "ref": "C",
+              "pos": 2445,
+              "alt": "T"
             }
           ]
         },
@@ -223,16 +223,16 @@
         },
         {
           "aa_change": {
-            "gene": "ORF1a",
-            "ref": "T",
-            "pos": 727,
-            "alt": "I"
+            "gene": "S",
+            "ref": "E",
+            "pos": 1202,
+            "alt": "Q"
           },
           "nuc_change": [
             {
-              "ref": "C",
-              "pos": 2445,
-              "alt": "T"
+              "ref": "G",
+              "pos": 25166,
+              "alt": "C"
             }
           ]
         },

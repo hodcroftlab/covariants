@@ -6,15 +6,15 @@
       "coding": [
         {
           "aa_change": {
-            "gene": "ORF1b",
-            "ref": "P",
-            "pos": 314,
-            "alt": "L"
+            "gene": "ORF1a",
+            "ref": "T",
+            "pos": 265,
+            "alt": "I"
           },
           "nuc_change": [
             {
               "ref": "C",
-              "pos": 14408,
+              "pos": 1059,
               "alt": "T"
             }
           ]
@@ -36,15 +36,30 @@
         },
         {
           "aa_change": {
-            "gene": "ORF8",
-            "ref": "S",
-            "pos": 24,
+            "gene": "ORF1a",
+            "ref": "T",
+            "pos": 3487,
+            "alt": "A"
+          },
+          "nuc_change": [
+            {
+              "ref": "A",
+              "pos": 10724,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF1b",
+            "ref": "P",
+            "pos": 314,
             "alt": "L"
           },
           "nuc_change": [
             {
               "ref": "C",
-              "pos": 27964,
+              "pos": 14408,
               "alt": "T"
             }
           ]
@@ -66,21 +81,6 @@
         },
         {
           "aa_change": {
-            "gene": "ORF1a",
-            "ref": "T",
-            "pos": 265,
-            "alt": "I"
-          },
-          "nuc_change": [
-            {
-              "ref": "C",
-              "pos": 1059,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_change": {
             "gene": "ORF3a",
             "ref": "Q",
             "pos": 57,
@@ -96,16 +96,16 @@
         },
         {
           "aa_change": {
-            "gene": "ORF1a",
-            "ref": "T",
-            "pos": 3487,
-            "alt": "A"
+            "gene": "ORF8",
+            "ref": "S",
+            "pos": 24,
+            "alt": "L"
           },
           "nuc_change": [
             {
-              "ref": "A",
-              "pos": 10724,
-              "alt": "G"
+              "ref": "C",
+              "pos": 27964,
+              "alt": "T"
             }
           ]
         }

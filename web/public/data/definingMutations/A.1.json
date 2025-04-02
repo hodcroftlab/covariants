@@ -6,21 +6,6 @@
       "coding": [
         {
           "aa_change": {
-            "gene": "ORF8",
-            "ref": "L",
-            "pos": 84,
-            "alt": "S"
-          },
-          "nuc_change": [
-            {
-              "ref": "T",
-              "pos": 28144,
-              "alt": "C"
-            }
-          ]
-        },
-        {
-          "aa_change": {
             "gene": "ORF1b",
             "ref": "P",
             "pos": 1427,
@@ -46,6 +31,21 @@
               "ref": "A",
               "pos": 17858,
               "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF8",
+            "ref": "L",
+            "pos": 84,
+            "alt": "S"
+          },
+          "nuc_change": [
+            {
+              "ref": "T",
+              "pos": 28144,
+              "alt": "C"
             }
           ]
         }
@@ -79,21 +79,6 @@
         {
           "aa_change": {
             "gene": "ORF1b",
-            "ref": "Y",
-            "pos": 1464,
-            "alt": "C"
-          },
-          "nuc_change": [
-            {
-              "ref": "A",
-              "pos": 17858,
-              "alt": "G"
-            }
-          ]
-        },
-        {
-          "aa_change": {
-            "gene": "ORF1b",
             "ref": "P",
             "pos": 1427,
             "alt": "L"
@@ -103,6 +88,21 @@
               "ref": "C",
               "pos": 17747,
               "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF1b",
+            "ref": "Y",
+            "pos": 1464,
+            "alt": "C"
+          },
+          "nuc_change": [
+            {
+              "ref": "A",
+              "pos": 17858,
+              "alt": "G"
             }
           ]
         }

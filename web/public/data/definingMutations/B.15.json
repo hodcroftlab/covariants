@@ -7,6 +7,20 @@
       "silent": [
         {
           "nuc_change": {
+            "ref": "X",
+            "pos": 1605,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "X",
+            "pos": 1606,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_change": {
             "ref": "T",
             "pos": 4949,
             "alt": "C"
@@ -24,20 +38,6 @@
             "ref": "C",
             "pos": 29870,
             "alt": "A"
-          }
-        },
-        {
-          "nuc_change": {
-            "ref": "X",
-            "pos": 1605,
-            "alt": "-"
-          }
-        },
-        {
-          "nuc_change": {
-            "ref": "X",
-            "pos": 1606,
-            "alt": "-"
           }
         }
       ]
@@ -47,6 +47,20 @@
       "silent": [
         {
           "nuc_change": {
+            "ref": "X",
+            "pos": 1605,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "X",
+            "pos": 1606,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_change": {
             "ref": "T",
             "pos": 4949,
             "alt": "C"
@@ -64,20 +78,6 @@
             "ref": "C",
             "pos": 29870,
             "alt": "A"
-          }
-        },
-        {
-          "nuc_change": {
-            "ref": "X",
-            "pos": 1605,
-            "alt": "-"
-          }
-        },
-        {
-          "nuc_change": {
-            "ref": "X",
-            "pos": 1606,
-            "alt": "-"
           }
         }
       ]

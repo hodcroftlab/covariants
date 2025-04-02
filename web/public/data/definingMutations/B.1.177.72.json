@@ -7,21 +7,6 @@
         {
           "aa_change": {
             "gene": "ORF1b",
-            "ref": "L",
-            "pos": 820,
-            "alt": "F"
-          },
-          "nuc_change": [
-            {
-              "ref": "C",
-              "pos": 15925,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_change": {
-            "gene": "ORF1b",
             "ref": "P",
             "pos": 314,
             "alt": "L"
@@ -36,15 +21,30 @@
         },
         {
           "aa_change": {
-            "gene": "M",
-            "ref": "H",
-            "pos": 125,
-            "alt": "Y"
+            "gene": "ORF1b",
+            "ref": "L",
+            "pos": 820,
+            "alt": "F"
           },
           "nuc_change": [
             {
               "ref": "C",
-              "pos": 26895,
+              "pos": 15925,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "S",
+            "ref": "A",
+            "pos": 222,
+            "alt": "V"
+          },
+          "nuc_change": [
+            {
+              "ref": "C",
+              "pos": 22227,
               "alt": "T"
             }
           ]
@@ -66,6 +66,21 @@
         },
         {
           "aa_change": {
+            "gene": "M",
+            "ref": "H",
+            "pos": 125,
+            "alt": "Y"
+          },
+          "nuc_change": [
+            {
+              "ref": "C",
+              "pos": 26895,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_change": {
             "gene": "N",
             "ref": "A",
             "pos": 220,
@@ -75,21 +90,6 @@
             {
               "ref": "C",
               "pos": 28932,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_change": {
-            "gene": "S",
-            "ref": "A",
-            "pos": 222,
-            "alt": "V"
-          },
-          "nuc_change": [
-            {
-              "ref": "C",
-              "pos": 22227,
               "alt": "T"
             }
           ]

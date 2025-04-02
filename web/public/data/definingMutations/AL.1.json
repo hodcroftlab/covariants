@@ -51,41 +51,6 @@
         },
         {
           "aa_change": {
-            "gene": "N",
-            "ref": "R",
-            "pos": 203,
-            "alt": "K"
-          },
-          "nuc_change": [
-            {
-              "ref": "G",
-              "pos": 28881,
-              "alt": "A"
-            },
-            {
-              "ref": "G",
-              "pos": 28882,
-              "alt": "A"
-            }
-          ]
-        },
-        {
-          "aa_change": {
-            "gene": "N",
-            "ref": "R",
-            "pos": 195,
-            "alt": "I"
-          },
-          "nuc_change": [
-            {
-              "ref": "G",
-              "pos": 28857,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_change": {
             "gene": "S",
             "ref": "D",
             "pos": 614,
@@ -126,6 +91,41 @@
               "ref": "G",
               "pos": 25855,
               "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "N",
+            "ref": "R",
+            "pos": 195,
+            "alt": "I"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 28857,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "N",
+            "ref": "R",
+            "pos": 203,
+            "alt": "K"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 28881,
+              "alt": "A"
+            },
+            {
+              "ref": "G",
+              "pos": 28882,
+              "alt": "A"
             }
           ]
         },
@@ -180,16 +180,16 @@
       "coding": [
         {
           "aa_change": {
-            "gene": "N",
-            "ref": "R",
-            "pos": 195,
-            "alt": "I"
+            "gene": "ORF1a",
+            "ref": "A",
+            "pos": 1151,
+            "alt": "T"
           },
           "nuc_change": [
             {
               "ref": "G",
-              "pos": 28857,
-              "alt": "T"
+              "pos": 3716,
+              "alt": "A"
             }
           ]
         },
@@ -225,16 +225,16 @@
         },
         {
           "aa_change": {
-            "gene": "ORF1a",
-            "ref": "A",
-            "pos": 1151,
-            "alt": "T"
+            "gene": "N",
+            "ref": "R",
+            "pos": 195,
+            "alt": "I"
           },
           "nuc_change": [
             {
               "ref": "G",
-              "pos": 3716,
-              "alt": "A"
+              "pos": 28857,
+              "alt": "T"
             }
           ]
         }

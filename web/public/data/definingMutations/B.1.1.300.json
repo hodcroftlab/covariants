@@ -6,16 +6,16 @@
       "coding": [
         {
           "aa_change": {
-            "gene": "N",
+            "gene": "ORF1a",
             "ref": "G",
-            "pos": 204,
-            "alt": "R"
+            "pos": 3334,
+            "alt": "S"
           },
           "nuc_change": [
             {
               "ref": "G",
-              "pos": 28883,
-              "alt": "C"
+              "pos": 10265,
+              "alt": "A"
             }
           ]
         },
@@ -71,16 +71,16 @@
         },
         {
           "aa_change": {
-            "gene": "ORF1a",
+            "gene": "N",
             "ref": "G",
-            "pos": 3334,
-            "alt": "S"
+            "pos": 204,
+            "alt": "R"
           },
           "nuc_change": [
             {
               "ref": "G",
-              "pos": 10265,
-              "alt": "A"
+              "pos": 28883,
+              "alt": "C"
             }
           ]
         }

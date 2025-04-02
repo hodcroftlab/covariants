@@ -45,6 +45,20 @@
         },
         {
           "nuc_change": {
+            "ref": "X",
+            "pos": 4,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "X",
+            "pos": 5,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_change": {
             "ref": "C",
             "pos": 241,
             "alt": "T"
@@ -73,9 +87,28 @@
         },
         {
           "nuc_change": {
+            "ref": "X",
+            "pos": 29867,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_change": {
             "ref": "C",
             "pos": 29870,
             "alt": "A"
+          }
+        }
+      ]
+    },
+    "pango_parent": {
+      "coding": [],
+      "silent": [
+        {
+          "nuc_change": {
+            "ref": "A",
+            "pos": 1,
+            "alt": "G"
           }
         },
         {
@@ -90,25 +123,6 @@
             "ref": "X",
             "pos": 5,
             "alt": "-"
-          }
-        },
-        {
-          "nuc_change": {
-            "ref": "X",
-            "pos": 29867,
-            "alt": "-"
-          }
-        }
-      ]
-    },
-    "pango_parent": {
-      "coding": [],
-      "silent": [
-        {
-          "nuc_change": {
-            "ref": "A",
-            "pos": 1,
-            "alt": "G"
           }
         },
         {
@@ -127,30 +141,16 @@
         },
         {
           "nuc_change": {
-            "ref": "C",
-            "pos": 29870,
-            "alt": "A"
-          }
-        },
-        {
-          "nuc_change": {
-            "ref": "X",
-            "pos": 4,
-            "alt": "-"
-          }
-        },
-        {
-          "nuc_change": {
-            "ref": "X",
-            "pos": 5,
-            "alt": "-"
-          }
-        },
-        {
-          "nuc_change": {
             "ref": "X",
             "pos": 29867,
             "alt": "-"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 29870,
+            "alt": "A"
           }
         }
       ]

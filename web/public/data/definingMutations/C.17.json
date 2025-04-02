@@ -6,41 +6,6 @@
       "coding": [
         {
           "aa_change": {
-            "gene": "N",
-            "ref": "G",
-            "pos": 212,
-            "alt": "V"
-          },
-          "nuc_change": [
-            {
-              "ref": "G",
-              "pos": 28908,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_change": {
-            "gene": "N",
-            "ref": "R",
-            "pos": 203,
-            "alt": "K"
-          },
-          "nuc_change": [
-            {
-              "ref": "G",
-              "pos": 28881,
-              "alt": "A"
-            },
-            {
-              "ref": "G",
-              "pos": 28882,
-              "alt": "A"
-            }
-          ]
-        },
-        {
-          "aa_change": {
             "gene": "ORF1a",
             "ref": "T",
             "pos": 1246,
@@ -50,6 +15,36 @@
             {
               "ref": "C",
               "pos": 4002,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "G",
+            "pos": 3278,
+            "alt": "S"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 10097,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "T",
+            "pos": 4090,
+            "alt": "I"
+          },
+          "nuc_change": [
+            {
+              "ref": "C",
+              "pos": 12534,
               "alt": "T"
             }
           ]
@@ -86,30 +81,35 @@
         },
         {
           "aa_change": {
-            "gene": "ORF1a",
-            "ref": "T",
-            "pos": 4090,
-            "alt": "I"
+            "gene": "S",
+            "ref": "Q",
+            "pos": 677,
+            "alt": "H"
           },
           "nuc_change": [
             {
-              "ref": "C",
-              "pos": 12534,
+              "ref": "G",
+              "pos": 23593,
               "alt": "T"
             }
           ]
         },
         {
           "aa_change": {
-            "gene": "ORF1a",
-            "ref": "G",
-            "pos": 3278,
-            "alt": "S"
+            "gene": "N",
+            "ref": "R",
+            "pos": 203,
+            "alt": "K"
           },
           "nuc_change": [
             {
               "ref": "G",
-              "pos": 10097,
+              "pos": 28881,
+              "alt": "A"
+            },
+            {
+              "ref": "G",
+              "pos": 28882,
               "alt": "A"
             }
           ]
@@ -131,15 +131,15 @@
         },
         {
           "aa_change": {
-            "gene": "S",
-            "ref": "Q",
-            "pos": 677,
-            "alt": "H"
+            "gene": "N",
+            "ref": "G",
+            "pos": 212,
+            "alt": "V"
           },
           "nuc_change": [
             {
               "ref": "G",
-              "pos": 23593,
+              "pos": 28908,
               "alt": "T"
             }
           ]
@@ -187,21 +187,6 @@
       "coding": [
         {
           "aa_change": {
-            "gene": "S",
-            "ref": "Q",
-            "pos": 677,
-            "alt": "H"
-          },
-          "nuc_change": [
-            {
-              "ref": "G",
-              "pos": 23593,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_change": {
             "gene": "ORF1a",
             "ref": "T",
             "pos": 4090,
@@ -211,6 +196,21 @@
             {
               "ref": "C",
               "pos": 12534,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "S",
+            "ref": "Q",
+            "pos": 677,
+            "alt": "H"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 23593,
               "alt": "T"
             }
           ]

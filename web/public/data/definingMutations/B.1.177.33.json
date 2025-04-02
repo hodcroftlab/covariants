@@ -188,21 +188,6 @@
         },
         {
           "aa_change": {
-            "gene": "N",
-            "ref": "P",
-            "pos": 365,
-            "alt": "S"
-          },
-          "nuc_change": [
-            {
-              "ref": "C",
-              "pos": 29366,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_change": {
             "gene": "S",
             "ref": "G",
             "pos": 639,
@@ -213,6 +198,21 @@
               "ref": "G",
               "pos": 23477,
               "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "N",
+            "ref": "P",
+            "pos": 365,
+            "alt": "S"
+          },
+          "nuc_change": [
+            {
+              "ref": "C",
+              "pos": 29366,
+              "alt": "T"
             }
           ]
         }
