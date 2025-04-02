@@ -204,13 +204,13 @@
             "gene": "ORF1b",
             "ref": "P",
             "pos": 314,
-            "alt": "R"
+            "alt": "L"
           },
           "nuc_change": [
             {
               "ref": "C",
               "pos": 14408,
-              "alt": "G"
+              "alt": "T"
             }
           ]
         },
@@ -219,13 +219,13 @@
             "gene": "ORF1b",
             "ref": "P",
             "pos": 314,
-            "alt": "L"
+            "alt": "R"
           },
           "nuc_change": [
             {
               "ref": "C",
               "pos": 14408,
-              "alt": "T"
+              "alt": "G"
             }
           ]
         },

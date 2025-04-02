@@ -129,21 +129,6 @@
             "gene": "ORF1a",
             "ref": "L",
             "pos": 3201,
-            "alt": "F"
-          },
-          "nuc_change": [
-            {
-              "ref": "C",
-              "pos": 9866,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_change": {
-            "gene": "ORF1a",
-            "ref": "L",
-            "pos": 3201,
             "alt": "L"
           },
           "nuc_change": [
@@ -154,6 +139,21 @@
             }
           ],
           "notes": "Outside of S Africa, (C9866T - ORF1a:L3201F) is common, but within S Africa it is not"
+        },
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "L",
+            "pos": 3201,
+            "alt": "F"
+          },
+          "nuc_change": [
+            {
+              "ref": "C",
+              "pos": 9866,
+              "alt": "T"
+            }
+          ]
         },
         {
           "aa_change": {

@@ -1291,21 +1291,6 @@
             "gene": "ORF6",
             "ref": "D",
             "pos": 61,
-            "alt": "F"
-          },
-          "nuc_change": [
-            {
-              "ref": "G",
-              "pos": 27382,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_change": {
-            "gene": "ORF6",
-            "ref": "D",
-            "pos": 61,
             "alt": "L"
           },
           "nuc_change": [
@@ -1323,6 +1308,21 @@
               "ref": "T",
               "pos": 27384,
               "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF6",
+            "ref": "D",
+            "pos": 61,
+            "alt": "F"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 27382,
+              "alt": "T"
             }
           ]
         },
