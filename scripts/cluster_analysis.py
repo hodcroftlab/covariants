@@ -1,6 +1,7 @@
 # Run this script from within an 'ncov' directory () which is a sister directory to 'covariants'
 # See the 'WHERE FILES WRITE OUT' below to see options on modifying file paths
 # Importantly, ensure you create a real or fake 'ncov_cluster' output directory - or change it!
+import gzip
 
 # TLDR: make sure 'ncov' and 'covariants' repos are in same directory
 # 'ncov_cluster' should also be there - or create empty folder to match paths below
@@ -42,16 +43,9 @@ grey_color = "#cccccc"  # for "other clusters" of country plots
 dated_cluster = ""
 dated_limit = ""
 
-import pandas as pd
-import datetime
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 from shutil import copyfile
-from collections import defaultdict
-from matplotlib.patches import Rectangle
 import json
-import matplotlib.patches as mpatches
+import polars as pl
 from .colors_and_countries import *
 from .helpers import *
 from .clusters import *
@@ -59,9 +53,7 @@ from .bad_sequences import *
 from .approx_first_dates import *
 from .swiss_regions import *
 import os
-import re
 import time
-import sys
 
 
 def print_date_alerts(clus, alert_dates):
@@ -262,29 +254,10 @@ def main(dated_limit=dated_limit):
         print("There are currently clades that will be renamed!!:")
         print(new_clades_to_rename)
 
-    # Traverse metadata once to count lines and collect Nextstrain_clades
-    print("\nDoing first metadata pass...")
-    Nextstrain_clades = []
-    all_countries = []
-    n_total = 0
-    with open(input_meta) as f:
-        header = f.readline().split("\t")
-        indices = {c:header.index(c) for c in cols}
-        line = f.readline()
-        while line:
-            l = line.split("\t")
-            if l[indices['Nextstrain_clade']] not in Nextstrain_clades:
-                Nextstrain_clades.append(l[indices['Nextstrain_clade']])
-            if l[indices['country']] not in all_countries:
-                all_countries.append(l[indices['country']])
-            n_total += 1
-            line = f.readline()
-
-    # All clus that appear in the Nextstrain_clade column in the metadata
-    Nextstrain_clades_display_names = []
-    for clus in Nextstrain_clades:
-        if clus in display_name_to_clus and display_name_to_clus[clus] in clus_to_run:
-            Nextstrain_clades_display_names.append(clus)
+    Nextstrain_clades, Nextstrain_clades_display_names, all_countries, n_total = initial_metadata_pass(clus_to_run,
+                                                                                                       cols,
+                                                                                                       display_name_to_clus,
+                                                                                                       input_meta)
 
     # To save time, split up clusters into categories:
     # - official_clus: All clus whose display name appears in the Nextstrain_clade column
@@ -1099,6 +1072,58 @@ def main(dated_limit=dated_limit):
             print(f"To view, use 'print_all_clus_alerts('{key}')' or 'print_clus_alerts('{key}', \"[clus_list]\")'")
         else:
             print(f"\nNo inconsistent cluster assignment found for {key} sequences.")
+
+
+def initial_metadata_pass(clus_to_run, cols, display_name_to_clus, input_meta, mode='slow'):
+    # Traverse metadata once to count lines and collect Nextstrain_clades
+    print("\nDoing first metadata pass...")
+    nextstrain_clades = []
+    all_countries = []
+    n_total = 0
+
+    if input_meta.endswith('.gz'):
+        if mode == 'slow':
+            with gzip.open(input_meta, 'rt') as f:
+                header = f.readline().split("\t")
+                indices = {c: header.index(c) for c in cols}
+                line = f.readline()
+                while line:
+                    l = line.split("\t")
+                    if l[indices['Nextstrain_clade']] not in nextstrain_clades:
+                        nextstrain_clades.append(l[indices['Nextstrain_clade']])
+                    if l[indices['country']] not in all_countries:
+                        all_countries.append(l[indices['country']])
+                    n_total += 1
+                    line = f.readline()
+        elif mode=='fast':
+            q = (
+                pl.scan_csv(input_meta, separator='\t')
+                .select('Nextstrain_clade', 'country')
+            )
+            data = q.collect()
+            n_total = len(data)
+            nextstrain_clades = data.select(pl.col('Nextstrain_clade').unique()).to_series().sort().to_list()
+            all_countries = data.select(pl.col('country').unique()).to_series().sort().to_list()
+    else:
+        with open(input_meta) as f:
+            header = f.readline().split("\t")
+            indices = {c: header.index(c) for c in cols}
+            line = f.readline()
+            while line:
+                l = line.split("\t")
+                if l[indices['Nextstrain_clade']] not in nextstrain_clades:
+                    nextstrain_clades.append(l[indices['Nextstrain_clade']])
+                if l[indices['country']] not in all_countries:
+                    all_countries.append(l[indices['country']])
+                n_total += 1
+                line = f.readline()
+
+    # All clus that appear in the Nextstrain_clade column in the metadata
+    nextstrain_clades_display_names = []
+    for clus in nextstrain_clades:
+        if clus in display_name_to_clus and display_name_to_clus[clus] in clus_to_run:
+            nextstrain_clades_display_names.append(clus)
+    return sorted(nextstrain_clades), sorted(nextstrain_clades_display_names), sorted(all_countries), n_total
 
 
 if __name__ == '__main__':
