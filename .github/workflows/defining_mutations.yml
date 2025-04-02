@@ -2,11 +2,6 @@
 name: update-defining-mutations
 
 on:
-  # TODO: remove the push dependency
-  push:
-    branches:
-      - "488-defining-mutations-pipeline"
-
   schedule:
     - cron: "0 0 1,15 * *"
 
