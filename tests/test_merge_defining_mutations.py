@@ -126,20 +126,7 @@ def test_main():
             with open(os.path.join(expected_output_dir, filename)) as expected_output_file:
                 output = json.load(output_file)
                 expected_output = json.load(expected_output_file)
-                compare_nested_dicts(output, expected_output)
-
-
-def compare_nested_dicts(d1, d2):
-    assert d1.keys() == d2.keys()
-    for key in d1.keys():
-        if type(d1[key]) == str:
-            assert d1[key] == d2[key]
-        elif type(d1[key]) == list:
-            assert len(d1[key]) == len(d2[key])
-            for item in d1[key]:
-                assert item in d2[key]
-        elif type(d1[key]) == dict:
-            compare_nested_dicts(d1[key], d2[key])
+                assert output == expected_output
 
 
 def test_edge_cases_do_not_throw_errors():

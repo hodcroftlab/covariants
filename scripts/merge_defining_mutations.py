@@ -286,18 +286,26 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
         .drop('aa_change_hand_curated', 'nuc_change_hand_curated')
     )
 
-    typed = coalesced.with_columns(
-        mutation_type=pl.when(pl.col('aa_change').is_not_null()).then(pl.lit('coding')).otherwise(pl.lit('silent'))
-    ).select('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_change', 'nuc_change', 'notes')
+    typed = (
+        coalesced
+        .with_columns(
+            mutation_type=pl.when(pl.col('aa_change').is_not_null()).then(pl.lit('coding')).otherwise(pl.lit('silent')),
+            nuc_position=pl.col('nuc_change').str.tail(-1).str.head(-1).cast(pl.Int64)
+        )
+        .sort('lineage', 'relative_to', 'mutation_type', 'nuc_position')
+        .select('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_change', 'nuc_change', 'notes')
+    )
 
     coding_grouped_by_aa = (
         typed
         .filter(pl.col('mutation_type') == 'coding')
-        .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_change')
+        .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_change', maintain_order=True)
         .agg(pl.col('nuc_change'), pl.col('notes').first())
     )
-    silent_grouped_by_aa = typed.filter(pl.col('mutation_type') == 'silent').with_columns(
-        pl.col('nuc_change').cast(pl.List(pl.String)))
+    silent_grouped_by_aa = (
+        typed.filter(pl.col('mutation_type') == 'silent')
+        .with_columns(pl.col('nuc_change').cast(pl.List(pl.String)))
+    )
     grouped_by_aa = pl.concat([
         coding_grouped_by_aa,
         silent_grouped_by_aa
