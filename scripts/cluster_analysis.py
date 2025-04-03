@@ -1,6 +1,7 @@
 # Run this script from within a 'ncov' directory () which is a sister directory to 'covariants'
 # See the 'WHERE FILES WRITE OUT' below to see options on modifying file paths
 # Importantly, ensure you create a real or fake 'ncov_cluster' output directory - or change it!
+import logging
 
 # TLDR: make sure 'ncov' and 'covariants' repos are in same directory
 # 'ncov_cluster' should also be there - or create empty folder to match paths below
@@ -198,7 +199,7 @@ def main(clus_answer,
     ##################################
     ##################################
     #### Read and clean metadata line by line
-    all_sequences, cluster_inconsistencies = clean_metadata(Nextstrain_clades_display_names, acknowledgement_by_variant,
+    all_sequences, cluster_inconsistencies, _, _ = clean_metadata(Nextstrain_clades_display_names, acknowledgement_by_variant,
                                                             alert_dates, clus_check, clus_data_all,
                                                             clus_to_run_breakdown, cols, dated_cluster_strains,
                                                             dated_limit, dated_limit_formatted, daughter_clades,
@@ -673,284 +674,562 @@ def main(clus_answer,
             print(f"\nNo inconsistent cluster assignment found for {key} sequences.")
 
 
-def clean_metadata(Nextstrain_clades_display_names, acknowledgement_by_variant, alert_dates, clus_check, clus_data_all,
+def clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant, alert_dates, clus_check, clus_data_all,
                    clus_to_run_breakdown, cols, dated_cluster_strains, dated_limit, dated_limit_formatted,
                    daughter_clades, display_name_to_clus, division, division_data_all, earliest_date, input_meta,
                    min_data_week, n_total, new_clades_to_rename, pango_lineage_to_clus, print_acks, rest_all,
-                   selected_country, today, total_counts_countries, total_counts_divisions):
+                   selected_country, today, total_counts_countries, total_counts_divisions,
+                   mode='slow'):
     t0 = time.time()
     # detailed_time_measurement = {"ab": 0, "bc": 0,"cd": 0,"de": 0,"ef": 0,"fg": 0,"gh": [0,0,0,0,0,0,0,0,0]}
     # Store all strains by clus
     all_sequences = {clus: [] for clus in clusters}
-    # Check for inconsistencies (e.g. two clades assigned via snps). These will be autoexcluded and flagged at the end
+    # Check for inconsistencies (e.g. two clades assigned via snps). These will be auto-excluded and flagged at the end
     # of the file. If a Nextstrain was found additionally to others, it will use the Nextstrain_clade for assignment
     cluster_inconsistencies = {"Nextstrain_clade": {}, "Non_Nextstrain_clade": {}}
     print_lines = sorted([int(n_total / 20 * i) + 1 for i in range(1, 20)])  # Print progress in %
     print("\nReading and cleaning up the metadata line-by-line...\n")
     n = 0
-    noQC = 0
-    with gzip.open(input_meta, 'rt') if input_meta.endswith('.gz') else open(input_meta) as f:
-        header = f.readline().split("\t")
-        indices = {c: header.index(c) for c in cols}
+    no_qc = 0
+    if mode=='slow':
+        with gzip.open(input_meta, 'rt') if input_meta.endswith('.gz') else open(input_meta) as f:
+            header = f.readline().split("\t")
+            indices = {c: header.index(c) for c in cols}
 
-        while True:
-            line = f.readline()
-            if not line:
-                break
-            n += 1
+            while True:
+                line = f.readline()
+                if not line:
+                    break
+                n += 1
 
-            if n in print_lines:
-                t1 = time.time()
-                print(f"{round(n / n_total * 100)}% complete... ({round((t1 - t0) / 60, 1)} min)")
+                if n in print_lines:
+                    t1 = time.time()
+                    print(f"{round(n / n_total * 100)}% complete... ({round((t1 - t0) / 60, 1)} min)")
 
-            l = line.split("\t")
+                l = line.split("\t")
 
-            ##### CLEANING METADATA #####
+                ##### CLEANING METADATA #####
 
-            # Filter for only Host = Human
-            if l[indices['host']] != "Human":
-                continue
+                # Filter for only Host = Human
+                if l[indices['host']] != "Human":
+                    continue
 
+                # Filter only for those without 'bad' and those without '' QC status
+                # available values (as of 30 mar 22) are 'bad', 'good', 'mediocre', ''
+                # these '' values are likely those where alignment fails
+                # as of 30 mar 22, this excludes 466,596 sequences (!) for bad, and 4,781 for ''
+                if l[indices['QC_overall_status']] == "bad" or l[indices['QC_overall_status']] == "":
+                    continue
+
+                # Invalid dates
+                if len(l[indices['date']]) != 10:
+                    continue
+                if "X" in l[indices['date']]:
+                    continue
+
+                # If in bad_sequences and the date matches
+                if l[indices['strain']] in bad_seqs and l[indices['date']] == bad_seqs[l[indices['strain']]]:
+                    continue
+
+                # Keep only if at least 90% coverage -- exclude if no coverage info
+                if l[indices['coverage']] == "?":
+                    no_qc += 1
+                    continue
+                if float(l[indices['coverage']]) < 0.9:
+                    continue
+
+                clade = l[indices['Nextstrain_clade']]
+                # As of 28 Oct 22 - process recombinants so we can start including them as designated variants
+                # if clade == "recombinant":
+                #    continue
+                # as of 7 Dec 2023 - if clade is in list of new clades that need renaming, replace clade
+                if clade in new_clades_to_rename:
+                    clade = new_clades_to_rename[clade]
+
+                pango = l[indices['Nextclade_pango']]
+
+                # Future dates
+                date_formatted = datetime.datetime.strptime(l[indices['date']], "%Y-%m-%d")
+                if date_formatted > today:
+                    print("WARNING! Data from the future!")
+                    print(f"{l[indices['strain']]}: {l[indices['date']]}")
+                    continue
+
+                date_2weeks = to2week_ordinal(date_formatted)
+
+                country = l[indices["country"]]
+                # Replace Swiss divisions with swiss-region, but store original division
+                div = l[indices['division']]
+                if div in swiss_regions:
+                    div = swiss_regions[div]
+
+                # Collect total sequence counts by countries and dates
+                if date_2weeks >= min_data_week:
+                    if date_2weeks not in total_counts_countries[country]:
+                        total_counts_countries[country][date_2weeks] = 0
+                    total_counts_countries[country][date_2weeks] += 1
+
+                    if division:
+                        if country in selected_country:
+                            if div:
+                                if div not in total_counts_divisions[country]:
+                                    total_counts_divisions[country][div] = {}
+                                if date_2weeks not in total_counts_divisions[country][div]:
+                                    total_counts_divisions[country][div][date_2weeks] = 0
+                                total_counts_divisions[country][div][date_2weeks] += 1
+
+                ##### ASSIGNING CLUSTERS #####
+
+                # If an official Nextstrain clade, then use Nextclade designation to assign them.
+                # If not an official Nextstrain clade, use our SNP method
+                # Always check for "rest" (mutations and clusters that are currently not displayed)
+                clus_to_check = {key: clus_to_run_breakdown[key]["rest"] for key in clus_to_run_breakdown}
+
+                clus_all = []
+                only_Nextstrain = False
+                # Use Nextclade
+                if clade in nextstrain_clades_display_names:
+                    clus_all.append(display_name_to_clus[clade])
+                    only_Nextstrain = True
+                    if clade in daughter_clades:
+                        if pango in pango_lineage_to_clus and clus_data_all[pango_lineage_to_clus[pango]]["use_pango"] and \
+                                pango_lineage_to_clus[pango] in daughter_clades[clade]:
+                            clus_all.append(pango_lineage_to_clus[pango])
+                        else:
+                            for daughter in daughter_clades[clade]:
+                                # TODO: make sure this works for snps
+                                if not clus_check:  # Make sure daughter clade is not added two times
+                                    clus_to_check = {
+                                        key: clus_to_check[key] + [daughter] if daughter in clus_to_run_breakdown[key][
+                                            "official_clus"] or daughter in clus_to_run_breakdown[key][
+                                                                                    "unofficial_clus"] else clus_to_check[
+                                            key] for key in clus_to_check}
+
+                        only_Nextstrain = False
+                else:
+                    if pango in pango_lineage_to_clus:
+                        if clus_data_all[pango_lineage_to_clus[pango]]["use_pango"]:
+                            clus_all.append(pango_lineage_to_clus[pango])
+                            only_Nextstrain = True
+
+                # If no official Nextstrain_clade assigned, or we want additional checks, also check for "unofficial" clusters
+                # We NEVER check for "official" clusters. If Nextclade did not assign a cluster, then we won't do it either
+                if clus_all == [] or clus_check:
+                    clus_to_check = {key: clus_to_check[key] + clus_to_run_breakdown[key]["unofficial_clus"] for key in
+                                     clus_to_check}
+                    only_Nextstrain = False
+
+                # Store mutations as taken from metadata table in three categories to make comparison alter easier/faster
+                muts = {"snps": []}
+                if l[indices['substitutions']]:
+                    muts["snps"] = [y[1:-1] for y in l[indices['substitutions']].split(',')]
+                muts["snps2"] = muts["snps"]
+
+                # Expand from range format (metadata) to list (covariants)
+                if l[indices['deletions']]:
+                    muts["gaps"] = [z for y in l[indices['deletions']].split(',') for z in
+                                    range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)]
+
+                # Check for each clus if snps/gaps matches the list given in metadata
+                for key in muts:
+                    for clus in clus_to_check[key]:
+                        if clus in clus_all:
+                            continue
+                        for snp in clus_data_all[clus][key]:
+                            if snp not in muts[key]:
+                                break
+                        else:
+                            clus_all.append(clus)
+
+                for clus in clus_all:
+                    for snp in clus_data_all[clus]["exclude_snps"]:
+                        if snp in muts["snps"]:
+                            clus_all.remove(clus)
+                            break
+
+                # For some clusters we might want the sequence in our total sequences list (used for runs) but not on covariants
+                clus_all_no_plotting = []
+
+                # Check for inconsistencies
+                if not only_Nextstrain:  # Only check for inconsistencies if there could be more than only one Nextstrain clade
+                    clus_all_unique = [c for c in clus_all if c not in rest_all]
+                    daughter_parent = False
+                    if len(clus_all_unique) == 2:  # Exactly two clus - check if daughter/parent pair
+                        if clusters[clus_all_unique[0]]["display_name"] in daughter_clades and clus_all_unique[1] in \
+                                daughter_clades[clusters[clus_all_unique[0]]["display_name"]]:
+                            if clusters[clus_all_unique[1]]["graphing"]:
+                                clus_all_no_plotting.append(
+                                    clus_all_unique[0])  # Assign sequence to child, but for parent keep in nextstrain files
+                            else:
+                                clus_all_no_plotting.append(
+                                    clus_all_unique[1])  # Assign sequence to parent, but for child keep in nextstrain files
+                            daughter_parent = True
+                        if clusters[clus_all_unique[1]]["display_name"] in daughter_clades and clus_all_unique[0] in \
+                                daughter_clades[clusters[clus_all_unique[1]]["display_name"]]:
+                            if clusters[clus_all_unique[0]]["graphing"]:
+                                clus_all_no_plotting.append(
+                                    clus_all_unique[1])  # Assign sequence to child, but for parent keep in nextstrain files
+                            else:
+                                clus_all_no_plotting.append(
+                                    clus_all_unique[0])  # Assign sequence to parent, but for child keep in nextstrain files
+                            daughter_parent = True
+
+                    if len(clus_all_unique) > 1 and not daughter_parent:  # Flag for inconsistency
+                        clus_all = [clus for clus in clus_all if clus not in clus_all_unique]
+                        if clade in display_name_to_clus and display_name_to_clus[
+                            clade] in clus_all_unique:  # If Nextstrain clade: Keep this and remove all others
+                            clus_all.append(display_name_to_clus[clade])
+                            cluster_inconsistencies["Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
+
+                        else:  # If no Nextstrain clade: Drop all unique clusters (still keep mutations and unofficial clusters)
+                            cluster_inconsistencies["Non_Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
+
+                ##### COLLECT COUNTS PER CLUSTER #####
+                for clus in clus_all:
+
+                    # Exclude all strains that are dated before their respective clade
+                    if clus in cluster_first_dates:
+                        if date_formatted < cluster_first_dates[clus]["date_formatted"]:
+                            if not (clus in first_date_exceptions and l[indices["strain"]] in first_date_exceptions[clus]):
+                                if clus not in alert_dates:
+                                    alert_dates[clus] = {'strain': [], 'date': [], 'gisaid_epi_isl': []}
+                                for k in alert_dates[clus]:
+                                    alert_dates[clus][k].append(l[indices[k]])
+                                continue
+
+                    # Store all strains per assigned cluster (used for runs)
+                    all_sequences[clus].append(l[indices['strain']])
+
+                    # Skip now if we don't want this sequence in that cluster on covariants
+                    if clus in clus_all_no_plotting:
+                        continue
+
+                    # if you want a dated limit, specify cluster and limit at top
+                    if dated_limit and clus == DATED_CLUSTER:
+                        if date_formatted < dated_limit_formatted:
+                            dated_cluster_strains.append(l[indices['strain']])
+
+                    # Collect summary counts (total by country, also store first and last date)
+                    clus_data_all[clus]["summary"][country]["num_seqs"] += 1
+                    clus_data_all[clus]["summary"][country]["first_seq"] = min(
+                        clus_data_all[clus]["summary"][country]["first_seq"], date_formatted)
+                    clus_data_all[clus]["summary"][country]["last_seq"] = max(
+                        clus_data_all[clus]["summary"][country]["last_seq"], date_formatted)
+
+                    # For selected countries (e.g. USA, Switzerland), also collect data by division
+                    if division:
+                        if country in selected_country:
+                            if div:
+                                if div not in division_data_all[country][clus]["summary"]:
+                                    division_data_all[country][clus]["summary"][div] = {'first_seq': today, 'num_seqs': 0,
+                                                                                        'last_seq': earliest_date}
+                                division_data_all[country][clus]["summary"][div]["num_seqs"] += 1
+                                division_data_all[country][clus]["summary"][div]["first_seq"] = min(
+                                    division_data_all[country][clus]["summary"][div]["first_seq"], date_formatted)
+                                division_data_all[country][clus]["summary"][div]["last_seq"] = max(
+                                    division_data_all[country][clus]["summary"][div]["last_seq"], date_formatted)
+
+                    if date_2weeks < min_data_week:
+                        continue
+
+                    # cluster_counts: Number of sequences per cluster per country per date (2-week interval)
+                    if date_2weeks not in clus_data_all[clus]["cluster_counts"][country]:
+                        clus_data_all[clus]["cluster_counts"][country][date_2weeks] = 0
+                    clus_data_all[clus]["cluster_counts"][country][date_2weeks] += 1
+
+                    if division:
+                        if country in selected_country:
+                            if div:
+                                if div not in division_data_all[country][clus]["cluster_counts"]:
+                                    division_data_all[country][clus]["cluster_counts"][div] = {}
+                                if date_2weeks not in division_data_all[country][clus]["cluster_counts"][div]:
+                                    division_data_all[country][clus]["cluster_counts"][div][date_2weeks] = 0
+                                division_data_all[country][clus]["cluster_counts"][div][date_2weeks] += 1
+
+                    if print_acks:
+                        # remove all but EPI_ISL, on request from GISAID
+                        acknowledgement_by_variant["acknowledgements"][clus].append(l[indices['gisaid_epi_isl']])
+    else:
+        reader = pl.read_csv_batched(
+            input_meta,
+            separator='\t',
+            columns=['Nextstrain_clade', 'Nextclade_pango', 'country', 'division', 'host', 'QC_overall_status', 'date', 'coverage', 'strain', 'substitutions', 'deletions', 'gisaid_epi_isl'],
+            batch_size=10_000,
+            infer_schema_length=0
+        )
+        batches = reader.next_batches(10)
+        no_qcs = []
+        future_dates = []
+        total_counts_countries_new = []
+        total_counts_divisions_new = []
+        while batches:
+            s = pl.concat(batches)
+            human_only =  s.filter(pl.col('host').eq('Human'))
             # Filter only for those without 'bad' and those without '' QC status
             # available values (as of 30 mar 22) are 'bad', 'good', 'mediocre', ''
             # these '' values are likely those where alignment fails
             # as of 30 mar 22, this excludes 466,596 sequences (!) for bad, and 4,781 for ''
-            if l[indices['QC_overall_status']] == "bad" or l[indices['QC_overall_status']] == "":
-                continue
-
-            # Invalid dates
-            if len(l[indices['date']]) != 10:
-                continue
-            if "X" in l[indices['date']]:
-                continue
-
-            # If in bad_sequences and the date matches
-            if l[indices['strain']] in bad_seqs and l[indices['date']] == bad_seqs[l[indices['strain']]]:
-                continue
-
-            # Keep only if at least 90% coverage -- exclude if no coverage info
-            if l[indices['coverage']] == "?":
-                noQC += 1
-                continue
-            if float(l[indices['coverage']]) < 0.9:
-                continue
-
-            clade = l[indices['Nextstrain_clade']]
-            # As of 28 Oct 22 - process recombinants so we can start including them as designated variants
-            # if clade == "recombinant":
-            #    continue
+            qc_filtered = human_only.filter(pl.col('QC_overall_status').is_in(['bad', '']).not_())
+            valid_dates = qc_filtered.filter(pl.col('date').str.len_chars().eq(10).and_(pl.col('date').str.contains('X').not_()))
+            bad_seqs_df = pl.DataFrame({'strain': bad_seqs.keys(), 'date': bad_seqs.values()})
+            bad_seqs_removed = valid_dates.join(bad_seqs_df, on=['strain', 'date'], how='anti')
+            coverage_cast = bad_seqs_removed.with_columns(pl.col('coverage').replace('?', None).cast(pl.Float32))
+            coverage_filtered = coverage_cast.filter(pl.col('coverage').ge(0.9))
+            no_qcs.append(coverage_cast.select('coverage').filter(pl.col('coverage').is_null()).count())
             # as of 7 Dec 2023 - if clade is in list of new clades that need renaming, replace clade
-            if clade in new_clades_to_rename:
-                clade = new_clades_to_rename[clade]
+            clades_renamed = coverage_filtered.with_columns(pl.col('Nextstrain_clade').replace(new_clades_to_rename))
+            dates_formatted = clades_renamed.with_columns(pl.col('date').str.to_date("%Y-%m-%d"))
+            no_future_dates = dates_formatted.filter(pl.col('date').le(today))
+            future_dates.append(dates_formatted.filter(pl.col('date').gt(today)))
 
-            pango = l[indices['Nextclade_pango']]
 
-            # Future dates
-            date_formatted = datetime.datetime.strptime(l[indices['date']], "%Y-%m-%d")
-            if date_formatted > today:
-                print("WARNING! Data from the future!")
-                print(f"{l[indices['strain']]}: {l[indices['date']]}")
-                continue
+            ################ get total counts
+            # TODO: convert to query language: "pl.col('date').dt.to_ordinal" should help
+            date_to_2weeks = no_future_dates.with_columns(date_2weeks=pl.struct(
+                year=pl.col('date').map_elements(to2week_ordinal_year, return_dtype=pl.Int64),
+                week=pl.col('date').map_elements(to2week_ordinal_week, return_dtype=pl.Int64)
+            )
+            )
 
-            date_2weeks = to2week_ordinal(date_formatted)
+            # TODO: the division is not properly coalesced but rather overwritten
+            swiss_region_added = date_to_2weeks.with_columns(division=pl.when(pl.col('country').eq('Switzerland')).then(pl.col('division').replace(swiss_regions, default=pl.col('division'))))
 
-            country = l[indices["country"]]
-            # Replace Swiss divisions with swiss-region, but store original division
-            div = l[indices['division']]
-            if div in swiss_regions:
-                div = swiss_regions[div]
+            # TODO: make this nicer
+            min_week_filtered = swiss_region_added.filter(pl.col('date_2weeks').struct.field('year').gt(min_data_week[0]).or_(pl.col('date_2weeks').struct.field('year').eq(min_data_week[0]).and_(pl.col('date_2weeks').struct.field('week').ge(min_data_week[1]))))
 
-            # Collect total sequence counts by countries and dates
-            if date_2weeks >= min_data_week:
-                if date_2weeks not in total_counts_countries[country]:
-                    total_counts_countries[country][date_2weeks] = 0
-                total_counts_countries[country][date_2weeks] += 1
+            total_counts_countries_new.append(min_week_filtered.group_by('country', 'date_2weeks').count())
+            if division:
+                country_filtered = min_week_filtered.filter(pl.col('country').is_in(selected_country))
+                total_counts_divisions_new.append(country_filtered.group_by('country', 'division', 'date_2weeks').count())
+            ##################
 
-                if division:
-                    if country in selected_country:
-                        if div:
-                            if div not in total_counts_divisions[country]:
-                                total_counts_divisions[country][div] = {}
-                            if date_2weeks not in total_counts_divisions[country][div]:
-                                total_counts_divisions[country][div][date_2weeks] = 0
-                            total_counts_divisions[country][div][date_2weeks] += 1
 
-            ##### ASSIGNING CLUSTERS #####
+            # Old way
+            indices = {c: i for i, c in enumerate(s.columns)}
+            for l in no_future_dates.iter_rows():
+                ##### CLEANING METADATA #####
 
-            # If an official Nextstrain clade, then use Nextclade designation to assign them.
-            # If not an official Nextstrain clade, use our SNP method
-            # Always check for "rest" (mutations and clusters that are currently not displayed)
-            clus_to_check = {key: clus_to_run_breakdown[key]["rest"] for key in clus_to_run_breakdown}
+                clade = l[indices['Nextstrain_clade']]
 
-            clus_all = []
-            only_Nextstrain = False
-            # Use Nextclade
-            if clade in Nextstrain_clades_display_names:
-                clus_all.append(display_name_to_clus[clade])
-                only_Nextstrain = True
-                if clade in daughter_clades:
-                    if pango in pango_lineage_to_clus and clus_data_all[pango_lineage_to_clus[pango]]["use_pango"] and \
-                            pango_lineage_to_clus[pango] in daughter_clades[clade]:
-                        clus_all.append(pango_lineage_to_clus[pango])
-                    else:
-                        for daughter in daughter_clades[clade]:
-                            # TODO: make sure this works for snps
-                            if not clus_check:  # Make sure daughter clade is not added two times
-                                clus_to_check = {
-                                    key: clus_to_check[key] + [daughter] if daughter in clus_to_run_breakdown[key][
-                                        "official_clus"] or daughter in clus_to_run_breakdown[key][
-                                                                                "unofficial_clus"] else clus_to_check[
-                                        key] for key in clus_to_check}
+                pango = l[indices['Nextclade_pango']]
 
-                    only_Nextstrain = False
-            else:
-                if pango in pango_lineage_to_clus:
-                    if clus_data_all[pango_lineage_to_clus[pango]]["use_pango"]:
-                        clus_all.append(pango_lineage_to_clus[pango])
-                        only_Nextstrain = True
+                date_formatted = datetime.datetime.fromordinal(l[indices['date']].toordinal())
 
-            # If no official Nextstrain_clade assigned, or we want additional checks, also check for "unofficial" clusters
-            # We NEVER check for "official" clusters. If Nextclade did not assign a cluster, then we won't do it either
-            if clus_all == [] or clus_check:
-                clus_to_check = {key: clus_to_check[key] + clus_to_run_breakdown[key]["unofficial_clus"] for key in
-                                 clus_to_check}
+                date_2weeks = to2week_ordinal(date_formatted)
+
+                country = l[indices["country"]]
+                # Replace Swiss divisions with swiss-region, but store original division
+                div = l[indices['division']]
+                # if div in swiss_regions:
+                #     div = swiss_regions[div]
+                #
+                # # Collect total sequence counts by countries and dates
+                # if date_2weeks >= min_data_week:
+                #     if date_2weeks not in total_counts_countries[country]:
+                #         total_counts_countries[country][date_2weeks] = 0
+                #     total_counts_countries[country][date_2weeks] += 1
+                #
+                #     if division:
+                #         if country in selected_country:
+                #             if div:
+                #                 if div not in total_counts_divisions[country]:
+                #                     total_counts_divisions[country][div] = {}
+                #                 if date_2weeks not in total_counts_divisions[country][div]:
+                #                     total_counts_divisions[country][div][date_2weeks] = 0
+                #                 total_counts_divisions[country][div][date_2weeks] += 1
+
+                ##### ASSIGNING CLUSTERS #####
+
+                # If an official Nextstrain clade, then use Nextclade designation to assign them.
+                # If not an official Nextstrain clade, use our SNP method
+                # Always check for "rest" (mutations and clusters that are currently not displayed)
+                clus_to_check = {key: clus_to_run_breakdown[key]["rest"] for key in clus_to_run_breakdown}
+
+                clus_all = []
                 only_Nextstrain = False
-
-            # Store mutations as taken from metadata table in three categories to make comparison alter easier/faster
-            muts = {"snps": []}
-            if l[indices['substitutions']]:
-                muts["snps"] = [y[1:-1] for y in l[indices['substitutions']].split(',')]
-            muts["snps2"] = muts["snps"]
-
-            # Expand from range format (metadata) to list (covariants)
-            if l[indices['deletions']]:
-                muts["gaps"] = [z for y in l[indices['deletions']].split(',') for z in
-                                range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)]
-
-            # Check for each clus if snps/gaps matches the list given in metadata
-            for key in muts:
-                for clus in clus_to_check[key]:
-                    if clus in clus_all:
-                        continue
-                    for snp in clus_data_all[clus][key]:
-                        if snp not in muts[key]:
-                            break
-                    else:
-                        clus_all.append(clus)
-
-            for clus in clus_all:
-                for snp in clus_data_all[clus]["exclude_snps"]:
-                    if snp in muts["snps"]:
-                        clus_all.remove(clus)
-                        break
-
-            # For some clusters we might want the sequence in our total sequences list (used for runs) but not on covariants
-            clus_all_no_plotting = []
-
-            # Check for inconsistencies
-            if not only_Nextstrain:  # Only check for inconsistencies if there could be more than only one Nextstrain clade
-                clus_all_unique = [c for c in clus_all if c not in rest_all]
-                daughter_parent = False
-                if len(clus_all_unique) == 2:  # Exactly two clus - check if daughter/parent pair
-                    if clusters[clus_all_unique[0]]["display_name"] in daughter_clades and clus_all_unique[1] in \
-                            daughter_clades[clusters[clus_all_unique[0]]["display_name"]]:
-                        if clusters[clus_all_unique[1]]["graphing"]:
-                            clus_all_no_plotting.append(
-                                clus_all_unique[0])  # Assign sequence to child, but for parent keep in nextstrain files
+                # Use Nextclade
+                if clade in nextstrain_clades_display_names:
+                    clus_all.append(display_name_to_clus[clade])
+                    only_Nextstrain = True
+                    if clade in daughter_clades:
+                        if pango in pango_lineage_to_clus and clus_data_all[pango_lineage_to_clus[pango]]["use_pango"] and \
+                                pango_lineage_to_clus[pango] in daughter_clades[clade]:
+                            clus_all.append(pango_lineage_to_clus[pango])
                         else:
-                            clus_all_no_plotting.append(
-                                clus_all_unique[1])  # Assign sequence to parent, but for child keep in nextstrain files
-                        daughter_parent = True
-                    if clusters[clus_all_unique[1]]["display_name"] in daughter_clades and clus_all_unique[0] in \
-                            daughter_clades[clusters[clus_all_unique[1]]["display_name"]]:
-                        if clusters[clus_all_unique[0]]["graphing"]:
-                            clus_all_no_plotting.append(
-                                clus_all_unique[1])  # Assign sequence to child, but for parent keep in nextstrain files
-                        else:
-                            clus_all_no_plotting.append(
-                                clus_all_unique[0])  # Assign sequence to parent, but for child keep in nextstrain files
-                        daughter_parent = True
+                            for daughter in daughter_clades[clade]:
+                                # TODO: make sure this works for snps
+                                if not clus_check:  # Make sure daughter clade is not added two times
+                                    clus_to_check = {
+                                        key: clus_to_check[key] + [daughter] if daughter in clus_to_run_breakdown[key][
+                                            "official_clus"] or daughter in clus_to_run_breakdown[key][
+                                                                                    "unofficial_clus"] else clus_to_check[
+                                            key] for key in clus_to_check}
 
-                if len(clus_all_unique) > 1 and not daughter_parent:  # Flag for inconsistency
-                    clus_all = [clus for clus in clus_all if clus not in clus_all_unique]
-                    if clade in display_name_to_clus and display_name_to_clus[
-                        clade] in clus_all_unique:  # If Nextstrain clade: Keep this and remove all others
-                        clus_all.append(display_name_to_clus[clade])
-                        cluster_inconsistencies["Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
+                        only_Nextstrain = False
+                else:
+                    if pango in pango_lineage_to_clus:
+                        if clus_data_all[pango_lineage_to_clus[pango]]["use_pango"]:
+                            clus_all.append(pango_lineage_to_clus[pango])
+                            only_Nextstrain = True
 
-                    else:  # If no Nextstrain clade: Drop all unique clusters (still keep mutations and unofficial clusters)
-                        cluster_inconsistencies["Non_Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
+                # If no official Nextstrain_clade assigned, or we want additional checks, also check for "unofficial" clusters
+                # We NEVER check for "official" clusters. If Nextclade did not assign a cluster, then we won't do it either
+                if clus_all == [] or clus_check:
+                    clus_to_check = {key: clus_to_check[key] + clus_to_run_breakdown[key]["unofficial_clus"] for key in
+                                     clus_to_check}
+                    only_Nextstrain = False
 
-            ##### COLLECT COUNTS PER CLUSTER #####
-            for clus in clus_all:
+                # Store mutations as taken from metadata table in three categories to make comparison alter easier/faster
+                muts = {"snps": []}
+                if l[indices['substitutions']]:
+                    muts["snps"] = [y[1:-1] for y in l[indices['substitutions']].split(',')]
+                muts["snps2"] = muts["snps"]
 
-                # Exclude all strains that are dated before their respective clade
-                if clus in cluster_first_dates:
-                    if date_formatted < cluster_first_dates[clus]["date_formatted"]:
-                        if not (clus in first_date_exceptions and l[indices["strain"]] in first_date_exceptions[clus]):
-                            if clus not in alert_dates:
-                                alert_dates[clus] = {'strain': [], 'date': [], 'gisaid_epi_isl': []}
-                            for k in alert_dates[clus]:
-                                alert_dates[clus][k].append(l[indices[k]])
+                # Expand from range format (metadata) to list (covariants)
+                if l[indices['deletions']]:
+                    muts["gaps"] = [z for y in l[indices['deletions']].split(',') for z in
+                                    range(int(y.split("-")[0]), int(y.split("-")[-1]) + 1)]
+
+                # Check for each clus if snps/gaps matches the list given in metadata
+                for key in muts:
+                    for clus in clus_to_check[key]:
+                        if clus in clus_all:
                             continue
+                        for snp in clus_data_all[clus][key]:
+                            if snp not in muts[key]:
+                                break
+                        else:
+                            clus_all.append(clus)
 
-                # Store all strains per assigned cluster (used for runs)
-                all_sequences[clus].append(l[indices['strain']])
+                for clus in clus_all:
+                    for snp in clus_data_all[clus]["exclude_snps"]:
+                        if snp in muts["snps"]:
+                            clus_all.remove(clus)
+                            break
 
-                # Skip now if we don't want this sequence in that cluster on covariants
-                if clus in clus_all_no_plotting:
-                    continue
+                # For some clusters we might want the sequence in our total sequences list (used for runs) but not on covariants
+                clus_all_no_plotting = []
 
-                # if you want a dated limit, specify cluster and limit at top
-                if dated_limit and clus == DATED_CLUSTER:
-                    if date_formatted < dated_limit_formatted:
-                        dated_cluster_strains.append(l[indices['strain']])
+                # Check for inconsistencies
+                if not only_Nextstrain:  # Only check for inconsistencies if there could be more than only one Nextstrain clade
+                    clus_all_unique = [c for c in clus_all if c not in rest_all]
+                    daughter_parent = False
+                    if len(clus_all_unique) == 2:  # Exactly two clus - check if daughter/parent pair
+                        if clusters[clus_all_unique[0]]["display_name"] in daughter_clades and clus_all_unique[1] in \
+                                daughter_clades[clusters[clus_all_unique[0]]["display_name"]]:
+                            if clusters[clus_all_unique[1]]["graphing"]:
+                                clus_all_no_plotting.append(
+                                    clus_all_unique[0])  # Assign sequence to child, but for parent keep in nextstrain files
+                            else:
+                                clus_all_no_plotting.append(
+                                    clus_all_unique[1])  # Assign sequence to parent, but for child keep in nextstrain files
+                            daughter_parent = True
+                        if clusters[clus_all_unique[1]]["display_name"] in daughter_clades and clus_all_unique[0] in \
+                                daughter_clades[clusters[clus_all_unique[1]]["display_name"]]:
+                            if clusters[clus_all_unique[0]]["graphing"]:
+                                clus_all_no_plotting.append(
+                                    clus_all_unique[1])  # Assign sequence to child, but for parent keep in nextstrain files
+                            else:
+                                clus_all_no_plotting.append(
+                                    clus_all_unique[0])  # Assign sequence to parent, but for child keep in nextstrain files
+                            daughter_parent = True
 
-                # Collect summary counts (total by country, also store first and last date)
-                clus_data_all[clus]["summary"][country]["num_seqs"] += 1
-                clus_data_all[clus]["summary"][country]["first_seq"] = min(
-                    clus_data_all[clus]["summary"][country]["first_seq"], date_formatted)
-                clus_data_all[clus]["summary"][country]["last_seq"] = max(
-                    clus_data_all[clus]["summary"][country]["last_seq"], date_formatted)
+                    if len(clus_all_unique) > 1 and not daughter_parent:  # Flag for inconsistency
+                        clus_all = [clus for clus in clus_all if clus not in clus_all_unique]
+                        if clade in display_name_to_clus and display_name_to_clus[
+                            clade] in clus_all_unique:  # If Nextstrain clade: Keep this and remove all others
+                            clus_all.append(display_name_to_clus[clade])
+                            cluster_inconsistencies["Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
 
-                # For selected countries (e.g. USA, Switzerland), also collect data by division
-                if division:
-                    if country in selected_country:
-                        if div:
-                            if div not in division_data_all[country][clus]["summary"]:
-                                division_data_all[country][clus]["summary"][div] = {'first_seq': today, 'num_seqs': 0,
-                                                                                    'last_seq': earliest_date}
-                            division_data_all[country][clus]["summary"][div]["num_seqs"] += 1
-                            division_data_all[country][clus]["summary"][div]["first_seq"] = min(
-                                division_data_all[country][clus]["summary"][div]["first_seq"], date_formatted)
-                            division_data_all[country][clus]["summary"][div]["last_seq"] = max(
-                                division_data_all[country][clus]["summary"][div]["last_seq"], date_formatted)
+                        else:  # If no Nextstrain clade: Drop all unique clusters (still keep mutations and unofficial clusters)
+                            cluster_inconsistencies["Non_Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
 
-                if date_2weeks < min_data_week:
-                    continue
+                ##### COLLECT COUNTS PER CLUSTER #####
+                for clus in clus_all:
 
-                # cluster_counts: Number of sequences per cluster per country per date (2-week interval)
-                if date_2weeks not in clus_data_all[clus]["cluster_counts"][country]:
-                    clus_data_all[clus]["cluster_counts"][country][date_2weeks] = 0
-                clus_data_all[clus]["cluster_counts"][country][date_2weeks] += 1
+                    # Exclude all strains that are dated before their respective clade
+                    if clus in cluster_first_dates:
+                        if date_formatted < cluster_first_dates[clus]["date_formatted"]:
+                            if not (clus in first_date_exceptions and l[indices["strain"]] in first_date_exceptions[clus]):
+                                if clus not in alert_dates:
+                                    alert_dates[clus] = {'strain': [], 'date': [], 'gisaid_epi_isl': []}
+                                for k in alert_dates[clus]:
+                                    alert_dates[clus][k].append(l[indices[k]])
+                                continue
 
-                if division:
-                    if country in selected_country:
-                        if div:
-                            if div not in division_data_all[country][clus]["cluster_counts"]:
-                                division_data_all[country][clus]["cluster_counts"][div] = {}
-                            if date_2weeks not in division_data_all[country][clus]["cluster_counts"][div]:
-                                division_data_all[country][clus]["cluster_counts"][div][date_2weeks] = 0
-                            division_data_all[country][clus]["cluster_counts"][div][date_2weeks] += 1
+                    # Store all strains per assigned cluster (used for runs)
+                    all_sequences[clus].append(l[indices['strain']])
 
-                if print_acks:
-                    # remove all but EPI_ISL, on request from GISAID
-                    acknowledgement_by_variant["acknowledgements"][clus].append(l[indices['gisaid_epi_isl']])
+                    # Skip now if we don't want this sequence in that cluster on covariants
+                    if clus in clus_all_no_plotting:
+                        continue
+
+                    # if you want a dated limit, specify cluster and limit at top
+                    if dated_limit and clus == DATED_CLUSTER:
+                        if date_formatted < dated_limit_formatted:
+                            dated_cluster_strains.append(l[indices['strain']])
+
+                    # Collect summary counts (total by country, also store first and last date)
+                    clus_data_all[clus]["summary"][country]["num_seqs"] += 1
+                    clus_data_all[clus]["summary"][country]["first_seq"] = min(
+                        clus_data_all[clus]["summary"][country]["first_seq"], date_formatted)
+                    clus_data_all[clus]["summary"][country]["last_seq"] = max(
+                        clus_data_all[clus]["summary"][country]["last_seq"], date_formatted)
+
+                    # For selected countries (e.g. USA, Switzerland), also collect data by division
+                    if division:
+                        if country in selected_country:
+                            if div:
+                                if div not in division_data_all[country][clus]["summary"]:
+                                    division_data_all[country][clus]["summary"][div] = {'first_seq': today, 'num_seqs': 0,
+                                                                                        'last_seq': earliest_date}
+                                division_data_all[country][clus]["summary"][div]["num_seqs"] += 1
+                                division_data_all[country][clus]["summary"][div]["first_seq"] = min(
+                                    division_data_all[country][clus]["summary"][div]["first_seq"], date_formatted)
+                                division_data_all[country][clus]["summary"][div]["last_seq"] = max(
+                                    division_data_all[country][clus]["summary"][div]["last_seq"], date_formatted)
+
+                    if date_2weeks < min_data_week:
+                        continue
+
+                    # cluster_counts: Number of sequences per cluster per country per date (2-week interval)
+                    if date_2weeks not in clus_data_all[clus]["cluster_counts"][country]:
+                        clus_data_all[clus]["cluster_counts"][country][date_2weeks] = 0
+                    clus_data_all[clus]["cluster_counts"][country][date_2weeks] += 1
+
+                    if division:
+                        if country in selected_country:
+                            if div:
+                                if div not in division_data_all[country][clus]["cluster_counts"]:
+                                    division_data_all[country][clus]["cluster_counts"][div] = {}
+                                if date_2weeks not in division_data_all[country][clus]["cluster_counts"][div]:
+                                    division_data_all[country][clus]["cluster_counts"][div][date_2weeks] = 0
+                                division_data_all[country][clus]["cluster_counts"][div][date_2weeks] += 1
+
+                    if print_acks:
+                        # remove all but EPI_ISL, on request from GISAID
+                        acknowledgement_by_variant["acknowledgements"][clus].append(l[indices['gisaid_epi_isl']])
+            batches=reader.next_batches(10)
+        no_qc = pl.concat(no_qcs).sum().item()
+        for row in pl.concat(total_counts_divisions_new).group_by('country', 'division', 'date_2weeks').sum().iter_rows():
+            if row[0] not in total_counts_divisions.keys():
+                total_counts_divisions.update({row[0]: {row[1]: {}}})
+            if row[1] not in total_counts_divisions[row[0]].keys():
+                total_counts_divisions[row[0]].update({row[1]: {}})
+            total_counts_divisions[row[0]][row[1]].update({(row[2]['year'], row[2]['week']): row[3]})
+        for row in pl.concat(total_counts_countries_new).group_by('country', 'date_2weeks').sum().iter_rows():
+            if row[0] not in total_counts_countries.keys():
+                total_counts_countries.update({row[0]: {}})
+            else:
+                total_counts_countries[row[0]].update({(row[1]['year'], row[1]['week']): row[2]})
+    # future_dates = pl.concat(future_dates)
+    # if len(future_dates) > 0:
+    #     logging.warning(f"WARNING! Data from the future!\n {future_dates}")
     print("100% complete!")
     t1 = time.time()
     print(f"Collecting all data took {round((t1 - t0) / 60, 1)} min to run.\n")
-    print(f"There are {noQC} without QC information.\n")
-    return all_sequences, cluster_inconsistencies
+    print(f"There are {no_qc} without QC information.\n")
+    return all_sequences, cluster_inconsistencies, total_counts_countries, total_counts_divisions
 
 
 def prepare_data_structure(all_countries, clus_to_run, division, earliest_date, selected_country, today):
