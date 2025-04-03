@@ -1,12 +1,10 @@
-import pytest
-
 from scripts.cluster_analysis import main, initial_metadata_pass
 from scripts.clusters import clusters
 
 
-@pytest.mark.skip()
 def test_main():
-    main()
+    user_input = ('all', True, list(clusters.keys()), True, True, True, False, False, ["USA", "Switzerland"])
+    main(*user_input, input_meta='data/metadata.csv')
 
 
 def test_initial_metadata():
@@ -15,12 +13,12 @@ def test_initial_metadata():
     cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country',
             'gisaid_epi_isl', 'coverage', 'QC_overall_status', 'Nextclade_pango']
     display_name_to_clus = {cluster["display_name"]: key for key, cluster in clusters.items()}
-    Nextstrain_clades, Nextstrain_clades_display_names, all_countries, n_total = initial_metadata_pass(clus_to_run,
+    nextstrain_clades, nextstrain_clades_display_names, all_countries, n_total = initial_metadata_pass(clus_to_run,
                                                                                                        cols,
                                                                                                        display_name_to_clus,
                                                                                                        input_meta)
-    assert Nextstrain_clades == ['20A', '24A (Omicron)']
-    assert Nextstrain_clades_display_names == ['24A (Omicron)']
+    assert nextstrain_clades == ['20A', '24A (Omicron)']
+    assert nextstrain_clades_display_names == ['24A (Omicron)']
     assert all_countries == ['Afghanistan', 'Australia', 'Cambodia', 'Japan', ]
     assert n_total == 10
 
