@@ -1,4 +1,7 @@
-from scripts.cluster_analysis import main, initial_metadata_pass
+from datetime import datetime
+
+from scripts.cluster_analysis import main, initial_metadata_pass, clean_metadata, prepare_data_structure, \
+    split_into_cluster_categories
 from scripts.clusters import clusters
 
 
@@ -19,7 +22,7 @@ def test_initial_metadata():
                                                                                                        input_meta)
     assert nextstrain_clades == ['20A', '24A (Omicron)']
     assert nextstrain_clades_display_names == ['24A (Omicron)']
-    assert all_countries == ['Afghanistan', 'Australia', 'Cambodia', 'Japan', ]
+    assert all_countries == ['Afghanistan', 'Australia', 'Cambodia', 'Japan']
     assert n_total == 10
 
 
@@ -36,7 +39,7 @@ def test_initial_metadata_zipped_slow():
                                                                                                        mode='slow')
     assert nextstrain_clades == ['20A', '24A (Omicron)']
     assert nextstrain_clades_display_names == ['24A (Omicron)']
-    assert all_countries == ['Afghanistan', 'Australia', 'Cambodia', 'Japan', ]
+    assert all_countries == ['Afghanistan', 'Australia', 'Cambodia', 'Japan']
     assert n_total == 10
 
 
@@ -53,7 +56,7 @@ def test_initial_metadata_zipped_fast():
                                                                                                        mode='fast')
     assert nextstrain_clades == ['20A', '24A (Omicron)']
     assert nextstrain_clades_display_names == ['24A (Omicron)']
-    assert all_countries == ['Afghanistan', 'Australia', 'Cambodia', 'Japan', ]
+    assert all_countries == ['Afghanistan', 'Australia', 'Cambodia', 'Japan']
     assert n_total == 10
 
 
@@ -687,3 +690,50 @@ def test_initial_metadata_zipped_full_fast():
                              'Zambia',
                              'Zimbabwe']
     assert n_total == 16860043
+
+
+def test_clean_metadata():
+    nextstrain_clades = ['20A', '24A (Omicron)']
+    clus_to_run = clusters.keys()
+
+
+    all_countries = ['Afghanistan', 'Australia', 'Cambodia', 'Japan']
+    division = True
+    earliest_date = datetime.strptime("2019-01-01", '%Y-%m-%d')
+    selected_country = ["USA", "Switzerland"]
+    today = datetime.today()
+
+    nextstrain_clades_display_names = ['24A (Omicron)']
+    alert_dates = {}
+    clus_check = True
+    cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country',
+            'gisaid_epi_isl', 'coverage', 'QC_overall_status', 'Nextclade_pango']
+    dated_cluster_strains = []
+    dated_limit = ""
+    dated_limit_formatted = None
+    display_name_to_clus = {clusters[clus]["display_name"]: clus for clus in clus_to_run if
+                        "display_name" in clusters[clus]}
+    input_meta='data/metadata.csv'
+    min_data_week = (2020, 18)
+    new_clades_to_rename = {}
+    pango_lineage_to_clus = {p["name"]: clus for clus in clus_to_run if "pango_lineages" in clusters[clus] for p in
+                             clusters[clus]["pango_lineages"]}
+    print_acks = False
+
+    n_total = 10
+
+    clus_to_run_breakdown, daughter_clades, rest_all = split_into_cluster_categories(nextstrain_clades, clus_to_run)
+
+    acknowledgement_by_variant, acknowledgement_keys, clus_data_all, division_data_all, total_counts_countries, total_counts_divisions = prepare_data_structure(
+        all_countries, clus_to_run, division, earliest_date, selected_country, today)
+    all_sequences, cluster_inconsistencies = clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant,
+                                                            alert_dates, clus_check, clus_data_all,
+                                                            clus_to_run_breakdown, cols, dated_cluster_strains,
+                                                            dated_limit, dated_limit_formatted, daughter_clades,
+                                                            display_name_to_clus, division, division_data_all,
+                                                            earliest_date, input_meta, min_data_week, n_total,
+                                                            new_clades_to_rename, pango_lineage_to_clus, print_acks,
+                                                            rest_all, selected_country, today, total_counts_countries,
+                                                            total_counts_divisions)
+    assert all_sequences == {'20AS126': [], '20BS732': [], '21GLambda': [], '21H': [], '21I.Delta': [], '21J.Delta': [], '21K.Omicron': [], '21L.Omicron': [], '21M.Omicron': [], '22A': [], '22B': [], '22C': [], '22D': [], '22E': [], '22F': [], '23A': [], '23B': [], '23C': [], '23D': [], '23E': [], '23F': [], '23G': [], '23H': [], '23I': [], '24A': ['Australia/249/2024'], '24B': [], '24C': [], '24D': [], '24E': [], '24F': [], '24G': [], '24H': [], '24I': [], '25A': [], 'Alpha': [], 'Beta': [], 'DanishCluster': [], 'Delta': [], 'Delta.145H': [], 'Delta.250I': [], 'Delta.299I': [], 'Delta.ORF1a3059F': [], 'Delta417': ['Australia/249/2024'], 'EU1': [], 'EU2': [], 'Epsilon': [], 'Eta': [], 'Gamma': [], 'Iota': [], 'Kappa': [], 'ORF1aS3675': ['Australia/249/2024'], 'Omicron': [], 'Recombinant': [], 'S1122': [], 'S144': ['Australia/249/2024'], 'S145': [], 'S18': [], 'S417': ['Australia/249/2024'], 'S439': [], 'S453': [], 'S477mut': ['Australia/249/2024'], 'S484': ['Australia/249/2024'], 'S501': ['Australia/249/2024'], 'S572': [], 'S613': [], 'S626': [], 'S655': ['Australia/249/2024'], 'S677': ['Afganistan/IMB15483/2021', 'Afganistan/IMB15484/2021', 'Afganistan/IMB15485/2021', 'Cambodia/IMB15486/2021', 'Cambodia/IMB15487/2021', 'Japan/IMB15488/2021'], 'S677HBluebird': [], 'S677HHeron': [], 'S677HMockingbird': [], 'S677HQuail': [], 'S677HRobin1': [], 'S677HRobin2': [], 'S677HYellowhammer': [], 'S677PPelican': [], 'S677RRoadrunner': [], 'S681': ['Australia/249/2024'], 'S69': ['Australia/249/2024'], 'S80': [], 'S98': [], 'S_222': []}
+    assert cluster_inconsistencies == {'Nextstrain_clade': {'EPI_ISL_19084620': ['24A', 'Delta', '21K.Omicron', '21L.Omicron', '23I']}, 'Non_Nextstrain_clade': {}}
