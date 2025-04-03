@@ -689,7 +689,7 @@ def clean_metadata(Nextstrain_clades_display_names, acknowledgement_by_variant, 
     print("\nReading and cleaning up the metadata line-by-line...\n")
     n = 0
     noQC = 0
-    with open(input_meta) as f:
+    with gzip.open(input_meta, 'rt') if input_meta.endswith('.gz') else open(input_meta) as f:
         header = f.readline().split("\t")
         indices = {c: header.index(c) for c in cols}
 
@@ -1135,31 +1135,8 @@ def initial_metadata_pass(clus_to_run, cols, display_name_to_clus, input_meta, m
     all_countries = []
     n_total = 0
 
-    if input_meta.endswith('.gz'):
-        if mode == 'slow':
-            with gzip.open(input_meta, 'rt') as f:
-                header = f.readline().split("\t")
-                indices = {c: header.index(c) for c in cols}
-                line = f.readline()
-                while line:
-                    l = line.split("\t")
-                    if l[indices['Nextstrain_clade']] not in nextstrain_clades:
-                        nextstrain_clades.append(l[indices['Nextstrain_clade']])
-                    if l[indices['country']] not in all_countries:
-                        all_countries.append(l[indices['country']])
-                    n_total += 1
-                    line = f.readline()
-        elif mode == 'fast':
-            q = (
-                pl.scan_csv(input_meta, separator='\t')
-                .select('Nextstrain_clade', 'country')
-            )
-            data = q.collect()
-            n_total = len(data)
-            nextstrain_clades = data.select(pl.col('Nextstrain_clade').unique()).to_series().sort().to_list()
-            all_countries = data.select(pl.col('country').unique()).to_series().sort().to_list()
-    else:
-        with open(input_meta) as f:
+    if mode == 'slow':
+        with gzip.open(input_meta, 'rt') if input_meta.endswith('.gz') else open(input_meta) as f:
             header = f.readline().split("\t")
             indices = {c: header.index(c) for c in cols}
             line = f.readline()
@@ -1171,6 +1148,15 @@ def initial_metadata_pass(clus_to_run, cols, display_name_to_clus, input_meta, m
                     all_countries.append(l[indices['country']])
                 n_total += 1
                 line = f.readline()
+    elif mode == 'fast':
+        q = (
+            pl.scan_csv(input_meta, separator='\t')
+            .select('Nextstrain_clade', 'country')
+        )
+        data = q.collect()
+        n_total = len(data)
+        nextstrain_clades = data.select(pl.col('Nextstrain_clade').unique()).to_series().sort().to_list()
+        all_countries = data.select(pl.col('country').unique()).to_series().sort().to_list()
 
     # All clus that appear in the Nextstrain_clade column in the metadata
     nextstrain_clades_display_names = []
