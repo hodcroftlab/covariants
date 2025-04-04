@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { DefiningMutationCluster } from 'src/io/getDefiningMutationsClusters'
-import { CodingMutationsTable } from 'src/components/DefiningMutations/DefiningMutationByCluster/CodingMutationsTable'
-import { SilentNucleotideMutationsTable } from 'src/components/DefiningMutations/DefiningMutationByCluster/SilentMutationsTable'
+import { CodingMutationsTable } from 'src/components/DefiningMutations/CodingMutationsTable'
+import { SilentNucleotideMutationsTable } from 'src/components/DefiningMutations/SilentMutationsTable'
 import { MutationBadgeBox } from 'src/components/Common/Badges/MutationBadge'
 
 export interface DefiningMutationsTableProps {
@@ -19,13 +19,13 @@ export function DefiningMutationsTables({ currentCluster, referenceSequenceName 
   }
 
   return (
-    <div className={'d-flex gap-2 flex-column flex-lg-row'}>
-      <div>
-        <h3>Coding mutations</h3>
+    <div className={'d-flex gap-2 flex-column flex-xl-row'}>
+      <div className={'w-100 w-xl-50'}>
+        <h2 className="fs-5">Coding</h2>
         <CodingMutationsTable codingMutations={mutations.coding} />
       </div>
-      <div>
-        <h3>Silent mutations</h3>
+      <div className={'w-100 w-xl-50'}>
+        <h2 className="fs-5">Silent</h2>
         <SilentNucleotideMutationsTable silentMutations={mutations.silent} />
       </div>
     </div>

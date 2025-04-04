@@ -1,0 +1,15 @@
+/* stylelint-disable scss/at-extend-no-missing-placeholder */
+
+/* We want to extend utility classes, which don't have a placeholder */
+.side-navigation-header {
+  @extend .d-flex;
+  @extend .justify-content-center;
+  @extend .w-100;
+  @extend .bg-transparent;
+  @extend .text-gray-700 !optional;
+  @extend .fw-bold;
+  @extend .fs-5;
+  @extend .text-capitalize;
+}
+
+/* stylelint-enable */

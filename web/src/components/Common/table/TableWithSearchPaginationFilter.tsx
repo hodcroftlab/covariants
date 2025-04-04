@@ -3,7 +3,13 @@ import React, { useCallback, useEffect, useState } from 'react'
 import type { Table } from '@tanstack/table-core'
 import { Pagination } from 'src/components/Common/table/Pagination'
 
-const removeAllDefaultStylesForButton = { all: 'unset', width: '100%' } as const
+const removeAllDefaultStylesForButton = {
+  all: 'unset', // Don't show default browser button style, but only the text
+  width: '100%',
+  fontWeight: 'normal', // don't use bootstrap table head bold font weight
+  cursor: 'pointer',
+} as const
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function TableWithSearchPaginationFilter({ table, pageSizes }: { table: Table<any>; pageSizes: number[] }) {
   return (
