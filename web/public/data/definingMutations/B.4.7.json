@@ -1,0 +1,200 @@
+{
+  "lineage": "B.4.7",
+  "nextstrain_clade": "19A",
+  "mutations_relative_to": {
+    "wuhan": {
+      "coding": [
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "R",
+            "pos": 207,
+            "alt": "C"
+          },
+          "nuc_change": [
+            {
+              "ref": "C",
+              "pos": 884,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "V",
+            "pos": 378,
+            "alt": "I"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 1397,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "M",
+            "pos": 2796,
+            "alt": "I"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 8653,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "L",
+            "pos": 3606,
+            "alt": "F"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 11083,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF1b",
+            "ref": "D",
+            "pos": 1869,
+            "alt": "G"
+          },
+          "nuc_change": [
+            {
+              "ref": "A",
+              "pos": 19073,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF8",
+            "ref": "G",
+            "pos": 8,
+            "alt": "*"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 27915,
+              "alt": "T"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_change": {
+            "ref": "T",
+            "pos": 28688,
+            "alt": "C"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 29077,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "G",
+            "pos": 29742,
+            "alt": "T"
+          }
+        }
+      ]
+    },
+    "pango_parent": {
+      "coding": [
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "R",
+            "pos": 207,
+            "alt": "C"
+          },
+          "nuc_change": [
+            {
+              "ref": "C",
+              "pos": 884,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "M",
+            "pos": 2796,
+            "alt": "I"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 8653,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF1b",
+            "ref": "D",
+            "pos": 1869,
+            "alt": "G"
+          },
+          "nuc_change": [
+            {
+              "ref": "A",
+              "pos": 19073,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF8",
+            "ref": "G",
+            "pos": 8,
+            "alt": "*"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 27915,
+              "alt": "T"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 29077,
+            "alt": "T"
+          }
+        }
+      ]
+    }
+  },
+  "children": [],
+  "designation_date": "2021-03-15",
+  "unaliased": "B.4.7",
+  "parent": "B.4"
+}

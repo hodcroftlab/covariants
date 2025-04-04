@@ -8,6 +8,7 @@ from scripts.merge_defining_mutations import process_auto_generated_data, proces
     nuc_location_to_genes, \
     split_aa, match_nuc_to_aas, main, remove_empty_strings, load_auto_generated_data
 
+CI = os.environ.get('CI')
 
 @pytest.mark.parametrize(
     'nuc, nuc_tuple',
@@ -90,14 +91,14 @@ def test_remove_empty_strings():
 
 
 def test_process_hand_curated_file():
-    hand_curated = process_hand_curated_file('data/defining_mutations/hand_curated/22E.Omicron.tsv')
+    hand_curated = process_hand_curated_file('tests/data/defining_mutations/hand_curated/22E.Omicron.tsv')
     assert len(hand_curated) == 141
     assert hand_curated.columns == ['nextstrain_clade', 'nuc_change', 'aa_change', 'relative_to', 'notes']
 
 
 def test_load_and_process_auto_generated_data():
     lineages, auto_generated_mutations_raw = load_auto_generated_data(
-        'data/defining_mutations/auto_generated/cornelius.json')
+        'tests/data/defining_mutations/auto_generated/cornelius.json')
     auto_generated_mutations = process_auto_generated_data(auto_generated_mutations_raw)
     assert len(lineages) == 2
     assert lineages.columns == ['lineage',
@@ -111,7 +112,7 @@ def test_load_and_process_auto_generated_data():
 
 
 def test_main():
-    test_dir = 'data/defining_mutations'
+    test_dir = 'tests/data/defining_mutations'
     hand_curated_test_dir = os.path.join(test_dir, 'hand_curated')
     auto_generated_test_dir = os.path.join(test_dir, 'auto_generated')
     output_test_dir = os.path.join(test_dir, 'output')
@@ -126,23 +127,15 @@ def test_main():
             with open(os.path.join(expected_output_dir, filename)) as expected_output_file:
                 output = json.load(output_file)
                 expected_output = json.load(expected_output_file)
-                compare_nested_dicts(output, expected_output)
-
-
-def compare_nested_dicts(d1, d2):
-    assert d1.keys() == d2.keys()
-    for key in d1.keys():
-        if type(d1[key]) == str:
-            assert d1[key] == d2[key]
-        elif type(d1[key]) == list:
-            assert len(d1[key]) == len(d2[key])
-            for item in d1[key]:
-                assert item in d2[key]
-        elif type(d1[key]) == dict:
-            compare_nested_dicts(d1[key], d2[key])
+                assert output == expected_output
 
 
 def test_edge_cases_do_not_throw_errors():
     _, auto_generated_mutations_raw = load_auto_generated_data(
-        'data/defining_mutations/auto_generated/cornelius_edge_cases.json')
+        'tests/data/defining_mutations/auto_generated/cornelius_edge_cases.json')
     process_auto_generated_data(auto_generated_mutations_raw)
+
+@pytest.mark.skipif(CI, reason='full functionality test only for debugging, skip on CI')
+def test_main_full():
+    main(hand_curated_data_dir='defining_mutations', auto_generated_data_dir='data',
+         output_dir='web/public/data/definingMutations', write_output=False)

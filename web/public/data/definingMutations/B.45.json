@@ -1,0 +1,94 @@
+{
+  "lineage": "B.45",
+  "nextstrain_clade": "19A",
+  "mutations_relative_to": {
+    "wuhan": {
+      "coding": [
+        {
+          "aa_change": {
+            "gene": "N",
+            "ref": "S",
+            "pos": 194,
+            "alt": "L"
+          },
+          "nuc_change": [
+            {
+              "ref": "C",
+              "pos": 28854,
+              "alt": "T"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_change": {
+            "ref": "X",
+            "pos": 1605,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "X",
+            "pos": 1606,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 12710,
+            "alt": "T"
+          }
+        }
+      ]
+    },
+    "pango_parent": {
+      "coding": [
+        {
+          "aa_change": {
+            "gene": "N",
+            "ref": "S",
+            "pos": 194,
+            "alt": "L"
+          },
+          "nuc_change": [
+            {
+              "ref": "C",
+              "pos": 28854,
+              "alt": "T"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_change": {
+            "ref": "X",
+            "pos": 1605,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "X",
+            "pos": 1606,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 12710,
+            "alt": "T"
+          }
+        }
+      ]
+    }
+  },
+  "children": [],
+  "designation_date": "",
+  "unaliased": "B.45",
+  "parent": "B"
+}

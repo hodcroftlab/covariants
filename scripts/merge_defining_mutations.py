@@ -199,7 +199,12 @@ def process_hand_curated_file(path: str) -> pl.DataFrame:
     filename = os.path.basename(path)
     lineage = filename.split('.')[0]
 
-    data = pl.read_csv(path, separator='\t')
+    data = (
+        pl.read_csv(path, separator='\t')
+        .with_columns(
+            pl.col('nuc_change').str.strip_chars(),
+            pl.col('aa_change').str.strip_chars())
+    )
 
     no_reversions = data.filter(pl.col('reversion').is_null())
 
@@ -254,8 +259,8 @@ def import_hand_curated_data(hand_curated_data_dir: str) -> pl.DataFrame:
 
 
 def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mutations: pl.DataFrame) -> pl.DataFrame:
-    hand_curated_raw = hand_curated_mutations.with_columns(nuc_change_raw=pl.col('nuc_change').str.slice(1))
-    auto_generated_raw = auto_generated_mutations.with_columns(nuc_change_raw=pl.col('nuc_change').str.slice(1))
+    hand_curated_raw = hand_curated_mutations.with_columns(nuc_change_raw=pl.col('nuc_change').str.tail(-1).str.head(-1))
+    auto_generated_raw = auto_generated_mutations.with_columns(nuc_change_raw=pl.col('nuc_change').str.tail(-1).str.head(-1))
     combined = (auto_generated_raw
                 .join(hand_curated_raw,
                       on=['lineage', 'nextstrain_clade', 'nuc_change_raw', 'relative_to'],
@@ -281,18 +286,29 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
         .drop('aa_change_hand_curated', 'nuc_change_hand_curated')
     )
 
-    typed = coalesced.with_columns(
-        mutation_type=pl.when(pl.col('aa_change').is_not_null()).then(pl.lit('coding')).otherwise(pl.lit('silent'))
-    ).select('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_change', 'nuc_change', 'notes')
+    typed = (
+        coalesced
+        .with_columns(
+            mutation_type=pl.when(pl.col('aa_change').is_not_null()).then(pl.lit('coding')).otherwise(pl.lit('silent')))
+    )
+
+    position_sorted = (
+        typed
+        .with_columns(nuc_position=pl.col('nuc_change').str.tail(-1).str.head(-1).cast(pl.Int64))
+        .sort('lineage', 'relative_to', 'mutation_type', 'nuc_position', 'nuc_change')
+        .select('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_change', 'nuc_change', 'notes')
+    )
 
     coding_grouped_by_aa = (
-        typed
+        position_sorted
         .filter(pl.col('mutation_type') == 'coding')
-        .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_change')
+        .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_change', maintain_order=True)
         .agg(pl.col('nuc_change'), pl.col('notes').first())
     )
-    silent_grouped_by_aa = typed.filter(pl.col('mutation_type') == 'silent').with_columns(
-        pl.col('nuc_change').cast(pl.List(pl.String)))
+    silent_grouped_by_aa = (
+        position_sorted.filter(pl.col('mutation_type') == 'silent')
+        .with_columns(pl.col('nuc_change').cast(pl.List(pl.String)))
+    )
     grouped_by_aa = pl.concat([
         coding_grouped_by_aa,
         silent_grouped_by_aa
@@ -302,10 +318,26 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
 
 
 def reformat_df_to_dicts(merged, lineages):
-    aggregate_mutations = (
-        merged
+    valid_mutations = merged.filter(pl.col('nuc_change').is_not_null())
+    no_mutations = merged.filter(pl.col('nuc_change').is_null())
+
+    aggregate_valid_mutations = (
+        valid_mutations
         .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type')
         .agg(pl.struct('aa_change', 'nuc_change', 'notes').alias('mutations'))
+    )
+
+    aggregate_no_mutations = (
+        no_mutations
+        .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type')
+        .agg()
+        .with_columns(mutations=[])
+    )
+
+    aggregate_mutations = (
+        pl.concat([aggregate_valid_mutations, aggregate_no_mutations])
+        .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type')
+        .agg(pl.col('mutations').flatten().drop_nulls())
     )
 
     pivot_mutation_types = (
@@ -351,12 +383,13 @@ def reformat_df_to_dicts(merged, lineages):
 def save_mutations_to_file(output: pl.DataFrame, output_dir: str):
     for lineage in output:
         with open(os.path.join(output_dir, f'{lineage["lineage"]}.json'), 'w') as f:
-            json.dump(lineage, f)
+            json.dump(lineage, f, indent=2)
 
 
-def main(hand_curated_data_dir='../tests/data/defining_mutations/emma',
-         auto_generated_data_dir='../tests/data/defining_mutations/cornelius',
-         output_dir='../tests/data/defining_mutations/output'):
+def main(hand_curated_data_dir='defining_mutations',
+         auto_generated_data_dir='data',
+         output_dir='web/public/data/definingMutations',
+         write_output=True):
     lineages, hand_curated_mutations, auto_generated_mutations = import_mutation_data(hand_curated_data_dir,
                                                                                       auto_generated_data_dir)
 
@@ -364,7 +397,8 @@ def main(hand_curated_data_dir='../tests/data/defining_mutations/emma',
 
     output = reformat_df_to_dicts(merged_mutations, lineages)
 
-    save_mutations_to_file(output, output_dir)
+    if write_output:
+        save_mutations_to_file(output, output_dir)
     # TODO: nextclade parent: https://github.com/hodcroftlab/covariants/issues/582
 
 

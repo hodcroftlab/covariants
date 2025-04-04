@@ -1,0 +1,124 @@
+{
+  "lineage": "B.52",
+  "nextstrain_clade": "19A",
+  "mutations_relative_to": {
+    "wuhan": {
+      "coding": [
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "I",
+            "pos": 547,
+            "alt": "V"
+          },
+          "nuc_change": [
+            {
+              "ref": "A",
+              "pos": 1904,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "L",
+            "pos": 2609,
+            "alt": "F"
+          },
+          "nuc_change": [
+            {
+              "ref": "C",
+              "pos": 8090,
+              "alt": "T"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_change": {
+            "ref": "X",
+            "pos": 1605,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "X",
+            "pos": 1606,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 10789,
+            "alt": "T"
+          }
+        }
+      ]
+    },
+    "pango_parent": {
+      "coding": [
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "I",
+            "pos": 547,
+            "alt": "V"
+          },
+          "nuc_change": [
+            {
+              "ref": "A",
+              "pos": 1904,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "L",
+            "pos": 2609,
+            "alt": "F"
+          },
+          "nuc_change": [
+            {
+              "ref": "C",
+              "pos": 8090,
+              "alt": "T"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_change": {
+            "ref": "X",
+            "pos": 1605,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "X",
+            "pos": 1606,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 10789,
+            "alt": "T"
+          }
+        }
+      ]
+    }
+  },
+  "children": [],
+  "designation_date": "",
+  "unaliased": "B.52",
+  "parent": "B"
+}

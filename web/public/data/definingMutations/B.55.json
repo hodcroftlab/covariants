@@ -1,0 +1,34 @@
+{
+  "lineage": "B.55",
+  "nextstrain_clade": "19A",
+  "mutations_relative_to": {
+    "wuhan": {
+      "coding": [],
+      "silent": [
+        {
+          "nuc_change": {
+            "ref": "T",
+            "pos": 514,
+            "alt": "C"
+          }
+        }
+      ]
+    },
+    "pango_parent": {
+      "coding": [],
+      "silent": [
+        {
+          "nuc_change": {
+            "ref": "T",
+            "pos": 514,
+            "alt": "C"
+          }
+        }
+      ]
+    }
+  },
+  "children": [],
+  "designation_date": "2021-03-15",
+  "unaliased": "B.55",
+  "parent": "B"
+}

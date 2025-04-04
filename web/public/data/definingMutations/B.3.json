@@ -1,0 +1,82 @@
+{
+  "lineage": "B.3",
+  "nextstrain_clade": "19A",
+  "mutations_relative_to": {
+    "wuhan": {
+      "coding": [
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "G",
+            "pos": 392,
+            "alt": "D"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 1440,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "A",
+            "pos": 876,
+            "alt": "T"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 2891,
+              "alt": "A"
+            }
+          ]
+        }
+      ],
+      "silent": []
+    },
+    "pango_parent": {
+      "coding": [
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "G",
+            "pos": 392,
+            "alt": "D"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 1440,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "A",
+            "pos": 876,
+            "alt": "T"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 2891,
+              "alt": "A"
+            }
+          ]
+        }
+      ],
+      "silent": []
+    }
+  },
+  "children": [
+    "B.3.1"
+  ],
+  "designation_date": "",
+  "unaliased": "B.3",
+  "parent": "B"
+}

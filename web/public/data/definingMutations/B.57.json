@@ -1,0 +1,48 @@
+{
+  "lineage": "B.57",
+  "nextstrain_clade": "19A",
+  "mutations_relative_to": {
+    "wuhan": {
+      "coding": [],
+      "silent": [
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 3787,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 16362,
+            "alt": "T"
+          }
+        }
+      ]
+    },
+    "pango_parent": {
+      "coding": [],
+      "silent": [
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 3787,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_change": {
+            "ref": "C",
+            "pos": 16362,
+            "alt": "T"
+          }
+        }
+      ]
+    }
+  },
+  "children": [],
+  "designation_date": "2021-03-15",
+  "unaliased": "B.57",
+  "parent": "B"
+}

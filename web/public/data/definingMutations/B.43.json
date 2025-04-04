@@ -1,0 +1,110 @@
+{
+  "lineage": "B.43",
+  "nextstrain_clade": "19A",
+  "mutations_relative_to": {
+    "wuhan": {
+      "coding": [
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "H",
+            "pos": 3233,
+            "alt": "Y"
+          },
+          "nuc_change": [
+            {
+              "ref": "C",
+              "pos": 9962,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "S",
+            "ref": "L",
+            "pos": 8,
+            "alt": "V"
+          },
+          "nuc_change": [
+            {
+              "ref": "T",
+              "pos": 21584,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF3a",
+            "ref": "G",
+            "pos": 251,
+            "alt": "V"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 26144,
+              "alt": "T"
+            }
+          ]
+        }
+      ],
+      "silent": []
+    },
+    "pango_parent": {
+      "coding": [
+        {
+          "aa_change": {
+            "gene": "ORF1a",
+            "ref": "H",
+            "pos": 3233,
+            "alt": "Y"
+          },
+          "nuc_change": [
+            {
+              "ref": "C",
+              "pos": 9962,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "S",
+            "ref": "L",
+            "pos": 8,
+            "alt": "V"
+          },
+          "nuc_change": [
+            {
+              "ref": "T",
+              "pos": 21584,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_change": {
+            "gene": "ORF3a",
+            "ref": "G",
+            "pos": 251,
+            "alt": "V"
+          },
+          "nuc_change": [
+            {
+              "ref": "G",
+              "pos": 26144,
+              "alt": "T"
+            }
+          ]
+        }
+      ],
+      "silent": []
+    }
+  },
+  "children": [],
+  "designation_date": "",
+  "unaliased": "B.43",
+  "parent": "B"
+}
