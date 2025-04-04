@@ -48,7 +48,7 @@ const clusterDatumRawSchema = z.object({
     .array()
     .optional(),
   snps: z.number().array(),
-  type: z.string().optional(),
+  type: z.enum(['variant', 'mutation']).optional(),
 })
 
 const clusterDatumSchema = clusterDatumRawSchema.transform(

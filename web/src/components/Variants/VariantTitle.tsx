@@ -10,13 +10,6 @@ const VariantTitleWrapper = styled.header`
   min-height: 90px;
 `
 
-const ClusterNameTitle = styled.h1``
-
-const ClusterNameSubtitle = styled.p`
-  margin-bottom: 0;
-  text-align: center;
-`
-
 export interface VariantTitleProps {
   cluster?: ClusterDatum
 }
@@ -32,19 +25,19 @@ export function VariantTitle({ cluster }: VariantTitleProps) {
     }
 
     return (
-      <ClusterNameSubtitle>
+      <p className="mb-0 text-center">
         {t(`also known as {{aliases}}`, { aliases: '' })}
         {enablePangolin ? cluster?.displayName : pangoName}
-      </ClusterNameSubtitle>
+      </p>
     )
   }, [cluster?.displayName, t, enablePangolin, pangoName])
 
   return (
     <VariantTitleWrapper>
-      <ClusterNameTitle>
+      <h1>
         {cluster &&
           `${cluster.type == 'variant' ? t('Variant') : t('Mutation')}: ${enablePangolin && pangoName ? pangoName : cluster.displayName}`}
-      </ClusterNameTitle>
+      </h1>
       {subtitle}
     </VariantTitleWrapper>
   )

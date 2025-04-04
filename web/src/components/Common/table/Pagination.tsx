@@ -134,7 +134,7 @@ function SelectPageButtons({ table }: PaginationProps) {
     <div className={'btn-group btn-group-sm'} role="group" aria-label="Pagination controls">
       <button
         type="button"
-        className="btn btn-secondary "
+        className="btn btn-light "
         onClick={onClickFirstPage}
         disabled={!table.getCanPreviousPage()}
         aria-label="First page"
@@ -143,7 +143,7 @@ function SelectPageButtons({ table }: PaginationProps) {
       </button>
       <button
         type="button"
-        className="btn btn-secondary "
+        className="btn btn-light "
         onClick={onClickPreviousPage}
         disabled={!table.getCanPreviousPage()}
         aria-label="Previous page"
@@ -152,7 +152,7 @@ function SelectPageButtons({ table }: PaginationProps) {
       </button>
       <button
         type="button"
-        className="btn btn-secondary "
+        className="btn btn-light "
         onClick={onClickNextPage}
         disabled={!table.getCanNextPage()}
         aria-label="Next page"
@@ -161,7 +161,7 @@ function SelectPageButtons({ table }: PaginationProps) {
       </button>
       <button
         type="button"
-        className="btn btn-secondary "
+        className="btn btn-light "
         onClick={onClickLastPage}
         disabled={!table.getCanNextPage()}
         aria-label="Last page"
