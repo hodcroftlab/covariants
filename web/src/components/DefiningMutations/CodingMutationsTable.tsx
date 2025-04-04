@@ -16,7 +16,7 @@ import {
 import { DEFAULT_PAGE_SIZES, getDefaultPaginationState } from 'src/components/Common/table/Pagination'
 import { TableWithSearchPaginationFilter } from 'src/components/Common/table/TableWithSearchPaginationFilter'
 import { formatMutation } from 'src/components/Common/formatMutation'
-import { Annotation } from 'src/components/DefiningMutations/DefiningMutationByCluster/DefiningMutationsTables'
+import { Annotation } from 'src/components/DefiningMutations/DefiningMutationsTables'
 import { AminoacidMutationBadge } from 'src/components/Common/Badges/AminoacidMutationBadge'
 import { NucleotideMutationBadge } from 'src/components/Common/Badges/NucleotideMutationBadge'
 

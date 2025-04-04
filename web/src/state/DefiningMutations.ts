@@ -1,6 +1,14 @@
-import { selector } from 'recoil'
+import { atomFamily, selector, useRecoilValue } from 'recoil'
+import Router from 'next/router'
 import { atomAsync } from 'src/state/utils/atomAsync'
-import { DefiningMutationListElement, fetchDefiningMutationClusters } from 'src/io/getDefiningMutationsClusters'
+import {
+  DefiningMutationListElement,
+  fetchDefiningMutationClusters,
+  fetchDefiningMutationsCluster,
+} from 'src/io/getDefiningMutationsClusters'
+import { parseUrl } from 'src/helpers/parseUrl'
+import { takeFirstMaybe } from 'src/helpers/array'
+import { setUrlQuery } from 'src/helpers/urlQuery'
 
 export const definingMutationClustersAtom = atomAsync<DefiningMutationListElement[]>({
   key: 'definingMutations',
@@ -38,3 +46,31 @@ export const definingMutationClusterClades = selector({
       .map((cluster) => cluster.nextstrainClade)
   },
 })
+
+export function useClusterNameFromUrl() {
+  const { query } = parseUrl(Router.asPath)
+  return takeFirstMaybe(query.variant)
+}
+
+export function setClusterNameToUrl(clusterName: string | undefined) {
+  const newQuery = clusterName ? { variant: clusterName } : {}
+  setUrlQuery(newQuery).catch(() => {})
+}
+
+export const DefiningMutationClusterAtomFamily = atomFamily({
+  key: 'DefiningMutationClusterFamily',
+  default: async (clusterName: string | undefined) => {
+    if (clusterName === undefined) {
+      return undefined
+    }
+    return fetchDefiningMutationsCluster(clusterName)
+  },
+})
+
+export function useDefiningMutationsCluster() {
+  const clusterNameFromUrl = useClusterNameFromUrl()
+  const allClusters = useRecoilValue(definingMutationClustersAtom)
+  const isInClusterList = allClusters.some((cluster) => cluster.lineage === clusterNameFromUrl)
+
+  return clusterNameFromUrl !== undefined && isInClusterList ? clusterNameFromUrl : undefined
+}
