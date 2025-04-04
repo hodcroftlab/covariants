@@ -1,10 +1,12 @@
-import type { GetStaticPathsContext, GetStaticPropsContext, GetStaticPathsResult, GetStaticPropsResult } from 'next'
+import type { GetStaticPathsContext, GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import { get } from 'lodash'
 
-import type { VariantsPageProps } from 'src/components/Variants/VariantsPage'
+import React, { ReactElement } from 'react'
+import { Variants, type VariantsPageProps } from 'src/components/Variants/Variants'
 import clustersJson from 'src/../public/data/clusters.json'
 import { notUndefinedOrNull } from 'src/helpers/notUndefined'
 import { joinAllMaybe } from 'src/helpers/array'
+import { LimitedWidthPage } from 'src/components/Layout/PageSizes/LimitedWidthPage'
 
 const clusters = clustersJson.clusters.filter((cluster) => !cluster.has_no_page)
 const clusterBuildNames = clusters.map((cluster) => cluster.build_name)
@@ -33,4 +35,10 @@ export async function getStaticPaths(_0: GetStaticPathsContext): Promise<GetStat
   }
 }
 
-export { VariantsPage as default } from 'src/components/Variants/VariantsPage'
+export default function VariantsPage({ clusterName }: { clusterName: string }) {
+  return <Variants clusterName={clusterName} />
+}
+
+VariantsPage.getLayout = function getLayout(page: ReactElement) {
+  return <LimitedWidthPage>{page}</LimitedWidthPage>
+}
