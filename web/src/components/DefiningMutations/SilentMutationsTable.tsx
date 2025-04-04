@@ -12,7 +12,7 @@ import { getMutationFromNucleotideMutation, SilentMutation } from 'src/io/getDef
 import { DEFAULT_PAGE_SIZES, getDefaultPaginationState } from 'src/components/Common/table/Pagination'
 import { TableWithSearchPaginationFilter } from 'src/components/Common/table/TableWithSearchPaginationFilter'
 import { formatMutation } from 'src/components/Common/formatMutation'
-import { Annotation } from 'src/components/DefiningMutations/DefiningMutationByCluster/DefiningMutationsTables'
+import { Annotation } from 'src/components/DefiningMutations/DefiningMutationsTables'
 import { NucleotideMutationBadge } from 'src/components/Common/Badges/NucleotideMutationBadge'
 
 export function SilentNucleotideMutationsTable({ silentMutations }: { silentMutations: SilentMutation[] }) {
@@ -28,7 +28,7 @@ export function SilentNucleotideMutationsTable({ silentMutations }: { silentMuta
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     initialState: {
-      sorting: [{ id: 'nucleotideMutation', desc: false }],
+      sorting: [{ id: 'nucMutation', desc: false }],
     },
     onPaginationChange: setPagination,
     state: {
