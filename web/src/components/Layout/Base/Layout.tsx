@@ -5,7 +5,7 @@ import { NavigationBar } from './NavigationBar'
 import { FooterContent } from './Footer'
 import { ChristmasLightRope, Santa, Snowfall } from 'src/components/Common/Christmas'
 
-export function Layout({ children }: PropsWithChildren<LayoutProps>) {
+export function Layout({ children }: PropsWithChildren) {
   return (
     <Container fluid>
       <HeaderRow className={'gx-0'}>
@@ -76,7 +76,3 @@ const FooterCol = styled(Col)`
   flex-shrink: 0;
   padding: 0;
 `
-
-export interface LayoutProps {
-  wide?: boolean
-}
