@@ -16,54 +16,40 @@ import { MdxContent } from 'src/i18n/getMdxContent'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { ClusterDatum } from 'src/io/getClusters'
 import { LinkExternal } from 'src/components/Link/LinkExternal'
-import { Layout } from 'src/components/Layout/Layout'
 import { Editable } from 'src/components/Common/Editable'
-import { NarrowPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 import { DefiningMutations, hasDefiningMutations } from 'src/components/Variants/DefiningMutations'
-import { VariantTitle } from 'src/components/Variants/VariantTitle'
 
 import NextstrainIconBase from 'src/assets/images/nextstrain_logo.svg'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
 import {
+  clusterDisplayNameToJoinedLineagesSelector,
   clusterLineagesToBuildNameMapSelector,
   clusterRedirectsSelector,
   hasPageClustersSelector,
-  clusterDisplayNameToJoinedLineagesSelector,
 } from 'src/state/Clusters'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
+import { VariantTitle } from 'src/components/Variants/VariantTitle'
 
-const FlexContainer = styled.div`
-  display: flex;
-  flex-direction: row;
+export function VariantsPage({ clusterName: clusterNameUnsafe }: VariantsPageProps) {
+  const { clusterBuildName, enablePangolinFromUrl } = useDeriveCurrentClusterNameFromUrl(clusterNameUnsafe)
+  const setEnablePangolin = useSetRecoilState(enablePangolinAtom)
+  useEffect(() => setEnablePangolin(enablePangolinFromUrl), [enablePangolinFromUrl, setEnablePangolin])
+  const clusters = useRecoilValue(hasPageClustersSelector)
+  const currentCluster = useMemo(
+    () => clusters.find((cluster) => cluster.buildName === clusterBuildName),
+    [clusterBuildName, clusters],
+  )
 
-  @media (max-width: 991.98px) {
-    flex-direction: column;
-  }
-`
-
-const FlexFixed = styled.div`
-  flex: 0 0 180px;
-  display: flex;
-
-  @media (max-width: 991.98px) {
-    flex: 1 0;
-  }
-`
-
-const FlexGrowing = styled.div`
-  display: flex;
-  flex: 1 0;
-`
-
-const EditableClusterContent = styled(Editable)``
-
-const NextstrainIcon = styled(NextstrainIconBase)`
-  display: inline;
-  margin: auto;
-  width: 25px;
-  height: 25px;
-`
+  return (
+    <div>
+      <VariantTitle cluster={currentCluster} />
+      <ClusterButtonPanelLayout currentCluster={currentCluster}>
+        {currentCluster && <VariantsPageContent currentCluster={currentCluster} />}
+      </ClusterButtonPanelLayout>
+    </div>
+  )
+}
 
 export function useDeriveCurrentClusterNameFromUrl(clusterName?: string): {
   clusterBuildName: string | undefined
@@ -94,31 +80,6 @@ export function useDeriveCurrentClusterNameFromUrl(clusterName?: string): {
 export interface VariantsPageProps {
   clusterName?: string
 }
-
-export function VariantsPage({ clusterName: clusterNameUnsafe }: VariantsPageProps) {
-  const { clusterBuildName, enablePangolinFromUrl } = useDeriveCurrentClusterNameFromUrl(clusterNameUnsafe)
-  const setEnablePangolin = useSetRecoilState(enablePangolinAtom)
-  useEffect(() => setEnablePangolin(enablePangolinFromUrl), [enablePangolinFromUrl, setEnablePangolin])
-  const clusters = useRecoilValue(hasPageClustersSelector)
-  const currentCluster = useMemo(
-    () => clusters.find((cluster) => cluster.buildName === clusterBuildName),
-    [clusterBuildName, clusters],
-  )
-
-  return (
-    <Layout>
-      <NarrowPageContainer>
-        <VariantTitle cluster={currentCluster} />
-
-        <ClusterButtonPanelLayout currentCluster={currentCluster}>
-          {currentCluster && <VariantsPageContent currentCluster={currentCluster} />}
-        </ClusterButtonPanelLayout>
-      </NarrowPageContainer>
-    </Layout>
-  )
-}
-
-const NEXTSTRAIN_ICON = <NextstrainIcon />
 
 export function VariantsPageContent({ currentCluster }: { currentCluster: ClusterDatum }) {
   const { t } = useTranslationSafe()
@@ -201,3 +162,37 @@ export function VariantsPageContent({ currentCluster }: { currentCluster: Cluste
     </FlexContainer>
   )
 }
+
+const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 991.98px) {
+    flex-direction: column;
+  }
+`
+
+const FlexFixed = styled.div`
+  flex: 0 0 180px;
+  display: flex;
+
+  @media (max-width: 991.98px) {
+    flex: 1 0;
+  }
+`
+
+const FlexGrowing = styled.div`
+  display: flex;
+  flex: 1 0;
+`
+
+const EditableClusterContent = styled(Editable)``
+
+const NextstrainIcon = styled(NextstrainIconBase)`
+  display: inline;
+  margin: auto;
+  width: 25px;
+  height: 25px;
+`
+
+const NEXTSTRAIN_ICON = <NextstrainIcon />

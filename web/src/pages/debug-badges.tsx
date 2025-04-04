@@ -6,7 +6,7 @@ import { useRecoilValue } from 'recoil'
 import { Var } from 'src/components/Common/Badges/VariantBadge'
 import { WhoBadge } from 'src/components/Common/Badges/WhoBadge'
 
-import { Layout } from 'src/components/Layout/Layout'
+import { Layout } from 'src/components/Layout/Base/Layout'
 import { LinkSmart } from 'src/components/Link/LinkSmart'
 
 import { GREEK_ALPHABET } from 'src/names'
