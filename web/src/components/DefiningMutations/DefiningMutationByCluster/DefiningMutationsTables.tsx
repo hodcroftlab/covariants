@@ -47,11 +47,11 @@ export function DefiningMutationsTables({ currentCluster, referenceSequenceName 
 
   return (
     <div className={'d-flex gap-2 flex-column flex-lg-row'}>
-      <div>
+      <div className={'flex-fill'}>
         <h3>Coding mutations</h3>
         <CodingMutationsTable aminoAcidMutations={tableData.aminoAcidMutations} />
       </div>
-      <div>
+      <div className={'flex-fill'}>
         <h3>Silent mutations</h3>
         <SilentNucleotideMutationsTable nucleotideMutations={tableData.silentNucleotideMutations} />
       </div>
