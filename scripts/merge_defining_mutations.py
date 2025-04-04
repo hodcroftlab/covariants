@@ -1,4 +1,5 @@
 import json
+import logging
 import os
 
 import numpy as np
@@ -21,16 +22,16 @@ GENE_BOUNDS = {
 }
 
 
-def split_nuc(nuc: str) -> tuple[str, int, str]:
+def parse_mutation(nuc: str) -> tuple[str, int, str]:
     return nuc[0], int(nuc[1:-1]), nuc[-1]
 
 
 def split_aa(aa: str) -> tuple[str, str, int, str]:
     gene, aa = aa.split(':')
-    return gene, *split_nuc(aa)
+    return gene, *parse_mutation(aa)
 
 
-def nuc_to_gene(nuc_location: int):
+def nuc_location_to_genes(nuc_location: int) -> list[str]:
     genes = []
     for gene, bounds in GENE_BOUNDS.items():
         if bounds[0] <= nuc_location <= bounds[1]:
@@ -38,14 +39,13 @@ def nuc_to_gene(nuc_location: int):
     return genes
 
 
-def match_nuc_to_aas(nuc, aas):
+def match_nuc_to_aas(nuc: str | None, aas: list[str]) -> str | None:
     if not nuc:
-        return
-    nuc_old, nuc_location, nuc_new = split_nuc(nuc)
-    genes = nuc_to_gene(nuc_location)
+        return None
+    nuc_old, nuc_location, nuc_new = parse_mutation(nuc)
+    genes = nuc_location_to_genes(nuc_location)
     if len(genes) == 0:
-        print(f'WARNING: nuc {nuc} cannot be matched to gene region')
-        return
+        return None
     # TODO: this does not match correctly for all cases right now
     locations = [int(np.floor((nuc_location - GENE_BOUNDS[gene][0]) / 3)) + 1 for gene in genes]
     for aa in aas:
@@ -54,8 +54,8 @@ def match_nuc_to_aas(nuc, aas):
             return aa
 
 
-def nuc_string_to_object(nuc):
-    ref, pos, alt = split_nuc(nuc)
+def nuc_string_to_dict(nuc):
+    ref, pos, alt = parse_mutation(nuc)
     return {'ref': ref, 'pos': pos, 'alt': alt}
 
 
@@ -64,66 +64,29 @@ def aa_string_to_object(aa):
     return {'gene': gene, 'ref': ref, 'pos': pos, 'alt': alt}
 
 
-def remove_empty_strings(y):
+def remove_empty_strings(y: str | list | np.ndarray) -> str | list | np.ndarray:
     if len(y) == 1:
         if y[0] == '':
             return []
     return y
 
 
-def process_cornelius_file(path):
-    with open(path) as f:
-        data = json.load(f)
-
-    raw_lineages = [mut for mut in data.values()]
-
-    df = pl.from_records(raw_lineages)
-
-    rename = df.rename(
-        {'nextstrainClade': 'nextstrain_clade',
-         'designationDate': 'designation_date',
-         'nucSubstitutions': 'nuc_sub_wuhan',
-         'nucDeletions': 'nuc_del_wuhan',
-         'nucSubstitutionsNew': 'nuc_sub_pango_parent',
-         'nucDeletionsNew': 'nuc_del_pango_parent',
-         'aaSubstitutions': 'aa_sub_wuhan',
-         'aaDeletions': 'aa_del_wuhan',
-         'aaSubstitutionsNew': 'aa_sub_pango_parent',
-         'aaDeletionsNew': 'aa_del_pango_parent'}
-    )
-
-    lineages = rename.select(
-        pl.col('lineage'),
-        pl.col('unaliased'),
-        pl.col('parent'),
-        pl.col('children'),
-        pl.col('nextstrain_clade'),
-        pl.col('designation_date'))
-
-    mutations = rename.select(
-        'lineage',
-        'nextstrain_clade',
-        'nuc_sub_wuhan',
-        'nuc_del_wuhan',
-        'nuc_sub_pango_parent',
-        'nuc_del_pango_parent',
-        'aa_sub_wuhan',
-        'aa_del_wuhan',
-        'aa_sub_pango_parent',
-        'aa_del_pango_parent'
-    )
-
+def process_auto_generated_data(mutations: pl.DataFrame):
     empty_strings_removed = mutations.to_pandas().applymap(remove_empty_strings)
 
     deletion_columns = ['nuc_del_wuhan', 'nuc_del_pango_parent']
-    split_deletions = empty_strings_removed[deletion_columns].applymap(
-        lambda x: [[int(pos) for pos in del_range.split('-')] for del_range in x])
-    deletions_to_ranges = split_deletions.applymap(
-        lambda x: [list(range(*del_range)) if len(del_range) > 1 else del_range for del_range in x])
-    flatten_deletions = deletions_to_ranges.applymap(lambda x: list(pd.core.common.flatten(x)))
-    expand_deletions = empty_strings_removed.copy()
-    expand_deletions[deletion_columns] = flatten_deletions
+    deletions_to_ranges = (
+        empty_strings_removed[deletion_columns]
+        .applymap(
+            lambda deletion_cell: [[int(pos) for pos in del_range.split('-')] for del_range in deletion_cell])
+        .applymap(
+            lambda deletion_cell: [list(range(del_range[0], del_range[1] + 1)) if len(del_range) > 1 else del_range for del_range in
+                                   deletion_cell])
+        .applymap(lambda x: list(pd.core.common.flatten(x)))
+    )
+    expand_deletions = empty_strings_removed.assign(**{col: deletions_to_ranges[col] for col in deletion_columns})
 
+    # TODO: clarify if using 'X' here is the correct way to work around the missing nucleotide in auto-generated deletions: https://github.com/hodcroftlab/covariants/issues/577
     reformat_deletions = pl.from_pandas(expand_deletions).with_columns(
         pl.col(col_name).list.eval(
             pl.concat_str(
@@ -151,9 +114,8 @@ def process_cornelius_file(path):
         )
     )
 
-    # TODO: make sure the nuc to aa matching is scientifically correct
     match_aa_changes = pl.struct('nuc_change', 'aa_change').map_elements(
-        lambda x: match_nuc_to_aas(x['nuc_change'], x['aa_change']), pl.String
+        lambda mutation_row: match_nuc_to_aas(mutation_row['nuc_change'], mutation_row['aa_change']), pl.String
     )
     wuhan = (
         combine_nuc_changes
@@ -183,14 +145,58 @@ def process_cornelius_file(path):
 
     output = pl.concat([wuhan, pango_parent])
 
-    check_relative_to_column(output)
+    check_relative_to_column_is_filled(output)
 
-    # TODO: reversions, frame shifts
-    return lineages, output
+    return output
 
 
-def process_emma_file(path):
-    filename = path.split('/')[-1]
+def load_auto_generated_data(path):
+    with open(path) as f:
+        data = json.load(f)
+
+    raw_lineages = [mut for mut in data.values()]
+
+    df = pl.from_records(raw_lineages)
+
+    rename = df.rename(
+        {'nextstrainClade': 'nextstrain_clade',
+         'designationDate': 'designation_date',
+         'nucSubstitutions': 'nuc_sub_wuhan',
+         'nucDeletions': 'nuc_del_wuhan',
+         'nucSubstitutionsNew': 'nuc_sub_pango_parent',
+         'nucDeletionsNew': 'nuc_del_pango_parent',
+         'aaSubstitutions': 'aa_sub_wuhan',
+         'aaDeletions': 'aa_del_wuhan',
+         'aaSubstitutionsNew': 'aa_sub_pango_parent',
+         'aaDeletionsNew': 'aa_del_pango_parent'}
+    )
+
+    lineages = rename.select(
+        'lineage',
+        'unaliased',
+        'parent',
+        'children',
+        'nextstrain_clade',
+        'designation_date')
+
+    mutations = rename.select(
+        'lineage',
+        'nextstrain_clade',
+        'nuc_sub_wuhan',
+        'nuc_del_wuhan',
+        'nuc_sub_pango_parent',
+        'nuc_del_pango_parent',
+        'aa_sub_wuhan',
+        'aa_del_wuhan',
+        'aa_sub_pango_parent',
+        'aa_del_pango_parent'
+    )
+
+    return lineages, mutations
+
+
+def process_hand_curated_file(path: str) -> pl.DataFrame:
+    filename = os.path.basename(path)
     lineage = filename.split('.')[0]
 
     data = pl.read_csv(path, separator='\t')
@@ -213,57 +219,66 @@ def process_emma_file(path):
 
     output = pl.concat([with_lineage, pango_parent]).drop('not_in_parent')
 
-    check_relative_to_column(output)
+    check_relative_to_column_is_filled(output)
 
-    # TODO: reversions, frame shifts
     return output
 
 
-def check_relative_to_column(df):
+def check_relative_to_column_is_filled(df: pl.DataFrame) -> None:
     if not df.filter(pl.col('relative_to').is_null()).is_empty():
         raise ValueError(f'Could not assign reference point for mutations {df.filter(pl.col("relative_to").is_null())}')
 
 
-def import_file_dfs(emma_dir, corn_dir):
-    lineages, corn = process_cornelius_file(os.path.join(corn_dir, 'cornelius.json'))
+def import_mutation_data(hand_curated_data_dir: str, auto_generated_data_dir: str) -> tuple[
+    pl.DataFrame, pl.DataFrame, pl.DataFrame]:
 
-    emma_files = os.listdir(emma_dir)
-    emma_processed = []
-    for emma_file in emma_files:
-        emma_processed.append(
-            process_emma_file(os.path.join(emma_dir, emma_file))
-            .join(lineages
-                  .select('lineage', 'nextstrain_clade'), on='nextstrain_clade')
-        )
-    emma = pl.concat(emma_processed)
+    lineages, auto_generated_mutations_raw = load_auto_generated_data(os.path.join(auto_generated_data_dir, 'cornelius.json'))
+    auto_generated_mutations = process_auto_generated_data(auto_generated_mutations_raw)
 
-    return lineages, emma, corn
+    hand_curated_mutations = (
+        import_hand_curated_data(hand_curated_data_dir)
+        .join(lineages.select('lineage', 'nextstrain_clade'), on='nextstrain_clade')
+    )
+
+    return lineages, hand_curated_mutations, auto_generated_mutations
 
 
-def merge_file_dfs(emma_df: pl.DataFrame, corn_df: pl.DataFrame):
-    emma_raw = emma_df.with_columns(nuc_change_raw=pl.col('nuc_change').str.slice(1))
-    corn_raw = corn_df.with_columns(nuc_change_raw=pl.col('nuc_change').str.slice(1))
-    combined = (corn_raw
-                .join(emma_raw,
+def import_hand_curated_data(hand_curated_data_dir: str) -> pl.DataFrame:
+    hand_curated_data_files = os.listdir(hand_curated_data_dir)
+    hand_curated_data = pl.concat([
+        process_hand_curated_file(os.path.join(hand_curated_data_dir, hand_curated_file)) for hand_curated_file in
+        hand_curated_data_files
+    ])
+
+    return hand_curated_data
+
+
+def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mutations: pl.DataFrame) -> pl.DataFrame:
+    hand_curated_raw = hand_curated_mutations.with_columns(nuc_change_raw=pl.col('nuc_change').str.slice(1))
+    auto_generated_raw = auto_generated_mutations.with_columns(nuc_change_raw=pl.col('nuc_change').str.slice(1))
+    combined = (auto_generated_raw
+                .join(hand_curated_raw,
                       on=['lineage', 'nextstrain_clade', 'nuc_change_raw', 'relative_to'],
                       how='full',
-                      suffix='_emma',
+                      suffix='_hand_curated',
                       coalesce=True)
                 .drop('nuc_change_raw'))
 
-    not_in_emma = len(
-        corn_raw.join(emma_raw, on=['lineage', 'nextstrain_clade', 'nuc_change_raw', 'relative_to'], how='anti'))
-    not_in_corn = len(
-        emma_raw.join(corn_raw, on=['lineage', 'nextstrain_clade', 'nuc_change_raw', 'relative_to'], how='anti'))
-    if not_in_emma > 0 or not_in_corn > 0:
-        print(f'INFO: unmatched mutations: Emma {not_in_corn}, Cornelius {not_in_emma}')
+    not_in_hand_curated = len(
+        auto_generated_raw.join(hand_curated_raw, on=['lineage', 'nextstrain_clade', 'nuc_change_raw', 'relative_to'],
+                                how='anti'))
+    not_in_auto_generated = len(
+        hand_curated_raw.join(auto_generated_raw, on=['lineage', 'nextstrain_clade', 'nuc_change_raw', 'relative_to'],
+                              how='anti'))
+    if not_in_hand_curated > 0 or not_in_auto_generated > 0:
+        logging.info(f'unmatched mutations: hand-curated {not_in_auto_generated}, auto-generated {not_in_hand_curated}')
 
     coalesced = (
         combined
         .with_columns(
-            aa_change=pl.coalesce(pl.col('aa_change_emma'), pl.col('aa_change')),
-            nuc_change=pl.coalesce(pl.col('nuc_change_emma'), pl.col('nuc_change')))
-        .drop('aa_change_emma', 'nuc_change_emma')
+            aa_change=pl.coalesce(pl.col('aa_change_hand_curated'), pl.col('aa_change')),
+            nuc_change=pl.coalesce(pl.col('nuc_change_hand_curated'), pl.col('nuc_change')))
+        .drop('aa_change_hand_curated', 'nuc_change_hand_curated')
     )
 
     typed = coalesced.with_columns(
@@ -317,38 +332,40 @@ def reformat_df_to_dicts(merged, lineages):
 
     output_dicts = output.to_dicts()
     for lineage in output_dicts:
-        for parent, mutation_types in lineage['mutations_relative_to'].items():
-            if not mutation_types['silent']:
-                mutation_types['silent'] = []
-            for silent_mutation in mutation_types['silent']:
-                silent_mutation.pop('aa_change')
-                silent_mutation.update({'nuc_change': nuc_string_to_object(silent_mutation['nuc_change'][0])})
-                if not silent_mutation['notes']:
-                    silent_mutation.pop('notes')
-            if not mutation_types['coding']:
-                mutation_types['coding'] = []
-            for coding_mutation in mutation_types['coding']:
-                coding_mutation.update({'aa_change': aa_string_to_object(coding_mutation['aa_change'])})
-                coding_mutation.update(
-                    {'nuc_change': [nuc_string_to_object(mutation) for mutation in coding_mutation['nuc_change']]})
-                if not coding_mutation['notes']:
-                    coding_mutation.pop('notes')
+        for mutation_types in lineage['mutations_relative_to'].values():
+            for mutation_type, mutations in mutation_types.items():
+                mutations = mutations or []
+                for mutation in mutations:
+                    if mutation_type == 'coding':
+                        mutation.update({'nuc_change': [nuc_string_to_dict(mut) for mut in mutation['nuc_change']]})
+                        mutation.update({'aa_change': aa_string_to_object(mutation['aa_change'])})
+                    else:
+                        mutation.update({'nuc_change': nuc_string_to_dict(mutation['nuc_change'][0])})
+                        mutation.pop('aa_change')
+                    if not mutation['notes']:
+                        mutation.pop('notes')
 
     return output_dicts
 
 
-def main(emma_dir='../tests/data/defining_mutations/emma', corn_dir='../tests/data/defining_mutations/cornelius',
-         output_dir='../tests/data/defining_mutations/output'):
-    lineages, emma, corn = import_file_dfs(emma_dir, corn_dir)
-
-    merged = merge_file_dfs(emma, corn)
-
-    output = reformat_df_to_dicts(merged, lineages)
-
+def save_mutations_to_file(output: pl.DataFrame, output_dir: str):
     for lineage in output:
         with open(os.path.join(output_dir, f'{lineage["lineage"]}.json'), 'w') as f:
             json.dump(lineage, f)
-    # TODO: nextclade parent
+
+
+def main(hand_curated_data_dir='../tests/data/defining_mutations/emma',
+         auto_generated_data_dir='../tests/data/defining_mutations/cornelius',
+         output_dir='../tests/data/defining_mutations/output'):
+    lineages, hand_curated_mutations, auto_generated_mutations = import_mutation_data(hand_curated_data_dir,
+                                                                                      auto_generated_data_dir)
+
+    merged_mutations = merge_mutation_data(hand_curated_mutations, auto_generated_mutations)
+
+    output = reformat_df_to_dicts(merged_mutations, lineages)
+
+    save_mutations_to_file(output, output_dir)
+    # TODO: nextclade parent: https://github.com/hodcroftlab/covariants/issues/582
 
 
 if __name__ == '__main__':

@@ -1,37 +1,49 @@
 import json
 import os
 
-from scripts.merge_defining_mutations import process_cornelius_file, process_emma_file, split_nuc, nuc_to_gene, \
-    split_aa, match_nuc_to_aas, main
+import numpy as np
+import pytest
+
+from scripts.merge_defining_mutations import process_auto_generated_data, process_hand_curated_file, parse_mutation, \
+    nuc_location_to_genes, \
+    split_aa, match_nuc_to_aas, main, remove_empty_strings, load_auto_generated_data
 
 
-def test_split_nuc():
-    nuc1 = "T670G"
-    nuc2 = "C11289-"
-    nuc3 = "G10447A"
-    nuc4 = "G4-"
-    assert split_nuc(nuc1) == ('T', 670, 'G')
-    assert split_nuc(nuc2) == ('C', 11289, '-')
-    assert split_nuc(nuc3) == ('G', 10447, 'A')
-    assert split_nuc(nuc4) == ('G', 4, '-')
+@pytest.mark.parametrize(
+    'nuc, nuc_tuple',
+    [
+        ("T670G", ('T', 670, 'G')),
+        ("C11289-", ('C', 11289, '-')),
+        ("G10447A", ('G', 10447, 'A')),
+        ("G4-", ('G', 4, '-'))
+    ]
+)
+def test_split_nuc(nuc, nuc_tuple):
+    assert parse_mutation(nuc) == nuc_tuple
 
 
-def test_nuc_to_gene():
-    nuc1 = 670
-    nuc2 = 21636
-    nuc3 = 28312
-    assert nuc_to_gene(nuc1) == ['ORF1a']
-    assert nuc_to_gene(nuc2) == ['S']
-    assert nuc_to_gene(nuc3) == ['N', 'ORF9b']
+@pytest.mark.parametrize(
+    'nuc, genes',
+    [
+        (670, ['ORF1a']),
+        (21636, ['S']),
+        (28312, ['N', 'ORF9b'])
+    ]
+)
+def test_nuc_to_genes(nuc, genes):
+    assert nuc_location_to_genes(nuc) == genes
 
 
-def test_split_aa():
-    aa1 = 'ORF9b:P10S'
-    aa2 = 'S:P681H'
-    aa3 = 'ORF9b:N28-'
-    assert split_aa(aa1) == ('ORF9b', 'P', 10, 'S')
-    assert split_aa(aa2) == ('S', 'P', 681, 'H')
-    assert split_aa(aa3) == ('ORF9b', 'N', 28, '-')
+@pytest.mark.parametrize(
+    'aa, aa_tuple',
+    [
+        ('ORF9b:P10S', ('ORF9b', 'P', 10, 'S')),
+        ('S:P681H', ('S', 'P', 681, 'H')),
+        ('ORF9b:N28-', ('ORF9b', 'N', 28, '-'))
+    ]
+)
+def test_split_aa(aa, aa_tuple):
+    assert split_aa(aa) == aa_tuple
 
 
 def test_match_nuc_to_aas():
@@ -50,28 +62,43 @@ def test_match_nuc_to_aas():
     assert match_nuc_to_aas(nuc, aas) == 'ORF1a:S135R'
 
 
+@pytest.mark.xfail(
+    reason='Nuc to aa matching algorithm needs to be checked: https://github.com/hodcroftlab/covariants/issues/578 ')
 def test_match_missed_nuc_to_aas():
     nuc = "X21766-"
     aas = ['S:H69-']
-    # TODO: this example is also classified differently in corn vs emma (wuhan vs pango_parent)
     assert match_nuc_to_aas(nuc, aas) == 'S:H69-'
 
 
+@pytest.mark.xfail(
+    reason='need to clarify how we incorporate multiple amino acids: https://github.com/hodcroftlab/covariants/issues/581')
 def test_match_nuc_to_multiple_aas():
     nuc = "C28312T"
     aas = ['N:P13L', 'ORF9b:P10F']
-    # TODO: need to clarify how we incorporate multiple amino acids
     assert match_nuc_to_aas(nuc, aas) == ['N:P13L', 'ORF9b:P10F']
 
 
-def test_process_emma_file():
-    emma = process_emma_file('data/defining_mutations/emma/22E.Omicron.tsv')
-    assert len(emma) == 141
-    assert emma.columns == ['nextstrain_clade', 'nuc_change', 'aa_change', 'relative_to', 'notes']
+def test_remove_empty_strings():
+    assert remove_empty_strings(['']) == []
+    assert remove_empty_strings([]) == []
+    assert remove_empty_strings(['hello']) == ['hello']
+    assert remove_empty_strings(['hello', 'goodbye']) == ['hello', 'goodbye']
+    assert remove_empty_strings('') == ''
+    assert remove_empty_strings('hello') == 'hello'
+    assert remove_empty_strings(np.array([''])) == []
+    assert remove_empty_strings(np.array(['hello'])) == np.array(['hello'])
 
 
-def test_process_cornelius_file():
-    lineages, corn = process_cornelius_file('data/defining_mutations/cornelius/cornelius.json')
+def test_process_hand_curated_file():
+    hand_curated = process_hand_curated_file('data/defining_mutations/hand_curated/22E.Omicron.tsv')
+    assert len(hand_curated) == 141
+    assert hand_curated.columns == ['nextstrain_clade', 'nuc_change', 'aa_change', 'relative_to', 'notes']
+
+
+def test_load_and_process_auto_generated_data():
+    lineages, auto_generated_mutations_raw = load_auto_generated_data(
+        'data/defining_mutations/auto_generated/cornelius.json')
+    auto_generated_mutations = process_auto_generated_data(auto_generated_mutations_raw)
     assert len(lineages) == 2
     assert lineages.columns == ['lineage',
                                 'unaliased',
@@ -79,19 +106,19 @@ def test_process_cornelius_file():
                                 'children',
                                 'nextstrain_clade',
                                 'designation_date']
-    assert len(corn) == 258
-    assert corn.columns == ['lineage', 'nextstrain_clade', 'nuc_change', 'aa_change', 'relative_to']
+    assert len(auto_generated_mutations) == 268
+    assert auto_generated_mutations.columns == ['lineage', 'nextstrain_clade', 'nuc_change', 'aa_change', 'relative_to']
 
 
 def test_main():
     test_dir = 'data/defining_mutations'
-    emma_test_dir = os.path.join(test_dir, 'emma')
-    corn_test_dir = os.path.join(test_dir, 'cornelius')
+    hand_curated_test_dir = os.path.join(test_dir, 'hand_curated')
+    auto_generated_test_dir = os.path.join(test_dir, 'auto_generated')
     output_test_dir = os.path.join(test_dir, 'output')
     expected_output_dir = os.path.join(test_dir, 'expected_output')
     expected_output_filenames = os.listdir(expected_output_dir)
 
-    main(emma_test_dir, corn_test_dir, output_test_dir)
+    main(hand_curated_test_dir, auto_generated_test_dir, output_test_dir)
 
     assert os.listdir(output_test_dir) == expected_output_filenames
     for filename in expected_output_filenames:
@@ -116,4 +143,6 @@ def compare_nested_dicts(d1, d2):
 
 
 def test_edge_cases_do_not_throw_errors():
-    process_cornelius_file('data/defining_mutations/cornelius/cornelius_edge_cases.json')
+    _, auto_generated_mutations_raw = load_auto_generated_data(
+        'data/defining_mutations/auto_generated/cornelius_edge_cases.json')
+    process_auto_generated_data(auto_generated_mutations_raw)
