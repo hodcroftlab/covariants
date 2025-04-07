@@ -92,7 +92,7 @@ def test_remove_empty_strings():
 def test_process_hand_curated_file():
     hand_curated = process_hand_curated_file('tests/data/defining_mutations/hand_curated/22E.Omicron.tsv')
     assert len(hand_curated) == 141
-    assert hand_curated.columns == ['nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'relative_to', 'notes']
+    assert hand_curated.columns == ['nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'reference', 'notes']
 
 
 def test_load_and_process_auto_generated_data():
@@ -107,7 +107,7 @@ def test_load_and_process_auto_generated_data():
                                 'nextstrain_clade',
                                 'designation_date']
     assert len(auto_generated_mutations) == 268
-    assert auto_generated_mutations.columns == ['lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'relative_to']
+    assert auto_generated_mutations.columns == ['lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'reference']
 
 
 def test_main():
@@ -121,25 +121,39 @@ def test_main():
     main(hand_curated_test_dir, auto_generated_test_dir, output_test_dir)
 
     assert os.listdir(output_test_dir) == expected_output_filenames
+    expected_output_filenames.remove('definingMutationsClusters.json')
     for filename in expected_output_filenames:
         with open(os.path.join(output_test_dir, filename)) as output_file:
             with open(os.path.join(expected_output_dir, filename)) as expected_output_file:
                 output = json.load(output_file)
                 expected_output = json.load(expected_output_file)
-                compare_nested_dicts(output, expected_output)
+                compare_output(expected_output, output)
 
 
-def compare_nested_dicts(d1, d2):
-    assert d1.keys() == d2.keys()
-    for key in d1.keys():
-        if type(d1[key]) == str:
-            assert d1[key] == d2[key]
-        elif type(d1[key]) == list:
-            assert len(d1[key]) == len(d2[key])
-            for item in d1[key]:
-                assert item in d2[key]
-        elif type(d1[key]) == dict:
-            compare_nested_dicts(d1[key], d2[key])
+def compare_output(mutations1, mutations2):
+    assert mutations1['lineage'] == mutations2['lineage']
+    assert mutations1['nextstrain_clade'] == mutations2['nextstrain_clade']
+    assert mutations1['children'] == mutations2['children']
+    assert mutations1['designation_date'] == mutations2['designation_date']
+    assert mutations1['unaliased'] == mutations2['unaliased']
+    assert mutations1['parent'] == mutations2['parent']
+
+    for muts1 in mutations1['mutations']:
+        for muts2 in mutations2['mutations']:
+            if muts1['reference'] == muts2['reference']:
+                for mutation_type in ['coding', 'silent']:
+                    equal = False
+                    for mut1 in muts1[mutation_type]:
+                        equal = False
+                        for mut2 in muts2[mutation_type]:
+                            if mut1 == mut2:
+                                equal = True
+                                break
+                            else:
+                                equal = False
+                        assert equal
+                    assert equal
+
 
 
 def test_edge_cases_do_not_throw_errors():

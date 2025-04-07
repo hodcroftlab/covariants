@@ -141,7 +141,7 @@ def process_auto_generated_data(mutations: pl.DataFrame):
         .explode('nuc_mutation')
         .with_columns(
             aa_mutation=match_aa_mutations,
-            relative_to=pl.lit('wuhan')
+            reference=pl.lit('wuhan')
         )
     )
     pango_parent = (
@@ -154,12 +154,12 @@ def process_auto_generated_data(mutations: pl.DataFrame):
         .explode('nuc_mutation')
         .with_columns(
             aa_mutation=match_aa_mutations,
-            relative_to=pl.lit('pango_parent'))
+            reference=pl.lit('pango_parent'))
     )
 
     output = pl.concat([wuhan, pango_parent])
 
-    check_relative_to_column_is_filled(output)
+    check_reference_column_is_filled(output)
 
     return output
 
@@ -221,27 +221,27 @@ def process_hand_curated_file(path: str) -> pl.DataFrame:
         no_reversions
         .with_columns(
             nextstrain_clade=pl.lit(lineage),
-            relative_to=pl.lit('wuhan')
+            reference=pl.lit('wuhan')
         )
         .rename({'aa_change': 'aa_mutation', 'nuc_change': 'nuc_mutation'})
-        .select('nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'relative_to', 'not_in_parent', 'notes')
+        .select('nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'reference', 'not_in_parent', 'notes')
     )
     pango_parent = (
         with_lineage.filter(pl.col('not_in_parent') == 'y')
         .with_columns(
-            relative_to=pl.lit('pango_parent'))
+            reference=pl.lit('pango_parent'))
     )
 
     output = pl.concat([with_lineage, pango_parent]).drop('not_in_parent')
 
-    check_relative_to_column_is_filled(output)
+    check_reference_column_is_filled(output)
 
     return output
 
 
-def check_relative_to_column_is_filled(df: pl.DataFrame) -> None:
-    if not df.filter(pl.col('relative_to').is_null()).is_empty():
-        raise ValueError(f'Could not assign reference point for mutations {df.filter(pl.col("relative_to").is_null())}')
+def check_reference_column_is_filled(df: pl.DataFrame) -> None:
+    if not df.filter(pl.col('reference').is_null()).is_empty():
+        raise ValueError(f'Could not assign reference point for mutations {df.filter(pl.col("reference").is_null())}')
 
 
 def import_mutation_data(hand_curated_data_dir: str, auto_generated_data_dir: str) -> tuple[
@@ -273,17 +273,17 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
     auto_generated_raw = auto_generated_mutations.with_columns(nuc_mutation_raw=pl.col('nuc_mutation').str.slice(1))
     combined = (auto_generated_raw
                 .join(hand_curated_raw,
-                      on=['lineage', 'nextstrain_clade', 'nuc_mutation_raw', 'relative_to'],
+                      on=['lineage', 'nextstrain_clade', 'nuc_mutation_raw', 'reference'],
                       how='full',
                       suffix='_hand_curated',
                       coalesce=True)
                 .drop('nuc_mutation_raw'))
 
     not_in_hand_curated = len(
-        auto_generated_raw.join(hand_curated_raw, on=['lineage', 'nextstrain_clade', 'nuc_mutation_raw', 'relative_to'],
+        auto_generated_raw.join(hand_curated_raw, on=['lineage', 'nextstrain_clade', 'nuc_mutation_raw', 'reference'],
                                 how='anti'))
     not_in_auto_generated = len(
-        hand_curated_raw.join(auto_generated_raw, on=['lineage', 'nextstrain_clade', 'nuc_mutation_raw', 'relative_to'],
+        hand_curated_raw.join(auto_generated_raw, on=['lineage', 'nextstrain_clade', 'nuc_mutation_raw', 'reference'],
                               how='anti'))
     if not_in_hand_curated > 0 or not_in_auto_generated > 0:
         logging.info(f'unmatched mutations: hand-curated {not_in_auto_generated}, auto-generated {not_in_hand_curated}')
@@ -298,12 +298,12 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
 
     typed = coalesced.with_columns(
         mutation_type=pl.when(pl.col('aa_mutation').is_not_null()).then(pl.lit('coding')).otherwise(pl.lit('silent'))
-    ).select('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_mutation', 'nuc_mutation', 'notes')
+    ).select('lineage', 'nextstrain_clade', 'reference', 'mutation_type', 'aa_mutation', 'nuc_mutation', 'notes')
 
     coding_grouped_by_aa = (
         typed
         .filter(pl.col('mutation_type') == 'coding')
-        .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_mutation')
+        .group_by('lineage', 'nextstrain_clade', 'reference', 'mutation_type', 'aa_mutation')
         .agg(pl.col('nuc_mutation'), pl.col('notes').first())
     )
     silent_grouped_by_aa = typed.filter(pl.col('mutation_type') == 'silent').with_columns(
@@ -311,7 +311,7 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
     grouped_by_aa = pl.concat([
         coding_grouped_by_aa,
         silent_grouped_by_aa
-    ])
+    ]).rename({'nuc_mutation': 'nuc_mutations'})
 
     return grouped_by_aa
 
@@ -319,27 +319,23 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
 def reformat_df_to_dicts(merged: pl.DataFrame, lineages: pl.DataFrame) -> dict:
     aggregate_mutations = (
         merged
-        .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type')
-        .agg(pl.struct('aa_mutation', 'nuc_mutation', 'notes').alias('mutations'))
+        .group_by('lineage', 'nextstrain_clade', 'reference', 'mutation_type')
+        .agg(pl.struct('aa_mutation', 'nuc_mutations', 'notes').alias('mutations'))
     )
 
     pivot_mutation_types = (
         aggregate_mutations
         .pivot('mutation_type', values='mutations')
-        .select('lineage', 'nextstrain_clade', 'relative_to', mutation_type=pl.struct('coding', 'silent'))
+        .select('lineage', 'nextstrain_clade', mutation_type=pl.struct('reference', 'coding', 'silent'))
+        .rename({'mutation_type': 'mutations'})
+        .group_by('lineage', 'nextstrain_clade').agg('mutations')
     )
 
-    pivot_mutations = (
-        pivot_mutation_types
-        .pivot('relative_to', values='mutation_type')
-        .select('lineage', 'nextstrain_clade', mutations_relative_to=pl.struct('wuhan', 'pango_parent'))
-    )
-
-    add_lineages = pivot_mutations.join(lineages, on=['lineage', 'nextstrain_clade'])
+    add_lineages = pivot_mutation_types.join(lineages, on=['lineage', 'nextstrain_clade'])
 
     output = add_lineages.select('lineage',
                                  'nextstrain_clade',
-                                 'mutations_relative_to',
+                                 'mutations',
                                  'children',
                                  'designation_date',
                                  'unaliased',
@@ -347,15 +343,16 @@ def reformat_df_to_dicts(merged: pl.DataFrame, lineages: pl.DataFrame) -> dict:
 
     output_dicts = output.to_dicts()
     for lineage in output_dicts:
-        for mutation_types in lineage['mutations_relative_to'].values():
-            for mutation_type, mutations in mutation_types.items():
-                mutations = mutations or []
-                for mutation in mutations:
+        for mutations in lineage['mutations']:
+            for mutation_type in ['coding', 'silent']:
+                mutations[mutation_type] = mutations.get(mutation_type) or []
+                for mutation in mutations[mutation_type]:
                     if mutation_type == 'coding':
-                        mutation.update({'nuc_mutation': [Mutation.parse_mutation_string(mut).to_dict() for mut in mutation['nuc_mutation']]})
+                        mutation.update({'nuc_mutations': [Mutation.parse_mutation_string(mut).to_dict() for mut in mutation['nuc_mutations']]})
                         mutation.update({'aa_mutation': AminoAcidMutation.parse_amino_acid_string(mutation['aa_mutation']).to_dict()})
                     else:
-                        mutation.update({'nuc_mutation': Mutation.parse_mutation_string(mutation['nuc_mutation'][0]).to_dict()})
+                        mutation.update({'nuc_mutation': Mutation.parse_mutation_string(mutation['nuc_mutations'][0]).to_dict()})
+                        mutation.pop('nuc_mutations')
                         mutation.pop('aa_mutation')
                     if not mutation['notes']:
                         mutation.pop('notes')
