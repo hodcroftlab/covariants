@@ -110,50 +110,50 @@ def process_auto_generated_data(mutations: pl.DataFrame):
         ) for col_name in deletion_columns
     )
 
-    combine_nuc_changes = reformat_deletions.with_columns(
-        nuc_change_wuhan=pl.concat_list(
+    combine_nuc_mutations = reformat_deletions.with_columns(
+        nuc_mutation_wuhan=pl.concat_list(
             'nuc_sub_wuhan',
             'nuc_del_wuhan'),
-        nuc_change_pango_parent=pl.concat_list(
+        nuc_mutation_pango_parent=pl.concat_list(
             'nuc_sub_pango_parent',
             'nuc_del_pango_parent'
         ),
-        aa_change_wuhan=pl.concat_list(
+        aa_mutation_wuhan=pl.concat_list(
             'aa_sub_wuhan',
             'aa_del_wuhan'
         ),
-        aa_change_pango_parent=pl.concat_list(
+        aa_mutation_pango_parent=pl.concat_list(
             'aa_sub_pango_parent',
             'aa_del_pango_parent'
         )
     )
 
-    match_aa_changes = pl.struct('nuc_change', 'aa_change').map_elements(
-        lambda mutation_row: match_nuc_to_aas(mutation_row['nuc_change'], mutation_row['aa_change']), pl.String
+    match_aa_mutations = pl.struct('nuc_mutation', 'aa_mutation').map_elements(
+        lambda mutation_row: match_nuc_to_aas(mutation_row['nuc_mutation'], mutation_row['aa_mutation']), pl.String
     )
     wuhan = (
-        combine_nuc_changes
+        combine_nuc_mutations
         .select(
             pl.col('lineage'),
             pl.col('nextstrain_clade'),
-            nuc_change=pl.col('nuc_change_wuhan'),
-            aa_change=pl.col('aa_change_wuhan'))
-        .explode('nuc_change')
+            nuc_mutation=pl.col('nuc_mutation_wuhan'),
+            aa_mutation=pl.col('aa_mutation_wuhan'))
+        .explode('nuc_mutation')
         .with_columns(
-            aa_change=match_aa_changes,
+            aa_mutation=match_aa_mutations,
             relative_to=pl.lit('wuhan')
         )
     )
     pango_parent = (
-        combine_nuc_changes
+        combine_nuc_mutations
         .select(
             pl.col('lineage'),
             pl.col('nextstrain_clade'),
-            nuc_change='nuc_change_pango_parent',
-            aa_change=pl.col('aa_change_pango_parent'))
-        .explode('nuc_change')
+            nuc_mutation='nuc_mutation_pango_parent',
+            aa_mutation=pl.col('aa_mutation_pango_parent'))
+        .explode('nuc_mutation')
         .with_columns(
-            aa_change=match_aa_changes,
+            aa_mutation=match_aa_mutations,
             relative_to=pl.lit('pango_parent'))
     )
 
@@ -223,7 +223,8 @@ def process_hand_curated_file(path: str) -> pl.DataFrame:
             nextstrain_clade=pl.lit(lineage),
             relative_to=pl.lit('wuhan')
         )
-        .select('nextstrain_clade', 'nuc_change', 'aa_change', 'relative_to', 'not_in_parent', 'notes')
+        .rename({'aa_change': 'aa_mutation', 'nuc_change': 'nuc_mutation'})
+        .select('nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'relative_to', 'not_in_parent', 'notes')
     )
     pango_parent = (
         with_lineage.filter(pl.col('not_in_parent') == 'y')
@@ -268,21 +269,21 @@ def import_hand_curated_data(hand_curated_data_dir: str) -> pl.DataFrame:
 
 
 def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mutations: pl.DataFrame) -> pl.DataFrame:
-    hand_curated_raw = hand_curated_mutations.with_columns(nuc_change_raw=pl.col('nuc_change').str.slice(1))
-    auto_generated_raw = auto_generated_mutations.with_columns(nuc_change_raw=pl.col('nuc_change').str.slice(1))
+    hand_curated_raw = hand_curated_mutations.with_columns(nuc_mutation_raw=pl.col('nuc_mutation').str.slice(1))
+    auto_generated_raw = auto_generated_mutations.with_columns(nuc_mutation_raw=pl.col('nuc_mutation').str.slice(1))
     combined = (auto_generated_raw
                 .join(hand_curated_raw,
-                      on=['lineage', 'nextstrain_clade', 'nuc_change_raw', 'relative_to'],
+                      on=['lineage', 'nextstrain_clade', 'nuc_mutation_raw', 'relative_to'],
                       how='full',
                       suffix='_hand_curated',
                       coalesce=True)
-                .drop('nuc_change_raw'))
+                .drop('nuc_mutation_raw'))
 
     not_in_hand_curated = len(
-        auto_generated_raw.join(hand_curated_raw, on=['lineage', 'nextstrain_clade', 'nuc_change_raw', 'relative_to'],
+        auto_generated_raw.join(hand_curated_raw, on=['lineage', 'nextstrain_clade', 'nuc_mutation_raw', 'relative_to'],
                                 how='anti'))
     not_in_auto_generated = len(
-        hand_curated_raw.join(auto_generated_raw, on=['lineage', 'nextstrain_clade', 'nuc_change_raw', 'relative_to'],
+        hand_curated_raw.join(auto_generated_raw, on=['lineage', 'nextstrain_clade', 'nuc_mutation_raw', 'relative_to'],
                               how='anti'))
     if not_in_hand_curated > 0 or not_in_auto_generated > 0:
         logging.info(f'unmatched mutations: hand-curated {not_in_auto_generated}, auto-generated {not_in_hand_curated}')
@@ -290,23 +291,23 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
     coalesced = (
         combined
         .with_columns(
-            aa_change=pl.coalesce(pl.col('aa_change_hand_curated'), pl.col('aa_change')),
-            nuc_change=pl.coalesce(pl.col('nuc_change_hand_curated'), pl.col('nuc_change')))
-        .drop('aa_change_hand_curated', 'nuc_change_hand_curated')
+            aa_mutation=pl.coalesce(pl.col('aa_mutation_hand_curated'), pl.col('aa_mutation')),
+            nuc_mutation=pl.coalesce(pl.col('nuc_mutation_hand_curated'), pl.col('nuc_mutation')))
+        .drop('aa_mutation_hand_curated', 'nuc_mutation_hand_curated')
     )
 
     typed = coalesced.with_columns(
-        mutation_type=pl.when(pl.col('aa_change').is_not_null()).then(pl.lit('coding')).otherwise(pl.lit('silent'))
-    ).select('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_change', 'nuc_change', 'notes')
+        mutation_type=pl.when(pl.col('aa_mutation').is_not_null()).then(pl.lit('coding')).otherwise(pl.lit('silent'))
+    ).select('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_mutation', 'nuc_mutation', 'notes')
 
     coding_grouped_by_aa = (
         typed
         .filter(pl.col('mutation_type') == 'coding')
-        .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_change')
-        .agg(pl.col('nuc_change'), pl.col('notes').first())
+        .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type', 'aa_mutation')
+        .agg(pl.col('nuc_mutation'), pl.col('notes').first())
     )
     silent_grouped_by_aa = typed.filter(pl.col('mutation_type') == 'silent').with_columns(
-        pl.col('nuc_change').cast(pl.List(pl.String)))
+        pl.col('nuc_mutation').cast(pl.List(pl.String)))
     grouped_by_aa = pl.concat([
         coding_grouped_by_aa,
         silent_grouped_by_aa
@@ -319,7 +320,7 @@ def reformat_df_to_dicts(merged: pl.DataFrame, lineages: pl.DataFrame) -> dict:
     aggregate_mutations = (
         merged
         .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type')
-        .agg(pl.struct('aa_change', 'nuc_change', 'notes').alias('mutations'))
+        .agg(pl.struct('aa_mutation', 'nuc_mutation', 'notes').alias('mutations'))
     )
 
     pivot_mutation_types = (
@@ -351,11 +352,11 @@ def reformat_df_to_dicts(merged: pl.DataFrame, lineages: pl.DataFrame) -> dict:
                 mutations = mutations or []
                 for mutation in mutations:
                     if mutation_type == 'coding':
-                        mutation.update({'nuc_change': [Mutation.parse_mutation_string(mut).to_dict() for mut in mutation['nuc_change']]})
-                        mutation.update({'aa_change': AminoAcidMutation.parse_amino_acid_string(mutation['aa_change']).to_dict()})
+                        mutation.update({'nuc_mutation': [Mutation.parse_mutation_string(mut).to_dict() for mut in mutation['nuc_mutation']]})
+                        mutation.update({'aa_mutation': AminoAcidMutation.parse_amino_acid_string(mutation['aa_mutation']).to_dict()})
                     else:
-                        mutation.update({'nuc_change': Mutation.parse_mutation_string(mutation['nuc_change'][0]).to_dict()})
-                        mutation.pop('aa_change')
+                        mutation.update({'nuc_mutation': Mutation.parse_mutation_string(mutation['nuc_mutation'][0]).to_dict()})
+                        mutation.pop('aa_mutation')
                     if not mutation['notes']:
                         mutation.pop('notes')
 

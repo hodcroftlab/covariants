@@ -92,7 +92,7 @@ def test_remove_empty_strings():
 def test_process_hand_curated_file():
     hand_curated = process_hand_curated_file('tests/data/defining_mutations/hand_curated/22E.Omicron.tsv')
     assert len(hand_curated) == 141
-    assert hand_curated.columns == ['nextstrain_clade', 'nuc_change', 'aa_change', 'relative_to', 'notes']
+    assert hand_curated.columns == ['nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'relative_to', 'notes']
 
 
 def test_load_and_process_auto_generated_data():
@@ -107,7 +107,7 @@ def test_load_and_process_auto_generated_data():
                                 'nextstrain_clade',
                                 'designation_date']
     assert len(auto_generated_mutations) == 268
-    assert auto_generated_mutations.columns == ['lineage', 'nextstrain_clade', 'nuc_change', 'aa_change', 'relative_to']
+    assert auto_generated_mutations.columns == ['lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'relative_to']
 
 
 def test_main():
