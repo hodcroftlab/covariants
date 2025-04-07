@@ -4,46 +4,46 @@ import os
 import numpy as np
 import pytest
 
-from scripts.merge_defining_mutations import process_auto_generated_data, process_hand_curated_file, parse_mutation, \
-    nuc_location_to_genes, \
-    split_aa, match_nuc_to_aas, main, remove_empty_strings, load_auto_generated_data
+from scripts.merge_defining_mutations import process_auto_generated_data, process_hand_curated_file, \
+    match_nuc_to_aas, main, replace_list_of_empty_string, load_auto_generated_data, Mutation, \
+    AminoAcidMutation
 
 
 @pytest.mark.parametrize(
-    'nuc, nuc_tuple',
+    'nuc, nuc_dict',
     [
-        ("T670G", ('T', 670, 'G')),
-        ("C11289-", ('C', 11289, '-')),
-        ("G10447A", ('G', 10447, 'A')),
-        ("G4-", ('G', 4, '-'))
+        ("T670G", {'symbol_from': 'T', 'position': 670, 'symbol_to': 'G'}),
+        ("C11289-", {'symbol_from': 'C', 'position': 11289, 'symbol_to': '-'}),
+        ("G10447A", {'symbol_from': 'G', 'position': 10447, 'symbol_to': 'A'}),
+        ("G4-", {'symbol_from': 'G', 'position': 4, 'symbol_to': '-'})
     ]
 )
-def test_split_nuc(nuc, nuc_tuple):
-    assert parse_mutation(nuc) == nuc_tuple
+def test_split_nuc(nuc, nuc_dict):
+    assert Mutation.parse_mutation_string(nuc).__dict__ == nuc_dict
 
 
 @pytest.mark.parametrize(
     'nuc, genes',
     [
-        (670, ['ORF1a']),
-        (21636, ['S']),
-        (28312, ['N', 'ORF9b'])
+        ('T670G', ['ORF1a']),
+        ('C21636-', ['S']),
+        ('G28312T', ['N', 'ORF9b'])
     ]
 )
 def test_nuc_to_genes(nuc, genes):
-    assert nuc_location_to_genes(nuc) == genes
+    assert Mutation.parse_mutation_string(nuc).affected_genes == genes
 
 
 @pytest.mark.parametrize(
     'aa, aa_tuple',
     [
-        ('ORF9b:P10S', ('ORF9b', 'P', 10, 'S')),
-        ('S:P681H', ('S', 'P', 681, 'H')),
-        ('ORF9b:N28-', ('ORF9b', 'N', 28, '-'))
+        ('ORF9b:P10S', {'gene': 'ORF9b', 'symbol_from': 'P', 'position': 10, 'symbol_to': 'S'}),
+        ('S:P681H', {'gene': 'S', 'symbol_from':'P', 'position': 681, 'symbol_to': 'H'}),
+        ('ORF9b:N28-', {'gene': 'ORF9b', 'symbol_from': 'N', 'position':28, 'symbol_to':'-'})
     ]
 )
 def test_split_aa(aa, aa_tuple):
-    assert split_aa(aa) == aa_tuple
+    assert AminoAcidMutation.parse_amino_acid_string(aa).__dict__ == aa_tuple
 
 
 def test_match_nuc_to_aas():
@@ -79,25 +79,25 @@ def test_match_nuc_to_multiple_aas():
 
 
 def test_remove_empty_strings():
-    assert remove_empty_strings(['']) == []
-    assert remove_empty_strings([]) == []
-    assert remove_empty_strings(['hello']) == ['hello']
-    assert remove_empty_strings(['hello', 'goodbye']) == ['hello', 'goodbye']
-    assert remove_empty_strings('') == ''
-    assert remove_empty_strings('hello') == 'hello'
-    assert remove_empty_strings(np.array([''])) == []
-    assert remove_empty_strings(np.array(['hello'])) == np.array(['hello'])
+    assert replace_list_of_empty_string(['']) == []
+    assert replace_list_of_empty_string([]) == []
+    assert replace_list_of_empty_string(['hello']) == ['hello']
+    assert replace_list_of_empty_string(['hello', 'goodbye']) == ['hello', 'goodbye']
+    assert replace_list_of_empty_string('') == ''
+    assert replace_list_of_empty_string('hello') == 'hello'
+    assert replace_list_of_empty_string(np.array([''])) == []
+    assert replace_list_of_empty_string(np.array(['hello'])) == np.array(['hello'])
 
 
 def test_process_hand_curated_file():
-    hand_curated = process_hand_curated_file('data/defining_mutations/hand_curated/22E.Omicron.tsv')
+    hand_curated = process_hand_curated_file('tests/data/defining_mutations/hand_curated/22E.Omicron.tsv')
     assert len(hand_curated) == 141
     assert hand_curated.columns == ['nextstrain_clade', 'nuc_change', 'aa_change', 'relative_to', 'notes']
 
 
 def test_load_and_process_auto_generated_data():
     lineages, auto_generated_mutations_raw = load_auto_generated_data(
-        'data/defining_mutations/auto_generated/cornelius.json')
+        'tests/data/defining_mutations/auto_generated/auto_generated.json')
     auto_generated_mutations = process_auto_generated_data(auto_generated_mutations_raw)
     assert len(lineages) == 2
     assert lineages.columns == ['lineage',
@@ -111,7 +111,7 @@ def test_load_and_process_auto_generated_data():
 
 
 def test_main():
-    test_dir = 'data/defining_mutations'
+    test_dir = 'tests/data/defining_mutations'
     hand_curated_test_dir = os.path.join(test_dir, 'hand_curated')
     auto_generated_test_dir = os.path.join(test_dir, 'auto_generated')
     output_test_dir = os.path.join(test_dir, 'output')
@@ -144,5 +144,5 @@ def compare_nested_dicts(d1, d2):
 
 def test_edge_cases_do_not_throw_errors():
     _, auto_generated_mutations_raw = load_auto_generated_data(
-        'data/defining_mutations/auto_generated/cornelius_edge_cases.json')
+        'tests/data/defining_mutations/auto_generated/auto_generated_edge_cases.json')
     process_auto_generated_data(auto_generated_mutations_raw)

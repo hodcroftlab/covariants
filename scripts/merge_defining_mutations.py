@@ -1,6 +1,7 @@
 import json
 import logging
 import os
+from dataclasses import dataclass
 
 import numpy as np
 import polars as pl
@@ -22,57 +23,70 @@ GENE_BOUNDS = {
 }
 
 
-def parse_mutation(nuc: str) -> tuple[str, int, str]:
-    return nuc[0], int(nuc[1:-1]), nuc[-1]
+@dataclass
+class Mutation:
+    symbol_from: str
+    position: int
+    symbol_to: str
+
+    @classmethod
+    def parse_mutation_string(cls, mutation_string: str) -> "Mutation":
+        return Mutation(symbol_from=mutation_string[0], position=int(mutation_string[1:-1]), symbol_to=mutation_string[-1])
+
+    @property
+    def affected_genes(self):
+        genes = []
+        for gene, bounds in GENE_BOUNDS.items():
+            if bounds[0] <= self.position <= bounds[1]:
+                genes.append(gene)
+        return genes
+
+    @property
+    def positions_on_genes(self):
+        return [int(np.floor((self.position - GENE_BOUNDS[gene][0]) / 3)) + 1 for gene in self.affected_genes]
+
+    def to_dict(self):
+        return {'ref': self.symbol_from, 'pos': self.position, 'alt': self.symbol_to}
 
 
-def split_aa(aa: str) -> tuple[str, str, int, str]:
-    gene, aa = aa.split(':')
-    return gene, *parse_mutation(aa)
 
+@dataclass
+class AminoAcidMutation(Mutation):
+    gene: str
 
-def nuc_location_to_genes(nuc_location: int) -> list[str]:
-    genes = []
-    for gene, bounds in GENE_BOUNDS.items():
-        if bounds[0] <= nuc_location <= bounds[1]:
-            genes.append(gene)
-    return genes
+    @classmethod
+    def parse_amino_acid_string(cls, amino_acid_mutations_string: str) -> "AminoAcidMutation":
+        gene, aa =amino_acid_mutations_string.split(':')
+        mut = cls.parse_mutation_string(aa)
+        return AminoAcidMutation(mut.symbol_from, mut.position, mut.symbol_to, gene)
+
+    def to_string(self) -> str:
+        return ''.join([self.gene, ':', self.symbol_from, str(self.position), self.symbol_to])
+
+    def to_dict(self):
+        return {'gene': self.gene, 'ref': self.symbol_from, 'pos': self.position, 'alt': self.symbol_to}
 
 
 def match_nuc_to_aas(nuc: str | None, aas: list[str]) -> str | None:
     if not nuc:
         return None
-    nuc_old, nuc_location, nuc_new = parse_mutation(nuc)
-    genes = nuc_location_to_genes(nuc_location)
-    if len(genes) == 0:
+    nuc_obj = Mutation.parse_mutation_string(nuc)
+    if len(nuc_obj.affected_genes) == 0:
         return None
-    # TODO: this does not match correctly for all cases right now
-    locations = [int(np.floor((nuc_location - GENE_BOUNDS[gene][0]) / 3)) + 1 for gene in genes]
-    for aa in aas:
-        gene, aa_old, aa_location, aa_new = split_aa(aa)
-        if gene in genes and aa_location in locations:
-            return aa
+    aas_obj = [AminoAcidMutation.parse_amino_acid_string(aa) for aa in aas]
+    for aa in aas_obj:
+        if aa.gene in nuc_obj.affected_genes and aa.position in nuc_obj.positions_on_genes:
+            return aa.to_string()
 
 
-def nuc_string_to_dict(nuc):
-    ref, pos, alt = parse_mutation(nuc)
-    return {'ref': ref, 'pos': pos, 'alt': alt}
-
-
-def aa_string_to_object(aa):
-    gene, ref, pos, alt = split_aa(aa)
-    return {'gene': gene, 'ref': ref, 'pos': pos, 'alt': alt}
-
-
-def remove_empty_strings(y: str | list | np.ndarray) -> str | list | np.ndarray:
-    if len(y) == 1:
-        if y[0] == '':
+def replace_list_of_empty_string(y: str | list | np.ndarray) -> str | list | np.ndarray:
+    if len(y) == 1 and y[0] == '':
             return []
     return y
 
 
 def process_auto_generated_data(mutations: pl.DataFrame):
-    empty_strings_removed = mutations.to_pandas().applymap(remove_empty_strings)
+    empty_strings_removed = mutations.to_pandas().applymap(replace_list_of_empty_string)
 
     deletion_columns = ['nuc_del_wuhan', 'nuc_del_pango_parent']
     deletions_to_ranges = (
@@ -232,7 +246,7 @@ def check_relative_to_column_is_filled(df: pl.DataFrame) -> None:
 def import_mutation_data(hand_curated_data_dir: str, auto_generated_data_dir: str) -> tuple[
     pl.DataFrame, pl.DataFrame, pl.DataFrame]:
 
-    lineages, auto_generated_mutations_raw = load_auto_generated_data(os.path.join(auto_generated_data_dir, 'cornelius.json'))
+    lineages, auto_generated_mutations_raw = load_auto_generated_data(os.path.join(auto_generated_data_dir, 'auto_generated.json'))
     auto_generated_mutations = process_auto_generated_data(auto_generated_mutations_raw)
 
     hand_curated_mutations = (
@@ -337,10 +351,10 @@ def reformat_df_to_dicts(merged, lineages):
                 mutations = mutations or []
                 for mutation in mutations:
                     if mutation_type == 'coding':
-                        mutation.update({'nuc_change': [nuc_string_to_dict(mut) for mut in mutation['nuc_change']]})
-                        mutation.update({'aa_change': aa_string_to_object(mutation['aa_change'])})
+                        mutation.update({'nuc_change': [Mutation.parse_mutation_string(mut).to_dict() for mut in mutation['nuc_change']]})
+                        mutation.update({'aa_change': AminoAcidMutation.parse_amino_acid_string(mutation['aa_change']).to_dict()})
                     else:
-                        mutation.update({'nuc_change': nuc_string_to_dict(mutation['nuc_change'][0])})
+                        mutation.update({'nuc_change': Mutation.parse_mutation_string(mutation['nuc_change'][0]).to_dict()})
                         mutation.pop('aa_change')
                     if not mutation['notes']:
                         mutation.pop('notes')
@@ -355,7 +369,7 @@ def save_mutations_to_file(output: pl.DataFrame, output_dir: str):
 
 
 def main(hand_curated_data_dir='../tests/data/defining_mutations/emma',
-         auto_generated_data_dir='../tests/data/defining_mutations/cornelius',
+         auto_generated_data_dir='../tests/data/defining_mutations/auto_generated',
          output_dir='../tests/data/defining_mutations/output'):
     lineages, hand_curated_mutations, auto_generated_mutations = import_mutation_data(hand_curated_data_dir,
                                                                                       auto_generated_data_dir)

@@ -1,5 +1,5 @@
 {
-  "B": {
+  "ContainsListsWithEmptyStrings": {
     "lineage": "B",
     "unaliased": "B",
     "parent": "",
@@ -86,7 +86,7 @@
     ],
     "designationDate": ""
   },
-  "B.1.1.515": {
+  "ContainsSingleDeletion": {
     "lineage": "B.1.1.515",
     "unaliased": "B.1.1.515",
     "parent": "B.1.1",
@@ -136,7 +136,7 @@
     ],
     "designationDate": "2021-03-15"
   },
-  "XAW": {
+  "ContainsDeletionRangesAndSingleDeletion": {
     "lineage": "XAW",
     "unaliased": "XAW",
     "parent": "",
