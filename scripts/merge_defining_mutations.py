@@ -315,7 +315,7 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
     return grouped_by_aa
 
 
-def reformat_df_to_dicts(merged, lineages):
+def reformat_df_to_dicts(merged: pl.DataFrame, lineages: pl.DataFrame) -> dict:
     aggregate_mutations = (
         merged
         .group_by('lineage', 'nextstrain_clade', 'relative_to', 'mutation_type')
@@ -362,10 +362,15 @@ def reformat_df_to_dicts(merged, lineages):
     return output_dicts
 
 
-def save_mutations_to_file(output: pl.DataFrame, output_dir: str):
+def save_mutations_to_file(output: dict, output_dir: str):
     for lineage in output:
         with open(os.path.join(output_dir, f'{lineage["lineage"]}.json'), 'w') as f:
             json.dump(lineage, f)
+
+def save_lineages_to_file(lineages: pl.DataFrame, output_dir: str):
+    clusters = {'clusters': lineages.select('lineage', 'nextstrain_clade').to_dicts()}
+    with open(os.path.join(output_dir, 'definingMutationsClusters.json'), 'w') as f:
+        json.dump(clusters, f, indent=2)
 
 
 def main(hand_curated_data_dir='../tests/data/defining_mutations/emma',
@@ -379,6 +384,7 @@ def main(hand_curated_data_dir='../tests/data/defining_mutations/emma',
     output = reformat_df_to_dicts(merged_mutations, lineages)
 
     save_mutations_to_file(output, output_dir)
+    save_lineages_to_file(lineages, output_dir)
     # TODO: nextclade parent: https://github.com/hodcroftlab/covariants/issues/582
 
 
