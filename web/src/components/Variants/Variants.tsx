@@ -8,7 +8,6 @@ import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { PlotCard } from './PlotCard'
 import { AquariaLinksCard } from './AquariaLinksCard'
 import { ProteinCard } from './ProteinCard'
-import { ClusterButtonPanelLayout } from 'src/components/ClusterButtonPanel/ClusterButtonPanelLayout'
 import { MutationCountsSummaryCard } from 'src/components/MutationCounts/MutationCountsSummaryCard'
 
 import { theme } from 'src/theme'
@@ -29,27 +28,6 @@ import {
   hasPageClustersSelector,
 } from 'src/state/Clusters'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
-import { VariantTitle } from 'src/components/Variants/VariantTitle'
-
-export function Variants({ clusterName: clusterNameUnsafe }: VariantsPageProps) {
-  const { clusterBuildName, enablePangolinFromUrl } = useDeriveCurrentClusterNameFromUrl(clusterNameUnsafe)
-  const setEnablePangolin = useSetRecoilState(enablePangolinAtom)
-  useEffect(() => setEnablePangolin(enablePangolinFromUrl), [enablePangolinFromUrl, setEnablePangolin])
-  const clusters = useRecoilValue(hasPageClustersSelector)
-  const currentCluster = useMemo(
-    () => clusters.find((cluster) => cluster.buildName === clusterBuildName),
-    [clusterBuildName, clusters],
-  )
-
-  return (
-    <div>
-      <VariantTitle cluster={currentCluster} />
-      <ClusterButtonPanelLayout currentCluster={currentCluster}>
-        {currentCluster && <VariantsPageContent currentCluster={currentCluster} />}
-      </ClusterButtonPanelLayout>
-    </div>
-  )
-}
 
 export function useDeriveCurrentClusterNameFromUrl(clusterName?: string): {
   clusterBuildName: string | undefined
@@ -77,11 +55,15 @@ export function useDeriveCurrentClusterNameFromUrl(clusterName?: string): {
   }
 }
 
-export interface VariantsPageProps {
-  clusterName?: string
+export function useCluster(clusterName?: string) {
+  const { clusterBuildName, enablePangolinFromUrl } = useDeriveCurrentClusterNameFromUrl(clusterName)
+  const setEnablePangolin = useSetRecoilState(enablePangolinAtom)
+  useEffect(() => setEnablePangolin(enablePangolinFromUrl), [enablePangolinFromUrl, setEnablePangolin])
+  const clusters = useRecoilValue(hasPageClustersSelector)
+  return useMemo(() => clusters.find((cluster) => cluster.buildName === clusterBuildName), [clusterBuildName, clusters])
 }
 
-export function VariantsPageContent({ currentCluster }: { currentCluster: ClusterDatum }) {
+export function Variants({ currentCluster }: { currentCluster: ClusterDatum }) {
   const { t } = useTranslationSafe()
   const enablePangolin = useRecoilValue(enablePangolinAtom)
   const pangoName =

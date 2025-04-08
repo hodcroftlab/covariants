@@ -4,7 +4,7 @@ import 'resize-observer-polyfill/dist/ResizeObserver.global'
 import 'css.escape'
 
 import dynamic from 'next/dynamic'
-import React, { ReactElement, ReactNode, Suspense, useCallback, useEffect, useMemo } from 'react'
+import React, { Suspense, useCallback, useEffect, useMemo } from 'react'
 import { RecoilEnv, RecoilRoot, useRecoilCallback } from 'recoil'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -12,7 +12,6 @@ import { I18nextProvider } from 'react-i18next'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
-import { NextPage } from 'next'
 import { LOADING } from 'src/components/Loading/Loading'
 import { FETCHER } from 'src/hooks/useAxiosQuery'
 import i18n, { changeLocale, getLocaleWithKey } from 'src/i18n/i18n'
@@ -53,22 +52,13 @@ export function RecoilStateInitializer() {
   return null
 }
 
-export type NextPageWithLayout<P = object, IP = P> = NextPage<P, IP> & {
-  getLayout?: (page: ReactElement) => ReactNode
-}
-
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout
-}
-
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false
 
-function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+function MyApp({ Component, pageProps }: AppProps) {
   const initializeState = useCallback(() => {}, [])
 
   // Use shared QueryClient for queries inside and outside of React components
   const queryClient = useMemo(() => FETCHER.getQueryClient(), [])
-  const getLayout = Component.getLayout ?? ((page) => page)
 
   return (
     <RecoilRoot initializeState={initializeState}>
@@ -79,7 +69,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
             <Plausible domain={DOMAIN_STRIPPED} />
             <SeoApp />
             <QueryClientProvider client={queryClient}>
-              <Suspense fallback={LOADING}>{getLayout(<Component {...pageProps} />)}</Suspense>
+              <Suspense fallback={LOADING}>
+                <Component {...pageProps} />
+              </Suspense>
               <ReactQueryDevtools initialIsOpen={false} />
             </QueryClientProvider>
           </MDXProvider>
