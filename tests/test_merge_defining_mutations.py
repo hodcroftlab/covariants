@@ -8,6 +8,14 @@ from scripts.merge_defining_mutations import process_auto_generated_data, proces
     match_nuc_to_aas, main, replace_list_of_empty_string, load_auto_generated_data, Mutation, \
     AminoAcidMutation
 
+CI = os.environ.get('CI')
+TEST_DIR = 'tests/data/defining_mutations'
+HAND_CURATED_TEST_DIR = os.path.join(TEST_DIR, 'hand_curated')
+AUTO_GENERATED_TEST_DIR = os.path.join(TEST_DIR, 'auto_generated')
+AUTO_GENERATED_EDGE_CASES_TEST_DIR = os.path.join(TEST_DIR, 'auto_generated_edge_cases')
+OUTPUT_TEST_DIR = os.path.join(TEST_DIR, 'output')
+EXPECTED_OUTPUT_DIR = os.path.join(TEST_DIR, 'expected_output')
+EXPECTED_OUTPUT_EDGE_CASES_DIR = os.path.join(TEST_DIR, 'expected_output_edge_cases')
 
 @pytest.mark.parametrize(
     'nuc, nuc_dict',
@@ -35,15 +43,15 @@ def test_nuc_to_genes(nuc, genes):
 
 
 @pytest.mark.parametrize(
-    'aa, aa_tuple',
+    'aa, aa_dict',
     [
         ('ORF9b:P10S', {'gene': 'ORF9b', 'symbol_from': 'P', 'position': 10, 'symbol_to': 'S'}),
-        ('S:P681H', {'gene': 'S', 'symbol_from':'P', 'position': 681, 'symbol_to': 'H'}),
-        ('ORF9b:N28-', {'gene': 'ORF9b', 'symbol_from': 'N', 'position':28, 'symbol_to':'-'})
+        ('S:P681H', {'gene': 'S', 'symbol_from': 'P', 'position': 681, 'symbol_to': 'H'}),
+        ('ORF9b:N28-', {'gene': 'ORF9b', 'symbol_from': 'N', 'position': 28, 'symbol_to': '-'})
     ]
 )
-def test_split_aa(aa, aa_tuple):
-    assert AminoAcidMutation.parse_amino_acid_string(aa).__dict__ == aa_tuple
+def test_split_aa(aa, aa_dict):
+    assert AminoAcidMutation.parse_amino_acid_string(aa).__dict__ == aa_dict
 
 
 def test_match_nuc_to_aas():
@@ -90,14 +98,14 @@ def test_remove_empty_strings():
 
 
 def test_process_hand_curated_file():
-    hand_curated = process_hand_curated_file('tests/data/defining_mutations/hand_curated/22E.Omicron.tsv')
+    hand_curated = process_hand_curated_file(os.path.join(HAND_CURATED_TEST_DIR, '22E.Omicron.tsv'))
     assert len(hand_curated) == 141
     assert hand_curated.columns == ['nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'reference', 'notes']
 
 
 def test_load_and_process_auto_generated_data():
     lineages, auto_generated_mutations_raw = load_auto_generated_data(
-        'tests/data/defining_mutations/auto_generated/auto_generated.json')
+        os.path.join(AUTO_GENERATED_TEST_DIR, 'auto_generated.json'))
     auto_generated_mutations = process_auto_generated_data(auto_generated_mutations_raw)
     assert len(lineages) == 2
     assert lineages.columns == ['lineage',
@@ -107,56 +115,31 @@ def test_load_and_process_auto_generated_data():
                                 'nextstrain_clade',
                                 'designation_date']
     assert len(auto_generated_mutations) == 268
-    assert auto_generated_mutations.columns == ['lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'reference']
+    assert auto_generated_mutations.columns == ['lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation',
+                                                'reference']
 
 
-def test_main():
-    test_dir = 'tests/data/defining_mutations'
-    hand_curated_test_dir = os.path.join(test_dir, 'hand_curated')
-    auto_generated_test_dir = os.path.join(test_dir, 'auto_generated')
-    output_test_dir = os.path.join(test_dir, 'output')
-    expected_output_dir = os.path.join(test_dir, 'expected_output')
+@pytest.mark.parametrize(
+    'expected_output_dir, auto_generated_test_dir',
+    [
+        (EXPECTED_OUTPUT_DIR, AUTO_GENERATED_TEST_DIR),
+        (EXPECTED_OUTPUT_EDGE_CASES_DIR, AUTO_GENERATED_EDGE_CASES_TEST_DIR),
+    ]
+)
+def test_main(expected_output_dir, auto_generated_test_dir):
     expected_output_filenames = os.listdir(expected_output_dir)
 
-    main(hand_curated_test_dir, auto_generated_test_dir, output_test_dir)
+    main(HAND_CURATED_TEST_DIR, auto_generated_test_dir, OUTPUT_TEST_DIR)
 
-    assert os.listdir(output_test_dir) == expected_output_filenames
-    expected_output_filenames.remove('definingMutationsClusters.json')
     for filename in expected_output_filenames:
-        with open(os.path.join(output_test_dir, filename)) as output_file:
+        assert filename in os.listdir(OUTPUT_TEST_DIR)
+        with open(os.path.join(OUTPUT_TEST_DIR, filename)) as output_file:
             with open(os.path.join(expected_output_dir, filename)) as expected_output_file:
                 output = json.load(output_file)
                 expected_output = json.load(expected_output_file)
-                compare_output(expected_output, output)
+                assert output == expected_output
 
 
-def compare_output(mutations1, mutations2):
-    assert mutations1['lineage'] == mutations2['lineage']
-    assert mutations1['nextstrain_clade'] == mutations2['nextstrain_clade']
-    assert mutations1['children'] == mutations2['children']
-    assert mutations1['designation_date'] == mutations2['designation_date']
-    assert mutations1['unaliased'] == mutations2['unaliased']
-    assert mutations1['parent'] == mutations2['parent']
-
-    for muts1 in mutations1['mutations']:
-        for muts2 in mutations2['mutations']:
-            if muts1['reference'] == muts2['reference']:
-                for mutation_type in ['coding', 'silent']:
-                    equal = False
-                    for mut1 in muts1[mutation_type]:
-                        equal = False
-                        for mut2 in muts2[mutation_type]:
-                            if mut1 == mut2:
-                                equal = True
-                                break
-                            else:
-                                equal = False
-                        assert equal
-                    assert equal
-
-
-
-def test_edge_cases_do_not_throw_errors():
-    _, auto_generated_mutations_raw = load_auto_generated_data(
-        'tests/data/defining_mutations/auto_generated/auto_generated_edge_cases.json')
-    process_auto_generated_data(auto_generated_mutations_raw)
+@pytest.mark.skipif(CI, reason='full functionality test only for debugging, skip on CI')
+def test_main_full():
+    main(dry_run=True)
