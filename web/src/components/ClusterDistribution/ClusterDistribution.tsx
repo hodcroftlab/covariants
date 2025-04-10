@@ -11,49 +11,29 @@ import { MdxContent } from 'src/i18n/getMdxContent'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { Dropdown as DropdownBase } from 'src/components/Common/Dropdown'
 import { stringToOption } from 'src/components/Common/DropdownOption'
-import { Editable, CenteredEditable } from 'src/components/Common/Editable'
+import { CenteredEditable, Editable } from 'src/components/Common/Editable'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
-import { Layout } from 'src/components/Layout/Layout'
-import { PageHeading } from 'src/components/Common/PageHeading'
 import { ClusterDistributionComponents } from 'src/components/ClusterDistribution/ClusterDistributionComponents'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
 import { clusterSidebarCollapsedAtoms, countriesSidebarCollapsedAtoms } from 'src/state/DistributionSidebar'
 
-export function ClusterDistributionPage() {
+export function ClusterDistribution() {
   const { t } = useTranslationSafe()
 
   return (
-    <Layout wide>
-      <Row className={'gx-0'}>
-        <Col>
-          <PageHeading>{t('Overview of Variants/Mutations')}</PageHeading>
-        </Col>
-      </Row>
+    <div>
+      <CenteredEditable githubUrl="blob/master/content/PerClusterIntro.md">
+        <MdxContent filepath="PerClusterIntro.md" />
+      </CenteredEditable>
 
-      <Row className={'gx-0'}>
-        <Col>
-          <CenteredEditable githubUrl="blob/master/content/PerClusterIntro.md">
-            <MdxContent filepath="PerClusterIntro.md" />
-          </CenteredEditable>
-        </Col>
-      </Row>
+      <SharingPanel />
 
-      <Row className={'gx-0'}>
-        <Col>
-          <SharingPanel />
-        </Col>
-      </Row>
-
-      <Row className={'gx-0'}>
-        <Col className="pb-10">
-          <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
-            <ClusterDistributionPlotSection />
-          </Editable>
-        </Col>
-      </Row>
-    </Layout>
+      <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
+        <ClusterDistributionPlotSection />
+      </Editable>
+    </div>
   )
 }
 

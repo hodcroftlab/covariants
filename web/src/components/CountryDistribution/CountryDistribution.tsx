@@ -7,7 +7,6 @@ import { CenteredEditable, Editable } from 'src/components/Common/Editable'
 import { SharingPanel } from 'src/components/Common/SharingPanel'
 import { RegionSwitcher } from 'src/components/CountryDistribution/RegionSwitcher'
 import { DistributionSidebar } from 'src/components/DistributionSidebar/DistributionSidebar'
-import { Layout } from 'src/components/Layout/Layout'
 import { MainFlex, SidebarFlex, WrapperFlex } from 'src/components/Common/PlotLayout'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import {
@@ -17,7 +16,6 @@ import {
 } from 'src/state/PlacesForPerCountryData'
 import { CountryFlag } from 'src/components/Common/CountryFlag'
 import { USStateCode } from 'src/components/Common/USStateCode'
-import { PageHeading } from 'src/components/Common/PageHeading'
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
 import { CountryDistributionComponents } from 'src/components/CountryDistribution/CountryDistributionComponents'
@@ -26,22 +24,7 @@ import { perCountryDataIntroContentFilenameSelector } from 'src/state/PerCountry
 import { REGIONS } from 'src/state/Places'
 import { clusterSidebarCollapsedAtoms, countriesSidebarCollapsedAtoms } from 'src/state/DistributionSidebar'
 
-export function CountryDistributionPage() {
-  const { t } = useTranslationSafe()
-
-  return (
-    <Layout wide>
-      <Row className={'gx-0'}>
-        <Col>
-          <PageHeading>{t('Overview of Variants in Countries')}</PageHeading>
-        </Col>
-      </Row>
-      <CountryDistributionPageBody />
-    </Layout>
-  )
-}
-
-function CountryDistributionPageBody() {
+export function CountryDistribution() {
   const { t } = useTranslationSafe()
 
   const contentFilename = useRecoilValue(perCountryDataIntroContentFilenameSelector)
@@ -50,35 +33,17 @@ function CountryDistributionPageBody() {
   }, [contentFilename])
 
   return (
-    <>
-      <Row className={'gx-0'}>
-        <Col>
-          <RegionSwitcher />
-        </Col>
-      </Row>
+    <div>
+      <RegionSwitcher />
 
-      <Row className={'gx-0'}>
-        <Col>
-          <CenteredEditable githubUrl="tree/master/web/src/content/en/PerCountryIntro/">
-            {IntroContent}
-          </CenteredEditable>
-        </Col>
-      </Row>
+      <CenteredEditable githubUrl="tree/master/web/src/content/en/PerCountryIntro/">{IntroContent}</CenteredEditable>
 
-      <Row className={'gx-0'}>
-        <Col>
-          <SharingPanel />
-        </Col>
-      </Row>
+      <SharingPanel />
 
-      <Row className={'gx-0'}>
-        <Col>
-          <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
-            <CountryDistributionPlotSection />
-          </Editable>
-        </Col>
-      </Row>
-    </>
+      <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>
+        <CountryDistributionPlotSection />
+      </Editable>
+    </div>
   )
 }
 

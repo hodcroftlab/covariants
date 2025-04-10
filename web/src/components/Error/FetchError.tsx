@@ -16,7 +16,7 @@ export function FetchError({ error }: { error: unknown }) {
         {`${name}: ${message}`}
       </p>
       <p>
-        {"If you believe it's a bug, please report it to developers, but creating a new issue on "}
+        {"If you believe it's a bug, please report it to developers, by creating a new issue on "}
         <LinkExternal href={`${URL_GITHUB}/issues`}>{'GitHub'}</LinkExternal>
       </p>
     </UncontrolledAlert>
