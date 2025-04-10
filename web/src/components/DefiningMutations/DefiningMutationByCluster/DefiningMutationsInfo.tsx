@@ -48,10 +48,6 @@ export function DefiningMutationsInfo({ cluster }: { cluster: DefiningMutationCl
           <td>{cluster.designationDate}</td>
         </tr>
         <tr>
-          <td className="font-weight-bold">{t('Designation issue')}</td>
-          <td>{cluster.designationIssue}</td>
-        </tr>
-        <tr>
           <td className="font-weight-bold">{t('Links')}</td>
           <td className="d-flex">
             <Ul>
