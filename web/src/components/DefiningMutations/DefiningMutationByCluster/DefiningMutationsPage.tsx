@@ -60,7 +60,7 @@ const JustifyEnd = styled.div`
 `
 
 function DefiningMutationsTableWithTargets({ cluster }: { cluster: DefiningMutationCluster }) {
-  const referenceSequences = Object.keys(cluster.mutations)
+  const referenceSequences = cluster.mutations.map(({ reference }) => reference)
   const [selectedReference, setSelectedReference] = useState<string | undefined>(referenceSequences.at(0))
 
   if (!selectedReference) {

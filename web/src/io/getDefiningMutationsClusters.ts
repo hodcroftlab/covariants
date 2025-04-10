@@ -1,55 +1,91 @@
+/* eslint-disable camelcase */
 import { z } from 'zod'
-import clustersJson from '../../public/data/definingMutations/definingMutationClusters.json'
+import clustersJson from '../../public/data/definingMutations/definingMutationsClusters.json'
 import { FETCHER, useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
 import { Mutation } from 'src/types'
 
-const mutationReadSchema = z.object({
+const nucleotideMutationSchema = z.object({
   ref: z.string(),
+  pos: z.number(),
   alt: z.string(),
   annotation: z.string().optional(),
 })
-const nucleotideMutationSchema = mutationReadSchema.extend({ pos: z.number() })
-const aminoAcidMutationReadSchema = mutationReadSchema.extend({ nucPos: z.array(z.number()) })
-const aminoAcidMutationSchema = aminoAcidMutationReadSchema.extend({
+const aminoAcidMutationSchema = nucleotideMutationSchema.extend({
   gene: z.string(),
-  pos: z.number(),
-  nucMuts: z.array(nucleotideMutationSchema),
 })
 
-const frameshiftsSchema = z.record(z.record(aminoAcidMutationReadSchema))
-
-const definingMutationsSchema = z.object({
-  nuc: z.record(mutationReadSchema),
-  aa: z.record(z.record(aminoAcidMutationReadSchema)),
-  frameshifts: frameshiftsSchema,
+const codingMutationSchemaRaw = z.object({
+  aa_mutation: aminoAcidMutationSchema,
+  nuc_mutations: nucleotideMutationSchema.array(),
 })
 
-const definingMutationClusterSchema = z.object({
+const codingMutationSchema = codingMutationSchemaRaw.transform(({ aa_mutation, nuc_mutations }) => ({
+  aaMutation: aa_mutation,
+  nucMutations: nuc_mutations,
+}))
+
+const silentMutationSchemaRaw = z.object({
+  nuc_mutation: nucleotideMutationSchema,
+})
+
+const silentMutationSchema = silentMutationSchemaRaw.transform(({ nuc_mutation }) => ({
+  nucMutation: nuc_mutation,
+}))
+
+const definingMutationsSchemaRaw = z.object({
+  reference: z.string(),
+  coding: codingMutationSchemaRaw.array(),
+  silent: silentMutationSchemaRaw.array(),
+})
+
+const definingMutationsSchema = definingMutationsSchemaRaw.transform(({ reference, coding, silent }) => ({
+  reference,
+  coding: coding.map((codingMutation) => codingMutationSchema.parse(codingMutation)),
+  silent: silent.map((silentMutation) => silentMutationSchema.parse(silentMutation)),
+}))
+
+const definingMutationClusterSchemaRaw = z.object({
   lineage: z.string(),
   unaliased: z.string().optional(),
   parent: z.string().optional(),
   children: z.array(z.string()).optional(),
-  nextstrainClade: z.string(),
-  frameShifts: z.array(z.string()).optional(),
-  designationDate: z.string(),
-  designationIssue: z.string().optional(),
-  mutations: z.record(definingMutationsSchema),
+  nextstrain_clade: z.string(),
+  designation_date: z.string(),
+  mutations: definingMutationsSchemaRaw.array(),
 })
 
-const definingMutationsClusterListElementSchema = z.object({
+const definingMutationClusterSchema = definingMutationClusterSchemaRaw.transform(
+  ({ nextstrain_clade, designation_date, mutations, ...rest }) => ({
+    nextstrainClade: nextstrain_clade,
+    designationDate: designation_date,
+    mutations: mutations.map((mutation) => definingMutationsSchema.parse(mutation)),
+    ...rest,
+  }),
+)
+
+const definingMutationsClusterListElementSchemaRaw = z.object({
   lineage: z.string(),
-  nextstrainClade: z.string(),
+  nextstrain_clade: z.string(),
 })
 
-const definingMutationClusterListSchema = z.object({
-  clusters: definingMutationsClusterListElementSchema.array(),
+const definingMutationsClusterListElementSchema = definingMutationsClusterListElementSchemaRaw.transform(
+  ({ lineage, nextstrain_clade }) => ({
+    lineage,
+    nextstrainClade: nextstrain_clade,
+  }),
+)
+
+const definingMutationClusterListSchemaRaw = z.object({
+  clusters: definingMutationsClusterListElementSchemaRaw.array(),
 })
 
 export type NucleotideMutation = z.infer<typeof nucleotideMutationSchema>
 export type AminoAcidMutation = z.infer<typeof aminoAcidMutationSchema>
+export type CodingMutation = z.infer<typeof codingMutationSchema>
 export type DefiningMutations = z.infer<typeof definingMutationsSchema>
 
 export type DefiningMutationCluster = z.infer<typeof definingMutationClusterSchema>
+export type DefiningMutationClusterRaw = z.infer<typeof definingMutationClusterSchemaRaw>
 export type DefiningMutationListElement = z.infer<typeof definingMutationsClusterListElementSchema>
 
 export function getMutationFromNucleotideMutation(nucleotideMutation: NucleotideMutation): Mutation {
@@ -71,19 +107,19 @@ export function getMutationFromAminoAcidMutation(aminoAcidMutation: AminoAcidMut
 
 export async function fetchDefiningMutationClusters() {
   const definingMutationClusters = await FETCHER.validatedFetch(
-    '/data/definingMutations/definingMutationClusters.json',
-    definingMutationClusterListSchema,
+    '/data/definingMutations/definingMutationsClusters.json',
+    definingMutationClusterListSchemaRaw,
   )
-  return definingMutationClusters.clusters
+  return definingMutationsClusterListElementSchema.array().parse(definingMutationClusters.clusters)
 }
 
 export function useDefiningMutationCluster(clusterName: string): DefiningMutationCluster {
-  const { data } = useValidatedAxiosQuery<DefiningMutationCluster>(
+  const { data } = useValidatedAxiosQuery<DefiningMutationClusterRaw>(
     `/data/definingMutations/${clusterName}.json`,
-    definingMutationClusterSchema,
+    definingMutationClusterSchemaRaw,
   )
 
-  return data
+  return definingMutationClusterSchema.parse(data)
 }
 
 export function getDefiningMutationClustersFromDisk(): DefiningMutationListElement[] {

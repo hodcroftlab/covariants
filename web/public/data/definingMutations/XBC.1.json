@@ -1,1804 +1,1232 @@
 {
   "lineage": "XBC.1",
-  "unaliased": "XBC.1",
-  "parent": "",
+  "nextstrain_clade": "recombinant",
+  "mutations": [
+    {
+      "reference": "pango_parent",
+      "coding": [
+        {
+          "aa_mutation": {
+            "gene": "ORF1a",
+            "ref": "S",
+            "pos": 391,
+            "alt": "F"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 1437,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "L",
+            "pos": 452,
+            "alt": "M"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 22916,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF7b",
+            "ref": "F",
+            "pos": 13,
+            "alt": "-"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "X",
+              "pos": 27792,
+              "alt": "-"
+            },
+            {
+              "ref": "X",
+              "pos": 27793,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF8",
+            "ref": "V",
+            "pos": 33,
+            "alt": "-"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "X",
+              "pos": 27991,
+              "alt": "-"
+            }
+          ]
+        }
+      ],
+      "silent": []
+    },
+    {
+      "reference": "wuhan",
+      "coding": [
+        {
+          "aa_mutation": {
+            "gene": "ORF1a",
+            "ref": "S",
+            "pos": 135,
+            "alt": "R"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 670,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF1a",
+            "ref": "S",
+            "pos": 391,
+            "alt": "F"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 1437,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF1a",
+            "ref": "T",
+            "pos": 842,
+            "alt": "I"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 2790,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF1a",
+            "ref": "T",
+            "pos": 1543,
+            "alt": "I"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 4893,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF1a",
+            "ref": "P",
+            "pos": 1640,
+            "alt": "L"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 5184,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF1a",
+            "ref": "S",
+            "pos": 2104,
+            "alt": "I"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 6576,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF1a",
+            "ref": "V",
+            "pos": 2276,
+            "alt": "I"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 7091,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF1a",
+            "ref": "A",
+            "pos": 3209,
+            "alt": "V"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 9891,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF1a",
+            "ref": "V",
+            "pos": 3718,
+            "alt": "A"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 11418,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF1a",
+            "ref": "T",
+            "pos": 3750,
+            "alt": "I"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 11514,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF1b",
+            "ref": "P",
+            "pos": 314,
+            "alt": "L"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 14408,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF1b",
+            "ref": "G",
+            "pos": 662,
+            "alt": "S"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 15451,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF1b",
+            "ref": "P",
+            "pos": 1000,
+            "alt": "L"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 16466,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF1b",
+            "ref": "T",
+            "pos": 1050,
+            "alt": "I"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 16616,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "T",
+            "pos": 19,
+            "alt": "I"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 21618,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "P",
+            "pos": 25,
+            "alt": "S"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 21635,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "G",
+            "pos": 142,
+            "alt": "D"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 21987,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "Y",
+            "pos": 144,
+            "alt": "-"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "X",
+              "pos": 21992,
+              "alt": "-"
+            },
+            {
+              "ref": "X",
+              "pos": 21993,
+              "alt": "-"
+            },
+            {
+              "ref": "X",
+              "pos": 21994,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "E",
+            "pos": 156,
+            "alt": "-"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "X",
+              "pos": 22029,
+              "alt": "-"
+            },
+            {
+              "ref": "X",
+              "pos": 22030,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "F",
+            "pos": 157,
+            "alt": "-"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "X",
+              "pos": 22031,
+              "alt": "-"
+            },
+            {
+              "ref": "X",
+              "pos": 22032,
+              "alt": "-"
+            },
+            {
+              "ref": "X",
+              "pos": 22033,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "R",
+            "pos": 158,
+            "alt": "G"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "X",
+              "pos": 22034,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "P",
+            "pos": 209,
+            "alt": "L"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 22188,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "L",
+            "pos": 212,
+            "alt": "S"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 22197,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "D",
+            "pos": 215,
+            "alt": "H"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 22205,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "A",
+            "pos": 222,
+            "alt": "V"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 22227,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "A",
+            "pos": 243,
+            "alt": "-"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "X",
+              "pos": 22289,
+              "alt": "-"
+            },
+            {
+              "ref": "X",
+              "pos": 22290,
+              "alt": "-"
+            },
+            {
+              "ref": "X",
+              "pos": 22291,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "S",
+            "pos": 256,
+            "alt": "L"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 22329,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "S",
+            "pos": 371,
+            "alt": "F"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 22674,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "S",
+            "pos": 373,
+            "alt": "P"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 22679,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "S",
+            "pos": 375,
+            "alt": "F"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 22686,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "T",
+            "pos": 376,
+            "alt": "A"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 22688,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "D",
+            "pos": 405,
+            "alt": "N"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 22775,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "R",
+            "pos": 408,
+            "alt": "S"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 22786,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "K",
+            "pos": 417,
+            "alt": "N"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 22813,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "N",
+            "pos": 440,
+            "alt": "K"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 22882,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "G",
+            "pos": 446,
+            "alt": "S"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 22898,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "L",
+            "pos": 452,
+            "alt": "M"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 22916,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "S",
+            "pos": 477,
+            "alt": "N"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 22992,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "T",
+            "pos": 478,
+            "alt": "K"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 22995,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "E",
+            "pos": 484,
+            "alt": "A"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 23013,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "F",
+            "pos": 486,
+            "alt": "P"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 23018,
+              "alt": "C"
+            },
+            {
+              "ref": "T",
+              "pos": 23019,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "Q",
+            "pos": 498,
+            "alt": "R"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 23055,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "N",
+            "pos": 501,
+            "alt": "Y"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 23063,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "Y",
+            "pos": 505,
+            "alt": "H"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 23075,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "D",
+            "pos": 614,
+            "alt": "G"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 23403,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "H",
+            "pos": 655,
+            "alt": "Y"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 23525,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "N",
+            "pos": 679,
+            "alt": "K"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 23599,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "P",
+            "pos": 681,
+            "alt": "H"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 23604,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "N",
+            "pos": 703,
+            "alt": "I"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 23670,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "N",
+            "pos": 764,
+            "alt": "K"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 23854,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "D",
+            "pos": 796,
+            "alt": "Y"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 23948,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "Q",
+            "pos": 954,
+            "alt": "H"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 24424,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "N",
+            "pos": 969,
+            "alt": "K"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 24469,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "M",
+            "ref": "I",
+            "pos": 82,
+            "alt": "T"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 26767,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF7a",
+            "ref": "F",
+            "pos": 109,
+            "alt": "L"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27718,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF7a",
+            "ref": "T",
+            "pos": 120,
+            "alt": "I"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27752,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF7b",
+            "ref": "F",
+            "pos": 13,
+            "alt": "-"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "X",
+              "pos": 27792,
+              "alt": "-"
+            },
+            {
+              "ref": "X",
+              "pos": 27793,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF8",
+            "ref": "K",
+            "pos": 2,
+            "alt": "T"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27898,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "ORF8",
+            "ref": "V",
+            "pos": 33,
+            "alt": "-"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "X",
+              "pos": 27991,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "N",
+            "ref": "D",
+            "pos": 63,
+            "alt": "G"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 28461,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "N",
+            "ref": "R",
+            "pos": 203,
+            "alt": "M"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28881,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "N",
+            "ref": "D",
+            "pos": 377,
+            "alt": "Y"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 29402,
+              "alt": "T"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 241,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 3037,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 5584,
+            "alt": "G"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 6196,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 9073,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 13019,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "T",
+            "pos": 15030,
+            "alt": "C"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 15237,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "X",
+            "pos": 22292,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "X",
+            "pos": 22293,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "X",
+            "pos": 22294,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 25000,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 25854,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "T",
+            "pos": 26819,
+            "alt": "C"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 27890,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "X",
+            "pos": 28248,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "X",
+            "pos": 28249,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "X",
+            "pos": 28250,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "X",
+            "pos": 28251,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "X",
+            "pos": 28252,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "X",
+            "pos": 28253,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "X",
+            "pos": 28271,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 29742,
+            "alt": "T"
+          }
+        }
+      ]
+    }
+  ],
   "children": [
     "XBC.1.1",
     "XBC.1.2",
     "XBC.1.3",
+    "XBC.1.4",
     "XBC.1.5",
-    "XBC.1.6"
+    "XBC.1.6",
+    "XBC.1.7"
   ],
-  "nextstrainClade": "recombinant",
-  "frameShifts": [
-    "ORF7b:14-44",
-    "ORF8:35-122"
-  ],
-  "designationDate": "2022-10-03",
-  "mutations": {
-    "wuhan": {
-      "nuc": {
-        "241": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "670": {
-          "ref": "T",
-          "alt": "G"
-        },
-        "1437": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "2790": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "3037": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "4893": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "5184": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "5584": {
-          "ref": "A",
-          "alt": "G"
-        },
-        "6196": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "6576": {
-          "ref": "G",
-          "alt": "T"
-        },
-        "7091": {
-          "ref": "G",
-          "alt": "A"
-        },
-        "9073": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "9891": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "11418": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "11514": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "13019": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "14408": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "15030": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "15237": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "15451": {
-          "ref": "G",
-          "alt": "A"
-        },
-        "16466": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "16616": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "21618": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "21635": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "21987": {
-          "ref": "G",
-          "alt": "A"
-        },
-        "22188": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "22197": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "22205": {
-          "ref": "G",
-          "alt": "C"
-        },
-        "22227": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "22329": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "22674": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "22679": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "22686": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "22688": {
-          "ref": "A",
-          "alt": "G"
-        },
-        "22775": {
-          "ref": "G",
-          "alt": "A"
-        },
-        "22786": {
-          "ref": "A",
-          "alt": "C"
-        },
-        "22813": {
-          "ref": "G",
-          "alt": "T"
-        },
-        "22882": {
-          "ref": "T",
-          "alt": "G"
-        },
-        "22898": {
-          "ref": "G",
-          "alt": "A"
-        },
-        "22916": {
-          "ref": "C",
-          "alt": "A"
-        },
-        "22992": {
-          "ref": "G",
-          "alt": "A"
-        },
-        "22995": {
-          "ref": "C",
-          "alt": "A"
-        },
-        "23013": {
-          "ref": "A",
-          "alt": "C"
-        },
-        "23018": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "23019": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "23055": {
-          "ref": "A",
-          "alt": "G"
-        },
-        "23063": {
-          "ref": "A",
-          "alt": "T"
-        },
-        "23075": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "23403": {
-          "ref": "A",
-          "alt": "G"
-        },
-        "23525": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "23599": {
-          "ref": "T",
-          "alt": "G"
-        },
-        "23604": {
-          "ref": "C",
-          "alt": "A"
-        },
-        "23670": {
-          "ref": "A",
-          "alt": "T"
-        },
-        "23854": {
-          "ref": "C",
-          "alt": "A"
-        },
-        "23948": {
-          "ref": "G",
-          "alt": "T"
-        },
-        "24424": {
-          "ref": "A",
-          "alt": "T"
-        },
-        "24469": {
-          "ref": "T",
-          "alt": "A"
-        },
-        "25000": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "25854": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "26767": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "26819": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "27718": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "27752": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "27890": {
-          "ref": "G",
-          "alt": "T"
-        },
-        "27898": {
-          "ref": "A",
-          "alt": "C"
-        },
-        "28461": {
-          "ref": "A",
-          "alt": "G"
-        },
-        "28881": {
-          "ref": "G",
-          "alt": "T"
-        },
-        "29402": {
-          "ref": "G",
-          "alt": "T"
-        },
-        "29742": {
-          "ref": "G",
-          "alt": "T"
-        },
-        "21992": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "21993": {
-          "ref": "A",
-          "alt": "-"
-        },
-        "21994": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "22029": {
-          "ref": "A",
-          "alt": "-"
-        },
-        "22030": {
-          "ref": "G",
-          "alt": "-"
-        },
-        "22031": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "22032": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "22033": {
-          "ref": "C",
-          "alt": "-"
-        },
-        "22034": {
-          "ref": "A",
-          "alt": "-"
-        },
-        "22289": {
-          "ref": "G",
-          "alt": "-"
-        },
-        "22290": {
-          "ref": "C",
-          "alt": "-"
-        },
-        "22291": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "22292": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "22293": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "22294": {
-          "ref": "A",
-          "alt": "-"
-        },
-        "27792": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "27793": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "27992": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "27993": {
-          "ref": "G",
-          "alt": "-"
-        },
-        "28248": {
-          "ref": "G",
-          "alt": "-"
-        },
-        "28249": {
-          "ref": "A",
-          "alt": "-"
-        },
-        "28250": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "28251": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "28252": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "28253": {
-          "ref": "C",
-          "alt": "-"
-        },
-        "28271": {
-          "ref": "A",
-          "alt": "-"
-        }
-      },
-      "aa": {
-        "M": {
-          "82": {
-            "ref": "I",
-            "alt": "T",
-            "nucPos": [
-              26767
-            ]
-          }
-        },
-        "N": {
-          "63": {
-            "ref": "D",
-            "alt": "G",
-            "nucPos": [
-              28461
-            ]
-          },
-          "203": {
-            "ref": "R",
-            "alt": "M",
-            "nucPos": [
-              28881
-            ]
-          },
-          "377": {
-            "ref": "D",
-            "alt": "Y",
-            "nucPos": [
-              29402
-            ]
-          }
-        },
-        "ORF1a": {
-          "135": {
-            "ref": "S",
-            "alt": "R",
-            "nucPos": [
-              670
-            ]
-          },
-          "391": {
-            "ref": "S",
-            "alt": "F",
-            "nucPos": [
-              1437
-            ]
-          },
-          "842": {
-            "ref": "T",
-            "alt": "I",
-            "nucPos": [
-              2790
-            ]
-          },
-          "1543": {
-            "ref": "T",
-            "alt": "I",
-            "nucPos": [
-              4893
-            ]
-          },
-          "1640": {
-            "ref": "P",
-            "alt": "L",
-            "nucPos": [
-              5184
-            ]
-          },
-          "2104": {
-            "ref": "S",
-            "alt": "I",
-            "nucPos": [
-              6576
-            ]
-          },
-          "2276": {
-            "ref": "V",
-            "alt": "I",
-            "nucPos": [
-              7091
-            ]
-          },
-          "3209": {
-            "ref": "A",
-            "alt": "V",
-            "nucPos": [
-              9891
-            ]
-          },
-          "3718": {
-            "ref": "V",
-            "alt": "A",
-            "nucPos": [
-              11418
-            ]
-          },
-          "3750": {
-            "ref": "T",
-            "alt": "I",
-            "nucPos": [
-              11514
-            ]
-          }
-        },
-        "ORF1b": {
-          "314": {
-            "ref": "P",
-            "alt": "L",
-            "nucPos": [
-              14408
-            ]
-          },
-          "662": {
-            "ref": "G",
-            "alt": "S",
-            "nucPos": [
-              15451
-            ]
-          },
-          "1000": {
-            "ref": "P",
-            "alt": "L",
-            "nucPos": [
-              16466
-            ]
-          },
-          "1050": {
-            "ref": "T",
-            "alt": "I",
-            "nucPos": [
-              16616
-            ]
-          }
-        },
-        "ORF7a": {
-          "109": {
-            "ref": "F",
-            "alt": "L",
-            "nucPos": [
-              27718
-            ]
-          },
-          "120": {
-            "ref": "T",
-            "alt": "I",
-            "nucPos": [
-              27752
-            ]
-          }
-        },
-        "ORF8": {
-          "2": {
-            "ref": "K",
-            "alt": "T",
-            "nucPos": [
-              27898
-            ]
-          },
-          "33": {
-            "ref": "V",
-            "alt": "-",
-            "nucPos": [
-              27992
-            ]
-          },
-          "34": {
-            "ref": "D",
-            "alt": "-",
-            "nucPos": [
-              27993
-            ]
-          }
-        },
-        "ORF9b": {
-          "60": {
-            "ref": "T",
-            "alt": "A",
-            "nucPos": [
-              28461
-            ]
-          }
-        },
-        "S": {
-          "19": {
-            "ref": "T",
-            "alt": "I",
-            "nucPos": [
-              21618
-            ]
-          },
-          "25": {
-            "ref": "P",
-            "alt": "S",
-            "nucPos": [
-              21635
-            ]
-          },
-          "142": {
-            "ref": "G",
-            "alt": "D",
-            "nucPos": [
-              21987
-            ]
-          },
-          "158": {
-            "ref": "R",
-            "alt": "G",
-            "nucPos": [
-              22034
-            ]
-          },
-          "209": {
-            "ref": "P",
-            "alt": "L",
-            "nucPos": [
-              22188
-            ]
-          },
-          "212": {
-            "ref": "L",
-            "alt": "S",
-            "nucPos": [
-              22197
-            ]
-          },
-          "215": {
-            "ref": "D",
-            "alt": "H",
-            "nucPos": [
-              22205
-            ]
-          },
-          "222": {
-            "ref": "A",
-            "alt": "V",
-            "nucPos": [
-              22227
-            ]
-          },
-          "256": {
-            "ref": "S",
-            "alt": "L",
-            "nucPos": [
-              22329
-            ]
-          },
-          "371": {
-            "ref": "S",
-            "alt": "F",
-            "nucPos": [
-              22674
-            ]
-          },
-          "373": {
-            "ref": "S",
-            "alt": "P",
-            "nucPos": [
-              22679
-            ]
-          },
-          "375": {
-            "ref": "S",
-            "alt": "F",
-            "nucPos": [
-              22686
-            ]
-          },
-          "376": {
-            "ref": "T",
-            "alt": "A",
-            "nucPos": [
-              22688
-            ]
-          },
-          "405": {
-            "ref": "D",
-            "alt": "N",
-            "nucPos": [
-              22775
-            ]
-          },
-          "408": {
-            "ref": "R",
-            "alt": "S",
-            "nucPos": [
-              22786
-            ]
-          },
-          "417": {
-            "ref": "K",
-            "alt": "N",
-            "nucPos": [
-              22813
-            ]
-          },
-          "440": {
-            "ref": "N",
-            "alt": "K",
-            "nucPos": [
-              22882
-            ]
-          },
-          "446": {
-            "ref": "G",
-            "alt": "S",
-            "nucPos": [
-              22898
-            ]
-          },
-          "452": {
-            "ref": "L",
-            "alt": "M",
-            "nucPos": [
-              22916
-            ]
-          },
-          "477": {
-            "ref": "S",
-            "alt": "N",
-            "nucPos": [
-              22992
-            ]
-          },
-          "478": {
-            "ref": "T",
-            "alt": "K",
-            "nucPos": [
-              22995
-            ]
-          },
-          "484": {
-            "ref": "E",
-            "alt": "A",
-            "nucPos": [
-              23013
-            ]
-          },
-          "486": {
-            "ref": "F",
-            "alt": "P",
-            "nucPos": [
-              23018,
-              23019
-            ]
-          },
-          "498": {
-            "ref": "Q",
-            "alt": "R",
-            "nucPos": [
-              23055
-            ]
-          },
-          "501": {
-            "ref": "N",
-            "alt": "Y",
-            "nucPos": [
-              23063
-            ]
-          },
-          "505": {
-            "ref": "Y",
-            "alt": "H",
-            "nucPos": [
-              23075
-            ]
-          },
-          "614": {
-            "ref": "D",
-            "alt": "G",
-            "nucPos": [
-              23403
-            ]
-          },
-          "655": {
-            "ref": "H",
-            "alt": "Y",
-            "nucPos": [
-              23525
-            ]
-          },
-          "679": {
-            "ref": "N",
-            "alt": "K",
-            "nucPos": [
-              23599
-            ]
-          },
-          "681": {
-            "ref": "P",
-            "alt": "H",
-            "nucPos": [
-              23604
-            ]
-          },
-          "703": {
-            "ref": "N",
-            "alt": "I",
-            "nucPos": [
-              23670
-            ]
-          },
-          "764": {
-            "ref": "N",
-            "alt": "K",
-            "nucPos": [
-              23854
-            ]
-          },
-          "796": {
-            "ref": "D",
-            "alt": "Y",
-            "nucPos": [
-              23948
-            ]
-          },
-          "954": {
-            "ref": "Q",
-            "alt": "H",
-            "nucPos": [
-              24424
-            ]
-          },
-          "969": {
-            "ref": "N",
-            "alt": "K",
-            "nucPos": [
-              24469
-            ]
-          },
-          "144": {
-            "ref": "Y",
-            "alt": "-",
-            "nucPos": [
-              21992,
-              21993,
-              21994
-            ]
-          },
-          "156": {
-            "ref": "E",
-            "alt": "-",
-            "nucPos": [
-              22029,
-              22030
-            ]
-          },
-          "157": {
-            "ref": "F",
-            "alt": "-",
-            "nucPos": [
-              22032,
-              22033,
-              22031
-            ]
-          },
-          "242": {
-            "ref": "L",
-            "alt": "-",
-            "nucPos": []
-          },
-          "243": {
-            "ref": "A",
-            "alt": "-",
-            "nucPos": [
-              22289,
-              22290,
-              22291
-            ]
-          }
-        },
-        "ORF7b": {
-          "13": {
-            "ref": "F",
-            "alt": "-",
-            "nucPos": [
-              27792,
-              27793
-            ]
-          }
-        }
-      },
-      "frameshifts": {
-        "ORF7b": {
-          "14": {
-            "ref": "",
-            "alt": "frameShiftStart",
-            "nucPos": []
-          },
-          "44": {
-            "ref": "",
-            "alt": "frameShiftEnd",
-            "nucPos": []
-          }
-        },
-        "ORF8": {
-          "35": {
-            "ref": "",
-            "alt": "frameShiftStart",
-            "nucPos": []
-          },
-          "122": {
-            "ref": "",
-            "alt": "frameShiftEnd",
-            "nucPos": []
-          }
-        }
-      }
-    },
-    "pangoParent": {
-      "nuc": {
-        "241": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "670": {
-          "ref": "T",
-          "alt": "G"
-        },
-        "1437": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "2790": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "3037": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "4893": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "5184": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "5584": {
-          "ref": "A",
-          "alt": "G"
-        },
-        "6196": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "6576": {
-          "ref": "G",
-          "alt": "T"
-        },
-        "7091": {
-          "ref": "G",
-          "alt": "A"
-        },
-        "9073": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "9891": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "11418": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "11514": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "13019": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "14408": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "15030": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "15237": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "15451": {
-          "ref": "G",
-          "alt": "A"
-        },
-        "16466": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "16616": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "21618": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "21635": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "21987": {
-          "ref": "G",
-          "alt": "A"
-        },
-        "22188": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "22197": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "22205": {
-          "ref": "G",
-          "alt": "C"
-        },
-        "22227": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "22329": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "22674": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "22679": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "22686": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "22688": {
-          "ref": "A",
-          "alt": "G"
-        },
-        "22775": {
-          "ref": "G",
-          "alt": "A"
-        },
-        "22786": {
-          "ref": "A",
-          "alt": "C"
-        },
-        "22813": {
-          "ref": "G",
-          "alt": "T"
-        },
-        "22882": {
-          "ref": "T",
-          "alt": "G"
-        },
-        "22898": {
-          "ref": "G",
-          "alt": "A"
-        },
-        "22916": {
-          "ref": "C",
-          "alt": "A"
-        },
-        "22992": {
-          "ref": "G",
-          "alt": "A"
-        },
-        "22995": {
-          "ref": "C",
-          "alt": "A"
-        },
-        "23013": {
-          "ref": "A",
-          "alt": "C"
-        },
-        "23018": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "23019": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "23055": {
-          "ref": "A",
-          "alt": "G"
-        },
-        "23063": {
-          "ref": "A",
-          "alt": "T"
-        },
-        "23075": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "23403": {
-          "ref": "A",
-          "alt": "G"
-        },
-        "23525": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "23599": {
-          "ref": "T",
-          "alt": "G"
-        },
-        "23604": {
-          "ref": "C",
-          "alt": "A"
-        },
-        "23670": {
-          "ref": "A",
-          "alt": "T"
-        },
-        "23854": {
-          "ref": "C",
-          "alt": "A"
-        },
-        "23948": {
-          "ref": "G",
-          "alt": "T"
-        },
-        "24424": {
-          "ref": "A",
-          "alt": "T"
-        },
-        "24469": {
-          "ref": "T",
-          "alt": "A"
-        },
-        "25000": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "25854": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "26767": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "26819": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "27718": {
-          "ref": "T",
-          "alt": "C"
-        },
-        "27752": {
-          "ref": "C",
-          "alt": "T"
-        },
-        "27890": {
-          "ref": "G",
-          "alt": "T"
-        },
-        "27898": {
-          "ref": "A",
-          "alt": "C"
-        },
-        "28461": {
-          "ref": "A",
-          "alt": "G"
-        },
-        "28881": {
-          "ref": "G",
-          "alt": "T"
-        },
-        "29402": {
-          "ref": "G",
-          "alt": "T"
-        },
-        "29742": {
-          "ref": "G",
-          "alt": "T"
-        },
-        "21992": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "21993": {
-          "ref": "A",
-          "alt": "-"
-        },
-        "21994": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "22029": {
-          "ref": "A",
-          "alt": "-"
-        },
-        "22030": {
-          "ref": "G",
-          "alt": "-"
-        },
-        "22031": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "22032": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "22033": {
-          "ref": "C",
-          "alt": "-"
-        },
-        "22034": {
-          "ref": "A",
-          "alt": "-"
-        },
-        "22289": {
-          "ref": "G",
-          "alt": "-"
-        },
-        "22290": {
-          "ref": "C",
-          "alt": "-"
-        },
-        "22291": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "22292": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "22293": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "22294": {
-          "ref": "A",
-          "alt": "-"
-        },
-        "27792": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "27793": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "27992": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "27993": {
-          "ref": "G",
-          "alt": "-"
-        },
-        "28248": {
-          "ref": "G",
-          "alt": "-"
-        },
-        "28249": {
-          "ref": "A",
-          "alt": "-"
-        },
-        "28250": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "28251": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "28252": {
-          "ref": "T",
-          "alt": "-"
-        },
-        "28253": {
-          "ref": "C",
-          "alt": "-"
-        },
-        "28271": {
-          "ref": "A",
-          "alt": "-"
-        }
-      },
-      "aa": {
-        "M": {
-          "82": {
-            "ref": "I",
-            "alt": "T",
-            "nucPos": [
-              26767
-            ]
-          }
-        },
-        "N": {
-          "63": {
-            "ref": "D",
-            "alt": "G",
-            "nucPos": [
-              28461
-            ]
-          },
-          "203": {
-            "ref": "R",
-            "alt": "M",
-            "nucPos": [
-              28881
-            ]
-          },
-          "377": {
-            "ref": "D",
-            "alt": "Y",
-            "nucPos": [
-              29402
-            ]
-          }
-        },
-        "ORF1a": {
-          "135": {
-            "ref": "S",
-            "alt": "R",
-            "nucPos": [
-              670
-            ]
-          },
-          "391": {
-            "ref": "S",
-            "alt": "F",
-            "nucPos": [
-              1437
-            ]
-          },
-          "842": {
-            "ref": "T",
-            "alt": "I",
-            "nucPos": [
-              2790
-            ]
-          },
-          "1543": {
-            "ref": "T",
-            "alt": "I",
-            "nucPos": [
-              4893
-            ]
-          },
-          "1640": {
-            "ref": "P",
-            "alt": "L",
-            "nucPos": [
-              5184
-            ]
-          },
-          "2104": {
-            "ref": "S",
-            "alt": "I",
-            "nucPos": [
-              6576
-            ]
-          },
-          "2276": {
-            "ref": "V",
-            "alt": "I",
-            "nucPos": [
-              7091
-            ]
-          },
-          "3209": {
-            "ref": "A",
-            "alt": "V",
-            "nucPos": [
-              9891
-            ]
-          },
-          "3718": {
-            "ref": "V",
-            "alt": "A",
-            "nucPos": [
-              11418
-            ]
-          },
-          "3750": {
-            "ref": "T",
-            "alt": "I",
-            "nucPos": [
-              11514
-            ]
-          }
-        },
-        "ORF1b": {
-          "314": {
-            "ref": "P",
-            "alt": "L",
-            "nucPos": [
-              14408
-            ]
-          },
-          "662": {
-            "ref": "G",
-            "alt": "S",
-            "nucPos": [
-              15451
-            ]
-          },
-          "1000": {
-            "ref": "P",
-            "alt": "L",
-            "nucPos": [
-              16466
-            ]
-          },
-          "1050": {
-            "ref": "T",
-            "alt": "I",
-            "nucPos": [
-              16616
-            ]
-          }
-        },
-        "ORF7a": {
-          "109": {
-            "ref": "F",
-            "alt": "L",
-            "nucPos": [
-              27718
-            ]
-          },
-          "120": {
-            "ref": "T",
-            "alt": "I",
-            "nucPos": [
-              27752
-            ]
-          }
-        },
-        "ORF8": {
-          "2": {
-            "ref": "K",
-            "alt": "T",
-            "nucPos": [
-              27898
-            ]
-          },
-          "33": {
-            "ref": "V",
-            "alt": "-",
-            "nucPos": [
-              27992
-            ]
-          },
-          "34": {
-            "ref": "D",
-            "alt": "-",
-            "nucPos": [
-              27993
-            ]
-          }
-        },
-        "ORF9b": {
-          "60": {
-            "ref": "T",
-            "alt": "A",
-            "nucPos": [
-              28461
-            ]
-          }
-        },
-        "S": {
-          "19": {
-            "ref": "T",
-            "alt": "I",
-            "nucPos": [
-              21618
-            ]
-          },
-          "25": {
-            "ref": "P",
-            "alt": "S",
-            "nucPos": [
-              21635
-            ]
-          },
-          "142": {
-            "ref": "G",
-            "alt": "D",
-            "nucPos": [
-              21987
-            ]
-          },
-          "158": {
-            "ref": "R",
-            "alt": "G",
-            "nucPos": [
-              22034
-            ]
-          },
-          "209": {
-            "ref": "P",
-            "alt": "L",
-            "nucPos": [
-              22188
-            ]
-          },
-          "212": {
-            "ref": "L",
-            "alt": "S",
-            "nucPos": [
-              22197
-            ]
-          },
-          "215": {
-            "ref": "D",
-            "alt": "H",
-            "nucPos": [
-              22205
-            ]
-          },
-          "222": {
-            "ref": "A",
-            "alt": "V",
-            "nucPos": [
-              22227
-            ]
-          },
-          "256": {
-            "ref": "S",
-            "alt": "L",
-            "nucPos": [
-              22329
-            ]
-          },
-          "371": {
-            "ref": "S",
-            "alt": "F",
-            "nucPos": [
-              22674
-            ]
-          },
-          "373": {
-            "ref": "S",
-            "alt": "P",
-            "nucPos": [
-              22679
-            ]
-          },
-          "375": {
-            "ref": "S",
-            "alt": "F",
-            "nucPos": [
-              22686
-            ]
-          },
-          "376": {
-            "ref": "T",
-            "alt": "A",
-            "nucPos": [
-              22688
-            ]
-          },
-          "405": {
-            "ref": "D",
-            "alt": "N",
-            "nucPos": [
-              22775
-            ]
-          },
-          "408": {
-            "ref": "R",
-            "alt": "S",
-            "nucPos": [
-              22786
-            ]
-          },
-          "417": {
-            "ref": "K",
-            "alt": "N",
-            "nucPos": [
-              22813
-            ]
-          },
-          "440": {
-            "ref": "N",
-            "alt": "K",
-            "nucPos": [
-              22882
-            ]
-          },
-          "446": {
-            "ref": "G",
-            "alt": "S",
-            "nucPos": [
-              22898
-            ]
-          },
-          "452": {
-            "ref": "L",
-            "alt": "M",
-            "nucPos": [
-              22916
-            ]
-          },
-          "477": {
-            "ref": "S",
-            "alt": "N",
-            "nucPos": [
-              22992
-            ]
-          },
-          "478": {
-            "ref": "T",
-            "alt": "K",
-            "nucPos": [
-              22995
-            ]
-          },
-          "484": {
-            "ref": "E",
-            "alt": "A",
-            "nucPos": [
-              23013
-            ]
-          },
-          "486": {
-            "ref": "F",
-            "alt": "P",
-            "nucPos": [
-              23018,
-              23019
-            ]
-          },
-          "498": {
-            "ref": "Q",
-            "alt": "R",
-            "nucPos": [
-              23055
-            ]
-          },
-          "501": {
-            "ref": "N",
-            "alt": "Y",
-            "nucPos": [
-              23063
-            ]
-          },
-          "505": {
-            "ref": "Y",
-            "alt": "H",
-            "nucPos": [
-              23075
-            ]
-          },
-          "614": {
-            "ref": "D",
-            "alt": "G",
-            "nucPos": [
-              23403
-            ]
-          },
-          "655": {
-            "ref": "H",
-            "alt": "Y",
-            "nucPos": [
-              23525
-            ]
-          },
-          "679": {
-            "ref": "N",
-            "alt": "K",
-            "nucPos": [
-              23599
-            ]
-          },
-          "681": {
-            "ref": "P",
-            "alt": "H",
-            "nucPos": [
-              23604
-            ]
-          },
-          "703": {
-            "ref": "N",
-            "alt": "I",
-            "nucPos": [
-              23670
-            ]
-          },
-          "764": {
-            "ref": "N",
-            "alt": "K",
-            "nucPos": [
-              23854
-            ]
-          },
-          "796": {
-            "ref": "D",
-            "alt": "Y",
-            "nucPos": [
-              23948
-            ]
-          },
-          "954": {
-            "ref": "Q",
-            "alt": "H",
-            "nucPos": [
-              24424
-            ]
-          },
-          "969": {
-            "ref": "N",
-            "alt": "K",
-            "nucPos": [
-              24469
-            ]
-          },
-          "144": {
-            "ref": "Y",
-            "alt": "-",
-            "nucPos": [
-              21992,
-              21993,
-              21994
-            ]
-          },
-          "156": {
-            "ref": "E",
-            "alt": "-",
-            "nucPos": [
-              22029,
-              22030
-            ]
-          },
-          "157": {
-            "ref": "F",
-            "alt": "-",
-            "nucPos": [
-              22032,
-              22033,
-              22031
-            ]
-          },
-          "242": {
-            "ref": "L",
-            "alt": "-",
-            "nucPos": []
-          },
-          "243": {
-            "ref": "A",
-            "alt": "-",
-            "nucPos": [
-              22289,
-              22290,
-              22291
-            ]
-          }
-        },
-        "ORF7b": {
-          "13": {
-            "ref": "F",
-            "alt": "-",
-            "nucPos": [
-              27792,
-              27793
-            ]
-          }
-        }
-      },
-      "frameshifts": {
-        "ORF7b": {
-          "14": {
-            "ref": "",
-            "alt": "frameShiftStart",
-            "nucPos": []
-          },
-          "44": {
-            "ref": "",
-            "alt": "frameShiftEnd",
-            "nucPos": []
-          }
-        },
-        "ORF8": {
-          "35": {
-            "ref": "",
-            "alt": "frameShiftStart",
-            "nucPos": []
-          },
-          "122": {
-            "ref": "",
-            "alt": "frameShiftEnd",
-            "nucPos": []
-          }
-        }
-      }
-    }
-  }
+  "designation_date": "2022-10-03",
+  "unaliased": "XBC.1",
+  "parent": "XBC"
 }
