@@ -1,0 +1,23 @@
+import { LinkExternal } from 'web/src/components/Link/LinkExternal'
+import { MdxContent } from 'web/src/i18n/getMdxContent'
+import { VarOrLin } from 'web/src/components/Common/Badges/VariantOrLineageBadge'
+import { AaMut } from 'web/src/components/Common/Badges/AminoacidMutationBadge'
+import { Mut } from 'web/src/components/Common/Badges/VariantBadge'
+import { Who } from 'web/src/components/Common/Badges/WhoBadge'
+
+
+<MdxContent filepath="clusters/VoCHeader.mdx" />
+
+### <VarOrLinText name={'21J (Delta)'} />
+Also known as <VarOrLin name={'21J (Delta)'} invert={true} /> and <Who name="Delta" />
+
+_Note that as of 2 Mar 2023, the Nextstrain build is no longer being regularly updated, as there is little ongoing circulation. It will continue to be tracked in the graphs._
+
+<VarOrLin name={'21J (Delta)'}/> is part of the "Variant of Concern" <Who name="Delta" />. It is a sub-clade of this variant, which has grown extensively worldwide. <VarOrLin name={'21J (Delta)'} prefix=""/> has grown particularly in Europe, the Americas, Africa, and Oceania.
+
+Variant <VarOrLin name={'21J (Delta)'} prefix=""/> has all the mutations of <VarOrLin name="21A (Delta)" prefix=""/>. In addition, it has an extra mutation in <code>N</code> at position <AaMut mut={'N:G215C'}/>. It also has additional amino-acid mutations in <code>ORF1a</code>, <code>ORF1b</code>, and <code>ORF7b</code>: <AaMut mut={'ORF1a:A1306S'}/>, <AaMut mut={'ORF1a:V2930L'}/>, <AaMut mut={'ORF1a:T3255I'}/>, <AaMut mut={'ORF1a:T3646A'}/>, <AaMut mut={'ORF1b:A1918V'}/>, and <AaMut mut={'ORF7b:T40I'}/>. The mutation <AaMut mut={'S:G142D'}/> is likely present in all <Who name="Delta" /> sequences, but can be shown as 'wild type' due to sequencing problems from the ARTIC V3 schema ([Sanderson and Barrett, Wellcome Open](https://wellcomeopenresearch.org/articles/6-305/v1)); here, it is shown as part of the defining list of mutations.
+
+Finally, <VarOrLin name={'21J (Delta)'} prefix=""/> has synonymous nucleotide mutations at positions <NucMut mut="C8986T" /> and <NucMut mut="A11332G" />.
+
+<br/>
+_Please help by providing links to further information about this variant if you can!_

@@ -8,7 +8,7 @@ export function VariantsIndex() {
   return (
     <ClusterButtonPanelLayout>
       <Editable githubUrl="blob/master/content/VariantsPageIntro.md">
-        <MdxContent filepath="VariantsPageIntro.md" />
+        <MdxContent filepath="VariantsPageIntro.mdx" />
       </Editable>
     </ClusterButtonPanelLayout>
   )
