@@ -7,7 +7,7 @@ export function Home() {
   return (
     <ClusterButtonPanelLayout>
       <Editable>
-        <MdxContent filepath="Home.md" />
+        <MdxContent filepath="Home.mdx" />
       </Editable>
     </ClusterButtonPanelLayout>
   )

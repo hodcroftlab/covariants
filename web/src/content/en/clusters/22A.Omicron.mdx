@@ -1,0 +1,27 @@
+import { MdxContent } from 'web/src/i18n/getMdxContent'
+import { VarOrLin } from 'web/src/components/Common/Badges/VariantOrLineageBadge'
+import { AaMut } from 'web/src/components/Common/Badges/AminoacidMutationBadge'
+
+<MdxContent filepath="clusters/VoCHeader.mdx" />
+
+### <VarOrLinText name={'22A (Omicron)'}/>
+Also known as <VarOrLin name="22A (Omicron)" invert={true}/> and <Who name="Omicron" />
+
+_Note that as of 28 Feb 2024, the Nextstrain build is no longer being regularly updated, as there is little ongoing circulation. It will continue to be tracked in the graphs._
+
+<MdxContent filepath="clusters/OmicronHeader.mdx" />
+
+<VarOrLin name="22A (Omicron)"/> appears to have arisen in late 2021, possibly in South Africa. Early sequences are predominantly from South Africa, though it's now detected globally.
+
+As with all <Who name="Omicron" /> variants, <VarOrLin name="22A (Omicron)" prefix=""/> is primarily of concern due to the notable increase in transmission and immune evasion of this variant family. They have a large number of mutations in the Spike gene, with many of these in the receptor binding domain and N-terminal domain, which may play key roles in ACE2 binding and antibody recognition.
+
+<MdxContent filepath="clusters/22A22B_Spike.mdx" />
+
+On top of the many mutations outside of the Spike that <VarOrLin name="22A (Omicron)" prefix=""/> shares with <VarOrLin name="21L (Omicron)" prefix=""/>, <VarOrLin name="22A (Omicron)" prefix=""/> additionally has a 3 amino-acid deletion at <AaMut mut={"ORF1a:K141-"}/> to <AaMut mut={"ORF1a:F143-"}/>, and mutations at <AaMut mut={"ORF6:D61L"}/> and <AaMut mut={"N:P151S"}/>.
+
+<AaMut mut={"ORF1a:L3201F"}/> has arisen multiple times within <VarOrLin name="21L (Omicron)" prefix=""/>. In South Africa, where this variant is suspected to have originated, it is most present as wild type (L), while outside of South Africa, the <AaMut mut={"ORF1a:L3201F"}/> mutation is more common. Thus, sub-clades of <VarOrLin name="21L (Omicron)" prefix=""/> may or may not have <AaMut mut={"ORF1a:L3201F"}/>, depending on whether they descend from part of <VarOrLin name="21L (Omicron)" prefix=""/> carrying this mutation. Notably, <VarOrLin name="22A (Omicron)" prefix=""/> and <VarOrLin name="22B (Omicron)" prefix=""/>, thought to have arisen in South Africa, do <i>not</i> have this mutation, whereas <VarOrLin name="22C (Omicron)" prefix=""/>, thought to have originated in North America, has it.
+<br/>
+
+_Please help by providing links to further information about this variant if you can!_
+
+_(Thanks to Erik Boehm for his work on curating information relating to 22A-22C, which was used on these pages)_

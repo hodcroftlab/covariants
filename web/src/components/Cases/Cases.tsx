@@ -22,7 +22,7 @@ export function Cases() {
   return (
     <div>
       <CenteredEditable githubUrl="tree/master/web/src/content/en/PerCountryCasesIntro.md">
-        <MdxContent filepath="PerCountryCasesIntro.md" />
+        <MdxContent filepath="PerCountryCasesIntro.mdx" />
       </CenteredEditable>
 
       <SharingPanel />

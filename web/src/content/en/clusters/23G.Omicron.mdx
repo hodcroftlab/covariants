@@ -1,0 +1,31 @@
+import { MdxContent } from 'web/src/i18n/getMdxContent'
+import { VarOrLin } from 'web/src/components/Common/Badges/VariantOrLineageBadge'
+import { Lin } from 'web/src/components/Common/Badges/LineageBadge'
+import { AaMut } from 'web/src/components/Common/Badges/AminoacidMutationBadge'
+import { NucMut } from 'web/src/components/Common/Badges/NucleotideMutationBadge'
+
+
+<MdxContent filepath="clusters/VoCHeader.mdx" />
+
+### <VarOrLinText name={'23G (Omicron)'} />
+Also known as <VarOrLin name="23G (Omicron)" invert={true}/> and <Who name="Omicron" />
+
+<MdxContent filepath="clusters/OmicronHeader.mdx" />
+
+<VarOrLin name="23G (Omicron)"/> likely arose in early 2023, likely in South America. The first sequences date to March 2023 and the variant became dominant in Brazil around September 2023. <VarOrLin name="23G (Omicron)" prefix=""/> is responsible for a significant number of the XBB.1.5-derived sequences in the later part of 2023.
+
+
+<VarOrLin name="23G (Omicron)" prefix=""/> descends from the variant <VarOrLin name="23A (Omicron)" prefix=""/> (<Lin name="XBB.1.5"/>). It is particularly notable as the first successful <Lin name="XBB"/> lineage with the 'FLip' genotype (<AaMut mut={"S:L455F"} /> and <AaMut mut={"S:F456L"} />), so-called because of the abbreviations of the amino-acids involved and the fact that the location of the <code>F</code> and <code>L</code> amino-acids is switched.
+
+Thus, <VarOrLin name="23G (Omicron)" prefix=""/> has the same mutations as <VarOrLin name="23A (Omicron)" prefix=""/>, with additional mutations, including <AaMut mut={"S:L455F"} /> and <AaMut mut={"S:F456L"} />, which are commonly referred to as the 'FLip' genotype and have appeared numerous times in separate lineages in 2023 (including <VarOrLin name="23H (Omicron)" prefix=""/> (<Lin name="HK.3"/>)). This genotype is associated with increased transmissibility and immune escape ([Jian et al. bioRXiv](https://www.biorxiv.org/content/10.1101/2023.08.30.555211v2), [Qu et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2023.09.11.557206v1), [Kosugi et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2023.11.14.566985v1)).
+
+<VarOrLin name="23G (Omicron)" prefix=""/> additionally has amino-acid changes at positions <AaMut mut={"ORF1a:A4068S"} /> and <AaMut mut={"ORF8:P38S"} /> (though note that like its parent, ORF8 is truncated by a stop mutation at amino-acid position 8), and synonymous mutations at <NucMut mut="C1973T" />, <NucMut mut="C7564T" />, <NucMut mut="T8737C" />, <NucMut mut="C22624T" />, <NucMut mut="A25045G" /> and <NucMut mut="C27059T" />.
+
+The 'FLip' genotype likely allowed <VarOrLin name="23G (Omicron)" prefix=""/> to spread well globally and particularly in South America, where it is most common as of the end of 2023.
+
+
+_Please help by providing links to further information about this variant if you can!_
+
+
+
+

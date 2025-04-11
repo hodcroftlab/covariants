@@ -14,7 +14,7 @@ export function SharedMutations() {
   return (
     <div>
       <CenteredEditable githubUrl="blob/master/content/SharedMutations.md">
-        <MdxContent filepath="SharedMutations.md" />
+        <MdxContent filepath="SharedMutations.mdx" />
       </CenteredEditable>
 
       <Editable githubUrl="blob/master/scripts" text={t('View data generation scripts')}>

@@ -1,0 +1,29 @@
+import { LinkExternal } from 'web/src/components/Link/LinkExternal'
+import { VarOrLin } from 'web/src/components/Common/Badges/VariantOrLineageBadge'
+import { AaMut } from 'web/src/components/Common/Badges/AminoacidMutationBadge'
+import { Mut } from 'web/src/components/Common/Badges/VariantBadge'
+
+### <VarOrLinText name={'21F (Iota)'} />
+
+Also known as <VarOrLin name="21F (Iota)" invert={true} /> and <Who name="Iota" />
+
+_Note that as of 22 Mar 2022, the Nextstrain build is no longer being regularly updated, as there have been no new sequences seen in this cluster for many months. It will continue to be tracked in the graphs._
+
+<VarOrLin name="21F (Iota)"/> is largely found within the USA, particularly in New York state, and seems to have arisen in late 2020.
+
+<VarOrLin name="21F (Iota)" prefix="" /> contains a mutation in <Mut name="S:E484"/>, like the 2 of the variants of concern and some other currently circulating clusters. Further, this variant has the same 3 amino acid deletion in `ORF1a` at positions 3675-3677 that is seen in three variants of concern, as well as in <VarOrLin name="21D (Eta)"/> and <VarOrLin name="21G (Lambda)" prefix=""/> (see <Mut name="ORF1a:S3675"/>).
+
+Additionally, the variant has spike mutations at positions <AaMut mut={"S:L5F"}/>, <AaMut mut={"S:T95I"}/>, <AaMut mut={"S:D253G"}/>, and <AaMut mut={"S:A701V"}/> (shared with <VarOrLin name="20H (Beta, V2)"/>).
+
+Two sister-clades to this variant carry many of the same mutations but lack <Mut name="S:E484"/>. One does not have <AaMut mut={"S:A701V"}/> and instead has <Mut name="S:S477"/> and <AaMut mut={"S:Q957R"}/>. The other has both <AaMut mut={"S:A701V"}/> and <Mut name="S:S477"/>.
+
+These can be seen on the dedicated build (link at top of this page) by zooming in near to <VarOrLin name="21D (Eta)" prefix=""/> and coloring by Spike position 477.
+
+- <VarOrLin name="21F (Iota)"/> was not linked with more severe disease or an increased risk of vaccine-breakthrough infection (<LinkExternal href="https://www.cdc.gov/mmwr/volumes/70/wr/mm7019e1.htm">Thompson et al., MMWR</LinkExternal>)
+- <AaMut mut={"S:A701V"}/> is near the furin cleavage site, and <AaMut mut={"S:D253G"}/> is located in a region of the N-terminal domain which is a target for neutralizing antibodies (<LinkExternal href="https://www.medrxiv.org/content/10.1101/2021.02.23.21252259v2">Annavajhala et al., medRxiv</LinkExternal>)
+- The variant was observed to rise rapidly in prevalence in New York (<LinkExternal href="https://www.medrxiv.org/content/10.1101/2021.02.23.21252259v2">Annavajhala et al., medRxiv</LinkExternal>, <LinkExternal href="https://www.medrxiv.org/content/10.1101/2021.02.26.21251868v1">Lasek-Nesselquist et al., medRxiv</LinkExternal>)
+- Neutralization by convalescent plasma or vaccine sera was reduced by 4.1-fold or 3.3-3.6 fold, respectively, compared to wild-type (<LinkExternal href="https://www.medrxiv.org/content/10.1101/2021.02.23.21252259v2">Annavajhala et al., medRxiv</LinkExternal>)
+- Neutralization by titer from vaccinated individuals, 1.3-month convalescent plasma, and 6.2-month convalescent plasma was reduced 4.5-, 6.0-, and 4.8-fold, respectively, compared to wild-type (<LinkExternal href="https://www.biorxiv.org/content/10.1101/2021.02.14.431043v3">West et al., bioRxiv</LinkExternal>)
+
+
+_Please help by providing links to further information about this variant if you can!_

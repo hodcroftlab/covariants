@@ -1,0 +1,37 @@
+import { MdxContent } from 'web/src/i18n/getMdxContent'
+import { VarOrLin } from 'web/src/components/Common/Badges/VariantOrLineageBadge'
+import { Lin } from 'web/src/components/Common/Badges/LineageBadge'
+import { AaMut } from 'web/src/components/Common/Badges/AminoacidMutationBadge'
+import { Who } from 'web/src/components/Common/Badges/WhoBadge'
+
+
+<MdxContent filepath="clusters/VoCHeader.mdx" />
+
+### <VarOrLinText name={'22F (Omicron)'} />
+Also known as <VarOrLin name="22F (Omicron)" invert={true} /> and <Who name="Omicron" />
+
+<MdxContent filepath="clusters/OmicronHeader.mdx" />
+
+<VarOrLin name="22F (Omicron)"/> likely arose in mid-2022, possibly in south Asia. The first sequences date to August 2022 and come from India, and has expanded substantially since then.
+
+As with all <Who name="Omicron" /> variants, <VarOrLin name="22F (Omicron)" prefix=""/> is primarily of concern due to the notable increase in transmission and immune evasion of this variant family. They have a large number of mutations in the Spike gene, with many of these in the receptor binding domain and N-terminal domain, which may play key roles in ACE2 binding and antibody recognition.
+
+<VarOrLin name="22F (Omicron)" prefix=""/> is a recombinant variant, meaning its genome consists of a combination of two different 'parent' variants. <VarOrLin name="22F (Omicron)" prefix=""/> is a recombinant of lineage <Lin name="BJ.1"/> (<Lin name="BA.2.10.1.1"/>) (part of <VarOrLin name="21L (Omicron)" prefix=""/>) and <Lin name="BM.1.1.1"/> (<Lin name="BA.2.75.3.1.1.1"/>) (part of <VarOrLin name="22D (Omicron)" prefix=""/>), with a breakpoint in the S1 region of the Spike subunit.
+<VarOrLin name="22F (Omicron)" prefix=""/> has the mutations <AaMut mut={"S:V445P"} /> (from <Lin name="BJ.1"/>) and <AaMut mut={"S:N460K"} /> (from <Lin name="BM.1.1.1"/>), which are unique to each parent, allowing one to infer that the recombination breakpoint is likely within this short region.
+
+Prior to this breakpoint, <VarOrLin name="22F (Omicron)" prefix=""/> has all the mutations of its <Lin name="BJ.1"/> parent, and after this breakpoint, all the mutations of its <Lin name="BM.1.1.1"/> parent. As well as the mutational set found in all <VarOrLin name="21L (Omicron)" prefix=""/> descendants, this includes mutations in Spike from <Lin name="BJ.1"/> at <AaMut mut={"S:V83A"}/>, <AaMut mut={"S:Y144-"}/>, <AaMut mut={"S:H146Q"}/>, <AaMut mut={"S:Q183E"}/>, <AaMut mut={"S:V213E"}/>, <AaMut mut={"S:G339H"}/>, <AaMut mut={"S:R346T"}/>, <AaMut mut={"S:L386I"}/>, <AaMut mut={"S:V445P"}/>, and <AaMut mut={"S:G446S"}/>, and mutations in Spike from <Lin name="BM.1.1.1"/> at <AaMut mut={"S:N460K"}/>, <AaMut mut={"S:F486S"}/>, and <AaMut mut={"S:F490S"}/>.
+
+Additionally, <VarOrLin name="22F (Omicron)" prefix=""/> has a unique synonymous mutation at <NucMut mut="A19326G" />.
+
+Some sublineages within <VarOrLin name="22F (Omicron)" prefix=""/>, particularly <Lin name="XBB.1" />, have acquired the additional amino acid mutations <AaMut mut={"S:G252V"}/> (<NucMut mut="G22317T"/>) and <AaMut mut={"ORF8:G8*"}/> (<NucMut mut="G27915T"/>).
+
+From the mutations and initial lab results, there is concern that <VarOrLin name="22F (Omicron)" prefix=""/> may have an increased ability to evade existing immunity.
+- A study looking at ability to neutralize <VarOrLin name="22F (Omicron)" prefix=""/> in vaccinated and vaccinated individuals with <Who name="Omicron" /> breakthrough infections, found significant reduction in neutralization titers while maintaining ACE2 binding affinity ([Cao et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2022.09.15.507787v4))
+- The same study also found that <VarOrLin name="22F (Omicron)" prefix=""/> can escape the monoclonal antibodies (mAbs) Evusheld and Bebtelovimab, making clinically available mAbs as of October 2022 likely ineffective against the variant. Additionally, <VarOrLin name="22F (Omicron)" prefix=""/> sublinages <Lin name="XBB.1" /> escaped all NTD-targeting neutralizing antibodies tested ([Cao et al. bioRxiv](https://www.biorxiv.org/content/10.1101/2022.09.15.507787v4))
+
+<br/>
+_Please help by providing links to further information about this variant if you can!_
+
+
+
+
