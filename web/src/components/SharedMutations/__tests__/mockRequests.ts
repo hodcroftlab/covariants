@@ -111,7 +111,7 @@ const mockPerCountryData = {
       ],
       max_date: '2024-09-23',
       min_date: '2020-04-27',
-      per_country_intro_content: 'World.md',
+      per_country_intro_content: 'World.mdx',
       region: 'World',
     },
     {
@@ -132,7 +132,7 @@ const mockPerCountryData = {
       ],
       max_date: '2024-12-30',
       min_date: '2020-04-27',
-      per_country_intro_content: 'Switzerland.md',
+      per_country_intro_content: 'Switzerland.mdx',
       region: 'Switzerland',
     },
   ],
@@ -214,7 +214,7 @@ const mockCasesData = {
       region: 'World',
       max_date: '2024-09-23',
       min_date: '2020-04-27',
-      per_country_intro_content: 'World.md',
+      per_country_intro_content: 'World.mdx',
     },
   ],
 }

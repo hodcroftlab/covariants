@@ -453,15 +453,15 @@ def convert_region_data(region_name, region_input):
 REGIONS_INPUTS = {
     "World": {
         "data": "EUClusters_data.json",
-        "per_country_intro_content": "World.md"
+        "per_country_intro_content": "World.mdx"
     },
     "United States": {
         "data": "USAClusters_data.json",
-        "per_country_intro_content": "UnitedStates.md"
+        "per_country_intro_content": "UnitedStates.mdx"
     },
     "Switzerland": {
         "data": "SwissClusters_data.json",
-        "per_country_intro_content": "Switzerland.md"
+        "per_country_intro_content": "Switzerland.mdx"
     }
 }
 

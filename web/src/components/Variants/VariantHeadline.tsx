@@ -12,7 +12,7 @@ export interface VariantHeadlineProps {
 export function VariantHeadline({ cluster }: VariantHeadlineProps) {
   const { t } = useTranslationSafe()
   const enablePangolin = useRecoilValue(enablePangolinAtom)
-  const pangoName = cluster.pangoLineages?.map((lin) => lin.name).join(', ')
+  const pangoName = cluster.altDisplayName?.join(', ')
 
   const subtitle = useMemo(() => {
     if (!pangoName) {
