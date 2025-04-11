@@ -1,0 +1,28 @@
+import { Link } from 'src/components/Link/Link'
+import { LinkExternal } from 'src/components/Link/LinkExternal'
+
+
+<MdxContent filepath="clusters/VoCHeader.mdx" />
+
+_请注意，自2022年6月3日起，该Nextstrain构建不再定期更新，因为这个变体的流通很少。我们将继续在图表中跟踪该序列。_
+
+### 20H (Beta, V2)
+也称为<Lin name="B.1.351" />和<Who name="Beta" />
+
+2020年12月宣布，20H (Beta, V2) 起源于和/或最初扩展于南非 ([Tegally等, Nature](https://www.nature.com/articles/s41586-021-03402-9)).
+
+<VarOrLin name="20H (Beta, V2)"/>与刺突中的多个突变有关。最为显着地是<AaMut mut={'S:N501Y'}/> (见<Mut name="S:N501"/>)和<AaMut mut={'S:E484K'}/> (见<Mut name="S:E484"/>). <br/>
+但也有<AaMut mut={'S:L18F'}/>, <AaMut mut={'S:K417N'}/>和<AaMut mut={'S:D80A'}/>.
+此外，在刺突位置 241-243 处存在缺失。这有时被报告为第 242-244 位的突变。然而，缺失的位置是不明确的，并且由此产生的氨基酸序列是相同的。(<LinkExternal href="https://www.nature.com/articles/s41586-021-03402-9">Tegally等, Nature</LinkExternal>).
+
+人冠状病毒核衣壳也有突变： <AaMut mut={'N:T205I'}/> 和 在<code>ORF1a</code>(<code>Nsp6</code>)中的位置3675-3677有一个缺失 (也可见于<VarOrLin name="20I (Alpha, V1)" prefix=""/>和<VarOrLin name="20J (Gamma, V3)" prefix=""/>，和其他感兴趣的变体) (见<Mut name="ORF1a:S3675"/>).
+它*没有*在 69/70 处删除。
+
+- 接种 Moderna 疫苗的个体的血清显示，针对<VarOrLin name="20I (Alpha, V1)" prefix=""/> 的中和作用没有显着降低，而<VarOrLin name="20H (Beta, V2)" prefix=""/>的中和作用降低了 6 倍，但滴度仍高于预期的保护水平。([Moderna网站](https://investors.modernatx.com/news-releases/news-release-details/moderna-covid-19-vaccine-retains-neutralizing-activity-against))
+- 据报道，20H（Beta、V2）对单克隆抗体和恢复期血浆具有抗性，一项研究发现 44 份血浆样本中有 93% 显示滴度降低，48% 未检测到中和活性。 ([Wibmer et al., Nature Medicine](https://www.nature.com/articles/s41591-021-01285-x)). 进一步的研究还检测到恢复期血浆中和作用的减少 ([Cele et al., Nature](https://www.nature.com/articles/s41586-021-03471-w)).
+- 20H（Beta，V2）比 20I（Alpha，V1）对 mAb 和恢复期血清的减少更大 ([Wang et al., Nature](https://www.nature.com/articles/s41586-021-03398-2))
+- <AaMut mut={'S:N501Y'}/>突变可能有助于恢复<AaMut mut={'S:E484K'}/>突变观察到的 ACE2 结合减少，尽管这也可能被其他突变克服。 (<LinkExternal href="https://www.medrxiv.org/content/10.1101/2021.03.07.21253098v2.full-text">Amanat等, medRxiv</LinkExternal>)
+
+见[focal `S.N501` build filtered & zoomed to <VarOrLinText name="20H (Beta, V2)"/>](https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501&label=clade:20H%20%28Beta,%20V2%29&p=grid&r=country)
+
+见[focal `S.E484` build filtered & zoomed to <VarOrLinText name="20H (Beta, V2)"/>](https://nextstrain.org/groups/neherlab/ncov/S.E484?c=gt-S_484&label=clade:20H%20%28Beta,%20V2%29&p=grid&r=country)
