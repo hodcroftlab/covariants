@@ -21,7 +21,7 @@ export function Cases() {
 
   return (
     <div>
-      <CenteredEditable githubUrl="tree/master/web/src/content/en/PerCountryCasesIntro.md">
+      <CenteredEditable githubUrl="tree/master/web/src/content/en/PerCountryCasesIntro.mdx">
         <MdxContent filepath="PerCountryCasesIntro.mdx" />
       </CenteredEditable>
 

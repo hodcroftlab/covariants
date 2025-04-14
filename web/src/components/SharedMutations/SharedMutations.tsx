@@ -13,7 +13,7 @@ export function SharedMutations() {
 
   return (
     <div>
-      <CenteredEditable githubUrl="blob/master/content/SharedMutations.md">
+      <CenteredEditable githubUrl="blob/master/content/SharedMutations.mdx">
         <MdxContent filepath="SharedMutations.mdx" />
       </CenteredEditable>
 
