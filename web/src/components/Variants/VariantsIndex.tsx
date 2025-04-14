@@ -7,8 +7,8 @@ import { Editable } from 'src/components/Common/Editable'
 export function VariantsIndex() {
   return (
     <ClusterButtonPanelLayout>
-      <Editable githubUrl="blob/master/content/VariantsPageIntro.md">
-        <MdxContent filepath="VariantsPageIntro.md" />
+      <Editable githubUrl="blob/master/content/VariantsPageIntro.mdx">
+        <MdxContent filepath="VariantsPageIntro.mdx" />
       </Editable>
     </ClusterButtonPanelLayout>
   )

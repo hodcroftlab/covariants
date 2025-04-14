@@ -24,8 +24,8 @@ export function ClusterDistribution() {
 
   return (
     <div>
-      <CenteredEditable githubUrl="blob/master/content/PerClusterIntro.md">
-        <MdxContent filepath="PerClusterIntro.md" />
+      <CenteredEditable githubUrl="blob/master/content/PerClusterIntro.mdx">
+        <MdxContent filepath="PerClusterIntro.mdx" />
       </CenteredEditable>
 
       <SharingPanel />

@@ -70,7 +70,7 @@ export function Variants({ currentCluster }: { currentCluster: ClusterDatum }) {
     useRecoilValue(clusterDisplayNameToJoinedLineagesSelector(currentCluster.displayName)) ?? currentCluster.displayName
 
   const ClusterContent = useMemo(
-    () => <MdxContent filepath={`clusters/${currentCluster.buildName}.md`} />,
+    () => <MdxContent filepath={`clusters/${currentCluster.buildName}.mdx`} />,
     [currentCluster.buildName],
   )
   const showDefiningMutations = useMemo(() => hasDefiningMutations(currentCluster), [currentCluster])
@@ -90,7 +90,7 @@ export function Variants({ currentCluster }: { currentCluster: ClusterDatum }) {
   return (
     <FlexContainer>
       <FlexGrowing>
-        <Editable githubUrl={`blob/master/content/clusters/${currentCluster.buildName}.md`}>
+        <Editable githubUrl={`blob/master/content/clusters/${currentCluster.buildName}.mdx`}>
           <Row className="mb-3 gx-0">
             <Col className="d-flex w-100">
               {currentCluster.nextstrainUrl ? (

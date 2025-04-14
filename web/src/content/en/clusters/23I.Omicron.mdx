@@ -1,0 +1,39 @@
+import { LinkExternal } from 'web/src/components/Link/LinkExternal'
+import { MdxContent } from 'web/src/i18n/getMdxContent'
+import { VarOrLin } from 'web/src/components/Common/Badges/VariantOrLineageBadge'
+import { Lin } from 'web/src/components/Common/Badges/LineageBadge'
+import { AaMut } from 'web/src/components/Common/Badges/AminoacidMutationBadge'
+import { NucMut } from 'web/src/components/Common/Badges/NucleotideMutationBadge'
+
+
+<MdxContent filepath="clusters/VoCHeader.mdx" />
+
+### <VarOrLinText name={'23I (Omicron)'} />
+Also known as <VarOrLin name="23I (Omicron)" invert={true}/> and <Who name="Omicron" />
+
+<MdxContent filepath="clusters/OmicronHeader.mdx" />
+
+<VarOrLin name="23I (Omicron)"/> likely emerged in mid-2023, possibly in southern Africa, but has grown rapidly worldwide since then. It is particularly prevalent in Europe in Africa by the end of 2023.
+
+<VarOrLin name="23I (Omicron)" prefix=""/> is particularly notable as significant evolutionary jump, comparable to the emergence of Omicron, with over 30 additional Spike mutations than its <VarOrLin name="21L (Omicron)" prefix=""/> (<Lin name="BA.2" />) parent.
+
+<VarOrLin name="23I (Omicron)" prefix=""/> has a notable sublineage, <Lin name="JN.1" /> (sometimes called 'Pirola') which has additional mutation at <AaMut mut={"S:L455S"} />. This sublineage likely emerged in Europe and makes up around half of all <VarOrLin name="23I (Omicron)" prefix=""/> by the end of 2023.
+
+<VarOrLin name="23I (Omicron)" prefix=""/> has the same mutations as its ancestor <VarOrLin name="21L (Omicron)" prefix=""/> (<Lin name="BA.2" />), but with a large number of additional mutations. There are 35 additional mutations in the Spike gene, which can be viewed to the right, or in the <LinkExternal href="https://github.com/hodcroftlab/covariants/blob/master/defining_mutations/23I.Omicron.tsv">defining mutations file</LinkExternal> on the CoVariants GitHub. Of note, the mutation <AaMut mut={"S:R493Q"} /> is a reversion compared to the <VarOrLin name="21L (Omicron)" prefix=""/> parent. Finally, there is a four amino-acid insertion at position 16 in the Spike gene (<code>MPLF</code>).
+
+In addition, there are amino-acid mutations at <AaMut mut={"ORF1a:A211D"} />, <AaMut mut={"ORF1a:V1056L"} />, <AaMut mut={"ORF1a:N2526S"} />, <AaMut mut={"ORF1a:A2710T"} />, <AaMut mut={"ORF1a:V3593F"} />, <AaMut mut={"ORF1a:T4175I"} />, <AaMut mut={"M:D3H"} />, <AaMut mut={"M:T30A"} />, <AaMut mut={"M:A104V"} />, and <AaMut mut={"M:Q229K"} />. Further synonymous mutations are <NucMut mut="C8293T" />, <NucMut mut="T13339C" />, <NucMut mut="T15756A" />, <NucMut mut="A18492G" />, <NucMut mut="C21622T" />, <NucMut mut="C25207T" />, and <NucMut mut="C26681T" />.
+
+Many of the Spike mutations in <VarOrLin name="23I (Omicron)" prefix=""/> are the same as those found in other variants and associated with increased transmission, ACE2 receptor binding, and/or immune evasion.
+
+- In one study, <VarOrLin name="23I (Omicron)" prefix=""/> had a high resistance to serum neutralisation and seems to be antigenically distinct. In studies of vaccinated breakthrough infections, <VarOrLin name="23I (Omicron)" prefix=""/> had immune evasion simliar to variants with the 'FLip' genotype (see <VarOrLin name="23G (Omicron)" prefix=""/> and <VarOrLin name="23H (Omicron)" prefix=""/>). However, infectivity may be lower, though not due to reduced ACE2 binding ([Yang et al., Lancet](https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(23)00573-X/fulltext))
+- Another study found <VarOrLin name="23I (Omicron)" prefix=""/> no more resistant to sera than other currently dominant variants (<VarOrLin name="23A (Omicron)" prefix=""/> and <VarOrLin name="23F (Omicron)" prefix=""/>), though it did have high ACE2 affinity and poessed mutations that provided antibody resistance ([Wang et al., Nature](https://www.nature.com/articles/s41586-023-06750-w))
+- A further study estimated the Re of <VarOrLin name="23I (Omicron)" prefix=""/> as greater than <VarOrLin name="23A (Omicron)" prefix=""/> and comparible to <VarOrLin name="23F (Omicron)" prefix=""/>, though this did not seem to be due to increase infectivity. They also found evidence of high immune evasion ([Uriu et al., Lancet](https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(23)00575-3/fulltext))
+- An additional work reported that <VarOrLin name="23I (Omicron)" prefix=""/> is resistant to monoclonal antibodies, and was more resistant to serum neutralization than <VarOrLin name="23A (Omicron)" prefix=""/>, though not compared to some other XBB-descendants, especially those with the 'FLip' genotype (see <VarOrLin name="23G (Omicron)" prefix=""/> and <VarOrLin name="23H (Omicron)" prefix=""/>) ([Shward et al., Lancet](https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(23)00588-1/fulltext))
+- The sublineage <Lin name="JN.1" />, with additional mutation <AaMut mut={"S:L455S"}/>, has been shown to have lower neutralization titers and even more immune evasion than its parent, though possibly at the cost of ACE2 binding affinity. ([Yang et al., Lancet](https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(23)00744-2/fulltext))
+
+<br/>
+<i>Please help by providing links to further information about this variant if you can!</i>
+
+
+
+

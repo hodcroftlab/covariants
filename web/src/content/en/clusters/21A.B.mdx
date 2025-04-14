@@ -1,0 +1,14 @@
+import { VarOrLin } from 'web/src/components/Common/Badges/VariantOrLineageBadge'
+import { AaMut } from 'web/src/components/Common/Badges/AminoacidMutationBadge'
+import { Mut } from 'web/src/components/Common/Badges/VariantBadge'
+
+The Pango lineage `B.1.617` includes both <VarOrLin name={'21B (Kappa)'}/> and its sister lineage <VarOrLin name={'21A (Delta)'}/>.
+`B.1.617` was first detected in late 2020 in India, and has appeared to expand rapidly.
+
+These sequences have Spike mutations at positions <AaMut mut={'S:L452R'}/> (see <VarOrLin name={'21C (Epsilon)'}/> page for more details) and <Mut name="S:P681"/>, both of which impact antibody binding.
+
+In addition, many sequences have mutation <AaMut mut={'S:G142D'}/>, in the N-terminal domain, which is an escape mutant to some antibodies ([McCallum et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.14.426475v1)) and has appeared in viruses grown in the presence of a monoclonal antibody ([Suryadevara et al., Cell](https://www.cell.com/cell/fulltext/S0092-8674(21)00357-3)).
+
+These sequences therefore have mutations in the N-terminal domain, receptor binding domain (RBD), and furin cleavage site of the spike protein, which could impact a variety of antibodies.
+
+- A study found that titers against `B.1.617` were reduced roughly 2-fold compared to <VarOrLin name="20I (Alpha, V1)" prefix=""/> and wild-type ([Yadav et al., bioRxiv](https://www.biorxiv.org/content/10.1101/2021.04.23.441101v1))
