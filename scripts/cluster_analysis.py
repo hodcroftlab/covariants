@@ -199,7 +199,7 @@ def main(clus_answer,
     ##################################
     ##################################
     #### Read and clean metadata line by line
-    all_sequences, cluster_inconsistencies = clean_metadata(Nextstrain_clades_display_names, acknowledgement_by_variant,
+    all_sequences, cluster_inconsistencies, _, _ = clean_metadata(Nextstrain_clades_display_names, acknowledgement_by_variant,
                                                             alert_dates, clus_check, clus_data_all,
                                                             clus_to_run_breakdown, cols, dated_cluster_strains,
                                                             dated_limit, dated_limit_formatted, daughter_clades,
@@ -674,7 +674,7 @@ def main(clus_answer,
             print(f"\nNo inconsistent cluster assignment found for {key} sequences.")
 
 
-def clean_metadata(Nextstrain_clades_display_names, acknowledgement_by_variant, alert_dates, clus_check, clus_data_all,
+def clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant, alert_dates, clus_check, clus_data_all,
                    clus_to_run_breakdown, cols, dated_cluster_strains, dated_limit, dated_limit_formatted,
                    daughter_clades, display_name_to_clus, division, division_data_all, earliest_date, input_meta,
                    min_data_week, n_total, new_clades_to_rename, pango_lineage_to_clus, print_acks, rest_all,
@@ -690,7 +690,7 @@ def clean_metadata(Nextstrain_clades_display_names, acknowledgement_by_variant, 
     print_lines = sorted([int(n_total / 20 * i) + 1 for i in range(1, 20)])  # Print progress in %
     print("\nReading and cleaning up the metadata line-by-line...\n")
     n = 0
-    noQC = 0
+    no_qc = 0
     if mode=='slow':
         with gzip.open(input_meta, 'rt') if input_meta.endswith('.gz') else open(input_meta) as f:
             header = f.readline().split("\t")
@@ -733,7 +733,7 @@ def clean_metadata(Nextstrain_clades_display_names, acknowledgement_by_variant, 
 
                 # Keep only if at least 90% coverage -- exclude if no coverage info
                 if l[indices['coverage']] == "?":
-                    noQC += 1
+                    no_qc += 1
                     continue
                 if float(l[indices['coverage']]) < 0.9:
                     continue
@@ -788,7 +788,7 @@ def clean_metadata(Nextstrain_clades_display_names, acknowledgement_by_variant, 
                 clus_all = []
                 only_Nextstrain = False
                 # Use Nextclade
-                if clade in Nextstrain_clades_display_names:
+                if clade in nextstrain_clades_display_names:
                     clus_all.append(display_name_to_clus[clade])
                     only_Nextstrain = True
                     if clade in daughter_clades:
@@ -958,81 +958,85 @@ def clean_metadata(Nextstrain_clades_display_names, acknowledgement_by_variant, 
             infer_schema_length=0
         )
         batches = reader.next_batches(10)
+        no_qcs = []
+        future_dates = []
+        total_counts_countries_new = []
+        total_counts_divisions_new = []
         while batches:
             s = pl.concat(batches)
+            human_only =  s.filter(pl.col('host').eq('Human'))
+            # Filter only for those without 'bad' and those without '' QC status
+            # available values (as of 30 mar 22) are 'bad', 'good', 'mediocre', ''
+            # these '' values are likely those where alignment fails
+            # as of 30 mar 22, this excludes 466,596 sequences (!) for bad, and 4,781 for ''
+            qc_filtered = human_only.filter(pl.col('QC_overall_status').is_in(['bad', '']).not_())
+            valid_dates = qc_filtered.filter(pl.col('date').str.len_chars().eq(10).and_(pl.col('date').str.contains('X').not_()))
+            bad_seqs_df = pl.DataFrame({'strain': bad_seqs.keys(), 'date': bad_seqs.values()})
+            bad_seqs_removed = valid_dates.join(bad_seqs_df, on=['strain', 'date'], how='anti')
+            coverage_cast = bad_seqs_removed.with_columns(pl.col('coverage').replace('?', None).cast(pl.Float32))
+            coverage_filtered = coverage_cast.filter(pl.col('coverage').ge(0.9))
+            no_qcs.append(coverage_cast.select('coverage').filter(pl.col('coverage').is_null()).count())
+            # as of 7 Dec 2023 - if clade is in list of new clades that need renaming, replace clade
+            clades_renamed = coverage_filtered.with_columns(pl.col('Nextstrain_clade').replace(new_clades_to_rename))
+            dates_formatted = clades_renamed.with_columns(pl.col('date').str.to_date("%Y-%m-%d"))
+            no_future_dates = dates_formatted.filter(pl.col('date').le(today))
+            future_dates.append(dates_formatted.filter(pl.col('date').gt(today)))
+
+
+            ################ get total counts
+            # TODO: convert to query language: "pl.col('date').dt.to_ordinal" should help
+            date_to_2weeks = no_future_dates.with_columns(date_2weeks=pl.struct(
+                year=pl.col('date').map_elements(to2week_ordinal_year, return_dtype=pl.Int64),
+                week=pl.col('date').map_elements(to2week_ordinal_week, return_dtype=pl.Int64)
+            )
+            )
+
+            # TODO: the division is not properly coalesced but rather overwritten
+            swiss_region_added = date_to_2weeks.with_columns(division=pl.when(pl.col('country').eq('Switzerland')).then(pl.col('division').replace(swiss_regions, default=pl.col('division'))))
+
+            # TODO: make this nicer
+            min_week_filtered = swiss_region_added.filter(pl.col('date_2weeks').struct.field('year').gt(min_data_week[0]).or_(pl.col('date_2weeks').struct.field('year').eq(min_data_week[0]).and_(pl.col('date_2weeks').struct.field('week').ge(min_data_week[1]))))
+
+            total_counts_countries_new.append(min_week_filtered.group_by('country', 'date_2weeks').count())
+            if division:
+                country_filtered = min_week_filtered.filter(pl.col('country').is_in(selected_country))
+                total_counts_divisions_new.append(country_filtered.group_by('country', 'division', 'date_2weeks').count())
+            ##################
+
 
             # Old way
             indices = {c: i for i, c in enumerate(s.columns)}
-            for l in s.iter_rows():
+            for l in no_future_dates.iter_rows():
                 ##### CLEANING METADATA #####
 
-                # Filter for only Host = Human
-                if l[indices['host']] != "Human":
-                    continue
-
-                # Filter only for those without 'bad' and those without '' QC status
-                # available values (as of 30 mar 22) are 'bad', 'good', 'mediocre', ''
-                # these '' values are likely those where alignment fails
-                # as of 30 mar 22, this excludes 466,596 sequences (!) for bad, and 4,781 for ''
-                if l[indices['QC_overall_status']] == "bad" or l[indices['QC_overall_status']] == "" or l[indices['QC_overall_status']] is None:
-                    continue
-
-                # Invalid dates
-                if len(l[indices['date']]) != 10:
-                    continue
-                if "X" in l[indices['date']]:
-                    continue
-
-                # If in bad_sequences and the date matches
-                if l[indices['strain']] in bad_seqs and l[indices['date']] == bad_seqs[l[indices['strain']]]:
-                    continue
-
-                # Keep only if at least 90% coverage -- exclude if no coverage info
-                if l[indices['coverage']] == "?":
-                    noQC += 1
-                    continue
-                if float(l[indices['coverage']]) < 0.9:
-                    continue
-
                 clade = l[indices['Nextstrain_clade']]
-                # As of 28 Oct 22 - process recombinants so we can start including them as designated variants
-                # if clade == "recombinant":
-                #    continue
-                # as of 7 Dec 2023 - if clade is in list of new clades that need renaming, replace clade
-                if clade in new_clades_to_rename:
-                    clade = new_clades_to_rename[clade]
 
                 pango = l[indices['Nextclade_pango']]
 
-                # Future dates
-                date_formatted = datetime.datetime.strptime(l[indices['date']], "%Y-%m-%d")
-                if date_formatted > today:
-                    print("WARNING! Data from the future!")
-                    print(f"{l[indices['strain']]}: {l[indices['date']]}")
-                    continue
+                date_formatted = datetime.datetime.fromordinal(l[indices['date']].toordinal())
 
                 date_2weeks = to2week_ordinal(date_formatted)
 
                 country = l[indices["country"]]
                 # Replace Swiss divisions with swiss-region, but store original division
                 div = l[indices['division']]
-                if div in swiss_regions:
-                    div = swiss_regions[div]
-
-                # Collect total sequence counts by countries and dates
-                if date_2weeks >= min_data_week:
-                    if date_2weeks not in total_counts_countries[country]:
-                        total_counts_countries[country][date_2weeks] = 0
-                    total_counts_countries[country][date_2weeks] += 1
-
-                    if division:
-                        if country in selected_country:
-                            if div:
-                                if div not in total_counts_divisions[country]:
-                                    total_counts_divisions[country][div] = {}
-                                if date_2weeks not in total_counts_divisions[country][div]:
-                                    total_counts_divisions[country][div][date_2weeks] = 0
-                                total_counts_divisions[country][div][date_2weeks] += 1
+                # if div in swiss_regions:
+                #     div = swiss_regions[div]
+                #
+                # # Collect total sequence counts by countries and dates
+                # if date_2weeks >= min_data_week:
+                #     if date_2weeks not in total_counts_countries[country]:
+                #         total_counts_countries[country][date_2weeks] = 0
+                #     total_counts_countries[country][date_2weeks] += 1
+                #
+                #     if division:
+                #         if country in selected_country:
+                #             if div:
+                #                 if div not in total_counts_divisions[country]:
+                #                     total_counts_divisions[country][div] = {}
+                #                 if date_2weeks not in total_counts_divisions[country][div]:
+                #                     total_counts_divisions[country][div][date_2weeks] = 0
+                #                 total_counts_divisions[country][div][date_2weeks] += 1
 
                 ##### ASSIGNING CLUSTERS #####
 
@@ -1044,7 +1048,7 @@ def clean_metadata(Nextstrain_clades_display_names, acknowledgement_by_variant, 
                 clus_all = []
                 only_Nextstrain = False
                 # Use Nextclade
-                if clade in Nextstrain_clades_display_names:
+                if clade in nextstrain_clades_display_names:
                     clus_all.append(display_name_to_clus[clade])
                     only_Nextstrain = True
                     if clade in daughter_clades:
@@ -1206,15 +1210,26 @@ def clean_metadata(Nextstrain_clades_display_names, acknowledgement_by_variant, 
                         # remove all but EPI_ISL, on request from GISAID
                         acknowledgement_by_variant["acknowledgements"][clus].append(l[indices['gisaid_epi_isl']])
             batches=reader.next_batches(10)
-    # noQCs = pl.concat(noQCs)
+        no_qc = pl.concat(no_qcs).sum().item()
+        for row in pl.concat(total_counts_divisions_new).group_by('country', 'division', 'date_2weeks').sum().iter_rows():
+            if row[0] not in total_counts_divisions.keys():
+                total_counts_divisions.update({row[0]: {row[1]: {}}})
+            if row[1] not in total_counts_divisions[row[0]].keys():
+                total_counts_divisions[row[0]].update({row[1]: {}})
+            total_counts_divisions[row[0]][row[1]].update({(row[2]['year'], row[2]['week']): row[3]})
+        for row in pl.concat(total_counts_countries_new).group_by('country', 'date_2weeks').sum().iter_rows():
+            if row[0] not in total_counts_countries.keys():
+                total_counts_countries.update({row[0]: {}})
+            else:
+                total_counts_countries[row[0]].update({(row[1]['year'], row[1]['week']): row[2]})
     # future_dates = pl.concat(future_dates)
     # if len(future_dates) > 0:
     #     logging.warning(f"WARNING! Data from the future!\n {future_dates}")
     print("100% complete!")
     t1 = time.time()
     print(f"Collecting all data took {round((t1 - t0) / 60, 1)} min to run.\n")
-    print(f"There are {noQC} without QC information.\n")
-    return all_sequences, cluster_inconsistencies
+    print(f"There are {no_qc} without QC information.\n")
+    return all_sequences, cluster_inconsistencies, total_counts_countries, total_counts_divisions
 
 
 def prepare_data_structure(all_countries, clus_to_run, division, earliest_date, selected_country, today):
