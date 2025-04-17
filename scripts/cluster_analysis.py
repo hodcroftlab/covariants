@@ -49,7 +49,7 @@ import gzip
 import polars as pl
 from .colors_and_countries import *
 from .helpers import *
-from .clusters import *
+from .clusters import clusters as clusters_data
 from .bad_sequences import *
 from .approx_first_dates import cluster_first_dates, first_date_exceptions
 from .swiss_regions import *
@@ -95,7 +95,7 @@ def print_all_clus_alerts(key, summary_cluster_assignments):
 
 def main(clus_answer,
          clus_check, clus_to_run, division, do_country, do_divisions_country, print_acks, print_files, selected_country,
-         dated_limit=DATED_LIMIT, input_meta='data/metadata.tsv'):
+         dated_limit=DATED_LIMIT, input_meta='data/metadata.tsv', clusters=clusters_data):
     # TODO: Use "usa_graph": True (Slack, Emma, May 18 22)
 
     # set min data week to consider
@@ -184,14 +184,15 @@ def main(clus_answer,
                                                                                                        display_name_to_clus,
                                                                                                        input_meta)
 
-    clus_to_run_breakdown, daughter_clades, rest_all = split_into_cluster_categories(Nextstrain_clades, clus_to_run)
+    clus_to_run_breakdown, daughter_clades, rest_all = split_into_cluster_categories(Nextstrain_clades, clus_to_run,
+                                                                                     clusters_data)
 
     ##################################
     ##################################
     ##### Prepare data structure
 
     acknowledgement_by_variant, acknowledgement_keys, clus_data_all, division_data_all, total_counts_countries, total_counts_divisions = prepare_data_structure(
-        all_countries, clus_to_run, division, earliest_date, selected_country, today)
+        all_countries, clus_to_run, division, earliest_date, selected_country, today, clusters_data)
 
     t1 = time.time()
     print(f"Preparation took {round((t1 - t0) / 60, 1)} min to run.\n")
@@ -199,15 +200,19 @@ def main(clus_answer,
     ##################################
     ##################################
     #### Read and clean metadata line by line
-    all_sequences, cluster_inconsistencies, _, _ = clean_metadata(Nextstrain_clades_display_names, acknowledgement_by_variant,
-                                                            alert_dates, clus_check, clus_data_all,
-                                                            clus_to_run_breakdown, cols, dated_cluster_strains,
-                                                            dated_limit, dated_limit_formatted, daughter_clades,
-                                                            display_name_to_clus, division, division_data_all,
-                                                            earliest_date, input_meta, min_data_week, n_total,
-                                                            new_clades_to_rename, pango_lineage_to_clus, print_acks,
-                                                            rest_all, selected_country, today, total_counts_countries,
-                                                            total_counts_divisions)
+    all_sequences, cluster_inconsistencies, _, _ = clean_metadata(clusters,
+                                                                  Nextstrain_clades_display_names,
+                                                                  acknowledgement_by_variant,
+                                                                  alert_dates, clus_check, clus_data_all,
+                                                                  clus_to_run_breakdown, cols, dated_cluster_strains,
+                                                                  dated_limit, dated_limit_formatted, daughter_clades,
+                                                                  display_name_to_clus, division, division_data_all,
+                                                                  earliest_date, input_meta, min_data_week, n_total,
+                                                                  new_clades_to_rename, pango_lineage_to_clus,
+                                                                  print_acks,
+                                                                  rest_all, selected_country, today,
+                                                                  total_counts_countries,
+                                                                  total_counts_divisions)
 
     ##################################
     ##################################
@@ -237,7 +242,7 @@ def main(clus_answer,
                     if date not in clus_data_all[meta_clus]["cluster_counts"][country]:
                         clus_data_all[meta_clus]["cluster_counts"][country][date] = 0
                     clus_data_all[meta_clus]["cluster_counts"][country][date] += \
-                    clus_data_all[clus]["cluster_counts"][country][date]
+                        clus_data_all[clus]["cluster_counts"][country][date]
 
         if print_acks:
             for clus in clusters[meta_clus]["other_nextstrain_names"]:
@@ -418,7 +423,7 @@ def main(clus_answer,
                     )
 
                     division_data_all[country][clus]["non_zero_counts"][div] = (
-                    week_as_date, cluster_count, total_count)
+                        week_as_date, cluster_count, total_count)
 
     ### CLUSTERS ###
 
@@ -464,7 +469,7 @@ def main(clus_answer,
         clus_keys = [x for x in clusters.keys()]  # if x in clusters_tww]
         if division_local:
             clus_keys = [x for x in clus_keys if clusters[x].get("type") == "variant" or (
-                        "usa_graph" in clusters[x] and clusters[x]["usa_graph"] is True)]
+                    "usa_graph" in clusters[x] and clusters[x]["usa_graph"] is True)]
             min_to_plot = 20
         else:
             clus_keys = [x for x in clus_keys if clusters[x]["graphing"] is True]
@@ -540,7 +545,7 @@ def main(clus_answer,
                         i += 1
                         continue
                     (week_as_date, cluster_count, total_count) = \
-                    division_data_all[selected_country_local][clus]["non_zero_counts"][country]
+                        division_data_all[selected_country_local][clus]["non_zero_counts"][country]
                 else:
                     if country not in clus_data_all[clus]["non_zero_counts"]:
                         i += 1
@@ -674,7 +679,8 @@ def main(clus_answer,
             print(f"\nNo inconsistent cluster assignment found for {key} sequences.")
 
 
-def clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant, alert_dates, clus_check, clus_data_all,
+def clean_metadata(clusters, nextstrain_clades_display_names, acknowledgement_by_variant, alert_dates, clus_check,
+                   clus_data_all,
                    clus_to_run_breakdown, cols, dated_cluster_strains, dated_limit, dated_limit_formatted,
                    daughter_clades, display_name_to_clus, division, division_data_all, earliest_date, input_meta,
                    min_data_week, n_total, new_clades_to_rename, pango_lineage_to_clus, print_acks, rest_all,
@@ -691,7 +697,7 @@ def clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant, 
     print("\nReading and cleaning up the metadata line-by-line...\n")
     n = 0
     no_qc = 0
-    if mode=='slow':
+    if mode == 'slow':
         with gzip.open(input_meta, 'rt') if input_meta.endswith('.gz') else open(input_meta) as f:
             header = f.readline().split("\t")
             indices = {c: header.index(c) for c in cols}
@@ -953,7 +959,8 @@ def clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant, 
         reader = pl.read_csv_batched(
             input_meta,
             separator='\t',
-            columns=['Nextstrain_clade', 'Nextclade_pango', 'country', 'division', 'host', 'QC_overall_status', 'date', 'coverage', 'strain', 'substitutions', 'deletions', 'gisaid_epi_isl'],
+            columns=['Nextstrain_clade', 'Nextclade_pango', 'country', 'division', 'host', 'QC_overall_status', 'date',
+                     'coverage', 'strain', 'substitutions', 'deletions', 'gisaid_epi_isl'],
             batch_size=10_000,
             infer_schema_length=0
         )
@@ -962,15 +969,23 @@ def clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant, 
         future_dates = []
         total_counts_countries_new = []
         total_counts_divisions_new = []
+        clus_all_dfs = []
+        clus_data_all_df = pl.from_dict(clus_data_all).unpivot(variable_name='clus',
+                                                               value_name='data').unnest('data')
+        # TODO: check if it is possible to use strings from the start
+        clus_data_all_df = clus_data_all_df.with_columns(pl.col('gaps').cast(pl.List(pl.String)))
         while batches:
             s = pl.concat(batches)
-            human_only =  s.filter(pl.col('host').eq('Human'))
+
+            ##### CLEANING METADATA #####
+            human_only = s.filter(pl.col('host').eq('Human'))
             # Filter only for those without 'bad' and those without '' QC status
             # available values (as of 30 mar 22) are 'bad', 'good', 'mediocre', ''
             # these '' values are likely those where alignment fails
             # as of 30 mar 22, this excludes 466,596 sequences (!) for bad, and 4,781 for ''
             qc_filtered = human_only.filter(pl.col('QC_overall_status').is_in(['bad', '']).not_())
-            valid_dates = qc_filtered.filter(pl.col('date').str.len_chars().eq(10).and_(pl.col('date').str.contains('X').not_()))
+            valid_dates = qc_filtered.filter(
+                pl.col('date').str.len_chars().eq(10).and_(pl.col('date').str.contains('X').not_()))
             bad_seqs_df = pl.DataFrame({'strain': bad_seqs.keys(), 'date': bad_seqs.values()})
             bad_seqs_removed = valid_dates.join(bad_seqs_df, on=['strain', 'date'], how='anti')
             coverage_cast = bad_seqs_removed.with_columns(pl.col('coverage').replace('?', None).cast(pl.Float32))
@@ -982,61 +997,152 @@ def clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant, 
             no_future_dates = dates_formatted.filter(pl.col('date').le(today))
             future_dates.append(dates_formatted.filter(pl.col('date').gt(today)))
 
-
-            ################ get total counts
+            ##### GETTING TOTAL COUNTS #####
             # TODO: convert to query language: "pl.col('date').dt.to_ordinal" should help
             date_to_2weeks = no_future_dates.with_columns(date_2weeks=pl.struct(
                 year=pl.col('date').map_elements(to2week_ordinal_year, return_dtype=pl.Int64),
-                week=pl.col('date').map_elements(to2week_ordinal_week, return_dtype=pl.Int64)
-            )
+                week=pl.col('date').map_elements(to2week_ordinal_week, return_dtype=pl.Int64))
             )
 
-            # TODO: the division is not properly coalesced but rather overwritten
-            swiss_region_added = date_to_2weeks.with_columns(division=pl.when(pl.col('country').eq('Switzerland')).then(pl.col('division').replace(swiss_regions, default=pl.col('division'))))
+            # TODO: check if original division is still needed somewhere
+            swiss_region_added = date_to_2weeks.with_columns(
+                pl.col('division').replace(swiss_regions, default=pl.col('division')))
 
             # TODO: make this nicer
-            min_week_filtered = swiss_region_added.filter(pl.col('date_2weeks').struct.field('year').gt(min_data_week[0]).or_(pl.col('date_2weeks').struct.field('year').eq(min_data_week[0]).and_(pl.col('date_2weeks').struct.field('week').ge(min_data_week[1]))))
+            min_week_filtered = swiss_region_added.filter(
+                pl.col('date_2weeks').struct.field('year').gt(min_data_week[0]).or_(
+                    pl.col('date_2weeks').struct.field('year').eq(min_data_week[0]).and_(
+                        pl.col('date_2weeks').struct.field('week').ge(min_data_week[1]))))
 
             total_counts_countries_new.append(min_week_filtered.group_by('country', 'date_2weeks').count())
             if division:
                 country_filtered = min_week_filtered.filter(pl.col('country').is_in(selected_country))
-                total_counts_divisions_new.append(country_filtered.group_by('country', 'division', 'date_2weeks').count())
-            ##################
+                total_counts_divisions_new.append(
+                    country_filtered.group_by('country', 'division', 'date_2weeks').count())
 
+            ##### ASSIGNING CLUSTERS #####
+            with_snps_and_gaps = no_future_dates.with_columns(
+                snps=pl.col('substitutions').str.split(',').list.eval(pl.element().str.head(-1).str.tail(-1)),
+                gaps=pl.col('deletions').map_elements(split, pl.List(pl.Int32)).cast(pl.List(pl.String)),
+                clus=pl.col('Nextstrain_clade').replace(display_name_to_clus)
+            )
+
+            # assign nextclade clusters
+            clus_all__in_display_names = (
+                with_snps_and_gaps
+                .filter(pl.col('Nextstrain_clade').is_in(nextstrain_clades_display_names))
+            )
+
+            # derive children
+            data = []
+            for key, items  in daughter_clades.items():
+                for item in items:
+                    data.append({'parent': key, 'child': item})
+            daughter_clades_df = pl.DataFrame(data)
+            relevant_children = clus_data_all_df.join(daughter_clades_df, left_on='clus', right_on='child', how='inner')
+            children = (
+                clus_all__in_display_names
+                .join(relevant_children.select('parent_right', 'clus', 'snps', 'snps2', 'gaps'), left_on='Nextstrain_clade', right_on='parent_right', how='inner')
+                .with_columns(
+                    valid_snps=assign_via_snp_method('snps', 'snps_right'),
+                    valid_snps2=assign_via_snp_method('snps', 'snps2'),
+                    valid_gaps=assign_via_snp_method('gaps', 'gaps_right'))
+                .filter(pl.col('valid_snps').or_(pl.col('valid_snps2')).or_('valid_gaps'))
+                .with_columns(clus=pl.col('clus_right'))
+                .drop('snps', 'snps_right', 'snps2', 'gaps', 'gaps_right', 'clus_right',
+                      'valid_snps', 'valid_snps2', 'valid_gaps')
+            )
+
+            # check for other clusters
+            rest_clusters = set(
+                [clus for clus in clus_to_run_breakdown['snps']["rest"]]
+                + [clus for clus in clus_to_run_breakdown['gaps']["rest"]]
+            )
+            unofficial_clusters = set(
+                clus_to_run_breakdown['snps']["unofficial_clus"]
+                + clus_to_run_breakdown['gaps']["unofficial_clus"]
+            )
+
+            clusters_to_check = rest_clusters
+            if clus_check:
+                clusters_to_check = clusters_to_check.union(unofficial_clusters)
+            clus_to_check_df = clus_data_all_df.filter(pl.col('clus').is_in(clusters_to_check))
+
+            clus_all__disp_additional_cluster = (
+                clus_all__in_display_names
+                .join(clus_to_check_df.select('clus', 'snps', 'snps2', 'gaps'), how='cross')
+                .with_columns(
+                    valid_snps=assign_via_snp_method('snps', 'snps_right'),
+                    valid_snps2=assign_via_snp_method('snps', 'snps2'),
+                    valid_gaps=assign_via_snp_method('gaps', 'gaps_right'),
+                )
+                .filter(pl.col('valid_snps').or_(pl.col('valid_snps2')).or_('valid_gaps'))
+                .with_columns(clus=pl.col('clus_right'))
+                .drop('snps', 'snps_right', 'snps2', 'gaps', 'gaps_right', 'clus_right',
+                      'valid_snps', 'valid_snps2', 'valid_gaps')
+            )
+
+            # assign remaining clusters
+            #################################
+
+            # assign other clusters
+            clus_all__remaining = (
+                with_snps_and_gaps
+                .filter(pl.col('Nextstrain_clade').is_in(nextstrain_clades_display_names).not_())
+            )
+
+            # others
+            clusters_to_check = rest_clusters.union(unofficial_clusters)
+            clus_to_check_df = clus_data_all_df.filter(pl.col('clus').is_in(clusters_to_check))
+
+            clus_all__remain_additional_clusters = (
+                clus_all__remaining
+                .join(clus_to_check_df.select('clus', 'snps', 'snps2', 'gaps'), how='cross')
+                .with_columns(
+                    valid_snps=assign_via_snp_method('snps', 'snps_right'),
+                    valid_snps2=assign_via_snp_method('snps', 'snps2'),
+                    valid_gaps=assign_via_snp_method('gaps', 'gaps_right'),
+                )
+                .filter(pl.col('valid_snps').or_(pl.col('valid_snps2')).or_('valid_gaps'))
+                .with_columns(clus=pl.col('clus_right'))
+                .drop('snps', 'snps_right', 'snps2', 'gaps', 'gaps_right', 'clus_right',
+                      'valid_snps', 'valid_snps2', 'valid_gaps')
+            )
+
+            # check for inconsistencies
+            # TODO: this inconsistency check is not complete yet
+            clus_all__disp_add_consistent = pl.concat([clus_all__disp_additional_cluster, children])
+            if clus_check:
+                clus_all__disp_add_consistent = clus_all__disp_add_consistent.group_by('strain', maintain_order=True).map_groups(lambda x: x.filter(pl.col('clus').is_in(rest_all)))
+
+            # combine cluster assignments
+            clus_all_df = pl.concat([clus_all__in_display_names.drop('snps', 'gaps'), clus_all__disp_add_consistent, clus_all__remain_additional_clusters])
+
+            # Exclude all strains that are dated before their respective clade
+            # TODO: simplify the date comparison
+            cluster_first_dates_df = (
+                pl.from_dict(cluster_first_dates)
+                .unpivot(variable_name='clus',
+                         value_name='first_dates')
+            )
+            clus_all__first_dates_filtered = (
+                clus_all_df
+                .join(cluster_first_dates_df, on='clus', how='left')
+                .filter(pl.coalesce(pl.col('date').ge(pl.col('first_dates').struct.field('date_formatted')), True))
+            )
+
+            clus_all_dfs.append(clus_all__first_dates_filtered)
 
             # Old way
             indices = {c: i for i, c in enumerate(s.columns)}
             for l in no_future_dates.iter_rows():
-                ##### CLEANING METADATA #####
-
                 clade = l[indices['Nextstrain_clade']]
-
                 pango = l[indices['Nextclade_pango']]
-
+                strain = l[indices['strain']]
                 date_formatted = datetime.datetime.fromordinal(l[indices['date']].toordinal())
-
                 date_2weeks = to2week_ordinal(date_formatted)
-
                 country = l[indices["country"]]
-                # Replace Swiss divisions with swiss-region, but store original division
                 div = l[indices['division']]
-                # if div in swiss_regions:
-                #     div = swiss_regions[div]
-                #
-                # # Collect total sequence counts by countries and dates
-                # if date_2weeks >= min_data_week:
-                #     if date_2weeks not in total_counts_countries[country]:
-                #         total_counts_countries[country][date_2weeks] = 0
-                #     total_counts_countries[country][date_2weeks] += 1
-                #
-                #     if division:
-                #         if country in selected_country:
-                #             if div:
-                #                 if div not in total_counts_divisions[country]:
-                #                     total_counts_divisions[country][div] = {}
-                #                 if date_2weeks not in total_counts_divisions[country][div]:
-                #                     total_counts_divisions[country][div][date_2weeks] = 0
-                #                 total_counts_divisions[country][div][date_2weeks] += 1
 
                 ##### ASSIGNING CLUSTERS #####
 
@@ -1052,8 +1158,9 @@ def clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant, 
                     clus_all.append(display_name_to_clus[clade])
                     only_Nextstrain = True
                     if clade in daughter_clades:
-                        if pango in pango_lineage_to_clus and clus_data_all[pango_lineage_to_clus[pango]]["use_pango"] and \
-                                pango_lineage_to_clus[pango] in daughter_clades[clade]:
+                        if pango in pango_lineage_to_clus and clus_data_all[pango_lineage_to_clus[pango]][
+                            "use_pango"] and pango_lineage_to_clus[pango] in daughter_clades[clade]:
+                            # TODO: provide a test example for this branch
                             clus_all.append(pango_lineage_to_clus[pango])
                         else:
                             for daughter in daughter_clades[clade]:
@@ -1062,15 +1169,16 @@ def clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant, 
                                     clus_to_check = {
                                         key: clus_to_check[key] + [daughter] if daughter in clus_to_run_breakdown[key][
                                             "official_clus"] or daughter in clus_to_run_breakdown[key][
-                                                                                    "unofficial_clus"] else clus_to_check[
+                                                                                    "unofficial_clus"] else
+                                        clus_to_check[
                                             key] for key in clus_to_check}
 
                         only_Nextstrain = False
                 else:
-                    if pango in pango_lineage_to_clus:
-                        if clus_data_all[pango_lineage_to_clus[pango]]["use_pango"]:
-                            clus_all.append(pango_lineage_to_clus[pango])
-                            only_Nextstrain = True
+                    if pango in pango_lineage_to_clus and clus_data_all[pango_lineage_to_clus[pango]]["use_pango"]:
+                        # TODO: provide a test example for this branch
+                        clus_all.append(pango_lineage_to_clus[pango])
+                        only_Nextstrain = True
 
                 # If no official Nextstrain_clade assigned, or we want additional checks, also check for "unofficial" clusters
                 # We NEVER check for "official" clusters. If Nextclade did not assign a cluster, then we won't do it either
@@ -1094,16 +1202,19 @@ def clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant, 
                 for key in muts:
                     for clus in clus_to_check[key]:
                         if clus in clus_all:
+                            # TODO: provide an example for this condition
                             continue
                         for snp in clus_data_all[clus][key]:
                             if snp not in muts[key]:
                                 break
                         else:
                             clus_all.append(clus)
+                            pass
 
                 for clus in clus_all:
                     for snp in clus_data_all[clus]["exclude_snps"]:
                         if snp in muts["snps"]:
+                            # TODO: provide an example for this condition
                             clus_all.remove(clus)
                             break
 
@@ -1142,7 +1253,9 @@ def clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant, 
                             cluster_inconsistencies["Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
 
                         else:  # If no Nextstrain clade: Drop all unique clusters (still keep mutations and unofficial clusters)
-                            cluster_inconsistencies["Non_Nextstrain_clade"][l[indices['gisaid_epi_isl']]] = clus_all_unique
+                            # TODO: provide an example of this branch
+                            cluster_inconsistencies["Non_Nextstrain_clade"][
+                                l[indices['gisaid_epi_isl']]] = clus_all_unique
 
                 ##### COLLECT COUNTS PER CLUSTER #####
                 for clus in clus_all:
@@ -1150,7 +1263,10 @@ def clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant, 
                     # Exclude all strains that are dated before their respective clade
                     if clus in cluster_first_dates:
                         if date_formatted < cluster_first_dates[clus]["date_formatted"]:
-                            if not (clus in first_date_exceptions and l[indices["strain"]] in first_date_exceptions[clus]):
+                            if not (clus in first_date_exceptions and l[indices["strain"]] in first_date_exceptions[
+                                clus]):
+                                # TODO: provide an example for this branch
+                                # TODO: provide an example for the opposite of this branch
                                 if clus not in alert_dates:
                                     alert_dates[clus] = {'strain': [], 'date': [], 'gisaid_epi_isl': []}
                                 for k in alert_dates[clus]:
@@ -1158,10 +1274,11 @@ def clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant, 
                                 continue
 
                     # Store all strains per assigned cluster (used for runs)
-                    all_sequences[clus].append(l[indices['strain']])
+                    # all_sequences[clus].append(l[indices['strain']])
 
                     # Skip now if we don't want this sequence in that cluster on covariants
                     if clus in clus_all_no_plotting:
+                        # TODO: provide an example of this branch
                         continue
 
                     # if you want a dated limit, specify cluster and limit at top
@@ -1181,7 +1298,8 @@ def clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant, 
                         if country in selected_country:
                             if div:
                                 if div not in division_data_all[country][clus]["summary"]:
-                                    division_data_all[country][clus]["summary"][div] = {'first_seq': today, 'num_seqs': 0,
+                                    division_data_all[country][clus]["summary"][div] = {'first_seq': today,
+                                                                                        'num_seqs': 0,
                                                                                         'last_seq': earliest_date}
                                 division_data_all[country][clus]["summary"][div]["num_seqs"] += 1
                                 division_data_all[country][clus]["summary"][div]["first_seq"] = min(
@@ -1190,6 +1308,7 @@ def clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant, 
                                     division_data_all[country][clus]["summary"][div]["last_seq"], date_formatted)
 
                     if date_2weeks < min_data_week:
+                        # TODO: provide an example of this branch
                         continue
 
                     # cluster_counts: Number of sequences per cluster per country per date (2-week interval)
@@ -1209,9 +1328,16 @@ def clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant, 
                     if print_acks:
                         # remove all but EPI_ISL, on request from GISAID
                         acknowledgement_by_variant["acknowledgements"][clus].append(l[indices['gisaid_epi_isl']])
-            batches=reader.next_batches(10)
+            batches = reader.next_batches(10)
+        # warn about future dates
+        future_dates = pl.concat(future_dates)
+        if len(future_dates) > 0:
+            logging.warning(f"WARNING! Data from the future!\n {future_dates}")
+        # update no qc count
         no_qc = pl.concat(no_qcs).sum().item()
-        for row in pl.concat(total_counts_divisions_new).group_by('country', 'division', 'date_2weeks').sum().iter_rows():
+        # update total counts dicts
+        for row in pl.concat(total_counts_divisions_new).group_by('country', 'division',
+                                                                  'date_2weeks').sum().iter_rows():
             if row[0] not in total_counts_divisions.keys():
                 total_counts_divisions.update({row[0]: {row[1]: {}}})
             if row[1] not in total_counts_divisions[row[0]].keys():
@@ -1222,17 +1348,33 @@ def clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant, 
                 total_counts_countries.update({row[0]: {}})
             else:
                 total_counts_countries[row[0]].update({(row[1]['year'], row[1]['week']): row[2]})
-    # future_dates = pl.concat(future_dates)
-    # if len(future_dates) > 0:
-    #     logging.warning(f"WARNING! Data from the future!\n {future_dates}")
+        # update data
+        clus_all_df = pl.concat(clus_all_dfs)
+        # update all_sequences dict
+        for clus, strains in clus_all_df.group_by('clus').agg('strain').iter_rows():
+            all_sequences[clus] += strains
     print("100% complete!")
     t1 = time.time()
     print(f"Collecting all data took {round((t1 - t0) / 60, 1)} min to run.\n")
     print(f"There are {no_qc} without QC information.\n")
     return all_sequences, cluster_inconsistencies, total_counts_countries, total_counts_divisions
 
+def assign_via_snp_method(col1: str, col2: str) -> pl.Expr:
+    # TODO: make the mapping function nicer; note: using polars set operations introduced a bug, do not use those
+    return pl.struct(col1, col2).map_elements(lambda x: all([snp in x[col1] for snp in x[col2]]) if [snp in x[col1] for snp in x[col2]] else False, return_dtype=pl.Boolean)
 
-def prepare_data_structure(all_countries, clus_to_run, division, earliest_date, selected_country, today):
+def split(x):
+    ranges_and_singles = [range_or_single.split('-') for range_or_single in x.split(',')]
+    ranges = []
+    for range_or_single in ranges_and_singles:
+        if len(range_or_single) > 1:
+            ranges += list(range(int(range_or_single[0]), int(range_or_single[1]) + 1))
+        else:
+            ranges += [int(single) for single in range_or_single]
+    return ranges
+
+
+def prepare_data_structure(all_countries, clus_to_run, division, earliest_date, selected_country, today, clusters):
     # Prepare summary table separately for division
     clus_data_all = {}
     division_data_all = {}
@@ -1283,7 +1425,7 @@ def prepare_data_structure(all_countries, clus_to_run, division, earliest_date, 
     return acknowledgement_by_variant, acknowledgement_keys, clus_data_all, division_data_all, total_counts_countries, total_counts_divisions
 
 
-def split_into_cluster_categories(Nextstrain_clades, clus_to_run):
+def split_into_cluster_categories(Nextstrain_clades, clus_to_run, clusters):
     # To save time, split up clusters into categories:
     # - official_clus: All clus whose display name appears in the Nextstrain_clade column
     # - unofficial_clus: all other clus that have type == variant and graphing == true
@@ -1337,7 +1479,7 @@ def prepare_output_files(clus_answer, print_files):
                 os.remove(curPath + f)
 
 
-def get_user_input():
+def get_user_input(clusters):
     # ask user if they want to write-out files or not:
     print_files = True
     print_answer = input("\nWrite out data files?(y/n) (Enter is yes): ")
