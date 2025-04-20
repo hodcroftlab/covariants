@@ -1,6 +1,6 @@
 {
   "S": {
-    "total": 1124789,
+    "total": 1124812,
     "counts": [
       {
         "mut": "S:K1191N",
@@ -37,19 +37,19 @@
     ]
   },
   "others": {
-    "total": 1124789,
+    "total": 1124812,
     "counts": [
       {
         "mut": "ORF8:K68*",
-        "count": 400391
+        "count": 400392
       },
       {
         "mut": "ORF1b:K1383R",
-        "count": 231011
+        "count": 231030
       },
       {
         "mut": "ORF1b:P218L",
-        "count": 155106
+        "count": 155107
       },
       {
         "mut": "N:G204P",
@@ -77,7 +77,7 @@
       },
       {
         "mut": "ORF1a:F2780L",
-        "count": 43790
+        "count": 43806
       }
     ]
   }
