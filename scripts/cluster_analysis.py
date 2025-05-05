@@ -200,7 +200,7 @@ def main(clus_answer,
     ##################################
     ##################################
     #### Read and clean metadata line by line
-    all_sequences, cluster_inconsistencies, _, _ = clean_metadata(clusters,
+    all_sequences, cluster_inconsistencies, _, _, clus_data_all = clean_metadata(clusters,
                                                                   Nextstrain_clades_display_names,
                                                                   acknowledgement_by_variant,
                                                                   alert_dates, clus_check, clus_data_all,
@@ -962,7 +962,8 @@ def clean_metadata(clusters, nextstrain_clades_display_names, acknowledgement_by
             columns=['Nextstrain_clade', 'Nextclade_pango', 'country', 'division', 'host', 'QC_overall_status', 'date',
                      'coverage', 'strain', 'substitutions', 'deletions', 'gisaid_epi_isl'],
             batch_size=10_000,
-            infer_schema_length=0
+            infer_schema_length=0,
+            row_index_name='row_index'
         )
         batches = reader.next_batches(10)
         no_qcs = []
@@ -1113,7 +1114,7 @@ def clean_metadata(clusters, nextstrain_clades_display_names, acknowledgement_by
             # TODO: this inconsistency check is not complete yet
             clus_all__disp_add_consistent = pl.concat([clus_all__disp_additional_cluster, children])
             if clus_check:
-                clus_all__disp_add_consistent = clus_all__disp_add_consistent.group_by('strain', maintain_order=True).map_groups(lambda x: x.filter(pl.col('clus').is_in(rest_all)))
+                clus_all__disp_add_consistent = clus_all__disp_add_consistent.group_by('row_index', maintain_order=True).map_groups(lambda x: x.filter(pl.col('clus').is_in(rest_all)))
 
             # combine cluster assignments
             clus_all_df = pl.concat([clus_all__in_display_names.drop('snps', 'gaps'), clus_all__disp_add_consistent, clus_all__remain_additional_clusters])
@@ -1278,16 +1279,16 @@ def clean_metadata(clusters, nextstrain_clades_display_names, acknowledgement_by
 
                     # Skip now if we don't want this sequence in that cluster on covariants
                     if clus in clus_all_no_plotting:
-                        # TODO: provide an example of this branch
                         continue
 
                     # if you want a dated limit, specify cluster and limit at top
                     if dated_limit and clus == DATED_CLUSTER:
                         if date_formatted < dated_limit_formatted:
+                            # TODO: provide an example of this branch
                             dated_cluster_strains.append(l[indices['strain']])
 
                     # Collect summary counts (total by country, also store first and last date)
-                    clus_data_all[clus]["summary"][country]["num_seqs"] += 1
+                    # clus_data_all[clus]["summary"][country]["num_seqs"] += 1
                     clus_data_all[clus]["summary"][country]["first_seq"] = min(
                         clus_data_all[clus]["summary"][country]["first_seq"], date_formatted)
                     clus_data_all[clus]["summary"][country]["last_seq"] = max(
@@ -1353,11 +1354,15 @@ def clean_metadata(clusters, nextstrain_clades_display_names, acknowledgement_by
         # update all_sequences dict
         for clus, strains in clus_all_df.group_by('clus').agg('strain').iter_rows():
             all_sequences[clus] += strains
+        # update counts per country dict
+        for clus, country, count in clus_all_df.filter(pl.col('plotting')==True).group_by('clus', 'country').count().iter_rows():
+            clus_data_all[clus]["summary"][country]["num_seqs"] = count
+
     print("100% complete!")
     t1 = time.time()
     print(f"Collecting all data took {round((t1 - t0) / 60, 1)} min to run.\n")
     print(f"There are {no_qc} without QC information.\n")
-    return all_sequences, cluster_inconsistencies, total_counts_countries, total_counts_divisions
+    return all_sequences, cluster_inconsistencies, total_counts_countries, total_counts_divisions, clus_data_all
 
 def assign_via_snp_method(col1: str, col2: str) -> pl.Expr:
     # TODO: make the mapping function nicer; note: using polars set operations introduced a bug, do not use those
@@ -1387,7 +1392,7 @@ def prepare_data_structure(all_countries, clus_to_run, division, earliest_date, 
                 division_data_all[country][clus]["cluster_counts"] = {}
     # Prepare output dictionary
     for clus in clus_to_run:
-        clus_data_all[clus] = clusters[clus]
+        clus_data_all[clus] = clusters[clus].copy()  # important to use a copy here to avoid overwriting data when called the function multiple times
         clus_data_all[clus]["summary"] = {country: {'first_seq': today, 'num_seqs': 0, 'last_seq': earliest_date} for
                                           country in all_countries}
         clus_data_all[clus]["cluster_counts"] = {country: {} for country in all_countries}
@@ -1588,5 +1593,5 @@ def initial_metadata_pass(clus_to_run, cols, display_name_to_clus, input_meta, m
 
 
 if __name__ == '__main__':
-    user_input = get_user_input()
+    user_input = get_user_input(clusters_data)
     main(*user_input)

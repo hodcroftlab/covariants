@@ -414,7 +414,7 @@ def test_clean_metadata(clus_check):
 
     acknowledgement_by_variant, acknowledgement_keys, clus_data_all, division_data_all, total_counts_countries, total_counts_divisions = prepare_data_structure(
         all_countries, clus_to_run, division, earliest_date, selected_country, today, fake_clusters)
-    all_sequences, cluster_inconsistencies, total_counts_countries, total_counts_divisions = clean_metadata(
+    all_sequences, cluster_inconsistencies, total_counts_countries, total_counts_divisions, clus_data_all = clean_metadata(
         fake_clusters,
         nextstrain_clades_display_names, acknowledgement_by_variant,
         alert_dates, clus_check, clus_data_all,
@@ -427,7 +427,7 @@ def test_clean_metadata(clus_check):
         total_counts_divisions, mode='slow')
     acknowledgement_by_variant_fast, acknowledgement_keys_fast, clus_data_all_fast, division_data_all_fast, total_counts_countries_fast, total_counts_divisions_fast = prepare_data_structure(
         all_countries, clus_to_run, division, earliest_date, selected_country, today, fake_clusters)
-    all_sequences_fast, cluster_inconsistencies_fast, total_counts_countries_fast, total_counts_divisions_fast = clean_metadata(
+    all_sequences_fast, cluster_inconsistencies_fast, total_counts_countries_fast, total_counts_divisions_fast, clus_data_all_fast = clean_metadata(
         fake_clusters,
         nextstrain_clades_display_names, acknowledgement_by_variant_fast,
         alert_dates, clus_check, clus_data_all_fast,
@@ -442,6 +442,10 @@ def test_clean_metadata(clus_check):
     assert cluster_inconsistencies_fast == cluster_inconsistencies
     assert total_counts_countries_fast == total_counts_countries
     assert total_counts_divisions_fast == total_counts_divisions
+    assert clus_data_all['S677']["summary"]['Afghanistan']["num_seqs"] == 3  # sanity check because of shared nested dicts
+    assert clus_data_all_fast['S677']["summary"]['Afghanistan']["num_seqs"] == 3  # sanity check because of shared nested dicts
+    # for key in clus_data_all.keys():
+    #     assert clus_data_all_fast[key] == clus_data_all[key]
 
 
 @pytest.mark.skip('This takes veeery long (>30min)')
@@ -478,7 +482,8 @@ def test_clean_metadata_full():
 
     acknowledgement_by_variant, acknowledgement_keys, clus_data_all, division_data_all, total_counts_countries, total_counts_divisions = prepare_data_structure(
         all_countries, clus_to_run, division, earliest_date, selected_country, today, clusters)
-    all_sequences, cluster_inconsistencies = clean_metadata(nextstrain_clades_display_names, acknowledgement_by_variant,
+    all_sequences, cluster_inconsistencies = clean_metadata(clusters,
+                                                            nextstrain_clades_display_names, acknowledgement_by_variant,
                                                             alert_dates, clus_check, clus_data_all,
                                                             clus_to_run_breakdown, cols, dated_cluster_strains,
                                                             dated_limit, dated_limit_formatted, daughter_clades,
@@ -486,7 +491,7 @@ def test_clean_metadata_full():
                                                             earliest_date, input_meta, min_data_week, n_total,
                                                             new_clades_to_rename, pango_lineage_to_clus, print_acks,
                                                             rest_all, selected_country, today, total_counts_countries,
-                                                            total_counts_divisions, clusters)
+                                                            total_counts_divisions)
     assert all_sequences == {'20AS126': [], '20BS732': [], '21GLambda': [], '21H': [], '21I.Delta': [], '21J.Delta': [],
                              '21K.Omicron': [], '21L.Omicron': [], '21M.Omicron': [], '22A': [], '22B': [], '22C': [],
                              '22D': [], '22E': [], '22F': [], '23A': [], '23B': [], '23C': [], '23D': [], '23E': [],
