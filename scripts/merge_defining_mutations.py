@@ -264,13 +264,13 @@ def process_hand_curated_file(path: str) -> pl.DataFrame:
         .rename({'aa_change': 'aa_mutation', 'nuc_change': 'nuc_mutation'})
         .select('nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'reference', 'not_in_parent', 'notes')
     )
-    pango_parent = (
+    nextclade_parent = (
         with_lineage.filter(pl.col('not_in_parent') == 'y')
         .with_columns(
-            reference=pl.lit('pango_parent'))
+            reference=pl.lit('nextclade_parent'))
     )
 
-    combined = pl.concat([with_lineage, pango_parent]).drop('not_in_parent')
+    combined = pl.concat([with_lineage, nextclade_parent]).drop('not_in_parent')
 
     output = (
         combined
