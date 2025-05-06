@@ -1,3 +1,5 @@
+import json
+
 import requests
 import polars as pl
 
@@ -7,6 +9,8 @@ def fetch_nextclade_tree():
     if not response.ok:
         raise ValueError('Could not fetch nextclade tree')
     tree = response.json()
+    with open('web/public/data/nextcladeTree.json', 'w') as  f:
+        json.dump(tree, f)
     return tree
 
 
@@ -15,10 +19,10 @@ def parse_nextclade_tree(tree):
     def unpack_clades(clade, parent):
         nextclade, lineage = parse_clade_name(clade['name'])
         if lineage == 'B.1.427/429':
-            clades.append({'clade': nextclade, 'lineage': 'B.1.427', 'children': [parse_clade_name(child['name'])[0] for child in clade.get('children') or []], 'parent': parse_clade_name(parent)[0]})
-            clades.append({'clade': nextclade, 'lineage': 'B.1.429', 'children': [parse_clade_name(child['name'])[0] for child in clade.get('children') or []], 'parent': parse_clade_name(parent)[0]})
+            clades.append({'nextstrain_clade': nextclade, 'lineage': 'B.1.427', 'nextstrain_children': [parse_clade_name(child['name'])[0] for child in clade.get('children') or []], 'nextstrain_parent': parse_clade_name(parent)[0]})
+            clades.append({'nextstrain_clade': nextclade, 'lineage': 'B.1.429', 'nextstrain_children': [parse_clade_name(child['name'])[0] for child in clade.get('children') or []], 'nextstrain_parent': parse_clade_name(parent)[0]})
         else:
-            clades.append({'clade': nextclade, 'lineage': lineage, 'children': [parse_clade_name(child['name'])[0] for child in clade.get('children') or []], 'parent': parse_clade_name(parent)[0]})
+            clades.append({'nextstrain_clade': nextclade, 'lineage': lineage, 'nextstrain_children': [parse_clade_name(child['name'])[0] for child in clade.get('children') or []], 'nextstrain_parent': parse_clade_name(parent)[0]})
         for child in clade.get('children') or []:
             unpack_clades(child, clade['name'])
     unpack_clades(tree, None)

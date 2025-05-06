@@ -15,4 +15,4 @@ def test_parse_nextclade_tree():
     with open(os.path.join(TEST_DIR, 'nextclade_tree.json')) as fh:
         tree = json.load(fh)
     clades = parse_nextclade_tree(tree)
-    assert len(clades) == 49
+    assert len(clades) == 50

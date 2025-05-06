@@ -8,6 +8,8 @@ import numpy as np
 import polars as pl
 import pandas as pd
 
+from scripts.defining_mutations.fetch_nextclade_tree import fetch_nextclade_tree, parse_nextclade_tree
+
 GENE_BOUNDS = {
     'E': [26245, 26472],
     'M': [26523, 27191],
@@ -294,6 +296,9 @@ def import_mutation_data(hand_curated_data_dir: str, auto_generated_data_dir: st
     pl.DataFrame, pl.DataFrame, pl.DataFrame]:
     lineages, auto_generated_mutations_raw = load_auto_generated_data(
         os.path.join(auto_generated_data_dir, 'auto_generated.json'))
+    nextclade_tree = parse_nextclade_tree(fetch_nextclade_tree())
+    lineages_with_nextclade = lineages.join(nextclade_tree, on=['lineage', 'nextstrain_clade'], how='left')
+
     auto_generated_mutations = process_auto_generated_data(auto_generated_mutations_raw)
 
     hand_curated_mutations = (
@@ -301,7 +306,7 @@ def import_mutation_data(hand_curated_data_dir: str, auto_generated_data_dir: st
         .join(lineages.select('lineage', 'nextstrain_clade'), on='nextstrain_clade')
     )
 
-    return lineages, hand_curated_mutations, auto_generated_mutations
+    return lineages_with_nextclade, hand_curated_mutations, auto_generated_mutations
 
 
 def import_hand_curated_data(hand_curated_data_dir: str) -> pl.DataFrame:
@@ -419,10 +424,16 @@ def reformat_df_to_dicts(merged: pl.DataFrame, lineages: pl.DataFrame) -> dict:
                                  'children',
                                  'designation_date',
                                  'unaliased',
-                                 'parent')
+                                 'parent',
+                                 'nextstrain_parent',
+                                 'nextstrain_children')
 
     output_dicts = output.to_dicts()
     for lineage in output_dicts:
+        if lineage['nextstrain_children'] is None:
+            lineage.pop('nextstrain_children')
+        if lineage['nextstrain_parent'] is None:
+            lineage.pop('nextstrain_parent')
         for mutations in lineage['mutations']:
             for mutation_type in ['coding', 'silent']:
                 mutations[mutation_type] = mutations.get(mutation_type) or []
