@@ -1,7 +1,7 @@
 import { selector, selectorFamily } from 'recoil'
 import Router from 'next/router'
 import { get as getLodash } from 'lodash'
-import { updateUrlQuery } from 'src/helpers/urlQuery'
+import { setUrlQuery, updateUrlQuery } from 'src/helpers/urlQuery'
 import type { AtomEffectParams } from 'src/state/utils/atomEffect'
 import { atomAsync } from 'src/state/utils/atomAsync'
 import { CLUSTER_NAME_OTHERS, ClusterDatum, fetchClusters } from 'src/io/getClusters'
@@ -10,6 +10,7 @@ import { notUndefinedOrNull } from 'src/helpers/notUndefined'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
 import { parseUrl } from 'src/helpers/parseUrl'
 import { convertToArrayMaybe, includesCaseInsensitive } from 'src/helpers/array'
+import { Country } from 'src/state/Places'
 
 export interface Cluster {
   cluster: string
@@ -238,11 +239,48 @@ export function updateUrlOnClustersSet({ onSet, getPromise }: AtomEffectParams<C
   })
 }
 
-export function extractEnabledClustersFromUrlQuery(clusters: Cluster[], lineagesMap: Map<string, string>) {
+export function updateUrlOnMismatch(countries: Country[], clusters: Cluster[], region?: string) {
+  const { query } = parseUrl(Router.asPath)
+  const enabledCountriesInAtom = countries.flatMap((c) => (c.enabled ? [c.country] : []))
+  const enabledCountriesInUrl = convertToArrayMaybe(getLodash(query, 'country'))
+
+  const enabledClustersInAtom = clusters.flatMap((c) => (c.enabled ? [c.cluster] : []))
+  const enabledClustersInUrl = convertToArrayMaybe(getLodash(query, 'variant'))
+
+  const allCountriesEnabled = enabledCountriesInAtom.length === countries.length
+  const allClustersEnabled = enabledClustersInAtom.length === clusters.length
+
+  const countriesMismatch = enabledCountriesInAtom !== enabledCountriesInUrl
+  const clustersMismatch = enabledClustersInAtom !== enabledClustersInUrl
+
+  const updateCountries = countriesMismatch && !allCountriesEnabled
+  const updateClusters = clustersMismatch && !allClustersEnabled
+
+  const countriesQuery = updateCountries ? { country: enabledCountriesInAtom } : {}
+  const clustersQuery = updateClusters ? { variant: enabledClustersInAtom } : {}
+  const regionQuery = region ? { region: region } : {}
+
+  setUrlQuery({
+    ...regionQuery,
+    ...countriesQuery,
+    ...clustersQuery,
+  })
+    .then(() => true)
+    .catch((error: Error) => {
+      throw error
+    })
+}
+
+export function extractEnabledClustersFromUrlQuery(
+  clusters: Cluster[],
+  lineagesMap: Map<string, string>,
+  region?: string,
+) {
   const { query } = parseUrl(Router.asPath)
   const enabledClustersLineagesOrDisplayNames = convertToArrayMaybe(getLodash(query, 'variant'))
+  const regionFromUrl = getLodash(query, 'region')
 
-  if (enabledClustersLineagesOrDisplayNames) {
+  if (enabledClustersLineagesOrDisplayNames && region === regionFromUrl) {
     const enabledClustersDisplayNames = enabledClustersLineagesOrDisplayNames.map(
       (displayNameOrLineage) => lineagesMap.get(displayNameOrLineage) ?? displayNameOrLineage,
     )

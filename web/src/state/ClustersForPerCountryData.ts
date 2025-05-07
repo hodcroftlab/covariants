@@ -1,10 +1,10 @@
 import copy from 'fast-copy'
+import type { Cluster } from 'src/state/Clusters'
 import {
   clusterLineagesToDisplayNameMapSelector,
   extractEnabledClustersFromUrlQuery,
   updateUrlOnClustersSet,
 } from 'src/state/Clusters'
-import type { Cluster } from 'src/state/Clusters'
 import { fetchPerCountryDataRaw } from 'src/io/getPerCountryData'
 import { atomFamilyAsync } from 'src/state/utils/atomAsync'
 
@@ -20,7 +20,7 @@ export const clustersForPerCountryDataAtom = atomFamilyAsync<Cluster[], string>(
     const clusters = clusterNames.map((cluster) => ({ cluster, enabled: true }))
     const clusterPangoLineagesToDisplayNameMap = get(clusterLineagesToDisplayNameMapSelector)
 
-    return extractEnabledClustersFromUrlQuery(clusters, clusterPangoLineagesToDisplayNameMap)
+    return extractEnabledClustersFromUrlQuery(clusters, clusterPangoLineagesToDisplayNameMap, region)
   },
   effects: [updateUrlOnClustersSet],
 })
