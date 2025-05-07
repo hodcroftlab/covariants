@@ -11,10 +11,12 @@ import {
 } from 'src/state/Places'
 import type { Country } from 'src/state/Places'
 import { parseUrl } from 'src/helpers/parseUrl'
-import { setUrlQuery, updateUrlQuery } from 'src/helpers/urlQuery'
+import { updateUrlQuery } from 'src/helpers/urlQuery'
 import { isDefaultValue } from 'src/state/utils/isDefaultValue'
 import { perCountryDataDistributionsSelector, perCountryDataRegionsSelector } from 'src/state/PerCountryData'
 import { atomDefault, atomFamilyDefault } from 'src/state/utils/atomDefault'
+import { updateUrlOnMismatch } from 'src/state/Clusters'
+import { clustersForPerCountryDataAtom } from 'src/state/ClustersForPerCountryData'
 
 /**
  * Represents current region
@@ -31,10 +33,17 @@ export const perCountryRegionAtom = atomDefault({
     return validateRegion(regionRaw, regionNames)
   },
   effects: [
-    ({ onSet }) => {
+    ({ onSet, getPromise }) => {
       onSet((region) => {
-        // NOTE: This will overwrite the query entirely
-        void setUrlQuery({ region })
+        // update url when navigating the regions
+        Promise.all([getPromise(perCountryCountriesAtom(region)), getPromise(clustersForPerCountryDataAtom(region))])
+          .then(([countries, clusters]) => {
+            updateUrlOnMismatch(countries, clusters, region)
+            return true
+          })
+          .catch((error: Error) => {
+            throw error
+          })
       })
     },
   ],

@@ -48,6 +48,7 @@ function ClusterDistributionPlotSection() {
 
   useMemo(() => {
     updateUrlOnMismatch(countriesSelected, clustersSelected)
+    // Only on initial render to sync url when navigating, other url updates are done via the atoms
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

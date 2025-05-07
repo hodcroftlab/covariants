@@ -45,6 +45,7 @@ function CasesPlotSection() {
 
   useMemo(() => {
     updateUrlOnMismatch(countries, clusters)
+    // Only on initial render to sync url when navigating, other url updates are done via the atoms
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

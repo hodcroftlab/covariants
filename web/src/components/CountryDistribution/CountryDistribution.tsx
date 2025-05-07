@@ -23,6 +23,7 @@ import { clustersForPerCountryDataAtom } from 'src/state/ClustersForPerCountryDa
 import { perCountryDataIntroContentFilenameSelector } from 'src/state/PerCountryData'
 import { REGIONS } from 'src/state/Places'
 import { clusterSidebarCollapsedAtoms, countriesSidebarCollapsedAtoms } from 'src/state/DistributionSidebar'
+import { updateUrlOnMismatch } from 'src/state/Clusters'
 
 export function CountryDistribution() {
   const { t } = useTranslationSafe()
@@ -56,6 +57,12 @@ function CountryDistributionPlotSection() {
   const [continents, setContinents] = useRecoilState(perCountryContinentsAtom)
   const [clusters, setClusters] = useRecoilState(clustersForPerCountryDataAtom(region))
   const regionsTitle = useMemo(() => (region === REGIONS.WORLD ? t('Countries') : t('Regions')), [region, t])
+
+  useMemo(() => {
+    updateUrlOnMismatch(countries, clusters, region)
+    // Only on initial render to sync url when navigating, other url updates are done via the atoms
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const iconComponent = useMemo(() => {
     if (region === REGIONS.WORLD) return CountryFlag
