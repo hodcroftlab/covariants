@@ -1,4 +1,4 @@
-import React, { Suspense, useCallback } from 'react'
+import React, { Suspense, useCallback, useMemo } from 'react'
 import { Card, CardBody, Col, Form, Input, Label, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 import { styled } from 'styled-components'
@@ -18,6 +18,7 @@ import { ClusterDistributionComponents } from 'src/components/ClusterDistributio
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
 import { clusterSidebarCollapsedAtoms, countriesSidebarCollapsedAtoms } from 'src/state/DistributionSidebar'
+import { updateUrlOnMismatch } from 'src/state/Clusters'
 
 export function ClusterDistribution() {
   const { t } = useTranslationSafe()
@@ -44,6 +45,11 @@ function ClusterDistributionPlotSection() {
   const [countriesSelected, setCountriesSelected] = useRecoilState(perClusterCountriesAtom)
   const [continentsSelected, setContinentsSelected] = useRecoilState(perClusterContinentsAtom)
   const [clustersSelected, setClustersSelected] = useRecoilState(clustersForPerClusterDataAtom)
+
+  useMemo(() => {
+    updateUrlOnMismatch(countriesSelected, clustersSelected)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <WrapperFlex>
