@@ -3,7 +3,7 @@
   "nextstrain_clade": "24B",
   "mutations": [
     {
-      "reference": "pango_parent",
+      "reference": "nextclade_parent",
       "coding": [
         {
           "aa_mutation": {

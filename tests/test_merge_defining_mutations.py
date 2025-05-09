@@ -4,7 +4,7 @@ import os
 import numpy as np
 import pytest
 
-from scripts.merge_defining_mutations import process_auto_generated_data, process_hand_curated_file, \
+from scripts.defining_mutations.merge_defining_mutations import process_auto_generated_data, process_hand_curated_file, \
     match_nuc_to_aas, main, replace_list_of_empty_string, load_auto_generated_data, Mutation, \
     AminoAcidMutation
 
