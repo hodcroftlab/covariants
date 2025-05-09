@@ -7,6 +7,7 @@ from dataclasses import dataclass
 import numpy as np
 import polars as pl
 import pandas as pd
+import re
 
 from scripts.defining_mutations.fetch_nextclade_tree import fetch_nextclade_tree, parse_nextclade_tree
 
@@ -25,6 +26,8 @@ GENE_BOUNDS = {
     'S': [21563, 25384]
 }
 
+# TODO: replace or remove 'X', depending on the solution to https://github.com/hodcroftlab/covariants/issues/577
+MUTATION_CHANGE_PATTERN = r"^(?P<symbol_from>[ACDEFGHIKLMNPQRSTVWYX*])(?P<position>[1-9][0-9]*)(?P<symbol_to>[ACDEFGHIKLMNPQRSTVWYX*-])$"
 
 @dataclass
 class Mutation:
@@ -34,16 +37,19 @@ class Mutation:
 
     @classmethod
     def parse_mutation_string(cls, mutation_string: str) -> "Mutation":
-        return Mutation(symbol_from=mutation_string[0], position=int(mutation_string[1:-1]),
-                        symbol_to=mutation_string[-1])
+        match = re.match(MUTATION_CHANGE_PATTERN, mutation_string)
+        if not match:
+            raise ValueError(f'Invalid mutation string: {mutation_string}')
+        return Mutation(symbol_from=match['symbol_from'], position=int(match['position']),
+                        symbol_to=match['symbol_to'])
 
     @classmethod
     def parse_polars_mutation_string(cls, column: str):
         return pl.when(pl.col(column).is_not_null()).then(
             pl.struct(
-                pl.col(column).str.head(1).alias('ref'),
-                pl.col(column).str.head(-1).str.tail(-1).cast(pl.Int64).alias('pos'),
-                pl.col(column).str.tail(1).alias('alt')
+                pl.col(column).str.extract(MUTATION_CHANGE_PATTERN, 1).alias('ref'),
+                pl.col(column).str.extract(MUTATION_CHANGE_PATTERN, 2).cast(pl.Int64).alias('pos'),
+                pl.col(column).str.extract(MUTATION_CHANGE_PATTERN, 3).alias('alt')
             )
         )
 
@@ -69,8 +75,12 @@ class AminoAcidMutation(Mutation):
 
     @classmethod
     def parse_amino_acid_string(cls, amino_acid_mutations_string: str) -> "AminoAcidMutation":
-        gene, aa = amino_acid_mutations_string.split(':')
-        mut = cls.parse_mutation_string(aa)
+        change_pattern = r"^(?P<gene>.*):(?P<mutation>.*)$"
+        match = re.match(change_pattern, amino_acid_mutations_string)
+        if not match:
+            raise ValueError(f'Invalid aa mutation string {amino_acid_mutations_string}')
+        gene = match['gene']
+        mut = cls.parse_mutation_string(match['mutation'])
         return AminoAcidMutation(mut.symbol_from, mut.position, mut.symbol_to, gene)
 
     @classmethod
@@ -100,8 +110,14 @@ def match_nuc_to_aas(nuc: str | None, aas: list[str]) -> str | None:
         return None
     aas_obj = [AminoAcidMutation.parse_amino_acid_string(aa) for aa in aas]
     for aa in aas_obj:
-        if aa.gene in nuc_obj.affected_genes and aa.position in nuc_obj.positions_on_genes:
-            return aa.to_code()
+        exact_match = aa.gene in nuc_obj.affected_genes and aa.position in nuc_obj.positions_on_genes
+        approximate_match = aa.gene in nuc_obj.affected_genes and np.any(np.isclose(aa.position, nuc_obj.positions_on_genes, atol=1))
+        # check conditions sequentially to avoid hitting approximate_match first just because of list ordering
+        if exact_match:
+             return aa.to_code()
+        elif approximate_match:
+             return aa.to_code()
+    return None
 
 
 def replace_list_of_empty_string(y: str | list | np.ndarray) -> str | list | np.ndarray:
@@ -474,7 +490,6 @@ def main(hand_curated_data_dir='defining_mutations',
     if not dry_run:
         save_mutations_to_file(output, output_dir)
         save_lineages_to_file(lineages, output_dir)
-    # TODO: nextclade parent: https://github.com/hodcroftlab/covariants/issues/582
 
 
 if __name__ == '__main__':
