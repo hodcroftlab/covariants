@@ -43,7 +43,7 @@ export function RegionSwitcher() {
   const [currentRegion, setCurrentRegion] = useRecoilState(perCountryRegionAtom)
 
   const onRegionButtonClick = useCallback((region: string) => () => setCurrentRegion(region), [setCurrentRegion])
-  const getRegionButtonColor = (region: string) => (currentRegion === region ? 'success' : undefined)
+  const getRegionButtonColor = (region: string) => (currentRegion === region ? 'success' : 'dark')
 
   return (
     <RegionSwitcherContainer>
@@ -63,6 +63,7 @@ export function RegionSwitcher() {
                   onClick={onRegionButtonClick(region)}
                   disabled={!regionHaveData}
                   title={regionHaveData ? t(region) : t('Coming soon!')}
+                  outline={currentRegion !== region}
                 >
                   {t(region)}
                 </RegionButton>
