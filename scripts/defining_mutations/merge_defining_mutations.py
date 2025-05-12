@@ -2,6 +2,7 @@ import argparse
 import json
 import logging
 import os
+import re
 from dataclasses import dataclass
 
 import numpy as np
@@ -262,7 +263,10 @@ def load_auto_generated_data(path):
 
 def process_hand_curated_file(path: str) -> pl.DataFrame:
     filename = os.path.basename(path)
-    lineage = filename.split('.')[0]
+    match = re.match(r'(?P<nextstrain_clade>[1-9][0-9][A-Z])', filename)
+    if not match:
+        raise NameError(f'Could not extract nextstrain clade from file name "{filename}"')
+    nextstrain_clade = match['nextstrain_clade']
 
     data = (
         pl.read_csv(path, separator='\t')
@@ -273,22 +277,22 @@ def process_hand_curated_file(path: str) -> pl.DataFrame:
 
     no_reversions = data.filter(pl.col('reversion').is_null())
 
-    with_lineage = (
+    with_nextstrain_clade = (
         no_reversions
         .with_columns(
-            nextstrain_clade=pl.lit(lineage),
+            nextstrain_clade=pl.lit(nextstrain_clade),
             reference=pl.lit('wuhan')
         )
         .rename({'aa_change': 'aa_mutation', 'nuc_change': 'nuc_mutation'})
         .select('nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'reference', 'not_in_parent', 'notes')
     )
     nextclade_parent = (
-        with_lineage.filter(pl.col('not_in_parent') == 'y')
+        with_nextstrain_clade.filter(pl.col('not_in_parent') == 'y')
         .with_columns(
             reference=pl.lit('nextclade_parent'))
     )
 
-    combined = pl.concat([with_lineage, nextclade_parent]).drop('not_in_parent')
+    combined = pl.concat([with_nextstrain_clade, nextclade_parent]).drop('not_in_parent')
 
     output = (
         combined
