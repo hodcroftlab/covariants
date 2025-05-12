@@ -1,4 +1,4 @@
-import { atom, selector, useRecoilValue, useSetRecoilState } from 'recoil'
+import { atom, selector, useRecoilState, useRecoilValue } from 'recoil'
 import Router from 'next/router'
 import { useQuery } from '@tanstack/react-query'
 import { atomAsync } from 'src/state/utils/atomAsync'
@@ -57,8 +57,7 @@ export function useClusterNameFromUrlOrAtom() {
   const { query } = parseUrl(Router.asPath)
   const clusterNameFromUrl = takeFirstMaybe(query.variant)
 
-  const clusterNameFromAtom = useRecoilValue(definingMutationClusterQueryParamAtom)
-  const setClusterNameAtom = useSetRecoilState(definingMutationClusterQueryParamAtom)
+  const [clusterNameFromAtom, setClusterNameAtom] = useRecoilState(definingMutationClusterQueryParamAtom)
 
   if (clusterNameFromUrl === undefined) {
     const newQuery = clusterNameFromAtom ? { variant: clusterNameFromAtom } : {}
