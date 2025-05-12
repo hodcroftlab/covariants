@@ -66,6 +66,10 @@ class Mutation:
     def positions_on_genes(self):
         return [int(np.floor((self.position - GENE_BOUNDS[gene][0]) / 3)) + 1 for gene in self.affected_genes]
 
+    @property
+    def mutation_type(self):
+        return 'deletion' if self.symbol_to == '-' else 'substitution'
+
     def to_dict(self):
         return {'ref': self.symbol_from, 'pos': self.position, 'alt': self.symbol_to}
 
@@ -110,15 +114,24 @@ def match_nuc_to_aas(nuc: str | None, aas: list[str]) -> str | None:
     if len(nuc_obj.affected_genes) == 0:
         return None
     aas_obj = [AminoAcidMutation.parse_amino_acid_string(aa) for aa in aas]
-    for aa in aas_obj:
-        exact_match = aa.gene in nuc_obj.affected_genes and aa.position in nuc_obj.positions_on_genes
-        approximate_match = aa.gene in nuc_obj.affected_genes and np.any(np.isclose(aa.position, nuc_obj.positions_on_genes, atol=1))
-        # check conditions sequentially to avoid hitting approximate_match first just because of list ordering
-        if exact_match:
-             return aa.to_code()
-        elif approximate_match:
-             return aa.to_code()
-    return None
+
+    def find_first_aa_nuc_match_by_condition(type_condition, match_condition):
+        for aa in aas_obj:
+            if type_condition(aa) and match_condition(aa):
+                return aa.to_code()
+        return None
+
+    same_type_condition = lambda aa: aa.mutation_type == nuc_obj.mutation_type
+    differing_type_condition = lambda aa: aa.mutation_type != nuc_obj.mutation_type
+
+    exact_match_condition = lambda aa: aa.gene in nuc_obj.affected_genes and aa.position in nuc_obj.positions_on_genes
+    approximate_match_condition = lambda aa: aa.gene in nuc_obj.affected_genes and np.any(np.isclose(aa.position, nuc_obj.positions_on_genes, atol=1))
+
+    # prefer same type mutations and check conditions sequentially to avoid hitting unwanted matches first just because of list ordering
+    return (find_first_aa_nuc_match_by_condition(same_type_condition, exact_match_condition)
+            or find_first_aa_nuc_match_by_condition(same_type_condition, approximate_match_condition)
+            or find_first_aa_nuc_match_by_condition(differing_type_condition, exact_match_condition)
+            or find_first_aa_nuc_match_by_condition(differing_type_condition, approximate_match_condition))
 
 
 def replace_list_of_empty_string(y: str | list | np.ndarray) -> str | list | np.ndarray:

@@ -7,7 +7,7 @@ import polars as pl
 
 from scripts.defining_mutations.merge_defining_mutations import process_auto_generated_data, process_hand_curated_file, \
     match_nuc_to_aas, main, replace_list_of_empty_string, load_auto_generated_data, Mutation, \
-    AminoAcidMutation
+    AminoAcidMutation, import_mutation_data, merge_mutation_data
 
 CI = os.environ.get('CI')
 TEST_DIR = 'tests/data/defining_mutations'
@@ -85,7 +85,47 @@ def test_match_nuc_to_aas_selects_best_match():
         "N:R203K",
         "N:G204R",
     ]
-    assert match_nuc_to_aas(nuc, aas) == "N:R203K"
+    assert match_nuc_to_aas(nuc, aas) == "N:G204R"
+
+
+def test_match_nuc_to_aas_prefers_same_mutation_type():
+    nuc = 'X22031-'
+    aas = [
+        'S:R158G',
+        'S:F157-'
+    ]
+    assert match_nuc_to_aas(nuc, aas) == "S:F157-"
+
+
+@pytest.mark.parametrize(
+    'nuc, aas',
+    [
+        ('T22283C', ['S:L242-']),  # example from auto-generated data XAW
+        ('G21641-', ['S:A27S']),  # example from hand-curated data 22B
+    ]
+)
+def test_match_nuc_to_aas_uses_other_mutation_type_if_nothing_else_is_available(nuc, aas):
+    assert match_nuc_to_aas(nuc, aas) == aas[0]
+
+
+@pytest.mark.parametrize(
+    'auto_generated_test_dir, expected_aa_nuc_mismatches, expected_nuc_aa_mismatches',
+    [
+        (AUTO_GENERATED_TEST_DIR, 0, 2),
+         (AUTO_GENERATED_EDGE_CASES_TEST_DIR, 2, 2)
+    ]
+)
+def test_match_nuc_to_aas_mutation_handles_type_mismatches(auto_generated_test_dir, expected_aa_nuc_mismatches, expected_nuc_aa_mismatches):
+    lineages, hand_curated_mutations, auto_generated_mutations = import_mutation_data(HAND_CURATED_TEST_DIR,
+                                                                                      auto_generated_test_dir)
+    col_has_deletions = lambda col_name: pl.col(col_name).list.eval(pl.element().struct.field('alt').eq('-')).list.any()
+
+    merged_mutations = merge_mutation_data(hand_curated_mutations, auto_generated_mutations)
+
+    aa_deletions_with_nuc_substitutions = merged_mutations.filter(col_has_deletions('aa_mutations').and_(col_has_deletions('nuc_mutations').not_()))
+    assert len(aa_deletions_with_nuc_substitutions) == expected_aa_nuc_mismatches # Two mismatches in auto-generated edge cases
+    nuc_deletions_with_aa_substitutions = merged_mutations.filter(col_has_deletions('nuc_mutations').and_(col_has_deletions('aa_mutations').not_()).and_(pl.col('aa_mutations').list.len().ne(0)))
+    assert len(nuc_deletions_with_aa_substitutions) == expected_nuc_aa_mismatches  # Two mismatches introduced via hand-curated data
 
 
 SILENT_MUTATION_PERCENTAGE_THRESHOLD = 0.32  # estimate derived from hand-curated data
