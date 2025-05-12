@@ -87,7 +87,7 @@ function DefiningMutationsVariantQuickSelect({
 
   return (
     <div>
-      <div className={'h3 mb-2'}>Variants</div>
+      <div className={`side-navigation-header mb-2`}>Variants</div>
       <div className="d-flex flex-column gap-1">
         {variants.map((variant, index) => {
           const title = variant.pangoLineages?.at(0)?.name ?? variant.displayName
