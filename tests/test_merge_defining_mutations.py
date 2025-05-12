@@ -144,7 +144,7 @@ def test_remove_empty_strings():
 def test_process_hand_curated_file():
     hand_curated = process_hand_curated_file(os.path.join(HAND_CURATED_TEST_DIR, '22E.Omicron.tsv'))
     assert len(hand_curated) == 141
-    assert hand_curated.columns == ['nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'reference', 'notes']
+    assert hand_curated.columns == ['nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2', 'reference', 'notes']
 
 
 def test_load_and_process_auto_generated_data():

@@ -283,8 +283,8 @@ def process_hand_curated_file(path: str) -> pl.DataFrame:
             nextstrain_clade=pl.lit(nextstrain_clade),
             reference=pl.lit('wuhan')
         )
-        .rename({'aa_change': 'aa_mutation', 'nuc_change': 'nuc_mutation'})
-        .select('nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'reference', 'not_in_parent', 'notes')
+        .rename({'aa_change': 'aa_mutation', 'aa_change_2': 'aa_mutation_2', 'nuc_change': 'nuc_mutation'})
+        .select('nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2', 'reference', 'not_in_parent', 'notes')
     )
     nextclade_parent = (
         with_nextstrain_clade.filter(pl.col('not_in_parent') == 'y')
@@ -298,7 +298,8 @@ def process_hand_curated_file(path: str) -> pl.DataFrame:
         combined
         .with_columns(
             nuc_mutation=Mutation.parse_polars_mutation_string('nuc_mutation'),
-            aa_mutation=AminoAcidMutation.parse_polars_amino_acid_string('aa_mutation')
+            aa_mutation=AminoAcidMutation.parse_polars_amino_acid_string('aa_mutation'),
+            aa_mutation_2=AminoAcidMutation.parse_polars_amino_acid_string('aa_mutation_2')
         )
     )
 
@@ -384,14 +385,15 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
         typed
         .sort('lineage', 'reference', 'mutation_type', pl.col('nuc_mutation').struct.field('pos'),
               pl.col('nuc_mutation').struct.field('ref'))
-        .select('lineage', 'nextstrain_clade', 'reference', 'mutation_type', 'aa_mutation', 'nuc_mutation', 'notes')
+        .select('lineage', 'nextstrain_clade', 'reference', 'mutation_type', 'aa_mutation', 'aa_mutation_2', 'nuc_mutation', 'notes')
     )
 
     coding_grouped_by_aa = (
         position_sorted
         .filter(pl.col('mutation_type') == 'coding')
         .group_by('lineage', 'nextstrain_clade', 'reference', 'mutation_type', 'aa_mutation', maintain_order=True)
-        .agg(pl.col('nuc_mutation'), pl.col('notes').first())
+        # TODO: use unique instead of first
+        .agg(pl.col('aa_mutation_2').first(), pl.col('nuc_mutation'), pl.col('notes').first())
     )
     silent_grouped_by_aa = (
         position_sorted
@@ -403,7 +405,13 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
         silent_grouped_by_aa
     ]).rename({'nuc_mutation': 'nuc_mutations'})
 
-    return grouped_by_aa
+    aa_mutations_merged = grouped_by_aa.with_columns(
+        pl.concat_list('aa_mutation', 'aa_mutation_2').list.drop_nulls().alias('aa_mutations')
+    ).select(
+        'lineage', 'nextstrain_clade', 'reference', 'mutation_type', 'aa_mutations', 'nuc_mutations', 'notes'
+    )
+
+    return aa_mutations_merged
 
 
 def reformat_df_to_dicts(merged: pl.DataFrame, lineages: pl.DataFrame) -> dict:
@@ -413,7 +421,7 @@ def reformat_df_to_dicts(merged: pl.DataFrame, lineages: pl.DataFrame) -> dict:
     aggregate_has_mutations = (
         has_mutations
         .group_by('lineage', 'nextstrain_clade', 'reference', 'mutation_type', maintain_order=True)
-        .agg(pl.struct('aa_mutation', 'nuc_mutations', 'notes').flatten().drop_nulls().alias('mutations'))
+        .agg(pl.struct('aa_mutations', 'nuc_mutations', 'notes').flatten().drop_nulls().alias('mutations'))
     )
 
     aggregate_no_mutations = (
@@ -461,7 +469,7 @@ def reformat_df_to_dicts(merged: pl.DataFrame, lineages: pl.DataFrame) -> dict:
                     if mutation_type == 'silent':
                         mutation.update({'nuc_mutation': mutation['nuc_mutations'].pop()})
                         mutation.pop('nuc_mutations')
-                        mutation.pop('aa_mutation')
+                        mutation.pop('aa_mutations')
                     if not mutation['notes']:
                         mutation.pop('notes')
 
