@@ -20,9 +20,12 @@ import { ClusterDistributionComponents } from 'src/components/ClusterDistributio
 import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
 import { clusterSidebarCollapsedAtoms, countriesSidebarCollapsedAtoms } from 'src/state/DistributionSidebar'
+import { getContentGithubUrl } from 'src/helpers/getContentGithubUrl'
 
 export function ClusterDistributionPage() {
   const { t } = useTranslationSafe()
+
+  const perClusterIntroFilename = 'PerClusterIntro.mdx'
 
   return (
     <Layout wide>
@@ -34,8 +37,8 @@ export function ClusterDistributionPage() {
 
       <Row className={'gx-0'}>
         <Col>
-          <CenteredEditable githubUrl="blob/master/content/PerClusterIntro.md">
-            <MdxContent filepath="PerClusterIntro.md" />
+          <CenteredEditable githubUrl={getContentGithubUrl({ filename: perClusterIntroFilename })}>
+            <MdxContent filepath={perClusterIntroFilename} />
           </CenteredEditable>
         </Col>
       </Row>
