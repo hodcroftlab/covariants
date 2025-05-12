@@ -3,7 +3,7 @@
   "nextstrain_clade": "22E",
   "mutations": [
     {
-      "reference": "pango_parent",
+      "reference": "nextclade_parent",
       "coding": [
         {
           "aa_mutation": {
@@ -136,6 +136,42 @@
           }
         }
       ]
+    },
+    {
+      "reference": "pango_parent",
+      "coding": [
+        {
+          "aa_mutation": {
+            "gene": "ORF1b",
+            "ref": "Y",
+            "pos": 264,
+            "alt": "H"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 14257,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutation": {
+            "gene": "S",
+            "ref": "N",
+            "pos": 460,
+            "alt": "K"
+          },
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 22942,
+              "alt": "A"
+            }
+          ]
+        }
+      ],
+      "silent": []
     },
     {
       "reference": "wuhan",
@@ -1611,5 +1647,7 @@
   ],
   "designation_date": "2022-09-02",
   "unaliased": "B.1.1.529.5.3.1.1.1.1.1",
-  "parent": "BE.1.1.1"
+  "parent": "BE.1.1.1",
+  "nextstrain_parent": "22B",
+  "nextstrain_children": []
 }
