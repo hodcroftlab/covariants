@@ -9,9 +9,12 @@ import { NarrowPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 import { Editable } from 'src/components/Common/Editable'
 import { Layout } from 'src/components/Layout/Layout'
 import { PageHeading } from 'src/components/Common/PageHeading'
+import { getContentGithubUrl } from 'src/helpers/getContentGithubUrl'
 
 export function VariantsPageIndex() {
   const { t } = useTranslationSafe()
+
+  const variantsPageIntroFilename = 'VariantsPageIntro.mdx'
 
   return (
     <Layout>
@@ -25,8 +28,8 @@ export function VariantsPageIndex() {
         <Row className={'gx-0'}>
           <Col>
             <ClusterButtonPanelLayout>
-              <Editable githubUrl="blob/master/content/VariantsPageIntro.md">
-                <MdxContent filepath="VariantsPageIntro.md" />
+              <Editable githubUrl={getContentGithubUrl({ filename: variantsPageIntroFilename })}>
+                <MdxContent filepath={variantsPageIntroFilename} />
               </Editable>
             </ClusterButtonPanelLayout>
           </Col>

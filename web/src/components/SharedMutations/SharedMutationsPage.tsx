@@ -12,6 +12,7 @@ import { Layout } from 'src/components/Layout/Layout'
 import { LOADING } from 'src/components/Loading/Loading'
 import { FetchError } from 'src/components/Error/FetchError'
 import { SharedMutationsTable } from 'src/components/SharedMutations/SharedMutationsTable'
+import { getContentGithubUrl } from 'src/helpers/getContentGithubUrl'
 
 export const SharedMutationsPageContainer = styled(Container)`
   max-width: 1200px;
@@ -23,12 +24,10 @@ export const SharedMutationsWrapper = styled.div`
   overflow-x: auto;
 `
 
-export const SharedMutationsWrapperInner = styled.div`
-  flex: 1;
-`
-
 export function SharedMutationsPage() {
   const { t } = useTranslationSafe()
+
+  const sharedMutationFilename = 'SharedMutations.mdx'
 
   return (
     <Layout>
@@ -41,8 +40,8 @@ export function SharedMutationsPage() {
 
         <Row className={'gx-0'}>
           <Col>
-            <CenteredEditable githubUrl="blob/master/content/SharedMutations.md">
-              <MdxContent filepath="SharedMutations.md" />
+            <CenteredEditable githubUrl={getContentGithubUrl({ filename: sharedMutationFilename })}>
+              <MdxContent filepath={sharedMutationFilename} />
             </CenteredEditable>
           </Col>
         </Row>
