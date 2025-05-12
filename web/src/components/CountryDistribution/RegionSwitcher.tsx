@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 
-import { Button, Col, Row } from 'reactstrap'
+import { Button } from 'reactstrap'
 import { styled } from 'styled-components'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { safeZip } from 'src/helpers/safeZip'
