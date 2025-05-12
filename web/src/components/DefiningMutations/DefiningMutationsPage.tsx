@@ -26,14 +26,14 @@ function DefiningMutationsPageContent() {
       <DefiningMutationLineageTitle cluster={cluster} />
 
       <div className="row">
-        <div className={'col-12 col-md-2 order-1 order-md-1'}>
+        <div className={'col-12 col-md-2 '}>
           <DefiningMutationsNavigation cluster={cluster} />
         </div>
-        <div className={'col-12 col-md-8 order-3 order-md-2'}>
+        <div className={'col-12 col-md-8 '}>
           <DefiningMutationsContent cluster={cluster} />
         </div>
         {cluster && (
-          <div className={'col-12 col-md-2 order-2 order-md-3'}>
+          <div className={'col-12 col-md-2 mt-4 mt-md-0'}>
             <DefiningMutationsInfo cluster={cluster} />
           </div>
         )}
