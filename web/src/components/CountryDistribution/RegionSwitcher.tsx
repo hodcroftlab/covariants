@@ -8,27 +8,6 @@ import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { perCountryDataRegionsSelector } from 'src/state/PerCountryData'
 import { perCountryRegionAtom } from 'src/state/PlacesForPerCountryData'
 
-export const RegionSwitcherContainer = styled.div`
-  margin: 5px 5px;
-  padding: 0.65rem 1rem;
-  border-radius: 3px;
-`
-
-export const RegionSwitcherHeading = styled.h4`
-  text-align: center;
-`
-
-export const RegionButtonsContainer = styled.span`
-  display: flex;
-  flex-wrap: wrap;
-`
-
-export const RegionButtonWrapper = styled.span`
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-`
-
 export const RegionButton = styled(Button)`
   flex-wrap: wrap;
   flex: 0;
@@ -46,32 +25,26 @@ export function RegionSwitcher() {
   const getRegionButtonColor = (region: string) => (currentRegion === region ? 'success' : 'dark')
 
   return (
-    <RegionSwitcherContainer>
-      <Row className={'gx-0'}>
-        <Col>
-          <RegionSwitcherHeading>{t('Choose region')}</RegionSwitcherHeading>
-        </Col>
-      </Row>
+    <div className={'p-1 m-1'}>
+      <h4 className="text-center">{t('Choose region')}</h4>
 
-      <Row className={'gx-0'}>
-        <Col className="d-flex">
-          <RegionButtonsContainer className="mx-auto">
-            {safeZip(regionNames, regionsHaveData).map(([region, regionHaveData]) => (
-              <RegionButtonWrapper key={region}>
-                <RegionButton
-                  color={getRegionButtonColor(region)}
-                  onClick={onRegionButtonClick(region)}
-                  disabled={!regionHaveData}
-                  title={regionHaveData ? t(region) : t('Coming soon!')}
-                  outline={currentRegion !== region}
-                >
-                  {t(region)}
-                </RegionButton>
-              </RegionButtonWrapper>
-            ))}
-          </RegionButtonsContainer>
-        </Col>
-      </Row>
-    </RegionSwitcherContainer>
+      <div className="d-flex">
+        <span className="mx-auto d-flex flex-wrap">
+          {safeZip(regionNames, regionsHaveData).map(([region, regionHaveData]) => (
+            <span className="d-flex flex-column m-auto" key={region}>
+              <RegionButton
+                color={getRegionButtonColor(region)}
+                onClick={onRegionButtonClick(region)}
+                disabled={!regionHaveData}
+                title={regionHaveData ? t(region) : t('Coming soon!')}
+                outline={currentRegion !== region}
+              >
+                {t(region)}
+              </RegionButton>
+            </span>
+          ))}
+        </span>
+      </div>
+    </div>
   )
 }
