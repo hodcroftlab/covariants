@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react'
 
 import { Card, CardBody, CardHeader, Row } from 'reactstrap'
-import { styled } from 'styled-components'
 import get from 'lodash/get'
 import { useRecoilValue } from 'recoil'
 import { ClusterButtonGroup } from 'src/components/ClusterButtonPanel/ClusterButtonGroup'
