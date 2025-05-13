@@ -1,4 +1,4 @@
-import { atom, atomFamily, selector, useRecoilState, useRecoilValue } from 'recoil'
+import { atomFamily, selector, useRecoilValue } from 'recoil'
 import Router from 'next/router'
 import { atomAsync } from 'src/state/utils/atomAsync'
 import {

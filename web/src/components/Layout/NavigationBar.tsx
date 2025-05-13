@@ -12,7 +12,6 @@ import {
   NavLink as NavLinkBase,
   Row,
 } from 'reactstrap'
-import classNames from 'classnames'
 import { FaGithub, FaTwitter } from 'react-icons/fa'
 
 import Image from 'next/image'
