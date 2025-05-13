@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import { styled } from 'styled-components'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { DefiningMutationCluster } from 'src/io/getDefiningMutationsClusters'
+import { PageHeading } from 'src/components/Common/PageHeading'
 
 export interface DefiningMutationsLineageTitleProps {
   cluster: DefiningMutationCluster | undefined
@@ -30,7 +31,7 @@ export function DefiningMutationLineageTitle({ cluster }: DefiningMutationsLinea
 
   return (
     <VariantTitleWrapper>
-      <h1>{title}</h1>
+      <PageHeading>{title}</PageHeading>
       {subtitle}
     </VariantTitleWrapper>
   )

@@ -1,6 +1,5 @@
-import { atom, selector, useRecoilState, useRecoilValue } from 'recoil'
+import { atom, atomFamily, selector, useRecoilState, useRecoilValue } from 'recoil'
 import Router from 'next/router'
-import { useQuery } from '@tanstack/react-query'
 import { atomAsync } from 'src/state/utils/atomAsync'
 import {
   DefiningMutationListElement,
@@ -48,46 +47,30 @@ export const definingMutationClusterClades = selector({
   },
 })
 
-export const definingMutationClusterQueryParamAtom = atom<string | undefined>({
-  key: 'definingMutationCluster',
-  default: undefined,
-})
-
-export function useClusterNameFromUrlOrAtom() {
+export function useClusterNameFromUrl() {
   const { query } = parseUrl(Router.asPath)
-  const clusterNameFromUrl = takeFirstMaybe(query.variant)
-
-  const [clusterNameFromAtom, setClusterNameAtom] = useRecoilState(definingMutationClusterQueryParamAtom)
-
-  if (clusterNameFromUrl === undefined) {
-    const newQuery = clusterNameFromAtom ? { variant: clusterNameFromAtom } : {}
-    setUrlQuery(newQuery).catch(() => {})
-    return clusterNameFromAtom
-  }
-
-  if (clusterNameFromAtom !== clusterNameFromUrl) {
-    setClusterNameAtom(clusterNameFromUrl)
-  }
-
-  return clusterNameFromUrl
+  return takeFirstMaybe(query.variant)
 }
 
-export function setClusterName(clusterName: string | undefined) {
+export function setClusterNameToUrl(clusterName: string | undefined) {
   const newQuery = clusterName ? { variant: clusterName } : {}
   setUrlQuery(newQuery).catch(() => {})
 }
 
+export const DefiningMutationClusterAtomFamily = atomFamily({
+  key: 'DefiningMutationClusterFamily',
+  default: async (clusterName: string | undefined) => {
+    if (clusterName === undefined) {
+      return undefined
+    }
+    return fetchDefiningMutationsCluster(clusterName)
+  },
+})
+
 export function useDefiningMutationsCluster() {
-  const clusterNameFromUrl = useClusterNameFromUrlOrAtom()
+  const clusterNameFromUrl = useClusterNameFromUrl()
   const allClusters = useRecoilValue(definingMutationClustersAtom)
   const isInClusterList = allClusters.some((cluster) => cluster.lineage === clusterNameFromUrl)
-  const cleanClusterName = clusterNameFromUrl !== undefined && isInClusterList ? clusterNameFromUrl : undefined
 
-  const { data: cluster } = useQuery({
-    queryKey: [`fetchDefiningMutationsCluster_${cleanClusterName}`],
-    queryFn: async () => {
-      return fetchDefiningMutationsCluster(cleanClusterName)
-    },
-  })
-  return cluster
+  return clusterNameFromUrl !== undefined && isInClusterList ? clusterNameFromUrl : undefined
 }

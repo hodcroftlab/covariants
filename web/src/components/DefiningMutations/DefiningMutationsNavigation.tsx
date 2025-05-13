@@ -5,7 +5,7 @@ import Select from 'react-select'
 import { DefiningMutationCluster, DefiningMutationListElement } from 'src/io/getDefiningMutationsClusters'
 import { clustersAtom } from 'src/state/Clusters'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { definingMutationClustersAtom, setClusterName } from 'src/state/DefiningMutations'
+import { definingMutationClustersAtom, setClusterNameToUrl } from 'src/state/DefiningMutations'
 
 export function DefiningMutationsNavigation({ cluster }: { cluster: DefiningMutationCluster | undefined }) {
   return (
@@ -40,7 +40,7 @@ function DefiningMutationsSearch() {
   }, [])
   const onSelectChange = useCallback((newValue: DefiningMutationListElement | null) => {
     if (newValue) {
-      setClusterName(newValue.lineage)
+      setClusterNameToUrl(newValue.lineage)
     }
   }, [])
 

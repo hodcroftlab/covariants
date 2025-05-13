@@ -93,7 +93,7 @@ function NavigationLinks() {
     <NavWrappable navbar>
       {Object.entries(navLinks).map(([url, text]) => {
         return (
-          <NavItem key={url} className={classNames(matchingUrl(url, pathname) && 'active')}>
+          <NavItem key={url} className={`${matchingUrl(url, pathname) && 'active'}`}>
             <NavLink tag={Link} href={url}>
               {text}
             </NavLink>
