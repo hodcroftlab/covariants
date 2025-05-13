@@ -117,7 +117,7 @@ export async function fetchDefiningMutationClusters() {
   return definingMutationsClusterListElementSchema.array().parse(definingMutationClusters.clusters)
 }
 
-export async function fetchDefiningMutationsCluster(clusterName: string ) {
+export async function fetchDefiningMutationsCluster(clusterName: string) {
   const data = await FETCHER.validatedFetch(
     `/data/definingMutations/${clusterName}.json`,
     definingMutationClusterSchemaRaw,
