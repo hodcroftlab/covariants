@@ -5,9 +5,12 @@ import { CenteredEditable } from 'src/components/Common/Editable'
 import { PageHeading } from 'src/components/Common/PageHeading'
 import { Layout } from 'src/components/Layout/Layout'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
+import { getContentGithubUrl } from 'src/helpers/getContentGithubUrl'
 
 export function FaqPage() {
   const { t } = useTranslationSafe()
+
+  const faqFilename = 'Faq.mdx'
 
   return (
     <Layout>
@@ -20,8 +23,8 @@ export function FaqPage() {
 
         <Row className={'gx-0'}>
           <Col>
-            <CenteredEditable githubUrl="blob/master/content/Faq.md">
-              <MdxContent filepath="Faq.md" />
+            <CenteredEditable githubUrl={getContentGithubUrl({ filename: faqFilename })}>
+              <MdxContent filepath={faqFilename} />
             </CenteredEditable>
           </Col>
         </Row>

@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import { z } from 'zod'
-import clustersJson from '../../public/data/definingMutations/definingMutationsClusters.json'
-import { FETCHER, useValidatedAxiosQuery } from 'src/hooks/useAxiosQuery'
+import { FETCHER } from 'src/hooks/useAxiosQuery'
 import { Mutation } from 'src/types'
 
 const nucleotideMutationSchema = z.object({
@@ -118,30 +117,11 @@ export async function fetchDefiningMutationClusters() {
   return definingMutationsClusterListElementSchema.array().parse(definingMutationClusters.clusters)
 }
 
-export function useDefiningMutationCluster(clusterName: string): DefiningMutationCluster {
-  const { data } = useValidatedAxiosQuery<DefiningMutationClusterRaw>(
+export async function fetchDefiningMutationsCluster(clusterName: string) {
+  const data = await FETCHER.validatedFetch(
     `/data/definingMutations/${clusterName}.json`,
     definingMutationClusterSchemaRaw,
   )
 
   return definingMutationClusterSchema.parse(data)
-}
-
-export function getDefiningMutationClustersFromDisk(): DefiningMutationListElement[] {
-  const definingMutationClusters = definingMutationsClusterListElementSchema.array().safeParse(clustersJson.clusters)
-  if (!definingMutationClusters.success) {
-    throw new Error(`Could not read defining mutation clusters from disk. Error: ${definingMutationClusters.error}`)
-  }
-
-  return definingMutationClusters.data
-}
-
-export function getLineages(clusters: DefiningMutationListElement[]) {
-  return clusters.map((cluster) => cluster.lineage)
-}
-
-export function getClades(clusters: DefiningMutationListElement[]) {
-  return clusters
-    .filter((cluster) => cluster.nextstrainClade !== 'recombinant')
-    .map((cluster) => cluster.nextstrainClade)
 }

@@ -1,9 +1,9 @@
-import React, { useCallback, useMemo } from 'react'
-import { Label } from 'reactstrap'
-import { styled } from 'styled-components'
+import React, { useCallback, useId, useMemo } from 'react'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { DropdownOption, stringsToOptions, stringToOption } from 'src/components/Common/DropdownOption'
 import { Dropdown } from 'src/components/Common/Dropdown'
+
+const style = { maxWidth: '300px' }
 
 export function SelectReferenceDropdown({
   referenceSequences,
@@ -15,6 +15,7 @@ export function SelectReferenceDropdown({
   setSelectedReference(currentTargetId: string): void
 }) {
   const { t } = useTranslationSafe()
+  const id = useId()
 
   const options = useMemo(() => stringsToOptions(referenceSequences), [referenceSequences])
 
@@ -26,19 +27,17 @@ export function SelectReferenceDropdown({
   )
 
   return (
-    <Wrapper>
-      <Label for="mutations-relative-to">{t('Mutations relative to')}</Label>
+    <div style={style} className="d-flex gap-2 align-items-center">
+      <label className="text-nowrap" htmlFor={id}>
+        {t('relative to')}
+      </label>
       <Dropdown
-        identifier="mutations-relative-to"
+        identifier={id}
         options={options}
         value={stringToOption(selectedSequence)}
         onOptionChange={onChange}
         isSearchable={true}
       />
-    </Wrapper>
+    </div>
   )
 }
-
-const Wrapper = styled.div`
-  max-width: 200px;
-`
