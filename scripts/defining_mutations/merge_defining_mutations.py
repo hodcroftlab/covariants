@@ -2,7 +2,6 @@ import argparse
 import json
 import logging
 import os
-import re
 from dataclasses import dataclass
 
 import numpy as np
@@ -405,8 +404,8 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
         position_sorted
         .filter(pl.col('mutation_type') == 'coding')
         .group_by('lineage', 'nextstrain_clade', 'reference', 'mutation_type', 'aa_mutation', maintain_order=True)
-        # TODO: use unique instead of first
-        .agg(pl.col('aa_mutation_2').first(), pl.col('nuc_mutation'), pl.col('notes').first())
+        .agg(pl.col('aa_mutation_2').unique().drop_nulls(), pl.col('nuc_mutation'), pl.col('notes').unique().drop_nulls().str.concat('. '))
+        .with_columns(pl.col('notes').replace('', None))
     )
     silent_grouped_by_aa = (
         position_sorted
@@ -415,16 +414,23 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
     )
     grouped_by_aa = pl.concat([
         coding_grouped_by_aa,
-        silent_grouped_by_aa
+        silent_grouped_by_aa.cast(
+            {
+                'aa_mutation_2': pl.List(pl.Struct({'gene': pl.String, 'ref': pl.String, 'pos': pl.Int64, 'alt': pl.String})),
+             }
+        )
     ]).rename({'nuc_mutation': 'nuc_mutations'})
 
-    aa_mutations_merged = grouped_by_aa.with_columns(
+    aa_mutations_merged = (
+        grouped_by_aa.with_columns(
         pl.concat_list('aa_mutation', 'aa_mutation_2').list.drop_nulls().alias('aa_mutations')
-    ).select(
+    ))
+
+    output = aa_mutations_merged.select(
         'lineage', 'nextstrain_clade', 'reference', 'mutation_type', 'aa_mutations', 'nuc_mutations', 'notes'
     )
 
-    return aa_mutations_merged
+    return output
 
 
 def reformat_df_to_dicts(merged: pl.DataFrame, lineages: pl.DataFrame) -> dict:

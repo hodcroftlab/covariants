@@ -1301,6 +1301,12 @@
               "gene": "ORF9b",
               "ref": "P",
               "pos": 10,
+              "alt": "F"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "P",
+              "pos": 10,
               "alt": "S"
             }
           ],
@@ -1316,7 +1322,7 @@
               "alt": "T"
             }
           ],
-          "notes": "This mutation causes ORG9b:P10S, but the adjacent mutation changes to P10F"
+          "notes": "This mutation causes ORG9b:P10S, but the adjacent mutation changes to P10F. This mutation on top of the one above, change ORf9b:P10S to P10F"
         },
         {
           "aa_mutations": [
