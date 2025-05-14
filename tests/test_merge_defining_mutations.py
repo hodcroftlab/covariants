@@ -70,13 +70,13 @@ def test_match_nuc_to_aas():
         "S:S375F",
         "S:T376A",
     ]
-    assert match_nuc_to_aas(nuc, aas) == 'ORF1a:S135R'
+    assert match_nuc_to_aas(nuc, aas) == ['ORF1a:S135R']
 
 
 def test_match_fuzzy_assignment_of_nuc_to_aas():
     nuc = "A21766-"
     aas = ['S:H69-']
-    assert match_nuc_to_aas(nuc, aas) == 'S:H69-'
+    assert match_nuc_to_aas(nuc, aas) == ['S:H69-']
 
 
 def test_match_nuc_to_aas_selects_best_match():
@@ -85,7 +85,7 @@ def test_match_nuc_to_aas_selects_best_match():
         "N:R203K",
         "N:G204R",
     ]
-    assert match_nuc_to_aas(nuc, aas) == "N:G204R"
+    assert match_nuc_to_aas(nuc, aas) == ["N:G204R"]
 
 
 def test_match_nuc_to_aas_prefers_same_mutation_type():
@@ -94,7 +94,15 @@ def test_match_nuc_to_aas_prefers_same_mutation_type():
         'S:R158G',
         'S:F157-'
     ]
-    assert match_nuc_to_aas(nuc, aas) == "S:F157-"
+    assert match_nuc_to_aas(nuc, aas) == ["S:F157-"]
+
+
+def test_match_nuc_returns_none_if_there_are_no_matches():
+    nuc = 'X22031-'
+    aas = [
+        'S:R200G',
+    ]
+    assert match_nuc_to_aas(nuc, aas) is None
 
 
 @pytest.mark.parametrize(
@@ -105,7 +113,7 @@ def test_match_nuc_to_aas_prefers_same_mutation_type():
     ]
 )
 def test_match_nuc_to_aas_uses_other_mutation_type_if_nothing_else_is_available(nuc, aas):
-    assert match_nuc_to_aas(nuc, aas) == aas[0]
+    assert match_nuc_to_aas(nuc, aas) == aas
 
 
 @pytest.mark.parametrize(
@@ -142,12 +150,12 @@ def test_match_nuc_to_aas_for_hand_curated_data():
         )
         silent_data = pl.read_csv(os.path.join(DEFINING_MUTATIONS_DATA_DIR, file), separator='\t').filter(pl.col('aa_change').is_null())
         silent_mutations.append(silent_data)
-        assigned = data.with_columns(assigned_aa=pl.struct('nuc_change', 'aa_change').map_elements(
-            lambda x: match_nuc_to_aas(x['nuc_change'], [x['aa_change']]), return_dtype=pl.String))
+        assigned = data.with_columns(assigned_aas=pl.struct('nuc_change', 'aa_change').map_elements(
+            lambda x: match_nuc_to_aas(x['nuc_change'], [x['aa_change']]), return_dtype=pl.List(pl.String)))
         coding_mutations.append(assigned)
     coding_mutations = pl.concat(coding_mutations)
     silent_mutations = pl.concat(silent_mutations)
-    mismatches = coding_mutations.filter(pl.col('aa_change').ne(pl.col('assigned_aa')).or_(pl.col('assigned_aa').is_null()))
+    mismatches = coding_mutations.filter(pl.col('aa_change').ne(pl.col('assigned_aas').list.first()).or_(pl.col('assigned_aas').list.len().eq(0)))
     silent_percentage = len(silent_mutations) / (len(coding_mutations) + len(silent_mutations))
     assert len(mismatches) == 0
     assert silent_percentage < SILENT_MUTATION_PERCENTAGE_THRESHOLD
@@ -162,8 +170,6 @@ def test_match_nuc_to_aas_for_auto_generated_data():
     assert proportion_silent < SILENT_MUTATION_PERCENTAGE_THRESHOLD
 
 
-@pytest.mark.xfail(
-    reason='need to clarify how we incorporate multiple amino acids: https://github.com/hodcroftlab/covariants/issues/581')
 def test_match_nuc_to_multiple_aas():
     nuc = "C28312T"
     aas = ['N:P13L', 'ORF9b:P10F']
@@ -200,7 +206,7 @@ def test_load_and_process_auto_generated_data():
                                 'designation_date']
     assert len(auto_generated_mutations) == 268
     assert auto_generated_mutations.columns == ['lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation',
-                                                'reference']
+                                                'aa_mutation_2', 'reference']
     silent_mutations = auto_generated_mutations.filter(pl.col('aa_mutation').is_null())
     proportion_silent = len(silent_mutations) / len(auto_generated_mutations)
     assert proportion_silent < SILENT_MUTATION_PERCENTAGE_THRESHOLD
