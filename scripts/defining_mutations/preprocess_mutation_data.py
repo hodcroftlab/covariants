@@ -1,8 +1,11 @@
+import os
+
 import numpy as np
 import pandas as pd
 import polars as pl
 
 from scripts.defining_mutations.helpers import replace_list_of_empty_string, check_reference_column_is_filled
+from scripts.defining_mutations.io import load_hand_curated_data
 from scripts.defining_mutations.parse_mutations import Mutation, AminoAcidMutation
 
 
@@ -140,6 +143,34 @@ def process_hand_curated_file(mutations: pl.DataFrame) -> pl.DataFrame:
 
     check_reference_column_is_filled(output)
 
+    return output
+
+
+def process_hand_curated_data(hand_curated_data_dir: str, clusters: dict) -> tuple[pl.DataFrame, pl.DataFrame]:
+    hand_curated_data_files = os.listdir(hand_curated_data_dir)
+    hand_curated_data = pl.concat([
+        process_hand_curated_file(load_hand_curated_data(os.path.join(hand_curated_data_dir, hand_curated_file)))
+        for hand_curated_file in hand_curated_data_files
+    ])
+
+    clades = extract_clade_to_lineage(clusters)
+    used_clades = clades.join(hand_curated_data, on='nextstrain_clade', how='semi')
+
+    with_lineages = hand_curated_data.join(clades, on='nextstrain_clade', how='left')
+    assert with_lineages.filter(pl.col('lineage').is_null()).is_empty()
+
+    mutations = with_lineages.select('lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2', 'reference', 'notes')
+
+    return used_clades, mutations
+
+
+def extract_clade_to_lineage(clusters: dict) -> pl.DataFrame:
+    clusters_df = pl.from_records(list(clusters.values())).select('nextstrain_name', 'pango_lineages', 'type')
+    only_clades = clusters_df.filter(pl.col('nextstrain_name').is_not_null())
+    only_variants = only_clades.filter(pl.col('type').eq('variant')).drop('type')
+    with_lineage = only_variants.explode('pango_lineages').unnest('pango_lineages').rename({'name': 'lineage'})
+
+    output = with_lineage.select('lineage', pl.col('nextstrain_name').alias('nextstrain_clade'))
     return output
 
 

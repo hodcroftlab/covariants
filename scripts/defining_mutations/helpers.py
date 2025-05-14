@@ -50,7 +50,7 @@ def replace_list_of_empty_string(y: str | list | np.ndarray) -> str | list | np.
         return []
     return y
 
-def reformat_df_to_dicts(merged: pl.DataFrame, lineages: pl.DataFrame) -> dict:
+def reformat_mutations_df_to_dicts(merged: pl.DataFrame, lineages: pl.DataFrame) -> dict:
     has_mutations = merged.filter(pl.col('nuc_mutations').is_not_null())
     no_mutations = merged.filter(pl.col('nuc_mutations').is_null())
 

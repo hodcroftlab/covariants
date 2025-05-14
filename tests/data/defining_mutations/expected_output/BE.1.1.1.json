@@ -3,125 +3,6 @@
   "nextstrain_clade": "22B",
   "mutations": [
     {
-      "reference": "nextclade_parent",
-      "coding": [
-        {
-          "aa_mutations": [
-            {
-              "gene": "S",
-              "ref": "H",
-              "pos": 69,
-              "alt": "-"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "T",
-              "pos": 21765,
-              "alt": "-"
-            },
-            {
-              "ref": "A",
-              "pos": 21766,
-              "alt": "-"
-            },
-            {
-              "ref": "C",
-              "pos": 21767,
-              "alt": "-"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "S",
-              "ref": "V",
-              "pos": 70,
-              "alt": "-"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "A",
-              "pos": 21768,
-              "alt": "-"
-            },
-            {
-              "ref": "T",
-              "pos": 21769,
-              "alt": "-"
-            },
-            {
-              "ref": "G",
-              "pos": 21770,
-              "alt": "-"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "S",
-              "ref": "L",
-              "pos": 452,
-              "alt": "R"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "T",
-              "pos": 22917,
-              "alt": "G"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "S",
-              "ref": "F",
-              "pos": 486,
-              "alt": "V"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "T",
-              "pos": 23018,
-              "alt": "G"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "M",
-              "ref": "D",
-              "pos": 3,
-              "alt": "N"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "G",
-              "pos": 26529,
-              "alt": "A"
-            }
-          ]
-        }
-      ],
-      "silent": [
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 27889,
-            "alt": "T"
-          }
-        }
-      ]
-    },
-    {
       "reference": "pango_parent",
       "coding": [
         {
@@ -316,17 +197,17 @@
           ],
           "nuc_mutations": [
             {
-              "ref": "T",
+              "ref": "X",
               "pos": 11288,
               "alt": "-"
             },
             {
-              "ref": "C",
+              "ref": "X",
               "pos": 11289,
               "alt": "-"
             },
             {
-              "ref": "T",
+              "ref": "X",
               "pos": 11290,
               "alt": "-"
             }
@@ -343,17 +224,17 @@
           ],
           "nuc_mutations": [
             {
-              "ref": "G",
+              "ref": "X",
               "pos": 11291,
               "alt": "-"
             },
             {
-              "ref": "G",
+              "ref": "X",
               "pos": 11292,
               "alt": "-"
             },
             {
-              "ref": "T",
+              "ref": "X",
               "pos": 11293,
               "alt": "-"
             }
@@ -370,17 +251,17 @@
           ],
           "nuc_mutations": [
             {
-              "ref": "T",
+              "ref": "X",
               "pos": 11294,
               "alt": "-"
             },
             {
-              "ref": "T",
+              "ref": "X",
               "pos": 11295,
               "alt": "-"
             },
             {
-              "ref": "T",
+              "ref": "X",
               "pos": 11296,
               "alt": "-"
             }
@@ -516,17 +397,16 @@
           ],
           "nuc_mutations": [
             {
-              "ref": "T",
+              "ref": "X",
               "pos": 21633,
               "alt": "-"
             },
             {
-              "ref": "A",
+              "ref": "X",
               "pos": 21634,
               "alt": "-"
             }
-          ],
-          "notes": "Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27"
+          ]
         },
         {
           "aa_mutations": [
@@ -539,22 +419,21 @@
           ],
           "nuc_mutations": [
             {
-              "ref": "C",
+              "ref": "X",
               "pos": 21635,
               "alt": "-"
             },
             {
-              "ref": "C",
+              "ref": "X",
               "pos": 21636,
               "alt": "-"
             },
             {
-              "ref": "C",
+              "ref": "X",
               "pos": 21637,
               "alt": "-"
             }
-          ],
-          "notes": "Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27"
+          ]
         },
         {
           "aa_mutations": [
@@ -567,40 +446,26 @@
           ],
           "nuc_mutations": [
             {
-              "ref": "C",
+              "ref": "X",
               "pos": 21638,
               "alt": "-"
             },
             {
-              "ref": "C",
+              "ref": "X",
               "pos": 21639,
               "alt": "-"
             },
             {
-              "ref": "T",
+              "ref": "X",
               "pos": 21640,
               "alt": "-"
-            }
-          ],
-          "notes": "Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27"
-        },
-        {
-          "aa_mutations": [
+            },
             {
-              "gene": "S",
-              "ref": "A",
-              "pos": 27,
-              "alt": "S"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "G",
+              "ref": "X",
               "pos": 21641,
               "alt": "-"
             }
-          ],
-          "notes": "This change is a consequence of the prior deletion"
+          ]
         },
         {
           "aa_mutations": [
@@ -613,18 +478,28 @@
           ],
           "nuc_mutations": [
             {
-              "ref": "T",
+              "ref": "X",
               "pos": 21765,
               "alt": "-"
             },
             {
-              "ref": "A",
+              "ref": "X",
               "pos": 21766,
               "alt": "-"
             },
             {
-              "ref": "C",
+              "ref": "X",
               "pos": 21767,
+              "alt": "-"
+            },
+            {
+              "ref": "X",
+              "pos": 21768,
+              "alt": "-"
+            },
+            {
+              "ref": "X",
+              "pos": 21769,
               "alt": "-"
             }
           ]
@@ -640,17 +515,7 @@
           ],
           "nuc_mutations": [
             {
-              "ref": "A",
-              "pos": 21768,
-              "alt": "-"
-            },
-            {
-              "ref": "T",
-              "pos": 21769,
-              "alt": "-"
-            },
-            {
-              "ref": "G",
+              "ref": "X",
               "pos": 21770,
               "alt": "-"
             }
@@ -1230,12 +1095,6 @@
               "ref": "P",
               "pos": 10,
               "alt": "F"
-            },
-            {
-              "gene": "ORF9b",
-              "ref": "P",
-              "pos": 10,
-              "alt": "S"
             }
           ],
           "nuc_mutations": [
@@ -1254,6 +1113,28 @@
         {
           "aa_mutations": [
             {
+              "gene": "ORF9b",
+              "ref": "E",
+              "pos": 27,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "X",
+              "pos": 28362,
+              "alt": "-"
+            },
+            {
+              "ref": "X",
+              "pos": 28363,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
               "gene": "N",
               "ref": "E",
               "pos": 31,
@@ -1264,26 +1145,31 @@
               "ref": "E",
               "pos": 27,
               "alt": "-"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "N",
+              "pos": 28,
+              "alt": "-"
             }
           ],
           "nuc_mutations": [
             {
-              "ref": "G",
-              "pos": 28362,
-              "alt": "-"
-            },
-            {
-              "ref": "A",
-              "pos": 28363,
-              "alt": "-"
-            },
-            {
-              "ref": "G",
+              "ref": "X",
               "pos": 28364,
               "alt": "-"
+            },
+            {
+              "ref": "X",
+              "pos": 28365,
+              "alt": "-"
+            },
+            {
+              "ref": "X",
+              "pos": 28366,
+              "alt": "-"
             }
-          ],
-          "notes": "Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33"
+          ]
         },
         {
           "aa_mutations": [
@@ -1298,26 +1184,31 @@
               "ref": "N",
               "pos": 28,
               "alt": "-"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "A",
+              "pos": 29,
+              "alt": "-"
             }
           ],
           "nuc_mutations": [
             {
-              "ref": "A",
-              "pos": 28365,
-              "alt": "-"
-            },
-            {
-              "ref": "A",
-              "pos": 28366,
-              "alt": "-"
-            },
-            {
-              "ref": "C",
+              "ref": "X",
               "pos": 28367,
               "alt": "-"
+            },
+            {
+              "ref": "X",
+              "pos": 28368,
+              "alt": "-"
+            },
+            {
+              "ref": "X",
+              "pos": 28369,
+              "alt": "-"
             }
-          ],
-          "notes": "Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33"
+          ]
         },
         {
           "aa_mutations": [
@@ -1336,22 +1227,11 @@
           ],
           "nuc_mutations": [
             {
-              "ref": "G",
-              "pos": 28368,
-              "alt": "-"
-            },
-            {
-              "ref": "C",
-              "pos": 28369,
-              "alt": "-"
-            },
-            {
-              "ref": "A",
+              "ref": "X",
               "pos": 28370,
               "alt": "-"
             }
-          ],
-          "notes": "Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33"
+          ]
         },
         {
           "aa_mutations": [
@@ -1535,182 +1415,182 @@
         },
         {
           "nuc_mutation": {
-            "ref": "G",
+            "ref": "X",
             "pos": 29734,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "A",
+            "ref": "X",
             "pos": 29735,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "G",
+            "ref": "X",
             "pos": 29736,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "G",
+            "ref": "X",
             "pos": 29737,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "C",
+            "ref": "X",
             "pos": 29738,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "C",
+            "ref": "X",
             "pos": 29739,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "A",
+            "ref": "X",
             "pos": 29740,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "C",
+            "ref": "X",
             "pos": 29741,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "G",
+            "ref": "X",
             "pos": 29742,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "C",
+            "ref": "X",
             "pos": 29743,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "G",
+            "ref": "X",
             "pos": 29744,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "G",
+            "ref": "X",
             "pos": 29745,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "A",
+            "ref": "X",
             "pos": 29746,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "G",
+            "ref": "X",
             "pos": 29747,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "T",
+            "ref": "X",
             "pos": 29748,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "A",
+            "ref": "X",
             "pos": 29749,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "C",
+            "ref": "X",
             "pos": 29750,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "G",
+            "ref": "X",
             "pos": 29751,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "A",
+            "ref": "X",
             "pos": 29752,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "T",
+            "ref": "X",
             "pos": 29753,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "C",
+            "ref": "X",
             "pos": 29754,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "G",
+            "ref": "X",
             "pos": 29755,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "A",
+            "ref": "X",
             "pos": 29756,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "G",
+            "ref": "X",
             "pos": 29757,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "T",
+            "ref": "X",
             "pos": 29758,
             "alt": "-"
           }
         },
         {
           "nuc_mutation": {
-            "ref": "G",
+            "ref": "X",
             "pos": 29759,
             "alt": "-"
           }

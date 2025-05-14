@@ -6,7 +6,8 @@ import pytest
 from scripts.defining_mutations.io import load_auto_generated_data, load_hand_curated_data
 from scripts.defining_mutations.merge_defining_mutations import import_mutation_data, merge_mutation_data
 from scripts.defining_mutations.preprocess_mutation_data import process_hand_curated_file, process_auto_generated_data, \
-    match_nuc_to_aas
+    match_nuc_to_aas, process_hand_curated_data, extract_clade_to_lineage
+from scripts.clusters import clusters as clusters_data
 from tests.defining_mutations.config import HAND_CURATED_TEST_DIR, AUTO_GENERATED_TEST_DIR, \
     AUTO_GENERATED_EDGE_CASES_TEST_DIR, DEFINING_MUTATIONS_DATA_DIR, CI
 
@@ -15,6 +16,20 @@ def test_process_hand_curated_file():
     hand_curated = process_hand_curated_file(load_hand_curated_data(os.path.join(HAND_CURATED_TEST_DIR, '22E.Omicron.tsv')))
     assert len(hand_curated) == 141
     assert hand_curated.columns == ['nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2', 'reference', 'notes']
+
+
+def test_process_clusters():
+    clusters = extract_clade_to_lineage(clusters_data)
+    assert len(clusters) == 42
+    assert clusters.columns == ['lineage', 'nextstrain_clade']
+
+
+def test_process_hand_curated_data():
+    clades, mutations = process_hand_curated_data(HAND_CURATED_TEST_DIR, clusters_data)
+    assert len(clades) == 4
+    assert clades.columns == ['lineage', 'nextstrain_clade']
+    assert len(mutations) == 607
+    assert mutations.columns == ['lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2', 'reference', 'notes']
 
 
 def test_load_and_process_auto_generated_data():
@@ -73,13 +88,14 @@ def test_match_nuc_to_aas_for_auto_generated_data():
 @pytest.mark.parametrize(
     'auto_generated_test_dir, expected_aa_nuc_mismatches, expected_nuc_aa_mismatches',
     [
-        (AUTO_GENERATED_TEST_DIR, 0, 2),
-        (AUTO_GENERATED_EDGE_CASES_TEST_DIR, 2, 2)
+        (AUTO_GENERATED_TEST_DIR, 0, 5),
+        (AUTO_GENERATED_EDGE_CASES_TEST_DIR, 2, 5)
     ]
 )
 def test_match_nuc_to_aas_mutation_handles_type_mismatches(auto_generated_test_dir, expected_aa_nuc_mismatches, expected_nuc_aa_mismatches):
     lineages, hand_curated_mutations, auto_generated_mutations = import_mutation_data(HAND_CURATED_TEST_DIR,
-                                                                                      auto_generated_test_dir)
+                                                                                      auto_generated_test_dir,
+                                                                                      clusters_data)
     col_has_deletions = lambda col_name: pl.col(col_name).list.eval(pl.element().struct.field('alt').eq('-')).list.any()
 
     merged_mutations = merge_mutation_data(hand_curated_mutations, auto_generated_mutations)

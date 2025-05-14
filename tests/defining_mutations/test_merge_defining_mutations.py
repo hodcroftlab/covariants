@@ -3,9 +3,38 @@ import os
 
 import pytest
 
-from scripts.defining_mutations.merge_defining_mutations import main
+from scripts.defining_mutations.merge_defining_mutations import main, import_mutation_data
+from scripts.clusters import clusters as clusters_data
 from tests.defining_mutations.config import AUTO_GENERATED_TEST_DIR, AUTO_GENERATED_EDGE_CASES_TEST_DIR, \
     HAND_CURATED_TEST_DIR, EXPECTED_OUTPUT_DIR, EXPECTED_OUTPUT_EDGE_CASES_DIR, OUTPUT_TEST_DIR, CI
+
+
+def test_import_mutation_data():
+    lineages, hand_curated, auto_generated = import_mutation_data(HAND_CURATED_TEST_DIR, AUTO_GENERATED_TEST_DIR, clusters_data)
+    assert len(lineages) == 5
+    assert lineages.columns == ['lineage',
+                                'nextstrain_clade',
+                                'unaliased',
+                                'parent',
+                                'children',
+                                'designation_date',
+                                'nextstrain_children',
+                                'nextstrain_parent']
+    assert len(hand_curated) == 607
+    assert hand_curated.columns == ['lineage',
+                                    'nextstrain_clade',
+                                    'nuc_mutation',
+                                    'aa_mutation',
+                                    'aa_mutation_2',
+                                    'reference',
+                                    'notes']
+    assert len(auto_generated) == 268
+    assert auto_generated.columns == ['lineage',
+                                      'nextstrain_clade',
+                                      'nuc_mutation',
+                                      'aa_mutation',
+                                      'aa_mutation_2',
+                                      'reference']
 
 
 @pytest.mark.parametrize(

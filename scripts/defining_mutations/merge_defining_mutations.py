@@ -1,41 +1,32 @@
 import argparse
+import logging
 import os
 
 import polars as pl
 
 from scripts.defining_mutations.fetch_nextclade_tree import fetch_nextclade_tree, parse_nextclade_tree
-from scripts.defining_mutations.helpers import log_mismatches, reformat_df_to_dicts
-from scripts.defining_mutations.io import save_mutations_to_file, save_lineages_to_file, load_auto_generated_data, \
-    load_hand_curated_data
-from scripts.defining_mutations.preprocess_mutation_data import process_auto_generated_data, process_hand_curated_file
+from scripts.defining_mutations.helpers import log_mismatches, reformat_mutations_df_to_dicts
+from scripts.defining_mutations.io import save_mutations_to_file, save_lineages_to_file, load_auto_generated_data
+from scripts.defining_mutations.preprocess_mutation_data import process_auto_generated_data, process_hand_curated_data
+from scripts.clusters import clusters as clusters_data
 
 
-def import_mutation_data(hand_curated_data_dir: str, auto_generated_data_dir: str) -> tuple[
+def import_mutation_data(hand_curated_data_dir: str, auto_generated_data_dir: str, clusters: dict) -> tuple[
     pl.DataFrame, pl.DataFrame, pl.DataFrame]:
-    lineages, auto_generated_mutations_raw = load_auto_generated_data(
+    auto_generated_lineages, auto_generated_mutations_raw = load_auto_generated_data(
         os.path.join(auto_generated_data_dir, 'auto_generated.json'))
-    nextclade_tree = parse_nextclade_tree(fetch_nextclade_tree())
-    lineages_with_nextclade = lineages.join(nextclade_tree, on=['lineage', 'nextstrain_clade'], how='left')
 
     auto_generated_mutations = process_auto_generated_data(auto_generated_mutations_raw)
 
-    # TODO: get lineages for the join from clusters.py. Using the auto-generated lineages leads to duplication of the hand-curated data
-    hand_curated_mutations = (
-        import_hand_curated_data(hand_curated_data_dir)
-        .join(lineages.select('lineage', 'nextstrain_clade'), on='nextstrain_clade')
-    )
+    hand_curated_lineages, hand_curated_mutations = process_hand_curated_data(hand_curated_data_dir, clusters)
+
+    nextclade_tree = parse_nextclade_tree(fetch_nextclade_tree())
+    combined_lineages = hand_curated_lineages.join(auto_generated_lineages, on=['lineage', 'nextstrain_clade'], how='full', coalesce=True, maintain_order='left_right')
+    if not hand_curated_lineages.join(auto_generated_lineages, on=['lineage', 'nextstrain_clade'], how='anti').is_empty():
+        logging.warning('Some hand curated lineages are not present in the auto-generated lineages')
+    lineages_with_nextclade = combined_lineages.join(nextclade_tree, on=['lineage', 'nextstrain_clade'], how='left')
 
     return lineages_with_nextclade, hand_curated_mutations, auto_generated_mutations
-
-
-def import_hand_curated_data(hand_curated_data_dir: str) -> pl.DataFrame:
-    hand_curated_data_files = os.listdir(hand_curated_data_dir)
-    hand_curated_data = pl.concat([
-        process_hand_curated_file(load_hand_curated_data(os.path.join(hand_curated_data_dir, hand_curated_file)))
-        for hand_curated_file in hand_curated_data_files
-    ])
-
-    return hand_curated_data
 
 
 def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mutations: pl.DataFrame) -> pl.DataFrame:
@@ -115,13 +106,15 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
 def main(hand_curated_data_dir='defining_mutations',
          auto_generated_data_dir='data',
          output_dir='web/public/data/definingMutations',
-         dry_run=False):
+         dry_run=False,
+         clusters=clusters_data):
     lineages, hand_curated_mutations, auto_generated_mutations = import_mutation_data(hand_curated_data_dir,
-                                                                                      auto_generated_data_dir)
+                                                                                      auto_generated_data_dir,
+                                                                                      clusters)
 
     merged_mutations = merge_mutation_data(hand_curated_mutations, auto_generated_mutations)
 
-    output = reformat_df_to_dicts(merged_mutations, lineages)
+    output = reformat_mutations_df_to_dicts(merged_mutations, lineages)
 
     if not dry_run:
         save_mutations_to_file(output, output_dir)
