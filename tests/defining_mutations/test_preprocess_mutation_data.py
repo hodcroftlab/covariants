@@ -6,7 +6,7 @@ import pytest
 from scripts.defining_mutations.io import load_auto_generated_data, load_hand_curated_data
 from scripts.defining_mutations.merge_defining_mutations import import_mutation_data, merge_mutation_data
 from scripts.defining_mutations.preprocess_mutation_data import process_hand_curated_file, process_auto_generated_data, \
-    match_nuc_to_aas, process_hand_curated_data, extract_clade_to_lineage
+    match_nuc_to_aas, process_hand_curated_data, extract_hand_curated_clade_to_lineage_mapping
 from scripts.clusters import clusters as clusters_data
 from tests.defining_mutations.config import HAND_CURATED_TEST_DIR, AUTO_GENERATED_TEST_DIR, \
     AUTO_GENERATED_EDGE_CASES_TEST_DIR, DEFINING_MUTATIONS_DATA_DIR, CI
@@ -19,7 +19,7 @@ def test_process_hand_curated_file():
 
 
 def test_process_clusters():
-    clusters = extract_clade_to_lineage(clusters_data)
+    clusters = extract_hand_curated_clade_to_lineage_mapping(clusters_data)
     assert len(clusters) == 42
     assert clusters.columns == ['lineage', 'nextstrain_clade']
 
@@ -114,5 +114,12 @@ def test_match_nuc_to_aas_for_auto_generated_data_full():
     silent_mutations = auto_generated_mutations.filter(pl.col('aa_mutation').is_null())
     proportion_silent = len(silent_mutations) / len(auto_generated_mutations)
     assert proportion_silent < SILENT_MUTATION_PERCENTAGE_THRESHOLD
+    coding_mutations = auto_generated_mutations.filter(pl.col('aa_mutation').is_not_null())
+    two_aa_matches = coding_mutations.filter(pl.col('aa_mutation_2').list.len().eq(1))
+    two_aa_matches_by_mutations = two_aa_matches.group_by('nuc_mutation', 'aa_mutation', 'aa_mutation_2').agg(pl.col('nextstrain_clade').unique(), pl.col('lineage').unique())
+    assert len(two_aa_matches_by_mutations) == 65
+    many_aa_matches = coding_mutations.filter(pl.col('aa_mutation_2').list.len().gt(1))
+    assert len(many_aa_matches) == 0
+
 
 

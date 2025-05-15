@@ -104,3 +104,22 @@ def test_match_nuc_to_multiple_aas():
     nuc = "C28312T"
     aas = ['N:P13L', 'ORF9b:P10F']
     assert match_nuc_to_aas(nuc, aas) == ['N:P13L', 'ORF9b:P10F']
+
+
+@pytest.mark.parametrize('nuc_change, aa_changes',
+                         [
+                             ("G28302A", ["N:R10Q", "ORF9b:E7K", "ORF9b:P10S"]),
+                             ("C28311T", ["N:R10Q", "N:P13L", "ORF9b:P10S"]),
+                             ("C28311T", ["N:P13L", "ORF9b:R13L", "ORF9b:P10S"]),
+                             ("X28370-", ["N:G30-", "N:R32-", "ORF9b:N28-"])
+                         ])
+def test_match_nuc_to_aa_position_comparison_does_not_spill_across_genes(nuc_change, aa_changes):
+    aas = match_nuc_to_aas(nuc_change, aa_changes)
+    assert len(aas) == 2
+
+
+def test_match_nuc_to_aa_allows_only_one_aa_change_per_gene():
+    nuc_change = "T22684C"
+    aa_changes = ["S:S373P", "S:S375F"]
+    aas = match_nuc_to_aas(nuc_change, aa_changes)
+    assert len(aas) == 1

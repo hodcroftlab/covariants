@@ -49,6 +49,10 @@ class Mutation:
             )
         )
 
+    @classmethod
+    def position_on_gene(cls, nuc_position, gene):
+        return int(np.floor((nuc_position - GENE_BOUNDS[gene][0]) / 3)) + 1
+
     @property
     def affected_genes(self):
         genes = []
@@ -59,7 +63,7 @@ class Mutation:
 
     @property
     def positions_on_genes(self):
-        return [int(np.floor((self.position - GENE_BOUNDS[gene][0]) / 3)) + 1 for gene in self.affected_genes]
+        return {gene: self.position_on_gene(self.position, gene) for gene in self.affected_genes}
 
     @property
     def mutation_type(self):
@@ -112,3 +116,50 @@ class AminoAcidMutation(Mutation):
 
     def to_dict(self):
         return {'gene': self.gene, 'ref': self.symbol_from, 'pos': self.position, 'alt': self.symbol_to}
+
+
+def match_nuc_to_aas(nuc: str | None, aas: list[str]) -> list[str] | None:
+    if not nuc:
+        return None
+    nuc_obj = Mutation.parse_mutation_string(nuc)
+
+    is_silent_mutation = len(nuc_obj.affected_genes) == 0
+    if is_silent_mutation:
+        return None
+
+    aas_obj = [AminoAcidMutation.parse_amino_acid_string(aa) for aa in aas]
+
+    def find_aa_nuc_matches_by_condition(type_condition, match_condition):
+        matches = []
+        for aa in aas_obj:
+            if type_condition(aa) and match_condition(aa):
+                matches.append(aa.to_code())
+        return matches or None
+
+    same_type_condition = lambda aa: aa.mutation_type == nuc_obj.mutation_type
+    differing_type_condition = lambda aa: aa.mutation_type != nuc_obj.mutation_type
+
+    exact_match_condition = lambda aa: aa.gene in nuc_obj.affected_genes and aa.position == nuc_obj.positions_on_genes[
+        aa.gene]
+    approximate_match_condition = lambda aa: aa.gene in nuc_obj.affected_genes and np.all(
+        np.isclose(aa.position, nuc_obj.positions_on_genes[aa.gene], atol=1))
+
+    # prefer same type mutations and check conditions sequentially to avoid hitting unwanted matches first just because of list ordering
+    raw_matches = (
+            find_aa_nuc_matches_by_condition(same_type_condition, exact_match_condition)
+            or find_aa_nuc_matches_by_condition(same_type_condition, approximate_match_condition)
+            or find_aa_nuc_matches_by_condition(differing_type_condition, exact_match_condition)
+            or find_aa_nuc_matches_by_condition(differing_type_condition, approximate_match_condition)
+    )
+    if not raw_matches:
+        return None
+
+    filtered_matches = []
+    current_gene = None
+    for match in raw_matches:
+        gene = AminoAcidMutation.parse_amino_acid_string(match).gene
+        if gene != current_gene:
+            filtered_matches.append(match)
+            current_gene = gene
+
+    return filtered_matches
