@@ -5,7 +5,7 @@ import os
 import polars as pl
 
 from scripts.defining_mutations.fetch_nextclade_tree import fetch_nextclade_tree, parse_nextclade_tree
-from scripts.defining_mutations.helpers import log_mismatches, reformat_mutations_df_to_dicts
+from scripts.defining_mutations.helpers import log_mismatches, reformat_mutations_df_to_dicts, log_differences
 from scripts.defining_mutations.io import save_mutations_to_file, save_lineages_to_file, load_auto_generated_data
 from scripts.defining_mutations.preprocess_mutation_data import process_auto_generated_data, process_hand_curated_data
 from scripts.clusters import clusters as clusters_data
@@ -30,6 +30,8 @@ def import_mutation_data(hand_curated_data_dir: str, auto_generated_data_dir: st
 
 
 def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mutations: pl.DataFrame) -> pl.DataFrame:
+    log_differences(auto_generated_mutations, hand_curated_mutations)
+
     combined = (auto_generated_mutations
                 .join(hand_curated_mutations,
                       on=['lineage', 'nextstrain_clade', pl.col('nuc_mutation').struct.field('pos'), 'reference'],
@@ -38,7 +40,7 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
                       coalesce=True)
                 )
 
-    log_mismatches(auto_generated_mutations, hand_curated_mutations, combined)
+    log_mismatches(combined)
 
     coalesced = (
         combined

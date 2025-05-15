@@ -6,6 +6,7 @@ import polars as pl
 from scripts.defining_mutations.helpers import replace_list_of_empty_string, check_reference_column_is_filled
 from scripts.defining_mutations.io import load_hand_curated_data
 from scripts.defining_mutations.parse_mutations import Mutation, AminoAcidMutation, match_nuc_to_aas
+from scripts.defining_mutations.wuhan_reference_sequence import wuhan_reference_sequence
 
 
 def process_auto_generated_data(mutations: pl.DataFrame):
@@ -24,11 +25,10 @@ def process_auto_generated_data(mutations: pl.DataFrame):
     )
     expand_deletions = empty_strings_removed.assign(**{col: deletions_to_ranges[col] for col in deletion_columns})
 
-    # TODO: clarify if using 'X' here is the correct way to work around the missing nucleotide in auto-generated deletions: https://github.com/hodcroftlab/covariants/issues/577
     reformat_deletions = pl.from_pandas(expand_deletions).with_columns(
         pl.col(col_name).list.eval(
             pl.concat_str(
-                pl.lit('X'),
+                pl.lit(wuhan_reference_sequence).str.slice(pl.element()-1, 1),
                 pl.element(),
                 pl.lit('-'))
         ) for col_name in deletion_columns

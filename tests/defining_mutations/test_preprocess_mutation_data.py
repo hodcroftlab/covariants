@@ -3,6 +3,7 @@ import os
 import polars as pl
 import pytest
 
+from scripts.defining_mutations.helpers import log_mismatches
 from scripts.defining_mutations.io import load_auto_generated_data, load_hand_curated_data
 from scripts.defining_mutations.merge_defining_mutations import import_mutation_data, merge_mutation_data
 from scripts.defining_mutations.preprocess_mutation_data import process_hand_curated_file, process_auto_generated_data, \
@@ -49,6 +50,14 @@ def test_load_and_process_auto_generated_data():
     silent_mutations = auto_generated_mutations.filter(pl.col('aa_mutation').is_null())
     proportion_silent = len(silent_mutations) / len(auto_generated_mutations)
     assert proportion_silent < SILENT_MUTATION_PERCENTAGE_THRESHOLD
+
+
+def test_process_auto_generated_data_assigns_nucleotides_for_batch_deletions():
+    auto_generated_mutations = process_auto_generated_data(
+        load_auto_generated_data(os.path.join(AUTO_GENERATED_TEST_DIR, 'auto_generated.json'))[1]
+    )
+    unassigned_batch_deletions = auto_generated_mutations.filter(pl.col('nuc_mutation').struct.field('ref').eq('X'))
+    assert len(unassigned_batch_deletions) == 0
 
 
 SILENT_MUTATION_PERCENTAGE_THRESHOLD = 0.32  # estimate derived from hand-curated data
@@ -101,9 +110,24 @@ def test_match_nuc_to_aas_mutation_handles_type_mismatches(auto_generated_test_d
     merged_mutations = merge_mutation_data(hand_curated_mutations, auto_generated_mutations)
 
     aa_deletions_with_nuc_substitutions = merged_mutations.filter(col_has_deletions('aa_mutations').and_(col_has_deletions('nuc_mutations').not_()))
-    assert len(aa_deletions_with_nuc_substitutions) == expected_aa_nuc_mismatches # Two mismatches in auto-generated edge cases
+    assert len(aa_deletions_with_nuc_substitutions) == expected_aa_nuc_mismatches
     nuc_deletions_with_aa_substitutions = merged_mutations.filter(col_has_deletions('nuc_mutations').and_(col_has_deletions('aa_mutations').not_()).and_(pl.col('aa_mutations').list.len().ne(0)))
-    assert len(nuc_deletions_with_aa_substitutions) == expected_nuc_aa_mismatches  # Two mismatches introduced via hand-curated data
+    assert len(nuc_deletions_with_aa_substitutions) == expected_nuc_aa_mismatches
+
+
+def test_assigning_deletion_nucleotides_from_reference_sequence_does_not_produce_mismatches():
+    _, hand_curated_mutations, auto_generated_mutations = import_mutation_data(HAND_CURATED_TEST_DIR,
+                                                                                AUTO_GENERATED_TEST_DIR,
+                                                                                      clusters_data)
+    combined_mutations = (auto_generated_mutations
+                .join(hand_curated_mutations,
+                      on=['lineage', 'nextstrain_clade', pl.col('nuc_mutation').struct.field('pos'), 'reference'],
+                      how='full',
+                      suffix='_hand_curated',
+                      coalesce=True)
+                )
+    nuc_mismatches, _, _ = log_mismatches(combined_mutations)
+    assert nuc_mismatches.is_empty()
 
 
 @pytest.mark.skipif(CI, reason='full functionality test only for debugging, skip on CI')

@@ -73,7 +73,7 @@ def test_match_nuc_to_aas_selects_best_match():
 
 
 def test_match_nuc_to_aas_prefers_same_mutation_type():
-    nuc = 'X22031-'
+    nuc = 'T22031-'
     aas = [
         'S:R158G',
         'S:F157-'
@@ -82,7 +82,7 @@ def test_match_nuc_to_aas_prefers_same_mutation_type():
 
 
 def test_match_nuc_returns_none_if_there_are_no_matches():
-    nuc = 'X22031-'
+    nuc = 'T22031-'
     aas = [
         'S:R200G',
     ]
@@ -111,7 +111,7 @@ def test_match_nuc_to_multiple_aas():
                              ("G28302A", ["N:R10Q", "ORF9b:E7K", "ORF9b:P10S"]),
                              ("C28311T", ["N:R10Q", "N:P13L", "ORF9b:P10S"]),
                              ("C28311T", ["N:P13L", "ORF9b:R13L", "ORF9b:P10S"]),
-                             ("X28370-", ["N:G30-", "N:R32-", "ORF9b:N28-"])
+                             ("A28370-", ["N:G30-", "N:R32-", "ORF9b:N28-"])
                          ])
 def test_match_nuc_to_aa_position_comparison_does_not_spill_across_genes(nuc_change, aa_changes):
     aas = match_nuc_to_aas(nuc_change, aa_changes)
@@ -123,3 +123,102 @@ def test_match_nuc_to_aa_allows_only_one_aa_change_per_gene():
     aa_changes = ["S:S373P", "S:S375F"]
     aas = match_nuc_to_aas(nuc_change, aa_changes)
     assert len(aas) == 1
+
+
+@pytest.mark.xfail(reason='The simple matching algorithm cannot get all of these right at the same time')
+@pytest.mark.parametrize('nuc_change, expected_aa_change', [
+    ('C21618T', ['S:T19I']),
+    ('T21633-', ['S:L24-']),
+    ('A21634-', ['S:L24-']),
+    ('C21635-', ['S:P25-']),
+    ('C21636-', ['S:P25-']),
+    ('C21637-', ['S:P25-']),
+    ('C21638-', ['S:P26-']),
+    ('C21639-', ['S:P26-']),
+    ('T21640-', ['S:P26-']),
+    ('G21641-', ['S:A27S']),
+    ('T21765-', ['S:H69-']),
+    ('A21766-', ['S:H69-']),
+    ('C21767-', ['S:H69-']),
+    ('A21768-', ['S:V70-']),
+    ('T21769-', ['S:V70-']),
+    ('G21770-', ['S:V70-']),
+    ('G21987A', ['S:G142D']),
+    ('T22200G', ['S:V213G']),
+    ('G22578A', ['S:G339D']),
+    ('C22674T', ['S:S371F']),
+    ('T22679C', ['S:S373P']),
+    ('C22686T', ['S:S375F']),
+    ('A22688G', ['S:T376A']),
+    ('G22775A', ['S:D405N']),
+    ('A22786C', ['S:R408S']),
+    ('G22813T', ['S:K417N']),
+    ('T22882G', ['S:N440K']),
+    ('A22893C', ['S:K444T']),
+    ('T22917G', ['S:L452R']),
+    ('T22942A', ['S:N460K']),
+    ('G22992A', ['S:S477N']),
+    ('C22995A', ['S:T478K']),
+    ('A23013C', ['S:E484A']),
+    ('T23018G', ['S:F486V']),
+    ('A23040A', ['S:Q493Q']),
+    ('A23055G', ['S:Q498R']),
+    ('A23063T', ['S:N501Y']),
+    ('T23075C', ['S:Y505H']),
+    ('A23403G', ['S:D614G']),
+    ('C23525T', ['S:H655Y']),
+    ('T23599G', ['S:N679K']),
+    ('C23604A', ['S:P681H']),
+    ('C23854A', ['S:N764K']),
+    ('G23948T', ['S:D796Y']),
+    ('A24424T', ['S:Q954H']),
+    ('T24469A', ['S:N969K']),
+])
+def test_all_spike_gene_mutations_for_22e(nuc_change, expected_aa_change):
+    aa_changes = ['S:T19I',
+                  'S:L24-',
+                  'S:L24-',
+                  'S:P25-',
+                  'S:P25-',
+                  'S:P25-',
+                  'S:P26-',
+                  'S:P26-',
+                  'S:P26-',
+                  'S:A27S',
+                  'S:H69-',
+                  'S:H69-',
+                  'S:H69-',
+                  'S:V70-',
+                  'S:V70-',
+                  'S:V70-',
+                  'S:G142D',
+                  'S:V213G',
+                  'S:G339D',
+                  'S:S371F',
+                  'S:S373P',
+                  'S:S375F',
+                  'S:T376A',
+                  'S:D405N',
+                  'S:R408S',
+                  'S:K417N',
+                  'S:N440K',
+                  'S:K444T',
+                  'S:L452R',
+                  'S:N460K',
+                  'S:S477N',
+                  'S:T478K',
+                  'S:E484A',
+                  'S:F486V',
+                  'S:Q493Q',
+                  'S:Q498R',
+                  'S:N501Y',
+                  'S:Y505H',
+                  'S:D614G',
+                  'S:H655Y',
+                  'S:N679K',
+                  'S:P681H',
+                  'S:N764K',
+                  'S:D796Y',
+                  'S:Q954H',
+                  'S:N969K']
+    assert match_nuc_to_aas(nuc_change, aa_changes) == expected_aa_change

@@ -8,23 +8,30 @@ def check_reference_column_is_filled(df: pl.DataFrame) -> None:
         raise ValueError(f'Could not assign reference point for mutations {df.filter(pl.col("reference").is_null())}')
 
 
-def log_mismatches(auto_generated_mutations, hand_curated_mutations, combined_mutations):
-    not_in_hand_curated = len(
+
+def log_differences(auto_generated_mutations: pl.DataFrame, hand_curated_mutations: pl.DataFrame) -> tuple[pl.DataFrame, pl.DataFrame]:
+    not_in_hand_curated = (
         auto_generated_mutations.join(hand_curated_mutations,
                                       on=['lineage', 'nextstrain_clade', pl.col('nuc_mutation').struct.field('pos'),
                                           'reference'],
-                                      how='anti'))
-    not_in_auto_generated = len(
+                                      how='anti')
+    )
+    not_in_auto_generated = (
         hand_curated_mutations.join(auto_generated_mutations,
                                     on=['lineage', 'nextstrain_clade', pl.col('nuc_mutation').struct.field('pos'),
                                         'reference'],
-                                    how='anti'))
-    if not_in_hand_curated > 0 or not_in_auto_generated > 0:
-        logging.info(f'Unmatched mutations: hand-curated {not_in_auto_generated}, auto-generated {not_in_hand_curated}')
+                                    how='anti')
+    )
+    if not (not_in_hand_curated.is_empty() and not_in_auto_generated.is_empty()):
+        logging.info(f'Unmatched mutations: hand-curated {len(not_in_auto_generated)}, auto-generated {len(not_in_hand_curated)}')
 
+    return not_in_hand_curated, not_in_auto_generated
+
+
+def log_mismatches(combined_mutations) -> tuple[pl.DataFrame, pl.DataFrame, pl.DataFrame]:
     mismatch_nuc_mutation = (
         combined_mutations
-        .filter(pl.col('nuc_mutation').ne(pl.col('nuc_mutation_hand_curated')).and_(pl.col('nuc_mutation').struct.field('alt').ne('-')))
+        .filter(pl.col('nuc_mutation').ne(pl.col('nuc_mutation_hand_curated')))
         .select('lineage', 'nextstrain_clade', 'reference', 'nuc_mutation', 'nuc_mutation_hand_curated', 'aa_mutation', 'aa_mutation_hand_curated', 'aa_mutation_2', 'aa_mutation_2_hand_curated')
     )
     if not mismatch_nuc_mutation.is_empty():
@@ -43,6 +50,8 @@ def log_mismatches(auto_generated_mutations, hand_curated_mutations, combined_mu
     )
     if not mismatching_aa_mutation_2.is_empty():
         logging.warning(f'Found {len(mismatching_aa_mutation_2)} mismatches in aa_mutation_2.')
+
+    return mismatch_nuc_mutation, mismatching_aa_mutation, mismatching_aa_mutation_2
 
 
 def replace_list_of_empty_string(y: str | list | np.ndarray) -> str | list | np.ndarray:

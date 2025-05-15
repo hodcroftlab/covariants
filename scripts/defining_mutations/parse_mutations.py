@@ -3,7 +3,6 @@ import re
 import numpy as np
 import polars as pl
 
-# TODO: replace or remove 'X', depending on the solution to https://github.com/hodcroftlab/covariants/issues/577
 from dataclasses import dataclass
 
 
@@ -22,7 +21,7 @@ GENE_BOUNDS = {
     'S': [21563, 25384]
 }
 
-MUTATION_CHANGE_PATTERN = r"^(?P<symbol_from>[ACDEFGHIKLMNPQRSTVWYX*])(?P<position>[1-9][0-9]*)(?P<symbol_to>[ACDEFGHIKLMNPQRSTVWYX*-])$"
+MUTATION_CHANGE_PATTERN = r"^(?P<symbol_from>[ACDEFGHIKLMNPQRSTVWY*])(?P<position>[1-9][0-9]*)(?P<symbol_to>[ACDEFGHIKLMNPQRSTVWY*-])$"
 
 
 @dataclass
