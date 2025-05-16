@@ -28,7 +28,7 @@ export function SilentNucleotideMutationsTable({ silentMutations }: { silentMuta
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     initialState: {
-      sorting: [{ id: 'nucleotideMutation', desc: false }],
+      sorting: [{ id: 'nucMutation', desc: false }],
     },
     onPaginationChange: setPagination,
     state: {
