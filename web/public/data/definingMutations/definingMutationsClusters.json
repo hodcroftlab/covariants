@@ -1,12 +1,24 @@
 {
   "clusters": [
     {
+      "lineage": "BA.5",
+      "nextstrain_clade": "22B"
+    },
+    {
       "lineage": "BQ.1",
       "nextstrain_clade": "22E"
     },
     {
-      "lineage": "XBC.1",
-      "nextstrain_clade": "recombinant"
+      "lineage": "BQ.1.1",
+      "nextstrain_clade": "22E"
+    },
+    {
+      "lineage": "JN.1.11.1",
+      "nextstrain_clade": "24B"
+    },
+    {
+      "lineage": "BE.1.1.1",
+      "nextstrain_clade": "22B"
     }
   ]
 }
