@@ -15,13 +15,13 @@ const aminoAcidMutationSchema = nucleotideMutationSchema.extend({
 })
 
 const codingMutationSchemaRaw = z.object({
-  aa_mutation: aminoAcidMutationSchema,
+  aa_mutations: aminoAcidMutationSchema.array(),
   nuc_mutations: nucleotideMutationSchema.array(),
   notes: z.string().optional(),
 })
 
-const codingMutationSchema = codingMutationSchemaRaw.transform(({ aa_mutation, nuc_mutations, notes }) => ({
-  aaMutation: aa_mutation,
+const codingMutationSchema = codingMutationSchemaRaw.transform(({ aa_mutations, nuc_mutations, notes }) => ({
+  aaMutations: aa_mutations,
   nucMutations: nuc_mutations,
   notes,
 }))
@@ -54,7 +54,7 @@ const definingMutationClusterSchemaRaw = z.object({
   parent: z.string().optional(),
   children: z.array(z.string()).optional(),
   nextstrain_clade: z.string(),
-  designation_date: z.string(),
+  designation_date: z.string().optional(),
   mutations: definingMutationsSchemaRaw.array(),
 })
 

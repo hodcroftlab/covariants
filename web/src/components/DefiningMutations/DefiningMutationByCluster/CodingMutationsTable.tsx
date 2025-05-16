@@ -21,7 +21,7 @@ import { AminoacidMutationBadge } from 'src/components/Common/Badges/AminoacidMu
 import { NucleotideMutationBadge } from 'src/components/Common/Badges/NucleotideMutationBadge'
 
 export function CodingMutationsTable({ codingMutations }: { codingMutations: CodingMutation[] }) {
-  const columns = useMemo(() => [getAminoAcidMutationColumn(), getNucleotideMutationsColumn()], [])
+  const columns = useMemo(() => [getAminoAcidMutationsColumn(), getNucleotideMutationsColumn()], [])
 
   const [pagination, setPagination] = useState<PaginationState>(getDefaultPaginationState())
 
@@ -33,7 +33,7 @@ export function CodingMutationsTable({ codingMutations }: { codingMutations: Cod
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     initialState: {
-      sorting: [{ id: 'nucleotideMutations', desc: false }],
+      sorting: [{ id: 'nucMutations', desc: false }],
     },
     onPaginationChange: setPagination,
     state: {
@@ -44,29 +44,33 @@ export function CodingMutationsTable({ codingMutations }: { codingMutations: Cod
   return <TableWithSearchPaginationFilter table={table} pageSizes={DEFAULT_PAGE_SIZES} />
 }
 
-function getAminoAcidMutationColumn() {
+function getAminoAcidMutationsColumn() {
   const columnHelper = createColumnHelper<CodingMutation>()
 
-  return columnHelper.accessor('aaMutation', {
+  return columnHelper.accessor('aaMutations', {
     header: () => <span>Amino acid mutations</span>,
     cell: ({ getValue, row }) => {
-      const aminoAcidMutation = getValue()
+      const aminoAcidMutations = getValue()
       return (
         <div className={'d-flex gap-2 align-items-center'}>
-          <AminoacidMutationBadge
-            key={formatMutation(aminoAcidMutation)}
-            mutation={getMutationFromAminoAcidMutation(aminoAcidMutation)}
-          />
+          {aminoAcidMutations.map((aminoAcidMutation) => (
+            <AminoacidMutationBadge
+              key={formatMutation(aminoAcidMutation)}
+              mutation={getMutationFromAminoAcidMutation(aminoAcidMutation)}
+            />
+          ))}
           {row.original.notes ? <Annotation annotationText={row.original.notes}></Annotation> : null}
         </div>
       )
     },
     sortingFn: (rowA, rowB) => {
-      return rowA.original.aaMutation.gene.localeCompare(rowB.original.aaMutation.gene)
+      return rowA.original.aaMutations[0].gene.localeCompare(rowB.original.aaMutations[0].gene)
     },
     filterFn: (row, _, filterValue: string) => {
-      const mutationString = formatMutation(getMutationFromAminoAcidMutation(row.original.aaMutation))
-      return mutationString.includes(filterValue)
+      const mutationStrings = row.original.aaMutations.map((aaMutation) =>
+        formatMutation(getMutationFromAminoAcidMutation(aaMutation)),
+      )
+      return mutationStrings.some((mutation) => mutation.includes(filterValue))
     },
   })
 }

@@ -105,10 +105,9 @@ def reformat_mutations_df_to_dicts(merged: pl.DataFrame, lineages: pl.DataFrame)
 
     output_dicts = output.to_dicts()
     for lineage in output_dicts:
-        if lineage['nextstrain_children'] is None:
-            lineage.pop('nextstrain_children')
-        if lineage['nextstrain_parent'] is None:
-            lineage.pop('nextstrain_parent')
+        for nullable_entry in ['nextstrain_children', 'nextstrain_parent', 'parent', 'children', 'designation_date', 'unaliased']:
+            if lineage[nullable_entry] is None:
+                lineage.pop(nullable_entry)
         for mutations in lineage['mutations']:
             for mutation_type in ['coding', 'silent']:
                 mutations[mutation_type] = mutations.get(mutation_type) or []
