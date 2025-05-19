@@ -3,6 +3,7 @@ import { DefiningMutationCluster } from 'src/io/getDefiningMutationsClusters'
 import { SelectReferenceDropdown } from 'src/components/DefiningMutations/SelectReferenceDropdown'
 import { DefiningMutationsTables } from 'src/components/DefiningMutations/DefiningMutationsTables'
 import { DefiningMutationsDescription } from 'src/components/DefiningMutations/DefiningMutationsDescription'
+import { DownloadDefiningMutationsButton } from 'src/components/DefiningMutations/DownloadDefiningMutationsButton'
 
 export function DefiningMutationsContent({ cluster }: { cluster: DefiningMutationCluster | undefined }) {
   return (
@@ -24,12 +25,13 @@ function DefiningMutationsTableCard({ cluster }: { cluster: DefiningMutationClus
 
   return (
     <div className={'card'}>
-      <div className="card-header d-flex justify-content-end">
+      <div className="card-header d-flex justify-content-end align-items-center gap-2">
         <SelectReferenceDropdown
           referenceSequences={referenceSequences}
           selectedSequence={selectedReference}
           setSelectedReference={setSelectedReference}
         />
+        <DownloadDefiningMutationsButton cluster={cluster} />
       </div>
       <div className="card-body">
         <DefiningMutationsTables currentCluster={cluster} referenceSequenceName={selectedReference} />
