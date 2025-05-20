@@ -17,22 +17,28 @@ const codingMutationSchemaRaw = z.object({
   aa_mutations: aminoAcidMutationSchema.array(),
   nuc_mutations: nucleotideMutationSchema.array(),
   notes: z.string().optional(),
+  contains_reversion: z.boolean().optional(),
 })
 
-const codingMutationSchema = codingMutationSchemaRaw.transform(({ aa_mutations, nuc_mutations, notes }) => ({
-  aaMutations: aa_mutations,
-  nucMutations: nuc_mutations,
-  notes,
-}))
+const codingMutationSchema = codingMutationSchemaRaw.transform(
+  ({ aa_mutations, nuc_mutations, notes, contains_reversion }) => ({
+    aaMutations: aa_mutations,
+    nucMutations: nuc_mutations,
+    notes,
+    containsReversion: contains_reversion,
+  }),
+)
 
 const silentMutationSchemaRaw = z.object({
   nuc_mutation: nucleotideMutationSchema,
   notes: z.string().optional(),
+  contains_reversion: z.boolean().optional(),
 })
 
-const silentMutationSchema = silentMutationSchemaRaw.transform(({ nuc_mutation, notes }) => ({
+const silentMutationSchema = silentMutationSchemaRaw.transform(({ nuc_mutation, notes, contains_reversion }) => ({
   nucMutation: nuc_mutation,
   notes,
+  containsReversion: contains_reversion,
 }))
 
 const definingMutationsSchemaRaw = z.object({

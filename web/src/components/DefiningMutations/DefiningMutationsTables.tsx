@@ -39,3 +39,11 @@ export function Annotation({ annotationText }: { annotationText: string }) {
     </MutationBadgeBox>
   )
 }
+
+export function ReversionAnnotation() {
+  return (
+    <MutationBadgeBox className={'text-info'} data-bs-toggle="tooltip" title={'This change is/contains a reversion'}>
+      <span className="bi bi-arrow-counterclockwise" />
+    </MutationBadgeBox>
+  )
+}

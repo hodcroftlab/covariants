@@ -971,6 +971,25 @@
             {
               "gene": "S",
               "ref": "Q",
+              "pos": 493,
+              "alt": "Q"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 23040,
+              "alt": "A"
+            }
+          ],
+          "notes": "Note mutation S:Q493R (in 21L) is reverted here",
+          "contains_reversion": true
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "Q",
               "pos": 498,
               "alt": "R"
             }
@@ -1237,6 +1256,25 @@
               "alt": "A"
             }
           ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF6",
+              "ref": "D",
+              "pos": 61,
+              "alt": "D"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27382,
+              "alt": "G"
+            }
+          ],
+          "notes": "Note mutation in ORF6:D61L (in 21L) is reverted here",
+          "contains_reversion": true
         },
         {
           "aa_mutations": [
@@ -1508,6 +1546,51 @@
           "nuc_mutation": {
             "ref": "C",
             "pos": 25584,
+            "alt": "T"
+          }
+        },
+        {
+          "notes": "Reverted relative to 21L",
+          "contains_reversion": true,
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 26858,
+            "alt": "C"
+          }
+        },
+        {
+          "notes": "Reverted relative to 21L",
+          "contains_reversion": true,
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 27259,
+            "alt": "A"
+          }
+        },
+        {
+          "notes": "Reverted relative to 21L",
+          "contains_reversion": true,
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 27382,
+            "alt": "G"
+          }
+        },
+        {
+          "notes": "Reverted relative to 21L",
+          "contains_reversion": true,
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 27383,
+            "alt": "A"
+          }
+        },
+        {
+          "notes": "Reverted relative to 21L",
+          "contains_reversion": true,
+          "nuc_mutation": {
+            "ref": "T",
+            "pos": 27384,
             "alt": "T"
           }
         },

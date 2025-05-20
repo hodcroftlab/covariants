@@ -11,7 +11,7 @@ from tests.defining_mutations.config import AUTO_GENERATED_TEST_DIR, AUTO_GENERA
 
 def test_import_mutation_data():
     lineages, hand_curated, auto_generated = import_mutation_data(HAND_CURATED_TEST_DIR, AUTO_GENERATED_TEST_DIR, clusters_data)
-    assert len(lineages) == 5
+    assert len(lineages) == 7
     assert lineages.columns == ['lineage',
                                 'nextstrain_clade',
                                 'unaliased',
@@ -20,21 +20,23 @@ def test_import_mutation_data():
                                 'designation_date',
                                 'nextstrain_children',
                                 'nextstrain_parent']
-    assert len(hand_curated) == 607
+    assert len(hand_curated) == 637
     assert hand_curated.columns == ['lineage',
                                     'nextstrain_clade',
                                     'nuc_mutation',
                                     'aa_mutation',
                                     'aa_mutation_2',
                                     'reference',
-                                    'notes']
-    assert len(auto_generated) == 268
+                                    'notes',
+                                    'reversion']
+    assert len(auto_generated) == 630
     assert auto_generated.columns == ['lineage',
                                       'nextstrain_clade',
                                       'nuc_mutation',
                                       'aa_mutation',
                                       'aa_mutation_2',
-                                      'reference']
+                                      'reference',
+                                      'reversion']
 
 
 @pytest.mark.parametrize(
@@ -42,7 +44,8 @@ def test_import_mutation_data():
     [
         (EXPECTED_OUTPUT_DIR, AUTO_GENERATED_TEST_DIR),
         (EXPECTED_OUTPUT_EDGE_CASES_DIR, AUTO_GENERATED_EDGE_CASES_TEST_DIR),
-    ]
+    ],
+    ids=['auto-generated data', 'auto-generated edge cases']
 )
 def test_main(expected_output_dir, auto_generated_test_dir):
     expected_output_filenames = os.listdir(expected_output_dir)

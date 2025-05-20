@@ -16,7 +16,7 @@ import {
 import { DEFAULT_PAGE_SIZES, getDefaultPaginationState } from 'src/components/Common/table/Pagination'
 import { TableWithSearchPaginationFilter } from 'src/components/Common/table/TableWithSearchPaginationFilter'
 import { formatMutation } from 'src/components/Common/formatMutation'
-import { Annotation } from 'src/components/DefiningMutations/DefiningMutationsTables'
+import { Annotation, ReversionAnnotation } from 'src/components/DefiningMutations/DefiningMutationsTables'
 import { AminoacidMutationBadge } from 'src/components/Common/Badges/AminoacidMutationBadge'
 import { NucleotideMutationBadge } from 'src/components/Common/Badges/NucleotideMutationBadge'
 
@@ -49,7 +49,7 @@ function getAminoAcidMutationsColumn() {
 
   return columnHelper.accessor('aaMutations', {
     header: () => <span>Amino acid mutations</span>,
-    cell: ({ getValue, row }) => {
+    cell: ({ getValue }) => {
       const aminoAcidMutations = getValue()
       return (
         <div className={'d-flex gap-2 align-items-center'}>
@@ -59,7 +59,6 @@ function getAminoAcidMutationsColumn() {
               mutation={getMutationFromAminoAcidMutation(aminoAcidMutation)}
             />
           ))}
-          {row.original.notes ? <Annotation annotationText={row.original.notes}></Annotation> : null}
         </div>
       )
     },
@@ -88,9 +87,10 @@ function getNucleotideMutationsColumn() {
           {nucMuts.map((nucMut) => (
             <React.Fragment key={formatMutation(nucMut)}>
               <NucleotideMutationBadge mutation={getMutationFromNucleotideMutation(nucMut)} />
-              {row.original.notes ? <Annotation annotationText={row.original.notes}></Annotation> : null}
             </React.Fragment>
           ))}
+          {row.original.notes ? <Annotation annotationText={row.original.notes}></Annotation> : null}
+          {row.original.containsReversion ? <ReversionAnnotation /> : null}
         </div>
       )
     },

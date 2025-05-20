@@ -71,6 +71,9 @@ class Mutation:
     def to_dict(self):
         return {'ref': self.symbol_from, 'pos': self.position, 'alt': self.symbol_to}
 
+    def to_code(self):
+        return ''.join([self.symbol_from, str(self.position), self.symbol_to])
+
 
 @dataclass
 class AminoAcidMutation(Mutation):
