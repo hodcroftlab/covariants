@@ -41,7 +41,7 @@ export function CodingMutationsTable({ codingMutations }: { codingMutations: Cod
     },
   })
 
-  return <TableWithSearchPaginationFilter table={table} pageSizes={DEFAULT_PAGE_SIZES} />
+  return <TableWithSearchPaginationFilter table={table} pageSizes={DEFAULT_PAGE_SIZES} equiWidthHeader={true} />
 }
 
 function getAminoAcidMutationsColumn() {
@@ -52,7 +52,7 @@ function getAminoAcidMutationsColumn() {
     cell: ({ getValue }) => {
       const aminoAcidMutations = getValue()
       return (
-        <div className={'d-flex gap-2 align-items-center'}>
+        <div className={'d-flex gap-2 align-items-center flex-wrap'}>
           {aminoAcidMutations.map((aminoAcidMutation) => (
             <AminoacidMutationBadge
               key={formatMutation(aminoAcidMutation)}
@@ -78,7 +78,7 @@ function getNucleotideMutationsColumn() {
   const columnHelper = createColumnHelper<CodingMutation>()
 
   return columnHelper.accessor('nucMutations', {
-    header: () => <span>Nucleotide Mutations</span>,
+    header: () => <span>Nucleotide mutations</span>,
     cell: ({ getValue, row }) => {
       const nucMuts = getValue()
 
