@@ -43,7 +43,7 @@ function getNucleotideMutationColumn() {
   const columnHelper = createColumnHelper<SilentMutation>()
 
   return columnHelper.accessor('nucMutation', {
-    header: () => <span>Nucleotide Mutations</span>,
+    header: () => <span>Nucleotide mutations</span>,
     cell: ({ getValue, row }) => {
       const nucleotideMutation = getValue()
       return (
