@@ -92,9 +92,10 @@ def test_match_nuc_returns_none_if_there_are_no_matches():
 @pytest.mark.parametrize(
     'nuc, aas',
     [
-        ('T22283C', ['S:L242-']),  # example from auto-generated data XAW
-        ('G21641-', ['S:A27S']),  # example from hand-curated data 22B
-    ]
+        ('T22283C', ['S:L242-']),
+        ('G21641-', ['S:A27S']),
+    ],
+    ids=['auto-generated data example from XAW', 'hand-curated data example from 22B']
 )
 def test_match_nuc_to_aas_uses_other_mutation_type_if_nothing_else_is_available(nuc, aas):
     assert match_nuc_to_aas(nuc, aas) == aas

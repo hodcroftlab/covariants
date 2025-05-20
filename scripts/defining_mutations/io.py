@@ -34,7 +34,12 @@ def load_auto_generated_data(path):
          'aaSubstitutions': 'aa_sub_wuhan',
          'aaDeletions': 'aa_del_wuhan',
          'aaSubstitutionsNew': 'aa_sub_pango_parent',
-         'aaDeletionsNew': 'aa_del_pango_parent'}
+         'aaDeletionsNew': 'aa_del_pango_parent',
+         'nucSubstitutionsReverted': 'nuc_sub_rev_wuhan',
+         'aaSubstitutionsReverted': 'aa_sub_rev_wuhan',
+         'nucDeletionsReverted': 'nuc_del_rev_wuhan',
+         'aaDeletionsReverted': 'aa_del_rev_wuhan',
+         }
     )
 
     lineages = rename.select(
@@ -55,7 +60,11 @@ def load_auto_generated_data(path):
         'aa_sub_wuhan',
         'aa_del_wuhan',
         'aa_sub_pango_parent',
-        'aa_del_pango_parent'
+        'aa_del_pango_parent',
+        'nuc_sub_rev_wuhan',
+        'aa_sub_rev_wuhan',
+        'nuc_del_rev_wuhan',
+        'aa_del_rev_wuhan',
     )
 
     return lineages, mutations
