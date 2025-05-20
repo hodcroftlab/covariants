@@ -1027,7 +1027,8 @@
               "alt": "A"
             }
           ],
-          "notes": "Note mutation S:Q493R (in 21L) is reverted here"
+          "notes": "Note mutation S:Q493R (in 21L) is reverted here",
+          "contains_reversion": true
         },
         {
           "aa_mutations": [
@@ -1317,7 +1318,8 @@
               "alt": "G"
             }
           ],
-          "notes": "Note mutation in ORF6:D61L (in 21L) is reverted here"
+          "notes": "Note mutation in ORF6:D61L (in 21L) is reverted here",
+          "contains_reversion": true
         },
         {
           "aa_mutations": [
@@ -1617,6 +1619,7 @@
         },
         {
           "notes": "Reverted relative to 21L",
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "C",
             "pos": 26858,
@@ -1625,6 +1628,7 @@
         },
         {
           "notes": "Reverted relative to 21L",
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "A",
             "pos": 27259,
@@ -1633,6 +1637,7 @@
         },
         {
           "notes": "Reverted relative to 21L",
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "G",
             "pos": 27382,
@@ -1641,6 +1646,7 @@
         },
         {
           "notes": "Reverted relative to 21L",
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "A",
             "pos": 27383,
@@ -1649,6 +1655,7 @@
         },
         {
           "notes": "Reverted relative to 21L",
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "T",
             "pos": 27384,

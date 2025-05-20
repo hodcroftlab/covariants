@@ -1342,7 +1342,8 @@
               "alt": "A"
             }
           ],
-          "notes": "Reversion relative to 21L"
+          "notes": "Reversion relative to 21L",
+          "contains_reversion": true
         },
         {
           "aa_mutations": [
@@ -1382,7 +1383,8 @@
               "alt": "A"
             }
           ],
-          "notes": "Reversion from 21L (A23040G)"
+          "notes": "Reversion from 21L (A23040G)",
+          "contains_reversion": true
         },
         {
           "aa_mutations": [

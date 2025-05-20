@@ -44,7 +44,8 @@ def test_import_mutation_data():
     [
         (EXPECTED_OUTPUT_DIR, AUTO_GENERATED_TEST_DIR),
         (EXPECTED_OUTPUT_EDGE_CASES_DIR, AUTO_GENERATED_EDGE_CASES_TEST_DIR),
-    ]
+    ],
+    ids=['auto-generated data', 'auto-generated edge cases']
 )
 def test_main(expected_output_dir, auto_generated_test_dir):
     expected_output_filenames = os.listdir(expected_output_dir)

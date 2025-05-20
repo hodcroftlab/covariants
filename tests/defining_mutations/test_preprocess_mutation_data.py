@@ -107,7 +107,8 @@ def test_match_nuc_to_aas_for_auto_generated_data():
     [
         (AUTO_GENERATED_TEST_DIR, 0, 5),
         (AUTO_GENERATED_EDGE_CASES_TEST_DIR, 2, 5)
-    ]
+    ],
+    ids=['auto-generated data', 'auto-generated edge cases']
 )
 def test_match_nuc_to_aas_mutation_handles_type_mismatches(auto_generated_test_dir, expected_aa_nuc_mismatches,
                                                            expected_nuc_aa_mismatches):

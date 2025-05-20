@@ -66,7 +66,7 @@ def reformat_mutations_df_to_dicts(merged: pl.DataFrame, lineages: pl.DataFrame)
     aggregate_has_mutations = (
         has_mutations
         .group_by('lineage', 'nextstrain_clade', 'reference', 'mutation_type', maintain_order=True)
-        .agg(pl.struct('aa_mutations', 'nuc_mutations', 'notes').flatten().drop_nulls().alias('mutations'))
+        .agg(pl.struct('aa_mutations', 'nuc_mutations', 'notes', 'contains_reversion').flatten().drop_nulls().alias('mutations'))
     )
 
     aggregate_no_mutations = (
@@ -118,5 +118,7 @@ def reformat_mutations_df_to_dicts(merged: pl.DataFrame, lineages: pl.DataFrame)
                         mutation.pop('aa_mutations')
                     if not mutation['notes']:
                         mutation.pop('notes')
+                    if not mutation['contains_reversion']:
+                        mutation.pop('contains_reversion')
 
     return output_dicts
