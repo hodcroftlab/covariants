@@ -1,5 +1,5 @@
 import { Column, flexRender, Header, SortDirection } from '@tanstack/react-table'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import type { Table } from '@tanstack/table-core'
 import { Pagination } from 'src/components/Common/table/Pagination'
 
@@ -10,19 +10,36 @@ const removeAllDefaultStylesForButton = {
   cursor: 'pointer',
 } as const
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function TableWithSearchPaginationFilter({ table, pageSizes }: { table: Table<any>; pageSizes: number[] }) {
+export function TableWithSearchPaginationFilter({
+  table,
+  pageSizes,
+  equiWidthHeader,
+}: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  table: Table<any>
+  pageSizes: number[]
+  equiWidthHeader?: boolean
+}) {
+  const thStyle = useMemo(() => {
+    if (equiWidthHeader) {
+      return {
+        width: `${100 / table.getFlatHeaders().length}%`,
+      }
+    }
+    return undefined
+  }, [equiWidthHeader, table])
+
   return (
-    <div className="border border-2 rounded shadow-sm">
+    <div className="border border-2 rounded shadow-sm table-responsive">
       <table className={'table table-striped table-hover'}>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <React.Fragment key={headerGroup.id}>
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <th key={header.id}>
+                  <th key={header.id} style={thStyle}>
                     <button onClick={header.column.getToggleSortingHandler()} style={removeAllDefaultStylesForButton}>
-                      <div className={'d-flex justify-content-between'}>
+                      <div className={'d-flex justify-content-between text-nowrap gap-2'}>
                         <HeaderText header={header} />
                         <SortingIndicator sorted={header.column.getIsSorted()} />
                       </div>
