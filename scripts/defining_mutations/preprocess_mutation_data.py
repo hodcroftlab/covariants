@@ -12,7 +12,7 @@ from scripts.defining_mutations.wuhan_reference_sequence import wuhan_reference_
 def process_auto_generated_data(mutations: pl.DataFrame):
     empty_strings_removed = mutations.to_pandas().applymap(replace_list_of_empty_string)
 
-    deletion_columns = ['nuc_del_wuhan', 'nuc_del_pango_parent']
+    deletion_columns = ['nuc_del_wuhan', 'nuc_del_pango_parent', 'nuc_del_rev_wuhan']
     deletions_to_ranges = (
         empty_strings_removed[deletion_columns]
         .applymap(
@@ -28,13 +28,35 @@ def process_auto_generated_data(mutations: pl.DataFrame):
     reformat_deletions = pl.from_pandas(expand_deletions).with_columns(
         pl.col(col_name).list.eval(
             pl.concat_str(
-                pl.lit(wuhan_reference_sequence).str.slice(pl.element()-1, 1),
+                pl.lit(wuhan_reference_sequence).str.slice(pl.element() - 1, 1),
                 pl.element(),
                 pl.lit('-'))
         ) for col_name in deletion_columns
     )
 
-    combine_nuc_mutations = reformat_deletions.with_columns(
+    fake_reversions_removed = (
+        reformat_deletions
+        # first correct subs, then revs
+        # subs only have to be corrected for pango parent, revs are always relative to wuhan and have to be adjusted
+        .with_columns(
+            nuc_sub_pango_parent=pl.struct(muts=pl.col('nuc_sub_pango_parent'), revs=pl.col('nuc_sub_rev_wuhan'))
+            .map_elements(
+                lambda x: remove_fake_reversions(x['muts'], x['revs'], 'nuc', 'pango', 'substitutions')),
+            aa_sub_pango_parent=pl.struct(muts=pl.col('aa_sub_pango_parent'), revs=pl.col('aa_sub_rev_wuhan'))
+            .map_elements(
+                lambda x: remove_fake_reversions(x['muts'], x['revs'], 'aa', 'pango', 'substitutions')),
+        )
+        .with_columns(
+            nuc_sub_rev_wuhan=pl.struct(muts=pl.col('nuc_sub_wuhan'), revs=pl.col('nuc_sub_rev_wuhan'))
+            .map_elements(
+                lambda x: remove_fake_reversions(x['muts'], x['revs'], 'nuc', 'wuhan', 'reversions')),
+            aa_sub_rev_wuhan=pl.struct(muts=pl.col('aa_sub_wuhan'), revs=pl.col('aa_sub_rev_wuhan'))
+            .map_elements(
+                lambda x: remove_fake_reversions(x['muts'], x['revs'], 'aa', 'wuhan', 'reversions')),
+        )
+    )
+
+    combine_nuc_mutations = fake_reversions_removed.with_columns(
         nuc_mutation_wuhan=pl.concat_list(
             'nuc_sub_wuhan',
             'nuc_del_wuhan'),
@@ -66,7 +88,8 @@ def process_auto_generated_data(mutations: pl.DataFrame):
         .explode('nuc_mutation')
         .with_columns(
             aa_mutations=match_aa_mutations,
-            reference=pl.lit('wuhan')
+            reference=pl.lit('wuhan'),
+            reversion=False,
         )
     )
     pango_parent = (
@@ -79,10 +102,41 @@ def process_auto_generated_data(mutations: pl.DataFrame):
         .explode('nuc_mutation')
         .with_columns(
             aa_mutations=match_aa_mutations,
-            reference=pl.lit('pango_parent'))
+            reference=pl.lit('pango_parent'),
+            reversion=False,
+        )
     )
 
-    combined = pl.concat([wuhan, pango_parent])
+    reversions = (
+        combine_nuc_mutations
+        .select(
+            pl.col('lineage'),
+            pl.col('nextstrain_clade'),
+            nuc_mutation=pl.col('nuc_sub_rev_wuhan'),
+            aa_mutations=pl.col('aa_sub_rev_wuhan'))
+        .explode('nuc_mutation')
+        .with_columns(
+            aa_mutations=match_aa_mutations,
+            reference=pl.lit('wuhan'),
+            reversion=True
+        )
+    )
+    deletion_reversions = (
+        combine_nuc_mutations
+        .select(
+            pl.col('lineage'),
+            pl.col('nextstrain_clade'),
+            nuc_mutation=pl.col('nuc_del_rev_wuhan'),
+            aa_mutations=pl.col('aa_del_rev_wuhan'))
+        .explode('nuc_mutation')
+        .with_columns(
+            aa_mutations=match_aa_mutations,
+            reference=pl.lit('wuhan'),
+            reversion=True
+        )
+    )
+
+    combined = pl.concat([wuhan, pango_parent, reversions, deletion_reversions])
 
     mutations_parsed = (
         combined
@@ -101,7 +155,7 @@ def process_auto_generated_data(mutations: pl.DataFrame):
     )
 
     output = aa_mutations_split.select(
-        'lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2', 'reference'
+        'lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2', 'reference', 'reversion'
     )
 
     check_reference_column_is_filled(output)
@@ -110,19 +164,19 @@ def process_auto_generated_data(mutations: pl.DataFrame):
 
 
 def process_hand_curated_file(mutations: pl.DataFrame) -> pl.DataFrame:
-    no_reversions = mutations.filter(pl.col('reversion').is_null())
-
     with_reference = (
-        no_reversions
+        mutations
         .with_columns(
-            reference=pl.lit('wuhan')
+            reference=pl.lit('wuhan'),
+            reversion=pl.col('reversion').eq('y'),
+            not_in_parent=pl.col('not_in_parent').eq('y')
         )
         .rename({'aa_change': 'aa_mutation', 'aa_change_2': 'aa_mutation_2', 'nuc_change': 'nuc_mutation'})
         .select('nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2', 'reference', 'not_in_parent',
-                'notes')
+                'reversion', 'notes')
     )
     nextclade_parent = (
-        with_reference.filter(pl.col('not_in_parent') == 'y')
+        with_reference.filter('not_in_parent')
         .with_columns(
             reference=pl.lit('nextclade_parent'))
     )
@@ -139,7 +193,7 @@ def process_hand_curated_file(mutations: pl.DataFrame) -> pl.DataFrame:
     )
 
     output = mutations_parsed.select('nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2', 'reference',
-                                     'notes')
+                                     'notes', 'reversion')
 
     check_reference_column_is_filled(output)
 
@@ -160,7 +214,7 @@ def process_hand_curated_data(hand_curated_data_dir: str, clusters: dict) -> tup
     assert with_lineages.filter(pl.col('lineage').is_null()).is_empty()
 
     mutations = with_lineages.select('lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2',
-                                     'reference', 'notes')
+                                     'reference', 'notes', 'reversion')
 
     return used_clades, mutations
 
@@ -173,3 +227,26 @@ def extract_hand_curated_clade_to_lineage_mapping(clusters: dict) -> pl.DataFram
 
     output = with_lineage.select('lineage', pl.col('nextstrain_name').alias('nextstrain_clade'))
     return output
+
+
+def remove_fake_reversions(mutation_strings: list[str], reversion_strings: list[str], mutation_type='nuc',
+                           reference='wuhan', target='substitutions') -> \
+        list[str]:
+    if mutation_type == 'nuc':
+        parsing_function = Mutation.parse_mutation_string
+        is_corresponding_reversion = lambda mut, rev: mut.position == rev.position
+    else:
+        parsing_function = AminoAcidMutation.parse_amino_acid_string
+        is_corresponding_reversion = lambda mut, rev: mut.position == rev.position and mut.gene == rev.gene
+
+    for mutation in mutation_strings:
+        mut_obj = parsing_function(mutation)
+        for reversion in reversion_strings:
+            rev_obj = parsing_function(reversion)
+            if is_corresponding_reversion(mut_obj, rev_obj):
+                if reference == 'pango':
+                    mut_obj.symbol_from = rev_obj.symbol_to
+                    mutation_strings[mutation_strings.index(mutation)] = mut_obj.to_code()
+                reversion_strings.remove(reversion)
+
+    return mutation_strings if target == 'substitutions' else reversion_strings

@@ -50,8 +50,9 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
             reference=pl.coalesce(pl.col('reference_hand_curated'), pl.col('reference')),
             aa_mutation=pl.coalesce(pl.col('aa_mutation_hand_curated'), pl.col('aa_mutation')),
             aa_mutation_2=pl.concat_list('aa_mutation_2', 'aa_mutation_2_hand_curated').list.drop_nulls(),
-            nuc_mutation=pl.coalesce(pl.col('nuc_mutation_hand_curated'), pl.col('nuc_mutation')))
-        .drop('aa_mutation_hand_curated', 'aa_mutation_2_hand_curated', 'nuc_mutation_hand_curated')
+            nuc_mutation=pl.coalesce(pl.col('nuc_mutation_hand_curated'), pl.col('nuc_mutation')),
+            reversion=pl.coalesce(pl.col('reversion_hand_curated'), pl.col('reversion')))
+        .drop('aa_mutation_hand_curated', 'aa_mutation_2_hand_curated', 'nuc_mutation_hand_curated', 'reversion_hand_curated')
     )
 
     typed = (
@@ -67,7 +68,7 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
         .sort('lineage', 'reference', 'mutation_type', pl.col('nuc_mutation').struct.field('pos'),
               pl.col('nuc_mutation').struct.field('ref'))
         .select('lineage', 'nextstrain_clade', 'reference', 'mutation_type', 'aa_mutation', 'aa_mutation_2',
-                'nuc_mutation', 'notes')
+                'nuc_mutation', 'notes', pl.col('reversion').alias('contains_reversion'))
     )
 
     coding_grouped_by_aa = (
@@ -75,7 +76,8 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
         .filter(pl.col('mutation_type') == 'coding')
         .group_by('lineage', 'nextstrain_clade', 'reference', 'mutation_type', 'aa_mutation', maintain_order=True)
         .agg(pl.col('aa_mutation_2').flatten().unique(maintain_order=True).drop_nulls(), pl.col('nuc_mutation'),
-             pl.col('notes').unique(maintain_order=True).drop_nulls().str.concat('. '))
+             pl.col('notes').unique(maintain_order=True).drop_nulls().str.concat('. '),
+             pl.col('contains_reversion').any())
         .with_columns(pl.col('notes').replace('', None))
     )
     silent_grouped_by_aa = (
@@ -99,7 +101,7 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
         ))
 
     output = aa_mutations_merged.select(
-        'lineage', 'nextstrain_clade', 'reference', 'mutation_type', 'aa_mutations', 'nuc_mutations', 'notes'
+        'lineage', 'nextstrain_clade', 'reference', 'mutation_type', 'aa_mutations', 'nuc_mutations', 'notes', 'contains_reversion'
     )
 
     return output

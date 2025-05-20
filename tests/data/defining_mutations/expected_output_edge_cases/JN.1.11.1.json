@@ -1335,8 +1335,15 @@
               "ref": "G",
               "pos": 23012,
               "alt": "A"
+            },
+            {
+              "ref": "G",
+              "pos": 23013,
+              "alt": "A"
             }
-          ]
+          ],
+          "notes": "Reversion relative to 21L",
+          "contains_reversion": true
         },
         {
           "aa_mutations": [
@@ -1359,6 +1366,25 @@
               "alt": "C"
             }
           ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "R",
+              "pos": 493,
+              "alt": "Q"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 23040,
+              "alt": "A"
+            }
+          ],
+          "notes": "Reversion from 21L (A23040G)",
+          "contains_reversion": true
         },
         {
           "aa_mutations": [

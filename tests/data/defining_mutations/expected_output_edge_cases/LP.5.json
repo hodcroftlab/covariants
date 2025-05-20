@@ -1220,6 +1220,24 @@
           "aa_mutations": [
             {
               "gene": "S",
+              "ref": "T",
+              "pos": 478,
+              "alt": "K"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 22995,
+              "alt": "A"
+            }
+          ],
+          "contains_reversion": true
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
               "ref": "N",
               "pos": 481,
               "alt": "K"
