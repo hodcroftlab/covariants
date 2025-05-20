@@ -12,7 +12,7 @@ import { getMutationFromNucleotideMutation, SilentMutation } from 'src/io/getDef
 import { DEFAULT_PAGE_SIZES, getDefaultPaginationState } from 'src/components/Common/table/Pagination'
 import { TableWithSearchPaginationFilter } from 'src/components/Common/table/TableWithSearchPaginationFilter'
 import { formatMutation } from 'src/components/Common/formatMutation'
-import { Annotation } from 'src/components/DefiningMutations/DefiningMutationsTables'
+import { Annotation, ReversionAnnotation } from 'src/components/DefiningMutations/DefiningMutationsTables'
 import { NucleotideMutationBadge } from 'src/components/Common/Badges/NucleotideMutationBadge'
 
 export function SilentNucleotideMutationsTable({ silentMutations }: { silentMutations: SilentMutation[] }) {
@@ -47,12 +47,13 @@ function getNucleotideMutationColumn() {
     cell: ({ getValue, row }) => {
       const nucleotideMutation = getValue()
       return (
-        <div className={'d-flex'}>
+        <div className={'d-flex gap-2 flex-wrap align-items-center'}>
           <NucleotideMutationBadge
             key={formatMutation(nucleotideMutation)}
             mutation={getMutationFromNucleotideMutation(nucleotideMutation)}
           />
           {row.original.notes ? <Annotation annotationText={row.original.notes}></Annotation> : null}
+          {row.original.containsReversion ? <ReversionAnnotation /> : null}
         </div>
       )
     },
