@@ -1,5 +1,5 @@
 {
-  "lineage": "BQ.1",
+  "pango_lineage": "BQ.1",
   "nextstrain_clade": "22E",
   "mutations": [
     {
@@ -1799,7 +1799,5 @@
         }
       ]
     }
-  ],
-  "nextstrain_parent": "22B",
-  "nextstrain_children": []
+  ]
 }

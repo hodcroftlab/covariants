@@ -4,12 +4,12 @@ import pandas as pd
 import polars as pl
 
 from scripts.defining_mutations.helpers import replace_list_of_empty_string, check_reference_column_is_filled
-from scripts.defining_mutations.io import load_hand_curated_data
+from scripts.defining_mutations.io import load_hand_curated_data, load_auto_generated_data
 from scripts.defining_mutations.parse_mutations import Mutation, AminoAcidMutation, match_nuc_to_aas
 from scripts.defining_mutations.wuhan_reference_sequence import wuhan_reference_sequence
 
 
-def process_auto_generated_data(mutations: pl.DataFrame):
+def process_auto_generated_data(mutations: pl.DataFrame) -> pl.DataFrame:
     empty_strings_removed = mutations.to_pandas().applymap(replace_list_of_empty_string)
 
     deletion_columns = ['nuc_del_wuhan', 'nuc_del_pango_parent', 'nuc_del_rev_wuhan']
@@ -81,7 +81,7 @@ def process_auto_generated_data(mutations: pl.DataFrame):
     wuhan = (
         combine_nuc_mutations
         .select(
-            pl.col('lineage'),
+            pl.col('pango_lineage'),
             pl.col('nextstrain_clade'),
             nuc_mutation=pl.col('nuc_mutation_wuhan'),
             aa_mutations=pl.col('aa_mutation_wuhan'))
@@ -95,7 +95,7 @@ def process_auto_generated_data(mutations: pl.DataFrame):
     pango_parent = (
         combine_nuc_mutations
         .select(
-            pl.col('lineage'),
+            pl.col('pango_lineage'),
             pl.col('nextstrain_clade'),
             nuc_mutation='nuc_mutation_pango_parent',
             aa_mutations=pl.col('aa_mutation_pango_parent'))
@@ -110,7 +110,7 @@ def process_auto_generated_data(mutations: pl.DataFrame):
     reversions = (
         combine_nuc_mutations
         .select(
-            pl.col('lineage'),
+            pl.col('pango_lineage'),
             pl.col('nextstrain_clade'),
             nuc_mutation=pl.col('nuc_sub_rev_wuhan'),
             aa_mutations=pl.col('aa_sub_rev_wuhan'))
@@ -124,7 +124,7 @@ def process_auto_generated_data(mutations: pl.DataFrame):
     deletion_reversions = (
         combine_nuc_mutations
         .select(
-            pl.col('lineage'),
+            pl.col('pango_lineage'),
             pl.col('nextstrain_clade'),
             nuc_mutation=pl.col('nuc_del_rev_wuhan'),
             aa_mutations=pl.col('aa_del_rev_wuhan'))
@@ -155,7 +155,7 @@ def process_auto_generated_data(mutations: pl.DataFrame):
     )
 
     output = aa_mutations_split.select(
-        'lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2', 'reference', 'reversion'
+        'pango_lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2', 'reference', 'reversion'
     )
 
     check_reference_column_is_filled(output)
@@ -200,32 +200,51 @@ def process_hand_curated_file(mutations: pl.DataFrame) -> pl.DataFrame:
     return output
 
 
-def process_hand_curated_data(hand_curated_data_dir: str, clusters: dict) -> tuple[pl.DataFrame, pl.DataFrame]:
+def process_hand_curated_data(hand_curated_data_dir: str, clusters: dict, clusters_override: list[dict]) -> tuple[pl.DataFrame, pl.DataFrame]:
     hand_curated_data_files = os.listdir(hand_curated_data_dir)
     hand_curated_data = pl.concat([
         process_hand_curated_file(load_hand_curated_data(os.path.join(hand_curated_data_dir, hand_curated_file)))
         for hand_curated_file in hand_curated_data_files
     ])
 
-    clades = extract_hand_curated_clade_to_lineage_mapping(clusters)
-    used_clades = clades.join(hand_curated_data, on='nextstrain_clade', how='semi')
+    clades = extract_hand_curated_clade_to_lineage_mapping(clusters, clusters_override)
 
     with_lineages = hand_curated_data.join(clades, on='nextstrain_clade', how='left')
-    assert with_lineages.filter(pl.col('lineage').is_null()).is_empty()
+    assert with_lineages.filter(pl.col('pango_lineage').is_null()).filter(pl.col('nextstrain_clade').is_in(['20C', '21I', '21J', '21M']).not_()).is_empty()
 
-    mutations = with_lineages.select('lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2',
+    mutations = with_lineages.select('pango_lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2',
                                      'reference', 'notes', 'reversion')
 
-    return used_clades, mutations
+    return clades, mutations
 
 
-def extract_hand_curated_clade_to_lineage_mapping(clusters: dict) -> pl.DataFrame:
+def import_mutation_data(hand_curated_data_dir: str, auto_generated_data_dir: str, clusters: dict, clusters_override: list[dict]) -> tuple[
+    pl.DataFrame, pl.DataFrame, pl.DataFrame, pl.DataFrame]:
+    auto_generated_lineages, auto_generated_mutations_raw = load_auto_generated_data(
+        os.path.join(auto_generated_data_dir, 'auto_generated.json'))
+
+    auto_generated_mutations = process_auto_generated_data(auto_generated_mutations_raw)
+
+    hand_curated_clades, hand_curated_mutations = process_hand_curated_data(hand_curated_data_dir, clusters, clusters_override)
+
+    return hand_curated_clades, auto_generated_lineages, hand_curated_mutations, auto_generated_mutations
+
+
+def extract_hand_curated_clade_to_lineage_mapping(clusters: dict, clusters_overwrite: list[dict]) -> pl.DataFrame:
     clusters_df = pl.from_records(list(clusters.values())).select('nextstrain_name', 'pango_lineages', 'type')
     only_clades = clusters_df.filter(pl.col('nextstrain_name').is_not_null())
     only_variants = only_clades.filter(pl.col('type').eq('variant')).drop('type')
-    with_lineage = only_variants.explode('pango_lineages').unnest('pango_lineages').rename({'name': 'lineage'})
+    with_lineage = (
+        only_variants.explode('pango_lineages')
+        .unnest('pango_lineages')
+        .select(pl.col('nextstrain_name').alias('nextstrain_clade'), pl.col('name').alias('pango_lineage'))
+    )
 
-    output = with_lineage.select('lineage', pl.col('nextstrain_name').alias('nextstrain_clade'))
+    overwrite_df = pl.from_records(clusters_overwrite)
+    has_lineage = with_lineage.join(overwrite_df, on='nextstrain_clade', how='anti')
+    clades = pl.concat([has_lineage, overwrite_df])
+
+    output = clades.select('pango_lineage', 'nextstrain_clade')
     return output
 
 

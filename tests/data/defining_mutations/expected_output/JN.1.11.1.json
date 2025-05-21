@@ -1,5 +1,5 @@
 {
-  "lineage": "JN.1.11.1",
+  "pango_lineage": "JN.1.11.1",
   "nextstrain_clade": "24B",
   "mutations": [
     {
@@ -2380,11 +2380,5 @@
         }
       ]
     }
-  ],
-  "nextstrain_parent": "24A",
-  "nextstrain_children": [
-    "24C",
-    "24G",
-    "24F"
   ]
 }

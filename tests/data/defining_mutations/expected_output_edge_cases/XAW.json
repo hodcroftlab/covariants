@@ -1,5 +1,5 @@
 {
-  "lineage": "XAW",
+  "pango_lineage": "XAW",
   "nextstrain_clade": "recombinant",
   "mutations": [
     {
@@ -3008,9 +3008,5 @@
         }
       ]
     }
-  ],
-  "children": [],
-  "designation_date": "2022-08-25",
-  "unaliased": "XAW",
-  "parent": ""
+  ]
 }
