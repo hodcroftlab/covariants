@@ -3,40 +3,26 @@ import os
 
 import pytest
 
-from scripts.defining_mutations.merge_defining_mutations import main, import_mutation_data
+from scripts.defining_mutations.merge_defining_mutations import main, merge_clusters_data
 from scripts.clusters import clusters as clusters_data
+from scripts.defining_mutations.clade_to_lineage_override import clade_to_lineage
+from scripts.defining_mutations.preprocess_mutation_data import import_mutation_data
 from tests.defining_mutations.config import AUTO_GENERATED_TEST_DIR, AUTO_GENERATED_EDGE_CASES_TEST_DIR, \
     HAND_CURATED_TEST_DIR, EXPECTED_OUTPUT_DIR, EXPECTED_OUTPUT_EDGE_CASES_DIR, OUTPUT_TEST_DIR, CI
 
 
-def test_import_mutation_data():
-    lineages, hand_curated, auto_generated = import_mutation_data(HAND_CURATED_TEST_DIR, AUTO_GENERATED_TEST_DIR, clusters_data)
-    assert len(lineages) == 7
-    assert lineages.columns == ['lineage',
-                                'nextstrain_clade',
-                                'unaliased',
-                                'parent',
-                                'children',
-                                'designation_date',
-                                'nextstrain_children',
-                                'nextstrain_parent']
-    assert len(hand_curated) == 637
-    assert hand_curated.columns == ['lineage',
-                                    'nextstrain_clade',
-                                    'nuc_mutation',
-                                    'aa_mutation',
-                                    'aa_mutation_2',
-                                    'reference',
-                                    'notes',
-                                    'reversion']
-    assert len(auto_generated) == 630
-    assert auto_generated.columns == ['lineage',
-                                      'nextstrain_clade',
-                                      'nuc_mutation',
-                                      'aa_mutation',
-                                      'aa_mutation_2',
-                                      'reference',
-                                      'reversion']
+def test_merge_lineages():
+    hand_curated_clades, auto_generated_lineages, _, _ = import_mutation_data(HAND_CURATED_TEST_DIR, AUTO_GENERATED_TEST_DIR, clusters_data, clade_to_lineage)
+    merged_clusters = merge_clusters_data(hand_curated_clades, auto_generated_lineages, clade_to_lineage)
+    assert len(merged_clusters) == 47
+    assert merged_clusters.columns == ['pango_lineage',
+                                       'nextstrain_clade',
+                                       'pango_lineage_unaliased',
+                                       'pango_parent',
+                                       'pango_children',
+                                       'designation_date',
+                                       'nextstrain_children',
+                                       'nextstrain_parent']
 
 
 @pytest.mark.parametrize(

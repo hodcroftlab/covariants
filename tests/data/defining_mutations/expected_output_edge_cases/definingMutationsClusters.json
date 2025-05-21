@@ -1,36 +1,581 @@
 {
   "clusters": [
     {
-      "lineage": "BA.5",
-      "nextstrain_clade": "22B"
+      "pango_lineage": "B.1.1.7",
+      "nextstrain_clade": "20I",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "20B"
     },
     {
-      "lineage": "BQ.1",
-      "nextstrain_clade": "22E"
+      "pango_lineage": "B.1.351",
+      "nextstrain_clade": "20H",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "20C"
     },
     {
-      "lineage": "BQ.1.1",
-      "nextstrain_clade": "22E"
+      "pango_lineage": "P.1",
+      "nextstrain_clade": "20J",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "20B"
     },
     {
-      "lineage": "JN.1.11.1",
-      "nextstrain_clade": "24B"
+      "pango_lineage": "B.1.617.2",
+      "nextstrain_clade": "21A",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [
+        "21I",
+        "21J"
+      ],
+      "nextstrain_parent": "20A"
     },
     {
-      "lineage": "B",
-      "nextstrain_clade": "19A"
+      "pango_lineage": "BA.1",
+      "nextstrain_clade": "21K",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "21M"
     },
     {
-      "lineage": "B.1.1.515",
-      "nextstrain_clade": "20B"
+      "pango_lineage": "BA.2",
+      "nextstrain_clade": "21L",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [
+        "23I",
+        "22D",
+        "22F",
+        "22C",
+        "22B",
+        "22A",
+        "24D"
+      ],
+      "nextstrain_parent": "21M"
     },
     {
-      "lineage": "XAW",
-      "nextstrain_clade": "recombinant"
+      "pango_lineage": "BA.4",
+      "nextstrain_clade": "22A",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "21L"
     },
     {
-      "lineage": "LP.5",
-      "nextstrain_clade": "24B"
+      "pango_lineage": "BA.5",
+      "nextstrain_clade": "22B",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [
+        "22E"
+      ],
+      "nextstrain_parent": "21L"
+    },
+    {
+      "pango_lineage": "BA.2.12.1",
+      "nextstrain_clade": "22C",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "21L"
+    },
+    {
+      "pango_lineage": "BA.2.75",
+      "nextstrain_clade": "22D",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [
+        "23C"
+      ],
+      "nextstrain_parent": "21L"
+    },
+    {
+      "pango_lineage": "BQ.1",
+      "nextstrain_clade": "22E",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "22B"
+    },
+    {
+      "pango_lineage": "BQ.1.1",
+      "nextstrain_clade": "22E",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": null,
+      "nextstrain_parent": null
+    },
+    {
+      "pango_lineage": "XBB",
+      "nextstrain_clade": "22F",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [
+        "23A",
+        "23B",
+        "23D",
+        "23E"
+      ],
+      "nextstrain_parent": "21L"
+    },
+    {
+      "pango_lineage": "XBB.1.5",
+      "nextstrain_clade": "23A",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [
+        "23G"
+      ],
+      "nextstrain_parent": "22F"
+    },
+    {
+      "pango_lineage": "XBB.1.16",
+      "nextstrain_clade": "23B",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "22F"
+    },
+    {
+      "pango_lineage": "CH.1.1",
+      "nextstrain_clade": "23C",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "22D"
+    },
+    {
+      "pango_lineage": "XBB.1.9",
+      "nextstrain_clade": "23D",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [
+        "23F"
+      ],
+      "nextstrain_parent": "22F"
+    },
+    {
+      "pango_lineage": "XBB.2.3",
+      "nextstrain_clade": "23E",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "22F"
+    },
+    {
+      "pango_lineage": "EG.5.1",
+      "nextstrain_clade": "23F",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [
+        "23H"
+      ],
+      "nextstrain_parent": "23D"
+    },
+    {
+      "pango_lineage": "XBB.1.5.70",
+      "nextstrain_clade": "23G",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "23A"
+    },
+    {
+      "pango_lineage": "HK.3",
+      "nextstrain_clade": "23H",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "23F"
+    },
+    {
+      "pango_lineage": "BA.2.86",
+      "nextstrain_clade": "23I",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [
+        "24A"
+      ],
+      "nextstrain_parent": "21L"
+    },
+    {
+      "pango_lineage": "JN.1",
+      "nextstrain_clade": "24A",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [
+        "24B",
+        "24H",
+        "24I"
+      ],
+      "nextstrain_parent": "23I"
+    },
+    {
+      "pango_lineage": "JN.1.11.1",
+      "nextstrain_clade": "24B",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [
+        "24C",
+        "24G",
+        "24F"
+      ],
+      "nextstrain_parent": "24A"
+    },
+    {
+      "pango_lineage": "KP.3",
+      "nextstrain_clade": "24C",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [
+        "24E"
+      ],
+      "nextstrain_parent": "24B"
+    },
+    {
+      "pango_lineage": "XDV.1",
+      "nextstrain_clade": "24D",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "21L"
+    },
+    {
+      "pango_lineage": "KP.3.1.1",
+      "nextstrain_clade": "24E",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "24C"
+    },
+    {
+      "pango_lineage": "XEC",
+      "nextstrain_clade": "24F",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "24B"
+    },
+    {
+      "pango_lineage": "KP.2.3",
+      "nextstrain_clade": "24G",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "24B"
+    },
+    {
+      "pango_lineage": "LF.7",
+      "nextstrain_clade": "24H",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "24A"
+    },
+    {
+      "pango_lineage": "MV.1",
+      "nextstrain_clade": "24I",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "24A"
+    },
+    {
+      "pango_lineage": "LP.8.1",
+      "nextstrain_clade": "25A",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": null,
+      "nextstrain_parent": null
+    },
+    {
+      "pango_lineage": "B.1.617.1",
+      "nextstrain_clade": "21B",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "20A"
+    },
+    {
+      "pango_lineage": "B.1.525",
+      "nextstrain_clade": "21D",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "20A"
+    },
+    {
+      "pango_lineage": "B.1.526",
+      "nextstrain_clade": "21F",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "20C"
+    },
+    {
+      "pango_lineage": "C.37",
+      "nextstrain_clade": "21G",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "20D"
+    },
+    {
+      "pango_lineage": "B.1.621",
+      "nextstrain_clade": "21H",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "20A"
+    },
+    {
+      "pango_lineage": "B.1.177",
+      "nextstrain_clade": "20E",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "20A"
+    },
+    {
+      "pango_lineage": "B.1.427",
+      "nextstrain_clade": "21C",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "20C"
+    },
+    {
+      "pango_lineage": "B.1.429",
+      "nextstrain_clade": "21C",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "20C"
+    },
+    {
+      "pango_lineage": null,
+      "nextstrain_clade": "20C",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [
+        "21F",
+        "21C",
+        "20H",
+        "20G"
+      ],
+      "nextstrain_parent": "20A"
+    },
+    {
+      "pango_lineage": null,
+      "nextstrain_clade": "21I",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "21A"
+    },
+    {
+      "pango_lineage": null,
+      "nextstrain_clade": "21J",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "21A"
+    },
+    {
+      "pango_lineage": null,
+      "nextstrain_clade": "21M",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [
+        "21K",
+        "21L"
+      ],
+      "nextstrain_parent": "20B"
+    },
+    {
+      "pango_lineage": "B",
+      "nextstrain_clade": "19A",
+      "pango_lineage_unaliased": "B",
+      "pango_parent": "",
+      "pango_children": [
+        "B.1",
+        "B.3",
+        "B.4",
+        "B.5",
+        "B.6",
+        "B.10",
+        "B.11",
+        "B.12",
+        "B.13",
+        "B.15",
+        "B.18",
+        "B.19",
+        "B.20",
+        "B.23",
+        "B.26",
+        "B.27",
+        "B.28",
+        "B.29",
+        "B.30",
+        "B.31",
+        "B.32",
+        "B.33",
+        "B.34",
+        "B.35",
+        "B.36",
+        "B.37",
+        "B.38",
+        "B.39",
+        "B.40",
+        "B.41",
+        "B.42",
+        "B.43",
+        "B.44",
+        "B.45",
+        "B.46",
+        "B.47",
+        "B.49",
+        "B.50",
+        "B.51",
+        "B.52",
+        "B.53",
+        "B.55",
+        "B.56",
+        "B.57",
+        "B.58",
+        "B.60",
+        "B.61"
+      ],
+      "designation_date": "",
+      "nextstrain_children": [
+        "20A",
+        "19B"
+      ],
+      "nextstrain_parent": null
+    },
+    {
+      "pango_lineage": "B.1.1.515",
+      "nextstrain_clade": "20B",
+      "pango_lineage_unaliased": "B.1.1.515",
+      "pango_parent": "B.1.1",
+      "pango_children": [],
+      "designation_date": "2021-03-15",
+      "nextstrain_children": null,
+      "nextstrain_parent": null
+    },
+    {
+      "pango_lineage": "XAW",
+      "nextstrain_clade": "recombinant",
+      "pango_lineage_unaliased": "XAW",
+      "pango_parent": "",
+      "pango_children": [],
+      "designation_date": "2022-08-25",
+      "nextstrain_children": null,
+      "nextstrain_parent": null
+    },
+    {
+      "pango_lineage": "LP.5",
+      "nextstrain_clade": "24B",
+      "pango_lineage_unaliased": "B.1.1.529.2.86.1.1.11.1.1.1.3.5",
+      "pango_parent": "KP.1.1.3",
+      "pango_children": [],
+      "designation_date": "2024-10-25",
+      "nextstrain_children": null,
+      "nextstrain_parent": null
     }
   ]
 }

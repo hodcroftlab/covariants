@@ -1,5 +1,5 @@
 {
-  "lineage": "BA.2.3.20",
+  "pango_lineage": "BA.2.3.20",
   "nextstrain_clade": "21L",
   "mutations": [
     {
@@ -2085,22 +2085,5 @@
         }
       ]
     }
-  ],
-  "children": [
-    "CM.1",
-    "CM.2",
-    "CM.3",
-    "CM.4",
-    "CM.5",
-    "CM.6",
-    "CM.7",
-    "CM.8",
-    "CM.9",
-    "CM.10",
-    "CM.11",
-    "CM.12"
-  ],
-  "designation_date": "2022-09-02",
-  "unaliased": "B.1.1.529.2.3.20",
-  "parent": "BA.2.3"
+  ]
 }
