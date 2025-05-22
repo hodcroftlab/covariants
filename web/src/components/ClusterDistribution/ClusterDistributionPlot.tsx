@@ -3,7 +3,7 @@ import React, { useMemo } from 'react'
 
 import get from 'lodash/get'
 import { DateTime } from 'luxon'
-import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts'
+import { CartesianGrid, Line, Tooltip, XAxis, YAxis } from 'recharts'
 import { useTheme } from 'styled-components'
 
 import { useRecoilValue } from 'recoil'
@@ -14,6 +14,8 @@ import { ClusterDistributionPlotTooltip } from 'src/components/ClusterDistributi
 import { ChartContainer } from 'src/components/Common/ChartContainer'
 import { ticksSelector, timeDomainSelector } from 'src/state/Params'
 import { getCountryStylesSelector } from 'src/state/CountryStyles'
+
+import { ChartWithZoom } from 'src/components/Common/ChartWithZoom'
 
 const getValueOrig = (country: string) => (value: ClusterDistributionDatum) => {
   const orig = get(value.orig, country, false)
@@ -42,12 +44,14 @@ interface LinePlotProps {
   distribution: ClusterDistributionDatum[]
 }
 
+const ZOOM_ATOM_ID = 'perVariant'
+
 function LinePlot({ width, height, country_names, distribution }: LinePlotProps) {
   const theme = useTheme()
   const getCountryStyle = useRecoilValue(getCountryStylesSelector)
 
-  const ticks = useRecoilValue(ticksSelector)
-  const timeDomain = useRecoilValue(timeDomainSelector)
+  const ticks = useRecoilValue(ticksSelector(ZOOM_ATOM_ID))
+  const timeDomain = useRecoilValue(timeDomainSelector(ZOOM_ATOM_ID))
 
   const data = useMemo(
     () =>
@@ -98,7 +102,15 @@ function LinePlot({ width, height, country_names, distribution }: LinePlotProps)
   }, [country_names, getCountryStyle])
 
   return (
-    <LineChart width={width} height={height} margin={theme.plot.margin} data={data}>
+    <ChartWithZoom
+      type="line"
+      zoomAtomId="perVariant"
+      width={width}
+      height={height}
+      margin={theme.plot.margin}
+      data={data}
+      zoomWindowColor={theme.gray500}
+    >
       <XAxis
         dataKey="week"
         type="number"
@@ -124,10 +136,10 @@ function LinePlot({ width, height, country_names, distribution }: LinePlotProps)
         offset={50}
       />
 
-      <CartesianGrid stroke="#2222" />
+      <CartesianGrid stroke={theme.plot.cartesianGrid.stroke} />
 
       {lines}
-    </LineChart>
+    </ChartWithZoom>
   )
 }
 
