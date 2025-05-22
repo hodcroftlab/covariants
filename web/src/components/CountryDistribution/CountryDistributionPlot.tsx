@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React, { useMemo } from 'react'
 
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
+import { Area, CartesianGrid, Tooltip, XAxis, YAxis } from 'recharts'
 import { DateTime } from 'luxon'
 
 import { useRecoilValue } from 'recoil'
@@ -14,6 +14,7 @@ import { adjustTicks } from 'src/helpers/adjustTicks'
 import { ChartContainer } from 'src/components/Common/ChartContainer'
 import { ticksSelector, timeDomainSelector } from 'src/state/Params'
 import { getClusterColorsSelector } from 'src/state/Clusters'
+import { ChartWithZoom } from 'src/components/Common/ChartWithZoom'
 
 const allowEscapeViewBox = { x: false, y: true }
 
@@ -24,10 +25,12 @@ export interface AreaPlotProps {
   distribution: CountryDistributionDatum[]
 }
 
+const ZOOM_ATOM_ID = 'perCountry'
+
 function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps) {
   const getClusterColor = useRecoilValue(getClusterColorsSelector)
-  const ticks = useRecoilValue(ticksSelector)
-  const timeDomain = useRecoilValue(timeDomainSelector)
+  const ticks = useRecoilValue(ticksSelector(ZOOM_ATOM_ID))
+  const timeDomain = useRecoilValue(timeDomainSelector(ZOOM_ATOM_ID))
 
   const data = useMemo(
     () =>
@@ -45,12 +48,22 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
   const { adjustedTicks, domainX, domainY } = useMemo(() => {
     const adjustedTicks = adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin).slice(1) // slice ensures first tick is not outside domain
     const domainX = [timeDomain[0], timeDomain[1]]
+
     const domainY = [0, 1]
     return { adjustedTicks, domainX, domainY }
-  }, [width, ticks, timeDomain])
+  }, [ticks, width, timeDomain])
 
   return (
-    <AreaChart margin={theme.plot.margin} data={data} stackOffset="expand" width={width} height={height}>
+    <ChartWithZoom
+      type="area"
+      zoomAtomId={ZOOM_ATOM_ID}
+      margin={theme.plot.margin}
+      data={data}
+      stackOffset="expand"
+      width={width}
+      height={height}
+      zoomWindowColor={theme.white}
+    >
       <XAxis
         dataKey="week"
         type="number"
@@ -101,7 +114,7 @@ function AreaPlot({ width, height, cluster_names, distribution }: AreaPlotProps)
         allowEscapeViewBox={allowEscapeViewBox}
         offset={50}
       />
-    </AreaChart>
+    </ChartWithZoom>
   )
 }
 
