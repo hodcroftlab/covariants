@@ -47,7 +47,7 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
             <th className="px-2 text-right">{t('Freq')}</th>
           </tr>
         </thead>
-        <TooltipTableBody>
+        <tbody>
           {payloadNonZero.map(({ name, value }) => (
             <tr key={name}>
               <td className="px-2 text-left">
@@ -72,7 +72,7 @@ export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps
             <td className="px-2 text-right">{total}</td>
             <td className="px-2 text-right">{'1.00'}</td>
           </tr>
-        </TooltipTableBody>
+        </tbody>
       </TooltipTable>
     </Tooltip>
   )
@@ -106,8 +106,6 @@ const TooltipTable = styled.table`
     background-color: ${(props) => props.theme.gray200};
   }
 `
-
-const TooltipTableBody = styled.tbody``
 
 export const ClusterNameText = styled.span`
   font-family: ${(props) => props.theme.font.monospace};

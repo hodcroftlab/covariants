@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-import React, { CSSProperties, useMemo, useRef } from 'react'
+import React, { CSSProperties, useMemo } from 'react'
 
 import dynamic from 'next/dynamic'
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Label } from 'recharts'
+import { Area, CartesianGrid, Label, Tooltip, XAxis, YAxis } from 'recharts'
 import { DateTime } from 'luxon'
 
 import { useTheme } from 'styled-components'
@@ -18,6 +18,8 @@ import { ChartContainer } from 'src/components/Common/ChartContainer'
 import { ticksSelector, timeDomainSelector } from 'src/state/Params'
 import { getClusterColorsSelector } from 'src/state/Clusters'
 
+import { ChartWithZoom } from 'src/components/Common/ChartWithZoom'
+
 const CHART_MARGIN = { left: 10, top: 12, bottom: 6, right: 12 }
 const ALLOW_ESCAPE_VIEW_BOX = { x: false, y: true }
 
@@ -26,14 +28,15 @@ export interface CasesPlotProps {
   distribution: PerCountryCasesDistributionDatum[]
 }
 
+const ZOOM_ATOM_ID = 'cases'
+
 export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotProps) {
   const { t } = useTranslationSafe()
   const theme = useTheme()
-  const chartRef = useRef(null)
   const getClusterColor = useRecoilValue(getClusterColorsSelector)
 
-  const ticks = useRecoilValue(ticksSelector)
-  const timeDomain = useRecoilValue(timeDomainSelector)
+  const ticks = useRecoilValue(ticksSelector(ZOOM_ATOM_ID))
+  const timeDomain = useRecoilValue(timeDomainSelector(ZOOM_ATOM_ID))
 
   const data = distribution.map(({ week, stand_total_cases, stand_estimated_cases }) => {
     const weekSec = DateTime.fromFormat(week, 'yyyy-MM-dd').toSeconds()
@@ -54,7 +57,7 @@ export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotPro
       {({ width, height }) => {
         const adjustedTicks = adjustTicks(ticks, width ?? 0, theme.plot.tickWidthMin).slice(1) // slice ensures first tick is not outside domain
         return (
-          <AreaChart width={width} height={height} margin={CHART_MARGIN} data={data} ref={chartRef}>
+          <ChartWithZoom type="area" zoomAtomId="cases" width={width} height={height} margin={CHART_MARGIN} data={data}>
             <XAxis
               dataKey="week"
               type="number"
@@ -112,7 +115,7 @@ export function CasesPlotComponent({ cluster_names, distribution }: CasesPlotPro
               allowEscapeViewBox={ALLOW_ESCAPE_VIEW_BOX}
               offset={50}
             />
-          </AreaChart>
+          </ChartWithZoom>
         )
       }}
     </ChartContainer>
