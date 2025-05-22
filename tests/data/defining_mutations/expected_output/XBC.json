@@ -350,7 +350,19 @@
               "ref": "C",
               "pos": 22033,
               "alt": "-"
-            },
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "R",
+              "pos": 158,
+              "alt": "G"
+            }
+          ],
+          "nuc_mutations": [
             {
               "ref": "A",
               "pos": 22034,
@@ -1544,7 +1556,19 @@
               "ref": "C",
               "pos": 22033,
               "alt": "-"
-            },
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "R",
+              "pos": 158,
+              "alt": "G"
+            }
+          ],
+          "nuc_mutations": [
             {
               "ref": "A",
               "pos": 22034,

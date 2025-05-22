@@ -42,14 +42,14 @@ def test_load_and_process_auto_generated_data():
     lineages, auto_generated_mutations_raw = load_auto_generated_data(
         os.path.join(AUTO_GENERATED_TEST_DIR, 'auto_generated.json'))
     auto_generated_mutations = process_auto_generated_data(auto_generated_mutations_raw)
-    assert len(lineages) == 4
+    assert len(lineages) == 5
     assert lineages.columns == ['pango_lineage',
                                 'pango_lineage_unaliased',
                                 'pango_parent',
                                 'pango_children',
                                 'nextstrain_clade',
                                 'designation_date']
-    assert len(auto_generated_mutations) == 630
+    assert len(auto_generated_mutations) == 808
     assert auto_generated_mutations.columns == ['pango_lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation',
                                                 'aa_mutation_2', 'reference', 'reversion']
     assert len(auto_generated_mutations.filter(pl.col('reversion'))) == 4
@@ -70,7 +70,7 @@ def test_import_mutation_data():
     hand_curated_clades, auto_generated_lineages, hand_curated, auto_generated = import_mutation_data(
         HAND_CURATED_TEST_DIR, AUTO_GENERATED_TEST_DIR, clusters_data, clade_to_lineage)
     assert len(hand_curated_clades) == 44
-    assert len(auto_generated_lineages) == 4
+    assert len(auto_generated_lineages) == 5
     assert hand_curated_clades.columns == ['pango_lineage',
                                            'nextstrain_clade']
     assert auto_generated_lineages.columns == ['pango_lineage',
@@ -88,7 +88,7 @@ def test_import_mutation_data():
                                     'reference',
                                     'notes',
                                     'reversion']
-    assert len(auto_generated) == 630
+    assert len(auto_generated) == 808
     assert auto_generated.columns == ['pango_lineage',
                                       'nextstrain_clade',
                                       'nuc_mutation',
@@ -138,8 +138,8 @@ def test_match_nuc_to_aas_for_auto_generated_data():
 @pytest.mark.parametrize(
     'auto_generated_test_dir, expected_aa_nuc_mismatches, expected_nuc_aa_mismatches',
     [
-        (AUTO_GENERATED_TEST_DIR, 0, 6),
-        (AUTO_GENERATED_EDGE_CASES_TEST_DIR, 2, 6)
+        (AUTO_GENERATED_TEST_DIR, 0, 12),
+        (AUTO_GENERATED_EDGE_CASES_TEST_DIR, 2, 12)
     ],
     ids=['auto-generated data', 'auto-generated edge cases']
 )
