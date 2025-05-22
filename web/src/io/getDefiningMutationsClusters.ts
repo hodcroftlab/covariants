@@ -54,33 +54,49 @@ const definingMutationsSchema = definingMutationsSchemaRaw.transform(({ referenc
 }))
 
 const definingMutationClusterSchemaRaw = z.object({
-  lineage: z.string(),
-  unaliased: z.string().optional(),
-  parent: z.string().optional(),
-  children: z.array(z.string()).optional(),
+  pango_lineage: z.string().nullable(),
   nextstrain_clade: z.string(),
-  designation_date: z.string().optional(),
   mutations: definingMutationsSchemaRaw.array(),
 })
 
 const definingMutationClusterSchema = definingMutationClusterSchemaRaw.transform(
-  ({ nextstrain_clade, designation_date, mutations, ...rest }) => ({
+  ({ nextstrain_clade, pango_lineage, mutations }) => ({
     nextstrainClade: nextstrain_clade,
-    designationDate: designation_date,
+    pangoLineage: pango_lineage,
     mutations: mutations.map((mutation) => definingMutationsSchema.parse(mutation)),
-    ...rest,
   }),
 )
 
 const definingMutationsClusterListElementSchemaRaw = z.object({
-  lineage: z.string(),
+  pango_lineage: z.string().nullable(),
   nextstrain_clade: z.string(),
+  pango_lineage_unaliased: z.string().nullable(),
+  pango_parent: z.string().nullable(),
+  pango_children: z.array(z.string()).nullable(),
+  designation_date: z.string().nullable(),
+  nextstrain_parent: z.string().nullable(),
+  nextstrain_children: z.string().array().nullable(),
 })
 
 const definingMutationsClusterListElementSchema = definingMutationsClusterListElementSchemaRaw.transform(
-  ({ lineage, nextstrain_clade }) => ({
-    lineage,
+  ({
+    pango_lineage,
+    nextstrain_clade,
+    pango_lineage_unaliased,
+    pango_parent,
+    pango_children,
+    designation_date,
+    nextstrain_parent,
+    nextstrain_children,
+  }) => ({
+    pangoLineage: pango_lineage,
     nextstrainClade: nextstrain_clade,
+    pangoLineageUnaliased: pango_lineage_unaliased,
+    pangoParent: pango_parent,
+    pangoChildren: pango_children,
+    designationDate: designation_date,
+    nextstrainParent: nextstrain_parent,
+    nextstrainChildren: nextstrain_children,
   }),
 )
 

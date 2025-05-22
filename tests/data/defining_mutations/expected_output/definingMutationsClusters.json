@@ -565,6 +565,19 @@
       "designation_date": "2024-10-22",
       "nextstrain_children": null,
       "nextstrain_parent": null
+    },
+    {
+      "pango_lineage": "XBC",
+      "nextstrain_clade": "recombinant",
+      "pango_lineage_unaliased": "XBC",
+      "pango_parent": "",
+      "pango_children": [
+        "XBC.1",
+        "XBC.2"
+      ],
+      "designation_date": "2022-09-24",
+      "nextstrain_children": null,
+      "nextstrain_parent": null
     }
   ]
 }
