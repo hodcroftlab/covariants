@@ -24,7 +24,7 @@ export const definingMutationsCladeToLineage = selector({
     return Object.fromEntries(
       clusters
         .filter((cluster) => cluster.nextstrainClade !== 'recombinant')
-        .map((cluster) => [cluster.nextstrainClade, cluster.lineage]),
+        .map((cluster) => [cluster.nextstrainClade, cluster.pangoLineage]),
     )
   },
 })
@@ -33,7 +33,7 @@ export const definingMutationsClusterLineages = selector({
   key: 'definingMutationsClusterLineages',
   get: ({ get }) => {
     const clusters = get(definingMutationClustersAtom)
-    return clusters.map((cluster) => cluster.lineage)
+    return clusters.map((cluster) => cluster.pangoLineage)
   },
 })
 
@@ -70,7 +70,5 @@ export const DefiningMutationClusterAtomFamily = atomFamily({
 export function useDefiningMutationsCluster() {
   const clusterNameFromUrl = useClusterNameFromUrl()
   const allClusters = useRecoilValue(definingMutationClustersAtom)
-  const isInClusterList = allClusters.some((cluster) => cluster.lineage === clusterNameFromUrl)
-
-  return clusterNameFromUrl !== undefined && isInClusterList ? clusterNameFromUrl : undefined
+  return allClusters.find((cluster) => cluster.pangoLineage === clusterNameFromUrl)
 }

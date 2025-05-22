@@ -1,5 +1,5 @@
 {
-  "lineage": "KP.2.3.8",
+  "pango_lineage": "KP.2.3.8",
   "nextstrain_clade": "24G",
   "mutations": [
     {
@@ -2428,9 +2428,5 @@
         }
       ]
     }
-  ],
-  "children": [],
-  "designation_date": "2024-10-22",
-  "unaliased": "B.1.1.529.2.86.1.1.11.1.2.3.8",
-  "parent": "KP.2.3"
+  ]
 }

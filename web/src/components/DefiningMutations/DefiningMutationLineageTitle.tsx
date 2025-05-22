@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react'
 import { styled } from 'styled-components'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { DefiningMutationCluster } from 'src/io/getDefiningMutationsClusters'
+import { DefiningMutationListElement } from 'src/io/getDefiningMutationsClusters'
 import { PageHeading } from 'src/components/Common/PageHeading'
 
 export interface DefiningMutationsLineageTitleProps {
-  cluster: DefiningMutationCluster | undefined
+  cluster: DefiningMutationListElement | undefined
 }
 
 export function DefiningMutationLineageTitle({ cluster }: DefiningMutationsLineageTitleProps) {
@@ -26,7 +26,7 @@ export function DefiningMutationLineageTitle({ cluster }: DefiningMutationsLinea
       return t('Defining mutations')
     }
 
-    return t('Defining mutations for {{lineage}}', { lineage: cluster.lineage })
+    return t('Defining mutations for {{lineage}}', { lineage: cluster.pangoLineage })
   }, [cluster, t])
 
   return (

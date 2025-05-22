@@ -1,20 +1,20 @@
 import React from 'react'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { DefiningMutationCluster } from 'src/io/getDefiningMutationsClusters'
+import { DefiningMutationListElement } from 'src/io/getDefiningMutationsClusters'
 import { LineageBadge } from 'src/components/Common/Badges/LineageBadge'
 
-export function DefiningMutationsInfo({ cluster }: { cluster: DefiningMutationCluster }) {
+export function DefiningMutationsInfo({ cluster }: { cluster: DefiningMutationListElement }) {
   const { t } = useTranslationSafe()
 
   return (
     <div className={`d-flex flex-column gap-2`}>
       <div>
         <span>{t('Parent lineage')}</span>
-        <ParentLineageBadge parentLineage={cluster.parent} />
+        <ParentLineageBadge parentLineage={cluster.pangoParent ?? undefined} />
       </div>
       <div>
         <span>{t('Child lineages')}</span>
-        <ChildLineageBadges childLineages={cluster.children} />
+        <ChildLineageBadges childLineages={cluster.pangoChildren ?? undefined} />
       </div>
       <div>
         <span>{t('Designation date')}</span>
