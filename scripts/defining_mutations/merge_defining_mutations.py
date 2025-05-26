@@ -22,7 +22,7 @@ def merge_clusters_data(hand_curated_clades: pl.DataFrame, auto_generated_lineag
 
     nextclade_tree = customize_nextclade_tree(parse_nextclade_tree(fetch_nextclade_tree()), clusters_override)
     clusters_with_nextclade = combined_clusters.join(nextclade_tree, on=['pango_lineage', 'nextstrain_clade'],
-                                                     how='left', nulls_equal=True)
+                                                     how='full', nulls_equal=True, coalesce=True, maintain_order='left_right')
     return clusters_with_nextclade
 
 

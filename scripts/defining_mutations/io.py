@@ -44,6 +44,12 @@ def load_auto_generated_data(path) -> tuple[pl.DataFrame, pl.DataFrame]:
          'nucDeletionsReverted': 'nuc_del_rev_wuhan',
          'aaDeletionsReverted': 'aa_del_rev_wuhan',
          }
+    ).with_columns(
+        pl.col('pango_lineage').replace([""], [None]),
+        pl.col('pango_lineage_unaliased').replace([""], [None]),
+        pl.col('pango_parent').replace([""], [None]),
+        pl.col('nextstrain_clade').replace([""], [None]),
+        pl.col('designation_date').replace([""], [None])
     )
 
     lineages = rename.select(
@@ -52,7 +58,8 @@ def load_auto_generated_data(path) -> tuple[pl.DataFrame, pl.DataFrame]:
         'pango_parent',
         'pango_children',
         'nextstrain_clade',
-        'designation_date')
+        'designation_date',
+    )
 
     mutations = rename.select(
         'pango_lineage',

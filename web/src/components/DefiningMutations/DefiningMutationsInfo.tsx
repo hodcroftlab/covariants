@@ -92,7 +92,7 @@ function ParentLineageBadge({ parentLineage }: { parentLineage?: string }) {
 }
 
 function ChildLineageBadges({ childLineages }: { childLineages?: string[] }) {
-  if (childLineages === undefined) {
+  if (childLineages === undefined || childLineages.length === 0) {
     return <div>none</div>
   }
 

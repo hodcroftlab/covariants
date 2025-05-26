@@ -14,7 +14,7 @@ from tests.defining_mutations.config import AUTO_GENERATED_TEST_DIR, AUTO_GENERA
 def test_merge_lineages():
     hand_curated_clades, auto_generated_lineages, _, _ = import_mutation_data(HAND_CURATED_TEST_DIR, AUTO_GENERATED_TEST_DIR, clusters_data, clade_to_lineage)
     merged_clusters = merge_clusters_data(hand_curated_clades, auto_generated_lineages, clade_to_lineage)
-    assert len(merged_clusters) == 48
+    assert len(merged_clusters) == 56
     assert merged_clusters.columns == ['pango_lineage',
                                        'nextstrain_clade',
                                        'pango_lineage_unaliased',

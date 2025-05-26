@@ -570,7 +570,7 @@
       "pango_lineage": "XBC",
       "nextstrain_clade": "recombinant",
       "pango_lineage_unaliased": "XBC",
-      "pango_parent": "",
+      "pango_parent": null,
       "pango_children": [
         "XBC.1",
         "XBC.2"
@@ -578,6 +578,106 @@
       "designation_date": "2022-09-24",
       "nextstrain_children": null,
       "nextstrain_parent": null
+    },
+    {
+      "pango_lineage": "B",
+      "nextstrain_clade": "19A",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [
+        "20A",
+        "19B"
+      ],
+      "nextstrain_parent": null
+    },
+    {
+      "pango_lineage": "B.1",
+      "nextstrain_clade": "20A",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [
+        "20B",
+        "21A",
+        "20C",
+        "21H",
+        "21D",
+        "21B",
+        "20E"
+      ],
+      "nextstrain_parent": "19A"
+    },
+    {
+      "pango_lineage": "B.1.1",
+      "nextstrain_clade": "20B",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [
+        "21M",
+        "21E",
+        "20J",
+        "20I",
+        "20F",
+        "20D"
+      ],
+      "nextstrain_parent": "20A"
+    },
+    {
+      "pango_lineage": "P.3",
+      "nextstrain_clade": "21E",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "20B"
+    },
+    {
+      "pango_lineage": "D.2",
+      "nextstrain_clade": "20F",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "20B"
+    },
+    {
+      "pango_lineage": "B.1.1.1",
+      "nextstrain_clade": "20D",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [
+        "21G"
+      ],
+      "nextstrain_parent": "20B"
+    },
+    {
+      "pango_lineage": "B.1.2",
+      "nextstrain_clade": "20G",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "20C"
+    },
+    {
+      "pango_lineage": "A",
+      "nextstrain_clade": "19B",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "nextstrain_children": [],
+      "nextstrain_parent": "19A"
     }
   ]
 }
