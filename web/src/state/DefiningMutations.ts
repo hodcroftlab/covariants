@@ -70,5 +70,7 @@ export const DefiningMutationClusterAtomFamily = atomFamily({
 export function useDefiningMutationsCluster() {
   const clusterNameFromUrl = useClusterNameFromUrl()
   const allClusters = useRecoilValue(definingMutationClustersAtom)
-  return allClusters.find((cluster) => cluster.pangoLineage === clusterNameFromUrl)
+  return allClusters.find(
+    (cluster) => cluster.pangoLineage === clusterNameFromUrl || cluster.nextstrainClade == clusterNameFromUrl,
+  )
 }
