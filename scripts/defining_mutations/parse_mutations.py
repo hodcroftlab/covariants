@@ -149,13 +149,14 @@ def match_nuc_to_aas(nuc: str | None, aas: list[str]) -> list[str] | None:
     # prefer same type mutations and check conditions sequentially to avoid hitting unwanted matches first just because of list ordering
     raw_matches = (
             find_aa_nuc_matches_by_condition(same_type_condition, exact_match_condition)
-            or find_aa_nuc_matches_by_condition(same_type_condition, approximate_match_condition)
             or find_aa_nuc_matches_by_condition(differing_type_condition, exact_match_condition)
+            or find_aa_nuc_matches_by_condition(same_type_condition, approximate_match_condition)
             or find_aa_nuc_matches_by_condition(differing_type_condition, approximate_match_condition)
     )
     if not raw_matches:
         return None
 
+    # make sure nuc mutations do not affect multiple aa mutations on the same gene
     filtered_matches = []
     current_gene = None
     for match in raw_matches:

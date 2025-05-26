@@ -1,5 +1,5 @@
 {
-  "lineage": "BA.5",
+  "pango_lineage": "BA.5",
   "nextstrain_clade": "22B",
   "mutations": [
     {
@@ -1718,9 +1718,5 @@
         }
       ]
     }
-  ],
-  "nextstrain_parent": "21L",
-  "nextstrain_children": [
-    "22E"
   ]
 }
