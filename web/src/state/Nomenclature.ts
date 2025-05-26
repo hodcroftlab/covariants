@@ -52,7 +52,9 @@ export const urlEnablePangolinAtom = atomDefault<boolean | undefined>({
   key: 'urlEnablePangolin',
   default: ({ get }) => {
     const { pathname, query } = parseUrl(Router.asPath)
-    const isPageWithEnabledVariantsQuery = ['/per-country', '/per-variant', '/cases'].includes(pathname)
+    const isPageWithEnabledVariantsQuery = ([PAGES.PER_COUNTRY, PAGES.PER_VARIANT, PAGES.CASES] as string[]).includes(
+      pathname,
+    )
     const variants = convertToArrayMaybe(getLodash(query, 'variant'))
     const shouldUpdateUrlQuery = variants && isPageWithEnabledVariantsQuery
 
