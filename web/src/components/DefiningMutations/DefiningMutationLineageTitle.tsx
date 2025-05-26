@@ -10,6 +10,7 @@ export interface DefiningMutationsLineageTitleProps {
 
 export function DefiningMutationLineageTitle({ cluster }: DefiningMutationsLineageTitleProps) {
   const { t } = useTranslationSafe()
+  const isClade = cluster?.nextstrainParent ?? cluster?.nextstrainChildren
 
   const subtitle = useMemo(() => {
     if (cluster === undefined || cluster.nextstrainClade === 'recombinant') {
@@ -17,16 +18,23 @@ export function DefiningMutationLineageTitle({ cluster }: DefiningMutationsLinea
     }
 
     return (
-      <ClusterNameSubtitle>{t('belongs to clade {{clade}}', { clade: cluster.nextstrainClade })}</ClusterNameSubtitle>
+      cluster.pangoLineage &&
+      (isClade ? (
+        <ClusterNameSubtitle>
+          {t('also known as clade {{clade}}', { clade: cluster.nextstrainClade })}
+        </ClusterNameSubtitle>
+      ) : (
+        <ClusterNameSubtitle>{t('belongs to clade {{clade}}', { clade: cluster.nextstrainClade })}</ClusterNameSubtitle>
+      ))
     )
-  }, [cluster, t])
+  }, [cluster, isClade, t])
 
   const title = useMemo(() => {
     if (cluster === undefined) {
       return t('Defining mutations')
     }
 
-    return t('Defining mutations for {{lineage}}', { lineage: cluster.pangoLineage })
+    return t('Defining mutations for {{lineage}}', { lineage: cluster.pangoLineage ?? cluster.nextstrainClade })
   }, [cluster, t])
 
   return (
