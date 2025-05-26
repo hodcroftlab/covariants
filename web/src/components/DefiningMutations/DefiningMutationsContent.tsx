@@ -49,7 +49,7 @@ function DefiningMutationsTableCard({ cluster }: { cluster: DefiningMutationList
             selectedSequence={selectedReference}
             setSelectedReference={setSelectedReference}
           />
-          <DownloadDefiningMutationsButton cluster={clusterData} />
+          <DownloadDefiningMutationsButton cluster={cluster} clusterData={clusterData} />
         </div>
         <div className="card-body">
           <DefiningMutationsTables currentCluster={clusterData} referenceSequenceName={selectedReference} />

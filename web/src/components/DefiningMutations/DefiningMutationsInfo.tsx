@@ -10,7 +10,7 @@ export function DefiningMutationsInfo({ cluster }: { cluster: DefiningMutationLi
   return (
     <div className={`d-flex flex-column gap-3`}>
       {isClade && <NextstrainInfo cluster={cluster} />}
-      {cluster.pangoLineage && <PangoInfo cluster={cluster} />}
+      {cluster?.pangoLineage && <PangoInfo cluster={cluster} />}
     </div>
   )
 }
