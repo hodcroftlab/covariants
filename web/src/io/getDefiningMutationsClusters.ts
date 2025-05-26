@@ -76,6 +76,7 @@ const definingMutationsClusterListElementSchemaRaw = z.object({
   designation_date: z.string().nullable(),
   nextstrain_parent: z.string().nullable(),
   nextstrain_children: z.string().array().nullable(),
+  who: z.string().nullable(),
 })
 
 const definingMutationsClusterListElementSchema = definingMutationsClusterListElementSchemaRaw.transform(
@@ -88,6 +89,7 @@ const definingMutationsClusterListElementSchema = definingMutationsClusterListEl
     designation_date,
     nextstrain_parent,
     nextstrain_children,
+    who,
   }) => ({
     pangoLineage: pango_lineage,
     nextstrainClade: nextstrain_clade,
@@ -97,6 +99,7 @@ const definingMutationsClusterListElementSchema = definingMutationsClusterListEl
     designationDate: designation_date,
     nextstrainParent: nextstrain_parent,
     nextstrainChildren: nextstrain_children,
+    who,
   }),
 )
 
