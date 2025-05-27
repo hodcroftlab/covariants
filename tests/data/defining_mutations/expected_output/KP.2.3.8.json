@@ -592,24 +592,24 @@
               "gene": "S",
               "ref": "S",
               "pos": 31,
-              "alt": "-"
+              "alt": "S"
             }
           ],
           "nuc_mutations": [
             {
               "ref": "T",
               "pos": 21653,
-              "alt": "-"
+              "alt": "T"
             },
             {
               "ref": "C",
               "pos": 21654,
-              "alt": "-"
+              "alt": "C"
             },
             {
               "ref": "T",
               "pos": 21655,
-              "alt": "-"
+              "alt": "T"
             }
           ],
           "contains_reversion": true
