@@ -68,7 +68,7 @@ G22992A	S:S477N
 C22995A	S:T478K				
 A23013C	S:E484A				
 T23018G	S:F486V				
-A23040A	S:Q493Q			y	Note mutation S:Q493R (in 21L) is reverted here
+A23040A	S:Q493Q			y	Note mutation S:Q493R/23040G (in 21L) is reverted here
 A23055G	S:Q498R				
 A23063T	S:N501Y				
 T23075C	S:Y505H				
@@ -88,7 +88,7 @@ G26529A	M:D3N
 C26577G	M:Q19E				
 G26709A	M:A63T				
 C26858C				y	Reverted relative to 21L
-G27382G	ORF6:D61D			y	Note mutation in ORF6:D61L (in 21L) is reverted here
+G27382G	ORF6:D61D			y	Note mutation in ORF6:D61L/27382C (in 21L) is reverted here
 A27259A				y	Reverted realtive to 21L
 G27382G				y	Reverted relative to 21L
 A27383A				y	Reverted relative to 21L

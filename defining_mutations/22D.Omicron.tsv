@@ -62,12 +62,12 @@ G22775A	S:D405N
 A22786C	S:R408S				
 G22813T	S:K417N				
 T22882G	S:N440K				
-G22898A	S:G446S		y	y	Is a reversion to 21M (parent's parent), not ancestral
+G22898A	S:G446S		y	y	Is a reversion to 21M (22D grandparent - 22898A/S:446S), not ancestral (G22898/S:G446)
 T22942G	S:N460K		y		
 G22992A	S:S477N				
 C22995A	S:T478K				
 A23013C	S:E484A				
-G23040A	S:R493Q		y	y	Reversion of the mutation S:Q493R in 21L (reversion occurs on an internal node above 22D & others)
+A23040A	S:Q493Q		y	y	Reversion of the mutation S:Q493R (A23040G) in 21L (reversion occurs on an internal node above 22D & others)
 A23055G	S:Q498R				
 A23063T	S:N501Y				
 T23075C	S:Y505H				
