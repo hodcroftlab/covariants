@@ -148,8 +148,17 @@ def process_auto_generated_data(mutations: pl.DataFrame) -> pl.DataFrame:
         .drop_nulls('nuc_mutation')
     )
 
+    reversions_reformatted = mutations_parsed.with_columns(
+        nuc_mutation=pl.when('reversion')
+        .then(pl.col('nuc_mutation').struct.with_fields(pl.field('ref'), pl.field('pos'), alt=pl.field('ref')))
+        .otherwise(pl.col('nuc_mutation')),
+        aa_mutations=pl.when('reversion')
+        .then(pl.col('aa_mutations').list.eval(pl.element().struct.with_fields(pl.field('ref'), pl.field('pos'), alt=pl.field('ref'))))
+        .otherwise(pl.col('aa_mutations'))
+    )
+
     aa_mutations_split = (
-        mutations_parsed.with_columns(
+        reversions_reformatted.with_columns(
             aa_mutation=pl.col('aa_mutations').list.first(),
             aa_mutation_2=pl.col('aa_mutations').list.slice(1)
         )
