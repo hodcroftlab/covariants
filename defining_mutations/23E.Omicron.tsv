@@ -76,8 +76,8 @@ T22942G	S:N460K
 G22992A	S:S477N				
 C22995A	S:T478K				
 A23013C	S:E484A				
-T23018C	S:F486P		y		
-T23019C	S:F486S				This is ancestral, above mutation makes it S:486P in 23F
+T23018C	S:F486P		y		In 22F/XBB T23019C leads to S:F486S; T23018C then mutates S to P (S:S486P)
+T23019C	S:F486P				T23019C led to F486S in 22F/XBB, from parent BM.1.1.1, now contributes to making 486P alongside T23018C
 T23031C	S:F490S				
 G23040A	S:R493Q			y	
 A23055G	S:Q498R				
