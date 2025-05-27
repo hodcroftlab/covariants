@@ -45,8 +45,8 @@ A22194-	S:N211-		y		Deletion removes the last 2 bases of AA 211, first base of 2
 T22195-	S:N211-		y		Deletion removes the last 2 bases of AA 211, first base of 212
 T22196-	S:L212I		y		This change is a consequence of the prior deletion
 G22578A	S:G339D				
-T22673C	S:S371L		y		
-C22674T	S:S371L		y		
+T22673C	S:S371L		y		T22673C on top of C22674T causes S:S371F (in parent 21M) to change to S:S371L in 21K
+C22674T	S:S371L				TC22674T is present in 21M, causing S:S371F; the addition of T22673C in 21K causes S:S371L instead
 T22679C	S:S373P				
 C22686T	S:S375F				
 G22813T	S:K417N				

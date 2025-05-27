@@ -73,7 +73,7 @@ T22032C	S:F157S
 C22033A	S:F157S				
 A22034G	S:R158G				
 T22928C	S:F456L				
-G23040A	S:R493Q			y	Reversion from 21L (A23040G)
+A23040A	S:Q493Q			y	Reversion relative to 21L (which has 23040G/S:493R)
 A22194-	S:N211-				Out of frame deletion, second & third bases of 211, first of 212
 T22195-	S:N211-				Out of frame deletion, second & third bases of 211, first of 212
 T22196-	S:L212I				This change is a consequence of the prior deletion
@@ -109,8 +109,8 @@ C23039G	S:Q493E		y
 G23009-	S:V483-				
 T23010-	S:V483-				
 T23011-	S:V483-				
-G23012A	S:E484K				
-G23013A	S:E484K			y	Reversion relative to 21L
+G23012A	S:E484K				G23012A combined with reversion 23013A in greatgrandparent 23I create S:E484K
+G23013A	S:E484K			y	The mutation G23013A is a reversion to Wuhan (23013A) in greatgrandparent 23I, but combined with G23012A, this creates S:E484K rather than a reversion to 484E
 T23018C	S:F486P				
 T23019C	S:F486P				
 A23055G	S:Q498R				

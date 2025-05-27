@@ -31,7 +31,7 @@ G15451A	ORF1b:G662S
 C15714T					
 C15738T					
 T15939C					
-C16342T	ORF1b:P959S		y	y	Reversion relative to 22F parent
+T16342T	ORF1b:S959S		y	y	Reversion relative to 22F parent (which has ORF1b:S959P/T16342C)
 C17410T	ORF1b:R1315C				
 T17859C					
 A18163G	ORF1b:I1566V				
@@ -79,7 +79,7 @@ A23013C	S:E484A
 T23018C	S:F486P		y		In 22F/XBB T23019C leads to S:F486S; T23018C then mutates S to P (S:S486P)
 T23019C	S:F486P				T23019C led to F486S in 22F/XBB, from parent BM.1.1.1, now contributes to making 486P alongside T23018C
 T23031C	S:F490S				
-G23040A	S:R493Q			y	
+A23040A	S:Q493Q			y	reversion inherited from the from BM.1.1.1 parent (relative to 21L which has 23040G/S:493R)
 A23055G	S:Q498R				
 A23063T	S:N501Y				
 T23075C	S:Y505H				

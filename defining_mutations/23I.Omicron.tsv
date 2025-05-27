@@ -65,7 +65,7 @@ T21994-	S:Y144-		y
 T22032C	S:F157S		y		
 C22033A	S:F157S		y		
 A22034G	S:R158G		y		
-G23040A	S:R493Q		y	y	Reversion of the mutation S:Q493R in 21L (reversion occurs on an internal node above 23I & others)
+A23040A	S:Q493Q		y	y	Reversion of the mutation S:Q493R in 21L (reversion occurs on an internal node above 23I & others)
 A22194-	S:N211-		y		Out of frame deletion, second & third bases of 211, first of 212
 T22195-	S:N211-		y		Out of frame deletion, second & third bases of 211, first of 212
 T22196-	S:L212I		y		This change is a consequence of the prior deletion
@@ -99,8 +99,8 @@ T23005A	S:N481K		y
 G23009-	S:V483-		y		
 T23010-	S:V483-		y		
 T23011-	S:V483-		y		
-G23012A	S:E484K		y		
-G23013A	S:E484K		y	y	Reversion relative to 21L
+G23012A	S:E484K		y		G23012A combined with reversion 23013A in 23I create S:E484K
+A23013A	S:E484K		y	y	The mutation G23013A is a reversion to Wuhan (23013A), but combined with G23012A, this creates S:E484K rather than a reversion to 484E
 T23018C	S:F486P		y		
 T23019C	S:F486P		y		
 A23055G	S:Q498R				
