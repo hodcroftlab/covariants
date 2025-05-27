@@ -47,7 +47,8 @@ function DefiningMutationsSearch() {
   const filterOption = useCallback((option: FilterOptionOption<DefiningMutationClusterMetaData>, input: string) => {
     const inputValue = input.toLowerCase()
     return (
-      option.data.pangoLineage?.toLowerCase().includes(inputValue) ??
+      // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+      option.data.pangoLineage?.toLowerCase().includes(inputValue) ||
       option.data.nextstrainClade.toLowerCase().includes(inputValue)
     )
   }, [])
