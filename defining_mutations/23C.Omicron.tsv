@@ -55,8 +55,8 @@ C22033A	S:F157L
 A22190G	S:I210V				
 T22200G	S:V213G				
 G22331A	S:G257S				
-G22577C	S:G339H				
-G22578A	S:G339H				
+G22577C	S:G339H				G22577C mutates the S:G339D present from the Omicron root to S:339H in parent 22D
+G22578A	S:G339H				G22578A/S:G339D is a mutation at the base of Omicron; the addition of G22577C in parent 22D means this is mutated again to 339H
 G22599C	S:R346T		y		
 C22674T	S:S371F				
 T22679C	S:S373P				
