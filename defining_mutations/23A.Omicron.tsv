@@ -106,8 +106,8 @@ T27384C	ORF6:D61L
 C27807T					
 G27915T	ORF8:G8*		y		
 A28271T					
-C28311T	N:P13L	ORF9b:P10S			This mutation causes ORG9b:P10S, but the adjacent mutation changes to P10F
-C28312T	N:P13L	ORF9b:P10F			This mutation on top of the one above, change ORf9b:P10S to P10F
+C28311T	N:P13L	ORF9b:P10F			C28311T causes ORG9b:P10S, but C28312T changes to P10F
+C28312T	N:P13L	ORF9b:P10F			C28312T on top of C28311T, changes ORf9b:P10S to P10F
 G28362-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
 A28363-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
 G28364-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
