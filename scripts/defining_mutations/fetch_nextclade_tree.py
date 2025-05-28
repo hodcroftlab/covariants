@@ -36,6 +36,8 @@ def parse_clade_name(name: str) -> tuple[str | None, str | None, str | None]:
     match = re.match(r"^(?P<clade>[1-9][0-9][A-Z])(?: \((?P<who>[A-Z][a-z]+|EU1)?,? *(?P<lineage>[A-Z]+(?:.[1-9][0-9]*?)*)?\))?$", name.strip())
     if not match:
         return None, None, None
+    if match['who'] == 'EU1':
+        return match['clade'], match['lineage'], None
     return match['clade'], match['lineage'], match['who']
 
 
