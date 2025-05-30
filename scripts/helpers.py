@@ -106,3 +106,16 @@ def to2week_ordinal_string(x):
     n = x.toordinal()
     monday = datetime.date.fromordinal(n - ((n - ref_monday) % 14))
     return monday.strftime("%Y-%m-%d")
+
+def to2week_ordinal_long_string(x):
+    n = x.toordinal()
+    monday = datetime.date.fromordinal(n - ((n - ref_monday) % 14))
+    return str(monday.isocalendar()[0]) + '-' + str(monday.isocalendar()[1]).zfill(2)
+
+def to2week_ordinal_year(x):
+    year, week = to2week_ordinal(x)
+    return year
+
+def to2week_ordinal_week(x):
+    year, week = to2week_ordinal(x)
+    return week
