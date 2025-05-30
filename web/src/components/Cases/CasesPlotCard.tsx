@@ -25,7 +25,7 @@ export interface CasesPlotCardProps {
 
 export function CasesPlotCard({ country, distribution, cluster_names, Icon }: CasesPlotCardProps) {
   return (
-    <Card className="m-2">
+    <Card>
       <CardHeader className="d-flex flex-sm-column">
         <PlotCardTitle>
           <FlagAlignment>

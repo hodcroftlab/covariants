@@ -136,7 +136,9 @@ export function DistributionSidebar({
 
   return (
     <Row className={'gx-0'}>
-      <Col>{enabledFilters.map((filterName) => get(availableFilters, filterName))}</Col>
+      <Col className="gap-2 flex-column d-flex">
+        {enabledFilters.map((filterName) => get(availableFilters, filterName))}
+      </Col>
     </Row>
   )
 }

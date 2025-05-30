@@ -1,5 +1,5 @@
 import React, { Suspense, useCallback, useMemo } from 'react'
-import { Card, CardBody, Col, Form, Input, Label, Row } from 'reactstrap'
+import { Col, Input, Label } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 import { styled } from 'styled-components'
 import { ErrorBoundary } from 'react-error-boundary'
@@ -53,7 +53,7 @@ function ClusterDistributionPlotSection() {
   }, [])
 
   return (
-    <WrapperFlex>
+    <WrapperFlex className={'gap-2'}>
       <SidebarFlex>
         <DistributionSidebar
           countries={countriesSelected}
@@ -69,36 +69,30 @@ function ClusterDistributionPlotSection() {
         />
       </SidebarFlex>
 
-      <MainFlex>
-        <StickyRow className={'gx-0'}>
-          <Col>
-            <Card className="m-2">
-              <CardBody className="px-3 py-2">
-                <Form>
-                  <Row className="row-cols-lg-auto gx-0 align-items-center">
-                    <SortByDropdown />
-                    <SortReverseCheckbox />
-                  </Row>
-                </Form>
-              </CardBody>
-            </Card>
-          </Col>
-        </StickyRow>
+      <MainFlex className={'d-flex flex-column gap-2'}>
+        <div className={'sticky-top'}>
+          <TooltipConfig />
+        </div>
 
-        <Row className={'gx-0'}>
-          <Col>
-            <ErrorBoundary FallbackComponent={FetchError}>
-              <Suspense fallback={LOADING}>
-                <ClusterDistributionComponents
-                  clustersSelected={clustersSelected}
-                  countriesSelected={countriesSelected}
-                />
-              </Suspense>
-            </ErrorBoundary>
-          </Col>
-        </Row>
+        <ErrorBoundary FallbackComponent={FetchError}>
+          <Suspense fallback={LOADING}>
+            <ClusterDistributionComponents clustersSelected={clustersSelected} countriesSelected={countriesSelected} />
+          </Suspense>
+        </ErrorBoundary>
       </MainFlex>
     </WrapperFlex>
+  )
+}
+
+export function TooltipConfig() {
+  return (
+    <div className="card">
+      <div className="card-header">Tooltip options</div>
+      <div className="card-body d-flex flex-column">
+        <SortByDropdown />
+        <SortReverseCheckbox />
+      </div>
+    </div>
   )
 }
 
@@ -121,7 +115,7 @@ export function SortByDropdown() {
   )
 
   return (
-    <Col className={'d-flex flex-row align-items-center justify-between me-2'}>
+    <div className={'d-flex flex-row align-items-center justify-between me-2'}>
       <Label for="per-variant-sort-by" className={'mb-0 me-2'}>
         {t('Tooltip sort by:')}
       </Label>
@@ -132,7 +126,7 @@ export function SortByDropdown() {
         onValueChange={handleSortByChange}
         isSearchable={false}
       />
-    </Col>
+    </div>
   )
 }
 
@@ -170,10 +164,3 @@ export function SortReverseCheckbox() {
     </Col>
   )
 }
-
-const StickyRow = styled(Row)`
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  align-self: flex-start;
-`

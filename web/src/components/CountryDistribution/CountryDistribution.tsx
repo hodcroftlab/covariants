@@ -71,7 +71,7 @@ function CountryDistributionPlotSection() {
   }, [region])
 
   return (
-    <WrapperFlex>
+    <WrapperFlex className={'gap-2'}>
       <SidebarFlex>
         <DistributionSidebar
           countries={countries}
@@ -89,20 +89,16 @@ function CountryDistributionPlotSection() {
       </SidebarFlex>
 
       <MainFlex>
-        <Row className={'gx-0'}>
-          <Col>
-            <ErrorBoundary FallbackComponent={FetchError}>
-              <Suspense fallback={LOADING}>
-                <CountryDistributionComponents
-                  countries={countries}
-                  clusters={clusters}
-                  region={region}
-                  iconComponent={iconComponent}
-                />
-              </Suspense>
-            </ErrorBoundary>
-          </Col>
-        </Row>
+        <ErrorBoundary FallbackComponent={FetchError}>
+          <Suspense fallback={LOADING}>
+            <CountryDistributionComponents
+              countries={countries}
+              clusters={clusters}
+              region={region}
+              iconComponent={iconComponent}
+            />
+          </Suspense>
+        </ErrorBoundary>
       </MainFlex>
     </WrapperFlex>
   )

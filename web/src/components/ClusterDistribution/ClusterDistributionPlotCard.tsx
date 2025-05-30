@@ -34,7 +34,7 @@ export function ClusterDistributionPlotCard({
   const pangoName = useRecoilValue(clusterDisplayNameToJoinedLineagesSelector(clusterDisplayName)) ?? clusterDisplayName
 
   return (
-    <Card className="m-2">
+    <Card>
       <CardHeader className="d-flex flex-sm-column">
         <PlotCardTitle>
           <GreyLink href={url}>{enablePangolin ? pangoName : clusterDisplayName}</GreyLink>

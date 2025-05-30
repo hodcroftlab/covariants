@@ -42,5 +42,5 @@ export function ClusterDistributionComponents({
       )),
     [clusterBuildNames, enabledCountries, withCountriesFiltered],
   )
-  return <Row className={'gx-0'}>{clusterDistributionComponents}</Row>
+  return <Row className={'g-2'}>{clusterDistributionComponents}</Row>
 }

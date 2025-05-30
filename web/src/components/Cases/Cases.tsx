@@ -1,5 +1,4 @@
 import React, { Suspense, useMemo } from 'react'
-import { Col, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 import { ErrorBoundary } from 'react-error-boundary'
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
@@ -50,7 +49,7 @@ function CasesPlotSection() {
   }, [])
 
   return (
-    <WrapperFlex>
+    <WrapperFlex className={'gap-2'}>
       <SidebarFlex>
         <DistributionSidebar
           countries={countries}
@@ -68,15 +67,11 @@ function CasesPlotSection() {
       </SidebarFlex>
 
       <MainFlex>
-        <Row className={'gx-0'}>
-          <Col>
-            <ErrorBoundary FallbackComponent={FetchError}>
-              <Suspense fallback={LOADING}>
-                <CasesComponents countries={countries} clusters={clusters} />
-              </Suspense>
-            </ErrorBoundary>
-          </Col>
-        </Row>
+        <ErrorBoundary FallbackComponent={FetchError}>
+          <Suspense fallback={LOADING}>
+            <CasesComponents countries={countries} clusters={clusters} />
+          </Suspense>
+        </ErrorBoundary>
       </MainFlex>
     </WrapperFlex>
   )
