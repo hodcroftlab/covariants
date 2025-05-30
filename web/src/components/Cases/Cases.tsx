@@ -15,6 +15,8 @@ import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
 import { clusterSidebarCollapsedAtoms, countriesSidebarCollapsedAtoms } from 'src/state/DistributionSidebar'
 import { updateUrlOnMismatch } from 'src/state/Clusters'
+import { TooltipConfig } from 'src/components/Common/tooltip/Tooltip'
+import { CasesPlotTooltipId } from 'src/components/Cases/CasesPlotTooltip'
 
 export function Cases() {
   const { t } = useTranslationSafe()
@@ -66,7 +68,11 @@ function CasesPlotSection() {
         />
       </SidebarFlex>
 
-      <MainFlex>
+      <MainFlex className={'d-flex flex-column gap-2'}>
+        <div className={'sticky-top'}>
+          <TooltipConfig columns={['cluster', 'estimatedCases', 'frequency']} tooltipId={CasesPlotTooltipId} />
+        </div>
+
         <ErrorBoundary FallbackComponent={FetchError}>
           <Suspense fallback={LOADING}>
             <CasesComponents countries={countries} clusters={clusters} />

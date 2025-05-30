@@ -1,5 +1,4 @@
 import React, { Suspense, useMemo } from 'react'
-import { Col, Row } from 'reactstrap'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { MdxContent } from 'src/i18n/getMdxContent'
@@ -24,6 +23,8 @@ import { perCountryDataIntroContentFilenameSelector } from 'src/state/PerCountry
 import { REGIONS } from 'src/state/Places'
 import { clusterSidebarCollapsedAtoms, countriesSidebarCollapsedAtoms } from 'src/state/DistributionSidebar'
 import { updateUrlOnMismatch } from 'src/state/Clusters'
+import { TooltipConfig } from 'src/components/Common/tooltip/Tooltip'
+import { CountryDistributionPlotTooltipId } from 'src/components/CountryDistribution/CountryDistributionPlotTooltip'
 
 export function CountryDistribution() {
   const { t } = useTranslationSafe()
@@ -49,6 +50,7 @@ export function CountryDistribution() {
 }
 
 const enabledFilters = ['clusters', 'countriesWithIcons']
+const tooltipColumns = ['cluster', 'estimatedCases', 'frequency']
 
 function CountryDistributionPlotSection() {
   const { t } = useTranslationSafe()
@@ -88,7 +90,10 @@ function CountryDistributionPlotSection() {
         />
       </SidebarFlex>
 
-      <MainFlex>
+      <MainFlex className={'d-flex flex-column gap-2'}>
+        <div className={'sticky-top'}>
+          <TooltipConfig columns={tooltipColumns} tooltipId={CountryDistributionPlotTooltipId} />
+        </div>
         <ErrorBoundary FallbackComponent={FetchError}>
           <Suspense fallback={LOADING}>
             <CountryDistributionComponents

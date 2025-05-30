@@ -1,14 +1,10 @@
-import { atom } from 'recoil'
+import { atomFamily } from 'recoil'
+import { SortDirection } from '@tanstack/react-table'
 
-export enum TooltipSortCriterion {
-  country = 'country',
-  frequency = 'frequency',
-}
-
-export const tooltipSortAtom = atom({
-  key: 'TooltipSort',
+export const tooltipSortAtomFamily = atomFamily<{ column: string; sortDirection: SortDirection }, string>({
+  key: 'TooltipSortAtomFamily',
   default: {
-    criterion: TooltipSortCriterion.frequency,
-    reversed: false,
+    column: 'frequency',
+    sortDirection: 'desc',
   },
 })
