@@ -1,5 +1,5 @@
 {
-  "lineage": "B.1.1.515",
+  "pango_lineage": "B.1.1.515",
   "nextstrain_clade": "20B",
   "mutations": [
     {
@@ -151,9 +151,5 @@
         }
       ]
     }
-  ],
-  "children": [],
-  "designation_date": "2021-03-15",
-  "unaliased": "B.1.1.515",
-  "parent": "B.1.1"
+  ]
 }

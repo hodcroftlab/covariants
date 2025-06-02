@@ -51,10 +51,14 @@ export const storedEnablePangolinAtom = atom<boolean>({
 export const urlEnablePangolinAtom = atomDefault<boolean | undefined>({
   key: 'urlEnablePangolin',
   default: ({ get }) => {
-    const { query } = parseUrl(Router.asPath)
+    const { pathname, query } = parseUrl(Router.asPath)
+    const isPageWithEnabledVariantsQuery = ([PAGES.PER_COUNTRY, PAGES.PER_VARIANT, PAGES.CASES] as string[]).includes(
+      pathname,
+    )
     const variants = convertToArrayMaybe(getLodash(query, 'variant'))
+    const shouldUpdateUrlQuery = variants && isPageWithEnabledVariantsQuery
 
-    if (variants) {
+    if (shouldUpdateUrlQuery) {
       const lineageMap = get(clusterDisplayNameToLineageMapSelector)
       const displayNameMap = get(clusterLineagesToDisplayNameMapSelector)
 

@@ -1,9 +1,8 @@
 import React from 'react'
-import { useRecoilValue } from 'recoil'
 import { NarrowPageContainer } from 'src/components/Common/ClusterSidebarLayout'
 import { Layout } from 'src/components/Layout/Layout'
 import { DefiningMutationLineageTitle } from 'src/components/DefiningMutations/DefiningMutationLineageTitle'
-import { DefiningMutationClusterAtomFamily, useDefiningMutationsCluster } from 'src/state/DefiningMutations'
+import { useDefiningMutationsCluster } from 'src/state/DefiningMutations'
 import { DefiningMutationsInfo } from 'src/components/DefiningMutations/DefiningMutationsInfo'
 import { DefiningMutationsNavigation } from 'src/components/DefiningMutations/DefiningMutationsNavigation'
 
@@ -20,8 +19,7 @@ export default function DefiningMutationsPage() {
 }
 
 function DefiningMutationsPageContent() {
-  const clusterName = useDefiningMutationsCluster()
-  const cluster = useRecoilValue(DefiningMutationClusterAtomFamily(clusterName))
+  const cluster = useDefiningMutationsCluster()
 
   return (
     <>

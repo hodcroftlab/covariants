@@ -54,38 +54,57 @@ const definingMutationsSchema = definingMutationsSchemaRaw.transform(({ referenc
 }))
 
 const definingMutationClusterSchemaRaw = z.object({
-  lineage: z.string(),
-  unaliased: z.string().optional(),
-  parent: z.string().optional(),
-  children: z.array(z.string()).optional(),
+  pango_lineage: z.string().nullable(),
   nextstrain_clade: z.string(),
-  designation_date: z.string().optional(),
   mutations: definingMutationsSchemaRaw.array(),
 })
 
 const definingMutationClusterSchema = definingMutationClusterSchemaRaw.transform(
-  ({ nextstrain_clade, designation_date, mutations, ...rest }) => ({
+  ({ nextstrain_clade, pango_lineage, mutations }) => ({
     nextstrainClade: nextstrain_clade,
-    designationDate: designation_date,
+    pangoLineage: pango_lineage,
     mutations: mutations.map((mutation) => definingMutationsSchema.parse(mutation)),
-    ...rest,
   }),
 )
 
-const definingMutationsClusterListElementSchemaRaw = z.object({
-  lineage: z.string(),
+const definingMutationsClusterMetaDataSchemaRaw = z.object({
+  pango_lineage: z.string().nullable(),
   nextstrain_clade: z.string(),
+  pango_lineage_unaliased: z.string().nullable(),
+  pango_parent: z.string().nullable(),
+  pango_children: z.array(z.string()).nullable(),
+  designation_date: z.string().nullable(),
+  nextstrain_parent: z.string().nullable(),
+  nextstrain_children: z.string().array().nullable(),
+  has_data: z.boolean(),
 })
 
-const definingMutationsClusterListElementSchema = definingMutationsClusterListElementSchemaRaw.transform(
-  ({ lineage, nextstrain_clade }) => ({
-    lineage,
+const definingMutationsClusterMetaDataSchema = definingMutationsClusterMetaDataSchemaRaw.transform(
+  ({
+    pango_lineage,
+    nextstrain_clade,
+    pango_lineage_unaliased,
+    pango_parent,
+    pango_children,
+    designation_date,
+    nextstrain_parent,
+    nextstrain_children,
+    has_data,
+  }) => ({
+    pangoLineage: pango_lineage,
     nextstrainClade: nextstrain_clade,
+    pangoLineageUnaliased: pango_lineage_unaliased,
+    pangoParent: pango_parent,
+    pangoChildren: pango_children,
+    designationDate: designation_date,
+    nextstrainParent: nextstrain_parent,
+    nextstrainChildren: nextstrain_children,
+    hasData: has_data,
   }),
 )
 
-const definingMutationClusterListSchemaRaw = z.object({
-  clusters: definingMutationsClusterListElementSchemaRaw.array(),
+const definingMutationClusterIndexFileSchemaRaw = z.object({
+  clusters: definingMutationsClusterMetaDataSchemaRaw.array(),
 })
 
 export type NucleotideMutation = z.infer<typeof nucleotideMutationSchema>
@@ -96,7 +115,9 @@ export type DefiningMutations = z.infer<typeof definingMutationsSchema>
 
 export type DefiningMutationCluster = z.infer<typeof definingMutationClusterSchema>
 export type DefiningMutationClusterRaw = z.infer<typeof definingMutationClusterSchemaRaw>
-export type DefiningMutationListElement = z.infer<typeof definingMutationsClusterListElementSchema>
+export type DefiningMutationClusterMetaData = z.infer<typeof definingMutationsClusterMetaDataSchema> & {
+  isClade: boolean
+}
 
 export function getMutationFromNucleotideMutation(nucleotideMutation: NucleotideMutation): Mutation {
   return {
@@ -115,12 +136,17 @@ export function getMutationFromAminoAcidMutation(aminoAcidMutation: AminoAcidMut
   }
 }
 
-export async function fetchDefiningMutationClusters() {
+export async function fetchDefiningMutationClusters(): Promise<DefiningMutationClusterMetaData[]> {
   const definingMutationClusters = await FETCHER.validatedFetch(
     '/data/definingMutations/definingMutationsClusters.json',
-    definingMutationClusterListSchemaRaw,
+    definingMutationClusterIndexFileSchemaRaw,
   )
-  return definingMutationsClusterListElementSchema.array().parse(definingMutationClusters.clusters)
+  return definingMutationsClusterMetaDataSchema
+    .array()
+    .parse(definingMutationClusters.clusters)
+    .map((cluster) => {
+      return { ...cluster, isClade: cluster.nextstrainParent != null || cluster.nextstrainChildren != null }
+    })
 }
 
 export async function fetchDefiningMutationsCluster(clusterName: string) {
