@@ -1,10 +1,7 @@
 import React, { useCallback, useId, useMemo } from 'react'
+import _ from 'lodash'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import {
-  DropdownOption,
-  stringsToOptionsWithLabels,
-  stringToOptionWithLabel,
-} from 'src/components/Common/DropdownOption'
+import { DropdownOption, stringsToOptions, stringToOption } from 'src/components/Common/DropdownOption'
 import { Dropdown } from 'src/components/Common/Dropdown'
 
 const style = { maxWidth: '300px' }
@@ -21,7 +18,7 @@ export function SelectReferenceDropdown({
   const { t } = useTranslationSafe()
   const id = useId()
 
-  const options = useMemo(() => stringsToOptionsWithLabels(referenceSequences, toSentenceCase), [referenceSequences])
+  const options = useMemo(() => stringsToOptions(referenceSequences), [referenceSequences])
 
   const onChange = useCallback(
     (newValue: DropdownOption<string>) => {
@@ -39,7 +36,8 @@ export function SelectReferenceDropdown({
         identifier={id}
         className={'width-5xs'}
         options={options}
-        value={stringToOptionWithLabel(selectedSequence, toSentenceCase)}
+        value={stringToOption(selectedSequence)}
+        formatOptionLabel={toSentenceCase}
         onOptionChange={onChange}
         isSearchable={true}
       />
@@ -47,10 +45,6 @@ export function SelectReferenceDropdown({
   )
 }
 
-const toSentenceCase = (str: string) => {
-  const s = str?.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)?.join(' ')
-  if (s === undefined) {
-    return str
-  }
-  return s.slice(0, 1).toUpperCase() + s.slice(1)
+const toSentenceCase = (option: DropdownOption<string>) => {
+  return _.capitalize(_.startCase(option.value))
 }
