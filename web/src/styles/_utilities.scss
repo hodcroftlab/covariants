@@ -1,0 +1,21 @@
+/* stylelint-disable @stylistic/function-parentheses-space-inside */
+// prettier and stylelint are at odds about bracket indentation, we chose prettier here
+@use 'sass:map';
+
+@import 'bootstrap/scss/utilities';
+
+// adding a new width utilities class according to https://getbootstrap.com/docs/5.3/utilities/api/#using-the-api
+$utilities: map.merge(
+  $utilities,
+  (
+    'width': (
+      property: width,
+      values: (
+        5xs: 12rem,
+      ),
+    ),
+  )
+);
+
+@import 'bootstrap/scss/utilities/api';
+/* stylelint-enable */

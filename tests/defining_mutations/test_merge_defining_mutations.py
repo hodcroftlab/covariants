@@ -21,6 +21,7 @@ def test_merge_lineages():
                                        'pango_parent',
                                        'pango_children',
                                        'designation_date',
+                                       'who',
                                        'nextstrain_children',
                                        'nextstrain_parent',
                                        'has_data']

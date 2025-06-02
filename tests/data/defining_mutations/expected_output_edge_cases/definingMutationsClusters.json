@@ -7,6 +7,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": "Alpha",
       "nextstrain_children": [],
       "nextstrain_parent": "20B",
       "has_data": false
@@ -18,6 +19,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": "Beta",
       "nextstrain_children": [],
       "nextstrain_parent": "20C",
       "has_data": false
@@ -29,6 +31,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": "Gamma",
       "nextstrain_children": [],
       "nextstrain_parent": "20B",
       "has_data": false
@@ -40,6 +43,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": "Delta",
       "nextstrain_children": [
         "21I",
         "21J"
@@ -54,6 +58,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": "Omicron",
       "nextstrain_children": [],
       "nextstrain_parent": "21M",
       "has_data": false
@@ -65,6 +70,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": "Omicron",
       "nextstrain_children": [
         "23I",
         "22D",
@@ -84,6 +90,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [],
       "nextstrain_parent": "21L",
       "has_data": false
@@ -95,6 +102,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [
         "22E"
       ],
@@ -108,6 +116,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [],
       "nextstrain_parent": "21L",
       "has_data": false
@@ -119,6 +128,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [
         "23C"
       ],
@@ -132,6 +142,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [],
       "nextstrain_parent": "22B",
       "has_data": true
@@ -143,6 +154,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": null,
       "nextstrain_parent": null,
       "has_data": true
@@ -154,6 +166,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [
         "23A",
         "23B",
@@ -170,6 +183,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [
         "23G"
       ],
@@ -183,6 +197,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [],
       "nextstrain_parent": "22F",
       "has_data": false
@@ -194,6 +209,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [],
       "nextstrain_parent": "22D",
       "has_data": false
@@ -205,6 +221,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [
         "23F"
       ],
@@ -218,6 +235,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [],
       "nextstrain_parent": "22F",
       "has_data": false
@@ -229,6 +247,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [
         "23H"
       ],
@@ -242,6 +261,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [],
       "nextstrain_parent": "23A",
       "has_data": false
@@ -253,6 +273,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [],
       "nextstrain_parent": "23F",
       "has_data": false
@@ -264,6 +285,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [
         "24A"
       ],
@@ -277,6 +299,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [
         "24B",
         "24H",
@@ -292,6 +315,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [
         "24C",
         "24G",
@@ -307,6 +331,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [
         "24E"
       ],
@@ -320,6 +345,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [],
       "nextstrain_parent": "21L",
       "has_data": false
@@ -331,6 +357,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [],
       "nextstrain_parent": "24C",
       "has_data": false
@@ -342,6 +369,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [],
       "nextstrain_parent": "24B",
       "has_data": false
@@ -353,6 +381,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [],
       "nextstrain_parent": "24B",
       "has_data": false
@@ -364,6 +393,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [],
       "nextstrain_parent": "24A",
       "has_data": false
@@ -375,6 +405,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [],
       "nextstrain_parent": "24A",
       "has_data": false
@@ -386,6 +417,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": null,
       "nextstrain_parent": null,
       "has_data": false
@@ -397,6 +429,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": "Kappa",
       "nextstrain_children": [],
       "nextstrain_parent": "20A",
       "has_data": false
@@ -408,6 +441,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": "Eta",
       "nextstrain_children": [],
       "nextstrain_parent": "20A",
       "has_data": false
@@ -419,6 +453,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": "Iota",
       "nextstrain_children": [],
       "nextstrain_parent": "20C",
       "has_data": false
@@ -430,6 +465,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": "Lambda",
       "nextstrain_children": [],
       "nextstrain_parent": "20D",
       "has_data": false
@@ -441,6 +477,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": "Mu",
       "nextstrain_children": [],
       "nextstrain_parent": "20A",
       "has_data": false
@@ -452,6 +489,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [],
       "nextstrain_parent": "20A",
       "has_data": false
@@ -463,6 +501,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": "Epsilon",
       "nextstrain_children": [],
       "nextstrain_parent": "20C",
       "has_data": false
@@ -474,6 +513,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": "Epsilon",
       "nextstrain_children": [],
       "nextstrain_parent": "20C",
       "has_data": false
@@ -485,6 +525,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [
         "21F",
         "21C",
@@ -501,6 +542,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": "Delta",
       "nextstrain_children": [],
       "nextstrain_parent": "21A",
       "has_data": false
@@ -512,6 +554,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": "Delta",
       "nextstrain_children": [],
       "nextstrain_parent": "21A",
       "has_data": false
@@ -523,6 +566,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": "Omicron",
       "nextstrain_children": [
         "21K",
         "21L"
@@ -585,6 +629,7 @@
         "B.61"
       ],
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [
         "20A",
         "19B"
@@ -599,6 +644,7 @@
       "pango_parent": "B.1.1",
       "pango_children": [],
       "designation_date": "2021-03-15",
+      "who": null,
       "nextstrain_children": null,
       "nextstrain_parent": null,
       "has_data": true
@@ -610,6 +656,7 @@
       "pango_parent": null,
       "pango_children": [],
       "designation_date": "2022-08-25",
+      "who": null,
       "nextstrain_children": null,
       "nextstrain_parent": null,
       "has_data": true
@@ -621,6 +668,7 @@
       "pango_parent": "KP.1.1.3",
       "pango_children": [],
       "designation_date": "2024-10-25",
+      "who": null,
       "nextstrain_children": null,
       "nextstrain_parent": null,
       "has_data": true
@@ -632,6 +680,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [
         "20B",
         "21A",
@@ -651,6 +700,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [
         "21M",
         "21E",
@@ -669,6 +719,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": "Theta",
       "nextstrain_children": [],
       "nextstrain_parent": "20B",
       "has_data": false
@@ -680,6 +731,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [],
       "nextstrain_parent": "20B",
       "has_data": false
@@ -691,6 +743,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [
         "21G"
       ],
@@ -704,6 +757,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [],
       "nextstrain_parent": "20C",
       "has_data": false
@@ -715,6 +769,7 @@
       "pango_parent": null,
       "pango_children": null,
       "designation_date": null,
+      "who": null,
       "nextstrain_children": [],
       "nextstrain_parent": "19A",
       "has_data": false

@@ -47,7 +47,8 @@ function DefiningMutationsSearch() {
   const filterOption = useCallback((option: FilterOptionOption<DefiningMutationClusterMetaData>, input: string) => {
     const inputValue = input.toLowerCase()
     return (
-      option.data.pangoLineage?.toLowerCase().includes(inputValue) ??
+      // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+      option.data.pangoLineage?.toLowerCase().includes(inputValue) ||
       option.data.nextstrainClade.toLowerCase().includes(inputValue)
     )
   }, [])
@@ -74,7 +75,16 @@ function DefiningMutationsVariantQuickSelect({
   cluster: DefiningMutationClusterMetaData | undefined
 }) {
   const clusters = useRecoilValue(clustersAtom)
-  const variants = useMemo(() => clusters.filter((cluster) => cluster.type === 'variant'), [clusters])
+  const variants = useMemo(
+    () =>
+      clusters
+        .filter((cluster) => cluster.type === 'variant')
+        .filter(
+          (cluster, idx, self) =>
+            idx === self.findIndex((c) => c.pangoLineages?.at(0)?.name === cluster.pangoLineages?.at(0)?.name),
+        ),
+    [clusters],
+  )
 
   const [showAll, setShowAll] = useState<boolean>(false)
   const { t } = useTranslationSafe()

@@ -76,6 +76,7 @@ const definingMutationsClusterMetaDataSchemaRaw = z.object({
   designation_date: z.string().nullable(),
   nextstrain_parent: z.string().nullable(),
   nextstrain_children: z.string().array().nullable(),
+  who: z.string().nullable(),
   has_data: z.boolean(),
 })
 
@@ -89,6 +90,7 @@ const definingMutationsClusterMetaDataSchema = definingMutationsClusterMetaDataS
     designation_date,
     nextstrain_parent,
     nextstrain_children,
+    who,
     has_data,
   }) => ({
     pangoLineage: pango_lineage,
@@ -99,6 +101,7 @@ const definingMutationsClusterMetaDataSchema = definingMutationsClusterMetaDataS
     designationDate: designation_date,
     nextstrainParent: nextstrain_parent,
     nextstrainChildren: nextstrain_children,
+    who,
     hasData: has_data,
   }),
 )
