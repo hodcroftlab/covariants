@@ -3,11 +3,13 @@ import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { DefiningMutationClusterMetaData } from 'src/io/getDefiningMutationsClusters'
 import { LineageBadge } from 'src/components/Common/Badges/LineageBadge'
 import { VariantBadge } from 'src/components/Common/Badges/VariantBadge'
+import { WhoBadge } from 'src/components/Common/Badges/WhoBadge'
 
 export function DefiningMutationsInfo({ cluster }: { cluster: DefiningMutationClusterMetaData }) {
   return (
     <div className={`d-flex flex-column gap-3`}>
       {cluster.isClade && <NextstrainInfo cluster={cluster} />}
+      {cluster.who && <WhoInfo whoName={cluster.who} />}
       {cluster.pangoLineage && <PangoInfo cluster={cluster} />}
     </div>
   )
@@ -47,6 +49,16 @@ function PangoInfo({ cluster }: { cluster: DefiningMutationClusterMetaData }) {
         <span>{t('Designation date')}</span>
         <div>{cluster.designationDate ?? 'none'}</div>
       </div>
+    </div>
+  )
+}
+
+function WhoInfo({ whoName }: { whoName: string }) {
+  const { t } = useTranslationSafe()
+  return (
+    <div className={`d-flex flex-column gap-2`}>
+      <h2 className={'mb-0 h5'}>{t('WHO')}</h2>
+      <WhoBadge name={whoName} />
     </div>
   )
 }

@@ -33,7 +33,7 @@ def merge_clusters_data(hand_curated_clades: pl.DataFrame, auto_generated_lineag
     )
     output = clusters_with_nextclade.select(
         'pango_lineage', 'nextstrain_clade', 'pango_lineage_unaliased', 'pango_parent', 'pango_children',
-        'designation_date', 'nextstrain_children', 'nextstrain_parent', 'has_data'
+        'designation_date', 'who', 'nextstrain_children', 'nextstrain_parent', 'has_data'
     )
     return output
 
