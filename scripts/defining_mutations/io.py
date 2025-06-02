@@ -4,19 +4,21 @@ import re
 
 import polars as pl
 
+
 def save_mutations_to_file(output: dict, output_dir: str):
     for lineage in output:
-        with open(os.path.join(output_dir, f'{lineage["lineage"]}.json'), 'w') as f:
+        with open(os.path.join(output_dir, f'{lineage["pango_lineage"] or lineage["nextstrain_clade"]}.json'),
+                  'w') as f:
             json.dump(lineage, f, indent=2)
 
 
-def save_lineages_to_file(lineages: pl.DataFrame, output_dir: str):
-    clusters = {'clusters': lineages.select('lineage', 'nextstrain_clade').to_dicts()}
+def save_clusters_to_file(clusters: pl.DataFrame, output_dir: str):
+    clusters = {'clusters': clusters.to_dicts()}
     with open(os.path.join(output_dir, 'definingMutationsClusters.json'), 'w') as f:
         json.dump(clusters, f, indent=2)
 
 
-def load_auto_generated_data(path):
+def load_auto_generated_data(path) -> tuple[pl.DataFrame, pl.DataFrame]:
     with open(path) as f:
         data = json.load(f)
 
@@ -25,7 +27,11 @@ def load_auto_generated_data(path):
     df = pl.from_records(raw_lineages)
 
     rename = df.rename(
-        {'nextstrainClade': 'nextstrain_clade',
+        {'lineage': 'pango_lineage',
+         'parent': 'pango_parent',
+         'children': 'pango_children',
+         'unaliased': 'pango_lineage_unaliased',
+         'nextstrainClade': 'nextstrain_clade',
          'designationDate': 'designation_date',
          'nucSubstitutions': 'nuc_sub_wuhan',
          'nucDeletions': 'nuc_del_wuhan',
@@ -40,18 +46,46 @@ def load_auto_generated_data(path):
          'nucDeletionsReverted': 'nuc_del_rev_wuhan',
          'aaDeletionsReverted': 'aa_del_rev_wuhan',
          }
+    ).with_columns(
+        pl.col('pango_lineage').replace([""], [None]),
+        pl.col('pango_lineage_unaliased').replace([""], [None]),
+        pl.col('pango_parent').replace([""], [None]),
+        pl.col('nextstrain_clade').replace([""], [None]),
+        pl.col('designation_date').replace([""], [None])
     )
 
-    lineages = rename.select(
-        'lineage',
-        'unaliased',
-        'parent',
-        'children',
-        'nextstrain_clade',
-        'designation_date')
+    lineages = (
+        rename
+        .with_columns(
+            has_data=
+            pl.col('nuc_sub_wuhan').list.len().gt(0)
+            .or_(
+                pl.col('nuc_del_wuhan').list.len().gt(0),
+                pl.col('nuc_sub_pango_parent').list.len().gt(0),
+                pl.col('nuc_del_pango_parent').list.len().gt(0),
+                pl.col('aa_sub_wuhan').list.len().gt(0),
+                pl.col('aa_del_wuhan').list.len().gt(0),
+                pl.col('aa_sub_pango_parent').list.len().gt(0),
+                pl.col('aa_del_pango_parent').list.len().gt(0),
+                pl.col('nuc_sub_rev_wuhan').list.len().gt(0),
+                pl.col('aa_sub_rev_wuhan').list.len().gt(0),
+                pl.col('nuc_del_rev_wuhan').list.len().gt(0),
+                pl.col('aa_del_rev_wuhan').list.len().gt(0)
+            )
+        )
+        .select(
+            'pango_lineage',
+            'pango_lineage_unaliased',
+            'pango_parent',
+            'pango_children',
+            'nextstrain_clade',
+            'designation_date',
+            'has_data'
+        )
+    )
 
     mutations = rename.select(
-        'lineage',
+        'pango_lineage',
         'nextstrain_clade',
         'nuc_sub_wuhan',
         'nuc_del_wuhan',
@@ -70,7 +104,7 @@ def load_auto_generated_data(path):
     return lineages, mutations
 
 
-def load_hand_curated_data(path):
+def load_hand_curated_data(path) -> pl.DataFrame:
     filename = os.path.basename(path)
     match = re.match(r'(?P<nextstrain_clade>[1-9][0-9][A-Z])', filename)
     if not match:

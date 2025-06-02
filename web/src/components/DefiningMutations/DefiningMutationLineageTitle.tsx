@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react'
 import { styled } from 'styled-components'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { DefiningMutationCluster } from 'src/io/getDefiningMutationsClusters'
+import { DefiningMutationClusterMetaData } from 'src/io/getDefiningMutationsClusters'
 import { PageHeading } from 'src/components/Common/PageHeading'
 
 export interface DefiningMutationsLineageTitleProps {
-  cluster: DefiningMutationCluster | undefined
+  cluster: DefiningMutationClusterMetaData | undefined
 }
 
 export function DefiningMutationLineageTitle({ cluster }: DefiningMutationsLineageTitleProps) {
@@ -17,7 +17,14 @@ export function DefiningMutationLineageTitle({ cluster }: DefiningMutationsLinea
     }
 
     return (
-      <ClusterNameSubtitle>{t('belongs to clade {{clade}}', { clade: cluster.nextstrainClade })}</ClusterNameSubtitle>
+      cluster.pangoLineage &&
+      (cluster.isClade ? (
+        <ClusterNameSubtitle>
+          {t('also known as clade {{clade}}', { clade: cluster.nextstrainClade })}
+        </ClusterNameSubtitle>
+      ) : (
+        <ClusterNameSubtitle>{t('belongs to clade {{clade}}', { clade: cluster.nextstrainClade })}</ClusterNameSubtitle>
+      ))
     )
   }, [cluster, t])
 
@@ -26,7 +33,7 @@ export function DefiningMutationLineageTitle({ cluster }: DefiningMutationsLinea
       return t('Defining mutations')
     }
 
-    return t('Defining mutations for {{lineage}}', { lineage: cluster.lineage })
+    return t('Defining mutations for {{lineage}}', { lineage: cluster.pangoLineage ?? cluster.nextstrainClade })
   }, [cluster, t])
 
   return (
