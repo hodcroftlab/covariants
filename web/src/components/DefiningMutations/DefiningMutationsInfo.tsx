@@ -1,25 +1,23 @@
 import React from 'react'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { DefiningMutationListElement } from 'src/io/getDefiningMutationsClusters'
+import { DefiningMutationClusterMetaData } from 'src/io/getDefiningMutationsClusters'
 import { LineageBadge } from 'src/components/Common/Badges/LineageBadge'
 import { VariantBadge } from 'src/components/Common/Badges/VariantBadge'
 
-export function DefiningMutationsInfo({ cluster }: { cluster: DefiningMutationListElement }) {
-  const isClade = cluster?.nextstrainParent ?? cluster?.nextstrainChildren
-
+export function DefiningMutationsInfo({ cluster }: { cluster: DefiningMutationClusterMetaData }) {
   return (
     <div className={`d-flex flex-column gap-3`}>
-      {isClade && <NextstrainInfo cluster={cluster} />}
-      {cluster?.pangoLineage && <PangoInfo cluster={cluster} />}
+      {cluster.isClade && <NextstrainInfo cluster={cluster} />}
+      {cluster.pangoLineage && <PangoInfo cluster={cluster} />}
     </div>
   )
 }
 
-function NextstrainInfo({ cluster }: { cluster: DefiningMutationListElement }) {
+function NextstrainInfo({ cluster }: { cluster: DefiningMutationClusterMetaData }) {
   const { t } = useTranslationSafe()
   return (
     <div className={`d-flex flex-column gap-2`}>
-      <h5 className={'mb-0'}>{t('Nextstrain')}</h5>
+      <h2 className={'mb-0 h5'}>{t('Nextstrain')}</h2>
       <div>
         <span>{t('Parent clade')}</span>
         <ParentCladeBadge parentClade={cluster.nextstrainParent ?? undefined} />
@@ -32,11 +30,11 @@ function NextstrainInfo({ cluster }: { cluster: DefiningMutationListElement }) {
   )
 }
 
-function PangoInfo({ cluster }: { cluster: DefiningMutationListElement }) {
+function PangoInfo({ cluster }: { cluster: DefiningMutationClusterMetaData }) {
   const { t } = useTranslationSafe()
   return (
     <div className={`d-flex flex-column gap-2`}>
-      <h5 className={'mb-0'}>{t('Pango')}</h5>
+      <h2 className={'mb-0 h5'}>{t('Pango')}</h2>
       <div>
         <span>{t('Parent lineage')}</span>
         <ParentLineageBadge parentLineage={cluster.pangoParent ?? undefined} />

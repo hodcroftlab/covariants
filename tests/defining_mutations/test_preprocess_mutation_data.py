@@ -32,7 +32,7 @@ def test_process_clusters():
 def test_process_hand_curated_data():
     clades, mutations = process_hand_curated_data(HAND_CURATED_TEST_DIR, clusters_data, clade_to_lineage)
     assert len(clades) == 44
-    assert clades.columns == ['pango_lineage', 'nextstrain_clade']
+    assert clades.columns == ['pango_lineage', 'nextstrain_clade', 'has_data']
     assert len(mutations) == 784
     assert mutations.columns == ['pango_lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2',
                                  'reference', 'notes', 'reversion']
@@ -48,7 +48,8 @@ def test_load_and_process_auto_generated_data():
                                 'pango_parent',
                                 'pango_children',
                                 'nextstrain_clade',
-                                'designation_date']
+                                'designation_date',
+                                'has_data']
     assert len(auto_generated_mutations) == 808
     assert auto_generated_mutations.columns == ['pango_lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation',
                                                 'aa_mutation_2', 'reference', 'reversion']
@@ -72,13 +73,15 @@ def test_import_mutation_data():
     assert len(hand_curated_clades) == 44
     assert len(auto_generated_lineages) == 5
     assert hand_curated_clades.columns == ['pango_lineage',
-                                           'nextstrain_clade']
+                                           'nextstrain_clade',
+                                           'has_data']
     assert auto_generated_lineages.columns == ['pango_lineage',
                                                'pango_lineage_unaliased',
                                                'pango_parent',
                                                'pango_children',
                                                'nextstrain_clade',
-                                               'designation_date']
+                                               'designation_date',
+                                               'has_data']
     assert len(hand_curated) == 784
     assert hand_curated.columns == ['pango_lineage',
                                     'nextstrain_clade',

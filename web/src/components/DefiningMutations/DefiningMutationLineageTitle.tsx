@@ -1,16 +1,15 @@
 import React, { useMemo } from 'react'
 import { styled } from 'styled-components'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { DefiningMutationListElement } from 'src/io/getDefiningMutationsClusters'
+import { DefiningMutationClusterMetaData } from 'src/io/getDefiningMutationsClusters'
 import { PageHeading } from 'src/components/Common/PageHeading'
 
 export interface DefiningMutationsLineageTitleProps {
-  cluster: DefiningMutationListElement | undefined
+  cluster: DefiningMutationClusterMetaData | undefined
 }
 
 export function DefiningMutationLineageTitle({ cluster }: DefiningMutationsLineageTitleProps) {
   const { t } = useTranslationSafe()
-  const isClade = cluster?.nextstrainParent ?? cluster?.nextstrainChildren
 
   const subtitle = useMemo(() => {
     if (cluster === undefined || cluster.nextstrainClade === 'recombinant') {
@@ -19,7 +18,7 @@ export function DefiningMutationLineageTitle({ cluster }: DefiningMutationsLinea
 
     return (
       cluster.pangoLineage &&
-      (isClade ? (
+      (cluster.isClade ? (
         <ClusterNameSubtitle>
           {t('also known as clade {{clade}}', { clade: cluster.nextstrainClade })}
         </ClusterNameSubtitle>
@@ -27,7 +26,7 @@ export function DefiningMutationLineageTitle({ cluster }: DefiningMutationsLinea
         <ClusterNameSubtitle>{t('belongs to clade {{clade}}', { clade: cluster.nextstrainClade })}</ClusterNameSubtitle>
       ))
     )
-  }, [cluster, isClade, t])
+  }, [cluster, t])
 
   const title = useMemo(() => {
     if (cluster === undefined) {

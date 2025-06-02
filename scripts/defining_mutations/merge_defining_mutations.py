@@ -14,16 +14,28 @@ from scripts.defining_mutations.clade_to_lineage_override import clade_to_lineag
 
 def merge_clusters_data(hand_curated_clades: pl.DataFrame, auto_generated_lineages: pl.DataFrame,
                         clusters_override: list[dict]) -> pl.DataFrame:
-    combined_clusters = hand_curated_clades.join(auto_generated_lineages, on=['pango_lineage', 'nextstrain_clade'],
-                                                 how='full', coalesce=True, maintain_order='left_right')
+    combined_clusters = (
+        hand_curated_clades.join(auto_generated_lineages, on=['pango_lineage', 'nextstrain_clade'],
+                                 how='full', coalesce=True, maintain_order='left_right')
+        .with_columns(pl.col('has_data').or_('has_data_right'))
+    )
     if not hand_curated_clades.join(auto_generated_lineages, on=['pango_lineage', 'nextstrain_clade'],
                                     how='anti').is_empty():
         logging.warning('Some hand curated lineages are not present in the auto-generated lineages')
 
     nextclade_tree = customize_nextclade_tree(parse_nextclade_tree(fetch_nextclade_tree()), clusters_override)
-    clusters_with_nextclade = combined_clusters.join(nextclade_tree, on=['pango_lineage', 'nextstrain_clade'],
-                                                     how='full', nulls_equal=True, coalesce=True, maintain_order='left_right')
-    return clusters_with_nextclade
+    clusters_with_nextclade = (
+        combined_clusters
+        .join(nextclade_tree, on=['pango_lineage', 'nextstrain_clade'],
+              how='full', nulls_equal=True, coalesce=True,
+              maintain_order='left_right')
+        .with_columns(pl.col('has_data').fill_null(False))
+    )
+    output = clusters_with_nextclade.select(
+        'pango_lineage', 'nextstrain_clade', 'pango_lineage_unaliased', 'pango_parent', 'pango_children',
+        'designation_date', 'nextstrain_children', 'nextstrain_parent', 'has_data'
+    )
+    return output
 
 
 def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mutations: pl.DataFrame) -> pl.DataFrame:

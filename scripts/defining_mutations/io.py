@@ -4,9 +4,11 @@ import re
 
 import polars as pl
 
+
 def save_mutations_to_file(output: dict, output_dir: str):
     for lineage in output:
-        with open(os.path.join(output_dir, f'{lineage["pango_lineage"] or lineage["nextstrain_clade"]}.json'), 'w') as f:
+        with open(os.path.join(output_dir, f'{lineage["pango_lineage"] or lineage["nextstrain_clade"]}.json'),
+                  'w') as f:
             json.dump(lineage, f, indent=2)
 
 
@@ -52,13 +54,34 @@ def load_auto_generated_data(path) -> tuple[pl.DataFrame, pl.DataFrame]:
         pl.col('designation_date').replace([""], [None])
     )
 
-    lineages = rename.select(
-        'pango_lineage',
-        'pango_lineage_unaliased',
-        'pango_parent',
-        'pango_children',
-        'nextstrain_clade',
-        'designation_date',
+    lineages = (
+        rename
+        .with_columns(
+            has_data=
+            pl.col('nuc_sub_wuhan').list.len().gt(0)
+            .or_(
+                pl.col('nuc_del_wuhan').list.len().gt(0),
+                pl.col('nuc_sub_pango_parent').list.len().gt(0),
+                pl.col('nuc_del_pango_parent').list.len().gt(0),
+                pl.col('aa_sub_wuhan').list.len().gt(0),
+                pl.col('aa_del_wuhan').list.len().gt(0),
+                pl.col('aa_sub_pango_parent').list.len().gt(0),
+                pl.col('aa_del_pango_parent').list.len().gt(0),
+                pl.col('nuc_sub_rev_wuhan').list.len().gt(0),
+                pl.col('aa_sub_rev_wuhan').list.len().gt(0),
+                pl.col('nuc_del_rev_wuhan').list.len().gt(0),
+                pl.col('aa_del_rev_wuhan').list.len().gt(0)
+            )
+        )
+        .select(
+            'pango_lineage',
+            'pango_lineage_unaliased',
+            'pango_parent',
+            'pango_children',
+            'nextstrain_clade',
+            'designation_date',
+            'has_data'
+        )
     )
 
     mutations = rename.select(

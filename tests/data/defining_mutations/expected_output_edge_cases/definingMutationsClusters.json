@@ -8,7 +8,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "20B"
+      "nextstrain_parent": "20B",
+      "has_data": false
     },
     {
       "pango_lineage": "B.1.351",
@@ -18,7 +19,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "20C"
+      "nextstrain_parent": "20C",
+      "has_data": false
     },
     {
       "pango_lineage": "P.1",
@@ -28,7 +30,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "20B"
+      "nextstrain_parent": "20B",
+      "has_data": false
     },
     {
       "pango_lineage": "B.1.617.2",
@@ -41,7 +44,8 @@
         "21I",
         "21J"
       ],
-      "nextstrain_parent": "20A"
+      "nextstrain_parent": "20A",
+      "has_data": false
     },
     {
       "pango_lineage": "BA.1",
@@ -51,7 +55,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "21M"
+      "nextstrain_parent": "21M",
+      "has_data": false
     },
     {
       "pango_lineage": "BA.2",
@@ -69,7 +74,8 @@
         "22A",
         "24D"
       ],
-      "nextstrain_parent": "21M"
+      "nextstrain_parent": "21M",
+      "has_data": false
     },
     {
       "pango_lineage": "BA.4",
@@ -79,7 +85,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "21L"
+      "nextstrain_parent": "21L",
+      "has_data": false
     },
     {
       "pango_lineage": "BA.5",
@@ -91,7 +98,8 @@
       "nextstrain_children": [
         "22E"
       ],
-      "nextstrain_parent": "21L"
+      "nextstrain_parent": "21L",
+      "has_data": true
     },
     {
       "pango_lineage": "BA.2.12.1",
@@ -101,7 +109,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "21L"
+      "nextstrain_parent": "21L",
+      "has_data": false
     },
     {
       "pango_lineage": "BA.2.75",
@@ -113,7 +122,8 @@
       "nextstrain_children": [
         "23C"
       ],
-      "nextstrain_parent": "21L"
+      "nextstrain_parent": "21L",
+      "has_data": false
     },
     {
       "pango_lineage": "BQ.1",
@@ -123,7 +133,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "22B"
+      "nextstrain_parent": "22B",
+      "has_data": true
     },
     {
       "pango_lineage": "BQ.1.1",
@@ -133,7 +144,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": null,
-      "nextstrain_parent": null
+      "nextstrain_parent": null,
+      "has_data": true
     },
     {
       "pango_lineage": "XBB",
@@ -148,7 +160,8 @@
         "23D",
         "23E"
       ],
-      "nextstrain_parent": "21L"
+      "nextstrain_parent": "21L",
+      "has_data": false
     },
     {
       "pango_lineage": "XBB.1.5",
@@ -160,7 +173,8 @@
       "nextstrain_children": [
         "23G"
       ],
-      "nextstrain_parent": "22F"
+      "nextstrain_parent": "22F",
+      "has_data": false
     },
     {
       "pango_lineage": "XBB.1.16",
@@ -170,7 +184,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "22F"
+      "nextstrain_parent": "22F",
+      "has_data": false
     },
     {
       "pango_lineage": "CH.1.1",
@@ -180,7 +195,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "22D"
+      "nextstrain_parent": "22D",
+      "has_data": false
     },
     {
       "pango_lineage": "XBB.1.9",
@@ -192,7 +208,8 @@
       "nextstrain_children": [
         "23F"
       ],
-      "nextstrain_parent": "22F"
+      "nextstrain_parent": "22F",
+      "has_data": false
     },
     {
       "pango_lineage": "XBB.2.3",
@@ -202,7 +219,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "22F"
+      "nextstrain_parent": "22F",
+      "has_data": false
     },
     {
       "pango_lineage": "EG.5.1",
@@ -214,7 +232,8 @@
       "nextstrain_children": [
         "23H"
       ],
-      "nextstrain_parent": "23D"
+      "nextstrain_parent": "23D",
+      "has_data": false
     },
     {
       "pango_lineage": "XBB.1.5.70",
@@ -224,7 +243,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "23A"
+      "nextstrain_parent": "23A",
+      "has_data": false
     },
     {
       "pango_lineage": "HK.3",
@@ -234,7 +254,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "23F"
+      "nextstrain_parent": "23F",
+      "has_data": false
     },
     {
       "pango_lineage": "BA.2.86",
@@ -246,7 +267,8 @@
       "nextstrain_children": [
         "24A"
       ],
-      "nextstrain_parent": "21L"
+      "nextstrain_parent": "21L",
+      "has_data": false
     },
     {
       "pango_lineage": "JN.1",
@@ -260,7 +282,8 @@
         "24H",
         "24I"
       ],
-      "nextstrain_parent": "23I"
+      "nextstrain_parent": "23I",
+      "has_data": false
     },
     {
       "pango_lineage": "JN.1.11.1",
@@ -274,7 +297,8 @@
         "24G",
         "24F"
       ],
-      "nextstrain_parent": "24A"
+      "nextstrain_parent": "24A",
+      "has_data": true
     },
     {
       "pango_lineage": "KP.3",
@@ -286,7 +310,8 @@
       "nextstrain_children": [
         "24E"
       ],
-      "nextstrain_parent": "24B"
+      "nextstrain_parent": "24B",
+      "has_data": false
     },
     {
       "pango_lineage": "XDV.1",
@@ -296,7 +321,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "21L"
+      "nextstrain_parent": "21L",
+      "has_data": false
     },
     {
       "pango_lineage": "KP.3.1.1",
@@ -306,7 +332,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "24C"
+      "nextstrain_parent": "24C",
+      "has_data": false
     },
     {
       "pango_lineage": "XEC",
@@ -316,7 +343,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "24B"
+      "nextstrain_parent": "24B",
+      "has_data": false
     },
     {
       "pango_lineage": "KP.2.3",
@@ -326,7 +354,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "24B"
+      "nextstrain_parent": "24B",
+      "has_data": false
     },
     {
       "pango_lineage": "LF.7",
@@ -336,7 +365,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "24A"
+      "nextstrain_parent": "24A",
+      "has_data": false
     },
     {
       "pango_lineage": "MV.1",
@@ -346,7 +376,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "24A"
+      "nextstrain_parent": "24A",
+      "has_data": false
     },
     {
       "pango_lineage": "LP.8.1",
@@ -356,7 +387,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": null,
-      "nextstrain_parent": null
+      "nextstrain_parent": null,
+      "has_data": false
     },
     {
       "pango_lineage": "B.1.617.1",
@@ -366,7 +398,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "20A"
+      "nextstrain_parent": "20A",
+      "has_data": false
     },
     {
       "pango_lineage": "B.1.525",
@@ -376,7 +409,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "20A"
+      "nextstrain_parent": "20A",
+      "has_data": false
     },
     {
       "pango_lineage": "B.1.526",
@@ -386,7 +420,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "20C"
+      "nextstrain_parent": "20C",
+      "has_data": false
     },
     {
       "pango_lineage": "C.37",
@@ -396,7 +431,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "20D"
+      "nextstrain_parent": "20D",
+      "has_data": false
     },
     {
       "pango_lineage": "B.1.621",
@@ -406,7 +442,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "20A"
+      "nextstrain_parent": "20A",
+      "has_data": false
     },
     {
       "pango_lineage": "B.1.177",
@@ -416,7 +453,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "20A"
+      "nextstrain_parent": "20A",
+      "has_data": false
     },
     {
       "pango_lineage": "B.1.427",
@@ -426,7 +464,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "20C"
+      "nextstrain_parent": "20C",
+      "has_data": false
     },
     {
       "pango_lineage": "B.1.429",
@@ -436,7 +475,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "20C"
+      "nextstrain_parent": "20C",
+      "has_data": false
     },
     {
       "pango_lineage": null,
@@ -451,7 +491,8 @@
         "20H",
         "20G"
       ],
-      "nextstrain_parent": "20A"
+      "nextstrain_parent": "20A",
+      "has_data": false
     },
     {
       "pango_lineage": null,
@@ -461,7 +502,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "21A"
+      "nextstrain_parent": "21A",
+      "has_data": false
     },
     {
       "pango_lineage": null,
@@ -471,7 +513,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "21A"
+      "nextstrain_parent": "21A",
+      "has_data": false
     },
     {
       "pango_lineage": null,
@@ -484,7 +527,8 @@
         "21K",
         "21L"
       ],
-      "nextstrain_parent": "20B"
+      "nextstrain_parent": "20B",
+      "has_data": true
     },
     {
       "pango_lineage": "B",
@@ -545,7 +589,8 @@
         "20A",
         "19B"
       ],
-      "nextstrain_parent": null
+      "nextstrain_parent": null,
+      "has_data": true
     },
     {
       "pango_lineage": "B.1.1.515",
@@ -555,7 +600,8 @@
       "pango_children": [],
       "designation_date": "2021-03-15",
       "nextstrain_children": null,
-      "nextstrain_parent": null
+      "nextstrain_parent": null,
+      "has_data": true
     },
     {
       "pango_lineage": "XAW",
@@ -565,7 +611,8 @@
       "pango_children": [],
       "designation_date": "2022-08-25",
       "nextstrain_children": null,
-      "nextstrain_parent": null
+      "nextstrain_parent": null,
+      "has_data": true
     },
     {
       "pango_lineage": "LP.5",
@@ -575,7 +622,8 @@
       "pango_children": [],
       "designation_date": "2024-10-25",
       "nextstrain_children": null,
-      "nextstrain_parent": null
+      "nextstrain_parent": null,
+      "has_data": true
     },
     {
       "pango_lineage": "B.1",
@@ -593,7 +641,8 @@
         "21B",
         "20E"
       ],
-      "nextstrain_parent": "19A"
+      "nextstrain_parent": "19A",
+      "has_data": false
     },
     {
       "pango_lineage": "B.1.1",
@@ -610,7 +659,8 @@
         "20F",
         "20D"
       ],
-      "nextstrain_parent": "20A"
+      "nextstrain_parent": "20A",
+      "has_data": false
     },
     {
       "pango_lineage": "P.3",
@@ -620,7 +670,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "20B"
+      "nextstrain_parent": "20B",
+      "has_data": false
     },
     {
       "pango_lineage": "D.2",
@@ -630,7 +681,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "20B"
+      "nextstrain_parent": "20B",
+      "has_data": false
     },
     {
       "pango_lineage": "B.1.1.1",
@@ -642,7 +694,8 @@
       "nextstrain_children": [
         "21G"
       ],
-      "nextstrain_parent": "20B"
+      "nextstrain_parent": "20B",
+      "has_data": false
     },
     {
       "pango_lineage": "B.1.2",
@@ -652,7 +705,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "20C"
+      "nextstrain_parent": "20C",
+      "has_data": false
     },
     {
       "pango_lineage": "A",
@@ -662,7 +716,8 @@
       "pango_children": null,
       "designation_date": null,
       "nextstrain_children": [],
-      "nextstrain_parent": "19A"
+      "nextstrain_parent": "19A",
+      "has_data": false
     }
   ]
 }

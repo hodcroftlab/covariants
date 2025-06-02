@@ -1,11 +1,11 @@
 import React, { useCallback, useMemo } from 'react'
-import { DefiningMutationCluster, DefiningMutationListElement } from 'src/io/getDefiningMutationsClusters'
+import { DefiningMutationCluster, DefiningMutationClusterMetaData } from 'src/io/getDefiningMutationsClusters'
 
 export function DownloadDefiningMutationsButton({
   cluster,
   clusterData,
 }: {
-  cluster: DefiningMutationListElement
+  cluster: DefiningMutationClusterMetaData
   clusterData: DefiningMutationCluster
 }) {
   const download = useCallback(() => {

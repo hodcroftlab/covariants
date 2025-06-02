@@ -2,7 +2,7 @@ import { atomFamily, selector, useRecoilValue } from 'recoil'
 import Router from 'next/router'
 import { atomAsync } from 'src/state/utils/atomAsync'
 import {
-  DefiningMutationListElement,
+  DefiningMutationClusterMetaData,
   fetchDefiningMutationClusters,
   fetchDefiningMutationsCluster,
 } from 'src/io/getDefiningMutationsClusters'
@@ -10,7 +10,7 @@ import { parseUrl } from 'src/helpers/parseUrl'
 import { takeFirstMaybe } from 'src/helpers/array'
 import { setUrlQuery } from 'src/helpers/urlQuery'
 
-export const definingMutationClustersAtom = atomAsync<DefiningMutationListElement[]>({
+export const definingMutationClustersAtom = atomAsync<DefiningMutationClusterMetaData[]>({
   key: 'definingMutations',
   async default() {
     return await fetchDefiningMutationClusters()

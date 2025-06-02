@@ -1,34 +1,41 @@
 import React, { Suspense, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { ErrorBoundary } from 'react-error-boundary'
-import { DefiningMutationListElement } from 'src/io/getDefiningMutationsClusters'
+import { styled } from 'styled-components'
+import { DefiningMutationClusterMetaData } from 'src/io/getDefiningMutationsClusters'
 import { SelectReferenceDropdown } from 'src/components/DefiningMutations/SelectReferenceDropdown'
 import { DefiningMutationsTables } from 'src/components/DefiningMutations/DefiningMutationsTables'
 import { DefiningMutationsDescription } from 'src/components/DefiningMutations/DefiningMutationsDescription'
 import { DownloadDefiningMutationsButton } from 'src/components/DefiningMutations/DownloadDefiningMutationsButton'
 import { DefiningMutationClusterAtomFamily } from 'src/state/DefiningMutations'
-import { DefiningMutationsFetchError } from 'src/components/Error/DefiningMutationsFetchError'
+import { FetchError } from 'src/components/Error/FetchError'
+import { LinkExternal } from 'src/components/Link/LinkExternal'
+import { URL_GITHUB } from 'src/constants'
 
-export function DefiningMutationsContent({ cluster }: { cluster: DefiningMutationListElement | undefined }) {
+export function DefiningMutationsContent({ cluster }: { cluster: DefiningMutationClusterMetaData | undefined }) {
   return (
     <div className={`d-flex flex-column`}>
       <DefiningMutationsDescription />
 
-      {cluster && (
-        <ErrorBoundary
-          key={`${cluster.pangoLineage}_${cluster.nextstrainClade}`}
-          FallbackComponent={DefiningMutationsFetchError}
-        >
-          <Suspense>
-            <DefiningMutationsTableCard cluster={cluster} />{' '}
-          </Suspense>
-        </ErrorBoundary>
-      )}
+      {cluster &&
+        (cluster.hasData ? (
+          <ErrorBoundary key={`${cluster.pangoLineage}_${cluster.nextstrainClade}`} FallbackComponent={FetchError}>
+            <Suspense>
+              <DefiningMutationsTableCard cluster={cluster} />{' '}
+            </Suspense>
+          </ErrorBoundary>
+        ) : (
+          <Container>
+            {'We seem to be missing mutation data for this cluster. You can help to provide defining mutations data '}
+            <LinkExternal href={`${URL_GITHUB}/tree/master/defining_mutations`}>{'here'}</LinkExternal>
+            {'.'}
+          </Container>
+        ))}
     </div>
   )
 }
 
-function DefiningMutationsTableCard({ cluster }: { cluster: DefiningMutationListElement }) {
+function DefiningMutationsTableCard({ cluster }: { cluster: DefiningMutationClusterMetaData }) {
   const clusterData = useRecoilValue(
     DefiningMutationClusterAtomFamily(cluster?.pangoLineage ?? cluster?.nextstrainClade),
   )
@@ -58,3 +65,9 @@ function DefiningMutationsTableCard({ cluster }: { cluster: DefiningMutationList
     )
   )
 }
+
+const Container = styled.p`
+  margin: 0 auto;
+  font-style: italic;
+  padding: 1rem 0;
+`

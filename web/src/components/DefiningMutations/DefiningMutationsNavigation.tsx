@@ -2,12 +2,12 @@ import { useRecoilValue } from 'recoil'
 import React, { useCallback, useMemo, useState } from 'react'
 import { Button } from 'reactstrap'
 import Select from 'react-select'
-import { DefiningMutationListElement } from 'src/io/getDefiningMutationsClusters'
+import { DefiningMutationClusterMetaData } from 'src/io/getDefiningMutationsClusters'
 import { clustersAtom } from 'src/state/Clusters'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
 import { definingMutationClustersAtom, setClusterNameToUrl } from 'src/state/DefiningMutations'
 
-export function DefiningMutationsNavigation({ cluster }: { cluster: DefiningMutationListElement | undefined }) {
+export function DefiningMutationsNavigation({ cluster }: { cluster: DefiningMutationClusterMetaData | undefined }) {
   return (
     <div className={`d-flex flex-column gap-2`}>
       <DefiningMutationsSearch />
@@ -28,9 +28,9 @@ function DefiningMutationsSearch() {
 
   const clusters = useRecoilValue(definingMutationClustersAtom)
 
-  const [value] = useState<null | DefiningMutationListElement>(null)
+  const [value] = useState<null | DefiningMutationClusterMetaData>(null)
 
-  const formatOptionLabel = useCallback((option: DefiningMutationListElement) => {
+  const formatOptionLabel = useCallback((option: DefiningMutationClusterMetaData) => {
     return (
       <div className="d-flex justify-content-between">
         <span>{option.nextstrainClade}</span>
@@ -38,13 +38,13 @@ function DefiningMutationsSearch() {
       </div>
     )
   }, [])
-  const onSelectChange = useCallback((newValue: DefiningMutationListElement | null) => {
+  const onSelectChange = useCallback((newValue: DefiningMutationClusterMetaData | null) => {
     if (newValue) {
       setClusterNameToUrl(newValue.pangoLineage ?? newValue.nextstrainClade ?? undefined)
     }
   }, [])
 
-  const filterOption = useCallback((option: FilterOptionOption<DefiningMutationListElement>, input: string) => {
+  const filterOption = useCallback((option: FilterOptionOption<DefiningMutationClusterMetaData>, input: string) => {
     const inputValue = input.toLowerCase()
     return (
       option.data.pangoLineage?.toLowerCase().includes(inputValue) ??
@@ -71,7 +71,7 @@ function DefiningMutationsSearch() {
 function DefiningMutationsVariantQuickSelect({
   cluster: currentCluster,
 }: {
-  cluster: DefiningMutationListElement | undefined
+  cluster: DefiningMutationClusterMetaData | undefined
 }) {
   const clusters = useRecoilValue(clustersAtom)
   const variants = useMemo(() => clusters.filter((cluster) => cluster.type === 'variant'), [clusters])

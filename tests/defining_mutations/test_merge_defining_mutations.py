@@ -22,7 +22,8 @@ def test_merge_lineages():
                                        'pango_children',
                                        'designation_date',
                                        'nextstrain_children',
-                                       'nextstrain_parent']
+                                       'nextstrain_parent',
+                                       'has_data']
 
 
 @pytest.mark.parametrize(

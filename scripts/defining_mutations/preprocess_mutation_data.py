@@ -1,3 +1,4 @@
+import logging
 import os
 
 import pandas as pd
@@ -210,12 +211,18 @@ def process_hand_curated_data(hand_curated_data_dir: str, clusters: dict, cluste
     clades = extract_hand_curated_clade_to_lineage_mapping(clusters, clusters_override)
 
     with_lineages = hand_curated_data.join(clades, on='nextstrain_clade', how='left')
-    assert with_lineages.filter(pl.col('pango_lineage').is_null()).filter(pl.col('nextstrain_clade').is_in(['20C', '21I', '21J', '21M']).not_()).is_empty()
+    if not with_lineages.filter(pl.col('pango_lineage').is_null()).is_empty():
+        logging.warning(f'Clades without lineages found {with_lineages.filter(pl.col("pango_lineage").is_null())}')
 
     mutations = with_lineages.select('pango_lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2',
                                      'reference', 'notes', 'reversion')
 
-    return clades, mutations
+    clades_with_data_info = clades.join(
+        clades.join(hand_curated_data, on='nextstrain_clade', how='semi').with_columns(has_data=True),
+        on=['nextstrain_clade', 'pango_lineage'], how='left', nulls_equal=True
+    ).with_columns(pl.col('has_data').fill_null(False))
+
+    return clades_with_data_info, mutations
 
 
 def import_mutation_data(hand_curated_data_dir: str, auto_generated_data_dir: str, clusters: dict, clusters_override: list[dict]) -> tuple[
