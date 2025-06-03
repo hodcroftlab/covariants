@@ -37,6 +37,13 @@ def test_process_hand_curated_data():
     assert mutations.columns == ['pango_lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2',
                                  'reference', 'notes', 'reversion']
 
+def test_mutation_chains():
+    clades, mutations = process_hand_curated_data(HAND_CURATED_TEST_DIR, clusters_data, clade_to_lineage)
+    multi_mutations = mutations.group_by(pl.col('nuc_mutation').struct.field('pos')).agg(pl.col('nextstrain_clade').unique(), pl.col('nuc_mutation').unique(), pl.col('nuc_mutation').unique().count().alias('n_muts')).filter(pl.col('n_muts').gt(1))
+    expanded_multi_mutations = mutations.group_by(pl.col('nuc_mutation').struct.field('pos')).agg(pl.struct(pl.col('nextstrain_clade'), pl.col('nuc_mutation')).unique(), pl.col('nuc_mutation').unique().count().alias('n_muts')).filter(pl.col('n_muts').gt(1)).explode('nextstrain_clade').unnest('nextstrain_clade').sort('pos', 'nuc_mutation', 'nextstrain_clade').drop('n_muts')
+    assert len(multi_mutations) == 10
+    assert len(expanded_multi_mutations) == 40
+
 
 def test_load_and_process_auto_generated_data():
     lineages, auto_generated_mutations_raw = load_auto_generated_data(
