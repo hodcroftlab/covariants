@@ -1,29 +1,26 @@
 import React from 'react'
-import { NarrowPageContainer } from 'src/components/Common/ClusterSidebarLayout'
-import { Layout } from 'src/components/Layout/Layout'
-import { DefiningMutationLineageTitle } from 'src/components/DefiningMutations/DefiningMutationLineageTitle'
+import { DefiningMutationsHeadline } from 'src/components/DefiningMutations/DefiningMutationsHeadline'
 import { useDefiningMutationsCluster } from 'src/state/DefiningMutations'
 import { DefiningMutationsInfo } from 'src/components/DefiningMutations/DefiningMutationsInfo'
 import { DefiningMutationsNavigation } from 'src/components/DefiningMutations/DefiningMutationsNavigation'
 
 import { DefiningMutationsContent } from 'src/components/DefiningMutations/DefiningMutationsContent'
+import { LimitedWidthPage } from 'src/components/Layout/PageSizes/LimitedWidthPage'
 
 export default function DefiningMutationsPage() {
   return (
-    <Layout>
-      <NarrowPageContainer>
-        <DefiningMutationsPageContent />
-      </NarrowPageContainer>
-    </Layout>
+    <LimitedWidthPage>
+      <DefiningMutations />
+    </LimitedWidthPage>
   )
 }
 
-function DefiningMutationsPageContent() {
+function DefiningMutations() {
   const cluster = useDefiningMutationsCluster()
 
   return (
     <>
-      <DefiningMutationLineageTitle cluster={cluster} />
+      <DefiningMutationsHeadline cluster={cluster} />
 
       <div className="row">
         <div className={'col-12 col-md-2 '}>
