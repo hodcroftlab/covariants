@@ -94,14 +94,14 @@
           "aa_mutations": [
             {
               "gene": "S",
-              "ref": "N",
+              "ref": "L",
               "pos": 460,
               "alt": "K"
             }
           ],
           "nuc_mutations": [
             {
-              "ref": "T",
+              "ref": "C",
               "pos": 22942,
               "alt": "A"
             }
@@ -111,14 +111,20 @@
           "aa_mutations": [
             {
               "gene": "N",
-              "ref": "P",
+              "ref": "K",
               "pos": 13,
               "alt": "L"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "L",
+              "pos": 10,
+              "alt": "F"
             }
           ],
           "nuc_mutations": [
             {
-              "ref": "C",
+              "ref": "A",
               "pos": 28312,
               "alt": "T"
             }

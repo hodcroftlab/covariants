@@ -58,7 +58,7 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
             nextstrain_clade=pl.coalesce(pl.col('nextstrain_clade_hand_curated'), pl.col('nextstrain_clade')),
             reference=pl.coalesce(pl.col('reference_hand_curated'), pl.col('reference')),
             aa_mutation=pl.coalesce(pl.col('aa_mutation_hand_curated'), pl.col('aa_mutation')),
-            aa_mutation_2=pl.concat_list('aa_mutation_2', 'aa_mutation_2_hand_curated').list.drop_nulls(),
+            aa_mutation_2=pl.concat_list(pl.col('aa_mutation_2').fill_null([]), pl.col('aa_mutation_2_hand_curated')).list.drop_nulls(),
             nuc_mutation=pl.coalesce(pl.col('nuc_mutation_hand_curated'), pl.col('nuc_mutation')),
             reversion=pl.coalesce(pl.col('reversion_hand_curated'), pl.col('reversion')))
         .drop('aa_mutation_hand_curated', 'aa_mutation_2_hand_curated', 'nuc_mutation_hand_curated',

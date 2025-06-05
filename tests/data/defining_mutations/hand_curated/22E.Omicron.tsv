@@ -1,40 +1,40 @@
-nuc_change	aa_change	aa_change_2	not_in_parent	reversion	notes
-C241T					
-T670G	ORF1a:S135R				
-C1931A	ORF1a:Q556K		y		
-C2790T	ORF1a:T842I				
-T2954C			y		
-C3037T					
-G4184A	ORF1a:G1307S				
-C4321T					
-C9344T	ORF1a:L3027F				
-A9424G					
-C9534T	ORF1a:T3090I				
-C10029T	ORF1a:T3255I				
-C10198T					
-G10447A					
-C10449A	ORF1a:P3395H				
-T11288-	ORF1a:S3675-				
-C11289-	ORF1a:S3675-				
-T11290-	ORF1a:S3675-				
-G11291-	ORF1a:G3676-				
-G11292-	ORF1a:G3676-				
-T11293-	ORF1a:G3676-				
-T11294-	ORF1a:F3677-				
-T11295-	ORF1a:F3677-				
-T11296-	ORF1a:F3677-				
-C11750T	ORF1a:L3829F		y		
-G12160A					
-C12880T					
-T14257C	ORF1b:Y264H		y		
-C14408T	ORF1b:P314L				
-C15714T					
-G16935A	ORF1b:M1156I		y		
-C17410T	ORF1b:R1315C				
-A18163G	ORF1b:I1566V				
-C19955T	ORF1b:T2163I				
-A20055G					
-C21618T	S:T19I				
+nuc_change	aa_change	aa_change_2	not_in_parent	reversion	notes	parent_ref_nuc	parent_ref_aa	parent_ref_aa_2
+C241T
+T670G	ORF1a:S135R
+C1931A	ORF1a:Q556K		y
+C2790T	ORF1a:T842I
+T2954C			y
+C3037T
+G4184A	ORF1a:G1307S
+C4321T
+C9344T	ORF1a:L3027F
+A9424G
+C9534T	ORF1a:T3090I
+C10029T	ORF1a:T3255I
+C10198T
+G10447A
+C10449A	ORF1a:P3395H
+T11288-	ORF1a:S3675-
+C11289-	ORF1a:S3675-
+T11290-	ORF1a:S3675-
+G11291-	ORF1a:G3676-
+G11292-	ORF1a:G3676-
+T11293-	ORF1a:G3676-
+T11294-	ORF1a:F3677-
+T11295-	ORF1a:F3677-
+T11296-	ORF1a:F3677-
+C11750T	ORF1a:L3829F		y
+G12160A
+C12880T
+T14257C	ORF1b:Y264H		y
+C14408T	ORF1b:P314L
+C15714T
+G16935A	ORF1b:M1156I		y
+C17410T	ORF1b:R1315C
+A18163G	ORF1b:I1566V
+C19955T	ORF1b:T2163I
+A20055G
+C21618T	S:T19I
 T21633-	S:L24-				Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27
 A21634-	S:L24-				Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27
 C21635-	S:P25-				Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27
@@ -44,60 +44,60 @@ C21638-	S:P26-				Deletion removes last 2 bases from AA 24, entirety of 25/26, f
 C21639-	S:P26-				Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27
 T21640-	S:P26-				Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27
 G21641-	S:A27S				This change is a consequence of the prior deletion
-T21765-	S:H69-				
-A21766-	S:H69-				
-C21767-	S:H69-				
-A21768-	S:V70-				
-T21769-	S:V70-				
-G21770-	S:V70-				
-G21987A	S:G142D				
-T22200G	S:V213G				
-G22578A	S:G339D				
-C22674T	S:S371F				
-T22679C	S:S373P				
-C22686T	S:S375F				
-A22688G	S:T376A				
-G22775A	S:D405N				
-A22786C	S:R408S				
-G22813T	S:K417N				
-T22882G	S:N440K				
-A22893C	S:K444T		y		
-T22917G	S:L452R				
-T22942A	S:N460K		y		
-G22992A	S:S477N				
-C22995A	S:T478K				
-A23013C	S:E484A				
-T23018G	S:F486V				
+T21765-	S:H69-
+A21766-	S:H69-
+C21767-	S:H69-
+A21768-	S:V70-
+T21769-	S:V70-
+G21770-	S:V70-
+G21987A	S:G142D
+T22200G	S:V213G
+G22578A	S:G339D
+C22674T	S:S371F
+T22679C	S:S373P
+C22686T	S:S375F
+A22688G	S:T376A
+G22775A	S:D405N
+A22786C	S:R408S
+G22813T	S:K417N
+T22882G	S:N440K
+A22893C	S:K444T		y
+T22917G	S:L452R
+T22942A	S:N460K		y			C	L
+G22992A	S:S477N
+C22995A	S:T478K
+A23013C	S:E484A
+T23018G	S:F486V
 A23040A	S:Q493Q			y	Note mutation S:Q493R (in 21L) is reverted here
-A23055G	S:Q498R				
-A23063T	S:N501Y				
-T23075C	S:Y505H				
-A23403G	S:D614G				
-C23525T	S:H655Y				
-T23599G	S:N679K				
-C23604A	S:P681H				
-C23854A	S:N764K				
-G23948T	S:D796Y				
-A24424T	S:Q954H				
-T24469A	S:N969K				
-C25000T					
-C25584T					
-C26060T	ORF3a:T223I				
-C26270T	E:T9I				
-G26529A	M:D3N				
-C26577G	M:Q19E				
-G26709A	M:A63T				
+A23055G	S:Q498R
+A23063T	S:N501Y
+T23075C	S:Y505H
+A23403G	S:D614G
+C23525T	S:H655Y
+T23599G	S:N679K
+C23604A	S:P681H
+C23854A	S:N764K
+G23948T	S:D796Y
+A24424T	S:Q954H
+T24469A	S:N969K
+C25000T
+C25584T
+C26060T	ORF3a:T223I
+C26270T	E:T9I
+G26529A	M:D3N
+C26577G	M:Q19E
+G26709A	M:A63T
 C26858C				y	Reverted relative to 21L
 G27382G	ORF6:D61D			y	Note mutation in ORF6:D61L (in 21L) is reverted here
 A27259A				y	Reverted relative to 21L
 G27382G				y	Reverted relative to 21L
 A27383A				y	Reverted relative to 21L
 T27384T				y	Reverted relative to 21L
-C27807T					
-C27889T					
-A28271T					
+C27807T
+C27889T
+A28271T
 C28311T	N:P13L	ORF9b:P10S			This mutation causes ORG9b:P10S, but the adjacent mutation changes to P10F
-C28312T	N:P13L	ORF9b:P10F	y		This mutation on top of the one above, change ORf9b:P10S to P10F
+C28312T	N:P13L	ORF9b:P10F	y		This mutation on top of the one above, change ORf9b:P10S to P10F	A	K	L
 G28362-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
 A28363-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
 G28364-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
@@ -107,34 +107,34 @@ C28367-	N:R32-	ORF9b:N28-			Deletion in-frame for ORF9b; in N, deletes last 2 ba
 G28368-	N:S33-	ORF9b:A29-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
 C28369-	N:S33-	ORF9b:A29-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
 A28370-	N:S33-	ORF9b:A29-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
-G28681T	N:E136D		y		
-G28881A	N:R203K				
-G28882A	N:R203K				
-G28883C	N:G204R				
-A29510C	N:S413R				
-G29734-					
-A29735-					
-G29736-					
-G29737-					
-C29738-					
-C29739-					
-A29740-					
-C29741-					
-G29742-					
-C29743-					
-G29744-					
-G29745-					
-A29746-					
-G29747-					
-T29748-					
-A29749-					
-C29750-					
-G29751-					
-A29752-					
-T29753-					
-C29754-					
-G29755-					
-A29756-					
-G29757-					
-T29758-					
-G29759-					
+G28681T	N:E136D		y
+G28881A	N:R203K
+G28882A	N:R203K
+G28883C	N:G204R
+A29510C	N:S413R
+G29734-
+A29735-
+G29736-
+G29737-
+C29738-
+C29739-
+A29740-
+C29741-
+G29742-
+C29743-
+G29744-
+G29745-
+A29746-
+G29747-
+T29748-
+A29749-
+C29750-
+G29751-
+A29752-
+T29753-
+C29754-
+G29755-
+A29756-
+G29757-
+T29758-
+G29759-
