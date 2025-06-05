@@ -39,7 +39,7 @@ export function CountryDistributionComponents({
     [enabledClusters, withClustersFiltered, iconComponent],
   )
 
-  return <Row className={'gx-0'}>{countryDistributionComponents}</Row>
+  return <Row className={'g-2'}>{countryDistributionComponents}</Row>
 }
 
 export interface ClusterDistributionComponentsProps {

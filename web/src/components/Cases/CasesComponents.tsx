@@ -31,5 +31,5 @@ export function CasesComponents({ clusters, countries }: { clusters: Cluster[]; 
       )),
     [enabledClusters, withClustersFiltered],
   )
-  return <Row className={'gx-0'}>{casesComponents}</Row>
+  return <Row className={'g-2'}>{casesComponents}</Row>
 }

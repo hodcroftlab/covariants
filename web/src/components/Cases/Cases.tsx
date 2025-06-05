@@ -1,5 +1,4 @@
 import React, { Suspense, useMemo } from 'react'
-import { Col, Row } from 'reactstrap'
 import { useRecoilState } from 'recoil'
 import { ErrorBoundary } from 'react-error-boundary'
 import { CenteredEditable, Editable } from 'src/components/Common/Editable'
@@ -16,6 +15,8 @@ import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
 import { clusterSidebarCollapsedAtoms, countriesSidebarCollapsedAtoms } from 'src/state/DistributionSidebar'
 import { updateUrlOnMismatch } from 'src/state/Clusters'
+import { TooltipConfig } from 'src/components/Common/tooltip/Tooltip'
+import { CasesPlotTooltipId } from 'src/components/Cases/CasesPlotTooltip'
 
 export function Cases() {
   const { t } = useTranslationSafe()
@@ -36,6 +37,7 @@ export function Cases() {
 }
 
 const enabledFilters = ['clusters', 'countriesWithIcons']
+const tooltipColumns = ['cluster', 'estimatedCases', 'frequency']
 
 function CasesPlotSection() {
   const { t } = useTranslationSafe()
@@ -50,7 +52,7 @@ function CasesPlotSection() {
   }, [])
 
   return (
-    <WrapperFlex>
+    <WrapperFlex className={'gap-2'}>
       <SidebarFlex>
         <DistributionSidebar
           countries={countries}
@@ -67,16 +69,16 @@ function CasesPlotSection() {
         />
       </SidebarFlex>
 
-      <MainFlex>
-        <Row className={'gx-0'}>
-          <Col>
-            <ErrorBoundary FallbackComponent={FetchError}>
-              <Suspense fallback={LOADING}>
-                <CasesComponents countries={countries} clusters={clusters} />
-              </Suspense>
-            </ErrorBoundary>
-          </Col>
-        </Row>
+      <MainFlex className={'d-flex flex-column gap-2'}>
+        <div className={'sticky-top'}>
+          <TooltipConfig columns={tooltipColumns} tooltipId={CasesPlotTooltipId} />
+        </div>
+
+        <ErrorBoundary FallbackComponent={FetchError}>
+          <Suspense fallback={LOADING}>
+            <CasesComponents countries={countries} clusters={clusters} />
+          </Suspense>
+        </ErrorBoundary>
       </MainFlex>
     </WrapperFlex>
   )

@@ -1,132 +1,140 @@
-import React from 'react'
-
-import { get, sortBy, reverse, uniqBy } from 'lodash'
-import { useRecoilValue } from 'recoil'
-import { styled } from 'styled-components'
+import React, { useMemo } from 'react'
 import type { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
+import { createColumnHelper, getCoreRowModel, getFilteredRowModel, getSortedRowModel } from '@tanstack/table-core'
+import { useReactTable } from '@tanstack/react-table'
+import { useRecoilValue } from 'recoil'
+import { FREQUENCY_DISPLAY_THRESHOLD, getWeekFromPayload, Tooltip } from 'src/components/Common/tooltip/Tooltip'
+import { ClusterDistributionDatum } from 'src/io/getPerClusterData'
+import { formatProportion } from 'src/helpers/format'
+import { TooltipTable } from 'src/components/Common/tooltip/TooltipTable'
 import { ColoredHorizontalLineIcon } from 'src/components/Common/ColoredHorizontalLineIcon'
-import { tooltipSortAtom, TooltipSortCriterion } from 'src/state/TooltipSort'
 import { theme } from 'src/theme'
-
-import type { ClusterDistributionDatum } from 'src/io/getPerClusterData'
-import { formatDateWeekly, formatProportion } from 'src/helpers/format'
+import { CountryStyle, getCountryStylesSelector } from 'src/state/CountryStyles'
 import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { getCountryStylesSelector } from 'src/state/CountryStyles'
+import { tooltipSortAtomFamily } from 'src/state/TooltipSort'
 
-const EPSILON = 1e-2
+export const ClusterDistributionPlotTooltipId = 'clusterDistribution'
 
-const Tooltip = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  padding: 5px 10px;
-  background-color: ${(props) => props.theme.plot.tooltip.background};
-  box-shadow: ${(props) => props.theme.shadows.slight};
-  border-radius: 3px;
-`
-
-const TooltipTitle = styled.h3`
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 5px auto;
-`
-
-const TooltipTable = styled.table`
-  padding: 30px 35px;
-  font-size: 0.9rem;
-  border: none;
-  min-width: 250px;
-
-  background-color: ${(props) => props.theme.plot.tooltip.table.backgroundEven};
-
-  & > tbody > tr:nth-child(odd) {
-    background-color: ${(props) => props.theme.plot.tooltip.table.backgroundOdd};
-  }
-`
-
-const TooltipFooter = styled.div`
-  margin: 5px;
-`
-
-const TooltipTableBody = styled.tbody``
-
-export type ClusterDistributionPlotTooltipProps = DefaultTooltipContentProps<number, string>
-
-export function ClusterDistributionPlotTooltip(props: ClusterDistributionPlotTooltipProps) {
-  const { t } = useTranslationSafe()
-  const { criterion, reversed } = useRecoilValue(tooltipSortAtom)
-  const getCountryStyles = useRecoilValue(getCountryStylesSelector)
-
-  const { payload } = props
-  if (!payload || payload.length === 0) {
+export function ClusterDistributionPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
+  const data = props.payload?.[0]?.payload as ClusterDistributionDatum | undefined
+  if (!data) {
     return null
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const data = payload[0]?.payload as ClusterDistributionDatum
+  return <TooltipInner rawData={data} />
+}
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const week = formatDateWeekly(data?.week)
+function TooltipInner({ rawData }: { rawData: ClusterDistributionDatum }) {
+  const { t } = useTranslationSafe()
+  const getCountryStyles = useRecoilValue(getCountryStylesSelector)
 
-  let payloadSorted = sortBy(payload, criterion === TooltipSortCriterion.country ? 'name' : 'value')
+  const data = useMemo(() => getRowDataFromPayload(rawData), [rawData])
+  const week = useMemo(() => getWeekFromPayload(rawData), [rawData])
 
-  // sortBy sorts in ascending order, but if sorting by frequency the natural/non-reversed order is descending
+  const { column: sortingColumn, sortDirection } = useRecoilValue(
+    tooltipSortAtomFamily(ClusterDistributionPlotTooltipId),
+  )
 
-  if (
-    (criterion !== TooltipSortCriterion.frequency && reversed) ||
-    (criterion === TooltipSortCriterion.frequency && !reversed)
-  ) {
-    payloadSorted = reverse(payloadSorted)
-  }
+  const sorting = useMemo(() => {
+    return {
+      id: sortingColumn,
+      desc: sortDirection === 'desc',
+    }
+  }, [sortDirection, sortingColumn])
 
-  const payloadUnique = uniqBy(payloadSorted, (payload) => payload.name)
-  const payloadNonZero = payloadUnique.filter((pld) => pld.value !== undefined && pld.value > EPSILON)
+  const table = useReactTable({
+    data,
+    columns: [tooltipTableCountryColumn({ t, getCountryStyles }), tooltipTableFrequencyColumn()],
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    initialState: {
+      sorting: [sorting],
+      columnFilters: [
+        {
+          id: 'frequency',
+          value: FREQUENCY_DISPLAY_THRESHOLD,
+        },
+      ],
+    },
+  })
 
   return (
-    <Tooltip>
-      <TooltipTitle>{week}</TooltipTitle>
-
-      <TooltipTable>
-        <thead>
-          <tr className="w-100">
-            <th className="px-2 text-left">{t('Country')}</th>
-            <th />
-            <th className="px-2 text-right">{t('Frequency')}</th>
-          </tr>
-        </thead>
-        <TooltipTableBody>
-          {payloadNonZero.map(({ name, value, payload }) => {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            const interpolated = !get(payload?.orig, name, false) // eslint-disable-line @typescript-eslint/no-unsafe-member-access
-            const country = name ?? '?'
-            return (
-              <tr key={name}>
-                <td className="px-2 text-left">
-                  <ColoredHorizontalLineIcon
-                    width={theme.plot.country.legend.lineIcon.width}
-                    height={theme.plot.country.legend.lineIcon.height}
-                    stroke={getCountryStyles(country).color}
-                    strokeWidth={theme.plot.country.legend.lineIcon.thickness}
-                    strokeDasharray={getCountryStyles(country).strokeDashArray}
-                  />
-                  <span className="ms-2">{t(country)}</span>
-                </td>
-                <td>{interpolated && '*'}</td>
-                <td className="px-2 text-right">
-                  {value !== undefined && value > EPSILON ? formatProportion(value) : '-'}
-                </td>
-              </tr>
-            )
-          })}
-        </TooltipTableBody>
-      </TooltipTable>
-
-      <TooltipFooter>
-        <small>{t('{{asterisk}} Interpolated values', { asterisk: '*' })}</small>
-      </TooltipFooter>
+    <Tooltip title={week}>
+      <TooltipTable table={table} caption={t('{{asterisk}} Interpolated values', { asterisk: '*' })} />
     </Tooltip>
   )
+}
+
+function getRowDataFromPayload(payload: ClusterDistributionDatum) {
+  const keys = Object.keys(payload.frequencies || {})
+  return keys.map((key) => {
+    return {
+      country: key,
+      frequency: payload.frequencies[key],
+      isInterpolated: Number(payload.interp[key]),
+      isOriginal: Number(payload.orig[key]),
+    }
+  })
+}
+
+interface ClusterDistributionTooltipRow {
+  frequency: number | undefined
+  isInterpolated: number
+  isOriginal: number
+  country: string
+}
+
+function tooltipTableFrequencyColumn() {
+  const columnHelper = createColumnHelper<ClusterDistributionTooltipRow>()
+
+  return columnHelper.accessor('frequency', {
+    header: 'Frequency',
+    cell: ({ getValue, row }) => {
+      const frequency = getValue()
+      const isInterpolated = Boolean(row.original.isInterpolated)
+      return (
+        <div className="d-flex gap-1">
+          <span>{formatProportion(frequency ?? 0)}</span>
+          {isInterpolated && <span>*</span>}
+        </div>
+      )
+    },
+    sortingFn: 'basic',
+    filterFn: (row, columnId, value) => {
+      const frequency = row.getValue(columnId)
+      return typeof frequency === 'number' && frequency > value
+    },
+  })
+}
+
+function tooltipTableCountryColumn({
+  t,
+  getCountryStyles,
+}: {
+  t: (t: string) => string
+  getCountryStyles: (country: string) => CountryStyle
+}) {
+  const columnHelper = createColumnHelper<ClusterDistributionTooltipRow>()
+
+  return columnHelper.accessor('country', {
+    header: 'Country',
+    cell: ({ getValue }) => {
+      const country = getValue()
+      return (
+        <div className="text-left">
+          <ColoredHorizontalLineIcon
+            width={theme.plot.country.legend.lineIcon.width}
+            height={theme.plot.country.legend.lineIcon.height}
+            stroke={getCountryStyles(country).color}
+            strokeWidth={theme.plot.country.legend.lineIcon.thickness}
+            strokeDasharray={getCountryStyles(country).strokeDashArray}
+          />
+          <span className="ms-2">{t(country)}</span>
+        </div>
+      )
+    },
+    sortingFn: 'text',
+    invertSorting: true, // Invert sorting to start with letter A on ascending sort
+  })
 }

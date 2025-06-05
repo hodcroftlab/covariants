@@ -168,7 +168,7 @@ export function CountryFilters({
   )
 
   return (
-    <CardCollapsible className="m-2" title={regionsTitle} collapsed={collapsed} setCollapsed={setCollapsed}>
+    <CardCollapsible title={regionsTitle} collapsed={collapsed} setCollapsed={setCollapsed}>
       <CardBody>
         <Container fluid>
           <Row className={'gx-0'}>

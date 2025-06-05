@@ -32,7 +32,7 @@ export function ClusterFilters({
   const [collapsed, setCollapsed] = useAtom(collapsedAtom)
 
   return (
-    <CardCollapsible className="m-2" title={t('Variants')} collapsed={collapsed} setCollapsed={setCollapsed}>
+    <CardCollapsible title={t('Variants')} collapsed={collapsed} setCollapsed={setCollapsed}>
       <CardBody>
         <Container fluid>
           <Row className={'gx-0'}>

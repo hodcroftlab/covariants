@@ -36,7 +36,7 @@ export function CountryDistributionPlotCard({
   const { t } = useTranslationSafe()
 
   return (
-    <Card className="m-2">
+    <Card>
       <CardHeader className="d-flex flex-sm-column">
         <PlotCardTitle>
           <FlagAlignment>

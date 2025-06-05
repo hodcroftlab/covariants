@@ -1,112 +1,176 @@
-import React from 'react'
-
-import { sortBy, reverse } from 'lodash'
-import { styled } from 'styled-components'
+import React, { useMemo } from 'react'
 import { Props as DefaultTooltipContentProps } from 'recharts/types/component/DefaultTooltipContent'
 
 import { useRecoilValue } from 'recoil'
-import { ColoredBox } from '../Common/ColoredBox'
-import { useTranslationSafe } from 'src/helpers/useTranslationSafe'
-import { formatDateBiweekly, formatInteger, formatProportion } from 'src/helpers/format'
-import { clusterDisplayNameToLineageMapSelector, getClusterColorsSelector } from 'src/state/Clusters'
+import { useReactTable } from '@tanstack/react-table'
+import { createColumnHelper, getCoreRowModel, getFilteredRowModel, getSortedRowModel } from '@tanstack/table-core'
+import { clusterDisplayNameToLineagesMapSelector, getClusterColorsSelector } from 'src/state/Clusters'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
+import { FREQUENCY_DISPLAY_THRESHOLD, getWeekFromPayload, Tooltip } from 'src/components/Common/tooltip/Tooltip'
+import { tooltipSortAtomFamily } from 'src/state/TooltipSort'
+import { TooltipTable } from 'src/components/Common/tooltip/TooltipTable'
+import { formatProportion } from 'src/helpers/format'
+import { ColoredBox } from 'src/components/Common/ColoredBox'
+import { ClusterNameText } from 'src/components/Cases/CasesPlotTooltip'
+
+type Payload = { total: number; week: number } & Record<string, number>
+
+export const CountryDistributionPlotTooltipId = 'countryDistribution'
 
 export function CountryDistributionPlotTooltip(props: DefaultTooltipContentProps<number, string>) {
-  const { t } = useTranslationSafe()
-  const getClusterColor = useRecoilValue(getClusterColorsSelector)
-  const enablePangolin = useRecoilValue(enablePangolinAtom)
-  const pangoLineageMap = useRecoilValue(clusterDisplayNameToLineageMapSelector)
+  const data = props.payload?.[0]?.payload as Payload | undefined
 
-  const { payload } = props
-  if (!payload || payload.length === 0) {
+  if (!data) {
     return null
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-argument
-  const week = formatDateBiweekly(payload[0]?.payload.week)
+  return <TooltipInner rawData={data} />
+}
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-argument
-  const total: number = formatInteger(payload[0]?.payload.total ?? 0)
+function TooltipInner({ rawData }: { rawData: Payload }) {
+  const getClusterColor = useRecoilValue(getClusterColorsSelector)
+  const enablePangolin = useRecoilValue(enablePangolinAtom)
+  const pangoLineagesMap = useRecoilValue(clusterDisplayNameToLineagesMapSelector)
 
-  const payloadSorted = reverse(sortBy(payload, 'value'))
-  const payloadNonZero = payloadSorted.filter((pld) => pld.value !== undefined && pld.value > EPSILON)
+  const data = useMemo(() => getRowDataFromPayload(rawData), [rawData])
+  const week = useMemo(() => getWeekFromPayload(rawData), [rawData])
+
+  const { column: sortingColumn, sortDirection } = useRecoilValue(
+    tooltipSortAtomFamily(CountryDistributionPlotTooltipId),
+  )
+
+  const sorting = useMemo(() => {
+    return {
+      id: sortingColumn,
+      desc: sortDirection === 'desc',
+    }
+  }, [sortDirection, sortingColumn])
+
+  const table = useReactTable({
+    data,
+    columns: [
+      tooltipTableVariantColumn({
+        getClusterColor,
+        enablePangolin,
+        pangoLineagesMap,
+      }),
+      tooltipTableNumberOfSequencesColumn(),
+      tooltipTableFrequencyColumn(),
+    ],
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    initialState: {
+      sorting: [sorting],
+      columnFilters: [
+        {
+          id: 'frequency',
+          value: FREQUENCY_DISPLAY_THRESHOLD,
+        },
+      ],
+    },
+  })
 
   return (
-    <Tooltip>
-      <TooltipTitle>{week}</TooltipTitle>
-
-      <TooltipTable>
-        <thead>
-          <tr className="w-100">
-            <th className="px-2 text-left">{t('Variant')}</th>
-            <th className="px-2 text-right">{t('Num seq')}</th>
-            <th className="px-2 text-right">{t('Freq')}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {payloadNonZero.map(({ name, value }) => (
-            <tr key={name}>
-              <td className="px-2 text-left">
-                <ColoredBox $color={getClusterColor(name ?? '')} $size={10} $aspect={1.66} />
-                <ClusterNameText>
-                  {enablePangolin ? ((name && pangoLineageMap.get(name)) ?? name) : name}
-                </ClusterNameText>
-              </td>
-              <td className="px-2 text-right">{value !== undefined && value > EPSILON ? formatInteger(value) : '-'}</td>
-              <td className="px-2 text-right">
-                {value !== undefined && value > EPSILON ? formatProportion(value / total) : '-'}
-              </td>
-            </tr>
-          ))}
-
-          <tr>
-            <td className="px-2 text-left">
-              <span>
-                <b>{t('Total')}</b>
-              </span>
-            </td>
-            <td className="px-2 text-right">{total}</td>
-            <td className="px-2 text-right">{'1.00'}</td>
-          </tr>
-        </tbody>
-      </TooltipTable>
+    <Tooltip title={week}>
+      <TooltipTable table={table} />
     </Tooltip>
   )
 }
 
-const EPSILON = 1e-2
+export interface CountryDistributionTooltipRow {
+  cluster: string
+  frequency: number | undefined
+  sequences: number | undefined
+}
 
-const Tooltip = styled.div`
-  display: flex;
-  flex-direction: column;
+function getRowDataFromPayload(payload: Payload) {
+  const keys = Object.keys(payload).filter((key) => key !== 'total' && key !== 'week')
+  return keys.map((key) => {
+    const numberOfSequences = payload[key]
+    return {
+      cluster: key,
+      frequency: numberOfSequences === undefined ? undefined : numberOfSequences / payload.total,
+      sequences: numberOfSequences,
+    }
+  })
+}
 
-  padding: 5px 10px;
-  background-color: ${(props) => props.theme.gray100};
-  box-shadow: ${(props) => props.theme.shadows.slight};
-  border-radius: 3px;
-`
+function tooltipTableFrequencyColumn() {
+  const columnHelper = createColumnHelper<CountryDistributionTooltipRow>()
 
-const TooltipTitle = styled.h1`
-  font-size: 1rem;
-  margin: 5px auto;
-  font-weight: 600;
-`
+  return columnHelper.accessor('frequency', {
+    header: 'Frequency',
+    cell: ({ getValue }) => {
+      const frequency = getValue()
+      return <span>{formatProportion(frequency ?? 0)}</span>
+    },
+    sortingFn: 'basic',
+    filterFn: (row, columnId, value) => {
+      const frequency = row.getValue(columnId)
+      return typeof frequency === 'number' && frequency > value
+    },
+    footer: '1',
+  })
+}
 
-const TooltipTable = styled.table`
-  padding: 30px 35px;
-  font-size: 0.9rem;
-  border: none;
-  min-width: 250px;
+export function tooltipTableVariantColumn({
+  getClusterColor,
+  enablePangolin,
+  pangoLineagesMap,
+}: {
+  getClusterColor: (clusterName: string) => string
+  enablePangolin: boolean
+  pangoLineagesMap: Map<string, string[]>
+}) {
+  const columnHelper = createColumnHelper<CountryDistributionTooltipRow>()
 
-  & > tbody > tr:nth-child(odd) {
-    background-color: ${(props) => props.theme.gray200};
-  }
-`
+  return columnHelper.accessor('cluster', {
+    header: 'Cluster',
+    cell: ({ getValue }) => {
+      const variant = getValue()
+      return (
+        <div className="text-left">
+          <ColoredBox $color={getClusterColor(variant ?? '')} $size={10} $aspect={1.66} />
+          <ClusterNameText>
+            {enablePangolin ? ((variant && pangoLineagesMap.get(variant)?.join(', ')) ?? variant) : variant}
+          </ClusterNameText>
+        </div>
+      )
+    },
+    sortingFn: (rowA, rowB) => {
+      const clusterA = String(rowA.original.cluster)
+      const clusterB = String(rowB.original.cluster)
 
-export const ClusterNameText = styled.span`
-  font-family: ${(props) => props.theme.font.monospace};
-`
+      const aCluster = enablePangolin
+        ? ((clusterA && pangoLineagesMap.get(clusterA)?.join(', ')) ?? clusterA)
+        : clusterA
+      const bCluster = enablePangolin
+        ? ((clusterB && pangoLineagesMap.get(clusterB)?.join(', ')) ?? clusterB)
+        : clusterB
+
+      return aCluster.localeCompare(bCluster)
+    },
+    invertSorting: true, // Invert sorting to start with letter A on ascending sort
+    footer: 'Total',
+  })
+}
+
+export function tooltipTableNumberOfSequencesColumn() {
+  const columnHelper = createColumnHelper<CountryDistributionTooltipRow>()
+
+  return columnHelper.accessor('sequences', {
+    header: 'Sequences',
+    cell: ({ getValue }) => {
+      const nSequences = getValue()
+      return <span>{nSequences}</span>
+    },
+    sortingFn: 'basic',
+    footer: ({ table }) => {
+      return table.getFilteredRowModel().rows.reduce((sum, row) => {
+        const value = row.getValue('sequences')
+        return sum + (typeof value === 'number' ? value : 0)
+      }, 0)
+    },
+  })
+}

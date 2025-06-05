@@ -4,7 +4,7 @@ import { atomAsync } from 'src/state/utils/atomAsync'
 import { fetchCountryStyles } from 'src/io/getCountryColor'
 import { lineStyleToStrokeDashArray } from 'src/helpers/lineStyleToStrokeDashArray'
 
-interface CountryStyle {
+export interface CountryStyle {
   color: string
   lineStyle: string
   strokeDashArray: string | undefined
