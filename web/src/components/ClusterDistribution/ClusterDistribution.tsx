@@ -14,16 +14,19 @@ import { FetchError } from 'src/components/Error/FetchError'
 import { LOADING } from 'src/components/Loading/Loading'
 import { clusterSidebarCollapsedAtoms, countriesSidebarCollapsedAtoms } from 'src/state/DistributionSidebar'
 import { updateUrlOnMismatch } from 'src/state/Clusters'
+import { getContentGithubUrl } from 'src/helpers/getContentGithubUrl'
 import { TooltipConfig } from 'src/components/Common/tooltip/Tooltip'
 import { ClusterDistributionPlotTooltipId } from 'src/components/ClusterDistribution/ClusterDistributionPlotTooltip'
 
 export function ClusterDistribution() {
   const { t } = useTranslationSafe()
 
+  const perClusterIntroFilename = 'PerClusterIntro.mdx'
+
   return (
     <div>
-      <CenteredEditable githubUrl="blob/master/content/PerClusterIntro.mdx">
-        <MdxContent filepath="PerClusterIntro.mdx" />
+      <CenteredEditable githubUrl={getContentGithubUrl({ filename: perClusterIntroFilename })}>
+        <MdxContent filepath={perClusterIntroFilename} />
       </CenteredEditable>
 
       <SharingPanel />

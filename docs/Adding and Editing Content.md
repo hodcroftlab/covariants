@@ -36,7 +36,7 @@ To modify an existing page, you need to modify the React component tree which st
 
 For example, `index.tsx` imports `web/src/components/Main/MainPage.tsx` - this is the code for the main page.
 
-Further, `faq.tsx` imports `web/src/components/Faq/FaqPage.tsx` which imports and uses `Faq` component taken from `content/Faq.md`.
+Further, `faq.tsx` imports `web/src/components/Faq/Faq.tsx` which imports and uses `Faq` component taken from `content/Faq.md`.
 
 
 ## Modify navigation links
