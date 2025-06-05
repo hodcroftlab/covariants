@@ -82,7 +82,7 @@ export interface CasesTooltipRow {
   estimatedCases: number | undefined
 }
 
-export function getRowDataFromPayload(payload: Payload) {
+function getRowDataFromPayload(payload: Payload) {
   const keys = Object.keys(payload).filter((key) => key !== 'total' && key !== 'week')
   return keys.map((key) => {
     const estimatedCases = payload[key]
@@ -94,7 +94,7 @@ export function getRowDataFromPayload(payload: Payload) {
   })
 }
 
-export function tooltipTableFrequencyColumn() {
+function tooltipTableFrequencyColumn() {
   const columnHelper = createColumnHelper<CasesTooltipRow>()
 
   return columnHelper.accessor('frequency', {
@@ -154,7 +154,7 @@ export function tooltipTableVariantColumn({
   })
 }
 
-export function tooltipTableEstimatedCasesColumn() {
+function tooltipTableEstimatedCasesColumn() {
   const columnHelper = createColumnHelper<CasesTooltipRow>()
 
   return columnHelper.accessor('estimatedCases', {

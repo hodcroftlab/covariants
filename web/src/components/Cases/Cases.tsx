@@ -37,6 +37,7 @@ export function Cases() {
 }
 
 const enabledFilters = ['clusters', 'countriesWithIcons']
+const tooltipColumns = ['cluster', 'estimatedCases', 'frequency']
 
 function CasesPlotSection() {
   const { t } = useTranslationSafe()
@@ -70,7 +71,7 @@ function CasesPlotSection() {
 
       <MainFlex className={'d-flex flex-column gap-2'}>
         <div className={'sticky-top'}>
-          <TooltipConfig columns={['cluster', 'estimatedCases', 'frequency']} tooltipId={CasesPlotTooltipId} />
+          <TooltipConfig columns={tooltipColumns} tooltipId={CasesPlotTooltipId} />
         </div>
 
         <ErrorBoundary FallbackComponent={FetchError}>

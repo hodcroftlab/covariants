@@ -50,7 +50,7 @@ export function CountryDistribution() {
 }
 
 const enabledFilters = ['clusters', 'countriesWithIcons']
-const tooltipColumns = ['cluster', 'estimatedCases', 'frequency']
+const tooltipColumns = ['cluster', 'sequences', 'frequency']
 
 function CountryDistributionPlotSection() {
   const { t } = useTranslationSafe()
