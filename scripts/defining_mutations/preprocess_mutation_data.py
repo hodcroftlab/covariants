@@ -153,7 +153,8 @@ def process_auto_generated_data(mutations: pl.DataFrame) -> pl.DataFrame:
         .then(pl.col('nuc_mutation').struct.with_fields(pl.field('ref'), pl.field('pos'), alt=pl.field('ref')))
         .otherwise(pl.col('nuc_mutation')),
         aa_mutations=pl.when('reversion')
-        .then(pl.col('aa_mutations').list.eval(pl.element().struct.with_fields(pl.field('ref'), pl.field('pos'), alt=pl.field('ref'))))
+        .then(pl.col('aa_mutations').list.eval(
+            pl.element().struct.with_fields(pl.field('ref'), pl.field('pos'), alt=pl.field('ref'))))
         .otherwise(pl.col('aa_mutations'))
     )
 
@@ -183,12 +184,24 @@ def process_hand_curated_file(mutations: pl.DataFrame) -> pl.DataFrame:
         )
         .rename({'aa_change': 'aa_mutation', 'aa_change_2': 'aa_mutation_2', 'nuc_change': 'nuc_mutation'})
         .select('nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2', 'reference', 'not_in_parent',
-                'reversion', 'notes')
+                'reversion', 'notes', 'parent_ref_nuc', 'parent_ref_aa', 'parent_ref_aa_2')
     )
     nextclade_parent = (
         with_reference.filter('not_in_parent')
         .with_columns(
-            reference=pl.lit('nextclade_parent'))
+            nuc_mutation=pl.when(pl.col('parent_ref_nuc').is_not_null())
+            .then(pl.concat_str(pl.col('parent_ref_nuc'), pl.col('nuc_mutation').str.slice(1)))
+            .otherwise(pl.col('nuc_mutation')),
+            aa_mutation=pl.when(pl.col('parent_ref_aa').is_not_null())
+            .then(pl.concat_str(pl.col('aa_mutation').str.split(':').list.first(), pl.lit(':'), pl.col('parent_ref_aa'),
+                                pl.col('aa_mutation').str.split(':').list.last().str.slice(1)))
+            .otherwise(pl.col('aa_mutation')),
+            aa_mutation_2=pl.when(pl.col('parent_ref_aa_2').is_not_null())
+            .then(pl.concat_str(pl.col('aa_mutation_2').str.split(':').list.first(), pl.lit(':'), pl.col('parent_ref_aa_2'),
+                                pl.col('aa_mutation_2').str.split(':').list.last().str.slice(1)))
+            .otherwise(pl.col('aa_mutation_2')),
+            reference=pl.lit('nextclade_parent')
+        )
     )
 
     combined = pl.concat([with_reference, nextclade_parent]).drop('not_in_parent')
@@ -210,7 +223,8 @@ def process_hand_curated_file(mutations: pl.DataFrame) -> pl.DataFrame:
     return output
 
 
-def process_hand_curated_data(hand_curated_data_dir: str, clusters: dict, clusters_override: list[dict]) -> tuple[pl.DataFrame, pl.DataFrame]:
+def process_hand_curated_data(hand_curated_data_dir: str, clusters: dict, clusters_override: list[dict]) -> tuple[
+    pl.DataFrame, pl.DataFrame]:
     hand_curated_data_files = os.listdir(hand_curated_data_dir)
     hand_curated_data = pl.concat([
         process_hand_curated_file(load_hand_curated_data(os.path.join(hand_curated_data_dir, hand_curated_file)))
@@ -234,14 +248,16 @@ def process_hand_curated_data(hand_curated_data_dir: str, clusters: dict, cluste
     return clades_with_data_info, mutations
 
 
-def import_mutation_data(hand_curated_data_dir: str, auto_generated_data_dir: str, clusters: dict, clusters_override: list[dict]) -> tuple[
+def import_mutation_data(hand_curated_data_dir: str, auto_generated_data_dir: str, clusters: dict,
+                         clusters_override: list[dict]) -> tuple[
     pl.DataFrame, pl.DataFrame, pl.DataFrame, pl.DataFrame]:
     auto_generated_lineages, auto_generated_mutations_raw = load_auto_generated_data(
         os.path.join(auto_generated_data_dir, 'auto_generated.json'))
 
     auto_generated_mutations = process_auto_generated_data(auto_generated_mutations_raw)
 
-    hand_curated_clades, hand_curated_mutations = process_hand_curated_data(hand_curated_data_dir, clusters, clusters_override)
+    hand_curated_clades, hand_curated_mutations = process_hand_curated_data(hand_curated_data_dir, clusters,
+                                                                            clusters_override)
 
     return hand_curated_clades, auto_generated_lineages, hand_curated_mutations, auto_generated_mutations
 

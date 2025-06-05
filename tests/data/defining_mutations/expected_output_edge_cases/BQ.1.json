@@ -94,14 +94,14 @@
           "aa_mutations": [
             {
               "gene": "S",
-              "ref": "N",
+              "ref": "L",
               "pos": 460,
               "alt": "K"
             }
           ],
           "nuc_mutations": [
             {
-              "ref": "T",
+              "ref": "C",
               "pos": 22942,
               "alt": "A"
             }
@@ -111,14 +111,20 @@
           "aa_mutations": [
             {
               "gene": "N",
-              "ref": "P",
+              "ref": "K",
               "pos": 13,
               "alt": "L"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "L",
+              "pos": 10,
+              "alt": "F"
             }
           ],
           "nuc_mutations": [
             {
-              "ref": "C",
+              "ref": "A",
               "pos": 28312,
               "alt": "T"
             }
@@ -1283,6 +1289,18 @@
               "ref": "P",
               "pos": 13,
               "alt": "L"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "P",
+              "pos": 10,
+              "alt": "S"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "P",
+              "pos": 10,
+              "alt": "F"
             }
           ],
           "nuc_mutations": [
@@ -1305,6 +1323,12 @@
               "gene": "N",
               "ref": "E",
               "pos": 31,
+              "alt": "-"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "E",
+              "pos": 27,
               "alt": "-"
             }
           ],
@@ -1334,6 +1358,12 @@
               "ref": "R",
               "pos": 32,
               "alt": "-"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "N",
+              "pos": 28,
+              "alt": "-"
             }
           ],
           "nuc_mutations": [
@@ -1361,6 +1391,12 @@
               "gene": "N",
               "ref": "S",
               "pos": 33,
+              "alt": "-"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "A",
+              "pos": 29,
               "alt": "-"
             }
           ],
