@@ -1,0 +1,30 @@
+{
+  "regions": [
+    {
+      "cluster_names": [
+        "20A/S:126A"
+      ],
+      "distributions": [
+        {
+          "country": "Afghanistan",
+          "distribution": [
+            {
+              "percent_total_cases": 0.02,
+              "stand_estimated_cases": {
+                "20A/S:126A": 250,
+                "others": 250
+              },
+              "stand_total_cases": 500,
+              "total_sequences": 10000,
+              "week": "2021-04-26"
+            }
+          ]
+        }
+      ],
+      "max_date": "2025-04-07",
+      "min_date": "2020-04-27",
+      "per_country_intro_content": "World.mdx",
+      "region": "World"
+    }
+  ]
+}
