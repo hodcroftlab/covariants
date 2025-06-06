@@ -226,14 +226,14 @@ def main(clus_answer: str,
                                                                                                        input_meta)
 
     clus_to_run_breakdown, daughter_clades, rest_all = split_into_cluster_categories(nextstrain_clades, clus_to_run,
-                                                                                     clusters_data)
+                                                                                     clusters)
 
     ##################################
     ##################################
     ##### Prepare data structure
 
     acknowledgement_by_variant, acknowledgement_keys, clus_data_all, division_data_all, total_counts_countries, total_counts_divisions = prepare_data_structure(
-        all_countries, clus_to_run, division, earliest_date, selected_country, today, clusters_data)
+        all_countries, clus_to_run, division, earliest_date, selected_country, today, clusters)
 
     t1 = time.time()
     print(f"Preparation took {round((t1 - t0) / 60, 1)} min to run.\n")

@@ -1,7 +1,7 @@
 # This is a manually curated fake cluster list that holds test cases we need for the cluster analysis
 
 
-fake_clusters = {
+mock_clusters = {
 
     "Alpha": {
         "snps": [23063, 23604, 24914],  # 23063T, 23604A, 24914C
@@ -5199,7 +5199,7 @@ fake_clusters = {
     # "S263": {'snps': [22348], 'cluster_data': [], "build_name": "S.A263S", "display_name": "S:A263S"}
     # "S484": {'snps': [23011], 'cluster_data': [], "build_name": "S.E484", "display_name": "S:E484"}
     # "20D-S452": {'snps': [22916,3301,9692], 'cluster_data': [], "build_name": "20D.S.452", "display_name": "20D/S:L452R"}
-    "N220": {'snps': [28931], 'exclude_snps': [22226], 'cluster_data': [], "build_name": "N.A220V", "display_name": "N:A220V"}
+    "N220": {'snps': [28931], 'exclude_snps': [22226], 'cluster_data': [], "build_name": "N.A220V", "display_name": "N:A220V", "graphing": False,}
     # "ORFTEN30": {'snps': [29644], 'exclude_snps': [22226], 'cluster_data': [], "build_name": "ORF10.V30", "display_name": "ORF10:V30"}
     # "N220re": {'snps': [28931,29644], 'exclude_snps': [22226], 'cluster_data': [], "build_name": "N.A220Vre", "display_name": "N:A220Vre"}
     # "B1139" {'snps': [28486,28867], 'exclude_snps': [], 'cluster_data': [], "build_name": "B1139", "display_name": "B1139"}

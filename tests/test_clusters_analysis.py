@@ -6,7 +6,7 @@ import pytest
 from scripts.cluster_analysis import main, initial_metadata_pass, clean_metadata, prepare_data_structure, \
     split_into_cluster_categories
 from scripts.clusters import clusters
-from tests.data.cluster_analysis.fake_clusters import fake_clusters
+from tests.data.cluster_analysis.mock_clusters import mock_clusters
 
 NEXTSTRAIN_CLADES = [
     ' (Omicron)',
@@ -313,30 +313,32 @@ ALL_COUNTRIES = ['Afghanistan',
 N_TOTAL = 16860043
 
 DATA_DIR = 'tests/data/cluster_analysis'
+CI = os.environ.get('CI')
 
 def test_main():
-    user_input = ('all', True, list(fake_clusters.keys()), True, True, True, False, False, ["USA", "Switzerland"])
-    main(*user_input, input_meta=os.path.join(DATA_DIR, 'metadata.csv'), clusters=fake_clusters)
+    user_input = ('all', True, list(mock_clusters.keys()), True, True, True, False, False, ["USA", "Switzerland"])
+    main(*user_input, input_meta=os.path.join(DATA_DIR, 'metadata.csv'), clusters=mock_clusters)
 
 
 @pytest.mark.parametrize("zip_extension",
                          ['', '.gz'])
 def test_initial_metadata(zip_extension):
     input_meta = os.path.join(DATA_DIR, f"metadata.csv{zip_extension}")
-    clus_to_run = fake_clusters.keys()
+    clus_to_run = mock_clusters.keys()
     cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country',
             'gisaid_epi_isl', 'coverage', 'QC_overall_status', 'Nextclade_pango']
-    display_name_to_clus = {cluster["display_name"]: key for key, cluster in fake_clusters.items()}
+    display_name_to_clus = {cluster["display_name"]: key for key, cluster in mock_clusters.items()}
     nextstrain_clades, nextstrain_clades_display_names, all_countries, n_total = initial_metadata_pass(clus_to_run,
                                                                                                        cols,
                                                                                                        display_name_to_clus,
                                                                                                        input_meta)
-    assert nextstrain_clades == ['20A', '21L (Omicron)', '24A (Omicron)', '24A* (Omicron)']
+    assert nextstrain_clades == ['20A', '21L (Omicron)', '24A (Omicron)', '24A* (Omicron)', '25A (Omicron)']
     assert nextstrain_clades_display_names == ['21L (Omicron)', '24A (Omicron)']
     assert all_countries == ['Afghanistan', 'Australia', 'Cambodia', 'Japan', 'Switzerland']
-    assert n_total == 22
+    assert n_total == 29
 
 
+@pytest.mark.skipif(CI, reason='full functionality test only for debugging, skip on CI')
 def test_initial_metadata_zipped_full():
     input_meta = "../metadata.tsv.gz"
     clus_to_run = clusters.keys()
@@ -370,10 +372,10 @@ ACKNOWLEDGEMENTS_BY_VARIANT_WITH_PRINT = {'acknowledgements': {'20AS126': [], '2
                           (False, False, True, ALL_SEQUENCES_NO_CLUS_CHECK, CLUSTER_INCONSISTENCIES_NO_CLUS_CHECK, TOTAL_COUNTS_NO_DIVISIONS, ACKNOWLEDGEMENTS_BY_VARIANT_WITH_PRINT)])
 def test_clean_metadata(clus_check, division, print_acknowledgements, expected_all_sequences, expected_cluster_inconsistencies, expected_total_counts_divisions, expected_acknowledgements_by_variant):
     # User input
-    clus_to_run = fake_clusters.keys()
+    clus_to_run = mock_clusters.keys()
     # global variables
-    display_name_to_clus = {fake_clusters[clus]["display_name"]: clus for clus in clus_to_run if
-                            "display_name" in fake_clusters[clus]}
+    display_name_to_clus = {mock_clusters[clus]["display_name"]: clus for clus in clus_to_run if
+                            "display_name" in mock_clusters[clus]}
     cols = ['strain', 'date', 'division', 'host', 'substitutions', 'deletions', 'Nextstrain_clade', 'country',
             'gisaid_epi_isl', 'coverage', 'QC_overall_status', 'Nextclade_pango']
     input_meta = os.path.join(DATA_DIR, "metadata.csv")
@@ -391,17 +393,17 @@ def test_clean_metadata(clus_check, division, print_acknowledgements, expected_a
     dated_limit_formatted = None
     min_data_week = (2020, 18)
     new_clades_to_rename = {'24A* (Omicron)': '24A (Omicron)'}
-    pango_lineage_to_clus = {p["name"]: clus for clus in clus_to_run if "pango_lineages" in fake_clusters[clus] for p in
-                             fake_clusters[clus]["pango_lineages"]}
+    pango_lineage_to_clus = {p["name"]: clus for clus in clus_to_run if "pango_lineages" in mock_clusters[clus] for p in
+                             mock_clusters[clus]["pango_lineages"]}
 
-    clus_to_run_breakdown, daughter_clades, rest_all = split_into_cluster_categories(nextstrain_clades, clus_to_run, fake_clusters)
+    clus_to_run_breakdown, daughter_clades, rest_all = split_into_cluster_categories(nextstrain_clades, clus_to_run, mock_clusters)
 
     acknowledgement_by_variant, acknowledgement_keys, clus_data_all, division_data_all, total_counts_countries, total_counts_divisions = prepare_data_structure(
-        all_countries, clus_to_run, division, earliest_date, selected_country, today, fake_clusters)
+        all_countries, clus_to_run, division, earliest_date, selected_country, today, mock_clusters)
 
     # Act
     all_sequences, cluster_inconsistencies, total_counts_countries, total_counts_divisions, clus_data_all, acknowledgement_by_variant = clean_metadata(
-        fake_clusters,
+        mock_clusters,
         nextstrain_clades_display_names, acknowledgement_by_variant,
         alert_dates, clus_check, clus_data_all,
         clus_to_run_breakdown, cols, dated_cluster_strains,
@@ -452,7 +454,7 @@ def test_clean_metadata_full():
 
     acknowledgement_by_variant, acknowledgement_keys, clus_data_all, division_data_all, total_counts_countries, total_counts_divisions = prepare_data_structure(
         all_countries, clus_to_run, division, earliest_date, selected_country, today, clusters)
-    all_sequences, cluster_inconsistencies = clean_metadata(clusters,
+    all_sequences, cluster_inconsistencies, total_counts_countries, total_counts_divisions, clus_data_all, acknowledgement_by_variant = clean_metadata(clusters,
                                                             nextstrain_clades_display_names, acknowledgement_by_variant,
                                                             alert_dates, clus_check, clus_data_all,
                                                             clus_to_run_breakdown, cols, dated_cluster_strains,
