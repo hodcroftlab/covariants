@@ -1,0 +1,42 @@
+# Run backend tests
+name: backend-tests
+
+on:
+  pull_request:
+    types: [ opened, synchronize ]
+
+  workflow_dispatch:
+
+concurrency:
+  group: web-${{ github.workflow }}-${{ github.ref_type }}-${{ github.event.pull_request.number || github.ref || github.run_id }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash -euxo pipefail {0}
+
+env:
+  GITHUB_REPOSITORY_URL: ${{ github.server_url }}/${{ github.repository }}
+  CI: 1
+
+jobs:
+  backend-tests:
+    name: "backend-tests"
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: "checkout repo"
+        uses: actions/checkout@v4
+
+      - name: "install python"
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: "install python dependencies"
+        run: |
+          pip install -r requirements.txt
+
+      - name: "run tests"
+        run: |
+          pytest
