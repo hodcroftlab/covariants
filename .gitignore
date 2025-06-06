@@ -9,8 +9,9 @@ __pycache__/
 compare_lineages/output_files/
 information_files/
 /data/
+/tests/data/defining_mutations/output/
 /tests/data/convert_to_web_app/output/
-tests/data/defining_mutations/output/
+/tests/data/include_case_counts/output/
 
 #figures with dates
 figures/overall_trends-202*
