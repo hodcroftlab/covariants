@@ -1,0 +1,254 @@
+{
+  "clusters": [
+    {
+      "alt_display_name": [
+        "B.1.620"
+      ],
+      "aquaria_urls": [
+        {
+          "gene": "S",
+          "url": "https://aquaria.app/SARS-CoV-2/S?P26S&H69Del&V70Del&V126A&Y144Del&L241Del&L242Del&A243Del&H245Y&S477N&E484K&D614G&P681H&T1027I&D1118H"
+        },
+        {
+          "gene": "N",
+          "url": "https://aquaria.app/SARS-CoV-2/N?A220V"
+        },
+        {
+          "gene": "ORF1a",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1a?T403I&V1991I&S3675Del&G3676Del&F3677Del"
+        },
+        {
+          "gene": "ORF1b",
+          "url": "https://aquaria.app/SARS-CoV-2/PP1ab?T403I&V1991I&S3675Del&G3676Del&F3677Del&P4715L&A5616S"
+        },
+        {
+          "gene": "ORF9b",
+          "url": "https://aquaria.app/SARS-CoV-2/ORF9b?I5T"
+        }
+      ],
+      "build_name": "20A.S.126A",
+      "cluster_data": [],
+      "col": "#d5f6d5",
+      "country_info": [],
+      "display_name": "20A/S:126A",
+      "graphing": true,
+      "important": false,
+      "mutations": {
+        "nonsynonymous": [
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 26,
+            "right": "S"
+          },
+          {
+            "gene": "S",
+            "left": "H",
+            "pos": 69,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "V",
+            "pos": 70,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "V",
+            "pos": 126,
+            "right": "A"
+          },
+          {
+            "gene": "S",
+            "left": "Y",
+            "pos": 144,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 241,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "L",
+            "pos": 242,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "A",
+            "pos": 243,
+            "right": "-"
+          },
+          {
+            "gene": "S",
+            "left": "H",
+            "pos": 245,
+            "right": "Y"
+          },
+          {
+            "gene": "S",
+            "left": "S",
+            "pos": 477,
+            "right": "N"
+          },
+          {
+            "gene": "S",
+            "left": "E",
+            "pos": 484,
+            "right": "K"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 614,
+            "right": "G"
+          },
+          {
+            "gene": "S",
+            "left": "P",
+            "pos": 681,
+            "right": "H"
+          },
+          {
+            "gene": "S",
+            "left": "T",
+            "pos": 1027,
+            "right": "I"
+          },
+          {
+            "gene": "S",
+            "left": "D",
+            "pos": 1118,
+            "right": "H"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "T",
+            "pos": 403,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "V",
+            "pos": 1991,
+            "right": "I"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "S",
+            "pos": 3675,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "G",
+            "pos": 3676,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1a",
+            "left": "F",
+            "pos": 3677,
+            "right": "-"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "P",
+            "pos": 314,
+            "right": "L"
+          },
+          {
+            "gene": "ORF1b",
+            "left": "A",
+            "pos": 1215,
+            "right": "S"
+          },
+          {
+            "gene": "N",
+            "left": "A",
+            "pos": 220,
+            "right": "V"
+          },
+          {
+            "gene": "ORF9b",
+            "left": "I",
+            "pos": 5,
+            "right": "T"
+          }
+        ],
+        "synonymous": [
+          {
+            "left": "C",
+            "pos": 241,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 3037,
+            "right": "T"
+          },
+          {
+            "left": "C",
+            "pos": 15324,
+            "right": "T"
+          },
+          {
+            "left": "T",
+            "pos": 20049,
+            "right": "C"
+          },
+          {
+            "left": "A",
+            "pos": 23416,
+            "right": "T"
+          },
+          {
+            "left": "T",
+            "pos": 27795,
+            "right": "-"
+          },
+          {
+            "left": "T",
+            "pos": 27796,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 27797,
+            "right": "-"
+          },
+          {
+            "left": "A",
+            "pos": 28271,
+            "right": "T"
+          }
+        ]
+      },
+      "nextstrain_build": false,
+      "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/20A.S.126A",
+      "old_build_names": [],
+      "pango_lineages": [
+        {
+          "name": "B.1.620",
+          "url": null
+        }
+      ],
+      "snps": [
+        21939,
+        1473,
+        6236
+      ],
+      "snps_with_base": [
+        "21939C",
+        "1473T",
+        "6236A"
+      ],
+      "type": "variant",
+      "who_name": []
+    }
+  ]
+}
