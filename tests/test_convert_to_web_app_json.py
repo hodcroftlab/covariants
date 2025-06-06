@@ -1,6 +1,3 @@
-import json
-import os
-
 from scripts.convert_to_web_app_json import main
 from tests.data.convert_to_web_app.mock_clusters import mock_clusters
 from tests.data.convert_to_web_app.mock_colors_and_countries import mock_country_styles_all
