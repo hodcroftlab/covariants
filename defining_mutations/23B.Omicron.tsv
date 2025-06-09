@@ -1,156 +1,156 @@
-nuc_change	aa_change	aa_change_2	not_in_parent	reversion	notes
-C241T					
-A405G	ORF1a:K47R				
-T670G	ORF1a:S135R				
-C2790T	ORF1a:T842I				
-C3037T					
-G4184A	ORF1a:G1307S				
-C4321T					
-C9344T	ORF1a:L3027F				
-A9424G					
-C9534T	ORF1a:T3090I				
-C9866T	ORF1a:L3201F				
-C10029T	ORF1a:T3255I				
-C10198T					
-G10447A					
-C10449A	ORF1a:P3395H				
-T11288-	ORF1a:S3675-				
-C11289-	ORF1a:S3675-				
-T11290-	ORF1a:S3675-				
-G11291-	ORF1a:G3676-				
-G11292-	ORF1a:G3676-				
-T11293-	ORF1a:G3676-				
-T11294-	ORF1a:F3677-				
-T11295-	ORF1a:F3677-				
-T11296-	ORF1a:F3677-				
-C11750T	ORF1a:L3829F		y		
-C11956T			y		Not in 22F or XBB.1; but not unique to 22B
-T12730A			y		
-C12880T					
-C14408T	ORF1b:P314L				
-A14856G 			y		
-G15451A	ORF1b:G662S				
-C15714T					
-C15738T					
-T15939C					
-T16342C	ORF1b:S959P				
-C17410T	ORF1b:R1315C				
-T17859C					
-A18163G	ORF1b:I1566V				
-G18703T	ORF1b:D1746Y		y		
-A19326G					
-C19955T	ORF1b:T2163I				
-A20055G					
-C21618T	S:T19I				
-T21633-	S:L24-				
-A21634-	S:L24-				
-C21635-	S:P25-				
-C21636-	S:P25-				
-C21637-	S:P25-				
-C21638-	S:P26-				
-C21639-	S:P26-				
-T21640-	S:P26-				
-G21641-	S:A27S				
-T21810C	S:V83A				
-G21987A	S:G142D				
-T21992-	S:Y144-				
-A21993-	S:Y144-				
-T21994-	S:Y144-				
-C22000A	S:H146Q				
-A22101T	S:E180V		y		
-C22109G	S:Q183E				
-T22200A	S:V213E				
-G22317T	S:G252V		y		Not in 22F; inherited from XBB.1
-G22577C	S:G339H				
-G22578A	S:G339H				
-G22599C	S:R346T				
-C22664A	S:L368I				
-C22674T	S:S371F				
-T22679C	S:S373P				
-C22686T	S:S375F				
-A22688G	S:T376A				
-G22775A	S:D405N				
-A22786C	S:R408S				
-G22813T	S:K417N				
-T22882G	S:N440K				
-G22895C	S:V445P				
-T22896C	S:V445P				As BJ.1 has V445P & BM.1.1.1 has N460K (both unique) and 22F/XBB has both, the breakpoint is likely between these mutations
-G22898A	S:G446S				
-T22942G	S:N460K				
-G22992A	S:S477N				
-C22995G	S:T478R		y		Mutated earlier to T478K, now in XBB.1.16 to R
-A23013C	S:E484A				
-T23018C	S:F486P		y		A mutation from 486S in 22F so really: S:S486P. Also found in 23A independently.
-T23019C	S:F486P				Original mutation that lead to F486S in XBB, from parent BM.1.1.1, now contributes to making 486P
-T23031C	S:F490S				
-A23040A	S:Q493Q			y	reversion inherited from the from BM.1.1.1 parent (relative to 21L which has 23040G/S:493R)
-A23055G	S:Q498R				
-A23063T	S:N501Y				
-T23075C	S:Y505H				
-A23403G	S:D614G				
-C23525T	S:H655Y				
-T23599G	S:N679K				
-C23604A	S:P681H				
-C23854A	S:N764K				
-G23948T	S:D796Y				
-A24424T	S:Q954H				
-T24469A	S:N969K				
-C25000T					
-C25416T					
-C25584T					
-C26060T	ORF3a:T223I				
-C26270T	E:T9I				
-A26275G	E:T11A				
-C26577G	M:Q19E				
-G26709A	M:A63T				
-C26858T					
-A27259C					
-G27382C	ORF6:D61L				
-A27383T	ORF6:D61L				
-T27384C	ORF6:D61L				
-C27807T					
-G27915T	ORF8:G8*		y		Also seen in 23A (independently)
-A28271T					
-T28297C	ORF9b:I5T		y		Not in 22F, but not unique 23B only
-C28311T	N:P13L	ORF9b:P10S			
-G28362-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
-A28363-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
-G28364-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
-A28365-	N:R32-	ORF9b:N28-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
-A28366-	N:R32-	ORF9b:N28-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
-C28367-	N:R32-	ORF9b:N28-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
-G28368-	N:S33-	ORF9b:A29-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
-C28369-	N:S33-	ORF9b:A29-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
-A28370-	N:S33-	ORF9b:A29-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
-A28447G	ORF9b:N55S		y		
-G28881A	N:R203K				
-G28882A	N:R203K				
-G28883C	N:G204R				
-C29386T			y		
-A29510C	N:S413R				
-G29734-					
-A29735-					
-G29736-					
-G29737-					
-C29738-					
-C29739-					
-A29740-					
-C29741-					
-G29742-					
-C29743-					
-G29744-					
-G29745-					
-A29746-					
-G29747-					
-T29748-					
-A29749-					
-C29750-					
-G29751-					
-A29752-					
-T29753-					
-C29754-					
-G29755-					
-A29756-					
-G29757-					
-T29758-					
-G29759-					
+nuc_change	aa_change	aa_change_2	not_in_parent	reversion	notes	parent_ref_nuc	parent_ref_aa	parent_ref_aa_2
+C241T								
+A405G	ORF1a:K47R							
+T670G	ORF1a:S135R							
+C2790T	ORF1a:T842I							
+C3037T								
+G4184A	ORF1a:G1307S							
+C4321T								
+C9344T	ORF1a:L3027F							
+A9424G								
+C9534T	ORF1a:T3090I							
+C9866T	ORF1a:L3201F							
+C10029T	ORF1a:T3255I							
+C10198T								
+G10447A								
+C10449A	ORF1a:P3395H							
+T11288-	ORF1a:S3675-							
+C11289-	ORF1a:S3675-							
+T11290-	ORF1a:S3675-							
+G11291-	ORF1a:G3676-							
+G11292-	ORF1a:G3676-							
+T11293-	ORF1a:G3676-							
+T11294-	ORF1a:F3677-							
+T11295-	ORF1a:F3677-							
+T11296-	ORF1a:F3677-							
+C11750T	ORF1a:L3829F		y					
+C11956T			y		Not in 22F or XBB.1; but not unique to 22B			
+T12730A			y					
+C12880T								
+C14408T	ORF1b:P314L							
+A14856G 			y					
+G15451A	ORF1b:G662S							
+C15714T								
+C15738T								
+T15939C								
+T16342C	ORF1b:S959P							
+C17410T	ORF1b:R1315C							
+T17859C								
+A18163G	ORF1b:I1566V							
+G18703T	ORF1b:D1746Y		y					
+A19326G								
+C19955T	ORF1b:T2163I							
+A20055G								
+C21618T	S:T19I							
+T21633-	S:L24-							
+A21634-	S:L24-							
+C21635-	S:P25-							
+C21636-	S:P25-							
+C21637-	S:P25-							
+C21638-	S:P26-							
+C21639-	S:P26-							
+T21640-	S:P26-							
+G21641-	S:A27S							
+T21810C	S:V83A							
+G21987A	S:G142D							
+T21992-	S:Y144-							
+A21993-	S:Y144-							
+T21994-	S:Y144-							
+C22000A	S:H146Q							
+A22101T	S:E180V		y					
+C22109G	S:Q183E							
+T22200A	S:V213E							
+G22317T	S:G252V		y		Not in 22F; inherited from XBB.1			
+G22577C	S:G339H							
+G22578A	S:G339H							
+G22599C	S:R346T							
+C22664A	S:L368I							
+C22674T	S:S371F							
+T22679C	S:S373P							
+C22686T	S:S375F							
+A22688G	S:T376A							
+G22775A	S:D405N							
+A22786C	S:R408S							
+G22813T	S:K417N							
+T22882G	S:N440K							
+G22895C	S:V445P							
+T22896C	S:V445P				As BJ.1 has V445P & BM.1.1.1 has N460K (both unique) and 22F/XBB has both, the breakpoint is likely between these mutations			
+G22898A	S:G446S							
+T22942G	S:N460K							
+G22992A	S:S477N							
+C22995G	S:T478R		y		Mutated earlier to T478K, now in XBB.1.16 to R			
+A23013C	S:E484A							
+T23018C	S:F486P		y		A mutation from 486S in 22F so really: S:S486P. Also found in 23A independently.			
+T23019C	S:F486P				Original mutation that lead to F486S in XBB, from parent BM.1.1.1, now contributes to making 486P			
+T23031C	S:F490S							
+A23040A	S:Q493Q			y	reversion inherited from the from BM.1.1.1 parent (relative to 21L which has 23040G/S:493R)			
+A23055G	S:Q498R							
+A23063T	S:N501Y							
+T23075C	S:Y505H							
+A23403G	S:D614G							
+C23525T	S:H655Y							
+T23599G	S:N679K							
+C23604A	S:P681H							
+C23854A	S:N764K							
+G23948T	S:D796Y							
+A24424T	S:Q954H							
+T24469A	S:N969K							
+C25000T								
+C25416T								
+C25584T								
+C26060T	ORF3a:T223I							
+C26270T	E:T9I							
+A26275G	E:T11A							
+C26577G	M:Q19E							
+G26709A	M:A63T							
+C26858T								
+A27259C								
+G27382C	ORF6:D61L							
+A27383T	ORF6:D61L							
+T27384C	ORF6:D61L							
+C27807T								
+G27915T	ORF8:G8*		y		Also seen in 23A (independently)			
+A28271T								
+T28297C	ORF9b:I5T		y		Not in 22F, but not unique 23B only			
+C28311T	N:P13L	ORF9b:P10S						
+G28362-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33			
+A28363-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33			
+G28364-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33			
+A28365-	N:R32-	ORF9b:N28-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33			
+A28366-	N:R32-	ORF9b:N28-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33			
+C28367-	N:R32-	ORF9b:N28-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33			
+G28368-	N:S33-	ORF9b:A29-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33			
+C28369-	N:S33-	ORF9b:A29-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33			
+A28370-	N:S33-	ORF9b:A29-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33			
+A28447G	ORF9b:N55S		y					
+G28881A	N:R203K							
+G28882A	N:R203K							
+G28883C	N:G204R							
+C29386T			y					
+A29510C	N:S413R							
+G29734-								
+A29735-								
+G29736-								
+G29737-								
+C29738-								
+C29739-								
+A29740-								
+C29741-								
+G29742-								
+C29743-								
+G29744-								
+G29745-								
+A29746-								
+G29747-								
+T29748-								
+A29749-								
+C29750-								
+G29751-								
+A29752-								
+T29753-								
+C29754-								
+G29755-								
+A29756-								
+G29757-								
+T29758-								
+G29759-								
