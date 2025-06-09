@@ -53,7 +53,7 @@ A21993-	S:Y144-
 T21994-	S:Y144-							
 C22000A	S:H146Q							
 C22109G	S:Q183E							
-T22200A	S:V213E							
+T22200A	S:V213E		y			G	G	
 G22577C	S:G339H							
 G22578A	S:G339H							
 G22599C	S:R346T							
@@ -69,7 +69,7 @@ T22882G	S:N440K
 G22895C	S:V445P							
 T22896C	S:V445P				As BJ.1 has V445P & BM.1.1.1 has N460K (both unique) and 22F/XBB has both, the breakpoint is likely between these mutations			
 G22898A	S:G446S							
-T22942G	S:N460K							
+T22942G	S:N460K		y					
 G22992A	S:S477N							
 C22995A	S:T478K							
 A23013C	S:E484A							
