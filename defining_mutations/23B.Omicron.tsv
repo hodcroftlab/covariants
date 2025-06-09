@@ -112,8 +112,7 @@ C27807T
 G27915T	ORF8:G8*		y		Also seen in 23A (independently)
 A28271T					
 T28297C	ORF9b:I5T		y		Not in 22F, but not unique 23B only
-C28311T	N:P13L	ORF9b:P10F			C28311T causes ORG9b:P10S, but C28312T changes to P10F
-C28312T	N:P13L	ORF9b:P10F			C28312T on top of C28311T, change ORf9b:P10S to P10F
+C28311T	N:P13L	ORF9b:P10S			
 G28362-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
 A28363-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
 G28364-	N:E31-	ORF9b:E27-			Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33
