@@ -487,3 +487,9 @@ def test_clean_metadata_full():
     assert cluster_inconsistencies == {
         'Nextstrain_clade': {'EPI_ISL_19084620': ['24A', 'Delta', '21K.Omicron', '21L.Omicron', '23I']},
         'Non_Nextstrain_clade': {}}
+
+
+@pytest.mark.skip('This takes veeery long (>30min) for all clusters, a little faster for just one cluster (~7min)')
+def test_main_full():
+    user_input = ('S677HYellowhammer', False, ['S677HYellowhammer'], True, True, True, False, False, ["Switzerland"])
+    main(*user_input, input_meta='../metadata.tsv.gz', clusters=mock_clusters)
