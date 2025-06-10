@@ -39,4 +39,6 @@ jobs:
 
       - name: "run tests"
         run: |
+          mkdir tests/data/include_case_counts/output -p
+          mkdir tests/data/convert_to_web_app/output/web/data -p
           pytest

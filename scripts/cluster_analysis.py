@@ -50,12 +50,12 @@ import pandas as pd
 import os
 import time
 
-from .colors_and_countries import country_styles_all
-from .helpers import non_zero_counts, trim_last_data_point, to2week_ordinal
-from .clusters import clusters as clusters_data
-from .bad_sequences import bad_seqs
-from .approx_first_dates import cluster_first_dates, first_date_exceptions
-from .swiss_regions import swiss_regions
+from scripts.colors_and_countries import country_styles_all
+from scripts.helpers import non_zero_counts, trim_last_data_point, to2week_ordinal
+from scripts.clusters import clusters as clusters_data
+from scripts.bad_sequences import bad_seqs
+from scripts.approx_first_dates import cluster_first_dates, first_date_exceptions
+from scripts.swiss_regions import swiss_regions
 
 
 for clus in cluster_first_dates:  # Transform date from string to datetime for easier comparison
