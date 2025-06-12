@@ -1,0 +1,85 @@
+{
+  "pango_lineage": "B.1.14",
+  "nextstrain_clade": "19A",
+  "mutations": [
+    {
+      "reference": "wuhan",
+      "coding": [
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1b",
+              "ref": "P",
+              "pos": 314,
+              "alt": "P"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 14408,
+              "alt": "C"
+            }
+          ],
+          "contains_reversion": true
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "D",
+              "pos": 614,
+              "alt": "D"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 23403,
+              "alt": "A"
+            }
+          ],
+          "contains_reversion": true
+        }
+      ],
+      "silent": [
+        {
+          "contains_reversion": true,
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 241,
+            "alt": "C"
+          }
+        },
+        {
+          "contains_reversion": true,
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 3037,
+            "alt": "C"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 25692,
+            "alt": "T"
+          }
+        }
+      ]
+    },
+    {
+      "reference": "pango_parent",
+      "coding": [],
+      "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 25692,
+            "alt": "T"
+          }
+        }
+      ]
+    }
+  ]
+}

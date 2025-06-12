@@ -1,0 +1,106 @@
+{
+  "pango_lineage": "B.49",
+  "nextstrain_clade": "19A",
+  "mutations": [
+    {
+      "reference": "pango_parent",
+      "coding": [
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "D",
+              "pos": 448,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 1605,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 1606,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 1607,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "F",
+              "pos": 120,
+              "alt": "L"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 28253,
+              "alt": "A"
+            }
+          ]
+        }
+      ],
+      "silent": []
+    },
+    {
+      "reference": "wuhan",
+      "coding": [
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "D",
+              "pos": 448,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 1605,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 1606,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 1607,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "F",
+              "pos": 120,
+              "alt": "L"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 28253,
+              "alt": "A"
+            }
+          ]
+        }
+      ],
+      "silent": []
+    }
+  ]
+}

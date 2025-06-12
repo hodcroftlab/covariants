@@ -114,6 +114,12 @@
               "ref": "P",
               "pos": 13,
               "alt": "L"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "P",
+              "pos": 10,
+              "alt": "F"
             }
           ],
           "nuc_mutations": [
@@ -123,7 +129,7 @@
               "alt": "T"
             }
           ],
-          "notes": "This mutation on top of the one above, change ORf9b:P10S to P10F"
+          "notes": "C28312T on top of the one C28311T, changes ORf9b:P10S to P10F"
         },
         {
           "aa_mutations": [
@@ -152,6 +158,46 @@
           }
         }
       ]
+    },
+    {
+      "reference": "pango_parent",
+      "coding": [
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1b",
+              "ref": "N",
+              "pos": 1191,
+              "alt": "S"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 17039,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "R",
+              "pos": 346,
+              "alt": "T"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 22599,
+              "alt": "C"
+            }
+          ]
+        }
+      ],
+      "silent": []
     },
     {
       "reference": "wuhan",
@@ -285,6 +331,11 @@
             }
           ],
           "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 10447,
+              "alt": "A"
+            },
             {
               "ref": "C",
               "pos": 10449,
@@ -438,6 +489,23 @@
               "ref": "G",
               "pos": 16935,
               "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1b",
+              "ref": "N",
+              "pos": 1191,
+              "alt": "S"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 17039,
+              "alt": "G"
             }
           ]
         },
@@ -715,6 +783,23 @@
           "aa_mutations": [
             {
               "gene": "S",
+              "ref": "R",
+              "pos": 346,
+              "alt": "T"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 22599,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
               "ref": "S",
               "pos": 371,
               "alt": "F"
@@ -982,7 +1067,7 @@
               "alt": "A"
             }
           ],
-          "notes": "Note mutation S:Q493R (in 21L) is reverted here",
+          "notes": "Note mutation S:Q493R/23040G (in 21L) is reverted here",
           "contains_reversion": true
         },
         {
@@ -1273,7 +1358,7 @@
               "alt": "G"
             }
           ],
-          "notes": "Note mutation in ORF6:D61L (in 21L) is reverted here",
+          "notes": "Note mutation in ORF6:D61L/27382C (in 21L) is reverted here",
           "contains_reversion": true
         },
         {
@@ -1283,6 +1368,12 @@
               "ref": "P",
               "pos": 13,
               "alt": "L"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "P",
+              "pos": 10,
+              "alt": "F"
             }
           ],
           "nuc_mutations": [
@@ -1297,7 +1388,7 @@
               "alt": "T"
             }
           ],
-          "notes": "This mutation causes ORG9b:P10S, but the adjacent mutation changes to P10F. This mutation on top of the one above, change ORf9b:P10S to P10F"
+          "notes": "C28311T causes ORG9b:P10S, but C28312T changes to P10F. C28312T on top of the one C28311T, changes ORf9b:P10S to P10F"
         },
         {
           "aa_mutations": [
@@ -1305,6 +1396,12 @@
               "gene": "N",
               "ref": "E",
               "pos": 31,
+              "alt": "-"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "E",
+              "pos": 27,
               "alt": "-"
             }
           ],
@@ -1334,6 +1431,12 @@
               "ref": "R",
               "pos": 32,
               "alt": "-"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "N",
+              "pos": 28,
+              "alt": "-"
             }
           ],
           "nuc_mutations": [
@@ -1361,6 +1464,12 @@
               "gene": "N",
               "ref": "S",
               "pos": 33,
+              "alt": "-"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "A",
+              "pos": 29,
               "alt": "-"
             }
           ],
@@ -1498,13 +1607,6 @@
             "ref": "C",
             "pos": 10198,
             "alt": "T"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "G",
-            "pos": 10447,
-            "alt": "A"
           }
         },
         {
@@ -1795,6 +1897,13 @@
             "ref": "G",
             "pos": 29759,
             "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 29868,
+            "alt": "A"
           }
         }
       ]

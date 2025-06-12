@@ -68,6 +68,46 @@
       ]
     },
     {
+      "reference": "pango_parent",
+      "coding": [
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "T",
+              "pos": 2283,
+              "alt": "I"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 7113,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "F",
+              "pos": 456,
+              "alt": "L"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 22928,
+              "alt": "C"
+            }
+          ]
+        }
+      ],
+      "silent": []
+    },
+    {
       "reference": "wuhan",
       "coding": [
         {
@@ -284,6 +324,11 @@
             }
           ],
           "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 10447,
+              "alt": "A"
+            },
             {
               "ref": "C",
               "pos": 10449,
@@ -507,6 +552,11 @@
             {
               "ref": "C",
               "pos": 21618,
+              "alt": "T"
+            },
+            {
+              "ref": "C",
+              "pos": 21622,
               "alt": "T"
             }
           ]
@@ -1342,7 +1392,7 @@
               "alt": "A"
             }
           ],
-          "notes": "Reversion relative to 21L",
+          "notes": "G23012A combined with reversion 23013A in grandparent 23I create S:E484K. The mutation G23013A is a reversion to Wuhan (23013A) in grandparent 23I, but combined with G23012A, this creates S:E484K rather than a reversion to 484E",
           "contains_reversion": true
         },
         {
@@ -1371,19 +1421,19 @@
           "aa_mutations": [
             {
               "gene": "S",
-              "ref": "R",
+              "ref": "Q",
               "pos": 493,
               "alt": "Q"
             }
           ],
           "nuc_mutations": [
             {
-              "ref": "G",
+              "ref": "A",
               "pos": 23040,
               "alt": "A"
             }
           ],
-          "notes": "Reversion from 21L (A23040G)",
+          "notes": "Reversion relative to 21L (which has 23040G/S:493R)",
           "contains_reversion": true
         },
         {
@@ -1408,8 +1458,8 @@
             {
               "gene": "S",
               "ref": "N",
-              "pos": 50,
-              "alt": "1"
+              "pos": 501,
+              "alt": "Y"
             }
           ],
           "nuc_mutations": [
@@ -1510,8 +1560,8 @@
             {
               "gene": "S",
               "ref": "H",
-              "pos": 65,
-              "alt": "5"
+              "pos": 655,
+              "alt": "Y"
             }
           ],
           "nuc_mutations": [
@@ -1578,8 +1628,8 @@
             {
               "gene": "S",
               "ref": "D",
-              "pos": 79,
-              "alt": "6"
+              "pos": 796,
+              "alt": "Y"
             }
           ],
           "nuc_mutations": [
@@ -1832,6 +1882,11 @@
           ],
           "nuc_mutations": [
             {
+              "ref": "C",
+              "pos": 27807,
+              "alt": "T"
+            },
+            {
               "ref": "T",
               "pos": 27810,
               "alt": "C"
@@ -1845,6 +1900,12 @@
               "ref": "P",
               "pos": 13,
               "alt": "L"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "P",
+              "pos": 10,
+              "alt": "S"
             }
           ],
           "nuc_mutations": [
@@ -1861,6 +1922,12 @@
               "gene": "N",
               "ref": "E",
               "pos": 31,
+              "alt": "-"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "E",
+              "pos": 27,
               "alt": "-"
             }
           ],
@@ -1890,6 +1957,12 @@
               "ref": "R",
               "pos": 32,
               "alt": "-"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "N",
+              "pos": 28,
+              "alt": "-"
             }
           ],
           "nuc_mutations": [
@@ -1917,6 +1990,12 @@
               "gene": "N",
               "ref": "S",
               "pos": 33,
+              "alt": "-"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "A",
+              "pos": 29,
               "alt": "-"
             }
           ],
@@ -2017,6 +2096,20 @@
         {
           "nuc_mutation": {
             "ref": "C",
+            "pos": 21,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 44,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
             "pos": 241,
             "alt": "T"
           }
@@ -2061,13 +2154,6 @@
             "ref": "C",
             "pos": 10198,
             "alt": "T"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "G",
-            "pos": 10447,
-            "alt": "A"
           }
         },
         {
@@ -2136,13 +2222,6 @@
         {
           "nuc_mutation": {
             "ref": "C",
-            "pos": 21622,
-            "alt": "T"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
             "pos": 25000,
             "alt": "T"
           }
@@ -2180,13 +2259,6 @@
             "ref": "A",
             "pos": 27259,
             "alt": "C"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 27807,
-            "alt": "T"
           }
         },
         {
