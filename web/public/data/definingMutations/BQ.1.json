@@ -114,6 +114,12 @@
               "ref": "P",
               "pos": 13,
               "alt": "L"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "P",
+              "pos": 10,
+              "alt": "F"
             }
           ],
           "nuc_mutations": [
@@ -123,7 +129,7 @@
               "alt": "T"
             }
           ],
-          "notes": "This mutation on top of the one above, change ORf9b:P10S to P10F"
+          "notes": "C28312T on top of the one C28311T, changes ORf9b:P10S to P10F"
         },
         {
           "aa_mutations": [
@@ -1027,7 +1033,7 @@
               "alt": "A"
             }
           ],
-          "notes": "Note mutation S:Q493R (in 21L) is reverted here",
+          "notes": "Note mutation S:Q493R/23040G (in 21L) is reverted here",
           "contains_reversion": true
         },
         {
@@ -1318,7 +1324,7 @@
               "alt": "G"
             }
           ],
-          "notes": "Note mutation in ORF6:D61L (in 21L) is reverted here",
+          "notes": "Note mutation in ORF6:D61L/27382C (in 21L) is reverted here",
           "contains_reversion": true
         },
         {
@@ -1334,12 +1340,6 @@
               "ref": "P",
               "pos": 10,
               "alt": "F"
-            },
-            {
-              "gene": "ORF9b",
-              "ref": "P",
-              "pos": 10,
-              "alt": "S"
             }
           ],
           "nuc_mutations": [
@@ -1354,7 +1354,7 @@
               "alt": "T"
             }
           ],
-          "notes": "This mutation causes ORG9b:P10S, but the adjacent mutation changes to P10F. This mutation on top of the one above, change ORf9b:P10S to P10F"
+          "notes": "C28311T causes ORG9b:P10S, but C28312T changes to P10F. C28312T on top of the one C28311T, changes ORf9b:P10S to P10F"
         },
         {
           "aa_mutations": [

@@ -459,7 +459,19 @@
               "ref": "T",
               "pos": 21640,
               "alt": "-"
-            },
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "A",
+              "pos": 27,
+              "alt": "S"
+            }
+          ],
+          "nuc_mutations": [
             {
               "ref": "G",
               "pos": 21641,

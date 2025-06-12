@@ -1,0 +1,369 @@
+{
+  "pango_lineage": "B.1.1.389",
+  "nextstrain_clade": "20B",
+  "mutations": [
+    {
+      "reference": "pango_parent",
+      "coding": [
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "W",
+              "pos": 2769,
+              "alt": "C"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 8572,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "P",
+              "pos": 3359,
+              "alt": "S"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 10340,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "T",
+              "pos": 1117,
+              "alt": "I"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 24912,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "N",
+              "ref": "H",
+              "pos": 145,
+              "alt": "Y"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 28706,
+              "alt": "T"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 5884,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 10360,
+            "alt": "A"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 29144,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 29882,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 29883,
+            "alt": "G"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 29884,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 29885,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 29887,
+            "alt": "C"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 29892,
+            "alt": "G"
+          }
+        }
+      ]
+    },
+    {
+      "reference": "wuhan",
+      "coding": [
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "W",
+              "pos": 2769,
+              "alt": "C"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 8572,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "P",
+              "pos": 3359,
+              "alt": "S"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 10340,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1b",
+              "ref": "P",
+              "pos": 314,
+              "alt": "L"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 14408,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "D",
+              "pos": 614,
+              "alt": "G"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 23403,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "T",
+              "pos": 1117,
+              "alt": "I"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 24912,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "N",
+              "ref": "H",
+              "pos": 145,
+              "alt": "Y"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 28706,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "N",
+              "ref": "R",
+              "pos": 203,
+              "alt": "K"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28881,
+              "alt": "A"
+            },
+            {
+              "ref": "G",
+              "pos": 28882,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "N",
+              "ref": "G",
+              "pos": 204,
+              "alt": "R"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28883,
+              "alt": "C"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 241,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 3037,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 5884,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 10360,
+            "alt": "A"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 29144,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 29882,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 29883,
+            "alt": "G"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 29884,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 29885,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 29887,
+            "alt": "C"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 29892,
+            "alt": "G"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4705 @@
+{
+  "pango_lineage": "B.1.243.2",
+  "nextstrain_clade": "20A",
+  "mutations": [
+    {
+      "reference": "pango_parent",
+      "coding": [
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "A",
+              "pos": 181,
+              "alt": "T"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 806,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "H",
+              "pos": 1500,
+              "alt": "Y"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 4763,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "A",
+              "pos": 2344,
+              "alt": "V"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 7296,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "S",
+              "pos": 2926,
+              "alt": "F"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 9042,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "D",
+              "pos": 3222,
+              "alt": "N"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 9929,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "K",
+              "pos": 3353,
+              "alt": "R"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 10323,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "T",
+              "pos": 3646,
+              "alt": "A"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 11201,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "Q",
+              "pos": 3777,
+              "alt": "R"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 11595,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "G",
+              "pos": 3971,
+              "alt": "S"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 12176,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1b",
+              "ref": "E",
+              "pos": 1728,
+              "alt": "D"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 18651,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "R",
+              "pos": 246,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 22298,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 22299,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 22300,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "S",
+              "pos": 247,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 22301,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 22302,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 22303,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "Y",
+              "pos": 248,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 22304,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 22305,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 22306,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "T",
+              "pos": 478,
+              "alt": "K"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 22995,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "N",
+              "pos": 501,
+              "alt": "T"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 23064,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "N",
+              "pos": 679,
+              "alt": "K"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 23599,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "N",
+              "pos": 751,
+              "alt": "K"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 23815,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "D",
+              "pos": 936,
+              "alt": "H"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 24368,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF3a",
+              "ref": "S",
+              "pos": 171,
+              "alt": "L"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 25904,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF3a",
+              "ref": "V",
+              "pos": 256,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 26158,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 26159,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 26160,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF3a",
+              "ref": "N",
+              "pos": 257,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 26161,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "M",
+              "pos": 1,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27894,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27895,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 27896,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "K",
+              "pos": 2,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27897,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27898,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27899,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "F",
+              "pos": 3,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27900,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27901,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27902,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "L",
+              "pos": 4,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27903,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27904,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27905,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "V",
+              "pos": 5,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27906,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27907,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27908,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "F",
+              "pos": 6,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27909,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27910,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27911,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "L",
+              "pos": 7,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27912,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27913,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27914,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "G",
+              "pos": 8,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27915,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 27916,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27917,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "I",
+              "pos": 9,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27918,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27919,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27920,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "I",
+              "pos": 10,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27921,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27922,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27923,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "T",
+              "pos": 11,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27924,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27925,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27926,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "T",
+              "pos": 12,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27927,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27928,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27929,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "V",
+              "pos": 13,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27930,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27931,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27932,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "A",
+              "pos": 14,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27933,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27934,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27935,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "A",
+              "pos": 15,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27936,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27937,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27938,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "F",
+              "pos": 16,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27939,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27940,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27941,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "H",
+              "pos": 17,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27942,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27943,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27944,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "Q",
+              "pos": 18,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27945,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27946,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27947,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "E",
+              "pos": 19,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27948,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27949,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27950,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "C",
+              "pos": 20,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27951,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 27952,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27953,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "S",
+              "pos": 21,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27954,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 27955,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27956,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "L",
+              "pos": 22,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27957,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27958,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27959,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "Q",
+              "pos": 23,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27960,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27961,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 27962,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "S",
+              "pos": 24,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27963,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27964,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27965,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "C",
+              "pos": 25,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27966,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 27967,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27968,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "T",
+              "pos": 26,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27969,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27970,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27971,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "Q",
+              "pos": 27,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27972,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27973,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27974,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "H",
+              "pos": 28,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27975,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27976,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27977,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "Q",
+              "pos": 29,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27978,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27979,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27980,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "P",
+              "pos": 30,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27981,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27982,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27983,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "Y",
+              "pos": 31,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27984,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27985,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27986,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "V",
+              "pos": 32,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27987,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27988,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27989,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "V",
+              "pos": 33,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27990,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27991,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27992,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "D",
+              "pos": 34,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27993,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27994,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27995,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "D",
+              "pos": 35,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27996,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27997,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27998,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "P",
+              "pos": 36,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27999,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28000,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28001,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "C",
+              "pos": 37,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28002,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28003,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28004,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "P",
+              "pos": 38,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 28005,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28006,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28007,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "I",
+              "pos": 39,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 28008,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28009,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28010,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "H",
+              "pos": 40,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 28011,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28012,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28013,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "F",
+              "pos": 41,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28014,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28015,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28016,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "Y",
+              "pos": 42,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28017,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28018,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28019,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "S",
+              "pos": 43,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28020,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28021,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28022,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "K",
+              "pos": 44,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 28023,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28024,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28025,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "W",
+              "pos": 45,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28026,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28027,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28028,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "Y",
+              "pos": 46,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28029,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28030,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28031,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "I",
+              "pos": 47,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 28032,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28033,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28034,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "R",
+              "pos": 48,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 28035,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28036,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28037,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "V",
+              "pos": 49,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28038,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28039,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28040,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "G",
+              "pos": 50,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28041,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28042,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28043,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "A",
+              "pos": 51,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28044,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28045,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28046,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "R",
+              "pos": 52,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 28047,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28048,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28049,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "K",
+              "pos": 53,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 28050,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28051,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28052,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "S",
+              "pos": 54,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28053,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28054,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28055,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "A",
+              "pos": 55,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28056,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28057,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28058,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "P",
+              "pos": 56,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 28059,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28060,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28061,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "L",
+              "pos": 57,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28062,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28063,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28064,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "I",
+              "pos": 58,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 28065,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28066,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28067,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "E",
+              "pos": 59,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28068,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28069,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28070,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "L",
+              "pos": 60,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28071,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28072,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28073,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "C",
+              "pos": 61,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28074,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28075,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28076,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "V",
+              "pos": 62,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28077,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28078,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28079,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "D",
+              "pos": 63,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28080,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28081,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28082,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "E",
+              "pos": 64,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28083,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28084,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28085,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "A",
+              "pos": 65,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28086,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28087,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28088,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "N",
+              "ref": "P",
+              "pos": 13,
+              "alt": "L"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "P",
+              "pos": 10,
+              "alt": "S"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 28311,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "N",
+              "ref": "S",
+              "pos": 202,
+              "alt": "G"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 28877,
+              "alt": "G"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 4633,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 4876,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 16128,
+            "alt": "G"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 17373,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 22627,
+            "alt": "A"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 23191,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "T",
+            "pos": 23407,
+            "alt": "C"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 24061,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 24064,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 26507,
+            "alt": "G"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 27890,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 27891,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 27892,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 27893,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 28271,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 29543,
+            "alt": "T"
+          }
+        }
+      ]
+    },
+    {
+      "reference": "wuhan",
+      "coding": [
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "A",
+              "pos": 181,
+              "alt": "T"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 806,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "H",
+              "pos": 1500,
+              "alt": "Y"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 4763,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "A",
+              "pos": 2344,
+              "alt": "V"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 7296,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "S",
+              "pos": 2926,
+              "alt": "F"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 9042,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "D",
+              "pos": 3222,
+              "alt": "N"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 9929,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "K",
+              "pos": 3353,
+              "alt": "R"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 10323,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "T",
+              "pos": 3646,
+              "alt": "A"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 11201,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "Q",
+              "pos": 3777,
+              "alt": "R"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 11595,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "G",
+              "pos": 3971,
+              "alt": "S"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 12176,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1b",
+              "ref": "P",
+              "pos": 314,
+              "alt": "L"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 14408,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1b",
+              "ref": "E",
+              "pos": 1728,
+              "alt": "D"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 18651,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "R",
+              "pos": 246,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 22298,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 22299,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 22300,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "S",
+              "pos": 247,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 22301,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 22302,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 22303,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "Y",
+              "pos": 248,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 22304,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 22305,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 22306,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "T",
+              "pos": 478,
+              "alt": "K"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 22995,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "N",
+              "pos": 501,
+              "alt": "T"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 23064,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "D",
+              "pos": 614,
+              "alt": "G"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 23403,
+              "alt": "G"
+            },
+            {
+              "ref": "T",
+              "pos": 23407,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "N",
+              "pos": 679,
+              "alt": "K"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 23599,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "N",
+              "pos": 751,
+              "alt": "K"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 23815,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "D",
+              "pos": 936,
+              "alt": "H"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 24368,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF3a",
+              "ref": "S",
+              "pos": 171,
+              "alt": "L"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 25904,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF3a",
+              "ref": "V",
+              "pos": 256,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 26158,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 26159,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 26160,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF3a",
+              "ref": "N",
+              "pos": 257,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 26161,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "M",
+              "pos": 1,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27894,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27895,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 27896,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "K",
+              "pos": 2,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27897,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27898,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27899,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "F",
+              "pos": 3,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27900,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27901,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27902,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "L",
+              "pos": 4,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27903,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27904,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27905,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "V",
+              "pos": 5,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27906,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27907,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27908,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "F",
+              "pos": 6,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27909,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27910,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27911,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "L",
+              "pos": 7,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27912,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27913,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27914,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "G",
+              "pos": 8,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27915,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 27916,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27917,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "I",
+              "pos": 9,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27918,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27919,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27920,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "I",
+              "pos": 10,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27921,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27922,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27923,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "T",
+              "pos": 11,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27924,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27925,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27926,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "T",
+              "pos": 12,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27927,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27928,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27929,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "V",
+              "pos": 13,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27930,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27931,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27932,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "A",
+              "pos": 14,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27933,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27934,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27935,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "A",
+              "pos": 15,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27936,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27937,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27938,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "F",
+              "pos": 16,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27939,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27940,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27941,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "H",
+              "pos": 17,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27942,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27943,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27944,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "Q",
+              "pos": 18,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27945,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27946,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27947,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "E",
+              "pos": 19,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27948,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27949,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27950,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "C",
+              "pos": 20,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27951,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 27952,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27953,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "S",
+              "pos": 21,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27954,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 27955,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27956,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "L",
+              "pos": 22,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27957,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27958,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27959,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "Q",
+              "pos": 23,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27960,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27961,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 27962,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "S",
+              "pos": 24,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27963,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27964,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27965,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "C",
+              "pos": 25,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27966,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 27967,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27968,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "T",
+              "pos": 26,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27969,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27970,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27971,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "Q",
+              "pos": 27,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27972,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27973,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27974,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "H",
+              "pos": 28,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27975,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27976,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27977,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "Q",
+              "pos": 29,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27978,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27979,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27980,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "P",
+              "pos": 30,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27981,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27982,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27983,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "Y",
+              "pos": 31,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27984,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27985,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27986,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "V",
+              "pos": 32,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27987,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27988,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27989,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "V",
+              "pos": 33,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27990,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27991,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27992,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "D",
+              "pos": 34,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27993,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27994,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 27995,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "D",
+              "pos": 35,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27996,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 27997,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 27998,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "P",
+              "pos": 36,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 27999,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28000,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28001,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "C",
+              "pos": 37,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28002,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28003,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28004,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "P",
+              "pos": 38,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 28005,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28006,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28007,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "I",
+              "pos": 39,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 28008,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28009,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28010,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "H",
+              "pos": 40,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 28011,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28012,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28013,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "F",
+              "pos": 41,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28014,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28015,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28016,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "Y",
+              "pos": 42,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28017,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28018,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28019,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "S",
+              "pos": 43,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28020,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28021,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28022,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "K",
+              "pos": 44,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 28023,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28024,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28025,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "W",
+              "pos": 45,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28026,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28027,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28028,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "Y",
+              "pos": 46,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28029,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28030,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28031,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "I",
+              "pos": 47,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 28032,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28033,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28034,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "R",
+              "pos": 48,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 28035,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28036,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28037,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "V",
+              "pos": 49,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28038,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28039,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28040,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "G",
+              "pos": 50,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28041,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28042,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28043,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "A",
+              "pos": 51,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28044,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28045,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28046,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "R",
+              "pos": 52,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 28047,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28048,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28049,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "K",
+              "pos": 53,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 28050,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28051,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28052,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "S",
+              "pos": 54,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28053,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28054,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28055,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "A",
+              "pos": 55,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28056,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28057,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28058,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "P",
+              "pos": 56,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 28059,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28060,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28061,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "L",
+              "pos": 57,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28062,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28063,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28064,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "I",
+              "pos": 58,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 28065,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28066,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28067,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "E",
+              "pos": 59,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28068,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28069,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28070,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "L",
+              "pos": 60,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28071,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28072,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28073,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "C",
+              "pos": 61,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 28074,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28075,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28076,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "V",
+              "pos": 62,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28077,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28078,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28079,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "D",
+              "pos": 63,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28080,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28081,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28082,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "E",
+              "pos": 64,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28083,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28084,
+              "alt": "-"
+            },
+            {
+              "ref": "G",
+              "pos": 28085,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "A",
+              "pos": 65,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28086,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28087,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 28088,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "N",
+              "ref": "P",
+              "pos": 13,
+              "alt": "L"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "P",
+              "pos": 10,
+              "alt": "S"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 28311,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "N",
+              "ref": "S",
+              "pos": 194,
+              "alt": "L"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 28854,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "N",
+              "ref": "S",
+              "pos": 202,
+              "alt": "G"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 28877,
+              "alt": "G"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 241,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 3037,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 4633,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 4876,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 16128,
+            "alt": "G"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 17373,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 20268,
+            "alt": "G"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 22627,
+            "alt": "A"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 23191,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 24061,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 24064,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "T",
+            "pos": 24076,
+            "alt": "C"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 26507,
+            "alt": "G"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 27890,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 27891,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 27892,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 27893,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 28271,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 29543,
+            "alt": "T"
+          }
+        }
+      ]
+    }
+  ]
+}
