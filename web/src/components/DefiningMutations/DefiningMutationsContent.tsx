@@ -41,7 +41,9 @@ function DefiningMutationsTableCard({ cluster }: { cluster: DefiningMutationClus
   )
 
   const referenceSequences = clusterData?.mutations.map(({ reference }) => reference) ?? []
-  const [selectedReference, setSelectedReference] = useState<string | undefined>(referenceSequences?.at(0))
+  const [selectedReference, setSelectedReference] = useState<string | undefined>(
+    referenceSequences?.find((v) => v === 'wuhan') ?? referenceSequences?.at(0),
+  )
 
   if (!selectedReference) {
     return null
