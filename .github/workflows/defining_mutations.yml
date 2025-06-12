@@ -48,7 +48,7 @@ jobs:
 
       - name: "merge files and update web data"
         run: |
-          python3 scripts/merge_defining_mutations.py defining_mutations data web/public/data/definingMutations
+          python3 -m scripts.defining_mutations.merge_defining_mutations defining_mutations data web/public/data/definingMutations
 
       - name: "Commit and push update"
         run: |
