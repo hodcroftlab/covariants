@@ -13,7 +13,7 @@ export function NomenclatureSwitch({ className }: { className?: string }) {
       title="Switch nomenclature"
       checked={enablePangolin}
       onCheckedChanged={setEnablePangolin}
-      labelLeft="Pangolin"
+      labelLeft="Pango"
       labelRight="Nextstrain"
     />
   )

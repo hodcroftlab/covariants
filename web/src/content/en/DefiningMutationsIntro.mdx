@@ -1,0 +1,8 @@
+import {LinkExternal} from 'src/components/Link/LinkExternal'
+import {Link} from 'src/components/Link/Link'
+
+Here you can view the defining mutations of all designated Nextstrain variants and Pango lineages. Use the search on the left to look for specific lineages/variants. Below the search, you can find a curated list of variants, which you can also see on the <Link href="/variants">variants</Link> page.
+
+The mapping between Nextstrain variants and Pango lineages is not exact. You can refer to <LinkExternal href="https://raw.githubusercontent.com/nextstrain/ncov-clades-schema/master/clades.svg" >this schema</LinkExternal> to see how they relate, but some (such as 20C, 21I, 21J, and 21M) do not have direct matches. Use the 'parent' and 'child' links on the right-hand side of each page to navigate. 
+
+Mutations are shown relative to Wuhan or the parent (Nextstrain or Pango), depending on what you select. For Nextstrain variants, the data is a combination of hand-curated data (also available <LinkExternal href="https://github.com/hodcroftlab/covariants/tree/master/defining_mutations" >here</LinkExternal>) and auto-generated data. For Pango lineages the data is auto-generated. Please <LinkExternal href="https://github.com/hodcroftlab/covariants/issues/new/choose" >let us know</LinkExternal> if there seems to be a mistake, so we can correct it!
