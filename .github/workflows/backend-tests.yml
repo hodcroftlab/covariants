@@ -41,4 +41,11 @@ jobs:
         run: |
           mkdir tests/data/include_case_counts/output -p
           mkdir tests/data/convert_to_web_app/output/web/data -p
+          mkdir tests/data/defining_mutations/output
+          mkdir tests/data/cluster_analysis/output/cluster_profile/clusters/current -p
+          mkdir tests/data/cluster_analysis/output/cluster_tables -p
+          touch tests/data/cluster_analysis/output/cluster_tables/all_tables.tsv
+          mkdir tests/data/cluster_analysis/output/web/public/data -p
+          touch tests/data/cluster_analysis/output/web/public/data/update.json
+          mkdir tests/data/cluster_analysis/output/web/public/acknowledgements -p
           pytest

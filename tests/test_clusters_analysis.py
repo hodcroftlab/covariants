@@ -313,11 +313,18 @@ ALL_COUNTRIES = ['Afghanistan',
 N_TOTAL = 16860043
 
 DATA_DIR = 'tests/data/cluster_analysis'
+OUTPUT_DIR = os.path.join(DATA_DIR, 'output')
+CLUSTER_PATH = os.path.join(OUTPUT_DIR, 'cluster_profile')
+TABLES_PATH = os.path.join(OUTPUT_DIR, "cluster_tables")
+OVERALL_TABLES_FILE = os.path.join(TABLES_PATH, "all_tables.tsv")
+ACKNOWLEDGEMENT_FOLDER_NEW = os.path.join(OUTPUT_DIR, 'web', 'public', 'acknowledgements')
+WEB_DATA_FOLDER = os.path.join(OUTPUT_DIR, 'web', 'public', 'data')
 CI = os.environ.get('CI')
 
 def test_main():
-    user_input = ('all', True, list(mock_clusters.keys()), True, True, True, False, False, ["USA", "Switzerland"])
-    main(*user_input, input_meta=os.path.join(DATA_DIR, 'metadata.csv'), clusters=mock_clusters)
+    print_files = True
+    user_input = ('all', True, list(mock_clusters.keys()), True, True, True, False, print_files, ["USA", "Switzerland"])
+    main(*user_input, input_meta=os.path.join(DATA_DIR, 'metadata.csv'), clusters=mock_clusters, cluster_path=CLUSTER_PATH, tables_path=TABLES_PATH, overall_tables_file=OVERALL_TABLES_FILE, web_data_folder=WEB_DATA_FOLDER)
 
 
 @pytest.mark.parametrize("zip_extension",
@@ -338,7 +345,7 @@ def test_initial_metadata(zip_extension):
     assert n_total == 29
 
 
-@pytest.mark.skipif(CI, reason='full functionality test only for debugging, skip on CI')
+@pytest.mark.skip(reason='full functionality test only for debugging')
 def test_initial_metadata_zipped_full():
     input_meta = "../metadata.tsv.gz"
     clus_to_run = clusters.keys()
@@ -399,7 +406,7 @@ def test_clean_metadata(clus_check, division, print_acknowledgements, expected_a
     clus_to_run_breakdown, daughter_clades, rest_all = split_into_cluster_categories(nextstrain_clades, clus_to_run, mock_clusters)
 
     acknowledgement_by_variant, acknowledgement_keys, clus_data_all, division_data_all, total_counts_countries, total_counts_divisions = prepare_data_structure(
-        all_countries, clus_to_run, division, earliest_date, selected_country, today, mock_clusters)
+        all_countries, clus_to_run, division, earliest_date, selected_country, today, mock_clusters, '')
 
     # Act
     all_sequences, cluster_inconsistencies, total_counts_countries, total_counts_divisions, clus_data_all, acknowledgement_by_variant = clean_metadata(

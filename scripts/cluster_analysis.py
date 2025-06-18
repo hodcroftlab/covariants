@@ -18,14 +18,14 @@
 # If you want to output files to run in `ncov_cluster` to make cluster-focused builds,
 # clone this repo so it sits 'next' to ncov: https://github.com/emmahodcroft/ncov_cluster
 # and use these paths:
-cluster_path = "../ncov_cluster/cluster_profile/"
+CLUSTER_PATH = "../ncov_cluster/cluster_profile/"
 
 # Things that write out to cluster_scripts repo (images mostly), use this path:
-tables_path = "../covariants/cluster_tables/"
-overall_tables_file = "../covariants/cluster_tables/all_tables.tsv"
-acknowledgement_folder = "../covariants/acknowledgements/"
-acknowledgement_folder_new = "../covariants/web/public/acknowledgements/"
-web_data_folder = "../covariants/web/public/data/"
+TABLES_PATH = "../covariants/cluster_tables/"
+OVERALL_TABLES_FILE = "../covariants/cluster_tables/all_tables.tsv"
+ACKNOWLEDGEMENT_FOLDER = "../covariants/acknowledgements/"
+ACKNOWLEDGEMENT_FOLDER_NEW = "../covariants/web/public/acknowledgements/"
+WEB_DATA_FOLDER = "../covariants/web/public/data/"
 # This assumes that `covariants` sites next to `ncov`
 # Otherwise, modify the paths above to put the files wherever you like.
 # (Alternatively just create a folder structure to mirror the above)
@@ -56,7 +56,6 @@ from scripts.clusters import clusters as clusters_data
 from scripts.bad_sequences import bad_seqs
 from scripts.approx_first_dates import cluster_first_dates, first_date_exceptions
 from scripts.swiss_regions import swiss_regions
-
 
 for clus in cluster_first_dates:  # Transform date from string to datetime for easier comparison
     cluster_first_dates[clus]["date_formatted"] = datetime.datetime.strptime(
@@ -138,7 +137,12 @@ def get_user_input(clusters) -> tuple[str, bool, list[str] | list, bool, bool, b
 def main(clus_answer: str,
          clus_check: bool, clus_to_run: list[str] | list, division: bool, do_country: bool, do_divisions_country: bool,
          print_acknowledgements: bool, print_files: bool, selected_country: list[str],
-         dated_limit: str = DATED_LIMIT, input_meta: str = 'data/metadata.tsv', clusters=clusters_data):
+         dated_limit: str = DATED_LIMIT, input_meta: str = 'data/metadata.tsv', clusters=clusters_data,
+         cluster_path=CLUSTER_PATH,
+         tables_path=TABLES_PATH,
+         overall_tables_file=OVERALL_TABLES_FILE,
+         acknowledgement_folder=ACKNOWLEDGEMENT_FOLDER_NEW,
+         web_data_folder=WEB_DATA_FOLDER):
     # TODO: Use "usa_graph": True (Slack, Emma, May 18 22)
 
     # set min data week to consider
@@ -152,7 +156,7 @@ def main(clus_answer: str,
 
     json_output = {}
 
-    prepare_output_files(clus_answer, print_files)
+    prepare_output_files(clus_answer, print_files, overall_tables_file, cluster_path)
 
     ##################################
     ##################################
@@ -233,7 +237,7 @@ def main(clus_answer: str,
     ##### Prepare data structure
 
     acknowledgement_by_variant, acknowledgement_keys, clus_data_all, division_data_all, total_counts_countries, total_counts_divisions = prepare_data_structure(
-        all_countries, clus_to_run, division, earliest_date, selected_country, today, clusters)
+        all_countries, clus_to_run, division, earliest_date, selected_country, today, clusters, cluster_path)
 
     t1 = time.time()
     print(f"Preparation took {round((t1 - t0) / 60, 1)} min to run.\n")
@@ -305,8 +309,8 @@ def main(clus_answer: str,
                 continue
 
             # Store all strains per cluster
-            nextstrain_run = clusters[clus]['nextstrain_build']
-            clusterlist_output = clusters[clus]["clusterlist_output"]
+            nextstrain_run = clus_data_all[clus]['nextstrain_build']
+            clusterlist_output = clus_data_all[clus]["clusterlist_output"]
             if nextstrain_run:
                 with open(clusterlist_output, "w") as f:
                     f.write("\n".join(all_sequences[clus]))
@@ -324,8 +328,8 @@ def main(clus_answer: str,
                 copyfile(clusterlist_output, copypath2)
 
         if dated_limit:
-            build_nam = clusters[DATED_CLUSTER]["build_name"]
-            clusterlist_output = clusters[DATED_CLUSTER]["clusterlist_output"]
+            build_nam = clus_data_all[DATED_CLUSTER]["build_name"]
+            clusterlist_output = clus_data_all[DATED_CLUSTER]["clusterlist_output"]
 
             datedpath = clusterlist_output.replace(f"{build_nam}", "{}-{}".format(build_nam, dated_limit), )
             curr_datedpath = datedpath.replace("clusters/cluster_", "clusters/current/cluster_")
@@ -369,7 +373,7 @@ def main(clus_answer: str,
             if clus_build_name == "DanishCluster":
                 continue
 
-            ack_out_folder = acknowledgement_folder_new + f"{clus_build_name}/"
+            ack_out_folder = acknowledgement_folder + f"{clus_build_name}/"
             if not os.path.exists(ack_out_folder):
                 os.mkdir(ack_out_folder)
             ack_list = acknowledgement_by_variant["acknowledgements"][clus]
@@ -493,12 +497,12 @@ def main(clus_answer: str,
             countries_plotted[country] = "True"
 
         if print_files:
-            with open(tables_path + f"{clus_build_name}_data.json", "w") as fh:
+            with open(os.path.join(tables_path, f"{clus_build_name}_data.json"), "w") as fh:
                 json.dump(json_output[clus_build_name], fh)
 
     ## Write out plotting information - only if all clusters have run
     if print_files and "all" in clus_answer:
-        with open(tables_path + f"perVariant_countries_toPlot.json", "w") as fh:
+        with open(os.path.join(tables_path, f"perVariant_countries_toPlot.json"), "w") as fh:
             json.dump(countries_plotted, fh)
 
     ### COUNTRIES ###
@@ -624,7 +628,7 @@ def main(clus_answer: str,
         json_output["plotting_dates"]["max_date"] = datetime.datetime.strftime(max_week, "%Y-%m-%d")
 
         if print_files:
-            with open(tables_path + f"{file_prefix}_data.json", "w") as fh:
+            with open(os.path.join(tables_path, f"{file_prefix}_data.json"), "w") as fh:
                 json.dump(json_output, fh)
 
     if do_country:
@@ -657,7 +661,7 @@ def main(clus_answer: str,
     # if all went well (script got to this point), and did an 'all' run, then print out an update!
     if print_files and "all" in clus_answer:
         update_json = {"lastUpdated": str(datetime.datetime.now().isoformat())}
-        with open(web_data_folder + f"update.json", "w") as fh:
+        with open(os.path.join(web_data_folder, f"update.json"), "w") as fh:
             json.dump(update_json, fh)
 
     if "all" in clus_answer:
@@ -723,14 +727,14 @@ def main(clus_answer: str,
             print(f"\nNo inconsistent cluster assignment found for {key} sequences.")
 
 
-def prepare_output_files(clus_answer, print_files):
+def prepare_output_files(clus_answer, print_files, overall_tables_file, cluster_path):
     # if running all clusters, clear file so can write again.
     if print_files and "all" in clus_answer:
         # empty file to write clean
         with open(overall_tables_file, "w") as fh:
             fh.write("\n")
 
-        cur_path = cluster_path + "clusters/current/"
+        cur_path = os.path.join(cluster_path, "clusters", "current")
         for f in os.listdir(cur_path):
             if os.path.isfile(cur_path + f):
                 os.remove(cur_path + f)
@@ -806,7 +810,7 @@ def split_into_cluster_categories(nextstrain_clades, clus_to_run, clusters):
     return clus_to_run_breakdown, daughter_clades, rest_all
 
 
-def prepare_data_structure(all_countries, clus_to_run, division, earliest_date, selected_country, today, clusters):
+def prepare_data_structure(all_countries, clus_to_run, division, earliest_date, selected_country, today, clusters, cluster_path):
     # Prepare summary table separately for division
     clus_data_all = {}
     division_data_all = {}
@@ -1044,10 +1048,12 @@ def clean_metadata(clusters, nextstrain_clades_display_names, acknowledgement_by
                     parent, child = check_relation((clus_all_unique[0], clus_all_unique[1]), daughter_clades, clusters)
                     if parent and child:
                         if clusters[child]['graphing']:
-                            clus_all_no_plotting.append(parent) # Assign sequence to child, but for parent keep in nextstrain files
+                            clus_all_no_plotting.append(
+                                parent)  # Assign sequence to child, but for parent keep in nextstrain files
                         else:
                             # TODO: provide an example for this branch
-                            clus_all_no_plotting.append(child) # Assign sequence to child, but for parent keep in nextstrain files
+                            clus_all_no_plotting.append(
+                                child)  # Assign sequence to child, but for parent keep in nextstrain files
                         daughter_parent = True
                     else:
                         # TODO: provide an example for this branch
@@ -1139,7 +1145,10 @@ def clean_metadata(clusters, nextstrain_clades_display_names, acknowledgement_by
     return all_sequences, cluster_inconsistencies, total_counts_countries, total_counts_divisions, clus_data_all, acknowledgement_by_variant
 
 
-def check_relation(possible_relatives: tuple[str, str], daughter_clades: dict[str: list[str]], clusters: dict) -> tuple[str, str] | tuple[None, None]:
+def check_relation(possible_relatives: tuple[str, str], daughter_clades: dict[str: list[str]], clusters: dict) -> tuple[
+                                                                                                                      str, str] | \
+                                                                                                                  tuple[
+                                                                                                                      None, None]:
     first, second = possible_relatives
     first_is_parent = clusters[first]["display_name"] in daughter_clades
     if first_is_parent:
