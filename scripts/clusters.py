@@ -3853,6 +3853,69 @@ clusters = {
         },
     },
 
+    "25B": {  #NB.1.8.1  #parent is 24D
+       "snps": [2095,15573,15960,22865],  # ACTT
+       "snps_with_base": [], #MUST ADD VALUE WHEN TURN INTO PAGE!  
+       "cluster_data": [],
+       "nextstrain_build": False,
+       #"parent": "", 
+       "use_pango": False,
+       "has_no_page": True,
+       "type": "variant",
+       "graphing": True,
+       "important": False,
+       "country_info": [],
+       "col": "#b3cb23", 
+       "display_name": "25B (Omicron)",
+       "alt_display_name": ["NB.1.8.1"],
+       "build_name": "25B.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "25B",
+       "pango_lineages": [
+           {"name": "NB.1.8.1", "url": "https://cov-lineages.org/lineage.html?lineage=NB.1.8.1"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/25B.Omicron",
+        "mutations": {
+            "nonsynonymous": [
+            ],
+            "synonymous": [
+            ],
+        },
+    },
+
+
+    "25C": {  #XFG  #parent is 24A
+       "snps": [4214,8350,23021],  # CCG
+       "snps_with_base": [], #MUST ADD VALUE WHEN TURN INTO PAGE!  
+       "cluster_data": [],
+       "nextstrain_build": False,
+       #"parent": "", 
+       "use_pango": False,
+       "has_no_page": True,
+       "type": "variant",
+       "graphing": True,
+       "important": False,
+       "country_info": [],
+       "col": "#bd8e23", 
+       "display_name": "25C (Omicron)",
+       "alt_display_name": ["XFG"],
+       "build_name": "25C.Omicron",
+       "who_name": ["Omicron"],
+       "old_build_names": [],
+       "nextstrain_name": "25C",
+       "pango_lineages": [
+           {"name": "XFG", "url": "https://cov-lineages.org/lineage.html?lineage=XFG"},
+       ],
+       "nextstrain_url": "https://nextstrain.org/groups/neherlab/ncov/25C.Omicron",
+        "mutations": {
+            "nonsynonymous": [
+            ],
+            "synonymous": [
+            ],
+        },
+    },
+
     # variant  -- part of 'Indian' in media - B.1.617.1
     "Kappa": {
         "snps": [17523, 23604, 22917],  # ORF1b:1352, S:681, 452
