@@ -45,6 +45,17 @@ function PangoInfo({ cluster }: { cluster: DefiningMutationClusterMetaData }) {
         <span>{t('Child lineages')}</span>
         <ChildLineageBadges childLineages={cluster.pangoChildren ?? undefined} />
       </div>
+      {!cluster.isClade && (
+        <div>
+          <span>{t('Belongs to clade')}</span>
+          <div>
+            <VariantBadge
+              href={`/defining-mutations?variant=${cluster.nextstrainClade}`}
+              name={cluster.nextstrainClade}
+            />
+          </div>
+        </div>
+      )}
       <div>
         <span>{t('Designation date')}</span>
         <div>{cluster.designationDate ?? 'none'}</div>
