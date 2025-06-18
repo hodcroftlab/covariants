@@ -51,7 +51,19 @@ def load_auto_generated_data(path) -> tuple[pl.DataFrame, pl.DataFrame]:
         pl.col('pango_lineage_unaliased').replace([""], [None]),
         pl.col('pango_parent').replace([""], [None]),
         pl.col('nextstrain_clade').replace([""], [None]),
-        pl.col('designation_date').replace([""], [None])
+        pl.col('designation_date').replace([""], [None]),
+        pl.col('nuc_sub_wuhan').list.eval(pl.element().filter(pl.element() != "")),
+        pl.col('aa_sub_wuhan').list.eval(pl.element().filter(pl.element() != "")),
+        pl.col('nuc_del_wuhan').list.eval(pl.element().filter(pl.element() != "")),
+        pl.col('aa_del_wuhan').list.eval(pl.element().filter(pl.element() != "")),
+        pl.col('nuc_sub_pango_parent').list.eval(pl.element().filter(pl.element() != "")),
+        pl.col('aa_sub_pango_parent').list.eval(pl.element().filter(pl.element() != "")),
+        pl.col('nuc_del_pango_parent').list.eval(pl.element().filter(pl.element() != "")),
+        pl.col('aa_del_pango_parent').list.eval(pl.element().filter(pl.element() != "")),
+        pl.col('nuc_sub_rev_wuhan').list.eval(pl.element().filter(pl.element() != "")),
+        pl.col('aa_sub_rev_wuhan').list.eval(pl.element().filter(pl.element() != "")),
+        pl.col('nuc_del_rev_wuhan').list.eval(pl.element().filter(pl.element() != "")),
+        pl.col('aa_del_rev_wuhan').list.eval(pl.element().filter(pl.element() != "")),
     )
 
     lineages = (

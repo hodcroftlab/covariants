@@ -11,10 +11,13 @@ from tests.defining_mutations.config import AUTO_GENERATED_TEST_DIR, AUTO_GENERA
     HAND_CURATED_TEST_DIR, EXPECTED_OUTPUT_DIR, EXPECTED_OUTPUT_EDGE_CASES_DIR, OUTPUT_TEST_DIR, CI
 
 
-def test_merge_lineages():
-    hand_curated_clades, auto_generated_lineages, _, _ = import_mutation_data(HAND_CURATED_TEST_DIR, AUTO_GENERATED_TEST_DIR, clusters_data, clade_to_lineage)
+@pytest.mark.parametrize('auto_generated_data_dir, expected_clusters',
+                         [(AUTO_GENERATED_TEST_DIR, 56),
+                          (AUTO_GENERATED_EDGE_CASES_TEST_DIR, 55)])
+def test_merge_lineages(auto_generated_data_dir, expected_clusters):
+    hand_curated_clades, auto_generated_lineages, _, _ = import_mutation_data(HAND_CURATED_TEST_DIR, auto_generated_data_dir, clusters_data, clade_to_lineage)
     merged_clusters = merge_clusters_data(hand_curated_clades, auto_generated_lineages, clade_to_lineage)
-    assert len(merged_clusters) == 56
+    assert len(merged_clusters) == expected_clusters
     assert merged_clusters.columns == ['pango_lineage',
                                        'nextstrain_clade',
                                        'pango_lineage_unaliased',
