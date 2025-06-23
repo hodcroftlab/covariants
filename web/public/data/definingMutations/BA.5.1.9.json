@@ -1658,18 +1658,18 @@
           }
         },
         {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 29868,
+            "alt": "-"
+          }
+        },
+        {
           "contains_reversion": true,
           "nuc_mutation": {
             "ref": "G",
             "pos": 29868,
             "alt": "G"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "G",
-            "pos": 29868,
-            "alt": "-"
           }
         }
       ]

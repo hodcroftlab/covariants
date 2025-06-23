@@ -12,7 +12,7 @@ from scripts.defining_mutations.preprocess_mutation_data import process_hand_cur
 from scripts.clusters import clusters as clusters_data
 from scripts.defining_mutations.clade_to_lineage_override import clade_to_lineage
 from tests.defining_mutations.config import HAND_CURATED_TEST_DIR, AUTO_GENERATED_TEST_DIR, \
-    AUTO_GENERATED_EDGE_CASES_TEST_DIR, DEFINING_MUTATIONS_DATA_DIR, CI
+    AUTO_GENERATED_EDGE_CASES_TEST_DIR, DEFINING_MUTATIONS_DATA_DIR
 
 
 def test_process_hand_curated_file():
@@ -204,7 +204,7 @@ def test_remove_fake_aa_reversions(mutations, reversions, mutation_type, referen
     assert mutations == expected_mutations
 
 
-@pytest.mark.skipif(CI, reason='full functionality test only for debugging, skip on CI')
+@pytest.mark.skip(reason='full functionality test only for debugging')
 def test_match_nuc_to_aas_for_auto_generated_data_full():
     lineages, auto_generated_mutations_raw = load_auto_generated_data(
         os.path.join('data', 'auto_generated.json'))

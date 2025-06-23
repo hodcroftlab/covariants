@@ -2467,18 +2467,18 @@
           }
         },
         {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 29734,
+            "alt": "-"
+          }
+        },
+        {
           "contains_reversion": true,
           "nuc_mutation": {
             "ref": "G",
             "pos": 29734,
             "alt": "G"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "G",
-            "pos": 29734,
-            "alt": "-"
           }
         },
         {
@@ -2497,6 +2497,13 @@
           }
         },
         {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 29736,
+            "alt": "-"
+          }
+        },
+        {
           "contains_reversion": true,
           "nuc_mutation": {
             "ref": "G",
@@ -2507,7 +2514,7 @@
         {
           "nuc_mutation": {
             "ref": "G",
-            "pos": 29736,
+            "pos": 29737,
             "alt": "-"
           }
         },
@@ -2521,8 +2528,8 @@
         },
         {
           "nuc_mutation": {
-            "ref": "G",
-            "pos": 29737,
+            "ref": "C",
+            "pos": 29738,
             "alt": "-"
           }
         },
@@ -2532,13 +2539,6 @@
             "ref": "C",
             "pos": 29738,
             "alt": "C"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 29738,
-            "alt": "-"
           }
         },
         {
@@ -2557,6 +2557,13 @@
           }
         },
         {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 29740,
+            "alt": "-"
+          }
+        },
+        {
           "contains_reversion": true,
           "nuc_mutation": {
             "ref": "A",
@@ -2566,8 +2573,8 @@
         },
         {
           "nuc_mutation": {
-            "ref": "A",
-            "pos": 29740,
+            "ref": "C",
+            "pos": 29741,
             "alt": "-"
           }
         },
@@ -2577,13 +2584,6 @@
             "ref": "C",
             "pos": 29741,
             "alt": "C"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 29741,
-            "alt": "-"
           }
         },
         {
@@ -2602,6 +2602,13 @@
           }
         },
         {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 29743,
+            "alt": "-"
+          }
+        },
+        {
           "contains_reversion": true,
           "nuc_mutation": {
             "ref": "C",
@@ -2611,8 +2618,8 @@
         },
         {
           "nuc_mutation": {
-            "ref": "C",
-            "pos": 29743,
+            "ref": "G",
+            "pos": 29744,
             "alt": "-"
           }
         },
@@ -2627,7 +2634,7 @@
         {
           "nuc_mutation": {
             "ref": "G",
-            "pos": 29744,
+            "pos": 29745,
             "alt": "-"
           }
         },
@@ -2641,8 +2648,8 @@
         },
         {
           "nuc_mutation": {
-            "ref": "G",
-            "pos": 29745,
+            "ref": "A",
+            "pos": 29746,
             "alt": "-"
           }
         },
@@ -2656,13 +2663,6 @@
         },
         {
           "nuc_mutation": {
-            "ref": "A",
-            "pos": 29746,
-            "alt": "-"
-          }
-        },
-        {
-          "nuc_mutation": {
             "ref": "G",
             "pos": 29747,
             "alt": "-"
@@ -2674,6 +2674,13 @@
             "ref": "G",
             "pos": 29747,
             "alt": "G"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "T",
+            "pos": 29748,
+            "alt": "-"
           }
         },
         {
@@ -2686,8 +2693,8 @@
         },
         {
           "nuc_mutation": {
-            "ref": "T",
-            "pos": 29748,
+            "ref": "A",
+            "pos": 29749,
             "alt": "-"
           }
         },
@@ -2701,8 +2708,8 @@
         },
         {
           "nuc_mutation": {
-            "ref": "A",
-            "pos": 29749,
+            "ref": "C",
+            "pos": 29750,
             "alt": "-"
           }
         },
@@ -2712,13 +2719,6 @@
             "ref": "C",
             "pos": 29750,
             "alt": "C"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 29750,
-            "alt": "-"
           }
         },
         {
@@ -2812,18 +2812,18 @@
           }
         },
         {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 29757,
+            "alt": "-"
+          }
+        },
+        {
           "contains_reversion": true,
           "nuc_mutation": {
             "ref": "G",
             "pos": 29757,
             "alt": "G"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "G",
-            "pos": 29757,
-            "alt": "-"
           }
         },
         {

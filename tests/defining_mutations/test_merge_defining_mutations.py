@@ -8,7 +8,7 @@ from scripts.clusters import clusters as clusters_data
 from scripts.defining_mutations.clade_to_lineage_override import clade_to_lineage
 from scripts.defining_mutations.preprocess_mutation_data import import_mutation_data
 from tests.defining_mutations.config import AUTO_GENERATED_TEST_DIR, AUTO_GENERATED_EDGE_CASES_TEST_DIR, \
-    HAND_CURATED_TEST_DIR, EXPECTED_OUTPUT_DIR, EXPECTED_OUTPUT_EDGE_CASES_DIR, OUTPUT_TEST_DIR, CI
+    HAND_CURATED_TEST_DIR, EXPECTED_OUTPUT_DIR, EXPECTED_OUTPUT_EDGE_CASES_DIR, OUTPUT_TEST_DIR
 
 
 @pytest.mark.parametrize('auto_generated_data_dir, expected_clusters',
@@ -52,6 +52,6 @@ def test_main(expected_output_dir, auto_generated_test_dir):
                 assert output == expected_output
 
 
-@pytest.mark.skipif(CI, reason='full functionality test only for debugging, skip on CI')
+@pytest.mark.skip(reason='full functionality test only for debugging')
 def test_main_full():
     main(dry_run=True)

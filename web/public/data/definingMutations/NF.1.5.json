@@ -677,6 +677,33 @@
             {
               "gene": "S",
               "ref": "P",
+              "pos": 25,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 21635,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 21636,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 21637,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "P",
               "pos": 26,
               "alt": "P"
             }
@@ -719,33 +746,6 @@
             }
           ],
           "contains_reversion": true
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "S",
-              "ref": "P",
-              "pos": 25,
-              "alt": "-"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "C",
-              "pos": 21635,
-              "alt": "-"
-            },
-            {
-              "ref": "C",
-              "pos": 21636,
-              "alt": "-"
-            },
-            {
-              "ref": "C",
-              "pos": 21637,
-              "alt": "-"
-            }
-          ]
         },
         {
           "aa_mutations": [

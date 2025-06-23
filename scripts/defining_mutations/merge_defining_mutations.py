@@ -76,7 +76,7 @@ def merge_mutation_data(hand_curated_mutations: pl.DataFrame, auto_generated_mut
     position_sorted = (
         typed
         .sort('pango_lineage', 'reference', 'mutation_type', pl.col('nuc_mutation').struct.field('pos'),
-              pl.col('nuc_mutation').struct.field('ref'))
+              pl.col('nuc_mutation').struct.field('ref'), pl.col('nuc_mutation').struct.field('alt'),)
         .select('pango_lineage', 'nextstrain_clade', 'reference', 'mutation_type', 'aa_mutation', 'aa_mutation_2',
                 'nuc_mutation', 'notes', pl.col('reversion').alias('contains_reversion'))
     )
