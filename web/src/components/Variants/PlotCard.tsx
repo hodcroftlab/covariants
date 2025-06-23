@@ -19,16 +19,6 @@ const PlotCardTitleIcon = styled(GoGraph)`
   height: 20px;
 `
 
-const PlotCardBody = styled(CardBody)`
-  padding: 0;
-`
-
-const PlotCardHeading = styled.h1`
-  display: inline;
-  margin: auto 0;
-  font-size: 1.2rem;
-`
-
 export interface PlotCardProps {
   cluster: ClusterDatum
 }
@@ -43,7 +33,7 @@ export function PlotCardTitle({ cluster }: PlotCardProps) {
   return (
     <span className="d-flex w-100">
       <PlotCardTitleIcon />
-      <PlotCardHeading>{t('Distribution of {{variant}} per country', { variant })}</PlotCardHeading>
+      <h4 className="d-inline mb-0 mt-0 fs-5">{t('Distribution of {{variant}} per country', { variant })}</h4>
       <span className="ms-auto">
         <Link href="/per-variant" color={theme.link.dim.color}>
           {t('Compare')}
@@ -61,13 +51,13 @@ export function PlotCard({ cluster }: PlotCardProps) {
   return (
     <Card>
       <CardBody>{title}</CardBody>
-      <PlotCardBody>
+      <CardBody className="p-0">
         <Row className={'gx-0'}>
           <Col>
             <ClusterDistributionPlot distribution={clusterDistribution} country_names={countryNames} />
           </Col>
         </Row>
-      </PlotCardBody>
+      </CardBody>
     </Card>
   )
 }

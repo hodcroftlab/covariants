@@ -1,5 +1,8 @@
 These are the recent updates on CoVariants in reverse chronological order. For live updates and other interesting content follow [@firefoxx66](https://twitter.com/firefoxx66)
 
+## 2025-06-12
+- Add defining mutations page
+
 ## 2025-03-19
 - Add nomenclature toggle to switch between nextclade and pangolin
 

@@ -45,7 +45,7 @@ export const teal = '#20c997'
 export const cyan = '#9c27b0'
 
 export const primary = blue
-export const secondary = gray100
+export const secondary = gray500
 export const success = green
 export const info = cyan
 export const warning = yellow

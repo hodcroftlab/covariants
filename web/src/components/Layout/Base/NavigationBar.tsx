@@ -12,7 +12,6 @@ import {
   NavLink as NavLinkBase,
   Row,
 } from 'reactstrap'
-import classNames from 'classnames'
 import { FaGithub, FaTwitter } from 'react-icons/fa'
 
 import Image from 'next/image'
@@ -80,6 +79,7 @@ function NavigationLinks() {
       '/per-variant': t('Per variant'),
       '/cases': t('Cases'),
       '/shared-mutations': t('Shared Mutations'),
+      '/defining-mutations': t('Defining Mutations'),
       '/acknowledgements': t('Acknowledgements'),
     }
     if (process.env.NODE_ENV === 'development' || DEPLOY_ENVIRONMENT === 'staging') {
@@ -92,7 +92,7 @@ function NavigationLinks() {
     <NavWrappable navbar>
       {Object.entries(navLinks).map(([url, text]) => {
         return (
-          <NavItem key={url} className={classNames(matchingUrl(url, pathname) && 'active')}>
+          <NavItem key={url} className={`${matchingUrl(url, pathname) && 'active'}`}>
             <NavLink tag={Link} href={url}>
               {text}
             </NavLink>

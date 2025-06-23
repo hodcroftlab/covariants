@@ -1,0 +1,32 @@
+{
+  "pango_lineage": "B.55",
+  "nextstrain_clade": "19A",
+  "mutations": [
+    {
+      "reference": "pango_parent",
+      "coding": [],
+      "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "T",
+            "pos": 514,
+            "alt": "C"
+          }
+        }
+      ]
+    },
+    {
+      "reference": "wuhan",
+      "coding": [],
+      "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "T",
+            "pos": 514,
+            "alt": "C"
+          }
+        }
+      ]
+    }
+  ]
+}

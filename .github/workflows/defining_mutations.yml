@@ -1,0 +1,59 @@
+# Download defining mutations from Cornelius and merge with hand-curated defining mutations from Emma
+name: update-defining-mutations
+
+on:
+  schedule:
+    - cron: "0 0 1,15 * *"
+
+  workflow_dispatch:
+
+concurrency:
+  group: web-${{ github.workflow }}-${{ github.ref_type }}-${{ github.event.pull_request.number || github.ref || github.run_id }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash -euxo pipefail {0}
+
+env:
+  GITHUB_REPOSITORY_URL: ${{ github.server_url }}/${{ github.repository }}
+
+jobs:
+  update-defining-mutations:
+    name: "update-defining-mutations"
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: "checkout repo"
+        uses: actions/checkout@v4
+
+      - name: "install python"
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: "install python dependencies"
+        run: |
+          pip install -r requirements.txt
+
+      - name: "run tests"
+        run: |
+          mkdir tests/data/defining_mutations/output
+          pytest
+
+      - name: "download defining mutations"
+        run: |
+          mkdir -p data
+          curl -o data/cornelius.json https://raw.githubusercontent.com/corneliusroemer/pango-sequences/refs/heads/main/data/pango-consensus-sequences_summary.json
+
+      - name: "merge files and update web data"
+        run: |
+          python3 -m scripts.defining_mutations.merge_defining_mutations defining_mutations data web/public/data/definingMutations
+
+      - name: "Commit and push update"
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions"
+          git add web/public/data/definingMutations
+          git diff --staged --quiet || git commit -m "chore: Update defining mutations"
+          git push

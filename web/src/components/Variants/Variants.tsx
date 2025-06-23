@@ -28,6 +28,7 @@ import {
   hasPageClustersSelector,
 } from 'src/state/Clusters'
 import { enablePangolinAtom } from 'src/state/Nomenclature'
+import { getContentGithubUrl } from 'src/helpers/getContentGithubUrl'
 
 export function useDeriveCurrentClusterNameFromUrl(clusterName?: string): {
   clusterBuildName: string | undefined
@@ -90,7 +91,7 @@ export function Variants({ currentCluster }: { currentCluster: ClusterDatum }) {
   return (
     <FlexContainer>
       <FlexGrowing>
-        <Editable githubUrl={`blob/master/content/clusters/${currentCluster.buildName}.mdx`}>
+        <Editable githubUrl={getContentGithubUrl({ filename: `${currentCluster.buildName}.mdx`, folder: 'clusters' })}>
           <Row className="mb-3 gx-0">
             <Col className="d-flex w-100">
               {currentCluster.nextstrainUrl ? (
