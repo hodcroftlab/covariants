@@ -3,6 +3,46 @@
   "nextstrain_clade": "22B",
   "mutations": [
     {
+      "reference": "pango_parent",
+      "coding": [
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "M",
+              "pos": 902,
+              "alt": "V"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 2969,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF7a",
+              "ref": "G",
+              "pos": 26,
+              "alt": "D"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27470,
+              "alt": "A"
+            }
+          ]
+        }
+      ],
+      "silent": []
+    },
+    {
       "reference": "wuhan",
       "coding": [
         {
@@ -36,6 +76,23 @@
               "ref": "C",
               "pos": 2790,
               "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "M",
+              "pos": 902,
+              "alt": "V"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 2969,
+              "alt": "G"
             }
           ]
         },
@@ -989,6 +1046,23 @@
         {
           "aa_mutations": [
             {
+              "gene": "ORF7a",
+              "ref": "G",
+              "pos": 26,
+              "alt": "D"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27470,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
               "gene": "N",
               "ref": "P",
               "pos": 13,
@@ -1190,13 +1264,6 @@
         }
       ],
       "silent": [
-        {
-          "nuc_mutation": {
-            "ref": "A",
-            "pos": 1,
-            "alt": "T"
-          }
-        },
         {
           "nuc_mutation": {
             "ref": "C",

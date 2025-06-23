@@ -26,6 +26,23 @@
           "aa_mutations": [
             {
               "gene": "ORF1a",
+              "ref": "A",
+              "pos": 1997,
+              "alt": "V"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 6255,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
               "ref": "V",
               "pos": 2133,
               "alt": "I"
@@ -152,6 +169,23 @@
               "ref": "G",
               "pos": 4184,
               "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "A",
+              "pos": 1997,
+              "alt": "V"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 6255,
+              "alt": "T"
             }
           ]
         },

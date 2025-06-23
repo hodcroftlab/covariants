@@ -1,6 +1,6 @@
 {
   "pango_lineage": "JN.1.4",
-  "nextstrain_clade": "24A",
+  "nextstrain_clade": "23I",
   "mutations": [
     {
       "reference": "pango_parent",
@@ -23,7 +23,15 @@
           ]
         }
       ],
-      "silent": []
+      "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 1,
+            "alt": "T"
+          }
+        }
+      ]
     },
     {
       "reference": "wuhan",
@@ -1963,6 +1971,13 @@
         }
       ],
       "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 1,
+            "alt": "T"
+          }
+        },
         {
           "nuc_mutation": {
             "ref": "C",

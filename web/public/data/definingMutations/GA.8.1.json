@@ -217,6 +217,24 @@
           "aa_mutations": [
             {
               "gene": "ORF1a",
+              "ref": "I",
+              "pos": 1551,
+              "alt": "I"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 4916,
+              "alt": "A"
+            }
+          ],
+          "contains_reversion": true
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
               "ref": "L",
               "pos": 3027,
               "alt": "F"

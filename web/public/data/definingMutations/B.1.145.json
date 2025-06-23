@@ -3,8 +3,65 @@
   "nextstrain_clade": "20A",
   "mutations": [
     {
+      "reference": "pango_parent",
+      "coding": [
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "S",
+              "pos": 1534,
+              "alt": "I"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 4866,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1b",
+              "ref": "L",
+              "pos": 320,
+              "alt": "I"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 14425,
+              "alt": "A"
+            }
+          ]
+        }
+      ],
+      "silent": []
+    },
+    {
       "reference": "wuhan",
       "coding": [
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "S",
+              "pos": 1534,
+              "alt": "I"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 4866,
+              "alt": "T"
+            }
+          ]
+        },
         {
           "aa_mutations": [
             {
@@ -19,6 +76,23 @@
               "ref": "C",
               "pos": 14408,
               "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1b",
+              "ref": "L",
+              "pos": 320,
+              "alt": "I"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 14425,
+              "alt": "A"
             }
           ]
         },

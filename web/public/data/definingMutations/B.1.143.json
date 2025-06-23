@@ -54,6 +54,26 @@
             "pos": 3037,
             "alt": "T"
           }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 4084,
+            "alt": "T"
+          }
+        }
+      ]
+    },
+    {
+      "reference": "pango_parent",
+      "coding": [],
+      "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 4084,
+            "alt": "T"
+          }
         }
       ]
     }

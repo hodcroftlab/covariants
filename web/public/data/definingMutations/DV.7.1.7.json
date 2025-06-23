@@ -91,6 +91,13 @@
         },
         {
           "nuc_mutation": {
+            "ref": "T",
+            "pos": 25959,
+            "alt": "C"
+          }
+        },
+        {
+          "nuc_mutation": {
             "ref": "C",
             "pos": 29095,
             "alt": "T"

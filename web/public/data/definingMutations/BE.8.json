@@ -9,33 +9,6 @@
           "aa_mutations": [
             {
               "gene": "ORF1a",
-              "ref": "V",
-              "pos": 84,
-              "alt": "-"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "G",
-              "pos": 515,
-              "alt": "-"
-            },
-            {
-              "ref": "T",
-              "pos": 516,
-              "alt": "-"
-            },
-            {
-              "ref": "T",
-              "pos": 517,
-              "alt": "-"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1a",
               "ref": "M",
               "pos": 85,
               "alt": "-"
@@ -97,44 +70,12 @@
           "aa_mutations": [
             {
               "gene": "ORF7a",
-              "ref": "T",
-              "pos": 39,
-              "alt": "-"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "A",
-              "pos": 27508,
-              "alt": "-"
-            },
-            {
-              "ref": "C",
-              "pos": 27509,
-              "alt": "-"
-            },
-            {
-              "ref": "A",
-              "pos": 27510,
-              "alt": "-"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF7a",
               "ref": "Y",
               "pos": 40,
               "alt": "-"
             }
           ],
           "nuc_mutations": [
-            {
-              "ref": "T",
-              "pos": 27511,
-              "alt": "-"
-            },
             {
               "ref": "A",
               "pos": 27512,
@@ -2252,6 +2193,23 @@
               "alt": "-"
             }
           ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF7a",
+              "ref": "K",
+              "pos": 119,
+              "alt": "*"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27748,
+              "alt": "-"
+            }
+          ]
         }
       ],
       "silent": [
@@ -2288,33 +2246,6 @@
     {
       "reference": "wuhan",
       "coding": [
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1a",
-              "ref": "V",
-              "pos": 84,
-              "alt": "-"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "G",
-              "pos": 515,
-              "alt": "-"
-            },
-            {
-              "ref": "T",
-              "pos": 516,
-              "alt": "-"
-            },
-            {
-              "ref": "T",
-              "pos": 517,
-              "alt": "-"
-            }
-          ]
-        },
         {
           "aa_mutations": [
             {
@@ -3378,44 +3309,12 @@
           "aa_mutations": [
             {
               "gene": "ORF7a",
-              "ref": "T",
-              "pos": 39,
-              "alt": "-"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "A",
-              "pos": 27508,
-              "alt": "-"
-            },
-            {
-              "ref": "C",
-              "pos": 27509,
-              "alt": "-"
-            },
-            {
-              "ref": "A",
-              "pos": 27510,
-              "alt": "-"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF7a",
               "ref": "Y",
               "pos": 40,
               "alt": "-"
             }
           ],
           "nuc_mutations": [
-            {
-              "ref": "T",
-              "pos": 27511,
-              "alt": "-"
-            },
             {
               "ref": "A",
               "pos": 27512,
@@ -5530,6 +5429,23 @@
             {
               "ref": "A",
               "pos": 27747,
+              "alt": "-"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF7a",
+              "ref": "K",
+              "pos": 119,
+              "alt": "*"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 27748,
               "alt": "-"
             }
           ]

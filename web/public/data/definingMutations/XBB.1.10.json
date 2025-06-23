@@ -61,6 +61,13 @@
         {
           "nuc_mutation": {
             "ref": "C",
+            "pos": 64,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
             "pos": 11653,
             "alt": "T"
           }
@@ -1737,6 +1744,13 @@
           "nuc_mutation": {
             "ref": "C",
             "pos": 44,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 64,
             "alt": "T"
           }
         },

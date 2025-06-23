@@ -3,6 +3,29 @@
   "nextstrain_clade": "21L",
   "mutations": [
     {
+      "reference": "pango_parent",
+      "coding": [
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "Q",
+              "pos": 677,
+              "alt": "E"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 23591,
+              "alt": "G"
+            }
+          ]
+        }
+      ],
+      "silent": []
+    },
+    {
       "reference": "wuhan",
       "coding": [
         {
@@ -759,6 +782,23 @@
               "ref": "C",
               "pos": 23525,
               "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "Q",
+              "pos": 677,
+              "alt": "E"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 23591,
+              "alt": "G"
             }
           ]
         },

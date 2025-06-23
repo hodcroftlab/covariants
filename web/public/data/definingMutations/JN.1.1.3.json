@@ -1,10 +1,27 @@
 {
   "pango_lineage": "JN.1.1.3",
-  "nextstrain_clade": "24A",
+  "nextstrain_clade": "23I",
   "mutations": [
     {
       "reference": "pango_parent",
       "coding": [
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1b",
+              "ref": "H",
+              "pos": 2388,
+              "alt": "Y"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 20629,
+              "alt": "T"
+            }
+          ]
+        },
         {
           "aa_mutations": [
             {
@@ -450,6 +467,23 @@
             {
               "ref": "C",
               "pos": 19955,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1b",
+              "ref": "H",
+              "pos": 2388,
+              "alt": "Y"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 20629,
               "alt": "T"
             }
           ]
@@ -1988,10 +2022,11 @@
           }
         },
         {
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "C",
             "pos": 44,
-            "alt": "T"
+            "alt": "C"
           }
         },
         {

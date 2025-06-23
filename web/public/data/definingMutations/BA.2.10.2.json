@@ -3,6 +3,44 @@
   "nextstrain_clade": "21L",
   "mutations": [
     {
+      "reference": "pango_parent",
+      "coding": [
+        {
+          "aa_mutations": [
+            {
+              "gene": "E",
+              "ref": "R",
+              "pos": 61,
+              "alt": "L"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 26426,
+              "alt": "T"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "T",
+            "pos": 29867,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 29868,
+            "alt": "-"
+          }
+        }
+      ]
+    },
+    {
       "reference": "wuhan",
       "coding": [
         {
@@ -901,6 +939,23 @@
         {
           "aa_mutations": [
             {
+              "gene": "E",
+              "ref": "R",
+              "pos": 61,
+              "alt": "L"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 26426,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
               "gene": "M",
               "ref": "Q",
               "pos": 19,
@@ -1443,26 +1498,6 @@
             "alt": "-"
           }
         },
-        {
-          "nuc_mutation": {
-            "ref": "T",
-            "pos": 29867,
-            "alt": "-"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "G",
-            "pos": 29868,
-            "alt": "-"
-          }
-        }
-      ]
-    },
-    {
-      "reference": "pango_parent",
-      "coding": [],
-      "silent": [
         {
           "nuc_mutation": {
             "ref": "T",

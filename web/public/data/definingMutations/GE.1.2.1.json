@@ -173,6 +173,23 @@
               "alt": "G"
             }
           ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "G",
+              "pos": 8,
+              "alt": "*"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27915,
+              "alt": "T"
+            }
+          ]
         }
       ],
       "silent": []
@@ -1653,23 +1670,13 @@
               "gene": "ORF6",
               "ref": "D",
               "pos": 61,
-              "alt": "L"
+              "alt": "H"
             }
           ],
           "nuc_mutations": [
             {
               "ref": "G",
               "pos": 27382,
-              "alt": "C"
-            },
-            {
-              "ref": "A",
-              "pos": 27383,
-              "alt": "T"
-            },
-            {
-              "ref": "T",
-              "pos": 27384,
               "alt": "C"
             }
           ]
@@ -1704,6 +1711,23 @@
             {
               "ref": "C",
               "pos": 27688,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF8",
+              "ref": "G",
+              "pos": 8,
+              "alt": "*"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 27915,
               "alt": "T"
             }
           ]
@@ -2067,6 +2091,22 @@
           }
         },
         {
+          "contains_reversion": true,
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 27383,
+            "alt": "A"
+          }
+        },
+        {
+          "contains_reversion": true,
+          "nuc_mutation": {
+            "ref": "T",
+            "pos": 27384,
+            "alt": "T"
+          }
+        },
+        {
           "nuc_mutation": {
             "ref": "C",
             "pos": 27807,
@@ -2270,66 +2310,75 @@
           }
         },
         {
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "C",
             "pos": 29857,
-            "alt": "-"
+            "alt": "C"
           }
         },
         {
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "T",
             "pos": 29858,
-            "alt": "-"
+            "alt": "T"
           }
         },
         {
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "T",
             "pos": 29859,
-            "alt": "-"
+            "alt": "T"
           }
         },
         {
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "A",
             "pos": 29860,
-            "alt": "-"
+            "alt": "A"
           }
         },
         {
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "G",
             "pos": 29861,
-            "alt": "-"
+            "alt": "G"
           }
         },
         {
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "G",
             "pos": 29862,
-            "alt": "-"
+            "alt": "G"
           }
         },
         {
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "A",
             "pos": 29863,
-            "alt": "-"
+            "alt": "A"
           }
         },
         {
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "G",
             "pos": 29864,
-            "alt": "-"
+            "alt": "G"
           }
         },
         {
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "A",
             "pos": 29865,
-            "alt": "-"
+            "alt": "A"
           }
         }
       ]

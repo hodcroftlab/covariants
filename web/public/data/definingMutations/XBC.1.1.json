@@ -1345,24 +1345,6 @@
             {
               "gene": "ORF8",
               "ref": "V",
-              "pos": 33,
-              "alt": "V"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "T",
-              "pos": 27991,
-              "alt": "T"
-            }
-          ],
-          "contains_reversion": true
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF8",
-              "ref": "V",
               "pos": 114,
               "alt": "L"
             }

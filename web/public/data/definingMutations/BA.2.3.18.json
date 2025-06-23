@@ -3,6 +3,54 @@
   "nextstrain_clade": "21L",
   "mutations": [
     {
+      "reference": "pango_parent",
+      "coding": [
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1b",
+              "ref": "R",
+              "pos": 1078,
+              "alt": "C"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 16699,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1b",
+              "ref": "I",
+              "pos": 1435,
+              "alt": "S"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 17771,
+              "alt": "G"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "T",
+            "pos": 29867,
+            "alt": "A"
+          }
+        }
+      ]
+    },
+    {
       "reference": "wuhan",
       "coding": [
         {
@@ -266,6 +314,23 @@
             {
               "gene": "ORF1b",
               "ref": "R",
+              "pos": 1078,
+              "alt": "C"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "C",
+              "pos": 16699,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1b",
+              "ref": "R",
               "pos": 1315,
               "alt": "C"
             }
@@ -275,6 +340,23 @@
               "ref": "C",
               "pos": 17410,
               "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1b",
+              "ref": "I",
+              "pos": 1435,
+              "alt": "S"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 17771,
+              "alt": "G"
             }
           ]
         },
@@ -1460,19 +1542,6 @@
             "alt": "-"
           }
         },
-        {
-          "nuc_mutation": {
-            "ref": "T",
-            "pos": 29867,
-            "alt": "A"
-          }
-        }
-      ]
-    },
-    {
-      "reference": "pango_parent",
-      "coding": [],
-      "silent": [
         {
           "nuc_mutation": {
             "ref": "T",

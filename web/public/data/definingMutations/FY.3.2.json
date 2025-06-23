@@ -10,23 +10,6 @@
             {
               "gene": "ORF1a",
               "ref": "E",
-              "pos": 750,
-              "alt": "K"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "G",
-              "pos": 2513,
-              "alt": "A"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1a",
-              "ref": "E",
               "pos": 3764,
               "alt": "G"
             }
@@ -40,15 +23,7 @@
           ]
         }
       ],
-      "silent": [
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 23191,
-            "alt": "T"
-          }
-        }
-      ]
+      "silent": []
     },
     {
       "reference": "wuhan",
@@ -1683,14 +1658,6 @@
             "ref": "C",
             "pos": 26858,
             "alt": "T"
-          }
-        },
-        {
-          "contains_reversion": true,
-          "nuc_mutation": {
-            "ref": "A",
-            "pos": 27038,
-            "alt": "A"
           }
         },
         {

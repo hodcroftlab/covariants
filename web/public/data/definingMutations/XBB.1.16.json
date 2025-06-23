@@ -2286,6 +2286,7 @@
           }
         },
         {
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "G",
             "pos": 29736,
@@ -2293,7 +2294,6 @@
           }
         },
         {
-          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "G",
             "pos": 29736,
@@ -2316,24 +2316,17 @@
           }
         },
         {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 29738,
+            "alt": "-"
+          }
+        },
+        {
           "contains_reversion": true,
           "nuc_mutation": {
             "ref": "C",
             "pos": 29738,
-            "alt": "-"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 29738,
-            "alt": "-"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 29739,
             "alt": "-"
           }
         },
@@ -2346,7 +2339,13 @@
           }
         },
         {
-          "contains_reversion": true,
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 29739,
+            "alt": "-"
+          }
+        },
+        {
           "nuc_mutation": {
             "ref": "A",
             "pos": 29740,
@@ -2354,6 +2353,7 @@
           }
         },
         {
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "A",
             "pos": 29740,
@@ -2376,13 +2376,6 @@
           }
         },
         {
-          "nuc_mutation": {
-            "ref": "G",
-            "pos": 29742,
-            "alt": "-"
-          }
-        },
-        {
           "contains_reversion": true,
           "nuc_mutation": {
             "ref": "G",
@@ -2391,6 +2384,14 @@
           }
         },
         {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 29742,
+            "alt": "-"
+          }
+        },
+        {
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "C",
             "pos": 29743,
@@ -2398,7 +2399,6 @@
           }
         },
         {
-          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "C",
             "pos": 29743,
@@ -2541,14 +2541,6 @@
           }
         },
         {
-          "contains_reversion": true,
-          "nuc_mutation": {
-            "ref": "T",
-            "pos": 29753,
-            "alt": "-"
-          }
-        },
-        {
           "nuc_mutation": {
             "ref": "T",
             "pos": 29753,
@@ -2557,6 +2549,13 @@
         },
         {
           "contains_reversion": true,
+          "nuc_mutation": {
+            "ref": "T",
+            "pos": 29753,
+            "alt": "-"
+          }
+        },
+        {
           "nuc_mutation": {
             "ref": "C",
             "pos": 29754,
@@ -2564,6 +2563,7 @@
           }
         },
         {
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "C",
             "pos": 29754,
@@ -2586,13 +2586,6 @@
           }
         },
         {
-          "nuc_mutation": {
-            "ref": "A",
-            "pos": 29756,
-            "alt": "-"
-          }
-        },
-        {
           "contains_reversion": true,
           "nuc_mutation": {
             "ref": "A",
@@ -2602,8 +2595,8 @@
         },
         {
           "nuc_mutation": {
-            "ref": "G",
-            "pos": 29757,
+            "ref": "A",
+            "pos": 29756,
             "alt": "-"
           }
         },
@@ -2616,6 +2609,14 @@
           }
         },
         {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 29757,
+            "alt": "-"
+          }
+        },
+        {
+          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "T",
             "pos": 29758,
@@ -2623,7 +2624,6 @@
           }
         },
         {
-          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "T",
             "pos": 29758,
