@@ -1322,6 +1322,30 @@
       "has_data": true
     },
     {
+      "pango_lineage": "NB.1.8.1",
+      "nextstrain_clade": "25B",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "who": null,
+      "nextstrain_children": null,
+      "nextstrain_parent": null,
+      "has_data": false
+    },
+    {
+      "pango_lineage": "XFG",
+      "nextstrain_clade": "25C",
+      "pango_lineage_unaliased": null,
+      "pango_parent": null,
+      "pango_children": null,
+      "designation_date": null,
+      "who": null,
+      "nextstrain_children": null,
+      "nextstrain_parent": null,
+      "has_data": false
+    },
+    {
       "pango_lineage": "B.1.617.1",
       "nextstrain_clade": "21B",
       "pango_lineage_unaliased": "B.1.617.1",
