@@ -9,10 +9,10 @@ from scripts.defining_mutations.merge_defining_mutations import merge_mutation_d
 from scripts.defining_mutations.preprocess_mutation_data import process_hand_curated_file, process_auto_generated_data, \
     match_nuc_to_aas, process_hand_curated_data, extract_hand_curated_clade_to_lineage_mapping, \
     remove_fake_reversions, import_mutation_data
-from scripts.clusters import clusters as clusters_data
-from scripts.defining_mutations.clade_to_lineage_override import clade_to_lineage
 from tests.defining_mutations.config import HAND_CURATED_TEST_DIR, AUTO_GENERATED_TEST_DIR, \
     AUTO_GENERATED_EDGE_CASES_TEST_DIR, DEFINING_MUTATIONS_DATA_DIR
+from tests.data.defining_mutations.mock_clusters import mock_clusters as clusters_data
+from tests.data.defining_mutations.mock_clade_to_lineage_override import mock_clade_to_lineage as clade_to_lineage
 
 
 def test_process_hand_curated_file():
@@ -25,13 +25,13 @@ def test_process_hand_curated_file():
 
 def test_process_clusters():
     clusters = extract_hand_curated_clade_to_lineage_mapping(clusters_data, clade_to_lineage)
-    assert len(clusters) == 44
+    assert len(clusters) == 46
     assert clusters.columns == ['pango_lineage', 'nextstrain_clade']
 
 
 def test_process_hand_curated_data():
     clades, mutations = process_hand_curated_data(HAND_CURATED_TEST_DIR, clusters_data, clade_to_lineage)
-    assert len(clades) == 44
+    assert len(clades) == 46
     assert clades.columns == ['pango_lineage', 'nextstrain_clade', 'has_data']
     assert len(mutations) == 784
     assert mutations.columns == ['pango_lineage', 'nextstrain_clade', 'nuc_mutation', 'aa_mutation', 'aa_mutation_2',
@@ -77,7 +77,7 @@ def test_process_auto_generated_data_assigns_nucleotides_for_batch_deletions():
 def test_import_mutation_data():
     hand_curated_clades, auto_generated_lineages, hand_curated, auto_generated = import_mutation_data(
         HAND_CURATED_TEST_DIR, AUTO_GENERATED_TEST_DIR, clusters_data, clade_to_lineage)
-    assert len(hand_curated_clades) == 44
+    assert len(hand_curated_clades) == 46
     assert len(auto_generated_lineages) == 5
     assert hand_curated_clades.columns == ['pango_lineage',
                                            'nextstrain_clade',

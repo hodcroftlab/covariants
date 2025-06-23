@@ -4,16 +4,16 @@ import os
 import pytest
 
 from scripts.defining_mutations.merge_defining_mutations import main, merge_clusters_data
-from scripts.clusters import clusters as clusters_data
-from scripts.defining_mutations.clade_to_lineage_override import clade_to_lineage
 from scripts.defining_mutations.preprocess_mutation_data import import_mutation_data
 from tests.defining_mutations.config import AUTO_GENERATED_TEST_DIR, AUTO_GENERATED_EDGE_CASES_TEST_DIR, \
     HAND_CURATED_TEST_DIR, EXPECTED_OUTPUT_DIR, EXPECTED_OUTPUT_EDGE_CASES_DIR, OUTPUT_TEST_DIR
+from tests.data.defining_mutations.mock_clusters import mock_clusters as clusters_data
+from tests.data.defining_mutations.mock_clade_to_lineage_override import mock_clade_to_lineage as clade_to_lineage
 
 
 @pytest.mark.parametrize('auto_generated_data_dir, expected_clusters',
-                         [(AUTO_GENERATED_TEST_DIR, 56),
-                          (AUTO_GENERATED_EDGE_CASES_TEST_DIR, 55)])
+                         [(AUTO_GENERATED_TEST_DIR, 58),
+                          (AUTO_GENERATED_EDGE_CASES_TEST_DIR, 57)])
 def test_merge_lineages(auto_generated_data_dir, expected_clusters):
     hand_curated_clades, auto_generated_lineages, _, _ = import_mutation_data(HAND_CURATED_TEST_DIR, auto_generated_data_dir, clusters_data, clade_to_lineage)
     merged_clusters = merge_clusters_data(hand_curated_clades, auto_generated_lineages, clade_to_lineage)
