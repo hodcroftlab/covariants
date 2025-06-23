@@ -44,7 +44,7 @@ jobs:
       - name: "download defining mutations"
         run: |
           mkdir -p data
-          curl -o data/cornelius.json https://raw.githubusercontent.com/corneliusroemer/pango-sequences/refs/heads/main/data/pango-consensus-sequences_summary.json
+          curl -o data/auto_generated.json https://raw.githubusercontent.com/corneliusroemer/pango-sequences/refs/heads/main/data/pango-consensus-sequences_summary.json
 
       - name: "merge files and update web data"
         run: |
