@@ -1,0 +1,99 @@
+{
+  "individual": [
+    {
+      "index": 0,
+      "mutations": [
+        "S:P26S"
+      ]
+    },
+    {
+      "index": 1,
+      "mutations": [
+        "S:H69-"
+      ]
+    },
+    {
+      "index": 2,
+      "mutations": [
+        "S:V70-"
+      ]
+    },
+    {
+      "index": 3,
+      "mutations": [
+        "S:V126A"
+      ]
+    },
+    {
+      "index": 4,
+      "mutations": [
+        "S:Y144-"
+      ]
+    },
+    {
+      "index": 5,
+      "mutations": [
+        "S:L241-"
+      ]
+    },
+    {
+      "index": 6,
+      "mutations": [
+        "S:L242-"
+      ]
+    },
+    {
+      "index": 7,
+      "mutations": [
+        "S:A243-"
+      ]
+    },
+    {
+      "index": 8,
+      "mutations": [
+        "S:H245Y"
+      ]
+    },
+    {
+      "index": 9,
+      "mutations": [
+        "S:S477N"
+      ]
+    },
+    {
+      "index": 10,
+      "mutations": [
+        "S:E484K"
+      ]
+    },
+    {
+      "index": 11,
+      "mutations": [
+        "S:D614G"
+      ]
+    },
+    {
+      "index": 12,
+      "mutations": [
+        "S:P681H"
+      ]
+    },
+    {
+      "index": 13,
+      "mutations": [
+        "S:T1027I"
+      ]
+    },
+    {
+      "index": 14,
+      "mutations": [
+        "S:D1118H"
+      ]
+    }
+  ],
+  "shared_by_commonness": [],
+  "shared_by_pos": [],
+  "variants": [
+    "20A/S:126A\n(B.1.620)"
+  ]
+}
