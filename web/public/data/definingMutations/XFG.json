@@ -1,6 +1,6 @@
 {
   "pango_lineage": "XFG",
-  "nextstrain_clade": "recombinant",
+  "nextstrain_clade": "25C",
   "mutations": [
     {
       "reference": "pango_parent",
@@ -2147,6 +2147,20 @@
         {
           "nuc_mutation": {
             "ref": "C",
+            "pos": 21,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 44,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
             "pos": 241,
             "alt": "T"
           }
@@ -2349,37 +2363,16 @@
         },
         {
           "nuc_mutation": {
-            "ref": "G",
-            "pos": 29734,
-            "alt": "-"
-          }
-        },
-        {
-          "nuc_mutation": {
             "ref": "A",
             "pos": 29735,
-            "alt": "-"
+            "alt": "C"
           }
         },
         {
           "nuc_mutation": {
             "ref": "G",
             "pos": 29736,
-            "alt": "-"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "G",
-            "pos": 29737,
-            "alt": "-"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 29738,
-            "alt": "-"
+            "alt": "A"
           }
         },
         {
@@ -2519,14 +2512,7 @@
           "nuc_mutation": {
             "ref": "T",
             "pos": 29758,
-            "alt": "-"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "G",
-            "pos": 29759,
-            "alt": "-"
+            "alt": "G"
           }
         }
       ]
@@ -4676,6 +4662,20 @@
         {
           "nuc_mutation": {
             "ref": "C",
+            "pos": 21,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 44,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
             "pos": 241,
             "alt": "T"
           }
@@ -4878,37 +4878,16 @@
         },
         {
           "nuc_mutation": {
-            "ref": "G",
-            "pos": 29734,
-            "alt": "-"
-          }
-        },
-        {
-          "nuc_mutation": {
             "ref": "A",
             "pos": 29735,
-            "alt": "-"
+            "alt": "C"
           }
         },
         {
           "nuc_mutation": {
             "ref": "G",
             "pos": 29736,
-            "alt": "-"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "G",
-            "pos": 29737,
-            "alt": "-"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 29738,
-            "alt": "-"
+            "alt": "A"
           }
         },
         {
@@ -5048,14 +5027,7 @@
           "nuc_mutation": {
             "ref": "T",
             "pos": 29758,
-            "alt": "-"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "G",
-            "pos": 29759,
-            "alt": "-"
+            "alt": "G"
           }
         }
       ]

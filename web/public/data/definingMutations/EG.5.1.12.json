@@ -1563,14 +1563,6 @@
       ],
       "silent": [
         {
-          "contains_reversion": true,
-          "nuc_mutation": {
-            "ref": "A",
-            "pos": 1,
-            "alt": "A"
-          }
-        },
-        {
           "nuc_mutation": {
             "ref": "C",
             "pos": 241,
@@ -1701,6 +1693,13 @@
             "ref": "C",
             "pos": 26858,
             "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "T",
+            "pos": 26972,
+            "alt": "C"
           }
         },
         {
@@ -1933,6 +1932,13 @@
       "reference": "pango_parent",
       "coding": [],
       "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "T",
+            "pos": 26972,
+            "alt": "C"
+          }
+        },
         {
           "nuc_mutation": {
             "ref": "C",

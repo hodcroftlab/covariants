@@ -9,23 +9,6 @@
           "aa_mutations": [
             {
               "gene": "ORF1a",
-              "ref": "E",
-              "pos": 743,
-              "alt": "D"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "G",
-              "pos": 2494,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1a",
               "ref": "K",
               "pos": 1817,
               "alt": "N"
@@ -70,23 +53,6 @@
     {
       "reference": "wuhan",
       "coding": [
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1a",
-              "ref": "E",
-              "pos": 743,
-              "alt": "D"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "G",
-              "pos": 2494,
-              "alt": "T"
-            }
-          ]
-        },
         {
           "aa_mutations": [
             {

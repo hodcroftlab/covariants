@@ -1,7 +1,103 @@
 {
   "pango_lineage": "JN.1",
-  "nextstrain_clade": "23I",
+  "nextstrain_clade": "24A",
   "mutations": [
+    {
+      "reference": "nextclade_parent",
+      "coding": [
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "K",
+              "pos": 1973,
+              "alt": "R"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 6183,
+              "alt": "G"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "R",
+              "pos": 3821,
+              "alt": "K"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 11727,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "L",
+              "pos": 455,
+              "alt": "S"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 22926,
+              "alt": "C"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF7b",
+              "ref": "F",
+              "pos": 19,
+              "alt": "L"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "T",
+              "pos": 27810,
+              "alt": "C"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "T",
+            "pos": 3565,
+            "alt": "C"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 12815,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 18894,
+            "alt": "T"
+          }
+        }
+      ]
+    },
     {
       "reference": "pango_parent",
       "coding": [
@@ -328,7 +424,8 @@
               "pos": 11290,
               "alt": "-"
             }
-          ]
+          ],
+          "notes": "A 3-AA deletion in the same location but shifted 1 AA left (starting 3674) is present in 21K. These may be 2 separate events, or a common deletion & then mutation to shift how the deletion aligns"
         },
         {
           "aa_mutations": [
@@ -355,7 +452,8 @@
               "pos": 11293,
               "alt": "-"
             }
-          ]
+          ],
+          "notes": "A 3-AA deletion in the same location but shifted 1 AA left (starting 3674) is present in 21K. These may be 2 separate events, or a common deletion & then mutation to shift how the deletion aligns"
         },
         {
           "aa_mutations": [
@@ -382,7 +480,8 @@
               "pos": 11296,
               "alt": "-"
             }
-          ]
+          ],
+          "notes": "A 3-AA deletion in the same location but shifted 1 AA left (starting 3674) is present in 21K. These may be 2 separate events, or a common deletion & then mutation to shift how the deletion aligns"
         },
         {
           "aa_mutations": [
@@ -545,7 +644,8 @@
               "pos": 21634,
               "alt": "-"
             }
-          ]
+          ],
+          "notes": "Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27"
         },
         {
           "aa_mutations": [
@@ -572,7 +672,8 @@
               "pos": 21637,
               "alt": "-"
             }
-          ]
+          ],
+          "notes": "Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27"
         },
         {
           "aa_mutations": [
@@ -599,7 +700,8 @@
               "pos": 21640,
               "alt": "-"
             }
-          ]
+          ],
+          "notes": "Deletion removes last 2 bases from AA 24, entirety of 25/26, first base of 27"
         },
         {
           "aa_mutations": [
@@ -616,7 +718,8 @@
               "pos": 21641,
               "alt": "-"
             }
-          ]
+          ],
+          "notes": "This change is a consequence of the prior deletion"
         },
         {
           "aa_mutations": [
@@ -659,16 +762,6 @@
               "ref": "C",
               "pos": 21767,
               "alt": "-"
-            },
-            {
-              "ref": "A",
-              "pos": 21768,
-              "alt": "-"
-            },
-            {
-              "ref": "T",
-              "pos": 21769,
-              "alt": "-"
             }
           ]
         },
@@ -682,6 +775,16 @@
             }
           ],
           "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 21768,
+              "alt": "-"
+            },
+            {
+              "ref": "T",
+              "pos": 21769,
+              "alt": "-"
+            },
             {
               "ref": "G",
               "pos": 21770,
@@ -809,7 +912,8 @@
               "pos": 22195,
               "alt": "-"
             }
-          ]
+          ],
+          "notes": "Out of frame deletion, second & third bases of 211, first of 212"
         },
         {
           "aa_mutations": [
@@ -826,7 +930,8 @@
               "pos": 22196,
               "alt": "-"
             }
-          ]
+          ],
+          "notes": "This change is a consequence of the prior deletion"
         },
         {
           "aa_mutations": [
@@ -1309,8 +1414,15 @@
               "ref": "G",
               "pos": 23012,
               "alt": "A"
+            },
+            {
+              "ref": "G",
+              "pos": 23013,
+              "alt": "A"
             }
-          ]
+          ],
+          "notes": "G23012A combined with reversion 23013A in parent 23I create S:E484K. The mutation G23013A is a reversion to Wuhan (23013A) in parent 23I, but combined with G23012A, this creates S:E484K rather than a reversion to 484E",
+          "contains_reversion": true
         },
         {
           "aa_mutations": [
@@ -1333,6 +1445,25 @@
               "alt": "C"
             }
           ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "Q",
+              "pos": 493,
+              "alt": "Q"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 23040,
+              "alt": "A"
+            }
+          ],
+          "notes": "Reversion relative to 21L (which has 23040G/S:493R)",
+          "contains_reversion": true
         },
         {
           "aa_mutations": [
@@ -1800,6 +1931,12 @@
         {
           "aa_mutations": [
             {
+              "gene": "N",
+              "ref": "E",
+              "pos": 31,
+              "alt": "-"
+            },
+            {
               "gene": "ORF9b",
               "ref": "E",
               "pos": 27,
@@ -1816,47 +1953,14 @@
               "ref": "A",
               "pos": 28363,
               "alt": "-"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "N",
-              "ref": "E",
-              "pos": 31,
-              "alt": "-"
             },
-            {
-              "gene": "ORF9b",
-              "ref": "E",
-              "pos": 27,
-              "alt": "-"
-            },
-            {
-              "gene": "ORF9b",
-              "ref": "N",
-              "pos": 28,
-              "alt": "-"
-            }
-          ],
-          "nuc_mutations": [
             {
               "ref": "G",
               "pos": 28364,
               "alt": "-"
-            },
-            {
-              "ref": "A",
-              "pos": 28365,
-              "alt": "-"
-            },
-            {
-              "ref": "A",
-              "pos": 28366,
-              "alt": "-"
             }
-          ]
+          ],
+          "notes": "Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33"
         },
         {
           "aa_mutations": [
@@ -1871,31 +1975,26 @@
               "ref": "N",
               "pos": 28,
               "alt": "-"
-            },
-            {
-              "gene": "ORF9b",
-              "ref": "A",
-              "pos": 29,
-              "alt": "-"
             }
           ],
           "nuc_mutations": [
             {
+              "ref": "A",
+              "pos": 28365,
+              "alt": "-"
+            },
+            {
+              "ref": "A",
+              "pos": 28366,
+              "alt": "-"
+            },
+            {
               "ref": "C",
               "pos": 28367,
               "alt": "-"
-            },
-            {
-              "ref": "G",
-              "pos": 28368,
-              "alt": "-"
-            },
-            {
-              "ref": "C",
-              "pos": 28369,
-              "alt": "-"
             }
-          ]
+          ],
+          "notes": "Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33"
         },
         {
           "aa_mutations": [
@@ -1914,11 +2013,22 @@
           ],
           "nuc_mutations": [
             {
+              "ref": "G",
+              "pos": 28368,
+              "alt": "-"
+            },
+            {
+              "ref": "C",
+              "pos": 28369,
+              "alt": "-"
+            },
+            {
               "ref": "A",
               "pos": 28370,
               "alt": "-"
             }
-          ]
+          ],
+          "notes": "Deletion in-frame for ORF9b; in N, deletes last 2 bases of AA 30, entirety of 31/32, first base of 33"
         },
         {
           "aa_mutations": [

@@ -38,9 +38,63 @@
               "alt": "C"
             }
           ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "N",
+              "ref": "G",
+              "pos": 30,
+              "alt": "-"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "M",
+              "pos": 26,
+              "alt": "-"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28361,
+              "alt": "T"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "N",
+              "ref": "S",
+              "pos": 33,
+              "alt": "F"
+            },
+            {
+              "gene": "ORF9b",
+              "ref": "V",
+              "pos": 30,
+              "alt": "L"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 28371,
+              "alt": "T"
+            }
+          ]
         }
       ],
-      "silent": []
+      "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 17304,
+            "alt": "T"
+          }
+        }
+      ]
     },
     {
       "reference": "wuhan",
@@ -1303,13 +1357,6 @@
         }
       ],
       "silent": [
-        {
-          "nuc_mutation": {
-            "ref": "A",
-            "pos": 1,
-            "alt": "G"
-          }
-        },
         {
           "nuc_mutation": {
             "ref": "C",

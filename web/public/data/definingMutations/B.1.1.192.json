@@ -82,13 +82,6 @@
       "silent": [
         {
           "nuc_mutation": {
-            "ref": "A",
-            "pos": 1,
-            "alt": "G"
-          }
-        },
-        {
-          "nuc_mutation": {
             "ref": "C",
             "pos": 241,
             "alt": "T"
@@ -114,13 +107,6 @@
       "reference": "pango_parent",
       "coding": [],
       "silent": [
-        {
-          "nuc_mutation": {
-            "ref": "A",
-            "pos": 1,
-            "alt": "G"
-          }
-        },
         {
           "nuc_mutation": {
             "ref": "C",

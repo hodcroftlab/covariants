@@ -1,6 +1,6 @@
 {
   "pango_lineage": "B.1.1.326",
-  "nextstrain_clade": "20A",
+  "nextstrain_clade": "20B",
   "mutations": [
     {
       "reference": "pango_parent",
@@ -41,13 +41,6 @@
         }
       ],
       "silent": [
-        {
-          "nuc_mutation": {
-            "ref": "A",
-            "pos": 12,
-            "alt": "C"
-          }
-        },
         {
           "nuc_mutation": {
             "ref": "G",
@@ -169,13 +162,6 @@
         }
       ],
       "silent": [
-        {
-          "nuc_mutation": {
-            "ref": "A",
-            "pos": 12,
-            "alt": "C"
-          }
-        },
         {
           "nuc_mutation": {
             "ref": "C",

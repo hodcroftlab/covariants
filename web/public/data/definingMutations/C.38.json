@@ -161,23 +161,6 @@
         {
           "aa_mutations": [
             {
-              "gene": "S",
-              "ref": "D",
-              "pos": 796,
-              "alt": "Y"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "G",
-              "pos": 23948,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
               "gene": "M",
               "ref": "I",
               "pos": 82,
@@ -532,23 +515,6 @@
         {
           "aa_mutations": [
             {
-              "gene": "S",
-              "ref": "D",
-              "pos": 796,
-              "alt": "Y"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "G",
-              "pos": 23948,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
               "gene": "M",
               "ref": "I",
               "pos": 82,
@@ -678,13 +644,6 @@
         }
       ],
       "silent": [
-        {
-          "nuc_mutation": {
-            "ref": "A",
-            "pos": 1,
-            "alt": "G"
-          }
-        },
         {
           "nuc_mutation": {
             "ref": "C",

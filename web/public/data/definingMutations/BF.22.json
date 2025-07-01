@@ -3,75 +3,6 @@
   "nextstrain_clade": "22B",
   "mutations": [
     {
-      "reference": "pango_parent",
-      "coding": [
-        {
-          "aa_mutations": [
-            {
-              "gene": "N",
-              "ref": "T",
-              "pos": 49,
-              "alt": "I"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "C",
-              "pos": 28419,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "N",
-              "ref": "T",
-              "pos": 379,
-              "alt": "I"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "C",
-              "pos": 29409,
-              "alt": "T"
-            }
-          ]
-        }
-      ],
-      "silent": [
-        {
-          "nuc_mutation": {
-            "ref": "A",
-            "pos": 3859,
-            "alt": "G"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "T",
-            "pos": 6979,
-            "alt": "G"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "A",
-            "pos": 9343,
-            "alt": "G"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "T",
-            "pos": 23269,
-            "alt": "C"
-          }
-        }
-      ]
-    },
-    {
       "reference": "wuhan",
       "coding": [
         {
@@ -135,11 +66,6 @@
             }
           ],
           "nuc_mutations": [
-            {
-              "ref": "A",
-              "pos": 9343,
-              "alt": "G"
-            },
             {
               "ref": "C",
               "pos": 9344,
@@ -1227,23 +1153,6 @@
           "aa_mutations": [
             {
               "gene": "N",
-              "ref": "T",
-              "pos": 49,
-              "alt": "I"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "C",
-              "pos": 28419,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "N",
               "ref": "R",
               "pos": 203,
               "alt": "K"
@@ -1283,23 +1192,6 @@
           "aa_mutations": [
             {
               "gene": "N",
-              "ref": "T",
-              "pos": 379,
-              "alt": "I"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "C",
-              "pos": 29409,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "N",
               "ref": "S",
               "pos": 413,
               "alt": "R"
@@ -1315,13 +1207,6 @@
         }
       ],
       "silent": [
-        {
-          "nuc_mutation": {
-            "ref": "A",
-            "pos": 1,
-            "alt": "G"
-          }
-        },
         {
           "nuc_mutation": {
             "ref": "C",
@@ -1345,23 +1230,9 @@
         },
         {
           "nuc_mutation": {
-            "ref": "A",
-            "pos": 3859,
-            "alt": "G"
-          }
-        },
-        {
-          "nuc_mutation": {
             "ref": "C",
             "pos": 4321,
             "alt": "T"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "T",
-            "pos": 6979,
-            "alt": "G"
           }
         },
         {
@@ -1404,13 +1275,6 @@
             "ref": "A",
             "pos": 20055,
             "alt": "G"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "T",
-            "pos": 23269,
-            "alt": "C"
           }
         },
         {

@@ -94,23 +94,6 @@
           "aa_mutations": [
             {
               "gene": "ORF1a",
-              "ref": "S",
-              "pos": 1515,
-              "alt": "F"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "C",
-              "pos": 4809,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1a",
               "ref": "K",
               "pos": 1973,
               "alt": "R"
@@ -2149,20 +2132,6 @@
         }
       ],
       "silent": [
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 21,
-            "alt": "T"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 44,
-            "alt": "T"
-          }
-        },
         {
           "nuc_mutation": {
             "ref": "C",
@@ -2628,23 +2597,6 @@
           "aa_mutations": [
             {
               "gene": "ORF1a",
-              "ref": "S",
-              "pos": 1515,
-              "alt": "F"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "C",
-              "pos": 4809,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1a",
               "ref": "K",
               "pos": 1973,
               "alt": "R"
@@ -4683,20 +4635,6 @@
         }
       ],
       "silent": [
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 21,
-            "alt": "T"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 44,
-            "alt": "T"
-          }
-        },
         {
           "nuc_mutation": {
             "ref": "C",

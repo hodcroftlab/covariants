@@ -55,23 +55,6 @@
               "alt": "C"
             }
           ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "N",
-              "ref": "S",
-              "pos": 26,
-              "alt": "C"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "A",
-              "pos": 28349,
-              "alt": "T"
-            }
-          ]
         }
       ],
       "silent": [
@@ -85,36 +68,8 @@
         {
           "nuc_mutation": {
             "ref": "C",
-            "pos": 1912,
-            "alt": "T"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
             "pos": 4993,
             "alt": "T"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 5869,
-            "alt": "T"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 15315,
-            "alt": "T"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "G",
-            "pos": 16221,
-            "alt": "A"
           }
         }
       ]
@@ -1489,23 +1444,6 @@
         {
           "aa_mutations": [
             {
-              "gene": "N",
-              "ref": "S",
-              "pos": 26,
-              "alt": "C"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "A",
-              "pos": 28349,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
               "gene": "ORF9b",
               "ref": "E",
               "pos": 27,
@@ -1686,13 +1624,6 @@
       "silent": [
         {
           "nuc_mutation": {
-            "ref": "A",
-            "pos": 1,
-            "alt": "T"
-          }
-        },
-        {
-          "nuc_mutation": {
             "ref": "C",
             "pos": 44,
             "alt": "T"
@@ -1715,13 +1646,6 @@
         {
           "nuc_mutation": {
             "ref": "C",
-            "pos": 1912,
-            "alt": "T"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
             "pos": 3037,
             "alt": "T"
           }
@@ -1737,13 +1661,6 @@
           "nuc_mutation": {
             "ref": "C",
             "pos": 4993,
-            "alt": "T"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 5869,
             "alt": "T"
           }
         },
@@ -1785,13 +1702,6 @@
         {
           "nuc_mutation": {
             "ref": "C",
-            "pos": 15315,
-            "alt": "T"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
             "pos": 15714,
             "alt": "T"
           }
@@ -1808,13 +1718,6 @@
             "ref": "T",
             "pos": 15939,
             "alt": "C"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "G",
-            "pos": 16221,
-            "alt": "A"
           }
         },
         {

@@ -3,46 +3,6 @@
   "nextstrain_clade": "21L",
   "mutations": [
     {
-      "reference": "pango_parent",
-      "coding": [
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1a",
-              "ref": "A",
-              "pos": 583,
-              "alt": "T"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "G",
-              "pos": 2012,
-              "alt": "A"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1a",
-              "ref": "L",
-              "pos": 3201,
-              "alt": "F"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "C",
-              "pos": 9866,
-              "alt": "T"
-            }
-          ]
-        }
-      ],
-      "silent": []
-    },
-    {
       "reference": "wuhan",
       "coding": [
         {
@@ -59,23 +19,6 @@
               "ref": "T",
               "pos": 670,
               "alt": "G"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1a",
-              "ref": "A",
-              "pos": 583,
-              "alt": "T"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "G",
-              "pos": 2012,
-              "alt": "A"
             }
           ]
         },
@@ -143,23 +86,6 @@
             {
               "ref": "C",
               "pos": 9534,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1a",
-              "ref": "L",
-              "pos": 3201,
-              "alt": "F"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "C",
-              "pos": 9866,
               "alt": "T"
             }
           ]

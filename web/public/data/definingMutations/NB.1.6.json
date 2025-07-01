@@ -8,23 +8,6 @@
         {
           "aa_mutations": [
             {
-              "gene": "ORF1b",
-              "ref": "D",
-              "pos": 275,
-              "alt": "Y"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "G",
-              "pos": 14290,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
               "gene": "S",
               "ref": "R",
               "pos": 346,
@@ -416,23 +399,6 @@
             {
               "ref": "C",
               "pos": 12924,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1b",
-              "ref": "D",
-              "pos": 275,
-              "alt": "Y"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "G",
-              "pos": 14290,
               "alt": "T"
             }
           ]

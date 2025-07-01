@@ -8,40 +8,6 @@
         {
           "aa_mutations": [
             {
-              "gene": "S",
-              "ref": "R",
-              "pos": 346,
-              "alt": "T"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "G",
-              "pos": 22599,
-              "alt": "C"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "S",
-              "ref": "F",
-              "pos": 486,
-              "alt": "I"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "T",
-              "pos": 23018,
-              "alt": "A"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
               "gene": "ORF8",
               "ref": "S",
               "pos": 67,
@@ -57,15 +23,7 @@
           ]
         }
       ],
-      "silent": [
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 21054,
-            "alt": "T"
-          }
-        }
-      ]
+      "silent": []
     },
     {
       "reference": "wuhan",

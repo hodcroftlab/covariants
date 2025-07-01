@@ -55,23 +55,6 @@
               "alt": "T"
             }
           ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF3a",
-              "ref": "D",
-              "pos": 22,
-              "alt": "G"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "A",
-              "pos": 25457,
-              "alt": "G"
-            }
-          ]
         }
       ],
       "silent": []
@@ -952,23 +935,6 @@
               "ref": "T",
               "pos": 24469,
               "alt": "A"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF3a",
-              "ref": "D",
-              "pos": 22,
-              "alt": "G"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "A",
-              "pos": 25457,
-              "alt": "G"
             }
           ]
         },

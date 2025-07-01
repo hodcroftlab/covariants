@@ -1900,6 +1900,13 @@
         {
           "nuc_mutation": {
             "ref": "C",
+            "pos": 44,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "C",
             "pos": 241,
             "alt": "T"
           }

@@ -91,24 +91,6 @@
           "aa_mutations": [
             {
               "gene": "ORF1a",
-              "ref": "T",
-              "pos": 1022,
-              "alt": "T"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "C",
-              "pos": 3330,
-              "alt": "C"
-            }
-          ],
-          "contains_reversion": true
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1a",
               "ref": "V",
               "pos": 1056,
               "alt": "L"
