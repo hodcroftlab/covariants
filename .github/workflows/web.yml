@@ -45,7 +45,7 @@ jobs:
           lsblk -o MOUNTPOINT,FSTYPE,FSSIZE,FSAVAIL,FSUSE%,TYPE,NAME,ROTA,SIZE,MODEL,UUID
 
       - name: "[init] Checkout code"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 1
           submodules: true
