@@ -15,14 +15,14 @@ from urllib.parse import quote
 import numpy as np
 import pandas as pd
 
-from clusters import clusters
-from colors_and_countries import country_styles_all
-from mutation_comparison import mutation_comparison
-from name_table import name_table
+from scripts.clusters import clusters as clusters_data
+from scripts.colors_and_countries import country_styles_all as country_styles_data
+from scripts.mutation_comparison import mutation_comparison as mutation_comparison_data
+from scripts.name_table import name_table as name_table_data
 
-cluster_tables_path = "cluster_tables"
-output_path = "web/public/data"
-ack_output_path = "web/public/acknowledgements"
+CLUSTER_TABLES_PATH = "cluster_tables"
+OUTPUT_PATH = "web/public/data"
+ACK_OUTPUT_PATH = "web/public/acknowledgements"
 
 
 def soa_to_aos(soa):
@@ -198,7 +198,7 @@ def update_per_cluster_distribution(cluster_data, country, distribution):
                         dist["orig"][country] = orig
 
 
-def convert_per_cluster_data(clusters):
+def convert_per_cluster_data(clusters, cluster_tables_path):
     per_cluster_data_output = {"distributions": [], "country_names": []}
     per_cluster_data_output_interp = {"distributions": [], "country_names": []}
 
@@ -419,7 +419,7 @@ def convert_mutation_comparison(mutation_comparison):
     }
 
 
-def convert_region_data(region_name, region_input):
+def convert_region_data(region_name, region_input, cluster_tables_path):
     region_input_file = region_input['data']
     per_country_intro_content = region_input['per_country_intro_content']
 
@@ -481,8 +481,7 @@ def compare_dates(left_date: str, right_date: str, comp):
     return format_date(dt)
 
 
-def check_acknowledgements(ack_output_path: str):
-    os.makedirs(ack_output_path, exist_ok=True)
+def check_acknowledgements(ack_output_path: str, clusters):
 
     with open(os.path.join(ack_output_path, "acknowledgements_keys.json"), "r") as f:
         acknowledgements_keys = json.load(f)
@@ -513,14 +512,12 @@ def check_acknowledgements(ack_output_path: str):
                 print(f"\nWarning: cluster {build_name}:\n    {warnings_str}")
 
 
-if __name__ == "__main__":
-    os.makedirs(output_path, exist_ok=True)
-
+def main(clusters, output_path, ack_output_path, cluster_tables_path, regions_inputs, country_styles, name_table, mutation_comparison):
     regions_data = {"regions": []}
     min_date = format_date(datetime(3000, 1, 1))
     max_date = format_date(datetime(1000, 1, 1))
-    for region_name, region_input in REGIONS_INPUTS.items():
-        region_data = convert_region_data(region_name, region_input)
+    for region_name, region_input in regions_inputs.items():
+        region_data = convert_region_data(region_name, region_input, cluster_tables_path)
         if region_data['min_date'] is not None and region_data['max_date'] is not None:
             min_date = compare_dates(min_date, region_data['min_date'], min)
             max_date = compare_dates(max_date, region_data['max_date'], max)
@@ -528,17 +525,17 @@ if __name__ == "__main__":
 
     with open(os.path.join(output_path, "perCountryData.json"), "w") as fh:
         json.dump(regions_data, fh, indent=2, sort_keys=True)
-
     params = {
         "min_date": min_date,
         "max_date": max_date,
     }
+
     with open(os.path.join(output_path, "params.json"), "w") as fh:
         json.dump(params, fh, indent=2, sort_keys=True)
-
     per_cluster_data_output, per_cluster_data_output_interp = convert_per_cluster_data(
-        clusters
+        clusters, CLUSTER_TABLES_PATH
     )
+
     with open(os.path.join(output_path, "perClusterData.json"), "w") as fh:
         json.dump(per_cluster_data_output, fh, indent=2, sort_keys=True)
 
@@ -552,15 +549,19 @@ if __name__ == "__main__":
         json.dump(mutation_comparison_output, fh, indent=2, sort_keys=True)
 
     with open(os.path.join(output_path, "countryStyles.json"), "w") as fh:
-        json.dump(country_styles_all, fh, indent=2, sort_keys=True)
-
+        json.dump(country_styles, fh, indent=2, sort_keys=True)
     copyfile(
         os.path.join(cluster_tables_path, "perVariant_countries_toPlot.json"),
         os.path.join(output_path, "countriesToPlot.json"),
     )
 
-    name_table_data = {"nameTable": name_table}
     with open(os.path.join(output_path, "nameTable.json"), "w") as fh:
-        json.dump(name_table_data, fh, indent=2, sort_keys=True)
+        json.dump({"nameTable": name_table}, fh, indent=2, sort_keys=True)
+    check_acknowledgements(ack_output_path, clusters)
 
-    check_acknowledgements(ack_output_path)
+
+if __name__ == "__main__":
+    os.makedirs(OUTPUT_PATH, exist_ok=True)
+    os.makedirs(ACK_OUTPUT_PATH, exist_ok=True)
+
+    main(clusters_data, OUTPUT_PATH, ACK_OUTPUT_PATH, CLUSTER_TABLES_PATH, REGIONS_INPUTS, country_styles_data, name_table_data, mutation_comparison_data)
