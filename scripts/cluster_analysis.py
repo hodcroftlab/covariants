@@ -142,7 +142,16 @@ while reask:
     else:
         print(f"Not found. Options are: {clusters.keys()}")
 
-print("These clusters will be run: ", clus_to_run)
+print("These clusters will be run: ", clus_to_run, "\n")
+
+removed = False
+for clus in clus_to_run:
+    if clusters[clus]["type"] == "do_not_display" and not clusters[clus]["nextstrain_build"]:
+        print(f"Remark: cluster {clus} has type 'do_not_display' and nextstrain_build=False -> Will be automatically removed from this run (maybe consider commenting out this cluster?)")
+        clus_to_run.remove(clus)
+        removed = True
+if removed:
+    print("\nThese clusters will be run: ", clus_to_run, "\n")
 
 # division: collect division info for USA and Switzerland
 division = False
@@ -725,6 +734,8 @@ if print_files:
             print(f"No summary written out for cluster {clus} (no sequences assigned to this cluster).")
             continue
 
+        nextstrain_run = clusters[clus]['nextstrain_build']
+        build_type = clusters[clus]['type']
         clus_build_name = clus_data_all[clus]["build_name"]
         table_file = f"{tables_path}{clus_build_name}_table.tsv"
         ordered_country = pd.DataFrame.from_dict(clus_data_all[clus]["summary"], orient="index").sort_values(by=["first_seq", "last_seq"])
