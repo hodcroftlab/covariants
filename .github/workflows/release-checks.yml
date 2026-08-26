@@ -23,7 +23,7 @@ jobs:
       - name: "If CHANGELOG.md is not changed, send a Slack notification"
         id: slack
         if: "!contains(steps.changed-files.outputs.modified_files , 'CHANGELOG.md')"
-        uses: slackapi/slack-github-action@v2.1.0
+        uses: slackapi/slack-github-action@v2.1.1
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
           slack-message: "Hi @Emma, this is your CoVariants bot 🤖. Bip-bop! It looks like you've pushed another release, but did not update the CHANGELOG.md. I thought I'd mention that. Apologies if you did already. In any case, not a big deal! Also, here is an image of a dog. https://placedog.net/500."
