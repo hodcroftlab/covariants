@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import datetime
-from collections import defaultdict
+
 
 def logistic(x, a, t50):
     return np.exp((x - t50) * a) / (1 + np.exp((x - t50) * a))
@@ -20,7 +20,7 @@ def fit_logistic(days, cluster, total):
 
 
 def trim_last_data_point(
-    week_as_date, cluster_count, total_count, frac=0.2, keep_count=10
+        week_as_date, cluster_count, total_count, frac=0.2, keep_count=10
 ):
     if total_count[-1] < frac * total_count[-2] and total_count[-1] < keep_count:
         return week_as_date[:-1], cluster_count[:-1], total_count[:-1]
@@ -29,7 +29,6 @@ def trim_last_data_point(
 
 
 def non_zero_counts(cluster_data, total_data, country, smoothing=None):
-
     smooth = True
     if smoothing is None:
         smoothing = np.array([1])
@@ -54,11 +53,11 @@ def non_zero_counts(cluster_data, total_data, country, smoothing=None):
     mode = "same"  # RICHARD
     cluster_count = np.convolve(
         cluster_and_total[data_range].iloc[:, 0], smoothing, mode=mode
-    )  #'same')
+    )  # 'same')
     # cluster_count = cluster_count[0:len(week_as_date)]
     total_count = np.convolve(
         cluster_and_total[data_range].iloc[:, 1], smoothing, mode=mode
-    )  #'same')
+    )  # 'same')
     # if mode == 'valid':
     #     total_count = total_count[0:len(week_as_date)]
 
@@ -96,13 +95,32 @@ def bernoulli_estimator(x, n, dp=0.10):
 
 # Transform a datetime into (year, week) tuple in 2-week intervals starting a reference monday:
 ref_monday = datetime.datetime.strptime("2020-04-27", '%Y-%m-%d').toordinal()
+
+
 def to2week_ordinal(x):
     n = x.toordinal()
     monday = datetime.date.fromordinal(n - ((n - ref_monday) % 14))
     return (monday.isocalendar()[0], monday.isocalendar()[1])
+
 
 # Transform a datetime 2-week intervals starting a reference monday -- but returns as a date string
 def to2week_ordinal_string(x):
     n = x.toordinal()
     monday = datetime.date.fromordinal(n - ((n - ref_monday) % 14))
     return monday.strftime("%Y-%m-%d")
+
+
+def to2week_ordinal_long_string(x):
+    n = x.toordinal()
+    monday = datetime.date.fromordinal(n - ((n - ref_monday) % 14))
+    return str(monday.isocalendar()[0]) + '-' + str(monday.isocalendar()[1]).zfill(2)
+
+
+def to2week_ordinal_year(x):
+    year, week = to2week_ordinal(x)
+    return year
+
+
+def to2week_ordinal_week(x):
+    year, week = to2week_ordinal(x)
+    return week
