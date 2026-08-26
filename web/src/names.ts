@@ -25,6 +25,28 @@ export const AMINOACID_NAMES: Record<string, string> = {
   '*': 'Stop codon',
   '-': 'deleted',
 }
+export const AMINOACID_TLA: Record<string, string> = {
+  'A': 'Ala',
+  'V': 'Val',
+  'L': 'Leu',
+  'I': 'Ile',
+  'C': 'Cys',
+  'D': 'Asp',
+  'E': 'Glu',
+  'F': 'Phe',
+  'G': 'Gly',
+  'H': 'His',
+  'K': 'Lys',
+  'M': 'Met',
+  'N': 'Asn',
+  'P': 'Pro',
+  'Q': 'Gln',
+  'R': 'Arg',
+  'S': 'Ser',
+  'T': 'Thr',
+  'W': 'Trp',
+  'Y': 'Tyr',
+}
 export const NUCELOTIDE_NAMES: Record<string, string> = {
   'A': 'Adenine',
   'C': 'Cytosine',
