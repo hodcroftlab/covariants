@@ -1,6 +1,6 @@
 {
   "pango_lineage": "PE.1.1",
-  "nextstrain_clade": "24E",
+  "nextstrain_clade": "25D",
   "mutations": [
     {
       "reference": "pango_parent",
@@ -2199,6 +2199,13 @@
         }
       ],
       "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "A",
+            "pos": 4,
+            "alt": "-"
+          }
+        },
         {
           "nuc_mutation": {
             "ref": "C",

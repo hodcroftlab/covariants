@@ -2251,14 +2251,6 @@
           }
         },
         {
-          "contains_reversion": true,
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 8980,
-            "alt": "C"
-          }
-        },
-        {
           "nuc_mutation": {
             "ref": "A",
             "pos": 9424,
@@ -2367,14 +2359,6 @@
           "nuc_mutation": {
             "ref": "C",
             "pos": 22792,
-            "alt": "T"
-          }
-        },
-        {
-          "contains_reversion": true,
-          "nuc_mutation": {
-            "ref": "T",
-            "pos": 23443,
             "alt": "T"
           }
         },

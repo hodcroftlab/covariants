@@ -600,27 +600,26 @@
               "gene": "S",
               "ref": "S",
               "pos": 31,
-              "alt": "S"
+              "alt": "-"
             }
           ],
           "nuc_mutations": [
             {
               "ref": "T",
               "pos": 21653,
-              "alt": "T"
+              "alt": "-"
             },
             {
               "ref": "C",
               "pos": 21654,
-              "alt": "C"
+              "alt": "-"
             },
             {
               "ref": "T",
               "pos": 21655,
-              "alt": "T"
+              "alt": "-"
             }
-          ],
-          "contains_reversion": true
+          ]
         },
         {
           "aa_mutations": [

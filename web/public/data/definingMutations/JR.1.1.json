@@ -55,6 +55,23 @@
               "alt": "C"
             }
           ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
+              "ref": "K",
+              "pos": 478,
+              "alt": "R"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 22995,
+              "alt": "G"
+            }
+          ]
         }
       ],
       "silent": [
@@ -1712,6 +1729,13 @@
         }
       ],
       "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 44,
+            "alt": "T"
+          }
+        },
         {
           "nuc_mutation": {
             "ref": "C",

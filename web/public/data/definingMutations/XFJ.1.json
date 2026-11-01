@@ -1,7 +1,38 @@
 {
   "pango_lineage": "XFJ.1",
-  "nextstrain_clade": "recombinant",
+  "nextstrain_clade": "25H",
   "mutations": [
+    {
+      "reference": "pango_parent",
+      "coding": [
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "I",
+              "pos": 1525,
+              "alt": "V"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 4838,
+              "alt": "G"
+            }
+          ]
+        }
+      ],
+      "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 12769,
+            "alt": "T"
+          }
+        }
+      ]
+    },
     {
       "reference": "wuhan",
       "coding": [
@@ -87,6 +118,23 @@
               "ref": "G",
               "pos": 4184,
               "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "ORF1a",
+              "ref": "I",
+              "pos": 1525,
+              "alt": "V"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "A",
+              "pos": 4838,
+              "alt": "G"
             }
           ]
         },
@@ -2120,13 +2168,6 @@
         {
           "nuc_mutation": {
             "ref": "C",
-            "pos": 44,
-            "alt": "T"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
             "pos": 241,
             "alt": "T"
           }
@@ -2507,26 +2548,6 @@
             "ref": "G",
             "pos": 29759,
             "alt": "-"
-          }
-        }
-      ]
-    },
-    {
-      "reference": "pango_parent",
-      "coding": [],
-      "silent": [
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 44,
-            "alt": "T"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "G",
-            "pos": 12769,
-            "alt": "T"
           }
         }
       ]

@@ -1530,11 +1530,10 @@
       ],
       "silent": [
         {
-          "contains_reversion": true,
           "nuc_mutation": {
             "ref": "C",
             "pos": 44,
-            "alt": "C"
+            "alt": "T"
           }
         },
         {
@@ -1842,6 +1841,13 @@
           "nuc_mutation": {
             "ref": "T",
             "pos": 29758,
+            "alt": "-"
+          }
+        },
+        {
+          "nuc_mutation": {
+            "ref": "G",
+            "pos": 29759,
             "alt": "-"
           }
         }

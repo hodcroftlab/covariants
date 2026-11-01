@@ -8,40 +8,6 @@
         {
           "aa_mutations": [
             {
-              "gene": "ORF1a",
-              "ref": "R",
-              "pos": 24,
-              "alt": "C"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "C",
-              "pos": 335,
-              "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1a",
-              "ref": "D",
-              "pos": 2402,
-              "alt": "N"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "G",
-              "pos": 7469,
-              "alt": "A"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
               "gene": "S",
               "ref": "H",
               "pos": 445,
@@ -61,13 +27,6 @@
         {
           "nuc_mutation": {
             "ref": "C",
-            "pos": 8980,
-            "alt": "T"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
             "pos": 16767,
             "alt": "T"
           }
@@ -77,23 +36,6 @@
     {
       "reference": "wuhan",
       "coding": [
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1a",
-              "ref": "R",
-              "pos": 24,
-              "alt": "C"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "C",
-              "pos": 335,
-              "alt": "T"
-            }
-          ]
-        },
         {
           "aa_mutations": [
             {
@@ -193,23 +135,6 @@
               "ref": "A",
               "pos": 6183,
               "alt": "G"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1a",
-              "ref": "D",
-              "pos": 2402,
-              "alt": "N"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "G",
-              "pos": 7469,
-              "alt": "A"
             }
           ]
         },
@@ -2254,13 +2179,6 @@
           "nuc_mutation": {
             "ref": "C",
             "pos": 8818,
-            "alt": "T"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "C",
-            "pos": 8980,
             "alt": "T"
           }
         },

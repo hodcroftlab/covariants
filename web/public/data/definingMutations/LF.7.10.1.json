@@ -74,15 +74,7 @@
           ]
         }
       ],
-      "silent": [
-        {
-          "nuc_mutation": {
-            "ref": "A",
-            "pos": 29767,
-            "alt": "T"
-          }
-        }
-      ]
+      "silent": []
     },
     {
       "reference": "wuhan",
@@ -2599,13 +2591,6 @@
             "ref": "G",
             "pos": 29759,
             "alt": "-"
-          }
-        },
-        {
-          "nuc_mutation": {
-            "ref": "A",
-            "pos": 29767,
-            "alt": "T"
           }
         }
       ]

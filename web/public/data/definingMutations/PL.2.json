@@ -8,23 +8,6 @@
         {
           "aa_mutations": [
             {
-              "gene": "ORF1b",
-              "ref": "K",
-              "pos": 2557,
-              "alt": "R"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "A",
-              "pos": 21137,
-              "alt": "G"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
               "gene": "S",
               "ref": "L",
               "pos": 5,
@@ -60,6 +43,13 @@
       "silent": [
         {
           "nuc_mutation": {
+            "ref": "C",
+            "pos": 8980,
+            "alt": "T"
+          }
+        },
+        {
+          "nuc_mutation": {
             "ref": "T",
             "pos": 10141,
             "alt": "C"
@@ -70,24 +60,6 @@
     {
       "reference": "wuhan",
       "coding": [
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1a",
-              "ref": "R",
-              "pos": 24,
-              "alt": "R"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "C",
-              "pos": 335,
-              "alt": "C"
-            }
-          ],
-          "contains_reversion": true
-        },
         {
           "aa_mutations": [
             {
@@ -189,24 +161,6 @@
               "alt": "G"
             }
           ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1a",
-              "ref": "D",
-              "pos": 2402,
-              "alt": "D"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "G",
-              "pos": 7469,
-              "alt": "G"
-            }
-          ],
-          "contains_reversion": true
         },
         {
           "aa_mutations": [
@@ -529,23 +483,6 @@
               "ref": "C",
               "pos": 19955,
               "alt": "T"
-            }
-          ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "ORF1b",
-              "ref": "K",
-              "pos": 2557,
-              "alt": "R"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "A",
-              "pos": 21137,
-              "alt": "G"
             }
           ]
         },
