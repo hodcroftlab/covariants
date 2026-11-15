@@ -21,23 +21,6 @@
               "alt": "G"
             }
           ]
-        },
-        {
-          "aa_mutations": [
-            {
-              "gene": "S",
-              "ref": "E",
-              "pos": 213,
-              "alt": "G"
-            }
-          ],
-          "nuc_mutations": [
-            {
-              "ref": "A",
-              "pos": 22200,
-              "alt": "G"
-            }
-          ]
         }
       ],
       "silent": [

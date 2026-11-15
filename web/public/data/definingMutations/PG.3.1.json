@@ -2147,6 +2147,14 @@
           }
         },
         {
+          "contains_reversion": true,
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 21,
+            "alt": "C"
+          }
+        },
+        {
           "nuc_mutation": {
             "ref": "C",
             "pos": 21,
@@ -2558,6 +2566,13 @@
       "reference": "pango_parent",
       "coding": [],
       "silent": [
+        {
+          "nuc_mutation": {
+            "ref": "C",
+            "pos": 21,
+            "alt": "T"
+          }
+        },
         {
           "nuc_mutation": {
             "ref": "A",

@@ -9,6 +9,23 @@
           "aa_mutations": [
             {
               "gene": "S",
+              "ref": "G",
+              "pos": 213,
+              "alt": "E"
+            }
+          ],
+          "nuc_mutations": [
+            {
+              "ref": "G",
+              "pos": 22200,
+              "alt": "A"
+            }
+          ]
+        },
+        {
+          "aa_mutations": [
+            {
+              "gene": "S",
               "ref": "F",
               "pos": 456,
               "alt": "L"
